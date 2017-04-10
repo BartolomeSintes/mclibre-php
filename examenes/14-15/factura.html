@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Factura. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Factura</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Factura</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+          <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que permtia introducir los datos de unos objetos comprados y calcule el precio final total.</p>
+
+    <section id="comentarios">
+      <h2>Factura - Comentarios</h2>
+
+      <ul>
+        <li>El programa tendrá tres páginas:
+          <ul>
+            <li>La primera página pide el número de objetos que se compran (entre 1 y 30):
+              <p class="captura"><img alt="Factura - Formulario 1" src="img/factura_1.png" width="765" height="320" /></p>
+            </li>
+            <li>La segunda página comprueba primero el valor recibido:
+              <p class="captura"><img alt="Factura - Error en formulario" src="img/factura_2.png" width="765" height="205" /></p>
+            </li>
+            <li>En el caso de que el valor sea correcto, la segunda página muestra las cajas de texto y botones radio solicitados:
+              <p class="captura"><img alt="Factura - Resultado 1" src="img/factura_3.png" width="765" height="390" /></p>
+              <p class="captura"><img alt="Factura - Resultado 1" src="img/factura_4.png" width="765" height="390" /></p>
+            </li>
+            <li>La tercera página muestra el precio final de cada objeto y el coste total:
+              <p><strong>Nota</strong>: No es necesario comprobar las matrices recibida (salvo si sobra tiempo ;-)</p>
+              <p class="captura"><img alt="Factura - Resultado 2" src="img/factura_5.png" width="765" height="310" /></p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Factura - Ejemplo de código HTML</h2>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Factura (Resultado 1)&lt;/h1&gt;
+
+&lt;p&gt;Escriba la descripción del objeto, la cantidad comprada y el IVA:&lt;/p&gt;
+&lt;form action="factura_3.php" method="get"&gt;
+  &lt;table&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th colspan="3"&gt;IVA&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;Descripción&lt;/th&gt;
+        &lt;th&gt;Precio&lt;/th&gt;
+        &lt;th&gt;4%&lt;/th&gt;
+        &lt;th&gt;10%&lt;/th&gt;
+        &lt;th&gt;21%&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;1:&lt;/th&gt;
+        &lt;th&gt;&lt;input type="text" name="descripcion[1]" size="30" /&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;input type="text" name="precio[1]" size="8" /&gt;&lt;/th&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[1]" value="4" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[1]" value="10" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[1]" value="21" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;2:&lt;/th&gt;
+        &lt;th&gt;&lt;input type="text" name="descripcion[2]" size="30" /&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;input type="text" name="precio[2]" size="8" /&gt;&lt;/th&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[2]" value="4" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[2]" value="10" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[2]" value="21" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;3:&lt;/th&gt;
+        &lt;th&gt;&lt;input type="text" name="descripcion[3]" size="30" /&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;input type="text" name="precio[3]" size="8" /&gt;&lt;/th&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[3]" value="4" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[3]" value="10" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="iva[3]" value="21" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;p class="der"&gt;&lt;input type="submit" value="Terminar" /&gt;
+    &lt;input type="reset" value="Borrar" /&gt;
+    &lt;input type="hidden" name="objetos" value="3" /&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Facturas (Resultado 2)&lt;/h1&gt;
+
+&lt;p&gt;Su compra: 5.69 &euro;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Barra de pan 250 g: 0.99 &euro;&lt;/li&gt;
+  &lt;li&gt;Garrafa de agua 5 l: 2.64 &euro;&lt;/li&gt;
+  &lt;li&gt;Pasta de dientes 250 g: 2.06 &euro;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="factura_2.php?objetos=3"&gt;Volver a la tabla&lt;/a&gt;&lt;/p&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejemplo-programa">
+      <h2>Factura - Ejemplo de programa</h2>
+
+      <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+      <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+      <p class="enlace-ejercicio"><a href="../../../examenes/php_examenes/14-15/factura/factura_1.html">Enlace a examen Factura</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="../../../examenes/php_examenes/14-15/factura/factura_1.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 12 de noviembre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

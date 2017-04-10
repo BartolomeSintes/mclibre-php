@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ecuación de una recta. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Ecuación de una recta</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Ecuación de una recta</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+          <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que calcule la ecuación de una recta que pasa por dos puntos a partir de sus coordenadas.</p>
+
+    <section id="comentarios">
+      <h2>Ecuación de una recta - Comentarios</h2>
+
+      <ul>
+        <li>El programa tendrá dos páginas:
+          <ul>
+            <li>La primera página pide las coordenadas de los dos puntos.
+              <p class="captura"><img alt="Ecuación de una recta - Formulario 1" src="img/ecuacion_recta_1.png" width="765" height="440" /></p>
+            </li>
+            <li>La segunda página comprueba primero los valores recibidos. Si no se han escrito dos puntos iguales o hay valores que no son números se muestra un mensaje de error:
+              <p class="captura"><img alt="Ecuación de una recta - Error en los datos" src="img/ecuacion_recta_2.png" width="765" height="210" /></p>
+              <p class="captura"><img alt="Ecuación de una recta - Error en los datos" src="img/ecuacion_recta_3.png" width="765" height="210" /></p>
+              <p class="captura"><img alt="Ecuación de una recta - Error en los datos" src="img/ecuacion_recta_4.png" width="765" height="210" /></p>
+            </li>
+            <li>En el caso de que los valores sean correctos, la segunda página muestra el cuarto valor (si se puede calcular) o dice que no se puede calcular.
+              <p class="captura"><img alt="Ecuación de una recta - Resultado" src="img/ecuacion_recta_5.png" width="765" height="210" /></p>
+              <p class="captura"><img alt="Ecuación de una recta - Resultado" src="img/ecuacion_recta_6.png" width="765" height="210" /></p>
+              <p class="captura"><img alt="Ecuación de una recta - Resultado" src="img/ecuacion_recta_7.png" width="765" height="210" /></p>
+            </li>
+            <li>y = a x + b</li>
+            <li>a = (y2 - y1) / (x2 - x1)</li>
+            <li>b = (y1 * x2 - x1 * y2) / (x2 - x1)</li>
+            <li>Casos particulares:
+              <ul>
+                <li>y1 = y2 : recta horizontal y = y1</li>
+                <li>x1 = x2 : recta vertical x = x1</li>
+                <li>si a o b no es entero, mostrar dos decimales</li>
+                <li>si a es 1, que no muestre a ( y = x ...)</li>
+                <li>si a es -1 que no muestre el 1 (y = - x ...)</li>
+                <li>si b es cero, que no se muestre</li>
+                <li>si b es negativo, que se vea así: y = ... x - ...</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Ecuación de una recta - Ejemplo de código HTML</h2>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Ecuación de una recta (Resultado)&lt;/h1&gt;
+
+&lt;p&gt;La recta que pasa por por los puntos A(5, 6) y B(3, 4)
+es la recta y =  x  + 1&lt;/p&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejemplo-programa">
+      <h2>Ecuación de una recta - Ejemplo de programa</h2>
+
+      <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+      <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+      <p class="enlace-ejercicio"><a href="../../../examenes/php_examenes/14-15/ecuacion_recta/ecuacion_recta.html">Enlace a examen Ecuación de una recta</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="../../../examenes/php_examenes/14-15/ecuacion_recta/ecuacion_recta.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 12 de noviembre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
