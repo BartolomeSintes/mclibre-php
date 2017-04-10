@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dibujitos. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Dibujitos</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Dibujitos</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que muestre emoticonos de animales y medios de transporte.</p>
+
+    <p><img src="../../varios/iconos/icono_warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" /> Para ver los emoticonos en colores, se debe utilizar Firefox.</p>
+
+    <section id="comentarios">
+      <h2>Dibujitos - Comentarios</h2>
+
+      <ul>
+        <li>El programa tendrá dos páginas:
+          <ul>
+            <li>La primera página es un formulario con cuatro campos:
+              <p class="captura"><img src="img/dibujitos_1.png" alt="Dibujitos" width="1008" height="340" /></p>
+            </li>
+            <li>Si no se elige el tamaño o no se escriben dos números entre 0 y 10, la segunda página mostrará los avisos correspondientes::
+              <p class="captura"><img src="img/dibujitos_2.png" alt="Dibujitos" width="1008" height="350" /></p>
+            </li>
+            <li>Si no se muestran avisos, se mostrarán el número de animales y medios de transporte elegidos al azar entre los emoticonos disponibles, al tamaño solicitado:
+              <p class="captura"><img src="img/dibujitos_3.png" alt="Dibujitos" width="991" height="560" /></p>
+              <p class="captura"><img src="img/dibujitos_4.png" alt="Dibujitos" width="991" height="560" /></p>
+            </li>
+            <li>el tamaño de los dibujos pequeños es 40px de alto</li>
+            <li>el tamaño de los dibujos medianos es 80px de alto</li>
+            <li>el tamaño de los dibujos grandes es 120px de alto</li>
+            <li>las entidades de carácter de animales se encuentran entre los valores 128000 y 128060. Por ejemplo <span style="font-size: 80px">&#128030;</span> es &amp;#128030;</li>
+            <li>las entidades de carácter de medios de transporte se encuentran entre los valores 128640 y 128676. Por ejemplo <span style="font-size: 80px">&#128657;</span> es &amp;#128657;</li>
+            <li>no importa que los dibujos se superpongan, ni que estén parcialmente fuera (aunque siempre debe verse una parte del dibujo)</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Dibujitos - Ejemplo de código HTML</h2>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">    &lt;h1&gt;Dibujitos (Resultado)&lt;/h1&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;3 animales medianos.&lt;/li&gt;
+      &lt;li&gt;2 medios de transporte grandes.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;
+      &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;400&quot; height=&quot;400&quot;
+        viewBox=&quot;0 0 400 400&quot; style=&quot;border: black 1px solid&quot;&gt;
+
+        &lt;text x=&quot;27&quot; y=&quot;381&quot; font-size=&quot;80px&quot;&gt;&amp;#128030;&lt;/text&gt;
+        &lt;text x=&quot;64&quot; y=&quot;156&quot; font-size=&quot;80px&quot;&gt;&amp;#128007;&lt;/text&gt;
+        &lt;text x=&quot;297&quot; y=&quot;189&quot; font-size=&quot;80px&quot;&gt;&amp;#128025;&lt;/text&gt;
+
+        &lt;text x=&quot;327&quot; y=&quot;165&quot; font-size=&quot;120px&quot;&gt;&amp;#128655;&lt;/text&gt;
+        &lt;text x=&quot;164&quot; y=&quot;226&quot; font-size=&quot;120px&quot;&gt;&amp;#128674;&lt;/text&gt;
+      &lt;/svg&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;a href="dibujitos_1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;</code>
+</pre>
+      </div>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">    &lt;h1&gt;Dibujitos (Resultado)&lt;/h1&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;2 animales pequeños.&lt;/li&gt;
+      &lt;li&gt;3 medios de transporte medianos.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;
+      &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;400&quot; height=&quot;400&quot;
+        viewBox=&quot;0 0 400 400&quot; style=&quot;border: black 1px solid&quot;&gt;
+
+        &lt;text x=&quot;124&quot; y=&quot;317&quot; font-size=&quot;40px&quot;&gt;&amp;#128001;&lt;/text&gt;
+        &lt;text x=&quot;203&quot; y=&quot;273&quot; font-size=&quot;40px&quot;&gt;&amp;#128019;&lt;/text&gt;
+
+        &lt;text x=&quot;358&quot; y=&quot;206&quot; font-size=&quot;80px&quot;&gt;&amp;#128651;&lt;/text&gt;
+        &lt;text x=&quot;189&quot; y=&quot;84&quot; font-size=&quot;80px&quot;&gt;&amp;#128672;&lt;/text&gt;
+        &lt;text x=&quot;303&quot; y=&quot;217&quot; font-size=&quot;80px&quot;&gt;&amp;#128663;&lt;/text&gt;
+      &lt;/svg&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;a href="dibujitos_1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 23 de noviembre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Los chinos. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Los chinos</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Los chinos</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que muestre una partida de un juego muy sencillo: Los chinos.</p>
+
+    <section id="comentarios">
+      <h2>Los chinos - Comentarios</h2>
+
+      <ul>
+        <li>Las reglas del juego son las siguientes:
+          <ul>
+            <li>simultáneamente, los dos jugadores muestran de cero a tres monedas en la palma de su mano</li>
+            <li>al mismo tiempo, los dos jugadores dicen cuántas monedas se van a mostrar en total</li>
+            <li>el jugador que acierta, gana.</li>
+          </ul>
+        </li>
+        <li>El programa tendrá una sola página. Cada vez que se carga la página:
+          <ul>
+            <li>se muestra la jugada de cada jugador (de cero a tres monedas)</li>
+            <li>se muestra la estimación de cada jugador (la estimación de un jugador no será inferior al número de monedas que muestra ese jugador)</li>
+            <li>se indica quién ha acertado (ambos, uno o ninguno de ellos)</li>
+          </ul>
+        </li>
+        <li>Imágenes:
+          <ul>
+            <li>Las manos con monedas son imágenes que se encuentran en el archivo de plantillas.</li>
+          </ul>
+        </li>
+        <li>Capturas de pantalla:
+          <p class="captura"><img src="img/chinos_1.png" alt="Los chinos" width="991" height="550" /></p>
+          <p class="captura"><img src="img/chinos_2.png" alt="Los chinos" width="991" height="550" /></p>
+          <p class="captura"><img src="img/chinos_3.png" alt="Los chinos" width="991" height="550" /></p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Los chinos - Ejemplo de código HTML</h2>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">    &lt;h1&gt;Los chinos&lt;/h1&gt;
+
+    &lt;p&gt;Actualice la página para mostrar otra partida.&lt;/p&gt;
+
+    &lt;table style=&quot;border-spacing: 60px 10px&quot;&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Jugador 1&lt;/th&gt;
+        &lt;th&gt;Jugador 2&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 117.97 107.3&quot; width=&quot;200&quot;&gt;
+            &lt;g stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;
+              &lt;path fill=&quot;#ccc&quot; stroke=&quot;#ccc&quot; d=&quot;M94.2 6l-78 5.4C7.6 11.4 1 18 1 26.4L5.8 74c0 8.3 5.4 14.4 13.8 14.4l17 .3-4 17.6L57.8 89l26 .8c8.4 0 19.3-7.5 19.3-16l8-50c0-8.4-8-18-16.5-18z&quot;/&gt;
+              &lt;path fill=&quot;#fff&quot; stroke=&quot;#000&quot; d=&quot;M100.5 1l-78 5.6C14 6.6 7 13.3 7 21.6L12 69c0 8.6 5.2 14.7 13.6 14.7l17 .3-4 17.4L64 84.2l26 .7c8.4 0 19.3-7.8 19.3-16l7.6-50c0-8.8-8-18-16.8-18z&quot;/&gt;
+              &lt;text x=&quot;60&quot; y=&quot;65&quot; text-anchor=&quot;middle&quot; style=&quot;font-size: 70px&quot;&gt;<span class="resaltadoconborde">2</span>&lt;/text&gt;
+            &lt;/g&gt;
+          &lt;/svg&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+          &lt;svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 117.97 107.3&quot; width=&quot;200&quot;&gt;
+            &lt;g stroke-width=&quot;2&quot; stroke-linejoin=&quot;round&quot; stroke-linecap=&quot;round&quot;&gt;
+              &lt;path fill=&quot;#ccc&quot; stroke=&quot;#ccc&quot; d=&quot;M23.8 6l78 5.4c8.4 0 15.2 6.7 15.2 15L112.2 74c0 8.3-5.4 14.4-13.8 14.4l-17 .3 4 17.6L60 89l-26 .8c-8.3 0-19-7.5-19-16L7 24c0-8.4 8.2-18 16.6-18z&quot;/&gt;
+              &lt;path fill=&quot;#fff&quot; stroke=&quot;#000&quot; d=&quot;M17.5 1l78 5.6c8.5 0 15.2 6.7 15.2 15L106 69.2c0 8.5-5.4 14.6-13.8 14.6l-17 .3 4 17.6L54 84.3 28 85c-8.6 0-19.5-7.5-19.5-16L1 19C1 10.4 9 1 17.5 1z&quot;/&gt;
+              &lt;text x=&quot;60&quot; y=&quot;65&quot; text-anchor=&quot;middle&quot; style=&quot;font-size: 70px&quot;&gt;<span class="resaltadoconborde">2</span>&lt;/text&gt;
+            &lt;/g&gt;
+          &lt;/svg&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;img src=&quot;img/<span class="resaltadoconborde">chinos_1.svg</span>&quot; alt=&quot;<span class="resaltadoconborde">1</span>&quot; width=&quot;200&quot; /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;img/<span class="resaltadoconborde">chinos_0.svg</span>&quot; alt=&quot;<span class="resaltadoconborde">0</span>&quot; width=&quot;200&quot; /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td colspan=&quot;2&quot; style=&quot;font-size: 200%; text-align: center;&quot;&gt;<span class="resaltadoconborde">¡No ha acertado ningún jugador!</span>&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 1 de marzo de 2017</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

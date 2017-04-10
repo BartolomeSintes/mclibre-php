@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Restaurante. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Restaurante</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Restaurante</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+          <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que permita indicar las mesas reservadas en un restaurante:</p>
+
+    <section id="comentarios">
+      <h2>Restaurante - Comentarios</h2>
+
+      <ul>
+        <li>El programa tendrá tres páginas:
+          <ul>
+            <li>La primera página pide el número de mesas (entre 1 y 40):
+              <p class="captura"><img alt="Restaurante - Formulario 1" src="img/restaurante_1.png" width="784" height="280" /></p>
+            </li>
+            <li>La segunda página comprueba primero el valor recibido:
+              <p class="captura"><img alt="Restaurante - Error en formulario" src="img/restaurante_2.png" width="784" height="250" /></p>
+            </li>
+            <li>En el caso de que el valor sea correcto, la segunda página muestra casillas de verificación y cajas de texto:
+              <p class="captura"><img alt="Restaurante - Formulario 2" src="img/restaurante_3.png" width="767" height="480" /></p>
+            </li>
+            <li>En este formulario hay que marcar la casilla de la mesa reservada e indicar el nombre de la persona que la reserva:
+              <p class="captura"><img alt="Restaurante - Formulario 2" src="img/restaurante_4.png" width="767" height="480" /></p>
+            </li>
+            <li>La tercera página comprueba solamente el número de mesas:
+              <p class="captura"><img alt="Restaurante - Resultado" src="img/restaurante_5.png" width="784" height="280" /></p>
+            </li>
+            <li>En caso de que el valor sea correcto, la tercera página muestra las mesas reservadas correctamente 8con casilla marcada y nombre):
+              <p class="captura"><img alt="Restaurante - Resultado" src="img/restaurante_7.png" width="784" height="280" /></p>
+              <p class="captura"><img alt="Restaurante - Resultado" src="img/restaurante_6.png" width="784" height="340" /></p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Palabras - Ejemplo de código HTML</h2>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;p&gt;Indique quién ha reservado qué mesas:&lt;/p&gt;
+
+&lt;form action="restaurante_3.php" method="get"&gt;
+  &lt;table style="text-align: center" &gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Reservar&lt;/th&gt;
+        &lt;th&gt;Mesa&lt;/td&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" name="reservadas[1]" /&gt;&lt;/td&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="nombres[1]" size="30" maxlength="30" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" name="reservadas[2]" /&gt;&lt;/td&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="nombres[2]" size="30" maxlength="30" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" name="reservadas[3]" /&gt;&lt;/td&gt;
+        &lt;td&gt;3&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="nombres[3]" size="30" maxlength="30" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;p&gt;&lt;input type="hidden" name="mesas" value="3" /&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Reservar" /&gt;
+    &lt;input type="reset" value="Borrar" /&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Restaurante (Formulario 3)&lt;/h1&gt;
+
+&lt;p&gt;Reservas correctas: 2&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mesa 2: Benito&lt;/li&gt;
+  &lt;li&gt;Mesa 4: Daniel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="restaurante_2.php?mesas=5"&gt;Volver al formulario anterior.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="restaurante_1.html"&gt;Volver al formulario inicial.&lt;/a&gt;&lt;/p&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejemplo-programa">
+      <h2>Restaurante - Ejemplo de programa</h2>
+
+      <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+      <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+      <p class="enlace-ejercicio"><a href="../../../examenes/php_examenes/15-16/restaurante/restaurante_1.html">Enlace a examen Restaurante</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="../../../examenes/php_examenes/15-16/restaurante/restaurante_1.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 4 de marzo de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
