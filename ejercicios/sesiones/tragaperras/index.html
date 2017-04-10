@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tragaperras. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Ejercicios - Minijuegos: Tragaperras</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Tragaperras</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Tragaperras (1)</a></li>
+          <li><a href="#ejercicio-2">2 - Tragaperras (2)</a></li>
+          <li><a href="#ejercicio-3">3 - Tragaperras (3)</a></li>
+          <li><a href="#ejercicio-4">4 - Tragaperras (4)</a></li>
+          <li><a href="#ejercicio-5">5 - Tragaperras (5)</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1617/cs_tragaperras_plantillas.zip">plantillas de los ejercicios Tragaperras</a>, que incluyen las imágenes utilizadas y parte de la página (los fragmentos HTML). Sólo se incluye una plantilla para los dos primeros ejercicios, ya que se recomienda hacer cada ejercicio a partir del anterior.</p>
+
+    <h2>Comentarios</h2>
+
+    <ul>
+      <li><span class="incompleto">[pendiente de actualizar]</span> En la <a href="tragaperras_ayuda.html">página de ayuda</a> se pueden consultar ejemplos de código que corresponden a los comentarios de cada enunciado.</li>
+    </ul>
+
+    <section id="ejercicio-1">
+      <h2>Tragaperras 1</h2>
+
+      <p>Escriba un programa que muestre tres imágenes de frutas, que cambien de forma aleatoria al actualizar la página.</p>
+      <ul>
+        <li>Se generan aleatoriamente tres variables con números del 1 al 8 (yo las he llamado $fruta1, $fruta2, $fruta3). Esos números se utilizan para generar el nombre de las imágenes (que se llaman 1.svg, 2.svg, etc.).</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="tragaperras_1.php">Enlace a ejercicio Tragaperras 1</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="tragaperras_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Tragaperras 2</h2>
+
+      <p>Añada al programa anterior un contador de monedas que se pueda incrementar mediante un botón de formulario.</p>
+      <ul>
+        <li>Añada un formulario que llame a la misma página.</li>
+        <li>Añada un botón "Meter moneda" que represente el haber metido una moneda en la máquina tragaperras.</li>
+        <li>Muestre un contador de las monedas introducidas.</li>
+        <li>Cada vez que se mete una moneda, la cantidad de monedas aumenta en 1.</li>
+        <li>Cada vez que se mete una moneda, se renueva la combinación de frutas.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="tragaperras_2_1.php">Enlace a ejercicio Tragaperras 2</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="tragaperras_2_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Tragaperras 3</h2>
+
+      <p>Añada al programa anterior la limitación de sólo poder jugar empleando monedas del contador.</p>
+      <ul>
+        <li>Añada un botón "Jugar" que renueve la combinación de frutas.</li>
+        <li>Sólo se debe renovar la combinación de frutas cuando se juega, no cuando se mete una moneda.</li>
+        <li>Cada vez que se juega, se pierde una moneda.</li>
+        <li>Sólo se puede jugar si el contador de monedas es distinto de cero.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="tragaperras_3_1.php">Enlace a ejercicio Tragaperras 3</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="tragaperras_3_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-4">
+      <h2>Tragaperras 4</h2>
+
+      <p>Añada al programa anterior la capacidad de detectar que se ha ganado un premio.</p>
+      <ul>
+        <li>Los premios son los siguientes (no tienen por qué comprobarse en este orden):
+          <ul>
+            <li>Si sale una cereza, se gana <strong>una</strong> moneda.</li>
+            <li>Si salen dos cerezas, se ganan <strong>cuatro</strong> monedas.</li>
+            <li>Si salen tres cerezas, se ganan <strong>diez</strong> monedas.</li>
+            <li>Si salen dos frutas iguales que no sean cerezas, se ganan <strong>dos</strong> monedas.</li>
+            <li>Si salen tres frutas iguales que no sean cerezas, se ganan <strong>cinco</strong> monedas.</li>
+            <li>Si sale una cereza y dos frutas iguales, se ganan <strong>tres</strong> monedas.</li>
+            <li>En el resto de casos, <strong>se pierde</strong> una moneda.</li>
+          </ul>
+          <p><strong>Nota</strong>: Empiece comprobando un par de casos (por ejemplo, el de una cereza y el de una cereza y dos frutas iguales) y una vez hecho el resto del ejercicio, complete todos los casos de premios.</p>
+        </li>
+        <li>Muestre la cara triste si se pierde y la alegre si se gana.</li>
+        <li>Muestre junto con la cara alegre el premio obtenido.</li>
+        <li>Añada al contador de monedas el premio obtenido.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="tragaperras_4_1.php">Enlace a ejercicio Tragaperras 4</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="tragaperras_4_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-5">
+      <h2>Tragaperras 5</h2>
+
+      <p>Añada al programa anterior la capacidad de apostar más de una moneda.</p>
+      <ul>
+        <li>Añada un botón "Aumentar apuesta" que aumente un contador de monedas apostadas.</li>
+        <li>Al apostar una moneda, se debe disminuir el contador de monedas.</li>
+        <li>Los premios se multiplican por el número de monedas apostadas</li>
+        <li>La cantidad apostada se pierde siempre.</li>
+        <li>Si se meten monedas o se aumenta la apuesta, muestre una cara indiferente.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="tragaperras_5_1.php">Enlace a ejercicio Tragaperras 5</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="tragaperras_5_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 22 de noviembre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

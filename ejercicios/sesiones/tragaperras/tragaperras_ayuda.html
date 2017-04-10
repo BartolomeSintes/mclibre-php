@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tragaperras. Ayuda. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Ayuda para los ejercicios Tragaperras</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Ayuda Tragaperras</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Tragaperras (1)</a></li>
+          <li><a href="#ejercicio-2">2 - Tragaperras (2)</a></li>
+          <li><a href="#ejercicio-3">3 - Tragaperras (3)</a></li>
+          <li><a href="#ejercicio-4">4 - Tragaperras (4)</a></li>
+          <li><a href="#ejercicio-5">5 - Tragaperras (5)</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p><img src="../../../varios/iconos/icono_en_construccion.svg" alt="En construcción" title="En construcción" width="55" height="48" />La ayuda de esta página está pendiente de actualizar. Corresponde a los ejercicios propuestos en 2014/15 en los que se utilizaban controles ocultos en vez de sesiones y los enunciados eran ligeramente diferentes.</p>
+
+    <section id="ejercicio-1">
+      <h2>Tragaperras 1</h2>
+
+      <p>Escriba un programa que muestre tres imágenes de frutas. Al hacer clic en el botón Jugar se cambian las imágenes.</p>
+      <ul>
+        <li>El formulario contiene un botón Enviar que no envía ningún dato y que representa que se juega.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">print "      &lt;td style=\"vertical-align: top; text-align: center\"&gt;"
+    . "&lt;p&gt;&lt;input type=\"submit\" value=\"Jugar\" /&gt;&lt;/p&gt;&lt;/td&gt;\n";</code>
+</pre>
+          </div>
+        </li>
+        <li>El formulario llama a la misma página.
+
+          <div class="codphp">
+            <pre><code class="language-php">print "&lt;form action=\"$_SERVER[PHP_SELF]\" method=\"get\"&gt;\n\n";</code></pre>
+          </div>
+        </li>
+        <li>Se generan aleatoriamente tres variables con números del 1 al 6 (para mostrar las imágenes)
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">$a = rand(1, 6);
+$b = rand(1, 6);
+$c = rand(1, 6);</code>
+</pre>
+          </div>
+        </li>
+        <li>Cada vez que se juega, cambia la combinación de frutas</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Tragaperras 2</h2>
+
+      <p>Añada al programa anterior la capacidad de indicar la apuesta.</p>
+
+      <ul>
+        <li>Añada un botón de enviar que represente el haber metido una moneda en la máquina tragaperras.
+
+          <div class="codphp">
+            <pre><code class="language-php">print "        &lt;p&gt;&lt;input type=\"submit\" name=\"moneda\" value=\"Meter moneda\" /&gt;&lt;/p&gt;\n";</code></pre>
+          </div>
+        </li>
+        <li>Cada vez que se mete una moneda o se juega, se renueva la combinación de frutas.</li>
+        <li>Cada vez que se mete una moneda, la cantidad apostada aumenta en 1.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">if ($moneda != "") {
+    $apuesta += 1;
+}</code></pre>
+          </div>
+        </li>
+        <li>Muestre un contador de las monedas introducidas.
+
+          <div class="codphp">
+            <pre><code class="language-php">print "        &lt;p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\"&gt;$apuesta&lt;/p&gt;\n";</code></pre>
+          </div>
+        </li>
+        <li>Al hacer clic en el botón Jugar, la cantidad apostada se debe poner a cero.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">if ($jugar != "") {
+    $apuesta = 0;
+}</code>
+</pre>
+          </div>
+        </li>
+        <li>Incluya un control oculto con la cantidad apostada.
+
+          <div class="codphp">
+            <pre><code class="language-php">print "&lt;p&gt;&lt;input type=\"hidden\" name=\"apuesta\" value=\"$apuesta\" /&gt;&lt;/p&gt;\n\n";</code></pre>
+          </div>
+        </li>
+        <li>La validación de la cantidad apostada comprobará que se trata de un número entero mayor o igual que cero. En caso de no ser correcto, se le dará el valor 0.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">if ($apuesta == "" || !is_numeric($apuesta) || !ctype_digit($apuesta)
+    || $apuesta &lt; 0) {
+    $apuesta = 0;
+}</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Tragaperras 3</h2>
+
+      <p>Añada al programa anterior la capacidad de conservar la última jugada en pantalla cuando se mete una moneda.</p>
+
+      <ul>
+        <li>Sólo se renueva la combinación de frutas cuando se juega, no cuando se mete una moneda
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">if ($jugar != "") {
+    $a = rand(1, 6);
+    $b = rand(1, 6);
+    $c = rand(1, 6);
+}</code>
+</pre>
+          </div>
+        </li>
+        <li>Añada tres controles ocultos con los números de las tres imágenes que se están mostrando.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">print "  &lt;input type=\"hidden\" name=\"a\" value=\"$a\" /&gt;\n";
+print "  &lt;input type=\"hidden\" name=\"b\" value=\"$b\" /&gt;\n";
+print "  &lt;input type=\"hidden\" name=\"c\" value=\"$c\" /&gt;&lt;/p&gt;\n\n";</code>
+</pre>
+          </div>
+        </li>
+        <li>La validación de los números de las imágenes debe comprobar que se encuentran en el rango de valores (entre 1 y 6). En caso de no ser correctos, se generará una nueva combinación.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">$abcOk = true;
+if ($a == "" || !is_numeric($a) || !ctype_digit($a) || $a &lt; 1 || $a &gt; 6simbolosNumer ||
+    $b == "" || !is_numeric($b) || !ctype_digit($b) || $b &lt; 1 || $b &gt; 6 ||
+    $c == "" || !is_numeric($c) || !ctype_digit($c) || $c &lt; 1 || $c &gt; 6) {
+    $abcOk = false;
+}
+
+if (!$abcOk) {
+    $a = rand(1, 6);
+    $b = rand(1, 6);
+    $c = rand(1, 6);
+};</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-4">
+      <h2>Tragaperras 4</h2>
+
+      <p>Añada al programa anterior la capacidad de detectar que se ha ganado un premio.</p>
+      <ul>
+        <li>Un orden en que los casos más especiales se escriben antes que los generales, lo que permite simplificar las condiciones, sería:
+          <ul>
+            <li>Si salen tres cerezas, se devuelve <strong>diez</strong> veces la apuesta.</li>
+            <li>Si salen dos cerezas, se devuelve <strong>cuatro</strong> veces la apuesta.</li>
+            <li>Si sale una cereza, se devuelve <strong>la apuesta</strong>.
+              <ul>
+                <li>Si además hay dos frutas iguales, se devuelve <strong>tres</strong> veces la apuesta.</li>
+              </ul>
+            </li>
+            <li>Si salen tres frutas iguales que no sean cerezas, se devuelve <strong>cinco</strong> veces la apuesta.</li>
+            <li>Si salen dos frutas iguales que no sean cerezas, se devuelve <strong>dos</strong> veces la apuesta.</li>
+            <li>En el resto de casos, <strong>se pierde</strong> el dinero.</li>
+          </ul>
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">    if ($a == $cereza &amp;&amp; $b == $cereza &amp;&amp; $c == $cereza) {
+        $premio = 10;
+    } elseif (($a == $cereza &amp;&amp; $b == $cereza) || ($b == $cereza &amp;&amp; $c == $cereza)
+        || ($a == $cereza &amp;&amp; $c == $cereza)) {
+        $premio = 4;
+    } elseif ($a == $cereza || $b == $cereza || $c == $cereza) {
+        $premio = 1;
+        if ($a == $b || $b == $c || $a == $c) {
+            $premio = 3;
+        }
+    } elseif ($a == $b &amp;&amp; $b == $c) {
+        $premio = 5;
+    } elseif ($a == $b || $b == $c || $a == $c) {
+        $premio = 2;
+    } else {
+        $premio = 0;
+    }  </code>
+</pre>
+          </div>
+        </li>
+        <li>Muestre el premio obtenido (el número de veces que se gana la apuesta) y muestre la cara triste si se pierde y la alegre si se gana.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">if ($premio == 0) {
+    print "          &lt;img src=\"img/face-sad.svg\" alt=\"Mal\" height=\"50px\" /&gt;$premio&lt;/p&gt;\n";
+// Si hemos ganado, cara alegre
+} else {
+    print "          &lt;img src=\"img/face-smile.svg\" alt=\"Bien\" height=\"50px\" /&gt;$premio&lt;/p&gt;\n";
+}</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-5">
+      <h2>Tragaperras 5</h2>
+
+      <p>Complete el programa anterior para que el funcionamiento sea similar al de una máquina tragaperras de verdad</p>
+      <ul>
+        <li>No se puede jugar si no se han metido monedas.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">if ($jugar != "" &amp;&amp; $apuesta != 0) {
+    $a = rand(1, 6);
+    $b = rand(1, 6);
+    $c = rand(1, 6);
+ ...  </code>
+ </pre>
+          </div>
+        </li>
+        <li>Al ganar un premio, aumente el número de monedas en posesión del jugador.
+
+          <div class="codphp">
+            <pre><code class="language-php">    $apuesta = $apuesta * $premio;</code></pre>
+          </div>
+        </li>
+        <li>Si se meten monedas o si el premio es sólo la devolución de la cantidad apostada, muestre una cara indiferente.
+
+          <div class="codphp">
+            <pre>
+<code class="language-php">if ($premio == 0) {
+    print "          &lt;p&gt;&lt;img src=\"img/face-sad.svg\" alt=\"Mal\" height=\"80px\" /&gt;&lt;/p&gt;\n";
+} elseif ($premio == 1) {
+    print "          &lt;p&gt;&lt;img src=\"img/face-plain.svg\" alt=\"Mal\" height=\"80px\" /&gt;&lt;/p&gt;\n";
+} else {
+    print "          &lt;p&gt;&lt;img src=\"img/face-smile.svg\" alt=\"Bien\" height=\"80px\" /&gt;&lt;/p&gt;\n";
+}</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 31 de octubre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
