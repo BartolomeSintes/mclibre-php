@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Registro de usuarios. Proyectos. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Proyectos - Registro de usuarios</h1>
+
+    <nav>
+      <p>
+        <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Registro de usuarios</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Aplicación básica</a></li>
+          <li><a href="#ejercicio-2">2 - Ampliación</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>El objetivo de este proyecto es crear un sistema de registro de usuarios (con nombre y contraseña) que se utilizará en los proyectos siguientes.</p>
+
+    <section id="ejercicio-1">
+      <h2>Registro de usuarios 1 - Aplicación básica</h2>
+
+      <p>Escriba un programa que permita crear una base de datos de nombres de usuario y contraseñas que permita también guardar registros.</p>
+
+      <p class="enlace-ejercicio"><a href="registro_de_usuarios/registro_de_usuarios_1/index.php">Enlace a ejercicio Registro de usuarios 1</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="registro_de_usuarios/registro_de_usuarios_1/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>El menú de la página index.php incluye las opciones:
+          <ul>
+            <li>Borrar todo: para borrar y crear la base de datos de usuarios</li>
+            <li>Registrar nuevo usuario: para introducir registros en la base de datos</li>
+          </ul>
+        </li>
+        <li>El menú del resto de páginas incluye la opción:
+          <ul>
+            <li>Volver al inicio</li>
+          </ul>
+        </li>
+        <li>Estas pueden ser las consultas de creación de tabla para este proyecto:
+
+          <div class="codphp">
+            <pre>// Consultas de creación de tablas en MySQL
+$consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    usuario VARCHAR($tamUsuario),
+    password VARCHAR($tamPassword),
+    PRIMARY KEY(id) )";
+
+// Consultas de creación de tablas en SQLite
+$consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
+    id INTEGER PRIMARY KEY,
+    usuario VARCHAR($tamUsuario),
+    password VARCHAR($tamPassword)
+    )";
+</pre>
+          </div>
+        </li>
+        <li>En la página registrar1.php se solicita el nombre de usuario y su contraseña (por duplicado)</li>
+        <li>En la página registrar2.php se debe comprobar (y redirigir a registrar1.php con un mensaje de error) en las siguientes situaciones:
+          <ul>
+            <li>nombre de usuario en blanco</li>
+            <li>las contraseñas no coinciden</li>
+            <li>el nombre de usuario o la contraseña son demasiado largos</li>
+            <li>el nombre de usuario ya está registrado</li>
+            <li>se han creado ya el máximo de registros</li>
+          </ul>
+        </li>
+        <li>En caso de que los datos sean correctos, registrar2.php debe guardar el nombre de usuario y la contraseña en un registro.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Registro de usuarios 2 - Ampliación</h2>
+
+      <p>Amplie el ejercicio anterior:</p>
+      <ul>
+        <li>Al crear un registro de usuario, no guarde la contraseña directamente, sino el md5 de la contraseña.
+          <p><strong>Nota</strong>: Desde 2004, se desaconseja el uso de md5 para criptografía, aunque por sencillez se utilice en este ejercicio.</p>
+        </li>
+        <li>Al crear la tabla, guarde el registro de nombre <strong>root</strong> y contraseña <strong>root</strong>.</li>
+        <li>Añadir una opción de menú para identificarse como usuario. Al usuario identificado, se le ofrece únicamente la opción de menú:
+          <ul>
+            <li>Cerrar sesión</li>
+          </ul>
+        </li>
+        <li>Un usuario identificado no puede ver ninguna página distinta a index.php y se le redirige a ella.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="registro_de_usuarios/registro_de_usuarios_2/index.php">Enlace a ejercicio Registro de usuarios 2</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="registro_de_usuarios/registro_de_usuarios_2/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>El md5 de la contraseña se puede calcular con la función <a href="http://php.net/manual/es/function.md5.php">md5()</a>.
+          <p><strong>Nota</strong>: Desde 2004, se desaconseja el uso de md5 para criptografía, aunque por sencillez se utilice en este ejercicio.</p>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 10 de marzo de 2013</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

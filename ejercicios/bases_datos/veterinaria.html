@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Veterinaria. Proyectos. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Proyectos - Veterinaria</h1>
+
+    <nav>
+      <p>
+        <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Proyectos - Veterinaria</h2>
+    </nav>
+
+    <p>El objetivo de este proyecto es permitir el acceso via web al programa de gestión de una clínica veterinaria creada en MS Access, para que los clientes puedan pedir la realización de consultas.</p>
+
+    <hr class="corta" />
+
+    <p>Las tablas y campos utilizados son los siguientes:</p>
+    <ul>
+      <li>Clientes: Codigo - NIF - NomCliente</li>
+      <li>AnimaleS: NumHistorial - NomAnimal - Cliente</li>
+      <li>Citas: Fecha - Hora - Tipo - Animal - Observaciones</li>
+      <li>Intervalos: Codigo - Texto</li>
+    </ul>
+
+    <p>Solamente pueden conectarse los clientes que existen en la base de datos de la clínica. Los datos para conectarse son el nombre del cliente y su NIF (como contraseña).</p>
+
+    <p>Si el nombre y contraseña son correctos, el cliente debe elegir el animal para el que quiere realizar la reserva y el tipo de consulta que quiere realizar (Revisión, Vacunación o Consulta).</p>
+
+    <hr class="corta" />
+
+    <p>Esta puede ser la función que genera la tabla donde se realizan las reservas. Los argumentos de esta función son los siguientes:</p>
+    <ul>
+      <li>$fecha es una fecha en formato aaaa-mm-dd</li>
+      <li>$enlaces es una cadena que puede ser 'anyadir' o 'borrar'</li>
+    </ul>
+
+    <div class="codphp">
+      <pre>function calendario ($fecha, $enlaces)
+{
+    global $db, $db_citas, $db_intervalos;
+
+    $dia  = substr($fecha, 8, 2);
+    $mes  = substr($fecha, 5, 2);
+    $anyo = substr($fecha, 0, 4);
+
+    $jd = gregoriantojd($mes, $dia, $anyo);
+    $num_dia = (jddayofweek($jd, 0)+6)%7;
+
+    $fecha_lun = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia,   $anyo));
+    $fecha_mar = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+1, $anyo));
+    $fecha_mie = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+2, $anyo));
+    $fecha_jue = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+3, $anyo));
+    $fecha_vie = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+4, $anyo));
+    $fecha_sab = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+5, $anyo));
+    $fecha_dom = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+6, $anyo));
+    $fecha_ant = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-7, $anyo));
+    $fecha_sig = date('Y-m-d', mktime(0, 0, 0, $mes, $dia+7, $anyo));
+    $semana = array($fecha_lun, $fecha_mar, $fecha_mie, $fecha_jue, $fecha_vie,
+        $fecha_sab, $fecha_dom);
+
+    print "&lt;div class=\"calendario\"&gt;\n  &lt;table border=\"1\" class=\"$enlaces\" &gt;\n";
+    print "    &lt;caption&gt;&lt;a href=\"$_SERVER[PHP_SELF]?fecha=$fecha_ant\"&gt;&amp;lt;&amp;lt;
+      &lt;/a&gt;Semana del $fecha_lun al $fecha_dom
+      &lt;a href=\"$_SERVER[PHP_SELF]?fecha=$fecha_sig\"&gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;\n        &lt;th&gt;Hora&lt;/th&gt;\n        &lt;th&gt;Lunes&lt;/th&gt;\n        &lt;th&gt;Martes&lt;/th&gt;
+        &lt;th&gt;Miércoles&lt;/th&gt;\n        &lt;th&gt;Jueves&lt;/th&gt;\n        &lt;th&gt;Viernes&lt;/th&gt;
+        &lt;th&gt;Sábado&lt;/th&gt;\n        &lt;th&gt;Domingo&lt;/th&gt;\n      &lt;/tr&gt;
+    &lt;/thead&gt;\n    &lt;tbody&gt;\n";
+
+    $consulta = "SELECT COUNT(*) AS num_intervalos FROM $db_intervalos";
+    $result = odbc_exec($db, $consulta);
+    if (!$result) {
+        exit("Error en la consulta.");
+    } else {
+        $valor = odbc_fetch_array($result);
+        $num_intervalos = $valor['num_intervalos'];
+    }
+    for ($i = 1; $i &lt;=$num_intervalos; $i++) {
+        print "      &lt;tr&gt;\n";
+        $consulta = "SELECT texto FROM $db_intervalos WHERE Codigo = $i";
+        $result = odbc_exec($db, $consulta);
+        if (!$result) {
+            exit("Error en la consulta.");
+        } else {
+            $valor = odbc_fetch_array($result);
+            print "        &lt;td&gt;$valor[texto]&lt;/td&gt;\n";
+            foreach ($semana as $j ) {
+                $j2 = substr($j,5,2)."/".substr($j,8,2)."/".substr($j,0,4);
+                $consulta = "SELECT COUNT(*) AS num_consultas FROM $db_citas "
+                    ."WHERE Hora = $i AND Fecha=#$j2#"
+                    ."AND Animal &lt;&gt; $_SESSION[vet_NumHistorial]";
+                $result = odbc_exec($db, $consulta);
+                if (!$result) {
+                    exit("Error en la consulta.");
+                } else {
+                    $valor = odbc_fetch_array($result);
+                    if ($valor['num_consultas']) {
+                        print "        &lt;td style=\"background-color: red\"&gt;&lt;/td&gt;\n";
+                    } else {
+                        $consulta2 = "SELECT COUNT(*) AS num_consultas2 FROM "
+                            ."$db_citas WHERE Hora = $i AND Fecha=#$j2# "
+                            ."AND Animal = $_SESSION[vet_NumHistorial]";
+                        $result2 = odbc_exec($db, $consulta2);
+                        if (!$result2) {
+                            exit("Error en la consulta.");
+                        } else {
+                            $valor2 = odbc_fetch_array($result2);
+                            if ($enlaces=='anyadir') {
+                                if ($valor2['num_consultas2']) {
+                                    print "        &lt;td style=\"background-color: white\"&gt;Reservado&lt;/td&gt;\n";
+                                } else {
+                                    print "        &lt;td style=\"background-color: green\"&gt;"
+                                        ."&lt;a href=\"anyadir2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Reservar&lt;/a&gt;&lt;/td&gt;\n";
+                                }
+                            } else {
+                                if ($valor2['num_consultas2']) {
+                                    print "        &lt;td style=\"background-color: white\"&gt;"
+                                        ."&lt;a href=\"borrar2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Anular cita&lt;/a&gt;&lt;/td&gt;\n";
+                                } else {
+                                    print "        &lt;td style=\"background-color: red\"&gt;&lt;/td&gt;\n";
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        print "      &lt;/tr&gt;\n";
+    }
+    print "    &lt;/tbody&gt;\n  &lt;/table&gt;\n&lt;/div&gt;\n";
+}
+</pre>
+    </div>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 8 de marzo de 2007</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
