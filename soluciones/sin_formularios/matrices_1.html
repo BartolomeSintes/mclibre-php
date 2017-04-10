@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Matrices (1). Soluciones. Sin formularios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>  </head>
+  <body>
+    <h1>Soluciones - Matrices (1)</h1>
+
+    <nav>
+      <p>
+        <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Matrices (1)</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#dimension-1">Dimensión 1 (vectores)</a>
+            <ul>
+              <li><a href="#ejercicio-01">01 - Números</a></li>
+              <li><a href="#ejercicio-02">02 - Animales</a></li>
+              <li><a href="#ejercicio-03">03 - Nombres de animales</a></li>
+              <li><a href="#ejercicio-04">04 - Tirada de dados</a></li>
+              <li><a href="#ejercicio-05">05 - Tirada ordenada</a></li>
+              <li><a href="#ejercicio-06">06 - Partida de dados</a></li>
+              <li><a href="#ejercicio-07">07 - Jugada de Risk</a></li>
+            </ul>
+          </li>
+          <li><a href="#dimension-2">Dimensión 2 (tablas)</a>
+            <ul>
+              <li><a href="#ejercicio-11">11 - Fichas de animales</a></li>
+              <li><a href="#ejercicio-12">12 - Diccionario</a></li>
+              <li><a href="#ejercicio-13">13 - Tirada multilíngüe</a></li>
+              <li><a href="#ejercicio-14">14 - Multidiccionario</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sin_formularios/matrices_1/">Matrices (1)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
+
+    <section id="dimension-1">
+      <h2>Dimensión 1 (vectores)</h2>
+
+      <section id="ejercicio-01">
+        <h3>Matrices (1) 01 - Números</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$dado = rand(1, 6);
+
+$nombre = array(&quot;&quot;, &quot;uno&quot;, &quot;dos&quot;, &quot;tres&quot;, &quot;cuatro&quot;, &quot;cinco&quot;, &quot;seis&quot;);
+// $nombre = [&quot;&quot;, &quot;uno&quot;, &quot;dos&quot;, &quot;tres&quot;, &quot;cuatro&quot;, &quot;cinco&quot;, &quot;seis&quot;];
+
+print &quot;    &lt;p&gt;&lt;img src=\&quot;img/$dado.svg\&quot; alt=\&quot;$dado\&quot; title=\&quot;$dado\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;&lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;Ha sacado un &lt;strong&gt;$nombre[$dado]&lt;/strong&gt;.&lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-02">
+        <h3>Matrices (1) 02 - Animales</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$dibujos = array(
+    &quot;ballena.svg&quot;, &quot;caballito_mar.svg&quot;, &quot;camello.svg&quot;, &quot;cebra.svg&quot;, &quot;elefante.svg&quot;,
+    &quot;hipopotamo.svg&quot;, &quot;jirafa.svg&quot;, &quot;leon.svg&quot;, &quot;leopardo.svg&quot;, &quot;medusa.svg&quot;,
+    &quot;mono.svg&quot;, &quot;oso.svg&quot;, &quot;oso_blanco.svg&quot;, &quot;pajaro.svg&quot;, &quot;pinguino.svg&quot;,
+    &quot;rinoceronte.svg&quot;, &quot;serpiente.svg&quot;, &quot;tigre.svg&quot;, &quot;tortuga_marina.svg&quot;, &quot;tortuga.svg&quot;
+);
+
+$animal = rand(0, count($dibujos) - 1);
+
+print &quot;    &lt;p&gt;&lt;img src=\&quot;img/animales/$dibujos[$animal]\&quot; alt=\&quot;Animal\&quot; title=\&quot;Animal\&quot; height=\&quot;250\&quot; /&gt;&lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-03">
+        <h3>Matrices (1) 03 - Nombres de animales</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$dibujos = array(
+    &quot;ballena.svg&quot;, &quot;caballito_mar.svg&quot;, &quot;camello.svg&quot;, &quot;cebra.svg&quot;, &quot;elefante.svg&quot;,
+    &quot;hipopotamo.svg&quot;, &quot;jirafa.svg&quot;, &quot;leon.svg&quot;, &quot;leopardo.svg&quot;, &quot;medusa.svg&quot;,
+    &quot;mono.svg&quot;, &quot;oso.svg&quot;, &quot;oso_blanco.svg&quot;, &quot;pajaro.svg&quot;, &quot;pinguino.svg&quot;,
+    &quot;rinoceronte.svg&quot;, &quot;serpiente.svg&quot;, &quot;tigre.svg&quot;, &quot;tortuga_marina.svg&quot;, &quot;tortuga.svg&quot;
+);
+
+$nombres = array(
+    &quot;Ballena&quot;, &quot;Caballito de mar&quot;, &quot;Camello&quot;, &quot;Cebra&quot;, &quot;Elefante&quot;,
+    &quot;Hipopótamo&quot;, &quot;Jirafa&quot;, &quot;León&quot;, &quot;Leopardo&quot;, &quot;Medusa&quot;,
+    &quot;Mono&quot;, &quot;Oso&quot;, &quot;Oso blanco&quot;, &quot;Pájaro&quot;, &quot;Pingüino&quot;,
+    &quot;Rinoceronte&quot;, &quot;Serpiente&quot;, &quot;Tigre&quot;, &quot;Tortuga marina&quot;, &quot;Tortuga&quot;
+);
+
+$animal = rand(0, count($dibujos) - 1);
+
+print &quot;    &lt;h2&gt;$nombres[$animal]&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;&lt;img src=\&quot;img/animales/$dibujos[$animal]\&quot; alt=\&quot;$nombres[$animal]\&quot; title=\&quot;$nombres[$animal]\&quot; height=\&quot;250\&quot; /&gt;&lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-04">
+        <h3>Matrices (1) 04 - Tirada de dados</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(2, 7);
+
+$dados = array();
+for ($i = 0; $i &lt; $numero; $i++) {
+    array_push($dados, rand(1, 6));
+}
+
+print &quot;    &lt;h2&gt;Tirada de $numero dados&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;\n&quot;;
+for ($i = 0; $i &lt; $numero; $i++) {
+    print &quot;      &lt;img src=\&quot;img/$dados[$i].svg\&quot; alt=\&quot;$dados[$i]\&quot; title=\&quot;$dados[$i]\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;\n&quot;;
+}
+print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+
+print &quot;    &lt;h2&gt;Resultado&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;Los valores obtenidos son: &quot;;
+for ($i = 0; $i &lt; $numero; $i++) {
+    print &quot;$dados[$i] &quot;;
+}
+print &quot;&lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-05">
+        <h3>Matrices (1) 05 - Tirada de dados ordenada</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(2, 7);
+$dados = array();
+for ($i = 0; $i &lt; $numero; $i++) {
+    array_push($dados, rand(1, 6));
+}
+
+print &quot;    &lt;h2&gt;Tirada de $numero dados&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;\n&quot;;
+for ($i = 0; $i &lt; $numero; $i++) {
+    print &quot;      &lt;img src=\&quot;img/$dados[$i].svg\&quot; alt=\&quot;$dados[$i]\&quot; title=\&quot;$dados[$i]\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;\n&quot;;
+}
+print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+
+sort($dados);
+
+print &quot;    &lt;h2&gt;Tirada ordenada&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;\n&quot;;
+for ($i = 0; $i &lt; $numero; $i++) {
+    print &quot;      &lt;img src=\&quot;img/$dados[$i].svg\&quot; alt=\&quot;$dados[$i]\&quot; title=\&quot;$dados[$i]\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;\n&quot;;
+}
+print &quot;    &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-06">
+        <h3>Matrices (1) 06 - Partida de dados</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$numero = rand(2, 7);
+
+print &quot;    &lt;h2&gt;Jugador 1&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+
+// Guardamos los valores del Jugador 1 en la matriz $dados1
+$dados1 = array();
+for ($i = 0; $i &lt; $numero; $i++) {
+    array_push($dados1, rand(1, 6));
+}
+
+// Mostramos los resultados obtenidos por el Jugador 1
+print &quot;    &lt;p&gt;\n&quot;;
+for ($i = 0; $i &lt; $numero; $i++) {
+    print &quot;      &lt;img src=\&quot;img/$dados1[$i].svg\&quot; alt=\&quot;$dados1[$i]\&quot; title=\&quot;$dados1[$i]\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;\n&quot;;
+}
+print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+
+print &quot;    &lt;h2&gt;Jugador 2&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+
+// Guardamos los valores del Jugador 2 en la matriz $dados2
+$dados2 = array();
+for ($i = 0; $i &lt; $numero; $i++) {
+    array_push($dados2, rand(1, 6));
+}
+
+// Mostramos los resultados obtenidos por el Jugador 1
+print &quot;    &lt;p&gt;\n&quot;;
+for ($i = 0; $i &lt; $numero; $i++) {
+    print &quot;      &lt;img src=\&quot;img/$dados2[$i].svg\&quot; alt=\&quot;$dados2[$i]\&quot; title=\&quot;$dados2[$i]\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;\n&quot;;
+}
+print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+
+// En los acumuladores $gana1 $gana2 y $empate contamos cuántas partidas ha ganado cada uno
+print &quot;    &lt;h2&gt;Resultado&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+
+$gana1 = 0;
+$gana2 = 0;
+$empate = 0;
+for ($i = 0; $i &lt; $numero; $i++) {
+    if ($dados1[$i] &gt; $dados2[$i]) {
+        $gana1++;
+    } elseif ($dados1[$i] &lt; $dados2[$i]) {
+        $gana2++;
+    } else {
+        $empate ++;
+    }
+}
+
+// Mostramos cuántas partidas ha ganado cada uno
+print &quot;    &lt;p&gt;El jugador 1 ha ganado &lt;strong&gt;$gana1&lt;/strong&gt; ve&quot;;
+if ($gana1 != 1) {
+    print &quot;ces&quot;;
+} else {
+    print &quot;z&quot;;
+}
+print &quot;, el jugador 2 ha ganado &lt;strong&gt;$gana2&lt;/strong&gt; ve&quot;;
+if ($gana2 != 1) {
+    print &quot;ces&quot;;
+} else {
+    print &quot;z&quot;;
+}
+print &quot; y los jugadores han empatado &lt;strong&gt;$empate&lt;/strong&gt; ve&quot;;
+if ($empate != 1) {
+    print &quot;ces&quot;;
+} else {
+    print &quot;z&quot;;
+}
+print &quot;.\n&quot;;
+print &quot;\n&quot;;
+
+// Mostramos quién ha ganado la partida
+if ($gana1 &gt; $gana2) {
+    print &quot;    &lt;p&gt;En conjunto, ha ganado el jugador &lt;strong&gt;1&lt;/strong&gt;.&lt;/p&gt;\n&quot;;
+} elseif ($gana1 &lt; $gana2) {
+    print &quot;    &lt;p&gt;En conjunto, ha ganado el jugador &lt;strong&gt;2&lt;/strong&gt;.&lt;/p&gt;\n&quot;;
+} else {
+    print &quot;    &lt;p&gt;En conjunto, han empatado.&lt;/p&gt;\n&quot;;
+}
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-07">
+        <h3>Matrices (1) 07 - Jugada de Risk</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+// Mostramos con cuántos dados va a jugar el Atacante
+print &quot;    &lt;h2&gt;Atacante&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+$numero1 = rand(1, 3);
+if ($numero1 == 1) {
+    print &quot;    &lt;p&gt;El atacante ataca con $numero1 dado:&lt;/p&gt;\n&quot;;
+} else {
+    print &quot;    &lt;p&gt;El atacante ataca con $numero1 dados:&lt;/p&gt;\n&quot;;
+}
+print &quot;\n&quot;;
+
+// Guardamos los valores del Atacante en la matriz $dados1
+$dados1 = array();
+for ($i = 0; $i &lt; $numero1; $i++) {
+    array_push($dados1, rand(1, 6));
+}
+
+// Ordenamos la matriz  $dados2 y mostramos los resultados obtenidos por el Atacante
+rsort($dados1);
+print &quot;    &lt;p&gt;\n&quot;;
+for ($i = 0; $i &lt; $numero1; $i++) {
+    print &quot;      &lt;img src=\&quot;img/$dados1[$i].svg\&quot; alt=\&quot;$dados1[$i]\&quot; title=\&quot;$dados1[$i]\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;\n&quot;;
+}
+print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+
+// Mostramos con cuántos dados va a jugar el Defensor
+print &quot;    &lt;h2&gt;Defensor&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+$numero2 = rand(1, 2);
+if ($numero2 == 1) {
+    print &quot;    &lt;p&gt;El defensor defiende con $numero2 dado:&lt;/p&gt;\n&quot;;
+} else {
+    print &quot;    &lt;p&gt;El defensor defiende con $numero2 dados:&lt;/p&gt;\n&quot;;
+}
+print &quot;\n&quot;;
+
+// Guardamos los valores del Defensor en la matriz $dados2
+$dados2 = array();
+for ($i = 0; $i &lt; $numero2; $i++) {
+    array_push($dados2, rand(1, 6));
+}
+
+// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Defensor
+rsort($dados2);
+print &quot;    &lt;p&gt;\n&quot;;
+for ($i = 0; $i &lt; $numero2; $i++) {
+    print &quot;      &lt;img src=\&quot;img/$dados2[$i].svg\&quot; alt=\&quot;$dados2[$i]\&quot; title=\&quot;$dados2[$i]\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;\n&quot;;
+}
+print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+
+// En los acumuladores $bajasAtacante $bajasDefensor contamos cuántas partidas ha perdido cada uno
+// El número de dados que se compara es el menor de los números de dados tirados
+$menor = min($numero1, $numero2);
+$bajasAtacante = 0;
+$bajasDefensor = 0;
+for ($i = 0; $i &lt; $menor; $i++) {
+    if ($dados1[$i] &gt; $dados2[$i]) {
+        $bajasDefensor++;
+    } else {
+        $bajasAtacante++;
+    }
+}
+
+// Mostramos cuántas partidas bajas ha tenido cada jugador
+print &quot;    &lt;h2&gt;Resultado&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;El atacante pierde &lt;strong&gt;$bajasAtacante&lt;/strong&gt; unidad&quot;;
+if ($bajasAtacante != 1) {
+    print &quot;es&quot;;
+}
+print &quot;. El defensor pierde &lt;strong&gt;$bajasDefensor&lt;/strong&gt; unidad&quot;;
+if ($bajasDefensor != 1) {
+    print &quot;es&quot;;
+}
+print &quot;.\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+    </section>
+
+    <section id="dimension-2">
+      <h2>Dimensión 2 (tablas)</h2>
+
+      <section id="ejercicio-11">
+        <h3>Matrices (1) 11 - Fichas de animales</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$animales = array (
+    array(&quot;Ballena&quot;, &quot;ballena.svg&quot;, &quot;https://es.wikipedia.org/wiki/Balaenidae&quot;),
+    array(&quot;Caballito de mar&quot;, &quot;caballito_mar.svg&quot;, &quot;https://es.wikipedia.org/wiki/Hippocampus&quot;),
+    array(&quot;Camello&quot;, &quot;camello.svg&quot;, &quot;https://es.wikipedia.org/wiki/Camelus&quot;),
+    array(&quot;Cebra&quot;, &quot;cebra.svg&quot;, &quot;https://es.wikipedia.org/wiki/Cebra&quot;),
+    array(&quot;Elefante&quot;, &quot;elefante.svg&quot;, &quot;https://es.wikipedia.org/wiki/Elephantidae&quot;),
+    array(&quot;Hipopótamo&quot;, &quot;hipopotamo.svg&quot;, &quot;https://es.wikipedia.org/wiki/Hippopotamidae&quot;),
+    array(&quot;Jirafa&quot;, &quot;jirafa.svg&quot;, &quot;https://es.wikipedia.org/wiki/Giraffa_camelopardalis&quot;),
+    array(&quot;León&quot;, &quot;leon.svg&quot;, &quot;https://es.wikipedia.org/wiki/Panthera_leo&quot;),
+    array(&quot;Leopardo&quot;, &quot;leopardo.svg&quot;, &quot;https://es.wikipedia.org/wiki/Panthera_pardus&quot;),
+    array(&quot;Medusa&quot;, &quot;medusa.svg&quot;, &quot;https://es.wikipedia.org/wiki/Medusa_(animal)&quot;),
+    array(&quot;Mono&quot;, &quot;mono.svg&quot;, &quot;https://es.wikipedia.org/wiki/Mono&quot;),
+    array(&quot;Oso&quot;, &quot;oso.svg&quot;, &quot;https://es.wikipedia.org/wiki/Ursidae&quot;),
+    array(&quot;Oso blanco&quot;, &quot;oso_blanco.svg&quot;,&quot;https://es.wikipedia.org/wiki/Ursus_maritimus&quot; ),
+    array(&quot;Pájaro&quot;, &quot;pajaro.svg&quot;, &quot;https://es.wikipedia.org/wiki/Aves&quot;),
+    array(&quot;Pingüino&quot;, &quot;pinguino.svg&quot;, &quot;https://es.wikipedia.org/wiki/Spheniscidae&quot;),
+    array(&quot;Rinoceronte&quot;, &quot;rinoceronte.svg&quot;, &quot;https://es.wikipedia.org/wiki/Rhinocerotidae&quot;),
+    array(&quot;Serpiente&quot;, &quot;serpiente.svg&quot;, &quot;https://es.wikipedia.org/wiki/Serpentes&quot;),
+    array(&quot;Tigre&quot;, &quot;tigre.svg&quot;, &quot;https://es.wikipedia.org/wiki/Panthera_tigris&quot;),
+    array(&quot;Tortuga marina&quot;, &quot;tortuga_marina.svg&quot;, &quot;https://es.wikipedia.org/wiki/Chelonioidea&quot;),
+    array(&quot;Tortuga&quot;, &quot;tortuga.svg&quot;, &quot;https://es.wikipedia.org/wiki/Testudines&quot;)
+);
+
+$animal = rand(0, count($animales) - 1);
+
+print &quot;    &lt;h2&gt;&quot; . $animales[$animal][0] . &quot;&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;&lt;img src=\&quot;img/animales/&quot; . $animales[$animal][1] . &quot;\&quot; alt=\&quot;&quot;
+    . $animales[$animal][0] . &quot;\&quot; title=\&quot;&quot; . $animales[$animal][0] . &quot;\&quot; height=\&quot;250\&quot; /&gt;&lt;/p&gt;\n&quot;;
+
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;Más &lt;a href=\&quot;&quot; . $animales[$animal][2] . &quot;\&quot;&gt;información sobre este animal&lt;/a&gt; en la Wikipedia&lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-12">
+        <h3>Matrices (1) 12 - Diccionario</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$idiomas = array(&quot;español&quot;, &quot;inglés&quot;, &quot;francés&quot;, &quot;italiano&quot;);
+
+$palabras = array (
+    array(&quot;lunes&quot;, &quot;monday&quot;, &quot;lundi&quot;, &quot;lunedi&quot;),
+    array(&quot;martes&quot;, &quot;tuesday&quot;, &quot;mardi&quot;, &quot;martedi&quot;),
+    array(&quot;miércoles&quot;, &quot;wednesday&quot;, &quot;mercredi&quot;, &quot;mercoledì&quot;),
+    array(&quot;jueves&quot;, &quot;thursday&quot;, &quot;jeudi&quot;, &quot;giovedì&quot;),
+    array(&quot;viernes&quot;, &quot;friday&quot;, &quot;vendredi&quot;, &quot;venerdì&quot;),
+    array(&quot;sábado&quot;, &quot;saturday&quot;, &quot;samedi&quot;, &quot;sabato&quot;),
+    array(&quot;domingo&quot;, &quot;sunday&quot;, &quot;dimanche&quot;, &quot;domenica&quot;),
+    array(&quot;cachimba&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)
+);
+
+$idioma = rand(1, count($idiomas) - 1);
+$palabra = rand(0, count($palabras) - 1);
+
+if ($palabras[$palabra][$idioma] == &quot;&quot;) {
+    print &quot;    &lt;p&gt;Lo siento, pero no está disponible la traducción de &lt;strong&gt;&quot;
+        . $palabras[$palabra][0] . &quot;&lt;/strong&gt; al $idiomas[$idioma].&lt;/p&gt;\n&quot;;
+} else {
+    print &quot;    &lt;p&gt;&lt;strong style=\&quot;text-transform: capitalize\&quot;&gt;&quot; . $palabras[$palabra][$idioma]
+        . &quot;&lt;/strong&gt; quiere decir &lt;strong&gt;&quot; . $palabras[$palabra][0]
+        . &quot; &lt;/strong&gt; en $idiomas[$idioma].&lt;/p&gt;\n&quot;;
+}
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-13">
+        <h3>Matrices (1) 13 - Tirada multilíngüe</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$palabras = array (
+    array(&quot;uno&quot;, &quot;one&quot;, &quot;un&quot;, &quot;uno&quot;),
+    array(&quot;dos&quot;, &quot;two&quot;, &quot;deux&quot;, &quot;due&quot;),
+    array(&quot;tres&quot;, &quot;three&quot;, &quot;trois&quot;, &quot;tre&quot;),
+    array(&quot;cuatro&quot;, &quot;four&quot;, &quot;quatre&quot;, &quot;quattro&quot;),
+    array(&quot;cinco&quot;, &quot;five&quot;, &quot;cinq&quot;, &quot;cinque&quot;),
+    array(&quot;seis&quot;, &quot;six&quot;, &quot;six&quot;, &quot;sei&quot;)
+);
+
+$mensajes = array(
+    array(&quot;Tirada de dado&quot;, &quot;Dieroll&quot;, &quot;Jet de dé&quot;, &quot;Tiro di dado&quot;),
+    array(&quot;Actualice la página para mostrar una nueva tirada.&quot;, &quot;Refresh the page to display a new dieroll.&quot;,
+        &quot;Rafraîchir la page pour afficher un nouveau jet de dé.&quot;, &quot;Aggiornare la pagina per visualizzare un nuovo tiro di dado.&quot;),
+    array(&quot;Ha obtenido un &quot;, &quot;You have thrown a &quot;, &quot;Vous avez emporté un &quot;, &quot;Hai ottenuto un &quot;)
+);
+
+$idioma = rand(0, count($palabras[0]) - 1);
+$dado = rand(1, 6);
+
+print &quot;    &lt;h1&gt;&quot; . $mensajes[0][$idioma] . &quot;&lt;/h1&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;&quot; . $mensajes[1][$idioma] . &quot;&lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;&lt;img src=\&quot;img/$dado.svg\&quot; alt=\&quot;$dado\&quot; title=\&quot;$dado\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; /&gt;&lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;&quot; . $mensajes[2][$idioma] . &quot; &lt;strong&gt;&quot; . $palabras[$dado-1][$idioma] . &quot;&lt;/strong&gt;.&lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="ejercicio-14">
+        <h3>Matrices (1) 14 - Multidiccionario</h3>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$idiomas = array(
+    array(&quot;español&quot;, &quot;spanish&quot;, &quot;espagnol&quot;, &quot;spagnolo&quot;),
+    array(&quot;inglés&quot;, &quot;engligh&quot;, &quot;anglais&quot;, &quot;inglese&quot;),
+    array(&quot;francés&quot;, &quot;french&quot;, &quot;français&quot;, &quot;francese&quot;),
+    array(&quot;italiano&quot;, &quot;italian&quot;, &quot;italien&quot;, &quot;italiano&quot;)
+);
+
+$palabras = array (
+    array(&quot;lunes&quot;, &quot;monday&quot;, &quot;lundi&quot;, &quot;lunedi&quot;),
+    array(&quot;martes&quot;, &quot;tuesday&quot;, &quot;mardi&quot;, &quot;martedi&quot;),
+    array(&quot;miércoles&quot;, &quot;wednesday&quot;, &quot;mercredi&quot;, &quot;mercoledì&quot;),
+    array(&quot;jueves&quot;, &quot;thursday&quot;, &quot;jeudi&quot;, &quot;giovedì&quot;),
+    array(&quot;viernes&quot;, &quot;friday&quot;, &quot;vendredi&quot;, &quot;venerdì&quot;),
+    array(&quot;sábado&quot;, &quot;saturday&quot;, &quot;samedi&quot;, &quot;sabato&quot;),
+    array(&quot;domingo&quot;, &quot;sunday&quot;, &quot;dimanche&quot;, &quot;domenica&quot;),
+);
+
+$mensajes = array(
+    array(&quot;diccionario multilingüe&quot;, &quot;multilingual dictionary&quot;, &quot;Dictionnaire multilingue&quot;, &quot;Dizionario multilingue&quot;),
+    array(&quot;Actualice la página para mostrar una nueva palabra.&quot;, &quot;Refresh the page to display a new word.&quot;,
+        &quot;Rafraîchir la page pour afficher un nouveau mot.&quot;, &quot;Aggiornare la pagina per visualizzare una nuova parola.&quot;),
+    array(&quot;quiere decir&quot;, &quot;means&quot;, &quot;veut dire&quot;, &quot;significa&quot;),
+    array(&quot;en&quot;, &quot;in&quot;, &quot;en&quot;, &quot;in&quot;)
+);
+
+$idioma = rand(0, count($idiomas) - 1);
+do {
+    $idioma2 = rand(0, count($idiomas) - 1);
+} while ($idioma2 == $idioma);
+
+$palabra = rand(0, count($palabras) - 1);
+
+print &quot;    &lt;h1&gt;&quot; . $mensajes[0][$idioma] . &quot;&lt;/h1&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;    &lt;p&gt;&quot; . $mensajes[1][$idioma] . &quot;&lt;/p&gt;\n&quot;;
+print &quot;\n&quot;;
+
+print &quot;    &lt;p&gt;&lt;strong style=\&quot;text-transform: capitalize\&quot;&gt;&quot; . $palabras[$palabra][$idioma2]
+    . &quot;&lt;/strong&gt; &quot; . $mensajes[2][$idioma] . &quot;&lt;strong&gt; &quot; . $palabras[$palabra][$idioma]
+    . &quot; &lt;/strong&gt; &quot; . $mensajes[3][$idioma] . &quot; &quot; . $idiomas[$idioma2][$idioma] . &quot;.&lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 20 de octubre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
