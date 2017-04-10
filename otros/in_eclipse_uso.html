@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Uso de Eclipse PDT. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Uso de Eclipse PDT</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Uso de Eclipse PDT</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#psr2-aplicar">Aplicar estilo PSR-2</a></li>
+          <li><a href="#pegar-html">Pegar código HTML</a></li>
+          <li><a href="#sustituir-comillas">Sustituir comillas en cadenas</a></li>
+          <li><a href="#aumentar-reducir-sangrado">Aumentar / reducir sangrado</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En esta lección se explica cómo utilizar algunas de las herramientas de Eclipse PDT.</p>
+
+    <section id="psr2-aplicar">
+      <h2>Aplicar estilo PSR-2</h2>
+
+      <p>Eclipse PDT formatea el código de acuerdo con las recomendaciones de estilo PSR-2.</p>
+
+      <p>Se puede formatear todo el programa o solamente una parte (seleccionando la parte a formatear) ...</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_source_format_1.png" width="650" height="220" alt="Eclipse PDT - Aplicar estilo PSR-2" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+
+      <p>... mediante el menú <span class="menu">Source &gt; Format</span> ...</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_source_format_2.png" width="650" height="350" alt="Eclipse PDT - Aplicar estilo PSR-2" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+
+      <p>... y automáticamente el código se formateará de acuerdo con las recomendaciones de estilo PSR-2:</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_source_format_3.png" width="650" height="220" alt="Eclipse PDT - Aplicar estilo PSR-2" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+
+      <p>Si no se tiene la costumbre de utilizar el formato PSR-2, se recomienda formatear todos los programas para familiarizarse con el estilo. Con un poco de práctica se interiorizará el estilo y se aplicará espontáneamente.</p>
+    </section>
+
+    <section id="pegar-html">
+      <h2>Pegar código HTML en archivo PHP</h2>
+
+      <p>Al pegar código HTML copiado del navegador en un archivo PHP, hay que tener cuidado para no perder el sangrado del código HTML original:</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_pegar_html_1.png" width="700" height="310" alt="Eclipse PDT - Pegar código HTML" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+
+      <ul>
+        <li>Si se pega en un fragmento PHP, el sangrado se pierde:
+          <p class="captura"><img src="../img/eclipse/eclipse_uso_pegar_html_2.png" width="800" height="350" alt="Eclipse PDT - Pegar código HTML" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+        </li>
+        <li>Si se pega en la misma línea que la etiqueta de apertura de un fragmento PHP, el sangrado también se pierde:
+          <p class="captura"><img src="../img/eclipse/eclipse_uso_pegar_html_3.png" width="800" height="350" alt="Eclipse PDT - Pegar código HTML" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+        </li>
+        <li>Pero si se pega fuera de un fragmento PHP, el sangrado se conserva:
+          <p class="captura"><img src="../img/eclipse/eclipse_uso_pegar_html_4.png" width="800" height="200" alt="Eclipse PDT - Pegar código HTML" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+          <p class="captura"><img src="../img/eclipse/eclipse_uso_pegar_html_5.png" width="800" height="350" alt="Eclipse PDT - Pegar código HTML" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+        </li>
+        <li>O si se pega en una instrucción <span class="php-res">print</span>, el sangrado se conserva (los errores que se muestran en la imagen siguiente son debidos a las comillas que forman parte del código fuente HTML):
+          <p class="captura"><img src="../img/eclipse/eclipse_uso_pegar_html_6.png" width="800" height="200" alt="Eclipse PDT - Pegar código HTML" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+          <p class="captura"><img src="../img/eclipse/eclipse_uso_pegar_html_7.png" width="800" height="350" alt="Eclipse PDT - Pegar código HTML" title="Eclipse PDT - Aplicar estilo PSR-2" /></p>
+        </li>
+      </ul>
+
+    </section>
+
+    <section id="sustituir-comillas">
+      <h2>Sustituir las comillas en el código HTML pegado</h2>
+
+      <p>Al pegar código HTML en un <span class="php-res">print</span>, las comillas incluidas en el código HTML pegado provocan errores de sintaxis que se deben corregir cambiando las comillas dobles por el carácter especial <strong>\"</strong>.</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_comillas_1.png" width="800" height="350" alt="Eclipse PDT - Buscar y sustituir comillas" title="Eclipse PDT - Buscar y sustituir comillas" /></p>
+
+      <p>La forma más rápida de corregirlos consiste en seleccionar las líneas de código HTML ...</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_comillas_2.png" width="800" height="350" alt="Eclipse PDT - Buscar y sustituir comillas" title="Eclipse PDT - Buscar y sustituir comillas" /></p>
+
+      <p>... y abrir el menú <span class="menu">Edit > Find/Replace</span> (o mediante el atajo <span class="eclipse-atajo-teclado">Ctrl+F</span>). En la ventana Find/Replace hay que buscar el carácter <strong>"</strong> para sustituirlo por el carácter <strong>\"</strong>:</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_comillas_3.png" width="284" height="390" alt="Eclipse PDT - Buscar y sustituir comillas" title="Eclipse PDT - Buscar y sustituir comillas" /></p>
+
+      <p>Al hacer clic en el botón "Replace All", se sustituirán las comillas. El problema es que las comillas que delimitan la cadena también se sustituyen, lo que también es un error de sintaxis:</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_comillas_4.png" width="800" height="350" alt="Eclipse PDT - Buscar y sustituir comillas" title="Eclipse PDT - Buscar y sustituir comillas" /></p>
+
+      <p>Esas contrabarras sobrantes se pueden borrar manualmente:</p>
+
+      <p class="captura"><img src="../img/eclipse/eclipse_uso_comillas_5.png" width="800" height="350" alt="Eclipse PDT - Buscar y sustituir comillas" title="Eclipse PDT - Buscar y sustituir comillas" /></p>
+    </section>
+
+    <section id="aumentar-reducir-sangrado">
+      <h2>Aumentar o reducir el sangrado</h2>
+
+      <p>Para aumentar el sangrado de una o varias líneas se puede seleccionar las líneas y ...</p>
+
+      <ul>
+        <li>teclear el carácter tabulador, o ...</li>
+        <li>elegir el menú <span class="menu">Edit > Shift Right</span></li>
+      </ul>
+
+      <p>Para reducir el sangrado de una o varias líneas se puede seleccionar las líneas y ...</p>
+
+      <ul>
+        <li>elegir el menú <span class="menu">Edit > Shift Left</span></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 8 de octubre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
