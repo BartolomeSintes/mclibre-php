@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Verbos irregulares. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Ejercicios - Verbos irregulares</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Verbos irregulares</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Verbos irregulares 1</a></li>
+          <li><a href="#ejercicio-2">2 - Verbos irregulares 2</a></li>
+          <li><a href="#ejercicio-3">3 - Verbos irregulares 3</a></li>
+          <li><a href="#ejercicio-4">4 - Verbos irregulares 4</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p><strong>Nota</strong>: Los valores introducidos por el usuario se deben comprobar y, si los valores no son correctos, se debe indicar el motivo al usuario .</p>
+
+    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1516/matrices_2_plantillas.zip">plantillas de los ejercicios Verbos irregulares</a>, que incluyen la página de formulario completa y parte de la página de resultados (los fragmentos HTML).</p>
+
+    <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/">página de soluciones</a>.</p>
+
+    <hr />
+
+    <h2>Comentarios</h2>
+
+    <ul>
+      <li>La lista de verbos irregulares se encuentra definida como matriz en el archivo irregular_verbs_list.php. <br />
+        Para no tener que copiarla y pegarla en cada programa, se puede incluir con <span class="php-con">include</span>:
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+include "irregular_verbs_list.php";
+?&gt;</code>
+</pre>
+        </div>
+        <p>La matriz de verbos tiene dos dimensiones: el primer índice es el número de verbo y el segundo índice indica la forma verbal: 0 = infinitivo, 1 = pasado, 2 = participio, 3 = traducción al español.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-html">$irregularVerbs:
+Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; be
+            [1] =&gt; was / were
+            [2] =&gt; been
+            [3] =&gt; ser
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; beat
+            [1] =&gt; beat
+            [2] =&gt; beaten
+            [3] =&gt; golpear
+        )
+ ...</code>
+ </pre>
+        </div>
+      </li>
+      <li>Las formas verbales también están definidas en una matriz en cada programa
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$formaVerbalNombre = array("infinitivo", "pasado", "participio");
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>El primer ejercicio sirve de base para los siguientes. En el primer ejercicio se elige al azar un verbo y una forma verbal y se muestra al usuario. En los siguientes ejercicios se muestra al usuario la información incompleta y se pide al usuario que la complete</li>
+    </ul>
+
+    <section id="ejercicio-1">
+      <h2>Verbos irregulares 1</h2>
+
+      <p>Escriba un programa de una página que muestre formas verbales de los verbos irregulares ingleses, elegida al azar. Cada vez que se actualice la página, se mostrará una forma verbal distinta.</p>
+
+      <p class="enlace-ejercicio"><a href="irregular_verbs_1.php">Enlace a ejercicio Verbos irregulares 1</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="irregular_verbs_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Verbos irregulares 2</h2>
+
+      <p>Escriba un programa que conste de dos páginas para practicar los verbos irregulares ingleses:</p>
+      <ul>
+        <li>En la primera página se solicita una forma verbal, elegida al azar.</li>
+        <li>En la segunda página se indica si se ha contestado correctamente.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="irregular_verbs_2_1.php">Enlace a ejercicio Verbos irregulares 2</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="irregular_verbs_2_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Verbos irregulares 3</h2>
+
+      <p>Escriba un programa que haga lo mismo que el del ejercicio anterior, pero que conste de una sola página:</p>
+      <ul>
+        <li>Se solicita una forma verbal, elegida al azar.</li>
+        <li>Si se recibe una respuesta, se indica si es corrrecta o no.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="irregular_verbs_3.php">Enlace a ejercicio Verbos irregulares 3</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="irregular_verbs_3.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-4">
+      <h2>Verbos irregulares 4</h2>
+
+      <p>Escriba un programa para practicar los verbos irregulares ingleses.</p>
+      <ul>
+        <li>Se pide una forma verbal elegida al azar mostrando las tres formas verbales del verbo y se pregunta cuál es la correcta.</li>
+        <li>Si se recibe una respuesta, se indica si es corrrecta o no.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="irregular_verbs_4.php">Enlace a ejercicio Verbos irregulares 4</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="irregular_verbs_4.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 12 de noviembre de 2015</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
