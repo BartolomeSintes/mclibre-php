@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Capitales del mundo. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Exámenes - Capitales del mundo</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Capitales del mundo</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#tablas">Tablas</a></li>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este examen se debe crear un programa que gestione una base de datos de nombres de países y de sus capitales y que plantee preguntas al usuario.</p>
+
+    <section id="tablas">
+      <h2>Capitales del mundo - Tablas</h2>
+
+      <p>Estas pueden ser las consultas de creación de tablas para este examen:</p>
+
+      <div class="codphp">
+        <pre>// Tamaño de los campos
+define('MAX_REG_TABLA', 20);  // Número máximo de registros en la tabla
+$tamCiudad = 50;              // Tamaño del campo Ciudad
+$tamPais   = 40;              // Tamaño del campo País
+
+// Consulta de creación de tabla en MySQL
+$consulta = "CREATE TABLE $dbTabla (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    ciudad VARCHAR($tamCiudad),
+    pais VARCHAR($tamPais),
+    PRIMARY KEY(id)
+    )";
+
+// Consultas de creación de tablas en SQLite
+$consulta = "CREATE TABLE $dbTabla (
+    id INTEGER PRIMARY KEY,
+    ciudad VARCHAR($tamCiudad),
+    pais VARCHAR($tamPais)
+    )";
+</pre>
+      </div>
+    </section>
+
+    <section id="comentarios">
+      <h2>Capitales del mundo - Comentarios</h2>
+
+      <ul>
+        <li>Para gestionar la base de datos, sólo serán necesarias las opciones: Borrar todo, Añadir y Listar. No es necesario que esas páginas hagan comprobaciones de los valores introducidos por el usuario.</li>
+        <li>Para plantear preguntas al usuario, se incluirá una opción Preguntar que conste de dos páginas:
+          <ul>
+            <li>Primera página:
+              <ul>
+                <li>Se planteará la pregunta: ¿Cuál es la capital de XXXX?, en la que XXXX será el nombre de un país de la tabla obtenido al azar</li>
+                <li>Para elegir el país se supondrá que los registros creados en la tabla tienen id correlativos y se obtendrá un número al azar generado por la función <a href="http://es.php.net/manual/es/function.rand.php">rand()</a>:
+
+                  <div class="codphp">
+                    <pre>$consulta = "SELECT COUNT(*) FROM $dbTabla";
+$result = $db-&gt;query($consulta);
+$numeroRegistros = $result-&gt;fetchColumn();
+$numeroPregunta  = rand(1, $numeroRegistros);
+</pre>
+                  </div>
+                </li>
+                <li>Para evitar trampas del usuario, el formulario no contendrá la respuesta correcta sino el id del registro.</li>
+              </ul>
+            </li>
+            <li>Segunda página:
+              <ul>
+                <li>Se comprobará si la respuesta es correcta o no y se informará al usuario.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-programa">
+      <h2>Capitales del mundo - Ejemplo de programa</h2>
+
+      <p>Un ejemplo de programa puede probarse en la ventana siguiente (el ejemplo trabaja con una base de datos SQLite):</p>
+
+      <p class="enlace-ejercicio"><a href="http://smagris3.uv.es/mclibre/capitales_mundo/">Enlace a examen Capitales
+        del mundo</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="http://smagris3.uv.es/mclibre/capitales_mundo/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 29 de noviembre de 2011</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
