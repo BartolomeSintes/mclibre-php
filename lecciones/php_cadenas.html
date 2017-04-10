@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cadenas. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Cadenas</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Cadenas</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#cadenas">Cadenas</a></li>
+          <li><a href="#caracteres-especiales">Caracteres especiales</a></li>
+          <li><a href="#saltos-linea">Saltos de línea</a></li>
+          <li><a href="#concatenar">Concatenar cadenas</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="cadenas">
+      <h2>Cadenas</h2>
+
+      <p>En PHP, las cadenas de texto se delimitan por comillas (dobles o simples).</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Esto es una cadena.&lt;/p&gt;\n<span class="codigo-resaltado">"</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es una cadena.&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">'</span>&lt;p&gt;Esto es otra cadena.&lt;/p&gt;<span class="codigo-resaltado">'</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es otra cadena.&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Las cadenas contienen lógicamente caracteres del juego de caracteres en el que se guarde el archivo (UTF-8, CP-1252, ISO-8859-1, etc.), pero algunos caracteres necesitan un tratamiento especial, como se explica más adelante.</p>
+
+      <hr class="corta" />
+
+      <p>Si las comillas de apertura y cierre no son del mismo tipo (una de ellas doble y otra simple), se produce un error de sintaxis.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Esto es una cadena.&lt;/p&gt;\n<span class="codigo-resaltado">'</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected end of file, expecting <br />
+              variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) <br />
+              or {$ (T_CURLY_OPEN) in <strong>ejemplo.php</strong> on line <strong>3</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <h3>Comillas dentro de cadenas</h3>
+
+      <p>Si una cadena está delimitada por comillas dobles, en su interior puede haber cualquier número de comillas simples, y viceversa.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Esto es una comilla simple: <span class="codigo-resaltado">'</span>&lt;/p&gt;<span class="codigo-resaltado">"</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es una comilla simple: <span class="codigo-resaltado">'</span>&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">'</span>&lt;p&gt;Esto es una comilla doble: <span class="codigo-resaltado">"</span>&lt;/p&gt;<span class="codigo-resaltado">'</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es una comilla doble: <span class="codigo-resaltado">"</span>&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Lo que no puede haber en una cadena es una comilla del mismo tipo que las que delimitan la cadena.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Esto es una comilla doble: <span class="codigo-resaltado">"</span>&lt;/p&gt;<span class="codigo-resaltado">"</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected '/' in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
+          </tr>
+          <tr>
+            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">'</span>&lt;p&gt;Esto es una comilla simple: <span class="codigo-resaltado">'</span>&lt;/p&gt;<span class="codigo-resaltado">'</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected '/' in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Para poder escribir en una cadena una comilla del mismo tipo que las que delimitan la cadena, se debe utilizar los caracteres especiales <strong>\'</strong> o <strong>\"</strong>.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Esto es una comilla simple: ' y esto una comilla doble: <span class="codigo-resaltado">\"</span>&lt;/p&gt;<span class="codigo-resaltado">"</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es una comilla simple: ' y esto una comilla doble: <span class="codigo-resaltado">"</span>&lt;/p&gt;</code></pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">'</span>&lt;p&gt;Esto es una comilla simple: <span class="codigo-resaltado">\'</span> y esto una comilla doble: "&lt;/p&gt;<span class="codigo-resaltado">'</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es una comilla simple: <span class="codigo-resaltado">'</span> y esto una comilla doble: "&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Y por supuesto se pueden utilizar los carateres especiales \' y \" con cualquier delimitador:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Esto es una comilla simple: \' y esto una comilla doble: <span class="codigo-resaltado">\"</span>&lt;/p&gt;<span class="codigo-resaltado">"</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es una comilla simple: ' y esto una comilla doble: <span class="codigo-resaltado">"</span>&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">'</span>&lt;p&gt;Esto es una comilla simple: <span class="codigo-resaltado">\'</span> y esto una comilla doble: \"&lt;/p&gt;<span class="codigo-resaltado">'</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Esto es una comilla simple: <span class="codigo-resaltado">'</span> y esto una comilla doble: "&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Pero los caracteres especiales \" y \' no se pueden utilizar para delimitar cadenas.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">\"</span>&lt;p&gt;Esto es una cadena.&lt;/p&gt;\n<span class="codigo-resaltado">\"</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected '"', expecting identifier (T_STRING) <br />
+              in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
+          </tr>
+          <tr>
+            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">\'</span>&lt;p&gt;Esto es una cadena.&lt;/p&gt;\n<span class="codigo-resaltado">\'</span>;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected ''&lt;p&gt;Esto es una cadena.&lt;/p&gt;\n\'<br />
+              (T_CONSTANT_ENCAPSED_STRING), expecting identifier (T_STRING) <br />
+              in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <h3>Diferencias entres comillas simples y dobles</h3>
+
+      <p>Aunque en los ejemplos anteriores las comillas simples o dobles son equivalentes, en otras situaciones no lo son. Por ejemplo, PHP no sustituye las variables que se encuentran dentro de cadenas delimitadas con comillas simples, mientras que sí que lo hace (pero no siempre) si se utilizan comillas dobles, como se ve en el siguiente ejemplo:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena = "Hola";
+print "&lt;p&gt;La variable contiene el valor: <span class="codigo-resaltado">$cadena</span>&lt;/p&gt;";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La variable contiene el valor: <span class="codigo-resaltado">Hola</span>&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena = "Hola";
+print '&lt;p&gt;La variable contiene el valor: <span class="codigo-resaltado">$cadena</span>&lt;/p&gt;';
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La variable contiene el valor: <span class="codigo-resaltado">$cadena</span>&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>PHP tampoco sustituye algunos caracteres especiales (por ejemplo, el salto de línea \n) dentro de las comillas simples, como se ve en el siguiente ejemplo:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;pre&gt;Esto está en<span class="codigo-resaltado">\n</span>dos líneas.&lt;/pre&gt;";
+?&gt;</code></pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;pre&gt;Esto está en<br />dos líneas&lt;/pre&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print '&lt;pre&gt;Esto está en<span class="codigo-resaltado">\n</span>dos líneas.&lt;/pre&gt;';
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;pre&gt;Esto está en<span class="codigo-resaltado">\n</span>dos líneas&lt;/pre&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <h3>Comillas en código html / css</h3>
+
+      <p>En el código HTML generado con PHP también se pueden escribir comillas simples o dobles. Los dos ejemplos siguientes producen código html válido:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;&lt;strong style='color: red;'&gt;Hola&lt;/strong&gt;&lt;/p&gt;";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;&lt;strong style='color: red;'&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print '&lt;p&gt;&lt;strong style="color: red;"&gt;Hola&lt;/strong&gt;&lt;/p&gt;';
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;&lt;strong style="color: red;"&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>En estos apuntes se delimitan las cadenas con comillas dobles. Si el código html / css generado contiene comillas, en estos apuntes se generan también comillas dobles, por lo que dentro de las cadenas se utiliza el carácter especial \". Únicamente en las consultas SQL (que se verán más adelante) se utilizan comillas simples dentro de las cadenas.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;&lt;strong style=\"color: red;\"&gt;Hola&lt;/strong&gt;&lt;/p&gt;";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;&lt;strong style="color: red;"&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="caracteres-especiales">
+      <h2>Caracteres especiales</h2>
+
+      <p>Por distintos motivos, algunos caracteres necesitan escribirse dentro de las cadenas de una forma especial. Por ejemplo, :</p>
+      <ul>
+        <li>En PHP los nombres de variables empiezan por el carácter dólar ($). Cuando en una cadena aparece una palabra que empieza por el carácter $, PHP entiende que esa palabra hace referencia a una variable. Pero si a esa variable no se le ha dado valor anteriormente, se producirá un aviso. Además PHP escribe el valor de la variable (es decir, nada si la variable no está definida):
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class="codigo-resaltado">$edad</span>.&lt;/p&gt;";
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php">
+                  <p><strong>Notice</strong>: Undefined variable: edad in <strong>ejemplo.php</strong> on line <strong>2</strong></p>
+                  <p>Los nombres de variables empiezan por $. Por ejemplo .</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>Si en una cadena se utilizan comillas del mismo tipo (simples o dobles) que las que la delimitan, se se produce un error de sintaxis y el programa no puede ejecutarse. El problema es que cuando PHP encuentra la comilla dentro de la cadena (simple o doble, pero del mismo tipo que delimita la cadena), PHP entiende que la cadena se termina precisamente ahí. Como PHP es incapaz de entender lo que viene a continuación, se produce un error de sintaxis.
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+print <span class="codigo-resaltado">"</span>&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">"</span> o ').&lt;/p&gt;<span class="codigo-resaltado">"</span>;
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected 'o' (T_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>Algunos caracteres (saltos de línea, tabuladores, etc) no se pueden escribir con el teclado.</li>
+      </ul>
+
+      <p>Para poder escribir estos caracteres en una cadena, en PHP existen los llamados caracteres especiales. Los caracteres especiales empiezan por el carácter contrabarra (\). Los caracteres especiales más utilizados son los siguientes:</p>
+
+      <table border="1" class="centrado">
+        <tbody>
+          <tr>
+            <th>Caracter</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <th>\\</th>
+            <td>Carácter contrabarra</td>
+          </tr>
+          <tr>
+            <th>\$</th>
+            <td>Carácter dólar</td>
+          </tr>
+          <tr>
+            <th>\"</th>
+            <td>Carácter comilla doble (en una cadena delimitada por comillas dobles)</td>
+          </tr>
+          <tr>
+            <th>\'</th>
+            <td>Carácter comilla simple (en una cadena delimitada por comillas simples)</td>
+          </tr>
+          <tr>
+            <th>\n</th>
+            <td>Salto de línea</td>
+          </tr>
+          <tr>
+            <th>\t</th>
+            <td>Tabulador horizontal</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Además, existen también estos caracteres especiales, menos utilizados que los anteriores:</p>
+
+      <table border="1" class="centrado">
+        <tbody>
+          <tr>
+            <th>Caracter</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <th>\XXX</th>
+            <td>Carácter de código XXX en octal</td>
+          </tr>
+          <tr>
+            <th>\xXX</th>
+            <td>Carácter de código XX en hexadecimal</td>
+          </tr>
+          <tr>
+            <th>\r</th>
+            <td>Retorno de carro</td>
+          </tr>
+          <tr>
+            <th>\v</th>
+            <td>Tabulador vertical</td>
+          </tr>
+          <tr>
+            <th>\e</th>
+            <td>Escape</td>
+          </tr>
+          <tr>
+            <th>\f</th>
+            <td>Salto de página (en impresoras antiguas)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Los ejemplos anteriores se podrían escribir así:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class="codigo-resaltado">\$edad</span>.&lt;/p&gt;";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Los nombres de variables empiezan por $. Por ejemplo <span class="codigo-resaltado">$edad</span>.&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">\"</span> o ').&lt;/p&gt;";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Las cadenas se delimitan con comillas (<span class="codigo-resaltado">"</span> o ').&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="saltos-linea">
+      <h2>Saltos de línea en el código fuente</h2>
+
+      <p>Se pueden insertar saltos de línea en el código HTML de la página insertándolos directamente en el interior de las cadenas o mediante el carácter especial \n. Este salto de línea es ignorado por los navegadores, pero aumenta la legibilidad del código fuente.</p>
+
+      <p>Los ejemplos siguientes producen el mismo resultado en los navegadores (una lista de dos elementos), pero el código fuente es más legible en los tres últimos casos.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;ul&gt;&lt;li&gt;Uno&lt;/li&gt;&lt;li&gt;Dos&lt;/li&gt;&lt;/ul&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;ul&gt;&lt;li&gt;Uno&lt;/li&gt;&lt;li&gt;Dos&lt;/li&gt;&lt;/ul&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;ul&gt;";
+print "&lt;li&gt;Uno&lt;/li&gt;";
+print "&lt;li&gt;Dos&lt;/li&gt;";
+print "&lt;/ul&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;ul&gt;&lt;li&gt;Uno&lt;/li&gt;&lt;li&gt;Dos&lt;/li&gt;&lt;/ul&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;ul&gt;\n  &lt;li&gt;Uno&lt;/li&gt;\n  &lt;li&gt;Dos&lt;/li&gt;\n&lt;/ul&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;ul&gt;<br />  &lt;li&gt;Uno&lt;/li&gt;<br />  &lt;li&gt;Dos&lt;/li&gt;<br />&lt;/ul&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;ul&gt;\n";
+print "  &lt;li&gt;Uno&lt;/li&gt;\n";
+print "  &lt;li&gt;Dos&lt;/li&gt;\n";
+print "&lt;/ul&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Uno&lt;/li&gt;
+  &lt;li&gt;Dos&lt;/li&gt;
+&lt;/ul&gt;</code>
+</pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;ul&gt;
+  &lt;li&gt;Uno&lt;/li&gt;
+  &lt;li&gt;Dos&lt;/li&gt;
+&lt;/ul&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Uno&lt;/li&gt;
+  &lt;li&gt;Dos&lt;/li&gt;
+&lt;/ul&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="concatenar">
+      <h2>Concatenar cadenas</h2>
+
+      <p>El operador . (punto) permite concatenar dos o más cadenas.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Pasa" <span class="php-ope">.</span>"tiempos&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Pasatiempos&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>El mismo resultado se puede conseguir sin utilizar el operador . (punto):</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Pasatiempos&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Pasatiempos&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Trabajando únicamente con cadenas, el operador . (punto) no parece demasiado útil, pero en la lección dedicada a <a href="php_variables_1.html#concatenar">Variables</a> se explica el uso del operador utilizando variables y cadenas, que es el uso más habitual.</p>
+
+      <hr class="corta" />
+
+      <p>El operador de asignación con concatenación (.=) permite concatenar una cadena a otra y asignarla a esta:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena = "Pasa";
+print "&lt;p&gt;$cadena&lt;/p&gt;\n";
+$cadena <span class="php-ope">.=</span> "tiempos";
+print "&lt;p&gt;$cadena&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html"><code>&lt;p&gt;Pasa&lt;/p&gt;
+&lt;p&gt;Pasatiempos&lt;/p&gt;</code></code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2015</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
