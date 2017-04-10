@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Color preferido. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Color preferido</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Color preferido</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+          <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que muestre unos colores al azar y permita indicar cuál es nuestro color preferido:</p>
+
+    <section id="comentarios">
+      <h2>Color preferido - Comentarios</h2>
+
+      <ul>
+        <li>El programa tendrá tres páginas:
+          <ul>
+            <li>La primera página pide el número de colores a mostrar (entre 2 y 10):
+              <p class="captura"><img alt="Color preferido - Formulario 1" src="img/color_preferido_1.png" width="800" height="280" /></p>
+            </li>
+            <li>La segunda página comprueba primero el valor recibido:
+              <p class="captura"><img alt="Color preferido - Comprobación de datos" src="img/color_preferido_2.png" width="800" height="250" /></p>
+            </li>
+            <li>En el caso de que el valor sea correcto, la segunda página muestra el número de colores solicitados:
+              <p class="captura"><img alt="Color preferido - Formulario 2" src="img/color_preferido_3.png" width="800" height="440" /></p>
+            </li>
+            <li>La tercera página comprueba primero que no se ha manipulado la dirección modificando algún dato. <br />
+              <img src="../../varios/iconos/icono_warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />No es necesario comprobar los valores de los colores, sólo hay que comprobar el número de colores y el color elegido.
+              <p>La imagen siguiente muestra qué mensaje se debe mostrar en caso de que se manipule el número de color preferido:</p>
+              <p class="captura"><img alt="Color preferido - Formulario 2" src="img/color_preferido_4.png" width="800" height="250" /></p>
+            </li>
+            <li>En caso de que los valores sean correctos, la tercera página muestra el color preferido:
+              <p class="captura"><img alt="Color preferido - Formulario 2" src="img/color_preferido_5.png" width="800" height="400" /></p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Palabras - Ejemplo de código HTML</h2>
+
+      <p>Un posible código fuente html podría ser el siguiente:</p>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Color preferido  (Formulario 2)&lt;/h1&gt;
+
+&lt;p&gt;Indique qué color le gusta más:&lt;/p&gt;
+
+&lt;form action="color_preferido_3.php" method="get"&gt;
+  &lt;table style="text-align: center" &gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Preferido&lt;/th&gt;
+        &lt;td&gt;&lt;input type="radio" name="preferido" value="1" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="preferido" value="2" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="radio" name="preferido" value="3" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Color&lt;/th&gt;
+        &lt;td&gt;&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+           width="100px" height="100px"&gt;
+           &lt;rect x="5" y="5" width="90" height="90" stroke="black" stroke-width="2" fill="<span class="resaltadoconborde">rgb(1, 153 , 72)</span>" /&gt;
+           &lt;/svg&gt;
+           &lt;input type="hidden" name="color[1]" value="<span class="resaltadoconborde">rgb(1, 153 , 72)</span>" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+           width="100px" height="100px"&gt;
+           &lt;rect x="5" y="5" width="90" height="90" stroke="black" stroke-width="2" fill="<span class="resaltadoconborde">rgb(79, 241 , 241)</span>" /&gt;
+           &lt;/svg&gt;
+           &lt;input type="hidden" name="color[2]" value="<span class="resaltadoconborde">rgb(79, 241 , 241)</span>" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+           width="100px" height="100px"&gt;
+           &lt;rect x="5" y="5" width="90" height="90" stroke="black" stroke-width="2" fill="<span class="resaltadoconborde">rgb(127, 70 , 173)</span>" /&gt;
+           &lt;/svg&gt;
+           &lt;input type="hidden" name="color[3]" value="<span class="resaltadoconborde">rgb(127, 70 , 173)</span>" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;p&gt;&lt;input type="hidden" name="colores" value="3" /&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Mostrar" /&gt;
+    &lt;input type="reset" value="Borrar" /&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+
+      <p><strong>Notas</strong>:</p>
+      <ul>
+        <li>El ejercicio se podría simplificar insertando el código de color como valor del botón radio y eliminando el control oculto color[]. La página final no conocería todos los colores que se han mostrado al usuario, sino únicamente el elegido, pero en este caso la página final no utiliza esa información.</li>
+        <li>El enlace "Volver al formulario anterior" de la página final sólo envía el número de colores, no los colores que se mostraban en el formulario.</li>
+      </ul>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Color preferido (Resultado)&lt;/h1&gt;
+
+&lt;p&gt;Su color preferido es el siguiente:&lt;/p&gt;
+&lt;p&gt;&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+  width="100px" height="100px"&gt;
+  &lt;rect x="5" y="5" width="90" height="90" stroke="black" stroke-width="2" fill="rgb(127, 70 , 173)" /&gt;
+   &lt;/svg&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="color_preferido_2.php?colores=3"&gt;Volver al formulario anterior.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="color_preferido_1.html"&gt;Volver al formulario inicial.&lt;/a&gt;&lt;/p&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejemplo-programa">
+      <h2>Color preferido - Ejemplo de programa</h2>
+
+      <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+      <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+      <p class="enlace-ejercicio"><a href="../../../examenes/php_examenes/15-16/color_preferido/color_preferido_1.html">Enlace a examen Color preferido</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="../../../examenes/php_examenes/15-16/color_preferido/color_preferido_1.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 4 de marzo de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

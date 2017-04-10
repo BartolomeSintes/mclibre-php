@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tablero. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Tablero</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Tablero</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+          <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que permtia mover un cuadrado negro por un tablero, sin salirse de él.</p>
+
+    <section id="comentarios">
+      <h2>Tablero - Comentarios</h2>
+
+      <ul>
+        <li>El programa tendrá una sola página:
+          <ul>
+            <li>Al principio se muestra en negro la casilla central.
+              <p class="captura"><img alt="Tablero" src="img/tablero_1.png" width="784" height="489" /></p>
+            </li>
+            <li>haciendo clic en una flecha, el cuadrado se mueve una casilla en esa dirección (por ejemplo, hacia arriba):
+              <p class="captura"><img alt="Tablero" src="img/tablero_2.png" width="784" height="489" /></p>
+            </li>
+            <li>si el cuadrado llega a un extremo, ya no avanza más en esa dirección:
+              <p class="captura"><img alt="Tablero" src="img/tablero_3.png" width="784" height="489" /></p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Tablero - Ejemplo de código HTML</h2>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Tablero&lt;/h1&gt;
+
+&lt;p&gt;Haga clic en las flechas para mover la ficha por el tablero.&lt;/p&gt;
+&lt;form action="tablero.php" method="get"&gt;
+&lt;table border="1" cellpadding="10"&gt;&lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td style="background-color: black"&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+
+ ...
+
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;button type="submit" name="dir" value="1"&gt;&lt;img src="img/flecha_arriba.png" alt="Arriba" /&gt;&lt;/button&gt;
+  &lt;button type="submit" name="dir" value="2"&gt;&lt;img src="img/flecha_der.png" alt="Derecha" /&gt;&lt;/button&gt;
+  &lt;button type="submit" name="dir" value="3"&gt;&lt;img src="img/flecha_abajo.png" alt="Abajo" /&gt;&lt;/button&gt;
+  &lt;button type="submit" name="dir" value="4"&gt;&lt;img src="img/flecha_izq.png" alt="izquierda" /&gt;&lt;/button&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input type="hidden" name="x" value="5" /&gt;&lt;input type="hidden" name="y" value="1" /&gt;&lt;/p&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejemplo-programa">
+      <h2>Tablero - Ejemplo de programa</h2>
+
+      <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+      <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+      <p class="enlace-ejercicio"><a href="../../../examenes/php_examenes/14-15/tablero/tablero.php">Enlace a examen Tablero</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="../../../examenes/php_examenes/14-15/tablero/tablero.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 19 de mayo de 2015</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

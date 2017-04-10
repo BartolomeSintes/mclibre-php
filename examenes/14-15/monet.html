@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Monet. Exámenes. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Exámenes - Monet</h1>
+
+    <nav>
+      <p>
+        <a href="../examenes.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Exámenes - Monet</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comentarios">Comentarios</a></li>
+          <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+          <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En este ejercicio se debe crear un programa que permtia jugar a un juego. El juego consiste en un cuadro partido en cuatro piezas y hay que intercambiarlas hasta que el cuadro se vea correctamente</p>
+
+    <section id="comentarios">
+      <h2>Monet - Comentarios</h2>
+
+      <ul>
+        <li>El programa tendrá una sola página:
+          <ul>
+            <li>La página muestra las imágenes del cuadro desordenadas.
+              <p class="captura"><img alt="Monet" src="img/monet_1.jpg" width="965" height="430" /></p>
+            </li>
+            <li>Al hacer clic en el icono de intercambio, se intercambian dos imágenes contiguas:
+              <p class="captura"><img alt="Monet" src="img/monet_2.jpg" width="965" height="430" /></p>
+            </li>
+            <li>Al conseguir el cuadro correcto, se muestra un mensaje y el botón de reiniciar:
+              <p class="captura"><img alt="Monet" src="img/monet_3.jpg" width="965" height="460" /></p>
+            </li>
+            <li>Haciendo clic en Reiniciar se redistribuyen los cuadros al azar</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejemplo-html">
+      <h2>Monet - Ejemplo de código </h2>
+
+      <p>Para "barajar" las imágenes se puede utilizar la función shuffle():</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">$orden = array(1, 2, 3, 4);
+shuffle($orden);
+list ($a, $b, $c, $d) = $orden;</code>
+</pre>
+      </div>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;h1&gt;Claude Monet. Nenúfares (1920)&lt;/h1&gt;
+
+&lt;p&gt;Haga clic en los iconos para intercambiar las imágenes. El objetivo del juego es obtener la imagen correcta del cuadro.&lt;/p&gt;
+
+&lt;form action="/mclibre/consultar/examenes/php_examenes/14-15/monet/monet.php" method="get"&gt;
+&lt;table cellpadding="0" style="margin-left: auto; margin-right: auto;"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2" align="right"&gt;&lt;button type="submit" name="mod" value="1" style="margin-right: 70px"&gt;
+        &lt;img src="img/change.svg" height="60" alt="cambiar" /&gt;&lt;/button&gt;&lt;/td&gt;
+      &lt;td colspan="2" align="center"&gt;&lt;button type="submit" name="mod" value="2"&gt;
+        &lt;img src="img/change.svg" height="60" alt="cambiar" /&gt;&lt;/button&gt;&lt;/td&gt;
+      &lt;td colspan="2" align="left"&gt;&lt;button type="submit" name="mod" value="3" style="margin-left: 70px"&gt;
+        &lt;img src="img/change.svg" height="60" alt="cambiar" /&gt;&lt;/button&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src="img/monet_2.jpg" alt="Monet" /&gt;&lt;/td&gt;
+      &lt;td colspan="2"&gt;&lt;img src="img/monet_1.jpg" alt="Monet" /&gt;&lt;/td&gt;
+      &lt;td colspan="2"&gt;&lt;img src="img/monet_4.jpg" alt="Monet" /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src="img/monet_3.jpg" alt="Monet" /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;input type="hidden" name="a" value="2" /&gt;
+  &lt;input type="hidden" name="b" value="1" /&gt;
+  &lt;input type="hidden" name="c" value="4" /&gt;
+  &lt;input type="hidden" name="d" value="3" /&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+
+      <div class="codhtml">
+        <pre>
+<code class="language-html">&lt;p style="font-size: 200%"&gt;¡Felicidades! Ha conseguido el objetivo.&lt;/p&gt;
+&lt;p&gt;&lt;input type="submit" name="mod" value="Reiniciar" /&gt;&lt;/p&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejemplo-programa">
+      <h2>Monet - Ejemplo de programa</h2>
+
+      <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+      <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+      <p class="enlace-ejercicio"><a href="../../../examenes/php_examenes/14-15/monet/monet.php">Enlace a examen Monet</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="../../../examenes/php_examenes/14-15/monet/monet.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 12 de noviembre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
