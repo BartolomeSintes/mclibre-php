@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Variables predefinidas. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Variables predefinidas</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Variables predefinidas</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#request">$_REQUEST</a></li>
+          <li><a href="#server">$_SERVER</a>
+            <ul>
+              <li><a href="#phpself">$_SERVER[PHP_SELF] </a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>PHP genera automáticamente una serie de variables con diversa información sobre el cliente y el servidor.</p>
+
+    <section id="request">
+      <h2>$_REQUEST</h2>
+
+      <p><a href="http://www.php.net/manual/es/reserved.variables.request.php" class="php-var">$_REQUEST</a> es una matriz asociativa que contiene los datos enviado por los formularios y las cookies guardadas en el ordenador del cliente.</p>
+    </section>
+
+    <section id="server">
+      <h2>$_SERVER</h2>
+
+      <p><a href="http://www.php.net/manual/es/reserved.variables.server.php" class="php-var">$_SERVER</a> es una matriz asociativa que contiene información sobre cabeceras, rutas y ubicaciones de scripts suministrada por el servidor (pero hay que tener en cuenta que no todos los servidores suministran todos los datos).</p>
+
+      <section id="phpself">
+        <h3>$_SERVER[PHP_SELF] </h3>
+
+        <p>$_SERVER[PHP_SELF] contiene la dirección de la página (relativo a la raíz, es decir, sin el nombre del servidor).</p>
+
+        <table border="1" class="centrado">
+          <tbody>
+            <tr>
+              <th class="centrado">URL</th>
+              <th class="centrado">$_SERVER[PHP_SELF]</th>
+            </tr>
+            <tr>
+              <td>http://www.example.com/ejemplo.php</td>
+              <td>/ejemplo.php</td>
+            </tr>
+            <tr>
+              <td>http://www.example.com/ejercicios/ejemplo.php </td>
+              <td>/ejercicios/ejemplo.php</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>El ejemplo siguiente muestra el valor de $_SERVER[PHP_SELF] de una página real:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;\$_SERVER[PHP_SELF]: $_SERVER[PHP_SELF]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-html"><object type="text/html" data="ejemplos/variables_predefinidas_server_phpself_1.php" class="ejemplo" height="100px">ERROR (no puede mostrarse el objeto)</object></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <hr class="corta" />
+
+        <p>Esta variable se puede utilizar en las páginas que enlazan consigo mismas. Por ejemplo, una página puede contener un formulario que envíe los datos a esa misma página. Para ello, el atributo <span class="html-atri">action</span> del formulario debe contener el nombre de la página. En vez de poner el nombre de la página, se puede utilizar $_SERVER[PHP_SELF]. La ventaja es que aunque se cambie el nombre del fichero, el enlace seguirá funcionando.</p>
+
+        <p>El ejemplo siguiente muestra cómo se escribiría un enlace que apunta a la misma página que contiene el enlace:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;&lt;a href=\"$_SERVER[PHP_SELF]\"&gt;Enlace a esta misma página&lt;/a&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+
+        <p>En esta <a href="ejemplos/variables_predefinidas_server_phpself_2.php">página de ejemplo</a> se puede comprobar este uso de $_SERVER[PHP_SELF].</p>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 24 de marzo de 2010</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Configuración de Eclipse PDT (2). PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Configuración de Eclipse PDT (2)</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Config. Eclipse PDT (2)</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#configuracion-editor">Configuración del editor</a></li>
+          <li><a href="#navegador">Navegador</a></li>
+          <li><a href="#psr2-elegir">Elegir estilo PSR-2 </a></li>
+          <li><a href="#utf8">Juego de caracteres</a></li>
+          <li><a href="#espacios-en-blanco">Espacios en blanco finales</a></li>
+          <li><a href="#sangrado">Sangrado en HTML y CSS</a></li>
+          <li><a href="#asistentes">Asistentes de escritura</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En esta lección se explica cómo configurar Eclipse PDT como editor de archivos php, html y css.</p>
+
+    <section id="configuracion-editor">
+      <h2>Configuración del editor</h2>
+
+      <p>Las preferencias de Eclipse se establecen mediante el menú "<span class="menu">Window &gt; Preferences</span>", que abre la ventana de Preferencias.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Menú Window &gt; Preferences" src="../img/eclipse/eclipse-menu-window-preferences_1.png" width="210" height="250" title="Eclipse PDT - Menú Window &gt; Preferences" /></p>
+
+      <p>En la parte izquierda de la ventana de Preferencias se muestran las secciones y subsecciones en que se organizan las preferencias. Al hacer clic en alguna de las secciones, en la parte derecha de la ventana se muestran las opciones correspondientes.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana de Preferencias" src="../img/eclipse/eclipse-menu-window-preferences_2.png" width="685" height="561" title="Eclipse PDT - Ventana de Preferencias" /></p>
+    </section>
+
+    <section id="navegador">
+      <h2>Navegador</h2>
+
+      <p>Desde Eclipse se puede abrir un archivo en el servidor local y visualizarlo en el navegador interno de Eclipse PDT, en el navegador predeterminado del sistema o en un navegador determinado. Yo recomiendo elegir el navegador predeterminado del sistema (y que sea Firefox ;-).</p>
+
+      <p>Para ello, en la ventana de Preferencias, sección "<span class="menu">General &gt; Web Browser</span>", elija la opción "Use external web browser" (navegador externo a Eclipse) y marque la casilla ", "Default system web browser".</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Menú Window &gt; Web Browser" src="../img/eclipse/eclipse-preferences-general-webbrowser.png" width="685" height="561" title="Eclipse PDT - Menú Window &gt; Web Browser" /></p>
+    </section>
+
+    <section id="psr2-elegir">
+      <h2>Elegir estilo PSR-2 </h2>
+
+      <p>En estos apuntes se sigue y recomienda seguir las recomendaciones de estilo PSR-2, como se explica en la lección <a href="ot_guiaestilo.html">Guía de estilo PHP</a>.</p>
+
+      <p>Eclipse PDT permite formatear el código de acuerdo con esa recomendación.</p>
+
+      <p>Para ello, en la ventana de Preferencias, sección "<span class="menu">PHP &gt; Code Style &gt; Formatter</span>", cambiar el perfil activo a "PSR-2".</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Code Style &gt; Formatter" src="../img/eclipse/eclipse-preferences-php-code-style-formatter.png" width="685" height="561" title="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Code Style &gt; Formatter" /></p>
+
+      <p>Además en la ventana de Preferencias, sección "<span class="menu">General &gt; Editors &gt; Text Editors</span>",</p>
+      <ul>
+        <li>Marcar la opción "Insert spaces for tabs" (insertar espacios en vez de tabuladores) y comprobar que el valor "Displayed tab width" (tamaño del sangrado) sea 4. Así, cada vez que se pulse la tecla Tabulador, Eclipse escribirá 4 espacios en blanco.</li>
+        <li>Marcar la opción "Show print margin" (mostrar márgenes de impresión) y comprobar que el valor "Print margin column" (posición del margen) sea 80.</li>
+      </ul>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; General &gt; Editors &gt; Text Editors" src="../img/eclipse/eclipse-preferences-editors-text.png" width="685" height="764" title="Eclipse PDT - Ventana Preferences &gt; General &gt; Editors &gt; Text Editors" /></p>
+    </section>
+
+    <section id="utf8">
+      <h2>Juego de caracteres y finales de línea</h2>
+
+      <p>Las recomendaciones de estilo PSR-2 recomiendan utilizar el juego de caracteres UTF-8 y finales de línea Unix.</p>
+
+      <p>Para ello, en la ventana de Preferencias, sección "<span class="menu">General &gt; Workspace</span>", se deben cambiar los valores "Text file encoding" y "New text file line delimiter" a UTF-8 y Unix, respectivamente:</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; General &gt; Workspace" src="../img/eclipse/eclipse-preferences-general-workspace.png" width="737" height="781" title="Eclipse PDT - Ventana Preferences &gt; General &gt; Workspace" /></p>
+
+      <p>En la ventana de Preferencias, sección "<span class="menu">Web &gt; HTML Files</span>", se deben cambiar el valor "Encoding" a ISO 10646/Unicode(UTF-8):</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; Web &gt; HTML Files" src="../img/eclipse/eclipse-preferences-web-htmlfiles.png" width="635" height="555" title="Eclipse PDT - Ventana Preferences &gt; Web &gt; HTML Files" /></p>
+
+      <p>En la ventana de Preferencias, sección "<span class="menu">Web &gt; CSS Files</span>", se deben cambiar el valor "Encoding" a ISO 10646/Unicode(UTF-8):</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; Web &gt; CSS Files" src="../img/eclipse/eclipse-preferences-web-cssfiles.png" width="635" height="555" title="Eclipse PDT - Ventana Preferences &gt; Web &gt; CSS Files" /></p>
+   </section>
+
+    <section id="espacios-en-blanco">
+      <h2>Espacios en blanco al final de las líneas</h2>
+
+      <p>Eclipse puede borrar automáticamente los espacios en blanco que se encuentran al final de cada línea.</p>
+
+      <p>Para ello, en la ventana de Preferencias, sección "<span class="menu">PHP &gt; Editor &gt; Save Actions</span>", hay que marcar la casilla "Remove trailing whitespace" y el botón radio "All lines":</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Save Actions" src="../img/eclipse/eclipse-preferences-php-editor-saveactions.png" width="635" height="555" title="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Save Actions" /></p>
+    </section>
+
+    <section id="sangrado">
+      <h2>Sangrado en archivos HTML y CSS</h2>
+
+      <p>En la ventana de Preferencias, sección "<span class="menu">Web &gt; CSS Files &gt; Editor</span>", los cambios que aconsejo con respecto a los valores predeterminados son los siguientes: </p>
+      <ul>
+        <li>Seleccionar el botón radio "Ident using spaces"</li>
+        <li>Aumentar a 2 el valor de "Indentation size".</li>
+        <li>Seleccionar el botón radio "Lowercase" de Capitalization style &gt; Identifier.</li>
+      </ul>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" src="../img/eclipse/eclipse-preferences-web-cssfiles-editor.png" width="656" height="574" title="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" /></p>
+
+      <p>En la ventana de Preferencias, sección "<span class="menu">Web &gt; HTML Files &gt; Editor</span>", los cambios que aconsejo con respecto a los valores predeterminados son los siguientes: </p>
+      <ul>
+        <li>Seleccionar el botón radio "Ident using spaces"</li>
+        <li>Aumentar a 2 el valor de "Indentation size".</li>
+      </ul>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" src="../img/eclipse/eclipse-preferences-web-htmlfiles-editor.png" width="635" height="770" title="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" /></p>
+
+      <hr class="corta" />
+
+    </section>
+
+    <section id="asistentes">
+      <h2>Asistentes de escritura</h2>
+
+      <p>Al escribir comillas, llaves, paréntesis, corchetes, etc, en fragmentos de código PHP, Eclipse los cierra automáticamente. Si se quiere desactivar ese comportamiento, en la ventana de Preferencias, sección "<span class="menu">PHP &gt; Editor &gt; Typing</span>", los cambios que aconsejo con respecto a los valores predeterminados son los siguientes: </p>
+      <ul>
+        <li>Desmarcar la casilla ""Strings""</li>
+        <li>Desmarcar la casilla "(Parenthesis) and [square] brackets"</li>
+        <li>Desmarcar la casilla "{Braces}"</li>
+        <li>Desmarcar la casilla "phpDoc and comment regions"</li>
+        <li>Desmarcar la casilla "Close PHP tag (?&gt;)".</li>
+        <li>Desmarcar la casilla "Add 'php' after PHP start tag (&lt;?)</li>
+      </ul>
+
+      <p><strong>Nota:</strong> No tengo claro para qué sirve la casilla "Tab key indents the current line", porque parece que funciona igual marcada que sin marcar.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" src="../img/eclipse/eclipse-preferences-php-editor-typing.png" width="635" height="555" title="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" /></p>
+
+      <hr class="corta" />
+
+      <p>Al escribir etiquetas o comentarios en fragmentos de código HTML, Eclipse los cierra automáticamente. Si se quiere desactivar ese comportamiento, en la ventana de Preferencias, sección "<span class="menu">Web &gt; HTML Files &gt; Editor &gt; Typing</span>", los cambios que aconsejo con respecto a los valores predeterminados son los siguientes: </p>
+      <ul>
+        <li>Desmarcar la casilla "Insert a matching end tag"</li>
+        <li>Desmarcar la casilla "Automatically close the tag"</li>
+        <li>Desmarcar la casilla "Comments"</li>
+        <li>Desmarcar la casilla "Attribute values"</li>
+        <li>Desmarcar la casilla "(Parentheses) and [square] brackets"</li>
+        <li>Desmarcar la casilla "End tags when creating empty self-closing tags"</li>
+      </ul>
+
+      <p class="captura"><img alt="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" src="../img/eclipse/eclipse-preferences-web-htmlfiles-editor-typing.png" width="635" height="555" title="Eclipse PDT - Ventana Preferences &gt; PHP &gt; Editor &gt; Typing" /></p>
+
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 8 de octubre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

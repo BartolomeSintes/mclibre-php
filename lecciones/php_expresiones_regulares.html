@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Expresiones regulares. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Expresiones regulares</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Expresiones regulares</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#expresiones">Expresiones regulares</a></li>
+          <li><a href="#perl">Funciones compatibles Perl</a></li>
+          <li><a href="#sintaxis">Sintaxis</a></li>
+          <li><a href="#ejemplos">Ejemplos</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="expresiones">
+      <h2>Expresiones regulares en PHP</h2>
+
+      <p>Las expresiones regulares permiten definir patrones de coincidencia y aplicarlas a cadenas de texto para saber si la cadena (o parte de ella) cumple el patrón e incluso realizar transformaciones de la cadena.</p>
+
+      <p>En los años 90, PHP utilizaba las expresiones regulares POSIX extendido, pero a partir de PHP 5.3.0 (junio de 2009) las expresiones regulares POSIX extendido se consideran obsoletas.</p>
+
+      <p>Desde PHP 4.2.0 (abril de 2002), PHP cuenta con las expresiones regulares compatibles con Perl (en inglés, PCRE), que siguen la sintaxis y semánticas del lenguaje de programación <a href="https://www.perl.org/">Perl</a> 5. PHP 4.2.0 y posteriores incluyen la biblioteca de código libre escrita en C <a href="http://www.pcre.org/">PCRE</a> (Perl Compatible Regular Expressions).</p>
+    </section>
+
+    <section id="perl">
+      <h2>Funciones de expresiones regulares compatibles con Perl</h2>
+
+      <p>La función de expresiones regulares compatibles con Perl <a href="http://www.php.net/manual/es/function.preg-match.php"><span class="php-fun">preg_match($patron, $cadena [, $matriz_coincidencias [, $modificadores [, $desplazamiento]]])</span></a> compara una cadena con un patrón y devuelve 1 si el patrón ha coincidido o 0 si no. La primera coincidencia encontrada se puede guardar en el argumento opcional $matriz_coincidencias y, si se añade el modificador <span class="php-con">PREG_OFFSET_CAPTURE</span>, se guarda también en el argumento opcional $matriz_coincidencias la posición de la coincidencia encontrada. El argumento opcional $desplazamiento es un número que permite indicar en qué carácter se inicia la búsqueda.</p>
+
+      <p>Los patrones deben empezar y acabar con el carácter / (barra).</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena1 = "1234567";
+$cadena2 = "abcdefg";
+$patron = "/^[[:digit:]]+$/";
+
+if (preg_match($patron, $cadena1)) {
+    print "&lt;p&gt;La cadena $cadena1 son sólo números.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;La cadena $cadena1 no son sólo números.&lt;/p&gt;\n";
+}
+
+if (preg_match($patron, $cadena2)) {
+    print "&lt;p&gt;La cadena $cadena2 son sólo números.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;La cadena $cadena2 no son sólo números.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              La cadena 1234567 son sólo números.<br />
+              La cadena abcdefg no son sólo números.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La función <span class="php-fun">preg_match()</span> distingue entre mayúsculas y minúsculas. Para que no distinga, debe añadirse el modificador "i" (sin comillas) al final del patrón. Este modificador no afecta las clases [[::]].</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena = "aaAA";
+$patron1 = "/^[a-z]+$/";
+$patron2 = "/^[a-z]+$/i";
+
+if (preg_match($patron1, $cadena)) {
+    print "&lt;p&gt;La cadena $cadena son sólo letras minúsculas.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;La cadena $cadena no son sólo letras minúsculas.&lt;/p&gt;\n";
+}
+
+if (preg_match($patron2, $cadena)) {
+    print "&lt;p&gt;La cadena $cadena son sólo letras minúsculas o mayúsculas.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;La cadena $cadena no son sólo letras minúsculas o mayúsculas.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              La cadena aaAA no son sólo letras minúsculas.<br />
+              La cadena aaAA son sólo letras minúsculas o mayúsculas.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>La función de expresiones regulares compatibles con Perl <a href="http://www.php.net/manual/es/function.preg-match-all.php"><span class="php-fun">preg_match_all($patron, $cadena [, $matriz_coincidencias [, $modificadores [, $desplazamiento]]])</span></a> compara una cadena con un patrón y devuelve el número de coincidencias encontradas. Las coincidencias encontradas se pueden guardar en el argumento opcional $matriz_coincidencias y, si se añade el modificador <span class="php-con">PREG_OFFSET_CAPTURE</span>, se guardan también en el argumento opcional $matriz_coincidencias la posición de cada coincidencia encontrada. El argumento opcional $desplazamiento es un número que permite indicar en qué carácter se inicia la búsqueda.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena = "Esto es una cadena de prueba";
+$patron = "/de/";
+$encontrado = preg_match_all($patron, $cadena, $coincidencias, PREG_OFFSET_CAPTURE);
+
+if ($encontrado) {
+    print "&lt;pre&gt;"; print_r($coincidencias); print "&lt;/pre&gt;\n";
+    print "&lt;p&gt;Se han encontrado $encontrado coincidencias.&lt;/p&gt;\n";
+    foreach ($coincidencias[0] as $coincide) {
+        print "&lt;p&gt;Cadena: '$coincide[0]' - Posición: $coincide[1]&lt;/p&gt;\n";
+    }
+} else {
+    print "&lt;p&gt;No se han encontrado coincidencias.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [0] =&gt; de
+                    [1] =&gt; 14
+                )
+
+            [1] =&gt; Array
+                (
+                    [0] =&gt; de
+                    [1] =&gt; 19
+                )
+
+        )
+
+)</pre>
+
+              <p>Se han encontrado 2 coincidencias.<br />
+                Cadena: 'de' - Posición: 14<br />
+                Cadena: 'de' - Posición: 19</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="incompleto">Faltan las funciones de búsqueda y sustitución</p>
+    </section>
+
+    <section id="sintaxis">
+      <h2>Sintaxis de las expresiones regulares compatibles con Perl</h2>
+
+      <p>Los patrones de las expresiones reguladores compatibles con Perl deben empezar y acabar con un delimitador, que normalmente es la barra (/). En caso de que la barra forme parte del patrón, se puede:</p>
+      <ul>
+        <li>escribir en el patrón la barra precedida de una contrabarra (\/)</li>
+        <li>utilizar otro carácter, que no sea uno de los caracteres especiales, como delimitador (por ejemplo, !, -, etc.)</li>
+      </ul>
+
+      <p>Los patrones de expresiones regulares compatibles con Perl admiten <a href="http://www.php.net/manual/es/reference.pcre.pattern.modifiers.php">modificadores</a>, que se incluyen en el patrón, después del limitador final.</p>
+
+      <p>Los siguientes patrones son comunes a POSIX extendido y a compatibles con Perl, con una diferencia muy importante que es que las clases de carácter que incluyen caracteres alfabéticos ([[:alnum:]], [[:alpha:]], etc.) en POSIX <strong>no</strong> incluyen vocales acentuadas, ñ, ç, etc, mientras que en PECR sí.</p>
+
+      <table border="1">
+        <tbody>
+          <tr>
+            <th>Patrón</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <td>c</td>
+            <td>carácter c</td>
+          </tr>
+          <tr>
+            <td>.</td>
+            <td>cualquier carácter</td>
+          </tr>
+          <tr>
+            <td>^c</td>
+            <td>empezar por el carácter c</td>
+          </tr>
+          <tr>
+            <td>c$</td>
+            <td>terminar por el carácter c</td>
+          </tr>
+          <tr>
+            <td>c+</td>
+            <td>1 o más caracteres c</td>
+          </tr>
+          <tr>
+            <td>c*</td>
+            <td>0 o más caracteres c</td>
+          </tr>
+          <tr>
+            <td>c?</td>
+            <td>0 o 1 caracteres c</td>
+          </tr>
+          <tr>
+            <td>\n</td>
+            <td>nueva línea</td>
+          </tr>
+          <tr>
+            <td>\t</td>
+            <td>tabulador</td>
+          </tr>
+          <tr>
+            <td>\</td>
+            <td>escape, para escribir delante de caracteres especiales: ^ . [ ] % ( ) | * ? { } \</td>
+          </tr>
+          <tr>
+            <td>(cd)</td>
+            <td>caracteres c y d agrupados</td>
+          </tr>
+          <tr>
+            <td>c|d</td>
+            <td>carácter c o d</td>
+          </tr>
+          <tr>
+            <td>c{n}</td>
+            <td>n veces el carácter c</td>
+          </tr>
+          <tr>
+            <td>c{n,}</td>
+            <td>n o más caracteres c</td>
+          </tr>
+          <tr>
+            <td>c{n,m}</td>
+            <td>desde n hasta m caracteres c</td>
+          </tr>
+          <tr>
+            <td>[a-z]</td>
+            <td>cualquier letra minúscula</td>
+          </tr>
+          <tr>
+            <td>[A-Z]</td>
+            <td>cualquier letra mayúscula</td>
+          </tr>
+          <tr>
+            <td>[0-9]</td>
+            <td>cualquier dígito</td>
+          </tr>
+          <tr>
+            <td>[cde]</td>
+            <td>cualquiera de los caracteres c, d o e</td>
+          </tr>
+          <tr>
+            <td>[c-f]</td>
+            <td>cualquier letra entre c y f (es decir, c, d, e o f)</td>
+          </tr>
+          <tr>
+            <td>[^c]</td>
+            <td>que no esté el carácter c</td>
+          </tr>
+          <tr>
+            <td>[[:alnum:]]</td>
+            <td>cualquier letra o dígito </td>
+          </tr>
+          <tr>
+            <td>[[:alpha:]]</td>
+            <td>cualquier letra </td>
+          </tr>
+          <tr>
+            <td>[[:digit:]]</td>
+            <td>cualquier dígito</td>
+          </tr>
+          <tr>
+            <td>[[:lower:]]</td>
+            <td>cualquier letra minúscula </td>
+          </tr>
+          <tr>
+            <td>[[:punct:]]</td>
+            <td>cualquier marca de puntuación</td>
+          </tr>
+          <tr>
+            <td>[[:space:]]</td>
+            <td>cualquier espacio en blanco </td>
+          </tr>
+          <tr>
+            <td>[[:upper:]]</td>
+            <td>cualquier letra mayúscula </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Los siguientes patrones son exclusivos de compatibles con Perl y no existen en POSIX extendido:</p>
+
+      <table border="1">
+        <tbody>
+          <tr>
+            <th>Patrón</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <td>[[:ascii:]]</td>
+            <td>caracteres con código ASCII de 0 a 127</td>
+          </tr>
+          <tr>
+            <td>[[:blank:]]</td>
+            <td>espacios o tabuladores</td>
+          </tr>
+          <tr>
+            <td>[[:cntrl:]]</td>
+            <td>caracteres de control</td>
+          </tr>
+          <tr>
+            <td>[[:graph:]]</td>
+            <td>caracteres de impresión, salvo el espacio</td>
+          </tr>
+          <tr>
+            <td>[[:print:]]</td>
+            <td>caracteres de impresión, espacio incluido</td>
+          </tr>
+          <tr>
+            <td>[[:word:]]<br />
+            </td>
+            <td>cualquier letra o dígito y el guión bajo</td>
+          </tr>
+          <tr>
+            <td>[[:xdigit:]]</td>
+            <td>cualquier dígito hexadecimal</td>
+          </tr>
+          <tr>
+            <td>\w</td>
+            <td>cualquier letra o dígito y el guión bajo</td>
+          </tr>
+          <tr>
+            <td>\W</td>
+            <td>cualquier cosa que no sea letra o dígito y el guión bajo</td>
+          </tr>
+          <tr>
+            <td>\s</td>
+            <td>cualquier espacio en blanco</td>
+          </tr>
+          <tr>
+            <td>\S</td>
+            <td>cualquier cosa que no sea un espacio en blanco</td>
+          </tr>
+          <tr>
+            <td>\d</td>
+            <td>cualquier dígito</td>
+          </tr>
+          <tr>
+            <td>\D</td>
+            <td>cualquier cosa que no sea un dígito</td>
+          </tr>
+          <tr>
+            <td>\b</td>
+            <td>inicio o final de palabra</td>
+          </tr>
+          <tr>
+            <td>\A</td>
+            <td>comienzo</td>
+          </tr>
+          <tr>
+            <td>\Z</td>
+            <td>final (incluido salto de línea)</td>
+          </tr>
+          <tr>
+            <td>\z</td>
+            <td>final</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="ejemplos">
+      <h2>Ejemplos de expresiones regulares</h2>
+
+      <table border="1" class="bordetbody" style="text-align: center;">
+        <tbody>
+          <tr>
+            <th>Patrón</th>
+            <th>Cadena</th>
+            <th>¿Cumple?</th>
+            <th>Comentario</th>
+          </tr>
+          <tr>
+            <td rowspan="3">abc</td>
+            <td>awbwc</td>
+            <td>No</td>
+            <td>Los caracteres tienen que estar seguidos.</td>
+          </tr>
+          <tr>
+            <td>34abc</td>
+            <td>Sí</td>
+            <td>No importa que hayan caracteres antes...</td>
+          </tr>
+          <tr>
+            <td>cbabcba</td>
+            <td>Sí</td>
+            <td>... o después.</td>
+          </tr>
+          <tr>
+            <td>a2b</td>
+            <td>g1da2b3</td>
+            <td>Sí</td>
+            <td>Las expresiones regulares detectan letras, números, ...</td>
+          </tr>
+          <tr>
+            <td>áb</td>
+            <td>3áb4</td>
+            <td>Sí</td>
+            <td>... incluso acentos, ...</td>
+          </tr>
+          <tr>
+            <td>a\$b</td>
+            <td>1a$b2</td>
+            <td>Sí</td>
+            <td>... salvo los caracteres ^ . [ $ ( ) | * + ? { \ €<br />
+              que deben llevar una contrabarra \ antes, <br />
+              además de \n (nueva línea) y \t (tabulador)</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td rowspan="2">[aeiou]</td>
+            <td>bic</td>
+            <td>Sí</td>
+            <td>Los corchetes definen los caracteres admitidos en una posición ...</td>
+          </tr>
+          <tr>
+            <td>bcd</td>
+            <td>No</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="2">[^aeiou]</td>
+            <td>bic</td>
+            <td>Sí</td>
+            <td>... o no admitidos</td>
+          </tr>
+          <tr>
+            <td>aei</td>
+            <td>No</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="2">[p-t]</td>
+            <td>avr</td>
+            <td>Sí</td>
+            <td>Se pueden definir rangos de caracteres...</td>
+          </tr>
+          <tr>
+            <td>av1</td>
+            <td>No</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="2">[B-D]</td>
+            <td>PMD</td>
+            <td>Sí</td>
+            <td>... en minúsculas o mayúsculas ...</td>
+          </tr>
+          <tr>
+            <td>AV1</td>
+            <td>No</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="2">[0-9]</td>
+            <td>b9d</td>
+            <td>Sí</td>
+            <td>... o números</td>
+          </tr>
+          <tr>
+            <td>bcd</td>
+            <td>No</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>[[:alpha:]]</td>
+            <td></td>
+            <td></td>
+            <td>Cualquier carácter alfabético</td>
+          </tr>
+          <tr>
+            <td>[[:digit:]]</td>
+            <td></td>
+            <td></td>
+            <td>Cualquier número</td>
+          </tr>
+          <tr>
+            <td>[[:alnum:]]</td>
+            <td></td>
+            <td></td>
+            <td>Cualquier número o carácter alfabéticos</td>
+          </tr>
+          <tr>
+            <td>[[:punct:]]</td>
+            <td></td>
+            <td></td>
+            <td>Cualquier carácter que no sean letras y números (menos el euro)</td>
+          </tr>
+          <tr>
+            <td>[[:space:]]</td>
+            <td></td>
+            <td></td>
+            <td>Cualquier tipo de espacio en blanco</td>
+          </tr>
+          <tr>
+            <td>[[:upper:]]</td>
+            <td></td>
+            <td></td>
+            <td>Cualquier mayúscula</td>
+          </tr>
+          <tr>
+            <td>[[:lower:]]</td>
+            <td></td>
+            <td></td>
+            <td>Cualquier minúscula</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td rowspan="2">^ab</td>
+            <td>cab</td>
+            <td>No</td>
+            <td>Los caracteres tienen que estar al principio</td>
+          </tr>
+          <tr>
+            <td>abc</td>
+            <td>Sí</td>
+            <td>No importa que hayan caracteres después</td>
+          </tr>
+          <tr>
+            <td rowspan="2">ab$</td>
+            <td>abc</td>
+            <td>No</td>
+            <td>Los caracteres tienen que estar al final</td>
+          </tr>
+          <tr>
+            <td>cab</td>
+            <td>Sí</td>
+            <td>No importa que hayan caracteres antes</td>
+          </tr>
+          <tr>
+            <td rowspan="2">^ab$</td>
+            <td>ab</td>
+            <td>Sí</td>
+            <td>Tiene que empezar y acabar por ab ...</td>
+          </tr>
+          <tr>
+            <td>abab</td>
+            <td>No</td>
+            <td>... y no puede haber nada antes o después</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td rowspan="3">ab?c</td>
+            <td>abcde</td>
+            <td>Sí</td>
+            <td>El carácter b puede estar entre a y c...</td>
+          </tr>
+          <tr>
+            <td>acde</td>
+            <td>Sí</td>
+            <td>... o no estar entre a y c ...</td>
+          </tr>
+          <tr>
+            <td>adcde</td>
+            <td>No</td>
+            <td>... pero no puede haber otro carácter</td>
+          </tr>
+          <tr>
+            <td rowspan="4">a.c</td>
+            <td>abc</td>
+            <td>Sí</td>
+            <td>El . representa cualquier carácter ...</td>
+          </tr>
+          <tr>
+            <td>a c</td>
+            <td>Sí</td>
+            <td>... incluso el espacio el blanco, ...</td>
+          </tr>
+          <tr>
+            <td>ac</td>
+            <td>No</td>
+            <td>pero no la ausencia del carácter</td>
+          </tr>
+          <tr>
+            <td>abdc</td>
+            <td>No</td>
+            <td>o varios caracteres.</td>
+          </tr>
+          <tr>
+            <td rowspan="3">ab+c</td>
+            <td>abcde</td>
+            <td>Sí</td>
+            <td>El carácter b puede estar una vez...</td>
+          </tr>
+          <tr>
+            <td>abbbcde</td>
+            <td>Sí</td>
+            <td>... o varias ...</td>
+          </tr>
+          <tr>
+            <td>acde</td>
+            <td>No</td>
+            <td>... pero tiene que estar al menos una vez.</td>
+          </tr>
+          <tr>
+            <td rowspan="3">ab*c</td>
+            <td>abcde</td>
+            <td>Sí</td>
+            <td>El carácter b puede estar una vez...</td>
+          </tr>
+          <tr>
+            <td>abbbcde</td>
+            <td>Sí</td>
+            <td>... o varias ...</td>
+          </tr>
+          <tr>
+            <td>acde</td>
+            <td>Sí</td>
+            <td>... o ninguna.</td>
+          </tr>
+          <tr>
+            <td rowspan="3">ab{3}c</td>
+            <td>abbbc</td>
+            <td>Sí</td>
+            <td>Las llaves indican el número exacto de repeticiones del carácter, ...</td>
+          </tr>
+          <tr>
+            <td>abbbbc</td>
+            <td>No</td>
+            <td>... no puede haber más ...</td>
+          </tr>
+          <tr>
+            <td>abbc</td>
+            <td>No</td>
+            <td>... ni menos.</td>
+          </tr>
+          <tr>
+            <td rowspan="5">ab{2,4}c</td>
+            <td>abc</td>
+            <td>No</td>
+            <td>Se pueden definir rangos con límite inferior y superior</td>
+          </tr>
+          <tr>
+            <td>abbc</td>
+            <td>Sí</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>abbbc</td>
+            <td>Sí</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>abbbbc</td>
+            <td>Sí</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>abbbbbc</td>
+            <td>No</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>ab{2,}c</td>
+            <td>abc</td>
+            <td>No</td>
+            <td>Se pueden definir rangos sin límite superior</td>
+          </tr>
+          <tr>
+            <td>a(bc){2}d</td>
+            <td>abcbcd</td>
+            <td>Sí</td>
+            <td>Los paréntesis definen agrupaciones de caracteres.<br />
+              En este caso bc tiene que aparecer repetido</td>
+          </tr>
+          <tr>
+            <td rowspan="3">a(bc)?d</td>
+            <td>abcd</td>
+            <td>Sí</td>
+            <td>Aquí bc puede estar ...</td>
+          </tr>
+          <tr>
+            <td>ad</td>
+            <td>Sí</td>
+            <td>... o no estar, ...</td>
+          </tr>
+          <tr>
+            <td>abd</td>
+            <td>No</td>
+            <td>... pero no puede aparecer sólo la b, o sólo la c u otro carácter</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td rowspan="4">^a(b|d)c$</td>
+            <td>abc</td>
+            <td>Sí</td>
+            <td>Entre la a al principio y la c al final puede estar el carácter b...</td>
+          </tr>
+          <tr>
+            <td>adc</td>
+            <td>Sí</td>
+            <td>... o el carácter d, ...</td>
+          </tr>
+          <tr>
+            <td>abdc</td>
+            <td>No</td>
+            <td>... pero no los dos, ...</td>
+          </tr>
+          <tr>
+            <td>ac</td>
+            <td>No</td>
+            <td>... ni ninguno de ellos.</td>
+          </tr>
+          <tr>
+            <td rowspan="4">^(ab)|(dc)$</td>
+            <td>abc</td>
+            <td>Sí</td>
+            <td>Está la pareja ab al principio ...</td>
+          </tr>
+          <tr>
+            <td>adc</td>
+            <td>Sí</td>
+            <td>... o dc ...</td>
+          </tr>
+          <tr>
+            <td>abdc</td>
+            <td>Sí</td>
+            <td>... o las dos, ...</td>
+          </tr>
+          <tr>
+            <td>ac</td>
+            <td>No</td>
+            <td>... pero no ninguna</td>
+          </tr>
+          <tr>
+            <td rowspan="3">^(ab)$|^(dc)$</td>
+            <td>abc</td>
+            <td>No</td>
+            <td>Está la pareja ab, pero sobra la c ...</td>
+          </tr>
+          <tr>
+            <td>adc</td>
+            <td>No</td>
+            <td>... o está la pareja dc, pero sobra la a.</td>
+          </tr>
+          <tr>
+            <td>dc</td>
+            <td>Sí</td>
+            <td>Está una de las dos</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 27 de octubre de 2015</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

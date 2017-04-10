@@ -1,0 +1,3651 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Estructuras de control: bucle foreach. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Estructuras de control: bucle foreach</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Bucle foreach</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#foreach">El bucle foreach</a></li>
+          <li><a href="#problemas">Problemas al recorrer matrices con el bucle for</a></li>
+          <li><a href="#sintaxis">Sintaxis del bucle foreach</a></li>
+          <li><a href="#ejemplos">Ejemplos de bucles</a>
+            <ul>
+              <li><a href="#matrices">Matrices</a></li>
+              <li><a href="#consultas">Consultas a bases de datos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="foreach">
+      <h2>El bucle foreach</h2>
+
+      <p>El bucle foreach es un tipo especial de bucle que permite recorrir estructuras que contienen varios elementos (como matrices, recursos u objetos) sin necesidad de preocuparse por el número de elementos.</p>
+    </section>
+
+    <section id="problemas">
+      <h2>Problemas al recorrer matrices con el bucle for</h2>
+
+      <p>En otros lenguajes de programación en los que los índices de las matrices son números naturales correlativos, las matrices se pueden recorrer fácilmente con bucles for. Pero como las matrices de PHP son matrices asociativas y los índices de las matrices no tienen por qué ser valores numéricos correlativos, nos podemos encontrar con problemas. Por ejemplo, podemos hacer involuntariamente referencia a un término inexistente o algunos términos pueden resultar inaccesibles.</p>
+
+      <ul>
+        <li>En el ejemplo siguiente, el bucle llega más allá de los límites de la matriz, generando mensajes de error:
+
+          <div class="diapo" style="height: 430px;">
+
+            <div id="d11">
+              <p><strong>Paso 1</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+<span class="resaltadoconborde">$matriz = array("a", "bb");</span>
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php"><pre><code class="language-html"> </code></pre></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Se ejecuta la primera instrucción del programa.</p>
+
+              <p>En este caso, se crea la matriz $matriz.</p>
+
+              <p class="control">
+                <a href="#d12"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d12">
+              <p><strong>Paso 2</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+<span class="resaltadoconborde">print "&lt;pre&gt;\n";</span>
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php"><pre><code class="language-html"><span class="resaltadoconborde">&lt;pre&gt;</span></code></pre></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se abre la etiqueta <span class="html-eti">&lt;pre&gt;</span>.</p>
+
+              <p class="control">
+                <a href="#d11"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d13"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d13">
+              <p><strong>Paso 3</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+<span class="resaltadoconborde">print_r($matriz);</span>
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre><code class="language-html">&lt;pre&gt;</code></pre>
+                      <pre class="resaltadoconborde"><code class="language-html ">Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se imprimen los valores de la matriz $matriz.</p>
+
+              <p class="control">
+                <a href="#d12"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d14"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d14">
+              <p><strong>Paso 4</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+<span class="resaltadoconborde">print "&lt;/pre&gt;\n";</span>
+for ($i = 0; $i &lt;= 3; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+<span class="resaltadoconborde">&lt;/pre&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se cierra la etiqueta <span class="html-eti">&lt;/pre&gt;</span>.</p>
+
+              <p class="control">
+                <a href="#d13"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d15"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d15">
+              <p><strong>Paso 5</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for (<span class="resaltadoconborde">$i = 0</span>; $i &lt;= 3; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
+
+              <p>En este caso, la variable de control es $i y toma el valor 0.</p>
+
+              <p class="control">
+                <a href="#d14"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d16"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d16">
+              <p><strong>Paso 6</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 3</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 3 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d15"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d17"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d17">
+              <p><strong>Paso 7</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+<span class="resaltadoconborde">&lt;p&gt;a&lt;/p&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecutan las instrucciones del bloque.</p>
+
+              <p>En este caso, se imprime el texto &lt;p&gt;a&lt;/p&gt; ya que $i tiene el valor 0 y $matriz[0] tiene el valor "a".</p>
+
+              <p class="control">
+                <a href="#d16"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d18"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d18">
+              <p><strong>Paso 8</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
+
+              <p class="control">
+                <a href="#d17"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d19"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d19">
+              <p><strong>Paso 9</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 3</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 3 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d18"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d110"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d110">
+              <p><strong>Paso 10</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n"</span>;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;bb&lt;/p&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+              <p>En este caso, se imprime el texto &lt;p&gt;bb&lt;/p&gt; ya que $i tiene el valor 1 y $matriz[1] tiene el valor "bb".</p>
+
+              <p class="control">
+                <a href="#d19"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d111"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d111">
+              <p><strong>Paso 11</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+
+              <p class="control">
+                <a href="#d110"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d112"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d112">
+              <p><strong>Paso 12</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 3</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 3 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d111"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d113"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d113">
+              <p><strong>Paso 13</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code></pre>
+                      <pre class="resaltadoconborde"><code class="language-html">&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 2 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Esta instrucción genera un aviso (puesto que intenta imprimir el valor $matriz[2], que no existe) y escribe un párrafo vacío (puesto que no hay valor de $matriz[2].</p>
+
+              <p class="control">
+                <a href="#d112"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d114"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d114">
+              <p><strong>Paso 14</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 2 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
+
+              <p class="control">
+                <a href="#d113"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d115"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d115">
+              <p><strong>Paso 15</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 3</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 2 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 3 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d114"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d116"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d116">
+              <p><strong>Paso 16</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 2 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code></pre>
+                      <pre class="resaltadoconborde"><code class="language-html">&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 3 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Esta instrucción genera un aviso (puesto que intenta imprimir el valor $matriz[3], que no existe) y escribe un párrafo vacío (puesto que no hay valor de $matriz[3].</p>
+
+              <p class="control">
+                <a href="#d115"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d117"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d117">
+              <p><strong>Paso 17</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 2 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 3 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
+
+              <p class="control">
+                <a href="#d116"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d118"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d118">
+              <p><strong>Paso 18</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 3</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 2 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 3 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i ya no es inferior o igual a 3 (vale 4), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+
+              <p class="control">
+                <a href="#d117"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d119"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d119">
+              <p><strong>Paso 19</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 3; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+<span class="resaltadoconborde">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 2 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 3 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+              <p>En este caso, imprime el párrafo final.</p>
+
+              <p class="control">
+                <a href="#d118"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+              </p>
+            </div>
+          </div>
+
+          <p><strong>Nota</strong>: Este problema se podría evitar fácilmente, puesto que los índices son correlativos. La solución sería en este caso expresar la condición de continuación en función del tamaño de la matriz, utilizando $i &lt; count($matriz) en vez de $i &lt;= 3.</p>
+        </li>
+        <li>En el ejemplo siguiente, a la matriz le faltan valores intermedios, por lo que también se generarían mensajes de error al recorrerla:
+
+          <div class="diapo" style="height: 390px;">
+
+            <div id="d21">
+              <p><strong>Paso 1</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+<span class="resaltadoconborde">$matriz = array(0 =&gt; "a", 2 =&gt; "bb");</span>
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php"><pre><code class="language-html"> </code></pre></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Se ejecuta la primera instrucción del programa.</p>
+
+              <p>En este caso, se crea la matriz $matriz.</p>
+
+              <p class="control">
+                <a href="#d22"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d22">
+              <p><strong>Paso 2</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+<span class="resaltadoconborde">print "&lt;pre&gt;\n";</span>
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php"><pre><code class="language-html"><span class="resaltadoconborde">&lt;pre&gt;</span></code></pre></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se abre la etiqueta <span class="html-eti">&lt;pre&gt;</span>.</p>
+
+              <p class="control">
+                <a href="#d21"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d23"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d23">
+              <p><strong>Paso 3</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+<span class="resaltadoconborde">print_r($matriz);</span>
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;</code></pre>
+                      <pre class="resaltadoconborde"><code class="language-html ">Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se imprimen los valores de la matriz $matriz.</p>
+
+              <p class="control">
+                <a href="#d22"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d24"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d24">
+              <p><strong>Paso 4</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+<span class="resaltadoconborde">print "&lt;/pre&gt;\n";</span>
+for ($i = 0; $i &lt;= 2; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+<span class="resaltadoconborde">&lt;/pre&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se cierra la etiqueta <span class="html-eti">&lt;/pre&gt;</span>.</p>
+
+              <p class="control">
+                <a href="#d23"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d25"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d25">
+              <p><strong>Paso 5</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for (<span class="resaltadoconborde">$i = 0</span>; $i &lt;= 2; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
+
+              <p>En este caso, la variable de control es $i y toma el valor 0.</p>
+
+              <p class="control">
+                <a href="#d24"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d26"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d26">
+              <p><strong>Paso 6</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 2</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 2 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d25"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d27"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d27">
+              <p><strong>Paso 7</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+<span class="resaltadoconborde">&lt;p&gt;a&lt;/p&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecutan las instrucciones del bloque.</p>
+
+              <p>En este caso, se imprime el texto &lt;p&gt;a&lt;/p&gt; ya que $i tiene el valor 0 y $matriz[0] tiene el valor "a".</p>
+
+              <p class="control">
+                <a href="#d26"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d28"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d28">
+              <p><strong>Paso 8</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
+
+              <p class="control">
+                <a href="#d27"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d29"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d29">
+              <p><strong>Paso 9</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 2</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 2 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d28"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d210"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d210">
+              <p><strong>Paso 10</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n"</span>;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;</code></pre>
+                      <pre class="resaltadoconborde"><code class="language-html">&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+              <p>Esta instrucción genera un aviso (puesto que intenta imprimir el valor $matriz[1], que no existe) y escribe un párrafo vacío (puesto que no hay valor de $matriz[1].</p>
+
+              <p class="control">
+                <a href="#d29"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d211"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d211">
+              <p><strong>Paso 11</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+
+              <p class="control">
+                <a href="#d210"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d212"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d212">
+              <p><strong>Paso 12</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 2</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 2 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d211"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d213"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d213">
+              <p><strong>Paso 13</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;bb&lt;/p&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>En este caso, se imprime el texto &lt;p&gt;bb&lt;/p&gt; ya que $i tiene el valor 2 y $matriz[2] tiene el valor "bb".</p>
+
+              <p class="control">
+                <a href="#d212"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d214"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d214">
+              <p><strong>Paso 14</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
+
+              <p class="control">
+                <a href="#d213"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d215"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d215">
+              <p><strong>Paso 15</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 2</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i ya no es inferior o igual a 2 (vale 3), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+
+              <p class="control">
+                <a href="#d214"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d216"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d216">
+              <p><strong>Paso 16</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0 =&gt; "a", 2 =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 2; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+<span class="resaltadoconborde">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [2] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+              <p>En este caso, imprime el párrafo final.</p>
+
+              <p class="control">
+                <a href="#d215"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+              </p>
+            </div>
+          </div>
+
+          <p><strong>Nota</strong>: los avisos de error de este ejemplo se podría evitar incluyendo una comprobación de existencia del elemento antes de imprimirlo (if isset($matriz[$i]) ...), aunque tendríamos el problema de no saber a priori hasta qué valor debemos ejecutar el bucle para recorrer todos los valores.</p>
+        </li>
+        <li>Finalmente, en el ejemplo siguiente, la matriz no tiene índices numéricos, por lo que sólo se generarían mensajes de error al recorrerla:
+
+          <div class="diapo" style="height: 410px;">
+
+            <div id="d31">
+              <p><strong>Paso 1</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+<span class="resaltadoconborde">$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");</span>
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php"><pre><code class="language-html"> </code></pre></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Se ejecuta la primera instrucción del programa.</p>
+
+              <p>En este caso, se crea la matriz $matriz.</p>
+
+              <p class="control">
+                <a href="#d32"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d32">
+              <p><strong>Paso 2</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+<span class="resaltadoconborde">print "&lt;pre&gt;\n";</span>
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php"><pre><code class="language-html"><span class="resaltadoconborde">&lt;pre&gt;</span></code></pre></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se abre la etiqueta <span class="html-eti">&lt;pre&gt;</span>.</p>
+
+              <p class="control">
+                <a href="#d31"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d33"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d33">
+              <p><strong>Paso 3</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+<span class="resaltadoconborde">print_r($matriz);</span>
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;</code>
+</pre>
+                      <pre class="resaltadoconborde">
+<code class="language-html ">Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se imprimen los valores de la matriz $matriz.</p>
+
+              <p class="control">
+                <a href="#d32"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d34"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d34">
+              <p><strong>Paso 4</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+<span class="resaltadoconborde">print "&lt;/pre&gt;\n";</span>
+for ($i = 0; $i &lt;= 1; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+<span class="resaltadoconborde">&lt;/pre&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se cierra la etiqueta <span class="html-eti">&lt;/pre&gt;</span>.</p>
+
+              <p class="control">
+                <a href="#d33"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d35"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d35">
+              <p><strong>Paso 5</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for (<span class="resaltadoconborde">$i = 0</span>; $i &lt;= 1; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
+
+              <p>En este caso, la variable de control es $i y toma el valor 0.</p>
+
+              <p class="control">
+                <a href="#d34"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d36"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d36">
+              <p><strong>Paso 6</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 1</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 1 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d35"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d37"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d37">
+              <p><strong>Paso 7</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;</code>
+</pre>
+                      <pre class="resaltadoconborde">
+<code class="language-html">&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 0 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecutan las instrucciones del bloque.</p>
+
+              <p>Esta instrucción genera un aviso (puesto que intenta imprimir el valor $matriz[0], que no existe) y escribe un párrafo vacío (puesto que no hay valor de $matriz[0].</p>
+
+              <p class="control">
+                <a href="#d36"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d38"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d38">
+              <p><strong>Paso 8</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 0 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
+
+              <p class="control">
+                <a href="#d37"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d39"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d39">
+              <p><strong>Paso 9</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 1</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 0 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i es inferior o igual a 1 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+              <p class="control">
+                <a href="#d38"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d310"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d310">
+              <p><strong>Paso 10</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; $i++) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n"</span>;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 0 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code></pre>
+                      <pre class="resaltadoconborde"><code class="language-html">&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+              <p>Esta instrucción genera otro aviso (puesto que intenta imprimir el valor $matriz[1], que no existe) y escribe un párrafo vacío (puesto que no hay valor de $matriz[1].</p>
+
+              <p class="control">
+                <a href="#d39"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d311"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d311">
+              <p><strong>Paso 11</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; <span class="resaltadoconborde">$i++</span>) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 0 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+              <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+
+              <p class="control">
+                <a href="#d310"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d312"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d312">
+              <p><strong>Paso 12</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; <span class="resaltadoconborde">$i &lt;= 1</span>; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 0 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;</code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+              <p>En este caso, $i ya no es inferior o igual a 1 (vale 2), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+
+              <p class="control">
+                <a href="#d311"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <a href="#d313"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+              </p>
+            </div>
+
+            <div id="d313">
+              <p><strong>Paso 13</strong></p>
+
+              <table class="ejemplo">
+                <tbody>
+                  <tr>
+                    <td class="codphp">
+                      <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", "dos" =&gt; "bb");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+for ($i = 0; $i &lt;= 1; $i++) {
+    print "&lt;p&gt;$matriz[$i]&lt;/p&gt;\n";
+}
+<span class="resaltadoconborde">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+                    </td>
+                    <td class="resul-php">
+                      <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [dos] =&gt; bb
+)
+&lt;/pre&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 0 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;7&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+              <p>En este caso, imprime el párrafo final.</p>
+
+              <p class="control">
+                <a href="#d312"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+              </p>
+            </div>
+          </div>
+
+          <p><strong>Nota</strong>: Esta situación no se podría evitar pues los índices de la matriz no son valores numéricos.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="sintaxis">
+      <h2>Sintaxis del bucle foreach</h2>
+
+      <p>La sintaxis del <a href="http://www.php.net/manual/es/control-structures.foreach.php">bucle foreach</a> puede ser una de las siguientes:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">foreach ($matriz as $valor) {
+    bloque_de_sentencias
+}</code>
+</pre>
+      </div>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">foreach ($matriz as $indice =&gt; $valor) {
+    bloque_de_sentencias
+}</code>
+</pre>
+      </div>
+
+      <p>El bucle se ejecuta tantas veces como elementos tiene la matriz. En cada iteración, las variables $indice y $valor van tomando los valores de los índices y de la matriz para ese índice.</p>
+    </section>
+
+    <section id="ejemplos">
+      <h2>Ejemplos de bucles</h2>
+
+      <section id="matrices">
+        <h3>Matrices</h3>
+        <ul>
+          <li>En el ejemplo siguiente, el bucle recorre una matriz imprimiendo sus valores
+
+            <div class="diapo" style="height: 430px;">
+
+              <div id="d41">
+                <p><strong>Paso 1</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+<span class="resaltadoconborde">$matriz = array("a", "bb", "ccc");</span>
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php"><pre><code class="language-html"> </code></pre></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Se ejecuta la primera instrucción del programa.</p>
+
+                <p>En este caso, se crea la matriz $matriz.</p>
+
+                <p class="control">
+                  <a href="#d42"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d42">
+                <p><strong>Paso 2</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+<span class="resaltadoconborde">print "&lt;pre&gt;\n";</span>
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php"><pre><code class="language-html"><span class="resaltadoconborde">&lt;pre&gt;</span></code></pre></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se abre la etiqueta <span class="html-eti">&lt;pre&gt;</span>.</p>
+
+                <p class="control">
+                  <a href="#d41"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d43"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d43">
+                <p><strong>Paso 3</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+<span class="resaltadoconborde">print_r($matriz);</span>
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;</code></pre>
+                        <pre class="resaltadoconborde"><code class="language-html ">Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se imprimen los valores de la matriz $matriz.</p>
+
+                <p class="control">
+                  <a href="#d42"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d44"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d44">
+                <p><strong>Paso 4</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+<span class="resaltadoconborde">print "&lt;/pre&gt;\n";</span>
+foreach ($matriz as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+<span class="resaltadoconborde">&lt;/pre&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se cierra la etiqueta <span class="html-eti">&lt;/pre&gt;</span>.</p>
+
+                <p class="control">
+                  <a href="#d43"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d45"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d45">
+                <p><strong>Paso 5</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $valor</span>) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecuta el bucle. La variable $valor va a ir tomando sucesivamente los valores de la matriz.</p>
+
+                <p>En este caso, la variable $valor toma el valor "a".</p>
+
+                <p class="control">
+                  <a href="#d44"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d46"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d46">
+                <p><strong>Paso 6</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $valor) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$valor&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;
+<span class="resaltadoconborde">&lt;p&gt;a&lt;/p&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecutan las instrucciones del bloque.</p>
+
+                <p>En este caso, se imprime el texto &lt;p&gt;a&lt;/p&gt; ya que $valor tiene el valor "a".</p>
+
+                <p class="control">
+                  <a href="#d45"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d47"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d47">
+                <p><strong>Paso 7</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $valor</span>) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación $valor pasa a tomar el valor siguiente de la matriz.</p>
+
+                <p>En este caso, la variable $valor toma el valor "bb".</p>
+
+                <p class="control">
+                  <a href="#d46"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d48"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d48">
+                <p><strong>Paso 8</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $valor) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$valor&lt;/p&gt;\n"</span>;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;bb&lt;/p&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+                <p>En este caso, se imprime el texto &lt;p&gt;bb&lt;/p&gt; ya que $valor tiene el valor "bb".</p>
+
+                <p class="control">
+                  <a href="#d47"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d49"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d49">
+                <p><strong>Paso 9</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $valor</span>) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación $valor pasa a tomar el valor siguiente de la matriz.</p>
+
+                <p>En este caso, la variable $valor toma el valor "ccc".</p>
+
+                <p class="control">
+                  <a href="#d48"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d410"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d410">
+                <p><strong>Paso 10</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $valor) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$valor&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;</code>
+</pre>
+                        <pre class="resaltadoconborde"><code class="language-html">&lt;p&gt;ccc&lt;/p&gt;</code></pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+                <p>En este caso, se imprime el texto &lt;p&gt;ccc&lt;/p&gt; ya que $valor tiene el valor "ccc".</p>
+
+                <p class="control">
+                  <a href="#d49"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d411"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d411">
+                <p><strong>Paso 11</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $valor</span>) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;p&gt;ccc&lt;/p&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación $valor pasa a tomar el valor siguiente de la matriz.</p>
+
+                <p>Pero como en la matriz no quedan más valores, no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+
+                <p class="control">
+                  <a href="#d410"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d412"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d412">
+                <p><strong>Paso 12</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("a", "bb", "ccc");
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+<span class="resaltadoconborde">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [0] =&gt; a
+    [1] =&gt; bb
+    [2] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;p&gt;bb&lt;/p&gt;
+&lt;p&gt;ccc&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+                <p>En este caso, imprime el párrafo final.</p>
+
+                <p class="control">
+                  <a href="#d411"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>En el ejemplo siguiente, el bucle recorre una matriz imprimiendo sus índices y valores
+
+            <div class="diapo" style="height: 430px;">
+
+              <div id="d51">
+                <p><strong>Paso 1</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+<span class="resaltadoconborde">$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc");</span>
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php"><pre><code class="language-html"> </code></pre></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Se ejecuta la primera instrucción del programa.</p>
+
+                <p>En este caso, se crea la matriz $matriz.</p>
+
+                <p class="control">
+                  <a href="#d52"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d52">
+                <p><strong>Paso 2</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc");
+<span class="resaltadoconborde">print "&lt;pre&gt;\n";</span>
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php"><pre><code class="language-html"><span class="resaltadoconborde">&lt;pre&gt;</span></code></pre></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se abre la etiqueta <span class="html-eti">&lt;pre&gt;</span>.</p>
+
+                <p class="control">
+                  <a href="#d51"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d53"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d53">
+                <p><strong>Paso 3</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc");
+print "&lt;pre&gt;\n";
+<span class="resaltadoconborde">print_r($matriz);</span>
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;</code></pre>
+                        <pre class="resaltadoconborde"><code class="language-html ">Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se imprimen los valores de la matriz $matriz.</p>
+
+                <p class="control">
+                  <a href="#d52"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d54"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d54">
+                <p><strong>Paso 4</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+<span class="resaltadoconborde">print "&lt;/pre&gt;\n";</span>
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+<span class="resaltadoconborde">&lt;/pre&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se cierra la etiqueta <span class="html-eti">&lt;/pre&gt;</span>.</p>
+
+                <p class="control">
+                  <a href="#d53"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d55"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d55">
+                <p><strong>Paso 5</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $indice =&gt; $valor</span>) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecuta el bucle. Las variables $indice y $valor van a ir tomando sucesivamente los valores del índice y del elemento de la matriz, respectivamente.</p>
+
+                <p>En este caso, la variable $indice toma el valor "uno" y $valor toma el valor "a".</p>
+
+                <p class="control">
+                  <a href="#d54"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d56"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d56">
+                <p><strong>Paso 6</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;
+<span class="resaltadoconborde">&lt;p&gt;uno - a&lt;/p&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecutan las instrucciones del bloque.</p>
+
+                <p>En este caso, se imprime el texto &lt;p&gt;uno - a&lt;/p&gt; ya que $indice tiene el valor "uno" y $valor tiene el valor "a".</p>
+
+                <p class="control">
+                  <a href="#d55"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d57"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d57">
+                <p><strong>Paso 7</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $indice =&gt; $valor</span>) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;uno - a&lt;/p&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación $indice y $valor pasan a tomar los valores del elemento siguiente de la matriz.</p>
+
+                <p>En este caso, la variable $indice toma el valor "2" y $valor toma el valor "bb".</p>
+
+                <p class="control">
+                  <a href="#d56"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d58"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d58">
+                <p><strong>Paso 8</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n"</span>;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;uno - a&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;2 - bb&lt;/p&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+                <p>En este caso, se imprime el texto &lt;p&gt;2 - bb&lt;/p&gt; ya que $indice tiene el valor "2" y $valor tiene el valor "bb".</p>
+
+                <p class="control">
+                  <a href="#d57"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d59"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d59">
+                <p><strong>Paso 9</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $indice =&gt; $valor</span>) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;uno - a&lt;/p&gt;
+&lt;p&gt;2 - bb&lt;/p&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación $indice y $valor pasan a tomar los valores del elemento siguiente de la matriz.</p>
+
+                <p>En este caso, la variable $indice toma el valor "tres" y $valor toma el valor "ccc".</p>
+
+                <p class="control">
+                  <a href="#d58"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d510"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d510">
+                <p><strong>Paso 10</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    <span class="resaltadoconborde">print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;uno - a&lt;/p&gt;
+&lt;p&gt;2 - bb&lt;/p&gt;</code>
+</pre>
+                        <pre class="resaltadoconborde"><code class="language-html">&lt;p&gt;tres - ccc&lt;/p&gt;</code></pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+                <p>En este caso, se imprime el texto &lt;p&gt;tres - ccc&lt;/p&gt; ya que $indice tiene el valor "tres" y $valor tiene el valor "ccc".</p>
+
+                <p class="control">
+                  <a href="#d59"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d511"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d511">
+                <p><strong>Paso 11</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $indice =&gt; $valor</span>) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;uno - a&lt;/p&gt;
+&lt;p&gt;2 - bb&lt;/p&gt;
+&lt;p&gt;tres - ccc&lt;/p&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación $indice y $valor pasan a tomar los valores del elemento siguiente de la matriz.</p>
+
+                <p>Pero como en la matriz no quedan más valores, no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+
+                <p class="control">
+                  <a href="#d510"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d512"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d512">
+                <p><strong>Paso 12</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array("uno" =&gt; "a", 2 =&gt; "bb", "tres" =&gt; "ccc")
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+<span class="resaltadoconborde">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [uno] =&gt; a
+    [2] =&gt; bb
+    [tres] =&gt; ccc
+)
+&lt;/pre&gt;
+&lt;p&gt;uno - a&lt;/p&gt;
+&lt;p&gt;2 - bb&lt;/p&gt;
+&lt;p&gt;tres - ccc&lt;/p&gt;
+<span class="resaltadoconborde">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+                <p>En este caso, imprime el párrafo final.</p>
+
+                <p class="control">
+                  <a href="#d511"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>Si la matriz es una matriz vacía, el bucle simplemente no se ejecuta, como muestra el siguiente ejemplo:
+
+            <div class="diapo" style="height: 430px;">
+
+              <div id="d61">
+                <p><strong>Paso 1</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+<span class="resaltadoconborde">$matriz = array();</span>
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php"><pre><code class="language-html"> </code></pre></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Se ejecuta la primera instrucción del programa.</p>
+
+                <p>En este caso, se crea la matriz $matriz.</p>
+
+                <p class="control">
+                  <a href="#d62"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d62">
+                <p><strong>Paso 2</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array();
+<span class="resaltadoconborde">print "&lt;pre&gt;\n";</span>
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php"><pre><code class="language-html"><span class="resaltadoconborde">&lt;pre&gt;</span></code></pre></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se abre la etiqueta <span class="html-eti">&lt;pre&gt;</span>.</p>
+
+                <p class="control">
+                  <a href="#d61"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d63"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d63">
+                <p><strong>Paso 3</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array();
+print "&lt;pre&gt;\n";
+<span class="resaltadoconborde">print_r($matriz);</span>
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;</code></pre>
+                        <pre class="resaltadoconborde"><code class="language-html ">Array
+(
+)</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se imprimen los valores de la matriz $matriz.</p>
+
+                <p class="control">
+                  <a href="#d62"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d64"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d64">
+                <p><strong>Paso 4</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array()
+print "&lt;pre&gt;\n";
+print_r($matriz);
+<span class="resaltadoconborde">print "&lt;/pre&gt;\n";</span>
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+)
+<span class="resaltadoconborde">&lt;/pre&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación se cierra la etiqueta <span class="html-eti">&lt;/pre&gt;</span>.</p>
+
+                <p class="control">
+                  <a href="#d63"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d65"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d65">
+                <p><strong>Paso 5</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array()
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach (<span class="resaltadoconborde">$matriz as $indice =&gt; $valor</span>) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+)
+&lt;/pre&gt;</code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>A continuación $indice y $valor deberían pasan a tomar los valores del primer elemento de la matriz.</p>
+
+                <p>Pero como en la matriz no hay valores, no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina sin haber ejecutado ninguna vez las instrucciones del cuerpo del bucle..</p>
+
+                <p class="control">
+                  <a href="#d64"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <a href="#d66"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+                </p>
+              </div>
+
+              <div id="d66">
+                <p><strong>Paso 6</strong></p>
+
+                <table class="ejemplo">
+                  <tbody>
+                    <tr>
+                      <td class="codphp">
+                        <pre>
+<code class="language-php">&lt;?php
+$matriz = array()
+print "&lt;pre&gt;\n";
+print_r($matriz);
+print "&lt;/pre&gt;\n";
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice - $valor&lt;/p&gt;\n";
+}
+<span class="resaltadoconborde">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+                      </td>
+                      <td class="resul-php">
+                        <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+)
+&lt;/pre&gt;
+<span class="resaltadoconborde">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+                <p>En este caso, imprime el párrafo final.</p>
+
+                <p class="control">
+                  <a href="#d65"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+                  <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="consultas">
+        <h3>Consultas a bases de datos</h3>
+
+        <p class="incompleto">Por completar</p>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2013</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

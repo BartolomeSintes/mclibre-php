@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Guía de estilo para PHP. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Guía de estilo para PHP</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Guía de estilo para PHP</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#introduccion">Introducción</a></li>
+          <li><a href="#guia-estilo">Guía de estilo recomendada</a></li>
+          <li><a href="#no-adoptadas">No adoptadas</a></li>
+          <li><a href="#herramientas">Herramientas</a></li>
+          <li><a href="#saber-mas">Para saber más</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="introduccion">
+      <h2>Introducción</h2>
+
+      <p>Una guía de estilo de un lenguaje de programación es un conjunto de recomendaciones sobre la forma de dar formato a los programas. El interés de utilizar un estilo específico es facilitar la reutilización de código y la detección de errores. Existen muchos estilos de programación y no se puede decir que uno sea mejor que otro, pero sí que es conveniente adoptar algún estilo determinado y utilizarlo de forma consistente.</p>
+
+      <p>El estilo utilizado en estos apuntes y que se recomienda sigan los alumnos se basa:</p>
+      <ul>
+        <li>en primer lugar, en la <a href="http://www.php-fig.org/psr/psr-2/">guía     de estilo PSR-2</a> del grupo <a href="http://www.php-fig.org/">PHP-FIG (PHP Framework Interop Group)</a>, un grupo en el que participan los autores de los frameworks PHP más populares,</li>
+        <li>en segundo lugar, en la <a href="http://pear.php.net/manual/en/standards.php">guía de estilo oficial</a> del proyecto <a href="http://pear.php.net/">PEAR</a>, el proyecto más importante de bibliotecas para PHP,</li>
+        <li>en tercer lugar, en las preferencias personales del autor.</li>
+      </ul>
+
+      <p><strong>Nota</strong>: Existe una <a href="https://github.com/php/php-src/blob/master/CODING_STANDARDS">guía de estilo oficial de PHP</a>, pero esta guía se refiere al código fuente de PHP, que está escrito en C, y está dirigida a los programadores que desarrollan el lenguaje, no se refiere a programas escritos en PHP.</p>
+
+      <p>En esta lección se comentan las recomendaciones de estilo más importantes. Cuando las reglas de estilo ...</p>
+      <ul>
+        <li>provienen de PSR-2 y PEAR, las reglas de estilo utilizan las expresiones "se debe ..." o "no se debe ...".</li>
+        <li>provienen de PSR-2 o PEAR, se indica entre corchetes el nombre de la guía.</li>
+        <li>son elecciones del profesor se utilizan las expresiones "se aconseja ..." o "no es necesario ...".</li>
+      </ul>
+
+      <p>En la lección de configuración de Eclipse PDT se explica cómo <a href="in_eclipse_configuracion_2.html#configuracion-editor">configurar Eclipse PDT</a> para <a href="in_eclipse_configuracion_2.html#psr2-elegir">formatear un programa de acuerdo con las recomendaciones de estilo PSR-2</a>.</p>
+    </section>
+
+    <section id="guia-estilo">
+      <h2>Guía de estilo recomendada a los alumnos</h2>
+
+      <section id="configuracion-php">
+        <h3>Configuración de php</h3>
+
+        <p>[PEAR] El código no debe generar errores o avisos cuando la directiva <span class="php-dir">error_reporting</span> tiene el valor E_<span class="php-con">STRICT</span>.</p>
+      </section>
+
+      <section id="delimitadores">
+        <h3>Delimitadores de bloque PHP</h3>
+
+        <p>Los framentos PHP deben delimitarse con <span class="php-con">&lt;?php ... ?&gt;</span> y no con <span class="php-con">&lt;? ... ?&gt;</span>.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;";
+?&gt;</code>
+</pre>
+        </div>
+
+        <p>[PSR-2] También puede utilizarse <span class="php-con">&lt;?= ... ?&gt;</span>.</p>
+
+        <div class="codphp">
+          <pre><code class="language-php"><span class="preprocessor">&lt;?=</span> "&lt;p&gt;Hola&lt;/p&gt;" <strong>?&gt;</strong></code></pre>
+        </div>
+      </section>
+
+      <section id="comentarios">
+        <h3>Comentarios</h3>
+
+        <p>Se aconseja utilizar <strong>//</strong> en los comentarios de una sola línea.</p>
+
+        <p>Los comentarios de varias líneas pueden delimitarse con <strong>/* ... */</strong> o con varios <strong>//</strong>.</p>
+
+        <p>No se debe utilizar <span class="php-con">#</span>.</p>
+
+        <p>Para facilitar la legibilidad, se aconseja colocar el cierre del comentario de varias líneas (*/) al principio de la línea (aunque puede ir precedido por espacios en blanco).</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$nombre = "Fulano" // Nombre del individuo
+?&gt;</code>
+</pre>
+        </div>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+/* Datos personales:
+   Nombre, apellidos
+*/
+$nombre    = "Fulano"
+$apellidos = "Mengánez Zutánez";
+?&gt;</code>
+</pre>
+        </div>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+// Datos personales:
+// Nombre, apellidos
+$nombre    = "Fulano"
+$apellidos = "Mengánez Zutánez";
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="bloques-comentarios">
+        <h3>Bloques de comentario iniciales</h3>
+
+        <p>[PEAR] Los programas deben incluir al principio del documento bloques de comentarios (docblocks).</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+/**
+* Descripción breve
+*
+* Descripción extensa (opcional)
+*
+* @author Fulanito de Tal &lt;fulanito@example.com&gt;
+* @copyright 2007 Fulanito de Tal
+* @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+* @version 2007-02-06
+* @link http://www.example.org
+*/
+?&gt;</code>
+</pre>
+        </div>
+
+        <p class="incompleto">Por completar: mencionar <a href="http://www.oracle.com/technetwork/articles/java/index-jsp-135444.html">JavaDoc</a> y phpDocumentor.</p>
+      </section>
+
+      <section id="longitud-linea">
+        <h3>Longitud de línea</h3>
+
+        <p>No se deben superar los 85 caracteres por línea.</p>
+
+        <p>Al partir una línea, la segunda y siguientes líneas deben sangrarse 4 espacios. Si es posible, estas líneas deben empezar por un operador.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Este texto es muy largo y no cabe en una sola línea, así que he "
+    . "partido el texto en dos líneas escribiendo el operador de concatenación "
+    . "(.) al principio de cada línea.&lt;/p&gt;";
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="instrucciones-linea">
+        <h3>Instrucciones por línea</h3>
+
+        <p>Se aconseja no incluir más de una instrucción por línea.</p>
+      </section>
+
+      <section id="espacios-en-blanco">
+        <h3>Espacios en blanco</h3>
+
+        <p>[PEAR] Después de una coma, debe haber un espacio en blanco.</p>
+
+        <div class="codphp">
+          <pre>
+<span class="language-php">&lt;?php
+$var = foo(<span class="codigo-resaltado">$bar, $cel, $ona</span>);
+?&gt;</span>
+</pre>
+        </div>
+
+        <p>[PEAR] Cualquier operador binario (por ejemplo: + - * / = . == &amp;&amp; || ? : ) debe estar rodeado de espacios en blanco.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$cmTotal = <span class="codigo-resaltado">100000 * $km + 100 * $m + $cm</span>;
+?&gt;</code>
+</pre>
+        </div>
+
+        <p>[PEAR] Los operadores unarios (por ejemplo: ! ++ --) deben unirse a su argumento sin espacios en blanco</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$correcto = <span class="codigo-resaltado">!$error</span>;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="lineas-en-blanco">
+        <h3>Líneas en blanco</h3>
+
+        <p>Se aconseja separar con líneas en blanco las diferentes partes de un programa (recogida de datos, mensajes de error, respuesta del programa, etc.).</p>
+      </section>
+
+      <section id="comillas">
+        <h3>Comillas dobles y simples</h3>
+
+        <p>Se aconseja delimitar las cadenas con comillas dobles (") en vez de con comillas simples ('). Se aconseja también que el código html generado por PHP incluya comillas dobles:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+print <strong>"</strong>&lt;p style=<strong>\"</strong>text-align: center<strong></strong><strong>\"</strong>&gt;Hola&lt;/p&gt;<strong>"</strong>;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="nombres-variables">
+        <h3>Nombres de variables</h3>
+
+        <p>[PEAR] Los nombres de variables deben escribirse con el estilo camelCase, es decir empezar en minúscula y, si el nombre de la variable está formada por varias palabras, la primera letra de las palabras (menos la primera) debe escribirse en mayúscula</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php"><span class="codigo-resaltado">$nombre</span>         = "Fulano";
+<span class="codigo-resaltado">$nombreAlumno</span>   = "Mengano";
+<span class="codigo-resaltado">$nombreProfesor</span> = "Zutano";</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="alineacion">
+        <h3>Alineación de definiciones de variables</h3>
+
+        <p>[PEAR] Si se definen varias variables, se deben alinear las igualdades con espacios en blanco para facilitar la legibilidad.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">$nombre         = "Fulano";
+$nombreAlumno   = "Mengano";
+$nombreProfesor = "Zutano";</code>
+</pre>
+        </div>
+
+        <p><strong>Nota:</strong> Este estilo está recomendado en la guía de estilo de PEAR y desaconsejado en la guía de estilo de Python.</p>
+      </section>
+
+      <section id="constantes">
+        <h3>Constantes</h3>
+
+        <p>Las constantes deben escribirse en mayúsculas y separando las palabras con guiones bajos (_).</p>
+
+        <p>Las constantes <span class="php-con">true</span>, <span class="php-con">false</span> y <span class="php-con">null</span> debe escribirse en minúsculas.</p>
+      </section>
+
+      <section id="sangrado">
+        <h3>Sangrado</h3>
+
+        <p>Se debe utilizar un sangrado de 4 espacios y no utilizar tabuladores. En estructuras anidadas, se acumularán los sangrados.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+if (condicion1) {
+    accion1;
+} else {
+    accion2;
+    if (condicion3) {
+        accion3;
+    } else {
+        accion4;
+    }
+}
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="estructuras-control">
+        <h3>Estructuras de control</h3>
+
+        <p>Las estructuras de control deben tener un espacio entre la palabra reservada y el paréntesis inicial, para distinguirlas de las funciones.</p>
+
+        <p>En los bloques de sentencias deben utilizarse siempre llaves, incluso cuando podrían omitirse (por ejemplo, cuando el bloque está formado por una única sentencia). La llave de apertura debe situarse al final de la línea y la llave de cierre debe situarse al principio de la línea.</p>
+
+        <p>Ejemplos de estructuras de control:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+if (condicion1 || condicion2) {
+    accion1;
+} elseif (condicion3 &amp;&amp; condicion4) {
+    accion2;
+} else {
+    accionpredeterminada;
+}
+?&gt;</code>
+</pre>
+        </div>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">for (expresión_inicial; expresión_final; expresión_paso) {
+    bloque_de_sentencias
+}</code>
+</pre>
+        </div>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">foreach ($matriz as $valor) {
+    bloque_de_sentencias
+}</code>
+</pre>
+        </div>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">while (expresión) {
+    bloque_de_sentencias
+}</code>
+</pre>
+        </div>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">do {
+    bloque_de_sentencias
+} while (expresión) </code>
+</pre>
+        </div>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+switch (condicion) {
+case 1:
+    accion1;
+    break;
+
+case 2:
+    accion2;
+    break;
+
+default:
+    accionpredeterminada;
+    break;
+}
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="expresiones-logicas">
+        <h3>Expresiones lógicas</h3>
+
+        <p>No es necesario comparar las variables booleanas con los valores <span class="php-con">true</span> o <span class="php-con">false</span>, se aconseja utilizar directamente la variable o su negación.</p>
+
+        <p>En vez de:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">if <span class="codigo-resaltado">($correcto == true)</span> {
+    print "&lt;p&gt;Es correcto&lt;/p&gt;";
+}
+if <span class="codigo-resaltado">($correcto == false)</span> {
+   print "&lt;p&gt;No es correcto&lt;/p&gt;";
+}</code>
+</pre>
+        </div>
+
+        <p>se aconseja escribir:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">if <span class="codigo-resaltado">($correcto)</span> {
+    print "&lt;p&gt;Es correcto&lt;/p&gt;";
+}
+if <span class="codigo-resaltado">(!$correcto)</span> {
+   print "&lt;p&gt;No es correcto&lt;/p&gt;";
+}</code>
+</pre>
+        </div>
+
+        <p>Al concatenar expresiones lógicas sencillas, no es necesario escribir cada expresión entre paréntesis.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">if <span class="codigo-resaltado">($numero &lt; 0 || $numero &gt; 100)</span> {
+    print "&lt;p&gt;El número no está en el intervalo [0, 100]&lt;/p&gt;";
+}</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="definicion-funciones">
+        <h3>Definición de funciones</h3>
+
+        <p>[PEAR] Las funciones deben declararse de acuerdo con el estilo "BSD/Allman":</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+function fooFuncion($arg1, $arg2 = '')
+{
+    if (condicion) {
+        sentencia;
+    }
+    return $val;
+}
+?&gt;</code>
+</pre>
+        </div>
+
+        <p>Los argumentos con valores predeterminados se deben colocar al final de la lista de argumentos.</p>
+
+        <p>Las funciones deben devolver algún valor.</p>
+      </section>
+
+      <section id="llamadas-funciones">
+        <h3>Llamadas a funciones</h3>
+
+        <p>No debe haber espacios entre el nombre de la función, el paréntesis inicial y el primer argumento. Debe haber espacios tras las comas que separen argumentos. No debe haber espacios entre el último argumento, el paréntesis final y el punto y coma.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php
+$var = <span class="codigo-resaltado">foo($bar, $cel, $ona)</span>;
+?&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="bibliotecas">
+        <h3>Bibliotecas</h3>
+
+        <p>[PEAR] Para incluir bibliotecas cuya inclusión no depende de ninguna condición, debe utilizarse <span class="php-fun">require_once</span> y no deben utilizarse paréntesis alrededor del nombre de la biblioteca.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php"><span class="codigo-resaltado">require_once</span> "biblioteca.php";
+ ...</code>
+ </pre>
+        </div>
+      </section>
+    </section>
+
+    <section id="no-adoptadas">
+      <h2>Recomendaciones no adoptadas</h2>
+
+      <p>Se incluyen en este apartado algunas recomendaciones de las guías de estilo PSR-2 y PEAR no adoptadas en estos apuntes.</p>
+
+      <section id="formato-archivos">
+        <h3>Formatos de archivo</h3>
+
+        <p>[PSR-2] Los archivos deben guardarse en formato UTF-8 y utilizar la codificación UTF-8 y el formato Unix (carácter LF como final de línea y al final de la última línea del archivo).</p>
+
+        <p>[PEAR] Los archivos deben guardarse en formato ASCII y utilizar la codificación ISO-8859-1 o UTF-8 y el formato Unix (carácter LF como final de línea y al final de la última línea del archivo).</p>
+      </section>
+
+      <section id="gestion-errores">
+        <h3>Gestión de errores</h3>
+
+        <p class="incompleto">Por completar.</p>
+      </section>
+    </section>
+
+    <section id="herramientas">
+      <h2>Herramientas</h2>
+
+      <p><a href="http://pear.php.net/package/PHP_Beautifier">PHP-Beatifier</a> es un paquete PEAR que formatea automáticamente archivos PHP.</p>
+
+      <p><a href="http://pear.php.net/package/PHP_CodeSniffer">PHP_CodeSniffer</a> es un paquete PEAR que detecta errores de formateo en archivos PHP.</p>
+
+      <p><a href="http://pear.php.net/package/PhpDocumentor">phpDocumentor</a> es un paquete PEAR que detecta errores de formateo en archivos PHP.</p>
+    </section>
+
+    <section id="saber-mas">
+      <h2>Para saber más</h2>
+
+      <p>Artículo que comenta y razona varias reglas de estilo: <a href="http://home.tamk.fi/~jaalto/course/coding-style/">http://home.tamk.fi/~jaalto/course/coding-style/</a></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 22 de septiembre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

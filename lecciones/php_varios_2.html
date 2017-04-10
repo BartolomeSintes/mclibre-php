@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Varios (2). PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body onload="document.getElementById('cursor').focus()">
+    <h1>Varios (2)</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Varios (2)</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#cursor-en-control">Situar el cursor en un control al cargar un formulario</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="cursor-en-control">
+      <h2>Situar el cursor en un control al cargar un formulario</h2>
+
+      <p>Una forma de facilitar el uso de una página con controles es situar automáticamente el cursor en el control que probablemente va a utilizar el usuario, ahorrando al usuario el tener que hacer clic en ese control. Esto se puede conseguir mediante Javascript.</p>
+
+      <p>Una manera de hacerlo es asignar el atributo <span class="html-atri">id</span> del control sobre el que se quiere situar el cursor automáticamente y establecer el atributo <span class="html-atri">onload</span> del elemento <span class="html-eti">body</span> con el valor <span class="html-atri-valor">document.getElementById('XYZ').focus()</span>, donde XYZ es el <span class="html-atri">id</span> del control, como muestra el ejemplo siguiente:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-html">&lt;body onload="document.getElementById('cursor').focus()"&gt;
+&lt;form action="validar1.php"&gt;
+  &lt;p&gt;Al cargar esta página, el cursor sitúa automáticamente en la primera caja de texto:&lt;/p&gt;
+  &lt;table&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Usuario:&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="usuario" id="cursor" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Contraseña:&lt;/td&gt;
+        &lt;td&gt;&lt;input type="password" name="password" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;p&gt;&lt;input type="submit" value="Entrar" /&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;/body&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><p>Al cargar esta página, el cursor se sitúa automáticamente en la primera caja de texto:</p>
+
+              <table class="sinborde">
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" id="cursor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="password" name="password" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 20 de octubre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

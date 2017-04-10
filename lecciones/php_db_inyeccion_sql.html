@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Inyecciones SQL. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Inyecciones SQL</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Inyecciones SQL</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#aplicacion">Aplicación de ejemplo</a></li>
+          <li><a href="#inyeccion-1">1 - Acceder sin contraseña</a></li>
+          <li><a href="#inyeccion-2">2 - Nombre de los campos</a></li>
+          <li><a href="#inyeccion-3">3 - Nombres de las tablas</a></li>
+          <li><a href="#inyeccion-4">4 - Contenido  registros</a></li>
+          <li><a href="#inyeccion-5">5 - Añadir usuario</a></li>
+          <li><a href="#inyeccion-6">6 - Borrar tabla</a></li>
+          <li><a href="#terminar">Para terminar ...</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Las denominadas "inyecciones SQL" son un tipo de ataque a una aplicación que aprovecha fallos de seguridad en la base de datos. En esta lección , vamos a ver ejemplos de inyecciones SQL. Esta lección está basada en el artículo de Steve Friedl <a href="http://unixwiz.net/techtips/sql-injection.html">SQL Injection Attacks by Example</a> cuya lectura recomiendo, o la chuleta <a href="https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/">SQL injection cheat sheet</a>. Por supuesto, el objetivo de esta lección es concienciar de la necesidad de proteger cualquier aplicación web de este tipo de ataques.</p>
+
+    <section id="aplicacion">
+      <h2>Aplicación de ejemplo</h2>
+
+      <p>Utilizaremos como ejemplo una aplicación similar a la de los ejercicios Bases de datos 1.</p>
+      <ul>
+        <li>Esta aplicación tiene un menú con tres opciones:
+          <ul>
+            <li><strong>Borrar todo</strong>, para borrar y crear la tabla de usuarios, que contiene únicamente dos campos (el nombre y la contraseña del usuario).</li>
+            <li><strong>Añadir usuarios</strong>, para añadir nombres de usuario y sus contraseñas en la tabla de usuarios.</li>
+            <li><strong>Entrar al sistema</strong>, que simula una página de entrada en una aplicación web, solicitando un nombre de usuario y su contraseña, comprobando si está en la tabla de usuarios y respondiendo
+              <ul>
+                <li>el nombre de usuario y la contraseña son correctos.</li>
+                <li>el nombre de usuario es correcto, pero la contraseña no es correcta.</li>
+                <li>el nombre de usuario no es correcto.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Esta aplicación es vulnerable a algunos ataques de inyección SQL porque los datos enviados por el usuario se incluyen en las consultas a la base de datos sin ningún tipo de tratamiento previo.</li>
+        <li>Esta aplicación no es vulnerable a todos los ataques de inyección SQL que se comentan en esta lección porque utiliza la extensión PDO. Si quiere probar en su ordenador una aplicación similar vulnerable a todos los ataques que se comentan en esta lección, puede descargar este archivo (<a href="../soluciones/1213/mclibre_inyeccion_sql_2.zip">inyeccion_sql_2.zip</a>) y probarla en su ordenador.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="../ejercicios/bases_datos/inyeccion_sql/inyeccion_sql_1/index.php">Enlace a ejemplo Inyección SQL 1</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="../ejercicios/bases_datos/inyeccion_sql/inyeccion_sql_1/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="inyeccion-1">
+      <h2>Inyección SQL 1 - Acceder a la aplicación sin tener nombre de usuario ni contraseña</h2>
+
+      <p>Cuando el usuario escriba un nombre de usuario y contraseña, la aplicación responde uno de estos tres mensajes:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html"><p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>
+                <input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">
+              Nombre de usuario y contraseña correctos.
+
+              <p>Nombre de usuario incorrecto.</p>
+
+              <p>Contraseña incorrecta.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>Para comprobar si la aplicación incluye los datos enviados por el usuario sin ningún tratamiento previo, podemos enviar una comilla (simple o doble) como dato.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="&#34;loquesea" /> </td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /> </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Nombre de usuario incorrecto.</td>
+          </tr>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="'loquesea" /> </td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /> </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>/<input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Error en la consulta.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Este último mensaje ("Error en la consulta") nos hace saber que no se tratan los datos y que además las consultas están delimitadas por dobles comillas. ¿Por qué?</p>
+
+      <p>Probablemente el código de la aplicación es algo similar a esto:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">$usuario    = $_REQUEST["usuario"];
+$contraseña = $_REQUEST["contraseña"];
+
+$consulta = "SELECT COUNT(*) FROM $dbTabla
+    WHERE campo1='$usuario'
+    AND campo2='$contraseña'";
+$result = sqlite_exec($db, $consulta);
+if (!$result) {
+    print "&lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+} elseif ($result[0][0] &gt; 0) {
+    print "&lt;p&gt;Nombre de usuario y contraseña correctos.&lt;/p&gt;\n";
+} else {
+ ...</code>
+ </pre>
+      </div>
+
+      <p>Al escribir una comilla doble al principio del nombre de usuario, la consulta se convierte en </p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM $dbTabla
+WHERE campo1='"loquesea'
+AND campo2='loquesea'
+</pre>
+      </div>
+
+      <p>Esta consulta es correcta (no contiene errores de sintaxis) y cuando se ejecuta, la base de datos simplemente devuelve 0.</p>
+
+      <p>Sin embargo, al escribir una comilla simple al principio del nombre de usuario, la consulta se convierte en </p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM $dbTabla
+WHERE campo1=''loquesea'
+AND campo2='loquesea'
+</pre>
+      </div>
+
+      <p>Esta consulta no es correcta (contiene un error de sintaxis por culpa de la comilla dentro de las comillas de la segunda línea y cuando se ejecuta, la base de datos da error.</p>
+
+      <hr class="corta" />
+
+      <p>Ahora que sabemos que la consulta está delimitada por comillas dobles podemos escribir unos datos que modificarán la consulta y harán que la aplicación crea que hemos introducido datos de un usuario registrado.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR '1'='1" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Nombre de usuario y contraseña correctos.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea' OR '1'='1'
+</pre>
+      </div>
+
+      <p>Esta consulta es correcta y, cuando se ejecuta, la base de datos devuelve el número total de registros en la tabla, puesto que la condición se cumple siempre, aunque el nombre de usuario y la contraseña sean incorrectos, porque la condición final OR '1'='1' se cumple siempre.</p>
+    </section>
+
+    <section id="inyeccion-2">
+      <h2>Inyección SQL 2 - Averiguar el nombre de los campos</h2>
+
+      <p>Los nombres de campos se pueden averiguar mediante prueba y error. La idea es introducir datos que construyan consultas en las que aparezcan posibles nombres de los campos. En caso de que las consultas den error significa que el nombre es incorrecto, si no es así significa que hemos acertado el nombre de los campos.</p>
+
+      <hr class="corta" />
+
+      <p>Por ejemplo, vamos a probar si el nombre de uno de los campos es "usuario".</p>
+
+      <p>Podríamos hacer algo parecido a lo visto en el punto anterior:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario='loquesea" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Error en la consulta.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay un campo que se llame "usuario". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea' AND usuario='loquesea'
+</pre>
+      </div>
+      <hr class="corta" />
+
+      <p>Otra posible entrada podría haber sido la siguiente:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario is NULL; --" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Error en la consulta.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay un campo que se llame "usuario". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea' AND usuario is NULL; --'
+</pre>
+      </div>
+
+      <p>En SQL, los guiones son la marca de inicio de un comentario, de manera que la comilla final no se toma en cuenta en la consulta.</p>
+
+      <p>En ambos casos hemos obtenido "Error en la consulta", por lo que sabemos que ningún campo se llama "usuario".</p>
+
+      <hr class="corta" />
+
+      <p>Hacemos ahora un segundo intento, con el nombre "user"</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND user is NULL; --" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Nombre de usuario incorrecto.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea' AND user is NULL; --'
+</pre>
+      </div>
+
+      <p>Como hemos obtenido la respuesta "Nombre de usuario incorrecto", sabemos que uno de los campos se llama "user".</p>
+    </section>
+
+    <section id="inyeccion-3">
+      <h2>Inyección SQL 3 - Averiguar los nombres de las tablas</h2>
+
+      <p>Los nombres de las tablas se pueden averiguar mediante prueba y error. La idea es introducir datos que construyan consultas en las que aparezcan posibles nombres de las tablas. En caso de que las consultas den error significa que el nombre es incorrecto, si no es así significa que hemos acertado el nombre de las tablas.</p>
+
+      <hr class="corta" />
+
+      <p>Por ejemplo, vamos a probar si el nombre de la tabla es "usuarios".</p>
+
+      <p>Podríamos hacer algo parecido a lo visto en el punto anterior:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario: </td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --"
+                               /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Error en la consulta.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay una tabla que se llame "usuarios". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --'
+</pre>
+      </div>
+
+      <hr class="corta" />
+
+      <p>Hacemos ahora un segundo intento, con el nombre "tabla"</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Nombre de usuario incorrecto.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--
+</pre>
+      </div>
+
+      <p>Como hemos obtenido la respuesta "Nombre de usuario incorrecto", sabemos que una de las tablas se llama "tabla".</p>
+    </section>
+
+    <section id="inyeccion-4">
+      <h2>Inyección SQL 4 - Averiguar el contenido de los registros</h2>
+
+      <p>Una vez se conoce el nombre de la tabla de usuarios y los nombres de los campos se puede intentar conocer valores concretos de un registro mediante prueba y error. La idea es introducir datos que construyan consultas en las que aparezcan posibles contenidos de los campos. En caso de que las consultas den error significa que el contenido es incorrecto, si no es así significa que hemos acertado el contenido.</p>
+
+      <hr class="corta" />
+
+      <p>Por ejemplo, vamos a buscar nombres de usuarios.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario: </td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR user LIKE 'a%';--" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Nombre de usuario y contraseña correctos.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La respuesta de la aplicación es "Nombre de usuario y contraseña correctos.", lo que nos indica que hay un usuario cuyo nombre empieza por "a". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea' OR user LIKE 'a%';--
+</pre>
+      </div>
+
+      <p>Podríamos ir alargando la cadena letra a letra hasta encontrar el nombre del usuario.</p>
+    </section>
+
+    <section id="inyeccion-5">
+      <h2>Inyección SQL 5 - Añadir un nuevo usuario</h2>
+
+      <p><strong>Nota</strong>: Este tipo de ataque no funciona en la aplicación de ejemplo del primer apartado de esta lección ya que la extensión PDO no permite ejecutar varias consultas de una sola vez, pero sí funciona en la aplicación vulnerable <a href="../soluciones/1213/mclibre_inyeccion_sql_2.zip">inyeccion_sql_2.zip</a> que puede probar en su ordenador.</p>
+
+      <p>Una vez se conoce el nombre de la tabla de usuarios y los nombres de los campos se puede intentar editar la base de datos, por ejemplo, añadiendo un usuario.</p>
+
+      <hr class="corta" />
+
+      <p>La técnica consiste en incluir una sentencia SQL que inserte un registro.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; INSERT INTO tabla ('user', 'password') VALUES ('hacker', 'hacker'); --"
+                               /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Nombre de usuario incorrecto</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea'; INSERT INTO tabla VALUES (NULL, 'hacker', 'hacker'); --
+</pre>
+      </div>
+
+      <p>Para comprobar si el ataque ha tenido éxito, habría que probar a entrar como usuario "hacker" con contraseña "hacker".</p>
+
+      <p>Obviamente para que el ataque tenga éxito deberíamos haber acertado la estructura de la tabla, lo que podría exigir numerosas pruebas o ser demasiado difícil. Otra vía para conseguir los datos de un usuario sería averiguar el nombre de algún usuario (mediante sentencias LIKE y algo de paciencia) e inyectar una consulta que cambie su contraseña.</p>
+    </section>
+
+    <section id="inyeccion-6">
+      <h2>Inyección SQL 6 - Borrar una tabla</h2>
+
+      <p><strong>Nota</strong>: Este tipo de ataque no funciona en la aplicación de ejemplo del primer apartado de esta lección ya que la extensión PDO no permite ejecutar varias consultas de una sola vez, pero sí funciona en la aplicación vulnerable <a href="../soluciones/1213/mclibre_inyeccion_sql_2.zip">inyeccion_sql_2.zip</a> que puede probar en su ordenador.</p>
+
+      <p>Una vez se conoce el nombre de la tabla de usuarios vamos a realizar una acción destructiva, como por ejemplo borrar la tabla de usuarios.</p>
+
+      <hr class="corta" />
+
+      <p>La técnica consiste en incluir una sentencia SQL que inserte un registro.
+      </p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="resul-html">
+              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Usuario:</td>
+                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña:</td>
+                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; DROP TABLE tabla; --" /></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p><input type="submit" value="Entrar" /></p>
+            </td>
+            <td class="resul-html">Nombre de usuario incorrecto
+
+              <p>Error en la consulta.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
+
+      <div class="codphp">
+        <pre>SELECT COUNT(*) FROM tabla
+WHERE campo1='loquesea'
+AND campo2='loquesea'; DROP TABLE tabla; --
+</pre>
+      </div>
+
+      <p>Si el ataque ha tenido éxito, la aplicación seguramente dejará de funcionar, puesto que ha desaparecido una de las tablas.</p>
+    </section>
+
+    <section id="terminar">
+      <h2>Para terminar ...</h2>
+
+      <p>La excelente tira cómica <a href="http://xkcd.com/">xkcd</a> publicó un chiste sobre este tema:</p>
+
+      <p class="centrado"><strong><a href="http://xkcd.com/327/">Exploits of a Mom</a></strong> (<a href="https://creativecommons.org/licenses/by-nc/2.5/">CC NC 2.5</a>)</p>
+
+      <p class="centrado"><img alt="xkcd - Exploits of a Mom" src="../img/otros/exploits_of_a_mom.png" width="666" height="205" /></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 29 de noviembre de 2012</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

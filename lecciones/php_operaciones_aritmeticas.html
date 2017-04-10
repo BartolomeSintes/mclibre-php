@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Operaciones aritméticas. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Operaciones aritméticas</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Operaciones aritméticas</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#numeros">Números</a></li>
+          <li><a href="#operadores">Operadores aritméticos</a></li>
+          <li><a href="#incremento">Incremento y decremento</a></li>
+          <li><a href="#resto">Resto de una división</a></li>
+          <li><a href="#parentesis">Paréntesis</a></li>
+          <li><a href="#asignacion">Operadores de asignación</a></li>
+          <li><a href="#redondear">Redondear un número</a></li>
+          <li><a href="#potencias">Potencias</a></li>
+          <li><a href="#maxmin">Máximo y mínimo</a></li>
+          <li><a href="#formatear">Formatear un número</a></li>
+          <li><a href="#aleatorios">Números aleatorios</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="numeros">
+      <h2>Números</h2>
+
+      <p>Los números decimales se escriben con punto (.), no con coma (,).</p>
+    </section>
+
+    <section id="operadores">
+      <h2>Operadores aritméticos</h2>
+
+      <p>Los operadores aritméticos básicos son los siguientes:</p>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Ejemplo</th>
+            <th>Nombre</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>-$a</td>
+            <td>Negación</td>
+            <td>El opuesto de $a.</td>
+          </tr>
+          <tr>
+            <td>$a + $b</td>
+            <td>Suma</td>
+            <td>Suma de $a y $b.</td>
+          </tr>
+          <tr>
+            <td>$a - $b</td>
+            <td>Resta</td>
+            <td>Diferencia entre $a y $b.</td>
+          </tr>
+          <tr>
+            <td>$a * $b</td>
+            <td>Multiplicación</td>
+            <td>Producto de $a y $b.</td>
+          </tr>
+          <tr>
+            <td>$a / $b</td>
+            <td>División</td>
+            <td>Cociente de $a y $b.</td>
+          </tr>
+          <tr>
+            <td>$a % $b</td>
+            <td>Módulo</td>
+            <td>Resto de $a dividido por $b.
+
+              <p><strong>Cuidado</strong>: Los números se convierten a enteros antes de efectuar el cálculo. Por ejemplo, 5 % 2.5 da como resultado 1 y no 0 porque calcula el resto de 5 entre 2, no de 5 entre 2.5.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Hay que tener en cuenta que en PHP un entero no puede ser arbitrariamente grande. A partir de cierto valor, que depende del sistema operativo, PHP convierte automáticamente los enteros en float, perdiéndose precisión. En un sistema de 32 bits, el valor máximo es 2147483647 (2<sup>31</sup>-1).</p>
+
+      <p>Si se necesita trabajar con enteros mayores, es necesario utilizar las <a href="http://www.php.net/manual/es/book.bc.php">funciones bcmath</a>.</p>
+    </section>
+
+    <section id="incremento">
+      <h2>Operadores de incremento y decremento</h2>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Ejemplo</th>
+            <th>Nombre</th>
+            <th>Efecto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>++$a</td>
+            <td>Pre-incremento</td>
+            <td>Incrementa $a en uno, y luego devuelve $a.</td>
+          </tr>
+          <tr>
+            <td>$a++</td>
+            <td>Post-incremento</td>
+            <td>Devuelve $a, y luego incrementa $a en uno.</td>
+          </tr>
+          <tr>
+            <td>--$a</td>
+            <td>Pre-decremento</td>
+            <td>Decrementa $a en uno, luego devuelve $a.</td>
+          </tr>
+          <tr>
+            <td>$a--</td>
+            <td>Post-decremento</td>
+            <td>Devuelve $a, luego decrementa $a en uno.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>La diferencia entre el pre-incremento y el post-incremento es que en el primer caso primero se incrementa la variable y después se utiliza y en el segundo primero se utiliza y después se incrementa.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$valor = 9;
+print "&lt;p&gt;" . ++$valor . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;10&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$valor = 9;
+print "&lt;p&gt;" . $valor++ . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;9&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>El operador de incremento funciona también con caracteres, teniendo en cuenta que al incrementar el carácter 'z' se obtiene la cadena 'aa'. El operador de decremento no funciona con caracteres.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$valor = "b";
+print "&lt;p&gt;" . ++$valor . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;c&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$valor = "z";
+print "&lt;p&gt;" . ++$valor . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;aa&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$valor = "a9z";
+print "&lt;p&gt;" . ++$valor . "&lt;/p&gt;\n";
+?&gt;</code></pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;b0a&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="resto">
+      <h2>Resto de una división</h2>
+
+      <p>El operador <a href="http://www.php.net/manual/es/language.operators.arithmetic.php" title="Ver manual de PHP"><span class="php-fun">%</span></a> calcula el resto de una división entera</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$resto = 17 % 3;
+print "&lt;p&gt;El resto de 17 dividido entre 3 es " . $resto . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3 es 2&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>La función <a href="http://www.php.net/manual/es/function.fmod.php" title="Ver manual de PHP"><span class="php-fun">fmod</span></a> calcula el resto de una división con números decimales</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;El resto de 17 dividido entre 3.1 es " . fmod(17, 3.1) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3.1 es 1.5&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Hay que tener en cuenta que en PHP un entero no puede ser arbitrariamente grande. A partir de cierto valor, que depende del sistema operativo, PHP convierte automáticamente los enteros en float, perdiéndose precisión. En un sistema de 32 bits, el valor máximo es 2147483647 (2<sup>31</sup>-1).</p>
+
+      <p>Si se necesita trabajar con enteros mayores, es necesario utilizar las <a href="http://www.php.net/manual/es/book.bc.php">funciones bcmath</a>.</p>
+    </section>
+
+    <section id="parentesis">
+      <h2>Paréntesis</h2>
+
+      <p>Los operadores artiméticos tienen el mismo orden de precedencia que en Matemáticas. Concretamente, el orden de precedencia de los operadores comentados anteriormente es, de mayor a menor, el siguiente (los operadores indicados en el mismo grupo se efectúan en el orden en que aparecen en la expresión):</p>
+      <ul>
+        <li>++ (incremento) -- (decremento)</li>
+        <li>* (multiplicación) / (división) % (resto)</li>
+        <li>+ (suma) - (resta)</li>
+      </ul>
+
+      <p>Los paréntesis permiten agrupar operaciones de manera que las operaciones entre paréntesis se realicen antes que las operaciones fuera de los paréntesis. Se aconseja no utilizar paréntesis cuando las operaciones den el mismo resultado con o sin paréntesis.</p>
+    </section>
+
+    <section id="asignacion">
+      <h2>Operadores de asignación</h2>
+
+      <p>Los operadores de asignación permiten simplificar algunas expresiones de asignación:</p>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Ejemplo</th>
+            <th>Nombre</th>
+            <th>Equivale a </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$a += $b</td>
+            <td>Suma</td>
+            <td>$a = $a + $b</td>
+          </tr>
+          <tr>
+            <td>$a -= $b</td>
+            <td>Resta</td>
+            <td>$a = $a - $b</td>
+          </tr>
+          <tr>
+            <td>$a *= $b</td>
+            <td>Multiplicación</td>
+            <td>$a = $a * $b</td>
+          </tr>
+          <tr>
+            <td>$a /= $b</td>
+            <td>División</td>
+            <td>$a = $a / $b</td>
+          </tr>
+          <tr>
+            <td>$a %= $b</td>
+            <td>Módulo</td>
+            <td>$a = $a % $b</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="redondear">
+      <h2>Redondear un número</h2>
+
+      <p>La función <a href="http://www.php.net/manual/es/function.round.php" title="Ver manual de PHP"><span class="php-fun">round(x)</span></a> redondea el número x al entero más próximo.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;2.6 se redondea con round() a " . round(2.6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;2.3 se redondea con round() a " . round(2.3) . "&lt;/p&gt;\n";
+print "&lt;p&gt;-2.6 se redondea con round() a " . round(-2.6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;-2.3 se redondea con round() a " . round(-2.3) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;2.6 se redondea con round() a 3&lt;/p&gt;
+&lt;p&gt;2.3 se redondea con round() a 2&lt;/p&gt;
+&lt;p&gt;-2.6 se redondea con round() a -3&lt;/p&gt;
+&lt;p&gt;-2.3 se redondea con round() a -2&lt;/p&gt;</code>
+</pre>
+
+              <p></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La función <span class="php-fun">round()</span> se puede utilizar para verificar si un número es un número entero (positivo o negativo), comprobando si un número coincide con su valor redondeado.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$numero = 4.3;
+if ($numero == round($numero)) {
+    print "&lt;p&gt;$numero es un número entero&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero no es un número entero&lt;/p&gt;\n";
+}
+
+$numero = -6;
+if ($numero == round($numero)) {
+    print "&lt;p&gt;$numero es un número entero&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$numero no es un número entero&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;4.3 no es un número entero&lt;/p&gt;
+&lt;p&gt;-6 es un número entero&lt;/p&gt;</code></pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>La función <a href="http://www.php.net/manual/es/function.round.php" title="Ver manual de PHP"><span class="php-fun">round(x,n)</span></a> redondea x con n decimales (si n es negativo redondea a decenas, centenas, etc.).</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;2.6574 se redondea con round() con dos decimales a " . round(2.6574, 2) . "&lt;/p&gt;\n";
+print "&lt;p&gt;3141592 redondeado con round() con centenas es " . round(3141592, -2) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;2.6574 se redondea con round() con dos decimales a 2.66&lt;/p&gt;
+&lt;p&gt;3141592 redondeado con round() con centenas es 3141600&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>La función <a href="http://www.php.net/manual/es/function.floor.php" title="Ver manual de PHP"><span class="php-fun">floor(x)</span></a> redondea el número x al entero inferior (es decir, devuelve la parte entera).</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;2.6 se redondea con floor() a " . floor(2.6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;2.3 se redondea con floor() a " . floor(2.3) . "&lt;/p&gt;\n";
+print "&lt;p&gt;-2.6 se redondea con floor() a " . floor(-2.6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;-2.3 se redondea con floor() a " . floor(-2.3) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;2.6 se redondea con floor() a 2&lt;/p&gt;
+&lt;p&gt;2.3 se redondea con floor() a 2&lt;/p&gt;
+&lt;p&gt;-2.6 se redondea con floor() a -3&lt;/p&gt;
+&lt;p&gt;-2.3 se redondea con floor() a -3&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>La función <a href="http://www.php.net/manual/es/function.ceil.php" title="Ver manual de PHP"><span class="php-fun">ceil(x)</span></a> redondea el número x al entero superior.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;2.6 se redondea con ceil() a " . ceil(2.6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;2.3 se redondea con ceil() a " . ceil(2.3) . "&lt;/p&gt;\n";
+print "&lt;p&gt;-2.6 se redondea con ceil() a " . ceil(-2.6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;-2.3 se redondea con ceil() a " . ceil(-2.3) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;2.6 se redondea con ceil() a 3&lt;/p&gt;
+&lt;p&gt;2.3 se redondea con ceil() a 3&lt;/p&gt;
+&lt;p&gt;-2.6 se redondea con ceil() a -2&lt;/p&gt;
+&lt;p&gt;-2.3 se redondea con ceil() a -2&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="potencias">
+      <h2>Potencias</h2>
+
+      <p>La función <a href="http://www.php.net/manual/es/function.pow.php" title="Ver manual de PHP"><span class="php-fun">pow(x, y)</span></a> calcula x elevado a y.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . pow(2, 3) . "&lt;/p&gt;\n";/?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;2 = 8&lt;/p&gt;</code></pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="maxmin">
+      <h2>Máximo y mínimo</h2>
+
+      <p>Las funciones <a href="http://www.php.net/manual/es/function.max.php" title="Ver manual de PHP"><span class="php-fun">max()</span></a> y <a href="http://www.php.net/manual/es/function.min.php" title="Ver manual de PHP"><span class="php-fun">min()</span></a> devuelven el máximo y el mínimo, respectivamente, de una lista o matriz de valores..</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;El máximo es " . max(20, 40, 25.1, 14.7) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El máximo es 40&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;El mínimo es " . min(20, 40, 25.1, 14.7) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El mínimo es 14.7&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$datos = array(20, 40, 25.1, 14.7);<br />print "&lt;p&gt;El mínimo es " . min($datos) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El mínimo es 14.7&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="formatear">
+      <h2>Formatear un número</h2>
+
+      <p>Para escribir un número con los símbolos de separación de decimales y de miles españoles, es decir, una coma (,) para separar la parte entera de la decimal y un punto (.) para separar las cifras de la parte entera en grupos de tres, se puede utilizar la función <a href="http://www.php.net/manual/es/function.number-format.php"><span class="php-fun">number_format()</span></a>.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . number_format(1300, 5) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;1,300.00000&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . number_format(123456.789, 2) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;123,456.79&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . number_format(123456789123, 0, ',', '.') . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;123.456.789.123&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . number_format(123456789123456.789, 2, ',', '.') . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;123.456.789.123.456,78&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La función requiere dos o cuatro argumentos:</p>
+      <ul>
+        <li>el primer argumento es el número a formatear.</li>
+        <li>el segundo argumento es el número de decimales a mostrar (el número se redondea o trunca dependiendo de la longitud del número, compárese el segundo y el cuarto ejemplo de los ejemplos anteriores).</li>
+        <li>el tercer argumento es el carácter a utilizar como separador de la parte entera de la decimal.</li>
+        <li>el cuarto argumento es el carácter a utilizar como separador de miles.</li>
+      </ul>
+
+      <p>La función devuelve el número formateado. Si sólo se utilizan dos argumentos, se utiliza el punto como separador de parte entera y decimal y la coma como separador de miles (notación inglesa).</p>
+    </section>
+
+    <section id="aleatorios">
+      <h2>Números aleatorios</h2>
+
+      <p>Para obtener un número entero aleatorio entre dos valores determinados, se pueden utilizar la función <a href="http://php.net/manual/es/function.rand.php"><span class="php-fun">rand()</span></a> o la función <a href="http://php.net/manual/es/function.mt-rand.php"><span class="php-fun">mt_rand()</span></a> (que se supone que es más rápida). Ambas funciones requieren dos argumentos:</p>
+      <ul>
+        <li>El primer argumento es el valor mínimo que se quiere obtener</li>
+        <li>El segundo argumento es el valor máximo que se quiere obtener.</li>
+      </ul>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . mt_rand(1, 6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . mt_rand(1, 6) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . mt_rand(1, 6) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . rand(-10, 10) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand(-10, 10) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand(-10, 10) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;-8&lt;/p&gt;
+&lt;p&gt;-10&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Si se llama a las funciones sin argumentos, estas devuelven un número entero aleatorio entre 0 y un valor máximo que es el que devuelve la función <a href="http://php.net/manual/es/function.getrandmax.php"><span class="php-fun">getrandmax()</span></a> o <a href="http://php.net/manual/es/function.mt-getrandmax.php"><span class="php-fun">mt_getrandmax()</span></a> (este valor depende del sistema operativo).</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . mt_getrandmax() . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . mt_rand() . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . mt_rand() . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;2147483647&lt;/p&gt;
+&lt;p&gt;2023208892&lt;/p&gt;
+&lt;p&gt;800052801&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . getrandmax() . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand() . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . rand() . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;32767&lt;/p&gt;
+&lt;p&gt;12279&lt;/p&gt;
+&lt;p&gt;24164&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La función <span class="php-fun">rand()</span> puede devolver valores mayores que los que devuelve cuando se la llama sin argumentos, pero no se puede superar el mayor número entero que maneja PHP (<a href="php_constantes.html#phpintmax">PHP_INT_MAX</a>).</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . PHP_INT_MAX . "&lt;/p&gt;";<br />print "&lt;p&gt;" . rand(100000, 200000) . "&lt;/p&gt;\n";
+print "&lt;p&gt;" . mt_rand(100000000000, 200000000000) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;2147483647&lt;/p&gt;
+&lt;p&gt;166031&lt;/p&gt;
+<strong>Warning</strong>: mt_rand(): max(-1863462912) is smaller than min(1215752192) in <strong>prueba.php</strong> on line <strong>3</strong></code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 20 de octubre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

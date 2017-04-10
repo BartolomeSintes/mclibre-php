@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Variables. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Variables</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Variables</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#que-es">¿Qué es una variable?</a></li>
+          <li><a href="#usar">Usar variables</a></li>
+          <li><a href="#concatenar">Concatenar variables</a></li>
+          <li><a href="#cadenas">Variables en cadenas</a></li>      </ul>
+      </div>
+    </nav>
+
+    <section id="que-es">
+      <h2>¿Qué es una variable?</h2>
+
+      <p>En los lenguajes de programación, una variable es un elemento que permite almacenar información. Las variables se identifican por su nombre. Para facilitar la comprensión del programa, se aconseja que los nombres de las variables hagan referencia a la información que contienen. Por ejemplo, si se va a guardar en una variable la edad del usuario, un nombre adecuado de la variable sería por ejemplo $edad.</p>
+
+      <p>En PHP el programador puede dar el nombre que quiera a las variables, con algunas restricciones:</p>
+      <ul>
+        <li>Los nombres de las variables tienen que empezar por el carácter $.</li>
+        <li>A continuación tiene que haber una letra (mayúscula o minúscula) o un guión bajo (_).</li>
+        <li>El resto de caracteres del nombre pueden ser números, letras o guiones bajos.</li>
+      </ul>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">&lt;?php
+// Ejemplos de nombres de variables (algunos de ellos no recomendados):
+$edad   = 16;
+$_edad  = 17;
+$Edad   = 18;
+$__edad = 19;
+$EDAD   = 20;
+$_EDAD  = 21;
+$edad1  = 22;
+$edad_1 = 23;
+?&gt;</code>
+</pre>
+      </div>
+
+      <p>Los nombres de variables pueden contener caracteres no ingleses (vocales acentuadas, eñes (ñ) o cedillas (ç), etc.) pero se aconseja no hacerlo. Si los programas que escribimos los van a leer solamente programadores de países en los que también se utilizan esos caracteres, no habrá inconveniente, pero si colaboran con nosotros programadores de países en los que esos caracteres no se utilizan, les resultarán incómodo editar los programas. De hecho, algunos aconsejan incluso utilizar términos ingleses en los nombres de variables para facilitar la colaboración entre programadores de distintos países.</p>
+
+      <p>En los nombres de las variables, PHP distingue entre mayúsculas y minúsculas, es decir, si se cambia algún carácter de mayúscula a minúscula o viceversa, para PHP se tratará de variables distintas.</p>
+
+      <p>Si el nombre de la variable contiene varias palabras, se aconseja utilizar la notación "camel case", es decir, escribir la primera palabra en minúsculas y la primera letra de las siguientes palabras en mayúsculas.</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">&lt;?php
+// Ejemplos de nombres de variables Camel Case:
+$edadHijo          = 16;       // edad del hijo
+$edadMadre         = 47;       // edad de la madre
+$edadPadre         = 46;       // edad del padre
+$edadAbueloPaterno = 73;       // edad del abuelo paterno
+?&gt;</code>
+</pre>
+      </div>
+
+      <p>PHP define automáticamente una serie de variables (son las llamadas <a href="http://php.net/manual/es/reserved.variables.php">variables predefinidas</a>). Los nombres de estas variables siguen siempre el mismo patrón: empiezan por un guión bajo y se escriben en mayúsculas (por ejemplo, $_REQUEST, $_SERVER, $_SESSION, etc.). Para evitar conflictos con variables predefinidas que se creen en el futuro, se recomienda no crear en los programas variables con nombres que sigan ese mismo patrón.</p>
+    </section>
+
+    <section id="usar">
+      <h2>Usar variables</h2>
+
+      <p>Para guardar un valor en una variable se utiliza el operador de asignación (=) escribiendo a la izquierda únicamente el nombre de la variable y a la derecha el valor que queremos guardar. Si queremos guardar un número, no hace falta poner comillas, pero si queremos guardar una cadena de texto hay que poner comillas (dobles o simples).</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">&lt;?php
+$edad = 15;                // La variable $edad tiene ahora el valor 15
+$nombre = "Pepito Conejo"  // La variable $nombre tiene ahora el valor Pepito Conejo
+?&gt;</code>
+</pre>
+      </div>
+
+      <p>El programa anterior es correcto, aunque no produciría ningún resultado visible para el usuario.</p>
+
+      <hr class="corta" />
+
+      <p>En el lado izquierdo de la asignación (=) no se puede escribir más que el nombre de una variable. El programa siguiente no es sintácticamente correcto por lo que no se ejecutará y PHP mostrará un mensaje de error.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">$edad + 1</span> = 16;
+print $edad;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected '=' in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>Una vez se ha guardado un valor en una variable, se puede utilizar en el resto del programa.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$edad = 15;
+print $edad;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">15</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>A lo largo de un programa una variable puede guardar diferentes valores.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$edad = 15;
+print $edad;
+print "\n";
+$edad = 20;
+print $edad;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">15 20</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>En la parte derecha de la asignación se pueden escribir expresiones matemáticas:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$radio = 15;
+$perimetro = 2 * 3.14 * 15;
+print $perimetro;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">94.2</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Esas expresiones pueden contener variables:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$radio = 15;
+$perimetro = 2 * 3.14 * $radio;
+print $perimetro;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">94.2</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En PHP una igualdad no es una ecuación matemática, sino una asignación (el resultado de la derecha se almacena en la variable de la izquierda). Por ello, una asignación pueden utilizar en el lado derecho la variable en la que se va a guardar el resultado:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$edad = 15;
+$edad = 2 * <span class="codigo-resaltado">$edad</span>;
+print $edad;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">30</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Lo que hace el ordenador es calcular el resultado de la expresión de la derecha utilizando el valor actual de la variable y finalmente guardar el resultado en la variable.</p>
+
+      <hr class="corta" />
+
+      <p>En los nombres de las variables, PHP distingue entre mayúsculas y minúsculas, es decir, si se cambia algún carácter de mayúscula a minúscula o viceversa, para PHP se tratará de variables distintas.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$Edad = 15;
+$edad = 20;
+print $Edad;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">15</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>Una variable pueda tomar valores de tipos distintos a lo largo de un programa.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$edad = 15;
+print $edad;
+print "\n";
+$edad = "quince";
+print $edad;
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">15 quince</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="concatenar">
+      <h2>Concatenar variables y cadenas</h2>
+
+      <p>El operador . (punto) permite concatenar dos o más cadenas o variables.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena1 = "Pasa";
+$cadena2 = "tiempos";
+$cadena3 = $cadena1 . $cadena2;
+print "&lt;p&gt;$cadena3&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Pasatiempos&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$cadena1 = "Corre";
+$cadena2 = "ve";
+$cadena3 = "idile";
+$cadena4 = $cadena1 . $cadena2 . $cadena3;
+print "&lt;p&gt;$cadena4&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Correveidile&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>El operador . (punto) se puede utilizar en la instrucción print. En el ejemplo siguiente se concatenan una cadena, una variable y una cadena.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$nombre = "Don Pepito";
+print "&lt;p&gt;¡Hola, " . $nombre . "! ¿Cómo está usted?&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Nota</strong>: En el ejemplo anterior, se puede obtener el mismo resultado sin utilizar el operador . (punto), escribiendo la variable en la cadena:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$nombre = "Don Pepito";
+print "&lt;p&gt;¡Hola, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="cadenas">
+      <h2>Variables en cadenas</h2>
+
+      <p>La forma de insertar variables dentro de cadenas depende del tipo de variable utilizado.</p>
+
+      <section id="tipos">
+        <h3>Tipos de variables</h3>
+
+        <p>En el caso de números, cadenas o matrices de una dimensión, las variables se puede insertar directamente:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$numero = 5000;
+$texto = "cinco mil";
+$seEscribe = array("separado", "junto");
+print "&lt;p&gt;El número <span class="codigo-resaltado">$numero</span> se escribe <span class="codigo-resaltado">$seEscribe[0]</span>: <span class="codigo-resaltado">$texto</span>&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;El número <span class="codigo-resaltado">5000</span> se escribe <span class="codigo-resaltado">separado</span>: <span class="codigo-resaltado">cinco mil</span>&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <hr class="corta" />
+
+        <p>En el caso de matrices de dos o más dimensiones, las variables no se puede insertar directamente:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$nombre = "Don Pepito";
+$saludos = array(array("Hello", "Hola"), array("Goodbye", "Adios"));
+
+print "&lt;p&gt;¡<span class="codigo-resaltado">$saludos[0][1]</span>, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
+?&gt; </code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;¡<span class="codigo-resaltado">Array[1]</span>, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Este resultado se obtiene porque PHP no sustituye la variable $saludos[0][1] por su valor, sino que sustituye únicamente la primera parte ($saludos[0]). Como $saludos[0] es una matriz de una dimensión, no puede escribir ningún valor y devuelve simplemente "Array". A continuación, PHP añade el [1] que quedaba y se obtiene la cadena "Array[1]".</p>
+
+        <p>Una solución a este problema es sacar la matriz de la cadena:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$nombre = "Don Pepito";
+$saludos = array(array("Hello", "Hola"), array("Goodbye", "Adios"));
+print "&lt;p&gt;¡" <span class="codigo-resaltado">. $saludos[0][1] .</span> ", $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;¡<span class="codigo-resaltado">Hola</span>, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Otra solución sin necesidad de sacar la matriz de la cadena es rodear la variable con llaves (<span class="php-con">{</span> <span class="php-con">}</span>):</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$nombre = "Don Pepito";
+$saludos = array(array("Hello", "Hola"), array("Goodbye", "Adios"));
+print "&lt;p&gt;¡<span class="codigo-resaltado">{$saludos[0][1]}</span>, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;¡<span class="codigo-resaltado">Hola</span>, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="operaciones">
+        <h3>Operaciones aritméticas</h3>
+
+        <p>En el interior de las cadenas no se realizan operaciones aritméticas.</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 3;
+$y = 4;
+print "&lt;p&gt;Suma: $x + $y = <span class="codigo-resaltado">$x + $y</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Multiplicación: $x x $y = <span class="codigo-resaltado">$x * $y</span>&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">3 + 4</span>&lt;/p&gt;<br />&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">3 x 4</span>&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Si se quiere mostrar el resultado de operaciones matemáticas, es necesario efectuar las operaciones fuera de las cadenas. En algunos casos no es necesario escribir las operaciones entre paréntesis, pero se recomienda escribirlas siempre entre paréntesis para no tener que preocuparse por cuándo hacen falta y cuándo no.</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 3;
+$y = 4;
+print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. ($x + $y) .</span> "&lt;/p&gt;\n";
+print "&lt;p&gt;Multiplicación: $x x $y = " <span class="codigo-resaltado">. ($x * $y) .</span> "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php">
+                <pre>
+<code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;
+&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;</code>
+</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Si no se escriben paréntesis en las operaciones, pueden no producirse errores, pero el resultado puede ser distinto al esperado en algunos casos:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 3;
+$y = 4;
+
+print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</span> "&lt;/p&gt;\n";
+print "&lt;p&gt;Multiplicación: $x x $y = " <span class="codigo-resaltado">. $x * $y .</span> "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php">
+                <pre>
+<code class="language-html"><span class="codigo-resaltado">4&lt;/p&gt;</span>
+&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;</code>
+</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Por supuesto, siempre se pueden utilizar definir auxiliares que guarden los resultados y utilizar las variables auxiliares en la cadena.</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 3;
+$y = 4;
+$suma = $x + $y;
+$producto = $x * $y;
+print "&lt;p&gt;Suma: $x + $y = <span class="codigo-resaltado">$suma</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Multiplicación: $x x $y = <span class="codigo-resaltado">$producto</span>&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;<br />&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="nombres">
+        <h3>Nombres de variables</h3>
+
+        <p>Si se quiere escribir el nombre de una variable, es decir, para que PHP no sustituya la variable por su valor, hay que escribir una contrabarra (\) antes de la variable.</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 3;
+print "&lt;p&gt;La variable <span class="codigo-resaltado">\$x</span> vale <span class="codigo-resaltado">$x</span>&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La variable <span class="codigo-resaltado">$x</span> vale <span class="codigo-resaltado">3</span>&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="unir-texto">
+        <h3>Unir variables y texto</h3>
+
+        <p>En html/css a veces es necesario juntar números y caracteres, como en el ejemplo siguiente en el que se establece el tamaño del párrafo en 30px:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p style=\"<span class="codigo-resaltado">font-size: 30px</span>\" &gt;Texto grande&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p style="<span class="codigo-resaltado">font-size: 30px</span>" &gt;Texto grande&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Si el tamaño está almacenado en una variable, no se puede juntar la variable con los caracteres ya que se interpretaría como una variable que no está definida y toma el valor vacío:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 30;
+
+print "&lt;p style=\"<span class="codigo-resaltado">font-size: $xpx</span>\" &gt;Texto grande&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p style=<span class="codigo-resaltado">"font-size: "</span> &gt;Texto grande&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>... pero se pueden utilizar llaves o sacar la variable de la cadena:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 30;
+print "&lt;p style=\"font-size: <span class="codigo-resaltado">{$x}px</span>\" &gt;Texto grande&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p style="font-size: <span class="codigo-resaltado">30px</span>" &gt;Texto grande&lt;/p&gt;</code></pre></td>
+            </tr>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$x = 30;
+print "&lt;p style=\"font-size: " <span class="codigo-resaltado">. $x .</span> "px\" &gt;Texto grande&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p style="font-size: <span class="codigo-resaltado">30px</span>" &gt;Texto grande&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2014</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

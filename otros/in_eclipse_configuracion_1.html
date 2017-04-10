@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Configuración de Eclipse PDT (1). PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Configuración de Eclipse PDT (1)</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Config. Eclipse PDT (1)</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#modo-trabajo">Modo de trabajo</a></li>
+          <li><a href="#workspace">Espacio de trabajo</a></li>
+          <li><a href="#workbench">Banco de trabajo</a></li>
+          <li><a href="#project">Crear proyectos</a></li>
+          <li><a href="#linked-folder">Crear carpetas enlazadas</a></li>
+          <li><a href="#folder">Crear carpetas no enlazadas</a></li>
+          <li><a href="#crear-archivos">Crear archivos PHP</a></li>
+          <li><a href="#ejecutar-archivos">Ejecutar archivos PHP</a></li>
+          <li><a href="#configurar-apache">Configurar Apache</a></li>
+          <li><a href="#configurar-clase">Configuración para clase</a></li>
+          <li><a href="#crear-html">Crear archivos HTML</a></li>
+          <li><a href="#ejecutar-html">Ejecutar archivos HTML</a>
+            <ul>
+              <li><a href="#herramienta-crear">Crear herramienta externa</a></li>
+              <li><a href="#herramienta-utilizar">Utilizar herramienta externa</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En esta lección se explica cómo configurar Eclipse PDT para crear y ejecutar archivos PHP o HTML y organizarlos en carpetas:</p>
+
+    <section id="modo-trabajo">
+      <h2>Elección del modo de trabajo</h2>
+
+      <p>En Eclipse PDT los archivos PHP se agrupan en proyectos (en inglés, projects) que a su vez se agrupan en espacios de trabajo (en inglés, workspaces). Aunque se pueden tener definidos varios espacios de trabajo, sólo se puede tener abierto un espacio de trabajo. Para cambiar de espacio de trabajo, hay que cerrar y abrir de nuevo Eclipse.</p>
+
+      <p>Físicamente, cada espacio de trabajo se guarda en el disco duro del ordenador en una carpeta distinta. En la carpeta del espacio de trabajo, Eclipse PDT guarda los archivos de configuración de Eclipse y la información sobre los proyectos y las carpetas y archivos incluidos en cada proyecto.</p>
+
+      <p>Lo archivos PHP se podrían guardar también en el espacio de trabajo, pero yo recomiendo guardarlos por separado, para facilitar la portabilidad.</p>
+
+      <p>En esta lección se explica los pasos a realizar de manera que:</p>
+      <ul>
+        <li>Eclipse PDT esté en la carpeta "<strong>C:\software\eclipse-pdt-neon</strong>" (como se explica en la lección <a href="in_eclipse_instalacion.html">Instalación de Eclipse PDT</a>)</li>
+        <li>el espacio de trabajo esté en la carpeta "<strong>C:\software\workspace-nombre-de-usuario-php</strong>"</li>
+        <li>los archivos PHP estén en la carpeta "<strong>Mis documentos\...</strong>".</li>
+        <li>desde Eclipse se puedan abrir y ejecutar los archivos en el navegador mediante la URL "<strong>http://localhost/...</strong>".</li>
+      </ul>
+
+      <p>Para esto último habrá que crear un alias en Apache (no se recomienda modificar la directiva DocumentRoot de Apache).</p>
+
+      <p>En el apartado <a href="#configurar-clase">Configurar Eclipse PDT y Apache en clase</a> se indica cómo tendrá que hacerse en clase la configuración de Eclipse PDT y Apache para que varios alumnos puedan utilizar el mismo ordenador sin molestarse unos a otros.</p>
+    </section>
+
+    <section id="workspace">
+      <h2>Espacio de trabajo (Workspace)</h2>
+
+      <p>Al iniciar Eclipse PDT mientras se carga el programa se muestra una imagen que indica la versión de Eclipse, en este caso Eclipse PDT Neon.1 (publicada en septiembre de 2016).</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Inicio" src="../img/eclipse/eclipse-workspace-01.jpg" width="452" height="302" title="Eclipse PDT - Inicio" /></p>
+
+      <hr class="corta" />
+
+      <p>Cada vez que se inicia Eclipse PDT, el programa pregunta el espacio de trabajo a utilizar y muestra el último espacio de trabajo utilizado (aunque se pueden elegir otros). Si se marca la casilla de verificación "Use this as the default ...", Eclipse deja de hacer esta pregunta y utiliza siempre el mismo espacio de trabajo, lo que no es aconsejable.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Selección de espacio de trabajo" src="../img/eclipse/eclipse-workspace-02.png" width="620" height="281" title="Eclipse PDT - Selección de espacio de trabajo" /></p>
+
+      <p>En Windows el espacio de trabajo predeterminado se encuentra en la carpeta de usuario. En este curso se recomienda crear el workspace en la carpeta <strong>C:\software\workspace-nombre-de-usuario-php</strong>, (fuera de la carpeta eclipse). Para elegir la ubicación del espacio de trabajo se puede escribir directamente en la caja de texto o hacer clic en el botón "Browse...". Una vez elegida la ubicación deseada, hay que hacer clic en el botón OK.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Selección de espacio de trabajo" src="../img/eclipse/eclipse-workspace-03.png" width="620" height="281" title="Eclipse PDT - Selección de espacio de trabajo" /></p>
+
+      <p>Una vez iniciado Eclipse PDT, se puede cambiar de espacio de trabajo mediante el menú "<span class="menu">File &gt; Switch Workspace</span>".</p>
+
+      <p>La primera vez que se inicie Eclipse PDT, el cortafuegos de Windows pide al usuario confirmación. Para poder utilizarlo hace falta al menos autorizar el acceso en redes privadas:</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Aviso del cortafuegos de Windows" src="../img/eclipse/eclipse-firewall-1.png" width="541" height="387" title="Eclipse PDT - Aviso del cortafuegos de Windows" /></p>
+
+      <p>Para eliminar un espacio de trabajo, simplemente hay que borrar la carpeta que lo contiene. Una vez borrado un espacio de trabajo, Eclipse PDT sigue mostrando la carpeta en la lista desplegable aunque el espacio de trabajo ya no exista. Si se vuelve a elegir un espacio de trabajo ya borrado, Eclipse PDT lo volverá a crear.</p>
+    </section>
+
+    <section id="workbench">
+      <h2>Banco de trabajo (Workbench) y perspectivas (Perspectives)</h2>
+
+      <p>Al abrir Eclipse PDT por primera vez, se muestra una pantalla de Bienvenida con enlaces a tareas de configuración, ayuda sobre Eclipse PDT, etc.</p>
+
+      <p class="captura"><a href="../img/eclipse/eclipse-workbench-01b.png"><img alt="Eclipse PDT - Workbench (Haz clic para ver la imagen completa)" src="../img/eclipse/eclipse-workbench-01.png" width="466" height="350" title="Eclipse PDT - Workbench (Haz clic para ver la imagen completa)" /></a></p>
+
+      <p>Para que no se muestre la pantalla de Bienvenida al abrir Eclipse PDT, se puede desmarcar la casilla situada en la parte inferior derecha de la ventana.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - para no mostrar la pantalla de bienvenida" src="../img/eclipse/eclipse-workbench-02.png" width="300" height="100" title="Eclipse PDT - para no mostrar la pantalla de bienvenida" /></p>
+
+      <p>Cerrando la pestaña "Welcome" o haciendo clic en el icono Workbench, se mostrará la perspectiva PHP. En Eclipse, una perspectiva es un conjunto de vistas (subventanas) y menús. Las diferentes versiones de Eclipse (Java, PHP, CVS, etc) muestran distintas perspectivas predefinidas. Eclipse PDT muestra una perspectiva con vistas específicas para el desarrollo de PHP.</p>
+
+      <p class="captura"><a href="../img/eclipse/eclipse-workbench-03b.png"><img alt="Eclipse PDT - Perspectiva PHP (Haz clic para ver la imagen completa)" title="Eclipse PDT - Perspectiva PHP (Haz clic para ver la imagen completa)" src="../img/eclipse/eclipse-workbench-03.png" width="466" height="350" /></a></p>
+
+      <p>Podemos ocultar las vistas Outline y Task List para ampliar el espacio disponible para los programas:</p>
+
+      <p class="captura"><a href="../img/eclipse/eclipse-workbench-04b.png"><img alt="Eclipse PDT - Perspectiva PHP (Haz clic para ver la imagen completa)" title="Eclipse PDT - Perspectiva PHP (Haz clic para ver la imagen completa)" src="../img/eclipse/eclipse-workbench-04.png" width="466" height="350" /></a></p>
+
+      <p>Si por cualquier motivo no se abriera la perspectiva PHP, se puede abrir haciendo clic en el menú <span class="menu">Window &gt; Perspective &gt; Open Perspective &gt; PHP</span> o mediante el icono situado en el extremo derecho de la barra de herramientas.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Abrir perspectiva PHP" src="../img/eclipse/eclipse-workspace-04.png" width="690" height="300" title="Eclipse PDT - Abrir perspectiva PHP" /></p>
+    </section>
+
+    <section id="project">
+      <h2>Crear proyectos (Project)</h2>
+
+      <p>Una vez abierta la perspectiva PHP, debe crearse un proyecto en la vista Explorador PHP (PHP Explorer), haciendo clic derecho en la zona en blanco y eligiendo la opción <span class="menu">New &gt; Project...</span>.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de nuevo proyecto" src="../img/eclipse/eclipse-project-01.png" width="360" height="370" title="Eclipse PDT - Creación de nuevo proyecto" /></p>
+
+      <p>Se abrirá una ventan ofreciendo varios asistentes para diferentes tipos de proyectos. Hacer clic en "Local PHP Project" y a continuación hacer clic en el botón "Next".</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de nuevo proyecto" src="../img/eclipse/eclipse-project-02.png" width="525" height="500" title="Eclipse PDT - Creación de nuevo proyecto" /></p>
+
+      <p>Se abrirá una ventana de creación del proyecto en el que basta con escribir el nombre (este nombre <strong>no debe contener</strong> espacios ni acentos, ya que Eclipse PDT lo utiliza para construir las URL) y hacer clic en Finish. Los proyectos se guardan de forma predeterminada en el espacio de trabajo. En el ejemplo, se ha escrito el nombre "<strong>miproyecto</strong>". La ventana de creación de proyectos tiene dos pantallas más con opciones de configuración que no se tratan aquí.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de nuevo proyecto" src="../img/eclipse/eclipse-project-03.png" width="562" height="638" title="Eclipse PDT - Creación de nuevo proyecto" /></p>
+
+      <hr class="corta" />
+
+      <p>Una vez creado el proyecto, este aparece en la vista Explorador PHP.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de nuevo proyecto" src="../img/eclipse/eclipse-project-04.png" width="225" height="220" title="Eclipse PDT - Creación de nuevo proyecto" /></p>
+
+      <p>En el Explorador de Windows se puede comprobar que en el espacio de trabajo se ha creado la carpeta "miproyecto":</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de nuevo proyecto" src="../img/eclipse/eclipse-project-05.png" width="320" height="200" title="Eclipse PDT - Creación de nuevo proyecto" /></p>
+    </section>
+
+    <section id="linked-folder">
+      <h2>Crear carpetas enlazadas (Linked folder)</h2>
+
+      <p>Una vez creado el proyecto, debe crearse una carpeta enlazada (para que los archivos no tengan que estar en el espacio de trabajo, sino en cualquier otro sitio del disco duro). Una carpeta enlazada se crea en la vista Explorador PHP (PHP Explorer), haciendo clic derecho sobre el proyecto y eligiendo la opción <span class="menu">New &gt; Folder</span>.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta enlazada" src="../img/eclipse/eclipse-linked-folder-01.png" width="560" height="455" title="Eclipse PDT - Creación de carpeta enlazada" /></p>
+
+      <hr class="corta" />
+
+      <p>Se abrirá una ventana de creación de la carpeta en el que se debe escribir el nombre de la carpeta (Folder name). Este nombre <strong>no debe contener</strong> espacios ni acentos, ya que Eclipse PDT lo utiliza para construir las URL. En el ejemplo, se ha escrito el nombre "micarpeta". En esta ventana hay que hacer clic en Advanced para mostrar más opciones.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta enlazada" src="../img/eclipse/eclipse-linked-folder-02.png" width="525" height="604" title="Eclipse PDT - Creación de carpeta enlazada" /></p>
+
+      <hr class="corta" />
+
+      <p>A continuación, se debe marcar la casilla "Link to alternate location (Linked Folder)" y hacer clic en el botón "Browse..." para elegir la carpeta donde se van a guardar los archivos PHP.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta enlazada" src="../img/eclipse/eclipse-linked-folder-03.png" width="525" height="642" title="Eclipse PDT - Creación de carpeta enlazada" /></p>
+
+      <p>Una vez creada y elegida la carpeta (en el ejemplo se ha elegido la carpeta "Mis documentos\IAW Barto\PHP"), hay que hacer clic en el botón "Finish" para terminar.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta enlazada" src="../img/eclipse/eclipse-linked-folder-04.png" width="525" height="648" title="Eclipse PDT - Creación de carpeta enlazada" /></p>
+
+      <hr class="corta" />
+
+      <p>Una vez creada la carpeta, esta aparece en la vista Explorador PHP (el icono de las carpetas enlazadas incluyen una flecha en la esquina inferior derecha del icono, lo que permite identificarlas fácilmente).</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta enlazada" src="../img/eclipse/eclipse-linked-folder-05.png" width="240" height="240" title="Eclipse PDT - Creación de carpeta enlazada" /></p>
+    </section>
+
+    <section id="folder">
+      <h2>Crear carpetas no enlazadas (Folder)</h2>
+
+      <p>Una vez creada la carpeta enlazada, en ella se pueden crear todos los archivos y subcarpetas que se deseen. Estas carpetas ya no necesitan ser carpetas enlazadas.</p>
+
+      <p>Para crear una subcarpeta en la carpeta enlazada, en la vista Explorador PHP (PHP Explorer) hay que hacer clic derecho sobre la carpeta superior (en el ejemplo, la carpeta enlazada) y elegir la opción <span class="menu">New &gt; Folder</span>.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta no enlazada" src="../img/eclipse/eclipse-folder-01.png" width="585" height="475" title="Eclipse PDT - Creación de carpeta no enlazada" /></p>
+
+      <hr class="corta" />
+
+      <p>Se abrirá una ventana de creación de la carpeta en el que se debe escribir el nombre de la carpeta (Folder name) y hacer clic en Finish. Este nombre <strong>no debe contener</strong> espacios ni acentos, ya que Eclipse PDT lo utiliza para construir las URL. En el ejemplo, se ha escrito el nombre "pruebas".</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta no enlazada" src="../img/eclipse/eclipse-folder-02.png" width="525" height="450" title="Eclipse PDT - Creación de carpeta no enlazada" /></p>
+
+      <hr class="corta" />
+
+      <p>Una vez creada la carpeta, esta aparece en la vista Explorador PHP (el icono de una carpeta no enlazada es distinto del de la carpeta enlazada).</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de carpeta no enlazada" src="../img/eclipse/eclipse-folder-03.png" width="240" height="240" title="Eclipse PDT - Creación de carpeta no enlazada" /></p>
+
+      <p>En el Explorador de Windows se puede comprobar que en la carpeta a la que apunta la carpeta superior (en el ejemplo, la carpeta enlazada micarpeta) se ha creado la carpeta "pruebas":</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de nuevo proyecto" src="../img/eclipse/eclipse-folder-04.png" width="350" height="200" title="Eclipse PDT - Creación de nuevo proyecto" /></p>
+    </section>
+
+    <section id="crear-archivos">
+      <h2>Crear archivos PHP (PHP File)</h2>
+
+      <p>Para crear un archivo PHP, en la vista Explorador PHP (PHP Explorer) hay que hacer clic derecho en la carpeta en la que se quiera crear el archivo y elegir la opción <span class="menu">New &gt; PHP File</span>.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo PHP" src="../img/eclipse/eclipse-new-php-file-01.png" width="600" height="500" title="Eclipse PDT - Creación de archivo PHP" /></p>
+
+      <hr class="corta" />
+
+      <p>Se abrirá una ventana de creación de archivo en el que se debe escribir el nombre (este nombre <strong>no debe contener</strong> espacios ni acentos, ya que Eclipse PDT lo utiliza para construir las URL) y hacer clic en Finish. En el ejemplo, se ha escrito el nombre "prueba_01.php".</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo PHP" src="../img/eclipse/eclipse-new-php-file-02.png" width="525" height="505" title="Eclipse PDT - Creación de archivo PHP" /></p>
+
+      <hr class="corta" />
+
+      <p>Una vez creado el archivo, este aparece en la vista Explorador PHP y al hacer doble clic sobre un archivo, su contenido aparece en la vista Editor PHP.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo PHP" src="../img/eclipse/eclipse-new-php-file-03.png" width="400" height="250" title="Eclipse PDT - Creación de archivo PHP" /></p>
+
+      <p>En Windows, con el explorador puede comprobarse que se ha creado el archivo:</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo PHP" src="../img/eclipse/eclipse-new-php-file-04.png" width="400" height="200" title="Eclipse PDT - Creación de archivo PHP" /></p>
+    </section>
+
+    <section id="ejecutar-archivos">
+      <h2>Ejecutar archivos PHP</h2>
+
+      <p><strong>Nota</strong>: Para abrir desde Eclipse los archivos PHP en el navegador predeterminado del sistema desde Eclipse, hay que configurar Eclipse como se explica en la lección <a href="in_eclipse_configuracion_2.html#navegador">Configuración de Eclipse (2)</a>.</p>
+
+      <p>Antes de ejecutar un archivo PHP, hay que guardar el archivo. Una asterisco en la pestaña del archivo indica si el archivo se ha modificado desde que se guardó por última vez. Para guardar el archivo, se puede hacer clic en el botón Guardar de la barra de herramientas.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo PHP" src="../img/eclipse/eclipse-run-php-file-01.png" width="380" height="250" title="Eclipse PDT - Ejecutar un archivo PHP" /></p>
+
+      <p>Una vez guardado, para ejecutar un archivo PHP, hay que hacer clic en el botón de ejecución:</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo PHP" src="../img/eclipse/eclipse-run-php-file-02.png" width="380" height="250" title="Eclipse PDT - Ejecutar un archivo PHP" /></p>
+
+      <p>La primera vez que se ejecute un archivo, se mostrará una ventana preguntando si el archivo se quiere ejecutar en la línea de comandos o abrir en el navegador. En este curso se abrirán siempre los archivos en el navegador, por lo que elegiremos siempre la opción "PHP Web Application"</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo PHP" src="../img/eclipse/eclipse-run-php-file-03.png" width="270" height="435" title="Eclipse PDT - Ejecutar un archivo PHP" /></p>
+
+      <p>También se puede ejecutar un archivo haciendo clic derecho en el archivo en la vista Explorador PHP (PHP Explorer), y eligiendo la opción <span class="menu">Run As &gt; PHP Web Application</span>.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo PHP" src="../img/eclipse/eclipse-run-php-file-04.png" width="740" height="675" title="Eclipse PDT - Ejecutar un archivo PHP" /></p>
+
+      <hr class="corta" />
+
+      <p>La primera vez que se ejecuta un archivo PHP, el cortafuegos de Windows puede mostrar un aviso. Es necesario hacer clic en "Desbloquear" para poder ejecutar archivos desde Eclipse PDT.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-firewall-1.png" width="541" height="387" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+      <hr class="corta" />
+
+      <p>La primera vez que se ejecuta un archivo PHP, Eclipse PDT muestra la URL con la que se ejecutará el archivo. Esta URL se puede modificar, aunque si las carpetas se han creado correctamente y el servidor está configurado correctamente, no es necesario hacerlo.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-run-php-file-05.png" width="551" height="178" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+      <p>Al hacer clic en OK se abrirá una vista de navegador con el archivo seleccionado (en el caso de utilizar el navegador interno) o el navegador del sistema con el archivo seleccionado (en caso de utilizar el navegador del sistema). Si Apache está configurado correctamente, la página se mostrará en el navegador, si no, se mostrará un aviso de archivo no encontrado (error 404).</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo PHP" src="../img/eclipse/eclipse-run-php-file-06.png" width="1024" height="270" title="Eclipse PDT - Ejecutar un archivo PHP" /></p>
+
+      <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo PHP" src="../img/eclipse/eclipse-run-php-file-07.png" width="1024" height="270" title="Eclipse PDT - Ejecutar un archivo PHP" /></p>
+    </section>
+
+    <section id="configurar-apache">
+      <h2>Configurar Apache</h2>
+
+      <p>Al ejecutar un archivo PHP desde Eclipse PDT, Eclipse PDT envía al navegador una dirección construida a partir de los elementos (proyecto, carpetas, etc.) definidos en Eclipse PDT. Ese archivo se encuentra realmente en una carpeta del disco duro. Para que Apache pueda servir la página web al navegador, hay que relacionar la dirección (URL) con la ruta en el disco duro, lo que se consigue añadiendo un alias en el archivo de configuración de Apache httpd.conf.</p>
+
+      <p>Para saber qué alias hay que añadir, hay que comparar la dirección que genera Eclipse PDT (a partir del nombre del proyecto, del nombre de la carpeta enlazada y del nombre de carpetas y archivo) con la ruta en el disco del archivo, como ilustra la imagen siguiente:</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Configurar Apache" src="../img/eclipse/eclipse-alias.png" width="739" height="398" title="Eclipse PDT - Configurar Apache" /></p>
+
+      <p>En el ejemplo definido en esta lección y que se muestra en las capturas, el nombre del proyecto es "miproyecto", el nombre de la carpeta enlazada es "micarpeta", se ha creado una carpeta "pruebas" y el fichero se llama "prueba_01.php". La dirección que genera Eclipse PDT es entonces: "<strong>http://localhost/miproyecto/micarpeta/pruebas/prueba_01.php</strong>", como muestra la tabla siguiente:</p>
+
+      <table border="1">
+        <tbody>
+          <tr>
+            <th></th>
+            <th>Servidor</th>
+            <th>Proyecto</th>
+            <th>Carpeta enlazada</th>
+            <th>Carpeta</th>
+            <th>Fichero</th>
+          </tr>
+          <tr>
+            <th>Elementos</th>
+            <td><pre>http://localhost/</pre>
+            </td>
+            <td><pre>miproyecto/</pre>
+            </td>
+            <td><pre>micarpeta/</pre>
+            </td>
+            <td><pre>pruebas/</pre>
+            </td>
+            <td><pre>prueba_01.php</pre>
+            </td>
+          </tr>
+          <tr>
+            <th>Dirección generada por Eclipse</th>
+            <td colspan="5"><pre>http://localhost/miproyecto/micarpeta/pruebas/prueba_01.php</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>A partir de esta dirección, Apache tiene que poder encontrar el documento en el disco. En el ejemplo definido en esta lección y que se muestra en las capturas, la ruta real del archivo es:</p>
+      <ul>
+        <li>en Windows 7: "<strong>C:\Users\NombreDeUsuario\Mis documentos\IAW Barto\ PHP\pruebas\prueba_01.php</strong>".</li>
+      </ul>
+
+      <p>La dirección generada por Eclipse y la ruta real del archivo deben comparase de derecha a izquierda. La parte final común y el inicio de la dirección (http://localhost/) se pueden descartar. El resto es lo que se utiliza para crear el alias. En el ejemplo definido en esta lección y que se muestra en las capturas el alias enlazaría "<strong>miproyecto/micarpeta/</strong>" con "<strong>C:\Users\Barto\Mis documentos\IAW Barto\PHP</strong>", como muestra la tabla siguiente:</p>
+
+      <table border="1">
+        <tbody>
+          <tr>
+            <th rowspan="3">Dirección generada por Eclipse</th>
+            <th>Servidor (se descarta)</th>
+            <th>Parte no común (alias)</th>
+            <th>Parte común (se descarta)</th>
+          </tr>
+          <tr>
+            <td><pre>http://localhost/</pre></td>
+            <td><pre>miproyecto/micarpeta/</pre></td>
+            <td><pre>pruebas/prueba_01.php</pre></td>
+          </tr>
+          <tr>
+            <td colspan="3"><pre>http://localhost/miproyecto/micarpeta/pruebas/prueba_01.php</pre></td>
+          </tr>
+          <tr>
+            <th rowspan="3">Ruta real</th>
+            <td colspan="3"><pre>C:\Users\Barto\Documents\IAW Barto\PHP\pruebas\prueba_01.php</pre></td>
+          </tr>
+          <tr>
+            <td colspan="2"><pre>C:\Users\Barto\Documents\IAW Barto\PHP\</pre></td>
+            <td><pre>pruebas\prueba_01.php</pre></td>
+          </tr>
+          <tr>
+            <th colspan="2">Parte no común (ruta en el disco)</th>
+            <th>Parte común (se descarta)</th>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Así, en el ejemplo definido en esta lección y que se muestra en las capturas las líneas a añadir en el archivo httpd.conf serían las siguientes (resaltadas en negrita):</p>
+
+      <pre class="fuente">
+&lt;IfModule alias_module&gt;
+# ...
+<strong>   Alias /miproyecto/micarpeta "C:\Users\Barto\Documents\IAW Barto\PHP"
+   &lt;Directory "C:\Users\Barto\Documents\IAW Barto\PHP"&gt;
+     Options Indexes FollowSymLinks Includes ExecCGI
+     AllowOverride All
+     Require all granted
+   &lt;/Directory&gt;<br /></strong># ...
+&lt;/IfModule&gt;
+</pre>
+
+      <p>En cualquier directiva es necesario escribir entre comillas las rutas que contengan espacios en blanco.</p>
+
+      <hr class="corta" />
+
+      <p>En resumen, si en el workspace se crea un proyecto y una carpeta enlazada que enlaza a un directorio en el disco, el alias a crear será:</p>
+
+      <pre class="fuente">
+<strong># ...
+   Alias /nombre-proyecto/nombre-carpeta "ruta-del-directorio-en-el-disco"
+   &lt;Directory "ruta-directorio-en-el-disco"&gt;
+     Options Indexes FollowSymLinks Includes ExecCGI
+     AllowOverride All
+     Require all granted
+   &lt;/Directory&gt;
+# ...</strong>
+</pre>
+
+      <p>Si en el workspace hay varias carpetas enlazadas, habrá que crear tantos alias como carpetas enlazadas (tanto si están en el mismo proyecto como si están en proyectos diferentes).</p>
+    </section>
+
+    <section id="configurar-clase">
+      <h2>Configurar Eclipse PDT y Apache en clase</h2>
+
+      <p>Los nombres del proyecto, de la carpeta enlazada y de la ubicación de los archivos PHP recomendados para utilizar en clase se proponen en el ejercicio <a href="../ejercicios/apache_eclipse.html#ejercicio-6">Apache y Eclipse 6</a>.</p>
+    </section>
+
+    <section id="crear-html">
+      <h2>Crear archivos HTML</h2>
+
+      <p>Para crear un archivo HTML, hay que seleccionar la carpeta en la que se quiera crear el archivo en la vista Explorador PHP (PHP Explorer), hacer clic derecho y elegir la opción <span class="menu">New &gt; HTML</span>.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo HTML" src="../img/eclipse/eclipse-new-html-file-01.png" width="610" height="490" title="Eclipse PDT - Creación de archivo HTML" /></p>
+
+      <hr class="corta" />
+
+      <p>Se abrirá una ventana de creación de archivo en el que se debe escribir el nombre (este nombre <strong>no debe contener</strong> espacios ni acentos, ya que Eclipse PDT lo utiliza para construir las URL) y hacer clic en Next. En el ejemplo, se ha escrito el nombre "prueba_01.html".</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo HTML" src="../img/eclipse/eclipse-new-html-file-02.png" width="525" height="555" title="Eclipse PDT - Creación de archivo HTML" /></p>
+
+      <hr class="corta" />
+
+      <p>En la segunda pantalla se debe elegir el tipo de documento HTML y hacer clic en Finish. En el ejemplo se ha elegido la plantilla HTML 5.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo HTML" src="../img/eclipse/eclipse-new-html-file-03.png" width="525" height="555" title="Eclipse PDT - Creación de archivo HTML" /></p>
+
+      <hr class="corta" />
+
+      <p>Una vez creado el archivo, este aparece en la vista Explorador PHP y su contenido aparece en la vista Editor HTML.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo HTML" src="../img/eclipse/eclipse-new-html-file-04.png" width="540" height="290" title="Eclipse PDT - Creación de archivo HTML" /></p>
+
+      <p>En Mi PC puede comprobarse que se ha creado el archivo.</p>
+
+      <p class="captura"><img alt="Eclipse PDT - Creación de archivo HTML" src="../img/eclipse/eclipse-new-html-file-05.png" width="420" height="190" title="Eclipse PDT - Creación de archivo HTML" /></p>
+    </section>
+
+    <section id="ejecutar-html">
+      <h2>Ejecutar archivos HTML</h2>
+
+      <p>Eclipse PDT no es capaz de ejecutar directamente en el servidor archivos HTML, pero se puede conseguir creando primero una herramienta externa (External Tool).</p>
+
+      <section id="herramienta-crear">
+        <h3>Crear la herramienta externa</h3>
+
+        <p>Para crear la herramienta externa, hay que elegir el menú <span class="menu">Run &gt; External Tools &gt; External Tools Configurations ...</span>.</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-new-external-tools-configuration-01.png" width="845" height="575" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>Se abrirá la ventana de administración de las configuraciones de herramientas externas. En ella hay que hacer clic en "Program".</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-new-external-tools-configuration-02.png" width="800" height="640" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>A continuación hay que hacer clic en el icono de "New launch configuration".</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-new-external-tools-configuration-03.png" width="800" height="640" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>Se mostrará la nueva herramienta externa, con sus opciones de configuración en blanco:</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-new-external-tools-configuration-04.png" width="800" height="640" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>Hay que escribir el nombre de herramienta (en el ejemplo, "<strong>HTML en Firefox</strong>"), la ruta de la herramienta (en el ejemplo se ha seleccionado el ejecutable firefox.exe del navegador Firefox haciendo clic en "Browse File System...") y los argumentos (en el ejemplo, "<strong>localhost${container_path}/${resource_name}</strong>"). Para finalizar hay que hacer clic en el botón Apply.</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-new-external-tools-configuration-05.png" width="597" height="702" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>Se mostrará la nueva configuración de herramienta externa recién creada, con su nombre. Finalmente, hay que hacer clic en Run para ejecutar en el servidor el archivo HTML elegido al principio y que Eclipse recuerde que se ha utilizado la herramienta externa.</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-new-external-tools-configuration-06.png" width="597" height="702" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>Al hacer clic en Run, se abrirá Firefox mostrando el archivo en el servidor local:</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-new-external-tools-configuration-07.png" width="400" height="120" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <p>Igualmente, se pueden crear otras herramientas externas para ejecutar los archivos en otros navegadores (Internet Explorer, Chrome, etc.)</p>
+      </section>
+
+      <section id="herramienta-utilizar">
+        <h3>Utilizar la herramienta externa</h3>
+
+        <p>Una vez creada la herramienta externa, se puede ejecutar un archivo HTML seleccionándolo en la vista PHP Explorer, abriendo el menú <span class="menu">Run &gt; External Tools</span> y eligiendo la herramienta externa creada anteriormente (en el ejemplo, la herramienta se llama "HTML en Firefox"):</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-run-html-file-01.png" width="845" height="575" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>Al elegirla, se abrirá Firefox mostrando el archivo en el servidor local:</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-run-html-file-02.png" width="425" height="100" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+
+        <hr class="corta" />
+
+        <p>El botón de herramientas externas se puede utilizar para ejecutar tanto archivos HTML como archivos PHP, seleccionándolos en la vista PHP Explorer o seleccionando su pestaña.</p>
+
+        <p>El botón de herramientas externas se aplica la última herramienta aplicada, pero haciendo clic en el desplegable se podrían ver todas las herramientas externas y elegir una específica:</p>
+
+        <p class="captura"><img alt="Eclipse PDT - Ejecutar un archivo HTML" src="../img/eclipse/eclipse-run-html-file-04.png" width="520" height="270" title="Eclipse PDT - Ejecutar un archivo HTML" /></p>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 29 de septiembre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

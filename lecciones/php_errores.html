@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Errores y mensajes de error. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Errores y mensajes de error</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Mensajes de error</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#errores">Errores en un programa</a></li>
+          <li><a href="#mensajes">Mensajes de error</a></li>
+          <li><a href="#parse-errors">Parse errors</a></li>
+          <li><a href="#warnings">Warnings</a></li>
+          <li><a href="#notices">Notices</a></li>
+          <li><a href="#deprecated">Strict / Deprecated</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="errores">
+      <h2>Errores en un programa</h2>
+
+      <p>Los ordenadores no poseen inteligencia ni sentido común, se limitan a ejecutar las instrucciones contenidas en el programa. Por ello, los programas no pueden contener errores ni ambigüedades y tienen que tener previstos todas las posibles situaciones.</p>
+
+      <p>Algunos errores de programación no pueden ser detectados por los compiladores o intérpretes (por ejemplo, si un programa tiene que calcular una suma y el programador ha escrito una multiplicación en vez de la suma el programa no dará el resultado correcto pero el compilador no puede saberlo), pero otros sí. En esta lección se comentan los errores que detectan los compiladores o intérpretes, avisando al programador o al usuario de su existencia.</p>
+
+      <p>Podemos distinguir dos tipos de errores:</p>
+      <ul>
+        <li>Errores sintácticos (parse errors)
+          <p>Un programa debe estar escrito según las reglas del lenguaje de programación. Si un programa no cumple alguna regla, se dice que el programa tiene un error sintáctico.</p>
+        </li>
+        <li>Errores no sintácticos (errors)
+          <p>Aunque un programa siga las reglas del lenguaje, el ordenador puede ser incapaz de ejecutar una instrucción determinada (dependiendo del error, el ordenador y de continuar con la ejecución del programa. En ese caso, se dice que el programa tiene errores no sintácticos.</p>
+        </li>
+      </ul>
+
+      <p>Entre los errores no sintácticos, se pueden distinguir varios tipos deerrores:</p>
+      <ul>
+        <li>Advertencias (warnings)
+          <p>El ordenador es incapaz de ejecutar una instrucción determinada, pero el ordenador puede continuar con la ejecución del programa. En ese caso, se dice que el compilador da advertencias.</p>
+        </li>
+        <li>Avisos (notices)
+          <p>El ordenador es capaz de ejecutar una instrucción determinada, pero detecta que el programador puede haberse equivocado. En ese caso, se dice que el compilador da avisos. Los avisos no siempre son señales de equivocaciones, pero deben evitarse.</p>
+        </li>
+        <li>Obsolescencias (deprecated / strict)
+          <p>El compilador puede detectar que un programa utiliza características del lenguaje que actualmente funcionan correctamente, pero que no estarán (o pueden no estar) disponibles en futuras versiones, y generar un aviso de obsolescencia.</p>
+        </li>
+      </ul>
+
+      <p>A continuación se comentan algunos mensajes de error.</p>
+    </section>
+
+    <section id="mensajes">
+      <h2>Mensajes de error</h2>
+
+      <p>Cuando PHP encuentra errores en un programa, PHP puede generar un mensaje de error que se incluye en la página en el punto en que se ha encontrado el error. El error incluye una descripción del error y el número de línea en el que PHP ha encontrado el error, lo que facilita al programador su corrección (el número de línea indica la línea en que PHP se da cuenta de que hay un error, pero el error puede estar en una línea anterior a la indicada por PHP).</p>
+
+      <p>La <a href="../otros/in_php_configuracion_1.html#error_repo">directiva <span class="php-dir">error_reporting</span></a> del fichero de configuración de PHP php.ini permite establecer qué tipos de error generarán un mensaje de error. Como se comenta en la lección de configuración de PHP:</p>
+      <ul>
+        <li>En un entorno de producción (es decir, en un servidor accesible a usuarios en Internet o en una red local) se recomienda que PHP no muestre mensajes de error al usuario, pues esos mensajes de error pueden ser aprovechados por usuarios maliciosos para sus propios fines (provocar la caída del servidor, obtener información privada, etc.).</li>
+        <li>En un entorno de desarrollo (es decir, en un servidor utilizado por el programador o para probar el funcionamiento de la aplicación) se recomienda que PHP muestre el mayor número de errores posible, para tener conocimiento de ellos y corregirlos lo antes posible</li>
+      </ul>
+
+      <p>Antes de ejecutar un programa, PHP analiza el programa en busca de errores sintácticos (llaves, paréntesis o comillas sin cerrar, etc). Un error sintáctico es un error fatal, que detiene el propio análisis y lo único que obtendremos será el mensaje de error. Si un programa contiene varias errores sintácticos, PHP sólo muestra el mensaje de error del primer error. Una vez corregido el primer error, al volver a ejecutar el programa se mostrará el mensaje del segundo error y así sucesivamente hasta corregir todos los errores sintácticos.</p>
+
+      <p>Si un programa no contiene errores sintácticos, PHP ejecuta el programa. Durante la ejecución del programa PHP puede encontrar un error que impida la ejecución del resto del programa o encontrarse con un error que no impida la ejecución del programa. En el primer caso, el navegador mostrará el contenido de la página generado hasta el error, el mensaje de error y nada más. En el segundo caso, el navegador mostrará el contenido de la página completo, con el mensaje de error insertado en el lugar en el que se produjo (dependiendo de la estructura de la página, el mensaje de error puede ser visible únicamente en el código fuente).</p>
+
+      <p>Por supuesto, que un programa no genere mensajes de error no significa que el programa funcione correctamente, pero si genera mensajes de error probablemente no funcionará correctamente.</p>
+    </section>
+
+    <section id="parse-errors">
+      <h2>Errores sintácticos (Parse errors)</h2>
+
+      <p>Un programa está formado por las palabras reservadas del lenguaje, cadenas, variables, constantes o funciones, paréntesis, llaves, corchetes, signos de puntuación, operadores, etc, que además deben sucederse en un orden determinado. Los errores sintácticos se producen cuando el compilador no encuentra los símbolos (tokens) esperados o encuentra otros en su lugar.</p>
+
+      <p>En el manual de PHP se encuentra la <a href="http://www.php.net/manual/es/reserved.keywords.php">lista de palabras reservadas (keywords)</a>, la <a href="http://www.php.net/manual/es/reserved.constants.php">lista de constantes predefinidas</a>, la <a href="http://www.php.net/manual/es/reserved.classes.php">lista de clases predefinidas</a> y la <a href="http://php.net/manual/es/tokens.php">lista de tipos de símbolos (tokens)</a>.</p>
+
+      <p>Cuando encuentra un símbolo no esperado, PHP indica el tipo de símbolo que ha encontrado sin esperarlo.</p>
+      <ul>
+        <li>unexpected character
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+                <td class="codphp"><pre><code class="language-php">&lt;?php
+print &lt;p&gt;Hola&lt;/p&gt;\n
+?&gt;</code></pre>
+                </td>
+                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected '&lt;' in <b>ejemplo.php</b> on line <b>2</b></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo del error es que un trozo de texto debe estar contenido en una cadena (rodeado por comillas simples o dobles) y cuando encuentra el carácter &lt; (que representa el operador matemático de desigualdad), no puede entenderlo como tal.</p>
+        </li>
+        <li>unexpected T_CONSTANT_ENCAPSED_STRING
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+                <td class="codphp"><pre><code class="language-php">&lt;?php
+primt "&lt;p&gt;Hola&lt;/p&gt;\n";
+?&gt;</code></pre>
+                </td>
+                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in <b>ejemplo.php</b> on line <b>2</b></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo del error es que <span class="php-res">primt</span> no es una palabra reservada del lenguaje ni una función (debería decir <span class="php-res">print</span>) y cuando encuentra la cadena no sabe cómo seguir.</p>
+        </li>
+        <li>unexpected T_PRINT
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+                <td class="codphp"><pre><code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n"
+print "&lt;p&gt;Adios&lt;/p&gt;\n"
+?&gt;</code></pre>
+                </td>
+                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected T_PRINT in <b>ejemplo.php</b> on line <b>3</b></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo de error es que la primera sentencia no finaliza en punto y coma (;) y no se esperaba el segundo print. Por cierto, la última sentencia de un bloque php puede no finalizar en punto y coma, aunque se recomienda hacerlo.</p>
+        </li>
+      </ul>
+
+      <p>Los paréntesis, llaves y corchetes deben estar emparejados (por cada signo abierto debe hacer uno cerrado).</p>
+      <ul>
+        <li>final inesperado
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+                <td class="codphp"><pre><code class="language-php">&lt;?php
+$edad = 15;
+if ($edad &lt; 19) {
+    print "&lt;p&gt;Menor de edad&lt;/p&gt;\n";
+?&gt;</code></pre>
+                </td>
+                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected $end in <b>ejemplo.php</b> on line <b>5</b></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo de error es que no se ha cerrado la llave y PHP llega al final del fichero sin haber cerrado el bloque.</p>
+        </li>
+        <li>paréntesis inesperado
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+$resultado = 2 * 3 + 4);
+print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected ')' in <b>ejemplo.php</b> on line <b>2</b></pre></td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo de error es que no se ha abierto el paréntesis y PHP no se espera el paréntesis cerrado.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="warnings">
+      <h2>Advertencias (Warnings)</h2>
+
+      <p>Estos avisos indican que se ha producido un error de algún tipo que no impide la ejecución del resto del programa, aunque seguramente el programa no producirá el resultado esperado.</p>
+      <ul>
+        <li>división por cero
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+$numero = 0;
+$resultado = 1 / $numero;
+print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;";
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php">
+                  <pre><b>Warning</b>:  Division by zero in <b>ejemplo.php</b> on line <b>3</b><br />
+Resultado:
+</pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo del aviso es que se intenta realizar un cálculo matemático imposible (dividir entre cero).</p>
+        </li>
+        <li>uso de cabeceras después de escribir texto
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+header("location:index.php");
+exit();
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php">
+                  <pre>Hola
+<b>Warning</b>:  Cannot modify header information - headers already sent by
+(output started at ejemplo.php:2) in <b>ejemplo.php</b> on line <b>3</b><br />
+</pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>En este caso, el motivo del aviso es que se intenta enviar una cabecera después de haber enviado texto (dependiendo de la configuración de PHP, concretamente de <a href="../otros/in_php_configuracion_1.html#output-buffering">la directiva output_buffering</a>, puede no dar aviso de error).</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="notices">
+      <h2>Avisos (Notices)</h2>
+
+      <p>Los avisos no impiden la ejecución de un programa, aunque seguramente el programa no producirá el resultado esperado.</p>
+      <ul>
+        <li>variable no definida
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Edad: $edad&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php">
+                  <pre><b>Notice</b>:  Undefined variable: edad in <b>ejemplo.php</b> on line <b>2</b><br />
+Edad:
+</pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>En este caso, el motivo del aviso es que se utiliza una variable a la que no se había asignado valor previamente. El programa funciona puesto que PHP le asigna el valor de cadena vacía, pero se desaconseja utilizar variables no establecidas previamente.</p>
+        </li>
+        <li>ausencia del símbolo $ en el nombre de una variable
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+$edad = 18;
+print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php">
+                  <pre><b>Notice</b>:  Use of undefined constant edad - assumed 'edad' in <b>ejemplo.php</b> on line <b>3</b><br />
+Edad: edad
+</pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo del aviso es que PHP encuentra una palabra (edad) que no es un término del lenguaje, ni una variable (porque no empieza por $) ni una cadena (porque no está entre comillas. PHP genera un aviso y supone que se trata de una cadena, y por eso escribe "edad".</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="deprecated">
+      <h2>Obsolescencias (Strict / Deprecated)</h2>
+
+      <ul>
+        <li>función obsoleta
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+$cadena = 'ABC';
+if (eregi('a', $cadena)) {
+    print "'$cadena' contiene una 'a' o una  'A'\n";
+}
+?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-php">
+                  <pre><b>Deprecated</b>:  Function eregi() is deprecated in <b>ejemplo.php</b> on line <b>3</b><br />
+'ABC' contiene una 'a' o una 'A'
+</pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>En este caso, el motivo del aviso es que la función <span class="php-fun">eregi()</span> está considerada obsoleta desde la versión PHP 5.3.0.</p>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2013</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

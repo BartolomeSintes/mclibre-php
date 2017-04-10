@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Traducciones con gettext. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Traducciones con Gettext</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Traducciones con Gettext</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#que-es">Qué es Gettext</a></li>
+          <li><a href="#cadenas">Indicar cadenas a traducir</a></li>
+          <li><a href="#configuracion-poedit">Configuración de Poedit</a></li>
+          <li><a href="#crear-po">Crear los ficheros .po</a></li>
+          <li><a href="#utilizar-po">Utilizar el archivo .po</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="que-es">
+      <h2>Qué es Gettext</h2>
+
+      <p>Hacer un sitio web multilingüe, es decir, disponible en varios idiomas, no es fácil. Si el número de páginas es pequeño y el contenido no cambia a menudo, una solución es utilizar las funciones <a href="http://www.php.net/manual/es/book.gettext.php">gettext</a> incluidas en PHP. <a href="http://www.gnu.org/software/gettext/gettext.html">Gettext</a> es un conjunto de utilidades creadas por Ulrich Drepper en 1995 y que forman parte del proyecto GNU y que facilita la traducción de programas.</p>
+
+      <p>Básicamente, la utilización de gettext en PHP es el siguiente:</p>
+      <ul>
+        <li>el programador indica en el código fuente de las páginas web cuáles son las cadenas de texto a traducir</li>
+        <li>con gettext o con alguna utilidad como <a href="https://poedit.net/">Poedit</a>, el programador crea un archivo de extensión .po que contiene todas las cadenas a traducir </li>
+        <li>los traductores crean archivos .po con la traducción de todas las cadenas (un archivo por idioma) y se los proporcionan al traductor</li>
+        <li>el programador coloca los archivos .po junto con la página web</li>
+        <li>al servirse las páginas webs, automáticamente se sustituyen las cadenas originales por las traducciones (si alguna cadena no está traducida, se muestra las cadenas en el idioma original)</li>
+      </ul>
+
+      <p>La extensión Gettext está normalmente incluida en PHP (por ejemplo, lo está en XAMPP), aunque si no lo está, se puede utilizar la biblioteca <a href="http://savannah.nongnu.org/projects/php-gettext/">php-gettext</a>.</p>
+    </section>
+
+    <section id="cadenas">
+      <h2>Indicar las cadenas de texto a traducir</h2>
+
+      <p>Supongamos que tenemos la siguiente página en castellano, pero también queremos que esté disponible en inglés:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codhtml">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Esta página está en castellano&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>El primer paso es marcar las cadenas a traducir. Las cadenas que se quieran traducir, deben enviarse a la función <a href="http://www.php.net/manual/es/function.gettext.php"><span class="php-fun">gettext($cadena)</span></a>, aunque normalmente se utiliza el alias <a href="http://www.php.net/manual/es/function.gettext.php"><span class="php-fun">_($cadena</span>)</a>:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codhtml">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . gettext("Esta página está en castellano") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre></td>
+          </tr>
+          <tr>
+            <td class="codhtml">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="configuracion-poedit">
+      <h2>Configuración de Poedit</h2>
+
+      <p>En el menú "Archivo &gt; Preferencias" se puede introducir el nombre y dirección de correo del autor de la traducción...</p>
+
+      <p class="captura"><img alt="poedit - Menú Archivo &gt; Preferencias ..." src="../img/poedit/poedit_preferencias_1.png" title="poedit - Menú Archivo &gt; Preferencias ..." width="394" height="499" /></p>
+
+      <p>... y el formato del archivo (finales de líneas):</p>
+
+      <p class="captura"><img alt="poedit - Menú Archivo &gt; Preferencias ..." src="../img/poedit/poedit_preferencias_2.png" title="poedit - Menú Archivo &gt; Preferencias ..." width="394" height="499"/></p>
+    </section>
+
+    <section id="crear-po">
+      <h2>Crear los ficheros .po</h2>
+
+      <p>En Poedit los archivos .po se llaman catálogos. Cada archivo .po contiene la traducción de las cadenas a un idioma determinado. Para crear un nuevo catálogo, hay que elegir el menú "Archivo &gt; Nuevo catálogo...." y completar primero las preferencias del catálogo.</p>
+
+      <hr class="corta" />
+
+      <p>En la pestaña "Información del proyecto" deben rellenarse al menos los campos:</p>
+      <ul>
+        <li>"Idioma" (idioma al que se van a traducir las cadenas de texto), </li>
+        <li>"País" (país en el que se utiliza el idioma anterior), </li>
+        <li>"Juego de caracteres" (juegos de caracteres del archivo .po, normalmente iso-8859-1 o utf-8),</li>
+        <li>"Juego de caracteres del código fuente" (juegos de caracteres de la página, normalmente iso-8859-1 o utf-8).</li>
+      </ul>
+
+      <p class="captura"><img alt="poedit - Menú Archivo &gt; Nuevo catálogo ..." src="../img/poedit/poedit_opciones_1.png" title="poedit - Menú Archivo &gt; Nuevo catálogo ..." width="402" height="327" /></p>
+
+      <p>Para la página de ejemplo anterior, si queremos preparar la traducción al inglés, deberíamos indicar "English" en Idioma y "United Kingdom" en Country e "iso-8859-1" en los juegos de caracteres:</p>
+
+      <p class="captura"><img alt="poedit - Menú Archivo &gt; Nuevo catálogo ..." src="../img/poedit/poedit_ejemplo_opciones_1.png" title="poedit - Menú Archivo &gt; Nuevo catálogo ..." width="402" height="327" /></p>
+
+      <hr class="corta" />
+
+      <p>En la pestaña "Carpetas", debe incluirse en "Directorio raíz" el camino hasta la carpeta en la que se encuentra la página web y en "Carpetas" debe incluirse el camino . (el carácter punto hace que busque en el directorio indicado en Directorio raíz). Para añadir un camino hay que hacer clic en el botón "Nuevo elemento".</p>
+
+      <p class="captura"><img alt="poedit - Menú Archivo &gt; Nuevo catálogo ..." src="../img/poedit/poedit_opciones_2.png" title="poedit - Menú Archivo &gt; Nuevo catálogo ..." width="402" height="327" /></p>
+
+      <p>Si la página de ejemplo se encuentra en el directorio c:\www\ejemplo_gettext, deberíamos indicar lo siguiente:</p>
+
+      <p class="captura"><img alt="poedit - Menú Archivo &gt; Nuevo catálogo ..." src="../img/poedit/poedit_ejemplo_opciones_2.png" title="poedit - Menú Archivo &gt; Nuevo catálogo ..." width="402" height="327" /></p>
+
+      <hr class="corta" />
+
+      <p>Al pulsar Aceptar, Poedit muestra un cuadro de diálogo para elegir dónde crear el archivo.po. El archivo debe llamarse messages.po y debe crearse en el subdirectorio "locale/xx_XX/LC_MESSAGES", situado en el mismo directorio donde se encuentre la página web, y donde xx_XX es el código correspondiente al idioma y país elegido (en el caso del ejemplo, en_GB).</p>
+
+      <p>Los <a href="http://www.gnu.org/software/gettext/manual/html_node/Usual-Language-Codes.html">códigos de idioma</a> a utilizar son los que se definen en la norma ISO 639. Por ejemplo, es (español), fr (francés), de (alemán), en (inglés), it (italian), pt (portugués), ca (catalán), gl (gallego), eu (vascuence), etc.</p>
+
+      <p>Los <a href="http://www.gnu.org/software/gettext/manual/html_node/Country-Codes.html">códigos de país</a> a utilizar son los que se definen en la norma ISO 639. Por ejemplo, ES (España), FR (France), DE (Alemania), GB (United Kingdom), IT (Italy), PT (Portugal), etc.</p>
+
+      <p>Inmediatamente, Poedit analiza todos los archivos que se encuentran en los directorios indicados y muestra las cadenas marcadas para traducción. En el ejemplo anterior, mostraría lo siguiente:</p>
+
+      <p class="captura"><img alt="poedit - Resultado de la actualización" src="../img/poedit/poedit_ejemplo_resultado_actualizacion.png" title="poedit - Resultado de la actualización" width="329" height="207" /></p>
+
+      <p>Al pulsar OK, Poedit vuelve a la ventana principal del programa mostrando las cadenas encontradas. En el ejemplo anterior, mostraría lo siguiente:</p>
+
+      <p class="captura"><img alt="poedit - Traducir cadenas 1" src="../img/poedit/poedit_ejemplo_traducir_1.png" title="poedit - Traducir cadenas 1" width="473" height="328" /></p>
+
+      <p>La traducción debe escribirse en el cuadro inferior izquierda:</p>
+
+      <p class="captura"><img alt="poedit - Traducir cadenas 2" src="../img/poedit/poedit_ejemplo_traducir_2.png" title="poedit - Traducir cadenas 2" width="473" height="328" /></p>
+
+      <p>Una vez traducidas las cadenas, hay que guardar el archivo (Archivo &gt; Guardar) con la extensión po (por ejemplo, messages.po).</p>
+
+      <p><strong>Nota:</strong> Comprobar en el menú "Catálogo &gt; Opciones" que los juegos de caracteres no se han modificado. Si se han modificado (por ejemplo de iso-8859-1 a utf-1), devolverlo al valor original.</p>
+
+      <hr class="corta" />
+
+      <p>Con esto terminaría la creación del archivo de traducción al inglés. Si quisieramos preparar un archivo de traducción al francés, deberíamos repetir estos pasos teniendo en cuenta que el código de idioma para el idioma francés y el país Francia es fr-FR. Los <a href="http://www.iana.org/assignments/language-subtag-registry">códigos de idiomas y países</a> se pueden consultar en la web de <a href="http://www.iana.org/">IANA</a>.</p>
+    </section>
+
+    <section id="utilizar-po">
+      <h2>Utilizar el archivo .po</h2>
+
+      <p>Para que los mensajes aparezcan traducidos habría que añadir el siguiente código a la página de ejemplo:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codhtml">
+              <pre>
+<code class="language-php">&lt;?php
+$language = "en_GB";
+putenv("LC_ALL=$language");
+setlocale(LC_ALL, $language);
+bindtextdomain("messages", "./locale");
+textdomain("messages");
+
+print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;This page is in English&lt;/p&gt; </code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Nota</strong>: El primer argumento de las funciones bindtextdomain y textdomain tiene que ser el nombre del archivo po que se haya creado.</p>
+
+      <hr class="corta" />
+
+      <p>Para que el usuario pudiera elegir el idioma de la página se podría, por ejemplo, añadir unos enlaces que llamaran a la página enviando el código del idioma:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codhtml">
+              <pre>
+<code class="language-php">&lt;?php
+$language = (isset($_REQUEST["language"])) ? trim(strip_tags($_REQUEST["language"])) : "es_ES";
+putenv("LC_ALL=$language");
+setlocale(LC_ALL, $language);
+bindtextdomain("messages", "./locale");
+textdomain("messages");
+
+print "&lt;p&gt;&lt;a href=\"" . $_SERVER["PHP_SELF"] . "?language=en_GB\"&gt;English&lt;/a&gt; -
+  &lt;a href=\""
+    . $_SERVER["PHP_SELF"] . "?language=es_ES\"&gt;Español&lt;/a&gt;&lt;/p&gt;\n";
+
+print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <pre>
+<code class="language-html">&lt;p&gt;&lt;a href="ejemplo.php?language=en_GB"&gt;English&lt;/a&gt; -
+  &lt;a href="ejemplo.php?language=es_ES"&gt;Español&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Esta página está en castellano&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 5 de marzo de 2008</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

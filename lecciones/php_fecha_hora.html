@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Funciones de fecha y hora. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Funciones de fecha y hora</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Funciones fecha y hora</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#date-default-timezone-set">Huso horario</a></li>
+          <li><a href="#generar-cadena">Generar cadena</a>
+            <ul>
+              <li><a href="#date">Función date()</a></li>
+              <li><a href="#strftime">Función strftime()</a></li>
+            </ul>
+          </li>
+          <li><a href="#localtime">Función localtime()</a></li>
+          <li><a href="#checkdate">Función checkdate()</a></li>
+          <li><a href="#convertir-fechas">Convertir cadenas de fechas</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="date-default-timezone-set">
+      <h2>Huso horario: función date_default_timezone_set()</h2>
+
+      <p>La función <a href="http://www.php.net/manual/es/function.date-default-timezone-set.php"><span class="php-fun">date_default_timezone_set($identificador_de_zona_horaria)</span></a> establece el huso horario que utilizan las funciones de fecha y hora. El manual de PHP contiene la lista de <a href="http://www.php.net/manual/es/timezones.php">identificadores de zonas horarias válidas</a>.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+date_default_timezone_set("Europe/Madrid");
+print "&lt;p&gt;" . date("Y") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;2007&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>Cuando la directiva <span class="php-dir">error_reporting</span> tiene establecido el valor <span class="php-con">E_STRICT</span>, PHP genera un aviso si no se ha establecido el huso horario antes de utilizar cualquier función de fecha y hora.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;" . date("Y") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html">
+              <strong>Strict Standards</strong>: date() [function.date]: It is not safe to rely on the system's timezone settings. Please use the date.timezone setting, the TZ environment variable or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'Europe/Paris' for '1.0/no DST' instead in <strong>ejemplo.php</strong> on line <strong>2</strong>
+
+              <p>2007</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="generar-cadena">
+      <h2>Generar cadena con fecha y hora</h2>
+
+      <section id="date">
+        <h3>Función date()</h3>
+
+        <p>La función <a href="http://www.php.net/manual/es/function.date.php"><span class="php-fun">date($formato)</span></a> permite generar una cadena que incluye la fecha y/o la hora del sistema. La función <span class="php-fun">date()</span> espera uno o dos argumentos. El primer argumento define el formato de la cadena y el segundo el instante que se quiere convertir (si no se indica el segundo argumento, la función trabaja con la fecha y hora actual del sistema).</p>
+
+        <p>Para definir el formato de la cadena se utilizan, entre otros, los siguientes caracteres:</p>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td></td>
+              <th>día</th>
+              <th>mes</th>
+              <th>año</th>
+            </tr>
+            <tr>
+              <th>números con ceros delante</th>
+              <td>d</td>
+              <td>m</td>
+              <td>y (2 cifras)<br />
+                Y (4 cifras)</td>
+            </tr>
+            <tr>
+              <th>números sin ceros delante</th>
+              <td>j</td>
+              <td>n</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>nombre corto (3 letras)</th>
+              <td>D</td>
+              <td>M</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>nombre largo (completo)</th>
+              <td>l</td>
+              <td>F</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td></td>
+              <th>hora (12h)</th>
+              <th>hora (24 h)</th>
+              <th>minutos</th>
+              <th>segundos</th>
+            </tr>
+            <tr>
+              <th>números con ceros delante</th>
+              <td>h</td>
+              <td>H</td>
+              <td>i</td>
+              <td>s</td>
+            </tr>
+            <tr>
+              <th>números sin ceros delante</th>
+              <td>g</td>
+              <td>G</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Además, se pueden utilizar los siguientes valores:</p>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td></td>
+              <th>carácter</th>
+            </tr>
+            <tr>
+              <th>fecha completa en formato RFC2822</th>
+              <td>r</td>
+            </tr>
+            <tr>
+              <th>fecha completa en formato ISO 8061</th>
+              <td>c</td>
+            </tr>
+            <tr>
+              <th>número de días total del mes actual</th>
+              <td>t</td>
+            </tr>
+            <tr>
+              <th>número del día de la semana (domingo: 7, lunes: 1, etc.)</th>
+              <td>N</td>
+            </tr>
+            <tr>
+              <th>número del día de la semana (domingo: 0, lunes: 1, etc.)</th>
+              <td>w</td>
+            </tr>
+            <tr>
+              <th>Número de día del año</th>
+              <td>z</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+date_default_timezone_set("Europe/Madrid");
+print "&lt;p&gt;Ejemplo 1: " . date("d/m/y H:i:s") . "&lt;/p&gt;\n";
+print "&lt;p&gt;Ejemplo 2: " . date("l, F jS Y ") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-html">
+                <pre>
+<code class="language-html">&lt;p&gt;Ejemplo 1: 03/03/05 13:43:48&lt;/p&gt;
+&lt;p&gt;Ejemplo 2: Thursday, March 3rd 2005&lt;/p&gt;</code>
+</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="strftime">
+        <h3>Función strftime()</h3>
+
+        <p>La función <a href="http://www.php.net/manual/es/function.strftime.php"><span class="php-fun">strftime($formato)</span></a> permite generar una cadena que incluye la fecha y/o la hora del sistema en el idioma deseado. La función <span class="php-fun">strftime()</span> espera uno o dos argumentos. El primer argumento define el formato de la cadena y el segundo el instante que se quiere convertir (si no se indica el segundo argumento, la función trabaja con la fecha y hora actual del sistema).</p>
+
+        <p>Para definir el formato de la cadena se utilizan, entre otros, los siguientes caracteres:</p>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td></td>
+              <th>día</th>
+              <th>mes</th>
+              <th>año</th>
+            </tr>
+            <tr>
+              <th>números con ceros delante</th>
+              <td>%d</td>
+              <td>%m</td>
+              <td>%y (2 cifras)<br />
+                %Y (4 cifras)</td>
+            </tr>
+            <tr>
+              <th>nombre corto (3 letras)</th>
+              <td>%a</td>
+              <td>%b</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>nombre largo (nombre completo)</th>
+              <td>%A</td>
+              <td>%B</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td></td>
+              <th>hora (12h)</th>
+              <th>hora (24 h)</th>
+              <th>minutos</th>
+              <th>segundos</th>
+            </tr>
+            <tr>
+              <th>números con ceros delante</th>
+              <td>%I</td>
+              <td>%H</td>
+              <td>%M</td>
+              <td>%S</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Además, se pueden utilizar los siguientes valores:</p>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td></td>
+              <th>carácter</th>
+            </tr>
+            <tr>
+              <th>fecha y hora (dd/mm/aaaa hh:mm:ss)</th>
+              <td>%c</td>
+            </tr>
+            <tr>
+              <th>fecha (dd/mm/aaaa)</th>
+              <td>%x</td>
+            </tr>
+            <tr>
+              <th>hora (hh:mm:ss)</th>
+              <td>%X</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+date_default_timezone_set("Europe/Madrid");
+setlocale(LC_TIME, "spanish");
+print "&lt;p&gt;" . strftime("Ejemplo 1: %A, %d de %B de %Y") . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Ejemplo 1: jueves, 30 de abril de 2009&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+    <section id="localtime">
+      <h2>Fecha y hora actual: función localtime()</h2>
+
+      <p>La funcion <a href="http://www.php.net/manual/es/function.localtime.php" class="php-fun">localtime()</a> devuelve una matriz con información detallada de la fecha y hora actual. Para que devuelva esa información de la hora actual, se pasa como argumento la función time(). El segundo argumento indica si la matriz tiene índices asociativos.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$fecha_actual = localtime(time(), 1);
+$anyo_actual  = $fecha_actual["tm_year"] + 1900;
+$mes_actual   = $fecha_actual["tm_mon"] + 1;
+$dia_actual   = $fecha_actual["tm_mday"];
+print "&lt;p&gt;Hoy es el $dia_actual/$mes_actual/$anyo_actual.&lt;/p&gt;";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Hoy es el 10/3/2005.&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="checkdate">
+      <h2>Validación de fecha: función checkdate()</h2>
+
+      <p>La función <a href="http://www.php.net/manual/es/function.checkdate.php"><span class="php-fun">checkdate($mes, $dia, $anyo)</span></a> devuelve el valor <span class="php-con">true</span> si la fecha enviada es correcta en el calendario Gregoriano y <span class="php-con">false</span> si no lo es.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$dia  = 29;
+$mes  = 2;
+$anyo = 2008;
+if (checkdate($mes, $dia, $anyo)) {
+    print "&lt;p&gt;El día $dia/$mes/$anyo existe.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;El día $dia/$mes/$anyo no existe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 29/2/2008 existe.&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$dia  = 29;
+$mes  = 2;
+$anyo = 2007;
+if (checkdate($mes, $dia, $anyo)) {
+    print "&lt;p&gt;El día $dia/$mes/$anyo existe.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;El día $dia/$mes/$anyo no existe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 29/2/2007 no existe.&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>Hay que tener en cuenta que el <a href="https://es.wikipedia.org/wiki/Calendario_gregoriano">calendario Gregoriano</a> se estableció (en algunos países) a partir del 15 de octubre de 1582, por lo que no tiene sentido aplicar esta función a fechas anteriores a esa fecha. Por ejemplo, la función <span class="php-fun">checkdate()</span> no tiene en cuenta que hay unos días (del 5 al 14 de octubre de 1582) que no existieron en el calendario Gregoriano. Por otra parte, si el año es negativo o cero, la función <span class="php-fun">checkdate()</span> devuelve siempre <span class="php-con">false</span>.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$dia  = 12;
+$mes  = 10;
+$anyo = 1582;
+if (checkdate($mes, $dia, $anyo)) {
+    print "&lt;p&gt;El día $dia/$mes/$anyo existe.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;El día $dia/$mes/$anyo no existe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 12/10/1582 existe.&lt;/p&gt;</code></pre></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$dia  = 1;
+$mes  = 1;
+$anyo = 0;
+if (checkdate($mes, $dia, $anyo)) {
+    print "&lt;p&gt;El día $dia/$mes/$anyo existe.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;El día $dia/$mes/$anyo no existe.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 1/1/0 no existe.&lt;/p&gt;</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="convertir-fechas">
+      <h2>Convertir cadenas de fechas</h2>
+
+      <p>Para convertir las cadenas de fechas del formato dd-mm-aaaa al formato aaaa-mm-dd y viceversa se pueden definir estas funciones:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">function fechaDma($amd)
+{
+    return substr($amd, 8, 2) . "-" . substr($amd, 5, 2) . "-" . substr($amd, 0, 4);
+}
+
+function fechaAmd($dma)
+{
+    return substr($dma, 7, 4) . "-" . substr($dma, 4, 2) . "-" . substr($dma, 1, 2);
+}</code>
+</pre>
+      </div>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 28 de abril de 2010</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

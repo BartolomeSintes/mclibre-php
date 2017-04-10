@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Instalación de XAMPP en GNU/Linux. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+  </head>
+
+
+  <body>
+    <h1>Instalación de XAMPP en GNU/Linux</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>XAMPP en Linux</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#lliurex">Instalación en LliureX 10.9</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En esta página se explica la Instalación de XAMPP en GNU/Linux. Las capturas de pantalla están tomadas en la distribución <a href="http://mestreacasa.gva.es/web/lliurex/">LliureX 10.9 Desktop</a>, pero en otras distribuciones el procedimiento es similar:</p>
+
+    <section id="lliurex">
+      <h2>Instalación de XAMPP en LliureX 10.9</h2>
+
+      <p><strong>Nota</strong>: Antes de instalar un servidor de páginas web es conveniente comprobar si no hay ya uno instalado. Para ello, es suficiente con abrir el navegador y escribir la dirección <a href="http://localhost/">http://localhost</a>. Si no se obtiene un mensaje de error es que hay algún servidor de páginas web instalado.</p>
+
+      <hr class="corta" />
+
+      <p>La última versión de XAMPP disponible actualmente (abril de 2011) es la versión 1.7.4 (del 22 de enero de 2011), que incluye Apache 2.2.17, PHP 5.3.5, MySQL 5.5.8 y otras utilidades y la versión para GNU/Linux puede <a href="https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/1.7.4/xampp-linux-1.7.4.tar.gz/download">descargarse desde este enlace</a>.</p>
+
+      <p>Una vez obtenido el archivo de instalación de XAMPP, el procedimiento de instalación es el siguiente:</p>
+      <ul>
+        <li>Abrir una ventana de terminal (menú Aplicacions &gt; Accessoris &gt; Terminal)</li>
+        <li>Moverse al directorio dónde se haya descargado el fichero descargado xampp-linux-1.7.4.tar.gz (en Firefox /home/usuario/Baixades, donde usuario es el nombre del usuario), con la orden
+
+          <div class="codphp">
+            <p>cd /home/usuario/Baixades</p>
+          </div>
+        </li>
+        <li>Descomprimir el fichero descargado en el directorio /opt, con la orden:
+
+          <div class="codphp">
+            <p>sudo tar xvfz xampp-linux-1.7.4.tar.gz -C /opt</p>
+          </div>
+          <p>Al utilizar el comando sudo, nos pedirá la contraseña de administrador para continuar</p>
+        </li>
+      </ul>
+
+      <p>Para inciar los servidores, hay que escribir la orden:</p>
+
+      <div class="codphp">
+        <p>sudo /opt/lampp/lampp start</p>
+      </div>
+
+      <p>Para detener los servidores, hay que escribir la orden:</p>
+
+      <div class="codphp">
+        <p>sudo /opt/lampp/lampp stop</p>
+      </div>
+
+      <p>Para detener y reiniciar los servidores, hay que escribir la orden:</p>
+
+      <div class="codphp">
+        <p>sudo /opt/lampp/lampp restart</p>
+      </div>
+
+      <p>Para abrir el panel de control, hay que escribir la orden</p>
+
+      <div class="codphp">
+        <p>sudo /opt/lampp/share/xampp-control-panel/xampp-control-panel</p>
+      </div>
+
+      <p>Para comprobar que todo funciona correctamente, hay que escribir en el navegador la dirección "http://localhost". Al abrir la página por primera vez, XAMPP pedirá seleccionar el idioma:</p>
+
+      <p class="centrado"><img alt="Página inicial de XAMPP" title="Página inicial de XAMPP" src="../img/xampp/xamp-localhost-linux-1.png" width="808" height="628" /></p>
+
+      <p>Una vez elegido el idioma, se mostrará la página de configuración de XAMPP:</p>
+
+      <p class="centrado"><img alt="Página inicial de XAMPP" title="Página inicial de XAMPP" src="../img/xampp/xamp-localhost-linux-2.png" width="808" height="628" /></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 16 de abril de 2011</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

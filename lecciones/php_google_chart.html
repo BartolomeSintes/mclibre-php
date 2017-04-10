@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Google Chart. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Google Chart</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Google Chart</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#valores">Valores a representar</a></li>
+          <li><a href="#tamano">Tamaño de gráfica</a></li>
+          <li><a href="#titulo">Título de gráfica</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Desde diciembre de 2007, Google ha puesto a disposición del público un biblioteca llamada <a href="https://developers.google.com/chart/?csw=1">Google Chart</a> que permite crear gráficos dinámicamente.</p>
+
+    <section id="valores">
+      <h2>Valores a representar</h2>
+
+      <p>Los valores a representar se pueden enviar en varios formatos. El más sencillo es el llamado "simple encoding"</p>
+
+      <h3>Codificación simple (Simple encoding)</h3>
+
+      <p>En este formato, la lista de valores a representar se envía en forma de cadena (formada por letras mayúsculas, minúsculas, cifras o el guión bajo (_)). Google Chart convierte cada carácter de la cadena en un valor del 0 al 61 y representa en la gráfica esos valores. El carácter guión bajo (_) significa que no hay valor en esa posición.</p>
+
+      <p>La relación entre caracteres de la cadena y valores numérico es la siguiente:</p>
+
+      <table border="1">
+        <tbody>
+          <tr>
+            <td>Valor numérico</td>
+            <td>0</td>
+            <td>1</td>
+            <td>...</td>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+            <td>27</td>
+            <td>...</td>
+            <td>50</td>
+            <td>51</td>
+            <td>52</td>
+            <td>53</td>
+            <td>..</td>
+            <td>60</td>
+            <td>61</td>
+            <td>sin valor</td>
+          </tr>
+          <tr>
+            <td>Carácter cadena</td>
+            <td>A</td>
+            <td>B</td>
+            <td></td>
+            <td>Y</td>
+            <td>Z</td>
+            <td>a</td>
+            <td>b</td>
+            <td>...</td>
+            <td>y</td>
+            <td>z</td>
+            <td>0</td>
+            <td>1</td>
+            <td>..</td>
+            <td>8</td>
+            <td>9</td>
+            <td>_</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Ejemplos</h3>
+      <ul>
+        <li>La cadena "fA9f" se traduce en los valores 31, 0, 61, 31. En una gráfica de tipo lineal esos valores crearían la siguiente gráfica:
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Gráfica</th>
+                <td><img src="http://chart.apis.google.com/chart?chs=400x200&amp;chd=s:fA9f&amp;cht=lc" alt="Ejemplo" /></td>
+              </tr>
+              <tr>
+                <th>Código fuente</th>
+                <td><p>&lt;img src="http://chart.apis.google.com/chart?chs=400x200&amp;amp;chd=s:fA9f&amp;amp;cht=lc" alt="Ejemplo" /&gt;</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>La cadena "9A9A_A9A" se traduce en los valores 61, 0, 61, 0, (valor no definido), 0, 61, 0. En una gráfica de tipo lineal esos valores crearían la siguiente gráfica:
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Gráfica</th>
+                <td><img src="http://chart.apis.google.com/chart?chs=400x200&amp;chd=s:9A9A_A9A&amp;cht=lc" alt="Ejemplo" /></td>
+              </tr>
+              <tr>
+                <th>Código fuente</th>
+                <td>&lt;img src="http://chart.apis.google.com/chart?chs=400x200&amp;amp;chd=s:9A9A_A9A&amp;amp;cht=lc" alt="Ejemplo" /&gt;</td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </section>
+
+    <section id="tamano">
+      <h2>Tamaño de gráfica</h2>
+
+      <p>El tamaño se establece mediante el parámetro <strong>chs</strong>, indicando la anchura y la altura en píxeles.</p>
+
+      <h3>Ejemplos</h3>
+      <ul>
+        <li>El parámetro <strong>chs=200x100</strong> crearía la siguiente gráfica:
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Gráfica</th>
+                <td><img src="http://chart.apis.google.com/chart?chs=200x100&amp;chd=s:fA9f&amp;cht=lc" alt="Ejemplo" /></td>
+              </tr>
+              <tr>
+                <th>Código fuente</th>
+                <td><p>&lt;img src="http://chart.apis.google.com/chart?chs=200x100&amp;amp;chd=s:fA9f&amp;amp;cht=lc" alt="Ejemplo" /&gt;</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>El parámetro <strong>chs=100x200</strong> crearía la siguiente gráfica:
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Gráfica</th>
+                <td><img src="http://chart.apis.google.com/chart?chs=100x200&amp;chd=s:fA9f&amp;cht=lc" alt="Ejemplo" /></td>
+              </tr>
+              <tr>
+                <th>Código fuente</th>
+                <td><p>&lt;img src="http://chart.apis.google.com/chart?chs=100x200&amp;amp;chd=s:fA9f&amp;amp;cht=lc" alt="Ejemplo" /&gt;</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </section>
+
+    <section id="titulo">
+      <h2>Título de gráfica</h2>
+
+      <p>El título se establece mediante el parámetro <strong>chtt</strong>, indicando el texto del título (sin acentos). Para hacer un salto de línea en el título, se utiliza el carácter | (tubería). Para separar palabras, se utiliza el carácter + (aunque admite espacios).</p>
+
+      <h4>Ejemplos</h4>
+      <ul>
+        <li>El parámetro <strong>chtt=Titulo</strong> crearía la siguiente gráfica:
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Gráfica</th>
+                <td><img src="http://chart.apis.google.com/chart?chs=400x200&amp;chd=s:fA9f&amp;cht=lc&amp;chtt=Titulo" alt="Ejemplo" /></td>
+              </tr>
+              <tr>
+                <th>Código fuente</th>
+                <td><p>&lt;img src="http://chart.apis.google.com/chart?chs=400x200&amp;amp;chd=s:fA9f&amp;amp;cht=lc&amp;amp;chtt=Titulo" alt="Ejemplo" /&gt;</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>El parámetro <strong>chtt=TITULO|Titulillo</strong> crearía la siguiente
+          gráfica:
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Gráfica</th>
+                <td><img src="http://chart.apis.google.com/chart?chs=400x200&amp;chd=s:fA9f&amp;cht=lc&amp;chtt=TITULO|Titulillo" alt="Ejemplo" /> </td>
+              </tr>
+              <tr>
+                <th>Código fuente</th>
+                <td><p>&lt;img src="http://chart.apis.google.com/chart?chs=400x200&amp;chd=s:fA9f&amp;cht=lc&amp;chtt=TITULO|Titulillo" alt="Ejemplo" /&gt;</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+        <li>El parámetro <strong>chtt=Titulo+de+la+grafica</strong> crearía la siguiente gráfica:
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Gráfica</th>
+                <td><img src="http://chart.apis.google.com/chart?chs=400x200&amp;chd=s:fA9f&amp;cht=lc&amp;chtt=Titulo+de+la+grafica" alt="Ejemplo" /></td>
+              </tr>
+              <tr>
+                <th>Código fuente</th>
+                <td><p>&lt;img src="http://chart.apis.google.com/chart?chs=400x200&amp;chd=s:fA9f&amp;cht=lc&amp;chtt=TITULO|Titulillo" alt="Ejemplo" /&gt;</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 28 de enero de 2008</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

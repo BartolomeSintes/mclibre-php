@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Constantes y constantes predefinidas. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Constantes y constantes predefinidas</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Constantes</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#constantes">Constantes</a></li>
+          <li><a href="#definir">Definir constantes</a></li>
+          <li><a href="#predefinidas">Constantes predefinidas</a>
+            <ul>
+              <li><a href="#lista">Lista de constantes</a></li>
+              <li><a href="#inf">INF </a></li>
+              <li><a href="#phpintmax">PHP_INT_MAX</a></li>
+              <li><a href="#phpintsize">PHP_INT_SIZE</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>PHP permite definir constantes e incluye una serie de constante predefinidas que se pueden utilizar directamente:</p>
+
+    <section id="constantes">
+      <h2>Constantes</h2>
+
+      <p>Las constantes son elementos de PHP que guardan un valor fijo que no se puede modificar a lo largo del programa. Las constantes pueden ser <a href="#definir">definidas por el programa</a> o estar <a href="#predefinidas">predefinidas</a> por el propio PHP o por algún módulo. Los nombres de las constantes siguen las mismas reglas que los nombres de las variables, pero sin el dólar ($) inicial. La costumbre es escribir los nombres de las constantes en mayúsculas.</p>
+
+      <p>En principio, se puede no utilizar constantes nunca, puesto que las constantes definidas por el programa podrían reemplazarse por variables. La ventaja de usar constantes y variables es que se puede distinguir a simple vista si a lo largo de un programa algo va a permanecer constante (si es una constante) o puede cambiar (si es una variable). El inconveniente de usar constantes es que las constantes no se sustituyen dentro de las cadenas y es necesario sacarlas fuera de las cadenas, haciendo el código un poco más incómodo de escribir y leer. Desde el punto de vista del rendimiento, la diferencia es inapreciable.</p>
+    </section>
+
+    <section id="definir">
+      <h2>Definir constantes</h2>
+
+      <p>La función <a href="http://www.php.net/manual/es/function.define.php" class="php-fun">define(nombre_constante, valor_constante)</a> permite definir constantes.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+define("PI", 3.14);
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><code class="language-html">&lt;p&gt;El valor de pi es 3.14&lt;/p&gt;</code></td>
+          </tr>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+define("AUTOR", "Bartolomé Sintes Marco");
+print "&lt;p&gt;Autor: " . AUTOR . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php"><code class="language-html">&lt;p&gt;Autor: Bartolomé Sintes Marco&lt;/p&gt;</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La costumbre es escribir los nombres de las constantes en mayúsculas. Los nombres de las constantes deben empezar por una letra y tener sólo letras (acentos, etc), números y guiones bajos.</p>
+
+      <hr class="corta" />
+
+      <p>Las constantes no se sustituyen dentro de una cadena por lo que es necesario sacarlas para mostrar su valor.</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+define("PI", 3.14);
+print "&lt;p&gt;El valor de pi es PI&lt;/p&gt;\n";
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;p&gt;El valor de pi es PI&lt;/p&gt;
+&lt;p&gt;El valor de pi es 3.14&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>En las constantes, PHP distingue entre minúsculas y mayúsculas:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+define("PI", 3.14);
+define("pi", 3.141592);
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;";
+print "&lt;p&gt;El valor de pi es " . pi . "&lt;/p&gt;";
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;p&gt;El valor de pi es 3.14&lt;/p&gt;
+&lt;p&gt;El valor de pi es 3.141592&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section id="predefinidas">
+      <h2>Constantes predefinidas</h2>
+
+      <p>Tanto PHP como los módulos cargados definen automáticamente una serie de <a href="http://www.php.net/manual/es/reserved.constants.php">constantes predefinidas</a>, de las que se comentan algunas en esta lección:</p>
+
+      <ul>
+        <li><a href="#lista">Lista completa de constantes predefinidas</a></li>
+        <li><a href="#inf">INF </a></li>
+        <li><a href="#phpintmax">PHP_INT_MAX</a></li>
+        <li><a href="#phpintsize">PHP_INT_SIZE</a></li>
+      </ul>
+
+      <section id="lista">
+        <h3>Lista completa de constantes predefinidas</h3>
+
+        <p>El número de constantes predefinidas depende de los módulos cargados en php.ini. La función <a href="http://es.php.net/manual/es/function.get-defined-constants.php">get_defined_constants()</a> devuelve las constantes predefinidas en el servidor que estemos utilizando:</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;pre&gt;";
+print_r(get_defined_constants());
+print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php">
+                <pre>
+<code class="language-html">&lt;pre&gt;Array
+(
+    [E_ERROR] =&gt; 1
+    [E_RECOVERABLE_ERROR] =&gt; 4096
+    [E_WARNING] =&gt; 2
+    [E_PARSE] =&gt; 4
+    [E_NOTICE] =&gt; 8
+    [E_STRICT] =&gt; 2048
+    ...
+)
+&lt;/pre&gt;</code>
+</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="inf">
+        <h3>INF </h3>
+
+        <p>La constante INF representa el infinito, es decir, cualquier número demasiado grande (positivo o negativo) para poderse guardar en una variable decimal.</p>
+      </section>
+
+      <section id="phpintmax">
+        <h3>PHP_INT_MAX</h3>
+
+        <p>PHP_INT_MAX es el valor del mayor entero que se puede guardar en una variable de tipo entero.</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$maximo = PHP_INT_MAX;
+print "&lt;p&gt;El mayor entero que se puede guardar \n";
+print "en una variable entera es $maximo&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php">
+                <pre>
+<code class="language-html">&lt;p&gt;El mayor entero que se puede guardar
+en una variable entera es 2147483647&lt;/p&gt;</code>
+</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Ese valor depende del tamaño en bytes que ocupan las variables en la memoria, que depende del microprocesador, del sistema operativo y de la versión de PHP. En sistemas de 32 bits, los enteros suelen ocupar 4 bytes (32 bits). Como en una variable de tipo entero se guardan tanto valores positivos como negativos (utilizando la notación <a href="https://es.wikipedia.org/wiki/Complemento_a_dos">complemento a dos</a> para los negativos), el valor máximo suele ser <strong>2.147.483.647</strong> (2<sup>31</sup> - 1). En sistemas de 64 bits, los enteros suelen ocupar 8 bytes (64 bits) y el valor máximo suele ser <strong>9.223.372.036.854.775.807</strong> (2<sup>63</sup> - 1)</p>
+
+        <p><strong>Nota</strong>: En las versiones de PHP de 64 bits para Windows anteriores a PHP 7, los enteros tenían 4 bytes de tamaño. A partir de PHP 7, en las versiones de PHP de 64 bits para Windows los enteros tiene un tamaño de 8 bytes.</p>
+
+        <hr class="corta" />
+
+        <h4>Notación complemento a dos</h4>
+
+        <p>En un byte (8 bits) se pueden almacenar 256 (2<sup>8</sup>) valores diferentes. Eso permite almacenar por ejemplo, desde el valor 0 hasta el 255. Para almacenar tanto números negativos como positivos, se utiliza la notación <a href="https://es.wikipedia.org/wiki/Complemento_a_dos">complemento a dos</a>, en la que la primera mitad de los valores representan los valores positivos (desde 0 hasta 127) y la segunda mitad de los valores representan los valores negativos (desde -128 hasta -1), como indica la tabla siguiente:</p>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td>El valor ...</td>
+              <td>0</td>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>...</td>
+              <td>126</td>
+              <td>127</td>
+              <td>128</td>
+              <td>129</td>
+              <td>...</td>
+              <td>253</td>
+              <td>254</td>
+              <td>255</td>
+            </tr>
+            <tr>
+              <td>... representa el entero ...</td>
+              <td>0</td>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>...</td>
+              <td>126</td>
+              <td>127</td>
+              <td>-128</td>
+              <td>-127</td>
+              <td>..</td>
+              <td>-3</td>
+              <td>-2</td>
+              <td>-1</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>En cuatro bytes (32 bits) se pueden almacenar 4.294.967.296 (2<sup>32</sup>)valores distintos. En notación complemento a dos se pueden representar desde el valor -2.147.483.648 hasta 2.147.483.647.</p>
+
+        <p>Si se intenta guardar un número demasiado grande positivo, el resultado será seguramente incorrecto. En el ejemplo siguiente se fuerza a PHP a guardar como entero el valor siguiente al máximo valor posible. El valor se guarda, pero cuando se utiliza, PHP lo interpreta como negativo.</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$maximo = PHP_INT_MAX;
+print "&lt;p&gt;El mayor entero que se puede guardar \n";
+print "en una variable entera es $maximo&lt;p&gt;\n";
+$demasiado = (int)($maximo + 1);
+print "&lt;p&gt;Si se intenta guardar 1 más, \n";
+print "el resultado es $demasiado&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php">
+                <pre>
+<code class="language-html">&lt;p&gt;El mayor entero que se puede guardar
+en una variable entera es 2147483647&lt;/p&gt;
+&lt;p&gt;Si se intenta guardar 1 más,
+el resultado es -2147483648&lt;/p&gt;</code>
+</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="phpintsize">
+        <h3>PHP_INT_SIZE</h3>
+
+        <p>PHP_INT_SIZE es el tamaño en bytes de las variables de tipo entero, que depende del ordenador, del sistema operativo y de la versión de PHP. En sistemas de 32 bits suele ser 4 bytes y en sistema de 64 bits suele ser 8 bytes.</p>
+
+        <table class="ejemplo">
+          <tbody>
+            <tr>
+              <td class="codphp">
+                <pre>
+<code class="language-php">&lt;?php
+$tamano = PHP_INT_SIZE;
+print "&lt;p&gt;Los enteros se guardan utilizando $tamano bytes&lt;/p&gt;";
+?&gt;</code>
+</pre>
+              </td>
+              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Los enteros se guardan utilizando 4 bytes&lt;/p&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>Nota</strong>: En las versiones de PHP de 64 bits para Windows anteriores a PHP 7, los enteros tenían 4 bytes de tamaño. A partir de PHP 7, en las versiones de PHP de 64 bits para Windows los enteros tiene un tamaño de 8 bytes.</p>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 1 de diciembre de 2015</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

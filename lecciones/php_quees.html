@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Qué es PHP. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Qué es PHP</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Qué es PHP</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#paginas">Páginas web con PHP</a></li>
+          <li><a href="#historia">Historia</a></li>
+          <li><a href="#criticas">Críticas</a></li>
+          <li><a href="#keywords">Palabras reservadas</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>PHP es un lenguaje de programación dirigido a la creación de páginas web. Es un lenguaje de programación procedural con una sintaxis similar a la del lenguaje C, aunque actualmente puede utilizarse una sintaxis de programación orientada a objetos similar a la de Java. En esta página se tratan los temas siguientes:</p>
+
+    <section id="paginas">
+      <h2>Páginas web, lenguajes de programación y bases de datos</h2>
+
+      <p>La <a href="https://es.wikipedia.org/wiki/World_Wide_Web">World Wide Web</a> (o simplemente, la web) fue ideada por <a href="https://es.wikipedia.org/wiki/Tim_Berners-Lee">Tim Berners Lee</a> en 1990, empezó a funcionar en el <a href="https://es.wikipedia.org/wiki/CERN">CERN</a> en 1991 y se extendió rápidamente por las Universidades del mundo (en aquel entonces Internet era una red a la que sólo tenían acceso entidades gubernamentales, particularmente entidades educativas). En 1992 algunos proveedores comerciales empezaron a dar acceso a particulares y empresas, lo que convirtió la web en una red de comunicación universal que ha transformado nuestras vidas.</p>
+
+      <p>En sus primeros años, las páginas web solían ser documentos de texto guardado en algún directorio de un servidor y a las que se accedía mediante los primeros navegadores web. Cada página web que se veía en el navegador correspondía a un fichero en el servidor.</p>
+
+      <p>La imagen siguiente ilustra de forma simplificada el esquema de funcionamiento:</p>
+
+      <p class="centrado"><img alt="Navegador + Servidor + Documento" src="../img/php/que_es_php_1.png" width="695" height="231" /></p>
+
+      <ul>
+        <li>El usuario escribe la dirección de la página web en su navegador</li>
+        <li>(1) El navegador la solicita al servidor web correspondiente (este paso requiere la participación de máquinas intermedias que no se comentan aquí)</li>
+        <li>(2) El servidor lee el fichero que corresponde a esa página web</li>
+        <li>(3) El servidor envía el fichero al navegador</li>
+        <li>El navegador muestra la página web al usuario</li>
+      </ul>
+
+      <hr class="corta" />
+
+      <p>Este esquema de funcionamiento es suficiente para sitios web pequeños creados por una sola persona, pero en cuanto un sitio web empieza a crecer, empiezan a surgir los problemas. Por ejemplo:</p>
+      <ul>
+        <li>si el sitio contiene muchas páginas es necesario crear menús que permitan orientarse por el sitio. Como cada página debe contener el menú, cualquier cambio en el menú obliga a modificar todas las páginas.</li>
+        <li>si el sitio modifica a menudo su contenido (por ejemplo, la web de un periódico), tener que editar manualmente los ficheros ralentiza el proceso.</li>
+        <li>si el sitio es creado por varias personas, cualquiera puede modificar por error los ficheros de otras personas y si varias personas quieren modificar el mismo fichero se pueden producir conflictos.</li>
+        <li>si se quiere permitir la participación del público (foros, comentarios en blogs, etc), esta participación depende de que uno de los autores modifique los ficheros, lo que ralentiza el proceso.</li>
+        <li>si personas sin conocimientos técnicos quieren participar en la creación del sitio, pueden cometer errores editando los ficheros.</li>
+      </ul>
+
+      <p>La solución es que las páginas no sean ficheros estáticos guardados en el disco, sino que las páginas se generen automáticamente cuando el usuario las solicite.</p>
+
+      <p>Por ejemplo, para resolver el problema de los menús comentado anteriormente, una solución sería que el menú estuviera en un fichero aparte y cuando el usuario solicitara una página, el menú se añadiera al principio de cada página (nota: no me refiero a la composición de páginas mediante frames, una solución desaconsejada hace muchos años, sino a componer la página web a partir de varios ficheros).</p>
+
+      <p>Esa generación de las páginas se puede hacer de varias maneras. Una de ellas es recurrir a lenguajes de programación generales o específicos (como PHP). Desde sus inicios, los servidores web permiten recurrir a lenguajes de programación para generar las páginas web.</p>
+
+      <p>La imagen siguiente ilustra de forma simplificada el esquema de funcionamiento:</p>
+
+      <p class="centrado"><img alt="Navegador + Servidor + PHP + Documento" src="../img/php/que_es_php_2.png" width="912" height="455" /></p>
+      <ul>
+        <li>El usuario escribe la dirección de la página web en su navegador</li>
+        <li>(1) El navegador la solicita al servidor web correspondiente (este paso requiere la participación de máquinas intermedias que no se comentan aquí)</li>
+        <li>(2) El servidor detecta que es un programa PHP y lo envía al intérprete del lenguaje</li>
+        <li>(3) El intérprete del lenguaje completa la ejecución del programa.</li>
+        <li>(4) El resultado final del programa (por ejemplo, el código fuente de una página web) se envía al servidor</li>
+        <li>(5) El servidor envía el fichero al navegador</li>
+        <li>El navegador muestra la página web al usuario</li>
+      </ul>
+
+      <p>Es importante señalar que el usuario no puede saber si la página web estaba guardada en el disco duro o se ha generado en ese momento, de la misma manera que no puede saber qué lenguaje de programación que ha generado el documento. El navegador recibe el documento en ambos un documento de texto que contiene etiquetas html y lo muestra al usuario.</p>
+
+      <p>A veces, el usuario puede suponer que la página que se le está sirviendo se ha generado mediante PHP ya que la dirección de la página termina por .php en vez del habitual .html, aunque no se puede estar seguro de que sea realmente así.</p>
+
+      <hr class="corta" />
+
+      <p>Pero el uso de lenguajes de programación no suele ser suficiente. Si la información está diseminada en multitud de trozos para organizar y acceder fácilmente a toda esa información, es conveniente utilizar algún sistema gestor de bases de datos. Existen muchos sistemas gestores de bases de datos y los lenguajes de programación pueden conectarse a ellas y realizar consultas.</p>
+
+      <p>La imagen siguiente ilustra de forma simplificada el esquema de funcionamiento:</p>
+
+      <p class="centrado"><img alt="Navegador + Servidor + PHP + Gestor de bases de datos + Documento" src="../img/php/que_es_php_3.png" width="944" height="499" /></p>
+
+      <ul>
+        <li>El usuario escribe la dirección de la página web en su navegador</li>
+        <li>(1) El navegador la solicita al servidor web correspondiente (este paso requiere la participación de máquinas intermedias que no se comentan aquí)</li>
+        <li>(2) El servidor detecta que es un programa PHP y lo envía al intérprete del lenguaje</li>
+        <li>(3) El intérprete del lenguaje ejecuta el programa. Si el programa incluye consultas a la base de datos, estas se realizan.</li>
+        <li>(4) La base de datos entrega al intérprete el resultado de las consultas</li>
+        <li>(5) El intérprete del lenguaje completa la ejecución del programa.</li>
+        <li>(6) El resultado final del programa (por ejemplo, el código fuente de una página web) se envía al servidor</li>
+        <li>(7) El servidor envía el fichero al navegador</li>
+        <li>El navegador muestra la página web al usuario</li>
+      </ul>
+
+      <p>Como antes, el usuario no puede saber si se ha accedido o no a un sistema gestor de bases de datos. El navegador recibe el documento en ambos un documento de texto que contiene etiquetas html y lo muestra al usuario.</p>
+    </section>
+
+    <section id="historia">
+      <h2>Historia de PHP</h2>
+
+      <p>En el caso de PHP no hay ningún organismo oficial encargado de la definición del lenguaje PHP (dfinición que posteriormente distintas empresas implementan en diferentes compiladores o intérpretes), sino que el lenguaje evoluciona a la vez que lo hace el intérprete "oficial" de PHP publicado, desde la versión 4, por la empresa Zend. Existen otros motores, como <a href="https://en.wikipedia.org/wiki/HipHop_Virtual_Machine">HHVM</a> creado por Facebook, pero son minoritarios. Aunque el lenguaje y el intérprete son cosas conceptualmente distintas, es habitual referirse a ambos como PHP.</p>
+
+      <p>PHP (el intérprete) ha sido publicado siempre como software libre, con una licencia llamada <a href="https://opensource.org/licenses/php">licencia PHP</a>. Esta licencia es una licencia libre sin copyleft. Como la licencia impone restricciones al uso del término PHP en productos derivados, esta licencia es incompatible con la licencia GPL, por lo que la Free Software Foundation recomienda que sólo se utilice para programar extensiones del propio PHP.</p>
+
+      <hr class="corta" />
+
+      <p>PHP fue creado por <a href="https://es.wikipedia.org/wiki/Rasmus_Lerdorf">Rasmus Lerdorf</a> en 1995. El nombre PHP significaba entonces <strong>Personal Home Page</strong> y hacía referencia a que era un lenguaje diseñado para facilitar la generación de páginas web, en primer lugar en el sitio web personal de Rasmus Lerdorf y rápidamente en muchos sitios. Desde entonces, PHP no ha dejado de evolucionar, proporcionando nuevas características.</p>
+
+      <p class="centrado" title="Versiones de PHP desde 2005">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" viewBox="-50 -60 800 100">
+          <line x1="35" y1="0" x2="680" y2="0" stroke-width="3" stroke="#5F5FD3" />
+          <text x="-40" y="5" text-anchor="start" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">PHP</text>
+
+          <line x1="60" y1="-30" x2="60" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="60" y="-40" text-anchor="middle" style="font-size: 100%">1995</text>
+          <line x1="120" y1="-30" x2="120" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="120" y="-40" text-anchor="middle" style="font-size: 100%">1996</text>
+          <line x1="180" y1="-30" x2="180" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="180" y="-40" text-anchor="middle" style="font-size: 100%">1997</text>
+          <line x1="240" y1="-30" x2="240" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="240" y="-40" text-anchor="middle" style="font-size: 100%">1998</text>
+          <line x1="300" y1="-30" x2="300" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="300" y="-40" text-anchor="middle" style="font-size: 100%">1999</text>
+          <line x1="360" y1="-30" x2="360" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="360" y="-40" text-anchor="middle" style="font-size: 100%">2000</text>
+          <line x1="420" y1="-30" x2="420" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="420" y="-40" text-anchor="middle" style="font-size: 100%">2001</text>
+          <line x1="480" y1="-30" x2="480" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="480" y="-40" text-anchor="middle" style="font-size: 100%">2002</text>
+          <line x1="540" y1="-30" x2="540" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="540" y="-40" text-anchor="middle" style="font-size: 100%">2003</text>
+          <line x1="600" y1="-30" x2="600" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="600" y="-40" text-anchor="middle" style="font-size: 100%">2004</text>
+          <line x1="660" y1="-30" x2="660" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="660" y="-40" text-anchor="middle" style="font-size: 100%">2005</text>
+
+          <circle cx="86" cy="0" r="5" fill="#5F5FD3" />
+          <text x="86" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">1.0</text>
+          <circle cx="230" cy="0" r="5" fill="#5F5FD3" />
+          <text x="230" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">2.0</text>
+          <circle cx="266" cy="0" r="5" fill="#5F5FD3" />
+          <text x="266" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">3.0</text>
+          <circle cx="384" cy="0" r="5" fill="#5F5FD3" />
+          <text x="384" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">4.0</text>
+          <circle cx="477" cy="0" r="5" fill="#5F5FD3" />
+          <text x="468" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">4.1</text>
+          <circle cx="499" cy="0" r="5" fill="#5F5FD3" />
+          <text x="499" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">4.2</text>
+          <circle cx="540" cy="0" r="5" fill="#5F5FD3" />
+          <text x="540" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">4.3</text>
+          <circle cx="632" cy="0" r="5" fill="#5F5FD3" />
+          <text x="632" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.0</text>
+        </svg>
+      </p>
+
+      <p>En noviembre de 1997 Rasmus Lerdorf publicó una segunda versión del lenguaje, PHP 2.</p>
+
+      <p>En junio de 1998 se publicó PHP 3. Esta versión fue creada por <a href="https://es.wikipedia.org/wiki/Zeev_Suraski">Zeev Suraski</a> y <a href="https://es.wikipedia.org/wiki/Andi_Gutmans">Andi Gutmans</a>, que desde entonces dirigen el desarrollo de PHP (con la colaboración de Lerdorf). A partir de esta versión PHP significa <strong>PHP: Hypertext Preprocessor</strong> (añadiendose a la lista de acrónimos recursivos como GNU, Lame, Wine, RPM, etc.). La característica más decisiva de esta versión fue la mejora de la la extensibilidad del lenguaje, permitiendo que muchos programadores aportaran nuevos módulos, pero esta versión también simplificó la sintaxis del lenguaje e introdujo la posibilidad de utilizar una sintaxis orientada a objetos.</p>
+
+      <p>En 1999 Zeev Surski y Andi Gutmans crearon la empresa <a href="http://www.zend.com/en/">Zend Technologies</a>, que desarrolla productos basados en PHP (servidores, editores, etc.).</p>
+
+      <p>En mayo de 2000 se publicó PHP 4, que incluía un nuevo motor llamado Zend Engine. Esta versión era bastante más rápida que la anterior y añade nuevas características como las sesiones.</p>
+
+      <p>En julio de 2004 se publicó PHP 5, que incluía un nuevo motor llamado Zend Engine 2. La característica más importante de esta versión fue la mejora de la programación orientada a objetos.</p>
+
+      <p class="centrado" title="Versiones de PHP desde 2005">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" viewBox="-50 -60 900 100">
+          <line x1="35" y1="0" x2="800" y2="0" stroke-width="3" stroke="#5F5FD3" />
+          <text x="-40" y="5" text-anchor="start" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">PHP</text>
+
+          <line x1="60" y1="-30" x2="60" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="60" y="-40" text-anchor="middle" style="font-size: 100%">2005</text>
+          <line x1="120" y1="-30" x2="120" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="120" y="-40" text-anchor="middle" style="font-size: 100%">2006</text>
+          <line x1="180" y1="-30" x2="180" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="180" y="-40" text-anchor="middle" style="font-size: 100%">2007</text>
+          <line x1="240" y1="-30" x2="240" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="240" y="-40" text-anchor="middle" style="font-size: 100%">2008</text>
+          <line x1="300" y1="-30" x2="300" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="300" y="-40" text-anchor="middle" style="font-size: 100%">2009</text>
+          <line x1="360" y1="-30" x2="360" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="360" y="-40" text-anchor="middle" style="font-size: 100%">2010</text>
+          <line x1="420" y1="-30" x2="420" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="420" y="-40" text-anchor="middle" style="font-size: 100%">2011</text>
+          <line x1="480" y1="-30" x2="480" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="480" y="-40" text-anchor="middle" style="font-size: 100%">2012</text>
+          <line x1="540" y1="-30" x2="540" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="540" y="-40" text-anchor="middle" style="font-size: 100%">2013</text>
+          <line x1="600" y1="-30" x2="600" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="600" y="-40" text-anchor="middle" style="font-size: 100%">2014</text>
+          <line x1="660" y1="-30" x2="660" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="660" y="-40" text-anchor="middle" style="font-size: 100%">2015</text>
+          <line x1="720" y1="-30" x2="720" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="720" y="-40" text-anchor="middle" style="font-size: 100%">2016</text>
+          <line x1="780" y1="-30" x2="780" y2="30" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="780" y="-40" text-anchor="middle" style="font-size: 100%">2017</text>
+
+          <circle cx="91" cy="0" r="5" fill="#5F5FD3" />
+          <text x="80" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">4.4</text>
+          <circle cx="114" cy="0" r="5" fill="#5F5FD3" />
+          <text x="114" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.1</text>
+          <circle cx="170" cy="0" r="5" fill="#5F5FD3" />
+          <text x="170" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.2</text>
+          <circle cx="330" cy="0" r="5" fill="#5F5FD3" />
+          <text x="330" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.3</text>
+          <circle cx="490" cy="0" r="5" fill="#5F5FD3" />
+          <text x="490" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.4</text>
+          <circle cx="568" cy="0" r="5" fill="#5F5FD3" />
+          <text x="568" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.5</text>
+          <circle cx="640" cy="0" r="5" fill="#5F5FD3" />
+          <text x="640" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.6</text>
+          <circle cx="716" cy="0" r="5" fill="#5F5FD3" />
+          <text x="716" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.0</text>
+          <circle cx="773" cy="0" r="5" stroke="#5F5FD3" stroke-width="2" fill="white" />
+          <text x="773" y="-15" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.1</text>
+        </svg>
+      </p>
+
+      <p>La siguiente versión prevista, que se tendría que haber publicado como PHP 6, se fijó el objetivo de dar a PHP soporte completo de Unicode, el juego de caracteres universal. Pero ese objetivo resultó ser mucho más difícil de conseguir de lo esperado y en 2010 se tiró la toalla.</p>
+
+      <p>Desde 2012, se fueron publicando anualmente versiones 5.X que fueron introduciendo novedades en el lenguaje (5.3 en junio de 2009, 5.4 en marzo de 2012, 5.5 en junio de 2013 y 5.6 en agosto de 2014).</p>
+
+      <p>En enero de 2014 se inició el desarrollo de PHP-NG, un nuevo motor de PHP enfocado a aumentar la velocidad del lenguaje. Los resultados fueron tan prometedores que en agosto de 2014 PHP-NG se convertió en la base de la siguiente versión de PHP, que se decidió llamar PHP 7 para evitar la confusión con la frustada versión PHP 6. PHP 7 se publicó en diciembre de 2015 y el motor PHP-NG se ha rebautizado como Zend Engine 3.</p>
+
+      <p>Inicialmente se propuso publicar una versión PHP 5.7, de transición entre PHP 5.6 y PHP 7, pero la propuesta fue <a href="https://wiki.php.net/rfc/php57">descartada</a>.</p>
+
+      <p>La intención es seguir publicando anualmente nuevas versiones de PHP. La próxima versión, PHP 7.1, está prevista para noviembre de 2016. Cada una de estas versiones se mantiene durante tres años, durante los cuales se publican mensualmente actualizaciones de seguridad (que se numeran con una tercera cifra, 7.0.X, 5.6.X, etc.)</p>
+
+      <hr class="corta" />
+
+      <p>Desde sus inicios, PHP ha sido posiblemente el lenguaje más utilizado en entornos de desarrollo web, y desde 2001 está situado en el Top 10 del <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/">índice Tiobe</a> de lenguajes de programación.</p>
+
+      <p>Para construir sitios web profesionales y no tener que escribir todo desde cero, se suelen utilizar <a href="https://es.wikipedia.org/wiki/Framework">frameworks de programación</a> o, incluso si no se quiere programar, se suelen utilizar <a href="https://es.wikipedia.org/wiki/Cms">CMS</a> (Content Management System, Sistema de gestión de contenidos). Muchos de los frameworks y CMS más populares están escritos en PHP.</p>
+    </section>
+
+    <section id="criticas">
+      <h2>Críticas a PHP</h2>
+
+      <p>Como cualquier lenguaje de programación, es fácil encontrar en la web opiniones muy críticas hacia PHP, sobre todo en referencia a la seguridad. Al leer estas críticas hay que tener en cuenta que:</p>
+
+      <ul>
+        <li>PHP ha evolucionado mucho. Muchos defectos del lenguaje han sido corregidos en versiones posteriores, por lo que conviene comprobar si las opiniones que se leen no son opiniones antiguas que ya no tienen sentido. Por el mismo motivo, hay que tener cuidado cuando se leen manuales o tutoriales antiguos, porque pueden estar recomendando técnicas de programación obsoletas.</li>
+        <li>PHP es extremadamente popular. Muchos programas de PHP han sido escritos por programadores que intentan compensar con su entusiasmo su falta de conocimientos, pero PHP no es un lenguaje intrínsecamente malo o inseguro.</li>
+      </ul>
+
+      <p>En la <a href="../otros/in_documentacion.html">lección de documentación</a> se incluyen referencias a críticas razonadas a PHP.</p>
+    </section>
+
+    <section id="keywords">
+      <h3>Palabras reservadas (<i>keywords</i>)</h3>
+
+      <p>Las palabras reservadas (<i>keywords</i>) de un lenguaje de programación son las palabras propias del lenguaje. En general, estas palabras no se pueden utilizar para denominar a los elementos que puede crear el usuario (variables, funciones, clases, etc.). Los lenguajes de programación suelen tener pocas palabras reservadas y la mayoría de los programas utiliza un número muy reducido.</p>
+      <p>Las palabras reservadas de PHP son las siguientes (se han marcado en negrita las que se utilizan en este curso):</p>
+<pre>
+__halt_compiler()  abstract             <strong>and</strong>                  <strong>array()</strong>             <strong>as</strong>
+break              callable (PHP 5.4)   case                 <strong>catch</strong>               class
+clone              <strong>const</strong>                continue             declare             default
+die()              <strong>do</strong>                   echo                 <strong>else</strong>                <strong>elseif</strong>
+empty()            enddeclare           endfor               endforeach          endif
+endswitch          endwhile             eval()               <strong>exit()</strong>              extends
+final              finally (PHP 5.5)    <strong>for</strong>                  <strong>foreach</strong>             <strong>function</strong>
+<strong>global</strong>             goto (PHP 5.3)       <strong>if</strong>                   implements          <strong>include</strong>
+<strong>include_once</strong>       instanceof           insteadof (PHP 5.4)  interface           <strong>isset()</strong>
+list()             namespace (PHP 5.3)  <strong>new</strong>                  <strong>or</strong>                  <strong>print</strong>
+private            protected            public               <strong>require</strong>             <strong>require_once</strong>
+return             static               switch               throw               trait (PHP 5.4)
+<strong>try</strong>                <strong>unset()</strong>              use                  var                 <strong>while</strong>
+</pre>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

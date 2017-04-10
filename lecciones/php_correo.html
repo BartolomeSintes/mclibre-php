@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Correo. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Correo</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Correo</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#configuracion">Configuración de PHP</a></li>
+          <li><a href="#mail">Función <span class="php-fun">mail()</span></a></li>
+          <li><a href="#phpmailer">PHPMailer</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Se pueden enviar correos electrónicos mediante PHPPHP dispone de una función para enviar correos electrónicos, aunque también existen paquetes que facilitan esta tarea. Para ello hace falta utilizar </p>
+
+    <section id="configuracion">
+      <h2>Configuración de PHP</h2>
+
+      <p>Para enviar correos hace falta tener instalado un servidor SMTP en el ordenador, o bien utilizar el servidor del proveedor de Internet que utilicemos normalmente.</p>
+
+      <p>En php.ini debe</p>
+
+      <div class="codphp">
+        <pre>[mail function]
+; For Win32 only.
+SMTP = servidor_de_salida (por ejemplo: smtp.example.com o localhost)
+smtp_port = 25
+
+; For Win32 only.
+sendmail_from = dirección_de_correo (por ejemplo: correo@example.com)
+</pre>
+      </div>
+    </section>
+
+    <section id="mail">
+      <h2>Función <span class="php-fun">mail()</span></h2>
+
+      <p>La función <a href="http://www.php.net/manual/es/function.mail.php"><span class="php-fun">mail($para, $asunto, $mensaje[, $cabeceras[, $parametros]])</span></a> permite enviar correos desde cualquier página PHP. Los argumentos de esta función son los siguientes:</p>
+      <ul>
+        <li><span class="php-var">$para</span> contiene la dirección de correo a la que se envía el correo,</li>
+        <li><span class="php-var">$asunto</span> contiene el campo asunto del correo enviado</li>
+        <li><span class="php-var">$mensaje</span> contiene el cuerpo del correo enviado</li>
+        <li><span class="php-var">$cabeceras</span> contiene las cabeceras opcionales que se quieran incluir en el correo. Cada cabecera debe terminar con los caracteres \r\n y se pueden concatenar varias cabeceras, por ejemplo:
+          <ul>
+            <li>$cabecera = "From: Pepito Conejo &lt;pepito.conejo@example.org&gt;\r\n";
+              <p>Si se incluye, esta cabecera sustituye la directiva sendmail_ini del archivo php.ini.</p>
+            </li>
+            <li>$cabeceras .= "To: Jaimito Zanahoria\r\n";
+              <p>Si se incluye, esta cabecera sustituye al valor del argumento <span class="php-var">$para</span></p>
+            </li>
+            <li>$cabeceras .= "MIME-Version: 1.0\r\n";
+              <p>Esta cabecera es necesaria si se incluyen archivos adjuntos o en formato html</p>
+            </li>
+            <li>$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
+              <p>Esta cabecera es necesaria si se incluyen archivos adjuntos o en formato html</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Un ejemplo mínimo de correo es el siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">&lt;?php
+mail("destino@example.com", "Prueba", "A ver si te llega esto");
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="phpmailer">
+      <h2>PHPMailer</h2>
+
+      <p><a href="http://phpmailer.worxware.com/">PHPMailer</a> es un paquete que facilita la creación y envío de correo.</p>
+
+      <p>En cualquier página:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">&lt;?php
+require("class.phpmailer.php");
+
+$correo = new PHPMailer();
+$correo-&gt;IsSMTP(); // telling the class to use SMTP
+$correo-&gt;Host = "smtp.proveedor.com"; // SMTP server
+$correo-&gt;Port = 25;
+$correo-&gt;From = "midireccion@proveedor.com";
+$correo-&gt;FromName = "Yo mismo";
+$correo-&gt;AddAddress("destino@mejemplo.com");
+$correo-&gt;Subject = "Prueba de correo";
+$correo-&gt;Body = "Hola\n\n¿Qué te parece este correo?";
+$correo-&gt;WordWrap = 50;
+
+if(!$correo-&gt;Send()) {
+    print "&lt;p&gt;Mensaje no enviado.&lt;/p&gt;\n";
+    print "&lt;p&gt;Error de correo: " . $correo-&gt;ErrorInfo . "&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;Mensaje envíado.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 9 de marzo de 2007</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

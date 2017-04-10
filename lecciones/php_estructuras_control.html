@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Estructuras de control. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Estructuras de control</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Estructuras de control</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#if">if ... elseif ... else</a></li>
+          <li><a href="#switch">switch</a></li>
+          <li><a href="#for">for</a></li>
+          <li><a href="#while">while</a></li>
+          <li><a href="#do">do ... while</a></li>
+          <li><a href="#foreach">foreach</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="if">
+      <h2>if ... elseif ... else</h2>
+
+      <p>Las construcciones <a href="http://www.php.net/manual/es/control-structures.if.php">if</a>, <a href="http://www.php.net/manual/es/control-structures.else.php">else</a> y <a href="http://www.php.net/manual/es/control-structures.elseif.php">elseif</a> permite condicionar la ejecución de un bloque de sentencias al cumplimiento de una condición.</p>
+
+      <p>La sintaxis de la construcción <a href="http://www.php.net/manual/es/control-structures.if.php">if</a> más sencilla es la siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">if (expresión) {
+    bloque_de_sentencias
+}</code>
+</pre>
+      </div>
+
+      <p>La expresión se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias y si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</p>
+
+      <hr class="corta" />
+
+      <p>La construcción if se puede complicar añadiendo la instrucción <a href="http://www.php.net/manual/es/control-structures.else.php">else</a>:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">if (expresión) {
+    bloque_de_sentencias_1
+} else {
+    bloque_de_sentencias_2
+}</code>
+</pre>
+      </div>
+
+      <p>La expresión se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 2.</p>
+
+      <hr class="corta" />
+
+      <p>La construcción if ... else se puede extender añadiendo la instrucción <a href="http://www.php.net/manual/es/control-structures.elseif.php">elseif</a>:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">if (expresión_1) {
+    bloque_de_sentencias_1
+} elseif (expresión_2) {
+    bloque_de_sentencias_2
+} else {
+    bloque_de_sentencias_3
+}</code>
+</pre>
+      </div>
+
+      <p>La expresión 1 se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y solamente si el resultado es <span class="php-con">false</span> se evalúa la expresión 2, si el resultado de esta es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 2 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 3. En cualquier caso solamente se ejecuta uno de los tres bloques de sentencias.</p>
+
+      <hr class="corta" />
+
+      <p>Se pueden añadir tantas instrucciones elseif como se desee, teniendo en cuenta que en cualquier caso solamente se ejecuta uno de los bloques de sentencias.</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">if (expresión_1) {
+    bloque_de_sentencias_1
+} elseif (expresión_2) {
+    bloque_de_sentencias_2
+} elseif (expresión_3) {
+    bloque_de_sentencias_3
+ ...
+} elseif (expresión_n) {
+    bloque_de_sentencias_n
+} else {
+    bloque_de_sentencias_n+1
+}</code>
+</pre>
+      </div>
+
+      <hr class="corta" />
+
+      <section id="if-else-abreviado">
+        <h3>Notación abreviada .. ? ... : ...</h3>
+        <p>La construcción</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">if (expresión_1) {
+    $variable = expresion1;
+} else
+    $variable = expresion2;
+}</code>
+</pre>
+        </div>
+
+        <p>se puede sustituir por la construcción:</p>
+
+        <div class="codphp">
+          <pre><code class="language-php">$variable = (expresión_1)? expresion1 : expresion2;</code></pre>
+        </div>
+
+        <p>que se suele escribir en varias líneas para facilitar la legibilidad:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">$variable = (expresión_1)
+    ? expresion1
+    : expresion2;</code>
+</pre>
+        </div>
+      </section>
+    </section>
+
+    <section id="switch">
+      <h2>switch</h2>
+
+      <p>La sentencia <a href="http://www.php.net/manual/es/control-structures.switch.php">switch</a> es equivalente a una construcción if ... elseif ... en las que las expresiones son comparaciones de igualdad de la misma expresión con valores distintos.</p>
+
+      <p>La sintaxis de la sentencia switch es la siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">switch (expresión_1) {
+    case valor_1:
+        bloque_de_sentencias_1;
+        break;
+    case valor_2:
+        bloque_de_sentencias_2;
+        break;
+    ...
+    case valor_n:
+        bloque_de_sentencias_n;
+        break;
+}</code>
+</pre>
+      </div>
+
+      <p>que es equivalente a :</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">if (expresión_1 == valor_1) {
+    bloque_de_sentencias_1
+} elseif (expresión_1 == valor_2) {
+    bloque_de_sentencias_2
+} elseif (expresión_1 == valor_3) {
+    bloque_de_sentencias_3
+ ...
+} elseif (expresión_1 == valor_n) {
+    bloque_de_sentencias_n
+}</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="for">
+      <h2>for</h2>
+
+      <p><strong>Nota</strong>: En la lección <a href="php_estructuras_control_bucle_for.html">Bucle for</a> se explica con más detalle esta estructura de control.</p>
+
+      <p>La sintaxis del <a href="http://www.php.net/manual/es/control-structures.for.php">bucle for</a> es la siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">for (expresión_inicial; condición_continuación; expresión_paso) {
+    bloque_de_sentencias
+}</code>
+</pre>
+      </div>
+
+      <p>La expresión inicial se evalúa siempre. La condición de continuación se evalúa al principio de cada iteración: si el resultado es <span class="php-con">true</span> se ejecuta primero el bloque de sentencias, después la expresión de paso y finalmente se evalúa nuevamente la condición de continuación; si el resultado es <span class="php-con">false</span> el bucle se termina.</p>
+
+      <p>Cuando se programa un bucle for hay que tener cuidado en que la condición de continuación vaya a dejar de cumplirse en algún momento, porque si no es así, el bucle no terminaría nunca.</p>
+
+      <hr class="corta" />
+
+      <p>En los bucles for más sencillos, en la expresión inicial se inicializa una variable que se evalúa en la expresión final y que se modifica en la expresión de paso, como muestra el ejemplo siguiente:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 5; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;p&gt;0&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="while">
+      <h2>while</h2>
+
+      <p>La sintaxis del <a href="http://www.php.net/manual/es/control-structures.while.php">bucle while</a> es la siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">while (expresión) {
+    bloque_de_sentencias
+}</code>
+</pre>
+      </div>
+
+      <p>La expresión se evalúa al principio de cada iteración: si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias; si el resultado es <span class="php-con">false</span> el bucle se termina.</p>
+
+      <p>Cuando se programa un bucle while hay que tener cuidado en que la expresión deje de cumplirse en algún momento, porque si no es así, el bucle no terminaría nunca.</p>
+
+      <hr class="corta" />
+
+      <p>En los bucles while más sencillos, antes del bucle se inicializa una variable que se evalúa en la expresión y dentro del bucle se modifica la variable, como muestra el ejemplo siguiente:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$i = 0;
+while ($i &lt; 5) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i++;
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;p&gt;0&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="do">
+      <h2>do ... while</h2>
+
+      <p>La sintaxis del <a href="http://www.php.net/manual/es/control-structures.do.while.php">bucle do ... while</a> es la siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">do {
+    bloque_de_sentencias
+} while (expresión) </code>
+</pre>
+      </div>
+
+      <p>La expresión se evalúa al final de cada iteración: si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias; si el resultado es <span class="php-con">false</span> el bucle se termina.</p>
+
+      <p>El bucle do ... while es muy similar al bucle while, la principal diferencia es que en el bucle do ... while el bloque de sentencias se ejecuta por lo menos una vez mientras que en el bucle while depende de si la expresión es cierta o no la primera vez que se evalúa.</p>
+
+      <p>Cuando se programa un bucle do ... while hay que tener cuidado en que la expresión deje de cumplirse en algún momento, porque si no es así, el bucle no terminaría nunca.</p>
+
+      <hr class="corta" />
+
+      <p>En los bucles do ... while más sencillos, antes del bucle se inicializa una variable que se evalúa en la expresión y dentro del bucle se modifica la variable, como muestra el ejemplo siguiente:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$i = 0;
+do {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i++;
+} while ($i &lt; 5)
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;p&gt;0&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="foreach">
+      <h2>foreach</h2>
+
+      <p><strong>Nota</strong>: En la lección <a href="php_estructuras_control_bucle_foreach.html">Bucle foreach</a> se explica con más detalle esta estructura de control.</p>
+
+      <p>El <a href="http://www.php.net/manual/es/control-structures.foreach.php">bucle foreach</a> es muy útil para recorrer matrices cuyo tamaño se desconoce o matrices cuyos índices no son correlativos o numéricos (matrices asociativas).</p>
+
+      <hr class="corta" />
+
+      <p>La sintaxis del bucle foreach más simple es la siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">foreach ($matriz as $valor) {
+    bloque_de_sentencias
+}</code>
+</pre>
+      </div>
+
+      <p>El bucle ejecuta el bloque de sentencias tantas veces como elementos contenga la matriz $matriz y, en cada iteración, la variable $valor toma uno de los valores de la matriz.</p>
+
+      <p>En el ejemplo siguiente se define una matriz y se imprimen sus valores:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$matriz = array(0, 1, 10, 100, 1000);
+foreach ($matriz as $valor) {
+    print "&lt;p&gt;$valor&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;p&gt;0&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;10&lt;/p&gt;
+&lt;p&gt;100&lt;/p&gt;
+&lt;p&gt;1000&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="corta" />
+
+      <p>La sintaxis del <a href="http://www.php.net/manual/es/control-structures.foreach.php">bucle foreach</a> puede también ser la siguiente:</p>
+
+      <div class="codphp">
+        <pre>
+<code class="language-php">foreach ($matriz as $indice =&gt; $valor) {
+    bloque_de_sentencias
+}</code>
+</pre>
+      </div>
+
+      <p>El bucle ejecuta el bloque de sentencias tantas veces como elementos contenga la matriz $matriz y, en cada iteración, la variable $valor toma uno de los valores de la matriz y la variable $indice toma como valor el índice correspondiente. Esta construcción es muy útil</p>
+
+      <p>En el ejemplo siguiente se define una matriz asociativa y se imprimen sus valores:</p>
+
+      <table class="ejemplo">
+        <tbody>
+          <tr>
+            <td class="codphp">
+              <pre>
+<code class="language-php">&lt;?php
+$matriz = array ("red" =&gt; "rojo", "green" =&gt; "verde", "blue" =&gt; "azul");
+foreach ($matriz as $indice =&gt; $valor) {
+    print "&lt;p&gt;$indice : $valor&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+            </td>
+            <td class="resul-php">
+              <pre>
+<code class="language-html">&lt;p&gt;red : rojo&lt;/p&gt;
+&lt;p&gt;green : verde&lt;/p&gt;
+&lt;p&gt;blue : azul&lt;/p&gt;</code>
+</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2013</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

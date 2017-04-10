@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>El protocolo HTTP. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>El protocolo HTTP</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>El protocolo HTTP</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#comunicacion">Comunicación cliente/servidor</a></li>
+          <li><a href="#solicitud">Solicitudes HTTP</a></li>
+          <li><a href="#respuesta">Respuestas HTTP</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Esta lección comenta algunos aspectos del protocolo HTTP importantes para entender el funcionamiento de las cookies, que se tratan en la <a href="php_cookies.html">lección sobre cookies</a>.</p>
+
+    <section id="comunicacion">
+      <h2>Comunicación entre el cliente y el servidor</h2>
+
+      <p>Cuando un usuario solicita una página web a un servidor, el proceso se puede describir (de forma simplificada) en cuatro pasos:</p>
+      <ul>
+        <li>El navegador solicita al servidor el documento mediante una solicitud HTTP.</li>
+        <li>El servidor prepara el documento.</li>
+        <li>El servidor envía el documento al navegador mediante una respuesta HTTP.</li>
+        <li>El navegador muestra el documento al usuario.</li>
+      </ul>
+
+      <p class="centrado"><img alt="Esquema de una solicitud http" src="../img/php/que_es_http_1.png" width="850" height="364" /></p>
+    </section>
+
+    <section id="solicitud">
+      <h2>Solicitudes HTTP</h2>
+
+      <p>La solicitud HTTP está formada por varias líneas de texto:</p>
+      <ul>
+        <li>La línea de solicitud, que incluye:
+          <ul>
+            <li>El método que se va a utilizar (GET, POST, TRACE, etc.).</li>
+            <li>La ubicación del documento solicitado (URI).</li>
+            <li>La versión del protocolo HTTP.</li>
+          </ul>
+        </li>
+        <li>Los campos de cabecera, que pueden incluir entre otros:
+          <ul>
+            <li>Referer: dirección de donde se ha obtenido la dirección del documento solicitado (si una página A contiene un enlace a otra página B, el navegador solicita en la línea de petición la página B, pero también envía la dirección de la página A como referer).</li>
+            <li>User-agent: información sobre el navegador (nombre, versión, etc).</li>
+            <li>Accept: tipos MIME, juegos de caracteres, codificaciones, idiomas, etc. admitidos por el navegador.</li>
+            <li>Cookies: Si el servidor ha almacenado previamente cookies en el cliente, estas se incluyen en las peticiones.</li>
+          </ul>
+        </li>
+        <li>Una línea en blanco.</li>
+        <li>El cuerpo del mensaje, que incluye texto opcional como por ejemplo:
+          <ul>
+            <li>datos de un formulario cuyo método sea POST</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="respuesta">
+      <h2>Respuestas HTTP</h2>
+
+      <p>La respuesta HTTP está formada por varias líneas de texto:</p>
+      <ul>
+        <li>La línea de estado, que incluye:
+          <ul>
+            <li>La versión del protocolo HTTP.</li>
+            <li>El código de status (403, 404, 500, etc.).</li>
+            <li>El texto asociado al código de status (403=Forbidden, 404=Not found, 500=Internal Server Error, etc.).</li>
+          </ul>
+        </li>
+        <li>Los campos de cabecera, que pueden incluir entre otros:
+          <ul>
+            <li>Location: permite decirle al cliente que solicite otro documento en lugar del documento solicitado inicialmente.</li>
+            <li>Content: tipo MIME, juego de caracteres, codificación, idioma, etc. del documento enviado.</li>
+            <li>Set-Cookie: permite decirle al cliente que cree una cookie.</li>
+          </ul>
+        </li>
+        <li>Una línea en blanco.</li>
+        <li>El cuerpo del mensaje, que incluye el documento solicitado por el cliente.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 25 de mayo de 2011</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
