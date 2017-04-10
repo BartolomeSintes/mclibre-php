@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Validación. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Ejercicios - Validación</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Validación</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Una página</a></li>
+          <li><a href="#ejercicio-2">2 - Validación</a></li>
+          <li><a href="#ejercicio-3">3 - Entrada de datos</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="ejercicio-1">
+      <h2>Validación 1 - Formulario y resultado en una única página</h2>
+
+      <p>Escriba un programa que solicite y reciba (sin validar) un nombre, un número de teléfono y una dirección de correo y que conste de una única página.</p>
+
+      <p class="enlace-ejercicio"><a href="validacion_1.php">Enlace a ejercicio Validación 1</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="validacion_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+      <ul>
+        <li>No es necesario validar la entrada del usuario. Aunque se dejen los campos vacíos, se debe mostrar el resultado.</li>
+        <li>El siguiente diagrama muestra las comprobaciones que es preciso realizar:
+          <p class="captura"><img alt="Diagrama validación formulario" src="diagrama_validacion_1.png" width="465" height="318" /></p>
+          <p>Esto se puede traducir en la siguiente estructura del programa:</p>
+
+          <div class="codphp">
+            <pre>recoger datos
+
+if (datosRecibidos) {
+  mostrar datos
+} else {
+  mostrar formulario
+}
+</pre>
+          </div>
+        </li>
+        <li>Para que el atributo <span class="html-atri">action</span> del formulario o el enlace a la página apunte a sí mismo, independientemente de la ubicación del archivo o de su nombre, se puede utilizar la variable predefinida <a href="../../../lecciones/php_variables_predefinidas.html#phpself">$_SERVER[PHP_SELF]</a>.</li>
+        <li>Para comprobar que se han recibido datos, se puede dar un valor al atributo <span class="html-atri">name</span> del botón Enviar (submit) y comprobar que se ha recibido ese dato (con la función <a href="../../../lecciones/php_comprobacion_datos.html#is"><span class="php-fun">isset</span></a>, por ejemplo).</li>
+        <li>Para no repetir la cabecera dos veces, se puede crear una función cabecera($titulo), cuyo argumento se utilice en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span>.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Validación 2 - Validación de formulario</h2>
+
+      <p>Escriba un programa que valide un nombre, un número de teléfono y una dirección de correo y que conste de una única página.</p>
+      <ul>
+        <li>La página solicita los datos y los valida (por ejemplo, que el nombre sólo tenga letras, que el número sean 9 números, que la dirección de correo contenga la @, un punto y letras inglesas, etc).</li>
+        <li>Si los datos no son válidos, se solicitan de nuevo indicando los datos no válidos.</li>
+        <li>Si los datos son válidos, los datos se muestran.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="validacion_2.php">Enlace a ejercicio Validación 2</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="validacion_2.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+      <ul>
+        <li>El siguiente diagrama muestra las comprobaciones que es preciso realizar:
+          <p class="captura"><img alt="Diagrama validación formulario" src="diagrama_validacion_2.png" width="465" height="448" /></p>
+          <p>Esto se puede traducir en la siguiente estructura del programa:</p>
+
+          <div class="codphp">
+            <pre>recoger datos
+validar datos
+
+if (datosRecibidos &amp;&amp; datosCorrectos) {
+  mostrar datos
+} elseif { datosRecibidos &amp;&amp; !datosCorrectos) {
+  mostrar formulario con datos recibidos y avisos de fallos
+} else {
+  mostrar formulario
+}
+</pre>
+          </div>
+        </li>
+        <li>Para que el atributo <span class="html-atri">action</span> del formulario o el enlace a la página apunte a sí mismo, independientemente de la ubicación del archivo o de su nombre, se puede utilizar la variable predefinida <a href="../../../lecciones/php_variables_predefinidas.html#phpself">$_SERVER[PHP_SELF]</a>.</li>
+        <li>Para comprobar que se han recibido datos, se puede dar un valor al atributo <span class="html-atri">name</span> del botón Enviar (submit) y comprobar que se ha recibido ese dato (con la función <a href="../../../lecciones/php_comprobacion_datos.html#is"><span class="php-fun">isset</span></a>, por ejemplo).</li>
+        <li>Para no repetir la cabecera tres veces, se puede crear una función cabecera($titulo), cuyo argumento se utilice en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span>.</li>
+        <li>Si falta algún dato, se considerará incorrecto</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Validación 3 - Entrada de datos</h2>
+
+      <p>Escriba un programa que valide de 2 a 10 valores numéricos y que conste de una única página.</p>
+      <ul>
+        <li>La página solicita los datos y los valida.</li>
+        <li>Si los datos no son válidos, se solicitan de nuevo indicando los datos no válidos y los datos sin escribir.</li>
+        <li>Si los datos son válidos, los datos se muestran.</li>
+        <li>Si se aumenta o reduce el número de valores, se siguen mostrando los valores ya introducidos (salvo el eliminado si se ha eliminado alguno).</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="validacion_3.php">Enlace a ejercicio Validación 3</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="validacion_3.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>Para que el atributo <span class="html-atri">action</span> del formulario o el enlace a la página apunte a sí mismo, independientemente de la ubicación del archivo o de su nombre, se puede utilizar la variable predefinida <a href="../../../lecciones/php_variables_predefinidas.html#phpself">$_SERVER[PHP_SELF]</a>.</li>
+        <li>Los tres botones Enviar (<span class="html-atri-valor">submit</span>) deben tener atributos <span class="html-atri">name</span> distintos para saber en cuál se ha hecho clic.</li>
+        <li>Para no repetir la cabecera tres veces, se puede crear una función cabecera($titulo), cuyo argumento se utilice en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span>.</li>
+        <li>El número de valores se puede guardar en un control oculto.</li>
+        <li>Las cajas de texto deben tener como atributo <span class="html-atri">name</span> elementos de una matriz de una dimensión (por ejemplo, valores[1], valores[2], etc.). Se debe utilizar la función recoge_matriz().</li>
+        <li>Si el usuario hace clic en "Añadir valor" y no se ha superado el tamaño máximo se debe crear el nuevo elemento en la matriz $valores.
+          <ul>
+            <li>El siguiente diagrama muestra las comprobaciones que es preciso realizar:
+              <p class="captura"><img alt="Diagrama validación formulario" src="diagrama_validacion_2.png" width="465" height="448" /></p>
+              <p>Esto se puede traducir en la siguiente estructura del programa:</p>
+
+              <div class="codphp">
+                <pre>recoger datos
+validar datos
+if (añadirValor o quitarValor) {
+  añadir o quitar valor
+}
+
+if (datosRecibidos &amp;&amp; datosCorrectos) {
+  mostrar datos
+} elseif { datosRecibidos &amp;&amp; !datosCorrectos) {
+  mostrar formulario con datos recibidos y avisos de fallos
+} else {
+  mostrar formulario
+}
+</pre>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li>Si falta un dato, se indicará que falta el dato. Si el dato no es numérico, se indicará que no es correcto.</li>
+        <li>Si todos los valores están vacíos, se debe mostrar el formulario original (sin avisos de valores vacíos).</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 1 de abril de 2010</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

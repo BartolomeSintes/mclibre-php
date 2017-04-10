@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejemplo de resolución de ejercicio (sin formulario). Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../varios/favicon.ico" />
+    <link rel="stylesheet" href="../varios/highlight-php.css" />
+    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Ejemplos de resolución de ejercicios - Sin formularios</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Ejemplos - Sin formularios</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#estructura">Estructura general</a></li>
+          <li><a href="#ejemplo">Ejemplo de programa</a></li>
+          <li><a href="#solucion-sf">Ejercicio resuelto</a>
+            <ul>
+              <li><a href="#archivo-php">Crear archivo .php</a>
+              <li><a href="#codigo-html">Copiar código HTML</a>
+              <li><a href="#fragmentos-php">Crear fragmentos PHP</a>
+              <li><a href="#programa-php">Completar el programa</a>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>En esta lección se resuelve un ejercicio similar a los que aparecen en el apartado "PHP, sin formularios".</p>
+
+    <section id="estructura">
+      <h2>Estructura general de los ejercicios</h2>
+
+      <p>Los ejercicios propuestos en el apartado "PHP, sin formularios" constan de:</p>
+      <ul>
+        <li>una única página .php</li>
+        <li>una hoja de estilo .css, común a todos los ejercicios</li>
+        <li>en algunos casos ficheros de imágenes (.svg, .png o .jpg) que se encuentran en la carpeta <strong>/img</strong></li>
+      </ul>
+
+      <p>Los ejercicios utilizan siempre la misma hoja de estilo, que debe encontrarse en la misma carpeta que las páginas .php.</p>
+
+      <p>Las imágenes que se utilizan en los ejercicios pueden ser imágenes SVG, PNG o JPG y se guardan en una carpeta <strong>/img</strong>.</p>
+
+      <p>La hoja de estilo y las imágenes que se utilizan en cada grupo de ejercicios se pueden descargar mediante un enlace que se encuentra al principio de cada página de ejercicios. El archivo se llama siempre <strong>*_plantillas.zip</strong> y contiene una carpeta con todos los archivo dentro. Una vez descomprimido el archivo zip, en la carpeta creada se pueden hacer los ejercicios (eliminando el final del nombre _plantillas).</p>
+    </section>
+
+    <section id="ejemplo">
+      <h2>Ejemplo de programa</h2>
+
+      <p>En los enunciados de los ejercicios se incluye un ejemplo de ejercicio resuelto y un enlace al ejercicio resuelto, que se puede abrir en una pestaña (o ventana) diferente.</p>
+
+      <p>A continuación se muestra un ejemplo de ejercicio. En la parte superior derecha hay un enlace para abrir el ejemplo en otra pestaña y poder ver fácilmente su código fuente.</p>
+
+      <p class="enlace-ejercicio"><a href="ejemplos/ejemplo_sf_1.php">Enlace a ejemplo Sin formularios 1</a></p>
+
+      <p class="ejercicio-sin"><object type="text/html" data="ejemplos/ejemplo_sf_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="solucion-sf">
+      <h2>Ejercicio de ejemplo resuelto</h2>
+
+      <section id="archivo-php">
+        <h3>Crear el archivo .php</h3>
+
+        <p>El primer paso es crear el archivo php que contendrá el programa. Se recomienda dar al archivo el mismo nombre del programa de ejemplo.</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-php">&lt;?php</code>
+</pre>
+        </div>
+
+      </section>
+
+      <section id="codigo-html">
+        <h3>Copiar el código fuente HTML del ejemplo</h3>
+
+        <p>A continuación, abrimos el ejemplo de ejercicio en una pestaña, vemos su código fuente y lo copiamos completo en nuestro programa, eliminando la etiqueta de apertura de fragmento PHP:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Ejemplo de ejercicio sin formulario 1.
+      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link href=&quot;mclibre_php_soluciones.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; title=&quot;Color&quot; /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo de ejercicio sin formulario 1&lt;/h1&gt;
+
+    &lt;p&gt;Actualice la página para mostrar dos nuevos colores.&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+         &lt;th&gt;Color: hsl(49, 100%, 50%)&lt;/th&gt;
+         &lt;th&gt;Color: hsl(352, 100%, 50%)&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+         &lt;td style=&quot;height: 50px; background-color: hsl(49, 100%, 50%)&quot;&gt;&lt;/td&gt;
+         &lt;td style=&quot;background-color: hsl(352, 100%, 50%)&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;footer&gt;
+      &lt;p class=&quot;ultmod&quot;&gt;
+        Última modificación de esta página:
+        &lt;time datetime=&quot;2016-10-10&quot;&gt;10 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="fragmentos-php">
+        <h3>Crear los fragmentos PHP necesarios</h3>
+
+        <p>En el programa de ejemplo, hay partes de la página que permanecen siempre igual y otras que cambian cada vez que se actualiza la página. Las partes que cambian, pasamos a generarlas en un fragmento PHP (o en varios, si esas partes estuvieran muy alejadas). En el ejemplo, como las líneas en las que aparecen los códigos de colores no están muy separadas, se ha creado un único fragmento PHP:</p>
+
+        <div class="codphp">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Ejemplo de ejercicio sin formulario 1.
+      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link href=&quot;mclibre_php_soluciones.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; title=&quot;Color&quot; /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo de ejercicio sin formulario 1&lt;/h1&gt;
+
+    &lt;p&gt;Actualice la página para mostrar dos nuevos colores.&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;tbody&gt;
+</code></pre>
+          <pre>
+<code class="language-php">&lt;?php
+        &lt;tr&gt;
+         &lt;th&gt;Color: hsl(49, 100%, 50%)&lt;/th&gt;
+         &lt;th&gt;Color: hsl(352, 100%, 50%)&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+         &lt;td style=&quot;height: 50px; background-color: hsl(49, 100%, 50%)&quot;&gt;&lt;/td&gt;
+         &lt;td style=&quot;background-color: hsl(352, 100%, 50%)&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+?&gt;
+</code></pre>
+          <pre>
+<code class="language-html">      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;footer&gt;
+      &lt;p class=&quot;ultmod&quot;&gt;
+        Última modificación de esta página:
+        &lt;time datetime=&quot;2016-10-10&quot;&gt;10 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+
+        <p>A continuación añadimos las instrucciones <span class="php-res">print</span>:
+        <ul>
+          <li>se pueden añadir un <span class="php-res">print</span> por línea o hacer varias líneas en un solo <span class="php-res">print</span></li>
+          <li>hay que sustituir las comillas <strong>"</strong> por el carácter especial <strong>\"</strong></li>
+          <li>se aconseja añadir saltos de línea <strong>\n</strong> al final de las cadenas para mejorar la legibilidad del código fuente generado</li>
+        </ul>
+
+        <div class="codphp">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Ejemplo de ejercicio sin formulario 1.
+      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link href=&quot;mclibre_php_soluciones.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; title=&quot;Color&quot; /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo de ejercicio sin formulario 1&lt;/h1&gt;
+
+    &lt;p&gt;Actualice la página para mostrar dos nuevos colores.&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;tbody&gt;
+</code></pre>
+          <pre>
+<code class="language-php">&lt;?php
+print "        &lt;tr&gt;\n";
+print "         &lt;th&gt;Color: hsl(49, 100%, 50%)&lt;/th&gt;\n";
+print "         &lt;th&gt;Color: hsl(352, 100%, 50%)&lt;/th&gt;\n";
+print "        &lt;/tr&gt;\n";
+print "        &lt;tr&gt;\n";
+print "         &lt;td style=\&quot;height: 50px; background-color: hsl(49, 100%, 50%)\&quot;&gt;&lt;/td&gt;\n";
+print "         &lt;td style=\&quot;background-color: hsl(352, 100%, 50%)\&quot;&gt;&lt;/td&gt;\n";
+print "        &lt;/tr&gt;\n";
+?&gt;
+</code></pre>
+          <pre>
+<code class="language-html">      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;footer&gt;
+      &lt;p class=&quot;ultmod&quot;&gt;
+        Última modificación de esta página:
+        &lt;time datetime=&quot;2016-10-10&quot;&gt;10 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </section>
+
+      <section id="programa-php">
+        <h3>Completar el programa</h3>
+
+        <p>Finalmente, se debe escribir el programa PHP que realice la tarea planteada.</p>
+        <ul>
+          <li>Como en los ejercicios "PHP, sin formularios" no se utilizan formularios, los programas no pueden ser interactivos, por lo que se recurre casi siempre a generar datos de forma aleatoria mediante la <a href="../lecciones/php_operaciones_aritmeticas.html#aleatorios">función rand()</a>.</li>
+          <li>Si los datos generados se van a utilizar en varios lugares de la página (como es el caso del ejemplo), es necesario crear variables.</li>
+        </ul>
+
+        <p>El programa final podría ser el siguiente</p>
+        <div class="codphp">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Ejemplo de ejercicio sin formulario 1.
+      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link href=&quot;mclibre_php_soluciones.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; title=&quot;Color&quot; /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo de ejercicio sin formulario 1&lt;/h1&gt;
+
+    &lt;p&gt;Actualice la página para mostrar dos nuevos colores.&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;tbody&gt;
+</code></pre>
+          <pre>
+<code class="language-php">&lt;?php
+$color1 = rand(0, 360);
+$color2 = rand(0, 360);
+
+print &quot;        &lt;tr&gt;\n&quot;;
+print &quot;         &lt;th&gt;Color: hsl($color1, 100%, 50%)&lt;/th&gt;\n&quot;;
+print &quot;         &lt;th&gt;Color: hsl($color2, 100%, 50%)&lt;/th&gt;\n&quot;;
+print &quot;        &lt;/tr&gt;\n&quot;;
+print &quot;        &lt;tr&gt;\n&quot;;
+print &quot;         &lt;td style=\&quot;height: 50px; background-color: hsl($color1, 100%, 50%)\&quot;&gt;&lt;/td&gt;\n&quot;;
+print &quot;         &lt;td style=\&quot;background-color: hsl($color2, 100%, 50%)\&quot;&gt;&lt;/td&gt;\n&quot;;
+print &quot;        &lt;/tr&gt;\n&quot;;
+?&gt;
+</code></pre>
+          <pre>
+<code class="language-html">      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;footer&gt;
+      &lt;p class=&quot;ultmod&quot;&gt;
+        Última modificación de esta página:
+        &lt;time datetime=&quot;2016-10-10&quot;&gt;10 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 10 de octubre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
