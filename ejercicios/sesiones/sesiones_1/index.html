@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sesiones (1). Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Ejercicios - Sesiones (1)</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Sesiones (1)</h2>
+
+      <div class="toc">
+        <ul>
+          <li>Iniciales
+            <ul>
+              <li><a href="#ejercicio-01">01 - Formulario Nombre (1)</a></li>
+              <li><a href="#ejercicio-02">02 - Formulario Nombre (2)</a></li>
+              <li><a href="#ejercicio-03">03 - Subir y bajar número</a></li>
+              <li><a href="#ejercicio-04">04 - Mover un punto</a></li>
+              <li><a href="#ejercicio-05">05 - Mover un punto 2D</a></li>
+              <li><a href="#ejercicio-06">06 - Votar una opción</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1617/cs_sesiones_1_plantillas.zip">plantillas de los ejercicios Sesiones (1)</a> que incluyen parte de las páginas (los fragmentos HTML).</p>
+
+    <p><strong>Nota</strong>:</p>
+    <ul>
+      <li>Los datos introducidos por el usuario deben guardarse en variables de sesión, no en controles ocultos (<span class="html-atri-valor">hidden</span>).</li>
+      <li>Los valores introducidos por el usuario se deben comprobar y, si los valores no son correctos, se debe indicar el motivo al usuario (básicamente, haberse dejado los campos en blanco, pero también podría comprobarse la longitud de la cadena enviada).</li>
+    </ul>
+
+    <section id="iniciales">
+      <h2>Ejercicios iniciales</h2>
+
+      <section id="ejercicio-01">
+        <h3>Sesiones (1) 01 - Formulario Nombre (1)</h3>
+
+        <p>Escriba un programa de dos páginas que solicite el nombre del usuario y lo muestre en las dos páginas.</p>
+        <ul>
+          <li>En la primera página, se solicita el nombre del usuario.</li>
+          <li>En la segunda página, se dice si se ha escrito o no un nombre en el formulario.</li>
+          <li>Al volver a la primera página, se mostrará el último nombre escrito.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_01_1.php">Enlace a ejercicio Sesiones (1) 1</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_01_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-02">
+        <h3>Sesiones (1) 02 - Formulario Nombre (2)</h3>
+
+        <p>Modifique el programa anterior de manera que la segunda página no muestre ningún mensaje, sino que redirija a la primera.</p>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_02_1.php">Enlace a ejercicio Sesiones (1) 2</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_02_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-03">
+        <h2>Sesiones (1) 03 - Subir y bajar número</h2>
+
+        <p>Escriba un programa de dos páginas que muestre un valor numérico y permita subirlo o bajarlo mediante dos botones.</p>
+        <ul>
+          <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span>.</li>
+          <li>La segunda página recibe el dato, modifica el número y redirige a la primera página.</li>
+          <li>El número se guarda en una variable de sesión. Si la variable no está definida, se le dará el valor 0.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_03_1.php">Enlace a ejercicio Sesiones (1) 3</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_03_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-04">
+        <h2>Sesiones (1) 04 - Mover un punto a derecha e izquierda</h2>
+
+        <p>Escriba un programa de dos páginas que muestre un punto sobre una línea y permita moverlo a derecha o izquierda mediante dos botones.</p>
+        <ul>
+          <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo nombre.</li>
+          <li>La segunda página recibe el dato, modifica la variable que contiene la posición y redirige a la primera página.</li>
+          <li>El número se guarda en una variable de sesión. Si la variable no está definida, se le dará el valor 0.</li>
+          <li>El ancho de la línea son 600px y las coordenadas van de -300 a 300.</li>
+          <li>El punto avanza o retrocede de 20px en 20px.</li>
+          <li>Cuando el punto sale del dibujo por un lado, aparece en el lado opuesto.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_04_1.php">Enlace a ejercicio Sesiones (1) 4</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_04_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-05">
+        <h2>Sesiones (1) 05 - Mover un punto en dos dimensiones</h2>
+
+        <p>Escriba un programa de dos páginas que muestre un punto en un cuadrado y permita moverlo en vertical u horizontal mediante cuatro botones.</p>
+        <ul>
+          <li>La primera página contiene un formulario con cinco botones de tipo <span class="html-atri-valor">submit</span> con el mismo nombre.</li>
+          <li>La segunda página recibe el dato, modifica las variables que contienen la posición (X e Y) y redirige a la primera página.</li>
+          <li>Los dos números se guardan en dos variables de sesión. Si las variables de sesión no están definidas, se les dará el valor 0.</li>
+          <li>El plano tiene 400px de lado y las coordenadas van de -200 a 200.</li>
+          <li>El punto avanza o retrocede de 20px en 20px.</li>
+          <li>Cuando el punto sale del dibujo por un lado, aparece en el lado opuesto.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_05_1.php">Enlace a ejercicio Sesiones (1) 5</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_05_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-6">
+        <h2>Sesiones (1) 06 - Votar una opción</h2>
+
+        <p>Escriba un programa de dos páginas que muestre gráficamente los votos recogidos por dos opciones.</p>
+        <ul>
+          <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo nombre.
+            <ul>
+              <li>Dos botones permiten votar a una u otra opción</li>
+              <li>El tercer botón pone a cero los contadores de votos</li>
+            </ul>
+          </li>
+          <li>La segunda página recibe el dato, modifica la variable de sesión que contiene el número de votos de la opción elegida y redirige a la primera página.</li>
+          <li>Los dos números se guardan en dos variables de sesión. Si las variables de sesión no están definidas, se les dará el valor 0.</li>
+          <li>Las franjas correspondientes a los votos se alargan de 10px en 10px y no tienen límite de tamaño.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_06_1.php">Enlace a ejercicio Sesiones (1) 6</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_06_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+    </section>
+
+    <section id="mas">
+      <h2>Más ejercicios</h2>
+
+      <section id="ejercicio-11">
+        <h2>Sesiones (1) 11 - Tirar dados</h2>
+
+        <p>Escriba un programa de dos páginas que muestre un valor numérico y permita subirlo o bajarlo mediante dos botones. Ese valor numérico es el número de dados que se muestran en la página.</p>
+        <ul>
+          <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span>.</li>
+          <li>La segunda página recibe el dato, modifica el número (el valor mínimo es 1) y redirige a la primera página.</li>
+          <li>El número se guarda en una variable de sesión. Si la variable no está definida, se le dará el valor 1.</li>
+          <li>Los dados que se muestran en la primera página corresponden a entidades de carácter: de &amp;#9856; <span style="font-size: 2rem; line-height: 1rem">&#9856;</span> a &amp;#9861; <span style="font-size: 2rem; line-height: 1rem">&#9861;</span></li>
+          <li>Los dados se generan con un bucle <span class="php-res">for</span></li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_11_1.php">Enlace a ejercicio Sesiones (1) 11</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_11_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-12">
+        <h2>Sesiones (1) 12 - Carrera de coches (1)</h2>
+
+        <p>Escriba un programa de dos páginas que muestre dos puntos sobre dos línea y permita moverlos mediante dos botones que tiran dos dados.</p>
+        <ul>
+          <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span>.</li>
+          <li>La segunda página recibe el dato, modifica el número (el valor mínimo es 1) y redirige a la primera página.</li>
+          <li>El número se guarda en una variable de sesión. Si la variable no está definida, se le dará el valor 1.</li>
+          <li>Los dados que se muestran en la primera página corresponden a entidades de carácter: de &amp;#9856; <span style="font-size: 2rem; line-height: 1rem">&#9856;</span> a &amp;#9861; <span style="font-size: 2rem; line-height: 1rem">&#9861;</span></li>
+          <li>Los dados se generan con un bucle <span class="php-res">for</span></li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_1_12_1.php">Enlace a ejercicio Sesiones (1) 12</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_1_12_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

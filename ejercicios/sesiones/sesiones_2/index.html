@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sesiones (2). Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Ejercicios - Sesiones (2)</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Sesiones (2)</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-01">01 - Formulario en tres pasos</a></li>
+          <li><a href="#ejercicio-02">02 - Form. independientes</a></li>
+          <li><a href="#ejercicio-03">03 - Nombre y apellidos</a></li>
+          <li><a href="#ejercicio-04">04 - Petición de datos</a></li>
+          <li><a href="#ejercicio-11">11 - Comprobación formulario</a></li>
+          <li><a href="#ejercicio-12">12 - Datos en sesión</a></li>
+          <li><a href="#ejercicio-13">13 - Datos ordenados</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1516/sesiones_2_plantillas.zip">plantillas de los ejercicios Sesiones (2)</a> que incluyen parte de las páginas (los fragmentos HTML).</p>
+
+    <p><img src="../../../varios/iconos/icono_en_construccion.svg" alt="En construcción" title="En construcción" width="55" height="48" />No he terminado de pasar estos ejercicios al estilo del curso 2016/17. Las plantillas están por actualizar.</p>
+
+    <section id="con-entrada">
+      <h2>Con entrada de datos</h2>
+
+      <section id="ejercicio-21">
+        <h3>Sesiones (2) 01 - Formulario en tres pasos</h3>
+
+        <p>Escriba unos formularios encadenados que soliciten el nombre y los apellidos del usuario y pida confirmación.</p>
+        <ul>
+          <li>En la primera página, se solicita el nombre del usuario.</li>
+          <li>En la segunda página se muestra el nombre del usuario y se solicitan los apellidos del usuario.</li>
+          <li>En la tercera página se muestra el nombre y los apellidos del usuario y se solicita confirmación.</li>
+          <li>En la cuarta página se indica si el usuario ha confirmado o no los datos introducidos.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_2_01/sesiones_2_01_1.php">Enlace a ejercicio Sesiones (2) 01</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_2_01/sesiones_2_01_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-22">
+        <h3>Sesiones (2) 02 - Formularios independientes</h3>
+
+        <p>Escriba un conjunto de siete páginas que soliciten el nombre y los apellidos del usuario.</p>
+        <ul>
+          <li>En la página de inicio (index.html), se muestran enlaces a cuatro páginas.</li>
+          <li>La página "Escribir su nombre" (nombre_1.php) solicita el nombre del usuario y lo envía a otra página (nombre_2.php) que lo guarda en $_SESSION.</li>
+          <li>Si ya se ha escrito el nombre, la página nombre_1.php muestra un aviso.</li>
+          <li>La página "Escribir sus apellidos" (apellidos_1.php) solicita los apellidos del usuario y los envía a otra página (apellidos_2.php) que los guarda en $_SESSION.</li>
+          <li>Si ya se han escrito los apellidos, la página apellidos_1.php muestra un aviso.</li>
+          <li>La página "Ver su nombre y apellidos" (ver.php) muestra los datos almacenados en $_SESSION</li>
+          <li>La página "Borrar la información" (borrar.php) destruye la sesión.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_2_02/index.php">Enlace a ejercicio Sesiones (2) 02</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_2_02/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-23">
+        <h3>Sesiones (2) 03 - Nombre y apellidos</h3>
+
+        <p>Escriba un conjunto de seis páginas que soliciten el nombre y los apellidos del usuario.</p>
+        <ul>
+          <li>En la página de inicio (index.php), se muestran enlaces a tres páginas y se muestran los datos almacenados en $_SESSION.</li>
+          <li>La página "Escribir su nombre" (nombre_1.php) solicita el nombre del usuario y lo envía a otra página (nombre_2.php) que lo guarda en $_SESSION y se redirige directamente a la página de inicio.</li>
+          <li>La página "Escribir sus apellidos" (apellidos_1.php) solicita los apellidos del usuario y los envía a otra página (apellidos_2.php) que los guarda en $_SESSION y se redirige directamente a la página de inicio.</li>
+          <li>La página "Borrar la información" (borrar.php) destruye la sesión y se redirige directamente a la página de inicio.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_2_03/index.php">Enlace a ejercicio Sesiones (2) 03</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_2_03/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      </section>
+
+      <section id="ejercicio-24">
+        <h3>Sesiones (2) 04 - Petición de datos</h3>
+
+        <p>Escriba un conjunto de seis páginas que soliciten datos.</p>
+        <ul>
+          <li>En la página de inicio (index.php), se muestran enlaces a cuatro páginas.</li>
+          <li>La página "Guardar un nuevo dato" (nuevo_1.php) solicita el nombre del dato y su valor y lo envía a otra página (nuevo_2.php) que lo guarda en $_SESSION y se redirige directamente a la página de inicio.</li>
+          <li>La página "Ver los datos actuales" (ver.php) lista los datos de $_SESSION.</li>
+          <li>La página "Borrar datos" (borrar_1.php) muestra un formulario con los datos guardados y casillas de verificación para elegir los datos a borrar y las envía a otra página (borrar_2.php) que los borra de $_SESSION y se redirige directamente a la página de inicio.</li>
+          <li>La página "Cerrar la sesión" (cerrar.php) destruye la sesión y se redirige directamente a la página de inicio.</li>
+        </ul>
+
+        <p class="enlace-ejercicio"><a href="sesiones_2_04/index.php">Enlace a ejercicio Sesiones (2) 04</a></p>
+
+        <p class="ejercicio"><object type="text/html" data="sesiones_2_04/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+        <h3>Comentarios</h3>
+
+        <ul>
+          <li class="incompleto">Por escribir</li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="ejercicio-11">
+      <h2>Sesiones (2) 11 - Comprobación de formulario</h2>
+
+      <p>Escriba un programa que conste de dos páginas y que solicite un nombre y una edad.</p>
+      <ul>
+        <li>En la primera página se solicita el nombre y una edad entre 18 y 130 años.</li>
+        <li>La segunda página comprueba si se ha escrito algo de texto y si se ha escrito un número entero entre 18 y 130.
+          <ul>
+            <li>Si se ha escrito algo de texto y un número entero entre 18 y 130, los muestra.</li>
+            <li>Si no se ha escrito ningún texto en el nombre o un número entero entre 18 y 130 en la edad, vuelve automáticamente a la primera página, que muestra los valores escritos por el usuario y avisos correspondientes.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="sesiones_2_11_1.php">Enlace a ejercicio Sesiones (2) 11</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="sesiones_2_11_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+      <ul>
+        <li>Ambas páginas utilizan sesiones:
+          <ul>
+            <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["dato"]["nombre"], $_SESSION["dato"]["edad"], $_SESSION["aviso"]["nombre"], $_SESSION["aviso"]["edad"]).</li>
+            <li>La primera página muestra los valores y avisos de la sesión (en caso de existir) y los borra.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-12">
+      <h2>Sesiones (2) 12 - Almacenamiento de datos en sesión</h2>
+
+      <p>Escriba un formulario que solicite nombres y los almacene en una sesión hasta que el usuario cierre la sesión.</p>
+      <ul>
+        <li>La primera página:
+          <ul>
+            <li>solicita un nombre</li>
+            <li>muestra todos los valores escritos anteriormente en forma de lista.</li>
+            <li>muestra un enlace para borrar todos los valores escritos anteriormente.</li>
+          </ul>
+        </li>
+        <li>La segunda página comprueba:
+          <ul>
+            <li>si se ha escrito algo de texto, lo guarda en en $_SESSION.</li>
+            <li>si se ha pedido borrar todos los nombres, los borra.</li>
+            <li>en todos los casos, vuelve automáticamente a la primera página.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="sesiones_2_12_1.php">Enlace a ejercicio Sesiones (2) 12</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="sesiones_2_12_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+      <ul>
+        <li>Ambas páginas utilizan sesiones:
+          <ul>
+            <li>La primera página muestra los valores de la sesión (en caso de existir).</li>
+            <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["nombres"][...]).</li>
+            <li>La segunda página puede borrar los valores de $_SESSION con <span class="php-fun">unset()</span> o destruyendo la sesión.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Sesiones (2) 3 - Almacenamiento de datos en sesión, sin repeticiones y ordenados</h2>
+
+      <p>Escriba un formulario que solicite nombres y los almacene (si no se han escrito todavía) en una sesión hasta que el usuario cierre la sesión.</p>
+      <ul>
+        <li>La primera página:
+          <ul>
+            <li>solicita un nombre</li>
+            <li>muestra todos los valores escritos anteriormente en forma de lista.</li>
+            <li>muestra un enlace para borrar todos los valores escritos anteriormente.</li>
+          </ul>
+        </li>
+        <li>La segunda página comprueba:
+          <ul>
+            <li>si se ha escrito algo de texto y ese texto todavía no está guardado, lo guarda en $_SESSION.</li>
+            <li>si se ha pedido borrar todos los nombres, los borra.</li>
+            <li>en todos los casos, vuelve automáticamente a la primera página.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="sesiones_2_13_1.php">Enlace a ejercicio Sesiones (2) 13</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="sesiones_2_13_1.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+      <ul>
+        <li>Este ejercicio es prácticamente igual al ejercicio anterior</li>
+        <li>Ambas páginas utilizan sesiones:
+          <ul>
+            <li>La primera página ordena y muestra los valores de la sesión (en caso de existir).</li>
+            <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["nombres"][...]).</li>
+            <li>Para saber si un nombre ya ha sido registrado, se puede utilizar la función <a href="../../../lecciones/php_matrices.html#buscar">in_array()</a> que se explica en la lección sobre matrices.</li>
+            <li>La segunda página puede borrar los valores de $_SESSION con <span class="php-fun">unset()</span> o destruyendo la sesión.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 15 de noviembre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
