@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Menús. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Ejercicios - Menús</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Menús</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Menú básico</a></li>
+          <li><a href="#ejercicio-2">2 - Menú doble (1)</a></li>
+          <li><a href="#ejercicio-3">3 - Menú doble (2)</a></li>
+          <li><a href="#ejercicio-4">4 - Sesiones (1)</a></li>
+          <li><a href="#ejercicio-5">5 - Sesiones (2)</a></li>
+          <li><a href="#ejercicio-6">6 - Sesiones y menús</a></li>
+          <li><a href="#ejercicio-7">7 - Control de acceso</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1617/cs_menus_plantillas.zip">plantillas de los ejercicios Menús</a> que incluyen parte de las páginas (los fragmentos HTML).</p>
+
+    <section id="ejercicio-1">
+      <h2>Menús 1 - Menú básico</h2>
+
+      <p>Escriba un programa compuesto por tres páginas:</p>
+      <ul>
+        <li>Las tres páginas (index.php, pagina_2.php y pagina_3.php) incluyen el mismo menú con enlaces a todas las páginas</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="menus_1/index.php">Enlace a ejercicio Menús 1</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="menus_1/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>Habrá una página biblioteca.php que incluya las siguientes funciones:
+          <ul>
+            <li>cabecera($texto), que genera el principio de la página (hasta la apertura de <span class="html-eti">&lt;main&gt;</span>). La variable $texto se mostrará en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span> de la página.</li>
+            <li>pie(), que genera el final de la página (a partir del cierre de <span class="html-eti">&lt;/main&gt;</span>).</li>
+          </ul>
+        </li>
+        <li>Las tres páginas del programa llamarán a las funciones cabecera() y pie(), incluyendo previamente el fichero biblioteca.php.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Menús 2 - Menú doble (1)</h2>
+
+      <p>Escriba un programa compuesto por tres páginas:</p>
+      <ul>
+        <li>La página inicial (index.php) incluye un menú con enlaces a las otras dos.</li>
+        <li>Las otras dos páginas (pagina_2.php y pagina_3.php) incluyen un menú con un único enlace a la página principal.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="menus_2/index.php">Enlace a ejercicio Menús 2</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="menus_2/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>Habrá una página biblioteca.php que incluya las siguientes funciones:
+          <ul>
+            <li>cabecera($texto, $menu), que genera el principio de la página (hasta la apertura de <span class="html-eti">&lt;main&gt;</span>).
+              <ul>
+                <li>El argumento $texto se mostrará en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span> de la página.</li>
+                <li>El argumento $menu seleccionará el menú que se muestra. Los posibles valores del argumento se pueden definir como constantes:
+
+                  <div class="codphp">
+                    <pre>
+<code class="language-php">define("MENU_PRINCIPAL",  1);  // Para función cabecera()
+define("MENU_SECUNDARIO", 2);  // Para función cabecera()</code>
+</pre>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>pie(), que genera el final de la página  (a partir del cierre de <span class="html-eti">&lt;/main&gt;</span>).</li>
+          </ul>
+        </li>
+        <li>Las tres páginas del programa llamarán a las funciones cabecera() y pie(), incluyendo previamente el fichero biblioteca.php.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Menús 3 - Menú doble (2)</h2>
+
+      <p>Escriba un programa compuesto por cinco páginas:</p>
+      <ul>
+        <li>La página inicial (index.php) incluye un menú con enlaces a dos páginas (pagina_2a.php y pagina_3a.php)</li>
+        <li>Las otras cuatro páginas (pagina_2a.php, pagina_3a.php, pagina_2b.php y pagina_3b.php) incluyen un menú con un único enlace a la página   inicial.</li>
+        <li>La segunda página (pagina_2a.php) contiene un formulario que pide confirmación para ir a la página siguiente (pagina_2b.php). Si se contesta "No", se vuelve a la página inicial. Si se contesta "Sí", se llega a la página siguiente (pagina_2b.php).</li>
+        <li>La tercera página (pagina_3a.php) contiene un formulario que pide confirmación para ir a la página siguiente (pagina_3b.php). Si se contesta "No", se vuelve a la página inicial. Si se contesta "Sí", se llega a la página siguiente (pagina_3b.php).</li>
+        <li>Si el usuario intenta acceder directamente a las páginas (pagina_2b.php y pagina_3b.php) escribiendo la dirección en el navegador, se le redirigirá directamente a la página inicial</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="menus_3/index.php">Enlace a ejercicio Menús 3</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="menus_3/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+      <ul>
+        <li>Las funciones cabecera() y pie() de biblioteca.php son similares a los del ejercicio anterior.</li>
+        <li>No es necesario recoger el valor enviado por el formulario. Simplemente comprobando que se ha recibidto el control (con isset($_REQUEST['si'])) se sabe si el usuario ha hecho clic en "Sí" o no.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-4">
+      <h2>Menús 4 - Sesiones (1)</h2>
+
+      <p>Escriba un programa compuesto por cuatro páginas:</p>
+      <ul>
+        <li>Las cuatro páginas incluyen el mismo menú con enlaces a todas las páginas.</li>
+        <li>La página index.php no hace nada.</li>
+        <li>La página conectar.php establece una variable de sesión.</li>
+        <li>La página desconectar.php destruye la sesión.</li>
+        <li>La página comprobar.php comprueba si la variable de sesión existe o no.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="menus_4/index.php">Enlace a ejercicio Menús 4</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="menus_4/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-5">
+      <h2>Menús 5 - Sesiones (2)</h2>
+
+      <p>Escriba un programa compuesto por tres páginas:</p>
+      <ul>
+        <li>La página inicial index.php incluye un menú con enlaces a las dos otras páginas (conectar.php y desconectar.php).</li>
+        <li>La página inicial informa del estado de la variable de sesión.</li>
+        <li>La página conectar.php establece una variable de sesión ($_SESSION["conectado"], por ejemplo) y redirige a la página inicial.</li>
+        <li>La página desconectar.php destruye la sesión y redirige a la página inicial.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="menus_5/index.php">Enlace a ejercicio Menús 5</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="menus_5/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-6">
+      <h2>Menús 6 - Sesiones y menús</h2>
+
+      <p>Escriba un programa compuesto por tres páginas:</p>
+      <ul>
+        <li>La página index.php informa del estado de la variable de sesión y muestra menús diferentes en función de ese estado.</li>
+        <li>La página conectar.php establece una variable de sesión y redirige a index.php.</li>
+        <li>La página desconectar.php destruye la sesión y redirige a index.php.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="menus_6/index.php">Enlace a ejercicio Menús 6</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="menus_6/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>Puesto que todas las páginas pertenecen a la misma sesión, se puede crear la sesión en biblioteca.php en vez de en cada página.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-7">
+      <h2>Menús 7 - Control de acceso</h2>
+
+      <p>Escriba un programa compuesto por cuatro páginas:</p>
+      <ul>
+        <li>La página index.php muestra menús diferentes en función del estado de la variable de sesión.</li>
+        <li>La página conectar.php establece una variable de sesión y redirige a index.php.</li>
+        <li>La página desconectar.php destruye la sesión y redirige a index.php.</li>
+        <li>la página secreto.php muestra una frase o redirige a index.php en función del estado de la variable de sesión.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="menus_7/index.php">Enlace a ejercicio Menús 7</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="menus_7/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2016</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
