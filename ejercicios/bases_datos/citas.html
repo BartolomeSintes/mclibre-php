@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Citas. Proyectos. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Proyectos - Citas</h1>
+
+    <nav>
+      <p>
+        <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Proyectos - Citas</h2>
+    </nav>
+
+    <p>El objetivo de este proyecto es crear una base de datos de citas, en la que se guarde la cita y su autor, pudiendo asignar varias etiquetas de categorías a cada cita.</p>
+
+    <hr class="corta" />
+
+    <p>Un ejemplo de base de datos de citas puede probarse en la ventana siguiente:</p>
+
+    <p class="ejercicio"><object type="text/html" data="http://smagris3.uv.es/mclibre/citas/" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+    <hr class="corta" />
+
+    <p>Estas pueden ser las consultas de creación de tabla para este proyecto:</p>
+
+    <div class="codphp">
+      <pre>// Consultas de creación de tablas en MySQL
+
+
+// Consultas de creación de tablas en SQLite
+$consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
+    id INTEGER PRIMARY KEY,
+    usuario VARCHAR($tamUsuario),
+    password VARCHAR($tamCifrado)
+    )";
+
+$consultaCreatablaCitas = "CREATE TABLE $dbCitas (
+    id INTEGER PRIMARY KEY,
+    cita VARCHAR($tamCita),
+    id_autor INTEGER UNSIGNED
+    )";
+
+$consultaCreatablaAutores = "CREATE TABLE $dbAutores (
+    id INTEGER PRIMARY KEY,
+    nombre VARCHAR($tamNombre),
+    apellidos VARCHAR($tamApellidos)
+    )";
+
+$consultaCreatablaEtiquetas = "CREATE TABLE $dbEtiquetas (
+    id INTEGER PRIMARY KEY,
+    etiqueta VARCHAR($tamEtiqueta)
+    )";
+
+$consultaCreatablaEticitas = "CREATE TABLE $dbEtiCitas (
+    id INTEGER PRIMARY KEY,
+    id_cita INTEGER UNSIGNED,
+    id_etiqueta INTEGER UNSIGNED
+    )";
+
+// Consulta de comprobación de existencia de tablas en MySQL
+$consultaExisteTabla = "SELECT COUNT(*) as existe_db
+    FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
+
+// Consulta de comprobación de existencia de tablas en SQLite
+$consultaExisteTabla = "SELECT COUNT(*) as existe_db
+    FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
+</pre>
+    </div>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 4 de junio de 2008</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

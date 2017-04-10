@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Compraventa. Proyectos. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Proyectos - Compraventa</h1>
+
+    <nav>
+      <p>
+        <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Proyectos - Compraventa</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Compraventa simple</a></li>
+          <li><a href="#ejercicio-2">2 - Compraventa avanzada</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>El objetivo de este proyecto es crear un sitio de compraventa de productos puestos a la venta por los propios usuarios de la página.</p>
+
+    <hr class="corta" />
+
+    <p>Un ejemplo de compraventa puede probarse en la ventana siguiente:</p>
+
+    <p class="aviso">EL EJEMPLO TODAVÍA NO ESTÁ TERMINADO</p>
+
+    <p class="ejercicio"><object type="text/html" data="http://smagris3.uv.es/mclibre/compraventa/" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+    <hr class="corta" />
+
+    <p>Estas pueden ser las consultas de creación de tabla para este proyecto:</p>
+
+    <div class="codphp">
+      <pre>// Consultas de creación de tablas en MySQL
+$consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    usuario VARCHAR($tamUsuario),
+    password VARCHAR($tamCifrado),
+    PRIMARY KEY(id)
+    )";
+
+$consulta_creatabla_articulos = "CREATE TABLE $dbArticulos (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    articulo VARCHAR($tamArticulo),
+    precio FLOAT,
+    id_vendedor INTEGER,
+    id_comprador INTEGER,
+    reservado BOOLEAN,
+    fecha_reserva DATETIME,
+    comprado BOOLEAN,
+    fecha_compra DATE,
+    PRIMARY KEY(id)
+    )";
+
+// Consultas de creación de tablas en SQLite
+$consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
+    id INTEGER PRIMARY KEY,
+    usuario VARCHAR($tamUsuario),
+    password VARCHAR($tamCifrado)
+    )";
+
+$consulta_creatabla_articulos = "CREATE TABLE $dbArticulos (
+    id INTEGER PRIMARY KEY,
+    articulo VARCHAR($tamArticulo),
+    precio FLOAT,
+    id_vendedor INTEGER,
+    id_comprador INTEGER,
+    reservado BOOLEAN,
+    fecha_reserva DATETIME,
+    comprado BOOLEAN,
+    fecha_compra DATE,
+    )";
+
+// Consulta de comprobación de existencia de tablas en MySQL
+$consultaExisteTabla = "SELECT COUNT(*) as existe_db
+    FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
+
+// Consulta de comprobación de existencia de tablas en SQLite
+$consultaExisteTabla = "SELECT COUNT(*) as existe_db
+    FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
+</pre>
+    </div>
+
+<section id="ejercicio-1">
+    <h2>Nivel 1 - Compraventa simple</h2>
+
+    <p>Ideas:</p>
+    <ul>
+      <li>los usuarios deben registrarse para poder comprar o vender</li>
+      <li>los usuarios no registrados sólo pueden ver la lista de artículos en venta</li>
+      <li>los usuarios registrados pueden poner artículos a la venta y retirarlos</li>
+      <li>la información que se ofrece sobre los artículos es su descripción y precio (con dos decimales)</li>
+      <li>los usuarios registrados pueden comprar artículos puestos a la venta por otros usuarios</li>
+      <li>el proceso de compra tiene dos pasos: primero se seleccionan los artículos, y después se confirma la compra en una página que muestra la lista de artículos elegidos y el precio total</li>
+      <li>cuando se compra un artículo, el artículo ya no aparece a la venta</li>
+      <li>existe un usuario administrador que puede eliminar al resto de usuarios y artículos</li>
+      <li>los usuarios pueden darse de baja</li>
+    </ul>
+</section>
+
+    <section id="ejercicio-2">
+    <h2>Nivel 2 - Compraventa avanzada</h2>
+
+    <p>Ideas:</p>
+    <ul>
+      <li>se mantiene un registro de compras y ventas de cada usuario</li>
+    </ul>
+</section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 26 de febrero de 2008</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

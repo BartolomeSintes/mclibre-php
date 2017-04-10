@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Biblioteca. Proyectos. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+    <style type="text/css">
+      div.biblioteca { background-color: #E3F5EC; color: black;
+        border: black 2px solid;  font-size: 80%;
+        font-family: sans-serif; margin: 10px; padding: 0px; }
+
+      div.biblioteca h1 { background-color: #66CC99; color: white;
+        text-transform: uppercase; margin: 0px; padding: 5px;
+        text-align: left; font-size: 130%; }
+
+      div.biblioteca div.menu { background-color: #9ADDBC; color: white;
+        height: 2em; margin: 0px; }
+      div.biblioteca div.menu ul { list-style-type: none; margin: 0px 5px; padding: 5px; }
+      div.biblioteca div.menu li { float: left; padding: 0px 15px; clear: none; }
+      div.biblioteca div.contenido { padding: 10px; clear: both; }
+      div.biblioteca img { border: none; }
+      div.biblioteca td, div.biblioteca th { padding-left: 5px; padding-right: 5px; }
+      div.biblioteca th { text-align: center; }
+    </style>
+  </head>
+
+  <body>
+    <h1>Proyectos - Biblioteca</h1>
+
+    <nav>
+      <p>
+        <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Biblioteca</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Menús</a></li>
+          <li><a href="#ejercicio-2">2 - Menús Obras y Usuarios</a></li>
+          <li><a href="#ejercicio-3">3 - Menú préstamos</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>El objetivo de este proyecto es crear una programa de gestión de bibliotecas muy elemental, que almacene datos sobre los usuarios, las obras disponibles y los préstamos realizados.</p>
+
+    <hr class="corta" />
+
+    <p>Un ejemplo de biblioteca puede probarse en la ventana siguiente:</p>
+
+    <p class="enlace-ejercicio"><a href="http://smagris3.uv.es/mclibre/biblioteca/">Enlace a ejercicio Biblioteca</a></p>
+
+    <p class="ejercicio"><object type="text/html" data="http://smagris3.uv.es/mclibre/biblioteca/" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+    <hr class="corta" />
+
+    <h3>Comentarios</h3>
+    <ul>
+      <li>En <a href="../../soluciones/">la sección de soluciones</a> tiene disponible una versión mínima del ejercicio que únicamente permite crear la base de datos, pero que puede utilizarse como base para el resto del ejercicio.</li>
+      <li>Este proyecto se puede hacer a partir del proyecto Agenda.</li>
+      <li>La tabla de préstamos contiene los valores de las columnas id de la obra y del usuario.</li>
+      <li>Cada apartado (general, obras, usuarios y préstamos) tienen su propio "borrar todo". Al borrar todo en el apartado general se borran las tres tablas; al borrar todo en el apartado obras se borran las tablas de obras y préstamos pero no la de usuarios; al borrar todo en el apartado usuarios se borran las tablas de usuarios y préstamos, pero no la de obras; al borrar todo en el apartado préstamos, sólo se borra la tabla de préstamos.</li>
+    </ul>
+
+    <p>Estas pueden ser las consultas de creación de tablas para este proyecto:</p>
+
+    <div class="codphp">
+      <pre>// Tamaño de los campos en la tabla
+define('TAM_TITULO',        50);  // Tamaño del campo Obras &gt; Título
+define('TAM_AUTOR',         50);  // Tamaño del campo Obras &gt; Autor
+define('TAM_EDITORIAL',     50);  // Tamaño del campo Obras &gt; Editorial
+define('TAM_NOMBRE',        50);  // Tamaño del campo Usuarios &gt; Nombre
+define('TAM_APELLIDOS',     50);  // Tamaño del campo Usuarios &gt; Apellidos
+define('TAM_DNI',           10);  // Tamaño del campo Usuarios &gt; DNI
+define('TAM_FECHA',         10);  // Tamaño del campo Préstamo &gt; Fecha
+
+// Consultas de creación de tablas en MySQL
+$consultaCreaTablaObras = "CREATE TABLE $dbObras (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    autor VARCHAR(".TAM_AUTOR."),
+    titulo VARCHAR(".TAM_TITULO."),
+    editorial VARCHAR(".TAM_EDITORIAL."),
+    PRIMARY KEY(id)
+    )";
+$consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(".TAM_NOMBRE."),
+    apellidos VARCHAR(".TAM_APELLIDOS."),
+    dni VARCHAR(".TAM_DNI."),
+    PRIMARY KEY(id)
+    )";
+$consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_usuario INTEGER UNSIGNED,
+    id_obra INTEGER UNSIGNED,
+    prestado DATE,
+    devuelto DATE,
+    PRIMARY KEY(id)
+    )";
+
+// Consultas de creación de tablas en SQLite
+$consultaCreaTablaObras = "CREATE TABLE $dbObras (
+    id INTEGER PRIMARY KEY,
+    autor VARCHAR(".TAM_AUTOR."),
+    titulo VARCHAR(".TAM_TITULO."),
+    editorial VARCHAR(".TAM_EDITORIAL.")
+    )";
+$consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
+    id INTEGER PRIMARY KEY,
+    nombre VARCHAR(".TAM_NOMBRE."),
+    apellidos VARCHAR(".TAM_APELLIDOS."),
+    dni VARCHAR(".TAM_DNI.")
+    )";
+$consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
+    id INTEGER PRIMARY KEY,
+    id_usuario INTEGER UNSIGNED,
+    id_obra INTEGER UNSIGNED,
+    prestado DATE,
+    devuelto DATE
+    )";
+</pre>
+    </div>
+
+    <p>Y esta puede ser la consulta que enlaza las tres tablas:</p>
+
+    <div class="codphp">
+      <pre>$consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
+    $dbUsuarios.apellidos as apellidos, $dbObras.titulo as titulo,
+    $dbPrestamos.prestado as prestado, $dbPrestamos.devuelto as devuelto
+    FROM $dbPrestamos, $dbUsuarios, $dbObras
+    WHERE $dbPrestamos.id_usuario=$dbUsuarios.id
+    AND $dbPrestamos.id_obra=$dbObras.id
+    ORDER BY $campo $orden";
+</pre>
+    </div>
+
+    <section id="ejercicio-1">
+      <h2>Biblioteca 1 - Menús</h2>
+
+      <p>El programa de biblioteca tendrá un menú principal y tres submenús para Obras, Usuarios y Préstamos. mínimamente utilizable, la agenda debe permitir añadir registros, listarlos y borrar todos los registros.</p>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Inicio</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Obras</li>
+            <li>Usuarios</li>
+            <li>Préstamos</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+        </div>
+      </div>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Obras</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Añadir</li>
+            <li>Listar</li>
+            <li>Buscar</li>
+            <li>Modificar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+        </div>
+      </div>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Usuarios</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Añadir</li>
+            <li>Listar</li>
+            <li>Buscar</li>
+            <li>Modificar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+        </div>
+      </div>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Préstamos</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Préstamo</li>
+            <li>Devolución</li>
+            <li>Listar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Biblioteca 2 - Menús Obras y Usuarios</h2>
+
+      <p>Los menús de Obras y Usuarios tienen las mismas opciones que la agenda de teléfonos.</p>
+
+      <p>Nota: Al borrar una obra o un usuario, deben borrarse también los préstamos correspondientes.</p>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Obras - Añadir 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Añadir</li>
+            <li>Listar</li>
+            <li>Buscar</li>
+            <li>Modificar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+
+          <table>
+            <tbody>
+              <tr>
+                <td>Título:</td>
+                <td><input type="text" name="titulo" size="50" /></td>
+              </tr>
+              <tr>
+                <td>Autor:</td>
+                <td><input type="text" name="autor" size="50" /></td>
+              </tr>
+              <tr>
+                <td>Editorial:</td>
+                <td><input type="text" name="editorial" size="50" /></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            <input type="submit" value="Añadir" /></p>
+        </div>
+      </div>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Usuarios - Añadir 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Añadir</li>
+            <li>Listar</li>
+            <li>Buscar</li>
+            <li>Modificar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <table>
+            <tbody>
+              <tr>
+                <td>Nombre:</td>
+                <td><input type="text" name="nombre" size="50" /></td>
+              </tr>
+              <tr>
+                <td>Apellidos:</td>
+                <td><input type="text" name="apellidos" size="50" /></td>
+              </tr>
+              <tr>
+                <td>DNI:</td>
+                <td><input type="text" name="dni" size="10" /></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Añadir" /></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Biblioteca 3 - Menú préstamos</h2>
+
+      <p>El menú de Préstamos permite crear un nuevo préstamo e indicar la fecha de devolución, así como listar todos los préstamos y borrarlos.</p>
+
+      <p>Notas:</p>
+      <ul>
+        <li>En la página de devolución de préstamos sólo deben mostrarse los préstamos pendientes.</li>
+        <li>La fecha de devolución debe ser posterior a la fecha de préstamo.</li>
+        <li>Al insertar una fecha vacía en MySQL se guarda el valor 0000-00-00, pero en SQLite se guarda en blanco. Para evitar problemas, es conveniente almacenar el valor 0000-00-00 en vez de guardarlo en blanco.
+          <p class="incompleto">No sé si esto daría problemas en otras bases de datos</p>
+        </li>
+        <li>Cuando un préstamo todavía no se haya devuelto, la celda de la fecha de devolución debe mostrarse vacía (en vez de con 00-00-0000).</li>
+      </ul>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Préstamos - Nuevo préstamo 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Préstamo</li>
+            <li>Devolución</li>
+            <li>Listar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <p>Seleccione obra y usuario e indique la fecha del préstamo:</p>
+
+          <table border="1">
+            <caption>Datos del nuevo préstamo</caption>
+            <tbody>
+              <tr>
+                <th>Usuario</th>
+                <th>Obra</th>
+                <th>Fecha de préstamo (dd-mm-aaaa)</th>
+              </tr>
+              <tr>
+                <td>
+                  <select name="usuario">
+                    <option value="4" selected="selected">Bruce Kane</option>
+                    <option value="5">Clark Kent</option>
+                    <option value="1">Pepito Conejo</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="obra">
+                    <option value="6" selected="selected">Camus - El extranjero</option>
+                    <option value="3">Cervantes - Novelas ejemplares</option>
+                    <option value="7">Perec - La vie, mode d'emploi</option>
+                    <option value="2">Tolkien - El señor de los anillos</option>
+                  </select>
+                </td>
+                <td><input type="text" name="fecha" size="15" value="03-03-2005" /></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Añadir" /></p>
+        </div>
+      </div>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Préstamos - Listar</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Préstamo</li>
+            <li>Devolución</li>
+            <li>Listar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+
+          <table border="1">
+            <caption>Listado de préstamos</caption>
+            <tbody>
+              <tr>
+                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Usuario <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Título <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+                <th><img src="abajo.png" alt="0-9" title="0-9" /> Préstamo <img src="arriba.png" alt="9-0" title="9-0" /></th>
+                <th><img src="abajo.png" alt="0-9" title="0-9" /> Devolución <img src="arriba.png" alt="9-0" title="9-0" /></th>
+              </tr>
+              <tr>
+                <td>Pepito Conejo</td>
+                <td>La náusea</td>
+                <td>01-0-/2005</td>
+                <td>02/02/2005</td>
+              </tr>
+              <tr>
+                <td>Bruce Kane</td>
+                <td>Novelas ejemplares</td>
+                <td>03-03-2005</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Clark Kent</td>
+                <td>El extranjero</td>
+                <td>03-02-2005</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Préstamos - Devolución 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Préstamo</li>
+            <li>Devolución</li>
+            <li>Listar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <p>Seleccione el préstamo e indique la fecha de devolución:</p>
+
+          <table border="1">
+            <caption>Listado de préstamos pendientes</caption>
+            <tbody>
+              <tr>
+                <th>
+                  <img src="abajo.png" alt="A-Z" title="A-Z" /> Usuario <img src="arriba.png" alt="Z-A" title="Z-A" /> -
+                  <img src="abajo.png" alt="A-Z" title="A-Z" /> Título <img src="arriba.png" alt="Z-A" title="Z-A" /> -
+                  <img src="abajo.png" alt="0-9" title="0-9" /> Préstamo <img src="arriba.png" alt="9-0" title="9-0" />
+                </th>
+                <th>Devolución (dd-mm-aaaa)</th>
+              </tr>
+              <tr>
+                <td>
+                  <select name="usuario">
+                    <option value="4" selected="selected">Bruce Kane - Novelas ejemplares - 03-03-2005</option>
+                    <option value="5">Clark Kent - El extranjero - 03-02-2005</option>
+                  </select>
+                </td>
+                <td><input type="text" name="fecha[5]" size="15" value="10/03/2005" /></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Actualizar" /></p>
+        </div>
+      </div>
+
+      <div class="ejf biblioteca">
+        <h1>Biblioteca - Préstamos - Borrar 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Préstamo</li>
+            <li>Devolución</li>
+            <li>Listar</li>
+            <li>Borrar</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <table border="1">
+            <caption>Listado de préstamos</caption>
+            <tbody>
+              <tr>
+                <th>Borrar</th>
+                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Usuario <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Título <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+                <th><img src="abajo.png" alt="0-9" title="0-9" /> Préstamo <img src="arriba.png" alt="9-0" title="9-0" /></th>
+                <th><img src="abajo.png" alt="0-9" title="0-9" /> Devolución <img src="arriba.png" alt="9-0" title="9-0" /></th>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="3" id="_3" /></td>
+                <td>Pepito Conejo</td>
+                <td>La náusea</td>
+                <td>01-01-2005</td>
+                <td>02-02-2005</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="5" id="_5" /></td>
+                <td>Bruce Kane</td>
+                <td>Novelas ejemplares</td>
+                <td>03-03-2005</td>
+                <td>10-03-2005</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="4" id="_4" /></td>
+                <td>Clark Kent</td>
+                <td>El extranjero</td>
+                <td>03-02-2005</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Borrar" /></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 20 de abril de 2010</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Foro. Proyectos. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../varios/favicon.ico" />
+    <style type="text/css">
+      div.foro { background-color: #E5F9F9; color: black;
+        border: black 2px solid;  width: 45%; font-size: 80%;
+        font-family: sans-serif; margin: 10px; padding: 0px; }
+
+      div.foro h1 { background-color: #65AFAF; color: white;
+        text-transform: uppercase; margin: 0px; padding: 5px;
+        text-align: left; font-size: 130%; }
+
+      div.foro div.menu { background-color: #82E0E0; color: white;
+        height: 2em; margin: 0px; }
+      div.foro div.menu ul { list-style-type: none; margin: 0px 5px; padding: 5px; }
+      div.foro div.menu li { float: left; padding: 0px 15px; clear: none; }
+      div.foro div.contenido { padding: 10px; clear: both; }
+      div.foro img { border: none; }
+      div.foro td, div.biblioteca th { padding-left: 5px; padding-right: 5px; }
+      div.foro th { text-align: center; }
+      div.discu { border: black 2px solid; margin: 10px 30px; background: #C8F1F1 }
+      div.foro h2 { background-color: #99E6E6; color: white; font-weight: normal;
+        font-size: 120%; margin: 0px; padding: 0px 10px; text-align: left; }
+      div.discu p { margin: 5px 10px; }
+      div.discu p.dis_aut { background-color: #B7EDED; margin: 0px; padding: 3px 10px; }
+      div.discu p.int_aut { background-color: #B7EDED;
+        margin: 0px; padding: 3px 10px; border-top: black 1px solid; }
+
+      div.discu a { color: black; }
+    </style>
+  </head>
+
+  <body>
+    <h1>Proyectos - Foro</h1>
+
+    <nav>
+      <p>
+        <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Proyectos - Foro</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Menús</a></li>
+          <li><a href="#ejercicio-2">2 - Iniciar nueva discusión</a></li>
+          <li><a href="#ejercicio-3">3 - Intervenir en discusión</a></li>
+          <li><a href="#ejercicio-4">4 - Editor</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>El objetivo de este proyecto es crear un foro, que permita crear varios hilos de discusión.</p>
+
+    <hr class="corta" />
+
+    <p>Un ejemplo de foro puede probarse en la ventana siguiente:</p>
+
+    <p class="enlace-ejercicio"><a href="http://smagris3.uv.es/mclibre/foro/">Enlace a ejercicio Foro</a></p>
+
+    <p class="ejercicio"><object type="text/html" data="http://smagris3.uv.es/mclibre/foro/" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+    <hr class="corta" />
+
+    <h3>Comentarios</h3>
+
+    <ul>
+      <li>Este proyecto se puede hacer a partir del proyecto Biblioteca.</li>
+      <li>La tabla de intervenciones contiene los valores de las columnas id de la discusión.</li>
+      <li>El menú editor es el que permite borrar intervenciones o discusiones individuales o borrar todo. Cualquiera puede entrar en él.</li>
+      <li>Si al crear una discusión o una intervención se deja en blanco un campo, se guardan unos valores predeterminados. Si se dejan todos los campos en blanco no se guarda nada.</li>
+    </ul>
+
+    <p>Estas pueden ser las consultas de creación de tablas para este proyecto:</p>
+
+    <div class="codphp">
+      <pre>// Tamaño de los campos en la tabla
+define('TAM_TITULO',             50);   // Tamaño del campo Discusiones &gt; Título
+define('TAM_DESCRIPCION',        50);   // Tamaño del campo Discusiones &gt; Descripción
+define('TAM_AUTOR',              50);   // Tamaño del campo Discusiones &gt; Autor
+define('TAM_INTERVENCION',       255);  // Tamaño del campo Intervenciones &gt; Intervención
+define('MAX_REG_DISCUSIONES',    10);   // Número máximo de registros en la tabla Discusiones
+define('MAX_REG_INTERVENCIONES', 20);   // Número máximo de registros en la tabla Intervenciones
+
+// Consultas de creación de tablas en MySQL
+$consultaCreaTablaDiscusiones  = "CREATE TABLE $dbDiscusiones (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    titulo VARCHAR(".TAM_TITULO."),
+    descripcion VARCHAR(".TAM_DESCRIPCION."),
+    autor VARCHAR(".TAM_AUTOR."),
+    fecha DATETIME,
+    PRIMARY KEY(id)
+    )";
+$consultaCreaTablaIntervenciones  = "CREATE TABLE $dbIntervenciones (
+    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_discusion INTEGER UNSIGNED,
+    autor VARCHAR(".TAM_AUTOR."),
+    fecha DATETIME,
+    intervencion VARCHAR(".TAM_INTERVENCION."),
+    PRIMARY KEY(id)
+    )";
+
+// Consultas de creación de tablas en SQLite
+$consultaCreaTablaDiscusiones = "CREATE TABLE $dbDiscusiones (
+    id INTEGER PRIMARY KEY,
+    titulo VARCHAR(".TAM_TITULO."),
+    descripcion VARCHAR(".TAM_DESCRIPCION."),
+    autor VARCHAR(".TAM_AUTOR."),
+    fecha DATETIME
+    )";
+$consultaCreaTablaIntervenciones = "CREATE TABLE $dbIntervenciones (
+    id INTEGER PRIMARY KEY,
+    id_discusion INTEGER UNSIGNED,
+    autor VARCHAR(".TAM_AUTOR."),
+    fecha DATETIME,
+    intervencion VARCHAR(".TAM_INTERVENCION.")
+    )";
+</pre>
+    </div>
+
+    <section id="ejercicio-1">
+      <h2>Foro 1 - Menús</h2>
+
+      <p>El foro muestra en la página de inicio las discusiones existentes. Haciendo clic en la flecha se pueden ver todas las intervenciones que ha habido en el foro.</p>
+
+      <div class="ejf foro">
+        <h1>Foro - Inicio</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Nueva discusión</li>
+            <li>Editor</li>
+          </ul>
+        </div>
+
+        <div>
+          <p>Todavía no hay ninguna discusión creada.</p>
+        </div>
+      </div>
+
+      <div class="ejf foro">
+        <h1>Foro - Inicio</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Nueva discusión</li>
+            <li>Editor</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <div class="discu">
+            <h2><img src="flecha.png" alt="Ver discusión" title="Ver discusión" />Referéndum Constitución Europea</h2>
+
+            <p class="dis_aut">Propuesta por Barto, el 21/02/2005 09:50 - 0 intervenciones</p>
+
+            <p>¿Votaste en el referéndum de la Constitución Europea?</p>
+          </div>
+
+          <div class="discu">
+            <h2><img src="flecha.png" alt="Ver discusión" title="Ver discusión" />Inaguración del foro</h2>
+
+            <p class="dis_aut">Propuesta por Barto, el 21/02/2005 06:44 - 0 intervenciones</p>
+
+            <p>A partir de este momento, se abre este foro abierto a todo el mundo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Foro 2 - Iniciar una nueva discusión</h2>
+
+      <div class="ejf foro">
+        <h1>Foro - Iniciar discusión 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <table>
+            <tbody>
+              <tr>
+                <td>Autor:</td>
+                <td><input type="text" name="autor" size="30" /></td>
+              </tr>
+              <tr>
+                <td>Título:</td>
+                <td><input type="text" name="titulo" size="40" /></td>
+              </tr>
+              <tr>
+                <td style="vertical-align:top">Descripción:</td>
+                <td><textarea rows="5" cols="20" name="descr"></textarea></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Añadir" /></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Foro 3 - Intervenir en una discusión</h2>
+
+      <p>Cualquiera puede intervenir en una discusión. Si no se identifica, aparece en el foro como "Rata cobarde" (o similar).</p>
+
+      <div class="ejf foro">
+        <h1>Foro - Discusiones - Inaguración del foro</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Intervenir</li>
+            <li>Volver a la discusión</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <div class="discu">
+            <h2>Inaguración del foro</h2>
+
+            <p class="dis_aut">Propuesta por Barto, el 21/02/2005 06:44</p>
+
+            <p>A partir de este momento, se abre este foro abierto a todo el mundo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ejf foro">
+        <h1>Foro - Discusiones - Inaguración del foro</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Intervenir</li>
+            <li>Volver a la discusión</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <table>
+            <tbody>
+              <tr>
+                <td>Autor:</td>
+                <td><input type="text" name="autor" size="25" /></td>
+              </tr>
+              <tr>
+                <td style="vertical-align:top">Texto:</td>
+                <td><textarea rows="5" cols="20" name="texto"></textarea></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Añadir" /> <input type="hidden" name="hilo" value="1" /></p>
+        </div>
+      </div>
+
+      <div class="ejf foro">
+        <h1>Foro - Discusiones - Inaguración del foro</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Intervenir</li>
+            <li>Volver a la discusión</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <div class="discu">
+            <h2>Inaguración del foro</h2>
+
+            <p class="dis_aut">Propuesta por Barto, el 21/02/2005 06:44</p>
+
+            <p>A partir de este momento, se abre este foro abierto a todo el mundo.</p>
+
+            <p class="int_aut">Barto ha dicho el 22/02/2005 14:04:</p>
+
+            <p>Pues no está esto muy animado que digamos...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ejf foro">
+        <h1>Foro - Discusiones - Inaguración del foro</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Intervenir</li>
+            <li>Volver a la discusión</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <div class="discu">
+            <h2>Inaguración del foro</h2>
+
+            <p class="dis_aut">Propuesta por Barto, el 22/02/2005 13:58</p>
+
+            <p>A partir de este momento, se abre este foro abierto a todo el mundo.</p>
+
+            <p class="int_aut">Barto ha dicho el 22/02/2005 14:04:</p>
+
+            <p>Pues no está esto muy animado que digamos...</p>
+
+            <p class="int_aut">Rata cobarde ha dicho el 22/02/2005 14:14:</p>
+
+            <p>¿Alguien vió mi caparazón?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-4">
+      <h2>Foro 4 - Editor</h2>
+
+      <p>El editor puede borrar intervenciones concretas o discusiones completas.</p>
+
+      <div class="ejf foro">
+        <h1>Foro - Editor</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Borrar discusiones</li>
+            <li>Borrar intervenciones</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+        </div>
+      </div>
+
+      <div class="ejf foro">
+        <h1>Foro - Editor - Borrar discusiones 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Borrar discusiones</li>
+            <li>Borrar intervenciones</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <p>Marca las discusiones que quieras borrar. Ten en cuenta que al borrar una
+            discusión se borrarán también sus intervenciones.</p>
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Borrar</th>
+                <th>Discusión</th>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="1" id="_1" /></td>
+                <td>Inaguración del foro</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Borrar" /></p>
+        </div>
+      </div>
+
+      <div class="ejf foro">
+        <h1>Foro - Editor - Borrar intervenciones 1</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Borrar discusiones</li>
+            <li>Borrar intervenciones</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Borrar</th>
+                <th>Discusión</th>
+              </tr>
+              <tr>
+                <td><input type="radio" name="radio" value="1" /></td>
+                <td>Inaguración del foro</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Borrar" /></p>
+        </div>
+      </div>
+
+      <div class="ejf foro">
+        <h1>Foro - Editor - Borrar intervenciones 2</h1>
+
+        <div class="menu">
+          <ul>
+            <li>Inicio</li>
+            <li>Borrar discusiones</li>
+            <li>Borrar intervenciones</li>
+            <li>Borrar todo</li>
+          </ul>
+        </div>
+
+        <div class="contenido">
+          <p>Marca las intervenciones que quieras borrar.</p>
+
+          <table border="1">
+            <tbody>
+              <tr>
+                <th>Borrar</th>
+                <th>Intervención</th>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="1" id="_11" /></td>
+                <td>Pues no está esto muy animado que digamos...</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="2" id="_2" /></td>
+                <td>¿Alguien vió mi caparazón?</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Borrar" /></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 7 de mayo de 2009</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
