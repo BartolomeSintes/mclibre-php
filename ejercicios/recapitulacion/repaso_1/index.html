@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Repaso (1). Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../varios/mclibre_php.css" rel="stylesheet" type="text/css" title="Color" />
+    <link rel="icon" href="../../../varios/favicon.ico" />
+    <link rel="stylesheet" href="../../../varios/highlight-php.css" />
+    <script type="text/javascript" src="../../../varios/highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Ejercicios - Repaso (1)</h1>
+
+    <nav>
+      <p>
+        <a href="../../../index.html"><img src="../../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <h2>Repaso (1)</h2>
+
+      <div class="toc">
+        <ul>
+          <li><a href="#ejercicio-1">1 - Convertidor divisas</a></li>
+          <li><a href="#ejercicio-2">2 - Convertidor bytes</a></li>
+          <li><a href="#ejercicio-3">3 - Cálculo DNI</a></li>
+          <li><a href="#ejercicio-4">4 - Ecuación segundo grado</a></li>
+          <li><a href="#ejercicio-5">5 - Contador días</a></li>
+          <li><a href="#ejercicio-6">6 - Grises</a></li>
+          <li><a href="#ejercicio-7">7 - Test RGB</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1516/repaso_1_plantillas.zip">plantillas de los ejercicios Repaso (1)</a> que incluyen parte de las páginas (los fragmentos HTML).</p>
+
+    <p><strong>Nota</strong>:</p>
+    <ul>
+      <li>Los valores introducidos por el usuario se deben comprobar y, si los valores no son correctos, se debe indicar el motivo al usuario, o dar un valor predeterminado.</li>
+      <li>Tenga en cuenta que un usuario puede acceder al programa php directamente enviando los datos que desee (por ejemplo, datos más largos que la longitud permitida en el formulario)</li>
+    </ul>
+
+    <section id="ejercicio-1">
+      <h2>Repaso (1) 1 - Convertidor de divisas</h2>
+
+      <p>Escriba un convertidor de divisas que conste de dos páginas.</p>
+      <ul>
+        <li>En la primera página se solicita la cantidad y la divisa.</li>
+        <li>En la segunda página se muestra el resultado.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="convertidor_divisas.html">Enlace a ejercicio Convertidor de divisas</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="convertidor_divisas.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <p><strong>Nota</strong>: La cotización es fija. En el ejemplo se han utilizado las siguientes cotizaciones:</p>
+      <ul>
+        <li>1 euro = 1,31481 dólares USA</li>
+        <li>1 euro = 0,89807 libras esterlinas</li>
+        <li>1 euro = 132,113 yenes</li>
+        <li>1 euro = 166,386 pesetas</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-2">
+      <h2>Repaso (1) 2 - Convertidor de bytes</h2>
+
+      <p>Escriba un convertidor de bytes a kilobytes, megabytes y gigabytes que conste de dos páginas.</p>
+      <ul>
+        <li>En la primera página, se solicita el número de bytes. El valor máximo admitido por el convertidor será 2.000.000.000 (para no superar el valor máximo permitido en enteros).</li>
+        <li>En la segunda página se muestra el resultado en kilobytes, megabytes y gigabytes (mostrando únicamente las unidades necesarias)</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="convertidor_bytes.html">Enlace a ejercicio Convertidor de bytes</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="convertidor_bytes.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>Para formatear el resultado (con separador de miles y de parte entera y decimal), se puede utilizar <a href="../../../lecciones/php_operaciones_aritmeticas.html#formatear">la función <span class="php-fun">number_format()</span></a>.</li>
+        <li>Ejemplos de resultados:
+          <ul>
+            <li>1234567890 bytes son 1 GB, 153 MB, 384 KB y 722 bytes.</li>
+            <li>1074791424 bytes son 1 GB, 1 MB y 1 KB.</li>
+            <li>10241024 bytes son 9 MB y 785 KB.</li>
+            <li>10240 bytes son 10 KB.</li>
+            <li>10241 bytes son 10 KB y 1 byte.</li>
+            <li>10242 bytes son 10 KB y 2 bytes.</li>
+            <li>1 byte es 1 byte.</li>
+            <li>0 bytes son 0 bytes.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-3">
+      <h2>Repaso (1) 3 - Calculadora de la letra del DNI</h2>
+
+      <p>Escriba una calculadora de la letra del DNI mediante dos páginas.</p>
+      <ul>
+        <li>En la primera página se solicita el número del DNI.</li>
+        <li>En la segunda página se muestra la letra correspondiente. Recuerde que la letra se obtiene calculando el resto de la división del número del DNI por 23. A cada resultado le corresponde una letra: 0=T; 1=R; 2=W; 3=A; 4=G; 5=M; 6=Y; 7=F; 8=P; 9=D; 10=X; 11=B; 12=N; 13=J; 14=Z; 15=S; 16=Q; 17=V; 18=H; 19=L; 20=C; 21=K; 22=E.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="calculadora_dni.html">Enlace a ejercicio Calculadora DNI</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="calculadora_dni.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+      <ul>
+        <li>Para mostrar la letra, se puede definir una cadena y mostrar el carácter deseado accediendo como si fuera una matriz:
+
+          <table class="ejemplo">
+            <tbody>
+              <tr>
+                <td class="codphp">
+                  <pre>
+<code class="language-php">&lt;?php
+$letrasDNI = 'TRWAGMYFPDXBNJZSQVHLCKE';
+print "&lt;p&gt;Si el resto es 5, la letra es la $letrasDNI[5]&lt;/p&gt;\n";<br />?&gt;</code>
+</pre>
+                </td>
+                <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Si el resto es 5, la letra es la M&lt;/p&gt;</code></pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-4">
+      <h2>Repaso (1) 4 - Ecuación de segundo grado</h2>
+
+      <p>Escriba un programa que admita tres valores numéricos que corresponden a los tres coeficientes de una ecuación de segundo grado y que muestre las soluciones de la ecuación.</p>
+
+      <p>El programa tendrá dos páginas:</p>
+      <ul>
+        <li>La primera pide los valores.</li>
+        <li>La segunda escribe la respuesta</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="segundo_grado.html">Enlace a ejercicio Ecuación de segundo grado</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="segundo_grado.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>Se deben rellenar todos los campos con valores numéricos.</li>
+        <li>Ejemplos de ecuaciones y sus soluciones:
+          <ul>
+            <li>0 x<sup>2</sup> + 0 x + 0 = 0: infinitas soluciones</li>
+            <li>0 x<sup>2</sup> + 0 x + 5 = 0: ninguna solución</li>
+            <li>0 x<sup>2</sup> + 10 x + 5 = 0: una solución -0.5</li>
+            <li>La solución de la ecuación de segundo grado depende del signo de <strong>b<sup>2</sup>-4ac</strong>:
+              <ul>
+                <li>si b<sup>2</sup>-4ac es negativo no hay soluciones</li>
+                <li>si es nulo, hay sólo una solución -b/2a</li>
+                <li>si es positivo, hay dos soluciones: <strong>(-b + sqrt(b<sup>2</sup> - 4 * a * c)) / (2 * a)</strong> y <strong>(-b - sqrt(b<sup>2</sup> - 4 * a * c)) / (2 * a)</strong></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Opcional: En el ejemplo, al escribir la ecuación, la página de respuesta no escribe los términos de coeficiente nulo (y cuando a o b valgan 1 o -1 no escribe el 1) ni empieza la ecuación por un signo +.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-5">
+      <h2>Repaso (1) 5 - Contador de días</h2>
+
+      <p>Escriba un contador de días que conste de tres páginas.</p>
+      <ul>
+        <li>En la primera página, se solicita cuántas semanas se van a mostrar en la segunda página.</li>
+        <li>En la segunda página se muestra una tabla con tantas filas (semanas) como haya indicado el usuario.</li>
+        <li>En la tercera y última página se indica cuántas casillas se han marcado en total y en cada semana.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="contador_dias_1.html">Enlace a ejercicio Contador de días</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="contador_dias_1.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+
+      <h3>Comentarios</h3>
+
+      <ul>
+        <li>No es necesario comprobar los valores recibidos en la tercera página.</li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-6">
+      <h2>Repaso (1) 6 - Grises (ejercicio de examen 2014/15)</h2>
+
+      <p>En este ejercicio se debe crear un programa que muestre un cuadrado de color gris, cuya intensidad se pueda modificar con dos controles.</p>
+      <ul>
+        <li>El programa tendrá una página:
+          <ul>
+            <li>Inicialmente se muestra un color gris intermedio (rgb(127, 127, 127)).</li>
+            <li>Al hacer clic en el +, el gris se va oscureciendo de 10 en 10 (por ejemplo, de rgb(90, 90, 90) hasta el negro (rgb(, 0, 0)): </li>
+            <li>Al hacer clic en el -, el gris se va aclarando de 1 en 1 (en el ejemplo, rgb(200, 200, 200)) hasta el blanco (rgb(255, 255, 255)): </li>
+            <li>El valor del gris no puede hacerse negativo ni superor a 255.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="grises.php">Enlace a ejercicio Grises</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="grises.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <section id="ejercicio-7">
+      <h2>Repaso (1) 7 - Test RGB</h2>
+
+      <p>Escriba un programa que muestre un test sobre colores en formato RGB.</p>
+
+      <p>El programa tendrá una única página:</p>
+      <ul>
+        <li>La página muestra cuatro cuadros de colores con colores definidos al azar.</li>
+        <li>Los colores se definen en <a href="http://www.mclibre.org/consultar/htmlcss/css/css_color.html#rgb">formato RGB</a>, es decir, tres valores enteros entre 0 y 255
+
+          <div class="codphp">
+            <pre>rgb($rojo, $verde, $azul)</pre>
+          </div>
+        </li>
+        <li>Para elegir el color por el que se pregunta, se puede obtener al azar un número de 1 a 4 e insertar en la pregunta el color del cuadro con ese número.</li>
+        <li>Cada cuadro de color está insertado en un botón que envía el número del 1 al 4 correspondiente.</li>
+        <li>Este ejercicio se puede hacer almacenando la respuesta correcta en una variable de sesión o incluyéndola en la página en un control oculto. El programa de ejemplo emplea una variable de sesión, no en un control oculto (para que el usuario no pueda hacer trampas mirando el código fuente).</li>
+        <li>Al hacer clic en uno de los cuadros, la página indica si se ha acertado el color o no y muestra un nuevo test.</li>
+        <li>Si se recibe un dato que no es 1, 2, 3 o 4, el programa no muestra ninguna respuesta, simplemente muestra un nuevo test.</li>
+      </ul>
+
+      <p class="enlace-ejercicio"><a href="rgb_test.php">Enlace a ejercicio Test RGB</a></p>
+
+      <p class="ejercicio"><object type="text/html" data="rgb_test.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2015</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
