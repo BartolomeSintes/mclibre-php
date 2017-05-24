@@ -20,9 +20,9 @@
         <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
       </p>
 
-      <h2>Cabeceras: header()</h2>
-
       <div class="toc">
+        <h2>Cabeceras: header()</h2>
+
         <ul>
           <li><a href="#funcion-header">La función header()</a>
             <ul>
@@ -95,7 +95,7 @@ header("Location:http://www.example.com");
 
       <p>Por ello, hay que tener mucho cuidado en no generar ningún tipo de salida antes de utilizar la la función <span class="php-fun">header()</span> ni en el programa, ni en las bibliotecas a las que se llame en el programa.</p>
 
-<p>Hay que tener en cuenta que una simple línea en blanco antes del bloque PHP sería suficiente para impedir el envío de la cabecera:</p>
+      <p>Hay que tener en cuenta que una simple línea en blanco antes del bloque PHP sería suficiente para impedir el envío de la cabecera:</p>
 
       <table class="ejemplo">
         <tbody>
@@ -135,43 +135,43 @@ header("Location:http://www.example.com");
         <ul>
           <li>En el primer ejemplo, el buffer es de 1 byte. La salida de <span class="php-res">print</span> no cabe en el buffer y el servidor envía el contenido. Al intentar hacer la redirección, se produce un error.
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+            <table class="ejemplo">
+              <tbody>
+                <tr>
+                  <td class="codphp">
+                    <pre>
 <code class="language-php">ob_start(null, 1);
 print "&lt;p&gt;Tamaño del buffer: 1&lt;/p&gt;";
 header("location:final.php");
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
 </pre></td>
-              <td class="resul-php">
-                <object type="text/html" data="ejemplos/utf_bom/buffer_0_1.php" style="width: 100%; height: 11em">ERROR (no puede mostrarse el objeto)</object>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  <td class="resul-php">
+                    <object type="text/html" data="ejemplos/utf_bom/buffer_0_1.php" style="width: 100%; height: 11em">ERROR (no puede mostrarse el objeto)</object>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </li>
           <li>En el segundo ejemplo, el buffer es de 100 bytes. La salida de <span class="php-res">print</span> sí cabe en el buffer y el servidor no envía todavía el contenido. Al intentar hacer la redirección, la redirección puede realizarse.
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+            <table class="ejemplo">
+              <tbody>
+                <tr>
+                  <td class="codphp">
+                    <pre>
 <code class="language-php">ob_start(null, 100);
 print "&lt;p&gt;Tamaño del buffer: 100&lt;/p&gt;";
 header("location:finalphp");
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
 </pre></td>
-              <td class="resul-php">
-                <object type="text/html" data="ejemplos/utf_bom/buffer_1_1.php" style="width: 100%; height: 11em">ERROR (no puede mostrarse el objeto)</object>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  <td class="resul-php">
+                    <object type="text/html" data="ejemplos/utf_bom/buffer_1_1.php" style="width: 100%; height: 11em">ERROR (no puede mostrarse el objeto)</object>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </li>
         </ul>
 
