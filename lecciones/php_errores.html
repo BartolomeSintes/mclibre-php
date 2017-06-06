@@ -96,54 +96,63 @@
       <ul>
         <li>unexpected character
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp"><pre><code class="language-php">&lt;?php
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
 print &lt;p&gt;Hola&lt;/p&gt;\n
-?&gt;</code></pre>
-                </td>
-                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected '&lt;' in <b>ejemplo.php</b> on line <b>2</b></pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+?&gt;</code>
+</pre>
+            </div>
+            <div class="resultado">
+              <p><b>Parse error</b>:  syntax error, unexpected '&lt;' in <b>ejemplo.php</b> on line <b>2</b></p>
+            </div>
+          </div>
+
           <p>En este caso, el motivo del error es que un trozo de texto debe estar contenido en una cadena (rodeado por comillas simples o dobles) y cuando encuentra el carácter &lt; (que representa el operador matemático de desigualdad), no puede entenderlo como tal.</p>
         </li>
         <li>unexpected T_CONSTANT_ENCAPSED_STRING
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp"><pre><code class="language-php">&lt;?php
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
 primt "&lt;p&gt;Hola&lt;/p&gt;\n";
-?&gt;</code></pre>
-                </td>
-                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in <b>ejemplo.php</b> on line <b>2</b></pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+?&gt;</code>
+</pre>
+            </div>
+            <div class="resultado">
+              <p><b>Parse error</b>:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in <b>ejemplo.php</b> on line <b>2</b></p>
+            </div>
+          </div>
+
           <p>En este caso, el motivo del error es que <span class="php-res">primt</span> no es una palabra reservada del lenguaje ni una función (debería decir <span class="php-res">print</span>) y cuando encuentra la cadena no sabe cómo seguir.</p>
         </li>
         <li>unexpected T_PRINT
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp"><pre><code class="language-php">&lt;?php
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n"
 print "&lt;p&gt;Adios&lt;/p&gt;\n"
-?&gt;</code></pre>
-                </td>
-                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected T_PRINT in <b>ejemplo.php</b> on line <b>3</b></pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+?&gt;</code>
+</pre>
+            </div>
+            <div class="resultado">
+              <p><b>Parse error</b>:  syntax error, unexpected T_PRINT in <b>ejemplo.php</b> on line <b>3</b></p>
+            </div>
+          </div>
+
           <p>En este caso, el motivo de error es que la primera sentencia no finaliza en punto y coma (;) y no se esperaba el segundo print. Por cierto, la última sentencia de un bloque php puede no finalizar en punto y coma, aunque se recomienda hacerlo.</p>
         </li>
       </ul>
@@ -152,41 +161,45 @@ print "&lt;p&gt;Adios&lt;/p&gt;\n"
       <ul>
         <li>final inesperado
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp"><pre><code class="language-php">&lt;?php
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
 $edad = 15;
 if ($edad &lt; 19) {
     print "&lt;p&gt;Menor de edad&lt;/p&gt;\n";
-?&gt;</code></pre>
-                </td>
-                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected $end in <b>ejemplo.php</b> on line <b>5</b></pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+?&gt;</code>
+</pre>
+            </div>
+            <div class="resultado">
+              <p><b>Parse error</b>:  syntax error, unexpected $end in <b>ejemplo.php</b> on line <b>5</b></p>
+            </div>
+          </div>
+
           <p>En este caso, el motivo de error es que no se ha cerrado la llave y PHP llega al final del fichero sin haber cerrado el bloque.</p>
         </li>
         <li>paréntesis inesperado
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $resultado = 2 * 3 + 4);
 print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php"><pre><b>Parse error</b>:  syntax error, unexpected ')' in <b>ejemplo.php</b> on line <b>2</b></pre></td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <p><b>Parse error</b>:  syntax error, unexpected ')' in <b>ejemplo.php</b> on line <b>2</b></p>
+            </div>
+          </div>
+
           <p>En este caso, el motivo de error es que no se ha abierto el paréntesis y PHP no se espera el paréntesis cerrado.</p>
         </li>
       </ul>
@@ -199,53 +212,48 @@ print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;\n";
       <ul>
         <li>división por cero
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $numero = 0;
 $resultado = 1 / $numero;
 print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <pre><b>Warning</b>:  Division by zero in <b>ejemplo.php</b> on line <b>3</b><br />
-Resultado:
-</pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <p><b>Warning</b>:  Division by zero in <b>ejemplo.php</b> on line <b>3</b><br />
+                Resultado:
+              </p>
+            </div>
+          </div>
+
           <p>En este caso, el motivo del aviso es que se intenta realizar un cálculo matemático imposible (dividir entre cero).</p>
         </li>
         <li>uso de cabeceras después de escribir texto
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 header("location:index.php");
 exit();
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <pre>Hola
-<b>Warning</b>:  Cannot modify header information - headers already sent by
-(output started at ejemplo.php:2) in <b>ejemplo.php</b> on line <b>3</b><br />
-</pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <p>Hola</p>
+              <b>Warning</b>:  Cannot modify header information - headers already sent by (output started at ejemplo.php:2) in <b>ejemplo.php</b> on line <b>3</b><br />
+            </div>
+          </div>
 
           <p>En este caso, el motivo del aviso es que se intenta enviar una cabecera después de haber enviado texto (dependiendo de la configuración de PHP, concretamente de <a href="../otros/in_php_configuracion_1.html#output-buffering">la directiva output_buffering</a>, puede no dar aviso de error).</p>
         </li>
@@ -259,50 +267,46 @@ exit();
       <ul>
         <li>variable no definida
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Edad: $edad&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <pre><b>Notice</b>:  Undefined variable: edad in <b>ejemplo.php</b> on line <b>2</b><br />
-Edad:
-</pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <b>Notice</b>:  Undefined variable: edad in <b>ejemplo.php</b> on line <b>2</b><br />
+              <p>Edad:</p>
+            </div>
+          </div>
 
           <p>En este caso, el motivo del aviso es que se utiliza una variable a la que no se había asignado valor previamente. El programa funciona puesto que PHP le asigna el valor de cadena vacía, pero se desaconseja utilizar variables no establecidas previamente.</p>
         </li>
         <li>ausencia del símbolo $ en el nombre de una variable
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $edad = 18;
 print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <pre><b>Notice</b>:  Use of undefined constant edad - assumed 'edad' in <b>ejemplo.php</b> on line <b>3</b><br />
-Edad: edad
-</pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <b>Notice</b>:  Use of undefined constant edad - assumed 'edad' in <b>ejemplo.php</b> on line <b>3</b><br />
+              <p>Edad: edad</p>
+            </div>
+          </div>
+
           <p>En este caso, el motivo del aviso es que PHP encuentra una palabra (edad) que no es un término del lenguaje, ni una variable (porque no empieza por $) ni una cadena (porque no está entre comillas. PHP genera un aviso y supone que se trata de una cadena, y por eso escribe "edad".</p>
         </li>
       </ul>
@@ -314,12 +318,12 @@ Edad: edad
       <ul>
         <li>función obsoleta
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $cadena = 'ABC';
 if (eregi('a', $cadena)) {
@@ -327,15 +331,13 @@ if (eregi('a', $cadena)) {
 }
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <pre><b>Deprecated</b>:  Function eregi() is deprecated in <b>ejemplo.php</b> on line <b>3</b><br />
-'ABC' contiene una 'a' o una 'A'
-</pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <b>Deprecated</b>:  Function eregi() is deprecated in <b>ejemplo.php</b> on line <b>3</b><br />
+              'ABC' contiene una 'a' o una 'A'
+            </div>
+          </div>
+
           <p>En este caso, el motivo del aviso es que la función <span class="php-fun">eregi()</span> está considerada obsoleta desde la versión PHP 5.3.0.</p>
         </li>
       </ul>

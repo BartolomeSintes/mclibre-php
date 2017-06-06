@@ -50,31 +50,29 @@
 
         <p>Los fragmentos de código PHP están delimitados por las etiquetas <span class="php-del">&lt;?php</span> (etiqueta inicial) y <span class="php-del">?&gt;</span> (etiqueta final) y contienen las instrucciones de PHP. Más adelante se comentan otros posibles delimitadores de fragmentos de código PHP.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p>Los fragmentos de PHP no pueden anidarse, es decir, no puede haber un fragmento dentro de otro:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 
@@ -82,84 +80,79 @@ print "&lt;p&gt;Hola&lt;/p&gt;\n";
 print "&lt;p&gt;Adios&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                <pre><code class="language-php"><span class="preprocessor">?&gt;</span></code></pre>
-              </td>
-              <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected '&lt;' in <strong>ejemplo.php</strong> on line <strong>4</strong></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p><strong>Parse error</strong>: syntax error, unexpected '&lt;' in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p>Si en una misma página hay varios fragmentos PHP, se tratan como un único programa. Los siguientes programas son equivalentes:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola";         // Se define una variable
 print "&lt;p&gt;$saludo&lt;/p&gt;";   // Se escribe el valor de la variable
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola";             // Se define una variable
-?&gt;</code>
-</pre>
-                <pre>
-<code class="language-php">&lt;?php
+?&gt;
+&lt;?php
 print "&lt;pre&gt;$saludo&lt;pre&gt;";   // Se escribe el valor de la variable
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p>Si el programa termina con un fragmento PHP, ese último fragmento PHP no necesita cerrarse. Los siguientes programas son correctos:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Hola&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Adios&lt;/p&gt;\n";</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;p&gt;Adios&lt;/p&gt;</code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </section>
 
       <section id="fragmentos-php-html">
@@ -167,24 +160,20 @@ print "&lt;p&gt;Adios&lt;/p&gt;\n";</code>
 
         <p>En una página PHP todo lo que no son fragmentos PHP son fragmentos HTML. Los fragmentos de código HTML no están delimitados por ninguna etiqueta.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 ?&gt;</code></pre>
-                <pre><code class="language-html">&lt;p&gt;¿Cómo estás?&lt;/p&gt;</code></pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+            <pre><code class="language-html">&lt;p&gt;¿Cómo estás?&lt;/p&gt;</code></pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;p&gt;¿Cómo estás?&lt;/p&gt;</code></pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <hr class="corta" />
 
@@ -207,82 +196,71 @@ print "&lt;p&gt;Hola&lt;/p&gt;\n";
         <p>Los ejemplos siguientes muestran diferentes programas PHP que generan el mismo resultado:</p>
         <ul>
           <li>Programa con un único fragmento PHP
-            <table class="ejemplo">
-              <tbody>
-                <tr>
-                  <td class="codphp">
-                    <pre>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 print "&lt;p&gt;¿Cómo estás?&lt;/p&gt;\n";
 print "&lt;p&gt;Adios&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                  </td>
-                  <td class="resul-php">
-                    <pre>
+              </div>
+              <div class="resultado">
+                <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;p&gt;¿Cómo estás?&lt;/p&gt;
 &lt;p&gt;Adios&lt;/p&gt;</code>
 </pre>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              </div>
+            </div>
           </li>
           <li>Programa con un fragmento PHP y un fragmento HTML
 
-            <table class="ejemplo">
-              <tbody>
-                <tr>
-                  <td class="codphp">
-                    <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
-                    <pre>
+            <div class="filaflex">
+              <div class="codigo">
+                <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+                <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;¿Cómo estás?&lt;/p&gt;\n";
 print "&lt;p&gt;Adios&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                  </td>
-                  <td class="resul-php">
-                    <pre>
+              </div>
+              <div class="resultado">
+                <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;p&gt;¿Cómo estás?&lt;/p&gt;
 &lt;p&gt;Adios&lt;/p&gt;</code>
 </pre>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              </div>
+            </div>
           </li>
           <li>Programa con dos fragmentos PHP y un fragmento HTML
 
-            <table class="ejemplo">
-              <tbody>
-                <tr>
-                  <td class="codphp">
-                    <pre>
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                    <pre><code class="language-html">&lt;p&gt;¿Cómo estás?&lt;/p&gt;</code></pre>
-                    <pre>
+                <pre><code class="language-html">&lt;p&gt;¿Cómo estás?&lt;/p&gt;</code></pre>
+                <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Adios&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                  </td>
-                  <td class="resul-php">
-                    <pre>
+              </div>
+              <div class="resultado">
+                <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;p&gt;¿Cómo estás?&lt;/p&gt;
 &lt;p&gt;Adios&lt;/p&gt;</code>
 </pre>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              </div>
+            </div>
           </li>
         </ul>
 
@@ -290,51 +268,51 @@ print "&lt;p&gt;Adios&lt;/p&gt;\n";
 
         <p>En un fragmento PHP no pueden escribirse etiquetas HTML sueltas; el código HTML debe generarse siempre con instrucciones de PHP. El programa siguiente no puede ni siquiera ejecutarse y produce un error de sintaxis:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-              <td class="codphp">
-                <pre><code class="language-php">&lt;?php</code></pre>
-                <pre><code class="codhtml"><span class="codigo-resaltado">&lt;p&gt;Hola&lt;/p&gt;</span></code></pre>
-                <pre><code class="language-php"><span class="preprocessor">?&gt;</span></code></pre>
-              </td>
-              <td class="resul-php"><strong>Parse error</strong>: syntax error, unexpected '&lt;' in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+          </div>
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php</code></pre>
+            <pre><code class="codhtml"><span class="codigo-resaltado">&lt;p&gt;Hola&lt;/p&gt;</span></code></pre>
+            <pre><code class="language-php"><span class="preprocessor">?&gt;</span></code></pre>
+          </div>
+          <div class="resultado">
+            <p><strong>Parse error</strong>: syntax error, unexpected '&lt;' in <strong>ejemplo.php</strong> on line <strong>2</strong></p>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p>De la misma manera, no se deben escribir instrucciones de PHP fuera de fragmentos PHP. No se producen errores, pero el resultado no es el esperado. Como el texto fuera de fragmentos PHP se envía tal cual al navegador, el navegador recibirá las instrucciones de PHP, que el navegador no sabe ejecutar y se mostrarán en la pantalla.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40"
+
+                 height="40" />
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                <pre>
+            <pre>
 <code class="language-html">&lt;p&gt;¿Cómo estás?&lt;/p&gt;
 
 <span class="codigo-resaltado">print "&lt;p&gt;Adios&lt;/p&gt;\n";</span></code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;p&gt;¿Cómo estás?&lt;/p&gt;
 
 <span class="codigo-resaltado">print "&lt;p&gt;Adios&lt;/p&gt;\n";</span></code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </section>
 
       <section id="delimitador-1">
@@ -346,43 +324,38 @@ print "&lt;p&gt;Hola&lt;/p&gt;\n";
 
         <p>Mediante la directiva <a href="../otros/in_php_configuracion_1.html#short-open-tag">short_open_tag</a> (etiqueta de apertura abreviada) se puede permitir el uso del delimitador <strong>&lt;?</strong> además del delimitador <strong>&lt;?php</strong>. Si la directiva short_open_tag tiene el valor On (lo que está desaconsejado), el siguiente programa no daría errores:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php"><span class="preprocessor">&lt;?</span>
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt; </code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt; </code></pre>
+          </div>
+        </div>
 
         <p>Pero si la directiva short_open_tag tiene el valor Off (valor recomendado), el mismo programa produciría un resultado incorrecto y que puede resultar chocante, ya que en el navegador se puede ver el programa original:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php"><span class="preprocessor">&lt;?</span>
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;?
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <p>Este resultado se debe a que como el programa no contiene el delimitador &lt;?php, su contenido no se reconoce como fragmento PHP. Como no se reconoce como fragmento PHP, el servidor lo envía tal cual al navegador, que no puede mostrarlo correctamente puesto que no es html correcto. Abriendo la vista de código fuente en el navegador, se podría ver mejor el programa completo.</p>
 
@@ -391,34 +364,30 @@ print "&lt;p&gt;Hola&lt;/p&gt;\n";
       <section id="delimitador-2">
         <h3>El delimitador &lt;?= ... ?&gt;</h3>
 
-        <p>El delimitador <strong>&lt;?=</strong> es una abreviatura de la expresión <strong>&lt;?php echo</strong> que se utiliza en muchos frameworks de PHP en los documentos que sirven de plantilla de generación de interfaces, sobre todo cuando estas plantillas las van a editar usuarios sin muchos conocimientos de programación (diseñadores gráficos, etc.).</p>
+        <p>El delimitador <strong>&lt;?=</strong> es una abreviatura de la expresión <strong>&lt;?php echo</strong> que se utiliza en muchos frameworks de PHP en los documentos que sirven de plantilla de generación de interfaces, sobre todo cuando estas plantillas las van a editar usuarios que pueden no tener conocimientos de programación (diseñadores gráficos, etc.).</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php"><span class="preprocessor">&lt;?php</span>
 $saludo = "Hola";
 $despedida = "Adios";
 ?&gt;</code>
 </pre>
-                <pre>
+            <pre>
 <code class="language-html">&lt;p&gt;</code><code class="language-php"><span class="preprocessor">&lt;?=</span> $saludo <span class="preprocessor">?&gt;</span></code><code class="language-html"><span class="tag">&lt;/p&gt;</span>
 <span class="tag">&lt;p&gt;</span></code><code class="language-php"><span class="preprocessor">&lt;?=</span> $despedida <span class="preprocessor">?&gt;</span></code><code class="language-html"><span class="tag">&lt;/p&gt;</span></code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;p&gt;Adios&lt;/p&gt;</code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
-        <p>Antes de PHP 5.4, publicado en marzo de 2012, para poder usar este delimitador se necesitaba activar la directiva short_open_tag. El problema era que, como se comenta en el apartado anterior, desde hace años se aconseja no activar esa directiva para impedir el uso del delimitador &lt;?. A partir de PHP 5.4 se ha resuelto este problema desvinculado el delimitador &lt;?= de la directiva short_open_tag. por tanto, desde PHP 5.4, el delimitador &lt;?= se puede utilizar sin limitaciones.</p>
+        <p>Antes de PHP 5.4, publicado en marzo de 2012, para poder usar este delimitador se necesitaba activar la directiva short_open_tag. El problema era que, como se comenta en el apartado anterior, desde hace años se aconseja no activar esa directiva para impedir el uso del delimitador &lt;?. A partir de PHP 5.4 se resolvió este problema desvinculado el delimitador &lt;?= de la directiva short_open_tag. por tanto, desde PHP 5.4, el delimitador &lt;?= se puede utilizar sin limitaciones.</p>
       </section>
     </section>
 
@@ -434,37 +403,42 @@ $despedida = "Adios";
 
       <p>Estos comentarios no se añaden al código HTML generado por la página, por lo que no pueden verse en el navegador.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;</code></pre>
-              <pre>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;</code></pre>
+          <pre>
 <code class="language-php">&lt;?php
 // La instrucción print escribe texto en la página web
 print "Hola"; // El comentario se puede escribir al final de la línea
 ?&gt;</code>
 </pre>
-              <pre><code class="language-html">&lt;/strong&gt;&lt;/p&gt;</code></pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;</code></pre>
-              <pre>
+          <pre><code class="language-html">&lt;/strong&gt;&lt;/p&gt;</code></pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;</code></pre>
+          <pre>
 <code class="language-php">&lt;?php
 # La instrucción print escribe texto en la página web
 print "Hola"; # El comentario se puede escribir al final de la línea
 ?&gt;</code>
 </pre>
-              <pre><code class="language-html">&lt;/strong&gt;&lt;/p&gt;</code></pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+          <pre><code class="language-html">&lt;/strong&gt;&lt;/p&gt;</code></pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;&lt;strong&gt;";
 /* Dentro de un fragmento PHP no se pueden escribir
@@ -477,41 +451,39 @@ Hola
 print "&lt;/strong&gt;&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;&lt;strong&gt;Hola&lt;/strong&gt;&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
       <hr class="corta" />
 
       <p>Si se quieren escribir comentarios en los fragmentos HTML, hay que utilizar la etiqueta de comentarios de HTML <span class="html-eti">&lt;!-- .... --&gt;</span>.</p>
 
       <p>Estos comentarios, como todo el código HTML situado en los fragmentos HTML, se incluyen sin modificaciones en el resultado, por lo que pueden verse en el navegador.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre><code class="language-html">&lt;p&gt;</code></pre>
-              <pre>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-html">&lt;p&gt;</code></pre>
+          <pre>
 <code class="language-php">&lt;?php
 print "Hola";
 ?&gt;</code>
 </pre>
-              <pre>
+          <pre>
 <code class="language-html">&lt;/p&gt;
 &lt;!-- El texto anterior ha sido generado por PHP --&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 &lt;!-- El texto anterior ha sido generado por PHP --&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <hr class="corta" />
 
@@ -520,26 +492,23 @@ print "Hola";
 
       <p>Estos comentarios, como todo el código CSS situado en las hojas de estilo, se incluyen sin modificaciones en el resultado, por lo que pueden verse en el navegador.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
+
+      <div class="filaflex">
+        <div class="codigo">
               <pre>
 <code class="language-css">html {
   background-color: #FF0000; /* #FF000000 es rojo */
 }</code>
 </pre>
-            </td>
-            <td class="resul-php resul-html">
+        </div>
+        <div class="resultado">
               <pre>
 <code class="language-css">html {
   background-color: #FF0000; /* #FF000000 es rojo */
 }</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <section id="html5">
@@ -549,10 +518,8 @@ print "Hola";
 
       <p>El ejemplo siguiente muestra el código html de una página web HTML 5 válida con las líneas numeradas.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td style="width: 2em; border: none" class="codhtml">
+      <div class="filaflex">
+        <div class="codigo" style="width: 0.5em; border: none; flex-grow: 0;">
               <pre>
 <code class="language-html">1
 2
@@ -568,8 +535,8 @@ print "Hola";
 12
 13</code>
 </pre>
-            </td>
-            <td class="codhtml">
+        </div>
+        <div class="codigo">
               <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
@@ -585,11 +552,9 @@ print "Hola";
   &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
+
       <ul>
         <li>La etiqueta <span class="html-eti">&lt;!DOCTYPE ... &gt;</span> (línea 1) es obligatoria. Esta etiqueta indica el tipo de documento (DOCTYPE) de la página. El tipo html sin información adicional corresponde a HTML 5. En versiones anteriores a HTML 5 esta etiqueta contenía la dirección web de la DTD (definición de tipo de documento) que especifica la versión del lenguaje de marcas utilizado en el documento (cuál es la estructura, qué etiquetas existen y qué atributos pueden tener).</li>
         <li>La etiqueta <span class="html-eti">&lt;html&gt; ... &lt;/html&gt;</span> (líneas 2 a 13) engloba todo el documento html. El atributo <span class="html-atri">lang</span> no es obligatorio e indica el idioma en que está escrito el documento.<br />
@@ -626,7 +591,7 @@ print "Hola";
 
       <p><strong>Nota</strong>: Dentro de la cadena todas las comillas están precedidas del carácter contrabarra (\), como se explica en la <a href="php_cadenas.html#cadenas">lección sobre cadenas</a>.</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 print "&lt;!DOCTYPE html&gt;
@@ -652,7 +617,7 @@ print "&lt;!DOCTYPE html&gt;
       <p><strong>Nota</strong>: El carácter especial \n incluido en los print es para generar un salto de línea en el código HTML, como se explica en la <a href="php_cadenas.html#saltos-linea">lección sobre cadenas</a>.</p>
     </section>
 
-    <div class="codphp">
+    <div class="codigo">
       <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
@@ -688,7 +653,7 @@ print "    &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;\n";
 
       <p>Los siguientes ejemplos muestran el enlace a la hoja de estilo incluido en un fragmento HTML o generado por un fragmento PHP:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
@@ -718,7 +683,7 @@ print "    &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;\n";
 </pre>
       </div>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
