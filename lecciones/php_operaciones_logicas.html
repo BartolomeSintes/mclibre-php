@@ -92,13 +92,10 @@
         </tbody>
       </table>
 
-      <p></p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombre = "Pepe";
 
@@ -111,12 +108,15 @@ if ($nombre != "Juan") {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;</code></pre></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombrePadre = "Pepe";
 $nombreHijo  = "Pepe";
@@ -130,22 +130,22 @@ if ($nombrePadre != $nombreHijo) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;El hijo se llama como el padre.&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;El hijo se llama como el padre.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Un error típico cuando se empieza a programar es confundir el operador comparación (==) con el operador de asignación (=), lo que produce resultados inesperados, como en el ejemplo siguiente:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombre = "Pepe";
 
@@ -159,11 +159,11 @@ if ($nombre != "Juan") {
 
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Tu nombre es Juan.&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Tu nombre es Juan.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
       <p>Al escribir = en vez de ==, PHP no compara el valor de la variable $nombre con la cadena "Juan", sino que cambia el valor de $nombre a "Juan". Como la asignación no da error, PHP le asigna el valor booleano <span class="php-con">true</span>, y escribe que el nombre es Juan.</p>
 
@@ -221,11 +221,9 @@ if ($nombre != "Juan") {
 
       <p>El ejemplo siguiente muestra el resultado esperado:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $var1 = true;
 $var2 = false;<br />$todo = $var1 &amp;&amp; $var2;
@@ -236,21 +234,19 @@ if ($todo) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
       <p>La variable $todo sólo tomaría el valor <span class="php-con">true</span> si tanto $var1 como $var2 fueran <span class="php-con">true</span>, pero como $var2 es <span class="php-con">false</span>, $todo toma el valor <span class="php-con">false</span>.</p>
 
       <p>Sin embargo si se utiliza el operador <span class="php-con">and</span> en vez de <span class="php-con">&amp;&amp;</span>, el resultado no es el esperado:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $var1 = true;
 $var2 = false;
@@ -262,32 +258,30 @@ if ($todo) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
       <p>¿Por qué se produce ese resultado? Porque el operador de asignación <span class="php-con">=</span> tiene precedencia sobre el operador <span class="php-con">and</span>. Eso quiere decir que PHP realiza antes la asignación que la operación lógica, es decir, como si la expresión estuviese escrita así:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp"><pre><code class="language-php">($todo = $var1) and $var2;</code></pre></td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-php">($todo = $var1) and $var2;</code></pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
       <p>En esa expresión, la variable $todo almacena el valor de la variable $var1 (<span class="php-con">true</span>), por lo que $todo toma el valor <span class="php-con">true</span>. La operación lógica <span class="php-con">and</span> no modifica el valor de $todo.</p>
 
       <p>Si se quiere obtener el mismo resultado con <span class="php-con">and</span> que con <span class="php-con">&amp;&amp;</span>, se deben utilizar paréntesis, para forzar que la operación lógica <span class="php-con">and</span> se realice antes de la asignación:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $var1 = true;
 $var2 = false;
@@ -299,11 +293,11 @@ if ($todo) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre>
+        </div>
+      </div>
     </section>
 
     <footer>

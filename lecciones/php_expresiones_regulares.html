@@ -49,11 +49,9 @@
 
       <p>Los patrones deben empezar y acabar con el carácter / (barra).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $cadena1 = "1234567";
 $cadena2 = "abcdefg";
@@ -72,21 +70,19 @@ if (preg_match($patron, $cadena2)) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              La cadena 1234567 son sólo números.<br />
-              La cadena abcdefg no son sólo números.</td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>La cadena 1234567 son sólo números.</p>
+
+          <p>La cadena abcdefg no son sólo números.</p>
+        </div>
+      </div>
 
       <p>La función <span class="php-fun">preg_match()</span> distingue entre mayúsculas y minúsculas. Para que no distinga, debe añadirse el modificador "i" (sin comillas) al final del patrón. Este modificador no afecta las clases [[::]].</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $cadena = "aaAA";
 $patron1 = "/^[a-z]+$/";
@@ -105,23 +101,20 @@ if (preg_match($patron2, $cadena)) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              La cadena aaAA no son sólo letras minúsculas.<br />
-              La cadena aaAA son sólo letras minúsculas o mayúsculas.</td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>La cadena aaAA no son sólo letras minúsculas.</p>
+          <p>La cadena aaAA son sólo letras minúsculas o mayúsculas.</p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>La función de expresiones regulares compatibles con Perl <a href="http://www.php.net/manual/es/function.preg-match-all.php"><span class="php-fun">preg_match_all($patron, $cadena [, $matriz_coincidencias [, $modificadores [, $desplazamiento]]])</span></a> compara una cadena con un patrón y devuelve el número de coincidencias encontradas. Las coincidencias encontradas se pueden guardar en el argumento opcional $matriz_coincidencias y, si se añade el modificador <span class="php-con">PREG_OFFSET_CAPTURE</span>, se guardan también en el argumento opcional $matriz_coincidencias la posición de cada coincidencia encontrada. El argumento opcional $desplazamiento es un número que permite indicar en qué carácter se inicia la búsqueda.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $cadena = "Esto es una cadena de prueba";
 $patron = "/de/";
@@ -138,9 +131,9 @@ if ($encontrado) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [0] =&gt; Array
         (
@@ -160,13 +153,11 @@ if ($encontrado) {
 
 )</pre>
 
-              <p>Se han encontrado 2 coincidencias.<br />
-                Cadena: 'de' - Posición: 14<br />
-                Cadena: 'de' - Posición: 19</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>Se han encontrado 2 coincidencias.<br />
+            Cadena: 'de' - Posición: 14<br />
+            Cadena: 'de' - Posición: 19</p>
+        </div>
+      </div>
 
       <p class="incompleto">Faltan las funciones de búsqueda y sustitución</p>
     </section>

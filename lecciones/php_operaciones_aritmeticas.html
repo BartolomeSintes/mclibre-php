@@ -619,70 +619,63 @@ print "&lt;p&gt;" . rand(-10, 10) . "&lt;/p&gt;\n";
 
       <p>Si se llama a las funciones sin argumentos, estas devuelven un número entero aleatorio entre 0 y un valor máximo que es el que devuelve la función <a href="http://php.net/manual/es/function.getrandmax.php"><span class="php-fun">getrandmax()</span></a> o <a href="http://php.net/manual/es/function.mt-getrandmax.php"><span class="php-fun">mt_getrandmax()</span></a> (este valor depende del sistema operativo).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;" . mt_getrandmax() . "&lt;/p&gt;\n";
 print "&lt;p&gt;" . mt_rand() . "&lt;/p&gt;\n";
 print "&lt;p&gt;" . mt_rand() . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre>
 <code class="language-html">&lt;p&gt;2147483647&lt;/p&gt;
 &lt;p&gt;2023208892&lt;/p&gt;
 &lt;p&gt;800052801&lt;/p&gt;</code>
 </pre>
-            </td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;" . getrandmax() . "&lt;/p&gt;\n";
 print "&lt;p&gt;" . rand() . "&lt;/p&gt;\n";
 print "&lt;p&gt;" . rand() . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre>
 <code class="language-html">&lt;p&gt;32767&lt;/p&gt;
 &lt;p&gt;12279&lt;/p&gt;
 &lt;p&gt;24164&lt;/p&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>La función <span class="php-fun">rand()</span> puede devolver valores mayores que los que devuelve cuando se la llama sin argumentos, pero no se puede superar el mayor número entero que maneja PHP (<a href="php_constantes.html#phpintmax">PHP_INT_MAX</a>).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;" . PHP_INT_MAX . "&lt;/p&gt;";<br />print "&lt;p&gt;" . rand(100000, 200000) . "&lt;/p&gt;\n";
 print "&lt;p&gt;" . mt_rand(100000000000, 200000000000) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre>
 <code class="language-html">&lt;p&gt;2147483647&lt;/p&gt;
 &lt;p&gt;166031&lt;/p&gt;
 <strong>Warning</strong>: mt_rand(): max(-1863462912) is smaller than min(1215752192) in <strong>prueba.php</strong> on line <strong>3</strong></code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <footer>
