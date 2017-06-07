@@ -470,11 +470,9 @@ print "$datos";
 
       <p>Aunque print_r() genera espacios y saltos de línea que pueden verse en el código fuente de la página, print_r() no genera etiquetas html, por lo que el navegador no muestra esos espacios y saltos de línea.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -482,47 +480,44 @@ $datos["apellidos"] = "Ramón y Cajal";
 print_r($datos);
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal ) </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )
+        </div>
+      </div>
 
       <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+print "&lt;pre>";
+print_r($datos);
+print "&lt;/pre>";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
-    [nombre] =&gt; Santiago
-    [apellidos] =&gt; Ramón y Cajal
-)</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    [nombre] => Santiago
+    [apellidos] => Ramón y Cajal
+)
+</pre>
+        </div>
+      </div>
 
       <hr class="corta" />
 
-      <p>Si se añade el segundo argumento <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para guardar la respuesta en una variable que se puede imprimir posteriormente</p>
+      <p>Si se añade un segundo argumento con el valor <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para guardar la respuesta en una variable que se puede imprimir posteriormente</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -531,12 +526,15 @@ $tmp = print_r($datos, true);
 print "&lt;p&gt;La matriz es $tmp&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php" rowspan="2">La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal ) </td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -544,19 +542,20 @@ $datos["apellidos"] = "Ramón y Cajal";
 print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+        </div>
+      </div>
 
       <p>La notación con llaves ({}) no admite la función <span class="php-fun">print_r()</span>:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -564,14 +563,13 @@ $datos["apellidos"] = "Ramón y Cajal";
 print "&lt;p&gt;La matriz es {print_r($datos, true)}&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
+        </div>
+        <div class="resultado">
+          <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
 
-              <p>La matriz es {print_r(Array, true)}</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>La matriz es {print_r(Array, true)}</p>
+        </div>
+      </div>
     </section>
 
     <section id="mas-informacion-general">
@@ -579,11 +577,9 @@ print "&lt;p&gt;La matriz es {print_r($datos, true)}&lt;/p&gt;\n";
 
       <p>Cada elemento de la matriz se comporta como una variable independiente y se pueden almacenar datos de tipos distintos en una misma matriz.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos = array("Santiago", "Ramón y Cajal", 1852);
 // $datos = ["Santiago", "Ramón y Cajal", 1852];
@@ -591,35 +587,40 @@ $datos = array("Santiago", "Ramón y Cajal", 1852);
 print "&lt;p&gt;$datos[0] $datos[1] nació en $datos[2].&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>Santiago Ramón y Cajal nació en 1852.</p></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>Santiago Ramón y Cajal nació en 1852.</p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Los valores de los índices numéricos suelen ser siempre positivos, pero PHP también permite que sean negativos, aunque hay que tener cuidado al imprimirlos:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[-3] = "Hola";
 
 print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><b>Parse error</b>: syntax error, unexpected '-', expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <b>ejemplo.php</b> on line <b>3</b> </td>
-          </tr>
-          <tr>
-            <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <b>Parse error</b>: syntax error, unexpected '-', expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <b>ejemplo.php</b> on line <b>3</b>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[-3] = "Alba";
 
@@ -627,68 +628,73 @@ print "&lt;p&gt;{$nombres[-3]}&lt;p&gt;\n";
 print "&lt;p&gt;" . $nombres[-3] . "&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              Alba
+        </div>
+        <div class="resultado">
+          <p>Alba</p>
 
-              <p>Alba</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>Alba</p>
+        </div>
+      </div>
 
       <p>PHP no permite valores decimales en los índices numéricos. En caso de usarlos, PHP los trunca automáticamente a enteros (por lo que se recomienda utilizarlos con cuidado):</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[1.7] = "Alba";
 
 print "&lt;p&gt;$nombres[1]&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">Alba</td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>Alba</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[1.7] = "Alba";
 
 print "&lt;p&gt;" . $nombres[1.2] ."&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">Alba </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>Alba</p>
+        </div>
+      </div>
 
       <p>Como en el caso de los negativos, hay que tener cuidado al imprimirlos: </p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[1.7] = "Alba";
 
 print "&lt;p&gt;$nombres[1.7]&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><b>Parse error</b>: syntax error, unexpected '.', expecting ']' in <b>ejemplo.php</b> on line <b>3</b></td>
-          </tr>
-          <tr>
-            <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <b>Parse error</b>: syntax error, unexpected '.', expecting ']' in <b>ejemplo.php</b> on line <b>3</b>
+        </div>
+      </div>
+
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[1.7] = "Alba";
 
@@ -696,25 +702,21 @@ print "&lt;p&gt;{$nombres[1.2]}&lt;p&gt;\n";
 print "&lt;p&gt;" . $nombres[1.2] ."&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              Alba
+        </div>
+        <div class="resultado">
+          <p>Alba</p>
 
-              <p>Alba</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>Alba</p>
+        </div>
+      </div>
 
       <hr class="corta">
 
       <p>En el caso de las matrices multidimensionales, la misma información se puede guardar de varias formas distintas.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["pepe"]["edad"] = 25;
 $datos["pepe"]["peso"] = 80;
@@ -724,9 +726,9 @@ $datos["juan"]["peso"] = 75;
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [pepe] =&gt; Array
         (
@@ -741,18 +743,14 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
         )
 
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>En el ejemplo anterior se ha utilizado el nombre de la persona como índice de la matriz, lo que no es una buena idea, ya que no podríamos guardar los datos de dos personas con el mismo nombre. Sería mejor guardar la información de manera similar a como se guardaría en una base de datos. Una matriz de dos dimensiones sería en ese caso el equivalente a una tabla, el primer índice correspondería al número de registro y el segundo índice iría tomando los valores de los campos de la tabla (nombre, edad, peso, etc).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos[0]["nombre"] = "pepe";
 $datos[0]["edad"] = 25;
@@ -764,9 +762,9 @@ $datos[1]["peso"] = 75;
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [0] =&gt; Array
         (
@@ -783,10 +781,8 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
         )
 
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <section id="borrar">
@@ -794,11 +790,9 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 
       <p>La función <a href="http://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a> permite borrar una matriz o elementos de una matriz.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $matriz = array(5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco");
 // $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
@@ -810,9 +804,9 @@ unset($matriz[5]);
 print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [5] =&gt; 25
     [-1] =&gt; negativo
@@ -824,11 +818,12 @@ Array
     [-1] =&gt; negativo
     [número 1] =&gt; cinco
 )       </pre>
-            </td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $matriz = array(5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco");
 // $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
@@ -840,9 +835,9 @@ unset($matriz);
 print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [5] =&gt; 25
     [-1] =&gt; negativo
@@ -851,18 +846,14 @@ print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
 
 <strong>Notice</strong>:  Undefined variable: matriz in prueba.php on line 8
         </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>Si se intenta borrar un elemento no definido, PHP no genera ningún aviso.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Alba", "Bernardo");
 // $nombres = ["Alba", "Bernardo"];
@@ -874,21 +865,20 @@ unset($matriz[3]);
 print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [0] =&gt; Alba
     [1] =&gt; Bernardo
 )</pre>
-              <pre>Array
+          <pre>Array
 (
     [0] =&gt; Alba
     [1] =&gt; Bernardo
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <section id="copiar">
@@ -896,11 +886,9 @@ print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
 
       <p>Se puede copiar una matriz creando una nueva variable. Las dos matrices son independientes, por lo que modificar posteriormente cualquiera de las dos no afecta a la otra.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $cuadrados = array(5 =&gt; 25, 9 =&gt; 81);
 // $cuadrados = [5 =&gt; 25, 9 =&gt; 81];
@@ -917,26 +905,24 @@ print "&lt;p&gt;Copia de la matriz inicial (sin modificar):&lt;/p&gt;\n";
 print "&lt;pre&gt;\n"; print_r($cuadradosCopia); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Matriz inicial (modificada):</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>Matriz inicial (modificada):</p>
+          <pre>Array
 (
     [5] =&gt; 25
     [9] =&gt; 81
     [10] =&gt; 100
 )</pre>
 
-              <p>Copia de la matriz inicial (sin modificar):</p>
-              <pre>Array
+          <p>Copia de la matriz inicial (sin modificar):</p>
+          <pre>Array
 (
     [5] =&gt; 25
     [9] =&gt; 81
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <section id="contar">
@@ -944,11 +930,9 @@ print "&lt;pre&gt;\n"; print_r($cuadradosCopia); print "&lt;/pre&gt;\n";
 
       <p>La función <a href="http://www.php.net/manual/en/function.count.php"><span class="php-fun">count($matriz)</span></a> permite contar los elementos de una matriz.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[1] = "Ana";
 $nombres[10] = "Bernardo";
@@ -960,27 +944,23 @@ print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>La matriz tiene 3 elementos.</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>La matriz tiene 3 elementos.</p>
+          <pre>Array
 (
     [1] =&gt; Ana
     [10] =&gt; Bernardo
     [25] =&gt; Carmen
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>En una matriz multidimensional, la función <span class="php-fun"><span class="php-fun">count($matriz)</span></span> considera la matriz como un vector de vectores y devuelve simplemente el número de elementos del primer índice:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["pepe"]["edad"] = 25;
 $datos["pepe"]["peso"] = 80;
@@ -994,10 +974,10 @@ print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>La matriz tiene 3 elementos.</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>La matriz tiene 3 elementos.</p>
+          <pre>Array
 (
     [pepe] =&gt; Array
         (
@@ -1017,18 +997,14 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
         )
 
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>Para contar todos los elementos de una matriz multidimensional, habría que utilizar la función <span class="php-fun"><span class="php-fun">count($matriz, COUNT_RECURSIVE)</span></span>.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["pepe"]["edad"] = 25;
 $datos["pepe"]["peso"] = 80;
@@ -1042,10 +1018,10 @@ print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>La matriz tiene 8 elementos.</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>La matriz tiene 8 elementos.</p>
+          <pre>Array
 (
     [pepe] =&gt; Array
         (
@@ -1065,20 +1041,16 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
         )
 
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>En el ejemplo anterior, la respuesta 8 se debe a que la función <span class="php-fun">count()</span>recursiva considera la matriz como un vector de vectores y cuenta los elementos que hay en cada nivel. Desde ese punto de vista, la matriz contiene tres elementos que a su vez contienen dos, dos y un elementos, lo que da un total de ocho elementos.</p>
 
       <p>Si quisieramos contar únicamente los elementos de una matriz bidimensional habría que restar los dos resultados anteriores (5 = 8 - 3):</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["pepe"]["edad"] = 25;
 $datos["pepe"]["peso"] = 80;
@@ -1092,10 +1064,10 @@ print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>La matriz tiene 5 elementos.</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>La matriz tiene 5 elementos.</p>
+          <pre>Array
 (
     [pepe] =&gt; Array
         (
@@ -1115,10 +1087,8 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
         )
 
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <section id="maxmin">
@@ -1126,11 +1096,9 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 
       <p>La función <a href="http://www.php.net/manual/en/function.max.php"><span class="php-fun">max($matriz, ...)</span></a> devuelve el valor máximo de una matriz (o varias). La función <a href="http://www.php.net/manual/en/function.min.php"><span class="php-fun">min($matriz, ...)</span></a> devuelve el valor mínimo de una matriz (o varias).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $numeros = array(10, 40, 15, -1);
 // $numeros = [10, 40, 15, -1];
@@ -1143,9 +1111,9 @@ print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
 print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [0] =&gt; 10
     [1] =&gt; 40
@@ -1153,21 +1121,17 @@ print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
     [3] =&gt; -1
 )</pre>
 
-              <p>El máximo de la matriz es 40.</p>
+          <p>El máximo de la matriz es 40.</p>
 
-              <p>El mínimo de la matriz es -1.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>El mínimo de la matriz es -1.</p>
+        </div>
+      </div>
 
       <p>Los valores no numéricos se tratan como 0, pero si 0 es el mínimo o el máximo, la función devuelve la cadena.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $valores = array(10, 40, 15, "abc");
 // $valores = [10, 40, 15, "abc"];
@@ -1180,9 +1144,9 @@ print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
 print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [0] =&gt; 10
     [1] =&gt; 40
@@ -1190,13 +1154,11 @@ print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
     [3] =&gt; abc
 )</pre>
 
-              <p>El máximo de la matriz es 40.</p>
+          <p>El máximo de la matriz es 40.</p>
 
-              <p>El mínimo de la matriz es abc.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>El mínimo de la matriz es abc.</p>
+        </div>
+      </div>
     </section>
 
     <section id="ordenar">
@@ -1208,11 +1170,9 @@ print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
           <ul>
             <li><a href="http://php.net/manual/en/function.sort.php"><span class="php-fun">sort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los valores y genera nuevos índices numéricos consecutivos a partir de cero:
 
-              <table class="ejemplo">
-                <tbody>
-                  <tr>
-                    <td class="codphp">
-                      <pre>
+              <div class="filaflex">
+                <div class="codigo">
+                  <pre>
 <code class="language-php">&lt;?php
 $valores = array(5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve");
 // $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
@@ -1226,34 +1186,30 @@ print "&lt;p&gt;Matriz ordenada con sort():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-                    </td>
-                    <td class="resul-php">
-                      <p>Matriz inicial:</p>
-                      <pre>Array
+                </div>
+                <div class="resultado">
+                  <p>Matriz inicial:</p>
+                  <pre>Array
 (
     [5] =&gt; cinco
     [1] =&gt; uno
     [9] =&gt; nueve
 )</pre>
-                      <p>Matriz ordenada con sort():</p>
-                      <pre>Array
+                  <p>Matriz ordenada con sort():</p>
+                  <pre>Array
 (
     [0] =&gt; cinco
     [1] =&gt; nueve
     [2] =&gt; uno
 )</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                </div>
+              </div>
             </li>
             <li><a href="http://php.net/manual/en/function.rsort.php"><span class="php-fun">rsort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico inverso de los valores y genera nuevos índices numéricos consecutivos a partir de cero:
 
-              <table class="ejemplo">
-                <tbody>
-                  <tr>
-                    <td class="codphp">
-                      <pre>
+              <div class="filaflex">
+                <div class="codigo">
+                  <pre>
 <code class="language-php">&lt;?php
 $valores = array(5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve");
 // $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
@@ -1267,26 +1223,24 @@ print "&lt;p&gt;Matriz ordenada con rsort():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-                    </td>
-                    <td class="resul-php">
-                      <p>Matriz inicial:</p>
-                      <pre>Array
+                </div>
+                <div class="resultado">
+                  <p>Matriz inicial:</p>
+                  <pre>Array
 (
     [5] =&gt; cinco
     [1] =&gt; uno
     [9] =&gt; nueve
 )</pre>
-                      <p>Matriz ordenada con rsort():</p>
-                      <pre>Array
+                  <p>Matriz ordenada con rsort():</p>
+                  <pre>Array
 (
     [0] =&gt; uno
     [1] =&gt; nueve
     [2] =&gt; cinco
 )</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                </div>
+              </div>
             </li>
           </ul>
         </li>
@@ -1294,11 +1248,9 @@ print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
           <ul>
             <li><a href="http://php.net/manual/en/function.asort.php"><span class="php-fun">asort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los valores
 
-              <table class="ejemplo">
-                <tbody>
-                  <tr>
-                    <td class="codphp">
-                      <pre>
+              <div class="filaflex">
+                <div class="codigo">
+                  <pre>
 <code class="language-php">&lt;?php
 $valores = array(5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve");
 // $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
@@ -1312,34 +1264,30 @@ print "&lt;p&gt;Matriz ordenada con asort():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-                    </td>
-                    <td class="resul-php">
-                      <p>Matriz inicial:</p>
-                      <pre>Array
+                </div>
+                <div class="resultado">
+                  <p>Matriz inicial:</p>
+                  <pre>Array
 (
     [5] =&gt; cinco
     [1] =&gt; uno
     [9] =&gt; nueve
 )</pre>
-                      <p>Matriz ordenada con asort():</p>
-                      <pre>Array
+                  <p>Matriz ordenada con asort():</p>
+                  <pre>Array
 (
     [5] =&gt; cinco
     [9] =&gt; nueve
     [1] =&gt; uno
 )</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                </div>
+              </div>
             </li>
             <li><a href="http://php.net/manual/en/function.arsort.php"><span class="php-fun">arsort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico inverso de los valores
 
-              <table class="ejemplo">
-                <tbody>
-                  <tr>
-                    <td class="codphp">
-                      <pre>
+              <div class="filaflex">
+                <div class="codigo">
+                  <pre>
 <code class="language-php">&lt;?php
 $valores = array(5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve");
 // $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
@@ -1353,34 +1301,30 @@ print "&lt;p&gt;Matriz ordenada con arsort():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-                    </td>
-                    <td class="resul-php">
-                      <p>Matriz inicial:</p>
-                      <pre>Array
+                </div>
+                <div class="resultado">
+                  <p>Matriz inicial:</p>
+                  <pre>Array
 (
     [5] =&gt; cinco
     [1] =&gt; uno
     [9] =&gt; nueve
 )</pre>
-                      <p>Matriz ordenada con arsort():</p>
-                      <pre>Array
+                  <p>Matriz ordenada con arsort():</p>
+                  <pre>Array
 (
     [1] =&gt; uno
     [9] =&gt; nueve
     [5] =&gt; cinco
 )</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                </div>
+              </div>
             </li>
             <li><a href="http://php.net/manual/en/function.ksort.php"><span class="php-fun">ksort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los índices
 
-              <table class="ejemplo">
-                <tbody>
-                  <tr>
-                    <td class="codphp">
-                      <pre>
+              <div class="filaflex">
+                <div class="codigo">
+                  <pre>
 <code class="language-php">&lt;?php
 $valores = array(5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve");
 // $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
@@ -1394,34 +1338,30 @@ print "&lt;p&gt;Matriz ordenada con ksort():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-                    </td>
-                    <td class="resul-php">
-                      <p>Matriz inicial:</p>
-                      <pre>Array
+                </div>
+                <div class="resultado">
+                  <p>Matriz inicial:</p>
+                  <pre>Array
 (
     [5] =&gt; cinco
     [1] =&gt; uno
     [9] =&gt; nueve
 )</pre>
-                      <p>Matriz ordenada con ksort():</p>
-                      <pre>Array
+                  <p>Matriz ordenada con ksort():</p>
+                  <pre>Array
 (
     [1] =&gt; uno
     [5] =&gt; cinco
     [9] =&gt; nueve
 )</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                </div>
+              </div>
             </li>
             <li><a href="http://php.net/manual/en/function.krsort.php"><span class="php-fun">krsort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los índices
 
-              <table class="ejemplo">
-                <tbody>
-                  <tr>
-                    <td class="codphp">
-                      <pre>
+              <div class="filaflex">
+                <div class="codigo">
+                  <pre>
 <code class="language-php">&lt;?php
 $valores = array(5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve");
 // $valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
@@ -1435,25 +1375,24 @@ print "&lt;p&gt;Matriz ordenada con krsort():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-                    </td>
-                    <td class="resul-php"><p>Matriz inicial:</p>
-                      <pre>Array
+                </div>
+                <div class="resultado">
+                  <p>Matriz inicial:</p>
+                  <pre>Array
 (
     [5] =&gt; cinco
     [1] =&gt; uno
     [9] =&gt; nueve
 )</pre>
-                      <p>Matriz ordenada con krsort():</p>
-                      <pre>Array
+                  <p>Matriz ordenada con krsort():</p>
+                  <pre>Array
 (
     [9] =&gt; nueve
     [5] =&gt; cinco
     [1] =&gt; uno
 )</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                </div>
+              </div>
             </li>
           </ul>
         </li>
@@ -1523,11 +1462,9 @@ print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
 
       <p>La función booleana <a href="http://www.php.net/manual/en/function.in-array.php"><span class="php-fun">in_array($valor, $matriz[, $tipo])</span></a> devuelve <span class="php-con">true</span> si el valor se encuentra en la matriz. Si el argumento booleano <span class="php-var">$tipo</span> es <span class="php-con">true</span>, <span class="php-fun"><span class="php-fun">in_array()</span></span> comprueba además que los tipos coincidan.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $valores = array(10, 40, 15, -1);
 // $valores = [10, 40, 15, -1];
@@ -1553,9 +1490,9 @@ if (in_array("15", $valores, true)) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [0] =&gt; 10
     [1] =&gt; 40
@@ -1563,25 +1500,21 @@ if (in_array("15", $valores, true)) {
     [3] =&gt; -1
 )</pre>
 
-              <p>15 está en la matriz $valores.</p>
+          <p>15 está en la matriz $valores.</p>
 
-              <p>25 no está en la matriz $valores.</p>
+          <p>25 no está en la matriz $valores.</p>
 
-              <p>"15" no está en la matriz $valores.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>"15" no está en la matriz $valores.</p>
+        </div>
+      </div>
 
       <p>La función <a href="http://php.net/manual/en/function.array-search.php"><span class="php-fun">array_search($valor, $matriz[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve el índice correspondiente, pero si hay varios valores coincidente sólo devuelve el primero que encuentra.</p>
 
       <p>La función <a href="http://php.net/manual/en/function.array-keys.php"><span class="php-fun">array_keys($matriz[, $valor[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve una matriz cuyos valores son los índices de todos los elementos coincidentes.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $valores = array(10, 40, 15, 30, 15, 40, 15);
 // $valores = [10, 40, 15, 30, 15, 40, 15];
@@ -1595,9 +1528,9 @@ $encontrados = array_keys($valores, 15);
 print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [0] =&gt; 10
     [1] =&gt; 40
@@ -1608,17 +1541,15 @@ print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
     [6] =&gt; 15
 )</pre>
 
-              <p>2</p>
-              <pre>Array
+          <p>2</p>
+          <pre>Array
 (
     [0] =&gt; 2
     [1] =&gt; 4
     [2] =&gt; 6
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <section id="reindexar">
@@ -1626,11 +1557,9 @@ print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
 
       <p>La función <a href="http://php.net/manual/en/function.shuffle.php"><span class="php-fun">array_values($matriz)</span></a> devuelve los valores de una matriz en el mismo orden que en la matriz original, pero renumerando los índices desde cero</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres = array("a" =&gt; "Ana", "b" =&gt; "Bernardo", "c" =&gt; "Carmen", "d" =&gt; "David");
 // $nombres = ["a" =&gt; "Ana", "b" =&gt; "Bernardo", "c" =&gt; "Carmen", "d" =&gt; "David"];
@@ -1644,10 +1573,10 @@ print "&lt;p&gt;Matriz reindexada con array_values():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($reindexada); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Matriz inicial:</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>Matriz inicial:</p>
+          <pre>Array
 (
     [a] =&gt; Ana
     [b] =&gt; Bernardo
@@ -1655,18 +1584,16 @@ print "&lt;pre&gt;\n"; print_r($reindexada); print "&lt;/pre&gt;\n\n";
     [d] =&gt; David
 )</pre>
 
-              <p>Matriz reindexada con array_values():</p>
-              <pre>Array
+          <p>Matriz reindexada con array_values():</p>
+          <pre>Array
 (
     [0] =&gt; Ana
     [1] =&gt; Bernardo
     [2] =&gt; Carmen
     [3] =&gt; David
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <section id="barajar">
@@ -1674,11 +1601,9 @@ print "&lt;pre&gt;\n"; print_r($reindexada); print "&lt;/pre&gt;\n\n";
 
       <p>La función <a href="http://php.net/manual/en/function.shuffle.php"><span class="php-fun">shuffle($matriz)</span></a> baraja los valores de una matriz. Los índices de la matriz original se pierden, ya que se renumeran desde cero.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $numeros = array(0, 1, 2, 3, 4, 5);
 // $numeros = [0, 1, 2, 3, 4, 5];
@@ -1692,10 +1617,10 @@ print "&lt;p&gt;Matriz barajada con shuffle():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Matriz inicial:</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>Matriz inicial:</p>
+          <pre>Array
 (
     [0] =&gt; 0
     [1] =&gt; 1
@@ -1705,8 +1630,8 @@ print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n\n";
     [5] =&gt; 5
 )</pre>
 
-              <p>Matriz barajada con shuffle():</p>
-              <pre>Array
+          <p>Matriz barajada con shuffle():</p>
+          <pre>Array
 (
     [0] =&gt; 3
     [1] =&gt; 1
@@ -1715,11 +1640,12 @@ print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n\n";
     [4] =&gt; 4
     [5] =&gt; 2
 )</pre>
-            </td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $numeros = array("a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3, "d" =&gt; 4);
 // $numeros = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3, "d" =&gt; 4];
@@ -1733,10 +1659,10 @@ print "&lt;p&gt;Matriz barajada con shuffle():&lt;/p&gt;\n\n";
 print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Matriz inicial:</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>Matriz inicial:</p>
+          <pre>Array
 (
     [a] =&gt; 1
     [b] =&gt; 2
@@ -1744,18 +1670,16 @@ print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n\n";
     [d] =&gt; 4
 )</pre>
 
-              <p>Matriz barajada con shuffle():</p>
-              <pre>Array
+          <p>Matriz barajada con shuffle():</p>
+          <pre>Array
 (
     [0] =&gt; 2
     [1] =&gt; 1
     [2] =&gt; 4
     [3] =&gt; 3
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <footer>
