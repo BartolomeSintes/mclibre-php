@@ -117,11 +117,8 @@ $nombres[] = "David";
 
       <p>Se puede crear una matriz con la función <a href="http://www.php.net/manual/en/function.array.php"><span class="php-fun">array(...)</span></a> o con la notación compacta, que en vez de la función <span class="php-fun">array()</span>, emplea corchetes ([]).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 // Notación clásica
 $nombres = array("Ana", "Bernardo", "Carmen");
@@ -130,12 +127,7 @@ $nombres = array("Ana", "Bernardo", "Carmen");
 $nombres = ["Ana", "Bernardo", "Carmen"];
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
 
       <hr class="corta" />
 
@@ -143,11 +135,9 @@ $nombres = ["Ana", "Bernardo", "Carmen"];
 
       <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Ana", "Bernardo", "Carmen");
 // $nombres = ["Ana", "Bernardo", "Carmen"];
@@ -156,24 +146,20 @@ print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 print "&lt;p&gt;$nombres[0]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Bernardo</p>
-              <p>Ana</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>Bernardo</p>
+          <p>Ana</p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Una vez creada la matriz, los elementos individuales se pueden utilizar como si fueran variables independientes. Pero para referirse a un elemento individual, hay que indicar siempre el índice correspondiente.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Ana", "Bernardo", "Carmen");
 // $nombres = ["Ana", "Bernardo", "Carmen"];
@@ -185,25 +171,23 @@ $nombres[1] = "David";
 print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Bernardo</p>
-              <p>David</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>Bernardo</p>
+          <p>David</p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Si se solicita un valor no definido de una matriz, se produce un aviso (undefined offset). Los avisos no interrumpen la ejecución del programa, pero se deben corregir porque el programa seguramente no tendrá el comportamiento esperado:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Ana", "Bernardo", "Carmen");
 //$nombres = ["Ana", "Bernardo", "Carmen"];
@@ -211,23 +195,18 @@ $nombres = array("Ana", "Bernardo", "Carmen");
 print "&lt;p&gt;$nombres[3]&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <b>Notice</b>: Undefined offset: 3 in <b>ejemplo.php</b> on line <b>4</b>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p><b>Notice</b>: Undefined offset: 3 in <b>ejemplo.php</b> on line <b>4</b></p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Se puede crear una matriz vacía (para añadirle posteriormente elementos):</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 // Notación clásica
 $nombres = array();
@@ -236,35 +215,26 @@ $nombres = array();
 $nombres = [];
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
 
       <hr class="corta" />
 
       <p>También se pueden crear matrices asignando directamente un elemento de la matriz.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $apellidos[1] = "García";
 
 print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>García</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>García</p>
+        </div>
+      </div>
     </section>
 
     <section id="asociativas">
@@ -274,11 +244,9 @@ print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 
       <p>Al crear matrices asociativas, debemos indicar el valor de los índices, utilizando la notación <strong>$indice =&gt; $valor</strong>:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $cuadrados = array(3 =&gt; 9, 5 =&gt; 25, 10 =&gt; 100);
 // $cuadrados = [3 =&gt; 9, 5 =&gt; 25, 10 =&gt; 100];
@@ -286,14 +254,15 @@ $cuadrados = array(3 =&gt; 9, 5 =&gt; 25, 10 =&gt; 100);
 print "&lt;p&gt;El cuadrado de 3 es $cuadrados[3]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>El cuadrado de 3 es 9</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>El cuadrado de 3 es 9</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $edades = array("Andrés" =&gt; 20, "Bárbara" =&gt; 19, "Camilo" =&gt; 17);
 // $edades = ["Andrés" =&gt; 20, "Bárbara" =&gt; 19, "Camilo" =&gt; 17];
@@ -301,13 +270,11 @@ $edades = array("Andrés" =&gt; 20, "Bárbara" =&gt; 19, "Camilo" =&gt; 17);
 print "&lt;p&gt;Bárbara tiene $edades[Bárbara] años&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Bárbara tiene 19 años</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>Bárbara tiene 19 años</p>
+        </div>
+      </div>
 
       <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices. Además los índices se escriben sin comillas, aunque sean cadenas.</p>
     </section>
@@ -319,12 +286,12 @@ print "&lt;p&gt;Bárbara tiene $edades[Bárbara] años&lt;/p&gt;\n";
 
       <p>PHP no sustituye las referencias a valores de matrices de más de una dimensión dentro de las cadenas, por lo que se necesita o bien utilizar llaves, o bien concatenar cadenas y referencias a matrices. Además, los índices que sean cadenas deben escribirse con comillas.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos = array(
     array("nombre" =&gt; "pepe", "edad" =&gt; 25, "peso" =&gt; 80),
@@ -338,23 +305,22 @@ $datos = array(
 print "&lt;p&gt;$datos[0][nombre] tiene $datos[0][edad] años.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br />
-              <br />
-              <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br />
+        </div>
+        <div class="resultado">
+          <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br />
+          <br />
+          <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br />
 
-              <p>Array[nombre] tiene Array[edad] años.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>Array[nombre] tiene Array[edad] años.</p>
+        </div>
+      </div>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos = array(
     array("nombre" =&gt; "pepe", "edad" =&gt; 25, "peso" =&gt; 80),
@@ -370,14 +336,12 @@ print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " año
 print "&lt;p&gt;{$datos[1]["nombre"]} pesa {$datos[1]["peso"]} kilos&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>pepe tiene 25 años</p>
-              <p>juan pesa 75 kilos</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>pepe tiene 25 años</p>
+          <p>juan pesa 75 kilos</p>
+        </div>
+      </div>
     </section>
 
     <section id="anadir-elementos">
@@ -386,11 +350,10 @@ print "&lt;p&gt;{$datos[1]["nombre"]} pesa {$datos[1]["peso"]} kilos&lt;/p&gt;\n
       <p>Se pueden añadir elementos a una matriz, indicando o no el índice del nuevo elemento:</p>
       <ul>
         <li>Si no se indica el índice, el nuevo elemento toma como índice el siguiente al mayor de los existentes. En la notación clásica, se debe utilizar la función <span class="php-fun">array_push($matriz, $elemento)</span>, en la notación compacta se escribe una asignación, omitiendo el índice.
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td class="codphp">
-                  <pre>
+
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Alba", "Bernardo");
 // $nombres = ["Alba", "Bernardo"];
@@ -402,15 +365,16 @@ print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 print "&lt;p&gt;$nombres[2]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <p>Bernardo</p>
-                  <p>Carlos</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="codphp">
-                  <pre>
+            </div>
+            <div class="resultado">
+              <p>Bernardo</p>
+              <p>Carlos</p>
+            </div>
+          </div>
+
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Alba", "Bernardo");
 // $nombres = ["Alba", "Bernardo"];
@@ -422,15 +386,16 @@ print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 print "&lt;p&gt;$nombres[2]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <p>Bernardo</p>
-                  <p>Carlos</p>
-                </td>
-              </tr>
-              <tr>
-                <td class="codphp">
-                  <pre>
+            </div>
+            <div class="resultado">
+              <p>Bernardo</p>
+              <p>Carlos</p>
+            </div>
+          </div>
+
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $nombres = array(5 => "Alba", 6 => "Bernardo");
 // $nombres = [5 => "Alba", 6 => "Bernardo"];
@@ -442,22 +407,18 @@ print "&lt;p&gt;$nombres[6]&lt;/p&gt;\n";
 print "&lt;p&gt;$nombres[7]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <p>Bernardo</p>
-                  <p>Carlos</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <p>Bernardo</p>
+              <p>Carlos</p>
+            </div>
+          </div>
         </li>
         <li>Si se quiere indicar el índice, tanto en la notación clásica como en la compacta basta con asignar el elemento de la matriz.
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Alba", "Bernardo");
 // $nombres = ["Alba", "Bernardo"];
@@ -468,14 +429,12 @@ print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php">
-                  <p>Bernardo</p>
-                  <p>Carlos</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <p>Bernardo</p>
+              <p>Carlos</p>
+            </div>
+          </div>
         </li>
       </ul>
     </section>
@@ -485,12 +444,12 @@ print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
 
       <p>La instrucción <span class="php-con">print</span> no permite imprimir matrices.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -498,12 +457,12 @@ $datos["apellidos"] = "Ramón y Cajal";
 print "$datos";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
-              Array </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
+          Array
+        </div>
+      </div>
 
       <hr class="corta" />
 

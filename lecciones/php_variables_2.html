@@ -68,11 +68,9 @@
 
         <p><strong>Nota</strong>: El ejemplo siguiente utiliza la estructura de selección <span class="php-res">if</span> que se explica en detalle en la lección de <a href="php_estructuras_control.html#if">estructuras de control</a>. Para entender este ejemplo, es suficiente saber que if significa si (si como condición, no sí como afirmación) y va seguida de una comparación de igualdad <span class="php-res">==</span> (las comparaciones se explican en la lección de <a href="php_operaciones_logicas.html#comparaciones">operaciones lógicas</a>). En caso de que la comparación sea cierta, es decir si los dos términos a ambos lados de la comparación son iguales, se ejecuta la instrucción entre corchetes <span class="php-res">{ }</span>.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = true;
 
@@ -85,20 +83,20 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
         <p>Estos valores se pueden escribir en mayúsculas o minúsculas o combinando ambas, aunque se recomienda utilizar minúsculas:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" /></td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = <span class="codigo-resaltado">fAlSe</span>;
 
@@ -111,21 +109,19 @@ if ($contestar == <span class="codigo-resaltado">FaLsE</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p><strong>Nota</strong>: No es necesario comparar una variable lógica con <span class="php-con">true</span> o <span class="php-con">false</span>, podemos emplearla directamente en la condición del <span class="php-res">if</span>.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = true;
 
@@ -136,12 +132,15 @@ if ($contestar) {  // equivale a $contestar == true
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $errorDetectado = false;
 
@@ -152,11 +151,11 @@ if (!$errorDetectado) {  // equivale a $errorDetectado == false
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;No se han detectado errores.&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;No se han detectado errores.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
       </section>
 
       <section id="integer">
@@ -164,11 +163,9 @@ if (!$errorDetectado) {  // equivale a $errorDetectado == false
 
         <p>Las variables de tipo entero pueden guardar números enteros (positivos o negativos).</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $lado = 14;
 $area = $lado * $lado;
@@ -176,16 +173,14 @@ $area = $lado * $lado;
 print "&lt;p&gt;Un cuadrado de lado $lado cm \ntiene un área de $area cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Un cuadrado de lado 14 cm
 tiene un área de 196 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <p>Como las variables enteras se guardan en la memoria del ordenador utilizando un número de bytes fijo (que depende del ordenador, pero se puede averiguar mediante la constante predefinida <a href="php_constantes.html#phpintsize">PHP_INT_SIZE</a>), no se pueden guardar números arbitrariamente grandes o pequeños. El valor más grande que se puede almacenar se puede averiguar mendiante la constante predefinida <a href="php_constantes.html#phpintmax">PHP_INT_MAX</a>. Los enteros se guardan en notación complemento a dos.</p>
 
@@ -240,11 +235,9 @@ tiene un área de 196 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 
         <p>Si se intenta guardar un número demasiado grande positivo, el resultado será seguramente incorrecto. En el ejemplo siguiente se fuerza a PHP a guardar como entero el valor siguiente al máximo valor posible. El valor se guarda, pero cuando se utiliza, PHP lo interpreta como negativo.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $maximo = PHP_INT_MAX;
 print "&lt;p&gt;El mayor entero que se puede guardar en una variable entera es $maximo&lt;/p&gt;\n";
@@ -253,16 +246,14 @@ $demasiado = (int)($maximo+1);
 print "&lt;p&gt;Si se intenta guardar 1 más, el resultado es $demasiado&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;El mayor entero que se puede guardar en una variable entera es 2147483647&lt;/p&gt;
 &lt;p&gt;Si se intenta guardar 1 más, el resultado es -2147483648&lt;/p&gt; </code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </section>
 
       <section id="float">
@@ -270,11 +261,9 @@ print "&lt;p&gt;Si se intenta guardar 1 más, el resultado es $demasiado&lt;/p&g
 
         <p>Las variables de tipo decimal (float) pueden guardar números decimales (positivos o negativos). Como en las calculadoras, el separador de la parte entera y la parte decimal es el punto (.), no la coma (,)..</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $lado = 14.5;
 $area = $lado * $lado;
@@ -282,16 +271,14 @@ $area = $lado * $lado;
 print "&lt;p&gt;Un cuadrado de lado $lado cm \ntiene un área de $area cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Un cuadrado de lado 14.5 cm
 tiene un área de 210.25 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <hr class="corta" />
 
@@ -301,11 +288,9 @@ tiene un área de 210.25 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 
         <p>Si se intenta guardar un número demasiado grande positivo (tanto si ese valor se obtiene en un cálculo o si se escribe directamente) PHP no puede manejarlo y lo que hace es sustituirlo por la constante predefinida <a href="php_constantes.html#inf">INF</a>.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $maximo = pow(10, 308);  // 10^308
 print "&lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: $maximo&lt;/p&gt;\n";
@@ -314,32 +299,28 @@ $demasiado = 10 * $maximo;
 print "&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es $demasiado&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;
 &lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: 1.0E+308&lt;/p&gt; </code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $prueba = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 print "&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es $prueba\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;</td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;</p>
+          </div>
+        </div>
       </section>
 
       <section id="string">
@@ -353,11 +334,9 @@ print "&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado
 
         <p>Se puede acceder a caracteres individuales indicando la posición del carácter, como si se tratara de una matriz de una dimensión en la que el primer carácter ocupa la posición 0.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola, Don Pepito";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
@@ -369,25 +348,21 @@ $saludo[14] = "n";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Hola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Mola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Mola, Don Pepino&lt;/p&gt; </code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <p>Si se indica una posición mayor que la longitud de la cadena, la cadena se alarga con espacios hasta llegar a ese valor:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola, Don Pepito";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
@@ -399,25 +374,21 @@ $saludo[25] = "!";
 print "&lt;pre&gt;$saludo&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Hola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Hola, Don Pepiton&lt;/p&gt;
 &lt;pre&gt;Hola, Don Pepiton        !&lt;/pre&gt;</code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <p>Si en una posición se guarda una cadena vacía, la cadena se acorta eliminando el carácter de esa posición</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola, Don Pepito";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
@@ -426,16 +397,14 @@ $saludo[4] = "";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Hola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Hola Don Pepito&lt;/p&gt; </code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </section>
 
       <section id="array">
@@ -454,11 +423,9 @@ print "&lt;p&gt;$saludo&lt;/p&gt;\n";
 
         <p>Si una variable entera o decimal cuyo valor sea igual a cero se considera como variable lógica, se considera que tiene el valor <span class="php-con">false</span>. Si una variable entera o decimal distinta de cero se considera como variable lógica, se considera que tiene el valor <span class="php-con">true</span>.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = 5;
 
@@ -471,12 +438,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = 0.0;
 
@@ -489,12 +459,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = 5;
 
@@ -505,21 +478,19 @@ if ($contestar) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p>Si una cadena vacía se considera como variable lógica, se considera que tiene el valor <span class="php-con">false</span>. Si una cadena no vacía se considera como variable lógica, se considera que tiene el valor <span class="php-con">true</span>.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = "a ver qué pasa";
 
@@ -532,12 +503,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = "";
 
@@ -550,12 +524,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = "a ver qué pasa";
 
@@ -566,19 +543,17 @@ if ($contestar) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
         <p>Las cadenas no vacías se consideran como <span class="php-con">true</span>, aunque tengan un valor que puedan confundirnos:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = "NO";
 
@@ -591,12 +566,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = "false";
 
@@ -609,12 +587,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar = "NO";
 
@@ -625,19 +606,17 @@ if ($contestar == true) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
         <p>Las matrices se consideran siempre como <span class="php-con">true</span>:</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar["nombre"] = "Pepe";
 
@@ -650,12 +629,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar["nombre"] = "";
 
@@ -668,12 +650,15 @@ if ($contestar == false) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-            <tr>
-              <td class="codphp">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $contestar["nombre"] = "Pepe";
 
@@ -684,11 +669,11 @@ if ($contestar == true) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-php"><pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
       </section>
     </section>
     <footer>
