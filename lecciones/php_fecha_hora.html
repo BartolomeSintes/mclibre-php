@@ -43,44 +43,38 @@
 
       <p>La función <a href="http://www.php.net/manual/es/function.date-default-timezone-set.php"><span class="php-fun">date_default_timezone_set($identificador_de_zona_horaria)</span></a> establece el huso horario que utilizan las funciones de fecha y hora. El manual de PHP contiene la lista de <a href="http://www.php.net/manual/es/timezones.php">identificadores de zonas horarias válidas</a>.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 date_default_timezone_set("Europe/Madrid");
 print "&lt;p&gt;" . date("Y") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;2007&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;2007&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Cuando la directiva <span class="php-dir">error_reporting</span> tiene establecido el valor <span class="php-con">E_STRICT</span>, PHP genera un aviso si no se ha establecido el huso horario antes de utilizar cualquier función de fecha y hora.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;" . date("Y") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <strong>Strict Standards</strong>: date() [function.date]: It is not safe to rely on the system's timezone settings. Please use the date.timezone setting, the TZ environment variable or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'Europe/Paris' for '1.0/no DST' instead in <strong>ejemplo.php</strong> on line <strong>2</strong>
+        </div>
+        <div class="resultado">
+          <strong>Strict Standards</strong>: date() [function.date]: It is not safe to rely on the system's timezone settings. Please use the date.timezone setting, the TZ environment variable or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'Europe/Paris' for '1.0/no DST' instead in <strong>ejemplo.php</strong> on line <strong>2</strong>
 
-              <p>2007</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>2007</p>
+        </div>
+      </div>
     </section>
 
     <section id="generar-cadena">
@@ -190,27 +184,23 @@ print "&lt;p&gt;" . date("Y") . "&lt;/p&gt;\n";
           </tbody>
         </table>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 date_default_timezone_set("Europe/Madrid");
 print "&lt;p&gt;Ejemplo 1: " . date("d/m/y H:i:s") . "&lt;/p&gt;\n";
 print "&lt;p&gt;Ejemplo 2: " . date("l, F jS Y ") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>
+          </div>
+          <div class="resultado">
+            <pre>
 <code class="language-html">&lt;p&gt;Ejemplo 1: 03/03/05 13:43:48&lt;/p&gt;
 &lt;p&gt;Ejemplo 2: Thursday, March 3rd 2005&lt;/p&gt;</code>
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </section>
 
       <section id="strftime">
@@ -292,22 +282,20 @@ print "&lt;p&gt;Ejemplo 2: " . date("l, F jS Y ") . "&lt;/p&gt;\n";
           </tbody>
         </table>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 date_default_timezone_set("Europe/Madrid");
 setlocale(LC_TIME, "spanish");
 print "&lt;p&gt;" . strftime("Ejemplo 1: %A, %d de %B de %Y") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Ejemplo 1: jueves, 30 de abril de 2009&lt;/p&gt;</code></pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html">&lt;p&gt;Ejemplo 1: jueves, 30 de abril de 2009&lt;/p&gt;</code></pre>
+          </div>
+        </div>
       </section>
     </section>
     <section id="localtime">
@@ -315,11 +303,9 @@ print "&lt;p&gt;" . strftime("Ejemplo 1: %A, %d de %B de %Y") . "&lt;/p&gt;\n";
 
       <p>La funcion <a href="http://www.php.net/manual/es/function.localtime.php" class="php-fun">localtime()</a> devuelve una matriz con información detallada de la fecha y hora actual. Para que devuelva esa información de la hora actual, se pasa como argumento la función time(). El segundo argumento indica si la matriz tiene índices asociativos.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $fecha_actual = localtime(time(), 1);
 $anyo_actual  = $fecha_actual["tm_year"] + 1900;
@@ -328,11 +314,11 @@ $dia_actual   = $fecha_actual["tm_mday"];
 print "&lt;p&gt;Hoy es el $dia_actual/$mes_actual/$anyo_actual.&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Hoy es el 10/3/2005.&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Hoy es el 10/3/2005.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
     </section>
 
     <section id="checkdate">
@@ -340,11 +326,9 @@ print "&lt;p&gt;Hoy es el $dia_actual/$mes_actual/$anyo_actual.&lt;/p&gt;";
 
       <p>La función <a href="http://www.php.net/manual/es/function.checkdate.php"><span class="php-fun">checkdate($mes, $dia, $anyo)</span></a> devuelve el valor <span class="php-con">true</span> si la fecha enviada es correcta en el calendario Gregoriano y <span class="php-con">false</span> si no lo es.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $dia  = 29;
 $mes  = 2;
@@ -356,12 +340,15 @@ if (checkdate($mes, $dia, $anyo)) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 29/2/2008 existe.&lt;/p&gt;</code></pre></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;El día 29/2/2008 existe.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $dia  = 29;
 $mes  = 2;
@@ -373,21 +360,19 @@ if (checkdate($mes, $dia, $anyo)) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 29/2/2007 no existe.&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;El día 29/2/2007 no existe.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Hay que tener en cuenta que el <a href="https://es.wikipedia.org/wiki/Calendario_gregoriano">calendario Gregoriano</a> se estableció (en algunos países) a partir del 15 de octubre de 1582, por lo que no tiene sentido aplicar esta función a fechas anteriores a esa fecha. Por ejemplo, la función <span class="php-fun">checkdate()</span> no tiene en cuenta que hay unos días (del 5 al 14 de octubre de 1582) que no existieron en el calendario Gregoriano. Por otra parte, si el año es negativo o cero, la función <span class="php-fun">checkdate()</span> devuelve siempre <span class="php-con">false</span>.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $dia  = 12;
 $mes  = 10;
@@ -399,12 +384,15 @@ if (checkdate($mes, $dia, $anyo)) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 12/10/1582 existe.&lt;/p&gt;</code></pre></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;El día 12/10/1582 existe.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $dia  = 1;
 $mes  = 1;
@@ -416,11 +404,11 @@ if (checkdate($mes, $dia, $anyo)) {
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;El día 1/1/0 no existe.&lt;/p&gt;</code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;El día 1/1/0 no existe.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
     </section>
 
     <section id="convertir-fechas">

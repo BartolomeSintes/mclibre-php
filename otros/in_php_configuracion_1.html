@@ -281,7 +281,7 @@
 
         <p>Los fragmentos de código PHP se identifican mediante las etiquetas &lt;?php  .... ?&gt;. La directiva <span class="php-dir">short_open_tag</span> especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
 
-        <table class="ejemplo" border="1">
+        <table border="1">
           <tbody>
             <tr>
               <td class="conf">short_open_tag = On</td>
@@ -304,23 +304,26 @@
 
         <p>Si en el servidor la directiva toma el valor On, las páginas XHTML que contengan una declaración XML (por ejemplo, &lt;?xml version="1.0" encoding="iso-8859-1"?&gt;) producirían un error. Este problema se resolvería utilizando un fragmento de código para generar la declaración XML.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codphp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</td>
-              <td class="resul-html"><strong>Parse error</strong>: parse error, unexpected T_STRING in <strong>ejemplo.php</strong> on line <strong>1</strong></td>
-            </tr>
-            <tr>
-              <td class="codphp">&lt;?php
+        <div class="filaflex">
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?xml version="1.0" encoding="utf-8"?&gt;</code></pre>
+          </div>
+          <div class="resultado">
+            <strong>Parse error</strong>: parse error, unexpected T_STRING in <strong>ejemplo.php</strong> on line <strong>1</strong>
+          </div>
+        </div>
 
-                <p>print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n"; </p>
-
-                <p>?&gt;</p>
-              </td>
-              <td class="resul-html"></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado">
+          </div>
+        </div>
       </section>
 
       <section id="error-reporting">
@@ -328,7 +331,7 @@
 
         <p>La directiva  <span class="php-dir">error_reporting</span> especifica el tipo de errores notificados por PHP. Por ejemplo:</p>
 
-        <table class="ejemplo" border="1">
+        <table border="1">
           <tbody>
             <tr>
               <td class="conf">error_reporting = E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED</td>
@@ -445,7 +448,7 @@
 
         <p>La directiva output_buffering especifica si la salida del programa se envía a medida que se va generando o se utiliza un buffer intermedio para reducir el tráfico de salida del servidor.</p>
 
-        <table class="ejemplo" border="1">
+        <table border="1">
           <tbody>
             <tr>
               <td class="conf">output_buffering = 4096</td>

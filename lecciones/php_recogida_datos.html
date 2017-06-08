@@ -67,56 +67,48 @@
 
       <p>El siguiente ejemplo muestra un ejemplo de formulario:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><p>Nombre: <input type="text" name="texto" readonly="readonly" /></p>
-
-              <p><input type="submit" value="Enviar" /></p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" readonly="readonly" /></p>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+      </div>
 
       <p>Mientras se está programando, para comprobar que el fichero php está recibiendo la información enviada por el control, lo más fácil es utilizar la función <a href="http://www.php.net/manual/es/function.print-r.php"><span class="php-fun">print_r($matriz)</span></a> para mostrar el contenido de la matriz $_REQUEST. Una vez se ha comprobado que la información llega correctamente, la línea se debe comentar o eliminar.</p>
 
       <p>El siguiente ejemplo muestra lo que escribiría el programa PHP si recibiera la información del formulario anterior.</p>
 
-      <table class="ejemplo3">
-        <tbody>
-          <tr>
-            <td class="resul-html"><p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
-
-              <p><input type="submit" value="Enviar" /></p>
-            </td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
    [nombre] =&gt; Pepito Conejo
 )</pre>
 
-              <p>Su nombre es Pepito Conejo</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>Su nombre es Pepito Conejo</p>
+        </div>
+      </div>
 
       <p>Conviene colocar etiquetas <span class="html-eti">&lt;pre&gt;</span> alrededor del print_r($_REQUEST) para facilitar la visualización de los valores.</p>
     </section>
@@ -128,116 +120,141 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
       <ul>
         <li>Si se hace referencia dentro de una caden, el índice se debe escribir sin comillas. Si se escribe cualquier tipo de comillas (simples o dobles) se produce un error.
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-html">Su nombre es Pepito Conejo</td>
-              </tr>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+            </div>
+            <div class="resultado">
+              <p>Su nombre es Pepito Conejo</p>
+            </div>
+          </div>
+
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST["nombre"]</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-html"><strong>Parse error</strong>: syntax error, unexpected '"' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
-              </tr>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+            </div>
+            <div class="resultado">
+              <strong>Parse error</strong>: syntax error, unexpected '"' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong>
+            </div>
+          </div>
+
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST['nombre']</span>&lt;/p&gt;\n";<code></code>
+print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST['nombre']</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-html"><strong>Parse error</strong>: syntax error, unexpected '', expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <strong>Parse error</strong>: syntax error, unexpected '', expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong>
+            </div>
+          </div>
         </li>
         <li>Si se hace referencia fuera de una cadena, el índice se debe escribir con comillas dobles o simples. Si se escribe sin comillas, se produce un aviso.
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST["nombre"]</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-html">Su nombre es Pepito Conejo</td>
-              </tr>
-              <tr>
-                <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+            </div>
+            <div class="resultado">
+              <p>Su nombre es Pepito Conejo</p>
+            </div>
+          </div>
+
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST['nombre']</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-html">Su nombre es Pepito Conejo</td>
-              </tr>
-              <tr>
-                <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-                <td class="codphp">
-                  <pre>
+            </div>
+            <div class="resultado">
+              <p>Su nombre es Pepito Conejo</p>
+            </div>
+          </div>
+
+          <div class="filaflex">
+            <div class="icono-ok">
+              <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+            </div>
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST[nombre]</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-html"><strong>Notice</strong>: Use of undefined constant nombre - assumed 'nombre' in <strong>ejemplo.php</strong> on line <strong>2</strong><br />
-                  Su nombre es Pepito Conejo</td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <strong>Notice</strong>: Use of undefined constant nombre - assumed 'nombre' in <strong>ejemplo.php</strong> on line <strong>2</strong><br />
+              Su nombre es Pepito Conejo
+            </div>
+          </div>
         </li>
       </ul>
 
       <p>En ningún caso se pueden utilizar los caracteres especiales \" o \', ni dentro ni fuera de las cadenas.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[\"nombre\"]</span>&lt;/p&gt;\n";<code></code>
+print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[\"nombre\"]</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><strong>Parse error</strong>: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong></td>
-          </tr>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <strong>Parse error</strong>: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST[\'nombre\']</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><strong>Parse error</strong>: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <strong>Parse error</strong>: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <strong>ejemplo.php</strong> on line <strong>2</strong>
+        </div>
+      </div>
     </section>
 
     <section id="comprobacion">

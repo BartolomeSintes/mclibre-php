@@ -51,69 +51,56 @@
 
       <p>En el primer ejemplo, se llama a la función <span class="php-fun">header()</span> después de un <span class="php-fun">print</span>, lo que provoca un aviso de error.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Intento fallido de redirección&lt;/p&gt;\n";
 header("Location:http://www.example.com");
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              Intento fallido de redirección
+        </div>
+        <div class="resultado">
+          <p>Intento fallido de redirección</p>
 
-              <p><strong>Warning</strong>: Cannot modify header information - headers already sent by (output started at ejemplo.php:2) in <strong>ejemplo.php</strong> on line 3</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p><strong>Warning</strong>: Cannot modify header information - headers already sent by (output started at ejemplo.php:2) in <strong>ejemplo.php</strong> on line 3</p>
+        </div>
+      </div>
 
       <p>En el segundo ejemplo, se llama a la función <span class="php-fun">header()</span>en un programa que ya ha generado contenido antes del fragmento PHP, lo que provoca un aviso de error:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre><code class="language-html">&lt;p&gt;Intento fallido de redirección&lt;/p&gt;</code></pre>
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-html">&lt;p&gt;Intento fallido de redirección&lt;/p&gt;</code></pre>
+          <pre>
 <code class="language-php">&lt;?php
 header("Location:http://www.example.com");
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              Intento fallido de redirección
+        </div>
+        <div class="resultado">
+          <p>Intento fallido de redirección</p>
 
-              <p><strong>Warning</strong>: Cannot modify header information - headers already sent by (output started at ejemplo.php:2) in <strong>ejemplo.php</strong> on line 3</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p><strong>Warning</strong>: Cannot modify header information - headers already sent by (output started at ejemplo.php:2) in <strong>ejemplo.php</strong> on line 3</p>
+        </div>
+      </div>
 
       <p>Por ello, hay que tener mucho cuidado en no generar ningún tipo de salida antes de utilizar la la función <span class="php-fun">header()</span> ni en el programa, ni en las bibliotecas a las que se llame en el programa.</p>
 
       <p>Hay que tener en cuenta que una simple línea en blanco antes del bloque PHP sería suficiente para impedir el envío de la cabecera:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre><code class="language-html"> </code></pre>
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 header("Location:http://www.example.com");
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p><strong>Warning</strong>: Cannot modify header information - headers already sent by (output started at ejemplo.php:2) in <strong>ejemplo.php</strong> on line 3</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p><strong>Warning</strong>: Cannot modify header information - headers already sent by (output started at ejemplo.php:2) in <strong>ejemplo.php</strong> on line 3</p>
+        </div>
+      </div>
 
       <p><strong>Nota</strong>: Otra situación que puede provocar el fallo de la función <span class="php-fun">header()</span> es cuando el programa contiene un error antes, ya que PHP generará un aviso de error que es también parte de la salida del programa y eso provocaría el fallo de la función <span class="php-fun">header()</span> posterior. Esta situación suele darse al desarrollar el programa, ya que normalmente los servidores de desarrollo están configurados para mostrar el mayor número posible de avisos de error, pero desaparece en los servidores de producción, que se suelen configurar para no enviar al usuario ningún mensaje de error.</p>
 
@@ -135,46 +122,39 @@ header("Location:http://www.example.com");
         <ul>
           <li>En el primer ejemplo, el buffer es de 1 byte. La salida de <span class="php-res">print</span> no cabe en el buffer y el servidor envía el contenido. Al intentar hacer la redirección, se produce un error.
 
-            <table class="ejemplo">
-              <tbody>
-                <tr>
-                  <td class="codphp">
-                    <pre>
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
 <code class="language-php">ob_start(null, 1);
 print "&lt;p&gt;Tamaño del buffer: 1&lt;/p&gt;";
 header("location:final.php");
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
-</pre></td>
-                  <td class="resul-php">
-                    <object type="text/html" data="ejemplos/utf_bom/buffer_0_1.php" style="width: 100%; height: 11em">ERROR (no puede mostrarse el objeto)</object>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+</pre>
+              </div>
+              <div class="resultado">
+                <object type="text/html" data="ejemplos/utf_bom/buffer_0_1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+              </div>
+            </div>
           </li>
           <li>En el segundo ejemplo, el buffer es de 100 bytes. La salida de <span class="php-res">print</span> sí cabe en el buffer y el servidor no envía todavía el contenido. Al intentar hacer la redirección, la redirección puede realizarse.
 
-            <table class="ejemplo">
-              <tbody>
-                <tr>
-                  <td class="codphp">
-                    <pre>
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
 <code class="language-php">ob_start(null, 100);
 print "&lt;p&gt;Tamaño del buffer: 100&lt;/p&gt;";
 header("location:finalphp");
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
-</pre></td>
-                  <td class="resul-php">
-                    <object type="text/html" data="ejemplos/utf_bom/buffer_1_1.php" style="width: 100%; height: 11em">ERROR (no puede mostrarse el objeto)</object>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+</pre>
+              </div>
+              <div class="resultado">
+                <object type="text/html" data="ejemplos/utf_bom/buffer_1_1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+              </div>
+            </div>
           </li>
         </ul>
-
       </section>
 
       <section id="bom">
@@ -206,7 +186,7 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
 
         <p>Para eliminar las marcas de orden de bytes de un conjunto grande de archivos php, se puede utilizar este script de Linux:</p>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-html">#! /bin/bash
 
@@ -229,7 +209,7 @@ done</code>
 
       <p>La función <a href="http://www.php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a> se puede utilizar para redirigir automáticamente a otra página, enviando como argumento la cadena <strong>Location:</strong> seguida de la dirección absoluta o relativa de la página a la que queremos redirigir.</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 header("Location:http://www.example.com/");
@@ -241,7 +221,7 @@ header("Location:http://www.example.com/");
 
       <p><strong>Nota</strong>: En este caso no se debe utilizar la entidad de carácter <strong>&amp;amp;</strong></p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 header("Location:http://www.example.com?nombre=Pepito&amp;edad=25");
@@ -251,7 +231,7 @@ header("Location:http://www.example.com?nombre=Pepito&amp;edad=25");
 
       <p>Si el valor a enviar contiene espacios, se pueden escribir caracteres <strong>+</strong> o espacios para separar las palabras:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 header("Location:http://www.example.com?nombre=Pepito+Conejo&amp;edad=25");
@@ -259,7 +239,7 @@ header("Location:http://www.example.com?nombre=Pepito+Conejo&amp;edad=25");
 </pre>
       </div>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 header("Location:http://www.example.com?nombre=Pepito Conejo&amp;edad=25");
@@ -274,7 +254,7 @@ header("Location:http://www.example.com?nombre=Pepito Conejo&amp;edad=25");
         <ul>
           <li>Si se escriben varias redirecciones, se aplicará la última. En el ejemplo siguiente, la página redirigiría a http://www.mclibre.org
 
-            <div class="codphp">
+            <div class="codigo">
               <pre>
 <code class="language-php">&lt;?php
 header("Location:http://www.example.com/");
@@ -286,7 +266,7 @@ header("Location:http://www.mclibre.org/");
           </li>
           <li>Si después de la redirección se genera texto, ese texto no llegará al usuario, puesto que la redirección le llevará antes a otra página.
 
-            <div class="codphp">
+            <div class="codigo">
               <pre>
 <code class="language-php">&lt;?php
 header("location:http://www.mclibre.org/");
@@ -297,7 +277,7 @@ print "&lt;p&gt;Nadie leerá este texto&lt;/p&gt;\n";
           </li>
           <li>Si el programa realiza acciones como modificar registros en una base de datos, borrar archivos, etc., esas acciones se realizarán. Por ejemplo, el siguiente programa redirige a la página web de mclibre, pero también se borra a sí mismo.
 
-            <div class="codphp">
+            <div class="codigo">
               <pre>
 <code class="language-php">&lt;?php
 header("location:http://www.mclibre.org/");
@@ -310,7 +290,7 @@ unlink("ejemplo.php");
 
         <p>Si tras una redirección no queremos que se ejecute el resto del programa, se debe escribir el programa de manera que se ejecuten unas instrucciones u otras, mediante expresiones <span class="php-res">if ... else ...</span> . El programa siguiente realizará una redirección u otra en función de la condición que se escriba:</p>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 if (condicion) {
@@ -324,7 +304,7 @@ if (condicion) {
 
         <p>Un ejemplo práctico de uso de redirecciones es el siguiente. Supongamos que tenemos un formulario (confirmar.php) para confirmar una acción destructiva (borrar datos de una base de datos, por ejemplo) que envía la confirmación a destruir.php. Para tener en cuenta el caso de que un usuario acceda directamente a la página destruir.php sin haber confirmado la acción en confirmar.php, podemos hacer que se compruebe si se ha recibido la confirmación y en caso contrario redirigir a la página principal del sitio.</p>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 // destruir.php
@@ -343,7 +323,7 @@ if (!isset($_REQUEST["si"])) {
 
         <p>El ejemplo anterior se podría escribir entonces de la siguiente manera, sin necesidad de incluir las instrucciones posteriores en un bloque <span class="php-res">else ...</span>:</p>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 if (condicion) {
@@ -359,7 +339,7 @@ header("location:http://www.example.com/");
 
         <p>El programa ejemplo_1.php llama al programa ejemplo_2.php y el resultado incluye las instrucciones generadas por ambos programas. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página web de mclibre.</p>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 // ejemplo_1.php
@@ -369,7 +349,7 @@ header("location:http://www.mclibre.org/");
 </pre>
         </div>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 // ejemplo_2.php
@@ -380,7 +360,7 @@ header("location:http://www.example.com/");
 
         <p>Pero si el segundo programa se añade <span class="php-res">exit</span>, se interrumpiría tanto el segundo como el primero. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página http://www.example.com/.</p>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 // ejemplo_3.php
@@ -390,7 +370,7 @@ header("location:http://www.mclibre.org/");
 </pre>
         </div>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 // ejemplo_4.php
@@ -443,11 +423,9 @@ exit;
 
       <p>El programa siguiente crea una imagen SVG, concretamente un cuadrado:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 header("Content-type: image/svg+xml");
 print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
@@ -457,22 +435,20 @@ print "  &lt;rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
 print "&lt;/svg&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
+        </div>
+        <div class="resultado">
               <pre>
 <code class="language-html">&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
     width="100" height="100" viewBox="-5 -5 100 100"&gt;
   &lt;rect fill="none" stroke="black" stroke-width="1" x="5" y="5" width="90" height="90" /&gt;
 &lt;/svg&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>Ese programa se puede llamar desde otro programa para generar la imagen:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre><code class="language-html">&lt;p&gt;&lt;img src="imagen.php" alt="cuadrado" /&gt;&lt;/p&gt;</code></pre>
       </div>
     </section>

@@ -55,49 +55,48 @@
 
       <p>Supongamos que tenemos la siguiente página en castellano, pero también queremos que esté disponible en inglés:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Esta página está en castellano&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>El primer paso es marcar las cadenas a traducir. Las cadenas que se quieran traducir, deben enviarse a la función <a href="http://www.php.net/manual/es/function.gettext.php"><span class="php-fun">gettext($cadena)</span></a>, aunque normalmente se utiliza el alias <a href="http://www.php.net/manual/es/function.gettext.php"><span class="php-fun">_($cadena</span>)</a>:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;" . gettext("Esta página está en castellano") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre></td>
-          </tr>
-          <tr>
-            <td class="codhtml">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Esta página está en castellano&lt;/p&gt; </code></pre>
+        </div>
+      </div>
     </section>
 
     <section id="configuracion-poedit">
@@ -177,11 +176,9 @@ print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
 
       <p>Para que los mensajes aparezcan traducidos habría que añadir el siguiente código a la página de ejemplo:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $language = "en_GB";
 putenv("LC_ALL=$language");
@@ -192,11 +189,11 @@ textdomain("messages");
 print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><pre><code class="language-html">&lt;p&gt;This page is in English&lt;/p&gt; </code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;This page is in English&lt;/p&gt; </code></pre>
+        </div>
+      </div>
 
       <p><strong>Nota</strong>: El primer argumento de las funciones bindtextdomain y textdomain tiene que ser el nombre del archivo po que se haya creado.</p>
 
@@ -204,11 +201,9 @@ print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
 
       <p>Para que el usuario pudiera elegir el idioma de la página se podría, por ejemplo, añadir unos enlaces que llamaran a la página enviando el código del idioma:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $language = (isset($_REQUEST["language"])) ? trim(strip_tags($_REQUEST["language"])) : "es_ES";
 putenv("LC_ALL=$language");
@@ -223,17 +218,15 @@ print "&lt;p&gt;&lt;a href=\"" . $_SERVER["PHP_SELF"] . "?language=en_GB\"&gt;En
 print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>
+        </div>
+        <div class="resultado">
+          <pre>
 <code class="language-html">&lt;p&gt;&lt;a href="ejemplo.php?language=en_GB"&gt;English&lt;/a&gt; -
   &lt;a href="ejemplo.php?language=es_ES"&gt;Español&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Esta página está en castellano&lt;/p&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
 
     <footer>

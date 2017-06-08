@@ -24,68 +24,12 @@
         <h2>Varios</h2>
 
         <ul>
-          <li><a href="#situar-cursor-en-control">Cursor en control al cargar</a></li>
           <li><a href="#print-echo">Diferencias entre print y echo</a></li>
           <li><a href="#controles-ocultos">Uso de controles ocultos</a></li>
           <li><a href="#ampersand">El carácter &amp;</a></li>
         </ul>
       </div>
     </nav>
-
-    <section id="situar-cursor-en-control">
-      <h2>Situar el cursor en un control al cargar un formulario</h2>
-
-      <p>Una forma de facilitar el uso de una página con controles es situar automáticamente el cursor en el control que probablemente va a utilizar el usuario, ahorrando al usuario el tener que hacer clic en ese control. Esto se puede conseguir mediante Javascript.</p>
-
-      <p>Una manera de hacerlo es asignar el atributo <span class="html-atri">id</span> del control sobre el que se quiere situar el cursor automáticamente y establecer el atributo <span class="html-atri">onload</span> del elemento <span class="html-eti">body</span> con el valor <span class="html-atri-valor">document.getElementById('XYZ').focus()</span>, donde XYZ es el <span class="html-atri">id</span> del control, como muestra el ejemplo siguiente:</p>
-
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
-<code class="language-html">&lt;body onload="document.getElementById('cursor').focus()"&gt;
-&lt;form action="validar1.php"&gt;
-  &lt;p&gt;Al cargar esta página, el cursor sitúa automáticamente en la primera caja de texto:&lt;/p&gt;
-  &lt;table&gt;
-    &lt;tbody&gt;
-      &lt;tr&gt;
-        &lt;td&gt;Usuario:&lt;/td&gt;
-        &lt;td&gt;&lt;input type="text" name="usuario" id="cursor" /&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt;Contraseña:&lt;/td&gt;
-        &lt;td&gt;&lt;input type="password" name="password" /&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;p&gt;&lt;input type="submit" value="Entrar" /&gt;&lt;/p&gt;
-&lt;/form&gt;
-&lt;/body&gt;</code>
-</pre>
-            </td>
-            <td class="resul-php">
-              <p>Al cargar esta página, el cursor se sitúa automáticamente en la primera caja de texto:</p>
-
-              <table class="sinborde">
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" id="cursor" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="password" name="password" /></td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
 
     <section id="print-echo">
       <h2>Diferencias entre print y echo</h2>
@@ -94,33 +38,29 @@
       <ul>
         <li><span class="php-con">echo</span> admite varios argumentos separados por comas, mientras que <span class="php-con">print</span> sólo admite un argumento (los argumentos deben concatenarse con el operador punto):
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $titulo = "Diferencias entre print y echo";
 echo "&lt;p&gt;", $titulo, "&lt;/p&gt;";
 print "&lt;p&gt;" . $titulo . "&lt;/p&gt;\n";
-?&gt;</code></pre>
-                </td>
-                <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Diferencias entre print y echo&lt;/p&gt;<br />&lt;p&gt;Diferencias entre print y echo&lt;/p&gt;</code></pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+?&gt;</code>
+</pre>
+            </div>
+            <div class="resultado">
+              <pre><code class="language-html">&lt;p&gt;Diferencias entre print y echo&lt;/p&gt;<br />&lt;p&gt;Diferencias entre print y echo&lt;/p&gt;</code></pre>
+            </div>
+          </div>
         </li>
         <li>
           <span class="php-con">print</span> devuelve el resultado de la operación (1 si ha funcionado correctamente), mientras que <span class="php-con">echo</span> no devuelve ningún resultado.
 
           <p>Eso permite utilizar <span class="php-con">print</span> en construcciones en que no se puede utilizar <span class="php-con">echo</span>. Por ejemplo el siguiente ejemplo:</p>
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $numero = 5;
 print "&lt;p&gt;El número $numero es ";
@@ -132,18 +72,17 @@ if ($numero &gt;= 0) {
 print "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php"><pre><code class="language-html">&lt;p&gt;El número 5 es positivo&lt;/p&gt;</code><code></code></pre></td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <pre><code class="language-html">&lt;p&gt;El número 5 es positivo&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+
           <p>puede escribirse utilizando el operador ternario <span class="php-con">? :</span> de la siguiente manera:</p>
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $numero = 5;
 print "&lt;p&gt;El número $numero es ";
@@ -151,18 +90,17 @@ print "&lt;p&gt;El número $numero es ";
 print "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php"><pre><span class="language-html">&lt;p&gt;El número 5 es positivo&lt;/p&gt;<code></code></span></pre></td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <pre><code class="language-html">&lt;p&gt;El número 5 es positivo&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+
           <p>En este caso la utilización de <span class="php-con">echo</span> produciría un error:</p>
 
-          <table class="ejemplo">
-            <tbody>
-              <tr>
-                <td class="codphp">
-                  <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 $numero = 5;
 print "&lt;p&gt;El número $numero es ";
@@ -170,11 +108,11 @@ print "&lt;p&gt;El número $numero es ";
 print "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-                </td>
-                <td class="resul-php"><strong>Parse error</strong>: parse error, unexpected T_ECHO in <strong>ejemplo.php</strong> on line <strong>4</strong></td>
-              </tr>
-            </tbody>
-          </table>
+            </div>
+            <div class="resultado">
+              <strong>Parse error</strong>: parse error, unexpected T_ECHO in <strong>ejemplo.php</strong> on line <strong>4</strong>
+            </div>
+          </div>
         </li>
         <li>la gente que ha hecho pruebas de velocidad dice que <span class="php-con">echo</span> es ligerísimamente más rápido que <span class="php-con">print</span>, pero hacen falta generar miles de <span class="php-con">echo</span> para notar alguna diferencia, por lo que la velocidad no es determinante para utilizar uno u otro.</li>
       </ul>
@@ -189,9 +127,14 @@ print "&lt;/p&gt;\n";
 
       <p>El siguiente ejemplo ilustra el uso de controles ocultos.</p>
 
-      <p class="enlace-ejercicio"><a href="ejemplos/controles_ocultos_1.html">Enlace a ejemplo Controles ocultos</a></p>
-
-      <p class="ejercicio"><object type="text/html" data="ejemplos/controles_ocultos_1.html" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      <div class="filaflex">
+        <div class="resultado">
+          <object type="text/html" data="ejemplos/controles_ocultos_1.html" style="height: 23em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/controles_ocultos_1.html"><img src="../varios/iconos/icono_enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
 
       <p>El programa anterior está formado por por tres páginas:</p>
       <ul>
@@ -218,26 +161,24 @@ print "&lt;/p&gt;\n";
 
       <p>Si en una página web se quiere mostrar el carácter &amp; hay que emplear la entidad de carácter correspondiente &amp;amp;</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;La décima novela de Julian Barnes es Arthur &amp;amp; George.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">La décima novela de Julian Barnes es Arthur &amp; George.</td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>La décima novela de Julian Barnes es Arthur &amp; George.</p>
+        </div>
+      </div>
 
       <p>El carácter &amp; aparece también en dos contextos especiales:</p>
       <ul>
-        <li>En una redirección en la que se envían datos a una página, separando los datos. En este caso se debe utilizar el carácter &amp;, no la entidad de carácter:
+        <li>En una redirección en la que se envían datos a una página, separando los datos. En este caso se debe utilizar el carácter &amp;, no la entidad de carácter &amp;amp;:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
 header("Location: http://www.example.com?nombre=Pepito&amp;edad=25");
@@ -247,7 +188,7 @@ header("Location: http://www.example.com?nombre=Pepito&amp;edad=25");
         </li>
         <li>En un enlace en el que también se envían datos a una página, separando los datos. En este caso se debe utilizar la entidad de carácter &amp;amp;, no el carácter &amp;:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;&lt;img src=\"dibujo.php?ancho=100&amp;amp;alto=50\" alt=\"dibujo\" /&gt;&lt;/p&gt;\n";

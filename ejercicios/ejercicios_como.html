@@ -148,11 +148,9 @@
 
       <p>Los ejemplos siguientes muestran dos fragmentos de PHP que generan el mismo código fuente incorrecto, sin formatear en el primer caso y formateado correctamente en el segundo. Es evidente en qué caso es más fácil encontrar el error ( no se cierran las filas de tabla con <span class="html-eti">&lt;/tr&gt;</span>).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;table border=\"1\"&gt;";
 for ($i=1; $i&lt;=2; $i++) {
@@ -164,17 +162,18 @@ for ($i=1; $i&lt;=2; $i++) {
 print "&lt;/table&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="codhtml">
+        </div>
+        <div class="resultado">
               <pre>
 <code class="language-html">&lt;table border="1"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;1-1&lt;/td&gt;&lt;td&gt;1-2&lt;/td&gt;&lt;tr&gt;
 &lt;td&gt;2-1&lt;/td&gt;&lt;td&gt;2-2&lt;/td&gt;&lt;/tbody&gt;&lt;/table&gt;</code>
 </pre>
-            </td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;table border=\"1\"&gt;\n";
 for ($i=1; $i&lt;=2; $i++) {
@@ -186,8 +185,8 @@ for ($i=1; $i&lt;=2; $i++) {
 print "&lt;/table&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="codhtml">
+        </div>
+        <div class="resultado">
               <pre>
 <code class="language-html">&lt;table border="1"&gt;
   &lt;tbody&gt;
@@ -200,10 +199,8 @@ print "&lt;/table&gt;\n";
   &lt;/tbody&gt;
 &lt;/table&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p><strong>Nota</strong>: El error en el código fuente anterior es que no se cierran las filas de tabla con <span class="html-eti">&lt;/tr&gt;</span>.</p>
 

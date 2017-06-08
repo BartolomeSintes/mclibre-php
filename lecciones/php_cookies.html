@@ -67,29 +67,25 @@ setcookie("datos[apellidos]", "Conejo");
 
       <p>Hay que tener la precaución de utilizar la función setcookie() antes de empezar a escribir el contenido de la página, porque si no PHP producirá un aviso y no se creará la cookie. El motivo es que las cookies se crean mediante cabeceras de respuesta HTTP y las cabeceras se envían antes del texto de la página. Es decir, cuando PHP encuentra una instrucción que escribe texto, cierra automáticamente la cabecera; si a continuación PHP encuentra en el programa la función setcookie(), da un aviso porque ya se han enviado las cabeceras y no se crea la cookie. El ejemplo siguiente muestra código incorrecto, ya que utiliza la función setcookie() después de haber escrito texto, y el mensaje de aviso generado por PHP.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Este código es incorrecto, la cabecera se crea después de crear texto
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 setcookie("nombre", "Pepito Conejo");
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
+        </div>
+        <div class="resultado">
               <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 Warning: Cannot modify header information - headers
 already sent by (output started at prueba.php on
 line 3) in prueba.php on line 4</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p><strong>Nota:</strong> En algunos casos este código incorrecto puede no generar un aviso y la cookie puede crearse, dependiendo de la configuración de la directiva <a href="../otros/in_php_configuracion_1.html#output-buffering">output_buffering</a>.</p>
 
