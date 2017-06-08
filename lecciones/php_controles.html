@@ -55,51 +55,43 @@
 
       <p>El siguiente ejemplo muestra un formulario válido (ejemplo.html):</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
 
-              <p><input type="submit" value="Enviar" /></p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+      </div>
 
       <p>El programa que recibe los datos los guarda automáticamente en la matriz $_REQUEST. Mediante la orden <span class="php-fun">print_r($_REQUEST)</span> se puede mostrar el contenido de la matriz $_REQUEST.</p>
 
       <p>El siguiente ejemplo muestra lo que escribiría el programa PHP (ejemplo.php) si recibiera la información del formulario anterior (ejemplo.html).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <pre>Array
 (
     [nombre] =&gt; Pepito Conejo
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>El nombre del elemento de la matriz $_REQUEST coincide con el nombre del control (atributo <span class="html-atri">name</span>)en el formulario (excepto en el control de tipo imagen).</p>
 
@@ -113,97 +105,96 @@ print "&lt;/pre&gt;\n";
 
       <p>El atributo <span class="html-atri">method</span> de la etiqueta <span class="html-eti">&lt;form&gt;</span> permite elegir si la información de los controles se incluye en la llamada a la página (<span class="html-atri">method</span>="<span class="html-atri-valor">get</span>") o se proporciona posteriormente (<span class="html-atri">method</span>="<span class="html-atri-valor">post</span>"). Si el atributo no está definido, la información se incluye. Desde el punto de vista de la seguridad ambos métodos son equivalentes.</p>
 
-      <p>La diferencia es que con el valor <span class="html-atri-valor">get</span> se pueden ver en la barra de dirección los nombres de los controles y los valores introducidos por el usuario, mientras que con el valor <span class="html-atri-valor">post</span> no.</p>
+      <p>La diferencia es que con el valor <span class="html-atri-valor">get</span> se pueden ver en la barra de dirección los nombres de los controles y los valores introducidos por el usuario, mientras que con el valor <span class="html-atri-valor">post</span> no, pero los datos recibidos son idénticos.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <th>ejemplo.html</th>
-            <th>ejemplo.php</th>
-          </tr>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <ul>
+        <li>Formulario con <span class="html-atri-valor">get</span></li>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-html">&lt;form action="ejemplo.php" <strong>method="get"</strong>&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-            </td>
-            <td class="codhtml">
-              <pre>print "&lt;pre&gt;";
-print_r($_REQUEST);
-print "&lt;/pre&gt;";</pre>
-            </td>
-          </tr>
-          <tr>
-            <td><p><img alt="Ejemplo de formulario" src="../img/php/method_1.png" width="500" height="200" title="Ejemplo de formulario" /></p></td>
-            <td><p><img alt="Resultado de formulario con method get" src="../img/php/method_get_2.png" width="500" height="200" title="Resultado de formulario con method get" /></p></td>
-          </tr>
-        </tbody>
-      </table>
+          </div>
+          <div class="resultado">
+            <p><img alt="Ejemplo de formulario" src="../img/php/method_1.png" width="500" height="200" title="Ejemplo de formulario" /></p>
+          </div>
+        </div>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <th>ejemplo.html</th>
-            <th>ejemplo.php</th>
-          </tr>
-          <tr>
-            <td class="codhtml">
-              <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">print "&lt;pre&gt;";
+print_r($_REQUEST);
+print "&lt;/pre&gt;";</code>
+</pre>
+          </div>
+          <div class="resultado">
+            <p><img alt="Resultado de formulario con method get" src="../img/php/method_get_2.png" width="500" height="200" title="Resultado de formulario con method get" /></p>
+          </div>
+        </div>
+        <li>Formulario con <span class="html-atri-valor">post</span></li>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-html">&lt;form action="ejemplo.php" <strong>method="post"</strong>&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-            </td>
-            <td class="codhtml">
-              <pre>print "&lt;pre&gt;";
+          </div>
+          <div class="resultado">
+            <p><img alt="Ejemplo de formulario" src="../img/php/method_1.png" width="500" height="200" title="Ejemplo de formulario" /></p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">print "&lt;pre&gt;";
 print_r($_REQUEST);
-print "&lt;/pre&gt;";</pre>
-            </td>
-          </tr>
-          <tr>
-            <td><p><img alt="Ejemplo de formulario" src="../img/php/method_1.png" width="500" height="200" title="Ejemplo de formulario" /></p></td>
-            <td><p><img alt="Resultado de formulario con method get" src="../img/php/method_post_2.png" width="500" height="200" title="Resultado de formulario con method get" /></p></td>
-          </tr>
-        </tbody>
-      </table>
+print "&lt;/pre&gt;";</code>
+</pre>
+          </div>
+          <div class="resultado">
+            <p><img alt="Resultado de formulario con method get" src="../img/php/method_post_2.png" width="500" height="200" title="Resultado de formulario con method get" /></p>
+          </div>
+        </div>
+      </ul>
 
       <hr class="corta" />
 
-      <p>En caso de que haya varios controles que envíen información, los nombres y valores aparecen como nombre1=valor1&amp;nombre2=valor2&amp;...</p>
+      <p>En caso de que haya varios controles que envíen información en un formulario con <span class="html-atri-valor">get</span>, los nombres y valores aparecen en la barra de dirección separados por el carácter ampersand (&amp;), como nombre1=valor1&amp;nombre2=valor2&amp;...</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <th>ejemplo.html</th>
-            <th>ejemplo.php</th>
-          </tr>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-html">&lt;form action="ejemplo.php" <strong>method="get"</strong>&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
   &lt;p&gt;Apellidos: &lt;input type="text" name="apellidos" /&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-            </td>
-            <td class="codhtml">
-              <pre>print "&lt;pre&gt;";
+        </div>
+        <div class="resultado">
+          <p><img alt="Ejemplo de formulario" src="../img/php/method_1b.png" width="500" height="220" title="Ejemplo de formulario" /></p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">print "&lt;pre&gt;";
 print_r($_REQUEST);
-print "&lt;/pre&gt;";
+print "&lt;/pre&gt;";</code>
 </pre>
-            </td>
-          </tr>
-          <tr>
-            <td><p><img alt="Ejemplo de formulario" src="../img/php/method_1b.png" width="500" height="220" title="Ejemplo de formulario" /></p></td>
-            <td><p><img alt="Resultado de formulario con method get" src="../img/php/method_get_2b.png" width="600" height="200" title="Resultado de formulario con method get" /></p></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p><img alt="Resultado de formulario con method get" src="../img/php/method_get_2b.png" width="600" height="200" title="Resultado de formulario con method get" /></p>
+        </div>
+      </div>
     </section>
 
     <section id="submit">

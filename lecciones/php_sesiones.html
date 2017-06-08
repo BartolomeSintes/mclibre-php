@@ -47,45 +47,42 @@
 
       <p>El ejemplo siguiente muestra dos páginas: en la primera se crea una variable, que se puede utilizar en esa misma página. La segunda página, que se encuentra en el mismo servidor, no tiene acceso a la variable creada en el primer programa y por eso se produce un aviso.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombre = "Pepito Conejo";
 print "&lt;p&gt;El nombre es $nombre&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Pepito Conejo</p></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Pepito Conejo</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;El nombre es $nombre&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><br />
-              <b>Notice</b>: Undefined variable: nombre in <b>ejemplo.php</b> on line <b>2</b>
+        </div>
+        <div class="resultado">
+          <b>Notice</b>: Undefined variable: nombre in <b>ejemplo.php</b> on line <b>2</b>
 
-              <p>El nombre es </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>El nombre es </p>
+        </div>
+      </div>
 
       <p>PHP puede superar esta limitación mediante las sesiones. Las sesiones permiten que páginas distintas puedan acceder a una variable común, la matriz $_SESSION.</p>
 
       <p>El ejemplo siguiente muestra dos páginas: en la primera se crea la variable en la matriz $_SESSION, que se puede utilizar en esa misma página. La segunda página, que se encuentra en el mismo servidor, tiene acceso a la variable creada en el primer programa (si se ha ejecutado antes, obviamente).</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
@@ -93,23 +90,26 @@ $_SESSION["nombre"] = "Pepito Conejo";
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Pepito Conejo</p></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Pepito Conejo</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Pepito Conejo</p></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Pepito Conejo</p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
@@ -142,7 +142,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
       <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="http://php.net/manual/en/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre><code class="language-php">ini_set("session.save_handler", "files"); // Necesario únicamente cuando session.save_handler = user en php.ini
 session_start();</code></pre>
       </div>
@@ -155,11 +155,9 @@ session_start();</code></pre>
 
       <p>En PHP, las sesiones se crean mediante la función <a href="http://www.php.net/manual/es/function.session-start.php"><span class="php-fun">session_start()</span></a>. Si la sesión no existía, esta función crea la sesión y le asocia un identificador de sesión único. Si la sesión ya existía, esta función permite que la página tenga acceso a la información vinculada a la sesión. Es decir, todas las páginas que quieran guardar datos en $_SESSION o leer datos de $_SESSION deben comenzar con la función <span class="php-fun">session_start()</span>.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
@@ -167,23 +165,26 @@ $_SESSION["nombre"] = "Pepito Conejo";
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Pepito Conejo</p></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Pepito Conejo</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Pepito Conejo</p></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Pepito Conejo</p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
@@ -191,26 +192,24 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
       <p>El ejemplo siguiente es incorrecto, ya que utiliza la función session_start() después de haber escrito texto.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Este código es incorrecto, la sesión se crea después de crear texto
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 session_start();
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>Hola</p>
-              <br />
-              <b>Warning</b>: session_start(): Cannot send session cache limiter - headers already sent (output started at ejemplo.php:3) in <b>ejemplo.php</b> on line <b>4</b>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>Hola</p>
+          <b>Warning</b>: session_start(): Cannot send session cache limiter - headers already sent (output started at ejemplo.php:3) in <b>ejemplo.php</b> on line <b>4</b>
+        </div>
+      </div>
 
       <p><strong>Nota:</strong> Como se comenta también en la <a href="php_cabeceras.html#buffer">lección sobre cabeceras</a>, dependiendo de la configuración de la directiva <a href="../otros/in_php_configuracion_1.html#output-buffering">output_buffering</a>, la sesión podría crearse correctamente y no generarse el aviso.</p>
     </section>
@@ -224,11 +223,9 @@ session_start();
 
       <p>En el ejemplo siguiente, los dos primeros programas crean la misma variable en $_SESSION, pero como se ha utilizado la función <span class="php-fun">session_name()</span> con nombres diferentes, realmente lo hacen en matrices $_SESSION distintas.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_name("ejemplo1");
 session_start();
@@ -237,12 +234,15 @@ $_SESSION["nombre"] = "Pepito Conejo";
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Pepito Conejo</p></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Pepito Conejo</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_name("ejemplo2");
 session_start();
@@ -251,19 +251,17 @@ $_SESSION["nombre"] = "Juan Fulánez";
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Juan Fulánez</p></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Juan Fulánez</p>
+        </div>
+      </div>
 
       <p>Los dos programas siguientes acceden después a las matrices $_SESSION, pero cada uno accede a la matriz correspondiente al nombre de sesión.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_name("ejemplo1");
 session_start();
@@ -271,12 +269,15 @@ session_start();
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Pepito Conejo</p></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Pepito Conejo</p>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_name("ejemplo2");
 session_start();
@@ -284,11 +285,11 @@ session_start();
 print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><p>El nombre es Juan Fulánez</p></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p>El nombre es Juan Fulánez</p>
+        </div>
+      </div>
     </section>
 
     <section id="sesiones-utilizar">
@@ -300,45 +301,47 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
       <p>El ejemplo siguiente muestra dos páginas. La primera página guarda información en $_SESSION y la segunda la utiliza.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
 $_SESSION["nombre"] = "Pepito Conejo";
 print "&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt;\n";
-?&gt;</code></pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt; </code></pre></td>
-          </tr>
-          <tr>
-            <td class="codphp">
-              <pre>
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt; </code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
 print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php"><pre><code class="language-html">&lt;p&gt;Su nombre es Pepito Conejo.&lt;/p&gt; </code></pre></td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <pre><code class="language-html">&lt;p&gt;Su nombre es Pepito Conejo.&lt;/p&gt; </code></pre>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Los nombres de los primeros índices de la matriz $_SESSION tienen que cumplir las mismas reglas que los nombres de las variables, es decir, que el primer carácter debe ser una letra o un guión bajo (_). En particular, no deben ser números ni contener caracteres no alfanuméricos.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
@@ -348,21 +351,24 @@ print "&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt;\n";
 print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Se ha guardado su nombre.</p>
-              <br />
-              <b>Notice</b>: Unknown: Skipping numeric key 0 in <b>Unknown</b> on line <b>0</b><br />
+        </div>
+        <div class="resultado">
+          <p>Se ha guardado su nombre.</p>
 
-              <pre>Array
+          <b>Notice</b>: Unknown: Skipping numeric key 0 in <b>Unknown</b> on line <b>0</b>
+
+          <pre>Array
 (
 )</pre>
-            </td>
-          </tr>
-          <tr>
-            <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-            <td class="codphp">
-              <pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 session_start();
 
@@ -372,10 +378,10 @@ print "&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt;\n";
 print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-php">
-              <p>Se ha guardado su nombre.</p>
-              <pre>Array
+        </div>
+        <div class="resultado">
+          <p>Se ha guardado su nombre.</p>
+          <pre>Array
 (
     [nombres] =&gt; Array
         (
@@ -383,14 +389,21 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";
         )
 
 )</pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="http://www.php.net/manual/es/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+</pre>
+        </div>
+        <div class="resultado">
+        </div>
+      </div>
 
       <table class="ejemplo">
         <tbody>
@@ -441,6 +454,24 @@ if (isset($_SESSION["nombre"])) {
       </ul>
 
       <p>Cuando se destruye una sesión, el programa que ha destruido la sesión sigue teniendo acceso a los valores de $_SESSION creados antes de la destrucción de la sesión, pero las páginas siguientes no. Si se ejecuta el primero de los ejemplos siguientes y después el segundo, se obtienen los resultados indicados:</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+</pre>
+        </div>
+        <div class="resultado">
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+</pre>
+        </div>
+        <div class="resultado">
+        </div>
+      </div>
 
       <table class="ejemplo">
         <tbody>

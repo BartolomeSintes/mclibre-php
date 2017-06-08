@@ -60,9 +60,14 @@
         <li>Esta aplicación no es vulnerable a todos los ataques de inyección SQL que se comentan en esta lección porque utiliza la extensión PDO. Si quiere probar en su ordenador una aplicación similar vulnerable a todos los ataques que se comentan en esta lección, puede descargar este archivo (<a href="../soluciones/1213/mclibre_inyeccion_sql_2.zip">inyeccion_sql_2.zip</a>) y probarla en su ordenador.</li>
       </ul>
 
-      <p class="enlace-ejercicio"><a href="../ejercicios/bases_datos/inyeccion_sql/inyeccion_sql_1/index.php">Enlace a ejemplo Inyección SQL 1</a></p>
-
-      <p class="ejercicio"><object type="text/html" data="../ejercicios/bases_datos/inyeccion_sql/inyeccion_sql_1/index.php" class="ejercicio">ERROR (no puede mostrarse el objeto)</object></p>
+      <div class="filaflex">
+        <div class="resultado">
+          <object type="text/html" data="../ejercicios/bases_datos/inyeccion_sql/inyeccion_sql_1/index.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="../ejercicios/bases_datos/inyeccion_sql/inyeccion_sql_1/index.php"><img src="../varios/iconos/icono_enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
     </section>
 
     <section id="inyeccion-1">
@@ -70,94 +75,91 @@
 
       <p>Cuando el usuario escriba un nombre de usuario y contraseña, la aplicación responde uno de estos tres mensajes:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html"><p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="resultado">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p>
-                <input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">
-              Nombre de usuario y contraseña correctos.
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario y contraseña correctos.</p>
 
-              <p>Nombre de usuario incorrecto.</p>
+          <p>Nombre de usuario incorrecto.</p>
 
-              <p>Contraseña incorrecta.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p>Contraseña incorrecta.</p>
+        </div>
+      </div>
 
       <hr class="corta" />
 
       <p>Para comprobar si la aplicación incluye los datos enviados por el usuario sin ningún tratamiento previo, podemos enviar una comilla (simple o doble) como dato.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="&#34;loquesea" /> </td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /> </td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="&#34;loquesea" /> </td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /> </td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Nombre de usuario incorrecto.</td>
-          </tr>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario incorrecto.</p>
+        </div>
+      </div>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="'loquesea" /> </td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /> </td>
-                  </tr>
-                </tbody>
-              </table>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <p>/<input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Error en la consulta.</td>
-          </tr>
-        </tbody>
-      </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="'loquesea" /> </td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /> </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Error en la consulta.</p>
+        </div>
+      </div>
 
       <p>Este último mensaje ("Error en la consulta") nos hace saber que no se tratan los datos y que además las consultas están delimitadas por dobles comillas. ¿Por qué?</p>
 
       <p>Probablemente el código de la aplicación es algo similar a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">$usuario    = $_REQUEST["usuario"];
 $contraseña = $_REQUEST["contraseña"];
@@ -177,7 +179,7 @@ if (!$result) {
 
       <p>Al escribir una comilla doble al principio del nombre de usuario, la consulta se convierte en </p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM $dbTabla
 WHERE campo1='"loquesea'
 AND campo2='loquesea'
@@ -188,7 +190,7 @@ AND campo2='loquesea'
 
       <p>Sin embargo, al escribir una comilla simple al principio del nombre de usuario, la consulta se convierte en </p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM $dbTabla
 WHERE campo1=''loquesea'
 AND campo2='loquesea'
@@ -201,35 +203,33 @@ AND campo2='loquesea'
 
       <p>Ahora que sabemos que la consulta está delimitada por comillas dobles podemos escribir unos datos que modificarán la consulta y harán que la aplicación crea que hemos introducido datos de un usuario registrado.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR '1'='1" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR '1'='1" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Nombre de usuario y contraseña correctos.</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario y contraseña correctos.</p>
+        </div>
+      </div>
 
       <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea' OR '1'='1'
@@ -250,31 +250,29 @@ AND campo2='loquesea' OR '1'='1'
 
       <p>Podríamos hacer algo parecido a lo visto en el punto anterior:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario='loquesea" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario='loquesea" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Error en la consulta.</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Error en la consulta.</p>
+        </div>
+      </div>
 
       <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay un campo que se llame "usuario". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
@@ -288,31 +286,29 @@ AND campo2='loquesea' AND usuario='loquesea'
 
       <p>Otra posible entrada podría haber sido la siguiente:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario is NULL; --" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario is NULL; --" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Error en la consulta.</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Error en la consulta.</p>
+        </div>
+      </div>
 
       <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay un campo que se llame "usuario". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
@@ -331,31 +327,29 @@ AND campo2='loquesea' AND usuario is NULL; --'
 
       <p>Hacemos ahora un segundo intento, con el nombre "user"</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND user is NULL; --" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND user is NULL; --" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Nombre de usuario incorrecto.</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario incorrecto.</p>
+        </div>
+      </div>
 
       <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
 
@@ -380,32 +374,29 @@ AND campo2='loquesea' AND user is NULL; --'
 
       <p>Podríamos hacer algo parecido a lo visto en el punto anterior:</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario: </td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --"
-                               /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario: </td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Error en la consulta.</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Error en la consulta.</p>
+        </div>
+      </div>
 
       <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay una tabla que se llame "usuarios". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
@@ -420,35 +411,33 @@ AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --'
 
       <p>Hacemos ahora un segundo intento, con el nombre "tabla"</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Nombre de usuario incorrecto.</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario incorrecto.</p>
+        </div>
+      </div>
 
       <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--
@@ -467,31 +456,29 @@ AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--
 
       <p>Por ejemplo, vamos a buscar nombres de usuarios.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario: </td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR user LIKE 'a%';--" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario: </td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR user LIKE 'a%';--" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Nombre de usuario y contraseña correctos.</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario y contraseña correctos.</p>
+        </div>
+      </div>
 
       <p>La respuesta de la aplicación es "Nombre de usuario y contraseña correctos.", lo que nos indica que hay un usuario cuyo nombre empieza por "a". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
@@ -516,36 +503,33 @@ AND campo2='loquesea' OR user LIKE 'a%';--
 
       <p>La técnica consiste en incluir una sentencia SQL que inserte un registro.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; INSERT INTO tabla ('user', 'password') VALUES ('hacker', 'hacker'); --"
-                               /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; INSERT INTO tabla ('user', 'password') VALUES ('hacker', 'hacker'); --" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Nombre de usuario incorrecto</td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario incorrecto</p>
+        </div>
+      </div>
 
       <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea'; INSERT INTO tabla VALUES (NULL, 'hacker', 'hacker'); --
@@ -569,38 +553,34 @@ AND campo2='loquesea'; INSERT INTO tabla VALUES (NULL, 'hacker', 'hacker'); --
       <p>La técnica consiste en incluir una sentencia SQL que inserte un registro.
       </p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Para entrar en el sistema escriba su nombre de usuario y contraseña:</p>
 
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña:</td>
-                    <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; DROP TABLE tabla; --" /></td>
-                  </tr>
-                </tbody>
-              </table>
+          <table>
+            <tbody>
+              <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              </tr>
+              <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; DROP TABLE tabla; --" /></td>
+              </tr>
+            </tbody>
+          </table>
 
-              <p><input type="submit" value="Entrar" /></p>
-            </td>
-            <td class="resul-html">Nombre de usuario incorrecto
-
-              <p>Error en la consulta.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <p><input type="submit" value="Entrar" /></p>
+        </div>
+        <div class="resultado">
+          <p>Nombre de usuario incorrecto</p>
+          <p>Error en la consulta.</p>
+        </div>
+      </div>
 
       <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea'; DROP TABLE tabla; --
