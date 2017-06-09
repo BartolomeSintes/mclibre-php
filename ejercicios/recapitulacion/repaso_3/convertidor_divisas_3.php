@@ -97,7 +97,7 @@ if ($cantidadOk && $origenOk && $destinoOk) {
     print "<p>Gracias por utilizar este convertidor.</p>\n";
 }
 
-print "<p><a href=\"convertidor_divisas.html\">Volver al formulario.</a></p>\n";
+print "<p><a href=\"convertidor_divisas_3.html\">Volver al formulario.</a></p>\n";
 ?>
 
 <address>
