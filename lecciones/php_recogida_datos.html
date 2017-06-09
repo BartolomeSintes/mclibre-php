@@ -269,94 +269,83 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST[\'nomb
 
         <p>En el programa de ejemplo del principio de esta lección, si el usuario ha utilizado el formulario y ha escrito un dato, el programa PHP recibe el control y funciona correctamente:</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=Pepito+Conejo</span></td>
-            </tr>
-            <tr>
-              <td class="resul-html"><p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=Pepito+Conejo</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>Array
+          </div>
+          <div class="resultado">
+            <pre>Array
 (
     [nombre] =&gt; Pepito Conejo
 )</pre>
-
-                <p>Su nombre es Pepito Conejo</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p>Su nombre es Pepito Conejo</p>
+          </div>
+        </div>
 
         <p>Pero si el usuario no escribe nada en el formulario, aunque el programa funcione correctamente, la respuesta del programa puede confundir al usuario:</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span> </td>
-            </tr>
-            <tr>
-              <td class="resul-html">
-                <p>Nombre: <input type="text" name="texto" readonly="readonly" /></p>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>Array
+          </div>
+          <div class="resultado">
+            <pre>Array
 (
     [nombre] =&gt;
 )</pre>
-
-                <p><span class="codigo-resaltado">Su nombre es</span></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p><span class="codigo-resaltado">Su nombre es</span></p>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p>Este problema se puede resolver incluyendo una estructura if ... else ... que considere la posiblidad de que no se haya escrito nada en el formulario:</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span> </td>
-            </tr>
-            <tr>
-              <td class="resul-html">
-                <p>Nombre: <input type="text" name="texto" readonly="readonly" /></p>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
@@ -367,18 +356,15 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>Array
+          </div>
+          <div class="resultado">
+            <pre>Array
 (
     [nombre] =&gt;
 )</pre>
-
-                <p>No ha escrito ningún nombre</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p>No ha escrito ningún nombre</p>
+          </div>
+        </div>
       </section>
 
       <section id="isset">
@@ -388,43 +374,37 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
 
         <p>Eso puede ocurrir, por ejemplo, en el caso de las casillas de verificación y los botones radio, ya que los formularios envían el control solamente cuando se han marcado.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codhtml">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
   &lt;p&gt;Deseo recibir información: &lt;input type="checkbox" name="acepto" /&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <p>Deseo recibir información: <input type="checkbox" /></p>
+          </div>
+          <div class="resultado">
+            <p>Deseo recibir información: <input type="checkbox" /></p>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+        </div>
 
         <p>Si en el formulario anterior el usuario marca la casilla, el siguiente programa funciona perfectamente:</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php?acepto=on</span></td>
-            </tr>
-            <tr>
-              <td class="resul-html">
-                <p>Deseo recibir información: <input type="checkbox" checked="checked" readonly="readonly" /></p>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?acepto=on</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Deseo recibir información: <input type="checkbox" checked="checked" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
@@ -435,35 +415,31 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>Array
+          </div>
+          <div class="resultado">
+            <pre>Array
 (
     [acepto] =&gt; on
 )</pre>
-
-                <p><span class="codigo-resaltado">Desea recibir información</span></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p><span class="codigo-resaltado">Desea recibir información</span></p>
+          </div>
+        </div>
 
         <p>Pero si el usuario no marca la casilla, la matriz $_REQUEST no contiene el dato y el programa genera un aviso por hacer referencia a un índice no definido, aunque se haya incluido la estructura if ... else ... :</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php</span></td>
-            </tr>
-            <tr>
-              <td class="resul-html"><p>Deseo recibir información: <input type="checkbox" readonly="readonly" /></p>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Deseo recibir información: <input type="checkbox" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
@@ -474,36 +450,31 @@ if (<span class="codigo-resaltado">$_REQUEST["acepto"] == "on"</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>Array
+          </div>
+          <div class="resultado">
+            <pre>Array
 (
 )</pre>
-
-                <p class="codigo-resaltado"><strong>Notice</strong>: Undefined index: acepto in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
-
-                <p>No desea recibir información</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p class="codigo-resaltado"><strong>Notice</strong>: Undefined index: acepto in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
+            <p>No desea recibir información</p>
+          </div>
+        </div>
 
         <p>Esto puede ocurrir en realidad en cualquier formulario (incluso en formularios con cajas de texto que en principio envían siempre el control) ya que el usuario puede escribir directamente la dirección del programa PHP en el navegador y ejecutar el programa PHP sin pasar por el formulario. En ese caso, el programa no recibe ningún control y el programa genera un aviso por hacer referencia a un índice no definido:</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php</span></td>
-            </tr>
-            <tr>
-              <td class="resul-html"><p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
         <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
@@ -514,39 +485,33 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>Array
+          </div>
+          <div class="resultado">
+            <pre>Array
 (
 )</pre>
-
-                <p class="codigo-resaltado"><strong>Notice</strong>: Undefined index: nombre in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
-
-                <p>No ha escrito ningún nombre</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p class="codigo-resaltado"><strong>Notice</strong>: Undefined index: nombre in <strong>ejemplo.php</strong> on line <strong>4</strong></p>
+            <p>No ha escrito ningún nombre</p>
+          </div>
+        </div>
 
         <hr class="corta" />
 
         <p>Estos problemas se pueden resolver comprobando que el índice está definido antes de hacer referencia a él, utilizando la función <a href="http://www.php.net/manual/es/function.isset.php"><span class="php-fun">isset($variable)</span></a>, que admite como argumento una variable y devuelve <span class="php-ope">true</span> si existe y <span class="php-ope">false</span> si no existe.</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php?acepto=on</span></td>
-            </tr>
-            <tr>
-              <td class="resul-html">
-                Deseo recibir información: <input type="checkbox" checked="checked" readonly="readonly" />
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?acepto=on</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            Deseo recibir información: <input type="checkbox" checked="checked" readonly="readonly" />
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
     print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
@@ -555,21 +520,25 @@ if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">Desea recibir información</td>
-            </tr>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php</span></td>
-            </tr>
-            <tr>
-              <td class="resul-html">Deseo recibir información: <input type="checkbox" readonly="readonly" />
+          </div>
+          <div class="resultado">
+            <p>No desea recibir información</p>
+          </div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php</span></div>
+        </div>
+
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Deseo recibir información: <input type="checkbox" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
     print "&lt;p&gt;Desea recibir información&lt;/p&gt;\n";
@@ -578,11 +547,11 @@ if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">No desea recibir información</td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>No desea recibir información</p>
+          </div>
+        </div>
 
         <p>Es conveniente efectuar siempre la verificación de existencia para prevenir los casos en que un usuario intente acceder a la página PHP sin pasar por el formulario.</p>
       </section>
@@ -593,61 +562,53 @@ if (<span class="codigo-resaltado">isset($_REQUEST["acepto"])</span>) {
 
       <p>Un usuario puede insertar código html en la entrada de un formulario, lo que puede acarrear comportamientos inesperados y riesgos de seguridad. El siguiente ejemplo solamente perjudicaría al aspecto de la página:</p>
 
-      <table class="ejemplo3">
-        <tbody>
-          <tr>
-            <td class="resul-html">Nombre: <input type="text" name="texto" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" readonly="readonly" />
-
-              <p><input type="submit" value="Enviar" /></p>
-            </td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" readonly="readonly" /></p>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>&lt;pre&gt;Array
+        </div>
+        <div class="resultado">
+          <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
 )
 &lt;/pre&gt;
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>&lt;/p&gt;
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>El siguiente ejemplo muestra cómo puede utilizarse un formulario para inyectar en la página código JavaScript. En este caso el código genera una ventana emergente que sólo afecta al propio usuario, pero esta vía podría utilizarse para atacar al servidor.</p>
 
       <p><strong>Nota</strong>: El ejemplo funciona actualmente (septiembre de 2014) en Firefox, no funciona en Chrome e Internet Explorer se protege modificando la página.</p>
 
-      <table class="ejemplo3">
-        <tbody>
-          <tr>
-            <td class="resul-html">
-              Nombre: <input type="text" name="texto" value="&lt;body onload=&#34;alert('Hola')&#34;&gt;" readonly="readonly" />
-
-              <p><input type="submit" value="Enviar" /></p>
-            </td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" value="&lt;body onload=&#34;alert('Hola')&#34;&gt;" readonly="readonly" /></p>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html"><p><img alt="Recogida de datos. Inyección de JavaScript" src="../img/php/recogida_datos_1.png" width="250" height="150" /></p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="resultado">
+          <p><img alt="Recogida de datos. Inyección de JavaScript" src="../img/php/recogida_datos_1.png" width="250" height="150" /></p>
+        </div>
+      </div>
 
       <p>Estos dos ejemplos no pondrían el riesgo el servidor, pero si en una aplicación web los datos que envía el usuario se incluyen sin precaución en una consulta SQL estaríamos hablando de una vía de ataque al servidor muy peligrosa (puede consultarse una introducción elemental a estas técnicas en la lección <a href="php_db_inyeccion_sql.html">Inyección SQL</a>).</p>
 
@@ -656,16 +617,13 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 
         <p>Una manera de resolver el problema anterior es utilizar la función <a href="http://www.php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags($cadena)</span></a>, que devuelve la cadena sin etiquetas, como muestra el siguiente ejemplo.</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
@@ -673,9 +631,9 @@ print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</s
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>&lt;pre&gt;Array
+          </div>
+          <div class="resultado">
+            <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
 )
@@ -683,42 +641,35 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>&lt;/p&gt;
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <p>Aunque hay que tener en cuenta que esta función elimina cualquier cosa que se interprete como una etiqueta, es decir, que empiece por "&lt;".</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;pepe&gt;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;pepe&gt;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
 print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQUEST["nombre"])</span> . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="codhtml">
-                <pre>&lt;pre&gt;Array
+          </div>
+          <div class="resultado">
+            <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;pepe&gt;</span>
 )
 &lt;/pre&gt;
 &lt;p&gt;Su nombre es&lt;/p&gt;
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </section>
 
       <section id="trim">
@@ -728,21 +679,19 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
 
         <p>En el programa de ejemplo del apartado anterior en el que se escribía una estructura if ... else ... para avisar al usario si no escribía el nombre, si el usuario escribe únicamente espacios en blanco, el programa funciona, pero no da la respuesta adecuada ya que la cadena con espacios en blanco no es una cadena vacía.</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span> </td>
-            </tr>
-            <tr>
-              <td class="resul-html">
-                <p>Nombre: <input type="text" name="texto" readonly="readonly" value="   " /></p>
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="   " /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
@@ -753,37 +702,33 @@ if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nom
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>&lt;pre&gt;Array
+          </div>
+          <div class="resultado">
+            <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">   </span>
 )
 &lt;/pre&gt;
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">   </span>&lt;/p&gt;
 </pre>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
 
         <p>Este problema se puede resolver utilizando la función <a href="http://www.php.net/manual/es/function.trim.php" title="Ver manual de PHP"><span class="php-fun">trim($cadena)</span></a>, que elimina los espacios en blanco iniciales y finales y devuelve la cadena sin esos espacios. Modificando el ejemplo anterior, la cadena introducida queda reducida a la cadena vacía y la comprobación la detecta:</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td>ejemplo.html</td>
-              <td>ejemplo.php</td>
-              <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span> </td>
-            </tr>
-            <tr>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="      " />
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=</span></div>
+        </div>
 
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="      " /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
@@ -793,18 +738,15 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <pre>Array
+          </div>
+          <div class="resultado">
+            <pre>Array
 (
     [nombre] =&gt;
 )</pre>
-
-                <p><span class="codigo-resaltado">No ha escrito ningún nombre</span></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <p><span class="codigo-resaltado">No ha escrito ningún nombre</span></p>
+          </div>
+        </div>
       </section>
     </section>
 
@@ -820,33 +762,30 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
 
       <p>Una manera de hacerlo sin complicar excesivamente el programa es guardar los valores de la matriz $_REQUEST en variables y realizar todas las comprobaciones al definir esas variables. En el resto del código basta con utilizar la variable en vez del elemento de la matriz $_REQUEST. En los siguientes ejemplos, se puede ver cómo el programa no genera avisos y muestra el mensaje correspondiente al dato recibido:</p>
 
-      <table class="ejemplo3">
-        <tbody>
-          <tr>
-            <td>ejemplo.html</td>
-            <td>ejemplo.php</td>
-            <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=   </span></td>
-          </tr>
-          <tr>
-            <td class="resul-html">
-              Nombre: <input type="text" name="texto" readonly="readonly" value="   " />
+      <div class="filaflex cabecera">
+        <div>ejemplo.html</div>
+        <div>ejemplo.php</div>
+        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=   </span></div>
+      </div>
 
-              <p><input type="submit" value="Enviar" /></p>
-            </td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex">
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" readonly="readonly" value="   " /></p>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br />
 </pre>
-              <pre class="codigo-resaltado">
+          <pre class="codigo-resaltado">
 <code class="language-php">if (isset($_REQUEST["nombre"])) {
     $nombre = trim(strip_tags($_REQUEST["nombre"]));
 } else {
     $nombre = "";
 }</code>
-<br />
 </pre>
-              <pre>
+          <pre>
 <code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
@@ -854,43 +793,44 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>&lt;pre&gt;Array
+        </div>
+        <div class="resultado">
+          <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt;
 )
 &lt;/pre&gt;
 &lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;
 </pre>
-            </td>
-          </tr>
-          <tr>
-            <td>ejemplo.html</td>
-            <td>ejemplo.php</td>
-            <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span> </td>
-          </tr>
-          <tr>
-            <td class="resul-html">Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" />
+        </div>
+      </div>
 
-              <p><input type="submit" value="Enviar" /></p>
-            </td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex cabecera">
+        <div>ejemplo.html</div>
+        <div>ejemplo.php</div>
+        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span></div>
+      </div>
+
+      <div class="filaflex">
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" /></p>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
 <br />
 <br />
 </pre>
-              <pre class="codigo-resaltado">
+          <pre class="codigo-resaltado">
 <code class="language-php">if (isset($_REQUEST["nombre"])) {
     $nombre = trim(strip_tags($_REQUEST["nombre"]));
 } else {
     $nombre = "";
 }</code>
-<br />
 </pre>
-              <pre>
+          <pre>
 <code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
@@ -898,43 +838,38 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>&lt;pre&gt;Array
+        </div>
+        <div class="resultado">
+          <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
 )
 &lt;/pre&gt;
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>La asignación de la variable se puede realizar en una sola instrucción, utilizando la notación abreviada: (condición) ? verdadero : falso; (que se explica en la lección de <a href="php_estructuras_control.html#if-else-abreviado">estructuras de control</a>):</p>
 
-      <table class="ejemplo3">
-        <tbody>
-          <tr>
-            <td>ejemplo.html</td>
-            <td>ejemplo.php</td>
-            <td><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span> </td>
-          </tr>
-          <tr>
-            <td class="resul-html">
-              Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" />
+        <div class="filaflex cabecera">
+          <div>ejemplo.html</div>
+          <div>ejemplo.php</div>
+          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span></div>
+        </div>
 
+        <div class="filaflex">
+          <div class="resultado">
+              <p>Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" /></p>
               <p><input type="submit" value="Enviar" /></p>
-            </td>
-            <td class="codphp">
-              <pre>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br /></pre>
               <pre class="codigo-resaltado"><code class="language-php">$nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
     : "";</code>
-<br />
 </pre>
               <pre>
 <code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
@@ -944,8 +879,8 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br
 }
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
+          </div>
+          <div class="resultado">
               <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
@@ -953,10 +888,8 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br
 &lt;/pre&gt;
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          </div>
+        </div>
     </section>
 
     <section id="salida">
@@ -971,17 +904,16 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br
 
         <p>La página es inválida porque el carácter &amp; indica el comienzo de una <a href="http://www.mclibre.org/consultar/htmlcss/html/html_entidades_caracter.html">entidad de carácter</a>, así que no el código fuente no puede haber un &amp; sin nada a continuación. Si se quiere mostrar un carácter &amp; en el navegador, en el código fuente debe escribirse la entidad de carácter &amp;amp;.</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Pepito &amp; Company" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+          </div>
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Pepito &amp; Company" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
@@ -994,25 +926,24 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html"><pre>&lt;p&gt;Su nombre es Pepito <span class="codigo-resaltado">&amp;</span> Company&lt;/p&gt;</pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre>&lt;p&gt;Su nombre es Pepito <span class="codigo-resaltado">&amp;</span> Company&lt;/p&gt;</pre>
+          </div>
+        </div>
 
         <p>La solución es sustituir el carácter &amp; por su entidad de carácter correspondiente (&amp;amp;). Eso se puede hacer con la función <a href="http://www.php.net/manual/es/function.str-replace.php" class="php-fun">str_replace()</a></p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Pepito &amp; Company" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+          </div>
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Pepito &amp; Company" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
@@ -1026,11 +957,11 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html"><pre>&lt;p&gt;Su nombre es Pepito <span class="codigo-resaltado">&amp;amp;</span> Company&lt;/p&gt;</pre></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <pre>&lt;p&gt;Su nombre es Pepito <span class="codigo-resaltado">&amp;amp;</span> Company&lt;/p&gt;</pre>
+          </div>
+        </div>
       </section>
 
       <section id="comillas">
@@ -1038,17 +969,16 @@ if ($nombre == "") {
 
         <p>Si el usuario escribe en una entrada el carácter " (comillas, entidad de carácter &amp;quot;), si esa cadena se escribe dentro de otras comillas (por ejemplo, en el atributo <span class="html-atri">value</span> de una etiqueta <span class="html-eti">input</span>), la página no se verá correctamente y además no será válida.</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" /></td>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+          </div>
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
@@ -1061,31 +991,30 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo " /></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo " /></p>
+          </div>
+        </div>
 
         <p>El problema es que el código fuente contiene comillas dentro de comillas y el navegador no puede interpretar correctamente el código (en este caso, el valor del atributo value es solamente "Me llamo":</p>
 
-        <div class="codphp">
+        <div class="codigo">
           <pre><code class="language-html">&lt;p&gt;Corrige: &lt;input type="text" value=<span class="codigo-resaltado">"Me llamo "Pepe""</span> /&gt;&lt;/p&gt;</code></pre>
         </div>
 
         <p>Como en el caso anterior, la solución es sustituir el carácter " por su entidad de carácter correspondiente (&amp;quot;). Eso se puede hacer con la función <a href="http://www.php.net/manual/es/function.str-replace.php" class="php-fun">str_replace()</a></p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td><img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" /></td>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono_oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+          </div>
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
@@ -1099,11 +1028,11 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" /></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" /></p>
+          </div>
+        </div>
       </section>
 
       <section id="htmlspecialchars">
@@ -1113,16 +1042,13 @@ if ($nombre == "") {
 
         <p><strong>Nota</strong>: PHP 5.4.0 modificó el juego de caracteres predeterminado de esta función (de ISO-8859-1 a UTF-8). Si se está trabajando con ficheros en el código de caracteres ISO-8859-1, se deben añadir dos argumentos en la llamada a <span class="php-fun">htmlspecialchars()</span>: ENT_QUOTES e "ISO-8859-1" (sin comillas y con comillas respectivamente).</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? <span class="codigo-resaltado">htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])), ENT_QUOTES, "UTF-8")</span>
@@ -1135,24 +1061,21 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" /></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &#34;Pepe&#34;" /></p>
+          </div>
+        </div>
 
         <p>El ejemplo anterior tiene el inconveniente de que la primera funcion que se aplica es <a href="http://www.php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> por lo que se elimará todo lo que esté entre marcas (&lt;&gt;).</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? <span class="codigo-resaltado">htmlspecialchars(trim(strip_tags($_REQUEST["nombre"])), ENT_QUOTES, "UTF-8")</span>
@@ -1165,24 +1088,21 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo Pepe" /></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo Pepe" /></p>
+          </div>
+        </div>
 
         <p>Si no queremos quitar etiquetas, pero no queremos que se consideren como etiquetas sino como texto, habría que aplicar primero la función <a href="http://www.php.net/manual/es/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a>, como en el ejemplo siguiente.</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? <span class="codigo-resaltado">strip_tags(trim(htmlspecialchars($_REQUEST["nombre"], ENT_QUOTES, "UTF-8")))</span>
@@ -1195,24 +1115,21 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" /></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" /></p>
+          </div>
+        </div>
 
         <p>En el ejemplo anterior la función <a href="http://www.php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> no hace nada puesto que las marcas &lt; y &gt; se han cambiado antes por las entidades de carácter &amp;lt; y &amp;gt; así que se podría simplificar el programa:</p>
 
-        <table class="ejemplo3">
-          <tbody>
-            <tr>
-              <td class="resul-html">
-                Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" />
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-              <td class="codphp">
-                <pre>
+        <div class="filaflex">
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $nombre = (isset($_REQUEST["nombre"]))
     ? <span class="codigo-resaltado">trim(htmlspecialchars($_REQUEST["nombre"], ENT_QUOTES, "UTF-8"))</span>
@@ -1225,11 +1142,11 @@ if ($nombre == "") {
 }
 ?&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" /></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>Corrija: <input type="text" name="texto" readonly="readonly" value="Me llamo &lt;strong&gt;Pepe&lt;/strong&gt;" /></p>
+          </div>
+        </div>
       </section>
     </section>
 
@@ -1303,28 +1220,22 @@ if ($nombre == "") {
 
         <p>Si un formulario envía los datos en forma de matriz, como en el ejemplo siguiente, la función recoge() del punto anterior no serviría.</p>
 
-        <table class="ejemplo">
-          <tbody>
-            <tr>
-              <td class="codhtml">
-                <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre[1]" /&gt;&lt;/p&gt;
   &lt;p&gt;Apellido: &lt;input type="text" name="nombre[2]" /&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
-              </td>
-              <td class="resul-html">
-                <p>Nombre: <input type="text" name="texto" value="Pepito" readonly="readonly" /></p>
-
-                <p>Apellido: <input type="text" name="texto" value="Conejo" readonly="readonly" /></p>
-
-                <p><input type="submit" value="Enviar" /></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+          <div class="resultado">
+            <p>Nombre: <input type="text" name="texto" value="Pepito" readonly="readonly" /></p>
+            <p>Apellido: <input type="text" name="texto" value="Conejo" readonly="readonly" /></p>
+            <p><input type="submit" value="Enviar" /></p>
+          </div>
+        </div>
 
         <p>Hay que hacer otra función que recoja y trate los datos en forma de matriz.</p>
         <ul>

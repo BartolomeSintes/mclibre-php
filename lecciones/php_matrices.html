@@ -49,49 +49,47 @@
 
       <p>En PHP 5.4 (publicado en marzo de 2012) se introdujo en PHP la notación compacta de matrices, que permite definir matrices sin utilizar la función <span class="php-fun">array()</span> o añadir valores sin utilizar la función <span class="php-fun">array_push()</span>.</p>
 
-      <table class="ejemplo">
-        <tbody>
-          <tr>
-            <th></th>
-            <th>Notación clásica</th>
-            <th>Notación compacta</th>
-          </tr>
-          <tr>
-            <td>Definir una matriz</td>
-            <td class="codphp">
-              <pre>
+      <div class="filaflex cabecera">
+        <div class="nogrow">Operación</div>
+        <div>Notación clásica</div>
+        <div>Notación compacta</div>
+      </div>
+
+      <div class="filaflex">
+        <div class="nogrow">Definir una matriz</div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres = array("Ana", "Bernardo", "Carmen");
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres = ["Ana", "Bernardo", "Carmen"];
 ?&gt;</code>
 </pre>
-            </td>
-          </tr>
-          <tr>
-            <td>Añadir un elemento</td>
-            <td class="codphp">
-              <pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="nogrow">Añadir un elemento</div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $array_push($nombres, "David");
 ?&gt;</code>
 </pre>
-            </td>
-            <td class="codphp">
-              <pre>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $nombres[] = "David";
 ?&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <p>Actualmente (octubre de 2016) todavía se encuentran servidores con sistemas operativos cuya versión de PHP es anterior a 5.4 (por ejemplo, RedHat 6, publicada en agosto de 2010, con soporte por lo menos hasta 2020, Ubuntu 12.04 LTS, publicada en abril de 2012, con soporte hasta abril de 2017, o SUSE LE 11, publicada en marzo de 2009, con soporte por lo menos hasta marzo de 2019, todas ellas incluyen PHP 5.3). Por ello, si se quieren escribir programas que funcionen en el mayor número posible de servidores, debería evitarse la notación compacta.</p>
 
