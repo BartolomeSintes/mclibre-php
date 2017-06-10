@@ -80,8 +80,9 @@ if (!$nombreOk || !$edadOk) {
 <?php
 print "<p>Su nombre es <strong>$nombre</strong>.</p>\n\n";
 print "<p>Su edad es <strong>$edad</strong> años.</p>\n";
-
 ?>
+
+<p><a href="sesiones_2_11_1.php">Volver al inicio.</a></p>
 
 <footer>
   <p class="ultmod">
