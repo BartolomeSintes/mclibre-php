@@ -41,7 +41,7 @@
 
       <p>Las <a href="http://www.php.net/manual/es/features.cookies.php">cookies</a> permiten que el servidor almacene datos en el ordenador del cliente.</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">// Las cookies deben crearse o destruirse antes de enviar ningún carácter al navegador.
 
@@ -75,7 +75,7 @@ setcookie(nombreCookie, valorCookie, time() - 3600);</code>
 
       <p>Las <a href="http://www.php.net/manual/es/ref.session.php">sesiones</a> permiten que PHP "recuerde" datos cuando el usuario cambia de página dentro de un mismo sitio web, sin necesidad de ir pasándola de página a página como controles ocultos.</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">// Para utilizar variables de sesión, cada página debe abrir la sesión:
 
@@ -105,12 +105,11 @@ session_destroy();</code>
     <section id="ejemplos">
       <h2>Ejemplos</h2>
 
-      <table>
-        <caption>Ejemplo: Contador del número de accesos a una página</caption>
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <h3>Contador del número de accesos a una página</h3>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 //contador del número de accesos a una página por sesión.
 session_start();
@@ -121,7 +120,7 @@ if (!isset($_SESSION["count"])) {
 }
 ?&gt;</code>
 </pre>
-              <pre>
+          <pre>
 <code class="language-html">&lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;Contador de accesos&lt;/title&gt;
@@ -129,21 +128,21 @@ if (!isset($_SESSION["count"])) {
 &lt;body&gt;
 &lt;p&gt;</code>
 </pre>
-              <pre>
+          <pre>
 <code class="language-php">&lt;?php
 print("Hola, has accedido a esta página ");
 print($_SESSION["count"]);
 print(" veces.");
 ?&gt;</code>
 </pre>
-              <pre>
+          <pre>
 <code class="language-html">&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </td>
-            <td class="resul-html">
-              <pre>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-html">&lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;Contador de accesos&lt;/title&gt;
@@ -153,17 +152,12 @@ print(" veces.");
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
-      <table>
-        <caption>Ejemplo: Configuración personalizada de los colores de una página.</caption>
-        <tbody>
-          <tr>
-            <td class="codhtml">
-              <pre>
+      <h3>Configuración personalizada de los colores de una página</h3>
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 session_start();
 
@@ -198,7 +192,7 @@ function traduce($color)
 }
 ?&gt;</code>
 </pre>
-              <pre>
+        <pre>
 <code class="language-html">&lt;h2&gt;Elige los tus colores favoritos&lt;/h2&gt;
 &lt;form action="<code class="language-php"><span class="preprocessor">&lt;?php</span> <span class="keyword">echo</span>(<span class="variable">$_SERVER</span>[<span class="string">"PHP_SELF"</span>]) <span class="preprocessor">?&gt;</span></code>" method="post"&gt;
   &lt;p&gt;Color de fondo:
@@ -224,10 +218,7 @@ function traduce($color)
 &lt;/body&gt;
 &lt;/html&gt;<span class="preprocessor"></span></code>
 </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
     </section>
 
     <footer>

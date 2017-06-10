@@ -72,7 +72,7 @@
         <li>Si el usuario intenta acceder directamente a la página que crea la tabla (escribiendo la dirección en el navegador), se le redireccionará directamente a la página inicial.</li>
         <li>Esta pueden ser las consultas de creación de tabla para este proyecto:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Tamaño de los campos en la tabla
 $tamNombre    = 40; // Tamaño del campo Nombre
@@ -138,7 +138,7 @@ $consulta = "CREATE TABLE $dbTabla (
       <ul>
         <li>MySQL no permite guardar registros más largos que el tamaño del campo, por lo que se puede avisar al usuario del problema:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Comprobar la longitud del dato recibido
 $nombre    = recoge("nombre");
@@ -153,7 +153,7 @@ if (mb_strlen($nombre, "UTF-8") &gt; $tamNombre) {
         </li>
         <li>Esta puede ser la consulta preparada de inserción:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Añadir un registro
 $nombre    = recoge("nombre");
@@ -197,7 +197,7 @@ if ($result-&gt;execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apell
       <ul>
         <li>Para listar los registros, esta puede ser la consulta de selección:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Seleccionar todos los registros
 $consulta = "SELECT * FROM $dbTabla";
@@ -243,7 +243,7 @@ foreach ($result as $valor) {
       <ul>
         <li>Para seleccionar los registros a borrar, se puede utilizar una casilla de verificación cuyo nombre contenga el id del registro. Lo mejor es que los nombres formen una matriz.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Imprime casilla de verificación
 $consulta = "SELECT * FROM $dbTabla";
@@ -258,7 +258,7 @@ foreach ($result as $valor) {
         <li>En la biblioteca será necesario añadir la función recogeMatriz() de la lección <a href="../../lecciones/php_recogida_datos.html#recoger-matriz">Recogida de datos</a>.</li>
         <li>Para borrar los registros, esta puede ser la consulta preparada de borrado:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Recoge los registros seleccionados
 $id = recogeMatriz("id");
@@ -308,7 +308,7 @@ foreach ($id as $indice =&gt; $valor) {
         <li>La primera página es un formulario como el de añadir registros.</li>
         <li>Para buscar los registros, esta puede ser la consulta preparada de selección:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Imprime casilla de verificación
 $nombre    = recoge("nombre");
@@ -355,7 +355,7 @@ $result-&gt;execute(array(":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$ape
       <ul>
         <li>La primera página es un formulario como el de borrar, salvo que en vez de una casilla de verificación, se puede utilizar un botón radio cuyo valor contenga el id del registro.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Imprime botón radio
 $consulta = "SELECT * FROM $dbTabla";
@@ -369,7 +369,7 @@ foreach ($result as $valor) {
         </li>
         <li>En la segunda página, como sólo se recupera el registro seleccionado en la primera página, no es necesario utilizar un bucle <span class="php-res">foreach</span> y se puede utilizar el método $result-&gt;fetch(). La consulta puede ser la siguiente:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Recoge el registro seleccionado
 $id = recoge("id");
@@ -384,7 +384,7 @@ $valor = $result-&gt;fetch();</code>
         </li>
         <li>La segunda página es un formulario como el de añadir, salvo que los campos contienen el valor del registro seleccionado en la primera página:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Muestra valor
 print "              &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$tamNombre\" maxlength=\"$tamNombre\" value=\"$valor[nombre]\" autofocus=\"autofocus\" /&gt;&lt;/td&gt;\n";</code>
@@ -393,7 +393,7 @@ print "              &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$t
         </li>
         <li>En la segunda página hay que incluir en el formulario un control oculto que contenga el id del registro para pasarselo a la tercera página
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// Control oculto con el id del registro mdificado
 print "          &lt;input type=\"hidden\" name=\"id\" value=\"$id\" /&gt;\n";</code>
@@ -402,7 +402,7 @@ print "          &lt;input type=\"hidden\" name=\"id\" value=\"$id\" /&gt;\n";</
         </li>
         <li>En la tercera página, para modificar el registro seleccionado, esta puede ser la consulta preparada de actualización:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");

@@ -42,7 +42,7 @@
 
       <p>En PHP, las cookies se crean mediante la función <a href="http://www.php.net/manual/es/function.setcookie.php">setcookie()</a>. Por ejemplo:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo");
@@ -52,7 +52,7 @@ setcookie("nombre", "Pepito Conejo");
 
       <p>Si se quiere guardar en una cookie una matriz de datos, es necesario crear cada elemento de la matriz en una cookie distinta. Por ejemplo:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 setcookie("datos[nombre]", "Pepito");
@@ -106,7 +106,7 @@ line 3) in prueba.php on line 4</code>
         <dt>$expiracion</dt>
         <dd>Establece el momento en que se borrará la cookie, expresado como tiempo Unix. Por ello, normalmente se utiliza la función <a href="http://www.php.net/manual/es/function.time.php">time()</a> (que indica el momento actual como tiempo Unix) más la duración en segundos que queremos que tenga la cookie
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo", time() + 60);  // Esta cookie se borrará un minuto después de crearla.
@@ -141,7 +141,7 @@ setcookie("nombre", "Pepito Conejo", time() + 60);  // Esta cookie se borrará u
 
       <p>Para borrar una cookie, simplemente se debe volver a crear la cookie con un tiempo de expiración anterior al presente.</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo", time() - 60);  // Esta cookie se borrará inmediatamente.
@@ -151,7 +151,7 @@ setcookie("nombre", "Pepito Conejo", time() - 60);  // Esta cookie se borrará i
 
       <p>Si solamente queremos borrar el valor almacenado en la cookie sin borrar la propia cookie, simplemente se debe volver a crear la cookie, sin indicarle el valor a almacenar:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre");  // Esta cookie no se borra, pero no guardará ningún valor.
@@ -170,7 +170,7 @@ setcookie("nombre");  // Esta cookie no se borra, pero no guardará ningún valo
 
       <p>El ejemplo siguiente saluda al usuario por su nombre si el nombre del usuario estaba guardado en una cookie.</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 if (isset($_COOKIE["nombre"])) {
@@ -184,7 +184,7 @@ if (isset($_COOKIE["nombre"])) {
 
       <p>En caso de que se haya guardado una matriz en forma de cookies, el ejemplo sería el siguiente:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 if (isset($_COOKIE["datos"]["nombre"]) &amp;&amp; isset($_COOKIE["datos"]["apellidos"])) {
@@ -206,7 +206,7 @@ if (isset($_COOKIE["datos"]["nombre"]) &amp;&amp; isset($_COOKIE["datos"]["apell
 
       <p>Por ello, el siguiente programa no dará el mismo resultado cuando se ejecute por primera vez que las veces posteriores:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo");

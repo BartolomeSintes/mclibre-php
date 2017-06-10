@@ -276,7 +276,7 @@ AND campo2='loquesea' OR '1'='1'
 
       <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay un campo que se llame "usuario". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea' AND usuario='loquesea'
@@ -312,7 +312,7 @@ AND campo2='loquesea' AND usuario='loquesea'
 
       <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay un campo que se llame "usuario". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea' AND usuario is NULL; --'
@@ -353,7 +353,7 @@ AND campo2='loquesea' AND usuario is NULL; --'
 
       <p>En este caso, la consulta a la base de datos será algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea' AND user is NULL; --'
@@ -400,7 +400,7 @@ AND campo2='loquesea' AND user is NULL; --'
 
       <p>La respuesta de la aplicación es "Error en la consulta", lo que nos indica que no hay una tabla que se llame "usuarios". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --'
@@ -482,7 +482,7 @@ AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--
 
       <p>La respuesta de la aplicación es "Nombre de usuario y contraseña correctos.", lo que nos indica que hay un usuario cuyo nombre empieza por "a". En este caso, la consulta a la base de datos habrá sido algo parecido a esto:</p>
 
-      <div class="codphp">
+      <div class="codigo">
         <pre>SELECT COUNT(*) FROM tabla
 WHERE campo1='loquesea'
 AND campo2='loquesea' OR user LIKE 'a%';--

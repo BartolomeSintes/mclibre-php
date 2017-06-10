@@ -42,7 +42,7 @@
       <ul>
         <li>El formulario contiene un botón Enviar que no envía ningún dato y que representa que se juega.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">print "      &lt;td style=\"vertical-align: top; text-align: center\"&gt;"
     . "&lt;p&gt;&lt;input type=\"submit\" value=\"Jugar\" /&gt;&lt;/p&gt;&lt;/td&gt;\n";</code>
@@ -51,13 +51,13 @@
         </li>
         <li>El formulario llama a la misma página.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre><code class="language-php">print "&lt;form action=\"$_SERVER[PHP_SELF]\" method=\"get\"&gt;\n\n";</code></pre>
           </div>
         </li>
         <li>Se generan aleatoriamente tres variables con números del 1 al 6 (para mostrar las imágenes)
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$a = rand(1, 6);
 $b = rand(1, 6);
@@ -77,14 +77,14 @@ $c = rand(1, 6);</code>
       <ul>
         <li>Añada un botón de enviar que represente el haber metido una moneda en la máquina tragaperras.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre><code class="language-php">print "        &lt;p&gt;&lt;input type=\"submit\" name=\"moneda\" value=\"Meter moneda\" /&gt;&lt;/p&gt;\n";</code></pre>
           </div>
         </li>
         <li>Cada vez que se mete una moneda o se juega, se renueva la combinación de frutas.</li>
         <li>Cada vez que se mete una moneda, la cantidad apostada aumenta en 1.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">if ($moneda != "") {
     $apuesta += 1;
@@ -93,13 +93,13 @@ $c = rand(1, 6);</code>
         </li>
         <li>Muestre un contador de las monedas introducidas.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre><code class="language-php">print "        &lt;p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\"&gt;$apuesta&lt;/p&gt;\n";</code></pre>
           </div>
         </li>
         <li>Al hacer clic en el botón Jugar, la cantidad apostada se debe poner a cero.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">if ($jugar != "") {
     $apuesta = 0;
@@ -109,13 +109,13 @@ $c = rand(1, 6);</code>
         </li>
         <li>Incluya un control oculto con la cantidad apostada.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre><code class="language-php">print "&lt;p&gt;&lt;input type=\"hidden\" name=\"apuesta\" value=\"$apuesta\" /&gt;&lt;/p&gt;\n\n";</code></pre>
           </div>
         </li>
         <li>La validación de la cantidad apostada comprobará que se trata de un número entero mayor o igual que cero. En caso de no ser correcto, se le dará el valor 0.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">if ($apuesta == "" || !is_numeric($apuesta) || !ctype_digit($apuesta)
     || $apuesta &lt; 0) {
@@ -135,7 +135,7 @@ $c = rand(1, 6);</code>
       <ul>
         <li>Sólo se renueva la combinación de frutas cuando se juega, no cuando se mete una moneda
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">if ($jugar != "") {
     $a = rand(1, 6);
@@ -147,7 +147,7 @@ $c = rand(1, 6);</code>
         </li>
         <li>Añada tres controles ocultos con los números de las tres imágenes que se están mostrando.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">print "  &lt;input type=\"hidden\" name=\"a\" value=\"$a\" /&gt;\n";
 print "  &lt;input type=\"hidden\" name=\"b\" value=\"$b\" /&gt;\n";
@@ -157,7 +157,7 @@ print "  &lt;input type=\"hidden\" name=\"c\" value=\"$c\" /&gt;&lt;/p&gt;\n\n";
         </li>
         <li>La validación de los números de las imágenes debe comprobar que se encuentran en el rango de valores (entre 1 y 6). En caso de no ser correctos, se generará una nueva combinación.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$abcOk = true;
 if ($a == "" || !is_numeric($a) || !ctype_digit($a) || $a &lt; 1 || $a &gt; 6simbolosNumer ||
@@ -196,7 +196,7 @@ if (!$abcOk) {
             <li>En el resto de casos, <strong>se pierde</strong> el dinero.</li>
           </ul>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">    if ($a == $cereza &amp;&amp; $b == $cereza &amp;&amp; $c == $cereza) {
         $premio = 10;
@@ -220,7 +220,7 @@ if (!$abcOk) {
         </li>
         <li>Muestre el premio obtenido (el número de veces que se gana la apuesta) y muestre la cara triste si se pierde y la alegre si se gana.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">if ($premio == 0) {
     print "          &lt;img src=\"img/face-sad.svg\" alt=\"Mal\" height=\"50px\" /&gt;$premio&lt;/p&gt;\n";
@@ -241,7 +241,7 @@ if (!$abcOk) {
       <ul>
         <li>No se puede jugar si no se han metido monedas.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">if ($jugar != "" &amp;&amp; $apuesta != 0) {
     $a = rand(1, 6);
@@ -253,13 +253,13 @@ if (!$abcOk) {
         </li>
         <li>Al ganar un premio, aumente el número de monedas en posesión del jugador.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre><code class="language-php">    $apuesta = $apuesta * $premio;</code></pre>
           </div>
         </li>
         <li>Si se meten monedas o si el premio es sólo la devolución de la cantidad apostada, muestre una cara indiferente.
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">if ($premio == 0) {
     print "          &lt;p&gt;&lt;img src=\"img/face-sad.svg\" alt=\"Mal\" height=\"80px\" /&gt;&lt;/p&gt;\n";

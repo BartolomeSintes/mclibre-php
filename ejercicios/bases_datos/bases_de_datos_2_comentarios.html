@@ -40,7 +40,7 @@
         <li>En cualquier consulta, compruebe que la consulta no ha dado error.
           <p>En el ejemplo siguiente se comprueba el resultado de la consulta antes de seguir. La consulta podría dar error si el SGBD no está disponible, si la base de datos no ha sido creada todavía, etc. Si es así, poco se puede hacer, salvo informar al ususario del problema.</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -52,7 +52,7 @@ if (!$result) {
           </div>
           <p>Si se añade una consulta a una página que no la tenía, hay que conectarse a la base de datos al principio y cerrar la conexión al final.</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$db = conectaDb();
  ...
@@ -64,7 +64,7 @@ $db = null;</code>
           <ul>
             <li>Defina una constante que contenga el máximo número de registros que puede contener la agenda.
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre><code class="language-php">define("MAX_REG_TABLA", 20);  // Número máximo de registros en la tabla</code></pre>
               </div>
             </li>
@@ -75,7 +75,7 @@ $db = null;</code>
             <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
               <p>En el ejemplo siguiente la consulta devuelve un único registro con una única columna, que se obtiene con el método $result-&gt;fetchColumn().</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -95,7 +95,7 @@ if (!$result) {
           <ul>
             <li>Compruebe que el ususario no ha dejado todos los campos vacíos.
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">if ($nombre == "" &amp;&amp; $apellidos == "") {
         print "  &lt;p&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
@@ -111,7 +111,7 @@ if (!$result) {
 
               <p>Esta consulta se debe realizar con sentencias preparadas ya que incluye datos proporcionados por el usuario.</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE nombre=:nombre
@@ -135,7 +135,7 @@ if (!$result) {
 
               <p>Esta comprobación es similar a la de comprobar que no se ha alcanzado el máximo de registros.</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -162,7 +162,7 @@ if (!$result) {
             <li>Compruebe que se ha marcado algún registro para borrar.
               <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la funcion <span class="php-fun">count()</span>.</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">$id = recogeMatriz("id");
 
@@ -187,7 +187,7 @@ if (count($id) == 0) {
             <li>Compruebe que se han encontrado registros.
               <p>Esta comprobación es similar a la de comprobar que no se ha alcanzado el máximo de registros, pero utilizando sentencias preparadas:</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE nombre LIKE :nombre
@@ -217,7 +217,7 @@ if (!$result) {
             <li>Compruebe que se ha marcado algún registro para modificar.
               <p>Esta comprobación es similar a la de comprobar que se ha marcado algún registro para borrar, pero en este caso no se trata de una matriz</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">$id = recoge("id");
 
@@ -233,7 +233,7 @@ if ($id == "") {
             <li>Compruebe que se ha encontrado el registro seleccionado para modificar.
               <p>Esta comprobación es similar a la de comprobar que se han encontrado registros de buscar2.php.</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE id=:id";
@@ -261,7 +261,7 @@ if (!$result) {
             <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda (es decir, que al modificar un registro lo hagamos coincidir con otro ya incluido en la agenda).
               <p>Esta comprobación es similar a la de insertar2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre>
 <code class="language-php">// La consulta cuenta los registros con un id diferente porque MySQL no distingue
 // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
@@ -295,7 +295,7 @@ if (!$result) {
           <p>En cualquier listado en forma de tabla, permita ordenar los registros en un orden determinado (por cualquie campo, en orden ascendente o descendente).</p>
           <p>Para ello la consulta que selecciona todos los registros podría incluir un ORDER BY</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$consulta = "SELECT * FROM $dbTabla
              ORDER BY $campo $orden";</code>
@@ -303,7 +303,7 @@ if (!$result) {
           </div>
           <p>El campo y el orden deberían haberse recogido previamente (en el ejemplo siguiente, se les da valores predeterminados para que la primera vez que se listan los registros se haga por orden alfabético del apellido):</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$campo = recogeCampo("campo", "apellidos");
 $orden = recogeOrden("orden", "ASC");</code>
@@ -311,7 +311,7 @@ $orden = recogeOrden("orden", "ASC");</code>
           </div>
           <p>Las funciones recogeCampo() y recogeOrden() podrían ser las siguientes:</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$campos = array(
     "nombre",
@@ -343,7 +343,7 @@ function recogeOrden($var, $var2)
           </div>
           <p>En la cabecera de la tabla se insertarían dos imágenes que enlazarían a la propia página enviando cada una un campo y orden diferente (en el ejemplo siguiente ordenaría por el campo nombre de forma ascedente o descendente).</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// En la dirección se escribe la entidad de carácter &amp;amp; en vez del carácter &amp;
 // para que el código HTML de la página sea válido
@@ -360,7 +360,7 @@ print "          &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /&gt;&lt;/
 
           <p>En el caso de la búsqueda (buscar2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la     búsqueda</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">// En la dirección se escribe la entidad de carácter &amp;amp; en vez del carácter &amp;
 // para que el código HTML de la página sea válido

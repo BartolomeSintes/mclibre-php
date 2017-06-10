@@ -36,12 +36,12 @@
         <li>El programa se compone de una única página. Por tanto, el formulario debe enviar los datos a la propia página. En el atributo action podemos escribir:
           <ul>
             <li>el nombre de la página
-              <div class="codphp">
+              <div class="codigo">
                 <pre>print "&lt;form action=\"pagina.php"&gt;";</pre>
               </div>
             </li>
             <li>$_SERVER[PHP_SELF], que contiene la ruta de la página
-              <div class="codphp">
+              <div class="codigo">
                 <pre>print "&lt;form action=\"$_SERVER[PHP_SELF]\"&gt;";</pre>
               </div>
             </li>
@@ -50,7 +50,7 @@
         </li>
         <li>Como la creación o destrucción de la cookie debe hacer antes de hacer ningún print, la estructura del programa debería ser algo parecido a esto:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>recogida y validacion de datos (sin imprimir nada aunque se detecten errores)
 creación o destrucción de la cookie (en su caso)
 cabecera
@@ -75,19 +75,19 @@ pie</pre>
           </ul>
           <p>Por lo que la instrucción será algo de este estilo:</p>
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>setcookie('cookieTemporal', time()+$duracion, time()+$duracion);</pre>
           </div>
         </li>
         <li>Para destruir la cookie es suficiente crearla con una expiración anterior al presente, por ejemplo:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>setcookie ("cookieTemporal", "", time() - 3600);</pre>
           </div>
         </li>
         <li>En la comprobación de la cookie, basta con hacer la diferencia entre el valor guardado en la cookie y el presente:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>if (isset($_COOKIE['cookieTemporal'])) {
     $tiempoRestante = $_COOKIE['cookieTemporal'] - time();
     print "&lt;p&gt;La cookie se destruirá en $tiempoRestante ";

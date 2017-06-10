@@ -40,13 +40,13 @@
           <ul>
             <li>el nombre de la página
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre><code class="language-php">print "&lt;form action=\"pagina.php"&gt;";</code></pre>
               </div>
             </li>
             <li>$_SERVER[PHP_SELF], que contiene la ruta de la página
 
-              <div class="codphp">
+              <div class="codigo">
                 <pre><code class="language-php">print "&lt;form action=\"$_SERVER[PHP_SELF]\"&gt;";</code></pre>
               </div>
             </li>
@@ -55,7 +55,7 @@
         </li>
         <li>Como la creación y destrucción de la sesión debe hacer antes de hacer ningún print, la estructura del programa debería ser algo parecido a esto:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>creación de la sesión
 recogida y validacion de datos (sin imprimir nada aunque se detecten errores)
 destrucción de la sesión (en su caso)
@@ -73,7 +73,7 @@ pie
         <li>La página debe comprobar que el valor recibido no es vacío</li>
         <li>Si hay que guardar los datos en la matriz sesión, podemos crear un índice numérico contando los datos que ya hay almacenados, por lo que la instrucción podría ser algo de este estilo:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">$numeroDatos = count($_SESSION);
 if ($nombreOk &amp;&amp; ($nombre!="")) {
@@ -87,7 +87,7 @@ if ($nombreOk &amp;&amp; ($nombre!="")) {
         </li>
         <li>Para listar los valores de $_SESSION, basta un bucle foreach
 
-          <div class="codphp">
+          <div class="codigo">
             <pre>
 <code class="language-php">print "&lt;p&gt;Datos introducidos:&lt;/p&gt;\n&lt;ul&gt;\n";
 foreach ($_SESSION as $valor) {
@@ -99,7 +99,7 @@ print "&lt;/ul&gt;\n";</code>
         </li>
         <li>El enlace para cerrar la sesión tiene que enviar el campo accion con el valor Cerrar, por ejemplo:
 
-          <div class="codphp">
+          <div class="codigo">
             <pre><code class="language-php">print "&lt;p&gt;&lt;a href=\"$_SERVER[PHP_SELF]?accion=Cerrar\"&gt;Cerrar sesión
   (se perderán los datos almacenados).&lt;/a&gt;&lt;/p&gt;\n";</code></pre>
           </div>
