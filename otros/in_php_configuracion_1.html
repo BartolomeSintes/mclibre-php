@@ -162,7 +162,7 @@
 
         <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Mis Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
 
-        <table border="1">
+        <table class="tabla-con-borde">
           <tbody>
             <tr>
               <th>Programas</th>
@@ -281,15 +281,19 @@
 
         <p>Los fragmentos de código PHP se identifican mediante las etiquetas &lt;?php  .... ?&gt;. La directiva <span class="php-dir">short_open_tag</span> especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
 
-        <table border="1">
+        <table class="tabla-con-borde">
           <tbody>
             <tr>
-              <td class="conf">short_open_tag = On</td>
-              <td class="expl">Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
+              <th>Directiva / Valor</th>
+              <th>Significado</th>
             </tr>
             <tr>
-              <td class="conf">short_open_tag = Off</td>
-              <td class="expl">No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
+              <td>short_open_tag = On</td>
+              <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
+            </tr>
+            <tr>
+              <td>short_open_tag = Off</td>
+              <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
             </tr>
           </tbody>
         </table>
@@ -331,19 +335,23 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
         <p>La directiva  <span class="php-dir">error_reporting</span> especifica el tipo de errores notificados por PHP. Por ejemplo:</p>
 
-        <table border="1">
+        <table class="tabla-con-borde">
           <tbody>
             <tr>
-              <td class="conf">error_reporting = E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED</td>
-              <td class="expl">Se muestran todos los errores, menos los avisos y obsoletos.</td>
+              <th>Directiva / Valor</th>
+              <th>Significado</th>
             </tr>
             <tr>
-              <td class="conf">error_reporting = E_ALL &amp; ~E_DEPRECATED</td>
-              <td class="expl">Se muestran todos los errores, menos los obsoletos</td>
+              <td>error_reporting = E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED</td>
+              <td>Se muestran todos los errores, menos los avisos y obsoletos.</td>
             </tr>
             <tr>
-              <td class="conf">error_reporting = E_ALL ; Valor recomendado en este curso </td>
-              <td class="expl">Se muestran todos los errores (Valor recomendado)</td>
+              <td>error_reporting = E_ALL &amp; ~E_DEPRECATED</td>
+              <td>Se muestran todos los errores, menos los obsoletos</td>
+            </tr>
+            <tr>
+              <td>error_reporting = E_ALL ; Valor recomendado en este curso </td>
+              <td>Se muestran todos los errores (Valor recomendado)</td>
             </tr>
           </tbody>
         </table>
@@ -366,7 +374,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
         <p>Los <a href="http://www.php.net/manual/es/errorfunc.constants.php">posibles valores de esta directiva</a>, que se pueden combinar con &amp;, son los siguientes:</p>
 
-        <table border="1">
+        <table class="tabla-con-borde">
           <tbody>
             <tr>
               <th>Tipo de error</th>
@@ -448,15 +456,19 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
         <p>La directiva output_buffering especifica si la salida del programa se envía a medida que se va generando o se utiliza un buffer intermedio para reducir el tráfico de salida del servidor.</p>
 
-        <table border="1">
+        <table class="tabla-con-borde">
           <tbody>
             <tr>
-              <td class="conf">output_buffering = 4096</td>
-              <td class="expl">Se utiliza un buffer de 4096 bytes.</td>
+              <th>Directiva / Valor</th>
+              <th>Significado</th>
             </tr>
             <tr>
-              <td class="conf">output_buffering = 0 ; Valor recomendado en este curso</td>
-              <td class="expl">No se utiliza buffer.</td>
+              <td>output_buffering = 4096</td>
+              <td>Se utiliza un buffer de 4096 bytes.</td>
+            </tr>
+            <tr>
+              <td>output_buffering = 0 ; Valor recomendado en este curso</td>
+              <td>No se utiliza buffer.</td>
             </tr>
           </tbody>
         </table>
