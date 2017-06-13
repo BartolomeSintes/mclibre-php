@@ -56,8 +56,9 @@
 
         <p>En el caso de XAMPP, la versión XAMPP 1.8.0 (que ya incluía Apache 2.4.2) utilizaba todavía las directivas habituales de Apache 2.2 order y deny. El fichero httpd.conf contenía una directiva Directory general que restringía el acceso general a los directorios utilizando las directivas Order y Deny</p>
 
-        <pre class="fuente">
-# Each directory to which Apache has access can be configured with respect
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion"># Each directory to which Apache has access can be configured with respect
 # to which services and features are allowed and/or disabled in that
 # directory (and its subdirectories).
 #
@@ -69,13 +70,15 @@
     AllowOverride None
     <strong>Order deny,allow
     Deny from all</strong>
-&lt;/Directory&gt;
+&lt;/Directory&gt;</code>
 </pre>
+        </div>
 
         <p>Por eso, cuando el usuario quería permitir el acceso a un directorio (por ejemplo en un alias) debían utilizarse esas mismas directivas. Por ejemplo</p>
 
-        <pre class="fuente">
-&lt;IfModule alias_module&gt;
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">&lt;IfModule alias_module&gt;
 
    Alias /miproyecto/micarpeta "C:\Users\NombreDeUsuario\Documents\PHP"
    &lt;Directory "C:\Users\NombreDeUsuario\Documents\PHP"&gt;
@@ -86,26 +89,30 @@
    &lt;/Directory&gt;
 
    ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
-&lt;/IfModule&gt;
+&lt;/IfModule&gt;</code>
 </pre>
+        </div>
 
         <p>Sin embargo, la versión XAMPP 1.8.3 (que incluye Apache 2.4.4) utiliza ya la directiva Require. El fichero httpd.conf contiene una directiva Directory general que restringe el acceso general a los directorios utilizando la directiva Require</p>
 
-        <pre class="fuente">
-# Deny access to the entirety of your server's filesystem. You must
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion"># Deny access to the entirety of your server's filesystem. You must
 # explicitly permit access to web content directories in other
 # &lt;Directory&gt; blocks below.
 #
 &lt;Directory /&gt;
     AllowOverride none
     <strong>Require all denied</strong>
-&lt;/Directory&gt;
+&lt;/Directory&gt;</code>
 </pre>
+        </div>
 
         <p>Por eso, cuando el usuario quiere permitir el acceso a un directorio (por ejemplo en un alias) debe utilizarse esa misma directiva. Por ejemplo</p>
 
-        <pre class="fuente">
-&lt;IfModule alias_module&gt;
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">&lt;IfModule alias_module&gt;
 
    Alias /miproyecto/micarpeta "C:\Users\NombreDeUsuario\Documents\PHP"
    &lt;Directory "C:\Users\NombreDeUsuario\Documents\PHP"&gt;
@@ -115,8 +122,9 @@
    &lt;/Directory&gt;
 
    ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
-&lt;/IfModule&gt;
+&lt;/IfModule&gt;</code>
 </pre>
+        </div>
 
         <p><img src="../varios/iconos/icono_warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />En este curso se aconseja el uso de versiones posteriores a XAMPP 1.8.0, por lo que los ejemplos utilizarán la directiva Require. En caso de que un alumno no pueda utilizar versiones posteriores a XAMPP 1.8.0 (por ejemplo, porque utiliza Windows XP), deberá emplear las0 directivas Order y Allow.</p>
       </section>
@@ -130,8 +138,9 @@
 
         <p>En XAMPP 7.0 el valor predeterminado de DocumentRoot es el siguiente:</p>
 
-        <pre class="fuente">
-#
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">#
 # DocumentRoot: The directory out of which you will serve your
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
@@ -163,13 +172,15 @@ DocumentRoot "C:/xampp/htdocs"
     # Controls who can get stuff from this server.
     #
     Require all granted
-&lt;/Directory>
+&lt;/Directory></code>
 </pre>
+        </div>
 
         <p>Si se quiere cambiar DocumentRoot y utilizar, por ejemplo, el directorio C:\www, hay que modificar tanto la línea de DocumentRoot como el Directory correspondiente. El archivo de configuración debería quedar así (se ha resaltado el texto añadido):</p>
 
-        <pre class="fuente">
-#
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">#
 # DocumentRoot: The directory out of which you will serve your
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
@@ -206,8 +217,9 @@ DocumentRoot "C:/xampp/htdocs"
     # Controls who can get stuff from this server.
     #
     Require all granted
-&lt;/Directory&gt;
+&lt;/Directory&gt;</code>
 </pre>
+        </div>
 
         <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
       </section>
@@ -223,19 +235,31 @@ DocumentRoot "C:/xampp/htdocs"
 
         <p>Para que Apache pueda acceder a los directorios de los usuarios, en httpd.conf debe estar cargado el módulo userdir mediante la directiva:</p>
 
-        <pre class="fuente">LoadModule userdir_module modules/mod_userdir.so</pre>
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">LoadModule userdir_module modules/mod_userdir.so</code>
+</pre>
+        </div>
 
         <p>En XAMPP 1.8.3 esta directiva está comentada de forma predeterminada, por lo que es necesario borrar el carácter de almohadilla.</p>
 
         <p>El archivo de configuración debería quedar así (se ha resaltado el texto añadido):</p>
 
-        <pre class="fuente"><strong># 2013-09-19. Barto. Cargo el módulo userdir_module</strong>LoadModule userdir_module modules/mod_userdir.so</pre>
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion"><strong># 2013-09-19. Barto. Cargo el módulo userdir_module</strong>LoadModule userdir_module modules/mod_userdir.so</code>
+</pre>
+        </div>
 
         <hr class="corta" />
 
         <p>Si se carga el módulo userdir, entonces deben indicarse los módulos de usuario mediante la directiva UserDir. En XAMPP 1.8.3 la configuración de los directorios de usuario se realiza en un archivo separado (aunque el contenido de este archivo podría incluirse en el archivo httpd.conf) que se encuentra referenciado mediante la directiva</p>
 
-        <pre class="fuente">Include conf/extra/httpd-userdir.conf</pre>
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">Include conf/extra/httpd-userdir.conf</code>
+</pre>
+        </div>
 
         <p>En XAMPP 1.8.3 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobarlo.</p>
 
@@ -247,8 +271,9 @@ DocumentRoot "C:/xampp/htdocs"
 
         <p>En el ejemplo siguiente la carpeta de usuario para todos los usuarios será la carpeta Mis documentos/www:</p>
 
-        <pre class="fuente">
-&lt;IfModule userdir_module&gt;
+        <div class="codigo">
+          <pre>
+<code class="language-configuracion">&lt;IfModule userdir_module&gt;
     <strong># 2013-09-19. Barto. He añadido este Directorio de usuario para todos los usuarios:
 UserDir "Documents/www"
 &lt;Directory "C:\Users\*\Documents\www"&gt;
@@ -257,8 +282,9 @@ UserDir "Documents/www"
     Require all granted
 &lt;/Directory&gt;</strong>
 
-&lt;/IfModule&gt;
+&lt;/IfModule&gt;</code>
 </pre>
+        </div>
 
         <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
       </section>

@@ -273,7 +273,7 @@
 
       <p>En el ejemplo definido en esta lección y que se muestra en las capturas, el nombre del proyecto es "miproyecto", el nombre de la carpeta enlazada es "micarpeta", se ha creado una carpeta "pruebas" y el fichero se llama "prueba_01.php". La dirección que genera Eclipse PDT es entonces: "<strong>http://localhost/miproyecto/micarpeta/pruebas/prueba_01.php</strong>", como muestra la tabla siguiente:</p>
 
-      <table border="1">
+      <table class="tabla-con-borde">
         <tbody>
           <tr>
             <th></th>
@@ -311,7 +311,7 @@
 
       <p>La dirección generada por Eclipse y la ruta real del archivo deben comparase de derecha a izquierda. La parte final común y el inicio de la dirección (http://localhost/) se pueden descartar. El resto es lo que se utiliza para crear el alias. En el ejemplo definido en esta lección y que se muestra en las capturas el alias enlazaría "<strong>miproyecto/micarpeta/</strong>" con "<strong>C:\Users\Barto\Mis documentos\IAW Barto\PHP</strong>", como muestra la tabla siguiente:</p>
 
-      <table border="1">
+      <table class="tabla-con-borde">
         <tbody>
           <tr>
             <th rowspan="3">Dirección generada por Eclipse</th>
@@ -344,8 +344,9 @@
 
       <p>Así, en el ejemplo definido en esta lección y que se muestra en las capturas las líneas a añadir en el archivo httpd.conf serían las siguientes (resaltadas en negrita):</p>
 
-      <pre class="fuente">
-&lt;IfModule alias_module&gt;
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>   Alias /miproyecto/micarpeta "C:\Users\Barto\Documents\IAW Barto\PHP"
    &lt;Directory "C:\Users\Barto\Documents\IAW Barto\PHP"&gt;
@@ -353,8 +354,9 @@
      AllowOverride All
      Require all granted
    &lt;/Directory&gt;<br /></strong># ...
-&lt;/IfModule&gt;
+&lt;/IfModule&gt;</code>
 </pre>
+      </div>
 
       <p>En cualquier directiva es necesario escribir entre comillas las rutas que contengan espacios en blanco.</p>
 
@@ -362,16 +364,18 @@
 
       <p>En resumen, si en el workspace se crea un proyecto y una carpeta enlazada que enlaza a un directorio en el disco, el alias a crear será:</p>
 
-      <pre class="fuente">
-<strong># ...
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion"># ...
    Alias /nombre-proyecto/nombre-carpeta "ruta-del-directorio-en-el-disco"
    &lt;Directory "ruta-directorio-en-el-disco"&gt;
      Options Indexes FollowSymLinks Includes ExecCGI
      AllowOverride All
      Require all granted
    &lt;/Directory&gt;
-# ...</strong>
+# ...</code>
 </pre>
+      </div>
 
       <p>Si en el workspace hay varias carpetas enlazadas, habrá que crear tantos alias como carpetas enlazadas (tanto si están en el mismo proyecto como si están en proyectos diferentes).</p>
     </section>

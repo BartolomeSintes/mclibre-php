@@ -134,11 +134,19 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
       <p>Para utilizar sesiones mediante el mecanismo propio de PHP (es decir, sin necesidad de crear funciones propias), la directiva session.save_handler del archivo de configuración php.ini debe tener el valor files.</p>
 
-      <pre class="fuente">session.save_handler = files        ; Valor recomendado en este curso</pre>
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">session.save_handler = files        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
 
       <p>Esta configuración es la más habitual, pero algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user.</p>
 
-      <pre class="fuente">session.save_handler = user         ; Valor definido en algunos servidores</pre>
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">session.save_handler = user         ; Valor definido en algunos servidores</code>
+</pre>
+      </div>
 
       <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="http://php.net/manual/en/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
 
