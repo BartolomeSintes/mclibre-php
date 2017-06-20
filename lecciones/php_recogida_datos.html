@@ -606,7 +606,9 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 </pre>
         </div>
         <div class="resultado">
-          <p><img alt="Recogida de datos. Inyección de JavaScript" src="../img/php/recogida_datos_1.png" width="250" height="150" /></p>
+          <p>
+            <img src="../img/php/recogida_datos_1.png" alt="Recogida de datos. Inyección de JavaScript" width="250" height="150" />
+          </p>
         </div>
       </div>
 
@@ -852,26 +854,26 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
 
       <p>La asignación de la variable se puede realizar en una sola instrucción, utilizando la notación abreviada: (condición) ? verdadero : falso; (que se explica en la lección de <a href="php_estructuras_control.html#if-else-abreviado">estructuras de control</a>):</p>
 
-        <div class="filaflex cabecera">
-          <div>ejemplo.html</div>
-          <div>ejemplo.php</div>
-          <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span></div>
-        </div>
+      <div class="filaflex cabecera">
+        <div>ejemplo.html</div>
+        <div>ejemplo.php</div>
+        <div><span class="codigo-resaltado">http:// ... /ejemplo.php?nombre=&lt;strong&gt;Pepito+Conejo&lt;%2Fstrong&gt;</span></div>
+      </div>
 
-        <div class="filaflex">
-          <div class="resultado">
-              <p>Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" /></p>
-              <p><input type="submit" value="Enviar" /></p>
-          </div>
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="resultado">
+          <p>Nombre: <input type="text" name="texto" readonly="readonly" value="&lt;strong&gt;Pepito Conejo&lt;/strong&gt;" /></p>
+          <p><input type="submit" value="Enviar" /></p>
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br /></pre>
-              <pre class="codigo-resaltado"><code class="language-php">$nombre = (isset($_REQUEST["nombre"]))
+          <pre class="codigo-resaltado"><code class="language-php">$nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
     : "";</code>
 </pre>
-              <pre>
+          <pre>
 <code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
@@ -879,17 +881,17 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br
 }
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado">
-              <pre>&lt;pre&gt;Array
+        </div>
+        <div class="resultado">
+          <pre>&lt;pre&gt;Array
 (
     [nombre] =&gt; <span class="codigo-resaltado">&lt;strong&gt;Pepito Conejo&lt;/strong&gt;</span>
 )
 &lt;/pre&gt;
 &lt;p&gt;Su nombre es <span class="codigo-resaltado">Pepito Conejo</span>&lt;/p&gt;
 </pre>
-          </div>
         </div>
+      </div>
     </section>
 
     <section id="salida">
