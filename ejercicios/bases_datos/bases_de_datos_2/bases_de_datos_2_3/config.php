@@ -36,7 +36,7 @@ define("MYSQL_TABLA",    "tabla");                  // Nombre de la tabla
 
 // Configuración para SQLite
 
-define("SQLITE_DATABASE", "/tmp/mclibre/mclibre_base_datos_2_3.sqlite"); // Ubicación de la base de datos
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre_base_datos_2_3.sqlite"); // Ubicación de la base de datos
 define("SQLITE_TABLA",   "tabla");                                       // Nombre de la tabla
 
 // Configuración Tabla Agenda

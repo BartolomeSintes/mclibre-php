@@ -27,7 +27,7 @@
 // Constantes
 
 // Variables globales
-$dbDb    = "/tmp/mclibre/mclibre_base_datos_2_2.sqlite";  // Nombre de la base de datos
+$dbDb    = "/home/barto/mclibre/tmp/mclibre/mclibre_base_datos_2_2.sqlite";  // Nombre de la base de datos
 $dbTabla = "tabla";                                       // Nombre de la tabla
 
 // Consultas

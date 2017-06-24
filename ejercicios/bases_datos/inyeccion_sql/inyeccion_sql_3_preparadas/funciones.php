@@ -45,7 +45,7 @@ if ($dbMotor==MYSQL) {
     $dbDb    = 'mclibre_inyeccion_sql_3';  // Nombre de la base de datos
     $dbTabla = $dbDb.'.tabla';             // Nombre de la tabla
 } elseif ($dbMotor==SQLITE) {
-    $dbDb    = '/tmp/mclibre/mclibre_inyeccion_sql_3.sqlite';  // Nombre de la base de datos
+    $dbDb    = '/home/barto/mclibre/tmp/mclibre/mclibre_inyeccion_sql_3.sqlite';  // Nombre de la base de datos
     $dbTabla = 'tabla';                   // Nombre de la tabla
 }
 
