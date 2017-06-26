@@ -7,6 +7,8 @@
   </head>
 
   <body>
-    <p><a href="buffer_1_2.php">Probar programa</a></p>
+    <p>La redirección se ha realizado.</p>
+
+    <p><a href="buffer_falta_1.php">Volver al principio</a></p>
   </body>
 </html>

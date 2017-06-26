@@ -7,6 +7,6 @@
   </head>
 
   <body>
-    <p><a href="buffer_0_2.php">Probar programa</a></p>
+    <p><a href="buffer_falta_2.php">Probar programa</a></p>
   </body>
 </html>

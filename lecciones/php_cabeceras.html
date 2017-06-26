@@ -117,8 +117,6 @@ header("Location:http://www.example.com");
 
         <p>Los ejemplos siguientes muestran la influencia del buffer.</p>
 
-        <p><img src="../varios/iconos/icono_en_construccion.svg" alt="En construcción" title="En construcción" width="55" height="48" /><strong>Nota:</strong> Estos ejemplos no funcionan correctamente en el servidor de mclibre.org, pero tengo que averiguar el motivo. Para probarlos en su propio servidor, puede <a href="ejemplos/utf_bom/pruebas_buffer_obstart.zip">descargar los programas de prueba</a>.</p>
-
         <ul>
           <li>En el primer ejemplo, el buffer es de 1 byte. La salida de <span class="php-res">print</span> no cabe en el buffer y el servidor envía el contenido. Al intentar hacer la redirección, se produce un error.
 
@@ -128,12 +126,16 @@ header("Location:http://www.example.com");
 <code class="language-php">ob_start(null, 1);
 print "&lt;p&gt;Tamaño del buffer: 1&lt;/p&gt;";
 header("location:final.php");
+print "&lt;p>La redirección &lt;strong>no&lt;/strong> se ha realizado.&lt;/p>\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
 </pre>
               </div>
               <div class="resultado-object">
-                <object type="text/html" data="ejemplos/utf_bom/buffer_0_1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+                <object type="text/html" data="ejemplos/cabeceras/buffer_salida/buffer_falta_1.php" style="height: 13em">ERROR (no puede mostrarse el objeto)</object>
+              </div>
+              <div class="icono-enlace">
+                <a href="ejemplos/cabeceras/buffer_salida/buffer_falta_1.php"><img src="../varios/iconos/icono_enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
               </div>
             </div>
           </li>
@@ -145,12 +147,16 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
 <code class="language-php">ob_start(null, 100);
 print "&lt;p&gt;Tamaño del buffer: 100&lt;/p&gt;";
 header("location:final.php");
+print "&lt;p>La redirección &lt;strong>no&lt;/strong> se ha realizado.&lt;/p>\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
 </pre>
               </div>
               <div class="resultado-object">
-                <object type="text/html" data="ejemplos/utf_bom/buffer_1_1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+                <object type="text/html" data="ejemplos/cabeceras/buffer_salida/buffer_sobra_1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+              </div>
+              <div class="icono-enlace">
+                <a href="ejemplos/cabeceras/buffer_salida/buffer_sobra_1.php"><img src="../varios/iconos/icono_enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
               </div>
             </div>
           </li>
@@ -165,10 +171,10 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
         <p>La marca de orden de bytes son los primeros caracteres de un fichero UTF. Estos caracteres indican:</p>
         <ul>
           <li>el orden de los bytes en los formatos de 16 o 32 bytes. Cuando la codificación de un carácter ocupa más de un byte, los bytes que lo forman pueden estar en el orden natural de lectura (big endian) o en el contrario (little endian). Por ejemplo el carácter A, cuyo código es 0041, se puede guardar en UTF-16 como 00 41 (big endian) o como 41 00 (little endian).</li>
-          <li>el formato del archivo en general. Para saber si un archivo está en formato UTF-8, 16 o 32 (es decir, si cada byte del archivo es un carácter, o los bytes se tienen que tomar de dos en dos, o de cuatro en cuatro), los programas sólo tienen que mirar los primeros bytes del archivo y reconocer la marca correspondiente.</li>
+          <li>el formato del archivo en general. Para saber si un archivo está en formato UTF-8, 16 o 32 (es decir, si cada byte del archivo es un carácter, o los bytes se tienen que tomar de dos en dos, o de cuatro en cuatro), los programas sólo tienen que mirar los primeros bytes del archivo y a partir del BOM deducir el formato.</li>
         </ul>
 
-        <p>En el caso de los archivos UTF-8, la marca de orden de bytes son los tres caracteres EF BB BF (que corresponden a los caracteres <strong>ï»¿</strong>). Pero como en un archivo UTF-8 no se necesita indicar el orden de los bytes, puesto que cada carácter ocupa solamente un byte, la marca es opcional, es decir, que hay archivos UTF-8 con BOM y archivos UTF-8 con BOM. Los editores (como Eclipse PDT) no muestran estos caracteres y, suelen respetarlos al guardar de nuevo al archivo. Para ver esos caracteres, se puede utilizar un editor hexadecimal, que muestra todos los caracteres sin excepción.</p>
+        <p>En el caso de los archivos UTF-8, la marca de orden de bytes son los tres caracteres EF BB BF (que corresponden a los caracteres <strong>ï»¿</strong>). Pero como en un archivo UTF-8 no se necesita indicar el orden de los bytes, puesto que cada carácter ocupa solamente un byte, la marca es opcional, es decir, que hay archivos UTF-8 con BOM y archivos UTF-8 sin BOM. Los editores (como Eclipse PDT) no muestran estos caracteres y suelen respetarlos al guardar de nuevo al archivo. Para ver esos caracteres, se puede utilizar un editor hexadecimal, que muestra todos los caracteres sin excepción.</p>
 
         <p>Las imágenes siguientes muestran los valores hexadecimales de dos archivos UTF-8 (con y sin BOM ), utilizando el editor Notepad++ con el plug-in HEX-Editor:</p>
 
@@ -184,14 +190,60 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
 
         <hr class="corta" />
 
-        <p>Notepad++ permite quitar la marca de orden de bytes de un archivo php mediante el menú <span class="soft-menu">Codificar > Codificar en UTF-8 sin BOM</span>:</p>
+        <p>Los ejemplos siguientes muestran la influencia del BOM cuando no hay buffer de salida.</p>
 
-        <p class="captura"><img src="../img/php/utf-bom-codificar.png" alt="Quitar BOM con Notepad++" width="800" height="310" /></p>
+        <ul>
+          <li>En el primer ejemplo, el fichero está guardado en UTF-8 <strong>con</strong> BOM. Al intentar hacer la redirección, se produce un error.
 
-        <p>Para eliminar las marcas de orden de bytes de un conjunto grande de archivos php, se puede utilizar este script de Linux:</p>
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">header("location:final.php");
+print "&lt;p>La redirección &lt;strong>no&lt;/strong> se ha realizado.&lt;/p>\n";
+print "&lt;p>&lt;a href=\"inicio.php\">Volver al principio&lt;/a>&lt;/p>\n";
+</code>
+</pre>
+              </div>
+              <div class="resultado-object">
+                <object type="text/html" data="../../especiales/php/bom_test/bom_test_con_bom_1.php" style="height: 13em">ERROR (no puede mostrarse el objeto)</object>
+              </div>
+              <div class="icono-enlace">
+                <a href="../../especiales/php/bom_test/bom_test_con_bom_1.php"><img src="../varios/iconos/icono_enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+              </div>
+            </div>
+          </li>
+          <li>En el segundo ejemplo, el fichero está guardado en UTF-8 <strong>sin</strong> BOM Al intentar hacer la redirección, la redirección puede realizarse.
 
-        <div class="codigo">
-          <pre>
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">header("location:final.php");
+print "&lt;p>La redirección &lt;strong>no&lt;/strong> se ha realizado.&lt;/p>\n";
+print "&lt;p>&lt;a href=\"inicio.php\">Volver al principio&lt;/a>&lt;/p>\n";
+</code>
+</pre>
+              </div>
+              <div class="resultado-object">
+                <object type="text/html" data="../../especiales/php/bom_test/bom_test_sin_bom_1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+              </div>
+              <div class="icono-enlace">
+                <a href="../../especiales/php/bom_test/bom_test_sin_bom_1.php"><img src="../varios/iconos/icono_enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <hr class="corta" />
+
+      <p>Notepad++ permite quitar la marca de orden de bytes de un archivo php mediante el menú <span class="soft-menu">Codificación > Codificar en UTF-8 sin BOM</span>:</p>
+
+      <p class="captura"><img src="../img/php/utf-bom-codificar.png" alt="Quitar BOM con Notepad++" width="800" height="310" /></p>
+
+      <p>Para eliminar las marcas de orden de bytes de un conjunto grande de archivos php, se puede utilizar este script de Linux:</p>
+
+      <div class="codigo">
+        <pre>
 <code class="language-html">#! /bin/bash
 
 find ./ -name "*.php" -type f | while read file
@@ -204,8 +256,7 @@ do
   fi
 done</code>
 </pre>
-        </div>
-      </section>
+      </div>
     </section>
 
     <section id="redirecciones">
@@ -441,7 +492,7 @@ print "&lt;/svg&gt;";
 </pre>
         </div>
         <div class="resultado">
-              <pre>
+          <pre>
 <code class="language-html">&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
     width="100" height="100" viewBox="-5 -5 100 100"&gt;
   &lt;rect fill="none" stroke="black" stroke-width="1" x="5" y="5" width="90" height="90" /&gt;
@@ -458,7 +509,7 @@ print "&lt;/svg&gt;";
     </section>
 
     <footer>
-      <p class="ultmod">Última modificación de esta página: 9 de noviembre de 2016</p>
+      <p class="ultmod">Última modificación de esta página: 26 de junio de 2017</p>
 
       <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
         Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
