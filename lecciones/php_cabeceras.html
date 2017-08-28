@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -107,11 +107,11 @@ header("Location:http://www.example.com");
       <section id="buffer">
         <h3>Buffer de salida</h3>
 
-        <p>El error que se ha comentado en el apartado anterior puede no llegarse a producir si el servidor está utilizando un buffer de salida. Un buffer de salida almacena la salida del programa, que no se envía al navegador hasta que se completa la página o se llena el buffer y se puede definir mediante la <a href="../otros/in_php_configuracion_1.html#output-buffering">directiva <span class="php-dir">output_buffering</span></a>.</p>
+        <p>El error que se ha comentado en el apartado anterior puede no llegarse a producir si el servidor está utilizando un buffer de salida. Un buffer de salida almacena la salida del programa, que no se envía al navegador hasta que se completa la página o se llena el buffer y se puede definir mediante la <a href="../otros/php_configuracion_1.html#output-buffering">directiva <span class="php-dir">output_buffering</span></a>.</p>
 
         <p>Si cuando el programa llega a la instrucción <span class="php-fun">header()</span>, el contenido generado anteriormente todavía no se ha enviado al navegador porque ha cabido en el buffer de salida, el servidor puede todavía modificar la información de cabecera y la función <span class="php-fun">header()</span> no daría error.</p>
 
-        <p>El uso de un buffer de salida puede así enmascarar errores de programación como los de los ejemplos anteriores. Por ese motivos, en la <a href="../otros/in_php_configuracion_1.html#output-buffering">lección de configuración de XAMPP</a> se recomienda desactivar el buffer de salida al desarrollar el programa, de manera que al probar el programa detectemos este tipo de errores.</p>
+        <p>El uso de un buffer de salida puede así enmascarar errores de programación como los de los ejemplos anteriores. Por ese motivos, en la <a href="../otros/php_configuracion_1.html#output-buffering">lección de configuración de XAMPP</a> se recomienda desactivar el buffer de salida al desarrollar el programa, de manera que al probar el programa detectemos este tipo de errores.</p>
 
         <p>Si por algún motivo un programa necesita que haya un buffer de salida, para no tener que depender de la configuración del servidor el programa puede gestionar directamente el buffer mediante la función <a href="http://php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="http://php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página.</p>
 
