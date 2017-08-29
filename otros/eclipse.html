@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Qué es Eclipse PDT. PHP. Bartolomé Sintes Marco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+    <link rel="icon" href="../varios/favicon.ico" />
+  </head>
+
+  <body>
+    <h1>Qué es Eclipse PDT</h1>
+
+    <nav>
+      <p>
+        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      </p>
+
+      <div class="toc">
+        <h2>Qué es Eclipse PDT</h2>
+
+        <ul>
+          <li><a href="#plataforma">Plataforma Eclipse</a></li>
+          <li><a href="#simultaneas">Publicaciones simultáneas</a></li>
+          <li><a href="#plugin">Plug-in Eclipse PDT</a></li>
+          <li><a href="#paquete">Paquete Eclipse PDT</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p>Para escribir programas PHP se puede utilizar cualquier editor de programación, aunque existen muchos editores especializados. En estos apuntes se recomienda el <strong>paquete Eclipse PDT</strong> (Eclipse PHP Development Tools). El paquete Eclipse PDT es un entorno de desarrollo integrado de PHP basado en la plataforma de desarrollo libre Eclipse. El paquete Eclipse PDT es un programa Java, por lo que se necesita instalar previamente Java Runtime Environment.</p>
+
+    <p>Eclipse es un entorno de desarrollo gigantesco con una arquitectura modular que permite la existencia de decenas de paquetes especializados para todo tipo de sectores del mundo de la programación.</p>
+
+    <p>En esta lección se explica cómo organiza la fundación Eclipse la publicación del software, que se puede resumir en las siguientes ideas:</p>
+    <ul>
+      <li>El componente básico de cualquier aplicación Eclipse suele ser <a href="#plataforma">la plataforma Eclipse</a>.</li>
+      <li>Además de la plataforma Eclipse, la fundación Eclipse desarrolla cientos de plug-ins para tareas específicas, entre ellos el <a href="#plugin">plug-in Eclipse PDT</a> para la programación en PHP.</li>
+      <li>Para facilitar el uso de Eclipse, la fundación Eclipse publica paquetes especializados que combinan la plataforma con una selección de plug-ins. Uno de estos paquetes es el <a href="#paquete">paquete Eclipse PDT</a>.</li>
+      <li>Para coordinar el desarrollo de todos los componentes, la fundación Eclipse realiza <a href="simultaneas">publicaciones simultáneas</a> de forma coordinada, tanto de la plataforma, como de los plug-ins y paquetes.</li>
+    </ul>
+
+    <section id="plataforma">
+      <h3>La plataforma Eclipse</h3>
+
+      <p>Eclipse es una plataforma de desarrollo creada por IBM a finales de los años 90. En 2001 IBM decidió publicar Eclipse como software libre. La primera versión de la plataforma Eclipse (Eclipse 1.0) se publicó en noviembre de 2011.</p>
+
+      <p>En 2004 IBM creó la <a href="http://www.eclipse.org/">fundación Eclipse</a> para que se encargara de su desarrollo. La primera versión de la plataforma Eclipse publicada por la Fundación Eclipse (Eclipse 3.0) se publicó en junio de 2004.</p>
+
+      <p>Desde 2004, la fundación Eclipse publica anualmente a finales de junio una nueva versión de la plataforma Eclipse y durante el curso siguiente se publican actualizaciones menores. Entre 2004 y 2015 se publicaban dos actualizaciones menores, en septiembre y febrero, pero desde 2016 se publican tres actualizaciones, en septiembre, diciembre y marzo.</p>
+
+      <p>La imagen siguiente muestra las versiones publicadas y previstas de la plataforma Eclipse.</p>
+
+      <p class="mcl-centrado">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1220" viewBox="-50 -60 1220 150">
+          <title>Versiones de la plataforma Eclipse</title>
+          <line x1="35" y1="0" x2="1165" y2="0" stroke-width="3" stroke="#2C2255" />
+          <text x="-10" y="-10" text-anchor="middle" style="font-size: 100%">Plataforma</text>
+          <text x="-10" y="20" text-anchor="middle" style="font-size: 100%">Eclipse</text>
+
+          <line x1="60" y1="-50" x2="60" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="90" y="-40" text-anchor="middle" style="font-size: 80%">2001</text>
+          <line x1="120" y1="-50" x2="120" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="150" y="-40" text-anchor="middle" style="font-size: 80%">2002</text>
+          <line x1="180" y1="-50" x2="180" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="210" y="-40" text-anchor="middle" style="font-size: 80%">2003</text>
+          <line x1="240" y1="-50" x2="240" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="270" y="-40" text-anchor="middle" style="font-size: 80%">2004</text>
+          <line x1="300" y1="-50" x2="300" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="330" y="-40" text-anchor="middle" style="font-size: 80%">2005</text>
+          <line x1="360" y1="-50" x2="360" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="390" y="-40" text-anchor="middle" style="font-size: 80%">2006</text>
+          <line x1="420" y1="-50" x2="420" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="450" y="-40" text-anchor="middle" style="font-size: 80%">2007</text>
+          <line x1="480" y1="-50" x2="480" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="510" y="-40" text-anchor="middle" style="font-size: 80%">2008</text>
+          <line x1="540" y1="-50" x2="540" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="570" y="-40" text-anchor="middle" style="font-size: 80%">2009</text>
+          <line x1="600" y1="-50" x2="600" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="630" y="-40" text-anchor="middle" style="font-size: 80%">2010</text>
+          <line x1="660" y1="-50" x2="660" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="690" y="-40" text-anchor="middle" style="font-size: 80%">2011</text>
+          <line x1="720" y1="-50" x2="720" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="750" y="-40" text-anchor="middle" style="font-size: 80%">2012</text>
+          <line x1="780" y1="-50" x2="780" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="810" y="-40" text-anchor="middle" style="font-size: 80%">2013</text>
+          <line x1="840" y1="-50" x2="840" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="870" y="-40" text-anchor="middle" style="font-size: 80%">2014</text>
+          <line x1="900" y1="-50" x2="900" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="930" y="-40" text-anchor="middle" style="font-size: 80%">2015</text>
+          <line x1="960" y1="-50" x2="960" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="990" y="-40" text-anchor="middle" style="font-size: 80%">2016</text>
+          <line x1="1020" y1="-50" x2="1020" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1050" y="-40" text-anchor="middle" style="font-size: 80%">2017</text>
+          <line x1="1080" y1="-50" x2="1080" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1110" y="-40" text-anchor="middle" style="font-size: 80%">2018</text>
+          <line x1="1140" y1="-50" x2="1140" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+
+          <circle cx="111" cy="0" r="5" fill="#2C2255" />
+          <text x="111" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">1.0</text>
+          <circle cx="149" cy="0" r="5" fill="#2C2255" />
+          <text x="149" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">2.0</text>
+          <polyline points="149,0 149,40 171,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 2.0.X -->
+          <circle cx="159" cy="40" r="5" fill="#2C2255" />
+          <text x="159" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">2.0.1</text>
+          <circle cx="171" cy="40" r="5" fill="#2C2255" />
+          <text x="171" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">2.0.2</text>
+          <circle cx="194" cy="0" r="5" fill="#2C2255" />
+          <text x="194" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">2.1</text>
+          <polyline points="194,0 194,40 251,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 2.1.X -->
+          <circle cx="209" cy="40" r="5" fill="#2C2255" />
+          <text x="209" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">2.1.1</text>
+          <circle cx="230" cy="40" r="5" fill="#2C2255" />
+          <text x="230" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">2.1.2</text>
+          <circle cx="251" cy="40" r="5" fill="#2C2255" />
+          <text x="251" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">2.1.3</text>
+          <circle cx="269" cy="0" r="5" fill="#2C2255" />
+          <text x="269" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.0</text>
+          <polyline points="269,0 269,40 312,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.0.X -->
+          <circle cx="283" cy="40" r="5" fill="#2C2255" />
+          <text x="283" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.0.1</text>
+          <circle cx="312" cy="40" r="5" fill="#2C2255" />
+          <text x="312" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.0.2</text>
+          <circle cx="329" cy="0" r="5" fill="#2C2255" />
+          <text x="329" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.1</text>
+          <polyline points="329,0 329,40 363,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.1.X -->
+          <circle cx="345" cy="40" r="5" fill="#2C2255" />
+          <text x="345" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.1.1</text>
+          <circle cx="363" cy="40" r="5" fill="#2C2255" />
+          <text x="363" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.1.2</text>
+          <circle cx="389" cy="0" r="5" fill="#2C2255" />
+          <text x="389" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.2</text>
+          <polyline points="389,0 389,40 427,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.2.X -->
+          <circle cx="403" cy="40" r="5" fill="#2C2255" />
+          <text x="403" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.2.1</text>
+          <circle cx="427" cy="40" r="5" fill="#2C2255" />
+          <text x="427" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.2.2</text>
+          <circle cx="449" cy="0" r="5" fill="#2C2255" />
+          <text x="449" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.3</text>
+          <polyline points="449,0 449,40 489,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.3.X -->
+          <circle cx="464" cy="40" r="5" fill="#2C2255" />
+          <text x="464" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.3.1</text>
+          <circle cx="489" cy="40" r="5" fill="#2C2255" />
+          <text x="489" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.3.2</text>
+          <circle cx="508" cy="0" r="5" fill="#2C2255" />
+          <text x="508" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.4</text>
+          <polyline points="508,0 508,40 547,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.4.X -->
+          <circle cx="522" cy="40" r="5" fill="#2C2255" />
+          <text x="522" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.4.1</text>
+          <circle cx="547" cy="40" r="5" fill="#2C2255" />
+          <text x="547" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.4.2</text>
+          <circle cx="569" cy="0" r="5" fill="#2C2255" />
+          <text x="569" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.5</text>
+          <polyline points="569,0 569,40 607,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.5.X -->
+          <circle cx="583" cy="40" r="5" fill="#2C2255" />
+          <text x="583" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.5.1</text>
+          <circle cx="607" cy="40" r="5" fill="#2C2255" />
+          <text x="607" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.5.2</text>
+          <circle cx="629" cy="0" r="5" fill="#2C2255" />
+          <text x="629" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.6</text>
+          <polyline points="629,0 629,40 667,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.6.X -->
+          <circle cx="642" cy="40" r="5" fill="#2C2255" />
+          <text x="642" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.6.1</text>
+          <circle cx="667" cy="40" r="5" fill="#2C2255" />
+          <text x="667" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.6.2</text>
+          <circle cx="689" cy="0" r="5" fill="#2C2255" />
+          <text x="689" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.7</text>
+          <polyline points="689,0 689,40 727,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.7.X -->
+          <circle cx="702" cy="40" r="5" fill="#2C2255" />
+          <text x="702" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.7.1</text>
+          <circle cx="727" cy="40" r="5" fill="#2C2255" />
+          <text x="727" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">3.7.2</text>
+          <circle cx="750" cy="0" r="5" fill="#2C2255" />
+          <text x="750" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.2</text>
+          <polyline points="750,0 750,40 786,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.2.X -->
+          <circle cx="763" cy="40" r="5" fill="#2C2255" />
+          <text x="763" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.2.1</text>
+          <circle cx="786" cy="40" r="5" fill="#2C2255" />
+          <text x="786" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.2.2</text>
+          <circle cx="809" cy="0" r="5" fill="#2C2255" />
+          <text x="809" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.3</text>
+          <polyline points="809,0 809,40 849,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.3.X -->
+          <circle cx="822" cy="40" r="5" fill="#2C2255" />
+          <text x="822" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.3.1</text>
+          <circle cx="849" cy="40" r="5" fill="#2C2255" />
+          <text x="849" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.3.2</text>
+          <circle cx="869" cy="0" r="5" fill="#2C2255" />
+          <text x="869" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.4</text>
+          <polyline points="869,0 869,40 906,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.4.X -->
+          <circle cx="884" cy="40" r="5" fill="#2C2255" />
+          <text x="884" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.4.1</text>
+          <circle cx="906" cy="40" r="5" fill="#2C2255" />
+          <text x="906" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.4.2</text>
+          <circle cx="929" cy="0" r="5" fill="#2C2255" />
+          <text x="929" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.5</text>
+          <polyline points="929,0 929,40 967,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.5.X -->
+          <circle cx="941" cy="40" r="5" fill="#2C2255" />
+          <text x="941" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.5.1</text>
+          <circle cx="967" cy="40" r="5" fill="#2C2255" />
+          <text x="967" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.5.2</text>
+          <circle cx="989" cy="0" r="5" fill="#2C2255" />
+          <text x="989" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.6</text>
+          <polyline points="989,0 989,40 1030,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.6.X -->
+          <circle cx="1002" cy="40" r="5" fill="#2C2255" />
+          <text x="1002" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.6.1</text>
+          <circle cx="1014" cy="40" r="5" fill="#2C2255" />
+          <text x="1014" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.6.2</text>
+          <circle cx="1030" cy="40" r="5" fill="#2C2255" />
+          <text x="1030" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.6.3</text>
+          <circle cx="1050" cy="0" r="5" fill="#2C2255" />
+          <text x="1050" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.7</text>
+          <polyline points="1050,0 1050,40 1094,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.7.X -->
+          <circle cx="1065" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1065" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.7.1</text>
+          <circle cx="1079" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1079" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.7.2</text>
+          <circle cx="1094" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1094" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.7.3</text>
+          <circle cx="1110" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1110" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.8</text>
+          <polyline points="1110,0 1110,40 1153,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.8.X -->
+          <circle cx="1110" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <circle cx="1123" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1123" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.8.1</text>
+          <circle cx="1138" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1138" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.8.2</text>
+          <circle cx="1153" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1153" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">4.8.3</text>
+        </svg>
+      </p>
+
+      <p>Los números de versión de la plataforma Eclipse siguen el esquema X.Y.Z. El valor X cambia cuando cambia de forma significativa el motor interno de la plataforma, el valor Y cambia anualmente, y el valor Z cambia en cada actualización. En 2010 y 2011 se publicaron las versiones 4.0 y 4.1, pero no sustituyeron a la versión 3 hasta 2012. En 2012 se publicó también la versión 3.8, pero su uso se recomendaba únicamente para los proyectos que por algún motivo de compatibilidad no pudieran usar la versión 4.</p>
+    </section>
+
+    <section id="simultaneas">
+      <h3>Las publicaciones simultáneas</h3>
+
+      <p>Eclipse es una plataforma modular, es decir, que las funciones y capacidades de la plataforma básica se pueden ampliar mediante plug-ins. Cada plug-in de Eclipse está desarrollo por un grupo de programadores diferente y lleva su propio ritmo de desarrollo.</p>
+
+      <p>Para evitar incompatibilidades, es necesario que todos los plugíns se desarrollen de forma sincronizada. Para ello, desde 2006 la Fundación Eclipse prepara publicaciones simultáneas anuales (<i>simultaneous releases</i>), no sólo de la plataforma básica, sino del mayor número posible de plug-ins.</p>
+
+      <p> Desde 2006, la fundación Eclipse realiza anualmente a finales de junio una publicación simultánea y durante el curso siguiente se realizan publicaciones simultáneas de versiones menores. Entre 2007 y 2015 se publicaban dos actualizaciones menores, en septiembre y febrero, pero desde 2016 se publican tres actualizaciones, en septiembre, diciembre y marzo.</p>
+
+      <p>La imagen siguiente muestra las publicaciones simultáneas realizadas y previstas.</p>
+
+      <p class="mcl-centrado">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1220" viewBox="-50 -60 1220 150">
+          <title>Versiones de las publicaciones simultáneas de Eclipse</title>
+          <line x1="35" y1="0" x2="1165" y2="0" stroke-width="3" stroke="#2C2255" />
+          <text x="0" y="-10" text-anchor="middle" style="font-size: 100%">Publicaciones</text>
+          <text x="0" y="20" text-anchor="middle" style="font-size: 100%">Simultáneas</text>
+
+          <line x1="60" y1="-50" x2="60" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="90" y="-40" text-anchor="middle" style="font-size: 80%">2001</text>
+          <line x1="120" y1="-50" x2="120" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="150" y="-40" text-anchor="middle" style="font-size: 80%">2002</text>
+          <line x1="180" y1="-50" x2="180" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="210" y="-40" text-anchor="middle" style="font-size: 80%">2003</text>
+          <line x1="240" y1="-50" x2="240" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="270" y="-40" text-anchor="middle" style="font-size: 80%">2004</text>
+          <line x1="300" y1="-50" x2="300" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="330" y="-40" text-anchor="middle" style="font-size: 80%">2005</text>
+          <line x1="360" y1="-50" x2="360" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="390" y="-40" text-anchor="middle" style="font-size: 80%">2006</text>
+          <line x1="420" y1="-50" x2="420" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="450" y="-40" text-anchor="middle" style="font-size: 80%">2007</text>
+          <line x1="480" y1="-50" x2="480" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="510" y="-40" text-anchor="middle" style="font-size: 80%">2008</text>
+          <line x1="540" y1="-50" x2="540" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="570" y="-40" text-anchor="middle" style="font-size: 80%">2009</text>
+          <line x1="600" y1="-50" x2="600" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="630" y="-40" text-anchor="middle" style="font-size: 80%">2010</text>
+          <line x1="660" y1="-50" x2="660" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="690" y="-40" text-anchor="middle" style="font-size: 80%">2011</text>
+          <line x1="720" y1="-50" x2="720" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="750" y="-40" text-anchor="middle" style="font-size: 80%">2012</text>
+          <line x1="780" y1="-50" x2="780" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="810" y="-40" text-anchor="middle" style="font-size: 80%">2013</text>
+          <line x1="840" y1="-50" x2="840" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="870" y="-40" text-anchor="middle" style="font-size: 80%">2014</text>
+          <line x1="900" y1="-50" x2="900" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="930" y="-40" text-anchor="middle" style="font-size: 80%">2015</text>
+          <line x1="960" y1="-50" x2="960" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="990" y="-40" text-anchor="middle" style="font-size: 80%">2016</text>
+          <line x1="1020" y1="-50" x2="1020" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1050" y="-40" text-anchor="middle" style="font-size: 80%">2017</text>
+          <line x1="1080" y1="-50" x2="1080" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1110" y="-40" text-anchor="middle" style="font-size: 80%">2018</text>
+          <line x1="1140" y1="-50" x2="1140" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+
+          <circle cx="389" cy="0" r="5" fill="#2C2255" />
+          <text x="389" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Callisto</text>
+          <circle cx="449" cy="0" r="5" fill="#2C2255" />
+          <text x="449" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Europa</text>
+          <polyline points="449,0 449,40 489,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.3.X -->
+          <circle cx="464" cy="40" r="5" fill="#2C2255" />
+          <text x="464" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="489" cy="40" r="5" fill="#2C2255" />
+          <text x="489" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="508" cy="0" r="5" fill="#2C2255" />
+          <text x="508" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Ganymede</text>
+          <polyline points="508,0 508,40 547,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.4.X -->
+          <circle cx="522" cy="40" r="5" fill="#2C2255" />
+          <text x="522" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="547" cy="40" r="5" fill="#2C2255" />
+          <text x="547" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="569" cy="0" r="5" fill="#2C2255" />
+          <text x="569" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Galileo</text>
+          <polyline points="569,0 569,40 607,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.5.X -->
+          <circle cx="583" cy="40" r="5" fill="#2C2255" />
+          <text x="583" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="607" cy="40" r="5" fill="#2C2255" />
+          <text x="607" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="629" cy="0" r="5" fill="#2C2255" />
+          <text x="629" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Helios</text>
+          <polyline points="629,0 629,40 667,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.6.X -->
+          <circle cx="642" cy="40" r="5" fill="#2C2255" />
+          <text x="642" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="667" cy="40" r="5" fill="#2C2255" />
+          <text x="667" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="689" cy="0" r="5" fill="#2C2255" />
+          <text x="689" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Indigo</text>
+          <polyline points="689,0 689,40 727,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 3.7.X -->
+          <circle cx="702" cy="40" r="5" fill="#2C2255" />
+          <text x="702" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="727" cy="40" r="5" fill="#2C2255" />
+          <text x="727" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="750" cy="0" r="5" fill="#2C2255" />
+          <text x="750" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Juno</text>
+          <polyline points="750,0 750,40 786,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.2.X -->
+          <circle cx="763" cy="40" r="5" fill="#2C2255" />
+          <text x="763" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="786" cy="40" r="5" fill="#2C2255" />
+          <text x="786" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="809" cy="0" r="5" fill="#2C2255" />
+          <text x="809" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Kepler</text>
+          <polyline points="809,0 809,40 849,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.3.X -->
+          <circle cx="822" cy="40" r="5" fill="#2C2255" />
+          <text x="822" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="849" cy="40" r="5" fill="#2C2255" />
+          <text x="849" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="869" cy="0" r="5" fill="#2C2255" />
+          <text x="869" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Luna</text>
+          <polyline points="869,0 869,40 906,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.4.X -->
+          <circle cx="884" cy="40" r="5" fill="#2C2255" />
+          <text x="884" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="906" cy="40" r="5" fill="#2C2255" />
+          <text x="906" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="929" cy="0" r="5" fill="#2C2255" />
+          <text x="929" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Mars</text>
+          <polyline points="929,0 929,40 967,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.5.X -->
+          <circle cx="941" cy="40" r="5" fill="#2C2255" />
+          <text x="941" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="967" cy="40" r="5" fill="#2C2255" />
+          <text x="967" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="989" cy="0" r="5" fill="#2C2255" />
+          <text x="989" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Neon</text>
+          <polyline points="989,0 989,40 1030,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.6.X -->
+          <circle cx="1002" cy="40" r="5" fill="#2C2255" />
+          <text x="1002" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.1</text>
+          <circle cx="1014" cy="40" r="5" fill="#2C2255" />
+          <text x="1014" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.2</text>
+          <circle cx="1030" cy="40" r="5" fill="#2C2255" />
+          <text x="1030" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.3</text>
+          <circle cx="1050" cy="0" r="5" fill="#2C2255" />
+          <text x="1050" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Oxygen</text>
+          <polyline points="1050,0 1050,40 1094,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.7.X -->
+          <circle cx="1065" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1065" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.1</text>
+          <circle cx="1079" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1079" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.2</text>
+          <circle cx="1094" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1094" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.3</text>
+          <circle cx="1110" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1110" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Photon</text>
+          <polyline points="1110,0 1110,40 1153,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.8.X -->
+          <circle cx="1110" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <circle cx="1123" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1123" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.1</text>
+          <circle cx="1138" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1138" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.2</text>
+          <circle cx="1153" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1153" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.3</text>
+        </svg>
+      </p>
+
+      <p>Las publicaciones reciben un nombre, aunque a veces también se refieren a ellas por el número de versión de la plataforma Eclipse. Al principio los nombres eran el nombre de alguna luna de Júpiter, más o menos en orden alfabético, pero desde hace unos años son términos científicos cuya primera letra sigue el orden alfabético: Calisto (2006), Europa (2007), Ganímedes (2008), Galileo (2009), Helios (2010), Indigo (2011), Juno (2012), Kepler (2013), Luna (2014), Mars (2015), Neon (2016), Oxygen (2017) y Photon (2018).</p>
+
+      <p>Entre 2007 y 2015 se realizaron cada año dos publicaciones simultáneas de actualizaciones (llamadas <i>Service Releases</i>) en fechas fijas: una actualización SR1 en septiembre y otra actualización SR2 en febrero del año siguiente. Desde 2015 estas versiones menores se llaman simplemente .1 y .2. Desde 2016, las actualizaciones se publican cada tres meses: .1 en septiembre, .2 en diciembre y .3 en marzo.</p>
+
+      <p><strong>Nota</strong>:</p>
+      <ul>
+        <li>Novedades en Eclipse:
+          <a href="https://www.eclipse.org/eclipse/news/4.7/platform.php">Oxygen</a> -
+          <a href="https://www.eclipse.org/eclipse/news/4.6/platform.php">Neon</a> -
+          <a href="https://www.eclipse.org/eclipse/news/4.5/platform.php">Mars</a> -
+          <a href="https://www.eclipse.org/eclipse/news/4.4/eclipse-news-part1.php">Luna</a> -
+          <a href="http://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2FwhatsNew%2Fpde_whatsnew.html">Kepler</a> -
+          <a href="http://archive.eclipse.org/eclipse/downloads/drops/R-3.8.2-201301310800/news/eclipse-news-part1.html">Juno</a> -
+          <a href="http://archive.eclipse.org/eclipse/downloads/drops/R-3.7-201106131736/eclipse-news-part1.html">Indigo</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="plugin">
+      <h3>El plug-in Eclipse PDT</h3>
+
+      <p>El <a href="http://www.eclipse.org/pdt/">plug-in Eclipse PDT</a> es un plug-in de Eclipse dirigido a la programación en PHP. Este plug-in se publica desde el año 2007 y desde el año 2010 (aproximadamente) está desarrollado principalmente por empleados de la empresa <a href="http://www.zend.com/">Zend Technologies</a>, la creadora del lenguaje PHP.</p>
+
+      <p>La imagen siguiente muestra las versiones publicadas y previstas del plug-in Eclipse PDT.</p>
+
+      <p class="mcl-centrado">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1220" viewBox="-50 -60 1220 150">
+          <title>Versiones del plug-in Eclipse PDT</title>
+          <line x1="35" y1="0" x2="1165" y2="0" stroke-width="3" stroke="#2C2255" />
+          <text x="0" y="-10" text-anchor="middle" style="font-size: 100%">Plug-in</text>
+          <text x="0" y="20" text-anchor="middle" style="font-size: 100%">Eclipse PDT</text>
+
+          <line x1="60" y1="-50" x2="60" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="90" y="-40" text-anchor="middle" style="font-size: 80%">2001</text>
+          <line x1="120" y1="-50" x2="120" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="150" y="-40" text-anchor="middle" style="font-size: 80%">2002</text>
+          <line x1="180" y1="-50" x2="180" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="210" y="-40" text-anchor="middle" style="font-size: 80%">2003</text>
+          <line x1="240" y1="-50" x2="240" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="270" y="-40" text-anchor="middle" style="font-size: 80%">2004</text>
+          <line x1="300" y1="-50" x2="300" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="330" y="-40" text-anchor="middle" style="font-size: 80%">2005</text>
+          <line x1="360" y1="-50" x2="360" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="390" y="-40" text-anchor="middle" style="font-size: 80%">2006</text>
+          <line x1="420" y1="-50" x2="420" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="450" y="-40" text-anchor="middle" style="font-size: 80%">2007</text>
+          <line x1="480" y1="-50" x2="480" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="510" y="-40" text-anchor="middle" style="font-size: 80%">2008</text>
+          <line x1="540" y1="-50" x2="540" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="570" y="-40" text-anchor="middle" style="font-size: 80%">2009</text>
+          <line x1="600" y1="-50" x2="600" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="630" y="-40" text-anchor="middle" style="font-size: 80%">2010</text>
+          <line x1="660" y1="-50" x2="660" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="690" y="-40" text-anchor="middle" style="font-size: 80%">2011</text>
+          <line x1="720" y1="-50" x2="720" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="750" y="-40" text-anchor="middle" style="font-size: 80%">2012</text>
+          <line x1="780" y1="-50" x2="780" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="810" y="-40" text-anchor="middle" style="font-size: 80%">2013</text>
+          <line x1="840" y1="-50" x2="840" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="870" y="-40" text-anchor="middle" style="font-size: 80%">2014</text>
+          <line x1="900" y1="-50" x2="900" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="930" y="-40" text-anchor="middle" style="font-size: 80%">2015</text>
+          <line x1="960" y1="-50" x2="960" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="990" y="-40" text-anchor="middle" style="font-size: 80%">2016</text>
+          <line x1="1020" y1="-50" x2="1020" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1050" y="-40" text-anchor="middle" style="font-size: 80%">2017</text>
+          <line x1="1080" y1="-50" x2="1080" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1110" y="-40" text-anchor="middle" style="font-size: 80%">2018</text>
+          <line x1="1140" y1="-50" x2="1140" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+
+          <circle cx="436" cy="0" r="5" fill="#2C2255" />
+          <text x="436" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">0.7</text>
+          <circle cx="463" cy="0" r="5" fill="#2C2255" />
+          <text x="463" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">1.0</text>
+          <circle cx="540" cy="0" r="5" fill="#2C2255" />
+          <text x="540" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">2.0</text>
+          <circle cx="569" cy="0" r="5" fill="#2C2255" />
+          <text x="569" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">2.1</text>
+          <circle cx="689" cy="0" r="5" fill="#2C2255" />
+          <text x="689" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.0</text>
+          <circle cx="749" cy="0" r="5" fill="#2C2255" />
+          <text x="749" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.1</text>
+          <circle cx="809" cy="0" r="5" fill="#2C2255" />
+          <text x="809" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.2</text>
+          <circle cx="869" cy="0" r="5" fill="#2C2255" />
+          <text x="869" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.3</text>
+          <circle cx="910" cy="0" r="5" fill="#2C2255" />
+          <text x="910" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.4</text>
+          <circle cx="929" cy="0" r="5" fill="#2C2255" />
+          <text x="929" y="25" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.5</text>
+          <circle cx="946" cy="0" r="5" fill="#2C2255" />
+          <text x="946" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.6</text>
+          <circle cx="970" cy="0" r="5" fill="#2C2255" />
+          <text x="970" y="25" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">3.7</text>
+          <circle cx="989" cy="0" r="5" fill="#2C2255" />
+          <text x="989" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.0</text>
+          <circle cx="1005" cy="0" r="5" stroke="#2C2255" />
+          <text x="1005" y="25" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.1</text>
+          <circle cx="1019" cy="0" r="5" stroke="#2C2255" />
+          <text x="1019" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.2</text>
+          <circle cx="1034" cy="0" r="5" stroke="#2C2255" />
+          <text x="1034" y="25" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">4.3</text>
+          <circle cx="1050" cy="0" r="5" stroke="#2C2255" />
+          <text x="1050" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">5.0</text>
+          <circle cx="1065" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1065" y="25" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">5.1</text>
+          <circle cx="1079" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1079" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">5.2</text>
+          <circle cx="1094" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1094" y="25" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">5.3</text>
+        </svg>
+      </p>
+
+      <p>El plug-in Eclipse PDT sigue una numeración X.Y, independiente de la numeración de la plataforma Eclipse, ya que sigue su propio ritmo de desarrollo. Ocasionalmente se publican algunas versiones X.Y.Z, pero únicamente para corregir problemas detectados en las versiones X.Y.</p>
+
+      <p>Hasta 2011, el plug-in Eclipse PDT no consiguió formar parte de forma regular de las publicaciones simultáneas de Eclipse, pero desde entonces se ha acompasado al resto de proyectos de Eclipse, primero a las publicaciones anuales de junio, y desde 2015 a las publicaciones intermedias.</p>
+
+      <p>El plug-in Eclipse PDT se puede utilizar instalando la plataforma Eclipse y después instalando y configurando el plug-in Eclipse PDT.  Esta instalación no es trivial, por lo que los autores del plug-in Eclipse PDT preparan también el paquete Eclipse PDT, que se comenta en el apartado siguiente y que incluye la plataforma Eclipse, el plug-in Eclipse PDT y otros plug-ins. En estos apuntes se recomienda utilizar el paquete Eclipse PDT.</p>
+
+      <p><strong>Nota</strong>:</p>
+      <ul>
+        <li>Novedades en el plug-in Eclipse PDT:
+          <a href="https://wiki.eclipse.org/PDT/NewIn51">5.1</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn50">5.0</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn43">4.3</a> -
+          <a href="https://projects.eclipse.org/projects/tools.pdt/releases/4.2/bugs">4.2</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn41">4.1</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn40">4.0</a> (<a href="https://www.youtube.com/watch?v=Eto5Zfo_MQc">webinar What's New in Eclipse Neon?</a>) -
+          <a href="https://wiki.eclipse.org/PDT/NewIn37">3.7</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn36">3.6</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn35">3.5</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn34">3.4</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn33">3.3</a> -
+          <a href="https://wiki.eclipse.org/PDT/NewIn32">3.2</a> -
+          <a href="http://www.eclipse.org/pdt/release-notes/pdt2_1.php">2.1</a> -
+          <a href="http://www.eclipse.org/pdt/release-notes/pdt2_0.php">2.0</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="eclipse-pdt">
+      <h3>El paquete Eclipse PDT</h3>
+
+      <p>Instalar y configurar en la plataforma Eclipse todos los plug-ins recomendados para un determinado tipo de desarrollo no es una tarea fácil. Por ello, la fundación Eclipse publica paquetes completos enfocados a necesidades específicas. Para la programación en PHP, la fundación Eclipse publica el paquete Eclipse PDT que incluye la plataforma Eclipse, el plug-in Eclipse PDT y otros plug-ins que facilitan la programación en PHP.</p>
+
+      <p>La imagen siguiente muestra las versiones publicadas y previstas del paquete Eclipse PDT.</p>
+
+      <p class="mcl-centrado">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1220" viewBox="-50 -60 1220 150">
+          <title>Versiones del paquete Eclipse PDT</title>
+          <line x1="35" y1="0" x2="1165" y2="0" stroke-width="3" stroke="#2C2255" />
+          <text x="0" y="-10" text-anchor="middle" style="font-size: 100%">Paquete</text>
+          <text x="0" y="20" text-anchor="middle" style="font-size: 100%">Eclipse PDT</text>
+
+          <line x1="60" y1="-50" x2="60" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="90" y="-40" text-anchor="middle" style="font-size: 80%">2001</text>
+          <line x1="120" y1="-50" x2="120" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="150" y="-40" text-anchor="middle" style="font-size: 80%">2002</text>
+          <line x1="180" y1="-50" x2="180" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="210" y="-40" text-anchor="middle" style="font-size: 80%">2003</text>
+          <line x1="240" y1="-50" x2="240" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="270" y="-40" text-anchor="middle" style="font-size: 80%">2004</text>
+          <line x1="300" y1="-50" x2="300" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="330" y="-40" text-anchor="middle" style="font-size: 80%">2005</text>
+          <line x1="360" y1="-50" x2="360" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="390" y="-40" text-anchor="middle" style="font-size: 80%">2006</text>
+          <line x1="420" y1="-50" x2="420" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="450" y="-40" text-anchor="middle" style="font-size: 80%">2007</text>
+          <line x1="480" y1="-50" x2="480" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="510" y="-40" text-anchor="middle" style="font-size: 80%">2008</text>
+          <line x1="540" y1="-50" x2="540" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="570" y="-40" text-anchor="middle" style="font-size: 80%">2009</text>
+          <line x1="600" y1="-50" x2="600" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="630" y="-40" text-anchor="middle" style="font-size: 80%">2010</text>
+          <line x1="660" y1="-50" x2="660" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="690" y="-40" text-anchor="middle" style="font-size: 80%">2011</text>
+          <line x1="720" y1="-50" x2="720" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="750" y="-40" text-anchor="middle" style="font-size: 80%">2012</text>
+          <line x1="780" y1="-50" x2="780" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="810" y="-40" text-anchor="middle" style="font-size: 80%">2013</text>
+          <line x1="840" y1="-50" x2="840" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="870" y="-40" text-anchor="middle" style="font-size: 80%">2014</text>
+          <line x1="900" y1="-50" x2="900" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="930" y="-40" text-anchor="middle" style="font-size: 80%">2015</text>
+          <line x1="960" y1="-50" x2="960" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="990" y="-40" text-anchor="middle" style="font-size: 80%">2016</text>
+          <line x1="1020" y1="-50" x2="1020" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1050" y="-40" text-anchor="middle" style="font-size: 80%">2017</text>
+          <line x1="1080" y1="-50" x2="1080" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+          <text x="1110" y="-40" text-anchor="middle" style="font-size: 80%">2018</text>
+          <line x1="1140" y1="-50" x2="1140" y2="70" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+
+          <circle cx="463" cy="0" r="5" fill="#2C2255" />
+          <text x="463" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">1</text>
+          <circle cx="540" cy="0" r="5" fill="#2C2255" />
+          <text x="540" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">2</text>
+          <circle cx="569" cy="0" r="5" fill="#2C2255" />
+          <text x="569" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">2.1</text>
+          <circle cx="629" cy="0" r="5" fill="#2C2255" />
+          <text x="629" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Helios</text>
+          <circle cx="869" cy="0" r="5" fill="#2C2255" />
+          <text x="869" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Luna</text>
+          <polyline points="869,0 869,40 906,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.4.X -->
+          <circle cx="884" cy="40" r="5" fill="#2C2255" />
+          <text x="884" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="906" cy="40" r="5" fill="#2C2255" />
+          <text x="906" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="929" cy="0" r="5" fill="#2C2255" />
+          <text x="929" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Mars</text>
+          <polyline points="929,0 929,40 967,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.5.X -->
+          <circle cx="941" cy="40" r="5" fill="#2C2255" />
+          <text x="941" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR1</text>
+          <circle cx="967" cy="40" r="5" fill="#2C2255" />
+          <text x="967" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">SR2</text>
+          <circle cx="989" cy="0" r="5" fill="#2C2255" />
+          <text x="989" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Neon</text>
+          <polyline points="989,0 989,40 1030,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.6.X -->
+          <circle cx="1002" cy="40" r="5" fill="#2C2255" />
+          <text x="1002" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.1</text>
+          <circle cx="1014" cy="40" r="5" fill="#2C2255" />
+          <text x="1014" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.2</text>
+          <circle cx="1030" cy="40" r="5" fill="#2C2255" />
+          <text x="1030" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.3</text>
+          <circle cx="1050" cy="0" r="5" fill="#2C2255" />
+          <text x="1050" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Oxygen</text>
+          <polyline points="1050,0 1050,40 1094,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.7.X -->
+          <circle cx="1065" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1065" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.1</text>
+          <circle cx="1079" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1079" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.2</text>
+          <circle cx="1094" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1094" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.3</text>
+          <circle cx="1110" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1110" y="-15" text-anchor="middle" fill="#2C2255" style="font-size: 80%; font-weight: bold">Photon</text>
+          <polyline points="1110,0 1110,40 1153,40" stroke-width="3" stroke="#2C2255" fill="none"/> <!-- 4.8.X -->
+          <circle cx="1110" cy="0" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <circle cx="1123" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1123" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.1</text>
+          <circle cx="1138" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1138" y="30" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.2</text>
+          <circle cx="1153" cy="40" r="5" stroke="#2C2255" stroke-width="2" fill="white" />
+          <text x="1153" y="60" text-anchor="middle" fill="#2C2255" style="font-size: 70%; font-weight: bold">.3</text>
+        </svg>
+      </p>
+
+      <p>El paquete Eclipse PDT 1 se publicó en septiembre de 2007 y estaba basado en Eclipse 3.3 (Europa), publicado en junio de 2007. En 2011, 2012 y 2013 aunque se seguía publicando el plug-in Eclipse PDT, no se publicó el paquete Eclipse PDT. Pero desde 2014 el paquete Eclipse PDT ha vuelto a publicarse regularmente, tanto las versiones anuales como las actualizaciones.</p>
+    </section>
+
+    <section id="confusion">
+      <p>La manera en que el Eclipse denomina y numera las versiones es bastante confusa. Hay que tener en cuenta:</p>
+
+      <ul>
+        <li>Eclipse es el nombre de la plataforma general. Los números de versión de esta plataforma siguen el esquema X.Y. El motor interno de la plataforma se renovó en 2010, pasando de la versión 3 a la 4, pero no se publicó hasta 2012, como versión 4.2.</li>
+        <li>Cada módulo (o plug-in) de Eclipse sigue su propio ritmo de desarrollo, aunque las publicaciones son simultáneas para permitir la compatibilidad entre módulos. Cada plug-in sigue se propia numeración. En bastantes casos, la numeración de los plug-ins coincide con los de la plataforma, pero no necesariamente. Por ejemplo, los números de versión del plug-in Eclipse PDT no tienen nada que ver con los de la plataforma Eclipse.</li>
+        <li>Para facilitar a los usuarios el uso de Eclipse, se publican paquetes (packages) que combinan la plataforma Eclipse con un conjunto de plug-ins. El nombre de esos paquetes puede ser un nombre </li>
+      </ul>
+
+      <p>Referencias</p>
+      <ul>
+        <li><a href="https://www.infoq.com/news/2011/11/eclipse-10">Ten Years of Eclipse (Alex Blewitt, 07/11/11)</a></li>
+        <li><a href="https://www.ibm.com/developerworks/rational/library/nov05/cernosek/">A brief history of Eclipse (Gary Cernosek, 15/11/05)</a></li>
+        <li><a href="https://wiki.eclipse.org/Simultaneous_Release">Eclipse simultaneous releases</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="ultmod">Última modificación de esta página: 29 de agosto de 2017</p>
+
+      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+    </footer>
+  </body>
+</html>
