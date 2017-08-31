@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Ejemplo de recogida de datos sin comprobación - ejemplo_recogida_datos_1-2.php
  *
