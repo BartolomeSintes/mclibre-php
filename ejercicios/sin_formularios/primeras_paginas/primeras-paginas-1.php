@@ -1,11 +1,11 @@
 <?php
 /**
- * Primeras páginas 1 - primeras_paginas_1.php
+ * Primeras páginas 1 - primeras-paginas-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-09-27
+ * @version   2017-09-20
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,12 @@
  */
 
 print "<html>\n";
-print "  <head>\n";
-print "    <meta charset=\"utf-8\" />\n";
-print "  </head>\n";
+print "<head>\n";
+print "  <meta charset=\"utf-8\" />\n";
+print "</head>\n";
 print "\n";
-print "  <body>\n";
-print "    <p>¡Hola, mundo!</p>\n";
-print "  </body>\n";
+print "<body>\n";
+print "  <p>¡Hola, mundo!</p>\n";
+print "</body>\n";
 print "</html>";
 ?>
