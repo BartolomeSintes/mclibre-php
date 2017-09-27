@@ -1,6 +1,6 @@
 <?php
 /**
- * Variables (1) 12 - variables-1-12.php
+ * Variables (1) 5 - variables-1-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,28 +26,30 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tres círculos. Variables.
+  <title>La carta más alta. Variables.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Tres círculos</h1>
+  <h1>La carta más altaa</h1>
 
-  <p>Actualice la página para mostrar tres nuevos círculos.</p>
+  <p>Actualice la página para mostrar un nuevo trío de cartas.</p>
 
 <?php
-$c1 = rand(50, 150);
-$c2 = rand(50, 150);
-$c3 = rand(50, 150);
+$a = rand(1, 10);
+$b = rand(1, 10);
+$c = rand(1, 10);
+$maximo = max($a, $b, $c);
 
-print "  <p><svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "    width=\"920\" height=\"320\" viewBox=\"-10 -10 920 320\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
-print "    <circle cx=\"$c1\" cy=\"150\" r=\"$c1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
-print "    <circle cx=\"" . (2 * $c1 + $c2) . "\" cy=\"150\" r=\"$c2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
-print "    <circle cx=\"" . (2 * $c1 + 2 * $c2 + $c3) ."\" cy=\"150\" r=\"$c3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
-print "  </svg></p>\n";
+print "  <p>\n";
+print "    <img src=\"img/c$a.svg\" alt=\"$a\" height=\"200\" />\n";
+print "    <img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\" />\n";
+print "    <img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\" />\n";
+print "  </p>\n";
+print "\n";
+print "<p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
 ?>
 
   <footer>
