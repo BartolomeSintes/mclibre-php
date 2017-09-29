@@ -33,7 +33,8 @@
         <li><a href="../../ejercicios/sin_formularios/variables_1/index.html#ejercicio-4">4 - Avance de ficha</a></li>
         <li><a href="../../ejercicios/sin_formularios/variables_1/index.html#ejercicio-5">5 - La carta más alta</a></li>
         <li><a href="../../ejercicios/sin_formularios/variables_1/index.html#ejercicio-11">11 - Círculos de color</a></li>
-        <li><a href="../../ejercicios/sin_formularios/variables_1/index.html#ejercicio-12">12 - Tres círculos</a></li>
+        <li><a href="../../ejercicios/sin_formularios/variables_1/index.html#ejercicio-12">12 - Tres cuadrados</a></li>
+        <li><a href="../../ejercicios/sin_formularios/variables_1/index.html#ejercicio-13">13 - Tres círculos</a></li>
       </ul>
 
       <h3>Soluciones</h3>
@@ -44,7 +45,8 @@
         <li><a href="#ejercicio-4">4 - Avance de ficha</a></li>
         <li><a href="#ejercicio-5">5 - La carta más alta</a></li>
         <li><a href="#ejercicio-11">11 - Círculos de color</a></li>
-        <li><a href="#ejercicio-12">12 - Tres círculos</a></li>
+        <li><a href="#ejercicio-12">12 - Tres cuadrados</a></li>
+        <li><a href="#ejercicio-13">13 - Tres círculos</a></li>
       </ul>
     </div>
   </nav>
@@ -198,7 +200,30 @@ print "&lt;p>La carta más alta es un &lt;strong>$maximo&lt;/strong>.&lt;/p>\n";
   </section>
 
   <section id="ejercicio-12">
-    <h2>Variables (1) 12 - Tres círculos</h2>
+    <h2>Variables (1) 12 - Tres cuadrados</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$c1 = rand(50, 150);
+$c2 = rand(50, 150);
+$c3 = rand(50, 150);
+$ancho = $c1 + $c2 + $c3 + 20;
+$alto = max($c1, $c2, $c3) + 20;
+
+print "  &lt;p>&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "    width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
+print "    &lt;rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" />\n";
+print "    &lt;rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" />\n";
+print "    &lt;rect x=\"" . ($c1+$c2) . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
+print "  &lt;/svg>&lt;/p>\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-13">
+    <h2>Variables (1) 13 - Tres círculos</h2>
 
     <div class="codigo">
       <pre>
@@ -219,7 +244,7 @@ print &quot;  &lt;/svg&gt;&lt;/p&gt;\n&quot;;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de septiembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 29 de septiembre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
