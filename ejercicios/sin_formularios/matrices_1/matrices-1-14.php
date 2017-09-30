@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 /**
- * Matrices (1) 14 - matrices_1_14.php
+ * Matrices (1) 14 - matrices-1-14.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-10-13
+ * @version   2017-09-30
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,15 +24,15 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Diccionario multilingüe. Matrices (1)
-      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Diccionario multilingüe. Matrices (1).
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
+<body>
 <?php
 $idiomas = array(
     array("español", "spanish", "espagnol", "spagnolo"),
@@ -66,27 +66,27 @@ do {
 
 $palabra = rand(0, count($palabras) - 1);
 
-print "    <h1>" . $mensajes[0][$idioma] . "</h1>\n";
+print "  <h1>" . $mensajes[0][$idioma] . "</h1>\n";
 print "\n";
-print "    <p>" . $mensajes[1][$idioma] . "</p>\n";
+print "  <p>" . $mensajes[1][$idioma] . "</p>\n";
 print "\n";
 
-print "    <p><strong style=\"text-transform: capitalize\">" . $palabras[$palabra][$idioma2]
+print "  <p><strong style=\"text-transform: capitalize\">" . $palabras[$palabra][$idioma2]
     . "</strong> " . $mensajes[2][$idioma] . "<strong> " . $palabras[$palabra][$idioma]
     . " </strong> " . $mensajes[3][$idioma] . " " . $idiomas[$idioma2][$idioma] . ".</p>\n";
 ?>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-10-13">13 de octubre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-09-30">30 de septiembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 /**
- * for (1) 17 - for_1_17.php
+ * for (1) 17 - for-1-17.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-10-10
+ * @version   2017-09-30
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,50 +24,50 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Arco iris circular. for (1)
-      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Arco iris circular. for (1).
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Arco iris circular</h1>
+<body>
+  <h1>Arco iris circular</h1>
 
-    <p>Actualice la página para mostrar un nuevo dibujo.</p>
+  <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
 $numero = rand(3,10);
 $radio  = 30;
 $paso = 360 / $numero;
 
-print "    <h2>$numero colores</h2>\n";
+print "  <h2>$numero colores</h2>\n";
 print "\n";
-print "    <p>\n";
-print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "        width=\"" . $radio * $numero * 2 . "px\" height=\"" . $radio * $numero * 2 . "px\" "
+print "  <p>\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      width=\"" . $radio * $numero * 2 . "px\" height=\"" . $radio * $numero * 2 . "px\" "
     . " viewbox=\"" . - $radio * $numero . " " . - $radio * $numero . " " . $radio * $numero * 2 . " " . $radio * $numero * 2 . "\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
-    print "        <circle cx=\"0\" cy=\"0\" r=\"" . $radio * ($numero - $i) . "\" fill=\"hsl(" . $i * $paso . ", 75%, 50%)\" />\n";
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . $radio * ($numero - $i) . "\" fill=\"hsl(" . $i * $paso . ", 75%, 50%)\" />\n";
 }
 
-print "      </svg>\n";
-print "    </p>\n";
+print "    </svg>\n";
+print "  </p>\n";
 ?>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-10-10">10 de octubre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-09-30">30 de septiembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
