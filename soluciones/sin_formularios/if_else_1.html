@@ -21,8 +21,18 @@
       </p>
 
       <div class="toc">
-        <h2>if ... else ... (1)</h2>
+        <h2>if ... elseif ... else ... (1)</h2>
 
+        <h3>Enunciados</h3>
+        <ul>
+          <li><a href="../../ejercicios/sin_formularios/if_else_1/index.html#ejercicio-1">1 - Dos dados</a></li>
+          <li><a href="../../ejercicios/sin_formularios/if_else_1/index.html#ejercicio-2">2 - Juego: Dado más alto</a></li>
+          <li><a href="../../ejercicios/sin_formularios/if_else_1/index.html#ejercicio-3">3 - Juego: 2 dados</a></li>
+          <li><a href="../../ejercicios/sin_formularios/if_else_1/index.html#ejercicio-4">4 - Tres dados</a></li>
+          <li><a href="../../ejercicios/sin_formularios/if_else_1/index.html#ejercicio-5">5 - Juego: 3 dados</a></li>
+        </ul>
+
+        <h3>Soluciones</h3>
         <ul>
           <li><a href="#ejercicio-1">1 - Dos dados</a></li>
           <li><a href="#ejercicio-2">2 - Juego: Dado más alto</a></li>
@@ -36,7 +46,7 @@
     <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sin_formularios/if_else_1/index.html">if .. elseif ... else ...</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
 
     <section id="ejercicio-1">
-      <h2>if ... else ... (1) 1 - Dos dados</h2>
+      <h2>if ... elseif ... else ... (1) 1 - Dos dados</h2>
 
       <div class="codigo">
         <pre>
@@ -44,16 +54,16 @@
 $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
-print &quot;    &lt;p&gt;\n&quot;;
-print &quot;      &lt;img src=\&quot;img/$dado1.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
-print &quot;      &lt;img src=\&quot;img/$dado2.svg\&quot; alt=\&quot;Dado 2\&quot; title=\&quot;$dado2\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
-print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;img src=\&quot;img/$dado1.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
+print &quot;    &lt;img src=\&quot;img/$dado2.svg\&quot; alt=\&quot;Dado 2\&quot; title=\&quot;$dado2\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
 print &quot;\n&quot;;
 
 if ($dado1 == $dado2) {
-    print &quot;    &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n&quot;;
+    print &quot;  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n&quot;;
 } else {
-    print &quot;    &lt;p&gt;No ha sacado pareja. El valor más alto es &quot; . max($dado1, $dado2) . &quot;.&lt;/p&gt;\n&quot;;
+    print &quot;  &lt;p&gt;No ha sacado pareja. El valor más alto es &quot; . max($dado1, $dado2) . &quot;.&lt;/p&gt;\n&quot;;
 }
 ?&gt;</code>
 </pre>
@@ -61,7 +71,7 @@ if ($dado1 == $dado2) {
     </section>
 
     <section id="ejercicio-2">
-      <h2>if ... else ... (1) 2 - Juego: Dado más alto</h2>
+      <h2>if ... elseif ... else ... (1) 2 - Juego: Dado más alto</h2>
 
       <div class="codigo">
         <pre>
@@ -69,15 +79,15 @@ if ($dado1 == $dado2) {
 $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
-print &quot;          &lt;td style=\&quot;padding: 10px; background-color: red;\&quot;&gt;&lt;img src=\&quot;img/$dado1.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;&lt;/td&gt;\n&quot;;
-print &quot;          &lt;td style=\&quot;padding: 10px; background-color: blue;\&quot;&gt;&lt;img src=\&quot;img/$dado2.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;&lt;/td&gt;\n&quot;;
+print &quot;        &lt;td style=\&quot;padding: 10px; background-color: red;\&quot;&gt;&lt;img src=\&quot;img/$dado1.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;&lt;/td&gt;\n&quot;;
+print &quot;        &lt;td style=\&quot;padding: 10px; background-color: blue;\&quot;&gt;&lt;img src=\&quot;img/$dado2.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;&lt;/td&gt;\n&quot;;
 
 if ($dado1 &gt; $dado2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($dado1 &lt; $dado2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } else {
-    print &quot;          &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
 }
 ?&gt;</code>
 </pre>
@@ -85,7 +95,7 @@ if ($dado1 &gt; $dado2) {
     </section>
 
     <section id="ejercicio-3">
-      <h2>if ... else ... (1) 3 - Juego: Dos dados más altos</h2>
+      <h2>if ... elseif ... else ... (1) 3 - Juego: Dos dados más altos</h2>
 
       <div class="codigo">
         <pre>
@@ -95,14 +105,14 @@ $dado1b = rand(1, 6);
 $dado2a = rand(1, 6);
 $dado2b = rand(1, 6);
 
-print &quot;          &lt;td style=\&quot;padding: 10px; background-color: red;\&quot;&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado1a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado1b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;          &lt;/td&gt;\n&quot;;
-print &quot;          &lt;td style=\&quot;padding: 10px; background-color: blue;\&quot;&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado2a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado2b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;          &lt;/td&gt;\n&quot;;
+print &quot;        &lt;td style=\&quot;padding: 10px; background-color: red;\&quot;&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado1a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado1b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;        &lt;/td&gt;\n&quot;;
+print &quot;        &lt;td style=\&quot;padding: 10px; background-color: blue;\&quot;&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado2a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado2b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;        &lt;/td&gt;\n&quot;;
 
 if ($dado1a == $dado1b) {
     $pareja1 = $dado1a;
@@ -120,43 +130,42 @@ $total1 = $dado1a + $dado1b;
 $total2 = $dado2a + $dado2b;
 
 if ($pareja1 &gt; $pareja2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($pareja1 &lt; $pareja2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } else {
     if ($total1 &gt; $total2) {
-        print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+        print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
     } elseif ($total1 &lt; $total2) {
-        print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+        print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
     } else {
-        print &quot;          &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
+        print &quot;        &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
     }
 }
 ?&gt;</code>
 </pre>
       </div>
 
-      <p>El bloque if ... elseif .. else ... se podría haber escrito sin anidamiento:</p>
+      <p>El bloque <span class="php-res">if ... elseif ... else ...</span> se podría haber escrito sin anidamiento:</p>
       <div class="codigo">
         <pre>
 <code class="language-php">if ($pareja1 &gt; $pareja2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($pareja1 &lt; $pareja2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } elseif ($total1 &gt; $total2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($total1 &lt; $total2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } else {
-    print &quot;          &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
 }</code>
 </pre>
       </div>
-
     </section>
 
     <section id="ejercicio-4">
-      <h2>if ... else ... (1) 4 - Tres dados</h2>
+      <h2>if ... elseif ... else ... (1) 4 - Tres dados</h2>
 
       <div class="codigo">
         <pre>
@@ -165,21 +174,21 @@ $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 $dado3 = rand(1, 6);
 
-print &quot;    &lt;p&gt;\n&quot;;
-print &quot;      &lt;img src=\&quot;img/$dado1.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
-print &quot;      &lt;img src=\&quot;img/$dado2.svg\&quot; alt=\&quot;Dado 2\&quot; title=\&quot;$dado2\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
-print &quot;      &lt;img src=\&quot;img/$dado3.svg\&quot; alt=\&quot;Dado 3\&quot; title=\&quot;$dado3\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
-print &quot;    &lt;/p&gt;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;img src=\&quot;img/$dado1.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
+print &quot;    &lt;img src=\&quot;img/$dado2.svg\&quot; alt=\&quot;Dado 2\&quot; title=\&quot;$dado2\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
+print &quot;    &lt;img src=\&quot;img/$dado3.svg\&quot; alt=\&quot;Dado 3\&quot; title=\&quot;$dado3\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
 print &quot;\n&quot;;
 
 if ($dado1 == $dado2 &amp;&amp; $dado1 == $dado3) {
-    print &quot;    &lt;p&gt;Ha sacado un trío de $dado1.&lt;/p&gt;\n&quot;;
+    print &quot;  &lt;p&gt;Ha sacado un trío de $dado1.&lt;/p&gt;\n&quot;;
 } elseif ($dado1 == $dado2 || $dado1 == $dado3) {
-    print &quot;    &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n&quot;;
+    print &quot;  &lt;p&gt;Ha sacado una pareja de $dado1.&lt;/p&gt;\n&quot;;
 } elseif ($dado2 == $dado3) {
-    print &quot;    &lt;p&gt;Ha sacado una pareja de $dado2.&lt;/p&gt;\n&quot;;
+    print &quot;  &lt;p&gt;Ha sacado una pareja de $dado2.&lt;/p&gt;\n&quot;;
 } else {
-    print &quot;    &lt;p&gt;El valor más alto es &quot; . max($dado1, $dado2, $dado3) . &quot;.&lt;/p&gt;\n&quot;;
+    print &quot;  &lt;p&gt;El valor más alto es &quot; . max($dado1, $dado2, $dado3) . &quot;.&lt;/p&gt;\n&quot;;
 }
 ?&gt;</code>
 </pre>
@@ -187,7 +196,7 @@ if ($dado1 == $dado2 &amp;&amp; $dado1 == $dado3) {
     </section>
 
     <section id="ejercicio-5">
-      <h2>if ... else ... (1) 5 - Juego: Tres dados más altos</h2>
+      <h2>if ... elseif ... else ... (1) 5 - Juego: Tres dados más altos</h2>
 
       <div class="codigo">
         <pre>
@@ -199,16 +208,16 @@ $dado2a = rand(1, 6);
 $dado2b = rand(1, 6);
 $dado2c = rand(1, 6);
 
-print &quot;          &lt;td style=\&quot;padding: 10px; background-color: red;\&quot;&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado1a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado1b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado1c.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1c\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;          &lt;/td&gt;\n&quot;;
-print &quot;          &lt;td style=\&quot;padding: 10px; background-color: blue;\&quot;&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado2a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado2b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;            &lt;img src=\&quot;img/$dado2c.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2c\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
-print &quot;          &lt;/td&gt;\n&quot;;
+print &quot;        &lt;td style=\&quot;padding: 10px; background-color: red;\&quot;&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado1a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado1b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado1c.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado1c\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;        &lt;/td&gt;\n&quot;;
+print &quot;        &lt;td style=\&quot;padding: 10px; background-color: blue;\&quot;&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado2a.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2a\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado2b.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2b\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;          &lt;img src=\&quot;img/$dado2c.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado2c\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot; style=\&quot;background-color: red;\&quot; /&gt;\n&quot;;
+print &quot;        &lt;/td&gt;\n&quot;;
 
 if ($dado1a == $dado1b &amp;&amp; $dado1a == $dado1c) {
     $trio1 = $dado1a;
@@ -246,21 +255,21 @@ $total2 = $dado2a + $dado2b + $dado2c;
 // print &quot;&lt;p&gt;2: Trío $trio2 - Pareja $pareja2 - Total: $total2&lt;/p&gt;\n&quot;;
 
 if ($trio1 &gt; $trio2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($trio1 &lt; $trio2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } else {
     if ($pareja1 &gt; $pareja2) {
-        print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+        print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
     } elseif ($pareja1 &lt; $pareja2) {
-        print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+        print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
     } else {
         if ($total1 &gt; $total2) {
-            print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+            print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
         } elseif ($total1 &lt; $total2) {
-            print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+            print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
         } else {
-            print &quot;          &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
+            print &quot;        &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
         }
     }
 }
@@ -268,23 +277,23 @@ if ($trio1 &gt; $trio2) {
 </pre>
       </div>
 
-      <p>Como en el ejercicio 3, el bloque if ... elseif ... else ... se podría haber escrito sin anidamiento:</p>
+      <p>Como en el ejercicio 3, el bloque <span class="php-res">if ... elseif ... else ...</span> se podría haber escrito sin anidamiento:</p>
       <div class="codigo">
         <pre>
 <code class="language-php">if ($trio1 &gt; $trio2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($trio1 &lt; $trio2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } elseif ($pareja1 &gt; $pareja2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($pareja1 &lt; $pareja2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } elseif ($total1 &gt; $total2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 1&lt;/td&gt;\n&quot;;
 } elseif ($total1 &lt; $total2) {
-    print &quot;          &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Ha ganado el jugador 2&lt;/td&gt;\n&quot;;
 } else {
-    print &quot;          &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
+    print &quot;        &lt;td&gt;Han empatado&lt;/td&gt;\n&quot;;
 }
 ?&gt;</code>
 </pre>
@@ -292,7 +301,7 @@ if ($trio1 &gt; $trio2) {
     </section>
 
     <footer>
-      <p class="ultmod">Última modificación de esta página: 9 de octubre de 2016</p>
+      <p class="ultmod">Última modificación de esta página: 3 de octubre de 2017</p>
 
       <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
         Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
