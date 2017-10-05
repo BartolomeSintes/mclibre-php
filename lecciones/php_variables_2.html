@@ -1,171 +1,176 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Tipos de variables. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Tipos de variables. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+</head>
 
-  <body>
-    <h1>Tipos de variables</h1>
+<body>
+  <h1>Tipos de variables</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Tipos de variables</h2>
+    <div class="toc">
+      <h2>Tipos de variables</h2>
 
-        <ul>
-          <li><a href="#tipos">Tipos de variables básicos</a>
-            <ul>
-              <li><a href="#boolean">lógicas (boolean)</a></li>
-              <li><a href="#integer">enteras (integer)</a></li>
-              <li><a href="#float">decimales (float)</a></li>
-              <li><a href="#string">cadenas (string)</a></li>
-              <li><a href="#array">matrices (array)</a></li>
-            </ul>
-          </li>
-          <li><a href="#conversion">Conversiones de tipos</a>
-            <ul>
-              <li><a href="#como-logicas">como variables lógicas</a></li>
-            </ul>
-          </li>
-        </ul>
+      <ul>
+        <li><a href="#tipos">Tipos de variables básicos</a>
+          <ul>
+            <li><a href="#boolean">lógicas (boolean)</a></li>
+            <li><a href="#integer">enteras (integer)</a></li>
+            <li><a href="#float">decimales (float)</a></li>
+            <li><a href="#string">cadenas (string)</a></li>
+            <li><a href="#array">matrices (array)</a></li>
+          </ul>
+        </li>
+        <li><a href="#conversion">Conversiones de tipos</a>
+          <ul>
+            <li><a href="#como-logicas">como variables lógicas</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="tipos">
+    <h2>Tipos de variables básicos</h2>
+
+    <p>Los tipos de variables básicos son los siguientes:</p>
+    <ul>
+      <li>lógicas o booleanas (boolean)</li>
+      <li>enteros (integer)</li>
+      <li>decimales (float)</li>
+      <li>cadenas (string)</li>
+      <li>matrices (arrays)</li>
+    </ul>
+
+    <p>Existen además los tipos:</p>
+    <ul>
+      <li>objetos (object)</li>
+      <li>recursos (resource)</li>
+      <li>nulo (<span class="php-con">null</span>)</li>
+    </ul>
+
+    <section id="boolean">
+      <h3>Variables lógicas (boolean)</h3>
+
+      <p>Las variables de tipo lógico sólo pueden tener el valor <span class="php-con">true</span> (verdadero) o <span class="php-con">false</span> (falso). Se suelen utilizar en las estructuras de control.</p>
+
+      <p><strong>Nota</strong>: El ejemplo siguiente utiliza la estructura de selección <span class="php-res">if</span> que se explica en detalle en la lección de <a href="php_estructuras_control.html#if">estructuras de control</a>. Para entender este ejemplo, es suficiente saber que if significa si (si como condición, no sí como afirmación) y va seguida de una comparación de igualdad <span class="php-ope">==</span> (las comparaciones se explican en la lección de <a href="php_operaciones_logicas.html#comparaciones">operaciones lógicas</a>). En caso de que la comparación sea cierta, es decir si los dos términos a ambos lados de la comparación son iguales, se ejecuta la instrucción entre corchetes <span class="php-ope">{ }</span>.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado = true;
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
       </div>
-    </nav>
 
-    <section id="tipos">
-      <h2>Tipos de variables básicos</h2>
+      <p>Estos valores se pueden escribir en mayúsculas o minúsculas o combinando ambas, aunque se recomienda utilizar minúsculas:</p>
 
-      <p>Los tipos de variables básicos son los siguientes:</p>
-      <ul>
-        <li>lógicas o booleanas (boolean)</li>
-        <li>enteros (integer)</li>
-        <li>decimales (float)</li>
-        <li>cadenas (string)</li>
-        <li>matrices (arrays)</li>
-      </ul>
-
-      <p>Existen además los tipos:</p>
-      <ul>
-        <li>objetos (object)</li>
-        <li>recursos (resource)</li>
-        <li>nulo (<span class="php-con">null</span>)</li>
-      </ul>
-
-      <section id="boolean">
-        <h3>Variables lógicas (boolean)</h3>
-
-        <p>Las variables de tipo lógico sólo pueden tener el valor <span class="php-con">true</span> (verdadero) o <span class="php-con">false</span> (falso). Se suelen utilizar en las estructuras de control.</p>
-
-        <p><strong>Nota</strong>: El ejemplo siguiente utiliza la estructura de selección <span class="php-res">if</span> que se explica en detalle en la lección de <a href="php_estructuras_control.html#if">estructuras de control</a>. Para entender este ejemplo, es suficiente saber que if significa si (si como condición, no sí como afirmación) y va seguida de una comparación de igualdad <span class="php-res">==</span> (las comparaciones se explican en la lección de <a href="php_operaciones_logicas.html#comparaciones">operaciones lógicas</a>). En caso de que la comparación sea cierta, es decir si los dos términos a ambos lados de la comparación son iguales, se ejecuta la instrucción entre corchetes <span class="php-res">{ }</span>.</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = true;
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
         </div>
-
-        <p>Estos valores se pueden escribir en mayúsculas o minúsculas o combinando ambas, aunque se recomienda utilizar minúsculas:</p>
-
-        <div class="filaflex">
-          <div class="icono-ok">
-            <img src="../varios/iconos/icono_oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
-          </div>
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
-$contestar = <span class="codigo-resaltado">fAlSe</span>;
+$autorizado = <span class="codigo-resaltado">fAlSe</span>;
 
-if ($contestar == <span class="codigo-resaltado">TRUe</span>) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
+if ($autorizado == <span class="codigo-resaltado">TRUe</span>) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
 }
 
-if ($contestar == <span class="codigo-resaltado">FaLsE</span>) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
+if ($autorizado == <span class="codigo-resaltado">FaLsE</span>) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
 }
-?&gt;</code>
+?></code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre>
-          </div>
         </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted no está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p><strong>Nota</strong>: No es necesario comparar una variable lógica con <span class="php-con">true</span> o <span class="php-con">false</span>, podemos emplearla directamente en la condición del <span class="php-res">if</span>.</p>
+      <p><strong>Nota</strong>: No es necesario comparar una variable lógica con <span class="php-con">true</span> o <span class="php-con">false</span>, podemos emplear variables lógicas directamente en la condición del <span class="php-res">if</span>.</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
-$contestar = true;
+$autorizado = true;
 
-if ($contestar) {  // equivale a $contestar == true
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-} else {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
+if ($autorizado) {           // equivale a $autorizado == true
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
 }
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+if (!$autorizado) {          // equivale a $autorizado == false
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+  ?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
-$errorDetectado = false;
+$autorizado = false;
 
-if (!$errorDetectado) {  // equivale a $errorDetectado == false
-  print "&lt;p&gt;No se han detectado errores.&lt;/p&gt;\n";
-} else {
-  print "&lt;p&gt;Se han detectado errores.&lt;/p&gt;\n";
+if ($autorizado) {           // equivale a $autorizado == true
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
 }
-?&gt;</code>
+
+if (!$autorizado) {          // equivale a $autorizado == false
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;No se han detectado errores.&lt;/p&gt;</code></pre>
-          </div>
         </div>
-      </section>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted no está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+    </section>
 
-      <section id="integer">
-        <h3>Variables enteras (integer)</h3>
+    <section id="integer">
+      <h3>Variables enteras (integer)</h3>
 
-        <p>Las variables de tipo entero pueden guardar números enteros (positivos o negativos).</p>
+      <p>Las variables de tipo entero pueden guardar números enteros (positivos o negativos).</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $lado = 14;
 $area = $lado * $lado;
@@ -173,71 +178,71 @@ $area = $lado * $lado;
 print "&lt;p&gt;Un cuadrado de lado $lado cm \ntiene un área de $area cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;Un cuadrado de lado 14 cm
 tiene un área de 196 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 </pre>
-          </div>
         </div>
+      </div>
 
-        <p>Como las variables enteras se guardan en la memoria del ordenador utilizando un número de bytes fijo (que depende del ordenador, pero se puede averiguar mediante la constante predefinida <a href="php_constantes.html#phpintsize">PHP_INT_SIZE</a>), no se pueden guardar números arbitrariamente grandes o pequeños. El valor más grande que se puede almacenar se puede averiguar mendiante la constante predefinida <a href="php_constantes.html#phpintmax">PHP_INT_MAX</a>. Los enteros se guardan en notación complemento a dos.</p>
+      <p>Como las variables enteras se guardan en la memoria del ordenador utilizando un número de bytes fijo (que depende del ordenador, pero se puede averiguar mediante la constante predefinida <a href="php_constantes.html#phpintsize">PHP_INT_SIZE</a>), no se pueden guardar números arbitrariamente grandes o pequeños. El valor más grande que se puede almacenar se puede averiguar mendiante la constante predefinida <a href="php_constantes.html#phpintmax">PHP_INT_MAX</a>. Los enteros se guardan en notación complemento a dos.</p>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <h4>Notación complemento a dos</h4>
+      <h4>Notación complemento a dos</h4>
 
-        <p>En un byte (8 bits) se pueden almacenar 256 (2<sup>8</sup>) valores diferentes. Eso permite almacenar por ejemplo, desde el valor 0 hasta el 255. Para almacenar tanto números negativos como positivos, se utiliza la notación complemento a dos, en la que la primera mitad de los valores representan los valores positivos (desde 0 hasta 127) y la segunda mitad de los valores representan los valores negativos (desde -128 hasta -1), como indica la tabla siguiente </p>
+      <p>En un byte (8 bits) se pueden almacenar 256 (2<sup>8</sup>) valores diferentes. Eso permite almacenar por ejemplo, desde el valor 0 hasta el 255. Para almacenar tanto números negativos como positivos, se utiliza la notación complemento a dos, en la que la primera mitad de los valores representan los valores positivos (desde 0 hasta 127) y la segunda mitad de los valores representan los valores negativos (desde -128 hasta -1), como indica la tabla siguiente </p>
 
-        <table class="tabla-con-borde">
-          <tbody>
-            <tr>
-              <td>El valor ...</td>
-              <td>0</td>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>...</td>
-              <td>126</td>
-              <td>127</td>
-              <td>128</td>
-              <td>129</td>
-              <td>...</td>
-              <td>253</td>
-              <td>254</td>
-              <td>255</td>
-            </tr>
-            <tr>
-              <td>... representa el entero ...</td>
-              <td>0</td>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>...</td>
-              <td>126</td>
-              <td>127</td>
-              <td>-128</td>
-              <td>-127</td>
-              <td>..</td>
-              <td>-3</td>
-              <td>-2</td>
-              <td>-1</td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <td>El valor ...</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>...</td>
+            <td>126</td>
+            <td>127</td>
+            <td>128</td>
+            <td>129</td>
+            <td>...</td>
+            <td>253</td>
+            <td>254</td>
+            <td>255</td>
+          </tr>
+          <tr>
+            <td>... representa el entero ...</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>...</td>
+            <td>126</td>
+            <td>127</td>
+            <td>-128</td>
+            <td>-127</td>
+            <td>..</td>
+            <td>-3</td>
+            <td>-2</td>
+            <td>-1</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <p>En cuatro bytes (32 bits) se pueden almacenar 4.294.967.296 (2<sup>32</sup>)valores distintos. En notación complemento a dos se pueden representar desde el valor -2.147.483.648 hasta 2.147.483.647.</p>
+      <p>En cuatro bytes (32 bits) se pueden almacenar 4.294.967.296 (2<sup>32</sup>)valores distintos. En notación complemento a dos se pueden representar desde el valor -2.147.483.648 hasta 2.147.483.647.</p>
 
-        <p>Si se intenta guardar un número demasiado grande positivo, el resultado será seguramente incorrecto. En el ejemplo siguiente se fuerza a PHP a guardar como entero el valor siguiente al máximo valor posible. El valor se guarda, pero cuando se utiliza, PHP lo interpreta como negativo.</p>
+      <p>Si se intenta guardar un número demasiado grande positivo, el resultado será seguramente incorrecto. En el ejemplo siguiente se fuerza a PHP a guardar como entero el valor siguiente al máximo valor posible. El valor se guarda, pero cuando se utiliza, PHP lo interpreta como negativo.</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $maximo = PHP_INT_MAX;
 print "&lt;p&gt;El mayor entero que se puede guardar en una variable entera es $maximo&lt;/p&gt;\n";
@@ -246,24 +251,24 @@ $demasiado = (int)($maximo+1);
 print "&lt;p&gt;Si se intenta guardar 1 más, el resultado es $demasiado&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;El mayor entero que se puede guardar en una variable entera es 2147483647&lt;/p&gt;
 &lt;p&gt;Si se intenta guardar 1 más, el resultado es -2147483648&lt;/p&gt;</code>
 </pre>
-          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="float">
-        <h3>Variables decimales (float)</h3>
+    <section id="float">
+      <h3>Variables decimales (float)</h3>
 
-        <p>Las variables de tipo decimal (float) pueden guardar números decimales (positivos o negativos). Como en las calculadoras, el separador de la parte entera y la parte decimal es el punto (.), no la coma (,)..</p>
+      <p>Las variables de tipo decimal (float) pueden guardar números decimales (positivos o negativos). Como en las calculadoras, el separador de la parte entera y la parte decimal es el punto (.), no la coma (,)..</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $lado = 14.5;
 $area = $lado * $lado;
@@ -271,26 +276,26 @@ $area = $lado * $lado;
 print "&lt;p&gt;Un cuadrado de lado $lado cm \ntiene un área de $area cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;Un cuadrado de lado 14.5 cm
 tiene un área de 210.25 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 </pre>
-          </div>
         </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Como las variables decimales se guardan en la memoria del ordenador utilizando un número de bytes fijo (que depende del ordenador, aunque no existen constantes predefinidas para conocer su tamaño), no se pueden guardar números arbitrariamente grandes o pequeños. Normalmente las variables decimales siguen la norma <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 758</a>, concretamente el formato denominado "doble precisión", que emplea 8 bytes (64 bits) para almacenar un número.</p>
+      <p>Como las variables decimales se guardan en la memoria del ordenador utilizando un número de bytes fijo (que depende del ordenador, aunque no existen constantes predefinidas para conocer su tamaño), no se pueden guardar números arbitrariamente grandes o pequeños. Normalmente las variables decimales siguen la norma <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 758</a>, concretamente el formato denominado "doble precisión", que emplea 8 bytes (64 bits) para almacenar un número.</p>
 
-        <p>De esos 64 bits, uno se utiliza para el signo, 53 para la parte fraccionaria y 11 para el exponente. Eso hace que el valor más grande que se pueda almacenar sea aproximadamente 1,8.10<sup>308</sup>.</p>
+      <p>De esos 64 bits, uno se utiliza para el signo, 53 para la parte fraccionaria y 11 para el exponente. Eso hace que el valor más grande que se pueda almacenar sea aproximadamente 1,8.10<sup>308</sup>.</p>
 
-        <p>Si se intenta guardar un número demasiado grande positivo (tanto si ese valor se obtiene en un cálculo o si se escribe directamente) PHP no puede manejarlo y lo que hace es sustituirlo por la constante predefinida <a href="php_constantes.html#inf">INF</a>.</p>
+      <p>Si se intenta guardar un número demasiado grande positivo (tanto si ese valor se obtiene en un cálculo o si se escribe directamente) PHP no puede manejarlo y lo que hace es sustituirlo por la constante predefinida <a href="php_constantes.html#inf">INF</a>.</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $maximo = pow(10, 308);  // 10^308
 print "&lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: $maximo&lt;/p&gt;\n";
@@ -299,44 +304,44 @@ $demasiado = 10 * $maximo;
 print "&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es $demasiado&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;
 &lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: 1.0E+308&lt;/p&gt;</code>
 </pre>
-          </div>
         </div>
+      </div>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $prueba = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 print "&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es $prueba\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <p><code class="language-html">&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;</code></p>
-          </div>
         </div>
-      </section>
+        <div class="resultado-codigo">
+          <p><code class="language-html">&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;</code></p>
+        </div>
+      </div>
+    </section>
 
-      <section id="string">
-        <h3>Variables de cadenas (string)</h3>
+    <section id="string">
+      <h3>Variables de cadenas (string)</h3>
 
-        <p>Las variables de tipo cadena pueden guardar caracteres.</p>
+      <p>Las variables de tipo cadena pueden guardar caracteres.</p>
 
-        <p>PHP no impone ningún límite al tamaño de las cadenas. Las cadenas pueden ser todo lo largas que permita la memoria del servidor.</p>
+      <p>PHP no impone ningún límite al tamaño de las cadenas. Las cadenas pueden ser todo lo largas que permita la memoria del servidor.</p>
 
-        <p>El juego de caracteres que utiliza PHP viene determinado en principio por el juego de caracteres que utiliza el fichero fuente del programa. Pero hay que tener en cuenta que las funciones de tratamiento de cadenas no están preparadas para tratar la diversidad de juegos de caracteres: muchas suponen que cada carácter ocupa solamente un byte, otras suponen un juego de caracteres determinado (UTF-8, por ejemplo), otras utilizan el juego de caracteres definido localmente, etc.</p>
+      <p>El juego de caracteres que utiliza PHP viene determinado en principio por el juego de caracteres que utiliza el fichero fuente del programa. Pero hay que tener en cuenta que las funciones de tratamiento de cadenas no están preparadas para tratar la diversidad de juegos de caracteres: muchas suponen que cada carácter ocupa solamente un byte, otras suponen un juego de caracteres determinado (UTF-8, por ejemplo), otras utilizan el juego de caracteres definido localmente, etc.</p>
 
-        <p>Se puede acceder a caracteres individuales indicando la posición del carácter, como si se tratara de una matriz de una dimensión en la que el primer carácter ocupa la posición 0.</p>
+      <p>Se puede acceder a caracteres individuales indicando la posición del carácter, como si se tratara de una matriz de una dimensión en la que el primer carácter ocupa la posición 0.</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola, Don Pepito";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
@@ -348,21 +353,21 @@ $saludo[14] = "n";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;Hola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Mola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Mola, Don Pepino&lt;/p&gt;</code>
 </pre>
-          </div>
         </div>
+      </div>
 
-        <p>Si se indica una posición mayor que la longitud de la cadena, la cadena se alarga con espacios hasta llegar a ese valor:</p>
+      <p>Si se indica una posición mayor que la longitud de la cadena, la cadena se alarga con espacios hasta llegar a ese valor:</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola, Don Pepito";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
@@ -374,21 +379,21 @@ $saludo[25] = "!";
 print "&lt;pre&gt;$saludo&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;Hola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Hola, Don Pepiton&lt;/p&gt;
 &lt;pre&gt;Hola, Don Pepiton        !&lt;/pre&gt;</code>
 </pre>
-          </div>
         </div>
+      </div>
 
-        <p>Si en una posición se guarda una cadena vacía, la cadena se acorta eliminando el carácter de esa posición</p>
+      <p>Si en una posición se guarda una cadena vacía, la cadena se acorta eliminando el carácter de esa posición</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $saludo = "Hola, Don Pepito";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
@@ -397,291 +402,215 @@ $saludo[4] = "";
 print "&lt;p&gt;$saludo&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
 <code class="language-html">&lt;p&gt;Hola, Don Pepito&lt;/p&gt;
 &lt;p&gt;Hola Don Pepito&lt;/p&gt;</code>
 </pre>
-          </div>
         </div>
-      </section>
-
-      <section id="array">
-        <h3>Matrices (arrays)</h3>
-
-        <p>Las matrices se tratan en la lección <a href="php_matrices.html">Matrices</a>.</p>
-      </section>
+      </div>
     </section>
 
-    <section id="conversion">
-      <h2>Conversiones de tipos</h2>
+    <section id="array">
+      <h3>Matrices (arrays)</h3>
 
-      <p>PHP permite convertir variables de un tipo en otro tipo o considerar variables de un tipo como otro.</p>
-      <section id="como-logicas">
-        <h3>Variables como variables lógicas</h3>
-
-        <p>Si una variable entera o decimal cuyo valor sea igual a cero se considera como variable lógica, se considera que tiene el valor <span class="php-con">false</span>. Si una variable entera o decimal distinta de cero se considera como variable lógica, se considera que tiene el valor <span class="php-con">true</span>.</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = 5;
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = 0.0;
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = 5;
-
-if ($contestar) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-} else {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <hr class="corta" />
-
-        <p>Si una cadena vacía se considera como variable lógica, se considera que tiene el valor <span class="php-con">false</span>. Si una cadena no vacía se considera como variable lógica, se considera que tiene el valor <span class="php-con">true</span>.</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = "a ver qué pasa";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = "";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;Mis labios están sellados.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = "a ver qué pasa";
-
-if ($contestar) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-} else {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <p>Las cadenas no vacías se consideran como <span class="php-con">true</span>, aunque tengan un valor que puedan confundirnos:</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = "NO";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = "false";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar = "NO";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-} else {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <p>Las matrices se consideran siempre como <span class="php-con">true</span>:</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar["nombre"] = "Pepe";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar["nombre"] = "";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-}
-
-if ($contestar == false) {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$contestar["nombre"] = "Pepe";
-
-if ($contestar == true) {
-  print "&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;\n";
-} else {
-  print "&lt;p&gt;Mis labios están sellados.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;La contraseña es pezespada.&lt;/p&gt;</code></pre>
-          </div>
-        </div>
-      </section>
+      <p>Las matrices se tratan en la lección <a href="php_matrices.html">Matrices</a>.</p>
     </section>
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 30 de septiembre de 2014</p>
+  </section>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  <section id="conversion">
+    <h2>Conversiones de tipos</h2>
+
+    <p>PHP permite convertir variables de un tipo en otro tipo o considerar variables de un tipo como otro.</p>
+    <section id="como-logicas">
+      <h3>Variables como variables lógicas</h3>
+
+      <p>Si una variable entera o decimal cuyo valor sea igual a cero se considera como variable lógica, se considera que tiene el valor <span class="php-con">false</span>. Si una variable entera o decimal distinta de cero se considera como variable lógica, se considera que tiene el valor <span class="php-con">true</span>.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado = 5;
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado = 0.0;
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted no está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <hr class="corta" />
+
+      <p>Si una cadena vacía se considera como variable lógica, se considera que tiene el valor <span class="php-con">false</span>. Si una cadena no vacía se considera como variable lógica, se considera que tiene el valor <span class="php-con">true</span>.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado = "a ver qué pasa";
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado = "";
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted no está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <p>Las cadenas no vacías se consideran como <span class="php-con">true</span>, aunque tengan un valor que puedan confundirnos:</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado = "NO";
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado = "false";
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <p>Las matrices se consideran siempre como <span class="php-con">true</span>:</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado["nombre"] = "Pepe";
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+$autorizado{"nombre"] = "";
+
+if ($autorizado == true) {
+    print "&lt;p>Usted está autorizado.&lt;/p>\n";
+}
+
+if ($autorizado == false) {
+    print "&lt;p>Usted no está autorizado.&lt;/p>\n";
+}
+?></code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Usted está autorizado.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+  </section>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
     </footer>
-  </body>
+</body>
 </html>

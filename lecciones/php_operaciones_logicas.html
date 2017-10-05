@@ -1,101 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Operaciones lógicas. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Operaciones lógicas. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+</head>
 
-  <body>
-    <h1>Operaciones lógicas</h1>
+<body>
+  <h1>Operaciones lógicas</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Operaciones lógicas</h2>
+    <div class="toc">
+      <h2>Operaciones lógicas</h2>
 
-        <ul>
-          <li><a href="#comparaciones">Comparaciones</a></li>
-          <li><a href="#logicos">Operadores lógicos</a></li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#comparaciones">Comparaciones</a></li>
+        <li><a href="#logicos">Operadores lógicos</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <p>Las operaciones lógicas son expresiones matemáticas cuyo resultado es un valor booleano (verdadero o falso <span class="php-con">true</span> o <span class="php-con">false</span>). Estas expresiones se utilizan principalmente en las estructuras de control.</p>
+  <p>Las operaciones lógicas son expresiones matemáticas cuyo resultado es un valor booleano (verdadero o falso <span class="php-con">true</span> o <span class="php-con">false</span>). Estas expresiones se utilizan principalmente en las estructuras de control.</p>
 
-    <section id="comparaciones">
-      <h2>Comparaciones</h2>
+  <section id="comparaciones">
+    <h2>Comparaciones</h2>
 
-      <p>Las comparaciones permiten comparar variables o expresiones entre sí o con valores concretos. El resultado de la comparación es un valor booleano (<span class="php-con">true</span> o <span class="php-con">false</span>).</p>
+    <p>Las comparaciones permiten comparar variables o expresiones entre sí o con valores concretos. El resultado de la comparación es un valor booleano (<span class="php-con">true</span> o <span class="php-con">false</span>).</p>
 
-      <table class="tabla-con-borde">
-        <thead>
-          <tr>
-            <th>Ejemplo</th>
-            <th>Nombre</th>
-            <th>Resultado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>$a == $b</td>
-            <td>Igual</td>
-            <td><span class="php-con">true</span> si $a es igual a $b.</td>
-          </tr>
-          <tr>
-            <td>$a === $b</td>
-            <td>Idéntico</td>
-            <td><span class="php-con">true</span> si $a es igual a $b, y son del mismo tipo. (a partir de PHP 4) </td>
-          </tr>
-          <tr>
-            <td>$a != $b</td>
-            <td rowspan="2">Diferente</td>
-            <td rowspan="2"><span class="php-con">true</span> si $a no es igual a $b.</td>
-          </tr>
-          <tr>
-            <td>$a &lt;&gt; $b</td>
-          </tr>
-          <tr>
-            <td>$a !== $b</td>
-            <td>No idénticos</td>
-            <td><span class="php-con">true</span> si $a no es igual a $b, o si no son del mismo tipo. (a partir de PHP 4) </td>
-          </tr>
-          <tr>
-            <td>$a &lt; $b</td>
-            <td>Menor que</td>
-            <td><span class="php-con">true</span> si $a es estrictamente menor que $b.</td>
-          </tr>
-          <tr>
-            <td>$a &gt; $b</td>
-            <td>Mayor que</td>
-            <td><span class="php-con">true</span> si $a es estrictamente mayor que $b.</td>
-          </tr>
-          <tr>
-            <td>$a &lt;= $b</td>
-            <td>Menor o igual que</td>
-            <td><span class="php-con">true</span> si $a es menor o igual que $b.</td>
-          </tr>
-          <tr>
-            <td>$a &gt;= $b</td>
-            <td>Mayor o igual que</td>
-            <td><span class="php-con">true</span> si $a es mayor o igual que $b.</td>
-          </tr>
-        </tbody>
-      </table>
+    <table class="tabla-con-borde">
+      <thead>
+        <tr>
+          <th>Ejemplo</th>
+          <th>Nombre</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>$a == $b</td>
+          <td>Igual</td>
+          <td><span class="php-con">true</span> si $a es igual a $b.</td>
+        </tr>
+        <tr>
+          <td>$a === $b</td>
+          <td>Idéntico</td>
+          <td><span class="php-con">true</span> si $a es igual a $b, y son del mismo tipo. (a partir de PHP 4) </td>
+        </tr>
+        <tr>
+          <td>$a != $b</td>
+          <td rowspan="2">Diferente</td>
+          <td rowspan="2"><span class="php-con">true</span> si $a no es igual a $b.</td>
+        </tr>
+        <tr>
+          <td>$a &lt;&gt; $b</td>
+        </tr>
+        <tr>
+          <td>$a !== $b</td>
+          <td>No idénticos</td>
+          <td><span class="php-con">true</span> si $a no es igual a $b, o si no son del mismo tipo. (a partir de PHP 4) </td>
+        </tr>
+        <tr>
+          <td>$a &lt; $b</td>
+          <td>Menor que</td>
+          <td><span class="php-con">true</span> si $a es estrictamente menor que $b.</td>
+        </tr>
+        <tr>
+          <td>$a &gt; $b</td>
+          <td>Mayor que</td>
+          <td><span class="php-con">true</span> si $a es estrictamente mayor que $b.</td>
+        </tr>
+        <tr>
+          <td>$a &lt;= $b</td>
+          <td>Menor o igual que</td>
+          <td><span class="php-con">true</span> si $a es menor o igual que $b.</td>
+        </tr>
+        <tr>
+          <td>$a &gt;= $b</td>
+          <td>Mayor o igual que</td>
+          <td><span class="php-con">true</span> si $a es mayor o igual que $b.</td>
+        </tr>
+      </tbody>
+    </table>
 
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $nombre = "Pepe";
 
@@ -108,15 +109,15 @@ if ($nombre != "Juan") {
 }
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;</code></pre>
-        </div>
       </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $nombrePadre = "Pepe";
 $nombreHijo  = "Pepe";
@@ -130,22 +131,22 @@ if ($nombrePadre != $nombreHijo) {
 }
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;El hijo se llama como el padre.&lt;/p&gt;</code></pre>
-        </div>
       </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;El hijo se llama como el padre.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Un error típico cuando se empieza a programar es confundir el operador comparación (==) con el operador de asignación (=), lo que produce resultados inesperados, como en el ejemplo siguiente:</p>
+    <p>Un error típico cuando se empieza a programar es confundir el operador comparación (==) con el operador de asignación (=), lo que produce resultados inesperados, como en el ejemplo siguiente:</p>
 
-      <div class="filaflex">
-        <div class="icono-ok">
-          <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
-        </div>
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono_okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $nombre = "Pepe";
 
@@ -159,71 +160,119 @@ if ($nombre != "Juan") {
 
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;Tu nombre es Juan.&lt;/p&gt;</code></pre>
-        </div>
       </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Tu nombre es Juan.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-      <p>Al escribir = en vez de ==, PHP no compara el valor de la variable $nombre con la cadena "Juan", sino que cambia el valor de $nombre a "Juan". Como la asignación no da error, PHP le asigna el valor booleano <span class="php-con">true</span>, y escribe que el nombre es Juan.</p>
+    <p>Al escribir <span class="php-ope">=</span> en vez de <span class="php-ope">==</span>, PHP no compara el valor de la variable $nombre con la cadena "Juan", sino que cambia el valor de $nombre a "Juan". Como la asignación no da error, PHP le asigna el valor booleano <span class="php-con">true</span>, y escribe que el nombre es Juan.</p>
 
-      <p>Al no producir mensaje de error, este error puede ser difícil de localizar en programas largos o complejos.</p>
-    </section>
+    <p>Al no producir mensaje de error, este error puede ser difícil de localizar en programas largos o complejos.</p>
 
-    <section id="logicos">
-      <h2>Operadores lógicos</h2>
+    <hr class="corta" />
 
-      <p>Los operadores lógicos permiten combinar expresiones simples en expresiones más complejas.</p>
+    <p>La diferencia entre los operadores <span class="php-ope">==</span> y <span class="php-ope">===</span> es que en el primer caso si las cadenas se pueden interpretar como números entonces se convierten a números antes de realizar la comparación, mientras que en el segundo caso no.</p>
 
-      <table class="tabla-con-borde">
-        <thead>
-          <tr>
-            <th>Ejemplo</th>
-            <th>Nombre</th>
-            <th>Resultado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>$a &amp;&amp; $b</td>
-            <td rowspan="2">Y</td>
-            <td rowspan="2"><span class="php-con">true</span> si los dos, $a y $b, son <span class="php-con">true</span>.</td>
-          </tr>
-          <tr>
-            <td>$a and $b</td>
-          </tr>
-          <tr>
-            <td>$a || $b</td>
-            <td rowspan="2">O</td>
-            <td rowspan="2"><span class="php-con">true</span> si uno de los dos, $a o $b, es <span class="php-con">true</span>.</td>
-          </tr>
-          <tr>
-            <td>$a or $b</td>
-          </tr>
-          <tr>
-            <td>$a xor $b</td>
-            <td>O exclusivo (Xor)</td>
-            <td><span class="php-con">true</span> si sólo uno de los dos, $a o $b, es <span class="php-con">true</span>, pero no ambos.</td>
-          </tr>
-          <tr>
-            <td>! $a</td>
-            <td>Negación</td>
-            <td><span class="php-con">true</span> si $a no es <span class="php-con">true</span>.</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numero = 5;
+$texto = "5";
 
-      <p>Al escribir expresiones en las que se combinan varias comparaciones mediante operadores lógicos es conveniente utilizar paréntesis, aunque en muchos casos no sean necesarios porque las comparaciones tienen precedencia sobre los operadores lógicos.</p>
+if ($numero == $texto) {
+    print "&lt;p>Las variables son iguales.&lt;/p>\n";
+}
 
-      <h3>Diferencia entre <span class="php-con">and</span> y <span class="php-con">&amp;&amp;</span> y entre <span class="php-con">or</span> y <span class="php-con">||</span></h3>
+if ($numero != $texto) {
+    print "&lt;p>Las variables no son iguales.&lt;/p>\n";
+}
+?></code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Las variables son iguales.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-      <p>Los operadores <span class="php-con">and</span> y <span class="php-con">&amp;&amp;</span> y los operadores <span class="php-con">or</span> y <span class="php-con">||</span> no son completamente equivalentes, ya que no tienen la misma precedencia. Concretamente, <span class="php-con">&amp;&amp;</span> y <span class="php-con">||</span> tienen mayor prioridad que <span class="php-con">and</span> y <span class="php-con">or</span>. Como además el operador de asignación <span class="php-con">=</span> tiene una prioridad intermedia, se pueden producir situaciones inesperadas, como muestran los siguientes ejemplos.</p>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numero = 5;
+$texto = "5";
 
-      <p>El ejemplo siguiente muestra el resultado esperado:</p>
+if ($numero === $texto) {
+    print "&lt;p>Las variables son idénticas.&lt;/p>\n";
+}
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+if ($numero !== $texto) {
+    print "&lt;p>Las variables no son idénticas.&lt;/p>\n";
+}
+?></code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Las variables no son idénticas.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="logicos">
+    <h2>Operadores lógicos</h2>
+
+    <p>Los operadores lógicos permiten combinar expresiones simples en expresiones más complejas.</p>
+
+    <table class="tabla-con-borde">
+      <thead>
+        <tr>
+          <th>Ejemplo</th>
+          <th>Nombre</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>$a &amp;&amp; $b</td>
+          <td rowspan="2">Y</td>
+          <td rowspan="2"><span class="php-con">true</span> si los dos, $a y $b, son <span class="php-con">true</span>.</td>
+        </tr>
+        <tr>
+          <td>$a and $b</td>
+        </tr>
+        <tr>
+          <td>$a || $b</td>
+          <td rowspan="2">O</td>
+          <td rowspan="2"><span class="php-con">true</span> si uno de los dos, $a o $b, es <span class="php-con">true</span>.</td>
+        </tr>
+        <tr>
+          <td>$a or $b</td>
+        </tr>
+        <tr>
+          <td>$a xor $b</td>
+          <td>O exclusivo (Xor)</td>
+          <td><span class="php-con">true</span> si sólo uno de los dos, $a o $b, es <span class="php-con">true</span>, pero no ambos.</td>
+        </tr>
+        <tr>
+          <td>! $a</td>
+          <td>Negación</td>
+          <td><span class="php-con">true</span> si $a no es <span class="php-con">true</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Al escribir expresiones en las que se combinan varias comparaciones mediante operadores lógicos es conveniente utilizar paréntesis, aunque en muchos casos no sean necesarios porque las comparaciones tienen precedencia sobre los operadores lógicos.</p>
+
+    <h3>Diferencia entre <span class="php-con">and</span> y <span class="php-con">&amp;&amp;</span> y entre <span class="php-con">or</span> y <span class="php-con">||</span></h3>
+
+    <p>Los operadores <span class="php-con">and</span> y <span class="php-con">&amp;&amp;</span> y los operadores <span class="php-con">or</span> y <span class="php-con">||</span> no son completamente equivalentes, ya que no tienen la misma precedencia. Concretamente, <span class="php-con">&amp;&amp;</span> y <span class="php-con">||</span> tienen mayor prioridad que <span class="php-con">and</span> y <span class="php-con">or</span>. Como además el operador de asignación <span class="php-con">=</span> tiene una prioridad intermedia, se pueden producir situaciones inesperadas, como muestran los siguientes ejemplos.</p>
+
+    <p>El ejemplo siguiente muestra el resultado esperado:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $var1 = true;
 $var2 = false;<br />$todo = $var1 &amp;&amp; $var2;
@@ -234,19 +283,19 @@ if ($todo) {
 }
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre>
-        </div>
       </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-      <p>La variable $todo sólo tomaría el valor <span class="php-con">true</span> si tanto $var1 como $var2 fueran <span class="php-con">true</span>, pero como $var2 es <span class="php-con">false</span>, $todo toma el valor <span class="php-con">false</span>.</p>
+    <p>La variable $todo sólo tomaría el valor <span class="php-con">true</span> si tanto $var1 como $var2 fueran <span class="php-con">true</span>, pero como $var2 es <span class="php-con">false</span>, $todo toma el valor <span class="php-con">false</span>.</p>
 
-      <p>Sin embargo si se utiliza el operador <span class="php-con">and</span> en vez de <span class="php-con">&amp;&amp;</span>, el resultado no es el esperado:</p>
+    <p>Sin embargo si se utiliza el operador <span class="php-con">and</span> en vez de <span class="php-con">&amp;&amp;</span>, el resultado no es el esperado:</p>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $var1 = true;
 $var2 = false;
@@ -258,30 +307,30 @@ if ($todo) {
 }
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre>
-        </div>
       </div>
-
-      <p>¿Por qué se produce ese resultado? Porque el operador de asignación <span class="php-con">=</span> tiene precedencia sobre el operador <span class="php-con">and</span>. Eso quiere decir que PHP realiza antes la asignación que la operación lógica, es decir, como si la expresión estuviese escrita así:</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre><code class="language-php">($todo = $var1) and $var2;</code></pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre>
-        </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre>
       </div>
+    </div>
 
-      <p>En esa expresión, la variable $todo almacena el valor de la variable $var1 (<span class="php-con">true</span>), por lo que $todo toma el valor <span class="php-con">true</span>. La operación lógica <span class="php-con">and</span> no modifica el valor de $todo.</p>
+    <p>¿Por qué se produce ese resultado? Porque el operador de asignación <span class="php-con">=</span> tiene precedencia sobre el operador <span class="php-con">and</span>. Eso quiere decir que PHP realiza antes la asignación que la operación lógica, es decir, como si la expresión estuviese escrita así:</p>
 
-      <p>Si se quiere obtener el mismo resultado con <span class="php-con">and</span> que con <span class="php-con">&amp;&amp;</span>, se deben utilizar paréntesis, para forzar que la operación lógica <span class="php-con">and</span> se realice antes de la asignación:</p>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-php">($todo = $var1) and $var2;</code></pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;verdadero&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <p>En esa expresión, la variable $todo almacena el valor de la variable $var1 (<span class="php-con">true</span>), por lo que $todo toma el valor <span class="php-con">true</span>. La operación lógica <span class="php-con">and</span> no modifica el valor de $todo.</p>
+
+    <p>Si se quiere obtener el mismo resultado con <span class="php-con">and</span> que con <span class="php-con">&amp;&amp;</span>, se deben utilizar paréntesis, para forzar que la operación lógica <span class="php-con">and</span> se realice antes de la asignación:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $var1 = true;
 $var2 = false;
@@ -293,19 +342,19 @@ if ($todo) {
 }
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre>
-        </div>
       </div>
-    </section>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 30 de septiembre de 2014</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2017</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>
