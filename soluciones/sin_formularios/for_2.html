@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>for (2). Soluciones. Sin formularios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+  <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+</head>
+
+<body>
+  <h1>Soluciones - for (2)</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>for (2)</h2>
+
+      <h3>Enunciados</h3>
+      <ul>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-01">01 - Círculos en fila (1)</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-02">02 - Círculos en fila (2)</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-03">03 - Círculos en fila (3)</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-04">04 - Líneas (1)</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-05">05 - Líneas (2)</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-06">06 - Líneas (3)</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-07">07 - Arco iris circular</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-08">08 - Arco iris semicircular</a></li>
+        <li><a href="../../ejercicios/sin_formularios/for-2/index.html#ejercicio-09">09 - Arco iris</a></li>
+      </ul>
+
+      <h3>Soluciones</h3>
+      <ul>
+        <li><a href="#ejercicio-01">01 - Círculos en fila (1)</a></li>
+        <li><a href="#ejercicio-02">02 - Círculos en fila (2)</a></li>
+        <li><a href="#ejercicio-03">03 - Círculos en fila (3)</a></li>
+        <li><a href="#ejercicio-04">04 - Líneas (1)</a></li>
+        <li><a href="#ejercicio-05">05 - Líneas (2)</a></li>
+        <li><a href="#ejercicio-06">06 - Líneas (3)</a></li>
+        <li><a href="#ejercicio-07">07 - Arco iris circular</a></li>
+        <li><a href="#ejercicio-08">08 - Arco iris semicircular</a></li>
+        <li><a href="#ejercicio-09">09 - Arco iris</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sin_formularios/for_2/index.html">for (2)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
+
+
+  <section id="ejercicio-01">
+    <h3>for (2) 01 - Círculos en fila (1)</h3>
+
+    <ul>
+      <li>El título <span class="html-eti">&lt;h2&gt;</span> muestra el texto en singular si sólo se dibuja un círculo y en plural si se dibujan varios, por lo que habrá que usar una estructura <span class="php-res">if ... else ...for</span>.</li>
+      <li>En el código fuente HTML del programa de ejemplo se puede ver que sólo se repite una línea, la que crea los <span class="html-eti">&lt;circle&gt;</span>. Esa línea es la que formará el cuerpo del bucle <span class="php-res">for</span>, que debe ejecutarse tantas veces como indique el valor obtenido al azar.</li>
+      <li>Los valores del atributo <span class="html-atri">cx</span> son los siguientes:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Círculo</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">cx</span></th>
+              <td>30</td>
+              <td>120</td>
+              <td>210</td>
+              <td>300</td>
+              <td>390</td>
+              <td>...</td>
+              <td>`\$\c\x`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `\$\c\x = 90 * \$\i - 60`.</p>
+      </li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$circulos = rand(1, 10);
+
+if ($circulos == 1) {
+    print &quot;  &lt;h2&gt;$circulos círculo&lt;/h2&gt;\n&quot;;
+} else {
+    print &quot;  &lt;h2&gt;$circulos círculos&lt;/h2&gt;\n&quot;;
+}
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; &quot;
+    . &quot;width=\&quot;&quot; . (90 * $circulos - 30) . &quot;px\&quot; height=\&quot;60px\&quot; style=\&quot;border: black 1px solid\&quot;&gt;\n&quot;;
+
+for ($i = 1; $i &lt;= $circulos; $i++) {
+    print &quot;      &lt;circle cx=\&quot;&quot; . (90 * $i - 60). &quot;\&quot; cy=\&quot;30\&quot; r=\&quot;30\&quot; fill=\&quot;black\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+
+    <ul>
+      <li>Si la variable de control $i del bucle <span class="php-res">for</span> empezara por 0, habría que sacar la fórmula a partir de los siguientes valores:
+
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Círculo</th>
+              <td style="width: 50px">0</td>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`\$\i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">cx</span></th>
+              <td>30</td>
+              <td>120</td>
+              <td>210</td>
+              <td>300</td>
+              <td>390</td>
+              <td>...</td>
+              <td>`\$\c\x`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `\$\c\x = 90 * \$\i + 30`.</p>
+      </li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+
+for ($i = 0; $i &lt; $circulos; $i++) {
+    print &quot;      &lt;circle cx=\&quot;&quot; . (90 * $i + 30). &quot;\&quot; cy=\&quot;30\&quot; r=\&quot;30\&quot; fill=\&quot;black\&quot; /&gt;\n&quot;;
+}
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-02">
+    <h3>for (2) 02 - Círculos en fila (2)</h3>
+
+    <ul>
+      <li>La única diferencia con el ejercicio anterior es el atributo <span class="html-atri">width</span> de la etiqueta <span class="html-eti">&lt;svg&gt;</span>. Los valores de este atributo sólo dependen del número de círculos de la figura, por lo que la fórmula será una función de la variable `\$\c\i\r\c\u\l\o\s`:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Círculos</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td>`\$\c\i\r\c\u\l\o\s`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">width</span></th>
+              <td>60</td>
+              <td>150</td>
+              <td>240</td>
+              <td>330</td>
+              <td>420</td>
+              <td>...</td>
+              <td>`$width`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$width = 90 * \$\c\i\r\c\u\l\o\s - 30`.</p>
+      </li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$circulos = rand(1, 10);
+
+if ($circulos == 1) {
+    print &quot;  &lt;h2&gt;$circulos círculo&lt;/h2&gt;\n&quot;;
+} else {
+    print &quot;  &lt;h2&gt;$circulos círculos&lt;/h2&gt;\n&quot;;
+}
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; &quot;
+    . &quot;width=\&quot;&quot; . (90 * $circulos - 30) . &quot;px\&quot; height=\&quot;60px\&quot; style=\&quot;border: black 1px solid\&quot;&gt;\n&quot;;
+
+for ($i = 1; $i &lt;= $circulos; $i++) {
+    print &quot;      &lt;circle cx=\&quot;&quot; . (90 * $i - 60). &quot;\&quot; cy=\&quot;30\&quot; r=\&quot;30\&quot; fill=\&quot;black\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+
+  </section>
+
+  <section id="ejercicio-03">
+    <h3>for (2) 03 - Círculos en fila (3)</h3>
+
+    <ul>
+      <li>Las fórmulas de este ejercicio dependen de dos variables: el número de círculos y el radio de los círculos. Dándonos cuenta de que los valores `30`, `60`y `90` que aparecían en los ejercicios anteriores se debían a que el radio de los círculos era 30 y se trataba de `30 = $radio`, `60 = 2 * $radio` y `90 = 3 * $radio`, se puede deducir cómo habrá que modificar el programa.</li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$circulos = rand(1, 10);
+$radio = rand(10, 50);
+
+if ($circulos == 1) {
+    print &quot;  &lt;h2&gt;$circulos círculo de $radio px&lt;/h2&gt;\n&quot;;
+} else {
+    print &quot;  &lt;h2&gt;$circulos círculos de $radio px&lt;/h2&gt;\n&quot;;
+}
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; &quot;
+    . &quot;width=\&quot;&quot; . (3* $radio * $circulos - $radio) . &quot;px\&quot; height=\&quot;&quot; . 2 * $radio . &quot;px\&quot; style=\&quot;border: black 1px solid\&quot;&gt;\n&quot;;
+
+for ($i = 1; $i &lt;= $circulos; $i++) {
+    print &quot;      &lt;circle cx=\&quot;&quot; . (3 * $radio * $i - 2 * $radio). &quot;\&quot; cy=\&quot;$radio\&quot; r=\&quot;$radio\&quot; fill=\&quot;black\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+    <ul>
+      <li>Otra manera de deducir estas fórmulas es escribir la posición <span class="html-atri">cx</span> y tamaño <span class="html-atri">width</span> en función del radio:
+        <ul>
+          <li>En el caso de la posición <span class="html-atri">cx</span>:
+            <p>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" viewbox=" -5 -5 600 180">
+                <rect x="0" y="0" width="560" height="80" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="40" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="160" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="280" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="400" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="520" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <line x1="0" y1="40" x2="40" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="20" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="40" y1="40" x2="80" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="60" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="80" y1="40" x2="120" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="100" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="120" y1="40" x2="160" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="140" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="160" y1="40" x2="200" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="180" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="200" y1="40" x2="240" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="220" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="240" y1="40" x2="280" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="260" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="280" y1="40" x2="320" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="300" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="320" y1="40" x2="360" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="340" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <text x="380" y="35" text-anchor="middle" fill="black" font-size="16">...</text>
+
+                <line x1="0" y1="40" x2="0" y2="170" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="40" y1="40" x2="40" y2="110" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="160" y1="40" x2="160" y2="130" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="280" y1="40" x2="280" y2="150" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="400" y1="40" x2="400" y2="170" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+
+                <line x1="0" y1="100" x2="40" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="45" y="105" text-anchor="start" fill="black" font-size="12">1 * $radio</text>
+                <line x1="0" y1="120" x2="160" y2="120" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="165" y="125" text-anchor="start" fill="black" font-size="12">4 * $radio</text>
+                <line x1="0" y1="140" x2="280" y2="140" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="285" y="145" text-anchor="start" fill="black" font-size="12">7 * $radio</text>
+                <line x1="0" y1="160" x2="400" y2="160" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="405" y="165" text-anchor="start" fill="black" font-size="12">10 * $radio</text>
+              </svg>
+            </p>
+            <table class="tabla-con-borde" style="text-align: center">
+              <tbody>
+                <tr>
+                  <th>Círculo</th>
+                  <td style="width: 50px">1</td>
+                  <td style="width: 50px">2</td>
+                  <td style="width: 50px">3</td>
+                  <td style="width: 50px">4</td>
+                  <td style="width: 50px">5</td>
+                  <td style="width: 50px">...</td>
+                  <td style="width: 50px">`\$\i`</td>
+                </tr>
+                <tr>
+                  <th><span class="html-atri">cx</span></th>
+                  <td>`1 * $radio`</td>
+                  <td>`4 * $radio`</td>
+                  <td>`7 * $radio`</td>
+                  <td>`10 * $radio`</td>
+                  <td>`13 * $radio`</td>
+                  <td>...</td>
+                  <td>`\$\c\x`</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>... se trata de una sucesión cuya fórmula es `\$\c\x = (3 * \$\i - 2) * $radio = 3 * \$\i * $radio - 2 * $radio`.</p>
+          </li>
+          <li>En el caso del tamaño <span class="html-atri">width</span>:
+            <p>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" viewbox=" -5 -5 600 180">
+                <rect x="0" y="0" width="560" height="80" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="40" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="160" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="280" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="400" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <circle cx="520" cy="40" r="40" fill="none" stroke="black" stroke-width="1" />
+                <line x1="0" y1="40" x2="40" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="20" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="40" y1="40" x2="80" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="60" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="80" y1="40" x2="120" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="100" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="120" y1="40" x2="160" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="140" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="160" y1="40" x2="200" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="180" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="200" y1="40" x2="240" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="220" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="240" y1="40" x2="280" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="260" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <line x1="280" y1="40" x2="320" y2="40" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="300" y="35" text-anchor="middle" fill="black" font-size="12">$radio</text>
+                <line x1="320" y1="40" x2="360" y2="40" stroke="red" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="340" y="35" text-anchor="middle" fill="red" font-size="12">$radio</text>
+                <text x="380" y="35" text-anchor="middle" fill="black" font-size="16">...</text>
+
+                <line x1="0" y1="0" x2="0" y2="170" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="80" y1="0" x2="80" y2="110" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="200" y1="0" x2="200" y2="130" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="320" y1="0" x2="320" y2="150" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <line x1="440" y1="0" x2="440" y2="170" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+
+                <line x1="0" y1="100" x2="80" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="85" y="105" text-anchor="start" fill="black" font-size="12">2 * $radio</text>
+                <line x1="0" y1="120" x2="200" y2="120" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="205" y="125" text-anchor="start" fill="black" font-size="12">5 * $radio</text>
+                <line x1="0" y1="140" x2="320" y2="140" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="325" y="145" text-anchor="start" fill="black" font-size="12">8 * $radio</text>
+                <line x1="0" y1="160" x2="440" y2="160" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                <text x="445" y="165" text-anchor="start" fill="black" font-size="12">11 * $radio</text>
+              </svg>
+            </p>
+
+            <table class="tabla-con-borde" style="text-align: center">
+              <tbody>
+                <tr>
+                  <th>Círculos</th>
+                  <td style="width: 50px">1</td>
+                  <td style="width: 50px">2</td>
+                  <td style="width: 50px">3</td>
+                  <td style="width: 50px">4</td>
+                  <td style="width: 50px">5</td>
+                  <td style="width: 50px">...</td>
+                  <td style="width: 50px">`\$\c\i\r\c\u\l\o\s`</td>
+                </tr>
+                <tr>
+                  <th><span class="html-eti">width</span></th>
+                  <td>`2 * $radio`</td>
+                  <td>`5 * $radio`</td>
+                  <td>`8 * $radio`</td>
+                  <td>`11 * $radio`</td>
+                  <td>`14 * $radio`</td>
+                  <td>...</td>
+                  <td>`$width`</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>... se trata de una sucesión cuya fórmula es `$width = (3 * \$\c\i\r\c\u\l\o\s - 1) * $radio = 3 * \$\c\i\r\c\u\l\o\s * $radio - $radio`.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejercicio-04">
+    <h3>for (2) 04 - Líneas (1)</h3>
+
+    <ul>
+      <li>En el código fuente HTML del programa de ejemplo se puede ver que sólo se repite una línea, la que crea los <span class="html-eti">&lt;line&gt;</span>. Esa línea es la que formará el cuerpo del bucle <span class="php-res">for</span>, que debe ejecutarse tantas veces como indique el valor obtenido al azar.</li>
+      <li>Los valores del atributo <span class="html-atri">x2</span> son los siguientes:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Línea</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`$i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x2</span></th>
+              <td>10</td>
+              <td>60</td>
+              <td>110</td>
+              <td>160</td>
+              <td>210</td>
+              <td>...</td>
+              <td>`$x2`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$x2 = 50 * $i - 40`.</p>
+      </li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$lineas = rand(3, 10);
+
+print &quot;  &lt;h2&gt;$lineas líneas&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
+print &quot;      width=\&quot;500px\&quot; height=\&quot;100px\&quot; style=\&quot;border: black 1px solid\&quot; &gt;\n&quot;;
+
+for ($i = 1; $i &lt;= $lineas; $i++) {
+    print &quot;      &lt;line x1=\&quot;10\&quot; y1=\&quot;0\&quot; x2=\&quot;&quot; . (50 * $i - 40). &quot;\&quot; y2=\&quot;100\&quot; stroke=\&quot;red\&quot; stroke-width=\&quot;1\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-05">
+    <h3>for (2) 05 - Líneas (1)</h3>
+
+    <ul>
+      <li>En el código fuente HTML del programa de ejemplo se puede ver que sólo se repite una línea, la que crea los <span class="html-eti">&lt;line&gt;</span>. Esa línea es la que formará el cuerpo del bucle <span class="php-res">for</span>, que debe ejecutarse tantas veces como indique el valor obtenido al azar.</li>
+      <li>Los valores del atributo <span class="html-atri">x2</span> son los siguientes:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Línea</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`$i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x2</span></th>
+              <td>0</td>
+              <td>50</td>
+              <td>100</td>
+              <td>150</td>
+              <td>200</td>
+              <td>...</td>
+              <td>`$x2`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$x2 = 50 * $i - 50`.</p>
+      </li>
+      <li>Por otro lado, los valores de los atributos <span class="html-atri">width</span> y <span class="html-atri">view</span> dependen del número de líneas del dibujo y son los siguientes:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Líneas</th>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">6</td>
+              <td style="width: 50px">7</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 70px">`$li\n\eas`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">width</span></th>
+              <td>150</td>
+              <td>200</td>
+              <td>250</td>
+              <td>300</td>
+              <td>350</td>
+              <td>...</td>
+              <td>`$width`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$width = 50 * $li\n\eas`.</p>
+      </li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$lineas = rand(3, 10);
+
+print &quot;  &lt;h2&gt;$lineas líneas&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
+print &quot;      width=\&quot;&quot; . 50 * $lineas . &quot;px\&quot; height=\&quot;120px\&quot; &quot;
+    . &quot; viewbox=\&quot; -10 -10 &quot; . 50 * $lineas . &quot; 120\&quot; style=\&quot;border: black 1px solid\&quot; &gt;\n&quot;;
+
+for ($i = 1; $i &lt;= $lineas; $i++) {
+    print &quot;      &lt;line x1=\&quot;0\&quot; y1=\&quot;0\&quot; x2=\&quot;&quot; . (50 * $i - 50). &quot;\&quot; y2=\&quot;100\&quot; stroke=\&quot;green\&quot; stroke-width=\&quot;1\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-06">
+    <h3>for (2) 06 - Líneas (1)</h3>
+
+    <ul>
+      <li>En el código fuente HTML del programa de ejemplo se puede ver que sólo se repite una línea, la que crea los <span class="html-eti">&lt;line&gt;</span>. Esa línea es la que formará el cuerpo del bucle <span class="php-res">for</span>, que debe ejecutarse tantas veces como indique el valor obtenido al azar.</li>
+      <li>Los valores del atributo <span class="html-atri">x1</span> dependen del número de líneas del dibujo `$li\n\eas` y son los siguientes:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Líneas</th>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">6</td>
+              <td style="width: 50px">7</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`$li\n\eas`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x1</span></th>
+              <td>50</td>
+              <td>75</td>
+              <td>100</td>
+              <td>125</td>
+              <td>150</td>
+              <td>...</td>
+              <td>`$x1`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$x1 = 25 * $li\n\eas - 25`.</p>
+      </li>
+      <li>Mientras que los valores del atributo <span class="html-atri">x2</span>, como en el ejercicio anterior, dependen de la línea (`$i`) y son los siguientes:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Línea</th>
+              <td style="width: 50px">1</td>
+              <td style="width: 50px">2</td>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 50px">`$i`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">x2</span></th>
+              <td>0</td>
+              <td>50</td>
+              <td>100</td>
+              <td>150</td>
+              <td>200</td>
+              <td>...</td>
+              <td>`$x2`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$x2 = 50 * $i - 50`.</p>
+      </li>
+      <li>Por otro lado, los valores de los atributos <span class="html-atri">width</span> y <span class="html-atri">view</span> dependen del número de líneas del dibujo y son los siguientes:
+        <table class="tabla-con-borde" style="text-align: center">
+          <tbody>
+            <tr>
+              <th>Líneas</th>
+              <td style="width: 50px">3</td>
+              <td style="width: 50px">4</td>
+              <td style="width: 50px">5</td>
+              <td style="width: 50px">6</td>
+              <td style="width: 50px">7</td>
+              <td style="width: 50px">...</td>
+              <td style="width: 70px">`$li\n\eas`</td>
+            </tr>
+            <tr>
+              <th><span class="html-atri">width</span></th>
+              <td>125</td>
+              <td>175</td>
+              <td>225</td>
+              <td>275</td>
+              <td>325</td>
+              <td>...</td>
+              <td>`$width`</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Se trata de una sucesión aritmética cuya fórmula es `$width = 50 * $li\n\eas - 25`.</p>
+      </li>
+    </ul>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(3,10);
+
+print &quot;  &lt;h2&gt;$numero líneas&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
+print &quot;      width=\&quot;&quot; . (50 * $numero - 25). &quot;px\&quot; height=\&quot;120px\&quot; &quot;
+    . &quot; viewbox=\&quot; -10 -10 &quot; . (50 * $numero - 25) . &quot; 120\&quot; style=\&quot;border: black 1px solid\&quot; &gt;\n&quot;;
+
+for ($i = 1; $i &lt;= $numero; $i++) {
+    print &quot;      &lt;line x1=\&quot;&quot; . (25 * $numero - 25). &quot;\&quot; y1=\&quot;0\&quot; x2=\&quot;&quot; . (50 * $i - 50) . &quot;\&quot; y2=\&quot;100\&quot; stroke=\&quot;blue\&quot; stroke-width=\&quot;1\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-07">
+    <h3>for (2) 07 - Arco iris circular</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(3,10);
+$paso = 360 / $numero;
+
+print &quot;  &lt;h2&gt;$numero colores&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
+print &quot;      width=\&quot;&quot; . 60 * $numero . &quot;px\&quot; height=\&quot;&quot; . 60 * $numero . &quot;px\&quot; &quot;
+    . &quot; viewbox=\&quot;&quot; . - 30 * $numero . &quot; &quot; . - 30 * $numero . &quot; &quot; . 60 * $numero . &quot; &quot; . 60 * $numero . &quot;\&quot;&gt;\n&quot;;
+
+for ($i = 0; $i &lt; $numero; $i++) {
+    print &quot;      &lt;circle cx=\&quot;0\&quot; cy=\&quot;0\&quot; r=\&quot;&quot; . (-30 * $i + 30 * $numero) . &quot;\&quot; fill=\&quot;hsl(&quot; . round($i * $paso) . &quot;, 75%, 50%)\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-08">
+    <h3>for (2) 08 - Arco iris semicircular</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(3,10);
+$paso = 360 / $numero;
+
+print &quot;  &lt;h2&gt;$numero franjas&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
+print &quot;      width=\&quot;&quot; . (60 * $numero + 20) . &quot;px\&quot; height=\&quot;&quot; . (30 * $numero + 20). &quot;px\&quot; &quot;
+    . &quot; viewbox=\&quot;&quot; . (- 30 * $numero - 10) . &quot; &quot; . (- 30 * $numero - 10) . &quot; &quot; . (60 * $numero + 20). &quot; &quot; . (30 * $numero + 20)
+    . &quot;\&quot; style=\&quot;border: black 1px solid; background-color: white;\&quot;&gt;\n&quot;;
+
+for ($i = 0; $i &lt; $numero; $i++) {
+    $valor =  -30 * $i + 30 * $numero;
+    print &quot;      &lt;path d=\&quot;M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\&quot; fill=\&quot;hsl(&quot; . round($i * $paso) . &quot;, 75%, 50%)\&quot; /&gt;\n&quot;;
+}
+
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-09">
+    <h3>for (2) 09 - Arco iris</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(3,10);
+$paso = 360 / $numero;
+
+print &quot;  &lt;h2&gt;$numero franjas&lt;/h2&gt;\n&quot;;
+print &quot;\n&quot;;
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
+print &quot;      width=\&quot;&quot; . (60 * $numero + 20) . &quot;px\&quot; height=\&quot;&quot; . (30 * $numero + 20). &quot;px\&quot; &quot;
+    . &quot; viewbox=\&quot;&quot; . (- 30 * $numero - 10) . &quot; &quot; . (- 30 * $numero - 10) . &quot; &quot; . (60 * $numero + 20). &quot; &quot; . (30 * $numero + 20)
+    . &quot;\&quot; style=\&quot;border: black 1px solid; background-color: white;\&quot;&gt;\n&quot;;
+
+for ($i = 0; $i &lt; $numero; $i++) {
+    $valor =  30 * $numero - 15 * $i;
+    print &quot;      &lt;path d=\&quot;M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\&quot; fill=\&quot;hsl(&quot; . round($i * $paso) . &quot;, 75%, 50%)\&quot; /&gt;\n&quot;;
+}
+$valor = 15 * $numero;
+print &quot;      &lt;path d=\&quot;M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\&quot; fill=\&quot;white\&quot; stroke=\&quot;white\&quot;/&gt;\n&quot;;
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
+</html>

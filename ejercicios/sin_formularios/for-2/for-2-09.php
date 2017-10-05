@@ -1,11 +1,11 @@
 ﻿<?php
 /**
- * for (1) 18 - for-1-19.php
+ * for (2) 09 - for-2-09.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-10-30
+ * @version   2017-10-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Arco iris. for (1).
+  <title>Arco iris. for (2). Sin formularios.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
@@ -62,7 +62,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-30">30 de septiembre de 2017</time></p>
+      <time datetime="2017-10-05">5 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
