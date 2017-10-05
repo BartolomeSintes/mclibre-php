@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * for (1) 21 - for-1-21.php
+ * for (1) 11 - for-1-11.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,46 +26,35 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Contar dados. for (1).
+  <title>Círculos (1). for (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Contar dados</h1>
+  <h1>Círculos (1)</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$numero = rand(1,10);
-$maximo = 0;
-$minimo = 7;
-$total = 0;
+$circulos = rand(1, 10);
 
-print "  <h2>$numero dados</h2>\n";
+if ($circulos == 1) {
+    print "  <h2>$circulos círculo</h2>\n";
+} else {
+    print "  <h2>$circulos círculos</h2>\n";
+}
 print "\n";
 print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    $dado = rand(1, 6);
-    print "    <img src=\"img/$dado.svg\" alt=\"Dado 1\" title=\"$dado\" width=\"140\" height=\"140\">\n";
-    $total += $dado;
-    if ($dado > $maximo) {
-        $maximo = $dado;
-    }
-    if ($dado < $minimo) {
-        $minimo = $dado;
-    }
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"870px\" height=\"60px\" style=\"border: black 1px solid\">\n";
+
+for ($i = 0; $i < $circulos; $i++) {
+    print "      <circle cx=\"" . (90 * $i + 30). "\" cy=\"30\" r=\"30\" fill=\"black\" />\n";
 }
+
+print "    </svg>\n";
 print "  </p>\n";
-print "\n";
-print "  <h2>Estadísticas</h2>\n";
-print "\n";
-print "  <ul>\n";
-print "    <li>El valor más grande obtenido ha sido <strong>$maximo</strong>.</li>\n";
-print "    <li>El valor más pequeño obtenido ha sido <strong>$minimo</strong>.</li>\n";
-print "    <li>El total de puntos obtenido ha sido <strong>$total</strong>.</li>\n";
-print "  </ul>\n";
 ?>
 
   <footer>
