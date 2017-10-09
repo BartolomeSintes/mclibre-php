@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 /**
- * for (1) 11 - for-1-11.php
+ * for (1) 12 - for-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,20 +26,20 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Contar puntos. for (1). Sin formularios.
+  <title>Dado máximo. for (1). Sin formularios.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Contar puntos</h1>
+  <h1>Dado máximo</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
 $numero = rand(1,10);
-$total = 0;
+$maximo = 0;
 
 if ($numero == 1) {
     print "  <h2>$numero dado</h2>\n";
@@ -51,11 +51,14 @@ print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dado = rand(1, 6);
     print "    <img src=\"img/$dado.svg\" alt=\"Dado 1\" title=\"$dado\" width=\"140\" height=\"140\">\n";
-    $total += $dado;
+    if ($dado > $maximo) {
+        $maximo = $dado;
+    }
 }
 print "  </p>\n";
 print "\n";
-print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";?>
+print "  <p>El valor más grande obtenido es <strong>$maximo</strong>.</p>\n";
+?>
 
   <footer>
     <p class="ultmod">
