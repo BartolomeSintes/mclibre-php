@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Matrices. Temas obsoletos. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <h1>Notación clásica de Matrices</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>Matrices (notación clásica)</h2>
+
+      <ul>
+        <li><a href="#notacion">Notación compacta</a></li>
+        <li><a href="#crear">Crear una matriz</a></li>
+        <li><a href="#anadir-elementos">Añadir elementos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="aviso-antiguo">
+    <p><img src="../varios/iconos/icono_warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />Esta lección explica la notación clásica de matrices de PHP, que he dejado de utilizar a partir del curso 2017/18. Como la notación clásica se puede seguir utilizando en PHP, he mantenido esta lección en los apuntes.</p>
+  </div>
+
+  <section id="notacion">
+    <h2>Notación compacta de matrices</h2>
+
+    <p>En PHP 5.4 (publicado en marzo de 2012) se introdujo en PHP la <a href="php_matrices.html">notación compacta de matrices</a>, que permite definir matrices o añadir valores con una sintaxis más parecida a otros lenguajes de programación.</p>
+
+    <p>Actualmente (octubre de 2017) ya están dejando de mantenerse los sistemas operativos de servidor que incluían PHP 5.3 o anteriores, que no permitían la notación compacta:</p>
+
+    <ul>
+      <li>PHP 5.3 dejó de mantenerse en agosto de 2014, cuando se publicó PHP 5.3.29</li>
+      <li>Debian 6, publicada en febrero de 2011 y que incluía PHP 5.3, dejó de mantenerse en febrero de 2016</li>
+      <li>Ubuntu 12.04 LTS, publicada en abril de 2012 y que incluía PHP 5.3, dejó de mantenerse en abril de 2017</li>
+      <li>SUSE LE 11, publicada en marzo de 2009 y que incluía PHP 5.3, se dejará de mantener en marzo de 2019</li>
+      <li>RedHat 6, publicada en agosto de 2010 y que incluía PHP 5.3, se dejará de mantener en noviembre de 2020</li>
+    </ul>
+
+    <p>Si se quieren escribir programas que funcionen en el mayor número posible de servidores, se debe utilizar la notación clásica, pero como en clase no tengo tiempo para ver más de una notación, a partir del curso 2017/18 he decidido ver únicamente la notación compacta, aunque los alumnos pueden utilizar la notación clásica si así lo desean.</p>
+
+    <hr class="corta" />
+
+    <p>En resumen, la diferencia entre ambas notaciones reside en la manera de definir matrices o de añadir valores a una matriz.</p>
+
+    <div class="filaflex cabecera">
+      <div class="nogrow">Operación</div>
+      <div>Notación clásica</div>
+      <div>Notación compacta</div>
+    </div>
+
+    <div class="filaflex">
+      <div class="nogrow">Definir una matriz</div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres = array("Ana", "Bernardo", "Carmen");
+?&gt;</code>
+</pre>
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres = ["Ana", "Bernardo", "Carmen"];
+?&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="nogrow">Añadir un elemento</div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$array_push($nombres, "David");
+?&gt;</code>
+</pre>
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres[] = "David";
+?&gt;</code>
+</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="crear">
+    <h2>Crear una matriz</h2>
+
+    <p>En la notación clásica, para crear una matriz se debe utilizar la función <a href="http://www.php.net/manual/en/function.array.php"><span class="php-fun">array(...)</span></a>.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$nombres = array("Ana", "Bernardo", "Carmen");
+?&gt;</code>
+</pre>
+    </div>
+
+    <hr class="corta" />
+
+    <p>La notación clásica permite crear matrices vacías (y añadirle posteriormente elementos):</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$nombres = array();
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="anadir-elementos">
+    <h2>Añadir elementos a una matriz</h2>
+
+    <p>En la notación clásica, para añadir un elemento a una matriz sin indicar el índice del nuevo elemento se debe utilizar la función <a href="http://www.php.net/manual/en/function.array-push.php"><span class="php-fun">array_push($matriz, $elemento)</span></a>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres = array("Alba", "Bernardo");
+
+array_push($nombres, "Carlos");
+
+print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
+print "&lt;p&gt;$nombres[2]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Bernardo</p>
+        <p>Carlos</p>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres = array(5 => "Alba", 6 => "Bernardo");
+
+array_push($nombres, "Carlos");
+
+print "&lt;p&gt;$nombres[6]&lt;/p&gt;\n";
+print "&lt;p&gt;$nombres[7]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Bernardo</p>
+        <p>Carlos</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 9 de octubre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
+</html>
