@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-30
+ * @version   2017-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,8 +40,7 @@
 <?php
 $dado = rand(1, 6);
 
-$nombre = array("", "uno", "dos", "tres", "cuatro", "cinco", "seis");
-// $nombre = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis"];
+$nombre = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis"];
 
 print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
 print "\n";
@@ -51,7 +50,7 @@ print "  <p>Ha sacado un <strong>$nombre[$dado]</strong>.</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-30">30 de septiembre de 2017</time></p>
+      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

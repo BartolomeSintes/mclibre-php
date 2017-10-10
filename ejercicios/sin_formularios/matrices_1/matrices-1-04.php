@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-30
+ * @version   2017-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,9 +40,9 @@
 <?php
 $numero = rand(2, 7);
 
-$dados = array();
+$dados = [];
 for ($i = 0; $i < $numero; $i++) {
-    array_push($dados, rand(1, 6));
+    $dados[$i] = rand(1, 6);
 }
 
 print "  <h2>Tirada de $numero dados</h2>\n";
@@ -66,7 +66,7 @@ print "</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-30">30 de septiembre de 2017</time></p>
+      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

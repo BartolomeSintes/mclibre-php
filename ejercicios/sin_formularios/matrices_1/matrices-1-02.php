@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-30
+ * @version   2017-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,12 +38,12 @@
   <p>Actualice la página para mostrar un nuevo animal.</p>
 
 <?php
-$dibujos = array(
+$dibujos = [
     "ballena.svg", "caballito-mar.svg", "camello.svg", "cebra.svg", "elefante.svg",
     "hipopotamo.svg", "jirafa.svg", "leon.svg", "leopardo.svg", "medusa.svg",
     "mono.svg", "oso.svg", "oso-blanco.svg", "pajaro.svg", "pinguino.svg",
     "rinoceronte.svg", "serpiente.svg", "tigre.svg", "tortuga-marina.svg", "tortuga.svg"
-);
+];
 
 $animal = rand(0, count($dibujos) - 1);
 
@@ -53,7 +53,7 @@ print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"Animal\" title=\"A
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-30">30 de septiembre de 2017</time></p>
+      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

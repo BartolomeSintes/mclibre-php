@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 /**
- * Matrices (2) 03 - matrices-2-03.php
+ * Matrices (1) 5 - matrices-1-05.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,40 +26,47 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tirada multilingüe. Matrices (2).
+  <title>Cambio de bits. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
+  <h1>Cambio de bits</h1>
+
+  <p>Actualice la página para mostrar una nueva secuencia de bits y la detección de cambios de bits en la secuencia.</p>
+
 <?php
-$palabras = array (
-    array("uno", "one", "un", "uno"),
-    array("dos", "two", "deux", "due"),
-    array("tres", "three", "trois", "tre"),
-    array("cuatro", "four", "quatre", "quattro"),
-    array("cinco", "five", "cinq", "cinque"),
-    array("seis", "six", "six", "sei")
-);
+$numero = 15;
 
-$mensajes = array(
-    array("Tirada de dado", "Dieroll", "Jet de dé", "Tiro di dado"),
-    array("Actualice la página para mostrar una nueva tirada.", "Refresh the page to display a new dieroll.",
-        "Rafraîchir la page pour afficher un nouveau jet de dé.", "Aggiornare la pagina per visualizzare un nuovo tiro di dado."),
-    array("Ha obtenido un ", "You have thrown a ", "Vous avez emporté un ", "Hai ottenuto un ")
-);
+$secuencia = [];
+for ($i = 0; $i < $numero; $i++) {
+    $secuencia[$i] = rand(0, 1);
+}
 
-$idioma = rand(0, count($palabras[0]) - 1);
-$dado = rand(1, 6);
+print "  <h2>Secuencias de bits</h2>\n";
+print "\n";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+for ($i = 0; $i < $numero; $i++) {
+    print "$secuencia[$i] ";
+}
+print "</p>\n";
 
-print "  <h1>" . $mensajes[0][$idioma] . "</h1>\n";
+$resultado = [];
+for ($i = 0; $i < $numero - 1; $i++) {
+    if ($secuencia[$i] == $secuencia[$i+1]) {
+        $resultado[$i] = 0;
+    } else {
+        $resultado[$i] = 1;
+    }
+}
 print "\n";
-print "  <p>" . $mensajes[1][$idioma] . "</p>\n";
-print "\n";
-print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
-print "\n";
-print "  <p>" . $mensajes[2][$idioma] . " <strong>" . $palabras[$dado-1][$idioma] . "</strong>.</p>\n";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+for ($i = 0; $i < $numero - 1; $i++) {
+    print "$resultado[$i] ";
+}
+print "</p>\n";
 ?>
 
   <footer>
