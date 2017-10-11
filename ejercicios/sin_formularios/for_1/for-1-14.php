@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-09
+ * @version   2017-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -69,14 +69,14 @@ if ($pares == 1) {
 if ($impares == 1) {
     print "1 número impar.</p>\n";
 } else {
-    print "$impares números pares.</p>\n";
+    print "$impares números impares.</p>\n";
 }
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-09">9 de octubre de 2017</time></p>
+      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

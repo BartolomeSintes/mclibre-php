@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-09
+ * @version   2017-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,7 @@ print "\n";
 print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dado = rand(1, 6);
-    print "    <img src=\"img/$dado.svg\" alt=\"Dado 1\" title=\"$dado\" width=\"140\" height=\"140\">\n";
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\">\n";
     $total += $dado;
 }
 print "  </p>\n";
@@ -60,7 +60,7 @@ print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-09">9 de octubre de 2017</time></p>
+      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
