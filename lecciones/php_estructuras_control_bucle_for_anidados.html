@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Estructuras de control: bucles for anidados. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <h1>Estructuras de control: bucles for anidados</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>Bucles for anidados</h2>
+
+      <ul>
+        <li><a href="#anidados">Bucles anidados</a></li>
+        <li><a href="#independientes">Variables independientes</a></li>
+        <li><a href="#dependientes">Variables dependientes</a></li>
+        <li><a href="#tabla">Ejemplo: tabla</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="anidados">
+    <h2>Bucles anidados</h2>
+
+    <p>Un bucle anidado es un bucle que se encuentra incluido en el bloque de sentencias de otro bloque. Los bucles pueden tener cualquier nivel de anidamiento (un bucle dentro de otro bucle dentro de un tercero, etc.).</p>
+
+    <p>Al bucle que se encuentra dentro del otro se le puede denominar bucle interior o bucle interno. El otro bucle sería el bucle exterior o bucle externo.</p>
+
+    <p>En los bucles anidados es importante utilizar variables de control distintas, para no obtener resultados inesperados.</p>
+  </section>
+
+  <section id="independientes">
+    <h3>Bucles anidados con variables independientes</h3>
+
+    <p>Los bucles anidados con variables independientes son los bucles en los que ninguna de las variables de uno de los bucles interviene ni en la condición de continuación ni en la expresión de paso de los otros bucles.</p>
+
+    <p>Un ejemplo de bucles anidados con variables independientes sería el siguiente:</p>
+
+    <div class="codigo">
+      <pre><code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+<span style="display:block" class="codigo-resaltado">for ($i = 1; $i &lt; 3; $i++) {               // Bucle exterior
+
+<span style="display:block" class="codigo-resaltado">    for ($j = 10; $j &lt; 12; $j++) {         // Bucle interior
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }</span>
+}</span>
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>Su ejecución daría el siguiente resultado:</p>
+
+    <div class="mcl-diapo" style="height: 320px;">
+
+      <div id="d1100">
+        <p><strong>Ejemplo de bucle anidado con variables independientes</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+      print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 11&lt;/p&gt;
+&lt;p&gt;Final&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+
+        <p class="control">
+          <a href="#d1101"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1101">
+        <p><strong>Paso 1</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"><span class="codigo-resaltado">&lt;p&gt;Comienzo&lt;/p&gt;</span></code></pre>
+          </div>
+        </div>
+
+        <p>Se ejecuta la primera instrucción del programa.</p>
+
+        <p>En este caso, imprime el párrafo de comienzo.</p>
+
+        <p class="control">
+          <a href="#d1100"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1102"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1102">
+        <p><strong>Paso 2</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for (<span class="codigo-resaltado">$i = 1</span>; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta el primer bucle (bucle exterior). El primer paso es dar el valor inicial a la variable de control.</p>
+
+        <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+
+        <p class="control">
+          <a href="#d1101"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1103"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1103">
+        <p><strong>Paso 3</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle exterior se cumple.</p>
+
+        <p>En este caso, $i es inferior a 3 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias del bucle exterior.</p>
+
+        <p class="control">
+          <a href="#d1102"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1104"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1104">
+        <p><strong>Paso 4</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for (<span class="codigo-resaltado">$j = 10</span>; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>En el bloque de sentencias se encuentra el segundo bucle (o bucle interior). El primer paso es dar el valor inicial a la variable de control. del bucle interior</p>
+
+        <p>En este caso, la variable de control es $j y toma el valor 10.</p>
+
+        <p class="control">
+          <a href="#d1103"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1105"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1105">
+        <p><strong>Paso 5</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; <span class="codigo-resaltado">$j &lt; 12</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j es inferior a 12 (vale 10), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+        <p class="control">
+          <a href="#d1104"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1106"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1106">
+        <p><strong>Paso 6</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        <span class="codigo-resaltado">print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";</span>
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque interior.</p>
+
+        <p>En este caso, se imprime el texto &lt;p&gt;i: 1 -- j: 10&lt;/p&gt; ya que $i tiene el valor 1 y $j el valor 10.</p>
+
+        <p class="control">
+          <a href="#d1105"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1107"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1107">
+        <p><strong>Paso 7</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; <span class="codigo-resaltado">$j++</span>) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle interior.</p>
+
+        <p>En este caso, la variable $j aumenta una unidad, por lo que ahora vale 11.</p>
+
+        <p class="control">
+          <a href="#d1106"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1108"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1108">
+        <p><strong>Paso 8</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; <span class="codigo-resaltado">$j &lt; 12</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j es inferior a 12 (vale 11), así que se pasa a ejecutar las instrucciones del bloque de sentencias del bloque interior.</p>
+
+        <p class="control">
+          <a href="#d1107"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1109"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1109">
+        <p><strong>Paso 9</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        <span class="codigo-resaltado">print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";</span>
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque interior.</p>
+
+        <p>En este caso, se imprime el texto &lt;p&gt;i: 1 -- j: 11&lt;/p&gt; ya que $i tiene el valor 1 y $j el valor 11.</p>
+
+        <p class="control">
+          <a href="#d1108"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1110"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1110">
+        <p><strong>Paso 10</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; <span class="codigo-resaltado">$j++</span>) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle interior.</p>
+
+        <p>En este caso, la variable $j aumenta una unidad, por lo que ahora vale 12.</p>
+
+        <p class="control">
+          <a href="#d1109"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1111"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1111">
+        <p><strong>Paso 11</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; <span class="codigo-resaltado">$j &lt; 12</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j ya no es inferior a 12 (vale 12), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle interior se termina.</p>
+
+        <p class="control">
+          <a href="#d1110"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1112"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1112">
+        <p><strong>Paso 12</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle exterior.</p>
+
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+
+        <p class="control">
+          <a href="#d1111"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1113"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1113">
+        <p><strong>Paso 13</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba de nuevo que la condición de continuación del bucle exterior se cumple.</p>
+
+        <p>En este caso, $i es inferior a 3 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias del bucle exterior.</p>
+
+        <p class="control">
+          <a href="#d1112"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1114"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+
+      <div id="d1114">
+        <p><strong>Paso 14</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for (<span class="codigo-resaltado">$j = 10</span>; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>En el bloque de sentencias se encuentra el segundo bucle (o bucle interior). El primer paso es dar el valor inicial a la variable de control. del bucle interior</p>
+
+        <p>En este caso, la variable de control es $j y toma el valor 10.</p>
+
+        <p class="control">
+          <a href="#d1113"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1115"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1115">
+        <p><strong>Paso 15</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; <span class="codigo-resaltado">$j &lt; 12</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j es inferior a 12 (vale 10), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+        <p class="control">
+          <a href="#d1114"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1116"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1116">
+        <p><strong>Paso 16</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        <span class="codigo-resaltado">print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";</span>
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque interior.</p>
+
+        <p>En este caso, se imprime el texto &lt;p&gt;i: 2 -- j: 10&lt;/p&gt; ya que $i tiene el valor 2 y $j el valor 10.</p>
+
+        <p class="control">
+          <a href="#d1115"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1117"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a></p>
+      </div>
+
+      <div id="d1117">
+        <p><strong>Paso 17</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; <span class="codigo-resaltado">$j++</span>) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle interior.</p>
+
+        <p>En este caso, la variable $j aumenta una unidad, por lo que ahora vale 11.</p>
+
+        <p class="control">
+          <a href="#d1116"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1118"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1118">
+        <p><strong>Paso 18</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; <span class="codigo-resaltado">$j &lt; 12</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j es inferior a 12 (vale 11), así que se pasa a ejecutar las instrucciones del bloque de sentencias del bloque interior.</p>
+
+        <p class="control">
+          <a href="#d1117"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1119"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1119">
+        <p><strong>Paso 19</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        <span class="codigo-resaltado">print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";</span>
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;i: 2 -- j: 11&lt;/p&gt; </span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque interior.</p>
+
+        <p>En este caso, se imprime el texto &lt;p&gt;i: 2 -- j: 11&lt;/p&gt; ya que $i tiene el valor 2 y $j el valor 11.</p>
+
+        <p class="control">
+          <a href="#d1118"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1120"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1120">
+        <p><strong>Paso 20</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; <span class="codigo-resaltado">$j++</span>) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle interior.</p>
+
+        <p>En este caso, la variable $j aumenta una unidad, por lo que ahora vale 12.</p>
+
+        <p class="control">
+          <a href="#d1119"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1121"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1121">
+        <p><strong>Paso 21</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; <span class="codigo-resaltado">$j &lt; 12</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j ya no es inferior a 12 (vale 12), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle interior se termina.</p>
+
+        <p class="control">
+          <a href="#d1120"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1122"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1122">
+        <p><strong>Paso 22</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle exterior.</p>
+
+        <p>En este caso, la variable $ aumenta una unidad, por lo que ahora vale 3.</p>
+
+        <p class="control">
+          <a href="#d1121"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1123"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1123">
+        <p><strong>Paso 23</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 11&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba de nuevo que la condición de continuación del bucle exterior se cumple.</p>
+
+        <p>En este caso, $i ya no es inferior a 3 (vale 3), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+
+        <p class="control">
+          <a href="#d1122"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1124"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1124">
+        <p><strong>Paso 24</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?phpprint "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 10; $j &lt; 12; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+<span class="codigo-resaltado">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 11&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 10&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 11&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+        <p>En este caso, imprime el párrafo final.</p>
+
+        <p class="control">
+          <a href="#d1123"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+        </p>
+      </div>
+    </div>
+
+    <p>En estos casos, si el bucle exterior se ejecuta M veces y el bucle interior se ejecuta N veces cada vez que se ejecuta el bucle exterior, en total el bloque de instrucciones se ejecutará M x N veces.</p>
+  </section>
+
+  <section id="dependientes">
+    <h3>Bucles anidados con variables dependientes</h3>
+
+    <p>Los bucles anidados con variables dependientes son los bucles en los que la variable de uno de los bucles interviene en la condición de continuación o en la expresión de paso de los otros bucles.</p>
+
+    <p>Un ejemplo de bucles anidados con variables independientes sería el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+
+<span style="display: block;" class="codigo-resaltado">for ($i = 1; $i &lt; 3; $i++) {               // Bucle exterior
+<span style="display: block;" class="codigo-resaltado">    for ($j = 0; $j &lt; $i; $j++) {         // Bucle interior en el que aparece $i
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";  // en la condición de continuación
+    }</span>
+}</span>
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>Su ejecución daría el siguiente resultado:</p>
+
+    <div class="mcl-diapo" style="height: 350px;">
+
+      <div id="d1200">
+        <p><strong>Ejemplo de bucle anidado con variables dependientes</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+  <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+  &lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+  &lt;p&gt;i: 2 -- j: 0&lt;/p&gt;
+  &lt;p&gt;i: 2 -- j: 1&lt;/p&gt;
+  &lt;p&gt;Final&lt;/p&gt;</code>
+  </pre>
+          </div>
+        </div>
+
+        <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+
+        <p class="control">
+          <a href="#d1201"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1201">
+        <p><strong>Paso 1</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"><span class="codigo-resaltado">&lt;p&gt;Comienzo&lt;/p&gt;</span></code></pre>
+          </div>
+        </div>
+
+        <p>Se ejecuta la primera instrucción del programa.</p>
+
+        <p>En este caso, imprime el párrafo de comienzo.</p>
+
+        <p class="control">
+          <a href="#d1200"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1202"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1202">
+        <p><strong>Paso 2</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for (<span class="codigo-resaltado">$i = 1</span>; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta el primer bucle (bucle exterior). El primer paso es dar el valor inicial a la variable de control.</p>
+
+        <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+
+        <p class="control">
+          <a href="#d1201"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1203"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1203">
+        <p><strong>Paso 3</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle exterior se cumple.</p>
+
+        <p>En este caso, $i es inferior a 3 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias del bucle exterior.</p>
+
+        <p class="control">
+          <a href="#d1202"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1204"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1204">
+        <p><strong>Paso 4</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for (<span class="codigo-resaltado">$j = 0</span>; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>En el bloque de sentencias se encuentra el segundo bucle (o bucle interior). El primer paso es dar el valor inicial a la variable de control. del bucle interior</p>
+
+        <p>En este caso, la variable de control es $j y toma el valor 0.</p>
+
+        <p class="control">
+          <a href="#d1203"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1205"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1205">
+        <p><strong>Paso 5</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; <span class="codigo-resaltado">$j &lt; $i</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j (que vale 0) es inferior a $i (que vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+        <p class="control">
+          <a href="#d1204"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1206"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1206">
+        <p><strong>Paso 6</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        <span class="codigo-resaltado">print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";</span>
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque interior.</p>
+
+        <p>En este caso, se imprime el texto &lt;p&gt;i: 1 -- j: 0&lt;/p&gt; ya que $i tiene el valor 1 y $j el valor 0.</p>
+
+        <p class="control">
+          <a href="#d1205"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1207"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1207">
+        <p><strong>Paso 7</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; <span class="codigo-resaltado">$j++</span>) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle interior.</p>
+
+        <p>En este caso, la variable $j aumenta una unidad, por lo que ahora vale 1.</p>
+
+        <p class="control">
+          <a href="#d1206"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1208"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1208">
+        <p><strong>Paso 8</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; <span class="codigo-resaltado">$j &lt; $i</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j (que vale 1) ya no es inferior a $i (que vale 1), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle interior se termina.</p>
+
+        <p class="control">
+          <a href="#d1207"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1209"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1209">
+        <p><strong>Paso 9</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle exterior.</p>
+
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+
+        <p class="control">
+          <a href="#d1208"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1210"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1210">
+        <p><strong>Paso 10</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba de nuevo que la condición de continuación del bucle exterior se cumple.</p>
+
+        <p>En este caso, $i es inferior a 3 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias del bucle exterior.</p>
+
+        <p class="control">
+          <a href="#d1209"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1211"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+
+      <div id="d1211">
+        <p><strong>Paso 11</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for (<span class="codigo-resaltado">$j = 0</span>; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>En el bloque de sentencias se encuentra el segundo bucle (o bucle interior). El primer paso es dar el valor inicial a la variable de control. del bucle interior</p>
+
+        <p>En este caso, la variable de control es $j y toma el valor 0.</p>
+
+        <p class="control">
+          <a href="#d1210"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1212"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1212">
+        <p><strong>Paso 12</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; <span class="codigo-resaltado">$j &lt; $i</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j (que vale 0) es inferior a $i (que vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+        <p class="control">
+          <a href="#d1211"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1213"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1213">
+        <p><strong>Paso 13</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        <span class="codigo-resaltado">print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";</span>
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque interior.</p>
+
+        <p>En este caso, se imprime el texto &lt;p&gt;i: 2 -- j: 0&lt;/p&gt; ya que $i tiene el valor 2 y $j el valor 0.</p>
+
+        <p class="control">
+          <a href="#d1212"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1214"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a></p>
+      </div>
+
+      <div id="d1214">
+        <p><strong>Paso 14</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; <span class="codigo-resaltado">$j++</span>) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle interior.</p>
+
+        <p>En este caso, la variable $j aumenta una unidad, por lo que ahora vale 1.</p>
+
+        <p class="control">
+          <a href="#d1213"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1215"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1215">
+        <p><strong>Paso 15</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; <span class="codigo-resaltado">$j &lt; $i</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j (que vale 1) es inferior a $i (que vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias del bloque interior.</p>
+
+        <p class="control">
+          <a href="#d1214"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1216"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1216">
+        <p><strong>Paso 16</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        <span class="codigo-resaltado">print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";</span>
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;i: 2 -- j: 1&lt;/p&gt; </span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque interior.</p>
+
+        <p>En este caso, se imprime el texto &lt;p&gt;i: 2 -- j: 1&lt;/p&gt; ya que $i tiene el valor 2 y $j el valor 1.</p>
+
+        <p class="control">
+          <a href="#d1215"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1217"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1217">
+        <p><strong>Paso 17</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; <span class="codigo-resaltado">$j++</span>) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 1&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle interior.</p>
+
+        <p>En este caso, la variable $j aumenta una unidad, por lo que ahora vale 2.</p>
+
+        <p class="control">
+          <a href="#d1216"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1218"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1218">
+        <p><strong>Paso 18</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; <span class="codigo-resaltado">$j &lt; $i</span>; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 1&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación del bucle interior se cumple.</p>
+
+        <p>En este caso, $j (que vale 2) ya no es inferior a $i (que vale 2), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle interior se termina.</p>
+
+        <p class="control">
+          <a href="#d1217"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1219"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1219">
+        <p><strong>Paso 19</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 1&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso del bucle exterior.</p>
+
+        <p>En este caso, la variable $ aumenta una unidad, por lo que ahora vale 3.</p>
+
+        <p class="control">
+          <a href="#d1218"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1220"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1220">
+        <p><strong>Paso 20</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 1&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba de nuevo que la condición de continuación del bucle exterior se cumple.</p>
+
+        <p>En este caso, $i ya no es inferior a 3 (vale 3), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+
+        <p class="control">
+          <a href="#d1219"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1221"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1221">
+        <p><strong>Paso 21</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    for ($j = 0; $j &lt; $i; $j++) {
+        print "&lt;p&gt;i: $i -- j: $j&lt;/p&gt;\n";
+    }
+}
+<span class="codigo-resaltado">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;i: 1 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 -- j: 1&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+
+        <p>En este caso, imprime el párrafo final.</p>
+
+        <p class="control">
+          <a href="#d1220"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+        </p>
+      </div>
+    </div>
+
+    <p>En estos casos, es difícil decir a priori cuántas veces se ejecutará el bloque de instrucciones.</p>
+  </section>
+
+  <section id="tabla">
+    <h2>Ejemplo: generación de una tabla</h2>
+
+    <p>Para generar una tabla de varias filas se pueden utilizar bucles for anidados.</p>
+
+    <p>Supongamos que queremos generar la siguiente tabla: </p>
+
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;table border="1"&gt;
+  &lt;caption&gt;Tabla&lt;/caption&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;th&gt;4&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;1-1&lt;/td&gt;
+      &lt;td&gt;1-2&lt;/td&gt;
+      &lt;td&gt;1-3&lt;/td&gt;
+      &lt;td&gt;1-4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;2-1&lt;/td&gt;
+      &lt;td&gt;2-2&lt;/td&gt;
+      &lt;td&gt;2-3&lt;/td&gt;
+      &lt;td&gt;2-4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;3-1&lt;/td&gt;
+      &lt;td&gt;3-2&lt;/td&gt;
+      &lt;td&gt;3-3&lt;/td&gt;
+      &lt;td&gt;3-4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code>
+</pre>
+      </div>
+      <div class="resultado">
+        <table border="1">
+          <caption>Tabla</caption>
+          <tbody>
+            <tr>
+              <th></th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+            </tr>
+            <tr>
+              <th>1</th>
+              <td>1-1</td>
+              <td>1-2</td>
+              <td>1-3</td>
+              <td>1-4</td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td>2-1</td>
+              <td>2-2</td>
+              <td>2-3</td>
+              <td>2-4</td>
+            </tr>
+            <tr>
+              <th>3</th>
+              <td>3-1</td>
+              <td>3-2</td>
+              <td>3-3</td>
+              <td>3-4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p>Para identificar las partes que son susceptibles de ser generadas por bucles, buscamos las repeticiones en el código html. El resto del contenido (que en este caso son los números) debe también seguir algún patrón, para poderlo generar aprovechando las variables que controlan los bucles.</p>
+
+    <p>Así, se pueden identificar tres bloques:</p>
+    <ul>
+      <li>Bucle 1: En la primera fila hay varias celdas &lt;th&gt; con números consecutivos</li>
+      <li>Bucle 3: En cada una de las filas hay varias celdas &lt;td&gt; con números consecutivos</li>
+      <li>Bucle 2: Todas las filas excepto la primera tienen la misma estructura, con número consecutivos.</li>
+    </ul>
+
+    <p>El resto del código se generaría fuera de los bucles. En el cuadro siguiente se han marcado los bloques que generaría cada bucle.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">&lt;table border="1"&gt;
+  &lt;caption&gt;Tabla&lt;/caption&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;    &rceil;
+      &lt;th&gt;2&lt;/th&gt;    &dagger; Bucle 1
+      &lt;th&gt;3&lt;/th&gt;    &dagger;
+      &lt;th&gt;4&lt;/th&gt;    &rfloor;
+    &lt;/tr&gt;
+    &lt;tr&gt;                          &rceil;
+      &lt;th&gt;1&lt;/th&gt;                  |
+      &lt;td&gt;1-1&lt;/td&gt;   &rceil;            |
+      &lt;td&gt;1-2&lt;/td&gt;   &dagger; Bucle 3    |
+      &lt;td&gt;1-3&lt;/td&gt;   &dagger;            |
+      &lt;td&gt;1-4&lt;/td&gt;   &rfloor;            |
+    &lt;/tr&gt;                         &dagger;
+    &lt;tr&gt;                          |
+      &lt;th&gt;2&lt;/th&gt;                  |
+      &lt;td&gt;2-1&lt;/td&gt;   &rceil;            |
+      &lt;td&gt;2-2&lt;/td&gt;   &dagger; Bucle 3    | Bucle 2
+      &lt;td&gt;2-3&lt;/td&gt;   &dagger;            |
+      &lt;td&gt;2-4&lt;/td&gt;   &rfloor;            |
+    &lt;/tr&gt;                         &dagger;
+    &lt;tr&gt;                          |
+      &lt;th&gt;3&lt;/th&gt;                  |
+      &lt;td&gt;3-1&lt;/td&gt;   &rceil;            |
+      &lt;td&gt;3-2&lt;/td&gt;   &dagger; Bucle 3    |
+      &lt;td&gt;3-3&lt;/td&gt;   &dagger;            |
+      &lt;td&gt;3-4&lt;/td&gt;   &rfloor;            |
+    &lt;/tr&gt;                         &rfloor;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code>
+</pre>
+    </div>
+
+    <p>El bucle 1 es un bucle simple. Los bucles 2 y 3 son bucles anidados que necesitan dos variables independientes para controlar cada uno de ellos. Los números contenidos en cada celda se pueden generar fácilmente a partir de las variables que controlan los bucles.</p>
+
+    <p>Un esbozo del código podría ser el siguiente: </p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">"&lt;table&gt;"
+"&lt;caption&gt;"
+"&lt;tbody&gt;"
+"&lt;tr&gt;"
+"&lt;th&gt;&lt;/th&gt;"
+for (columnas)
+    "&lt;th&gt;columna&lt;/th&gt;"
+"&lt;/tr&gt;"
+for (filas)
+    "&lt;tr&gt; "
+    "&lt;th&gt;fila&lt;/th&gt;"
+    for (columnas)
+        "&lt;td&gt;fila-columna&lt;/td&gt;"
+    "&lt;/tr&gt;"
+"&lt;/tbody&gt;"
+"&lt;/table&gt;"</code>
+</pre>
+    </div>
+
+    <p>El código PHP podría ser el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$columnas = 4;
+$filas    = 3;
+
+print "&lt;table border=\"1\"&gt;\n";            // Abre la tabla
+print "  &lt;caption&gt;Tabla&lt;/caption&gt;\n";      // Crea la leyenda &lt;caption&gt;
+print "  &lt;tbody&gt;\n";                       // Abre el cuerpo de tabla &lt;tbody&gt;
+
+print "    &lt;tr&gt;\n";                        // Abre la primera fila
+print "      &lt;th&gt;&lt;/th&gt;\n";                 // Crea la primera celda &lt;th&gt; de la primera fila (sin número)
+for ($j = 1; $j &lt;= $columnas; $j++) {      // Bucle 1 se ejecuta tantas veces como columnas tenga la tabla
+    print "      &lt;th&gt;$j&lt;/th&gt;\n";           // Crea las celdas &lt;th&gt; de la primera fila (con número)
+}
+print "    &lt;/tr&gt;\n";                       // Cierra la primera fila
+
+for ($i = 1; $i &lt;= $filas; $i++) {         // Bucle 2 (genera el resto de filas de la tabla)
+    print "    &lt;tr&gt;\n";                    // Abre la fila
+    print "      &lt;th&gt;$i&lt;/th&gt;\n";           // Crea la primera celda &lt;th&gt; de cada fila (con número)
+    for ($j = 1; $j &lt;= $columnas; $j++) {  // Bucle 3 se ejecuta tantas veces como columnas tenga la tabla
+        print "      &lt;td&gt;$i-$j&lt;/td&gt;\n";     // Crea el resto de celdas &lt;td&gt; de cada fila (con números)
+    }
+    print "    &lt;/tr&gt;\n";                   // Cierra la fila
+}
+
+print "  &lt;/tbody&gt;\n";                      // Cierra el cuerpo de tabla &lt;tbody&gt;
+print "&lt;/table&gt;\n";                        // Cierra la tabla
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>En el bucle 1, la variable que controla el bucle se ha llamado $j, aunque se podría haber llamado $i. Pero como en los bucles anidados 2 y 3 la variable que crea las celdas de cada fila se ha llamado $j, en el bucle 1 se le ha llamado también $j ya que juega el mismo papel (generar las celdas de la fila).</p>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
+</html>
