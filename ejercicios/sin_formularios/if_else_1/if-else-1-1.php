@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-30
+ * @version   2017-10-12
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,8 +42,8 @@ $dado1 = rand(1, 6);
 $dado2 = rand(1, 6);
 
 print "  <p>\n";
-print "    <img src=\"img/$dado1.svg\" alt=\"Dado 1\" title=\"$dado1\" width=\"140\" height=\"140\">\n";
-print "    <img src=\"img/$dado2.svg\" alt=\"Dado 2\" title=\"$dado2\" width=\"140\" height=\"140\">\n";
+print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" title=\"$dado1\" width=\"140\" height=\"140\">\n";
+print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" title=\"$dado2\" width=\"140\" height=\"140\">\n";
 print "  </p>\n";
 print "\n";
 
@@ -57,7 +57,7 @@ if ($dado1 == $dado2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-30">30 de septiembre de 2017</time></p>
+      <time datetime="2017-10-12">12 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
