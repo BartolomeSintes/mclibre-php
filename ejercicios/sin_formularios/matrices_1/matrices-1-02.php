@@ -1,11 +1,11 @@
 ﻿<?php
 /**
- * Matrices (1) 5 - matrices-1-06.php
+ * Matrices (1) 2 - matrices-1-02.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-12
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,11 +63,11 @@ print "\n";
 // Guardamos los valores del Jugador 2 en la matriz $dados2
 $dados2 = array();
 for ($i = 0; $i < $numero; $i++) {
-    array_push($dados2, rand(1, 6));
+    $dados2[$i] = rand(1, 6);
 }
 
-// Mostramos los resultados obtenidos por el Jugador 1
-print "    <p>\n";
+// Mostramos los resultados obtenidos por el Jugador 2
+print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     print "    <img src=\"img/$dados2[$i].svg\" alt=\"$dados2[$i]\" title=\"$dados2[$i]\" width=\"140\" height=\"140\" />\n";
 }
@@ -126,7 +126,7 @@ if ($gana1 > $gana2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
+      <time datetime="2017-10-12">12 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

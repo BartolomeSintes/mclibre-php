@@ -1,11 +1,11 @@
 ﻿<?php
 /**
- * Matrices (1) 1 - matrices-1-21.php
+ * Matrices (1) 11 - matrices-1-11.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-12
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,42 +26,25 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Ordenar dados. Matrices (1).
+  <title>Dado. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Ordenar dados</h1>
+  <h1>Dado</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-$numero = rand(2, 7);
-$dados = [];
-for ($i = 0; $i < $numero; $i++) {
-    $dados[$i] = rand(1, 6);
-}
+$dado = rand(1, 6);
 
-print "  <h2>Tirada de $numero dados</h2>\n";
-print "\n";
-print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados[$i].svg\" alt=\"$dados[$i]\" title=\"$dados[$i]\" width=\"140\" height=\"140\" />\n";
-}
-print "  </p>\n";
-print "\n";
+$nombre = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis"];
 
-sort($dados);
-
-print "  <h2>Tirada ordenada</h2>\n";
+print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
 print "\n";
-print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados[$i].svg\" alt=\"$dados[$i]\" title=\"$dados[$i]\" width=\"140\" height=\"140\" />\n";
-}
-print "  </p>\n";
+print "  <p>Ha sacado un <strong>$nombre[$dado]</strong>.</p>\n";
 ?>
 
   <footer>
