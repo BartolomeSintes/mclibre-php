@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 /**
- * Matrices (1) 3 - matrices-1-13.php
+ * Matrices (1) 7 - matrices-1-07.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,37 +26,48 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Nombres de animales. Matrices (1).
+  <title>De binario a Gray. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Nombres de animales</h1>
+  <h1>Convertidor de binario a código de Gray</h1>
 
-  <p>Actualice la página para mostrar un nuevo animal.</p>
+  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su conversión a código de Gray.</p>
 
 <?php
-$dibujos = [
-    "ballena.svg", "caballito-mar.svg", "camello.svg", "cebra.svg", "elefante.svg",
-    "hipopotamo.svg", "jirafa.svg", "leon.svg", "leopardo.svg", "medusa.svg",
-    "mono.svg", "oso.svg", "oso-blanco.svg", "pajaro.svg", "pinguino.svg",
-    "rinoceronte.svg", "serpiente.svg", "tigre.svg", "tortuga-marina.svg", "tortuga.svg"
-];
+$numero = 10;
 
-$nombres = [
-    "Ballena", "Caballito de mar", "Camello", "Cebra", "Elefante",
-    "Hipopótamo", "Jirafa", "León", "Leopardo", "Medusa",
-    "Mono", "Oso", "Oso blanco", "Pájaro", "Pingüino",
-    "Rinoceronte", "Serpiente", "Tigre", "Tortuga marina", "Tortuga"
-];
+$inicial = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial[$i] = rand(0, 1);
+}
 
-$animal = rand(0, count($dibujos) - 1);
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "B: ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial[$i] ";
+}
+print "</p>\n";
 
-print "  <h2>$nombres[$animal]</h2>\n";
+$resultado = [];
+$resultado[0] = $inicial[0];
+for ($i = 0; $i < $numero - 1; $i++) {
+    if ($inicial[$i] == $inicial[$i+1]) {
+        $resultado[$i+1] = 0;
+    } else {
+        $resultado[$i+1] = 1;
+    }
+}
 print "\n";
-print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[$animal]\" title=\"$nombres[$animal]\" height=\"250\" /></p>\n";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "G: ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$resultado[$i] ";
+}
+print "</p>\n";
 ?>
 
   <footer>

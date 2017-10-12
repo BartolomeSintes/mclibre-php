@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 /**
- * Matrices (1) 11 - matrices-1-11.php
+ * Matrices (1) 4 - matrices-1-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,25 +26,60 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Dado. Matrices (1).
+  <title>"Y" lógico. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Dado</h1>
+  <h1>"Y" lógico</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar dos secuencias aleatorias de bits y su conjunción lógica.</p>
 
 <?php
-$dado = rand(1, 6);
+$numero = 10;
 
-$nombre = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis"];
+$inicial1 = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial1[$i] = rand(0, 1);
+}
 
-print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
 print "\n";
-print "  <p>Ha sacado un <strong>$nombre[$dado]</strong>.</p>\n";
+print "  <pre style=\"font-size: 300%;\">\n";
+print "   A   : ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial1[$i] ";
+}
+print "\n";
+
+$inicial2 = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial2[$i] = rand(0, 1);
+}
+
+print "\n";
+print "   B   : ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial2[$i] ";
+}
+print "\n";
+
+$resultado = [];
+for ($i = 0; $i < $numero; $i++) {
+    if ($inicial1[$i] == 1 and $inicial2[$i] == 1 ) {
+        $resultado[$i] = 1;
+    } else {
+        $resultado[$i] = 0;
+    }
+}
+
+print "\n";
+print "A and B: ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$resultado[$i] ";
+}
+print "</pre>\n";
 ?>
 
   <footer>

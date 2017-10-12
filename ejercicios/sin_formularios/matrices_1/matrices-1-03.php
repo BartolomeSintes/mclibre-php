@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Matrices (1) 3 - matrices-1-03.php
+ * Matrices (1) 12 - matrices-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,49 +26,28 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Negación. Matrices (1).
+  <title>Animales. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Negación de bits</h1>
+  <h1>Animales</h1>
 
-  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su complementaria.</p>
+  <p>Actualice la página para mostrar un nuevo animal.</p>
 
 <?php
-$numero = 10;
+$dibujos = [
+    "ballena.svg", "caballito-mar.svg", "camello.svg", "cebra.svg", "elefante.svg",
+    "hipopotamo.svg", "jirafa.svg", "leon.svg", "leopardo.svg", "medusa.svg",
+    "mono.svg", "oso.svg", "oso-blanco.svg", "pajaro.svg", "pinguino.svg",
+    "rinoceronte.svg", "serpiente.svg", "tigre.svg", "tortuga-marina.svg", "tortuga.svg"
+];
 
-$inicial = [];
-for ($i = 0; $i < $numero; $i++) {
-    $inicial[$i] = rand(0, 1);
-}
+$animal = rand(0, count($dibujos) - 1);
 
-print "\n";
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "A: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial[$i] ";
-}
-print "</p>\n";
-
-$resultado = [];
-for ($i = 0; $i < $numero; $i++) {
-    if ($inicial[$i] == 1) {
-        $resultado[$i] = 0;
-    } else {
-        $resultado[$i] = 1;
-    }
-}
-
-print "\n";
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "<span style=\"text-decoration: overline\">A</span>: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$resultado[$i] ";
-}
-print "</p>\n";
+print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"Animal\" title=\"Animal\" height=\"250\" /></p>\n";
 ?>
 
   <footer>
