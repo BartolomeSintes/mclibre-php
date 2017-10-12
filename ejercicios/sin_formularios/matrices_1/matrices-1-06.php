@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 1 - matrices-1-01.php
+ * Matrices (1) 4 - matrices-1-04.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,16 +26,16 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Negación. Matrices (1).
+  <title>Cambio de bits. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Negación de bits</h1>
+  <h1>Cambio de bits</h1>
 
-  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su complementaria.</p>
+  <p>Actualice la página para mostrar una secuencia aleatoria de bits y la detección de cambios de bits consecutivos en la secuencia.</p>
 
 <?php
 $numero = 10;
@@ -45,7 +45,6 @@ for ($i = 0; $i < $numero; $i++) {
     $inicial[$i] = rand(0, 1);
 }
 
-print "\n";
 print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "A: ";
 for ($i = 0; $i < $numero; $i++) {
@@ -54,18 +53,17 @@ for ($i = 0; $i < $numero; $i++) {
 print "</p>\n";
 
 $resultado = [];
-for ($i = 0; $i < $numero; $i++) {
-    if ($inicial[$i] == 1) {
+for ($i = 0; $i < $numero - 1; $i++) {
+    if ($inicial[$i] == $inicial[$i+1]) {
         $resultado[$i] = 0;
     } else {
         $resultado[$i] = 1;
     }
 }
 
-print "\n";
 print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "<span style=\"text-decoration: overline\">A</span>: ";
-for ($i = 0; $i < $numero; $i++) {
+print "&Delta;A: ";
+for ($i = 0; $i < $numero - 1; $i++) {
     print "$resultado[$i] ";
 }
 print "</p>\n";

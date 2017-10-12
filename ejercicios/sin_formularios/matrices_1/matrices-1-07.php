@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 /**
- * Matrices (1) 4 - matrices-1-04.php
+ * Matrices (1) 5 - matrices-1-05.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-12
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,39 +26,46 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tirada de dados. Matrices (1).
+  <title>De binario a Gray. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Tirada de dados</h1>
+  <h1>Convertidor de binario a código de Gray</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su conversión a código de Gray.</p>
 
 <?php
-$numero = rand(2, 7);
+$numero = 10;
 
-$dados = [];
+$inicial = [];
 for ($i = 0; $i < $numero; $i++) {
-    $dados[$i] = rand(1, 6);
+    $inicial[$i] = rand(0, 1);
 }
 
-print "  <h2>Tirada de $numero dados</h2>\n";
-print "\n";
-print "  <p>\n";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "B: ";
 for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados[$i].svg\" alt=\"$dados[$i]\" title=\"$dados[$i]\" width=\"140\" height=\"140\" />\n";
+    print "$inicial[$i] ";
 }
-print "  </p>\n";
-print "\n";
+print "</p>\n";
 
-print "  <h2>Resultado</h2>\n";
+$resultado = [];
+$resultado[0] = $inicial[0];
+for ($i = 0; $i < $numero - 1; $i++) {
+    if ($inicial[$i] == $inicial[$i+1]) {
+        $resultado[$i+1] = 0;
+    } else {
+        $resultado[$i+1] = 1;
+    }
+}
 print "\n";
-print "  <p>Los valores obtenidos son: ";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "G: ";
 for ($i = 0; $i < $numero; $i++) {
-    print "$dados[$i] ";
+    print "$resultado[$i] ";
 }
 print "</p>\n";
 ?>
@@ -66,7 +73,7 @@ print "</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
+      <time datetime="2017-10-12">12 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 4 - matrices-1-04.php
+ * Matrices (1) 2 - matrices-1-02.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -26,47 +26,60 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Cambio de bits. Matrices (1).
+  <title>"Y" lógico. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Cambio de bits</h1>
+  <h1>"Y" lógico</h1>
 
-  <p>Actualice la página para mostrar una secuencia aleatoria de bits y la detección de cambios de bits consecutivos en la secuencia.</p>
+  <p>Actualice la página para mostrar dos secuencias aleatorias de bits y su conjunción lógica.</p>
 
 <?php
 $numero = 10;
 
-$inicial = [];
+$inicial1 = [];
 for ($i = 0; $i < $numero; $i++) {
-    $inicial[$i] = rand(0, 1);
+    $inicial1[$i] = rand(0, 1);
 }
 
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "A: ";
+print "\n";
+print "  <pre style=\"font-size: 300%;\">\n";
+print "   A   : ";
 for ($i = 0; $i < $numero; $i++) {
-    print "$inicial[$i] ";
+    print "$inicial1[$i] ";
 }
-print "</p>\n";
+print "\n";
+
+$inicial2 = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial2[$i] = rand(0, 1);
+}
+
+print "\n";
+print "   B   : ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial2[$i] ";
+}
+print "\n";
 
 $resultado = [];
-for ($i = 0; $i < $numero - 1; $i++) {
-    if ($inicial[$i] == $inicial[$i+1]) {
-        $resultado[$i] = 0;
-    } else {
+for ($i = 0; $i < $numero; $i++) {
+    if ($inicial1[$i] == 1 and $inicial2[$i] == 1 ) {
         $resultado[$i] = 1;
+    } else {
+        $resultado[$i] = 0;
     }
 }
 
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "&Delta;A: ";
-for ($i = 0; $i < $numero - 1; $i++) {
+print "\n";
+print "A and B: ";
+for ($i = 0; $i < $numero; $i++) {
     print "$resultado[$i] ";
 }
-print "</p>\n";
+print "</pre>\n";
 ?>
 
   <footer>
