@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 /**
  * Matrices (1) 3 - matrices-1-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-12
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,43 +26,79 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Nombres de animales. Matrices (1).
+  <title>El bit más común. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Nombres de animales</h1>
+  <h1>El bit más común</h1>
 
-  <p>Actualice la página para mostrar un nuevo animal.</p>
+  <p>Actualice la página para mostrar tres secuencias aleatorias de bits y una cuarta secuencia que indica cuál es el bit más común en esa posición.</p>
 
 <?php
-$dibujos = [
-    "ballena.svg", "caballito-mar.svg", "camello.svg", "cebra.svg", "elefante.svg",
-    "hipopotamo.svg", "jirafa.svg", "leon.svg", "leopardo.svg", "medusa.svg",
-    "mono.svg", "oso.svg", "oso-blanco.svg", "pajaro.svg", "pinguino.svg",
-    "rinoceronte.svg", "serpiente.svg", "tigre.svg", "tortuga-marina.svg", "tortuga.svg"
-];
+$numero = 10;
 
-$nombres = array(
-    "Ballena", "Caballito de mar", "Camello", "Cebra", "Elefante",
-    "Hipopótamo", "Jirafa", "León", "Leopardo", "Medusa",
-    "Mono", "Oso", "Oso blanco", "Pájaro", "Pingüino",
-    "Rinoceronte", "Serpiente", "Tigre", "Tortuga marina", "Tortuga"
-);
+$inicial1 = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial1[$i] = rand(0, 1);
+}
 
-$animal = rand(0, count($dibujos) - 1);
-
-print "  <h2>$nombres[$animal]</h2>\n";
 print "\n";
-print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[$animal]\" title=\"$nombres[$animal]\" height=\"250\" /></p>\n";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "A: ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial1[$i] ";
+}
+print "</p>\n";
+
+$inicial2 = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial2[$i] = rand(0, 1);
+}
+
+print "\n";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "B: ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial2[$i] ";
+}
+print "</p>\n";
+
+$inicial3 = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial3[$i] = rand(0, 1);
+}
+
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "C: ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial3[$i] ";
+}
+print "</p>\n";
+
+$resultado = [];
+for ($i = 0; $i < $numero; $i++) {
+    if ($inicial1[$i] + $inicial2[$i] + $inicial3[$i] > 1) {
+        $resultado[$i] = 1;
+    } else {
+        $resultado[$i] = 0;
+    }
+}
+print "\n";
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "R: ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$resultado[$i] ";
+}
+print "</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
+      <time datetime="2017-10-12">12 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
