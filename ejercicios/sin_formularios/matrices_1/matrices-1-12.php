@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * Matrices (1) 22 - matrices-1-22.php
+ * Matrices (1) 12 - matrices-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco

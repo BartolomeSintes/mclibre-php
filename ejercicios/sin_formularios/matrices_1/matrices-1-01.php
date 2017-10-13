@@ -40,11 +40,13 @@
 <?php
 $numero = rand(2, 7);
 
+// Guardamos los valores de los dados en la matriz $dados1
 $dados = [];
 for ($i = 0; $i < $numero; $i++) {
     $dados[$i] = rand(1, 6);
 }
 
+// Mostramos las imágenes de los dados obtenidos
 print "  <h2>Tirada de $numero dados</h2>\n";
 print "\n";
 print "  <p>\n";
@@ -54,6 +56,7 @@ for ($i = 0; $i < $numero; $i++) {
 print "  </p>\n";
 print "\n";
 
+// Mostramos los valores numéricos de los dados obtenidos
 print "  <h2>Resultado</h2>\n";
 print "\n";
 print "  <p>Los valores obtenidos son: ";

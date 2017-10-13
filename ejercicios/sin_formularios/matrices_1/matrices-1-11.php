@@ -1,11 +1,11 @@
 ﻿<?php
 /**
- * Matrices (1) 1 - matrices-1-21.php
+ * Matrices (1) 11 - matrices-1-11.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,11 +39,14 @@
 
 <?php
 $numero = rand(2, 7);
+
+// Creamos la matriz de dados aleatorios
 $dados = [];
 for ($i = 0; $i < $numero; $i++) {
     $dados[$i] = rand(1, 6);
 }
 
+// Mostramos los dados
 print "  <h2>Tirada de $numero dados</h2>\n";
 print "\n";
 print "  <p>\n";
@@ -53,8 +56,10 @@ for ($i = 0; $i < $numero; $i++) {
 print "  </p>\n";
 print "\n";
 
+// Ordenamos los dados
 sort($dados);
 
+// Mostramos los dados ordenados
 print "  <h2>Tirada ordenada</h2>\n";
 print "\n";
 print "  <p>\n";
@@ -67,7 +72,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-12">12 de octubre de 2017</time></p>
+      <time datetime="2017-10-13">13 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

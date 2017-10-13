@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (1) 3 - matrices-1-03.php
+ * Matrices (1) 6 - matrices-1-06.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-12
+ * @version   2017-10-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,11 +40,13 @@
 <?php
 $numero = 10;
 
+// Creamos la matriz de bits aleatorios
 $inicial = [];
 for ($i = 0; $i < $numero; $i++) {
     $inicial[$i] = rand(0, 1);
 }
 
+// Mostramos los bits aleatorios
 print "\n";
 print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "A: ";
@@ -53,6 +55,7 @@ for ($i = 0; $i < $numero; $i++) {
 }
 print "</p>\n";
 
+// Creamos la matriz con los valores complementarios
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
     if ($inicial[$i] == 1) {
@@ -62,6 +65,7 @@ for ($i = 0; $i < $numero; $i++) {
     }
 }
 
+// Mostramos los valores complementarios
 print "\n";
 print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "<span style=\"text-decoration: overline\">A</span>: ";
@@ -74,7 +78,7 @@ print "</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-12">12 de octubre de 2017</time></p>
+      <time datetime="2017-10-13">13 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
