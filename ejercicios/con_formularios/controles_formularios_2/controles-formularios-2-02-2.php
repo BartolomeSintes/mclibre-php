@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Datos personales 2 (Resultado). Controles en formularios (2).
-      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Datos personales 2 (Resultado). Controles en formularios (2).
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Datos personales 2 (Resultado)</h1>
+<body>
+  <h1>Datos personales 2 (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -51,47 +51,54 @@ $edadOk = false;
 $pesoOk = false;
 
 if ($edad == "") {
-    print "    <p class=\"aviso\">No ha escrito su edad.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su edad.</p>\n";
+    print "\n";
 } elseif (!is_numeric($edad)) {
-    print "    <p  class=\"aviso\">No ha escrito su edad como número.</p>\n\n";
+    print "  <p  class=\"aviso\">No ha escrito su edad como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($edad)) {
-    print "    <p class=\"aviso\">No ha escrito su edad como número entero.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su edad como número entero.</p>\n";
+    print "\n";
 } elseif ($edad < 5|| $edad > 130) {
-    print "    <p class=\"aviso\">Su edad no está entre 5 y 130 años.</p>\n\n";
+    print "  <p class=\"aviso\">Su edad no está entre 5 y 130 años.</p>\n";
+    print "\n";
 } else {
     $edadOk = true;
 }
 
 if ($peso == "") {
-    print "    <p class=\"aviso\">No ha escrito su peso.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su peso.</p>\n";
+    print "\n";
 } elseif (!is_numeric($peso)) {
-    print "    <p  class=\"aviso\">No ha escrito su peso como número.</p>\n\n";
+    print "  <p  class=\"aviso\">No ha escrito su peso como número.</p>\n";
+    print "\n";
 } elseif ($peso < 10|| $peso > 150) {
-    print "    <p class=\"aviso\">Su peso no está entre 10 y 150 kilos.</p>\n\n";
+    print "  <p class=\"aviso\">Su peso no está entre 10 y 150 kilos.</p>\n";
+    print "\n";
 } else {
     $pesoOk = true;
 }
 
 if ($edadOk && $pesoOk) {
-    print "    <p>Su edad es <strong>$edad</strong> años.</p>\n";
+    print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
     print "\n";
-    print "    <p>Su peso es <strong>$peso</strong> kilos.</p>\n";
+    print "  <p>Su peso es <strong>$peso</strong> kilos.</p>\n";
     print "\n";
 }
 ?>
-    <p><a href="controles-formularios-2-02-1.php">Volver al formulario.</a></p>
+  <p><a href="controles-formularios-2-02-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-03">3 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-03">3 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

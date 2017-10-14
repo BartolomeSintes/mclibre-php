@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Datos personales 3 (Resultado). Controles en formularios (2).
-      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Datos personales 3 (Resultado). Controles en formularios (2).
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Datos personales 3 (Resultado)</h1>
+<body>
+  <h1>Datos personales 3 (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -55,73 +55,78 @@ $literaturaOk = false;
 $musicaOk     = false;
 
 if ($sexo == "") {
-    print "    <p class=\"aviso\">No ha indicado su sexo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha indicado su sexo.</p>\n";
+    print "\n";
 } elseif ($sexo != "hombre" && $sexo != "mujer") {
-    print "    <p class=\"aviso\">Por favor, utilice el formulario.</p>\n\n";
+    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "\n";
 } else {
     $sexoOk = true;
 }
 
 if ($cine != "" && $cine != "on") {
-    print "    <p class=\"aviso\">Por favor, utilice el formulario.</p>\n\n";
+    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "\n";
 } else {
     $cineOk = true;
 }
 
 if ($literatura != "" && $literatura != "on") {
-    print "    <p class=\"aviso\">Por favor, utilice el formulario.</p>\n\n";
+    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "\n";
 } else {
     $literaturaOk = true;
 }
 
 if ($musica != "" && $musica != "on") {
-    print "    <p class=\"aviso\">Por favor, utilice el formulario.</p>\n\n";
+    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "\n";
 } else {
     $musicaOk = true;
 }
 
 if ($sexoOk && $cineOk && $literaturaOk && $musicaOk) {
     if ($sexo == "hombre") {
-        print "    <p>Es un <strong>hombre</strong>.</p>\n";
+        print "  <p>Es un <strong>hombre</strong>.</p>\n";
     } else {
-        print "    <p>Es una <strong>mujer</strong>.</p>\n";
+        print "  <p>Es una <strong>mujer</strong>.</p>\n";
     }
     print "\n";
 
     if ($cine == "on") {
-        print "    <p>Le gusta <strong>el cine</strong>.</p>\n";
+        print "  <p>Le gusta <strong>el cine</strong>.</p>\n";
     }
     print "\n";
 
     if ($literatura == "on") {
-        print "    <p>Le gusta <strong>la literatura</strong>.</p>\n";
+        print "  <p>Le gusta <strong>la literatura</strong>.</p>\n";
     }
     print "\n";
 
     if ($musica == "on") {
-        print "    <p>Le gusta <strong>la música</strong>.</p>\n";
+        print "  <p>Le gusta <strong>la música</strong>.</p>\n";
     }
     print "\n";
 
     if ($cine != "on" && $literatura != "on" && $musica != "on") {
-        print "    <p>No ha marcado ninguna afición.</p>\n";
+        print "  <p>No ha marcado ninguna afición.</p>\n";
     }
     print "\n";
 }
 ?>
-    <p><a href="controles-formularios-2-03-1.php">Volver al formulario.</a></p>
+  <p><a href="controles-formularios-2-03-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-03">3 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-03">3 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Datos personales 4 (Resultado). Controles en formularios (2).
-      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Datos personales 4 (Resultado). Controles en formularios (2).
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Datos personales 4 (Resultado)</h1>
+<body>
+  <h1>Datos personales 4 (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -53,51 +53,57 @@ $correo2Ok = false;
 $recibirOk = false;
 
 if ($correo == "") {
-    print "    <p class=\"aviso\">No ha escrito su dirección de correo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su dirección de correo.</p>\n";
+    print "\n";
 } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    print "    <p class=\"aviso\">No ha escrito una dirección de correo correcta.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito una dirección de correo correcta.</p>\n";
+    print "\n";
 } else {
     $correoOk = true;
 }
 
 if ($correo2 != $correo) {
-    print "    <p class=\"aviso\">Las direcciones de correo no coinciden.</p>\n\n";
+    print "  <p class=\"aviso\">Las direcciones de correo no coinciden.</p>\n";
+    print "\n";
 } else {
     $correo2Ok = true;
 }
 
 if ($recibir == "-1") {
-    print "    <p class=\"aviso\">No ha indicado si desea recibir correo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha indicado si desea recibir correo.</p>\n";
+    print "\n";
 } elseif ($recibir != "0" && $recibir != "1") {
-    print "    <p class=\"aviso\">Por favor, utilice el formulario.</p>\n\n";
+    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "\n";
 } else {
     $recibirOk = true;
 }
 
 if ($correoOk && $correo2Ok && $recibirOk) {
-    print "    <p>Su dirección de correo es <strong>$correo</strong>.</p>\n";
+    print "  <p>Su dirección de correo es <strong>$correo</strong>.</p>\n";
     print "\n";
     if ($recibir == "0") {
-        print "    <p><strong>No</strong> recibirá correos nuestros.</p>\n";
+        print "  <p><strong>No</strong> recibirá correos nuestros.</p>\n";
+        print "\n";
     } else {
-        print "    <p><strong>Sí</strong> recibirá correos nuestros.</p>\n";
+        print "  <p><strong>Sí</strong> recibirá correos nuestros.</p>\n";
+        print "\n";
     }
-    print "\n";
 }
 ?>
-    <p><a href="controles-formularios-2-04-1.php">Volver al formulario.</a></p>
+  <p><a href="controles-formularios-2-04-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-03">3 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-03">3 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
