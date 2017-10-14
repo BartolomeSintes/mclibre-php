@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Palabras repetidas (Resultado 1) - foreach_1_2_2.php
+ * Palabras repetidas (Resultado 1) - foreach-1-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
   <title>Palabras repetidas (Resultado 1). foreach (1).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -68,7 +68,7 @@ if ($numero == "") {
 if ($numeroOk) {
     // Formulario que envía los datos a la página 3
     print "<p>Escriba una palabra en cada caja de texto y le diré si ha repetido alguna.</p>\n\n";
-    print "<form action=\"foreach_1_2_3.php\" method=\"get\">\n";
+    print "<form action=\"foreach-1-2-3.php\" method=\"get\">\n";
     print "  <table>\n";
     print "    <tbody>\n";
     // Bucle para generar las cajas de texto
@@ -92,7 +92,7 @@ if ($numeroOk) {
 
 ?>
 
-<p><a href="foreach_1_2_1.html">Volver al formulario.</a></p>
+<p><a href="foreach-1-2-1.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

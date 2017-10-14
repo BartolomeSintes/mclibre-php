@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Tablas con casillas de verificación (Resultado 1) - foreach_2_2_3.php
+ * Tablas con casillas de verificación (Resultado 1) - foreach-2-2-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Tablas con casillas de verificación (Resultado 2). foreach (2).
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 <body>
@@ -141,12 +141,12 @@ if ($tablasOk && $tamanoOk && $casillasOk) {
 }
 
 if ($tablasOk && $tamanoOk) {
-    print "<p><a href=\"foreach_2_2_2.php?tamano=$tamano&amp;tablas=$tablas\">Volver a las tablas</a></p>\n";
+    print "<p><a href=\"foreach-2-2-2.php?tamano=$tamano&amp;tablas=$tablas\">Volver a las tablas</a></p>\n";
 }
 
 ?>
 
-<p><a href="foreach_2_2_1.html">Volver al formulario inicial.</a></p>
+<p><a href="foreach-2-2-1.html">Volver al formulario inicial.</a></p>
 
 <p class="ultmod">Última modificación de esta página: 16 de octubre de 2014</p>
 

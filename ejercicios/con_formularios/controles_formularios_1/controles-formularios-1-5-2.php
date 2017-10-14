@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Controles en formularios (1) 5-2 - controles_formularios_1_5_2.php
+ * Controles en formularios (1) 5-2 - controles-formularios-1-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Fruta preferida 2 (Resultado). Controles en formularios (1).
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -51,7 +51,7 @@ $fruta  = recoge("fruta");
 print "    <p><img src=\"img/frutas/$fruta\" width=\"300\" /></p>\n";
 ?>
 
-    <p><a href="controles_formularios_1_5_1.php">Volver al formulario.</a></p>
+    <p><a href="controles-formularios-1-5-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

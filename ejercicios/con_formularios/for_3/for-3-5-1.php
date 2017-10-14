@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>Tabla de multiplicar (Formulario). for (3).
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Tabla de multiplicar (Formulario)</h1>
 
-    <form action="for_3_5_2.php" method="get">
+    <form action="for-3-5-2.php" method="get">
       <p>Escriba el número de filas y columnas (0 &lt; número &le; 100) y su tamaño
         (30 &le; altura &le; 100; 50 &le; anchura &le; 100) y mostraré la tabla de
         multiplicar hasta esos valores.</p>

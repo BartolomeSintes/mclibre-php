@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Tabla numerada (Resultado) - for_3_8_2.php
+ * Tabla numerada (Resultado) - for-3-8-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Tabla numerada (Resultado). for (3).
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
     <style type="text/css">
       td { text-align: center; }
     </style>
@@ -104,7 +104,7 @@ if ($numeradasOk && $columnasOk) {
 }
 
 ?>
-    <p><a href="for_3_8_1.php">Volver al formulario.</a></p>
+    <p><a href="for-3-8-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Encuesta (Resultado 1) - foreach_1_3_2.php
+ * Encuesta (Resultado 1) - foreach-1-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
   <title>Encuesta (Resultado 1). foreach (1).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -86,7 +86,7 @@ if ($preguntasOk && $respuestasOk) {
     print "<p>Valore de 1 a $respuestas cada uno de estos aspectos.</p>\n\n";
 
     // Formulario que envía los datos a la página 3
-    print "<form action=\"foreach_1_3_3.php\" method=\"get\">\n";
+    print "<form action=\"foreach-1-3-3.php\" method=\"get\">\n";
     print "  <table>\n";
     print "    <tbody>\n";
     print "      <tr>\n";
@@ -124,7 +124,7 @@ if ($preguntasOk && $respuestasOk) {
 
 ?>
 
-<p><a href="foreach_1_3_1.html">Volver al formulario.</a></p>
+<p><a href="foreach-1-3-1.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

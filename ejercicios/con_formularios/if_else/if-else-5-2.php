@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * if ... elseif ... else ... 5-2 - if_else_5_2.php
+ * if ... elseif ... else ... 5-2 - if-else-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Calculadora de años bisiestos (Resultado). if ... elseif ... else ...
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -76,7 +76,7 @@ if ($anyoOk) {
     print "\n";
 }
 ?>
-    <p><a href="if_else_5_1.php">Volver al formulario.</a></p>
+    <p><a href="if-else-5-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Tablas con casillas de verificación (Resultado 1) - foreach_2_2_2.php
+ * Tablas con casillas de verificación (Resultado 1) - foreach-2-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Tablas con casillas de verificación (Resultado 1). foreach (2).
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
   <style type="text/css">
     table { margin-bottom: 20px; }
@@ -81,7 +81,7 @@ if ($tamano == "") {
 }
 if ($tablasOk && $tamanoOk) {
     print "<p>Marque las casillas que quiera y contaré cuántas ha marcado.</p>\n";
-    print "<form action=\"foreach_2_2_3.php\" method=\"get\">\n";
+    print "<form action=\"foreach-2-2-3.php\" method=\"get\">\n";
     for ($k = 1; $k <= $tablas; $k++) {
         print "  <table border=\"1\">\n    <caption>Tabla nº $k</caption>\n    <tbody>\n";
         for ($i = 0; $i < $tamano; $i++) {
@@ -103,7 +103,7 @@ if ($tablasOk && $tamanoOk) {
 
 ?>
 
-<p><a href="foreach_2_2_1.html">Volver al formulario.</a></p>
+<p><a href="foreach-2-2-1.html">Volver al formulario.</a></p>
 
 <p class="ultmod">Última modificación de esta página: 16 de octubre de 2014</p>
 

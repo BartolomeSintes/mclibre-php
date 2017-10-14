@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Controles en formularios (2) 14-2 - controles_formularios_2_14_2.php
+ * Controles en formularios (2) 14-2 - controles-formularios-2-14-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Datos personales 6 (Resultado). Controles en formularios (2).
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -219,7 +219,7 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
     }
 }
 ?>
-    <p><a href="controles_formularios_2_14_1.php">Volver al formulario.</a></p>
+    <p><a href="controles-formularios-2-14-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

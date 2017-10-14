@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Crea gráfica de líneas - google_chart_2.php
+ * Crea gráfica de líneas - google-chart-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -33,7 +33,7 @@ function cabecera($texto)
   <title>Crea gráfica de líneas
   ($texto). Google Chart. Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
+  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
   title=\"Color\" />
 </head>\n\n<body>
 <h1>Crea gráfica de líneas ($texto)</h1>\n";

@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Rectángulo de estrellas 3 (Resultado) - for_2_7_2.php
+ * Rectángulo de estrellas 3 (Resultado) - for-2-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Triángulo de estrellas 3 (Resultado). for (2).
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -87,7 +87,7 @@ if ($anchoOk) {
 }
 
 ?>
-    <p><a href="for_2_7_1.php">Volver al formulario.</a></p>
+    <p><a href="for-2-7-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

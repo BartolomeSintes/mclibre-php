@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Operaciones aritmeticas 2-2 - operaciones_aritmeticas_2_2.php
+ * Operaciones aritmeticas 2-2 - operaciones-aritmeticas-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Convertidor de pies y pulgadas a centímetros (Resultado). Operaciones aritméticas.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -74,7 +74,7 @@ if ($piesOk && $pulgadasOk) {
     print "\n";
 }
 ?>
-    <p><a href="operaciones_aritmeticas_2_1.php">Volver al formulario.</a></p>
+    <p><a href="operaciones-aritmeticas-02-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

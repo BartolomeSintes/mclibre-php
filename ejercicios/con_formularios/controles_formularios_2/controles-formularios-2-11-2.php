@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Controles en formularios (2) 11-2 - controles_formularios_2_11_2.php
+ * Controles en formularios (2) 11-2 - controles-formularios-2-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Cuadrado con bordes redondeados (Resultado). Controles en formularios (2).
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -85,7 +85,7 @@ if ($ladoOk && $esquinaOk) {
     print "\n";
 }
 ?>
-    <p><a href="controles_formularios_2_11_1.php">Volver al formulario.</a></p>
+    <p><a href="controles-formularios-2-11-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

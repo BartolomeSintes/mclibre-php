@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Hombres y mujeres (Resultado 1) - foreach_1_4_2.php
+ * Hombres y mujeres (Resultado 1) - foreach-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
   <title>Hombres y mujeres (Resultado 1). foreach (1).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -69,7 +69,7 @@ if ($numeroOk) {
     print "<p>Escriba un nombre propio en cada caja de texto y si se trata de un hombre o de una mujer.</p>\n\n";
 
     // Formulario que envía los datos a la página 3
-    print "<form action=\"foreach_1_4_3.php\" method=\"get\">\n";
+    print "<form action=\"foreach-1-4-3.php\" method=\"get\">\n";
     print "  <table>\n    <tbody>\n";
     // Bucle para generar las cajas de texto y los botones radio
     for ($i = 1; $i <= $numero; $i++) {
@@ -96,7 +96,7 @@ if ($numeroOk) {
 
 ?>
 
-<p><a href="foreach_1_4_1.html">Volver al formulario.</a></p>
+<p><a href="foreach-1-4-1.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

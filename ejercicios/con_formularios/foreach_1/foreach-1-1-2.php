@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Tabla con casillas de verificación (Resultado 1) - foreach_1_1_2.php
+ * Tabla con casillas de verificación (Resultado 1) - foreach-1-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
   <title>Tabla de una fila con casillas de verificación (Resultado 1). foreach (1).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -69,7 +69,7 @@ if ($numeroOk) {
     print "<p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>\n\n";
 
     // Formulario que envía los datos a la página 3
-    print "<form action=\"foreach_1_1_3.php\" method=\"get\">\n";
+    print "<form action=\"foreach-1-1-3.php\" method=\"get\">\n";
     print "  <table class=\"conborde\">\n";
     print "    <tbody>\n";
     print "      <tr>\n";
@@ -92,7 +92,7 @@ if ($numeroOk) {
 
 ?>
 
-<p><a href="foreach_1_1_1.html">Volver al formulario.</a></p>
+<p><a href="foreach-1-1-1.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

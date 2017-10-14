@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>Tabla numerada (Formulario). for (3).
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Tabla numerada (Formulario)</h1>
 
-    <form action="for_3_8_2.php" method="get">
+    <form action="for-3-8-2.php" method="get">
       <p>Escriba dos números y mostraré una tabla con el número de columnas
         (0 &lt; columnas &le; 100) que indique y con las primeras celdas numeradas
         (0 &lt; numeradas &le; 1.000).</p>

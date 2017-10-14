@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Matrices 1 - matrices_1.php
  *
@@ -29,7 +29,7 @@
     <title>Matrices 1. Matrices (1).
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>

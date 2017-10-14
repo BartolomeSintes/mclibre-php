@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>Comparador de tres números (Formulario). if ... elseif ... else ...
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Comparador de tres números (Formulario)</h1>
 
-    <form action="if_else_3_2.php" method="get">
+    <form action="if-else-3-2.php" method="get">
       <p>Escriba tres números (-1.000 &lt; números &lt; 1.000) para comprobar si
         hay números iguales.</p>
 

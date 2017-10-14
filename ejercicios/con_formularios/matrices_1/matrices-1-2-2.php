@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Matrices 2-2 - matrices_2_2.php
  *
@@ -29,7 +29,7 @@
     <title>Matrices 2 (Resultado). Matrices (1).
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -86,7 +86,7 @@ if ($valoresOk) {
 }
 
 ?>
-    <p><a href="matrices_1_2_1.php">Volver al formulario.</a></p>
+    <p><a href="matrices-1-2-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Validación de formulario - validacion_2.php
+ * Validación de formulario - validacion-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2010 Bartolomé Sintes Marco
@@ -42,7 +42,7 @@ function cabecera($texto)
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
   <title>$texto. Validación. Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
+  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
   title=\"Color\" />
 </head>\n\n<body>\n<h1>$texto</h1>\n";
 }

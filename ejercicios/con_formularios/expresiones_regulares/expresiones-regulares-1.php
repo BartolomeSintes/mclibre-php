@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Validación de entrada de texto 1 (Resultado) - expresiones_regulares_1.php
+ * Validación de entrada de texto 1 (Resultado) - expresiones-regulares-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2010 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Validación de entrada de texto 1 (Resultado). Expresiones regulares.
   Ejercicio. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 <body>
@@ -102,7 +102,7 @@ comprueba_pcre($patron, $texto, "es un código postal");
 
 
 print "  </ol>\n";
-print "  <p><a href=\"expresiones_regulares_1.html\">Volver</a></p>\n";
+print "  <p><a href=\"expresiones-regulares-1.html\">Volver</a></p>\n";
 ?>
 <address>
   Esta página forma parte del curso "Páginas web con PHP" disponible en <a

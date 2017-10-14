@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>Reloj (Formulario). Operaciones aritméticas.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Reloj (Formulario)</h1>
 
-    <form action="operaciones_aritmeticas_11_2.php" method="get">
+    <form action="operaciones-aritmeticas-11-2.php" method="get">
       <p>Horas: <input type="number" name="horas" min="0" max="11" value="3" /></p>
 
       <p>Minutos: <input type="number" name="minutos" min="0" max="59" value="30" /></p>

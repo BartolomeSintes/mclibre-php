@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * if ... elseif ... else ... 7-2 - if_else_7_2.php
+ * if ... elseif ... else ... 7-2 - if-else-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Convertidor de centímetros a kilómetros, metros y centímetros (Resultado). if ... elseif ... else ...
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -104,7 +104,7 @@ if ($distanciaOk) {
     print "\n";
 }
 ?>
-    <p><a href="if_else_7_1.php">Volver al formulario.</a></p>
+    <p><a href="if-else-7-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

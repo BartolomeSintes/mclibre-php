@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>Calculadora de años bisiestos (Formulario). if ... elseif ... else ...
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Calculadora de años bisiestos (Formulario)</h1>
 
-    <form action="if_else_5_2.php" method="get">
+    <form action="if-else-5-2.php" method="get">
       <p>Escriba un año (0 &le; año &lt; 10.000) para comprobar si es bisiesto o no.</p>
 
       <table>

@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>Calculadora de divisiones (Formulario). if ... elseif ... else ...
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Calculadora de divisiones (Formulario)</h1>
 
-    <form action="if_else_1_2.php" method="get">
+    <form action="if-else-1-2.php" method="get">
       <p>Escriba el dividendo y el divisor (0 &le; dividendo &lt; 1.000;
         0 &lt; divisor &lt; 1.000) para calcular el cociente y el resto de la
         división.</p>
