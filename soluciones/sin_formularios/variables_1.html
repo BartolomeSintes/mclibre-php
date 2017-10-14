@@ -147,55 +147,55 @@ print &quot;  &lt;/svg&gt;&lt;/p&gt;\n&quot;;
   </section>
 
   <section id="ejercicio-5">
-      <h2>Variables (1) 5 - La carta más alta</h2>
+    <h2>Variables (1) 5 - La carta más alta</h2>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 $a = rand(1, 10);
 $b = rand(1, 10);
 $c = rand(1, 10);
 $maximo = max($a, $b, $c);
 
-print "  &lt;p>\n";
-print "    &lt;img src=\"img/c$a.svg\" alt=\"$a\" height=\"200\" />\n";
-print "    &lt;img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\" />\n";
-print "    &lt;img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\" />\n";
-print "  &lt;/p>\n";
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/c$a.svg\" alt=\"$a\" height=\"200\" /&gt;\n";
+print "    &lt;img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\" /&gt;\n";
+print "    &lt;img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\" /&gt;\n";
+print "  &lt;/p&gt;\n";
 print "\n";
-print "&lt;p>La carta más alta es un &lt;strong>$maximo&lt;/strong>.&lt;/p>\n";
+print "&lt;p&gt;La carta más alta es un &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
   <section id="ejercicio-11">
     <h2>Variables (1) 11 - Círculos de color</h2>
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
-  $rojo = rand(64, 255);
-  $verde = rand(64, 255);
-  $azul = rand(64, 255);
+<code class="language-php">&lt;?php
+$rojo = rand(64, 255);
+$verde = rand(64, 255);
+$azul = rand(64, 255);
 
-  print &quot;  &lt;p&gt;\n&quot;;
-  print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
-  print &quot;      width=\&quot;400px\&quot; height=\&quot;300px\&quot; viewBox=\&quot;-200 -120 400 300\&quot;&gt;\n&quot;;
-  print &quot;      &lt;text x=\&quot;100\&quot; y=\&quot;-90\&quot; text-anchor=\&quot;start\&quot; font-size=\&quot;20\&quot;&gt;Verde: $verde&lt;/text&gt;\n&quot;;
-  print &quot;      &lt;text x=\&quot;-100\&quot; y=\&quot;-90\&quot; text-anchor=\&quot;end\&quot; font-size=\&quot;20\&quot;&gt;Azul: $azul&lt;/text&gt;\n&quot;;
-  print &quot;      &lt;text x=\&quot;0\&quot; y=\&quot;155\&quot; text-anchor=\&quot;middle\&quot; font-size=\&quot;20\&quot;&gt;Rojo: $rojo&lt;/text&gt;\n&quot;;
-  print &quot;      &lt;path fill=\&quot;rgb($rojo, 0, 0)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\&quot;/&gt;\n&quot;;
-  print &quot;      &lt;path fill=\&quot;rgb(0, $verde, 0)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\&quot;/&gt;\n&quot;;
-  print &quot;      &lt;path fill=\&quot;rgb(0, 0, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\&quot;/&gt;\n&quot;;
-  print &quot;      &lt;path fill=\&quot;rgb($rojo, $verde, 0)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\&quot;/&gt;\n&quot;;
-  print &quot;      &lt;path fill=\&quot;rgb($rojo, 0, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\&quot;/&gt;\n&quot;;
-  print &quot;      &lt;path fill=\&quot;rgb(0, $verde, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\&quot;/&gt;\n&quot;;
-  print &quot;      &lt;path fill=\&quot;rgb($rojo, $verde, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\&quot;/&gt;\n&quot;;
-  print &quot;    &lt;/svg&gt;\n&quot;;
-  print &quot;  &lt;/p&gt;\n&quot;;
-  ?&gt;</code>
-  </pre>
+print &quot;  &lt;p&gt;\n&quot;;
+print &quot;    &lt;svg version=\&quot;1.1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; \n&quot;;
+print &quot;      width=\&quot;400px\&quot; height=\&quot;300px\&quot; viewBox=\&quot;-200 -120 400 300\&quot;&gt;\n&quot;;
+print &quot;      &lt;text x=\&quot;100\&quot; y=\&quot;-90\&quot; text-anchor=\&quot;start\&quot; font-size=\&quot;20\&quot;&gt;Verde: $verde&lt;/text&gt;\n&quot;;
+print &quot;      &lt;text x=\&quot;-100\&quot; y=\&quot;-90\&quot; text-anchor=\&quot;end\&quot; font-size=\&quot;20\&quot;&gt;Azul: $azul&lt;/text&gt;\n&quot;;
+print &quot;      &lt;text x=\&quot;0\&quot; y=\&quot;155\&quot; text-anchor=\&quot;middle\&quot; font-size=\&quot;20\&quot;&gt;Rojo: $rojo&lt;/text&gt;\n&quot;;
+print &quot;      &lt;path fill=\&quot;rgb($rojo, 0, 0)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\&quot;/&gt;\n&quot;;
+print &quot;      &lt;path fill=\&quot;rgb(0, $verde, 0)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\&quot;/&gt;\n&quot;;
+print &quot;      &lt;path fill=\&quot;rgb(0, 0, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\&quot;/&gt;\n&quot;;
+print &quot;      &lt;path fill=\&quot;rgb($rojo, $verde, 0)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\&quot;/&gt;\n&quot;;
+print &quot;      &lt;path fill=\&quot;rgb($rojo, 0, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\&quot;/&gt;\n&quot;;
+print &quot;      &lt;path fill=\&quot;rgb(0, $verde, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\&quot;/&gt;\n&quot;;
+print &quot;      &lt;path fill=\&quot;rgb($rojo, $verde, $azul)\&quot; stroke=\&quot;black\&quot; stroke-width=\&quot;1\&quot; d=\&quot;M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\&quot;/&gt;\n&quot;;
+print &quot;    &lt;/svg&gt;\n&quot;;
+print &quot;  &lt;/p&gt;\n&quot;;
+?&gt;</code>
+</pre>
     </div>
   </section>
 
@@ -211,12 +211,12 @@ $c3 = rand(50, 150);
 $ancho = $c1 + $c2 + $c3 + 20;
 $alto = max($c1, $c2, $c3) + 20;
 
-print "  &lt;p>&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "    width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
-print "    &lt;rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" />\n";
-print "    &lt;rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" />\n";
-print "    &lt;rect x=\"" . ($c1+$c2) . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
-print "  &lt;/svg>&lt;/p>\n";
+print "  &lt;p&gt;&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "    width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
+print "    &lt;rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" /&gt;\n";
+print "    &lt;rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" /&gt;\n";
+print "    &lt;rect x=\"" . ($c1+$c2) . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" /&gt;\n";
+print "  &lt;/svg&gt;&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
