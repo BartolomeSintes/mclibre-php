@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Rectángulo de estrellas 2 (Resultado). for (2).
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Rectángulo de estrellas 2 (Resultado). for (2).
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Rectángulo de estrellas 2 (Resultado)</h1>
+<body>
+  <h1>Rectángulo de estrellas 2 (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -54,40 +54,48 @@ $valorMinimo = 2;
 $valorMaximo = 100;
 
 if ($ancho == "") {
-    print "    <p class=\"aviso\">No ha escrito la anchura.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la anchura.</p>\n";
+    print "\n";
 } elseif (!is_numeric($ancho)) {
-    print "    <p class=\"aviso\">No ha escrito la anchura como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la anchura como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($ancho)) {
-    print "    <p class=\"aviso\">No ha escrito la anchura "
-        ."como número entero positivo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la anchura "
+        ."como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($ancho < $valorMinimo || $ancho > $valorMaximo) {
-    print "    <p class=\"aviso\">La anchura debe estar entre "
-        . "$valorMinimo y $valorMaximo.</p>\n\n";
+    print "  <p class=\"aviso\">La anchura debe estar entre "
+        . "$valorMinimo y $valorMaximo.</p>\n";
+    print "\n";
 } else {
 $anchoOk = true;
 }
 
 if ($alto == "") {
-    print "    <p class=\"aviso\">No ha escrito la altura.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la altura.</p>\n";
+    print "\n";
 } elseif (!is_numeric($alto)) {
-    print "    <p class=\"aviso\">No ha escrito la altura como número.</p>\n\n\n";
+    print "  <p class=\"aviso\">No ha escrito la altura como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($alto)) {
-    print "    <p class=\"aviso\">No ha escrito la altura "
-        . "como número entero positivo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la altura "
+        . "como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($alto < $valorMinimo || $alto > $valorMaximo) {
-    print "    <p class=\"aviso\">La altura debe estar entre "
-        . "$valorMinimo y $valorMaximo.</p>\n\n";
+    print "  <p class=\"aviso\">La altura debe estar entre "
+        . "$valorMinimo y $valorMaximo.</p>\n";
+    print "\n";
 } else {
     $altoOk = true;
 }
 
 if ($altoOk && $anchoOk) {
-    print "    <p>Ancho: $ancho</p>\n";
+    print "  <p>Ancho: $ancho</p>\n";
     print "\n";
-    print "    <p>Alto: $alto</p>\n";
+    print "  <p>Alto: $alto</p>\n";
     print "\n";
 
-    print "    <pre>\n";
+    print "  <pre>\n";
     for ($j = 1; $j <= $ancho; $j++) {
         print "* ";
     }
@@ -109,19 +117,19 @@ if ($altoOk && $anchoOk) {
 }
 
 ?>
-    <p><a href="for-2-4-1.php">Volver al formulario.</a></p>
+  <p><a href="for-2-4-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-06">6 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-06">6 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
