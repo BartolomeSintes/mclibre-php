@@ -18,7 +18,7 @@
         <tbody>
           <tr>
             <td><strong>Número:</strong></td>
-            <td><input type="number" name="numero" min="1" max="200" value="5" /> </td>
+            <td><input type="number" name="numero" min="1" max="200" value="5" /></td>
           </tr>
         </tbody>
       </table>

@@ -19,7 +19,7 @@
         <tbody>
           <tr>
             <td><strong>Número de columnas:</strong></td>
-            <td><input type="text" name="columnas" min="1" max="200" value="10" /> </td>
+            <td><input type="text" name="columnas" min="1" max="200" value="10" /></td>
           </tr>
         </tbody>
       </table>

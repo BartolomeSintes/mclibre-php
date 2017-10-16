@@ -16,7 +16,7 @@
       <tbody>
         <tr>
           <td>Escriba su nombre:</td>
-          <td><input type="text" name="nombre" size="30" maxlength="20" /> </td>
+          <td><input type="text" name="nombre" size="30" maxlength="20" /></td>
         </tr>
         <tr>
           <td>Escriba su edad:</td>
