@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Convertidor de pies y pulgadas a centímetros (Resultado). Operaciones aritméticas.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Convertidor de pies y pulgadas a centímetros (Resultado). Operaciones aritméticas.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Convertidor de pies y pulgadas a centímetros (Resultado)</h1>
+<body>
+  <h1>Convertidor de pies y pulgadas a centímetros (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -51,42 +51,42 @@ $piesOk     = false;
 $pulgadasOk = false;
 
 if ($pies == "") {
-    print "    <p class=\"aviso\">No ha escrito el número de pies.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de pies.</p>\n\n";
 } elseif (!ctype_digit($pies)) {
-    print "    <p class=\"aviso\">No ha escrito los pies como número entero positivo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito los pies como número entero positivo.</p>\n\n";
 } else {
     $piesOk = true;
 }
 
 if ($pulgadas == "") {
-    print "    <p class=\"aviso\">No ha escrito el número de pulgadas.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de pulgadas.</p>\n\n";
 } elseif (!is_numeric($pulgadas)) {
-    print "    <p class=\"aviso\">No ha escrito las pulgadas como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito las pulgadas como número.</p>\n\n";
 } elseif ($pulgadas < 0) {
-    print "    <p class=\"aviso\">Las pulgadas no pueden ser negativas.</p>\n\n";
+    print "  <p class=\"aviso\">Las pulgadas no pueden ser negativas.</p>\n\n";
 } else {
     $pulgadasOk = true;
 }
 
 if ($piesOk && $pulgadasOk) {
     $centimetros = ($pies * 12 + $pulgadas) * 2.54;
-    print "    <p>$pies pies y $pulgadas pulgadas son $centimetros centímetros</p>\n";
+    print "  <p>$pies pies y $pulgadas pulgadas son $centimetros centímetros</p>\n";
     print "\n";
 }
 ?>
     <p><a href="operaciones-aritmeticas-02-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
