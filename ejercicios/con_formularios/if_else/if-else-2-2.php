@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Comprobador de múltiplos (Resultado). if ... elseif ... else ...
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Comprobador de múltiplos (Resultado). if ... elseif ... else ...
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Comprobador de múltiplos (Resultado)</h1>
+<body>
+  <h1>Comprobador de múltiplos (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -51,31 +51,41 @@ $numero1Ok = false;
 $numero2Ok = false;
 
 if ($numero1 == "") {
-    print "    <p class=\"aviso\">No ha escrito el primer número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el primer número.</p>\n";
+    print "\n";
 } elseif (!is_numeric($numero1)) {
-    print "    <p class=\"aviso\">No ha escrito el primer número como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el primer número como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($numero1)) {
-    print "    <p class=\"aviso\">No ha escrito el primer número como número "
-        ."entero positivo (sin parte decimal).</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el primer número como número "
+        ."entero positivo (sin parte decimal).</p>\n";
+        print "\n";
 } elseif ($numero1 == 0) {
-    print "    <p class=\"aviso\">El primer número es cero.</p>\n\n";
+    print "  <p class=\"aviso\">El primer número es cero.</p>\n";
+    print "\n";
 } elseif ($numero1 >= 1000) {
-    print "    <p class=\"aviso\">El primer número no es inferior a 1.000.</p>\n\n";
+    print "  <p class=\"aviso\">El primer número no es inferior a 1.000.</p>\n";
+    print "\n";
 } else {
     $numero1Ok = true;
 }
 
 if ($numero2 == "") {
-    print "    <p class=\"aviso\">No ha escrito el segundo número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el segundo número.</p>\n";
+    print "\n";
 } elseif (!is_numeric($numero2)) {
-    print "    <p class=\"aviso\">No ha escrito el segundo número como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el segundo número como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($numero2)) {
-    print "    <p class=\"aviso\">No ha escrito el segundo número como número "
-        ."entero positivo (sin parte decimal).</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el segundo número como número "
+        ."entero positivo (sin parte decimal).</p>\n";
+        print "\n";
 } elseif ($numero2 == 0) {
-    print "    <p class=\"aviso\">El segundo número es cero.</p>\n\n";
+    print "  <p class=\"aviso\">El segundo número es cero.</p>\n";
+    print "\n";
 } elseif ($numero2 >= 1000) {
-    print "    <p class=\"aviso\">El segundo número no es inferior a 1.000.</p>\n\n";
+    print "  <p class=\"aviso\">El segundo número no es inferior a 1.000.</p>\n";
+    print "\n";
 } else {
     $numero2Ok = true;
 }
@@ -83,31 +93,31 @@ if ($numero2 == "") {
 if ($numero1Ok && $numero2Ok) {
     $mayor = ($numero1 >= $numero2) ? $numero1 : $numero2;
     $menor = ($numero1 >= $numero2) ? $numero2 : $numero1;
-    print "    <p>Número 1: <strong>$numero1</strong></p>\n";
+    print "  <p>Número 1: <strong>$numero1</strong></p>\n";
     print "\n";
-    print "    <p>Número 2: <strong>$numero2</strong></p>\n";
+    print "  <p>Número 2: <strong>$numero2</strong></p>\n";
     print "\n";
     if ($mayor % $menor == 0) {
-        print "    <p>$mayor es múltiplo de $menor.</p>\n";
+        print "  <p>$mayor es múltiplo de $menor.</p>\n";
     } else {
-        print "    <p>$mayor <strong>no</strong> es múltiplo de $menor.</p>\n";
+        print "  <p>$mayor <strong>no</strong> es múltiplo de $menor.</p>\n";
     }
     print "\n";
 }
 ?>
-    <p><a href="if-else-2-1.php">Volver al formulario.</a></p>
+  <p><a href="if-else-2-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

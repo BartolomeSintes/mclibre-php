@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Calculadora de años bisiestos (Resultado). if ... elseif ... else ...
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Calculadora de años bisiestos (Resultado). if ... elseif ... else ...
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Calculadora de años bisiestos (Resultado)</h1>
+<body>
+  <h1>Calculadora de años bisiestos (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -49,46 +49,50 @@ $anyo = recoge("anyo");
 $anyoOk = false;
 
 if ($anyo == "") {
-    print "    <p class=\"aviso\">No ha escrito el año.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el año.</p>\n\";
+    print "\n";
 } elseif (!is_numeric($anyo)) {
-    print "    <p class=\"aviso\">No ha escrito el año como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el año como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($anyo)) {
-    print "    <p class=\"aviso\">No ha escrito el año como número "
-        ."entero positivo (sin parte decimal).</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el año como número "
+        ."entero positivo (sin parte decimal).</p>\n";
+        print "\n";
 } elseif ($anyo >= 10000) {
-    print "    <p class=\"aviso\">El año no es inferior a 10.000.</p>\n\n";
+    print "  <p class=\"aviso\">El año no es inferior a 10.000.</p>\n";
+    print "\n";
 } else {
     $anyoOk = true;
 }
 
 if ($anyoOk) {
     if ($anyo % 400 == 0) {
-        print "    <p>El año $anyo es bisiesto porque es múltiplo de 400.</p>\n";
+        print "  <p>El año $anyo es bisiesto porque es múltiplo de 400.</p>\n";
     } elseif ($anyo % 100 == 0) {
-        print "    <p>El año $anyo no es bisiesto porque es múltiplo de 100, "
+        print "  <p>El año $anyo no es bisiesto porque es múltiplo de 100, "
             ."pero no es múltiplo de 400.</p>\n";
     } elseif ($anyo % 4 == 0) {
-        print "    <p>El año $anyo es bisiesto porque es múltiplo de 4, "
+        print "  <p>El año $anyo es bisiesto porque es múltiplo de 4, "
             ."pero no es múltiplo de 100.</p>\n";
     } else {
-        print "    <p>El año $anyo no es bisiesto porque no es múltiplo de 4.</p>\n";
+        print "  <p>El año $anyo no es bisiesto porque no es múltiplo de 4.</p>\n";
     }
     print "\n";
 }
 ?>
-    <p><a href="if-else-5-1.php">Volver al formulario.</a></p>
+  <p><a href="if-else-5-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

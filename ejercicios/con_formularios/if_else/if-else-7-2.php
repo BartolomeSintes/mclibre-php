@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Convertidor de centímetros a kilómetros, metros y centímetros (Resultado). if ... elseif ... else ...
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Convertidor de centímetros a kilómetros, metros y centímetros (Resultado). if ... elseif ... else ...
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Convertidor de centímetros a kilómetros, metros y centímetros (Resultado)</h1>
+<body>
+  <h1>Convertidor de centímetros a kilómetros, metros y centímetros (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -49,14 +49,18 @@ $distancia = recoge("distancia");
 $distanciaOk = false;
 
 if ($distancia == "") {
-    print "    <p class=\"aviso\">No ha escrito la distancia.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la distancia.</p>\n";
+    print "\n";
 } elseif (!is_numeric($distancia)) {
-    print "    <p class=\"aviso\">No ha escrito la distancia como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la distancia como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($distancia)) {
-    print "    <p class=\"aviso\">No ha escrito la distancia como número "
-        ."entero positivo (sin parte decimal).</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito la distancia como número "
+        ."entero positivo (sin parte decimal).</p>\n";
+        print "\n";
 } elseif ($distancia >= 1000000000) {
-    print "    <p class=\"aviso\">La distancia no es inferior a 1.000.000.000.</p>\n\n";
+    print "  <p class=\"aviso\">La distancia no es inferior a 1.000.000.000.</p>\n";
+    print "\n";
 } else {
     $distanciaOk = true;
 }
@@ -72,7 +76,7 @@ if ($distanciaOk) {
         $distancia = $distancia % 100;
     }
 
-    print "    <p>$distanciaOriginal cm son ";
+    print "  <p>$distanciaOriginal cm son ";
 
     if ($distanciaOriginal == 0) {
         print "0 cm.";
@@ -104,19 +108,19 @@ if ($distanciaOk) {
     print "\n";
 }
 ?>
-    <p><a href="if-else-7-1.php">Volver al formulario.</a></p>
+  <p><a href="if-else-7-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
