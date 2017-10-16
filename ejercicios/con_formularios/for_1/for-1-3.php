@@ -75,7 +75,7 @@ for ($i = -7; $i >= -49; $i = $i - 6) {
 }
 print "\n";
 
-print "  </pre>\n";
+print "</pre>\n";
 ?>
 
   <footer>

@@ -57,7 +57,7 @@ if ($anyo == "") {
 } elseif (!ctype_digit($anyo)) {
     print "  <p class=\"aviso\">No ha escrito el año como número "
         ."entero positivo (sin parte decimal).</p>\n";
-        print "\n";
+    print "\n";
 } elseif ($anyo >= 10000) {
     print "  <p class=\"aviso\">El año no es inferior a 10.000.</p>\n";
     print "\n";

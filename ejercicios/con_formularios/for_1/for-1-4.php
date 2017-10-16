@@ -80,7 +80,7 @@ for ($i = 0; $i <= 7; $i++) {
 }
 print "\n";
 
-print "  </pre>\n";
+print "</pre>\n";
 ?>
 
   <footer>

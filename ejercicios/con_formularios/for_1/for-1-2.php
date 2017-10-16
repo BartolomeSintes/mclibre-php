@@ -75,7 +75,7 @@ for ($i = 0; $i < 8; $i++) {
 }
 print "\n";
 
-print "  </pre>\n";
+print "</pre>\n";
 ?>
 
   <footer>

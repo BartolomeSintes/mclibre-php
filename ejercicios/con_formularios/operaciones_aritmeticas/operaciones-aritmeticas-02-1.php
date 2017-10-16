@@ -18,11 +18,11 @@
       <tbody>
         <tr>
           <td><strong>Pies:</strong></td>
-          <td><input type="number" name="pies" min="0" /> </td>
+          <td><input type="number" name="pies" min="0" /></td>
         </tr>
         <tr>
           <td><strong>Pulgadas:</strong></td>
-          <td><input type="number" name="pulgadas" min="0" step="any" /> </td>
+          <td><input type="number" name="pulgadas" min="0" step="any" /></td>
         </tr>
       </tbody>
     </table>

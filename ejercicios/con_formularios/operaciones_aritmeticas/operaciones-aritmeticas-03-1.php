@@ -18,7 +18,7 @@
       <tbody>
         <tr>
           <td><strong>Segundos:</strong></td>
-          <td><input type="number" name="segundos" min="0" /> </td>
+          <td><input type="number" name="segundos" min="0" /></td>
         </tr>
       </tbody>
     </table>

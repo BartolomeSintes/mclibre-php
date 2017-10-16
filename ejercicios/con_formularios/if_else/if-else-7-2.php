@@ -57,7 +57,7 @@ if ($distancia == "") {
 } elseif (!ctype_digit($distancia)) {
     print "  <p class=\"aviso\">No ha escrito la distancia como número "
         ."entero positivo (sin parte decimal).</p>\n";
-        print "\n";
+    print "\n";
 } elseif ($distancia >= 1000000000) {
     print "  <p class=\"aviso\">La distancia no es inferior a 1.000.000.000.</p>\n";
     print "\n";
