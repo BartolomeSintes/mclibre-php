@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Contadores y acumuladores. Estructuras de control: bucle for. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <h1>Contadores y acumuladores</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono_php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono_arrow_circle_up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>Contadores y acumuladores</h2>
+
+      <ul>
+        <li><a href="#contador">Contador</a></li>
+        <li><a href="#acumulador">Acumulador</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Entre las aplicaciones de los bucles se encuentran los contadores y acumuladores.</p>
+
+  <section id="contador">
+    <h3>Contador</h3>
+
+    <p>Se entiende por contador una variable que lleva la cuenta del número de veces que se ha cumplido una condición. El ejemplo siguiente es un ejemplo de programa con contador (en este caso, la variable que hace de contador es la variable <var>cuenta</var>):</p>
+
+    <div class="mcl-diapo" style="height: 24em">
+      <div id="d1100">
+        <p><strong>Ejemplo de contador</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Desde 1 hasta 5 hay 3 múltiplos de 2.&lt;/p&gt;
+&lt;p&gt;Final&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+        <p class="control">
+          <a href="#d1101"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1101">
+        <p><strong>Ejemplo de contador - Paso 1</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code><span class="codigo-resaltado">&lt;p&gt;Comienzo&lt;/p&gt;</span></code></pre>
+          </div>
+        </div>
+
+        <p>Se ejecuta la primera instrucción del programa.</p>
+        <p>En este caso, imprime el párrafo de comienzo.</p>
+        <p class="control">
+          <a href="#d1100"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1102"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1102">
+        <p><strong>Ejemplo de contador - Paso 2</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+<span class="codigo-resaltado">$cuenta = 0;</span>
+for ($i = 1; $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>Se ejecuta la segunda instrucción del programa.</p>
+        <p>En este caso, inicializa la variable $cuenta.</p>
+        <p class="control">
+          <a href="#d1101"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1103"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1103">
+        <p><strong>Ejemplo de contador - Paso 3</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for (<span class="codigo-resaltado">$i = 1;</span> $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
+        <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+        <p class="control">
+          <a href="#d1102"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1104"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1104">
+        <p><strong>Ejemplo de contador - Paso 4</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 6;</span> $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 6 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1103"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1105"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1105">
+        <p><strong>Ejemplo de contador - Paso 5</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if (<span class="codigo-resaltado">$i % 2 == 0</span>) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Como $i no es divisible por dos (vale 1), el resto de $i entre dos es uno y la condición es falsa. Por tanto, el bloque dentro del <span class="php-res">if</span> no se ejecuta.</p>
+        <p class="control">
+          <a href="#d1104"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1106"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1106">
+        <p><strong>Ejemplo de contador - Paso 6</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; <span class="codigo-resaltado">$i++</span>) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+        <p class="control">
+          <a href="#d1105"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1107"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1107">
+        <p><strong>Ejemplo de contador - Paso 7</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 6;</span> $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 6 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1106"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1108"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1108">
+        <p><strong>Ejemplo de contador - Paso 8</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if (<span class="codigo-resaltado">$i % 2 == 0</span>) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Como $i es divisible por dos (vale 2), el resto de $i entre dos es cero y la condición es cierta.</p>
+        <p class="control">
+          <a href="#d1107"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1109"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1109">
+        <p><strong>Ejemplo de contador - Paso 9</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        <span class="codigo-resaltado">$cuenta += 1;</span>
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta el bloque dentro del <span class="php-res">if</span>.</p>
+        <p>En este caso a la variable $cuenta (que valía 0) se le añade 1, por lo que ahora $cuenta vale 1.</p>
+        <p class="control">
+          <a href="#d1108"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1110"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1110">
+        <p><strong>Ejemplo de contador - Paso 10</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; <span class="codigo-resaltado">$i++</span>) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
+        <p class="control">
+          <a href="#d1109"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1111"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1111">
+        <p><strong>Ejemplo de contador - Paso 11</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 6;</span> $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 6 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1110"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1112"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1112">
+        <p><strong>Ejemplo de contador - Paso 12</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if (<span class="codigo-resaltado">$i % 2 == 0</span>) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Como $i no es divisible por dos (vale 3), el resto de $i entre dos es uno y la condición es falsa. Por tanto, el bloque dentro del <span class="php-res">if</span> no se ejecuta.</p>
+        <p class="control">
+          <a href="#d1111"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1113"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1113">
+        <p><strong>Ejemplo de contador - Paso 13</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; <span class="codigo-resaltado">$i++</span>) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
+        <p class="control">
+          <a href="#d1112"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1114"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1114">
+        <p><strong>Ejemplo de contador - Paso 14</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 6;</span> $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 6 (vale 4), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1113"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1115"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1115">
+        <p><strong>Ejemplo de contador - Paso 15</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if (<span class="codigo-resaltado">$i % 2 == 0</span>) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Como $i es divisible por dos (vale 4), el resto de $i entre dos es cero y la condición es cierta.</p>
+        <p class="control">
+          <a href="#d1114"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1116"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1116">
+        <p><strong>Ejemplo de contador - Paso 16</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        <span class="codigo-resaltado">$cuenta += 1;</span>
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta el bloque dentro del <span class="php-res">if</span>.</p>
+        <p>En este caso a la variable $cuenta (que valía 1) se le añade 1, por lo que ahora $cuenta vale 2.</p>
+        <p class="control">
+          <a href="#d1115"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1117"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1117">
+        <p><strong>Ejemplo de contador - Paso 17</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; <span class="codigo-resaltado">$i++</span>) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 5.</p>
+        <p class="control">
+          <a href="#d1116"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1118"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1118">
+        <p><strong>Ejemplo de contador - Paso 18</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 6;</span> $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 6 (vale 5), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1117"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1119"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1119">
+        <p><strong>Ejemplo de contador - Paso 19</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if (<span class="codigo-resaltado">$i % 2 == 0</span>) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Como $i no es divisible por dos (vale 5), el resto de $i entre dos es uno y la condición es falsa. Por tanto, el bloque dentro del <span class="php-res">if</span> no se ejecuta.</p>
+        <p class="control">
+          <a href="#d1118"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1120"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1120">
+        <p><strong>Ejemplo de contador - Paso 20</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; <span class="codigo-resaltado">$i++</span>) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 6.</p>
+        <p class="control">
+          <a href="#d1119"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1121"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1121">
+        <p><strong>Ejemplo de contador - Paso 21</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 6;</span> $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code>&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i ya no es inferior a 6 (vale 6), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
+        <p class="control">
+          <a href="#d1120"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1122"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1122">
+        <p><strong>Ejemplo de contador - Paso 22</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+<span class="codigo-resaltado">print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";</span>
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code>&lt;p&gt;Comienzo&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Desde 1 hasta 5 hay 2 múltiplos de 2.&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
+        <p>En este caso, imprime una frase con el valor del contador $cuenta.</p>
+        <p class="control">
+          <a href="#d1121"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <a href="#d1123"><img src="../varios/iconos/icono_siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+        </p>
+      </div>
+
+      <div id="d1123">
+        <p><strong>Ejemplo de contador - Paso 23</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$cuenta = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    if ($i % 2 == 0) {
+        $cuenta += 1;
+    }
+}
+print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
+<span class="codigo-resaltado">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code>&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Desde 1 hasta 5 hay 2 múltiplos de 2.&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>Por último, imprime el párrafo final.</p>
+        <p class="control">
+          <a href="#d1122"><img src="../varios/iconos/icono_anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+          <img src="../varios/iconos/icono_vacio.svg" alt="" width="48" height="48" />
+        </p>
+      </div>
+    </div>
+
+    <p>Detalles importantes:</p>
+    <ul>
+      <li>En cada iteración, el programa comprueba si <var>i</var> es múltiplo de 2.</li>
+      <li>El contador se modifica sólo si la variable de control <var>i</var> es múltiplo de 2.</li>
+      <li>El contador va aumentando de uno en uno.</li>
+      <li>Antes del bucle se debe dar un valor inicial al contador (en este caso, 0)</li>
+    </ul>
+  </section>
+
+
+  <section id="acumulador">
+    <h3>Acumulador</h3>
+
+    <p>Se entiende por acumulador una variable que acumula el resultado de una operación. El ejemplo siguiente es un ejemplo de programa con acumulador (en este caso, la variable que hace de acumulador es la variable <var>suma</var>):</p>
+
+    <div class="mcl-diapo" style="height: 16em">
+      <div id="Paso1200">
+        <p><strong>Ejemplo de acumulador</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$suma = 0;
+for ($i = 1; $i &lt; 6; $i++) {
+    $suma += $i;
+}
+print "&lt;p&gt;La suma de los números de 1 a 5 es $suma.&lt;/p&gt;\n";
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;La suma de los números de 1 a 5 es 15.&lt;/p&gt;
+&lt;p&gt;Final&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p>Detalles importantes:</p>
+    <ul>
+      <li>El acumulador se modifica en cada iteración del bucle (en este caso, el valor de <var>i</var> se añade al acumulador <var>suma</var>).</li>
+      <li>Antes del bucle se debe dar un valor inicial al acumulador (en este caso, 0)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 16 de octubre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
+</html>
