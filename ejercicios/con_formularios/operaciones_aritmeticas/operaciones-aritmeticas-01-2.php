@@ -51,21 +51,27 @@ $pesoOk   = false;
 $alturaOk = false;
 
 if ($peso == "") {
-    print "  <p class=\"aviso\">No ha escrito su peso.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su peso.</p>\n";
+    print "\n";
 } elseif (!is_numeric($peso)) {
-    print "  <p class=\"aviso\">No ha escrito su peso como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su peso como número.</p>\n";
+    print "\n";
 } elseif ($peso <= 0) {
-    print "  <p class=\"aviso\">El peso no puede ser negativo o cero.</p>\n\n";
+    print "  <p class=\"aviso\">El peso no puede ser negativo o cero.</p>\n";
+    print "\n";
 } else {
     $pesoOk = true;
 }
 
 if ($altura == "") {
-    print "  <p class=\"aviso\">No ha escrito su altura.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su altura.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($altura)) {
-    print "  <p class=\"aviso\">No ha escrito su altura como número entero positivo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito su altura como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($altura == 0) {
-    print "  <p class=\"aviso\">La altura no puede ser cero.</p>\n\n";
+    print "  <p class=\"aviso\">La altura no puede ser cero.</p>\n";
+    print "\n";
 } else {
     $alturaOk = true;
 }

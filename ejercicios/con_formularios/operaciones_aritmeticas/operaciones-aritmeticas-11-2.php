@@ -51,25 +51,33 @@ $horasOk   = false;
 $minutosOk = false;
 
 if ($horas == "") {
-    print "  <p class=\"aviso\">No ha escrito el número de horas.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de horas.</p>\n";
+    print "\n";
 } elseif (!is_numeric($horas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de horas como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de horas como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($horas)) {
-    print "  <p class=\"aviso\">No ha escrito el número de horas como número entero.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de horas como número entero.</p>\n";
+    print "\n";
 } elseif ($horas < 0 || $horas > 11) {
-    print "  <p class=\"aviso\">El número de horas no está entre 0 y 11.</p>\n\n";
+    print "  <p class=\"aviso\">El número de horas no está entre 0 y 11.</p>\n";
+    print "\n";
 } else {
     $horasOk = true;
 }
 
 if ($minutos == "") {
-    print "  <p class=\"aviso\">No ha escrito el número de minutos.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de minutos.</p>\n";
+    print "\n";
 } elseif (!is_numeric($minutos)) {
-    print "  <p class=\"aviso\">No ha escrito el número de minutos como número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de minutos como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($minutos)) {
-    print "  <p class=\"aviso\">No ha escrito el número de minutos como número entero.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de minutos como número entero.</p>\n";
+    print "\n";
 } elseif ($minutos < 0 || $minutos > 59) {
-    print "  <p class=\"aviso\">El número de minutos no está entre 0 y 59.</p>\n\n";
+    print "  <p class=\"aviso\">El número de minutos no está entre 0 y 59.</p>\n";
+    print "\n";
 } else {
     $minutosOk = true;
 }

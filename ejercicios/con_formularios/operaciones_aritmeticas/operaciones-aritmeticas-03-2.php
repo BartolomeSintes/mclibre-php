@@ -49,9 +49,11 @@ $segundos = recoge("segundos");
 $segundosOk = false;
 
 if ($segundos == "") {
-    print "  <p class=\"aviso\">No ha escrito el número de segundos.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número de segundos.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($segundos)) {
-    print "  <p class=\"aviso\">No ha escrito los segundos como número entero positivo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito los segundos como número entero positivo.</p>\n";
+    print "\n";
 } else {
     $segundosOk = true;
 }
