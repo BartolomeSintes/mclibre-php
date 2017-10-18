@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Varios elementos (Resultado). for (3).
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Varios elementos (Resultado). for (3).
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Varios elementos (Resultado)</h1>
+<body>
+  <h1>Varios elementos (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -52,69 +52,73 @@ $numeroMinimo = 1;
 $numeroMaximo = 200;
 
 if ($numero == "") {
-    print "    <p class=\"aviso\">No ha escrito el número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito el número.</p>\n";
+    print "\n";
 } elseif (!is_numeric($numero)) {
-    print "    <p class=\"aviso\">No ha escrito un número.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito un número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "    <p class=\"aviso\">No ha escrito un número entero positivo.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito un número entero positivo.</p>\n";
+    print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "    <p class=\"aviso\">El número debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n\n";
+    print "  <p class=\"aviso\">El número debe estar entre "
+        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $numeroOk = true;
 }
 
 if ($numeroOk) {
-    print "    <h2>Preformateado (&lt;pre&gt;)</h2>\n";
+    print "  <h2>Preformateado (&lt;pre&gt;)</h2>\n";
     print "\n";
-    print "    <pre>";
+    print "  <pre>";
         for ($i = 1; $i <= $numero; $i++) {
         print "$i ";
     }
     print "</pre>\n";
     print "\n";
 
-    print "    <h2>Párrafos (&lt;p&gt;)</h2>\n";
+    print "  <h2>Párrafos (&lt;p&gt;)</h2>\n";
     print "\n";
     for ($i = 1; $i <= $numero; $i++) {
-        print "    <p>$i</p>\n";
+        print "  <p>$i</p>\n";
         print "\n";
     }
     print "\n";
 
-    print "    <h2>Lista sin ordenar (&lt;ul&gt;)</h2>\n";
+    print "  <h2>Lista sin ordenar (&lt;ul&gt;)</h2>\n";
     print "\n";
-    print "    <ul>\n";
+    print "  <ul>\n";
     for ($i = 1; $i <= $numero; $i++) {
-        print "      <li>$i</li>\n";
+        print "    <li>$i</li>\n";
     }
-    print "    </ul>\n";
+    print "  </ul>\n";
     print "\n";
 
-    print "    <h2>Lista ordenada (&lt;ol&gt;)</h2>\n";
+    print "  <h2>Lista ordenada (&lt;ol&gt;)</h2>\n";
     print "\n";
-    print "    <ol>\n";
+    print "  <ol>\n";
     for ($i = 1; $i <= $numero; $i++) {
-        print "      <li>$i</li>\n";
+        print "    <li>$i</li>\n";
     }
-    print "    </ol>\n";
+    print "  </ol>\n";
     print "\n";
 }
 
 ?>
-    <p><a href="for-3-0-1.php">Volver al formulario.</a></p>
+  <p><a href="for-3-0-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-06">6 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-06">6 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

@@ -49,12 +49,14 @@ print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 10; $i++) {
     printf("%6d", $i + 1);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>for (\$i = 0; ... ; \$i++) :</strong>";
 for ($i = 0; $i < 10; $i++) {
     printf("%6d", $i + 2);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>print \"\$i\"; :             </strong>";
 for ($i = 2; $i <= 11; $i++) {
     printf("%6d", $i);
@@ -70,12 +72,14 @@ print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 9; $i++) {
     printf("%6d", 2 * $i);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>for (\$i = 0; ... ; \$i++) :</strong>";
 for ($i = 0; $i < 9; $i++) {
     printf("%6d", 2 * $i + 2);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>print \"\$i\"; :             </strong>";
 for ($i = 2; $i <= 18; $i = $i + 2) {
     printf("%6d", $i);
@@ -90,12 +94,14 @@ print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 10; $i++) {
     printf("%6d", 3 * $i + 2);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>for (\$i = 0; ... ; \$i++) :</strong>";
 for ($i = 0; $i < 10; $i++) {
     printf("%6d", 3 * $i + 5);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>print \"\$i\"; :             </strong>";
 for ($i = 5; $i <= 32; $i = $i + 3) {
     printf("%6d", $i);
@@ -110,12 +116,14 @@ print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 6; $i++) {
     printf("%6d", 5 * $i - 5);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>for (\$i = 0; ... ; \$i++) :</strong>";
 for ($i = 0; $i < 6; $i++) {
     printf("%6d", 5 * $i);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>print \"\$i\"; :             </strong>";
 for ($i = 0; $i <= 25; $i = $i + 5) {
     printf("%6d", $i);
@@ -130,12 +138,14 @@ print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 10; $i++) {
     printf("%6d", 10 - 2 * $i);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>for (\$i = 0; ... ; \$i++) :</strong>";
 for ($i = 0; $i < 10; $i++) {
     printf("%6d", - 2 * $i + 8);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>print \"\$i\"; :             </strong>";
 for ($i = 8; $i >= -10; $i = $i - 2) {
     printf("%6d", $i);
@@ -150,12 +160,14 @@ print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 7; $i++) {
     printf("%6d", 45 - 5 * $i);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>for (\$i = 0; ... ; \$i++) :</strong>";
 for ($i = 0; $i < 7; $i++) {
     printf("%6d", - 5 * $i + 40);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>print \"\$i\"; :             </strong>";
 for ($i = 40; $i >= 10; $i = $i - 5) {
     printf("%6d", $i);
@@ -170,12 +182,14 @@ print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 8; $i++) {
     printf("%6d", -1 - 6 * $i);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>for (\$i = 0; ... ; \$i++) :</strong>";
 for ($i = 0; $i < 8; $i++) {
     printf("%6d", - 6 * $i - 7);
 }
-print "\n\n";
+print "\n";
+print "\n";
 print "<strong>print \"\$i\"; :             </strong>";
 for ($i = -7; $i >= -49; $i = $i - 6) {
     printf("%6d", $i);
