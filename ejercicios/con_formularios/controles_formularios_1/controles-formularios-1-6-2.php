@@ -3,9 +3,9 @@
  * Controles en formularios (1) 6-2 - controles-formularios-1-6-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-10-24
+ * @version   2017-10-17
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,15 @@ function recoge($var)
 $fondo  = recoge("fondo");
 $letra  = recoge("letra");
 
-print "  <p>Usted quiere cambiar: $fondo, $letra</p>\n";
+if ($fondo == "" && $letra == "") {
+    print "  <p>Usted no quiere cambiar nada</p>\n";
+} else {
+    print "  <p>Usted quiere cambiar: $fondo";
+    if ($fondo != "" && $letra != "") {
+        print " y ";
+    }
+    print "$letra</p>\n";
+}
 ?>
 
   <p><a href="controles-formularios-1-6-1.php">Volver al formulario.</a></p>
@@ -55,7 +63,7 @@ print "  <p>Usted quiere cambiar: $fondo, $letra</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-10-24">24 de octubre de 2016</time></p>
+      <time datetime="2017-10-17">17 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
