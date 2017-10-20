@@ -40,7 +40,7 @@
 <?php
 $dado = rand(1, 6);
 
-print "  <p><img src=\"img/$dado.svg\" alt=\"Dado 1\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
+print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
 print "\n";
 print "  <p><svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "    width=\"620\" height=\"120\" viewBox=\"-15 -15 620 120\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";

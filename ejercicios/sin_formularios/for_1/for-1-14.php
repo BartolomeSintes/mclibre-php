@@ -51,7 +51,7 @@ print "\n";
 print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dado = rand(1, 6);
-    print "    <img src=\"img/$dado.svg\" alt=\"Dado 1\" title=\"$dado\" width=\"140\" height=\"140\">\n";
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\">\n";
     if ($dado % 2) {
         $impares += 1;
     } else {

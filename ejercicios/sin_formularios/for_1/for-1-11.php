@@ -55,7 +55,8 @@ for ($i = 0; $i < $numero; $i++) {
 }
 print "  </p>\n";
 print "\n";
-print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";?>
+print "  <p>El total de puntos obtenidos es <strong>$total</strong>.</p>\n";
+?>
 
   <footer>
     <p class="ultmod">

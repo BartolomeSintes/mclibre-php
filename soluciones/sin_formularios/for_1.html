@@ -252,33 +252,23 @@ print &quot;  &lt;/table&gt;\n&quot;;
       <pre>
 <code class="language-php">&lt;?php
 $numero = rand(1,10);
-$maximo = 0;
-$minimo = 7;
 $total = 0;
 
-print &quot;  &lt;h2&gt;$numero dados&lt;/h2&gt;\n&quot;;
-print &quot;\n&quot;;
-print &quot;  &lt;p&gt;\n&quot;;
+if ($numero == 1) {
+    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
 for ($i = 0; $i &lt; $numero; $i++) {
     $dado = rand(1, 6);
-    print &quot;    &lt;img src=\&quot;img/$dado.svg\&quot; alt=\&quot;Dado 1\&quot; title=\&quot;$dado\&quot; width=\&quot;140\&quot; height=\&quot;140\&quot;&gt;\n&quot;;
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
     $total += $dado;
-    if ($dado &gt; $maximo) {
-        $maximo = $dado;
-    }
-    if ($dado &lt; $minimo) {
-        $minimo = $dado;
-    }
 }
-print &quot;  &lt;/p&gt;\n&quot;;
-print &quot;\n&quot;;
-print &quot;  &lt;h2&gt;Estadísticas&lt;/h2&gt;\n&quot;;
-print &quot;\n&quot;;
-print &quot;  &lt;ul&gt;\n&quot;;
-print &quot;    &lt;li&gt;El valor más grande obtenido ha sido &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/li&gt;\n&quot;;
-print &quot;    &lt;li&gt;El valor más pequeño obtenido ha sido &lt;strong&gt;$minimo&lt;/strong&gt;.&lt;/li&gt;\n&quot;;
-print &quot;    &lt;li&gt;El total de puntos obtenido ha sido &lt;strong&gt;$total&lt;/strong&gt;.&lt;/li&gt;\n&quot;;
-print &quot;  &lt;/ul&gt;\n&quot;;
+print "  &lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;El total de puntos obtenidos es &lt;strong&gt;$total&lt;/strong&gt;.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -290,8 +280,27 @@ print &quot;  &lt;/ul&gt;\n&quot;;
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Por escribir
-  ?&gt;</code>
+$numero = rand(1,10);
+$maximo = 0;
+
+if ($numero == 1) {
+    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dado = rand(1, 6);
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
+    if ($dado &gt; $maximo) {
+        $maximo = $dado;
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;El valor más grande obtenido es &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -302,8 +311,27 @@ print &quot;  &lt;/ul&gt;\n&quot;;
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Por escribir
-  ?&gt;</code>
+$numero = rand(1,10);
+$minimo = 7;
+
+if ($numero == 1) {
+    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dado = rand(1, 6);
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
+    if ($dado &lt; $minimo) {
+        $minimo = $dado;
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;El valor más pequeño obtenido es &lt;strong&gt;$minimo&lt;/strong&gt;.&lt;/p&gt;\n";
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -314,8 +342,40 @@ print &quot;  &lt;/ul&gt;\n&quot;;
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Por escribir
-  ?&gt;</code>
+$numero = rand(1,10);
+$pares = 0;
+$impares = 0;
+
+if ($numero == 1) {
+    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dado = rand(1, 6);
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
+    if ($dado % 2) {
+        $impares += 1;
+    } else {
+        $pares += 1;
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;Han salido ";
+if ($pares == 1) {
+    print "1 número par y ";
+} else {
+    print "$pares números pares y ";
+}
+if ($impares == 1) {
+    print "1 número impar.&lt;/p&gt;\n";
+} else {
+    print "$impares números impares.&lt;/p&gt;\n";
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -326,8 +386,37 @@ print &quot;  &lt;/ul&gt;\n&quot;;
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Por escribir
-  ?&gt;</code>
+$numero = rand(1,10);
+$maximo = 0;
+$cantidad = 0;
+
+if ($numero == 1) {
+    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dado = rand(1, 6);
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
+    if ($dado &gt; $maximo) {
+        $maximo = $dado;
+        $cantidad = 1;
+    }
+    elseif ($dado == $maximo) {
+        $cantidad += 1;
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;El valor más grande obtenido es &lt;strong&gt;$maximo&lt;/strong&gt;. Este valor se ha obtenido ";
+if ($cantidad == 1) {
+    print "&lt;strong&gt;$cantidad&lt;/strong&gt; vez.&lt;/p&gt;\n";
+} else {
+    print "&lt;strong&gt;$cantidad&lt;/strong&gt; veces.&lt;/p&gt;\n";
+}
+?&gt;</code>
 </pre>
     </div>
   </section>
@@ -369,7 +458,7 @@ print &quot;  &lt;/ul&gt;\n&quot;;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de octubre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 20 de octubre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
