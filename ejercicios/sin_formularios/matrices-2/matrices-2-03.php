@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-23
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,25 +47,25 @@ $mensajes = array(
     array("Tirada de dado", "Dieroll", "Jet de dé", "Tiro di dado"),
     array("Actualice la página para mostrar una nueva tirada.", "Refresh the page to display a new dieroll.",
         "Rafraîchir la page pour afficher un nouveau jet de dé.", "Aggiornare la pagina per visualizzare un nuovo tiro di dado."),
-    array("Ha obtenido un ", "You have thrown a ", "Vous avez emporté un ", "Hai ottenuto un ")
+    array("Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un")
 );
 
 $idioma = rand(0, count($palabras[0]) - 1);
 $dado = rand(1, 6);
 
-print "  <h1>" . $mensajes[0][$idioma] . "</h1>\n";
+print "  <h1>{$mensajes[0][$idioma]}</h1>\n";
 print "\n";
-print "  <p>" . $mensajes[1][$idioma] . "</p>\n";
+print "  <p>{$mensajes[1][$idioma]}</p>\n";
 print "\n";
 print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
 print "\n";
-print "  <p>" . $mensajes[2][$idioma] . " <strong>" . $palabras[$dado-1][$idioma] . "</strong>.</p>\n";
+print "  <p>{$mensajes[2][$idioma]} <strong>{$palabras[$dado-1][$idioma]}</strong>.</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
+      <time datetime="2017-10-23">23 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

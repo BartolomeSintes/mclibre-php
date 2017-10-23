@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-23
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -66,20 +66,20 @@ do {
 
 $palabra = rand(0, count($palabras) - 1);
 
-print "  <h1>" . $mensajes[0][$idioma] . "</h1>\n";
+print "  <h1>{$mensajes[0][$idioma]}</h1>\n";
 print "\n";
-print "  <p>" . $mensajes[1][$idioma] . "</p>\n";
+print "  <p>{$mensajes[1][$idioma]}</p>\n";
 print "\n";
 
-print "  <p><strong style=\"text-transform: capitalize\">" . $palabras[$palabra][$idioma2]
-    . "</strong> " . $mensajes[2][$idioma] . "<strong> " . $palabras[$palabra][$idioma]
-    . " </strong> " . $mensajes[3][$idioma] . " " . $idiomas[$idioma2][$idioma] . ".</p>\n";
+print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma2]}"
+    . "</strong> {$mensajes[2][$idioma]} <strong>{$palabras[$palabra][$idioma]}"
+    . "</strong> {$mensajes[3][$idioma]} {$idiomas[$idioma2][$idioma]}.</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
+      <time datetime="2017-10-230">23 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

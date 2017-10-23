@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-23
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -56,10 +56,10 @@ $palabra = rand(0, count($palabras) - 1);
 
 if ($palabras[$palabra][$idioma] == "") {
     print "  <p>Lo siento, pero no está disponible la traducción de <strong>"
-        . $palabras[$palabra][0] . "</strong> al $idiomas[$idioma].</p>\n";
+        . "{$palabras[$palabra][0]}</strong> al $idiomas[$idioma].</p>\n";
 } else {
-    print "  <p><strong style=\"text-transform: capitalize\">" . $palabras[$palabra][$idioma]
-        . "</strong> quiere decir <strong>" . $palabras[$palabra][0]
+    print "  <p><strong style=\"text-transform: capitalize\">{$palabras[$palabra][$idioma]}"
+        . "</strong> quiere decir <strong>{$palabras[$palabra][0]}"
         . " </strong> en $idiomas[$idioma].</p>\n";
 }
 ?>
@@ -67,7 +67,7 @@ if ($palabras[$palabra][$idioma] == "") {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
+      <time datetime="2017-10-23">23 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

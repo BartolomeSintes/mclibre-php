@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-10
+ * @version   2017-10-23
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -65,17 +65,17 @@ $animal = rand(0, count($animales) - 1);
 
 print "  <h2>" . $animales[$animal][0] . "</h2>\n";
 print "\n";
-print "  <p><img src=\"img/animales/" . $animales[$animal][1] . "\" alt=\""
-    . $animales[$animal][0] . "\" title=\"" . $animales[$animal][0] . "\" height=\"250\" /></p>\n";
+print "  <p><img src=\"img/animales/{$animales[$animal][1]}\" alt=\""
+    . "{$animales[$animal][0]}\" title=\"{$animales[$animal][0]}\" height=\"250\" /></p>\n";
 
 print "\n";
-print "  <p>Más <a href=\"" . $animales[$animal][2] . "\">información sobre este animal</a> en la Wikipedia</p>\n";
+print "  <p>Más <a href=\"{$animales[$animal][2]}\">información sobre este animal</a> en la Wikipedia</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-10">10 de octubre de 2017</time></p>
+      <time datetime="2017-10-23">23 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
