@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-13
+ * @version   2017-10-24
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -65,6 +65,14 @@ for ($i = 0; $i < $numero; $i++) {
     }
 }
 
+/* Otra forma de calcular los valores complementarios
+// Creamos la matriz con los valores complementarios
+$resultado = [];
+for ($i = 0; $i < $numero; $i++) {
+    $resultado[$i] = 1 - $inicial[$i];
+}
+*/
+
 // Mostramos los valores complementarios
 print "\n";
 print "  <p style=\"font-size: 300%; font-family: monospace;\">";
@@ -78,7 +86,7 @@ print "</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-13">13 de octubre de 2017</time></p>
+      <time datetime="2017-10-24">24 de octubre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

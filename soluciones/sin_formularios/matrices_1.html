@@ -321,6 +321,19 @@ print "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
+
+      <p>Una forma alternativa de calcular los bits complementarios, sin necesidad de recurrir a un <span class="php-res">if ... else ...</span> podría ser la siguiente:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">// Creamos la matriz con los valores complementarios
+$resultado = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $resultado[$i] = 1 - $inicial[$i];
+}</code>
+</pre>
+      </div>
+
     </section>
 
     <section id="ejercicio-07">
@@ -363,7 +376,7 @@ print "\n";
 // Creamos la matriz con el resultado de la conjunción lógica
 $resultado = [];
 for ($i = 0; $i &lt; $numero; $i++) {
-    if ($inicial1[$i] == 1 and $inicial2[$i] == 1 ) {
+    if ($inicial1[$i] == 1 &amp;&amp; $inicial2[$i] == 1 ) {
         $resultado[$i] = 1;
     } else {
         $resultado[$i] = 0;
@@ -380,6 +393,33 @@ print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
+
+      <p>En este caso si calculamos el resultado como una operación lógica, tendríamos un problema:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">// Creamos la matriz con los valores complementarios
+$resultado = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $resultado[$i] = $inicial1[$i] &amp;&amp; $inicial2[$i];
+}</code>
+</pre>
+      </div>
+
+      <p>El problema es que cuando el resulatado es 0, como está calculado con una operación lógica, no sería 0 sino <span class="php-res">false</span>.</p>
+
+      <p>La solcuión es forzar a PHP a que considere el resultado como número entero, en vez de como variable lógica. Así, el <span class="php-res">false</span> se convertiría a 0, como queremos:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">// Creamos la matriz con los valores complementarios
+$resultado = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+  $resultado[$i] = (int)($inicial1[$i] &amp;&amp; $inicial2[$i]);
+}</code>
+</pre>
+      </div>
+
     </section>
 
     <section id="ejercicio-08">
@@ -680,7 +720,7 @@ print ".\n";
     </section>
   </section>
   <footer>
-    <p class="ultmod">Última modificación de esta página: 13 de octubre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 24 de octubre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono_cc_by_sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />

@@ -72,12 +72,20 @@ print "\n";
 // Creamos la matriz con el resultado de la conjunción lógica
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    if ($inicial1[$i] == 1 and $inicial2[$i] == 1 ) {
+    if ($inicial1[$i] == 1 && $inicial2[$i] == 1 ) {
         $resultado[$i] = 1;
     } else {
         $resultado[$i] = 0;
     }
 }
+
+/* Otra forma de calcular los valores complementarios
+// Creamos la matriz con el resultado de la conjunción lógica
+$resultado = [];
+for ($i = 0; $i < $numero; $i++) {
+    $resultado[$i] = (int)($inicial1[$i] && $inicial2[$i]);
+}
+*/
 
 // Mostramos los valores calculados
 print "\n";
