@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 11 - sesiones_1_11_2.php
+ * Sesiones (1) 11 - sesiones-1-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -49,4 +49,4 @@ if ($_SESSION["dados"] < 1) {
     $_SESSION["dados"] = 1;
 }
 
-header("location:sesiones_1_11_1.php");
+header("location:sesiones-1-11-1.php");

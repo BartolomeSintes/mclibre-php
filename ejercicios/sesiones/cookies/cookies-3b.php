@@ -1,6 +1,6 @@
 <?php
 /**
- * Cookies 3 - cookies_3b.php
+ * Cookies 3 - cookies-3b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -24,9 +24,9 @@
 
 $compruebaCookie = isset($_COOKIE['cookiePrueba'])?$_COOKIE['cookiePrueba']:"";
 if ($compruebaCookie=='X') {
-    header('Location:cookies_3a.php?admiteCookies=1');
+    header('Location:cookies-3a.php?admiteCookies=1');
 } else {
-    header('Location:cookies_3a.php?admiteCookies=0');
+    header('Location:cookies-3a.php?admiteCookies=0');
 }
 exit();
 ?>

@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Lights Out de una fila. Imágenes.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 <body>
@@ -112,9 +112,9 @@ if ($juegaOk) {
     for ($i = 1; $i <= $total; $i++) {
         print "      <td><button type=\"submit\" name=\"juega\" value=\"$i\">";
         if ($partida[$i] == 0) {
-            print "<img src=\"img/lightsout/circulo_negro.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
+            print "<img src=\"img/lightsout/circulo-negro.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
         } else {
-            print "<img src=\"img/lightsout/circulo_blanco.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
+            print "<img src=\"img/lightsout/circulo-blanco.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
         }
     }
     print "    </tr>\n";

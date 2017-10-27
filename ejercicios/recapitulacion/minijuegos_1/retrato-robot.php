@@ -1,6 +1,6 @@
 <?php
 /**
- * Retrato Robot - retrato_robot.php
+ * Retrato Robot - retrato-robot.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -100,17 +100,17 @@ print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "  <table>\n";
 print "    <tbody>\n";
 print "      <tr>\n";
-print "        <td><img src=\"img/retratos/retratos_{$c}_3.jpg\" alt=\"ojos\" /></td>\n";
+print "        <td><img src=\"img/retratos/retratos-{$c}-3.jpg\" alt=\"ojos\" /></td>\n";
 print "        <td><button type=\"submit\" name=\"mod\" value=\"3\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
 print "      </tr>\n";
 print "      <tr>\n";
-print "        <td><img src=\"img/retratos/retratos_{$b}_2.jpg\" alt=\"nariz\" /></td>\n";
+print "        <td><img src=\"img/retratos/retratos-{$b}-2.jpg\" alt=\"nariz\" /></td>\n";
 print "        <td><button type=\"submit\" name=\"mod\" value=\"2\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
 print "      </tr>\n";
 print "      <tr>\n";
-print "        <td><img src=\"img/retratos/retratos_{$a}_1.jpg\" alt=\"boca\" /></td>\n";
+print "        <td><img src=\"img/retratos/retratos-{$a}-1.jpg\" alt=\"boca\" /></td>\n";
 print "        <td><button type=\"submit\" name=\"mod\" value=\"1\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
 print "      </tr>\n";

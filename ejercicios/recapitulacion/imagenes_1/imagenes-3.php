@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_3.php
+ * Imágenes - imagenes-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Imágenes 3. Imágenes.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 <body>
@@ -98,7 +98,7 @@ if ($cuadro > $valorMinimoCuadro) {
 } else {
     print "      <td width=\"100\"></td>\n";
 }
-print "      <td><img src=\"img/bruegel/bruegel_$cuadro.jpg\" "
+print "      <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
 . "alt=\"Cuadro de Pieter Bruegel el viejo\" /></td>\n";
 // Si no es el último cuadro, muestra el botón derecho; si es el último la celda está vacía
 if ($cuadro < $valorMaximoCuadro) {
@@ -126,7 +126,7 @@ if ($detalle > $valorMinimoDetalle) {
 } else {
     print "      <td width=\"100\"></td>\n";
 }
-print "      <td><img src=\"img/bruegel/bruegel_{$cuadro}_$detalle.jpg\" "
+print "      <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
 . "alt=\"Detalle\" /></td>\n";
 // Si no es el último detalle, muestra el botón derecho; si es el último la celda está vacía
 if ($detalle < $valorMaximoDetalle) {

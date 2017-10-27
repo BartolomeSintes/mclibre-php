@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 1 - sesiones_2_01_2.php
+ * Sesiones (1) 1 - sesiones-2-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -33,7 +33,7 @@ session_start();
     <title>Formulario en tres pasos (Formulario 2). Sesiones.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -59,7 +59,7 @@ if ($nombre == "") {
 
 if ($nombreOk) {
     $_SESSION["nombre"] = $nombre;
-    print "    <form action=\"sesiones_2_01_3.php\" method=\"get\">\n";
+    print "    <form action=\"sesiones-2-01-3.php\" method=\"get\">\n";
     print "      <p>Su nombre es: <strong>$nombre</strong>.</p>\n";
     print "\n";
     print "      <p>Escriba sus apellidos:</p>\n";
@@ -76,7 +76,7 @@ if ($nombreOk) {
 
 ?>
 
-    <p><a href="sesiones_2_01_1.php">Volver a la primera página.</a></p>
+    <p><a href="sesiones-2-01-1.php">Volver a la primera página.</a></p>
 
     <footer>
       <p class="ultmod">

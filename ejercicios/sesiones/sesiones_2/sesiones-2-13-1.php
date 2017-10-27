@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 2-1 - sesiones_2_12_1.php
+ * Sesiones (2) 2-1 - sesiones-2-12-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -33,13 +33,13 @@ session_start();
   <title>Almacenamiento de datos en sesión. Sesiones (2).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
 <h1>Almacenamiento de datos en sesión</h1>
 
-<form action="sesiones_2_13_2.php" method="get">
+<form action="sesiones-2-13-2.php" method="get">
   <fieldset>
     <legend>Formulario</legend>
 
@@ -61,7 +61,7 @@ if (!count($_SESSION)) {
         print "  <li>$valor</li>\n";
     }
     print "</ul>\n\n";
-    print "<p><a href=\"sesiones_2_13_2.php?accion=Cerrar\">Cerrar sesión "
+    print "<p><a href=\"sesiones-2-13-2.php?accion=Cerrar\">Cerrar sesión "
         . "(se perderán los datos almacenados).</a></p>\n";
 }
 

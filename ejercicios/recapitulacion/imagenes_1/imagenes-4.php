@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_4.php
+ * Imágenes - imagenes-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Imágenes 4. Imágenes.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
   <style type="text/css">
     table { border-collapse: collapse; }
@@ -102,17 +102,17 @@ print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "<table cellpadding=\"0\" style=\"margin-left: auto; margin-right: auto\">\n";
 print "  <tbody>\n";
 print "    <tr>\n";
-print "      <td><img src=\"img/retratos/retratos_{$c}_3.jpg\" alt=\"ojos\" /></td>\n";
+print "      <td><img src=\"img/retratos/retratos-{$c}-3.jpg\" alt=\"ojos\" /></td>\n";
 print "      <td><button type=\"submit\" name=\"mod\" value=\"3\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
 print "    </tr>\n";
 print "    <tr>\n";
-print "      <td><img src=\"img/retratos/retratos_{$b}_2.jpg\" alt=\"ojos\" /></td>\n";
+print "      <td><img src=\"img/retratos/retratos-{$b}-2.jpg\" alt=\"ojos\" /></td>\n";
 print "      <td><button type=\"submit\" name=\"mod\" value=\"2\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
 print "    </tr>\n";
 print "    <tr>\n";
-print "      <td><img src=\"img/retratos/retratos_{$a}_1.jpg\" alt=\"ojos\" /></td>\n";
+print "      <td><img src=\"img/retratos/retratos-{$a}-1.jpg\" alt=\"ojos\" /></td>\n";
 print "      <td><button type=\"submit\" name=\"mod\" value=\"1\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
 print "    </tr>\n";

@@ -1,6 +1,6 @@
 <?php
 /**
- * Imagen - cabeceras_12_svg.php
+ * Imagen - cabeceras-12-svg.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco

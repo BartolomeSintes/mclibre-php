@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 12 - sesiones_1_12_2.php
+ * Sesiones (1) 12 - sesiones-1-12-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -51,4 +51,4 @@ if ($accion == "a") {
     $_SESSION["ax"] = $_SESSION["bx"] = 0;
 }
 
-header("location:sesiones_1_12_1.php");
+header("location:sesiones-1-12-1.php");

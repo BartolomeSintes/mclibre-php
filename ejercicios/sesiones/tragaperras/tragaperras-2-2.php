@@ -1,6 +1,6 @@
 <?php
 /**
- * Minijuegos: Tragaperras (2) - tragaperras_2_2.php
+ * Minijuegos: Tragaperras (2) - tragaperras-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -47,4 +47,4 @@ if ($accion == "moneda") {
 }
 
 // Redirección automática
-header("location:tragaperras_2_1.php");
+header("location:tragaperras-2-1.php");

@@ -33,7 +33,7 @@ session_start();
   <title>Datos de sesión (Inicio). Sesiones 4. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -51,9 +51,9 @@ if (count($_SESSION)) {
 <p>Elija una opción:</p>
 
 <ul>
-  <li><a href="nuevo_1.php">Guardar un nuevo dato</a></li>
+  <li><a href="nuevo-1.php">Guardar un nuevo dato</a></li>
   <li><a href="ver.php">Ver los datos actuales</a></li>
-  <li><a href="borrar_1.php">Borrar datos</a></li>
+  <li><a href="borrar-1.php">Borrar datos</a></li>
   <li><a href="cerrar.php">Cerrar la sesión</a></li>
   </ul>
 

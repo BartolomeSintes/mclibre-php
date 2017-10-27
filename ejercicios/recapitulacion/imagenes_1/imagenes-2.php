@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_2.php
+ * Imágenes - imagenes-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Imágenes 2. Imágenes.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 <body>
@@ -93,7 +93,7 @@ print "    <tr>\n";
 print "      <td><button type=\"submit\" name=\"cuadro\" value=\""
     . ($cuadro - 1)."\"><img src=\"img/arrow-left-b.svg\" "
     . "height=\"80\" alt=\"anterior\" /></button></td>\n";
-print "      <td><img src=\"img/bruegel/bruegel_$cuadro.jpg\" "
+print "      <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
     . "alt=\"Cuadro de Pieter Bruegel el viejo\" /></td>\n";
 print "      <td><button type=\"submit\" name=\"cuadro\" value=\""
     . ($cuadro + 1)."\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
@@ -113,7 +113,7 @@ print "      <td><button type=\"submit\" name=\"detalle\" value=\""
     . "height=\"80\" alt=\"anterior\" /></button></td>\n";
 // $cuadro debe ponerse entre llaves (o sacarse de la cadena). Si no se ponen,
 // PHP piensa que la variable se llama $cuadro_ y genera un aviso
-print "      <td><img src=\"img/bruegel/bruegel_{$cuadro}_$detalle.jpg\" "
+print "      <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
     . "alt=\"Detalle\" /></td>\n";
 print "      <td><button type=\"submit\" name=\"detalle\" value=\""
     . ($detalle + 1)."\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "

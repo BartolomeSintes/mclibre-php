@@ -1,6 +1,6 @@
 <?php
 /**
- * Menús 3 - pagina_2a.php
+ * Menús 3 - pagina-2a.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -26,7 +26,7 @@ require_once "biblioteca.php";
 
 cabecera("Segunda página - Confirmación previa", MENU_SECUNDARIO);
 
-print "      <form action=\"pagina_2b.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <form action=\"pagina-2b.php\" method=\"" . FORM_METHOD . "\">\n";
 print "        <p>¿Está seguro de querer ir a la segunda página?</p>\n";
 print "\n";
 print "        <p>\n";

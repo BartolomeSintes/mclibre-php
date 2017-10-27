@@ -1,6 +1,6 @@
 <?php
 /**
- * Menús 2 - pagina_2.php
+ * Menús 2 - pagina-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco

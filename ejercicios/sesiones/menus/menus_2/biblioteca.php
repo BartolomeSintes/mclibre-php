@@ -34,7 +34,7 @@ function cabecera($texto, $menu)
     print "    <title>$texto. Menús 2. Menús. \n";
     print "      Ejercicios. PHP. Bartolomé Sintes Marco</title>\n";
     print "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "    <link href=\"mclibre_php_soluciones_proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
+    print "    <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
     print "  </head>\n";
     print "\n";
     print "  <body>\n";
@@ -44,8 +44,8 @@ function cabecera($texto, $menu)
     print "      <nav>\n";
     print "        <ul>\n";
     if ($menu == MENU_PRINCIPAL) {
-        print "          <li><a href=\"pagina_2.php\">Segunda página</a></li>\n";
-        print "          <li><a href=\"pagina_3.php\">Tercera página</a></li>\n";
+        print "          <li><a href=\"pagina-2.php\">Segunda página</a></li>\n";
+        print "          <li><a href=\"pagina-3.php\">Tercera página</a></li>\n";
     } elseif ($menu == MENU_SECUNDARIO) {
         print "          <li><a href=\"index.php\">Página inicial</a></li>\n";
     } else {

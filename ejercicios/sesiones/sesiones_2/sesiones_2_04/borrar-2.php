@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 4 - borrar_2.php
+ * Sesiones (1) 4 - borrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -64,7 +64,7 @@ if ($cOk) {
   <title>Borrar datos (2). Sesiones 4. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -72,7 +72,7 @@ if ($cOk) {
 
 <p class="aviso">Se ha producido un problema. No se ha borrado ningún dato.</p>
 
-<p><a href="borrar_1.php">Volver al formulario.</a></p>
+<p><a href="borrar-1.php">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

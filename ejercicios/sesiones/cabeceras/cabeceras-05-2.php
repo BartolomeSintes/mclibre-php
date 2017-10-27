@@ -1,6 +1,6 @@
 <?php
 /**
- * Formulario 5-2 - cabeceras_05_2.php
+ * Formulario 5-2 - cabeceras-05-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -38,7 +38,7 @@ $edadOk      = false;
 
 $avisoNombre = "";
 $avisoEdad   = "";
-$paginaAnterior = "cabeceras_05_1.php";
+$paginaAnterior = "cabeceras-05-1.php";
 
 if ($nombre == "") {
     $avisoNombre = "No ha escrito su nombre";
@@ -71,7 +71,7 @@ if (!$nombreOk || !$edadOk) {
     <title>Formulario 5 (Resultado). Cabeceras.
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -86,7 +86,7 @@ if ($nombreOk && $edadOk) {
 }
 
 ?>
-    <p><a href="cabeceras_05_1.php">Volver al formulario.</a></p>
+    <p><a href="cabeceras-05-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

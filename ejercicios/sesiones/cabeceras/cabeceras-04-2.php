@@ -35,16 +35,16 @@ $edad   = recoge("edad");
 $edadOk = false;
 
 if ($edad == "") {
-    header("location:cabeceras_04_1.php?aviso=No ha escrito su edad&edad=$edad");
+    header("location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
     exit();
 } elseif (!is_numeric($edad)) {
-    header("location:cabeceras_04_1.php?aviso=No ha escrito su edad como número&edad=$edad");
+    header("location:cabeceras-04-1.php?aviso=No ha escrito su edad como número&edad=$edad");
     exit();
 } elseif (!ctype_digit($edad)) {
-    header("location:cabeceras_04_1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
+    header("location:cabeceras-04-1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
     exit();
 } elseif ($edad < 18 || $edad > 130) {
-    header("location:cabeceras_04_1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
+    header("location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
     exit();
 } else {
     $edadOk = true;
@@ -58,7 +58,7 @@ if ($edad == "") {
     <title>Formulario 4 (Resultado). Cabeceras.
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -71,7 +71,7 @@ if ($edadOk) {
 }
 
 ?>
-    <p><a href="cabeceras_04_1.php">Volver al formulario.</a></p>
+    <p><a href="cabeceras-04-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

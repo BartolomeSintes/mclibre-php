@@ -5,13 +5,13 @@
     <title>Formulario en tres pasos (Formulario 1). Sesiones.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Formulario en tres pasos (Formulario 1)</h1>
 
-    <form action="sesiones_2_01_2.php" method="get">
+    <form action="sesiones-2-01-2.php" method="get">
       <p>Escriba su nombre:</p>
 
       <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20" /></p>

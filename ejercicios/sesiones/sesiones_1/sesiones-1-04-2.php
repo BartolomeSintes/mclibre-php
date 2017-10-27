@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 04 - sesiones_1_04_2.php
+ * Sesiones (1) 04 - sesiones-1-04-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -53,4 +53,4 @@ if ($_SESSION["posicion"] > 300) {
     $_SESSION["posicion"] = 300;
 }
 
-header("location:sesiones_1_04_1.php");
+header("location:sesiones-1-04-1.php");

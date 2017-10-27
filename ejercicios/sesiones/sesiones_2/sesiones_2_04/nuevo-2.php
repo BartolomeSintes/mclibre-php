@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 4 - nombre_2.php
+ * Sesiones (1) 4 - nombre-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -60,7 +60,7 @@ if ($nombreOk && $valorOk) {
   <title>Nuevo dato (2). Sesiones 4. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -68,7 +68,7 @@ if ($nombreOk && $valorOk) {
 
 <p class="aviso">No ha escrito el nombre o el valor.</p>
 
-<p><a href="nuevo_1.php">Volver al formulario.</a></p>
+<p><a href="nuevo-1.php">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

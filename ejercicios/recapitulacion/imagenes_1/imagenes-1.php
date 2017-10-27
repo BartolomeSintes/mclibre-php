@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_1.php
+ * Imágenes - imagenes-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Imágenes 1. Imágenes.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 <body>
@@ -78,7 +78,7 @@ print "  <tbody>\n";
 print "    <tr>\n";
 print "      <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen - 1). "\">"
      . "<img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\" /></button></td>\n";
-print "      <td><img src=\"img/bruegel/bruegel_1_$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\" /></td>\n";
+print "      <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\" /></td>\n";
 print "      <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen + 1). "\">"
      . "<img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\" /></button></td>\n";
 print "    </tr>\n";

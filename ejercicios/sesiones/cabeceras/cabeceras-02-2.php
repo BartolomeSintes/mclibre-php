@@ -1,6 +1,6 @@
 <?php
 /**
- * Formulario 1-2 - cabeceras_02_2.php
+ * Formulario 1-2 - cabeceras-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -35,7 +35,7 @@ $nombre   = recoge("nombre");
 $nombreOk = false;
 
 if ($nombre == "") {
-    header("location:cabeceras_02_1.php?aviso=No ha escrito su nombre");
+    header("location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
     exit();
 } else {
     $nombreOk = true;
@@ -49,7 +49,7 @@ if ($nombre == "") {
     <title>Formulario 2 (Resultado). Cabeceras.
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
     <style type="text/css">table { text-align: right; }</style>
   </head>
 
@@ -63,7 +63,7 @@ if ($nombreOk) {
 }
 
 ?>
-    <p><a href="cabeceras_02_1.php">Volver al formulario.</a></p>
+    <p><a href="cabeceras-02-1.php">Volver al formulario.</a></p>
 
     <footer>
       <p class="ultmod">

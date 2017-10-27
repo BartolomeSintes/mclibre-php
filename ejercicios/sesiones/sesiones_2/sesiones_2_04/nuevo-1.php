@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 4 - nuevo_1.php
+ * Sesiones (1) 4 - nuevo-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -30,13 +30,13 @@
   <title>Nuevo dato (1). Sesiones 4. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
 <h1>Nuevo dato (1)</h1>
 
-<form action="nuevo_2.php" method="get">
+<form action="nuevo-2.php" method="get">
   <fieldset>
     <legend>Formulario</legend>
 

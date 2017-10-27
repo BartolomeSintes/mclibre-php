@@ -1,6 +1,6 @@
 <?php
 /**
- * Cookies 2 - cookies_2.php
+ * Cookies 2 - cookies-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -55,7 +55,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
   <title>Creación y destrucción de cookies. Cookies.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
+  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
     title=\"Color\" />\n";
 
 print "</head>

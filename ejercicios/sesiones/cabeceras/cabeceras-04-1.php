@@ -29,13 +29,13 @@
     <title>Formulario 4 (Formulario). Cabeceras.
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Formulario 4 (Formulario)</h1>
 
-    <form action="cabeceras_04_2.php" method="get">
+    <form action="cabeceras-04-2.php" method="get">
 <?php
 function recoge($var)
 {

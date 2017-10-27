@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 4 - borrar_1.php
+ * Sesiones (1) 4 - borrar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -33,7 +33,7 @@ session_start();
   <title>Borrar datos (1). Sesiones 4. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -43,7 +43,7 @@ session_start();
 if (!count($_SESSION)) {
     print "<p>Todavía no se ha introducido ningún dato.</p>\n";
 } else {
-  print "<form action=\"borrar_2.php\" method=\"get\">\n";
+  print "<form action=\"borrar-2.php\" method=\"get\">\n";
   print "  <fieldset>\n";
   print "    <legend>Formulario</legend>\n\n";
 

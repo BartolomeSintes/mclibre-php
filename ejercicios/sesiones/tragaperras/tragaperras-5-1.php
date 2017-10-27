@@ -1,6 +1,6 @@
 <?php
 /**
- * Minijuegos: Tragaperras (5) - tragaperras_5_1.php
+ * Minijuegos: Tragaperras (5) - tragaperras-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -44,7 +44,7 @@ if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
     <title>Tragaperras (5). Minijuegos.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -52,7 +52,7 @@ if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
 
 <?php
 // Se genera el formulario
-print "    <form action=\"tragaperras_5_2.php\" method=\"get\">\n";
+print "    <form action=\"tragaperras-5-2.php\" method=\"get\">\n";
 print "      <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
 print "        <tbody>\n";
 print "          <tr>\n";

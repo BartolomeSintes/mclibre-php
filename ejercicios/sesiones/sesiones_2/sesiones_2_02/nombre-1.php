@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 2 - nombre_1.php
+ * Sesiones (1) 2 - nombre-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -33,7 +33,7 @@ session_start();
     <title>Nombre (1). Sesiones 2. Sesiones.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -46,7 +46,7 @@ if (isset($_SESSION["nombre"])) {
 
 ?>
 
-    <form action="nombre_2.php" method="get">
+    <form action="nombre-2.php" method="get">
       <p>Escriba su nombre:</p>
 
       <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20" /></p>

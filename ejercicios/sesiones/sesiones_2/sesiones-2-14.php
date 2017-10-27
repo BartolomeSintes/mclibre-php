@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 4-1 - sesiones_2_14_1.php
+ * Sesiones (2) 4-1 - sesiones-2-14_1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -70,7 +70,7 @@ if ($accion=="Cerrar") {
   <title>Almacenamiento y borrado de datos en sesión. Sesiones (2).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>

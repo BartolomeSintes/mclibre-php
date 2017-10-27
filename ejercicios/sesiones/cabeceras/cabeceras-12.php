@@ -5,13 +5,13 @@
     <title>Imagen. Cabeceras.
       Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Imagen</h1>
 
-    <p><img src="cabeceras_12_svg.php" alt="imagen" width="150" height="150" /></p>
+    <p><img src="cabeceras-12-svg.php" alt="imagen" width="150" height="150" /></p>
 
     <footer>
       <p class="ultmod">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 3 - apellidos_2.php
+ * Sesiones (1) 3 - apellidos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -54,7 +54,7 @@ if ($apellidosOk) {
   <title>Apellidos (2). Sesiones 3. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -62,7 +62,7 @@ if ($apellidosOk) {
 
 <p class="aviso">No ha escrito sus apellidos.</p>
 
-<p><a href="apellidos_1.php">Volver al formulario.</a></p>
+<p><a href="apellidos-1.php">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

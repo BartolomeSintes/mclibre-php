@@ -1,6 +1,6 @@
 <?php
 /**
- * Hoja de estilo  - cabeceras_11_css.php
+ * Hoja de estilo  - cabeceras-11-css.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco

@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 01 - sesiones_1_01_2.php
+ * Sesiones (1) 01 - sesiones-1-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -33,7 +33,7 @@ session_start();
     <title>Formulario Nombre 1 (Resultado). Sesiones.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -64,7 +64,7 @@ if ($nombreOk) {
 
 ?>
 
-    <p><a href="sesiones_1_01_1.php">Volver a la primera página.</a></p>
+    <p><a href="sesiones-1-01-1.php">Volver a la primera página.</a></p>
 
     <footer>
       <p class="ultmod">

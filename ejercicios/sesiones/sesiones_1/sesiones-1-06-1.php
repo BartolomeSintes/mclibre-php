@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 06 - sesiones_1_06_1.php
+ * Sesiones (1) 06 - sesiones-1-06-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -36,13 +36,13 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     <title>Votar una opción. Sesiones.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Votar una opción</h1>
 
-    <form action="sesiones_1_06_2.php" method="get">
+    <form action="sesiones-1-06-2.php" method="get">
       <p>Haga clic en los botones para votar por una opción:</p>
 
       <table>

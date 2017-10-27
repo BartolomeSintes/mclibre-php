@@ -1,6 +1,6 @@
 <?php
 /**
- * Cookies 1 - cookies_1b.php
+ * Cookies 1 - cookies-1b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -33,7 +33,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
   <title>Selección de colores (comprobación). Cookies.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
+  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
     title=\"Color\" />\n";
 if ($color=='rojo') {
   print "  <style type=\"text/css\">body, a { color: red; }</style>\n";
@@ -53,7 +53,7 @@ if ($color=="") {
     print "<p>Se ha elegido el color $color.</p>\n";
 }
 
-print "<p><a href=\"cookies_1a.php\">Volver a la selección de color</a></p>";
+print "<p><a href=\"cookies-1a.php\">Volver a la selección de color</a></p>";
 
 print '<address>
   Esta página forma parte del curso "Páginas web con PHP" disponible en <a

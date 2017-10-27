@@ -39,7 +39,7 @@ function cabecera($texto)
     print "    <title>$texto. Menús 6. Menús. \n";
     print "      Ejercicios. PHP. Bartolomé Sintes Marco</title>\n";
     print "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "    <link href=\"mclibre_php_soluciones_proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
+    print "    <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
     print "  </head>\n";
     print "\n";
     print "  <body>\n";

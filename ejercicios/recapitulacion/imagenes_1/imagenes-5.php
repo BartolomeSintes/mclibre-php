@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_5.php
+ * Imágenes - imagenes-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Selector de colores. Imágenes.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 <body>
@@ -119,7 +119,7 @@ if ($imagenX == "" && $imagenY == "") {
 // Se genera el formulario
 print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "  <p><input type=\"image\" name=\"imagen\" alt=\"Cuatro colores\" "
-     . "src=\"img/juegos/cuatro_colores.svg\" height=\"$valorMaximo\" /></p>\n";
+     . "src=\"img/juegos/cuatro-colores.svg\" height=\"$valorMaximo\" /></p>\n";
 print "</form>\n";
 
 ?>

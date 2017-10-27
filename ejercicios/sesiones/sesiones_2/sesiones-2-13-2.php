@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 2-2 - sesiones_2_12_2.php
+ * Sesiones (2) 2-2 - sesiones-2-12-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -36,7 +36,7 @@ session_start();
 $accion       = recoge("accion");
 $nombre       = recoge("nombre");
 $nombreOk     = false;
-$paginaAnterior = "sesiones_2_13_1.php";
+$paginaAnterior = "sesiones-2-13-1.php";
 
 if ($accion == "Cerrar") {
     session_destroy();

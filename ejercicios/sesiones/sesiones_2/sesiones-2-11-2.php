@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 1-2 - sesiones_2_11_2.php
+ * Sesiones (2) 1-2 - sesiones-2-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -37,7 +37,7 @@ $nombre      = recoge("nombre");
 $edad        = recoge("edad");
 $nombreOk    = false;
 $edadOk      = false;
-$paginaAnterior = "sesiones_2_11_1.php";
+$paginaAnterior = "sesiones-2-11-1.php";
 
 if ($nombre == "") {
     $_SESSION["aviso"]["nombre"] = "No ha escrito su nombre";
@@ -71,7 +71,7 @@ if (!$nombreOk || !$edadOk) {
   <title>Comprobación en formulario. Sesiones (2).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -82,7 +82,7 @@ print "<p>Su nombre es <strong>$nombre</strong>.</p>\n\n";
 print "<p>Su edad es <strong>$edad</strong> años.</p>\n";
 ?>
 
-<p><a href="sesiones_2_11_1.php">Volver al inicio.</a></p>
+<p><a href="sesiones-2-11-1.php">Volver al inicio.</a></p>
 
 <footer>
   <p class="ultmod">

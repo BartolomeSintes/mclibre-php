@@ -1,6 +1,6 @@
 <?php
 /**
- * Cookies 3 - cookies_3a.php
+ * Cookies 3 - cookies-3a.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -35,7 +35,7 @@ $admiteCookies  = recoge('admiteCookies');
 // Si se envía un color se crea la cookie
 if ($admiteCookies=="") {
     setcookie('cookiePrueba', 'X');
-    header('Location:cookies_3b.php');
+    header('Location:cookies-3b.php');
     exit();
 }
 
@@ -48,7 +48,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
   <title>Comprobación de cookies. Cookies.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
+  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
     title=\"Color\" />
 </head>
 

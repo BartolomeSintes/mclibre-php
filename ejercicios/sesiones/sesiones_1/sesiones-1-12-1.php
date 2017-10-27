@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 12 - sesiones_1_12_1.php
+ * Sesiones (1) 12 - sesiones-1-12-1.php
 *
 * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
 * @copyright 2016 Bartolomé Sintes Marco
@@ -37,13 +37,13 @@ if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]
     <title>Carrera de coches (1). Sesiones.
       Ejercicios. PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
     <h1>Carrera de coches (1)</h1>
 
-    <form action="sesiones_1_12_2.php" method="get">
+    <form action="sesiones-1-12-2.php" method="get">
       <p>Haga clic en los botones para tirar el dado y mover el punto:</p>
 
       <table>
