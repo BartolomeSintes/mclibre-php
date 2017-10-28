@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - aut_borrar2.php
+ * Citas - aut-borrar-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -42,7 +42,7 @@ if (!isset($_SESSION['citasUsuario'])) {
         } else {
             print "<p>Error al borrar el registro de Autores.<p>\n";
         }
-        // Después borra en la tabla EtiCitas
+        // Despuï¿½s borra en la tabla EtiCitas
         $consulta = "SELECT * FROM $dbCitas
             WHERE id_autor=$indice";
         $result = $db->query($consulta);
@@ -59,7 +59,7 @@ if (!isset($_SESSION['citasUsuario'])) {
                 }
             }
         }
-        // Por último borra en la tabla Citas
+        // Por ï¿½ltimo borra en la tabla Citas
         $consulta = "DELETE FROM $dbCitas
             WHERE id_autor=$indice";
         if ($db->query($consulta)) {

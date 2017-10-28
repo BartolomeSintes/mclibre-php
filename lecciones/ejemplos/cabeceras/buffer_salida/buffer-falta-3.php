@@ -9,6 +9,6 @@
   <body>
     <p>La redirección se ha realizado.</p>
 
-    <p><a href="buffer_falta_1.php">Volver al principio</a></p>
+    <p><a href="buffer-falta-1.php">Volver al principio</a></p>
   </body>
 </html>

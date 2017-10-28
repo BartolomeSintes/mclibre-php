@@ -1,6 +1,6 @@
 <?php
 /**
- * Repaso 2-3 Buscaminas - repaso_2_3.php
+ * Repaso 2-3 Buscaminas - repaso-2-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2010 Bartolomé Sintes Marco
@@ -28,7 +28,7 @@ session_start();
 $cancelar = recoge('cancelar');
 if ($cancelar==1) {
     session_destroy();
-    header('Location:repaso_2_3.html');
+    header('Location:repaso-2-3.html');
     exit();
 }
 
@@ -127,7 +127,7 @@ if (!isset($_SESSION['juego'])) {
         dibujaTablero();
         print "<p><a href=\"".$_SERVER['PHP_SELF']."?cancelar=1\">Cancelar juego.</a></p>\n";
     }
-    print "<p><a href=\"repaso_2_3.html\">Volver al formulario.</a></p>\n";
+    print "<p><a href=\"repaso-2-3.html\">Volver al formulario.</a></p>\n";
 } else {
     $coordenadas       = recoge('tamanyoTablero');
     $tamanyoTableroMinimo = 5;

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contador de días (Resultado 2) - contador_dias_3.php
+ * Contador de días (Resultado 2) - contador-dias-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -128,12 +128,12 @@ if ($numeroOk && $casillasOk) {
         }
     }
     print "</ul>\n\n";
-    print "<p><a href=\"contador_dias_2.php?numero=$numero\">Volver al calendario</a></p>\n";
+    print "<p><a href=\"contador-dias-2.php?numero=$numero\">Volver al calendario</a></p>\n";
 }
 
 ?>
 
-<p><a href="contador_dias_1.html">Volver al formulario inicial.</a></p>
+<p><a href="contador-dias-1.html">Volver al formulario inicial.</a></p>
 
 <footer>
   <p class="ultmod">

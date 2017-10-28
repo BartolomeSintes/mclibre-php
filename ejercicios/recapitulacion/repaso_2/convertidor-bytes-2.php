@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de bytes 2 - convertidor_bytes_2.php
+ * Convertidor de bytes 2 - convertidor-bytes-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -126,7 +126,7 @@ if ($bytesOk) {
 
 ?>
 
-<p><a href="convertidor_bytes_2.html">Volver al formulario.</a></p>
+<p><a href="convertidor-bytes-2.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

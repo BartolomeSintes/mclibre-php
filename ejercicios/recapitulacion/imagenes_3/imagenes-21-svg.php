@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_21_svg.php
+ * Imágenes - imagenes-21-svg.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco

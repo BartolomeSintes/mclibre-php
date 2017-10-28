@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - obr_buscar1.php
+ * Biblioteca - obr-buscar-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -32,11 +32,11 @@ if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
     cabecera('Obras - Buscar 1', CABECERA_SIN_CURSOR, 'menuObras');
-    print "<p>No se ha creado todavía ningún registro.</p>\n";
+    print "<p>No se ha creado todavï¿½a ningï¿½n registro.</p>\n";
 } else {
     cabecera('Obras - Buscar 1', CABECERA_CON_CURSOR, 'menuObras');
-    print "<form action=\"obr_buscar2.php\" method=\"".FORM_METHOD."\">
-  <p>Escriba el criterio de búsqueda (carácteres o números):</p>
+    print "<form action=\"obr-buscar-2.php\" method=\"".FORM_METHOD."\">
+  <p>Escriba el criterio de bï¿½squeda (carï¿½cteres o nï¿½meros):</p>
   <table>
     <tbody>
       <tr>
@@ -45,7 +45,7 @@ if (!$result) {
         ."maxlength=\"".TAM_AUTOR."\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>Título:</td>
+        <td>Tï¿½tulo:</td>
         <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
         ."maxlength=\"".TAM_TITULO."\" /></td>
       </tr>

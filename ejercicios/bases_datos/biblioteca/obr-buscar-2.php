@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - obr_buscar2.php
+ * Biblioteca - obr-buscar-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -68,7 +68,7 @@ if (!$result) {
         <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
       <th><a href=\"buscar2.php?$datos=titulo&amp;orden=ASC\">
         <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Título
+        Tï¿½tulo
         <a href=\"buscar2.php?$datos=titulo&amp;orden=DESC\">
         <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
       <th><a href=\"buscar2.php?$datos=editorial&amp;orden=ASC\">

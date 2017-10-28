@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - cit_etiquetas3.php
+ * Citas - cit-etiquetas-3.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,15 +29,15 @@ if (!isset($_SESSION['citasUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Citas - Añadir 3', 'menu_citas');
+    cabecera('Citas - Aï¿½adir 3', 'menu_citas');
 
     $cita = recogeParaConsulta($db, 'cita');
     $etiqueta = recogeParaConsulta($db, 'etiqueta');
 
-// Habría que comprobar que la cita recibido existe
+// Habrï¿½a que comprobar que la cita recibido existe
 
     if (($cita=="''") || ($etiqueta=='')) {
-        print "<p>La cita y la etiqueta no pueden estar vacíos. "
+        print "<p>La cita y la etiqueta no pueden estar vacï¿½os. "
             ."No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas

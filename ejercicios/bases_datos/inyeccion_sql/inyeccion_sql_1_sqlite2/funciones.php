@@ -159,7 +159,7 @@ function cabecera($texto, $menu, $conCursor)
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
   <title>www.mclibre.org - Inyección SQL 1 - $texto</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones_proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>\n\n";
     if ($conCursor) {
         print "<body onload=\"document.getElementById('cursor').focus()\">\n";

@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - aut_listar.php
+ * Citas - aut-listar.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -37,7 +37,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se han creado todavía autores.</p>\n";
+    print "<p>No se han creado todavï¿½a autores.</p>\n";
 } else {
     $max = 0;
     $min = $maxRegCitas;
@@ -71,7 +71,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         print "<p>Estas son los autores definidos hasta el momento, con "
-            ."un tamaño proporcional al número de citas:</p>\n";
+            ."un tamaï¿½o proporcional al nï¿½mero de citas:</p>\n";
         print "<p>\n";
         $tmp = TRUE;
         foreach ($result as $valor) {

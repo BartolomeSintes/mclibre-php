@@ -1,9 +1,9 @@
 <?php
 /**
- * Foro - dis_anyadir2.php
+ * Foro - dis-anyadir-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -24,7 +24,7 @@
 
 include ('funciones.php');
 $db = conectaDb();
-cabecera('Discusiones - Añadir 2', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
+cabecera('Discusiones - Aï¿½adir 2', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
 
 date_default_timezone_set(ZONA_HORARIA);
 
@@ -43,8 +43,8 @@ if (($autor=="'".ANONIMO_AUTOR."'") && ($titulo=="'".ANONIMO_TITULO."'") &&
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_DISCUSIONES) {
-        print "<p>Se ha alcanzado el número máximo de discusión que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre alguna discusión antes.</p>\n";
+        print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de discusiï¿½n que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre alguna discusiï¿½n antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbDiscusiones
             WHERE titulo=$titulo
@@ -54,7 +54,7 @@ if (($autor=="'".ANONIMO_AUTOR."'") && ($titulo=="'".ANONIMO_TITULO."'") &&
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()!=0) {
-            print "<p>Ya existe una discusión con ese título, autor y descripción.</p>\n";
+            print "<p>Ya existe una discusiï¿½n con ese tï¿½tulo, autor y descripciï¿½n.</p>\n";
         } else {
             $consulta = "INSERT INTO $dbDiscusiones
                 VALUES (NULL, $titulo, $descripcion, $autor, '$fecha')";

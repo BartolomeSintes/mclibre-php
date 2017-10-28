@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - usu_index.php
+ * Biblioteca - usu-index.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org

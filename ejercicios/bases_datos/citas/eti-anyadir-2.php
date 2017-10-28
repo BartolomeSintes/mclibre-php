@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - eti_anyadir2.php
+ * Citas - eti-anyadir-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,12 +29,12 @@ if (!isset($_SESSION['citasUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Etiquetas - Añadir 2', 'menu_etiquetas');
+    cabecera('Etiquetas - Aï¿½adir 2', 'menu_etiquetas');
 
     $etiqueta = recogeParaConsulta($db, 'etiqueta');
     $etiqueta = strtolower($etiqueta);
     if ($etiqueta=="''") {
-        print "<p>La etiqueta no puede estar vacía. "
+        print "<p>La etiqueta no puede estar vacï¿½a. "
             ."No se ha guardado el registro.</p>\n";
     } elseif (substr_count($etiqueta, " ")>0) {
         print "<p>La etiqueta debe contener una sola palabra. "
@@ -45,8 +45,8 @@ if (!isset($_SESSION['citasUsuario'])) {
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegEtiquetas) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de registros que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algï¿½n registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbEtiquetas
                 WHERE etiqueta=$etiqueta";

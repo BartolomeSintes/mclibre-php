@@ -1,6 +1,6 @@
 <?php
 /**
- * Rmbo de estrellas 2 - rombo_estrellas.php
+ * Rmbo de estrellas 2 - rombo-estrellas-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2012 Bartolomé Sintes Marco
@@ -83,7 +83,7 @@ if ($altoOk) {
     print "</pre>\n";
 }
 
-print "<p><a href=\"rombo_estrellas_2.html\">Volver al formulario.</a></p>\n";
+print "<p><a href=\"rombo-estrellas-2.html\">Volver al formulario.</a></p>\n";
 
 ?>
 

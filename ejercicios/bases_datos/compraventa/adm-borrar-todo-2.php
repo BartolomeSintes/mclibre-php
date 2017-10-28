@@ -1,9 +1,9 @@
 <?php
 /**
- * Compraventa - adm_borrartodo2.php
+ * Compraventa - adm-borrar-todo-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org

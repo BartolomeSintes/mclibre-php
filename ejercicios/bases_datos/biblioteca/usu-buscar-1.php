@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - usu_buscar1.php
+ * Biblioteca - usu-buscar-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -32,11 +32,11 @@ if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
     cabecera('Usuarios - Buscar 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
-    print "<p>No se ha creado todavía ningún registro.</p>\n";
+    print "<p>No se ha creado todavï¿½a ningï¿½n registro.</p>\n";
 } else {
     cabecera('Usuarios - Buscar 1', CABECERA_CON_CURSOR, 'menuUsuarios');
-    print "<form action=\"usu_buscar2.php\" method=\"".FORM_METHOD."\">
-  <p>Escriba el criterio de búsqueda (carácteres o números):</p>
+    print "<form action=\"usu-buscar-2.php\" method=\"".FORM_METHOD."\">
+  <p>Escriba el criterio de bï¿½squeda (carï¿½cteres o nï¿½meros):</p>
   <table>
     <tbody>
       <tr>

@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - cit_etiquetas2.php
+ * Citas - cit-etiquetas-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -33,7 +33,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 
     $id = recogeParaConsulta($db, 'id');
     if ($id=="''") {
-        print "<p>No se ha seleccionado ningún registro.</p>\n";
+        print "<p>No se ha seleccionado ningï¿½n registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas
             WHERE id=$id";
@@ -51,7 +51,7 @@ if (!isset($_SESSION['citasUsuario'])) {
                 print "<p>Error en la consulta.</p>\n";
             } else {
                 $valor = $result->fetch();
-                print "<form action=\"cit_etiquetas3.php\" method=\"get\">
+                print "<form action=\"cit-etiquetas-3.php\" method=\"get\">
   <p>Asigne una etiqueta a la cita:</p>\n
   <table border=\"1\">
     <tbody>

@@ -1,9 +1,9 @@
 <?php
 /**
  * Foro - index.php
- * 
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ *
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -37,27 +37,27 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         foreach ($result as $valor) {
-            $consulta = "SELECT COUNT(*) FROM $dbIntervenciones 
+            $consulta = "SELECT COUNT(*) FROM $dbIntervenciones
                 WHERE id_discusion='$valor[id]'";
             $result2 = $db->query($consulta);
             if (!$result2) {
                 print "<p>Error en la consulta.</p>\n";
             } else {
                 $numInt = $result2->fetchColumn();
-                $consulta = "SELECT * FROM $dbIntervenciones 
+                $consulta = "SELECT * FROM $dbIntervenciones
                     WHERE id_discusion='$valor[id]'";
                 $result2 = $db->query($consulta);
                 if (!$result2) {
                     print "<p>Error en la consulta.</p>\n";
                 } else {
                     print "<div class=\"discu\">
-  <h2><a href=\"hil_index.php?hilo=$valor[id]\"><img src=\"flecha.png\" " 
+  <h2><a href=\"hil-index.php?hilo=$valor[id]\"><img src=\"flecha.png\" "
     ."alt=\"Ver intervenciones\" title=\"Ver intervenciones\" /></a>
     $valor[titulo]</h2>
   <p class=\"dis_aut\">Propuesta por <strong>$valor[autor]</strong> el "
                       .fechaDma($valor['fecha'])." - ";
                     if ($numInt==1) {
-                        print "1 intervención";
+                        print "1 intervenciï¿½n";
                     } else {
                         print "$numInt intervenciones";
                     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de divisas 3 - convertidor_divisas_3.php
+ * Convertidor de divisas 3 - convertidor-divisas-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2012 Bartolomé Sintes Marco
@@ -97,7 +97,7 @@ if ($cantidadOk && $origenOk && $destinoOk) {
     print "<p>Gracias por utilizar este convertidor.</p>\n";
 }
 
-print "<p><a href=\"convertidor_divisas_3.html\">Volver al formulario.</a></p>\n";
+print "<p><a href=\"convertidor-divisas-3.html\">Volver al formulario.</a></p>\n";
 ?>
 
 <address>

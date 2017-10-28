@@ -1,6 +1,6 @@
 <?php
 /**
- * RGB Test - rgb_test.php
+ * RGB Test - rgb-test.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco

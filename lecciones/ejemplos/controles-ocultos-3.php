@@ -1,6 +1,6 @@
 <?php
 /**
- * Ejemplo de controles ocultos - controles_ocultos_3.php
+ * Ejemplo de controles ocultos - controles-ocultos-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Controles ocultos (Resultado. Controles ocultos.
   Ejemplos. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 
@@ -56,7 +56,7 @@ print "<p>Su apellido es <strong>$apellidos</strong>.</p>\n";
 
 ?>
 
-<p><a href="controles_ocultos_1.html">Volver al formulario inicial.</a></p>
+<p><a href="controles-ocultos-1.html">Volver al formulario inicial.</a></p>
 
 <p class="ultmod">Última modificación de esta página: 21 de octubre de 2014</p>
 

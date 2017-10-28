@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - usu_borrar1.php
+ * Biblioteca - usu-borrar-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -36,7 +36,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se ha creado todavía ningún registro.</p>\n";
+    print "<p>No se ha creado todavï¿½a ningï¿½n registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbUsuarios
         ORDER BY $campo $orden";
@@ -44,7 +44,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"usu_borrar2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"usu-borrar-2.php\" method=\"".FORM_METHOD."\">
   <p>Marque los registros que quiera borrar:</p>
   <table border=\"1\">
     <thead>

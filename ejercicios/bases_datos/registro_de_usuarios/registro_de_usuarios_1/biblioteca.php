@@ -106,7 +106,7 @@ function cabecera($texto, $menu=MENU_PRINCIPAL, $conCursor=CABECERA_SIN_CURSOR)
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
   <title>www.mclibre.org - Registro de usuarios 1 - $texto</title>
-  <link href=\"mclibre_php_soluciones_proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>\n\n";
     if ($conCursor) {
         print "<body onload=\"document.getElementById('cursor').focus()\">\n";

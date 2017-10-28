@@ -1,6 +1,6 @@
 <?php
 /**
- * Diferencias entre MySQL y SQLite - mysql_sqlite_fecha_hora.php
+ * Diferencias entre MySQL y SQLite - mysql-sqlite-fecha-hora.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2010 Bartolomé Sintes Marco
@@ -160,7 +160,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
   <title>www.mclibre.org - Diferencias entre MySQL y SQLite - Fecha</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>
 
 <body>

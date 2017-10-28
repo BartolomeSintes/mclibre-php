@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - usu_anyadir2.php
+ * Biblioteca - usu-anyadir-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -24,7 +24,7 @@
 
 include('funciones.php');
 $db = conectaDb();
-cabecera('Usuarios - Añadir 2', CABECERA_SIN_CURSOR, 'menuUsuarios');
+cabecera('Usuarios - Aï¿½adir 2', CABECERA_SIN_CURSOR, 'menuUsuarios');
 
 $nombre    = recogeParaConsulta($db, 'nombre');
 $apellidos = recogeParaConsulta($db, 'apellidos');
@@ -39,8 +39,8 @@ if (($nombre=="''") && ($apellidos=="''") && ($dni=="''")) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_USUARIOS) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de registros que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre algï¿½n registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE nombre=$nombre

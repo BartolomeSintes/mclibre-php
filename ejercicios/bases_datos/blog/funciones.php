@@ -1,9 +1,9 @@
 <?php
 /**
  * Blog - funciones.php
- * 
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ *
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -23,20 +23,20 @@
  */
 
 define('ZONA_HORARIA',        'Europe/Madrid');  // Zona horaria del servidor
-define('CABECERA_CON_CURSOR', TRUE);             // Para función cabecera()           
-define('CABECERA_SIN_CURSOR', FALSE);            // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
+define('CABECERA_CON_CURSOR', TRUE);             // Para funciï¿½n cabecera()
+define('CABECERA_SIN_CURSOR', FALSE);            // Para funciï¿½n cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envï¿½an con GET
+//define('FORM_METHOD',            'post'); // Formularios se envï¿½an con POST
 define('MYSQL',               'MySQL');
 define('SQLITE',              'SQLite');
-define('TAM_ENTRADA',         255);  // Tamaño del campo Entradas > Entrada
-define('MAX_REG_ENTRADAS',    10);   // Número máximo de registros en la tabla Entradas
+define('TAM_ENTRADA',         255);  // Tamaï¿½o del campo Entradas > Entrada
+define('MAX_REG_ENTRADAS',    10);   // Nï¿½mero mï¿½ximo de registros en la tabla Entradas
 
 $dbMotor = SQLITE;                     // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');   // Nombre de usuario de MySQL 
-    define('MYSQL_PASSWORD', '');      // Contraseña de usuario de MySQL
+    define('MYSQL_USUARIO', 'root');   // Nombre de usuario de MySQL
+    define('MYSQL_PASSWORD', '');      // Contraseï¿½a de usuario de MySQL
     $dbDb       = 'mclibre_blog';     // Nombre de la base de datos
     $dbEntradas = $dbDb.'.entradas';  // Nombre de la tabla Entradas
 } elseif ($dbMotor==SQLITE) {
@@ -50,7 +50,7 @@ $recorta = array(
 function conectaDb()
 {
     global $dbMotor, $dbDb;
-    
+
     try {
         if ($dbMotor==MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
@@ -72,11 +72,11 @@ function recorta($campo, $cadena)
 {
     global $recorta;
 
-    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena; 
+    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena;
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='') 
+function recogeParaConsulta($db, $var, $var2='')
 {
     $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
@@ -92,7 +92,7 @@ function recogeParaConsulta($db, $var, $var2='')
     return $tmp;
 }
 
-function recogeMatrizParaConsulta($db, $var) 
+function recogeMatrizParaConsulta($db, $var)
 {
     $tmpMatriz = array();
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
@@ -131,10 +131,10 @@ function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
         if (isset($var[0]) && ($var[0]=="'")) {
-            $var = substr($var, 1, strlen($var)-1); 
+            $var = substr($var, 1, strlen($var)-1);
         }
         if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
-            $var = substr($var, 0, strlen($var)-1); 
+            $var = substr($var, 0, strlen($var)-1);
         }
     }
     return $var;
@@ -148,10 +148,10 @@ function recogefecha($db, $var)
     if (!ctype_digit(substr($fecha, 5, 2)) ||!ctype_digit(substr($fecha, 8, 2))
         ||!ctype_digit(substr($fecha, 0, 4))) {
         $fecha = date('Y-m-d');
-    } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2), 
+    } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2),
                     (int)substr($fecha, 0, 4))) {
         $fecha = date('Y-m-d');
-    } 
+    }
     return $fecha;
 }
 
@@ -173,21 +173,21 @@ function calendario ($fecha, $enlaces)
     if (!ctype_digit(substr($fecha, 5, 2)) ||!ctype_digit(substr($fecha, 8, 2))
         ||!ctype_digit(substr($fecha, 0, 4))) {
         $fecha = date('Y-m-d');
-    } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2), 
+    } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2),
                     (int)substr($fecha, 0, 4))) {
         $fecha = date('Y-m-d');
-    } 
+    }
     $diaInicial = substr($fecha, 8, 2);
     $mes     = substr($fecha, 5, 2);
-    $anyo    = substr($fecha, 0, 4); 
+    $anyo    = substr($fecha, 0, 4);
 
-    $esBisiesto = (($anyo%400==0) || (($anyo%100!=0) && ($anyo%4==0))) 
+    $esBisiesto = (($anyo%400==0) || (($anyo%100!=0) && ($anyo%4==0)))
                     ? '1' : '0';
-    $duraMeses = ($esBisiesto) ? 
+    $duraMeses = ($esBisiesto) ?
         array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31) :
         array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31);
-    $meses = array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 
-                        'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 
+    $meses = array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+                        'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
                         'Noviembre', 'Diciembre');
 
     if ($diaInicial>$duraMeses[(int)($mes)-1]) {
@@ -197,7 +197,7 @@ function calendario ($fecha, $enlaces)
     }
     $diaAnt  = substr($fechaAnt, 8, 2);
     $mesAnt  = substr($fechaAnt, 5, 2);
-    $anyoAnt = substr($fechaAnt, 0, 4); 
+    $anyoAnt = substr($fechaAnt, 0, 4);
 
     if ($diaInicial>$duraMeses[(int)($mes)+1]) {
         $fechaSig = date('Y-m-d', mktime(0, 0, 0, $mes+1, $duraMeses[(int)($mes)+1], $anyo));
@@ -206,13 +206,13 @@ function calendario ($fecha, $enlaces)
     }
     $diaSig  = substr($fechaSig, 8, 2);
     $mesSig  = substr($fechaSig, 5, 2);
-    $anyoSig = substr($fechaSig, 0, 4); 
-    
+    $anyoSig = substr($fechaSig, 0, 4);
+
     $jd = gregoriantojd($mes, 1, $anyo);
     $dia = (jddayofweek($jd, 0)+6)%7;
     $dias = array ('L', 'M', 'X','J','V','S','D');
     $diaSemana = $dias[$dia];
-    
+
     print "<div class=\"calendario\">\n  <table border=\"1\" class=\"calendario\" >\n";
     if ($enlaces=="editar") {
         print "    <caption><a href=\"editar.php?fecha=$fechaAnt\">&lt;&lt;</a> ".
@@ -231,7 +231,7 @@ function calendario ($fecha, $enlaces)
         if ($num_inicio<=$duraMeses[(int)($mes)]) {
             print "    <tr>\n";
             for ($i=0; $i<7; $i++) {
-                $num = $num_inicio + $i; 
+                $num = $num_inicio + $i;
                 if (($num>0) && ($num<=$duraMeses[(int)($mes)])) {
                     if ($enlaces=='editar') {
                         print "      <td class=\"enlace\"><a href=\"editar.php"
@@ -261,7 +261,7 @@ function calendario ($fecha, $enlaces)
     print "  </table>\n</div>\n\n";
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='') 
+function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
 {
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
@@ -270,7 +270,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
   <title>www.mclibre.org - Blog - $texto</title>
-  <link href=\"mclibre_php_soluciones_proyectos_blog.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link href=\"mclibre-php-soluciones-proyectos-blog.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>\n\n";
     if ($conCursor) {
         print "<body onload=\"document.getElementById('cursor').focus()\">\n";
@@ -286,18 +286,18 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
 </ul>\n</div>\n\n<div id=\"contenido\">\n";
 }
 
-function pie() 
+function pie()
 {
     print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Pï¿½ginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de este programa: 21 de mayo de 2009
+  Autor: Bartolomï¿½ Sintes Marco<br />
+  ï¿½ltima modificaciï¿½n de este programa: 21 de mayo de 2009
 </address>
-<p class="licencia">El programa PHP que genera esta página está bajo 
+<p class="licencia">El programa PHP que genera esta pï¿½gina estï¿½ bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

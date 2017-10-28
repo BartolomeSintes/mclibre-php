@@ -5,11 +5,11 @@
     <title>Funciones is_ (Formulario). Comprobación de datos.
       Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
-    <form action="comprobacion_datos_is_2.php" method="get">
+    <form action="comprobacion-datos-is-2.php" method="get">
       <h1>Comprobación de datos con funciones is_ (Formulario)</h1>
 
       <p>Escriba cualquier cosa en el campo siguiente para analizarlo con las funciones is_ de PHP:</p>

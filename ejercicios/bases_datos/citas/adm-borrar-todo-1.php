@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas -  adm_borrartodo1.php
+ * Citas -  adm-borrar-todo-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -31,9 +31,9 @@ if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario']!=$administra
 } else {
     cabecera('Borrar todo 1', $_SESSION['citasUsuario']);
 
-    print "<form action=\"adm_borrartodo2.php\" method=\"get\">
-  <p>¿Está seguro?</p>
-  <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
+    print "<form action=\"adm-borrar-todo-2.php\" method=\"get\">
+  <p>ï¿½Estï¿½ seguro?</p>
+  <p><input type=\"submit\" value=\"Sï¿½\" name=\"si\" />
     <input type=\"submit\" value=\"No\" name=\"no\" /></p>
 </form>\n";
 

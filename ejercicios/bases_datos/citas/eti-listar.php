@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - eti_listar.php
+ * Citas - eti-listar.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -37,7 +37,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se han creado todavía etiquetas.</p>\n";
+    print "<p>No se han creado todavï¿½a etiquetas.</p>\n";
 } else {
     $max = 0;
     $min = $maxRegUsuarios;
@@ -70,7 +70,7 @@ if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } else {
             print "<p>Estas son las etiquetas definidas hasta el momento, con "
-                ."un tamaño proporcional a su popularidad:</p>\n";
+                ."un tamaï¿½o proporcional a su popularidad:</p>\n";
             print "<p>\n";
             foreach ($result as $valor) {
                 $consulta = "SELECT COUNT (*) FROM $dbEtiCitas

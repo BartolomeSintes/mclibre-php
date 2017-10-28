@@ -1,6 +1,6 @@
 <?php
 /**
- * Cálculos estadísticos 2 (Formulario) calculos_estadisticos_2.php
+ * Cálculos estadísticos 2 (Formulario) calculos-estadisticos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco

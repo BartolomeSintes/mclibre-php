@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas -  eti_anyadir1.php
+ * Citas -  eti-anyadir-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,16 +29,16 @@ if (!isset($_SESSION['citasUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Etiquetas - Añadir 1', 'menu_etiquetas');
+    cabecera('Etiquetas - Aï¿½adir 1', 'menu_etiquetas');
     $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=$maxRegEtiquetas) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de registros que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre algï¿½n registro antes.</p>\n";
     } else {
-        print "<form action=\"eti_anyadir2.php\" method=\"get\">
+        print "<form action=\"eti-anyadir-2.php\" method=\"get\">
   <p>Escriba la nueva etiqueta (una sola palabra):</p>
   <table>
     <tbody>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['citasUsuario'])) {
       </tr>
     </tbody>
   </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
+  <p><input type=\"submit\" value=\"Aï¿½adir\" /></p>
 </form>\n";
     }
     $db = NULL;

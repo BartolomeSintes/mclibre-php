@@ -1,9 +1,9 @@
 <?php
 /**
  * Foro - funciones.php
- * 
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ *
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -23,28 +23,28 @@
  */
 
 define('ZONA_HORARIA',           'Europe/Madrid');  // Zona horaria del servidor
-define('CABECERA_CON_CURSOR',    TRUE);             // Para función cabecera()           
-define('CABECERA_SIN_CURSOR',    FALSE);            // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
+define('CABECERA_CON_CURSOR',    TRUE);             // Para funciï¿½n cabecera()
+define('CABECERA_SIN_CURSOR',    FALSE);            // Para funciï¿½n cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envï¿½an con GET
+//define('FORM_METHOD',            'post'); // Formularios se envï¿½an con POST
 define('MYSQL',                  'MySQL');
 define('SQLITE',                 'SQLite');
-define('TAM_TITULO',             50);   // Tamaño del campo Discusiones > Título
-define('TAM_DESCRIPCION',        50);   // Tamaño del campo Discusiones > Descripción 
-define('TAM_AUTOR',              50);   // Tamaño del campo Discusiones > Autor
-define('TAM_INTERVENCION',       255);  // Tamaño del campo Intervenciones > Intervención
-define('MAX_REG_DISCUSIONES',    10);   // Número máximo de registros en la tabla Discusiones
-define('MAX_REG_INTERVENCIONES', 20);   // Número máximo de registros en la tabla Intervenciones
+define('TAM_TITULO',             50);   // Tamaï¿½o del campo Discusiones > Tï¿½tulo
+define('TAM_DESCRIPCION',        50);   // Tamaï¿½o del campo Discusiones > Descripciï¿½n
+define('TAM_AUTOR',              50);   // Tamaï¿½o del campo Discusiones > Autor
+define('TAM_INTERVENCION',       255);  // Tamaï¿½o del campo Intervenciones > Intervenciï¿½n
+define('MAX_REG_DISCUSIONES',    10);   // Nï¿½mero mï¿½ximo de registros en la tabla Discusiones
+define('MAX_REG_INTERVENCIONES', 20);   // Nï¿½mero mï¿½ximo de registros en la tabla Intervenciones
 define('ANONIMO_AUTOR',          'Rata cobarde');     // Autor predeterminado
-define('ANONIMO_TITULO',         'Sin título');       // Título predeterminado
-define('ANONIMO_DESCRIPCION',    'Sin descripción');  // Descripción predeterminada
-define('ANONIMO_INTERVENCION',   'Sin texto');        // Intervención predeterminada
+define('ANONIMO_TITULO',         'Sin tï¿½tulo');       // Tï¿½tulo predeterminado
+define('ANONIMO_DESCRIPCION',    'Sin descripciï¿½n');  // Descripciï¿½n predeterminada
+define('ANONIMO_INTERVENCION',   'Sin texto');        // Intervenciï¿½n predeterminada
 
 $dbMotor = SQLITE;                               // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');             // Nombre de usuario de MySQL 
-    define('MYSQL_PASSWORD', '');                // Contraseña de usuario de MySQL
+    define('MYSQL_USUARIO', 'root');             // Nombre de usuario de MySQL
+    define('MYSQL_PASSWORD', '');                // Contraseï¿½a de usuario de MySQL
     $dbDb             = 'mclibre_foro';          // Nombre de la base de datos
     $dbDiscusiones    = $dbDb.'.discusiones';    // Nombre de la tabla Discusiones
     $dbIntervenciones = $dbDb.'.intervenciones'; // Nombre de la tabla Intervenciones
@@ -55,15 +55,15 @@ if ($dbMotor==MYSQL) {
 }
 
 $recorta = array(
-    'titulo'       => TAM_TITULO, 
+    'titulo'       => TAM_TITULO,
     'descripcion'  => TAM_DESCRIPCION,
-    'autor'        => TAM_AUTOR, 
+    'autor'        => TAM_AUTOR,
     'intervencion' => TAM_INTERVENCION);
 
 function conectaDb()
 {
     global $dbMotor, $dbDb;
-    
+
     try {
         if ($dbMotor==MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
@@ -85,11 +85,11 @@ function recorta($campo, $cadena)
 {
     global $recorta;
 
-    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena; 
+    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena;
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='') 
+function recogeParaConsulta($db, $var, $var2='')
 {
     $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
@@ -105,7 +105,7 @@ function recogeParaConsulta($db, $var, $var2='')
     return $tmp;
 }
 
-function recogeMatrizParaConsulta($db, $var) 
+function recogeMatrizParaConsulta($db, $var)
 {
     $tmpMatriz = array();
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
@@ -144,10 +144,10 @@ function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
         if (isset($var[0]) && ($var[0]=="'")) {
-            $var = substr($var, 1, strlen($var)-1); 
+            $var = substr($var, 1, strlen($var)-1);
         }
         if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
-            $var = substr($var, 0, strlen($var)-1); 
+            $var = substr($var, 0, strlen($var)-1);
         }
     }
     return $var;
@@ -159,7 +159,7 @@ function fechaDma($amd)
         ." a las ".substr($amd, 11, 8);
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal', $id='') 
+function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal', $id='')
 {
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
@@ -168,7 +168,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
   <title>www.mclibre.org - Foro - $texto</title>
-  <link href=\"mclibre_php_soluciones_proyectos_foro.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link href=\"mclibre-php-soluciones-proyectos-foro.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>\n\n";
     if ($conCursor) {
         print "<body onload=\"document.getElementById('cursor').focus()\">\n";
@@ -182,32 +182,32 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
         print "  <li><a href=\"index.php\">Inicio</a></li>";
     } elseif ($menu=='menuHilos') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"hil_anyadir1.php?hilo=$id\">Intervenir</a></li>
-  <li><a href=\"hil_index.php?hilo=$id\">Ver intervenciones</a></li>";
+  <li><a href=\"hil-anyadir-1.php?hilo=$id\">Intervenir</a></li>
+  <li><a href=\"hil-index.php?hilo=$id\">Ver intervenciones</a></li>";
     } elseif ($menu=='menuEditor') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"edi_borrardisc1.php\">Borrar discusiones</a></li>    
-  <li><a href=\"edi_borrarinte1.php\">Borrar intervenciones</a></li>    
-  <li><a href=\"edi_borrartodo1.php\">Borrar todo</a></li>";
+  <li><a href=\"edi-borrar-disc-1.php\">Borrar discusiones</a></li>
+  <li><a href=\"edi-borrar-inte-1.php\">Borrar intervenciones</a></li>
+  <li><a href=\"edi-borrar-todo-1.php\">Borrar todo</a></li>";
     } else {
-        print "  <li><a href=\"dis_anyadir1.php\">Nueva discusión</a></li>
-  <li><a href=\"edi_index.php\">Editor</a></li>";
+        print "  <li><a href=\"dis-anyadir-1.php\">Nueva discusiï¿½n</a></li>
+  <li><a href=\"edi-index.php\">Editor</a></li>";
     }
     print "\n</ul>\n</div>\n\n<div id=\"contenido\">\n";
 }
 
-function pie() 
+function pie()
 {
 print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Pï¿½ginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de este programa: 21 de mayo de 2009
+  Autor: Bartolomï¿½ Sintes Marco<br />
+  ï¿½ltima modificaciï¿½n de este programa: 21 de mayo de 2009
 </address>
-<p class="licencia">El programa PHP que genera esta página está bajo 
+<p class="licencia">El programa PHP que genera esta pï¿½gina estï¿½ bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

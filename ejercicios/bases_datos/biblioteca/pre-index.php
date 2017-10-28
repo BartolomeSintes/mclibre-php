@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - pre_index.php
+ * Biblioteca - pre-index.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -23,7 +23,7 @@
  */
 
 include('funciones.php');
-cabecera('Préstamos - Inicio', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera('Prï¿½stamos - Inicio', CABECERA_SIN_CURSOR, 'menuPrestamos');
 
 pie();
 ?>

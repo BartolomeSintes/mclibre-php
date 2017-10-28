@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - pre_borrar1.php
+ * Biblioteca - pre-borrar-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -24,7 +24,7 @@
 
 include('funciones.php');
 $db = conectaDb();
-cabecera('Préstamos - Borrar 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera('Prï¿½stamos - Borrar 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
 
 $campo = recogeParaConsulta($db, 'campo', 'apellidos');
 $campo = quitaComillasExteriores($campo);
@@ -36,7 +36,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se ha creado todavía ningún registro.</p>\n";
+    print "<p>No se ha creado todavï¿½a ningï¿½n registro.</p>\n";
 } else {
     $consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
         $dbUsuarios.apellidos as apellidos, $dbObras.titulo as titulo,
@@ -49,7 +49,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"pre_borrar2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"pre-borrar-2.php\" method=\"".FORM_METHOD."\">
   <p>Marque los registros que quiera borrar:</p>
   <table border=\"1\">
     <thead>
@@ -62,17 +62,17 @@ if (!$result) {
         <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
       <th><a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">
         <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Título
+        Tï¿½tulo
         <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">
         <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
       <th><a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=ASC\">
         <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-        Fecha préstamo
+        Fecha prï¿½stamo
         <a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=DESC\">
         <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
       <th><a href=\"$_SERVER[PHP_SELF]?campo=devuelto&amp;orden=ASC\">
         <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-        Fecha devolución
+        Fecha devoluciï¿½n
         <a href=\"$_SERVER[PHP_SELF]?campo=devuelto&amp;orden=DESC\">
         <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
       </tr>

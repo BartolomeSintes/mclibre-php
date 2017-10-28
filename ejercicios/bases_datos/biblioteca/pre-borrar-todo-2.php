@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - pre_borrartodo2.php
+ * Biblioteca - pre-borrar-todo-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -30,9 +30,9 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP TABLE $dbPrestamos";
     if ($db->query($consulta)) {
-        print "<p>Tabla de Préstamos borrada correctamente.</p>\n";
+        print "<p>Tabla de Prï¿½stamos borrada correctamente.</p>\n";
     } else {
-        print "<p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "<p>Error al borrar la tabla de Prï¿½stamos.</p>\n";
     }
     $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -43,9 +43,9 @@ function borraTodoMySQL($db)
         PRIMARY KEY(id)
         )";
     if ($db->query($consultaCreaTablaPrestamos)) {
-        print "<p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "<p>Tabla de Prï¿½stamos creada correctamente.</p>\n";
     } else {
-        print "<p>Error al crear la tabla de Préstamos.</p>\n";
+        print "<p>Error al crear la tabla de Prï¿½stamos.</p>\n";
     }
 }
 
@@ -55,9 +55,9 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbPrestamos";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Préstamos borrada correctamente.</p>\n";
+       print "<p>Tabla de Prï¿½stamos borrada correctamente.</p>\n";
     } else {
-        print "<p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "<p>Error al borrar la tabla de Prï¿½stamos.</p>\n";
     }
 
     $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
@@ -68,9 +68,9 @@ function borraTodoSqlite($db)
         devuelto DATE
         )";
     if ($db->query($consultaCreaTablaPrestamos)) {
-        print "<p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "<p>Tabla de Prï¿½stamos creada correctamente.</p>\n";
     } else {
-        print "<p>Error al crear la tabla de Préstamos.</p>\n";
+        print "<p>Error al crear la tabla de Prï¿½stamos.</p>\n";
     }
 }
 
@@ -79,7 +79,7 @@ if (!isset($_REQUEST['si'])) {
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Préstamos - Borrar todo 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
+    cabecera('Prï¿½stamos - Borrar todo 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
     if ($dbMotor==MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor==SQLITE) {

@@ -1,9 +1,9 @@
 <?php
 /**
- * Foro - dis_anyadir1.php
+ * Foro - dis-anyadir-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -28,15 +28,15 @@ $db = conectaDb();
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
+    cabecera('Iniciar discusiï¿½n 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()>=MAX_REG_DISCUSIONES) {
-    cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
-    print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+    cabecera('Iniciar discusiï¿½n 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
+    print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de registros que se pueden "
+        ."guardar.</p>\n<p>Por favor, borre algï¿½n registro antes.</p>\n";
 } else {
-    cabecera('Iniciar discusión 1', CABECERA_CON_CURSOR, 'menuDiscusiones', '');
-    print "<form action=\"dis_anyadir2.php\" method=\"".FORM_METHOD."\">
+    cabecera('Iniciar discusiï¿½n 1', CABECERA_CON_CURSOR, 'menuDiscusiones', '');
+    print "<form action=\"dis-anyadir-2.php\" method=\"".FORM_METHOD."\">
   <table>
     <tbody>
       <tr>
@@ -45,17 +45,17 @@ if (!$result) {
           ."maxlength=\"".TAM_AUTOR."\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>Título:</td>
+        <td>Tï¿½tulo:</td>
         <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
           ."maxlength=\"".TAM_TITULO."\" /></td>
       </tr>
       <tr>
-        <td style=\"vertical-align:top\">Descripción:</td>
+        <td style=\"vertical-align:top\">Descripciï¿½n:</td>
         <td><textarea rows=\"10\" cols=\"40\" name=\"descripcion\"></textarea></td>
       </tr>
     </tbody>
   </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
+  <p><input type=\"submit\" value=\"Aï¿½adir\" /></p>
 </form>\n";
 }
 

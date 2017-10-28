@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - usu_anyadir1.php
+ * Biblioteca - usu-anyadir-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -28,15 +28,15 @@ $db = conectaDb();
 $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Usuarios - Añadir 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
+    cabecera('Usuarios - Aï¿½adir 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()>=MAX_REG_USUARIOS) {
-    cabecera('Usuarios - Añadir 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
-    print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+    cabecera('Usuarios - Aï¿½adir 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
+    print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de registros que se pueden "
+        ."guardar.</p>\n<p>Por favor, borre algï¿½n registro antes.</p>\n";
 } else {
-    cabecera('Usuarios - Añadir 1', CABECERA_CON_CURSOR, 'menuUsuarios');
-    print "<form action=\"usu_anyadir2.php\" method=\"".FORM_METHOD."\">
+    cabecera('Usuarios - Aï¿½adir 1', CABECERA_CON_CURSOR, 'menuUsuarios');
+    print "<form action=\"usu-anyadir-2.php\" method=\"".FORM_METHOD."\">
   <p>Escriba los datos del nuevo registro:</p>
   <table>
     <tbody>
@@ -57,7 +57,7 @@ if (!$result) {
       </tr>
     </tbody>
   </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
+  <p><input type=\"submit\" value=\"Aï¿½adir\" /></p>
 </form>\n";
 }
 

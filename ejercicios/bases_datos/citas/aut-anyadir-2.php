@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - aut_anyadir2.php
+ * Citas - aut-anyadir-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Autores - Añadir 2', 'menu_autores');
+    cabecera('Autores - Aï¿½adir 2', 'menu_autores');
 
     $nombre = recogeParaConsulta($db, 'nombre');
     $nombre = quitaComillasExteriores($nombre);
@@ -52,7 +52,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     $apellidos = implode(' ', $tmpApellidos);
 
     if (($nombre=="''") && ($apellidos=='')) {
-        print "<p>El nombre y apellidos del autor no puede estar vacía. "
+        print "<p>El nombre y apellidos del autor no puede estar vacï¿½a. "
             ."No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAutores";
@@ -60,8 +60,8 @@ if (!isset($_SESSION['citasUsuario'])) {
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegAutores) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de registros que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algï¿½n registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbAutores
                 WHERE nombre='$nombre'

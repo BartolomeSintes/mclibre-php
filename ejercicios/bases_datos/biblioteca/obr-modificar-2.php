@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - obr_modificar2.php
+ * Biblioteca - obr-modificar-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ $id = recogeParaConsulta($db, 'id');
 
 if ($id=="''") {
     cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
-    print "<p>No se ha seleccionado ningún registro.</p>\n";
+    print "<p>No se ha seleccionado ningï¿½n registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbObras
         WHERE id=$id";
@@ -50,7 +50,7 @@ if ($id=="''") {
         } else {
             $valor = $result->fetch();
             cabecera('Obras - Modificar 2', CABECERA_CON_CURSOR, 'menuObras');
-            print "<form action=\"obr_modificar3.php\" method=\"".FORM_METHOD."\">
+            print "<form action=\"obr-modificar-3.php\" method=\"".FORM_METHOD."\">
   <p>Modifique los campos que desee:</p>
   <table>
     <tbody>
@@ -60,7 +60,7 @@ if ($id=="''") {
           ."maxlength=\"".TAM_AUTOR."\" value=\"$valor[autor]\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>Título:</td>
+        <td>Tï¿½tulo:</td>
         <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
           ."maxlength=\"".TAM_TITULO."\" value=\"$valor[titulo]\" /></td>
       </tr>

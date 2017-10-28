@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de divisas 2 - convertidor_divisas_2.php
+ * Convertidor de divisas 2 - convertidor-divisas-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -129,7 +129,7 @@ if ($cantidadOk && $origenOk && $destinoOk) {
 
 ?>
 
-<p><a href="convertidor_divisas_2.html">Volver al formulario.</a></p>
+<p><a href="convertidor-divisas-2.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

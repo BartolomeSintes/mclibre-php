@@ -1,9 +1,9 @@
 <?php
 /**
  * Poliagenda -  funciones.php
- * 
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ *
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -27,18 +27,18 @@ define ('SQLITE', 'SQLite');
 $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL 
-    define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
+    define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
+    define('MYSQL_PASSWORD', '');         // Contraseï¿½a de usuario de MySQL
     $dbDb       = 'mclibre_poliagenda';  // Nombre de la base de datos
     $dbUsuarios = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
     $dbAgenda   = $dbDb.'.agenda';        // Nombre de la tabla de Agendas
-    $consultaExisteTabla = "SELECT COUNT(*) as existe_db 
+    $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
 } elseif ($dbMotor==SQLITE) {
     $dbDb       = '/home/barto/mclibre/tmp/mclibre/mclibre_poliagenda.sqlite3';  // Nombre de la base de datos
     $dbUsuarios = 'usuarios';             // Nombre de la tabla de Usuarios
     $dbAgenda   = 'agenda';               // Nombre de la tabla de Agendas
-    $consultaExisteTabla = "SELECT COUNT(*) as existe_db 
+    $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
 }
 
@@ -50,22 +50,22 @@ $idiomaPredeterminado  = 'es_ES';  // Idioma predeterminado
 // Si $administradorPassword == '', no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
-$tamUsuario     = 20;  // Tamaño del campo Usuario
-$tamPassword    = 20;  // Tamaño del campo Contraseña
-$tamIdioma      = 5;   // Tamaño del campo Idioma
-$tamCifrado     = 32;  // Tamaño del campo contraseña en MD5
-$tamNombre      = 40;  // Tamaño del campo Nombre
-$tamApellidos   = 60;  // Tamaño del campo Apellidos
-$tamTelefono    = 10;  // Tamaño del campo Teléfono
-$tamCorreo      = 50;  // Tamaño del campo Correo
-$maxRegUsuarios = 20;  // Número máximo de registros en la tabla Usuarios
-$maxRegAgenda   = 20;  // Número máximo de registros por usuario en la tabla Agenda
+$tamUsuario     = 20;  // Tamaï¿½o del campo Usuario
+$tamPassword    = 20;  // Tamaï¿½o del campo Contraseï¿½a
+$tamIdioma      = 5;   // Tamaï¿½o del campo Idioma
+$tamCifrado     = 32;  // Tamaï¿½o del campo contraseï¿½a en MD5
+$tamNombre      = 40;  // Tamaï¿½o del campo Nombre
+$tamApellidos   = 60;  // Tamaï¿½o del campo Apellidos
+$tamTelefono    = 10;  // Tamaï¿½o del campo Telï¿½fono
+$tamCorreo      = 50;  // Tamaï¿½o del campo Correo
+$maxRegUsuarios = 20;  // Nï¿½mero mï¿½ximo de registros en la tabla Usuarios
+$maxRegAgenda   = 20;  // Nï¿½mero mï¿½ximo de registros por usuario en la tabla Agenda
 $recorta = array(
     'usuario'   => $tamUsuario,
     'password'  => $tamCifrado,
-    'nombre'    => $tamNombre, 
+    'nombre'    => $tamNombre,
     'apellidos' => $tamApellidos,
-    'telefono'  => $tamTelefono, 
+    'telefono'  => $tamTelefono,
     'correo'    => $tamCorreo);
 
 if (isset($_SESSION['multiagendaIdioma'])) {
@@ -83,7 +83,7 @@ textdomain("messages");
 function conectaDb()
 {
     global $dbMotor, $dbDb;
-    
+
     try {
         if ($dbMotor==MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
@@ -103,10 +103,10 @@ function conectaDb()
 
 function borraTodoMySQL($db)
 {
-    global $dbDb, $dbAgenda, $dbUsuarios, $tamUsuario, $tamIdioma, $tamCifrado, 
-        $tamNombre, $tamApellidos, $tamTelefono, $tamCorreo, 
+    global $dbDb, $dbAgenda, $dbUsuarios, $tamUsuario, $tamIdioma, $tamCifrado,
+        $tamNombre, $tamApellidos, $tamTelefono, $tamCorreo,
         $administradorNombre, $administradorPassword;
-    
+
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
         print "<p>"._('Base de datos borrada correctamente').".</p>\n";
@@ -118,9 +118,9 @@ function borraTodoMySQL($db)
         print "<p>"._('Base de datos creada correctamente').".</p>\n";
         $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-            usuario VARCHAR($tamUsuario), 
-            password VARCHAR($tamCifrado),  
-            idioma VARCHAR($tamIdioma), 
+            usuario VARCHAR($tamUsuario),
+            password VARCHAR($tamCifrado),
+            idioma VARCHAR($tamIdioma),
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_usuarios)) {
             print "<p>"._('Tabla de Usuarios creada correctamente').".</p>\n";
@@ -128,7 +128,7 @@ function borraTodoMySQL($db)
             print "<p>"._('Error al crear la tabla de Usuarios').".</p>\n";
         }
         if ($administradorPassword!='') {
-            $consulta = "INSERT INTO $dbUsuarios VALUES (NULL, 
+            $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '".md5($administradorPassword)
                 ."', '$tamIdioma')";
             if ($db->query($consulta)) {
@@ -140,10 +140,10 @@ function borraTodoMySQL($db)
         $consulta_creatabla_agenda = "CREATE TABLE $dbAgenda (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             id_usuario INTEGER UNSIGNED,
-            nombre VARCHAR($tamNombre), 
-            apellidos VARCHAR($tamApellidos), 
-            telefono VARCHAR($tamTelefono), 
-            correo VARCHAR($tamCorreo),   
+            nombre VARCHAR($tamNombre),
+            apellidos VARCHAR($tamApellidos),
+            telefono VARCHAR($tamTelefono),
+            correo VARCHAR($tamCorreo),
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_agenda)) {
             print "<p>"._('Tabla de Agenda creada correctamente').".</p>\n";
@@ -157,7 +157,7 @@ function borraTodoMySQL($db)
 
 function borraTodoSqlite($db)
 {
-    global $dbAgenda, $dbUsuarios, $tamUsuario, $tamCifrado, $tamIdioma, 
+    global $dbAgenda, $dbUsuarios, $tamUsuario, $tamCifrado, $tamIdioma,
         $tamNombre, $tamApellidos, $tamTelefono, $tamCorreo,
         $administradorNombre, $administradorPassword;
 
@@ -175,9 +175,9 @@ function borraTodoSqlite($db)
     }
     $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
-        usuario VARCHAR($tamUsuario), 
+        usuario VARCHAR($tamUsuario),
         password VARCHAR($tamCifrado),
-        idioma VARCHAR($tamIdioma)  
+        idioma VARCHAR($tamIdioma)
         )";
     if ($db->query($consulta_creatabla_usuarios)) {
         print "<p>"._('Tabla de Usuarios creada correctamente.')."</p>\n";
@@ -185,7 +185,7 @@ function borraTodoSqlite($db)
         print "<p>"._('Error al crear la tabla de Usuarios').".</p>\n";
     }
     if ($administradorPassword!='') {
-        $consulta = "INSERT INTO $dbUsuarios VALUES (NULL, 
+        $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
             '$administradorNombre', '".md5($administradorPassword)
             ."','$tamIdioma')";
         if ($db->query($consulta)) {
@@ -197,9 +197,9 @@ function borraTodoSqlite($db)
     $consulta_creatabla_agenda = "CREATE TABLE $dbAgenda (
         id INTEGER PRIMARY KEY,
         id_usuario INTEGER,
-        nombre VARCHAR($tamNombre), 
-        apellidos VARCHAR($tamApellidos), 
-        telefono VARCHAR($tamTelefono), 
+        nombre VARCHAR($tamNombre),
+        apellidos VARCHAR($tamApellidos),
+        telefono VARCHAR($tamTelefono),
         correo VARCHAR($tamCorreo)
         )";
     if ($db->query($consulta_creatabla_agenda)) {
@@ -213,11 +213,11 @@ function recorta($campo, $cadena)
 {
     global $recorta;
 
-    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena; 
+    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena;
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='') 
+function recogeParaConsulta($db, $var, $var2='')
 {
     $tmp = (isset($_REQUEST[$var])&&($_REQUEST[$var]!='')) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
@@ -233,7 +233,7 @@ function recogeParaConsulta($db, $var, $var2='')
     return $tmp;
 }
 
-function recogeMatrizParaConsulta($db, $var) 
+function recogeMatrizParaConsulta($db, $var)
 {
     $tmpMatriz = array();
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
@@ -272,10 +272,10 @@ function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
         if (isset($var[0])&&($var[0]=="'")) {
-            $var = substr($var, 1, strlen($var)-1); 
+            $var = substr($var, 1, strlen($var)-1);
         }
         if (isset($var[strlen($var)-1])&&($var[strlen($var)-1]=="'")) {
-            $var = substr($var, 0, strlen($var)-1); 
+            $var = substr($var, 0, strlen($var)-1);
         }
     }
     return $var;
@@ -293,31 +293,31 @@ function recogeIdioma()
 function menuIdioma()
 {
     print   "<ul>
-    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=en_GB\">English</a></li> 
-    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=es_ES\">Español</a></li>
+    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=en_GB\">English</a></li>
+    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=es_ES\">Espaï¿½ol</a></li>
   </ul>\n";
-}     
+}
 
-function cabecera($texto, $menu='menu_principal') 
+function cabecera($texto, $menu='menu_principal')
 {
     global $administradorNombre;
-    
+
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
        \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\">
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
-  <title>www.mclibre.org - "._("Agenda multilingüe")." - $texto</title>
-  <link href=\"mclibre_soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <title>www.mclibre.org - "._("Agenda multilingï¿½e")." - $texto</title>
+  <link href=\"mclibre-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>
 
 <body onload=\"document.getElementById('cursor').focus()\">\n";
     if ($menu=='menu_principal') {
-        print "<h1>"._('Agenda multilingüe');
+        print "<h1>"._('Agenda multilingï¿½e');
     } else {
         print "<h1>"._('Agenda de')." $menu";
-    } 
+    }
     print " - "._($texto)."</h1>
 <div id=\"menu\">
 <ul>\n";
@@ -327,7 +327,7 @@ function cabecera($texto, $menu='menu_principal')
         print "  <li><a href=\"borrartodo1.php\">"._('Borrar todo')."</a></li>
   <li><a href=\"salir.php\">"._("Desconectar")."</a></li>";
     } else {
-        print "  <li><a href=\"anyadir1.php\">"._('Añadir')."</a></li>
+        print "  <li><a href=\"anyadir1.php\">"._('Aï¿½adir')."</a></li>
   <li><a href=\"listar.php\">"._('Listar')."</a></li>
   <li><a href=\"modificar1.php\">"._('Modificar')."</a></li>
   <li><a href=\"buscar1.php\">"._('Buscar')."</a></li>
@@ -337,24 +337,24 @@ function cabecera($texto, $menu='menu_principal')
     print "</ul>\n</div>\n\n<div id=\"contenido\">\n";
 }
 
-function pie() 
+function pie()
 {
     global $administradorPassword, $_SESSION;
-    
+
     if (($administradorPassword!='')&&!isset($_SESSION['multiagendaUsuario'])) {
         print "<p><strong>"._('Nota')."</strong>: "
-          ._('El usuario Administrador se llama <strong>root</strong> y su contraseña es también <strong>root</strong>').".</p>\n";
+          ._('El usuario Administrador se llama <strong>root</strong> y su contraseï¿½a es tambiï¿½n <strong>root</strong>').".</p>\n";
     }
     print '</div>
 
 <div id="pie">
 <address>
-  '._('Este programa forma parte del curso "Páginas web con PHP" disponible en').' <a
+  '._('Este programa forma parte del curso "Pï¿½ginas web con PHP" disponible en').' <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  '._('Autor').': Bartolomé Sintes Marco<br />
-  '._('Última modificación de este programa: 27 de febrero de 2008').' 
+  '._('Autor').': Bartolomï¿½ Sintes Marco<br />
+  '._('ï¿½ltima modificaciï¿½n de este programa: 27 de febrero de 2008').'
 </address>
-<p class="licencia">'._('El programa PHP que genera esta página está bajo <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior').'</a>.</p>
+<p class="licencia">'._('El programa PHP que genera esta pï¿½gina estï¿½ bajo <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior').'</a>.</p>
 </div>
 </body>
 </html>';

@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - obr_modificar3.php
+ * Biblioteca - obr-modificar-3.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -32,14 +32,14 @@ $editorial = recogeParaConsulta($db, 'editorial');
 $id        = recogeParaConsulta($db, 'id');
 
 if ($id=="''") {
-    print "<p>No se ha seleccionado ningún registro.</p>\n";
+    print "<p>No se ha seleccionado ningï¿½n registro.</p>\n";
 } elseif (($autor=="''") && ($titulo=="''") && ($editorial=="''")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
-            ."No se ha guardado la modificación.</p>\n";
+            ."No se ha guardado la modificaciï¿½n.</p>\n";
 } else {
 // La consulta cuenta los registros con un id diferente porque MySQL no distingue
-// mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
-// minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
+// mayï¿½sculas de minï¿½sculas y si en un registro sï¿½lo se cambian mayï¿½sculas por
+// minï¿½sculas MySQL dirï¿½a que ya hay un registro como el que se quiere guardar.
     $consulta = "SELECT COUNT(*) FROM $dbObras
         WHERE autor=$autor
         AND titulo=$titulo
@@ -50,7 +50,7 @@ if ($id=="''") {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>0) {
         print "<p>Ya existe un registro con esos mismos valores. "
-            ."No se ha guardado la modificación.</p>\n";
+            ."No se ha guardado la modificaciï¿½n.</p>\n";
     } else {
         $consulta = "UPDATE $dbObras
             SET autor=$autor, titulo=$titulo, editorial=$editorial

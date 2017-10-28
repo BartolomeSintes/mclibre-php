@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas -  eti_borrar1.php
+ * Citas -  eti-borrar-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -49,7 +49,7 @@ if (!isset($_SESSION['citasUsuario'])) {
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } else {
-            print "<form action=\"eti_borrar2.php\" method=\"get\">
+            print "<form action=\"eti-borrar-2.php\" method=\"get\">
   <p>Marque las etiquetas que quiera borrar:</p>\n
   <table border=\"1\">
     <thead>

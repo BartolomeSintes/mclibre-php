@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - pre_borrar2.php
+ * Biblioteca - pre-borrar-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -24,7 +24,7 @@
 
 include('funciones.php');
 $db = conectaDb();
-cabecera ('Préstamos - Borrar 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera ('Prï¿½stamos - Borrar 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
 
 $id = recogeMatrizParaConsulta($db, 'id');
 

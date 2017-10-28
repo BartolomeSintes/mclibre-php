@@ -27,6 +27,6 @@ if ($dato == "") {
 }
 ?>
 
-    <p><a href="comprobacion_ctypedigit.html">Volver al formulario.</a></p>
+    <p><a href="comprobacion-ctypedigit.html">Volver al formulario.</a></p>
   </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 /**
- * RGB Test - rgb_test_2.php
+ * RGB Test - rgb-test-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("rgb_test_2");
+session_name("rgb-test-2");
 session_start();
 ?>
 <!DOCTYPE html>

@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - usu_modificar2.php
+ * Biblioteca - usu-modificar-2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ $id = recogeParaConsulta($db, 'id');
 
 if ($id=="''") {
     cabecera('Usuarios - Modificar 2', CABECERA_SIN_CURSOR, 'menuUsuarios');
-    print "<p>No se ha seleccionado ningún registro.</p>\n";
+    print "<p>No se ha seleccionado ningï¿½n registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
         WHERE id=$id";
@@ -50,7 +50,7 @@ if ($id=="''") {
         } else {
             $valor = $result->fetch();
             cabecera('Usuarios - Modificar 2', CABECERA_CON_CURSOR, 'menuUsuarios');
-            print "<form action=\"usu_modificar3.php\" method=\"".FORM_METHOD."\">
+            print "<form action=\"usu-modificar-3.php\" method=\"".FORM_METHOD."\">
   <p>Modifique los campos que desee:</p>
   <table>
     <tbody>

@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - usu_modificar1.php
+ * Biblioteca - usu-modificar-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -36,7 +36,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se ha creado todavía ningún registro en la agenda.</p>\n";
+    print "<p>No se ha creado todavï¿½a ningï¿½n registro en la agenda.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbUsuarios
         ORDER BY $campo $orden";
@@ -44,7 +44,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"usu_modificar2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"usu-modificar-2.php\" method=\"".FORM_METHOD."\">
   <p>Indique el registro que quiera modificar:</p>
   <table border=\"1\">
     <thead>

@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas - cit_listar.php
+ * Citas - cit-listar.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -37,9 +37,9 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se han creado todavía citas.</p>\n";
+    print "<p>No se han creado todavï¿½a citas.</p>\n";
 } else {
-    // En esta consulta he tenido que añadir id_cita porque las dos
+    // En esta consulta he tenido que aï¿½adir id_cita porque las dos
     // tablas tienen un campo id y quiero el id de la cita no del autor
     $consulta = "SELECT $dbCitas.id as id_cita, * FROM $dbCitas, $dbAutores
         WHERE $dbCitas.id_autor=$dbAutores.id

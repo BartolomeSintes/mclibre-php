@@ -1,6 +1,6 @@
 <?php
 /**
- * Comprobación de datos ctype_ 2 - comprobacion_datos_ctype_2.php
+ * Comprobación de datos ctype_ 2 - comprobacion-datos-ctype-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
     <title>Funciones ctype_ (Resultado). Comprobación de datos.
       Programación web en PHP. Bartolomé Sintes Marco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   </head>
 
   <body>
@@ -187,7 +187,7 @@ if (!isset($_REQUEST["dato"])) {
     print "\n";
 }
 
-print "    <p style=\"clear: both; padding-top: 1em;\"><a href=\"comprobacion_datos_ctype_1.php\">Volver al formulario.</a></p>\n";
+print "    <p style=\"clear: both; padding-top: 1em;\"><a href=\"comprobacion-datos-ctype-1.php\">Volver al formulario.</a></p>\n";
 ?>
 
     <footer>

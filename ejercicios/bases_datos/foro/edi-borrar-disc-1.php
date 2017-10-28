@@ -1,9 +1,9 @@
 <?php
 /**
- * Foro - edi_borrardisc1.php
+ * Foro - edi-borrar-disc-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -36,7 +36,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se ha creado todavía ningún registro.</p>\n";
+    print "<p>No se ha creado todavï¿½a ningï¿½n registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbDiscusiones
         ORDER BY $campo $orden";
@@ -44,9 +44,9 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"edi_borrardisc2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"edi-borrar-disc-2.php\" method=\"".FORM_METHOD."\">
   <p>Marque las discusiones que quiera borrar. Tenga en cuenta que
-    al borrar una discusión se borrarán también las intervenciones
+    al borrar una discusiï¿½n se borrarï¿½n tambiï¿½n las intervenciones
     correspondientes.</p>
   <table border=\"1\">
     <thead>
@@ -64,12 +64,12 @@ if (!$result) {
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
         <th><a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Título
+          Tï¿½tulo
           <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
         <th><a href=\"$_SERVER[PHP_SELF]?campo=descripcion&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-          Descripción
+          Descripciï¿½n
           <a href=\"$_SERVER[PHP_SELF]?campo=descripcion&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
       </tr>

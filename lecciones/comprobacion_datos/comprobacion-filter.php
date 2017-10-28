@@ -27,6 +27,6 @@ if ($dato == "") {
 }
 ?>
 
-    <p><a href="comprobacion_filter.html">Volver al formulario.</a></p>
+    <p><a href="comprobacion-filter.html">Volver al formulario.</a></p>
   </body>
 </html>

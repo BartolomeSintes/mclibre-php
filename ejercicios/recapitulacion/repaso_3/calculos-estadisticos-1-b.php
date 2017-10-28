@@ -1,6 +1,6 @@
 <?php
 /**
- * Cálculos estadísticos (Resultado 2) calculos_estadisticos_1b.php
+ * Cálculos estadísticos (Resultado 2) calculos-estadisticos-1-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -121,7 +121,7 @@ if (!$numerosOk) {
     }
 }
 
-print "<p><a href=\"calculos_estadisticos_1.html\">Volver al formulario inicial.</a></p>\n";
+print "<p><a href=\"calculos-estadisticos-1.html\">Volver al formulario inicial.</a></p>\n";
 ?>
 
 <address>

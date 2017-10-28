@@ -1,9 +1,9 @@
 <?php
 /**
  * Compraventa - funciones.php
- * 
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ *
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org
@@ -27,18 +27,18 @@ define ('SQLITE', 'SQLite');
 $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL 
-    define('MYSQL_PASSWORD', '');          // Contraseña de usuario de MySQL
+    define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL
+    define('MYSQL_PASSWORD', '');          // Contraseï¿½a de usuario de MySQL
     $dbDb        = 'mclibre_compraventa';  // Nombre de la base de datos
     $dbUsuarios  = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
-    $dbArticulos = $dbDb.'.articulos';     // Nombre de la tabla de Artículos
-    $consultaExisteTabla = "SELECT COUNT(*) as existe_db 
+    $dbArticulos = $dbDb.'.articulos';     // Nombre de la tabla de Artï¿½culos
+    $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
 } elseif ($dbMotor==SQLITE) {
     $dbDb        = '/home/barto/mclibre/tmp/mclibre/mclibre_compraventa.sqlite3';  // Nombre de la base de datos
     $dbUsuarios  = 'usuarios';             // Nombre de la tabla de Usuarios
     $dbArticulos = 'articulos';            // Nombre de la tabla de Agendas
-    $consultaExisteTabla = "SELECT COUNT(*) as existe_db 
+    $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
 }
 
@@ -48,29 +48,29 @@ $administradorPassword = 'root';  // Password del usuario Administrador
 // Si $administradorPassword = '', no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
-$tamUsuario      = 20;  // Tamaño del campo Usuario
-$tamPassword     = 20;  // Tamaño del campo Contraseña
-$tamCifrado      = 32;  // Tamaño del campo contraseña en MD5
-$tamArticulo     = 40;  // Tamaño del campo Artículo
-$tamPrecio       = 10;  // Tamaño del campo precio
-$tamIdComprador  = 10;  // Tamaño del campo id Comprador
-$tamIdVendedor   = 10;  // Tamaño del campo id Vendedor
+$tamUsuario      = 20;  // Tamaï¿½o del campo Usuario
+$tamPassword     = 20;  // Tamaï¿½o del campo Contraseï¿½a
+$tamCifrado      = 32;  // Tamaï¿½o del campo contraseï¿½a en MD5
+$tamArticulo     = 40;  // Tamaï¿½o del campo Artï¿½culo
+$tamPrecio       = 10;  // Tamaï¿½o del campo precio
+$tamIdComprador  = 10;  // Tamaï¿½o del campo id Comprador
+$tamIdVendedor   = 10;  // Tamaï¿½o del campo id Vendedor
 $tamFechaCompra  = 10;
-$maxRegUsuarios  = 20;  // Número máximo de registros en la tabla Usuarios
-$maxRegArticulos = 20;  // Número máximo de registros por usuario en la tabla Artículos
+$maxRegUsuarios  = 20;  // Nï¿½mero mï¿½ximo de registros en la tabla Usuarios
+$maxRegArticulos = 20;  // Nï¿½mero mï¿½ximo de registros por usuario en la tabla Artï¿½culos
 $recorta = array(
     'usuario'     => $tamUsuario,
     'password'    => $tamCifrado,
-    'articulo'    => $tamArticulo, 
+    'articulo'    => $tamArticulo,
     'precio'      => $tamPrecio,
-    'idComprador' => $tamIdComprador, 
+    'idComprador' => $tamIdComprador,
     'idVendedor'  => $tamIdVendedor,
     'fechaCompra' => $tamFechaCompra);
 
 function conectaDb()
 {
     global $dbMotor, $dbDb;
-    
+
     try {
         if ($dbMotor==MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
@@ -90,10 +90,10 @@ function conectaDb()
 
 function borraTodoMySQL($db)
 {
-    global $dbDb, $dbArticulos, $dbUsuarios, $tamUsuario, $tamCifrado, $tamArticulo, 
+    global $dbDb, $dbArticulos, $dbUsuarios, $tamUsuario, $tamCifrado, $tamArticulo,
         $tamPrecio, $tamIdComprador, $tamIdVendedor, $tamFechaCompra,
         $administradorNombre, $administradorPassword;
-    
+
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
         print "<p>Base de datos borrada correctamente.</p>\n";
@@ -105,8 +105,8 @@ function borraTodoMySQL($db)
         print "<p>Base de datos creada correctamente.</p>\n";
         $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-            usuario VARCHAR($tamUsuario), 
-            password VARCHAR($tamCifrado),   
+            usuario VARCHAR($tamUsuario),
+            password VARCHAR($tamCifrado),
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_usuarios)) {
             print "<p>Tabla de Usuarios creada correctamente.</p>\n";
@@ -114,7 +114,7 @@ function borraTodoMySQL($db)
             print "<p>Error al crear la tabla de Usuarios.</p>\n";
         }
         if ($administradorPassword!='') {
-            $consulta = "INSERT INTO $dbUsuarios 
+            $consulta = "INSERT INTO $dbUsuarios
                 VALUES (NULL, '$administradorNombre', '"
                 .md5($administradorPassword)."')";
             if ($db->query($consulta)) {
@@ -125,19 +125,19 @@ function borraTodoMySQL($db)
         }
         $consulta_creatabla_articulos = "CREATE TABLE $dbArticulos (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-            articulo VARCHAR($tamArticulo), 
-            precio FLOAT, 
-            id_vendedor INTEGER, 
-            id_comprador INTEGER, 
-            reservado BOOLEAN, 
+            articulo VARCHAR($tamArticulo),
+            precio FLOAT,
+            id_vendedor INTEGER,
+            id_comprador INTEGER,
+            reservado BOOLEAN,
             fecha_reserva DATETIME,
-            comprado BOOLEAN, 
+            comprado BOOLEAN,
             fecha_compra DATE,
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_articulos)) {
-            print "<p>Tabla de Artículos creada correctamente.</p>\n";
+            print "<p>Tabla de Artï¿½culos creada correctamente.</p>\n";
         } else {
-            print "<p>Error al crear la tabla de Artículos.</p>\n";
+            print "<p>Error al crear la tabla de Artï¿½culos.</p>\n";
         }
     } else {
         print "<p>Error al crear la base de datos.</p>\n";
@@ -146,7 +146,7 @@ function borraTodoMySQL($db)
 
 function borraTodoSqlite($db)
 {
-    global $dbArticulos, $dbUsuarios, $tamUsuario, $tamCifrado,$tamArticulo, 
+    global $dbArticulos, $dbUsuarios, $tamUsuario, $tamCifrado,$tamArticulo,
         $tamPrecio, $tamIdComprador, $tamIdVendedor, $tamFechaCompra,
         $administradorNombre, $administradorPassword;
 
@@ -164,8 +164,8 @@ function borraTodoSqlite($db)
     }
     $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
-        usuario VARCHAR($tamUsuario), 
-        password VARCHAR($tamCifrado)  
+        usuario VARCHAR($tamUsuario),
+        password VARCHAR($tamCifrado)
         )";
     if ($db->query($consulta_creatabla_usuarios)) {
         print "<p>Tabla de Usuarios creada correctamente.</p>\n";
@@ -173,7 +173,7 @@ function borraTodoSqlite($db)
         print "<p>Error al crear la tabla de Usuarios.</p>\n";
     }
     if ($administradorPassword!='') {
-        $consulta = "INSERT INTO $dbUsuarios 
+        $consulta = "INSERT INTO $dbUsuarios
             VALUES (NULL, '$administradorNombre', '".md5($administradorPassword)."')";
         if ($db->query($consulta)) {
             print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
@@ -183,19 +183,19 @@ function borraTodoSqlite($db)
     }
     $consulta_creatabla_articulos = "CREATE TABLE $dbArticulos (
         id INTEGER PRIMARY KEY,
-        articulo VARCHAR($tamArticulo), 
-        precio FLOAT, 
-        id_vendedor INTEGER, 
-        id_comprador INTEGER, 
-        reservado BOOLEAN, 
+        articulo VARCHAR($tamArticulo),
+        precio FLOAT,
+        id_vendedor INTEGER,
+        id_comprador INTEGER,
+        reservado BOOLEAN,
         fecha_reserva DATETIME,
-        comprado BOOLEAN, 
+        comprado BOOLEAN,
         fecha_compra DATE
         )";
     if ($db->query($consulta_creatabla_articulos)) {
-       print "<p>Tabla de Artículos creada correctamente.</p>\n";
+       print "<p>Tabla de Artï¿½culos creada correctamente.</p>\n";
     } else {
-        print "<p>Error al crear la tabla de Artículos.</p>\n";
+        print "<p>Error al crear la tabla de Artï¿½culos.</p>\n";
     }
 }
 
@@ -203,11 +203,11 @@ function recorta($campo, $cadena)
 {
     global $recorta;
 
-    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena; 
+    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena;
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='') 
+function recogeParaConsulta($db, $var, $var2='')
 {
     $tmp = (isset($_REQUEST[$var])&&($_REQUEST[$var]!='')) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
@@ -223,7 +223,7 @@ function recogeParaConsulta($db, $var, $var2='')
     return $tmp;
 }
 
-function recogeMatrizParaConsulta($db, $var) 
+function recogeMatrizParaConsulta($db, $var)
 {
     $tmpMatriz = array();
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
@@ -262,19 +262,19 @@ function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
         if (isset($var[0])&&($var[0]=="'")) {
-            $var = substr($var, 1, strlen($var)-1); 
+            $var = substr($var, 1, strlen($var)-1);
         }
         if (isset($var[strlen($var)-1])&&($var[strlen($var)-1]=="'")) {
-            $var = substr($var, 0, strlen($var)-1); 
+            $var = substr($var, 0, strlen($var)-1);
         }
     }
     return $var;
 }
 
-function cabecera($texto, $menu='menu_principal') 
+function cabecera($texto, $menu='menu_principal')
 {
     global $administradorNombre;
-    
+
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
        \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
@@ -282,7 +282,7 @@ function cabecera($texto, $menu='menu_principal')
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
   <title>www.mclibre.org - Compraventa - $texto</title>
-  <link href=\"mclibre_soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link href=\"mclibre-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>
 
 <body onload=\"document.getElementById('cursor').focus()\">
@@ -291,19 +291,19 @@ function cabecera($texto, $menu='menu_principal')
 <ul>\n";
     if ($menu=='menu_principal') {
         print "  <li><a href=\"index.php\">Conectar</a></li>
-    <li><a href=\"listar.php\">Ver artículos</a></li>";
+    <li><a href=\"listar.php\">Ver artï¿½culos</a></li>";
     } elseif ($menu==$administradorNombre) {
-        print "    <li><a href=\"adm_borrartodo1.php\">Borrar todo</a></li>
+        print "    <li><a href=\"adm-borrar-todo-1.php\">Borrar todo</a></li>
     <li><a href=\"salir.php\">Desconectar</a></li>";
     } elseif ($menu=='compra') {
         print "    <li><a href=\"index.php\">Inicio</a></li>
-    <li><a href=\"listar.php?compraventa=compra\">Artículos en venta</a></li>
+    <li><a href=\"listar.php?compraventa=compra\">Artï¿½culos en venta</a></li>
     <li><a href=\"com_reservar1.php\">Reservar</a></li>
     <li><a href=\"com_anularreserva1.php\">Anular</a></li>
     <li><a href=\"com_comprar1.php\">Comprar</a></li>";
     } elseif ($menu=='venta') {
         print "    <li><a href=\"index.php\">Inicio</a></li>
-    <li><a href=\"ven_anyadir1.php\">Añadir</a></li>
+    <li><a href=\"ven_anyadir1.php\">Aï¿½adir</a></li>
     <li><a href=\"listar.php?compraventa=venta\">Ver</a></li>
     <li><a href=\"ven_modificar1.php\">Modificar</a></li>
     <li><a href=\"ven_borrar1.php\">Borrar</a></li>";
@@ -313,29 +313,29 @@ function cabecera($texto, $menu='menu_principal')
     <li><a href=\"es_compras.php\">Compras realizadas</a></li>
     <li><a href=\"es_ventas.php\">Ventas realizadas</a></li>
     <li><a href=\"salir.php\">Desconectar</a></li>";
-    } 
+    }
     print "</ul>\n</div>\n\n<div id=\"contenido\">\n";
 }
 
-function pie() 
+function pie()
 {
     global $administradorPassword, $_SESSION;
-    
+
     if (($administradorPassword!='')&&!isset($_SESSION['compraventaUsuario'])) {
         print "<p><strong>Nota</strong>: El usuario Administrador "
-            ."se llama <strong>root</strong> y su contraseña es\ntambién "
+            ."se llama <strong>root</strong> y su contraseï¿½a es\ntambiï¿½n "
             ."<strong>root</strong>.</p>\n";
     }
     print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Pï¿½ginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de este programa: 27 de febrero de 2008 
+  Autor: Bartolomï¿½ Sintes Marco<br />
+  ï¿½ltima modificaciï¿½n de este programa: 27 de febrero de 2008
 </address>
-<p class="licencia">El programa PHP que genera esta página está bajo 
+<p class="licencia">El programa PHP que genera esta pï¿½gina estï¿½ bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

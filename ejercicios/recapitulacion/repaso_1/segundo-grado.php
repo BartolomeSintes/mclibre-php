@@ -1,6 +1,6 @@
 <?php
 /**
- * Ecuación de segundo grado - segundo_grado.php
+ * Ecuación de segundo grado - segundo-grado.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -148,7 +148,7 @@ if ($aOk && $bOk && $cOk) {
 
 ?>
 
-<p><a href="segundo_grado.html">Volver al formulario.</a></p>
+<p><a href="segundo-grado.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

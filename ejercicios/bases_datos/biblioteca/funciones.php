@@ -1,9 +1,9 @@
 <?php
 /**
  * Biblioteca - funciones.php
- * 
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ *
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -22,53 +22,53 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    TRUE);   // Para función cabecera()           
-define('CABECERA_SIN_CURSOR',    FALSE);  // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
+define('CABECERA_CON_CURSOR',    TRUE);   // Para funciï¿½n cabecera()
+define('CABECERA_SIN_CURSOR',    FALSE);  // Para funciï¿½n cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envï¿½an con GET
+//define('FORM_METHOD',            'post'); // Formularios se envï¿½an con POST
 define ('MYSQL', 'MySQL');
 define ('SQLITE', 'SQLite');
 $dbMotor = SQLITE;                        // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL 
-    define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
+    define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
+    define('MYSQL_PASSWORD', '');         // Contraseï¿½a de usuario de MySQL
     $dbDb        = 'mclibre_biblioteca';  // Nombre de la base de datos
     $dbObras     = $dbDb.'.obras';        // Nombre de la tabla Obras
     $dbUsuarios  = $dbDb.'.usuarios';     // Nombre de la tabla Ususarios
-    $dbPrestamos = $dbDb.'.prestamos';    // Nombre de la tabla de Préstamos
+    $dbPrestamos = $dbDb.'.prestamos';    // Nombre de la tabla de Prï¿½stamos
 } elseif ($dbMotor==SQLITE) {
     $dbDb        = '/home/barto/mclibre/tmp/mclibre/mclibre_biblioteca.sqlite';  // Nombre de la base de datos
     $dbObras     = 'obras';               // Nombre de la tabla Obras
     $dbUsuarios  = 'usuarios';            // Nombre de la tabla Ususarios
-    $dbPrestamos = 'prestamos';           // Nombre de la tabla de Préstamos
+    $dbPrestamos = 'prestamos';           // Nombre de la tabla de Prï¿½stamos
 }
 
 define('ZONA_HORARIA',      'Europe/Madrid');  // Zona horaria del servidor
-define('TAM_TITULO',        50);  // Tamaño del campo Obras > Título
-define('TAM_AUTOR',         50);  // Tamaño del campo Obras > Autor
-define('TAM_EDITORIAL',     50);  // Tamaño del campo Obras > Editorial
-define('TAM_NOMBRE',        50);  // Tamaño del campo Usuarios > Nombre
-define('TAM_APELLIDOS',     50);  // Tamaño del campo Usuarios > Apellidos
-define('TAM_DNI',           10);  // Tamaño del campo Usuarios > DNI
-define('TAM_FECHA',         10);  // Tamaño del campo Préstamo > Fecha
-define('MAX_REG_OBRAS',     20);  // Número máximo de registros en la tabla Obras
-define('MAX_REG_USUARIOS',  20);  // Número máximo de registros en la tabla Usuarios
-define('MAX_REG_PRESTAMOS', 20);  // Número máximo de registros en la tabla Préstamos
+define('TAM_TITULO',        50);  // Tamaï¿½o del campo Obras > Tï¿½tulo
+define('TAM_AUTOR',         50);  // Tamaï¿½o del campo Obras > Autor
+define('TAM_EDITORIAL',     50);  // Tamaï¿½o del campo Obras > Editorial
+define('TAM_NOMBRE',        50);  // Tamaï¿½o del campo Usuarios > Nombre
+define('TAM_APELLIDOS',     50);  // Tamaï¿½o del campo Usuarios > Apellidos
+define('TAM_DNI',           10);  // Tamaï¿½o del campo Usuarios > DNI
+define('TAM_FECHA',         10);  // Tamaï¿½o del campo Prï¿½stamo > Fecha
+define('MAX_REG_OBRAS',     20);  // Nï¿½mero mï¿½ximo de registros en la tabla Obras
+define('MAX_REG_USUARIOS',  20);  // Nï¿½mero mï¿½ximo de registros en la tabla Usuarios
+define('MAX_REG_PRESTAMOS', 20);  // Nï¿½mero mï¿½ximo de registros en la tabla Prï¿½stamos
 
 $recorta = array(
-    'titulo'    => TAM_TITULO, 
+    'titulo'    => TAM_TITULO,
     'autor'     => TAM_AUTOR,
-    'editorial' => TAM_EDITORIAL, 
-    'nombre'    => TAM_NOMBRE, 
+    'editorial' => TAM_EDITORIAL,
+    'nombre'    => TAM_NOMBRE,
     'apellidos' => TAM_APELLIDOS,
-    'dni'       => TAM_DNI, 
+    'dni'       => TAM_DNI,
     'fecha'     => TAM_FECHA);
 
 function conectaDb()
 {
     global $dbMotor, $dbDb;
-    
+
     try {
         if ($dbMotor==MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
@@ -90,11 +90,11 @@ function recorta($campo, $cadena)
 {
     global $recorta;
 
-    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena; 
+    $tmp = isset($recorta[$campo]) ? substr($cadena, 0, $recorta[$campo]) : $cadena;
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='') 
+function recogeParaConsulta($db, $var, $var2='')
 {
     $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
@@ -110,7 +110,7 @@ function recogeParaConsulta($db, $var, $var2='')
     return $tmp;
 }
 
-function recogeMatrizParaConsulta($db, $var) 
+function recogeMatrizParaConsulta($db, $var)
 {
     $tmpMatriz = array();
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
@@ -149,10 +149,10 @@ function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
         if (isset($var[0]) && ($var[0]=="'")) {
-            $var = substr($var, 1, strlen($var)-1); 
+            $var = substr($var, 1, strlen($var)-1);
         }
         if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
-            $var = substr($var, 0, strlen($var)-1); 
+            $var = substr($var, 0, strlen($var)-1);
         }
     }
     return $var;
@@ -168,7 +168,7 @@ function fechaAmd($dma)
     return substr($dma, 7, 4)."-".substr($dma, 4, 2)."-".substr($dma, 1, 2);
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal') 
+function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
 {
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
@@ -177,7 +177,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
   <title>www.mclibre.org - Biblioteca - $texto</title>
-  <link href=\"mclibre_php_soluciones_proyectos_comun.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link href=\"mclibre-php-soluciones-proyectos-comun.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>\n\n";
     if ($conCursor) {
         print "<body onload=\"document.getElementById('cursor').focus()\">\n";
@@ -189,48 +189,48 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
 <ul>\n";
     if ($menu=='menuObras') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"obr_anyadir1.php\">Añadir</a></li>
-  <li><a href=\"obr_listar.php\">Listar</a></li>
-  <li><a href=\"obr_buscar1.php\">Buscar</a></li>
-  <li><a href=\"obr_modificar1.php\">Modificar</a></li>
-  <li><a href=\"obr_borrar1.php\">Borrar</a></li>
-  <li><a href=\"obr_borrartodo1.php\">Borrar todo</a></li>";
+  <li><a href=\"obr-anyadir-1.php\">Aï¿½adir</a></li>
+  <li><a href=\"obr-listar.php\">Listar</a></li>
+  <li><a href=\"obr-buscar-1.php\">Buscar</a></li>
+  <li><a href=\"obr-modificar-1.php\">Modificar</a></li>
+  <li><a href=\"obr-borrar-1.php\">Borrar</a></li>
+  <li><a href=\"obr-borrar-todo-1.php\">Borrar todo</a></li>";
     } elseif ($menu=='menuUsuarios') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"usu_anyadir1.php\">Añadir</a></li>
-  <li><a href=\"usu_listar.php\">Listar</a></li>
-  <li><a href=\"usu_buscar1.php\">Buscar</a></li>
-  <li><a href=\"usu_modificar1.php\">Modificar</a></li>
-  <li><a href=\"usu_borrar1.php\">Borrar</a></li>
-  <li><a href=\"usu_borrartodo1.php\">Borrar todo</a></li>";
+  <li><a href=\"usu-anyadir-1.php\">Aï¿½adir</a></li>
+  <li><a href=\"usu-listar.php\">Listar</a></li>
+  <li><a href=\"usu-buscar-1.php\">Buscar</a></li>
+  <li><a href=\"usu-modificar-1.php\">Modificar</a></li>
+  <li><a href=\"usu-borrar-1.php\">Borrar</a></li>
+  <li><a href=\"usu-borrar-todo-1.php\">Borrar todo</a></li>";
     } elseif ($menu=='menuPrestamos') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"pre_anyadir1.php\">Préstamo</a></li>
-  <li><a href=\"pre_devolucion1.php\">Devolución</a></li>
-  <li><a href=\"pre_listar.php\">Listar</a></li>
-  <li><a href=\"pre_borrar1.php\">Borrar</a></li>
-  <li><a href=\"pre_borrartodo1.php?\">Borrar todo</a></li>";
+  <li><a href=\"pre-anyadir-1.php\">Prï¿½stamo</a></li>
+  <li><a href=\"pre-devolucion-1.php\">Devoluciï¿½n</a></li>
+  <li><a href=\"pre-listar.php\">Listar</a></li>
+  <li><a href=\"pre-borrar-1.php\">Borrar</a></li>
+  <li><a href=\"pre-borrar-todo-1.php?\">Borrar todo</a></li>";
     } else {
-        print "  <li><a href=\"obr_index.php\">Obras</a></li>
-  <li><a href=\"usu_index.php\">Usuarios</a></li>
-  <li><a href=\"pre_index.php\">Préstamos</a></li>
-  <li><a href=\"com_borrartodo1.php\">Borrar todo</a></li>";
+        print "  <li><a href=\"obr-index.php\">Obras</a></li>
+  <li><a href=\"usu-index.php\">Usuarios</a></li>
+  <li><a href=\"pre-index.php\">Prï¿½stamos</a></li>
+  <li><a href=\"com-borrar-todo-1.php\">Borrar todo</a></li>";
     }
     print "\n</ul>\n</div>\n\n<div id=\"contenido\">\n";
 }
 
-function pie() 
+function pie()
 {
     print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Pï¿½ginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de este programa: 21 de mayo de 2009
+  Autor: Bartolomï¿½ Sintes Marco<br />
+  ï¿½ltima modificaciï¿½n de este programa: 21 de mayo de 2009
 </address>
-<p class="licencia">El programa PHP que genera esta página está bajo 
+<p class="licencia">El programa PHP que genera esta pï¿½gina estï¿½ bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

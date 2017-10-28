@@ -1,6 +1,6 @@
 <?php
 /**
- * Ley de Ohm - ley_ohm.php
+ * Ley de Ohm - ley-ohm.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -130,7 +130,7 @@ if ($tensionOk && $intensidadOk && $resistenciaOk) {
 
 ?>
 
-<p><a href="ley_ohm.html">Volver al formulario.</a></p>
+<p><a href="ley-ohm.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

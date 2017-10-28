@@ -1,9 +1,9 @@
 <?php
 /**
- * Biblioteca - com_borrartodo1.php
+ * Biblioteca - com-borrar-todo-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -25,9 +25,9 @@
 include('funciones.php');
 cabecera('Borrar todo 1', CABECERA_SIN_CURSOR, 'menu_principal');
 
-print "<form action=\"com_borrartodo2.php\" method=\"".FORM_METHOD."\">
-  <p>¿Está seguro?</p>
-  <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
+print "<form action=\"com-borrar-todo-2.php\" method=\"".FORM_METHOD."\">
+  <p>ï¿½Estï¿½ seguro?</p>
+  <p><input type=\"submit\" value=\"Sï¿½\" name=\"si\" />
     <input type=\"submit\" value=\"No\" name=\"no\" /></p>
 </form>\n";
 

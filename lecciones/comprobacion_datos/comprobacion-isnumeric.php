@@ -27,6 +27,6 @@ if ($dato == "") {
 }
 ?>
 
-    <p><a href="comprobacion_isnumeric.html">Volver al formulario.</a></p>
+    <p><a href="comprobacion-isnumeric.html">Volver al formulario.</a></p>
   </body>
 </html>

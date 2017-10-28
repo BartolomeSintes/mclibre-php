@@ -1,6 +1,6 @@
 <?php
 /**
- * Ejemplo de controles ocultos - controles_ocultos_2.php
+ * Ejemplo de controles ocultos - controles-ocultos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
   <title>Controles ocultos (Formulario 2). Controles ocultos.
   Ejemplos. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css"
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
   title="Color" />
 </head>
 
@@ -52,7 +52,7 @@ $nombre = recoge("nombre");
 
 print "<p>Su nombre es <strong>$nombre</strong>.</p>\n";
 
-print "<form action=\"controles_ocultos_3.php\" method=\"get\">
+print "<form action=\"controles-ocultos-3.php\" method=\"get\">
   <p>Escriba sus apellidos:<input type=\"text\" name=\"apellidos\" size=\"30\"
     maxlength=\"20\" /></p>
 
@@ -64,7 +64,7 @@ print "<form action=\"controles_ocultos_3.php\" method=\"get\">
 
 ?>
 
-<p><a href="controles_ocultos_1.html">Volver al formulario anterior.</a></p>
+<p><a href="controles-ocultos-1.html">Volver al formulario anterior.</a></p>
 
 <p class="ultmod">Última modificación de esta página: 21 de octubre de 2014</p>
 

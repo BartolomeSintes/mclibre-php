@@ -1,6 +1,6 @@
 <?php
 /**
- * Calculadora de letra del DNI - calculadora_dni.php
+ * Calculadora de letra del DNI - calculadora-dni.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -72,7 +72,7 @@ if ($dniOk) {
 
 ?>
 
-<p><a href="calculadora_dni.html">Volver al formulario.</a></p>
+<p><a href="calculadora-dni.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

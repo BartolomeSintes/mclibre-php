@@ -1,6 +1,6 @@
 <?php
 /**
- * Contador de días (Resultado 1) - contador_dias_2.php
+ * Contador de días (Resultado 1) - contador-dias-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -68,7 +68,7 @@ if ($numero == "") {
 
 // Si el valor recibido es correcto ...
 if ($numeroOk) {
-    print "<form action=\"contador_dias_3.php\" method=\"get\">\n";
+    print "<form action=\"contador-dias-3.php\" method=\"get\">\n";
     print "  <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>\n\n";
     print "  <table class=\"conborde\">\n";
     print "    <tbody style=\"text-align: center\" >\n";
@@ -102,7 +102,7 @@ if ($numeroOk) {
 
 ?>
 
-<p><a href="contador_dias_1.html">Volver al formulario.</a></p>
+<p><a href="contador-dias-1.html">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

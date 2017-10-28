@@ -61,7 +61,7 @@ $ancho = 100;
 $color = rand(0, $numeroColores - 1);
 
 print "<p><input type=\"image\" name=\"tiro\" alt=\"Tiro al plato\" "
-    . "src=\"imagenes_21_svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" /></p>\n";
+    . "src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" /></p>\n";
 
 ?>
 

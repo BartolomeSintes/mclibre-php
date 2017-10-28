@@ -1,6 +1,6 @@
 <?php
 /**
- * Cálculos estadísticos (Resultado 1) calculos_estadisticos_1a.php
+ * Cálculos estadísticos (Resultado 1) calculos-estadisticos-1-a.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -74,7 +74,7 @@ if ($numero=="") {
 if ($numeroOk) {
     print "<p>Escriba todos los valores y marque las casillas correspondientes "
         ."a los cálculos que quiere.</p>\n";
-    print "<form action=\"calculos_estadisticos_1b.php\" method=\"".FORM_METHOD."\">\n";
+    print "<form action=\"calculos-estadisticos-1-b.php\" method=\"".FORM_METHOD."\">\n";
     print "  <table>\n    <tbody>\n";
     for ($i=1; $i<=$numero; $i++) {
         print "      <tr>\n        <td><strong>Número $i</strong>:</td>
@@ -90,7 +90,7 @@ if ($numeroOk) {
     <input type=\"reset\" value=\"Borrar\" />\n</form>\n";
 }
 
-print "<p><a href=\"calculos_estadisticos_1.html\">Volver al formulario.</a></p>\n";
+print "<p><a href=\"calculos-estadisticos-1.html\">Volver al formulario.</a></p>\n";
 ?>
 
 <address>

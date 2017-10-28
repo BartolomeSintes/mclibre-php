@@ -1,9 +1,9 @@
 <?php
 /**
- * Citas -  cit_anyadir1.php
+ * Citas -  cit-anyadir-1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,23 +29,23 @@ if (!isset($_SESSION['citasUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Citas - Añadir 1', 'menu_citas');
+    cabecera('Citas - Aï¿½adir 1', 'menu_citas');
     $consulta = "SELECT COUNT(*) FROM $dbAutores";
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "<p>No se ha creado todavía ningún autor.</p>\n";
+        print "<p>No se ha creado todavï¿½a ningï¿½n autor.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas";
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegCitas) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "<p>Se ha alcanzado el nï¿½mero mï¿½ximo de registros que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algï¿½n registro antes.</p>\n";
         } else {
-            print "<form action=\"cit_anyadir2.php\" method=\"get\">
+            print "<form action=\"cit-anyadir-2.php\" method=\"get\">
   <p>Escriba los datos de la nueva cita:</p>
   <table>
     <tbody>
@@ -68,7 +68,7 @@ if (!isset($_SESSION['citasUsuario'])) {
       </tr>
       </tbody>
   </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
+  <p><input type=\"submit\" value=\"Aï¿½adir\" /></p>
 </form>\n";
         }
     }

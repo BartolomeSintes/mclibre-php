@@ -1,6 +1,6 @@
 <?php
 /**
- * Rmbo de estrellas - rombo_estrellas.php
+ * Rmbo de estrellas - rombo-estrellas.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -82,7 +82,7 @@ if ($altoOk) {
 
 ?>
 
-<p><a href="rombo_estrellas.html">Volver al formulario.</a></p>
+<p><a href="rombo-estrellas.html">Volver al formulario.</a></p>
 
 <p class="ultmod">Última modificación de esta página: 4 de noviembre de 2014</p>
 
