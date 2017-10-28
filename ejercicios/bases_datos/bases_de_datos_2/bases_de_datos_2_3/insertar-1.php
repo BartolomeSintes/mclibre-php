@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 2-3 - insertar_1.php
+ * Bases de datos 2-3 - insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -35,7 +35,7 @@ if (!$result) {
     print "      <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "      <p>Por favor, borre algún registro antes.</p>\n";
 } else {
-    print "      <form action=\"insertar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "      <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "        <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";
     print "        <table>\n";

@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-6 - modificar_1.php
+ * Bases de datos 1-6 - modificar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -30,7 +30,7 @@ cabecera("Modificar 1", MENU_VOLVER);
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db->query($consulta);
 
-print "      <form action=\"modificar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <form action=\"modificar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "        <p>Indique el registro que quiera modificar:</p>\n";
 print "\n";
 print "        <table class=\"conborde franjas\">\n";

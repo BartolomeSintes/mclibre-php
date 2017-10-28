@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 2-1 - buscar_1.php
+ * Bases de datos 2-1 - buscar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -34,7 +34,7 @@ if (!$result) {
 } elseif ($result->fetchColumn() == 0) {
     print "      <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    print "      <form action=\"buscar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "      <form action=\"buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "        <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";
     print "        <table>\n";

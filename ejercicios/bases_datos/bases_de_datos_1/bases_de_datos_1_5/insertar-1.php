@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-5 - insertar_1.php
+ * Bases de datos 1-5 - insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -26,7 +26,7 @@ require_once "biblioteca.php";
 
 cabecera("Añadir 1", MENU_VOLVER);
 
-print "      <form action=\"insertar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "        <p>Escriba los datos del nuevo registro:</p>\n";
 print "\n";
 print "        <table>\n";

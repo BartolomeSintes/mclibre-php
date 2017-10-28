@@ -51,9 +51,9 @@ session_start();
 // Biblioteca base de datos
 
 if ($dbMotor == MYSQL) {
-    require_once "biblioteca_mysql.php";
+    require_once "biblioteca-mysql.php";
 } elseif ($dbMotor == SQLITE) {
-    require_once "biblioteca_sqlite.php";
+    require_once "biblioteca-sqlite.php";
 }
 
 // Funciones comunes
@@ -111,7 +111,7 @@ function cabecera($texto, $menu)
     print "    <title>$texto. Bases de datos 2-4. Bases de datos (2). \n";
     print "      Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
     print "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "    <link href=\"mclibre_php_soluciones_proyectos.css.php\" rel=\"stylesheet\" type=\"text/css\" />\n";
+    print "    <link href=\"mclibre-php-soluciones-proyectos.css.php\" rel=\"stylesheet\" type=\"text/css\" />\n";
     print "  </head>\n";
     print "\n";
     print "  <body>\n";
@@ -121,12 +121,12 @@ function cabecera($texto, $menu)
     print "      <nav>\n";
     print "        <ul>\n";
     if ($menu == MENU_PRINCIPAL) {
-        print "          <li><a href=\"insertar_1.php\">Añadir registro</a></li>\n";
+        print "          <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
         print "          <li><a href=\"listar.php\">Listar</a></li>\n";
-        print "          <li><a href=\"borrar_1.php\">Borrar</a></li>\n";
-        print "          <li><a href=\"buscar_1.php\">Buscar</a></li>\n";
-        print "          <li><a href=\"modificar_1.php\">Modificar</a></li>\n";
-        print "          <li><a href=\"borrartodo_1.php\">Borrar todo</a></li>\n";
+        print "          <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+        print "          <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
+        print "          <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
+        print "          <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
     } elseif ($menu == MENU_VOLVER) {
         print "          <li><a href=\"index.php\">Página inicial</a></li>\n";
     } else {

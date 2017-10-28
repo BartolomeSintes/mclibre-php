@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 2-4 - insertar_1.php
+ * Bases de datos 2-4 - insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -38,7 +38,7 @@ if (!$result) {
     if (isset($_SESSION["error"])) {
         print $_SESSION["error"];
     }
-    print "      <form action=\"insertar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "      <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "        <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";
     print "        <table>\n";

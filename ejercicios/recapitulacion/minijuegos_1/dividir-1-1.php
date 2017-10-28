@@ -1,6 +1,6 @@
 <?php
 /**
- * Dividir 1-1 - dividir_1_1.php
+ * Dividir 1-1 - dividir-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,14 +29,14 @@
   <title>Dividir 1 (Formulario). Minijuegos (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   <style type="text/css">input { text-align: right; }</style>
 </head>
 
 <body>
 <h1>Dividir 1 (Formulario)</h1>
 
-<form action="dividir_1_2.php" method="get">
+<form action="dividir-1-2.php" method="get">
   <p>Escriba el resultado de la siguiente división:</p>
 
 <?php

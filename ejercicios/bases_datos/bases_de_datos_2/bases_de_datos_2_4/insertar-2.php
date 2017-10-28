@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 2-4 - insertar_2.php
+ * Bases de datos 2-4 - insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -106,7 +106,7 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
 $db = null;
 
 if (isset($_SESSION["error"])) {
-    header("location:insertar_1.php");
+    header("location:insertar-1.php");
 } else {
     header("location:index.php");
 }

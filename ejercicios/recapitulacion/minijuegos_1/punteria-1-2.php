@@ -1,6 +1,6 @@
 <?php
 /**
- * Puntería 1-2 - punteria_1_2.php
+ * Puntería 1-2 - punteria-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
   <title>Puntería 1 (Resultado). Minijuegos (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -95,7 +95,7 @@ if ($rOk && $xcOk && $ycOk && $xuOk && $yuOk) {
 }
 ?>
 
-<p><a href="punteria_1_1.php">Volver al formulario.</a></p>
+<p><a href="punteria-1-1.php">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

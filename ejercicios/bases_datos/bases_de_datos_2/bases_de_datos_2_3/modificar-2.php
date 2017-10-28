@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 2-3 - modificar_2.php
+ * Bases de datos 2-3 - modificar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -49,7 +49,7 @@ if ($id == "") {
             print "      <p>Error en la consulta.</p>\n";
         } else {
             $valor = $result->fetch();
-            print "      <form action=\"modificar_3.php\" method=\"" . FORM_METHOD . "\">\n";
+            print "      <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
             print "        <p>Modifique los campos que desee:</p>\n";
             print "\n";
             print "        <table>\n";

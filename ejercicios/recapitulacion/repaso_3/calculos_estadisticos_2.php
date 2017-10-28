@@ -33,7 +33,7 @@ function cabecera($texto)
   <title>Cálculos estadísticos 2 ($texto). Repaso 1.
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre_php_soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
+  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
   title=\"Color\" />
 </head>\n\n<body>
 <h1>Cálculos estadísticos 2 ($texto)</h1>\n";

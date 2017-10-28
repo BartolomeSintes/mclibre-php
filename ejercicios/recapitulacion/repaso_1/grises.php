@@ -28,7 +28,7 @@
   <meta charset="utf-8" />
   <title>Grises. Repaso (1).
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 2-2 - borrartodo_1.php
+ * Bases de datos 2-2 - borrar-todo-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -26,7 +26,7 @@ require_once "biblioteca.php";
 
 cabecera("Borrar todo 1", MENU_VOLVER);
 
-print "      <form action=\"borrartodo_2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "        <p>¿Está seguro?</p>\n";
 print "\n";
 print "        <p>\n";

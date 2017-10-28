@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-5 - borrartodo_2.php
+ * Bases de datos 1-5 - borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco

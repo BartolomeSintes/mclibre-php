@@ -1,6 +1,6 @@
 <?php
 /**
- * Puntería 1-1 - punteria_1_dibujo.php
+ * Puntería 1-1 - punteria-1-dibujo.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco

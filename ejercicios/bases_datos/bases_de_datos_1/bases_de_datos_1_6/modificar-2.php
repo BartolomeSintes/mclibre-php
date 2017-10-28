@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-6 - modificar_2.php
+ * Bases de datos 1-6 - modificar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -35,7 +35,7 @@ $result = $db->prepare($consulta);
 $result->execute(array(":id" => $id));
 $valor = $result->fetch();
 
-print "      <form action=\"modificar_3.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
 print "        <p>Modifique los campos que desee:</p>\n";
 print "\n";
 print "        <table>\n";

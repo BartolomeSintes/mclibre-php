@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-6 - borrar_1.php
+ * Bases de datos 1-6 - borrar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -30,7 +30,7 @@ cabecera("Borrar 1", MENU_VOLVER);
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db->query($consulta);
 
-print "      <form action=\"borrar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <form action=\"borrar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "        <p>Marque los registros que quiera borrar:</p>\n";
 print "\n";
 print "        <table class=\"conborde franjas\">\n";

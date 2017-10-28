@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 2-1 - borrar_1.php
+ * Bases de datos 2-1 - borrar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -39,7 +39,7 @@ if (!$result) {
     if (!$result) {
         print "      <p>Error en la consulta.</p>\n";
     } else {
-        print "      <form action=\"borrar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+        print "      <form action=\"borrar-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "        <p>Marque los registros que quiera borrar:</p>\n";
         print "\n";
         print "        <table class=\"conborde franjas\">\n";

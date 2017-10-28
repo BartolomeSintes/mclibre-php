@@ -1,6 +1,6 @@
 <?php
 /**
- * Puntería 2 - punteria_2.php
+ * Puntería 2 - punteria-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -29,7 +29,7 @@
   <title>Puntería 2 (Formulario). Minijuegos (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre_php_soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
@@ -97,7 +97,7 @@ $y     = rand($r, 200 - $r);
 
 print "  <p>Haga clic en el punto negro:</p>\n\n";
 
-print "  <p><input type=\"image\" name=\"dibujo\" src=\"punteria_1_dibujo.php?ancho=$ancho&amp;x=$x&amp;y=$y&amp;r=$r\" alt=\"punteria\" /></p>\n\n";
+print "  <p><input type=\"image\" name=\"dibujo\" src=\"punteria-1-dibujo.php?ancho=$ancho&amp;x=$x&amp;y=$y&amp;r=$r\" alt=\"punteria\" /></p>\n\n";
 
 print "  <p><input type=\"hidden\" name=\"x\" value=\"$x\" />\n";
 print "    <input type=\"hidden\" name=\"y\" value=\"$y\" />\n";

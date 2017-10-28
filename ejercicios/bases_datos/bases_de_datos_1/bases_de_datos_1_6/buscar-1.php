@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-6 - buscar_1.php
+ * Bases de datos 1-6 - buscar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
@@ -26,7 +26,7 @@ require_once "biblioteca.php";
 
 cabecera("Buscar 1", MENU_VOLVER);
 
-print "      <form action=\"buscar_2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <form action=\"buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "        <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
 print "\n";
 print "        <table>\n";

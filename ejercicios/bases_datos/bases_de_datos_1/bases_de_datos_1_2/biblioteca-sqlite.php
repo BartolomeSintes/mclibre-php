@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-2 - biblioteca_sqlite.php
+ * Bases de datos 1-2 - biblioteca-sqlite.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco

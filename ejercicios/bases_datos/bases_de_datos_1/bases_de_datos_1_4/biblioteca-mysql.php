@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 1-4 - biblioteca_mysql.php
+ * Bases de datos 1-4 - biblioteca-mysql.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2016 Bartolomé Sintes Marco
