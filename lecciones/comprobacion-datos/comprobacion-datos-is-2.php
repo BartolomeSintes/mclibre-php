@@ -54,7 +54,7 @@ if (!isset($_REQUEST["dato"])) {
     if ($dato != $_REQUEST["dato"] && $dato != "") {
         print "   <p>El texto introducido contiene caracteres potencialmente problemáticos (comillas, ampersand, etiquetas html, etc.). "
             . "Por seguridad se ha aplicado al texto la función recoge() comentada en "
-            . "<a href=\"http://www.mclibre.org/consultar/php/lecciones/php_recogida_datos.html#recoger-dato\">estos apuntes</a>.</p>\n";
+            . "<a href=\"http://www.mclibre.org/consultar/php/lecciones/php-recogida-datos.html#recoger-dato\">estos apuntes</a>.</p>\n";
         print "   <p>Tenga en cuenta que el resultado de las funciones mostrado puede ser diferente al que se obtendría utilizando el texto original.</p>\n";
         print "\n";
     }

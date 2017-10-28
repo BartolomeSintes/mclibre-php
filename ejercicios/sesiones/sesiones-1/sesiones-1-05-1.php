@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones_1_05");
+session_name("sesiones-1-05");
 session_start();
 
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {

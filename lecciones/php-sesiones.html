@@ -41,7 +41,7 @@
 
       <p>Una de las limitaciones de las páginas web es que cada página web es un documento independiente. Eso hace que dos programas PHP no puedan, en principio, compartir información.</p>
 
-      <p>Aunque un formulario puede enviar información a un programa mediante controles ocultos (como se comenta en el <a href="php_varios_1.html#controles-ocultos">apartado sobre controles ocultos de la lección Varios</a>), o una página puede redirigir a otra página enviando la información en la dirección (como se comenta en la <a href="php_cabeceras.html#redirecciones">lección sobre cabeceras</a>), eso no puede considerarse compartir información, puesto que la página que recibe la información no puede saber si la información ha sido manipulada por el camino.</p>
+      <p>Aunque un formulario puede enviar información a un programa mediante controles ocultos (como se comenta en el <a href="php-varios-1.html#controles-ocultos">apartado sobre controles ocultos de la lección Varios</a>), o una página puede redirigir a otra página enviando la información en la dirección (como se comenta en la <a href="php-cabeceras.html#redirecciones">lección sobre cabeceras</a>), eso no puede considerarse compartir información, puesto que la página que recibe la información no puede saber si la información ha sido manipulada por el camino.</p>
 
       <p>Por compartir información nos estamos refiriendo a utilizar variables comunes, sin que la información salga del servidor.</p>
 
@@ -113,7 +113,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
       <hr class="corta" />
 
-      <p>Las sesiones no deben confundirse con <a href="php_cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el disco duro del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="http://www.php.net/manual/es/book.session.php">capítulo dedicado a las sesiones</a>.</p>
+      <p>Las sesiones no deben confundirse con <a href="php-cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el disco duro del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="http://www.php.net/manual/es/book.session.php">capítulo dedicado a las sesiones</a>.</p>
 
       <p>El trabajo con sesiones tiene tres partes:</p>
       <ul>
@@ -196,7 +196,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
       <hr class="corta" />
 
-      <p>La creación de sesiones requiere el envío de cabeceras HTPP, por lo que la función session_start() debe utilizarse antes de empezar a escribir el contenido de la página. En caso contrario PHP producirá un aviso y no se creará la sesión. El motivo es que el identificador de sesión se utiliza en las cabeceras de respuesta HTTP y las cabeceras se envían antes del texto de la página. En la <a href="php_cabeceras.html">lección sobre cabeceras</a> se comenta con más detalle el problema del envío de cabeceras.</p>
+      <p>La creación de sesiones requiere el envío de cabeceras HTPP, por lo que la función session_start() debe utilizarse antes de empezar a escribir el contenido de la página. En caso contrario PHP producirá un aviso y no se creará la sesión. El motivo es que el identificador de sesión se utiliza en las cabeceras de respuesta HTTP y las cabeceras se envían antes del texto de la página. En la <a href="php-cabeceras.html">lección sobre cabeceras</a> se comenta con más detalle el problema del envío de cabeceras.</p>
 
       <p>El ejemplo siguiente es incorrecto, ya que utiliza la función session_start() después de haber escrito texto.</p>
 
@@ -219,7 +219,7 @@ session_start();
         </div>
       </div>
 
-      <p><strong>Nota:</strong> Como se comenta también en la <a href="php_cabeceras.html#buffer">lección sobre cabeceras</a>, dependiendo de la configuración de la directiva <a href="../otros/php_configuracion_1.html#output-buffering">output_buffering</a>, la sesión podría crearse correctamente y no generarse el aviso.</p>
+      <p><strong>Nota:</strong> Como se comenta también en la <a href="php-cabeceras.html#buffer">lección sobre cabeceras</a>, dependiendo de la configuración de la directiva <a href="../otros/php-configuracion-1.html#output-buffering">output_buffering</a>, la sesión podría crearse correctamente y no generarse el aviso.</p>
     </section>
 
     <section id="sesiones-nombre">

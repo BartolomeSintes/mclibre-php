@@ -147,8 +147,8 @@
 
         <p>A la hora de añadir otras páginas en el servidor, se puede hacer de varias formas:</p>
         <ul>
-          <li>Cambiar el directorio raíz del servidor, modificando la directiva DocumentRoot (como se explica en la lección <a href="php_configuracion_2.html#document-root">Configuración 2</a>). Tiene el inconveniente de que las páginas de administración de XAMPP se perderían (aunque podríamos recuperarlas creando una directiva Alias).</li>
-          <li>Crear directorios de usuario, mediante la directiva UserDir (como se explica en la lección <a href="php_configuracion_2.html#user-dir">Configuración 2</a>). Es la mejor solución en un ordenador con varios usuarios de Windows para que cada usuario tenga sus propias páginas separadas e independientes del resto. Cada usuario puede guardar sus páginas en un directorio (con el mismo nombre para todos los usuarios, pero cada uno en su propia carpeta de Mis Documentos) y cada usuario sólo ve sus páginas.</li>
+          <li>Cambiar el directorio raíz del servidor, modificando la directiva DocumentRoot (como se explica en la lección <a href="php-configuracion-2.html#document-root">Configuración 2</a>). Tiene el inconveniente de que las páginas de administración de XAMPP se perderían (aunque podríamos recuperarlas creando una directiva Alias).</li>
+          <li>Crear directorios de usuario, mediante la directiva UserDir (como se explica en la lección <a href="php-configuracion-2.html#user-dir">Configuración 2</a>). Es la mejor solución en un ordenador con varios usuarios de Windows para que cada usuario tenga sus propias páginas separadas e independientes del resto. Cada usuario puede guardar sus páginas en un directorio (con el mismo nombre para todos los usuarios, pero cada uno en su propia carpeta de Mis Documentos) y cada usuario sólo ve sus páginas.</li>
           <li>Crear uno o varios alias, mediante la directiva Alias. Es una solución que permite mantener las páginas en los directorios que más nos interesen, aunque si hay varios usuarios, estos tienen que tener en cuenta los alias creados por los demás, puesto que los nombres no se pueden repetir.</li>
         </ul>
 
@@ -504,7 +504,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
           </tbody>
         </table>
 
-        <p>En un entorno de producción se suele utilizar un buffer de salida, pero este puede enmascarar errores de programación (básicamente, la creación de contenido de la página antes del envío de cabeceras, como se comenta en la <a href="../lecciones/php_cabeceras.html">lección sobre cabeceras HTPP</a>). Por eso es conveniente desactivar el buffer y poder detectar ese tipo de errores al escribir los programas.</p>
+        <p>En un entorno de producción se suele utilizar un buffer de salida, pero este puede enmascarar errores de programación (básicamente, la creación de contenido de la página antes del envío de cabeceras, como se comenta en la <a href="../lecciones/php-cabeceras.html">lección sobre cabeceras HTPP</a>). Por eso es conveniente desactivar el buffer y poder detectar ese tipo de errores al escribir los programas.</p>
 
         <div class="codigo">
           <pre>
@@ -522,7 +522,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
         </div>
 
-        <p>Al desactivar el buffer, dependiendo de la forma de compilación del intérprete PHP, se pueden encontrar problemas con los archivos UTF-8 con marca de orden de bytes (BOM), como se comenta en la <a href="../lecciones/php_cabeceras.html#bom">lección sobre cabeceras HTTP</a>.</p>
+        <p>Al desactivar el buffer, dependiendo de la forma de compilación del intérprete PHP, se pueden encontrar problemas con los archivos UTF-8 con marca de orden de bytes (BOM), como se comenta en la <a href="../lecciones/php-cabeceras.html#bom">lección sobre cabeceras HTTP</a>.</p>
       </section>
 
       <section id="pdo-mysql">
@@ -568,7 +568,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
         <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-        <p>Algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user. Si en nuestro servidor el valor es user, para evitar conflictos nuestros programas pueden modificar esta directiva en tiempo de ejecución, mediante la función ini_set("session.save_handler", "files"); (véase la <a href="../lecciones/php_sesiones.html">lección sobre sesiones</a>).</p>
+        <p>Algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user. Si en nuestro servidor el valor es user, para evitar conflictos nuestros programas pueden modificar esta directiva en tiempo de ejecución, mediante la función ini_set("session.save_handler", "files"); (véase la <a href="../lecciones/php-sesiones.html">lección sobre sesiones</a>).</p>
       </section>
 
       <section id="session-use-trans-sid">

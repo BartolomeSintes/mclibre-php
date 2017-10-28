@@ -74,7 +74,7 @@
 
         <p>En el caso de MySQL, para crear el objeto PDO se necesita proporcionar el nombre del servidor, el nombre de usuario y la contraseña.</p>
 
-        <p>Para poder acceder a MySQL mediante PDO, debe estar activada la extensión php_pdo_mysql en el archivo de configuración php.ini (véase el <a href="../otros/php_configuracion_1.html#pdo-mysql">apartado extensión pdo_mysql en la lección de configuración de Apache y PHP</a>).</p>
+        <p>Para poder acceder a MySQL mediante PDO, debe estar activada la extensión php_pdo_mysql en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-mysql">apartado extensión pdo_mysql en la lección de configuración de Apache y PHP</a>).</p>
 
         <div class="codigo">
           <pre>
@@ -107,7 +107,7 @@ $db = conectaDB();</code>
 
         <p>En SQLite, no se hace una conexión a un servidor, sino que simplemente se indica el archivo que va a contener la base de datos. En SQLite no hay un servidor que gestiona todas las bases de datos, sino que cada base de datos es un archivo independiente (que debe estar situado en un directorio que exista y en el que el servidor web tenga permisos de escritura).</p>
 
-        <p>Para poder utilizar SQLite mediante PDO, debe estar activada la extensión php_pdo_sqlite en el archivo de configuración php.ini (véase el <a href="../otros/php_configuracion_1.html#pdo-sqlite">apartado extensión pdo_sqlite en la lección de configuración de Apache y PHP</a>).</p>
+        <p>Para poder utilizar SQLite mediante PDO, debe estar activada la extensión php_pdo_sqlite en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-sqlite">apartado extensión pdo_sqlite en la lección de configuración de Apache y PHP</a>).</p>
 
         <div class="codigo">
           <pre>
@@ -322,7 +322,7 @@ $result = $db-&gt;query($consulta);</code>
     <section id="seguridad">
       <h2>Seguridad en las consultas: consultas preparadas</h2>
 
-      <p>Para evitar ataques de inyección SQL (en la lección <a href="php_db_inyeccion_sql.html">Inyecciones SQL</a> se comentan los ataques más elementales), se recomienda el uso de <a href="http://www.php.net/manual/es/pdo.prepared-statements.php">sentencias preparadas</a>, en las que PHP se encarga de "desinfectar" los datos en caso necesario. En general, cualquier consulta que incluya datos introducidos por el usuario debe realizarse mediante consultas preparadas.</p>
+      <p>Para evitar ataques de inyección SQL (en la lección <a href="php-db-inyeccion-sql.html">Inyecciones SQL</a> se comentan los ataques más elementales), se recomienda el uso de <a href="http://www.php.net/manual/es/pdo.prepared-statements.php">sentencias preparadas</a>, en las que PHP se encarga de "desinfectar" los datos en caso necesario. En general, cualquier consulta que incluya datos introducidos por el usuario debe realizarse mediante consultas preparadas.</p>
 
       <section id="consultas-preparadas">
         <h3>Consultas preparadas</h3>
@@ -406,7 +406,7 @@ if (!$result) {
 
         <hr class="corta" />
 
-        <p>Aunque no vayan a causar problermas en las consultas, sigue siendo conveniente tratar los datos recibidos para eliminar los espacios en blanco iniciales y finales, tratar los caracteres especiales del html, etc., como se comenta en la <a href="php_recogida_datos.html">lección de Recogida de datos</a>.</p>
+        <p>Aunque no vayan a causar problermas en las consultas, sigue siendo conveniente tratar los datos recibidos para eliminar los espacios en blanco iniciales y finales, tratar los caracteres especiales del html, etc., como se comenta en la <a href="php-recogida-datos.html">lección de Recogida de datos</a>.</p>
       </section>
 
       <section id="restricciones">
@@ -897,7 +897,7 @@ if (!$result) {
       <section id="union-tablas">
         <h3>Consultas de unión de tablas</h3>
 
-        <p>Se pueden también realizar consultas de unión entre varias tablas (el ejemplo está sacado del <a href="../ejercicios/bases_datos/biblioteca_1.html">ejercicio de Biblioteca</a>):</p>
+        <p>Se pueden también realizar consultas de unión entre varias tablas (el ejemplo está sacado del <a href="../ejercicios/bases-datos/biblioteca-1.html">ejercicio de Biblioteca</a>):</p>
 
         <p class="incompleto">Nota: Escribir como consulta preparada.</p>
 

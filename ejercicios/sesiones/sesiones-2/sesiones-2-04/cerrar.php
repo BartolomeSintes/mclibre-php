@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones_2_04");
+session_name("sesiones-2-04");
 session_start();
 session_destroy();
 header("location:index.php");

@@ -173,7 +173,7 @@ print "<p>Este programa prueba el amacenamiento de fechas en SQLite y MySQL</p>\
 print "<table>\n  <tr>\n    <td>\n";
 print "<h2>SQLite</h2>\n";
 $dbMotor = SQLITE;
-$dbDb     = '/home/barto/mclibre/tmp/mclibre/mclibre_db_diferencias.sqlite';  // Nombre de la base de datos
+$dbDb     = '/home/barto/mclibre/tmp/mclibre/mclibre_db-diferencias.sqlite';  // Nombre de la base de datos
 $dbTabla = 'fecha';             // Nombre de la tabla
 print "<ol>\n";
 $db = conectaDb();
@@ -184,7 +184,7 @@ print "    </td>\n    <td>\n";
 // Prueba con MySQL
 print "<h2>MySQL</h2>\n";
 $dbMotor = MYSQL;
-$dbDb     = 'mclibre_db_diferencias';     // Nombre de la base de datos
+$dbDb     = 'mclibre_db-diferencias';     // Nombre de la base de datos
 $dbTabla = $dbDb.'.fecha';      // Nombre de la tabla
 print "<ol>\n";
 $db = conectaDb();

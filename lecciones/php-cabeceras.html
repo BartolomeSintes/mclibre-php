@@ -43,7 +43,7 @@
     <section id="funcion-header">
       <h2>La función header()</h2>
 
-      <p>Como se explica en la <a href="php_http.html">lección sobre el protocolo HTPP</a>, cuando un servidor envía una página web al navegador, no sólo envía la página web, sino también información adicional (el estado y los campos de cabecera). Tanto el estado como los campos de cabecera se envían antes de la página web.</p>
+      <p>Como se explica en la <a href="php-http.html">lección sobre el protocolo HTPP</a>, cuando un servidor envía una página web al navegador, no sólo envía la página web, sino también información adicional (el estado y los campos de cabecera). Tanto el estado como los campos de cabecera se envían antes de la página web.</p>
 
       <p>Normalmente, un programa PHP sólo genera la página web y es el servidor el que genera automáticamente la información de estado y los campos de cabecera y los envía antes de enviar el contenido generado por el programa. Pero un programa PHP también puede generar la información de estado y los campos de cabecera, mediante la función <a href="http://www.php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a>.</p>
 
@@ -107,11 +107,11 @@ header("Location:http://www.example.com");
       <section id="buffer">
         <h3>Buffer de salida</h3>
 
-        <p>El error que se ha comentado en el apartado anterior puede no llegarse a producir si el servidor está utilizando un buffer de salida. Un buffer de salida almacena la salida del programa, que no se envía al navegador hasta que se completa la página o se llena el buffer y se puede definir mediante la <a href="../otros/php_configuracion_1.html#output-buffering">directiva <span class="php-dir">output_buffering</span></a>.</p>
+        <p>El error que se ha comentado en el apartado anterior puede no llegarse a producir si el servidor está utilizando un buffer de salida. Un buffer de salida almacena la salida del programa, que no se envía al navegador hasta que se completa la página o se llena el buffer y se puede definir mediante la <a href="../otros/php-configuracion-1.html#output-buffering">directiva <span class="php-dir">output_buffering</span></a>.</p>
 
         <p>Si cuando el programa llega a la instrucción <span class="php-fun">header()</span>, el contenido generado anteriormente todavía no se ha enviado al navegador porque ha cabido en el buffer de salida, el servidor puede todavía modificar la información de cabecera y la función <span class="php-fun">header()</span> no daría error.</p>
 
-        <p>El uso de un buffer de salida puede así enmascarar errores de programación como los de los ejemplos anteriores. Por ese motivos, en la <a href="../otros/php_configuracion_1.html#output-buffering">lección de configuración de XAMPP</a> se recomienda desactivar el buffer de salida al desarrollar el programa, de manera que al probar el programa detectemos este tipo de errores.</p>
+        <p>El uso de un buffer de salida puede así enmascarar errores de programación como los de los ejemplos anteriores. Por ese motivos, en la <a href="../otros/php-configuracion-1.html#output-buffering">lección de configuración de XAMPP</a> se recomienda desactivar el buffer de salida al desarrollar el programa, de manera que al probar el programa detectemos este tipo de errores.</p>
 
         <p>Si por algún motivo un programa necesita que haya un buffer de salida, para no tener que depender de la configuración del servidor el programa puede gestionar directamente el buffer mediante la función <a href="http://php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="http://php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página.</p>
 
@@ -132,10 +132,10 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
 </pre>
               </div>
               <div class="resultado-object">
-                <object type="text/html" data="ejemplos/cabeceras/buffer_salida/buffer-falta-1.php" style="height: 13em">ERROR (no puede mostrarse el objeto)</object>
+                <object type="text/html" data="ejemplos/cabeceras/buffer-salida/buffer-falta-1.php" style="height: 13em">ERROR (no puede mostrarse el objeto)</object>
               </div>
               <div class="icono-enlace">
-                <a href="ejemplos/cabeceras/buffer_salida/buffer-falta-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+                <a href="ejemplos/cabeceras/buffer-salida/buffer-falta-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
               </div>
             </div>
           </li>
@@ -153,10 +153,10 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
 </pre>
               </div>
               <div class="resultado-object">
-                <object type="text/html" data="ejemplos/cabeceras/buffer_salida/buffer-sobra-1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+                <object type="text/html" data="ejemplos/cabeceras/buffer-salida/buffer-sobra-1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
               </div>
               <div class="icono-enlace">
-                <a href="ejemplos/cabeceras/buffer_salida/buffer-sobra-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+                <a href="ejemplos/cabeceras/buffer-salida/buffer-sobra-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
               </div>
             </div>
           </li>
