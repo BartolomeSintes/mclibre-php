@@ -113,7 +113,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
       <hr class="corta" />
 
-      <p>Las sesiones no deben confundirse con <a href="php-cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el disco duro del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="http://www.php.net/manual/es/book.session.php">capítulo dedicado a las sesiones</a>.</p>
+      <p>Las sesiones no deben confundirse con <a href="php-cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el disco duro del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="http://php.net/manual/es/book.session.php">capítulo dedicado a las sesiones</a>.</p>
 
       <p>El trabajo con sesiones tiene tres partes:</p>
       <ul>
@@ -161,7 +161,7 @@ session_start();</code></pre>
     <section id="sesiones-crear">
       <h2>Crear la sesión</h2>
 
-      <p>En PHP, las sesiones se crean mediante la función <a href="http://www.php.net/manual/es/function.session-start.php"><span class="php-fun">session_start()</span></a>. Si la sesión no existía, esta función crea la sesión y le asocia un identificador de sesión único. Si la sesión ya existía, esta función permite que la página tenga acceso a la información vinculada a la sesión. Es decir, todas las páginas que quieran guardar datos en $_SESSION o leer datos de $_SESSION deben comenzar con la función <span class="php-fun">session_start()</span>.</p>
+      <p>En PHP, las sesiones se crean mediante la función <a href="http://php.net/manual/es/function.session-start.php"><span class="php-fun">session_start()</span></a>. Si la sesión no existía, esta función crea la sesión y le asocia un identificador de sesión único. Si la sesión ya existía, esta función permite que la página tenga acceso a la información vinculada a la sesión. Es decir, todas las páginas que quieran guardar datos en $_SESSION o leer datos de $_SESSION deben comenzar con la función <span class="php-fun">session_start()</span>.</p>
 
       <div class="filaflex">
         <div class="codigo">
@@ -303,7 +303,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
     <section id="sesiones-utilizar">
       <h2>Utilizar la sesión</h2>
 
-      <p>Cuando una página ha creado una sesión o ha accedido a una sesión ya existente mediante <span class="php-fun">session_start()</span>, la página tiene acceso a la matriz <a href="http://www.php.net/manual/es/reserved.variables.session.php">$_SESSION</a> que contiene las variables de esa sesión.</p>
+      <p>Cuando una página ha creado una sesión o ha accedido a una sesión ya existente mediante <span class="php-fun">session_start()</span>, la página tiene acceso a la matriz <a href="http://php.net/manual/es/reserved.variables.session.php">$_SESSION</a> que contiene las variables de esa sesión.</p>
 
       <p>La matriz $_SESSION es una matriz asociativa en la que se pueden definir valores como en cualquier otra matriz. La diferencia es que $_SESSION es accesible desde páginas diferentes (siempre que esas páginas tengan asociada la misma sesión), manteniéndose los valores de una página a otra.</p>
 
@@ -402,7 +402,7 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";
 
       <hr class="corta" />
 
-      <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="http://www.php.net/manual/es/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
+      <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="http://php.net/manual/es/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
 
       <div class="filaflex">
         <div class="codigo">
@@ -444,7 +444,7 @@ if (isset($_SESSION["nombre"])) {
 
       <ul>
         <li>El usuario puede cerrar la sesión simplemente cerrando el navegador.</li>
-        <li>Un programa puede cerrar la sesión mediante la función <a href="http://www.php.net/manual/es/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
+        <li>Un programa puede cerrar la sesión mediante la función <a href="http://php.net/manual/es/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
         <li>El servidor puede cerrar la sesión cuando ha pasado el tiempo indicado en segundo en la directiva <a href="http://docs.php.net/session.configuration#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>.</li>
       </ul>
 

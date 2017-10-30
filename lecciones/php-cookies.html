@@ -33,14 +33,14 @@
       </div>
     </nav>
 
-    <p>En esta lección se trata el manejo de las cookies. Las cookies (“galletas”, en inglés) son un mecanismo que utilizan los servidores web para guardar información en el ordenador del usuario y recuperarla cada vez que el navegador les pide una página. La información se guarda en el ordenador del usuario en forma de texto y está formada por parejas (nombre de la cookie y valor de la cookie). Esta información se utiliza para numerosos fines (autentificación, selección de preferencias, items seleccionados en un carrito de la compra, etc.), siempre con la intención de identificar al usuario y personalizar las páginas. En el manual de PHP se ofrece un <a href="http://www.php.net/manual/es/features.cookies.php">capítulo dedicado a las cookies</a>.</p>
+    <p>En esta lección se trata el manejo de las cookies. Las cookies (“galletas”, en inglés) son un mecanismo que utilizan los servidores web para guardar información en el ordenador del usuario y recuperarla cada vez que el navegador les pide una página. La información se guarda en el ordenador del usuario en forma de texto y está formada por parejas (nombre de la cookie y valor de la cookie). Esta información se utiliza para numerosos fines (autentificación, selección de preferencias, items seleccionados en un carrito de la compra, etc.), siempre con la intención de identificar al usuario y personalizar las páginas. En el manual de PHP se ofrece un <a href="http://php.net/manual/es/features.cookies.php">capítulo dedicado a las cookies</a>.</p>
 
     <section id="crear">
       <h2>Crear cookies</h2>
 
       <p>Las cookies se crean cuando el servidor se lo pide al navegador. Cuando el servidor envía una página al navegador, puede incluir en las cabeceras de la respuesta HTTP la petición de creación de una o varias cookies. El navegador crea la cookie, guardando no sólo el nombre y el valor de la cookie, sino el nombre del servidor (del dominio) que ha creado la cookie.</p>
 
-      <p>En PHP, las cookies se crean mediante la función <a href="http://www.php.net/manual/es/function.setcookie.php">setcookie()</a>. Por ejemplo:</p>
+      <p>En PHP, las cookies se crean mediante la función <a href="http://php.net/manual/es/function.setcookie.php">setcookie()</a>. Por ejemplo:</p>
 
       <div class="codigo">
         <pre>
@@ -104,7 +104,7 @@ line 3) in prueba.php on line 4</code>
         <dd>Establece el valor que guarda la cookie</dd>
 
         <dt>$expiracion</dt>
-        <dd>Establece el momento en que se borrará la cookie, expresado como tiempo Unix. Por ello, normalmente se utiliza la función <a href="http://www.php.net/manual/es/function.time.php">time()</a> (que indica el momento actual como tiempo Unix) más la duración en segundos que queremos que tenga la cookie
+        <dd>Establece el momento en que se borrará la cookie, expresado como tiempo Unix. Por ello, normalmente se utiliza la función <a href="http://php.net/manual/es/function.time.php">time()</a> (que indica el momento actual como tiempo Unix) más la duración en segundos que queremos que tenga la cookie
 
           <div class="codigo">
             <pre>
@@ -165,7 +165,7 @@ setcookie("nombre");  // Esta cookie no se borra, pero no guardará ningún valo
 
       <p>Cuando el navegador solicita una página PHP a un servidor (un dominio) que ha guardado previamente cookies en ese ordenador, el navegador incluye en la cabecera de la petición HTTP todas las cookies (el nombre y el valor) creadas anteriormente por ese servidor.</p>
 
-      <p>El programa PHP recibe los nombres y valores de las cookies y se guardan automáticamente en la matriz <a href="http://www.php.net/manual/es/reserved.variables.cookies.php">$_COOKIE</a>.
+      <p>El programa PHP recibe los nombres y valores de las cookies y se guardan automáticamente en la matriz <a href="http://php.net/manual/es/reserved.variables.cookies.php">$_COOKIE</a>.
       </p>
 
       <p>El ejemplo siguiente saluda al usuario por su nombre si el nombre del usuario estaba guardado en una cookie.</p>
@@ -298,7 +298,7 @@ if (isset($_COOKIE["nombre"])) {
         <h3>Iniciativa Do Not Track </h3>
         <ul>
           <li>Iniciativa <a href="http://donottrack.us/">Do Not Track</a></li>
-          <li>Explicación sobre <a href="http://www.mclibre.org/consultar/htmlcss/otros/historia_otros.html#do-not-track">Do Not Track</a> en apuntes HTML / CSS de www.mclibre.org</li>
+          <li>Explicación sobre <a href="http://www.mclibre.org/consultar/htmlcss/otros/historia-otros.html#do-not-track">Do Not Track</a> en apuntes HTML / CSS de www.mclibre.org</li>
         </ul>
       </section>
     </section>

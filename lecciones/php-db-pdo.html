@@ -58,7 +58,7 @@
       </div>
     </nav>
 
-    <p>La extensión <a href="http://www.php.net/manual/es/book.pdo.php">PDO (PHP Data Objects)</a> permite acceder a distintas bases de datos utilizando las misma funciones, lo que facilita la portabilidad. En PHP 5 existen drivers para acceder a las bases de datos más populares (MySQL, Oracle, MS SQL Server, PostgreSQL, SQLite, Firebird, DB2, Informix, etc). La extensión PDO no evalúa la correción de las consultas SQL, aunque sí implementa algunas medidas de seguridad mediante las consultas preparadas.</p>
+    <p>La extensión <a href="http://php.net/manual/es/book.pdo.php">PDO (PHP Data Objects)</a> permite acceder a distintas bases de datos utilizando las misma funciones, lo que facilita la portabilidad. En PHP 5 existen drivers para acceder a las bases de datos más populares (MySQL, Oracle, MS SQL Server, PostgreSQL, SQLite, Firebird, DB2, Informix, etc). La extensión PDO no evalúa la correción de las consultas SQL, aunque sí implementa algunas medidas de seguridad mediante las consultas preparadas.</p>
 
     <p>En esta lección se explica el acceso a MySQL y SQLite mediante PDO.</p>
 
@@ -269,7 +269,7 @@ $db = null;</code>
 </pre>
           </div>
         </li>
-        <li>Pero si la consulta devuelve registros, el método devuelve los registros correspondientes o <span class="php-con">false</span>. En ese caso sí que es conveniente guardar lo que devuelve el método en una variable para procesarla posteriormente. Si contiene registros, la variable es de un tipo especial llamado <a href="http://www.php.net/manual/es/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero que se puede recorrer con un bucle <span class="php-res">foreach()</span>,
+        <li>Pero si la consulta devuelve registros, el método devuelve los registros correspondientes o <span class="php-con">false</span>. En ese caso sí que es conveniente guardar lo que devuelve el método en una variable para procesarla posteriormente. Si contiene registros, la variable es de un tipo especial llamado <a href="http://php.net/manual/es/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero que se puede recorrer con un bucle <span class="php-res">foreach()</span>,
 
           <div class="codigo">
             <pre>
@@ -322,12 +322,12 @@ $result = $db-&gt;query($consulta);</code>
     <section id="seguridad">
       <h2>Seguridad en las consultas: consultas preparadas</h2>
 
-      <p>Para evitar ataques de inyección SQL (en la lección <a href="php-db-inyeccion-sql.html">Inyecciones SQL</a> se comentan los ataques más elementales), se recomienda el uso de <a href="http://www.php.net/manual/es/pdo.prepared-statements.php">sentencias preparadas</a>, en las que PHP se encarga de "desinfectar" los datos en caso necesario. En general, cualquier consulta que incluya datos introducidos por el usuario debe realizarse mediante consultas preparadas.</p>
+      <p>Para evitar ataques de inyección SQL (en la lección <a href="php-db-inyeccion-sql.html">Inyecciones SQL</a> se comentan los ataques más elementales), se recomienda el uso de <a href="http://php.net/manual/es/pdo.prepared-statements.php">sentencias preparadas</a>, en las que PHP se encarga de "desinfectar" los datos en caso necesario. En general, cualquier consulta que incluya datos introducidos por el usuario debe realizarse mediante consultas preparadas.</p>
 
       <section id="consultas-preparadas">
         <h3>Consultas preparadas</h3>
 
-        <p>El método para efectuar consultas es primero preparar la consulta con <a href="http://www.php.net/manual/es/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare($consulta)</span></a> y después ejecutarla con <span class="php-fun"><a href="http://www.php.net/manual/es/pdostatement.execute.php">PDO-&gt;execute(array(parámetros))</a></span>, que devuelve el resultado de la consulta.</p>
+        <p>El método para efectuar consultas es primero preparar la consulta con <a href="http://php.net/manual/es/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare($consulta)</span></a> y después ejecutarla con <span class="php-fun"><a href="http://php.net/manual/es/pdostatement.execute.php">PDO-&gt;execute(array(parámetros))</a></span>, que devuelve el resultado de la consulta.</p>
 
         <div class="codigo">
           <pre>

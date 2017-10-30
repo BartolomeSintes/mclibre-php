@@ -45,7 +45,7 @@
 
       <p>Como se explica en la <a href="php-http.html">lección sobre el protocolo HTPP</a>, cuando un servidor envía una página web al navegador, no sólo envía la página web, sino también información adicional (el estado y los campos de cabecera). Tanto el estado como los campos de cabecera se envían antes de la página web.</p>
 
-      <p>Normalmente, un programa PHP sólo genera la página web y es el servidor el que genera automáticamente la información de estado y los campos de cabecera y los envía antes de enviar el contenido generado por el programa. Pero un programa PHP también puede generar la información de estado y los campos de cabecera, mediante la función <a href="http://www.php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a>.</p>
+      <p>Normalmente, un programa PHP sólo genera la página web y es el servidor el que genera automáticamente la información de estado y los campos de cabecera y los envía antes de enviar el contenido generado por el programa. Pero un programa PHP también puede generar la información de estado y los campos de cabecera, mediante la función <a href="http://php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a>.</p>
 
       <p>Pero la función <span class="php-fun">header()</span> no debe utilizarse en un programa una vez se ha generado contenido HTML (por ejemplo, con un <span class="php-res">print</span>). El motivo es que si un programa genera contenido HTML, el servidor genera automáticamente la información de estado y los campos de cabecera y a continuación envía el contenido generado. Si después el programa contiene una instrucción <span class="php-fun">header()</span>, se produce un error porque las cabeceras ya se han enviado, como muestran los dos ejemplos siguientes.</p>
 
@@ -262,7 +262,7 @@ done</code>
     <section id="redirecciones">
       <h2>Redirecciones: header("Location:...")</h2>
 
-      <p>La función <a href="http://www.php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a> se puede utilizar para redirigir automáticamente a otra página, enviando como argumento la cadena <strong>Location:</strong> seguida de la dirección absoluta o relativa de la página a la que queremos redirigir.</p>
+      <p>La función <a href="http://php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a> se puede utilizar para redirigir automáticamente a otra página, enviando como argumento la cadena <strong>Location:</strong> seguida de la dirección absoluta o relativa de la página a la que queremos redirigir.</p>
 
       <div class="codigo">
         <pre>
@@ -440,7 +440,7 @@ exit;
     <section id="otros">
       <h2>Crear con PHP otros tipos de archivos</h2>
 
-      <p>PHP puede generar archivos de todo tipo, pero para que el navegador reconozca el tipo de archivo se debe enviar el tipo MIME correspondiente. Eso se para ello, se puede utilizar la función <a href="http://www.php.net/manual/es/function.header.php"><span class="php-fun">header()</span> </a>enviando como argumento la cadena <strong>Content-type:</strong> seguida del tipo MIME correspondiente.</p>
+      <p>PHP puede generar archivos de todo tipo, pero para que el navegador reconozca el tipo de archivo se debe enviar el tipo MIME correspondiente. Eso se para ello, se puede utilizar la función <a href="http://php.net/manual/es/function.header.php"><span class="php-fun">header()</span> </a>enviando como argumento la cadena <strong>Content-type:</strong> seguida del tipo MIME correspondiente.</p>
 
       <p>Existen muchos tipos MIME (véase lista de <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types">tipos MIME en MDN</a>).</p>
 
