@@ -31,41 +31,41 @@ if (!isset($_SESSION["numero"])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Subir y bajar número. Sesiones.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Subir y bajar número. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Subir y bajar número</h1>
+<body>
+  <h1>Subir y bajar número</h1>
 
-    <form action="sesiones-1-03-2.php" method="get">
-      <p>Haga clic en los botones para modificar el valor:</p>
+  <form action="sesiones-1-03-2.php" method="get">
+    <p>Haga clic en los botones para modificar el valor:</p>
 
-      <p>
-        <button type="submit" name="accion" value="bajar" style="font-size: 4rem">-</button>
+    <p>
+      <button type="submit" name="accion" value="bajar" style="font-size: 4rem">-</button>
 <?php
-print "        <span style=\"font-size: 4rem\">$_SESSION[numero]</span>\n";
+print "      <span style=\"font-size: 4rem\">$_SESSION[numero]</span>\n";
 ?>
-        <button type="submit" name="accion" value="subir" style="font-size: 4rem">+</button>
-      </p>
+      <button type="submit" name="accion" value="subir" style="font-size: 4rem">+</button>
+    </p>
 
-      <p><input type="submit" name="accion" value="Poner a cero" /></p>
-    </form>
+    <p><input type="submit" name="accion" value="Poner a cero" /></p>
+  </form>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-        y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
-        Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
+</body>
 </html>

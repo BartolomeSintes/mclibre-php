@@ -32,70 +32,70 @@ if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Carrera de coches (1). Sesiones.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Carrera de coches (1). Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Carrera de coches (1)</h1>
+<body>
+  <h1>Carrera de coches (1)</h1>
 
-    <form action="sesiones-1-12-2.php" method="get">
-      <p>Haga clic en los botones para tirar el dado y mover el punto:</p>
+  <form action="sesiones-1-12-2.php" method="get">
+    <p>Haga clic en los botones para tirar el dado y mover el punto:</p>
 
-      <table>
-        <tr>
-          <td><button type="submit" name="accion" value="a" style="font-size: 40px; line-height: 40px;">A</button></td>
+    <table>
+      <tr>
+        <td><button type="submit" name="accion" value="a" style="font-size: 40px; line-height: 40px;">A</button></td>
 <?php
 if (isset($_SESSION["ad"])) {
-    print "          <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . (9855 + $_SESSION["ad"]) . ";</span></td>\n ";
+    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . (9855 + $_SESSION["ad"]) . ";</span></td>\n ";
 } else {
-    print "          <td></td>\n";
+    print "        <td></td>\n";
 }
-print "          <td>\n";
-print "            <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "              width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
-print "              <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" />\n";
-print "              <circle cx=\"$_SESSION[ax]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
-print "            </svg>\n";
-print "          </td>\n";
+print "        <td>\n";
+print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "            width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
+print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" />\n";
+print "            <circle cx=\"$_SESSION[ax]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
+print "          </svg>\n";
+print "        </td>\n";
 ?>
-        </tr>
-        <tr>
-          <td><button type="submit" name="accion" value="b" style="font-size: 40px; line-height: 40px;">B</button></td>
+      </tr>
+      <tr>
+        <td><button type="submit" name="accion" value="b" style="font-size: 40px; line-height: 40px;">B</button></td>
 <?php
 if (isset($_SESSION["bd"])) {
-    print "          <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . (9855 + $_SESSION["bd"]) . ";</span></td>\n ";
+    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . (9855 + $_SESSION["bd"]) . ";</span></td>\n ";
 } else {
-    print "          <td></td>\n";
+    print "        <td></td>\n";
 }
-print "          <td>\n";
-print "            <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "              width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
-print "              <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" />\n";
-print "              <circle cx=\"$_SESSION[bx]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
-print "            </svg>\n";
-print "          </td>\n";
+print "        <td>\n";
+print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "            width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
+print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" />\n";
+print "            <circle cx=\"$_SESSION[bx]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
+print "          </svg>\n";
+print "        </td>\n";
 ?>
-        </tr>
-      </table>
+      </tr>
+    </table>
 
-      <p><button type="submit" name="accion" value="empezar">Volver a empezar</button></p>
-    </form>
+    <p><button type="submit" name="accion" value="empezar">Volver a empezar</button></p>
+  </form>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-        y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
-        Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
+</body>
 </html>

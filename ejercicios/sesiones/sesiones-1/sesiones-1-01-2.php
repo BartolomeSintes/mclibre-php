@@ -28,16 +28,16 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Formulario Nombre 1 (Resultado). Sesiones.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Formulario Nombre 1 (Resultado). Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Formulario Nombre 1 (Resultado)</h1>
+<body>
+  <h1>Formulario Nombre 1 (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -52,31 +52,31 @@ $nombre   = recoge("nombre");
 $nombreOk = false;
 
 if ($nombre == "") {
-    print "    <p class=\"aviso\">No ha escrito su nombre.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito su nombre.</p>\n";
 } else {
     $nombreOk = true;
 }
 
 if ($nombreOk) {
     $_SESSION["nombre"] = $nombre;
-    print "    <p>Su nombre es: <strong>$nombre</strong>.</p>\n";
+    print "  <p>Su nombre es: <strong>$nombre</strong>.</p>\n";
 }
 
 ?>
 
-    <p><a href="sesiones-1-01-1.php">Volver a la primera página.</a></p>
+  <p><a href="sesiones-1-01-1.php">Volver a la primera página.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
