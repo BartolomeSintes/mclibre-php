@@ -66,38 +66,38 @@ if (!$nombreOk || !$edadOk) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Formulario 5 (Resultado). Cabeceras.
-      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Formulario 5 (Resultado). Cabeceras.
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Formulario 5 (Resultado)</h1>
+<body>
+  <h1>Formulario 5 (Resultado)</h1>
 
 <?php
 if ($nombreOk && $edadOk) {
-    print "    <p>Su nombre es <strong>$nombre</strong>.</p>\n";
+    print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
     print "\n";
-    print "    <p>Su edad es <strong>$edad</strong> años.</p>\n";
+    print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
     print "\n";
 }
 
 ?>
-    <p><a href="cabeceras-05-1.php">Volver al formulario.</a></p>
+  <p><a href="cabeceras-05-1.php">Volver al formulario.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-09">9 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-09">9 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a></p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a></p>
+  </footer>
+</body>
 </html>

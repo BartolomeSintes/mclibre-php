@@ -49,7 +49,7 @@ $anyo = recoge("anyo");
 $anyoOk = false;
 
 if ($anyo == "") {
-    print "  <p class=\"aviso\">No ha escrito el año.</p>\n\";
+    print "  <p class=\"aviso\">No ha escrito el año.</p>\n";
     print "\n";
 } elseif (!is_numeric($anyo)) {
     print "  <p class=\"aviso\">No ha escrito el año como número.</p>\n";
