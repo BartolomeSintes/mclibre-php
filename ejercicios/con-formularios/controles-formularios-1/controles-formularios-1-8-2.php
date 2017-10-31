@@ -39,8 +39,8 @@ function recoge($var)
     return $tmp;
 }
 
-$fondo  = recoge("fondo");
-$letra  = recoge("letra");
+$fondo = recoge("fondo");
+$letra = recoge("letra");
 
 print "  <style type=\"text/css\">body { background-color: $fondo; color: $letra; }</style>\n";
 ?>

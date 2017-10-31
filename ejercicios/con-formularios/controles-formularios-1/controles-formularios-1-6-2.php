@@ -44,8 +44,8 @@ function recoge($var)
     return $tmp;
 }
 
-$fondo  = recoge("fondo");
-$letra  = recoge("letra");
+$fondo = recoge("fondo");
+$letra = recoge("letra");
 
 if ($fondo == "" && $letra == "") {
     print "  <p>Usted no quiere cambiar nada</p>\n";

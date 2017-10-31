@@ -46,7 +46,7 @@ function recoge($var)
     return $tmp;
 }
 
-$fruta  = recoge("fruta");
+$fruta = recoge("fruta");
 
 print "  <p><img src=\"img/frutas/$fruta\" width=\"300\" /></p>\n";
 ?>

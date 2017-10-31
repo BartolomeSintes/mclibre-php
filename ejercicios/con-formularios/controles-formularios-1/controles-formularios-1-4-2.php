@@ -44,7 +44,7 @@ function recoge($var)
     return $tmp;
 }
 
-$fruta  = recoge("fruta");
+$fruta = recoge("fruta");
 
 print "  <p>Su fruta preferida es $fruta.</p>\n";
 ?>
