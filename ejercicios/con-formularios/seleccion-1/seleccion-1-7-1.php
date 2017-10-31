@@ -2,24 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tabla de una columna (Formulario). for (3).
+  <title>Reparto de tríos (Formulario). Selección (1).
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Tabla de una columna (Formulario)</h1>
+  <h1>Reparto de tríos (Formulario)</h1>
 
-  <form action="for-3-2-2.php" method="get">
-    <p>Escriba un número (0 &lt; número &le; 200) y mostraré una tabla de una columna
-      y tantas filas como indique.</p>
+  <form action="seleccion-1-7-2.php" method="get">
+    <p>Escriba un número de jugadores (3 &lt; número &le; 10) y repartiré tres
+    cartas a cada jugador.</p>
 
     <table>
       <tbody>
         <tr>
-          <td><strong>Número de filas:</strong></td>
-          <td><input type="number" name="filas" min="1" max="200" value="10" /> </td>
+          <td><strong>Número de jugadores:</strong></td>
+          <td><input type="number" name="jugadores" min="3" max="10" value="6" /> </td>
         </tr>
       </tbody>
     </table>
@@ -33,7 +33,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-06">6 de noviembre de 2016</time></p>
+      <time datetime="2017-10-31">31 de octubre de 2017</time></p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

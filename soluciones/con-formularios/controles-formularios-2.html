@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Controles en formularios (2). Soluciones. Con formularios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <script type="text/javascript" src="../../varios/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <h1>Soluciones - Controles en formularios (2)</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>Controles formularios (2)</h2>
+
+      <h3>Enunciados</h3>
+      <ul>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-1">1 - Dos cajas de texto</a></li>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-2">2 - Dos valores numéricos</a></li>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-3">3 - Botón y casilla</a></li>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-4">4 - Correo y menú</a></li>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-11">11 - Cuadrado redondeado</a></li>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-12">12 - Círculo o cuadrado</a></li>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-13">13 - Gradiente en cuadrado</a></li>
+        <li><a href="../../ejercicios/con-formularios/controles-formularios-2/index.html#ejercicio-14">14 - Formulario completo</a></li>
+      </ul>
+
+      <h3>Soluciones</h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Dos cajas de texto</a></li>
+        <li><a href="#ejercicio-2">2 - Dos valores numéricos</a></li>
+        <li><a href="#ejercicio-3">3 - Botón y casilla</a></li>
+        <li><a href="#ejercicio-4">4 - Correo y menú</a></li>
+        <li><a href="#ejercicio-11">11 - Cuadrado redondeado</a></li>
+        <li><a href="#ejercicio-12">12 - Círculo o cuadrado</a></li>
+        <li><a href="#ejercicio-13">13 - Gradiente en cuadrado</a></li>
+        <li><a href="#ejercicio-14">14 - Formulario completo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/con-formularios/controles-formularios-2/index.html">Controles en formularios (2)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>Controles en formularios (2) 1 - Dos cajas de texto con comprobación</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$nombre    = recoge("nombre");
+$apellidos = recoge("apellidos");
+
+$nombreOk    = false;
+$apellidosOk = false;
+
+if ($nombre == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $nombreOk = true;
+}
+
+if ($apellidos == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito sus apellidos.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $apellidosOk = true;
+}
+
+if ($nombreOk && $apellidosOk) {
+    print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Sus apellidos son &lt;strong&gt;$apellidos&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Controles en formularios (2) 2 - Dos valores numéricos</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$edad = recoge("edad");
+$peso = recoge("peso");
+
+$edadOk = false;
+$pesoOk = false;
+
+if ($edad == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($edad)) {
+    print "  &lt;p  class=\"aviso\"&gt;No ha escrito su edad como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($edad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($edad &lt; 5|| $edad &gt; 130) {
+    print "  &lt;p class=\"aviso\"&gt;Su edad no está entre 5 y 130 años.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $edadOk = true;
+}
+
+if ($peso == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($peso)) {
+    print "  &lt;p  class=\"aviso\"&gt;No ha escrito su peso como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($peso &lt; 10|| $peso &gt; 150) {
+    print "  &lt;p class=\"aviso\"&gt;Su peso no está entre 10 y 150 kilos.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pesoOk = true;
+}
+
+if ($edadOk && $pesoOk) {
+    print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Su peso es &lt;strong&gt;$peso&lt;/strong&gt; kilos.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Controles en formularios (2) 3 - Botón radio y casillas de verificación</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$sexo       = recoge("genero"); // El control no se llama sexo para evitar el proxy de Conselleria
+$cine       = recoge("cine");
+$literatura = recoge("literatura");
+$musica     = recoge("musica");
+
+$sexoOk       = false;
+$cineOk       = false;
+$literaturaOk = false;
+$musicaOk     = false;
+
+if ($sexo == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado su sexo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($sexo != "hombre" && $sexo != "mujer") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $sexoOk = true;
+}
+
+if ($cine != "" && $cine != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $cineOk = true;
+}
+
+if ($literatura != "" && $literatura != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $literaturaOk = true;
+}
+
+if ($musica != "" && $musica != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $musicaOk = true;
+}
+
+if ($sexoOk && $cineOk && $literaturaOk && $musicaOk) {
+    if ($sexo == "hombre") {
+        print "  &lt;p&gt;Es un &lt;strong&gt;hombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;Es una &lt;strong&gt;mujer&lt;/strong&gt;.&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    if ($cine == "on") {
+        print "  &lt;p&gt;Le gusta &lt;strong&gt;el cine&lt;/strong&gt;.&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    if ($literatura == "on") {
+        print "  &lt;p&gt;Le gusta &lt;strong&gt;la literatura&lt;/strong&gt;.&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    if ($musica == "on") {
+        print "  &lt;p&gt;Le gusta &lt;strong&gt;la música&lt;/strong&gt;.&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    if ($cine != "on" && $literatura != "on" && $musica != "on") {
+        print "  &lt;p&gt;No ha marcado ninguna afición.&lt;/p&gt;\n";
+    }
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Controles en formularios (2) 4 - Correo y menú</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$correo  = recoge("correo");
+$correo2 = recoge("correo2");
+$recibir = recoge("recibir");
+
+$correoOk  = false;
+$correo2Ok = false;
+$recibirOk = false;
+
+if ($correo == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su dirección de correo.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito una dirección de correo correcta.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $correoOk = true;
+}
+
+if ($correo2 != $correo) {
+    print "  &lt;p class=\"aviso\"&gt;Las direcciones de correo no coinciden.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $correo2Ok = true;
+}
+
+if ($recibir == "-1") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado si desea recibir correo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($recibir != "0" && $recibir != "1") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $recibirOk = true;
+}
+
+if ($correoOk && $correo2Ok && $recibirOk) {
+    print "  &lt;p&gt;Su dirección de correo es &lt;strong&gt;$correo&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+    if ($recibir == "0") {
+        print "  &lt;p&gt;&lt;strong&gt;No&lt;/strong&gt; recibirá correos nuestros.&lt;/p&gt;\n";
+        print "\n";
+    } else {
+        print "  &lt;p&gt;&lt;strong&gt;Sí&lt;/strong&gt; recibirá correos nuestros.&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-11">
+    <h2>Controles en formularios (2) 11 - Cuadrado con esquinas redondeadas</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$lado    = recoge("lado");
+$esquina = recoge("esquina");
+
+$ladoOk    = false;
+$esquinaOk = false;
+
+if ($lado == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($lado)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($lado)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($lado &lt; 20 || $lado &gt; 500) {
+    print "  &lt;p class=\"aviso\"&gt;El tamaño del lado no está entre 20 y 500 px.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($lado &lt; $esquina * 2) {
+    print "  &lt;p class=\"aviso\"&gt;El tamaño del lado debe ser al menos el doble que el de la esquina.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $ladoOk = true;
+}
+
+if ($esquina == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la esquina.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($esquina)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la esquina como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($esquina)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la esquina como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($esquina &lt; 10 || $esquina &gt; 250) {
+    print "  &lt;p class=\"aviso\"&gt;El tamaño de la esquina no está entre 20 y 500 px.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $esquinaOk = true;
+}
+
+if ($ladoOk && $esquinaOk) {
+    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+        . "    width=\"" . ($lado + 10) . "px\" height=\"" . ($lado + 10) . "px\"&gt;\n";
+    print "    &lt;rect fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
+    . "x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" rx=\"$esquina\" ry=\"$esquina\" /&gt;\n";
+    print "  &lt;/svg&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-12">
+    <h2>Controles en formularios (2) 12 - Círculo o cuadrado </h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$lado  = recoge("lado");
+$forma = recoge("forma");
+
+$ladoOk  = false;
+$formaOk = false;
+
+if ($lado == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($lado)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($lado)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($lado &lt; 20 || $lado &gt; 500) {
+    print "  &lt;p class=\"aviso\"&gt;El tamaño del lado no está entre 20 y 500 px.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $ladoOk = true;
+}
+
+if ($forma == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido ninguna forma.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($forma != "circulo" && $forma != "cuadrado") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $formaOk = true;
+}
+
+if ($ladoOk && $formaOk) {
+    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+        . "    width=\"" . ($lado + 10) . "px\" height=\"" . ($lado + 10) . "px\"&gt;\n";
+    if ($forma == "cuadrado") {
+        print "  &lt;rect fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
+        . "x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" /&gt;\n";
+    } else {
+        print "    &lt;circle cx=\"" . ($lado + 10) / 2 . "\" cy=\"" . ($lado + 10) / 2
+            . "\" r=\"" . $lado / 2 . "\" stroke=\"black\" stroke-width=\"10\" fill=\"white\" /&gt;\n";
+    }
+    print "  &lt;/svg&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-13">
+    <h2>Controles en formularios (2) 13 - Gradiente en cuadrado </h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$lado    = recoge("lado");
+$inicial = recoge("inicial");
+$final   = recoge("final");
+
+$ladoOk    = false;
+$inicialOk = false;
+$finalOk   = false;
+
+if ($lado == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($lado)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($lado)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño del lado como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($lado &lt; 20 || $lado &gt; 500) {
+    print "  &lt;p class=\"aviso\"&gt;El tamaño del lado no está entre 20 y 500 px.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $ladoOk = true;
+}
+
+if ($inicial == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido el color inicial.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $inicialOk = true;
+}
+
+if ($final == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido el color final.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $finalOk = true;
+}
+
+if ($ladoOk && $inicialOk && $finalOk) {
+    print "  &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+        . "    width=\"" . ($lado + 10) . "px\" height=\"" . ($lado + 10) . "px\"&gt;\n";
+    print "    &lt;defs&gt;\n"
+        . "      &lt;linearGradient id=\"gradiente\"&gt;\n"
+        . "        &lt;stop offset=\"5%\" stop-color=\"$inicial\" /&gt;\n"
+        . "        &lt;stop offset=\"95%\" stop-color=\"$final\" /&gt;\n"
+        . "      &lt;/linearGradient&gt;\n"
+        . "    &lt;/defs&gt;\n";
+    print "    &lt;rect fill=\"url(#gradiente)\" stroke=\"black\" stroke-width=\"10\" "
+        . "x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" /&gt;\n";
+    print "  &lt;/svg&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-14">
+    <h2>Controles en formularios (2) 14 - Formulario completo</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$nombre      = recoge("nombre");
+$apellidos   = recoge("apellidos");
+$edad        = recoge("edad");
+$peso        = recoge("peso");
+$sexo        = recoge("genero"); // El control no se llama sexo para evitar el proxy de Conselleria
+$estadoCivil = recoge("estadoCivil");
+$cine        = recoge("cine");
+$deporte     = recoge("deporte");
+$literatura  = recoge("literatura");
+$musica      = recoge("musica");
+$tebeos      = recoge("tebeos");
+$television  = recoge("television");
+
+$nombreOk      = false;
+$apellidosOk   = false;
+$edadOk        = false;
+$pesoOk        = false;
+$sexoOk        = false;
+$estadoCivilOk = false;
+$cineOk        = false;
+$deporteOk     = false;
+$literaturaOk  = false;
+$musicaOk      = false;
+$tebeosOk      = false;
+$televisionOk  = false;
+
+if ($nombre == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $nombreOk = true;
+}
+
+if ($apellidos == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito sus apellidos.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $apellidosOk = true;
+}
+
+if ($edad == "...") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado su edad.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($edad != "1" && $edad != "2" && $edad != "3" && $edad != "4") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $edadOk = true;
+}
+
+if ($peso == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($peso)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el peso como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($peso)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el peso como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($peso &gt; 250) {
+    print "  &lt;p class=\"aviso\"&gt;El peso es superior a 250 kg.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pesoOk = true;
+}
+
+if ($sexo == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado su sexo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($sexo != "hombre" && $sexo != "mujer") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $sexoOk = true;
+}
+
+if ($estadoCivil == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado su estado civil.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($estadoCivil != "soltero" && $estadoCivil != "casado" && $estadoCivil != "otro") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $estadoCivilOk = true;
+}
+
+if ($cine != "" && $cine != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $cineOk = true;
+}
+
+if ($deporte != "" && $deporte != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $deporteOk = true;
+}
+
+if ($literatura != "" && $literatura != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $literaturaOk = true;
+}
+
+if ($musica != "" && $musica != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $musicaOk = true;
+}
+
+if ($tebeos != "" && $tebeos != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $tebeosOk = true;
+}
+
+if ($television != "" && $television != "on") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, utilice el formulario.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $televisionOk = true;
+}
+
+if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk &&
+    $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
+    print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Sus apellidos son &lt;strong&gt;$apellidos&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+
+    if ($edad == 1) {
+        print "  &lt;p&gt;Tiene &lt;strong&gt;menos de 20 años&lt;/strong&gt;.&lt;/p&gt;\n";
+    } elseif ($edad == 2) {
+        print "  &lt;p&gt;Tiene &lt;strong&gt;entre 20 y 39 años&lt;/strong&gt;.&lt;/p&gt;\n";
+    } elseif ($edad == 3) {
+        print "  &lt;p&gt;Tiene &lt;strong&gt;entre 40 y 59 años&lt;/strong&gt;.&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;Tiene &lt;strong&gt;60 o más años&lt;/strong&gt;.&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    print "  &lt;p&gt;Su peso es de &lt;strong&gt;$peso&lt;/strong&gt; kg.&lt;/p&gt;\n";
+    print "\n";
+
+    if ($sexo == "hombre") {
+        print "  &lt;p&gt;Es un &lt;strong&gt;hombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;Es una &lt;strong&gt;mujer&lt;/strong&gt;.&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    if ($estadoCivil == "soltero") {
+        print "  &lt;p&gt;Su estado civil es &lt;strong&gt;soltero&lt;/strong&gt;.&lt;/p&gt;\n";
+    } elseif ($estadoCivil == "casado") {
+        print "  &lt;p&gt;Su estado civil es &lt;strong&gt;casado&lt;/strong&gt;.&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;Su estado civil no es &lt;strong&gt;ni soltero ni casado&lt;/strong&gt;.&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    if ($cine != "on" && $deporte != "on" && $literatura != "on" &&
+        $musica !="on" && $tebeos != "on" && $television != "on") {
+        print "  &lt;p class=\"aviso\"&gt;No ha marcado ninguna afición.&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;Le gusta: ";
+        if ($cine == "on") {
+            print "&lt;strong&gt;el cine&lt;/strong&gt;, ";
+        }
+        if ($deporte == "on") {
+            print "&lt;strong&gt;el deporte&lt;/strong&gt;, ";
+        }
+        if ($literatura == "on") {
+            print "&lt;strong&gt;la literatura&lt;/strong&gt;, ";
+        }
+        if ($musica == "on") {
+            print "&lt;strong&gt;la música&lt;/strong&gt;, ";
+        }
+        if ($tebeos == "on") {
+            print "&lt;strong&gt;los tebeos&lt;/strong&gt;, ";
+        }
+        if ($television == "on") {
+            print "&lt;strong&gt;la televisión&lt;/strong&gt; ";
+        }
+        print "&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 31 de octubre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
+</html>
