@@ -29,8 +29,8 @@
         <li><a href="#crear">Crear una matriz</a></li>
         <li><a href="#asociativas">Matrices asociativas</a></li>
         <li><a href="#multidimensionales">Matrices de dimensión &gt; 1</a></li>
-        <li><a href="#anadir-elementos">Añadir elementos</a></li>
         <li><a href="#imprimir">Imprimir valores: print_r()</a></li>
+        <li><a href="#anadir-elementos">Añadir elementos</a></li>
         <li><a href="#mas-informacion-general">Más sobre matrices</a></li>
         <li><a href="#borrar">Borrar matriz o elementos</a></li>
         <li><a href="#copiar">Copiar matriz</a></li>
@@ -60,10 +60,10 @@
     <p>En PHP, una matriz es un tipo de variable muy flexible, ya que podemos añadir, modificar, eliminar o reordenar los elementos de forma individual, que pueden ser de tipos de datos diferentes.</p>
 
     <p>En PHP, si:</p>
-      <ul>
-        <li>los elementos de una matriz son datos de tipos simples (booleanos, enteros, decimales o cadenas), en ese caso sólo se necesita un índice para identificar a los datos y se dice que las matrices son unidimensionales y también se les llama vectores vectores.</li>
-        <li>los elementos de una matriz son a su vez también matrices, en ese caso se necesitan varios índices para identificar a los datos y se dice que las matrices son multidimensionales.</li>
-      </ul>
+    <ul>
+      <li>los elementos de una matriz son datos de tipos simples (booleanos, enteros, decimales o cadenas), en ese caso sólo se necesita un índice para identificar a los datos y se dice que las matrices son unidimensionales y también se les llama vectores vectores.</li>
+      <li>los elementos de una matriz son a su vez también matrices, en ese caso se necesitan varios índices para identificar a los datos y se dice que las matrices son multidimensionales.</li>
+    </ul>
   </section>
 
   <section id="crear">
@@ -203,7 +203,32 @@ print "&lt;p&gt;El cuadrado de 3 es $cuadrados[3]&lt;/p&gt;\n";
       </div>
     </div>
 
+    <hr class="corta" />
+
+    <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices, pero los índices deben escribirse sin comillas, aunque sean cadenas.</p>
+
     <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$edades = ["Andrés" =&gt; 20, "Bárbara" =&gt; 19, "Camilo" =&gt; 17];
+
+print "&lt;p&gt;Bárbara tiene $edades["Bárbara"] años&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <b>Parse error</b>: syntax error, unexpected '&quot;', expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <b>ejemplo.php</b> on line <b>4</b>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+      </div>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
@@ -218,13 +243,14 @@ print "&lt;p&gt;Bárbara tiene $edades[Bárbara] años&lt;/p&gt;\n";
       </div>
     </div>
 
-    <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices. Además los índices se escriben sin comillas, aunque sean cadenas.</p>
   </section>
 
   <section id="multidimensionales">
     <h2>Matrices multidimensionales</h2>
 
     <p>Las matrices pueden ser multidimensionales, es decir, matrices cuyos elementos son a su vez matrices. Para referirse a los elementos concretos, se necesitan utilizar varios índices (tantos como dimensiones -niveles de anidamiento- tenga la matriz).</p>
+
+    <hr class="corta" />
 
     <p>PHP no sustituye las referencias a valores de matrices de más de una dimensión dentro de las cadenas, por lo que se necesita o bien utilizar llaves, o bien concatenar cadenas y referencias a matrices. Además, los índices que sean cadenas deben escribirse con comillas.</p>
 
@@ -265,15 +291,183 @@ $datos = [
     ["nombre" =&gt; "juan", "edad" =&gt; 22, "peso" =&gt; 75]
 ];
 
-print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " años&lt;/p&gt;\n";
-
 print "&lt;p&gt;{$datos[1]["nombre"]} pesa {$datos[1]["peso"]} kilos&lt;/p&gt;\n";
+
+print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " años&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
         <p>pepe tiene 25 años</p>
         <p>juan pesa 75 kilos</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="imprimir">
+    <h2>Imprimir todos los valores de una matriz: la función print_r()</h2>
+
+    <p>La instrucción <span class="php-con">print</span> permite imprimir valores individuales de una matriz, pero no matrices completas.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["nombre"] = "Santiago";
+$datos["apellidos"] = "Ramón y Cajal";
+
+print "$datos";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br /> Array
+      </div>
+    </div>
+
+    <hr class="corta" />
+
+    <p>La función <a href="http://php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($variable [, $devolver])</span></a> permite imprimir todos los valores de una matriz de forma estructura. En general, <span class="php-fun">print_r()</span> imprime cualquier variable variable de forma legible.</p>
+
+    <p>Aunque print_r() genera espacios y saltos de línea que pueden verse en el código fuente de la página, print_r() no genera etiquetas html, por lo que el navegador no muestra esos espacios y saltos de línea.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["nombre"] = "Santiago";
+$datos["apellidos"] = "Ramón y Cajal";
+
+print_r($datos);
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )
+      </div>
+    </div>
+
+    <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["nombre"] = "Santiago";
+$datos["apellidos"] = "Ramón y Cajal";
+
+print "&lt;pre&gt;";
+print_r($datos);
+print "&lt;/pre&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [nombre] =&gt; Santiago
+    [apellidos] =&gt; Ramón y Cajal
+)
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos[1]["nombre"] = "Santiago";
+$datos[1]["apellidos"] = "Ramón y Cajal";
+$datos[2]["nombre"] = "Leonardo";
+$datos[2]["apellidos"] = "Torres Quevedo";
+
+print "&lt;pre&gt;";
+print_r($datos);
+print "&lt;/pre&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [1] =&gt; Array
+        (
+            [nombre] =&gt; Santiago
+            [apellidos] =&gt; Ramón y Cajal
+        )
+
+    [2] =&gt; Array
+        (
+            [nombre] =&gt; Leonardo
+            [apellidos] =&gt; Torres Quevedo
+        )
+)
+</pre>
+      </div>
+    </div>
+
+    <hr class="corta" />
+
+    <p>Si se añade un segundo argumento con el valor <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para guardar la respuesta en una variable que se puede imprimir posteriormente</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["nombre"] = "Santiago";
+$datos["apellidos"] = "Ramón y Cajal";
+
+$tmp = print_r($datos, true);
+print "&lt;p&gt;La matriz es $tmp&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["nombre"] = "Santiago";
+$datos["apellidos"] = "Ramón y Cajal";
+
+print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+      </div>
+    </div>
+
+    <hr class="corta" />
+
+    <p>La notación con llaves ({}) no admite la función <span class="php-fun">print_r()</span>:</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["nombre"] = "Santiago";
+$datos["apellidos"] = "Ramón y Cajal";
+
+print "&lt;p&gt;La matriz es {print_r($datos, true)}&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
+
+        <p>La matriz es {print_r(Array, true)}</p>
       </div>
     </div>
   </section>
@@ -359,138 +553,6 @@ print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
         </div>
       </li>
     </ul>
-  </section>
-
-  <section id="imprimir">
-    <h2>Imprimir todos los valores de una matriz: la función print_r()</h2>
-
-    <p>La instrucción <span class="php-con">print</span> no permite imprimir matrices.</p>
-
-    <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
-      </div>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
-$datos["apellidos"] = "Ramón y Cajal";
-
-print "$datos";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br /> Array
-      </div>
-    </div>
-
-    <hr class="corta" />
-
-    <p>La función <a href="http://php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($variable [, $devolver])</span></a> permite imprimir todos los valores de una matriz de forma estructura. En general, <span class="php-fun">print_r()</span> imprime cualquier variable variable de forma legible.</p>
-
-    <p>Aunque print_r() genera espacios y saltos de línea que pueden verse en el código fuente de la página, print_r() no genera etiquetas html, por lo que el navegador no muestra esos espacios y saltos de línea.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
-$datos["apellidos"] = "Ramón y Cajal";
-
-print_r($datos);
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )
-      </div>
-    </div>
-
-    <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
-$datos["apellidos"] = "Ramón y Cajal";
-
-print "&lt;pre&gt;";
-print_r($datos);
-print "&lt;/pre&gt;";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [nombre] =&gt; Santiago
-    [apellidos] =&gt; Ramón y Cajal
-)
-</pre>
-      </div>
-    </div>
-
-    <hr class="corta" />
-
-    <p>Si se añade un segundo argumento con el valor <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para guardar la respuesta en una variable que se puede imprimir posteriormente</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
-$datos["apellidos"] = "Ramón y Cajal";
-
-$tmp = print_r($datos, true);
-print "&lt;p&gt;La matriz es $tmp&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
-$datos["apellidos"] = "Ramón y Cajal";
-
-print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
-      </div>
-    </div>
-
-    <p>La notación con llaves ({}) no admite la función <span class="php-fun">print_r()</span>:</p>
-
-    <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
-      </div>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos["nombre"] = "Santiago";
-$datos["apellidos"] = "Ramón y Cajal";
-
-print "&lt;p&gt;La matriz es {print_r($datos, true)}&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
-
-        <p>La matriz es {print_r(Array, true)}</p>
-      </div>
-    </div>
   </section>
 
   <section id="mas-informacion-general">
@@ -1318,48 +1380,62 @@ print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n\n";
         <th><span class="php-fun">krsort()</span></th>
       </tr>
       <tr>
-        <td><pre>Array
+        <td>
+          <pre>Array
 (
     [5] =&gt; cinco
     [1] =&gt; uno
     [9] =&gt; nueve
-)</pre></td>
-        <td><pre>Array
+)</pre>
+        </td>
+        <td>
+          <pre>Array
 (
     [0] =&gt; cinco
     [1] =&gt; nueve
     [2] =&gt; uno
-)</pre></td>
-        <td><pre>Array
+)</pre>
+        </td>
+        <td>
+          <pre>Array
 (
     [0] =&gt; uno
     [1] =&gt; nueve
     [2] =&gt; cinco
-)</pre></td>
-        <td><pre>Array
+)</pre>
+        </td>
+        <td>
+          <pre>Array
 (
     [5] =&gt; cinco
     [9] =&gt; nueve
     [1] =&gt; uno
-)</pre></td>
-        <td><pre>Array
+)</pre>
+        </td>
+        <td>
+          <pre>Array
 (
     [1] =&gt; uno
     [9] =&gt; nueve
     [5] =&gt; cinco
-)</pre></td>
-        <td><pre>Array
+)</pre>
+        </td>
+        <td>
+          <pre>Array
 (
     [1] =&gt; uno
     [5] =&gt; cinco
     [9] =&gt; nueve
-)</pre></td>
-        <td><pre>Array
+)</pre>
+        </td>
+        <td>
+          <pre>Array
 (
     [9] =&gt; nueve
     [5] =&gt; cinco
     [1] =&gt; uno
-)</pre></td>
+)</pre>
+        </td>
       </tr>
     </table>
   </section>
@@ -1585,7 +1661,7 @@ print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de octubre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
