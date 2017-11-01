@@ -35,7 +35,7 @@
             <li><a href="#resto">tras la redirección</a></li>
           </ul>
         </li>
-        <li><a href="#otros">Crear otros tipos de archivos</a></li>
+        <li><a href="#otros-tipos">Crear otros tipos de archivos</a></li>
       </ul>
     </div>
   </nav>
@@ -47,7 +47,45 @@
 
     <p>Normalmente, un programa PHP sólo genera la página web y es el servidor el que genera automáticamente la información de estado y los campos de cabecera y los envía antes de enviar el contenido generado por el programa. Pero un programa PHP también puede generar la información de estado y los campos de cabecera, mediante la función <a href="http://php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a>.</p>
 
-    <p>Pero la función <span class="php-fun">header()</span> no debe utilizarse en un programa una vez se ha generado contenido HTML (por ejemplo, con un <span class="php-res">print</span>). El motivo es que si un programa genera contenido HTML, el servidor genera automáticamente la información de estado y los campos de cabecera y a continuación envía el contenido generado. Si después el programa contiene una instrucción <span class="php-fun">header()</span>, se produce un error porque las cabeceras ya se han enviado, como muestran los dos ejemplos siguientes.</p>
+    <hr class="corta" />
+
+    <p>El ejemplo siguiente muestra un ejemplo de cabecera HTTP, concretamente una redirección. En el ejemplo siguiente, la página 1 contiene un enlace a la página 2. Pero como la página genera una cabecera HTTP de redirección a la página 3, al hacer clic en el enlace se acaba en la página 3.</p>
+
+    <div class="filaflex">
+      <div class="columnaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;Esta es la página 1.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="cabeceras-header-1-2.php"&gt;Enlace a página 2 (que redirige a la página 3)&lt;/a&gt;&lt;/p&gt;</code>
+</pre>
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+header("Location: cabeceras-header-1-3.php");
+?&gt;</code>
+</pre>
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;Esta es la página 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="cabeceras-header-1-1.php"&gt;Volver a la página 1&lt;/a&gt;&lt;/p&gt;</code>
+</pre>
+        </div>
+      </div>
+      <div class="resultado-object">
+        <object type="text/html" data="ejemplos/cabeceras/cabeceras-header-1-1.php" style="height: 13em">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/cabeceras/cabeceras-header-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+
+    <hr class="corta" />
+
+    <p>Es muy importante tener en cuenta que la función <span class="php-fun">header()</span> no debe utilizarse una vez se ha generado contenido HTML (por ejemplo, con un <span class="php-res">print</span>). El motivo es que en cuanto un programa genera contenido HTML, el servidor genera automáticamente la información de estado y los campos de cabecera y a continuación envía el contenido generado. Si después el programa contiene una instrucción <span class="php-fun">header()</span>, se produce un error porque las cabeceras ya se han enviado, como muestran los dos ejemplos siguientes.</p>
 
     <p>En el primer ejemplo, se llama a la función <span class="php-fun">header()</span> después de un <span class="php-fun">print</span>, lo que provoca un aviso de error.</p>
 
@@ -108,53 +146,57 @@ header("Location:http://www.example.com");
     <section id="buffer">
       <h3>Buffer de salida</h3>
 
-      <p>El error que se ha comentado en el apartado anterior puede no llegarse a producir si el servidor está utilizando un buffer de salida. Un buffer de salida almacena temporalmente la salida del programa, que no se envía al navegador hasta que se completa la página o se llena el buffer y se puede definir mediante la <a href="../otros/php-configuracion-1.html#output-buffering">directiva <span class="php-dir">output_buffering</span></a>.</p>
+      <p>El buffer de salida del intérprete PHP se crea mediante la <a href="../otros/php-configuracion-1.html#output-buffering">directiva <span class="php-dir">output_buffering</span></a>. El buffer de salida almacena temporalmente la salida del programa, que no se envía al navegador hasta que se complete la página o se llene el buffer.</p>
 
-      <p>Si cuando el programa llega a la instrucción <span class="php-fun">header()</span>, el contenido generado anteriormente todavía no se ha enviado al navegador porque ha cabido en el buffer de salida, el servidor puede todavía modificar la información de cabecera y la función <span class="php-fun">header()</span> no daría error.</p>
+      <p>Si el servidor está utilizando un buffer de salida (lo que es muy habitual), el error de utilizar la función <span class="php-fun">header()</span> después de crear contenido HTML que se ha comentado en el apartado anterior puede no llegar a producirse.</p>
 
-      <p>El uso de un buffer de salida puede así enmascarar errores de programación como los de los ejemplos anteriores. Por ese motivos, en la <a href="../otros/php-configuracion-1.html#output-buffering">lección de configuración de XAMPP</a> se recomienda desactivar el buffer de salida al desarrollar el programa, de manera que al probar el programa detectemos este tipo de errores.</p>
+      <p>Si cuando el programa llega a la instrucción <span class="php-fun">header()</span>, el contenido HTML generado anteriormente ha cabido en el buffer de salida y todavía no se ha enviado al navegador, el servidor puede todavía modificar la información de cabecera y la función <span class="php-fun">header()</span> no daría error. Pero si el contenido HTML hubiera sido mayor que el tamaño del buffer, el error sí que se produciría porque las cabeceras ya se habrían enviado.</p>
 
-      <p>Si por algún motivo un programa necesita que haya un buffer de salida, para no tener que depender de la configuración del servidor el programa puede gestionar directamente el buffer mediante la función <a href="http://php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="http://php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página.</p>
+      <p>El uso de un buffer de salida puede así enmascarar en ciertos casos errores de programación como los de los ejemplos anteriores. Por ese motivos, en la <a href="../otros/php-configuracion-1.html#output-buffering">lección de configuración de XAMPP</a> se recomienda desactivar el buffer de salida al desarrollar el programa, de manera que al probar el programa detectemos este tipo de errores.</p>
 
-      <p>Los ejemplos siguientes muestran la influencia del buffer.</p>
+      <hr class="corta" />
+
+      <p>Los ejemplos siguientes muestran la influencia del tamaño del buffer. En estos ejemplos se utilizan las funciones <a href="http://php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="http://php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>, que permiten gestionar directamente el buffer de salida independientemente de la configuración del servidor. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página.</p>
 
       <ul>
-        <li>En el primer ejemplo, el buffer es de 1 byte. La salida de <span class="php-res">print</span> no cabe en el buffer y el servidor envía el contenido. Al intentar hacer la redirección, se produce un error.
+        <li>En el primer ejemplo, el buffer es de 1 byte. El contenido HTML generado por la instrucción <span class="php-res">print</span> no cabe en el buffer y la redirección produce un error.
 
           <div class="filaflex">
             <div class="codigo">
               <pre>
-<code class="language-php">ob_start(null, 1);
+<code class="language-php">&lt;?php
+ob_start(null, 1);
 print "&lt;p&gt;Tamaño del buffer: 1&lt;/p&gt;";
 header("location:final.php");
 print "&lt;p&gt;La redirección &lt;strong&gt;no&lt;/strong&gt; se ha realizado.&lt;/p&gt;\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
-</code>
+?&gt;</code>
 </pre>
             </div>
             <div class="resultado-object">
-              <object type="text/html" data="http://www.mclibre.org/consultar/especiales/php/buffer-salida/buffer-falta-1.php" style="height: 13em">ERROR (no puede mostrarse el objeto)</object>
+              <object type="text/html" data="http://www.mclibre.org/consultar/especiales/php/buffer-salida/buffer-falta-1.php" style="height: 8em">ERROR (no puede mostrarse el objeto)</object>
             </div>
             <div class="icono-enlace">
               <a href="http://www.mclibre.org/consultar/especiales/php/buffer-salida/buffer-falta-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
             </div>
           </div>
         </li>
-        <li>En el segundo ejemplo, el buffer es de 100 bytes. La salida de <span class="php-res">print</span> sí cabe en el buffer y el servidor no envía todavía el contenido. Al intentar hacer la redirección, la redirección puede realizarse.
+        <li>En el segundo ejemplo, el buffer es de 100 bytes. El contenido HTML generado por la instrucción <span class="php-res">print</span> sí cabe en el buffer y la redirección puede realizarse.
 
           <div class="filaflex">
             <div class="codigo">
               <pre>
-<code class="language-php">ob_start(null, 100);
+<code class="language-php">&lt;?php
+ob_start(null, 100);
 print "&lt;p&gt;Tamaño del buffer: 100&lt;/p&gt;";
 header("location:final.php");
 print "&lt;p&gt;La redirección &lt;strong&gt;no&lt;/strong&gt; se ha realizado.&lt;/p&gt;\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
-</code>
+?&gt;</code>
 </pre>
             </div>
             <div class="resultado-object">
-              <object type="text/html" data="http://www.mclibre.org/consultar/especiales/php/buffer-salida/buffer-sobra-1.php" style="height: 11em">ERROR (no puede mostrarse el objeto)</object>
+              <object type="text/html" data="http://www.mclibre.org/consultar/especiales/php/buffer-salida/buffer-sobra-1.php" style="height: 8em">ERROR (no puede mostrarse el objeto)</object>
             </div>
             <div class="icono-enlace">
               <a href="http://www.mclibre.org/consultar/especiales/php/buffer-salida/buffer-sobra-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
@@ -175,7 +217,9 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
         <li>el formato del archivo en general. Para saber si un archivo está en formato UTF-8, 16 o 32 (es decir, si cada byte del archivo es un carácter, o los bytes se tienen que tomar de dos en dos, o de cuatro en cuatro), los programas sólo tienen que mirar los primeros bytes del archivo y a partir del BOM deducir el formato.</li>
       </ul>
 
-      <p>En el caso de los archivos UTF-8, la marca de orden de bytes son los tres caracteres EF BB BF (que corresponden a los caracteres <strong>ï»¿</strong>). Pero como en un archivo UTF-8 no se necesita indicar el orden de los bytes, puesto que cada carácter ocupa solamente un byte, la marca es opcional, es decir, que hay archivos UTF-8 con BOM y archivos UTF-8 sin BOM. Los editores (como Eclipse for PHP developers) no muestran estos caracteres y suelen respetarlos al guardar de nuevo al archivo. Para ver esos caracteres, se puede utilizar un editor hexadecimal, que muestra todos los caracteres sin excepción.</p>
+      <p>En el caso de los archivos UTF-8 realmente no se necesita marca de orden de bytes porque el orden de los bytes debe ser siempre el orden natural, pero el caso es que existe una marca de orden de bytes, los tres caracteres EF BB BF (que en ASCII corresponden a los caracteres <strong>ï»¿</strong>). En el caso de UTF-8 la marca de orden de bytes es opcional y puede servir para identificar un archivo como UTF-8 y distinguirlo de otros formatos.</p>
+
+      <p>Los editores (como Eclipse for PHP developers) no muestran la marca de orden de bytes y suelen respetarlos al guardar de nuevo al archivo. Para ver esos caracteres, se puede utilizar un editor hexadecimal, que muestra todos los caracteres sin excepción.</p>
 
       <p>Las imágenes siguientes muestran los valores hexadecimales de dos archivos UTF-8 (con y sin BOM ), utilizando el editor Notepad++ con el plug-in HEX-Editor:</p>
 
@@ -187,7 +231,7 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
         <img src="../img/php/utf8-con-bom.png" alt="archivo UTF-8 con BOM" title="archivo UTF-8 con BOM" width="800" height="200" />
       </p>
 
-      <p>Esta marca de orden de bytes puede causar problemas si PHP no reconoce la marca de orden de bytes como un identificador de juego de caracteres, sino como caracteres situados antes de un framento PHP que se deben enviar al navegador. El comportamiento de PHP depende de las opciones elegidas al compilar el intérprete de PHP, por lo que la única solución viable es asegurarse de que los archivos no tienen BOM.</p>
+      <p>Esta marca de orden de bytes puede causar problemas si PHP no reconoce la marca de orden de bytes como un identificador de juego de caracteres, sino como caracteres situados antes de un framento PHP que se deben enviar al navegador. El comportamiento de PHP depende de las opciones elegidas al compilar el intérprete de PHP, por lo que la única solución viable es asegurarse de que los archivos no tienen BOM (como recomiendan las <a href="../otros/guia-estilo.html">guías de estilo</a> más populares).</p>
 
       <hr class="corta" />
 
@@ -237,9 +281,9 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
 
     <hr class="corta" />
 
-    <p>Notepad++ permite quitar la marca de orden de bytes de un archivo php mediante el menú <span class="soft-menu">Codificación &gt; Codificar en UTF-8 sin BOM</span>:</p>
+    <p>Notepad++ permite quitar la marca de orden de bytes de un archivo php mediante el menú <span class="soft-menu">Codificación &gt; Convertir a UTF-8 sin BOM</span>:</p>
 
-    <p class="captura"><img src="../img/php/utf-bom-codificar.png" alt="Quitar BOM con Notepad++" width="800" height="310" /></p>
+    <p class="captura"><img src="../img/php/utf-bom-codificar.png" alt="Quitar BOM con Notepad++" width="800" height="315" /></p>
 
     <p>Para eliminar las marcas de orden de bytes de un conjunto grande de archivos php, se puede utilizar este script de Linux:</p>
 
@@ -331,7 +375,7 @@ print "&lt;p&gt;Nadie leerá este texto&lt;/p&gt;\n";
 </pre>
           </div>
         </li>
-        <li>Si el programa realiza acciones como modificar registros en una base de datos, borrar archivos, etc., esas acciones se realizarán. Por ejemplo, el siguiente programa redirige a la página web de mclibre, pero también se borra a sí mismo.
+        <li>Si el programa realiza acciones como modificar registros en una base de datos, borrar archivos, etc., esas acciones sí que se realizarán. Por ejemplo, el siguiente programa redirige a la página web de mclibre, pero también se borra a sí mismo.
 
           <div class="codigo">
             <pre>
@@ -344,108 +388,101 @@ unlink("ejemplo.php");
         </li>
       </ul>
 
-      <p>Si tras una redirección no queremos que se ejecute el resto del programa, se debe escribir el programa de manera que se ejecuten unas instrucciones u otras, mediante expresiones <span class="php-res">if ... else ...</span> . El programa siguiente realizará una redirección u otra en función de la condición que se escriba:</p>
+      <hr class="corta" />
 
-      <div class="codigo">
-        <pre>
+      <p>Si tras una redirección no queremos que se ejecute el resto del programa, tenemos dos opciones:</p>
+
+      <ul>
+        <li>podemos utilizar una expresión <span class="php-res">if ... else ...</span>
+
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 if (condicion) {
     header("location:http://www.mclibre.org/");
-} else {
-    header("location:http://www.example.com/");
-}
-?&gt;</code>
-</pre>
-      </div>
-
-      <p>Un ejemplo práctico de uso de redirecciones es el siguiente. Supongamos que tenemos un formulario (confirmar.php) para confirmar una acción destructiva (borrar datos de una base de datos, por ejemplo) que envía la confirmación a destruir.php. Para tener en cuenta el caso de que un usuario acceda directamente a la página destruir.php sin haber confirmado la acción en confirmar.php, podemos hacer que se compruebe si se ha recibido la confirmación y en caso contrario redirigir a la página principal del sitio.</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// destruir.php
-if (!isset($_REQUEST["si"])) {
-    header("Location:index.php");
 } else {
     ...
 }
 ?&gt;</code>
 </pre>
-      </div>
+          </div>
+        </li>
+        <li>podemos utilizar la instrucción <a href="http://php.net/manual/en/function.exit.php"><span class="php-res">exit</span></a>, que detiene el programa en ese punto.
 
-      <p>Para simplificar este tipo de programas se puede utilizar <a href="http://php.net/manual/en/function.exit.php"><span class="php-res">exit</span></a>, que detiene el programa en ese punto.</p>
+          <p><strong>Nota</strong>: <span class="php-res">exit</span> no es una función, sino una palabra reservada del lenguaje, pero también se puede utilizar seguida de paréntesis como si fuera una función: <span class="php-res">exit()</span>. Se puede incluso incluir un valor numérico en los paréntesis, que sería el valor que devolvería el programa.</p>
 
-      <p><strong>Nota</strong>: <span class="php-res">exit</span> no es una función, sino una palabra reservada del lenguaje, pero también se puede utilizar seguida de paréntesis como si fuera una función: <span class="php-res">exit()</span>. Se puede incluso incluir un valor numérico en los paréntesis, que sería el valor que devolvería el programa.</p>
+          <p>El ejemplo anterior se podría escribir entonces de la siguiente manera, sin necesidad de incluir las instrucciones posteriores en un bloque <span class="php-res">else ...</span>:</p>
 
-      <p>El ejemplo anterior se podría escribir entonces de la siguiente manera, sin necesidad de incluir las instrucciones posteriores en un bloque <span class="php-res">else ...</span>:</p>
-
-      <div class="codigo">
-        <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 if (condicion) {
     header("location:http://www.mclibre.org/");
     exit;
 }
-header("location:http://www.example.com/");
+...
 ?&gt;</code>
 </pre>
-      </div>
+          </div>
+        </li>
+      </ul>
 
-      <p>El inconveniente de <span class="php-res">exit</span> es que detiene la ejecución del programa, pero también la de los programas que hubieran llamado a esos programas, como se muestra en los ejemplos siguientes:</p>
+      <hr class="corta" />
 
-      <p>El programa ejemplo_1.php llama al programa ejemplo_2.php y el resultado incluye las instrucciones generadas por ambos programas. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página web de mclibre.</p>
+      <p>Pero hay que tener en cuenta que <span class="php-res">exit</span> detiene no sólo la ejecución del programa, sino también la de los programas que hubieran llamado a esos programas, como se muestra en los ejemplos siguientes:</p>
 
-      <div class="codigo">
-        <pre>
+      <ul>
+        <li>El programa ejemplo_1.php llama al programa ejemplo_2.php y el resultado incluye las instrucciones generadas por ambos programas. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página web de mclibre.
+
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 // ejemplo_1.php
 include "ejemplo_2.php";
 header("location:http://www.mclibre.org/");
 ?&gt;</code>
 </pre>
-      </div>
+          </div>
 
-      <div class="codigo">
-        <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 // ejemplo_2.php
 header("location:http://www.example.com/");
 ?&gt;</code>
 </pre>
-      </div>
+          </div>
+        </li>
+        <li>Pero si el segundo programa se añade <span class="php-res">exit</span>, se interrumpiría tanto el segundo como el primero. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página http://www.example.com/.
 
-      <p>Pero si el segundo programa se añade <span class="php-res">exit</span>, se interrumpiría tanto el segundo como el primero. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página http://www.example.com/.</p>
-
-      <div class="codigo">
-        <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 // ejemplo_3.php
 include "ejemplo_4.php";
 header("location:http://www.mclibre.org/");
 ?&gt;</code>
 </pre>
-      </div>
+          </div>
 
-      <div class="codigo">
-        <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 // ejemplo_4.php
 header("location:http://www.example.com/");
 exit;
 ?&gt;</code>
 </pre>
-      </div>
+          </div>
+        </li>
+      </ul>
     </section>
   </section>
 
-  <section id="otros">
+  <section id="otros-tipos">
     <h2>Crear con PHP otros tipos de archivos</h2>
 
-    <p>PHP puede generar archivos de todo tipo, pero para que el navegador reconozca el tipo de archivo se debe enviar el tipo MIME correspondiente. Eso se para ello, se puede utilizar la función <a href="http://php.net/manual/es/function.header.php"><span class="php-fun">header()</span> </a>enviando como argumento la cadena <strong>Content-type:</strong> seguida del tipo MIME correspondiente.</p>
-
-    <p>Existen muchos tipos MIME (véase lista de <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types">tipos MIME en MDN</a>).</p>
-
-    <p>Los tipos MIME más habituales son:</p>
+    <p>PHP puede generar archivos de cualquier tipo, pero para que el navegador reconozca el tipo de archivo, en la cebecera del archivo se debe enviar el tipo MIME correspondiente. Existen muchos tipos MIME (véase lista de <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types">tipos MIME en MDN</a>), por ejemplo:</p>
 
     <table class="tabla-con-borde">
       <tr>
@@ -454,14 +491,14 @@ exit;
         <th>tipo MIME</th>
       </tr>
       <tr>
-        <td>.css</td>
-        <td>hoja de estilo CSS</td>
-        <td>text/css</td>
-      </tr>
-      <tr>
         <td>.html</td>
         <td>página web HTML</td>
         <td>text/html</td>
+      </tr>
+      <tr>
+        <td>.css</td>
+        <td>hoja de estilo CSS</td>
+        <td>text/css</td>
       </tr>
       <tr>
         <td>.js</td>
@@ -475,42 +512,104 @@ exit;
       </tr>
     </table>
 
-    <hr class="corta" />
+    <p>El tipo MIME se indica en la cabecera, por lo que un programa PHP puede declarar su tipo MIME mediante la función <a href="http://php.net/manual/es/function.header.php"><span class="php-fun">header()</span></a>, enviando como argumento la cadena <strong>Content-type:</strong> seguida del tipo MIME correspondiente.</p>
 
-    <p>El programa siguiente crea una imagen SVG, concretamente un cuadrado:</p>
+    <section id="mime-svg">
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+      <h3>Crear imágenes SVG</h3>
+
+      <p>El programa siguiente crea las etiquetas correspondientes a una imagen SVG, concretamente a un cuadrado de color aleatorio. Si escribimos directmente la url de ese programa en el navegador, el navegador muestra el contenido esperado.</p>
+
+      <p>Pero aunque el navegador consiga mostrar el cuadrado, realmente no estamos haciendo bien las cosas. Una imagen SVG debería entregarse al navegador con el tipo MIME image/svg+xml. En este caso, el programa no declara ningún tipo MIME, así que el servidor lo entrega con el tipo MIME predeterminado de los programas PHP, el tipo MIME text/html (es decir, como página web). Aunque estrictamente hablando el documento no es una página web válida porque le faltan las etiquetas básicas como <span class="html-eti">&lt;html&gt;</span>, <span class="html-eti">&lt;head&gt;</span>, <span class="html-eti">&lt;body&gt;</span>, etc. los navegadores aceptan las páginas invalidas e intentan interpretar el contenido de la mejor manera posible. En este caso, se interpreta la etiqueta <span class="html-eti">&lt;svg&gt;</span> como si estuviera en una página web y el resultado es el esperado.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
-header("Content-type: image/svg+xml");
+$color = rand(0, 360);
 print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "    width=\"100\" height=\"100\" viewBox=\"-5 -5 100 100\"&gt;\n";
-print "  &lt;rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
-        . "x=\"5\" y=\"5\" width=\"90\" height=\"90\" /&gt;\n";
+print "  &lt;rect fill=\"hsl($color, 100%, 70%)\" stroke=\"hsl($color, 100%, 30%)\" stroke-width=\"4\" "
+    . "x=\"0\" y=\"0\" width=\"90\" height=\"90\" /&gt;\n";
 print "&lt;/svg&gt;";
 ?&gt;</code>
 </pre>
+        </div>
+        <div class="resultado-object">
+          <object type="text/html" data="ejemplos/cabeceras/mime-svg-sin-mime.php" style="height: 8em">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/cabeceras/mime-svg-sin-mime.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
       </div>
-      <div class="resultado-html">
-        <pre>
-<code class="language-html">&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-    width="100" height="100" viewBox="-5 -5 100 100"&gt;
-  &lt;rect fill="none" stroke="black" stroke-width="1" x="5" y="5" width="90" height="90" /&gt;
-&lt;/svg&gt;</code>
+
+      <p>Pero en otras circunstancias, este mismo programa no daría el resultado esperado. Como muestra el siguiente ejemplo, si el programa se llama en una etiqueta <span class="html-eti">&lt;img&gt;</span>, el navegador no puede mostrar la imagen. El problema es que en una etiqueta el navegador tiene que recibir obligatoriamente algo con un tipo MIME de imagen. Como en el ejemplo anterior, el servidor serviría el documento con el tipo MIME text/html, y en este caso los navegadores no intentan siquiera mostrar el contenido.</p>
+
+      <div class="filaflex">
+        <div class="columnaflex">
+          <div class="codigo">
+            <pre><code class="language-html">&lt;p&gt;&lt;img src="svg-sin-mime.php" alt="ERROR No puedo mostrar la imagen" /&gt;&lt;/p&gt;</code></pre>
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$color = rand(0, 360);
+print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+    . "    width=\"100\" height=\"100\" viewBox=\"-5 -5 100 100\"&gt;\n";
+print "  &lt;rect fill=\"hsl($color, 100%, 70%)\" stroke=\"hsl($color, 100%, 30%)\" stroke-width=\"4\" "
+    . "x=\"0\" y=\"0\" width=\"90\" height=\"90\" /&gt;\n";
+print "&lt;/svg&gt;";
+?&gt;</code>
 </pre>
+          </div>
+        </div>
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="resultado-object">
+          <object type="text/html" data="ejemplos/cabeceras/mime-svg-1.html" style="height: 8em">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/cabeceras/mime-svg-1.html"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
       </div>
-    </div>
 
-    <p>Ese programa se puede llamar desde otro programa para generar la imagen:</p>
+      <p>Para que el navegador muestre siempre correctamente la imagen, el programa debe generar una cabecera que declare el tipo MIME de imagen image/svg+xml, como muestra el siguiente ejemplo.</p>
 
-    <div class="codigo">
-      <pre><code class="language-html">&lt;p&gt;&lt;img src="imagen.php" alt="cuadrado" /&gt;&lt;/p&gt;</code></pre>
-    </div>
+      <div class="filaflex">
+        <div class="columnaflex">
+          <div class="codigo">
+            <pre><code class="language-html">&lt;p&gt;&lt;img src="svg-con-mime.php" alt="ERROR No puedo mostrar la imagen" /&gt;&lt;/p&gt;</code></pre>
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+header("Content-type: image/svg+xml");
+$color = rand(0, 360);
+print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+    . "    width=\"100\" height=\"100\" viewBox=\"-5 -5 100 100\"&gt;\n";
+print "  &lt;rect fill=\"hsl($color, 100%, 70%)\" stroke=\"hsl($color, 100%, 30%)\" stroke-width=\"4\" "
+    . "x=\"0\" y=\"0\" width=\"90\" height=\"90\" /&gt;\n";
+print "&lt;/svg&gt;";
+?&gt;</code>
+</pre>
+          </div>
+        </div>
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+        </div>
+        <div class="resultado-object">
+          <object type="text/html" data="ejemplos/cabeceras/mime-svg-2.html" style="height: 10em">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/cabeceras/mime-svg-2.html"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+    </section>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de junio de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
