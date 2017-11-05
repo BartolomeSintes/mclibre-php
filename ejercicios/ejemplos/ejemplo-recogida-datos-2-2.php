@@ -66,7 +66,7 @@ if ($edad == "") {
     print "  <p class=\"aviso\">No ha escrito la edad como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($edad)) {
-    print "  <p class=\"aviso\">No ha escrito la edad como número entero.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la edad como número entero positivo.</p>\n";
     print "\n";
 } elseif ($edad < 1 || $edad > 120) {
     print "  <p class=\"aviso\">La edad no está entre 1 y 120 años.</p>\n";

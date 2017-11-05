@@ -63,7 +63,7 @@
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-header("Location: cabeceras-header-1-3.php");
+header("Location:cabeceras-header-1-3.php");
 ?&gt;</code>
 </pre>
         </div>
@@ -167,7 +167,7 @@ header("Location:http://www.example.com");
 <code class="language-php">&lt;?php
 ob_start(null, 1);
 print "&lt;p&gt;Tamaño del buffer: 1&lt;/p&gt;";
-header("location:final.php");
+header("Location:final.php");
 print "&lt;p&gt;La redirección &lt;strong&gt;no&lt;/strong&gt; se ha realizado.&lt;/p&gt;\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 ?&gt;</code>
@@ -189,7 +189,7 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
 <code class="language-php">&lt;?php
 ob_start(null, 100);
 print "&lt;p&gt;Tamaño del buffer: 100&lt;/p&gt;";
-header("location:final.php");
+header("Location:final.php");
 print "&lt;p&gt;La redirección &lt;strong&gt;no&lt;/strong&gt; se ha realizado.&lt;/p&gt;\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 ?&gt;</code>
@@ -243,7 +243,7 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
           <div class="filaflex">
             <div class="codigo">
               <pre>
-<code class="language-php">header("location:final.php");
+<code class="language-php">header("Location:final.php");
 print "&lt;p&gt;La redirección &lt;strong&gt;no&lt;/strong&gt; se ha realizado.&lt;/p&gt;\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
@@ -262,7 +262,7 @@ print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p
           <div class="filaflex">
             <div class="codigo">
               <pre>
-<code class="language-php">header("location:final.php");
+<code class="language-php">header("Location:final.php");
 print "&lt;p&gt;La redirección &lt;strong&gt;no&lt;/strong&gt; se ha realizado.&lt;/p&gt;\n";
 print "&lt;p&gt;&lt;a href=\"inicio.php\"&gt;Volver al principio&lt;/a&gt;&lt;/p&gt;\n";
 </code>
@@ -347,6 +347,15 @@ header("Location:http://www.example.com?nombre=Pepito Conejo&amp;edad=25");
 </pre>
     </div>
 
+<p>Se puede escribir "location" o "Location" y entre los dos puntos y la dirección puede haber espacios en blanco.</p>
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+header("location: http://www.example.com/");
+?&gt;</code>
+</pre>
+    </div>
+
     <section id="resto">
       <h3>Resto del programa tras la redirección</h3>
 
@@ -369,7 +378,7 @@ header("Location:http://www.mclibre.org/");
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-header("location:http://www.mclibre.org/");
+header("Location:http://www.mclibre.org/");
 print "&lt;p&gt;Nadie leerá este texto&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -380,7 +389,7 @@ print "&lt;p&gt;Nadie leerá este texto&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-header("location:http://www.mclibre.org/");
+header("Location:http://www.mclibre.org/");
 unlink("ejemplo.php");
 ?&gt;</code>
 </pre>
@@ -399,7 +408,7 @@ unlink("ejemplo.php");
             <pre>
 <code class="language-php">&lt;?php
 if (condicion) {
-    header("location:http://www.mclibre.org/");
+    header("Location:http://www.mclibre.org/");
 } else {
     ...
 }
@@ -417,7 +426,7 @@ if (condicion) {
             <pre>
 <code class="language-php">&lt;?php
 if (condicion) {
-    header("location:http://www.mclibre.org/");
+    header("Location:http://www.mclibre.org/");
     exit;
 }
 ...
@@ -439,7 +448,7 @@ if (condicion) {
 <code class="language-php">&lt;?php
 // ejemplo_1.php
 include "ejemplo_2.php";
-header("location:http://www.mclibre.org/");
+header("Location:http://www.mclibre.org/");
 ?&gt;</code>
 </pre>
           </div>
@@ -448,19 +457,19 @@ header("location:http://www.mclibre.org/");
             <pre>
 <code class="language-php">&lt;?php
 // ejemplo_2.php
-header("location:http://www.example.com/");
+header("Location:http://www.example.com/");
 ?&gt;</code>
 </pre>
           </div>
         </li>
-        <li>Pero si el segundo programa se añade <span class="php-res">exit</span>, se interrumpiría tanto el segundo como el primero. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página http://www.example.com/.
+        <li>Pero si en el segundo programa se añade <span class="php-res">exit</span>, se interrumpiría tanto el segundo como el primero. Es decir, si se ejecuta el programa ejemplo_3.php, el resultado final será una redirección a la página http://www.example.com/.
 
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
 // ejemplo_3.php
 include "ejemplo_4.php";
-header("location:http://www.mclibre.org/");
+header("Location:http://www.mclibre.org/");
 ?&gt;</code>
 </pre>
           </div>
@@ -469,7 +478,7 @@ header("location:http://www.mclibre.org/");
             <pre>
 <code class="language-php">&lt;?php
 // ejemplo_4.php
-header("location:http://www.example.com/");
+header("Location:http://www.example.com/");
 exit;
 ?&gt;</code>
 </pre>

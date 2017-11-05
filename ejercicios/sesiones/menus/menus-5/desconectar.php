@@ -3,9 +3,9 @@
  * Menús 5 - desconectar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-21
+ * @version   2017-11-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

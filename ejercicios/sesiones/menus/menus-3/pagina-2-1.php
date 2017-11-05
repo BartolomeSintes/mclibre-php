@@ -1,11 +1,11 @@
 <?php
 /**
- * Menús 3 - pagina-2a.php
+ * Menús 3 - pagina-2-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-21
+ * @version   2017-11-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,13 +26,13 @@ require_once "biblioteca.php";
 
 cabecera("Segunda página - Confirmación previa", MENU_SECUNDARIO);
 
-print "      <form action=\"pagina-2b.php\" method=\"" . FORM_METHOD . "\">\n";
-print "        <p>¿Está seguro de querer ir a la segunda página?</p>\n";
+print "    <form action=\"pagina-2-2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <p>¿Está seguro de querer ir a la segunda página?</p>\n";
 print "\n";
-print "        <p>\n";
-print "          <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
-print "          <input type=\"submit\" value=\"No\" name=\"no\" />\n";
-print "        </p>\n";
-print "      </form>\n";
+print "      <p>\n";
+print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
+print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
+print "      </p>\n";
+print "    </form>\n";
 
 pie();

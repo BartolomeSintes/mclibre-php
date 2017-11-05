@@ -3,9 +3,9 @@
  * Menús 4 - comprobar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-21
+ * @version   2017-11-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@ session_start();
 cabecera("Comprobar");
 
 if (isset($_SESSION["conectado"])) {
-    print "      <p>Está usted <strong>conectado</strong>.</p>\n";
+    print "    <p>Está usted <strong>conectado</strong>.</p>\n";
 } else {
-    print "      <p>Está usted <strong>desconectado</strong>.</p>\n";
+    print "    <p>Está usted <strong>desconectado</strong>.</p>\n";
 }
 
 pie();
