@@ -101,10 +101,12 @@ if ($respuestas == "") {
 $botonesRecibidos = count($b);
 // Si no se ha recibido ningún botón
 if ($botonesRecibidos == 0) {
-    print "<p>No se ha recibido ninguna respuesta.</p>\n\n";
+    print "<p>No se ha recibido ninguna respuesta.</p>\n";
+    print "\n";
 // Si se han recibido demasiados botones
 } elseif ($botonesRecibidos > $preguntas) {
-    print "<p class=\"aviso\">Se han recibido demasiadas respuestas.</p>\n\n";
+    print "<p class=\"aviso\">Se han recibido demasiadas respuestas.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $bOk = true;
@@ -121,24 +123,28 @@ if ($botonesRecibidos == 0) {
         }
     }
     if (!$bOk) {
-        print "<p class=\"aviso\">Las respuestas recibidas no son correctas.</p>\n\n";
+        print "<p class=\"aviso\">Las respuestas recibidas no son correctas.</p>\n";
+        print "\n";
     }
 }
 
 // Si el número de preguntas y respuestas recibido y los botones radio recibidos con correctos ...
 if ($preguntasOk && $respuestasOk && $bOk) {
     if ($botonesRecibidos == 0) {
-        print "<p>No se ha contestado ninguna pregunta.</p>\n\n";
+        print "<p>No se ha contestado ninguna pregunta.</p>\n";
+        print "\n";
     } else {
         print "<p>Se han contestado $botonesRecibidos pregunta(s)";
-        print " de un total de $preguntas.</p>\n\n";
+        print " de un total de $preguntas.</p>\n";
+        print "\n";
 
         print "<ul>\n";
         // Bucle para escribir qué se ha contestado en cada pregunta
         foreach ($b as $indice => $valor) {
            print "  <li>En la pregunta $indice se ha contestado $valor</li>\n";
         }
-        print "</ul>\n\n";
+        print "</ul>\n";
+        print "\n";
     }
 }
 

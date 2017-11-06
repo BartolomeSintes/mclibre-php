@@ -280,7 +280,8 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menu_principal'
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
   <title>www.mclibre.org - Agenda multiusuario - $texto</title>
   <link href=\"mclibre-php-soluciones-proyectos-comun.css\" rel=\"stylesheet\" type=\"text/css\" />
-</head>\n\n";
+</head>
+\n";
     if ($conCursor) {
         print "<body onload=\"document.getElementById('cursor').focus()\">\n";
     } else {
@@ -308,7 +309,10 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menu_principal'
   <li><a href=\"borrar1.php\">Borrar</a></li>
   <li><a href=\"salir.php\">Desconectar</a></li>";
     }
-    print "</ul>\n</div>\n\n<div id=\"contenido\">\n";
+    print "</ul>\n";
+    print "</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

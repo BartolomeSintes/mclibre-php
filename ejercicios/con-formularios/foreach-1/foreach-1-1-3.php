@@ -69,13 +69,16 @@ $numeroMaximo = 20;
 
 // Comprobación de $numero (entero entre 1 y 20)
 if ($numero == "") {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n\n";
+    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($numero)) {
     print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla "
-        . "como número entero positivo.</p>\n\n";
+        . "como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
     print "<p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n\n";
+        . "$numeroMinimo y $numeroMaximo.</p>\n";
+    print "\n";
 } else {
     $numeroOk = true;
 }
@@ -85,10 +88,12 @@ if ($numero == "") {
 $casillasMarcadas = count($c);
 // Si no se ha recibido ninguna casilla
 if ($casillasMarcadas == 0) {
-    print "<p>No ha marcado ninguna casilla.</p>\n\n";
+    print "<p>No ha marcado ninguna casilla.</p>\n";
+    print "\n";
 // Si se han recibido demasiadas casillas
 } elseif ($casillasMarcadas > $numero) {
-        print "<p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n\n";
+    print "<p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
@@ -103,7 +108,8 @@ if ($casillasMarcadas == 0) {
        }
     }
     if (!$cOk) {
-        print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n\n";
+        print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+        print "\n";
     }
 }
 
@@ -118,7 +124,8 @@ if ($numeroOk && $cOk) {
     foreach ($c as $indice => $valor) {
         print "$indice ";
     }
-    print "</p>\n\n";
+    print "</p>\n";
+    print "\n";
 }
 
 // Enlace a la página 2 enviando el control numero con su valor para que pueda

@@ -67,7 +67,8 @@ if ($numero == "") {
 // Si el número recibido es correcto ...
 if ($numeroOk) {
     // Formulario que envía los datos a la página 3
-    print "<p>Escriba una palabra en cada caja de texto y le diré si ha repetido alguna.</p>\n\n";
+    print "<p>Escriba una palabra en cada caja de texto y le diré si ha repetido alguna.</p>\n";
+    print "\n";
     print "<form action=\"foreach-1-2-3.php\" method=\"get\">\n";
     print "  <table>\n";
     print "    <tbody>\n";
@@ -80,10 +81,12 @@ if ($numeroOk) {
         print "      </tr>\n";
     }
     print "    </tbody>\n";
-    print "  </table>\n\n";
+    print "  </table>\n";
+    print "\n";
 
     // Se añade un control oculto con el número recibido para que le llegue a la página 3
-    print "  <p><input type=\"hidden\" name=\"numero\" value=\"$numero\" /></p>\n\n";
+    print "  <p><input type=\"hidden\" name=\"numero\" value=\"$numero\" /></p>\n";
+    print "\n";
 
     print "  <p><input type=\"submit\" value=\"Contar\" />\n";
     print "    <input type=\"reset\" value=\"Borrar\" /></p>\n";

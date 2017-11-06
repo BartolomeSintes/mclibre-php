@@ -89,7 +89,8 @@ $cajasRecibidas = count($c);
 $cOk = false;
 // Si no se han recibido todas las cajas
 if ($cajasRecibidas != $numero) {
-  print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n\n";
+  print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+  print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
@@ -104,7 +105,8 @@ if ($cajasRecibidas != $numero) {
             }
     }
     if (!$cOk) {
-        print "<p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n\n";
+        print "<p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
+        print "\n";
     }
 }
 
@@ -113,10 +115,12 @@ if ($cajasRecibidas != $numero) {
 $botonesRecibidos = count($b);
 // Si no se ha recibido ningún botón
 if ($botonesRecibidos == 0) {
-    print "<p>No se ha recibido ningún valor hombre/mujer.</p>\n\n";
+    print "<p>No se ha recibido ningún valor hombre/mujer.</p>\n";
+    print "\n";
 // Si se han recibido demasiados botones
 } elseif ($botonesRecibidos > $numero) {
-    print "<p class=\"aviso\">La matriz de hombre/mujer recibida es demasiado grande.</p>\n\n";
+    print "<p class=\"aviso\">La matriz de hombre/mujer recibida es demasiado grande.</p>\n";
+    print "\n";
 } else {
     $bOk = true;
     foreach ($b as $indice => $valor) {
@@ -130,7 +134,8 @@ if ($botonesRecibidos == 0) {
         }
     }
     if (!$bOk) {
-        print "<p class=\"aviso\">La matriz de hombre/mujer recibida no es correcta.</p>\n\n";
+        print "<p class=\"aviso\">La matriz de hombre/mujer recibida no es correcta.</p>\n";
+        print "\n";
     }
 }
 
@@ -155,10 +160,12 @@ if ($numeroOk && $cOk && $bOk) {
     }
 
     if ($datosCompletos == 0) {
-        print "<p>No se ha recibido ningún dato completo</p>\n\n";
+        print "<p>No se ha recibido ningún dato completo</p>\n";
+        print "\n";
     } else {
         print "<p>Se han recibido $datosCompletos dato(s) completo(s)";
-        print " de un total de $numero.</p>\n\n";
+        print " de un total de $numero.</p>\n";
+        print "\n";
 
         print "<ul>\n";
         print "  <li>$datosHombres hombre(s): ";
@@ -177,7 +184,8 @@ if ($numeroOk && $cOk && $bOk) {
             }
         }
         print "</li>\n";
-        print "</ul>\n\n";
+        print "</ul>\n";
+        print "\n";
     }
 }
 

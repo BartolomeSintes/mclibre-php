@@ -83,7 +83,8 @@ if ($respuestas == "") {
 
 // Si los números recibidos son correctos ...
 if ($preguntasOk && $respuestasOk) {
-    print "<p>Valore de 1 a $respuestas cada uno de estos aspectos.</p>\n\n";
+    print "<p>Valore de 1 a $respuestas cada uno de estos aspectos.</p>\n";
+    print "\n";
 
     // Formulario que envía los datos a la página 3
     print "<form action=\"foreach-1-3-3.php\" method=\"get\">\n";
@@ -111,11 +112,13 @@ if ($preguntasOk && $respuestasOk) {
         print "      </tr>\n";
     }
     print "    </tbody>\n";
-    print "  </table>\n\n";
+    print "  </table>\n";
+    print "\n";
 
     // Se añaden dos controles ocultos con los dos valores recibidos para que le lleguen a la página 3
     print "  <p><input type=\"hidden\" name=\"preguntas\" value=\"$preguntas\" />\n";
-    print "    <input type=\"hidden\" name=\"respuestas\" value=\"$respuestas\" /></p>\n\n";
+    print "    <input type=\"hidden\" name=\"respuestas\" value=\"$respuestas\" /></p>\n";
+    print "\n";
 
     print "  <p><input type=\"submit\" value=\"Contar\" />\n";
     print "    <input type=\"reset\" value=\"Borrar\" /></p>\n";
