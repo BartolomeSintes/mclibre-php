@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Palabras repetidas (Resultado 1) - foreach-1-2-2.php
  *

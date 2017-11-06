@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Tabla numerada (Resultado) - for-3-8-2.php
  *

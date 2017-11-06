@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Controles en formularios (2) 4-2 - controles-formularios-2-04-2.php
  *

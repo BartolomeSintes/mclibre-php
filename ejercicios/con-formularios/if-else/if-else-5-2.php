@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * if ... elseif ... else ... 5-2 - if-else-5-2.php
  *

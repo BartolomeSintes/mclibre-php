@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Dibujos con cuadrados (Resultado) - for-5-2-2.php
  *

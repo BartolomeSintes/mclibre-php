@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Sucesiones aritméticas 2 - for-1-2.php
  *

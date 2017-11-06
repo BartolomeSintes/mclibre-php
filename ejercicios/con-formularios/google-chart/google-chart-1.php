@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Google Chart 1 - google-chart-1.php
  *

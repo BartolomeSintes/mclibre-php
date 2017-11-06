@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Tabla de multiplicar con cabecera (Resultado) - for-3-4-2.php
  *

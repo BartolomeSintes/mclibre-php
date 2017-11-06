@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Validación de formulario - validacion-2.php
  *

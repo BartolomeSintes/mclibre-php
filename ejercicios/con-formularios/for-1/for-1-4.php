@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Sucesiones numéricas - for-1-4.php
  *

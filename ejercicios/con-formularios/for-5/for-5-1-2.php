@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Dibujos con líneas (Resultado) - for-5-1-2.php
  *

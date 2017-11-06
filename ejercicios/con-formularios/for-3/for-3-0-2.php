@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Varios elementos (Resultado) - for-3-0-2.php
  *

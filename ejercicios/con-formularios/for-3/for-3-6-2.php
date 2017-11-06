@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Tablas de multiplicar (Resultado) - for-3-6-2.php
  *

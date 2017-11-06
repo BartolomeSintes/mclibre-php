@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Irregular verbs 2_1 - irregular-verbs-2-1.php
  *

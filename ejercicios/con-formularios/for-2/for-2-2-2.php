@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Segmentos (Resultado)- for-2-2-2.php
  *

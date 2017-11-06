@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Validación de entrada de texto 1 (Resultado) - expresiones-regulares-1.php
  *

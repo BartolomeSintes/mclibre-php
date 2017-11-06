@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Encuesta (Resultado 2) - foreach-1-3-3.php
  *

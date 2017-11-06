@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Hombres y mujeres (Resultado 2) - foreach-1-4-3.php
  *

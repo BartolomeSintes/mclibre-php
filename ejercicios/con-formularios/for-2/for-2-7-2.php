@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Triángulo de estrellas 3 (Resultado) - for-2-7-2.php
  *

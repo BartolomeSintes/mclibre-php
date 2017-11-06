@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Tabla con casillas de verificación (Resultado 2) - foreach-1-5-3.php
  *

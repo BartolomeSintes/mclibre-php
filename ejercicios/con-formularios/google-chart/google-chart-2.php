@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Crea gráfica de líneas - google-chart-2.php
  *

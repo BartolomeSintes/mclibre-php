@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Matrices 3-2 - matrices_3_2.php
  *

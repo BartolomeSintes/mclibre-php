@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Formulario y resultado en un único archivo - validacion-1.php
  *

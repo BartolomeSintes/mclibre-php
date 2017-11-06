@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Sucesiones aritméticas 3 (Resultado) - for-4-3-2.php
 *

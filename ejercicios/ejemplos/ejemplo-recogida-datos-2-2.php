@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Ejemplo de recogida y comprobación de datos - ejemplo-recogida-datos-2-2.php
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  *  Entrada de datos - validacion-3.php
  *

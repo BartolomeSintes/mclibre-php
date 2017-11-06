@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Operaciones aritmeticas 1-2 - operaciones-aritmeticas-01-2.php
  *

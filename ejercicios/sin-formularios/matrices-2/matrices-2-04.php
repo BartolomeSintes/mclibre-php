@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Matrices (2) 04 - matrices-2-04.php
  *

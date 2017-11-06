@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Reparto de tríos (Resultado) - seleccion-1-7-2.php
  *

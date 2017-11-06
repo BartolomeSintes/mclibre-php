@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Tablas de colores (Resultado) - for-3-7-2.php
  *

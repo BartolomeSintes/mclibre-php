@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Dos cuadrados (Resultado) - for-2-3-2.php
  *

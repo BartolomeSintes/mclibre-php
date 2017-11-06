@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Tablas con casillas de verificación (Resultado 1) - foreach-2-2-2.php
  *
@@ -92,7 +92,8 @@ if ($tablasOk && $tamanoOk) {
             }
             print "      </tr>\n";
         }
-        print "    </tbody>\n  </table>\n\n";
+        print "    </tbody>\n  </table>\n";
+        print "\n";
     }
     print "  <p class=\"der\"><input type=\"submit\" value=\"Contar\" />\n".
         "    <input type=\"reset\" value=\"Borrar\" />\n".
