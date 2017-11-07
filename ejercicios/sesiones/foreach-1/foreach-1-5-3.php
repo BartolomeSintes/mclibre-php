@@ -1,11 +1,11 @@
 <?php
 /**
- * Tabla con casillas de verificación (Resultado 2) - foreach-1-5-3.php
+ * Tabla con casillas de verificación (Resultado) - foreach-1-5-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-06
+ * @version   2017-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,19 +21,26 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+session_name("cs-foreach-1-5");
+session_start();
+if (!isset($_SESSION["numero"])) {
+    header("Location: foreach-1-5-1.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tabla con casillas de verificación (Resultado 2). foreach (1). Con sesiones.
+  <title>Tabla cuadrada con casillas de verificación (Resultado). foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Tabla con casillas de verificación (Resultado 2)</h1>
+  <h1>Tabla cuadrada con casillas de verificación (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -59,37 +66,22 @@ function recogeMatriz($var)
 }
 
 // Recogida de datos
-$numero       = recoge("numero");
 $c            = recogeMatriz("c");
 $cOk          = false;
-$numeroOk     = false;
 $cValor       = "on";
 $numeroMinimo = 1;
 $numeroMaximo = 20;
-
-// Comprobación de $numero (entero entre 1 y 20)
-if ($numero == "") {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
-} elseif (!ctype_digit($numero)) {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
-} elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "<p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
-} else {
-    $numeroOk = true;
-}
 
 // Comprobación de $c (casillas de verificación)
 // Se cuenta el número de elementos en la matriz $c
 $casillasMarcadas = count($c);
 // Si no se ha recibido ninguna casilla
 if ($casillasMarcadas == 0) {
-    print "<p>No ha marcado ninguna casilla.</p>\n";
+    print "  <p>No ha marcado ninguna casilla.</p>\n";
     print "\n";
 // Si se han recibido demasiadas casillas
-} elseif ($casillasMarcadas > $numero * $numero) {
-        print "<p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+} elseif ($casillasMarcadas > $_SESSION["numero"] * $_SESSION["numero"]) {
+        print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
         print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
@@ -98,47 +90,43 @@ if ($casillasMarcadas == 0) {
         // Si el índice es numérico (como es de tipo int hay que convertirlo a string
         if (!ctype_digit((string)$indice)
             // o si el índice está fuera de rango
-            || $indice < 1 || $indice > $numero * $numero
+            || $indice < 1 || $indice > $_SESSION["numero"] * $_SESSION["numero"]
         // o si el valor no es "on"
             || $valor != $cValor) {
             $cOk = false;
        }
     }
     if (!$cOk) {
-        print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
         print "\n";
     }
 }
 
 // Si el número recibido y las casillas recibidas con correctos ...
-if ($numeroOk && $cOk) {
-    print "<p>Ha marcado $casillasMarcadas casilla";
+if ($cOk) {
+    print "  <p>Ha marcado <strong>$casillasMarcadas</strong> casilla";
     if ($casillasMarcadas > 1) {
         print "s";
     }
-    print " de un total de " . ($numero * $numero) . ": ";
+    print " de un total de <strong>" . ($_SESSION["numero"] * $_SESSION["numero"])
+        . "</strong>: <strong>";
     // Bucle para escribir los índices de las casillas recibidas
     foreach ($c as $indice => $valor) {
         print "$indice ";
     }
-    print "</p>\n";
+    print "</strong></p>\n";
     print "\n";
 }
-
-// Enlace a la página 2 enviando el control numero con su valor para que pueda
-// dibujar la tabla
-if ($numeroOk) {
-    print "<p><a href=\"foreach-1-5-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
-}
-
 ?>
+
+  <p><a href="foreach-1-5-2.php">Volver a la tabla</a></p>
 
   <p><a href="foreach-1-5-1.php">Volver al formulario inicial.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-06">6 de noviembre de 2017</time></p>
+      <time datetime="2017-11-07">7 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

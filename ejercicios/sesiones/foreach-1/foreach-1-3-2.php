@@ -1,11 +1,11 @@
 <?php
 /**
- * Encuesta (Resultado 1) - foreach-1-3-2.php
+ * Encuesta (Formulario 2) - foreach-1-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-06
+ * @version   2017-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,19 +21,22 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+session_name("cs-foreach-1-3");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Encuesta (Resultado 1). foreach (1). Con sesiones.
+  <title>Encuesta (Formulario 2). foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Encuesta (Resultado 1)</h1>
+  <h1>Encuesta (Formulario 2)</h1>
 
 <?php
 // Funciones auxiliares
@@ -47,22 +50,33 @@ function recoge($var)
 
 // Recogida de datos
 $preguntas        = recoge("preguntas");
+// Si no se ha recogido preguntas pero hay preguntas en la sesión
+// (es decir, si se viene de la tercera página)
+// coge el número de la sesión
+if (isset($_SESSION["preguntas"]) and $preguntas == "") {
+    $preguntas = $_SESSION["preguntas"];
+}
 $respuestas       = recoge("respuestas");
+// Si no se ha recogido respuestas pero hay respuestas en la sesión
+// (es decir, si se viene de la tercera página)
+// coge el número de la sesión
+if (isset($_SESSION["respuestas"]) and $respuestas == "") {
+    $respuestas = $_SESSION["respuestas"];
+}
 $preguntasOk      = false;
 $respuestasOk     = false;
 $preguntasMinimo  = 1;
 $respuestasMinimo = 2;
 $numeroMaximo     = 10;
 
-
 // Comprobación de $preguntas (entero entre 2 y 10)
 if ($preguntas == "") {
-    print "<p class=\"aviso\">No ha escrito el número de preguntas.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de preguntas.</p>\n";
 } elseif (!ctype_digit($preguntas)) {
-    print "<p class=\"aviso\">No ha escrito el número de preguntas "
+    print "  <p class=\"aviso\">No ha escrito el número de preguntas "
         . "como número entero positivo.</p>\n";
 } elseif ($preguntas < $preguntasMinimo || $preguntas > $numeroMaximo) {
-    print "<p class=\"aviso\">El número de preguntas debe estar entre "
+    print "  <p class=\"aviso\">El número de preguntas debe estar entre "
         . "$preguntasMinimo y $numeroMaximo.</p>\n";
 } else {
     $preguntasOk = true;
@@ -70,12 +84,12 @@ if ($preguntas == "") {
 
 // Comprobación de $respuestas (entero entre 2 y 10)
 if ($respuestas == "") {
-    print "<p class=\"aviso\">No ha escrito el número de respuestas.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de respuestas.</p>\n";
 } elseif (!ctype_digit($respuestas)) {
-    print "<p class=\"aviso\">No ha escrito el número de respuestas "
+    print "  <p class=\"aviso\">No ha escrito el número de respuestas "
         . "como número entero positivo.</p>\n";
 } elseif ($respuestas < $respuestasMinimo || $respuestas > $numeroMaximo) {
-    print "<p class=\"aviso\">El número de respuestas debe estar entre "
+    print "  <p class=\"aviso\">El número de respuestas debe estar entre "
         . "$respuestasMinimo y $numeroMaximo.</p>\n";
 } else {
     $respuestasOk = true;
@@ -83,48 +97,47 @@ if ($respuestas == "") {
 
 // Si los números recibidos son correctos ...
 if ($preguntasOk && $respuestasOk) {
-    print "<p>Valore de 1 a $respuestas cada uno de estos aspectos.</p>\n";
+    // Guarda en la sesión el número de preguntas y respuestas
+    $_SESSION["preguntas"]  = $preguntas;
+    $_SESSION["respuestas"] = $respuestas;
+
+    print "  <p>Valore de 1 a $respuestas cada uno de estos aspectos.</p>\n";
     print "\n";
 
     // Formulario que envía los datos a la página 3
-    print "<form action=\"foreach-1-3-3.php\" method=\"get\">\n";
-    print "  <table>\n";
-    print "    <tbody>\n";
-    print "      <tr>\n";
-    print "        <th></th>\n";
+    print "  <form action=\"foreach-1-3-3.php\" method=\"get\">\n";
+    print "    <table>\n";
+    print "      <tbody>\n";
+    print "        <tr>\n";
+    print "          <th></th>\n";
     // Bucle para generar la primera fila, las celdas sólo contienen números
     for ($j = 1; $j <= $respuestas; $j++) {
-        print "        <th>$j</th>\n";
+        print "          <th>$j</th>\n";
     }
-    print "      </tr>\n";
+    print "        </tr>\n";
     // Bucle para generar las siguientes filas
     for ($i = 1; $i <= $preguntas; $i++) {
-        print "      <tr>\n";
+        print "        <tr>\n";
         // La primera celda contiene el número de pregunta
-        print "        <th>Pregunta $i:</th>\n";
+        print "          <th>Pregunta $i:</th>\n";
         // Bucle para generar las celdas con los botones radio
         for ($j = 1; $j <= $respuestas; $j++) {
             // El nombre del control es una matriz (e[])
             // En cada fila el name del control es el mismo (para que formen un botón radio)
             // pero el value va cambiando
-            print "        <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\" /></td>\n";
+            print "          <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\" /></td>\n";
         }
-        print "      </tr>\n";
+        print "        </tr>\n";
     }
-    print "    </tbody>\n";
-    print "  </table>\n";
+    print "      </tbody>\n";
+    print "    </table>\n";
     print "\n";
-
-    // Se añaden dos controles ocultos con los dos valores recibidos para que le lleguen a la página 3
-    print "  <p><input type=\"hidden\" name=\"preguntas\" value=\"$preguntas\" />\n";
-    print "    <input type=\"hidden\" name=\"respuestas\" value=\"$respuestas\" /></p>\n";
-    print "\n";
-
-    print "  <p><input type=\"submit\" value=\"Contar\" />\n";
-    print "    <input type=\"reset\" value=\"Borrar\" /></p>\n";
-    print "</form>\n";
+    print "    <p>\n";
+    print "      <input type=\"submit\" value=\"Contar\" />\n";
+    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "    </p>\n";
+    print "  </form>\n";
 }
-
 ?>
 
   <p><a href="foreach-1-3-1.php">Volver al formulario.</a></p>
@@ -132,7 +145,7 @@ if ($preguntasOk && $respuestasOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-06">6 de noviembre de 2017</time></p>
+      <time datetime="2017-11-07">7 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

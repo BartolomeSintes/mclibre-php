@@ -1,11 +1,11 @@
 <?php
 /**
- * Tabla con casillas de verificación (Resultado 1) - foreach-1-5-2.php
+ * Tabla con casillas de verificación (Formulario 2) - foreach-1-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-06
+ * @version   2017-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,19 +21,22 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+session_name("cs-foreach-1-5");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tabla con casillas de verificación (Resultado 1). foreach (1). Con sesiones.
+  <title>Tabla cuadrada con casillas de verificación (Formulario 2). foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Tabla con casillas de verificación (Resultado 1)</h1>
+  <h1>Tabla cuadrada con casillas de verificación (Formulario 2)</h1>
 
 <?php
 // Funciones auxiliares
@@ -47,18 +50,24 @@ function recoge($var)
 
 // Recogida de datos
 $numero       = recoge("numero");
+// Si no se ha recogido número pero hay número en la sesión
+// (es decir, si se viene de la tercera página)
+// coge el número de la sesión
+if (isset($_SESSION["numero"]) and $numero == "") {
+    $numero = $_SESSION["numero"];
+}
 $numeroOk     = false;
 $numeroMinimo = 1;
 $numeroMaximo = 20;
 
 // Comprobación de $numero (entero entre 1 y 20)
 if ($numero == "") {
-    print "<p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
 } elseif (!ctype_digit($numero)) {
-    print "<p class=\"aviso\">No ha escrito el tamaño de la tabla "
+    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla "
         . "como número entero positivo.</p>\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "<p class=\"aviso\">El tamaño de la tabla debe estar entre "
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
         . "$numeroMinimo y $numeroMaximo.</p>\n";
 } else {
     $numeroOk = true;
@@ -66,36 +75,36 @@ if ($numero == "") {
 
 // Si el número recibido es correcto ...
 if ($numeroOk) {
-    print "<p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>\n";
+    // Guarda en la sesión el número de casillas
+    $_SESSION["numero"] = $numero;
+
+    print "  <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>\n";
     print "\n";
 
     // Formulario que envía los datos a la página 3
-    print "<form action=\"foreach-1-5-3.php\" method=\"get\">\n";
-    print "  <table class=\"conborde\">\n";
-    print "    <tbody>\n";
+    print "  <form action=\"foreach-1-5-3.php\" method=\"get\">\n";
+    print "    <table class=\"conborde\">\n";
+    print "      <tbody>\n";
     // Bucle anidado para generar la tabla cuadrada con casillas de verificación
     // Creamos un contador para generar el número de casilla
     $contador = 1;
     for ($i = 0; $i < $numero; $i++) {
-        print "      <tr>\n";
+        print "        <tr>\n";
         for ($j = 1; $j <= $numero; $j++) {
             // El nombre del control es una matriz (c[])
-            print "        <td><label><input type=\"checkbox\" name=\"c[$contador]\" /> $contador</label></td>\n";
+            print "          <td><label><input type=\"checkbox\" name=\"c[$contador]\" /> $contador</label></td>\n";
             $contador++;
         }
-        print "      </tr>\n";
+        print "        </tr>\n";
     }
-    print "    </tbody>\n";
-    print "  </table>\n";
+    print "      </tbody>\n";
+    print "    </table>\n";
     print "\n";
-
-    // Se añade un control oculto con el número recibido para que le llegue a la página 3
-    print "  <p><input type=\"hidden\" name=\"numero\" value=\"$numero\" /></p>\n";
-    print "\n";
-
-    print "  <p><input type=\"submit\" value=\"Contar\" />\n";
-    print "    <input type=\"reset\" value=\"Borrar\" /></p>\n";
-    print "</form>\n";
+    print "    <p>\n";
+    print "      <input type=\"submit\" value=\"Contar\" />\n";
+    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "    </p>\n";
+    print "  </form>\n";
 }
 
 ?>
@@ -105,7 +114,7 @@ if ($numeroOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-06">6 de noviembre de 2017</time></p>
+      <time datetime="2017-11-07">7 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
