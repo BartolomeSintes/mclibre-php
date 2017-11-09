@@ -1,11 +1,11 @@
 <?php
 /**
- * Palabras repetidas (Formulario 2) - foreach-1-2-2.php
+ * Palabras repetidas (Resultado) - foreach-1-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-07
+ * @version   2017-11-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,83 +24,111 @@
 
 session_name("cs-foreach-1-2");
 session_start();
+if (!isset($_SESSION["numero"])) {
+    header("Location: foreach-1-2-1.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Palabras repetidas (Formulario 2). foreach (1). Sesiones.
+  <title>Palabras repetidas (Resultado). foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Palabras repetidas (Formulario 2)</h1>
+  <h1>Palabras repetidas (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
-function recoge($var)
+function recogeMatriz($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
+    $tmpMatriz = array();
+    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
+        foreach ($_REQUEST[$var] as $indice => $valor) {
+            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
+            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
+            $tmpMatriz[$indiceLimpio] = $valorLimpio;
+        }
+    }
+    return $tmpMatriz;
 }
 
 // Recogida de datos
-$numero       = recoge("numero");
-// Si no se ha recogido número pero hay número en la sesión
-// (es decir, si se viene de la tercera página)
-// coge el número de la sesión
-if (isset($_SESSION["numero"]) and $numero == "") {
-    $numero =  $_SESSION["numero"];
-}
-$numeroOk     = false;
-$numeroMinimo = 1;
-$numeroMaximo = 10;
+$c            = recogeMatriz("c");
+$cOk          = false;
 
-// Comprobación de $numero (entero entre 1 y 20)
-if ($numero == "") {
-    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
-} elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
-} elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+// Se cuenta el número de elementos en la matriz $c
+$cajasRecibidas = count($c);
+
+// Comprobación de $c (cajas de texto)
+
+// Si no se han recibido todas las cajas
+if ($cajasRecibidas != $_SESSION["numero"]) {
+  print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+  print "\n";
 } else {
-    $numeroOk = true;
+    // Bucle para comprobar si todos los índices y valores son correctos
+    $cOk = true;
+    foreach ($c as $indice => $valor) {
+        // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
+        if (!ctype_digit((string)$indice)
+            // o si el índice está fuera de rango
+            || $indice < 1 || $indice > $_SESSION["numero"]
+            // o si el contenido no es vacío o todo letras
+            || (!ctype_alpha($valor) && $valor != "")) {
+                $cOk = false;
+            }
+    }
+    if (!$cOk) {
+        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+        print "\n";
+    }
 }
 
-// Si el número recibido es correcto ...
-if ($numeroOk) {
-    // Guarda en la sesión el número de casillas
-    $_SESSION["numero"] = $numero;
-
-    print "  <p>Escriba una palabra en cada caja de texto y le diré si ha repetido alguna.</p>\n";
-    print "\n";
-
-    // Formulario que envía los datos a la página 3
-    print "  <form action=\"foreach-1-2-3.php\" method=\"get\">\n";
-    print "    <table>\n";
-    print "      <tbody>\n";
-    // Bucle para generar las cajas de texto
-    for ($i = 1; $i <= $numero; $i++) {
-        print "        <tr>\n";
-        print "          <td>$i</td>\n";
-        // El nombre del control es una matriz (c[])
-        print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\" /></td>\n";
-        print "        </tr>\n";
+// Si las cajas de texto recibidas con correctas ...
+if ($cOk) {
+    // Bucle para contar las cajas que no son vacías
+    $cajasRellenas = 0;
+    foreach ($c as $indice => $valor) {
+        if ($c[$indice] != "") {
+            $cajasRellenas++;
+        }
     }
-    print "      </tbody>\n";
-    print "    </table>\n";
+    print "  <p>Ha rellenado <strong>$cajasRellenas</strong> caja";
+    if ($cajasRellenas != 1) {
+        print "s";
+    }
+    print " de un total de <strong>$_SESSION[numero]</strong>.</p>\n";
     print "\n";
-    print "    <p>\n";
-    print "      <input type=\"submit\" value=\"Contar\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
-    print "    </p>\n";
-    print "  </form>\n";
+
+    if ($cajasRellenas > 1) {
+        // Bucle anidado para comprobar si hay repeticiones
+        $repeticion = false;
+        // Toma los valores de las cajas ...
+        foreach ($c as $indice1 => $valor1) {
+            // ... y los compara con todos los valores de las cajas
+            foreach ($c as $indice2 => $valor2) {
+                // Si los valores son iguales (pero distintos de la cadena vacía) hay repeticiones
+                if ($valor1 == $valor2 && $valor1 != ""
+                // pero como compara todos con todos también comparará cada elemento consigo mismo
+                // así que hay que comprobar que los índices sean distintos
+                    && $indice1 != $indice2) {
+                    $repeticion = true;
+                }
+            }
+        }
+        if ($repeticion) {
+            print "  <p>El texto de alguna caja está repetido.</p>\n";
+            print "\n";
+        } else {
+            print "  <p>El texto de cada caja es diferente.</p>\n";
+            print "\n";
+        }
+    }
 }
 ?>
 
@@ -109,7 +137,7 @@ if ($numeroOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-07">7 de noviembre de 2017</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

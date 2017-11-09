@@ -1,11 +1,11 @@
 <?php
 /**
- * Hombres y mujeres (Formulario 2) - foreach-1-4-2.php
+ * Hombres y mujeres (Resultado) - foreach-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-07
+ * @version   2017-11-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,96 +24,154 @@
 
 session_name("cs-foreach-1-4");
 session_start();
+if (!isset($_SESSION["numero"])) {
+    header("Location: foreach-1-4-1.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Hombres y mujeres (Formulario 2). foreach (1). Sesiones.
+  <title>Hombres y mujeres (Resultado). foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Hombres y mujeres (Formulario 2)</h1>
+  <h1>Hombres y mujeres (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
-function recoge($var)
+function recogeMatriz($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
+    $tmpMatriz = array();
+    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
+        foreach ($_REQUEST[$var] as $indice => $valor) {
+            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
+            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
+            $tmpMatriz[$indiceLimpio] = $valorLimpio;
+        }
+    }
+    return $tmpMatriz;
 }
 
 // Recogida de datos
-$numero       = recoge("numero");
-// Si no se ha recogido número pero hay número en la sesión
-// (es decir, si se viene de la tercera página)
-// coge el número de la sesión
-if (isset($_SESSION["numero"]) and $numero == "") {
-    $numero =  $_SESSION["numero"];
-}
-$numeroOk     = false;
-$numeroMinimo = 1;
-$numeroMaximo = 10;
+$c   = recogeMatriz("c");
+$b   = recogeMatriz("b");
+$cOk = false;
+$bOk = false;
 
-// Comprobación de $numero (entero entre 1 y 10)
-if ($numero == "") {
-    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
-} elseif (!ctype_digit($numero)) {
-    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla "
-        . "como número entero positivo.</p>\n";
-} elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
-        . "$numeroMinimo y $numeroMaximo.</p>\n";
+// Se cuenta el número de elementos en la matriz $c y $b
+$cajasRecibidas   = count($c);
+$botonesRecibidos = count($b);
+
+// Comprobación de $c (cajas de texto)
+
+// Si no se han recibido todas las cajas
+if ($cajasRecibidas != $_SESSION["numero"]) {
+  print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+  print "\n";
 } else {
-    $numeroOk = true;
+    // Bucle para comprobar si todos los índices y valores son correctos
+    $cOk = true;
+    foreach ($c as $indice => $valor) {
+        // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
+        if (!ctype_digit((string)$indice)
+            // o si el índice está fuera de rango
+            || $indice < 1 || $indice > $_SESSION["numero"]
+            // o si el contenido no es vacío o todo letras
+            || (!ctype_alpha($valor) && $valor != "")) {
+                $cOk = false;
+            }
+    }
+    if (!$cOk) {
+        print "<p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
+        print "\n";
+    }
 }
 
-// Si el número recibido es correcto ...
-if ($numeroOk) {
-    // Guarda en la sesión el número de casillas
-    $_SESSION["numero"] = $numero;
+// Comprobación de $b (botones radio)
 
-    print "  <p>Escriba un nombre propio en cada caja de texto y si se trata de un hombre o de una mujer.</p>\n";
+// Si se han recibido demasiados botones
+if ($botonesRecibidos > $_SESSION["numero"]) {
+    print "  <p class=\"aviso\">La matriz de hombre/mujer recibida es demasiado grande.</p>\n";
     print "\n";
-
-    // Formulario que envía los datos a la página 3
-    print "  <form action=\"foreach-1-4-3.php\" method=\"get\">\n";
-    print "    <table>\n";
-    print "      <tbody>\n";
-    // Bucle para generar las cajas de texto y los botones radio
-    for ($i = 1; $i <= $numero; $i++) {
-        print "        <tr>\n";
-        print "          <td>$i</td>\n";
-        // Los nombres de los controles son dos matrices (c[] y b())
-        // En cada fila el name del botón radio es el mismo (para que formen un botón radio)
-        // pero el value es distinto (h o m)
-        print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\" /></td>\n";
-        print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"h\" />Hombre</label></td>\n";
-        print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"m\" />Mujer</label></td>\n";
-        print "        </tr>\n";
+} else {
+    $bOk = true;
+    foreach ($b as $indice => $valor) {
+        // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
+        if (!ctype_digit((string)$indice)
+            // o si el índice está fuera de rango
+            || $indice < 1 || $indice > $_SESSION["numero"]
+            // o si el valor no es "m" o "h"
+            || ($valor != "h" && $valor != "m")) {
+            $bOk = false;
+        }
     }
-    print "      </tbody>\n";
-    print "    </table>\n";
-    print "\n";
-    print "    <p>\n";
-    print "      <input type=\"submit\" value=\"Contar\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
-    print "    </p>\n";
-    print "  </form>\n";
+    if (!$bOk) {
+        print "<p class=\"aviso\">La matriz de hombre/mujer recibida no es correcta.</p>\n";
+        print "\n";
+    }
+}
+
+// Si las cajas de texto y los botones radio recibidos con correctos ...
+if ($cOk && $bOk) {
+    // Se cuentan los datos completos y el número de hombres y mujeres
+    $datosCompletos = 0;
+    $datosHombres = 0;
+    $datosMujeres = 0;
+
+    // Bucle para recorrer la matriz $b (botones radio)
+    foreach ($b as $indice => $valor) {
+        // Si además hay una palabra en la caja de texto
+        if ($c[$indice] != "") {
+            $datosCompletos++;
+            if ($valor == "h") {
+                $datosHombres++;
+            } elseif ($valor == "m") {
+                $datosMujeres++;
+            }
+        }
+    }
+
+    if ($datosCompletos == 0) {
+        print "  <p>No se ha recibido ningún dato completo</p>\n";
+        print "\n";
+    } else {
+        print "  <p>Se han recibido <strong>$datosCompletos</strong> dato(s) completo(s)";
+        print " de un total de <strong>$_SESSION[numero]</strong>.</p>\n";
+        print "\n";
+
+        print "  <ul>\n";
+        print "    <li><strong>$datosHombres</strong> hombre(s): ";
+        // Bucle para escribir los datos de los hombres
+        foreach ($b as $indice => $valor) {
+            if ($valor == "h" && $c[$indice] != "") {
+                print "<strong>$c[$indice]</strong>, ";
+            }
+        }
+        print "</li>\n";
+        print "    <li><strong>$datosMujeres</strong> mujer(es): ";
+        // Bucle para escribir los datos de las mujeres
+        foreach ($b as $indice => $valor) {
+            if ($valor == "m" && $c[$indice] != "") {
+                print "<strong>$c[$indice]</strong>, ";
+            }
+        }
+        print "</li>\n";
+        print "  </ul>\n";
+        print "\n";
+    }
 }
 ?>
-
   <p><a href="foreach-1-4-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-07">7 de noviembre de 2017</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

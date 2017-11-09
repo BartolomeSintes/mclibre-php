@@ -1,35 +1,88 @@
+<?php
+/**
+ * Encuesta (Formulario) - foreach-1-3-1.php
+ *
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2017 Bartolomé Sintes Marco
+ * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @version   2017-11-09
+ * @link      http://www.mclibre.org
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+session_name("cs-foreach-1-3");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Encuesta (Formulario 1). foreach (1). Sesiones.
+  <title>Encuesta (Formulario). foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Encuesta (Formulario 1)</h1>
+  <h1>Encuesta (Formulario)</h1>
+
+<?php
+// Genera el número de preguntas y respuestas a mostrar
+$preguntas  = rand(1, 10);
+$respuestas = rand(2, 10);
+
+// Guarda en la sesión el número de preguntas y respuestas
+$_SESSION["preguntas"]  = $preguntas;
+$_SESSION["respuestas"] = $respuestas;
+
+print "  <p>Valore de 1 a $respuestas cada uno de estos aspectos.</p>\n";
+?>
 
   <form action="foreach-1-3-2.php" method="get">
-    <p>Escriba el número de preguntas (1 &le; número &le; 10) y respuestas (2
-    &le; número &le; 10) y mostraré una encuesta ficticia.</p>
-
     <table>
       <tbody>
-        <tr>
-          <td><strong>Número de preguntas:</strong></td>
-          <td><input type="number" name="preguntas" min="1" max="10" value="7" /></td>
-        </tr>
-        <tr>
-          <td><strong>Número de respuestas:</strong></td>
-          <td><input type="number" name="respuestas" min="2" max="10" value="3" /></td>
-        </tr>
+<?php
+// Primera fila
+print "        <tr>\n";
+print "          <th></th>\n";
+// Bucle para generar la primera fila, las celdas sólo contienen números
+for ($j = 1; $j <= $respuestas; $j++) {
+    print "          <th>$j</th>\n";
+}
+print "        </tr>\n";
+
+// Bucle para generar las siguientes filas
+for ($i = 1; $i <= $preguntas; $i++) {
+    print "        <tr>\n";
+    // La primera celda contiene el número de pregunta
+    print "          <th>Pregunta $i:</th>\n";
+    // Bucle para generar las celdas con los botones radio
+    for ($j = 1; $j <= $respuestas; $j++) {
+        // El nombre del control es una matriz (e[])
+        // En cada fila el name del control es el mismo (para que formen un botón radio)
+        // pero el value va cambiando
+        print "          <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\" /></td>\n";
+    }
+    print "        </tr>\n";
+}
+?>
       </tbody>
     </table>
 
     <p>
-      <input type="submit" value="Mostar" />
+      <input type="submit" value="Contar" />
       <input type="reset" value="Borrar" />
     </p>
   </form>
@@ -37,7 +90,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-07">7 de noviembre de 2017</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

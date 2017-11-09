@@ -33,7 +33,7 @@ if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Encuesta (Resultado). foreach (1). Sesiones.
+  <title>Encuesta (Resultado). foreach (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
