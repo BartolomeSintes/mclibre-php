@@ -37,13 +37,14 @@ $nombre   = recoge("nombre");
 $nombreOk = false;
 
 if ($nombre == "") {
-    // No hace nada
+    header("location:sesiones-1-02-1.php");
+    exit;
 } else {
     $nombreOk = true;
 }
 
 if ($nombreOk) {
     $_SESSION["nombre"] = $nombre;
+    header("location:sesiones-1-02-1.php");
+    exit;
 }
-
-header("location:sesiones-1-02-1.php");
