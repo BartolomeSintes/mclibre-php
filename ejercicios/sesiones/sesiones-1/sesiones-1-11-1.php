@@ -47,6 +47,7 @@ for ($i = 1; $i <= $_SESSION["dados"]; $i++) {
     print "&#" . rand(9856, 9861) . "; ";
 }
 print "</p>\n";
+print "\n";
 
 ?>
   <form action="sesiones-1-11-2.php" method="get">

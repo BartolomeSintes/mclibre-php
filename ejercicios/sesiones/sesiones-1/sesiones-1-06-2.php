@@ -25,10 +25,12 @@
 session_name("sesiones-1-06");
 session_start();
 
+// Si algguno de los números de votos no está guardado en la sesión, los pone a cero
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
 
+// Funciones auxiliares
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -37,6 +39,7 @@ function recoge($var)
     return $tmp;
 }
 
+// Recogida de accion
 $accion = recoge("accion");
 
 if ($accion == "a") {
