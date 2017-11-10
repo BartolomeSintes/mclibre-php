@@ -21,9 +21,11 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("cs-foreach-2-3");
 session_start();
+
+// Si el número de preguntas y respuestas no está guardado en la sesión, vuelve al formulario inicial
 if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
     header("Location: foreach-2-3-1.php");
     exit;
@@ -66,12 +68,8 @@ function recogeMatriz($var)
 }
 
 // Recogida de datos
-$b                = recogeMatriz("b");
-$bOk              = false;
-$preguntasMinimo  = 1;
-$respuestasMinimo = 2;
-$numeroMaximo     = 10;
-$encuestaRellenas = 0;
+$b    = recogeMatriz("b");
+$bOk  = false;
 
 // Comprobación de $b (botones radio)
 // Se cuenta el número de elementos en la matriz $b
@@ -125,7 +123,6 @@ if ($bOk) {
     }
 }
 ?>
-
   <p><a href="foreach-2-3-2.php">Volver a la tabla</a></p>
 
   <p><a href="foreach-2-3-1.php">Volver al formulario inicial.</a></p>

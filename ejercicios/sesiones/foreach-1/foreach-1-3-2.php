@@ -21,9 +21,11 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("cs-foreach-1-3");
 session_start();
+
+// Si el número de preguntas y respuestas no está guardado en la sesión, vuelve al formulario
 if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
     header("Location: foreach-1-3-1.php");
     exit;

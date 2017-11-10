@@ -21,9 +21,11 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("cs-foreach-2-5");
 session_start();
+
+// Si el tamaño de la tabla no está guardado en la sesión, vuelve al formulario inicial
 if (!isset($_SESSION["numero"])) {
     header("Location: foreach-2-5-1.php");
     exit;
@@ -44,14 +46,6 @@ if (!isset($_SESSION["numero"])) {
 
 <?php
 // Funciones auxiliares
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
 function recogeMatriz($var)
 {
     $tmpMatriz = array();
@@ -66,11 +60,9 @@ function recogeMatriz($var)
 }
 
 // Recogida de datos
-$c            = recogeMatriz("c");
-$cOk          = false;
-$cValor       = "on";
-$numeroMinimo = 1;
-$numeroMaximo = 20;
+$c      = recogeMatriz("c");
+$cOk    = false;
+$cValor = "on";;
 
 // Comprobación de $c (casillas de verificación)
 // Se cuenta el número de elementos en la matriz $c
@@ -118,7 +110,6 @@ if ($cOk) {
     print "\n";
 }
 ?>
-
   <p><a href="foreach-2-5-2.php">Volver a la tabla</a></p>
 
   <p><a href="foreach-2-5-1.php">Volver al formulario inicial.</a></p>

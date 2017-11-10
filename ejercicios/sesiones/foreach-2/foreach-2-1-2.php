@@ -21,7 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("cs-foreach-2-1");
 session_start();
 ?>
@@ -49,7 +49,7 @@ function recoge($var)
 }
 
 // Recogida de datos
-$numero       = recoge("numero");
+$numero = recoge("numero");
 // Si no se ha recogido número pero hay número en la sesión
 // (es decir, si se viene de la tercera página)
 // coge el número de la sesión
