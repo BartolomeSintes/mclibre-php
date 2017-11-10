@@ -3,9 +3,9 @@
  * Retrato Robot - retrato-robot.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-10-29
+ * @version   2017-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -115,7 +115,8 @@ print "        <td><button type=\"submit\" name=\"mod\" value=\"1\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
 print "      </tr>\n";
 print "    </tbody>\n";
-print "  </table>\n\n";
+print "  </table>\n";
+print "\n";
 print "  <p><input type=\"hidden\" name=\"a\" value=\"$a\" />"
     . "<input type=\"hidden\" name=\"b\" value=\"$b\" />"
     . "<input type=\"hidden\" name=\"c\" value=\"$c\" /></p>\n";
@@ -126,7 +127,7 @@ print "</form>\n";
 <footer>
   <p class="ultmod">
     Última modificación de esta página:
-    <time datetime="2015-10-29">29 de octubre de 2015</time></p>
+    <time datetime="2017-11-10">10 de noviembre de 2017</time></p>
 
       <p class="licencia">
         Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

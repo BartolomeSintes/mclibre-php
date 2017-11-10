@@ -1,143 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Minijuegos (1). Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../../varios/favicon.ico" />
-    <link rel="stylesheet" href="../../../varios/highlight-php.css" />
-    <script type="text/javascript" src="../../../varios/highlight.pack.js"></script>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Minijuegos (1). Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../../varios/highlight-php.css" />
+  <script type="text/javascript" src="../../../varios/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Ejercicios - Minijuegos (1)</h1>
+<body>
+  <h1>Ejercicios - Minijuegos (1)</h1>
 
-    <nav>
-      <p>
-        <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Minijuegos (1)</h2>
+    <div class="toc">
+      <h2>Minijuegos (1)</h2>
 
-        <ul>
-          <li><a href="#ejercicio-1">1 - Multiplicar</a></li>
-          <li><a href="#ejercicio-2">2 - Dividir</a></li>
-          <li><a href="#ejercicio-3">3 - Puntería (1)</a></li>
-          <li><a href="#ejercicio-4">4 - Puntería (2)</a></li>
-          <li><a href="#ejercicio-5">5 - Retrato robot</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p><strong>Nota</strong>: Los valores introducidos por el usuario se deben comprobar y, si los valores no son correctos, se debe indicar el motivo al usuario .</p>
-
-    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1516/minijuegos-1-plantillas.zip">plantillas de los ejercicios Minijuegos (1)</a>.</p>
-
-    <section id="ejercicio-1">
-      <h2>Minijuegos (1) 1 - Multiplicar</h2>
-
-      <p>Escriba un programa que conste de dos páginas y que plantee multiplicaciones de una cifra.</p>
       <ul>
-        <li>En la primera página se muestran los dos números a multiplicar y se pide la respuesta. Los dos números a multiplicar se guardarán en controles ocultos.</li>
-        <li>En la segunda página se dice si se ha acertado o no.</li>
+        <li><a href="#ejercicio-1">1 - Multiplicar</a></li>
+        <li><a href="#ejercicio-2">2 - Dividir</a></li>
+        <li><a href="#ejercicio-3">3 - Puntería (1)</a></li>
+        <li><a href="#ejercicio-4">4 - Puntería (2)</a></li>
+        <li><a href="#ejercicio-5">5 - Retrato robot</a></li>
       </ul>
+    </div>
+  </nav>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="multiplicar-1-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="multiplicar-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1718/cs-minijuegos-1-plantillas.zip">plantillas de los ejercicios Minijuegos (1)</a>.</p>
+
+  <p>En todos los ejercicios, si se intenta acceder primero a la segunda página (es decir, sin que se hayan creado todavía las variables de sesión), se redireccionará directamente al formulario.</p>
+
+  <p>En todos los ejercicios, si se envían valores incorrectos (porque el control lo permita o manipulando la URL), se redireccionará directamente al formulario.</p>
+
+  <section id="ejercicio-1">
+    <h2>Minijuegos (1) 1 - Multiplicar</h2>
+
+    <p>Escriba un programa que conste de dos páginas y que plantee multiplicaciones de una cifra.</p>
+    <ul>
+      <li>En la primera página se muestran los dos números a multiplicar y se pide la respuesta. Los dos números a multiplicar se guardarán como variables de sesión.</li>
+      <li>En la segunda página se dice si se ha acertado o no.</li>
+    </ul>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="multiplicar-1-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
-
-    <section id="ejercicio-2">
-      <h2>Minijuegos (1) 2 - Dividir</h2>
-
-      <p>Escriba un programa que conste de dos páginas y que plantee divisiones de una cifra.</p>
-      <ul>
-        <li>En la primera página se muestran los dos números a dividir y se pide el cociente y el resto. El dividendo y el divisor se guardarán en controles ocultos.</li>
-        <li>En la segunda página se dice si se ha acertado o no.</li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="dividir-1-1.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="dividir-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+      <div class="icono-enlace">
+        <a href="multiplicar-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="ejercicio-3">
-      <h2>Minijuegos (1) 3 - Puntería (1)</h2>
+  <section id="ejercicio-2">
+    <h2>Minijuegos (1) 2 - Dividir</h2>
 
-      <p>Escriba un programa que conste de dos páginas y que compruebe nuestra puntería.</p>
-      <ul>
-        <li>En la primera página un dibujo de 200px de lado con un punto dibujado al azar.<br />
-          El dibujo se genera mediante otro programa PHP.<br />
-          Las coordenadas del centro del círculo y el radio se guardarán en
-          controles ocultos.</li>
-        <li>En la segunda página se dice si se ha acertado o no.</li>
-      </ul>
+    <p>Escriba un programa que conste de dos páginas y que plantee divisiones de una cifra.</p>
+    <ul>
+      <li>En la primera página se muestran los dos números a dividir y se pide el cociente y el resto. El dividendo y el divisor se guardarán como variables de sesión.</li>
+      <li>En la segunda página se dice si se ha acertado o no.</li>
+    </ul>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="punteria-1-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="punteria-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="dividir-1-1.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
-
-    <section id="ejercicio-4">
-      <h2>Minijuegos (1) 4 - Puntería (2)</h2>
-
-      <p>Modifique el programa anterior de manera que el programa sólo tenga una página.</p>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="punteria-2.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="punteria-2.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+      <div class="icono-enlace">
+        <a href="dividir-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="ejercicio-5">
-      <h2>Minijuegos (1) 5 - Retrato robot</h2>
+  <section id="ejercicio-3">
+    <h2>Minijuegos (1) 3 - Puntería (1)</h2>
 
-      <p>Escriba un programa de una página que muestre las tres imágenes que forman el retrato de varias actrices del cine clásico. Al hacer clic en alguna de los botones se muestra otra imagen elegida al azar.</p>
-      <ul>
-        <li>Las imágenes que forman los retratos se llaman retratos_X_Y.jpg, en la que X es el número de actriz (de 1 a 7), es Y es la franja (1: boca, 2: nariz, 3: ojos).</li>
-        <li>El botón para renovar la imagen envía el número de franja que debe renovarse (1, 2 o 3).</li>
-        <li>Los números de las imágenes que se muestran en cada franja se pueden guardar en tres controles ocultos.</li>
-      </ul>
+    <p>Escriba un programa que conste de dos páginas y que compruebe nuestra puntería.</p>
+    <ul>
+      <li>En la primera página se muestra un dibujo de 200px de lado con un punto dibujado al azar.</li>
+      <li>El radio del punto será de 10px a 20px.</li>
+      <li>El dibujo SVG se genera mediante otro programa PHP (con el tipo MIME correspondiente) y se incluirá en el formulario como control de tipo <span class="html-atri-valor">image</span>.</li>
+      <li>El tamaño del dibujo, las coordenadas del centro del círculo y el radio del círculo se guardarán en variables de sesión.</li>
+      <li>En la segunda página se dice si se ha acertado o no.</li>
+      <li>Se habrá hecho clic en el círculo si la distancia entre el punto marcado y el centro del círculo es menor que el radio del círculo, es decir<br />
+        (x<sub>p</sub> - x<sub>c</sub>)<sup>2</sup> + (y<sub>p</sub> - y<sub>c</sub>)<sup>2</sup> &le; r<sup>2</sup></li>
+    </ul>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="../imagenes-1/imagenes-4.php" style="height: 37em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="../imagenes-1/imagenes-4.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="punteria-1-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="punteria-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 29 de octubre de 2015</p>
+  <section id="ejercicio-4">
+    <h2>Minijuegos (1) 4 - Puntería (2)</h2>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p>Modifique el programa anterior de manera que el programa sólo tenga una página.</p>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="punteria-2.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="punteria-2.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Minijuegos (1) 5 - Retrato robot</h2>
+
+    <p>Escriba un programa de una página que muestre las tres imágenes que forman el retrato de varias actrices del cine clásico. Al hacer clic en alguna de los botones se muestra otra imagen elegida al azar.</p>
+    <ul>
+      <li>Las imágenes que forman los retratos se llaman retratos_X_Y.jpg, en la que X es el número de actriz (de 1 a 7), es Y es la franja (1: boca, 2: nariz, 3: ojos).</li>
+      <li>El botón para renovar la imagen envía el número de franja que debe renovarse (1, 2 o 3).</li>
+      <li>Los números de las imágenes que se muestran en cada franja se pueden guardar en tres controles ocultos.</li>
+    </ul>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="../../recapitulacion/imagenes-1/imagenes-4.php" style="height: 37em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="../../recapitulacion/imagenes-1/imagenes-4.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 29 de octubre de 2015</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

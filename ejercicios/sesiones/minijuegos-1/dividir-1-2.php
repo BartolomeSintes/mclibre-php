@@ -3,9 +3,9 @@
  * Dividir 1-2 - dividir-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-10-27
+ * @version   2017-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,34 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+session_name("dividir-1");
+session_start();
+
+// Si algún número no está guardado en la sesión, vuelve al formulario
+if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
+    header("Location:dividir-1-1.php");
+    exit;
+}
+
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
+    return $tmp;
+}
+
+$cociente    = recoge("cociente");
+$resto       = recoge("resto");
+$respuestaOk = false;
+
+if ($cociente == "" || !is_numeric($cociente) || $resto == "" || !is_numeric($resto)) {
+    header("Location:dividir-1-1.php");
+    exit;
+} else {
+    $respuestaOk = true;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,94 +62,52 @@
 </head>
 
 <body>
-<h1>Dividir 1 (Resultado)</h1>
+  <h1>Dividir 1 (Resultado)</h1>
 
 <?php
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
-$cociente = recoge("cociente");
-$resto    = recoge("resto");
-$a        = recoge("a");
-$b        = recoge("b");
-
-$cocienteOk = false;
-$restoOk    = false;
-$aOk        = false;
-$bOk        = false;
-
-if ($cociente == "") {
-    print "<p class=\"aviso\">No ha escrito el cociente.</p>\n";
-} elseif (!is_numeric($cociente)) {
-    print "<p class=\"aviso\">No ha escrito el cociente como número.</p>\n";
-} else {
-    $cocienteOk = true;
-}
-
-if ($resto == "") {
-    print "<p class=\"aviso\">No ha escrito el resto.</p>\n";
-} elseif (!is_numeric($resto)) {
-    print "<p class=\"aviso\">No ha escrito el resto como número.</p>\n";
-} else {
-    $restoOk = true;
-}
-
-if ($a == "" || !is_numeric($a) || !ctype_digit($a) || $a < 10 || $a > 99) {
-    print "<p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
-} else {
-    $aOk = true;
-}
-
-if ($b == "" || !is_numeric($b) || !ctype_digit($b) || $b < 1 || $b > 9) {
-    print "<p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
-} else {
-    $bOk = true;
-}
-
-
-if ($cocienteOk && $restoOk && $aOk && $bOk) {
-    if ($a == $b * $cociente + $resto) {
-        print "<p>¡Respuesta correcta!</p>\n\n";
+if ($respuestaOk) {
+    $cocienteCorrecto = floor($_SESSION["a"] / $_SESSION["b"]);
+    $restoCorrecto    = $_SESSION["a"] % $_SESSION["b"];
+    if ($cociente == $cocienteCorrecto && $resto == $restoCorrecto) {
+        print "  <p>¡Respuesta correcta!</p>\n";
+        print "\n";
     } else {
-        print "<p>¡Respuesta incorrecta!</p>\n\n";
+        print "  <p class=\"aviso\">¡Respuesta incorrecta!</p>\n";
+        print "\n";
 
-        print "<p>La respuesta correcta no es $cociente y $resto. La respuesta correcta es " . (floor($a / $b)) . " y " . ($a % $b). ".</p>\n\n";
+        print "  <p>La respuesta correcta no es <strong>$cociente</strong> y <strong>$resto</strong>. "
+            . "La respuesta correcta es <strong>$cocienteCorrecto</strong> y <strong>$restoCorrecto</strong>.</p>\n";
+        print "\n";
 
-        print "<table class=\"grande derecha\">\n";
-        print "  <tbody>\n";
-        print "    <tr>\n";
-        print "      <td>$a</td>\n";
-        print "      <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$b</td>\n";
-        print "    </tr>\n";
-        print "    <tr>\n";
-        print "      <td>" . ($a % $b). "</td>\n";
-        print "      <td>" . (floor($a / $b)) . "</td>\n";
-        print "    </tr>\n";
-        print "  </tbody>\n";
-        print "</table>\n";
-
+        print "  <table class=\"grande derecha\">\n";
+        print "    <tbody>\n";
+        print "      <tr>\n";
+        print "        <td>$_SESSION[a]</td>\n";
+        print "        <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$_SESSION[b]</td>\n";
+        print "      </tr>\n";
+        print "      <tr>\n";
+        print "        <td>$restoCorrecto</td>\n";
+        print "        <td>$cocienteCorrecto</td>\n";
+        print "      </tr>\n";
+        print "    </tbody>\n";
+        print "  </table>\n";
     }
 }
 ?>
 
-<p><a href="dividir-1-1.php">Volver al formulario.</a></p>
+  <p><a href="dividir-1-1.php">Volver al formulario.</a></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-10-27">27 de octubre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-10">10 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

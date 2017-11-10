@@ -3,9 +3,9 @@
  * Puntería 1-1 - punteria-1-dibujo.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-10-28
+ * @version   2017-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,24 +22,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
-$ancho = recoge("ancho");
-$r      = recoge("r");
-$x      = recoge("x");
-$y      = recoge("y");
+session_name("punteria-1");
+session_start();
 
 header("Content-type: image/svg+xml");
 
-print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "    width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
+print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+    . "  width=\"{$_SESSION["ancho"]}px\" height=\"{$_SESSION["ancho"]}px\">\n";
 print "  <rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
-        . "x=\"0\" y=\"0\" width=\"$ancho\" height=\"$ancho\" />\n";
-print "    <circle cx=\"$x\" cy=\"$y\" r=\"$r\" stroke=\"black\" stroke-width=\"0\" fill=\"black\" />\n";
-print "  </svg>";
+    . "x=\"0\" y=\"0\" width=\"$_SESSION[ancho]\" height=\"$_SESSION[ancho]\" />\n";
+    print "  <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"$_SESSION[r]\" stroke=\"black\" stroke-width=\"0\" fill=\"black\" />\n";
+print "</svg>";

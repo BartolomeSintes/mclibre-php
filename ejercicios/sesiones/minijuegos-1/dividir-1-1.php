@@ -3,9 +3,9 @@
  * Dividir 1-1 - dividir-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-10-27
+ * @version   2017-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,8 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+session_name("dividir-1");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,47 +36,46 @@
 </head>
 
 <body>
-<h1>Dividir 1 (Formulario)</h1>
+  <h1>Dividir 1 (Formulario)</h1>
 
-<form action="dividir-1-2.php" method="get">
-  <p>Escriba el resultado de la siguiente división:</p>
+  <form action="dividir-1-2.php" method="get">
+    <p>Escriba el resultado de la siguiente división:</p>
 
 <?php
-$a = rand(10, 99);
-$b = rand(1, 9);
+$_SESSION["a"] = rand(10, 99);
+$_SESSION["b"] = rand(1, 9);
 
-print "<table class=\"grande derecha\">\n";
-print "  <tbody>\n";
-print "    <tr>\n";
-print "      <td>$a</td>\n";
-print "      <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$b</td>\n";
-print "    </tr>\n";
-print "    <tr>\n";
-print "      <td><input type=\"text\" name=\"resto\" size=\"3\" /></td>\n";
-print "      <td><input type=\"text\" name=\"cociente\" size=\"3\" /></td>\n";
-print "    </tr>\n";
-print "  </tbody>\n";
-print "</table>\n";
-
-print "  <p><input type=\"hidden\" name=\"a\" value=\"$a\" />\n";
-print "    <input type=\"hidden\" name=\"b\" value=\"$b\" /></p>\n";
+print "    <table class=\"grande derecha\">\n";
+print "      <tbody>\n";
+print "        <tr>\n";
+print "          <td>$_SESSION[a]</td>\n";
+print "          <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$_SESSION[b]</td>\n";
+print "        </tr>\n";
+print "        <tr>\n";
+print "          <td><input type=\"text\" name=\"resto\" size=\"3\" /></td>\n";
+print "          <td><input type=\"text\" name=\"cociente\" size=\"3\" /></td>\n";
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
 ?>
 
-  <p><input type="submit" value="Corregir" />
-    <input type="reset" value="Borrar" /></p>
-</form>
+    <p>
+      <input type="submit" value="Corregir" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-10-27">27 de octubre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-10">10 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-</footer>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
 </body>
 </html>

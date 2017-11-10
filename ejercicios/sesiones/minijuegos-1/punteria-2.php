@@ -3,9 +3,9 @@
  * Puntería 2 - punteria-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-10-29
+ * @version   2017-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -84,9 +84,11 @@ if ($yu == "" || !is_numeric($yu) || !ctype_digit($yu)) {
 
 if ($rOk && $xcOk && $ycOk && $xuOk && $yuOk) {
     if ( ($xu - $xc) * ($xu - $xc) + ($yu - $yc) * ($yu - $yc) <= $r * $r) {
-        print "  <p>¡Ha acertado!</p>\n\n";
+        print "  <p>¡Ha acertado!</p>\n";
+        print "\n";
     } else {
-        print "  <p>Lo siento, ha fallado. Pruebe de nuevo.</p>\n\n";
+        print "  <p>Lo siento, ha fallado. Pruebe de nuevo.</p>\n";
+        print "\n";
     }
 }
 
@@ -95,9 +97,11 @@ $r     = rand(10, 20);
 $x     = rand($r, 200 - $r);
 $y     = rand($r, 200 - $r);
 
-print "  <p>Haga clic en el punto negro:</p>\n\n";
+print "  <p>Haga clic en el punto negro:</p>\n";
+print "\n";
 
-print "  <p><input type=\"image\" name=\"dibujo\" src=\"punteria-1-dibujo.php?ancho=$ancho&amp;x=$x&amp;y=$y&amp;r=$r\" alt=\"punteria\" /></p>\n\n";
+print "  <p><input type=\"image\" name=\"dibujo\" src=\"punteria-1-dibujo.php?ancho=$ancho&amp;x=$x&amp;y=$y&amp;r=$r\" alt=\"punteria\" /></p>\n";
+print "\n";
 
 print "  <p><input type=\"hidden\" name=\"x\" value=\"$x\" />\n";
 print "    <input type=\"hidden\" name=\"y\" value=\"$y\" />\n";
@@ -109,7 +113,7 @@ print "    <input type=\"hidden\" name=\"r\" value=\"$r\" /></p>\n";
 <footer>
   <p class="ultmod">
     Última modificación de esta página:
-    <time datetime="2015-10-29">29 de octubre de 2015</time></p>
+    <time datetime="2017-11-10">10 de noviembre de 2017</time></p>
 
       <p class="licencia">
         Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
