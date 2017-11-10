@@ -3,9 +3,9 @@
  * Sesiones (1) 06 - sesiones-1-06-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-17
+ * @version   2017-11-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,10 +21,11 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("sesiones-1-06");
 session_start();
 
+// Si algún contador no está guardado en la sesión, los pone a cero
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
@@ -48,18 +49,20 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     <table>
       <tr>
         <td style="vertical-align: top;"><button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hsl(200, 100%, 50%);">&#x2714;</button></td>
+        <td>
 <?php
-print "        <td>\n";
+// Dibuja una barra de votos
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[a]\" height=\"50\">\n";
 print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hsl(200, 100%, 50%)\" stroke-width=\"50\" />\n";
 print "          </svg>\n";
-print "        </td>\n";
 ?>
+        </td>
       </tr>
       <tr>
         <td><button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hsl(35, 100%, 50%)">&#x2714;</button></td>
 <?php
+// Dibuja la otra barra de votos
 print "        <td>\n";
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[b]\" height=\"50\">\n";
@@ -76,7 +79,7 @@ print "        </td>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

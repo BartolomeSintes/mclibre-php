@@ -3,9 +3,9 @@
  * Sesiones (1) 01 - sesiones-1-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-17
+ * @version   2017-11-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,10 +21,9 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("sesiones-1-01");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,6 +39,7 @@ session_start();
   <h1>Formulario Nombre 1 (Resultado)</h1>
 
 <?php
+// Funciones auxiliares
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -48,20 +48,24 @@ function recoge($var)
     return $tmp;
 }
 
+// Recogida de nombre
 $nombre   = recoge("nombre");
 $nombreOk = false;
 
+// Comprobación de nombre
 if ($nombre == "") {
     print "  <p class=\"aviso\">No ha escrito su nombre.</p>\n";
 } else {
     $nombreOk = true;
 }
 
+// Si el nombre es válido ...
 if ($nombreOk) {
+    // se guarda el nombre en la sesión
     $_SESSION["nombre"] = $nombre;
+    // y se muestra
     print "  <p>Su nombre es: <strong>$nombre</strong>.</p>\n";
 }
-
 ?>
 
   <p><a href="sesiones-1-01-1.php">Volver a la primera página.</a></p>
@@ -69,7 +73,7 @@ if ($nombreOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

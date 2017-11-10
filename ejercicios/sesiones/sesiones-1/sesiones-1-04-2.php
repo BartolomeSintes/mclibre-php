@@ -3,9 +3,9 @@
  * Sesiones (1) 04 - sesiones-1-04-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-17
+ * @version   2017-11-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,14 +21,16 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("sesiones-1-04");
 session_start();
 
+// Si la posición no está guardada en la sesión, la pone a cero
 if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
 
+// Funciones auxiliares
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -36,6 +38,46 @@ function recoge($var)
     : "";
     return $tmp;
 }
+
+// Recogida de accion
+$accion   = recoge("accion");
+$accionOk = true;
+
+// Comprobación de accion
+if ($accion != "Volver al centro" && $accion != "izquierda" && $accion != "derecha") {
+    // Si no es una de las tres posibles acciones, se vuelve al formulario
+    header("location:sesiones-1-04-1.php");
+    exit;
+} else {
+    $accionOk = true;
+}
+
+// Si la accion recibibida es válida ...
+if ($accionOk) {
+    //se mueve el punto
+    if ($accion == "Volver al centro") {
+        $_SESSION["posicion"] = 0;
+    } elseif ($accion == "izquierda") {
+        $_SESSION["posicion"] -= 20;
+    } elseif ($accion == "derecha") {
+        $_SESSION["posicion"] += 20;
+    }
+
+    // si sale por un lado, entra por el otro
+    if ($_SESSION["posicion"] > 300) {
+        $_SESSION["posicion"] = -300;
+    } elseif ($_SESSION["posicion"] < -300) {
+        $_SESSION["posicion"] = 300;
+    }
+
+    // y vuelve al formulario
+    header("location:sesiones-1-04-1.php");
+    exit;
+}
+
+/* La solución anterior sigue el patrón recogida+validación+ejecución
+ * propuesta en los ejercicios de formularios
+ * El programa podría hacerse más corto con el mismo resultado
 
 $accion = recoge("accion");
 
@@ -54,3 +96,4 @@ if ($_SESSION["posicion"] > 300) {
 }
 
 header("location:sesiones-1-04-1.php");
+*/

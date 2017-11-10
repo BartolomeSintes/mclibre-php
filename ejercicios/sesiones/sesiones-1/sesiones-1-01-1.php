@@ -3,9 +3,9 @@
  * Sesiones (1) 01 - sesiones-1-01-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-17
+ * @version   2017-11-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,10 +21,9 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Se accede a la sesión
 session_name("sesiones-1-01");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,6 +39,7 @@ session_start();
   <h1>Formulario Nombre 1 (Formulario)</h1>
 
 <?php
+// Si hay un nombre guardado en la sesión, se muestra
 if (isset($_SESSION["nombre"])) {
     print "  <p>Su nombre es: <strong>$_SESSION[nombre]</strong>.</p>\n";
     print "\n";
@@ -59,7 +59,7 @@ if (isset($_SESSION["nombre"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

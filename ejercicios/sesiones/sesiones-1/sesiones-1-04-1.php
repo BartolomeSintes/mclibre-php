@@ -3,9 +3,9 @@
  * Sesiones (1) 04 - sesiones-1-04-1.php
 *
 * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
-* @copyright 2016 Bartolomé Sintes Marco
+* @copyright 2017 Bartolomé Sintes Marco
 * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
-* @version   2016-11-17
+* @version   2017-11-09
 * @link      http://www.mclibre.org
 *
 *  This program is free software: you can redistribute it and/or modify
@@ -21,10 +21,11 @@
 *  You should have received a copy of the GNU Affero General Public License
 *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+// Se accede a la sesión
 session_name("sesiones-1-04");
 session_start();
 
+// Si la posición no está guardada en la sesión, la pone a cero
 if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
@@ -53,15 +54,16 @@ if (!isset($_SESSION["posicion"])) {
         <th>
       </tr>
       <tr>
+        <th>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+            width="600" height="20" viewbox="-300 0 600 20">
+            <line x1="-300" y1="10" x2="300" y2="10" stroke="black" stroke-width="5" />
 <?php
-print "        <th>\n";
-print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "            width=\"600\" height=\"20\" viewbox=\"-300 0 600 20\">\n";
-print "            <line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" />\n";
+// Dibuja el círculo en su posición
 print "            <circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
-print "          </svg>\n";
-print "        </th>\n";
 ?>
+          </svg>
+        </th>
       </tr>
     </table>
 
@@ -71,7 +73,7 @@ print "        </th>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-17">17 de noviembre de 2016</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
