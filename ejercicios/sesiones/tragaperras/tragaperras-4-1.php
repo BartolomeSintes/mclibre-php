@@ -3,9 +3,9 @@
  * Minijuegos: Tragaperras (4) - tragaperras-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-21
+ * @version   2017-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("tragaperras_4");
+session_name("tragaperras-4");
 session_start();
 
 $simbolosNumero = 8;   // Número de frutas
@@ -37,57 +37,57 @@ if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Tragaperras (4). Minijuegos.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Tragaperras (4). Minijuegos.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Tragaperras (4)</h1>
+<body>
+  <h1>Tragaperras (4)</h1>
 
 <?php
 // Se genera el formulario
-print "    <form action=\"tragaperras-4-2.php\" method=\"get\">\n";
-print "      <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
-print "        <tbody>\n";
-print "          <tr>\n";
+print "  <form action=\"tragaperras-4-2.php\" method=\"get\">\n";
+print "    <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
+print "      <tbody>\n";
+print "        <tr>\n";
 // Se muestran las tres imágenes de la combinación actual
-print "            <td style=\"border: black 4px solid; padding: 10px\">"
+print "          <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$_SESSION[fruta1].svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
-print "            <td style=\"border: black 4px solid; padding: 10px\">"
+print "          <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$_SESSION[fruta2].svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
-print "            <td style=\"border: black 4px solid; padding: 10px\">"
+print "          <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$_SESSION[fruta3].svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
-print "            <td style=\"vertical-align: top; text-align: center\">\n";
+print "          <td style=\"vertical-align: top; text-align: center\">\n";
 // Se muestra el contador de monedas
-print "              <p><button type=\"submit\" name=\"accion\" value=\"moneda\">Meter moneda</button></p>\n";
-print "              <p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\">$_SESSION[monedas]</p>\n";
+print "            <p><button type=\"submit\" name=\"accion\" value=\"moneda\">Meter moneda</button></p>\n";
+print "            <p style=\"margin: 0; font-size: 300%; border: black 4px solid; padding: 2px\">$_SESSION[monedas]</p>\n";
 // Se muestra el botón de Jugar
-print "              <p><button type=\"submit\" name=\"accion\" value=\"jugar\">Jugar</button></p>\n";
+print "            <p><button type=\"submit\" name=\"accion\" value=\"jugar\">Jugar</button></p>\n";
 if (isset($_SESSION["cara"])) {
-    print "              <p style=\"margin: 1px; font-size: 300%; border: black 4px solid; padding: 2px\">";
+    print "            <p style=\"margin: 1px; font-size: 300%; border: black 4px solid; padding: 2px\">";
     print "<img src=\"img/face-$_SESSION[cara].svg\" alt=\"Mal\" height=\"50\" />$_SESSION[premio]</p>\n";
 }
-print "            </td>\n";
-print "          </tr>\n";
-print "        </tbody>\n";
-print "      </table>\n";
-print "    </form>\n";
+print "          </td>\n";
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
+print "  </form>\n";
 ?>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-21">21 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+    <time datetime="2017-11-13">13 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-        y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
-        Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
+</body>
 </html>

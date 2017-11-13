@@ -3,9 +3,9 @@
  * Minijuegos: Tragaperras (1) - tragaperras-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-21
+ * @version   2017-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Tragaperras (1). Minijuegos.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Tragaperras (1). Minijuegos.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Tragaperras (1)</h1>
+<body>
+  <h1>Tragaperras (1)</h1>
 
 <?php
 $simbolosNumero = 8;   // Número de frutas
@@ -44,31 +44,31 @@ $fruta2 = rand(1, $simbolosNumero);
 $fruta3 = rand(1, $simbolosNumero);
 
 // Se genera el formulario
-print "    <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
+print "  <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
+print "    <tbody>\n";
+print "      <tr>\n";
 // Se muestran las tres imágenes de la combinación actual
-print "          <td style=\"border: black 4px solid; padding: 10px\">"
+print "        <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$fruta1.svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
-print "          <td style=\"border: black 4px solid; padding: 10px\">"
+print "        <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$fruta2.svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
-print "          <td style=\"border: black 4px solid; padding: 10px\">"
+print "        <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$fruta3.svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
-print "    </table>\n";
+print "      </tr>\n";
+print "    </tbody>\n";
+print "  </table>\n";
 ?>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-21">21 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-13">13 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-        y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
-        Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
+</body>
 </html>

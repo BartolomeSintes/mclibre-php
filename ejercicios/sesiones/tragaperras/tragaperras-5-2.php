@@ -3,9 +3,9 @@
  * Minijuegos: Tragaperras (5) - tragaperras-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-21
+ * @version   2017-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("tragaperras_5");
+session_name("tragaperras-5");
 session_start();
 
 // Funciones auxiliares
@@ -44,23 +44,26 @@ if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
     $_SESSION["fruta2"] = rand(1, $simbolosNumero);
     $_SESSION["fruta3"] = rand(1, $simbolosNumero);
     $_SESSION["apuesta"] = 0;
+    $_SESSION["premio"] = 0;
+    $_SESSION["cara"] = "plain";
 }
 
 // Recogida de datos
 $accion  = recoge("accion");
 
-// La cara predeterminada es la normal
-$_SESSION["cara"] = "plain";
-
 // Si se ha insertado moneda, se aumenta la cantidad de monedas
 if ($accion == "moneda") {
     $_SESSION["monedas"] += 1;
+    $_SESSION["premio"] = 0;
+    $_SESSION["cara"] = "plain";
 }
 
 // Si se ha apostado una moneda, se aumenta la cantidad apostada y se disminuye las monedas
 if ($accion == "apostar" && $_SESSION["monedas"] > 0) {
     $_SESSION["apuesta"] += 1;
     $_SESSION["monedas"] -= 1;
+    $_SESSION["premio"] = 0;
+    $_SESSION["cara"] = "plain";
 }
 
 // Si se ha jugado, se genera una nueva combinación, se pierde la apuesta y se comprueba el premio

@@ -1,164 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Tragaperras. Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../../varios/favicon.ico" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Tragaperras. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../../varios/favicon.ico" />
+</head>
 
-  <body>
-    <h1>Ejercicios - Minijuegos: Tragaperras</h1>
+<body>
+  <h1>Ejercicios - Minijuegos: Tragaperras</h1>
 
-    <nav>
-      <p>
-        <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Tragaperras</h2>
+    <div class="toc">
+      <h2>Tragaperras</h2>
 
-        <ul>
-          <li><a href="#ejercicio-1">1 - Tragaperras (1)</a></li>
-          <li><a href="#ejercicio-2">2 - Tragaperras (2)</a></li>
-          <li><a href="#ejercicio-3">3 - Tragaperras (3)</a></li>
-          <li><a href="#ejercicio-4">4 - Tragaperras (4)</a></li>
-          <li><a href="#ejercicio-5">5 - Tragaperras (5)</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1718/cs-tragaperras-plantillas.zip">plantillas de los ejercicios Tragaperras</a>. Sólo se incluye una plantilla para los dos primeros ejercicios, ya que se recomienda hacer cada ejercicio a partir del anterior.</p>
-
-    <h2>Comentarios</h2>
-
-    <ul>
-      <li><span class="incompleto">[pendiente de actualizar]</span> En la <a href="tragaperras-ayuda.html">página de ayuda</a> se pueden consultar ejemplos de código que corresponden a los comentarios de cada enunciado.</li>
-    </ul>
-
-    <section id="ejercicio-1">
-      <h2>Tragaperras 1</h2>
-
-      <p>Escriba un programa que muestre tres imágenes de frutas, que cambien de forma aleatoria al actualizar la página.</p>
       <ul>
-        <li>Se generan aleatoriamente tres variables con números del 1 al 8 (yo las he llamado $fruta1, $fruta2, $fruta3). Esos números se utilizan para generar el nombre de las imágenes (que se llaman 1.svg, 2.svg, etc.).</li>
+        <li><a href="#ejercicio-1">1 - Tragaperras (1)</a></li>
+        <li><a href="#ejercicio-2">2 - Tragaperras (2)</a></li>
+        <li><a href="#ejercicio-3">3 - Tragaperras (3)</a></li>
+        <li><a href="#ejercicio-4">4 - Tragaperras (4)</a></li>
+        <li><a href="#ejercicio-5">5 - Tragaperras (5)</a></li>
       </ul>
+    </div>
+  </nav>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="tragaperras-1.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="tragaperras-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1718/cs-tragaperras-plantillas.zip">plantillas de los ejercicios Tragaperras</a>. Sólo se incluye una plantilla para los dos primeros ejercicios, ya que se recomienda hacer cada ejercicio a partir del anterior.</p>
 
-    <section id="ejercicio-2">
-      <h2>Tragaperras 2</h2>
+  <h2>Comentarios</h2>
 
-      <p>Añada al programa anterior un contador de monedas que se pueda incrementar mediante un botón de formulario.</p>
+  <ul>
+    <li>En cada enunciado de ejercicio hay un apartado de Ayuda, con comentarios sobre elementos a incluir en los programas.</li>
+    <li>En la <a href="tragaperras-ayuda.html">página de ayuda</a> se pueden consultar ejemplos de código que corresponden a los comentarios de cada enunciado.</li>
+  </ul>
+
+  <section id="ejercicio-1">
+    <h2>Tragaperras 1</h2>
+
+    <p>Escriba un programa que muestre tres imágenes de frutas, que cambien de forma aleatoria al actualizar la página.</p>
+
+    <details>
+      <summary>Ayuda</summary>
       <ul>
-        <li>Añada un formulario que llame a la misma página.</li>
-        <li>Añada un botón "Meter moneda" que represente el haber metido una moneda en la máquina tragaperras.</li>
-        <li>Muestre un contador de las monedas introducidas.</li>
-        <li>Cada vez que se mete una moneda, la cantidad de monedas aumenta en 1.</li>
-        <li>Cada vez que se mete una moneda, se renueva la combinación de frutas.</li>
+        <li>Genere aleatoriamente tres variables con números del 1 al 8 (yo las he llamado $fruta1, $fruta2, $fruta3). Esos números se utilizan para generar el nombre de las imágenes (que se llaman 1.svg, 2.svg, etc.).</li>
       </ul>
+    </details>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="tragaperras-2-1.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="tragaperras-2-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="tragaperras-1.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="tragaperras-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <section id="ejercicio-3">
-      <h2>Tragaperras 3</h2>
+  <section id="ejercicio-2">
+    <h2>Tragaperras 2</h2>
 
-      <p>Añada al programa anterior la limitación de sólo poder jugar empleando monedas del contador.</p>
+    <p>Añada al programa anterior un contador de monedas que se pueda incrementar mediante un botón de formulario.</p>
+
+    <details>
+      <summary>Ayuda</summary>
+      <ul>
+        <li>Añada a la primera página un formulario que llame a una segunda página.</li>
+        <li>Las dos páginas pertenecerán a la misma sesión.</li>
+        <li>Añada en el formulario un botón "Meter moneda" que represente el haber metido una moneda en la máquina tragaperras y que envíe el formulario.</li>
+        <li>Cada vez que se mete una moneda, en la segunda página la cantidad de monedas aumenta en 1.</li>
+        <li>La segunda página guarda la cantidad de monedas en una variable de sesión (por ejmplo, $_SESSION["monedas"]).</li>
+        <li>La segunda página redirige a la primera siempre.</li>
+        <li>Cuando se vuelve a la primera página cada vez que se mete una moneda, se renueva la combinación de frutas.</li>
+        <li>En el formulario, muestre la cantidad de monedas introducidas.</li>
+        <li>Si al acceder a cualquiera de las dos páginas no está definida la variable de sesión, se le debe dar el valor 0.</li>
+      </ul>
+    </details>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="tragaperras-2-1.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="tragaperras-2-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Tragaperras 3</h2>
+
+    <p>Añada al programa anterior un botón para jugar, que renueva la combinación de frutas y reduce la cantidad de monedas de una en una.</p>
+
+    <details>
+      <summary>Ayuda</summary>
       <ul>
         <li>Añada un botón "Jugar" que renueve la combinación de frutas.</li>
-        <li>Sólo se debe renovar la combinación de frutas cuando se juega, no cuando se mete una moneda.</li>
+        <li>Sólo se debe renovar la combinación de frutas cuando se juega, no cuando se mete una moneda. Para ello, las frutas a mostrar se guardarán en variables de sesión, no en variables "normales" y se cambiarán en la segunda página.</li>
         <li>Cada vez que se juega, se pierde una moneda.</li>
         <li>Sólo se puede jugar si el contador de monedas es distinto de cero.</li>
+        <li>Si al acceder a cualquiera de las dos páginas no están definidas las variables de sesión, se definirá una combinación de frutas y el número de monedas se pondrá a cero.</li>
       </ul>
+    </details>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="tragaperras-3-1.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="tragaperras-3-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="tragaperras-3-1.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="tragaperras-3-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <section id="ejercicio-4">
-      <h2>Tragaperras 4</h2>
+  <section id="ejercicio-4">
+    <h2>Tragaperras 4</h2>
 
-      <p>Añada al programa anterior la capacidad de detectar que se ha ganado un premio.</p>
+    <p>Añada al programa anterior la capacidad de detectar que se ha ganado un premio.</p>
+    <ul>
+      <li>Los premios son los siguientes (no tienen por qué comprobarse en este orden):
+        <ul>
+          <li>Si sale una cereza, se gana <strong>una</strong> moneda.</li>
+          <li>Si salen dos cerezas, se ganan <strong>cuatro</strong> monedas.</li>
+          <li>Si salen tres cerezas, se ganan <strong>diez</strong> monedas.</li>
+          <li>Si salen dos frutas iguales que no sean cerezas, se ganan <strong>dos</strong> monedas.</li>
+          <li>Si salen tres frutas iguales que no sean cerezas, se ganan <strong>cinco</strong> monedas.</li>
+          <li>Si sale una cereza y dos frutas iguales, se ganan <strong>tres</strong> monedas.</li>
+          <li>En el resto de casos, <strong>se pierde</strong> una moneda.</li>
+        </ul>
+        <p><strong>Nota</strong>: Empiece comprobando un par de casos (por ejemplo, el de una cereza y el de una cereza y dos frutas iguales) y una vez hecho el resto del ejercicio, complete todos los casos de premios.</p>
+      </li>
+    </ul>
+
+    <details>
+      <summary>Ayuda</summary>
       <ul>
-        <li>Los premios son los siguientes (no tienen por qué comprobarse en este orden):
-          <ul>
-            <li>Si sale una cereza, se gana <strong>una</strong> moneda.</li>
-            <li>Si salen dos cerezas, se ganan <strong>cuatro</strong> monedas.</li>
-            <li>Si salen tres cerezas, se ganan <strong>diez</strong> monedas.</li>
-            <li>Si salen dos frutas iguales que no sean cerezas, se ganan <strong>dos</strong> monedas.</li>
-            <li>Si salen tres frutas iguales que no sean cerezas, se ganan <strong>cinco</strong> monedas.</li>
-            <li>Si sale una cereza y dos frutas iguales, se ganan <strong>tres</strong> monedas.</li>
-            <li>En el resto de casos, <strong>se pierde</strong> una moneda.</li>
-          </ul>
-          <p><strong>Nota</strong>: Empiece comprobando un par de casos (por ejemplo, el de una cereza y el de una cereza y dos frutas iguales) y una vez hecho el resto del ejercicio, complete todos los casos de premios.</p>
-        </li>
-        <li>Muestre la cara triste si se pierde y la alegre si se gana.</li>
-        <li>Muestre junto con la cara alegre el premio obtenido.</li>
         <li>Añada al contador de monedas el premio obtenido.</li>
+        <li>Asigne la cara triste si se pierde y la alegre si se gana.</li>
+        <li>Muestre el premio obtenido (el número de veces que se gana la apuesta) y la cara (triste o alegre) correspondiente.</li>
       </ul>
+    </details>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="tragaperras-4-1.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="tragaperras-4-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="tragaperras-4-1.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="tragaperras-4-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <section id="ejercicio-5">
-      <h2>Tragaperras 5</h2>
+  <section id="ejercicio-5">
+    <h2>Tragaperras 5</h2>
 
-      <p>Añada al programa anterior la capacidad de apostar más de una moneda.</p>
+    <p>Añada al programa anterior la capacidad de apostar más de una moneda.</p>
+
+    <details>
+      <summary>Ayuda</summary>
       <ul>
         <li>Añada un botón "Aumentar apuesta" que aumente un contador de monedas apostadas.</li>
-        <li>Al apostar una moneda, se debe disminuir el contador de monedas.</li>
+        <li>Al apostar una moneda más, se debe disminuir el contador de monedas.</li>
         <li>Los premios se multiplican por el número de monedas apostadas</li>
         <li>La cantidad apostada se pierde siempre.</li>
         <li>Si se meten monedas o se aumenta la apuesta, muestre una cara indiferente.</li>
       </ul>
+    </details>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="tragaperras-5-1.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="tragaperras-5-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="tragaperras-5-1.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="tragaperras-5-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 22 de noviembre de 2016</p>
+  <footer>
+      <p class="ultmod">Última modificación de esta página: 13 de noviembre de 2017</p>
 
       <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
         Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
         que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
     </footer>
-  </body>
+</body>
 </html>
