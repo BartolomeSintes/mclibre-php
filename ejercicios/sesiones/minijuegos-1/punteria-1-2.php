@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-10
+ * @version   2017-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,13 +21,13 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("punteria-1");
+session_name("punteria");
 session_start();
 
 // Si algún número no está guardado en la sesión, vuelve al formulario
 if (!isset($_SESSION["ancho"]) || !isset($_SESSION["r"])
     || !isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    header("Location:punteriar-1-1.php");
+    header("Location:punteria-1-1.php");
     exit;
 }
 

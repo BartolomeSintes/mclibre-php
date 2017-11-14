@@ -1,11 +1,11 @@
 <?php
 /**
- * Puntería 1-1 - punteria-1-dibujo.php
+ * Puntería 1 y 2 - punteria-dibujo.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-10
+ * @version   2017-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,10 +22,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("punteria-1");
+session_name("punteria");
 session_start();
 
 header("Content-type: image/svg+xml");
+
+$_SESSION["ancho"] = 200;
+$_SESSION["r"]     = rand(10, 20);
+$_SESSION["x"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
+$_SESSION["y"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
 
 print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "  width=\"{$_SESSION["ancho"]}px\" height=\"{$_SESSION["ancho"]}px\">\n";

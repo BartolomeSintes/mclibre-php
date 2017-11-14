@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-10
+ * @version   2017-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,13 +21,6 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("punteria-1");
-session_start();
-
-$_SESSION["ancho"] = 200;
-$_SESSION["r"]     = rand(10, 20);
-$_SESSION["x"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
-$_SESSION["y"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,13 +38,13 @@ $_SESSION["y"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
   <form action="punteria-1-2.php" method="get">
     <p>Haga clic en el punto negro:</p>
 
-    <p><input type="image" name="dibujo" src="punteria-1-dibujo.php" alt="punteria" /></p>
+    <p><input type="image" name="dibujo" src="punteria-dibujo.php" alt="punteria" /></p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-10">10 de noviembre de 2017</time></p>
+      <time datetime="2017-11-14">14 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
