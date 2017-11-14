@@ -36,9 +36,10 @@ function recoge($var)
 $simbolosNumero = 8;   // Número de frutas
 
 // Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
-    !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"]) ||
-    !isset($_SESSION["apuesta"])) {
+if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"])
+    || !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])
+    || !isset($_SESSION["apuesta"])  || !isset($_SESSION["premio"])
+    || !isset($_SESSION["cara"])) {
     $_SESSION["monedas"] = 0;
     $_SESSION["fruta1"] = rand(1, $simbolosNumero);
     $_SESSION["fruta2"] = rand(1, $simbolosNumero);

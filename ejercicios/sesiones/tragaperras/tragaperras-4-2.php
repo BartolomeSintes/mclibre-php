@@ -36,12 +36,15 @@ function recoge($var)
 $simbolosNumero = 8;   // Número de frutas
 
 // Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
-    !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])) {
+if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"])
+    || !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])
+    || !isset($_SESSION["premio"]) || !isset($_SESSION["cara"])) {
     $_SESSION["monedas"] = 0;
     $_SESSION["fruta1"] = rand(1, $simbolosNumero);
     $_SESSION["fruta2"] = rand(1, $simbolosNumero);
     $_SESSION["fruta3"] = rand(1, $simbolosNumero);
+    $_SESSION["premio"] = 0;
+    $_SESSION["cara"] = "plain";
 }
 
 // Recogida de datos
@@ -50,6 +53,8 @@ $accion  = recoge("accion");
 // Si se ha insertado moneda, se aumenta la cantidad de monedas
 if ($accion == "moneda") {
     $_SESSION["monedas"] += 1;
+    $_SESSION["premio"] = 0;
+    $_SESSION["cara"] = "plain";
 }
 
 // Si se ha jugado, se genera una nueva combinación, se pierde una moneda y se comprueba el premio
