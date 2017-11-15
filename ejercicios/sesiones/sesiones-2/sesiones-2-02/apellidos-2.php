@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 2 - apellidos-2.php
+ * Sesiones (2) 02 - apellidos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-10
+ * @version   2017-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,16 +28,16 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Apellidos (2). Sesiones 2. Sesiones.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Apellidos (2). Sesiones (2) 02. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Apellidos (2)</h1>
+<body>
+  <h1>Apellidos (2)</h1>
 
 <?php
 function recoge($var)
@@ -52,32 +52,33 @@ $apellidos   = recoge("apellidos");
 $apellidosOk = false;
 
 if ($apellidos == "") {
-    print "    <p class=\"aviso\">No ha escrito sus apellidos.</p>\n\n";
+    print "  <p class=\"aviso\">No ha escrito sus apellidos.</p>\n";
+    print "\n";
 } else {
     $apellidosOk = true;
 }
 
 if ($apellidosOk) {
     $_SESSION["apellidos"] = $apellidos;
-    print "    <p>Se han guardado sus apellidos: <strong>$_SESSION[apellidos]</strong></p>\n\n";
-    print "    <p><a href=\"index.php\">Volver al inicio.</a></p>\n";
+    print "  <p>Se han guardado sus apellidos: <strong>$_SESSION[apellidos]</strong></p>\n";
+    print "\n";
+    print "  <p><a href=\"index.php\">Volver al inicio.</a></p>\n";
 } else {
-    print "    <p><a href=\"apellidos-1.php\">Volver al formulario.</a></p>\n";
+    print "  <p><a href=\"apellidos-1.php\">Volver al formulario.</a></p>\n";
 }
-
 ?>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-10">10 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

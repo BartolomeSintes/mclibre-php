@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 1-1 - sesiones-2-11-1.php
+ * Sesiones (2) 11 - sesiones-2-11-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-16
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,16 +30,16 @@ session_start();
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Comprobación en formulario. Sesiones (2).
+  <title>Comprobación en formulario. Sesiones (2) 011. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Comprobación en formulario</h1>
+  <h1>Comprobación en formulario</h1>
 
-<form action="sesiones-2-11-2.php" method="get">
+  <form action="sesiones-2-11-2.php" method="get">
 <?php
 print "  <table>\n";
 print "    <tbody>\n";
@@ -72,24 +72,25 @@ print "  </table>\n";
 
 unset($_SESSION["aviso"]);
 unset($_SESSION["dato"]);
-
 ?>
 
-  <p><input type="submit" value="Comprobar" />
-    <input type="reset" value="Borrar" /></p>
-</form>
+    <p>
+      <input type="submit" value="Comprobar" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-16">16 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

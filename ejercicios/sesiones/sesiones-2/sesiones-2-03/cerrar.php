@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 3 - cerrar.php
+ * Sesiones (2) 03 - cerrar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-15
+ * @version   2017-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,5 +27,4 @@ session_start();
 session_destroy();
 header("location:index.php");
 exit;
-
 ?>

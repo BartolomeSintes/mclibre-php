@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 4 - index.php
+ * Sesiones (2) 04 - index.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-15
+ * @version   2017-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,44 +30,44 @@ session_start();
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Datos de sesión (Inicio). Sesiones 4. Sesiones.
+  <title>Datos de sesión (Inicio). Sesiones (2) 04. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Datos de sesión (Inicio)</h1>
+  <h1>Datos de sesión (Inicio)</h1>
 
 <?php
 if (count($_SESSION)) {
-    print "<p>Hay datos guardados.</p>\n";
+    print "  <p>Hay datos guardados.</p>\n";
+    print "\n";
 } else {
-    print "<p>No hay datos guardados.</p>\n";
+    print "  <p>No hay datos guardados.</p>\n";
+    print "\n";
 }
-
 ?>
+  <p>Elija una opción:</p>
 
-<p>Elija una opción:</p>
-
-<ul>
-  <li><a href="nuevo-1.php">Guardar un nuevo dato</a></li>
-  <li><a href="ver.php">Ver los datos actuales</a></li>
-  <li><a href="borrar-1.php">Borrar datos</a></li>
-  <li><a href="cerrar.php">Cerrar la sesión</a></li>
+  <ul>
+    <li><a href="nuevo-1.php">Guardar un nuevo dato</a></li>
+    <li><a href="ver.php">Ver los datos actuales</a></li>
+    <li><a href="borrar-1.php">Borrar datos</a></li>
+    <li><a href="cerrar.php">Cerrar la sesión</a></li>
   </ul>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-15">15 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

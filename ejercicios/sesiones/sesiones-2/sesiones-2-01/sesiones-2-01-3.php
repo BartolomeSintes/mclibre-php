@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 1 - sesiones-2-01-3.php
+ * Sesiones (2) 01 - sesiones-2-01-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-10
+ * @version   2017-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,20 +24,19 @@
 
 session_name("sesiones-2-01");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Formulario en tres pasos (Formulario 3). Sesiones.
-      Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Formulario en tres pasos (Formulario 3). Sesiones (2) 01. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Formulario en tres pasos (Formulario 3)</h1>
+<body>
+  <h1>Formulario en tres pasos (Formulario 3)</h1>
 
 <?php
 function recoge($var)
@@ -52,7 +51,7 @@ $apellidos   = recoge("apellidos");
 $apellidosOk = false;
 
 if ($apellidos == "") {
-    print "    <p class=\"aviso\">No ha escrito sus apellidos.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito sus apellidos.</p>\n";
 } else {
     $apellidosOk = true;
 }
@@ -60,31 +59,30 @@ if ($apellidos == "") {
 if ($apellidosOk) {
     $_SESSION["apellidos"] = $apellidos;
 
-    print "    <form action=\"sesiones-2-01-4.php\" method=\"get\">\n";
-    print "      <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $apellidos</strong>.</p>\n";
+    print "  <form action=\"sesiones-2-01-4.php\" method=\"get\">\n";
+    print "    <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $apellidos</strong>.</p>\n";
     print "\n";
-    print "      <p>¿Es correcto?\n";
-    print "        <input type=\"submit\" name=\"correcto\" value=\"Sí\" />\n";
-    print "        <input type=\"submit\" name=\"correcto\" value=\"No\" />\n";
-    print "      </p>\n";
-    print "    </form>\n";
+    print "    <p>¿Es correcto?\n";
+    print "      <input type=\"submit\" name=\"correcto\" value=\"Sí\" />\n";
+    print "      <input type=\"submit\" name=\"correcto\" value=\"No\" />\n";
+    print "    </p>\n";
+    print "  </form>\n";
 }
-
 ?>
 
-    <p><a href="sesiones-2-01-1.php">Volver a la primera página.</a></p>
+  <p><a href="sesiones-2-01-1.php">Volver a la primera página.</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-10">10 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

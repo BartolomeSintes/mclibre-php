@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 1-2 - sesiones-2-11-2.php
+ * Sesiones (2) 11 - sesiones-2-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-16
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,10 +33,11 @@ function recoge($var)
     return $tmp;
 }
 
-$nombre      = recoge("nombre");
-$edad        = recoge("edad");
-$nombreOk    = false;
-$edadOk      = false;
+$nombre    = recoge("nombre");
+$edad      = recoge("edad");
+$nombreOk  = false;
+$edadOk    = false;
+
 $paginaAnterior = "sesiones-2-11-1.php";
 
 if ($nombre == "") {
@@ -68,33 +69,34 @@ if (!$nombreOk || !$edadOk) {
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Comprobación en formulario. Sesiones (2).
+  <title>Comprobación en formulario. Sesiones (2) 011 . Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Comprobación en formulario</h1>
+  <h1>Comprobación en formulario</h1>
 
 <?php
-print "<p>Su nombre es <strong>$nombre</strong>.</p>\n\n";
-print "<p>Su edad es <strong>$edad</strong> años.</p>\n";
+print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
+print "\n";
+print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
 ?>
 
-<p><a href="sesiones-2-11-1.php">Volver al inicio.</a></p>
+  <p><a href="sesiones-2-11-1.php">Volver al inicio.</a></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-16">16 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

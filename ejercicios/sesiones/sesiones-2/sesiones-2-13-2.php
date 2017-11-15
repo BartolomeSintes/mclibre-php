@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 2-2 - sesiones-2-12-2.php
+ * Sesiones (2) 13 - sesiones-2-13-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-16
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,9 +33,9 @@ function recoge($var)
 session_name("sesiones_2_13");
 session_start();
 
-$accion       = recoge("accion");
-$nombre       = recoge("nombre");
-$nombreOk     = false;
+$accion   = recoge("accion");
+$nombre   = recoge("nombre");
+$nombreOk = false;
 $paginaAnterior = "sesiones-2-13-1.php";
 
 if ($accion == "Cerrar") {

@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 2-1 - sesiones-2-12-1.php
+ * Sesiones (2) 13 - sesiones-2-13-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-16
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,54 +30,53 @@ session_start();
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Almacenamiento de datos en sesión. Sesiones (2).
+  <title>Almacenamiento de datos en sesión. Sesiones (2) 013. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Almacenamiento de datos en sesión</h1>
+  <h1>Almacenamiento de datos en sesión</h1>
 
-<form action="sesiones-2-13-2.php" method="get">
-  <fieldset>
-    <legend>Formulario</legend>
-
+  <form action="sesiones-2-13-2.php" method="get">
     <p>Escriba algún nombre: <input type="text" name="nombre" size="30" maxlength="30" /></p>
 
-    <p><input type="submit" value="Añadir" />
-      <input type="reset" value="Borrar" /></p>
-  </fieldset>
-</form>
+    <p>
+      <input type="submit" value="Añadir" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
 <?php
 if (!count($_SESSION)) {
-    print "<p>Todavía no se han introducido nombres.</p>\n";
+    print "  <p>Todavía no se han introducido nombres.</p>\n";
 } else {
-    print "<p>Datos introducidos:</p>\n\n";
+    print "  <p>Datos introducidos:</p>\n";
+    print "\n";
     sort($_SESSION["nombres"]);
-    print "<ul>\n";
+    print "  <ul>\n";
     foreach ($_SESSION["nombres"] as $valor) {
-        print "  <li>$valor</li>\n";
+        print "    <li>$valor</li>\n";
     }
-    print "</ul>\n\n";
-    print "<p><a href=\"sesiones-2-13-2.php?accion=Cerrar\">Cerrar sesión "
+    print "  </ul>\n";
+    print "\n";
+    print "  <p><a href=\"sesiones-2-13-2.php?accion=Cerrar\">Cerrar sesión "
         . "(se perderán los datos almacenados).</a></p>\n";
 }
-
 ?>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-16">16 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

@@ -1,11 +1,13 @@
 <?php
+/* EJERCICIO INCOMPLETO POR TERMINAR */
+
 /**
- * Sesiones (2) 4-1 - sesiones-2-14_1.php
+ * Sesiones (2) 14 - sesiones-2-14_1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-16
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,6 +23,8 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /* EJERCICIO INCOMPLETO POR TERMINAR */
 
 function recoge($var)
 {
@@ -46,11 +50,11 @@ function recogeMatriz($var)
 session_name("sesiones_2_12");
 session_start();
 
-$accion       = recoge("accion");
-$nombre       = recoge("nombre");
-$casillas     = recogeMatriz("c");
-$nombreOk     = false;
-$accionOk     = false;
+$accion   = recoge("accion");
+$nombre   = recoge("nombre");
+$casillas = recogeMatriz("c");
+$nombreOk = false;
+$accionOk = false;
 
 if ($accion=="Cerrar") {
     session_destroy();
@@ -67,26 +71,26 @@ if ($accion=="Cerrar") {
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Almacenamiento y borrado de datos en sesión. Sesiones (2).
+  <title>Almacenamiento y borrado de datos en sesión. Sesiones (2) 014. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Almacenamiento y borrado de datos en sesión</h1>
+  <h1>Almacenamiento y borrado de datos en sesión</h1>
 
 <?php
 
 if ($nombre == "") {
-    print "<p class=\"aviso\">No ha escrito el nombre.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el nombre.</p>\n";
 } else {
     $nombreOk = true;
 }
 
 $accionOk   = ($accion == "Añadir" || $accion == "Cerrar" || $accion == "Eliminar" || $accion == "");
 if (!$accionOk) {
-    print "<p class=\"aviso\">Error en la opción elegida. Elija de nuevo, por favor.</p>";
+    print "  <p class=\"aviso\">Error en la opción elegida. Elija de nuevo, por favor.</p>";
 }
 
 print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">
@@ -137,7 +141,7 @@ if (!count($_SESSION)) {
 <footer>
   <p class="ultmod">
     Última modificación de esta página:
-    <time datetime="2015-11-16">16 de noviembre de 2015</time></p>
+    <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
       <p class="licencia">
         Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
