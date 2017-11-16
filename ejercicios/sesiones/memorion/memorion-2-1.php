@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-13
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,44 +25,51 @@
 session_name("memorion-2");
 session_start();
 
-if (!isset($_SESSION["numeroFichas"])) {
-    $_SESSION["numeroFichas"] = 10;
+if (!isset($_SESSION["numeroDibujos"])) {
+    $_SESSION["numeroDibujos"] = 5;
 }
-for ($i = 128000; $i <= 128060; $i++) {
-    $valores[] = $i;
-}
-shuffle($valores);
-for ($i = 0; $i < $_SESSION["numeroFichas"]; $i++) {
-    $fichas[$i] = $valores[$i];
+
+if (!isset($_SESSION["dibujos"])) {
+    for ($i = 128000; $i <= 128060; $i++) {
+        $valores[] = $i;
+    }
+    shuffle($valores);
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = $valores[$i];
+    }
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Memoríón (2). Sesiones.
+  <title>Memoríón (2). Memorión. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
+  <h1>Memorión (2)</h1>
+
+  <form action="memorion-2-2.php">
+    <p>
+      <button type="submit" name="accion" value="nueva">Nueva partida</button>
+      <button type="submit" name="accion" value="numero">Cambiar número de dibujos</button>
+    </p>
+
+    <p>
 <?php
-print "  <h1>$_SESSION[numeroFichas] fichas distintas</h1>\n";
-print "\n";
-print "  <p><a href=\"memorion-2-2.php\">Cambiar número de fichas</a></p>\n";
-print "\n";
-print "  <p style=\"font-size: 400%;\">\n";
-for ($i = 0; $i < $_SESSION["numeroFichas"]; $i++) {
-    print "    &#$fichas[$i]; \n";
-}
-print "  </p>\n";
+for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+    print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";}
 ?>
+    </p>
+  </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-13">13 de noviembre de 2017</time></p>
+      <time datetime="2017-11-16">16 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

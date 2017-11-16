@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-13
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,55 +25,62 @@
 session_name("memorion-3");
 session_start();
 
-if (!isset($_SESSION["numeroFichas"])) {
-    $_SESSION["numeroFichas"] = 10;
+if (!isset($_SESSION["numeroDibujos"])) {
+    $_SESSION["numeroDibujos"] = 5;
 }
 
-if (!isset($_SESSION["fichas"])) {
+if (!isset($_SESSION["dibujos"])) {
     for ($i = 128000; $i <= 128060; $i++) {
         $valores[] = $i;
     }
     shuffle($valores);
-    for ($i = 0; $i < $_SESSION["numeroFichas"]; $i++) {
-        $_SESSION["fichas"][$i] = $valores[$i];
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = $valores[$i];
+        $_SESSION["lado"][$i]   = "dorso";
     }
-    for ($i = 0; $i < $_SESSION["numeroFichas"]; $i++) {
-        $_SESSION["fichas"][$_SESSION["numeroFichas"]+$i] = $valores[$i];
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$_SESSION["numeroDibujos"]+$i] = $valores[$i];
+        $_SESSION["lado"][$_SESSION["numeroDibujos"]+$i]   = "dorso";
     }
-    shuffle($_SESSION["fichas"]);
+    shuffle($_SESSION["dibujos"]);
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Memoríón (3). Sesiones.
+  <title>Memoríón (3). Memorión. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
+  <h1>Memorión (3)</h1>
+
+  <form action="memorion-3-2.php">
+    <p>
+      <button type="submit" name="accion" value="nueva">Nueva partida</button>
+      <button type="submit" name="accion" value="numero">Cambiar número de dibujos</button>
+    </p>
+
+    <p>
 <?php
-print "  <h1>$_SESSION[numeroFichas] parejas de fichas distintas</h1>\n";
-print "\n";
-print "  <form action=\"memorion-3-2.php\">\n";
-print "    <p>\n";
-print "      <button type=\"submit\" name=\"accion\" value=\"numero\">Cambiar número de fichas</button> \n";
-print "      <button type=\"submit\" name=\"accion\" value=\"nuevo\">Cambiar imagenes</button> \n";
-print "    </p>\n";
-print "\n";
-print "  <p style=\"font-size: 400%;\">\n";
-for ($i = 0; $i < 2*$_SESSION["numeroFichas"]; $i++) {
-    print "    &#{$_SESSION["fichas"][$i]}; \n";
+for ($i = 0; $i < 2*$_SESSION["numeroDibujos"]; $i++) {
+    if ($_SESSION["lado"][$i] == "dibujo") {
+        print "      <button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";
+    } else {
+        print "      <button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\">&#10026;</button> \n";
+    }
 }
-print "  </p>\n";
 ?>
+    </p>
+  </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-13">13 de noviembre de 2017</time></p>
+      <time datetime="2017-11-16">16 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Memorión (4) - memorion-4-1.php
+ * Memorión (1) - memorion-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("memorion-4");
+session_name("memorion-1");
 session_start();
 
 if (!isset($_SESSION["numeroDibujos"])) {
-    $_SESSION["numeroDibujos"] = 5;
+    $_SESSION["numeroDibujos"] = rand(4, 20);
 }
 
 if (!isset($_SESSION["dibujos"])) {
@@ -36,44 +36,31 @@ if (!isset($_SESSION["dibujos"])) {
     shuffle($valores);
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
         $_SESSION["dibujos"][$i] = $valores[$i];
-        $_SESSION["lado"][$i]   = "dorso";
     }
-    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$_SESSION["numeroDibujos"]+$i] = $valores[$i];
-        $_SESSION["lado"][$_SESSION["numeroDibujos"]+$i]   = "dorso";
-    }
-    shuffle($_SESSION["dibujos"]);
-    $_SESSION["primera"] = -1;
-    $_SESSION["segunda"] = -1;
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Memoríón (4). Memorión. Sesiones.
+  <title>Memoríón (1). Memorión. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-  <h1>Memorión (4)</h1>
+  <h1>Memorión (1)</h1>
 
-  <form action="memorion-4-2.php">
+  <form action="memorion-1-2.php">
     <p>
       <button type="submit" name="accion" value="nueva">Nueva partida</button>
-      <button type="submit" name="accion" value="numero">Cambiar número de dibujos</button>
     </p>
 
-    <p>
+    <p style="font-size: 400%;">
 <?php
-for ($i = 0; $i < 2*$_SESSION["numeroDibujos"]; $i++) {
-    if ($_SESSION["primera"] == $i || $_SESSION["segunda"] == $i) {
-        print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";
-    } else {
-        print "      <button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\">&#10026;</button> \n";
-    }
+for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+    print "      &#{$_SESSION["dibujos"][$i]}; \n";
 }
 ?>
     </p>

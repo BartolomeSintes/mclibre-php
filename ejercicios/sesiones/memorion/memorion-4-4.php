@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-13
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,10 +22,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("memorion-3");
+session_name("memorion-4");
 session_start();
 
-if (!isset($_SESSION["numeroFichas"])) {
+if (!isset($_SESSION["numeroDibujos"])) {
     header("Location:memorion-4-1.php");
     exit;
 }
@@ -38,31 +38,31 @@ function recoge($var)
     return $tmp;
 }
 
-$numeroFichas = recoge("numeroFichas");
-$numeroFichasMinimo = 2;
-$numeroFichasMaximo = 61;
+$numeroDibujos = recoge("numeroDibujos");
+$numeroDibujosMinimo = 2;
+$numeroDibujosMaximo = 61;
 
-$numeroFichasOk = false;
+$numeroDibujosOk = false;
 
-if ($numeroFichas == "") {
+if ($numeroDibujos == "") {
     header("Location:memorion-4-1.php");
     exit;
-} elseif (!is_numeric($numeroFichas)) {
+} elseif (!is_numeric($numeroDibujos)) {
     header("Location:memorion-4-1.php");
     exit;
-} elseif (!ctype_digit($numeroFichas)) {
+} elseif (!ctype_digit($numeroDibujos)) {
     header("Location:memorion-4-1.php");
     exit;
-} elseif ($numeroFichas < $numeroFichasMinimo || $numeroFichas > $numeroFichasMaximo) {
+} elseif ($numeroDibujos < $numeroDibujosMinimo || $numeroDibujos > $numeroDibujosMaximo) {
     header("Location:memorion-4-1.php");
     exit;
 } else {
-    $numeroFichasOk = true;
+    $numeroDibujosOk = true;
 }
 
-if ($numeroFichasOk) {
-    $_SESSION["numeroFichas"] = $numeroFichas;
-    unset($_SESSION["fichas"]);
+if ($numeroDibujosOk) {
+    $_SESSION["numeroDibujos"] = $numeroDibujos;
+    unset($_SESSION["dibujos"]);
     header("Location:memorion-4-1.php");
     exit;
 }

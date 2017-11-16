@@ -1,6 +1,6 @@
 <?php
 /**
- * Memorión (2) - memorion-2-2.php
+ * Memorión (5) - memorion-5-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("memorion-2");
+session_name("memorion-5");
 session_start();
 
 if (!isset($_SESSION["numeroDibujos"])) {
-    header("Location:memorion-2-1.php");
+    header("Location:memorion-5-1.php");
     exit;
 }
 
@@ -38,16 +38,31 @@ function recoge($var)
     return $tmp;
 }
 
-$accion = recoge("accion");
+$numeroDibujos = recoge("numeroDibujos");
+$numeroDibujosMinimo = 2;
+$numeroDibujosMaximo = 61;
 
-if ($accion == "nueva") {
-    unset($_SESSION["dibujos"]);
-    header("Location:memorion-2-1.php");
+$numeroDibujosOk = false;
+
+if ($numeroDibujos == "") {
+    header("Location:memorion-5-1.php");
     exit;
-} elseif ($accion == "numero") {
-    header("Location:memorion-2-3.php");
+} elseif (!is_numeric($numeroDibujos)) {
+    header("Location:memorion-5-1.php");
     exit;
+} elseif (!ctype_digit($numeroDibujos)) {
+    header("Location:memorion-5-1.php");
+    exit;
+} elseif ($numeroDibujos < $numeroDibujosMinimo || $numeroDibujos > $numeroDibujosMaximo) {
+    header("Location:memorion-5-1.php");
+    exit;
+} else {
+    $numeroDibujosOk = true;
 }
 
-header("Location:memorion-2-1.php");
-exit;
+if ($numeroDibujosOk) {
+    $_SESSION["numeroDibujos"] = $numeroDibujos;
+    unset($_SESSION["dibujos"]);
+    header("Location:memorion-5-1.php");
+    exit;
+}

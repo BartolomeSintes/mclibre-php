@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-13
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 session_name("memorion-3");
 session_start();
 
-if (!isset($_SESSION["numeroFichas"])) {
+if (!isset($_SESSION["numeroDibujos"])) {
     header("Location:memorion-3-1.php");
     exit;
 }
@@ -39,23 +39,44 @@ function recoge($var)
 }
 
 $accion = recoge("accion");
+$gira   = recoge("gira");
 
 $accionOk = false;
+$giraOk   = false;
 
-if ($accion != "numero" && $accion != "nuevo") {
+if ($gira == "") {
+} elseif (!is_numeric($gira)) {
+} elseif (!ctype_digit($gira)) {
+} elseif ($gira < 0 || $gira > 2 * $_SESSION["numeroDibujos"] - 1) {
+} else {
+    $giraOk = true;
+}
+
+if ($accion != "numero" && $accion != "nueva" && !$giraOk) {
     header("Location:memorion-3-1.php");
     exit;
 } else {
     $accionOk = true;
 }
 
-if ($accionOk) {
+if ($giraOk || $accionOk) {
     if ($accion == "numero") {
         header("Location:memorion-3-3.php");
         exit;
-    } elseif ($accion == "nuevo") {
-        unset($_SESSION["fichas"]);
+    } elseif ($accion == "nueva") {
+        unset($_SESSION["dibujos"]);
+        header("Location:memorion-3-1.php");
+        exit;
+    } else {
+        if ($_SESSION["lado"][$gira] == "dibujo") {
+            $_SESSION["lado"][$gira] = "dorso";
+        } else {
+            $_SESSION["lado"][$gira] = "dibujo";
+        }
         header("Location:memorion-3-1.php");
         exit;
     }
+} else {
+    header("Location:memorion-3-1.php");
+    exit;
 }

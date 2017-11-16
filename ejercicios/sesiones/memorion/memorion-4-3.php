@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-13
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 session_name("memorion-4");
 session_start();
 
-if (!isset($_SESSION["numeroFichas"])) {
+if (!isset($_SESSION["numeroDibujos"])) {
     header("Location:memorion-4-1.php");
     exit;
 }
@@ -34,7 +34,7 @@ if (!isset($_SESSION["numeroFichas"])) {
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Memoríón (3). Sesiones.
+  <title>Memoríón (4). Memorión. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
@@ -47,7 +47,7 @@ if (!isset($_SESSION["numeroFichas"])) {
     <p>Indique el número de figuras distintas a mostrar:</p>
 
 <?php
-print "    <p><input name=\"numeroFichas\" type=\"number\" value=\"$_SESSION[numeroFichas]\" min=\"2\" max=\"61\" /></p>\n";
+print "    <p><input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\" /></p>\n";
 ?>
 
     <p>
@@ -59,7 +59,7 @@ print "    <p><input name=\"numeroFichas\" type=\"number\" value=\"$_SESSION[num
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-13">13 de noviembre de 2017</time></p>
+      <time datetime="2017-11-16">16 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

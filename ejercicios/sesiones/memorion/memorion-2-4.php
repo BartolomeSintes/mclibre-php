@@ -1,6 +1,6 @@
 <?php
 /**
- * Memorión (2) - memorion-2-2.php
+ * Memorión (2) - memorion-2-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -38,16 +38,31 @@ function recoge($var)
     return $tmp;
 }
 
-$accion = recoge("accion");
+$numeroDibujos = recoge("numeroDibujos");
+$numeroDibujosMinimo = 2;
+$numeroDibujosMaximo = 61;
 
-if ($accion == "nueva") {
+$numeroDibujosOk = false;
+
+if ($numeroDibujos == "") {
+    header("Location:memorion-2-1.php");
+    exit;
+} elseif (!is_numeric($numeroDibujos)) {
+    header("Location:memorion-2-1.php");
+    exit;
+} elseif (!ctype_digit($numeroDibujos)) {
+    header("Location:memorion-2-1.php");
+    exit;
+} elseif ($numeroDibujos < $numeroDibujosMinimo || $numeroDibujos > $numeroDibujosMaximo) {
+    header("Location:memorion-2-1.php");
+    exit;
+} else {
+    $numeroDibujosOk = true;
+}
+
+if ($numeroDibujosOk) {
+    $_SESSION["numeroDibujos"] = $numeroDibujos;
     unset($_SESSION["dibujos"]);
     header("Location:memorion-2-1.php");
     exit;
-} elseif ($accion == "numero") {
-    header("Location:memorion-2-3.php");
-    exit;
 }
-
-header("Location:memorion-2-1.php");
-exit;

@@ -1,11 +1,11 @@
 <?php
 /**
- * Memorión (1) - memorion-1-1.php
+ * Memorión (5) - memorion-5-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-13
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,40 +21,45 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+session_name("memorion-5");
+session_start();
+
+if (!isset($_SESSION["numeroDibujos"])) {
+    header("Location:memorion-5-1.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Memoríón (1). Sesiones.
+  <title>Memoríón (5). Memorión. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
+  <h1>Configurar juego</h1>
+
+  <form action="memorion-5-4.php">
+    <p>Indique el número de figuras distintas a mostrar:</p>
+
 <?php
-$numeroFichas = rand(2, 20);;
-for ($i = 128000; $i <= 128060; $i++) {
-    $valores[] = $i;
-}
-shuffle($valores);
-for ($i = 0; $i <= $numeroFichas; $i++) {
-    $fichas[$i] = $valores[$i];
-}
-print "  <h1>$numeroFichas fichas distintas</h1>\n";
-print "\n";
-print "  <p style=\"font-size: 400%;\">\n";
-for ($i = 0; $i < $numeroFichas; $i++) {
-    print "    &#$fichas[$i]; \n";
-}
-print "  </p>\n";
+print "    <p><input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\" /></p>\n";
 ?>
+
+    <p>
+      <input type="submit" value="Actualizar" />
+      <input type="reset" value="Reiniciar" />
+    </p>
+  </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-13">13 de noviembre de 2017</time></p>
+      <time datetime="2017-11-16">16 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

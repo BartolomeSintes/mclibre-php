@@ -1,6 +1,6 @@
 <?php
 /**
- * Memorión (2) - memorion-2-2.php
+ * Memorión (1) - memorion-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("memorion-2");
+session_name("memorion-1");
 session_start();
 
 if (!isset($_SESSION["numeroDibujos"])) {
-    header("Location:memorion-2-1.php");
+    header("Location:memorion-1-1.php");
     exit;
 }
 
@@ -41,13 +41,9 @@ function recoge($var)
 $accion = recoge("accion");
 
 if ($accion == "nueva") {
+    unset($_SESSION["numeroDibujos"]);
     unset($_SESSION["dibujos"]);
-    header("Location:memorion-2-1.php");
-    exit;
-} elseif ($accion == "numero") {
-    header("Location:memorion-2-3.php");
-    exit;
 }
 
-header("Location:memorion-2-1.php");
+header("Location:memorion-1-1.php");
 exit;

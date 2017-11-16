@@ -1,6 +1,6 @@
 <?php
 /**
- * Memorión (4) - memorion-4-2.php
+ * Memorión (5) - memorion-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("memorion-4");
+session_name("memorion-5");
 session_start();
 
 if (!isset($_SESSION["numeroDibujos"])) {
-    header("Location:memorion-4-1.php");
+    header("Location:memorion-5-1.php");
     exit;
 }
 
@@ -53,7 +53,7 @@ if ($gira == "") {
 }
 
 if ($accion != "numero" && $accion != "nueva" && !$giraOk) {
-    header("Location:memorion-4-1.php");
+    header("Location:memorion-5-1.php");
     exit;
 } else {
     $accionOk = true;
@@ -61,11 +61,11 @@ if ($accion != "numero" && $accion != "nueva" && !$giraOk) {
 
 if ($giraOk || $accionOk) {
     if ($accion == "numero") {
-        header("Location:memorion-4-3.php");
+        header("Location:memorion-5-3.php");
         exit;
     } elseif ($accion == "nueva") {
         unset($_SESSION["dibujos"]);
-        header("Location:memorion-4-1.php");
+        header("Location:memorion-5-1.php");
         exit;
     } else {
         if ($_SESSION["lado"][$gira] == "dorso") {
@@ -74,17 +74,20 @@ if ($giraOk || $accionOk) {
                 $_SESSION["primera"] = $gira;
             } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] == -1) {
                 $_SESSION["segunda"] = $gira;
+                $_SESSION["jugadas"] += 1;
             } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] != -1) {
-                $_SESSION["lado"][$_SESSION["primera"]] = "dorso";
-                $_SESSION["lado"][$_SESSION["segunda"]] = "dorso";
+                if ($_SESSION["dibujos"][$_SESSION["primera"]] != $_SESSION["dibujos"][$_SESSION["segunda"]]) {
+                    $_SESSION["lado"][$_SESSION["primera"]] = "dorso";
+                    $_SESSION["lado"][$_SESSION["segunda"]] = "dorso";
+                }
                 $_SESSION["primera"] = $gira;
                 $_SESSION["segunda"] = -1;
             }
         }
-        header("Location:memorion-4-1.php");
+        header("Location:memorion-5-1.php");
         exit;
     }
 } else {
-    header("Location:memorion-4-1.php");
+    header("Location:memorion-5-1.php");
     exit;
 }

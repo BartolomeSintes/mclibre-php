@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-13
+ * @version   2017-11-16
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,43 +25,48 @@
 session_name("memorion-2");
 session_start();
 
-if (!isset($_SESSION["numeroFichas"])) {
+if (!isset($_SESSION["numeroDibujos"])) {
     header("Location:memorion-2-1.php");
     exit;
 }
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Memoríón (2). Memorión. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
+<body>
+  <h1>Configurar juego</h1>
 
-$numeroFichas = recoge("numeroFichas");
-$numeroFichasMinimo = 2;
-$numeroFichasMaximo = 61;
+  <form action="memorion-2-4.php">
+    <p>Indique el número de figuras distintas a mostrar:</p>
 
-$numeroFichasOk = false;
+<?php
+print "    <p><input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\" /></p>\n";
+?>
 
-if ($numeroFichas == "") {
-    header("Location:memorion-2-1.php");
-    exit;
-} elseif (!is_numeric($numeroFichas)) {
-    header("Location:memorion-2-1.php");
-    exit;
-} elseif (!ctype_digit($numeroFichas)) {
-    header("Location:memorion-2-1.php");
-    exit;
-} elseif ($numeroFichas < $numeroFichasMinimo || $numeroFichas > $numeroFichasMaximo) {
-    header("Location:memorion-2-1.php");
-    exit;
-} else {
-    $numeroFichasOk = true;
-}
+    <p>
+      <input type="submit" value="Actualizar" />
+      <input type="reset" value="Reiniciar" />
+    </p>
+  </form>
 
-if ($numeroFichasOk) {
-    $_SESSION["numeroFichas"] = $numeroFichas;
-    header("Location:memorion-2-1.php");
-    exit;
-}
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-16">16 de noviembre de 2017</time></p>
+
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
+</html>
