@@ -227,8 +227,6 @@ session_start();
 
     <p>En principio, cuando el navegador se conecta a un servidor, la sesión es única, es decir, todas las páginas del mismo dominio compartirán la misma matriz $_SESSION. La función <a href="http://php.net/manual/en/function.session-name.php"><span class="php-fun">session_name()</span></a> permite establecer un nombre de sesión específico, de manera que todas las páginas que declaren el mismo nombre de sesión accederán a la misma matriz $_SESSION y las que tengan nombres de sesión distintos accederán a matrices $_SESSION diferentes.</p>
 
-    <p>El nombre de la sesión puede incluir caracteres alfanuméricos (minúsculas o mayúsculas), números, comas (,) o guiones (-), pero no puede contener únicamente números.</p>
-
     <p>En el ejemplo siguiente, los dos primeros programas crean la misma variable en $_SESSION, pero como se ha utilizado la función <span class="php-fun">session_name()</span> con nombres diferentes, realmente lo hacen en matrices $_SESSION distintas.</p>
 
     <div class="filaflex">
@@ -299,9 +297,17 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
       </div>
     </div>
 
+    <hr class="corta" />
+
+    <p>El nombre de sesión distingue entre minúsculas y mayúsculas, es decir, dos sesiones con el mismo nombre, pero uno en minúsculas y otro en mayúsculas, son dos sesiones distintas.</p>
+
+    <p>El nombre de la sesión no puede contener únicamente números, ni tampoco puede contener los caracteres punto (.), ampersand (&amp;), más (+), corchete izquierdo ([) ni almohadilla (#).</p>
+
+    <p><strong>Nota</strong>: No he encontrado una lista oficial de caracteres no admitidos. Los caracteres . &amp; + [ y # los he encontrado probando manualmente, pero es posible que haya otros caracteres problemáticos.</p>
+
     <p>Referencia:</p>
     <ul>
-      <li><a href="http://php.net/manual/es/function.session-id.php#116836">Caracteres admitidos en el nombre de sesión</a></li>
+      <li><a href="http://php.net/manual/es/function.session-id.php#116836">Caracteres admitidos en el identificador de sesión</a>, que no es lo mismo que el nombre de sesión.</li>
     </ul>
   </section>
 
@@ -498,7 +504,7 @@ if (isset($_SESSION["nombre"])) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
