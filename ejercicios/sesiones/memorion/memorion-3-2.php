@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-16
+ * @version   2017-11-18
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,15 +21,18 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+// Nos unimos a la sesión
 session_name("memorion-3");
 session_start();
 
+// Si no está guardado en la sesión el número de dibujos ...
 if (!isset($_SESSION["numeroDibujos"])) {
+    // ... redirigimos a la primera página
     header("Location:memorion-3-1.php");
     exit;
 }
 
+// Funciones auxiliares
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -38,12 +41,15 @@ function recoge($var)
     return $tmp;
 }
 
+// Recogemos los datos (botón y carta)
 $accion = recoge("accion");
 $gira   = recoge("gira");
 
+// Variables auxiliares comprobación de datos
 $accionOk = false;
 $giraOk   = false;
 
+// Validamos el dato recibido, sin hacer nada si el dato no es válido
 if ($gira == "") {
 } elseif (!is_numeric($gira)) {
 } elseif (!ctype_digit($gira)) {
@@ -52,30 +58,41 @@ if ($gira == "") {
     $giraOk = true;
 }
 
-if ($accion != "numero" && $accion != "nueva" && !$giraOk) {
-    header("Location:memorion-3-1.php");
-    exit;
+// Validamos el dato recibido, sin hacer nada si el dato no es válido
+if ($accion != "numero" && $accion != "nueva") {
 } else {
     $accionOk = true;
 }
 
+// Si el dato es válido ...
 if ($giraOk || $accionOk) {
-    if ($accion == "numero") {
-        header("Location:memorion-3-3.php");
-        exit;
-    } elseif ($accion == "nueva") {
+    // Si se ha pulsado "Nueva partida" ...
+    if ($accion == "nueva") {
+        // ... borramos la partida actual
         unset($_SESSION["dibujos"]);
+        // ... y redirigimos a la primera página
         header("Location:memorion-3-1.php");
         exit;
+    // Si se ha pulsado "Cambiar número de dibujos" ...
+    } elseif ($accion == "numero") {
+        // ... redirigimos al formulario correspondiente
+        header("Location:memorion-3-3.php");
+        exit;
+    // Si se ha pulsado una ficha ...
     } else {
+        // Si se mostraba el dibujo ...
         if ($_SESSION["lado"][$gira] == "dibujo") {
+            // ... mostramos el dorso
             $_SESSION["lado"][$gira] = "dorso";
         } else {
+            // y si no, mostramos el dibujo
             $_SESSION["lado"][$gira] = "dibujo";
         }
+        // Redirigimos a la primera página
         header("Location:memorion-3-1.php");
         exit;
     }
+// ... y si no, redirigimos a la primera página
 } else {
     header("Location:memorion-3-1.php");
     exit;

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-16
+ * @version   2017-11-18
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,29 +22,46 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Nos unimos a la sesión
 session_name("memorion-5");
 session_start();
 
+// Si no está guardado en la sesión el número de dibujos ....
 if (!isset($_SESSION["numeroDibujos"])) {
+    // ... guardamos el número de dibujos en la sesión
     $_SESSION["numeroDibujos"] = 5;
 }
 
+// Si no están guardado en la sesión los dibujos de la partida ....
 if (!isset($_SESSION["dibujos"])) {
+    // ... creamos una matriz con todos los valores posibles (61 valores)
     for ($i = 128000; $i <= 128060; $i++) {
         $valores[] = $i;
     }
+
+    // Los barajamos
     shuffle($valores);
+
+    // Cogemos los N primeros (N es el número de dibujos)
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
         $_SESSION["dibujos"][$i] = $valores[$i];
+        // Las fichas estarán boca abajo
         $_SESSION["lado"][$i]   = "dorso";
     }
+
+    // Duplicamos los valores (creamos valores de N a 2N-1)
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$_SESSION["numeroDibujos"]+$i] = $valores[$i];
-        $_SESSION["lado"][$_SESSION["numeroDibujos"]+$i]   = "dorso";
+        $_SESSION["dibujos"][$_SESSION["numeroDibujos"] + $i] = $valores[$i];
+        $_SESSION["lado"][$_SESSION["numeroDibujos"] + $i]    = "dorso";
     }
+
+    // Los barajamos de nuevo
     shuffle($_SESSION["dibujos"]);
+
+    // No se ha elegido ni la primera carta ni la segunda de la jugada
     $_SESSION["primera"] = -1;
     $_SESSION["segunda"] = -1;
+    // No se ha realizado ninguna jugada
     $_SESSION["jugadas"] = 0;
 }
 ?>
@@ -70,15 +87,17 @@ if (!isset($_SESSION["dibujos"])) {
     <p>
 <?php
 print "    <p>\n";
+// Mostramos los dibujos seleccionados en botones
 for ($i = 0; $i < 2*$_SESSION["numeroDibujos"]; $i++) {
+    // La ficha puede estar boca arriba (se ve el dibujo) ...
     if ($_SESSION["lado"][$i] == "dibujo") {
         print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";
-    } else {
+    } else { // ... o boca abajo (se ve el dibujo común)
         print "      <button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\">&#10026;</button> \n";
     }
 }
 print "    <p>\n";
-
+// Mostramos el número de jugadas realizadas
 print "    <p>Jugadas realizadas: $_SESSION[jugadas]</p>\n";
 ?>
   </form>
@@ -86,7 +105,7 @@ print "    <p>Jugadas realizadas: $_SESSION[jugadas]</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-16">16 de noviembre de 2017</time></p>
+      <time datetime="2017-11-18">18 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

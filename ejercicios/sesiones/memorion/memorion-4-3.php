@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-16
+ * @version   2017-11-18
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,10 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Nos unimos a la sesión
 session_name("memorion-4");
 session_start();
 
+// Si no están guardado en la sesión los dibujos de la partida ....
 if (!isset($_SESSION["numeroDibujos"])) {
+    // ... redirigimos a la primera página
     header("Location:memorion-4-1.php");
     exit;
 }
@@ -47,6 +50,7 @@ if (!isset($_SESSION["numeroDibujos"])) {
     <p>Indique el número de figuras distintas a mostrar:</p>
 
 <?php
+// Mostramos el control numérico con el número de dibujos actual
 print "    <p><input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\" /></p>\n";
 ?>
 
@@ -59,7 +63,7 @@ print "    <p><input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[nu
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-16">16 de noviembre de 2017</time></p>
+      <time datetime="2017-11-18">18 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
