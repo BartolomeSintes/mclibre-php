@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-18
+ * @version   2017-11-20
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -71,7 +71,8 @@ if (!isset($_SESSION["dibujos"])) {
 <?php
 // Mostramos los dibujos seleccionados en botones
 for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-    print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";}
+    print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";
+}
 ?>
     </p>
   </form>
@@ -79,7 +80,7 @@ for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-18">18 de noviembre de 2017</time></p>
+      <time datetime="2017-11-20">20 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

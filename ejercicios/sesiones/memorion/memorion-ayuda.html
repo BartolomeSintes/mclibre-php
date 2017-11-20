@@ -43,7 +43,8 @@
       <li>Este programa utilizará sesiones y guardará tanto el número de dibujos como los dibujos mostrados.
         <div class="codigo">
           <pre>
-<code class="language-php">session_name("memorion-1");
+<code class="language-php">// Nos unimos a la sesión
+session_name("memorion-1");
 session_start();</code>
 </pre>
         </div>
@@ -52,33 +53,49 @@ session_start();</code>
       <li>El número de imágenes estará entre 4 y 20.
         <div class="codigo">
           <pre>
-<code class="language-php">if (!isset($_SESSION["numeroDibujos"])) {
+<code class="language-php">// Si no está guardado en la sesión el número de dibujos ....
+if (!isset($_SESSION["numeroDibujos"])) {
+  // ... guardamos el número de dibujos en la sesión
   $_SESSION["numeroDibujos"] = rand(4, 20);
 }</code>
 </pre>
         </div>
       </li>
 
+      <li>Las imágenes serán entidades numéricas del rango entre 128000 (&amp;#128000; = <span style="font-size: 400%">&#128000;</span>) y 28060 (&amp;#128060; = <span style="font-size: 400%">&#128060;</span>).</li>
       <li>Las imágenes serán todas distintas.
         <div class="codigo">
           <pre>
-<code class="language-php"></code>
+<code class="language-php">// Si no están guardado en la sesión los dibujos de la partida ....
+if (!isset($_SESSION["dibujos"])) {
+    // ... creamos una matriz con todos los valores posibles (61 valores)
+    for ($i = 128000; $i &lt;= 128060; $i++) {
+        $valores[] = $i;
+    }
+
+    // Los barajamos
+    shuffle($valores);
+
+    // Cogemos los N primeros (N es el número de dibujos)
+    for ($i = 0; $i &lt; $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = $valores[$i];
+    }
+}</code>
 </pre>
         </div>
       </li>
 
-      <li>Las imágenes serán entidades numéricas del rango entre 128000 (&amp;#128000; = <span style="font-size: 400%">&#128000;</span>) y 28060 (&amp;#128060; = <span style="font-size: 400%">&#128060;</span>).
-        <div class="codigo">
-          <pre>
-<code class="language-php"></code>
-</pre>
-        </div>
-      </li>
+      <li>Al actualizar la primera página se volverán a mostrar las mismas imágenes.</li>
 
-      <li>Al actualizar la página se volverán a mostrar las mismas imágenes.
+      <li>Si se intenta acceder a la segunda página sin pasar por la primera página o se intenta enviar controles o valores distintos a los permitidos, se redirigirá automáticamente a la primera página, sin indicar nada al usuario.
         <div class="codigo">
           <pre>
-<code class="language-php"></code>
+<code class="language-php">// Si no está guardado en la sesión el número de dibujos ...
+if (!isset($_SESSION["numeroDibujos"])) {
+    // ... redirigimos a la primera página
+    header("Location:memorion-1-1.php");
+    exit;
+}</code>
 </pre>
         </div>
       </li>
@@ -86,15 +103,15 @@ session_start();</code>
       <li>Al hacer clic en el botón "Nueva partida" se cambiarán las imágenes y su número.
         <div class="codigo">
           <pre>
-<code class="language-php"></code>
-</pre>
-        </div>
-      </li>
-
-      <li>Si se intenta acceder a la segunda página sin pasar por la primera página o se intenta enviar controles o valores distintos a los permitidos, se redirigirá automáticamente a la primera página, sin indicar nada al usuario.
-        <div class="codigo">
-          <pre>
-<code class="language-php"></code>
+<code class="language-php">// Si se ha pulsado "Nueva partida" ...
+if ($accion == "nueva") {
+    // ... borramos la partida actual
+    unset($_SESSION["numeroDibujos"]);
+    unset($_SESSION["dibujos"]);
+    // ... y redirigimos a la primera página
+    header("Location:memorion-1-1.php");
+    exit;
+}</code>
 </pre>
         </div>
       </li>
@@ -107,20 +124,118 @@ session_start();</code>
 
     <p>Añada al programa anterior dos páginas para permitir al usuario modificar el número de imágenes.</p>
     <ul>
+      <li>Inicialmente, las fichas están "boca abajo", es decir, no se ven las imágenes.</li>
+
       <li>La primera vez que se cargue la página principal, se mostrarán 5 imágenes.
         <div class="codigo">
           <pre>
-<code class="language-php"></code>
+<code class="language-php">// Si no está guardado en la sesión el número de dibujos ....
+if (!isset($_SESSION["numeroDibujos"])) {
+    // ... guardamos el número de dibujos en la sesión
+    $_SESSION["numeroDibujos"] = 5;
+}</code>
 </pre>
         </div>
       </li>
 
-      <li>La imágenes estarán incluidas en botones (de tipo <span class="html-atri-valor">button</span>).</li>
-      <li>Al hacer clic en el botón, se redirigirá al formulario de configuración.</li>
-      <li>El formulario mostrará en el control el número actual de imágenes.</li>
-      <li>El número de imágenes se podrá elegir entre 2 y 61.</li>
-      <li>Si se envían valores incorrectos, se redirigirá a la primera página, sin necesidad de indicar nada al usuario.</li>
-      <li>Si se intenta acceder a la tercera o cuarta página sin pasar por la primera página o se intenta enviar controles o valores distintos a los permitidos, se redirigirá automáticamente a la primera página, sin indicar nada al usuario.</li>
+      <li>La imágenes estarán incluidas en botones (de tipo <span class="html-atri-valor">button</span>).
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Mostramos los dibujos seleccionados en botones
+for ($i = 0; $i &lt; $_SESSION["numeroDibujos"]; $i++) {
+    print "      &lt;button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\"&gt;&#{$_SESSION["dibujos"][$i]};&lt;/button&gt; \n";
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>Al hacer clic en el botón, se redirigirá al formulario de configuración.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Si se ha pulsado "Nueva partida" ...
+if ($accion == "nueva") {
+    // ... borramos la partida actual
+    unset($_SESSION["dibujos"]);
+    // ... y redirigimos a la primera página
+    header("Location:memorion-2-1.php");
+    exit;
+// Si se ha pulsado "Cambiar número de dibujos" ...
+} elseif ($accion == "numero") {
+    // ... redirigimos al formulario correspondiente
+    header("Location:memorion-2-3.php");
+    exit;
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>El formulario mostrará en el control el número actual de imágenes.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Mostramos el control numérico con el número de dibujos actual
+print "    &lt;p&gt;&lt;input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\" /&gt;&lt;/p&gt;\n";</code>
+</pre>
+        </div>
+      </li>
+
+      <li>El número de imágenes se podrá elegir entre 2 y 61.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Mostramos el control numérico con el número de dibujos actual
+print "    &lt;p&gt;&lt;input name=\"numeroDibujos\" type=\"number\" value=\"$_SESSION[numeroDibujos]\" min=\"2\" max=\"61\" /&gt;&lt;/p&lt;\n";</code>
+</pre>
+        </div>
+      </li>
+
+      <li>Si se envían valores incorrectos, se redirigirá a la primera página, sin necesidad de indicar nada al usuario.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Validamos el dato recibido, sin hacer nada si el dato no es válido
+if ($numeroDibujos == "") {
+} elseif (!is_numeric($numeroDibujos)) {
+} elseif (!ctype_digit($numeroDibujos)) {
+} elseif ($numeroDibujos &lt; $numeroDibujosMinimo || $numeroDibujos &gt; $numeroDibujosMaximo) {
+} else {
+    $numeroDibujosOk = true;
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>Si se intenta acceder a la tercera o cuarta página sin pasar por la primera página o se intenta enviar controles o valores distintos a los permitidos, se redirigirá automáticamente a la tercera página, sin indicar nada al usuario.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Si no está guardado en la sesión el número de dibujos ...
+if (!isset($_SESSION["numeroDibujos"])) {
+    // ... redirigimos a la primera página
+    header("Location:memorion-2-1.php");
+    exit;
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>Si se intenta enviar a la cuarta página controles o valores distintos a los permitidos, se redirigirá automáticamente a la tercera página, sin indicar nada al usuario.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Si el dato es válido ...
+if ($numeroDibujosOk) {
+    // ... cambiamos el número de dibujos
+    $_SESSION["numeroDibujos"] = $numeroDibujos;
+    // Borramos la partida
+    unset($_SESSION["dibujos"]);
+    // Redirigimos a la primera página
+    header("Location:memorion-2-1.php");
+    exit;
+// ... y si no, redirigimos al formulario
+} else {
+    header("Location:memorion-2-3.php");
+    exit;
+}</code>
+</pre>
+        </div>
+      </li>
+
     </ul>
   </section>
 
@@ -130,10 +245,94 @@ session_start();</code>
     <p>Modifique el programa anterior de manera que:</p>
     <ul>
       <li>Cada imagen se muestre dos veces.</li>
-      <li>Las imágenes se muestren barajadas.</li>
-      <li>La imágenes estarán incluidas en botones (de tipo <span class="html-atri-valor">submit</span>).</li>
-      <li>Al hacer clic en las imágenes, se mostrará alternativamente la imagen del animal correspondiente o una imagen común, por ejemplo, la entidad &amp;#10026; (<span style="font-size: 400%">&#10026;</span>). De esta manera, estamos simulando una ficha a la que se da la vuelta, viéndose o dejando de ver la imagen.</li>
-      <li>Inicialmente, las fichas están "boca abajo", es decir, no se ven las imágenes.</li>
+      <li>Las imágenes se muestren barajadas.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Si no están guardado en la sesión los dibujos de la partida ....
+if (!isset($_SESSION["dibujos"])) {
+    // ... creamos una matriz con todos los valores posibles (61 valores)
+    for ($i = 128000; $i &lt;= 128060; $i++) {
+        $valores[] = $i;
+    }
+
+    // Los barajamos
+    shuffle($valores);
+
+    // Cogemos los N primeros (N es el número de dibujos)
+    for ($i = 0; $i &lt; $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = $valores[$i];
+        // Las fichas estarán boca abajo
+        $_SESSION["lado"][$i]   = "dorso";
+    }
+
+    // Duplicamos los valores (creamos valores de N a 2N-1)
+    for ($i = 0; $i &lt; $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$_SESSION["numeroDibujos"] + $i] = $valores[$i];
+        $_SESSION["lado"][$_SESSION["numeroDibujos"] + $i]    = "dorso";
+    }
+
+    // Los barajamos de nuevo
+    shuffle($_SESSION["dibujos"]);
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>La imágenes estarán incluidas en botones (de tipo <span class="html-atri-valor">submit</span>).
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Mostramos los dibujos seleccionados en botones
+for ($i = 0; $i &lt; 2*$_SESSION["numeroDibujos"]; $i++) {
+    // La ficha puede estar boca arriba (se ve el dibujo) ...
+    if ($_SESSION["lado"][$i] == "dibujo") {
+        print "      &lt;button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px;\"&gt;&amp;#{$_SESSION["dibujos"][$i]};&lt;/button&gt; \n";
+    } else { // ... o boca abajo (se ve el dibujo común)
+        print "      &lt;button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\"&gt;&amp;#10026;&lt;/button&gt; \n";
+    }
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>Al hacer clic en las imágenes, se mostrará alternativamente la imagen del animal correspondiente o una imagen común, por ejemplo, la entidad &amp;#10026; (<span style="font-size: 400%">&#10026;</span>). De esta manera, estamos simulando una ficha a la que se da la vuelta, viéndose o dejando de ver la imagen.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Si el dato es válido ...
+if ($giraOk || $accionOk) {
+    // Si se ha pulsado "Nueva partida" ...
+    if ($accion == "nueva") {
+        // ... borramos la partida actual
+        unset($_SESSION["dibujos"]);
+        // ... y redirigimos a la primera página
+        header("Location:memorion-3-1.php");
+        exit;
+    // Si se ha pulsado "Cambiar número de dibujos" ...
+    } elseif ($accion == "numero") {
+        // ... redirigimos al formulario correspondiente
+        header("Location:memorion-3-3.php");
+        exit;
+    // Si se ha pulsado una ficha ...
+    } else {
+        // Si se mostraba el dibujo ...
+        if ($_SESSION["lado"][$gira] == "dibujo") {
+            // ... mostramos el dorso
+            $_SESSION["lado"][$gira] = "dorso";
+        } else {
+            // y si no, mostramos el dibujo
+            $_SESSION["lado"][$gira] = "dibujo";
+        }
+        // Redirigimos a la primera página
+        header("Location:memorion-3-1.php");
+        exit;
+    }
+// ... y si no, redirigimos a la primera página
+} else {
+    header("Location:memorion-3-1.php");
+    exit;
+}</code>
+</pre>
+        </div>
+      </li>
     </ul>
   </section>
 
@@ -142,9 +341,48 @@ session_start();</code>
 
     <p>Modifique el programa anterior de manera que:</p>
     <ul>
-      <li>Al hacer clic en un primer dorso, se muestra la imagen correspondiente.</li>
-      <li>Al hacer clic en otro dorso, se muestra la imagen correspondiente.</li>
-      <li>Al hacer clic en un tercer dorso, se muestra la imagen correspondiente y se ocultan las dos primeras imágenes.</li>
+      <li>Al hacer clic en un primer dorso, se muestra la imagen correspondiente.
+        <div class="codigo">
+          <pre>
+<code class="language-php">        // Si se ha pulsado una ficha que está boca abajo ...
+        if ($_SESSION["lado"][$gira] == "dorso") {
+            // ... la giramos
+            $_SESSION["lado"][$gira] = "dibujo";
+            // Si no hay ninguna carta girada ...
+            if ($_SESSION["primera"] == -1) {
+                // ... guardamos qué ficha hemos girado
+                $_SESSION["primera"] = $gira;</code>
+</pre>
+        </div>
+      </li>
+
+      <li>Al hacer clic en otro dorso, se muestra la imagen correspondiente.
+        <div class="codigo">
+          <pre>
+<code class="language-php">            // Si hay sólo una ficha girada ...
+            } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] == -1) {
+                // ... guardamos qué ficha hemos girado
+                $_SESSION["segunda"] = $gira;</code>
+</pre>
+        </div>
+      </li>
+
+      <li>Al hacer clic en un tercer dorso, se muestra la imagen correspondiente y se ocultan las dos primeras imágenes.
+          <div class="codigo">
+            <pre>
+<code class="language-php">            // Si ya hay dos giradas ...
+            } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] != -1) {
+                // ... damos la vuelta a las dos fichas anteriores
+                $_SESSION["lado"][$_SESSION["primera"]] = "dorso";
+                $_SESSION["lado"][$_SESSION["segunda"]] = "dorso";
+                // Y guardamos esa ficha como primera ficha de la jugada siguiente
+                $_SESSION["primera"] = $gira;
+                $_SESSION["segunda"] = -1;
+            }</code>
+</pre>
+          </div>
+        </li>
+
       <li>Si se hace clic en una imagen, no cambia nada.</li>
     </ul>
   </section>
@@ -154,13 +392,49 @@ session_start();</code>
 
     <p>Modifique el programa anterior de manera que:</p>
     <ul>
-      <li>Si al descubir dos imágenes, las dos imágenes coinciden, esas imágenes ya no se vuelven del revés.</li>
-      <li>Muestre un contador de las jugadas realizadas (una jugada es mostrar dos imágenes, independientemente de que las imágenes coincidan o no).</li>
+      <li>Si al descubir dos imágenes, las dos imágenes coinciden, esas imágenes ya no se vuelven del revés.
+          <div class="codigo">
+            <pre>
+<code class="language-php">            // Si ya hay dos giradas ...
+            } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] != -1) {
+                // Si son diferentes
+                if ($_SESSION["dibujos"][$_SESSION["primera"]] != $_SESSION["dibujos"][$_SESSION["segunda"]]) {
+                    // ... damos la vuelta a las dos fichas
+                    $_SESSION["lado"][$_SESSION["primera"]] = "dorso";
+                    $_SESSION["lado"][$_SESSION["segunda"]] = "dorso";
+                }
+                // Guardamos esa ficha como primera ficha de la jugada siguiente
+                $_SESSION["primera"] = $gira;
+                $_SESSION["segunda"] = -1;
+            }
+</code>
+</pre>
+          </div>
+        </li>
+
+      <li>Muestre un contador de las jugadas realizadas (una jugada es mostrar dos imágenes, independientemente de que las imágenes coincidan o no).
+          <div class="codigo">
+            <pre>
+<code class="language-php">// Mostramos el número de jugadas realizadas
+print "    &lt;p&gt;Jugadas realizadas: $_SESSION[jugadas]&lt;/p&gt;\n";</code>
+</pre>
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">            // Si hay sólo una ficha girada ...
+            } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] == -1) {
+                // ... guardamos qué ficha hemos girado
+                $_SESSION["segunda"] = $gira;
+                $_SESSION["jugadas"] += 1;</code>
+</pre>
+          </div>
+        </li>
+
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 20 de noviembre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />

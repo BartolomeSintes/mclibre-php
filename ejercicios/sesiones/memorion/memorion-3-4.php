@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-18
+ * @version   2017-11-20
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -51,19 +51,11 @@ $numeroDibujosMaximo = 61;
 // Variable auxiliar dato correcto
 $numeroDibujosOk = false;
 
-// Validamos el dato recibido, redirigiendo a la primera página si el dato no es válido
+// Validamos el dato recibido, sin hacer nada si el dato no es válido
 if ($numeroDibujos == "") {
-    header("Location:memorion-3-1.php");
-    exit;
 } elseif (!is_numeric($numeroDibujos)) {
-    header("Location:memorion-3-1.php");
-    exit;
 } elseif (!ctype_digit($numeroDibujos)) {
-    header("Location:memorion-3-1.php");
-    exit;
 } elseif ($numeroDibujos < $numeroDibujosMinimo || $numeroDibujos > $numeroDibujosMaximo) {
-    header("Location:memorion-3-1.php");
-    exit;
 } else {
     $numeroDibujosOk = true;
 }
@@ -76,5 +68,9 @@ if ($numeroDibujosOk) {
     unset($_SESSION["dibujos"]);
     // Redirigimos a la primera página
     header("Location:memorion-3-1.php");
+    exit;
+// ... y si no, redirigimos al formulario
+} else {
+    header("Location:memorion-3-3.php");
     exit;
 }
