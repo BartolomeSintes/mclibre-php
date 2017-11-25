@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-23
+ * @version   2017-11-25
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -34,30 +34,30 @@
 
 <body>
 <?php
-$idiomas = array(
-    array("español", "spanish", "espagnol", "spagnolo"),
-    array("inglés", "engligh", "anglais", "inglese"),
-    array("francés", "french", "français", "francese"),
-    array("italiano", "italian", "italien", "italiano")
-);
+$idiomas = [
+    ["español", "spanish", "espagnol", "spagnolo"],
+    ["inglés", "engligh", "anglais", "inglese"],
+    ["francés", "french", "français", "francese"],
+    ["italiano", "italian", "italien", "italiano"]
+];
 
-$palabras = array (
-    array("lunes", "monday", "lundi", "lunedi"),
-    array("martes", "tuesday", "mardi", "martedi"),
-    array("miércoles", "wednesday", "mercredi", "mercoledì"),
-    array("jueves", "thursday", "jeudi", "giovedì"),
-    array("viernes", "friday", "vendredi", "venerdì"),
-    array("sábado", "saturday", "samedi", "sabato"),
-    array("domingo", "sunday", "dimanche", "domenica"),
-);
+$palabras = [
+    ["lunes", "monday", "lundi", "lunedi"],
+    ["martes", "tuesday", "mardi", "martedi"],
+    ["miércoles", "wednesday", "mercredi", "mercoledì"],
+    ["jueves", "thursday", "jeudi", "giovedì"],
+    ["viernes", "friday", "vendredi", "venerdì"],
+    ["sábado", "saturday", "samedi", "sabato"],
+    ["domingo", "sunday", "dimanche", "domenica"],
+];
 
-$mensajes = array(
-    array("diccionario multilingüe", "multilingual dictionary", "Dictionnaire multilingue", "Dizionario multilingue"),
-    array("Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.",
-        "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."),
-    array("quiere decir", "means", "veut dire", "significa"),
-    array("en", "in", "en", "in")
-);
+$mensajes = [
+    ["diccionario multilingüe", "multilingual dictionary", "Dictionnaire multilingue", "Dizionario multilingue"],
+    ["Actualice la página para mostrar una nueva palabra.", "Refresh the page to display a new word.",
+        "Rafraîchir la page pour afficher un nouveau mot.", "Aggiornare la pagina per visualizzare una nuova parola."],
+    ["quiere decir", "means", "veut dire", "significa"],
+    ["en", "in", "en", "in"]
+];
 
 $idioma = rand(0, count($idiomas) - 1);
 do {

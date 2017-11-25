@@ -342,7 +342,7 @@ print "&lt;p&gt;¡Hola, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 $numero = 5000;
 $texto = "cinco mil";
-$seEscribe = array("separado", "junto");
+$seEscribe = ["separado", "junto"];
 print "&lt;p&gt;El número <span class="codigo-resaltado">$numero</span> se escribe <span class="codigo-resaltado">$seEscribe[0]</span>: <span class="codigo-resaltado">$texto</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -364,14 +364,17 @@ print "&lt;p&gt;El número <span class="codigo-resaltado">$numero</span> se escr
           <pre>
 <code class="language-php">&lt;?php
 $nombre = "Don Pepito";
-$saludos = array(array("Hello", "Hola"), array("Goodbye", "Adios"));
+$saludos = [["Hello", "Hola"], ["Goodbye", "Adios"]];
 
 print "&lt;p&gt;¡<span class="codigo-resaltado">$saludos[0][1]</span>, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;¡<span class="codigo-resaltado">Array[1]</span>, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre>
+          <pre>
+<code class="language-html">&lt;b&gt;Notice&lt;/b&gt;:  Array to string conversion in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;5&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;¡<span class="codigo-resaltado">Array[1]</span>, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code>
+</pre>
         </div>
       </div>
 
@@ -384,7 +387,7 @@ print "&lt;p&gt;¡<span class="codigo-resaltado">$saludos[0][1]</span>, $nombre!
           <pre>
 <code class="language-php">&lt;?php
 $nombre = "Don Pepito";
-$saludos = array(array("Hello", "Hola"), array("Goodbye", "Adios"));
+$saludos = [["Hello", "Hola"], ["Goodbye", "Adios"]];
 print "&lt;p&gt;¡" <span class="codigo-resaltado">. $saludos[0][1] .</span> ", $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -401,7 +404,7 @@ print "&lt;p&gt;¡" <span class="codigo-resaltado">. $saludos[0][1] .</span> ", 
           <pre>
 <code class="language-php">&lt;?php
 $nombre = "Don Pepito";
-$saludos = array(array("Hello", "Hola"), array("Goodbye", "Adios"));
+$saludos = [["Hello", "Hola"], ["Goodbye", "Adios"]];
 print "&lt;p&gt;¡<span class="codigo-resaltado">{$saludos[0][1]}</span>, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>

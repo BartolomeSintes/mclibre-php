@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-23
+ * @version   2017-11-26
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,28 +38,28 @@
   <p>Actualice la página para mostrar un nuevo animal.</p>
 
 <?php
-$animales = array (
-    array("Ballena", "ballena.svg", "https://es.wikipedia.org/wiki/Balaenidae"),
-    array("Caballito de mar", "caballito-mar.svg", "https://es.wikipedia.org/wiki/Hippocampus"),
-    array("Camello", "camello.svg", "https://es.wikipedia.org/wiki/Camelus"),
-    array("Cebra", "cebra.svg", "https://es.wikipedia.org/wiki/Cebra"),
-    array("Elefante", "elefante.svg", "https://es.wikipedia.org/wiki/Elephantidae"),
-    array("Hipopótamo", "hipopotamo.svg", "https://es.wikipedia.org/wiki/Hippopotamidae"),
-    array("Jirafa", "jirafa.svg", "https://es.wikipedia.org/wiki/Giraffa_camelopardalis"),
-    array("León", "leon.svg", "https://es.wikipedia.org/wiki/Panthera_leo"),
-    array("Leopardo", "leopardo.svg", "https://es.wikipedia.org/wiki/Panthera_pardus"),
-    array("Medusa", "medusa.svg", "https://es.wikipedia.org/wiki/Medusa_(animal)"),
-    array("Mono", "mono.svg", "https://es.wikipedia.org/wiki/Mono"),
-    array("Oso", "oso.svg", "https://es.wikipedia.org/wiki/Ursidae"),
-    array("Oso blanco", "oso-blanco.svg","https://es.wikipedia.org/wiki/Ursus_maritimus" ),
-    array("Pájaro", "pajaro.svg", "https://es.wikipedia.org/wiki/Aves"),
-    array("Pingüino", "pinguino.svg", "https://es.wikipedia.org/wiki/Spheniscidae"),
-    array("Rinoceronte", "rinoceronte.svg", "https://es.wikipedia.org/wiki/Rhinocerotidae"),
-    array("Serpiente", "serpiente.svg", "https://es.wikipedia.org/wiki/Serpentes"),
-    array("Tigre", "tigre.svg", "https://es.wikipedia.org/wiki/Panthera_tigris"),
-    array("Tortuga marina", "tortuga-marina.svg", "https://es.wikipedia.org/wiki/Chelonioidea"),
-    array("Tortuga", "tortuga.svg", "https://es.wikipedia.org/wiki/Testudines")
-);
+$animales = [
+    ["Ballena", "ballena.svg", "https://es.wikipedia.org/wiki/Balaenidae"],
+    ["Caballito de mar", "caballito-mar.svg", "https://es.wikipedia.org/wiki/Hippocampus"],
+    ["Camello", "camello.svg", "https://es.wikipedia.org/wiki/Camelus"],
+    ["Cebra", "cebra.svg", "https://es.wikipedia.org/wiki/Cebra"],
+    ["Elefante", "elefante.svg", "https://es.wikipedia.org/wiki/Elephantidae"],
+    ["Hipopótamo", "hipopotamo.svg", "https://es.wikipedia.org/wiki/Hippopotamidae"],
+    ["Jirafa", "jirafa.svg", "https://es.wikipedia.org/wiki/Giraffa_camelopardalis"],
+    ["León", "leon.svg", "https://es.wikipedia.org/wiki/Panthera_leo"],
+    ["Leopardo", "leopardo.svg", "https://es.wikipedia.org/wiki/Panthera_pardus"],
+    ["Medusa", "medusa.svg", "https://es.wikipedia.org/wiki/Medusa_(animal)"],
+    ["Mono", "mono.svg", "https://es.wikipedia.org/wiki/Mono"],
+    ["Oso", "oso.svg", "https://es.wikipedia.org/wiki/Ursidae"],
+    ["Oso blanco", "oso-blanco.svg","https://es.wikipedia.org/wiki/Ursus_maritimus"],
+    ["Pájaro", "pajaro.svg", "https://es.wikipedia.org/wiki/Aves"],
+    ["Pingüino", "pinguino.svg", "https://es.wikipedia.org/wiki/Spheniscidae"],
+    ["Rinoceronte", "rinoceronte.svg", "https://es.wikipedia.org/wiki/Rhinocerotidae"],
+    ["Serpiente", "serpiente.svg", "https://es.wikipedia.org/wiki/Serpentes"],
+    ["Tigre", "tigre.svg", "https://es.wikipedia.org/wiki/Panthera_tigris"],
+    ["Tortuga marina", "tortuga-marina.svg", "https://es.wikipedia.org/wiki/Chelonioidea"],
+    ["Tortuga", "tortuga.svg", "https://es.wikipedia.org/wiki/Testudines"]
+];
 
 $animal = rand(0, count($animales) - 1);
 

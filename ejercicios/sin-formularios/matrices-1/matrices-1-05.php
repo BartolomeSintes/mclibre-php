@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-12
+ * @version   2017-11-25
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ print "  <h2>Jugador 2</h2>\n";
 print "\n";
 
 // Guardamos los valores del Jugador 2 en la matriz $dados2
-$dados2 = array();
+$dados2 = [];
 for ($i = 0; $i < $numero; $i++) {
     $dados2[$i] = rand(1, 6);
 }

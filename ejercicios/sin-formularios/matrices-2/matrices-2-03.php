@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-23
+ * @version   2017-11-25
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -34,21 +34,21 @@
 
 <body>
 <?php
-$palabras = array (
-    array("uno", "one", "un", "uno"),
-    array("dos", "two", "deux", "due"),
-    array("tres", "three", "trois", "tre"),
-    array("cuatro", "four", "quatre", "quattro"),
-    array("cinco", "five", "cinq", "cinque"),
-    array("seis", "six", "six", "sei")
-);
+$palabras = [
+    ["uno", "one", "un", "uno"],
+    ["dos", "two", "deux", "due"],
+    ["tres", "three", "trois", "tre"],
+    ["cuatro", "four", "quatre", "quattro"],
+    ["cinco", "five", "cinq", "cinque"],
+    ["seis", "six", "six", "sei"]
+];
 
-$mensajes = array(
-    array("Tirada de dado", "Dieroll", "Jet de dé", "Tiro di dado"),
-    array("Actualice la página para mostrar una nueva tirada.", "Refresh the page to display a new dieroll.",
-        "Rafraîchir la page pour afficher un nouveau jet de dé.", "Aggiornare la pagina per visualizzare un nuovo tiro di dado."),
-    array("Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un")
-);
+$mensajes = [
+    ["Tirada de dado", "Dieroll", "Jet de dé", "Tiro di dado"],
+    ["Actualice la página para mostrar una nueva tirada.", "Refresh the page to display a new dieroll.",
+        "Rafraîchir la page pour afficher un nouveau jet de dé.", "Aggiornare la pagina per visualizzare un nuovo tiro di dado."],
+    ["Ha obtenido un", "You have thrown a", "Vous avez emporté un", "Hai ottenuto un"]
+];
 
 $idioma = rand(0, count($palabras[0]) - 1);
 $dado = rand(1, 6);

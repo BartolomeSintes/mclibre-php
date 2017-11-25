@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-23
+ * @version   2017-11-26
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,18 +38,18 @@
   <p>Actualice la página para mostrar una nueva palabra.</p>
 
 <?php
-$idiomas = array("español", "inglés", "francés", "italiano");
+$idiomas = ["español", "inglés", "francés", "italiano"];
 
-$palabras = array (
-    array("lunes", "monday", "lundi", "lunedi"),
-    array("martes", "tuesday", "mardi", "martedi"),
-    array("miércoles", "wednesday", "mercredi", "mercoledì"),
-    array("jueves", "thursday", "jeudi", "giovedì"),
-    array("viernes", "friday", "vendredi", "venerdì"),
-    array("sábado", "saturday", "samedi", "sabato"),
-    array("domingo", "sunday", "dimanche", "domenica"),
-    array("cachimba", "", "", "")
-);
+$palabras = [
+    ["lunes", "monday", "lundi", "lunedi"],
+    ["martes", "tuesday", "mardi", "martedi"],
+    ["miércoles", "wednesday", "mercredi", "mercoledì"],
+    ["jueves", "thursday", "jeudi", "giovedì"],
+    ["viernes", "friday", "vendredi", "venerdì"],
+    ["sábado", "saturday", "samedi", "sabato"],
+    ["domingo", "sunday", "dimanche", "domenica"],
+    ["cachimba", "", "", ""]
+];
 
 $idioma = rand(1, count($idiomas) - 1);
 $palabra = rand(0, count($palabras) - 1);
