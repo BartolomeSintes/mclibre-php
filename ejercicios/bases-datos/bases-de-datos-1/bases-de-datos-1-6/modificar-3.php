@@ -52,7 +52,7 @@ if ($nombreOk && $apellidosOk) {
         SET nombre=:nombre, apellidos=:apellidos
         WHERE id=:id";
     $result = $db->prepare($consulta);
-    if ($result->execute(array(":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id))) {
+    if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
         print "      <p>Registro modificado correctamente.</p>\n";
     } else {
         print "      <p>Error al modificar el registro.</p>\n";

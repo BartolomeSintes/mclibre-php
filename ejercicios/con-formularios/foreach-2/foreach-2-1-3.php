@@ -49,7 +49,7 @@ function recoge($var)
 
 function recogeMatriz2($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $fila) {
             $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));

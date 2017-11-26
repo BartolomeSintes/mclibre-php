@@ -65,7 +65,7 @@ if ($respuesta == "1" || $respuesta == "2" || $respuesta == "3" || $respuesta ==
     }
 }
 
-$color = array();
+$color = [];
 for ($i = 1; $i <= 4; $i++) {
     $color[$i] = "rgb(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ")";
 }

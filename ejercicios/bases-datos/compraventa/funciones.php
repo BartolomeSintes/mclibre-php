@@ -58,14 +58,15 @@ $tamIdVendedor   = 10;  // Tama�o del campo id Vendedor
 $tamFechaCompra  = 10;
 $maxRegUsuarios  = 20;  // N�mero m�ximo de registros en la tabla Usuarios
 $maxRegArticulos = 20;  // N�mero m�ximo de registros por usuario en la tabla Art�culos
-$recorta = array(
+$recorta = [
     'usuario'     => $tamUsuario,
     'password'    => $tamCifrado,
     'articulo'    => $tamArticulo,
     'precio'      => $tamPrecio,
     'idComprador' => $tamIdComprador,
     'idVendedor'  => $tamIdVendedor,
-    'fechaCompra' => $tamFechaCompra);
+    'fechaCompra' => $tamFechaCompra
+];
 
 function conectaDb()
 {
@@ -225,7 +226,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));

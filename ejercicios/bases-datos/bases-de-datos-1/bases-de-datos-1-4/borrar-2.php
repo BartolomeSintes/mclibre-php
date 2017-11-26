@@ -33,7 +33,7 @@ foreach ($id as $indice => $valor) {
     $consulta = "DELETE FROM $dbTabla
         WHERE id=:indice";
     $result = $db->prepare($consulta);
-    if ($result->execute(array(":indice" => $indice))) {
+    if ($result->execute([":indice" => $indice])) {
         print "      <p>Registro borrado correctamente.</p>\n";
     } else {
         print "      <p>Error al borrar el registro.</p>\n";

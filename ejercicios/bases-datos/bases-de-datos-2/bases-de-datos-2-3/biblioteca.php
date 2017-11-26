@@ -33,11 +33,12 @@ define("SQLITE",         "SQLite");        // Base de datos SQLITE
 define("MENU_PRINCIPAL", "menuPrincipal"); // Menú principal
 define("MENU_VOLVER",    "menuVolver");    // Menú Volver a inicio
 
-$campos = array(                           // Nombre de los campos de la tabla
+$campos = [                           // Nombre de los campos de la tabla
     "nombre",
     "apellidos",
     "telefono",
-    "correo");
+    "correo"
+];
 
 // Constantes y variables configurables
 
@@ -63,7 +64,7 @@ function recoge($var)
 
 function recogeMatriz($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));

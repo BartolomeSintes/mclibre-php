@@ -34,7 +34,7 @@ $consulta = "SELECT * FROM $dbTabla
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db->prepare($consulta);
-$result->execute(array(":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"));
+$result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
 
 print "      <p>Registros encontrados:</p>\n";
 print "\n";

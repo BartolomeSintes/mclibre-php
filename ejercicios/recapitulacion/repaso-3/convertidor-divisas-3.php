@@ -59,10 +59,10 @@ $origenOk   = false;
 $destinoOk  = false;
 
 $maximo       = 1000000;
-$monedas      = array("EUR", "USD", "GBP", "JPY", "ESP");
-$factor       = array("EUR"=> 1, "USD"=>1.31481, "GBP"=>0.89807, "JPY"=>132.113, "ESP"=>166.366);
-$nombreMoneda = array("EUR"=> "euros", "USD"=>"dólares USA",
-    "GBP"=>"libras esterlinas", "JPY"=>"yenes japoneses", "ESP"=>"antiguas pesetas españolas");
+$monedas      = ["EUR", "USD", "GBP", "JPY", "ESP"];
+$factor       = ["EUR"=> 1, "USD"=>1.31481, "GBP"=>0.89807, "JPY"=>132.113, "ESP"=>166.366];
+$nombreMoneda = ["EUR"=> "euros", "USD"=>"dólares USA",
+    "GBP"=>"libras esterlinas", "JPY"=>"yenes japoneses", "ESP"=>"antiguas pesetas españolas"];
 
 if ($cantidad == "") {
     print "<p class=\"aviso\">No ha escrito la cantidad de dinero.</p>\n";

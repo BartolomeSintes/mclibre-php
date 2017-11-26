@@ -67,8 +67,9 @@
     $fecha_dom = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+6, $anyo));
     $fecha_ant = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-7, $anyo));
     $fecha_sig = date('Y-m-d', mktime(0, 0, 0, $mes, $dia+7, $anyo));
-    $semana = array($fecha_lun, $fecha_mar, $fecha_mie, $fecha_jue, $fecha_vie,
-        $fecha_sab, $fecha_dom);
+    $semana = [$fecha_lun, $fecha_mar, $fecha_mie, $fecha_jue, $fecha_vie,
+        $fecha_sab, $fecha_dom
+    ];
 
     print "&lt;div class=\"calendario\"&gt;\n  &lt;table border=\"1\" class=\"$enlaces\" &gt;\n";
     print "    &lt;caption&gt;&lt;a href=\"$_SERVER[PHP_SELF]?fecha=$fecha_ant\"&gt;&amp;lt;&amp;lt;

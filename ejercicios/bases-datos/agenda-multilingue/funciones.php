@@ -60,13 +60,14 @@ $tamTelefono    = 10;  // Tama�o del campo Tel�fono
 $tamCorreo      = 50;  // Tama�o del campo Correo
 $maxRegUsuarios = 20;  // N�mero m�ximo de registros en la tabla Usuarios
 $maxRegAgenda   = 20;  // N�mero m�ximo de registros por usuario en la tabla Agenda
-$recorta = array(
+$recorta = [
     'usuario'   => $tamUsuario,
     'password'  => $tamCifrado,
     'nombre'    => $tamNombre,
     'apellidos' => $tamApellidos,
     'telefono'  => $tamTelefono,
-    'correo'    => $tamCorreo);
+    'correo'    => $tamCorreo
+];
 
 if (isset($_SESSION['multiagendaIdioma'])) {
     $language = $_SESSION['multiagendaIdioma'];
@@ -235,7 +236,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));

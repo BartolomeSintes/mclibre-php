@@ -58,9 +58,10 @@ if ($dbMotor == MYSQL) {
     $dbUsuarios = "usuarios";             // Nombre de la tabla de Usuarios
 }
 
-$recorta = array(
+$recorta = [
     "usuario"   => $tamUsuario,
-    "password"  => $tamPassword);
+    "password"  => $tamPassword
+];
 
 ini_set("session.save_handler", "files"); // Por si session.save_handler = user en php.ini
 

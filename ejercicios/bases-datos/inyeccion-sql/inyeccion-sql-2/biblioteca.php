@@ -33,9 +33,10 @@ define("SQLITE",              "SQLite");
 define("MAX_REG_TABLA",       20);  // Número máximo de registros en la tabla
 $tamUsuario    = 80; // Tamaño del campo Usuario
 $tamContraseña = 80; // Tamaño del campo Contraseña
-$recorta = array(
+$recorta = [
     "user"     => $tamUsuario,
-    "password" => $tamContraseña);
+    "password" => $tamContraseña
+];
 
 $dbMotor = SQLITE;                        // Base de datos empleada
 if ($dbMotor == MYSQL) {
@@ -94,7 +95,7 @@ function recoge($var, $var2="")
 
 function recogeMatriz($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = strip_tags(trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8")));

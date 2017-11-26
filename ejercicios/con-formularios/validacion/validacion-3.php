@@ -35,7 +35,7 @@ function recoge($var)
 
 function recogeMatriz($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = strip_tags(trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8")));
@@ -132,7 +132,7 @@ if (isset($_REQUEST['anyadir']) && ($numeroValores<NUM_VALORES_MAXIMO)) {
     $numeroValores--;
 }
 
-$valoresOK     = array();
+$valoresOK     = [];
 $valoresTodoOk = true;
 for ($i=1; $i<=$numeroValores; $i++) {
     $valoresOk[$i] = true;

@@ -163,7 +163,7 @@ $consulta = "INSERT INTO $dbTabla
     (nombre, apellidos)
     VALUES (:nombre, :apellidos)";
 $result = $db-&gt;prepare($consulta);
-if ($result-&gt;execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos))) {
+if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
     print "      &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
 } else {
     print "      &lt;p&gt;Error al crear el registro.&lt;/p&gt;\n";
@@ -267,7 +267,7 @@ foreach ($id as $indice =&gt; $valor) {
     $consulta = "DELETE FROM $dbTabla
         WHERE id=:indice";
     $result = $db-&gt;prepare($consulta);
-    if ($result-&gt;execute(array(":indice" =&gt; $indice))) {
+    if ($result-&gt;execute([":indice" =&gt; $indice])) {
         print "      &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
     } else {
         print "      &lt;p&gt;Error al borrar el registro.&lt;/p&gt;\n";
@@ -318,7 +318,7 @@ $consulta = "SELECT * FROM $dbTabla
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"));</code>
+$result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);</code>
 </pre>
           </div>
           <p>El comodín (%) debe incluirse al ejecutar la consulta, no se podrían incluir en la definición de $consulta.</p>
@@ -377,7 +377,7 @@ $id = recoge("id");
 $consulta = "SELECT * FROM $dbTabla
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":id" =&gt; $id));
+$result-&gt;execute([":id" =&gt; $id]);
 $valor = $result-&gt;fetch();</code>
 </pre>
           </div>
@@ -412,7 +412,7 @@ $consulta = "UPDATE $dbTabla
     SET nombre=:nombre, apellidos=:apellidos
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
-if ($result-&gt;execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id))) {
+if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
     print "      &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
 } else {
     print "      &lt;p&gt;Error al modificar el registro.&lt;/p&gt;\n";

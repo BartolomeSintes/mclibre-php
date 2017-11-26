@@ -75,7 +75,7 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE id=:id";
         $result = $db->prepare($consulta);
-        $result->execute(array(":id" => $id));
+        $result->execute([":id" => $id]);
         if (!$result) {
             print "      <p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() == 0) {
@@ -91,8 +91,8 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
                 AND correo=:correo
                 AND id<>:id";
             $result = $db->prepare($consulta);
-            $result->execute(array(":nombre" => $nombre, ":apellidos" => $apellidos,
-                ":telefono" => $telefono, ":correo" => $correo, ":id" => $id));
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                ":telefono" => $telefono, ":correo" => $correo, ":id" => $id]);
             if (!$result) {
                 print "      <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
@@ -104,8 +104,8 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
                         telefono=:telefono, correo=:correo
                     WHERE id=:id";
                 $result = $db->prepare($consulta);
-                if ($result->execute(array(":nombre" => $nombre, ":apellidos" => $apellidos,
-                    ":telefono" => $telefono, ":correo" => $correo, ":id" => $id))) {
+                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                    ":telefono" => $telefono, ":correo" => $correo, ":id" => $id])) {
                     print "      <p>Registro modificado correctamente.</p>\n";
                 } else {
                     print "      <p>Error al modificar el registro.</p>\n";

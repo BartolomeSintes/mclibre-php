@@ -32,7 +32,7 @@ $id = recoge("id");
 $consulta = "SELECT * FROM $dbTabla
     WHERE id=:id";
 $result = $db->prepare($consulta);
-$result->execute(array(":id" => $id));
+$result->execute([":id" => $id]);
 $valor = $result->fetch();
 
 print "      <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";

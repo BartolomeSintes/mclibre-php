@@ -327,7 +327,7 @@ $result = $db-&gt;query($consulta);</code>
       <section id="consultas-preparadas">
         <h3>Consultas preparadas</h3>
 
-        <p>El método para efectuar consultas es primero preparar la consulta con <a href="http://php.net/manual/es/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare($consulta)</span></a> y después ejecutarla con <span class="php-fun"><a href="http://php.net/manual/es/pdostatement.execute.php">PDO-&gt;execute(array(parámetros))</a></span>, que devuelve el resultado de la consulta.</p>
+        <p>El método para efectuar consultas es primero preparar la consulta con <a href="http://php.net/manual/es/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare($consulta)</span></a> y después ejecutarla con <span class="php-fun"><a href="http://php.net/manual/es/pdostatement.execute.php">PDO-&gt;execute([parámetros])</a></span>, que devuelve el resultado de la consulta.</p>
 
         <div class="codigo">
           <pre>
@@ -376,7 +376,7 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE <strong>nombre=:nombre</strong>
     AND <strong>apellidos=:apellidos</strong>";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;<strong>execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos))</strong>;
+$result-&gt;<strong>execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])</strong>;
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
@@ -395,7 +395,7 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE <strong>nombre=?</strong>
     AND <strong>apellidos=?</strong>";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;<strong>execute(array($nombre, $apellidos))</strong>;
+$result-&gt;<strong>execute([$nombre, $apellidos])</strong>;
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
@@ -426,9 +426,10 @@ if (!$result) {
         <div class="codigo">
           <pre>
 <code class="language-php"><strong>// FUNCIÓN DE RECOGIDA DE UN DATO QUE SÓLO PUEDE TOMAR DETERMINADOS VALORES</strong>
-$campos = array(
+$campos = [
     "nombre",
-    "apellidos");
+    "apellidos"
+];
 
 function recogeCampo($var, $var2)
 {
@@ -450,7 +451,7 @@ $consulta = "SELECT * FROM $dbTabla
     WHERE nombre=:nombre
     ORDER BY <strong>$campo</strong> ASC";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;<strong>execute(array(":nombre" =&gt; $nombre))</strong>;
+$result-&gt;<strong>execute([":nombre" =&gt; $nombre])</strong>;
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
@@ -685,7 +686,7 @@ $consulta = "INSERT INTO $dbTabla
     (nombre, apellidos)
     VALUES (:nombre, :apellidos)";
 $result = $db-&gt;prepare($consulta);
-if ($result-&gt;execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos))) {
+if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
     print "  &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
 } else {
     print "  &lt;p&gt;Error al crear el registro.&lt;/p&gt;\n";
@@ -708,7 +709,7 @@ $consulta = "UPDATE $dbTabla
     SET nombre=:nombre, apellidos=:apellidos
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
-if ($result-&gt;execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id))) {
+if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
     print "  &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
 } else {
     print "  &lt;p&gt;Error al modificar el registro.&lt;/p&gt;\n";
@@ -731,7 +732,7 @@ foreach ($id as $indice =&gt; $valor) {
     $consulta = "DELETE FROM $dbTabla
         WHERE id=:indice";
     $result = $db-&gt;prepare($consulta);
-    if ($result-&gt;execute(array(":indice" =&gt; $indice))) {
+    if ($result-&gt;execute([":indice" =&gt; $indice])) {
         print "  &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
     } else {
         print "  &lt;p&gt;Error al borrar el registro.&lt;/p&gt;\n";
@@ -863,7 +864,7 @@ $apellidos = recoge("apellidos");
 $consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"));
+$result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
@@ -882,7 +883,7 @@ $apellidos = recoge("apellidos");
 $consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"));
+$result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {

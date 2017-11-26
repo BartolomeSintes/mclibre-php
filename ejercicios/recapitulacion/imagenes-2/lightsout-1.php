@@ -51,7 +51,7 @@ function recoge($var)
 
 function recogeMatriz($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
@@ -68,7 +68,7 @@ $juegaOk = false;
 $total = 7;
 
 if ($juega == "") {
-    $partida = array();
+    $partida = [];
     $partida[0] = 0;
     for ($i = 1; $i <= $total; $i++) {
         $partida[$i] = rand(0, 1);

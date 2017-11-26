@@ -48,7 +48,7 @@ include "irregular-verbs-list.php";
 
 $numeroVerbos = count($irregularVerbs);
 
-$formaVerbalNombre = array("infinitivo", "pasado", "participio");
+$formaVerbalNombre = ["infinitivo", "pasado", "participio"];
 
 $respuesta   = recoge("respuesta");
 $verbo       = recoge("verbo");

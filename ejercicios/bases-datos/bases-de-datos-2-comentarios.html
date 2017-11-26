@@ -117,7 +117,7 @@ if (!$result) {
     WHERE nombre=:nombre
     AND apellidos=:apellidos";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos));
+$result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]);
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() &gt; 0) {
@@ -193,7 +193,7 @@ if (count($id) == 0) {
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"));
+$result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
@@ -238,7 +238,7 @@ if ($id == "") {
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":id" =&gt; $id));
+$result-&gt;execute([":id" =&gt; $id]);
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
@@ -271,7 +271,7 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
     AND apellidos=:apellidos
     AND id&lt;&gt;:id";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;execute(array(":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id));
+$result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);
 if (!$result) {
     print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn()&gt;0) {
@@ -313,9 +313,10 @@ $orden = recogeOrden("orden", "ASC");</code>
 
           <div class="codigo">
             <pre>
-<code class="language-php">$campos = array(
+<code class="language-php">$campos = []
     "nombre",
-    "apellidos");
+    "apellidos"
+];
 
 function recogeCampo($var, $var2)
 {

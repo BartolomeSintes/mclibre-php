@@ -38,9 +38,10 @@ define("MAX_REG_TABLA",  20);              // Número máximo de registros en la
 $tamNombre    = 40;                        // Tamaño del campo Nombre
 $tamApellidos = 60;                        // Tamaño del campo Apellidos
 
-$campos = array(                           // Nombre de los campos de la tabla
+$campos = [                           // Nombre de los campos de la tabla
     "nombre",
-    "apellidos");
+    "apellidos"
+];
 
 $dbMotor = SQLITE;                         // Base de datos empleada (MYSQL o SQLITE)
 
@@ -62,7 +63,7 @@ function recoge($var)
 
 function recogeMatriz($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));

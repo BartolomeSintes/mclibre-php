@@ -50,7 +50,7 @@ function recoge($var)
 
 function recogeMatriz($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = strip_tags(trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8")));
@@ -77,7 +77,7 @@ define('NUM_VALORES_MINIMO',  2);
 define('NUM_VALORES_MAXIMO',  15);
 
 $valores       = recogeMatriz('valor');
-$valoresOK     = array();
+$valoresOK     = [];
 $valoresTodoOk = true;
 $suma          = (recoge('suma')=='on');
 $media         = (recoge('media')=='on');

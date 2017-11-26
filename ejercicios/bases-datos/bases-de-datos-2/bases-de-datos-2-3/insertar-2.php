@@ -83,8 +83,8 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
                 AND telefono=:telefono
                 AND correo=:correo";
             $result = $db->prepare($consulta);
-            $result->execute(array(":nombre" => $nombre, ":apellidos" => $apellidos,
-                ":telefono" => $telefono, ":correo" => $correo));
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                ":telefono" => $telefono, ":correo" => $correo]);
             if (!$result) {
                 print "      <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
@@ -94,8 +94,8 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
                     (nombre, apellidos, telefono, correo)
                     VALUES (:nombre, :apellidos, :telefono, :correo)";
                 $result = $db->prepare($consulta);
-                if ($result->execute(array(":nombre" => $nombre, ":apellidos" => $apellidos,
-                    ":telefono" => $telefono, ":correo" => $correo))) {
+                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                    ":telefono" => $telefono, ":correo" => $correo])) {
                     print "      <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
                 } else {
                     print "      <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";

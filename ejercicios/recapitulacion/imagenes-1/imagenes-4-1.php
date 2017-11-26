@@ -47,7 +47,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 
 function recogeMatriz($var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));

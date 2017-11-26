@@ -51,7 +51,7 @@ function recoge($var)
 
 function recogeMatriz($var)
 {
-    $resul = array();
+    $resul = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $resul[limpia($indice)] = limpia($valor);
@@ -96,7 +96,7 @@ $tamanyoGraficaYMaximo  = 300;
 $tamanyoGraficaY = recogeNumero('tamanyoGraficaY', $tamanyoGraficaYInicial,
 $tamanyoGraficaYMinimo, $tamanyoGraficaYMaximo);
 
-$tipoGraficaValores = array("lc", "p", "p3");
+$tipoGraficaValores = ["lc", "p", "p3"];
 $tipoGrafica = recogeTexto("tipoGrafica", "lc", $tipoGraficaValores);
 
 // Recoge el núemro de datos y lo valida, aumenta o reduce

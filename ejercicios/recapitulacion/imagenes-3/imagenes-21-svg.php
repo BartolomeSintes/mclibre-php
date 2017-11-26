@@ -34,7 +34,7 @@ $ancho = recoge("ancho");
 $color = recoge("color");
 
 $anchoPredeterminado = 100;
-$colores = array(
+$colores = [
     "black",
     "blue",
     "fuchsia",
@@ -44,7 +44,7 @@ $colores = array(
     "red",
     "white",
     "yellow"
-);
+];
 
 if ($ancho == "") {
     $ancho = $anchoPredeterminado;

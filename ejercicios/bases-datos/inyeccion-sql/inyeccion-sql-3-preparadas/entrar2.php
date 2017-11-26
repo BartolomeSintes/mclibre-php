@@ -40,7 +40,7 @@ if (($usuario=="") || ($contraseña=="")) {
         WHERE user=?
         AND password=?";
     $result = $db->prepare($consulta);
-    $result->execute(array($usuario, $contraseña));
+    $result->execute([$usuario, $contraseña]);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>0) {
@@ -49,7 +49,7 @@ if (($usuario=="") || ($contraseña=="")) {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE user=?";
         $result = $db->prepare($consulta);
-        $result->execute(array($usuario));
+        $result->execute([$usuario]);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>0) {

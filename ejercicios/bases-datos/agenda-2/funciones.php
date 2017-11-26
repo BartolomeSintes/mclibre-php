@@ -63,13 +63,14 @@ $administradorPassword = 'root';  // Password del usuario Administrador
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
 
-$recorta = array(
+$recorta = [
     'usuario'   => TAM_USUARIO,
     'password'  => TAM_CIFRADO,
     'nombre'    => TAM_NOMBRE,
     'apellidos' => TAM_APELLIDOS,
     'telefono'  => TAM_TELEFONO,
-    'correo'    => TAM_CORREO);
+    'correo'    => TAM_CORREO
+];
 
 ini_set('session.save_handler', 'files'); // Por si session.save_handler = user en php.ini
 
@@ -222,7 +223,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));

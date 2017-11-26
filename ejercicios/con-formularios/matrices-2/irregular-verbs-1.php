@@ -40,7 +40,7 @@ include "irregular-verbs-list.php";
 
 $numeroVerbos = count($irregularVerbs);
 
-$formaVerbalNombre = array("infinitivo", "pasado", "participio");
+$formaVerbalNombre = ["infinitivo", "pasado", "participio"];
 
 $formaVerbal = rand(0, 2);
 $verbo       = rand(0, $numeroVerbos - 1);

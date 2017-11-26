@@ -54,11 +54,12 @@ if ($dbMotor==MYSQL) {
     $dbIntervenciones = 'intervenciones';        // Nombre de la tabla Intervenciones
 }
 
-$recorta = array(
+$recorta = [
     'titulo'       => TAM_TITULO,
     'descripcion'  => TAM_DESCRIPCION,
     'autor'        => TAM_AUTOR,
-    'intervencion' => TAM_INTERVENCION);
+    'intervencion' => TAM_INTERVENCION
+];
 
 function conectaDb()
 {
@@ -107,7 +108,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));

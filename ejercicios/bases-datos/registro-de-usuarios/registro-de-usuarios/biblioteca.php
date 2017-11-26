@@ -59,9 +59,10 @@ $administradorPassword = "root";  // Password del usuario Administrador
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
 
-$recorta = array(
+$recorta = [
     "usuario"   => $tamUsuario,
-    "password"  => $tamCifrado);
+    "password"  => $tamCifrado
+];
 
 ini_set("session.save_handler", "files"); // Por si session.save_handler = user en php.ini
 

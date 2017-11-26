@@ -69,12 +69,13 @@ $maxRegUsuarios  = 30;   // N�mero m�ximo de registros en la tabla Usuarios
 $maxRegAutores   = 30;   // N�mero m�ximo de registros en la tabla Autores
 $maxRegCitas     = 30;   // N�mero m�ximo de registros en la tabla Citas
 $maxRegEtiquetas = 30;   // N�mero m�ximo de registros en la tabla Etiquetas
-$recorta = array(
+$recorta = [
     'usuario'    => $tamUsuario,
     'password'   => $tamCifrado,
     'etiqueta'   => $tamEtiqueta,
     'idUsuario'  => $tamIdUsuario,
-    'idEtiqueta' => $tamIdEtiqueta);
+    'idEtiqueta' => $tamIdEtiqueta
+];
 
 function conectaDb()
 {
@@ -274,7 +275,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));

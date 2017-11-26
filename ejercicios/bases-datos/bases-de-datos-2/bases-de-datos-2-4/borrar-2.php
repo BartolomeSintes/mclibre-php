@@ -36,7 +36,7 @@ if (count($id) == 0) {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE id=:indice";
         $result = $db->prepare($consulta);
-        $result->execute(array(":indice" => $indice));
+        $result->execute([":indice" => $indice]);
         if (!$result) {
             print "      <p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() == 0) {
@@ -45,7 +45,7 @@ if (count($id) == 0) {
             $consulta = "DELETE FROM $dbTabla
                 WHERE id=:indice";
             $result = $db->prepare($consulta);
-            if ($result->execute(array(":indice" => $indice))) {
+            if ($result->execute([":indice" => $indice])) {
                 print "      <p>Registro borrado correctamente.</p>\n";
             } else {
                 print "      <p>Error al borrar el registro.</p>\n";

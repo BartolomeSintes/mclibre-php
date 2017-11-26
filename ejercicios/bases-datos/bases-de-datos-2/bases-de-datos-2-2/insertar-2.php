@@ -63,7 +63,7 @@ if ($nombreOk && $apellidosOk) {
                 WHERE nombre=:nombre
                 AND apellidos=:apellidos";
             $result = $db->prepare($consulta);
-            $result->execute(array(":nombre" => $nombre, ":apellidos" => $apellidos));
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos]);
             if (!$result) {
                 print "      <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
@@ -73,7 +73,7 @@ if ($nombreOk && $apellidosOk) {
                     (nombre, apellidos)
                     VALUES (:nombre, :apellidos)";
                 $result = $db->prepare($consulta);
-                if ($result->execute(array(":nombre" => $nombre, ":apellidos" => $apellidos))) {
+                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
                     print "      <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
                 } else {
                     print "      <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";

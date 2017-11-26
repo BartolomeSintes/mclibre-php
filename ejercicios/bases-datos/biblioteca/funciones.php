@@ -56,14 +56,15 @@ define('MAX_REG_OBRAS',     20);  // N�mero m�ximo de registros en la tabla 
 define('MAX_REG_USUARIOS',  20);  // N�mero m�ximo de registros en la tabla Usuarios
 define('MAX_REG_PRESTAMOS', 20);  // N�mero m�ximo de registros en la tabla Pr�stamos
 
-$recorta = array(
+$recorta = [
     'titulo'    => TAM_TITULO,
     'autor'     => TAM_AUTOR,
     'editorial' => TAM_EDITORIAL,
     'nombre'    => TAM_NOMBRE,
     'apellidos' => TAM_APELLIDOS,
     'dni'       => TAM_DNI,
-    'fecha'     => TAM_FECHA);
+    'fecha'     => TAM_FECHA
+];
 
 function conectaDb()
 {
@@ -112,7 +113,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));

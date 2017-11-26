@@ -50,7 +50,7 @@ include "irregular-verbs-list.php";
 
 $numeroVerbos = count($irregularVerbs);
 
-$formaVerbalNombre = array("infinitivo", "pasado", "participio");
+$formaVerbalNombre = ["infinitivo", "pasado", "participio"];
 
 $respuesta   = recoge("respuesta");
 $verbo       = recoge("verbo");
@@ -81,7 +81,7 @@ if ($verboOk && $formaVerbalOk) {
 $formaVerbal = rand(0, 2);
 $verbo       = rand(0, $numeroVerbos - 1);
 
-$respuestas = array($irregularVerbs[$verbo][0], $irregularVerbs[$verbo][1], $irregularVerbs[$verbo][2]);
+$respuestas = [$irregularVerbs[$verbo][0], $irregularVerbs[$verbo][1], $irregularVerbs[$verbo][2]];
 shuffle($respuestas);
 
 print "  <table>\n";

@@ -44,8 +44,9 @@ if ($dbMotor==MYSQL) {
     $dbEntradas = 'entradas';         // Nombre de la tabla Entradas
 }
 
-$recorta = array(
-    'entrada' => TAM_ENTRADA);
+$recorta = [
+    'entrada' => TAM_ENTRADA
+];
 
 function conectaDb()
 {
@@ -94,7 +95,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));
@@ -184,11 +185,12 @@ function calendario ($fecha, $enlaces)
     $esBisiesto = (($anyo%400==0) || (($anyo%100!=0) && ($anyo%4==0)))
                     ? '1' : '0';
     $duraMeses = ($esBisiesto) ?
-        array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31) :
-        array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31);
-    $meses = array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
-                        'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
-                        'Noviembre', 'Diciembre');
+        [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31] :
+        [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31];
+    $meses = ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+        'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+        'Noviembre', 'Diciembre'
+    ];
 
     if ($diaInicial>$duraMeses[(int)($mes)-1]) {
         $fechaAnt = date('Y-m-d', mktime(0, 0, 0, $mes-1, $duraMeses[(int)($mes)-1], $anyo));
@@ -210,7 +212,7 @@ function calendario ($fecha, $enlaces)
 
     $jd = gregoriantojd($mes, 1, $anyo);
     $dia = (jddayofweek($jd, 0)+6)%7;
-    $dias = array ('L', 'M', 'X','J','V','S','D');
+    $dias = ['L', 'M', 'X','J','V','S','D'];
     $diaSemana = $dias[$dia];
 
     print "<div class=\"calendario\">\n  <table border=\"1\" class=\"calendario\" >\n";

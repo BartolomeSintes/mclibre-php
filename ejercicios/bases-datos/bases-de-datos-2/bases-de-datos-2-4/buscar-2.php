@@ -40,8 +40,8 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
     AND telefono LIKE :telefono
     AND correo LIKE :correo";
 $result = $db->prepare($consulta);
-$result->execute(array(":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
-    ":telefono" => "%$telefono%", ":correo" => "%$correo%"));
+$result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
+    ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
 if (!$result) {
     print "      <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
@@ -54,8 +54,8 @@ if (!$result) {
         AND correo LIKE :correo
         ORDER BY $campo $orden";
     $result = $db->prepare($consulta);
-    $result->execute(array(":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
-        ":telefono" => "%$telefono%", ":correo" => "%$correo%"));
+    $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
+        ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
     if (!$result) {
         print "      <p>Error en la consulta.</p>\n";
     } else {

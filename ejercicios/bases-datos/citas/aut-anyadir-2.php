@@ -34,7 +34,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     $nombre = recogeParaConsulta($db, 'nombre');
     $nombre = quitaComillasExteriores($nombre);
     $nombre = strtolower($nombre);
-    $tmpNombre = array();
+    $tmpNombre = [];
     $tmpNombre = explode(' ', $nombre);
     foreach ($tmpNombre as $indice => $valor) {
         $tmpNombre[$indice] = ucfirst($tmpNombre[$indice]);
@@ -44,7 +44,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     $apellidos = recogeParaConsulta($db, 'apellidos');
     $apellidos = quitaComillasExteriores($apellidos);
     $apellidos = strtolower($apellidos);
-    $tmpApellidos = array();
+    $tmpApellidos = [];
     $tmpApellidos = explode(" ", $apellidos);
     foreach ($tmpApellidos as $indice => $valor) {
         $tmpApellidos[$indice] = ucfirst($tmpApellidos[$indice]);

@@ -2,8 +2,8 @@
 /**
  * Multiagenda -  borrartodo2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    Bartolomï¿½ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomï¿½ Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -39,7 +39,7 @@ if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario']!
     } elseif ($dbMotor==SQLITE) {
         borraTodoSqlite($db);
     }
-    $_SESSION = array();
+    $_SESSION = [];
     $db = NULL;
     pie();
 }

@@ -51,7 +51,7 @@ function recoge($var)
 
 function recogeMatriz($var)
 {
-    $resul = array();
+    $resul = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $resul[limpia($indice)] = limpia($valor);

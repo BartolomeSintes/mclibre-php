@@ -39,7 +39,7 @@ if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"]!
     } elseif ($dbMotor == SQLITE) {
         borraTodoSqlite($db);
     }
-    $_SESSION = array();
+    $_SESSION = [];
     $db = null;
     pie();
 }

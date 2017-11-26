@@ -46,7 +46,7 @@ print "  <p>Valores elegidos al azar entre 0 y 10.</p>\n";
 print "\n";
 
 // Crea la matriz inicial
-$matriz = array();
+$matriz = [];
 for ($i = 0; $i < $numeroValores; $i++) {
     $matriz[] = rand(0, 10);
 }

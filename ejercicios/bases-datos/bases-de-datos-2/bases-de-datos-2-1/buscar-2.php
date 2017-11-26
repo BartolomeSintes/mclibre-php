@@ -34,7 +34,7 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db->prepare($consulta);
-$result->execute(array(":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"));
+$result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
 if (!$result) {
     print "      <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
@@ -44,7 +44,7 @@ if (!$result) {
         WHERE nombre LIKE :nombre
         AND apellidos LIKE :apellidos";
     $result = $db->prepare($consulta);
-    $result->execute(array(":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"));
+    $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
     if (!$result) {
         print "      <p>Error en la consulta.</p>\n";
     } else {

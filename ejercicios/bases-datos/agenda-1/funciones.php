@@ -46,11 +46,12 @@ if ($dbMotor==MYSQL) {
     $dbAgenda = 'agenda';             // Nombre de la tabla
 }
 
-$recorta = array(
+$recorta = [
     'nombre'    => TAM_NOMBRE,
     'apellidos' => TAM_APELLIDOS,
     'telefono'  => TAM_TELEFONO,
-    'correo'    => TAM_CORREO);
+    'correo'    => TAM_CORREO
+];
 
 function conectaDb()
 {
@@ -99,7 +100,7 @@ function recogeParaConsulta($db, $var, $var2='')
 
 function recogeMatrizParaConsulta($db, $var)
 {
-    $tmpMatriz = array();
+    $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
             $tmp = trim(strip_tags($indice));

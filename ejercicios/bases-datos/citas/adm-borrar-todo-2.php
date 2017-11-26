@@ -39,7 +39,7 @@ if (!isset($_SESSION['citasUsuario'])||($_SESSION['citasUsuario']!=$administrado
     } elseif ($dbMotor==SQLITE) {
         borraTodoSqlite($db);
     }
-    $_SESSION = array();
+    $_SESSION = [];
     $db = NULL;
     pie();
 }

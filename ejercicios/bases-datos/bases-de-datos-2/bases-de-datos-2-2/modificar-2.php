@@ -35,7 +35,7 @@ if ($id == "") {
     $consulta = "SELECT COUNT(*) FROM $dbTabla
        WHERE id=:id";
     $result = $db->prepare($consulta);
-    $result->execute(array(":id" => $id));
+    $result->execute([":id" => $id]);
     if (!$result) {
         print "      <p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn() == 0) {
@@ -44,7 +44,7 @@ if ($id == "") {
         $consulta = "SELECT * FROM $dbTabla
             WHERE id=:id";
         $result = $db->prepare($consulta);
-        $result->execute(array(":id" => $id));
+        $result->execute([":id" => $id]);
         if (!$result) {
             print "      <p>Error en la consulta.</p>\n";
         } else {

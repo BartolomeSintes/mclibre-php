@@ -78,7 +78,7 @@ if ($valoresOk) {
     print "\n";
 
     // Crea la matriz inicial
-    $matriz = array();
+    $matriz = [];
     for ($i = 0; $i < $numeroValores; $i++) {
         $matriz[] = rand($valorMinimo, $valorMaximo);
     }

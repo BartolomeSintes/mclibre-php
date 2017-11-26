@@ -41,17 +41,17 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 
 <?php
 
-$colores = array(
-    array("black",   "negro"),
-    array("blue",    "azul"),
-    array("fuchsia", "rosa"),
-    array("gray",    "gris"),
-    array("green",   "verde"),
-    array("orange",  "naranja"),
-    array("red",     "rojo"),
-    array("white",   "blanco"),
-    array("yellow",  "amarillo")
-);
+$colores = [
+    ["black",   "negro"],
+    ["blue",    "azul"],
+    ["fuchsia", "rosa"],
+    ["gray",    "gris"],
+    ["green",   "verde"],
+    ["orange",  "naranja"],
+    ["red",     "rojo"],
+    ["white",   "blanco"],
+    ["yellow",  "amarillo"]
+];
 
 $numeroColores = count($colores);
 
