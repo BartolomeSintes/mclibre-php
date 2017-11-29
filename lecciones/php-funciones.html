@@ -1,122 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Funciones y bibliotecas. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Funciones y bibliotecas. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Funciones y bibliotecas</h1>
+<body>
+  <h1>Funciones y bibliotecas</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Funciones y bibliotecas</h2>
+    <div class="toc">
+      <h2>Funciones y bibliotecas</h2>
 
-        <ul>
-          <li><a href="#funciones">Funciones</a></li>
-          <li><a href="#predeterminados">Argumentos predeterminados</a></li>
-          <li><a href="#bibliotecas">Bibliotecas</a></li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#funciones">Funciones</a></li>
+        <li><a href="#predeterminados">Argumentos predeterminados</a></li>
+        <li><a href="#bibliotecas">Bibliotecas</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <section id="funciones">
-      <h2>Funciones</h2>
+  <section id="funciones">
+    <h2>Funciones</h2>
 
-      <p>En PHP se pueden definir funciones, de manera que no haga falta escribir el mismo código varias veces. Las funciones deben definirse antes de utilizarlas (aunque no sea en el mismo fragmento de código php). Las funciones pueden no tener argumento o tener argumentos por valor o por referencia.</p>
+    <p>En PHP se pueden definir funciones, de manera que no haga falta escribir el mismo código varias veces. Las funciones deben definirse antes de utilizarlas (aunque no sea en el mismo fragmento de código php). Las funciones pueden no tener argumento o tener argumentos por valor o por referencia.</p>
 
-      <p>Los nombres de las funciones siguen las mismas reglas de los identificadores de PHP, es decir, deben comenzar por una letra o un guión bajo (_) y el resto de caracteres pueden ser letras, números o guiones bajos (se pueden utilizar caracteres no ingleses como acentos, eñes, etc), pero los nombres de funciones no distinguen entre mayúsculas o minúsculas.</p>
+    <p>Los nombres de las funciones siguen las mismas reglas de los identificadores de PHP, es decir, deben comenzar por una letra o un guión bajo (_) y el resto de caracteres pueden ser letras, números o guiones bajos (se pueden utilizar caracteres no ingleses como acentos, eñes, etc), pero los nombres de funciones no distinguen entre mayúsculas o minúsculas.</p>
 
-      <p>La <a href="../otros/guia-estilo.html">guía de estilo PEAR para PHP</a> recomienda que los nombres de las funciones sigan el estilo <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a> (es decir, sin espacios ni guiones, con la primera palabra en minúsculas y el resto con la primera letra en mayúsculas).</p>
+    <p>La <a href="../otros/guia-estilo.html">guía de estilo PEAR para PHP</a> recomienda que los nombres de las funciones sigan el estilo <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a> (es decir, sin espacios ni guiones, con la primera palabra en minúsculas y el resto con la primera letra en mayúsculas).</p>
 
-      <p>Ejemplo de función y de su uso:</p>
+    <p>Ejemplo de función y de su uso:</p>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
-
-<strong>// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaHipotenusa</strong>
-function calculaHipotenusa($arg1, $arg2)
+// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaHipotenusa
+<span class="codigo-resaltado">function calculaHipotenusa($arg1, $arg2)</span>
 {
     $hipotenusa = sqrt($arg1 * $arg1 + $arg2 * $arg2);
     return $hipotenusa;
 }
 
-<strong>// ESTO ES UN EJEMPLO DE USO DE LA FUNCIÓN calculaHipotenusa</strong>
+// ESTO ES UN EJEMPLO DE USO DE LA FUNCIÓN calculaHipotenusa
 $cateto1 = 12;
 $cateto2 = 16;
-$hipotenusa = calculaHipotenusa($cateto1, $cateto2);
+$hipotenusa = <span class="codigo-resaltado">calculaHipotenusa($cateto1, $cateto2)</span>;
 
 print "&lt;p&gt;El triángulo de lados $cateto1, $cateto2 \n";
 print "y $hipotenusa es rectángulo.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;El triángulo de lados 12, 16 y 20 es rectángulo.&lt;/p&gt;</code></pre>
-        </div>
       </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;El triángulo de lados 12, 16 y 20 es rectángulo.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>PHP no distingue entre mayúsculas y minúsculas en los nombres de las funciones.</p>
+    <p>PHP no distingue entre mayúsculas y minúsculas en los nombres de las funciones.</p>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 
-<strong>// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaHipotenusa</strong>
-function calculaHipotenusa($arg1, $arg2)
+// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaHipotenusa
+<span class="codigo-resaltado">function calculaHipotenusa($arg1, $arg2)</span>
 {
     $hipotenusa = sqrt($arg1*$arg1+$arg2*$arg2);
     return $hipotenusa;
 }
 
-<strong>// ESTO ES UN EJEMPLO DE USO DE LA FUNCIÓN calculaHipotenusa</strong>
+// ESTO ES UN EJEMPLO DE USO DE LA FUNCIÓN calculaHipotenusa
 $cateto1 = 12;
 $cateto2 = 16;
-$hipotenusa = <strong>CALCULAHIPOTENUSA</strong>($cateto1, $cateto2);
+$hipotenusa = <span class="codigo-resaltado">CALCULAHIPOTENUSA($cateto1, $cateto2)</span>;
 
 print "&lt;p&gt;El triángulo de lados $cateto1, $cateto2 \n";
 print "y $hipotenusa es rectángulo.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;El triángulo de lados 12, 16 y 20 es rectángulo.&lt;/p&gt;</code></pre>
-        </div>
       </div>
-    </section>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;El triángulo de lados 12, 16 y 20 es rectángulo.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
-    <section id="predeterminados">
-      <h2>Funciones con argumentos predeterminados</h2>
+    <hr class="corta" />
 
-      <p>En PHP se pueden definir funciones con argumentos predeterminados, de manera que si en la llamada a la función no se envía un argumento, la función asume un valor predeterminado. Lógicamente, los argumentos predeterminados deben ser los últimos en la lista de argumentos, para evitar ambigüedades.</p>
+    <p>No se pueden definir dos funciones con el mismo nombre.</p>
 
-      <p>Los argumentos predeterminados se establecen en la definición de la función, igualando el nombre del argumento a su valor predeterminado.</p>
-
-      <p>El ejemplo siguiente muestra una función que calcula diferentes tipos de media (aritmética, geométrica, armónica). Los argumentos de la función son los números cuya media se debe calcular y el tipo de media a calcular. En el ejemplo, el tipo de media predeterminado es la media aritmética.</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
+function prueba()
+{
+    return;
+}
 
-<strong>// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaMedia</strong>
-function calculaMedia($arg1, $arg2, $arg3 = "aritmética")
+function Prueba()
+{
+    return;
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p><b>Fatal error</b>:  Cannot redeclare Prueba() (previously declared in ejemplo.php:4) in <b>ejemplo.php</b> on line <b>10</b><br /></p>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="predeterminados">
+    <h2>Funciones con argumentos predeterminados</h2>
+
+    <p>En PHP se pueden definir funciones con argumentos predeterminados, de manera que si en la llamada a la función no se envía un argumento, la función asume un valor predeterminado. Lógicamente, los argumentos predeterminados deben ser los últimos en la lista de argumentos, para evitar ambigüedades.</p>
+
+    <p>Los argumentos predeterminados se establecen en la definición de la función, igualando el nombre del argumento a su valor predeterminado.</p>
+
+    <p>El ejemplo siguiente muestra una función que calcula diferentes tipos de media (aritmética, geométrica, armónica). Los argumentos de la función son los números cuya media se debe calcular y el tipo de media a calcular. En el ejemplo, el tipo de media predeterminado es la media aritmética.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaMedia
+function calculaMedia($arg1, $arg2, <span class="codigo-resaltado">$arg3 = "aritmética"</span>)
 {
     if ($arg3 == "aritmética") {
         $media = ($arg1 + $arg2) / 2;
@@ -128,40 +155,40 @@ function calculaMedia($arg1, $arg2, $arg3 = "aritmética")
     return $media;
 }
 
-<strong>// ESTO SON EJEMPLOS DE USO DE LA FUNCIÓN calculaMedia</strong>
+// ESTO SON EJEMPLOS DE USO DE LA FUNCIÓN calculaMedia
 $dato1 = 12;
 $dato2 = 16;
 
-<strong>// EL TERCER ARGUMENTO INDICA EL TIPO DE MEDIA A CALCULAR</strong>
-$media = calculaMedia($dato1, $dato2, "geométrica");
+// EL TERCER ARGUMENTO INDICA EL TIPO DE MEDIA A CALCULAR
+$media = calculaMedia(<span class="codigo-resaltado">$dato1, $dato2, "geométrica"</span>);
 print "&lt;p&gt;La media geométrica de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
 
-<strong>// AL NO PONER EL TERCER ARGUMENTO, DEVUELVE LA MEDIA ARITMÉTICA</strong>
-$media = calculaMedia($dato1, $dato2);
+// AL NO PONER EL TERCER ARGUMENTO, DEVUELVE LA MEDIA ARITMÉTICA
+$media = calculaMedia(<span class="codigo-resaltado">$dato1, $dato2</span>);
 print "&lt;p&gt;La media aritmética de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
 <code class="language-html">&lt;p&gt;La media geométrica de 12 y 16 es 6.9282032302755.&lt;/p&gt;
 &lt;p&gt;La media aritmética de 12 y 16 es 14.&lt;/p&gt;</code>
 </pre>
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="bibliotecas">
-      <h2>Bibliotecas</h2>
+  <section id="bibliotecas">
+    <h2>Bibliotecas</h2>
 
-      <p>Las bibliotecas son archivos php que se pueden incluir en cualquier otro archivo php. Las bibliotecas se suelen utilizar para centralizar fragmentos de código que se utilizan en varias páginas. De esa manera, si se quiere hacer alguna modificación, no es necesario hacer el cambio en todos las páginas sino únicamente en la biblioteca.</p>
+    <p>Las bibliotecas son archivos php que se pueden incluir en cualquier otro archivo php. Las bibliotecas se suelen utilizar para centralizar fragmentos de código que se utilizan en varias páginas. De esa manera, si se quiere hacer alguna modificación, no es necesario hacer el cambio en todos las páginas sino únicamente en la biblioteca.</p>
 
-      <p>Por ejemplo, si definimos en la biblioteca una función que imprima la cabecera de las páginas, desde cualquier página se puede incluir la biblioteca mediante la construcción <a href="http://php.net/manual/es/function.include.php"><span class="php-fun">include</span></a> y llamar a la función como si se hubiera definido en la propia página:</p>
-      <ul>
-        <li>biblioteca.php
+    <p>Por ejemplo, si definimos en la biblioteca una función que imprima la cabecera de las páginas, desde cualquier página se puede incluir la biblioteca mediante la construcción <a href="http://php.net/manual/es/function.include.php"><span class="php-fun">include</span></a> y llamar a la función como si se hubiera definido en la propia página:</p>
+    <ul>
+      <li>biblioteca.php
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 function cabecera($titulo)
 {
@@ -169,169 +196,176 @@ function cabecera($titulo)
     print "&lt;html lang=\"es\"&gt;\n";
     print "&lt;head&gt;\n";
     print "  &lt;meta charset=\"utf-8\" /&gt;\n";
-    print "    &lt;title&gt;$titulo&lt;/title&gt;\n";
-    print "  &lt;link href=\"estilo.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;\n";
+    print "  &lt;title&gt;$titulo&lt;/title&gt;\n";
+    print "  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /&gt;";
+    print "  &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"estilo.css\"/&gt;\n";
     print "&lt;/head&gt;\n";
     print "\n";
     print "&lt;body&gt;\n";
-    print "&lt;h1&gt;$titulo&lt;/h1&gt;\n";
+    print "  &lt;h1&gt;$titulo&lt;/h1&gt;\n";
     print "\n";
 }
 ?&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>pagina_1.php
+        </div>
+      </li>
+      <li>pagina-1.php
 
-          <div class="filaflex">
-            <div class="codigo">
-              <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-<strong>include "biblioteca.php";</strong>
+<span class="codigo-resaltado">include "biblioteca.php";</span>
 cabecera("Página de ejemplo");
-print "&lt;p&gt;Esta página es válida&lt;/p&gt;";
+print "  &lt;p&gt;Esta página es válida&lt;/p&gt;";
 ?&gt;</code></pre>
-              <pre>
+            <pre>
 <code class="language-html">&lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </div>
-            <div class="resultado-codigo">
-              <pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8" /&gt;
   &lt;title&gt;Página de ejemplo&lt;/title&gt;
-  &lt;link href="estilo.css" rel="stylesheet" type="text/css" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;link rel="stylesheet" type="text/css" href="estilo.css" /&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-&lt;h1&gt;<strong>Página de ejemplo</strong>&lt;/h1&gt;
+  &lt;h1&gt;Página de ejemplo&lt;/h1&gt;
 
-&lt;p&gt;Esta página es válida&lt;/p&gt;
+  &lt;p&gt;Esta página es válida&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </div>
           </div>
-        </li>
-        <li>pagina_2.php
+        </div>
+      </li>
+      <li>pagina-2.php
 
-          <div class="filaflex">
-            <div class="codigo">
-              <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-<strong>include "biblioteca.php";</strong>
+<span class="codigo-resaltado">include "biblioteca.php";</span>
 cabecera("Otra página de ejemplo");
-print "&lt;p&gt;Esta página también es válida&lt;/p&gt;";
+print "  &lt;p&gt;Esta página también es válida&lt;/p&gt;";
 ?&gt;</code>
 </pre>
-              <pre>
+            <pre>
 <code class="language-html">&lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </div>
-            <div class="resultado-codigo">
-              <pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8" /&gt;
   &lt;title&gt;Otra página de ejemplo&lt;/title&gt;
-  &lt;link href="estilo.css" rel="stylesheet" type="text/css" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;link rel="stylesheet" type="text/css" href="estilo.css" /&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-&lt;h1&gt;<strong>Otra página de ejemplo</strong>&lt;/h1&gt;
-&lt;p&gt;Esta página también es válida&lt;/p&gt;
+  &lt;h1&gt;Otra página de ejemplo&lt;/h1&gt;
+
+  &lt;p&gt;Esta página también es válida&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </li>
+    </ul>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Se pueden crear todas las bibliotecas que se necesiten e incluir cualquier número de bibliotecas en cualquier punto de un programa. Las bibliotecas pueden a su vez incluir otras bibliotecas.</p>
+    <p>Se pueden crear todas las bibliotecas que se necesiten e incluir cualquier número de bibliotecas en cualquier punto de un programa. Las bibliotecas pueden a su vez incluir otras bibliotecas.</p>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Normalmente, las bibliotecas suelen contener funciones, definiciones de constantes o inicialización de variables, pero en realidad pueden incluir cualquier tipo de código php, que se ejecutará en la posición en la que se incluya la biblioteca.</p>
+    <p>Normalmente, las bibliotecas suelen contener funciones, definiciones de constantes o inicialización de variables, pero en realidad pueden incluir cualquier tipo de código php, que se ejecutará en la posición en la que se incluya la biblioteca.</p>
 
-      <p>En el ejemplo siguiente, las bibliotecas modifican variables, lo que afecta a su valor.</p>
-      <ul>
-        <li>biblioteca_1.php
+    <p>Sobre este punto en concreto, la <a href="http://www.php-fig.org/psr/psr-1/#23-side-effects">guía de estilo PSR-1</a> comenta que en cualquier fichero de una biblioteca se pueden definir funciones, constantes, clases, etc. o se puede incluir parte de la lógica del programa (generar salida, modificar variables, etc.), pero prescribe que no se hagan las dos cosas en un mismo fichero.</p>
 
-          <div class="codigo">
-            <pre>
+    <p>En el ejemplo siguiente, las bibliotecas modifican variables, lo que afecta a su valor.</p>
+    <ul>
+      <li>biblioteca-1.php
+
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $i = 1;
 ?&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>biblioteca_2.php
+        </div>
+      </li>
+      <li>biblioteca-2.php
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $i = $i + 10;
 ?&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Programa:
+        </div>
+      </li>
+      <li>Programa:
 
-          <div class="filaflex">
-            <div class="codigo">
-              <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-include "biblioteca_1.php";
+include "biblioteca-1.php";
 print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-include "biblioteca_2.php";
+include "biblioteca-2.php";
 print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-include "biblioteca_2.php";
+include "biblioteca-2.php";
 print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-            </div>
-            <div class="resultado-codigo">
-              <pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
 <code class="language-html">&lt;p&gt;Ahora $i vale 1&lt;/p&gt;
 &lt;p&gt;Ahora $i vale 11&lt;/p&gt;
 &lt;p&gt;Ahora $i vale 21&lt;/p&gt;</code>
 </pre>
-            </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </li>
+    </ul>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Existe una construcción similar a <a href="http://php.net/manual/es/function.include.php"><span class="php-fun">include</span></a>, la construcción <a href="http://php.net/manual/es/function.require.php"><span class="php-fun">require</span></a>. La diferencia con respecto a <span class="php-fun">include</span> es que <span class="php-fun">require</span> produce un error si no se encuentra el archivo (y no se procesa el resto de la página), mientras que <span class="php-fun">include</span> sólo produce un aviso (y se procesa el resto de la página).</p>
+    <p>Existe una construcción similar a <a href="http://php.net/manual/es/function.include.php"><span class="php-fun">include</span></a>, la construcción <a href="http://php.net/manual/es/function.require.php"><span class="php-fun">require</span></a>. La diferencia con respecto a <span class="php-fun">include</span> es que <span class="php-fun">require</span> produce un error si no se encuentra el archivo (y no se procesa el resto de la página), mientras que <span class="php-fun">include</span> sólo produce un aviso (y se procesa el resto de la página).</p>
 
-      <p>En un mismo archivo php se pueden incluir varias construcciones <span class="php-fun">include</span> o <span class="php-fun">require</span>, pero si las bibliotecas incluidas contienen definiciones de funciones, al incluir de nuevo la definición de la función se genera un error.</p>
+    <p>En un mismo archivo php se pueden incluir varias construcciones <span class="php-fun">include</span> o <span class="php-fun">require</span>, pero si las bibliotecas incluidas contienen definiciones de funciones, al incluir de nuevo la definición de la función se genera un error.</p>
 
-      <p>Para que no ocurra este problema se pueden utilizar las funciones <a href="http://php.net/manual/es/function.include-once.php"><span class="php-fun">include_once</span> </a> o <a href="http://php.net/manual/es/function.require-once.php"><span class="php-fun">require_once</span> </a>, que también incluyen los ficheros pero que, en caso de que los ficheros ya se hayan incluido, entonces no los incluyen.</p>
+    <p>Para que no ocurra este problema se pueden utilizar las funciones <a href="http://php.net/manual/es/function.include-once.php"><span class="php-fun">include_once</span> </a> o <a href="http://php.net/manual/es/function.require-once.php"><span class="php-fun">require_once</span> </a>, que también incluyen los ficheros pero que, en caso de que los ficheros ya se hayan incluido, entonces no los incluyen.</p>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Las cuatro construcciones (<span class="php-fun">include</span>, <span class="php-fun">require</span>, <span class="php-fun">include_once</span> y <span class="php-fun">require_once</span>) pueden utilizarse escribiendo entre paréntesis el nombre de los ficheros o sin escribir paréntesis.</p>
+    <p>Las cuatro construcciones (<span class="php-fun">include</span>, <span class="php-fun">require</span>, <span class="php-fun">include_once</span> y <span class="php-fun">require_once</span>) pueden utilizarse escribiendo entre paréntesis el nombre de los ficheros o sin escribir paréntesis.</p>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>La guía de estilo del proyecto PEAR prescribe el uso de la construcción <span class="php-fun">require_once</span> en el caso de bibliotecas cuya inclusión no dependa de ninguna condición y que no se utilicen paréntesis alrededor de los nombres de las bibliotecas.</p>
-    </section>
+    <p>La guía de estilo del proyecto PEAR prescribe el uso de la construcción <span class="php-fun">require_once</span> en el caso de bibliotecas cuya inclusión no dependa de ninguna condición y que no se utilicen paréntesis alrededor de los nombres de las bibliotecas.</p>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 30 de noviembre de 2015</p>
+  </section>
+
+  <footer>
+      <p class="ultmod">Última modificación de esta página: 29 de noviembre de 2017</p>
 
       <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
         Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
         que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
     </footer>
-  </body>
+</body>
 </html>
