@@ -37,24 +37,24 @@ $consulta = "SELECT * FROM $dbTabla
 $result = $db->prepare($consulta);
 $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
 
-print "      <p>Registros encontrados:</p>\n";
+print "    <p>Registros encontrados:</p>\n";
 print "\n";
-print "      <table class=\"conborde franjas\">\n";
-print "        <thead>\n";
-print "          <tr>\n";
-print "            <th>Nombre</th>\n";
-print "            <th>Apellidos </th>\n";
-print "          </tr>\n";
-print "        </thead>\n";
-print "        <tbody>\n";
+print "    <table class=\"conborde franjas\">\n";
+print "      <thead>\n";
+print "        <tr>\n";
+print "          <th>Nombre</th>\n";
+print "          <th>Apellidos </th>\n";
+print "        </tr>\n";
+print "      </thead>\n";
+print "      <tbody>\n";
 foreach ($result as $valor) {
-    print "          <tr>\n";
-    print "            <td>$valor[nombre]</td>\n";
-    print "            <td>$valor[apellidos]</td>\n";
-    print "          </tr>\n";
+    print "        <tr>\n";
+    print "          <td>$valor[nombre]</td>\n";
+    print "          <td>$valor[apellidos]</td>\n";
+    print "        </tr>\n";
 }
-print "        </tbody>\n";
-print "      </table>\n";
+print "      </tbody>\n";
+print "    </table>\n";
 
 $db = null;
 pie();

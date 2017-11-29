@@ -39,28 +39,28 @@ $telefonoOk  = false;
 $correoOk    = false;
 
 if (mb_strlen($nombre, "UTF-8") > $tamNombre) {
-    print "      <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
+    print "    <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
 if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
-    print "      <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
 if (mb_strlen($telefono, "UTF-8") > $tamTelefono) {
-    print "      <p class=\"aviso\">El teléfono no puede tener más de $tamTelefono caracteres.</p>\n";
+    print "    <p class=\"aviso\">El teléfono no puede tener más de $tamTelefono caracteres.</p>\n";
     print "\n";
 } else {
     $telefonoOk = true;
 }
 
 if (mb_strlen($correo, "UTF-8") > $tamCorreo) {
-    print "      <p class=\"aviso\">El correo no puede tener más de $tamCorreo caracteres.</p>\n";
+    print "    <p class=\"aviso\">El correo no puede tener más de $tamCorreo caracteres.</p>\n";
     print "\n";
 } else {
     $correoOk = true;
@@ -68,18 +68,18 @@ if (mb_strlen($correo, "UTF-8") > $tamCorreo) {
 
 if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
     if ($id == "") {
-        print "      <p>No se ha seleccionado ningún registro.</p>\n";
+        print "    <p>No se ha seleccionado ningún registro.</p>\n";
     } elseif ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
-        print "      <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
+        print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
-            print "      <p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() == 0) {
-            print "      <p>Registro no encontrado.</p>\n";
+            print "    <p>Registro no encontrado.</p>\n";
         } else {
             // La consulta cuenta los registros con un id diferente porque MySQL no distingue
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
@@ -94,9 +94,9 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
             $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
                 ":telefono" => $telefono, ":correo" => $correo, ":id" => $id]);
             if (!$result) {
-                print "      <p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
-                print "      <p>Ya existe un registro con esos mismos valores. "
+                print "    <p>Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";
             } else {
                 $consulta = "UPDATE $dbTabla
@@ -106,9 +106,9 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
                 $result = $db->prepare($consulta);
                 if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
                     ":telefono" => $telefono, ":correo" => $correo, ":id" => $id])) {
-                    print "      <p>Registro modificado correctamente.</p>\n";
+                    print "    <p>Registro modificado correctamente.</p>\n";
                 } else {
-                    print "      <p>Error al modificar el registro.</p>\n";
+                    print "    <p>Error al modificar el registro.</p>\n";
                 }
             }
         }

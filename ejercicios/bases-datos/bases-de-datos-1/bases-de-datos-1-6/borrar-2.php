@@ -34,9 +34,9 @@ foreach ($id as $indice => $valor) {
     WHERE id=:indice";
     $result = $db->prepare($consulta);
     if ($result->execute([":indice" => $indice])) {
-        print "      <p>Registro borrado correctamente.</p>\n";
+        print "    <p>Registro borrado correctamente.</p>\n";
     } else {
-        print "      <p>Error al borrar el registro.</p>\n";
+        print "    <p>Error al borrar el registro.</p>\n";
     }
 }
 

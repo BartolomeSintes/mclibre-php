@@ -34,14 +34,14 @@ $nombreOk    = false;
 $apellidosOk = false;
 
 if (mb_strlen($nombre, "UTF-8") > $tamNombre) {
-    print "      <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
+    print "    <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
 if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
-    print "      <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
@@ -53,9 +53,9 @@ if ($nombreOk && $apellidosOk) {
         VALUES (:nombre, :apellidos)";
     $result = $db->prepare($consulta);
     if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
-        print "      <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
+        print "    <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
     } else {
-        print "      <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";
+        print "    <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";
     }
 }
 

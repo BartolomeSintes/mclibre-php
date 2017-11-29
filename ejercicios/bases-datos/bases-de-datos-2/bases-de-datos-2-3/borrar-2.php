@@ -30,7 +30,7 @@ cabecera ("Borrar 2", MENU_VOLVER);
 $id = recogeMatriz("id");
 
 if (count($id) == 0) {
-    print "      <p>No se ha seleccionado ningún registro.</p>\n";
+    print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
@@ -38,17 +38,17 @@ if (count($id) == 0) {
         $result = $db->prepare($consulta);
         $result->execute([":indice" => $indice]);
         if (!$result) {
-            print "      <p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() == 0) {
-            print "      <p>Registro no encontrado.</p>\n";
+            print "    <p>Registro no encontrado.</p>\n";
         } else {
             $consulta = "DELETE FROM $dbTabla
                 WHERE id=:indice";
             $result = $db->prepare($consulta);
             if ($result->execute([":indice" => $indice])) {
-                print "      <p>Registro borrado correctamente.</p>\n";
+                print "    <p>Registro borrado correctamente.</p>\n";
             } else {
-                print "      <p>Error al borrar el registro.</p>\n";
+                print "    <p>Error al borrar el registro.</p>\n";
             }
         }
     }

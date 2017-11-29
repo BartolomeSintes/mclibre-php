@@ -73,6 +73,7 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
             $_SESSION["error"] = "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() >= MAX_REG_TABLA) {
             $_SESSION["error"] = "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n"
+                . "\n"
                 . "      <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbTabla

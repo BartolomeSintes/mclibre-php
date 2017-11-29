@@ -43,9 +43,9 @@ $result = $db->prepare($consulta);
 $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
     ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
 if (!$result) {
-    print "      <p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "      <p>No se han encontrado registros.</p>\n";
+    print "    <p>No se han encontrado registros.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbTabla
         WHERE nombre LIKE :nombre
@@ -57,48 +57,48 @@ if (!$result) {
     $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
         ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
     if (!$result) {
-        print "      <p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
     } else {
         $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;"
             . "telefono=$telefono&amp;correo=$correo&amp;campo";
-        print "      <p>Registros encontrados:</p>\n";
+        print "    <p>Registros encontrados:</p>\n";
         print "\n";
-        print "      <table class=\"conborde franjas\">\n";
-        print "        <thead>\n";
-        print "          <tr>\n";
-        print "            <th><a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;orden=ASC\">\n";
-        print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
-        print "              Nombre\n";
-        print "              <a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;orden=DESC\">\n";
-        print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
-        print "            <th><a href=\"$_SERVER[PHP_SELF]?$datos=apellidos&amp;orden=ASC\">\n";
-        print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
-        print "              Apellidos\n";
-        print "              <a href=\"$_SERVER[PHP_SELF]?$datos=apellidos&amp;orden=DESC\">\n";
-        print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
-        print "            <th><a href=\"$_SERVER[PHP_SELF]?$datos=telefono&amp;orden=ASC\">\n";
-        print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
-        print "              Teléfono\n";
-        print "              <a href=\"$_SERVER[PHP_SELF]?$datos=telefono&amp;orden=DESC\">\n";
-        print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
-        print "            <th><a href=\"$_SERVER[PHP_SELF]?$datos=correo&amp;orden=ASC\">\n";
-        print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
-        print "              Correo\n";
-        print "              <a href=\"$_SERVER[PHP_SELF]?$datos=correo&amp;orden=DESC\">\n";
-        print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
-        print "          </tr>\n";
-        print "        </thead>\n";
-        print "        <tbody>\n";
+        print "    <table class=\"conborde franjas\">\n";
+        print "      <thead>\n";
+        print "        <tr>\n";
+        print "          <th><a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;orden=ASC\">\n";
+        print "            <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
+        print "            Nombre\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;orden=DESC\">\n";
+        print "            <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
+        print "          <th><a href=\"$_SERVER[PHP_SELF]?$datos=apellidos&amp;orden=ASC\">\n";
+        print "            <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
+        print "            Apellidos\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=apellidos&amp;orden=DESC\">\n";
+        print "            <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
+        print "          <th><a href=\"$_SERVER[PHP_SELF]?$datos=telefono&amp;orden=ASC\">\n";
+        print "            <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
+        print "            Teléfono\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=telefono&amp;orden=DESC\">\n";
+        print "            <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
+        print "          <th><a href=\"$_SERVER[PHP_SELF]?$datos=correo&amp;orden=ASC\">\n";
+        print "            <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
+        print "            Correo\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=correo&amp;orden=DESC\">\n";
+        print "            <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
+        print "        </tr>\n";
+        print "      </thead>\n";
+        print "      <tbody>\n";
         foreach ($result as $valor) {
-            print "          <tr>\n";
-            print "            <td>$valor[nombre]</td>\n";
-            print "            <td>$valor[apellidos]</td>\n";
-            print "            <td>$valor[telefono]</td>\n";
-            print "            <td>$valor[correo]</td>\n";
-            print "          </tr>\n";
+            print "        <tr>\n";
+            print "          <td>$valor[nombre]</td>\n";
+            print "          <td>$valor[apellidos]</td>\n";
+            print "          <td>$valor[telefono]</td>\n";
+            print "          <td>$valor[correo]</td>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
-        print "      </table>\n";
+        print "      </tbody>\n";
+        print "    </table>\n";
     }
 }
 
