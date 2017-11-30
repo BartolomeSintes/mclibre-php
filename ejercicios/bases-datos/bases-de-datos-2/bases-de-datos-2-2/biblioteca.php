@@ -137,9 +137,9 @@ function cabecera($texto, $menu)
 
 function pie()
 {
-    print "    </main>\n";
+    print "  </main>\n";
     print "\n";
-    print "    <footer>\n";
+    print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
     print "      <time datetime=\"2016-12-06\">6 de diciembre de 2016</time></p>\n";
@@ -150,7 +150,7 @@ function pie()
     print "      Sintes Marco</a>.<br />\n";
     print "      El programa PHP que genera esta página está bajo\n";
     print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a></p>\n";
-    print "    </footer>\n";
-    print "  </body>\n";
+    print "  </footer>\n";
+    print "</body>\n";
     print "</html>";
 }

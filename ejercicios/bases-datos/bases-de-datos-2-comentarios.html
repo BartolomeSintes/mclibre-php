@@ -45,7 +45,7 @@
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -80,10 +80,11 @@ $db = null;</code>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() &gt;= MAX_REG_TABLA) {
-    print "  &lt;p&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
-    print "  &lt;p&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
+    print "\n";
+    print "    &lt;p&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -98,7 +99,7 @@ if (!$result) {
               <div class="codigo">
                 <pre>
 <code class="language-php">if ($nombre == "" &amp;&amp; $apellidos == "") {
-        print "  &lt;p&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -119,9 +120,9 @@ if (!$result) {
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() &gt; 0) {
-    print "  &lt;p&gt;El registro ya existe.&lt;/p&gt;\n";
+    print "    &lt;p&gt;El registro ya existe.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -140,9 +141,9 @@ if (!$result) {
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
-    print "  &lt;p&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
+    print "    &lt;p&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -167,7 +168,7 @@ if (!$result) {
 <code class="language-php">$id = recogeMatriz("id");
 
 if (count($id) == 0) {
-    print "  &lt;p&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
+    print "    &lt;p&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -195,9 +196,9 @@ if (count($id) == 0) {
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
-    print "  &lt;p&gt;No se han encontrado registros.&lt;/p&gt;\n";
+    print "    &lt;p&gt;No se han encontrado registros.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -222,7 +223,7 @@ if (!$result) {
 <code class="language-php">$id = recoge("id");
 
 if ($id == "") {
-    print "  &lt;p&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
+    print "    &lt;p&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -240,9 +241,9 @@ if ($id == "") {
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":id" =&gt; $id]);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
-    print "  &lt;p&gt;Registro no encontrado.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Registro no encontrado.&lt;/p&gt;\n";
 } else {
  ...</code>
  </pre>
@@ -273,9 +274,9 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn()&gt;0) {
-    print "  &lt;p&gt;Ya existe un registro con esos mismos valores. "
+    print "    &lt;p&gt;Ya existe un registro con esos mismos valores. "
         . "No se ha guardado la modificación.&lt;/p&gt;\n";
 } else {
  ...</code>
@@ -349,11 +350,13 @@ function recogeOrden($var, $var2)
 <code class="language-php">// En la dirección se escribe la entidad de carácter &amp;amp; en vez del carácter &amp;
 // para que el código HTML de la página sea válido
 
-print "        &lt;th&gt;&lt;a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;amp;orden=ASC\"&gt;\n";
-print "          &lt;img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /&gt;&lt;/a&gt;\n";
+print "        &lt;th&gt;";
+print "          &lt;a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;amp;orden=ASC\"&gt;\n";
+print "            &lt;img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /&gt;&lt;/a&gt;\n";
 print "          Nombre\n";
 print "          &lt;a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;amp;orden=DESC\"&gt;\n";
-print "          &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /&gt;&lt;/a&gt;&lt;/th&gt;\n";</code>
+print "            &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /&gt;&lt;/a&gt;\n";
+print "        &lt;/th&gt;\n";</code>
 </pre>
           </div>
 
@@ -370,11 +373,13 @@ datos = "nombre=$nombre&amp;amp;apellidos=$apellidos&amp;amp;campo";
 
 // ...
 
-print "        &lt;th&gt;&lt;a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;amp;orden=ASC\"&gt;\n";
-print "          &lt;img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /&gt;&lt;/a&gt;\n";
+print "        &lt;th&gt;\n";
+print "          &lt;a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;amp;orden=ASC\"&gt;\n";
+print "            &lt;img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /&gt;&lt;/a&gt;\n";
 print "          Nombre\n";
 print "          &lt;a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;amp;orden=DESC\"&gt;\n";
-print "          &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /&gt;&lt;/a&gt;&lt;/th&gt;\n";</code>
+print "            &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /&gt;&lt;/a&gt;\n";
+print "        &lt;/th&gt;\n";</code>
 </pre>
           </div>
         </li>
