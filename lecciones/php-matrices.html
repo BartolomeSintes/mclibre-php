@@ -40,6 +40,7 @@
         <li><a href="#buscar">Buscar un valor</a></li>
         <li><a href="#reindexar">Reindexar</a></li>
         <li><a href="#barajar">Barajar elementos</a></li>
+        <li><a href="#extraer-al-azar">Extraer elemento al azar</a></li>
       </ul>
     </div>
   </nav>
@@ -1660,8 +1661,53 @@ print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n\n";
     </div>
   </section>
 
+  <section id="extraer-al-azar">
+    <h2>Extraer al azar un elemento de una matriz</h2>
+
+    <p>La función <a href="http://php.net/manual/en/function.array-rand.php"><span class="php-fun">array_rand($matriz)</span></a> extrae al azar uno de los índices de la matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
+
+$indice = array_rand($cuadrados);
+
+print "&lt;p&gt;$indice&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <code class="language-html">&lt;p&gt;10&lt;/p&gt;</code>
+      </div>
+    </div>
+
+    <p>Una vez obtenido el índice se puede obtener el valor correspondiente de la matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
+
+$indice = array_rand($cuadrados);
+
+print "&lt;p&gt;$indice - $cuadrados[$indice]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>
+<code class="language-html">&lt;p&gt;10 - 100&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 30 de noviembre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
