@@ -1,11 +1,11 @@
 <?php
 /**
- * Tabla con casillas de verificación (Resultado) - foreach-1-5-2.php
+ * Tabla con casillas de verificación (Resultado) - foreach-1-15-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-09
+ * @version   2017-11-30
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-foreach-1-5");
+session_name("cs-foreach-1-15");
 session_start();
 
 // Si el tamaño de la tabla no está guardado en la sesión, vuelve al formulario
 if (!isset($_SESSION["numero"])) {
-    header("Location: foreach-1-5-1.php");
+    header("Location: foreach-1-15-1.php");
     exit;
 }
 ?>
@@ -114,12 +114,12 @@ if ($cOk) {
     }
 }
 ?>
-  <p><a href="foreach-1-5-1.php">Volver al formulario.</a></p>
+  <p><a href="foreach-1-15-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
+      <time datetime="2017-11-30">30 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

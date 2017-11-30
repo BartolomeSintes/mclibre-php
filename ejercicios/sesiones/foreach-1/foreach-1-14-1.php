@@ -1,11 +1,11 @@
 <?php
 /**
- * Hombres y mujeres (Formulario) - foreach-1-4-1.php
+ * Hombres y mujeres (Formulario) - foreach-1-14-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-09
+ * @version   2017-11-30
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-foreach-1-4");
+session_name("cs-foreach-1-14");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ session_start();
 
   <p>Escriba un nombre propio en cada caja de texto y si se trata de un hombre o de una mujer.</p>
 
-  <form action="foreach-1-4-2.php" method="get">
+  <form action="foreach-1-14-2.php" method="get">
     <table>
       <tbody>
 <?php
@@ -75,7 +75,7 @@ for ($i = 1; $i <= $numero; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
+      <time datetime="2017-11-30">30 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

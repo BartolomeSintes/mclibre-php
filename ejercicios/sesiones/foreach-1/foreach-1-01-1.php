@@ -1,6 +1,6 @@
 <?php
 /**
- * Tabla con casillas de verificación (Formulario) - foreach-1-15-1.php
+ * Elimine dibujos - foreach-1-01-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
@@ -21,56 +21,49 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
-session_name("cs-foreach-1-15");
+
+session_name("foreach-1-01");
 session_start();
+
+$caracterMinimo = 128000;
+$caracterMaximo = 128060;
+$_SESSION["numeroDibujos"] = 7;
+
+if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = mt_rand($caracterMinimo, $caracterMaximo);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tabla cuadrada con casillas de verificación (Formulario). foreach (1). Sesiones.
+  <title>Elimine dibujos. foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <style type="text/css">
+    button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
+  </style>
 </head>
 
 <body>
-  <h1>Tabla cuadrada con casillas de verificación (Formulario)</h1>
-
-  <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>
-
-  <form action="foreach-1-15-2.php" method="get">
-    <table class="conborde">
-      <tbody>
 <?php
-// Recogida de datos
-$numero = rand(2, 20);
-
-// Guarda en la sesión el número de casillas
-$_SESSION["numero"] = $numero;
-
-// Bucle anidado para generar la tabla cuadrada con casillas de verificación
-// Creamos un contador para generar el índice de la casilla de verificación
-$contador = 1;
-for ($i = 0; $i < $numero; $i++) {
-    print "        <tr>\n";
-    for ($j = 1; $j <= $numero; $j++) {
-        // El nombre del control es una matriz (c[])
-        print "          <td><label><input type=\"checkbox\" name=\"c[$contador]\" /> $contador</label></td>\n";
-        $contador++;
-    }
-    print "        </tr>\n";
+print "  <h1>$_SESSION[numeroDibujos] dibujos, y quedaron " . count($_SESSION["dibujos"]) . "</h1>\n";
+print "\n";
+print "  <p>Haga clic en un dibujo para eliminarlo.</p>\n";
+print "\n";
+print "  <form action=\"foreach-1-01-2.php\">\n";
+print "    <p>\n";
+foreach ($_SESSION["dibujos"] as $indice => $valor) {
+    print "      <button name=\"elimina\" value=\"$indice\" style=\"font-size: 400%\">\n";
+    print "        &#$valor;\n";
+    print "      </button>\n";
 }
+print "    </p>\n";
+print "  </form>\n";
 ?>
-      </tbody>
-    </table>
-
-    <p>
-      <input type="submit" value="Contar" />
-      <input type="reset" value="Borrar" />
-    </p>
-  </form>
 
   <footer>
     <p class="ultmod">

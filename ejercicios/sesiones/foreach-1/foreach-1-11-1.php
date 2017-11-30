@@ -1,11 +1,11 @@
 <?php
 /**
- * Tabla con casillas de verificación (Formulario) - foreach-1-1-1.php
+ * Tabla con casillas de verificación (Formulario) - foreach-1-11-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-09
+ * @version   2017-11-30
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-foreach-1-1");
+session_name("cs-foreach-1-11");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ session_start();
 
   <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>
 
-  <form action="foreach-1-1-2.php" method="get">
+  <form action="foreach-1-11-2.php" method="get">
     <table class="conborde">
       <tbody>
         <tr>
@@ -70,7 +70,7 @@ for ($i = 1; $i <= $numero; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
+      <time datetime="2017-11-30">30 de noviembre de 2017</time></p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
