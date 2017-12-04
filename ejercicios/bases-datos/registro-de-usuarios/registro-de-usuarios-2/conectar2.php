@@ -29,7 +29,6 @@ if (isset($_SESSION['id'])) {
     header("Location:index.php");
     exit();
 } else {
-
     $db = conectaDb();
 
     $usuario   = recoge("usuario");
@@ -48,9 +47,8 @@ if (isset($_SESSION['id'])) {
         } else {
             $valor = $result->fetch();
             if ($valor["password"] == md5($password)) {
-                session_start();
                 $_SESSION["id"]  = $valor["id"];
-                $_SESSION["usuario"]    = $valor["usuario"];
+                $_SESSION["usuario"]  = $valor["usuario"];
                 $_SESSION["password"] = $valor["password"];
                 header("Location:index.php");
                 exit();

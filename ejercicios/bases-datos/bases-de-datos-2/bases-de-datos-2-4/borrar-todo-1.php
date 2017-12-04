@@ -34,6 +34,5 @@ print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
 print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
 print "      </p>\n";
 print "    </form>\n";
-print "\n";
 
 pie();
