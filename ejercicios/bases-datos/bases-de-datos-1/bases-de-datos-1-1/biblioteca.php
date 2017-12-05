@@ -36,7 +36,7 @@ define("MENU_VOLVER",    "menuVolver");    // Menú Volver a inicio
 $tamNombre    = 40;                        // Tamaño del campo Nombre
 $tamApellidos = 60;                        // Tamaño del campo Apellidos
 
-$dbMotor = MYSQL;                         // Base de datos empleada (MYSQL o SQLITE)
+$dbMotor = SQLITE;                         // Base de datos empleada (MYSQL o SQLITE)
 
 if ($dbMotor == MYSQL) {
     require_once "biblioteca-mysql.php";
