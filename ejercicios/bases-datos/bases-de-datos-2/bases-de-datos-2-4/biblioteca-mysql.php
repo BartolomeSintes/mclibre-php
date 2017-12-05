@@ -3,7 +3,7 @@
  * Bases de datos 2-4 - biblioteca-mysql.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2016-12-12
  * @link      http://www.mclibre.org
@@ -47,7 +47,7 @@ $consultaCreaTabla = "CREATE TABLE $dbTabla (
 function conectaDb()
 {
     try {
-        $tmp = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
+        $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp->exec("set names utf8mb4");
         return($tmp);

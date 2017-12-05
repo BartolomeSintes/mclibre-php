@@ -3,9 +3,9 @@
  * Bases de datos 1-3 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-12-06
+ * @version   2017-12-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -96,7 +96,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2016-12-06\">6 de diciembre de 2016</time></p>\n";
+    print "      <time datetime=\"2017-12-05\">5 de diciembre de 2017</time></p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
     print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";

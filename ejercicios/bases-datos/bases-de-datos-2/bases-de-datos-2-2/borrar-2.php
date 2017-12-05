@@ -3,9 +3,9 @@
  * Bases de datos 2-2 - borrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-12-06
+ * @version   2017-12-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

@@ -3,9 +3,9 @@
  * Bases de datos 2-3 - config.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-12-06
+ * @version   2017-12-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,14 +29,14 @@ $dbMotor = SQLITE;     // Valores posibles: MYSQL o SQLITE
 // Configuración para MYSQL
 
 define("MYSQL_HOST",     "mysql:host=localhost");   // Nombre de host
-define("MYSQL_USUARIO",  "root");                   // Nombre de usuario
+define("MYSQL_USER",     "root");                   // Nombre de usuario
 define("MYSQL_PASSWORD", "");                       // Contraseña de usuario
 define("MYSQL_DATABASE", "mclibre_base_datos_2_3"); // Nombre de la base de datos
 define("MYSQL_TABLA",    "tabla");                  // Nombre de la tabla
 
 // Configuración para SQLite
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre_base_datos_2_3.sqlite"); // Ubicación de la base de datos
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-2-3.sqlite"); // Ubicación de la base de datos
 define("SQLITE_TABLA",   "tabla");                                       // Nombre de la tabla
 
 // Configuración Tabla Agenda

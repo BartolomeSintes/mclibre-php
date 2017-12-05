@@ -3,9 +3,9 @@
  * Bases de datos 1-6 - biblioteca-sqlite.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2017 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-12-06
+ * @version   2017-12-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 // Constantes
 
 // Variables globales
-$dbDb    = "/home/barto/mclibre/tmp/mclibre/mclibre_base_datos_1_6.sqlite";  // Nombre de la base de datos
+$dbDb    = "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-6.sqlite";  // Nombre de la base de datos
 $dbTabla = "tabla";                                       // Nombre de la tabla
 
 // Consultas
