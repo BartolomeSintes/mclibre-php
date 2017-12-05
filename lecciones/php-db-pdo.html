@@ -78,8 +78,8 @@
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS MYSQL
-</strong>function conectaDb()
+<code class="language-php">// FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS MYSQL
+function conectaDb()
 {
     try {
         $tmp = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
@@ -88,15 +88,16 @@
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "  &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n\n";
-        print "  &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "\n";
+        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
 }
 
-<strong>// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR</strong>
-<strong>// La conexión se debe realizar en cada página que acceda a la base de datos</strong>
+// EJEMPLO DE USO DE LA FUNCIÓN conectaDB()
+// La conexión se debe realizar en cada página que acceda a la base de datos
 $db = conectaDB();</code>
 </pre>
         </div>
@@ -111,7 +112,7 @@ $db = conectaDB();</code>
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS SQLITE</strong>
+<code class="language-php">// FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS SQLITE
 function conectaDb()
 {
     global $dbDb;
@@ -121,15 +122,16 @@ function conectaDb()
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "  &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
-        print "  &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "\n";
+        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
 }
 
-<strong>// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR</strong>
-<strong>// La conexión se debe realizar en cada página que acceda a la base de datos</strong>
+// EJEMPLO DE USO DE LA FUNCIÓN conectaDb()
+// La conexión se debe realizar en cada página que acceda a la base de datos
 $db = conectaDB();</code>
 </pre>
         </div>
@@ -167,25 +169,25 @@ $db = conectaDB();</code>
 
             <div class="codigo">
               <pre>
-<code class="language-php"><strong>// biblioteca.php</strong>
+<code class="language-php">// biblioteca.php
 define("MYSQL",          "MySQL");         // Base de datos MySQL
 define("SQLITE",         "SQLite");        // Base de datos SQLITE
 
 <span class="codigo-resaltado">$dbMotor = SQLITE</span>;                         // Base de datos empleada (MYSQL o SQLITE)
 
 if ($dbMotor == MYSQL) {
-    require_once "biblioteca_mysql.php";
+    require_once "biblioteca-mysql.php";
 } elseif ($dbMotor == SQLITE) {
-    require_once "biblioteca_sqlite.php";
+    require_once "biblioteca-sqlite.php";
 }</code>
 </pre>
             </div>
           </li>
-          <li>biblioteca_mysql.php: contiene la definición de la función conectaDB() específica para trabajar con MySQL
+          <li>biblioteca-mysql.php: contiene la definición de la función conectaDB() específica para trabajar con MySQL
 
             <div class="codigo">
               <pre>
-<code class="language-php"><strong>// biblioteca_mysql.php</strong>
+<code class="language-php">// biblioteca-mysql.php
 function conectaDb()
 {
     try {
@@ -195,8 +197,9 @@ function conectaDb()
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "  &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n\n";
-        print "  &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "\n";
+        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
@@ -204,12 +207,12 @@ function conectaDb()
 </pre>
             </div>
           </li>
-          <li>biblioteca_sqlite.php: contiene la definición de la función conectaDB() específica para trabajar con SQLite
+          <li>biblioteca-sqlite.php: contiene la definición de la función conectaDB() específica para trabajar con SQLite
 
             <div class="codigo">
               <pre>
-<code class="language-php"><strong>// biblioteca_sqlite.php
-</strong>function conectaDb()
+<code class="language-php">// biblioteca-sqlite.php
+function conectaDb()
 {
     global $dbDb;
 
@@ -218,8 +221,9 @@ function conectaDb()
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "  &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
-        print "  &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "\n";
+        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
@@ -252,7 +256,7 @@ function conectaDb()
 
           <div class="codigo">
             <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE INSERCIÓN DE REGISTRO</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE INSERCIÓN DE REGISTRO
 require_once "biblioteca.php";
 $db = conectaDB();
 
@@ -260,9 +264,9 @@ $consulta = "INSERT INTO $dbTabla
     (nombre, apellidos)
     VALUES ("$nombre", "$apellidos")";
 if ($db-&gt;query($consulta)) {
-    print "  &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al crear el registro.&lt;p&gt;\n";
+    print "    &lt;p&gt;Error al crear el registro.&lt;p&gt;\n";
 }
 
 $db = null;</code>
@@ -273,17 +277,17 @@ $db = null;</code>
 
           <div class="codigo">
             <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTRO</strong>S
+<code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 require_once "biblioteca.php";
 $db = conectaDB();
 
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
     foreach ($result as $valor) {
-        print "  &lt;p&gt;$valor[nombre] $valor[apellidos]&lt;/p&gt;\n";
+        print "    &lt;p&gt;$valor[nombre] $valor[apellidos]&lt;/p&gt;\n";
     }
 }
 
@@ -350,14 +354,14 @@ $result-&gt;execute();</code>
 $apellidos = $_REQUEST["apellidos"];
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
-    WHERE <strong>nombre=$nombre</strong>
-    AND <strong>apellidos=$apellidos</strong>";                 // DESACONSEJADO: PHP NO DESINFECTA LOS DATOS
+    WHERE <span class="codigo-resaltado">nombre=$nombre</span>
+    AND <span class="codigo-resaltado">apellidos=$apellidos</span>";     // DESACONSEJADO: PHP NO DESINFECTA LOS DATOS
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute();
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
- </pre>
+</pre>
         </div>
 
         <hr class="corta" />
@@ -373,14 +377,14 @@ if (!$result) {
 $apellidos = $_REQUEST["apellidos"];
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
-    WHERE <strong>nombre=:nombre</strong>
-    AND <strong>apellidos=:apellidos</strong>";
+    WHERE <span class="codigo-resaltado">nombre=:nombre</span>
+    AND <span class="codigo-resaltado">apellidos=:apellidos</span>";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;<strong>execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])</strong>;
+$result-&gt;<span class="codigo-resaltado">execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])</span>;
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
- </pre>
+</pre>
             </div>
           </li>
           <li>mediantes interrogantes (?)
@@ -392,14 +396,14 @@ if (!$result) {
 $apellidos = $_REQUEST["apellidos"];
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
-    WHERE <strong>nombre=?</strong>
-    AND <strong>apellidos=?</strong>";
+    WHERE <span class="codigo-resaltado">nombre=?</span>
+    AND <span class="codigo-resaltado">apellidos=?</span>";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;<strong>execute([$nombre, $apellidos])</strong>;
+$result-&gt;<span class="codigo-resaltado">execute([$nombre, $apellidos])</span>;
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
- </pre>
+</pre>
             </div>
           </li>
         </ul>
@@ -425,7 +429,7 @@ if (!$result) {
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// FUNCIÓN DE RECOGIDA DE UN DATO QUE SÓLO PUEDE TOMAR DETERMINADOS VALORES</strong>
+<code class="language-php">// FUNCIÓN DE RECOGIDA DE UN DATO QUE SÓLO PUEDE TOMAR DETERMINADOS VALORES
 $campos = [
     "nombre",
     "apellidos"
@@ -443,19 +447,19 @@ function recogeCampo($var, $var2)
     return $var2;
 }
 
-<strong>// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR</strong>
+// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
 $campo  = recogeCampo("campo", "apellidos");
 $nombre = $_REQUEST["nombre"];
 
 $consulta = "SELECT * FROM $dbTabla
     WHERE nombre=:nombre
-    ORDER BY <strong>$campo</strong> ASC";
+    ORDER BY <span class="codigo-resaltado">$campo</span> ASC";
 $result = $db-&gt;prepare($consulta);
-$result-&gt;<strong>execute([":nombre" =&gt; $nombre])</strong>;
+$result-&gt;<span class="codigo-resaltado">execute([":nombre" =&gt; $nombre])</span>;
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
- </pre>
+</pre>
         </div>
       </section>
     </section>
@@ -481,14 +485,14 @@ if (!$result) {
 
           <div class="codigo">
             <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE CREACIÓN DE BASE DE DATOS</strong> EN MYSQL
+<code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE BASE DE DATOS EN MYSQL
 $consultaCreaDb = "CREATE DATABASE $dbDb
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci";
 if ($db-&gt;query($consulta)) {
-    print "  &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
 }</code>
 </pre>
           </div>
@@ -499,12 +503,12 @@ if ($db-&gt;query($consulta)) {
 
           <div class="codigo">
             <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE BORRADO DE BASE DE DATOS</strong> EN MYSQL
+<code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE BASE DE DATOS EN MYSQL
 $consulta = "DROP DATABASE $dbDb";
 if ($db-&gt;query($consulta)) {
-    print "  &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
 }</code>
 </pre>
           </div>
@@ -513,7 +517,7 @@ if ($db-&gt;query($consulta)) {
 
           <div class="codigo">
             <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN MYSQL</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN MYSQL
 $consulta = "CREATE TABLE $dbTabla (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR($tamNombre),
@@ -521,9 +525,9 @@ $consulta = "CREATE TABLE $dbTabla (
     PRIMARY KEY(id)
     )";
 if ($db-&gt;query($consulta)) {
-    print "  &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
 }</code>
 </pre>
           </div>
@@ -536,12 +540,12 @@ if ($db-&gt;query($consulta)) {
 
           <div class="codigo">
             <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE BORRADO DE TABLA EN SQLITE</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE TABLA EN SQLITE
 $consulta = "DROP TABLE $dbTabla";
 if ($db-&gt;query($consulta)) {
-    print "  &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
 }</code>
 </pre>
           </div>
@@ -550,16 +554,16 @@ if ($db-&gt;query($consulta)) {
 
           <div class="codigo">
             <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN SQLite</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN SQLite
 $consulta = "CREATE TABLE $dbTabla (
     id INTEGER PRIMARY KEY,
     nombre VARCHAR($tamNombre),
     apellidos VARCHAR($tamApellidos)
     )";
 if ($db-&gt;query($consulta)) {
-    print "  &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
 }</code>
 </pre>
           </div>
@@ -574,7 +578,8 @@ if ($db-&gt;query($consulta)) {
 
               <div class="codigo">
                 <pre>
-<code class="language-php"><strong>// EJEMPLO DE USO DE CONEXIÓN CONFIGURABLE</strong><strong>// La conexión se debe realizar en cada página que acceda a la base de datos</strong>
+<code class="language-php">// EJEMPLO DE USO DE CONEXIÓN CONFIGURABLE
+// La conexión se debe realizar en cada página que acceda a la base de datos
 require_once "biblioteca.php";
 $db = conectaDb();
 borraTodo($db);
@@ -582,11 +587,11 @@ $db = null;</code>
 </pre>
               </div>
             </li>
-            <li>biblioteca_mysql.php: contiene la definición de la función borraTodo() específica para trabajar con MySQL y que borra la base de datos, la crea y crea la tabla:
+            <li>biblioteca-mysql.php: contiene la definición de la función borraTodo() específica para trabajar con MySQL y que borra la base de datos, la crea y crea la tabla:
 
               <div class="codigo">
                 <pre>
-    <code class="language-php"><strong>// biblioteca_mysql.php</strong>
+<code class="language-php">// biblioteca-mysql.php
 $consultaCreaTabla = "CREATE TABLE $dbTabla (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR($tamNombre),
@@ -600,31 +605,36 @@ function borraTodo($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db-&gt;query($consulta)) {
-        print "  &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n\n";
+        print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
+        print "\n";
     } else {
-        print "  &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n\n";
+        print "    &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db-&gt;query($consulta)) {
-        print "  &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n\n";
+        print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
+        print "\n";
         $consulta = $consultaCreaTabla;
         if ($db-&gt;query($consulta)) {
-            print "  &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+            print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+            print "\n";
         } else {
-            print "  &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+            print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+            print "\n";
         }
     } else {
-        print "  &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
     }
 }</code>
 </pre>
               </div>
             </li>
-            <li>biblioteca_sqlite.php: contiene la definición de la función borraTodo() específica para trabajar con SQLite y que borra la tabla y la crea:
+            <li>biblioteca-sqlite.php: contiene la definición de la función borraTodo() específica para trabajar con SQLite y que borra la tabla y la crea:
 
               <div class="codigo">
                 <pre>
-<code class="language-php"><strong>// biblioteca_sqlite.php</strong>
+<code class="language-php">// biblioteca-sqlite.php
 $consultaCreaTabla = "CREATE TABLE $dbTabla (
     id INTEGER PRIMARY KEY,
     nombre VARCHAR($tamNombre),
@@ -637,15 +647,17 @@ function borraTodo($db)
 
     $consulta = "DROP TABLE $dbTabla";
     if ($db-&gt;query($consulta)) {
-        print "  &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n\n";
+        print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
+        print "\n";
     } else {
-        print "  &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n\n";
+        print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+        print "\n";
     }
     $consulta = $consultaCreaTabla;
     if ($db-&gt;query($consulta)) {
-        print "  &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
     } else {
-        print "  &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
     }
 }</code>
 </pre>
@@ -662,12 +674,12 @@ function borraTodo($db)
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE BORRADO DE TABLA</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE TABLA
 $consulta = "DROP TABLE $dbTabla";
 if ($db-&gt;query($consulta)) {
-    print "  &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
 }</code>
 </pre>
         </div>
@@ -678,7 +690,7 @@ if ($db-&gt;query($consulta)) {
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE INSERCIÓN DE REGISTRO</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE INSERCIÓN DE REGISTRO
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
@@ -687,9 +699,9 @@ $consulta = "INSERT INTO $dbTabla
     VALUES (:nombre, :apellidos)";
 $result = $db-&gt;prepare($consulta);
 if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
-    print "  &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al crear el registro.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al crear el registro.&lt;/p&gt;\n";
 }</code>
 </pre>
         </div>
@@ -700,7 +712,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE MODIFICACIÓN DE REGISTRO</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE MODIFICACIÓN DE REGISTRO
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $id        = recoge("id");
@@ -710,9 +722,9 @@ $consulta = "UPDATE $dbTabla
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
 if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
-    print "  &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Error al modificar el registro.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error al modificar el registro.&lt;/p&gt;\n";
 }</code>
 </pre>
         </div>
@@ -725,7 +737,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos,
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE BORRADO DE REGISTRO</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE REGISTRO
 $id = recogeMatriz("id");
 
 foreach ($id as $indice =&gt; $valor) {
@@ -733,9 +745,9 @@ foreach ($id as $indice =&gt; $valor) {
         WHERE id=:indice";
     $result = $db-&gt;prepare($consulta);
     if ($result-&gt;execute([":indice" =&gt; $indice])) {
-        print "  &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
     } else {
-        print "  &lt;p&gt;Error al borrar el registro.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error al borrar el registro.&lt;/p&gt;\n";
     }
 }</code>
 </pre>
@@ -751,13 +763,13 @@ foreach ($id as $indice =&gt; $valor) {
 
             <div class="codigo">
               <pre>
-    <code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS</strong>
+    <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Consulta ejecutada.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Consulta ejecutada.&lt;/p&gt;\n";
 }</code>
 </pre>
             </div>
@@ -766,14 +778,14 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
     $encontrados = $result-&gt;fetchColumn();
-    print "  &lt;p&gt;Se han encontrado $encontrados registros.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Se han encontrado $encontrados registros.&lt;/p&gt;\n";
 }</code>
 </pre>
             </div>
@@ -785,14 +797,14 @@ if (!$result) {
 
                 <div class="codigo">
                   <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
     foreach ($result as $valor) {
-        print "  &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
+        print "    &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
     }
 }</code>
 </pre>
@@ -802,14 +814,14 @@ if (!$result) {
 
                 <div class="codigo">
                   <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
     while ($valor = $result-&gt;fetch()) {
-        print "  &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
+        print "    &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
     }
 }</code>
 </pre>
@@ -823,21 +835,21 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
-    print "  &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
+    print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
 } else {
     $consulta = "SELECT * FROM $dbTabla";
     $result = $db-&gt;query($consulta);
     if (!$result) {
-        print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
     } else {
         foreach ($result as $valor) {
-            print "  &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
+            print "    &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
         }
     }
 }</code>
@@ -858,7 +870,7 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $apellidos = recoge("apellidos");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
@@ -866,9 +878,9 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
 }</code>
 </pre>
             </div>
@@ -877,7 +889,7 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $apellidos = recoge("apellidos");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
@@ -885,9 +897,9 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
-    print "  &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
 }</code>
 </pre>
             </div>
@@ -904,7 +916,7 @@ if (!$result) {
 
         <div class="codigo">
           <pre>
-<code class="language-php"><strong>// EJEMPLO DE CONSULTA DE UNIÓN DE TABLAS</strong>
+<code class="language-php">// EJEMPLO DE CONSULTA DE UNIÓN DE TABLAS
 $consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
     $dbUsuarios.apellidos as apellidos, $dbObras.titulo as titulo,
     $dbPrestamos.prestado as prestado, $dbPrestamos.devuelto as devuelto
@@ -914,16 +926,16 @@ $consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
     ORDER BY $campo $orden";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "  &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
    ...</code>
-   </pre>
+</pre>
         </div>
       </section>
     </section>
 
     <footer>
-      <p class="ultmod">Última modificación de esta página: 5 de diciembre de 2016</p>
+      <p class="ultmod">Última modificación de esta página: 5 de diciembre de 2017</p>
 
       <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
         Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
