@@ -27,7 +27,7 @@
 // Constantes
 define("MYSQL_HOST",     "mysql:host=localhost"); // Nombre de host MYSQL
 define("MYSQL_USER",     "root");                 // Nombre de usuario de MySQL
-define("MYSQL_PASSWORD", "root");                 // Contraseña de usuario de MySQL
+define("MYSQL_PASSWORD", "");                     // Contraseña de usuario de MySQL
 
 // Variables globales
 $dbDb    = "mclibre_base_datos_1_1";          // Nombre de la base de datos

@@ -29,7 +29,7 @@ cabecera("Buscar 2", MENU_VOLVER);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
-$campo     = recogeCampo("campo", "apellidos");
+$columna   = recogeColumna("columna", "apellidos");
 $orden     = recogeOrden("orden", "ASC");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
@@ -45,13 +45,13 @@ if (!$result) {
     $consulta = "SELECT * FROM $dbTabla
         WHERE nombre LIKE :nombre
         AND apellidos LIKE :apellidos
-        ORDER BY $campo $orden";
+        ORDER BY $columna $orden";
     $result = $db->prepare($consulta);
     $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
     if (!$result) {
         print "    <p>Error en la consulta.</p>\n";
     } else {
-        $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;campo";
+        $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;columna";
         print "    <p>Registros encontrados:</p>\n";
         print "\n";
         print "    <table class=\"conborde franjas\">\n";

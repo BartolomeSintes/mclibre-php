@@ -31,7 +31,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
-$campo     = recogeCampo("campo", "apellidos");
+$columna   = recogeColumna("columna", "apellidos");
 $orden     = recogeOrden("orden", "ASC");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
@@ -52,7 +52,7 @@ if (!$result) {
         AND apellidos LIKE :apellidos
         AND telefono LIKE :telefono
         AND correo LIKE :correo
-        ORDER BY $campo $orden";
+        ORDER BY $columna $orden";
     $result = $db->prepare($consulta);
     $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
         ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
@@ -60,7 +60,7 @@ if (!$result) {
         print "    <p>Error en la consulta.</p>\n";
     } else {
         $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;"
-            . "telefono=$telefono&amp;correo=$correo&amp;campo";
+            . "telefono=$telefono&amp;correo=$correo&amp;columna";
         print "    <p>Registros encontrados:</p>\n";
         print "\n";
         print "    <table class=\"conborde franjas\">\n";

@@ -35,8 +35,8 @@ define("MENU_VOLVER",    "menuVolver");    // Menú Volver a inicio
 
 define("MAX_REG_TABLA",  20);              // Número máximo de registros en la tabla
 
-$tamNombre    = 40;                        // Tamaño del campo Nombre
-$tamApellidos = 60;                        // Tamaño del campo Apellidos
+$tamNombre    = 40;                        // Tamaño de la columna Nombre
+$tamApellidos = 60;                        // Tamaño de la columna Apellidos
 
 $dbMotor = SQLITE;                         // Base de datos empleada (MYSQL o SQLITE)
 

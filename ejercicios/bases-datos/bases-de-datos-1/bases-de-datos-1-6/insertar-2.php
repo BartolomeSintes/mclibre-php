@@ -49,8 +49,8 @@ if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
 
 if ($nombreOk && $apellidosOk) {
     $consulta = "INSERT INTO $dbTabla
-    (nombre, apellidos)
-    VALUES (:nombre, :apellidos)";
+        (nombre, apellidos)
+        VALUES (:nombre, :apellidos)";
     $result = $db->prepare($consulta);
     if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
         print "    <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";

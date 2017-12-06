@@ -33,7 +33,7 @@ define("SQLITE",         "SQLite");        // Base de datos SQLITE
 define("MENU_PRINCIPAL", "menuPrincipal"); // Menú principal
 define("MENU_VOLVER",    "menuVolver");    // Menú Volver a inicio
 
-$campos = [                           // Nombre de los campos de la tabla
+$columnas = [                              // Nombre de las columnas de la tabla
     "nombre",
     "apellidos",
     "telefono",
@@ -75,13 +75,13 @@ function recogeMatriz($var)
     return $tmpMatriz;
 }
 
-function recogeCampo($var, $var2)
+function recogeColumna($var, $var2)
 {
-    global $campos;
+    global $columnas;
 
-    foreach($campos as $campo) {
-        if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $campo) {
-            return $campo;
+    foreach($columnas as $columna) {
+        if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $columna) {
+            return $columna;
         }
     }
     return $var2;

@@ -27,8 +27,8 @@ require_once "biblioteca.php";
 $db = conectaDb();
 cabecera("Listar", MENU_VOLVER);
 
-$campo = recogeCampo("campo", "apellidos");
-$orden = recogeOrden("orden", "ASC");
+$columna = recogeColumna("columna", "apellidos");
+$orden   = recogeOrden("orden", "ASC");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db->query($consulta);
@@ -38,7 +38,7 @@ if (!$result) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbTabla
-        ORDER BY $campo $orden";
+        ORDER BY $columna $orden";
     $result = $db->query($consulta);
     if (!$result) {
         print "    <p>Error en la consulta.</p>\n";
@@ -49,17 +49,17 @@ if (!$result) {
         print "      <thead>\n";
         print "        <tr>\n";
         print "          <th>\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=ASC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?columna=nombre&amp;orden=ASC\">\n";
         print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
         print "            Nombre\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=DESC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?columna=nombre&amp;orden=DESC\">\n";
         print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
         print "          </th>\n";
         print "          <th>\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?columna=apellidos&amp;orden=ASC\">\n";
         print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
         print "            Apellidos\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?columna=apellidos&amp;orden=DESC\">\n";
         print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
         print "          </th>\n";
         print "        </tr>\n";
