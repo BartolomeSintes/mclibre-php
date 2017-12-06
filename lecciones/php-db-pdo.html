@@ -138,7 +138,7 @@ $db = conectaDB();</code>
 
         <p><strong>Notas</strong>:</p>
         <ul>
-          <li>En las soluciones de los ejercicios proporcionadas en estos apuntes, los archivos se guardan en el directorio <strong>/home/barto/mclibre/tmp/mclibre</strong>. Para que funcionen las soluciones, se debe crear ese directorio o cambiarlo a otro.</li>
+          <li>En las soluciones de los ejercicios proporcionadas en estos apuntes, los archivos se guardan en el directorio <strong>/home/barto/mclibre/tmp/mclibre/</strong>. Para que funcionen las soluciones, se debe crear ese directorio o cambiarlo a otro.</li>
           <li>En caso de error, la función conectaDb() genera una página completa (con una cabecera especial, con contenido de mensajes de error y pie) y termina el programa. Por tanto la conexión con la base de datos debe hacerse nada más empezar el programa (antes de generar la cabecera de la página).</li>
         </ul>
       </section>
@@ -420,7 +420,7 @@ if (!$result) {
         <ul>
           <li>los identificadores (nombres de tablas, nombres de columnas, etc) no pueden sustituirse por parámetros</li>
           <li>los dos elementos de una igualdad no pueden sustituirse por parámetros</li>
-          <li>en general no pueden utilizarse parámetros en las consultas DDL (lenguaje de definición de datos) (nombre y tamaño de los campos, etc.)</li>
+          <li>en general no pueden utilizarse parámetros en las consultas DDL (lenguaje de definición de datos) (nombre y tamaño de las columnas, etc.)</li>
         </ul>
 
         <p>Si no podemos usar parámetros, no queda más remedio que incluir los datos en la consulta. Como en ese caso PHP no hace ninguna desinfección de los datos, la tenemos que hacer nosotros previamente.</p>
@@ -430,30 +430,30 @@ if (!$result) {
         <div class="codigo">
           <pre>
 <code class="language-php">// FUNCIÓN DE RECOGIDA DE UN DATO QUE SÓLO PUEDE TOMAR DETERMINADOS VALORES
-$campos = [
+$columnas = [
     "nombre",
     "apellidos"
 ];
 
-function recogeCampo($var, $var2)
+function recogeColumna($var, $var2)
 {
-    global $campos;
+    global $columnas;
 
-    foreach($campos as $campo) {
-        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $campo) {
-            return $campo;
+    foreach($columnas as $columna) {
+        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $columna) {
+            return $columna;
         }
     }
     return $var2;
 }
 
 // EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$campo  = recogeCampo("campo", "apellidos");
-$nombre = $_REQUEST["nombre"];
+$columna = recogeColumna("columna", "apellidos");
+$nombre  = $_REQUEST["nombre"];
 
 $consulta = "SELECT * FROM $dbTabla
     WHERE nombre=:nombre
-    ORDER BY <span class="codigo-resaltado">$campo</span> ASC";
+    ORDER BY <span class="codigo-resaltado">$columna</span> ASC";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;<span class="codigo-resaltado">execute([":nombre" =&gt; $nombre])</span>;
 if (!$result) {
@@ -491,8 +491,10 @@ $consultaCreaDb = "CREATE DATABASE $dbDb
     COLLATE utf8mb4_unicode_ci";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
           </div>
@@ -507,8 +509,10 @@ if ($db-&gt;query($consulta)) {
 $consulta = "DROP DATABASE $dbDb";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
           </div>
@@ -526,8 +530,10 @@ $consulta = "CREATE TABLE $dbTabla (
     )";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
           </div>
@@ -544,8 +550,10 @@ if ($db-&gt;query($consulta)) {
 $consulta = "DROP TABLE $dbTabla";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
           </div>
@@ -562,8 +570,10 @@ $consulta = "CREATE TABLE $dbTabla (
     )";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
           </div>
@@ -625,6 +635,7 @@ function borraTodo($db)
         }
     } else {
         print "    &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
+        print "\n";
     }
 }</code>
 </pre>
@@ -658,6 +669,7 @@ function borraTodo($db)
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
     } else {
         print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+        print "\n";
     }
 }</code>
 </pre>
@@ -678,8 +690,10 @@ function borraTodo($db)
 $consulta = "DROP TABLE $dbTabla";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
         </div>
@@ -700,8 +714,10 @@ $consulta = "INSERT INTO $dbTabla
 $result = $db-&gt;prepare($consulta);
 if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al crear el registro.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
         </div>
@@ -723,8 +739,10 @@ $consulta = "UPDATE $dbTabla
 $result = $db-&gt;prepare($consulta);
 if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
     print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Error al modificar el registro.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
         </div>
@@ -746,8 +764,10 @@ foreach ($id as $indice =&gt; $valor) {
     $result = $db-&gt;prepare($consulta);
     if ($result-&gt;execute([":indice" =&gt; $indice])) {
         print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Error al borrar el registro.&lt;/p&gt;\n";
+        print "\n";
     }
 }</code>
 </pre>
@@ -768,8 +788,10 @@ $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Consulta ejecutada.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
             </div>
@@ -783,9 +805,11 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } else {
     $encontrados = $result-&gt;fetchColumn();
     print "    &lt;p&gt;Se han encontrado $encontrados registros.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
             </div>
@@ -802,9 +826,11 @@ $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } else {
     foreach ($result as $valor) {
         print "    &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
+        print "\n";
     }
 }</code>
 </pre>
@@ -819,9 +845,11 @@ $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } else {
     while ($valor = $result-&gt;fetch()) {
         print "    &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
+        print "\n";
     }
 }</code>
 </pre>
@@ -840,16 +868,20 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
     print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
+    print "\n";
 } else {
     $consulta = "SELECT * FROM $dbTabla";
     $result = $db-&gt;query($consulta);
     if (!$result) {
         print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+        print "\n";
     } else {
         foreach ($result as $valor) {
             print "    &lt;p&gt;Nombre: $valor[nombre] - Apellidos: $valor[apellidos]&lt;/p&gt;\n";
+            print "\n";
         }
     }
 }</code>
@@ -879,8 +911,10 @@ $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
             </div>
@@ -898,8 +932,10 @@ $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
             </div>
@@ -923,10 +959,11 @@ $consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
     FROM $dbPrestamos, $dbUsuarios, $dbObras
     WHERE $dbPrestamos.id_usuario=$dbUsuarios.id AND
     $dbPrestamos.id_obra=$dbObras.id and $dbPrestamos.devuelto='0000-00-00'
-    ORDER BY $campo $orden";
+    ORDER BY $columna $orden";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "\n";
 } else {
    ...</code>
 </pre>
@@ -935,7 +972,7 @@ if (!$result) {
     </section>
 
     <footer>
-      <p class="ultmod">Última modificación de esta página: 5 de diciembre de 2017</p>
+      <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
 
       <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
         Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />

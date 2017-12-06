@@ -1,112 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Bases de datos. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script type="text/javascript" src="../varios/highlight.pack.js"></script>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Bases de datos SQL. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script type="text/javascript" src="../varios/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Bases de datos</h1>
+<body>
+  <h1>Bases de datos SQL</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Bases de datos</h2>
+    <div class="toc">
+      <h2>Bases de datos SQL</h2>
 
-        <ul>
-          <li><a href="#bases-datos">PHP y bases de datos</a></li>
-          <li><a href="#mysql">PHP y MySQL</a></li>
-          <li><a href="#sqlite">PHP y SQLite</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <section id="bases-datos">
-      <h2>PHP y bases de datos</h2>
-
-      <p>Cuando una aplicación web necesita conservar información de forma permanente para recuperarla posteriormente, suele ser conveniente recurrir a un <a href="https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_bases_de_datos">sistema gestor de bases de datos</a> (SGBD).</p>
-
-      <p>Normalmente los SGBD son aplicaciones externas que se instalan y administran de forma separada. PHP permite utilizar la mayoría de los SGBD más conocidos, libres o comerciales (<a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.oracle.com/index.html">Oracle</a>, <a href="https://www.microsoft.com/en-us/sql-server/sql-server-2016">MS SQL Server</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://mariadb.org/">MariaDB</a>,  <a href="http://www.firebirdsql.org/">Firebird</a>, <a href="https://www.actian.com/data-management/ingres-sql-rdbms/">Ingres</a>, etc) como se puede consultar en el apartado sobre <a href="http://php.net/manual/es/refs.database.php">acceso a bases de datos del manual de PHP</a>.</p>
-
-      <p>Un caso particular es <a href="http://www.sqlite.org/">SQLite</a>, que no es una aplicación externa sino una biblioteca en C que implementa un motor de bases de datos SQL. SQLite estaba disponible en PHP desde junio de 2003 como extensión PECL (para PHP 4.3 y posteriores), y se incluye en el código fuente de PHP desde PHP 5.0 (publicado en agosto de 2004). Eso quiere decir que PHP puede gestionar bases de datos directamente, sin necesidad de recurrir a SGBD externos.</p>
-
-      <p>Aunque PHP siempre ha permitido utilizar numerosos SGBD, la forma de hacerlo ha ido variando con el tiempo.</p>
-
-      <section id="bibliotecas">
-        <h3>Acceso mediante bibliotecas específicas</h3>
-
-        <p>En las primeras versiones de PHP, la única manera de acceder a un SGBD era a través de una biblioteca específica, que contenía las funciones necesarias. A esas bibliotecas se les suelen llamar también extensiones. En algunos casos esas extensiones se incluían en las distribuciones oficiales de PHP y para poder utilizarlas era suficiente con incluir la directiva correspondiente en el archivo de configuración php.ini. En otros casos esas extensiones no estaban incluidas en las distribuciones oficiales de PHP, pero estaban incluidas en PEAR o PECL y para poder utilizarlas era necesario instalarlas por separado.</p>
-
-        <p>Con el paso del tiempo, este enfoque fue mostrando sus limitaciones. El principal inconveniente de este enfoque es que cada extensión está estrechamente vinculada a cada SGBD y si se quiere cambiar de SGBD es necesario reescribir completamente la aplicación (los nombres de cada función son diferentes, el orden de los argumentos distinto, las funcionalidades disponibles son diferentes, etc.). Además en algunos casos, las extensiones no están mantenidas adecuadamente (bugs de seguridad, etc.).</p>
-
-        <p>Actualmente (diciembre de 2016), PHP se sigue distribuyendo con muchas de estas extensiones y todavía se pueden utilizar, pero en su lugar se recomienda utilizar la biblioteca PDO que se comenta a continuación.</p>
-      </section>
-
-      <section id="pdo">
-        <h3>Acceso mediante PDO</h3>
-
-        <p>Para poder escribir programas independientes del SGBD elegido, es necesario utilizar una capa de abstracción que permita acceder de una forma común a cualquier SGBD. Esta necesidad no es exclusiva de PHP, sino que afecta a cualquier aplicación que necesita trabajar con un SGBD y no tiene solución completa pues las diferencias entre los SGBD no permiten olvidarse de cuál estamos utilizando realmente.</p>
-
-        <p>Una de estas capas de abstracción es <a href="https://en.wikipedia.org/wiki/Odbc">ODBC (Open DataBase Connectivity)</a>, una API independiente del sistema operativo, lenguaje de programación o SGBD utilizada que se empezó a desarrollar en 1992. En PHP existe una extensión llamada también <a href="http://php.net/manual/es/book.uodbc.php">ODBC</a> que permite conexiones ODBC (creo que esta extensión se incorporó en PHP 3.0, publicado en junio de 1998, en cualquier caso estaba activada en PHP 4.0, publicado en mayo de 2000). El inconveniente de ODBC es que introduce un elemento más en la cadena, el controlador ODBC del sistema operativo, lo que puede ralentizar el rendimiento.</p>
-
-        <p>La capa de abstracción propia de PHP se llama <a href="http://php.net/manual/es/intro.pdo.php">PDO</a>. PDO, biblioteca orientada a objetos, se podía utilizar como extensión PECL de PHP 5.0, publicado en agosto de 2004 y está incluida en PHP desde PHP 5.1, publicado en noviembre de 2005. PDO incluye controladores para acceder a las bases de datos más populares y la lista se va ampliando con el tiempo (aunque no incluye todos los SGBD que disponen de extensiones específicas). Utilizando PDO no podemos olvidarnos completamente del SGBD utilizado, pero la mayor parte del código es independiente del SGBD y sólo en algunas partes del programa (en la conexión con el SGBD o en la creación de tablas, por ejemplo) el código es específico del SGBD.</p>
-
-        <p>Actualmente (diciembre de 2016), la extensión PDO es la biblioteca recomendada para acceder a SGBD desde PHP.</p>
-      </section>
-
-      <section id="futuro">
-        <h3>En el futuro ...</h3>
-
-        <p>Existen capas de abstracción de nivel superior a PDO y que se engloban bajo el acrónimo ORM (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping">Object-relational mapping</a>, <a href="https://es.wikipedia.org/wiki/Mapeo_objeto-relacional">mapeo objeto-relacional</a>). Estas capas resuelven el problema de conversión de los objetos definidos en la aplicación en entidades que se puedan almacenar en una base de datos relacional. Además, permiten en teoría olvidarse completamente del SGBD ya que son capaces de reescribir las sentencias SQL o simular características no presentes en el SGBD. Algunas de estas capas son las bibliotecas <a href="http://www.doctrine-project.org/projects/dbal.html">Doctrine DBAL</a>, <a href="http://propelorm.org/">Propel</a> o <a href="https://redbeanphp.com/index.php">RedBeanPHP</a> (el paquete PEAR <a href="http://pear.php.net/package/MDB2/">MDB2</a> parece actualmente -diciembre de 2016- abandonado).</p>
-
-        <p>Actualmente (diciembre de 2016) ninguna de estas bibliotecas está incluida en PHP.</p>
-      </section>
-    </section>
-
-    <section id="mysql">
-      <h2>PHP y MySQL</h2>
-
-      <p>PHP ha tenido tres extensiones para acceder a la base de datos MySQL:</p>
       <ul>
-        <li>Extensión <a href="http://php.net/manual/es/book.mysql.php">mysql</a>: Esta extensión fue la primera extensión para MySQL incluida en PHP (creo que esta extensión se incorporó en PHP 3.0, publicado en junio de 1998, en cualquier caso estaba activada en PHP 4.0, publicado en mayo de 2000). En diciembre de 2012 <a href="https://wiki.php.net/rfc/mysql_deprecation">se decidió eliminar la extensión</a>. Desde PHP 5.5 (publicado en junio de 2013) la extensión estuvo desaconsejada y su uso generaba un aviso E_DEPRECATED. Desde PHP 7.0 (publicada en diciembre de 2015), ya no está incluida en PHP.</li>
-        <li>Extensión <a href="http://php.net/manual/es/book.mysqli.php">mysqli</a> (improved mysql): Esta extensión se incluyó por primera vez en PHP 5.0 (publicado en julio de 2004). Las principales ventajas de esta extensión son la posibilidad de utilizar una sintaxis orientada a objetos, sentencias preparadas, transacciones y otras.</li>
-        <li>Extensión <a href="http://php.net/manual/es/book.pdo.php">PDO</a>: esta extensión, que permite trabajar con diferentes bases de datos, incluye un <a href="http://php.net/manual/es/ref.pdo-mysql.php">controlador para MySQL</a> desde que fue incluida en PHP 5.1 (publicado en noviembre de 2005).</li>
+        <li><a href="#bases-datos">PHP y bases de datos</a></li>
+        <li><a href="#mysql">PHP y MySQL</a></li>
+        <li><a href="#sqlite">PHP y SQLite</a></li>
       </ul>
+    </div>
+  </nav>
 
-      <p>Aunque la extensión mysqli se si gue incluyendo actualmente (diciembre de 2016) en PHP, en su lugar se recomienda acceder a MySQL mediante la extensión PDO.</p>
+  <p>Esta lección comenta el uso de bases de datos SQL en PHP.</p>
 
-      <p>Internamente, estas bibliotecas utilizan un controlador para acceder a MySQL. Antiguamente el controlador se llamaba libmysqlclient y había sido desarrollado por la empresa MySQL AB, pero a partir de PHP 5.3 (publicado en junio de 2009), el controlador es <a href="http://php.net/manual/en/book.mysqlnd.php">mysqlnd</a> (MySQL Native Driver), desarrollado por el equipo de PHP. Nuestros programas no pueden utilizar directamente estos controladores.</p>
+  <section id="bases-datos">
+    <h2>PHP y bases de datos</h2>
+
+    <p>Cuando una aplicación web necesita conservar información de forma permanente para recuperarla posteriormente, suele ser conveniente recurrir a un <a href="https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_bases_de_datos">sistema gestor de bases de datos</a> (SGBD).</p>
+
+    <p>Normalmente los SGBD son aplicaciones externas que se instalan y administran de forma separada. PHP permite utilizar la mayoría de los SGBD más conocidos, libres (<a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://mariadb.org/">MariaDB</a>, <a href="http://www.firebirdsql.org/">Firebird</a>, etc) o comerciales (<a href="https://www.oracle.com/index.html">Oracle</a>, <a href="https://www.microsoft.com/en-us/sql-server/sql-server-2016">MS SQL Server</a>, <a href="https://www.actian.com/data-management/ingres-sql-rdbms/">Ingres / Actian</a>, etc) como se puede consultar en el apartado sobre <a href="http://php.net/manual/es/refs.database.php">acceso a bases de datos del manual de PHP</a>.</p>
+
+    <p>Un caso particular es <a href="http://www.sqlite.org/">SQLite</a>, que no es una aplicación externa sino una biblioteca en C que implementa un motor de bases de datos SQL. Eso quiere decir que PHP puede gestionar bases de datos directamente, sin necesidad de recurrir a SGBD externos.</p>
+
+    <p>Aunque PHP siempre ha permitido utilizar numerosos SGBD, la forma de hacerlo ha ido variando con el tiempo.</p>
+
+    <section id="bibliotecas">
+      <h3>Acceso mediante bibliotecas específicas</h3>
+
+      <p>En las primeras versiones de PHP, la única manera de acceder a un SGBD era a través de una biblioteca específica, que contenía las funciones necesarias. A esas bibliotecas se les suelen llamar también extensiones. En algunos casos esas extensiones se incluían en las distribuciones oficiales de PHP y para poder utilizarlas era suficiente con incluir la directiva correspondiente en el archivo de configuración php.ini. En otros casos esas extensiones no estaban incluidas en las distribuciones oficiales de PHP, pero estaban incluidas en <a href="https://pear.php.net/">PEAR</a> o <a href="https://pecl.php.net/index.php">PECL</a> y para poder utilizarlas era necesario instalarlas por separado.</p>
+
+      <p>Con el paso del tiempo, este enfoque fue mostrando sus limitaciones. El principal inconveniente de este enfoque es que cada extensión está estrechamente vinculada a cada SGBD y si se quiere cambiar de SGBD es necesario reescribir completamente la aplicación (los nombres de cada función son diferentes, el orden de los argumentos distinto, las funcionalidades disponibles son diferentes, etc.). Además en algunos casos, las extensiones no están mantenidas adecuadamente (bugs de seguridad, etc.).</p>
+
+      <p>Actualmente (diciembre de 2017), PHP se sigue distribuyendo con muchas de estas extensiones, pero en su lugar se recomienda utilizar la biblioteca PDO que se comenta a continuación.</p>
     </section>
 
-    <section id="sqlite">
-      <h2>PHP y SQLite</h2>
+    <section id="pdo">
+      <h3>Acceso mediante PDO</h3>
 
-      <p>PHP ha tenido tres extensiones para acceder a la base de datos SQLITE:</p>
-      <ul>
-        <li>Extensión <a href="http://php.net/manual/es/book.sqlite.php">sqlite</a>: esta extensión estaba disponible como paquete PECL desde junio de 2003, fue incluida en PHP 5.0 (publicado en octubre de 2005) y se retiró y devolvió a PECL en PHP 5.4.0 (publicado en marzo de 2012).</li>
-        <li>Extensión <a href="http://php.net/manual/es/book.sqlite3.php">sqlite3</a>: esta extensión, que permite trabajar con SQLite 3, estaba disponible como paquete PECL desde enero de 2008 y fue incluida en PHP 5.3 (publicado en junio de 2009).</li>
-        <li>Extensión <a href="http://php.net/manual/es/book.pdo.php">PDO</a>: esta extensión, que permite trabajar con diferentes bases de datos, incluye un <a href="http://php.net/manual/es/ref.pdo-sqlite.php">controlador para SQLite</a> desde que fue incluida en PHP 5.1 (publicado en noviembre de 2005).</li>
-      </ul>
+      <p>Para poder escribir programas independientes del SGBD elegido, es necesario utilizar una capa de abstracción que permita acceder de una forma común a cualquier SGBD. Esta necesidad no es exclusiva de PHP, sino que afecta a cualquier aplicación que necesita trabajar con un SGBD y no tiene solución completa pues las diferencias entre los SGBD no permiten olvidarse de cuál estamos utilizando realmente.</p>
 
-      <p>Aunque actualmente (diciembre de 2016) la extensión sqlite3 se incluye en PHP, en su lugar se recomienda utilizar SQLite mediante la extensión PDO.</p>
+      <p>Una de estas capas de abstracción es <a href="https://en.wikipedia.org/wiki/Odbc">ODBC (Open DataBase Connectivity)</a>, una API independiente del sistema operativo, lenguaje de programación o SGBD utilizada que se empezó a desarrollar en 1992. En PHP existe una extensión llamada también <a href="http://php.net/manual/es/book.uodbc.php">ODBC</a> que permite conexiones ODBC (creo que esta extensión se incorporó en PHP 3.0, publicado en junio de 1998, en cualquier caso estaba activada en PHP 4.0, publicado en mayo de 2000). El inconveniente de ODBC es que introduce un elemento más en la cadena, el controlador ODBC del sistema operativo, lo que puede ralentizar el rendimiento.</p>
+
+      <p>La capa de abstracción propia de PHP se llama <a href="http://php.net/manual/es/intro.pdo.php">PDO</a>. PDO, biblioteca orientada a objetos, se podía utilizar como extensión PECL de PHP 5.0, publicado en agosto de 2004 y está incluida en PHP desde PHP 5.1, publicado en noviembre de 2005. PDO incluye controladores para acceder a las bases de datos más populares y la lista se va ampliando con el tiempo (aunque no incluye todos los SGBD que disponen de extensiones específicas). Utilizando PDO no podemos olvidarnos completamente del SGBD utilizado, pero la mayor parte del código es independiente del SGBD y sólo en algunas partes del programa (en la conexión con el SGBD o en la creación de tablas, por ejemplo) el código es específico del SGBD.</p>
+
+      <p>Actualmente (diciembre de 2017), la extensión PDO es la biblioteca recomendada para acceder a SGBD desde PHP.</p>
     </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 1 de diciembre de 2016</p>
+    <section id="futuro">
+      <h3>En el futuro ...</h3>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+      <p>Existen capas de abstracción de nivel superior a PDO y que se engloban bajo el acrónimo ORM (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping">Object-relational mapping</a>, <a href="https://es.wikipedia.org/wiki/Mapeo_objeto-relacional">mapeo objeto-relacional</a>). Estas capas resuelven el problema de conversión de los objetos definidos en la aplicación en entidades que se puedan almacenar en una base de datos relacional. Además, permiten en teoría olvidarse completamente del SGBD ya que son capaces de reescribir las sentencias SQL o simular características no presentes en el SGBD. Algunas de estas capas son las bibliotecas <a href="http://www.doctrine-project.org/projects/dbal.html">Doctrine DBAL</a>, <a href="http://propelorm.org/">Propel</a> o <a href="https://redbeanphp.com/index.php">RedBeanPHP</a> (el paquete PEAR <a href="http://pear.php.net/package/MDB2/">MDB2</a> parece actualmente -diciembre de 2017- abandonado).</p>
+
+      <p>Actualmente (diciembre de 2017) ninguna de estas bibliotecas está incluida en PHP.</p>
+    </section>
+  </section>
+
+  <section id="mysql">
+    <h2>PHP y MySQL</h2>
+
+    <p>PHP ha tenido tres extensiones para acceder a la base de datos <a href="https://www.mysql.com/">MySQL</a>:</p>
+    <ul>
+      <li>Extensión <a href="http://php.net/manual/es/book.mysql.php">mysql</a>: Esta extensión fue la primera extensión para MySQL incluida en PHP (creo que esta extensión se incorporó en PHP 3.0, publicado en junio de 1998, en cualquier caso estaba activada en PHP 4.0, publicado en mayo de 2000). En diciembre de 2012 <a href="https://wiki.php.net/rfc/mysql_deprecation">se decidió eliminar la extensión</a>. Desde PHP 5.5 (publicado en junio de 2013) la extensión estuvo desaconsejada y su uso generaba un aviso E_DEPRECATED. Desde PHP 7.0 (publicada en diciembre de 2015), ya no está incluida en PHP.</li>
+      <li>Extensión <a href="http://php.net/manual/es/book.mysqli.php">mysqli</a> (improved mysql): Esta extensión se incluyó por primera vez en PHP 5.0 (publicado en julio de 2004). Las principales ventajas de esta extensión son la posibilidad de utilizar una sintaxis orientada a objetos, sentencias preparadas, transacciones y otras.</li>
+      <li>Extensión <a href="http://php.net/manual/es/book.pdo.php">PDO</a>: esta extensión, que permite trabajar con diferentes bases de datos, incluye un <a href="http://php.net/manual/es/ref.pdo-mysql.php">controlador para MySQL</a> desde que fue incluida en PHP 5.1 (publicado en noviembre de 2005).</li>
+    </ul>
+
+    <p>Aunque la extensión mysqli se sigue incluyendo en PHP, en su lugar se recomienda utilizar acceder a MySQL mediante la extensión PDO.</p>
+
+    <p>Internamente, estas bibliotecas utilizan un controlador para acceder a MySQL. Antiguamente el controlador se llamaba libmysqlclient y había sido desarrollado por la empresa MySQL AB, pero a partir de PHP 5.3 (publicado en junio de 2009), el controlador es <a href="http://php.net/manual/en/book.mysqlnd.php">mysqlnd</a> (MySQL Native Driver), desarrollado por el equipo de PHP. Nuestros programas no pueden utilizar directamente estos controladores.</p>
+  </section>
+
+  <section id="sqlite">
+    <h2>PHP y SQLite</h2>
+
+    <p><a href="http://www.sqlite.org/">SQLite</a> lleva desarrollándose desde el año 2000, con licencia de Dominio Público.</p>
+
+    <p class="mcl-centrado">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1220" viewBox="-50 -60 1220 125">
+        <title>Versiones de SQLite</title>
+        <line x1="35" y1="0" x2="1165" y2="0" stroke-width="3" stroke="hsl(196, 92%, 20%)" />
+        <text x="0" y="-10" text-anchor="middle" style="font-size: 100%">SQLite</text>
+
+        <line x1="60" y1="-50" x2="60" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="90" y="-40" text-anchor="middle" style="font-size: 80%">2000</text>
+        <line x1="120" y1="-50" x2="120" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="150" y="-40" text-anchor="middle" style="font-size: 80%">2001</text>
+        <line x1="180" y1="-50" x2="180" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="210" y="-40" text-anchor="middle" style="font-size: 80%">2002</text>
+        <line x1="240" y1="-50" x2="240" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="270" y="-40" text-anchor="middle" style="font-size: 80%">2003</text>
+        <line x1="300" y1="-50" x2="300" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="330" y="-40" text-anchor="middle" style="font-size: 80%">2004</text>
+        <line x1="360" y1="-50" x2="360" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="390" y="-40" text-anchor="middle" style="font-size: 80%">2005</text>
+        <line x1="420" y1="-50" x2="420" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="450" y="-40" text-anchor="middle" style="font-size: 80%">2006</text>
+        <line x1="480" y1="-50" x2="480" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="510" y="-40" text-anchor="middle" style="font-size: 80%">2007</text>
+        <line x1="540" y1="-50" x2="540" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="570" y="-40" text-anchor="middle" style="font-size: 80%">2008</text>
+        <line x1="600" y1="-50" x2="600" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="630" y="-40" text-anchor="middle" style="font-size: 80%">2009</text>
+        <line x1="660" y1="-50" x2="660" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="690" y="-40" text-anchor="middle" style="font-size: 80%">2010</text>
+        <line x1="720" y1="-50" x2="720" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="750" y="-40" text-anchor="middle" style="font-size: 80%">2011</text>
+        <line x1="780" y1="-50" x2="780" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="810" y="-40" text-anchor="middle" style="font-size: 80%">2012</text>
+        <line x1="840" y1="-50" x2="840" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="870" y="-40" text-anchor="middle" style="font-size: 80%">2013</text>
+        <line x1="900" y1="-50" x2="900" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="930" y="-40" text-anchor="middle" style="font-size: 80%">2014</text>
+        <line x1="960" y1="-50" x2="960" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="990" y="-40" text-anchor="middle" style="font-size: 80%">2015</text>
+        <line x1="1020" y1="-50" x2="1020" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="1050" y="-40" text-anchor="middle" style="font-size: 80%">2016</text>
+        <line x1="1080" y1="-50" x2="1080" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="1110" y="-40" text-anchor="middle" style="font-size: 80%">2017</text>
+        <line x1="1140" y1="-50" x2="1140" y2="50" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+
+        <circle cx="98" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="98" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">1.0</text>
+        <circle cx="165" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="165" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">2.0</text>
+        <circle cx="208" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="208" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">2.5</text>
+        <circle cx="328" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="328" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.0</text>
+        <circle cx="364" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="364" y="25" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.1</text>
+        <circle cx="373" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="373" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.2</text>
+        <circle cx="422" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="422" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.3</text>
+        <circle cx="508" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="508" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.4</text>
+        <circle cx="521" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="521" y="25" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.5</text>
+        <circle cx="573" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="573" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.6</text>
+        <circle cx="694" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="694" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.7</text>
+        <circle cx="880" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="880" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.8</text>
+        <circle cx="1008" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="1008" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.9</text>
+        <circle cx="1021" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="1021" y="25" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.10</text>
+        <circle cx="1068" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="1068" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.15</text>
+        <circle cx="1116" cy="0" r="5" fill="hsl(196, 92%, 20%)" />
+        <text x="1116" y="-15" text-anchor="middle" fill="hsl(196, 92%, 20%)" style="font-size: 80%; font-weight: bold">3.20</text>
+      </svg>
+    </p>
+
+    <p>SQLite está disponible en PHP desde junio de 2003 como extensión PECL (para PHP 4.3 y posteriores), y se incluye en el código fuente de PHP desde PHP 5.0 (publicado en agosto de 2004).</p>
+
+    <p>PHP ha tenido tres extensiones para acceder a la base de datos SQLITE:</p>
+    <ul>
+      <li>Extensión <a href="http://php.net/manual/es/book.sqlite.php">sqlite</a>: esta extensión estaba disponible como paquete PECL desde junio de 2003, fue incluida en PHP 5.0 (publicado en octubre de 2005) y se retiró y devolvió a PECL en PHP 5.4.0 (publicado en marzo de 2012).</li>
+      <li>Extensión <a href="http://php.net/manual/es/book.sqlite3.php">sqlite3</a>: esta extensión, que permite trabajar con SQLite 3, estaba disponible como paquete PECL desde enero de 2008 y fue incluida en PHP 5.3 (publicado en junio de 2009).</li>
+      <li>Extensión <a href="http://php.net/manual/es/book.pdo.php">PDO</a>: esta extensión, que permite trabajar con diferentes bases de datos, incluye un <a href="http://php.net/manual/es/ref.pdo-sqlite.php">controlador para SQLite</a> desde que fue incluida en PHP 5.1 (publicado en noviembre de 2005).</li>
+    </ul>
+
+    <p>Aunque actualmente (diciembre de 2017) la extensión sqlite3 se incluye en PHP, en su lugar se recomienda utilizar SQLite mediante la extensión PDO.</p>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>
