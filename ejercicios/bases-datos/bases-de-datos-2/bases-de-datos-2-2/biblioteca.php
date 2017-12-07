@@ -126,7 +126,7 @@ function cabecera($texto, $menu)
     } elseif ($menu == MENU_VOLVER) {
         print "        <li><a href=\"index.php\">Página inicial</a></li>\n";
     } else {
-        print "    <li>Error en la selección de menú</li>\n";
+        print "        <li>Error en la selección de menú</li>\n";
     }
     print "      </ul>\n";
     print "    </nav>\n";

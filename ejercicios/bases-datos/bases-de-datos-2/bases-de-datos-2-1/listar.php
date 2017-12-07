@@ -45,7 +45,7 @@ if (!$result) {
         print "      <thead>\n";
         print "        <tr>\n";
         print "          <th>Nombre</th>\n";
-        print "          <th>Apellidos </th>\n";
+        print "          <th>Apellidos</th>\n";
         print "        </tr>\n";
         print "      </thead>\n";
         print "      <tbody>\n";

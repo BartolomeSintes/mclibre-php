@@ -4,15 +4,16 @@ header("Content-type: text/css");
 ?>
 @charset "utf-8";
 
-/* Curso "Páginas web con PHP"
-   Bartolomé Sintes Marco
-   http://www.mclibre.org
+/* PROGRAMACION WEB EN PHP                  */
+/* Bartolome Sintes Marco                   */
+/* http://www.mclibre.org                   */
+/*                                          */
+/* CSS ejercicios proyectos                 */
+/*                                          */
+/* 7 de diciembre de 2017                   */
+/*                                          */
 
-   CSS ejercicios proyectos
-   12 de diciembre de 2016
-*/
-
-/* Esta parte de la hoja de estilo es común a todos los ejercicios */
+/* Esta parte es comun a todos los ejercicios proyectos */
 
 html, body {
   margin: 0;
@@ -31,15 +32,15 @@ h1 {
 }
 
 nav {
+  margin: 0;
   background-color: hsl(<?= COLOR ?>, 80%, 75%);
   color: white;
-  margin: 0;
 }
 
 nav ul {
-  list-style-type: none;
   margin: 0;
   padding: 5px;
+  list-style-type: none;
 }
 
 nav li {
@@ -98,4 +99,4 @@ footer cite {
   font-weight: bold;
 }
 
-/* Esta parte de la hoja de estilo es específica de este ejercicio */
+/* Esta parte es especifica de este ejercicio proyecto */
