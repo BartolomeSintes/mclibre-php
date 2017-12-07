@@ -38,7 +38,7 @@
 
       <p>En MySQL el nombre de la base de datos no puede contener guiones (-) ni puntos (.), pero en SQLite sí.</p>
 
-      <p>En las soluciones de los ejercicios incluidos en estos apuntes se ha intentado corregir esta diferencia no utilizando guiones (-) ni puntos (.) en los nombres de las bases de datos para que sean compatibles con ambas bases de datos.</p>
+      <p>A partir del curso 2017/18, como en estos apuntes se utilizan guiones (-) en los nombres de los ficheros, los nombres de las bases de datos SQLite utilizan guiones (ya que se guardan en ficheros). Los nombres de las bases de datos en MySQL utilian guiones bajos (_).</p>
     </section>
 
     <section id="longitud">
@@ -66,24 +66,24 @@
 
       <div class="codigo">
         <pre>
-<code class="language-php"><strong>// EJEMPLOS DE CONSULTAS CON COLLATE </strong>
+<code class="language-php">// EJEMPLOS DE CONSULTAS CON COLLATE
 $consultaCreaDb = "CREATE DATABASE $dbDb
     CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci";  <strong>// NO distingue</strong>
+    COLLATE utf8mb4_unicode_ci";  // NO distingue
 
 $consultaCreaDb = "CREATE DATABASE $dbDb
     CHARACTER SET utf8mb4
-    COLLATE utf8mb4_bin";         <strong>// SÍ distingue</strong>
+    COLLATE utf8mb4_bin";         // SÍ distingue
 
 $consulta = "SELECT * FROM $dbTabla
     WHERE nombre LIKE :nombre COLLATE utf8mb4_unicode_ci
     AND apellidos LIKE :apellidos COLLATE utf8mb4_unicode_ci
-    ";                           <strong>// NO distingue</strong>
+    ";                           // NO distingue
 
 $consulta = "SELECT * FROM $dbTabla
     WHERE nombre LIKE :nombre COLLATE utf8mb4_bin
     AND apellidos LIKE :apellidos COLLATE utf8mb4_bin
-    ";                           <strong>// SÍ distingue</strong></code>
+    ";                           // SÍ distingue</code>
 </pre>
       </div>
 
@@ -114,7 +114,7 @@ $consulta = "SELECT * FROM $dbTabla
     </section>
 
     <footer>
-      <p class="ultmod">Última modificación de esta página: 29 de noviembre de 2015</p>
+      <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
 
       <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
         Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
