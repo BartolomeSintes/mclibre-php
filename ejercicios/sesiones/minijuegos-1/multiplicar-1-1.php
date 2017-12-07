@@ -32,7 +32,7 @@ session_start();
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  <style type="text/css">input { text-align: right; }</style>
+  <style>input { text-align: right; }</style>
 </head>
 
 <body>

@@ -43,7 +43,7 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"]) || !isset($_SESSION["c"])) 
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  <style type="text/css">
+  <style>
     table { border-collapse: collapse; ; margin-left: auto; margin-right: auto; }
     td { padding: 0; }
     img { vertical-align: bottom; }

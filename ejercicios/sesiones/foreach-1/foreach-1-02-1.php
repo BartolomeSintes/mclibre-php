@@ -45,7 +45,7 @@ if (!isset($_SESSION["disponibles"]) || count($_SESSION["disponibles"]) == 0) {
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  <style type="text/css">
+  <style>
     button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
   </style>
 </head>

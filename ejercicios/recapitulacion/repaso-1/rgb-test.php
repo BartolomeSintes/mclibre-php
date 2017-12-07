@@ -33,7 +33,7 @@ session_start();
   Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  <style type="text/css">
+  <style>
     form span { font-size: 300%; display: block; width: 100px; height: 100px; }
   </style>
 </head>
