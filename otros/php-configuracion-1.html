@@ -1,205 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Configuración de Apache y PHP. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Configuración de Apache y PHP. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Configuración de Apache y PHP</h1>
+<body>
+  <h1>Configuración de Apache y PHP</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Configurar Apache y PHP</h2>
+    <div class="toc">
+      <h2>Configurar Apache y PHP</h2>
 
-        <ul>
-          <li><a href="#introduccion">Introducción</a>
-            <ul>
-              <li><a href="#modificar-configuracion">modificar configuración</a></li>
-            </ul>
-          </li>
-          <li><a href="#configuracion-apache">Configuración de Apache</a>
-            <ul>
-              <li><a href="#ubicacion">ubicación páginas web</a></li>
-              <li><a href="#alias">alias</a></li>
-            </ul>
-          </li>
-          <li><a href="#configuracion-php">Configuración de PHP</a>
-            <ul>
-              <li><a href="#php-ini">archivo php.ini</a></li>
-              <li><a href="#directivas">directivas de configuración</a></li>
-              <li><a href="#short-open-tag">short_open_tag</a></li>
-              <li><a href="#error-reporting">error_reporting</a></li>
-              <li><a href="#output-buffering">output_buffering</a></li>
-              <li><a href="#pdo-mysql">extensión pdo_mysql</a></li>
-              <li><a href="#pdo-sqlite">extensión pdo_sqlite</a></li>
-              <li><a href="#session-save-handler">session.save_handler</a></li>
-              <li><a href="#session-use-trans-sid">session.use_trans_sid </a></li>
-              <li><a href="#date-timezone">date.timezone</a></li>
-              <li><a href="#post-max-size">post_max_size</a></li>
-              <li><a href="#fileinfo">extensión fileinfo</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#introduccion">Introducción</a>
+          <ul>
+            <li><a href="#modificar-configuracion">modificar configuración</a></li>
+          </ul>
+        </li>
+        <li><a href="#configuracion-apache">Configuración de Apache</a>
+          <ul>
+            <li><a href="#ubicacion">ubicación páginas web</a></li>
+            <li><a href="#alias">alias</a></li>
+          </ul>
+        </li>
+        <li><a href="#configuracion-php">Configuración de PHP</a>
+          <ul>
+            <li><a href="#php-ini">archivo php.ini</a></li>
+            <li><a href="#directivas">directivas de configuración</a></li>
+            <li><a href="#short-open-tag">short_open_tag</a></li>
+            <li><a href="#error-reporting">error_reporting</a></li>
+            <li><a href="#output-buffering">output_buffering</a></li>
+            <li><a href="#pdo-mysql">extensión pdo_mysql</a></li>
+            <li><a href="#pdo-sqlite">extensión pdo_sqlite</a></li>
+            <li><a href="#session-save-handler">session.save_handler</a></li>
+            <li><a href="#session-use-trans-sid">session.use_trans_sid </a></li>
+            <li><a href="#date-timezone">date.timezone</a></li>
+            <li><a href="#post-max-size">post_max_size</a></li>
+            <li><a href="#fileinfo">extensión fileinfo</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <section id="introduccion">
-      <h2>Introducción</h2>
+  <section id="introduccion">
+    <h2>Introducción</h2>
 
-      <p>Esta explicación sobre la configuración de Apache y PHP está adaptada a XAMPP 7.1.8.</p>
+    <p>Esta explicación sobre la configuración de Apache y PHP está adaptada a XAMPP 7.1.8.</p>
 
-      <p>Cada vez que se modifica alguno de los ficheros de configuración es necesario detener y reiniciar el servidor.</p>
+    <p>Cada vez que se modifica alguno de los ficheros de configuración es necesario detener y reiniciar el servidor.</p>
 
-      <section id="modificar-configuracion">
-        <h3>Cómo modificar los archivos de configuración</h3>
+    <section id="modificar-configuracion">
+      <h3>Cómo modificar los archivos de configuración</h3>
 
-        <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />Antes de modificar cualquier archivo de configuración, <strong>recomiendo hacer una copia de seguridad</strong> del archivo de configuración original.</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />Antes de modificar cualquier archivo de configuración, <strong>recomiendo hacer una copia de seguridad</strong> del archivo de configuración original.</p>
 
-        <p>Si al modificar algún archivo de configuración nos equivocamos e introducimos errores, es probable que el servidor no pueda arrancar. Si no somos capaces de encontrar el error, siempre podemos restaurar en archivo de configuración original y empezar de nuevo, sin necesidad de reinstalar los programas.</p>
+      <p>Si al modificar algún archivo de configuración nos equivocamos e introducimos errores, es probable que el servidor no pueda arrancar. Si no somos capaces de encontrar el error, siempre podemos restaurar en archivo de configuración original y empezar de nuevo, sin necesidad de reinstalar los programas.</p>
 
-        <p>Al modificar cualquier archivo de configuración, es conveniente documentar los cambios. Para ello, recomiendo hacer tres cosas:</p>
-        <ul>
-          <li>no modificar la línea del archivo original, sino añadirle el carácter de comentario al principio de la línea (almohadilla o punto y coma)</li>
-          <li>añadir la línea modificada</li>
-          <li>añadir una línea de comentario indicando la fecha, el autor y el cambio realizado.</li>
-        </ul>
+      <p>Al modificar cualquier archivo de configuración, es conveniente documentar los cambios. Para ello, recomiendo hacer tres cosas:</p>
+      <ul>
+        <li>no modificar la línea del archivo original, sino añadirle el carácter de comentario al principio de la línea (almohadilla o punto y coma)</li>
+        <li>añadir la línea modificada</li>
+        <li>añadir una línea de comentario indicando la fecha, el autor y el cambio realizado.</li>
+      </ul>
 
-        <p>Por ejemplo, la siguiente línea es una línea del archivo de configuración de Apache:</p>
+      <p>Por ejemplo, la siguiente línea es una línea del archivo de configuración de Apache:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">DocumentRoot "C:/xampp/htdocs"</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En caso de modificarla, el archivo de configuración quedaría así (se ha resaltado el texto añadido):</p>
+      <p>En caso de modificarla, el archivo de configuración quedaría así (se ha resaltado el texto añadido):</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"><strong># 2017-09-01. Barto. He cambiado el directorio raíz del servidor
 #</strong> DocumentRoot "C:/xampp/htdocs"
 <strong>DocumentRoot "C:/www"</strong></code>
 </pre>
-        </div>
-      </section>
+      </div>
     </section>
+  </section>
 
-    <section id="configuracion-apache">
-      <h2>Configuración de Apache</h2>
+  <section id="configuracion-apache">
+    <h2>Configuración de Apache</h2>
 
-      <p>El fichero de configuración de Apache es el archivo <strong>httpd.conf</strong>, un archivo de texto sin formato.</p>
+    <p>El fichero de configuración de Apache es el archivo <strong>httpd.conf</strong>, un archivo de texto sin formato.</p>
 
-      <p>En httpd.conf las líneas comentadas empiezan por el carácter almohadilla (#). En Windows, al escribir una ruta de directorio en httpd.conf se puede utilizar tanto la barra como la contrabarra (es decir, se puede escribir tanto C:\xampp como C:/xampp).</p>
+    <p>En httpd.conf las líneas comentadas empiezan por el carácter almohadilla (#). En Windows, al escribir una ruta de directorio en httpd.conf se puede utilizar tanto la barra como la contrabarra (es decir, se puede escribir tanto C:\xampp como C:/xampp).</p>
 
-      <p>En XAMPP 7.1 el archivo <strong>httpd.conf</strong> se encuentra en el directorio:</p>
+    <p>En XAMPP 7.1 el archivo <strong>httpd.conf</strong> se encuentra en el directorio:</p>
+    <ul>
+      <li>en Windows: <strong>C:\xampp\apache\conf\</strong></li>
+      <li>en GNU/Linux: <strong>/opt/lampp/etc/</strong></li>
+    </ul>
+
+    <p>Se puede abrir directamente el archivo <strong>httpd.conf</strong> haciendo clic en el botón "Config" correspondiente a Apache y eligiendo la primera opción:</p>
+
+    <p class="captura">
+      <img src="../img/xampp/xampp-control-panel-httpd-conf.png" alt="XAMPP - Abrir httpd.conf" title="XAMPP - Abrir httpd.conf" width="730" height="434" />
+    </p>
+
+    <p>En esta lección se comentan algunas directivas de configuración de Apache. Antes de modificar cualquier archivo de configuración, se recomienda hacer una copia de seguridad del archivo de configuración original.</p>
+
+    <section id="ubicacion">
+      <h3>Ubicación de las páginas web</h3>
+
+      <p>Con la configuración inicial de XAMPP 7.1.X, al abrir en el navegador una dirección que empieza por <strong>http://localhost/</strong>, Apache busca el elemento solicitado a partir del directorio raíz del servidor, indicado por la directiva <strong>DocumentRoot</strong> del archivo httpd.conf:</p>
       <ul>
-        <li>en Windows: <strong>C:\xampp\apache\conf\</strong></li>
-        <li>en GNU/Linux: <strong>/opt/lampp/etc/</strong></li>
+        <li>si se trata de un archivo:
+          <ul>
+            <li>si encuentra el archivo, lo sirve al navegador.</li>
+            <li>si no encuentra el archivo, envía un error 404 (objeto no localizado)</li>
+          </ul>
+        </li>
+        <li>si se trata de un directorio:
+          <ul>
+            <li>si encuentra el directorio, busca si existe alguno de los archivos indicados por la directiva <strong>DirectoryIndex</strong> (por ejemplo, en XAMPP 7.1, index.php index.pl index.cgi index.asp index.shtml index.html index.htm etc) :
+              <ul>
+                <li>si encuentra alguno de esos archivos, lo sirve al navegador.</li>
+                <li>si no encuentra ninguno de esos archivos, Apache envía al navegador el listado del directorio.</li>
+              </ul>
+            </li>
+            <li>si no encuentra el directorio, envía un error 404 (objeto no localizado)</li>
+          </ul>
+        </li>
       </ul>
 
-      <p>Se puede abrir directamente el archivo <strong>httpd.conf</strong> haciendo clic en el botón "Config" correspondiente a Apache y eligiendo la primera opción:</p>
+      <p>Esta configuración es adecuada para entornos de programación, pero en entornos de producción se suele modificar, por ejemplo, para no enviar el listado del directorio.</p>
 
-      <p class="captura">
-        <img src="../img/xampp/xampp-control-panel-httpd-conf.png" alt="XAMPP - Abrir httpd.conf" title="XAMPP - Abrir httpd.conf" width="730" height="434" />
-      </p>
+      <p>En el directorio raíz del servidor, XAMPP 7.1 instala una serie de páginas que permiten administrar el servidor, por eso al abrir en el navegador la dirección http://localhost se abre una página de administración propia de XAMPP.</p>
 
-      <p>En esta lección se comentan algunas directivas de configuración de Apache. Antes de modificar cualquier archivo de configuración, se recomienda hacer una copia de seguridad del archivo de configuración original.</p>
+      <p>A la hora de añadir otras páginas en el servidor, se puede hacer de varias formas:</p>
+      <ul>
+        <li>Cambiar el directorio raíz del servidor, modificando la directiva DocumentRoot (como se explica en la lección <a href="php-configuracion-2.html#document-root">Configuración 2</a>). Tiene el inconveniente de que las páginas de administración de XAMPP se perderían (aunque podríamos recuperarlas creando una directiva Alias).</li>
+        <li>Crear directorios de usuario, mediante la directiva UserDir (como se explica en la lección <a href="php-configuracion-2.html#user-dir">Configuración 2</a>). Es la mejor solución en un ordenador con varios usuarios de Windows para que cada usuario tenga sus propias páginas separadas e independientes del resto. Cada usuario puede guardar sus páginas en un directorio (con el mismo nombre para todos los usuarios, pero cada uno en su propia carpeta de Mis Documentos) y cada usuario sólo ve sus páginas.</li>
+        <li>Crear uno o varios alias, mediante la directiva Alias. Es una solución que permite mantener las páginas en los directorios que más nos interesen, aunque si hay varios usuarios, estos tienen que tener en cuenta los alias creados por los demás, puesto que los nombres no se pueden repetir.</li>
+      </ul>
 
-      <section id="ubicacion">
-        <h3>Ubicación de las páginas web</h3>
+      <p>En mis clases, dado que sólo hay un usuario de Windows, aunque puede haber varios alumnos que utilicen el mismo usuario, <strong>optaremos por la solución de crear alias</strong>, uno para cada alumno que utilice el ordenador.</p>
+    </section>
 
-        <p>Con la configuración inicial de XAMPP 7.1.X, al abrir en el navegador una dirección que empieza por <strong>http://localhost/</strong>, Apache busca el elemento solicitado a partir del directorio raíz del servidor, indicado por la directiva <strong>DocumentRoot</strong> del archivo httpd.conf:</p>
-        <ul>
-          <li>si se trata de un archivo:
-            <ul>
-              <li>si encuentra el archivo, lo sirve al navegador.</li>
-              <li>si no encuentra el archivo, envía un error 404 (objeto no localizado)</li>
-            </ul>
-          </li>
-          <li>si se trata de un directorio:
-            <ul>
-              <li>si encuentra el directorio, busca si existe alguno de los archivos indicados por la directiva <strong>DirectoryIndex</strong> (por ejemplo, en XAMPP 7.1, index.php index.pl index.cgi index.asp index.shtml index.html index.htm etc) :
-                <ul>
-                  <li>si encuentra alguno de esos archivos, lo sirve al navegador.</li>
-                  <li>si no encuentra ninguno de esos archivos, Apache envía al navegador el listado del directorio.</li>
-                </ul>
-              </li>
-              <li>si no encuentra el directorio, envía un error 404 (objeto no localizado)</li>
-            </ul>
-          </li>
-        </ul>
+    <section id="alias">
+      <h3>Alias</h3>
 
-        <p>Esta configuración es adecuada para entornos de programación, pero en entornos de producción se suele modificar, por ejemplo, para no enviar el listado del directorio.</p>
+      <p>La directiva Alias permite que el servidor abra páginas que no estén dentro del directorio establecido mediante la directiva DocumentRoot.</p>
 
-        <p>En el directorio raíz del servidor, XAMPP 7.1 instala una serie de páginas que permiten administrar el servidor, por eso al abrir en el navegador la dirección http://localhost se abre una página de administración propia de XAMPP.</p>
+      <p>Para que Apache pueda acceder a esos directorios, en el archivo httpd.conf debe estar cargado el módulo alias mediante la directiva:</p>
 
-        <p>A la hora de añadir otras páginas en el servidor, se puede hacer de varias formas:</p>
-        <ul>
-          <li>Cambiar el directorio raíz del servidor, modificando la directiva DocumentRoot (como se explica en la lección <a href="php-configuracion-2.html#document-root">Configuración 2</a>). Tiene el inconveniente de que las páginas de administración de XAMPP se perderían (aunque podríamos recuperarlas creando una directiva Alias).</li>
-          <li>Crear directorios de usuario, mediante la directiva UserDir (como se explica en la lección <a href="php-configuracion-2.html#user-dir">Configuración 2</a>). Es la mejor solución en un ordenador con varios usuarios de Windows para que cada usuario tenga sus propias páginas separadas e independientes del resto. Cada usuario puede guardar sus páginas en un directorio (con el mismo nombre para todos los usuarios, pero cada uno en su propia carpeta de Mis Documentos) y cada usuario sólo ve sus páginas.</li>
-          <li>Crear uno o varios alias, mediante la directiva Alias. Es una solución que permite mantener las páginas en los directorios que más nos interesen, aunque si hay varios usuarios, estos tienen que tener en cuenta los alias creados por los demás, puesto que los nombres no se pueden repetir.</li>
-        </ul>
-
-        <p>En mis clases, dado que sólo hay un usuario de Windows, aunque puede haber varios alumnos que utilicen el mismo usuario, <strong>optaremos por la solución de crear alias</strong>, uno para cada alumno que utilice el ordenador.</p>
-      </section>
-
-      <section id="alias">
-        <h3>Alias</h3>
-
-        <p>La directiva Alias permite que el servidor abra páginas que no estén dentro del directorio establecido mediante la directiva DocumentRoot.</p>
-
-        <p>Para que Apache pueda acceder a esos directorios, en el archivo httpd.conf debe estar cargado el módulo alias mediante la directiva:</p>
-
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">LoadModule alias_module modules/mod_alias.so</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En XAMPP 7.1 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 7.1 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-        <p>Además, hay que añadir en el archivo httpd.conf una directiva Alias dentro de la directiva &lt;IfModule alias_module&gt; (que ya existe en XAMPP 7.1).</p>
+      <p>Además, hay que añadir en el archivo httpd.conf una directiva Alias dentro de la directiva &lt;IfModule alias_module&gt; (que ya existe en XAMPP 7.1).</p>
 
-        <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Mis Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
+      <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Mis Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
 
-        <table class="tabla-con-borde">
-          <tbody>
-            <tr>
-              <th>Programas</th>
-              <th>Carpeta en el disco</th>
-              <th>Ruta en el navegador</th>
-            </tr>
-            <tr>
-              <td>Programas escritos en el curso de PHP</td>
-              <td>Mis documentos/Cursos/PHP</td>
-              <td>localhost/clase</td>
-            </tr>
-            <tr>
-              <td>Programas escritos para el trabajo</td>
-              <td>Mis documentos/Trabajo/PHP</td>
-              <td>localhost/curro</td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Programas</th>
+            <th>Carpeta en el disco</th>
+            <th>Ruta en el navegador</th>
+          </tr>
+          <tr>
+            <td>Programas escritos en el curso de PHP</td>
+            <td>Mis documentos/Cursos/PHP</td>
+            <td>localhost/clase</td>
+          </tr>
+          <tr>
+            <td>Programas escritos para el trabajo</td>
+            <td>Mis documentos/Trabajo/PHP</td>
+            <td>localhost/curro</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <p>Para ello, hay que añadir en el archivo httpd.conf dos directivas Alias dentro de la directiva &lt;IfModule alias_module&gt;. Si ya existe la directiva IfModule (como ocurre en XAMPP 7.1), sólo habría que añadir las líneas en negrita del ejemplo siguiente:</p>
-        <ul>
-          <li>en Windows:<br />
+      <p>Para ello, hay que añadir en el archivo httpd.conf dos directivas Alias dentro de la directiva &lt;IfModule alias_module&gt;. Si ya existe la directiva IfModule (como ocurre en XAMPP 7.1), sólo habría que añadir las líneas en negrita del ejemplo siguiente:</p>
+      <ul>
+        <li>en Windows:<br />
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-01. He añadido este Alias para los programas escritos en el curso de PHP.</strong>
@@ -220,12 +220,12 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-            </div>
-          </li>
-          <li>en GNU/Linux:<br />
+          </div>
+        </li>
+        <li>en GNU/Linux:<br />
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-01. He añadido este Alias para los programas escritos en el curso de PHP.
@@ -247,367 +247,367 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </li>
+      </ul>
 
-        <p>Como se comenta en el apartado de la directiva DocumentRoot, se debe incluir una directiva &lt;Directory&gt; para el directorio indicado en la directiva Alias.</p>
+      <p>Como se comenta en el apartado de la directiva DocumentRoot, se debe incluir una directiva &lt;Directory&gt; para el directorio indicado en la directiva Alias.</p>
 
-        <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
-      </section>
+      <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
+    </section>
+  </section>
+
+  <section id="configuracion-php">
+    <h2>Configuración de PHP</h2>
+
+    <section id="php-ini">
+      <h3>El archivo php.ini</h3>
+
+      <p>El archivo de configuración de PHP es el archivo <strong>php.ini</strong>, un archivo de texto sin formato.</p>
+
+      <p>En php.ini las líneas comentadas empiezan por el carácter punto y coma (;).</p>
+
+      <p>En XAMPP 7.1 el archivo php.ini se encuentra:</p>
+      <ul>
+        <li>en Windows, en el directorio <strong>C:\xampp\php\php.ini</strong>.</li>
+        <li>en GNU/Linux, en el directorio <strong>/opt/lampp/etc</strong>.</li>
+      </ul>
+
+      <p>Se puede abrir directamente el archivo <strong>php.ini</strong> haciendo clic en el botón "Config" correspondiente a Apache y eligiendo opción correspondiente:</p>
+
+      <p class="captura">
+        <img src="../img/xampp/xampp-control-panel-php-ini.png" alt="XAMPP - Abrir php.ini" title="XAMPP - Abrir php.ini" width="730" height="434" />
+      </p>
+
+      <p><strong>Nota</strong>: La ruta del archivo php.ini que está utilizando Apache se puede ver en el campo "Loaded Configuration File" de la primera tabla que muestra la función <span class="php-fun">phpinfo()</span>. En el menú de la página de administración de XAMPP 7.1 hay una opción <span class="php-fun">phpinfo()</span> que muestra la configuración de PHP.</p>
+
+      <p class="captura">
+        <img src="../img/xampp/xampp-dashboard-phpinfo.png" alt="XAMPP. PHPInfo en página de administración" title="XAMPP. PHPInfo en página de administración" width="1024" height="340" />
+      </p>
+
+      <p class="captura">
+        <img src="../img/xampp/xampp-phpinfo.png" alt="XAMPP. php.ini en phpinfo" title="XAMPP. php.ini en phpinfo" width="1024" height="480" />
+      </p>
     </section>
 
-    <section id="configuracion-php">
-      <h2>Configuración de PHP</h2>
+    <section id="directivas">
+      <h3>Directivas de configuración en php.ini</h3>
 
-      <section id="php-ini">
-        <h3>El archivo php.ini</h3>
+      <p>Se comentan a continuación algunas directivas de configuración de PHP, aunque también se puede consultar el <a href="http://php.net/manual/es/ini.core.php">manual de PHP</a>. Antes de modificar cualquier archivo de configuración, se recomienda hacer una copia de seguridad del archivo de configuración original.</p>
 
-        <p>El archivo de configuración de PHP es el archivo <strong>php.ini</strong>, un archivo de texto sin formato.</p>
+      <p>En el archivo de configuración php.ini, las líneas que comienzan por <strong>;</strong> (punto y coma) son líneas comentadas, es decir, que no se tendrán en cuenta cuando PHP cargue el archivo. En el archivo de configuración se pueden encontrar bloques de varias líneas comentadas que explican el significado de una directiva y más adelante una línea sin comentar que establece el valor de la directiva. Un error de principiante bastante común es modificar el valor de la directiva en una línea comentada, lo que no sirve para nada.</p>
+    </section>
 
-        <p>En php.ini las líneas comentadas empiezan por el carácter punto y coma (;).</p>
+    <section id="short-open-tag">
+      <h3>short_open_tag</h3>
 
-        <p>En XAMPP 7.1 el archivo php.ini se encuentra:</p>
-        <ul>
-          <li>en Windows, en el directorio <strong>C:\xampp\php\php.ini</strong>.</li>
-          <li>en GNU/Linux, en el directorio <strong>/opt/lampp/etc</strong>.</li>
-        </ul>
+      <p>Los fragmentos de código PHP se identifican mediante las etiquetas &lt;?php .... ?&gt;. La directiva <span class="php-dir">short_open_tag</span> especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
 
-        <p>Se puede abrir directamente el archivo <strong>php.ini</strong> haciendo clic en el botón "Config" correspondiente a Apache y eligiendo opción correspondiente:</p>
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Directiva / Valor</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <td>short_open_tag = On</td>
+            <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
+          </tr>
+          <tr>
+            <td>short_open_tag = Off</td>
+            <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <p class="captura">
-          <img src="../img/xampp/xampp-control-panel-php-ini.png" alt="XAMPP - Abrir php.ini" title="XAMPP - Abrir php.ini" width="730" height="434" />
-        </p>
+      <p>Se recomienda que esta directiva tome el valor Off y que se utilice siempre la etiqueta &lt;?php para empezar los fragmentos de código php.</p>
 
-        <p><strong>Nota</strong>: La ruta del archivo php.ini que está utilizando Apache se puede ver en el campo "Loaded Configuration File" de la primera tabla que muestra la función <span class="php-fun">phpinfo()</span>. En el menú de la página de administración de XAMPP 7.1 hay una opción <span class="php-fun">phpinfo()</span> que muestra la configuración de PHP.</p>
-
-        <p class="captura">
-          <img src="../img/xampp/xampp-dashboard-phpinfo.png" alt="XAMPP. PHPInfo en página de administración" title="XAMPP. PHPInfo en página de administración" width="1024" height="340" />
-        </p>
-
-        <p class="captura">
-          <img src="../img/xampp/xampp-phpinfo.png" alt="XAMPP. php.ini en phpinfo" title="XAMPP. php.ini en phpinfo" width="1024" height="480" />
-        </p>
-      </section>
-
-      <section id="directivas">
-        <h3>Directivas de configuración en php.ini</h3>
-
-        <p>Se comentan a continuación algunas directivas de configuración de PHP, aunque también se puede consultar el <a href="http://php.net/manual/es/ini.core.php">manual de PHP</a>. Antes de modificar cualquier archivo de configuración, se recomienda hacer una copia de seguridad del archivo de configuración original.</p>
-
-        <p>En el archivo de configuración php.ini, las líneas que comienzan por <strong>;</strong> (punto y coma) son líneas comentadas, es decir, que no se tendrán en cuenta cuando PHP cargue el archivo. En el archivo de configuración se pueden encontrar bloques de varias líneas comentadas que explican el significado de una directiva y más adelante una línea sin comentar que establece el valor de la directiva. Un error de principiante bastante común es modificar el valor de la directiva en una línea comentada, lo que no sirve para nada.</p>
-      </section>
-
-      <section id="short-open-tag">
-        <h3>short_open_tag</h3>
-
-        <p>Los fragmentos de código PHP se identifican mediante las etiquetas &lt;?php  .... ?&gt;. La directiva <span class="php-dir">short_open_tag</span> especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
-
-        <table class="tabla-con-borde">
-          <tbody>
-            <tr>
-              <th>Directiva / Valor</th>
-              <th>Significado</th>
-            </tr>
-            <tr>
-              <td>short_open_tag = On</td>
-              <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
-            </tr>
-            <tr>
-              <td>short_open_tag = Off</td>
-              <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>Se recomienda que esta directiva tome el valor Off y que se utilice siempre la etiqueta &lt;?php para empezar los fragmentos de código php.</p>
-
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">short_open_tag = Off        ; Valor recomendado en este curso si no se va a utilizar el panel de control de XAMPP</code>
 </pre>
+      </div>
+
+      <p>En XAMPP 7.1 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+
+      <hr class="corta" />
+
+      <p>Si en el servidor la directiva toma el valor On, las páginas XHTML que contengan una declaración XML (por ejemplo, &lt;?xml version="1.0" encoding="iso-8859-1"?&gt;) producirían un error. Este problema se resolvería utilizando un fragmento de código para generar la declaración XML.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?xml version="1.0" encoding="utf-8"?&gt;</code></pre>
         </div>
-
-        <p>En XAMPP 7.1 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
-
-        <hr class="corta" />
-
-        <p>Si en el servidor la directiva toma el valor On, las páginas XHTML que contengan una declaración XML (por ejemplo, &lt;?xml version="1.0" encoding="iso-8859-1"?&gt;) producirían un error. Este problema se resolvería utilizando un fragmento de código para generar la declaración XML.</p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre><code class="language-php">&lt;?xml version="1.0" encoding="utf-8"?&gt;</code></pre>
-          </div>
-          <div class="resultado-html">
-            <strong>Parse error</strong>: parse error, unexpected T_STRING in <strong>ejemplo.php</strong> on line <strong>1</strong>
-          </div>
+        <div class="resultado-html">
+          <strong>Parse error</strong>: parse error, unexpected T_STRING in <strong>ejemplo.php</strong> on line <strong>1</strong>
         </div>
+      </div>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-html"></div>
         </div>
-      </section>
+        <div class="resultado-html"></div>
+      </div>
+    </section>
 
-      <section id="error-reporting">
-        <h3>error_reporting</h3>
+    <section id="error-reporting">
+      <h3>error_reporting</h3>
 
-        <p>La directiva  <span class="php-dir">error_reporting</span> especifica el tipo de errores notificados por PHP. Por ejemplo:</p>
+      <p>La directiva <span class="php-dir">error_reporting</span> especifica el tipo de errores notificados por PHP. Por ejemplo:</p>
 
-        <table class="tabla-con-borde">
-          <tbody>
-            <tr>
-              <th>Directiva / Valor</th>
-              <th>Significado</th>
-            </tr>
-            <tr>
-              <td>error_reporting = E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED</td>
-              <td>Se muestran todos los errores, menos los avisos y obsoletos.</td>
-            </tr>
-            <tr>
-              <td>error_reporting = E_ALL &amp; ~E_DEPRECATED</td>
-              <td>Se muestran todos los errores, menos los obsoletos</td>
-            </tr>
-            <tr>
-              <td>error_reporting = E_ALL ; Valor recomendado en este curso </td>
-              <td>Se muestran todos los errores (Valor recomendado)</td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Directiva / Valor</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <td>error_reporting = E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED</td>
+            <td>Se muestran todos los errores, menos los avisos y obsoletos.</td>
+          </tr>
+          <tr>
+            <td>error_reporting = E_ALL &amp; ~E_DEPRECATED</td>
+            <td>Se muestran todos los errores, menos los obsoletos</td>
+          </tr>
+          <tr>
+            <td>error_reporting = E_ALL ; Valor recomendado en este curso </td>
+            <td>Se muestran todos los errores (Valor recomendado)</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <p>En un entorno de producción se suelen ocultar a los clientes los mensajes de error por motivos de seguridad (aunque se deben registrar en el archivo de logs), pero en un entorno de desarrollo es conveniente mostrar el mayor número de errores y avisos para corregirlos. Para mostrar todos los errores, la directiva  <span class="php-dir">error_reporting</span> debe tomar el valor E_ALL</p>
+      <p>En un entorno de producción se suelen ocultar a los clientes los mensajes de error por motivos de seguridad (aunque se deben registrar en el archivo de logs), pero en un entorno de desarrollo es conveniente mostrar el mayor número de errores y avisos para corregirlos. Para mostrar todos los errores, la directiva <span class="php-dir">error_reporting</span> debe tomar el valor E_ALL</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">error_reporting = E_ALL        ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p>El inconveniente de utilizar una configuración tan exigente es que algunos paquetes de terceros (bibliotecas, CMS, etc.) pueden dejar de funcionar y a veces no queda más remedio que volver a un valor menos estricto para poderlos utilizar.</p>
+      <p>El inconveniente de utilizar una configuración tan exigente es que algunos paquetes de terceros (bibliotecas, CMS, etc.) pueden dejar de funcionar y a veces no queda más remedio que volver a un valor menos estricto para poderlos utilizar.</p>
 
-        <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />En XAMPP 7.1 esta directiva viene predeterminada con el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT, por lo que <strong>se recomienda modificarla</strong>:</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />En XAMPP 7.1 esta directiva viene predeterminada con el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT, por lo que <strong>se recomienda modificarla</strong>:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"><strong>; 2017-09-01. Barto. He cambiado error_reporting para mostrar todos los errores</strong>
 <strong>;</strong> error_reporting=E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT
 <strong>error_reporting = E_ALL </strong></code>
 </pre>
-        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Los dieciséis <a href="http://php.net/manual/es/errorfunc.constants.php">posibles valores de esta directiva</a>, que se pueden combinar con el operador lógico &amp; (Y), son los siguientes:</p>
+      <p>Los dieciséis <a href="http://php.net/manual/es/errorfunc.constants.php">posibles valores de esta directiva</a>, que se pueden combinar con el operador lógico &amp; (Y), son los siguientes:</p>
 
-        <table class="tabla-con-borde">
-          <tbody>
-            <tr>
-              <th>Tipo de error</th>
-              <th>Descripción</th>
-            </tr>
-            <tr>
-              <td>E_ALL</td>
-              <td>Todos los errores y avisos.</td>
-            </tr>
-            <tr>
-              <td>E_ERROR</td>
-              <td>Errores fatales detectados en tiempo de ejecución.</td>
-            </tr>
-            <tr>
-              <td>E_WARNING</td>
-              <td>Advertencias (errores no fatales) detectados en tiempo de ejecución.</td>
-            </tr>
-            <tr>
-              <td>E_PARSE</td>
-              <td>Errores de sintaxis detectados en tiempo de compilación.</td>
-            </tr>
-            <tr>
-              <td>E_NOTICE</td>
-              <td>Avisos detectados en tiempo de ejecución (pueden deberse a errores involuntarios o a errores intencionados, por ejemplo, utilizar una variable no inicializada, pero utilizarla teniendo en cuenta que se inicializará automáticamente a una cadena vacía).</td>
-            </tr>
-            <tr>
-              <td>E_STRICT</td>
-              <td>Avisos detectados en tiempo de ejecución, al activarlos PHP sugiere cambios en el código para que una mejor interoperabilidad y compatibilidad en el futuro.<br />
-              </td>
-            </tr>
-            <tr>
-              <td>E_RECOVERABLE_ERROR </td>
-              <td>Error recuperable.</td>
-            </tr>
-            <tr>
-              <td>E_DEPRECATED</td>
-              <td>Advertencias sobre código obsoleto que no funcionará en futuras versiones de PHP.</td>
-            </tr>
-            <tr>
-              <td>E_CORE_ERROR</td>
-              <td>Errores fatales detectados durante el arranque inicial de PHP.</td>
-            </tr>
-            <tr>
-              <td>E_CORE_WARNING</td>
-              <td>Advertencias (errores no fatales) detectados durante el arranque inicial de PHP.</td>
-            </tr>
-            <tr>
-              <td>E_COMPILE_ERROR</td>
-              <td>Erores fatales detectados en tiempo de compilación.</td>
-            </tr>
-            <tr>
-              <td>E_COMPILE_WARNING</td>
-              <td>Advertencias (errores no fatales) detectados en tiempo de compilación.</td>
-            </tr>
-            <tr>
-              <td>E_USER_ERROR</td>
-              <td>Mensajes de error generados por el usuario.</td>
-            </tr>
-            <tr>
-              <td>E_USER_WARNING</td>
-              <td>Advertencias generadas por el usuario.</td>
-            </tr>
-            <tr>
-              <td>E_USER_NOTICE</td>
-              <td>Avisos generados por el usuario.</td>
-            </tr>
-            <tr>
-              <td>E_USER_DEPRECATED </td>
-              <td>Advertencias generadas por el usuario sobre código que no funcionará en futuras versiones de PHP.</td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Tipo de error</th>
+            <th>Descripción</th>
+          </tr>
+          <tr>
+            <td>E_ALL</td>
+            <td>Todos los errores y avisos.</td>
+          </tr>
+          <tr>
+            <td>E_ERROR</td>
+            <td>Errores fatales detectados en tiempo de ejecución.</td>
+          </tr>
+          <tr>
+            <td>E_WARNING</td>
+            <td>Advertencias (errores no fatales) detectados en tiempo de ejecución.</td>
+          </tr>
+          <tr>
+            <td>E_PARSE</td>
+            <td>Errores de sintaxis detectados en tiempo de compilación.</td>
+          </tr>
+          <tr>
+            <td>E_NOTICE</td>
+            <td>Avisos detectados en tiempo de ejecución (pueden deberse a errores involuntarios o a errores intencionados, por ejemplo, utilizar una variable no inicializada, pero utilizarla teniendo en cuenta que se inicializará automáticamente a una cadena vacía).</td>
+          </tr>
+          <tr>
+            <td>E_STRICT</td>
+            <td>Avisos detectados en tiempo de ejecución, al activarlos PHP sugiere cambios en el código para que una mejor interoperabilidad y compatibilidad en el futuro.<br />
+            </td>
+          </tr>
+          <tr>
+            <td>E_RECOVERABLE_ERROR </td>
+            <td>Error recuperable.</td>
+          </tr>
+          <tr>
+            <td>E_DEPRECATED</td>
+            <td>Advertencias sobre código obsoleto que no funcionará en futuras versiones de PHP.</td>
+          </tr>
+          <tr>
+            <td>E_CORE_ERROR</td>
+            <td>Errores fatales detectados durante el arranque inicial de PHP.</td>
+          </tr>
+          <tr>
+            <td>E_CORE_WARNING</td>
+            <td>Advertencias (errores no fatales) detectados durante el arranque inicial de PHP.</td>
+          </tr>
+          <tr>
+            <td>E_COMPILE_ERROR</td>
+            <td>Erores fatales detectados en tiempo de compilación.</td>
+          </tr>
+          <tr>
+            <td>E_COMPILE_WARNING</td>
+            <td>Advertencias (errores no fatales) detectados en tiempo de compilación.</td>
+          </tr>
+          <tr>
+            <td>E_USER_ERROR</td>
+            <td>Mensajes de error generados por el usuario.</td>
+          </tr>
+          <tr>
+            <td>E_USER_WARNING</td>
+            <td>Advertencias generadas por el usuario.</td>
+          </tr>
+          <tr>
+            <td>E_USER_NOTICE</td>
+            <td>Avisos generados por el usuario.</td>
+          </tr>
+          <tr>
+            <td>E_USER_DEPRECATED </td>
+            <td>Advertencias generadas por el usuario sobre código que no funcionará en futuras versiones de PHP.</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <p><strong>Nota</strong>: En PHP 5.0, 5.1, 5.2 y 5.3 E_STRICT no estaba incluido en E_ALL, por lo que se debía escribir E_ALL | E_STRICT para incluir todos los errores. En PHP 5.4 E_STRICT se incluyó en E_ALL, por lo que era suficiente escribir E_ALL para incluir todos los errores. Desde 7.0 los errores detectados por E_STRICT se clasifican en otras categorías (como se comenta en <a href="http://php.net/manual/es/migration70.incompatible.php">las notas de versión de PHP 7.0</a>), por lo que E_SCTRICT ya no cumple ninguna función, aunque se mantiene por compatibilidad con versiones anteriores.</p>
-      </section>
+      <p><strong>Nota</strong>: En PHP 5.0, 5.1, 5.2 y 5.3 E_STRICT no estaba incluido en E_ALL, por lo que se debía escribir E_ALL | E_STRICT para incluir todos los errores. En PHP 5.4 E_STRICT se incluyó en E_ALL, por lo que era suficiente escribir E_ALL para incluir todos los errores. Desde 7.0 los errores detectados por E_STRICT se clasifican en otras categorías (como se comenta en <a href="http://php.net/manual/es/migration70.incompatible.php">las notas de versión de PHP 7.0</a>), por lo que E_SCTRICT ya no cumple ninguna función, aunque se mantiene por compatibilidad con versiones anteriores.</p>
+    </section>
 
-      <section id="output-buffering">
-        <h3>output_buffering</h3>
+    <section id="output-buffering">
+      <h3>output_buffering</h3>
 
-        <p>La directiva output_buffering especifica si la salida del programa se envía a medida que se va generando o se utiliza un buffer intermedio para reducir el tráfico de salida del servidor.</p>
+      <p>La directiva output_buffering especifica si la salida del programa se envía a medida que se va generando o se utiliza un buffer intermedio para reducir el tráfico de salida del servidor.</p>
 
-        <table class="tabla-con-borde">
-          <tbody>
-            <tr>
-              <th>Directiva / Valor</th>
-              <th>Significado</th>
-            </tr>
-            <tr>
-              <td>output_buffering = 4096</td>
-              <td>Se utiliza un buffer de 4096 bytes.</td>
-            </tr>
-            <tr>
-              <td>output_buffering = 0 ; Valor recomendado en este curso</td>
-              <td>No se utiliza buffer.</td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Directiva / Valor</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <td>output_buffering = 4096</td>
+            <td>Se utiliza un buffer de 4096 bytes.</td>
+          </tr>
+          <tr>
+            <td>output_buffering = 0 ; Valor recomendado en este curso</td>
+            <td>No se utiliza buffer.</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <p>En un entorno de producción se suele utilizar un buffer de salida, pero este puede enmascarar errores de programación (básicamente, la creación de contenido de la página antes del envío de cabeceras, como se comenta en la <a href="../lecciones/php-cabeceras.html">lección sobre cabeceras HTPP</a>). Por eso es conveniente desactivar el buffer y poder detectar ese tipo de errores al escribir los programas.</p>
+      <p>En un entorno de producción se suele utilizar un buffer de salida, pero este puede enmascarar errores de programación (básicamente, la creación de contenido de la página antes del envío de cabeceras, como se comenta en la <a href="../lecciones/php-cabeceras.html">lección sobre cabeceras HTPP</a>). Por eso es conveniente desactivar el buffer y poder detectar ese tipo de errores al escribir los programas.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">output_buffering = 0        ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />En XAMPP 7.1 esta directiva viene predeterminada con el valor 4096, por lo que <strong>se recomienda modificarla</strong>:</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />En XAMPP 7.1 esta directiva viene predeterminada con el valor 4096, por lo que <strong>se recomienda modificarla</strong>:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"><strong>; 2017-09-01. Barto. Desactivo output_buffering
 ;</strong> output_buffering=4096
 <strong>output_buffering = 0</strong></code>
 </pre>
-        </div>
+      </div>
 
-        <p>Al desactivar el buffer, dependiendo de la forma de compilación del intérprete PHP, se pueden encontrar problemas con los archivos UTF-8 con marca de orden de bytes (BOM), como se comenta en la <a href="../lecciones/php-cabeceras.html#bom">lección sobre cabeceras HTTP</a>.</p>
-      </section>
+      <p>Al desactivar el buffer, dependiendo de la forma de compilación del intérprete PHP, se pueden encontrar problemas con los archivos UTF-8 con marca de orden de bytes (BOM), como se comenta en la <a href="../lecciones/php-cabeceras.html#bom">lección sobre cabeceras HTTP</a>.</p>
+    </section>
 
-      <section id="pdo-mysql">
-        <h3>extensión pdo_mysql</h3>
+    <section id="pdo-mysql">
+      <h3>extensión pdo_mysql</h3>
 
-        <p>Para acceder a la base de datos MySQL mediante la biblioteca PDO, debe estar activada la extensión PDO MySQL.</p>
+      <p>Para acceder a la base de datos MySQL mediante la biblioteca PDO, debe estar activada la extensión PDO MySQL.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">extension=php_pdo_mysql.dll        ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p>XAMPP 7.1 tiene activada la extensión PDO MySQL, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>XAMPP 7.1 tiene activada la extensión PDO MySQL, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-        <p>La extensión pdo_mysql puede utilizar cualquiera de los dos drivers de bajo nivel: MySQL Client Library (libmysql) o <a href="http://php.net/manual/es/book.mysqlnd.php">MySQL Native Driver</a> (mysqlnd). La elección del driver se realiza en la compilación de PHP. El driver nativo mysqlnd se introdujo en PHP 5.3.0. XAMP utiliza el driver mysqlnd en XAMP 1.7.2 (agosto de 2009).</p>
-      </section>
+      <p>La extensión pdo_mysql puede utilizar cualquiera de los dos drivers de bajo nivel: MySQL Client Library (libmysql) o <a href="http://php.net/manual/es/book.mysqlnd.php">MySQL Native Driver</a> (mysqlnd). La elección del driver se realiza en la compilación de PHP. El driver nativo mysqlnd se introdujo en PHP 5.3.0. XAMP utiliza el driver mysqlnd en XAMP 1.7.2 (agosto de 2009).</p>
+    </section>
 
-      <section id="pdo-sqlite">
-        <h3>extensión pdo_sqlite</h3>
+    <section id="pdo-sqlite">
+      <h3>extensión pdo_sqlite</h3>
 
-        <p>Para acceder a la base de datos SQLite mediante la biblioteca PDO, debe estar activada la extensión PDO SQLite.</p>
+      <p>Para acceder a la base de datos SQLite mediante la biblioteca PDO, debe estar activada la extensión PDO SQLite.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">extension=php_pdo_sqlite.dll        ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p>XAMPP 7.1 tiene activada la extensión PDO SQLite, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
-      </section>
+      <p>XAMPP 7.1 tiene activada la extensión PDO SQLite, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
 
-      <section id="session-save-handler">
-        <h3 id="session.sa">session.save_handler</h3>
+    <section id="session-save-handler">
+      <h3 id="session.sa">session.save_handler</h3>
 
-        <p>Para utilizar sesiones mediante el mecanismo propio de PHP (es decir, sin necesidad de crear funciones propias), la directiva session.save_handler debe tener el valor files.</p>
+      <p>Para utilizar sesiones mediante el mecanismo propio de PHP (es decir, sin necesidad de crear funciones propias), la directiva session.save_handler debe tener el valor files.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">session.save_handler = files        ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-        <p>Algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user. Si en nuestro servidor el valor es user, para evitar conflictos nuestros programas pueden modificar esta directiva en tiempo de ejecución, mediante la función ini_set("session.save_handler", "files"); (véase la <a href="../lecciones/php-sesiones.html">lección sobre sesiones</a>).</p>
-      </section>
+      <p>Algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user. Si en nuestro servidor el valor es user, para evitar conflictos nuestros programas pueden modificar esta directiva en tiempo de ejecución, mediante la función ini_set("session.save_handler", "files"); (véase la <a href="../lecciones/php-sesiones.html">lección sobre sesiones</a>).</p>
+    </section>
 
-      <section id="session-use-trans-sid">
-        <h3>session.use_trans_sid </h3>
+    <section id="session-use-trans-sid">
+      <h3>session.use_trans_sid </h3>
 
-        <p>Las sesiones normalmente almacenan el identificador de sesión en forma de cookie en el ordenador del usuario. En caso de las cookies estén deshabilitadas en el navegador, las sesiones no funcionarán. La directiva session.use_trans_sid permite utilizar sesiones aunque las cookies estén desactivadas, añadiendo el identificador de la sesión a la dirección de la página como un control más. En general no se aconseja ese uso, pues hace visible al usuario el identificador de la sesión y, sin querer, el usuario puede enviarlo a otra persona que podría acceder a la misma sesión desde otro ordenador.</p>
+      <p>Las sesiones normalmente almacenan el identificador de sesión en forma de cookie en el ordenador del usuario. En caso de las cookies estén deshabilitadas en el navegador, las sesiones no funcionarán. La directiva session.use_trans_sid permite utilizar sesiones aunque las cookies estén desactivadas, añadiendo el identificador de la sesión a la dirección de la página como un control más. En general no se aconseja ese uso, pues hace visible al usuario el identificador de la sesión y, sin querer, el usuario puede enviarlo a otra persona que podría acceder a la misma sesión desde otro ordenador.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">session.use_trans_sid = 0        ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor 0, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
-      </section>
+      <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor 0, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
 
-      <section id="date-timezone">
-        <h3>date.timezone</h3>
+    <section id="date-timezone">
+      <h3>date.timezone</h3>
 
-        <p>Las <a href="http://php.net/manual/es/book.datetime.php">funciones relacionadas con fechas y horas</a> se configuran mediante <a href="http://php.net/manual/es/datetime.configuration.php">varias directivas</a>.</p>
+      <p>Las <a href="http://php.net/manual/es/book.datetime.php">funciones relacionadas con fechas y horas</a> se configuran mediante <a href="http://php.net/manual/es/datetime.configuration.php">varias directivas</a>.</p>
 
-        <p>La directiva <span class="php-dir">date.timezone</span> establece la zona horaria predeterminada para todas las funciones de fecha y hora.</p>
+      <p>La directiva <span class="php-dir">date.timezone</span> establece la zona horaria predeterminada para todas las funciones de fecha y hora.</p>
 
-        <p>Al instalar XAMPP 7.1, el instalador da un valor estimado de la zona horaria. En el caso de España, XAMPP 7.1 asigna el valor Europe/Berlin que se puede cambiar al valor Europe/Madrid (aunque no sea realmente necesario, puesto que entre Berlín y Madrid no hay diferencias horarias). Se puede consultar <a href="http://php.net/manual/es/timezones.php">la lista completa de zonas horarios permitidas</a> en la web de php.</p>
+      <p>Al instalar XAMPP 7.1, el instalador da un valor estimado de la zona horaria. En el caso de España, XAMPP 7.1 asigna el valor Europe/Berlin que se puede cambiar al valor Europe/Madrid (aunque no sea realmente necesario, puesto que entre Berlín y Madrid no hay diferencias horarias). Se puede consultar <a href="http://php.net/manual/es/timezones.php">la lista completa de zonas horarios permitidas</a> en la web de php.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"><strong>; 2017-09-01. Barto. He cambiado el nombre del huso horario a Madrid
 ;</strong> date.timezone = Europe/Berlin
 <strong>date.timezone = Europe/Madrid</strong></code>
 </pre>
-        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Junto la la directiva <span class="php-dir">date.timezone</span> se muestran las otros cuatro directivas (que no están definidas porque están comentadas):</p>
+      <p>Junto la la directiva <span class="php-dir">date.timezone</span> se muestran las otros cuatro directivas (que no están definidas porque están comentadas):</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">; http://php.net/date.default-latitude
 ;date.default_latitude = 31.7667
 
@@ -620,12 +620,12 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 ; http://php.net/date.sunset-zenith
 ;date.sunset_zenith = 90.583333</code>
 </pre>
-        </div>
+      </div>
 
-        <p>La latitud y longitud predeterminadas corresponden a la ciudad de Jerusalén. Si se quieren asignar los valores correspondientes a la ciudad de Madrid, habría que cambiarlos a:</p>
+      <p>La latitud y longitud predeterminadas corresponden a la ciudad de Jerusalén. Si se quieren asignar los valores correspondientes a la ciudad de Madrid, habría que cambiarlos a:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"><strong>; 2017-09-01. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173</strong>
 ; http://php.net/date.default-latitude
 ;date.default_latitude = 31.7667
@@ -642,56 +642,56 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 ; http://php.net/date.sunset-zenith
 ;date.sunset_zenith = 90.583333</code>
 </pre>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="post-max-size">
-        <h3>post_max_size y upload_max_filesize</h3>
+    <section id="post-max-size">
+      <h3>post_max_size y upload_max_filesize</h3>
 
-        <p>La directiva post_max_size especifica el tamaño máximo de los datos que pueden enviarse al servidor.</p>
+      <p>La directiva post_max_size especifica el tamaño máximo de los datos que pueden enviarse al servidor.</p>
 
-        <p>La directiva upload_max_filesize especifica el tamaño máximo de un fichero que se envíe al servidor.</p>
+      <p>La directiva upload_max_filesize especifica el tamaño máximo de un fichero que se envíe al servidor.</p>
 
-        <p>Lógicamente, post_max_size debe ser superior a upload_max_filesize. Si el valor se expresa sin unidades, se interpreta como bytes. Se pueden utilizar las unidades K (kilobytes), M (megabytes) y G (Gigabytes).</p>
+      <p>Lógicamente, post_max_size debe ser superior a upload_max_filesize. Si el valor se expresa sin unidades, se interpreta como bytes. Se pueden utilizar las unidades K (kilobytes), M (megabytes) y G (Gigabytes).</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">post_max_size = 8M                ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor 8M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor 8M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">upload_max_filesize = 2M          ; Valor recomendado en este curso</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor 2M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
-      </section>
+      <p>En XAMPP 7.1 esta directiva viene predeterminada con el valor 2M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
 
-      <section id="fileinfo">
-        <h3>extensión fileinfo</h3>
+    <section id="fileinfo">
+      <h3>extensión fileinfo</h3>
 
-        <p>La extensión <a href="http://php.net/manual/en/book.fileinfo.php">fileinfo</a> permite detectar el tipo MIME de un archivo.</p>
+      <p>La extensión <a href="http://php.net/manual/en/book.fileinfo.php">fileinfo</a> permite detectar el tipo MIME de un archivo.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">extension=php_fileinfo.dll</code>
 </pre>
-        </div>
+      </div>
 
-        <p>XAMPP 7.1 tiene activada la extensión FileInfo, por lo que <strong>no</strong> es necesario modificarla.</p>
+      <p>XAMPP 7.1 tiene activada la extensión FileInfo, por lo que <strong>no</strong> es necesario modificarla.</p>
 
-        <p>En este curso de PHP no se utiliza esta extensión, pero sí que se necesita en el <a href="http://www.mclibre.org/consultar/webapps/index.html">curso de Aplicaciones Web</a> (por ejemplo, con OwnCloud).</p>
+      <p>En este curso de PHP no se utiliza esta extensión, pero sí que se necesita en el <a href="http://www.mclibre.org/consultar/webapps/index.html">curso de Aplicaciones Web</a> (por ejemplo, con OwnCloud).</p>
 
-        <p><strong>Nota</strong>:</p>
-        <ul>
-          <li>En <a href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7739">https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7739</a> hay un programa para probar el funcionamiento de fileinfo:
+      <p><strong>Nota</strong>:</p>
+      <ul>
+        <li>En <a href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7739">https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7739</a> hay un programa para probar el funcionamiento de fileinfo:
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 // Este programa comprueba el tipo MIME de un archivo cualquiera
 
@@ -733,18 +733,18 @@ if (function_exists("finfo_open") &amp;&amp; function_exists("finfo_file") &amp;
 }
 ?&gt;</code>
 </pre>
-            </div>
-          </li>
-        </ul>
-      </section>
+          </div>
+        </li>
+      </ul>
     </section>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 10 de septiembre de 2017</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 10 de septiembre de 2017</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

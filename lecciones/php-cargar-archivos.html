@@ -1,98 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Cargar archivos. Explicaciones. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Cargar archivos. Explicaciones. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Cargar archivos</h1>
+<body>
+  <h1>Cargar archivos</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Cargar archivos</h2>
+    <div class="toc">
+      <h2>Cargar archivos</h2>
 
-        <ul>
-          <li><a href="#configuracion">Configuración de PHP</a></li>
-          <li><a href="#formulario">Formulario</a></li>
-          <li><a href="#script">Script PHP</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p>Esta página explica cómo hacer que un formulario envíe un archivo al servidor y cómo hacer que éste lo procese.</p>
-
-    <section id="configuracion">
-      <h2>Configuración de PHP</h2>
-
-      <p>Para poder recibir archivos, debes tener establecidas las siguientes directivas de configuración en el archivo PHP.ini</p>
       <ul>
-        <li><span class="php-dir">file_uploads</span>: (On / Off), pemite que haya o no cargas de archivos</li>
-        <li><span class="php-dir">uploads_max_filesize</span>: tamaño máximo del archivo que se puede subir</li>
-        <li><span class="php-dir">upload_tmp_dir</span>: directorio temporal donde se guardan los archivos cargados</li>
-        <li><span class="php-dir">post_max_size</span>: tamaño máximo de los datos enviados por el método <span class="html-valor">post</span></li>
+        <li><a href="#configuracion">Configuración de PHP</a></li>
+        <li><a href="#formulario">Formulario</a></li>
+        <li><a href="#script">Script PHP</a></li>
       </ul>
-    </section>
+    </div>
+  </nav>
 
-    <section id="formulario">
-      <h2>Formulario</h2>
+  <p>Esta página explica cómo hacer que un formulario envíe un archivo al servidor y cómo hacer que éste lo procese.</p>
 
-      <p>Un formulario puede enviar un archivo al servidor mediante un control de tipo <span class="html-valor">file</span>. El formulario sería:</p>
+  <section id="configuracion">
+    <h2>Configuración de PHP</h2>
 
-      <div class="codigo">
-        <pre>
+    <p>Para poder recibir archivos, debes tener establecidas las siguientes directivas de configuración en el archivo PHP.ini</p>
+    <ul>
+      <li><span class="php-dir">file_uploads</span>: (On / Off), pemite que haya o no cargas de archivos</li>
+      <li><span class="php-dir">uploads_max_filesize</span>: tamaño máximo del archivo que se puede subir</li>
+      <li><span class="php-dir">upload_tmp_dir</span>: directorio temporal donde se guardan los archivos cargados</li>
+      <li><span class="php-dir">post_max_size</span>: tamaño máximo de los datos enviados por el método <span class="html-valor">post</span></li>
+    </ul>
+  </section>
+
+  <section id="formulario">
+    <h2>Formulario</h2>
+
+    <p>Un formulario puede enviar un archivo al servidor mediante un control de tipo <span class="html-valor">file</span>. El formulario sería:</p>
+
+    <div class="codigo">
+      <pre>
 <code class="language-html">&lt;form action="carga_archivos.php" method="post" enctype="multipart/form-data"&gt;
   &lt;input type="file" name="nombre_archivo_cliente" /&gt;&lt;br /&gt;
   &lt;input type="submit" name="enviar" value="Enviar" /&gt;
 &lt;/form&gt;</code>
 </pre>
-      </div>
+    </div>
 
-      <p>Es importante que el atributo <span class="html-atri">method</span> tenga el valor <span class="html-valor">post</span> y que el atributo <span class="html-atri">enctype</span> tenga el valor <span class="html-valor">multipart/form-data</span>.</p>
+    <p>Es importante que el atributo <span class="html-atri">method</span> tenga el valor <span class="html-valor">post</span> y que el atributo <span class="html-atri">enctype</span> tenga el valor <span class="html-valor">multipart/form-data</span>.</p>
 
-      <p>El aspecto del formulario dependerá del navegador que utilices. En este navegador sería:</p>
+    <p>El aspecto del formulario dependerá del navegador que utilices. En este navegador sería:</p>
 
-      <div class="resultado-html">
-        <form action="carga_archivos.php" method="post" enctype="multipart/form-data">
-          <p><input type="file" name="archivo_cliente" /></p>
+    <div class="resultado-html">
+      <form action="carga_archivos.php" method="post" enctype="multipart/form-data">
+        <p><input type="file" name="archivo_cliente" /></p>
 
-          <p><input type="submit" value="Enviar" name="enviar" /></p>
-        </form>
-      </div>
-    </section>
+        <p><input type="submit" value="Enviar" name="enviar" /></p>
+      </form>
+    </div>
+  </section>
 
-    <section id="script">
-      <h2>Script PHP</h2>
+  <section id="script">
+    <h2>Script PHP</h2>
 
-      <p>Cuando PHP recibe el archivo, lo almacena en el directorio <span class="php-dir">upload_tmp_dir</span> y rellena la matriz asociativa superglobal <span class="php-var">$_FILES["nombre_archivo_cliente"]</span> (el nombre que se haya dado al control en el formulario). Esa matriz contiene los siguientes elementos:</p>
-      <ul>
-        <li><span class="php-var">$_FILES['nombre_archivo_cliente']['name']</span>: nombre que tenía el archivo cargado en el ordenador del cliente</li>
-        <li><span class="php-var">$_FILES['nombre_archivo_cliente']['type']</span>: tipo MIME del archivo cargado</li>
-        <li><span class="php-var">$_FILES['nombre_archivo_cliente']['size']</span>: tamaño del archivo cargado</li>
-        <li><span class="php-var">$_FILES['nombre_archivo_cliente']['tmp_name']</span>: nombre del archivo cargado en el directorio temporal del servidor</li>
-        <li><span class="php-var">$_FILES['nombre_archivo_cliente']['error']</span>: código de error (en su caso)</li>
-      </ul>
+    <p>Cuando PHP recibe el archivo, lo almacena en el directorio <span class="php-dir">upload_tmp_dir</span> y rellena la matriz asociativa superglobal <span class="php-var">$_FILES["nombre_archivo_cliente"]</span> (el nombre que se haya dado al control en el formulario). Esa matriz contiene los siguientes elementos:</p>
+    <ul>
+      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['name']</span>: nombre que tenía el archivo cargado en el ordenador del cliente</li>
+      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['type']</span>: tipo MIME del archivo cargado</li>
+      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['size']</span>: tamaño del archivo cargado</li>
+      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['tmp_name']</span>: nombre del archivo cargado en el directorio temporal del servidor</li>
+      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['error']</span>: código de error (en su caso)</li>
+    </ul>
 
-      <p>Como el archivo del directorio temporal desaparecerá al acabar el script, es necesario copiar el archivo a otro lugar. Para ello utiliza la función <span class="php-fun">move_uploaded_file($origen, $destino)</span>, en la que <span class="php-var">$origen</span> es el nombre del archivo cargado en el directorio temporal (normalmente puedes utilizar directamente <span class="php-var">$_FILES['nombre_archivo_cliente']['tmp_name']</span>) y <span class="php-var">$destino</span> el nombre del archivo que contendrá la copia.</p>
-    </section>
+    <p>Como el archivo del directorio temporal desaparecerá al acabar el script, es necesario copiar el archivo a otro lugar. Para ello utiliza la función <span class="php-fun">move_uploaded_file($origen, $destino)</span>, en la que <span class="php-var">$origen</span> es el nombre del archivo cargado en el directorio temporal (normalmente puedes utilizar directamente <span class="php-var">$_FILES['nombre_archivo_cliente']['tmp_name']</span>) y <span class="php-var">$destino</span> el nombre del archivo que contendrá la copia.</p>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 25 de enero de 2004</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 25 de enero de 2004</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

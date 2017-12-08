@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Cookies. Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../../varios/favicon.ico" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Cookies. Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../../varios/favicon.ico" />
+</head>
 
-  <body>
-    <h1>Ejercicios - Cookies - Comentarios</h1>
+<body>
+  <h1>Ejercicios - Cookies - Comentarios</h1>
 
-    <nav>
-      <p>
-        <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Cookies - Comentarios</h2>
+    <div class="toc">
+      <h2>Cookies - Comentarios</h2>
 
-        <ul>
-          <li><a href="#ejercicio-2">2 - Creación y destrucción</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p>Esta página contiene comentarios ampliados con fragmentos de código PHP.</p>
-
-    <section id="ejercicio-2">
-      <h2>Cookies 2 - Creación y destrucción de cookies</h2>
-
-      <h3>Comentarios ampliados</h3>
       <ul>
-        <li>El programa se compone de una única página. Por tanto, el formulario debe enviar los datos a la propia página. En el atributo action podemos escribir:
-          <ul>
-            <li>el nombre de la página
-              <div class="codigo">
-                <pre>print "&lt;form action=\"pagina.php"&gt;";</pre>
-              </div>
-            </li>
-            <li>$_SERVER[PHP_SELF], que contiene la ruta de la página
-              <div class="codigo">
-                <pre>print "&lt;form action=\"$_SERVER[PHP_SELF]\"&gt;";</pre>
-              </div>
-            </li>
-          </ul>
-          <p>Las dos opciones son correctas. La ventaja de la segunda opción es que seguiría funcionando aunque cambiaramos el nombre del fichero php.</p>
-        </li>
-        <li>Como la creación o destrucción de la cookie debe hacer antes de hacer ningún print, la estructura del programa debería ser algo parecido a esto:
+        <li><a href="#ejercicio-2">2 - Creación y destrucción</a></li>
+      </ul>
+    </div>
+  </nav>
 
-          <div class="codigo">
-            <pre>recogida y validacion de datos (sin imprimir nada aunque se detecten errores)
+  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP.</p>
+
+  <section id="ejercicio-2">
+    <h2>Cookies 2 - Creación y destrucción de cookies</h2>
+
+    <h3>Comentarios ampliados</h3>
+    <ul>
+      <li>El programa se compone de una única página. Por tanto, el formulario debe enviar los datos a la propia página. En el atributo action podemos escribir:
+        <ul>
+          <li>el nombre de la página
+            <div class="codigo">
+              <pre>print "&lt;form action=\"pagina.php"&gt;";</pre>
+            </div>
+          </li>
+          <li>$_SERVER[PHP_SELF], que contiene la ruta de la página
+            <div class="codigo">
+              <pre>print "&lt;form action=\"$_SERVER[PHP_SELF]\"&gt;";</pre>
+            </div>
+          </li>
+        </ul>
+        <p>Las dos opciones son correctas. La ventaja de la segunda opción es que seguiría funcionando aunque cambiaramos el nombre del fichero php.</p>
+      </li>
+      <li>Como la creación o destrucción de la cookie debe hacer antes de hacer ningún print, la estructura del programa debería ser algo parecido a esto:
+
+        <div class="codigo">
+          <pre>recogida y validacion de datos (sin imprimir nada aunque se detecten errores)
 creación o destrucción de la cookie (en su caso)
 cabecera
 mensajes de error (en su caso)
 comprobación de la cookie o mensaje de creación o destrucción
 formulario
 pie</pre>
-          </div>
-        </li>
-        <li>La página debe recoger los dos campos enviado por el formulario: la duración ($duracion) y el botón pulsado ($accion).</li>
-        <li>La página debe comprobar que los valores recibidos son correctos, es decir:
-          <ul>
-            <li>que la duración se encuentra entre los valores 1 y 60</li>
-            <li>que el botón pulsado es uno de los tres posibles.</li>
-          </ul>
-        </li>
-        <li>Al crear la cookie hay que tener en cuenta que:
-          <ul>
-            <li>el nombre que le demos a la cookie no debe coincidir con el atributo <span class="html-atri">name</span> del campo de texto ni de los botones <span class="html-atri-valor">submit</span>.</li>
-            <li>el valor de la cookie conviene que sea el momento en que se borrará la cookie (time()+$duracion)</li>
-            <li>la expiración de la cookie será time()+$duracion</li>
-          </ul>
-          <p>Por lo que la instrucción será algo de este estilo:</p>
+        </div>
+      </li>
+      <li>La página debe recoger los dos campos enviado por el formulario: la duración ($duracion) y el botón pulsado ($accion).</li>
+      <li>La página debe comprobar que los valores recibidos son correctos, es decir:
+        <ul>
+          <li>que la duración se encuentra entre los valores 1 y 60</li>
+          <li>que el botón pulsado es uno de los tres posibles.</li>
+        </ul>
+      </li>
+      <li>Al crear la cookie hay que tener en cuenta que:
+        <ul>
+          <li>el nombre que le demos a la cookie no debe coincidir con el atributo <span class="html-atri">name</span> del campo de texto ni de los botones <span class="html-atri-valor">submit</span>.</li>
+          <li>el valor de la cookie conviene que sea el momento en que se borrará la cookie (time()+$duracion)</li>
+          <li>la expiración de la cookie será time()+$duracion</li>
+        </ul>
+        <p>Por lo que la instrucción será algo de este estilo:</p>
 
-          <div class="codigo">
-            <pre>setcookie('cookieTemporal', time()+$duracion, time()+$duracion);</pre>
-          </div>
-        </li>
-        <li>Para destruir la cookie es suficiente crearla con una expiración anterior al presente, por ejemplo:
+        <div class="codigo">
+          <pre>setcookie('cookieTemporal', time()+$duracion, time()+$duracion);</pre>
+        </div>
+      </li>
+      <li>Para destruir la cookie es suficiente crearla con una expiración anterior al presente, por ejemplo:
 
-          <div class="codigo">
-            <pre>setcookie ("cookieTemporal", "", time() - 3600);</pre>
-          </div>
-        </li>
-        <li>En la comprobación de la cookie, basta con hacer la diferencia entre el valor guardado en la cookie y el presente:
+        <div class="codigo">
+          <pre>setcookie ("cookieTemporal", "", time() - 3600);</pre>
+        </div>
+      </li>
+      <li>En la comprobación de la cookie, basta con hacer la diferencia entre el valor guardado en la cookie y el presente:
 
-          <div class="codigo">
-            <pre>if (isset($_COOKIE['cookieTemporal'])) {
+        <div class="codigo">
+          <pre>if (isset($_COOKIE['cookieTemporal'])) {
     $tiempoRestante = $_COOKIE['cookieTemporal'] - time();
     print "&lt;p&gt;La cookie se destruirá en $tiempoRestante ";
  ...</pre>
-          </div>
-        </li>
-        <li>El formulario tiene un único campo de texto y tres botones Enviar. Para que la página pueda distinguir en qué botón ha hecho clic el usuario, los controles deben tener el atributo <span class="html-atri">name</span>. En el ejemplo, el valor del atributo es el mismo en los tres, pero también podría hacerse dando valores distintos a cada botón.</li>
-      </ul>
-    </section>
+        </div>
+      </li>
+      <li>El formulario tiene un único campo de texto y tres botones Enviar. Para que la página pueda distinguir en qué botón ha hecho clic el usuario, los controles deben tener el atributo <span class="html-atri">name</span>. En el ejemplo, el valor del atributo es el mismo en los tres, pero también podría hacerse dando valores distintos a cada botón.</li>
+    </ul>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 28 de mayo de 2011</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 28 de mayo de 2011</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

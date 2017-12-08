@@ -1,80 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Agenda de teléfonos. Proyectos. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../varios/favicon.ico" />
-    <link rel="stylesheet" href="../../varios/highlight-php.css" />
-    <script src="../../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <style>
-      div.agenda { background-color: #FDF0D9; color: black;
-        border: black 2px solid;  font-size: 80%;
-        font-family: sans-serif; margin: 0 0 10px; padding: 0; }
+<head>
+  <meta charset="utf-8" />
+  <title>Agenda de teléfonos. Proyectos. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <script src="../../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <style>
+    div.agenda {
+      background-color: #FDF0D9;
+      color: black;
+      border: black 2px solid;
+      font-size: 80%;
+      font-family: sans-serif;
+      margin: 0 0 10px;
+      padding: 0;
+    }
 
-      div.agenda h1 { background-color: #EDA87D; color: white;
-        text-transform: uppercase; margin: 0; padding: 5px; }
+    div.agenda h1 {
+      background-color: #EDA87D;
+      color: white;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 5px;
+    }
 
-      div.agenda div.menu { background-color: #F2BA5F; color: white;
-        height: 2em; margin: 0; }
-      div.agenda div.menu ul { list-style-type: none; margin: 0 5px; padding: 5px; }
-      div.agenda div.menu li { float: left; padding: 0 15px; clear: none; }
-      div.agenda div.contenido { padding: 10px; clear: both; }
-      div.agenda img { border: none; }
-      div.agenda tr.neg { background-color: #F9DDAE; }
-      div.agenda td, div.agenda th { padding-left: 5px; padding-right: 5px; }
-      div.agenda th { text-align: center; }
-    </style>
-  </head>
+    div.agenda div.menu {
+      background-color: #F2BA5F;
+      color: white;
+      height: 2em;
+      margin: 0;
+    }
 
-  <body>
-    <h1>Proyectos - Agenda de teléfonos</h1>
+    div.agenda div.menu ul {
+      list-style-type: none;
+      margin: 0 5px;
+      padding: 5px;
+    }
 
-    <nav>
-      <p>
-        <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+    div.agenda div.menu li {
+      float: left;
+      padding: 0 15px;
+      clear: none;
+    }
 
-      <div class="toc">
-        <h2>Agenda de teléfonos</h2>
+    div.agenda div.contenido {
+      padding: 10px;
+      clear: both;
+    }
 
-        <ul>
-          <li><a href="#ejercicio-1">1 - Añadir, listar y borrar</a></li>
-          <li><a href="#ejercicio-2">2 - Listar registros</a></li>
-          <li><a href="#ejercicio-3">3 - Borrar registros</a></li>
-          <li><a href="#ejercicio-4">4 - Modificar registros</a></li>
-          <li><a href="#ejercicio-5">5 - Buscar registros</a></li>
-        </ul>
-      </div>
-    </nav>
+    div.agenda img {
+      border: none;
+    }
 
-    <p>El objetivo de este proyecto es crear una agenda de teléfonos sencilla, que almacene el nombre, el apellido, el número de teléfono y la dirección de correo electrónico. En el primer ejercicio se crea una agenda con capacidades básicas y en los ejercicios siguientes se van ampliando sus capacidades.</p>
+    div.agenda tr.neg {
+      background-color: #F9DDAE;
+    }
 
-    <hr class="corta" />
+    div.agenda td,
+    div.agenda th {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
 
-    <p>Un ejemplo de agenda puede probarse en la ventana siguiente (el ejemplo trabaja con una base de datos SQLite):</p>
+    div.agenda th {
+      text-align: center;
+    }
 
-    <div class="filaflex">
-      <div class="resultado-object">
-        <object type="text/html" data="agenda-1/index.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
-      </div>
-      <div class="icono-enlace">
-        <a href="agenda-1/index.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-      </div>
+  </style>
+</head>
+
+<body>
+  <h1>Proyectos - Agenda de teléfonos</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>Agenda de teléfonos</h2>
+
+      <ul>
+        <li><a href="#ejercicio-1">1 - Añadir, listar y borrar</a></li>
+        <li><a href="#ejercicio-2">2 - Listar registros</a></li>
+        <li><a href="#ejercicio-3">3 - Borrar registros</a></li>
+        <li><a href="#ejercicio-4">4 - Modificar registros</a></li>
+        <li><a href="#ejercicio-5">5 - Buscar registros</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <hr class="corta" />
+  <p>El objetivo de este proyecto es crear una agenda de teléfonos sencilla, que almacene el nombre, el apellido, el número de teléfono y la dirección de correo electrónico. En el primer ejercicio se crea una agenda con capacidades básicas y en los ejercicios siguientes se van ampliando sus capacidades.</p>
 
-    <p><strong>Comentarios</strong>:</p>
-    <ul>
-      <li>En <a href="../../soluciones/index.html">la sección de soluciones</a> tiene disponible una versión mínima del ejercicio que únicamente permite crear la base de datos, pero que puede utilizarse como base para el resto del ejercicio.</li>
-      <li>Esta pueden ser las consultas de creación de tabla para este proyecto:
+  <hr class="corta" />
 
-        <div class="codigo">
-          <pre>
+  <p>Un ejemplo de agenda puede probarse en la ventana siguiente (el ejemplo trabaja con una base de datos SQLite):</p>
+
+  <div class="filaflex">
+    <div class="resultado-object">
+      <object type="text/html" data="agenda-1/index.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+    </div>
+    <div class="icono-enlace">
+      <a href="agenda-1/index.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+    </div>
+  </div>
+
+  <hr class="corta" />
+
+  <p><strong>Comentarios</strong>:</p>
+  <ul>
+    <li>En <a href="../../soluciones/index.html">la sección de soluciones</a> tiene disponible una versión mínima del ejercicio que únicamente permite crear la base de datos, pero que puede utilizarse como base para el resto del ejercicio.</li>
+    <li>Esta pueden ser las consultas de creación de tabla para este proyecto:
+
+      <div class="codigo">
+        <pre>
 <code class="language-php">// Tamaño de los campos en la tabla
 define("TAM_NOMBRE",     40);  // Tamaño del campo Nombre
 define("TAM_APELLIDOS",  60);  // Tamaño del campo Apellidos
@@ -100,532 +144,532 @@ $consulta = "CREATE TABLE $dbAgenda (
     correo VARCHAR(" . TAM_CORREO . ")
     )";</code>
 </pre>
-        </div>
-      </li>
-    </ul>
+      </div>
+    </li>
+  </ul>
 
-    <section id="ejercicio-1">
-      <h2>Agenda 1 - Añadir registros, listar y borrar</h2>
+  <section id="ejercicio-1">
+    <h2>Agenda 1 - Añadir registros, listar y borrar</h2>
 
-      <p>Para que pueda ser mínimamente utilizable, la agenda debe permitir añadir registros, listarlos y borrar todos los registros.</p>
+    <p>Para que pueda ser mínimamente utilizable, la agenda debe permitir añadir registros, listarlos y borrar todos los registros.</p>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Inicio</h1>
+    <div class="ejf agenda">
+      <h1>Agenda - Inicio</h1>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
-
-        <div class="contenido">
-        </div>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <hr class="corta" />
+      <div class="contenido">
+      </div>
+    </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Añadir 1</h1>
+    <hr class="corta" />
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+    <div class="ejf agenda">
+      <h1>Agenda - Añadir 1</h1>
 
-        <div class="contenido">
-          <table>
-            <tbody>
-              <tr>
-                <td>Nombre:</td>
-                <td><input type="text" name="nombre" value="Pepito" /></td>
-              </tr>
-              <tr>
-                <td>Apellidos:</td>
-                <td><input type="text" name="apellidos" value="Conejo" /></td>
-              </tr>
-              <tr>
-                <td>Teléfono:</td>
-                <td><input type="text" name="telefono" value="963142592" /></td>
-              </tr>
-              <tr>
-                <td>Correo:</td>
-                <td><input type="text" name="correo" value="pepitoconejo@rabbit.org" size="30" /></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p><input type="submit" value="Añadir" /></p>
-        </div>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Añadir 2</h1>
+      <div class="contenido">
+        <table>
+          <tbody>
+            <tr>
+              <td>Nombre:</td>
+              <td><input type="text" name="nombre" value="Pepito" /></td>
+            </tr>
+            <tr>
+              <td>Apellidos:</td>
+              <td><input type="text" name="apellidos" value="Conejo" /></td>
+            </tr>
+            <tr>
+              <td>Teléfono:</td>
+              <td><input type="text" name="telefono" value="963142592" /></td>
+            </tr>
+            <tr>
+              <td>Correo:</td>
+              <td><input type="text" name="correo" value="pepitoconejo@rabbit.org" size="30" /></td>
+            </tr>
+          </tbody>
+        </table>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+        <p><input type="submit" value="Añadir" /></p>
+      </div>
+    </div>
 
-        <div class="contenido">
-          <p>Registro introducido correctamente.</p>
-        </div>
+    <div class="ejf agenda">
+      <h1>Agenda - Añadir 2</h1>
+
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <p>Si se dejan todos los campos vacíos, el registro no se debe guardar.</p>
+      <div class="contenido">
+        <p>Registro introducido correctamente.</p>
+      </div>
+    </div>
 
-      <hr class="corta" />
+    <p>Si se dejan todos los campos vacíos, el registro no se debe guardar.</p>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Listar</h1>
+    <hr class="corta" />
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+    <div class="ejf agenda">
+      <h1>Agenda - Listar</h1>
 
-        <div class="contenido">
-          <table border="1">
-            <tbody>
-              <tr>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Teléfono</th>
-                <th>Correo</th>
-              </tr>
-              <tr>
-                <td>Pepito</td>
-                <td>Conejo</td>
-                <td>963141592</td>
-                <td>pepitoconejo@example.org</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <hr class="corta" />
+      <div class="contenido">
+        <table border="1">
+          <tbody>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+            </tr>
+            <tr>
+              <td>Pepito</td>
+              <td>Conejo</td>
+              <td>963141592</td>
+              <td>pepitoconejo@example.org</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Borrar todo 1</h1>
+    <hr class="corta" />
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+    <div class="ejf agenda">
+      <h1>Agenda - Borrar todo 1</h1>
 
-        <div class="contenido">
-          <p>¿Está seguro?</p>
-
-          <p>
-            <input type="submit" value="Sí" name="si" />
-            <input type="submit" value="No" name="no" />
-          </p>
-        </div>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Borrar todo 2</h1>
+      <div class="contenido">
+        <p>¿Está seguro?</p>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
-
-        <div class="contenido">
-          <p>Base de datos borrada correctamente</p>
-
-          <p>Base de datos creada correctamente.</p>
-
-          <p>Tabla creada correctamente</p>
-        </div>
+        <p>
+          <input type="submit" value="Sí" name="si" />
+          <input type="submit" value="No" name="no" />
+        </p>
       </div>
-    </section>
+    </div>
 
-    <section id="ejercicio-2">
-      <h2>Agenda 2 - Listar registros por distintos criterios</h2>
+    <div class="ejf agenda">
+      <h1>Agenda - Borrar todo 2</h1>
 
-      <p>Añade a la agenda anterior la posibilidad de ordenar los listados por cualquier campo, en orden ascendente o descendente, y que las filas impares salgan de un color de fondo distinto para mejorar la legibilidad.</p>
-
-      <div class="ejf agenda">
-        <h1>Agenda - Listar</h1>
-
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
-
-        <div class="contenido">
-
-          <table border="1">
-            <tbody>
-              <tr class="neg">
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" />Nombre <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Apellidos <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="0-9" title="0-9" /> Teléfono <img src="arriba.png" alt="9-0" title="9-0" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Correo <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-              </tr>
-              <tr>
-                <td>Pepito</td>
-                <td>Conejo</td>
-                <td>963141592</td>
-                <td>pepitoconejo@example.org</td>
-              </tr>
-              <tr class="neg">
-                <td>Rip</td>
-                <td>Kirby</td>
-                <td>961414213</td>
-                <td>rip.kirby@example.com</td>
-              </tr>
-              <tr>
-                <td>Juan</td>
-                <td>López</td>
-                <td>961619033</td>
-                <td>superlopez@example.com</td>
-              </tr>
-              <tr class="neg">
-                <td>Filemón</td>
-                <td>Pi</td>
-                <td>962718281</td>
-                <td>filemon.pi@example.org</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-3">
-      <h2>Agenda 3 - Borrar registros individualmente</h2>
-
-      <p>Añade a la agenda anterior la posibilidad de borrar individualmente los registros.</p>
-
-      <div class="ejf agenda">
-        <h1>Agenda - Borrar 1</h1>
-
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
-
-        <div class="contenido">
-          <p>Marque las casillas que quiera borrar.</p>
-
-          <table border="1">
-            <tbody>
-              <tr class="neg">
-                <th>Borrar</th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" />Nombre <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Apellidos <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="0-9" title="0-9" /> Teléfono <img src="arriba.png" alt="9-0" title="9-0" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Correo <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-              </tr>
-              <tr>
-                <td><input type="checkbox" checked="checked" /></td>
-                <td>Pepito</td>
-                <td>Conejo</td>
-                <td>963141592</td>
-                <td>pepitoconejo@example.org</td>
-              </tr>
-              <tr class="neg">
-                <td><input type="checkbox" /></td>
-                <td>Rip</td>
-                <td>Kirby</td>
-                <td>961414213</td>
-                <td>rip.kirby@example.com</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" checked="checked" /></td>
-                <td>Juan</td>
-                <td>López</td>
-                <td>961619033</td>
-                <td>superlopez@example.com</td>
-              </tr>
-              <tr class="neg">
-                <td><input type="checkbox" /></td>
-                <td>Filemón</td>
-                <td>Pi</td>
-                <td>962718281</td>
-                <td>filemon.pi@example.org</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p><input type="submit" value="Borrar" /></p>
-        </div>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Borrar 2</h1>
+      <div class="contenido">
+        <p>Base de datos borrada correctamente</p>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+        <p>Base de datos creada correctamente.</p>
 
-        <div class="contenido">
-          <p>Registro borrado correctamente.</p>
-
-          <p>Registro borrado correctamente.</p>
-        </div>
+        <p>Tabla creada correctamente</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="ejercicio-4">
-      <h2>Agenda 4 - Modificar registros</h2>
+  <section id="ejercicio-2">
+    <h2>Agenda 2 - Listar registros por distintos criterios</h2>
 
-      <p>Añade a la agenda anterior la posibilidad de modificar los registros individualmente.</p>
+    <p>Añade a la agenda anterior la posibilidad de ordenar los listados por cualquier campo, en orden ascendente o descendente, y que las filas impares salgan de un color de fondo distinto para mejorar la legibilidad.</p>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Modificar 1</h1>
+    <div class="ejf agenda">
+      <h1>Agenda - Listar</h1>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Modificar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
-
-        <div class="contenido">
-          <p>Indique el registro que quiera modificar.</p>
-
-          <table border="1">
-            <tbody>
-              <tr class="neg">
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Modificar <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Nombre <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Apellidos <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Teléfono <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Correo <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
-              </tr>
-              <tr>
-                <td><input type="radio" name="modificar" value="1" /></td>
-                <td>Pepito</td>
-                <td>Conejo</td>
-                <td>963141592</td>
-                <td>pepitoconejo@rabbit.org</td>
-              </tr>
-              <tr class="neg">
-                <td><input type="radio" name="modificar" value="3" /></td>
-                <td>Rip</td>
-                <td>Kirby</td>
-                <td>961414213</td>
-                <td>rip.kirby@kfs.com</td>
-              </tr>
-              <tr>
-                <td><input type="radio" name="modificar" value="4" /></td>
-                <td>Juan</td>
-                <td>López</td>
-                <td>961619033</td>
-                <td>superlopez@jan.com</td>
-              </tr>
-              <tr class="neg">
-                <td><input type="radio" name="modificar" value="2" /></td>
-                <td>Filemón</td>
-                <td>Pi</td>
-                <td>962718281</td>
-                <td>filemon.pi@tia.org</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p><input type="submit" value="Modificar" /></p>
-        </div>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Modificar 2</h1>
+      <div class="contenido">
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Modificar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+        <table border="1">
+          <tbody>
+            <tr class="neg">
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" />Nombre <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Apellidos <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="0-9" title="0-9" /> Teléfono <img src="arriba.png" alt="9-0" title="9-0" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Correo <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+            </tr>
+            <tr>
+              <td>Pepito</td>
+              <td>Conejo</td>
+              <td>963141592</td>
+              <td>pepitoconejo@example.org</td>
+            </tr>
+            <tr class="neg">
+              <td>Rip</td>
+              <td>Kirby</td>
+              <td>961414213</td>
+              <td>rip.kirby@example.com</td>
+            </tr>
+            <tr>
+              <td>Juan</td>
+              <td>López</td>
+              <td>961619033</td>
+              <td>superlopez@example.com</td>
+            </tr>
+            <tr class="neg">
+              <td>Filemón</td>
+              <td>Pi</td>
+              <td>962718281</td>
+              <td>filemon.pi@example.org</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-        <div class="contenido">
-          <p>Modifique los campos que desee:</p>
+  <section id="ejercicio-3">
+    <h2>Agenda 3 - Borrar registros individualmente</h2>
 
-          <table>
-            <tbody>
-              <tr>
-                <td>Nombre:</td>
-                <td><input type="text" name="nombre" value="Pepito" /></td>
-              </tr>
-              <tr>
-                <td>Apellidos:</td>
-                <td><input type="text" name="apellidos" value="Conejo" /></td>
-              </tr>
-              <tr>
-                <td>Teléfono:</td>
-                <td><input type="text" name="telefono" value="963141592" /></td>
-              </tr>
-              <tr>
-                <td>Correo:</td>
-                <td><input type="text" name="correo" value="pepitoconejo@rabbit.org" size="30" /></td>
-              </tr>
-            </tbody>
-          </table>
+    <p>Añade a la agenda anterior la posibilidad de borrar individualmente los registros.</p>
 
-          <p>
-            <input type="hidden" name="modificar" value="1" />
-            <input type="submit" value="Actualizar" />
-          </p>
-        </div>
+    <div class="ejf agenda">
+      <h1>Agenda - Borrar 1</h1>
+
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Modificar 3</h1>
+      <div class="contenido">
+        <p>Marque las casillas que quiera borrar.</p>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Modificar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+        <table border="1">
+          <tbody>
+            <tr class="neg">
+              <th>Borrar</th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" />Nombre <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Apellidos <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="0-9" title="0-9" /> Teléfono <img src="arriba.png" alt="9-0" title="9-0" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Correo <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked="checked" /></td>
+              <td>Pepito</td>
+              <td>Conejo</td>
+              <td>963141592</td>
+              <td>pepitoconejo@example.org</td>
+            </tr>
+            <tr class="neg">
+              <td><input type="checkbox" /></td>
+              <td>Rip</td>
+              <td>Kirby</td>
+              <td>961414213</td>
+              <td>rip.kirby@example.com</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked="checked" /></td>
+              <td>Juan</td>
+              <td>López</td>
+              <td>961619033</td>
+              <td>superlopez@example.com</td>
+            </tr>
+            <tr class="neg">
+              <td><input type="checkbox" /></td>
+              <td>Filemón</td>
+              <td>Pi</td>
+              <td>962718281</td>
+              <td>filemon.pi@example.org</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <div class="contenido1">
-          <p>El registro ha sido modificado.</p>
-        </div>
+        <p><input type="submit" value="Borrar" /></p>
+      </div>
+    </div>
+
+    <div class="ejf agenda">
+      <h1>Agenda - Borrar 2</h1>
+
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <p>Si se dejan todos los campos vacíos, el registro no se debe modificar.</p>
-    </section>
+      <div class="contenido">
+        <p>Registro borrado correctamente.</p>
 
-    <section id="ejercicio-5">
-      <h2>Agenda 5 - Buscar registros</h2>
+        <p>Registro borrado correctamente.</p>
+      </div>
+    </div>
+  </section>
 
-      <p>Añade a la agenda anterior la posibilidad buscar registros por cualquier criterio.</p>
+  <section id="ejercicio-4">
+    <h2>Agenda 4 - Modificar registros</h2>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Buscar 1</h1>
+    <p>Añade a la agenda anterior la posibilidad de modificar los registros individualmente.</p>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Modificar</li>
-            <li>Buscar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+    <div class="ejf agenda">
+      <h1>Agenda - Modificar 1</h1>
 
-        <div class="contenido">
-
-          <table>
-            <tbody>
-              <tr>
-                <td>Nombre:</td>
-                <td><input type="text" name="nombre" /></td>
-              </tr>
-              <tr>
-                <td>Apellidos:</td>
-                <td><input type="text" name="apellidos" /></td>
-              </tr>
-              <tr>
-                <td>Teléfono:</td>
-                <td><input type="text" name="telefono" value="14" /></td>
-              </tr>
-              <tr>
-                <td>Correo:</td>
-                <td><input type="text" name="correo" size="30" /></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p>
-            <input type="hidden" name="modificar" value="1" />
-            <input type="submit" value="Buscar" />
-          </p>
-        </div>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Modificar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
       </div>
 
-      <div class="ejf agenda">
-        <h1>Agenda - Buscar 2</h1>
+      <div class="contenido">
+        <p>Indique el registro que quiera modificar.</p>
 
-        <div class="menu">
-          <ul>
-            <li>Añadir</li>
-            <li>Listar</li>
-            <li>Modificar</li>
-            <li>Buscar</li>
-            <li>Borrar</li>
-            <li>Borrar todo</li>
-          </ul>
-        </div>
+        <table border="1">
+          <tbody>
+            <tr class="neg">
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Modificar <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Nombre <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Apellidos <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Teléfono <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="abajo.png" alt="A-Z" title="A-Z" /> Correo <img src="arriba.png" alt="Z-A" title="Z-A" /></th>
+            </tr>
+            <tr>
+              <td><input type="radio" name="modificar" value="1" /></td>
+              <td>Pepito</td>
+              <td>Conejo</td>
+              <td>963141592</td>
+              <td>pepitoconejo@rabbit.org</td>
+            </tr>
+            <tr class="neg">
+              <td><input type="radio" name="modificar" value="3" /></td>
+              <td>Rip</td>
+              <td>Kirby</td>
+              <td>961414213</td>
+              <td>rip.kirby@kfs.com</td>
+            </tr>
+            <tr>
+              <td><input type="radio" name="modificar" value="4" /></td>
+              <td>Juan</td>
+              <td>López</td>
+              <td>961619033</td>
+              <td>superlopez@jan.com</td>
+            </tr>
+            <tr class="neg">
+              <td><input type="radio" name="modificar" value="2" /></td>
+              <td>Filemón</td>
+              <td>Pi</td>
+              <td>962718281</td>
+              <td>filemon.pi@tia.org</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <div class="contenido">
-          <table border="1">
-            <caption>Registros encontrados:</caption>
-            <tbody>
-              <tr class="neg">
-                <th><img src="arriba.png" alt="A-Z" title="A-Z" /> Nombre <img src="abajo.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="arriba.png" alt="A-Z" title="A-Z" /> Apellidos <img src="abajo.png" alt="Z-A" title="Z-A" /></th>
-                <th><img src="arriba.png" alt="0-9" title="0-9" /> Teléfono <img src="abajo.png" alt="9-0" title="9-0" /></th>
-                <th><img src="arriba.png" alt="A-Z" title="A-Z" /> Correo <img src="abajo.png" alt="Z-A" title="Z-A" /></th>
-              </tr>
-              <tr>
-                <td>Pepito</td>
-                <td>Conejo</td>
-                <td>963141592</td>
-                <td>pepitoconejo@rabbit.org</td>
-              </tr>
-              <tr class="neg">
-                <td>Rip</td>
-                <td>Kirby</td>
-                <td>961414213</td>
-                <td>rip.kirby@kfs.com</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <p><input type="submit" value="Modificar" /></p>
       </div>
-    </section>
+    </div>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 13 de abril de 2010</p>
+    <div class="ejf agenda">
+      <h1>Agenda - Modificar 2</h1>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Modificar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
+      </div>
+
+      <div class="contenido">
+        <p>Modifique los campos que desee:</p>
+
+        <table>
+          <tbody>
+            <tr>
+              <td>Nombre:</td>
+              <td><input type="text" name="nombre" value="Pepito" /></td>
+            </tr>
+            <tr>
+              <td>Apellidos:</td>
+              <td><input type="text" name="apellidos" value="Conejo" /></td>
+            </tr>
+            <tr>
+              <td>Teléfono:</td>
+              <td><input type="text" name="telefono" value="963141592" /></td>
+            </tr>
+            <tr>
+              <td>Correo:</td>
+              <td><input type="text" name="correo" value="pepitoconejo@rabbit.org" size="30" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          <input type="hidden" name="modificar" value="1" />
+          <input type="submit" value="Actualizar" />
+        </p>
+      </div>
+    </div>
+
+    <div class="ejf agenda">
+      <h1>Agenda - Modificar 3</h1>
+
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Modificar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
+      </div>
+
+      <div class="contenido1">
+        <p>El registro ha sido modificado.</p>
+      </div>
+    </div>
+
+    <p>Si se dejan todos los campos vacíos, el registro no se debe modificar.</p>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Agenda 5 - Buscar registros</h2>
+
+    <p>Añade a la agenda anterior la posibilidad buscar registros por cualquier criterio.</p>
+
+    <div class="ejf agenda">
+      <h1>Agenda - Buscar 1</h1>
+
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Modificar</li>
+          <li>Buscar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
+      </div>
+
+      <div class="contenido">
+
+        <table>
+          <tbody>
+            <tr>
+              <td>Nombre:</td>
+              <td><input type="text" name="nombre" /></td>
+            </tr>
+            <tr>
+              <td>Apellidos:</td>
+              <td><input type="text" name="apellidos" /></td>
+            </tr>
+            <tr>
+              <td>Teléfono:</td>
+              <td><input type="text" name="telefono" value="14" /></td>
+            </tr>
+            <tr>
+              <td>Correo:</td>
+              <td><input type="text" name="correo" size="30" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          <input type="hidden" name="modificar" value="1" />
+          <input type="submit" value="Buscar" />
+        </p>
+      </div>
+    </div>
+
+    <div class="ejf agenda">
+      <h1>Agenda - Buscar 2</h1>
+
+      <div class="menu">
+        <ul>
+          <li>Añadir</li>
+          <li>Listar</li>
+          <li>Modificar</li>
+          <li>Buscar</li>
+          <li>Borrar</li>
+          <li>Borrar todo</li>
+        </ul>
+      </div>
+
+      <div class="contenido">
+        <table border="1">
+          <caption>Registros encontrados:</caption>
+          <tbody>
+            <tr class="neg">
+              <th><img src="arriba.png" alt="A-Z" title="A-Z" /> Nombre <img src="abajo.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="arriba.png" alt="A-Z" title="A-Z" /> Apellidos <img src="abajo.png" alt="Z-A" title="Z-A" /></th>
+              <th><img src="arriba.png" alt="0-9" title="0-9" /> Teléfono <img src="abajo.png" alt="9-0" title="9-0" /></th>
+              <th><img src="arriba.png" alt="A-Z" title="A-Z" /> Correo <img src="abajo.png" alt="Z-A" title="Z-A" /></th>
+            </tr>
+            <tr>
+              <td>Pepito</td>
+              <td>Conejo</td>
+              <td>963141592</td>
+              <td>pepitoconejo@rabbit.org</td>
+            </tr>
+            <tr class="neg">
+              <td>Rip</td>
+              <td>Kirby</td>
+              <td>961414213</td>
+              <td>rip.kirby@kfs.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 13 de abril de 2010</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

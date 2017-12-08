@@ -1,180 +1,180 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>for (1). Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../../varios/favicon.ico" />
-    <link rel="stylesheet" href="../../../varios/highlight-php.css" />
-    <script src="../../../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>for (1). Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../../varios/highlight-php.css" />
+  <script src="../../../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Ejercicios - for (1)</h1>
+<body>
+  <h1>Ejercicios - for (1)</h1>
 
-    <nav>
-      <p>
-        <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>for (1)</h2>
+    <div class="toc">
+      <h2>for (1)</h2>
 
-        <ul>
-          <li><a href="#ejercicio-1">1 - Sucesiones aritméticas</a></li>
-          <li><a href="#ejercicio-2">2 - Sucesiones aritméticas</a></li>
-          <li><a href="#ejercicio-3">3 - Sucesiones aritméticas</a></li>
-          <li><a href="#ejercicio-4">4 - Sucesiones numéricas </a></li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Sucesiones aritméticas</a></li>
+        <li><a href="#ejercicio-2">2 - Sucesiones aritméticas</a></li>
+        <li><a href="#ejercicio-3">3 - Sucesiones aritméticas</a></li>
+        <li><a href="#ejercicio-4">4 - Sucesiones numéricas </a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1718/cf-for-1-plantillas.zip">plantillas de los ejercicios for (1)</a>.</p>
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1718/cf-for-1-plantillas.zip">plantillas de los ejercicios for (1)</a>.</p>
 
-    <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html">página de soluciones</a>.</p>
+  <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html">página de soluciones</a>.</p>
 
-    <section id="ejercicio-1">
-      <h2>for (1) 1 - Sucesiones aritméticas</h2>
+  <section id="ejercicio-1">
+    <h2>for (1) 1 - Sucesiones aritméticas</h2>
 
-      <p>Escriba un programa que muestre las siguientes sucesiones aritméticas:</p>
+    <p>Escriba un programa que muestre las siguientes sucesiones aritméticas:</p>
 
-      <div class="codigo">
-        <pre>     2     3     4     5     6     7     8     9    10    11
+    <div class="codigo">
+      <pre>     2     3     4     5     6     7     8     9    10    11
      2     4     6     8    10    12    14    16    18
      5     8    11    14    17    20    23    26    29    32
      0     5    10    15    20    25
      8     6     4     2     0    -2    -4    -6    -8   -10
     40    35    30    25    20    15    10
     -7   -13   -19   -25   -31   -37   -43   -49</pre>
-      </div>
-      <ul>
-        <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
-        <li>Todos los bucles deben empezar en uno y aumentar la variable de control de uno en uno:
+    </div>
+    <ul>
+      <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
+      <li>Todos los bucles deben empezar en uno y aumentar la variable de control de uno en uno:
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">for (<span class="codigo-resaltado">$i = 1</span>; ... ; <span class="codigo-resaltado">$i++</span>) {
     ...
 }</code>
 </pre>
-          </div>
-        </li>
-        <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
-
-          <div class="codigo">
-            <pre><code class="language-php">printf("%6d", $i); // %6d significa "cadena de 6 caracteres en la que se escribe un número"</code></pre>
-          </div>
-        </li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="for-1-1.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
-        <div class="icono-enlace">
-          <a href="for-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </li>
+      <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
+
+        <div class="codigo">
+          <pre><code class="language-php">printf("%6d", $i); // %6d significa "cadena de 6 caracteres en la que se escribe un número"</code></pre>
         </div>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="for-1-1.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="for-1-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <section id="ejercicio-2">
-      <h2>for (1) 2 - Sucesiones aritméticas</h2>
+  <section id="ejercicio-2">
+    <h2>for (1) 2 - Sucesiones aritméticas</h2>
 
-      <p>Escriba un programa que muestre las siguientes sucesiones aritméticas:</p>
+    <p>Escriba un programa que muestre las siguientes sucesiones aritméticas:</p>
 
-      <div class="codigo">
-        <pre>     2     3     4     5     6     7     8     9    10    11
+    <div class="codigo">
+      <pre>     2     3     4     5     6     7     8     9    10    11
      2     4     6     8    10    12    14    16    18
      5     8    11    14    17    20    23    26    29    32
      0     5    10    15    20    25
      8     6     4     2     0    -2    -4    -6    -8   -10
     40    35    30    25    20    15    10
     -7   -13   -19   -25   -31   -37   -43   -49</pre>
-      </div>
-      <ul>
-        <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
-        <li>Todos los bucles deben empezar en cero y aumentar la variable de control de uno en uno:
+    </div>
+    <ul>
+      <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
+      <li>Todos los bucles deben empezar en cero y aumentar la variable de control de uno en uno:
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">for (<span class="codigo-resaltado">$i = 0</span>; ... ; <span class="codigo-resaltado">$i++</span>) {
     ...
 }</code>
 </pre>
-          </div>
-        </li>
-        <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
-
-          <div class="codigo">
-            <pre><code class="language-php">printf("%6d", $i); // %6d significa "cadena de 6 caracteres en la que se escribe un número"</code></pre>
-          </div>
-        </li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="for-1-2.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
-        <div class="icono-enlace">
-          <a href="for-1-2.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </li>
+      <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
+
+        <div class="codigo">
+          <pre><code class="language-php">printf("%6d", $i); // %6d significa "cadena de 6 caracteres en la que se escribe un número"</code></pre>
         </div>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="for-1-2.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="for-1-2.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <section id="ejercicio-3">
-      <h2>for (1) 3 - Sucesiones aritméticas</h2>
+  <section id="ejercicio-3">
+    <h2>for (1) 3 - Sucesiones aritméticas</h2>
 
-      <p>Escriba un programa que muestre las siguientes sucesiones aritméticas:</p>
+    <p>Escriba un programa que muestre las siguientes sucesiones aritméticas:</p>
 
-      <div class="codigo">
-        <pre>     2     3     4     5     6     7     8     9    10    11
+    <div class="codigo">
+      <pre>     2     3     4     5     6     7     8     9    10    11
      2     4     6     8    10    12    14    16    18
      5     8    11    14    17    20    23    26    29    32
      0     5    10    15    20    25
      8     6     4     2     0    -2    -4    -6    -8   -10
     40    35    30    25    20    15    10
     -7   -13   -19   -25   -31   -37   -43   -49</pre>
-      </div>
-      <ul>
-        <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
-        <li>Todos los bucles deben imprimir únicamente la variable de control:
+    </div>
+    <ul>
+      <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
+      <li>Todos los bucles deben imprimir únicamente la variable de control:
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">for (... ; ... ; ... ) {
    <span class="codigo-resaltado">print "$i ";</span>
 }</code>
 </pre>
-          </div>
-        </li>
-        <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
-
-          <div class="codigo">
-            <pre><code class="language-php">printf("%6d", $i); // %6d significa "cadena de 6 caracteres en la que se escribe un número"</code></pre>
-          </div>
-        </li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="for-1-3.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
-        <div class="icono-enlace">
-          <a href="for-1-3.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </li>
+      <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
+
+        <div class="codigo">
+          <pre><code class="language-php">printf("%6d", $i); // %6d significa "cadena de 6 caracteres en la que se escribe un número"</code></pre>
         </div>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="for-1-3.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="for-1-3.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <section id="ejercicio-4">
-      <h2>for (1) 4 - Sucesiones numéricas </h2>
+  <section id="ejercicio-4">
+    <h2>for (1) 4 - Sucesiones numéricas </h2>
 
-      <p>Escriba un programa que muestre las siguientes sucesiones numéricas. Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</p>
+    <p>Escriba un programa que muestre las siguientes sucesiones numéricas. Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</p>
 
-      <div class="codigo">
-        <pre>       1       4       9      16      25      36      49      64      81     100
+    <div class="codigo">
+      <pre>       1       4       9      16      25      36      49      64      81     100
        2       5      10      17      26      37      50      65      82
        8      27      64     125     216     343
    1.000   0.500   0.333   0.250   0.200   0.167   0.143   0.125
@@ -182,36 +182,36 @@
        1      10     100    1000   10000  100000
   1.0000  0.1000  0.0100  0.0010  0.0001
        1      -1       1      -1       1      -1       1      -1</pre>
-      </div>
-      <ul>
-        <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
-        <li>No se impone ninguna restricción en cuanto al valor inicial de la variable de control, o a la expresión de paso, o al dato impreso.</li>
-        <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
+    </div>
+    <ul>
+      <li>Cada una de ellas se debe conseguir mediante un bucle <span class="php-res">for</span>.</li>
+      <li>No se impone ninguna restricción en cuanto al valor inicial de la variable de control, o a la expresión de paso, o al dato impreso.</li>
+      <li>Para alinear los resultados como en el ejemplo se puede crear un bloque <span class="html-eti">&lt;pre&gt;</span> y utilizar la función <a href="http://php.net/manual/es/function.printf.php">printf()</a> (lo más importante de este ejercicio es generar los números, no que estén alineados):
 
-          <div class="codigo">
-            <pre>printf("%6d", $i);              // %6d significa "cadena de 6 caracteres en la que se escribe un número"
+        <div class="codigo">
+          <pre>printf("%6d", $i);              // %6d significa "cadena de 6 caracteres en la que se escribe un número"
 printf("  %1.4f", pow(10, $i)); // %1.4f significa  "cadena en la que se escribe un decimal
                                 // con una cifra entera y cuatro decimales</pre>
-          </div>
-        </li>
-      </ul>
+        </div>
+      </li>
+    </ul>
 
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="for-1-4.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="for-1-4.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="for-1-4.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
-    </section>
+      <div class="icono-enlace">
+        <a href="for-1-4.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 7 de octubre de 2014</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 7 de octubre de 2014</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Apache y Eclipse. Soluciones. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Apache y Eclipse. Soluciones. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Soluciones - Apache y Eclipse</h1>
+<body>
+  <h1>Soluciones - Apache y Eclipse</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Apache y Eclipse</h2>
+    <div class="toc">
+      <h2>Apache y Eclipse</h2>
 
-        <h3>Enunciados</h3>
-        <ul>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-1">1 - Alias</a></li>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-2">2 - Alias</a></li>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-3">3 - Workspace y alias</a></li>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-4">4 - Workspace y alias</a></li>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-5">5 - Workspace y alias</a></li>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-6">6 - Workspace para clase</a></li>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-7">7 - Directiva DirectoryIndex</a></li>
-          <li><a href="../ejercicios/apache-eclipse.html#ejercicio-8">8 - Directiva DocumentRoot</a></li>
-        </ul>
-
-        <h3>Soluciones</h3>
-        <ul>
-          <li><a href="#ejercicio-1">1 - Alias</a></li>
-          <li><a href="#ejercicio-2">2 - Alias</a></li>
-          <li><a href="#ejercicio-3">3 - Workspace y alias</a></li>
-          <li><a href="#ejercicio-4">4 - Workspace y alias</a></li>
-          <li><a href="#ejercicio-5">5 - Workspace y alias</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p>Se ofrecen a continuación unas posibles soluciones de los ejercicios <a href="../ejercicios/apache-eclipse.html">Apache y Eclipse</a>.</p>
-
-    <section id="ejercicio-1">
-      <h2>Apache 1 - Creación de alias</h2>
-
+      <h3>Enunciados</h3>
       <ul>
-        <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e01</strong></li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-1">1 - Alias</a></li>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-2">2 - Alias</a></li>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-3">3 - Workspace y alias</a></li>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-4">4 - Workspace y alias</a></li>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-5">5 - Workspace y alias</a></li>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-6">6 - Workspace para clase</a></li>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-7">7 - Directiva DirectoryIndex</a></li>
+        <li><a href="../ejercicios/apache-eclipse.html#ejercicio-8">8 - Directiva DocumentRoot</a></li>
+      </ul>
+
+      <h3>Soluciones</h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Alias</a></li>
+        <li><a href="#ejercicio-2">2 - Alias</a></li>
+        <li><a href="#ejercicio-3">3 - Workspace y alias</a></li>
+        <li><a href="#ejercicio-4">4 - Workspace y alias</a></li>
+        <li><a href="#ejercicio-5">5 - Workspace y alias</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Se ofrecen a continuación unas posibles soluciones de los ejercicios <a href="../ejercicios/apache-eclipse.html">Apache y Eclipse</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>Apache 1 - Creación de alias</h2>
+
+    <ul>
+      <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e01</strong></li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
     <strong># 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 1
@@ -68,20 +68,20 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-      </ul>
-    </section>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+    </ul>
+  </section>
 
-    <section id="ejercicio-2">
-      <h2>Apache 2 - Creación de alias</h2>
+  <section id="ejercicio-2">
+    <h2>Apache 2 - Creación de alias</h2>
 
-      <ul>
-        <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e02</strong></li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+    <ul>
+      <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e02</strong></li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
     <strong># 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 2
@@ -94,25 +94,25 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-      </ul>
-    </section>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+    </ul>
+  </section>
 
-    <section id="ejercicio-3">
-      <h2>Apache y Eclipse 3 - Creación de workspace, proyecto, carpeta enlazada y alias</h2>
+  <section id="ejercicio-3">
+    <h2>Apache y Eclipse 3 - Creación de workspace, proyecto, carpeta enlazada y alias</h2>
 
-      <ul>
-        <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e03\archivos</strong></li>
-        <li>Cree el proyecto <strong>ejercicio-03</strong> y la carpeta enlazada <strong>ficheros</strong>:
-          <p class="captura">
-            <img src="img/apache-eclipse-3-1.png" alt="Ejercicio. Apache y Eclipse 3" width="700" height="380" />
-          </p>
-        </li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+    <ul>
+      <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e03\archivos</strong></li>
+      <li>Cree el proyecto <strong>ejercicio-03</strong> y la carpeta enlazada <strong>ficheros</strong>:
+        <p class="captura">
+          <img src="img/apache-eclipse-3-1.png" alt="Ejercicio. Apache y Eclipse 3" width="700" height="380" />
+        </p>
+      </li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 3
@@ -125,24 +125,24 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-      </ul>
-    </section>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+    </ul>
+  </section>
 
-    <section id="ejercicio-4">
-      <h2>Apache y Eclipse 4 - Creación de workspace, proyecto, carpetas enlazadas y alias</h2>
-      <ul>
-        <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e04\archivos</strong></li>
-        <li>Cree el proyecto <strong>ejercicio-04</strong> y la carpeta enlazada <strong>ficheros</strong>:
-          <p class="captura">
-            <img src="img/apache-eclipse-4-1.png" alt="Ejercicio. Apache y Eclipse 4" width="700" height="355" />
-          </p>
-        </li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+  <section id="ejercicio-4">
+    <h2>Apache y Eclipse 4 - Creación de workspace, proyecto, carpetas enlazadas y alias</h2>
+    <ul>
+      <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e04\archivos</strong></li>
+      <li>Cree el proyecto <strong>ejercicio-04</strong> y la carpeta enlazada <strong>ficheros</strong>:
+        <p class="captura">
+          <img src="img/apache-eclipse-4-1.png" alt="Ejercicio. Apache y Eclipse 4" width="700" height="355" />
+        </p>
+      </li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 4
@@ -155,18 +155,18 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-        <li>Cree la carpeta <strong>C:\tmp2\apache-eclipse\e04\mas-archivos</strong></li>
-        <li>Cree la carpeta enlazada <strong>mas</strong>:
-          <p class="captura">
-            <img src="img/apache-eclipse-4-2.png" alt="Ejercicio. Apache y Eclipse 4" width="700" height="375" />
-          </p>
-        </li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+      <li>Cree la carpeta <strong>C:\tmp2\apache-eclipse\e04\mas-archivos</strong></li>
+      <li>Cree la carpeta enlazada <strong>mas</strong>:
+        <p class="captura">
+          <img src="img/apache-eclipse-4-2.png" alt="Ejercicio. Apache y Eclipse 4" width="700" height="375" />
+        </p>
+      </li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 4
@@ -179,24 +179,24 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-      </ul>
-    </section>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+    </ul>
+  </section>
 
-    <section id="ejercicio-5">
-      <h2>Apache y Eclipse 5 - Creación de workspace, proyectos, carpetas enlazadas y alias</h2>
-      <ul>
-        <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e05\Mis experimentos</strong></li>
-        <li>Cree el proyecto <strong>pruebas</strong> y la carpeta enlazada <strong>experimentos</strong>:
-          <p class="captura">
-            <img src="img/apache-eclipse-5-1.png" alt="Ejercicio. Apache y Eclipse 5" width="720" height="350" />
-          </p>
-        </li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+  <section id="ejercicio-5">
+    <h2>Apache y Eclipse 5 - Creación de workspace, proyectos, carpetas enlazadas y alias</h2>
+    <ul>
+      <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e05\Mis experimentos</strong></li>
+      <li>Cree el proyecto <strong>pruebas</strong> y la carpeta enlazada <strong>experimentos</strong>:
+        <p class="captura">
+          <img src="img/apache-eclipse-5-1.png" alt="Ejercicio. Apache y Eclipse 5" width="720" height="350" />
+        </p>
+      </li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 5
@@ -209,18 +209,18 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-        <li>Cree la carpeta <strong>C:\tmp2\apache-eclipse\e05\Mis ejemplos</strong></li>
-        <li>Cree la carpeta enlazada <strong>ejemplos</strong>:
-          <p class="captura">
-            <img src="img/apache-eclipse-5-2.png" alt="Ejercicio. Apache y Eclipse 5" width="700" height="355" />
-          </p>
-        </li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+      <li>Cree la carpeta <strong>C:\tmp2\apache-eclipse\e05\Mis ejemplos</strong></li>
+      <li>Cree la carpeta enlazada <strong>ejemplos</strong>:
+        <p class="captura">
+          <img src="img/apache-eclipse-5-2.png" alt="Ejercicio. Apache y Eclipse 5" width="700" height="355" />
+        </p>
+      </li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 5
@@ -233,18 +233,18 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-        <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e05\Trabajos pendientes</strong></li>
-        <li>Cree el proyecto <strong>trabajos</strong> y la carpeta enlazada <strong>pendientes</strong>:
-          <p class="captura">
-            <img src="img/apache-eclipse-5-3.png" alt="Ejercicio. Apache y Eclipse 5" width="720" height="445" />
-          </p>
-        </li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+      <li>Cree la carpeta <strong>C:\tmp\apache-eclipse\e05\Trabajos pendientes</strong></li>
+      <li>Cree el proyecto <strong>trabajos</strong> y la carpeta enlazada <strong>pendientes</strong>:
+        <p class="captura">
+          <img src="img/apache-eclipse-5-3.png" alt="Ejercicio. Apache y Eclipse 5" width="720" height="445" />
+        </p>
+      </li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 5
@@ -257,18 +257,18 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-        <li>Cree la carpeta <strong>C:\tmp2\apache-eclipse\e05\Trabajos terminado</strong></li>
-        <li>Cree la carpeta enlazada <strong>terminados</strong>:
-          <p class="captura">
-            <img src="img/apache-eclipse-5-4.png" alt="Ejercicio. Apache y Eclipse 5" width="730" height="460" />
-          </p>
-        </li>
-        <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
-          <div class="codigo">
-            <pre>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+      <li>Cree la carpeta <strong>C:\tmp2\apache-eclipse\e05\Trabajos terminado</strong></li>
+      <li>Cree la carpeta enlazada <strong>terminados</strong>:
+        <p class="captura">
+          <img src="img/apache-eclipse-5-4.png" alt="Ejercicio. Apache y Eclipse 5" width="730" height="460" />
+        </p>
+      </li>
+      <li>Incluya el siguiente alias en <strong>httpd.conf</strong>
+        <div class="codigo">
+          <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
 <strong>    # 2017-09-18. Ejercicios Apache-Eclipse. Ejercicio 5
@@ -281,18 +281,18 @@
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
-          </div>
-        </li>
-        <li>Reinicie Apache</li>
-      </ul>
-    </section>
+        </div>
+      </li>
+      <li>Reinicie Apache</li>
+    </ul>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 18 de septiembre de 2017</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de septiembre de 2017</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

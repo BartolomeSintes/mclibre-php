@@ -1,83 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>PHP Data Objects (PDO). PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>PHP Data Objects (PDO). PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>PHP Data Objects (PDO)</h1>
+<body>
+  <h1>PHP Data Objects (PDO)</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>PHP Data Objects (PDO)</h2>
+    <div class="toc">
+      <h2>PHP Data Objects (PDO)</h2>
 
-        <ul>
-          <li><a href="#conexion">Conexión</a>
-            <ul>
-              <li><a href="#conexion-mysql">con MySQL</a></li>
-              <li><a href="#conexion-sqlite">con SQLite 3</a></li>
-              <li><a href="#conexion-configurable">configurable</a></li>
-            </ul>
-          </li>
-          <li><a href="#desconexion">Desconexión</a></li>
-          <li><a href="#consultas">Consultas a la base de datos</a></li>
-          <li><a href="#seguridad">Seguridad en las consultas</a>
-            <ul>
-              <li><a href="#consultas-preparadas">Consultas preparadas</a></li>
-              <li><a href="#restricciones">Restricciones en parámetros</a></li>
-            </ul>
-          </li>
-          <li><a href="#ejemplos">Ejemplos de consultas</a>
-            <ul>
-              <li><a href="#create">CREATE DATABASE, DROP DATABASE, CREATE TABLE</a>
-                <ul>
-                  <li><a href="#create-mysql">en MySQL</a></li>
-                  <li><a href="#create-sqlite">en SQLite</a></li>
-                  <li><a href="#create-configurable">configurable</a></li>
-                </ul>
-              </li>
-              <li><a href="#drop">DROP TABLE, INSERT INTO, UPDATE, DELETE FROM</a></li>
-              <li><a href="#select">SELECT</a></li>
-              <li><a href="#select-like">SELECT LIKE</a></li>
-              <li><a href="#union-tablas">unión de tablas</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#conexion">Conexión</a>
+          <ul>
+            <li><a href="#conexion-mysql">con MySQL</a></li>
+            <li><a href="#conexion-sqlite">con SQLite 3</a></li>
+            <li><a href="#conexion-configurable">configurable</a></li>
+          </ul>
+        </li>
+        <li><a href="#desconexion">Desconexión</a></li>
+        <li><a href="#consultas">Consultas a la base de datos</a></li>
+        <li><a href="#seguridad">Seguridad en las consultas</a>
+          <ul>
+            <li><a href="#consultas-preparadas">Consultas preparadas</a></li>
+            <li><a href="#restricciones">Restricciones en parámetros</a></li>
+          </ul>
+        </li>
+        <li><a href="#ejemplos">Ejemplos de consultas</a>
+          <ul>
+            <li><a href="#create">CREATE DATABASE, DROP DATABASE, CREATE TABLE</a>
+              <ul>
+                <li><a href="#create-mysql">en MySQL</a></li>
+                <li><a href="#create-sqlite">en SQLite</a></li>
+                <li><a href="#create-configurable">configurable</a></li>
+              </ul>
+            </li>
+            <li><a href="#drop">DROP TABLE, INSERT INTO, UPDATE, DELETE FROM</a></li>
+            <li><a href="#select">SELECT</a></li>
+            <li><a href="#select-like">SELECT LIKE</a></li>
+            <li><a href="#union-tablas">unión de tablas</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <p>La extensión <a href="http://php.net/manual/es/book.pdo.php">PDO (PHP Data Objects)</a> permite acceder a distintas bases de datos utilizando las misma funciones, lo que facilita la portabilidad. En PHP 5 existen drivers para acceder a las bases de datos más populares (MySQL, Oracle, MS SQL Server, PostgreSQL, SQLite, Firebird, DB2, Informix, etc). La extensión PDO no evalúa la correción de las consultas SQL, aunque sí implementa algunas medidas de seguridad mediante las consultas preparadas.</p>
+  <p>La extensión <a href="http://php.net/manual/es/book.pdo.php">PDO (PHP Data Objects)</a> permite acceder a distintas bases de datos utilizando las misma funciones, lo que facilita la portabilidad. En PHP 5 existen drivers para acceder a las bases de datos más populares (MySQL, Oracle, MS SQL Server, PostgreSQL, SQLite, Firebird, DB2, Informix, etc). La extensión PDO no evalúa la correción de las consultas SQL, aunque sí implementa algunas medidas de seguridad mediante las consultas preparadas.</p>
 
-    <p>En esta lección se explica el acceso a MySQL y SQLite mediante PDO.</p>
+  <p>En esta lección se explica el acceso a MySQL y SQLite mediante PDO.</p>
 
-    <section id="conexion">
-      <h2>Conexión con la base de datos</h2>
+  <section id="conexion">
+    <h2>Conexión con la base de datos</h2>
 
-      <p>Para conectar con la base de datos hay que crear una instancia de la clase PDO, que se utiliza en todas las consultas posteriores. En cada página php que incluya consultas a la base de datos es necesario conectar primero con la base de datos.</p>
+    <p>Para conectar con la base de datos hay que crear una instancia de la clase PDO, que se utiliza en todas las consultas posteriores. En cada página php que incluya consultas a la base de datos es necesario conectar primero con la base de datos.</p>
 
-      <p>Si no se puede establecer la conexión con la base de datos, puede deberse a que la base de datos no esté funcionando, a que los datos de usuario no sean correctos, a que no esté activada la extensión pdo o (en el caso de SQLite) que no exista el camino donde se guarda la base de datos.</p>
+    <p>Si no se puede establecer la conexión con la base de datos, puede deberse a que la base de datos no esté funcionando, a que los datos de usuario no sean correctos, a que no esté activada la extensión pdo o (en el caso de SQLite) que no exista el camino donde se guarda la base de datos.</p>
 
-      <section id="conexion-mysql">
-        <h3>Conexión con MySQL</h3>
+    <section id="conexion-mysql">
+      <h3>Conexión con MySQL</h3>
 
-        <p>En el caso de MySQL, para crear el objeto PDO se necesita proporcionar el nombre del servidor, el nombre de usuario y la contraseña.</p>
+      <p>En el caso de MySQL, para crear el objeto PDO se necesita proporcionar el nombre del servidor, el nombre de usuario y la contraseña.</p>
 
-        <p>Para poder acceder a MySQL mediante PDO, debe estar activada la extensión php_pdo_mysql en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-mysql">apartado extensión pdo_mysql en la lección de configuración de Apache y PHP</a>).</p>
+      <p>Para poder acceder a MySQL mediante PDO, debe estar activada la extensión php_pdo_mysql en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-mysql">apartado extensión pdo_mysql en la lección de configuración de Apache y PHP</a>).</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS MYSQL
 function conectaDb()
 {
@@ -100,18 +100,18 @@ function conectaDb()
 // La conexión se debe realizar en cada página que acceda a la base de datos
 $db = conectaDB();</code>
 </pre>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="conexion-sqlite">
-        <h3>Conexión con SQLite 3</h3>
+    <section id="conexion-sqlite">
+      <h3>Conexión con SQLite 3</h3>
 
-        <p>En SQLite, no se hace una conexión a un servidor, sino que simplemente se indica el archivo que va a contener la base de datos. En SQLite no hay un servidor que gestiona todas las bases de datos, sino que cada base de datos es un archivo independiente (que debe estar situado en un directorio que exista y en el que el servidor web tenga permisos de escritura).</p>
+      <p>En SQLite, no se hace una conexión a un servidor, sino que simplemente se indica el archivo que va a contener la base de datos. En SQLite no hay un servidor que gestiona todas las bases de datos, sino que cada base de datos es un archivo independiente (que debe estar situado en un directorio que exista y en el que el servidor web tenga permisos de escritura).</p>
 
-        <p>Para poder utilizar SQLite mediante PDO, debe estar activada la extensión php_pdo_sqlite en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-sqlite">apartado extensión pdo_sqlite en la lección de configuración de Apache y PHP</a>).</p>
+      <p>Para poder utilizar SQLite mediante PDO, debe estar activada la extensión php_pdo_sqlite en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-sqlite">apartado extensión pdo_sqlite en la lección de configuración de Apache y PHP</a>).</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS SQLITE
 function conectaDb()
 {
@@ -134,41 +134,41 @@ function conectaDb()
 // La conexión se debe realizar en cada página que acceda a la base de datos
 $db = conectaDB();</code>
 </pre>
-        </div>
+      </div>
 
-        <p><strong>Notas</strong>:</p>
-        <ul>
-          <li>En las soluciones de los ejercicios proporcionadas en estos apuntes, los archivos se guardan en el directorio <strong>/home/barto/mclibre/tmp/mclibre/</strong>. Para que funcionen las soluciones, se debe crear ese directorio o cambiarlo a otro.</li>
-          <li>En caso de error, la función conectaDb() genera una página completa (con una cabecera especial, con contenido de mensajes de error y pie) y termina el programa. Por tanto la conexión con la base de datos debe hacerse nada más empezar el programa (antes de generar la cabecera de la página).</li>
-        </ul>
-      </section>
+      <p><strong>Notas</strong>:</p>
+      <ul>
+        <li>En las soluciones de los ejercicios proporcionadas en estos apuntes, los archivos se guardan en el directorio <strong>/home/barto/mclibre/tmp/mclibre/</strong>. Para que funcionen las soluciones, se debe crear ese directorio o cambiarlo a otro.</li>
+        <li>En caso de error, la función conectaDb() genera una página completa (con una cabecera especial, con contenido de mensajes de error y pie) y termina el programa. Por tanto la conexión con la base de datos debe hacerse nada más empezar el programa (antes de generar la cabecera de la página).</li>
+      </ul>
+    </section>
 
-      <section id="conexion-configurable">
-        <h3>Conexión configurable</h3>
+    <section id="conexion-configurable">
+      <h3>Conexión configurable</h3>
 
-        <p>Si se incluyen ambas conexiones en el mismo programa, cada usuario puede elegir la base de datos más conveniente en cada caso.</p>
+      <p>Si se incluyen ambas conexiones en el mismo programa, cada usuario puede elegir la base de datos más conveniente en cada caso.</p>
 
-        <p>En los ejercicios en este curso se propone al alumno organizar los programas de manera que puedan trabajar tanto con SQLite como con MySQL y hacerlo de forma organizada, para que se puedan añadir fácilmente otras bases de datos.</p>
+      <p>En los ejercicios en este curso se propone al alumno organizar los programas de manera que puedan trabajar tanto con SQLite como con MySQL y hacerlo de forma organizada, para que se puedan añadir fácilmente otras bases de datos.</p>
 
-        <p>Para ello se crearán dos bibliotecas, una dedicada a MySQL y otra a SQLite, que contengan las funciones específicas de cada base de datos. Además habrá una biblioteca general en la que se pueda seleccionar la biblioteca a utilizar (MySQL o SQLite). Así, cada página llamará a la biblioteca general y esta llamará a la biblioteca específica.</p>
+      <p>Para ello se crearán dos bibliotecas, una dedicada a MySQL y otra a SQLite, que contengan las funciones específicas de cada base de datos. Además habrá una biblioteca general en la que se pueda seleccionar la biblioteca a utilizar (MySQL o SQLite). Así, cada página llamará a la biblioteca general y esta llamará a la biblioteca específica.</p>
 
-        <p>Por ejemplo, para el caso de la función de conexión, el resultado sería:</p>
-        <ul>
-          <li>en cualquier fichero que quiera conectar con la base de datos se llamaría a la biblioteca general y se llamaría a la función genérica conectaDB():
+      <p>Por ejemplo, para el caso de la función de conexión, el resultado sería:</p>
+      <ul>
+        <li>en cualquier fichero que quiera conectar con la base de datos se llamaría a la biblioteca general y se llamaría a la función genérica conectaDB():
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// EJEMPLO DE USO DE CONEXIÓN CONFIGURABLE
 // La conexión se debe realizar en cada página que acceda a la base de datos
 require_once "biblioteca.php";
 $db = conectaDB();</code>
 </pre>
-            </div>
-          </li>
-          <li>biblioteca.php: en ella se selecciona la biblioteca específica a cargar:
+          </div>
+        </li>
+        <li>biblioteca.php: en ella se selecciona la biblioteca específica a cargar:
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// biblioteca.php
 define("MYSQL",          "MySQL");         // Base de datos MySQL
 define("SQLITE",         "SQLite");        // Base de datos SQLITE
@@ -181,12 +181,12 @@ if ($dbMotor == MYSQL) {
     require_once "biblioteca-sqlite.php";
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>biblioteca-mysql.php: contiene la definición de la función conectaDB() específica para trabajar con MySQL
+          </div>
+        </li>
+        <li>biblioteca-mysql.php: contiene la definición de la función conectaDB() específica para trabajar con MySQL
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// biblioteca-mysql.php
 function conectaDb()
 {
@@ -205,12 +205,12 @@ function conectaDb()
     }
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>biblioteca-sqlite.php: contiene la definición de la función conectaDB() específica para trabajar con SQLite
+          </div>
+        </li>
+        <li>biblioteca-sqlite.php: contiene la definición de la función conectaDB() específica para trabajar con SQLite
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// biblioteca-sqlite.php
 function conectaDb()
 {
@@ -229,33 +229,33 @@ function conectaDb()
     }
 }</code>
 </pre>
-            </div>
-          </li>
-        </ul>
-      </section>
+          </div>
+        </li>
+      </ul>
     </section>
+  </section>
 
-    <section id="desconexion">
-      <h2>Desconexión con la base de datos</h2>
+  <section id="desconexion">
+    <h2>Desconexión con la base de datos</h2>
 
-      <p>Para desconectar con la base de datos hay que destruir el objeto PDO. Si no se destruye el objeto PDO, PHP lo destruye al terminar la página.</p>
+    <p>Para desconectar con la base de datos hay que destruir el objeto PDO. Si no se destruye el objeto PDO, PHP lo destruye al terminar la página.</p>
 
-      <div class="codigo">
-        <pre><code class="language-php">$db = null;</code></pre>
-      </div>
-    </section>
+    <div class="codigo">
+      <pre><code class="language-php">$db = null;</code></pre>
+    </div>
+  </section>
 
-    <section id="consultas">
-      <h2>Consultas a la base de datos</h2>
+  <section id="consultas">
+    <h2>Consultas a la base de datos</h2>
 
-      <p>Una vez realizada la conexión a la base de datos, las operaciones se realizan a través de consultas.</p>
+    <p>Una vez realizada la conexión a la base de datos, las operaciones se realizan a través de consultas.</p>
 
-      <p>El método para efectuar consultas es <a href="http://php.net/manual/es/pdo.query.php"><span class="php-fun">PDO-&gt;query($consulta)</span></a>, que devuelve el resultado de la consulta. Dependiendo del tipo de consulta, el dato devuelto debe tratarse de formas distintas.</p>
-      <ul>
-        <li>Si es una consulta que no devuelve registros, sino que simplemente realiza una acción que puede tener éxito o no (por ejemplo, insertar un registro), el método devuelve <span class="php-con">true</span> o <span class="php-con">false</span>. No es necesario guardar el resultado de la consulta en ninguna variable, pero se puede utilizar para sacar un mensaje diciendo que todo ha ido bien (o no). Por ejemplo,
+    <p>El método para efectuar consultas es <a href="http://php.net/manual/es/pdo.query.php"><span class="php-fun">PDO-&gt;query($consulta)</span></a>, que devuelve el resultado de la consulta. Dependiendo del tipo de consulta, el dato devuelto debe tratarse de formas distintas.</p>
+    <ul>
+      <li>Si es una consulta que no devuelve registros, sino que simplemente realiza una acción que puede tener éxito o no (por ejemplo, insertar un registro), el método devuelve <span class="php-con">true</span> o <span class="php-con">false</span>. No es necesario guardar el resultado de la consulta en ninguna variable, pero se puede utilizar para sacar un mensaje diciendo que todo ha ido bien (o no). Por ejemplo,
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE INSERCIÓN DE REGISTRO
 require_once "biblioteca.php";
 $db = conectaDB();
@@ -271,12 +271,12 @@ if ($db-&gt;query($consulta)) {
 
 $db = null;</code>
 </pre>
-          </div>
-        </li>
-        <li>Pero si la consulta devuelve registros, el método devuelve los registros correspondientes o <span class="php-con">false</span>. En ese caso sí que es conveniente guardar lo que devuelve el método en una variable para procesarla posteriormente. Si contiene registros, la variable es de un tipo especial llamado <a href="http://php.net/manual/es/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero que se puede recorrer con un bucle <span class="php-res">foreach()</span>,
+        </div>
+      </li>
+      <li>Pero si la consulta devuelve registros, el método devuelve los registros correspondientes o <span class="php-con">false</span>. En ese caso sí que es conveniente guardar lo que devuelve el método en una variable para procesarla posteriormente. Si contiene registros, la variable es de un tipo especial llamado <a href="http://php.net/manual/es/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero que se puede recorrer con un bucle <span class="php-res">foreach()</span>,
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 require_once "biblioteca.php";
 $db = conectaDB();
@@ -293,16 +293,16 @@ if (!$result) {
 
 $db = null;</code>
 </pre>
-          </div>
-        </li>
-      </ul>
+        </div>
+      </li>
+    </ul>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>En los ejemplos, se define una variable $consulta que contiene la consulta y a continuación se ejecuta la consulta, pero podría estar en una sola:</p>
+    <p>En los ejemplos, se define una variable $consulta que contiene la consulta y a continuación se ejecuta la consulta, pero podría estar en una sola:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">// En dos líneas
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -310,46 +310,46 @@ $result = $db-&gt;query($consulta);
 // En una sola línea
 $result = $db-&gt;query("SELECT * FROM $dbTabla");</code>
 </pre>
-      </div>
+    </div>
 
-      <p>Se recomienda utilizar la primera versión, que permite por ejemplo imprimir la consulta mientras se está programando para comprobar que no tiene errores:</p>
+    <p>Se recomienda utilizar la primera versión, que permite por ejemplo imprimir la consulta mientras se está programando para comprobar que no tiene errores:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">$consulta = "SELECT * FROM $dbTabla";
 print "&lt;p&gt;Consulta: $consulta&lt;/p&gt;\n";
 $result = $db-&gt;query($consulta);</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="seguridad">
-      <h2>Seguridad en las consultas: consultas preparadas</h2>
+  <section id="seguridad">
+    <h2>Seguridad en las consultas: consultas preparadas</h2>
 
-      <p>Para evitar ataques de inyección SQL (en la lección <a href="php-db-inyeccion-sql.html">Inyecciones SQL</a> se comentan los ataques más elementales), se recomienda el uso de <a href="http://php.net/manual/es/pdo.prepared-statements.php">sentencias preparadas</a>, en las que PHP se encarga de "desinfectar" los datos en caso necesario. En general, cualquier consulta que incluya datos introducidos por el usuario debe realizarse mediante consultas preparadas.</p>
+    <p>Para evitar ataques de inyección SQL (en la lección <a href="php-db-inyeccion-sql.html">Inyecciones SQL</a> se comentan los ataques más elementales), se recomienda el uso de <a href="http://php.net/manual/es/pdo.prepared-statements.php">sentencias preparadas</a>, en las que PHP se encarga de "desinfectar" los datos en caso necesario. En general, cualquier consulta que incluya datos introducidos por el usuario debe realizarse mediante consultas preparadas.</p>
 
-      <section id="consultas-preparadas">
-        <h3>Consultas preparadas</h3>
+    <section id="consultas-preparadas">
+      <h3>Consultas preparadas</h3>
 
-        <p>El método para efectuar consultas es primero preparar la consulta con <a href="http://php.net/manual/es/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare($consulta)</span></a> y después ejecutarla con <span class="php-fun"><a href="http://php.net/manual/es/pdostatement.execute.php">PDO-&gt;execute([parámetros])</a></span>, que devuelve el resultado de la consulta.</p>
+      <p>El método para efectuar consultas es primero preparar la consulta con <a href="http://php.net/manual/es/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare($consulta)</span></a> y después ejecutarla con <span class="php-fun"><a href="http://php.net/manual/es/pdostatement.execute.php">PDO-&gt;execute([parámetros])</a></span>, que devuelve el resultado de la consulta.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// Consulta preparada
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute();</code>
 </pre>
-        </div>
+      </div>
 
-        <p>Dependiendo del tipo de consulta, el dato devuelto debe tratarse de formas distintas, como se ha explicado en el apartado anterior.</p>
+      <p>Dependiendo del tipo de consulta, el dato devuelto debe tratarse de formas distintas, como se ha explicado en el apartado anterior.</p>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Si la consulta incluye datos introducidos por el usuario, los datos pueden incluirse directamente en la consulta, pero en ese caso, PHP no realiza ninguna "desinfección" de los datos, por lo que estaríamos corriendo riesgos de ataques:</p>
+      <p>Si la consulta incluye datos introducidos por el usuario, los datos pueden incluirse directamente en la consulta, pero en ese caso, PHP no realiza ninguna "desinfección" de los datos, por lo que estaríamos corriendo riesgos de ataques:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">$nombre    = $_REQUEST["nombre"];
 $apellidos = $_REQUEST["apellidos"];
 
@@ -362,17 +362,17 @@ if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
-        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Para que PHP desinfecte los datos, estos deben enviarse al ejecutar la consulta, no al prepararla. Para ello es necesario indicar en la consulta la posición de los datos. Esto se puede hacer de dos maneras, mediante parámetros o mediante interrogantes, aunque se aconseja la utilización de parámetros:</p>
-        <ul>
-          <li>mediante parámetros (:parametro)
-            <p>En este caso la matriz debe incluir los nombres de los parámetros y los valores que sustituyen a los parámetros (el orden no es importante), como muestra el siguiente ejemplo:</p>
+      <p>Para que PHP desinfecte los datos, estos deben enviarse al ejecutar la consulta, no al prepararla. Para ello es necesario indicar en la consulta la posición de los datos. Esto se puede hacer de dos maneras, mediante parámetros o mediante interrogantes, aunque se aconseja la utilización de parámetros:</p>
+      <ul>
+        <li>mediante parámetros (:parametro)
+          <p>En este caso la matriz debe incluir los nombres de los parámetros y los valores que sustituyen a los parámetros (el orden no es importante), como muestra el siguiente ejemplo:</p>
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">$nombre    = $_REQUEST["nombre"];
 $apellidos = $_REQUEST["apellidos"];
 
@@ -385,13 +385,13 @@ if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
-            </div>
-          </li>
-          <li>mediantes interrogantes (?)
-            <p>En este caso la matriz debe incluir los valores que sustituyen a los interrogantes en el mismo orden en que aparecen en la consulta, como muestra el siguiente ejemplo:</p>
+          </div>
+        </li>
+        <li>mediantes interrogantes (?)
+          <p>En este caso la matriz debe incluir los valores que sustituyen a los interrogantes en el mismo orden en que aparecen en la consulta, como muestra el siguiente ejemplo:</p>
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">$nombre    = $_REQUEST["nombre"];
 $apellidos = $_REQUEST["apellidos"];
 
@@ -404,31 +404,31 @@ if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </li>
+      </ul>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Aunque no vayan a causar problermas en las consultas, sigue siendo conveniente tratar los datos recibidos para eliminar los espacios en blanco iniciales y finales, tratar los caracteres especiales del html, etc., como se comenta en la <a href="php-recogida-datos.html">lección de Recogida de datos</a>.</p>
-      </section>
+      <p>Aunque no vayan a causar problermas en las consultas, sigue siendo conveniente tratar los datos recibidos para eliminar los espacios en blanco iniciales y finales, tratar los caracteres especiales del html, etc., como se comenta en la <a href="php-recogida-datos.html">lección de Recogida de datos</a>.</p>
+    </section>
 
-      <section id="restricciones">
-        <h3>Restricciones en los parámetros de consultas preparadas</h3>
+    <section id="restricciones">
+      <h3>Restricciones en los parámetros de consultas preparadas</h3>
 
-        <p>Debido a que las consultas preparadas se idearon para optimizar el rendimiento de las consultas, el uso de parámetros tiene algunas restricciones. Por ejemplo</p>
-        <ul>
-          <li>los identificadores (nombres de tablas, nombres de columnas, etc) no pueden sustituirse por parámetros</li>
-          <li>los dos elementos de una igualdad no pueden sustituirse por parámetros</li>
-          <li>en general no pueden utilizarse parámetros en las consultas DDL (lenguaje de definición de datos) (nombre y tamaño de las columnas, etc.)</li>
-        </ul>
+      <p>Debido a que las consultas preparadas se idearon para optimizar el rendimiento de las consultas, el uso de parámetros tiene algunas restricciones. Por ejemplo</p>
+      <ul>
+        <li>los identificadores (nombres de tablas, nombres de columnas, etc) no pueden sustituirse por parámetros</li>
+        <li>los dos elementos de una igualdad no pueden sustituirse por parámetros</li>
+        <li>en general no pueden utilizarse parámetros en las consultas DDL (lenguaje de definición de datos) (nombre y tamaño de las columnas, etc.)</li>
+      </ul>
 
-        <p>Si no podemos usar parámetros, no queda más remedio que incluir los datos en la consulta. Como en ese caso PHP no hace ninguna desinfección de los datos, la tenemos que hacer nosotros previamente.</p>
+      <p>Si no podemos usar parámetros, no queda más remedio que incluir los datos en la consulta. Como en ese caso PHP no hace ninguna desinfección de los datos, la tenemos que hacer nosotros previamente.</p>
 
-        <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos). Podemos crear una función de recogida de datos específica que impida cualquier tipo de ataque de inyección por parte del usuario, como muestra el siguiente ejemplo</p>
+      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos). Podemos crear una función de recogida de datos específica que impida cualquier tipo de ataque de inyección por parte del usuario, como muestra el siguiente ejemplo</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// FUNCIÓN DE RECOGIDA DE UN DATO QUE SÓLO PUEDE TOMAR DETERMINADOS VALORES
 $columnas = [
     "nombre",
@@ -460,31 +460,31 @@ if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
-        </div>
-      </section>
+      </div>
     </section>
+  </section>
 
-    <section id="ejemplos">
-      <h2>Ejemplos de consultas</h2>
+  <section id="ejemplos">
+    <h2>Ejemplos de consultas</h2>
 
-      <p>En los ejemplos de este apartado, se han utilizado sentencias preparadas en los casos en los que las consultas incluyen datos proporcionados por el usuario y consultas no preparadas cuando no incluyan datos proporcionados por el usuario. En la mayoría de los casos se podrían haber utilizado sentencias preparadas aunque no haya datos proporcionados por el usuario.</p>
+    <p>En los ejemplos de este apartado, se han utilizado sentencias preparadas en los casos en los que las consultas incluyen datos proporcionados por el usuario y consultas no preparadas cuando no incluyan datos proporcionados por el usuario. En la mayoría de los casos se podrían haber utilizado sentencias preparadas aunque no haya datos proporcionados por el usuario.</p>
 
-      <section id="create">
-        <h3>Consultas CREATE DATABASE, DROP DATABASE, CREATE TABLE</h3>
+    <section id="create">
+      <h3>Consultas CREATE DATABASE, DROP DATABASE, CREATE TABLE</h3>
 
-        <p>Estas consultas no son iguales en MySQL y SQLite. En los ejercicios propuestos para que se pueda utilizar una u otra base de datos, estas consultas se incluyen en las bibliotecas específicas.</p>
-        <ul>
-          <li>En el caso de utilizar SQLite, no tiene sentido crear o borrar la base de datos ya que con SQLite cada base de datos es un fichero distinto y al conectar con la base de datos ya se dice con qué archivo se va a trabajar y se crea en caso necesario.</li>
-          <li>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. Los ejemplos no utilizan sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</li>
-        </ul>
+      <p>Estas consultas no son iguales en MySQL y SQLite. En los ejercicios propuestos para que se pueda utilizar una u otra base de datos, estas consultas se incluyen en las bibliotecas específicas.</p>
+      <ul>
+        <li>En el caso de utilizar SQLite, no tiene sentido crear o borrar la base de datos ya que con SQLite cada base de datos es un fichero distinto y al conectar con la base de datos ya se dice con qué archivo se va a trabajar y se crea en caso necesario.</li>
+        <li>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. Los ejemplos no utilizan sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</li>
+      </ul>
 
-        <section id="create-mysql">
-          <h4>Consultas en MySQL</h4>
+      <section id="create-mysql">
+        <h4>Consultas en MySQL</h4>
 
-          <p>Para crear una base de datos, se utiliza la consulta CREATE DATABASE.</p>
+        <p>Para crear una base de datos, se utiliza la consulta CREATE DATABASE.</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE BASE DE DATOS EN MYSQL
 $consultaCreaDb = "CREATE DATABASE $dbDb
     CHARACTER SET utf8mb4
@@ -497,14 +497,14 @@ if ($db-&gt;query($consulta)) {
     print "\n";
 }</code>
 </pre>
-          </div>
+        </div>
 
-          <p><strong>Nota</strong>: El juego de caracteres utilizado en este curso es <strong>UTF-8</strong>, por lo que en la base de datos MySQL se utiliza el juego de caracteres <strong>utf8mb4</strong> (que permite almacenar cualquier carácter Unicode) y el cotejamiento <strong>utf8mb4_unicode_ci</strong> (que implementa todos los criterios de ordenación de Unicode). Para una explicación más detallada se puede consultar <a href="https://mathiasbynens.be/notes/mysql-utf8mb4">el blog de Mathias Bynens</a>.</p>
+        <p><strong>Nota</strong>: El juego de caracteres utilizado en este curso es <strong>UTF-8</strong>, por lo que en la base de datos MySQL se utiliza el juego de caracteres <strong>utf8mb4</strong> (que permite almacenar cualquier carácter Unicode) y el cotejamiento <strong>utf8mb4_unicode_ci</strong> (que implementa todos los criterios de ordenación de Unicode). Para una explicación más detallada se puede consultar <a href="https://mathiasbynens.be/notes/mysql-utf8mb4">el blog de Mathias Bynens</a>.</p>
 
-          <p>Para borrar una base de datos, se utiliza la consulta DROP DATABASE.</p>
+        <p>Para borrar una base de datos, se utiliza la consulta DROP DATABASE.</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE BASE DE DATOS EN MYSQL
 $consulta = "DROP DATABASE $dbDb";
 if ($db-&gt;query($consulta)) {
@@ -515,12 +515,12 @@ if ($db-&gt;query($consulta)) {
     print "\n";
 }</code>
 </pre>
-          </div>
+        </div>
 
-          <p>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. El ejemplo no utiliza sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</p>
+        <p>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. El ejemplo no utiliza sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN MYSQL
 $consulta = "CREATE TABLE $dbTabla (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -536,16 +536,16 @@ if ($db-&gt;query($consulta)) {
     print "\n";
 }</code>
 </pre>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="create-sqlite">
-          <h4>Consultas en SQLite</h4>
+      <section id="create-sqlite">
+        <h4>Consultas en SQLite</h4>
 
-          <p>En el caso de utiliza SQLite, no tiene sentido crear o borrar la base de datos ya que con SQLite cada base de datos es un fichero distinto y al conectar con la base de datos ya se dice con qué archivo se va a trabajar y se crea en caso necesario. Es suficiente borrar y crear las tablas.</p>
+        <p>En el caso de utiliza SQLite, no tiene sentido crear o borrar la base de datos ya que con SQLite cada base de datos es un fichero distinto y al conectar con la base de datos ya se dice con qué archivo se va a trabajar y se crea en caso necesario. Es suficiente borrar y crear las tablas.</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE TABLA EN SQLITE
 $consulta = "DROP TABLE $dbTabla";
 if ($db-&gt;query($consulta)) {
@@ -556,12 +556,12 @@ if ($db-&gt;query($consulta)) {
     print "\n";
 }</code>
 </pre>
-          </div>
+        </div>
 
-          <p>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. El ejemplo no utiliza sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</p>
+        <p>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. El ejemplo no utiliza sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN SQLite
 $consulta = "CREATE TABLE $dbTabla (
     id INTEGER PRIMARY KEY,
@@ -576,18 +576,18 @@ if ($db-&gt;query($consulta)) {
     print "\n";
 }</code>
 </pre>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="create-configurable">
-          <h4>Solución configurable</h4>
+      <section id="create-configurable">
+        <h4>Solución configurable</h4>
 
-          <p>El resultado sería</p>
-          <ul>
-            <li>en el fichero que quiera reiniciar la base de datos se llamaría a la biblioteca general y se llamaría a la función genérica borraTodo():
+        <p>El resultado sería</p>
+        <ul>
+          <li>en el fichero que quiera reiniciar la base de datos se llamaría a la biblioteca general y se llamaría a la función genérica borraTodo():
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">// EJEMPLO DE USO DE CONEXIÓN CONFIGURABLE
 // La conexión se debe realizar en cada página que acceda a la base de datos
 require_once "biblioteca.php";
@@ -595,12 +595,12 @@ $db = conectaDb();
 borraTodo($db);
 $db = null;</code>
 </pre>
-              </div>
-            </li>
-            <li>biblioteca-mysql.php: contiene la definición de la función borraTodo() específica para trabajar con MySQL y que borra la base de datos, la crea y crea la tabla:
+            </div>
+          </li>
+          <li>biblioteca-mysql.php: contiene la definición de la función borraTodo() específica para trabajar con MySQL y que borra la base de datos, la crea y crea la tabla:
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">// biblioteca-mysql.php
 $consultaCreaTabla = "CREATE TABLE $dbTabla (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -639,12 +639,12 @@ function borraTodo($db)
     }
 }</code>
 </pre>
-              </div>
-            </li>
-            <li>biblioteca-sqlite.php: contiene la definición de la función borraTodo() específica para trabajar con SQLite y que borra la tabla y la crea:
+            </div>
+          </li>
+          <li>biblioteca-sqlite.php: contiene la definición de la función borraTodo() específica para trabajar con SQLite y que borra la tabla y la crea:
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">// biblioteca-sqlite.php
 $consultaCreaTabla = "CREATE TABLE $dbTabla (
     id INTEGER PRIMARY KEY,
@@ -673,19 +673,19 @@ function borraTodo($db)
     }
 }</code>
 </pre>
-              </div>
-            </li>
-          </ul>
-        </section>
+            </div>
+          </li>
+        </ul>
       </section>
+    </section>
 
-      <section id="drop">
-        <h3>Consultas DROP TABLE, INSERT INTO, UPDATE, DELETE FROM</h3>
+    <section id="drop">
+      <h3>Consultas DROP TABLE, INSERT INTO, UPDATE, DELETE FROM</h3>
 
-        <p>Para borrar una tabla, se utiliza la consulta DROP TABLE.</p>
+      <p>Para borrar una tabla, se utiliza la consulta DROP TABLE.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE TABLA
 $consulta = "DROP TABLE $dbTabla";
 if ($db-&gt;query($consulta)) {
@@ -696,14 +696,14 @@ if ($db-&gt;query($consulta)) {
     print "\n";
 }</code>
 </pre>
-        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Para añadir un registro a una tabla, se utiliza la consulta INSERT INTO.</p>
+      <p>Para añadir un registro a una tabla, se utiliza la consulta INSERT INTO.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE INSERCIÓN DE REGISTRO
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
@@ -720,14 +720,14 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
     print "\n";
 }</code>
 </pre>
-        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Para modificar un registro a una tabla, se utiliza la consulta UPDATE.</p>
+      <p>Para modificar un registro a una tabla, se utiliza la consulta UPDATE.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE MODIFICACIÓN DE REGISTRO
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
@@ -745,16 +745,16 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos,
     print "\n";
 }</code>
 </pre>
-        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Para borrar un registro de una tabla, se utiliza la consulta DELETE FROM.</p>
+      <p>Para borrar un registro de una tabla, se utiliza la consulta DELETE FROM.</p>
 
-        <p>Nota: En el ejemplo, los registros a borrar se reciben en forma de matriz y se recorre la matriz borrando un elemento en cada iteración.</p>
+      <p>Nota: En el ejemplo, los registros a borrar se reciben en forma de matriz y se recorre la matriz borrando un elemento en cada iteración.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE REGISTRO
 $id = recogeMatriz("id");
 
@@ -771,18 +771,18 @@ foreach ($id as $indice =&gt; $valor) {
     }
 }</code>
 </pre>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="select">
-        <h3>Consulta SELECT</h3>
+    <section id="select">
+      <h3>Consulta SELECT</h3>
 
-        <p>Para obtener registros que cumplan determinados criterios se utiliza una consulta SELECT.</p>
-        <ul>
-          <li>Si se produce un error en la consulta, la consulta devuelve el valor <span class="php-con">false</span> .
+      <p>Para obtener registros que cumplan determinados criterios se utiliza una consulta SELECT.</p>
+      <ul>
+        <li>Si se produce un error en la consulta, la consulta devuelve el valor <span class="php-con">false</span> .
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
     <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -794,12 +794,12 @@ if (!$result) {
     print "\n";
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>Si la consulta devuelve un único registro se puede utilizar la función <a href="http://php.net/manual/es/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna.
+          </div>
+        </li>
+        <li>Si la consulta devuelve un único registro se puede utilizar la función <a href="http://php.net/manual/es/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna.
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -812,15 +812,15 @@ if (!$result) {
     print "\n";
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>Si la consulta se ejecuta correctamente, la consulta devuelve los registros correspondientes. <br />
+          </div>
+        </li>
+        <li>Si la consulta se ejecuta correctamente, la consulta devuelve los registros correspondientes. <br />
 
-            <ul>
-              <li>Para acceder a los registros devueltos por la consulta, se puede utilizar un bucle foreach.
+          <ul>
+            <li>Para acceder a los registros devueltos por la consulta, se puede utilizar un bucle foreach.
 
-                <div class="codigo">
-                  <pre>
+              <div class="codigo">
+                <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -834,12 +834,12 @@ if (!$result) {
     }
 }</code>
 </pre>
-                </div>
-              </li>
-              <li>O también se puede utilizar la función <a href="http://php.net/manual/es/pdostatement.fetch.php"><span class="php-fun">PDOStatement-&gt;fetch()</span></a>.
+              </div>
+            </li>
+            <li>O también se puede utilizar la función <a href="http://php.net/manual/es/pdostatement.fetch.php"><span class="php-fun">PDOStatement-&gt;fetch()</span></a>.
 
-                <div class="codigo">
-                  <pre>
+              <div class="codigo">
+                <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT * FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -853,16 +853,16 @@ if (!$result) {
     }
 }</code>
 </pre>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>Si la consulta no devuelve ningún registro, los dos bucles anteriores (foreach o fetch) no escribirían nada. Por ello se recomienda hacer primero una consulta que cuente el número de resultados de la consulta y, si es mayor que cero, hacer la consulta.
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li>Si la consulta no devuelve ningún registro, los dos bucles anteriores (foreach o fetch) no escribirían nada. Por ello se recomienda hacer primero una consulta que cuente el número de resultados de la consulta y, si es mayor que cero, hacer la consulta.
 
-            <p>El ejemplo siguiente utiliza la función <a href="http://php.net/manual/es/pdostatement.fetchcolumn.php"><span class="php-fun">PDOStatement-&gt;fetchColumn()</span></a>, que devuelve la primera columna del primer resultado (que en este caso contiene el número de registros de la consulta).</p>
+          <p>El ejemplo siguiente utiliza la función <a href="http://php.net/manual/es/pdostatement.fetchcolumn.php"><span class="php-fun">PDOStatement-&gt;fetchColumn()</span></a>, que devuelve la primera columna del primer resultado (que en este caso contiene el número de registros de la consulta).</p>
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
@@ -886,22 +886,22 @@ if (!$result) {
     }
 }</code>
 </pre>
-            </div>
-          </li>
-        </ul>
-      </section>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-      <section id="select-like">
-        <h3>Consulta SELECT LIKE</h3>
+    <section id="select-like">
+      <h3>Consulta SELECT LIKE</h3>
 
-        <p>La consulta SELECT permite efectuar búsquedas en cadenas utilizando el condicional LIKE o NOT LIKE y los comodines _ (cualquier carácter) o % (cualquier número de caracteres).</p>
+      <p>La consulta SELECT permite efectuar búsquedas en cadenas utilizando el condicional LIKE o NOT LIKE y los comodines _ (cualquier carácter) o % (cualquier número de caracteres).</p>
 
-        <p>Ejemplos de consultas:</p>
-        <ul>
-          <li>Registros en los que el apellido empieza por la cadena recibida:
+      <p>Ejemplos de consultas:</p>
+      <ul>
+        <li>Registros en los que el apellido empieza por la cadena recibida:
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $apellidos = recoge("apellidos");
 
@@ -917,12 +917,12 @@ if (!$result) {
     print "\n";
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>Registros en los que el apellido contiene la cadena recibida:
+          </div>
+        </li>
+        <li>Registros en los que el apellido contiene la cadena recibida:
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $apellidos = recoge("apellidos");
 
@@ -938,20 +938,20 @@ if (!$result) {
     print "\n";
 }</code>
 </pre>
-            </div>
-          </li>
-        </ul>
-      </section>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-      <section id="union-tablas">
-        <h3>Consultas de unión de tablas</h3>
+    <section id="union-tablas">
+      <h3>Consultas de unión de tablas</h3>
 
-        <p>Se pueden también realizar consultas de unión entre varias tablas (el ejemplo está sacado del <a href="../ejercicios/bases-datos/biblioteca-1.html">ejercicio de Biblioteca</a>):</p>
+      <p>Se pueden también realizar consultas de unión entre varias tablas (el ejemplo está sacado del <a href="../ejercicios/bases-datos/biblioteca-1.html">ejercicio de Biblioteca</a>):</p>
 
-        <p class="incompleto">Nota: Escribir como consulta preparada.</p>
+      <p class="incompleto">Nota: Escribir como consulta preparada.</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE UNIÓN DE TABLAS
 $consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
     $dbUsuarios.apellidos as apellidos, $dbObras.titulo as titulo,
@@ -967,16 +967,16 @@ if (!$result) {
 } else {
    ...</code>
 </pre>
-        </div>
-      </section>
+      </div>
     </section>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

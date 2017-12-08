@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Bases de datos 2. Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../varios/favicon.ico" />
-    <link rel="stylesheet" href="../../varios/highlight-php.css" />
-    <script src="../../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Bases de datos 2. Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <script src="../../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Ejercicios - Bases de datos 2 - Comentarios</h1>
+<body>
+  <h1>Ejercicios - Bases de datos 2 - Comentarios</h1>
 
-    <nav>
-      <p>
-        <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Bases de datos 2 - Comentarios</h2>
-
-        <ul>
-          <li><a href="#ejercicio-1">1 - Comprobaciones</a></li>
-          <li><a href="#ejercicio-2">2 - Mejoras</a></li>
-          <li><a href="#ejercicio-3">3 - Ampliaciones</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p>Esta página contiene comentarios ampliados con fragmentos de código PHP.</p>
-
-    <section id="ejercicio-1">
-      <h2>Bases de datos 2-1 - Comprobaciones</h2>
+    <div class="toc">
+      <h2>Bases de datos 2 - Comentarios</h2>
 
       <ul>
-        <li>En cualquier consulta, compruebe que la consulta no ha dado error.
-          <p>En el ejemplo siguiente se comprueba el resultado de la consulta antes de seguir. La consulta podría dar error si el SGBD no está disponible, si la base de datos no ha sido creada todavía, etc. Si es así, poco se puede hacer, salvo informar al ususario del problema.</p>
+        <li><a href="#ejercicio-1">1 - Comprobaciones</a></li>
+        <li><a href="#ejercicio-2">2 - Mejoras</a></li>
+        <li><a href="#ejercicio-3">3 - Ampliaciones</a></li>
+      </ul>
+    </div>
+  </nav>
 
-          <div class="codigo">
-            <pre>
+  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP.</p>
+
+  <section id="ejercicio-1">
+    <h2>Bases de datos 2-1 - Comprobaciones</h2>
+
+    <ul>
+      <li>En cualquier consulta, compruebe que la consulta no ha dado error.
+        <p>En el ejemplo siguiente se comprueba el resultado de la consulta antes de seguir. La consulta podría dar error si el SGBD no está disponible, si la base de datos no ha sido creada todavía, etc. Si es así, poco se puede hacer, salvo informar al ususario del problema.</p>
+
+        <div class="codigo">
+          <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
@@ -50,34 +50,34 @@ if (!$result) {
 } else {
  ...</code>
  </pre>
-          </div>
-          <p>Si se añade una consulta a una página que no la tenía, hay que conectarse a la base de datos al principio y cerrar la conexión al final.</p>
+        </div>
+        <p>Si se añade una consulta a una página que no la tenía, hay que conectarse a la base de datos al principio y cerrar la conexión al final.</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">$db = conectaDb();
  ...
 $db = null;</code>
 </pre>
-          </div>
-        </li>
-        <li>biblioteca.php
-          <ul>
-            <li>Defina una constante que contenga el máximo número de registros que puede contener la agenda.
+        </div>
+      </li>
+      <li>biblioteca.php
+        <ul>
+          <li>Defina una constante que contenga el máximo número de registros que puede contener la agenda.
 
-              <div class="codigo">
-                <pre><code class="language-php">define("MAX_REG_TABLA", 20);  // Número máximo de registros en la tabla</code></pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>insertar-1.php
-          <ul>
-            <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
-              <p>En el ejemplo siguiente la consulta devuelve un único registro con una única columna, que se obtiene con el método $result-&gt;fetchColumn().</p>
+            <div class="codigo">
+              <pre><code class="language-php">define("MAX_REG_TABLA", 20);  // Número máximo de registros en la tabla</code></pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>insertar-1.php
+        <ul>
+          <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
+            <p>En el ejemplo siguiente la consulta devuelve un único registro con una única columna, que se obtiene con el método $result-&gt;fetchColumn().</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
@@ -91,33 +91,33 @@ if (!$result) {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>insertar-2.php
-          <ul>
-            <li>Compruebe que el ususario no ha dejado todos los campos vacíos.
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>insertar-2.php
+        <ul>
+          <li>Compruebe que el ususario no ha dejado todos los campos vacíos.
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">if ($nombre == "" &amp;&amp; $apellidos == "") {
     print "    &lt;p&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
     print "\n";
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-            <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
-              <p>Es conveniente hacer esta comprobación aunque se haya hecho ya en insertar1.php, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar1.php.</p>
-            </li>
-            <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda.
+            </div>
+          </li>
+          <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
+            <p>Es conveniente hacer esta comprobación aunque se haya hecho ya en insertar1.php, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar1.php.</p>
+          </li>
+          <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda.
 
-              <p>Esta consulta se debe realizar con sentencias preparadas ya que incluye datos proporcionados por el usuario.</p>
+            <p>Esta consulta se debe realizar con sentencias preparadas ya que incluye datos proporcionados por el usuario.</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE nombre=:nombre
     AND apellidos=:apellidos";
@@ -132,18 +132,18 @@ if (!$result) {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>listar.php
-          <ul>
-            <li>Compruebe que hay registros que listar en la agenda.
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>listar.php
+        <ul>
+          <li>Compruebe que hay registros que listar en la agenda.
 
-              <p>Esta comprobación es similar a la de comprobar que no se ha alcanzado el máximo de registros.</p>
+            <p>Esta comprobación es similar a la de comprobar que no se ha alcanzado el máximo de registros.</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db-&gt;query($consulta);
 if (!$result) {
@@ -155,24 +155,24 @@ if (!$result) {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>borrar-1.php
-          <ul>
-            <li>Compruebe que hay registros que borrar en la agenda.
-              <p>Esta comprobación es la misma que la de listar.php</p>
-            </li>
-          </ul>
-        </li>
-        <li>borrar-2.php
-          <ul>
-            <li>Compruebe que se ha marcado algún registro para borrar.
-              <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la funcion <span class="php-fun">count()</span>.</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>borrar-1.php
+        <ul>
+          <li>Compruebe que hay registros que borrar en la agenda.
+            <p>Esta comprobación es la misma que la de listar.php</p>
+          </li>
+        </ul>
+      </li>
+      <li>borrar-2.php
+        <ul>
+          <li>Compruebe que se ha marcado algún registro para borrar.
+            <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la funcion <span class="php-fun">count()</span>.</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">$id = recogeMatriz("id");
 
 if (count($id) == 0) {
@@ -181,24 +181,24 @@ if (count($id) == 0) {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>buscar-1.php
-          <ul>
-            <li>Compruebe que hay registros que buscar en la agenda.
-              <p>Esta comprobación es la misma que la de listar.php</p>
-            </li>
-          </ul>
-        </li>
-        <li>buscar-2.php
-          <ul>
-            <li>Compruebe que se han encontrado registros.
-              <p>Esta comprobación es similar a la de comprobar que no se ha alcanzado el máximo de registros, pero utilizando sentencias preparadas:</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>buscar-1.php
+        <ul>
+          <li>Compruebe que hay registros que buscar en la agenda.
+            <p>Esta comprobación es la misma que la de listar.php</p>
+          </li>
+        </ul>
+      </li>
+      <li>buscar-2.php
+        <ul>
+          <li>Compruebe que se han encontrado registros.
+            <p>Esta comprobación es similar a la de comprobar que no se ha alcanzado el máximo de registros, pero utilizando sentencias preparadas:</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
@@ -213,24 +213,24 @@ if (!$result) {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>modificar-1.php
-          <ul>
-            <li>Compruebe que hay registros que modificar en la agenda.
-              <p>Esta comprobación es la misma que la de listar.php</p>
-            </li>
-          </ul>
-        </li>
-        <li>modificar-2.php
-          <ul>
-            <li>Compruebe que se ha marcado algún registro para modificar.
-              <p>Esta comprobación es similar a la de comprobar que se ha marcado algún registro para borrar, pero en este caso no se trata de una matriz</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>modificar-1.php
+        <ul>
+          <li>Compruebe que hay registros que modificar en la agenda.
+            <p>Esta comprobación es la misma que la de listar.php</p>
+          </li>
+        </ul>
+      </li>
+      <li>modificar-2.php
+        <ul>
+          <li>Compruebe que se ha marcado algún registro para modificar.
+            <p>Esta comprobación es similar a la de comprobar que se ha marcado algún registro para borrar, pero en este caso no se trata de una matriz</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">$id = recoge("id");
 
 if ($id == "") {
@@ -239,15 +239,15 @@ if ($id == "") {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-          <ul>
-            <li>Compruebe que se ha encontrado el registro seleccionado para modificar.
-              <p>Esta comprobación es similar a la de comprobar que se han encontrado registros de buscar2.php.</p>
+            </div>
+          </li>
+        </ul>
+        <ul>
+          <li>Compruebe que se ha encontrado el registro seleccionado para modificar.
+            <p>Esta comprobación es similar a la de comprobar que se han encontrado registros de buscar2.php.</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
@@ -261,23 +261,23 @@ if (!$result) {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>modificar-3.php
-          <ul>
-            <li>Compruebe que se ha recibido el id del registro a modificar
-              <p>Esta comprobación es la misma que la de modificar2.php.</p>
-            </li>
-            <li>Compruebe que el ususario no ha dejado todos los campos vacíos.
-              <p>Esta comprobación es la misma que la de modificar2.php.</p>
-            </li>
-            <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda (es decir, que al modificar un registro lo hagamos coincidir con otro ya incluido en la agenda).
-              <p>Esta comprobación es similar a la de insertar2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>modificar-3.php
+        <ul>
+          <li>Compruebe que se ha recibido el id del registro a modificar
+            <p>Esta comprobación es la misma que la de modificar2.php.</p>
+          </li>
+          <li>Compruebe que el ususario no ha dejado todos los campos vacíos.
+            <p>Esta comprobación es la misma que la de modificar2.php.</p>
+          </li>
+          <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda (es decir, que al modificar un registro lo hagamos coincidir con otro ya incluido en la agenda).
+            <p>Esta comprobación es similar a la de insertar2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
 
-              <div class="codigo">
-                <pre>
+            <div class="codigo">
+              <pre>
 <code class="language-php">// La consulta cuenta los registros con un id diferente porque MySQL no distingue
 // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
 // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
@@ -297,39 +297,39 @@ if (!$result) {
 } else {
  ...</code>
  </pre>
-              </div>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </section>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
 
-    <section id="ejercicio-2">
-      <h2>Bases de datos 2-2 - Mejoras</h2>
-      <ul>
-        <li>Listados ordenables (listar.php, borrar1.ph, buscar2.php, modificar1.ph)
+  <section id="ejercicio-2">
+    <h2>Bases de datos 2-2 - Mejoras</h2>
+    <ul>
+      <li>Listados ordenables (listar.php, borrar1.ph, buscar2.php, modificar1.ph)
 
-          <p>En cualquier listado en forma de tabla, permita ordenar los registros en un orden determinado (por cualquier columna, en orden ascendente o descendente).</p>
-          <p>Para ello la consulta que selecciona todos los registros podría incluir un ORDER BY</p>
+        <p>En cualquier listado en forma de tabla, permita ordenar los registros en un orden determinado (por cualquier columna, en orden ascendente o descendente).</p>
+        <p>Para ello la consulta que selecciona todos los registros podría incluir un ORDER BY</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">$consulta = "SELECT * FROM $dbTabla
              ORDER BY $columna $orden";</code>
 </pre>
-          </div>
-          <p>La columna y el orden deberían haberse recogido previamente (en el ejemplo siguiente, se les da valores predeterminados para que la primera vez que se listan los registros se haga por orden alfabético del apellido):</p>
+        </div>
+        <p>La columna y el orden deberían haberse recogido previamente (en el ejemplo siguiente, se les da valores predeterminados para que la primera vez que se listan los registros se haga por orden alfabético del apellido):</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">$columna = recogeColumna("columna", "apellidos");
 $orden   = recogeOrden("orden", "ASC");</code>
 </pre>
-          </div>
-          <p>Las funciones recogeColumna() y recogeOrden() podrían ser las siguientes:</p>
+        </div>
+        <p>Las funciones recogeColumna() y recogeOrden() podrían ser las siguientes:</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">$columnas = [
     "nombre",
     "apellidos"
@@ -358,11 +358,11 @@ function recogeOrden($var, $var2)
     }
 }</code>
 </pre>
-          </div>
-          <p>En la cabecera de la tabla se insertarían dos imágenes que enlazarían a la propia página enviando cada una una columna y orden diferente (en el ejemplo siguiente ordenaría por la columna nombre de forma ascedente o descendente).</p>
+        </div>
+        <p>En la cabecera de la tabla se insertarían dos imágenes que enlazarían a la propia página enviando cada una una columna y orden diferente (en el ejemplo siguiente ordenaría por la columna nombre de forma ascedente o descendente).</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// En la dirección se escribe la entidad de carácter &amp;amp; en vez del carácter &amp;
 // para que el código HTML de la página sea válido
 
@@ -374,14 +374,14 @@ print "          &lt;a href=\"$_SERVER[PHP_SELF]?columna=nombre&amp;amp;orden=DE
 print "            &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /&gt;&lt;/a&gt;\n";
 print "        &lt;/th&gt;\n";</code>
 </pre>
-          </div>
+        </div>
 
-          <p>Las imágenes (arriba.png y abajo.png) se encuentran en las plantillas.</p>
+        <p>Las imágenes (arriba.png y abajo.png) se encuentran en las plantillas.</p>
 
-          <p>En el caso de la búsqueda (buscar2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la     búsqueda</p>
+        <p>En el caso de la búsqueda (buscar2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda</p>
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// En la dirección se escribe la entidad de carácter &amp;amp; en vez del carácter &amp;
 // para que el código HTML de la página sea válido
 
@@ -397,23 +397,23 @@ print "          &lt;a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;amp;orden=DES
 print "            &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /&gt;&lt;/a&gt;\n";
 print "        &lt;/th&gt;\n";</code>
 </pre>
-          </div>
-        </li>
-      </ul>
-    </section>
+        </div>
+      </li>
+    </ul>
+  </section>
 
-    <section id="ejercicio-3">
-      <h2>Bases de datos 2-3 - Ampliaciones</h2>
+  <section id="ejercicio-3">
+    <h2>Bases de datos 2-3 - Ampliaciones</h2>
 
-      <p>No hay comentarios para este ejercicio.</p>
-    </section>
+    <p>No hay comentarios para este ejercicio.</p>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

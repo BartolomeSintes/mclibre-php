@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Cookies y sesiones (resumen). PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Cookies y sesiones (resumen). PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Cookies y sesiones (resumen)</h1>
+<body>
+  <h1>Cookies y sesiones (resumen)</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Cookies y sesiones</h2>
+    <div class="toc">
+      <h2>Cookies y sesiones</h2>
 
-        <ul>
-          <li><a href="#resumen">Resumen</a></li>
-          <li><a href="#ejemplos">Ejemplos</a></li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#resumen">Resumen</a></li>
+        <li><a href="#ejemplos">Ejemplos</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <section id="resumen">
-      <h2>Resumen</h2>
+  <section id="resumen">
+    <h2>Resumen</h2>
 
-      <p>Para deshabilitar las cookies en Firefox, hay que desmarcar la casilla de verificación "Aceptar cookies" en el menú <span class="soft-menu">Herramientas &gt; Opciones &gt; Privacidad &gt; Usar una configuración personalizada para el historial</span>.</p>
+    <p>Para deshabilitar las cookies en Firefox, hay que desmarcar la casilla de verificación "Aceptar cookies" en el menú <span class="soft-menu">Herramientas &gt; Opciones &gt; Privacidad &gt; Usar una configuración personalizada para el historial</span>.</p>
 
-      <p>Para deshabilitar las cookies en Internet Explorer 8, hay que elegir la configuración "Bloquear todas las cookies" en el menú <span class="soft-menu">Herramientas &gt; Opciones de Internet &gt; Privacidad</span>.</p>
+    <p>Para deshabilitar las cookies en Internet Explorer 8, hay que elegir la configuración "Bloquear todas las cookies" en el menú <span class="soft-menu">Herramientas &gt; Opciones de Internet &gt; Privacidad</span>.</p>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Las <a href="http://php.net/manual/es/features.cookies.php">cookies</a> permiten que el servidor almacene datos en el ordenador del cliente.</p>
+    <p>Las <a href="http://php.net/manual/es/features.cookies.php">cookies</a> permiten que el servidor almacene datos en el ordenador del cliente.</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">// Las cookies deben crearse o destruirse antes de enviar ningún carácter al navegador.
 
 // Para crear una cookie, se utiliza la función <span class="php-fun"><a href="http://php.net/manual/es/function.setcookie.php" title="Ver manual de PHP"><span class="php-fun">setcookie</span></a></span>
@@ -69,14 +69,14 @@ $dato = $_REQUEST["nombreCookie"];
 
 setcookie(nombreCookie, valorCookie, time() - 3600);</code>
 </pre>
-      </div>
+    </div>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Las <a href="http://php.net/manual/es/ref.session.php">sesiones</a> permiten que PHP "recuerde" datos cuando el usuario cambia de página dentro de un mismo sitio web, sin necesidad de ir pasándola de página a página como controles ocultos.</p>
+    <p>Las <a href="http://php.net/manual/es/ref.session.php">sesiones</a> permiten que PHP "recuerde" datos cuando el usuario cambia de página dentro de un mismo sitio web, sin necesidad de ir pasándola de página a página como controles ocultos.</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">// Para utilizar variables de sesión, cada página debe abrir la sesión:
 
 ini_set("session.save_handler", "files"); // Sólo si session.save_handler = user en php.ini
@@ -99,17 +99,17 @@ $dato = $_SESSION["dato"];
 
 session_destroy();</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="ejemplos">
-      <h2>Ejemplos</h2>
+  <section id="ejemplos">
+    <h2>Ejemplos</h2>
 
-      <h3>Contador del número de accesos a una página</h3>
+    <h3>Contador del número de accesos a una página</h3>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 //contador del número de accesos a una página por sesión.
 session_start();
@@ -120,7 +120,7 @@ if (!isset($_SESSION["count"])) {
 }
 ?&gt;</code>
 </pre>
-          <pre>
+        <pre>
 <code class="language-html">&lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;Contador de accesos&lt;/title&gt;
@@ -128,21 +128,21 @@ if (!isset($_SESSION["count"])) {
 &lt;body&gt;
 &lt;p&gt;</code>
 </pre>
-          <pre>
+        <pre>
 <code class="language-php">&lt;?php
 print("Hola, has accedido a esta página ");
 print($_SESSION["count"]);
 print(" veces.");
 ?&gt;</code>
 </pre>
-          <pre>
+        <pre>
 <code class="language-html">&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-        </div>
-        <div class="codigo">
-          <pre>
+      </div>
+      <div class="codigo">
+        <pre>
 <code class="language-html">&lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;Contador de accesos&lt;/title&gt;
@@ -152,12 +152,12 @@ print(" veces.");
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-        </div>
       </div>
+    </div>
 
-      <h3>Configuración personalizada de los colores de una página</h3>
-      <div class="codigo">
-        <pre>
+    <h3>Configuración personalizada de los colores de una página</h3>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 session_start();
 
@@ -192,7 +192,7 @@ function traduce($color)
 }
 ?&gt;</code>
 </pre>
-        <pre>
+      <pre>
 <code class="language-html">&lt;h2&gt;Elige los tus colores favoritos&lt;/h2&gt;
 &lt;form action="<code class="language-php"><span class="preprocessor">&lt;?php</span> <span class="keyword">echo</span>(<span class="variable">$_SERVER</span>[<span class="string">"PHP_SELF"</span>]) <span class="preprocessor">?&gt;</span></code>" method="post"&gt;
   &lt;p&gt;Color de fondo:
@@ -218,15 +218,15 @@ function traduce($color)
 &lt;/body&gt;
 &lt;/html&gt;<span class="preprocessor"></span></code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 25 de mayo de 2011</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 25 de mayo de 2011</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

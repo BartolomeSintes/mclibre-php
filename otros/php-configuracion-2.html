@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Configuración de Apache y PHP (2). PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Configuración de Apache y PHP (2). PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Configuración de Apache y PHP (2)</h1>
+<body>
+  <h1>Configuración de Apache y PHP (2)</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Configurar Apache (2)</h2>
+    <div class="toc">
+      <h2>Configurar Apache (2)</h2>
 
-        <ul>
-          <li><a href="#introduccion">Introducción</a></li>
-          <li><a href="#configuracion-apache">Configuración de Apache</a>
-            <ul>
-              <li><a href="#control-acceso">Control de acceso</a></li>
-              <li><a href="#document-root">DocumentRoot</a></li>
-              <li><a href="#user-dir">UserDir</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#introduccion">Introducción</a></li>
+        <li><a href="#configuracion-apache">Configuración de Apache</a>
+          <ul>
+            <li><a href="#control-acceso">Control de acceso</a></li>
+            <li><a href="#document-root">DocumentRoot</a></li>
+            <li><a href="#user-dir">UserDir</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <section id="introduccion">
-      <h2>Introducción</h2>
+  <section id="introduccion">
+    <h2>Introducción</h2>
 
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" /><strong>Nota</strong>: Esta página contiene información sobre la configuración de Apache y PHP que <strong>no</strong> se utiliza en clase, pero que puede resultar de interés.</p>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" /><strong>Nota</strong>: Esta página contiene información sobre la configuración de Apache y PHP que <strong>no</strong> se utiliza en clase, pero que puede resultar de interés.</p>
 
-      <p>Esta explicación sobre la configuración de Apache y PHP se escribió para XAMPP 1.8.3 y puede no funcionar en versiones posteriores.</p>
-    </section>
+    <p>Esta explicación sobre la configuración de Apache y PHP se escribió para XAMPP 1.8.3 y puede no funcionar en versiones posteriores.</p>
+  </section>
 
-    <section id="configuracion-apache">
-      <h2>Configuración de Apache</h2>
+  <section id="configuracion-apache">
+    <h2>Configuración de Apache</h2>
 
-      <section id="control-acceso">
-        <h3>Control de acceso en Apache</h3>
+    <section id="control-acceso">
+      <h3>Control de acceso en Apache</h3>
 
-        <p>En Apache 2.2. el control de acceso se realizaba mediante las directivas Order, Allow, Deny, and Satisfy.</p>
+      <p>En Apache 2.2. el control de acceso se realizaba mediante las directivas Order, Allow, Deny, and Satisfy.</p>
 
-        <p>En Apache 2.4 , el control de acceso se realiza mediante el módulo mod_authz_host, que utiliza otras directivas, aunque el módulo mod_access_compat permite utilizar las directivas antiguas.</p>
+      <p>En Apache 2.4 , el control de acceso se realiza mediante el módulo mod_authz_host, que utiliza otras directivas, aunque el módulo mod_access_compat permite utilizar las directivas antiguas.</p>
 
-        <p>En el caso de XAMPP, la versión XAMPP 1.8.0 (que ya incluía Apache 2.4.2) utilizaba todavía las directivas habituales de Apache 2.2 order y deny. El fichero httpd.conf contenía una directiva Directory general que restringía el acceso general a los directorios utilizando las directivas Order y Deny</p>
+      <p>En el caso de XAMPP, la versión XAMPP 1.8.0 (que ya incluía Apache 2.4.2) utilizaba todavía las directivas habituales de Apache 2.2 order y deny. El fichero httpd.conf contenía una directiva Directory general que restringía el acceso general a los directorios utilizando las directivas Order y Deny</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"># Each directory to which Apache has access can be configured with respect
 # to which services and features are allowed and/or disabled in that
 # directory (and its subdirectories).
@@ -72,12 +72,12 @@
     Deny from all</strong>
 &lt;/Directory&gt;</code>
 </pre>
-        </div>
+      </div>
 
-        <p>Por eso, cuando el usuario quería permitir el acceso a un directorio (por ejemplo en un alias) debían utilizarse esas mismas directivas. Por ejemplo</p>
+      <p>Por eso, cuando el usuario quería permitir el acceso a un directorio (por ejemplo en un alias) debían utilizarse esas mismas directivas. Por ejemplo</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 
    Alias /miproyecto/micarpeta "C:\Users\NombreDeUsuario\Documents\PHP"
@@ -91,12 +91,12 @@
    ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
 &lt;/IfModule&gt;</code>
 </pre>
-        </div>
+      </div>
 
-        <p>Sin embargo, la versión XAMPP 1.8.3 (que incluye Apache 2.4.4) utiliza ya la directiva Require. El fichero httpd.conf contiene una directiva Directory general que restringe el acceso general a los directorios utilizando la directiva Require</p>
+      <p>Sin embargo, la versión XAMPP 1.8.3 (que incluye Apache 2.4.4) utiliza ya la directiva Require. El fichero httpd.conf contiene una directiva Directory general que restringe el acceso general a los directorios utilizando la directiva Require</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"># Deny access to the entirety of your server's filesystem. You must
 # explicitly permit access to web content directories in other
 # &lt;Directory&gt; blocks below.
@@ -106,12 +106,12 @@
     <strong>Require all denied</strong>
 &lt;/Directory&gt;</code>
 </pre>
-        </div>
+      </div>
 
-        <p>Por eso, cuando el usuario quiere permitir el acceso a un directorio (por ejemplo en un alias) debe utilizarse esa misma directiva. Por ejemplo</p>
+      <p>Por eso, cuando el usuario quiere permitir el acceso a un directorio (por ejemplo en un alias) debe utilizarse esa misma directiva. Por ejemplo</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 
    Alias /miproyecto/micarpeta "C:\Users\NombreDeUsuario\Documents\PHP"
@@ -124,22 +124,22 @@
    ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
 &lt;/IfModule&gt;</code>
 </pre>
-        </div>
+      </div>
 
-        <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />En este curso se aconseja el uso de versiones posteriores a XAMPP 1.8.0, por lo que los ejemplos utilizarán la directiva Require. En caso de que un alumno no pueda utilizar versiones posteriores a XAMPP 1.8.0 (por ejemplo, porque utiliza Windows XP), deberá emplear las0 directivas Order y Allow.</p>
-      </section>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />En este curso se aconseja el uso de versiones posteriores a XAMPP 1.8.0, por lo que los ejemplos utilizarán la directiva Require. En caso de que un alumno no pueda utilizar versiones posteriores a XAMPP 1.8.0 (por ejemplo, porque utiliza Windows XP), deberá emplear las0 directivas Order y Allow.</p>
+    </section>
 
-      <section id="document-root">
-        <h3>DocumentRoot</h3>
+    <section id="document-root">
+      <h3>DocumentRoot</h3>
 
-        <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" /><strong>Nota</strong>: En este curso <strong>no</strong> se recomienda el cambio de la directiva DocumentRoot, aunque se comente a continuación cómo hacerlo.</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" /><strong>Nota</strong>: En este curso <strong>no</strong> se recomienda el cambio de la directiva DocumentRoot, aunque se comente a continuación cómo hacerlo.</p>
 
-        <p>La directiva DocumentRoot especifica el directorio donde se encuentran las páginas web. Cuando en la barra de dirección del navegador se escriba una dirección que comience por http://localhost/, el servidor buscará los archivos a partir de ese directorio. La directiva DocumentRoot va acompañada de una directiva &lt;Directory&gt; que especifica qué servicios y características están permitidos o prohibidos en el directorio.</p>
+      <p>La directiva DocumentRoot especifica el directorio donde se encuentran las páginas web. Cuando en la barra de dirección del navegador se escriba una dirección que comience por http://localhost/, el servidor buscará los archivos a partir de ese directorio. La directiva DocumentRoot va acompañada de una directiva &lt;Directory&gt; que especifica qué servicios y características están permitidos o prohibidos en el directorio.</p>
 
-        <p>En XAMPP 7.0 el valor predeterminado de DocumentRoot es el siguiente:</p>
+      <p>En XAMPP 7.0 el valor predeterminado de DocumentRoot es el siguiente:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">#
 # DocumentRoot: The directory out of which you will serve your
 # documents. By default, all requests are taken from this directory, but
@@ -174,12 +174,12 @@ DocumentRoot "C:/xampp/htdocs"
     Require all granted
 &lt;/Directory&gt;</code>
 </pre>
-        </div>
+      </div>
 
-        <p>Si se quiere cambiar DocumentRoot y utilizar, por ejemplo, el directorio C:\www, hay que modificar tanto la línea de DocumentRoot como el Directory correspondiente. El archivo de configuración debería quedar así (se ha resaltado el texto añadido):</p>
+      <p>Si se quiere cambiar DocumentRoot y utilizar, por ejemplo, el directorio C:\www, hay que modificar tanto la línea de DocumentRoot como el Directory correspondiente. El archivo de configuración debería quedar así (se ha resaltado el texto añadido):</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">#
 # DocumentRoot: The directory out of which you will serve your
 # documents. By default, all requests are taken from this directory, but
@@ -219,60 +219,60 @@ DocumentRoot "C:/xampp/htdocs"
     Require all granted
 &lt;/Directory&gt;</code>
 </pre>
-        </div>
+      </div>
 
-        <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
-      </section>
+      <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
+    </section>
 
-      <section id="user-dir">
-        <h3>UserDir</h3>
+    <section id="user-dir">
+      <h3>UserDir</h3>
 
-        <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" /><strong>Nota</strong>: En este curso <strong>no</strong> se recomienda el uso de UserDir, aunque se comente aquí cómo hacerlo.</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" /><strong>Nota</strong>: En este curso <strong>no</strong> se recomienda el uso de UserDir, aunque se comente aquí cómo hacerlo.</p>
 
-        <p>Como en un ordenador con Windows XP puede haber varios usuarios, puede ser un problema que todos los usuarios utilicen el mismo directorio raíz. La directiva UserDir permite que cada usuario guarde sus páginas en su propio directorio Mis Documentos y que cada uno acceda a ellos escribiendo en el navegador la dirección http://localhost/~<em>nombre-de-usuario</em>.</p>
+      <p>Como en un ordenador con Windows XP puede haber varios usuarios, puede ser un problema que todos los usuarios utilicen el mismo directorio raíz. La directiva UserDir permite que cada usuario guarde sus páginas en su propio directorio Mis Documentos y que cada uno acceda a ellos escribiendo en el navegador la dirección http://localhost/~<em>nombre-de-usuario</em>.</p>
 
-        <p>Hay que tener en cuenta que aunque se definan directorios de usuarios, http://localhost sigue mostrando el directorio indicado por la directiva DocumentRoot.</p>
+      <p>Hay que tener en cuenta que aunque se definan directorios de usuarios, http://localhost sigue mostrando el directorio indicado por la directiva DocumentRoot.</p>
 
-        <p>Para que Apache pueda acceder a los directorios de los usuarios, en httpd.conf debe estar cargado el módulo userdir mediante la directiva:</p>
+      <p>Para que Apache pueda acceder a los directorios de los usuarios, en httpd.conf debe estar cargado el módulo userdir mediante la directiva:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">LoadModule userdir_module modules/mod_userdir.so</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En XAMPP 1.8.3 esta directiva está comentada de forma predeterminada, por lo que es necesario borrar el carácter de almohadilla.</p>
+      <p>En XAMPP 1.8.3 esta directiva está comentada de forma predeterminada, por lo que es necesario borrar el carácter de almohadilla.</p>
 
-        <p>El archivo de configuración debería quedar así (se ha resaltado el texto añadido):</p>
+      <p>El archivo de configuración debería quedar así (se ha resaltado el texto añadido):</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion"><strong># 2013-09-19. Barto. Cargo el módulo userdir_module</strong>LoadModule userdir_module modules/mod_userdir.so</code>
 </pre>
-        </div>
+      </div>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>Si se carga el módulo userdir, entonces deben indicarse los módulos de usuario mediante la directiva UserDir. En XAMPP 1.8.3 la configuración de los directorios de usuario se realiza en un archivo separado (aunque el contenido de este archivo podría incluirse en el archivo httpd.conf) que se encuentra referenciado mediante la directiva</p>
+      <p>Si se carga el módulo userdir, entonces deben indicarse los módulos de usuario mediante la directiva UserDir. En XAMPP 1.8.3 la configuración de los directorios de usuario se realiza en un archivo separado (aunque el contenido de este archivo podría incluirse en el archivo httpd.conf) que se encuentra referenciado mediante la directiva</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">Include conf/extra/httpd-userdir.conf</code>
 </pre>
-        </div>
+      </div>
 
-        <p>En XAMPP 1.8.3 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobarlo.</p>
+      <p>En XAMPP 1.8.3 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobarlo.</p>
 
-        <hr class="corta" />
+      <hr class="corta" />
 
-        <p>El archivo httpd-userdir.conf contiene las directivas UserDir y &lt;Directory&gt; que especifican la ubicación de los archivos de usuario y su modo de acceso.</p>
+      <p>El archivo httpd-userdir.conf contiene las directivas UserDir y &lt;Directory&gt; que especifican la ubicación de los archivos de usuario y su modo de acceso.</p>
 
-        <p>El directorio de usuario se puede definir para todos los usuarios (utilizando el carácter <strong>*</strong>, como en el ejemplo siguiente) o para un usuario concreto, utilizando el nombre del usuario en vez del carácter *.</p>
+      <p>El directorio de usuario se puede definir para todos los usuarios (utilizando el carácter <strong>*</strong>, como en el ejemplo siguiente) o para un usuario concreto, utilizando el nombre del usuario en vez del carácter *.</p>
 
-        <p>En el ejemplo siguiente la carpeta de usuario para todos los usuarios será la carpeta Mis documentos/www:</p>
+      <p>En el ejemplo siguiente la carpeta de usuario para todos los usuarios será la carpeta Mis documentos/www:</p>
 
-        <div class="codigo">
-          <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-configuracion">&lt;IfModule userdir_module&gt;
     <strong># 2013-09-19. Barto. He añadido este Directorio de usuario para todos los usuarios:
 UserDir "Documents/www"
@@ -284,18 +284,18 @@ UserDir "Documents/www"
 
 &lt;/IfModule&gt;</code>
 </pre>
-        </div>
+      </div>
 
-        <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
-      </section>
+      <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
     </section>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 12 de septiembre de 2016</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 12 de septiembre de 2016</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

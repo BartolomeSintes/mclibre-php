@@ -1,177 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Cookies. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Cookies. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Cookies</h1>
+<body>
+  <h1>Cookies</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Cookies</h2>
+    <div class="toc">
+      <h2>Cookies</h2>
 
-        <ul>
-          <li><a href="#crear">Crear cookies</a></li>
-          <li><a href="#modificar">Modificar cookies</a></li>
-          <li><a href="#borrar">Borrar cookies</a></li>
-          <li><a href="#utilizar">Utilizar cookies</a></li>
-          <li><a href="#criticas">Críticas a las cookies</a></li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#crear">Crear cookies</a></li>
+        <li><a href="#modificar">Modificar cookies</a></li>
+        <li><a href="#borrar">Borrar cookies</a></li>
+        <li><a href="#utilizar">Utilizar cookies</a></li>
+        <li><a href="#criticas">Críticas a las cookies</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <p>En esta lección se trata el manejo de las cookies. Las cookies (“galletas”, en inglés) son un mecanismo que utilizan los servidores web para guardar información en el ordenador del usuario y recuperarla cada vez que el navegador les pide una página. La información se guarda en el ordenador del usuario en forma de texto y está formada por parejas (nombre de la cookie y valor de la cookie). Esta información se utiliza para numerosos fines (autentificación, selección de preferencias, items seleccionados en un carrito de la compra, etc.), siempre con la intención de identificar al usuario y personalizar las páginas. En el manual de PHP se ofrece un <a href="http://php.net/manual/es/features.cookies.php">capítulo dedicado a las cookies</a>.</p>
+  <p>En esta lección se trata el manejo de las cookies. Las cookies (“galletas”, en inglés) son un mecanismo que utilizan los servidores web para guardar información en el ordenador del usuario y recuperarla cada vez que el navegador les pide una página. La información se guarda en el ordenador del usuario en forma de texto y está formada por parejas (nombre de la cookie y valor de la cookie). Esta información se utiliza para numerosos fines (autentificación, selección de preferencias, items seleccionados en un carrito de la compra, etc.), siempre con la intención de identificar al usuario y personalizar las páginas. En el manual de PHP se ofrece un <a href="http://php.net/manual/es/features.cookies.php">capítulo dedicado a las cookies</a>.</p>
 
-    <section id="crear">
-      <h2>Crear cookies</h2>
+  <section id="crear">
+    <h2>Crear cookies</h2>
 
-      <p>Las cookies se crean cuando el servidor se lo pide al navegador. Cuando el servidor envía una página al navegador, puede incluir en las cabeceras de la respuesta HTTP la petición de creación de una o varias cookies. El navegador crea la cookie, guardando no sólo el nombre y el valor de la cookie, sino el nombre del servidor (del dominio) que ha creado la cookie.</p>
+    <p>Las cookies se crean cuando el servidor se lo pide al navegador. Cuando el servidor envía una página al navegador, puede incluir en las cabeceras de la respuesta HTTP la petición de creación de una o varias cookies. El navegador crea la cookie, guardando no sólo el nombre y el valor de la cookie, sino el nombre del servidor (del dominio) que ha creado la cookie.</p>
 
-      <p>En PHP, las cookies se crean mediante la función <a href="http://php.net/manual/es/function.setcookie.php">setcookie()</a>. Por ejemplo:</p>
+    <p>En PHP, las cookies se crean mediante la función <a href="http://php.net/manual/es/function.setcookie.php">setcookie()</a>. Por ejemplo:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo");
 ?&gt;</code>
 </pre>
-      </div>
+    </div>
 
-      <p>Si se quiere guardar en una cookie una matriz de datos, es necesario crear cada elemento de la matriz en una cookie distinta. Por ejemplo:</p>
+    <p>Si se quiere guardar en una cookie una matriz de datos, es necesario crear cada elemento de la matriz en una cookie distinta. Por ejemplo:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 setcookie("datos[nombre]", "Pepito");
 setcookie("datos[apellidos]", "Conejo");
 ?&gt;</code>
 </pre>
-      </div>
+    </div>
 
-      <p>Es muy importante que los nombres de las cookies no coincidan con los nombres de controles de los formularios, porque PHP incluye los valores de las cookies en la matriz $_REQUEST. Es decir, que si el nombre de una cookie coincide con el nombre de un control, en $_REQUEST sólo se guardará el valor de la cookie, no el del control.</p>
+    <p>Es muy importante que los nombres de las cookies no coincidan con los nombres de controles de los formularios, porque PHP incluye los valores de las cookies en la matriz $_REQUEST. Es decir, que si el nombre de una cookie coincide con el nombre de un control, en $_REQUEST sólo se guardará el valor de la cookie, no el del control.</p>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Hay que tener la precaución de utilizar la función setcookie() antes de empezar a escribir el contenido de la página, porque si no PHP producirá un aviso y no se creará la cookie. El motivo es que las cookies se crean mediante cabeceras de respuesta HTTP y las cabeceras se envían antes del texto de la página. Es decir, cuando PHP encuentra una instrucción que escribe texto, cierra automáticamente la cabecera; si a continuación PHP encuentra en el programa la función setcookie(), da un aviso porque ya se han enviado las cabeceras y no se crea la cookie. El ejemplo siguiente muestra código incorrecto, ya que utiliza la función setcookie() después de haber escrito texto, y el mensaje de aviso generado por PHP.</p>
+    <p>Hay que tener la precaución de utilizar la función setcookie() antes de empezar a escribir el contenido de la página, porque si no PHP producirá un aviso y no se creará la cookie. El motivo es que las cookies se crean mediante cabeceras de respuesta HTTP y las cabeceras se envían antes del texto de la página. Es decir, cuando PHP encuentra una instrucción que escribe texto, cierra automáticamente la cabecera; si a continuación PHP encuentra en el programa la función setcookie(), da un aviso porque ya se han enviado las cabeceras y no se crea la cookie. El ejemplo siguiente muestra código incorrecto, ya que utiliza la función setcookie() después de haber escrito texto, y el mensaje de aviso generado por PHP.</p>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 // Este código es incorrecto, la cabecera se crea después de crear texto
 print "&lt;p&gt;Hola&lt;/p&gt;\n";
 setcookie("nombre", "Pepito Conejo");
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-              <pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
 <code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
 Warning: Cannot modify header information - headers
 already sent by (output started at prueba.php on
 line 3) in prueba.php on line 4</code>
 </pre>
-        </div>
       </div>
+    </div>
 
-      <p><strong>Nota:</strong> En algunos casos este código incorrecto puede no generar un aviso y la cookie puede crearse, dependiendo de la configuración de la directiva <a href="../otros/php-configuracion-1.html#output-buffering">output_buffering</a>.</p>
+    <p><strong>Nota:</strong> En algunos casos este código incorrecto puede no generar un aviso y la cookie puede crearse, dependiendo de la configuración de la directiva <a href="../otros/php-configuracion-1.html#output-buffering">output_buffering</a>.</p>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>La creación de cookies tiene límites, pero cada navegador tiene un límite distinto. En muchas páginas web se puede leer que el límite por dominio suele ser de 20 cookies (si se hacen más, se borran las más antiguas), que el límite de tamaño del valor almacenado suele ser de 4096 bytes y que el límite del número total de cookies suele ser de 300 cookies, pero estos valores pueden ser distintos en versiones más recientes.</p>
+    <p>La creación de cookies tiene límites, pero cada navegador tiene un límite distinto. En muchas páginas web se puede leer que el límite por dominio suele ser de 20 cookies (si se hacen más, se borran las más antiguas), que el límite de tamaño del valor almacenado suele ser de 4096 bytes y que el límite del número total de cookies suele ser de 300 cookies, pero estos valores pueden ser distintos en versiones más recientes.</p>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>La función setcookie() puede tener hasta siete argumentos: setcookie($nombre, $valor, $expiracion, $ruta, $dominio, $seguridad, $solohttp)</p>
-      <dl>
-        <dt>$nombre</dt>
-        <dd>Establece el nombre de la cookie.</dd>
+    <p>La función setcookie() puede tener hasta siete argumentos: setcookie($nombre, $valor, $expiracion, $ruta, $dominio, $seguridad, $solohttp)</p>
+    <dl>
+      <dt>$nombre</dt>
+      <dd>Establece el nombre de la cookie.</dd>
 
-        <dt>$valor</dt>
-        <dd>Establece el valor que guarda la cookie</dd>
+      <dt>$valor</dt>
+      <dd>Establece el valor que guarda la cookie</dd>
 
-        <dt>$expiracion</dt>
-        <dd>Establece el momento en que se borrará la cookie, expresado como tiempo Unix. Por ello, normalmente se utiliza la función <a href="http://php.net/manual/es/function.time.php">time()</a> (que indica el momento actual como tiempo Unix) más la duración en segundos que queremos que tenga la cookie
+      <dt>$expiracion</dt>
+      <dd>Establece el momento en que se borrará la cookie, expresado como tiempo Unix. Por ello, normalmente se utiliza la función <a href="http://php.net/manual/es/function.time.php">time()</a> (que indica el momento actual como tiempo Unix) más la duración en segundos que queremos que tenga la cookie
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo", time() + 60);  // Esta cookie se borrará un minuto después de crearla.
 ?&gt;</code>
 </pre>
-          </div>
-          <p>Si no se establece la duración de la cookie al crearla, la cookie se borrará al cerrar el navegador.</p>
-        </dd>
+        </div>
+        <p>Si no se establece la duración de la cookie al crearla, la cookie se borrará al cerrar el navegador.</p>
+      </dd>
 
-        <dt>$ruta</dt>
-        <dd>Establece los directorios del dominio a los que se enviará posteriormente la cookie. Es decir, si el navegador solicita una página incluida en esta ruta, el navegador enviará la cookie en la petición, si no está incluida, no enviará el valor. Si se indica "/", se enviará a cualquier página del dominio, si no se indica nada, la ruta es la de la página que crea la cookie.</dd>
+      <dt>$ruta</dt>
+      <dd>Establece los directorios del dominio a los que se enviará posteriormente la cookie. Es decir, si el navegador solicita una página incluida en esta ruta, el navegador enviará la cookie en la petición, si no está incluida, no enviará el valor. Si se indica "/", se enviará a cualquier página del dominio, si no se indica nada, la ruta es la de la página que crea la cookie.</dd>
 
-        <dt>$dominio</dt>
-        <dd>Establece los subdominios del dominio a los que se enviará posteriormente la cookie (www.example.com, subdominio.example.com, etc.</dd>
+      <dt>$dominio</dt>
+      <dd>Establece los subdominios del dominio a los que se enviará posteriormente la cookie (www.example.com, subdominio.example.com, etc.</dd>
 
-        <dt>$seguridad</dt>
-        <dd>Establece si solamente se envía bajo conexiones seguras (https) o no, según tome el valor <span class="php-con">true</span> o <span class="php-con">false</span>.</dd>
+      <dt>$seguridad</dt>
+      <dd>Establece si solamente se envía bajo conexiones seguras (https) o no, según tome el valor <span class="php-con">true</span> o <span class="php-con">false</span>.</dd>
 
-        <dt>$solohttp</dt>
-        <dd>Establece si la cookie está accesible únicamente al servidor y no al navegador (mediante Javascript u otros lenguajes), según tome el valor <span class="php-con">true</span> o <span class="php-con">false</span>.</dd>
-      </dl>
-    </section>
+      <dt>$solohttp</dt>
+      <dd>Establece si la cookie está accesible únicamente al servidor y no al navegador (mediante Javascript u otros lenguajes), según tome el valor <span class="php-con">true</span> o <span class="php-con">false</span>.</dd>
+    </dl>
+  </section>
 
-    <section id="modificar">
-      <h2>Modificar cookies</h2>
+  <section id="modificar">
+    <h2>Modificar cookies</h2>
 
-      <p>Para modificar una cookie ya existente, simplemente se debe volver a crear la cookie con el nuevo valor.</p>
-    </section>
+    <p>Para modificar una cookie ya existente, simplemente se debe volver a crear la cookie con el nuevo valor.</p>
+  </section>
 
-    <section id="borrar">
-      <h2>Borrar cookies</h2>
+  <section id="borrar">
+    <h2>Borrar cookies</h2>
 
-      <p>Para borrar una cookie, simplemente se debe volver a crear la cookie con un tiempo de expiración anterior al presente.</p>
+    <p>Para borrar una cookie, simplemente se debe volver a crear la cookie con un tiempo de expiración anterior al presente.</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo", time() - 60);  // Esta cookie se borrará inmediatamente.
 ?&gt;</code>
 </pre>
-      </div>
+    </div>
 
-      <p>Si solamente queremos borrar el valor almacenado en la cookie sin borrar la propia cookie, simplemente se debe volver a crear la cookie, sin indicarle el valor a almacenar:</p>
+    <p>Si solamente queremos borrar el valor almacenado en la cookie sin borrar la propia cookie, simplemente se debe volver a crear la cookie, sin indicarle el valor a almacenar:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre");  // Esta cookie no se borra, pero no guardará ningún valor.
 ?&gt;</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="utilizar">
-      <h2>Utilizar cookies</h2>
+  <section id="utilizar">
+    <h2>Utilizar cookies</h2>
 
-      <p>Cuando el navegador solicita una página PHP a un servidor (un dominio) que ha guardado previamente cookies en ese ordenador, el navegador incluye en la cabecera de la petición HTTP todas las cookies (el nombre y el valor) creadas anteriormente por ese servidor.</p>
+    <p>Cuando el navegador solicita una página PHP a un servidor (un dominio) que ha guardado previamente cookies en ese ordenador, el navegador incluye en la cabecera de la petición HTTP todas las cookies (el nombre y el valor) creadas anteriormente por ese servidor.</p>
 
-      <p>El programa PHP recibe los nombres y valores de las cookies y se guardan automáticamente en la matriz <a href="http://php.net/manual/es/reserved.variables.cookies.php">$_COOKIE</a>.
-      </p>
+    <p>El programa PHP recibe los nombres y valores de las cookies y se guardan automáticamente en la matriz <a href="http://php.net/manual/es/reserved.variables.cookies.php">$_COOKIE</a>.
+    </p>
 
-      <p>El ejemplo siguiente saluda al usuario por su nombre si el nombre del usuario estaba guardado en una cookie.</p>
+    <p>El ejemplo siguiente saluda al usuario por su nombre si el nombre del usuario estaba guardado en una cookie.</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 if (isset($_COOKIE["nombre"])) {
     print "&lt;p&gt;Su nombre es $_COOKIE[nombre]&lt;/p&gt;\n";
@@ -180,12 +180,12 @@ if (isset($_COOKIE["nombre"])) {
 }
 ?&gt;</code>
 </pre>
-      </div>
+    </div>
 
-      <p>En caso de que se haya guardado una matriz en forma de cookies, el ejemplo sería el siguiente:</p>
+    <p>En caso de que se haya guardado una matriz en forma de cookies, el ejemplo sería el siguiente:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 if (isset($_COOKIE["datos"]["nombre"]) &amp;&amp; isset($_COOKIE["datos"]["apellidos"])) {
     print "&lt;p&gt;Su nombre es " . $_COOKIE["datos"]["nombre"] . " " . $_COOKIE["datos"]["apellidos"] . "&lt;/p&gt;\n";
@@ -194,20 +194,20 @@ if (isset($_COOKIE["datos"]["nombre"]) &amp;&amp; isset($_COOKIE["datos"]["apell
 }
 ?&gt;</code>
 </pre>
-      </div>
+    </div>
 
-      <hr class="corta" />
+    <hr class="corta" />
 
-      <p>Un detalle importante a tener en cuenta al trabajar con cookies es el orden en que se realiza el envío y la creación de cookies, así como su disponibilidad en $_COOKIES:</p>
-      <ul>
-        <li>cuando una página pide al navegador que cree una cookie, el valor de la cookie no está disponible en $_COOKIE en esa página.</li>
-        <li>el valor de la cookie estará disponible en $_COOKIE en páginas posteriores, cuando el navegador las pida y envíe el valor de la cookie en la petición.</li>
-      </ul>
+    <p>Un detalle importante a tener en cuenta al trabajar con cookies es el orden en que se realiza el envío y la creación de cookies, así como su disponibilidad en $_COOKIES:</p>
+    <ul>
+      <li>cuando una página pide al navegador que cree una cookie, el valor de la cookie no está disponible en $_COOKIE en esa página.</li>
+      <li>el valor de la cookie estará disponible en $_COOKIE en páginas posteriores, cuando el navegador las pida y envíe el valor de la cookie en la petición.</li>
+    </ul>
 
-      <p>Por ello, el siguiente programa no dará el mismo resultado cuando se ejecute por primera vez que las veces posteriores:</p>
+    <p>Por ello, el siguiente programa no dará el mismo resultado cuando se ejecute por primera vez que las veces posteriores:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 setcookie("nombre", "Pepito Conejo");
 
@@ -218,97 +218,97 @@ if (isset($_COOKIE["nombre"])) {
 }
 ?&gt;</code>
 </pre>
-      </div>
+    </div>
 
-      <p>La primera vez que se ejecuta este programa, ocurren las siguientes cosas en este orden:</p>
-      <ul>
-        <li>el navegador pide la página, pero no envía con la petición el valor de ninguna cookie, porque la cookie todavía no existe</li>
-        <li>el servidor envía la página:
-          <ul>
-            <li>en la cabecera de respuesta, el servidor incluye la petición de creación de la cookie.</li>
-            <li>en la página escribe "No sé su nombre" porque no ha recibido ninguna cookie del navegador.</li>
-          </ul>
-        </li>
-      </ul>
+    <p>La primera vez que se ejecuta este programa, ocurren las siguientes cosas en este orden:</p>
+    <ul>
+      <li>el navegador pide la página, pero no envía con la petición el valor de ninguna cookie, porque la cookie todavía no existe</li>
+      <li>el servidor envía la página:
+        <ul>
+          <li>en la cabecera de respuesta, el servidor incluye la petición de creación de la cookie.</li>
+          <li>en la página escribe "No sé su nombre" porque no ha recibido ninguna cookie del navegador.</li>
+        </ul>
+      </li>
+    </ul>
 
-      <p>La segunda vez (y las siguientes) que se ejecuta este programa, ocurren las siguientes cosas en este orden:</p>
+    <p>La segunda vez (y las siguientes) que se ejecuta este programa, ocurren las siguientes cosas en este orden:</p>
+    <ul>
+      <li>el navegador pide la página y envía con la petición el valor de la cookie "nombre".</li>
+      <li>el servidor envía la página:
+        <ul>
+          <li>en la cabecera de respuesta, el servidor incluye la petición de creación de la cookie (como es el mismo valor, la cookie se queda igual).</li>
+          <li>en la página escribe "Su nombre es Pepito Conejo" porque ha recibido la cookie del navegador.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="criticas">
+    <h2>Críticas a las cookies</h2>
+
+    <p>Aunque las cookies no son programas y por tanto no pueden contener virus ni dañar al ordenador, mucha gente desconfía de las cookies, hasta el punto que todos los navegadores incluyen opciones para impedir totalmente la creación de cookies o permitirla únicamente a sitios autorizados. Lógicamente, impedir la creación de cookies cookie puede complicar la visita de algunos sitios que basan su funcionamiento en cookies.</p>
+
+    <p>Algunos motivos por los que mucha gente desconfía de las cookies son los siguientes:</p>
+    <ul>
+      <li>Muchos sitios guardan cookies de forma indiscriminada, por motivos que no tienen nada que ver con facilitar al usuario la visita del sitio, sino para hacer un seguimiento de sus hábitos de uso de Internet, seguimiento que se suele hacer sin el consentimiento del usuario.</li>
+      <li>Además, al estar las cookies vinculadas al servidor que las crea, el tener en el ordenador una cookie de un dominio puede dar a entender que se ha visitado ese dominio y dar pie a malentendidos. Por ejemplo, al visitar un sitio cualquiera, ese sitio puede abrir una ventana de propaganda de una web de contactos que a su vez puede crear una cookie con el dominio de esa web de contactos. Aunque el usuario haya cerrado la ventana de propaganda sin prestar atención, si su pareja consulta las cookies creadas en el ordenador puede pensar que esa cookie es producto de las visitas a esa web, lo que me puede ocasionar más de un quebradero de cabeza a ambos.</li>
+    </ul>
+
+    <hr class="corta" />
+
+    <p>Como ejemplo del interés que genera el tema, se citan a continuación algunas noticias recientes (mayo de 2011) relacionadas con las cookies:</p>
+
+    <section id="directiva-2009-136">
+      <h3>Directiva 2009/136/CE</h3>
+
+      <p>En mayo de 2011 se ha publicado en los medios de comunicación (<a href="https://elpais.com/diario/2011/05/27/radiotv/1306447203_850215.html">por ejemplo, en El País</a>) que la Comisión Europea ha abierto procedimientos sancionadores a los países (España entre ellos) que no habían transpuesto antes del 25 de mayo de 2011 la <a href="http://www.mclibre.org/descargar/docs/legislacion/directiva_2009_136_CE.pdf">Directiva 2009/136/CE</a>, publicada en diciembre de 2009, que hace referencia en sus considerandos a las cookies. En el considerando número 66 se dice que:</p>
+
+      <blockquote>
+        <p>Puede que haya terceros que deseen almacenar información sobre el equipo de un usuario o acceder a información ya almacenada, con distintos fines, que van desde los fines legítimos (como algunos tipos de <strong>cookies</strong>) hasta aquellos que suponen una intrusión injustificada en la esfera privada (como los programas espía o los virus). <strong>Resulta, por tanto, capital que los usuarios reciban una información clara y completa cuando realicen una acción que pueda dar lugar a dicho almacenamiento u obtención de acceso.</strong> El modo en que se facilite la información y se ofrezca el derecho de negativa debe ser el más sencillo posible para el usuario. Las excepciones a la obligación de facilitar información y proponer el derecho de negativa deben limitarse a aquellas situaciones en las que el almacenamiento técnico o el acceso sean estrictamente necesarios con el fin legítimo de permitir el uso de un servicio específico solicitado específicamente por el abonado o usuario. Cuando sea técnicamente posible y eficaz, de conformidad con las disposiciones pertinentes de la Directiva 95/46/CE, el consentimiento del usuario para aceptar el tratamiento de los datos puede facilitarse mediante el uso de los parámetros adecuados del navegador o de otra aplicación. La aplicación de estos requisitos debe ganar en eficacia gracias a las competencias reforzadas concedidas a las autoridades nacionales.</p>
+      </blockquote>
+
+      <p>La referencia a las cookies ya aparecía en la <a href="http://www.mclibre.org/descargar/docs/legislacion/directiva_2002_58_CE.pdf">Directiva 2002/58/CE</a>, publicada en julio de 2002, que en su considerando 25 decía:</p>
+
+      <blockquote>
+        <p>No obstante, los dispositivos de este tipo, por ejemplo los denominados «chivatos» (cookies), pueden constituir un instrumento legítimo y de gran utilidad, por ejemplo, para analizar la efectividad del diseño y de la publicidad de un sitio web y para verificar la identidad de usuarios partícipes en una transacción en línea. <strong>En los casos en que estos dispositivos, por ejemplo los denominados «chivatos» (cookies), tengan un propósito legítimo, como el de facilitar el suministro de servicios de la sociedad de la información, debe autorizarse su uso a condición de que se facilite a los usuarios información clara y precisa al respecto, de conformidad con la Directiva 95/46/CE, para garantizar que los usuarios están al corriente de la información que se introduce en el equipo terminal que están utilizando. Los usuarios deben tener la posibilidad de impedir que se almacene en su equipo terminal un «chivato» (cookie) o dispositivo semejante.</strong> Esto es particularmente importante cuando otros usuarios distintos al usuario original tienen acceso al equipo terminal y, a través de éste, a cualquier dato sensible de carácter privado almacenado en dicho equipo. La información sobre la utilización de distintos dispositivos que se vayan a instalar en el equipo terminal del usuario en la misma conexión y el derecho a impedir la instalación de tales dispositivos se pueden ofrecer en una sola vez durante una misma conexión y abarcar asimismo cualquier posible utilización futura de dichos dispositivos en conexiones posteriores. La presentación de la información y del pedido de consentimiento o posibilidad de negativa debe ser tan asequible para el usuario como sea posible. No obstante, se podrá supeditar el acceso a determinados contenidos de un sitio web a la aceptación fundada de un «chivato» (cookie) o dispositivo similar, en caso de que éste tenga un propósito legítimo.</p>
+      </blockquote>
+
+      <p>La transposición de este punto de la directiva 2002/58/CE se encuentra en el artículo 22.2 de la Ley 34/2002 de servicios de la Sociedad de Información y comercio electrónico, que se modificó en la Ley 32/2003 General de Comunicaciones, dejándolo en los siguientes términos:</p>
+
+      <blockquote>
+        <p>2. Cuando los prestadores de servicios empleen dispositivos de almacenamiento y recuperación de datos en equipos terminales, informarán a los destinatarios de manera clara y completa sobre su utilización y finalidad, ofreciéndoles la posibilidad de rechazar el tratamiento de los datos mediante un procedimiento sencillo y gratuito.</p>
+
+        <p>Lo anterior no impedirá el posible almacenamiento o acceso a datos con el fin de efectuar o facilitar técnicamente la transmisión de una comunicación por una red de comunicaciones electrónicas o, en la medida que resulte estrictamente necesario, para la prestación de un servicio de la sociedad de la información expresamente solicitado por el destinatario.</p>
+      </blockquote>
+
+      <p>Yo no soy un abogado, pero parece ser que el problema de la legislación española es que sólo obliga a que se informe sobre las cookies de forma genérica (en una página del sitio, por ejemplo), mientras que la directiva obliga a que haya una aceptación previa de las cookies.</p>
+    </section>
+
+    <section id="catalogo-buenas-practicas">
+      <h3>Catálogo de buenas prácticas en la publicidad on-line (abril 2011)</h3>
       <ul>
-        <li>el navegador pide la página y envía con la petición el valor de la cookie "nombre".</li>
-        <li>el servidor envía la página:
-          <ul>
-            <li>en la cabecera de respuesta, el servidor incluye la petición de creación de la cookie (como es el mismo valor, la cookie se queda igual).</li>
-            <li>en la página escribe "Su nombre es Pepito Conejo" porque ha recibido la cookie del navegador.</li>
-          </ul>
-        </li>
+        <li><a href="https://elpais.com/diario/2011/04/15/radiotv/1302818403_850215.html">Noticia en El País (15/04/11)</a></li>
+        <li>"<a href="http://www.youronlinechoices.com/uk/wp-content/uploads/2012/08/2012-06-08_iab_europe_oba_framework.pdf">Framework for Online Behavioural Advertising</a>" del <a href="https://www.iabeurope.eu/">Interactive Advertising Bureau Europe (IAB)</a></li>
+        <li><a href="http://www.youronlinechoices.com/es/">Guía sobre publicidad basada en comportamiento</a> del IAB</li>
+        <li><a href="https://elpais.com/diario/2011/01/26/radiotv/1295996403_850215.html">Noticia en el País (26/01/11)</a></li>
       </ul>
     </section>
 
-    <section id="criticas">
-      <h2>Críticas a las cookies</h2>
-
-      <p>Aunque las cookies no son programas y por tanto no pueden contener virus ni dañar al ordenador, mucha gente desconfía de las cookies, hasta el punto que todos los navegadores incluyen opciones para impedir totalmente la creación de cookies o permitirla únicamente a sitios autorizados. Lógicamente, impedir la creación de cookies cookie puede complicar la visita de algunos sitios que basan su funcionamiento en cookies.</p>
-
-      <p>Algunos motivos por los que mucha gente desconfía de las cookies son los siguientes:</p>
+    <section id="do-not-track">
+      <h3>Iniciativa Do Not Track </h3>
       <ul>
-        <li>Muchos sitios guardan cookies de forma indiscriminada, por motivos que no tienen nada que ver con facilitar al usuario la visita del sitio, sino para hacer un seguimiento de sus hábitos de uso de Internet, seguimiento que se suele hacer sin el consentimiento del usuario.</li>
-        <li>Además, al estar las cookies vinculadas al servidor que las crea, el tener en el ordenador una cookie de un dominio puede dar a entender que se ha visitado ese dominio y dar pie a malentendidos. Por ejemplo, al visitar un sitio cualquiera, ese sitio puede abrir una ventana de propaganda de una web de contactos que a su vez puede crear una cookie con el dominio de esa web de contactos. Aunque el usuario haya cerrado la ventana de propaganda sin prestar atención, si su pareja consulta las cookies creadas en el ordenador puede pensar que esa cookie es producto de las visitas a esa web, lo que me puede ocasionar más de un quebradero de cabeza a ambos.</li>
+        <li>Iniciativa <a href="http://donottrack.us/">Do Not Track</a></li>
+        <li>Explicación sobre <a href="http://www.mclibre.org/consultar/htmlcss/otros/historia-otros.html#do-not-track">Do Not Track</a> en apuntes HTML / CSS de www.mclibre.org</li>
       </ul>
-
-      <hr class="corta" />
-
-      <p>Como ejemplo del interés que genera el tema, se citan a continuación algunas noticias recientes (mayo de 2011) relacionadas con las cookies:</p>
-
-      <section id="directiva-2009-136">
-        <h3>Directiva 2009/136/CE</h3>
-
-        <p>En mayo de 2011 se ha publicado en los medios de comunicación (<a href="https://elpais.com/diario/2011/05/27/radiotv/1306447203_850215.html">por ejemplo, en El País</a>) que la Comisión Europea ha abierto procedimientos sancionadores a los países (España entre ellos) que no habían transpuesto antes del 25 de mayo de 2011 la <a href="http://www.mclibre.org/descargar/docs/legislacion/directiva_2009_136_CE.pdf">Directiva 2009/136/CE</a>, publicada en diciembre de 2009, que hace referencia en sus considerandos a las cookies. En el considerando número 66 se dice que:</p>
-
-        <blockquote>
-          <p>Puede que haya terceros que deseen almacenar información sobre el equipo de un usuario o acceder a información ya almacenada, con distintos fines, que van desde los fines legítimos (como algunos tipos de <strong>cookies</strong>) hasta aquellos que suponen una intrusión injustificada en la esfera privada (como los programas espía o los virus). <strong>Resulta, por tanto, capital que los usuarios reciban una información clara y completa cuando realicen una acción que pueda dar lugar a dicho almacenamiento u obtención de acceso.</strong> El modo en que se facilite la información y se ofrezca el derecho de negativa debe ser el más sencillo posible para el usuario. Las excepciones a la obligación de facilitar información y proponer el derecho de negativa deben limitarse a aquellas situaciones en las que el almacenamiento técnico o el acceso sean estrictamente necesarios con el fin legítimo de permitir el uso de un servicio específico solicitado específicamente por el abonado o usuario. Cuando sea técnicamente posible y eficaz, de conformidad con las disposiciones pertinentes de la Directiva 95/46/CE, el consentimiento del usuario para aceptar el tratamiento de los datos puede facilitarse mediante el uso de los parámetros adecuados del navegador o de otra aplicación. La aplicación de estos requisitos debe ganar en eficacia gracias a las competencias reforzadas concedidas a las autoridades nacionales.</p>
-        </blockquote>
-
-        <p>La referencia a las cookies ya aparecía en la <a href="http://www.mclibre.org/descargar/docs/legislacion/directiva_2002_58_CE.pdf">Directiva 2002/58/CE</a>, publicada en julio de 2002, que en su considerando 25 decía:</p>
-
-        <blockquote>
-          <p>No obstante, los dispositivos de este tipo, por ejemplo los denominados «chivatos» (cookies), pueden constituir un instrumento legítimo y de gran utilidad, por ejemplo, para analizar la efectividad del diseño y de la publicidad de un sitio web y para verificar la identidad de usuarios partícipes en una transacción en línea. <strong>En los casos en que estos dispositivos, por ejemplo los denominados «chivatos» (cookies), tengan un propósito legítimo, como el de facilitar el suministro de servicios de la sociedad de la información, debe autorizarse su uso a condición de que se facilite a los usuarios información clara y precisa al respecto, de conformidad con la Directiva 95/46/CE, para garantizar que los usuarios están al corriente de la información que se introduce en el equipo terminal que están utilizando. Los usuarios deben tener la posibilidad de impedir que se almacene en su equipo terminal un «chivato» (cookie) o dispositivo semejante.</strong> Esto es particularmente importante cuando otros usuarios distintos al usuario original tienen acceso al equipo terminal y, a través de éste, a cualquier dato sensible de carácter privado almacenado en dicho equipo. La información sobre la utilización de distintos dispositivos que   se vayan a instalar en el equipo terminal del usuario en la misma conexión y   el derecho a impedir la instalación de tales dispositivos se pueden ofrecer en una sola vez durante una misma conexión y abarcar asimismo cualquier posible utilización futura de dichos dispositivos en conexiones posteriores. La presentación de la información y del pedido de consentimiento o posibilidad de negativa debe ser tan asequible para el usuario como sea posible. No obstante, se podrá supeditar el acceso a determinados contenidos de un sitio web a la aceptación fundada de un «chivato» (cookie) o dispositivo similar, en caso de que éste tenga un propósito legítimo.</p>
-        </blockquote>
-
-        <p>La transposición de este punto de la directiva 2002/58/CE se encuentra en el artículo 22.2 de la Ley 34/2002 de servicios de la Sociedad de Información y comercio electrónico, que se modificó en la Ley 32/2003 General de Comunicaciones, dejándolo en los siguientes términos:</p>
-
-        <blockquote>
-          <p>2. Cuando los prestadores de servicios empleen dispositivos de almacenamiento y recuperación de datos en equipos terminales, informarán a los destinatarios de manera clara y completa sobre su utilización y finalidad, ofreciéndoles la posibilidad de rechazar el tratamiento de los datos mediante un procedimiento sencillo y gratuito.</p>
-
-          <p>Lo anterior no impedirá el posible almacenamiento o acceso a datos con el fin de efectuar o facilitar técnicamente la transmisión de una comunicación por una red de comunicaciones electrónicas o, en la medida que resulte estrictamente necesario, para la prestación de un servicio de la sociedad de la información expresamente solicitado por el destinatario.</p>
-        </blockquote>
-
-        <p>Yo no soy un abogado, pero parece ser que el problema de la legislación española es que sólo obliga a que se informe sobre las cookies de forma genérica (en una página del sitio, por ejemplo), mientras que la directiva obliga a que haya una aceptación previa de las cookies.</p>
-      </section>
-
-      <section id="catalogo-buenas-practicas">
-        <h3>Catálogo de buenas prácticas en la publicidad on-line (abril 2011)</h3>
-        <ul>
-          <li><a href="https://elpais.com/diario/2011/04/15/radiotv/1302818403_850215.html">Noticia en El País (15/04/11)</a></li>
-          <li>"<a href="http://www.youronlinechoices.com/uk/wp-content/uploads/2012/08/2012-06-08_iab_europe_oba_framework.pdf">Framework for Online Behavioural Advertising</a>" del <a href="https://www.iabeurope.eu/">Interactive Advertising Bureau Europe (IAB)</a></li>
-          <li><a href="http://www.youronlinechoices.com/es/">Guía sobre publicidad basada en comportamiento</a> del IAB</li>
-          <li><a href="https://elpais.com/diario/2011/01/26/radiotv/1295996403_850215.html">Noticia en el País (26/01/11)</a></li>
-        </ul>
-      </section>
-
-      <section id="do-not-track">
-        <h3>Iniciativa Do Not Track </h3>
-        <ul>
-          <li>Iniciativa <a href="http://donottrack.us/">Do Not Track</a></li>
-          <li>Explicación sobre <a href="http://www.mclibre.org/consultar/htmlcss/otros/historia-otros.html#do-not-track">Do Not Track</a> en apuntes HTML / CSS de www.mclibre.org</li>
-        </ul>
-      </section>
     </section>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 28 de mayo de 2011</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 28 de mayo de 2011</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

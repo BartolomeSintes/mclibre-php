@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Correo. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Correo. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Correo</h1>
+<body>
+  <h1>Correo</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Correo</h2>
+    <div class="toc">
+      <h2>Correo</h2>
 
-        <ul>
-          <li><a href="#configuracion">Configuración de PHP</a></li>
-          <li><a href="#mail">Función <span class="php-fun">mail()</span></a></li>
-          <li><a href="#phpmailer">PHPMailer</a></li>
-        </ul>
-      </div>
-    </nav>
+      <ul>
+        <li><a href="#configuracion">Configuración de PHP</a></li>
+        <li><a href="#mail">Función <span class="php-fun">mail()</span></a></li>
+        <li><a href="#phpmailer">PHPMailer</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <p>Se pueden enviar correos electrónicos mediante PHPPHP dispone de una función para enviar correos electrónicos, aunque también existen paquetes que facilitan esta tarea. Para ello hace falta utilizar </p>
+  <p>Se pueden enviar correos electrónicos mediante PHPPHP dispone de una función para enviar correos electrónicos, aunque también existen paquetes que facilitan esta tarea. Para ello hace falta utilizar </p>
 
-    <section id="configuracion">
-      <h2>Configuración de PHP</h2>
+  <section id="configuracion">
+    <h2>Configuración de PHP</h2>
 
-      <p>Para enviar correos hace falta tener instalado un servidor SMTP en el ordenador, o bien utilizar el servidor del proveedor de Internet que utilicemos normalmente.</p>
+    <p>Para enviar correos hace falta tener instalado un servidor SMTP en el ordenador, o bien utilizar el servidor del proveedor de Internet que utilicemos normalmente.</p>
 
-      <p>En php.ini debe</p>
+    <p>En php.ini debe</p>
 
-      <div class="codigo">
-        <pre>[mail function]
+    <div class="codigo">
+      <pre>[mail function]
 ; For Win32 only.
 SMTP = servidor_de_salida (por ejemplo: smtp.example.com o localhost)
 smtp_port = 25
@@ -49,55 +49,55 @@ smtp_port = 25
 ; For Win32 only.
 sendmail_from = dirección_de_correo (por ejemplo: correo@example.com)
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="mail">
-      <h2>Función <span class="php-fun">mail()</span></h2>
+  <section id="mail">
+    <h2>Función <span class="php-fun">mail()</span></h2>
 
-      <p>La función <a href="http://php.net/manual/es/function.mail.php"><span class="php-fun">mail($para, $asunto, $mensaje[, $cabeceras[, $parametros]])</span></a> permite enviar correos desde cualquier página PHP. Los argumentos de esta función son los siguientes:</p>
-      <ul>
-        <li><span class="php-var">$para</span> contiene la dirección de correo a la que se envía el correo,</li>
-        <li><span class="php-var">$asunto</span> contiene el campo asunto del correo enviado</li>
-        <li><span class="php-var">$mensaje</span> contiene el cuerpo del correo enviado</li>
-        <li><span class="php-var">$cabeceras</span> contiene las cabeceras opcionales que se quieran incluir en el correo. Cada cabecera debe terminar con los caracteres \r\n y se pueden concatenar varias cabeceras, por ejemplo:
-          <ul>
-            <li>$cabecera = "From: Pepito Conejo &lt;pepito.conejo@example.org&gt;\r\n";
-              <p>Si se incluye, esta cabecera sustituye la directiva sendmail_ini del archivo php.ini.</p>
-            </li>
-            <li>$cabeceras .= "To: Jaimito Zanahoria\r\n";
-              <p>Si se incluye, esta cabecera sustituye al valor del argumento <span class="php-var">$para</span></p>
-            </li>
-            <li>$cabeceras .= "MIME-Version: 1.0\r\n";
-              <p>Esta cabecera es necesaria si se incluyen archivos adjuntos o en formato html</p>
-            </li>
-            <li>$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
-              <p>Esta cabecera es necesaria si se incluyen archivos adjuntos o en formato html</p>
-            </li>
-          </ul>
-        </li>
-      </ul>
+    <p>La función <a href="http://php.net/manual/es/function.mail.php"><span class="php-fun">mail($para, $asunto, $mensaje[, $cabeceras[, $parametros]])</span></a> permite enviar correos desde cualquier página PHP. Los argumentos de esta función son los siguientes:</p>
+    <ul>
+      <li><span class="php-var">$para</span> contiene la dirección de correo a la que se envía el correo,</li>
+      <li><span class="php-var">$asunto</span> contiene el campo asunto del correo enviado</li>
+      <li><span class="php-var">$mensaje</span> contiene el cuerpo del correo enviado</li>
+      <li><span class="php-var">$cabeceras</span> contiene las cabeceras opcionales que se quieran incluir en el correo. Cada cabecera debe terminar con los caracteres \r\n y se pueden concatenar varias cabeceras, por ejemplo:
+        <ul>
+          <li>$cabecera = "From: Pepito Conejo &lt;pepito.conejo@example.org&gt;\r\n";
+            <p>Si se incluye, esta cabecera sustituye la directiva sendmail_ini del archivo php.ini.</p>
+          </li>
+          <li>$cabeceras .= "To: Jaimito Zanahoria\r\n";
+            <p>Si se incluye, esta cabecera sustituye al valor del argumento <span class="php-var">$para</span></p>
+          </li>
+          <li>$cabeceras .= "MIME-Version: 1.0\r\n";
+            <p>Esta cabecera es necesaria si se incluyen archivos adjuntos o en formato html</p>
+          </li>
+          <li>$cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
+            <p>Esta cabecera es necesaria si se incluyen archivos adjuntos o en formato html</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
-      <p>Un ejemplo mínimo de correo es el siguiente:</p>
+    <p>Un ejemplo mínimo de correo es el siguiente:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 mail("destino@example.com", "Prueba", "A ver si te llega esto");
 ?&gt;</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="phpmailer">
-      <h2>PHPMailer</h2>
+  <section id="phpmailer">
+    <h2>PHPMailer</h2>
 
-      <p><a href="http://phpmailer.worxware.com/">PHPMailer</a> es un paquete que facilita la creación y envío de correo.</p>
+    <p><a href="http://phpmailer.worxware.com/">PHPMailer</a> es un paquete que facilita la creación y envío de correo.</p>
 
-      <p>En cualquier página:</p>
+    <p>En cualquier página:</p>
 
-      <div class="codigo">
-        <pre>
+    <div class="codigo">
+      <pre>
 <code class="language-php">&lt;?php
 require("class.phpmailer.php");
 
@@ -120,15 +120,15 @@ if(!$correo-&gt;Send()) {
 }
 ?&gt;</code>
 </pre>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 9 de marzo de 2007</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 9 de marzo de 2007</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

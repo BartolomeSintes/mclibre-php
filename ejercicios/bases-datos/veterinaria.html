@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Veterinaria. Proyectos. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../varios/favicon.ico" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Veterinaria. Proyectos. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+</head>
 
-  <body>
-    <h1>Proyectos - Veterinaria</h1>
+<body>
+  <h1>Proyectos - Veterinaria</h1>
 
-    <nav>
-      <p>
-        <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Proyectos - Veterinaria</h2>
-      </div>
-    </nav>
+    <div class="toc">
+      <h2>Proyectos - Veterinaria</h2>
+    </div>
+  </nav>
 
-    <p>El objetivo de este proyecto es permitir el acceso via web al programa de gestión de una clínica veterinaria creada en MS Access, para que los clientes puedan pedir la realización de consultas.</p>
+  <p>El objetivo de este proyecto es permitir el acceso via web al programa de gestión de una clínica veterinaria creada en MS Access, para que los clientes puedan pedir la realización de consultas.</p>
 
-    <hr class="corta" />
+  <hr class="corta" />
 
-    <p>Las tablas y campos utilizados son los siguientes:</p>
-    <ul>
-      <li>Clientes: Codigo - NIF - NomCliente</li>
-      <li>AnimaleS: NumHistorial - NomAnimal - Cliente</li>
-      <li>Citas: Fecha - Hora - Tipo - Animal - Observaciones</li>
-      <li>Intervalos: Codigo - Texto</li>
-    </ul>
+  <p>Las tablas y campos utilizados son los siguientes:</p>
+  <ul>
+    <li>Clientes: Codigo - NIF - NomCliente</li>
+    <li>AnimaleS: NumHistorial - NomAnimal - Cliente</li>
+    <li>Citas: Fecha - Hora - Tipo - Animal - Observaciones</li>
+    <li>Intervalos: Codigo - Texto</li>
+  </ul>
 
-    <p>Solamente pueden conectarse los clientes que existen en la base de datos de la clínica. Los datos para conectarse son el nombre del cliente y su NIF (como contraseña).</p>
+  <p>Solamente pueden conectarse los clientes que existen en la base de datos de la clínica. Los datos para conectarse son el nombre del cliente y su NIF (como contraseña).</p>
 
-    <p>Si el nombre y contraseña son correctos, el cliente debe elegir el animal para el que quiere realizar la reserva y el tipo de consulta que quiere realizar (Revisión, Vacunación o Consulta).</p>
+  <p>Si el nombre y contraseña son correctos, el cliente debe elegir el animal para el que quiere realizar la reserva y el tipo de consulta que quiere realizar (Revisión, Vacunación o Consulta).</p>
 
-    <hr class="corta" />
+  <hr class="corta" />
 
-    <p>Esta puede ser la función que genera la tabla donde se realizan las reservas. Los argumentos de esta función son los siguientes:</p>
-    <ul>
-      <li>$fecha es una fecha en formato aaaa-mm-dd</li>
-      <li>$enlaces es una cadena que puede ser 'anyadir' o 'borrar'</li>
-    </ul>
+  <p>Esta puede ser la función que genera la tabla donde se realizan las reservas. Los argumentos de esta función son los siguientes:</p>
+  <ul>
+    <li>$fecha es una fecha en formato aaaa-mm-dd</li>
+    <li>$enlaces es una cadena que puede ser 'anyadir' o 'borrar'</li>
+  </ul>
 
-    <div class="codigo">
-      <pre>function calendario ($fecha, $enlaces)
+  <div class="codigo">
+    <pre>function calendario ($fecha, $enlaces)
 {
     global $db, $db_citas, $db_intervalos;
 
@@ -145,14 +145,14 @@
     print "    &lt;/tbody&gt;\n  &lt;/table&gt;\n&lt;/div&gt;\n";
 }
 </pre>
-    </div>
+  </div>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 8 de marzo de 2007</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 8 de marzo de 2007</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

@@ -1,146 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Ejemplo de solución de ejercicio. Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Ejemplo de solución de ejercicio. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Ejemplos de resolución de ejercicios - Recogida y comprobación de datos</h1>
+<body>
+  <h1>Ejemplos de resolución de ejercicios - Recogida y comprobación de datos</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Ejemplos - Recogida y comprobación de datos</h2>
+    <div class="toc">
+      <h2>Ejemplos - Recogida y comprobación de datos</h2>
 
-        <ul>
-          <li><a href="#estructura">Estructura general</a></li>
-          <li><a href="#sin-comprobacion">Sin comprobación de datos</a></li>
-          <li><a href="#con-comprobacion">Con comprobación de datos</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p>Esta lección contiene algunos comentarios sobre la realización de ejercicios.</p>
-
-    <section id="estructura">
-      <h2>Estructura general de los ejercicios</h2>
-
-      <p>La mayoría de ejercicios propuestos como ejercicios básicos constan de dos páginas:</p>
       <ul>
-        <li>un fichero *-1.php que incluye el formulario para introducir los datos</li>
-        <li>un fichero *-2.php que procesa los datos y muestra la respuesta</li>
+        <li><a href="#estructura">Estructura general</a></li>
+        <li><a href="#sin-comprobacion">Sin comprobación de datos</a></li>
+        <li><a href="#con-comprobacion">Con comprobación de datos</a></li>
       </ul>
+    </div>
+  </nav>
 
-      <p>Además hay un fichero .css que contiene la hoja de estilo, común a todos los ejercicios y algunos ejercicios incluyen imágenes.</p>
+  <p>Esta lección contiene algunos comentarios sobre la realización de ejercicios.</p>
 
-      <p>En el caso de ejercicios más complejos, los ejercicios pueden constar de más de dos páginas .php.</p>
+  <section id="estructura">
+    <h2>Estructura general de los ejercicios</h2>
 
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />Antes del curso 2016/17, las páginas con los formularios eran en muchos casos ficheros .html, pero a partir del curso 2016/17 todas las páginas son ficheros .php (aunque el contenido sea html sin instrucciones PHP). No he terminado de pasar los ejercicios del formato antiguo al actual por lo que algunos ejercicios todavía incluyen páginas .html, y los exámenes de cursos anteriores también.</p>
+    <p>La mayoría de ejercicios propuestos como ejercicios básicos constan de dos páginas:</p>
+    <ul>
+      <li>un fichero *-1.php que incluye el formulario para introducir los datos</li>
+      <li>un fichero *-2.php que procesa los datos y muestra la respuesta</li>
+    </ul>
 
-      <section id="plantilla">
-        <h3>Plantillas</h3>
+    <p>Además hay un fichero .css que contiene la hoja de estilo, común a todos los ejercicios y algunos ejercicios incluyen imágenes.</p>
 
-        <p>Al principio de cada página de ejercicios hay un enlace para descargar un fichero <strong>*-plantillas.zip</strong> que contiene una carpeta con los archivos necesarios para hacer los ejercicios: imágenes, hoja de estilo y páginas .php.</p>
+    <p>En el caso de ejercicios más complejos, los ejercicios pueden constar de más de dos páginas .php.</p>
 
-        <p>Se recomienda cambiar el nombre de la carpeta comprimida (eliminando la parte final -plantillas) para evitar la pérdida del trabajo realizado si se vuelve a descomprimir el fichero *-plantillas.zip.</p>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />Antes del curso 2016/17, las páginas con los formularios eran en muchos casos ficheros .html, pero a partir del curso 2016/17 todas las páginas son ficheros .php (aunque el contenido sea html sin instrucciones PHP). No he terminado de pasar los ejercicios del formato antiguo al actual por lo que algunos ejercicios todavía incluyen páginas .html, y los exámenes de cursos anteriores también.</p>
 
-        <p>Las páginas .php contienen todo el código HTML "fijo" (es decir, que no cambia cada vez que se ejecutan los programas) que se puede copiar de los ejemplos de ejercicios. También contienen unos fragmentos PHP (vacíos) en los lugares en que el código HTML cambia cada vez que se ejecutan los programas y debe generarse con instrucciones PHP. En algunos casos deben añadirse otros fragmentos PHP para conseguir resolver el ejercicio.</p>
-      </section>
+    <section id="plantilla">
+      <h3>Plantillas</h3>
 
-      <section id="formulario">
-        <h3>Formulario: Página *-1.php </h3>
+      <p>Al principio de cada página de ejercicios hay un enlace para descargar un fichero <strong>*-plantillas.zip</strong> que contiene una carpeta con los archivos necesarios para hacer los ejercicios: imágenes, hoja de estilo y páginas .php.</p>
 
-        <p>El formulario incluye controles cuyo nombre está relacionado con la información que se va a escribir en ellos.</p>
+      <p>Se recomienda cambiar el nombre de la carpeta comprimida (eliminando la parte final -plantillas) para evitar la pérdida del trabajo realizado si se vuelve a descomprimir el fichero *-plantillas.zip.</p>
 
-        <p>En la mayoría de ejercicios el formulario sólo contiene código HTML, pero en algunos necesarios se necesitan añadir instrucciones PHP.</p>
-      </section>
-
-      <section id="resultado">
-        <h3>Resultado: Página *-2.php</h3>
-
-        <p>La página *-2.php es el programa PHP que debe escribir el alumno.</p>
-
-        <p>En el primer bloque de ejercicios propuestos en este curso (<a href="con-formularios/controles-formularios-1/index.html">Controles en formularios 1</a>), la página .php tiene que realizar las tareas siguientes:</p>
-        <ul>
-          <li>recoger los datos enviados por el formulario de la página html</li>
-          <li>mostrar los datos recibidos</li>
-        </ul>
-
-        <p>En el resto de bloques de ejercicios propuestos en este curso (Controles en formularios 2, operaciones aritméticas, etc.), la página .php tiene que realizar las tareas siguientes:</p>
-        <ul>
-          <li>recoger los datos enviados por el formulario de la página html</li>
-          <li>comprobar los datos y, si se detectan errores en ellos, indicarlo al usuario</li>
-          <li>si todos los datos son correctos, mostrar el resultado (para mostrar el resultado puede ser necesarios realizar cálculos o comprobar el resultado de esos cálculos).</li>
-        </ul>
-      </section>
-
-      <section id="css">
-        <h3>Hoja de estilo común</h3>
-
-        <p>Los ejercicios utilizan siempre la misma hoja de estilo, que debe encontrarse en la misma carpeta que las páginas php. y que se incluye en el fichero comprimido *-plantillas.zip.</p>
-      </section>
+      <p>Las páginas .php contienen todo el código HTML "fijo" (es decir, que no cambia cada vez que se ejecutan los programas) que se puede copiar de los ejemplos de ejercicios. También contienen unos fragmentos PHP (vacíos) en los lugares en que el código HTML cambia cada vez que se ejecutan los programas y debe generarse con instrucciones PHP. En algunos casos deben añadirse otros fragmentos PHP para conseguir resolver el ejercicio.</p>
     </section>
 
-    <section id="sin-comprobacion">
-      <h2>Ejemplo de recogida de datos sin comprobación</h2>
+    <section id="formulario">
+      <h3>Formulario: Página *-1.php </h3>
 
-      <p>Este ejemplo sirve de modelo para los ejercicios del bloque de ejercicios <a href="con-formularios/controles-formularios-1/index.html">Controles en formularios (1)</a>.</p>
+      <p>El formulario incluye controles cuyo nombre está relacionado con la información que se va a escribir en ellos.</p>
 
-      <section id="ejemplo-sin">
-        <h3>Ejemplo</h3>
+      <p>En la mayoría de ejercicios el formulario sólo contiene código HTML, pero en algunos necesarios se necesitan añadir instrucciones PHP.</p>
+    </section>
 
-        <p>En los enunciados de los ejercicios se incluye un ejemplo de ejercicio resuelto y un enlace al ejercicio resuelto, que se puede abrir en una pestaña (o ventana) diferente. Mostrando el código fuente de las páginas de ejemplo (formulario y resultado), se puede ver el código HTML buscado en cada caso. Ese código fuente se puede copiar y pegar en las páginas creadas por el alumno.</p>
+    <section id="resultado">
+      <h3>Resultado: Página *-2.php</h3>
 
-        <p>A continuación se muestra un ejemplo de ejercicio. En la parte superior derecha hay un enlace para abrir el ejemplo en otra pestaña y poder ver fácilmente su código fuente.</p>
+      <p>La página *-2.php es el programa PHP que debe escribir el alumno.</p>
 
-        <p>Puede descargar <a href="ejemplos/ejemplo-recogida-datos-1-plantillas.zip">las plantillas de este ejemplo de ejercicio</a>.</p>
+      <p>En el primer bloque de ejercicios propuestos en este curso (<a href="con-formularios/controles-formularios-1/index.html">Controles en formularios 1</a>), la página .php tiene que realizar las tareas siguientes:</p>
+      <ul>
+        <li>recoger los datos enviados por el formulario de la página html</li>
+        <li>mostrar los datos recibidos</li>
+      </ul>
 
-        <div class="filaflex">
-          <div class="resultado-object">
-            <object type="text/html" data="ejemplos/ejemplo-recogida-datos-1-1.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
-          </div>
-          <div class="icono-enlace">
-            <a href="ejemplos/ejemplo-recogida-datos-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-          </div>
+      <p>En el resto de bloques de ejercicios propuestos en este curso (Controles en formularios 2, operaciones aritméticas, etc.), la página .php tiene que realizar las tareas siguientes:</p>
+      <ul>
+        <li>recoger los datos enviados por el formulario de la página html</li>
+        <li>comprobar los datos y, si se detectan errores en ellos, indicarlo al usuario</li>
+        <li>si todos los datos son correctos, mostrar el resultado (para mostrar el resultado puede ser necesarios realizar cálculos o comprobar el resultado de esos cálculos).</li>
+      </ul>
+    </section>
+
+    <section id="css">
+      <h3>Hoja de estilo común</h3>
+
+      <p>Los ejercicios utilizan siempre la misma hoja de estilo, que debe encontrarse en la misma carpeta que las páginas php. y que se incluye en el fichero comprimido *-plantillas.zip.</p>
+    </section>
+  </section>
+
+  <section id="sin-comprobacion">
+    <h2>Ejemplo de recogida de datos sin comprobación</h2>
+
+    <p>Este ejemplo sirve de modelo para los ejercicios del bloque de ejercicios <a href="con-formularios/controles-formularios-1/index.html">Controles en formularios (1)</a>.</p>
+
+    <section id="ejemplo-sin">
+      <h3>Ejemplo</h3>
+
+      <p>En los enunciados de los ejercicios se incluye un ejemplo de ejercicio resuelto y un enlace al ejercicio resuelto, que se puede abrir en una pestaña (o ventana) diferente. Mostrando el código fuente de las páginas de ejemplo (formulario y resultado), se puede ver el código HTML buscado en cada caso. Ese código fuente se puede copiar y pegar en las páginas creadas por el alumno.</p>
+
+      <p>A continuación se muestra un ejemplo de ejercicio. En la parte superior derecha hay un enlace para abrir el ejemplo en otra pestaña y poder ver fácilmente su código fuente.</p>
+
+      <p>Puede descargar <a href="ejemplos/ejemplo-recogida-datos-1-plantillas.zip">las plantillas de este ejemplo de ejercicio</a>.</p>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="ejemplos/ejemplo-recogida-datos-1-1.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/ejemplo-recogida-datos-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="solucion-sin">
+      <h3>Solución</h3>
+
+      <section id="solucion-formulario-sin">
+        <h4>Formulario (página -1.php)</h4>
+
+        <p>En este caso, el formulario no requiere código PHP porque la página es siempre la misma.</p>
       </section>
 
-      <section id="solucion-sin">
-        <h3>Solución</h3>
+      <section id="solucion-resultado-sin">
+        <h4>Resultado (página -2.php)</h4>
 
-        <section id="solucion-formulario-sin">
-          <h4>Formulario (página -1.php)</h4>
+        <p>La página .php escrita por el alumno tiene que generar el mismo código HTML que el ejemplo. Una manera de abordar la elaboración de la página .php es probar el ejemplo y copiar el código HTML que genera el ejemplo en la página .php.</p>
 
-          <p>En este caso, el formulario no requiere código PHP porque la página es siempre la misma.</p>
-        </section>
+        <p>En ese código podemos dividir tres partes:</p>
+        <ul>
+          <li>el bloque inicial, desde DOCTYPE hasta <span class="html-eti">&lt;h1&gt;</span> que será siempre el mismo, y que ya está incluido en la plantilla.</li>
+          <li>las dos líneas que muestran los datos escritos por el usuario (el nombre y la edad), que habrá que generar en un fragmento PHP.</li>
+          <li>el bloque final, desde el enlace de vuelta al formulario hasta el final, que será siempre el mismo, y que también está incluido en la plantilla.</li>
+        </ul>
 
-        <section id="solucion-resultado-sin">
-          <h4>Resultado (página -2.php)</h4>
+        <p>A continuación se muestra el código fuente con las líneas que habrá que generar en un fragmento PHP resaltadas con un borde:</p>
 
-          <p>La página .php escrita por el alumno tiene que generar el mismo código HTML que el ejemplo. Una manera de abordar la elaboración de la página .php es probar el ejemplo y copiar el código HTML que genera el ejemplo en la página .php.</p>
-
-          <p>En ese código podemos dividir tres partes:</p>
-          <ul>
-            <li>el bloque inicial, desde DOCTYPE hasta <span class="html-eti">&lt;h1&gt;</span> que será siempre el mismo, y que ya está incluido en la plantilla.</li>
-            <li>las dos líneas que muestran los datos escritos por el usuario (el nombre y la edad), que habrá que generar en un fragmento PHP.</li>
-            <li>el bloque final, desde el enlace de vuelta al formulario hasta el final, que será siempre el mismo, y que también está incluido en la plantilla.</li>
-          </ul>
-
-          <p>A continuación se muestra el código fuente con las líneas que habrá que generar en un fragmento PHP resaltadas con un borde:</p>
-
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
@@ -153,13 +153,213 @@
 &lt;body&gt;
   &lt;h1&gt;Ejemplo de recogida de datos sin comprobación (Resultado)&lt;/h1&gt;</code>
 </pre>
-            <pre class="codigo-resaltado">
+          <pre class="codigo-resaltado">
 <code class="language-html">  &lt;p&gt;Su nombre es &lt;strong&gt;Pepito Conejo&lt;/strong&gt;.&lt;/p&gt;
 
   &lt;p&gt;Su edad es &lt;strong&gt;4&lt;/strong&gt; años.&lt;/p&gt;</code>
 </pre>
-            <pre>
+          <pre>
 <code class="language-html">  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_1-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+
+  &lt;footer&gt;
+    &lt;p class="ultmod"&gt;
+      Última modificación de esta página:
+      &lt;time datetime="2016-10-26"&gt;26 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
+
+    &lt;p class="licencia"&gt;
+      Este programa forma parte del curso &lt;a href="http://www.mclibre.org/consultar/php/"&gt;
+      Programación web en PHP&lt;/a&gt; por &lt;a href="http://www.mclibre.org/"&gt;Bartolomé
+      Sintes Marco&lt;/a&gt;.&lt;br /&gt;
+      El programa PHP que genera esta página está bajo
+      &lt;a rel="license" href="http://www.gnu.org/licenses/agpl.txt"&gt;licencia AGPL 3 o posterior&lt;/a&gt;.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+
+        <p>La solución propuesta a continuación contiene tres fragmentos:</p>
+        <ul>
+          <li>un primer fragmento HTML con la cabecera de la página, que no depende de los datos introducidos por el usuario</li>
+          <li>un segundo fragmento PHP que recoge y procesa los datos </li>
+          <li>un tercer fragmento HTML final con el pie de página, que tampoco depende de los datos introducidos por el usuario</li>
+        </ul>
+
+        <p>A continuación se muestra el código fuente con el fragmento PHP resaltado con un borde:</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;Ejemplo de recogida de datos sin comprobación (Resultado). Ejemplo de ejercicio.
+    Ejercicios. PHP. Bartolomé Sintes Marco&lt;/title&gt;
+  &lt;link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;Ejemplo de recogida de datos sin comprobación (Resultado)&lt;/h1&gt;</code>
+</pre>
+          <pre class="codigo-resaltado">
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$nombre = recoge("nombre");
+$edad   = recoge("edad");
+
+print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+          <pre>
+<code class="language-html">  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_1-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+
+  &lt;footer&gt;
+    &lt;p class="ultmod"&gt;
+      Última modificación de esta página:
+      &lt;time datetime="2016-10-26"&gt;26 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
+
+    &lt;p class="licencia"&gt;
+      Este programa forma parte del curso &lt;a href="http://www.mclibre.org/consultar/php/"&gt;
+      Programación web en PHP&lt;/a&gt; por &lt;a href="http://www.mclibre.org/"&gt;Bartolomé
+      Sintes Marco&lt;/a&gt;.&lt;br /&gt;
+      El programa PHP que genera esta página está bajo
+      &lt;a rel="license" href="http://www.gnu.org/licenses/agpl.txt"&gt;licencia AGPL 3 o posterior&lt;/a&gt;.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+
+        <p>Por supuesto, la página podría contener un único fragmento PHP en la que los fragmentos HTML fueran generados por instrucciones <span class="php-res">print</span>.</p>
+      </section>
+
+      <section id="solucion-nucleo-sin">
+        <h4>Núcleo del programa php</h4>
+
+        <p>El fragmento PHP que recoge y muestra los datos tiene la siguiente estructura:</p>
+        <ul>
+          <li>Recogida de datos:
+            <ul>
+              <li>primero se define la <a href="../lecciones/php-recogida-datos.html#recoger-dato">función recoge() comentada en la lección Recogida de datos</a>.</li>
+              <li>después se guardan los dos datos del formulario en dos variables utilizando la función recoge(). El nombre de las variables coincide con el nombre de los controles (en este caso, $nombre y $edad)</li>
+            </ul>
+          </li>
+          <li>Presentación de resultados:
+            <ul>
+              <li>Como no hacemos ninguna comprobación, se escribe el mensaje incluyendo las variables (aunque contengan información absurda).</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>A continuación se muestra el código fuente con el apartado de presentación de datos resaltado con un borde:</p>
+
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?php</code></pre>
+          <pre>
+<code class="language-php">function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$nombre = recoge("nombre");
+$edad   = recoge("edad");<br /><br /></code>
+</pre>
+          <pre class="codigo-resaltado">
+<code class="language-php">print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";</code>
+</pre>
+          <pre><code class="language-php">?&gt;</code></pre>
+        </div>
+      </section>
+    </section>
+  </section>
+
+  <section id="con-comprobacion">
+    <h2>Ejemplo de recogida y comprobación de datos</h2>
+
+    <p>Este ejemplo sirve de modelo para el resto de bloques de ejercicios básicos con formularios (<a href="con-formularios/controles-formularios-2/index.html">Controles en formularios (2)</a>, <a href="con-formularios/operaciones-aritmeticas/index.html">Operaciones aritméticas</a>, etc.).</p>
+
+    <section id="ejemplo-con">
+      <h3>Ejemplo</h3>
+
+      <p>En los enunciados de los ejercicios se incluye un ejemplo de ejercicio resuelto y un enlace al ejercicio resuelto, que se puede abrir en una pestaña (o ventana) diferente. Mostrando el código fuente de las páginas de ejemplo, se puede ver el código HTML buscado en cada caso. Ese código fuente se puede copiar y pegar en las páginas creadas por el alumno.</p>
+
+      <p>A continuación se muestra un ejemplo de ejercicio. En la parte superior derecha hay un enlace para abrir el ejemplo en otra pestaña y poder ver fácilmente su código fuente.</p>
+
+      <p>Puede descargar <a href="ejemplos/ejemplo-recogida-datos-2-plantillas.zip">las plantillas de este ejemplo de ejercicio</a>.</p>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="ejemplos/ejemplo-recogida-datos-2-1.php" style="height: 21em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="ejemplos/ejemplo-recogida-datos-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+
+      <section id="solucion-con">
+        <h3>Solución </h3>
+
+        <section id="solucion-formulario-con">
+          <h4>Formulario (página -1.php)</h4>
+
+          <p>En este caso, el formulario no requiere código PHP porque la página es siempre la misma.</p>
+        </section>
+
+        <section id="solucion-resultado-con">
+          <h4>Resultado (página -2.php)</h4>
+
+          <p>La página .php escrita por el alumno tiene que generar el mismo código HTML que el ejemplo. Una manera de abordar la elaboración de la página .php es probar el ejemplo y copiar el código HTML que genera el ejemplo en la página .php.</p>
+
+          <p>En ese código podemos dividir cuatro partes:</p>
+          <ul>
+            <li>el bloque inicial, desde DOCTYPE hasta <span class="html-eti">&lt;h1&gt;</span>, que será siempre el mismo, y que ya está incluido en la plantilla.</li>
+            <li>las tres líneas que muestran los avisos de error o los datos escritos por el usuario (el nombre, la edad y la aceptación), que habrá que generar en un fragmento PHP.</li>
+            <li>el bloque final, desde el enlace de vuelta al formulario hasta el final, que será siempre el mismo, y que también está incluido en la plantilla.</li>
+          </ul>
+
+          <p>A continuación se muestra el código fuente con las líneas que habrá que generar en fragmentos PHP resaltadas con un borde:</p>
+
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;Ejemplo de recogida y comprobación de datos (Resultado). Ejemplo de ejercicio.
+    Ejercicios. PHP. Bartolomé Sintes Marco&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;Ejemplo de recogida y comprobación de datos (Resultado)&lt;/h1&gt;
+</code>
+</pre>
+            <pre class="codigo-resaltado">
+<code class="language-html">  &lt;p&gt;Su nombre es &lt;strong&gt;Pepito Conejo&lt;/strong&gt;.&lt;/p&gt;
+
+  &lt;p&gt;Su edad es &lt;strong&gt;24&lt;/strong&gt; años.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Sí&lt;/strong&gt; acepta las condiciones.&lt;/p</code>
+</pre>
+            <pre>
+<code class="language-html">
+  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_2-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 
   &lt;footer&gt;
     &lt;p class="ultmod"&gt;
@@ -185,157 +385,10 @@
             <li>un tercer fragmento HTML final con el pie de página, que tampoco depende de los datos introducidos por el usuario</li>
           </ul>
 
-          <p>A continuación se muestra el código fuente con el fragmento PHP resaltado con un borde:</p>
+          <p>A continuación se muestra el código fuente con el fragmento PHP resaltados con un borde:</p>
 
           <div class="codigo">
             <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8" /&gt;
-  &lt;title&gt;Ejemplo de recogida de datos sin comprobación (Resultado). Ejemplo de ejercicio.
-    Ejercicios. PHP. Bartolomé Sintes Marco&lt;/title&gt;
-  &lt;link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" /&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;h1&gt;Ejemplo de recogida de datos sin comprobación (Resultado)&lt;/h1&gt;</code>
-</pre>
-            <pre class="codigo-resaltado">
-<code class="language-php">&lt;?php
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
-$nombre = recoge("nombre");
-$edad   = recoge("edad");
-
-print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
-print "\n";
-print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
-print "\n";
-?&gt;</code>
-</pre>
-            <pre>
-<code class="language-html">  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_1-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
-
-  &lt;footer&gt;
-    &lt;p class="ultmod"&gt;
-      Última modificación de esta página:
-      &lt;time datetime="2016-10-26"&gt;26 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
-
-    &lt;p class="licencia"&gt;
-      Este programa forma parte del curso &lt;a href="http://www.mclibre.org/consultar/php/"&gt;
-      Programación web en PHP&lt;/a&gt; por &lt;a href="http://www.mclibre.org/"&gt;Bartolomé
-      Sintes Marco&lt;/a&gt;.&lt;br /&gt;
-      El programa PHP que genera esta página está bajo
-      &lt;a rel="license" href="http://www.gnu.org/licenses/agpl.txt"&gt;licencia AGPL 3 o posterior&lt;/a&gt;.&lt;/p&gt;
-  &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
-          </div>
-
-          <p>Por supuesto, la página podría contener un único fragmento PHP en la que los fragmentos HTML fueran generados por instrucciones <span class="php-res">print</span>.</p>
-        </section>
-
-        <section id="solucion-nucleo-sin">
-          <h4>Núcleo del programa php</h4>
-
-          <p>El fragmento PHP que recoge y muestra los datos tiene la siguiente estructura:</p>
-          <ul>
-            <li>Recogida de datos:
-              <ul>
-                <li>primero se define la <a href="../lecciones/php-recogida-datos.html#recoger-dato">función recoge() comentada en la lección Recogida de datos</a>.</li>
-                <li>después se guardan los dos datos del formulario en dos variables utilizando la función recoge(). El nombre de las variables coincide con el nombre de los controles (en este caso, $nombre y $edad)</li>
-              </ul>
-            </li>
-            <li>Presentación de resultados:
-              <ul>
-                <li>Como no hacemos ninguna comprobación, se escribe el mensaje incluyendo las variables (aunque contengan información absurda).</li>
-              </ul>
-            </li>
-          </ul>
-
-          <p>A continuación se muestra el código fuente con el apartado de presentación de datos resaltado con un borde:</p>
-
-          <div class="codigo">
-            <pre><code class="language-php">&lt;?php</code></pre>
-            <pre>
-<code class="language-php">function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
-$nombre = recoge("nombre");
-$edad   = recoge("edad");<br /><br /></code>
-</pre>
-            <pre class="codigo-resaltado">
-<code class="language-php">print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
-print "\n";
-print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";</code>
-</pre>
-            <pre><code class="language-php">?&gt;</code></pre>
-          </div>
-        </section>
-      </section>
-    </section>
-
-    <section id="con-comprobacion">
-      <h2>Ejemplo de recogida y comprobación de datos</h2>
-
-      <p>Este ejemplo sirve de modelo para el resto de bloques de ejercicios básicos con formularios (<a href="con-formularios/controles-formularios-2/index.html">Controles en formularios (2)</a>, <a href="con-formularios/operaciones-aritmeticas/index.html">Operaciones aritméticas</a>, etc.).</p>
-
-      <section id="ejemplo-con">
-        <h3>Ejemplo</h3>
-
-        <p>En los enunciados de los ejercicios se incluye un ejemplo de ejercicio resuelto y un enlace al ejercicio resuelto, que se puede abrir en una pestaña (o ventana) diferente. Mostrando el código fuente de las páginas de ejemplo, se puede ver el código HTML buscado en cada caso. Ese código fuente se puede copiar y pegar en las páginas creadas por el alumno.</p>
-
-        <p>A continuación se muestra un ejemplo de ejercicio. En la parte superior derecha hay un enlace para abrir el ejemplo en otra pestaña y poder ver fácilmente su código fuente.</p>
-
-        <p>Puede descargar <a href="ejemplos/ejemplo-recogida-datos-2-plantillas.zip">las plantillas de este ejemplo de ejercicio</a>.</p>
-
-        <div class="filaflex">
-          <div class="resultado-object">
-            <object type="text/html" data="ejemplos/ejemplo-recogida-datos-2-1.php" style="height: 21em;">ERROR (no puede mostrarse el objeto)</object>
-          </div>
-          <div class="icono-enlace">
-            <a href="ejemplos/ejemplo-recogida-datos-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-          </div>
-        </div>
-
-        <section id="solucion-con">
-          <h3>Solución </h3>
-
-          <section id="solucion-formulario-con">
-            <h4>Formulario (página -1.php)</h4>
-
-            <p>En este caso, el formulario no requiere código PHP porque la página es siempre la misma.</p>
-          </section>
-
-          <section id="solucion-resultado-con">
-            <h4>Resultado (página -2.php)</h4>
-
-            <p>La página .php escrita por el alumno tiene que generar el mismo código HTML que el ejemplo. Una manera de abordar la elaboración de la página .php es probar el ejemplo y copiar el código HTML que genera el ejemplo en la página .php.</p>
-
-            <p>En ese código podemos dividir cuatro partes:</p>
-            <ul>
-              <li>el bloque inicial, desde DOCTYPE hasta <span class="html-eti">&lt;h1&gt;</span>, que será siempre el mismo, y que ya está incluido en la plantilla.</li>
-              <li>las tres líneas que muestran los avisos de error o los datos escritos por el usuario (el nombre, la edad y la aceptación), que habrá que generar en un fragmento PHP.</li>
-              <li>el bloque final, desde el enlace de vuelta al formulario hasta el final, que será siempre el mismo, y que también está incluido en la plantilla.</li>
-            </ul>
-
-            <p>A continuación se muestra el código fuente con las líneas que habrá que generar en fragmentos PHP resaltadas con un borde:</p>
-
-            <div class="codigo">
-              <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
@@ -350,60 +403,7 @@ print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;
   &lt;h1&gt;Ejemplo de recogida y comprobación de datos (Resultado)&lt;/h1&gt;
 </code>
 </pre>
-              <pre class="codigo-resaltado">
-<code class="language-html">  &lt;p&gt;Su nombre es &lt;strong&gt;Pepito Conejo&lt;/strong&gt;.&lt;/p&gt;
-
-  &lt;p&gt;Su edad es &lt;strong&gt;24&lt;/strong&gt; años.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;Sí&lt;/strong&gt; acepta las condiciones.&lt;/p</code>
-</pre>
-              <pre>
-<code class="language-html">
-  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_2-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
-
-  &lt;footer&gt;
-    &lt;p class="ultmod"&gt;
-      Última modificación de esta página:
-      &lt;time datetime="2016-10-26"&gt;26 de octubre de 2016&lt;/time&gt;&lt;/p&gt;
-
-    &lt;p class="licencia"&gt;
-      Este programa forma parte del curso &lt;a href="http://www.mclibre.org/consultar/php/"&gt;
-      Programación web en PHP&lt;/a&gt; por &lt;a href="http://www.mclibre.org/"&gt;Bartolomé
-      Sintes Marco&lt;/a&gt;.&lt;br /&gt;
-      El programa PHP que genera esta página está bajo
-      &lt;a rel="license" href="http://www.gnu.org/licenses/agpl.txt"&gt;licencia AGPL 3 o posterior&lt;/a&gt;.&lt;/p&gt;
-  &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
-            </div>
-
-            <p>La solución propuesta a continuación contiene tres fragmentos:</p>
-            <ul>
-              <li>un primer fragmento HTML con la cabecera de la página, que no depende de los datos introducidos por el usuario</li>
-              <li>un segundo fragmento PHP que recoge y procesa los datos </li>
-              <li>un tercer fragmento HTML final con el pie de página, que tampoco depende de los datos introducidos por el usuario</li>
-            </ul>
-
-            <p>A continuación se muestra el código fuente con el fragmento PHP resaltados con un borde:</p>
-
-            <div class="codigo">
-              <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8" /&gt;
-  &lt;title&gt;Ejemplo de recogida y comprobación de datos (Resultado). Ejemplo de ejercicio.
-    Ejercicios. PHP. Bartolomé Sintes Marco&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-  &lt;link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" /&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;h1&gt;Ejemplo de recogida y comprobación de datos (Resultado)&lt;/h1&gt;
-</code>
-</pre>
-              <pre class="codigo-resaltado">
+            <pre class="codigo-resaltado">
 <code class="language-php">&lt;?php
 function recoge($var)
 {
@@ -464,7 +464,7 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
 }
 ?&gt;</code>
 </pre>
-              <pre>
+            <pre>
 <code class="language-html">  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_2-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 
   &lt;footer&gt;
@@ -482,42 +482,42 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-            </div>
+          </div>
 
-            <p>Por supuesto, la página podría contener un único fragmento PHP en la que los fragmentos HTML fueran generados por instrucciones <span class="php-res">print</span>.</p>
-          </section>
+          <p>Por supuesto, la página podría contener un único fragmento PHP en la que los fragmentos HTML fueran generados por instrucciones <span class="php-res">print</span>.</p>
+        </section>
 
-          <section id="solucion-nucleo-con">
-            <h4>Núcleo del programa php</h4>
+        <section id="solucion-nucleo-con">
+          <h4>Núcleo del programa php</h4>
 
-            <p>El fragmento PHP que recoge y genera los datos tiene la siguiente estructura:</p>
-            <ul>
-              <li>Recogida de datos:
-                <ul>
-                  <li>primero se define la <a href="../lecciones/php-recogida-datos.html#recoger-dato">función recoge() comentada en la lección Recogida de datos</a>.</li>
-                  <li>después se guardan los dos datos del formulario en dos variables utilizando la función recoge(). El nombre de las variables coincide con el nombre de los controles (en este caso, $nombre y $edad)</li>
-                </ul>
-              </li>
-              <li>Comprobación de datos:
-                <ul>
-                  <li>primero se definen unas variables lógicas auxiliares, cuyo nombre es el del control y la terminación Ok (en este caso, $nombreOk y $edadOk). El valor (<span class="php-con">true</span> o <span class="php-con">false</span>) representa si el dato escrito por el usuario es correcto o no. Estas variables se inicializan al valor <span class="php-con">false</span> (es decir, se empieza suponiendo que los datos escritos por el usuario son incorrectos).</li>
-                  <li>después hay bloques <span class="php-res">if ... elseif ... else ...</span> (uno por dato enviado por el usuario) en el que se comprueba si el dato escrito por el usuario presenta algún problema. Cada posible problema se evalúa en un condición. Si el dato no presenta ningún problema, la variable lógica auxiliar se modifica a <span class="php-con">true</span> (es decir, que si no presenta ningún problema, se supone que el dato es correcto).
-                    <p>Dependiendo del tipo de dato, puede haber más o menos comprobaciones.</p>
-                  </li>
-                </ul>
-              </li>
-              <li>Presentación de resultados:
-                <ul>
-                  <li>primero hay un bloque <span class="php-res">if ...</span> en el que se comprueba si todas las variables auxiliares son <span class="php-con">true</span> y se hace lo que se tenga que hacer. En este ejercicio simplemente se presentan el nombre y la edad escritos por el usuario, pero en otros ejercicios más complicados hay que hacer cálculos o mostrar mensajes distintos en función del resultado de esos cálculos.</li>
-                </ul>
-              </li>
-            </ul>
+          <p>El fragmento PHP que recoge y genera los datos tiene la siguiente estructura:</p>
+          <ul>
+            <li>Recogida de datos:
+              <ul>
+                <li>primero se define la <a href="../lecciones/php-recogida-datos.html#recoger-dato">función recoge() comentada en la lección Recogida de datos</a>.</li>
+                <li>después se guardan los dos datos del formulario en dos variables utilizando la función recoge(). El nombre de las variables coincide con el nombre de los controles (en este caso, $nombre y $edad)</li>
+              </ul>
+            </li>
+            <li>Comprobación de datos:
+              <ul>
+                <li>primero se definen unas variables lógicas auxiliares, cuyo nombre es el del control y la terminación Ok (en este caso, $nombreOk y $edadOk). El valor (<span class="php-con">true</span> o <span class="php-con">false</span>) representa si el dato escrito por el usuario es correcto o no. Estas variables se inicializan al valor <span class="php-con">false</span> (es decir, se empieza suponiendo que los datos escritos por el usuario son incorrectos).</li>
+                <li>después hay bloques <span class="php-res">if ... elseif ... else ...</span> (uno por dato enviado por el usuario) en el que se comprueba si el dato escrito por el usuario presenta algún problema. Cada posible problema se evalúa en un condición. Si el dato no presenta ningún problema, la variable lógica auxiliar se modifica a <span class="php-con">true</span> (es decir, que si no presenta ningún problema, se supone que el dato es correcto).
+                  <p>Dependiendo del tipo de dato, puede haber más o menos comprobaciones.</p>
+                </li>
+              </ul>
+            </li>
+            <li>Presentación de resultados:
+              <ul>
+                <li>primero hay un bloque <span class="php-res">if ...</span> en el que se comprueba si todas las variables auxiliares son <span class="php-con">true</span> y se hace lo que se tenga que hacer. En este ejercicio simplemente se presentan el nombre y la edad escritos por el usuario, pero en otros ejercicios más complicados hay que hacer cálculos o mostrar mensajes distintos en función del resultado de esos cálculos.</li>
+              </ul>
+            </li>
+          </ul>
 
-            <p>A continuación se muestra el código fuente con el apartado de comprobación de datos resaltado con un borde:</p>
+          <p>A continuación se muestra el código fuente con el apartado de comprobación de datos resaltado con un borde:</p>
 
-            <div class="codigo">
-              <pre><code class="language-php">&lt;?php</code></pre>
-              <pre>
+          <div class="codigo">
+            <pre><code class="language-php">&lt;?php</code></pre>
+            <pre>
 <code class="language-php">function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -535,7 +535,7 @@ $edadOk   = false;
 $aceptoOk = false;
 </code>
 </pre>
-              <pre class="codigo-resaltado">
+            <pre class="codigo-resaltado">
 <code class="language-php">if ($nombre == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
     print "\n";
@@ -569,7 +569,7 @@ if ($acepto == "") {
     $aceptoOk = true;
 }</code>
 </pre>
-              <pre>
+            <pre>
 <code class="language-php">
 if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
     print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
@@ -581,18 +581,18 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
 }
 ?&gt;</code>
 </pre>
-            </div>
-          </section>
+          </div>
         </section>
       </section>
     </section>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 20 de septiembre de 2017</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 20 de septiembre de 2017</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

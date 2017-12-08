@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Sesiones. Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../../varios/favicon.ico" />
-    <link rel="stylesheet" href="../../varios/highlight-php.css" />
-    <script src="../../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Sesiones. Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <script src="../../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Ejercicios - Sesiones - Comentarios</h1>
+<body>
+  <h1>Ejercicios - Sesiones - Comentarios</h1>
 
-    <nav>
-      <p>
-        <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Sesiones - Comentarios</h2>
+    <div class="toc">
+      <h2>Sesiones - Comentarios</h2>
 
-        <ul>
-          <li><a href="#ejercicio-2">Sesiones (2) 02</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <p>Esta página contiene comentarios ampliados con fragmentos de código PHP.</p>
-
-    <section id="ejercicio-2">
-      <h2>Sesiones (2) 02</h2>
-
-      <h3>Comentarios ampliados</h3>
       <ul>
-        <li>El programa se compone de una única página. Por tanto, el formulario debe enviar los datos a la propia página. En el atributo action podemos escribir:
-          <ul>
-            <li>el nombre de la página
+        <li><a href="#ejercicio-2">Sesiones (2) 02</a></li>
+      </ul>
+    </div>
+  </nav>
 
-              <div class="codigo">
-                <pre><code class="language-php">print "&lt;form action=\"pagina.php"&gt;";</code></pre>
-              </div>
-            </li>
-            <li>$_SERVER[PHP_SELF], que contiene la ruta de la página
+  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP.</p>
 
-              <div class="codigo">
-                <pre><code class="language-php">print "&lt;form action=\"$_SERVER[PHP_SELF]\"&gt;";</code></pre>
-              </div>
-            </li>
-          </ul>
-          <p>Las dos opciones son correctas. La ventaja de la segunda opción es que seguiría funcionando aunque cambiaramos el nombre del fichero php.</p>
-        </li>
-        <li>Como la creación y destrucción de la sesión debe hacer antes de hacer ningún print, la estructura del programa debería ser algo parecido a esto:
+  <section id="ejercicio-2">
+    <h2>Sesiones (2) 02</h2>
 
-          <div class="codigo">
-            <pre>creación de la sesión
+    <h3>Comentarios ampliados</h3>
+    <ul>
+      <li>El programa se compone de una única página. Por tanto, el formulario debe enviar los datos a la propia página. En el atributo action podemos escribir:
+        <ul>
+          <li>el nombre de la página
+
+            <div class="codigo">
+              <pre><code class="language-php">print "&lt;form action=\"pagina.php"&gt;";</code></pre>
+            </div>
+          </li>
+          <li>$_SERVER[PHP_SELF], que contiene la ruta de la página
+
+            <div class="codigo">
+              <pre><code class="language-php">print "&lt;form action=\"$_SERVER[PHP_SELF]\"&gt;";</code></pre>
+            </div>
+          </li>
+        </ul>
+        <p>Las dos opciones son correctas. La ventaja de la segunda opción es que seguiría funcionando aunque cambiaramos el nombre del fichero php.</p>
+      </li>
+      <li>Como la creación y destrucción de la sesión debe hacer antes de hacer ningún print, la estructura del programa debería ser algo parecido a esto:
+
+        <div class="codigo">
+          <pre>creación de la sesión
 recogida y validacion de datos (sin imprimir nada aunque se detecten errores)
 destrucción de la sesión (en su caso)
 cabecera
@@ -65,55 +65,55 @@ formulario
 imprimir valores guardado en $_SESSION
 pie
 </pre>
-          </div>
-        </li>
-        <li>La página debe recoger los dos campos enviado por el formulario: el texto a guardar ($nombre) y el botón submit pulsado ($accion).
-          <p>En el ejemplo no hay dos botones <span class="html-atri-valor">submit</span>, sólo hay uno (el otro botón del formulario es un botón reset, para borrar los valores del formulario antes de enviarlo), pero hay un enlace que llama a la propia página enviando una acción como si fuera un botón, así que es como si hubiera dos botones.</p>
-        </li>
-        <li>La página debe comprobar que el valor recibido no es vacío</li>
-        <li>Si hay que guardar los datos en la matriz sesión, podemos crear un índice numérico contando los datos que ya hay almacenados, por lo que la instrucción podría ser algo de este estilo:
+        </div>
+      </li>
+      <li>La página debe recoger los dos campos enviado por el formulario: el texto a guardar ($nombre) y el botón submit pulsado ($accion).
+        <p>En el ejemplo no hay dos botones <span class="html-atri-valor">submit</span>, sólo hay uno (el otro botón del formulario es un botón reset, para borrar los valores del formulario antes de enviarlo), pero hay un enlace que llama a la propia página enviando una acción como si fuera un botón, así que es como si hubiera dos botones.</p>
+      </li>
+      <li>La página debe comprobar que el valor recibido no es vacío</li>
+      <li>Si hay que guardar los datos en la matriz sesión, podemos crear un índice numérico contando los datos que ya hay almacenados, por lo que la instrucción podría ser algo de este estilo:
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">$numeroDatos = count($_SESSION);
 if ($nombreOk &amp;&amp; ($nombre!="")) {
     $_SESSION['nombre_' . $numeroDatos] = $nombre;
 }</code>
 </pre>
-          </div>
-        </li>
-        <li>El formulario tiene un único campo de texto y dos botones: Añadir (de tipo <span class="html-atri-valor">submit</span>) y Borrar (de tipo <span class="html-atri-valor">reset</span>).
-          <p>En el ejemplo, el botón Añadir tiene el atributo <span class="html-atri">name</span>, pero no es imprescindible, se puede hacer el programa sin ponerle <span class="html-atri">name</span>, ya que si llega el campo nombre sabemos que se ha hecho clic en Añadir.</p>
-        </li>
-        <li>Para listar los valores de $_SESSION, basta un bucle foreach
+        </div>
+      </li>
+      <li>El formulario tiene un único campo de texto y dos botones: Añadir (de tipo <span class="html-atri-valor">submit</span>) y Borrar (de tipo <span class="html-atri-valor">reset</span>).
+        <p>En el ejemplo, el botón Añadir tiene el atributo <span class="html-atri">name</span>, pero no es imprescindible, se puede hacer el programa sin ponerle <span class="html-atri">name</span>, ya que si llega el campo nombre sabemos que se ha hecho clic en Añadir.</p>
+      </li>
+      <li>Para listar los valores de $_SESSION, basta un bucle foreach
 
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">print "&lt;p&gt;Datos introducidos:&lt;/p&gt;\n&lt;ul&gt;\n";
 foreach ($_SESSION as $valor) {
     print "  &lt;li&gt;$valor&lt;/li&gt;\n";
 }
 print "&lt;/ul&gt;\n";</code>
 </pre>
-          </div>
-        </li>
-        <li>El enlace para cerrar la sesión tiene que enviar el campo accion con el valor Cerrar, por ejemplo:
+        </div>
+      </li>
+      <li>El enlace para cerrar la sesión tiene que enviar el campo accion con el valor Cerrar, por ejemplo:
 
-          <div class="codigo">
-            <pre><code class="language-php">print "&lt;p&gt;&lt;a href=\"$_SERVER[PHP_SELF]?accion=Cerrar\"&gt;Cerrar sesión
+        <div class="codigo">
+          <pre><code class="language-php">print "&lt;p&gt;&lt;a href=\"$_SERVER[PHP_SELF]?accion=Cerrar\"&gt;Cerrar sesión
   (se perderán los datos almacenados).&lt;/a&gt;&lt;/p&gt;\n";</code></pre>
-          </div>
-          <p>Es equivalente poner un formulario con un botón <span class="html-atri-valor">submit</span> con <span class="html-atri">name</span> "accion" y <span class="html-atri">value</span> "Cerrar" y poner un enlace cuyo href sea el mismo que produciría un formulario (un formulario de <span class="html-atri">method</span> <span class="html-atri-valor">GET</span>, claro).</p>
-        </li>
-      </ul>
-    </section>
+        </div>
+        <p>Es equivalente poner un formulario con un botón <span class="html-atri-valor">submit</span> con <span class="html-atri">name</span> "accion" y <span class="html-atri">value</span> "Cerrar" y poner un enlace cuyo href sea el mismo que produciría un formulario (un formulario de <span class="html-atri">method</span> <span class="html-atri-valor">GET</span>, claro).</p>
+      </li>
+    </ul>
+  </section>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2013</p>
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2013</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

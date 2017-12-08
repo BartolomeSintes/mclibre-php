@@ -1,168 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Qué es XAMPP. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Qué es XAMPP. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+</head>
 
-  <body>
-    <h1>Qué es XAMPP</h1>
+<body>
+  <h1>Qué es XAMPP</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Qué es XAMPP</h2>
+    <div class="toc">
+      <h2>Qué es XAMPP</h2>
 
-        <ul>
-          <li><a href="#wamp">LAMP y WAMP</a></li>
-          <li><a href="#xampp">XAMPP</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <section id="wamp">
-      <h2>LAMP y WAMP</h2>
-
-      <p>Como se comenta en la lección <a href="../lecciones/php-que-es.html">¿Qué es PHP?</a>, para abrir en el navegador páginas web escritas en PHP es necesario disponer de un servidor de páginas web propiamente dicho, del lenguaje de programación PHP. También es conveniente, aunque no es imprescindible disponer de un servidor de bases de datos.</p>
-
-      <p>En el mundo del software libre tres proyectos han proporcionado esas herramientas con una calidad sobresaliente:</p>
       <ul>
-        <li><a href="http://apache.org/">Apache</a> ha sido desde practicamente el principio de la web el servidor de páginas web más utilizado (como lo atestigua mes a mes la empresa Netcraft en su <a href="https://news.netcraft.com/">Web Server Survey</a>).</li>
-        <li><a href="https://www.mysql.com/">MySQL</a> es un sistema gestor de bases de datos libre creado en 1995. MySQL se convirtió rápidamente en la base de datos libre más popular, demostrando además que podía ser un éxito un modelo de negocio basado en licencias duales (libres o comerciales, a elección del cliente).<br />
-          En 2008 Sun compró MySQL, en un momento en que Sun intentaba convertirse en la principal empresa del mundo del software libre (OpenOffice.org o VirtualBox fueron otras compras). Pero esos planes fracasaron y en abril de 2009 Sun fue comprada por Oracle. Seis años después, sigue habiendo dudas sobre el futuro de MySQL. <br />
-          En principio, MySQL no parecía poder integrarse en una empresa como Oracle, puesto que era su competencia directa. Y aunque es verdad que el desarrollo de MySQL no se ha detenido, la gestión de ese desarrollo ha provocado la suspicacia de la comunidad de software libre y se han creado varios forks de MySQL.<br />
-          El más importante de ellos, <a href="https://mariadb.org/">MariaDB</a>, fue iniciado en 2012 por el principal fundador de MySQL (Michael Widenius). En el mundo del software libre, MariaDB está sustituyendo a MySQL como base de datos de referencia. Por ejemplo, RedHat ya sustituyó MySQL por MariaDB en RedHat Linux 7 (publicado en 2014).</li>
-        <li><a href="http://php.net/">PHP</a> ha sido siempre el lenguaje de referencia para el desarrollo web.</li>
+        <li><a href="#wamp">LAMP y WAMP</a></li>
+        <li><a href="#xampp">XAMPP</a></li>
       </ul>
+    </div>
+  </nav>
 
-      <p>La imagen siguiente muestra las últimas versiones de Apache, MySQL/MariaDB y PHP (se incluyen únicamente las versiones principales):</p>
+  <section id="wamp">
+    <h2>LAMP y WAMP</h2>
 
-      <p class="mcl-centrado">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" viewBox="-50 -60 960 300">
-          <title>Últimas versiones de Apache, MySQL y PHP</title>
-          <line x1="35" y1="0" x2="920" y2="0" stroke-width="3" stroke="#FF2A2A" />
-          <text x="-40" y="5" text-anchor="start" fill="#FF2A2A" style="font-size: 100%; font-weight: bold">Apache</text>
-          <line x1="35" y1="100" x2="920" y2="100" stroke-width="3" stroke="#006680" />
-          <text x="-40" y="85" text-anchor="start" fill="#006680" style="font-size: 100%; font-weight: bold">MySQL</text>
-          <text x="-40" y="130" text-anchor="start" fill="#002B64" style="font-size: 100%; font-weight: bold">MariaDB</text>
-          <line x1="35" y1="200" x2="920" y2="200" stroke-width="3" stroke="#5F5FD3" />
-          <text x="-40" y="205" text-anchor="start" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">PHP</text>
+    <p>Como se comenta en la lección <a href="../lecciones/php-que-es.html">¿Qué es PHP?</a>, para abrir en el navegador páginas web escritas en PHP es necesario disponer de un servidor de páginas web propiamente dicho, del lenguaje de programación PHP. También es conveniente, aunque no es imprescindible disponer de un servidor de bases de datos.</p>
 
-          <line x1="60" y1="-30" x2="60" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="90" y="-40" text-anchor="middle" style="font-size: 100%">2005</text>
-          <line x1="120" y1="-30" x2="120" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="150" y="-40" text-anchor="middle" style="font-size: 100%">2006</text>
-          <line x1="180" y1="-30" x2="180" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="210" y="-40" text-anchor="middle" style="font-size: 100%">2007</text>
-          <line x1="240" y1="-30" x2="240" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="270" y="-40" text-anchor="middle" style="font-size: 100%">2008</text>
-          <line x1="300" y1="-30" x2="300" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="330" y="-40" text-anchor="middle" style="font-size: 100%">2009</text>
-          <line x1="360" y1="-30" x2="360" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="390" y="-40" text-anchor="middle" style="font-size: 100%">2010</text>
-          <line x1="420" y1="-30" x2="420" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="450" y="-40" text-anchor="middle" style="font-size: 100%">2011</text>
-          <line x1="480" y1="-30" x2="480" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="510" y="-40" text-anchor="middle" style="font-size: 100%">2012</text>
-          <line x1="540" y1="-30" x2="540" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="570" y="-40" text-anchor="middle" style="font-size: 100%">2013</text>
-          <line x1="600" y1="-30" x2="600" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="630" y="-40" text-anchor="middle" style="font-size: 100%">2014</text>
-          <line x1="660" y1="-30" x2="660" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="690" y="-40" text-anchor="middle" style="font-size: 100%">2015</text>
-          <line x1="720" y1="-30" x2="720" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="750" y="-40" text-anchor="middle" style="font-size: 100%">2016</text>
-          <line x1="780" y1="-30" x2="780" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="810" y="-40" text-anchor="middle" style="font-size: 100%">2017</text>
-          <line x1="840" y1="-30" x2="840" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
-          <text x="870" y="-40" text-anchor="middle" style="font-size: 100%">2018</text>
-          <line x1="900" y1="-30" x2="900" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+    <p>En el mundo del software libre tres proyectos han proporcionado esas herramientas con una calidad sobresaliente:</p>
+    <ul>
+      <li><a href="http://apache.org/">Apache</a> ha sido desde practicamente el principio de la web el servidor de páginas web más utilizado (como lo atestigua mes a mes la empresa Netcraft en su <a href="https://news.netcraft.com/">Web Server Survey</a>).</li>
+      <li><a href="https://www.mysql.com/">MySQL</a> es un sistema gestor de bases de datos libre creado en 1995. MySQL se convirtió rápidamente en la base de datos libre más popular, demostrando además que podía ser un éxito un modelo de negocio basado en licencias duales (libres o comerciales, a elección del cliente).<br /> En 2008 Sun compró MySQL, en un momento en que Sun intentaba convertirse en la principal empresa del mundo del software libre (OpenOffice.org o VirtualBox fueron otras compras). Pero esos planes fracasaron y en abril de 2009 Sun fue comprada por Oracle. Seis años después, sigue habiendo dudas sobre el futuro de MySQL. <br /> En principio, MySQL no parecía poder integrarse en una empresa como Oracle, puesto que era su competencia directa. Y aunque es verdad que el desarrollo de MySQL no se ha detenido, la gestión de ese desarrollo ha provocado la suspicacia de la comunidad de software libre y se han creado varios forks de MySQL.<br /> El más importante de ellos, <a href="https://mariadb.org/">MariaDB</a>, fue iniciado en 2012 por el principal fundador de MySQL (Michael Widenius). En el mundo del software libre, MariaDB está sustituyendo a MySQL como base de datos de referencia. Por ejemplo, RedHat ya sustituyó MySQL por MariaDB en RedHat Linux 7 (publicado en 2014).</li>
+      <li><a href="http://php.net/">PHP</a> ha sido siempre el lenguaje de referencia para el desarrollo web.</li>
+    </ul>
 
-          <circle cx="115" cy="0" r="5" fill="#FF2A2A" />
-          <text x="115" y="-15" text-anchor="middle" fill="#FF2A2A" style="font-size: 100%; font-weight: bold">2.2</text>
-          <circle cx="489" cy="0" r="5" fill="#FF2A2A" />
-          <text x="489" y="-15" text-anchor="middle" fill="#FF2A2A" style="font-size: 100%; font-weight: bold">2.4</text>
+    <p>La imagen siguiente muestra las últimas versiones de Apache, MySQL/MariaDB y PHP (se incluyen únicamente las versiones principales):</p>
 
-          <circle cx="108" cy="100" r="5" fill="#006680" />
-          <text x="108" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.0.15</text>
-          <circle cx="292" cy="100" r="5" fill="#006680" />
-          <text x="292" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.1.30</text>
-          <circle cx="417" cy="100" r="5" fill="#006680" />
-          <text x="417" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.5.08</text>
-          <circle cx="546" cy="100" r="5" fill="#006680" />
-          <text x="546" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.6.10</text>
-          <circle cx="709" cy="100" r="5" fill="#006680" />
-          <text x="709" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.7.09</text>
+    <p class="mcl-centrado">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" viewBox="-50 -60 960 300">
+        <title>Últimas versiones de Apache, MySQL y PHP</title>
+        <line x1="35" y1="0" x2="920" y2="0" stroke-width="3" stroke="#FF2A2A" />
+        <text x="-40" y="5" text-anchor="start" fill="#FF2A2A" style="font-size: 100%; font-weight: bold">Apache</text>
+        <line x1="35" y1="100" x2="920" y2="100" stroke-width="3" stroke="#006680" />
+        <text x="-40" y="85" text-anchor="start" fill="#006680" style="font-size: 100%; font-weight: bold">MySQL</text>
+        <text x="-40" y="130" text-anchor="start" fill="#002B64" style="font-size: 100%; font-weight: bold">MariaDB</text>
+        <line x1="35" y1="200" x2="920" y2="200" stroke-width="3" stroke="#5F5FD3" />
+        <text x="-40" y="205" text-anchor="start" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">PHP</text>
 
-          <circle cx="497" cy="100" r="5" fill="#002B64" />
-          <text x="497" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">5.5.23</text>
-          <circle cx="615" cy="100" r="5" fill="#002B64" />
-          <text x="615" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">10.0.10</text>
-          <circle cx="708" cy="100" r="5" fill="#002B64" />
-          <text x="708" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">10.1.8</text>
-          <circle cx="804" cy="100" r="5" fill="#002B64" />
-          <text x="804" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">10.2.6</text>
+        <line x1="60" y1="-30" x2="60" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="90" y="-40" text-anchor="middle" style="font-size: 100%">2005</text>
+        <line x1="120" y1="-30" x2="120" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="150" y="-40" text-anchor="middle" style="font-size: 100%">2006</text>
+        <line x1="180" y1="-30" x2="180" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="210" y="-40" text-anchor="middle" style="font-size: 100%">2007</text>
+        <line x1="240" y1="-30" x2="240" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="270" y="-40" text-anchor="middle" style="font-size: 100%">2008</text>
+        <line x1="300" y1="-30" x2="300" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="330" y="-40" text-anchor="middle" style="font-size: 100%">2009</text>
+        <line x1="360" y1="-30" x2="360" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="390" y="-40" text-anchor="middle" style="font-size: 100%">2010</text>
+        <line x1="420" y1="-30" x2="420" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="450" y="-40" text-anchor="middle" style="font-size: 100%">2011</text>
+        <line x1="480" y1="-30" x2="480" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="510" y="-40" text-anchor="middle" style="font-size: 100%">2012</text>
+        <line x1="540" y1="-30" x2="540" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="570" y="-40" text-anchor="middle" style="font-size: 100%">2013</text>
+        <line x1="600" y1="-30" x2="600" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="630" y="-40" text-anchor="middle" style="font-size: 100%">2014</text>
+        <line x1="660" y1="-30" x2="660" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="690" y="-40" text-anchor="middle" style="font-size: 100%">2015</text>
+        <line x1="720" y1="-30" x2="720" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="750" y="-40" text-anchor="middle" style="font-size: 100%">2016</text>
+        <line x1="780" y1="-30" x2="780" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="810" y="-40" text-anchor="middle" style="font-size: 100%">2017</text>
+        <line x1="840" y1="-30" x2="840" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
+        <text x="870" y="-40" text-anchor="middle" style="font-size: 100%">2018</text>
+        <line x1="900" y1="-30" x2="900" y2="230" stroke-width="1" stroke-dasharray="5,5" stroke="black" />
 
-          <circle cx="91" cy="200" r="5" fill="#5F5FD3" />
-          <text x="81" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">4.4</text>
-          <circle cx="114" cy="200" r="5" fill="#5F5FD3" />
-          <text x="114" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.1</text>
-          <circle cx="170" cy="200" r="5" fill="#5F5FD3" />
-          <text x="170" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.2</text>
-          <circle cx="330" cy="200" r="5" fill="#5F5FD3" />
-          <text x="330" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.3</text>
-          <circle cx="490" cy="200" r="5" fill="#5F5FD3" />
-          <text x="490" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.4</text>
-          <circle cx="568" cy="200" r="5" fill="#5F5FD3" />
-          <text x="568" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.5</text>
-          <circle cx="640" cy="200" r="5" fill="#5F5FD3" />
-          <text x="640" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.6</text>
-          <circle cx="716" cy="200" r="5" fill="#5F5FD3" />
-          <text x="716" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.0</text>
-          <circle cx="776" cy="200" r="5" fill="#5F5FD3" />
-          <text x="776" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.1</text>
-          <circle cx="835" cy="200" r="5" fill="#5F5FD3" />
-          <text x="835" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.2</text>
-          <!--<circle cx="773" cy="200" r="5" stroke="#5F5FD3" stroke-width="2" fill="white" />-->
-        </svg>
-      </p>
+        <circle cx="115" cy="0" r="5" fill="#FF2A2A" />
+        <text x="115" y="-15" text-anchor="middle" fill="#FF2A2A" style="font-size: 100%; font-weight: bold">2.2</text>
+        <circle cx="489" cy="0" r="5" fill="#FF2A2A" />
+        <text x="489" y="-15" text-anchor="middle" fill="#FF2A2A" style="font-size: 100%; font-weight: bold">2.4</text>
 
-      <p>A las combinaciones de servidores Linux, con Apache, MySQL y PHP se les ha llamado siempre plataformas LAMP. Como estos tres programas también tienen versión para Windows, también se habla de plataformas WAMP.</p>
+        <circle cx="108" cy="100" r="5" fill="#006680" />
+        <text x="108" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.0.15</text>
+        <circle cx="292" cy="100" r="5" fill="#006680" />
+        <text x="292" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.1.30</text>
+        <circle cx="417" cy="100" r="5" fill="#006680" />
+        <text x="417" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.5.08</text>
+        <circle cx="546" cy="100" r="5" fill="#006680" />
+        <text x="546" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.6.10</text>
+        <circle cx="709" cy="100" r="5" fill="#006680" />
+        <text x="709" y="85" text-anchor="middle" fill="#006680" style="font-size: 100%; font-weight: bold">5.7.09</text>
 
-      <p>En el caso de Windows, para facilitar la instalación de esos componentes existen programas llamados paquetes WAMP que de una sola tacada instalan Apache, PHP, MySQLy otras utilidades. Existen muchos paquetes WAMP que se distinguen principalmente por el número de utilidades adicionales y por las versiones de cada uno de los programas que incluyen. Algunos de estos paquetes están configurados para un entorno de producción mientras que otros están configurados para entornos de desarrollo.</p>
+        <circle cx="497" cy="100" r="5" fill="#002B64" />
+        <text x="497" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">5.5.23</text>
+        <circle cx="615" cy="100" r="5" fill="#002B64" />
+        <text x="615" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">10.0.10</text>
+        <circle cx="708" cy="100" r="5" fill="#002B64" />
+        <text x="708" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">10.1.8</text>
+        <circle cx="804" cy="100" r="5" fill="#002B64" />
+        <text x="804" y="130" text-anchor="middle" fill="#002B64" style="font-size: 100%; font-weight: bold">10.2.6</text>
 
-      <p>En <a href="http://www.cdlibre.org/">cdlibre.org</a> hay secciones dedicadas a <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_WAMP.html">paquetes WAMP</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Internet_Servidores.html">servidores web</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_PHP.html">PHP</a> y <a href="http://www.cdlibre.org/consultar/catalogo/Bases-de-datos_MySQL.html">MySQL</a>, con información detallada sobre las últimas versiones publicadas para Windows.</p>
+        <circle cx="91" cy="200" r="5" fill="#5F5FD3" />
+        <text x="81" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">4.4</text>
+        <circle cx="114" cy="200" r="5" fill="#5F5FD3" />
+        <text x="114" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.1</text>
+        <circle cx="170" cy="200" r="5" fill="#5F5FD3" />
+        <text x="170" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.2</text>
+        <circle cx="330" cy="200" r="5" fill="#5F5FD3" />
+        <text x="330" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.3</text>
+        <circle cx="490" cy="200" r="5" fill="#5F5FD3" />
+        <text x="490" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.4</text>
+        <circle cx="568" cy="200" r="5" fill="#5F5FD3" />
+        <text x="568" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.5</text>
+        <circle cx="640" cy="200" r="5" fill="#5F5FD3" />
+        <text x="640" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">5.6</text>
+        <circle cx="716" cy="200" r="5" fill="#5F5FD3" />
+        <text x="716" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.0</text>
+        <circle cx="776" cy="200" r="5" fill="#5F5FD3" />
+        <text x="776" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.1</text>
+        <circle cx="835" cy="200" r="5" fill="#5F5FD3" />
+        <text x="835" y="185" text-anchor="middle" fill="#5F5FD3" style="font-size: 100%; font-weight: bold">7.2</text>
+        <!--<circle cx="773" cy="200" r="5" stroke="#5F5FD3" stroke-width="2" fill="white" />-->
+      </svg>
+    </p>
 
-      <p>En el caso de GNU/Linux, las distribuciones incluyen en sus repositorios versiones de Apache, PHP y MySQL. En un entorno de producción lo más recomendable es utilizar esas versiones pues eso nos garantizará la actualización automática de los paquetes y su correcto funcionamiento, pero en un entorno de aprendizaje puede ser conveniente instalar algún paquete LAMP que nos evite tareas de configuración.</p>
-    </section>
+    <p>A las combinaciones de servidores Linux, con Apache, MySQL y PHP se les ha llamado siempre plataformas LAMP. Como estos tres programas también tienen versión para Windows, también se habla de plataformas WAMP.</p>
 
-    <section id="xampp">
-      <h2>XAMPP</h2>
+    <p>En el caso de Windows, para facilitar la instalación de esos componentes existen programas llamados paquetes WAMP que de una sola tacada instalan Apache, PHP, MySQLy otras utilidades. Existen muchos paquetes WAMP que se distinguen principalmente por el número de utilidades adicionales y por las versiones de cada uno de los programas que incluyen. Algunos de estos paquetes están configurados para un entorno de producción mientras que otros están configurados para entornos de desarrollo.</p>
 
-      <p>En este curso se recomienda uno de estos paquetes WAMP/LAMP que se llama <a href="https://www.apachefriends.org/index.html">XAMPP</a>. Estos apuntes están preparados para la versión XAMPP 7.1.8 (del 25 de agosto de 2017), que incluye Apache 2.4.27, PHP 7.1.8, MariaDB 10.1.26 y otras utilidades, y que <a href="https://www.apachefriends.org/xampp-files/7.1.8/xampp-win32-7.1.8-0-VC14-installer.exe">se puede descargar con este enlace (XAMPP 7.1.8, 124 MB)</a>. Probablemente se pueden seguir estos apuntes con versiones posteriores de XAMPP, o incluso anteriores, pero puede haber incompatibilidades.</p>
+    <p>En <a href="http://www.cdlibre.org/">cdlibre.org</a> hay secciones dedicadas a <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_WAMP.html">paquetes WAMP</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Internet_Servidores.html">servidores web</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_PHP.html">PHP</a> y <a href="http://www.cdlibre.org/consultar/catalogo/Bases-de-datos_MySQL.html">MySQL</a>, con información detallada sobre las últimas versiones publicadas para Windows.</p>
 
-      <p>XAMPP está disponible tanto para Windows como para GNU/Linux.</p>
+    <p>En el caso de GNU/Linux, las distribuciones incluyen en sus repositorios versiones de Apache, PHP y MySQL. En un entorno de producción lo más recomendable es utilizar esas versiones pues eso nos garantizará la actualización automática de los paquetes y su correcto funcionamiento, pero en un entorno de aprendizaje puede ser conveniente instalar algún paquete LAMP que nos evite tareas de configuración.</p>
+  </section>
 
-      <p>Desde 2013 el mantenimiento y desarrollo de XAMPP lo realiza la empresa <a href="https://bitnami.com/">Bitnami</a>. Bitnami, fundada por el español Daniel López Ridruejo, se dedica a crear instaladores y paquetes de aplicaciones web, así como máquinas virtuales con entornos de desarrollo completos. Bitnami prepara <a href="https://bitnami.com/stack/xampp">paquetes específicos para XAMPP</a> de algunas de las aplicaciones web más populares.</p>
+  <section id="xampp">
+    <h2>XAMPP</h2>
 
-      <p>En <a href="http://www.cdlibre.org/">cdlibre.org</a> hay secciones dedicadas a <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_WAMP.html">paquetes WAMP</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Internet_Servidores.html">servidores web</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_PHP.html">PHP</a> y <a href="http://www.cdlibre.org/consultar/catalogo/Bases-de-datos_MySQL.html">MySQL</a>, con información detallada sobre las últimas versiones publicadas para Windows.</p>
+    <p>En este curso se recomienda uno de estos paquetes WAMP/LAMP que se llama <a href="https://www.apachefriends.org/index.html">XAMPP</a>. Estos apuntes están preparados para la versión XAMPP 7.1.8 (del 25 de agosto de 2017), que incluye Apache 2.4.27, PHP 7.1.8, MariaDB 10.1.26 y otras utilidades, y que <a href="https://www.apachefriends.org/xampp-files/7.1.8/xampp-win32-7.1.8-0-VC14-installer.exe">se puede descargar con este enlace (XAMPP 7.1.8, 124 MB)</a>. Probablemente se pueden seguir estos apuntes con versiones posteriores de XAMPP, o incluso anteriores, pero puede haber incompatibilidades.</p>
 
-      <p>Antes de instalar XAMPP, consulte la lección <a href="xampp-instalacion-windows.html">Instalación y uso de XAMPP en Windows</a>.</p>
-    </section>
+    <p>XAMPP está disponible tanto para Windows como para GNU/Linux.</p>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
+    <p>Desde 2013 el mantenimiento y desarrollo de XAMPP lo realiza la empresa <a href="https://bitnami.com/">Bitnami</a>. Bitnami, fundada por el español Daniel López Ridruejo, se dedica a crear instaladores y paquetes de aplicaciones web, así como máquinas virtuales con entornos de desarrollo completos. Bitnami prepara <a href="https://bitnami.com/stack/xampp">paquetes específicos para XAMPP</a> de algunas de las aplicaciones web más populares.</p>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p>En <a href="http://www.cdlibre.org/">cdlibre.org</a> hay secciones dedicadas a <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_WAMP.html">paquetes WAMP</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Internet_Servidores.html">servidores web</a>, <a href="http://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_PHP.html">PHP</a> y <a href="http://www.cdlibre.org/consultar/catalogo/Bases-de-datos_MySQL.html">MySQL</a>, con información detallada sobre las últimas versiones publicadas para Windows.</p>
+
+    <p>Antes de instalar XAMPP, consulte la lección <a href="xampp-instalacion-windows.html">Instalación y uso de XAMPP en Windows</a>.</p>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>

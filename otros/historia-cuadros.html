@@ -1,544 +1,530 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Cuadros cronológicos. PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
-    <link rel="icon" href="../varios/favicon.ico" />
-    <link rel="stylesheet" href="../varios/highlight-php.css" />
-    <script src="../varios/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Cuadros cronológicos. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <h1>Cuadros cronológicos</h1>
+<body>
+  <h1>Cuadros cronológicos</h1>
 
-    <nav>
-      <p>
-        <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-        <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
-      </p>
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
 
-      <div class="toc">
-        <h2>Cuadros cronológicos</h2>
+    <div class="toc">
+      <h2>Cuadros cronológicos</h2>
 
-        <ul>
-          <li><a href="#programas">Programas</a></li>
-          <li><a href="#distribuciones">Distribuciones</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <section id="programas">
-      <h2>Programas utilizados en este curso</h2>
-
-      <p>La tabla siguiente indica las fechas de publicación de los programas utilizados en este curso:</p>
-
-      <table class="tabla-con-borde mcl-franjas">
-        <thead>
-          <tr>
-            <th>Año</th>
-            <th><a href="http://httpd.apache.org/">Apache</a></th>
-            <th><a href="http://php.net/">PHP</a></th>
-            <th><a href="https://www.mysql.com/">MySQL</a></th>
-            <th><a href="https://mariadb.com/">MariaDB</a></th>
-            <th><a href="https://www.apachefriends.org/index.html">XAMPP</a></th>
-            <th><a href="http://www.eclipse.org/pdt/">Eclipse PHP</a></th>
-            <th>Año</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>2018</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>¿Jun?: Eclipse PHP Photon</td>
-            <th>2018</th>
-          </tr>
-          <tr>
-            <th>2017</th>
-            <td></td>
-            <td>Nov: PHP 7.2</td>
-            <td></td>
-            <td>May: MariaDB 10.2.6</td>
-            <td>Ago: XAMPP 7.1.8 (Apache 2.4.27 + PHP 7.1.8 + MariaDB 10.1.26)</td>
-            <td>Jun: Eclipse PHP Oxygen</td>
-            <th>2017</th>
-          </tr>
-          <tr>
-            <th>2016</th>
-            <td></td>
-            <td>Dic: PHP 7.1</td>
-            <td></td>
-            <td></td>
-            <td>Ago: XAMPP 7.0.9 (Apache 2.4.23 + PHP 7.0.9 + MariaDB 10.1.16)</td>
-            <td>Jun: Eclipse PHP Neon</td>
-            <th>2016</th>
-          </tr>
-          <tr>
-            <th>2015</th>
-            <td></td>
-            <td>Dic: PHP 7.0</td>
-            <td>Oct: MySQL 5.7</td>
-            <td>Oct: MariaDB 10.1.8</td>
-            <td>Ago: XAMPP 5.6.12 (Apache 2.4.16 + PHP 5.6.12 + MySQL 5.6.26)</td>
-            <td>Jun: Eclipse PHP Mars</td>
-            <th>2015</th>
-          </tr>
-          <tr>
-            <th>2014</th>
-            <td></td>
-            <td>Ago: PHP 5.6</td>
-            <td></td>
-            <td>Mar: MariaDB 10.0.10</td>
-            <td>Ago: XAMPP 1.8.3.5 (Apache 2.4.10 + PHP 5.5.11 + MySQL 5.6.20)</td>
-            <td>Jun: Eclipse PHP Luna</td>
-            <th>2014</th>
-          </tr>
-          <tr>
-            <th>2013</th>
-            <td></td>
-            <td>Jun: PHP 5.5</td>
-            <td>Feb: MySQL 5.6</td>
-            <td></td>
-            <td>Ago: XAMPP 1.8.3.1 (Apache 2.4.4 + PHP 5.5.3 + MySQL 5.6.11)
-            </td>
-            <td></td>
-            <th>2013</th>
-          </tr>
-          <tr>
-            <th>2012</th>
-            <td>Feb: Apache 2.4.1</td>
-            <td>Mar: PHP 5.4</td>
-            <td></td>
-            <td>Abr: MariaDB 5.5.23</td>
-            <td>Sep: XAMPP 1.8.1 (Apache 2.4.3 + PHP 5.4.7 + MySQL 5.5.27)</td>
-            <td></td>
-            <th>2012</th>
-          </tr>
-          <tr>
-            <th>2011</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>2011</th>
-          </tr>
-          <tr>
-            <th>2010</th>
-            <td></td>
-            <td></td>
-            <td>Dic: MySQL 5.5</td>
-            <td></td>
-            <td></td>
-            <td>Jun: Eclipse PHP Helios</td>
-            <th>2010</th>
-          </tr>
-          <tr>
-            <th>2009</th>
-            <td></td>
-            <td>Jun: PHP 5.3</td>
-            <td></td>
-            <td></td>
-            <td>Jul: XAMPP 1.7.2 (Apache 2.2.12 + PHP 5.3.0 + MySQL 5.1.37)</td>
-            <td>Jun: Eclipse PHP 2.1</td>
-            <th>2009</th>
-          </tr>
-          <tr>
-            <th>2008</th>
-            <td></td>
-            <td></td>
-            <td>Nov: MySQL 5.1</td>
-            <td></td>
-            <td></td>
-            <td>Dic: Eclipse PHP 2.0<br />
-            </td>
-            <th>2008</th>
-          </tr>
-          <tr>
-            <th>2007</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Sep: Eclipse PHP 1.0</td>
-            <th>2007</th>
-          </tr>
-          <tr>
-            <th>2006</th>
-            <td></td>
-            <td>Nov: PHP 5.2</td>
-            <td></td>
-            <td></td>
-            <td>Sep: XAMPP 1.5.4 (Apache 2.2.3 + PHP 5.1.6 + MySQL 5.0.24a)</td>
-            <td></td>
-            <th>2006</th>
-          </tr>
-          <tr>
-            <th>2005</th>
-            <td>Dic: Apache 2.2.0</td>
-            <td>Nov: PHP 5.1<br />
-              Jul: PHP 4.4</td>
-            <td>Oct: MySQL 5.0</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>2005</th>
-          </tr>
-          <tr>
-            <th>2004</th>
-            <td></td>
-            <td>Jun: PHP 5.0</td>
-            <td>Oct: MySQL 4.1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>2004</th>
-          </tr>
-          <tr>
-            <th>2003</th>
-            <td></td>
-            <td></td>
-            <td>Mar: MySQL 4.0.12</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>2003</th>
-          </tr>
-          <tr>
-            <th>2002</th>
-            <td>Abr: Apache 2.0.35</td>
-            <td>Dic: PHP 4.3<br />
-              Abr: PHP 4.2</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>2002</th>
-          </tr>
-          <tr>
-            <th>2001</th>
-            <td></td>
-            <td>Dic: PHP 4.1</td>
-            <td>Ene: MySQL 3.23.31</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>2001</th>
-          </tr>
-          <tr>
-            <th>2000</th>
-            <td></td>
-            <td>May: PHP 4.0</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>2000</th>
-          </tr>
-          <tr>
-            <th>1999</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>1999</th>
-          </tr>
-          <tr>
-            <th>1998</th>
-            <td>Jun: Apache 1.3.0</td>
-            <td>Jun: PHP 3.0</td>
-            <td>XXX: MySQL 3.21</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>1998</th>
-          </tr>
-          <tr>
-            <th>1997</th>
-            <td>Jun: Apache 1.2.0</td>
-            <td>Nov: PHP 2.0</td>
-            <td>Ene: MySQL 3.20</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>1997</th>
-          </tr>
-          <tr>
-            <th>1996</th>
-            <td>Jun: Apache 1.1.0</td>
-            <td></td>
-            <td>XXX: MySQL 3.19</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>1996</th>
-          </tr>
-          <tr>
-            <th>1995</th>
-            <td>Dic: Apache 1.0.0<br />
-              Abr: Apache 0.6.2</td>
-            <td>Jun: PHP 1.0</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>1995</th>
-          </tr>
-          <tr>
-            <th>1994</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>1994</th>
-          </tr>
-          <tr>
-            <th>1993</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>1993</th>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section id="distribuciones">
-      <h2>Distribuciones GNU/Linux</h2>
-
-      <p>La tabla siguiente indica las versiones de PHP incluidas en las distribuciones GNU/Linux más utilizadas en servidores:</p>
-
-      <table class="tabla-con-borde mcl-franjas">
-        <thead>
-          <tr>
-            <th>Año</th>
-            <th><a href="http://php.net/">PHP</a></th>
-            <th><a href="https://getfedora.org/">Fedora</a></th>
-            <th><a href="https://www.redhat.com/en">RedHat Enterprise Linux</a></th>
-            <th><a href="https://www.debian.org/">Debian</a></th>
-            <th><a href="https://www.ubuntu.com/">Ubuntu</a></th>
-            <th><a href="https://www.suse.com/es-es/">SUSE Linux Enterprise</a></th>
-            <th>Año</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>2018</th>
-            <td></td>
-            <td>¿Oct?: Fedora 29<br />
-              ¿May?: Fedora 28</td>
-            <td></td>
-            <td></td>
-            <td>¿Abr?: Ubuntu 18.04 LTS (bionic)</td>
-            <td></td>
-            <th>2018</th>
-          </tr>
-          <tr>
-            <th>2017</th>
-            <td>¿Dic?: PHP 7.2</td>
-            <td>Nov: Fedora 27: PHP 7.1.11<br />
-              Jul: Fedora 26: PHP 7.1.6</td>
-            <td></td>
-            <td>Jun: Debian 9 (stretch): PHP 7.0</td>
-            <td></td>
-            <td></td>
-            <th>2017</th>
-          </tr>
-          <tr>
-            <th>2016</th>
-            <td>Dic: PHP 7.1</td>
-            <td>Nov: Fedora 25: PHP 7.0.12<br />
-              Jun: Fedora 24: PHP 5.6.22</td>
-            <td></td>
-            <td></td>
-            <td>Abr: Ubuntu 16.04 LTS (xenial): PHP 7.0</td>
-            <td></td>
-            <th>2016</th>
-          </tr>
-          <tr>
-            <th>2015</th>
-            <td>Dic: PHP 7.0</td>
-            <td>Nov: Fedora 23: PHP 5.6.14<br />
-              May: Fedora 22: PHP 5.6.8</td>
-            <td></td>
-            <td>Abr: Debian 8 (jessie): PHP 5.6</td>
-            <td></td>
-            <td></td>
-            <th>2015</th>
-          </tr>
-          <tr>
-            <th>2014</th>
-            <td>Ago: PHP 5.6</td>
-            <td>Dic: Fedora 21: PHP 5.6.2</td>
-            <td>Jun: RHEL 7: PHP 5.4</td>
-            <td></td>
-            <td>Abr: Ubuntu 14.04 LTS (trusty): PHP 5.5 </td>
-            <td>Oct: SLE 12: PHP 5.5</td>
-            <th>2014</th>
-          </tr>
-          <tr>
-            <th>2013</th>
-            <td>Jun: PHP 5.5</td>
-            <td>Dic: Fedora 20: PHP 5.5.6<br />
-              Jul: Fedora 19: PHP 5.5.0<br />
-              Ene: Fedora 18: PHP 5.4.9</td>
-            <td></td>
-            <td>May: Debian 7 (wheezy): PHP 5.4</td>
-            <td></td>
-            <td></td>
-            <th>2013</th>
-          </tr>
-          <tr>
-            <th>2012</th>
-            <td>Mar: PHP 5.4</td>
-            <td>May: Fedora 17: PHP 5.4.1</td>
-            <td></td>
-            <td></td>
-            <td>Abr: Ubuntu 12.04 LTS (precise): PHP 5.3</td>
-            <td></td>
-            <th>2012</th>
-          </tr>
-          <tr>
-            <th>2011</th>
-            <td></td>
-            <td>Nov: Fedora 16: PHP 5.3.8<br />
-              May: Fedora 15: PHP 5.3.6</td>
-            <td></td>
-            <td>Feb: Debian 6 (squeeze): PHP 5.3</td>
-            <td></td>
-            <td></td>
-            <th>2011</th>
-          </tr>
-          <tr>
-            <th>2010</th>
-            <td></td>
-            <td>Nov: Fedora 14: PHP 5.3.3<br />
-              May: Fedora 13: PHP 5.3.1</td>
-            <td>Nov: RHEL 6: PHP 5.3</td>
-            <td></td>
-            <td>Abr: Ubuntu 10.04 LTS (lucid): PHP 5.3</td>
-            <td></td>
-            <th>2010</th>
-          </tr>
-          <tr>
-            <th>2009</th>
-            <td>Jun: PHP 5.3</td>
-            <td>Nov: Fedora 12: PHP 5.3.0<br />
-              Jun: Fedora 11: PHP 5.2.9</td>
-            <td></td>
-            <td>Feb: Debian 5 (lenny): PHP 5.2</td>
-            <td></td>
-            <td>Mar: SLE 11: PHP 5.3</td>
-            <th>2009</th>
-          </tr>
-          <tr>
-            <th>2008</th>
-            <td></td>
-            <td>Nov: Fedora 10: PHP 5.2.6<br />
-              May: Fedora 9: PHP 5.2.5</td>
-            <td></td>
-            <td></td>
-            <td>Abr: Ubuntu 8.04 LTS (hardy): PHP XXX</td>
-            <td></td>
-            <th>2008</th>
-          </tr>
-          <tr>
-            <th>2007</th>
-            <td></td>
-            <td>Nov: Fedora 8: PHP 5.2.4<br />
-              May: Fedora 7: PHP 5.2.2</td>
-            <td>Mar: RHEL 5: PHP 5.1</td>
-            <td>Abr: Debian 4 (etch): PHP 5.2</td>
-            <td></td>
-            <td></td>
-            <th>2007</th>
-          </tr>
-        </tbody>
-      </table>
-
-      <hr class="corta" />
-
-      <p>Fuentes:</p>
       <ul>
-        <li>Apache:
-          <a href="https://www.apachehaus.com/index.php?option=com_content&amp;view=article&amp;id=119:history-releases-apache&amp;catid=41:catagory-change-logs&amp;Itemid=104">The Apache Haus</a> -
-          <a href="http://httpd.apache.org/ABOUT_APACHE.html">Apache</a>
-        </li>
-        <li>PHP:
-          <a href="https://en.wikipedia.org/wiki/PHP#Release_history">Wikipedia</a> -
-          <a href="http://php.net/ChangeLog-7.php">PHP 7 changelog</a> -
-          <a href="http://php.net/ChangeLog-5.php">PHP 5 changelog</a> -
-          <a href="http://php.net/ChangeLog-4.php">PHP 4 changelog</a> -
-          <a href="http://php.net/releases/index.php">PHP historical releases</a> -
-          <a href="http://museum.php.net/">PHP museum</a>
-        </li>
-        <li>PHP Migrating Guides:
-          <a href="https://secure.php.net/manual/en/migration72.php">PHP 7.2</a> -
-          <a href="https://secure.php.net/manual/en/migration71.php">PHP 7.1</a> -
-          <a href="https://secure.php.net/manual/en/migration70.php">PHP 7.0</a> -
-          <a href="https://secure.php.net/manual/en/migration56.php">PHP 5.6</a> -
-          <a href="https://secure.php.net/manual/en/migration55.php">PHP 5.5</a> -
-          <a href="https://secure.php.net/manual/en/migration54.php">PHP 5.4</a> -
-          <a href="https://secure.php.net/manual/en/migration53.php">PHP 5.3</a> -
-          <a href="https://secure.php.net/manual/en/migration52.php">PHP 5.2</a> -
-          <a href="https://secure.php.net/manual/en/migration51.php">PHP 5.1</a> -
-          <a href="https://secure.php.net/manual/en/migration5.php">PHP 5.0</a>
-        </li>
-        <li>PHP 7:
-          <a href="https://wiki.php.net/todo/php72">PHP 7.2 Timetable</a> -
-          <a href="https://wiki.php.net/todo/php71">PHP 7.1 Timetable</a> -
-          <a href="https://wiki.php.net/rfc/php7timeline">PHP 7.0 Timeline</a> -
-          <a href="https://blog.engineyard.com/2015/what-to-expect-php-7">Novedades en PHP 7 (1)</a>
-        </li>
-        <li>MySQL:
-          <a href="https://en.wikipedia.org/wiki/Mysql#Milestones">Wikipedia</a> -
-          <a href="https://docstore.mik.ua/orelly/weblinux2/mysql/ch01_02.htm">O'Reilly</a>
-        </li>
-        <li>What is MariaDB:
-          <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-103/">MariaDB 10.3</a> -
-          <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-102/">MariaDB 10.2</a> -
-          <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-101/">MariaDB 10.1</a> -
-          <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-100/">MariaDB 10.0</a> -
-          <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-55/">MariaDB 5.5</a>
-        </li>
-        <li>MariaDB release notes:
-          <a href="https://mariadb.com/kb/en/library/mariadb-1026-release-notes/">MariaDB 10.2.6</a> -
-          <a href="https://mariadb.com/kb/en/library/mariadb-1018-release-notes/">MariaDB 10.1.8</a> -
-          <a href="https://mariadb.com/kb/en/library/mariadb-10010-release-notes/">MariaDB 10.0.10</a> -
-          <a href="https://mariadb.com/kb/en/library/mariadb-5523-release-notes/">MariaDB 5.5.23</a>
-        </li>
-        <li>Distrowatch:
-          <a href="https://distrowatch.com/table.php?distribution=fedora">Fedora</a> -
-          <a href="http://distrowatch.com/table.php?distribution=redhat">RedHat Enterprise Linux</a> -
-          <a href="http://distrowatch.com/table.php?distribution=debian">Debian</a> -
-          <a href="http://distrowatch.com/table.php?distribution=ubuntu">Ubuntu</a> -
-          <a href="http://distrowatch.com/table.php?distribution=sle">SUSE Linux Enterprise</a>
-        </li>
-        <li><a href="http://rpms.remirepo.net/rpmphp/zoom.php?rpm=php">PHP packages in Fedora</a></li>
+        <li><a href="#programas">Programas</a></li>
+        <li><a href="#distribuciones">Distribuciones</a></li>
       </ul>
-    </section>
+    </div>
+  </nav>
 
-    <footer>
-      <p class="ultmod">Última modificación de esta página: 30 de noviembre de 2017</p>
+  <section id="programas">
+    <h2>Programas utilizados en este curso</h2>
 
-      <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-        Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
-    </footer>
-  </body>
+    <p>La tabla siguiente indica las fechas de publicación de los programas utilizados en este curso:</p>
+
+    <table class="tabla-con-borde mcl-franjas">
+      <thead>
+        <tr>
+          <th>Año</th>
+          <th><a href="http://httpd.apache.org/">Apache</a></th>
+          <th><a href="http://php.net/">PHP</a></th>
+          <th><a href="https://www.mysql.com/">MySQL</a></th>
+          <th><a href="https://mariadb.com/">MariaDB</a></th>
+          <th><a href="https://www.apachefriends.org/index.html">XAMPP</a></th>
+          <th><a href="http://www.eclipse.org/pdt/">Eclipse PHP</a></th>
+          <th>Año</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>2018</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>¿Jun?: Eclipse PHP Photon</td>
+          <th>2018</th>
+        </tr>
+        <tr>
+          <th>2017</th>
+          <td></td>
+          <td>Nov: PHP 7.2</td>
+          <td></td>
+          <td>May: MariaDB 10.2.6</td>
+          <td>Ago: XAMPP 7.1.8 (Apache 2.4.27 + PHP 7.1.8 + MariaDB 10.1.26)</td>
+          <td>Jun: Eclipse PHP Oxygen</td>
+          <th>2017</th>
+        </tr>
+        <tr>
+          <th>2016</th>
+          <td></td>
+          <td>Dic: PHP 7.1</td>
+          <td></td>
+          <td></td>
+          <td>Ago: XAMPP 7.0.9 (Apache 2.4.23 + PHP 7.0.9 + MariaDB 10.1.16)</td>
+          <td>Jun: Eclipse PHP Neon</td>
+          <th>2016</th>
+        </tr>
+        <tr>
+          <th>2015</th>
+          <td></td>
+          <td>Dic: PHP 7.0</td>
+          <td>Oct: MySQL 5.7</td>
+          <td>Oct: MariaDB 10.1.8</td>
+          <td>Ago: XAMPP 5.6.12 (Apache 2.4.16 + PHP 5.6.12 + MySQL 5.6.26)</td>
+          <td>Jun: Eclipse PHP Mars</td>
+          <th>2015</th>
+        </tr>
+        <tr>
+          <th>2014</th>
+          <td></td>
+          <td>Ago: PHP 5.6</td>
+          <td></td>
+          <td>Mar: MariaDB 10.0.10</td>
+          <td>Ago: XAMPP 1.8.3.5 (Apache 2.4.10 + PHP 5.5.11 + MySQL 5.6.20)</td>
+          <td>Jun: Eclipse PHP Luna</td>
+          <th>2014</th>
+        </tr>
+        <tr>
+          <th>2013</th>
+          <td></td>
+          <td>Jun: PHP 5.5</td>
+          <td>Feb: MySQL 5.6</td>
+          <td></td>
+          <td>Ago: XAMPP 1.8.3.1 (Apache 2.4.4 + PHP 5.5.3 + MySQL 5.6.11)
+          </td>
+          <td></td>
+          <th>2013</th>
+        </tr>
+        <tr>
+          <th>2012</th>
+          <td>Feb: Apache 2.4.1</td>
+          <td>Mar: PHP 5.4</td>
+          <td></td>
+          <td>Abr: MariaDB 5.5.23</td>
+          <td>Sep: XAMPP 1.8.1 (Apache 2.4.3 + PHP 5.4.7 + MySQL 5.5.27)</td>
+          <td></td>
+          <th>2012</th>
+        </tr>
+        <tr>
+          <th>2011</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>2011</th>
+        </tr>
+        <tr>
+          <th>2010</th>
+          <td></td>
+          <td></td>
+          <td>Dic: MySQL 5.5</td>
+          <td></td>
+          <td></td>
+          <td>Jun: Eclipse PHP Helios</td>
+          <th>2010</th>
+        </tr>
+        <tr>
+          <th>2009</th>
+          <td></td>
+          <td>Jun: PHP 5.3</td>
+          <td></td>
+          <td></td>
+          <td>Jul: XAMPP 1.7.2 (Apache 2.2.12 + PHP 5.3.0 + MySQL 5.1.37)</td>
+          <td>Jun: Eclipse PHP 2.1</td>
+          <th>2009</th>
+        </tr>
+        <tr>
+          <th>2008</th>
+          <td></td>
+          <td></td>
+          <td>Nov: MySQL 5.1</td>
+          <td></td>
+          <td></td>
+          <td>Dic: Eclipse PHP 2.0<br />
+          </td>
+          <th>2008</th>
+        </tr>
+        <tr>
+          <th>2007</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Sep: Eclipse PHP 1.0</td>
+          <th>2007</th>
+        </tr>
+        <tr>
+          <th>2006</th>
+          <td></td>
+          <td>Nov: PHP 5.2</td>
+          <td></td>
+          <td></td>
+          <td>Sep: XAMPP 1.5.4 (Apache 2.2.3 + PHP 5.1.6 + MySQL 5.0.24a)</td>
+          <td></td>
+          <th>2006</th>
+        </tr>
+        <tr>
+          <th>2005</th>
+          <td>Dic: Apache 2.2.0</td>
+          <td>Nov: PHP 5.1<br /> Jul: PHP 4.4</td>
+          <td>Oct: MySQL 5.0</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>2005</th>
+        </tr>
+        <tr>
+          <th>2004</th>
+          <td></td>
+          <td>Jun: PHP 5.0</td>
+          <td>Oct: MySQL 4.1</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>2004</th>
+        </tr>
+        <tr>
+          <th>2003</th>
+          <td></td>
+          <td></td>
+          <td>Mar: MySQL 4.0.12</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>2003</th>
+        </tr>
+        <tr>
+          <th>2002</th>
+          <td>Abr: Apache 2.0.35</td>
+          <td>Dic: PHP 4.3<br /> Abr: PHP 4.2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>2002</th>
+        </tr>
+        <tr>
+          <th>2001</th>
+          <td></td>
+          <td>Dic: PHP 4.1</td>
+          <td>Ene: MySQL 3.23.31</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>2001</th>
+        </tr>
+        <tr>
+          <th>2000</th>
+          <td></td>
+          <td>May: PHP 4.0</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>2000</th>
+        </tr>
+        <tr>
+          <th>1999</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>1999</th>
+        </tr>
+        <tr>
+          <th>1998</th>
+          <td>Jun: Apache 1.3.0</td>
+          <td>Jun: PHP 3.0</td>
+          <td>XXX: MySQL 3.21</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>1998</th>
+        </tr>
+        <tr>
+          <th>1997</th>
+          <td>Jun: Apache 1.2.0</td>
+          <td>Nov: PHP 2.0</td>
+          <td>Ene: MySQL 3.20</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>1997</th>
+        </tr>
+        <tr>
+          <th>1996</th>
+          <td>Jun: Apache 1.1.0</td>
+          <td></td>
+          <td>XXX: MySQL 3.19</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>1996</th>
+        </tr>
+        <tr>
+          <th>1995</th>
+          <td>Dic: Apache 1.0.0<br /> Abr: Apache 0.6.2</td>
+          <td>Jun: PHP 1.0</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>1995</th>
+        </tr>
+        <tr>
+          <th>1994</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>1994</th>
+        </tr>
+        <tr>
+          <th>1993</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th>1993</th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="distribuciones">
+    <h2>Distribuciones GNU/Linux</h2>
+
+    <p>La tabla siguiente indica las versiones de PHP incluidas en las distribuciones GNU/Linux más utilizadas en servidores:</p>
+
+    <table class="tabla-con-borde mcl-franjas">
+      <thead>
+        <tr>
+          <th>Año</th>
+          <th><a href="http://php.net/">PHP</a></th>
+          <th><a href="https://getfedora.org/">Fedora</a></th>
+          <th><a href="https://www.redhat.com/en">RedHat Enterprise Linux</a></th>
+          <th><a href="https://www.debian.org/">Debian</a></th>
+          <th><a href="https://www.ubuntu.com/">Ubuntu</a></th>
+          <th><a href="https://www.suse.com/es-es/">SUSE Linux Enterprise</a></th>
+          <th>Año</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>2018</th>
+          <td></td>
+          <td>¿Oct?: Fedora 29<br /> ¿May?: Fedora 28</td>
+          <td></td>
+          <td></td>
+          <td>¿Abr?: Ubuntu 18.04 LTS (bionic)</td>
+          <td></td>
+          <th>2018</th>
+        </tr>
+        <tr>
+          <th>2017</th>
+          <td>¿Dic?: PHP 7.2</td>
+          <td>Nov: Fedora 27: PHP 7.1.11<br /> Jul: Fedora 26: PHP 7.1.6</td>
+          <td></td>
+          <td>Jun: Debian 9 (stretch): PHP 7.0</td>
+          <td></td>
+          <td></td>
+          <th>2017</th>
+        </tr>
+        <tr>
+          <th>2016</th>
+          <td>Dic: PHP 7.1</td>
+          <td>Nov: Fedora 25: PHP 7.0.12<br /> Jun: Fedora 24: PHP 5.6.22</td>
+          <td></td>
+          <td></td>
+          <td>Abr: Ubuntu 16.04 LTS (xenial): PHP 7.0</td>
+          <td></td>
+          <th>2016</th>
+        </tr>
+        <tr>
+          <th>2015</th>
+          <td>Dic: PHP 7.0</td>
+          <td>Nov: Fedora 23: PHP 5.6.14<br /> May: Fedora 22: PHP 5.6.8</td>
+          <td></td>
+          <td>Abr: Debian 8 (jessie): PHP 5.6</td>
+          <td></td>
+          <td></td>
+          <th>2015</th>
+        </tr>
+        <tr>
+          <th>2014</th>
+          <td>Ago: PHP 5.6</td>
+          <td>Dic: Fedora 21: PHP 5.6.2</td>
+          <td>Jun: RHEL 7: PHP 5.4</td>
+          <td></td>
+          <td>Abr: Ubuntu 14.04 LTS (trusty): PHP 5.5 </td>
+          <td>Oct: SLE 12: PHP 5.5</td>
+          <th>2014</th>
+        </tr>
+        <tr>
+          <th>2013</th>
+          <td>Jun: PHP 5.5</td>
+          <td>Dic: Fedora 20: PHP 5.5.6<br /> Jul: Fedora 19: PHP 5.5.0<br /> Ene: Fedora 18: PHP 5.4.9</td>
+          <td></td>
+          <td>May: Debian 7 (wheezy): PHP 5.4</td>
+          <td></td>
+          <td></td>
+          <th>2013</th>
+        </tr>
+        <tr>
+          <th>2012</th>
+          <td>Mar: PHP 5.4</td>
+          <td>May: Fedora 17: PHP 5.4.1</td>
+          <td></td>
+          <td></td>
+          <td>Abr: Ubuntu 12.04 LTS (precise): PHP 5.3</td>
+          <td></td>
+          <th>2012</th>
+        </tr>
+        <tr>
+          <th>2011</th>
+          <td></td>
+          <td>Nov: Fedora 16: PHP 5.3.8<br /> May: Fedora 15: PHP 5.3.6</td>
+          <td></td>
+          <td>Feb: Debian 6 (squeeze): PHP 5.3</td>
+          <td></td>
+          <td></td>
+          <th>2011</th>
+        </tr>
+        <tr>
+          <th>2010</th>
+          <td></td>
+          <td>Nov: Fedora 14: PHP 5.3.3<br /> May: Fedora 13: PHP 5.3.1</td>
+          <td>Nov: RHEL 6: PHP 5.3</td>
+          <td></td>
+          <td>Abr: Ubuntu 10.04 LTS (lucid): PHP 5.3</td>
+          <td></td>
+          <th>2010</th>
+        </tr>
+        <tr>
+          <th>2009</th>
+          <td>Jun: PHP 5.3</td>
+          <td>Nov: Fedora 12: PHP 5.3.0<br /> Jun: Fedora 11: PHP 5.2.9</td>
+          <td></td>
+          <td>Feb: Debian 5 (lenny): PHP 5.2</td>
+          <td></td>
+          <td>Mar: SLE 11: PHP 5.3</td>
+          <th>2009</th>
+        </tr>
+        <tr>
+          <th>2008</th>
+          <td></td>
+          <td>Nov: Fedora 10: PHP 5.2.6<br /> May: Fedora 9: PHP 5.2.5</td>
+          <td></td>
+          <td></td>
+          <td>Abr: Ubuntu 8.04 LTS (hardy): PHP XXX</td>
+          <td></td>
+          <th>2008</th>
+        </tr>
+        <tr>
+          <th>2007</th>
+          <td></td>
+          <td>Nov: Fedora 8: PHP 5.2.4<br /> May: Fedora 7: PHP 5.2.2</td>
+          <td>Mar: RHEL 5: PHP 5.1</td>
+          <td>Abr: Debian 4 (etch): PHP 5.2</td>
+          <td></td>
+          <td></td>
+          <th>2007</th>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="corta" />
+
+    <p>Fuentes:</p>
+    <ul>
+      <li>Apache:
+        <a href="https://www.apachehaus.com/index.php?option=com_content&amp;view=article&amp;id=119:history-releases-apache&amp;catid=41:catagory-change-logs&amp;Itemid=104">The Apache Haus</a> -
+        <a href="http://httpd.apache.org/ABOUT_APACHE.html">Apache</a>
+      </li>
+      <li>PHP:
+        <a href="https://en.wikipedia.org/wiki/PHP#Release_history">Wikipedia</a> -
+        <a href="http://php.net/ChangeLog-7.php">PHP 7 changelog</a> -
+        <a href="http://php.net/ChangeLog-5.php">PHP 5 changelog</a> -
+        <a href="http://php.net/ChangeLog-4.php">PHP 4 changelog</a> -
+        <a href="http://php.net/releases/index.php">PHP historical releases</a> -
+        <a href="http://museum.php.net/">PHP museum</a>
+      </li>
+      <li>PHP Migrating Guides:
+        <a href="https://secure.php.net/manual/en/migration72.php">PHP 7.2</a> -
+        <a href="https://secure.php.net/manual/en/migration71.php">PHP 7.1</a> -
+        <a href="https://secure.php.net/manual/en/migration70.php">PHP 7.0</a> -
+        <a href="https://secure.php.net/manual/en/migration56.php">PHP 5.6</a> -
+        <a href="https://secure.php.net/manual/en/migration55.php">PHP 5.5</a> -
+        <a href="https://secure.php.net/manual/en/migration54.php">PHP 5.4</a> -
+        <a href="https://secure.php.net/manual/en/migration53.php">PHP 5.3</a> -
+        <a href="https://secure.php.net/manual/en/migration52.php">PHP 5.2</a> -
+        <a href="https://secure.php.net/manual/en/migration51.php">PHP 5.1</a> -
+        <a href="https://secure.php.net/manual/en/migration5.php">PHP 5.0</a>
+      </li>
+      <li>PHP 7:
+        <a href="https://wiki.php.net/todo/php72">PHP 7.2 Timetable</a> -
+        <a href="https://wiki.php.net/todo/php71">PHP 7.1 Timetable</a> -
+        <a href="https://wiki.php.net/rfc/php7timeline">PHP 7.0 Timeline</a> -
+        <a href="https://blog.engineyard.com/2015/what-to-expect-php-7">Novedades en PHP 7 (1)</a>
+      </li>
+      <li>MySQL:
+        <a href="https://en.wikipedia.org/wiki/Mysql#Milestones">Wikipedia</a> -
+        <a href="https://docstore.mik.ua/orelly/weblinux2/mysql/ch01_02.htm">O'Reilly</a>
+      </li>
+      <li>What is MariaDB:
+        <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-103/">MariaDB 10.3</a> -
+        <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-102/">MariaDB 10.2</a> -
+        <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-101/">MariaDB 10.1</a> -
+        <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-100/">MariaDB 10.0</a> -
+        <a href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-55/">MariaDB 5.5</a>
+      </li>
+      <li>MariaDB release notes:
+        <a href="https://mariadb.com/kb/en/library/mariadb-1026-release-notes/">MariaDB 10.2.6</a> -
+        <a href="https://mariadb.com/kb/en/library/mariadb-1018-release-notes/">MariaDB 10.1.8</a> -
+        <a href="https://mariadb.com/kb/en/library/mariadb-10010-release-notes/">MariaDB 10.0.10</a> -
+        <a href="https://mariadb.com/kb/en/library/mariadb-5523-release-notes/">MariaDB 5.5.23</a>
+      </li>
+      <li>Distrowatch:
+        <a href="https://distrowatch.com/table.php?distribution=fedora">Fedora</a> -
+        <a href="http://distrowatch.com/table.php?distribution=redhat">RedHat Enterprise Linux</a> -
+        <a href="http://distrowatch.com/table.php?distribution=debian">Debian</a> -
+        <a href="http://distrowatch.com/table.php?distribution=ubuntu">Ubuntu</a> -
+        <a href="http://distrowatch.com/table.php?distribution=sle">SUSE Linux Enterprise</a>
+      </li>
+      <li><a href="http://rpms.remirepo.net/rpmphp/zoom.php?rpm=php">PHP packages in Fedora</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 30 de noviembre de 2017</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
 </html>
