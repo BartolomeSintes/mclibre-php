@@ -72,7 +72,7 @@
     <section id="conexion-mysql">
       <h3>Conexión con MySQL</h3>
 
-      <p>En el caso de MySQL, para crear el objeto PDO se necesita proporcionar el nombre del servidor, el nombre de usuario y la contraseña.</p>
+      <p>En el caso de MySQL, para crear el objeto PDO se necesita proporcionar el nombre del servidor, el nombre de usuario y la contraseña. En el ejemplo siguiente esos datos se proporcionan como constantes que deberían defeinirse en el programa.</p>
 
       <p>Para poder acceder a MySQL mediante PDO, debe estar activada la extensión php_pdo_mysql en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-mysql">apartado extensión pdo_mysql en la lección de configuración de Apache y PHP</a>).</p>
 
@@ -82,7 +82,7 @@
 function conectaDb()
 {
     try {
-        $tmp = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
+        $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp-&gt;exec("set names utf8mb4");
         return($tmp);
@@ -191,7 +191,7 @@ if ($dbMotor == MYSQL) {
 function conectaDb()
 {
     try {
-        $tmp = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
+        $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp-&gt;exec("set names utf8mb4");
         return($tmp);
@@ -972,7 +972,7 @@ if (!$result) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 12 de diciembre de 2017</p>
 
     <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
