@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Elige cartas. Exámenes. PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../varios/php.css" rel="stylesheet" type="text/css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <script src="../../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <h1>Exámenes - Elige cartas</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Elige cartas</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule la elección de cartas de un mazo. Cada vez que se haga clic en la carta, aumentará el contador total y unos botones permitirán cambiar la carta o poner a cero el contador.</p>
+
+  <section id="comentarios">
+    <h2>Elige cartas - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra la carta que se puede elegir, el contador y los botones:
+            <ul>
+              <li>Las cartas son imágenes SVG</li>
+              <li>El contador empieza a cero.</li>
+              <li>Al pulsar la carta indicamos que queremos seleccionarla y aumentará el contador el valor numérico de la carta.</li>
+              <li>Las cartas se pueden repetir</li>
+              <li>Al pulsar el botón "Nueva" la carta cambia sin aumentar el contador.</li>
+              <li>Al pulsar el botón "Reiniciar" el contador se pone a cero.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón, modifica la variable de sesión y redirige a la primera página.
+            <ul>
+              <li>La variable de sesión puede ser única: el contador de cartas seleccionadas.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario.</li>
+      <li>No se deben cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, se podrá modificar la carta, pero no el contador.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/elige-cartas-1.png" alt="Elige cartas" width="1008" height="450" /></p>
+        <p class="captura"><img src="img/elige-cartas-2.png" alt="Elige cartas" width="1008" height="450" /></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Elige cartas - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;form action="elige-cartas-2.php"&gt;
+    &lt;p&gt;
+      &lt;button name="carta" value="3"&gt;
+        &lt;img src="img/p3.svg" alt="p3" height="200" /&gt;
+      &lt;/button&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;Total: 2&lt;/p&gt;
+
+    &lt;p&gt;&lt;input type="submit" name="accion" value="Nueva" /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;input type="submit" name="accion" value="Reiniciar" /&gt;&lt;/p&gt;
+  &lt;/form&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de enero de 2018</p>
+
+    <p class="licencia"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons BY-SA 4.0</a>.</p>
+  </footer>
+</body>
+</html>
