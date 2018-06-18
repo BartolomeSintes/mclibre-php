@@ -86,12 +86,12 @@ if ($inicialOk && $finalOk && $incrementoOk) {
         if ($inicial == $final) {
             print "  <p>La sucesión constante en la que todos los términos son $inicial cumple las condiciones indicadas.</p>\n";
         } else {
-            print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados. </p>\n";
+            print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados.</p>\n";
         }
     } else {
         $valores = ($final - $inicial) / $incremento + 1;
         if ($valores != round($valores) || $valores < 2) {
-            print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados. </p>\n";
+            print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados.</p>\n";
         } else {
             $escribeSolucion = true;
         }

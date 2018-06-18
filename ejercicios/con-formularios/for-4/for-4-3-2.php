@@ -82,7 +82,7 @@ if ($valores == "") {
         . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($valores < 2) {
-    print "  <p class=\"aviso\">Como mínimo debe solicitar dos valores. </p>\n";
+    print "  <p class=\"aviso\">Como mínimo debe solicitar dos valores.</p>\n";
     print "\n";
 } else {
     $valoresOk = true;

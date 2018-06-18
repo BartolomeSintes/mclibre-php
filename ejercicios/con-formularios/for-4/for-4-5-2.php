@@ -91,7 +91,7 @@ if ($valores == "") {
         . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($valores < 2) {
-    print "  <p class=\"aviso\">Como mínimo debe solicitar dos valores. </p>\n";
+    print "  <p class=\"aviso\">Como mínimo debe solicitar dos valores.</p>\n";
     print "\n";
 } else {
     $valoresOk = true;
@@ -136,12 +136,12 @@ if ($recibidosOk && $inicialOk && $finalOk && $incrementoOk && $valoresOk) {
             if ($inicial == $final) {
                 print "  <p>La sucesión constante en la que todos los términos son $inicial cumple las condiciones indicadas.</p>\n";
             } else {
-                print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados. </p>\n";
+                print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados.</p>\n";
             }
         } else {
             $valores = 1 + ($final - $inicial) / $incremento;
             if ($valores != round($valores) || $valores < 2) {
-                print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados. </p>\n";
+                print "  <p class=\"aviso\">No es posible construir una sucesión con los valores indicados.</p>\n";
             } else {
                 $escribeSolucion = true;
             }
