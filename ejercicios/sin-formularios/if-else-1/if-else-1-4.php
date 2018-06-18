@@ -43,9 +43,9 @@ $dado2 = rand(1, 6);
 $dado3 = rand(1, 6);
 
 print "  <p>\n";
-print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" title=\"$dado1\" width=\"140\" height=\"140\">\n";
-print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" title=\"$dado2\" width=\"140\" height=\"140\">\n";
-print "    <img src=\"img/$dado3.svg\" alt=\"$dado3\" title=\"$dado3\" width=\"140\" height=\"140\">\n";
+print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" title=\"$dado1\" width=\"140\" height=\"140\" />\n";
+print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" title=\"$dado2\" width=\"140\" height=\"140\" />\n";
+print "    <img src=\"img/$dado3.svg\" alt=\"$dado3\" title=\"$dado3\" width=\"140\" height=\"140\" />\n";
 print "  </p>\n";
 print "\n";
 
