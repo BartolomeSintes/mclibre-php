@@ -46,7 +46,7 @@ if (!isset($_SESSION['citasUsuario'])) {
         if ($db->query($consulta)) {
             print "<p>Registro de Etiquetas de Citas borrado correctamente.</p>\n";
         } else {
-            print "<p>Error al borrar el registro de Etiquetas de Citas .<p>\n";
+            print "<p>Error al borrar el registro de Etiquetas de Citas.<p>\n";
         }
             }
     $db = NULL;
