@@ -22,7 +22,6 @@ print "<!-- Ejercicio incompleto -->\n";
 <body>
   <h1>Tabla cuadrada con casillas de verificación (Resultado)</h1>
 
-
 <?php
 
 print "/* Ejercicio incompleto */\n";

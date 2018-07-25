@@ -5,7 +5,7 @@
  * @author    Escribe tu nombre
  *
  */
-  
+
 print "<!-- Ejercicio incompleto -->\n";
 
 ?>
@@ -14,7 +14,7 @@ print "<!-- Ejercicio incompleto -->\n";
 <head>
   <meta charset="utf-8" />
   <title>Votar una opción. Sesiones.
-    Escribe tu nombre</title> 
+    Escribe tu nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -28,7 +28,7 @@ print "<!-- Ejercicio incompleto -->\n";
     <table>
       <tr>
         <td style="vertical-align: top;"><button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hsl(200, 100%, 50%);">&#x2714;</button></td>
-		
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
@@ -38,7 +38,7 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
       </tr>
       <tr>
         <td><button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hsl(35, 100%, 50%)">&#x2714;</button></td>
-        <td>		
+        <td>
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

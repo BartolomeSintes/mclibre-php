@@ -5,7 +5,7 @@
  * @author    Escribe tu nombre
  *
  */
-  
+
 print "<!-- Ejercicio incompleto -->\n";
 
 ?>
@@ -14,7 +14,7 @@ print "<!-- Ejercicio incompleto -->\n";
 <head>
   <meta charset="utf-8" />
   <title>Mover un punto en dos dimensiones. Sesiones.
-    Escribe tu nombre</title> 
+    Escribe tu nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -53,9 +53,9 @@ print "<!-- Ejercicio incompleto -->\n";
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
 
-?>		
+?>
           </svg>
-        </td>	
+        </td>
       </tr>
     </table>
   </form>

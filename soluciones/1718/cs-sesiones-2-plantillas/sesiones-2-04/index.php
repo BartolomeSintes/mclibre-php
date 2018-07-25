@@ -21,7 +21,7 @@ print "<!-- Ejercicio incompleto -->\n";
 
 <body>
   <h1>Datos de sesión (Inicio)</h1>
-	
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

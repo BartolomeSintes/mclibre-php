@@ -14,14 +14,14 @@ print "<!-- Ejercicio incompleto -->\n";
 <head>
   <meta charset="utf-8" />
   <title>Formulario en tres pasos (Formulario 2). Sesiones (2) 01. Sesiones.
-    Escribe tu nombre</title> 
+    Escribe tu nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
   <h1>Formulario en tres pasos (Formulario 2)</h1>
-	
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

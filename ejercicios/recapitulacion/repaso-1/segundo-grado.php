@@ -81,7 +81,6 @@ if ($c == "") {
     $cOk = true;
 }
 
-
 // Si los valores recibidos son correctos ...
 if ($aOk && $bOk && $cOk) {
     print "<p>La ecuación <span style=\"font-size: 200%\">";

@@ -82,17 +82,14 @@ setcookie(nombreCookie, valorCookie, time() - 3600);</code>
 ini_set("session.save_handler", "files"); // Sólo si session.save_handler = user en php.ini
 session_start();
 
-
 // Una vez abierta la sesión, se pueden almacenar valores en la matriz $_SESSION:
 
 $_SESSION["dato"] = $dato;
-
 
 // Los valores almacenados se pueden recuperar en cualquier página
 // en la que se haya abierto sesión desde el mismo navegador:
 
 $dato = $_SESSION["dato"];
-
 
 // Las sesiones se pierden si el usuario cierra el navegador o si se
 // destruye la sesión desde el servidor:

@@ -54,7 +54,6 @@ $preguntasMinimo  = 1;
 $respuestasMinimo = 2;
 $numeroMaximo     = 10;
 
-
 // Comprobación de $preguntas (entero entre 2 y 10)
 if ($preguntas == "") {
     print "<p class=\"aviso\">No ha escrito el número de preguntas.</p>\n";

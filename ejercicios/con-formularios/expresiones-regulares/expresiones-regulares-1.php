@@ -100,7 +100,6 @@ comprueba_pcre($patron, $texto, "es un número del DNI (de 1 a 8 números, con l
 $patron = "/^[0-4][0-9]{4}$/";
 comprueba_pcre($patron, $texto, "es un código postal");
 
-
 print "  </ol>\n";
 print "  <p><a href=\"expresiones-regulares-1.html\">Volver</a></p>\n";
 ?>

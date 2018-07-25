@@ -21,7 +21,7 @@ print "<!-- Ejercicio incompleto -->\n";
 
 <body>
   <h1>Borrar datos (1)</h1>
-	
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

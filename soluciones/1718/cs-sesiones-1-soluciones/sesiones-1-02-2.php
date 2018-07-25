@@ -56,7 +56,6 @@ if ($nombreOk) {
     exit;
 }
 
-
 /* La solución anterior sigue el patrón recogida+validación+ejecución
  * propuesta en los ejercicios de formularios
  * El programa podría hacerse más corto con el mismo resultado

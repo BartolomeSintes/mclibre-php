@@ -65,8 +65,6 @@ print "\n";
 print "</pre>\n";
 
 
-
-
 print "<pre>\n";
 print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 9; $i++) {
@@ -86,7 +84,6 @@ for ($i = 2; $i <= 18; $i = $i + 2) {
 }
 print "\n";
 print "</pre>\n";
-
 
 
 print "<pre>\n";
@@ -110,7 +107,6 @@ print "\n";
 print "</pre>\n";
 
 
-
 print "<pre>\n";
 print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 6; $i++) {
@@ -130,7 +126,6 @@ for ($i = 0; $i <= 25; $i = $i + 5) {
 }
 print "\n";
 print "</pre>\n";
-
 
 
 print "<pre>\n";
@@ -154,7 +149,6 @@ print "\n";
 print "</pre>\n";
 
 
-
 print "<pre>\n";
 print "<strong>for (\$i = 1; ... ; \$i++) :</strong>";
 for ($i = 1; $i <= 7; $i++) {
@@ -174,7 +168,6 @@ for ($i = 40; $i >= 10; $i = $i - 5) {
 }
 print "\n";
 print "</pre>\n";
-
 
 
 print "<pre>\n";

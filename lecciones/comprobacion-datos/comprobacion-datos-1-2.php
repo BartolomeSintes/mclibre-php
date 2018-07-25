@@ -186,7 +186,6 @@ print "      </tr>\n";
 print "    </table>\n";
 print "\n";
 
-
 //  Funciones ctype_
 
 print "    <table class=\"conborde\" style=\"float: left; margin-left: 10px;\">\n";
@@ -311,7 +310,6 @@ print "      </tr>\n";
 print "    </table>\n";
 print "\n";
 
-
 //  Función filter_var
 
 print "    <table class=\"conborde\" style=\"float: left; margin-left: 10px;\">\n";
@@ -395,7 +393,6 @@ print "      </tr>\n";
 
 print "    </table>\n";
 print "\n";
-
 
 print "    <p style=\"clear: both; padding-top: 1em;\"><a href=\"comprobacion-datos-1-1.php\">Volver al formulario.</a></p>\n";
 ?>

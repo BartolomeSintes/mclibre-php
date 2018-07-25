@@ -22,7 +22,6 @@ print "<!-- Ejercicio incompleto -->\n";
 <body>
   <h1>Hombres y mujeres (Resultado)</h1>
 
-
 <?php
 
 print "/* Ejercicio incompleto */\n";

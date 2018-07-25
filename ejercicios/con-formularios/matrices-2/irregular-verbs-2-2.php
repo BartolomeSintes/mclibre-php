@@ -69,7 +69,6 @@ if ($formaVerbal != 0 && $formaVerbal != 1 && $formaVerbal != 2) {
     $formaVerbalOk = true;
 }
 
-
 if ($verboOk && $formaVerbalOk) {
     if ($respuesta == $irregularVerbs[$verbo][$formaVerbal]) {
         print "<p>¡Respuesta correcta!</p>\n\n";

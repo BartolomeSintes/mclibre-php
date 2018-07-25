@@ -30,7 +30,7 @@ print "<!-- Ejercicio incompleto -->\n";
       <input type="reset" value="Borrar" />
     </p>
   </form>
-	
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

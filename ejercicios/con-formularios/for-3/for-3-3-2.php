@@ -51,7 +51,6 @@ $numeroOk = false;
 $numeroMinimo = 1;
 $numeroMaximo = 100;
 
-
 if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
     print "\n";

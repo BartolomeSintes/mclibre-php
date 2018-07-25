@@ -49,7 +49,6 @@ function recoge($var)
     return $tmp;
 }
 
-
 $cuadros = recoge("cuadros");
 $mas     = recoge("mas");
 $menos   = recoge("menos");

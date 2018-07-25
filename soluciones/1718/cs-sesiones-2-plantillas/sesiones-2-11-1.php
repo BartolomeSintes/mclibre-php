@@ -22,7 +22,7 @@ print "<!-- Ejercicio incompleto -->\n";
 <body>
   <h1>Comprobación en formulario</h1>
 
-  <form action="sesiones-2-11-2.php" method="get">	
+  <form action="sesiones-2-11-2.php" method="get">
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

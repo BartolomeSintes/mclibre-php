@@ -5,7 +5,7 @@
  * @author    Escribe tu nombre
  *
  */
-  
+
 print "<!-- Ejercicio incompleto -->\n";
 
 ?>
@@ -14,7 +14,7 @@ print "<!-- Ejercicio incompleto -->\n";
 <head>
   <meta charset="utf-8" />
   <title>Subir y bajar número. Sesiones.
-    Escribe tu nombre</title> 
+    Escribe tu nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -27,7 +27,7 @@ print "<!-- Ejercicio incompleto -->\n";
 
     <p>
       <button type="submit" name="accion" value="bajar" style="font-size: 4rem">-</button>
-	  
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

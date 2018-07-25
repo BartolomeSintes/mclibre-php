@@ -111,7 +111,6 @@ if (isset($_REQUEST['anyadir']) && ($numeroValores<$numeroValoresMaximo)) {
     $numeroValores--;
 }
 
-
 // Recoge valores numéricos y los valida
 $valores = recogeMatriz('valores');
 $okValores = true;

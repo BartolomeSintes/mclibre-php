@@ -92,7 +92,7 @@ if (!$result) {
                     print "class=\"neg\" ";
                 }
                 $tmp = !$tmp;
-                print ">$valor[nombre] $valor[apellidos] </span>\n";
+                print ">$valor[nombre] $valor[apellidos]</span>\n";
             }
         }
         print "</p>\n";
