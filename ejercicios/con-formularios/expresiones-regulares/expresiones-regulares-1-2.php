@@ -21,32 +21,26 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
   <title>Validación de entrada de texto 1 (Resultado). Expresiones regulares.
-  Ejercicio. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
+
 <body>
   <h1>Validación de entrada de texto 1 (Resultado)</h1>
-<?php
 
+<?php
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
-        ? strip_tags(trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8")))
-        : "";
-    if (get_magic_quotes_gpc()) {
-        $tmp = stripslashes($tmp);
-    }
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
     return $tmp;
 }
 
@@ -61,7 +55,9 @@ function comprueba_pcre($patron, $texto, $objetivo)
 
 $texto = recoge('texto');
 
-print "  <p>Ha escrito: <strong>\"$texto\"</strong></p>\n  <ol>\n";
+print "  <p>Ha escrito: <strong>\"$texto\"</strong></p>\n";
+print "\n";
+print "  <ol>\n";
 
 if ($texto == "") {
     print "    <li>La cadena \"\" está vacía.</li>\n";
@@ -101,17 +97,21 @@ $patron = "/^[0-4][0-9]{4}$/";
 comprueba_pcre($patron, $texto, "es un código postal");
 
 print "  </ol>\n";
-print "  <p><a href=\"expresiones-regulares-1.html\">Volver</a></p>\n";
 ?>
-<address>
-  Esta página forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de esta página: 14 de noviembre de 2011
-</address>
 
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
+  <p><a href="expresiones-regulares-1-1.php">Volver al formulario.</a></p>
+
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2011-11-14">14 de noviembre de 2011</time></p>
+
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
 </body>
 </html>
