@@ -22,22 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Controles ocultos (Resultado. Controles ocultos.
-  Ejemplos. PHP. Bartolomé Sintes Marco</title>
+  <meta charset="utf-8" />
+  <title>Controles ocultos (Resultado). Controles ocultos.
+    Ejemplos. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Controles ocultos (Resultado)</h1>
+  <h1>Controles ocultos (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -48,23 +45,28 @@ function recoge($var)
     return $tmp;
 }
 
-$nombre   = recoge("nombre");
+$nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-print "<p>Su nombre es <strong>$nombre</strong>.</p>\n";
-print "<p>Su apellido es <strong>$apellidos</strong>.</p>\n";
+print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
+print "\n";
+print "  <p>Su apellido es <strong>$apellidos</strong>.</p>\n";
 
 ?>
 
-<p><a href="controles-ocultos-1.html">Volver al formulario inicial.</a></p>
+  <p><a href="controles-ocultos-1.php">Volver al formulario inicial.</a></p>
 
-<p class="ultmod">Última modificación de esta página: 21 de octubre de 2014</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2014-10-21">21 de octubre de 2014</time></p>
 
-<p class="licencia">
-Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-<cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a></p>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
 </body>
 </html>

@@ -21,23 +21,19 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
   <title>Controles ocultos (Formulario 2). Controles ocultos.
-  Ejemplos. PHP. Bartolomé Sintes Marco</title>
+    Ejemplos. Programación web en PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Controles ocultos (Formulario 2)</h1>
+  <h1>Controles ocultos (Formulario 2)</h1>
 
 <?php
 function recoge($var)
@@ -50,29 +46,33 @@ function recoge($var)
 
 $nombre = recoge("nombre");
 
-print "<p>Su nombre es <strong>$nombre</strong>.</p>\n";
-
-print "<form action=\"controles-ocultos-3.php\" method=\"get\">
-  <p>Escriba sus apellidos:<input type=\"text\" name=\"apellidos\" size=\"30\"
-    maxlength=\"20\" /></p>
-
-  <p class=\"der\">
-    <input type=\"hidden\" name=\"nombre\" value=\"$nombre\" />
-    <input type=\"submit\" value=\"Enviar\" />
-    <input type=\"reset\" value=\"Borrar\" /></p>
-    </form>\n";
+print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
+print "\n";
+print "  <form action=\"controles-ocultos-3.php\" method=\"get\">\n";
+print "    <p>Escriba sus apellidos:<input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"20\" /></p>\n";
+print "\n";
+print "    <p class=\"der\">\n";
+print "      <input type=\"hidden\" name=\"nombre\" value=\"$nombre\" />\n";
+print "      <input type=\"submit\" value=\"Enviar\" />\n";
+print "      <input type=\"reset\" value=\"Borrar\" />\n";
+print "    </p>\n";
+print "  </form>\n";
 
 ?>
 
-<p><a href="controles-ocultos-1.html">Volver al formulario anterior.</a></p>
+  <p><a href="controles-ocultos-1.php">Volver al formulario anterior.</a></p>
 
-<p class="ultmod">Última modificación de esta página: 21 de octubre de 2014</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2014-10-21">21 de octubre de 2014</time></p>
 
-<p class="licencia">
-Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-<cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a></p>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
 </body>
 </html>
