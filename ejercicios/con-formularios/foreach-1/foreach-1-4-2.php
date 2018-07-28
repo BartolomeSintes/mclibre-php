@@ -71,7 +71,8 @@ if ($numeroOk) {
 
     // Formulario que envía los datos a la página 3
     print "<form action=\"foreach-1-4-3.php\" method=\"get\">\n";
-    print "  <table>\n    <tbody>\n";
+    print "  <table>\n";
+    print "    <tbody>\n";
     // Bucle para generar las cajas de texto y los botones radio
     for ($i = 1; $i <= $numero; $i++) {
         print "      <tr>\n";
@@ -99,7 +100,7 @@ if ($numeroOk) {
 
 ?>
 
-<p><a href="foreach-1-4-1.html">Volver al formulario.</a></p>
+<p><a href="foreach-1-4-1.php">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

@@ -126,7 +126,7 @@ if ($preguntasOk && $respuestasOk) {
 
 ?>
 
-<p><a href="foreach-1-3-1.html">Volver al formulario.</a></p>
+<p><a href="foreach-1-3-1.php">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

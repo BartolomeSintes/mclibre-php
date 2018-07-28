@@ -95,7 +95,7 @@ if ($numeroOk) {
 
 ?>
 
-<p><a href="foreach-1-2-1.html">Volver al formulario.</a></p>
+<p><a href="foreach-1-2-1.php">Volver al formulario.</a></p>
 
 <footer>
   <p class="ultmod">

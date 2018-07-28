@@ -133,7 +133,7 @@ if ($numeroOk) {
 
 ?>
 
-<p><a href="foreach-1-5-1.html">Volver al formulario inicial.</a></p>
+<p><a href="foreach-1-5-1.php">Volver al formulario inicial.</a></p>
 
 <footer>
   <p class="ultmod">
