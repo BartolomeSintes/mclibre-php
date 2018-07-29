@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<h1>Tabla de una fila con casillas de verificación (Resultado 1)</h1>
+  <h1>Tabla de una fila con casillas de verificación (Resultado 1)</h1>
 
 <?php
 // Funciones auxiliares
@@ -53,12 +53,12 @@ $numeroMaximo = 20;
 
 // Comprobación de $numero (entero entre 1 y 20)
 if ($numero == "") {
-    print "<p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla.</p>\n";
 } elseif (!ctype_digit($numero)) {
-    print "<p class=\"aviso\">No ha escrito el tamaño de la tabla "
+    print "  <p class=\"aviso\">No ha escrito el tamaño de la tabla "
         . "como número entero positivo.</p>\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "<p class=\"aviso\">El tamaño de la tabla debe estar entre "
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
         . "$numeroMinimo y $numeroMaximo.</p>\n";
 } else {
     $numeroOk = true;
@@ -66,48 +66,49 @@ if ($numero == "") {
 
 // Si el número recibido es correcto ...
 if ($numeroOk) {
-    print "<p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>\n";
+    print "  <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>\n";
     print "\n";
 
     // Formulario que envía los datos a la página 3
-    print "<form action=\"foreach-1-1-3.php\" method=\"get\">\n";
-    print "  <table class=\"conborde\">\n";
-    print "    <tbody>\n";
-    print "      <tr>\n";
+    print "  <form action=\"foreach-1-1-3.php\" method=\"get\">\n";
+    print "    <table class=\"conborde\">\n";
+    print "      <tbody>\n";
+    print "        <tr>\n";
     // Bucle para generar las casillas de verificación
     for ($i = 1; $i <= $numero; $i++) {
         // El nombre del control es una matriz (c[])
-        print "        <td><label><input type=\"checkbox\" name=\"c[$i]\" /> $i</label></td>\n";
+        print "          <td><label><input type=\"checkbox\" name=\"c[$i]\" /> $i</label></td>\n";
     }
-    print "      </tr>\n";
-    print "    </tbody>\n";
-    print "  </table>\n";
+    print "        </tr>\n";
+    print "      </tbody>\n";
+    print "    </table>\n";
     print "\n";
 
     // Se añade un control oculto con el número recibido para que le llegue a la página 3
-    print "  <p><input type=\"hidden\" name=\"numero\" value=\"$numero\" /></p>\n";
+    print "    <p><input type=\"hidden\" name=\"numero\" value=\"$numero\" /></p>\n";
     print "\n";
 
-    print "  <p><input type=\"submit\" value=\"Contar\" />\n";
-    print "    <input type=\"reset\" value=\"Borrar\" /></p>\n";
-    print "</form>\n";
+    print "    <p>\n";
+    print "      <input type=\"submit\" value=\"Contar\" />\n";
+    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "    </p>\n";
+    print "  </form>\n";
 }
-
 ?>
 
-<p><a href="foreach-1-1-1.php">Volver al formulario.</a></p>
+  <p><a href="foreach-1-1-1.php">Volver al formulario.</a></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

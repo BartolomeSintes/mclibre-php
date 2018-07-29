@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<h1>Encuesta (Resultado 2)</h1>
+  <h1>Encuesta (Resultado 2)</h1>
 
 <?php
 // Funciones auxiliares
@@ -72,12 +72,12 @@ $encuestaRellenas = 0;
 
 // Comprobación de $preguntas (entero entre 2 y 10)
 if ($preguntas == "") {
-    print "<p class=\"aviso\">No ha escrito el número de preguntas.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de preguntas.</p>\n";
 } elseif (!ctype_digit($preguntas)) {
-    print "<p class=\"aviso\">No ha escrito el número de preguntas "
+    print "  <p class=\"aviso\">No ha escrito el número de preguntas "
         . "como número entero positivo.</p>\n";
 } elseif ($preguntas < $preguntasMinimo || $preguntas > $numeroMaximo) {
-    print "<p class=\"aviso\">El número de preguntas debe estar entre "
+    print "  <p class=\"aviso\">El número de preguntas debe estar entre "
         . "$preguntasMinimo y $numeroMaximo.</p>\n";
 } else {
     $preguntasOk = true;
@@ -85,12 +85,12 @@ if ($preguntas == "") {
 
 // Comprobación de $respuestas (entero entre 2 y 10)
 if ($respuestas == "") {
-    print "<p class=\"aviso\">No ha escrito el número de respuestas.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el número de respuestas.</p>\n";
 } elseif (!ctype_digit($respuestas)) {
-    print "<p class=\"aviso\">No ha escrito el número de respuestas "
+    print "  <p class=\"aviso\">No ha escrito el número de respuestas "
         . "como número entero positivo.</p>\n";
 } elseif ($respuestas < $respuestasMinimo || $respuestas > $numeroMaximo) {
-    print "<p class=\"aviso\">El número de respuestas debe estar entre "
+    print "  <p class=\"aviso\">El número de respuestas debe estar entre "
         . "$respuestasMinimo y $numeroMaximo.</p>\n";
 } else {
     $respuestasOk = true;
@@ -101,11 +101,11 @@ if ($respuestas == "") {
 $botonesRecibidos = count($b);
 // Si no se ha recibido ningún botón
 if ($botonesRecibidos == 0) {
-    print "<p>No se ha recibido ninguna respuesta.</p>\n";
+    print "  <p>No se ha recibido ninguna respuesta.</p>\n";
     print "\n";
 // Si se han recibido demasiados botones
 } elseif ($botonesRecibidos > $preguntas) {
-    print "<p class=\"aviso\">Se han recibido demasiadas respuestas.</p>\n";
+    print "  <p class=\"aviso\">Se han recibido demasiadas respuestas.</p>\n";
     print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
@@ -123,7 +123,7 @@ if ($botonesRecibidos == 0) {
         }
     }
     if (!$bOk) {
-        print "<p class=\"aviso\">Las respuestas recibidas no son correctas.</p>\n";
+        print "  <p class=\"aviso\">Las respuestas recibidas no son correctas.</p>\n";
         print "\n";
     }
 }
@@ -131,19 +131,19 @@ if ($botonesRecibidos == 0) {
 // Si el número de preguntas y respuestas recibido y los botones radio recibidos con correctos ...
 if ($preguntasOk && $respuestasOk && $bOk) {
     if ($botonesRecibidos == 0) {
-        print "<p>No se ha contestado ninguna pregunta.</p>\n";
+        print "  <p>No se ha contestado ninguna pregunta.</p>\n";
         print "\n";
     } else {
-        print "<p>Se han contestado $botonesRecibidos pregunta(s)";
+        print "  <p>Se han contestado $botonesRecibidos pregunta(s)";
         print " de un total de $preguntas.</p>\n";
         print "\n";
 
-        print "<ul>\n";
+        print "  <ul>\n";
         // Bucle para escribir qué se ha contestado en cada pregunta
         foreach ($b as $indice => $valor) {
-           print "  <li>En la pregunta $indice se ha contestado $valor</li>\n";
+           print "    <li>En la pregunta $indice se ha contestado $valor</li>\n";
         }
-        print "</ul>\n";
+        print "  </ul>\n";
         print "\n";
     }
 }
@@ -151,24 +151,24 @@ if ($preguntasOk && $respuestasOk && $bOk) {
 // Enlace a la página 2 enviando el control numero con su valor para que pueda
 // dibujar la tabla
 if ($preguntasOk && $respuestasOk) {
-    print "<p><a href=\"foreach-1-3-2.php?preguntas=$preguntas&amp;respuestas=$respuestas\">Volver a la tabla</a></p>\n";
+    print "  <p><a href=\"foreach-1-3-2.php?preguntas=$preguntas&amp;respuestas=$respuestas\">Volver a la tabla</a></p>\n";
 }
 
 ?>
 
-<p><a href="foreach-1-3-1.php">Volver al formulario inicial.</a></p>
+  <p><a href="foreach-1-3-1.php">Volver al formulario inicial.</a></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

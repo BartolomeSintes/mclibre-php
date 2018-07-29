@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<h1>Palabras repetidas (Resultado 2)</h1>
+  <h1>Palabras repetidas (Resultado 2)</h1>
 
 <?php
 // Funciones auxiliares
@@ -68,14 +68,14 @@ $numeroMaximo = 10;
 
 // Comprobación de $numero (entero entre 1 y 10)
 if ($numero == "") {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla "
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla "
         . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "<p class=\"aviso\">El tamaño de la tabla debe estar entre "
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
         . "$numeroMinimo y $numeroMaximo.</p>\n";
     print "\n";
 } else {
@@ -87,7 +87,7 @@ if ($numero == "") {
 $cajasRecibidas = count($c);
 // Si no se han recibido todas las cajas
 if ($cajasRecibidas != $numero) {
-  print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+  print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
   print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
@@ -103,7 +103,7 @@ if ($cajasRecibidas != $numero) {
             }
     }
     if (!$cOk) {
-        print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
         print "\n";
     }
 }
@@ -117,7 +117,7 @@ if ($numeroOk && $cOk) {
             $cajasRellenas++;
         }
     }
-    print "<p>Ha rellenado $cajasRellenas caja";
+    print "  <p>Ha rellenado $cajasRellenas caja";
     if ($cajasRellenas != 1) {
         print "s";
     }
@@ -143,10 +143,10 @@ if ($numeroOk && $cOk) {
             }
         }
         if ($repeticion) {
-            print "<p>El texto de alguna caja está repetido.</p>\n";
+            print "  <p>El texto de alguna caja está repetido.</p>\n";
             print "\n";
         } else {
-            print "<p>El texto de cada caja es diferente.</p>\n";
+            print "  <p>El texto de cada caja es diferente.</p>\n";
             print "\n";
         }
     }
@@ -155,24 +155,24 @@ if ($numeroOk && $cOk) {
 // Enlace a la página 2 enviando el control numero con su valor para que pueda
 // dibujar la tabla
 if ($numeroOk) {
-    print "<p><a href=\"foreach-1-2-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
+    print "  <p><a href=\"foreach-1-2-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
 }
 
 ?>
 
-<p><a href="foreach-1-2-1.php">Volver al formulario inicial.</a></p>
+  <p><a href="foreach-1-2-1.php">Volver al formulario inicial.</a></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

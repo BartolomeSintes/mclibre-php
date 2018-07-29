@@ -9,14 +9,10 @@
 </head>
 
 <body>
-<h1>Encuesta (Formulario)</h1>
+  <h1>Encuesta (Formulario)</h1>
 
-<form action="foreach-1-3-2.php" method="get">
-  <fieldset>
-    <legend>Encuesta</legend>
-
-    <p>Escriba el número de preguntas (1 &le; número &le; 10) y respuestas (2
-    &le; número &le; 10) y mostraré una encuesta ficticia.</p>
+  <form action="foreach-1-3-2.php" method="get">
+    <p>Escriba el número de preguntas (1 &le; número &le; 10) y respuestas (2 &le; número &le; 10) y mostraré una encuesta ficticia.</p>
 
     <table>
       <tbody>
@@ -31,21 +27,22 @@
       </tbody>
     </table>
 
-    <p><input type="submit" value="Mostar" />
-      <input type="reset" value="Borrar" /></p>
-  </fieldset>
-</form>
+    <p>
+      <input type="submit" value="Mostar" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
 
-  <p class="licencia">
-    Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-    <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-    y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
-    Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
-</footer>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
 </body>
 </html>

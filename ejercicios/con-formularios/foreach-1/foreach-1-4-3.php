@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<h1>Hombres y mujeres (Resultado 2)</h1>
+  <h1>Hombres y mujeres (Resultado 2)</h1>
 
 <?php
 // Funciones auxiliares
@@ -72,12 +72,12 @@ $cajasRellenas  = 0;
 
 // Comprobación de $numero (entero entre 2 y 10)
 if ($numero == "") {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
 } elseif (!ctype_digit($numero)) {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla "
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla "
         . "como número entero positivo.</p>\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "<p class=\"aviso\">El tamaño de la tabla debe estar entre "
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
         . "$numeroMinimo y $numeroMaximo.</p>\n";
 } else {
     $numeroOk = true;
@@ -89,7 +89,7 @@ $cajasRecibidas = count($c);
 $cOk = false;
 // Si no se han recibido todas las cajas
 if ($cajasRecibidas != $numero) {
-  print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+  print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
   print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
@@ -105,7 +105,7 @@ if ($cajasRecibidas != $numero) {
             }
     }
     if (!$cOk) {
-        print "<p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
+        print "  <p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
         print "\n";
     }
 }
@@ -115,11 +115,11 @@ if ($cajasRecibidas != $numero) {
 $botonesRecibidos = count($b);
 // Si no se ha recibido ningún botón
 if ($botonesRecibidos == 0) {
-    print "<p>No se ha recibido ningún valor hombre/mujer.</p>\n";
+    print "  <p>No se ha recibido ningún valor hombre/mujer.</p>\n";
     print "\n";
 // Si se han recibido demasiados botones
 } elseif ($botonesRecibidos > $numero) {
-    print "<p class=\"aviso\">La matriz de hombre/mujer recibida es demasiado grande.</p>\n";
+    print "  <p class=\"aviso\">La matriz de hombre/mujer recibida es demasiado grande.</p>\n";
     print "\n";
 } else {
     $bOk = true;
@@ -134,7 +134,7 @@ if ($botonesRecibidos == 0) {
         }
     }
     if (!$bOk) {
-        print "<p class=\"aviso\">La matriz de hombre/mujer recibida no es correcta.</p>\n";
+        print "  <p class=\"aviso\">La matriz de hombre/mujer recibida no es correcta.</p>\n";
         print "\n";
     }
 }
@@ -160,15 +160,15 @@ if ($numeroOk && $cOk && $bOk) {
     }
 
     if ($datosCompletos == 0) {
-        print "<p>No se ha recibido ningún dato completo</p>\n";
+        print "  <p>No se ha recibido ningún dato completo</p>\n";
         print "\n";
     } else {
-        print "<p>Se han recibido $datosCompletos dato(s) completo(s)";
+        print "  <p>Se han recibido $datosCompletos dato(s) completo(s)";
         print " de un total de $numero.</p>\n";
         print "\n";
 
-        print "<ul>\n";
-        print "  <li>$datosHombres hombre(s): ";
+        print "  <ul>\n";
+        print "    <li>$datosHombres hombre(s): ";
         // Bucle para escribir los datos de los hombres
         foreach ($b as $indice => $valor) {
             if ($valor == "h" && $c[$indice] != "") {
@@ -176,7 +176,7 @@ if ($numeroOk && $cOk && $bOk) {
             }
         }
         print "</li>\n";
-        print "  <li>$datosMujeres mujer(es): ";
+        print "    <li>$datosMujeres mujer(es): ";
         // Bucle para escribir los datos de las mujeres
         foreach ($b as $indice => $valor) {
             if ($valor == "m" && $c[$indice] != "") {
@@ -184,7 +184,7 @@ if ($numeroOk && $cOk && $bOk) {
             }
         }
         print "</li>\n";
-        print "</ul>\n";
+        print "  </ul>\n";
         print "\n";
     }
 }
@@ -192,24 +192,24 @@ if ($numeroOk && $cOk && $bOk) {
 // Enlace a la página 2 enviando los controles $preguntas y $respuestasel con
 // su valor para que pueda dibujar la tabla
 if ($numeroOk) {
-    print "<p><a href=\"foreach-1-4-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
+    print "  <p><a href=\"foreach-1-4-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
 }
 
 ?>
 
-<p><a href="foreach-1-4-1.php">Volver al formulario inicial.</a></p>
+  <p><a href="foreach-1-4-1.php">Volver al formulario inicial.</a></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

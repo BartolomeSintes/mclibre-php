@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<h1>Tabla de una fila con casillas de verificación (Resultado 2)</h1>
+  <h1>Tabla de una fila con casillas de verificación (Resultado 2)</h1>
 
 <?php
 // Funciones auxiliares
@@ -69,14 +69,14 @@ $numeroMaximo = 20;
 
 // Comprobación de $numero (entero entre 1 y 20)
 if ($numero == "") {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
-    print "<p class=\"aviso\">No se ha recibido el tamaño de la tabla "
+    print "  <p class=\"aviso\">No se ha recibido el tamaño de la tabla "
         . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $numeroMinimo || $numero > $numeroMaximo) {
-    print "<p class=\"aviso\">El tamaño de la tabla debe estar entre "
+    print "  <p class=\"aviso\">El tamaño de la tabla debe estar entre "
         . "$numeroMinimo y $numeroMaximo.</p>\n";
     print "\n";
 } else {
@@ -88,11 +88,11 @@ if ($numero == "") {
 $casillasMarcadas = count($c);
 // Si no se ha recibido ninguna casilla
 if ($casillasMarcadas == 0) {
-    print "<p>No ha marcado ninguna casilla.</p>\n";
+    print "  <p>No ha marcado ninguna casilla.</p>\n";
     print "\n";
 // Si se han recibido demasiadas casillas
 } elseif ($casillasMarcadas > $numero) {
-    print "<p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+    print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
     print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
@@ -108,14 +108,14 @@ if ($casillasMarcadas == 0) {
        }
     }
     if (!$cOk) {
-        print "<p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
         print "\n";
     }
 }
 
 // Si el número recibido y las casillas recibidas con correctos ...
 if ($numeroOk && $cOk) {
-    print "<p>Ha marcado $casillasMarcadas casilla";
+    print "  <p>Ha marcado $casillasMarcadas casilla";
     if ($casillasMarcadas>1) {
         print "s";
     }
@@ -131,24 +131,23 @@ if ($numeroOk && $cOk) {
 // Enlace a la página 2 enviando el control numero con su valor para que pueda
 // dibujar la tabla
 if ($numeroOk) {
-    print "<p><a href=\"foreach-1-1-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
+    print "  <p><a href=\"foreach-1-1-2.php?numero=$numero\">Volver a la tabla</a></p>\n";
 }
-
 ?>
 
-<p><a href="foreach-1-1-1.php">Volver al formulario inicial.</a></p>
+  <p><a href="foreach-1-1-1.php">Volver al formulario inicial.</a></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
