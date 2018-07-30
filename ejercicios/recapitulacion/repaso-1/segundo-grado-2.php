@@ -1,6 +1,6 @@
 <?php
 /**
- * Ecuación de segundo grado - segundo-grado.php
+ * Ecuación de segundo grado - segundo-grado-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -26,15 +26,14 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-<title>Ecuación de segundo grado (Resultado). Repaso (1).
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <title>Ecuación de segundo grado (Resultado). Repaso (1).
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Ecuación de segundo grado (Resultado)</h1>
+  <h1>Ecuación de segundo grado (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -56,34 +55,40 @@ $cOk = false;
 
 // Comprobación de $a
 if ($a == "") {
-    print "<p class=\"aviso\">No ha escrito el coeficiente a.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el coeficiente a.</p>\n";
+    print "\n";
 } elseif (!is_numeric($a)) {
-    print "<p class=\"aviso\">No ha escrito el coeficiente a como número.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el coeficiente a como número.</p>\n";
+    print "\n";
 } else {
     $aOk = true;
 }
 
 // Comprobación de $b
 if ($b == "") {
-    print "<p class=\"aviso\">No ha escrito el coeficiente b.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el coeficiente b.</p>\n";
+    print "\n";
 } elseif (!is_numeric($b)) {
-    print "<p class=\"aviso\">No ha escrito el coeficiente b como número.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el coeficiente b como número.</p>\n";
+    print "\n";
 } else {
     $bOk = true;
 }
 
 // Comprobación de $c
 if ($c == "") {
-    print "<p class=\"aviso\">No ha escrito el coeficiente c.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el coeficiente c.</p>\n";
+    print "\n";
 } elseif (!is_numeric($c)) {
-    print "<p class=\"aviso\">No ha escrito el coeficiente c como número.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito el coeficiente c como número.</p>\n";
+    print "\n";
 } else {
     $cOk = true;
 }
 
 // Si los valores recibidos son correctos ...
 if ($aOk && $bOk && $cOk) {
-    print "<p>La ecuación <span style=\"font-size: 200%\">";
+    print "  <p>La ecuación <span style=\"font-size: 200%\">";
     if ($a == 1) {
         print "x<sup>2</sup>";
     } elseif ($a == -1) {
@@ -143,23 +148,22 @@ if ($aOk && $bOk && $cOk) {
             print "no tiene soluciones reales.</p>\n";
         }
     }
+    print "\n";
 }
-
 ?>
+  <p><a href="segundo-grado-1.php">Volver al formulario.</a></p>
 
-<p><a href="segundo-grado.html">Volver al formulario.</a></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

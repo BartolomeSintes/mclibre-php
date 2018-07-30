@@ -27,12 +27,12 @@
 <head>
   <meta charset="utf-8" />
   <title>Grises. Repaso (1).
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Grises</h1>
+  <h1>Grises</h1>
 
 <?php
 // Funciones auxiliares
@@ -72,34 +72,34 @@ if ($menos != "" && $gris <= 245) {
     $gris += 10;
 }
 
-print "<p>Haga clic en los iconos para oscurecer o aclarar el color gris del cuadro.</p>\n\n";
+print "  <p>Haga clic en los iconos para oscurecer o aclarar el color gris del cuadro.</p>\n\n";
 
 // Se genera el formulario
-print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-print "  <table style=\"margin-left: auto; margin-right: auto;\">\n";
-print "    <tbody>\n";
-print "      <tr>\n";
-print "        <td><input type=\"submit\" name=\"mas\" value=\"+\" style=\"font-size: 300%\" /></td>\n";
-print "        <td style=\"width: 100px; height: 100px; background-color: rgb($gris, $gris, $gris)\"></td>\n";
-print "        <td><input type=\"submit\" name=\"menos\" value=\"-\" style=\"font-size: 300%\" /></td>\n";
-print "      </tr>\n";
-print "    </tbody>\n";
-print "  </table>\n\n";
-print "  <p><input type=\"hidden\" name=\"gris\" value=\"$gris\" />\n";
+print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+print "    <table style=\"margin-left: auto; margin-right: auto;\">\n";
+print "      <tbody>\n";
+print "        <tr>\n";
+print "          <td><input type=\"submit\" name=\"mas\" value=\"+\" style=\"font-size: 300%\" /></td>\n";
+print "          <td style=\"width: 100px; height: 100px; background-color: rgb($gris, $gris, $gris)\"></td>\n";
+print "          <td><input type=\"submit\" name=\"menos\" value=\"-\" style=\"font-size: 300%\" /></td>\n";
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
+print "\n";
+print "    <p><input type=\"hidden\" name=\"gris\" value=\"$gris\" />\n";
 print "</form>\n";
-
+print "\n";
 ?>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-19">19 de noviembre de 2015</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-19">19 de noviembre de 2015</time></p>
-
-  <p class="licencia">
-    Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-    <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-    El programa PHP que genera esta página está bajo
-    <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a></p>
-</footer>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a></p>
+  </footer>
 </body>
 </html>

@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>RGB Test. Repaso (1).
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   <style>
@@ -39,7 +39,7 @@ session_start();
 </head>
 
 <body>
-<h1>RGB Test</h1>
+  <h1>RGB Test</h1>
 
 <?php
 // Funciones auxiliares
@@ -59,9 +59,11 @@ $respuesta = recoge("respuesta");
 // Si no se recibe respuesta, no se dice si se ha acertado o no
 if ($respuesta == "1" || $respuesta == "2" || $respuesta == "3" || $respuesta == "4") {
     if ($respuesta == $_SESSION["solucion"]) {
-        print "<p>¡Enhorabuena! Has contestado correctamente.</p>\n\n";
+        print "  <p>¡Enhorabuena! Has contestado correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Lo siento, no has acertado.</p>\n\n";
+        print "  <p>Lo siento, no has acertado.</p>\n";
+        print "\n";
     }
 }
 
@@ -74,29 +76,29 @@ $solucion = rand(1, 4);
 $_SESSION["solucion"] = $solucion;
 
 // Se genera el formulario
-print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-print "  <p>¿Qué color corresponde al código <strong>$color[$solucion]</strong>?</p>\n\n";
-print "  <p>\n";
+print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+print "    <p>¿Qué color corresponde al código <strong>$color[$solucion]</strong>?</p>\n";
+print "\n";
+print "    <p>\n";
 for ($i = 1; $i <= 4; $i++) {
-    print "    <button type=\"submit\" name=\"respuesta\" value=\"$i\"> "
-    . "<span style=\"background-color: $color[$i];\"></span></button>\n";
+    print "      <button type=\"submit\" name=\"respuesta\" value=\"$i\"> "
+        . "<span style=\"background-color: $color[$i];\"></span></button>\n";
 }
-print "  </p>\n";
-print "</form>\n";
-
+print "    </p>\n";
+print "  </form>\n";
+print "\n";
 ?>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
