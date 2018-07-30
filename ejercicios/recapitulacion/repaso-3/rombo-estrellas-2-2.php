@@ -1,6 +1,6 @@
 <?php
 /**
- * Rmbo de estrellas 2 - rombo-estrellas-2.php
+ * Rmbo de estrellas 2 - rombo-estrellas-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2012 Bartolomé Sintes Marco
@@ -21,33 +21,26 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Rombo de estrellas 2 (Resultado). Repaso (2).
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta charset="utf-8" />
+  <title>Rombo de estrellas 2 (Resultado). Repaso 3.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
+
 <body>
+  <h1>Rombo de estrellas (Resultado)</h1>
 
-<h1>Rombo de estrellas (Resultado)</h1>
 <?php
-
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
-        ? strip_tags(trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8")))
-        : "";
-    if (get_magic_quotes_gpc()) {
-        $tmp = stripslashes($tmp);
-    }
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
     return $tmp;
 }
 
@@ -57,20 +50,24 @@ $valorMaximo = 30;
 $altoOk      = false;
 
 if ($alto=="") {
-    print "<p class=\"aviso\">No ha escrito la altura.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la altura.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($alto)) {
-    print "<p class=\"aviso\">No ha escrito la altura "
+    print "  <p class=\"aviso\">No ha escrito la altura "
         ."como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($alto < $valorMinimo || $alto > $valorMaximo) {
-    print "<p class=\"aviso\">La altura debe estar entre $valorMinimo y $valorMaximo.</p>\n";
+    print "  <p class=\"aviso\">La altura debe estar entre $valorMinimo y $valorMaximo.</p>\n";
+    print "\n";
 } else {
     $altoOk = true;
 }
 
 if ($altoOk) {
-    print "<p>Alto: $alto</p>";
+    print "  <p>Alto: $alto</p>\n";
+    print "\n";
 
-    print "<pre>";
+    print "  <pre>";
     for ($i = 1; $i <= $alto; $i++) {
         for ($j = $i; $j < $alto; $j++) {
             print "  ";
@@ -81,20 +78,21 @@ if ($altoOk) {
         print "\n";
     }
     print "</pre>\n";
+    print "\n";
 }
-
-print "<p><a href=\"rombo-estrellas-2.html\">Volver al formulario.</a></p>\n";
-
 ?>
+  <p><a href="rombo-estrellas-2-1.php">Volver al formulario.</a></p>
 
-<address>
-  Esta página forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de esta página: 13 de noviembre de 2012
-</address>
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2012-11-13">13 de noviembre de 2012</time></p>
+
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
 </body>
 </html>
