@@ -1,6 +1,6 @@
 <?php
 /**
- * Ley de Ohm - ley-ohm.php
+ * Ley de Ohm - ley-ohm-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -27,13 +27,13 @@
 <head>
   <meta charset="utf-8" />
   <title>Ley de Ohm (Formulario). Repaso (2)
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Ley de Ohm (Resultado)</h1>
+  <h1>Ley de Ohm (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -56,13 +56,15 @@ $resistenciaOk = false;
 // Comprobación de que hay al menos dos datos
 if (($tension == "" && $intensidad == "") || ($tension == "" && $resistencia == "")
     || ($intensidad == "" && $resistencia == "")) {
-    print "<p class=\"aviso\">Se necesitan al menos rellenar dos datos.</p>\n";
+    print "  <p class=\"aviso\">Se necesitan al menos rellenar dos datos.</p>\n";
+    print "\n";
 } else {
 // Comprobación de $tension
 if ($tension == "") {
         $tensionOk = true;
     } elseif (!is_numeric($tension)) {
-        print "<p class=\"aviso\">No ha escrito la tensión como número.</p>\n";
+        print "  <p class=\"aviso\">No ha escrito la tensión como número.</p>\n";
+        print "\n";
     } else {
         $tensionOk = true;
     }
@@ -71,7 +73,8 @@ if ($tension == "") {
     if ($intensidad == "") {
         $intensidadOk = true;
     } elseif (!is_numeric($intensidad)) {
-        print "<p class=\"aviso\">No ha escrito la intensidad como número.</p>\n";
+        print "  <p class=\"aviso\">No ha escrito la intensidad como número.</p>\n";
+        print "\n";
     } else {
         $intensidadOk = true;
     }
@@ -80,9 +83,11 @@ if ($tension == "") {
     if ($resistencia == "") {
         $resistenciaOk = true;
     } elseif (!is_numeric($resistencia)) {
-        print "<p class=\"aviso\">No ha escrito la resistencia como número.</p>\n";
+        print "  <p class=\"aviso\">No ha escrito la resistencia como número.</p>\n";
+        print "\n";
     } elseif ($resistencia<0) {
-        print "<p class=\"aviso\">La resistencia no puede ser negativa.</p>\n";
+        print "  <p class=\"aviso\">La resistencia no puede ser negativa.</p>\n";
+        print "\n";
     } else {
         $resistenciaOk = true;
     }
@@ -92,27 +97,35 @@ if ($tension == "") {
 if ($tensionOk && $intensidadOk && $resistenciaOk) {
     if ($tension != "" && $intensidad != "" && $resistencia != "") {
         if ($tension == $intensidad * $resistencia) {
-            print "<p>Los valores introducidos son correctos:</p>\n\n";
+            print "  <p>Los valores introducidos son correctos:</p>\n\n";
         } else {
-            print "<p>Los valores introducidos <span class=\"aviso\">no</span> son posibles:</p>\n\n";
+            print "  <p>Los valores introducidos <span class=\"aviso\">no</span> son posibles:</p>\n";
+            print "\n";
         }
-        print "<ul>\n"
-            . "  <li>Tensión: $tension V</li>\n"
-            . "  <li>Intensidad: $intensidad A</li>\n"
-            . "  <li>Resistencia: $resistencia &Omega;</li>\n"
-            . "</ul>\n\n";
+        print "  <ul>\n";
+        print "    <li>Tensión: $tension V</li>\n";
+        print "    <li>Intensidad: $intensidad A</li>\n";
+        print "    <li>Resistencia: $resistencia &Omega;</li>\n";
+        print "  </ul>\n";
+        print "\n";
     } elseif ($tension * $intensidad < 0) {
-        print "<p class=\"aviso\">Tensión e intensidad no pueden tener signos distintos.</p>\n";
+        print "  <p class=\"aviso\">Tensión e intensidad no pueden tener signos distintos.</p>\n";
+        print "\n";
     } elseif ($tension != "" && $intensidad != "" && $tension == 0 && $intensidad==0) {
-        print "<p class=\"aviso\">Si la tensión y la intensidad son nulas, la resistencia puede tomar cualquier valor.</p>\n";
+        print "  <p class=\"aviso\">Si la tensión y la intensidad son nulas, la resistencia puede tomar cualquier valor.</p>\n";
+        print "\n";
     } elseif ($tension != "" && $resistencia != "" && $tension == 0 && $resistencia == 0) {
-        print "<p class=\"aviso\">Si la tensión y la resistencia son nulas, la intensidad puede tomar cualquier valor.</p>\n";
+        print "  <p class=\"aviso\">Si la tensión y la resistencia son nulas, la intensidad puede tomar cualquier valor.</p>\n";
+        print "\n";
     } elseif ($resistencia != "" && $tension != 0 && $resistencia == 0) {
-        print "<p class=\"aviso\">Si la resistencia es nula, la tensión no puede ser no nula.</p>\n";
+        print "  <p class=\"aviso\">Si la resistencia es nula, la tensión no puede ser no nula.</p>\n";
+        print "\n";
     } elseif ($intensidad != "" && $tension !=0 && $intensidad == 0) {
-        print "<p class=\"aviso\">Si la intensidad es nula, la tensión no puede ser no nula.</p>\n";
+        print "  <p class=\"aviso\">Si la intensidad es nula, la tensión no puede ser no nula.</p>\n";
+        print "\n";
     } else {
-        print "<p>Valores calculados:</p>\n\n";
+        print "  <p>Valores calculados:</p>\n";
+        print "\n";
         if ($tension == "") {
             $tension = $resistencia * $intensidad;
         } elseif ($intensidad == "") {
@@ -120,29 +133,28 @@ if ($tensionOk && $intensidadOk && $resistenciaOk) {
         } else {
             $resistencia = $tension / $intensidad;
         }
-        print "<ul>\n"
-            . "  <li>Tensión: $tension V</li>\n"
-            . "  <li>Intensidad: $intensidad A</li>\n"
-            . "  <li>Resistencia: $resistencia &Omega;</li>\n"
-            . "</ul>\n";
+        print "  <ul>\n";
+        print "    <li>Tensión: $tension V</li>\n";
+        print "    <li>Intensidad: $intensidad A</li>\n";
+        print "    <li>Resistencia: $resistencia &Omega;</li>\n";
+        print "  </ul>\n";
+        print "\n";
     }
 }
-
 ?>
+  <p><a href="ley-ohm-1.php">Volver al formulario.</a></p>
 
-<p><a href="ley-ohm.html">Volver al formulario.</a></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de divisas 2 - convertidor-divisas-2.php
+ * Convertidor de divisas 2 - convertidor-divisas-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -27,13 +27,13 @@
 <head>
   <meta charset="utf-8" />
   <title>Convertidor de divisas 2 (Resultado). Repaso (2).
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Convertidor de divisas (Resultado)</h1>
+  <h1>Convertidor de divisas (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -57,15 +57,19 @@ $maximo       = 1000000;
 
 // Comprobación de $cantidad
 if ($cantidad == "") {
-    print "<p class=\"aviso\">No ha escrito la cantidad de dinero.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la cantidad de dinero.</p>\n";
+    print "\n";
 } elseif (!is_numeric($cantidad)) {
-    print "<p class=\"aviso\">No ha escrito la cantidad de dinero como número.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la cantidad de dinero como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($cantidad)) {
-    print "<p class=\"aviso\">No ha escrito la cantidad de dinero "
-         . " como número entero positivo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la cantidad de dinero "
+        . " como número entero positivo.</p>\n";
+    print "\n";
 } elseif ($cantidad > $maximo) {
     print "<p class=\"aviso\">La cantidad de dinero no es inferior o igual a "
-         . number_format($maximo, 0, ",", ".").".</p>\n";
+         . number_format($maximo, 0, ",", ".") . ".</p>\n";
+    print "\n";
 } else {
     $cantidadOk = true;
 }
@@ -74,6 +78,7 @@ if ($cantidad == "") {
 if ($origen != "EUR" &&  $origen != "USD" && $origen != "GBP" && $origen != "JPY"
     && $origen != "ESP") {
     print "  <p class=\"aviso\">No ha escrito correctamente la moneda de origen.</p>\n";
+    print "\n";
 } else {
     $origenOk = true;
 }
@@ -82,6 +87,7 @@ if ($origen != "EUR" &&  $origen != "USD" && $origen != "GBP" && $origen != "JPY
 if ($destino != "EUR" && $destino != "USD" && $destino != "GBP" && $destino != "JPY"
     && $destino != "ESP") {
     print "  <p class=\"aviso\">No ha escrito correctamente la moneda de destino.</p>\n";
+    print "\n";
 } else {
     $destinoOk = true;
 }
@@ -122,26 +128,26 @@ if ($cantidadOk && $origenOk && $destinoOk) {
         $nombreMonedaDestino = "pesetas españolas";
     }
 
-    print "<p>$cantidad $nombreMonedaOrigen son " . number_format($result, 2, ",", ".")
-            . " $nombreMonedaDestino.</p>\n\n";
-    print "<p>Gracias por utilizar este convertidor.</p>\n";
+    print "  <p>$cantidad $nombreMonedaOrigen son " . number_format($result, 2, ",", ".")
+            . " $nombreMonedaDestino.</p>\n";
+    print "\n";
+    print "  <p>Gracias por utilizar este convertidor.</p>\n";
+    print "\n";
 }
-
 ?>
+  <p><a href="convertidor-divisas-2-1.php">Volver al formulario.</a></p>
 
-<p><a href="convertidor-divisas-2.html">Volver al formulario.</a></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

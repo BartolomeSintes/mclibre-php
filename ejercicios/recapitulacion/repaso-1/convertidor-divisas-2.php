@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de divisas - convertidor-divisas-2.php
+ * Convertidor de divisas - convertidor-divisas-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco

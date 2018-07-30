@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de bytes 2 - convertidor-bytes-2.php
+ * Convertidor de bytes 2 - convertidor-bytes-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2015 Bartolomé Sintes Marco
@@ -27,13 +27,13 @@
 <head>
   <meta charset="utf-8" />
   <title>Convertidor de bytes 2 (Resultado). Repaso (2).
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
 
 <body>
-<h1>Convertidor de bytes 2 (Resultado)</h1>
+  <h1>Convertidor de bytes 2 (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -52,14 +52,18 @@ $maximo  = 100000000000000;
 
 // Comprobación de $bytes
 if ($bytes == "") {
-    print "<p class=\"aviso\">No ha escrito los bytes.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito los bytes.</p>\n";
+    print "\n";
 } elseif (!is_numeric($bytes)) {
-    print "<p class=\"aviso\">No ha escrito los bytes como número.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito los bytes como número.</p>\n";
+    print "\n";
 } elseif (!ctype_digit($bytes)) {
-    print "<p class=\"aviso\">No ha escrito los bytes como número entero positivo (sin parte decimal)</p>\n";
+    print "  <p class=\"aviso\">No ha escrito los bytes como número entero positivo (sin parte decimal)</p>\n";
+    print "\n";
 } elseif ($bytes >= $maximo) {
-    print "<p class=\"aviso\">Los bytes deben ser inferiores a "
-            . number_format($maximo, 0, ",", ".").".</p>\n";
+    print "  <p class=\"aviso\">Los bytes deben ser inferiores a "
+        . number_format($maximo, 0, ",", ".").".</p>\n";
+    print "\n";
     // Es mejor no mostrar $maximo porque si es superior a PHP_INT_MAX se muestra como float
 } else {
     $bytesOk = true;
@@ -75,7 +79,7 @@ if ($bytesOk) {
     $kb = bcdiv($b, 1024);
     $b  = bcmod($b, 1024);
 
-    print "<p>" . number_format($bytes, 0, ",", ".")." bytes son ";
+    print "  <p>" . number_format($bytes, 0, ",", ".")." bytes son ";
 
     if ($bytes == 0) {
         print "0 bytes.";
@@ -122,23 +126,22 @@ if ($bytesOk) {
     }
 
     print ".<p>\n";
+    print "\n";
 }
-
 ?>
+  <p><a href="convertidor-bytes-2-1.php">Volver al formulario.</a></p>
 
-<p><a href="convertidor-bytes-2.html">Volver al formulario.</a></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2015-11-18">18 de noviembre de 2015</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>
