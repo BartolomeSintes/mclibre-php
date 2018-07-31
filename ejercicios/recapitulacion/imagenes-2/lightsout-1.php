@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_6.php
+ * Lights Out de una fila - lightsout-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -21,26 +21,21 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
   <title>Lights Out de una fila. Imágenes.
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
-<body>
 
-<h1>Lights Out de una fila</h1>
+<body>
+  <h1>Lights Out de una fila</h1>
 
 <?php
-
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -65,7 +60,7 @@ function recogeMatriz($var)
 $juega   = recoge("juega");
 $partida = recogeMatriz("partida");
 $juegaOk = false;
-$total = 7;
+$total   = 7;
 
 if ($juega == "") {
     $partida = [];
@@ -76,9 +71,11 @@ if ($juega == "") {
     $partida[$total + 1] = 0;
     $juegaOk = true;
 } elseif (!ctype_digit($juega)) {
-    print "<p class=\"aviso\">No ha indicado su jugada correctamente.</p>\n";
+    print "  <p class=\"aviso\">No ha indicado su jugada correctamente.</p>\n";
+    print "\n";
 } elseif ($juega < 1 || $juega > $total) {
-    print "<p class=\"aviso\">No ha indicado su juegada correctamente.</p>\n";
+    print "  <p class=\"aviso\">No ha indicado su jugada correctamente.</p>\n";
+    print "\n";
 } else {
     $juegaOk = true;
     $partida[0] = 0;
@@ -86,8 +83,6 @@ if ($juega == "") {
 }
 
 if ($juegaOk) {
-    print "<p>Haga clic en una ficha para cambiar su color y el de las fichas vecinas. ";
-    print "El objetivo del juego es dejar todas las fichas del mismo color.</p>\n";
     if ($juega != "") {
         $partida[$juega - 1] = (int)!(bool)$partida[$juega - 1];
         $partida[$juega    ] = (int)!(bool)$partida[$juega    ];
@@ -103,46 +98,56 @@ if ($juegaOk) {
         }
     }
     if ($todasBlancas || $todasNegras) {
-        print "<p style=\"font-size: 200%\">¡Felicidades! Ha conseguido el objetivo.</p>\n";
+        print "  <p style=\"font-size: 200%\">¡Felicidades! Ha conseguido el objetivo.</p>\n";
+        print "\n";
+    } else {
+        print "  <p>Haga clic en una ficha para cambiar su color y el de las fichas vecinas. ";
+        print "El objetivo del juego es dejar todas las fichas del mismo color.</p>\n";
+        print "\n";
     }
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-    print "<table>\n";
-    print "  <tbody>\n";
-    print "    <tr>\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+    print "    <table>\n";
+    print "      <tbody>\n";
+    print "        <tr>\n";
     for ($i = 1; $i <= $total; $i++) {
-        print "      <td><button type=\"submit\" name=\"juega\" value=\"$i\">";
+        print "          <td><button type=\"submit\" name=\"juega\" value=\"$i\">";
         if ($partida[$i] == 0) {
             print "<img src=\"img/lightsout/circulo-negro.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
         } else {
             print "<img src=\"img/lightsout/circulo-blanco.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
         }
     }
-    print "    </tr>\n";
-    print "  </tbody>\n";
-    print "</table>\n";
+    print "        </tr>\n";
+    print "      </tbody>\n";
+    print "    </table>\n";
+    print "\n";
 
-    print "<p>";
+    print "    <p>\n";
     for ($i = 1; $i <= $total; $i++) {
-        print "<input type=\"hidden\" name=\"partida[$i]\" value=\"$partida[$i]\" />\n";
+        print "      <input type=\"hidden\" name=\"partida[$i]\" value=\"$partida[$i]\" />\n";
     }
-    print "</p>\n";
+    print "    </p>\n";
+    print "\n";
 
-    print "<p><input type=\"submit\" value=\"Reiniciar partida\" /></p>\n";
-    print "</form>\n";
+    print "    <p><input type=\"submit\" value=\"Reiniciar partida\" /></p>\n";
+    print "  </form>\n";
 } else {
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-    print "<p><input type=\"submit\" value=\"Reiniciar partida\" /></p>\n";
-    print "</form>\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+    print "    <p><input type=\"submit\" value=\"Reiniciar partida\" /></p>\n";
+    print "  </form>\n";
 }
 ?>
 
-<p class="ultmod">Última modificación de esta página: 28 de octubre de 2014</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2014-10-28">28 de octubre de 2014</time></p>
 
-<p class="licencia">
-Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-<cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a></p>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
 </body>
 </html>
