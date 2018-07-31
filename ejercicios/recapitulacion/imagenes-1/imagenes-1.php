@@ -21,23 +21,19 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
   <title>Imágenes 1. Imágenes.
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
-<body>
 
-<h1>Pieter Bruegel el viejo. La torre de Babel</h1>
+<body>
+  <h1>Pieter Bruegel el viejo. La torre de Babel</h1>
 
 <?php
 // Funciones auxiliares
@@ -72,29 +68,31 @@ if ($imagen == "" || !is_numeric($imagen) || !ctype_digit($imagen)) {
 // Cuerpo del programa
 
 // Se genera el formulario
-print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-print "<table style=\"margin-left: auto; margin-right: auto\">\n";
-print "  <tbody>\n";
-print "    <tr>\n";
-print "      <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen - 1). "\">"
+print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
+print "      <tbody>\n";
+print "        <tr>\n";
+print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen - 1). "\">"
      . "<img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\" /></button></td>\n";
-print "      <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\" /></td>\n";
-print "      <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen + 1). "\">"
+print "          <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\" /></td>\n";
+print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen + 1). "\">"
      . "<img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\" /></button></td>\n";
-print "    </tr>\n";
-print "  </tbody>\n";
-print "</table>\n";
-print "</form>\n";
-
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
+print "  </form>\n";
 ?>
 
-<p class="ultmod">Última modificación de esta página: 1 de noviembre de 2014</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2014-11-01">1 de noviembre de 2014</time></p>
 
-<p class="licencia">
-Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-<cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a></p>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
 </body>
 </html>

@@ -21,23 +21,19 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
   <title>Selector de colores. Imágenes.
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
-<body>
 
-<h1>Selector de colores</h1>
+<body>
+  <h1>Selector de colores</h1>
 
 <?php
 // Funciones auxiliares
@@ -84,7 +80,8 @@ $maximoAmarilloY =  7 * $unidad;
 
 // Si no se reciben ambos datos no se dice nada sobre el color elegido
 if ($imagenX == "" && $imagenY == "") {
-    print "<p>Elija un color haciendo clic en él:</p>\n\n";
+    print "  <p>Elija un color haciendo clic en él:</p>\n";
+    print "\n";
 } else {
     // Validación de datos recibidos
     // Si no se reciben valores válidos de coordenadas, se coge la esquina
@@ -101,36 +98,43 @@ if ($imagenX == "" && $imagenY == "") {
     // Se comprueba si se ha hecho clic en alguna de las zonas de colores
     if ($imagenX > $minimoAzulX && $imagenX < $maximoAzulX
         && $imagenY > $minimoAzulY && $imagenY < $maximoAzulY) {
-        print "<p>Ha elegido el color <strong>Azul</strong>. Elija de nuevo:</p>\n\n";
+        print "  <p>Ha elegido el color <strong>Azul</strong>. Elija de nuevo:</p>\n";
+        print "\n";
     } elseif ($imagenX > $minimoRojoX && $imagenX < $maximoRojoX
         && $imagenY > $minimoRojoY && $imagenY < $maximoRojoY) {
-        print "<p>Ha elegido el color <strong>Rojo</strong>. Elija de nuevo:</p>\n\n";
+        print "  <p>Ha elegido el color <strong>Rojo</strong>. Elija de nuevo:</p>\n";
+        print "\n";
     } elseif ($imagenX > $minimoVerdeX && $imagenX < $maximoVerdeX
         && $imagenY > $minimoVerdeY && $imagenY < $maximoVerdeY) {
-        print "<p>Ha elegido el color <strong>Verde</strong>. Elija de nuevo:</p>\n\n";
+        print "  <p>Ha elegido el color <strong>Verde</strong>. Elija de nuevo:</p>\n";
+        print "\n";
     } elseif ($imagenX > $minimoAmarilloX && $imagenX < $maximoAmarilloX
         && $imagenY > $minimoAmarilloY && $imagenY < $maximoAmarilloY) {
-        print "<p>Ha elegido el color <strong>Amarillo</strong>. Elija de nuevo:</p>\n\n";
+        print "  <p>Ha elegido el color <strong>Amarillo</strong>. Elija de nuevo:</p>\n";
+        print "\n";
     } else {
-        print "<p>No ha elegido ningún color. Elija un color haciendo clic en él:</p>\n\n";
+        print "  <p>No ha elegido ningún color. Elija un color haciendo clic en él:</p>\n";
+        print "\n";
     }
 }
 
 // Se genera el formulario
-print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-print "  <p><input type=\"image\" name=\"imagen\" alt=\"Cuatro colores\" "
+print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+print "    <p><input type=\"image\" name=\"imagen\" alt=\"Cuatro colores\" "
      . "src=\"img/juegos/cuatro-colores.svg\" height=\"$valorMaximo\" /></p>\n";
-print "</form>\n";
-
+print "  </form>\n";
 ?>
 
-<p class="ultmod">Última modificación de esta página: 1 de noviembre de 2014</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2014-11-01">1 de noviembre de 2014</time></p>
 
-<p class="licencia">
-Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-<cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a></p>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
 </body>
 </html>
