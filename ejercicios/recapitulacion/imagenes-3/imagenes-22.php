@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_6.php
+ * Imágenes - imagenes-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -21,26 +21,21 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-header("Content-type: application/xhtml+xml");
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
-      "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Control imagen 1. Imágenes.
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta charset="utf-8" />
+  <title>Cuadrados de color al azar. Imágenes 3.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
-<body>
 
-<h1>Selector de colores</h1>
+<body>
+  <h1>Cuadrados de color al azar</h1>
 
 <?php
-
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -67,34 +62,40 @@ if ($menos != "" && $cuadros > 1) {
     $cuadros -= 1;
 }
 
-print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\" >\n";
-print "<p><input type=\"submit\" name=\"mas\" value=\"Añadir cuadro\" />\n"
-     . "  <input type=\"submit\" name=\"menos\" value=\"Quitar cuadro\" />\n"
-     . "  <input type=\"hidden\" name=\"cuadros\" value=\"$cuadros\" /></p>\n";
-print "</form>\n\n";
-print "<p>";
+print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\" >\n";
+print "    <p>\n";
+print "      <input type=\"submit\" name=\"mas\" value=\"Añadir cuadro\" />\n";
+print "      <input type=\"submit\" name=\"menos\" value=\"Quitar cuadro\" />\n";
+print "      <input type=\"hidden\" name=\"cuadros\" value=\"$cuadros\" />\n";
+print "    </p>\n";
+print "  </form>\n";
+print "\n";
+print "  <p>\n";
 for ($i = 1; $i <= $cuadros; $i++) {
     $colorR = rand(1, 255);
     $colorG = rand(1, 255);
     $colorB = rand(1, 255);
     $color  = "rgb($colorR, $colorG, $colorB)";
-    print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "  width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
-    print "<path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" "
+    print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
+        . "width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
+    print "      <path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" "
     . "d=\"M 2,2 l" . ($ancho - 4) .",0 l0," . ($ancho - 4) . "l-" . ($ancho - 4) . ",0z\" />\n";
-    print "</svg>\n";
+    print "    </svg>\n";
 }
-print "</p>\n";
+print "  </p>\n";
 
 ?>
 
-<p class="ultmod">Última modificación de esta página: 29 de octubre de 2014</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2014-10-29">29 de octubre de 2014</time></p>
 
-<p class="licencia">
-Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-<cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a></p>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
 </body>
 </html>

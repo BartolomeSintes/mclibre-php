@@ -29,6 +29,7 @@ function recoge($var)
         : "";
     return $tmp;
 }
+
 $tamX     = recoge("tamX");
 $tamY     = recoge("tamY");
 $circuloR = recoge("circuloR");
@@ -38,8 +39,8 @@ $circuloY = recoge("circuloY");
 header("Content-type: image/svg+xml");
 print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 print "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
-print "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"
-     width=\"{$tamX}px\" height=\"{$tamY}px\" viewBox=\"0 0 $tamX $tamY\" style=\"enable-background:new 0 0 $tamX $tamY;\" xml:space=\"preserve\">\n";
+print "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" "
+    . "width=\"{$tamX}px\" height=\"{$tamY}px\" viewBox=\"0 0 $tamX $tamY\" >\n";
 print "<path fill=\"white\" stroke=\"black\" stroke-width=\"3\" "
         . "d=\"M 2,2 l" . ($tamX - 4) . ",0 l0," . ($tamY - 4) . " l-" . ($tamX - 4) . ",0z\" />\n";
 print "<circle cx=\"$circuloX\" cy=\"$circuloY\" r=\"$circuloR\" style=\"stroke:black; fill:black\" />\n";

@@ -1,6 +1,6 @@
 <?php
 /**
- * Imágenes - imagenes_6.php
+ * Imágenes - imagenes-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2014 Bartolomé Sintes Marco
@@ -21,23 +21,19 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Control imagen 1. Imágenes.
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
+  <meta charset="utf-8" />
+  <title>Cuadrado al azar. Imágenes 3.
+    Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css"
-  title="Color" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
-<body>
 
-<h1>Selector de colores</h1>
+<body>
+  <h1>Cuadrado de color al azar</h1>
 
 <?php
 
@@ -60,18 +56,20 @@ $ancho = 100;
 
 $color = rand(0, $numeroColores - 1);
 
-print "<p><input type=\"image\" name=\"tiro\" alt=\"Tiro al plato\" "
-    . "src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" /></p>\n";
-
+print "<p><img src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" "
+     . "alt=\"Cuadro al azar\" /></p>\n";
 ?>
 
-<p class="ultmod">Última modificación de esta página: 27 de octubre de 2014</p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2014-10-27">27 de octubre de 2014</time></p>
 
-<p class="licencia">
-Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-<cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a></p>
+    <p class="licencia">
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+  </footer>
 </body>
 </html>
