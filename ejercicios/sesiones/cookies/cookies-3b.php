@@ -23,10 +23,10 @@
  */
 
 $compruebaCookie = isset($_COOKIE['cookiePrueba'])?$_COOKIE['cookiePrueba']:"";
-if ($compruebaCookie=='X') {
-    header('Location:cookies-3a.php?admiteCookies=1');
+if ($compruebaCookie == "X") {
+    header("location:cookies-3a.php?admiteCookies=1");
 } else {
-    header('Location:cookies-3a.php?admiteCookies=0');
+    header("location:cookies-3a.php?admiteCookies=0");
 }
 exit();
 ?>
