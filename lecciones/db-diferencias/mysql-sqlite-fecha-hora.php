@@ -42,9 +42,9 @@ function conectaDb()
         }
         return($db);
     } catch (PDOException $e) {
-        print "  <li>Error: No puede conectarse con la base de datos.</li>\n";
-        print "  <li>Error: " . $e->getMessage() . "</li>\n";
-        print "</ol>\n";
+        print "          <li>Error: No puede conectarse con la base de datos.</li>\n";
+        print "          <li>Error: " . $e->getMessage() . "</li>\n";
+        print "        </ol>\n";
     }
 }
 
@@ -52,53 +52,57 @@ function borraTodoMySQL($db)
 {
     global $dbDb, $dbTabla;
 
-    print "<li>Borrado y creación de tabla en MySQL:\n  <ul>\n";
+    print "<li>Borrado y creación de tabla en MySQL:\n";
+    print "  <ul>\n";
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "    <li>Base de datos borrada correctamente.</li>\n";
+        print "           <li>Base de datos borrada correctamente.</li>\n";
     } else {
-        print "    <li>Error al borrar la base de datos.</li>\n";
+        print "           <li>Error al borrar la base de datos.</li>\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "    <li>Base de datos creada correctamente.</li>\n";
+        print "           <li>Base de datos creada correctamente.</li>\n";
         $consultaCreaTabla = "CREATE TABLE $dbTabla (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             fecha DATE,
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTabla)) {
-            print "    <li>Tabla creada correctamente.</li>\n";
+            print "            <li>Tabla creada correctamente.</li>\n";
         } else {
-            print "    <li>Error al crear la tabla.</li>\n";
+            print "            <li>Error al crear la tabla.</li>\n";
         }
     } else {
-        print "    <li>Error al crear la base de datos.</li>\n";
+        print "            <li>Error al crear la base de datos.</li>\n";
     }
-    print "  </ul>\n</li>\n";
+    print "          </ul>\n";
+    print "        </li>\n";
 }
 
 function borraTodoSqlite($db)
 {
     global $dbDb, $dbTabla;
 
-    print "<li>Borrado y creación de tabla en SQLite:\n  <ul>\n";
+    print "          <li>Borrado y creación de tabla en SQLite:\n";
+    print "            <ul>\n";
     $consulta = "DROP TABLE $dbTabla";
     if ($db->query($consulta)) {
-        print "    <li>Tabla borrada correctamente.</li>\n";
+        print "              <li>Tabla borrada correctamente.</li>\n";
     } else {
-        print "    <li>Error al borrar la tabla.</li>\n";
+        print "              <li>Error al borrar la tabla.</li>\n";
     }
     $consultaCreaTabla = "CREATE TABLE $dbTabla (
         id INTEGER PRIMARY KEY,
         fecha DATE
         )";
     if ($db->query($consultaCreaTabla)) {
-        print "    <li>Tabla creada correctamente.</li>\n";
+        print "              <li>Tabla creada correctamente.</li>\n";
     } else {
-        print "    <li>Error al crear la tabla de Préstamos.</li>\n";
+        print "              <li>Error al crear la tabla de Préstamos.</li>\n";
     }
-    print "  </ul>\n</li>\n";
+    print "            </ul>\n";
+    print "          </li>\n";
 }
 
 function pruebaDb() {
@@ -106,108 +110,116 @@ function pruebaDb() {
     global $dbMotor, $db, $dbTabla;
 
     // Inserción de registro
-    print "<li>Inserción de fechas:\n  <ul>\n";
+    print "          <li>Inserción de fechas:\n";
+    print "            <ul>\n";
 
     $fecha = date('Y-m-d');
-    print "    <li>Fecha a insertar: $fecha</li>\n";
+    print "              <li>Fecha a insertar: $fecha</li>\n";
     $consulta = "INSERT INTO $dbTabla
         VALUES (NULL, '$fecha')";
     if ($db->query($consulta)) {
-        print "    <li>Registro creado correctamente.</li>\n";
+        print "              <li>Registro creado correctamente.</li>\n";
     } else {
-        print "    <li>Error al crear el registro.<li>\n";
+        print "              <li>Error al crear el registro.<li>\n";
     }
     $fecha = "";
-    print "    <li>Fecha a insertar: $fecha</li>\n";
+    print "              <li>Fecha a insertar: $fecha</li>\n";
     $consulta = "INSERT INTO $dbTabla
         VALUES (NULL, '$fecha')";
     if ($db->query($consulta)) {
-        print "    <li>Registro creado correctamente.</li>\n";
+        print "              <li>Registro creado correctamente.</li>\n";
     } else {
-        print "    <li>Error al crear el registro.<li>\n";
+        print "              <li>Error al crear el registro.<li>\n";
     }
 
-    print "  </ul>\n</li>\n";
+    print "            </ul>\n";
+    print "          </li>\n";
 
-    print "<li>Recuperación de fecha:\n  <ul>\n";
+    print "          <li>Recuperación de fecha:\n";
+    print "            <ul>\n";
     $consulta = "SELECT COUNT(*) FROM $dbTabla";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <li>Error en la consulta.</li>\n";
+        print "              <li>Error en la consulta.</li>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "    <li>No se ha creado todavía ningún registro.</li>\n";
+        print "              <li>No se ha creado todavía ningún registro.</li>\n";
     } else {
         $consulta = "SELECT * FROM $dbTabla";
         $result = $db->query($consulta);
         if (!$result) {
-            print "    <li>Error en la consulta.</li>\n";
+            print "              <li>Error en la consulta.</li>\n";
         } else {
             foreach ($result as $valor) {
-                print "    <li>Fecha insertada: $valor[fecha]</li>\n";
+                print "              <li>Fecha insertada: $valor[fecha]</li>\n";
             }
         }
     }
-    print "  </ul>\n</li>\n";
+    print "            </ul>\n";
+    print "          </li>\n";
 
-    print "</ol>\n";
+    print "        </ol>\n";
 }
 
-print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
-       \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-  <title>www.mclibre.org - Diferencias entre MySQL y SQLite - Fecha</title>
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
-</head>
-
-<body>
-<h1>Diferencias entre MySQL y SQLite - Fecha</h1>
-<div id=\"contenido\">\n";
-
-print "<p>Este programa prueba el amacenamiento de fechas en SQLite y MySQL</p>\n";
+print "<!DOCTYPE html>\n";
+print "<html lang=\"es\">\n";
+print "<head>\n";
+print "  <meta charset=\"utf-8\" />\n";
+print "  <title>Diferencias entre MySQL y SQLite - Fecha.\n";
+print "    Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
+print "  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+print "</head>\n";
+print "\n";
+print "<body>\n";
+print "  <h1>Diferencias entre MySQL y SQLite - Fecha</h1>\n";
+print "\n";
+print "  <p>Este programa prueba el amacenamiento de fechas en SQLite y MySQL</p>\n";
+print "\n";
 
 // Prueba con SQLite
-print "<table>\n  <tr>\n    <td>\n";
-print "<h2>SQLite</h2>\n";
+print "  <table>\n";
+print "    <tr>\n";
+print "      <td>\n";
+print "        <h2>SQLite</h2>\n";
 $dbMotor = SQLITE;
 $dbDb     = '/home/barto/mclibre/tmp/mclibre/mclibre_db-diferencias.sqlite';  // Nombre de la base de datos
 $dbTabla = 'fecha';             // Nombre de la tabla
-print "<ol>\n";
+print "        <ol>\n";
 $db = conectaDb();
 borraTodoSqlite($db);
 pruebaDB();
-print "    </td>\n    <td>\n";
+print "      </td>\n";
+print "      <td>\n";
 
 // Prueba con MySQL
-print "<h2>MySQL</h2>\n";
+print "        <h2>MySQL</h2>\n";
 $dbMotor = MYSQL;
 $dbDb     = 'mclibre_db-diferencias';     // Nombre de la base de datos
 $dbTabla = $dbDb.'.fecha';      // Nombre de la tabla
-print "<ol>\n";
+print "        <ol>\n";
 $db = conectaDb();
 if ($db) {
     borraTodoMySQL($db);
     pruebaDB();
 }
-print "    </td>\n  </tr>\n</table>\n";
+print "      </td>\n";
+print "    </tr>\n";
+print "  </table>\n";
+print "\n";
 
-print '</div>
-
-<div id="pie">
-<address>
-  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de este programa: 20 de abril de 2010
-</address>
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
-</div>
-</body>
-</html>';
-
+print "  <footer>\n";
+print "    <p class=\"ultmod\">\n";
+print "      Última modificación de esta página:\n";
+print "      <time datetime=\"2010-04-20\">20 de abril de 2010</time>\n";
+print "    </p>\n";
+print "\n";
+print "    <p class=\"licencia\">\n";
+print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";
+print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
+print "      Sintes Marco</a>.<br />\n";
+print "      El programa PHP que genera esta página está bajo\n";
+print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.</p>\n";
+print "  </footer>\n";
+print "</body>\n";
+print "</html>\n";
 ?>

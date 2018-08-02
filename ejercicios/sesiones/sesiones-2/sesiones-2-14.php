@@ -126,7 +126,8 @@ if (!count($_SESSION)) {
     foreach ($_SESSION as $indice => $valor) {
         print "      <input type=\"checkbox\" name=\"c[$indice]\" /> $valor<br />\n";
     }
-    print "    </p>\n    <p class=\"der\">
+    print "    </p>\n";
+    print "    <p class=\"der\">
     <input type=\"submit\" value=\"Eliminar\" name=\"Eliminar\" />
     <input type=\"reset\" value=\"Reiniciar\" /></p>
   </fieldset>

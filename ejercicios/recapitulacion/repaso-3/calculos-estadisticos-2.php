@@ -24,27 +24,26 @@
 
 function cabecera($texto)
 {
-    print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
-  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-  <title>Cálculos estadísticos 2 ($texto). Repaso 1.
-  Ejercicios. PHP. Bartolomé Sintes Marco</title>
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
-  title=\"Color\" />
-</head>\n\n<body>
-<h1>Cálculos estadísticos 2 ($texto)</h1>\n";
+    print "<!DOCTYPE html>\n";
+    print "<html lang=\"es\">\n";
+    print "<head>\n";
+    print "  <meta charset=\"utf-8\" />\n";
+    print "  <title>Calculos estadísticos 2 ($texto). Repaso 3.\n";
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco</title>\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
+    print "  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "</head>\n";
+    print "\n";
+    print "<body>\n";
+    print "  <h1>Calculos estadísticos 2 ($texto)</h1>\n";
+    print "\n";
 }
 
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var])) ? strip_tags(trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))) : "";
-    if (get_magic_quotes_gpc()) {
-        $tmp = stripslashes($tmp);
-    }
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
     return $tmp;
 }
 
@@ -53,18 +52,8 @@ function recogeMatriz($var)
     $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
-            $tmp = strip_tags(trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8")));
-            if (get_magic_quotes_gpc()) {
-                $tmp = stripslashes($tmp);
-            }
-            $indiceLimpio = $tmp;
-
-            $tmp = strip_tags(trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8")));
-            if (get_magic_quotes_gpc()) {
-                $tmp = stripslashes($tmp);
-            }
-            $valorLimpio  = $tmp;
-
+            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
+            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
             $tmpMatriz[$indiceLimpio] = $valorLimpio;
         }
     }
@@ -79,10 +68,10 @@ define('NUM_VALORES_MAXIMO',  15);
 $valores       = recogeMatriz('valor');
 $valoresOK     = [];
 $valoresTodoOk = true;
-$suma          = (recoge('suma')=='on');
-$media         = (recoge('media')=='on');
-$maximo        = (recoge('maximo')=='on');
-$minimo        = (recoge('minimo')=='on');
+$suma          = (recoge('suma') == 'on');
+$media         = (recoge('media') == 'on');
+$maximo        = (recoge('maximo') == 'on');
+$minimo        = (recoge('minimo') == 'on');
 
 // Recoge el número de datos y lo valida, aumenta o reduce
 $numeroValores = recoge('numeroValores');
@@ -123,36 +112,45 @@ for ($i=1; $i<=$numeroValores; $i++) {
 if ($valoresTodoOk) {
     cabecera("Resultado válido");
     $sumaTotal = 0;
-    print "<p>Ha introducido $numeroValores valores: <strong>";
+    print "  <p>Ha introducido $numeroValores valores: <strong>";
     foreach ($valores as $valor) {
         print "$valor ";
         $sumaTotal += $valor;
     }
     print "</strong></p>\n";
+    print "\n";
+
     if ($suma) {
-        print "<p>La suma de los valores es <strong>$sumaTotal</strong>.</p>\n";
+        print "  <p>La suma de los valores es <strong>$sumaTotal</strong>.</p>\n";
+        print "\n";
     }
     if ($media) {
-        print "<p>La media de los valores es <strong>"
-            .round($sumaTotal/$numeroValores, 2)."</strong>.</p>\n";
+        print "  <p>La media de los valores es <strong>"
+            . round($sumaTotal/$numeroValores, 2) . "</strong>.</p>\n";
+        print "\n";
     }
     if ($maximo) {
-        print "<p>El valor más grande es <strong>".max($valores)."</strong>.</p>\n";
+        print "  <p>El valor más grande es <strong>" . max($valores) . "</strong>.</p>\n";
+        print "\n";
     }
     if ($minimo) {
-        print "<p>El valor más pequeño es <strong>".min($valores)."</strong>.</p>\n";
+        print "  <p>El valor más pequeño es <strong>" . min($valores) . "</strong>.</p>\n";
+        print "\n";
     }
-    print "<p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
+    print "  <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
+    print "\n";
 } elseif (!$valoresTodoVacio&&(isset($_REQUEST['enviar'])||
         isset($_REQUEST['anyadir'])||isset($_REQUEST['quitar']))) {
     cabecera("Resultado inválido");
-    print"<p>Por favor, corrija los datos incorrectos y/o complete "
-        ."todas las casillas:</p>\n";
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"".FORM_METHOD."\">
-  <table>\n    <tbody>\n";
+    print"  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
+    print "\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"".FORM_METHOD."\">\n";
+    print "    <table>\n";
+    print "      <tbody>\n";
     for ($i=1; $i<=$numeroValores; $i++) {
-        print "      <tr>\n        <td>Valor $i:</td>
-        <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
+        print "        <tr>\n";
+        print "          <td>Valor $i:</td>\n";
+        print "          <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
         if (isset($valores[$i])) {
             print $valores[$i];
         }
@@ -162,41 +160,54 @@ if ($valoresTodoOk) {
         } elseif ($valores[$i]=="") {
             print " <span class=\"aviso\">Escriba un valor</span>";
         }
-        print "</td>\n      </tr>\n";
+        print "</td>\n";
+        print "        </tr>\n";
     }
-    print "    </tbody>\n  </table>
-  <p><input type=\"checkbox\" name=\"suma\" ";
+    print "      </tbody>\n";
+    print "    </table>";
+    print "\n";
+    print "  <p>\n";
+    print "    <input type=\"checkbox\" name=\"suma\" ";
     if ($suma) {
         print "checked=\"checked\" ";
     }
-    print " />Suma - <input type=\"checkbox\"
-    name=\"media\" ";
+    print " />Suma -\n";
+    print "    <input type=\"checkbox\" name=\"media\" ";
     if ($media) {
         print "checked=\"checked\" ";
     }
-    print " />Media - <input type=\"checkbox\" name=\"maximo\" ";
+    print " />Media - \n";
+    print "    <input type=\"checkbox\" name=\"maximo\" ";
     if ($maximo) {
         print "checked=\"checked\" ";
     }
-    print " />Máximo
-    - <input type=\"checkbox\" name=\"minimo\" ";
+    print " />Máximo - \n";
+    print "    <input type=\"checkbox\" name=\"minimo\" ";
     if ($minimo) {
         print "checked=\"checked\" ";
     }
-    print " />Mínimo</p>
-  <p class=\"der\"><input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n"
-        ."    <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n"
-        ."    <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n"
-        ."    <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n"
-        ."    <input type=\"reset\" value=\"Borrar\" />\n  </p>\n</form>\n";
+    print " />Mínimo\n";
+    print "    </p>";
+    print "\n";
+    print "    <p class=\"der\">\n";
+    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
+    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
+    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
+    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
+    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "    </p>\n";
+    print "  </form>\n";
 } else {
     cabecera("Formulario");
-    print"<p>Escriba $numeroValores números:</p>\n";
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"".FORM_METHOD."\">
-  <table>\n    <tbody>\n";
+    print"  <p>Escriba $numeroValores números:</p>\n";
+    print "\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"".FORM_METHOD."\">";
+    print "    <table>\n";
+    print "      <tbody>\n";
     for ($i=1; $i<=$numeroValores; $i++) {
-        print "      <tr>\n        <td>Valor $i:</td>
-        <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
+        print "        <tr>\n";
+        print "          <td>Valor $i:</td>\n";
+        print "          <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
         if (isset($valores[$i])) {
             print $valores[$i];
         }
@@ -204,52 +215,57 @@ if ($valoresTodoOk) {
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
         }
-        print "</td>\n      </tr>\n";
+        print "</td>\n";
+        print "        </tr>\n";
     }
-    print "    </tbody>\n  </table>
-  <p><input type=\"checkbox\" name=\"suma\" ";
+    print "      </tbody>\n";
+    print "    </table>\n";
+    print "\n";
+    print "    <p>\n";
+    print "      <input type=\"checkbox\" name=\"suma\" ";
     if ($suma) {
         print "checked=\"checked\" ";
     }
-    print " />Suma - <input type=\"checkbox\"
-    name=\"media\" ";
+    print "/> Suma -\n";
+    print "      <input type=\"checkbox\" name=\"media\" ";
     if ($media) {
         print "checked=\"checked\" ";
     }
-    print " />Media - <input type=\"checkbox\" name=\"maximo\" ";
+    print "/> Media - \n";
+    print "      <input type=\"checkbox\" name=\"maximo\" ";
     if ($maximo) {
         print "checked=\"checked\" ";
     }
-    print " />Máximo
-    - <input type=\"checkbox\" name=\"minimo\" ";
+    print "/> Máximo - \n";
+    print "      <input type=\"checkbox\" name=\"minimo\" ";
     if ($minimo) {
         print "checked=\"checked\" ";
     }
-    print " />Mínimo</p>
-  <p class=\"der\"><input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n"
-        ."    <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n"
-        ."    <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n"
-        ."    <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n"
-        ."    <input type=\"reset\" value=\"Borrar\" /></p>\n</form>\n";
+    print "/> Mínimo\n";
+    print "    </p>\n";
+    print "\n";
+    print "    <p class=\"der\">\n";
+    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
+    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
+    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
+    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
+    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "    </p>\n";
+    print "  </form>\n";
+    print "\n";
 }
 
-print '<address>
-  Esta página forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de esta página: 16 de noviembre de 2011
-</address>
-
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
-</body>
-</html>';
-/*
- * 2008-01-22
- * Este print está con comillas para poder buscar y sustituir el contenido
- * junto con el resto de ficheros.
- * También podría ponerlo fuera del bloque PHP, pero entonces Eclipse dice
- * que hay un error en la página.
- */
- ?>
+print "  <footer>\n";
+print "    <p class=\"ultmod\">\n";
+print "      Última modificación de esta página:\n";
+print "      <time datetime=\"2011-11-16\">16 de noviembre de 2011</time></p>\n";
+print "\n";
+print "    <p class=\"licencia\">\n";
+print "      Esta página forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";
+print "      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />\n";
+print "      y se distribuye bajo una <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES\">\n";
+print "      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>\n";
+print "  </footer>\n";
+print "</body>\n";
+print "</html>\n";
+?>
