@@ -2,8 +2,8 @@
 /**
  * Compraventa - com_reservar2.php
  *
- * @author    BartolomÈ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 BartolomÈ Sintes Marco
+ * @author    Bartolom√© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolom√© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org
@@ -45,7 +45,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             if (!$result) {
                 print "<p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn()==0) {
-                print "<p>El registro indicado no es v·lido o est· ya reservado.</p>\n";
+                print "<p>El registro indicado no es v√°lido o est√° ya reservado.</p>\n";
             } else {
                 date_default_timezone_set('Europe/Madrid');
                 $fecha_reserva = date("Y-m-d H:i:s");
@@ -54,9 +54,9 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                     reservado='TRUE', fecha_reserva='$fecha_reserva'
                     WHERE id='$indice'";
                 if ($db->query($consulta)) {
-                    print "<p>ArtÌculo reservado correctamente.</p>\n";
+                    print "<p>Art√≠culo reservado correctamente.</p>\n";
                 } else {
-                    print "<p>Error al reservar el artÌculo.</p>\n";
+                    print "<p>Error al reservar el art√≠culo.</p>\n";
                 }
             }
         }

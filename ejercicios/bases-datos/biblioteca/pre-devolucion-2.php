@@ -2,8 +2,8 @@
 /**
  * Biblioteca - pre_evolucion2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -24,7 +24,7 @@
 
 include('funciones.php');
 $db = conectaDb();
-cabecera('Préstamos - Devolución 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera('PrÃ©stamos - DevoluciÃ³n 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
 
 $id    = recogeParaConsulta($db, 'id');
 $fecha = recogeParaConsulta($db, 'fecha');
@@ -47,7 +47,7 @@ if (!$fechaOk) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "<p>El identificador de Préstamo no es correcto.</p>\n";
+        print "<p>El identificador de PrÃ©stamo no es correcto.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbPrestamos
             WHERE id=$id";
@@ -57,7 +57,7 @@ if (!$fechaOk) {
         } else {
             $valor = $result->fetch();
             if (fechaAmd($fecha)<$valor['prestado']) {
-                print "<p>Error: fecha de devolución anterior a la de préstamo.</p>\n";
+                print "<p>Error: fecha de devoluciÃ³n anterior a la de prÃ©stamo.</p>\n";
             } else {
                 $consulta = "UPDATE $dbPrestamos
                     SET devuelto='".fechaAmd($fecha)."'

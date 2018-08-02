@@ -2,8 +2,8 @@
 /**
  * Compraventa - validar1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org
@@ -38,30 +38,30 @@ if (!$usuario||($usuario=='menu_principal')) {
         WHERE usuario='$usuario'";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Identificación 2', 'menu_principal');
+        cabecera('IdentificaciÃ³n 2', 'menu_principal');
         print "<p>Error en la consulta.</p>";
     } elseif ($result->fetchColumn()==0) {
-        cabecera('Identificación 2', 'menu_principal');
+        cabecera('IdentificaciÃ³n 2', 'menu_principal');
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>";
         } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-            print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de Usuarios que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
         } else {
             print "  <p><strong>$usuario</strong> es un nuevo usuario. Por favor,
-      repita la contraseña para registrarse como usuario.</p>
+      repita la contraseÃ±a para registrarse como usuario.</p>
   <form action=\"validar2.php\" method=\"get\">
     <table>
       <tbody>
         <tr>
-          <td>Contraseña:</td>
+          <td>ContraseÃ±a:</td>
           <td><input type=\"password\" name=\"password2\" id=\"cursor\" /></td>
         </tr>
       </tbody>
     </table>
-    <p><input type=\"submit\" value=\"Añadir\" />
+    <p><input type=\"submit\" value=\"AÃ±adir\" />
       <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />
       <input type=\"hidden\" name=\"password\" value=\"".md5($password)
       ."\" /></p>
@@ -72,7 +72,7 @@ if (!$usuario||($usuario=='menu_principal')) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Identificación 2', 'menu_principal');
+            cabecera('IdentificaciÃ³n 2', 'menu_principal');
             print "<p>Error en la consulta.</p>";
         } else {
             $valor = $result->fetch();
@@ -85,7 +85,7 @@ if (!$usuario||($usuario=='menu_principal')) {
                 exit();
             }
             else {
-                header('Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta');
+                header('Location:index.php?aviso=El usuario ya existe, pero la contraseÃ±a no es correcta');
                 exit();
             }
         }

@@ -2,8 +2,8 @@
 /**
  * Poliagenda -  validar2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -33,7 +33,7 @@ $password  = quitaComillasExteriores($password);
 $password2 = recogeParaConsulta($db,'password2');
 $password2 = quitaComillasExteriores($password2);
 
-// Comprobación inicial por si se recarga la página nada más registrar un nuevo usuario
+// ComprobaciÃ³n inicial por si se recarga la pÃ¡gina nada mÃ¡s registrar un nuevo usuario
 if (isset($_SESSION['multiagendaUsuario'])) {
     header('Location:index.php');
     exit();
@@ -46,44 +46,44 @@ if (isset($_SESSION['multiagendaUsuario'])) {
         header('Location:index.php?aviso='._('Nombre de usuario no permitido'));
         exit();
     } elseif ($password!=md5($password2)) {
-        header('Location:index.php?aviso='._('Error: Las contraseñas no coinciden'));
+        header('Location:index.php?aviso='._('Error: Las contraseÃ±as no coinciden'));
         exit();
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera(_('Identificación').' 3', 'menu_principal');
+            cabecera(_('IdentificaciÃ³n').' 3', 'menu_principal');
             print "<p>"._('Error en la consulta').".</p>";
         } elseif ($result->fetchColumn()==1) {
-            cabecera(_('Identificación').' 3', 'menu_principal');
-            print "<p>"._('El nombre de usuario ya está registrado').".</p>";
+            cabecera(_('IdentificaciÃ³n').' 3', 'menu_principal');
+            print "<p>"._('El nombre de usuario ya estÃ¡ registrado').".</p>";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
             if (!$result) {
                 print "<p>"._('Error en la consulta').".</p>";
             } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-                print "<p>"._('Se ha alcanzado el número máximo de Usuarios que se pueden guardar')
-                  .".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
+                print "<p>"._('Se ha alcanzado el nÃºmero mÃ¡ximo de Usuarios que se pueden guardar')
+                  .".</p>\n<p>"._('Por favor, borre algÃºn registro antes').".</p>\n";
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password', '$tmpIdioma')";
                 if (!$db->query($consulta)) {
-                    cabecera(_('Identificación').' 3', 'menu_principal');
+                    cabecera(_('IdentificaciÃ³n').' 3', 'menu_principal');
                     print "<p>"._('Error al crear el registro').".<p>\n";
                 } else {
                     $consulta = "SELECT * FROM $dbUsuarios
                         WHERE usuario='$usuario'";
                     $result = $db->query($consulta);
                     if (!$result) {
-                        cabecera(_('Identificación').' 3', 'menu_principal');
+                        cabecera(_('IdentificaciÃ³n').' 3', 'menu_principal');
                         print "<p>"._('Error en la consulta').".</p>";
                     } else {
                         $valor = $result->fetch();
                         $_SESSION['multiagendaIdUsuario'] = $valor['id'];
                         $_SESSION['multiagendaUsuario']   = $valor['usuario'];
-                        cabecera(_('Identificación').' 3', $usuario);
+                        cabecera(_('IdentificaciÃ³n').' 3', $usuario);
                         print "  <p>"._('Bienvenido/a').", <strong>$usuario</strong>. "._('Ya es usted un usuario registrado y puede crear su agenda').".</p>";
                     }
                 }

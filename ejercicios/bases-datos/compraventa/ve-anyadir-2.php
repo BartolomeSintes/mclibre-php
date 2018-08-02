@@ -2,8 +2,8 @@
 /**
  * Compraventa - anyadir2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-26
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Venta - Añadir 2', 'venta');
+    cabecera('Venta - AÃ±adir 2', 'venta');
 
     $articulo = recogeParaConsulta($db, 'articulo');
     $precio   = recogeParaConsulta($db, 'precio');
@@ -38,15 +38,15 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         print "<p>Hay que rellenar los dos campos. "
             ."No se ha guardado el registro.</p>\n";
     } else {
-// FALTA: que la consulta no cuente los artículos vendidos
+// FALTA: que la consulta no cuente los artÃ­culos vendidos
         $consulta = "SELECT COUNT(*) FROM $dbArticulos
             WHERE id_vendedor='$_SESSION[compraventaUsuario]'";
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegArticulos) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de registros que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbArticulos
                 WHERE id_vendedor='$_SESSION[compraventaUsuario]'

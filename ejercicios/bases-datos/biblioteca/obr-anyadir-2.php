@@ -2,8 +2,8 @@
 /**
  * Biblioteca - obr-anyadir-2.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -24,7 +24,7 @@
 
 include('funciones.php');
 $db = conectaDb();
-cabecera('Obras - A�adir 2', CABECERA_SIN_CURSOR, 'menuObras');
+cabecera('Obras - Añadir 2', CABECERA_SIN_CURSOR, 'menuObras');
 
 $autor     = recogeParaConsulta($db, 'autor');
 $titulo    = recogeParaConsulta($db, 'titulo');
@@ -39,8 +39,8 @@ if (($autor=="''") && ($titulo=="''") && ($editorial=="''")) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_OBRAS) {
-        print "<p>Se ha alcanzado el n�mero m�ximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre alg�n registro antes.</p>\n";
+        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbObras
             WHERE autor=$autor

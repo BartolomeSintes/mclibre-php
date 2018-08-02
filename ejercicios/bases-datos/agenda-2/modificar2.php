@@ -2,8 +2,8 @@
 /**
  * Multiagenda -  modificar2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -34,7 +34,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
 
     if ($id=="''") {
         cabecera('Modificar 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
-        print "<p>No se ha seleccionado ningún registro.</p>\n";
+        print "<p>No se ha seleccionado ningÃºn registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAgenda
             WHERE id=$id
@@ -72,7 +72,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
               ."maxlength=\"".TAM_APELLIDOS."\" value=\"$valor[apellidos]\" /></td>
           </tr>
           <tr>
-            <td>Teléfono:</td>
+            <td>TelÃ©fono:</td>
             <td><input type=\"text\" name=\"telefono\" size=\"".TAM_TELEFONO."\" "
               ."maxlength=\"".TAM_TELEFONO."\" value=\"$valor[telefono]\" /></td>
           </tr>

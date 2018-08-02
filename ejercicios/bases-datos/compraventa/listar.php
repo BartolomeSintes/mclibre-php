@@ -2,8 +2,8 @@
 /**
  * Compraventa - listar.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org
@@ -35,14 +35,14 @@ $orden = quitaComillasExteriores($orden);
 
 if ($compraventa=='venta') {
     $tmp = "AND id_vendedor='$_SESSION[compraventaIdUsuario]'";
-    cabecera('Venta - Mis artículos', 'venta');
+    cabecera('Venta - Mis artÃ­culos', 'venta');
 } elseif ($compraventa=='compra') {
     $tmp = "AND id_vendedor<>'$_SESSION[compraventaIdUsuario]'
         AND reservado='FALSE'";
-    cabecera('Compra - Artículos en venta', 'compra');
+    cabecera('Compra - ArtÃ­culos en venta', 'compra');
 } else {
     $tmp = '';
-    cabecera('Ver artículos', 'menu_principal');
+    cabecera('Ver artÃ­culos', 'menu_principal');
 }
 
 $consulta = "SELECT COUNT(*) FROM $dbArticulos
@@ -51,7 +51,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-        print "<p>No hay ningún artículo a la venta.</p>\n";
+        print "<p>No hay ningÃºn artÃ­culo a la venta.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbArticulos
         WHERE comprado='FALSE' "
@@ -61,13 +61,13 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<p>Artículos en venta:</p>\n"
+        print "<p>ArtÃ­culos en venta:</p>\n"
             ."<table border=\"1\">
   <thead>
     <tr class=\"neg\">
       <th><a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=articulo&amp;orden=ASC\">
         <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Artículo
+        ArtÃ­culo
         <a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=articulo&amp;orden=DESC\">
         <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
       <th><a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=precio&amp;orden=ASC\">

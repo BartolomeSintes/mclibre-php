@@ -2,8 +2,8 @@
 /**
  * Citas -  validar2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -31,7 +31,7 @@ $password  = recogeParaConsulta($db,'password');
 $password  = quitaComillasExteriores($password);
 $password2 = recogeParaConsulta($db,'password2');
 $password2 = quitaComillasExteriores($password2);
-// Comprobación inicial por si se recarga la página nada más registrar un nuevo usuario
+// ComprobaciÃ³n inicial por si se recarga la pÃ¡gina nada mÃ¡s registrar un nuevo usuario
 session_start();
 if (isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
@@ -42,47 +42,47 @@ if (isset($_SESSION['citasUsuario'])) {
         header('Location:index.php?aviso=Nombre de usuario no permitido');
         exit();
     } elseif ($password!=md5($password2)) {
-        header('Location:index.php?aviso=Error: Las contraseñas no coinciden');
+        header('Location:index.php?aviso=Error: Las contraseÃ±as no coinciden');
         exit();
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Identificación 3', 'menu_principal');
+            cabecera('IdentificaciÃ³n 3', 'menu_principal');
             print "<p>Error en la consulta.</p>";
         } elseif ($result->fetchColumn()==1) {
-            cabecera('Identificación 3', 'menu_principal');
-            print "<p>El nombre de usuario ya está registrado.</p>";
+            cabecera('IdentificaciÃ³n 3', 'menu_principal');
+            print "<p>El nombre de usuario ya estÃ¡ registrado.</p>";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
             if (!$result) {
                 print "<p>Error en la consulta.</p>";
             } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-                print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
-                    ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de Usuarios que se pueden "
+                    ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password')";
                 if (!$db->query($consulta)) {
-                    cabecera('Identificación 3', 'menu_principal');
+                    cabecera('IdentificaciÃ³n 3', 'menu_principal');
                     print "<p>Error al crear el registro.<p>\n";
                 } else {
                     $consulta = "SELECT * FROM $dbUsuarios
                         WHERE usuario='$usuario'";
                     $result = $db->query($consulta);
                     if (!$result) {
-                        cabecera('Identificación 3', 'menu_principal');
+                        cabecera('IdentificaciÃ³n 3', 'menu_principal');
                         print "<p>Error en la consulta.</p>";
                     } else {
                         $valor = $result->fetch();
                         session_start();
                         $_SESSION['etiquetasIdUsuario'] = $valor['id'];
                         $_SESSION['citasUsuario']   = $valor['usuario'];
-                        cabecera('Identificación 3', $usuario);
+                        cabecera('IdentificaciÃ³n 3', $usuario);
                         print "  <p>Bienvenido/a, <strong>$usuario</strong>. Ya es usted "
-                            ."un usuario registrado y puede comprar y vender artículos.</p>";
+                            ."un usuario registrado y puede comprar y vender artÃ­culos.</p>";
                     }
                 }
             }

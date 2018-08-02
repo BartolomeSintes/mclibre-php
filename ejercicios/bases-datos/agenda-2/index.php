@@ -2,8 +2,8 @@
 /**
  * Multiagenda -  index.php
  *
- * @author    BartolomÈ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 BartolomÈ Sintes Marco
+ * @author    Bartolom√© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolom√© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -28,12 +28,12 @@ $db = conectaDb();
 $consulta = $consultaExisteTabla;
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Primera conexiÛn', CABECERA_SIN_CURSOR, 'menu_principal');
+    cabecera('Primera conexi√≥n', CABECERA_SIN_CURSOR, 'menu_principal');
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    cabecera('Primera conexiÛn', CABECERA_SIN_CURSOR, 'menu_principal');
+    cabecera('Primera conexi√≥n', CABECERA_SIN_CURSOR, 'menu_principal');
     print "<p>Aparentemente, la base de datos no existe. "
-        ."Se crear· a continuaciÛn.</p>";
+        ."Se crear√° a continuaci√≥n.</p>";
     if ($dbMotor==MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor==SQLITE) {
@@ -45,14 +45,14 @@ if (!$result) {
     if (isset($_SESSION['multiagendaUsuario'])) {
         cabecera('Inicio', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
     } else {
-        cabecera('IdentificaciÛn 1', CABECERA_CON_CURSOR, 'menu_principal');
+        cabecera('Identificaci√≥n 1', CABECERA_CON_CURSOR, 'menu_principal');
         $aviso = recogeParaConsulta($db, 'aviso');
         $aviso = quitaComillasExteriores($aviso);
         if ($aviso) {
             print "<p style=\"color: red\">$aviso</p>\n";
         }
         print "<form action=\"validar1.php\" method=\"".FORM_METHOD."\">
-  <p>Escriba su nombre de usuario y contraseÒa:</p>
+  <p>Escriba su nombre de usuario y contrase√±a:</p>
   <table>
     <tbody>
       <tr>
@@ -61,14 +61,14 @@ if (!$result) {
         ."maxlength=\"".TAM_USUARIO."\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>ContraseÒa:</td>
+        <td>Contrase√±a:</td>
         <td><input type=\"password\" name=\"password\" size=\"".TAM_PASSWORD."\" "
         ."maxlength=\"".TAM_PASSWORD."\" /></td>
       </tr>
     </tbody>
   </table>
-  <p><input type=\"submit\" value=\"AÒadir\" /></p>
-  <p><strong>Nota</strong>: Si no est· ya registrado, le registrarÈ como nuevo usuario.</p>
+  <p><input type=\"submit\" value=\"A√±adir\" /></p>
+  <p><strong>Nota</strong>: Si no est√° ya registrado, le registrar√© como nuevo usuario.</p>
 </form>\n";
     }
 }

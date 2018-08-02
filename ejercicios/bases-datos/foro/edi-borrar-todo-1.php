@@ -2,8 +2,8 @@
 /**
  * Foro - edi-borrar-todo-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -26,8 +26,8 @@ include ('funciones.php');
 cabecera('Editor - Borrar todo 1', CABECERA_SIN_CURSOR, 'menuEditor', '');
 
 print "<form action=\"edi-borrar-todo-2.php\" method=\"".FORM_METHOD."\">
-  <p>�Est� seguro?</p>
-  <p><input type=\"submit\" value=\"S�\" name=\"si\" />
+  <p>¿Está seguro?</p>
+  <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
     <input type=\"submit\" value=\"No\" name=\"no\" /></p>
 </form>\n";
 

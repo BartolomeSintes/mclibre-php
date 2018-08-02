@@ -2,8 +2,8 @@
 /**
  * Multiagenda -  anyadir2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -30,7 +30,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Añadir 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+    cabecera('AÃ±adir 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
 
     $nombre    = recogeParaConsulta($db, 'nombre');
     $apellidos = recogeParaConsulta($db, 'apellidos');
@@ -46,8 +46,8 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=MAX_REG_AGENDA) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de registros que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbAgenda
                 WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'

@@ -2,8 +2,8 @@
 /**
  * Biblioteca - funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -22,39 +22,39 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    TRUE);   // Para funci�n cabecera()
-define('CABECERA_SIN_CURSOR',    FALSE);  // Para funci�n cabecera()
-define('FORM_METHOD',            'get');  // Formularios se env�an con GET
-//define('FORM_METHOD',            'post'); // Formularios se env�an con POST
+define('CABECERA_CON_CURSOR',    TRUE);   // Para función cabecera()
+define('CABECERA_SIN_CURSOR',    FALSE);  // Para función cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envían con GET
+//define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define ('MYSQL', 'MySQL');
 define ('SQLITE', 'SQLite');
 $dbMotor = SQLITE;                        // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');         // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
     $dbDb        = 'mclibre_biblioteca';  // Nombre de la base de datos
     $dbObras     = $dbDb.'.obras';        // Nombre de la tabla Obras
     $dbUsuarios  = $dbDb.'.usuarios';     // Nombre de la tabla Ususarios
-    $dbPrestamos = $dbDb.'.prestamos';    // Nombre de la tabla de Pr�stamos
+    $dbPrestamos = $dbDb.'.prestamos';    // Nombre de la tabla de Préstamos
 } elseif ($dbMotor==SQLITE) {
     $dbDb        = '/home/barto/mclibre/tmp/mclibre/mclibre_biblioteca.sqlite';  // Nombre de la base de datos
     $dbObras     = 'obras';               // Nombre de la tabla Obras
     $dbUsuarios  = 'usuarios';            // Nombre de la tabla Ususarios
-    $dbPrestamos = 'prestamos';           // Nombre de la tabla de Pr�stamos
+    $dbPrestamos = 'prestamos';           // Nombre de la tabla de Préstamos
 }
 
 define('ZONA_HORARIA',      'Europe/Madrid');  // Zona horaria del servidor
-define('TAM_TITULO',        50);  // Tama�o del campo Obras > T�tulo
-define('TAM_AUTOR',         50);  // Tama�o del campo Obras > Autor
-define('TAM_EDITORIAL',     50);  // Tama�o del campo Obras > Editorial
-define('TAM_NOMBRE',        50);  // Tama�o del campo Usuarios > Nombre
-define('TAM_APELLIDOS',     50);  // Tama�o del campo Usuarios > Apellidos
-define('TAM_DNI',           10);  // Tama�o del campo Usuarios > DNI
-define('TAM_FECHA',         10);  // Tama�o del campo Pr�stamo > Fecha
-define('MAX_REG_OBRAS',     20);  // N�mero m�ximo de registros en la tabla Obras
-define('MAX_REG_USUARIOS',  20);  // N�mero m�ximo de registros en la tabla Usuarios
-define('MAX_REG_PRESTAMOS', 20);  // N�mero m�ximo de registros en la tabla Pr�stamos
+define('TAM_TITULO',        50);  // Tamaño del campo Obras > Título
+define('TAM_AUTOR',         50);  // Tamaño del campo Obras > Autor
+define('TAM_EDITORIAL',     50);  // Tamaño del campo Obras > Editorial
+define('TAM_NOMBRE',        50);  // Tamaño del campo Usuarios > Nombre
+define('TAM_APELLIDOS',     50);  // Tamaño del campo Usuarios > Apellidos
+define('TAM_DNI',           10);  // Tamaño del campo Usuarios > DNI
+define('TAM_FECHA',         10);  // Tamaño del campo Préstamo > Fecha
+define('MAX_REG_OBRAS',     20);  // Número máximo de registros en la tabla Obras
+define('MAX_REG_USUARIOS',  20);  // Número máximo de registros en la tabla Usuarios
+define('MAX_REG_PRESTAMOS', 20);  // Número máximo de registros en la tabla Préstamos
 
 $recorta = [
     'titulo'    => TAM_TITULO,
@@ -190,7 +190,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
 <ul>\n";
     if ($menu=='menuObras') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"obr-anyadir-1.php\">A�adir</a></li>
+  <li><a href=\"obr-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"obr-listar.php\">Listar</a></li>
   <li><a href=\"obr-buscar-1.php\">Buscar</a></li>
   <li><a href=\"obr-modificar-1.php\">Modificar</a></li>
@@ -198,7 +198,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
   <li><a href=\"obr-borrar-todo-1.php\">Borrar todo</a></li>";
     } elseif ($menu=='menuUsuarios') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"usu-anyadir-1.php\">A�adir</a></li>
+  <li><a href=\"usu-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"usu-listar.php\">Listar</a></li>
   <li><a href=\"usu-buscar-1.php\">Buscar</a></li>
   <li><a href=\"usu-modificar-1.php\">Modificar</a></li>
@@ -206,15 +206,15 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
   <li><a href=\"usu-borrar-todo-1.php\">Borrar todo</a></li>";
     } elseif ($menu=='menuPrestamos') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"pre-anyadir-1.php\">Pr�stamo</a></li>
-  <li><a href=\"pre-devolucion-1.php\">Devoluci�n</a></li>
+  <li><a href=\"pre-anyadir-1.php\">Préstamo</a></li>
+  <li><a href=\"pre-devolucion-1.php\">Devolución</a></li>
   <li><a href=\"pre-listar.php\">Listar</a></li>
   <li><a href=\"pre-borrar-1.php\">Borrar</a></li>
   <li><a href=\"pre-borrar-todo-1.php?\">Borrar todo</a></li>";
     } else {
         print "  <li><a href=\"obr-index.php\">Obras</a></li>
   <li><a href=\"usu-index.php\">Usuarios</a></li>
-  <li><a href=\"pre-index.php\">Pr�stamos</a></li>
+  <li><a href=\"pre-index.php\">Préstamos</a></li>
   <li><a href=\"com-borrar-todo-1.php\">Borrar todo</a></li>";
     }
     print "\n</ul>\n</div>\n\n<div id=\"contenido\">\n";
@@ -226,12 +226,12 @@ function pie()
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "P�ginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolom� Sintes Marco<br />
-  �ltima modificaci�n de este programa: 21 de mayo de 2009
+  Autor: Bartolomé Sintes Marco<br />
+  Última modificación de este programa: 21 de mayo de 2009
 </address>
-<p class="licencia">El programa PHP que genera esta p�gina est� bajo
+<p class="licencia">El programa PHP que genera esta página está bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

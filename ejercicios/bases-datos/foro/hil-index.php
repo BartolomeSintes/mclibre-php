@@ -2,8 +2,8 @@
 /**
  * Foro - hil-index.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -34,7 +34,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>La discusi�n solicitada no existe.</p>\n";
+    print "<p>La discusión solicitada no existe.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbDiscusiones
         WHERE id=$hilo";

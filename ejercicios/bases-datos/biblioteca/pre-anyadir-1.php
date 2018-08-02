@@ -2,8 +2,8 @@
 /**
  * Biblioteca - pre-anyadir-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -30,29 +30,29 @@ date_default_timezone_set(ZONA_HORARIA);
 $consulta = "SELECT COUNT(*) FROM $dbPrestamos";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+    cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()>=MAX_REG_PRESTAMOS) {
-    cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
-    print "<p>Se ha alcanzado el n�mero m�ximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre alg�n registro antes.</p>\n";
+    cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+    print "<p>Se ha alcanzado el número máximo de registros que se pueden "
+        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
 } else {
     $consultaObras = "SELECT COUNT(*) FROM $dbObras";
     $resultObras = $db->query($consultaObras);
     $consultaUsuarios = "SELECT COUNT(*) FROM $dbUsuarios";
     $resultUsuarios = $db->query($consultaUsuarios);
     if (!$resultObras) {
-        cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+        cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
         print "<p>Error en la consulta de Obras.</p>\n";
     } elseif (!$resultUsuarios) {
-        cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+        cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
         print "<p>Error en la consulta de Usuarios.</p>\n";
     } elseif ($resultObras->fetchColumn()==0) {
-        cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
-        print "<p>No se ha creado todav�a ning�n registro de Obras.</p>\n";
+        cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+        print "<p>No se ha creado todavía ningún registro de Obras.</p>\n";
     } elseif ($resultUsuarios->fetchColumn()==0) {
-        cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
-        print "<p>No se ha creado todav�a ning�n registro de Usuarios.</p>\n";
+        cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+        print "<p>No se ha creado todavía ningún registro de Usuarios.</p>\n";
     } else {
         $consultaUsuarios = "SELECT * FROM $dbUsuarios
             ORDER BY apellidos ASC";
@@ -61,21 +61,21 @@ if (!$result) {
             ORDER BY autor ASC";
         $resultObras = $db->query($consultaObras);
         if (!$resultObras) {
-            cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+            cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
             print "<p>Error en la consulta de Obras.</p>\n";
         } elseif (!$resultUsuarios) {
-            cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+            cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
             print "<p>Error en la consulta de Usuarios.</p>\n";
         } else {
-            cabecera('Pr�stamos - Nuevo pr�stamo 1', CABECERA_CON_CURSOR, 'menuPrestamos');
+            cabecera('Préstamos - Nuevo préstamo 1', CABECERA_CON_CURSOR, 'menuPrestamos');
             print "<form action=\"pre-anyadir-2.php\" method=\"".FORM_METHOD."\">
-  <p>Seleccione obra y usuario e indique la fecha del pr�stamo:</p>
+  <p>Seleccione obra y usuario e indique la fecha del préstamo:</p>
   <table border=\"1\">
     <thead>
       <tr class=\"neg\">
         <th>Usuario</th>
         <th>Obra</th>
-        <th>Fecha de pr�stamo (dd-mm-aaaa)</th>
+        <th>Fecha de préstamo (dd-mm-aaaa)</th>
       </tr>
     </thead>
     <tbody>
@@ -95,7 +95,7 @@ if (!$result) {
           <input type=\"text\" name=\"fecha\" size=\"".TAM_FECHA."\" "
                 ."maxlength=\"".TAM_FECHA."\" value=\"".date('d-m-Y')."\" id=\"cursor\" />
         </td>\n      </tr>\n    </tbody>\n  </table>
-  <p><input type=\"submit\" value=\"A�adir\" /></p>\n</form>\n";
+  <p><input type=\"submit\" value=\"Añadir\" /></p>\n</form>\n";
         }
     }
 }

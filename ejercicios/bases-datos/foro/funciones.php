@@ -2,8 +2,8 @@
 /**
  * Foro - funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -23,28 +23,28 @@
  */
 
 define('ZONA_HORARIA',           'Europe/Madrid');  // Zona horaria del servidor
-define('CABECERA_CON_CURSOR',    TRUE);             // Para funci�n cabecera()
-define('CABECERA_SIN_CURSOR',    FALSE);            // Para funci�n cabecera()
-define('FORM_METHOD',            'get');  // Formularios se env�an con GET
-//define('FORM_METHOD',            'post'); // Formularios se env�an con POST
+define('CABECERA_CON_CURSOR',    TRUE);             // Para función cabecera()
+define('CABECERA_SIN_CURSOR',    FALSE);            // Para función cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envían con GET
+//define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define('MYSQL',                  'MySQL');
 define('SQLITE',                 'SQLite');
-define('TAM_TITULO',             50);   // Tama�o del campo Discusiones > T�tulo
-define('TAM_DESCRIPCION',        50);   // Tama�o del campo Discusiones > Descripci�n
-define('TAM_AUTOR',              50);   // Tama�o del campo Discusiones > Autor
-define('TAM_INTERVENCION',       255);  // Tama�o del campo Intervenciones > Intervenci�n
-define('MAX_REG_DISCUSIONES',    10);   // N�mero m�ximo de registros en la tabla Discusiones
-define('MAX_REG_INTERVENCIONES', 20);   // N�mero m�ximo de registros en la tabla Intervenciones
+define('TAM_TITULO',             50);   // Tamaño del campo Discusiones > Título
+define('TAM_DESCRIPCION',        50);   // Tamaño del campo Discusiones > Descripción
+define('TAM_AUTOR',              50);   // Tamaño del campo Discusiones > Autor
+define('TAM_INTERVENCION',       255);  // Tamaño del campo Intervenciones > Intervención
+define('MAX_REG_DISCUSIONES',    10);   // Número máximo de registros en la tabla Discusiones
+define('MAX_REG_INTERVENCIONES', 20);   // Número máximo de registros en la tabla Intervenciones
 define('ANONIMO_AUTOR',          'Rata cobarde');     // Autor predeterminado
-define('ANONIMO_TITULO',         'Sin t�tulo');       // T�tulo predeterminado
-define('ANONIMO_DESCRIPCION',    'Sin descripci�n');  // Descripci�n predeterminada
-define('ANONIMO_INTERVENCION',   'Sin texto');        // Intervenci�n predeterminada
+define('ANONIMO_TITULO',         'Sin título');       // Título predeterminado
+define('ANONIMO_DESCRIPCION',    'Sin descripción');  // Descripción predeterminada
+define('ANONIMO_INTERVENCION',   'Sin texto');        // Intervención predeterminada
 
 $dbMotor = SQLITE;                               // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');             // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');                // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');                // Contraseña de usuario de MySQL
     $dbDb             = 'mclibre_foro';          // Nombre de la base de datos
     $dbDiscusiones    = $dbDb.'.discusiones';    // Nombre de la tabla Discusiones
     $dbIntervenciones = $dbDb.'.intervenciones'; // Nombre de la tabla Intervenciones
@@ -191,7 +191,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
   <li><a href=\"edi-borrar-inte-1.php\">Borrar intervenciones</a></li>
   <li><a href=\"edi-borrar-todo-1.php\">Borrar todo</a></li>";
     } else {
-        print "  <li><a href=\"dis-anyadir-1.php\">Nueva discusi�n</a></li>
+        print "  <li><a href=\"dis-anyadir-1.php\">Nueva discusión</a></li>
   <li><a href=\"edi-index.php\">Editor</a></li>";
     }
     print "\n</ul>\n</div>\n\n<div id=\"contenido\">\n";
@@ -203,12 +203,12 @@ print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "P�ginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolom� Sintes Marco<br />
-  �ltima modificaci�n de este programa: 21 de mayo de 2009
+  Autor: Bartolomé Sintes Marco<br />
+  Última modificación de este programa: 21 de mayo de 2009
 </address>
-<p class="licencia">El programa PHP que genera esta p�gina est� bajo
+<p class="licencia">El programa PHP que genera esta página está bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

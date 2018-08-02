@@ -2,8 +2,8 @@
 /**
  * Compraventa - co_comprar1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-26
  * @link      http://www.mclibre.org
@@ -44,7 +44,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "<p>No hay ningún artículo reservado.</p>\n";
+        print "<p>No hay ningÃºn artÃ­culo reservado.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
         WHERE id_comprador='$_SESSION[compraventaIdUsuario]'
@@ -56,13 +56,13 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             print "<p>Error en la consulta.</p>\n";
         } else {
             print "<form action=\"co_comprar2.php\" method=\"get\">
-  <p>Estos son los artículos reservados.:</p>\n
+  <p>Estos son los artÃ­culos reservados.:</p>\n
   <table border=\"1\">
     <thead>
       <tr class=\"neg\">
         <th><a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Artículo
+          ArtÃ­culo
           <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
         <th><a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">

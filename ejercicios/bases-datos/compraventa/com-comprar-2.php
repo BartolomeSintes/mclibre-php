@@ -2,8 +2,8 @@
 /**
  * Compraventa - com_comprar2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org
@@ -39,7 +39,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "<p>no hay ningún registro reservado.</p>\n";
+        print "<p>no hay ningÃºn registro reservado.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
             WHERE id_comprador='$_SESSION[compraventaIdUsuario]'
@@ -56,9 +56,9 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                     SET comprado='TRUE', fecha_compra='$fecha_compra'
                     WHERE id='$valor[id]'";
                 if ($db->query($consulta)) {
-                    print "<p>Artículo comprado correctamente.</p>\n";
+                    print "<p>ArtÃ­culo comprado correctamente.</p>\n";
                 } else {
-                    print "<p>Error al comprar el artículo.</p>\n";
+                    print "<p>Error al comprar el artÃ­culo.</p>\n";
                 }
             }
         }

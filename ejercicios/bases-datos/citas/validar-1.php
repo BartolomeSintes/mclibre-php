@@ -2,8 +2,8 @@
 /**
  * Citas -  validar-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -38,30 +38,30 @@ if (!$usuario||($usuario=='menu_principal')) {
         WHERE usuario='$usuario'";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Identificaci�n 2', 'menu_principal');
+        cabecera('Identificación 2', 'menu_principal');
         print "<p>Error en la consulta.</p>";
     } elseif ($result->fetchColumn()==0) {
-        cabecera('Identificaci�n 2', 'menu_principal');
+        cabecera('Identificación 2', 'menu_principal');
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>";
         } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-            print "<p>Se ha alcanzado el n�mero m�ximo de Usuarios que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre alg�n registro antes.</p>\n";
+            print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             print "  <p><strong>$usuario</strong> es un nuevo usuario. Por favor,
-      repita la contrase�a para registrarse como usuario.</p>
+      repita la contraseña para registrarse como usuario.</p>
   <form action=\"validar2.php\" method=\"get\">
     <table>
       <tbody>
         <tr>
-          <td>Contrase�a:</td>
+          <td>Contraseña:</td>
           <td><input type=\"password\" name=\"password2\" id=\"cursor\" /></td>
         </tr>
       </tbody>
     </table>
-    <p><input type=\"submit\" value=\"A�adir\" />
+    <p><input type=\"submit\" value=\"Añadir\" />
       <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />
       <input type=\"hidden\" name=\"password\" value=\"".md5($password)
       ."\" /></p>
@@ -72,7 +72,7 @@ if (!$usuario||($usuario=='menu_principal')) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Identificaci�n 2', 'menu_principal');
+            cabecera('Identificación 2', 'menu_principal');
             print "<p>Error en la consulta.</p>";
         } else {
             $valor = $result->fetch();
@@ -85,7 +85,7 @@ if (!$usuario||($usuario=='menu_principal')) {
                 exit();
             }
             else {
-                header('Location:index.php?aviso=El usuario ya existe, pero la contrase�a no es correcta');
+                header('Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta');
                 exit();
             }
         }

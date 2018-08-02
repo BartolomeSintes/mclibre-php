@@ -2,8 +2,8 @@
 /**
  * Citas -  funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ if ($dbMotor==MYSQL) {
     // NO HE PROBADO EL PROGRAMA CON MYSQL
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');          // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');          // Contraseña de usuario de MySQL
     $dbDb        = 'mclibre_etiquetas';    // Nombre de la base de datos
     $dbUsuarios  = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
     $dbEtiquetas = $dbDb.'.etiquetas';     // Nombre de la tabla de Etiquetas
@@ -53,22 +53,22 @@ $administradorPassword = 'root';  // Password del usuario Administrador
 // Si $administradorPassword = '', no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
-$tamUsuario      = 20;   // Tama�o del campo Usuarios > Usuario
-$tamPassword     = 20;   // Tama�o del campo Usuarios > Contrase�a
-$tamCifrado      = 32;   // Tama�o del campo Usuarios > Contrase�a en MD5
-$tamCita         = 255;  // Tama�o del campo Citas > Cita
-$tamEtiqueta     = 30;   // Tama�o del campo Etiquetas > Etiqueta
-$tamNombre       = 30;   // Tama�o del campo Autores > Nombre
-$tamApellidos    = 30;   // Tama�o del campo Autores > Apellidos
-$tamIdUsuario    = 10;   // Tama�o del campo id Usuario
-$tamIdCita       = 10;   // Tama�o del campo id Cita
-$tamIdEtiqueta   = 10;   // Tama�o del campo id Etiqueta
-$minFontSize     = 80;   // Porcentaje m�nimo de tipo de letra
-$maxFontSize     = 400;  // Porcentaje m�nimo de tipo de letra
-$maxRegUsuarios  = 30;   // N�mero m�ximo de registros en la tabla Usuarios
-$maxRegAutores   = 30;   // N�mero m�ximo de registros en la tabla Autores
-$maxRegCitas     = 30;   // N�mero m�ximo de registros en la tabla Citas
-$maxRegEtiquetas = 30;   // N�mero m�ximo de registros en la tabla Etiquetas
+$tamUsuario      = 20;   // Tamaño del campo Usuarios > Usuario
+$tamPassword     = 20;   // Tamaño del campo Usuarios > Contraseña
+$tamCifrado      = 32;   // Tamaño del campo Usuarios > Contraseña en MD5
+$tamCita         = 255;  // Tamaño del campo Citas > Cita
+$tamEtiqueta     = 30;   // Tamaño del campo Etiquetas > Etiqueta
+$tamNombre       = 30;   // Tamaño del campo Autores > Nombre
+$tamApellidos    = 30;   // Tamaño del campo Autores > Apellidos
+$tamIdUsuario    = 10;   // Tamaño del campo id Usuario
+$tamIdCita       = 10;   // Tamaño del campo id Cita
+$tamIdEtiqueta   = 10;   // Tamaño del campo id Etiqueta
+$minFontSize     = 80;   // Porcentaje mínimo de tipo de letra
+$maxFontSize     = 400;  // Porcentaje mínimo de tipo de letra
+$maxRegUsuarios  = 30;   // Número máximo de registros en la tabla Usuarios
+$maxRegAutores   = 30;   // Número máximo de registros en la tabla Autores
+$maxRegCitas     = 30;   // Número máximo de registros en la tabla Citas
+$maxRegEtiquetas = 30;   // Número máximo de registros en la tabla Etiquetas
 $recorta = [
     'usuario'    => $tamUsuario,
     'password'   => $tamCifrado,
@@ -144,9 +144,9 @@ function borraTodoMySQL($db)
             fecha_compra DATE,
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_articulos)) {
-            print "<p>Tabla de Art�culos creada correctamente.</p>\n";
+            print "<p>Tabla de Artículos creada correctamente.</p>\n";
         } else {
-            print "<p>Error al crear la tabla de Art�culos.</p>\n";
+            print "<p>Error al crear la tabla de Artículos.</p>\n";
         }
     } else {
         print "<p>Error al crear la base de datos.</p>\n";
@@ -349,19 +349,19 @@ function cabecera($texto, $menu='menu_principal')
         print "
   <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"aut-listar.php\">Listar</a></li>
-  <li><a href=\"aut-anyadir-1.php\">A�adir</a></li>
+  <li><a href=\"aut-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"aut-borrar-1.php\">Borrar</a></li>";
       } elseif ($menu=='menu_etiquetas') {
         print "
   <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"eti-listar.php\">Listar</a></li>
-  <li><a href=\"eti-anyadir-1.php\">A�adir</a></li>
+  <li><a href=\"eti-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"eti-borrar-1.php\">Borrar</a></li>";
       } elseif ($menu=='menu_citas') {
         print "
   <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"cit-listar.php\">Listar</a></li>
-  <li><a href=\"cit-anyadir-1.php\">A�adir</a></li>
+  <li><a href=\"cit-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"cit-borrar-1.php\">Borrar</a></li>
   <li><a href=\"cit-etiquetas-1.php\">Asignar etiquetas</a></li>
   <li><a href=\"cit-eti-borrar-1.php\">Borrar etiquetas</a></li>";
@@ -387,19 +387,19 @@ function pie()
 
     if (($administradorPassword!='')&&!isset($_SESSION['citasUsuario'])) {
         print "<p><strong>Nota</strong>: El usuario Administrador "
-            ."se llama <strong>root</strong> y su contrase�a es\ntambi�n "
+            ."se llama <strong>root</strong> y su contraseña es\ntambién "
             ."<strong>root</strong>.</p>\n";
     }
     print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "P�ginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolom� Sintes Marco<br />
-  �ltima modificaci�n de este programa: 6 de junio de 2008
+  Autor: Bartolomé Sintes Marco<br />
+  Última modificación de este programa: 6 de junio de 2008
 </address>
-<p class="licencia">El programa PHP que genera esta p�gina est� bajo
+<p class="licencia">El programa PHP que genera esta página está bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

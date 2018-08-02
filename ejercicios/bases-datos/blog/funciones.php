@@ -2,8 +2,8 @@
 /**
  * Blog - funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -23,20 +23,20 @@
  */
 
 define('ZONA_HORARIA',        'Europe/Madrid');  // Zona horaria del servidor
-define('CABECERA_CON_CURSOR', TRUE);             // Para funci�n cabecera()
-define('CABECERA_SIN_CURSOR', FALSE);            // Para funci�n cabecera()
-define('FORM_METHOD',            'get');  // Formularios se env�an con GET
-//define('FORM_METHOD',            'post'); // Formularios se env�an con POST
+define('CABECERA_CON_CURSOR', TRUE);             // Para función cabecera()
+define('CABECERA_SIN_CURSOR', FALSE);            // Para función cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envían con GET
+//define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define('MYSQL',               'MySQL');
 define('SQLITE',              'SQLite');
-define('TAM_ENTRADA',         255);  // Tama�o del campo Entradas > Entrada
-define('MAX_REG_ENTRADAS',    10);   // N�mero m�ximo de registros en la tabla Entradas
+define('TAM_ENTRADA',         255);  // Tamaño del campo Entradas > Entrada
+define('MAX_REG_ENTRADAS',    10);   // Número máximo de registros en la tabla Entradas
 
 $dbMotor = SQLITE;                     // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');   // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');      // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');      // Contraseña de usuario de MySQL
     $dbDb       = 'mclibre_blog';     // Nombre de la base de datos
     $dbEntradas = $dbDb.'.entradas';  // Nombre de la tabla Entradas
 } elseif ($dbMotor==SQLITE) {
@@ -294,12 +294,12 @@ function pie()
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "P�ginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolom� Sintes Marco<br />
-  �ltima modificaci�n de este programa: 21 de mayo de 2009
+  Autor: Bartolomé Sintes Marco<br />
+  Última modificación de este programa: 21 de mayo de 2009
 </address>
-<p class="licencia">El programa PHP que genera esta p�gina est� bajo
+<p class="licencia">El programa PHP que genera esta página está bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

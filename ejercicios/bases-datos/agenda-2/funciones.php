@@ -2,8 +2,8 @@
 /**
  * Multiagenda -  funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -22,27 +22,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    TRUE);   // Para funci�n cabecera()
-define('CABECERA_SIN_CURSOR',    FALSE);  // Para funci�n cabecera()
-define('FORM_METHOD',            'get');  // Formularios se env�an con GET
-//define('FORM_METHOD',            'post'); // Formularios se env�an con POST
+define('CABECERA_CON_CURSOR',    TRUE);   // Para función cabecera()
+define('CABECERA_SIN_CURSOR',    FALSE);  // Para función cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envían con GET
+//define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define('MYSQL',          'MySQL');
 define('SQLITE',         'SQLite');
-define('TAM_USUARIO',      20);  // Tama�o del campo Usuarios > Usuario
-define('TAM_PASSWORD',     20);  // Tama�o del campo Usuarios > Contrase�a
-define('TAM_CIFRADO',      32);  // Tama�o del campo Usuarios > Contrase�a en MD5
-define('TAM_NOMBRE',       40);  // Tama�o del campo Agenda > Nombre
-define('TAM_APELLIDOS',    60);  // Tama�o del campo Agenda > Apellidos
-define('TAM_TELEFONO',     10);  // Tama�o del campo Agenda > Tel�fono
-define('TAM_CORREO',       50);  // Tama�o del campo Agenda > Correo
-define('MAX_REG_USUARIOS', 20);  // N�mero m�ximo de registros en la tabla Usuarios
-define('MAX_REG_AGENDA',   20);  // N�mero m�ximo de registros en la tabla Agenda
+define('TAM_USUARIO',      20);  // Tamaño del campo Usuarios > Usuario
+define('TAM_PASSWORD',     20);  // Tamaño del campo Usuarios > Contraseña
+define('TAM_CIFRADO',      32);  // Tamaño del campo Usuarios > Contraseña en MD5
+define('TAM_NOMBRE',       40);  // Tamaño del campo Agenda > Nombre
+define('TAM_APELLIDOS',    60);  // Tamaño del campo Agenda > Apellidos
+define('TAM_TELEFONO',     10);  // Tamaño del campo Agenda > Teléfono
+define('TAM_CORREO',       50);  // Tamaño del campo Agenda > Correo
+define('MAX_REG_USUARIOS', 20);  // Número máximo de registros en la tabla Usuarios
+define('MAX_REG_AGENDA',   20);  // Número máximo de registros en la tabla Agenda
 
 $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');         // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
     $dbDb       = 'mclibre_multiagenda';  // Nombre de la base de datos
     $dbUsuarios = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
     $dbAgenda   = $dbDb.'.agenda';        // Nombre de la tabla de Agendas
@@ -303,7 +303,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menu_principal'
         print "  <li><a href=\"borrartodo1.php\">Borrar todo</a></li>
   <li><a href=\"salir.php\">Desconectar</a></li>";
     } else {
-        print "  <li><a href=\"anyadir1.php\">A�adir</a></li>
+        print "  <li><a href=\"anyadir1.php\">Añadir</a></li>
   <li><a href=\"listar.php\">Listar</a></li>
   <li><a href=\"modificar1.php\">Modificar</a></li>
   <li><a href=\"buscar1.php\">Buscar</a></li>
@@ -322,19 +322,19 @@ function pie()
 
     if (($administradorPassword!='') &&!isset($_SESSION['multiagendaUsuario'])) {
         print "<p><strong>Nota</strong>: El usuario Administrador "
-            ."se llama <strong>root</strong> y su contrase�a es\ntambi�n "
+            ."se llama <strong>root</strong> y su contraseña es\ntambién "
             ."<strong>root</strong>.</p>\n";
     }
     print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "P�ginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolom� Sintes Marco<br />
-  �ltima modificaci�n de este programa: 21 de mayo de 2009
+  Autor: Bartolomé Sintes Marco<br />
+  Última modificación de este programa: 21 de mayo de 2009
 </address>
-<p class="licencia">El programa PHP que genera esta p�gina est� bajo
+<p class="licencia">El programa PHP que genera esta página está bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

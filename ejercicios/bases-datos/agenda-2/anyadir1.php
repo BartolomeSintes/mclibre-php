@@ -2,8 +2,8 @@
 /**
  * Multiagenda -  anyadir1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -33,14 +33,14 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     $consulta = "SELECT COUNT(*) FROM $dbAgenda";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Añadir 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+        cabecera('AÃ±adir 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_AGENDA) {
-        cabecera('Añadir 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        cabecera('AÃ±adir 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+        print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de registros que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
     } else {
-        cabecera('Añadir 1', CABECERA_CON_CURSOR, $_SESSION['multiagendaUsuario']);
+        cabecera('AÃ±adir 1', CABECERA_CON_CURSOR, $_SESSION['multiagendaUsuario']);
         print "<form action=\"anyadir2.php\" method=\"".FORM_METHOD."\">
       <p>Escriba los datos del nuevo registro:</p>
       <table>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
               ."maxlength=\"".TAM_APELLIDOS."\" /></td>
           </tr>
           <tr>
-            <td>Teléfono:</td>
+            <td>TelÃ©fono:</td>
             <td><input type=\"text\" name=\"telefono\" size=\"".TAM_TELEFONO."\" "
               ."maxlength=\"".TAM_TELEFONO."\" /></td>
           </tr>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
           </tr>
         </tbody>
       </table>
-      <p><input type=\"submit\" value=\"Añadir\" /></p>
+      <p><input type=\"submit\" value=\"AÃ±adir\" /></p>
     </form>\n";
     }
     $db = NULL;

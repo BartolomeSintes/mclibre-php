@@ -2,8 +2,8 @@
 /**
  * Blog - anyadir.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -28,7 +28,7 @@ $db = conectaDb();
 $fecha = recogeFecha($db, 'fecha');
 $entrada = recogeParaConsulta($db, 'entrada');
 
-cabecera('Añadir', CABECERA_SIN_CURSOR, $fecha);
+cabecera('AÃ±adir', CABECERA_SIN_CURSOR, $fecha);
 
 if (($fecha=="''") || ($entrada=="''")) {
     print "<p>Hay que escribir algo en la entrada. "
@@ -39,8 +39,8 @@ if (($fecha=="''") || ($entrada=="''")) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_ENTRADAS) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de registros que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbEntradas
             WHERE fecha='$fecha'";

@@ -2,8 +2,8 @@
 /**
  * Biblioteca - usu-modificar-2.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ $id = recogeParaConsulta($db, 'id');
 
 if ($id=="''") {
     cabecera('Usuarios - Modificar 2', CABECERA_SIN_CURSOR, 'menuUsuarios');
-    print "<p>No se ha seleccionado ning�n registro.</p>\n";
+    print "<p>No se ha seleccionado ningún registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
         WHERE id=$id";

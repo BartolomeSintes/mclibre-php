@@ -2,8 +2,8 @@
 /**
  * Compraventa - co_anularreserva2.php
  *
- * @author    BartolomÈ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 BartolomÈ Sintes Marco
+ * @author    Bartolom√© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolom√© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-26
  * @link      http://www.mclibre.org
@@ -46,7 +46,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             if (!$result) {
                 print "<p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn()==0) {
-                print "<p>El registro indicado no es v·lido, se ha vendido o no est· reservado.</p>\n";
+                print "<p>El registro indicado no es v√°lido, se ha vendido o no est√° reservado.</p>\n";
             } else {
                 date_default_timezone_set('Europe/Madrid');
                 $fecha_reserva = date("Y-m-d H:i:s");
@@ -56,9 +56,9 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                     fecha_reserva='0000-00-00 00:00:00'
                     WHERE id='$indice'";
                 if ($db->query($consulta)) {
-                    print "<p>Reserva de artÌculo anulada correctamente.</p>\n";
+                    print "<p>Reserva de art√≠culo anulada correctamente.</p>\n";
                 } else {
-                    print "<p>Error al anular la reserva de artÌculo.</p>\n";
+                    print "<p>Error al anular la reserva de art√≠culo.</p>\n";
                 }
             }
         }

@@ -2,8 +2,8 @@
 /**
  * Biblioteca - obr-anyadir-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -28,14 +28,14 @@ $db = conectaDb();
 $consulta = "SELECT COUNT(*) FROM $dbObras";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Obras - A�adir 1', CABECERA_SIN_CURSOR, 'menuObras');
+    cabecera('Obras - Añadir 1', CABECERA_SIN_CURSOR, 'menuObras');
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()>=MAX_REG_OBRAS) {
-    cabecera('Obras - A�adir 1', CABECERA_SIN_CURSOR, 'menuObras');
-    print "<p>Se ha alcanzado el n�mero m�ximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre alg�n registro antes.</p>\n";
+    cabecera('Obras - Añadir 1', CABECERA_SIN_CURSOR, 'menuObras');
+    print "<p>Se ha alcanzado el número máximo de registros que se pueden "
+        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
 } else {
-    cabecera('Obras - A�adir 1', CABECERA_CON_CURSOR, 'menuObras');
+    cabecera('Obras - Añadir 1', CABECERA_CON_CURSOR, 'menuObras');
     print "<form action=\"obr-anyadir-2.php\" method=\"".FORM_METHOD."\">
   <p>Escriba los datos del nuevo registro:</p>
   <table>
@@ -46,7 +46,7 @@ if (!$result) {
         ."maxlength=\"".TAM_AUTOR."\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>T�tulo:</td>
+        <td>Título:</td>
         <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
         ."maxlength=\"".TAM_TITULO."\" /></td>
       </tr>
@@ -57,7 +57,7 @@ if (!$result) {
       </tr>
     </tbody>
   </table>
-  <p><input type=\"submit\" value=\"A�adir\" /></p>
+  <p><input type=\"submit\" value=\"Añadir\" /></p>
 </form>\n";
 }
 

@@ -2,8 +2,8 @@
 /**
  * Biblioteca - obr-modificar-2.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ $id = recogeParaConsulta($db, 'id');
 
 if ($id=="''") {
     cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
-    print "<p>No se ha seleccionado ning�n registro.</p>\n";
+    print "<p>No se ha seleccionado ningún registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbObras
         WHERE id=$id";
@@ -60,7 +60,7 @@ if ($id=="''") {
           ."maxlength=\"".TAM_AUTOR."\" value=\"$valor[autor]\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>T�tulo:</td>
+        <td>Título:</td>
         <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
           ."maxlength=\"".TAM_TITULO."\" value=\"$valor[titulo]\" /></td>
       </tr>

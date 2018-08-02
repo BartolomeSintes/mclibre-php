@@ -2,8 +2,8 @@
 /**
  * Poliagenda -  borrartodo1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -32,8 +32,8 @@ if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario']!
     cabecera(_('Borrar todo').' 1', $_SESSION['multiagendaUsuario']);
 
     print "<form action=\"borrartodo2.php\" method=\"get\">
-  <p>"._('¿Está seguro?')."</p>
-  <p><input type=\"submit\" value=\""._('Sí')."\" name=\"si\" />
+  <p>"._('Â¿EstÃ¡ seguro?')."</p>
+  <p><input type=\"submit\" value=\""._('SÃ­')."\" name=\"si\" />
     <input type=\"submit\" value=\""._('No')."\" name=\"no\" /></p>
 </form>\n";
 

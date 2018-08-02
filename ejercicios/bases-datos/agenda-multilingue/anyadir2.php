@@ -2,8 +2,8 @@
 /**
  * Poliagenda -  anyadir2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -29,7 +29,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera(_('Añadir').' 2', $_SESSION['multiagendaUsuario']);
+    cabecera(_('AÃ±adir').' 2', $_SESSION['multiagendaUsuario']);
 
     $nombre    = recogeParaConsulta($db, 'nombre');
     $apellidos = recogeParaConsulta($db, 'apellidos');
@@ -45,8 +45,8 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
         if (!$result) {
             print "<p>"._('Error en la consulta').".</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegAgenda) {
-            print "<p>"._('Se ha alcanzado el número máximo de registros que se pueden guardar')
-              .".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
+            print "<p>"._('Se ha alcanzado el nÃºmero mÃ¡ximo de registros que se pueden guardar')
+              .".</p>\n<p>"._('Por favor, borre algÃºn registro antes').".</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbAgenda
                 WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'

@@ -2,8 +2,8 @@
 /**
  * Foro - edi_borrarnte1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -36,7 +36,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se ha creado todav�a ning�n registro.</p>\n";
+    print "<p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbDiscusiones
         ORDER BY $campo $orden";
@@ -45,7 +45,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         print "<form action=\"edi-borrar-inte-2.php\" method=\"".FORM_METHOD."\">
-  <p>Marque la discusi�n en la que quiera borrar intervenciones.</p>
+  <p>Marque la discusión en la que quiera borrar intervenciones.</p>
   <table border=\"1\">
     <thead>
       <tr class=\"neg\">
@@ -62,12 +62,12 @@ if (!$result) {
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
         <th><a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          T�tulo
+          Título
           <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
         <th><a href=\"$_SERVER[PHP_SELF]?campo=descripcion&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-          Descripci�n
+          Descripción
           <a href=\"$_SERVER[PHP_SELF]?campo=descripcion&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
       </tr>

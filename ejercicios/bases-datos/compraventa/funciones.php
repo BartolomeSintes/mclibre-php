@@ -2,8 +2,8 @@
 /**
  * Compraventa - funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org
@@ -28,10 +28,10 @@ $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');          // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');          // Contraseña de usuario de MySQL
     $dbDb        = 'mclibre_compraventa';  // Nombre de la base de datos
     $dbUsuarios  = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
-    $dbArticulos = $dbDb.'.articulos';     // Nombre de la tabla de Art�culos
+    $dbArticulos = $dbDb.'.articulos';     // Nombre de la tabla de Artículos
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
 } elseif ($dbMotor==SQLITE) {
@@ -48,16 +48,16 @@ $administradorPassword = 'root';  // Password del usuario Administrador
 // Si $administradorPassword = '', no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
-$tamUsuario      = 20;  // Tama�o del campo Usuario
-$tamPassword     = 20;  // Tama�o del campo Contrase�a
-$tamCifrado      = 32;  // Tama�o del campo contrase�a en MD5
-$tamArticulo     = 40;  // Tama�o del campo Art�culo
-$tamPrecio       = 10;  // Tama�o del campo precio
-$tamIdComprador  = 10;  // Tama�o del campo id Comprador
-$tamIdVendedor   = 10;  // Tama�o del campo id Vendedor
+$tamUsuario      = 20;  // Tamaño del campo Usuario
+$tamPassword     = 20;  // Tamaño del campo Contraseña
+$tamCifrado      = 32;  // Tamaño del campo contraseña en MD5
+$tamArticulo     = 40;  // Tamaño del campo Artículo
+$tamPrecio       = 10;  // Tamaño del campo precio
+$tamIdComprador  = 10;  // Tamaño del campo id Comprador
+$tamIdVendedor   = 10;  // Tamaño del campo id Vendedor
 $tamFechaCompra  = 10;
-$maxRegUsuarios  = 20;  // N�mero m�ximo de registros en la tabla Usuarios
-$maxRegArticulos = 20;  // N�mero m�ximo de registros por usuario en la tabla Art�culos
+$maxRegUsuarios  = 20;  // Número máximo de registros en la tabla Usuarios
+$maxRegArticulos = 20;  // Número máximo de registros por usuario en la tabla Artículos
 $recorta = [
     'usuario'     => $tamUsuario,
     'password'    => $tamCifrado,
@@ -136,9 +136,9 @@ function borraTodoMySQL($db)
             fecha_compra DATE,
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_articulos)) {
-            print "<p>Tabla de Art�culos creada correctamente.</p>\n";
+            print "<p>Tabla de Artículos creada correctamente.</p>\n";
         } else {
-            print "<p>Error al crear la tabla de Art�culos.</p>\n";
+            print "<p>Error al crear la tabla de Artículos.</p>\n";
         }
     } else {
         print "<p>Error al crear la base de datos.</p>\n";
@@ -194,9 +194,9 @@ function borraTodoSqlite($db)
         fecha_compra DATE
         )";
     if ($db->query($consulta_creatabla_articulos)) {
-       print "<p>Tabla de Art�culos creada correctamente.</p>\n";
+       print "<p>Tabla de Artículos creada correctamente.</p>\n";
     } else {
-        print "<p>Error al crear la tabla de Art�culos.</p>\n";
+        print "<p>Error al crear la tabla de Artículos.</p>\n";
     }
 }
 
@@ -292,19 +292,19 @@ function cabecera($texto, $menu='menu_principal')
 <ul>\n";
     if ($menu=='menu_principal') {
         print "  <li><a href=\"index.php\">Conectar</a></li>
-    <li><a href=\"listar.php\">Ver art�culos</a></li>";
+    <li><a href=\"listar.php\">Ver artículos</a></li>";
     } elseif ($menu==$administradorNombre) {
         print "    <li><a href=\"adm-borrar-todo-1.php\">Borrar todo</a></li>
     <li><a href=\"salir.php\">Desconectar</a></li>";
     } elseif ($menu=='compra') {
         print "    <li><a href=\"index.php\">Inicio</a></li>
-    <li><a href=\"listar.php?compraventa=compra\">Art�culos en venta</a></li>
+    <li><a href=\"listar.php?compraventa=compra\">Artículos en venta</a></li>
     <li><a href=\"com_reservar1.php\">Reservar</a></li>
     <li><a href=\"com_anularreserva1.php\">Anular</a></li>
     <li><a href=\"com_comprar1.php\">Comprar</a></li>";
     } elseif ($menu=='venta') {
         print "    <li><a href=\"index.php\">Inicio</a></li>
-    <li><a href=\"ven_anyadir1.php\">A�adir</a></li>
+    <li><a href=\"ven_anyadir1.php\">Añadir</a></li>
     <li><a href=\"listar.php?compraventa=venta\">Ver</a></li>
     <li><a href=\"ven_modificar1.php\">Modificar</a></li>
     <li><a href=\"ven_borrar1.php\">Borrar</a></li>";
@@ -324,19 +324,19 @@ function pie()
 
     if (($administradorPassword!='')&&!isset($_SESSION['compraventaUsuario'])) {
         print "<p><strong>Nota</strong>: El usuario Administrador "
-            ."se llama <strong>root</strong> y su contrase�a es\ntambi�n "
+            ."se llama <strong>root</strong> y su contraseña es\ntambién "
             ."<strong>root</strong>.</p>\n";
     }
     print '</div>
 
 <div id="pie">
 <address>
-  Este programa forma parte del curso "P�ginas web con PHP" disponible en <a
+  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolom� Sintes Marco<br />
-  �ltima modificaci�n de este programa: 27 de febrero de 2008
+  Autor: Bartolomé Sintes Marco<br />
+  Última modificación de este programa: 27 de febrero de 2008
 </address>
-<p class="licencia">El programa PHP que genera esta p�gina est� bajo
+<p class="licencia">El programa PHP que genera esta página está bajo
 <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
 posterior</a>.</p>
 </div>

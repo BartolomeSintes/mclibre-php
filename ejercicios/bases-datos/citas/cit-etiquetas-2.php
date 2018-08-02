@@ -2,8 +2,8 @@
 /**
  * Citas - cit-etiquetas-2.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -33,7 +33,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 
     $id = recogeParaConsulta($db, 'id');
     if ($id=="''") {
-        print "<p>No se ha seleccionado ning�n registro.</p>\n";
+        print "<p>No se ha seleccionado ningún registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas
             WHERE id=$id";

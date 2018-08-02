@@ -2,8 +2,8 @@
 /**
  * Compraventa - anyadir1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-27
  * @link      http://www.mclibre.org
@@ -29,21 +29,21 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Venta - Añadir 1', 'venta');
+    cabecera('Venta - AÃ±adir 1', 'venta');
     $consulta = "SELECT COUNT(*) FROM $dbArticulos";
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=$maxRegArticulos) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de registros que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
     } else {
         print "<form action=\"ven_anyadir2.php\" method=\"get\">
-      <p>Escriba los datos del nuevo artículo:</p>
+      <p>Escriba los datos del nuevo artÃ­culo:</p>
       <table>
         <tbody>
           <tr>
-            <td>Artículo:</td>
+            <td>ArtÃ­culo:</td>
             <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" id=\"cursor\" /></td>
           </tr>
           <tr>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
           </tr>
         </tbody>
       </table>
-      <p><input type=\"submit\" value=\"Añadir\" /></p>
+      <p><input type=\"submit\" value=\"AÃ±adir\" /></p>
     </form>\n";
     }
     $db = NULL;

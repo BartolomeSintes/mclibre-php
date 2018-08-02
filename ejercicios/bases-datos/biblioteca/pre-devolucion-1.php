@@ -2,8 +2,8 @@
 /**
  * Biblioteca - pre-devolucion-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -36,11 +36,11 @@ $consulta = "SELECT COUNT(*) FROM $dbPrestamos
     WHERE $dbPrestamos.devuelto='0000-00-00'";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Pr�stamos - Devoluci�n 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+    cabecera('Préstamos - Devolución 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    cabecera('Pr�stamos - Devoluci�n 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
-    print "<p>No hay pr�stamos pendientes de devoluci�n.</p>\n";
+    cabecera('Préstamos - Devolución 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+    print "<p>No hay préstamos pendientes de devolución.</p>\n";
 } else {
     $consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
         $dbUsuarios.apellidos as apellidos, $dbObras.titulo as titulo,
@@ -52,12 +52,12 @@ if (!$result) {
         ORDER BY $campo $orden";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Pr�stamos - Devoluci�n 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+        cabecera('Préstamos - Devolución 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
         print "<p>Error en la consulta.</p>\n";
     } else {
-        cabecera('Pr�stamos - Devoluci�n 1', CABECERA_CON_CURSOR, 'menuPrestamos');
+        cabecera('Préstamos - Devolución 1', CABECERA_CON_CURSOR, 'menuPrestamos');
         print "<form action=\"pre-devolucion-2.php\" method=\"".FORM_METHOD."\">
-  <p>Seleccione el pr�stamo pendiente e indique la fecha de devoluci�n:</p>
+  <p>Seleccione el préstamo pendiente e indique la fecha de devolución:</p>
   <table border=\"1\">
     <thead>
       <tr class=\"neg\">
@@ -68,15 +68,15 @@ if (!$result) {
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a> &nbsp; -
           &nbsp; <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          T�tulo
+          Título
           <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a> &nbsp; -
           &nbsp; <a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-          Fecha pr�stamo
+          Fecha préstamo
           <a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
-        <th>Fecha de devoluci�n (dd-mm-aaaa)</th>
+        <th>Fecha de devolución (dd-mm-aaaa)</th>
       </tr>
     </thead>
     <tbody>
@@ -92,7 +92,7 @@ if (!$result) {
           ."maxlength=\"".TAM_FECHA."\" value=\"".date('d-m-Y')."\" id=\"cursor\" />
         </td>\n      </tr>
     </tbody>\n  </table>\n
-  <p><input type=\"submit\" value=\"Guardar devoluci�n\" /></p>\n</form>\n";
+  <p><input type=\"submit\" value=\"Guardar devolución\" /></p>\n</form>\n";
     }
 }
 

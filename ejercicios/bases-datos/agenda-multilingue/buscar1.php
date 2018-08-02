@@ -2,8 +2,8 @@
 /**
  * Poliagenda -  buscar1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -37,10 +37,10 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     if (!$result) {
         print "<p>"._('Error en la consulta').".</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "<p>"._('No se ha creado todavía ningún registro').".</p>\n";
+        print "<p>"._('No se ha creado todavÃ­a ningÃºn registro').".</p>\n";
     } else {
         print "<form action=\"buscar2.php\" method=\"get\">
-      <p>"._('Escriba el criterio de búsqueda (carácteres o números)').":</p>
+      <p>"._('Escriba el criterio de bÃºsqueda (carÃ¡cteres o nÃºmeros)').":</p>
       <table>
         <tbody>
           <tr>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" /></td>
           </tr>
           <tr>
-            <td>"._('Teléfono').":</td>
+            <td>"._('TelÃ©fono').":</td>
             <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" /></td>
           </tr>
           <tr>

@@ -2,8 +2,8 @@
 /**
  * Biblioteca - pre-anyadir-2.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -24,7 +24,7 @@
 
 include('funciones.php');
 $db = conectaDb();
-cabecera('Pr�stamos - Nuevo pr�stamo 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera('Préstamos - Nuevo préstamo 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
 
 $idUsuario = recogeParaConsulta($db, 'id_usuario');
 $idObra    = recogeParaConsulta($db, 'id_obra');
@@ -48,8 +48,8 @@ if (!$fechaOk) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_PRESTAMOS) {
-        print "<p>Se ha alcanzado el n�mero m�ximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre alg�n registro antes.</p>\n";
+        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
+            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE id=$idUsuario";
@@ -69,9 +69,9 @@ if (!$fechaOk) {
         } elseif ($resultObra->fetchColumn()==0) {
             print "<p>El identificador de Obra no es correcto.</p>\n";
         } elseif ($resultPrestamo->fetchColumn()!=0) {
-            print "<p>El registro de pr�stamo ya existe.</p>\n";
+            print "<p>El registro de préstamo ya existe.</p>\n";
         } else {
-        // Inserto el valor 0000-00-00 expl�citamente porque si lo dejo vac�o
+        // Inserto el valor 0000-00-00 explícitamente porque si lo dejo vacío
         // MySQL guarda 0000-00-00, pero SQLite lo deja en blanco
             $consulta = "INSERT INTO $dbPrestamos
                 VALUES (NULL, $idUsuario, $idObra,'"

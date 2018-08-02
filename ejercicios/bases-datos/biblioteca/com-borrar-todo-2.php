@@ -2,8 +2,8 @@
 /**
  * Biblioteca - com-borrar-todo-2.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -70,9 +70,9 @@ function borraTodoMySQL($db)
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTablaPrestamos)) {
-            print "<p>Tabla de Pr�stamos creada correctamente.</p>\n";
+            print "<p>Tabla de Préstamos creada correctamente.</p>\n";
         } else {
-            print "<p>Error al crear la tabla de Pr�stamos.</p>\n";
+            print "<p>Error al crear la tabla de Préstamos.</p>\n";
         }
     } else {
         print "<p>Error al crear la base de datos.</p>\n";
@@ -97,9 +97,9 @@ function borraTodoSqlite($db)
     }
     $consulta = "DROP TABLE $dbPrestamos";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Pr�stamos borrada correctamente.</p>\n";
+       print "<p>Tabla de Préstamos borrada correctamente.</p>\n";
     } else {
-        print "<p>Error al borrar la tabla de Pr�stamos.</p>\n";
+        print "<p>Error al borrar la tabla de Préstamos.</p>\n";
     }
 
     $consultaCreaTablaObras = "CREATE TABLE $dbObras (
@@ -132,9 +132,9 @@ function borraTodoSqlite($db)
         devuelto DATE
         )";
     if ($db->query($consultaCreaTablaPrestamos)) {
-        print "<p>Tabla de Pr�stamos creada correctamente.</p>\n";
+        print "<p>Tabla de Préstamos creada correctamente.</p>\n";
     } else {
-        print "<p>Error al crear la tabla de Pr�stamos.</p>\n";
+        print "<p>Error al crear la tabla de Préstamos.</p>\n";
     }
 }
 

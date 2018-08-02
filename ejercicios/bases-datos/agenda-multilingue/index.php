@@ -2,8 +2,8 @@
 /**
  * Poliagenda -  index.php
  *
- * @author    BartolomÈ Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 BartolomÈ Sintes Marco
+ * @author    Bartolom√© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolom√© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -28,7 +28,7 @@ $db = conectaDb();
 
 if (!isset($_SESSION['multiagendaIdioma'])&&!isset($_REQUEST['idioma'])) {
     $_SESSION['multiagendaIdioma'] = $administradorIdioma;
-    cabecera(_('ElecciÛn de idioma'), 'menu_principal');
+    cabecera(_('Elecci√≥n de idioma'), 'menu_principal');
     print "<p>"._('Por favor, elija el idioma del interface')."</p>\n";
     menuIdioma();
     $_SESSION['multiagendaIdioma'] = NULL;
@@ -43,8 +43,8 @@ if (!isset($_SESSION['multiagendaIdioma'])&&!isset($_REQUEST['idioma'])) {
     if (!$result) {
         print "<p>"._('Error en la consulta').".</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        cabecera(_('Primera conexiÛn'), 'menu_principal');
-        print "<p>"._('Aparentemente, la base de datos no existe. Se crear· a continuaciÛn').".</p>";
+        cabecera(_('Primera conexi√≥n'), 'menu_principal');
+        print "<p>"._('Aparentemente, la base de datos no existe. Se crear√° a continuaci√≥n').".</p>";
         if ($dbMotor==MYSQL) {
             borraTodoMySQL($db);
         } elseif ($dbMotor==SQLITE) {
@@ -54,14 +54,14 @@ if (!isset($_SESSION['multiagendaIdioma'])&&!isset($_REQUEST['idioma'])) {
         if (isset($_SESSION['multiagendaUsuario'])) {
             cabecera(_('Inicio'), $_SESSION['multiagendaUsuario']);
         } else {
-            cabecera(_('IdentificaciÛn').' 1', 'menu_principal');
+            cabecera(_('Identificaci√≥n').' 1', 'menu_principal');
             $aviso = recogeParaConsulta($db, 'aviso');
             $aviso = quitaComillasExteriores($aviso);
             if ($aviso) {
                 print "  <p style=\"color: red\">$aviso</p>\n";
             }
             print "<form action=\"validar1.php\" method=\"get\">
-  <p>"._('Escriba su nombre de usuario y contraseÒa').":</p>
+  <p>"._('Escriba su nombre de usuario y contrase√±a').":</p>
       <table>
         <tbody>
           <tr>
@@ -69,14 +69,14 @@ if (!isset($_SESSION['multiagendaIdioma'])&&!isset($_REQUEST['idioma'])) {
             <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\" /></td>
           </tr>
           <tr>
-            <td>"._('ContraseÒa').":</td>
+            <td>"._('Contrase√±a').":</td>
             <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" /></td>
           </tr>
         </tbody>
       </table>
-      <p><input type=\"submit\" value=\""._('AÒadir')."\" /></p>
+      <p><input type=\"submit\" value=\""._('A√±adir')."\" /></p>
       <p><strong>"._('Nota')."</strong>: "
-      ._('Si no est· ya registrado, le registrarÈ como nuevo usuario').".</p>
+      ._('Si no est√° ya registrado, le registrar√© como nuevo usuario').".</p>
     </form>\n";
         }
     }

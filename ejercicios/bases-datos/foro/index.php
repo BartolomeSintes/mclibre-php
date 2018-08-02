@@ -2,8 +2,8 @@
 /**
  * Foro - index.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -57,7 +57,7 @@ if (!$result) {
   <p class=\"dis_aut\">Propuesta por <strong>$valor[autor]</strong> el "
                       .fechaDma($valor['fecha'])." - ";
                     if ($numInt==1) {
-                        print "1 intervenci�n";
+                        print "1 intervención";
                     } else {
                         print "$numInt intervenciones";
                     }

@@ -2,8 +2,8 @@
 /**
  * Blog - borrartodo1.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -26,8 +26,8 @@ include('funciones.php');
 cabecera('Borrar todo 1', CABECERA_SIN_CURSOR, '');
 
 print "<form action=\"borrartodo2.php\" method=\"".FORM_METHOD."\">
-  <p>¿Está seguro?</p>
-  <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
+  <p>Â¿EstÃ¡ seguro?</p>
+  <p><input type=\"submit\" value=\"SÃ­\" name=\"si\" />
     <input type=\"submit\" value=\"No\" name=\"no\" /></p>
 </form>\n";
 

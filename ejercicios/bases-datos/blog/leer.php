@@ -2,8 +2,8 @@
 /**
  * Blog - leer.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -44,7 +44,7 @@ if (!$result) {
         $valor = $result->fetch();
             print $valor['entrada'];
     } else {
-        print "Todavía no se ha escrito la entrada de este día.";
+        print "TodavÃ­a no se ha escrito la entrada de este dÃ­a.";
     }
     print"  </p>\n</div>\n";
 }

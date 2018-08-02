@@ -2,8 +2,8 @@
 /**
  * Citas - cit-anyadir-2.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,15 +29,15 @@ if (!isset($_SESSION['citasUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Citas - A�adir 2', 'menu_citas');
+    cabecera('Citas - Añadir 2', 'menu_citas');
 
     $cita = recogeParaConsulta($db, 'cita');
     $autor  = recogeParaConsulta($db, 'autor');
 
-// Habr�a que comprobar que el autor recibido existe
+// Habría que comprobar que el autor recibido existe
 
     if (($cita=="''") || ($autor=='')) {
-        print "<p>La cita y el autor no pueden estar vac�os. "
+        print "<p>La cita y el autor no pueden estar vacíos. "
             ."No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas";
@@ -45,8 +45,8 @@ if (!isset($_SESSION['citasUsuario'])) {
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegCitas) {
-            print "<p>Se ha alcanzado el n�mero m�ximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre alg�n registro antes.</p>\n";
+            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbCitas
                 WHERE cita=$cita

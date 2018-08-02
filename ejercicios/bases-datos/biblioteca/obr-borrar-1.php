@@ -2,8 +2,8 @@
 /**
  * Biblioteca - obr-borrar-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -36,7 +36,7 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    print "<p>No se ha creado todav�a ning�n registro.</p>\n";
+    print "<p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbObras
         ORDER BY $campo $orden";
@@ -57,7 +57,7 @@ if (!$result) {
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
         <th><a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">
           <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          T�tulo
+          Título
           <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">
           <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
         <th><a href=\"$_SERVER[PHP_SELF]?campo=editorial&amp;orden=ASC\">

@@ -2,8 +2,8 @@
 /**
  * Blog - editar.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -37,8 +37,8 @@ if (!$result) {
 } elseif ($result->fetchColumn()>=MAX_REG_ENTRADAS) {
     cabecera('Editar', CABECERA_SIN_CURSOR, $fecha);
     calendario($fecha, 'editar');
-    print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+    print "<p>Se ha alcanzado el nÃºmero mÃ¡ximo de registros que se pueden "
+        ."guardar.</p>\n<p>Por favor, borre algÃºn registro antes.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbEntradas
         WHERE fecha='$fecha'";

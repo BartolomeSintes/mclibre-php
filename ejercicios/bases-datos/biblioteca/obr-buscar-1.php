@@ -2,8 +2,8 @@
 /**
  * Biblioteca - obr-buscar-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -32,11 +32,11 @@ if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
     cabecera('Obras - Buscar 1', CABECERA_SIN_CURSOR, 'menuObras');
-    print "<p>No se ha creado todav�a ning�n registro.</p>\n";
+    print "<p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     cabecera('Obras - Buscar 1', CABECERA_CON_CURSOR, 'menuObras');
     print "<form action=\"obr-buscar-2.php\" method=\"".FORM_METHOD."\">
-  <p>Escriba el criterio de b�squeda (car�cteres o n�meros):</p>
+  <p>Escriba el criterio de búsqueda (carácteres o números):</p>
   <table>
     <tbody>
       <tr>
@@ -45,7 +45,7 @@ if (!$result) {
         ."maxlength=\"".TAM_AUTOR."\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>T�tulo:</td>
+        <td>Título:</td>
         <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
         ."maxlength=\"".TAM_TITULO."\" /></td>
       </tr>

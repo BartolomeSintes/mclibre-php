@@ -2,8 +2,8 @@
 /**
  * Poliagenda -  buscar2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -84,7 +84,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
           <th><a href=\"buscar2.php?$datos=telefono&amp;orden=ASC\">
             <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-            "._('Teléfono')."
+            "._('TelÃ©fono')."
             <a href=\"buscar2.php?$datos=telefono&amp;orden=DESC\">
             <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
           <th><a href=\"buscar2.php?$datos=correo&amp;orden=ASC\">

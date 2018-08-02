@@ -2,8 +2,8 @@
 /**
  * Citas -  cit-anyadir-1.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -29,21 +29,21 @@ if (!isset($_SESSION['citasUsuario'])) {
 } else {
     include('funciones.php');
     $db = conectaDb();
-    cabecera('Citas - A�adir 1', 'menu_citas');
+    cabecera('Citas - Añadir 1', 'menu_citas');
     $consulta = "SELECT COUNT(*) FROM $dbAutores";
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "<p>No se ha creado todav�a ning�n autor.</p>\n";
+        print "<p>No se ha creado todavía ningún autor.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas";
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegCitas) {
-            print "<p>Se ha alcanzado el n�mero m�ximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre alg�n registro antes.</p>\n";
+            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
+                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             print "<form action=\"cit-anyadir-2.php\" method=\"get\">
   <p>Escriba los datos de la nueva cita:</p>
@@ -68,7 +68,7 @@ if (!isset($_SESSION['citasUsuario'])) {
       </tr>
       </tbody>
   </table>
-  <p><input type=\"submit\" value=\"A�adir\" /></p>
+  <p><input type=\"submit\" value=\"Añadir\" /></p>
 </form>\n";
         }
     }

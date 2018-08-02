@@ -2,8 +2,8 @@
 /**
  * Compraventa - modificar2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-02-26
  * @link      http://www.mclibre.org
@@ -34,7 +34,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     $id = recogeParaConsulta($db, 'id');
 
     if ($id=="''") {
-        print "<p>No se ha seleccionado ningún registro.</p>\n";
+        print "<p>No se ha seleccionado ningÃºn registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAgenda WHERE id=$id
             AND id_usuario='$_SESSION[compraventaIdUsuario]'";
@@ -66,7 +66,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
               ."value=\"$valor[apellidos]\" /></td>
           </tr>
           <tr>
-            <td>Teléfono:</td>
+            <td>TelÃ©fono:</td>
             <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" "
               ."value=\"$valor[telefono]\" /></td>
           </tr>

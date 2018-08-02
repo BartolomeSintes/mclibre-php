@@ -2,8 +2,8 @@
 /**
  * Poliagenda -  funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-03-02
  * @link      http://www.mclibre.org
@@ -28,7 +28,7 @@ $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');         // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
     $dbDb       = 'mclibre_poliagenda';  // Nombre de la base de datos
     $dbUsuarios = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
     $dbAgenda   = $dbDb.'.agenda';        // Nombre de la tabla de Agendas
@@ -50,16 +50,16 @@ $idiomaPredeterminado  = 'es_ES';  // Idioma predeterminado
 // Si $administradorPassword == '', no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
-$tamUsuario     = 20;  // Tama�o del campo Usuario
-$tamPassword    = 20;  // Tama�o del campo Contrase�a
-$tamIdioma      = 5;   // Tama�o del campo Idioma
-$tamCifrado     = 32;  // Tama�o del campo contrase�a en MD5
-$tamNombre      = 40;  // Tama�o del campo Nombre
-$tamApellidos   = 60;  // Tama�o del campo Apellidos
-$tamTelefono    = 10;  // Tama�o del campo Tel�fono
-$tamCorreo      = 50;  // Tama�o del campo Correo
-$maxRegUsuarios = 20;  // N�mero m�ximo de registros en la tabla Usuarios
-$maxRegAgenda   = 20;  // N�mero m�ximo de registros por usuario en la tabla Agenda
+$tamUsuario     = 20;  // Tamaño del campo Usuario
+$tamPassword    = 20;  // Tamaño del campo Contraseña
+$tamIdioma      = 5;   // Tamaño del campo Idioma
+$tamCifrado     = 32;  // Tamaño del campo contraseña en MD5
+$tamNombre      = 40;  // Tamaño del campo Nombre
+$tamApellidos   = 60;  // Tamaño del campo Apellidos
+$tamTelefono    = 10;  // Tamaño del campo Teléfono
+$tamCorreo      = 50;  // Tamaño del campo Correo
+$maxRegUsuarios = 20;  // Número máximo de registros en la tabla Usuarios
+$maxRegAgenda   = 20;  // Número máximo de registros por usuario en la tabla Agenda
 $recorta = [
     'usuario'   => $tamUsuario,
     'password'  => $tamCifrado,
@@ -295,7 +295,7 @@ function menuIdioma()
 {
     print   "<ul>
     <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=en_GB\">English</a></li>
-    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=es_ES\">Espa�ol</a></li>
+    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=es_ES\">Español</a></li>
   </ul>\n";
 }
 
@@ -309,13 +309,13 @@ function cabecera($texto, $menu='menu_principal')
 <html xmlns=\"http://www.w3.org/1999/xhtml\">
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
-  <title>www.mclibre.org - "._("Agenda multiling�e")." - $texto</title>
+  <title>www.mclibre.org - "._("Agenda multilingüe")." - $texto</title>
   <link href=\"mclibre-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>
 
 <body onload=\"document.getElementById('cursor').focus()\">\n";
     if ($menu=='menu_principal') {
-        print "<h1>"._('Agenda multiling�e');
+        print "<h1>"._('Agenda multilingüe');
     } else {
         print "<h1>"._('Agenda de')." $menu";
     }
@@ -328,7 +328,7 @@ function cabecera($texto, $menu='menu_principal')
         print "  <li><a href=\"borrartodo1.php\">"._('Borrar todo')."</a></li>
   <li><a href=\"salir.php\">"._("Desconectar")."</a></li>";
     } else {
-        print "  <li><a href=\"anyadir1.php\">"._('A�adir')."</a></li>
+        print "  <li><a href=\"anyadir1.php\">"._('Añadir')."</a></li>
   <li><a href=\"listar.php\">"._('Listar')."</a></li>
   <li><a href=\"modificar1.php\">"._('Modificar')."</a></li>
   <li><a href=\"buscar1.php\">"._('Buscar')."</a></li>
@@ -344,18 +344,18 @@ function pie()
 
     if (($administradorPassword!='')&&!isset($_SESSION['multiagendaUsuario'])) {
         print "<p><strong>"._('Nota')."</strong>: "
-          ._('El usuario Administrador se llama <strong>root</strong> y su contrase�a es tambi�n <strong>root</strong>').".</p>\n";
+          ._('El usuario Administrador se llama <strong>root</strong> y su contraseña es también <strong>root</strong>').".</p>\n";
     }
     print '</div>
 
 <div id="pie">
 <address>
-  '._('Este programa forma parte del curso "P�ginas web con PHP" disponible en').' <a
+  '._('Este programa forma parte del curso "Páginas web con PHP" disponible en').' <a
   href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  '._('Autor').': Bartolom� Sintes Marco<br />
-  '._('�ltima modificaci�n de este programa: 27 de febrero de 2008').'
+  '._('Autor').': Bartolomé Sintes Marco<br />
+  '._('Última modificación de este programa: 27 de febrero de 2008').'
 </address>
-<p class="licencia">'._('El programa PHP que genera esta p�gina est� bajo <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior').'</a>.</p>
+<p class="licencia">'._('El programa PHP que genera esta página está bajo <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior').'</a>.</p>
 </div>
 </body>
 </html>';

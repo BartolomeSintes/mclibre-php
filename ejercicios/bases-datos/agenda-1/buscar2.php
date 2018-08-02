@@ -2,8 +2,8 @@
 /**
  * Agenda - buscar2.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -77,7 +77,7 @@ if (!$result) {
         <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
       <th><a href=\"buscar2.php?$datos=telefono&amp;orden=ASC\">
         <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-        Teléfono
+        TelÃ©fono
         <a href=\"buscar2.php?$datos=telefono&amp;orden=DESC\">
         <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
       <th><a href=\"buscar2.php?$datos=correo&amp;orden=ASC\">

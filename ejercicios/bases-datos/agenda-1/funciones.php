@@ -2,8 +2,8 @@
 /**
  * Agenda - funciones.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -22,23 +22,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    TRUE);   // Para funci�n cabecera()
-define('CABECERA_SIN_CURSOR',    FALSE);  // Para funci�n cabecera()
-define('FORM_METHOD',            'get');  // Formularios se env�an con GET
-//define('FORM_METHOD',            'post'); // Formularios se env�an con POST
+define('CABECERA_CON_CURSOR',    TRUE);   // Para función cabecera()
+define('CABECERA_SIN_CURSOR',    FALSE);  // Para función cabecera()
+define('FORM_METHOD',            'get');  // Formularios se envían con GET
+//define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define('MYSQL',          'MySQL');
 define('SQLITE',         'SQLite');
-define('TAM_NOMBRE',     40);  // Tama�o del campo Nombre
-define('TAM_APELLIDOS',  60);  // Tama�o del campo Apellidos
-define('TAM_TELEFONO',   10);  // Tama�o del campo Tel�fono
-define('TAM_CORREO',     50);  // Tama�o del campo Correo
-define('MAX_REG_AGENDA', 20);  // N�mero m�ximo de registros en la tabla Agenda
+define('TAM_NOMBRE',     40);  // Tamaño del campo Nombre
+define('TAM_APELLIDOS',  60);  // Tamaño del campo Apellidos
+define('TAM_TELEFONO',   10);  // Tamaño del campo Teléfono
+define('TAM_CORREO',     50);  // Tamaño del campo Correo
+define('MAX_REG_AGENDA', 20);  // Número máximo de registros en la tabla Agenda
 
 $dbMotor = SQLITE;                    // Base de datos empleada
 if ($dbMotor==MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');  // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');     // Contrase�a de usuario de MySQL
+    define('MYSQL_PASSWORD', '');     // Contraseña de usuario de MySQL
     $dbDb     = 'mclibre_agenda';     // Nombre de la base de datos
     $dbAgenda = $dbDb.'.agenda';      // Nombre de la tabla
 } elseif ($dbMotor==SQLITE) {

@@ -2,8 +2,8 @@
 /**
  * Citas -  index.php
  *
- * @author    Bartolom� Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2008 Bartolom� Sintes Marco
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2008 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2008-06-06
  * @link      http://www.mclibre.org
@@ -30,9 +30,9 @@ $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn()==0) {
-    cabecera('Primera conexi�n', 'menu_principal');
+    cabecera('Primera conexión', 'menu_principal');
     print "<p>Aparentemente, la base de datos no existe. "
-        ."Se crear� a continuaci�n.</p>";
+        ."Se creará a continuación.</p>";
     if ($dbMotor==MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor==SQLITE) {
@@ -43,14 +43,14 @@ if (!$result) {
     if (isset($_SESSION['citasUsuario'])) {
         cabecera('Inicio', $_SESSION['citasUsuario']);
     } else {
-        cabecera('Identificaci�n 1', 'menu_principal');
+        cabecera('Identificación 1', 'menu_principal');
         $aviso = recogeParaConsulta($db, 'aviso');
         $aviso = quitaComillasExteriores($aviso);
         if ($aviso) {
             print "<p style=\"color: red\">$aviso</p>\n";
         }
         print "<form action=\"validar-1.php\" method=\"get\">
-  <p>Escriba su nombre de usuario y contrase�a:</p>
+  <p>Escriba su nombre de usuario y contraseña:</p>
   <table>
     <tbody>
       <tr>
@@ -58,13 +58,13 @@ if (!$result) {
         <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\" /></td>
       </tr>
       <tr>
-        <td>Contrase�a:</td>
+        <td>Contraseña:</td>
         <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" /></td>
       </tr>
     </tbody>
   </table>
-  <p><input type=\"submit\" value=\"A�adir\" /></p>
-  <p><strong>Nota</strong>: Si no est� ya registrado, le registrar� como nuevo usuario.</p>
+  <p><input type=\"submit\" value=\"Añadir\" /></p>
+  <p><strong>Nota</strong>: Si no está ya registrado, le registraré como nuevo usuario.</p>
 </form>\n";
     }
 }

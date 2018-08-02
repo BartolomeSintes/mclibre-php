@@ -2,8 +2,8 @@
 /**
  * Multiagenda -  listar.php
  *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2009 Bartolomé Sintes Marco
+ * @author    BartolomÃ© Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2009 BartolomÃ© Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2009-05-21
  * @link      http://www.mclibre.org
@@ -43,7 +43,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()==0) {
-        print "<p>No se ha creado todavía ningún registro.</p>\n";
+        print "<p>No se ha creado todavÃ­a ningÃºn registro.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbAgenda
             WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'
@@ -67,7 +67,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
           <th><a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=ASC\">
             <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-            Teléfono
+            TelÃ©fono
             <a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=DESC\">
             <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
           <th><a href=\"$_SERVER[PHP_SELF]?campo=correo&amp;orden=ASC\">
