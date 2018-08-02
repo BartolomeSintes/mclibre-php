@@ -87,12 +87,12 @@ print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
 print "      <tbody>\n";
 print "        <tr>\n";
 print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-    . ($cuadro - 1)."\"><img src=\"img/arrow-left-b.svg\" "
+    . ($cuadro - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
     . "height=\"80\" alt=\"anterior\" /></button></td>\n";
 print "          <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
     . "alt=\"Cuadro de Pieter Bruegel el viejo\" /></td>\n";
 print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-    . ($cuadro + 1)."\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+    . ($cuadro + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
     . "alt=\"siguiente\" /></button></td>\n";
 print "        </tr>\n";
 print "      </tbody>\n";
@@ -106,14 +106,14 @@ print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
 print "      <tbody>\n";
 print "        <tr>\n";
 print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-    . ($detalle - 1)."\"><img src=\"img/arrow-left-b.svg\" "
+    . ($detalle - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
     . "height=\"80\" alt=\"anterior\" /></button></td>\n";
 // $cuadro debe ponerse entre llaves (o sacarse de la cadena). Si no se ponen,
 // PHP piensa que la variable se llama $cuadro_ y genera un aviso
 print "          <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
     . "alt=\"Detalle\" /></td>\n";
 print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-    . ($detalle + 1)."\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+    . ($detalle + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
     . "alt=\"siguiente\" /></button></td>\n";
 print "        </tr>\n";
 print "      </tbody>\n";

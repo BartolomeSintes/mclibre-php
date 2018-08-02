@@ -217,14 +217,14 @@ function calendario ($fecha, $enlaces)
 
     print "<div class=\"calendario\">\n  <table border=\"1\" class=\"calendario\" >\n";
     if ($enlaces=="editar") {
-        print "    <caption><a href=\"editar.php?fecha=$fechaAnt\">&lt;&lt;</a> ".
-            $meses[(int)($mes)]." de $anyo <a href=\"editar.php?fecha="
-            ."$fechaSig\">&gt;&gt;</a>
+        print "    <caption><a href=\"editar.php?fecha=$fechaAnt\">&lt;&lt;</a> "
+            . $meses[(int)($mes)] . " de $anyo <a href=\"editar.php?fecha="
+            . "$fechaSig\">&gt;&gt;</a>
     </caption>\n";
     } else {
         print "    <caption><a href=\"leer.php?fecha=$fechaAnt\">&lt;&lt;</a> "
-            .$meses[(int)($mes)]." de $anyo <a href=\"leer.php?fecha="
-            ."$fechaSig\">&gt;&gt;</a></caption>\n";
+            . $meses[(int)($mes)] . " de $anyo <a href=\"leer.php?fecha="
+            . "$fechaSig\">&gt;&gt;</a></caption>\n";
     }
     print "    <tr>\n      <th>L</th>\n      <th>M</th>\n      <th>X</th>
       <th>J</th>\n      <th>V</th>\n      <th>S</th>\n      <th>D</th>\n    </tr>\n";

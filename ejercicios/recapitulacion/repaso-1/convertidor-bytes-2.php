@@ -96,7 +96,7 @@ if ($bytesOk) {
     }
 
     if (isset($gb)) {
-        print number_format($gb, 0, ",", ".")." GB";
+        print number_format($gb, 0, ",", ".") . " GB";
         if ((isset($mb) && isset($kb)) || (isset($mb) && $bytes != 0) ||
             (isset($kb) && $bytes != 0)) {
             print ", ";
@@ -106,7 +106,7 @@ if ($bytesOk) {
     }
 
     if (isset($mb)) {
-        print number_format($mb, 0, ",", ".")." MB";
+        print number_format($mb, 0, ",", ".") . " MB";
         if (isset($kb) && $bytes != 0) {
             print ", ";
         } elseif (isset($kb) || $bytes != 0) {
@@ -115,7 +115,7 @@ if ($bytesOk) {
     }
 
     if (isset($kb)) {
-        print number_format($kb, 0, ",", ".")." KB";
+        print number_format($kb, 0, ",", ".") . " KB";
         if ($bytes != 0) {
             print " y ";
         }
@@ -124,7 +124,7 @@ if ($bytesOk) {
     if ($bytes == 1) {
         print "1 byte";
     } elseif ($bytes != 0) {
-        print number_format($bytes, 0, ",", ".")." bytes";
+        print number_format($bytes, 0, ",", ".") . " bytes";
     }
 
     print ".</p>\n";

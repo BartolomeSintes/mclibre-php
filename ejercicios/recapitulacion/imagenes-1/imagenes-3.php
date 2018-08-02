@@ -89,7 +89,7 @@ print "        <tr>\n";
 // Si no es el primer cuadro, muestra el botón izquierdo; si es el primero la celda está vacía
 if ($cuadro > $valorMinimoCuadro) {
     print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-        . ($cuadro - 1)."\"><img src=\"img/arrow-left-b.svg\" "
+        . ($cuadro - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
         . "height=\"80\" alt=\"anterior\" /></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
@@ -99,7 +99,7 @@ print "          <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
 // Si no es el último cuadro, muestra el botón derecho; si es el último la celda está vacía
 if ($cuadro < $valorMaximoCuadro) {
     print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-        . ($cuadro + 1)."\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+        . ($cuadro + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
         . "alt=\"siguiente\" /></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
@@ -118,7 +118,7 @@ print "        <tr>\n";
 // Si no es el primer detalle, muestra el botón izquierdo; si es el primero la celda está vacía
 if ($detalle > $valorMinimoDetalle) {
     print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-        . ($detalle - 1)."\"><img src=\"img/arrow-left-b.svg\" "
+        . ($detalle - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
         . "height=\"80\" alt=\"anterior\" /></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
@@ -128,7 +128,7 @@ print "          <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
 // Si no es el último detalle, muestra el botón derecho; si es el último la celda está vacía
 if ($detalle < $valorMaximoDetalle) {
     print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-        . ($detalle + 1)."\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+        . ($detalle + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
         . "alt=\"siguiente\" /></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";

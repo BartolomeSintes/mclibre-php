@@ -269,8 +269,8 @@ if (!$okValores) {
     }
 }
 
-$cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}".
-    "x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
+$cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}"
+    . "x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
 if ($tituloGrafica!="") {
     $tituloGrafica = str_replace(" ", "+", $tituloGrafica);
     $cadenaGrafica .= "&amp;chtt=$tituloGrafica";

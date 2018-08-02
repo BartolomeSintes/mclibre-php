@@ -62,7 +62,7 @@ if ($bytes == "") {
     print "\n";
 } elseif ($bytes >= $maximo) {
     print "  <p class=\"aviso\">Los bytes deben ser inferiores a "
-        . number_format($maximo, 0, ",", ".").".</p>\n";
+        . number_format($maximo, 0, ",", ".") . ".</p>\n";
     print "\n";
     // Es mejor no mostrar $maximo porque si es superior a PHP_INT_MAX se muestra como float
 } else {
@@ -79,14 +79,14 @@ if ($bytesOk) {
     $kb = bcdiv($b, 1024);
     $b  = bcmod($b, 1024);
 
-    print "  <p>" . number_format($bytes, 0, ",", ".")." bytes son ";
+    print "  <p>" . number_format($bytes, 0, ",", ".") . " bytes son ";
 
     if ($bytes == 0) {
         print "0 bytes.";
     }
 
     if ($tb) {
-        print number_format($tb, 0, ",", ".")." TB";
+        print number_format($tb, 0, ",", ".") . " TB";
         if (($gb && $mb) || ($gb && $kb) || ($gb && $b) || ($mb && $kb) || ($mb && $b)|| ($kb && $b)) {
             print ", ";
         } elseif ($gb || $mb || $kb || $b) {
@@ -95,7 +95,7 @@ if ($bytesOk) {
     }
 
     if ($gb) {
-        print number_format($gb, 0, ",", ".")." GB";
+        print number_format($gb, 0, ",", ".") . " GB";
         if (($mb && $kb) || ($mb && $b)|| ($kb && $b)) {
             print ", ";
         } elseif ($mb || $kb || $b) {
@@ -104,7 +104,7 @@ if ($bytesOk) {
     }
 
     if ($mb) {
-        print number_format($mb, 0, ",", ".")." MB";
+        print number_format($mb, 0, ",", ".") . " MB";
         if ($kb && $b) {
             print ", ";
         } elseif ($kb || $b) {
@@ -113,7 +113,7 @@ if ($bytesOk) {
     }
 
     if ($kb) {
-        print number_format($kb, 0, ",", ".")." KB";
+        print number_format($kb, 0, ",", ".") . " KB";
         if ($b) {
             print " y ";
         }
@@ -122,7 +122,7 @@ if ($bytesOk) {
     if ($b == 1) {
         print "1 byte";
     } elseif ($b) {
-        print number_format($b, 0, ",", ".")." bytes";
+        print number_format($b, 0, ",", ".") . " bytes";
     }
 
     print ".<p>\n";

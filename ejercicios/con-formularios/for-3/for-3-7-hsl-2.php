@@ -82,7 +82,7 @@ if ($numeroOk) {
         print "      <tr>\n";
         print "        <td>S \ L</td>\n";
         for ($j = 0; $j < $numero; $j++) {
-            print "        <td>" . round($j * $paso / 255 * 100)."%</td>\n";
+            print "        <td>" . round($j * $paso / 255 * 100) . "%</td>\n";
         }
         print "      </tr>\n";
         for ($i = 0; $i < $numero; $i++) {

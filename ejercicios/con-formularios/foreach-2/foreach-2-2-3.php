@@ -126,8 +126,8 @@ if ($tablasOk && $tamanoOk && $casillasOk) {
         if (!isset($casillas[$k])) {
             print "  <p>En la tabla <strong>$k</strong> no ha marcado ninguna casilla.</p>\n";
         } else {
-            print "  <p>En la tabla <strong>$k</strong> ha marcado <strong>".
-                count($casillas[$k])."</strong> casilla";
+            print "  <p>En la tabla <strong>$k</strong> ha marcado <strong>"
+                . count($casillas[$k]) . "</strong> casilla";
             if (count($casillas[$k])>1) {
                 print "s";
             }

@@ -129,8 +129,8 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
         print"  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
     } else {
         cabecera("Formulario");
-        print"  <p>Escribe los valores numéricos (puedes escribir entre ".
-        "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print"  <p>Escribe los valores numéricos (puedes escribir entre "
+            . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
             }
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
     print "    <table>\n";
@@ -268,12 +268,12 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
     print "  <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
     print "\n";
 
-    $cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}".
-        "x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
+    $cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}"
+        . "x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
     print "  <p>Gráfica correspondiente:</p\n";
     print "\n";
-    print "  <p style=\"text-align:center; border: black solid 1px\"><img ".
-        "src=\"$cadenaGrafica\" alt=\"Gráfica\" /></p>\n";
+    print "  <p style=\"text-align:center; border: black solid 1px\"><img "
+        . "src=\"$cadenaGrafica\" alt=\"Gráfica\" /></p>\n";
     print "\n";
 }
 

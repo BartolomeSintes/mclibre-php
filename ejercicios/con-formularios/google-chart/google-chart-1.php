@@ -121,8 +121,8 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
     print "    <table>\n";
     for ($i=1; $i<=$numeroValores; $i++) {
-        print "      <tr><td>Número $i:</td><td><input type=\"text\" ".
-            "name=\"valores[$i]\" size=\"10\" value=\"";
+        print "      <tr><td>Número $i:</td><td><input type=\"text\" "
+            . "name=\"valores[$i]\" size=\"10\" value=\"";
         if (isset($valores[$i])) {
             print "$valores[$i]";
         }
