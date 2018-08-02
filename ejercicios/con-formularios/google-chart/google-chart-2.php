@@ -24,19 +24,19 @@
 
 function cabecera($texto)
 {
-    print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
-  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-  <title>Crea gráfica de líneas
-  ($texto). Google Chart. Ejercicios. PHP. Bartolomé Sintes Marco</title>
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
-  title=\"Color\" />
-</head>\n\n<body>
-<h1>Crea gráfica de líneas ($texto)</h1>\n";
+    print "<!DOCTYPE html>\n";
+    print "<html lang=\"es\">\n";
+    print "<head>\n";
+    print "  <meta charset=\"utf-8\" />\n";
+    print "  <title>Crea gráfica de líneas. ($texto). Google Chart.\n";
+    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
+    print "  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "</head>\n";
+    print "\n";
+    print "<body>\n";
+    print "  <h1>Crea gráfica de líneas ($texto)</h1>\n";
+    print "\n";
 }
 
 function limpia($var)
@@ -146,64 +146,81 @@ for ($i=1; $i<$numeroValores; $i++) {
 if (!isset($_REQUEST['enviar']) || !$okValores) {
     if (isset($_REQUEST['enviar'])) {
         cabecera("Resultado inválido");
-        print"<p class=\"aviso\">Por favor corrige los datos:</p>\n";
+        print"  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
+        print "\n";
     } else {
         cabecera("Formulario");
-        print"<p>Escribe los valores numéricos (puedes escribir entre ".
-        "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print"  <p>Escribe los valores numéricos (puedes escribir entre "
+            . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print "\n";
     }
 } else {
 // Si los valores son correctos se convierten a cadena
     cabecera("Resultado válido");
-        print"<p>Escribe los valores numéricos (puedes escribir entre ".
-        "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+    print"  <p>Escribe los valores numéricos (puedes escribir entre "
+        . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+    print "\n";
 }
 
-print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-print "  <table>\n    <tbody valign=\"top\">\n      <tr>\n        <td>\n";
-print "          <table>\n";
-
-print "            <tr>\n              <td>Tamaño gráfica (ancho, entre ".
-    "$tamanyoGraficaXMinimo y $tamanyoGraficaXMaximo):</td>\n";
-print "              <td><input type=\"text\" name=\"tamanyoGraficaX\" ".
-    "value=\"$tamanyoGraficaX\" size=\"5\" /> px</td>\n            </tr>\n";
-
-print "            <tr>\n              <td>Tamaño gráfica (alto, entre ".
-    "$tamanyoGraficaYMinimo y $tamanyoGraficaYMaximo):</td>\n";
-print "              <td><input type=\"text\" name=\"tamanyoGraficaY\" ".
-    "value=\"$tamanyoGraficaY\" size=\"5\" /> px</td>\n            </tr>\n";
-
-print "            <tr>\n              <td colspan=\"2\">Título gráfica:";
-print "<input type=\"text\" name=\"tituloGrafica\" ".
-    "value=\"$tituloGrafica\" size=\"40\" /></td>\n            </tr>\n";
-
-print "            <tr>\n              <td colspan=\"2\">Números en eje Y:";
+print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+print "    <table>\n";
+print "      <tbody valign=\"top\">\n";
+print "        <tr>\n";
+print "          <td>\n";
+print "            <table>\n";
+print "              <tr>\n";
+print "                <td>Tamaño gráfica (ancho, entre $tamanyoGraficaXMinimo y $tamanyoGraficaXMaximo):</td>\n";
+print "                <td><input type=\"text\" name=\"tamanyoGraficaX\" "
+    . "value=\"$tamanyoGraficaX\" size=\"5\" /> px</td>\n";
+print "              </tr>\n";
+print "              <tr>\n";
+print "                <td>Tamaño gráfica (alto, entre $tamanyoGraficaYMinimo y $tamanyoGraficaYMaximo):</td>\n";
+print "                <td><input type=\"text\" name=\"tamanyoGraficaY\" "
+    . "value=\"$tamanyoGraficaY\" size=\"5\" /> px</td>\n";
+print "              </tr>\n";
+print "              <tr>\n";
+print "                <td colspan=\"2\">Título gráfica:";
+print "<input type=\"text\" name=\"tituloGrafica\" "
+    . "value=\"$tituloGrafica\" size=\"40\" /></td>\n";
+print "              </tr>\n";
+print "              <tr>\n";
+print "                <td colspan=\"2\">Números en eje Y:";
 print "<input type=\"checkbox\" name=\"unidadesEjeY\" ";
     if ($unidadesEjeY=="on") {
         print "checked=\"checked\"";
     }
-    print " /></td>\n            </tr>\n";
-
-print "          </table>\n";
-print "        </td>\n        <td style=\"border-left: black solid 1px\">\n";
-
-print "          <table>\n";
+print " /></td>\n";
+print "              </tr>\n";
+print "            </table>\n";
+print "          </td>\n";
+print "          <td style=\"border-left: black solid 1px\">\n";
+print "            <table>\n";
 for ($i=1; $i<=$numeroValores; $i++) {
-    print "            <tr><td>Número $i:</td><td><input type=\"text\" ".
-        "name=\"valores[$i]\" size=\"10\" value=\"";
+    print "              <tr>\n";
+    print "                <td>Número $i:</td>\n";
+    print "                <td><input type=\"text\" "
+        . "name=\"valores[$i]\" size=\"10\" value=\"";
     if (isset($valores[$i])) {
         print "$valores[$i]";
     }
-    print "\" /></td></tr>\n";
+    print "\" /></td>\n";
+    print "              </tr>\n";
 }
-print "          </table>\n";
-print "        </td>\n      </tr>\n    </tbody>\n  </table>\n";
-print "  <p class=\"der\">\n".
-    "    <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n".
-    "    <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n".
-    "    <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n".
-    "    <input type=\"reset\" value=\"Borrar\" />\n".
-    "    <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n  </p>\n</form>\n";
+print "            </table>\n";
+print "          </td>\n";
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
+print "\n";
+print "    <p class=\"der\">\n";
+print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
+print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
+print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
+print "      <input type=\"reset\" value=\"Borrar\" />\n";
+print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
+print "    </p>\n";
+print "  </form>\n";
+print "\n";
 
 if (!$okValores) {
     $cadena = "";
@@ -262,23 +279,31 @@ if ($unidadesEjeY=="on") {
     $cadenaGrafica .= "&amp;chxt=y&amp;chxl=0:|$minimo|$maximo";
 }
 if (!$okValores) {
-    print "<p style=\"text-align:center\">Sin gráfica:</p>\n";
+    print "  <p style=\"text-align:center\">Sin gráfica:</p>\n";
+    print "\n";
 } else {
-    print "<p style=\"text-align:center\">Gráfica:</p>\n";
+    print "  <p style=\"text-align:center\">Gráfica:</p>\n";
+    print "\n";
 }
-print "<p style=\"text-align:center\">\n  <img style=\"padding:10px;border:black solid 2px\" ".
-    "\n    src=\"$cadenaGrafica\"\n    alt=\"Ejemplo\" title=\"Ejemplo\" /></p>\n";
+print "  <p style=\"text-align:center\">\n";
+print "    <img style=\"padding:10px;border:black solid 2px\" "
+    . "src=\"$cadenaGrafica\" alt=\"Gráfica\" />\n";
+print "  </p>\n";
+print "\n";
 
-// Pie de página común a todas las páginas
-print '<address>
-  Esta página forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de esta página: 10 de febrero de 2008
-</address>
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
-</body>
-</html>';
+print "  <footer>\n";
+print "    <p class=\"ultmod\">\n";
+print "      Última modificación de esta página:\n";
+print "      <time datetime=\"2008-02-10\">10 de febrero de 2008</time>\n";
+print "    </p>\n";
+print "\n";
+print "    <p class=\"licencia\">\n";
+print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";
+print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
+print "      Sintes Marco</a>.<br />\n";
+print "      El programa PHP que genera esta página está bajo\n";
+print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.</p>\n";
+print "  </footer>\n";
+print "</body>\n";
+print "</html>\n";
 ?>

@@ -24,19 +24,19 @@
 
 function cabecera($texto)
 {
-    print "<?xml version=\"1.0\" encoding=\"utf-8\"?>
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
-  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-  <title>Convertidor de valores numéricos a cadena (simple encoding)
-  ($texto). Google Chart. Ejercicios. PHP. Bartolomé Sintes Marco</title>
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\"
-  title=\"Color\" />
-</head>\n\n<body>
-<h1>Convertidor de valores numéricos a cadena (simple encoding) ($texto)</h1>\n";
+    print "<!DOCTYPE html>\n";
+    print "<html lang=\"es\">\n";
+    print "<head>\n";
+    print "  <meta charset=\"utf-8\" />\n";
+    print "  <title>Convertidor de valores numéricos a cadena (simple encoding). ($texto). Google Chart.\n";
+    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
+    print "  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "</head>\n";
+    print "\n";
+    print "<body>\n";
+    print "  <h1>Convertidor de valores numéricos a cadena (simple encoding) ($texto)</h1>\n";
+    print "\n";
 }
 
 function limpia($var)
@@ -110,34 +110,41 @@ for ($i=1; $i<$numeroValores; $i++) {
 if (!isset($_REQUEST['enviar']) || !$okValores) {
     if (isset($_REQUEST['enviar'])) {
         cabecera("Resultado inválido");
-        print"<p class=\"aviso\">Por favor corrige los datos:</p>\n";
+        print"  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
+        print "\n";
     } else {
         cabecera("Formulario");
-        print"<p>Escribe los valores numéricos (puedes escribir entre ".
-        "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print"  <p>Escribe los valores numéricos (puedes escribir entre "
+            . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
+        print "\n";
     }
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-    print "  <table>\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+    print "    <table>\n";
     for ($i=1; $i<=$numeroValores; $i++) {
-        print "    <tr><td>Número $i:</td><td><input type=\"text\" ".
+        print "      <tr><td>Número $i:</td><td><input type=\"text\" ".
             "name=\"valores[$i]\" size=\"10\" value=\"";
         if (isset($valores[$i])) {
             print "$valores[$i]";
         }
         print "\" /></td></tr>\n";
     }
-    print "  </table>\n";
-    print "<p class=\"der\">\n".
-          "  <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n".
-          "  <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n".
-          "  <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n".
-          "  <input type=\"reset\" value=\"Borrar\" />\n".
-          "  <input type=\"submit\" name=\"enviar\" value=\"Enviar\" /></p>\n</form>\n";
+    print "    </table>\n";
+    print "\n";
+    print "    <p class=\"der\">\n";
+    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
+    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
+    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
+    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
+    print "    </p>\n";
+    print "  </form>\n";
+    print "\n";
 } else {
 // Si los valores son correctos se convierten a cadena
     cabecera("Resultado válido");
-    print"<p>Los datos introducidos son correctos.</p>\n";
-    print "<p>Datos introducidos (* si falta un dato): ";
+    print "  <p>Los datos introducidos son correctos.</p>\n";
+    print "\n";
+    print "  <p>Datos introducidos (* si falta un dato): ";
     for ($i=1; $i<=$numeroValores; $i++) {
         if ($valores[$i]=="") {
             print "* ";
@@ -146,6 +153,7 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
         }
     }
     print "</p>\n";
+    print "\n";
 
     $simpleEncoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     // Empiezo buscando un valor cualquiera en la lista de valores
@@ -188,20 +196,25 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
             }
         }
     }
-    print "<p>La cadena correspondiente a estos valores es: $cadena</p>\n";
-    print "<p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
+    print "  <p>La cadena correspondiente a estos valores es: $cadena</p>\n";
+    print "\n";
+    print "  <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
+    print "\n";
 }
 
-// Pie de página común a todas las páginas
-print '<address>
-  Esta página forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de esta página: 10 de febrero de 2008
-</address>
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
-</body>
-</html>';
+print "  <footer>\n";
+print "    <p class=\"ultmod\">\n";
+print "      Última modificación de esta página:\n";
+print "      <time datetime=\"2008-02-10\">10 de febrero de 2008</time>\n";
+print "    </p>\n";
+print "\n";
+print "    <p class=\"licencia\">\n";
+print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";
+print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
+print "      Sintes Marco</a>.<br />\n";
+print "      El programa PHP que genera esta página está bajo\n";
+print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.</p>\n";
+print "  </footer>\n";
+print "</body>\n";
+print "</html>\n";
 ?>
