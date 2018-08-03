@@ -325,17 +325,18 @@ function cabecera($texto, $menu='menu_principal')
 {
     global $administradorNombre;
 
-    print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
-       \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
-  <title>www.mclibre.org - Citas - $texto</title>
-  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />
-</head>
+    print "<!DOCTYPE html>\n";
+    print "<html lang=\"es\">\n";
+    print "<head>\n";
+    print "  <meta charset=\"utf-8\" />\n";
+    print "  <title>Citas. $texto.\n";
+    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
+    print "  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "</head>\n";
+    print "\n";
 
-<body onload=\"document.getElementById('cursor').focus()\">
+    print "<body onload=\"document.getElementById('cursor').focus()\">
 <h1>Citas - $texto</h1>
 <div id=\"menu\">
 <ul>";
@@ -390,19 +391,23 @@ function pie()
             ."se llama <strong>root</strong> y su contraseña es\ntambién "
             ."<strong>root</strong>.</p>\n";
     }
-    print '</div>
 
-<div id="pie">
-<address>
-  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de este programa: 6 de junio de 2008
-</address>
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
-</div>
-</body>
-</html>';
+    print "</div>\n";
+    print "\n";
+
+    print "  <footer>\n";
+    print "    <p class=\"ultmod\">\n";
+    print "      Última modificación de esta página:\n";
+    print "      <time datetime=\"2008-06-06\">6 de junio de 2008</time>\n";
+    print "    </p>\n";
+    print "\n";
+    print "    <p class=\"licencia\">\n";
+    print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";
+    print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
+    print "      Sintes Marco</a>.<br />\n";
+    print "      El programa PHP que genera esta página está bajo\n";
+    print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.</p>\n";
+    print "  </footer>\n";
+    print "</body>\n";
+    print "</html>\n";
 }

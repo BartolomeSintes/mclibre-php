@@ -265,15 +265,17 @@ function calendario ($fecha, $enlaces)
 
 function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
 {
-    print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
-       \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
-  <title>www.mclibre.org - Blog - $texto</title>
-  <link href=\"mclibre-php-soluciones-proyectos-blog.css\" rel=\"stylesheet\" type=\"text/css\" />
-</head>\n\n";
+    print "<!DOCTYPE html>\n";
+    print "<html lang=\"es\">\n";
+    print "<head>\n";
+    print "  <meta charset=\"utf-8\" />\n";
+    print "  <title>Blog. $texto.\n";
+    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
+    print "  <link href=\"mclibre-php-soluciones-proyectos-blog.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "</head>\n";
+    print "\n";
+
     if ($conCursor) {
         print "<body onload=\"document.getElementById('cursor').focus()\">\n";
     } else {
@@ -290,19 +292,22 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
 
 function pie()
 {
-    print '</div>
+    print "</div>\n";
+    print "\n";
 
-<div id="pie">
-<address>
-  Este programa forma parte del curso "Páginas web con PHP" disponible en <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  Autor: Bartolomé Sintes Marco<br />
-  Última modificación de este programa: 21 de mayo de 2009
-</address>
-<p class="licencia">El programa PHP que genera esta página está bajo
-<a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o
-posterior</a>.</p>
-</div>
-</body>
-</html>';
+    print "  <footer>\n";
+    print "    <p class=\"ultmod\">\n";
+    print "      Última modificación de esta página:\n";
+    print "      <time datetime=\"2009-05-21\">21 de mayo de 2009</time>\n";
+    print "    </p>\n";
+    print "\n";
+    print "    <p class=\"licencia\">\n";
+    print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";
+    print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
+    print "      Sintes Marco</a>.<br />\n";
+    print "      El programa PHP que genera esta página está bajo\n";
+    print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.</p>\n";
+    print "  </footer>\n";
+    print "</body>\n";
+    print "</html>\n";
 }

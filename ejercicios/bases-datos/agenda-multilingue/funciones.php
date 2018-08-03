@@ -347,6 +347,7 @@ function pie()
         print "<p><strong>"._('Nota')."</strong>: "
           ._('El usuario Administrador se llama <strong>root</strong> y su contraseña es también <strong>root</strong>').".</p>\n";
     }
+/*
     print '</div>
 
 <div id="pie">
@@ -360,4 +361,23 @@ function pie()
 </div>
 </body>
 </html>';
+*/
+    print "</div>\n";
+    print "\n";
+
+    print "  <footer>\n";
+    print "    <p class=\"ultmod\">\n";
+    print "      "._("Última modificación de esta página").":\n";
+    print "      <time datetime=\"2008-02-27\">"._("27 de febrero de 2008")."</time>\n";
+    print "    </p>\n";
+    print "\n";
+    print "    <p class=\"licencia\">\n";
+    print "      ".("Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\"").">\n";
+    print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
+    print "      Sintes Marco</a>.<br />\n";
+    print "      El programa PHP que genera esta página está bajo\n";
+    print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.</p>\n";
+    print "  </footer>\n";
+    print "</body>\n";
+    print "</html>\n";
 }
