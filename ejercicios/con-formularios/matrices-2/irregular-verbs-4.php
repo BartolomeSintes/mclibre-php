@@ -33,9 +33,9 @@
 </head>
 
 <body>
-<h1>Irregular verbs 4</h1>
+  <h1>Irregular verbs 4</h1>
 
-<form action="irregular-verbs-4.php" method="get">
+  <form action="irregular-verbs-4.php" method="get">
 
 <?php
 function recoge($var)
@@ -69,12 +69,15 @@ if ($formaVerbal == 0 || $formaVerbal == 1 || $formaVerbal == 2) {
 
 if ($verboOk && $formaVerbalOk) {
     if ($respuesta == $irregularVerbs[$verbo][$formaVerbal]) {
-        print "<p>¡Respuesta correcta!</p>\n\n";
+        print "    <p>¡Respuesta correcta!</p>\n";
+        print "\n";
     } else {
-        print "<p>¡Respuesta incorrecta!</p>\n\n";
-        print "<p>El <strong>$formaVerbalNombre[$formaVerbal]</strong> de ";
+        print "    <p>¡Respuesta incorrecta!</p>\n";
+        print "\n";
+        print "    <p>El <strong>$formaVerbalNombre[$formaVerbal]</strong> de ";
         print "<strong>{$irregularVerbs[$verbo][3]}</strong> es ";
-        print "<strong>{$irregularVerbs[$verbo][$formaVerbal]}</strong>.\n\n";
+        print "<strong>{$irregularVerbs[$verbo][$formaVerbal]}</strong>.\n";
+        print "\n";
     }
 }
 
@@ -84,38 +87,45 @@ $verbo       = rand(0, $numeroVerbos - 1);
 $respuestas = [$irregularVerbs[$verbo][0], $irregularVerbs[$verbo][1], $irregularVerbs[$verbo][2]];
 shuffle($respuestas);
 
-print "  <table>\n";
-print "    <tbody>\n";
-print "      <tr>\n";
-print "        <td>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>?</td>\n";
-print "        <td><p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[0]\" />$respuestas[0]</label></p>\n";
-print "          <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[1]\" />$respuestas[1]</label></p>\n";
-print "          <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[2]\" />$respuestas[2]</label></p></td>\n";
-print "      </tr>\n";
-print "    </tbody>\n";
-print "  </table>\n\n";
+print "    <table>\n";
+print "      <tbody>\n";
+print "        <tr>\n";
+print "          <td>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>?</td>\n";
+print "          <td>\n";
+print "            <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[0]\" />$respuestas[0]</label></p>\n";
+print "            <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[1]\" />$respuestas[1]</label></p>\n";
+print "            <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[2]\" />$respuestas[2]</label></p>\n";
+print "          </td>\n";
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
+print "\n";
 
-print "  <p><input type=\"hidden\" name=\"verbo\" value=\"$verbo\" />\n";
-print "    <input type=\"hidden\" name=\"formaVerbal\" value=\"$formaVerbal\" /></p>\n";
+print "    <p>\n";
+print "      <input type=\"hidden\" name=\"verbo\" value=\"$verbo\" />\n";
+print "      <input type=\"hidden\" name=\"formaVerbal\" value=\"$formaVerbal\" />\n";
+print "    </p>\n";
+print "\n";
 ?>
+    <p>
+      <input type="submit" value="Corregir" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
-  <p><input type="submit" value="Corregir" />
-    <input type="reset" value="Borrar" /></p>
-</form>
+  <p><a href="irregular-verbs-4.php">Reiniciar</a></p>
 
-<p><a href="irregular-verbs-4.php">Reiniciar</a></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-07">7 de noviembre de 2016</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-        <time datetime="2016-11-07">7 de noviembre de 2016</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-</footer>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
 </body>
 </html>

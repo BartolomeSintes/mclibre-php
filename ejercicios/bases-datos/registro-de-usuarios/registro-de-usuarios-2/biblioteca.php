@@ -137,7 +137,9 @@ function cabecera($texto, $menu=MENU_PRINCIPAL, $conCursor=CABECERA_SIN_CURSOR)
     } elseif ($menu == MENU_VOLVER) {
         print "  <li><a href=\"index.php\">Volver al inicio</a></li>";
     }
-    print "</ul>\n</div>\n\n<div id=\"contenido\">\n";
+    print "</ul>\n</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

@@ -336,7 +336,9 @@ function cabecera($texto, $menu='menu_principal')
   <li><a href=\"borrar1.php\">"._('Borrar')."</a></li>
   <li><a href=\"salir.php\">"._('Desconectar')."</a></li>";
     }
-    print "</ul>\n</div>\n\n<div id=\"contenido\">\n";
+    print "</ul>\n</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

@@ -196,7 +196,9 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
         print "  <li><a href=\"dis-anyadir-1.php\">Nueva discusión</a></li>
   <li><a href=\"edi-index.php\">Editor</a></li>";
     }
-    print "\n</ul>\n</div>\n\n<div id=\"contenido\">\n";
+    print "\n</ul>\n</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

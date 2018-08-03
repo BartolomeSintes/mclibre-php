@@ -24,16 +24,16 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Irregular verbs 1 (Formulario). Matrices (2).
-      Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Irregular verbs 1 (Formulario). Matrices (2).
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+</head>
 
-  <body>
-    <h1>Irregular verbs 1</h1>
+<body>
+  <h1>Irregular verbs 1</h1>
 
 <?php
 include "irregular-verbs-list.php";
@@ -45,25 +45,25 @@ $formaVerbalNombre = ["infinitivo", "pasado", "participio"];
 $formaVerbal = rand(0, 2);
 $verbo       = rand(0, $numeroVerbos - 1);
 
-print "    <p>El <strong>$formaVerbalNombre[$formaVerbal]</strong> de ";
+print "  <p>El <strong>$formaVerbalNombre[$formaVerbal]</strong> de ";
 print "<strong>{$irregularVerbs[$verbo][3]}</strong> es ";
 print "<strong>{$irregularVerbs[$verbo][$formaVerbal]}</strong>.\n";
 print "\n";
 
 ?>
-    <p><a href="irregular-verbs-1.php">Mostrar otro</a></p>
+  <p><a href="irregular-verbs-1.php">Mostrar otro</a></p>
 
-    <footer>
-      <p class="ultmod">
-        Última modificación de esta página:
-        <time datetime="2016-11-07">7 de noviembre de 2016</time></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-07">7 de noviembre de 2016</time></p>
 
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

@@ -33,9 +33,9 @@
 </head>
 
 <body>
-<h1>Irregular verbs 3</h1>
+  <h1>Irregular verbs 3</h1>
 
-<form action="irregular-verbs-3.php" method="get">
+  <form action="irregular-verbs-3.php" method="get">
 
 <?php
 function recoge($var)
@@ -69,43 +69,51 @@ if ($formaVerbal == 0 || $formaVerbal == 1 || $formaVerbal == 2) {
 
 if ($verboOk && $formaVerbalOk) {
     if ($respuesta == $irregularVerbs[$verbo][$formaVerbal]) {
-        print "<p>¡Respuesta correcta!</p>\n\n";
+        print "    <p>¡Respuesta correcta!</p>\n";
+        print "\n";
     } else {
-        print "<p>¡Respuesta incorrecta!</p>\n\n";
-        print "<p>El <strong>$formaVerbalNombre[$formaVerbal]</strong> de ";
+        print "    <p>¡Respuesta incorrecta!</p>\n";
+        print "\n";
+        print "    <p>El <strong>$formaVerbalNombre[$formaVerbal]</strong> de ";
         print "<strong>{$irregularVerbs[$verbo][3]}</strong> es ";
-        print "<strong>{$irregularVerbs[$verbo][$formaVerbal]}</strong>.\n\n";
+        print "<strong>{$irregularVerbs[$verbo][$formaVerbal]}</strong>.\n";
+        print "\n";
     }
 }
 
 $formaVerbal = rand(0, 2);
 $verbo       = rand(0, $numeroVerbos - 1);
 
-print "<p>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>? ";
+print "    <p>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>? ";
 
 print "<input type=\"text\" name=\"respuesta\" size=\"20\" /></p>\n";
+print "\n";
 
-print "  <p><input type=\"hidden\" name=\"verbo\" value=\"$verbo\" />\n";
-print "    <input type=\"hidden\" name=\"formaVerbal\" value=\"$formaVerbal\" /></p>\n";
+print "    <p>\n";
+print "      <input type=\"hidden\" name=\"verbo\" value=\"$verbo\" />\n";
+print "      <input type=\"hidden\" name=\"formaVerbal\" value=\"$formaVerbal\" />\n";
+print "    </p>\n";
+print "\n";
 ?>
+    <p>
+      <input type="submit" value="Corregir" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
-  <p><input type="submit" value="Corregir" />
-    <input type="reset" value="Borrar" /></p>
-</form>
+  <p><a href="irregular-verbs-3.php">Reiniciar</a></p>
 
-<p><a href="irregular-verbs-3.php">Reiniciar</a></p>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2016-11-07">7 de noviembre de 2016</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-        <time datetime="2016-11-07">7 de noviembre de 2016</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-</footer>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
 </body>
 </html>

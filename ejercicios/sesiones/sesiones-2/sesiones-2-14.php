@@ -81,7 +81,6 @@ if ($accion=="Cerrar") {
   <h1>Almacenamiento y borrado de datos en sesión</h1>
 
 <?php
-
 if ($nombre == "") {
     print "  <p class=\"aviso\">No ha escrito el nombre.</p>\n";
 } else {
@@ -93,63 +92,66 @@ if (!$accionOk) {
     print "  <p class=\"aviso\">Error en la opción elegida. Elija de nuevo, por favor.</p>";
 }
 
-print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">
-  <fieldset>
-    <legend>Formulario</legend>
-    <table cellspacing=\"5\" class=\"borde\">
-      <tbody>
-        <tr>
-          <td><strong>Escriba algún nombre:</strong></td>
-          <td><input type=\"text\" name=\"nombre\" size=\"30\" maxlength=\"30\" /></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class=\"der\">
-    <input type=\"submit\" value=\"Añadir\" name=\"accion\" />
-    <input type=\"reset\" value=\"Borrar\" /></p>
-  </fieldset>
-</form>\n";
+print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+print "    <fieldset>\n";
+print "      <legend>Formulario</legend>\n";
+print "      <table cellspacing=\"5\" class=\"borde\">\n";
+print "        <tbody>\n";
+print "          <tr>\n";
+print "            <td><strong>Escriba algún nombre:</strong></td>\n";
+print "            <td><input type=\"text\" name=\"nombre\" size=\"30\" maxlength=\"30\" /></td>\n";
+print "          </tr>\n";
+print "        </tbody>\n";
+print "      </table>\n";
+print "n";
+print "      <p class=\"der\">\n";
+print "        <input type=\"submit\" value=\"Añadir\" name=\"accion\" />\n";
+print "        <input type=\"reset\" value=\"Borrar\" />\n";
+print "      </p>\n";
+print "    </fieldset>\n";
+print "  </form>\n";
+print "\n";
 
 if ($nombreOk) {
     $_SESSION[] = $nombre;
 }
 
 if (!count($_SESSION)) {
-    print "<p>Todavía no se han introducido nombres.</p>\n";
+    print "  <p>Todavía no se han introducido nombres.</p>\n";
+    print "\n";
 } else {
-    print "<p></p>\n";
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"get\">
-  <fieldset>
-    <legend>Datos introducidos</legend>
-    <p>\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
+    print "    <fieldset>\n";
+    print "      <legend>Datos introducidos</legend>\n";
+    print "      <p>\n";
     foreach ($_SESSION as $indice => $valor) {
-        print "      <input type=\"checkbox\" name=\"c[$indice]\" /> $valor<br />\n";
+        print "        <input type=\"checkbox\" name=\"c[$indice]\" /> $valor<br />\n";
     }
-    print "    </p>\n";
-    print "    <p class=\"der\">
-    <input type=\"submit\" value=\"Eliminar\" name=\"Eliminar\" />
-    <input type=\"reset\" value=\"Reiniciar\" /></p>
-  </fieldset>
-</form>\n";
-
-    print "<p><a href=\"$_SERVER[PHP_SELF]?accion=Cerrar\">Cerrar sesión "
+    print "      </p>\n";
+    print "\n";
+    print "      <p class=\"der\">\n";
+    print "        <input type=\"submit\" value=\"Eliminar\" name=\"Eliminar\" />\n";
+    print "        <input type=\"reset\" value=\"Reiniciar\" />\n";
+    print "      </p>\n";
+    print "    </fieldset>\n";
+    print "  </form>\n";
+    print "\n";
+    print "  <p><a href=\"$_SERVER[PHP_SELF]?accion=Cerrar\">Cerrar sesión "
         . "(se perderán los datos almacenados).</a></p>\n";
+    print "\n";
 }
-
 ?>
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
 
-<footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
-
-      <p class="licencia">
-        Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-        Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-        Sintes Marco</a>.<br />
-        El programa PHP que genera esta página está bajo
-        <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-    </footer>
-  </body>
+    <p class="licencia">
+      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
+      Sintes Marco</a>.<br />
+      El programa PHP que genera esta página está bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+  </footer>
+</body>
 </html>

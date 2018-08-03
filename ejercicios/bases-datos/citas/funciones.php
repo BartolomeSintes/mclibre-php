@@ -379,7 +379,9 @@ function cabecera($texto, $menu='menu_principal')
   <li><a href=\"eti-index.php\">Etiquetas</a></li>
   <li><a href=\"salir.php\">Desconectar</a></li>";
     }
-    print "\n</ul>\n</div>\n\n<div id=\"contenido\">\n";
+    print "\n</ul>\n</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

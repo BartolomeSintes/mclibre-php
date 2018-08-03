@@ -210,7 +210,9 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu=MENU_PRINCIPAL)
     } else {
         print "  <li><a href=\"salir.php\">Desconectar</a></li>";
     }
-    print "</ul>\n</div>\n\n<div id=\"contenido\">\n";
+    print "</ul>\n</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

@@ -97,7 +97,8 @@ if ($tension == "") {
 if ($tensionOk && $intensidadOk && $resistenciaOk) {
     if ($tension != "" && $intensidad != "" && $resistencia != "") {
         if ($tension == $intensidad * $resistencia) {
-            print "  <p>Los valores introducidos son correctos:</p>\n\n";
+            print "  <p>Los valores introducidos son correctos:</p>\n";
+            print "\n";
         } else {
             print "  <p>Los valores introducidos <span class=\"aviso\">no</span> son posibles:</p>\n";
             print "\n";

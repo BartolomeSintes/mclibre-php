@@ -61,7 +61,8 @@ if (!$result) {
                     } else {
                         print "$numInt intervenciones";
                     }
-                    print ".</p>\n  <p>$valor[descripcion]</p>\n</div>\n\n";
+                    print ".</p>\n  <p>$valor[descripcion]</p>\n</div>\n";
+                    print "\n";
                 }
             }
         }

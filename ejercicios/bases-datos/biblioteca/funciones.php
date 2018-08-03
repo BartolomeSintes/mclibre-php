@@ -219,7 +219,9 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
   <li><a href=\"pre-index.php\">Préstamos</a></li>
   <li><a href=\"com-borrar-todo-1.php\">Borrar todo</a></li>";
     }
-    print "\n</ul>\n</div>\n\n<div id=\"contenido\">\n";
+    print "\n</ul>\n</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

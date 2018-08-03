@@ -260,7 +260,8 @@ function calendario ($fecha, $enlaces)
             print "    </tr>\n";
         }
     }
-    print "  </table>\n</div>\n\n";
+    print "  </table>\n</div>\n";
+    print "\n";
 }
 
 function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
@@ -287,7 +288,9 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
   <li><a href=\"editar.php?fecha=$fecha\">Editar</a></li>
   <li><a href=\"leer.php?fecha=$fecha\">Leer</a></li>
   <li><a href=\"borrartodo1.php\">Borrar todo</a></li>
-</ul>\n</div>\n\n<div id=\"contenido\">\n";
+</ul>\n</div>\n";
+    print "\n";
+    print "<div id=\"contenido\">\n";
 }
 
 function pie()

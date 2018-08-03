@@ -72,7 +72,8 @@ if ($menos != "" && $gris <= 245) {
     $gris += 10;
 }
 
-print "  <p>Haga clic en los iconos para oscurecer o aclarar el color gris del cuadro.</p>\n\n";
+print "  <p>Haga clic en los iconos para oscurecer o aclarar el color gris del cuadro.</p>\n";
+print "\n";
 
 // Se genera el formulario
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
