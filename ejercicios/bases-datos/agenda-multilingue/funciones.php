@@ -303,17 +303,18 @@ function cabecera($texto, $menu='menu_principal')
 {
     global $administradorNombre;
 
-    print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
-       \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
-  <title>www.mclibre.org - "._("Agenda multilingüe")." - $texto</title>
-  <link href=\"mclibre-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" />
-</head>
+    print "<!DOCTYPE html>\n";
+    print "<html lang=\"es\">\n";
+    print "<head>\n";
+    print "  <meta charset=\"utf-8\" />\n";
+    print "  <title>"._("Agenda multilingüe").". $texto.\n";
+    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
+    print "  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "</head>\n";
+    print "\n";
 
-<body onload=\"document.getElementById('cursor').focus()\">\n";
+    print "<body onload=\"document.getElementById('cursor').focus()\">\n";
     if ($menu=='menu_principal') {
         print "<h1>"._('Agenda multilingüe');
     } else {
