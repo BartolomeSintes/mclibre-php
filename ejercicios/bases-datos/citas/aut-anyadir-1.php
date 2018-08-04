@@ -36,7 +36,7 @@ if (!isset($_SESSION['citasUsuario'])) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=$maxRegAutores) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
         print "<form action=\"aut-anyadir-2.php\" method=\"get\">
   <p>Escriba los datos del nuevo autor:</p>

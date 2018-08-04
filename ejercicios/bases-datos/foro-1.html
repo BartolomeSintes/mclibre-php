@@ -167,16 +167,16 @@ define('MAX_REG_INTERVENCIONES', 20);   // Número máximo de registros en la ta
 // Consultas de creación de tablas en MySQL
 $consultaCreaTablaDiscusiones  = "CREATE TABLE $dbDiscusiones (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    titulo VARCHAR(".TAM_TITULO."),
+    titulo VARCHAR(" . TAM_TITULO . "),
     descripcion VARCHAR(".TAM_DESCRIPCION."),
-    autor VARCHAR(".TAM_AUTOR."),
+    autor VARCHAR(" . TAM_AUTOR . "),
     fecha DATETIME,
     PRIMARY KEY(id)
     )";
 $consultaCreaTablaIntervenciones  = "CREATE TABLE $dbIntervenciones (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     id_discusion INTEGER UNSIGNED,
-    autor VARCHAR(".TAM_AUTOR."),
+    autor VARCHAR(" . TAM_AUTOR . "),
     fecha DATETIME,
     intervencion VARCHAR(".TAM_INTERVENCION."),
     PRIMARY KEY(id)
@@ -185,15 +185,15 @@ $consultaCreaTablaIntervenciones  = "CREATE TABLE $dbIntervenciones (
 // Consultas de creación de tablas en SQLite
 $consultaCreaTablaDiscusiones = "CREATE TABLE $dbDiscusiones (
     id INTEGER PRIMARY KEY,
-    titulo VARCHAR(".TAM_TITULO."),
+    titulo VARCHAR(" . TAM_TITULO . "),
     descripcion VARCHAR(".TAM_DESCRIPCION."),
-    autor VARCHAR(".TAM_AUTOR."),
+    autor VARCHAR(" . TAM_AUTOR . "),
     fecha DATETIME
     )";
 $consultaCreaTablaIntervenciones = "CREATE TABLE $dbIntervenciones (
     id INTEGER PRIMARY KEY,
     id_discusion INTEGER UNSIGNED,
-    autor VARCHAR(".TAM_AUTOR."),
+    autor VARCHAR(" . TAM_AUTOR . "),
     fecha DATETIME,
     intervencion VARCHAR(".TAM_INTERVENCION.")
     )";

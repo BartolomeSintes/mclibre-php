@@ -70,7 +70,7 @@ if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } else {
             print "<p>Estas son las etiquetas definidas hasta el momento, con "
-                ."un tamaño proporcional a su popularidad:</p>\n";
+                . "un tamaño proporcional a su popularidad:</p>\n";
             print "<p>\n";
             foreach ($result as $valor) {
                 $consulta = "SELECT COUNT (*) FROM $dbEtiCitas

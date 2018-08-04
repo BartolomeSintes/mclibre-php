@@ -53,7 +53,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 
     if (($nombre=="''") && ($apellidos=='')) {
         print "<p>El nombre y apellidos del autor no puede estar vacía. "
-            ."No se ha guardado el registro.</p>\n";
+            . "No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAutores";
         $result = $db->query($consulta);
@@ -61,7 +61,7 @@ if (!isset($_SESSION['citasUsuario'])) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegAutores) {
             print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbAutores
                 WHERE nombre='$nombre'

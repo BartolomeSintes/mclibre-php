@@ -79,11 +79,11 @@ if ($numero=="") {
     print "\n";
 } elseif (!is_numeric($numero)) {
     print "  <p class=\"aviso\">No se ha recibido el número de semanas "
-         ."como número.</p>\n";
+        . "como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
     print "  <p class=\"aviso\">No se ha recibido el número de semanas "
-         ."como número entero positivo.</p>\n";
+        . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($numero < $minimo || $numero > $maximo) {
     print "  <p class=\"aviso\">El número de semanas debe estar entre $minimo "

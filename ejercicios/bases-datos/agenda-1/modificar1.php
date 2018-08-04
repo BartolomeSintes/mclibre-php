@@ -44,7 +44,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"modificar2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"modificar2.php\" method=\"" . FORM_METHOD . "\">
   <p>Indique el registro que quiera modificar:</p>
   <table border=\"1\">
     <thead>
@@ -82,7 +82,7 @@ if (!$result) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"radio\" "
-              ."name=\"id\" value=\"$valor[id]\" /></td>
+                . "name=\"id\" value=\"$valor[id]\" /></td>
         <td>$valor[nombre]</td>
         <td>$valor[apellidos]</td>
         <td>$valor[telefono]</td>

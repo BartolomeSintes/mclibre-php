@@ -44,7 +44,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"edi-borrar-inte-2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"edi-borrar-inte-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Marque la discusión en la que quiera borrar intervenciones.</p>
   <table border=\"1\">
     <thead>
@@ -82,7 +82,7 @@ if (!$result) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"radio\" "
-          ."name=\"id\" value=\"$valor[id]\" /></td>
+                . "name=\"id\" value=\"$valor[id]\" /></td>
         <td>$valor[autor]</td>
         <td>".fechaDma($valor['fecha'])."</td>
         <td>$valor[titulo]</td>

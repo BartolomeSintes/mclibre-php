@@ -57,7 +57,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         $datos = "autor=$autor&amp;titulo=$titulo&amp;"
-                ."editorial=$editorial&amp;campo";
+            . "editorial=$editorial&amp;campo";
         print "<p>Registros encontrados:</p>\n<table border=\"1\">
   <thead>
     <tr class=\"neg\">

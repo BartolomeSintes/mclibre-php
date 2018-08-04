@@ -64,7 +64,7 @@ if ($id=='') {
                 if (!$result) {
                     print "<p>Error en la consulta.</p>\n";
                 } else {
-                    print "<form action=\"edi-borrar-inte-3.php\" method=\"".FORM_METHOD."\">
+                    print "<form action=\"edi-borrar-inte-3.php\" method=\"" . FORM_METHOD . "\">
   <p>Marque las intervenciones que quiera borrar.</p>\n";
                     print "<table border=\"1\">
     <thead>
@@ -97,7 +97,7 @@ if ($id=='') {
                         }
                         $tmp = !$tmp;
                         print "        <td align=\"center\"><input "
-                            ." type=\"checkbox\" name=\"id[$valor[id]]\" /></td>
+                            . " type=\"checkbox\" name=\"id[$valor[id]]\" /></td>
         <td>$valor[autor]</td>
         <td>".fechaDma($valor['fecha'])."</td>
         <td>$valor[intervencion]</td>

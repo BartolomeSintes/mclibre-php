@@ -35,24 +35,24 @@ if (!$result) {
     print "<p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     cabecera('Obras - Buscar 1', CABECERA_CON_CURSOR, 'menuObras');
-    print "<form action=\"obr-buscar-2.php\" method=\"".FORM_METHOD."\">
+    print "<form action=\"obr-buscar-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Escriba el criterio de búsqueda (carácteres o números):</p>
   <table>
     <tbody>
       <tr>
         <td>Autor:</td>
-        <td><input type=\"text\" name=\"autor\" size=\"".TAM_AUTOR."\" "
-        ."maxlength=\"".TAM_AUTOR."\" id=\"cursor\" /></td>
+        <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
+        . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\" /></td>
       </tr>
       <tr>
         <td>Título:</td>
-        <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
-        ."maxlength=\"".TAM_TITULO."\" /></td>
+        <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
+        . "maxlength=\"" . TAM_TITULO . "\" /></td>
       </tr>
       <tr>
         <td>Editorial:</td>
-        <td><input type=\"text\" name=\"editorial\" size=\"".TAM_EDITORIAL."\" "
-        ."maxlength=\"".TAM_EDITORIAL."\" /></td>
+        <td><input type=\"text\" name=\"editorial\" size=\"" . TAM_EDITORIAL . "\" "
+        . "maxlength=\"" . TAM_EDITORIAL . "\" /></td>
       </tr>
     </tbody>
   </table>

@@ -62,7 +62,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         print "<p>Artículos en venta:</p>\n"
-            ."<table border=\"1\">
+            . "<table border=\"1\">
   <thead>
     <tr class=\"neg\">
       <th><a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=articulo&amp;orden=ASC\">

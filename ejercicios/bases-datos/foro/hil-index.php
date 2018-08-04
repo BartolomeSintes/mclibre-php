@@ -64,8 +64,8 @@ if (!$result) {
                 } else {
                     foreach ($result as $valor) {
                         print "  <p class=\"int_aut\"><strong>$valor[autor]</strong> "
-                            ."ha dicho el ".fechaDma($valor['fecha'])
-                            .":</p>\n  <p>$valor[intervencion]</p>\n";
+                            . "ha dicho el ".fechaDma($valor['fecha'])
+                            . ":</p>\n  <p>$valor[intervencion]</p>\n";
                     }
                 }
             }

@@ -33,7 +33,7 @@ $correo    = recogeParaConsulta($db, 'correo');
 
 if (($nombre=="''") && ($apellidos=="''") && ($telefono=="''") && ($correo=="''")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
-        ."No se ha guardado el registro.</p>\n";
+        . "No se ha guardado el registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbAgenda";
     $result = $db->query($consulta);
@@ -41,7 +41,7 @@ if (($nombre=="''") && ($apellidos=="''") && ($telefono=="''") && ($correo=="''"
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_AGENDA) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAgenda
             WHERE nombre=$nombre

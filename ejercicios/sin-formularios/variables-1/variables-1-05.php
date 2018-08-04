@@ -49,7 +49,7 @@ print "    <img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\" />\n";
 print "    <img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\" />\n";
 print "  </p>\n";
 print "\n";
-print "<p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
+print "  <p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
 ?>
 
   <footer>

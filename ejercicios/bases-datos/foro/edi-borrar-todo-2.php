@@ -37,9 +37,9 @@ function borraTodoMySQL($db)
         print "<p>Base de datos creada correctamente.</p>\n";
         $consultaCreaTablaDiscusiones  = "CREATE TABLE $dbDiscusiones (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-            titulo VARCHAR(".TAM_TITULO."),
+            titulo VARCHAR(" . TAM_TITULO . "),
             descripcion VARCHAR(".TAM_DESCRIPCION."),
-            autor VARCHAR(".TAM_AUTOR."),
+            autor VARCHAR(" . TAM_AUTOR . "),
             fecha DATETIME,
             PRIMARY KEY(id)
             )";
@@ -51,7 +51,7 @@ function borraTodoMySQL($db)
         $consultaCreaTablaIntervenciones  = "CREATE TABLE $dbIntervenciones (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             id_discusion INTEGER UNSIGNED,
-            autor VARCHAR(".TAM_AUTOR."),
+            autor VARCHAR(" . TAM_AUTOR . "),
             fecha DATETIME,
             intervencion VARCHAR(".TAM_INTERVENCION."),
             PRIMARY KEY(id)
@@ -84,9 +84,9 @@ function borraTodoSqlite($db)
     }
     $consultaCreaTablaDiscusiones = "CREATE TABLE $dbDiscusiones (
         id INTEGER PRIMARY KEY,
-        titulo VARCHAR(".TAM_TITULO."),
+        titulo VARCHAR(" . TAM_TITULO . "),
         descripcion VARCHAR(".TAM_DESCRIPCION."),
-        autor VARCHAR(".TAM_AUTOR."),
+        autor VARCHAR(" . TAM_AUTOR . "),
         fecha DATETIME
         )";
     if ($db->query($consultaCreaTablaDiscusiones)) {
@@ -97,7 +97,7 @@ function borraTodoSqlite($db)
     $consultaCreaTablaIntervenciones = "CREATE TABLE $dbIntervenciones (
         id INTEGER PRIMARY KEY,
         id_discusion INTEGER UNSIGNED,
-        autor VARCHAR(".TAM_AUTOR."),
+        autor VARCHAR(" . TAM_AUTOR . "),
         fecha DATETIME,
         intervencion VARCHAR(".TAM_INTERVENCION.")
         )";

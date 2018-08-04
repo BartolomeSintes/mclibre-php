@@ -44,7 +44,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"edi-borrar-disc-2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"edi-borrar-disc-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Marque las discusiones que quiera borrar. Tenga en cuenta que
     al borrar una discusión se borrarán también las intervenciones
     correspondientes.</p>
@@ -84,7 +84,7 @@ if (!$result) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"checkbox\" "
-          ."name=\"id[$valor[id]]\" /></td>
+                . "name=\"id[$valor[id]]\" /></td>
         <td>$valor[autor]</td>
         <td>".fechaDma($valor['fecha'])."</td>
         <td>$valor[titulo]</td>

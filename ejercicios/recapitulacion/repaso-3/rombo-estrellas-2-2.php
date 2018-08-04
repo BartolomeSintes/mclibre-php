@@ -54,7 +54,7 @@ if ($alto=="") {
     print "\n";
 } elseif (!ctype_digit($alto)) {
     print "  <p class=\"aviso\">No ha escrito la altura "
-        ."como número entero positivo.</p>\n";
+        . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($alto < $valorMinimo || $alto > $valorMaximo) {
     print "  <p class=\"aviso\">La altura debe estar entre $valorMinimo y $valorMaximo.</p>\n";

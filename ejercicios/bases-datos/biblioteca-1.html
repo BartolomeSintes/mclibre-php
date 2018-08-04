@@ -131,16 +131,16 @@ define('TAM_FECHA',         10);  // Tamaño del campo Préstamo &gt; Fecha
 // Consultas de creación de tablas en MySQL
 $consultaCreaTablaObras = "CREATE TABLE $dbObras (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    autor VARCHAR(".TAM_AUTOR."),
-    titulo VARCHAR(".TAM_TITULO."),
-    editorial VARCHAR(".TAM_EDITORIAL."),
+    autor VARCHAR(" . TAM_AUTOR . "),
+    titulo VARCHAR(" . TAM_TITULO . "),
+    editorial VARCHAR(" . TAM_EDITORIAL . "),
     PRIMARY KEY(id)
     )";
 $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(".TAM_NOMBRE."),
-    apellidos VARCHAR(".TAM_APELLIDOS."),
-    dni VARCHAR(".TAM_DNI."),
+    nombre VARCHAR(" . TAM_NOMBRE . "),
+    apellidos VARCHAR(" . TAM_APELLIDOS . "),
+    dni VARCHAR(" . TAM_DNI . "),
     PRIMARY KEY(id)
     )";
 $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
@@ -155,15 +155,15 @@ $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
 // Consultas de creación de tablas en SQLite
 $consultaCreaTablaObras = "CREATE TABLE $dbObras (
     id INTEGER PRIMARY KEY,
-    autor VARCHAR(".TAM_AUTOR."),
-    titulo VARCHAR(".TAM_TITULO."),
-    editorial VARCHAR(".TAM_EDITORIAL.")
+    autor VARCHAR(" . TAM_AUTOR . "),
+    titulo VARCHAR(" . TAM_TITULO . "),
+    editorial VARCHAR(" . TAM_EDITORIAL . ")
     )";
 $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
     id INTEGER PRIMARY KEY,
-    nombre VARCHAR(".TAM_NOMBRE."),
-    apellidos VARCHAR(".TAM_APELLIDOS."),
-    dni VARCHAR(".TAM_DNI.")
+    nombre VARCHAR(" . TAM_NOMBRE . "),
+    apellidos VARCHAR(" . TAM_APELLIDOS . "),
+    dni VARCHAR(" . TAM_DNI . ")
     )";
 $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
     id INTEGER PRIMARY KEY,

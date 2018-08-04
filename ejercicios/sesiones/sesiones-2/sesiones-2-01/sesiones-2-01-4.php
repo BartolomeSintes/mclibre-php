@@ -59,10 +59,10 @@ if ($correcto != "Sí" && $correcto != "No") {
 if ($correctoOk) {
     if ($correcto == "No") {
         print "  <p>Su nombre y apellidos <strong>no</strong> son: <strong>$_SESSION[nombre] "
-            ."$_SESSION[apellidos]</strong>.</p>\n";
+            . "$_SESSION[apellidos]</strong>.</p>\n";
     } else {
         print "  <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] "
-            ."$_SESSION[apellidos]</strong>.</p>\n";
+            . "$_SESSION[apellidos]</strong>.</p>\n";
     }
 }
 

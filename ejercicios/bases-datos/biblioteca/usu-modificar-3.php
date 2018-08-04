@@ -35,7 +35,7 @@ if ($id=="''") {
     print "<p>No se ha seleccionado ningún registro.</p>\n";
 } elseif (($nombre=="''") && ($apellidos=="''") && ($dni=="''")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
-            ."No se ha guardado la modificación.</p>\n";
+        . "No se ha guardado la modificación.</p>\n";
 } else {
 // La consulta cuenta los registros con un id diferente porque MySQL no distingue
 // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
@@ -50,7 +50,7 @@ if ($id=="''") {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>0) {
         print "<p>Ya existe un registro con esos mismos valores. "
-            ."No se ha guardado la modificación.</p>\n";
+            . "No se ha guardado la modificación.</p>\n";
     } else {
         $consulta = "UPDATE $dbUsuarios
             SET nombre=$nombre, apellidos=$apellidos, dni=$dni

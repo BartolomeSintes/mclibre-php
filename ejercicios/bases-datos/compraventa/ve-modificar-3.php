@@ -39,7 +39,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 
     if (($nombre=="''") && ($apellidos=="''") && ($telefono=="''") && ($correo=="''")) {
         print "<p>Hay que rellenar al menos uno de los campos. "
-            ."No se ha guardado la modificación.</p>\n";
+            . "No se ha guardado la modificación.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAgenda WHERE
             id_usuario='$_SESSION[compraventaIdUsuario]'
@@ -75,7 +75,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                 $valor = $result->fetch();
                 if ($valor['id']!=$id) {
                     print "<p>Ya existe un registro con esos mismos valores. "
-                        ."No se ha guardado la modificación.</p>\n";
+                        . "No se ha guardado la modificación.</p>\n";
                 } else {
                     $consulta = "UPDATE $dbAgenda SET nombre=$nombre,
                         apellidos=$apellidos, telefono=$telefono, correo=$correo

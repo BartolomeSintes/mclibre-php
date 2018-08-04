@@ -79,7 +79,7 @@ if ($jugadoresOk) {
 
     $maximo = max($total);
 
-    print "<p>La puntuación máxima ha sido <strong>$maximo puntos</strong>.</p>\n";
+    print "  <p>La puntuación máxima ha sido <strong>$maximo puntos</strong>.</p>\n";
     print "\n";
 
     for ($i = 1; $i <= $jugadores; $i++) {

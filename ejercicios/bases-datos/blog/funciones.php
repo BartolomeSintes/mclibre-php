@@ -237,17 +237,17 @@ function calendario ($fecha, $enlaces)
                 if (($num>0) && ($num<=$duraMeses[(int)($mes)])) {
                     if ($enlaces=='editar') {
                         print "      <td class=\"enlace\"><a href=\"editar.php"
-                            ."?fecha=$anyo-$mes-".sprintf("%02d", $num)
-                            ."\">$num</a></td>\n";
+                            . "?fecha=$anyo-$mes-".sprintf("%02d", $num)
+                            . "\">$num</a></td>\n";
                     } elseif ($enlaces=='leer') {
                         $consulta = "SELECT COUNT(*) FROM $dbEntradas WHERE "
-                            ."fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
+                            . "fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
                         $result = $db->query($consulta);
                         if (!$result) {
                             print "      <td>$num</td>\n";
                         } elseif ($result->fetchColumn()) {
                             print "      <td class=\"enlace\"><a "
-                              ."href=\"leer.php?fecha=$anyo-$mes-"
+                                . "href=\"leer.php?fecha=$anyo-$mes-"
                               .sprintf("%02d", $num)."\">$num</a></td>\n";
                         } else {
                             print "      <td>$num</td>\n";

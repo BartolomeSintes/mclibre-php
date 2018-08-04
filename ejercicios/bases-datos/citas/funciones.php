@@ -390,8 +390,8 @@ function pie()
 
     if (($administradorPassword!='')&&!isset($_SESSION['citasUsuario'])) {
         print "<p><strong>Nota</strong>: El usuario Administrador "
-            ."se llama <strong>root</strong> y su contraseña es\ntambién "
-            ."<strong>root</strong>.</p>\n";
+            . "se llama <strong>root</strong> y su contraseña es\ntambién "
+            . "<strong>root</strong>.</p>\n";
     }
 
     print "</div>\n";

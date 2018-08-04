@@ -35,24 +35,24 @@ if (!$result) {
     print "<p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     cabecera('Usuarios - Buscar 1', CABECERA_CON_CURSOR, 'menuUsuarios');
-    print "<form action=\"usu-buscar-2.php\" method=\"".FORM_METHOD."\">
+    print "<form action=\"usu-buscar-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Escriba el criterio de búsqueda (carácteres o números):</p>
   <table>
     <tbody>
       <tr>
         <td>Nombre:</td>
-        <td><input type=\"text\" name=\"nombre\" size=\"".TAM_NOMBRE."\" "
-        ."maxlength=\"".TAM_NOMBRE."\" id=\"cursor\" /></td>
+        <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+        . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\" /></td>
       </tr>
       <tr>
         <td>Apellidos:</td>
-        <td><input type=\"text\" name=\"apellidos\" size=\"".TAM_APELLIDOS."\" "
-        ."maxlength=\"".TAM_APELLIDOS."\" /></td>
+        <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+        . "maxlength=\"" . TAM_APELLIDOS . "\" /></td>
       </tr>
       <tr>
         <td>DNI:</td>
-        <td><input type=\"text\" name=\"dni\" size=\"".TAM_DNI."\" "
-        ."maxlength=\"".TAM_DNI."\" /></td>
+        <td><input type=\"text\" name=\"dni\" size=\"" . TAM_DNI . "\" "
+        . "maxlength=\"" . TAM_DNI . "\" /></td>
       </tr>
     </tbody>
   </table>

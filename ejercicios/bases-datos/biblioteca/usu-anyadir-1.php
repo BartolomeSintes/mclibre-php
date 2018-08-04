@@ -33,27 +33,27 @@ if (!$result) {
 } elseif ($result->fetchColumn()>=MAX_REG_USUARIOS) {
     cabecera('Usuarios - Añadir 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
 } else {
     cabecera('Usuarios - Añadir 1', CABECERA_CON_CURSOR, 'menuUsuarios');
-    print "<form action=\"usu-anyadir-2.php\" method=\"".FORM_METHOD."\">
+    print "<form action=\"usu-anyadir-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Escriba los datos del nuevo registro:</p>
   <table>
     <tbody>
       <tr>
         <td>Nombre:</td>
-        <td><input type=\"text\" name=\"nombre\" size=\"".TAM_NOMBRE."\" "
-        ."maxlength=\"".TAM_NOMBRE."\" id=\"cursor\" /></td>
+        <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+        . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\" /></td>
       </tr>
       <tr>
         <td>Apellidos:</td>
-        <td><input type=\"text\" name=\"apellidos\" size=\"".TAM_APELLIDOS."\" "
-        ."maxlength=\"".TAM_APELLIDOS."\" /></td>
+        <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+        . "maxlength=\"" . TAM_APELLIDOS . "\" /></td>
       </tr>
       <tr>
         <td>DNI:</td>
-        <td><input type=\"text\" name=\"dni\" size=\"".TAM_DNI."\" "
-        ."maxlength=\"".TAM_DNI."\" /></td>
+        <td><input type=\"text\" name=\"dni\" size=\"" . TAM_DNI . "\" "
+        . "maxlength=\"" . TAM_DNI . "\" /></td>
       </tr>
     </tbody>
   </table>

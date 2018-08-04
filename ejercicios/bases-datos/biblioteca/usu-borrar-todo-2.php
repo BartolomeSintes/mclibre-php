@@ -42,9 +42,9 @@ function borraTodoMySQL($db)
     }
     $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-        nombre VARCHAR(".TAM_NOMBRE."),
-        apellidos VARCHAR(".TAM_APELLIDOS."),
-        dni VARCHAR(".TAM_DNI."),
+        nombre VARCHAR(" . TAM_NOMBRE . "),
+        apellidos VARCHAR(" . TAM_APELLIDOS . "),
+        dni VARCHAR(" . TAM_DNI . "),
         PRIMARY KEY(id)
         )";
     if ($db->query($consultaCreaTablaUsuarios)) {
@@ -85,9 +85,9 @@ function borraTodoSqlite($db)
     }
     $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
-        nombre VARCHAR(".TAM_NOMBRE."),
-        apellidos VARCHAR(".TAM_APELLIDOS."),
-        dni VARCHAR(".TAM_DNI.")
+        nombre VARCHAR(" . TAM_NOMBRE . "),
+        apellidos VARCHAR(" . TAM_APELLIDOS . "),
+        dni VARCHAR(" . TAM_DNI . ")
         )";
     if ($db->query($consultaCreaTablaUsuarios)) {
         print "<p>Tabla de Usuarios creada correctamente.</p>\n";

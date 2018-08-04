@@ -56,11 +56,11 @@ if ($numero=="") {
     print "\n";
 } elseif (!is_numeric($numero)) {
     print "  <p class=\"aviso\">No ha escrito el número de valores "
-        ."como número.</p>\n";
+        . "como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($numero)) {
     print "  <p class=\"aviso\">No ha escrito el número de valores "
-        ."como número entero positivo.</p>\n";
+        . "como número entero positivo.</p>\n";
     print "\n";
 } elseif (($numero < NUM_MINIMO) || ($numero > NUM_MAXIMO)) {
     print "  <p class=\"aviso\">El número de valores debe estar entre "
@@ -72,9 +72,9 @@ if ($numero=="") {
 
 if ($numeroOk) {
     print "  <p>Escriba todos los valores y marque las casillas correspondientes "
-        ."a los cálculos que quiere.</p>\n";
+        . "a los cálculos que quiere.</p>\n";
     print "\n";
-    print "  <form action=\"calculos-estadisticos-1-3.php\" method=\"".FORM_METHOD."\">\n";
+    print "  <form action=\"calculos-estadisticos-1-3.php\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     print "      <tbody>\n";
     for ($i=1; $i<=$numero; $i++) {

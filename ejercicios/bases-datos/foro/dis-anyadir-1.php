@@ -33,21 +33,21 @@ if (!$result) {
 } elseif ($result->fetchColumn()>=MAX_REG_DISCUSIONES) {
     cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
 } else {
     cabecera('Iniciar discusión 1', CABECERA_CON_CURSOR, 'menuDiscusiones', '');
-    print "<form action=\"dis-anyadir-2.php\" method=\"".FORM_METHOD."\">
+    print "<form action=\"dis-anyadir-2.php\" method=\"" . FORM_METHOD . "\">
   <table>
     <tbody>
       <tr>
         <td>Autor:</td>
-        <td><input type=\"text\" name=\"autor\" size=\"".TAM_AUTOR."\" "
-          ."maxlength=\"".TAM_AUTOR."\" id=\"cursor\" /></td>
+        <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
+        . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\" /></td>
       </tr>
       <tr>
         <td>Título:</td>
-        <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
-          ."maxlength=\"".TAM_TITULO."\" /></td>
+        <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
+        . "maxlength=\"" . TAM_TITULO . "\" /></td>
       </tr>
       <tr>
         <td style=\"vertical-align:top\">Descripción:</td>

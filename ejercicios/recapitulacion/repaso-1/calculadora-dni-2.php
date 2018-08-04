@@ -71,7 +71,7 @@ if ($dni == "") {
 }
 
 if ($dniOk) {
-    print "<p>El DNI completo es $dni{$letrasDNI[$dni%23]}</p>\n";
+    print "  <p>El DNI completo es $dni{$letrasDNI[$dni%23]}</p>\n";
     print "\n";
 }
 ?>

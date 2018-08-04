@@ -38,7 +38,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 
     if (($cita=="''") || ($etiqueta=='')) {
         print "<p>La cita y la etiqueta no pueden estar vacíos. "
-            ."No se ha guardado el registro.</p>\n";
+            . "No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas
             WHERE id=$cita";

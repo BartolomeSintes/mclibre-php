@@ -79,7 +79,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"radio\" "
-              ."name=\"id\" value=\"$valor[id]\" /></td>
+                . "name=\"id\" value=\"$valor[id]\" /></td>
         <td>$valor[articulo]</td>
         <td>$valor[precio] &euro;</td>\n      </tr>\n";
         }

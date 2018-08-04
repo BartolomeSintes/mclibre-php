@@ -52,7 +52,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
         } else {
-            print "<form action=\"borrar2.php\" method=\"".FORM_METHOD."\">
+            print "<form action=\"borrar2.php\" method=\"" . FORM_METHOD . "\">
       <p>Marque los registros que quiera borrar:</p>
       <table border=\"1\">
         <thead>
@@ -90,7 +90,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
                 }
                 $tmp = !$tmp;
                 print "        <td align=\"center\"><input type=\"checkbox\" "
-              ."name=\"id[$valor[id]]\" /></td>
+                    . "name=\"id[$valor[id]]\" /></td>
             <td>$valor[nombre]</td>
             <td>$valor[apellidos]</td>
             <td>$valor[telefono]</td>

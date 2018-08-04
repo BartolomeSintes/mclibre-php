@@ -60,12 +60,12 @@ if (!isset($_SESSION['compraventaUsuario'])) {
           <tr>
             <td>Artículo:</td>
             <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" "
-              ."value=\"$valor[articulo]\" id=\"cursor\" /></td>
+                    . "value=\"$valor[articulo]\" id=\"cursor\" /></td>
           </tr>
           <tr>
             <td>Precio:</td>
             <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" "
-              ."value=\"$valor[precio]\" /></td>
+                    . "value=\"$valor[precio]\" /></td>
           </tr>
         </tbody>
       </table>

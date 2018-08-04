@@ -111,7 +111,7 @@ function borraTodoMySQL($db)
         print "<p>Base de datos creada correctamente.</p>\n";
         $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-            usuario VARCHAR(".TAM_USUARIO."),
+            usuario VARCHAR(" . TAM_USUARIO . "),
             password VARCHAR(".TAM_CIFRADO."),
             PRIMARY KEY(id) )";
         if ($db->query($consultaCreaTablaUsuarios)) {
@@ -131,10 +131,10 @@ function borraTodoMySQL($db)
         $consultaCreaTablaAgenda = "CREATE TABLE $dbAgenda (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             id_usuario INTEGER UNSIGNED,
-            nombre VARCHAR(".TAM_NOMBRE."),
-            apellidos VARCHAR(".TAM_APELLIDOS."),
-            telefono VARCHAR(".TAM_TELEFONO."),
-            correo VARCHAR(".TAM_CORREO."),
+            nombre VARCHAR(" . TAM_NOMBRE . "),
+            apellidos VARCHAR(" . TAM_APELLIDOS . "),
+            telefono VARCHAR(" . TAM_TELEFONO . "),
+            correo VARCHAR(" . TAM_CORREO . "),
             PRIMARY KEY(id) )";
         if ($db->query($consultaCreaTablaAgenda)) {
             print "<p>Tabla de Agenda creada correctamente.</p>\n";
@@ -165,7 +165,7 @@ function borraTodoSqlite($db)
     }
     $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
-        usuario VARCHAR(".TAM_USUARIO."),
+        usuario VARCHAR(" . TAM_USUARIO . "),
         password VARCHAR(".TAM_CIFRADO.")
         )";
     if ($db->query($consultaCreaTablaUsuarios)) {
@@ -185,10 +185,10 @@ function borraTodoSqlite($db)
     $consultaCreaTablaAgenda = "CREATE TABLE $dbAgenda (
         id INTEGER PRIMARY KEY,
         id_usuario INTEGER,
-        nombre VARCHAR(".TAM_NOMBRE."),
-        apellidos VARCHAR(".TAM_APELLIDOS."),
-        telefono VARCHAR(".TAM_TELEFONO."),
-        correo VARCHAR(".TAM_CORREO.")
+        nombre VARCHAR(" . TAM_NOMBRE . "),
+        apellidos VARCHAR(" . TAM_APELLIDOS . "),
+        telefono VARCHAR(" . TAM_TELEFONO . "),
+        correo VARCHAR(" . TAM_CORREO . ")
         )";
     if ($db->query($consultaCreaTablaAgenda)) {
        print "<p>Tabla de Agenda creada correctamente.</p>\n";

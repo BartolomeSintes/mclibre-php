@@ -61,7 +61,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;"
-                ."telefono=$telefono&amp;correo=$correo&amp;campo";
+            . "telefono=$telefono&amp;correo=$correo&amp;campo";
         print "<p>Registros encontrados:</p>\n<table border=\"1\">
   <thead>
     <tr class=\"neg\">

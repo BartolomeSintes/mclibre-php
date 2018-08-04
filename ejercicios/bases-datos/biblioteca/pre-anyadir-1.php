@@ -35,7 +35,7 @@ if (!$result) {
 } elseif ($result->fetchColumn()>=MAX_REG_PRESTAMOS) {
     cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
 } else {
     $consultaObras = "SELECT COUNT(*) FROM $dbObras";
     $resultObras = $db->query($consultaObras);
@@ -68,7 +68,7 @@ if (!$result) {
             print "<p>Error en la consulta de Usuarios.</p>\n";
         } else {
             cabecera('Préstamos - Nuevo préstamo 1', CABECERA_CON_CURSOR, 'menuPrestamos');
-            print "<form action=\"pre-anyadir-2.php\" method=\"".FORM_METHOD."\">
+            print "<form action=\"pre-anyadir-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Seleccione obra y usuario e indique la fecha del préstamo:</p>
   <table border=\"1\">
     <thead>
@@ -83,17 +83,17 @@ if (!$result) {
         <td>\n          <select name=\"id_usuario\">\n";
         foreach ($resultUsuarios as $valor) {
             print "            <option value=\"$valor[id]\">$valor[nombre] "
-                ."$valor[apellidos] - $valor[dni]</option>\n";
+                . "$valor[apellidos] - $valor[dni]</option>\n";
         }
         print "          </select>\n        </td>\n        <td>
           <select name=\"id_obra\">\n";
         foreach ($resultObras as $valor) {
             print "            <option value=\"$valor[id]\">$valor[autor] "
-                ."- $valor[titulo]</option>\n";
+                . "- $valor[titulo]</option>\n";
         }
         print "          </select>\n        </td>\n        <td>
-          <input type=\"text\" name=\"fecha\" size=\"".TAM_FECHA."\" "
-                ."maxlength=\"".TAM_FECHA."\" value=\"".date('d-m-Y')."\" id=\"cursor\" />
+          <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
+                . "maxlength=\"" . TAM_FECHA . "\" value=\"".date('d-m-Y')."\" id=\"cursor\" />
         </td>\n      </tr>\n    </tbody>\n  </table>
   <p><input type=\"submit\" value=\"Añadir\" /></p>\n</form>\n";
         }

@@ -35,24 +35,24 @@ if (isset($_SESSION['id'])) {
     if ($aviso) {
         print "<p style=\"color: red\">$aviso</p>\n";
     }
-    print "<form action=\"registrar2.php\" method=\"".FORM_METHOD."\">
+    print "<form action=\"registrar2.php\" method=\"" . FORM_METHOD . "\">
   <p>Escriba su nombre de usuario y contraseña:</p>
   <table>
     <tbody>
       <tr>
         <td>Nombre:</td>
         <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-        ."maxlength=\"$tamUsuario\" id=\"cursor\" /> (hasta $tamUsuario caracteres)</td>
+        . "maxlength=\"$tamUsuario\" id=\"cursor\" /> (hasta $tamUsuario caracteres)</td>
       </tr>
       <tr>
         <td>Contraseña:</td>
         <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
-        ."maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>
+        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>
       </tr>
       <tr>
         <td>Repita la contraseña:</td>
         <td><input type=\"password\" name=\"password2\" size=\"$tamPassword\" "
-        ."maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>
+        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>
       </tr>
       </tbody>
   </table>

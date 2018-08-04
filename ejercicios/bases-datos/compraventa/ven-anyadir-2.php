@@ -36,7 +36,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 
     if (($articulo=="''")||($precio=="''")) {
         print "<p>Hay que rellenar los dos campos. "
-            ."No se ha guardado el registro.</p>\n";
+            . "No se ha guardado el registro.</p>\n";
     } else {
 // FALTA: que la consulta no cuente los artículos vendidos
         $consulta = "SELECT COUNT(*) FROM $dbArticulos
@@ -46,7 +46,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegArticulos) {
             print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbArticulos
                 WHERE id_vendedor='$_SESSION[compraventaUsuario]'

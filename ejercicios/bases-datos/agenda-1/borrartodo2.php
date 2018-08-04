@@ -39,10 +39,10 @@ function borraTodoMySQL($db)
         print "<p>Base de datos creada correctamente.</p>\n";
         $consulta = "CREATE TABLE $dbAgenda (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-            nombre VARCHAR(".TAM_NOMBRE."),
-            apellidos VARCHAR(".TAM_APELLIDOS."),
-            telefono VARCHAR(".TAM_TELEFONO."),
-            correo VARCHAR(".TAM_CORREO."),
+            nombre VARCHAR(" . TAM_NOMBRE . "),
+            apellidos VARCHAR(" . TAM_APELLIDOS . "),
+            telefono VARCHAR(" . TAM_TELEFONO . "),
+            correo VARCHAR(" . TAM_CORREO . "),
             PRIMARY KEY(id)
             )";
         if ($db->query($consulta)) {
@@ -67,10 +67,10 @@ function borraTodoSqlite($db)
     }
     $consulta = "CREATE TABLE $dbAgenda (
         id INTEGER PRIMARY KEY,
-        nombre VARCHAR(".TAM_NOMBRE."),
-        apellidos VARCHAR(".TAM_APELLIDOS."),
-        telefono VARCHAR(".TAM_TELEFONO."),
-        correo VARCHAR(".TAM_CORREO.")
+        nombre VARCHAR(" . TAM_NOMBRE . "),
+        apellidos VARCHAR(" . TAM_APELLIDOS . "),
+        telefono VARCHAR(" . TAM_TELEFONO . "),
+        correo VARCHAR(" . TAM_CORREO . ")
         )";
     if ($db->query($consulta)) {
        print "<p>Tabla de Agenda creada correctamente.</p>\n";

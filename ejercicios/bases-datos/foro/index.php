@@ -52,7 +52,7 @@ if (!$result) {
                 } else {
                     print "<div class=\"discu\">
   <h2><a href=\"hil-index.php?hilo=$valor[id]\"><img src=\"flecha.png\" "
-    ."alt=\"Ver intervenciones\" title=\"Ver intervenciones\" /></a>
+                        . "alt=\"Ver intervenciones\" title=\"Ver intervenciones\" /></a>
     $valor[titulo]</h2>
   <p class=\"dis_aut\">Propuesta por <strong>$valor[autor]</strong> el "
                       .fechaDma($valor['fecha'])." - ";

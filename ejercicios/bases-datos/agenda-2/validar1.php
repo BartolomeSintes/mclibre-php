@@ -49,12 +49,12 @@ if (!$usuario|| ($usuario=='menu_principal')) {
         } elseif ($result->fetchColumn()>=MAX_REG_USUARIOS) {
             cabecera('Identificación 2', CABECERA_SIN_CURSOR, 'menu_principal');
             print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             cabecera('Identificación 2', CABECERA_CON_CURSOR, 'menu_principal');
             print "  <p><strong>$usuario</strong> es un nuevo usuario. Por favor,
       repita la contraseña para registrarse como usuario.</p>
-  <form action=\"validar2.php\" method=\"".FORM_METHOD."\">
+  <form action=\"validar2.php\" method=\"" . FORM_METHOD . "\">
     <table>
       <tbody>
         <tr>
@@ -65,8 +65,7 @@ if (!$usuario|| ($usuario=='menu_principal')) {
     </table>
     <p><input type=\"submit\" value=\"Añadir\" />
       <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />
-      <input type=\"hidden\" name=\"password\" value=\"".md5($password)
-      ."\" /></p>
+      <input type=\"hidden\" name=\"password\" value=\"" . md5($password) . "\" /></p>
   </form>";
         }
     } else {

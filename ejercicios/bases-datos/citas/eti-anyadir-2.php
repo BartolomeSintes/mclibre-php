@@ -35,10 +35,10 @@ if (!isset($_SESSION['citasUsuario'])) {
     $etiqueta = strtolower($etiqueta);
     if ($etiqueta=="''") {
         print "<p>La etiqueta no puede estar vacía. "
-            ."No se ha guardado el registro.</p>\n";
+            . "No se ha guardado el registro.</p>\n";
     } elseif (substr_count($etiqueta, " ")>0) {
         print "<p>La etiqueta debe contener una sola palabra. "
-            ."No se ha guardado el registro.</p>\n";
+            . "No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";
         $result = $db->query($consulta);
@@ -46,7 +46,7 @@ if (!isset($_SESSION['citasUsuario'])) {
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegEtiquetas) {
             print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbEtiquetas
                 WHERE etiqueta=$etiqueta";

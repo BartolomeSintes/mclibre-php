@@ -49,10 +49,11 @@ if (!$usuario||($usuario=='menu_principal')) {
             print "<p>"._('Error en la consulta').".</p>";
         } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
             print "<p>"._('Se ha alcanzado el número máximo de Usuarios que se pueden guardar')
-              .".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
+                . ".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
         } else {
-            print "  <p><strong>$usuario</strong> "._('es un nuevo usuario. Por favor, repita la contraseña para registrarse como usuario').
-            ".</p>
+            print "  <p><strong>$usuario</strong> "
+                . _('es un nuevo usuario. Por favor, repita la contraseña para registrarse como usuario')
+                . ".</p>
   <form action=\"validar2.php\" method=\"get\">
     <table>
       <tbody>
@@ -64,8 +65,7 @@ if (!$usuario||($usuario=='menu_principal')) {
     </table>
     <p><input type=\"submit\" value=\""._('Añadir')."\" />
       <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />
-      <input type=\"hidden\" name=\"password\" value=\"".md5($password)
-      ."\" /></p>
+      <input type=\"hidden\" name=\"password\" value=\"" . md5($password) . "\" /></p>
   </form>";
         }
     } else {

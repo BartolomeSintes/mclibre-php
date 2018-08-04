@@ -71,7 +71,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         print "<p>Estas son los autores definidos hasta el momento, con "
-            ."un tamaño proporcional al número de citas:</p>\n";
+            . "un tamaño proporcional al número de citas:</p>\n";
         print "<p>\n";
         $tmp = TRUE;
         foreach ($result as $valor) {

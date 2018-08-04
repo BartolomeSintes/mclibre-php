@@ -36,7 +36,7 @@ $fecha        = date("Y-m-d H:i:s");
 if (($autor=="'".ANONIMO_AUTOR."'") && ($titulo=="'".ANONIMO_TITULO."'") &&
     ($descripcion=="'".ANONIMO_DESCRIPCION."'")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
-        ."No se ha guardado el registro.</p>\n";
+        . "No se ha guardado el registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
     $result = $db->query($consulta);
@@ -44,7 +44,7 @@ if (($autor=="'".ANONIMO_AUTOR."'") && ($titulo=="'".ANONIMO_TITULO."'") &&
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_DISCUSIONES) {
         print "<p>Se ha alcanzado el número máximo de discusión que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre alguna discusión antes.</p>\n";
+            . "guardar.</p>\n<p>Por favor, borre alguna discusión antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbDiscusiones
             WHERE titulo=$titulo

@@ -42,9 +42,9 @@ function borraTodoMySQL($db)
     }
     $consultaCreaTablaObras = "CREATE TABLE $dbObras (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-        autor VARCHAR(".TAM_AUTOR."),
-        titulo VARCHAR(".TAM_TITULO."),
-        editorial VARCHAR(".TAM_EDITORIAL."),
+        autor VARCHAR(" . TAM_AUTOR . "),
+        titulo VARCHAR(" . TAM_TITULO . "),
+        editorial VARCHAR(" . TAM_EDITORIAL . "),
         PRIMARY KEY(id)
         )";
     if ($db->query($consultaCreaTablaObras)) {
@@ -85,9 +85,9 @@ function borraTodoSqlite($db)
     }
     $consultaCreaTablaObras = "CREATE TABLE $dbObras (
         id INTEGER PRIMARY KEY,
-        autor VARCHAR(".TAM_AUTOR."),
-        titulo VARCHAR(".TAM_TITULO."),
-        editorial VARCHAR(".TAM_EDITORIAL.")
+        autor VARCHAR(" . TAM_AUTOR . "),
+        titulo VARCHAR(" . TAM_TITULO . "),
+        editorial VARCHAR(" . TAM_EDITORIAL . ")
         )";
     if ($db->query($consultaCreaTablaObras)) {
         print "<p>Tabla de Obras creada correctamente.</p>\n";

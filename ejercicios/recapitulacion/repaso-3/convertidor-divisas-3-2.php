@@ -92,7 +92,7 @@ if (!in_array($destino, $monedas)) {
 if ($cantidadOk && $origenOk && $destinoOk) {
     $result = round($cantidad / $factor[$origen] * $factor[$destino], 2);
     print "  <p>" . number_format($cantidad, 0, ",", ".") . " $nombreMoneda[$origen] "
-         ."son " . number_format($result, 1, ",", ".") . " $nombreMoneda[$destino].</p>\n";
+        . "son " . number_format($result, 1, ",", ".") . " $nombreMoneda[$destino].</p>\n";
     print "\n";
     print "  <p>Gracias por utilizar este convertidor.</p>\n";
     print "\n";

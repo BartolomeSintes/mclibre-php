@@ -96,8 +96,8 @@ $total1 = $dado1a + $dado1b + $dado1c;
 
 $total2 = $dado2a + $dado2b + $dado2c;
 
-// print "<p>1: Trío $trio1 - Pareja $pareja1 - Total: $total1</p>\n";
-// print "<p>2: Trío $trio2 - Pareja $pareja2 - Total: $total2</p>\n";
+// print "  <p>1: Trío $trio1 - Pareja $pareja1 - Total: $total1</p>\n";
+// print "  <p>2: Trío $trio2 - Pareja $pareja2 - Total: $total2</p>\n";
 
 if ($trio1 > $trio2) {
     print "        <td>Ha ganado el jugador 1</td>\n";

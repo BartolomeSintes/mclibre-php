@@ -101,8 +101,8 @@
             foreach ($semana as $j ) {
                 $j2 = substr($j,5,2)."/".substr($j,8,2)."/".substr($j,0,4);
                 $consulta = "SELECT COUNT(*) AS num_consultas FROM $db_citas "
-                    ."WHERE Hora = $i AND Fecha=#$j2#"
-                    ."AND Animal &lt;&gt; $_SESSION[vet_NumHistorial]";
+                    . "WHERE Hora = $i AND Fecha=#$j2#"
+                    . "AND Animal &lt;&gt; $_SESSION[vet_NumHistorial]";
                 $result = odbc_exec($db, $consulta);
                 if (!$result) {
                     exit("Error en la consulta.");
@@ -112,8 +112,8 @@
                         print "        &lt;td style=\"background-color: red\"&gt;&lt;/td&gt;\n";
                     } else {
                         $consulta2 = "SELECT COUNT(*) AS num_consultas2 FROM "
-                            ."$db_citas WHERE Hora = $i AND Fecha=#$j2# "
-                            ."AND Animal = $_SESSION[vet_NumHistorial]";
+                            . "$db_citas WHERE Hora = $i AND Fecha=#$j2# "
+                            . "AND Animal = $_SESSION[vet_NumHistorial]";
                         $result2 = odbc_exec($db, $consulta2);
                         if (!$result2) {
                             exit("Error en la consulta.");
@@ -124,12 +124,12 @@
                                     print "        &lt;td style=\"background-color: white\"&gt;Reservado&lt;/td&gt;\n";
                                 } else {
                                     print "        &lt;td style=\"background-color: green\"&gt;"
-                                        ."&lt;a href=\"anyadir2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Reservar&lt;/a&gt;&lt;/td&gt;\n";
+                                        . "&lt;a href=\"anyadir2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Reservar&lt;/a&gt;&lt;/td&gt;\n";
                                 }
                             } else {
                                 if ($valor2['num_consultas2']) {
                                     print "        &lt;td style=\"background-color: white\"&gt;"
-                                        ."&lt;a href=\"borrar2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Anular cita&lt;/a&gt;&lt;/td&gt;\n";
+                                        . "&lt;a href=\"borrar2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Anular cita&lt;/a&gt;&lt;/td&gt;\n";
                                 } else {
                                     print "        &lt;td style=\"background-color: red\"&gt;&lt;/td&gt;\n";
                                 }

@@ -57,7 +57,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;"
-                ."dni=$dni&amp;campo";
+            . "dni=$dni&amp;campo";
         print "<p>Registros encontrados:</p>\n<table border=\"1\">
   <thead>
     <tr class=\"neg\">

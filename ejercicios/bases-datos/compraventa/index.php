@@ -32,7 +32,7 @@ if (!$result) {
 } elseif ($result->fetchColumn()==0) {
     cabecera('Primera conexión', 'menu_principal');
     print "<p>Aparentemente, la base de datos no existe. "
-        ."Se creará a continuación.</p>";
+        . "Se creará a continuación.</p>";
     if ($dbMotor==MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor==SQLITE) {

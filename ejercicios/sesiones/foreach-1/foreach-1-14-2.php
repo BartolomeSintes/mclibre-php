@@ -89,7 +89,7 @@ if ($cajasRecibidas != $_SESSION["numero"]) {
             }
     }
     if (!$cOk) {
-        print "<p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
+        print "  <p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
         print "\n";
     }
 }
@@ -113,7 +113,7 @@ if ($botonesRecibidos > $_SESSION["numero"]) {
         }
     }
     if (!$bOk) {
-        print "<p class=\"aviso\">La matriz de hombre/mujer recibida no es correcta.</p>\n";
+        print "  <p class=\"aviso\">La matriz de hombre/mujer recibida no es correcta.</p>\n";
         print "\n";
     }
 }

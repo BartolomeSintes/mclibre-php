@@ -33,7 +33,7 @@ if (!$result) {
 } elseif ($result->fetchColumn()==0) {
     cabecera('Primera conexión', CABECERA_SIN_CURSOR, 'menu_principal');
     print "<p>Aparentemente, la base de datos no existe. "
-        ."Se creará a continuación.</p>";
+        . "Se creará a continuación.</p>";
     if ($dbMotor==MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor==SQLITE) {
@@ -51,19 +51,19 @@ if (!$result) {
         if ($aviso) {
             print "<p style=\"color: red\">$aviso</p>\n";
         }
-        print "<form action=\"validar1.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"validar1.php\" method=\"" . FORM_METHOD . "\">
   <p>Escriba su nombre de usuario y contraseña:</p>
   <table>
     <tbody>
       <tr>
         <td>Nombre:</td>
-        <td><input type=\"text\" name=\"usuario\" size=\"".TAM_USUARIO."\" "
-        ."maxlength=\"".TAM_USUARIO."\" id=\"cursor\" /></td>
+        <td><input type=\"text\" name=\"usuario\" size=\"" . TAM_USUARIO . "\" "
+            . "maxlength=\"" . TAM_USUARIO . "\" id=\"cursor\" /></td>
       </tr>
       <tr>
         <td>Contraseña:</td>
-        <td><input type=\"password\" name=\"password\" size=\"".TAM_PASSWORD."\" "
-        ."maxlength=\"".TAM_PASSWORD."\" /></td>
+        <td><input type=\"password\" name=\"password\" size=\"" . TAM_PASSWORD . "\" "
+            . "maxlength=\"" . TAM_PASSWORD . "\" /></td>
       </tr>
     </tbody>
   </table>

@@ -61,7 +61,7 @@ if ($ancho == "") {
     print "\n";
 } elseif (!ctype_digit($ancho)) {
     print "  <p class=\"aviso\">No ha escrito la anchura "
-        ."como número entero positivo.</p>\n";
+        . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($ancho < $valorMinimo || $ancho > $valorMaximo) {
     print "  <p class=\"aviso\">La anchura debe estar entre "

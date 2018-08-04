@@ -56,7 +56,7 @@ if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
         cabecera('Préstamos - Devolución 1', CABECERA_CON_CURSOR, 'menuPrestamos');
-        print "<form action=\"pre-devolucion-2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"pre-devolucion-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Seleccione el préstamo pendiente e indique la fecha de devolución:</p>
   <table border=\"1\">
     <thead>
@@ -84,12 +84,12 @@ if (!$result) {
         <td>\n          <select name=\"id\">\n";
         foreach ($result as $valor) {
             print "            <option value=\"$valor[id]\">$valor[apellidos], "
-            ."$valor[nombre] - $valor[titulo] - ".fechaDma($valor['prestado'])
-            ."</option>\n";
+                . "$valor[nombre] - $valor[titulo] - " . fechaDma($valor['prestado'])
+                . "</option>\n";
         }
         print "          </select>\n        </td>\n        <td>
-          <input type=\"text\" name=\"fecha\" size=\"".TAM_FECHA."\" "
-          ."maxlength=\"".TAM_FECHA."\" value=\"".date('d-m-Y')."\" id=\"cursor\" />
+          <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
+            . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date('d-m-Y') . "\" id=\"cursor\" />
         </td>\n      </tr>
     </tbody>\n  </table>\n
   <p><input type=\"submit\" value=\"Guardar devolución\" /></p>\n</form>\n";

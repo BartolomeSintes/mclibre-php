@@ -157,7 +157,7 @@ function quitaComillasExteriores($var)
 function fechaDma($amd)
 {
     return substr($amd, 8, 2)."-".substr($amd, 5, 2)."-".substr($amd, 0, 4)
-        ." a las ".substr($amd, 11, 8);
+        . " a las ".substr($amd, 11, 8);
 }
 
 function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal', $id='')
@@ -169,7 +169,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
     print "  <title>Foro. $texto.\n";
     print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "  <link href=\"mclibre-php-soluciones-proyectos-foro.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
     print "</head>\n";
     print "\n";
 

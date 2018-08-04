@@ -56,7 +56,7 @@ $ancho = 100;
 
 $color = rand(0, $numeroColores - 1);
 
-print "<p><img src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" "
+print "  <p><img src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$color][0]}\" "
      . "alt=\"Cuadro al azar\" /></p>\n";
 ?>
 

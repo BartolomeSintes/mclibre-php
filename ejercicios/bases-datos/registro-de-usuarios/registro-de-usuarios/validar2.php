@@ -62,7 +62,7 @@ if (isset($_SESSION["multiagendaUsuario"])) {
             } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
                 cabecera("Identificación 3", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
                 print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
-                    ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                    . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password')";
@@ -83,7 +83,7 @@ if (isset($_SESSION["multiagendaUsuario"])) {
                         $_SESSION["multiagendaUsuario"]   = $valor["usuario"];
                         cabecera("Identificación 3", CABECERA_SIN_CURSOR, $usuario);
                         print "  <p>Bienvenido/a, <strong>$usuario</strong>. Ya es usted "
-                            ."un usuario registrado.</p>";
+                            . "un usuario registrado.</p>";
                     }
                 }
             }

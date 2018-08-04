@@ -50,24 +50,24 @@ if ($id=="''") {
         } else {
             $valor = $result->fetch();
             cabecera('Usuarios - Modificar 2', CABECERA_CON_CURSOR, 'menuUsuarios');
-            print "<form action=\"usu-modificar-3.php\" method=\"".FORM_METHOD."\">
+            print "<form action=\"usu-modificar-3.php\" method=\"" . FORM_METHOD . "\">
   <p>Modifique los campos que desee:</p>
   <table>
     <tbody>
       <tr>
         <td>Nombre:</td>
-        <td><input type=\"text\" name=\"nombre\" size=\"".TAM_NOMBRE."\" "
-          ."maxlength=\"".TAM_NOMBRE."\" value=\"$valor[nombre]\" id=\"cursor\" /></td>
+        <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+                . "maxlength=\"" . TAM_NOMBRE . "\" value=\"$valor[nombre]\" id=\"cursor\" /></td>
       </tr>
       <tr>
         <td>Apellidos:</td>
-        <td><input type=\"text\" name=\"apellidos\" size=\"".TAM_APELLIDOS."\" "
-          ."maxlength=\"".TAM_APELLIDOS."\" value=\"$valor[apellidos]\" /></td>
+        <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+                . "maxlength=\"" . TAM_APELLIDOS . "\" value=\"$valor[apellidos]\" /></td>
       </tr>
       <tr>
         <td>DNI:</td>
-        <td><input type=\"text\" name=\"dni\" size=\"".TAM_DNI."\" "
-          ."maxlength=\"".TAM_DNI."\" value=\"$valor[dni]\" /></td>
+        <td><input type=\"text\" name=\"dni\" size=\"" . TAM_DNI . "\" "
+                . "maxlength=\"" . TAM_DNI . "\" value=\"$valor[dni]\" /></td>
       </tr>
     </tbody>
   </table>

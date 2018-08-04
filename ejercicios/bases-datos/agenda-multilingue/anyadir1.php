@@ -36,7 +36,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
         print "<p>"._("Error en la consulta").".</p>\n";
     } elseif ($result->fetchColumn()>=$maxRegAgenda) {
         print "<p>"._("Se ha alcanzado el número máximo de registros que se pueden guardar")
-            .".</p>\n<p>"._("Por favor, borre algún registro antes").".</p>\n";
+            . ".</p>\n<p>"._("Por favor, borre algún registro antes").".</p>\n";
     } else {
         print "<form action=\"anyadir2.php\" method=\"get\">
       <p>"._('Escriba los datos del nuevo registro').":</p>

@@ -46,7 +46,7 @@ print "  <p><svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "    width=\"920\" height=\"320\" viewBox=\"-10 -10 920 320\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
 print "    <circle cx=\"$c1\" cy=\"150\" r=\"$c1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
 print "    <circle cx=\"" . (2 * $c1 + $c2) . "\" cy=\"150\" r=\"$c2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
-print "    <circle cx=\"" . (2 * $c1 + 2 * $c2 + $c3) ."\" cy=\"150\" r=\"$c3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
+print "    <circle cx=\"" . (2 * $c1 + 2 * $c2 + $c3) . "\" cy=\"150\" r=\"$c3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
 print "  </svg></p>\n";
 ?>
 

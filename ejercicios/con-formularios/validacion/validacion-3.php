@@ -162,7 +162,7 @@ if ($valoresTodoOk) {
     cabecera("Resultado inválido");
     print"  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
     print "\n";
-    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"".FORM_METHOD."\">\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     print "      <tbody>\n";
     for ($i=1; $i<=$numeroValores; $i++) {
@@ -183,7 +183,7 @@ if ($valoresTodoOk) {
     cabecera("Formulario");
     print"  <p>Escriba $numeroValores números:</p>\n";
     print "\n";
-    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"".FORM_METHOD."\">\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     print "      <tbody>\n";
     for ($i=1; $i<=$numeroValores; $i++) {

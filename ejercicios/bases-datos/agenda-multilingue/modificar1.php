@@ -89,7 +89,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
                 }
                 $tmp = !$tmp;
                 print "        <td align=\"center\"><input type=\"radio\" "
-                  ."name=\"id\" value=\"$valor[id]\" /></td>
+                    . "name=\"id\" value=\"$valor[id]\" /></td>
             <td>$valor[nombre]</td>
             <td>$valor[apellidos]</td>
             <td>$valor[telefono]</td>

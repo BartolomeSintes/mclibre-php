@@ -80,7 +80,7 @@ if (!isset($_SESSION['citasUsuario'])) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"checkbox\" "
-                ."name=\"id[$valor[id_cita]]\" /></td>
+                . "name=\"id[$valor[id_cita]]\" /></td>
         <td>$valor[nombre] $valor[apellidos]</td>
         <td>$valor[cita]</td>\n      </tr>\n";
         }

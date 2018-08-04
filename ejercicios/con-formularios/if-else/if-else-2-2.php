@@ -58,7 +58,7 @@ if ($numero1 == "") {
     print "\n";
 } elseif (!ctype_digit($numero1)) {
     print "  <p class=\"aviso\">No ha escrito el primer número como número "
-        ."entero positivo (sin parte decimal).</p>\n";
+        . "entero positivo (sin parte decimal).</p>\n";
     print "\n";
 } elseif ($numero1 == 0) {
     print "  <p class=\"aviso\">El primer número es cero.</p>\n";
@@ -78,7 +78,7 @@ if ($numero2 == "") {
     print "\n";
 } elseif (!ctype_digit($numero2)) {
     print "  <p class=\"aviso\">No ha escrito el segundo número como número "
-        ."entero positivo (sin parte decimal).</p>\n";
+        . "entero positivo (sin parte decimal).</p>\n";
     print "\n";
 } elseif ($numero2 == 0) {
     print "  <p class=\"aviso\">El segundo número es cero.</p>\n";

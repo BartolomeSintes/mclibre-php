@@ -50,24 +50,24 @@ if ($id=="''") {
         } else {
             $valor = $result->fetch();
             cabecera('Obras - Modificar 2', CABECERA_CON_CURSOR, 'menuObras');
-            print "<form action=\"obr-modificar-3.php\" method=\"".FORM_METHOD."\">
+            print "<form action=\"obr-modificar-3.php\" method=\"" . FORM_METHOD . "\">
   <p>Modifique los campos que desee:</p>
   <table>
     <tbody>
       <tr>
         <td>Autor:</td>
-        <td><input type=\"text\" name=\"autor\" size=\"".TAM_AUTOR."\" "
-          ."maxlength=\"".TAM_AUTOR."\" value=\"$valor[autor]\" id=\"cursor\" /></td>
+        <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
+                . "maxlength=\"" . TAM_AUTOR . "\" value=\"$valor[autor]\" id=\"cursor\" /></td>
       </tr>
       <tr>
         <td>Título:</td>
-        <td><input type=\"text\" name=\"titulo\" size=\"".TAM_TITULO."\" "
-          ."maxlength=\"".TAM_TITULO."\" value=\"$valor[titulo]\" /></td>
+        <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
+                . "maxlength=\"" . TAM_TITULO . "\" value=\"$valor[titulo]\" /></td>
       </tr>
       <tr>
         <td>Editorial:</td>
-        <td><input type=\"text\" name=\"editorial\" size=\"".TAM_EDITORIAL."\" "
-          ."maxlength=\"".TAM_EDITORIAL."\" value=\"$valor[editorial]\" /></td>
+        <td><input type=\"text\" name=\"editorial\" size=\"" . TAM_EDITORIAL . "\" "
+                . "maxlength=\"" . TAM_EDITORIAL . "\" value=\"$valor[editorial]\" /></td>
       </tr>
     </tbody>
   </table>

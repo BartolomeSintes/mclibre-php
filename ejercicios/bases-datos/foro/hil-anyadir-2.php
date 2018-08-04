@@ -52,7 +52,7 @@ if (($autor=="'".ANONIMO_AUTOR."'") && ($intervencion=="'".ANONIMO_INTERVENCION.
             print "<p>Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn()>=MAX_REG_INTERVENCIONES) {
             print "<p>Se ha alcanzado el número máximo de intervenciones que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre alguna intervención antes.</p>\n";
+                . "guardar.</p>\n<p>Por favor, borre alguna intervención antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbIntervenciones
                 WHERE id_discusion=$hilo

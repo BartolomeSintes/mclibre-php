@@ -81,7 +81,7 @@ if ($segmentos == "") {
     print "\n";
 } elseif (!ctype_digit($segmentos)) {
     print "  <p class=\"aviso\">No ha escrito el número de segmentos "
-        ."como número entero positivo.</p>\n";
+        . "como número entero positivo.</p>\n";
     print "\n";
 } elseif ($segmentos < $segmentosMinimo || $segmentos > $segmentosMaximo) {
     print "  <p class=\"aviso\">El número de segmentos debe estar entre "

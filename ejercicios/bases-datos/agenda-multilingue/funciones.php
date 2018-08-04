@@ -130,8 +130,8 @@ function borraTodoMySQL($db)
         }
         if ($administradorPassword!='') {
             $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
-                '$administradorNombre', '".md5($administradorPassword)
-                ."', '$tamIdioma')";
+                '$administradorNombre', '" . md5($administradorPassword)
+                . "', '$tamIdioma')";
             if ($db->query($consulta)) {
                 print "<p>"._('Registro de Usuario Administrador creado correctamente').".</p>\n";
             } else {
@@ -187,8 +187,8 @@ function borraTodoSqlite($db)
     }
     if ($administradorPassword!='') {
         $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
-            '$administradorNombre', '".md5($administradorPassword)
-            ."','$tamIdioma')";
+            '$administradorNombre', '" . md5($administradorPassword)
+            . "','$tamIdioma')";
         if ($db->query($consulta)) {
             print "<p>"._('Registro de Usuario Administrador creado correctamente').".</p>\n";
         } else {

@@ -84,7 +84,7 @@ if (isset($_REQUEST['enviar']) && $nombreOk && $telefonoOk && $correoOk) {
         print"  <p>Escriba los datos siguientes:</p>\n";
         print "\n";
     }
-    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"".FORM_METHOD."\">\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     print "      <tbody>\n";
     print "        <tr>\n";

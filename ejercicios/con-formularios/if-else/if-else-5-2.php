@@ -56,7 +56,7 @@ if ($anyo == "") {
     print "\n";
 } elseif (!ctype_digit($anyo)) {
     print "  <p class=\"aviso\">No ha escrito el año como número "
-        ."entero positivo (sin parte decimal).</p>\n";
+        . "entero positivo (sin parte decimal).</p>\n";
     print "\n";
 } elseif ($anyo >= 10000) {
     print "  <p class=\"aviso\">El año no es inferior a 10.000.</p>\n";
@@ -70,10 +70,10 @@ if ($anyoOk) {
         print "  <p>El año $anyo es bisiesto porque es múltiplo de 400.</p>\n";
     } elseif ($anyo % 100 == 0) {
         print "  <p>El año $anyo no es bisiesto porque es múltiplo de 100, "
-            ."pero no es múltiplo de 400.</p>\n";
+            . "pero no es múltiplo de 400.</p>\n";
     } elseif ($anyo % 4 == 0) {
         print "  <p>El año $anyo es bisiesto porque es múltiplo de 4, "
-            ."pero no es múltiplo de 100.</p>\n";
+            . "pero no es múltiplo de 100.</p>\n";
     } else {
         print "  <p>El año $anyo no es bisiesto porque no es múltiplo de 4.</p>\n";
     }

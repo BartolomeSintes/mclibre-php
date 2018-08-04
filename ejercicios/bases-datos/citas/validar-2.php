@@ -61,7 +61,7 @@ if (isset($_SESSION['citasUsuario'])) {
                 print "<p>Error en la consulta.</p>";
             } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
                 print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
-                    ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                    . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password')";
@@ -82,7 +82,7 @@ if (isset($_SESSION['citasUsuario'])) {
                         $_SESSION['citasUsuario']   = $valor['usuario'];
                         cabecera('Identificación 3', $usuario);
                         print "  <p>Bienvenido/a, <strong>$usuario</strong>. Ya es usted "
-                            ."un usuario registrado y puede comprar y vender artículos.</p>";
+                            . "un usuario registrado y puede comprar y vender artículos.</p>";
                     }
                 }
             }

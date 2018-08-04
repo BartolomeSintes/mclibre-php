@@ -65,6 +65,6 @@ print "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \n"
 print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "  width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
 print "<path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" "
-    . "d=\"M 2,2 l" . ($ancho - 4) .",0 l0," . ($ancho - 4) . "l-" . ($ancho - 4) . ",0z\" />\n";
+    . "d=\"M 2,2 l" . ($ancho - 4) . ",0 l0," . ($ancho - 4) . "l-" . ($ancho - 4) . ",0z\" />\n";
 print "</svg>\n";
 ?>

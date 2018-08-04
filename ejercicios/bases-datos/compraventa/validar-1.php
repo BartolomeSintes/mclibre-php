@@ -48,7 +48,7 @@ if (!$usuario||($usuario=='menu_principal')) {
             print "<p>Error en la consulta.</p>";
         } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
             print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
-                ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
         } else {
             print "  <p><strong>$usuario</strong> es un nuevo usuario. Por favor,
       repita la contraseña para registrarse como usuario.</p>
@@ -63,8 +63,8 @@ if (!$usuario||($usuario=='menu_principal')) {
     </table>
     <p><input type=\"submit\" value=\"Añadir\" />
       <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />
-      <input type=\"hidden\" name=\"password\" value=\"".md5($password)
-      ."\" /></p>
+      <input type=\"hidden\" name=\"password\" value=\"" . md5($password)
+      . "\" /></p>
   </form>";
         }
     } else {
@@ -77,7 +77,7 @@ if (!$usuario||($usuario=='menu_principal')) {
         } else {
             $valor = $result->fetch();
 //            print $valor['password']." - ".md5($password);
-            if ($valor['password']==md5($password)) {
+            if ($valor['password'] == md5($password)) {
                 session_start();
                 $_SESSION['compraventaIdUsuario'] = $valor['id'];
                 $_SESSION['compraventaUsuario']   = $valor['usuario'];

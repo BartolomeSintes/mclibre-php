@@ -57,29 +57,29 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             } else {
                 cabecera('Modificar 2', CABECERA_CON_CURSOR, $_SESSION['multiagendaUsuario']);
                 $valor = $result->fetch();
-                print "<form action=\"modificar3.php\" method=\"".FORM_METHOD."\">
+                print "<form action=\"modificar3.php\" method=\"" . FORM_METHOD . "\">
       <p>Modifique los campos que desee:</p>
       <table>
         <tbody>
           <tr>
             <td>Nombre:</td>
-            <td><input type=\"text\" name=\"nombre\" size=\"".TAM_NOMBRE."\" "
-              ."maxlength=\"".TAM_NOMBRE."\" value=\"$valor[nombre]\" id=\"cursor\" /></td>
+            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+                    . "maxlength=\"" . TAM_NOMBRE . "\" value=\"$valor[nombre]\" id=\"cursor\" /></td>
           </tr>
           <tr>
             <td>Apellidos:</td>
-            <td><input type=\"text\" name=\"apellidos\" size=\"".TAM_APELLIDOS."\" "
-              ."maxlength=\"".TAM_APELLIDOS."\" value=\"$valor[apellidos]\" /></td>
+            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+                    . "maxlength=\"" . TAM_APELLIDOS . "\" value=\"$valor[apellidos]\" /></td>
           </tr>
           <tr>
             <td>Teléfono:</td>
-            <td><input type=\"text\" name=\"telefono\" size=\"".TAM_TELEFONO."\" "
-              ."maxlength=\"".TAM_TELEFONO."\" value=\"$valor[telefono]\" /></td>
+            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
+                    . "maxlength=\"" . TAM_TELEFONO . "\" value=\"$valor[telefono]\" /></td>
           </tr>
           <tr>
             <td>Correo:</td>
-            <td><input type=\"text\" name=\"correo\" size=\"".TAM_CORREO."\" "
-              ."maxlength=\"".TAM_CORREO."\" value=\"$valor[correo]\" /></td>
+            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
+                    . "maxlength=\"" . TAM_CORREO . "\" value=\"$valor[correo]\" /></td>
           </tr>
         </tbody>
       </table>

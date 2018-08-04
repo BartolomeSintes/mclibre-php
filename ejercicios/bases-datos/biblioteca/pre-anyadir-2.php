@@ -49,7 +49,7 @@ if (!$fechaOk) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_PRESTAMOS) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE id=$idUsuario";
@@ -75,7 +75,7 @@ if (!$fechaOk) {
         // MySQL guarda 0000-00-00, pero SQLite lo deja en blanco
             $consulta = "INSERT INTO $dbPrestamos
                 VALUES (NULL, $idUsuario, $idObra,'"
-                .fechaAmd($fecha)."','0000-00-00')";
+                . fechaAmd($fecha) . "','0000-00-00')";
             if ($db->query($consulta)) {
                 print "<p>Registro creado correctamente.</p>\n";
             } else {

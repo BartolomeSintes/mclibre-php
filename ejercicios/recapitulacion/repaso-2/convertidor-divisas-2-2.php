@@ -67,7 +67,7 @@ if ($cantidad == "") {
         . " como número entero positivo.</p>\n";
     print "\n";
 } elseif ($cantidad > $maximo) {
-    print "<p class=\"aviso\">La cantidad de dinero no es inferior o igual a "
+    print "  <p class=\"aviso\">La cantidad de dinero no es inferior o igual a "
          . number_format($maximo, 0, ",", ".") . ".</p>\n";
     print "\n";
 } else {

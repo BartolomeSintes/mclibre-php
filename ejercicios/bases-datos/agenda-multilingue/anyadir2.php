@@ -46,7 +46,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             print "<p>"._('Error en la consulta').".</p>\n";
         } elseif ($result->fetchColumn()>=$maxRegAgenda) {
             print "<p>"._('Se ha alcanzado el número máximo de registros que se pueden guardar')
-              .".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
+                . ".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbAgenda
                 WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'

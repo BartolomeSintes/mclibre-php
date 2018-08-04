@@ -58,22 +58,22 @@ if (!isset($_SESSION['compraventaUsuario'])) {
           <tr>
             <td>Nombre:</td>
             <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" "
-              ."value=\"$valor[nombre]\" id=\"cursor\" /></td>
+                    . "value=\"$valor[nombre]\" id=\"cursor\" /></td>
           </tr>
           <tr>
             <td>Apellidos:</td>
             <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" "
-              ."value=\"$valor[apellidos]\" /></td>
+                    . "value=\"$valor[apellidos]\" /></td>
           </tr>
           <tr>
             <td>Teléfono:</td>
             <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" "
-              ."value=\"$valor[telefono]\" /></td>
+                    . "value=\"$valor[telefono]\" /></td>
           </tr>
           <tr>
             <td>Correo:</td>
             <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" "
-              ."value=\"$valor[correo]\" /></td>
+                    . "value=\"$valor[correo]\" /></td>
           </tr>
         </tbody>
       </table>

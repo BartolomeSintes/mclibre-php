@@ -44,7 +44,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"usu-borrar-2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"usu-borrar-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Marque los registros que quiera borrar:</p>
   <table border=\"1\">
     <thead>
@@ -77,7 +77,7 @@ if (!$result) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"checkbox\" "
-          ."name=\"id[$valor[id]]\" /></td>
+                . "name=\"id[$valor[id]]\" /></td>
         <td>$valor[nombre]</td>
         <td>$valor[apellidos]</td>
         <td>$valor[dni]</td>\n      </tr>\n";

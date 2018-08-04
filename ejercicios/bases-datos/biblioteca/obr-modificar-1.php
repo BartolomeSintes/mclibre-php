@@ -43,7 +43,7 @@ if (!$result) {
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
     } else {
-        print "<form action=\"obr-modificar-2.php\" method=\"".FORM_METHOD."\">
+        print "<form action=\"obr-modificar-2.php\" method=\"" . FORM_METHOD . "\">
   <p>Indique el registro que quiera modificar:</p>
   <table border=\"1\">
     <thead>
@@ -76,7 +76,7 @@ if (!$result) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"radio\" "
-              ."name=\"id\" value=\"$valor[id]\" /></td>
+                . "name=\"id\" value=\"$valor[id]\" /></td>
         <td>$valor[autor]</td>
         <td>$valor[titulo]</td>
         <td>$valor[editorial]</td>\n      </tr>\n";

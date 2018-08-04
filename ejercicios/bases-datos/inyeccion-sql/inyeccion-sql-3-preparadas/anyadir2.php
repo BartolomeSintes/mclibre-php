@@ -31,7 +31,7 @@ $contraseña = recogeParaConsulta($db, 'contraseña');
 
 if (($usuario=="''") || ($contraseña=="''")) {
     print "<p>Hay que rellenar los dos campos. "
-        ."No se ha guardado el registro.</p>\n";
+        . "No se ha guardado el registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbTabla";
     $result = $db->query($consulta);
@@ -39,7 +39,7 @@ if (($usuario=="''") || ($contraseña=="''")) {
         print "<p>Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn()>=MAX_REG_TABLA) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE user=$usuario";

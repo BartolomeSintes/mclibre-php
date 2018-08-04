@@ -83,7 +83,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             }
             $tmp = !$tmp;
             print "        <td align=\"center\"><input type=\"checkbox\" "
-              ."name=\"id[$valor[id]]\" /></td>
+              . "name=\"id[$valor[id]]\" /></td>
         <td>$valor[articulo]</td>
         <td>$valor[precio] &euro;</td>\n      </tr>\n";
         }

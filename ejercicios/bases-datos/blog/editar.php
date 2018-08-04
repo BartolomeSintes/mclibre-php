@@ -38,7 +38,7 @@ if (!$result) {
     cabecera('Editar', CABECERA_SIN_CURSOR, $fecha);
     calendario($fecha, 'editar');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        ."guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbEntradas
         WHERE fecha='$fecha'";
@@ -53,7 +53,7 @@ if (!$result) {
         calendario($fecha, 'editar');
         print "<div class=\"entrada\">
   <h2>$fecha</h2>
-  <form action=\"anyadir.php\" method=\"".FORM_METHOD."\" >
+  <form action=\"anyadir.php\" method=\"" . FORM_METHOD . "\" >
     <p><textarea name=\"entrada\" cols=\"70\" rows=\"12\">";
         print $valor['entrada'];
         print"</textarea></p>

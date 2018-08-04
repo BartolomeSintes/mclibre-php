@@ -25,7 +25,7 @@
 include('funciones.php');
 cabecera('Obras - Borrar todo 1', CABECERA_SIN_CURSOR, 'menuObras');
 
-print "<form action=\"obr-borrar-todo-2.php\" method=\"".FORM_METHOD."\">
+print "<form action=\"obr-borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">
   <p>¿Está seguro?</p>
   <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
     <input type=\"submit\" value=\"No\" name=\"no\" /></p>

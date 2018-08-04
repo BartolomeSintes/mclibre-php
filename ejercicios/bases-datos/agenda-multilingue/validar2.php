@@ -65,7 +65,7 @@ if (isset($_SESSION['multiagendaUsuario'])) {
                 print "<p>"._('Error en la consulta').".</p>";
             } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
                 print "<p>"._('Se ha alcanzado el número máximo de Usuarios que se pueden guardar')
-                  .".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
+                    . ".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password', '$tmpIdioma')";

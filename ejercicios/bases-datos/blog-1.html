@@ -249,18 +249,18 @@ function calendario ($fecha, $enlaces)
                 if ($num &gt; 0 &amp;&amp; $num &lt;= $duraMeses[(int)($mes)]) {
                     if ($enlaces=='editar') {
                         print "      &lt;td class=\"enlace\"&gt;&lt;a href=\"editar.php"
-                            ."?fecha=$anyo-$mes-".sprintf("%02d", $num)
-                            ."\"&gt;$num&lt;/a&gt;&lt;/td&gt;\n";
+                            . "?fecha=$anyo-$mes-".sprintf("%02d", $num)
+                            . "\"&gt;$num&lt;/a&gt;&lt;/td&gt;\n";
                     } elseif ($enlaces=='leer') {
                         $consulta = "SELECT COUNT(*) FROM $dbEntradas WHERE "
-                            ."fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
+                            . "fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
                         $result = $db-&gt;query($consulta);
                         if (!$result) {
                             print "      &lt;td&gt;$num&lt;/td&gt;\n";
                         } elseif ($result-&gt;fetchColumn()) {
                             print "      &lt;td class=\"enlace\"&gt;&lt;a "
-                              ."href=\"leer.php?fecha=$anyo-$mes-"
-                              .sprintf("%02d", $num)."\"&gt;$num&lt;/a&gt;&lt;/td&gt;\n";
+                                . "href=\"leer.php?fecha=$anyo-$mes-"
+                              . sprintf("%02d", $num) . "\"&gt;$num&lt;/a&gt;&lt;/td&gt;\n";
                         } else {
                             print "      &lt;td&gt;$num&lt;/td&gt;\n";
                         }
