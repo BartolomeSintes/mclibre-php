@@ -35,13 +35,13 @@ define('TAM_CORREO',     50);  // Tamaño del campo Correo
 define('MAX_REG_AGENDA', 20);  // Número máximo de registros en la tabla Agenda
 
 $dbMotor = SQLITE;                    // Base de datos empleada
-if ($dbMotor==MYSQL) {
+if ($dbMotor == MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');  // Nombre de usuario de MySQL
     define('MYSQL_PASSWORD', '');     // Contraseña de usuario de MySQL
     $dbDb     = 'mclibre_agenda';     // Nombre de la base de datos
     $dbAgenda = $dbDb.'.agenda';      // Nombre de la tabla
-} elseif ($dbMotor==SQLITE) {
+} elseif ($dbMotor == SQLITE) {
     $dbDb     = '/home/barto/mclibre/tmp/mclibre/mclibre_agenda.sqlite';  // Nombre de la base de datos
     $dbAgenda = 'agenda';             // Nombre de la tabla
 }
@@ -58,17 +58,19 @@ function conectaDb()
     global $dbMotor, $dbDb;
 
     try {
-        if ($dbMotor==MYSQL) {
+        if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
-        } elseif ($dbMotor==SQLITE) {
+        } elseif ($dbMotor == SQLITE) {
             $db = new PDO('sqlite:'.$dbDb);
         }
         return($db);
     } catch (PDOException $e) {
         cabecera('Error grave', CABECERA_SIN_CURSOR);
         print "<p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
         print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "\n";
         pie();
         exit();
     }
@@ -136,10 +138,10 @@ function recogeMatrizParaConsulta($db, $var)
 function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
-        if (isset($var[0]) && ($var[0]=="'")) {
+        if (isset($var[0]) && ($var[0] == "'")) {
             $var = substr($var, 1, strlen($var)-1);
         }
-        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
+        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1] == "'")) {
             $var = substr($var, 0, strlen($var)-1);
         }
     }
@@ -164,24 +166,25 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR)
     } else {
         print "<body>\n";
     }
-    print "<h1>Agenda - $texto</h1>
-<div id=\"menu\">
-<ul>
-  <li><a href=\"anyadir1.php\">Añadir</a></li>
-  <li><a href=\"listar.php\">Listar</a></li>
-  <li><a href=\"modificar1.php\">Modificar</a></li>
-  <li><a href=\"buscar1.php\">Buscar</a></li>
-  <li><a href=\"borrar1.php\">Borrar</a></li>
-  <li><a href=\"borrartodo1.php\">Borrar todo</a></li>
-</ul>
-</div>
-
-<div id=\"contenido\">\n";
+    print "  <h1>Agenda - $texto</h1>\n";
+    print "\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    print "      <li><a href=\"insertar-1.php\">Añadir</a></li>\n";
+    print "      <li><a href=\"listar.php\">Listar</a></li>\n";
+    print "      <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
+    print "      <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
+    print "      <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+    print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
 {
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";

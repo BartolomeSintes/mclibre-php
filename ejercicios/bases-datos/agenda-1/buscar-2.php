@@ -1,6 +1,6 @@
 <?php
 /**
- * Agenda - buscar2.php
+ * Agenda - buscar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -46,9 +46,11 @@ $consulta = "SELECT COUNT(*) FROM $dbAgenda
     AND correo LIKE '%$correo%'";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
-    print "<p>No se han encontrado registros.</p>\n";
+    print "  <p>Error en la consulta.</p>\n";
+    print "  \n";
+} elseif ($result->fetchColumn() == 0) {
+    print "  <p>No se han encontrado registros.</p>\n";
+    print "  \n";
 } else {
     $consulta = "SELECT * FROM $dbAgenda
         WHERE nombre LIKE '%$nombre%'
@@ -58,49 +60,72 @@ if (!$result) {
         ORDER BY $campo $orden";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "  <p>Error en la consulta.</p>\n";
+        print "  \n";
     } else {
         $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;"
             . "telefono=$telefono&amp;correo=$correo&amp;campo";
-        print "<p>Registros encontrados:</p>\n<table border=\"1\">
-  <thead>
-    <tr class=\"neg\">
-      <th><a href=\"buscar2.php?$datos=nombre&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Nombre
-        <a href=\"buscar2.php?$datos=nombre&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      <th><a href=\"buscar2.php?$datos=apellidos&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Apellidos
-        <a href=\"buscar2.php?$datos=apellidos&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      <th><a href=\"buscar2.php?$datos=telefono&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-        Teléfono
-        <a href=\"buscar2.php?$datos=telefono&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
-      <th><a href=\"buscar2.php?$datos=correo&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Correo
-        <a href=\"buscar2.php?$datos=correo&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-    </tr>
-  </thead>
-  <tbody>\n";
+            print "  <p>Registros encontrados:</p>\n";
+            print "\n";
+            print "  <table border=\"1\">\n";
+            print "    <thead>\n";
+            print "      <tr class=\"neg\">\n";
+            print "        <th>\n";
+            print "          <a href=\"buscar-2.php?$datos=nombre&amp;orden=ASC\">\n";
+            print "            <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" />\n";
+            print "          </a>\n";
+            print "          Nombre\n";
+            print "          <a href=\"buscar-2.php?$datos=nombre&amp;orden=DESC\">\n";
+            print "            <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" />\n";
+            print "          </a>\n";
+            print "        </th>\n";
+            print "        <th>\n";
+            print "          <a href=\"buscar-2.php?$datos=apellidos&amp;orden=ASC\">\n";
+            print "            <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" />\n";
+            print "          </a>\n";
+            print "          Apellidos\n";
+            print "          <a href=\"buscar-2.php?$datos=apellidos&amp;orden=DESC\">\n";
+            print "            <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" />\n";
+            print "          </a>\n";
+            print "        </th>\n";
+            print "        <th>\n";
+            print "          <a href=\"buscar-2.php?$datos=telefono&amp;orden=ASC\">\n";
+            print "            <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" />\n";
+            print "          </a>\n";
+            print "          Teléfono\n";
+            print "          <a href=\"buscar-2.php?$datos=telefono&amp;orden=DESC\">\n";
+            print "            <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" />\n";
+            print "          </a>\n";
+            print "        </th>\n";
+            print "        <th>\n";
+            print "          <a href=\"buscar-2.php?$datos=correo&amp;orden=ASC\">\n";
+            print "            <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" />\n";
+            print "          </a>\n";
+            print "          Correo\n";
+            print "          <a href=\"buscar-2.php?$datos=correo&amp;orden=DESC\">\n";
+            print "            <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" />\n";
+            print "          </a>\n";
+            print "        </th>\n";
+            print "      </tr>\n";
+            print "    </thead>\n";
+            print "    <tbody>\n";
         $tmp = TRUE;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "    <tr>\n";
+                print "      <tr>\n";
             } else {
-                print "    <tr class=\"neg\">\n";
+                print "      <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "      <td>$valor[nombre]</td>
-      <td>$valor[apellidos]</td>\n      <td>$valor[telefono]</td>
-      <td>$valor[correo]</td>\n    </tr>\n";
+            print "        <td>$valor[nombre]</td>\n";
+            print "        <td>$valor[apellidos]</td>\n";
+            print "        <td>$valor[telefono]</td>\n";
+            print "        <td>$valor[correo]</td>\n\n";
+            print "      </tr>\n";
         }
-        print "  </tbody>\n</table>\n";
+        print "    </tbody>\n";
+        print "  </table>\n";
+        print "\n";
     }
 }
 

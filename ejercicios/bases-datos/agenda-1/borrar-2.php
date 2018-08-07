@@ -1,6 +1,6 @@
 <?php
 /**
- * Agenda - borrar2.php
+ * Agenda - borrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -28,16 +28,19 @@ cabecera ('Borrar 2', CABECERA_SIN_CURSOR);
 
 $id = recogeMatrizParaConsulta($db, 'id');
 
-if (count($id)==0) {
-  print "<p>No se ha marcado nada para borrar.</p>\n";
+if (count($id) == 0) {
+  print "  <p>No se ha marcado nada para borrar.</p>\n";
+  print "\n";
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "DELETE FROM $dbAgenda
             WHERE id=$indice";
         if ($db->query($consulta)) {
-            print "<p>Registro borrado correctamente.</p>\n";
+            print "  <p>Registro borrado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al borrar el registro.</p>\n";
+            print "  <p>Error al borrar el registro.</p>\n";
+            print "\n";
         }
     }
 }
