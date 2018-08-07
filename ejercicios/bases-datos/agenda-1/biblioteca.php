@@ -1,6 +1,6 @@
 <?php
 /**
- * Agenda - funciones.php
+ * Agenda - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -67,9 +67,9 @@ function conectaDb()
         return($db);
     } catch (PDOException $e) {
         cabecera('Error grave', CABECERA_SIN_CURSOR);
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
-        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p>Error: " . $e->getMessage() . "</p>\n";
         print "\n";
         pie();
         exit();

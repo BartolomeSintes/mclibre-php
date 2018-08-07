@@ -22,52 +22,52 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 
 $consulta = "SELECT COUNT(*) FROM $dbAgenda";
 $result = $db->query($consulta);
 if (!$result) {
     cabecera('Añadir 1', CABECERA_SIN_CURSOR);
-    print "  <p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() >= MAX_REG_AGENDA) {
     cabecera('Añadir 1', CABECERA_SIN_CURSOR);
-    print "  <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+    print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
-    print "  <p>Por favor, borre algún registro antes.</p>\n";
+    print "    <p>Por favor, borre algún registro antes.</p>\n";
     print "\n";
 } else {
     cabecera('Añadir 1', CABECERA_CON_CURSOR);
-    print "  <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
-    print "    <p>Escriba los datos del nuevo registro:</p>\n";
+    print "    <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "      <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";
-    print "    <table>\n";
-    print "      <tbody>\n";
-    print "        <tr>\n";
-    print "          <td>Nombre:</td>\n";
-    print "          <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+    print "      <table>\n";
+    print "        <tbody>\n";
+    print "          <tr>\n";
+    print "            <td>Nombre:</td>\n";
+    print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
         . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\" /></td>\n";
-    print "        </tr>\n";
-    print "        <tr>\n";
-    print "          <td>Apellidos:</td>\n";
-    print "          <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td>Apellidos:</td>\n";
+    print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
         . "maxlength=\"" . TAM_APELLIDOS . "\" /></td>\n";
-    print "        </tr>\n";
-    print "        <tr>\n";
-    print "          <td>Teléfono:</td>\n";
-    print "          <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td>Teléfono:</td>\n";
+    print "            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
         . "maxlength=\"" . TAM_TELEFONO . "\" /></td>\n";
-    print "        </tr>\n";
-    print "        <tr>\n";
-    print "          <td>Correo:</td>\n";
-    print "          <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td>Correo:</td>\n";
+    print "            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
         . "maxlength=\"" . TAM_CORREO . "\" /></td>\n";
-    print "        </tr>\n";
-    print "      </tbody>\n";
-    print "    </table>\n";
+    print "          </tr>\n";
+    print "        </tbody>\n";
+    print "      </table>\n";
     print "\n";
-    print "    <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
-    print "  </form>\n";
+    print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+    print "    </form>\n";
     print "\n";
 }
 
