@@ -33,7 +33,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 
     $id = recogeParaConsulta($db, 'id');
 
-    if ($id=="''") {
+    if ($id == "''") {
         print "<p>No se ha seleccionado ningún registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbArticulos
@@ -42,7 +42,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn()==0) {
+        } elseif ($result->fetchColumn() == 0) {
             print "<p>Registro no encontrado.</p>\n";
         } else {
             $consulta = "SELECT * FROM $dbArticulos

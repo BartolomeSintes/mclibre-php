@@ -34,7 +34,7 @@ if (!$result) {
     cabecera('Editar', CABECERA_SIN_CURSOR, $fecha);
     calendario($fecha, 'editar');
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()>=MAX_REG_ENTRADAS) {
+} elseif ($result->fetchColumn() >= MAX_REG_ENTRADAS) {
     cabecera('Editar', CABECERA_SIN_CURSOR, $fecha);
     calendario($fecha, 'editar');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "

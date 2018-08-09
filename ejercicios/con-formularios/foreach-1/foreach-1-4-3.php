@@ -100,7 +100,7 @@ if ($cajasRecibidas != $numero) {
             // o si el índice está fuera de rango
             || $indice < 1 || $indice > $numero
             // o si el contenido no es vacío o todo letras
-            || (!ctype_alpha($valor) && $valor != "")) {
+           || (!ctype_alpha($valor) && $valor != "")) {
                 $cOk = false;
             }
     }
@@ -129,7 +129,7 @@ if ($botonesRecibidos == 0) {
             // o si el índice está fuera de rango
             || $indice < 1 || $indice > $numero
             // o si el valor no es "m" o "h"
-            || ($valor != "h" && $valor != "m")) {
+           || ($valor != "h" && $valor != "m")) {
             $bOk = false;
         }
     }

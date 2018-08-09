@@ -33,7 +33,7 @@ $consulta = "SELECT COUNT(*) FROM $dbDiscusiones WHERE id=$hilo";
 $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     print "<p>La discusión solicitada no existe.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbDiscusiones

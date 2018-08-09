@@ -30,7 +30,7 @@ $autor     = recogeParaConsulta($db, 'autor');
 $titulo    = recogeParaConsulta($db, 'titulo');
 $editorial = recogeParaConsulta($db, 'editorial');
 
-if (($autor=="''") && ($titulo=="''") && ($editorial=="''")) {
+if (($autor == "''") && ($titulo == "''") && ($editorial == "''")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
         . "No se ha guardado el registro.</p>\n";
 } else {
@@ -38,7 +38,7 @@ if (($autor=="''") && ($titulo=="''") && ($editorial=="''")) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()>=MAX_REG_OBRAS) {
+    } elseif ($result->fetchColumn() >= MAX_REG_OBRAS) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
             . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {

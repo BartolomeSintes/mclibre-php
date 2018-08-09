@@ -44,7 +44,7 @@ $consulta = "SELECT COUNT(*) FROM $dbUsuarios
 $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     print "<p>No se han encontrado registros en la agenda.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbUsuarios
@@ -79,7 +79,7 @@ if (!$result) {
     </tr>
   </thead>
   <tbody>\n";
-        $tmp = TRUE;
+        $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
                 print "    <tr>\n";

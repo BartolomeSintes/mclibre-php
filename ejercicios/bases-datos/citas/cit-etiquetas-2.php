@@ -32,7 +32,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     cabecera('Citas - Asignar etiquetas 2', 'menu_citas');
 
     $id = recogeParaConsulta($db, 'id');
-    if ($id=="''") {
+    if ($id == "''") {
         print "<p>No se ha seleccionado ningún registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas
@@ -40,7 +40,7 @@ if (!isset($_SESSION['citasUsuario'])) {
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn()==0) {
+        } elseif ($result->fetchColumn() == 0) {
             print "<p>Registro no encontrado.</p>\n";
         } else {
             $consulta = "SELECT * FROM $dbCitas, $dbAutores

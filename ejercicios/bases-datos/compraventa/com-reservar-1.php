@@ -38,16 +38,16 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 
     $consulta = "SELECT COUNT(*) FROM $dbArticulos
         WHERE id_vendedor<>'$_SESSION[compraventaIdUsuario]'
-        AND reservado='FALSE'";
+        AND reservado='false'";
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>No hay ningún artículo a la venta.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
             WHERE id_vendedor<>'$_SESSION[compraventaIdUsuario]'
-            AND reservado='FALSE'
+            AND reservado='false'
             ORDER BY $campo $orden";
         $result = $db->query($consulta);
         if (!$result) {
@@ -72,7 +72,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
       </tr>
     </thead>
     <tbody>\n";
-        $tmp = TRUE;
+        $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
                 print "      <tr>\n";

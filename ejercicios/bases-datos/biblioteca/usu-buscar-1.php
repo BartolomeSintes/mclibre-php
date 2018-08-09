@@ -30,7 +30,7 @@ $result = $db->query($consulta);
 if (!$result) {
     cabecera('Usuarios - Buscar 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     cabecera('Usuarios - Buscar 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
     print "<p>No se ha creado todavía ningún registro.</p>\n";
 } else {

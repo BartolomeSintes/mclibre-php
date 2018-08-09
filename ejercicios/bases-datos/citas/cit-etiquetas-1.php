@@ -40,7 +40,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>No hay ninguna cita definida.</p>\n";
     } else {
         // En esta consulta he tenido que añadir id_cita porque las dos
@@ -71,7 +71,7 @@ if (!isset($_SESSION['citasUsuario'])) {
           </tr>
     </thead>
     <tbody>\n";
-        $tmp = TRUE;
+        $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
                 print "      <tr>\n";

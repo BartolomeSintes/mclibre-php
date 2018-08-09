@@ -34,7 +34,7 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() ==0 ) {
+} elseif ($result->fetchColumn() == 0 ) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbTabla

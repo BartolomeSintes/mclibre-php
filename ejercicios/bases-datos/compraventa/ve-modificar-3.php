@@ -37,7 +37,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     $correo    = recogeParaConsulta($db, 'correo');
     $id        = recogeParaConsulta($db, 'id');
 
-    if (($nombre=="''") && ($apellidos=="''") && ($telefono=="''") && ($correo=="''")) {
+    if (($nombre == "''") && ($apellidos == "''") && ($telefono == "''") && ($correo == "''")) {
         print "<p>Hay que rellenar al menos uno de los campos. "
             . "No se ha guardado la modificación.</p>\n";
     } else {
@@ -48,7 +48,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn()==0) {
+        } elseif ($result->fetchColumn() == 0) {
             $consulta = "UPDATE $dbAgenda SET nombre=$nombre,
                 apellidos=$apellidos, telefono=$telefono, correo=$correo
                 WHERE id_usuario='$_SESSION[compraventaIdUsuario]'

@@ -33,7 +33,7 @@ cabecera('Entrar 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
 $usuario    = $_REQUEST['usuario'];
 $contraseña = $_REQUEST['contraseña'];
 
-if (($usuario=="") || ($contraseña=="")) {
+if (($usuario == "") || ($contraseña == "")) {
     print "<p>Hay que rellenar los dos campos.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbTabla

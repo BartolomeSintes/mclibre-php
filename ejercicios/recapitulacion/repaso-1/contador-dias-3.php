@@ -74,7 +74,7 @@ $maximo           = 20;
 $valorCasilla     = "on";
 
 // Comprobación de $numero
-if ($numero=="") {
+if ($numero == "") {
     print "  <p class=\"aviso\">No se ha recibido el número de semanas.</p>\n";
     print "\n";
 } elseif (!is_numeric($numero)) {

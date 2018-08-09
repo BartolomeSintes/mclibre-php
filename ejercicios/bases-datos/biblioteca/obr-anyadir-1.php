@@ -30,7 +30,7 @@ $result = $db->query($consulta);
 if (!$result) {
     cabecera('Obras - Añadir 1', CABECERA_SIN_CURSOR, 'menuObras');
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()>=MAX_REG_OBRAS) {
+} elseif ($result->fetchColumn() >= MAX_REG_OBRAS) {
     cabecera('Obras - Añadir 1', CABECERA_SIN_CURSOR, 'menuObras');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
         . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";

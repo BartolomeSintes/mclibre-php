@@ -36,7 +36,7 @@ $consulta = "SELECT COUNT(*) FROM $dbAutores";
 $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     print "<p>No se han creado todavía autores.</p>\n";
 } else {
     $max = 0;
@@ -73,7 +73,7 @@ if (!$result) {
         print "<p>Estas son los autores definidos hasta el momento, con "
             . "un tamaño proporcional al número de citas:</p>\n";
         print "<p>\n";
-        $tmp = TRUE;
+        $tmp = true;
         foreach ($result as $valor) {
             $consulta = "SELECT COUNT (*) FROM $dbCitas
                 WHERE id_autor=$valor[id]";

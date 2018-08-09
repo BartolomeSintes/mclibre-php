@@ -30,7 +30,7 @@ $nombre    = recogeParaConsulta($db, 'nombre');
 $apellidos = recogeParaConsulta($db, 'apellidos');
 $dni       = recogeParaConsulta($db, 'dni');
 
-if (($nombre=="''") && ($apellidos=="''") && ($dni=="''")) {
+if (($nombre == "''") && ($apellidos == "''") && ($dni == "''")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
         . "No se ha guardado el registro.</p>\n";
 } else {
@@ -38,7 +38,7 @@ if (($nombre=="''") && ($apellidos=="''") && ($dni=="''")) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()>=MAX_REG_USUARIOS) {
+    } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
             . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {

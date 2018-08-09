@@ -30,7 +30,7 @@ $result = sqlite_array_query($db, $consulta);
 if (!$result) {
     cabecera('Añadir 1', MENU_VOLVER, CABECERA_SIN_CURSOR);
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result[0][0]>=MAX_REG_TABLA) {
+} elseif ($result[0][0] >= MAX_REG_TABLA) {
     cabecera('Añadir 1', MENU_VOLVER, CABECERA_SIN_CURSOR);
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
         . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";

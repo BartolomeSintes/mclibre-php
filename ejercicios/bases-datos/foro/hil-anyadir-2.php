@@ -34,7 +34,7 @@ $fecha        = date("Y-m-d H:i:s");
 
 cabecera('Discusiones - Intervenir en discusión 2', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
 
-if (($autor=="'".ANONIMO_AUTOR."'") && ($intervencion=="'".ANONIMO_INTERVENCION."'")) {
+if (($autor == "'".ANONIMO_AUTOR."'") && ($intervencion == "'".ANONIMO_INTERVENCION."'")) {
     print "<p>Hay que rellenar al menos uno de los campos.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbDiscusiones
@@ -42,7 +42,7 @@ if (($autor=="'".ANONIMO_AUTOR."'") && ($intervencion=="'".ANONIMO_INTERVENCION.
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>La discusión solicitada no existe.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbIntervenciones
@@ -50,7 +50,7 @@ if (($autor=="'".ANONIMO_AUTOR."'") && ($intervencion=="'".ANONIMO_INTERVENCION.
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn()>=MAX_REG_INTERVENCIONES) {
+        } elseif ($result->fetchColumn() >= MAX_REG_INTERVENCIONES) {
             print "<p>Se ha alcanzado el número máximo de intervenciones que se pueden "
                 . "guardar.</p>\n<p>Por favor, borre alguna intervención antes.</p>\n";
         } else {

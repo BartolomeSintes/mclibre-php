@@ -51,7 +51,7 @@ define('NUM_MAXIMO',  20);
 $numero   = recoge('numero');
 $numeroOk = false;
 
-if ($numero=="") {
+if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito el número de valores.</p>\n";
     print "\n";
 } elseif (!is_numeric($numero)) {

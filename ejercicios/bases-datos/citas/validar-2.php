@@ -25,11 +25,11 @@
 include("funciones.php");
 $db = conectaDb();
 
-$usuario   = recogeParaConsulta($db,'usuario');
+$usuario   = recogeParaConsulta($db, 'usuario');
 $usuario   = quitaComillasExteriores($usuario);
-$password  = recogeParaConsulta($db,'password');
+$password  = recogeParaConsulta($db, 'password');
 $password  = quitaComillasExteriores($password);
-$password2 = recogeParaConsulta($db,'password2');
+$password2 = recogeParaConsulta($db, 'password2');
 $password2 = quitaComillasExteriores($password2);
 // Comprobación inicial por si se recarga la página nada más registrar un nuevo usuario
 session_start();
@@ -38,7 +38,7 @@ if (isset($_SESSION['citasUsuario'])) {
     exit();
 } else {
     session_destroy();
-    if (!$usuario||($usuario=='menu_principal')) {
+    if (!$usuario || ($usuario=='menu_principal')) {
         header('Location:index.php?aviso=Nombre de usuario no permitido');
         exit();
     } elseif ($password!=md5($password2)) {

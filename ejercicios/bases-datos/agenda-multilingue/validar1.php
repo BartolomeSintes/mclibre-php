@@ -26,12 +26,12 @@ session_start();
 include ("funciones.php");
 $db = conectaDb();
 
-$usuario  = recogeParaConsulta($db,'usuario');
+$usuario  = recogeParaConsulta($db, 'usuario');
 $usuario  = quitaComillasExteriores($usuario);
-$password = recogeParaConsulta($db,'password');
+$password = recogeParaConsulta($db, 'password');
 $password = quitaComillasExteriores($password);
 
-if (!$usuario||($usuario=='menu_principal')) {
+if (!$usuario || ($usuario=='menu_principal')) {
     header('Location:index.php?aviso='._('Nombre de usuario no permitido'));
     exit();
 } else {
@@ -41,7 +41,7 @@ if (!$usuario||($usuario=='menu_principal')) {
     if (!$result) {
         cabecera(_('Identificación').' 2', 'menu_principal');
         print "<p>"._('Error en la consulta').".</p>";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         cabecera(_('Identificación').' 2', 'menu_principal');
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);

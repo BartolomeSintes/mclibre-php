@@ -25,7 +25,7 @@
 session_start();
 include('funciones.php');
 
-if (!isset($_SESSION['citasUsuario'])||($_SESSION['citasUsuario']!=$administradorNombre)) {
+if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario']!=$administradorNombre)) {
     header('Location:index.php');
     exit();
 } elseif (!isset($_REQUEST['si'])) {
@@ -34,9 +34,9 @@ if (!isset($_SESSION['citasUsuario'])||($_SESSION['citasUsuario']!=$administrado
 } else {
     $db = conectaDb();
     cabecera('Borrar todo 2');
-    if ($dbMotor==MYSQL) {
+    if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
-    } elseif ($dbMotor==SQLITE) {
+    } elseif ($dbMotor == SQLITE) {
         borraTodoSqlite($db);
     }
     $_SESSION = [];

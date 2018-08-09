@@ -186,7 +186,7 @@ print "              </tr>\n";
 print "              <tr>\n";
 print "                <td colspan=\"2\">Números en eje Y:";
 print "<input type=\"checkbox\" name=\"unidadesEjeY\" ";
-    if ($unidadesEjeY=="on") {
+    if ($unidadesEjeY == "on") {
         print "checked=\"checked\"";
     }
 print " /></td>\n";
@@ -251,7 +251,7 @@ if (!$okValores) {
     $cadena = "";
     if ($maximo==$minimo) {
         foreach ($valores as $valor) {
-            if ($valor=="") {
+            if ($valor == "") {
                $cadena .= "_";
             } else {
                $cadena .= "f";
@@ -259,7 +259,7 @@ if (!$okValores) {
         }
     } else {
         foreach ($valores as $valor) {
-            if ($valor=="") {
+            if ($valor == "") {
                 $cadena .= "_";
             } else {
                 $letra = round(($valor-$minimo)/($maximo-$minimo)*61);
@@ -275,7 +275,7 @@ if ($tituloGrafica!="") {
     $tituloGrafica = str_replace(" ", "+", $tituloGrafica);
     $cadenaGrafica .= "&amp;chtt=$tituloGrafica";
 }
-if ($unidadesEjeY=="on") {
+if ($unidadesEjeY == "on") {
     $cadenaGrafica .= "&amp;chxt=y&amp;chxl=0:|$minimo|$maximo";
 }
 if (!$okValores) {

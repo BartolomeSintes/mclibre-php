@@ -33,7 +33,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 
     $etiqueta = recogeParaConsulta($db, 'etiqueta');
     $etiqueta = strtolower($etiqueta);
-    if ($etiqueta=="''") {
+    if ($etiqueta == "''") {
         print "<p>La etiqueta no puede estar vacía. "
             . "No se ha guardado el registro.</p>\n";
     } elseif (substr_count($etiqueta, " ")>0) {

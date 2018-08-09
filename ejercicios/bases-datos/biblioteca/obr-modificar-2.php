@@ -27,7 +27,7 @@ $db = conectaDb();
 
 $id = recogeParaConsulta($db, 'id');
 
-if ($id=="''") {
+if ($id == "''") {
     cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
     print "<p>No se ha seleccionado ningún registro.</p>\n";
 } else {
@@ -37,7 +37,7 @@ if ($id=="''") {
     if (!$result) {
         cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
         print "<p>Registro no encontrado.</p>\n";
     } else {

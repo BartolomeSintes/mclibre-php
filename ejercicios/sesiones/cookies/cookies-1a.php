@@ -57,7 +57,7 @@ print "<body>\n";
 print "  <h1>Selección de colores (selección)</h1>\n";
 print "\n";
 
-if ($color=="") {
+if ($color == "") {
     print "  <p>No se ha elegido ningún color.</p>\n";
     print "\n";
 } else {

@@ -32,7 +32,7 @@ $telefono  = recogeParaConsulta($db, 'telefono');
 $correo    = recogeParaConsulta($db, 'correo');
 
 if (($nombre == "''") && ($apellidos == "''") && ($telefono == "''") && ($correo == "''")) {
-    print "<p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
+    print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbAgenda";

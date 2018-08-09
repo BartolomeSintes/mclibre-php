@@ -114,7 +114,8 @@ print "        <input type=\"submit\" value=\"Destruir\" name=\"accion\" />\n";
 print "      </li>\n";
 print "    </ul>\n";
 print "  </form>\n";
-print "  \n";
+print "
+";
 
 print "  <footer>\n";
 print "    <p class=\"ultmod\">\n";

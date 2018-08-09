@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    TRUE);   // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    FALSE);  // Para función cabecera()
+define('CABECERA_CON_CURSOR',    true);   // Para función cabecera()
+define('CABECERA_SIN_CURSOR',    false);  // Para función cabecera()
 define('FORM_METHOD',            'get');  // Formularios se envían con GET
 //define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define('MYSQL',          'MySQL');
@@ -36,11 +36,11 @@ define('MAX_REG_AGENDA', 20);  // Número máximo de registros en la tabla Agend
 
 $dbMotor = SQLITE;                    // Base de datos empleada
 if ($dbMotor == MYSQL) {
-    define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');  // Nombre de usuario de MySQL
+    define('MYSQL_HOST',     'mysql:host=localhost'); // Nombre de host MYSQL
+    define('MYSQL_USUARIO',  'root');  // Nombre de usuario de MySQL
     define('MYSQL_PASSWORD', '');     // Contraseña de usuario de MySQL
     $dbDb     = 'mclibre_agenda';     // Nombre de la base de datos
-    $dbAgenda = $dbDb.'.agenda';      // Nombre de la tabla
+    $dbAgenda = $dbDb . '.agenda';      // Nombre de la tabla
 } elseif ($dbMotor == SQLITE) {
     $dbDb     = '/home/barto/mclibre/tmp/mclibre/mclibre_agenda.sqlite';  // Nombre de la base de datos
     $dbAgenda = 'agenda';             // Nombre de la tabla
@@ -60,9 +60,9 @@ function conectaDb()
     try {
         if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
-            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
+            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:'.$dbDb);
+            $db = new PDO('sqlite:' . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {

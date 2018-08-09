@@ -146,7 +146,7 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
     print "\n";
     print "  <p>Datos introducidos (* si falta un dato): ";
     for ($i=1; $i<=$numeroValores; $i++) {
-        if ($valores[$i]=="") {
+        if ($valores[$i] == "") {
             print "* ";
         } else {
             print "$valores[$i] ";
@@ -180,7 +180,7 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
     $cadena = "";
     if ($maximo==$minimo) {
         foreach ($valores as $valor) {
-            if ($valor=="") {
+            if ($valor == "") {
                 $cadena .= "_";
             } else {
                $cadena .= "f";
@@ -188,7 +188,7 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
         }
     } else {
         foreach ($valores as $valor) {
-            if ($valor=="") {
+            if ($valor == "") {
                 $cadena .= "_";
             } else {
                 $letra = round(($valor-$minimo)/($maximo-$minimo)*61);

@@ -34,7 +34,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>No se ha creado todavía ningún autor.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas";

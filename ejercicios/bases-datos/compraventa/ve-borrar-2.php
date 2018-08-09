@@ -33,7 +33,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 
     $id = recogeMatrizParaConsulta($db, 'id');
 
-    if (count($id)==0) {
+    if (count($id) == 0) {
       print "<p>No se ha marcado nada para borrar.</p>\n";
     } else {
         foreach ($id as $indice => $valor) {

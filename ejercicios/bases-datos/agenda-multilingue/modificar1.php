@@ -41,7 +41,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>"._('Error en la consulta').".</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>"._('No se ha creado todavía ningún registro').".</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbAgenda
@@ -80,7 +80,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
           </tr>
         </thead>
         <tbody>\n";
-            $tmp = TRUE;
+            $tmp = true;
             foreach ($result as $valor) {
                 if ($tmp) {
                     print "      <tr>\n";

@@ -25,16 +25,16 @@
 define ('MYSQL', 'MySQL');
 define ('SQLITE', 'SQLite');
 $dbMotor = SQLITE;                         // Base de datos empleada
-if ($dbMotor==MYSQL) {
+if ($dbMotor == MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL
     define('MYSQL_PASSWORD', '');          // Contraseña de usuario de MySQL
     $dbDb        = 'mclibre_compraventa';  // Nombre de la base de datos
-    $dbUsuarios  = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
-    $dbArticulos = $dbDb.'.articulos';     // Nombre de la tabla de Artículos
+    $dbUsuarios  = $dbDb . '.usuarios';      // Nombre de la tabla de Usuarios
+    $dbArticulos = $dbDb . '.articulos';     // Nombre de la tabla de Artículos
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
-} elseif ($dbMotor==SQLITE) {
+} elseif ($dbMotor == SQLITE) {
     $dbDb        = '/home/barto/mclibre/tmp/mclibre/mclibre_compraventa.sqlite3';  // Nombre de la base de datos
     $dbUsuarios  = 'usuarios';             // Nombre de la tabla de Usuarios
     $dbArticulos = 'articulos';            // Nombre de la tabla de Agendas
@@ -73,11 +73,11 @@ function conectaDb()
     global $dbMotor, $dbDb;
 
     try {
-        if ($dbMotor==MYSQL) {
+        if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
-            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
-        } elseif ($dbMotor==SQLITE) {
-            $db = new PDO('sqlite:'.$dbDb);
+            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        } elseif ($dbMotor == SQLITE) {
+            $db = new PDO('sqlite:' . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
@@ -262,10 +262,10 @@ function recogeMatrizParaConsulta($db, $var)
 function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
-        if (isset($var[0])&&($var[0]=="'")) {
+        if (isset($var[0])&&($var[0] == "'")) {
             $var = substr($var, 1, strlen($var)-1);
         }
-        if (isset($var[strlen($var)-1])&&($var[strlen($var)-1]=="'")) {
+        if (isset($var[strlen($var)-1])&&($var[strlen($var)-1] == "'")) {
             $var = substr($var, 0, strlen($var)-1);
         }
     }

@@ -30,14 +30,14 @@ $idUsuario = recogeParaConsulta($db, 'id_usuario');
 $idObra    = recogeParaConsulta($db, 'id_obra');
 $fecha     = recogeParaConsulta($db, 'fecha');
 
-$fechaOk = TRUE;
+$fechaOk = true;
 
 if (!ctype_digit(substr($fecha, 1, 2)) ||!ctype_digit(substr($fecha, 4, 2))
     ||!ctype_digit(substr($fecha, 7, 4))) {
-    $fechaOk = FALSE;
+    $fechaOk = false;
 } elseif (!checkdate(substr($fecha, 4, 2), substr($fecha, 1, 2),
     substr($fecha, 7, 4))) {
-    $fechaOk = FALSE;
+    $fechaOk = false;
 }
 
 if (!$fechaOk) {
@@ -47,7 +47,7 @@ if (!$fechaOk) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()>=MAX_REG_PRESTAMOS) {
+    } elseif ($result->fetchColumn() >= MAX_REG_PRESTAMOS) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
             . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
@@ -64,9 +64,9 @@ if (!$fechaOk) {
         $resultPrestamo = $db->query($consulta);
         if (!$resultObra||!$resultUsuario||!$resultPrestamo) {
             print "<p>Error en la consulta.</p>\n";
-        } elseif ($resultUsuario->fetchColumn()==0) {
+        } elseif ($resultUsuario->fetchColumn() == 0) {
             print "<p>El identificador de Usuario no es correcto.</p>\n";
-        } elseif ($resultObra->fetchColumn()==0) {
+        } elseif ($resultObra->fetchColumn() == 0) {
             print "<p>El identificador de Obra no es correcto.</p>\n";
         } elseif ($resultPrestamo->fetchColumn()!=0) {
             print "<p>El registro de préstamo ya existe.</p>\n";
@@ -74,8 +74,8 @@ if (!$fechaOk) {
         // Inserto el valor 0000-00-00 explícitamente porque si lo dejo vacío
         // MySQL guarda 0000-00-00, pero SQLite lo deja en blanco
             $consulta = "INSERT INTO $dbPrestamos
-                VALUES (NULL, $idUsuario, $idObra,'"
-                . fechaAmd($fecha) . "','0000-00-00')";
+                VALUES (NULL, $idUsuario, $idObra, '"
+                . fechaAmd($fecha) . "', '0000-00-00')";
             if ($db->query($consulta)) {
                 print "<p>Registro creado correctamente.</p>\n";
             } else {

@@ -79,7 +79,7 @@ foreach ($numeros as $valor) {
 if (!$numerosOk) {
     print "  <p class=\"aviso\">Los datos recibidos no son correctos.</p>\n";
     print "\n";
-} elseif ($numerosRecibidos==0) {
+} elseif ($numerosRecibidos == 0) {
     print "  <p>No ha indicado ningún valor.</p>";
     print "\n";
 } elseif ($numerosRecibidos>NUM_MAXIMO) {

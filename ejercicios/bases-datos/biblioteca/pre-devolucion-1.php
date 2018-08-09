@@ -38,7 +38,7 @@ $result = $db->query($consulta);
 if (!$result) {
     cabecera('Préstamos - Devolución 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     cabecera('Préstamos - Devolución 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
     print "<p>No hay préstamos pendientes de devolución.</p>\n";
 } else {

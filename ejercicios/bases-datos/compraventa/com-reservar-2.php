@@ -33,25 +33,25 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 
     $id = recogeMatrizParaConsulta($db, 'id');
 
-    if (count($id)==0) {
+    if (count($id) == 0) {
       print "<p>No se ha marcado nada para reservar.</p>\n";
     } else {
         foreach ($id as $indice => $valor) {
             $consulta = "SELECT COUNT(*) FROM $dbArticulos
                 WHERE id=$indice
                 AND id_vendedor<>'$_SESSION[compraventaIdUsuario]'
-                AND reservado='FALSE'";
+                AND reservado='false'";
             $result = $db->query($consulta);
             if (!$result) {
                 print "<p>Error en la consulta.</p>\n";
-            } elseif ($result->fetchColumn()==0) {
+            } elseif ($result->fetchColumn() == 0) {
                 print "<p>El registro indicado no es válido o está ya reservado.</p>\n";
             } else {
                 date_default_timezone_set('Europe/Madrid');
                 $fecha_reserva = date("Y-m-d H:i:s");
                 $consulta = "UPDATE $dbArticulos
                     SET id_comprador='$_SESSION[compraventaIdUsuario]',
-                    reservado='TRUE', fecha_reserva='$fecha_reserva'
+                    reservado='true', fecha_reserva='$fecha_reserva'
                     WHERE id='$indice'";
                 if ($db->query($consulta)) {
                     print "<p>Artículo reservado correctamente.</p>\n";

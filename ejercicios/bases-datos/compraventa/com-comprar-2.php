@@ -33,18 +33,18 @@ if (!isset($_SESSION['compraventaUsuario'])) {
 
     $consulta = "SELECT COUNT(*) FROM $dbArticulos
         WHERE id_comprador='$_SESSION[compraventaIdUsuario]'
-        AND reservado='TRUE'
-        AND comprado='FALSE'";
+        AND reservado='true'
+        AND comprado='false'";
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>no hay ningún registro reservado.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
             WHERE id_comprador='$_SESSION[compraventaIdUsuario]'
-            AND reservado='TRUE'
-            AND comprado='FALSE'";
+            AND reservado='true'
+            AND comprado='false'";
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
@@ -53,7 +53,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             $fecha_compra = date("Y-m-d H:i:s");
             foreach($result as $valor) {
                 $consulta = "UPDATE $dbArticulos
-                    SET comprado='TRUE', fecha_compra='$fecha_compra'
+                    SET comprado='true', fecha_compra='$fecha_compra'
                     WHERE id='$valor[id]'";
                 if ($db->query($consulta)) {
                     print "<p>Artículo comprado correctamente.</p>\n";

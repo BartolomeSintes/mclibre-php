@@ -55,7 +55,7 @@ $resistenciaOk = false;
 
 // Comprobación de que hay al menos dos datos
 if (($tension == "" && $intensidad == "") || ($tension == "" && $resistencia == "")
-    || ($intensidad == "" && $resistencia == "")) {
+   || ($intensidad == "" && $resistencia == "")) {
     print "  <p class=\"aviso\">Se necesitan al menos rellenar dos datos.</p>\n";
     print "\n";
 } else {
@@ -112,7 +112,7 @@ if ($tensionOk && $intensidadOk && $resistenciaOk) {
     } elseif ($tension * $intensidad < 0) {
         print "  <p class=\"aviso\">Tensión e intensidad no pueden tener signos distintos.</p>\n";
         print "\n";
-    } elseif ($tension != "" && $intensidad != "" && $tension == 0 && $intensidad==0) {
+    } elseif ($tension != "" && $intensidad != "" && $tension == 0 && $intensidad == 0) {
         print "  <p class=\"aviso\">Si la tensión y la intensidad son nulas, la resistencia puede tomar cualquier valor.</p>\n";
         print "\n";
     } elseif ($tension != "" && $resistencia != "" && $tension == 0 && $resistencia == 0) {

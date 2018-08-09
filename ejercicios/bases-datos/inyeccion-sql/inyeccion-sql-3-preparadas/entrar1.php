@@ -30,7 +30,7 @@ $result = $db->query($consulta);
 if (!$result) {
     cabecera('Añadir 1', MENU_VOLVER, CABECERA_SIN_CURSOR);
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()>=MAX_REG_TABLA) {
+} elseif ($result->fetchColumn() >= MAX_REG_TABLA) {
     cabecera('Añadir 1', MENU_VOLVER, CABECERA_SIN_CURSOR);
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
         . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";

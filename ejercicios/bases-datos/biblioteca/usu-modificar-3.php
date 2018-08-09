@@ -31,9 +31,9 @@ $apellidos = recogeParaConsulta($db, 'apellidos');
 $dni       = recogeParaConsulta($db, 'dni');
 $id        = recogeParaConsulta($db, 'id');
 
-if ($id=="''") {
+if ($id == "''") {
     print "<p>No se ha seleccionado ningún registro.</p>\n";
-} elseif (($nombre=="''") && ($apellidos=="''") && ($dni=="''")) {
+} elseif (($nombre == "''") && ($apellidos == "''") && ($dni == "''")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
         . "No se ha guardado la modificación.</p>\n";
 } else {

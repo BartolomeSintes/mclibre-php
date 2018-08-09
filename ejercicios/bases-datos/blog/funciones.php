@@ -23,8 +23,8 @@
  */
 
 define('ZONA_HORARIA',        'Europe/Madrid');  // Zona horaria del servidor
-define('CABECERA_CON_CURSOR', TRUE);             // Para función cabecera()
-define('CABECERA_SIN_CURSOR', FALSE);            // Para función cabecera()
+define('CABECERA_CON_CURSOR', true);             // Para función cabecera()
+define('CABECERA_SIN_CURSOR', false);            // Para función cabecera()
 define('FORM_METHOD',            'get');  // Formularios se envían con GET
 //define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define('MYSQL',               'MySQL');
@@ -33,13 +33,13 @@ define('TAM_ENTRADA',         255);  // Tamaño del campo Entradas > Entrada
 define('MAX_REG_ENTRADAS',    10);   // Número máximo de registros en la tabla Entradas
 
 $dbMotor = SQLITE;                     // Base de datos empleada
-if ($dbMotor==MYSQL) {
+if ($dbMotor == MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');   // Nombre de usuario de MySQL
     define('MYSQL_PASSWORD', '');      // Contraseña de usuario de MySQL
     $dbDb       = 'mclibre_blog';     // Nombre de la base de datos
-    $dbEntradas = $dbDb.'.entradas';  // Nombre de la tabla Entradas
-} elseif ($dbMotor==SQLITE) {
+    $dbEntradas = $dbDb . '.entradas';  // Nombre de la tabla Entradas
+} elseif ($dbMotor == SQLITE) {
     $dbDb       = '/home/barto/mclibre/tmp/mclibre/mclibre_entradas.sqlite';  // Nombre de la base de datos
     $dbEntradas = 'entradas';         // Nombre de la tabla Entradas
 }
@@ -53,11 +53,11 @@ function conectaDb()
     global $dbMotor, $dbDb;
 
     try {
-        if ($dbMotor==MYSQL) {
+        if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
-            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
-        } elseif ($dbMotor==SQLITE) {
-            $db = new PDO('sqlite:'.$dbDb);
+            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        } elseif ($dbMotor == SQLITE) {
+            $db = new PDO('sqlite:' . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
@@ -131,10 +131,10 @@ function recogeMatrizParaConsulta($db, $var)
 function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
-        if (isset($var[0]) && ($var[0]=="'")) {
+        if (isset($var[0]) && ($var[0] == "'")) {
             $var = substr($var, 1, strlen($var)-1);
         }
-        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
+        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1] == "'")) {
             $var = substr($var, 0, strlen($var)-1);
         }
     }
@@ -182,7 +182,7 @@ function calendario ($fecha, $enlaces)
     $mes     = substr($fecha, 5, 2);
     $anyo    = substr($fecha, 0, 4);
 
-    $esBisiesto = (($anyo%400==0) || (($anyo%100!=0) && ($anyo%4==0)))
+    $esBisiesto = (($anyo%400 == 0) || (($anyo%100!=0) && ($anyo%4 == 0)))
                     ? '1' : '0';
     $duraMeses = ($esBisiesto) ?
         [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31] :
@@ -212,11 +212,11 @@ function calendario ($fecha, $enlaces)
 
     $jd = gregoriantojd($mes, 1, $anyo);
     $dia = (jddayofweek($jd, 0)+6)%7;
-    $dias = ['L', 'M', 'X','J','V','S','D'];
+    $dias = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
     $diaSemana = $dias[$dia];
 
     print "<div class=\"calendario\">\n  <table border=\"1\" class=\"calendario\" >\n";
-    if ($enlaces=="editar") {
+    if ($enlaces == "editar") {
         print "    <caption><a href=\"editar.php?fecha=$fechaAnt\">&lt;&lt;</a> "
             . $meses[(int)($mes)] . " de $anyo <a href=\"editar.php?fecha="
             . "$fechaSig\">&gt;&gt;</a>

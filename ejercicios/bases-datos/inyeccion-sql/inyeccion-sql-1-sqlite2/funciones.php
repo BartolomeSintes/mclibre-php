@@ -39,13 +39,13 @@ $recorta = [
 ];
 
 $dbMotor = SQLITE;                        // Base de datos empleada
-if ($dbMotor==MYSQL) {
+if ($dbMotor == MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL
     define('MYSQL_PASSWORD', '');          // Contraseña de usuario de MySQL
     $dbDb    = 'mclibre_inyeccion_sql_1';  // Nombre de la base de datos
-    $dbTabla = $dbDb.'.tabla';             // Nombre de la tabla
-} elseif ($dbMotor==SQLITE) {
+    $dbTabla = $dbDb . '.tabla';             // Nombre de la tabla
+} elseif ($dbMotor == SQLITE) {
     $dbDb    = '/home/barto/mclibre/tmp/mclibre/mclibre_inyeccion_sql_1.sqlite';  // Nombre de la base de datos
     $dbTabla = 'tabla';                   // Nombre de la tabla
 }
@@ -55,10 +55,10 @@ function conectaDb()
     global $dbMotor, $dbDb;
 
     $error = 0;
-    if ($dbMotor==MYSQL) {
+    if ($dbMotor == MYSQL) {
         $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
         $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-    } elseif ($dbMotor==SQLITE) {
+    } elseif ($dbMotor == SQLITE) {
         $db = sqlite_open($dbDb);
     }
     if (!$db) {
@@ -127,10 +127,10 @@ function recogeMatrizParaConsulta($db, $var)
 function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
-        if (isset($var[0]) && ($var[0]=="'")) {
+        if (isset($var[0]) && ($var[0] == "'")) {
             $var = substr($var, 1, strlen($var)-1);
         }
-        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
+        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1] == "'")) {
             $var = substr($var, 0, strlen($var)-1);
         }
     }

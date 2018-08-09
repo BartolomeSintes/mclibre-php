@@ -36,7 +36,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 
 // Habría que comprobar que el autor recibido existe
 
-    if (($cita=="''") || ($autor=='')) {
+    if (($cita == "''") || ($autor=='')) {
         print "<p>La cita y el autor no pueden estar vacíos. "
             . "No se ha guardado el registro.</p>\n";
     } else {

@@ -37,7 +37,7 @@ $contraseña = $_REQUEST['contraseña'];
 //$contraseña = recogeParaConsulta($db, 'contraseña');
 //$contraseña = quitaComillasExteriores($contraseña);
 
-if (($usuario=="") || ($contraseña=="")) {
+if (($usuario == "") || ($contraseña == "")) {
     print "<p>Hay que rellenar los dos campos. "
         . "No se ha guardado el registro.</p>\n";
 } else {
@@ -45,7 +45,7 @@ if (($usuario=="") || ($contraseña=="")) {
     $result =  sqlite_array_query($db, $consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result[0][0]>=MAX_REG_TABLA) {
+    } elseif ($result[0][0] >= MAX_REG_TABLA) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
             . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {

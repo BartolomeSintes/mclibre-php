@@ -36,7 +36,7 @@ if (!isset($_SESSION['citasUsuario'])) {
 
 // Habría que comprobar que la cita recibido existe
 
-    if (($cita=="''") || ($etiqueta=='')) {
+    if (($cita == "''") || ($etiqueta=='')) {
         print "<p>La cita y la etiqueta no pueden estar vacíos. "
             . "No se ha guardado el registro.</p>\n";
     } else {
@@ -45,7 +45,7 @@ if (!isset($_SESSION['citasUsuario'])) {
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn()==0) {
+        } elseif ($result->fetchColumn() == 0) {
             print "<p>Registro de Cita no encontrado.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbEtiquetas
@@ -53,7 +53,7 @@ if (!isset($_SESSION['citasUsuario'])) {
             $result = $db->query($consulta);
             if (!$result) {
                 print "<p>Error en la consulta.</p>\n";
-            } elseif ($result->fetchColumn()==0) {
+            } elseif ($result->fetchColumn() == 0) {
                 print "<p>Registro de Etiqueta no encontrado.</p>\n";
             } else {
                 $consulta = "SELECT COUNT(*) FROM $dbEtiCitas

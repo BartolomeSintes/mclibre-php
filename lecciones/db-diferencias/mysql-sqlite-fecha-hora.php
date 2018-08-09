@@ -34,11 +34,11 @@ function conectaDb()
     global $dbMotor, $dbDb;
 
     try {
-        if ($dbMotor==MYSQL) {
+        if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        } elseif ($dbMotor==SQLITE) {
-            $db = new PDO('sqlite:'.$dbDb);
+        } elseif ($dbMotor == SQLITE) {
+            $db = new PDO('sqlite:' . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
@@ -141,7 +141,7 @@ function pruebaDb() {
     $result = $db->query($consulta);
     if (!$result) {
         print "              <li>Error en la consulta.</li>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "              <li>No se ha creado todavía ningún registro.</li>\n";
     } else {
         $consulta = "SELECT * FROM $dbTabla";
@@ -195,7 +195,7 @@ print "      <td>\n";
 print "        <h2>MySQL</h2>\n";
 $dbMotor = MYSQL;
 $dbDb     = 'mclibre_db-diferencias';     // Nombre de la base de datos
-$dbTabla = $dbDb.'.fecha';      // Nombre de la tabla
+$dbTabla = $dbDb . '.fecha';      // Nombre de la tabla
 print "        <ol>\n";
 $db = conectaDb();
 if ($db) {

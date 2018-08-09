@@ -33,8 +33,8 @@ $autor        = recogeParaConsulta($db, 'autor',        ANONIMO_AUTOR);
 $descripcion  = recogeParaConsulta($db, 'descripcion',  ANONIMO_DESCRIPCION);
 $fecha        = date("Y-m-d H:i:s");
 
-if (($autor=="'".ANONIMO_AUTOR."'") && ($titulo=="'".ANONIMO_TITULO."'") &&
-    ($descripcion=="'".ANONIMO_DESCRIPCION."'")) {
+if (($autor == "'".ANONIMO_AUTOR."'") && ($titulo == "'".ANONIMO_TITULO."'") &&
+    ($descripcion == "'".ANONIMO_DESCRIPCION."'")) {
     print "<p>Hay que rellenar al menos uno de los campos. "
         . "No se ha guardado el registro.</p>\n";
 } else {
@@ -42,7 +42,7 @@ if (($autor=="'".ANONIMO_AUTOR."'") && ($titulo=="'".ANONIMO_TITULO."'") &&
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()>=MAX_REG_DISCUSIONES) {
+    } elseif ($result->fetchColumn() >= MAX_REG_DISCUSIONES) {
         print "<p>Se ha alcanzado el número máximo de discusión que se pueden "
             . "guardar.</p>\n<p>Por favor, borre alguna discusión antes.</p>\n";
     } else {

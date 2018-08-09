@@ -34,7 +34,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     $articulo = recogeParaConsulta($db, 'articulo');
     $precio   = recogeParaConsulta($db, 'precio');
 
-    if (($articulo=="''")||($precio=="''")) {
+    if (($articulo == "''") || ($precio == "''")) {
         print "<p>Hay que rellenar los dos campos. "
             . "No se ha guardado el registro.</p>\n";
     } else {
@@ -60,8 +60,8 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             } else {
                 $consulta = "INSERT INTO $dbArticulos
                     VALUES (NULL, $articulo, '$precio',
-                    '$_SESSION[compraventaIdUsuario]', NULL, 'FALSE',
-                    '0000-00-00 00:00:00', 'FALSE', '0000-00-00')";
+                    '$_SESSION[compraventaIdUsuario]', NULL, 'false',
+                    '0000-00-00 00:00:00', 'false', '0000-00-00')";
                 if ($db->query($consulta)) {
                     print "<p>Registro creado correctamente.</p>\n";
                 } else {

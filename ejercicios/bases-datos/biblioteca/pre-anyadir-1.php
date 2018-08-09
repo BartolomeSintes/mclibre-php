@@ -32,7 +32,7 @@ $result = $db->query($consulta);
 if (!$result) {
     cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()>=MAX_REG_PRESTAMOS) {
+} elseif ($result->fetchColumn() >= MAX_REG_PRESTAMOS) {
     cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
         . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
@@ -47,10 +47,10 @@ if (!$result) {
     } elseif (!$resultUsuarios) {
         cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
         print "<p>Error en la consulta de Usuarios.</p>\n";
-    } elseif ($resultObras->fetchColumn()==0) {
+    } elseif ($resultObras->fetchColumn() == 0) {
         cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
         print "<p>No se ha creado todavía ningún registro de Obras.</p>\n";
-    } elseif ($resultUsuarios->fetchColumn()==0) {
+    } elseif ($resultUsuarios->fetchColumn() == 0) {
         cabecera('Préstamos - Nuevo préstamo 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
         print "<p>No se ha creado todavía ningún registro de Usuarios.</p>\n";
     } else {

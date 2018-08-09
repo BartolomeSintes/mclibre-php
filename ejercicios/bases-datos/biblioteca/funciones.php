@@ -22,22 +22,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    TRUE);   // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    FALSE);  // Para función cabecera()
+define('CABECERA_CON_CURSOR',    true);   // Para función cabecera()
+define('CABECERA_SIN_CURSOR',    false);  // Para función cabecera()
 define('FORM_METHOD',            'get');  // Formularios se envían con GET
 //define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define ('MYSQL', 'MySQL');
 define ('SQLITE', 'SQLite');
 $dbMotor = SQLITE;                        // Base de datos empleada
-if ($dbMotor==MYSQL) {
+if ($dbMotor == MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
     define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
     define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
     $dbDb        = 'mclibre_biblioteca';  // Nombre de la base de datos
-    $dbObras     = $dbDb.'.obras';        // Nombre de la tabla Obras
-    $dbUsuarios  = $dbDb.'.usuarios';     // Nombre de la tabla Ususarios
-    $dbPrestamos = $dbDb.'.prestamos';    // Nombre de la tabla de Préstamos
-} elseif ($dbMotor==SQLITE) {
+    $dbObras     = $dbDb . '.obras';        // Nombre de la tabla Obras
+    $dbUsuarios  = $dbDb . '.usuarios';     // Nombre de la tabla Ususarios
+    $dbPrestamos = $dbDb . '.prestamos';    // Nombre de la tabla de Préstamos
+} elseif ($dbMotor == SQLITE) {
     $dbDb        = '/home/barto/mclibre/tmp/mclibre/mclibre_biblioteca.sqlite';  // Nombre de la base de datos
     $dbObras     = 'obras';               // Nombre de la tabla Obras
     $dbUsuarios  = 'usuarios';            // Nombre de la tabla Ususarios
@@ -71,15 +71,15 @@ function conectaDb()
     global $dbMotor, $dbDb;
 
     try {
-        if ($dbMotor==MYSQL) {
+        if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
-            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
-        } elseif ($dbMotor==SQLITE) {
-            $db = new PDO('sqlite:'.$dbDb);
+            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        } elseif ($dbMotor == SQLITE) {
+            $db = new PDO('sqlite:' . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave', FALSE);
+        cabecera('Error grave', false);
         print "<p>Error: No puede conectarse con la base de datos.</p>\n";
 //        print "<p>Error: " . $e->getMessage() . "</p>\n";
         pie();
@@ -149,10 +149,10 @@ function recogeMatrizParaConsulta($db, $var)
 function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
-        if (isset($var[0]) && ($var[0]=="'")) {
+        if (isset($var[0]) && ($var[0] == "'")) {
             $var = substr($var, 1, strlen($var)-1);
         }
-        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
+        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1] == "'")) {
             $var = substr($var, 0, strlen($var)-1);
         }
     }

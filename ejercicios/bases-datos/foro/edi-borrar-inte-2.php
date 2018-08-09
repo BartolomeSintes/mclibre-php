@@ -40,7 +40,7 @@ if ($id=='') {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>La discusión solicitada no existe.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbDiscusiones
@@ -55,7 +55,7 @@ if ($id=='') {
             $result = $db->query($consulta);
             if (!$result) {
                 print "<p>Error en la consulta.</p>\n";
-            } elseif ($result->fetchColumn()==0) {
+            } elseif ($result->fetchColumn() == 0) {
                 print "<p>No hay intervenciones en la discusión elegida.</p>\n";
             } else {
                 $consulta = "SELECT * FROM $dbIntervenciones
@@ -88,7 +88,7 @@ if ($id=='') {
       </tr>
     </thead>
     <tbody>\n";
-                    $tmp = TRUE;
+                    $tmp = true;
                     foreach ($result as $valor) {
                         if ($tmp) {
                             print "      <tr>\n";

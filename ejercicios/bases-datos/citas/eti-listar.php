@@ -36,7 +36,7 @@ $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";
 $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     print "<p>No se han creado todavía etiquetas.</p>\n";
 } else {
     $max = 0;

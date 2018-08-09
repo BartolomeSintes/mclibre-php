@@ -51,7 +51,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     }
     $apellidos = implode(' ', $tmpApellidos);
 
-    if (($nombre=="''") && ($apellidos=='')) {
+    if (($nombre == "''") && ($apellidos=='')) {
         print "<p>El nombre y apellidos del autor no puede estar vacía. "
             . "No se ha guardado el registro.</p>\n";
     } else {

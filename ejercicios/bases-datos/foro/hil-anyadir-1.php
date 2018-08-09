@@ -33,7 +33,7 @@ $result = $db->query($consulta);
 if (!$result) {
     cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
     print "<p>La discusión solicitada no existe.</p>\n";
 } else {
@@ -43,7 +43,7 @@ if (!$result) {
     if (!$result) {
         cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()>=MAX_REG_INTERVENCIONES) {
+    } elseif ($result->fetchColumn() >= MAX_REG_INTERVENCIONES) {
         cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
         print "<p>Se ha alcanzado el número máximo de intervenciones que se pueden "
             . "guardar.</p>\n<p>Por favor, borre alguna intervención antes.</p>\n";

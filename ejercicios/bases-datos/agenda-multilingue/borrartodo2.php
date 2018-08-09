@@ -25,7 +25,7 @@
 session_start();
 include('funciones.php');
 
-if (!isset($_SESSION['multiagendaUsuario'])||($_SESSION['multiagendaUsuario']!=$administradorNombre)) {
+if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario']!=$administradorNombre)) {
     header('Location:index.php');
     exit();
 } elseif (!isset($_REQUEST['si'])) {
@@ -34,9 +34,9 @@ if (!isset($_SESSION['multiagendaUsuario'])||($_SESSION['multiagendaUsuario']!=$
 } else {
     $db = conectaDb();
     cabecera(_('Borrar todo').' 2', $_SESSION['multiagendaUsuario']);
-    if ($dbMotor==MYSQL) {
+    if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
-    } elseif ($dbMotor==SQLITE) {
+    } elseif ($dbMotor == SQLITE) {
         borraTodoSqlite($db);
     }
     $_SESSION = [];

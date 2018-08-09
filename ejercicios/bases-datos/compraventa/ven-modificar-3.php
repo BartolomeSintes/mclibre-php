@@ -35,9 +35,9 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     $precio   = recogeParaConsulta($db, 'precio');
     $id       = recogeParaConsulta($db, 'id');
 
-    if ($id=="''") {
+    if ($id == "''") {
         print "<p>No se ha seleccionado ningún registro.</p>\n";
-    } elseif (($articulo=="''") && ($precio=="''")) {
+    } elseif (($articulo == "''") && ($precio == "''")) {
         print "<p>Hay que rellenar al menos uno de los campos. "
             . "No se ha guardado la modificación.</p>\n";
     } else {

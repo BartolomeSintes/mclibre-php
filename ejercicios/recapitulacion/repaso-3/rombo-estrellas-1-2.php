@@ -49,7 +49,7 @@ $valorMinimo = 1;
 $valorMaximo = 30;
 $altoOk      = false;
 
-if ($alto=="") {
+if ($alto == "") {
     print "  <p class=\"aviso\">No ha escrito la altura.</p>\n";
     print "\n";
 } elseif (!ctype_digit($alto)) {

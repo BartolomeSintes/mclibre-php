@@ -85,7 +85,7 @@ if (!$result) {
         print "          </tr>\n";
         print "        </thead>\n";
         print "        <tbody>\n";
-        $tmp = TRUE;
+        $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
                 print "          <tr>\n";

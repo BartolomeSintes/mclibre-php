@@ -28,14 +28,14 @@ cabecera('Préstamos - Devolución 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
 
 $id    = recogeParaConsulta($db, 'id');
 $fecha = recogeParaConsulta($db, 'fecha');
-$fechaOk = TRUE;
+$fechaOk = true;
 
 if (!ctype_digit(substr($fecha, 1, 2)) ||!ctype_digit(substr($fecha, 4, 2))
     ||!ctype_digit(substr($fecha, 7, 4))) {
-    $fechaOk = FALSE;
+    $fechaOk = false;
 } elseif (!checkdate((int)substr($fecha, 4, 2), (int)substr($fecha, 1, 2),
     (int)substr($fecha, 7, 4))) {
-    $fechaOk = FALSE;
+    $fechaOk = false;
 }
 
 if (!$fechaOk) {
@@ -46,7 +46,7 @@ if (!$fechaOk) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>El identificador de Préstamo no es correcto.</p>\n";
     } else {
         $consulta = "SELECT * FROM $dbPrestamos

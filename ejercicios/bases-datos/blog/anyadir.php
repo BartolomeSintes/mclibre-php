@@ -30,7 +30,7 @@ $entrada = recogeParaConsulta($db, 'entrada');
 
 cabecera('Añadir', CABECERA_SIN_CURSOR, $fecha);
 
-if (($fecha=="''") || ($entrada=="''")) {
+if (($fecha == "''") || ($entrada == "''")) {
     print "<p>Hay que escribir algo en la entrada. "
         . "No se ha guardado el registro.</p>\n";
 } else {
@@ -38,7 +38,7 @@ if (($fecha=="''") || ($entrada=="''")) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()>=MAX_REG_ENTRADAS) {
+    } elseif ($result->fetchColumn() >= MAX_REG_ENTRADAS) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
             . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {
@@ -47,7 +47,7 @@ if (($fecha=="''") || ($entrada=="''")) {
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn()==0) {
+        } elseif ($result->fetchColumn() == 0) {
             $consulta = "INSERT INTO $dbEntradas
                 VALUES (NULL, '$fecha', $entrada)";
             if ($db->query($consulta)) {

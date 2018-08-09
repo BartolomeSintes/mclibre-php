@@ -36,7 +36,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     $telefono  = recogeParaConsulta($db, 'telefono');
     $correo    = recogeParaConsulta($db, 'correo');
 
-    if (($nombre=="''")&&($apellidos=="''")&&($telefono=="''")&&($correo=="''")) {
+    if (($nombre == "''")&&($apellidos == "''")&&($telefono == "''")&&($correo == "''")) {
         print "<p>"._('Hay que rellenar al menos uno de los campos').". "
             ._('No se ha guardado el registro').".</p>\n";
     } else {

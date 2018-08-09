@@ -91,7 +91,7 @@ if ($bytesOk) {
 
     print "  <p>" . number_format($bytesOriginal, 0, ",", ".") . " bytes son ";
 
-    if ($bytesOriginal==0) {
+    if ($bytesOriginal == 0) {
         print "0 bytes.";
     }
 

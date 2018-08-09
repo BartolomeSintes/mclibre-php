@@ -42,12 +42,12 @@ if (!isset($_SESSION['multiagendaIdioma'])&&!isset($_REQUEST['idioma'])) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>"._('Error en la consulta').".</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         cabecera(_('Primera conexión'), 'menu_principal');
         print "<p>"._('Aparentemente, la base de datos no existe. Se creará a continuación').".</p>";
-        if ($dbMotor==MYSQL) {
+        if ($dbMotor == MYSQL) {
             borraTodoMySQL($db);
-        } elseif ($dbMotor==SQLITE) {
+        } elseif ($dbMotor == SQLITE) {
             borraTodoSqlite($db);
         }
     } else {

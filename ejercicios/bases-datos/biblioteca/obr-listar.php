@@ -35,7 +35,7 @@ $consulta = "SELECT COUNT(*) FROM $dbObras";
 $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     print "<p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbObras
@@ -65,7 +65,7 @@ if (!$result) {
     </tr>
   </thead>
   <tbody>\n";
-        $tmp = TRUE;
+        $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
                 print "    <tr>\n";

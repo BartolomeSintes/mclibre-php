@@ -94,7 +94,7 @@ for ($i=1; $i<=$numeroValores; $i++) {
     if (!isset($valores[$i])) {  // Por si falta un valor en la matriz
         $valoresTodoOk = false;
         $valores[$i] = "";
-    } elseif ($valores[$i]=="") {  // Por si un valor es vacío
+    } elseif ($valores[$i] == "") {  // Por si un valor es vacío
         $valoresTodoOk = false;
     } elseif (($valores[$i]!="") && !is_numeric($valores[$i])) {  // Por si un valor no es numérico
         $valoresOk[$i] = false;
@@ -157,7 +157,7 @@ if ($valoresTodoOk) {
         print "\" />";
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
-        } elseif ($valores[$i]=="") {
+        } elseif ($valores[$i] == "") {
             print " <span class=\"aviso\">Escriba un valor</span>";
         }
         print "</td>\n";

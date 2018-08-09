@@ -33,7 +33,7 @@ function recoge($var)
 
 $admiteCookies  = recoge('admiteCookies');
 // Si se envía un color se crea la cookie
-if ($admiteCookies=="") {
+if ($admiteCookies == "") {
     setcookie('cookiePrueba', 'X');
     header('Location:cookies-3b.php');
     exit();

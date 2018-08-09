@@ -29,7 +29,7 @@ cabecera('Añadir 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
 $usuario    = recogeParaConsulta($db, 'usuario');
 $contraseña = recogeParaConsulta($db, 'contraseña');
 
-if (($usuario=="''") || ($contraseña=="''")) {
+if (($usuario == "''") || ($contraseña == "''")) {
     print "<p>Hay que rellenar los dos campos. "
         . "No se ha guardado el registro.</p>\n";
 } else {
@@ -37,7 +37,7 @@ if (($usuario=="''") || ($contraseña=="''")) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()>=MAX_REG_TABLA) {
+    } elseif ($result->fetchColumn() >= MAX_REG_TABLA) {
         print "<p>Se ha alcanzado el número máximo de registros que se pueden "
             . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
     } else {

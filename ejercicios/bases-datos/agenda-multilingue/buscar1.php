@@ -36,7 +36,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     $result = $db->query($consulta);
     if (!$result) {
         print "<p>"._('Error en la consulta').".</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+    } elseif ($result->fetchColumn() == 0) {
         print "<p>"._('No se ha creado todavía ningún registro').".</p>\n";
     } else {
         print "<form action=\"buscar2.php\" method=\"get\">

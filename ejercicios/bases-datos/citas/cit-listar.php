@@ -36,7 +36,7 @@ $consulta = "SELECT COUNT(*) FROM $dbCitas";
 $result = $db->query($consulta);
 if (!$result) {
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()==0) {
+} elseif ($result->fetchColumn() == 0) {
     print "<p>No se han creado todavía citas.</p>\n";
 } else {
     // En esta consulta he tenido que añadir id_cita porque las dos

@@ -33,7 +33,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
 
     $id = recogeParaConsulta($db, 'id');
 
-    if ($id=="''") {
+    if ($id == "''") {
         print "<p>"._('No se ha seleccionado ningún registro').".</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAgenda
@@ -42,7 +42,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
         $result = $db->query($consulta);
         if (!$result) {
             print "<p>"._('Error en la consulta').".</p>\n";
-        } elseif ($result->fetchColumn()==0) {
+        } elseif ($result->fetchColumn() == 0) {
             print "<p>"._('Registro no encontrado').".</p>\n";
         } else {
             $consulta = "SELECT * FROM $dbAgenda

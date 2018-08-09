@@ -30,7 +30,7 @@ $result = $db->query($consulta);
 if (!$result) {
     cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
     print "<p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn()>=MAX_REG_DISCUSIONES) {
+} elseif ($result->fetchColumn() >= MAX_REG_DISCUSIONES) {
     cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
     print "<p>Se ha alcanzado el número máximo de registros que se pueden "
         . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";

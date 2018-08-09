@@ -56,7 +56,7 @@ $casillas = recogeMatriz("c");
 $nombreOk = false;
 $accionOk = false;
 
-if ($accion=="Cerrar") {
+if ($accion == "Cerrar") {
     session_destroy();
     header("Location:" . $_SERVER["PHP_SELF"]);
     exit();
