@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  buscar1.php
+ * Multiagenda -  burcar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 session_start();
 
 if (!isset($_SESSION['multiagendaUsuario'])) {
@@ -36,40 +36,45 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     $result = $db->query($consulta);
     if (!$result) {
         cabecera('Buscar 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
-        print "<p>Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn()==0) {
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
+    } elseif ($result->fetchColumn() == 0) {
         cabecera('Buscar 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
-        print "<p>No se ha creado todavía ningún registro.</p>\n";
+        print "    <p>No se ha creado todavía ningún registro.</p>\n";
+        print "\n";
     } else {
         cabecera('Buscar 1', CABECERA_CON_CURSOR, $_SESSION['multiagendaUsuario']);
-        print "<form action=\"buscar2.php\" method=\"" . FORM_METHOD . "\">
-      <p>Escriba el criterio de búsqueda (carácteres o números):</p>
-      <table>
-        <tbody>
-          <tr>
-            <td>Nombre:</td>
-            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
-            . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\" /></td>
-          </tr>
-          <tr>
-            <td>Apellidos:</td>
-            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
-            . "maxlength=\"" . TAM_APELLIDOS . "\" /></td>
-          </tr>
-          <tr>
-            <td>Teléfono:</td>
-            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
-            . "maxlength=\"" . TAM_TELEFONO . "\" /></td>
-          </tr>
-          <tr>
-            <td>Correo:</td>
-            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
-            . "maxlength=\"" . TAM_CORREO . "\" /></td>
-          </tr>
-        </tbody>
-      </table>
-      <p><input type=\"submit\" value=\"Buscar\" /></p>
-    </form>\n";
+        print "    <form action=\"buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
+        print "      <p>Escriba el criterio de búsqueda (carácteres o números):</p>\n";
+        print "\n";
+        print "      <table>\n";
+        print "        <tbody>";
+        print "          <tr>";
+        print "            <td>Nombre:</td>";
+        print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+            . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\" /></td>";
+        print "          </tr>";
+        print "          <tr>";
+        print "            <td>Apellidos:</td>";
+        print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+            . "maxlength=\"" . TAM_APELLIDOS . "\" /></td>";
+        print "          </tr>";
+        print "          <tr>";
+        print "            <td>Teléfono:</td>";
+        print "            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
+            . "maxlength=\"" . TAM_TELEFONO . "\" /></td>";
+        print "          </tr>";
+        print "          <tr>";
+        print "            <td>Correo:</td>";
+        print "            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
+            . "maxlength=\"" . TAM_CORREO . "\" /></td>";
+        print "          </tr>";
+        print "        </tbody>";
+        print "      </table>";
+        print "\n";
+        print "      <p><input type=\"submit\" value=\"Buscar\" /></p>";
+        print "    </form>\n";
+        print "\n";
     }
 
     $db = NULL;

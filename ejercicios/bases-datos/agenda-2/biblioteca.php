@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  funciones.php
+ * Multiagenda -  biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    TRUE);   // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    FALSE);  // Para función cabecera()
+define('CABECERA_CON_CURSOR',    true);   // Para función cabecera()
+define('CABECERA_SIN_CURSOR',    false);  // Para función cabecera()
 define('FORM_METHOD',            'get');  // Formularios se envían con GET
 //define('FORM_METHOD',            'post'); // Formularios se envían con POST
 define('MYSQL',          'MySQL');
@@ -39,16 +39,16 @@ define('MAX_REG_USUARIOS', 20);  // Número máximo de registros en la tabla Usu
 define('MAX_REG_AGENDA',   20);  // Número máximo de registros en la tabla Agenda
 
 $dbMotor = SQLITE;                         // Base de datos empleada
-if ($dbMotor==MYSQL) {
-    define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
+if ($dbMotor == MYSQL) {
+    define('MYSQL_HOST',     'mysql:host=localhost'); // Nombre de host MYSQL
+    define('MYSQL_USUARIO',  'root');      // Nombre de usuario de MySQL
     define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
     $dbDb       = 'mclibre_multiagenda';  // Nombre de la base de datos
-    $dbUsuarios = $dbDb.'.usuarios';      // Nombre de la tabla de Usuarios
-    $dbAgenda   = $dbDb.'.agenda';        // Nombre de la tabla de Agendas
+    $dbUsuarios = $dbDb . '.usuarios';      // Nombre de la tabla de Usuarios
+    $dbAgenda   = $dbDb . '.agenda';        // Nombre de la tabla de Agendas
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
-} elseif ($dbMotor==SQLITE) {
+} elseif ($dbMotor == SQLITE) {
     $dbDb       = '/home/barto/mclibre/tmp/mclibre/mclibre_multiagenda.sqlite';  // Nombre de la base de datos
     $dbUsuarios = 'usuarios';             // Nombre de la tabla de Usuarios
     $dbAgenda   = 'agenda';               // Nombre de la tabla de Agendas
@@ -79,17 +79,19 @@ function conectaDb()
     global $dbMotor, $dbDb;
 
     try {
-        if ($dbMotor==MYSQL) {
+        if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
-            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
-        } elseif ($dbMotor==SQLITE) {
-            $db = new PDO('sqlite:'.$dbDb);
+            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        } elseif ($dbMotor == SQLITE) {
+            $db = new PDO('sqlite:' . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
         cabecera('Error grave', CABECERA_SIN_CURSOR, 'menu_principal');
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
-//        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
+//        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+//        print "\n";
         pie();
         exit();
     }
@@ -102,30 +104,37 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la base de datos.</p>\n";
+        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos creada correctamente.</p>\n";
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
         $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             usuario VARCHAR(" . TAM_USUARIO . "),
             password VARCHAR(".TAM_CIFRADO."),
             PRIMARY KEY(id) )";
         if ($db->query($consultaCreaTablaUsuarios)) {
-            print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Usuarios.</p>\n";
+            print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+            print "\n";
         }
         if ($administradorPassword!='') {
             $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '".md5($administradorPassword)."')";
             if ($db->query($consulta)) {
-                print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "\n";
             }
         }
         $consultaCreaTablaAgenda = "CREATE TABLE $dbAgenda (
@@ -137,12 +146,15 @@ function borraTodoMySQL($db)
             correo VARCHAR(" . TAM_CORREO . "),
             PRIMARY KEY(id) )";
         if ($db->query($consultaCreaTablaAgenda)) {
-            print "<p>Tabla de Agenda creada correctamente.</p>\n";
+            print "    <p>Tabla de Agenda creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Agenda.</p>\n";
+            print "    <p>Error al crear la tabla de Agenda.</p>\n";
+            print "\n";
         }
     } else {
-        print "<p>Error al crear la base de datos.</p>\n";
+        print "    <p>Error al crear la base de datos.</p>\n";
+        print "\n";
     }
 }
 
@@ -153,15 +165,19 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbAgenda";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Agenda borrada correctamente.</p>\n";
+        print "    <p>Tabla de Agenda borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Agenda.</p>\n";
+        print "    <p>Error al borrar la tabla de Agenda.</p>\n";
+        print "\n";
     }
     $consulta = "DROP TABLE $dbUsuarios";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "    <p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
@@ -169,17 +185,21 @@ function borraTodoSqlite($db)
         password VARCHAR(".TAM_CIFRADO.")
         )";
     if ($db->query($consultaCreaTablaUsuarios)) {
-        print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Usuarios.</p>\n";
+        print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     if ($administradorPassword!='') {
         $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '".md5($administradorPassword)."')";
         if ($db->query($consulta)) {
-            print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "\n";
         }
     }
     $consultaCreaTablaAgenda = "CREATE TABLE $dbAgenda (
@@ -191,9 +211,11 @@ function borraTodoSqlite($db)
         correo VARCHAR(" . TAM_CORREO . ")
         )";
     if ($db->query($consultaCreaTablaAgenda)) {
-       print "<p>Tabla de Agenda creada correctamente.</p>\n";
+        print "    <p>Tabla de Agenda creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Agenda.</p>\n";
+        print "    <p>Error al crear la tabla de Agenda.</p>\n";
+        print "\n";
     }
 }
 
@@ -259,10 +281,10 @@ function recogeMatrizParaConsulta($db, $var)
 function quitaComillasExteriores($var)
 {
     if (is_string($var)) {
-        if (isset($var[0]) && ($var[0]=="'")) {
+        if (isset($var[0]) && ($var[0] == "'")) {
             $var = substr($var, 1, strlen($var)-1);
         }
-        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1]=="'")) {
+        if (isset($var[strlen($var)-1]) && ($var[strlen($var)-1] == "'")) {
             $var = substr($var, 0, strlen($var)-1);
         }
     }
@@ -289,32 +311,33 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menu_principal'
     } else {
         print "<body>\n";
     }
-    print "<h1>Agenda ";
-    if ($menu=='menu_principal') {
+    print "  <h1>Agenda ";
+    if ($menu == 'menu_principal') {
         print "multiusuario";
     } else {
         print "de $menu";
     }
-    print " - $texto</h1>
-<div id=\"menu\">
-<ul>\n";
-    if ($menu=='menu_principal') {
-        print "  <li><a href=\"index.php\">Conectar</a></li>";
-    } elseif ($menu==$administradorNombre) {
-        print "  <li><a href=\"borrartodo1.php\">Borrar todo</a></li>
-  <li><a href=\"salir.php\">Desconectar</a></li>";
-    } else {
-        print "  <li><a href=\"anyadir1.php\">Añadir</a></li>
-  <li><a href=\"listar.php\">Listar</a></li>
-  <li><a href=\"modificar1.php\">Modificar</a></li>
-  <li><a href=\"buscar1.php\">Buscar</a></li>
-  <li><a href=\"borrar1.php\">Borrar</a></li>
-  <li><a href=\"salir.php\">Desconectar</a></li>";
-    }
-    print "</ul>\n";
-    print "</div>\n";
+    print " - $texto</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu=='menu_principal') {
+        print "      <li><a href=\"index.php\">Conectar</a></li>\n";
+    } elseif ($menu==$administradorNombre) {
+        print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+        print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
+    } else {
+        print "      <li><a href=\"insertar-1.php\">Añadir</a></li>\n";
+        print "      <li><a href=\"listar.php\">Listar</a></li>\n";
+        print "      <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
+        print "      <li><a href=\"burcar-1.php\">Buscar</a></li>\n";
+        print "      <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+        print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
+    }
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
@@ -322,11 +345,12 @@ function pie()
     global $administradorPassword, $_SESSION;
 
     if (($administradorPassword!='') &&!isset($_SESSION['multiagendaUsuario'])) {
-        print "<p><strong>Nota</strong>: El usuario Administrador "
+        print "    <p><strong>Nota</strong>: El usuario Administrador "
             . "se llama <strong>root</strong> y su contraseña es\ntambién "
             . "<strong>root</strong>.</p>\n";
+        print "\n";
     }
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";

@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  borrartodo2.php
+ * Multiagenda -  borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 session_start();
 
 if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario']!=$administradorNombre)) {
@@ -34,9 +34,9 @@ if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario']!
 } else {
     $db = conectaDb();
     cabecera('Borrar todo 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
-    if ($dbMotor==MYSQL) {
+    if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
-    } elseif ($dbMotor==SQLITE) {
+    } elseif ($dbMotor == SQLITE) {
         borraTodoSqlite($db);
     }
     $_SESSION = [];
