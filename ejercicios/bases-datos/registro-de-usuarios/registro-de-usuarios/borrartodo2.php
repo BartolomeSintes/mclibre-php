@@ -25,7 +25,7 @@
 require_once "biblioteca.php";
 session_start();
 
-if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"]!=$administradorNombre)) {
+if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] != $administradorNombre)) {
     header("Location:index.php");
     exit();
 } elseif (!isset($_REQUEST["si"])) {

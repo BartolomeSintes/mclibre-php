@@ -25,7 +25,7 @@
 session_start();
 include('funciones.php');
 
-if (!isset($_SESSION['compraventaUsuario']) || ($_SESSION['compraventaUsuario']!=$administradorNombre)) {
+if (!isset($_SESSION['compraventaUsuario']) || ($_SESSION['compraventaUsuario'] != $administradorNombre)) {
     header('Location:index.php');
     exit();
 } elseif (!isset($_REQUEST['si'])) {

@@ -340,25 +340,25 @@ function cabecera($texto, $menu='menu_principal')
 <h1>Citas - $texto</h1>
 <div id=\"menu\">
 <ul>";
-    if ($menu=='menu_principal') {
+    if ($menu == 'menu_principal') {
         print "
   <li><a href=\"cit-listar.php\">Ver citas</a></li>
   <li><a href=\"aut-listar.php\">Ver autores</a></li>
   <li><a href=\"eti-listar.php\">Ver etiquetas</a></li>
   <li><a href=\"index.php\">Conectar</a></li>";
-    } elseif ($menu=='menu_autores') {
+    } elseif ($menu == 'menu_autores') {
         print "
   <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"aut-listar.php\">Listar</a></li>
   <li><a href=\"aut-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"aut-borrar-1.php\">Borrar</a></li>";
-      } elseif ($menu=='menu_etiquetas') {
+      } elseif ($menu == 'menu_etiquetas') {
         print "
   <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"eti-listar.php\">Listar</a></li>
   <li><a href=\"eti-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"eti-borrar-1.php\">Borrar</a></li>";
-      } elseif ($menu=='menu_citas') {
+      } elseif ($menu == 'menu_citas') {
         print "
   <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"cit-listar.php\">Listar</a></li>

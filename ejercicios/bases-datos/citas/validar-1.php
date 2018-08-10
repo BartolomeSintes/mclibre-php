@@ -30,7 +30,7 @@ $usuario  = quitaComillasExteriores($usuario);
 $password = recogeParaConsulta($db, 'password');
 $password = quitaComillasExteriores($password);
 
-if (!$usuario || ($usuario=='menu_principal')) {
+if (!$usuario || ($usuario == 'menu_principal')) {
     header('Location:index.php?aviso=Nombre de usuario no permitido');
     exit();
 } else {

@@ -80,7 +80,7 @@ if (!$result) {
                     print "<p>Error en la consulta.</p>\n";
                 } else {
                     $num = $result2->fetchColumn();
-                    if ($max!=$min) {
+                    if ($max != $min) {
                         $tamanyo = $minFontSize+round(($num-$min)*($maxFontSize-$minFontSize)/($max-$min));
                     } else {
                         $tamanyo = round(($minFontSize+$maxFontSize)/2);

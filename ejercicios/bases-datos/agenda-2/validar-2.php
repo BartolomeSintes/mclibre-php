@@ -38,7 +38,7 @@ if (isset($_SESSION['multiagendaUsuario'])) {
     exit();
 } else {
     session_destroy();
-    if (!$usuario|| ($usuario=='menu_principal')) {
+    if (!$usuario|| ($usuario == 'menu_principal')) {
         header('Location:index.php?aviso=Nombre de usuario no permitido');
         exit();
     } elseif ($password!=md5($password2)) {

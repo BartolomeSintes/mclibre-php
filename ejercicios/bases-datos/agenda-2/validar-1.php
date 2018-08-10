@@ -30,7 +30,7 @@ $usuario  = quitaComillasExteriores($usuario);
 $password = recogeParaConsulta($db, 'password');
 $password = quitaComillasExteriores($password);
 
-if (!$usuario|| ($usuario=='menu_principal')) {
+if (!$usuario|| ($usuario == 'menu_principal')) {
     header('Location:index.php?aviso=Nombre de usuario no permitido');
     exit();
 } else {
@@ -58,6 +58,7 @@ if (!$usuario|| ($usuario=='menu_principal')) {
             cabecera('Identificación 2', CABECERA_CON_CURSOR, 'menu_principal');
             print "    <p><strong>$usuario</strong> es un nuevo usuario. Por favor, "
                 . "repita la contraseña para registrarse como usuario.</p>\n";
+            print "\n";
             print "    <form action=\"validar-2.php\" method=\"" . FORM_METHOD . "\">\n";
             print "      <table>\n";
             print "        <tbody>\n";

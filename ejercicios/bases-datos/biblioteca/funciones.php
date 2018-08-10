@@ -190,7 +190,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
     print "<h1>Biblioteca - $texto</h1>
 <div id=\"menu\">
 <ul>\n";
-    if ($menu=='menuObras') {
+    if ($menu == 'menuObras') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"obr-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"obr-listar.php\">Listar</a></li>
@@ -198,7 +198,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
   <li><a href=\"obr-modificar-1.php\">Modificar</a></li>
   <li><a href=\"obr-borrar-1.php\">Borrar</a></li>
   <li><a href=\"obr-borrar-todo-1.php\">Borrar todo</a></li>";
-    } elseif ($menu=='menuUsuarios') {
+    } elseif ($menu == 'menuUsuarios') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"usu-anyadir-1.php\">Añadir</a></li>
   <li><a href=\"usu-listar.php\">Listar</a></li>
@@ -206,7 +206,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
   <li><a href=\"usu-modificar-1.php\">Modificar</a></li>
   <li><a href=\"usu-borrar-1.php\">Borrar</a></li>
   <li><a href=\"usu-borrar-todo-1.php\">Borrar todo</a></li>";
-    } elseif ($menu=='menuPrestamos') {
+    } elseif ($menu == 'menuPrestamos') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"pre-anyadir-1.php\">Préstamo</a></li>
   <li><a href=\"pre-devolucion-1.php\">Devolución</a></li>

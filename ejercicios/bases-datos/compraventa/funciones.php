@@ -291,19 +291,19 @@ function cabecera($texto, $menu='menu_principal')
 <h1>Compraventa - $texto</h1>
 <div id=\"menu\">
 <ul>\n";
-    if ($menu=='menu_principal') {
+    if ($menu == 'menu_principal') {
         print "  <li><a href=\"index.php\">Conectar</a></li>
     <li><a href=\"listar.php\">Ver artículos</a></li>";
     } elseif ($menu==$administradorNombre) {
         print "    <li><a href=\"adm-borrar-todo-1.php\">Borrar todo</a></li>
     <li><a href=\"salir.php\">Desconectar</a></li>";
-    } elseif ($menu=='compra') {
+    } elseif ($menu == 'compra') {
         print "    <li><a href=\"index.php\">Inicio</a></li>
     <li><a href=\"listar.php?compraventa=compra\">Artículos en venta</a></li>
     <li><a href=\"com_reservar1.php\">Reservar</a></li>
     <li><a href=\"com_anularreserva1.php\">Anular</a></li>
     <li><a href=\"com_comprar1.php\">Comprar</a></li>";
-    } elseif ($menu=='venta') {
+    } elseif ($menu == 'venta') {
         print "    <li><a href=\"index.php\">Inicio</a></li>
     <li><a href=\"ven_anyadir1.php\">Añadir</a></li>
     <li><a href=\"listar.php?compraventa=venta\">Ver</a></li>

@@ -25,7 +25,7 @@
 session_start();
 include('funciones.php');
 
-if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario']!=$administradorNombre)) {
+if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario'] != $administradorNombre)) {
     header('Location:index.php');
     exit();
 } elseif (!isset($_REQUEST['si'])) {

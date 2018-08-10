@@ -32,7 +32,7 @@ $campo = quitaComillasExteriores($campo);
 $orden = recogeParaConsulta($db, 'orden', 'ASC');
 $orden = quitaComillasExteriores($orden);
 
-if ($id=='') {
+if ($id == '') {
   print "<p>No se ha marcado nada para borrar.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbDiscusiones

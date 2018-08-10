@@ -235,11 +235,11 @@ function calendario ($fecha, $enlaces)
             for ($i=0; $i<7; $i++) {
                 $num = $num_inicio + $i;
                 if (($num>0) && ($num<=$duraMeses[(int)($mes)])) {
-                    if ($enlaces=='editar') {
+                    if ($enlaces == 'editar') {
                         print "      <td class=\"enlace\"><a href=\"editar.php"
                             . "?fecha=$anyo-$mes-".sprintf("%02d", $num)
                             . "\">$num</a></td>\n";
-                    } elseif ($enlaces=='leer') {
+                    } elseif ($enlaces == 'leer') {
                         $consulta = "SELECT COUNT(*) FROM $dbEntradas WHERE "
                             . "fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
                         $result = $db->query($consulta);

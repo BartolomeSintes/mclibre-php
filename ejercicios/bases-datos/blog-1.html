@@ -224,11 +224,11 @@ function calendario ($fecha, $enlaces)
 
     $jd = gregoriantojd($mes, 1, $anyo);
     $dia = (jddayofweek($jd, 0)+6)%7;
-    $dias = ['L', 'M', 'X','J','V','S','D'];
+    $dias = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
     $diaSemana = $dias[$dia];
 
     print "&lt;div class=\"calendario\"&gt;\n  &lt;table border=\"1\" class=\"calendario\" &gt;\n";
-    if ($enlaces=="editar") {
+    if ($enlaces == "editar") {
         print "    &lt;caption&gt;&lt;a href=\"editar.php?fecha=$fechaAnt\"&gt;&amp;lt;&amp;lt;&lt;/a&gt; "
             . $meses[(int)($mes)] . " de $anyo &lt;a href=\"editar.php?fecha="
             . "$fechaSig\"&gt;&amp;gt;&amp;gt;&lt;/a&gt;
@@ -247,11 +247,11 @@ function calendario ($fecha, $enlaces)
             for ($i=0; $i&lt;7; $i++) {
                 $num = $num_inicio + $i;
                 if ($num &gt; 0 &amp;&amp; $num &lt;= $duraMeses[(int)($mes)]) {
-                    if ($enlaces=='editar') {
+                    if ($enlaces == 'editar') {
                         print "      &lt;td class=\"enlace\"&gt;&lt;a href=\"editar.php"
                             . "?fecha=$anyo-$mes-".sprintf("%02d", $num)
                             . "\"&gt;$num&lt;/a&gt;&lt;/td&gt;\n";
-                    } elseif ($enlaces=='leer') {
+                    } elseif ($enlaces == 'leer') {
                         $consulta = "SELECT COUNT(*) FROM $dbEntradas WHERE "
                             . "fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
                         $result = $db-&gt;query($consulta);

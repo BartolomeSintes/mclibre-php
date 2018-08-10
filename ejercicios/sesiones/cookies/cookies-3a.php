@@ -53,10 +53,10 @@ print "<body>\n";
 print "  <h1>Comprobación de cookies</h1>\n";
 print "\n";
 
-if ($admiteCookies=='1') {
+if ($admiteCookies == '1') {
     print "  <p>El navegador acepta cookies.</p>\n";
     print "\n";
-} elseif ($admiteCookies=='0') {
+} elseif ($admiteCookies == '0') {
     print "  <p>El navegador no acepta cookies.</p>\n";
     print "\n";
 } else {

@@ -181,13 +181,13 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
     print "<h1>Foro - $texto</h1>
 <div id=\"menu\">
 <ul>\n";
-    if ($menu=='menuDiscusiones') {
+    if ($menu == 'menuDiscusiones') {
         print "  <li><a href=\"index.php\">Inicio</a></li>";
-    } elseif ($menu=='menuHilos') {
+    } elseif ($menu == 'menuHilos') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"hil-anyadir-1.php?hilo=$id\">Intervenir</a></li>
   <li><a href=\"hil-index.php?hilo=$id\">Ver intervenciones</a></li>";
-    } elseif ($menu=='menuEditor') {
+    } elseif ($menu == 'menuEditor') {
         print "  <li><a href=\"index.php\">Inicio</a></li>
   <li><a href=\"edi-borrar-disc-1.php\">Borrar discusiones</a></li>
   <li><a href=\"edi-borrar-inte-1.php\">Borrar intervenciones</a></li>

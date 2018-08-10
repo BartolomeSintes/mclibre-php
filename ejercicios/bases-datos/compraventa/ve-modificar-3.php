@@ -73,7 +73,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                 print "<p>Error en la consulta.</p>\n";
             } else {
                 $valor = $result->fetch();
-                if ($valor['id']!=$id) {
+                if ($valor['id'] != $id) {
                     print "<p>Ya existe un registro con esos mismos valores. "
                         . "No se ha guardado la modificación.</p>\n";
                 } else {
