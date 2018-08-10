@@ -1,6 +1,6 @@
 <?php
 /**
- * Poliagenda -  validar2.php
+ * Poliagenda -  validar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -23,7 +23,7 @@
  */
 
 session_start();
-include("funciones.php");
+include("biblioteca.php");
 $db = conectaDb();
 
 $usuario   = recogeParaConsulta($db, 'usuario');
@@ -42,11 +42,11 @@ if (isset($_SESSION['multiagendaUsuario'])) {
     session_destroy();
     session_start();
     $_SESSION['multiagendaIdioma']    = $tmpIdioma;
-    if (!$usuario || ($usuario=='menu_principal')) {
-        header('Location:index.php?aviso='._('Nombre de usuario no permitido'));
+    if (!$usuario || ($usuario == 'menu_principal')) {
+        header('Location:index.php?aviso=' . _('Nombre de usuario no permitido'));
         exit();
     } elseif ($password!=md5($password2)) {
-        header('Location:index.php?aviso='._('Error: Las contraseñas no coinciden'));
+        header('Location:index.php?aviso=' . _('Error: Las contraseñas no coinciden'));
         exit();
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
@@ -54,37 +54,45 @@ if (isset($_SESSION['multiagendaUsuario'])) {
         $result = $db->query($consulta);
         if (!$result) {
             cabecera(_('Identificación').' 3', 'menu_principal');
-            print "<p>"._('Error en la consulta').".</p>";
+            print "    <p>" . _('Error en la consulta') . ".</p>";
+            print "\n";
         } elseif ($result->fetchColumn()==1) {
             cabecera(_('Identificación').' 3', 'menu_principal');
-            print "<p>"._('El nombre de usuario ya está registrado').".</p>";
+            print "    <p>" . _('El nombre de usuario ya está registrado') . ".</p>";
+            print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>"._('Error en la consulta').".</p>";
+                print "    <p>" . _('Error en la consulta') . ".</p>";
+                print "\n";
             } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-                print "<p>"._('Se ha alcanzado el número máximo de Usuarios que se pueden guardar')
-                    . ".</p>\n<p>"._('Por favor, borre algún registro antes').".</p>\n";
+                print "    <p>" . _('Se ha alcanzado el número máximo de Usuarios que se pueden guardar') . ".</p>\n";
+                print "\n";
+                print "    <p>" . _('Por favor, borre algún registro antes') . ".</p>\n";
+                print "\n";
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password', '$tmpIdioma')";
                 if (!$db->query($consulta)) {
                     cabecera(_('Identificación').' 3', 'menu_principal');
-                    print "<p>"._('Error al crear el registro').".<p>\n";
+                    print "    <p>" . _('Error al crear el registro') . ".<p>\n";
+                    print "\n";
                 } else {
                     $consulta = "SELECT * FROM $dbUsuarios
                         WHERE usuario='$usuario'";
                     $result = $db->query($consulta);
                     if (!$result) {
                         cabecera(_('Identificación').' 3', 'menu_principal');
-                        print "<p>"._('Error en la consulta').".</p>";
+                        print "    <p>" . _('Error en la consulta') . ".</p>";
+                        print "\n";
                     } else {
                         $valor = $result->fetch();
                         $_SESSION['multiagendaIdUsuario'] = $valor['id'];
                         $_SESSION['multiagendaUsuario']   = $valor['usuario'];
                         cabecera(_('Identificación').' 3', $usuario);
-                        print "  <p>"._('Bienvenido/a').", <strong>$usuario</strong>. "._('Ya es usted un usuario registrado y puede crear su agenda').".</p>";
+                        print "    <p>" . _('Bienvenido/a') . ", <strong>$usuario</strong>. " . _('Ya es usted un usuario registrado y puede crear su agenda') . ".</p>";
+                        print "\n";
                     }
                 }
             }

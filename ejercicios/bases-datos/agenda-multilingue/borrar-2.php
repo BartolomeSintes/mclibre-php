@@ -1,6 +1,6 @@
 <?php
 /**
- * Poliagenda -  borrar2.php
+ * Poliagenda -  borrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,22 +27,25 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera(_('Borrar').' 2', $_SESSION['multiagendaUsuario']);
 
     $id = recogeMatrizParaConsulta($db, 'id');
 
     if (count($id) == 0) {
-      print "<p>"._('No se ha marcado nada para borrar').".</p>\n";
+      print "    <p>" . _('No se ha marcado nada para borrar') . ".</p>\n";
+      print "\n";
     } else {
         foreach ($id as $indice => $valor) {
             $consulta = "DELETE FROM $dbAgenda
                 WHERE id=$indice";
             if ($db->query($consulta)) {
-                print "<p>"._('Registro borrado correctamente').".</p>\n";
+                print "    <p>" . _('Registro borrado correctamente') . ".</p>\n";
+                print "\n";
             } else {
-                print "<p>"._('Error al borrar el registro').".</p>\n";
+                print "    <p>" . _('Error al borrar el registro') . ".</p>\n";
+                print "\n";
             }
         }
     }

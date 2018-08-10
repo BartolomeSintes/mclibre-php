@@ -1,6 +1,6 @@
 <?php
 /**
- * Poliagenda -  borrartodo2.php
+ * Poliagenda -  borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -23,9 +23,9 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 
-if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario']!=$administradorNombre)) {
+if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario'] != $administradorNombre)) {
     header('Location:index.php');
     exit();
 } elseif (!isset($_REQUEST['si'])) {

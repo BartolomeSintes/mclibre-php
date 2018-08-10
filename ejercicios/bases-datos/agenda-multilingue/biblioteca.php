@@ -1,6 +1,6 @@
 <?php
 /**
- * Poliagenda -  funciones.php
+ * Poliagenda -  biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -95,8 +95,10 @@ function conectaDb()
         return($db);
     } catch (PDOException $e) {
         cabecera(_('Error grave'));
-        print "<p>"._('Error: No puede conectarse con la base de datos').".</p>\n";
+        print "    <p>" . _('Error: No puede conectarse con la base de datos') . ".</p>\n";
+        print "\n";
 //        print "<p>Error: " . $e->getMessage() . "</p>\n";
+//        print "\n";
         pie();
         exit();
     }
@@ -110,13 +112,16 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>"._('Base de datos borrada correctamente').".</p>\n";
+        print "    <p>" . _('Base de datos borrada correctamente') . ".</p>\n";
+        print "\n";
     } else {
-        print "<p>"._('Error al borrar la base de datos').".</p>\n";
+        print "    <p>" . _('Error al borrar la base de datos') . ".</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>"._('Base de datos creada correctamente').".</p>\n";
+        print "    <p>" . _('Base de datos creada correctamente') . ".</p>\n";
+        print "\n";
         $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             usuario VARCHAR($tamUsuario),
@@ -124,18 +129,22 @@ function borraTodoMySQL($db)
             idioma VARCHAR($tamIdioma),
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_usuarios)) {
-            print "<p>"._('Tabla de Usuarios creada correctamente').".</p>\n";
+            print "    <p>" . _('Tabla de Usuarios creada correctamente') . ".</p>\n";
+            print "\n";
         } else {
-            print "<p>"._('Error al crear la tabla de Usuarios').".</p>\n";
+            print "    <p>" . _('Error al crear la tabla de Usuarios') . ".</p>\n";
+            print "\n";
         }
         if ($administradorPassword!='') {
             $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '" . md5($administradorPassword)
                 . "', '$tamIdioma')";
             if ($db->query($consulta)) {
-                print "<p>"._('Registro de Usuario Administrador creado correctamente').".</p>\n";
+                print "    <p>" . _('Registro de Usuario Administrador creado correctamente') . ".</p>\n";
+                print "\n";
             } else {
-                print "<p>"._('Error al crear el registro de Usuario Administrador').".</p>\n";
+                print "    <p>" . _('Error al crear el registro de Usuario Administrador') . ".</p>\n";
+                print "\n";
             }
         }
         $consulta_creatabla_agenda = "CREATE TABLE $dbAgenda (
@@ -147,12 +156,15 @@ function borraTodoMySQL($db)
             correo VARCHAR($tamCorreo),
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_agenda)) {
-            print "<p>"._('Tabla de Agenda creada correctamente').".</p>\n";
+            print "    <p>" . _('Tabla de Agenda creada correctamente') . ".</p>\n";
+            print "\n";
         } else {
-            print "<p>"._('Error al crear la tabla de Agenda').".</p>\n";
+            print "    <p>" . _('Error al crear la tabla de Agenda') . ".</p>\n";
+            print "\n";
         }
     } else {
-        print "<p>"._('Error al crear la base de datos').".</p>\n";
+        print "    <p>" . _('Error al crear la base de datos') . ".</p>\n";
+        print "\n";
     }
 }
 
@@ -164,15 +176,19 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbAgenda";
     if ($db->query($consulta)) {
-       print "<p>"._('Tabla de Agenda borrada correctamente').".</p>\n";
+       print "    <p>" . _('Tabla de Agenda borrada correctamente') . ".</p>\n";
+       print "\n";
     } else {
-        print "<p>"._('Error al borrar la tabla de Agenda').".</p>\n";
+        print "    <p>" . _('Error al borrar la tabla de Agenda') . ".</p>\n";
+        print "\n";
     }
     $consulta = "DROP TABLE $dbUsuarios";
     if ($db->query($consulta)) {
-       print "<p>"._('Tabla de Usuarios borrada correctamente').".</p>\n";
+       print "    <p>" . _('Tabla de Usuarios borrada correctamente') . ".</p>\n";
+       print "\n";
     } else {
-        print "<p>"._('Error al borrar la tabla de Usuarios').".</p>\n";
+        print "    <p>" . _('Error al borrar la tabla de Usuarios') . ".</p>\n";
+        print "\n";
     }
     $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
@@ -181,18 +197,22 @@ function borraTodoSqlite($db)
         idioma VARCHAR($tamIdioma)
         )";
     if ($db->query($consulta_creatabla_usuarios)) {
-        print "<p>"._('Tabla de Usuarios creada correctamente.')."</p>\n";
+        print "    <p>" . _('Tabla de Usuarios creada correctamente.') . "</p>\n";
+        print "\n";
     } else {
-        print "<p>"._('Error al crear la tabla de Usuarios').".</p>\n";
+        print "    <p>" . _('Error al crear la tabla de Usuarios') . ".</p>\n";
+        print "\n";
     }
     if ($administradorPassword!='') {
         $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
             '$administradorNombre', '" . md5($administradorPassword)
             . "', '$tamIdioma')";
         if ($db->query($consulta)) {
-            print "<p>"._('Registro de Usuario Administrador creado correctamente').".</p>\n";
+            print "    <p>" . _('Registro de Usuario Administrador creado correctamente') . ".</p>\n";
+            print "\n";
         } else {
-            print "<p>"._('Error al crear el registro de Usuario Administrador').".</p>\n";
+            print "    <p>" . _('Error al crear el registro de Usuario Administrador') . ".</p>\n";
+            print "\n";
         }
     }
     $consulta_creatabla_agenda = "CREATE TABLE $dbAgenda (
@@ -204,9 +224,11 @@ function borraTodoSqlite($db)
         correo VARCHAR($tamCorreo)
         )";
     if ($db->query($consulta_creatabla_agenda)) {
-       print "<p>"._('Tabla de Agenda creada correctamente').".</p>\n";
+       print "    <p>" . _('Tabla de Agenda creada correctamente') . ".</p>\n";
+       print "\n";
     } else {
-        print "<p>"._('Error al crear la tabla de Agenda').".</p>\n";
+        print "    <p>" . _('Error al crear la tabla de Agenda') . ".</p>\n";
+        print "\n";
     }
 }
 
@@ -293,10 +315,10 @@ function recogeIdioma()
 
 function menuIdioma()
 {
-    print   "<ul>
-    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=en_GB\">English</a></li>
-    <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=es_ES\">Español</a></li>
-  </ul>\n";
+    print "    <ul>\n";
+    print "      <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=en_GB\">English</a></li>\n";
+    print "      <li><a href=\"".$_SERVER['PHP_SELF']."?idioma=es_ES\">Español</a></li>\n";
+    print "    </ul>\n";
 }
 
 function cabecera($texto, $menu='menu_principal')
@@ -307,7 +329,7 @@ function cabecera($texto, $menu='menu_principal')
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\" />\n";
-    print "  <title>"._("Agenda multilingüe").". $texto.\n";
+    print "  <title>" . _("Agenda multilingüe") . ". $texto.\n";
     print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
     print "  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
@@ -315,30 +337,32 @@ function cabecera($texto, $menu='menu_principal')
     print "\n";
 
     print "<body onload=\"document.getElementById('cursor').focus()\">\n";
-    if ($menu=='menu_principal') {
-        print "<h1>"._('Agenda multilingüe');
+    if ($menu == 'menu_principal') {
+        print "  <h1>" . _('Agenda multilingüe');
     } else {
-        print "<h1>"._('Agenda de')." $menu";
+        print "  <h1>" . _('Agenda de') . " $menu";
     }
-    print " - "._($texto)."</h1>
-<div id=\"menu\">
-<ul>\n";
-    if ($menu=='menu_principal') {
-        print "  <li><a href=\"index.php\">"._('Conectar')."</a></li>";
-    } elseif ($menu==$administradorNombre) {
-        print "  <li><a href=\"borrartodo1.php\">"._('Borrar todo')."</a></li>
-  <li><a href=\"salir.php\">"._("Desconectar")."</a></li>";
-    } else {
-        print "  <li><a href=\"anyadir1.php\">"._('Añadir')."</a></li>
-  <li><a href=\"listar.php\">"._('Listar')."</a></li>
-  <li><a href=\"modificar1.php\">"._('Modificar')."</a></li>
-  <li><a href=\"buscar1.php\">"._('Buscar')."</a></li>
-  <li><a href=\"borrar1.php\">"._('Borrar')."</a></li>
-  <li><a href=\"salir.php\">"._('Desconectar')."</a></li>";
-    }
-    print "</ul>\n</div>\n";
+    print " - " . _($texto) . "</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu == 'menu_principal') {
+        print "      <li><a href=\"index.php\">" . _('Conectar') . "</a></li>\n";
+    } elseif ($menu==$administradorNombre) {
+        print "      <li><a href=\"borrar-todo-1.php\">" . _('Borrar todo') . "</a></li>\n";
+        print "      <li><a href=\"salir.php\">" . _("Desconectar") . "</a></li>\n";
+    } else {
+        print "      <li><a href=\"insertar-1.php\">" . _('Añadir') . "</a></li>\n";
+        print "      <li><a href=\"listar.php\">" . _('Listar') . "</a></li>\n";
+        print "      <li><a href=\"modificar-1.php\">" . _('Modificar') . "</a></li>\n";
+        print "      <li><a href=\"buscar-1.php\">" . _('Buscar') . "</a></li>\n";
+        print "      <li><a href=\"borrar-1.php\">" . _('Borrar') . "</a></li>\n";
+        print "      <li><a href=\"salir.php\">" . _('Desconectar') . "</a></li>\n";
+    }
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
@@ -346,35 +370,21 @@ function pie()
     global $administradorPassword, $_SESSION;
 
     if (($administradorPassword!='')&&!isset($_SESSION['multiagendaUsuario'])) {
-        print "<p><strong>"._('Nota')."</strong>: "
-          ._('El usuario Administrador se llama <strong>root</strong> y su contraseña es también <strong>root</strong>').".</p>\n";
+        print "    <p><strong>" . _('Nota') . "</strong>: "
+           . _('El usuario Administrador se llama <strong>root</strong> y su contraseña es también <strong>root</strong>') . ".</p>\n";
+        print "\n";
     }
-/*
-    print '</div>
-
-<div id="pie">
-<address>
-  '._('Este programa forma parte del curso "Páginas web con PHP" disponible en').' <a
-  href="http://www.mclibre.org/">http://www.mclibre.org</a><br />
-  '._('Autor').': Bartolomé Sintes Marco<br />
-  '._('Última modificación de este programa: 27 de febrero de 2008').'
-</address>
-<p class="licencia">'._('El programa PHP que genera esta página está bajo <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior').'</a>.</p>
-</div>
-</body>
-</html>';
-*/
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
-    print "      "._("Última modificación de esta página").":\n";
-    print "      <time datetime=\"2008-02-27\">"._("27 de febrero de 2008")."</time>\n";
+    print "      " . _("Última modificación de esta página") . ":\n";
+    print "      <time datetime=\"2008-02-27\">" . _("27 de febrero de 2008") . "</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
-    print "      ".("Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\"").">\n";
+    print "      ".("Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\"") . ">\n";
     print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
     print "      Sintes Marco</a>.<br />\n";
     print "      El programa PHP que genera esta página está bajo\n";

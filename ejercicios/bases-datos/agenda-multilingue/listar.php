@@ -27,7 +27,7 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera(_('Listar'), $_SESSION['multiagendaUsuario']);
 
@@ -40,57 +40,73 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
         WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>"._('Error en la consulta').".</p>\n";
+        print "    <p>" . _('Error en la consulta') . ".</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>"._('No se ha creado todavía ningún registro').".</p>\n";
+        print "    <p>" . _('No se ha creado todavía ningún registro') . ".</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT * FROM $dbAgenda
             WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'
             ORDER BY $campo $orden";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>"._('Error en la consulta').".</p>\n";
+            print "    <p>" . _('Error en la consulta') . ".</p>\n";
+            print "\n";
         } else {
-            print "<p>"._('Listado completo de registros').":</p>\n<table border=\"1\">
-      <thead>
-        <tr class=\"neg\">
-          <th><a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=ASC\">
-            <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-            "._('Nombre')."
-            <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=DESC\">
-            <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-          <th><a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">
-            <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-            "._('Apellidos')."
-            <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">
-            <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-          <th><a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=ASC\">
-            <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-            "._('Teléfono')."
-            <a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=DESC\">
-            <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
-          <th><a href=\"$_SERVER[PHP_SELF]?campo=correo&amp;orden=ASC\">
-            <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-            "._('Correo')."
-            <a href=\"$_SERVER[PHP_SELF]?campo=correo&amp;orden=DESC\">
-            <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        </tr>
-      </thead>
-      <tbody>\n";
+            print "    <p>" . _('Listado completo de registros') . ":</p>\n";
+            print "\n";
+            print "    <table border=\"1\">\n";
+            print "      <thead>\n";
+            print "        <tr class=\"neg\">\n";
+            print "          <th>\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "            " . _('Nombre') . "\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "          </th>\n";
+            print "          <th>\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "            " . _('Apellidos') . "\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "          </th>\n";
+            print "          <th>\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+            print "            " . _('Teléfono') . "\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+            print "          </th>\n";
+            print "          <th>\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=correo&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "            " . _('Correo') . "\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=correo&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "          </th>\n";
+            print "        </tr>\n";
+            print "      </thead>\n";
+            print "      <tbody>\n";
             $tmp = true;
             foreach ($result as $valor) {
                 if ($tmp) {
-                    print "    <tr>\n";
+                    print "        <tr>\n";
                 } else {
-                    print "    <tr class=\"neg\">\n";
+                    print "        <tr class=\"neg\">\n";
                 }
                 $tmp = !$tmp;
-                print "      <td>$valor[nombre]</td>
-          <td>$valor[apellidos]</td>
-          <td>$valor[telefono]</td>
-          <td>$valor[correo]</td>\n    </tr>\n";
+                print "          <td>$valor[nombre]</td>\n";
+                print "          <td>$valor[apellidos]</td>\n";
+                print "          <td>$valor[telefono]</td>\n";
+                print "          <td>$valor[correo]</td>\n";
+                print "        </tr>\n";
             }
-            print "  </tbody>\n</table>\n";
+            print "      </tbody>\n";
+            print "    </table>\n";
+            print "\n";
         }
     }
 

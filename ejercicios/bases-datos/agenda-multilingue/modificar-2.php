@@ -1,6 +1,6 @@
 <?php
 /**
- * Poliagenda -  modificar2.php
+ * Poliagenda -  modificar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,61 +27,70 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera(_('Modificar').' 2', $_SESSION['multiagendaUsuario']);
 
     $id = recogeParaConsulta($db, 'id');
 
     if ($id == "''") {
-        print "<p>"._('No se ha seleccionado ningún registro').".</p>\n";
+        print "    <p>" . _('No se ha seleccionado ningún registro') . ".</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAgenda
             WHERE id=$id
             AND id_usuario='$_SESSION[multiagendaIdUsuario]'";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>"._('Error en la consulta').".</p>\n";
+            print "    <p>" . _('Error en la consulta') . ".</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn() == 0) {
-            print "<p>"._('Registro no encontrado').".</p>\n";
+            print "    <p>" . _('Registro no encontrado') . ".</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT * FROM $dbAgenda
                 WHERE id=$id
                 AND id_usuario='$_SESSION[multiagendaIdUsuario]'";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>"._('Error en la consulta').".</p>\n";
+                print "    <p>" . _('Error en la consulta') . ".</p>\n";
+                print "\n";
             } else {
                 $valor = $result->fetch();
-                print "<form action=\"modificar3.php\" method=\"get\">
-      <p>"._('Modifique los campos que desee').":</p>
-      <table>
-        <tbody>
-          <tr>
-            <td>"._('Nombre').":</td>
-            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" "
-                    . "value=\"$valor[nombre]\" id=\"cursor\" /></td>
-          </tr>
-          <tr>
-            <td>"._('Apellidos').":</td>
-            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" "
-                    . "value=\"$valor[apellidos]\" /></td>
-          </tr>
-          <tr>
-            <td>"._('Teléfono').":</td>
-            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" "
-                    . "value=\"$valor[telefono]\" /></td>
-          </tr>
-          <tr>
-            <td>"._('Correo').":</td>
-            <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" "
-                    . "value=\"$valor[correo]\" /></td>
-          </tr>
-        </tbody>
-      </table>
-      <p><input type=\"hidden\" name=\"id\" value=\"$id\" />
-        <input type=\"submit\" value=\""._('Actualizar')."\" /></p>
-    </form>\n";
+                print "    <form action=\"modificar-3.php\" method=\"get\">\n";
+                print "      <p>" . _('Modifique los campos que desee') . ":</p>\n";
+                print "\n";
+                print "      <table>\n";
+                print "        <tbody>\n";
+                print "          <tr>\n";
+                print "            <td>" . _('Nombre') . ":</td>\n";
+                print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" "
+                    . "value=\"$valor[nombre]\" id=\"cursor\" /></td>\n";
+                print "          </tr>\n";
+                print "          <tr>\n";
+                print "            <td>" . _('Apellidos') . ":</td>\n";
+                print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" "
+                    . "value=\"$valor[apellidos]\" /></td>\n";
+                print "          </tr>\n";
+                print "          <tr>\n";
+                print "            <td>" . _('Teléfono') . ":</td>\n";
+                print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" "
+                    . "value=\"$valor[telefono]\" /></td>\n";
+                print "          </tr>\n";
+                print "          <tr>\n";
+                print "            <td>" . _('Correo') . ":</td>\n";
+                print "            <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" "
+                    . "value=\"$valor[correo]\" /></td>\n";
+                print "          </tr>\n";
+                print "        </tbody>\n";
+                print "      </table>\n";
+                print "\n";
+                print "      <p>\n";
+                print "        <input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+                print "        <input type=\"submit\" value=\"" . _('Actualizar') . "\" />\n";
+                print "      </p>\n";
+                print "    </form>\n";
+                print "\n";
             }
         }
     }

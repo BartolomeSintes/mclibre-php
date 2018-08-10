@@ -1,6 +1,6 @@
 <?php
 /**
- * Poliagenda -  borrartodo1.php
+ * Poliagenda -  borrar-todo-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -23,19 +23,23 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 
-if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario']!=$administradorNombre)) {
+if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario'] != $administradorNombre)) {
     header('Location:index.php');
     exit();
 } else {
     cabecera(_('Borrar todo').' 1', $_SESSION['multiagendaUsuario']);
 
-    print "<form action=\"borrartodo2.php\" method=\"get\">
-  <p>"._('¿Está seguro?')."</p>
-  <p><input type=\"submit\" value=\""._('Sí')."\" name=\"si\" />
-    <input type=\"submit\" value=\""._('No')."\" name=\"no\" /></p>
-</form>\n";
+    print "    <form action=\"borrar-todo-2.php\" method=\"get\">\n";
+    print "      <p>" . _('¿Está seguro?') . "</p>\n";
+    print "\n";
+    print "      <p>\n";
+    print "        <input type=\"submit\" value=\"" . _('Sí') . "\" name=\"si\" />\n";
+    print "        <input type=\"submit\" value=\"" . _('No') . "\" name=\"no\" />\n";
+    print "      </p>\n";
+    print "    </form>\n";
+    print "\n";
 
     pie();
 }
