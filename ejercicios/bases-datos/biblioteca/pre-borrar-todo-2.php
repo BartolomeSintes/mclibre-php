@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 
 function borraTodoMySQL($db)
 {
@@ -30,9 +30,11 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP TABLE $dbPrestamos";
     if ($db->query($consulta)) {
-        print "<p>Tabla de Préstamos borrada correctamente.</p>\n";
+        print "    <p>Tabla de Préstamos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "    <p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -43,9 +45,11 @@ function borraTodoMySQL($db)
         PRIMARY KEY(id)
         )";
     if ($db->query($consultaCreaTablaPrestamos)) {
-        print "<p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "    <p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Préstamos.</p>\n";
+        print "    <p>Error al crear la tabla de Préstamos.</p>\n";
+        print "\n";
     }
 }
 
@@ -55,9 +59,11 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbPrestamos";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Préstamos borrada correctamente.</p>\n";
+       print "    <p>Tabla de Préstamos borrada correctamente.</p>\n";
+       print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "    <p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "\n";
     }
 
     $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
@@ -68,9 +74,11 @@ function borraTodoSqlite($db)
         devuelto DATE
         )";
     if ($db->query($consultaCreaTablaPrestamos)) {
-        print "<p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "    <p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Préstamos.</p>\n";
+        print "    <p>Error al crear la tabla de Préstamos.</p>\n";
+        print "\n";
     }
 }
 

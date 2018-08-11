@@ -1,6 +1,6 @@
 <?php
 /**
- * Biblioteca - funciones.php
+ * Biblioteca - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -80,8 +80,10 @@ function conectaDb()
         return($db);
     } catch (PDOException $e) {
         cabecera('Error grave', false);
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
-//        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
+//        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+//        print "\n";
         pie();
         exit();
     }
@@ -187,46 +189,48 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
     } else {
         print "<body>\n";
     }
-    print "<h1>Biblioteca - $texto</h1>
-<div id=\"menu\">
-<ul>\n";
-    if ($menu == 'menuObras') {
-        print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"obr-anyadir-1.php\">Añadir</a></li>
-  <li><a href=\"obr-listar.php\">Listar</a></li>
-  <li><a href=\"obr-buscar-1.php\">Buscar</a></li>
-  <li><a href=\"obr-modificar-1.php\">Modificar</a></li>
-  <li><a href=\"obr-borrar-1.php\">Borrar</a></li>
-  <li><a href=\"obr-borrar-todo-1.php\">Borrar todo</a></li>";
-    } elseif ($menu == 'menuUsuarios') {
-        print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"usu-anyadir-1.php\">Añadir</a></li>
-  <li><a href=\"usu-listar.php\">Listar</a></li>
-  <li><a href=\"usu-buscar-1.php\">Buscar</a></li>
-  <li><a href=\"usu-modificar-1.php\">Modificar</a></li>
-  <li><a href=\"usu-borrar-1.php\">Borrar</a></li>
-  <li><a href=\"usu-borrar-todo-1.php\">Borrar todo</a></li>";
-    } elseif ($menu == 'menuPrestamos') {
-        print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"pre-anyadir-1.php\">Préstamo</a></li>
-  <li><a href=\"pre-devolucion-1.php\">Devolución</a></li>
-  <li><a href=\"pre-listar.php\">Listar</a></li>
-  <li><a href=\"pre-borrar-1.php\">Borrar</a></li>
-  <li><a href=\"pre-borrar-todo-1.php?\">Borrar todo</a></li>";
-    } else {
-        print "  <li><a href=\"obr-index.php\">Obras</a></li>
-  <li><a href=\"usu-index.php\">Usuarios</a></li>
-  <li><a href=\"pre-index.php\">Préstamos</a></li>
-  <li><a href=\"com-borrar-todo-1.php\">Borrar todo</a></li>";
-    }
-    print "\n</ul>\n</div>\n";
+    print "  <h1>Biblioteca - $texto</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu == 'menuObras') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+        print "      <li><a href=\"obr-insertar-1.php\">Añadir</a></li>\n";
+        print "      <li><a href=\"obr-listar.php\">Listar</a></li>\n";
+        print "      <li><a href=\"obr-buscar-1.php\">Buscar</a></li>\n";
+        print "      <li><a href=\"obr-modificar-1.php\">Modificar</a></li>\n";
+        print "      <li><a href=\"obr-borrar-1.php\">Borrar</a></li>\n";
+        print "      <li><a href=\"obr-borrar-todo-1.php\">Borrar todo</a></li>\n";
+    } elseif ($menu == 'menuUsuarios') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+        print "      <li><a href=\"usu-insertar-1.php\">Añadir</a></li>\n";
+        print "      <li><a href=\"usu-listar.php\">Listar</a></li>\n";
+        print "      <li><a href=\"usu-buscar-1.php\">Buscar</a></li>\n";
+        print "      <li><a href=\"usu-modificar-1.php\">Modificar</a></li>\n";
+        print "      <li><a href=\"usu-borrar-1.php\">Borrar</a></li>\n";
+        print "      <li><a href=\"usu-borrar-todo-1.php\">Borrar todo</a></li>\n";
+    } elseif ($menu == 'menuPrestamos') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+        print "      <li><a href=\"pre-insertar-1.php\">Préstamo</a></li>\n";
+        print "      <li><a href=\"pre-devolucion-1.php\">Devolución</a></li>\n";
+        print "      <li><a href=\"pre-listar.php\">Listar</a></li>\n";
+        print "      <li><a href=\"pre-borrar-1.php\">Borrar</a></li>\n";
+        print "      <li><a href=\"pre-borrar-todo-1.php?\">Borrar todo</a></li>\n";
+    } else {
+        print "      <li><a href=\"obr-index.php\">Obras</a></li>\n";
+        print "      <li><a href=\"usu-index.php\">Usuarios</a></li>\n";
+        print "      <li><a href=\"pre-index.php\">Préstamos</a></li>\n";
+        print "      <li><a href=\"com-borrar-todo-1.php\">Borrar todo</a></li>\n";
+    }
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
 {
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";

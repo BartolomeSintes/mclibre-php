@@ -1,6 +1,6 @@
 <?php
 /**
- * Biblioteca - pre-anyadir-2.php
+ * Biblioteca - pre-insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Préstamos - Nuevo préstamo 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
 
@@ -41,15 +41,19 @@ if (!ctype_digit(substr($fecha, 1, 2)) ||!ctype_digit(substr($fecha, 4, 2))
 }
 
 if (!$fechaOk) {
-    print "<p>La fecha no es correcta.</p>\n";
+    print "    <p>La fecha no es correcta.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbPrestamos";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() >= MAX_REG_PRESTAMOS) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p>Por favor, borre algún registro antes.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE id=$idUsuario";
@@ -63,13 +67,17 @@ if (!$fechaOk) {
             AND prestado='".fechaAmd($fecha)."'";
         $resultPrestamo = $db->query($consulta);
         if (!$resultObra||!$resultUsuario||!$resultPrestamo) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($resultUsuario->fetchColumn() == 0) {
-            print "<p>El identificador de Usuario no es correcto.</p>\n";
+            print "    <p>El identificador de Usuario no es correcto.</p>\n";
+            print "\n";
         } elseif ($resultObra->fetchColumn() == 0) {
-            print "<p>El identificador de Obra no es correcto.</p>\n";
+            print "    <p>El identificador de Obra no es correcto.</p>\n";
+            print "\n";
         } elseif ($resultPrestamo->fetchColumn()!=0) {
-            print "<p>El registro de préstamo ya existe.</p>\n";
+            print "    <p>El registro de préstamo ya existe.</p>\n";
+            print "\n";
         } else {
         // Inserto el valor 0000-00-00 explícitamente porque si lo dejo vacío
         // MySQL guarda 0000-00-00, pero SQLite lo deja en blanco
@@ -77,9 +85,11 @@ if (!$fechaOk) {
                 VALUES (NULL, $idUsuario, $idObra, '"
                 . fechaAmd($fecha) . "', '0000-00-00')";
             if ($db->query($consulta)) {
-                print "<p>Registro creado correctamente.</p>\n";
+                print "    <p>Registro creado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al crear el registro.<p>\n";
+                print "    <p>Error al crear el registro.<p>\n";
+                print "\n";
             }
         }
     }

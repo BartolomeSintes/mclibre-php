@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Obras - Modificar 1', CABECERA_SIN_CURSOR, 'menuObras');
 
@@ -34,55 +34,70 @@ $orden = quitaComillasExteriores($orden);
 $consulta = "SELECT COUNT(*) FROM $dbObras";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "<p>No se ha creado todavía ningún registro.</p>\n";
+    print "    <p>No se ha creado todavía ningún registro.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT * FROM $dbObras ORDER BY $campo $orden";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
-        print "<form action=\"obr-modificar-2.php\" method=\"" . FORM_METHOD . "\">
-  <p>Indique el registro que quiera modificar:</p>
-  <table border=\"1\">
-    <thead>
-      <tr class=\"neg\">
-        <th>Modificar</th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Autor
-          <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Título
-          <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=editorial&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-          Editorial
-          <a href=\"$_SERVER[PHP_SELF]?campo=editorial&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
-      </tr>
-    </thead>
-    <tbody>\n";
+        print "    <form action=\"obr-modificar-2.php\" method=\"" . FORM_METHOD . "\">\n";
+        print "      <p>Indique el registro que quiera modificar:</p>\n";
+        print "\n";
+        print "      <table border=\"1\">\n";
+        print "        <thead>\n";
+        print "          <tr class=\"neg\">\n";
+        print "            <th>Modificar</th>\n";
+        print "            <th>\n";
+        print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=ASC\">"
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+        print "              Autor\n";
+        print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=DESC\">"
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+        print "            </th>\n";
+        print "            <th>\n";
+        print "              <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">"
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+        print "              Título\n";
+        print "              <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">"
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+        print "            </th>\n";
+        print "            <th>\n";
+        print "              <a href=\"$_SERVER[PHP_SELF]?campo=editorial&amp;orden=ASC\">"
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+        print "              Editorial\n";
+        print "              <a href=\"$_SERVER[PHP_SELF]?campo=editorial&amp;orden=DESC\">"
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+        print "            </th>\n";
+        print "          </tr>\n";
+        print "        </thead>\n";
+        print "        <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "      <tr>\n";
+                print "          <tr>\n";
             } else {
-                print "      <tr class=\"neg\">\n";
+                print "          <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "        <td align=\"center\"><input type=\"radio\" "
-                . "name=\"id\" value=\"$valor[id]\" /></td>
-        <td>$valor[autor]</td>
-        <td>$valor[titulo]</td>
-        <td>$valor[editorial]</td>\n      </tr>\n";
+            print "            <td align=\"center\"><input type=\"radio\" "
+                . "name=\"id\" value=\"$valor[id]\" /></td>\n";
+            print "            <td>$valor[autor]</td>\n";
+            print "            <td>$valor[titulo]</td>\n";
+            print "            <td>$valor[editorial]</td>\n";
+            print "          </tr>\n";
         }
-        print "    </tbody>\n  </table>
-  <p><input type=\"submit\" value=\"Modificar\" /></p>\n</form>\n";
+        print "        </tbody>\n";
+        print "      </table>\n";
+        print "\n";
+        print "      <p><input type=\"submit\" value=\"Modificar\" /></p>\n";
+        print "    </form>\n";
+        print "\n";
     }
 }
 

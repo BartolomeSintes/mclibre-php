@@ -22,14 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 cabecera('Borrar todo 1', CABECERA_SIN_CURSOR, 'menu_principal');
 
-print "<form action=\"com-borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">
-  <p>¿Está seguro?</p>
-  <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
-    <input type=\"submit\" value=\"No\" name=\"no\" /></p>
-</form>\n";
+print "    <form action=\"com-borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "      <p>¿Está seguro?</p>\n";
+print "\n";
+print "      <p>\n";
+print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
+print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
+print "      </p>\n";
+print "    </form>\n";
+print "    \n";
 
 pie();
 ?>

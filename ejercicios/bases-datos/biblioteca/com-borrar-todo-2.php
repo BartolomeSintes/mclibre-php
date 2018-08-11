@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 
 function borraTodoMySQL($db)
 {
@@ -30,13 +30,16 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la base de datos.</p>\n";
+        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos creada correctamente.</p>\n";
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
         $consultaCreaTablaObras = "CREATE TABLE $dbObras (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             autor VARCHAR(" . TAM_AUTOR . "),
@@ -45,9 +48,11 @@ function borraTodoMySQL($db)
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTablaObras)) {
-            print "<p>Tabla de Obras creada correctamente.</p>\n";
+            print "    <p>Tabla de Obras creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Obras.</p>\n";
+            print "    <p>Error al crear la tabla de Obras.</p>\n";
+            print "\n";
         }
         $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -57,9 +62,11 @@ function borraTodoMySQL($db)
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTablaUsuarios)) {
-            print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Usuarios.</p>\n";
+            print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+            print "\n";
         }
         $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -70,12 +77,15 @@ function borraTodoMySQL($db)
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTablaPrestamos)) {
-            print "<p>Tabla de Préstamos creada correctamente.</p>\n";
+            print "    <p>Tabla de Préstamos creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Préstamos.</p>\n";
+            print "    <p>Error al crear la tabla de Préstamos.</p>\n";
+            print "\n";
         }
     } else {
-        print "<p>Error al crear la base de datos.</p>\n";
+        print "    <p>Error al crear la base de datos.</p>\n";
+        print "\n";
     }
 }
 
@@ -85,21 +95,27 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbObras";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Obras borrada correctamente.</p>\n";
+       print "    <p>Tabla de Obras borrada correctamente.</p>\n";
+       print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Obras.</p>\n";
+        print "    <p>Error al borrar la tabla de Obras.</p>\n";
+        print "\n";
     }
     $consulta = "DROP TABLE $dbUsuarios";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Usuarios borrada correctamente.</p>\n";
+       print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
+       print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "    <p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     $consulta = "DROP TABLE $dbPrestamos";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Préstamos borrada correctamente.</p>\n";
+       print "    <p>Tabla de Préstamos borrada correctamente.</p>\n";
+       print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "    <p>Error al borrar la tabla de Préstamos.</p>\n";
+        print "\n";
     }
 
     $consultaCreaTablaObras = "CREATE TABLE $dbObras (
@@ -109,9 +125,11 @@ function borraTodoSqlite($db)
         editorial VARCHAR(" . TAM_EDITORIAL . ")
         )";
     if ($db->query($consultaCreaTablaObras)) {
-        print "<p>Tabla de Obras creada correctamente.</p>\n";
+        print "    <p>Tabla de Obras creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Obras.</p>\n";
+        print "    <p>Error al crear la tabla de Obras.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
@@ -120,9 +138,11 @@ function borraTodoSqlite($db)
         dni VARCHAR(" . TAM_DNI . ")
         )";
     if ($db->query($consultaCreaTablaUsuarios)) {
-        print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Usuarios.</p>\n";
+        print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
         id INTEGER PRIMARY KEY,
@@ -132,9 +152,11 @@ function borraTodoSqlite($db)
         devuelto DATE
         )";
     if ($db->query($consultaCreaTablaPrestamos)) {
-        print "<p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "    <p>Tabla de Préstamos creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Préstamos.</p>\n";
+        print "    <p>Error al crear la tabla de Préstamos.</p>\n";
+        print "\n";
     }
 }
 

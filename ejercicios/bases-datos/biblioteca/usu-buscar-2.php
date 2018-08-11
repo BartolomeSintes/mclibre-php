@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Usuarios - Buscar 2', CABECERA_SIN_CURSOR, 'menuUsuarios');
 
@@ -43,9 +43,11 @@ $consulta = "SELECT COUNT(*) FROM $dbUsuarios
     AND dni LIKE '%$dni%'";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "<p>No se han encontrado registros en la agenda.</p>\n";
+    print "    <p>No se han encontrado registros en la agenda.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT * FROM $dbUsuarios
         WHERE nombre LIKE '%$nombre%'
@@ -54,43 +56,56 @@ if (!$result) {
         ORDER BY $campo $orden";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
         $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;"
             . "dni=$dni&amp;campo";
-        print "<p>Registros encontrados:</p>\n<table border=\"1\">
-  <thead>
-    <tr class=\"neg\">
-      <th><a href=\"buscar2.php?$datos=nombre&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Nombre
-        <a href=\"buscar2.php?$datos=nombre&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      <th><a href=\"buscar2.php?$datos=apellidos&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Apellidos
-        <a href=\"buscar2.php?$datos=apellidos&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      <th><a href=\"buscar2.php?$datos=dni&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>
-        DNI
-        <a href=\"buscar2.php?$datos=dni&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a></th>
-    </tr>
-  </thead>
-  <tbody>\n";
+        print "    <p>Registros encontrados:</p>\n";
+        print "\n";
+        print "    <table border=\"1\">\n";
+        print "      <thead>\n";
+        print "        <tr class=\"neg\">\n";
+        print "          <th>\n";
+        print "            <a href=\"buscar2.php?$datos=nombre&amp;orden=ASC\">"
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+        print "            Nombre\n";
+        print "            <a href=\"buscar2.php?$datos=nombre&amp;orden=DESC\">"
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+        print "          </th>\n";
+        print "          <th>\n";
+        print "            <a href=\"buscar2.php?$datos=apellidos&amp;orden=ASC\">"
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+        print "            Apellidos\n";
+        print "            <a href=\"buscar2.php?$datos=apellidos&amp;orden=DESC\">"
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+        print "          </th>\n";
+        print "          <th>\n";
+        print "            <a href=\"buscar2.php?$datos=dni&amp;orden=ASC\">"
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+        print "            DNI\n";
+        print "            <a href=\"buscar2.php?$datos=dni&amp;orden=DESC\">"
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+        print "          </th>\n";
+        print "        </tr>\n";
+        print "      </thead>\n";
+        print "      <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "    <tr>\n";
+                print "        <tr>\n";
             } else {
-                print "    <tr class=\"neg\">\n";
+                print "        <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "      <td>$valor[nombre]</td>
-      <td>$valor[apellidos]</td>\n      <td>$valor[dni]</td>\n    </tr>\n";
+            print "          <td>$valor[nombre]</td>\n";
+            print "          <td>$valor[apellidos]</td>\n";
+            print "          <td>$valor[dni]</td>\n";
+            print "        </tr>\n";
         }
-        print "  </tbody>\n</table>\n";
+        print "      </tbody>\n";
+        print "    </table>\n";
+        print "    \n";
     }
 }
 

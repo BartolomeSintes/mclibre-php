@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 cabecera('Usuarios - Inicio', CABECERA_SIN_CURSOR, 'menuUsuarios');
 
 pie();
