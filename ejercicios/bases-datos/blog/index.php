@@ -22,10 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 cabecera('Inicio', CABECERA_SIN_CURSOR, '');
 
-print "<p>Bienvenido a mi blog.</p>";
+print "    <p>Bienvenido a mi blog.</p>\n";
+print "\n";
 
 pie();
 ?>

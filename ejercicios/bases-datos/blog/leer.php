@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 
 $fecha = recogeFecha($db, 'fecha');
@@ -34,9 +34,13 @@ $consulta = "SELECT COUNT(*) FROM $dbEntradas
     WHERE fecha='$fecha'";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } else {
-    print "<div class=\"entrada\">\n  <h2>$fecha</h2>\n  <p>";
+    print "    <div class=\"entrada\">\n";
+    print "      <h2>$fecha</h2>\n";
+    print "\n";
+    print "      <p>";
     if ($result->fetchColumn()!=0) {
         $consulta = "SELECT * FROM $dbEntradas
             WHERE fecha='$fecha'";
@@ -46,7 +50,9 @@ if (!$result) {
     } else {
         print "Todavía no se ha escrito la entrada de este día.";
     }
-    print"  </p>\n</div>\n";
+    print"</p>\n";
+    print "    </div>\n";
+    print "\n";
 }
 
 $db = NULL;

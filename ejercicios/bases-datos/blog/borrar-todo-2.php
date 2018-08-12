@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog - borrartodo2.php
+ * Blog - borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -28,13 +28,16 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la base de datos.</p>\n";
+        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos creada correctamente.</p>\n";
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
         $consulta = "CREATE TABLE $dbEntradas (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             fecha DATE,
@@ -42,12 +45,15 @@ function borraTodoMySQL($db)
             PRIMARY KEY(id)
             )";
         if ($db->query($consulta)) {
-            print "<p>Tabla de Entradas creada correctamente.</p>\n";
+            print "    <p>Tabla de Entradas creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Entradas.</p>\n";
+            print "    <p>Error al crear la tabla de Entradas.</p>\n";
+            print "\n";
         }
     } else {
-        print "<p>Error al crear la base de datos.</p>\n";
+        print "    <p>Error al crear la base de datos.</p>\n";
+        print "\n";
     }
 }
 
@@ -57,9 +63,10 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbEntradas";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Entradas borrada correctamente.</p>\n";
+        print "    <p>Tabla de Entradas borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Entradas.</p>\n";
+        print "    <p>Error al borrar la tabla de Entradas.</p>\n";
     }
     $consulta = "CREATE TABLE $dbEntradas (
         id INTEGER PRIMARY KEY,
@@ -67,9 +74,11 @@ function borraTodoSqlite($db)
         entrada VARCHAR(".TAM_ENTRADA.")
         )";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Entradas creada correctamente.</p>\n";
+        print "    <p>Tabla de Entradas creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Entradas.</p>\n";
+        print "    <p>Error al crear la tabla de Entradas.</p>\n";
+        print "\n";
     }
 }
 
@@ -77,7 +86,7 @@ if (!isset($_REQUEST['si'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Borrar todo 2', CABECERA_SIN_CURSOR, '');
     if ($dbMotor == MYSQL) {

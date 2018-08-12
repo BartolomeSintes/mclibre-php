@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog - funciones.php
+ * Blog - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -62,8 +62,10 @@ function conectaDb()
         return($db);
     } catch (PDOException $e) {
         cabecera('Error grave', CABECERA_SIN_CURSOR, '');
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
-//        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
+//        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+//        print "\n";
         pie();
         exit();
     }
@@ -171,8 +173,8 @@ function calendario ($fecha, $enlaces)
     global $db, $dbEntradas;
 
     date_default_timezone_set(ZONA_HORARIA);
-    if (!ctype_digit(substr($fecha, 5, 2)) ||!ctype_digit(substr($fecha, 8, 2))
-        ||!ctype_digit(substr($fecha, 0, 4))) {
+    if (!ctype_digit(substr($fecha, 5, 2)) || !ctype_digit(substr($fecha, 8, 2))
+        || !ctype_digit(substr($fecha, 0, 4))) {
         $fecha = date('Y-m-d');
     } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2),
                     (int)substr($fecha, 0, 4))) {
@@ -215,28 +217,35 @@ function calendario ($fecha, $enlaces)
     $dias = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
     $diaSemana = $dias[$dia];
 
-    print "<div class=\"calendario\">\n  <table border=\"1\" class=\"calendario\" >\n";
+    print "    <div class=\"calendario\">\n";
+    print "      <table border=\"1\" class=\"calendario\" >\n";
     if ($enlaces == "editar") {
-        print "    <caption><a href=\"editar.php?fecha=$fechaAnt\">&lt;&lt;</a> "
+        print "        <caption><a href=\"editar.php?fecha=$fechaAnt\">&lt;&lt;</a> "
             . $meses[(int)($mes)] . " de $anyo <a href=\"editar.php?fecha="
-            . "$fechaSig\">&gt;&gt;</a>
-    </caption>\n";
+            . "$fechaSig\">&gt;&gt;</a></caption>\n";
     } else {
-        print "    <caption><a href=\"leer.php?fecha=$fechaAnt\">&lt;&lt;</a> "
+        print "        <caption><a href=\"leer.php?fecha=$fechaAnt\">&lt;&lt;</a> "
             . $meses[(int)($mes)] . " de $anyo <a href=\"leer.php?fecha="
             . "$fechaSig\">&gt;&gt;</a></caption>\n";
     }
-    print "    <tr>\n      <th>L</th>\n      <th>M</th>\n      <th>X</th>
-      <th>J</th>\n      <th>V</th>\n      <th>S</th>\n      <th>D</th>\n    </tr>\n";
+    print "        <tr>\n";
+    print "          <th>L</th>\n";
+    print "          <th>M</th>\n";
+    print "          <th>X</th>\n";
+    print "          <th>J</th>\n";
+    print "          <th>V</th>\n";
+    print "          <th>S</th>\n";
+    print "          <th>D</th>\n";
+    print "        </tr>\n";
     for ($n=0; $n<=5; $n++) {
         $num_inicio = 1-$dia+$n*7;
         if ($num_inicio<=$duraMeses[(int)($mes)]) {
-            print "    <tr>\n";
+            print "        <tr>\n";
             for ($i=0; $i<7; $i++) {
                 $num = $num_inicio + $i;
                 if (($num>0) && ($num<=$duraMeses[(int)($mes)])) {
                     if ($enlaces == 'editar') {
-                        print "      <td class=\"enlace\"><a href=\"editar.php"
+                        print "          <td class=\"enlace\"><a href=\"editar.php"
                             . "?fecha=$anyo-$mes-".sprintf("%02d", $num)
                             . "\">$num</a></td>\n";
                     } elseif ($enlaces == 'leer') {
@@ -244,23 +253,24 @@ function calendario ($fecha, $enlaces)
                             . "fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
                         $result = $db->query($consulta);
                         if (!$result) {
-                            print "      <td>$num</td>\n";
+                            print "          <td>$num</td>\n";
                         } elseif ($result->fetchColumn()) {
-                            print "      <td class=\"enlace\"><a "
+                            print "          <td class=\"enlace\"><a "
                                 . "href=\"leer.php?fecha=$anyo-$mes-"
                               .sprintf("%02d", $num)."\">$num</a></td>\n";
                         } else {
-                            print "      <td>$num</td>\n";
+                            print "          <td>$num</td>\n";
                         }
                     }
                 } else {
-                    print "      <td></td>\n";
+                    print "          <td></td>\n";
                 }
             }
-            print "    </tr>\n";
+            print "        </tr>\n";
         }
     }
-    print "  </table>\n</div>\n";
+    print "      </table>\n";
+    print "    </div>\n";
     print "\n";
 }
 
@@ -282,20 +292,22 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
     } else {
         print "<body>\n";
     }
-    print "<h1>Blog - $texto</h1>
-<div id=\"menu\">
-<ul>
-  <li><a href=\"editar.php?fecha=$fecha\">Editar</a></li>
-  <li><a href=\"leer.php?fecha=$fecha\">Leer</a></li>
-  <li><a href=\"borrartodo1.php\">Borrar todo</a></li>
-</ul>\n</div>\n";
+    print "  <h1>Blog - $texto</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    print "      <li><a href=\"editar.php?fecha=$fecha\">Editar</a></li>\n";
+    print "      <li><a href=\"leer.php?fecha=$fecha\">Leer</a></li>\n";
+    print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
 {
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";
