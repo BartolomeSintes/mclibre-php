@@ -28,13 +28,16 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la base de datos.</p>\n";
+        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos creada correctamente.</p>\n";
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
         $consultaCreaTablaDiscusiones  = "CREATE TABLE $dbDiscusiones (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             titulo VARCHAR(" . TAM_TITULO . "),
@@ -44,9 +47,11 @@ function borraTodoMySQL($db)
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTablaDiscusiones )) {
-            print "<p>Tabla de Discusiones creada correctamente.</p>\n";
+            print "    <p>Tabla de Discusiones creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Discusiones.</p>\n";
+            print "    <p>Error al crear la tabla de Discusiones.</p>\n";
+            print "\n";
         }
         $consultaCreaTablaIntervenciones  = "CREATE TABLE $dbIntervenciones (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -57,12 +62,15 @@ function borraTodoMySQL($db)
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTablaIntervenciones )) {
-            print "<p>Tabla de Intervenciones creada correctamente.</p>\n";
+            print "    <p>Tabla de Intervenciones creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Intervenciones.</p>\n";
+            print "    <p>Error al crear la tabla de Intervenciones.</p>\n";
+            print "\n";
         }
     } else {
-        print "<p>Error al crear la base de datos.</p>\n";
+        print "    <p>Error al crear la base de datos.</p>\n";
+        print "\n";
     }
 }
 
@@ -72,15 +80,19 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbDiscusiones";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Discusiones borrada correctamente.</p>\n";
+        print "    <p>Tabla de Discusiones borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Discusiones.</p>\n";
+        print "    <p>Error al borrar la tabla de Discusiones.</p>\n";
+        print "\n";
     }
     $consulta = "DROP TABLE $dbIntervenciones";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Intervenciones borrada correctamente.</p>\n";
+        print "    <p>Tabla de Intervenciones borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Intervenciones.</p>\n";
+        print "    <p>Error al borrar la tabla de Intervenciones.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaDiscusiones = "CREATE TABLE $dbDiscusiones (
         id INTEGER PRIMARY KEY,
@@ -90,9 +102,11 @@ function borraTodoSqlite($db)
         fecha DATETIME
         )";
     if ($db->query($consultaCreaTablaDiscusiones)) {
-       print "<p>Tabla de Discusiones creada correctamente.</p>\n";
+        print "    <p>Tabla de Discusiones creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Discusiones.</p>\n";
+        print "    <p>Error al crear la tabla de Discusiones.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaIntervenciones = "CREATE TABLE $dbIntervenciones (
         id INTEGER PRIMARY KEY,
@@ -102,9 +116,11 @@ function borraTodoSqlite($db)
         intervencion VARCHAR(".TAM_INTERVENCION.")
         )";
     if ($db->query($consultaCreaTablaIntervenciones)) {
-       print "<p>Tabla de Intervenciones creada correctamente.</p>\n";
+        print "    <p>Tabla de Intervenciones creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Intervenciones.</p>\n";
+        print "    <p>Error al crear la tabla de Intervenciones.</p>\n";
+        print "\n";
     }
 }
 
@@ -112,7 +128,7 @@ if (!isset($_REQUEST['si'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Editor - Borrar todo 2', CABECERA_SIN_CURSOR, 'menuEditor', '');
     if ($dbMotor == MYSQL) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Foro - dis-anyadir-1.php
+ * Foro - dis-insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -22,41 +22,47 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('funciones.php');
+include ('biblioteca.php');
 $db = conectaDb();
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
 $result = $db->query($consulta);
 if (!$result) {
     cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_DISCUSIONES) {
     cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
-    print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-        . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+    print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+    print "\n";
+    print "    <p>Por favor, borre algún registro antes.</p>\n";
+    print "\n";
 } else {
     cabecera('Iniciar discusión 1', CABECERA_CON_CURSOR, 'menuDiscusiones', '');
-    print "<form action=\"dis-anyadir-2.php\" method=\"" . FORM_METHOD . "\">
-  <table>
-    <tbody>
-      <tr>
-        <td>Autor:</td>
-        <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
-        . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\" /></td>
-      </tr>
-      <tr>
-        <td>Título:</td>
-        <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
-        . "maxlength=\"" . TAM_TITULO . "\" /></td>
-      </tr>
-      <tr>
-        <td style=\"vertical-align:top\">Descripción:</td>
-        <td><textarea rows=\"10\" cols=\"40\" name=\"descripcion\"></textarea></td>
-      </tr>
-    </tbody>
-  </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
-</form>\n";
+    print "    <form action=\"dis-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "\n";
+    print "      <table>\n";
+    print "        <tbody>\n";
+    print "          <tr>\n";
+    print "            <td>Autor:</td>\n";
+    print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
+        . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\" /></td>\n";
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td>Título:</td>\n";
+    print "            <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
+        . "maxlength=\"" . TAM_TITULO . "\" /></td>\n";
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td style=\"vertical-align:top\">Descripción:</td>\n";
+    print "            <td><textarea rows=\"10\" cols=\"40\" name=\"descripcion\"></textarea></td>\n";
+    print "          </tr>\n";
+    print "        </tbody>\n";
+    print "      </table>\n";
+    print "\n";
+    print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+    print "    </form>\n";
+    print "\n";
 }
 
 $db = NULL;

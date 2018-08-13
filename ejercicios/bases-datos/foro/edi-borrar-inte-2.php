@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Editor - Borrar intervenciones 2', CABECERA_SIN_CURSOR, 'menuEditor', '');
 
@@ -33,79 +33,96 @@ $orden = recogeParaConsulta($db, 'orden', 'ASC');
 $orden = quitaComillasExteriores($orden);
 
 if ($id == '') {
-  print "<p>No se ha marcado nada para borrar.</p>\n";
+    print "    <p>No se ha marcado nada para borrar.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbDiscusiones
         WHERE id=$id";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>La discusión solicitada no existe.</p>\n";
+        print "    <p>La discusión solicitada no existe.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT * FROM $dbDiscusiones
             WHERE id=$id";
         $result = $db->query($consulta);
         if (!$result) {
-           print "<p>Error en la consulta</p>\n";
+           print "    <p>Error en la consulta</p>\n";
+           print "\n";
         } else {
             $valor = $result->fetch();
             $consulta = "SELECT COUNT(*) FROM $dbIntervenciones
                 WHERE id_discusion=$id";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn() == 0) {
-                print "<p>No hay intervenciones en la discusión elegida.</p>\n";
+                print "    <p>No hay intervenciones en la discusión elegida.</p>\n";
+                print "\n";
             } else {
                 $consulta = "SELECT * FROM $dbIntervenciones
                     WHERE id_discusion=$id";
                 $result = $db->query($consulta);
                 if (!$result) {
-                    print "<p>Error en la consulta.</p>\n";
+                    print "    <p>Error en la consulta.</p>\n";
+                    print "\n";
                 } else {
-                    print "<form action=\"edi-borrar-inte-3.php\" method=\"" . FORM_METHOD . "\">
-  <p>Marque las intervenciones que quiera borrar.</p>\n";
-                    print "<table border=\"1\">
-    <thead>
-      <tr class=\"neg\">
-        <th>Borrar</th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Autor
-          <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Fecha
-          <a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=intervencion&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Texto
-          <a href=\"$_SERVER[PHP_SELF]?campo=intervencion&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      </tr>
-    </thead>
-    <tbody>\n";
+                    print "    <form action=\"edi-borrar-inte-3.php\" method=\"" . FORM_METHOD . "\">\n";
+                    print "      <p>Marque las intervenciones que quiera borrar.</p>\n";
+                    print "\n";
+                    print "      <table border=\"1\">\n";
+                    print "        <thead>\n";
+                    print "          <tr class=\"neg\">\n";
+                    print "            <th>Borrar</th>\n";
+                    print "            <th>\n";
+                    print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=ASC\">"
+                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                    print "              Autor\n";
+                    print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=DESC\">"
+                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                    print "            </th>\n";
+                    print "            <th>\n";
+                    print "              <a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=ASC\">"
+                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                    print "              Fecha\n";
+                    print "              <a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=DESC\">"
+                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                    print "            </th>\n";
+                    print "            <th>\n";
+                    print "              <a href=\"$_SERVER[PHP_SELF]?campo=intervencion&amp;orden=ASC\">"
+                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                    print "              Texto\n";
+                    print "              <a href=\"$_SERVER[PHP_SELF]?campo=intervencion&amp;orden=DESC\">"
+                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                    print "            </th>\n";
+                    print "          </tr>\n";
+                    print "        </thead>\n";
+                    print "        <tbody>\n";
                     $tmp = true;
                     foreach ($result as $valor) {
                         if ($tmp) {
-                            print "      <tr>\n";
+                            print "          <tr>\n";
                         } else {
-                            print "      <tr class=\"neg\">\n";
+                            print "          <tr class=\"neg\">\n";
                         }
                         $tmp = !$tmp;
-                        print "        <td align=\"center\"><input "
-                            . " type=\"checkbox\" name=\"id[$valor[id]]\" /></td>
-        <td>$valor[autor]</td>
-        <td>".fechaDma($valor['fecha'])."</td>
-        <td>$valor[intervencion]</td>
-      </tr>\n";
+                        print "            <td align=\"center\"><input "
+                            . " type=\"checkbox\" name=\"id[$valor[id]]\" /></td>\n";
+                        print "            <td>$valor[autor]</td>\n";
+                        print "            <td>".fechaDma($valor['fecha'])."</td>\n";
+                        print "            <td>$valor[intervencion]</td>\n";
+                        print "          </tr>\n";
                     }
-                    print "    </tbody>\n  </table>
-  <p><input type=\"submit\" value=\"Borrar\" /></p>
-</form>\n";
+                    print "        </tbody>\n";
+                    print "      </table>\n";
+                    print "\n";
+                    print "      <p><input type=\"submit\" value=\"Borrar\" /></p>\n";
+                    print "    </form>\n";
+                    print "\n";
                 }
             }
         }

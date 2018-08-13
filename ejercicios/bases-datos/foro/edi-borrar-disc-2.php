@@ -22,29 +22,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Editor - Borrar discusiones 2', CABECERA_SIN_CURSOR, 'menuEditor', '');
 
 $id = recogeMatrizParaConsulta($db, 'id');
 
 if (count($id) == 0) {
-  print "<p>No se ha marcado nada para borrar.</p>\n";
+    print "    <p>No se ha marcado nada para borrar.</p>\n";
+    print "\n";
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "DELETE FROM $dbDiscusiones
             WHERE id=$indice";
         if ($db->query($consulta)) {
-            print "<p>Registro borrado correctamente.</p>\n";
+            print "    <p>Registro borrado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al borrar el registro.</p>\n";
+            print "    <p>Error al borrar el registro.</p>\n";
+            print "\n";
         }
         $consulta = "DELETE FROM $dbIntervenciones
             WHERE id_discusion=$indice";
         if ($db->query($consulta)) {
-            print "<p>Registro borrado correctamente.</p>\n";
+            print "    <p>Registro borrado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al borrar el registro.</p>\n";
+            print "    <p>Error al borrar el registro.</p>\n";
+            print "\n";
         }
     }
 }

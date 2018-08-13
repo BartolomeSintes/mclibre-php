@@ -1,6 +1,6 @@
 <?php
 /**
- * Foro - dis-anyadir-2.php
+ * Foro - dis-insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('funciones.php');
+include ('biblioteca.php');
 $db = conectaDb();
 
 date_default_timezone_set(ZONA_HORARIA);
@@ -34,25 +34,31 @@ $fecha        = date("Y-m-d H:i:s");
 
 cabecera('Discusiones - Intervenir en discusión 2', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
 
-if (($autor == "'".ANONIMO_AUTOR."'") && ($intervencion == "'".ANONIMO_INTERVENCION."'")) {
-    print "<p>Hay que rellenar al menos uno de los campos.</p>\n";
+if (($autor == "'" . ANONIMO_AUTOR . "'") && ($intervencion == "'" . ANONIMO_INTERVENCION . "'")) {
+    print "    <p>Hay que rellenar al menos uno de los campos.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbDiscusiones
         WHERE id=$hilo";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>La discusión solicitada no existe.</p>\n";
+        print "    <p>La discusión solicitada no existe.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbIntervenciones
             WHERE id_discusion=$hilo";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn() >= MAX_REG_INTERVENCIONES) {
-            print "<p>Se ha alcanzado el número máximo de intervenciones que se pueden "
-                . "guardar.</p>\n<p>Por favor, borre alguna intervención antes.</p>\n";
+            print "    <p>Se ha alcanzado el número máximo de intervenciones que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p>Por favor, borre alguna intervención antes.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbIntervenciones
                 WHERE id_discusion=$hilo
@@ -60,16 +66,20 @@ if (($autor == "'".ANONIMO_AUTOR."'") && ($intervencion == "'".ANONIMO_INTERVENC
                 AND intervencion=$intervencion";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn()!=0) {
-                print "<p>Ya existe una intervención con ese autor y texto.</p>\n";
+                print "    <p>Ya existe una intervención con ese autor y texto.</p>\n";
+                print "\n";
             } else {
                 $consulta = "INSERT INTO $dbIntervenciones
                     VALUES (NULL, $hilo, $autor, '$fecha', $intervencion)";
                 if ($db->query($consulta)) {
-                    print "<p>Registro creado correctamente.</p>\n";
+                    print "    <p>Registro creado correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al crear el registro.<p>\n";
+                    print "    <p>Error al crear el registro.<p>\n";
+                    print "\n";
                 }
             }
         }

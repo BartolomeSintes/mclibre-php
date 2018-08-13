@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('funciones.php');
+include ('biblioteca.php');
 $db = conectaDb();
 
 $hilo = recogeParaConsulta($db, 'hilo');
@@ -32,27 +32,34 @@ cabecera("Discusiones", CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones WHERE id=$hilo";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "<p>La discusión solicitada no existe.</p>\n";
+    print "    <p>La discusión solicitada no existe.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT * FROM $dbDiscusiones
         WHERE id=$hilo";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
         $valor = $result->fetch();
-        print "<div class=\"discu\">
-  <h2>$valor[titulo]</h2>
-  <p class=\"dis_aut\">Propuesta por <strong>$valor[autor]</strong> el "
-            .fechaDma($valor['fecha']).".</p>
-  <p>$valor[descripcion]</p>\n";
+        print "    <div class=\"discu\">\n";
+        print "      <h2>$valor[titulo]</h2>\n";
+        print "\n";
+        print "      <p class=\"dis_aut\">Propuesta por <strong>$valor[autor]</strong> el "
+            . fechaDma($valor['fecha']) . ".</p>\n";
+        print "\n";
+        print "      <p>$valor[descripcion]</p>\n";
+        print "\n";
         $consulta = "SELECT COUNT(*) FROM $dbIntervenciones
             WHERE id_discusion=$hilo";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "      <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
             $numInt = $result->fetchColumn();
             if ($numInt) {
@@ -60,17 +67,21 @@ if (!$result) {
                     WHERE id_discusion=$hilo ORDER BY fecha ASC";
                 $result = $db->query($consulta);
                 if (!$result) {
-                    print "<p>Error en la consulta.</p>\n";
+                    print "      <p>Error en la consulta.</p>\n";
+                    print "\n";
                 } else {
                     foreach ($result as $valor) {
-                        print "  <p class=\"int_aut\"><strong>$valor[autor]</strong> "
-                            . "ha dicho el ".fechaDma($valor['fecha'])
-                            . ":</p>\n  <p>$valor[intervencion]</p>\n";
+                        print "      <p class=\"int_aut\"><strong>$valor[autor]</strong> "
+                            . "ha dicho el " . fechaDma($valor['fecha'])
+                            . ":</p>\n";
+                        print "\n";
+                        print "      <p>$valor[intervencion]</p>\n";
+                        print "\n";
                     }
                 }
             }
         }
-        print "</div>\n";
+        print "    </div>\n";
     }
 }
 

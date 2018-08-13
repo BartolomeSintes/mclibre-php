@@ -1,6 +1,6 @@
 <?php
 /**
- * Foro - funciones.php
+ * Foro - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -178,32 +178,34 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
     } else {
         print "<body>\n";
     }
-    print "<h1>Foro - $texto</h1>
-<div id=\"menu\">
-<ul>\n";
-    if ($menu == 'menuDiscusiones') {
-        print "  <li><a href=\"index.php\">Inicio</a></li>";
-    } elseif ($menu == 'menuHilos') {
-        print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"hil-anyadir-1.php?hilo=$id\">Intervenir</a></li>
-  <li><a href=\"hil-index.php?hilo=$id\">Ver intervenciones</a></li>";
-    } elseif ($menu == 'menuEditor') {
-        print "  <li><a href=\"index.php\">Inicio</a></li>
-  <li><a href=\"edi-borrar-disc-1.php\">Borrar discusiones</a></li>
-  <li><a href=\"edi-borrar-inte-1.php\">Borrar intervenciones</a></li>
-  <li><a href=\"edi-borrar-todo-1.php\">Borrar todo</a></li>";
-    } else {
-        print "  <li><a href=\"dis-anyadir-1.php\">Nueva discusión</a></li>
-  <li><a href=\"edi-index.php\">Editor</a></li>";
-    }
-    print "\n</ul>\n</div>\n";
+    print "  <h1>Foro - $texto</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu == 'menuDiscusiones') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+    } elseif ($menu == 'menuHilos') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+        print "      <li><a href=\"hil-insertar-1.php?hilo=$id\">Intervenir</a></li>\n";
+        print "      <li><a href=\"hil-index.php?hilo=$id\">Ver intervenciones</a></li>\n";
+    } elseif ($menu == 'menuEditor') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+        print "      <li><a href=\"edi-borrar-disc-1.php\">Borrar discusiones</a></li>\n";
+        print "      <li><a href=\"edi-borrar-inte-1.php\">Borrar intervenciones</a></li>\n";
+        print "      <li><a href=\"edi-borrar-todo-1.php\">Borrar todo</a></li>\n";
+    } else {
+        print "      <li><a href=\"dis-insertar-1.php\">Nueva discusión</a></li>\n";
+        print "      <li><a href=\"edi-index.php\">Editor</a></li>\n";
+    }
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
 {
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";
