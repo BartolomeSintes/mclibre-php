@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - com_comprar1.php
+ * Compraventa - com-comprar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Compra - Comprar 1', 'compra');
 
@@ -42,9 +42,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         AND comprado='false'";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>No hay ningún artículo reservado.</p>\n";
+        print "    <p>No hay ningún artículo reservado.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
         WHERE id_comprador='$_SESSION[compraventaIdUsuario]'
@@ -53,40 +55,50 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         ORDER BY $campo $orden";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
-            print "<form action=\"com_comprar2.php\" method=\"get\">
-  <p>Estos son los artículos reservados:</p>\n
-  <table border=\"1\">
-    <thead>
-      <tr class=\"neg\">
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Artículo
-          <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Precio
-          <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      </tr>
-    </thead>
-    <tbody>\n";
+            print "    <form action=\"com-comprar-2.php\" method=\"get\">\n";
+            print "      <p>Estos son los artículos reservados:</p>\n";
+            print "\n";
+            print "      <table border=\"1\">\n";
+            print "        <thead>\n";
+            print "          <tr class=\"neg\">\n";
+            print "            <th>\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "              Artículo\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "            </th>\n";
+            print "            <th>\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "              Precio\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "            </th>\n";
+            print "          </tr>\n";
+            print "        </thead>\n";
+            print "        <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "      <tr>\n";
+                print "          <tr>\n";
             } else {
-                print "      <tr class=\"neg\">\n";
+                print "          <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "        <td>$valor[articulo]</td>
-        <td>$valor[precio] &euro;</td>\n      </tr>\n";
+            print "            <td>$valor[articulo]</td>\n";
+            print "            <td>$valor[precio] &euro;</td>\n";
+            print "          </tr>\n";
         }
-            print "    </tbody>\n  </table>
-      <p><input type=\"submit\" value=\"Comprar\" /></p>
-    </form>\n";
+            print "        </tbody>\n";
+            print "      </table>\n";
+            print "\n";
+            print "      <p><input type=\"submit\" value=\"Comprar\" /></p>\n";
+            print "    </form>\n";
+            print "\n";
        }
     }
 

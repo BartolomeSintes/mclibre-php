@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - ven_borrar1.php
+ * Compraventa - ven-borrar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Venta - Borrar 1', 'venta');
 
@@ -40,52 +40,64 @@ if (!isset($_SESSION['compraventaUsuario'])) {
          WHERE id_vendedor='$_SESSION[compraventaIdUsuario]'";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>No se ha creado todavía ningún registro.</p>\n";
+        print "    <p>No se ha creado todavía ningún registro.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
             WHERE id_vendedor='$_SESSION[compraventaIdUsuario]'
             ORDER BY $campo $orden";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
-            print "<form action=\"ven_borrar2.php\" method=\"get\">
-  <p>Marque los artículos que desee reservar:</p>\n
-  <table border=\"1\">
-    <thead>
-      <tr class=\"neg\">
-        <th>Borrar</th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Artículo
-          <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Precio
-          <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      </tr>
-    </thead>
-    <tbody>\n";
+            print "    <form action=\"ven-borrar-2.php\" method=\"get\">\n";
+            print "      <p>Marque los artículos que desee reservar:</p>\n";
+            print "\n";
+            print "      <table border=\"1\">\n";
+            print "        <thead>\n";
+            print "          <tr class=\"neg\">\n";
+            print "            <th>Borrar</th>\n";
+            print "            <th>\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "              Artículo\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "            </th>\n";
+            print "            <th>\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "              Precio\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "            </th>\n";
+            print "          </tr>\n";
+            print "        </thead>\n";
+            print "        <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "      <tr>\n";
+                print "          <tr>\n";
             } else {
-                print "      <tr class=\"neg\">\n";
+                print "          <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "        <td align=\"center\"><input type=\"checkbox\" "
-                . "name=\"id[$valor[id]]\" /></td>
-        <td>$valor[articulo]</td>
-        <td>$valor[precio] &euro;</td>\n      </tr>\n";
+            print "            <td align=\"center\"><input type=\"checkbox\" "
+                . "name=\"id[$valor[id]]\" /></td>\n";
+            print "            <td>$valor[articulo]</td>\n";
+            print "            <td>$valor[precio] &euro;</td>\n";
+            print "          </tr>\n";
         }
-            print "    </tbody>\n  </table>
-      <p><input type=\"submit\" value=\"Borrar\" /></p>
-    </form>\n";
+            print "        </tbody>\n";
+            print "      </table>\n";
+            print "\n";
+            print "      <p><input type=\"submit\" value=\"Borrar\" /></p>\n";
+            print "    </form>\n";
+            print "\n";
        }
     }
 

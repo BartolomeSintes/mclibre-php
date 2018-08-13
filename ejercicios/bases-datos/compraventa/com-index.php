@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - com_index.php
+ * Compraventa - com-index.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     cabecera('Compra', 'compra');
     pie();
 }

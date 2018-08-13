@@ -23,7 +23,7 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 
 if (!isset($_SESSION['compraventaUsuario']) || ($_SESSION['compraventaUsuario'] != $administradorNombre)) {
     header('Location:index.php');
@@ -31,11 +31,15 @@ if (!isset($_SESSION['compraventaUsuario']) || ($_SESSION['compraventaUsuario'] 
 } else {
     cabecera('Borrar todo 1', $_SESSION['compraventaUsuario']);
 
-    print "<form action=\"adm-borrar-todo-2.php\" method=\"get\">
-  <p>¿Está seguro?</p>
-  <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
-    <input type=\"submit\" value=\"No\" name=\"no\" /></p>
-</form>\n";
+    print "    <form action=\"adm-borrar-todo-2.php\" method=\"get\">\n";
+    print "      <p>¿Está seguro?</p>\n";
+    print "\n";
+    print "      <p>\n";
+    print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
+    print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
+    print "      </p>\n";
+    print "    </form>\n";
+    print "\n";
 
     pie();
 }

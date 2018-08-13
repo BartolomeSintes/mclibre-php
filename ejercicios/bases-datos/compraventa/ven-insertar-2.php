@@ -27,7 +27,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Venta - Añadir 2', 'venta');
 
@@ -35,18 +35,21 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     $precio   = recogeParaConsulta($db, 'precio');
 
     if (($articulo == "''") || ($precio == "''")) {
-        print "<p>Hay que rellenar los dos campos. "
-            . "No se ha guardado el registro.</p>\n";
+        print "    <p>Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";
+        print "\n";
     } else {
 // FALTA: que la consulta no cuente los artículos vendidos
         $consulta = "SELECT COUNT(*) FROM $dbArticulos
             WHERE id_vendedor='$_SESSION[compraventaUsuario]'";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn()>=$maxRegArticulos) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbArticulos
                 WHERE id_vendedor='$_SESSION[compraventaUsuario]'
@@ -54,18 +57,22 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                 AND precio=$precio";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn()==1) {
-                print "<p>El registro ya existe.</p>\n";
+                print "    <p>El registro ya existe.</p>\n";
+                print "\n";
             } else {
                 $consulta = "INSERT INTO $dbArticulos
                     VALUES (NULL, $articulo, '$precio',
                     '$_SESSION[compraventaIdUsuario]', NULL, 'false',
                     '0000-00-00 00:00:00', 'false', '0000-00-00')";
                 if ($db->query($consulta)) {
-                    print "<p>Registro creado correctamente.</p>\n";
+                    print "    <p>Registro creado correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al crear el registro.<p>\n";
+                    print "    <p>Error al crear el registro.<p>\n";
+                    print "\n";
                 }
             }
         }
@@ -73,5 +80,4 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     $db = NULL;
     pie();
 }
-
 ?>

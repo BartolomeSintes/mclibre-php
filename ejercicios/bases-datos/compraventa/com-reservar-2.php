@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - com_reservar2.php
+ * Compraventa - com-reservar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,14 +27,15 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Compra - Reservar 2', 'compra');
 
     $id = recogeMatrizParaConsulta($db, 'id');
 
     if (count($id) == 0) {
-      print "<p>No se ha marcado nada para reservar.</p>\n";
+      print "    <p>No se ha marcado nada para reservar.</p>\n";
+      print "\n";
     } else {
         foreach ($id as $indice => $valor) {
             $consulta = "SELECT COUNT(*) FROM $dbArticulos
@@ -43,9 +44,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                 AND reservado='false'";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn() == 0) {
-                print "<p>El registro indicado no es válido o está ya reservado.</p>\n";
+                print "    <p>El registro indicado no es válido o está ya reservado.</p>\n";
+                print "\n";
             } else {
                 date_default_timezone_set('Europe/Madrid');
                 $fecha_reserva = date("Y-m-d H:i:s");
@@ -54,9 +57,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                     reservado='true', fecha_reserva='$fecha_reserva'
                     WHERE id='$indice'";
                 if ($db->query($consulta)) {
-                    print "<p>Artículo reservado correctamente.</p>\n";
+                    print "    <p>Artículo reservado correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al reservar el artículo.</p>\n";
+                    print "    <p>Error al reservar el artículo.</p>\n";
+                    print "\n";
                 }
             }
         }

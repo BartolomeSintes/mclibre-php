@@ -27,51 +27,60 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Modificar 2', 'venta');
 
     $id = recogeParaConsulta($db, 'id');
 
     if ($id == "''") {
-        print "<p>No se ha seleccionado ningún registro.</p>\n";
+        print "    <p>No se ha seleccionado ningún registro.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbArticulos
             WHERE id='$id'
             AND id_vendedor='$_SESSION[compraventaIdUsuario]'";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn() == 0) {
-            print "<p>Registro no encontrado.</p>\n";
+            print "    <p>Registro no encontrado.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT * FROM $dbArticulos
                 WHERE id='$id'
                 AND id_vendedor='$_SESSION[compraventaIdUsuario]'";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } else {
                 $valor = $result->fetch();
-                print "<form action=\"ven_modificar3.php\" method=\"get\">
-      <p>Modifique los campos que desee:</p>
-      <table>
-        <tbody>
-          <tr>
-            <td>Artículo:</td>
-            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" "
-                    . "value=\"$valor[articulo]\" id=\"cursor\" /></td>
-          </tr>
-          <tr>
-            <td>Precio:</td>
-            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" "
-                    . "value=\"$valor[precio]\" /></td>
-          </tr>
-        </tbody>
-      </table>
-      <p><input type=\"hidden\" name=\"id\" value=\"$id\" />
-        <input type=\"submit\" value=\"Actualizar\" /></p>
-    </form>\n";
+                print "    <form action=\"ven-modificar-3.php\" method=\"get\">\n";
+                print "      <p>Modifique los campos que desee:</p>\n";
+                print "\n";
+                print "      <table>\n";
+                print "        <tbody>\n";
+                print "          <tr>\n";
+                print "            <td>Artículo:</td>\n";
+                print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" "
+                    . "value=\"$valor[articulo]\" id=\"cursor\" /></td>\n";
+                print "          </tr>\n";
+                print "          <tr>\n";
+                print "            <td>Precio:</td>\n";
+                print "            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" "
+                    . "value=\"$valor[precio]\" /></td>\n";
+                print "          </tr>\n";
+                print "        </tbody>\n";
+                print "      </table>\n";
+                print "\n";
+                print "      <p>\n";
+                print "        <input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+                print "        <input type=\"submit\" value=\"Actualizar\" />\n";
+                print "      </p>\n";
+                print "    </form>\n";
+                print "\n";
             }
         }
     }

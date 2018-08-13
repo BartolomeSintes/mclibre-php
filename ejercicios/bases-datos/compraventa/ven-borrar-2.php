@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - ven_borrar2.php
+ * Compraventa - ven-borrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,23 +27,26 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Venta - Borrar 2', 'venta');
 
     $id = recogeMatrizParaConsulta($db, 'id');
 
     if (count($id) == 0) {
-      print "<p>No se ha marcado nada para borrar.</p>\n";
+      print "    <p>No se ha marcado nada para borrar.</p>\n";
+      print "\n";
     } else {
         foreach ($id as $indice => $valor) {
             $consulta = "DELETE FROM $dbArticulos
                 WHERE id=$indice
                 AND id_vendedor='$_SESSION[compraventaIdUsuario]'";
             if ($db->query($consulta)) {
-                print "<p>Registro borrado correctamente.</p>\n";
+                print "    <p>Registro borrado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al borrar el registro.</p>\n";
+                print "    <p>Error al borrar el registro.</p>\n";
+                print "\n";
             }
         }
     }

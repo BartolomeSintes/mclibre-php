@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - funciones.php
+ * Compraventa - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -82,8 +82,10 @@ function conectaDb()
         return($db);
     } catch (PDOException $e) {
         cabecera('Error grave');
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
-//        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
+//        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+//        print "\n";
         pie();
         exit();
     }
@@ -97,31 +99,38 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la base de datos.</p>\n";
+        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos creada correctamente.</p>\n";
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
         $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             usuario VARCHAR($tamUsuario),
             password VARCHAR($tamCifrado),
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_usuarios)) {
-            print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Usuarios.</p>\n";
+            print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+            print "\n";
         }
         if ($administradorPassword!='') {
             $consulta = "INSERT INTO $dbUsuarios
                 VALUES (NULL, '$administradorNombre', '"
                 .md5($administradorPassword)."')";
             if ($db->query($consulta)) {
-                print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "\n";
             }
         }
         $consulta_creatabla_articulos = "CREATE TABLE $dbArticulos (
@@ -136,12 +145,15 @@ function borraTodoMySQL($db)
             fecha_compra DATE,
             PRIMARY KEY(id) )";
         if ($db->query($consulta_creatabla_articulos)) {
-            print "<p>Tabla de Artículos creada correctamente.</p>\n";
+            print "    <p>Tabla de Artículos creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Artículos.</p>\n";
+            print "    <p>Error al crear la tabla de Artículos.</p>\n";
+            print "\n";
         }
     } else {
-        print "<p>Error al crear la base de datos.</p>\n";
+        print "    <p>Error al crear la base de datos.</p>\n";
+        print "\n";
     }
 }
 
@@ -153,15 +165,19 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbUsuarios";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "    <p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     $consulta = "DROP TABLE $dbArticulos";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Articulos borrada correctamente.</p>\n";
+        print "    <p>Tabla de Articulos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Articulos.</p>\n";
+        print "    <p>Error al borrar la tabla de Articulos.</p>\n";
+        print "\n";
     }
     $consulta_creatabla_usuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
@@ -169,17 +185,21 @@ function borraTodoSqlite($db)
         password VARCHAR($tamCifrado)
         )";
     if ($db->query($consulta_creatabla_usuarios)) {
-        print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Usuarios.</p>\n";
+        print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     if ($administradorPassword!='') {
         $consulta = "INSERT INTO $dbUsuarios
             VALUES (NULL, '$administradorNombre', '".md5($administradorPassword)."')";
         if ($db->query($consulta)) {
-            print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "\n";
         }
     }
     $consulta_creatabla_articulos = "CREATE TABLE $dbArticulos (
@@ -194,9 +214,11 @@ function borraTodoSqlite($db)
         fecha_compra DATE
         )";
     if ($db->query($consulta_creatabla_articulos)) {
-       print "<p>Tabla de Artículos creada correctamente.</p>\n";
+       print "    <p>Tabla de Artículos creada correctamente.</p>\n";
+       print "\n";
     } else {
-        print "<p>Error al crear la tabla de Artículos.</p>\n";
+        print "    <p>Error al crear la tabla de Artículos.</p>\n";
+        print "\n";
     }
 }
 
@@ -287,38 +309,40 @@ function cabecera($texto, $menu='menu_principal')
     print "</head>\n";
     print "\n";
 
-    print "<body onload=\"document.getElementById('cursor').focus()\">
-<h1>Compraventa - $texto</h1>
-<div id=\"menu\">
-<ul>\n";
-    if ($menu == 'menu_principal') {
-        print "  <li><a href=\"index.php\">Conectar</a></li>
-    <li><a href=\"listar.php\">Ver artículos</a></li>";
-    } elseif ($menu==$administradorNombre) {
-        print "    <li><a href=\"adm-borrar-todo-1.php\">Borrar todo</a></li>
-    <li><a href=\"salir.php\">Desconectar</a></li>";
-    } elseif ($menu == 'compra') {
-        print "    <li><a href=\"index.php\">Inicio</a></li>
-    <li><a href=\"listar.php?compraventa=compra\">Artículos en venta</a></li>
-    <li><a href=\"com_reservar1.php\">Reservar</a></li>
-    <li><a href=\"com_anularreserva1.php\">Anular</a></li>
-    <li><a href=\"com_comprar1.php\">Comprar</a></li>";
-    } elseif ($menu == 'venta') {
-        print "    <li><a href=\"index.php\">Inicio</a></li>
-    <li><a href=\"ven_anyadir1.php\">Añadir</a></li>
-    <li><a href=\"listar.php?compraventa=venta\">Ver</a></li>
-    <li><a href=\"ven_modificar1.php\">Modificar</a></li>
-    <li><a href=\"ven_borrar1.php\">Borrar</a></li>";
-    } else {
-        print "    <li><a href=\"com_index.php\">Comprar</a></li>
-    <li><a href=\"ven_index.php\">Vender</a></li>
-    <li><a href=\"es_compras.php\">Compras realizadas</a></li>
-    <li><a href=\"es_ventas.php\">Ventas realizadas</a></li>
-    <li><a href=\"salir.php\">Desconectar</a></li>";
-    }
-    print "</ul>\n</div>\n";
+    print "<body onload=\"document.getElementById('cursor').focus()\">\n";
+    print "  <h1>Compraventa - $texto</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu == 'menu_principal') {
+        print "      <li><a href=\"index.php\">Conectar</a></li>\n";
+        print "      <li><a href=\"listar.php\">Ver artículos</a></li>\n";
+    } elseif ($menu==$administradorNombre) {
+        print "      <li><a href=\"adm-borrar-todo-1.php\">Borrar todo</a></li>\n";
+        print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
+    } elseif ($menu == 'compra') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+        print "      <li><a href=\"listar.php?compraventa=compra\">Artículos en venta</a></li>\n";
+        print "      <li><a href=\"com-reservar-1.php\">Reservar</a></li>\n";
+        print "      <li><a href=\"com-anular-reserva-1.php\">Anular</a></li>\n";
+        print "      <li><a href=\"com-comprar-1.php\">Comprar</a></li>\n";
+    } elseif ($menu == 'venta') {
+        print "      <li><a href=\"index.php\">Inicio</a></li>\n";
+        print "      <li><a href=\"ven-insertar-1.php\">Añadir</a></li>\n";
+        print "      <li><a href=\"listar.php?compraventa=venta\">Ver</a></li>\n";
+        print "      <li><a href=\"ven-modificar-1.php\">Modificar</a></li>\n";
+        print "      <li><a href=\"ven-borrar-1.php\">Borrar</a></li>\n";
+    } else {
+        print "      <li><a href=\"com-index.php\">Comprar</a></li>\n";
+        print "      <li><a href=\"ven-index.php\">Vender</a></li>\n";
+        print "      <li><a href=\"es-compras.php\">Compras realizadas</a></li>\n";
+        print "      <li><a href=\"es-ventas.php\">Ventas realizadas</a></li>\n";
+        print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
+    }
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
@@ -326,12 +350,12 @@ function pie()
     global $administradorPassword, $_SESSION;
 
     if (($administradorPassword!='')&&!isset($_SESSION['compraventaUsuario'])) {
-        print "<p><strong>Nota</strong>: El usuario Administrador "
-            . "se llama <strong>root</strong> y su contraseña es\ntambién "
-            . "<strong>root</strong>.</p>\n";
+        print "    <p><strong>Nota</strong>: El usuario Administrador se llama "
+            . "<strong>root</strong> y su contraseña es también <strong>root</strong>.</p>\n";
+        print "\n";
     }
 
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";

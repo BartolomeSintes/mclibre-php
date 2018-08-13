@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - es_ventas.php
+ * Compraventa - es-ventas.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Ventas realizadas', $_SESSION['compraventaUsuario']);
 
@@ -41,9 +41,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         AND comprado='true'";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>No ha vendido todavía ningún artículo.</p>\n";
+        print "    <p>No ha vendido todavía ningún artículo.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
         WHERE id_vendedor='$_SESSION[compraventaIdUsuario]'
@@ -51,43 +53,54 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         ORDER BY $campo $orden";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
-            print "<p>Artículos vendidos:</p>\n
-<table border=\"1\">
-  <thead>
-    <tr class=\"neg\">
-      <th><a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Artículo
-        <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      <th><a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Precio
-        <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-      <th><a href=\"$_SERVER[PHP_SELF]?campo=fecha_compra&amp;orden=ASC\">
-        <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-        Fecha de compra
-        <a href=\"$_SERVER[PHP_SELF]?campo=fecha_compra&amp;orden=DESC\">
-        <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        </tr>
-  </thead>
-  <tbody>\n";
+            print "    <p>Artículos vendidos:</p>\n";
+            print "\n";
+            print "    <table border=\"1\">\n";
+            print "      <thead>\n";
+            print "        <tr class=\"neg\">\n";
+            print "          <th>\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "            Artículo\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "          </th>\n";
+            print "          <th>\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "            Precio\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "          </th>\n";
+            print "          <th>\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=fecha_compra&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "            Fecha de compra\n";
+            print "            <a href=\"$_SERVER[PHP_SELF]?campo=fecha_compra&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "          </th>\n";
+            print "        </tr>\n";
+            print "      </thead>\n";
+            print "      <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "      <tr>\n";
+                print "        <tr>\n";
             } else {
-                print "      <tr class=\"neg\">\n";
+                print "        <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "        <td>$valor[articulo]</td>
-        <td>$valor[precio] &euro;</td>
-        <td>$valor[fecha_compra]</td>\n      </tr>\n";
+            print "          <td>$valor[articulo]</td>\n";
+            print "          <td>$valor[precio] &euro;</td>\n";
+            print "          <td>$valor[fecha_compra]</td>\n";
+            print "        </tr>\n";
         }
-            print "    </tbody>\n  </table>\n";
+            print "      </tbody>\n";
+            print "    </table>\n";
+            print "\n";
        }
     }
 

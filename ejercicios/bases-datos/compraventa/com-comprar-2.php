@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - com_comprar2.php
+ * Compraventa - com-comprar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Compra - Reservar 2', 'compra');
 
@@ -37,9 +37,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
         AND comprado='false'";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>no hay ningún registro reservado.</p>\n";
+        print "    <p>no hay ningún registro reservado.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT * FROM $dbArticulos
             WHERE id_comprador='$_SESSION[compraventaIdUsuario]'
@@ -47,7 +49,8 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             AND comprado='false'";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
             date_default_timezone_set('Europe/Madrid');
             $fecha_compra = date("Y-m-d H:i:s");
@@ -56,9 +59,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                     SET comprado='true', fecha_compra='$fecha_compra'
                     WHERE id='$valor[id]'";
                 if ($db->query($consulta)) {
-                    print "<p>Artículo comprado correctamente.</p>\n";
+                    print "    <p>Artículo comprado correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al comprar el artículo.</p>\n";
+                    print "    <p>Error al comprar el artículo.</p>\n";
+                    print "\n";
                 }
             }
         }

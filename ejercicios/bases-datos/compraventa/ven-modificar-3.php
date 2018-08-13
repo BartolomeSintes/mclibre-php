@@ -27,7 +27,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Modificar 3', 'venta');
 
@@ -36,10 +36,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     $id       = recogeParaConsulta($db, 'id');
 
     if ($id == "''") {
-        print "<p>No se ha seleccionado ningún registro.</p>\n";
+        print "    <p>No se ha seleccionado ningún registro.</p>\n";
+        print "\n";
     } elseif (($articulo == "''") && ($precio == "''")) {
-        print "<p>Hay que rellenar al menos uno de los campos. "
-            . "No se ha guardado la modificación.</p>\n";
+        print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
+        print "\n";
     } else {
 // La consulta cuenta los registros con un id diferente porque MySQL no distingue
 // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
@@ -51,19 +52,22 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             AND id<>$id";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn()>0) {
-            print "<p>Ya existe un registro con esos mismos valores. "
-                . "No se ha guardado la modificación.</p>\n";
+            print "    <p>Ya existe un registro con esos mismos valores. No se ha guardado la modificación.</p>\n";
+            print "\n";
         } else {
             $consulta = "UPDATE $dbArticulos
                     SET articulo=$articulo, precio=$precio
                     WHERE id_usuario='$_SESSION[compraventaIdUsuario]'
                     AND id='$id'";
             if ($db->query($consulta)) {
-                print "<p>Registro modificado correctamente.</p>\n";
+                print "    <p>Registro modificado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al modificar el registro.</p>\n";
+                print "    <p>Error al modificar el registro.</p>\n";
+                print "\n";
             }
         }
     }

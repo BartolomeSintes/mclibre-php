@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - com_anularreserva2.php
+ * Compraventa - com-anular-reserva-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,14 +27,15 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Compra - Anular reservas 2', 'compra');
 
     $id = recogeMatrizParaConsulta($db, 'id');
 
     if (count($id) == 0) {
-      print "<p>No se ha marcado nada para anular la reserva.</p>\n";
+      print "    <p>No se ha marcado nada para anular la reserva.</p>\n";
+      print "\n";
     } else {
         foreach ($id as $indice => $valor) {
             $consulta = "SELECT COUNT(*) FROM $dbArticulos
@@ -44,9 +45,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                 AND comprado='false'";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn() == 0) {
-                print "<p>El registro indicado no es válido, se ha vendido o no está reservado.</p>\n";
+                print "    <p>El registro indicado no es válido, se ha vendido o no está reservado.</p>\n";
+                print "\n";
             } else {
                 date_default_timezone_set('Europe/Madrid');
                 $fecha_reserva = date("Y-m-d H:i:s");
@@ -55,9 +58,11 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                     fecha_reserva='0000-00-00 00:00:00'
                     WHERE id='$indice'";
                 if ($db->query($consulta)) {
-                    print "<p>Reserva de artículo anulada correctamente.</p>\n";
+                    print "    <p>Reserva de artículo anulada correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al anular la reserva de artículo.</p>\n";
+                    print "    <p>Error al anular la reserva de artículo.</p>\n";
+                    print "\n";
                 }
             }
         }

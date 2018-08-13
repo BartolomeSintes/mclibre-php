@@ -27,33 +27,39 @@ if (!isset($_SESSION['compraventaUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Venta - Añadir 1', 'venta');
     $consulta = "SELECT COUNT(*) FROM $dbArticulos";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn()>=$maxRegArticulos) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p>Por favor, borre algún registro antes.</p>\n";
+        print "\n";
     } else {
-        print "<form action=\"ven_anyadir2.php\" method=\"get\">
-      <p>Escriba los datos del nuevo artículo:</p>
-      <table>
-        <tbody>
-          <tr>
-            <td>Artículo:</td>
-            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" id=\"cursor\" /></td>
-          </tr>
-          <tr>
-            <td>Precio:</td>
-            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" /> &euro;</td>
-          </tr>
-        </tbody>
-      </table>
-      <p><input type=\"submit\" value=\"Añadir\" /></p>
-    </form>\n";
+        print "    <form action=\"ven-insertar-2.php\" method=\"get\">\n";
+        print "      <p>Escriba los datos del nuevo artículo:</p>\n";
+        print "\n";
+        print "      <table>\n";
+        print "        <tbody>\n";
+        print "          <tr>\n";
+        print "            <td>Artículo:</td>\n";
+        print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" id=\"cursor\" /></td>\n";
+        print "          </tr>\n";
+        print "          <tr>\n";
+        print "            <td>Precio:</td>\n";
+        print "            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" /> &euro;</td>\n";
+        print "          </tr>\n";
+        print "        </tbody>\n";
+        print "      </table>\n";
+        print "\n";
+        print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+        print "    </form>\n";
+        print "\n";
     }
     $db = NULL;
     pie();
