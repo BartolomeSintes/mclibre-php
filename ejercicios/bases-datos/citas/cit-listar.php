@@ -23,7 +23,7 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 
 if (!isset($_SESSION['citasUsuario'])) {
@@ -35,9 +35,11 @@ if (!isset($_SESSION['citasUsuario'])) {
 $consulta = "SELECT COUNT(*) FROM $dbCitas";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "<p>No se han creado todavía citas.</p>\n";
+    print "    <p>No se han creado todavía citas.</p>\n";
+    print "\n";
 } else {
     // En esta consulta he tenido que añadir id_cita porque las dos
     // tablas tienen un campo id y quiero el id de la cita no del autor
@@ -46,19 +48,22 @@ if (!$result) {
         ORDER BY apellidos ASC";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
-        print "<p>Estas son las citas creadas hasta el momento:</p>
-<ul>\n";
+        print "    <p>Estas son las citas creadas hasta el momento:</p>\n";
+        print "\n";
+        print "    <ul>\n";
         foreach ($result as $valor) {
-            print "  <li>$valor[cita]. <strong>$valor[nombre] $valor[apellidos]</strong>";
+            print "      <li>$valor[cita]. <strong>$valor[nombre] $valor[apellidos]</strong>";
             $consulta = "SELECT * FROM $dbEtiCitas, $dbEtiquetas
                 WHERE $dbEtiCitas.id_cita=$valor[id_cita]
                 AND $dbEtiCitas.id_etiqueta=$dbEtiquetas.id
                 ORDER BY etiqueta ASC";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } else {
                 print " (";
                 foreach ($result as $valor) {
@@ -68,7 +73,7 @@ if (!$result) {
             }
             print"</li>\n";
         }
-        print "</ul>\n";
+        print "    </ul>\n";
     }
 }
 $db = NULL;

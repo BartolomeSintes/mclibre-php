@@ -1,6 +1,6 @@
 <?php
 /**
- * Citas -  cit-anyadir-1.php
+ * Citas -  cit-insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,49 +27,56 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Citas - Añadir 1', 'menu_citas');
     $consulta = "SELECT COUNT(*) FROM $dbAutores";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>No se ha creado todavía ningún autor.</p>\n";
+        print "    <p>No se ha creado todavía ningún autor.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn()>=$maxRegCitas) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "\n";
         } else {
-            print "<form action=\"cit-anyadir-2.php\" method=\"get\">
-  <p>Escriba los datos de la nueva cita:</p>
-  <table>
-    <tbody>
-      <tr>
-        <td>Autor:</td>
-        <td>
-          <select name=\"autor\">\n";
+            print "    <form action=\"cit-insertar-2.php\" method=\"get\">\n";
+            print "      <p>Escriba los datos de la nueva cita:</p>\n";
+            print "\n";
+            print "      <table>\n";
+            print "        <tbody>\n";
+            print "          <tr>\n";
+            print "            <td>Autor:</td>\n";
+            print "            <td>\n";
+            print "              <select name=\"autor\">\n";
             $consulta = "SELECT * FROM $dbAutores
                 ORDER by apellidos ASC";
             $result = $db->query($consulta);
             foreach ($result as $indice => $valor) {
-                print "            <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos]</option>\n";
+                print "                <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos]</option>\n";
             }
-            print "          </select>
-       </td>
-    </tr>
-    <tr>
-        <td>Cita:</td>
-        <td><textarea name=\"cita\" cols=\"80\" rows=\"5\" id=\"cursor\" ></textarea></td>
-      </tr>
-      </tbody>
-  </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
-</form>\n";
+            print "              </select>\n";
+            print "            </td>\n";
+            print "          </tr>\n";
+            print "          <tr>\n";
+            print "            <td>Cita:</td>\n";
+            print "            <td><textarea name=\"cita\" cols=\"80\" rows=\"5\" id=\"cursor\" ></textarea></td>\n";
+            print "          </tr>\n";
+            print "        </tbody>\n";
+            print "      </table>\n";
+            print "\n";
+            print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+            print "    </form>\n";
         }
     }
     $db = NULL;

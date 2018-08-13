@@ -27,7 +27,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Citas - Borrar etiquetas 3', 'menu_citas');
 
@@ -40,9 +40,11 @@ if (!isset($_SESSION['citasUsuario'])) {
         $consulta = "DELETE FROM $dbEtiCitas
             WHERE id=$indice";
         if ($db->query($consulta)) {
-            print "<p>Registro de Etiquetas de Citas borrado correctamente.</p>\n";
+            print "    <p>Registro de Etiquetas de Citas borrado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al borrar el registro de Etiquetas de Citas.<p>\n";
+            print "    <p>Error al borrar el registro de Etiquetas de Citas.<p>\n";
+            print "\n";
         }
     }
     $db = NULL;

@@ -1,6 +1,6 @@
 <?php
 /**
- * Citas - eti-anyadir-2.php
+ * Citas - eti-insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,41 +27,48 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Etiquetas - Añadir 2', 'menu_etiquetas');
 
     $etiqueta = recogeParaConsulta($db, 'etiqueta');
     $etiqueta = strtolower($etiqueta);
     if ($etiqueta == "''") {
-        print "<p>La etiqueta no puede estar vacía. "
-            . "No se ha guardado el registro.</p>\n";
+        print "    <p>La etiqueta no puede estar vacía. No se ha guardado el registro.</p>\n";
+        print "\n";
     } elseif (substr_count($etiqueta, " ")>0) {
-        print "<p>La etiqueta debe contener una sola palabra. "
-            . "No se ha guardado el registro.</p>\n";
+        print "    <p>La etiqueta debe contener una sola palabra. No se ha guardado el registro.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn()>=$maxRegEtiquetas) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbEtiquetas
                 WHERE etiqueta=$etiqueta";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn()==1) {
-                print "<p>El registro ya existe.</p>\n";
+                print "    <p>El registro ya existe.</p>\n";
+                print "\n";
             } else {
                 $consulta = "INSERT INTO $dbEtiquetas
                     VALUES (NULL, $etiqueta)";
                 if ($db->query($consulta)) {
-                    print "<p>Registro creado correctamente.</p>\n";
+                    print "    <p>Registro creado correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al crear el registro.<p>\n";
+                    print "    <p>Error al crear el registro.<p>\n";
+                    print "\n";
                 }
             }
         }

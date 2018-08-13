@@ -1,6 +1,6 @@
 <?php
 /**
- * Citas -  aut-anyadir-1.php
+ * Citas -  aut-insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,33 +27,39 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Autores - Añadir 1', 'menu_autores');
     $consulta = "SELECT COUNT(*) FROM $dbAutores";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn()>=$maxRegAutores) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p>Por favor, borre algún registro antes.</p>\n";
+        print "\n";
     } else {
-        print "<form action=\"aut-anyadir-2.php\" method=\"get\">
-  <p>Escriba los datos del nuevo autor:</p>
-  <table>
-    <tbody>
-      <tr>
-        <td>Nombre:</td>
-        <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" id=\"cursor\" /></td>
-      </tr>
-      <tr>
-        <td>Apellidos:</td>
-        <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" /></td>
-      </tr>
-      </tbody>
-  </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
-</form>\n";
+        print "    <form action=\"aut-insertar-2.php\" method=\"get\">\n";
+        print "      <p>Escriba los datos del nuevo autor:</p>\n";
+        print "\n";
+        print "      <table>\n";
+        print "        <tbody>\n";
+        print "          <tr>\n";
+        print "            <td>Nombre:</td>\n";
+        print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" id=\"cursor\" /></td>\n";
+        print "          </tr>\n";
+        print "          <tr>\n";
+        print "            <td>Apellidos:</td>\n";
+        print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" /></td>\n";
+        print "          </tr>\n";
+        print "        </tbody>\n";
+        print "      </table>\n";
+        print "\n";
+        print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+        print "    </form>\n";
+        print "\n";
     }
     $db = NULL;
     pie();

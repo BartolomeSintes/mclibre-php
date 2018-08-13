@@ -22,17 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 
 $consulta = $consultaExisteTabla;
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() == 0) {
     cabecera('Primera conexión', 'menu_principal');
-    print "<p>Aparentemente, la base de datos no existe. "
-        . "Se creará a continuación.</p>";
+    print "    <p>Aparentemente, la base de datos no existe. Se creará a continuación.</p>";
+    print "\n";
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {
@@ -47,25 +48,30 @@ if (!$result) {
         $aviso = recogeParaConsulta($db, 'aviso');
         $aviso = quitaComillasExteriores($aviso);
         if ($aviso) {
-            print "<p style=\"color: red\">$aviso</p>\n";
+            print "    <p style=\"color: red\">$aviso</p>\n";
+            print "\n";
         }
-        print "<form action=\"validar-1.php\" method=\"get\">
-  <p>Escriba su nombre de usuario y contraseña:</p>
-  <table>
-    <tbody>
-      <tr>
-        <td>Nombre:</td>
-        <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\" /></td>
-      </tr>
-      <tr>
-        <td>Contraseña:</td>
-        <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" /></td>
-      </tr>
-    </tbody>
-  </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
-  <p><strong>Nota</strong>: Si no está ya registrado, le registraré como nuevo usuario.</p>
-</form>\n";
+        print "    <form action=\"validar-1.php\" method=\"get\">\n";
+        print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
+        print "\n";
+        print "      <table>\n";
+        print "        <tbody>\n";
+        print "          <tr>\n";
+        print "            <td>Nombre:</td>\n";
+        print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\" /></td>\n";
+        print "          </tr>\n";
+        print "          <tr>\n";
+        print "            <td>Contraseña:</td>\n";
+        print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" /></td>\n";
+        print "          </tr>\n";
+        print "        </tbody>\n";
+        print "      </table>\n";
+        print "\n";
+        print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+        print "\n";
+        print "      <p><strong>Nota</strong>: Si no está ya registrado, le registraré como nuevo usuario.</p>\n";
+        print "    </form>\n";
+        print "\n";
     }
 }
 $db = NULL;

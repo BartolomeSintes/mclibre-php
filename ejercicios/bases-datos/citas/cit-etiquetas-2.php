@@ -27,49 +27,55 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Citas - Asignar etiquetas 2', 'menu_citas');
 
     $id = recogeParaConsulta($db, 'id');
     if ($id == "''") {
-        print "<p>No se ha seleccionado ningún registro.</p>\n";
+        print "    <p>No se ha seleccionado ningún registro.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas
             WHERE id=$id";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn() == 0) {
-            print "<p>Registro no encontrado.</p>\n";
+            print "    <p>Registro no encontrado.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT * FROM $dbCitas, $dbAutores
                 WHERE $dbCitas.id_autor=$dbAutores.id
                 AND $dbCitas.id=$id";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } else {
                 $valor = $result->fetch();
-                print "<form action=\"cit-etiquetas-3.php\" method=\"get\">
-  <p>Asigne una etiqueta a la cita:</p>\n
-  <table border=\"1\">
-    <tbody>
-      <tr>
-        <th>Autor:</th>
-        <td>$valor[nombre] $valor[apellidos]</td>
-      </tr>
-      <tr>
-        <th>Cita:</th>
-        <td>$valor[cita]</td>
-      </tr>\n";
+                print "    <form action=\"cit-etiquetas-3.php\" method=\"get\">\n";
+                print "      <p>Asigne una etiqueta a la cita:</p>\n";
+                print "\n";
+                print "      <table border=\"1\">\n";
+                print "        <tbody>\n";
+                print "          <tr>\n";
+                print "            <th>Autor:</th>\n";
+                print "            <td>$valor[nombre] $valor[apellidos]</td>\n";
+                print "          </tr>\n";
+                print "          <tr>\n";
+                print "            <th>Cita:</th>\n";
+                print "            <td>$valor[cita]</td>\n";
+                print "          </tr>\n";
                 $consulta = "SELECT COUNT(*) FROM $dbEtiCitas, $dbEtiquetas
                     WHERE id_cita=$id
                     AND $dbEtiCitas.id_etiqueta=$dbEtiquetas.id
                     ORDER BY etiqueta ASC";
                 $result = $db->query($consulta);
                 if (!$result) {
-                    print "<p>Error en la consulta.</p>\n";
+                    print "    <p>Error en la consulta.</p>\n";
+                    print "\n";
                 } else {
                     $numEtiquetas = $result->fetchColumn();
                 }
@@ -80,31 +86,39 @@ if (!isset($_SESSION['citasUsuario'])) {
                         ORDER BY etiqueta ASC";
                     $result = $db->query($consulta);
                     if (!$result) {
-                        print "<p>Error en la consulta.</p>\n";
+                        print "    <p>Error en la consulta.</p>\n";
+                        print "\n";
                     } else {
                         foreach ($result as $indice => $valor) {
-                            print "        <tr>
-          <th>Etiqueta:</th>
-          <td>$valor[etiqueta]</td>
-        </tr>\n";
+                            print "          <tr>\n";
+                            print "            <th>Etiqueta:</th>\n";
+                            print "            <td>$valor[etiqueta]</td>\n";
+                            print "          </tr>\n";
                         }
                     }
                 }
-                print "      <tr>
-        <th>Etiqueta:</th>
-        <td>\n          <select name=\"etiqueta\">\n";
+                print "          <tr>\n";
+                print "            <th>Etiqueta:</th>\n";
+                print "            <td>\n";
+                print "              <select name=\"etiqueta\">\n";
                 $consulta = "SELECT * FROM $dbEtiquetas
                     ORDER BY etiqueta ASC";
                 $result = $db->query($consulta);
                 foreach ($result as $indice => $valor) {
-                    print "            <option value=\"$valor[id]\">$valor[etiqueta]</option>\n";
+                    print "                <option value=\"$valor[id]\">$valor[etiqueta]</option>\n";
                 }
-                print "         </select>\n        </td>\n     </tr>\n";
-
-                print "    </tbody>
-  </table>
-  <p><input type=\"hidden\" name=\"cita\" value=\"$id\" /><input type=\"submit\" value=\"Asignar\" /></p>
-</form>\n";
+                print "             </select>\n";
+                print "            </td>\n";
+                print "          </tr>\n";
+                print "        </tbody>\n";
+                print "      </table>\n";
+                print "\n";
+                print "      <p>\n";
+                print "        <input type=\"hidden\" name=\"cita\" value=\"$id\" />\n";
+                print "        <input type=\"submit\" value=\"Asignar\" />\n";
+                print "      </p>\n";
+                print "    </form>\n";
+                print "\n";
             }
         }
     }

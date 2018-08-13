@@ -1,6 +1,6 @@
 <?php
 /**
- * Citas -  eti-anyadir-1.php
+ * Citas -  eti-insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,29 +27,35 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Etiquetas - Añadir 1', 'menu_etiquetas');
     $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn()>=$maxRegEtiquetas) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p>Por favor, borre algún registro antes.</p>\n";
+        print "\n";
     } else {
-        print "<form action=\"eti-anyadir-2.php\" method=\"get\">
-  <p>Escriba la nueva etiqueta (una sola palabra):</p>
-  <table>
-    <tbody>
-      <tr>
-        <td>Etiqueta:</td>
-        <td><input type=\"text\" name=\"etiqueta\" size=\"$tamEtiqueta\" id=\"cursor\" /></td>
-      </tr>
-    </tbody>
-  </table>
-  <p><input type=\"submit\" value=\"Añadir\" /></p>
-</form>\n";
+        print "    <form action=\"eti-insertar-2.php\" method=\"get\">\n";
+        print "      <p>Escriba la nueva etiqueta (una sola palabra):</p>\n";
+        print "\n";
+        print "      <table>\n";
+        print "        <tbody>\n";
+        print "          <tr>\n";
+        print "            <td>Etiqueta:</td>\n";
+        print "            <td><input type=\"text\" name=\"etiqueta\" size=\"$tamEtiqueta\" id=\"cursor\" /></td>\n";
+        print "          </tr>\n";
+        print "        </tbody>\n";
+        print "      </table>\n";
+        print "\n";
+        print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+        print "    </form>\n";
+        print "\n";
     }
     $db = NULL;
     pie();

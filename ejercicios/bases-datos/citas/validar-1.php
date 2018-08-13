@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ("funciones.php");
+include ("biblioteca.php");
 $db = conectaDb();
 
 $usuario  = recogeParaConsulta($db, 'usuario');
@@ -39,33 +39,41 @@ if (!$usuario || ($usuario == 'menu_principal')) {
     $result = $db->query($consulta);
     if (!$result) {
         cabecera('Identificación 2', 'menu_principal');
-        print "<p>Error en la consulta.</p>";
+        print "    <p>Error en la consulta.</p>";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
         cabecera('Identificación 2', 'menu_principal');
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>";
+            print "    <p>Error en la consulta.</p>";
+            print "\n";
         } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-            print "<p>Se ha alcanzado el número máximo de Usuarios que se pueden "
-                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p>Se ha alcanzado el número máximo de Usuarios que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "\n";
         } else {
-            print "  <p><strong>$usuario</strong> es un nuevo usuario. Por favor,
-      repita la contraseña para registrarse como usuario.</p>
-  <form action=\"validar2.php\" method=\"get\">
-    <table>
-      <tbody>
-        <tr>
-          <td>Contraseña:</td>
-          <td><input type=\"password\" name=\"password2\" id=\"cursor\" /></td>
-        </tr>
-      </tbody>
-    </table>
-    <p><input type=\"submit\" value=\"Añadir\" />
-      <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />
-      <input type=\"hidden\" name=\"password\" value=\"" . md5($password)
-      . "\" /></p>
-  </form>";
+            print "    <p><strong>$usuario</strong> es un nuevo usuario. Por favor, "
+                . "repita la contraseña para registrarse como usuario.</p>\n";
+            print "\n";
+            print "    <form action=\"validar-2.php\" method=\"get\">\n";
+            print "      <table>\n";
+            print "        <tbody>\n";
+            print "          <tr>\n";
+            print "            <td>Contraseña:</td>\n";
+            print "            <td><input type=\"password\" name=\"password2\" id=\"cursor\" /></td>\n";
+            print "          </tr>\n";
+            print "        </tbody>\n";
+            print "      </table>\n";
+            print "\n";
+            print "      <p>\n";
+            print "        <input type=\"submit\" value=\"Añadir\" />\n";
+            print "        <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />\n";
+            print "        <input type=\"hidden\" name=\"password\" value=\"" . md5($password) . "\" />\n";
+            print "      </p>\n";
+            print "    </form>\n";
+            print "\n";
         }
     } else {
         $consulta = "SELECT * FROM $dbUsuarios
@@ -73,7 +81,8 @@ if (!$usuario || ($usuario == 'menu_principal')) {
         $result = $db->query($consulta);
         if (!$result) {
             cabecera('Identificación 2', 'menu_principal');
-            print "<p>Error en la consulta.</p>";
+            print "    <p>Error en la consulta.</p>";
+            print "\n";
         } else {
             $valor = $result->fetch();
 //            print $valor['password']." - ".md5($password);

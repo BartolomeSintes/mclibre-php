@@ -1,6 +1,6 @@
 <?php
 /**
- * Citas - cit-anyadir-2.php
+ * Citas - cit-insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Citas - Añadir 2', 'menu_citas');
 
@@ -37,32 +37,39 @@ if (!isset($_SESSION['citasUsuario'])) {
 // Habría que comprobar que el autor recibido existe
 
     if (($cita == "''") || ($autor == '')) {
-        print "<p>La cita y el autor no pueden estar vacíos. "
-            . "No se ha guardado el registro.</p>\n";
+        print "    <p>La cita y el autor no pueden estar vacíos. No se ha guardado el registro.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn()>=$maxRegCitas) {
-            print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-                . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbCitas
                 WHERE cita=$cita
                 AND id_autor=$autor";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn()==1) {
-                print "<p>El registro ya existe.</p>\n";
+                print "    <p>El registro ya existe.</p>\n";
+                print "\n";
             } else {
                 $consulta = "INSERT INTO $dbCitas
                     VALUES (NULL, $cita, $autor)";
                 if ($db->query($consulta)) {
-                    print "<p>Registro creado correctamente.</p>\n";
+                    print "    <p>Registro creado correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al crear el registro.<p>\n";
+                    print "    <p>Error al crear el registro.<p>\n";
+                    print "\n";
                 }
             }
         }

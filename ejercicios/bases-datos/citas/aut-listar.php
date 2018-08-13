@@ -23,7 +23,7 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 
 if (!isset($_SESSION['citasUsuario'])) {
@@ -35,9 +35,11 @@ if (!isset($_SESSION['citasUsuario'])) {
 $consulta = "SELECT COUNT(*) FROM $dbAutores";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "<p>No se han creado todavía autores.</p>\n";
+    print "    <p>No se han creado todavía autores.</p>\n";
+    print "\n";
 } else {
     $max = 0;
     $min = $maxRegCitas;
@@ -45,14 +47,16 @@ if (!$result) {
             ORDER BY apellidos ASC";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
         foreach ($result as $valor) {
             $consulta = "SELECT COUNT (*) FROM $dbCitas
                 WHERE id_autor=$valor[id]";
             $result2 = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } else {
                 $num = $result2->fetchColumn();
                 if ($num>$max) {
@@ -68,18 +72,21 @@ if (!$result) {
         ORDER BY apellidos ASC";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
-        print "<p>Estas son los autores definidos hasta el momento, con "
+        print "    <p>Estas son los autores definidos hasta el momento, con "
             . "un tamaño proporcional al número de citas:</p>\n";
-        print "<p>\n";
+        print "\n";
+        print "    <p>\n";
         $tmp = true;
         foreach ($result as $valor) {
             $consulta = "SELECT COUNT (*) FROM $dbCitas
                 WHERE id_autor=$valor[id]";
             $result2 = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } else {
                 $num = $result2->fetchColumn();
                 if ($max != $min) {
@@ -87,7 +94,7 @@ if (!$result) {
                 } else {
                     $tamanyo = round(($minFontSize+$maxFontSize)/2);
                 }
-                print "  <span style=\"font-size:{$tamanyo}%\" ";
+                print "      <span style=\"font-size:{$tamanyo}%\" ";
                 if ($tmp) {
                     print "class=\"neg\" ";
                 }
@@ -95,7 +102,8 @@ if (!$result) {
                 print ">$valor[nombre] $valor[apellidos]</span>\n";
             }
         }
-        print "</p>\n";
+        print "    </p>\n";
+        print "\n";
     }
 }
 $db = NULL;

@@ -23,7 +23,7 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 
 if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario'] != $administradorNombre)) {
     header('Location:index.php');
@@ -35,22 +35,27 @@ if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario'] != $administ
     $id = recogeMatrizParaConsulta($db, 'id');
 
     if (count($id) == 0) {
-      print "<p>No se ha marcado nada para borrar.</p>\n";
+      print "    <p>No se ha marcado nada para borrar.</p>\n";
+      print "\n";
     } else {
         foreach ($id as $indice => $valor) {
             $consulta = "DELETE FROM $dbEtiquetas
                 WHERE id=$indice";
             if ($db->query($consulta)) {
-                print "<p>Etiqueta borrada correctamente.</p>\n";
+                print "    <p>Etiqueta borrada correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al borrar la etiqueta.</p>\n";
+                print "    <p>Error al borrar la etiqueta.</p>\n";
+                print "\n";
             }
             $consulta = "DELETE FROM $dbElegidas
                 WHERE id_etiqueta=$indice";
             if ($db->query($consulta)) {
-                print "<p>Elecciones borradas correctamente.</p>\n";
+                print "    <p>Elecciones borradas correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al borrar las elecciones.</p>\n";
+                print "    <p>Error al borrar las elecciones.</p>\n";
+                print "\n";
             }
         }
     }

@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-    session_start();
-    session_destroy();
-    header('Location:index.php');
-    exit();
+session_start();
+session_destroy();
+header('Location:index.php');
+exit();
 ?>

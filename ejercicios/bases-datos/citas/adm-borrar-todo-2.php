@@ -23,7 +23,7 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 
 if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario'] != $administradorNombre)) {
     header('Location:index.php');

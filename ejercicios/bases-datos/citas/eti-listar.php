@@ -23,7 +23,7 @@
  */
 
 session_start();
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 
 if (!isset($_SESSION['citasUsuario'])) {
@@ -35,9 +35,11 @@ if (!isset($_SESSION['citasUsuario'])) {
 $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";
 $result = $db->query($consulta);
 if (!$result) {
-    print "<p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "<p>No se han creado todavía etiquetas.</p>\n";
+    print "    <p>No se han creado todavía etiquetas.</p>\n";
+    print "\n";
 } else {
     $max = 0;
     $min = $maxRegUsuarios;
@@ -45,14 +47,16 @@ if (!$result) {
         ORDER BY etiqueta ASC";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
         foreach ($result as $valor) {
         $consulta = "SELECT COUNT (*) FROM $dbEtiCitas
             WHERE id_etiqueta=$valor[id]";
         $result2 = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
             $num = $result2->fetchColumn();
             if ($num>$max) {
@@ -67,17 +71,19 @@ if (!$result) {
         ORDER BY etiqueta ASC";
     $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
-            print "<p>Estas son las etiquetas definidas hasta el momento, con "
-                . "un tamaño proporcional a su popularidad:</p>\n";
-            print "<p>\n";
+            print "    <p>Estas son las etiquetas definidas hasta el momento, con un tamaño proporcional a su popularidad:</p>\n";
+            print "\n";
+            print "    <p>\n";
             foreach ($result as $valor) {
                 $consulta = "SELECT COUNT (*) FROM $dbEtiCitas
                     WHERE id_etiqueta=$valor[id]";
                 $result2 = $db->query($consulta);
                 if (!$result) {
-                    print "<p>Error en la consulta.</p>\n";
+                    print "    <p>Error en la consulta.</p>\n";
+                    print "\n";
                 } else {
                     $num = $result2->fetchColumn();
                     if ($max != $min) {
@@ -85,10 +91,10 @@ if (!$result) {
                     } else {
                         $tamanyo = round(($minFontSize+$maxFontSize)/2);
                     }
-                    print "  <span style=\"font-size:{$tamanyo}%\">$valor[etiqueta]</span>\n";
+                    print "      <span style=\"font-size:{$tamanyo}%\">$valor[etiqueta]</span>\n";
                 }
             }
-            print "</p>\n";
+            print "    </p>\n";
         }
     }
 }

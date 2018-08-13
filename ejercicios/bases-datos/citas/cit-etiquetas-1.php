@@ -27,7 +27,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Citas - Asignar etiquetas 1', 'menu_citas');
 
@@ -39,9 +39,11 @@ if (!isset($_SESSION['citasUsuario'])) {
     $consulta = "SELECT COUNT(*) FROM $dbCitas";
     $result = $db->query($consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "<p>No hay ninguna cita definida.</p>\n";
+        print "    <p>No hay ninguna cita definida.</p>\n";
+        print "\n";
     } else {
         // En esta consulta he tenido que añadir id_cita porque las dos
         // tablas tienen un campo id y quiero el id de la cita no del autor
@@ -50,43 +52,53 @@ if (!isset($_SESSION['citasUsuario'])) {
             ORDER BY $campo $orden";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
-            print "<form action=\"cit-etiquetas-2.php\" method=\"get\">
-  <p>Marque la cita a la que quiera asignar etiquetas:</p>\n
-  <table border=\"1\">
-    <thead>
-      <tr class=\"neg\">
-        <th>Elegir</th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Autor
-          <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-        <th><a href=\"$_SERVER[PHP_SELF]?campo=cita&amp;orden=ASC\">
-          <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>
-          Cita
-          <a href=\"$_SERVER[PHP_SELF]?campo=cita&amp;orden=DESC\">
-          <img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a></th>
-          </tr>
-    </thead>
-    <tbody>\n";
+            print "    <form action=\"cit-etiquetas-2.php\" method=\"get\">\n";
+            print "      <p>Marque la cita a la que quiera asignar etiquetas:</p>\n";
+            print "\n";
+            print "      <table border=\"1\">\n";
+            print "        <thead>\n";
+            print "          <tr class=\"neg\">\n";
+            print "            <th>Elegir</th>\n";
+            print "            <th>\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "              Autor\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "            </th>\n";
+            print "            <th>\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=cita&amp;orden=ASC\">"
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "              Cita\n";
+            print "              <a href=\"$_SERVER[PHP_SELF]?campo=cita&amp;orden=DESC\">"
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            print "            </th>\n";
+            print "          </tr>\n";
+            print "        </thead>\n";
+            print "        <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "      <tr>\n";
+                print "          <tr>\n";
             } else {
-                print "      <tr class=\"neg\">\n";
+                print "          <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "        <td align=\"center\"><input type=\"radio\" "
-                . "name=\"id\" value=\"$valor[id_cita]\" /></td>
-        <td>$valor[nombre] $valor[apellidos]</td>
-        <td>$valor[cita]</td>\n      </tr>\n";
+            print "            <td align=\"center\"><input type=\"radio\" "
+                . "name=\"id\" value=\"$valor[id_cita]\" /></td>\n";
+            print "            <td>$valor[nombre] $valor[apellidos]</td>\n";
+            print "            <td>$valor[cita]</td>\n";
+            print "          </tr>\n";
         }
-            print "    </tbody>\n  </table>
-  <p><input type=\"submit\" value=\"Elegir\" /></p>
-</form>\n";
+            print "        </tbody>\n";
+            print "      </table>\n";
+            print "\n";
+            print "      <p><input type=\"submit\" value=\"Elegir\" /></p>\n";
+            print "    </form>\n";
+            print "\n";
        }
     }
 

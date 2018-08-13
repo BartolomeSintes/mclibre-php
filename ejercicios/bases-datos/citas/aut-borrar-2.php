@@ -27,7 +27,7 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Autores - Borrar 2', 'menu_autores');
 
@@ -38,24 +38,29 @@ if (!isset($_SESSION['citasUsuario'])) {
         $consulta = "DELETE FROM $dbAutores
             WHERE id=$indice";
         if ($db->query($consulta)) {
-            print "<p>Registro de Autores borrado correctamente.</p>\n";
+            print "    <p>Registro de Autores borrado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al borrar el registro de Autores.<p>\n";
+            print "    <p>Error al borrar el registro de Autores.<p>\n";
+            print "\n";
         }
         // Después borra en la tabla EtiCitas
         $consulta = "SELECT * FROM $dbCitas
             WHERE id_autor=$indice";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } else {
             foreach ($result as $indice2 => $valor2) {
                 $consulta = "DELETE FROM $dbEtiCitas
                     WHERE id_cita=$valor2[id]";
                if ($db->query($consulta)) {
-                    print "<p>Registro de Etiquetas de Citas borrado correctamente.</p>\n";
+                    print "    <p>Registro de Etiquetas de Citas borrado correctamente.</p>\n";
+                    print "\n";
                 } else {
-                    print "<p>Error al borrar el registro de Etiquetas de Citas.<p>\n";
+                    print "    <p>Error al borrar el registro de Etiquetas de Citas.<p>\n";
+                    print "\n";
                 }
             }
         }
@@ -63,9 +68,11 @@ if (!isset($_SESSION['citasUsuario'])) {
         $consulta = "DELETE FROM $dbCitas
             WHERE id_autor=$indice";
         if ($db->query($consulta)) {
-            print "<p>Registro de Citas borrado correctamente.</p>\n";
+            print "    <p>Registro de Citas borrado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al borrar el registro de Citas.<p>\n";
+            print "    <p>Error al borrar el registro de Citas.<p>\n";
+            print "\n";
         }
     }
     $db = NULL;

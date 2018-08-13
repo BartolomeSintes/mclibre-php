@@ -27,28 +27,32 @@ if (!isset($_SESSION['citasUsuario'])) {
     header('Location:index.php');
     exit();
 } else {
-    include('funciones.php');
+    include('biblioteca.php');
     $db = conectaDb();
     cabecera('Citas - Borrar etiquetas 2', 'menu_citas');
 
     $id = recogeParaConsulta($db, 'id');
     if ($id == "''") {
-        print "<p>No se ha seleccionado ningún registro.</p>\n";
+        print "    <p>No se ha seleccionado ningún registro.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbCitas
             WHERE id=$id";
         $result = $db->query($consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn() == 0) {
-            print "<p>Registro no encontrado.</p>\n";
+            print "    <p>Registro no encontrado.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT * FROM $dbCitas, $dbAutores
                 WHERE $dbCitas.id_autor=$dbAutores.id
                 AND $dbCitas.id=$id";
             $result = $db->query($consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } else {
                 $valor = $result->fetch();
                 $nombre = $valor['nombre'].' '.$valor['apellidos'];
@@ -59,22 +63,25 @@ if (!isset($_SESSION['citasUsuario'])) {
                     ORDER BY etiqueta ASC";
                 $result = $db->query($consulta);
                 if (!$result) {
-                    print "<p>Error en la consulta.</p>\n";
+                    print "    <p>Error en la consulta.</p>\n";
+                    print "\n";
                 } elseif ($result->fetchColumn() == 0) {
-                    print "<p>La cita elegida no tiene etiquetas asignadas.</p>";
+                    print "    <p>La cita elegida no tiene etiquetas asignadas.</p>";
+                    print "\n";
                 } else {
-                    print "<form action=\"cit-eti-borrar-3.php\" method=\"get\">
-  <p>Marque las etiquetas a borrar:</p>\n
-  <table border=\"1\">
-    <tbody>
-      <tr>
-        <th>Autor:</th>
-        <td colspan=\"2\">$nombre</td>
-      </tr>
-      <tr>
-        <th>Cita:</th>
-        <td colspan=\"2\">$cita</td>
-      </tr>\n";
+                    print "    <form action=\"cit-eti-borrar-3.php\" method=\"get\">\n";
+                    print "      <p>Marque las etiquetas a borrar:</p>\n";
+                    print "\n";
+                    print "      <table border=\"1\">\n";
+                    print "        <tbody>\n";
+                    print "          <tr>\n";
+                    print "            <th>Autor:</th>\n";
+                    print "            <td colspan=\"2\">$nombre</td>\n";
+                    print "          </tr>\n";
+                    print "          <tr>\n";
+                    print "            <th>Cita:</th>\n";
+                    print "            <td colspan=\"2\">$cita</td>\n";
+                    print "          </tr>\n";
     // En esta consulta he tenido que añadir id_eticita porque las dos
     // tablas tienen un campo id y quiero el id de la eticita no de la cita
                     $consulta = "SELECT $dbEtiCitas.id as id_eticita, * FROM $dbEtiCitas, $dbEtiquetas
@@ -83,21 +90,26 @@ if (!isset($_SESSION['citasUsuario'])) {
                         ORDER BY etiqueta ASC";
                     $result = $db->query($consulta);
                     if (!$result) {
-                        print "<p>Error en la consulta.</p>\n";
+                        print "    <p>Error en la consulta.</p>\n";
+                        print "\n";
                     } else {
                         foreach ($result as $indice => $valor) {
-                            print "        <tr>
-          <th>Etiqueta:</th>
-          <td><input type=\"checkbox\" name=\"id[$valor[id_eticita]]\" />
-          <td>$valor[etiqueta]</td>
-        </tr>\n";
+                            print "          <tr>\n";
+                            print "            <th>Etiqueta:</th>\n";
+                            print "            <td><input type=\"checkbox\" name=\"id[$valor[id_eticita]]\" />\n";
+                            print "            <td>$valor[etiqueta]</td>\n";
+                            print "          </tr>\n";
                         }
                     }
-                    print "      </tr>\n    </tbody>
-  </table>
-  <p><input type=\"hidden\" name=\"cita\" value=\"$id\" /><input type=\"submit\" value=\"Asignar\" /></p>
-</form>\n";
-
+                    print "        </tbody>\n";
+                    print "      </table>\n";
+                    print "\n";
+                    print "      <p>\n";
+                    print "        <input type=\"hidden\" name=\"cita\" value=\"$id\" />\n";
+                    print "        <input type=\"submit\" value=\"Asignar\" />\n";
+                    print "      </p>\n";
+                    print "    </form>\n";
+                    print "\n";
                 }
             }
         }
