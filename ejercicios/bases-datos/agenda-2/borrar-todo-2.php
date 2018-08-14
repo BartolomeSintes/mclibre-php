@@ -22,18 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 session_start();
 
-if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario'] != $administradorNombre)) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] != $administradorNombre)) {
+    header("Location:index.php");
     exit();
-} elseif (!isset($_REQUEST['si'])) {
-    header('Location:index.php');
+} elseif (!isset($_REQUEST["si"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Borrar todo 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+    cabecera("Borrar todo 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

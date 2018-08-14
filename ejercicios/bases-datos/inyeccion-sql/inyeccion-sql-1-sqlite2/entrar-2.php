@@ -22,17 +22,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Entrar 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
+cabecera("Entrar 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
 
 // Esta página no desinfecta la entrada del usuario
 // por lo que puede sufrir inyecciones SQL
 // Utiliza la biblioteca sqlite
 // Parece que le afectan los mismos ataques que a PDO
 
-$usuario    = $_REQUEST['usuario'];
-$contraseña = $_REQUEST['contraseña'];
+$usuario    = $_REQUEST["usuario"];
+$contraseña = $_REQUEST["contraseña"];
 
 if (($usuario == "") || ($contraseña == "")) {
     print "    <p>Hay que rellenar los dos campos.</p>\n";

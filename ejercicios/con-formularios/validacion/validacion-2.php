@@ -47,23 +47,23 @@ function cabecera($texto)
     print "\n";
 }
 
-define('FORM_METHOD',  'get');
-define('TAM_NOMBRE',   40);
-define('TAM_TELEFONO', 9);
-define('TAM_CORREO',   40);
+define("FORM_METHOD",  "get");
+define("TAM_NOMBRE",   40);
+define("TAM_TELEFONO", 9);
+define("TAM_CORREO",   40);
 
 $nombre   = recoge("nombre");
-$telefono = recoge('telefono');
-$correo   = recoge('correo');
-$nombrePatron    = '/^[[:alpha:]]+$/';
-$telefonoPatron  = '/^[0-9]{9}$/';
-$correoPatron    = '/^[0-9abcdefghijklmnopqrstuvwxyz\._-]+@'
-    .'[0-9abcdefghijklmnopqrstuvwxyz]+(\.[abcdefghijklmnopqrstuvwxyz]+){1,2}$/';
+$telefono = recoge("telefono");
+$correo   = recoge("correo");
+$nombrePatron    = "/^[[:alpha:]]+$/";
+$telefonoPatron  = "/^[0-9]{9}$/";
+$correoPatron    = "/^[0-9abcdefghijklmnopqrstuvwxyz\._-]+@"
+    . "[0-9abcdefghijklmnopqrstuvwxyz]+(\.[abcdefghijklmnopqrstuvwxyz]+){1,2}$/";
 $nombreOk   = preg_match($nombrePatron,   $nombre);
 $telefonoOk = preg_match($telefonoPatron, $telefono);
 $correoOk   = preg_match($correoPatron,   $correo);
 
-if (isset($_REQUEST['enviar']) && $nombreOk && $telefonoOk && $correoOk) {
+if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     cabecera("Validación de formulario (Resultado válido)");
     print "  <p>Los datos introducidos son correctos.</p>\n";
     print "\n";
@@ -75,7 +75,7 @@ if (isset($_REQUEST['enviar']) && $nombreOk && $telefonoOk && $correoOk) {
     print "\n";
     print "  <p><a href=\"$_SERVER[PHP_SELF]\">Volver al formulario</a></p>\n";
 } else {
-    if (isset($_REQUEST['enviar'])) {
+    if (isset($_REQUEST["enviar"])) {
         cabecera("Validación de formulario (Resultado inválido)");
         print"  <p>Por favor, corrija los datos incorrectos:</p>\n";
         print "\n";
@@ -91,7 +91,7 @@ if (isset($_REQUEST['enviar']) && $nombreOk && $telefonoOk && $correoOk) {
     print "          <td>Nombre:</td>\n";
     print "          <td><input type=\"text\" name=\"nombre\" size=\""
         . TAM_NOMBRE . "\" maxlength=\"" . TAM_NOMBRE . "\" value=\"$nombre\" />";
-    if (isset($_REQUEST['nombre']) && !$nombreOk) {
+    if (isset($_REQUEST["nombre"]) && !$nombreOk) {
         print " <span class=\"aviso\">El nombre no es correcto</span>";
     }
     print "</td>\n";
@@ -100,7 +100,7 @@ if (isset($_REQUEST['enviar']) && $nombreOk && $telefonoOk && $correoOk) {
     print "          <td>Teléfono:</td>\n";
     print "          <td><input type=\"text\" name=\"telefono\" size=\""
         . TAM_TELEFONO . "\" maxlength=\"" . TAM_TELEFONO . "\" value=\"$telefono\" />";
-    if (isset($_REQUEST['telefono']) && !$telefonoOk) {
+    if (isset($_REQUEST["telefono"]) && !$telefonoOk) {
         print " <span class=\"aviso\">El teléfono no es correcto</span>";
     }
     print "</td>\n";
@@ -109,7 +109,7 @@ if (isset($_REQUEST['enviar']) && $nombreOk && $telefonoOk && $correoOk) {
     print "          <td>Correo:</td>\n";
     print "          <td><input type=\"text\" name=\"correo\" size=\""
         . TAM_CORREO . "\" maxlength=\"" . TAM_CORREO . "\" value=\"$correo\" />";
-    if (isset($_REQUEST['correo']) && !$correoOk) {
+    if (isset($_REQUEST["correo"]) && !$correoOk) {
         print " <span class=\"aviso\">El correo no es correcto</span>";
     }
     print "</td>\n";
@@ -117,7 +117,7 @@ if (isset($_REQUEST['enviar']) && $nombreOk && $telefonoOk && $correoOk) {
     print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
-    if (isset($_REQUEST['enviar'])) {
+    if (isset($_REQUEST["enviar"])) {
         print "    <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
         print "\n";
     }

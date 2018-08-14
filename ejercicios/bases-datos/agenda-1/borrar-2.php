@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera ('Borrar 2', CABECERA_SIN_CURSOR);
+cabecera ("Borrar 2", CABECERA_SIN_CURSOR);
 
-$id = recogeMatrizParaConsulta($db, 'id');
+$id = recogeMatrizParaConsulta($db, "id");
 
 if (count($id) == 0) {
   print "    <p>No se ha marcado nada para borrar.</p>\n";

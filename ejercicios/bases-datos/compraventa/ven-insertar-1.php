@@ -23,13 +23,13 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Venta - Añadir 1', 'venta');
+    cabecera("Venta - Añadir 1", "venta");
     $consulta = "SELECT COUNT(*) FROM $dbArticulos";
     $result = $db->query($consulta);
     if (!$result) {

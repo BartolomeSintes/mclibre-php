@@ -22,26 +22,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 session_start();
 
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Modificar 3', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+    cabecera("Modificar 3", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
 
-    $nombre    = recogeParaConsulta($db, 'nombre');
-    $apellidos = recogeParaConsulta($db, 'apellidos');
-    $telefono  = recogeParaConsulta($db, 'telefono');
-    $correo    = recogeParaConsulta($db, 'correo');
-    $id        = recogeParaConsulta($db, 'id');
+    $nombre    = recogeParaConsulta($db, "nombre");
+    $apellidos = recogeParaConsulta($db, "apellidos");
+    $telefono  = recogeParaConsulta($db, "telefono");
+    $correo    = recogeParaConsulta($db, "correo");
+    $id        = recogeParaConsulta($db, "id");
 
     if ($id == "''") {
         print "    <p>No se ha seleccionado ningún registro.</p>\n";
         print "\n";
-    } elseif (($nombre == "''") && ($apellidos == "''") && ($telefono == "''") && ($correo == "''")) {
+    } elseif ($nombre == "''" && $apellidos == "''" && $telefono == "''" && $correo == "''") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
         print "\n";
     } else {

@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$compruebaCookie = isset($_COOKIE['cookiePrueba'])?$_COOKIE['cookiePrueba']:"";
+$compruebaCookie = isset($_COOKIE["cookiePrueba"]) ? $_COOKIE["cookiePrueba"] : "";
 if ($compruebaCookie == "X") {
     header("location:cookies-3a.php?admiteCookies=1");
 } else {

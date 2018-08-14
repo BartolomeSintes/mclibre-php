@@ -23,20 +23,20 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Citas - Añadir 2', 'menu_citas');
+    cabecera("Citas - Añadir 2", "menu_citas");
 
-    $cita = recogeParaConsulta($db, 'cita');
-    $autor  = recogeParaConsulta($db, 'autor');
+    $cita  = recogeParaConsulta($db, "cita");
+    $autor = recogeParaConsulta($db, "autor");
 
 // Habría que comprobar que el autor recibido existe
 
-    if (($cita == "''") || ($autor == '')) {
+    if ($cita == "''" || $autor == '') {
         print "    <p>La cita y el autor no pueden estar vacíos. No se ha guardado el registro.</p>\n";
         print "\n";
     } else {

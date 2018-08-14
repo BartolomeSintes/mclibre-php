@@ -57,17 +57,17 @@ function recogeMatriz($var)
     return $tmpMatriz;
 }
 
-define('FORM_METHOD', 'get');
-define('NUM_MINIMO',  1);
-define('NUM_MAXIMO',  20);
+define("FORM_METHOD", "get");
+define("NUM_MINIMO",  1);
+define("NUM_MAXIMO",  20);
 
-$numeros          = recogeMatriz('n');
+$numeros          = recogeMatriz("n");
 $numerosOk        = false;
 $numerosRecibidos = count($numeros);
-$suma             = (recoge('suma') == 'on');
-$media            = (recoge('media') == 'on');
-$maximo           = (recoge('maximo') == 'on');
-$minimo           = (recoge('minimo') == 'on');
+$suma             = (recoge("suma") == "on");
+$media            = (recoge("media") == "on");
+$maximo           = (recoge("maximo") == "on");
+$minimo           = (recoge("minimo") == "on");
 
 $numerosOk = true;
 foreach ($numeros as $valor) {

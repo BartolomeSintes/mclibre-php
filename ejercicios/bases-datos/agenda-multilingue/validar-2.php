@@ -26,72 +26,72 @@ session_start();
 include("biblioteca.php");
 $db = conectaDb();
 
-$usuario   = recogeParaConsulta($db, 'usuario');
+$usuario   = recogeParaConsulta($db, "usuario");
 $usuario   = quitaComillasExteriores($usuario);
-$password  = recogeParaConsulta($db, 'password');
+$password  = recogeParaConsulta($db, "password");
 $password  = quitaComillasExteriores($password);
-$password2 = recogeParaConsulta($db, 'password2');
+$password2 = recogeParaConsulta($db, "password2");
 $password2 = quitaComillasExteriores($password2);
 
 // Comprobación inicial por si se recarga la página nada más registrar un nuevo usuario
-if (isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    $tmpIdioma = $_SESSION['multiagendaIdioma'];
+    $tmpIdioma = $_SESSION["multiagendaIdioma"];
     session_destroy();
     session_start();
-    $_SESSION['multiagendaIdioma']    = $tmpIdioma;
-    if (!$usuario || ($usuario == 'menu_principal')) {
-        header('Location:index.php?aviso=' . _('Nombre de usuario no permitido'));
+    $_SESSION["multiagendaIdioma"] = $tmpIdioma;
+    if (!$usuario || ($usuario == "menu_principal")) {
+        header("Location:index.php?aviso=" . _("Nombre de usuario no permitido"));
         exit();
     } elseif ($password!=md5($password2)) {
-        header('Location:index.php?aviso=' . _('Error: Las contraseñas no coinciden'));
+        header("Location:index.php?aviso=" . _("Error: Las contraseñas no coinciden"));
         exit();
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera(_('Identificación').' 3', 'menu_principal');
-            print "    <p>" . _('Error en la consulta') . ".</p>";
+            cabecera(_("Identificación") . " 3", "menu_principal");
+            print "    <p>" . _("Error en la consulta") . ".</p>";
             print "\n";
         } elseif ($result->fetchColumn()==1) {
-            cabecera(_('Identificación').' 3', 'menu_principal');
-            print "    <p>" . _('El nombre de usuario ya está registrado') . ".</p>";
+            cabecera(_("Identificación") . " 3", "menu_principal");
+            print "    <p>" . _("El nombre de usuario ya está registrado") . ".</p>";
             print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
             if (!$result) {
-                print "    <p>" . _('Error en la consulta') . ".</p>";
+                print "    <p>" . _("Error en la consulta") . ".</p>";
                 print "\n";
             } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-                print "    <p>" . _('Se ha alcanzado el número máximo de Usuarios que se pueden guardar') . ".</p>\n";
+                print "    <p>" . _("Se ha alcanzado el número máximo de Usuarios que se pueden guardar") . ".</p>\n";
                 print "\n";
-                print "    <p>" . _('Por favor, borre algún registro antes') . ".</p>\n";
+                print "    <p>" . _("Por favor, borre algún registro antes") . ".</p>\n";
                 print "\n";
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password', '$tmpIdioma')";
                 if (!$db->query($consulta)) {
-                    cabecera(_('Identificación').' 3', 'menu_principal');
-                    print "    <p>" . _('Error al crear el registro') . ".<p>\n";
+                    cabecera(_("Identificación") . " 3", "menu_principal");
+                    print "    <p>" . _("Error al crear el registro") . ".<p>\n";
                     print "\n";
                 } else {
                     $consulta = "SELECT * FROM $dbUsuarios
                         WHERE usuario='$usuario'";
                     $result = $db->query($consulta);
                     if (!$result) {
-                        cabecera(_('Identificación').' 3', 'menu_principal');
-                        print "    <p>" . _('Error en la consulta') . ".</p>";
+                        cabecera(_("Identificación") . " 3", "menu_principal");
+                        print "    <p>" . _("Error en la consulta") . ".</p>";
                         print "\n";
                     } else {
                         $valor = $result->fetch();
-                        $_SESSION['multiagendaIdUsuario'] = $valor['id'];
-                        $_SESSION['multiagendaUsuario']   = $valor['usuario'];
-                        cabecera(_('Identificación').' 3', $usuario);
-                        print "    <p>" . _('Bienvenido/a') . ", <strong>$usuario</strong>. " . _('Ya es usted un usuario registrado y puede crear su agenda') . ".</p>";
+                        $_SESSION["multiagendaIdUsuario"] = $valor["id"];
+                        $_SESSION["multiagendaUsuario"]   = $valor["usuario"];
+                        cabecera(_("Identificación") . " 3", $usuario);
+                        print "    <p>" . _("Bienvenido/a") . ", <strong>$usuario</strong>. " . _("Ya es usted un usuario registrado y puede crear su agenda") . ".</p>";
                         print "\n";
                     }
                 }

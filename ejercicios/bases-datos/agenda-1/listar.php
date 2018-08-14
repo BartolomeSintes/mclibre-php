@@ -22,13 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Listar', CABECERA_SIN_CURSOR);
+cabecera("Listar", CABECERA_SIN_CURSOR);
 
-$campo = recogeParaConsulta($db, 'campo', 'apellidos');
+$campo = recogeParaConsulta($db, "campo", "apellidos");
 $campo = quitaComillasExteriores($campo);
-$orden = recogeParaConsulta($db, 'orden', 'ASC');
+$orden = recogeParaConsulta($db, "orden", "ASC");
 $orden = quitaComillasExteriores($orden);
 
 $consulta = "SELECT COUNT(*) FROM $dbAgenda";

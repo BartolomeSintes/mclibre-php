@@ -25,35 +25,35 @@
 include("biblioteca.php");
 $db = conectaDb();
 
-$usuario   = recogeParaConsulta($db, 'usuario');
+$usuario   = recogeParaConsulta($db, "usuario");
 $usuario   = quitaComillasExteriores($usuario);
-$password  = recogeParaConsulta($db, 'password');
+$password  = recogeParaConsulta($db, "password");
 $password  = quitaComillasExteriores($password);
-$password2 = recogeParaConsulta($db, 'password2');
+$password2 = recogeParaConsulta($db, "password2");
 $password2 = quitaComillasExteriores($password2);
 // Comprobación inicial por si se recarga la página nada más registrar un nuevo usuario
 session_start();
-if (isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
     session_destroy();
-    if (!$usuario || ($usuario == 'menu_principal')) {
-        header('Location:index.php?aviso=Nombre de usuario no permitido');
+    if (!$usuario || ($usuario == "menu_principal")) {
+        header("Location:index.php?aviso=Nombre de usuario no permitido");
         exit();
     } elseif ($password!=md5($password2)) {
-        header('Location:index.php?aviso=Error: Las contraseñas no coinciden');
+        header("Location:index.php?aviso=Error: Las contraseñas no coinciden");
         exit();
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Identificación 3', 'menu_principal');
+            cabecera("Identificación 3", "menu_principal");
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } elseif ($result->fetchColumn()==1) {
-            cabecera('Identificación 3', 'menu_principal');
+            cabecera("Identificación 3", "menu_principal");
             print "    <p>El nombre de usuario ya está registrado.</p>";
             print "\n";
         } else {
@@ -71,7 +71,7 @@ if (isset($_SESSION['citasUsuario'])) {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password')";
                 if (!$db->query($consulta)) {
-                    cabecera('Identificación 3', 'menu_principal');
+                    cabecera("Identificación 3", "menu_principal");
                     print "    <p>Error al crear el registro.<p>\n";
                     print "\n";
                 } else {
@@ -79,15 +79,15 @@ if (isset($_SESSION['citasUsuario'])) {
                         WHERE usuario='$usuario'";
                     $result = $db->query($consulta);
                     if (!$result) {
-                        cabecera('Identificación 3', 'menu_principal');
+                        cabecera("Identificación 3", "menu_principal");
                         print "    <p>Error en la consulta.</p>";
                         print "\n";
                     } else {
                         $valor = $result->fetch();
                         session_start();
-                        $_SESSION['etiquetasIdUsuario'] = $valor['id'];
-                        $_SESSION['citasUsuario']   = $valor['usuario'];
-                        cabecera('Identificación 3', $usuario);
+                        $_SESSION["etiquetasIdUsuario"] = $valor["id"];
+                        $_SESSION["citasUsuario"] = $valor["usuario"];
+                        cabecera("Identificación 3", $usuario);
                         print "    <p>Bienvenido/a, <strong>$usuario</strong>. Ya es usted "
                             . "un usuario registrado y puede comprar y vender artículos.</p>";
                     }

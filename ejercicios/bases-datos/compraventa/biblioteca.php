@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define ('MYSQL', 'MySQL');
-define ('SQLITE', 'SQLite');
+define ("MYSQL", "MySQL");
+define ("SQLITE", "SQLite");
 $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor == MYSQL) {
     define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
@@ -44,7 +44,7 @@ if ($dbMotor == MYSQL) {
 
 $administradorNombre   = 'root';  // Nombre del usuario Administrador
 $administradorPassword = 'root';  // Password del usuario Administrador
-// Si $administradorPassword != '', al crearse las tablas, se crea el usuario
+// Si $administradorPassword != "", al crearse las tablas, se crea el usuario
 // Si $administradorPassword = '', no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
@@ -77,11 +77,11 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave');
+        cabecera("Error grave");
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
 //        print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -121,7 +121,7 @@ function borraTodoMySQL($db)
             print "    <p>Error al crear la tabla de Usuarios.</p>\n";
             print "\n";
         }
-        if ($administradorPassword!='') {
+        if ($administradorPassword != "") {
             $consulta = "INSERT INTO $dbUsuarios
                 VALUES (NULL, '$administradorNombre', '"
                 .md5($administradorPassword)."')";
@@ -191,7 +191,7 @@ function borraTodoSqlite($db)
         print "    <p>Error al crear la tabla de Usuarios.</p>\n";
         print "\n";
     }
-    if ($administradorPassword!='') {
+    if ($administradorPassword != "") {
         $consulta = "INSERT INTO $dbUsuarios
             VALUES (NULL, '$administradorNombre', '".md5($administradorPassword)."')";
         if ($db->query($consulta)) {
@@ -232,13 +232,13 @@ function recorta($campo, $cadena)
 
 function recogeParaConsulta($db, $var, $var2='')
 {
-    $tmp = (isset($_REQUEST[$var])&&($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var])&&($_REQUEST[$var] != "")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
     }
-    $tmp = str_replace('&', '&amp;',  $tmp);
-    $tmp = str_replace('"', '&quot;', $tmp);
+    $tmp = str_replace("&", "&amp;",  $tmp);
+    $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
@@ -255,8 +255,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -267,8 +267,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -294,7 +294,7 @@ function quitaComillasExteriores($var)
     return $var;
 }
 
-function cabecera($texto, $menu='menu_principal')
+function cabecera($texto, $menu="menu_principal")
 {
     global $administradorNombre;
 
@@ -314,7 +314,7 @@ function cabecera($texto, $menu='menu_principal')
     print "\n";
     print "  <div id=\"menu\">\n";
     print "    <ul>\n";
-    if ($menu == 'menu_principal') {
+    if ($menu == "menu_principal") {
         print "      <li><a href=\"index.php\">Conectar</a></li>\n";
         print "      <li><a href=\"listar.php\">Ver artículos</a></li>\n";
     } elseif ($menu==$administradorNombre) {
@@ -349,7 +349,7 @@ function pie()
 {
     global $administradorPassword, $_SESSION;
 
-    if (($administradorPassword!='')&&!isset($_SESSION['compraventaUsuario'])) {
+    if (($administradorPassword != "")&&!isset($_SESSION["compraventaUsuario"])) {
         print "    <p><strong>Nota</strong>: El usuario Administrador se llama "
             . "<strong>root</strong> y su contraseña es también <strong>root</strong>.</p>\n";
         print "\n";

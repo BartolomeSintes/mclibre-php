@@ -63,7 +63,7 @@ if ($bytes == "") {
     print "\n";
 } elseif ($bytes > $maximo) {
     print "  <p class=\"aviso\">Los bytes deben ser inferiores a "
-        . number_format($maximo, 0, ',', '.') . ".</p>\n";
+        . number_format($maximo, 0, ",", ".") . ".</p>\n";
     print "\n";
     // Es mejor no mostrar $maximo porque si es superior a PHP_INT_MAX se muestra como float
 } else {

@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
-cabecera('Préstamos - Inicio', CABECERA_SIN_CURSOR, 'menuPrestamos');
+include("biblioteca.php");
+cabecera("Préstamos - Inicio", CABECERA_SIN_CURSOR, "menuPrestamos");
 
 pie();
 ?>

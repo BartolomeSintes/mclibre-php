@@ -147,8 +147,8 @@
 
   <div class="codigo">
     <pre>// Tamaño de los campos en la tabla
-define('TAM_ENTRADA',         255);  // Tamaño del campo Entradas &gt; Entrada
-define('MAX_REG_ENTRADAS',    10);   // Número máximo de registros en la tabla Entradas
+define("TAM_ENTRADA",         255);  // Tamaño del campo Entradas &gt; Entrada
+define("MAX_REG_ENTRADAS",    10);   // Número máximo de registros en la tabla Entradas
 
 // Consultas de creación de tabla en MySQL
 $consulta = "CREATE TABLE $dbEntradas (
@@ -172,7 +172,7 @@ $consulta = "CREATE TABLE $dbEntradas (
     <p>Para generar el calendario, se puede utilizar esta función, que requiere dos argumentos:</p>
     <ul>
       <li>el primer argumento es la fecha en formato aaaa-mm-dd,</li>
-      <li>si el segundo argumento es la cadena 'editar', todos los días del calendario tienen un enlace para poder editarlos, y si es la cadena 'leer', sólo los días con entrada tienen un enlace para poder leer la entrada de ese día.</li>
+      <li>si el segundo argumento es la cadena "editar", todos los días del calendario tienen un enlace para poder editarlos, y si es la cadena "leer", sólo los días con entrada tienen un enlace para poder leer la entrada de ese día.</li>
     </ul>
 
     <div class="codigo">
@@ -181,13 +181,13 @@ function calendario ($fecha, $enlaces)
 {
     global $db, $dbEntradas;
 
-    date_default_timezone_set('Europe/Madrid');
+    date_default_timezone_set("Europe/Madrid");
     if (!ctype_digit(substr($fecha, 5, 2))||!ctype_digit(substr($fecha, 8, 2))
         ||!ctype_digit(substr($fecha, 0, 4))) {
-        $fecha = date('Y-m-d');
+        $fecha = date("Y-m-d");
     } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2),
                     (int)substr($fecha, 0, 4))) {
-        $fecha = date('Y-m-d');
+        $fecha = date("Y-m-d");
     }
 
     $diaInicial = substr($fecha, 8, 2);
@@ -195,28 +195,28 @@ function calendario ($fecha, $enlaces)
     $anyo    = substr($fecha, 0, 4);
 
     $esBisiesto = (($anyo%400 == 0) || (($anyo%100 != 0) &amp;&amp; ($anyo%4 == 0)))
-                    ? '1' : '0';
+                    ? "1" : "0";
     $duraMeses = ($esBisiesto) ?
         [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31] :
         [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31];
-    $meses = ["", 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
-        'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
-        'Noviembre', 'Diciembre'
+    $meses = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo",
+        "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+        "Noviembre", "Diciembre"
     ]);
 
     if ($diaInicial &gt; $duraMeses[(int)($mes)-1]) {
-        $fechaAnt = date('Y-m-d', mktime(0, 0, 0, $mes-1, $duraMeses[(int)($mes)-1], $anyo));
+        $fechaAnt = date("Y-m-d", mktime(0, 0, 0, $mes-1, $duraMeses[(int)($mes)-1], $anyo));
     } else {
-        $fechaAnt = date('Y-m-d', mktime(0, 0, 0, $mes-1, $diaInicial, $anyo));
+        $fechaAnt = date("Y-m-d", mktime(0, 0, 0, $mes-1, $diaInicial, $anyo));
     }
     $diaAnt  = substr($fechaAnt, 8, 2);
     $mesAnt  = substr($fechaAnt, 5, 2);
     $anyoAnt = substr($fechaAnt, 0, 4);
 
     if ($diaInicial &gt; $duraMeses[(int)($mes)+1]) {
-        $fechaSig = date('Y-m-d', mktime(0, 0, 0, $mes+1, $duraMeses[(int)($mes)+1], $anyo));
+        $fechaSig = date("Y-m-d", mktime(0, 0, 0, $mes+1, $duraMeses[(int)($mes)+1], $anyo));
     } else {
-        $fechaSig = date('Y-m-d', mktime(0, 0, 0, $mes+1, $diaInicial, $anyo));
+        $fechaSig = date("Y-m-d", mktime(0, 0, 0, $mes+1, $diaInicial, $anyo));
     }
     $diaSig  = substr($fechaSig, 8, 2);
     $mesSig  = substr($fechaSig, 5, 2);
@@ -224,7 +224,7 @@ function calendario ($fecha, $enlaces)
 
     $jd = gregoriantojd($mes, 1, $anyo);
     $dia = (jddayofweek($jd, 0)+6)%7;
-    $dias = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+    $dias = ["L", "M", "X", "J", "V", "S", "D"];
     $diaSemana = $dias[$dia];
 
     print "&lt;div class=\"calendario\"&gt;\n  &lt;table border=\"1\" class=\"calendario\" &gt;\n";
@@ -247,11 +247,11 @@ function calendario ($fecha, $enlaces)
             for ($i=0; $i&lt;7; $i++) {
                 $num = $num_inicio + $i;
                 if ($num &gt; 0 &amp;&amp; $num &lt;= $duraMeses[(int)($mes)]) {
-                    if ($enlaces == 'editar') {
+                    if ($enlaces == "editar") {
                         print "      &lt;td class=\"enlace\"&gt;&lt;a href=\"editar.php"
                             . "?fecha=$anyo-$mes-".sprintf("%02d", $num)
                             . "\"&gt;$num&lt;/a&gt;&lt;/td&gt;\n";
-                    } elseif ($enlaces == 'leer') {
+                    } elseif ($enlaces == "leer") {
                         $consulta = "SELECT COUNT(*) FROM $dbEntradas WHERE "
                             . "fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
                         $result = $db-&gt;query($consulta);

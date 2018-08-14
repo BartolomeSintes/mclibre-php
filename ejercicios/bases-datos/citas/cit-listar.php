@@ -23,13 +23,13 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-if (!isset($_SESSION['citasUsuario'])) {
-    cabecera('Citas - Listar', 'menu_principal');
+if (!isset($_SESSION["citasUsuario"])) {
+    cabecera("Citas - Listar", "menu_principal");
 } else {
-    cabecera('Citas - Listar', 'menu_citas');
+    cabecera("Citas - Listar", "menu_citas");
 }
 
 $consulta = "SELECT COUNT(*) FROM $dbCitas";

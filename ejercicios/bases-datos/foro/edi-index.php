@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('biblioteca.php');
-cabecera('Editor', CABECERA_SIN_CURSOR, 'menuEditor', '');
+include("biblioteca.php");
+cabecera("Editor", CABECERA_SIN_CURSOR, "menuEditor", "");
 
 pie();
 ?>

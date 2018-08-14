@@ -22,32 +22,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    true);   // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    false);  // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
-define('MENU_PRINCIPAL', 'menuPrincipal'); // Menú principal
-define('MENU_VOLVER', 'menuVolver');    // Menú Volver a inicio
-define('MYSQL',          'MySQL');
-define('SQLITE',         'SQLite');
-define('MAX_REG_TABLA', 20);  // Número máximo de registros en la tabla
+define("CABECERA_CON_CURSOR", true);            // Para función cabecera()
+define("CABECERA_SIN_CURSOR", false);           // Para función cabecera()
+define("FORM_METHOD",         "get");           // Formularios se envían con GET
+//define("FORM_METHOD",         "post");          // Formularios se envían con POST
+define("MENU_PRINCIPAL",      "menuPrincipal"); // Menú principal
+define("MENU_VOLVER",         "menuVolver");    // Menú Volver a inicio
+define("MYSQL",               "MySQL");
+define("SQLITE",              "SQLite");
+define("MAX_REG_TABLA", 20);  // Número máximo de registros en la tabla
 $tamUsuario    = 80; // Tamaño del campo Usuario
 $tamContraseña = 80; // Tamaño del campo Contraseña
 $recorta = [
-    'user'    => $tamUsuario,
-    'password' => $tamContraseña
+    "user"     => $tamUsuario,
+    "password" => $tamContraseña
 ];
 
 $dbMotor = SQLITE;                        // Base de datos empleada
 if ($dbMotor == MYSQL) {
-    define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');          // Contraseña de usuario de MySQL
-    $dbDb    = 'mclibre_inyeccion_sql_1';  // Nombre de la base de datos
-    $dbTabla = $dbDb . '.tabla';             // Nombre de la tabla
+    define("MYSQL_HOST", "mysql:host=localhost"); // Nombre de host MYSQL
+    define("MYSQL_USUARIO", "root");       // Nombre de usuario de MySQL
+    define("MYSQL_PASSWORD", "");          // Contraseña de usuario de MySQL
+    $dbDb    = "mclibre_inyeccion_sql_1";  // Nombre de la base de datos
+    $dbTabla = $dbDb . ".tabla";             // Nombre de la tabla
 } elseif ($dbMotor == SQLITE) {
-    $dbDb    = '/home/barto/mclibre/tmp/mclibre/mclibre_inyeccion_sql_1.sqlite';  // Nombre de la base de datos
-    $dbTabla = 'tabla';                   // Nombre de la tabla
+    $dbDb    = "/home/barto/mclibre/tmp/mclibre/mclibre_inyeccion_sql_1.sqlite";  // Nombre de la base de datos
+    $dbTabla = "tabla";                   // Nombre de la tabla
 }
 
 function conectaDb()
@@ -81,9 +81,9 @@ function recorta($campo, $cadena)
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='')
+function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var] != "")) ?
         strip_tags(trim(htmlspecialchars($_REQUEST[$var]))) : strip_tags(trim(htmlspecialchars($var2)));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
@@ -140,11 +140,11 @@ function quitaComillasExteriores($var)
 }
 
 function sqlite_query_multi($db, $query) {
-    $pattern = '/^(.*;)(.*;)/s';
-    if ( preg_match($pattern,$query,$match) ) {
+    $pattern = "/^(.*;)(.*;)/s";
+    if (preg_match($pattern, $query, $match)) {
      // multi-statement query
-        $result = sqlite_query($db,$match[1]);
-        sqlite_exec($db,$match[2]);
+        $result = sqlite_query($db, $match[1]);
+        sqlite_exec($db, $match[2]);
     } else {
      // single-statement query
         $result = sqlite_query($db,$query);

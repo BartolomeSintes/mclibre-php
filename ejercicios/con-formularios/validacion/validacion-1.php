@@ -47,16 +47,16 @@ function cabecera($texto)
     print "\n";
 }
 
-define('FORM_METHOD',  'get');
-define('TAM_NOMBRE',   40);
-define('TAM_TELEFONO', 9);
-define('TAM_CORREO',   40);
+define("FORM_METHOD",  "get");
+define("TAM_NOMBRE",   40);
+define("TAM_TELEFONO", 9);
+define("TAM_CORREO",   40);
 
 $nombre   = recoge("nombre");
-$telefono = recoge('telefono');
-$correo   = recoge('correo');
+$telefono = recoge("telefono");
+$correo   = recoge("correo");
 
-if (isset($_REQUEST['enviar'])) {
+if (isset($_REQUEST["enviar"])) {
     cabecera("Formulario y resultado en un único archivo (Resultado)");
     print "  <p>Se han recibido los datos siguientes:</p>\n";
     print "\n";

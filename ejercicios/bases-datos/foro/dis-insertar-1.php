@@ -22,23 +22,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
+    cabecera("Iniciar discusión 1", CABECERA_SIN_CURSOR, "menuDiscusiones", "");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_DISCUSIONES) {
-    cabecera('Iniciar discusión 1', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
+    cabecera("Iniciar discusión 1", CABECERA_SIN_CURSOR, "menuDiscusiones", "");
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
     print "\n";
 } else {
-    cabecera('Iniciar discusión 1', CABECERA_CON_CURSOR, 'menuDiscusiones', '');
+    cabecera("Iniciar discusión 1", CABECERA_CON_CURSOR, "menuDiscusiones", "");
     print "    <form action=\"dis-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "\n";
     print "      <table>\n";

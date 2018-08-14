@@ -22,23 +22,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Añadir 1', MENU_VOLVER, CABECERA_SIN_CURSOR);
+    cabecera("Añadir 1", MENU_VOLVER, CABECERA_SIN_CURSOR);
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_TABLA) {
-    cabecera('Añadir 1', MENU_VOLVER, CABECERA_SIN_CURSOR);
+    cabecera("Añadir 1", MENU_VOLVER, CABECERA_SIN_CURSOR);
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
     print "\n";
 } else {
-    cabecera('Añadir 1', MENU_VOLVER, CABECERA_CON_CURSOR);
+    cabecera("Añadir 1", MENU_VOLVER, CABECERA_CON_CURSOR);
     print "    <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";

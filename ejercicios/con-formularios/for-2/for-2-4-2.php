@@ -44,8 +44,8 @@ function recoge($var)
     return $tmp;
 }
 
-$ancho = recoge('ancho');
-$alto  = recoge('alto');
+$ancho = recoge("ancho");
+$alto  = recoge("alto");
 
 $anchoOk = false;
 $altoOk  = false;

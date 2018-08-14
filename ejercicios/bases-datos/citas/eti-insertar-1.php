@@ -23,13 +23,13 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Etiquetas - Añadir 1', 'menu_etiquetas');
+    cabecera("Etiquetas - Añadir 1", "menu_etiquetas");
     $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";
     $result = $db->query($consulta);
     if (!$result) {

@@ -22,19 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Discusiones - Añadir 2', CABECERA_SIN_CURSOR, 'menuDiscusiones', '');
+cabecera("Discusiones - Añadir 2", CABECERA_SIN_CURSOR, "menuDiscusiones", "");
 
 date_default_timezone_set(ZONA_HORARIA);
 
-$titulo       = recogeParaConsulta($db, 'titulo',       ANONIMO_TITULO);
-$autor        = recogeParaConsulta($db, 'autor',        ANONIMO_AUTOR);
-$descripcion  = recogeParaConsulta($db, 'descripcion',  ANONIMO_DESCRIPCION);
+$titulo       = recogeParaConsulta($db, "titulo",       ANONIMO_TITULO);
+$autor        = recogeParaConsulta($db, "autor",        ANONIMO_AUTOR);
+$descripcion  = recogeParaConsulta($db, "descripcion",  ANONIMO_DESCRIPCION);
 $fecha        = date("Y-m-d H:i:s");
 
-if (($autor == "'" . ANONIMO_AUTOR . "'") && ($titulo == "'" . ANONIMO_TITULO . "'") &&
-    ($descripcion == "'" . ANONIMO_DESCRIPCION . "'")) {
+if ($autor == "'" . ANONIMO_AUTOR . "'" && $titulo == "'" . ANONIMO_TITULO . "'" &&
+    $descripcion == "'" . ANONIMO_DESCRIPCION . "'") {
     print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
 } else {

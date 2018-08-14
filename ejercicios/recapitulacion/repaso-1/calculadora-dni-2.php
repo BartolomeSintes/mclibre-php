@@ -46,11 +46,11 @@ function recoge($var)
 }
 
 // Recogida de datos
-$dni       = recoge('dni');
+$dni       = recoge("dni");
 $dniOk     = false;
 
 $maximo    = 9999999999;
-$letrasDNI = 'TRWAGMYFPDXBNJZSQVHLCKE';
+$letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
 
 // Comprobación de $dni
 if ($dni == "") {

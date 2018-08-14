@@ -23,13 +23,13 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 
-if (!isset($_SESSION['compraventaUsuario']) || ($_SESSION['compraventaUsuario'] != $administradorNombre)) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"]) || ($_SESSION["compraventaUsuario"] != $administradorNombre)) {
+    header("Location:index.php");
     exit();
 } else {
-    cabecera('Borrar todo 1', $_SESSION['compraventaUsuario']);
+    cabecera("Borrar todo 1", $_SESSION["compraventaUsuario"]);
 
     print "    <form action=\"adm-borrar-todo-2.php\" method=\"get\">\n";
     print "      <p>¿Está seguro?</p>\n";

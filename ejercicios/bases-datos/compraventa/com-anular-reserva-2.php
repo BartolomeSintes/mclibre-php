@@ -23,15 +23,15 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Compra - Anular reservas 2', 'compra');
+    cabecera("Compra - Anular reservas 2", "compra");
 
-    $id = recogeMatrizParaConsulta($db, 'id');
+    $id = recogeMatrizParaConsulta($db, "id");
 
     if (count($id) == 0) {
       print "    <p>No se ha marcado nada para anular la reserva.</p>\n";
@@ -51,7 +51,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
                 print "    <p>El registro indicado no es válido, se ha vendido o no está reservado.</p>\n";
                 print "\n";
             } else {
-                date_default_timezone_set('Europe/Madrid');
+                date_default_timezone_set("Europe/Madrid");
                 $fecha_reserva = date("Y-m-d H:i:s");
                 $consulta = "UPDATE $dbArticulos
                     SET id_comprador='0', reservado='false',

@@ -165,7 +165,7 @@
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numero = $_REQUEST['numero'];
+$numero = $_REQUEST["numero"];
 
 if (is_numeric($numero)) {
     print "&lt;p&gt;Ha escrito un número: $numero.&lt;/p&gt;\n";
@@ -266,7 +266,7 @@ if (is_numeric($numero)) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numero = $_REQUEST['numero'];
+$numero = $_REQUEST["numero"];
 
 if (ctype_digit($numero)) {
     print "&lt;p&gt;Ha escrito un entero positivo: $numero.&lt;/p&gt;\n";
@@ -355,7 +355,7 @@ if (ctype_digit($numero)) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numero = $_REQUEST['numero'];
+$numero = $_REQUEST["numero"];
 
 if (filter_var($numero, FILTER_VALIDATE_INT)) {
     print "&lt;p&gt;Ha escrito un número entero: $numero.&lt;/p&gt;\n";
@@ -409,8 +409,8 @@ if (filter_var($numero, FILTER_VALIDATE_INT)) {
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
-$numero = $_REQUEST['numero'];<br />
-if (function_exists('filter_var')) {
+$numero = $_REQUEST["numero"];<br />
+if (function_exists("filter_var")) {
     if (filter_var($numero, FILTER_VALIDATE_INT)) {
         print "&lt;p&gt;Ha escrito el número entero $numero.&lt;/p&gt;\n";
     } else {

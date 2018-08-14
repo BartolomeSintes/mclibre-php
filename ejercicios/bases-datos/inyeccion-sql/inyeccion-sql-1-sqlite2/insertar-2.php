@@ -22,19 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Añadir 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
+cabecera("Añadir 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
 
-// $usuario    = recogeParaConsulta($db, 'usuario');
-// $contraseña = recogeParaConsulta($db, 'contraseña');
+// $usuario    = recogeParaConsulta($db, "usuario");
+// $contraseña = recogeParaConsulta($db, "contraseña");
 
-$usuario    = $_REQUEST['usuario'];
-$contraseña = $_REQUEST['contraseña'];
+$usuario    = $_REQUEST["usuario"];
+$contraseña = $_REQUEST["contraseña"];
 
-//$usuario    = recogeParaConsulta($db, 'usuario');
+//$usuario    = recogeParaConsulta($db, "usuario");
 //$usuario    = quitaComillasExteriores($usuario);
-//$contraseña = recogeParaConsulta($db, 'contraseña');
+//$contraseña = recogeParaConsulta($db, "contraseña");
 //$contraseña = quitaComillasExteriores($contraseña);
 
 if ($usuario == "" || $contraseña == "") {

@@ -22,19 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Obras - Modificar 3', CABECERA_SIN_CURSOR, 'menuObras');
+cabecera("Obras - Modificar 3", CABECERA_SIN_CURSOR, "menuObras");
 
-$autor     = recogeParaConsulta($db, 'autor');
-$titulo    = recogeParaConsulta($db, 'titulo');
-$editorial = recogeParaConsulta($db, 'editorial');
-$id        = recogeParaConsulta($db, 'id');
+$autor     = recogeParaConsulta($db, "autor");
+$titulo    = recogeParaConsulta($db, "titulo");
+$editorial = recogeParaConsulta($db, "editorial");
+$id        = recogeParaConsulta($db, "id");
 
 if ($id == "''") {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
     print "\n";
-} elseif (($autor == "''") && ($titulo == "''") && ($editorial == "''")) {
+} elseif ($autor == "''" && $titulo == "''" && $editorial == "''") {
     print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     print "\n";
 } else {

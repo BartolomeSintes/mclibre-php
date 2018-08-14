@@ -22,40 +22,40 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ("biblioteca.php");
+include("biblioteca.php");
 $db = conectaDb();
 
-$usuario  = recogeParaConsulta($db, 'usuario');
+$usuario  = recogeParaConsulta($db, "usuario");
 $usuario  = quitaComillasExteriores($usuario);
-$password = recogeParaConsulta($db, 'password');
+$password = recogeParaConsulta($db, "password");
 $password = quitaComillasExteriores($password);
 
-if (!$usuario|| ($usuario == 'menu_principal')) {
-    header('Location:index.php?aviso=Nombre de usuario no permitido');
+if (!$usuario|| ($usuario == "menu_principal")) {
+    header("Location:index.php?aviso=Nombre de usuario no permitido");
     exit();
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
         WHERE usuario='$usuario'";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Identificación 2', CABECERA_SIN_CURSOR, 'menu_principal');
+        cabecera("Identificación 2", CABECERA_SIN_CURSOR, "menu_principal");
         print "    <p>Error en la consulta.</p>";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Identificación 2', CABECERA_SIN_CURSOR, 'menu_principal');
+            cabecera("Identificación 2", CABECERA_SIN_CURSOR, "menu_principal");
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
-            cabecera('Identificación 2', CABECERA_SIN_CURSOR, 'menu_principal');
+            cabecera("Identificación 2", CABECERA_SIN_CURSOR, "menu_principal");
             print "    <p>Se ha alcanzado el número máximo de Usuarios que se pueden guardar.</p>\n";
             print "\n";
             print "    <p>Por favor, borre algún registro antes.</p>\n";
             print "\n";
         } else {
-            cabecera('Identificación 2', CABECERA_CON_CURSOR, 'menu_principal');
+            cabecera("Identificación 2", CABECERA_CON_CURSOR, "menu_principal");
             print "    <p><strong>$usuario</strong> es un nuevo usuario. Por favor, "
                 . "repita la contraseña para registrarse como usuario.</p>\n";
             print "\n";
@@ -82,20 +82,20 @@ if (!$usuario|| ($usuario == 'menu_principal')) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Identificación 2', CABECERA_SIN_CURSOR, 'menu_principal');
+            cabecera("Identificación 2", CABECERA_SIN_CURSOR, "menu_principal");
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } else {
             $valor = $result->fetch();
-            if ($valor['password']==md5($password)) {
+            if ($valor["password"] == md5($password)) {
                 session_start();
-                $_SESSION['multiagendaIdUsuario'] = $valor['id'];
-                $_SESSION['multiagendaUsuario']   = $valor['usuario'];
-                header('Location:index.php');
+                $_SESSION["multiagendaIdUsuario"] = $valor["id"];
+                $_SESSION["multiagendaUsuario"]   = $valor["usuario"];
+                header("Location:index.php");
                 exit();
             }
             else {
-                header('Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta');
+                header("Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta");
                 exit();
             }
         }

@@ -23,22 +23,22 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Modificar 3', 'venta');
+    cabecera("Modificar 3", "venta");
 
-    $articulo = recogeParaConsulta($db, 'articulo');
-    $precio   = recogeParaConsulta($db, 'precio');
-    $id       = recogeParaConsulta($db, 'id');
+    $articulo = recogeParaConsulta($db, "articulo");
+    $precio   = recogeParaConsulta($db, "precio");
+    $id       = recogeParaConsulta($db, "id");
 
     if ($id == "''") {
         print "    <p>No se ha seleccionado ningún registro.</p>\n";
         print "\n";
-    } elseif (($articulo == "''") && ($precio == "''")) {
+    } elseif ($articulo == "''" && $precio == "''") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
         print "\n";
     } else {

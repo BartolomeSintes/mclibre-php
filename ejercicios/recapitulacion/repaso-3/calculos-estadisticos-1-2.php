@@ -44,11 +44,11 @@ function recoge($var)
     return $tmp;
 }
 
-define('FORM_METHOD', 'get');
-define('NUM_MINIMO',  1);
-define('NUM_MAXIMO',  20);
+define("FORM_METHOD", "get");
+define("NUM_MINIMO",  1);
+define("NUM_MAXIMO",  20);
 
-$numero   = recoge('numero');
+$numero   = recoge("numero");
 $numeroOk = false;
 
 if ($numero == "") {

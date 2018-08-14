@@ -23,15 +23,15 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Venta - Borrar 2', 'venta');
+    cabecera("Venta - Borrar 2", "venta");
 
-    $id = recogeMatrizParaConsulta($db, 'id');
+    $id = recogeMatrizParaConsulta($db, "id");
 
     if (count($id) == 0) {
       print "    <p>No se ha marcado nada para borrar.</p>\n";

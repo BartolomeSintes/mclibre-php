@@ -23,12 +23,12 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
-    cabecera('Compra', 'compra');
+    include("biblioteca.php");
+    cabecera("Compra", "compra");
     pie();
 }
 ?>

@@ -23,33 +23,33 @@
  */
 
 session_start();
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera(_('Añadir').' 2', $_SESSION['multiagendaUsuario']);
+    cabecera(_("Añadir") . " 2", $_SESSION["multiagendaUsuario"]);
 
-    $nombre    = recogeParaConsulta($db, 'nombre');
-    $apellidos = recogeParaConsulta($db, 'apellidos');
-    $telefono  = recogeParaConsulta($db, 'telefono');
-    $correo    = recogeParaConsulta($db, 'correo');
+    $nombre    = recogeParaConsulta($db, "nombre");
+    $apellidos = recogeParaConsulta($db, "apellidos");
+    $telefono  = recogeParaConsulta($db, "telefono");
+    $correo    = recogeParaConsulta($db, "correo");
 
-    if (($nombre == "''")&&($apellidos == "''")&&($telefono == "''")&&($correo == "''")) {
-        print "    <p>" . _('Hay que rellenar al menos uno de los campos') . ". "
-             . _('No se ha guardado el registro') . ".</p>\n";
+    if ($nombre == "''" && $apellidos == "''" && $telefono == "''" && $correo == "''") {
+        print "    <p>" . _("Hay que rellenar al menos uno de los campos") . ". "
+             . _("No se ha guardado el registro") . ".</p>\n";
         print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbAgenda";
         $result = $db->query($consulta);
         if (!$result) {
-            print "    <p>" . _('Error en la consulta') . ".</p>\n";
+            print "    <p>" . _("Error en la consulta") . ".</p>\n";
             print "\n";
         } elseif ($result->fetchColumn()>=$maxRegAgenda) {
-            print "    <p>" . _('Se ha alcanzado el número máximo de registros que se pueden guardar') . ".</p>\n";
+            print "    <p>" . _("Se ha alcanzado el número máximo de registros que se pueden guardar") . ".</p>\n";
             print "\n";
-            print "    <p>" . _('Por favor, borre algún registro antes') . ".</p>\n";
+            print "    <p>" . _("Por favor, borre algún registro antes") . ".</p>\n";
             print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbAgenda
@@ -60,20 +60,20 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
                 AND correo=$correo";
             $result = $db->query($consulta);
             if (!$result) {
-                print "    <p>" . _('Error en la consulta') . ".</p>\n";
+                print "    <p>" . _("Error en la consulta") . ".</p>\n";
                 print "\n";
             } elseif ($result->fetchColumn()==1) {
-                print "    <p>" . _('El registro ya existe') . ".</p>\n";
+                print "    <p>" . _("El registro ya existe") . ".</p>\n";
                 print "\n";
             } else {
                 $consulta = "INSERT INTO $dbAgenda
                     VALUES (NULL, '$_SESSION[multiagendaIdUsuario]', $nombre,
                     $apellidos, $telefono, $correo)";
                 if ($db->query($consulta)) {
-                    print "    <p>" . _('Registro creado correctamente') . ".</p>\n";
+                    print "    <p>" . _("Registro creado correctamente") . ".</p>\n";
                     print "\n";
                 } else {
-                    print "    <p>" . _('Error al crear el registro') . ".<p>\n";
+                    print "    <p>" . _("Error al crear el registro") . ".<p>\n";
                     print "\n";
                 }
             }

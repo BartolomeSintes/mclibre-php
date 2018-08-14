@@ -22,13 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-$id = recogeParaConsulta($db, 'id');
+$id = recogeParaConsulta($db, "id");
 
 if ($id == "''") {
-    cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
+    cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
     print "\n";
 } else {
@@ -36,11 +36,11 @@ if ($id == "''") {
         WHERE id=$id";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
+        cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
+        cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
         print "    <p>Registro no encontrado.</p>\n";
         print "\n";
     } else {
@@ -48,12 +48,12 @@ if ($id == "''") {
             WHERE id=$id";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Obras - Modificar 2', CABECERA_SIN_CURSOR, 'menuObras');
+            cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } else {
             $valor = $result->fetch();
-            cabecera('Obras - Modificar 2', CABECERA_CON_CURSOR, 'menuObras');
+            cabecera("Obras - Modificar 2", CABECERA_CON_CURSOR, "menuObras");
             print "    <form action=\"obr-modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
             print "      <p>Modifique los campos que desee:</p>\n";
             print "\n";

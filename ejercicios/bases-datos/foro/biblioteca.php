@@ -22,43 +22,43 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('ZONA_HORARIA',           'Europe/Madrid');  // Zona horaria del servidor
-define('CABECERA_CON_CURSOR',    true);             // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    false);            // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
-define('MYSQL',                  'MySQL');
-define('SQLITE',                 'SQLite');
-define('TAM_TITULO',             50);   // Tamaño del campo Discusiones > Título
-define('TAM_DESCRIPCION',        50);   // Tamaño del campo Discusiones > Descripción
-define('TAM_AUTOR',              50);   // Tamaño del campo Discusiones > Autor
-define('TAM_INTERVENCION',       255);  // Tamaño del campo Intervenciones > Intervención
-define('MAX_REG_DISCUSIONES',    10);   // Número máximo de registros en la tabla Discusiones
-define('MAX_REG_INTERVENCIONES', 20);   // Número máximo de registros en la tabla Intervenciones
-define('ANONIMO_AUTOR',          'Rata cobarde');     // Autor predeterminado
-define('ANONIMO_TITULO',         'Sin título');       // Título predeterminado
-define('ANONIMO_DESCRIPCION',    'Sin descripción');  // Descripción predeterminada
-define('ANONIMO_INTERVENCION',   'Sin texto');        // Intervención predeterminada
+define("ZONA_HORARIA",           "Europe/Madrid");  // Zona horaria del servidor
+define("CABECERA_CON_CURSOR",    true);             // Para función cabecera()
+define("CABECERA_SIN_CURSOR",    false);            // Para función cabecera()
+define("FORM_METHOD",            "get");  // Formularios se envían con GET
+//define("FORM_METHOD",            "post"); // Formularios se envían con POST
+define("MYSQL",                  "MySQL");
+define("SQLITE",                 "SQLite");
+define("TAM_TITULO",             50);   // Tamaño del campo Discusiones > Título
+define("TAM_DESCRIPCION",        50);   // Tamaño del campo Discusiones > Descripción
+define("TAM_AUTOR",              50);   // Tamaño del campo Discusiones > Autor
+define("TAM_INTERVENCION",       255);  // Tamaño del campo Intervenciones > Intervención
+define("MAX_REG_DISCUSIONES",    10);   // Número máximo de registros en la tabla Discusiones
+define("MAX_REG_INTERVENCIONES", 20);   // Número máximo de registros en la tabla Intervenciones
+define("ANONIMO_AUTOR",          "Rata cobarde");     // Autor predeterminado
+define("ANONIMO_TITULO",         "Sin título");       // Título predeterminado
+define("ANONIMO_DESCRIPCION",    "Sin descripción");  // Descripción predeterminada
+define("ANONIMO_INTERVENCION",   "Sin texto");        // Intervención predeterminada
 
 $dbMotor = SQLITE;                               // Base de datos empleada
 if ($dbMotor == MYSQL) {
-    define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');             // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');                // Contraseña de usuario de MySQL
-    $dbDb             = 'mclibre_foro';          // Nombre de la base de datos
-    $dbDiscusiones    = $dbDb . '.discusiones';    // Nombre de la tabla Discusiones
-    $dbIntervenciones = $dbDb . '.intervenciones'; // Nombre de la tabla Intervenciones
+    define("MYSQL_HOST",     "mysql:host=localhost"); // Nombre de host MYSQL
+    define("MYSQL_USUARIO",  "root");             // Nombre de usuario de MySQL
+    define("MYSQL_PASSWORD", "");                // Contraseña de usuario de MySQL
+    $dbDb             = "mclibre_foro";          // Nombre de la base de datos
+    $dbDiscusiones    = $dbDb . ".discusiones";    // Nombre de la tabla Discusiones
+    $dbIntervenciones = $dbDb . ".intervenciones"; // Nombre de la tabla Intervenciones
 } elseif ($dbMotor == SQLITE) {
-    $dbDb             = '/home/barto/mclibre/tmp/mclibre/mclibre_foro.sqlite';  // Nombre de la base de datos
-    $dbDiscusiones    = 'discusiones';           // Nombre de la tabla Discusiones
-    $dbIntervenciones = 'intervenciones';        // Nombre de la tabla Intervenciones
+    $dbDb             = "/home/barto/mclibre/tmp/mclibre/mclibre_foro.sqlite";  // Nombre de la base de datos
+    $dbDiscusiones    = "discusiones";           // Nombre de la tabla Discusiones
+    $dbIntervenciones = "intervenciones";        // Nombre de la tabla Intervenciones
 }
 
 $recorta = [
-    'titulo'       => TAM_TITULO,
-    'descripcion'  => TAM_DESCRIPCION,
-    'autor'        => TAM_AUTOR,
-    'intervencion' => TAM_INTERVENCION
+    "titulo"       => TAM_TITULO,
+    "descripcion"  => TAM_DESCRIPCION,
+    "autor"        => TAM_AUTOR,
+    "intervencion" => TAM_INTERVENCION
 ];
 
 function conectaDb()
@@ -70,11 +70,11 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave', CABECERA_SIN_CURSOR, 'menuPrincipal', '');
+        cabecera("Error grave", CABECERA_SIN_CURSOR, "menuPrincipal", "");
         print "<p>Error: No puede conectarse con la base de datos.</p>\n";
         print "<p>Error: " . $e->getMessage() . "</p>\n";
         pie();
@@ -90,15 +90,15 @@ function recorta($campo, $cadena)
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='')
+function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var] != "")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
     }
-    $tmp = str_replace('&', '&amp;',  $tmp);
-    $tmp = str_replace('"', '&quot;', $tmp);
+    $tmp = str_replace("&", "&amp;",  $tmp);
+    $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
@@ -115,8 +115,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -127,8 +127,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -160,7 +160,7 @@ function fechaDma($amd)
         . " a las ".substr($amd, 11, 8);
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal', $id='')
+function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal", $id="")
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
@@ -182,13 +182,13 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal',
     print "\n";
     print "  <div id=\"menu\">\n";
     print "    <ul>\n";
-    if ($menu == 'menuDiscusiones') {
+    if ($menu == "menuDiscusiones") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
-    } elseif ($menu == 'menuHilos') {
+    } elseif ($menu == "menuHilos") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"hil-insertar-1.php?hilo=$id\">Intervenir</a></li>\n";
         print "      <li><a href=\"hil-index.php?hilo=$id\">Ver intervenciones</a></li>\n";
-    } elseif ($menu == 'menuEditor') {
+    } elseif ($menu == "menuEditor") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"edi-borrar-disc-1.php\">Borrar discusiones</a></li>\n";
         print "      <li><a href=\"edi-borrar-inte-1.php\">Borrar intervenciones</a></li>\n";

@@ -23,13 +23,13 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Compra - Reservar 2', 'compra');
+    cabecera("Compra - Reservar 2", "compra");
 
     $consulta = "SELECT COUNT(*) FROM $dbArticulos
         WHERE id_comprador='$_SESSION[compraventaIdUsuario]'
@@ -52,7 +52,7 @@ if (!isset($_SESSION['compraventaUsuario'])) {
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } else {
-            date_default_timezone_set('Europe/Madrid');
+            date_default_timezone_set("Europe/Madrid");
             $fecha_compra = date("Y-m-d H:i:s");
             foreach($result as $valor) {
                 $consulta = "UPDATE $dbArticulos

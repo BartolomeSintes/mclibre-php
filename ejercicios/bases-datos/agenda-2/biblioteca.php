@@ -22,57 +22,57 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    true);   // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    false);  // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
-define('MYSQL',          'MySQL');
-define('SQLITE',         'SQLite');
-define('TAM_USUARIO',      20);  // Tamaño del campo Usuarios > Usuario
-define('TAM_PASSWORD',     20);  // Tamaño del campo Usuarios > Contraseña
-define('TAM_CIFRADO',      32);  // Tamaño del campo Usuarios > Contraseña en MD5
-define('TAM_NOMBRE',       40);  // Tamaño del campo Agenda > Nombre
-define('TAM_APELLIDOS',    60);  // Tamaño del campo Agenda > Apellidos
-define('TAM_TELEFONO',     10);  // Tamaño del campo Agenda > Teléfono
-define('TAM_CORREO',       50);  // Tamaño del campo Agenda > Correo
-define('MAX_REG_USUARIOS', 20);  // Número máximo de registros en la tabla Usuarios
-define('MAX_REG_AGENDA',   20);  // Número máximo de registros en la tabla Agenda
+define("CABECERA_CON_CURSOR",    true);   // Para función cabecera()
+define("CABECERA_SIN_CURSOR",    false);  // Para función cabecera()
+define("FORM_METHOD",            "get");  // Formularios se envían con GET
+//define("FORM_METHOD",            "post"); // Formularios se envían con POST
+define("MYSQL",          "MySQL");
+define("SQLITE",         "SQLite");
+define("TAM_USUARIO",      20);  // Tamaño del campo Usuarios > Usuario
+define("TAM_PASSWORD",     20);  // Tamaño del campo Usuarios > Contraseña
+define("TAM_CIFRADO",      32);  // Tamaño del campo Usuarios > Contraseña en MD5
+define("TAM_NOMBRE",       40);  // Tamaño del campo Agenda > Nombre
+define("TAM_APELLIDOS",    60);  // Tamaño del campo Agenda > Apellidos
+define("TAM_TELEFONO",     10);  // Tamaño del campo Agenda > Teléfono
+define("TAM_CORREO",       50);  // Tamaño del campo Agenda > Correo
+define("MAX_REG_USUARIOS", 20);  // Número máximo de registros en la tabla Usuarios
+define("MAX_REG_AGENDA",   20);  // Número máximo de registros en la tabla Agenda
 
 $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor == MYSQL) {
-    define('MYSQL_HOST',     'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO',  'root');      // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
-    $dbDb       = 'mclibre_multiagenda';  // Nombre de la base de datos
-    $dbUsuarios = $dbDb . '.usuarios';      // Nombre de la tabla de Usuarios
-    $dbAgenda   = $dbDb . '.agenda';        // Nombre de la tabla de Agendas
+    define("MYSQL_HOST",     "mysql:host=localhost"); // Nombre de host MYSQL
+    define("MYSQL_USUARIO",  "root");      // Nombre de usuario de MySQL
+    define("MYSQL_PASSWORD", "");         // Contraseña de usuario de MySQL
+    $dbDb       = "mclibre_multiagenda";  // Nombre de la base de datos
+    $dbUsuarios = $dbDb . ".usuarios";      // Nombre de la tabla de Usuarios
+    $dbAgenda   = $dbDb . ".agenda";        // Nombre de la tabla de Agendas
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
 } elseif ($dbMotor == SQLITE) {
-    $dbDb       = '/home/barto/mclibre/tmp/mclibre/mclibre_multiagenda.sqlite';  // Nombre de la base de datos
-    $dbUsuarios = 'usuarios';             // Nombre de la tabla de Usuarios
-    $dbAgenda   = 'agenda';               // Nombre de la tabla de Agendas
+    $dbDb       = "/home/barto/mclibre/tmp/mclibre/mclibre_multiagenda.sqlite";  // Nombre de la base de datos
+    $dbUsuarios = "usuarios";             // Nombre de la tabla de Usuarios
+    $dbAgenda   = "agenda";               // Nombre de la tabla de Agendas
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
 }
 
-$administradorNombre   = 'root';  // Nombre del usuario Administrador
-$administradorPassword = 'root';  // Password del usuario Administrador
-// Si $administradorPassword!='', al crearse las tablas, se crea el usuario
-// Si $administradorPassword == '', no se crea el usuario
+$administradorNombre   = "root";  // Nombre del usuario Administrador
+$administradorPassword = "root";  // Password del usuario Administrador
+// Si $administradorPassword!="", al crearse las tablas, se crea el usuario
+// Si $administradorPassword == "", no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
 
 $recorta = [
-    'usuario'   => TAM_USUARIO,
-    'password'  => TAM_CIFRADO,
-    'nombre'    => TAM_NOMBRE,
-    'apellidos' => TAM_APELLIDOS,
-    'telefono'  => TAM_TELEFONO,
-    'correo'    => TAM_CORREO
+    "usuario"   => TAM_USUARIO,
+    "password"  => TAM_CIFRADO,
+    "nombre"    => TAM_NOMBRE,
+    "apellidos" => TAM_APELLIDOS,
+    "telefono"  => TAM_TELEFONO,
+    "correo"    => TAM_CORREO
 ];
 
-ini_set('session.save_handler', 'files'); // Por si session.save_handler = user en php.ini
+ini_set("session.save_handler", "files"); // Por si session.save_handler = user en php.ini
 
 function conectaDb()
 {
@@ -83,11 +83,11 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave', CABECERA_SIN_CURSOR, 'menu_principal');
+        cabecera("Error grave", CABECERA_SIN_CURSOR, "menu_principal");
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
 //        print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -126,7 +126,7 @@ function borraTodoMySQL($db)
             print "    <p>Error al crear la tabla de Usuarios.</p>\n";
             print "\n";
         }
-        if ($administradorPassword!='') {
+        if ($administradorPassword != "") {
             $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '".md5($administradorPassword)."')";
             if ($db->query($consulta)) {
@@ -191,7 +191,7 @@ function borraTodoSqlite($db)
         print "    <p>Error al crear la tabla de Usuarios.</p>\n";
         print "\n";
     }
-    if ($administradorPassword!='') {
+    if ($administradorPassword != "") {
         $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '".md5($administradorPassword)."')";
         if ($db->query($consulta)) {
@@ -229,13 +229,13 @@ function recorta($campo, $cadena)
 
 function recogeParaConsulta($db, $var, $var2='')
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var] != "")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
     }
-    $tmp = str_replace('&', '&amp;',  $tmp);
-    $tmp = str_replace('"', '&quot;', $tmp);
+    $tmp = str_replace("&", "&amp;",  $tmp);
+    $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
@@ -252,8 +252,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -264,8 +264,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -291,7 +291,7 @@ function quitaComillasExteriores($var)
     return $var;
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menu_principal')
+function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menu_principal")
 {
     global $administradorNombre;
 
@@ -312,7 +312,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menu_principal'
         print "<body>\n";
     }
     print "  <h1>Agenda ";
-    if ($menu == 'menu_principal') {
+    if ($menu == "menu_principal") {
         print "multiusuario";
     } else {
         print "de $menu";
@@ -321,7 +321,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menu_principal'
     print "\n";
     print "  <div id=\"menu\">\n";
     print "    <ul>\n";
-    if ($menu == 'menu_principal') {
+    if ($menu == "menu_principal") {
         print "      <li><a href=\"index.php\">Conectar</a></li>\n";
     } elseif ($menu==$administradorNombre) {
         print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
@@ -344,7 +344,7 @@ function pie()
 {
     global $administradorPassword, $_SESSION;
 
-    if (($administradorPassword!='') &&!isset($_SESSION['multiagendaUsuario'])) {
+    if (($administradorPassword != "") &&!isset($_SESSION["multiagendaUsuario"])) {
         print "    <p><strong>Nota</strong>: El usuario Administrador "
             . "se llama <strong>root</strong> y su contraseña es\ntambién "
             . "<strong>root</strong>.</p>\n";

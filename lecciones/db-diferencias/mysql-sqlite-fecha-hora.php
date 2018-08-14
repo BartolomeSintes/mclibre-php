@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('MYSQL',     'MySQL');
-define('SQLITE',    'SQLite');
-define('TAM_FECHA', 10);                        // Tamaño del campo Fecha
-define('MYSQL_HOST', 'mysql:host=localhost');   // Nombre de host MYSQL
-define('MYSQL_USUARIO', 'root');                // Nombre de usuario de MySQL
-define('MYSQL_PASSWORD', "");                   // Contraseña de usuario de MySQL
+define("MYSQL",     "MySQL");
+define("SQLITE",    "SQLite");
+define("TAM_FECHA", 10);                        // Tamaño del campo Fecha
+define("MYSQL_HOST", "mysql:host=localhost");   // Nombre de host MYSQL
+define("MYSQL_USUARIO", "root");                // Nombre de usuario de MySQL
+define("MYSQL_PASSWORD", "");                   // Contraseña de usuario de MySQL
 
 function conectaDb()
 {
@@ -38,7 +38,7 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
@@ -113,7 +113,7 @@ function pruebaDb() {
     print "          <li>Inserción de fechas:\n";
     print "            <ul>\n";
 
-    $fecha = date('Y-m-d');
+    $fecha = date("Y-m-d");
     print "              <li>Fecha a insertar: $fecha</li>\n";
     $consulta = "INSERT INTO $dbTabla
         VALUES (NULL, '$fecha')";
@@ -182,8 +182,8 @@ print "    <tr>\n";
 print "      <td>\n";
 print "        <h2>SQLite</h2>\n";
 $dbMotor = SQLITE;
-$dbDb     = '/home/barto/mclibre/tmp/mclibre/mclibre_db-diferencias.sqlite';  // Nombre de la base de datos
-$dbTabla = 'fecha';             // Nombre de la tabla
+$dbDb    = "/home/barto/mclibre/tmp/mclibre/mclibre_db-diferencias.sqlite";  // Nombre de la base de datos
+$dbTabla = "fecha";             // Nombre de la tabla
 print "        <ol>\n";
 $db = conectaDb();
 borraTodoSqlite($db);
@@ -194,8 +194,8 @@ print "      <td>\n";
 // Prueba con MySQL
 print "        <h2>MySQL</h2>\n";
 $dbMotor = MYSQL;
-$dbDb     = 'mclibre_db-diferencias';     // Nombre de la base de datos
-$dbTabla = $dbDb . '.fecha';      // Nombre de la tabla
+$dbDb    = "mclibre_db-diferencias";     // Nombre de la base de datos
+$dbTabla = $dbDb . ".fecha";      // Nombre de la tabla
 print "        <ol>\n";
 $db = conectaDb();
 if ($db) {

@@ -22,21 +22,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
 $consulta = "SELECT COUNT(*) FROM $dbObras";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Obras - Buscar 1', CABECERA_SIN_CURSOR, 'menuObras');
+    cabecera("Obras - Buscar 1", CABECERA_SIN_CURSOR, "menuObras");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera('Obras - Buscar 1', CABECERA_SIN_CURSOR, 'menuObras');
+    cabecera("Obras - Buscar 1", CABECERA_SIN_CURSOR, "menuObras");
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
     print "\n";
 } else {
-    cabecera('Obras - Buscar 1', CABECERA_CON_CURSOR, 'menuObras');
+    cabecera("Obras - Buscar 1", CABECERA_CON_CURSOR, "menuObras");
     print "    <form action=\"obr-buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba el criterio de búsqueda (carácteres o números):</p>\n";
     print "\n";

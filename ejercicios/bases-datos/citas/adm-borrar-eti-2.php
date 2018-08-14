@@ -23,16 +23,16 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 
-if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario'] != $administradorNombre)) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administradorNombre)) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Borrar etiquetas 2', $_SESSION['citasUsuario']);
+    cabecera("Borrar etiquetas 2", $_SESSION["citasUsuario"]);
 
-    $id = recogeMatrizParaConsulta($db, 'id');
+    $id = recogeMatrizParaConsulta($db, "id");
 
     if (count($id) == 0) {
       print "    <p>No se ha marcado nada para borrar.</p>\n";

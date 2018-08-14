@@ -23,15 +23,15 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Etiquetas - Añadir 2', 'menu_etiquetas');
+    cabecera("Etiquetas - Añadir 2", "menu_etiquetas");
 
-    $etiqueta = recogeParaConsulta($db, 'etiqueta');
+    $etiqueta = recogeParaConsulta($db, "etiqueta");
     $etiqueta = strtolower($etiqueta);
     if ($etiqueta == "''") {
         print "    <p>La etiqueta no puede estar vacía. No se ha guardado el registro.</p>\n";

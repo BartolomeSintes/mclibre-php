@@ -22,15 +22,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-$fecha = recogeFecha($db, 'fecha');
-$entrada = recogeParaConsulta($db, 'entrada');
+$fecha = recogeFecha($db, "fecha");
+$entrada = recogeParaConsulta($db, "entrada");
 
-cabecera('Añadir', CABECERA_SIN_CURSOR, $fecha);
+cabecera("Añadir", CABECERA_SIN_CURSOR, $fecha);
 
-if (($fecha == "''") || ($entrada == "''")) {
+if ($fecha == "''" || $entrada == "''") {
     print "    <p>Hay que escribir algo en la entrada. No se ha guardado el registro.</p>\n";
     print "\n";
 } else {

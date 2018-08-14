@@ -22,19 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
 date_default_timezone_set(ZONA_HORARIA);
 
-$autor        = recogeParaConsulta($db, 'autor',        ANONIMO_AUTOR);
-$intervencion = recogeParaConsulta($db, 'intervencion', ANONIMO_INTERVENCION);
-$hilo         = recogeParaConsulta($db, 'hilo',         '');
+$autor        = recogeParaConsulta($db, "autor",        ANONIMO_AUTOR);
+$intervencion = recogeParaConsulta($db, "intervencion", ANONIMO_INTERVENCION);
+$hilo         = recogeParaConsulta($db, "hilo",         "");
 $fecha        = date("Y-m-d H:i:s");
 
-cabecera('Discusiones - Intervenir en discusión 2', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
+cabecera("Discusiones - Intervenir en discusión 2", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
 
-if (($autor == "'" . ANONIMO_AUTOR . "'") && ($intervencion == "'" . ANONIMO_INTERVENCION . "'")) {
+if ($autor == "'" . ANONIMO_AUTOR . "'" && $intervencion == "'" . ANONIMO_INTERVENCION . "'") {
     print "    <p>Hay que rellenar al menos uno de los campos.</p>\n";
     print "\n";
 } else {

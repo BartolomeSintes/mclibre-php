@@ -76,7 +76,7 @@ pie</pre>
         <p>Por lo que la instrucción será algo de este estilo:</p>
 
         <div class="codigo">
-          <pre>setcookie('cookieTemporal', time()+$duracion, time()+$duracion);</pre>
+          <pre>setcookie("cookieTemporal", time()+$duracion, time()+$duracion);</pre>
         </div>
       </li>
       <li>Para destruir la cookie es suficiente crearla con una expiración anterior al presente, por ejemplo:
@@ -88,8 +88,8 @@ pie</pre>
       <li>En la comprobación de la cookie, basta con hacer la diferencia entre el valor guardado en la cookie y el presente:
 
         <div class="codigo">
-          <pre>if (isset($_COOKIE['cookieTemporal'])) {
-    $tiempoRestante = $_COOKIE['cookieTemporal'] - time();
+          <pre>if (isset($_COOKIE["cookieTemporal"])) {
+    $tiempoRestante = $_COOKIE["cookieTemporal"] - time();
     print "&lt;p&gt;La cookie se destruirá en $tiempoRestante ";
  ...</pre>
         </div>

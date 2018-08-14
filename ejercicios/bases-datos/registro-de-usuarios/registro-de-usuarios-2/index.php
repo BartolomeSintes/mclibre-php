@@ -25,7 +25,7 @@
 require_once "biblioteca.php";
 
 session_start();
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION["id"])) {
     cabecera("Inicio", MENU_IDENTIFICADO, CABECERA_SIN_CURSOR);
 } else {
     cabecera("Inicio", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);

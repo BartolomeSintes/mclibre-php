@@ -31,18 +31,18 @@ function recoge($var)
     return $tmp;
 }
 
-define('DURACION_MIN', 1);
-define('DURACION_MAX', 60);
+define("DURACION_MIN", 1);
+define("DURACION_MAX", 60);
 
-$accion   = recoge('accion');
-$duracion = recoge('duracion');
+$accion   = recoge("accion");
+$duracion = recoge("duracion");
 
-$duracionOK = ctype_digit($duracion) && (DURACION_MIN<=$duracion) && ($duracion <= DURACION_MAX);
-$accionOK   = (($accion == 'Crear') || ($accion == 'Destruir') || ($accion == 'Comprobar'));
+$duracionOk = ctype_digit($duracion) && (DURACION_MIN<=$duracion) && ($duracion <= DURACION_MAX);
+$accionOk   = ($accion == "Crear" || $accion == "Destruir" || $accion == "Comprobar");
 
-if (($accion == 'Crear') && $duracionOK) {
-    setcookie('cookieTemporal', time()+$duracion, time()+$duracion);
-} elseif ($accion == 'Destruir') {
+if ($accion == "Crear" && $duracionOk) {
+    setcookie("cookieTemporal", time()+$duracion, time()+$duracion);
+} elseif ($accion == "Destruir") {
     setcookie ("cookieTemporal", "", time() - 3600);
 }
 
@@ -60,8 +60,8 @@ print "<body>\n";
 print "  <h1>Creación y destrucción de cookies</h1>\n";
 print "\n";
 
-if ($accion == 'Crear') {
-    if ($duracionOK) {
+if ($accion == "Crear") {
+    if ($duracionOk) {
         print "  <p>Se ha creado la cookie. Se destruirá en $duracion ";
         if ($duracion == 1) {
             print "segundo.</p>\n";
@@ -75,8 +75,8 @@ if ($accion == 'Crear') {
         print "\n";
     }
 } elseif ($accion == "Comprobar") {
-    if (isset($_COOKIE['cookieTemporal'])) {
-        $tiempoRestante = $_COOKIE['cookieTemporal'] - time();
+    if (isset($_COOKIE["cookieTemporal"])) {
+        $tiempoRestante = $_COOKIE["cookieTemporal"] - time();
         print "  <p>La cookie se destruirá en $tiempoRestante ";
         if ($tiempoRestante == 1) {
             print "segundo.</p>\n";

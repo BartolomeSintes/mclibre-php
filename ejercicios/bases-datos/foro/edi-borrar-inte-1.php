@@ -22,13 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Editor - Borrar intervenciones 1', CABECERA_SIN_CURSOR, 'menuEditor', '');
+cabecera("Editor - Borrar intervenciones 1", CABECERA_SIN_CURSOR, "menuEditor", "");
 
-$campo = recogeParaConsulta($db, 'campo', 'fecha');
+$campo = recogeParaConsulta($db, "campo", "fecha");
 $campo = quitaComillasExteriores($campo);
-$orden = recogeParaConsulta($db, 'orden', 'ASC');
+$orden = recogeParaConsulta($db, "orden", "ASC");
 $orden = quitaComillasExteriores($orden);
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
@@ -96,7 +96,7 @@ if (!$result) {
             print "            <td align=\"center\"><input type=\"radio\" "
                 . "name=\"id\" value=\"$valor[id]\" /></td>\n";
             print "            <td>$valor[autor]</td>\n";
-            print "            <td>".fechaDma($valor['fecha'])."</td>\n";
+            print "            <td>" . fechaDma($valor["fecha"]) . "</td>\n";
             print "            <td>$valor[titulo]</td>\n";
             print "            <td>$valor[descripcion]</td>\n";
             print "          </tr>\n";

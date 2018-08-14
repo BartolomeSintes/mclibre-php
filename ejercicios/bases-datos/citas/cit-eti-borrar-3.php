@@ -23,17 +23,17 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Citas - Borrar etiquetas 3', 'menu_citas');
+    cabecera("Citas - Borrar etiquetas 3", "menu_citas");
 
-    $cita = recogeParaConsulta($db, 'cita');
-    $etiqueta = recogeParaConsulta($db, 'etiqueta');
-    $id = recogeMatrizParaConsulta($db, 'id');
+    $cita = recogeParaConsulta($db, "cita");
+    $etiqueta = recogeParaConsulta($db, "etiqueta");
+    $id = recogeMatrizParaConsulta($db, "id");
     // FALTA VALIDAR LA MATRIZ
 
     foreach ($id as $indice => $valor) {

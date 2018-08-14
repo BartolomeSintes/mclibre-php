@@ -27,7 +27,7 @@ session_start();
 
 // Si algún contador no está guardado en la sesión, los pone a cero
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
-    $_SESSION["a"] =  $_SESSION["b"] = 0;
+    $_SESSION["a"] = $_SESSION["b"] = 0;
 }
 ?>
 <!DOCTYPE html>

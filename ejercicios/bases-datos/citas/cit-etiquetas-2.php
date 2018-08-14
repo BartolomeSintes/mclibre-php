@@ -23,15 +23,15 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Citas - Asignar etiquetas 2', 'menu_citas');
+    cabecera("Citas - Asignar etiquetas 2", "menu_citas");
 
-    $id = recogeParaConsulta($db, 'id');
+    $id = recogeParaConsulta($db, "id");
     if ($id == "''") {
         print "    <p>No se ha seleccionado ningún registro.</p>\n";
         print "\n";

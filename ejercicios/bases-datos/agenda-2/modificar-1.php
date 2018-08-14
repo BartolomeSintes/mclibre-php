@@ -22,19 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 session_start();
 
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Modificar 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+    cabecera("Modificar 1", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
 
-    $campo = recogeParaConsulta($db, 'campo', 'apellidos');
+    $campo = recogeParaConsulta($db, "campo", "apellidos");
     $campo = quitaComillasExteriores($campo);
-    $orden = recogeParaConsulta($db, 'orden', 'ASC');
+    $orden = recogeParaConsulta($db, "orden", "ASC");
     $orden = quitaComillasExteriores($orden);
 
     $consulta = "SELECT COUNT(*) FROM $dbAgenda
@@ -107,10 +107,10 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
                 print "            <td>$valor[nombre]</td>\n";
                 print "            <td>$valor[apellidos]</td>\n";
                 print "            <td>$valor[telefono]</td>\n";
-                print "            <td>$valor[correo]</td>\n\n";
+                print "            <td>$valor[correo]</td>\n";
                 print "          </tr>\n";
             }
-            print "        </tbody>\n\n";
+            print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
             print "      <p><input type=\"submit\" value=\"Modificar\" /></p>\n";

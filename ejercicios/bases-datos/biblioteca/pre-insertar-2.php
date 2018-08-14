@@ -22,13 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Préstamos - Nuevo préstamo 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera("Préstamos - Nuevo préstamo 2", CABECERA_SIN_CURSOR, "menuPrestamos");
 
-$idUsuario = recogeParaConsulta($db, 'id_usuario');
-$idObra    = recogeParaConsulta($db, 'id_obra');
-$fecha     = recogeParaConsulta($db, 'fecha');
+$idUsuario = recogeParaConsulta($db, "id_usuario");
+$idObra    = recogeParaConsulta($db, "id_obra");
+$fecha     = recogeParaConsulta($db, "fecha");
 
 $fechaOk = true;
 
@@ -64,7 +64,7 @@ if (!$fechaOk) {
         $consulta = "SELECT COUNT(*) FROM $dbPrestamos
             WHERE id_usuario=$idUsuario
             AND id_obra=$idObra
-            AND prestado='".fechaAmd($fecha)."'";
+            AND prestado='" . fechaAmd($fecha) . "'";
         $resultPrestamo = $db->query($consulta);
         if (!$resultObra||!$resultUsuario||!$resultPrestamo) {
             print "    <p>Error en la consulta.</p>\n";

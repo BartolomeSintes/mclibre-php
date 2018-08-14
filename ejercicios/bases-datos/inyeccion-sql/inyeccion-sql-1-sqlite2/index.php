@@ -22,8 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
-cabecera('Inicio', MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+include("biblioteca.php");
+cabecera("Inicio", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
 print "    <p>Versión PHP: ".phpversion()."</p>";
 print "\n";
 print "    <p>Versión SQLite: ".sqlite_libversion()."</p>";

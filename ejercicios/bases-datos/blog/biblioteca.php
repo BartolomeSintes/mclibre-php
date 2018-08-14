@@ -22,30 +22,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('ZONA_HORARIA',        'Europe/Madrid');  // Zona horaria del servidor
-define('CABECERA_CON_CURSOR', true);             // Para función cabecera()
-define('CABECERA_SIN_CURSOR', false);            // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
-define('MYSQL',               'MySQL');
-define('SQLITE',              'SQLite');
-define('TAM_ENTRADA',         255);  // Tamaño del campo Entradas > Entrada
-define('MAX_REG_ENTRADAS',    10);   // Número máximo de registros en la tabla Entradas
+define("ZONA_HORARIA",        "Europe/Madrid");  // Zona horaria del servidor
+define("CABECERA_CON_CURSOR", true);             // Para función cabecera()
+define("CABECERA_SIN_CURSOR", false);            // Para función cabecera()
+define("FORM_METHOD",            "get");  // Formularios se envían con GET
+//define("FORM_METHOD",            "post"); // Formularios se envían con POST
+define("MYSQL",               "MySQL");
+define("SQLITE",              "SQLite");
+define("TAM_ENTRADA",         255);  // Tamaño del campo Entradas > Entrada
+define("MAX_REG_ENTRADAS",    10);   // Número máximo de registros en la tabla Entradas
 
 $dbMotor = SQLITE;                     // Base de datos empleada
 if ($dbMotor == MYSQL) {
-    define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');   // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');      // Contraseña de usuario de MySQL
-    $dbDb       = 'mclibre_blog';     // Nombre de la base de datos
-    $dbEntradas = $dbDb . '.entradas';  // Nombre de la tabla Entradas
+    define("MYSQL_HOST", "mysql:host=localhost"); // Nombre de host MYSQL
+    define("MYSQL_USUARIO", "root");   // Nombre de usuario de MySQL
+    define("MYSQL_PASSWORD", "");      // Contraseña de usuario de MySQL
+    $dbDb       = "mclibre_blog";     // Nombre de la base de datos
+    $dbEntradas = $dbDb . ".entradas";  // Nombre de la tabla Entradas
 } elseif ($dbMotor == SQLITE) {
-    $dbDb       = '/home/barto/mclibre/tmp/mclibre/mclibre_entradas.sqlite';  // Nombre de la base de datos
-    $dbEntradas = 'entradas';         // Nombre de la tabla Entradas
+    $dbDb       = "/home/barto/mclibre/tmp/mclibre/mclibre_entradas.sqlite";  // Nombre de la base de datos
+    $dbEntradas = "entradas";         // Nombre de la tabla Entradas
 }
 
 $recorta = [
-    'entrada' => TAM_ENTRADA
+    "entrada" => TAM_ENTRADA
 ];
 
 function conectaDb()
@@ -57,11 +57,11 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave', CABECERA_SIN_CURSOR, '');
+        cabecera("Error grave", CABECERA_SIN_CURSOR, "");
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
 //        print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -79,15 +79,15 @@ function recorta($campo, $cadena)
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='')
+function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var] != "")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
     }
-    $tmp = str_replace('&', '&amp;',  $tmp);
-    $tmp = str_replace('"', '&quot;', $tmp);
+    $tmp = str_replace("&", "&amp;",  $tmp);
+    $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
@@ -104,8 +104,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -116,8 +116,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -146,14 +146,14 @@ function quitaComillasExteriores($var)
 function recogefecha($db, $var)
 {
     date_default_timezone_set(ZONA_HORARIA);
-    $fecha = recogeParaConsulta($db, $var, date('Y-m-d'));
+    $fecha = recogeParaConsulta($db, $var, date("Y-m-d"));
     $fecha = quitaComillasExteriores($fecha);
     if (!ctype_digit(substr($fecha, 5, 2)) ||!ctype_digit(substr($fecha, 8, 2))
         ||!ctype_digit(substr($fecha, 0, 4))) {
-        $fecha = date('Y-m-d');
+        $fecha = date("Y-m-d");
     } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2),
                     (int)substr($fecha, 0, 4))) {
-        $fecha = date('Y-m-d');
+        $fecha = date("Y-m-d");
     }
     return $fecha;
 }
@@ -175,38 +175,38 @@ function calendario ($fecha, $enlaces)
     date_default_timezone_set(ZONA_HORARIA);
     if (!ctype_digit(substr($fecha, 5, 2)) || !ctype_digit(substr($fecha, 8, 2))
         || !ctype_digit(substr($fecha, 0, 4))) {
-        $fecha = date('Y-m-d');
+        $fecha = date("Y-m-d");
     } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2),
                     (int)substr($fecha, 0, 4))) {
-        $fecha = date('Y-m-d');
+        $fecha = date("Y-m-d");
     }
     $diaInicial = substr($fecha, 8, 2);
     $mes     = substr($fecha, 5, 2);
     $anyo    = substr($fecha, 0, 4);
 
     $esBisiesto = (($anyo%400 == 0) || (($anyo%100!=0) && ($anyo%4 == 0)))
-                    ? '1' : '0';
+                    ? "1" : "0";
     $duraMeses = ($esBisiesto) ?
         [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31] :
         [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31];
-    $meses = ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
-        'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
-        'Noviembre', 'Diciembre'
+    $meses = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo",
+        "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+        "Noviembre", "Diciembre"
     ];
 
     if ($diaInicial>$duraMeses[(int)($mes)-1]) {
-        $fechaAnt = date('Y-m-d', mktime(0, 0, 0, $mes-1, $duraMeses[(int)($mes)-1], $anyo));
+        $fechaAnt = date("Y-m-d", mktime(0, 0, 0, $mes-1, $duraMeses[(int)($mes)-1], $anyo));
     } else {
-        $fechaAnt = date('Y-m-d', mktime(0, 0, 0, $mes-1, $diaInicial, $anyo));
+        $fechaAnt = date("Y-m-d", mktime(0, 0, 0, $mes-1, $diaInicial, $anyo));
     }
     $diaAnt  = substr($fechaAnt, 8, 2);
     $mesAnt  = substr($fechaAnt, 5, 2);
     $anyoAnt = substr($fechaAnt, 0, 4);
 
     if ($diaInicial>$duraMeses[(int)($mes)+1]) {
-        $fechaSig = date('Y-m-d', mktime(0, 0, 0, $mes+1, $duraMeses[(int)($mes)+1], $anyo));
+        $fechaSig = date("Y-m-d", mktime(0, 0, 0, $mes+1, $duraMeses[(int)($mes)+1], $anyo));
     } else {
-        $fechaSig = date('Y-m-d', mktime(0, 0, 0, $mes+1, $diaInicial, $anyo));
+        $fechaSig = date("Y-m-d", mktime(0, 0, 0, $mes+1, $diaInicial, $anyo));
     }
     $diaSig  = substr($fechaSig, 8, 2);
     $mesSig  = substr($fechaSig, 5, 2);
@@ -214,7 +214,7 @@ function calendario ($fecha, $enlaces)
 
     $jd = gregoriantojd($mes, 1, $anyo);
     $dia = (jddayofweek($jd, 0)+6)%7;
-    $dias = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+    $dias = ["L", "M", "X", "J", "V", "S", "D"];
     $diaSemana = $dias[$dia];
 
     print "    <div class=\"calendario\">\n";
@@ -244,11 +244,11 @@ function calendario ($fecha, $enlaces)
             for ($i=0; $i<7; $i++) {
                 $num = $num_inicio + $i;
                 if (($num>0) && ($num<=$duraMeses[(int)($mes)])) {
-                    if ($enlaces == 'editar') {
+                    if ($enlaces == "editar") {
                         print "          <td class=\"enlace\"><a href=\"editar.php"
                             . "?fecha=$anyo-$mes-".sprintf("%02d", $num)
                             . "\">$num</a></td>\n";
-                    } elseif ($enlaces == 'leer') {
+                    } elseif ($enlaces == "leer") {
                         $consulta = "SELECT COUNT(*) FROM $dbEntradas WHERE "
                             . "fecha='$anyo-$mes-".sprintf("%02d", $num)."'";
                         $result = $db->query($consulta);
@@ -274,7 +274,7 @@ function calendario ($fecha, $enlaces)
     print "\n";
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha='')
+function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $fecha="")
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";

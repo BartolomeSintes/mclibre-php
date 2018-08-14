@@ -43,7 +43,7 @@
   <p>Esta puede ser la función que genera la tabla donde se realizan las reservas. Los argumentos de esta función son los siguientes:</p>
   <ul>
     <li>$fecha es una fecha en formato aaaa-mm-dd</li>
-    <li>$enlaces es una cadena que puede ser 'anyadir' o 'borrar'</li>
+    <li>$enlaces es una cadena que puede ser "anyadir" o "borrar"</li>
   </ul>
 
   <div class="codigo">
@@ -58,15 +58,15 @@
     $jd = gregoriantojd($mes, $dia, $anyo);
     $num_dia = (jddayofweek($jd, 0)+6)%7;
 
-    $fecha_lun = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia,   $anyo));
-    $fecha_mar = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+1, $anyo));
-    $fecha_mie = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+2, $anyo));
-    $fecha_jue = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+3, $anyo));
-    $fecha_vie = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+4, $anyo));
-    $fecha_sab = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+5, $anyo));
-    $fecha_dom = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-$num_dia+6, $anyo));
-    $fecha_ant = date('Y-m-d', mktime(0, 0, 0, $mes, $dia-7, $anyo));
-    $fecha_sig = date('Y-m-d', mktime(0, 0, 0, $mes, $dia+7, $anyo));
+    $fecha_lun = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-$num_dia,   $anyo));
+    $fecha_mar = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-$num_dia+1, $anyo));
+    $fecha_mie = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-$num_dia+2, $anyo));
+    $fecha_jue = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-$num_dia+3, $anyo));
+    $fecha_vie = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-$num_dia+4, $anyo));
+    $fecha_sab = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-$num_dia+5, $anyo));
+    $fecha_dom = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-$num_dia+6, $anyo));
+    $fecha_ant = date("Y-m-d", mktime(0, 0, 0, $mes, $dia-7, $anyo));
+    $fecha_sig = date("Y-m-d", mktime(0, 0, 0, $mes, $dia+7, $anyo));
     $semana = [$fecha_lun, $fecha_mar, $fecha_mie, $fecha_jue, $fecha_vie,
         $fecha_sab, $fecha_dom
     ];
@@ -87,7 +87,7 @@
         exit("Error en la consulta.");
     } else {
         $valor = odbc_fetch_array($result);
-        $num_intervalos = $valor['num_intervalos'];
+        $num_intervalos = $valor["num_intervalos"];
     }
     for ($i = 1; $i &lt;=$num_intervalos; $i++) {
         print "      &lt;tr&gt;\n";
@@ -108,7 +108,7 @@
                     exit("Error en la consulta.");
                 } else {
                     $valor = odbc_fetch_array($result);
-                    if ($valor['num_consultas']) {
+                    if ($valor["num_consultas"]) {
                         print "        &lt;td style=\"background-color: red\"&gt;&lt;/td&gt;\n";
                     } else {
                         $consulta2 = "SELECT COUNT(*) AS num_consultas2 FROM "
@@ -119,15 +119,15 @@
                             exit("Error en la consulta.");
                         } else {
                             $valor2 = odbc_fetch_array($result2);
-                            if ($enlaces == 'anyadir') {
-                                if ($valor2['num_consultas2']) {
+                            if ($enlaces == "anyadir") {
+                                if ($valor2["num_consultas2"]) {
                                     print "        &lt;td style=\"background-color: white\"&gt;Reservado&lt;/td&gt;\n";
                                 } else {
                                     print "        &lt;td style=\"background-color: green\"&gt;"
                                         . "&lt;a href=\"anyadir2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Reservar&lt;/a&gt;&lt;/td&gt;\n";
                                 }
                             } else {
-                                if ($valor2['num_consultas2']) {
+                                if ($valor2["num_consultas2"]) {
                                     print "        &lt;td style=\"background-color: white\"&gt;"
                                         . "&lt;a href=\"borrar2.php?fecha=$j2&amp;amp;hora=$i\"&gt;Anular cita&lt;/a&gt;&lt;/td&gt;\n";
                                 } else {

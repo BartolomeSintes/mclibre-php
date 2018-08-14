@@ -45,7 +45,7 @@ function recoge($var)
 }
 // print "  <pre>"; print_r(get_defined_functions()); print "</pre>"; print "\n";
 
-$dato = recoge('dato');
+$dato = recoge("dato");
 
 print "  <p>El dato recogido se muestra en la línea siguiente con fondo blanco y borde negro: </p>\n";
 print "\n";

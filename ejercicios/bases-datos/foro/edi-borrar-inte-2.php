@@ -22,17 +22,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Editor - Borrar intervenciones 2', CABECERA_SIN_CURSOR, 'menuEditor', '');
+cabecera("Editor - Borrar intervenciones 2", CABECERA_SIN_CURSOR, "menuEditor", "");
 
-$id    = recogeParaConsulta($db, 'id');
-$campo = recogeParaConsulta($db, 'campo', 'fecha');
+$id    = recogeParaConsulta($db, "id");
+$campo = recogeParaConsulta($db, "campo", "fecha");
 $campo = quitaComillasExteriores($campo);
-$orden = recogeParaConsulta($db, 'orden', 'ASC');
+$orden = recogeParaConsulta($db, "orden", "ASC");
 $orden = quitaComillasExteriores($orden);
 
-if ($id == '') {
+if ($id == "") {
     print "    <p>No se ha marcado nada para borrar.</p>\n";
     print "\n";
 } else {
@@ -113,7 +113,7 @@ if ($id == '') {
                         print "            <td align=\"center\"><input "
                             . " type=\"checkbox\" name=\"id[$valor[id]]\" /></td>\n";
                         print "            <td>$valor[autor]</td>\n";
-                        print "            <td>".fechaDma($valor['fecha'])."</td>\n";
+                        print "            <td>" . fechaDma($valor["fecha"]) . "</td>\n";
                         print "            <td>$valor[intervencion]</td>\n";
                         print "          </tr>\n";
                     }

@@ -22,21 +22,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Buscar 2', CABECERA_SIN_CURSOR);
+cabecera("Buscar 2", CABECERA_SIN_CURSOR);
 
-$campo     = recogeParaConsulta($db, 'campo', 'apellidos');
+$campo     = recogeParaConsulta($db, "campo", "apellidos");
 $campo     = quitaComillasExteriores($campo);
-$orden     = recogeParaConsulta($db, 'orden', 'ASC');
+$orden     = recogeParaConsulta($db, "orden", "ASC");
 $orden     = quitaComillasExteriores($orden);
-$nombre    = recogeParaConsulta($db, 'nombre');
+$nombre    = recogeParaConsulta($db, "nombre");
 $nombre    = quitaComillasExteriores($nombre);
-$apellidos = recogeParaConsulta($db, 'apellidos');
+$apellidos = recogeParaConsulta($db, "apellidos");
 $apellidos = quitaComillasExteriores($apellidos);
-$telefono  = recogeParaConsulta($db, 'telefono');
+$telefono  = recogeParaConsulta($db, "telefono");
 $telefono  = quitaComillasExteriores($telefono);
-$correo    = recogeParaConsulta($db, 'correo');
+$correo    = recogeParaConsulta($db, "correo");
 $correo    = quitaComillasExteriores($correo);
 
 $consulta = "SELECT COUNT(*) FROM $dbAgenda

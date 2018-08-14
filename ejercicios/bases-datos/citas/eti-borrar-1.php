@@ -23,17 +23,17 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Etiquetas - Borrar 1', 'menu_etiquetas');
+    cabecera("Etiquetas - Borrar 1", "menu_etiquetas");
 
-    $campo = recogeParaConsulta($db, 'campo', 'etiqueta');
+    $campo = recogeParaConsulta($db, "campo", "etiqueta");
     $campo = quitaComillasExteriores($campo);
-    $orden = recogeParaConsulta($db, 'orden', 'ASC');
+    $orden = recogeParaConsulta($db, "orden", "ASC");
     $orden = quitaComillasExteriores($orden);
 
     $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";

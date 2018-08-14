@@ -23,15 +23,15 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Citas - Borrar etiquetas 2', 'menu_citas');
+    cabecera("Citas - Borrar etiquetas 2", "menu_citas");
 
-    $id = recogeParaConsulta($db, 'id');
+    $id = recogeParaConsulta($db, "id");
     if ($id == "''") {
         print "    <p>No se ha seleccionado ningún registro.</p>\n";
         print "\n";
@@ -55,8 +55,8 @@ if (!isset($_SESSION['citasUsuario'])) {
                 print "\n";
             } else {
                 $valor = $result->fetch();
-                $nombre = $valor['nombre'].' '.$valor['apellidos'];
-                $cita = $valor['cita'];
+                $nombre = $valor["nombre"] . " " . $valor["apellidos"];
+                $cita = $valor["cita"];
                 $consulta = "SELECT COUNT(*) FROM $dbEtiCitas, $dbEtiquetas
                     WHERE id_cita=$id
                     AND $dbEtiCitas.id_etiqueta=$dbEtiquetas.id

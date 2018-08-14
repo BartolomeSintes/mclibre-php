@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
 $consulta = $consultaExisteTabla;
@@ -31,7 +31,7 @@ if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera('Primera conexión', 'menu_principal');
+    cabecera("Primera conexión", "menu_principal");
     print "    <p>Aparentemente, la base de datos no existe. Se creará a continuación.</p>";
     print "\n";
     if ($dbMotor == MYSQL) {
@@ -41,11 +41,11 @@ if (!$result) {
     }
 } else {
     session_start();
-    if (isset($_SESSION['citasUsuario'])) {
-        cabecera('Inicio', $_SESSION['citasUsuario']);
+    if (isset($_SESSION["citasUsuario"])) {
+        cabecera("Inicio", $_SESSION["citasUsuario"]);
     } else {
-        cabecera('Identificación 1', 'menu_principal');
-        $aviso = recogeParaConsulta($db, 'aviso');
+        cabecera("Identificación 1", "menu_principal");
+        $aviso = recogeParaConsulta($db, "aviso");
         $aviso = quitaComillasExteriores($aviso);
         if ($aviso) {
             print "    <p style=\"color: red\">$aviso</p>\n";

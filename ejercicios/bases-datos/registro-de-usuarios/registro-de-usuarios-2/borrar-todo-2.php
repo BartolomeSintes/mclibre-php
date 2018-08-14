@@ -109,7 +109,7 @@ function borraTodoSqlite($db)
 }
 
 session_start();
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION["id"])) {
     header("Location:index.php");
     exit();
 } else {

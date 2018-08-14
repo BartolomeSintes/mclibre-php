@@ -22,19 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 session_start();
 
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Borrar 1', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+    cabecera("Borrar 1", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
 
-    $campo = recogeParaConsulta($db, 'campo', 'apellidos');
+    $campo = recogeParaConsulta($db, "campo", "apellidos");
     $campo = quitaComillasExteriores($campo);
-    $orden = recogeParaConsulta($db, 'orden', 'ASC');
+    $orden = recogeParaConsulta($db, "orden", "ASC");
     $orden = quitaComillasExteriores($orden);
 
     $consulta = "SELECT COUNT(*) FROM $dbAgenda

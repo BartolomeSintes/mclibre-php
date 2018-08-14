@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Añadir 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
+cabecera("Añadir 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
 
-$usuario    = recogeParaConsulta($db, 'usuario');
-$contraseña = recogeParaConsulta($db, 'contraseña');
+$usuario    = recogeParaConsulta($db, "usuario");
+$contraseña = recogeParaConsulta($db, "contraseña");
 
 if ($usuario == "''" || $contraseña == "''") {
     print "    <p>Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";

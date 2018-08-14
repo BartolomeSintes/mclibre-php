@@ -23,48 +23,48 @@
  */
 
 session_start();
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera(_('Buscar').' 1', $_SESSION['multiagendaUsuario']);
+    cabecera(_("Buscar") . " 1", $_SESSION["multiagendaUsuario"]);
 
     $consulta = "SELECT COUNT(*) FROM $dbAgenda
         WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <p>" . _('Error en la consulta') . ".</p>\n";
+        print "    <p>" . _("Error en la consulta") . ".</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "    <p>" . _('No se ha creado todavía ningún registro') . ".</p>\n";
+        print "    <p>" . _("No se ha creado todavía ningún registro") . ".</p>\n";
         print "\n";
     } else {
         print "    <form action=\"buscar-2.php\" method=\"get\">\n";
-        print "      <p>" . _('Escriba el criterio de búsqueda (carácteres o números)') . ":</p>\n";
+        print "      <p>" . _("Escriba el criterio de búsqueda (carácteres o números)") . ":</p>\n";
         print "      <table>\n";
         print "        <tbody>\n";
         print "          <tr>\n";
-        print "            <td>" . _('Nombre') . ":</td>\n";
+        print "            <td>" . _("Nombre") . ":</td>\n";
         print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" id=\"cursor\" /></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
-        print "            <td>" . _('Apellidos') . ":</td>\n";
+        print "            <td>" . _("Apellidos") . ":</td>\n";
         print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" /></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
-        print "            <td>" . _('Teléfono') . ":</td>\n";
+        print "            <td>" . _("Teléfono") . ":</td>\n";
         print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" /></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
-        print "            <td>" . _('Correo') . ":</td>\n";
+        print "            <td>" . _("Correo") . ":</td>\n";
         print "            <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" /></td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"" . _('Buscar') . "\" /></p>\n";
+        print "      <p><input type=\"submit\" value=\"" . _("Buscar") . "\" /></p>\n";
         print "    </form>\n";
         print "\n";
     }

@@ -50,7 +50,7 @@ print "      width=\"" . (60 * $numero + 20) . "px\" height=\"" . (30 * $numero 
     . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
-    $valor =  30 * $numero - 15 * $i;
+    $valor = 30 * $numero - 15 * $i;
     print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hsl(" . round($i * $paso) . ", 75%, 50%)\" />\n";
 }
 $valor = 15 * $numero;

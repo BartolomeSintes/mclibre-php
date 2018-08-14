@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Préstamos - Devolución 2', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera("Préstamos - Devolución 2", CABECERA_SIN_CURSOR, "menuPrestamos");
 
-$id    = recogeParaConsulta($db, 'id');
-$fecha = recogeParaConsulta($db, 'fecha');
+$id    = recogeParaConsulta($db, "id");
+$fecha = recogeParaConsulta($db, "fecha");
 $fechaOk = true;
 
 if (!ctype_digit(substr($fecha, 1, 2)) ||!ctype_digit(substr($fecha, 4, 2))
@@ -60,12 +60,12 @@ if (!$fechaOk) {
             print "\n";
         } else {
             $valor = $result->fetch();
-            if (fechaAmd($fecha)<$valor['prestado']) {
+            if (fechaAmd($fecha) < $valor["prestado"]) {
                 print "    <p>Error: fecha de devolución anterior a la de préstamo.</p>\n";
                 print "\n";
             } else {
                 $consulta = "UPDATE $dbPrestamos
-                    SET devuelto='".fechaAmd($fecha)."'
+                    SET devuelto='" . fechaAmd($fecha) . "'
                     WHERE id='$id'";
                 if ($db->query($consulta)) {
                     print "    <p>Registro modificado correctamente.</p>\n";

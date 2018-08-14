@@ -23,26 +23,26 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-$compraventa = recogeParaConsulta($db, 'compraventa', 'anonimo');
+$compraventa = recogeParaConsulta($db, "compraventa", "anonimo");
 $compraventa = quitaComillasExteriores($compraventa);
-$campo = recogeParaConsulta($db, 'campo', 'articulo');
+$campo = recogeParaConsulta($db, "campo", "articulo");
 $campo = quitaComillasExteriores($campo);
-$orden = recogeParaConsulta($db, 'orden', 'ASC');
+$orden = recogeParaConsulta($db, "orden", "ASC");
 $orden = quitaComillasExteriores($orden);
 
-if ($compraventa == 'venta') {
+if ($compraventa == "venta") {
     $tmp = "AND id_vendedor='$_SESSION[compraventaIdUsuario]'";
-    cabecera('Venta - Mis artículos', 'venta');
-} elseif ($compraventa == 'compra') {
+    cabecera("Venta - Mis artículos", "venta");
+} elseif ($compraventa == "compra") {
     $tmp = "AND id_vendedor<>'$_SESSION[compraventaIdUsuario]'
         AND reservado='false'";
-    cabecera('Compra - Artículos en venta', 'compra');
+    cabecera("Compra - Artículos en venta", "compra");
 } else {
-    $tmp = '';
-    cabecera('Ver artículos', 'menu_principal');
+    $tmp = "";
+    cabecera("Ver artículos", "menu_principal");
 }
 
 $consulta = "SELECT COUNT(*) FROM $dbArticulos

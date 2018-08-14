@@ -53,7 +53,7 @@ function comprueba_pcre($patron, $texto, $objetivo)
     }
 }
 
-$texto = recoge('texto');
+$texto = recoge("texto");
 
 print "  <p>Ha escrito: <strong>\"$texto\"</strong></p>\n";
 print "\n";

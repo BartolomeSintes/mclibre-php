@@ -23,25 +23,25 @@
  */
 
 session_start();
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera(_('Modificar').' 3', $_SESSION['multiagendaUsuario']);
+    cabecera(_("Modificar") . " 3", $_SESSION["multiagendaUsuario"]);
 
-    $nombre    = recogeParaConsulta($db, 'nombre');
-    $apellidos = recogeParaConsulta($db, 'apellidos');
-    $telefono  = recogeParaConsulta($db, 'telefono');
-    $correo    = recogeParaConsulta($db, 'correo');
-    $id        = recogeParaConsulta($db, 'id');
+    $nombre    = recogeParaConsulta($db, "nombre");
+    $apellidos = recogeParaConsulta($db, "apellidos");
+    $telefono  = recogeParaConsulta($db, "telefono");
+    $correo    = recogeParaConsulta($db, "correo");
+    $id        = recogeParaConsulta($db, "id");
 
     if ($id == "''") {
-        print "    <p>" . _('No se ha seleccionado ningún registro') . ".</p>\n";
+        print "    <p>" . _("No se ha seleccionado ningún registro") . ".</p>\n";
         print "\n";
-    } elseif (($nombre == "''") && ($apellidos == "''") && ($telefono == "''") && ($correo == "''")) {
-        print "    <p>" . _('Hay que rellenar al menos uno de los campos. No se ha guardado la modificación') . ".</p>\n";
+    } elseif ($nombre == "''" && $apellidos == "''" && $telefono == "''" && $correo == "''") {
+        print "    <p>" . _("Hay que rellenar al menos uno de los campos. No se ha guardado la modificación") . ".</p>\n";
         print "\n";
     } else {
 // La consulta cuenta los registros con un id diferente porque MySQL no distingue
@@ -56,10 +56,10 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             AND id<>$id";
         $result = $db->query($consulta);
         if (!$result) {
-            print "    <p>" . _('Error en la consulta') . ".</p>\n";
+            print "    <p>" . _("Error en la consulta") . ".</p>\n";
             print "\n";
         } elseif ($result->fetchColumn()>0) {
-            print "    <p>" . _('Ya existe un registro con esos mismos valores. No se ha guardado la modificación') . ".</p>\n";
+            print "    <p>" . _("Ya existe un registro con esos mismos valores. No se ha guardado la modificación") . ".</p>\n";
             print "\n";
         } else {
             $consulta = "UPDATE $dbAgenda
@@ -68,10 +68,10 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
                 WHERE id_usuario='$_SESSION[multiagendaIdUsuario]'
                 AND id=$id";
             if ($db->query($consulta)) {
-                print "    <p>" . _('Registro modificado correctamente') . ".</p>\n";
+                print "    <p>" . _("Registro modificado correctamente") . ".</p>\n";
                 print "\n";
             } else {
-                print "    <p>" . _('Error al modificar el registro') . ".</p>\n";
+                print "    <p>" . _("Error al modificar el registro") . ".</p>\n";
                 print "\n";
             }
         }

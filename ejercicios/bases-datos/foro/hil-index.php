@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-$hilo = recogeParaConsulta($db, 'hilo');
+$hilo = recogeParaConsulta($db, "hilo");
 
-cabecera("Discusiones", CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
+cabecera("Discusiones", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones WHERE id=$hilo";
 $result = $db->query($consulta);
@@ -50,7 +50,7 @@ if (!$result) {
         print "      <h2>$valor[titulo]</h2>\n";
         print "\n";
         print "      <p class=\"dis_aut\">Propuesta por <strong>$valor[autor]</strong> el "
-            . fechaDma($valor['fecha']) . ".</p>\n";
+            . fechaDma($valor["fecha"]) . ".</p>\n";
         print "\n";
         print "      <p>$valor[descripcion]</p>\n";
         print "\n";
@@ -72,7 +72,7 @@ if (!$result) {
                 } else {
                     foreach ($result as $valor) {
                         print "      <p class=\"int_aut\"><strong>$valor[autor]</strong> "
-                            . "ha dicho el " . fechaDma($valor['fecha'])
+                            . "ha dicho el " . fechaDma($valor["fecha"])
                             . ":</p>\n";
                         print "\n";
                         print "      <p>$valor[intervencion]</p>\n";

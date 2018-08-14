@@ -22,16 +22,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Añadir 2', CABECERA_SIN_CURSOR);
+cabecera("Añadir 2", CABECERA_SIN_CURSOR);
 
-$nombre    = recogeParaConsulta($db, 'nombre');
-$apellidos = recogeParaConsulta($db, 'apellidos');
-$telefono  = recogeParaConsulta($db, 'telefono');
-$correo    = recogeParaConsulta($db, 'correo');
+$nombre    = recogeParaConsulta($db, "nombre");
+$apellidos = recogeParaConsulta($db, "apellidos");
+$telefono  = recogeParaConsulta($db, "telefono");
+$correo    = recogeParaConsulta($db, "correo");
 
-if (($nombre == "''") && ($apellidos == "''") && ($telefono == "''") && ($correo == "''")) {
+if ($nombre == "''" && $apellidos == "''" && $telefono == "''" && $correo == "''") {
     print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
 } else {

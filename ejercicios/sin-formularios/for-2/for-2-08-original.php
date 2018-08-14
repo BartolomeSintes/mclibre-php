@@ -51,7 +51,7 @@ print "      width=\"" . ($radio * $numero * 2 + 20) . "px\" height=\"" . ($radi
     . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
-    $valor =  $radio * ($numero - $i);
+    $valor = $radio * ($numero - $i);
     print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hsl(" . $i * $paso . ", 75%, 50%)\" />\n";
 }
 

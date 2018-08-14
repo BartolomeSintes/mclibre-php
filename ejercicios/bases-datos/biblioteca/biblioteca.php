@@ -22,48 +22,48 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    true);   // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    false);  // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
-define ('MYSQL', 'MySQL');
-define ('SQLITE', 'SQLite');
+define("CABECERA_CON_CURSOR",    true);   // Para función cabecera()
+define("CABECERA_SIN_CURSOR",    false);  // Para función cabecera()
+define("FORM_METHOD",            "get");  // Formularios se envían con GET
+//define("FORM_METHOD",            "post"); // Formularios se envían con POST
+define ("MYSQL", "MySQL");
+define ("SQLITE", "SQLite");
 $dbMotor = SQLITE;                        // Base de datos empleada
 if ($dbMotor == MYSQL) {
-    define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');      // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');         // Contraseña de usuario de MySQL
-    $dbDb        = 'mclibre_biblioteca';  // Nombre de la base de datos
-    $dbObras     = $dbDb . '.obras';        // Nombre de la tabla Obras
-    $dbUsuarios  = $dbDb . '.usuarios';     // Nombre de la tabla Ususarios
-    $dbPrestamos = $dbDb . '.prestamos';    // Nombre de la tabla de Préstamos
+    define("MYSQL_HOST", "mysql:host=localhost"); // Nombre de host MYSQL
+    define("MYSQL_USUARIO", "root");      // Nombre de usuario de MySQL
+    define("MYSQL_PASSWORD", "");         // Contraseña de usuario de MySQL
+    $dbDb        = "mclibre_biblioteca";  // Nombre de la base de datos
+    $dbObras     = $dbDb . ".obras";        // Nombre de la tabla Obras
+    $dbUsuarios  = $dbDb . ".usuarios";     // Nombre de la tabla Ususarios
+    $dbPrestamos = $dbDb . ".prestamos";    // Nombre de la tabla de Préstamos
 } elseif ($dbMotor == SQLITE) {
-    $dbDb        = '/home/barto/mclibre/tmp/mclibre/mclibre_biblioteca.sqlite';  // Nombre de la base de datos
-    $dbObras     = 'obras';               // Nombre de la tabla Obras
-    $dbUsuarios  = 'usuarios';            // Nombre de la tabla Ususarios
-    $dbPrestamos = 'prestamos';           // Nombre de la tabla de Préstamos
+    $dbDb        = "/home/barto/mclibre/tmp/mclibre/mclibre_biblioteca.sqlite";  // Nombre de la base de datos
+    $dbObras     = "obras";               // Nombre de la tabla Obras
+    $dbUsuarios  = "usuarios";            // Nombre de la tabla Ususarios
+    $dbPrestamos = "prestamos";           // Nombre de la tabla de Préstamos
 }
 
-define('ZONA_HORARIA',      'Europe/Madrid');  // Zona horaria del servidor
-define('TAM_TITULO',        50);  // Tamaño del campo Obras > Título
-define('TAM_AUTOR',         50);  // Tamaño del campo Obras > Autor
-define('TAM_EDITORIAL',     50);  // Tamaño del campo Obras > Editorial
-define('TAM_NOMBRE',        50);  // Tamaño del campo Usuarios > Nombre
-define('TAM_APELLIDOS',     50);  // Tamaño del campo Usuarios > Apellidos
-define('TAM_DNI',           10);  // Tamaño del campo Usuarios > DNI
-define('TAM_FECHA',         10);  // Tamaño del campo Préstamo > Fecha
-define('MAX_REG_OBRAS',     20);  // Número máximo de registros en la tabla Obras
-define('MAX_REG_USUARIOS',  20);  // Número máximo de registros en la tabla Usuarios
-define('MAX_REG_PRESTAMOS', 20);  // Número máximo de registros en la tabla Préstamos
+define("ZONA_HORARIA",      "Europe/Madrid");  // Zona horaria del servidor
+define("TAM_TITULO",        50);  // Tamaño del campo Obras > Título
+define("TAM_AUTOR",         50);  // Tamaño del campo Obras > Autor
+define("TAM_EDITORIAL",     50);  // Tamaño del campo Obras > Editorial
+define("TAM_NOMBRE",        50);  // Tamaño del campo Usuarios > Nombre
+define("TAM_APELLIDOS",     50);  // Tamaño del campo Usuarios > Apellidos
+define("TAM_DNI",           10);  // Tamaño del campo Usuarios > DNI
+define("TAM_FECHA",         10);  // Tamaño del campo Préstamo > Fecha
+define("MAX_REG_OBRAS",     20);  // Número máximo de registros en la tabla Obras
+define("MAX_REG_USUARIOS",  20);  // Número máximo de registros en la tabla Usuarios
+define("MAX_REG_PRESTAMOS", 20);  // Número máximo de registros en la tabla Préstamos
 
 $recorta = [
-    'titulo'    => TAM_TITULO,
-    'autor'     => TAM_AUTOR,
-    'editorial' => TAM_EDITORIAL,
-    'nombre'    => TAM_NOMBRE,
-    'apellidos' => TAM_APELLIDOS,
-    'dni'       => TAM_DNI,
-    'fecha'     => TAM_FECHA
+    "titulo"    => TAM_TITULO,
+    "autor"     => TAM_AUTOR,
+    "editorial" => TAM_EDITORIAL,
+    "nombre"    => TAM_NOMBRE,
+    "apellidos" => TAM_APELLIDOS,
+    "dni"       => TAM_DNI,
+    "fecha"     => TAM_FECHA
 ];
 
 function conectaDb()
@@ -75,11 +75,11 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave', false);
+        cabecera("Error grave", false);
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
 //        print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -97,15 +97,15 @@ function recorta($campo, $cadena)
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='')
+function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var] != "")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
     }
-    $tmp = str_replace('&', '&amp;',  $tmp);
-    $tmp = str_replace('"', '&quot;', $tmp);
+    $tmp = str_replace("&", "&amp;",  $tmp);
+    $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
@@ -122,8 +122,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -134,8 +134,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -171,7 +171,7 @@ function fechaAmd($dma)
     return substr($dma, 7, 4)."-".substr($dma, 4, 2)."-".substr($dma, 1, 2);
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
+function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal")
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
@@ -193,7 +193,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
     print "\n";
     print "  <div id=\"menu\">\n";
     print "    <ul>\n";
-    if ($menu == 'menuObras') {
+    if ($menu == "menuObras") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"obr-insertar-1.php\">Añadir</a></li>\n";
         print "      <li><a href=\"obr-listar.php\">Listar</a></li>\n";
@@ -201,7 +201,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
         print "      <li><a href=\"obr-modificar-1.php\">Modificar</a></li>\n";
         print "      <li><a href=\"obr-borrar-1.php\">Borrar</a></li>\n";
         print "      <li><a href=\"obr-borrar-todo-1.php\">Borrar todo</a></li>\n";
-    } elseif ($menu == 'menuUsuarios') {
+    } elseif ($menu == "menuUsuarios") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"usu-insertar-1.php\">Añadir</a></li>\n";
         print "      <li><a href=\"usu-listar.php\">Listar</a></li>\n";
@@ -209,7 +209,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu='menuPrincipal')
         print "      <li><a href=\"usu-modificar-1.php\">Modificar</a></li>\n";
         print "      <li><a href=\"usu-borrar-1.php\">Borrar</a></li>\n";
         print "      <li><a href=\"usu-borrar-todo-1.php\">Borrar todo</a></li>\n";
-    } elseif ($menu == 'menuPrestamos') {
+    } elseif ($menu == "menuPrestamos") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"pre-insertar-1.php\">Préstamo</a></li>\n";
         print "      <li><a href=\"pre-devolucion-1.php\">Devolución</a></li>\n";

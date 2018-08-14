@@ -45,7 +45,7 @@ function recoge($var)
 }
 // print "  <pre>"; print_r(get_defined_functions()); print "</pre>"; print "\n";
 
-$dato = recoge('dato');
+$dato = recoge("dato");
 
 if (!isset($_REQUEST["dato"])) {
     print "  <p>Por favor, utilice el formulario.</p>\n";

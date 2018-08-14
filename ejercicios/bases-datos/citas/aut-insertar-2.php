@@ -23,25 +23,25 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Autores - Añadir 2', 'menu_autores');
+    cabecera("Autores - Añadir 2", "menu_autores");
 
-    $nombre = recogeParaConsulta($db, 'nombre');
+    $nombre = recogeParaConsulta($db, "nombre");
     $nombre = quitaComillasExteriores($nombre);
     $nombre = strtolower($nombre);
     $tmpNombre = [];
-    $tmpNombre = explode(' ', $nombre);
+    $tmpNombre = explode(" ", $nombre);
     foreach ($tmpNombre as $indice => $valor) {
         $tmpNombre[$indice] = ucfirst($tmpNombre[$indice]);
     }
-    $nombre = implode(' ', $tmpNombre);
+    $nombre = implode(" ", $tmpNombre);
 
-    $apellidos = recogeParaConsulta($db, 'apellidos');
+    $apellidos = recogeParaConsulta($db, "apellidos");
     $apellidos = quitaComillasExteriores($apellidos);
     $apellidos = strtolower($apellidos);
     $tmpApellidos = [];
@@ -49,9 +49,9 @@ if (!isset($_SESSION['citasUsuario'])) {
     foreach ($tmpApellidos as $indice => $valor) {
         $tmpApellidos[$indice] = ucfirst($tmpApellidos[$indice]);
     }
-    $apellidos = implode(' ', $tmpApellidos);
+    $apellidos = implode(" ", $tmpApellidos);
 
-    if (($nombre == "''") && ($apellidos == '')) {
+    if ($nombre == "''" && $apellidos == '') {
         print "    <p>El nombre y apellidos del autor no puede estar vacía. No se ha guardado el registro.</p>\n";
         print "\n";
     } else {

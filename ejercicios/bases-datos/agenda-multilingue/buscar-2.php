@@ -23,25 +23,25 @@
  */
 
 session_start();
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera(_('Buscar').' 2', $_SESSION['multiagendaUsuario']);
+    cabecera(_("Buscar") . " 2", $_SESSION["multiagendaUsuario"]);
 
-    $campo     = recogeParaConsulta($db, 'campo', 'apellidos');
+    $campo     = recogeParaConsulta($db, "campo", "apellidos");
     $campo     = quitaComillasExteriores($campo);
-    $orden     = recogeParaConsulta($db, 'orden', 'ASC');
+    $orden     = recogeParaConsulta($db, "orden", "ASC");
     $orden     = quitaComillasExteriores($orden);
-    $nombre    = recogeParaConsulta($db, 'nombre');
+    $nombre    = recogeParaConsulta($db, "nombre");
     $nombre    = quitaComillasExteriores($nombre);
-    $apellidos = recogeParaConsulta($db, 'apellidos');
+    $apellidos = recogeParaConsulta($db, "apellidos");
     $apellidos = quitaComillasExteriores($apellidos);
-    $telefono  = recogeParaConsulta($db, 'telefono');
+    $telefono  = recogeParaConsulta($db, "telefono");
     $telefono  = quitaComillasExteriores($telefono);
-    $correo    = recogeParaConsulta($db, 'correo');
+    $correo    = recogeParaConsulta($db, "correo");
     $correo    = quitaComillasExteriores($correo);
 
     $consulta = "SELECT COUNT(*) FROM $dbAgenda
@@ -52,10 +52,10 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
         AND correo LIKE '%$correo%'";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <p>" . _('Error en la consulta') . ".</p>\n";
+        print "    <p>" . _("Error en la consulta") . ".</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "    <p>" . _('No se han encontrado registros') . ".</p>\n";
+        print "    <p>" . _("No se han encontrado registros") . ".</p>\n";
         print "\n";
     } else {
         $consulta = "SELECT * FROM $dbAgenda
@@ -67,41 +67,41 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             ORDER BY $campo $orden";
         $result = $db->query($consulta);
         if (!$result) {
-            print "    <p>" . _('Error en la consulta') . ".</p>\n";
+            print "    <p>" . _("Error en la consulta") . ".</p>\n";
             print "\n";
         } else {
             $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;"
                 . "telefono=$telefono&amp;correo=$correo&amp;campo";
-            print "    <p>" . _('Registros encontrados') . ":</p>\n";
+            print "    <p>" . _("Registros encontrados") . ":</p>\n";
             print "\n";
             print "    <table border=\"1\">\n";
             print "      <thead>\n";
             print "        <tr class=\"neg\">\n";
             print "          <th>\n";
             print "            <a href=\"buscar-2.php?$datos=nombre&amp;orden=ASC\">"
-                . "            <img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
-            print _('Nombre') . "\n";
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            print "            " . _("Nombre") . "\n";
             print "            <a href=\"buscar-2.php?$datos=nombre&amp;orden=DESC\">"
                 . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
             print "          </th>\n";
             print "          <th>\n";
             print "            <a href=\"buscar-2.php?$datos=apellidos&amp;orden=ASC\">"
                 . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
-            print _('Apellidos') . "\n";
+            print "            " . _("Apellidos") . "\n";
             print "            <a href=\"buscar-2.php?$datos=apellidos&amp;orden=DESC\">"
                 . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
             print "          </th>\n";
             print "          <th>\n";
             print "            <a href=\"buscar-2.php?$datos=telefono&amp;orden=ASC\">"
                 . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
-            print _('Teléfono') . "\n";
+            print "            " . _("Teléfono") . "\n";
             print "            <a href=\"buscar-2.php?$datos=telefono&amp;orden=DESC\">"
                 . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
             print "          </th>\n";
             print "          <th>\n";
             print "            <a href=\"buscar-2.php?$datos=correo&amp;orden=ASC\">"
                 . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
-            print _('Correo') . "\n";
+            print "            " . _("Correo") . "\n";
             print "            <a href=\"buscar-2.php?$datos=correo&amp;orden=DESC\">"
                 . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
             print "          </th>\n";

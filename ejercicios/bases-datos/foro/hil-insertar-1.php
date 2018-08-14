@@ -22,20 +22,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-$hilo = recogeParaConsulta($db, 'hilo');
+$hilo = recogeParaConsulta($db, "hilo");
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones
     WHERE id=$hilo";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
+    cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
+    cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
     print "    <p>La discusión solicitada no existe.</p>\n";
     print "\n";
 } else {
@@ -43,17 +43,17 @@ if (!$result) {
         WHERE id_discusion=$hilo";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
+        cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() >= MAX_REG_INTERVENCIONES) {
-        cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_SIN_CURSOR, 'menuHilos', $hilo);
+        cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
         print "    <p>Se ha alcanzado el número máximo de intervenciones que se pueden guardar.</p>\n";
         print "\n";
         print "    <p>Por favor, borre alguna intervención antes.</p>\n";
         print "\n";
     } else {
-        cabecera ('Discusiones - Intervenir en discusión 1', CABECERA_CON_CURSOR, 'menuHilos', $hilo);
+        cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_CON_CURSOR, "menuHilos", $hilo);
         print "    <form action=\"hil-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <table>\n";
         print "        <tbody>\n";

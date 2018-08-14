@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 
 function borraTodoMySQL($db)
 {
@@ -85,12 +85,12 @@ function borraTodoSqlite($db)
     }
 }
 
-if (!isset($_REQUEST['si'])) {
-    header('Location:index.php');
+if (!isset($_REQUEST["si"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Borrar todo 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
+    cabecera("Borrar todo 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

@@ -101,32 +101,32 @@ function pie($conEnlace, $conBotones, $numeroValores)
 }
 
 // Recoge el número de datos y lo valida, aumenta o reduce
-define('FORM_METHOD', 'get');
-define('TAM_VALOR',   5);
-define('NUM_VALORES_INICIAL', 4);
-define('NUM_VALORES_MINIMO',  2);
-define('NUM_VALORES_MAXIMO',  10);
-define('CON_ENLACE',  true);
-define('SIN_ENLACE',  false);
-define('CON_BOTONES', true);
-define('SIN_BOTONES', false);
+define("FORM_METHOD", "get");
+define("TAM_VALOR",   5);
+define("NUM_VALORES_INICIAL", 4);
+define("NUM_VALORES_MINIMO",  2);
+define("NUM_VALORES_MAXIMO",  10);
+define("CON_ENLACE",  true);
+define("SIN_ENLACE",  false);
+define("CON_BOTONES", true);
+define("SIN_BOTONES", false);
 
-$valores       = recogeMatriz('valores');
+$valores       = recogeMatriz("valores");
 
-$numeroValores = recoge('numeroValores');
+$numeroValores = recoge("numeroValores");
 if ($numeroValores<NUM_VALORES_MINIMO) {
     $numeroValores = NUM_VALORES_MINIMO;
 } elseif ($numeroValores>NUM_VALORES_MAXIMO) {
     $numeroValores = NUM_VALORES_MAXIMO;
 }
-if (isset($_REQUEST['anyadir']) && ($numeroValores<NUM_VALORES_MAXIMO)) {
+if (isset($_REQUEST["anyadir"]) && ($numeroValores<NUM_VALORES_MAXIMO)) {
     $numeroValores++;
     $valores[$numeroValores] = "";  // Al añdir se crea un nuevo valor vacío
-} elseif (isset($_REQUEST['quitar']) && ($numeroValores>NUM_VALORES_MINIMO)) {
+} elseif (isset($_REQUEST["quitar"]) && ($numeroValores>NUM_VALORES_MINIMO)) {
     $numeroValores--;
 }
 
-$valoresOK     = [];
+$valoresOk     = [];
 $valoresTodoOk = true;
 for ($i=1; $i<=$numeroValores; $i++) {
     $valoresOk[$i] = true;
@@ -157,8 +157,8 @@ if ($valoresTodoOk) {
         print "\n";
     }
     pie(CON_ENLACE, SIN_BOTONES, $numeroValores);
-} elseif (!$valoresTodoVacio&&(isset($_REQUEST['enviar'])||
-        isset($_REQUEST['anyadir'])||isset($_REQUEST['quitar']))) {
+} elseif (!$valoresTodoVacio&&(isset($_REQUEST["enviar"])||
+        isset($_REQUEST["anyadir"])||isset($_REQUEST["quitar"]))) {
     cabecera("Resultado inválido");
     print"  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
     print "\n";

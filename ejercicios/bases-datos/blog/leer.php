@@ -22,13 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-$fecha = recogeFecha($db, 'fecha');
+$fecha = recogeFecha($db, "fecha");
 
-cabecera('Leer', CABECERA_SIN_CURSOR, $fecha);
-calendario($fecha, 'leer');
+cabecera("Leer", CABECERA_SIN_CURSOR, $fecha);
+calendario($fecha, "leer");
 
 $consulta = "SELECT COUNT(*) FROM $dbEntradas
     WHERE fecha='$fecha'";
@@ -46,7 +46,7 @@ if (!$result) {
             WHERE fecha='$fecha'";
         $result = $db->query($consulta);
         $valor = $result->fetch();
-            print $valor['entrada'];
+        print $valor["entrada"];
     } else {
         print "Todavía no se ha escrito la entrada de este día.";
     }

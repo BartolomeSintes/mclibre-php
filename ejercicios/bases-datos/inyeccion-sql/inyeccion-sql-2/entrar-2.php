@@ -34,7 +34,7 @@ cabecera("Entrar 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
 // Esta función permite los ataques de inyección SQL que inyectan varias
 // consultas en una. Normalmente pdo no ejecuta más que la primera consulta
 function pdo_query_multi($db, $query) {
-    $pattern = '/^(.*;)(.*;)/s';
+    $pattern = "/^(.*;)(.*;)/s";
     if (preg_match($pattern,$query,$match)) {
         $result = $db->query($match[1]);
         // Hacemos fetchAll() porque si no la segunda consulta da error

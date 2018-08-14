@@ -23,15 +23,15 @@
  */
 
 session_start();
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Autores - Borrar 2', 'menu_autores');
+    cabecera("Autores - Borrar 2", "menu_autores");
 
-    $id = recogeMatrizParaConsulta($db, 'id');
+    $id = recogeMatrizParaConsulta($db, "id");
     // FALTA VALIDAR LA MATRIZ
     foreach ($id as $indice => $valor) {
         // Primero borra en la tabla Autores

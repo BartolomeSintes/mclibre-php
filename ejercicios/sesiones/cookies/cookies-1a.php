@@ -31,16 +31,16 @@ function recoge($var)
     return $tmp;
 }
 
-$color  = recoge('color');
+$color  = recoge("color");
 // Si se envía un color se crea la cookie
-if (($color == 'rojo') || ($color == 'azul') || ($color == 'verde')) {
-    setcookie('cookieColor', $color);
+if ($color == "rojo" || $color == "azul" || $color == "verde") {
+    setcookie("cookieColor", $color);
 // Si se envía el color ninguno se destruye la cookie
-} elseif ($color == 'ninguno') {
+} elseif ($color == "ninguno") {
     setcookie ("cookieColor", "", time() - 3600);
 // Si no se envía ningún color se mira si hay cookie con un color
-} elseif (isset($_COOKIE['cookieColor'])) {
-    $color = $_COOKIE['cookieColor'];
+} elseif (isset($_COOKIE["cookieColor"])) {
+    $color = $_COOKIE["cookieColor"];
 }
 
 print "<!DOCTYPE html>\n";

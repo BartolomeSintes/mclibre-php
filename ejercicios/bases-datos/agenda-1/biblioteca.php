@@ -22,35 +22,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('CABECERA_CON_CURSOR',    true);   // Para función cabecera()
-define('CABECERA_SIN_CURSOR',    false);  // Para función cabecera()
-define('FORM_METHOD',            'get');  // Formularios se envían con GET
-//define('FORM_METHOD',            'post'); // Formularios se envían con POST
-define('MYSQL',          'MySQL');
-define('SQLITE',         'SQLite');
-define('TAM_NOMBRE',     40);  // Tamaño del campo Nombre
-define('TAM_APELLIDOS',  60);  // Tamaño del campo Apellidos
-define('TAM_TELEFONO',   10);  // Tamaño del campo Teléfono
-define('TAM_CORREO',     50);  // Tamaño del campo Correo
-define('MAX_REG_AGENDA', 20);  // Número máximo de registros en la tabla Agenda
+define("CABECERA_CON_CURSOR",    true);   // Para función cabecera()
+define("CABECERA_SIN_CURSOR",    false);  // Para función cabecera()
+define("FORM_METHOD",            "get");  // Formularios se envían con GET
+//define("FORM_METHOD",            "post"); // Formularios se envían con POST
+define("MYSQL",          "MySQL");
+define("SQLITE",         "SQLite");
+define("TAM_NOMBRE",     40);  // Tamaño del campo Nombre
+define("TAM_APELLIDOS",  60);  // Tamaño del campo Apellidos
+define("TAM_TELEFONO",   10);  // Tamaño del campo Teléfono
+define("TAM_CORREO",     50);  // Tamaño del campo Correo
+define("MAX_REG_AGENDA", 20);  // Número máximo de registros en la tabla Agenda
 
 $dbMotor = SQLITE;                    // Base de datos empleada
 if ($dbMotor == MYSQL) {
-    define('MYSQL_HOST',     'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO',  'root');  // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');     // Contraseña de usuario de MySQL
-    $dbDb     = 'mclibre_agenda';     // Nombre de la base de datos
-    $dbAgenda = $dbDb . '.agenda';      // Nombre de la tabla
+    define("MYSQL_HOST",     "mysql:host=localhost"); // Nombre de host MYSQL
+    define("MYSQL_USUARIO",  "root");  // Nombre de usuario de MySQL
+    define("MYSQL_PASSWORD", "");     // Contraseña de usuario de MySQL
+    $dbDb     = "mclibre_agenda";     // Nombre de la base de datos
+    $dbAgenda = $dbDb . ".agenda";      // Nombre de la tabla
 } elseif ($dbMotor == SQLITE) {
-    $dbDb     = '/home/barto/mclibre/tmp/mclibre/mclibre_agenda.sqlite';  // Nombre de la base de datos
-    $dbAgenda = 'agenda';             // Nombre de la tabla
+    $dbDb     = "/home/barto/mclibre/tmp/mclibre/mclibre_agenda.sqlite";  // Nombre de la base de datos
+    $dbAgenda = "agenda";             // Nombre de la tabla
 }
 
 $recorta = [
-    'nombre'    => TAM_NOMBRE,
-    'apellidos' => TAM_APELLIDOS,
-    'telefono'  => TAM_TELEFONO,
-    'correo'    => TAM_CORREO
+    "nombre"    => TAM_NOMBRE,
+    "apellidos" => TAM_APELLIDOS,
+    "telefono"  => TAM_TELEFONO,
+    "correo"    => TAM_CORREO
 ];
 
 function conectaDb()
@@ -62,11 +62,11 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave', CABECERA_SIN_CURSOR);
+        cabecera("Error grave", CABECERA_SIN_CURSOR);
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
         print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -84,15 +84,15 @@ function recorta($campo, $cadena)
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='')
+function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!="")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
     }
-    $tmp = str_replace('&', '&amp;',  $tmp);
-    $tmp = str_replace('"', '&quot;', $tmp);
+    $tmp = str_replace("&", "&amp;",  $tmp);
+    $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
@@ -109,8 +109,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -121,8 +121,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);

@@ -23,15 +23,15 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 
-if (!isset($_SESSION['citasUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"])) {
+    header("Location:index.php");
     exit();
-} elseif ($_SESSION['citasUsuario']==$administradorNombre) {
-    cabecera('', $_SESSION['citasUsuario']);
+} elseif ($_SESSION["citasUsuario"] == $administradorNombre) {
+    cabecera("", $_SESSION["citasUsuario"]);
 } else {
-    cabecera('Etiquetas', 'menu_etiquetas');
+    cabecera("Etiquetas", "menu_etiquetas");
 }
 
 pie();

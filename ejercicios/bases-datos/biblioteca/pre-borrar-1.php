@@ -22,13 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Préstamos - Borrar 1', CABECERA_SIN_CURSOR, 'menuPrestamos');
+cabecera("Préstamos - Borrar 1", CABECERA_SIN_CURSOR, "menuPrestamos");
 
-$campo = recogeParaConsulta($db, 'campo', 'apellidos');
+$campo = recogeParaConsulta($db, "campo", "apellidos");
 $campo = quitaComillasExteriores($campo);
-$orden = recogeParaConsulta($db, 'orden', 'ASC');
+$orden = recogeParaConsulta($db, "orden", "ASC");
 $orden = quitaComillasExteriores($orden);
 
 $consulta = "SELECT COUNT(*) FROM $dbPrestamos";
@@ -102,10 +102,10 @@ if (!$result) {
                 . "name=\"id[$valor[id]]\" /></td>\n";
             print "            <td>$valor[apellidos], $valor[nombre]</td>\n";
             print "            <td>$valor[titulo]</td>\n";
-            print "            <td>".fechaDma($valor['prestado'])."</td>\n";
+            print "            <td>" . fechaDma($valor["prestado"]) . "</td>\n";
             print "            <td>";
-            if ($valor['devuelto']!='0000-00-00') {
-                print fechaDma($valor['devuelto']);
+            if ($valor["devuelto"] != "0000-00-00") {
+                print fechaDma($valor["devuelto"]);
             }
             print "</td>\n";
             print "          </tr>\n";

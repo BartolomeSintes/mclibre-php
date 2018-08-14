@@ -23,17 +23,17 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 
-if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario'] != $administradorNombre)) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] != $administradorNombre)) {
+    header("Location:index.php");
     exit();
-} elseif (!isset($_REQUEST['si'])) {
-    header('Location:index.php');
+} elseif (!isset($_REQUEST["si"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera(_('Borrar todo').' 2', $_SESSION['multiagendaUsuario']);
+    cabecera(_("Borrar todo") . " 2", $_SESSION["multiagendaUsuario"]);
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

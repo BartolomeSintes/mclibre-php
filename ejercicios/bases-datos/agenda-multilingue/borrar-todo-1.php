@@ -23,20 +23,20 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 
-if (!isset($_SESSION['multiagendaUsuario']) || ($_SESSION['multiagendaUsuario'] != $administradorNombre)) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] != $administradorNombre)) {
+    header("Location:index.php");
     exit();
 } else {
-    cabecera(_('Borrar todo').' 1', $_SESSION['multiagendaUsuario']);
+    cabecera(_("Borrar todo") . " 1", $_SESSION["multiagendaUsuario"]);
 
     print "    <form action=\"borrar-todo-2.php\" method=\"get\">\n";
-    print "      <p>" . _('¿Está seguro?') . "</p>\n";
+    print "      <p>" . _("¿Está seguro?") . "</p>\n";
     print "\n";
     print "      <p>\n";
-    print "        <input type=\"submit\" value=\"" . _('Sí') . "\" name=\"si\" />\n";
-    print "        <input type=\"submit\" value=\"" . _('No') . "\" name=\"no\" />\n";
+    print "        <input type=\"submit\" value=\"" . _("Sí") . "\" name=\"si\" />\n";
+    print "        <input type=\"submit\" value=\"" . _("No") . "\" name=\"no\" />\n";
     print "      </p>\n";
     print "    </form>\n";
     print "\n";

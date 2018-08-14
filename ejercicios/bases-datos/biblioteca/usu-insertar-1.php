@@ -22,23 +22,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
 $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Usuarios - Añadir 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
+    cabecera("Usuarios - Añadir 1", CABECERA_SIN_CURSOR, "menuUsuarios");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
-    cabecera('Usuarios - Añadir 1', CABECERA_SIN_CURSOR, 'menuUsuarios');
+    cabecera("Usuarios - Añadir 1", CABECERA_SIN_CURSOR, "menuUsuarios");
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
     print "\n";
 } else {
-    cabecera('Usuarios - Añadir 1', CABECERA_CON_CURSOR, 'menuUsuarios');
+    cabecera("Usuarios - Añadir 1", CABECERA_CON_CURSOR, "menuUsuarios");
     print "    <form action=\"usu-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";

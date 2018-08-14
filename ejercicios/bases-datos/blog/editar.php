@@ -22,22 +22,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
-$fecha = recogeFecha($db, 'fecha');
+$fecha = recogeFecha($db, "fecha");
 
 $consulta = "SELECT COUNT(*) FROM $dbEntradas";
 
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Editar', CABECERA_SIN_CURSOR, $fecha);
-    calendario($fecha, 'editar');
+    cabecera("Editar", CABECERA_SIN_CURSOR, $fecha);
+    calendario($fecha, "editar");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_ENTRADAS) {
-    cabecera('Editar', CABECERA_SIN_CURSOR, $fecha);
-    calendario($fecha, 'editar');
+    cabecera("Editar", CABECERA_SIN_CURSOR, $fecha);
+    calendario($fecha, "editar");
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
@@ -47,14 +47,14 @@ if (!$result) {
         WHERE fecha='$fecha'";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Editar', CABECERA_SIN_CURSOR, $fecha);
-        calendario($fecha, 'editar');
+        cabecera("Editar", CABECERA_SIN_CURSOR, $fecha);
+        calendario($fecha, "editar");
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } else {
         $valor = $result->fetch();
-        cabecera('Editar', CABECERA_CON_CURSOR, $fecha);
-        calendario($fecha, 'editar');
+        cabecera("Editar", CABECERA_CON_CURSOR, $fecha);
+        calendario($fecha, "editar");
         print "    <div class=\"entrada\">\n";
         print "      <h2>$fecha</h2>\n";
         print "\n";

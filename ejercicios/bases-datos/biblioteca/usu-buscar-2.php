@@ -22,19 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Usuarios - Buscar 2', CABECERA_SIN_CURSOR, 'menuUsuarios');
+cabecera("Usuarios - Buscar 2", CABECERA_SIN_CURSOR, "menuUsuarios");
 
-$campo     = recogeParaConsulta($db, 'campo', 'apellidos');
+$campo     = recogeParaConsulta($db, "campo", "apellidos");
 $campo     = quitaComillasExteriores($campo);
-$orden     = recogeParaConsulta($db, 'orden', 'ASC');
+$orden     = recogeParaConsulta($db, "orden", "ASC");
 $orden     = quitaComillasExteriores($orden);
-$nombre    = recogeParaConsulta($db, 'nombre');
+$nombre    = recogeParaConsulta($db, "nombre");
 $nombre    = quitaComillasExteriores($nombre);
-$apellidos = recogeParaConsulta($db, 'apellidos');
+$apellidos = recogeParaConsulta($db, "apellidos");
 $apellidos = quitaComillasExteriores($apellidos);
-$dni       = recogeParaConsulta($db, 'dni');
+$dni       = recogeParaConsulta($db, "dni");
 $dni       = quitaComillasExteriores($dni);
 
 $consulta = "SELECT COUNT(*) FROM $dbUsuarios

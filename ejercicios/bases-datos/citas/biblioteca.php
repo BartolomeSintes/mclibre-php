@@ -22,35 +22,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define ('MYSQL', 'MySQL');
-define ('SQLITE', 'SQLite');
+define ("MYSQL", "MySQL");
+define ("SQLITE", "SQLite");
 $dbMotor = SQLITE;                         // Base de datos empleada
 if ($dbMotor == MYSQL) {
     // NO HE PROBADO EL PROGRAMA CON MYSQL
-    define('MYSQL_HOST', 'mysql:host=localhost'); // Nombre de host MYSQL
-    define('MYSQL_USUARIO', 'root');       // Nombre de usuario de MySQL
-    define('MYSQL_PASSWORD', '');          // Contraseña de usuario de MySQL
-    $dbDb        = 'mclibre_etiquetas';    // Nombre de la base de datos
-    $dbUsuarios  = $dbDb . '.usuarios';      // Nombre de la tabla de Usuarios
-    $dbEtiquetas = $dbDb . '.etiquetas';     // Nombre de la tabla de Etiquetas
-    $dbElegidas  = $dbDb . '.elegidas';      // Nombre de la tabla de etiquetas elegidas
+    define("MYSQL_HOST", "mysql:host=localhost"); // Nombre de host MYSQL
+    define("MYSQL_USUARIO", "root");       // Nombre de usuario de MySQL
+    define("MYSQL_PASSWORD", "");          // Contraseña de usuario de MySQL
+    $dbDb        = "mclibre_etiquetas";    // Nombre de la base de datos
+    $dbUsuarios  = $dbDb . ".usuarios";      // Nombre de la tabla de Usuarios
+    $dbEtiquetas = $dbDb . ".etiquetas";     // Nombre de la tabla de Etiquetas
+    $dbElegidas  = $dbDb . ".elegidas";      // Nombre de la tabla de etiquetas elegidas
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
 } elseif ($dbMotor == SQLITE) {
-    $dbDb        = '/home/barto/mclibre/tmp/mclibre/mclibre_citas.sqlite3';  // Nombre de la base de datos
-    $dbUsuarios  = 'usuarios';   // Nombre de la tabla de Usuarios
-    $dbCitas     = 'citas';      // Nombre de la tabla de Citas
-    $dbAutores   = 'autores';    // Nombre de la tabla de Autores
-    $dbEtiquetas = 'etiquetas';  // Nombre de la tabla de Etiquetas
-    $dbEtiCitas  = 'eticitas';   // Nombre de la tabla de Etiquetas por cita
+    $dbDb        = "/home/barto/mclibre/tmp/mclibre/mclibre_citas.sqlite3";  // Nombre de la base de datos
+    $dbUsuarios  = "usuarios";   // Nombre de la tabla de Usuarios
+    $dbCitas     = "citas";      // Nombre de la tabla de Citas
+    $dbAutores   = "autores";    // Nombre de la tabla de Autores
+    $dbEtiquetas = "etiquetas";  // Nombre de la tabla de Etiquetas
+    $dbEtiCitas  = "eticitas";   // Nombre de la tabla de Etiquetas por cita
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
 }
 
-$administradorNombre   = 'root';  // Nombre del usuario Administrador
-$administradorPassword = 'root';  // Password del usuario Administrador
-// Si $administradorPassword != '', al crearse las tablas, se crea el usuario
-// Si $administradorPassword = '', no se crea el usuario
+$administradorNombre   = "root";  // Nombre del usuario Administrador
+$administradorPassword = "root";  // Password del usuario Administrador
+// Si $administradorPassword != "", al crearse las tablas, se crea el usuario
+// Si $administradorPassword = "", no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
 $tamUsuario      = 20;   // Tamaño del campo Usuarios > Usuario
@@ -70,11 +70,11 @@ $maxRegAutores   = 30;   // Número máximo de registros en la tabla Autores
 $maxRegCitas     = 30;   // Número máximo de registros en la tabla Citas
 $maxRegEtiquetas = 30;   // Número máximo de registros en la tabla Etiquetas
 $recorta = [
-    'usuario'    => $tamUsuario,
-    'password'   => $tamCifrado,
-    'etiqueta'   => $tamEtiqueta,
-    'idUsuario'  => $tamIdUsuario,
-    'idEtiqueta' => $tamIdEtiqueta
+    "usuario"    => $tamUsuario,
+    "password"   => $tamCifrado,
+    "etiqueta"   => $tamEtiqueta,
+    "idUsuario"  => $tamIdUsuario,
+    "idEtiqueta" => $tamIdEtiqueta
 ];
 
 function conectaDb()
@@ -86,11 +86,11 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO('sqlite:' . $dbDb);
+            $db = new PDO("sqlite:" . $dbDb);
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera('Error grave');
+        cabecera("Error grave");
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
 //        print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -130,7 +130,7 @@ function borraTodoMySQL($db)
             print "    <p>Error al crear la tabla de Usuarios.</p>\n";
             print "\n";
         }
-        if ($administradorPassword!='') {
+        if ($administradorPassword != "") {
             $consulta = "INSERT INTO $dbUsuarios
                 VALUES (NULL, '$administradorNombre', '"
                 .md5($administradorPassword)."')";
@@ -224,7 +224,7 @@ function borraTodoSqlite($db)
         print "    <p>Error al crear la tabla de Usuarios.</p>\n";
         print "\n";
     }
-    if ($administradorPassword!='') {
+    if ($administradorPassword != "") {
         $consulta = "INSERT INTO $dbUsuarios
             VALUES (NULL, '$administradorNombre', '".md5($administradorPassword)."')";
         if ($db->query($consulta)) {
@@ -292,15 +292,15 @@ function recorta($campo, $cadena)
     return $tmp;
 }
 
-function recogeParaConsulta($db, $var, $var2='')
+function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var])&&($_REQUEST[$var]!='')) ?
+    $tmp = (isset($_REQUEST[$var])&&($_REQUEST[$var] != "")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);
     }
-    $tmp = str_replace('&', '&amp;',  $tmp);
-    $tmp = str_replace('"', '&quot;', $tmp);
+    $tmp = str_replace("&", "&amp;",  $tmp);
+    $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
@@ -317,8 +317,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -329,8 +329,8 @@ function recogeMatrizParaConsulta($db, $var)
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
-            $tmp = str_replace('&', '&amp;',  $tmp);
-            $tmp = str_replace('"', '&quot;', $tmp);
+            $tmp = str_replace("&", "&amp;",  $tmp);
+            $tmp = str_replace('"', "&quot;", $tmp);
             $tmp = recorta($var, $tmp);
             if (!is_numeric($tmp)) {
                 $tmp = $db->quote($tmp);
@@ -356,7 +356,7 @@ function quitaComillasExteriores($var)
     return $var;
 }
 
-function cabecera($texto, $menu='menu_principal')
+function cabecera($texto, $menu="menu_principal")
 {
     global $administradorNombre;
 
@@ -376,22 +376,22 @@ function cabecera($texto, $menu='menu_principal')
     print "\n";
     print "  <div id=\"menu\">\n";
     print "    <ul>\n";
-    if ($menu == 'menu_principal') {
+    if ($menu == "menu_principal") {
         print "      <li><a href=\"cit-listar.php\">Ver citas</a></li>\n";
         print "      <li><a href=\"aut-listar.php\">Ver autores</a></li>\n";
         print "      <li><a href=\"eti-listar.php\">Ver etiquetas</a></li>\n";
         print "      <li><a href=\"index.php\">Conectar</a></li>\n";
-    } elseif ($menu == 'menu_autores') {
+    } elseif ($menu == "menu_autores") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"aut-listar.php\">Listar</a></li>\n";
         print "      <li><a href=\"aut-insertar-1.php\">Añadir</a></li>\n";
         print "      <li><a href=\"aut-borrar-1.php\">Borrar</a></li>\n";
-      } elseif ($menu == 'menu_etiquetas') {
+      } elseif ($menu == "menu_etiquetas") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"eti-listar.php\">Listar</a></li>\n";
         print "      <li><a href=\"eti-insertar-1.php\">Añadir</a></li>\n";
         print "      <li><a href=\"eti-borrar-1.php\">Borrar</a></li>\n";
-      } elseif ($menu == 'menu_citas') {
+      } elseif ($menu == "menu_citas") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
         print "      <li><a href=\"cit-listar.php\">Listar</a></li>\n";
         print "      <li><a href=\"cit-insertar-1.php\">Añadir</a></li>\n";
@@ -419,7 +419,7 @@ function pie()
 {
     global $administradorPassword, $_SESSION;
 
-    if (($administradorPassword!='')&&!isset($_SESSION['citasUsuario'])) {
+    if ($administradorPassword != "" && !isset($_SESSION["citasUsuario"])) {
         print "    <p><strong>Nota</strong>: El usuario Administrador "
             . "se llama <strong>root</strong> y su contraseña es también "
             . "<strong>root</strong>.</p>\n";

@@ -22,9 +22,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
-cabecera('Inicio', CABECERA_SIN_CURSOR, 'menuPrincipal', '');
+cabecera("Inicio", CABECERA_SIN_CURSOR, "menuPrincipal", "");
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
 $result = $db->query($consulta);
@@ -61,7 +61,7 @@ if (!$result) {
                     print "\n";
                     print "      <p class=\"dis_aut\">Propuesta por "
                         . "<strong>$valor[autor]</strong> el "
-                        . fechaDma($valor['fecha']) . " - ";
+                        . fechaDma($valor["fecha"]) . " - ";
                     if ($numInt==1) {
                         print "1 intervención";
                     } else {

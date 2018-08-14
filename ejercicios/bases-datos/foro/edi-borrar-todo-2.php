@@ -124,13 +124,13 @@ function borraTodoSqlite($db)
     }
 }
 
-if (!isset($_REQUEST['si'])) {
-    header('Location:index.php');
+if (!isset($_REQUEST["si"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Editor - Borrar todo 2', CABECERA_SIN_CURSOR, 'menuEditor', '');
+    cabecera("Editor - Borrar todo 2", CABECERA_SIN_CURSOR, "menuEditor", "");
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

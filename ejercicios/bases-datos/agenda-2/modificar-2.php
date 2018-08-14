@@ -22,18 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 session_start();
 
-if (!isset($_SESSION['multiagendaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["multiagendaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    $id = recogeParaConsulta($db, 'id');
+    $id = recogeParaConsulta($db, "id");
 
     if ($id == "''") {
-        cabecera('Modificar 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+        cabecera("Modificar 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
         print "    <p>No se ha seleccionado ningún registro.</p>\n";
         print "\n";
     } else {
@@ -42,11 +42,11 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
             AND id_usuario='$_SESSION[multiagendaIdUsuario]'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Modificar 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+            cabecera("Modificar 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } elseif ($result->fetchColumn() == 0) {
-            cabecera('Modificar 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+            cabecera("Modificar 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
             print "    <p>Registro no encontrado.</p>\n";
             print "\n";
         } else {
@@ -55,11 +55,11 @@ if (!isset($_SESSION['multiagendaUsuario'])) {
                 AND id_usuario='$_SESSION[multiagendaIdUsuario]'";
             $result = $db->query($consulta);
             if (!$result) {
-                cabecera('Modificar 2', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+                cabecera("Modificar 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
                 print "    <p>Error en la consulta.</p>\n";
                 print "\n";
             } else {
-                cabecera('Modificar 2', CABECERA_CON_CURSOR, $_SESSION['multiagendaUsuario']);
+                cabecera("Modificar 2", CABECERA_CON_CURSOR, $_SESSION["multiagendaUsuario"]);
                 $valor = $result->fetch();
                 print "    <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
                 print "      <p>Modifique los campos que desee:</p>\n";

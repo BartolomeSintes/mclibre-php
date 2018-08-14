@@ -54,7 +54,7 @@ $numero       = recoge("numero");
 // (es decir, si se viene de la tercera página)
 // coge el número de la sesión
 if (isset($_SESSION["numero"]) and $numero == "") {
-    $numero =  $_SESSION["numero"];
+    $numero = $_SESSION["numero"];
 }
 $numeroOk     = false;
 $numeroMinimo = 1;

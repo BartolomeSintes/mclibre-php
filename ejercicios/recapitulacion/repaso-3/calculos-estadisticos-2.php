@@ -60,21 +60,21 @@ function recogeMatriz($var)
     return $tmpMatriz;
 }
 
-define('FORM_METHOD',         'get');
-define('NUM_VALORES_INICIAL', 4);
-define('NUM_VALORES_MINIMO',  2);
-define('NUM_VALORES_MAXIMO',  15);
+define("FORM_METHOD",         "get");
+define("NUM_VALORES_INICIAL", 4);
+define("NUM_VALORES_MINIMO",  2);
+define("NUM_VALORES_MAXIMO",  15);
 
-$valores       = recogeMatriz('valor');
-$valoresOK     = [];
+$valores       = recogeMatriz("valor");
+$valoresOk     = [];
 $valoresTodoOk = true;
-$suma          = (recoge('suma') == 'on');
-$media         = (recoge('media') == 'on');
-$maximo        = (recoge('maximo') == 'on');
-$minimo        = (recoge('minimo') == 'on');
+$suma          = (recoge("suma") == "on");
+$media         = (recoge("media") == "on");
+$maximo        = (recoge("maximo") == "on");
+$minimo        = (recoge("minimo") == "on");
 
 // Recoge el número de datos y lo valida, aumenta o reduce
-$numeroValores = recoge('numeroValores');
+$numeroValores = recoge("numeroValores");
 
 if ($numeroValores<NUM_VALORES_MINIMO) {
     $numeroValores = NUM_VALORES_MINIMO;
@@ -82,10 +82,10 @@ if ($numeroValores<NUM_VALORES_MINIMO) {
     $numeroValores = NUM_VALORES_MAXIMO;
 }
 
-if (isset($_REQUEST['anyadir']) && ($numeroValores<NUM_VALORES_MAXIMO)) {
+if (isset($_REQUEST["anyadir"]) && ($numeroValores<NUM_VALORES_MAXIMO)) {
     $numeroValores++;
     $valores[$numeroValores] = "";  // Al añdir se crea un nuevo valor vacío
-} elseif (isset($_REQUEST['quitar']) && ($numeroValores>NUM_VALORES_MINIMO)) {
+} elseif (isset($_REQUEST["quitar"]) && ($numeroValores>NUM_VALORES_MINIMO)) {
     $numeroValores--;
 }
 
@@ -139,8 +139,8 @@ if ($valoresTodoOk) {
     }
     print "  <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
     print "\n";
-} elseif (!$valoresTodoVacio&&(isset($_REQUEST['enviar'])||
-        isset($_REQUEST['anyadir'])||isset($_REQUEST['quitar']))) {
+} elseif (!$valoresTodoVacio&&(isset($_REQUEST["enviar"])||
+        isset($_REQUEST["anyadir"])||isset($_REQUEST["quitar"]))) {
     cabecera("Resultado inválido");
     print"  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
     print "\n";

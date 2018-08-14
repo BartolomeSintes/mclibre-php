@@ -23,15 +23,15 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Modificar 2', 'venta');
+    cabecera("Modificar 2", "venta");
 
-    $id = recogeParaConsulta($db, 'id');
+    $id = recogeParaConsulta($db, "id");
 
     if ($id == "''") {
         print "    <p>No se ha seleccionado ningún registro.</p>\n";

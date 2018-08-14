@@ -23,17 +23,17 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 
-if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario'] != $administradorNombre)) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administradorNombre)) {
+    header("Location:index.php");
     exit();
-} elseif (!isset($_REQUEST['si'])) {
-    header('Location:index.php');
+} elseif (!isset($_REQUEST["si"])) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Borrar todo 2');
+    cabecera("Borrar todo 2");
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

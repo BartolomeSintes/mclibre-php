@@ -87,13 +87,13 @@ function recogeTexto($var, $inicial, $valores) {
 $tamanyoGraficaXInicial = 400;
 $tamanyoGraficaXMinimo  = 200;
 $tamanyoGraficaXMaximo  = 600;
-$tamanyoGraficaX = recogeNumero('tamanyoGraficaX', $tamanyoGraficaXInicial,
+$tamanyoGraficaX = recogeNumero("tamanyoGraficaX", $tamanyoGraficaXInicial,
     $tamanyoGraficaXMinimo, $tamanyoGraficaXMaximo);
 
 $tamanyoGraficaYInicial = 200;
 $tamanyoGraficaYMinimo  = 100;
 $tamanyoGraficaYMaximo  = 300;
-$tamanyoGraficaY = recogeNumero('tamanyoGraficaY', $tamanyoGraficaYInicial,
+$tamanyoGraficaY = recogeNumero("tamanyoGraficaY", $tamanyoGraficaYInicial,
     $tamanyoGraficaYMinimo, $tamanyoGraficaYMaximo);
 
 $tipoGraficaValores = ["lc", "p", "p3"];
@@ -103,16 +103,16 @@ $tipoGrafica = recogeTexto("tipoGrafica", "lc", $tipoGraficaValores);
 $numeroValoresInicial = 4;
 $numeroValoresMinimo  = 2;
 $numeroValoresMaximo  = 15;
-$numeroValores = recogeNumero('numeroValores', $numeroValoresInicial,
+$numeroValores = recogeNumero("numeroValores", $numeroValoresInicial,
     $numeroValoresMinimo, $numeroValoresMaximo);
-if (isset($_REQUEST['anyadir']) && ($numeroValores<$numeroValoresMaximo)) {
+if (isset($_REQUEST["anyadir"]) && ($numeroValores<$numeroValoresMaximo)) {
     $numeroValores++;
-} elseif (isset($_REQUEST['quitar']) && ($numeroValores>$numeroValoresMinimo)) {
+} elseif (isset($_REQUEST["quitar"]) && ($numeroValores>$numeroValoresMinimo)) {
     $numeroValores--;
 }
 
 // Recoge valores numéricos y los valida
-$valores = recogeMatriz('valores');
+$valores = recogeMatriz("valores");
 $okValores = true;
 for ($i=1; $i<=$numeroValores; $i++) {
     if (!isset($valores[$i])) {
@@ -123,8 +123,8 @@ for ($i=1; $i<=$numeroValores; $i++) {
 }
 
 // Si no se ha hecho clic en Enviar o los valores no son correctos
-if (!isset($_REQUEST['enviar']) || !$okValores) {
-    if (isset($_REQUEST['enviar'])) {
+if (!isset($_REQUEST["enviar"]) || !$okValores) {
+    if (isset($_REQUEST["enviar"])) {
         cabecera("Resultado inválido");
         print"  <p class=\"aviso\">Por favor corrige los datos:</p>\n";
     } else {
@@ -202,10 +202,10 @@ if (!isset($_REQUEST['enviar']) || !$okValores) {
     print "</p>\n";
     print "\n";
 
-    $simpleEncoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $simpleEncoding = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     // Empiezo buscando un valor cualquiera en la lista de valores
     $minimo = $maximo = 0;
-    $patronValores = '/^[+-]?[0-9]{1,6}$/'; // Este patrón NO admite la cadena vacía
+    $patronValores = "/^[+-]?[0-9]{1,6}$/"; // Este patrón NO admite la cadena vacía
     foreach ($valores as $valor) {
         if (preg_match($patronValores, $valor)) {
             $minimo = $maximo = $valor;

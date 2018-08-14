@@ -77,11 +77,11 @@
 
     <p>Cuando PHP recibe el archivo, lo almacena en el directorio <span class="php-dir">upload_tmp_dir</span> y rellena la matriz asociativa superglobal <span class="php-var">$_FILES["nombre_archivo_cliente"]</span> (el nombre que se haya dado al control en el formulario). Esa matriz contiene los siguientes elementos:</p>
     <ul>
-      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['name']</span>: nombre que tenía el archivo cargado en el ordenador del cliente</li>
-      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['type']</span>: tipo MIME del archivo cargado</li>
-      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['size']</span>: tamaño del archivo cargado</li>
-      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['tmp_name']</span>: nombre del archivo cargado en el directorio temporal del servidor</li>
-      <li><span class="php-var">$_FILES['nombre_archivo_cliente']['error']</span>: código de error (en su caso)</li>
+      <li><span class="php-var">$_FILES["nombre_archivo_cliente"]["name"]</span>: nombre que tenía el archivo cargado en el ordenador del cliente</li>
+      <li><span class="php-var">$_FILES["nombre_archivo_cliente"]["type"]</span>: tipo MIME del archivo cargado</li>
+      <li><span class="php-var">$_FILES["nombre_archivo_cliente"]["size"]</span>: tamaño del archivo cargado</li>
+      <li><span class="php-var">$_FILES["nombre_archivo_cliente"]["tmp_name"]</span>: nombre del archivo cargado en el directorio temporal del servidor</li>
+      <li><span class="php-var">$_FILES["nombre_archivo_cliente"]["error"]</span>: código de error (en su caso)</li>
     </ul>
 
     <p>Como el archivo del directorio temporal desaparecerá al acabar el script, es necesario copiar el archivo a otro lugar. Para ello utiliza la función <span class="php-fun">move_uploaded_file($origen, $destino)</span>, en la que <span class="php-var">$origen</span> es el nombre del archivo cargado en el directorio temporal (normalmente puedes utilizar directamente <span class="php-var">$_FILES['nombre_archivo_cliente']['tmp_name']</span>) y <span class="php-var">$destino</span> el nombre del archivo que contendrá la copia.</p>

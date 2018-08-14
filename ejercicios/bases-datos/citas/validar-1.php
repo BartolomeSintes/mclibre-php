@@ -22,27 +22,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ("biblioteca.php");
+include("biblioteca.php");
 $db = conectaDb();
 
-$usuario  = recogeParaConsulta($db, 'usuario');
+$usuario  = recogeParaConsulta($db, "usuario");
 $usuario  = quitaComillasExteriores($usuario);
-$password = recogeParaConsulta($db, 'password');
+$password = recogeParaConsulta($db, "password");
 $password = quitaComillasExteriores($password);
 
-if (!$usuario || ($usuario == 'menu_principal')) {
-    header('Location:index.php?aviso=Nombre de usuario no permitido');
+if (!$usuario || ($usuario == "menu_principal")) {
+    header("Location:index.php?aviso=Nombre de usuario no permitido");
     exit();
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
         WHERE usuario='$usuario'";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera('Identificación 2', 'menu_principal');
+        cabecera("Identificación 2", "menu_principal");
         print "    <p>Error en la consulta.</p>";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        cabecera('Identificación 2', 'menu_principal');
+        cabecera("Identificación 2", "menu_principal");
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);
         if (!$result) {
@@ -80,21 +80,21 @@ if (!$usuario || ($usuario == 'menu_principal')) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera('Identificación 2', 'menu_principal');
+            cabecera("Identificación 2", "menu_principal");
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } else {
             $valor = $result->fetch();
-//            print $valor['password']." - ".md5($password);
-            if ($valor['password']==md5($password)) {
+//            print $valor["password"]." - ".md5($password);
+            if ($valor["password"] == md5($password)) {
                 session_start();
-                $_SESSION['etiquetasIdUsuario'] = $valor['id'];
-                $_SESSION['citasUsuario']   = $valor['usuario'];
-                header('Location:index.php');
+                $_SESSION["etiquetasIdUsuario"] = $valor["id"];
+                $_SESSION["citasUsuario"] = $valor["usuario"];
+                header("Location:index.php");
                 exit();
             }
             else {
-                header('Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta');
+                header("Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta");
                 exit();
             }
         }

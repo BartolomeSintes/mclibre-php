@@ -23,18 +23,18 @@
  */
 
 session_start();
-include('biblioteca.php');
+include("biblioteca.php");
 
-if (!isset($_SESSION['citasUsuario']) || ($_SESSION['citasUsuario'] != $administradorNombre)) {
-    header('Location:index.php');
+if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administradorNombre)) {
+    header("Location:index.php");
     exit();
 } else {
     $db = conectaDb();
-    cabecera('Borrar etiquetas 1', $_SESSION['citasUsuario']);
+    cabecera("Borrar etiquetas 1", $_SESSION["citasUsuario"]);
 
-    $campo = recogeParaConsulta($db, 'campo', 'etiqueta');
+    $campo = recogeParaConsulta($db, "campo", "etiqueta");
     $campo = quitaComillasExteriores($campo);
-    $orden = recogeParaConsulta($db, 'orden', 'ASC');
+    $orden = recogeParaConsulta($db, "orden", "ASC");
     $orden = quitaComillasExteriores($orden);
 
     $consulta = "SELECT COUNT(*) FROM $dbEtiquetas";

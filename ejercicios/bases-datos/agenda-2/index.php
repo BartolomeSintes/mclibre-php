@@ -22,17 +22,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('biblioteca.php');
+include("biblioteca.php");
 $db = conectaDb();
 
 $consulta = $consultaExisteTabla;
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera('Primera conexión', CABECERA_SIN_CURSOR, 'menu_principal');
+    cabecera("Primera conexión", CABECERA_SIN_CURSOR, "menu_principal");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera('Primera conexión', CABECERA_SIN_CURSOR, 'menu_principal');
+    cabecera("Primera conexión", CABECERA_SIN_CURSOR, "menu_principal");
     print "    <p>Aparentemente, la base de datos no existe. "
         . "Se creará a continuación.</p>";
     print "\n";
@@ -44,11 +44,11 @@ if (!$result) {
 } else {
     ini_set("session.save_handler", "files");
     session_start();
-    if (isset($_SESSION['multiagendaUsuario'])) {
-        cabecera('Inicio', CABECERA_SIN_CURSOR, $_SESSION['multiagendaUsuario']);
+    if (isset($_SESSION["multiagendaUsuario"])) {
+        cabecera("Inicio", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
     } else {
-        cabecera('Identificación 1', CABECERA_CON_CURSOR, 'menu_principal');
-        $aviso = recogeParaConsulta($db, 'aviso');
+        cabecera("Identificación 1", CABECERA_CON_CURSOR, "menu_principal");
+        $aviso = recogeParaConsulta($db, "aviso");
         $aviso = quitaComillasExteriores($aviso);
         if ($aviso) {
             print "    <p style=\"color: red\">$aviso</p>\n";

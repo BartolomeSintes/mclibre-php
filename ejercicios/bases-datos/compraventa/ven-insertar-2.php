@@ -23,18 +23,18 @@
  */
 
 session_start();
-if (!isset($_SESSION['compraventaUsuario'])) {
-    header('Location:index.php');
+if (!isset($_SESSION["compraventaUsuario"])) {
+    header("Location:index.php");
     exit();
 } else {
-    include('biblioteca.php');
+    include("biblioteca.php");
     $db = conectaDb();
-    cabecera('Venta - Añadir 2', 'venta');
+    cabecera("Venta - Añadir 2", "venta");
 
-    $articulo = recogeParaConsulta($db, 'articulo');
-    $precio   = recogeParaConsulta($db, 'precio');
+    $articulo = recogeParaConsulta($db, "articulo");
+    $precio   = recogeParaConsulta($db, "precio");
 
-    if (($articulo == "''") || ($precio == "''")) {
+    if ($articulo == "''" || $precio == "''") {
         print "    <p>Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";
         print "\n";
     } else {

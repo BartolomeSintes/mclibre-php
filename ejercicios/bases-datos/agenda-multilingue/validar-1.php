@@ -23,54 +23,54 @@
  */
 
 session_start();
-include ("biblioteca.php");
+include("biblioteca.php");
 $db = conectaDb();
 
-$usuario  = recogeParaConsulta($db, 'usuario');
+$usuario  = recogeParaConsulta($db, "usuario");
 $usuario  = quitaComillasExteriores($usuario);
-$password = recogeParaConsulta($db, 'password');
+$password = recogeParaConsulta($db, "password");
 $password = quitaComillasExteriores($password);
 
-if (!$usuario || ($usuario == 'menu_principal')) {
-    header('Location:index.php?aviso=' . _('Nombre de usuario no permitido'));
+if (!$usuario || ($usuario == "menu_principal")) {
+    header("Location:index.php?aviso=" . _("Nombre de usuario no permitido"));
     exit();
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
         WHERE usuario='$usuario'";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera(_('Identificación').' 2', 'menu_principal');
-        print "    <p>" . _('Error en la consulta') . ".</p>";
+        cabecera(_("Identificación") . " 2", "menu_principal");
+        print "    <p>" . _("Error en la consulta") . ".</p>";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        cabecera(_('Identificación').' 2', 'menu_principal');
+        cabecera(_("Identificación") . " 2", "menu_principal");
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);
         if (!$result) {
-            print "    <p>" . _('Error en la consulta') . ".</p>";
+            print "    <p>" . _("Error en la consulta") . ".</p>";
             print "\n";
         } elseif ($result->fetchColumn()>=$maxRegUsuarios) {
-            print "    <p>" . _('Se ha alcanzado el número máximo de Usuarios que se pueden guardar') . ".</p>\n";
+            print "    <p>" . _("Se ha alcanzado el número máximo de Usuarios que se pueden guardar") . ".</p>\n";
             print "\n";
-            print "    <p>" . _('Por favor, borre algún registro antes') . ".</p>\n";
+            print "    <p>" . _("Por favor, borre algún registro antes") . ".</p>\n";
             print "\n";
         } else {
             print "    <p><strong>$usuario</strong> "
-                . _('es un nuevo usuario. Por favor, repita la contraseña para registrarse como usuario')
+                . _("es un nuevo usuario. Por favor, repita la contraseña para registrarse como usuario")
                 . ".</p>\n";
                 print "\n";
                 print "    <form action=\"validar-2.php\" method=\"get\">\n";
                 print "      <table>\n";
                 print "        <tbody>\n";
                 print "          <tr>\n";
-                print "            <td>" . _('Contraseña') . ":</td>\n";
+                print "            <td>" . _("Contraseña") . ":</td>\n";
                 print "            <td><input type=\"password\" name=\"password2\" id=\"cursor\" /></td>\n";
                 print "          </tr>\n";
                 print "        </tbody>\n";
                 print "      </table>\n";
                 print "\n";
                 print "      <p>\n";
-                print "        <input type=\"submit\" value=\"" . _('Añadir') . "\" />\n";
+                print "        <input type=\"submit\" value=\"" . _("Añadir") . "\" />\n";
                 print "        <input type=\"hidden\" name=\"usuario\" value=\"$usuario\" />\n";
                 print "        <input type=\"hidden\" name=\"password\" value=\"" . md5($password) . "\" />\n";
                 print "      </p>\n";
@@ -82,19 +82,19 @@ if (!$usuario || ($usuario == 'menu_principal')) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera(_('Identificación').' 2', 'menu_principal');
+            cabecera(_("Identificación") . " 2", "menu_principal");
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } else {
             $valor = $result->fetch();
-            if ($valor['password']==md5($password)) {
-                $_SESSION['multiagendaIdUsuario'] = $valor['id'];
-                $_SESSION['multiagendaUsuario']   = $valor['usuario'];
-                header('Location:index.php');
+            if ($valor["password"] == md5($password)) {
+                $_SESSION["multiagendaIdUsuario"] = $valor["id"];
+                $_SESSION["multiagendaUsuario"]   = $valor["usuario"];
+                header("Location:index.php");
                 exit();
             }
             else {
-                header('Location:index.php?aviso=' . _('El usuario ya existe, pero la contraseña no es correcta'));
+                header("Location:index.php?aviso=" . _("El usuario ya existe, pero la contraseña no es correcta"));
                 exit();
             }
         }
