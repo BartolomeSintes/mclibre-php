@@ -1,6 +1,6 @@
 <?php
 /**
- * Inyección SQL 1 - funciones.php
+ * Inyección SQL 1 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -54,20 +54,22 @@ function conectaDb()
 {
     global $dbMotor, $dbDb;
 
-    $error = 0;
-    if ($dbMotor == MYSQL) {
-        $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
-        $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-    } elseif ($dbMotor == SQLITE) {
-        $db = sqlite_open($dbDb);
-    }
-    if (!$db) {
-        cabecera('Error grave', MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
+    try {
+        if ($dbMotor == MYSQL) {
+            $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
+            $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        } elseif ($dbMotor == SQLITE) {
+            $db = new PDO("sqlite:" . $dbDb);
+        }
+        return($db);
+    } catch (PDOException $e) {
+        cabecera("Error grave", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
+        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+        print "\n";
         pie();
         exit();
-    } else {
-        return($db);
     }
 }
 
@@ -168,27 +170,28 @@ function cabecera($texto, $menu, $conCursor)
     } else {
         print "<body>\n";
     }
-    print "<h1>Inyección SQL 1 - $texto</h1>
-<div id=\"menu\">
-  <ul>\n";
-    if ($menu==MENU_PRINCIPAL) {
-        print "    <li><a href=\"entrar1.php\">Entrar en el sistema</a></li>
-    <li><a href=\"anyadir1.php\">Añadir usuarios</a></li>
-    <li><a href=\"borrartodo1.php\">Borrar todo</a></li>\n";
-            } elseif ($menu==MENU_VOLVER) {
-        print "    <li><a href=\"index.php\">Página inicial</a></li>\n";
+    print "  <h1>Inyección SQL 1 - $texto</h1>\n";
+    print "\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu == MENU_PRINCIPAL) {
+        print "      <li><a href=\"entrar-1.php\">Entrar en el sistema</a></li>\n";
+        print "      <li><a href=\"insertar-1.php\">Añadir usuarios</a></li>\n";
+        print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+    } elseif ($menu == MENU_VOLVER) {
+        print "      <li><a href=\"index.php\">Página inicial</a></li>\n";
     } else {
-        print "    <li>Error en la selección de menú</li>\n";
+        print "      <li>Error en la selección de menú</li>\n";
     }
-    print "  </ul>
-</div>
-
-<div id=\"contenido\">\n";
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
 {
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";

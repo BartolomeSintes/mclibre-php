@@ -1,6 +1,6 @@
 <?php
 /**
- * Inyección SQL 1 - anyadir2.php
+ * Inyección SQL 1 - insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Añadir 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
 
@@ -37,32 +37,39 @@ $contraseña = $_REQUEST['contraseña'];
 //$contraseña = recogeParaConsulta($db, 'contraseña');
 //$contraseña = quitaComillasExteriores($contraseña);
 
-if (($usuario == "") || ($contraseña == "")) {
-    print "<p>Hay que rellenar los dos campos. "
-        . "No se ha guardado el registro.</p>\n";
+if ($usuario == "" || $contraseña == "") {
+    print "    <p>Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbTabla";
-    $result =  sqlite_array_query($db, $consulta);
+    $result = sqlite_array_query($db, $consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result[0][0] >= MAX_REG_TABLA) {
-        print "<p>Se ha alcanzado el número máximo de registros que se pueden "
-            . "guardar.</p>\n<p>Por favor, borre algún registro antes.</p>\n";
+        print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p>Por favor, borre algún registro antes.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE user='$usuario'";
-        $result =  sqlite_array_query($db, $consulta);
+        $result = sqlite_array_query($db, $consulta);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result[0][0]>0) {
-            print "<p>El registro ya existe.</p>\n";
+            print "    <p>El registro ya existe.</p>\n";
+            print "\n";
         } else {
             $consulta = "INSERT INTO $dbTabla
                 VALUES (NULL, '$usuario', '$contraseña')";
             if (sqlite_query($db, $consulta)) {
-                print "<p>Registro creado correctamente.</p>\n";
+                print "    <p>Registro creado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al crear el registro.</p>\n";
+                print "    <p>Error al crear el registro.</p>\n";
+                print "\n";
             }
         }
     }

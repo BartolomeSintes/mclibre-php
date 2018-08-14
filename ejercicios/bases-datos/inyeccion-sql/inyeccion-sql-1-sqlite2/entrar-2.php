@@ -1,6 +1,6 @@
 <?php
 /**
- * Inyección SQL 1 - entrar2.php
+ * Inyección SQL 1 - entrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Entrar 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
 
@@ -35,20 +35,25 @@ $usuario    = $_REQUEST['usuario'];
 $contraseña = $_REQUEST['contraseña'];
 
 if (($usuario == "") || ($contraseña == "")) {
-    print "<p>Hay que rellenar los dos campos.</p>\n";
+    print "    <p>Hay que rellenar los dos campos.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT * FROM $dbTabla
         WHERE user='$usuario'
         AND password='$contraseña'";
 print $consulta;
     $result = sqlite_query_multi($db, $consulta);
-    print "<pre>RESULT"; print($result);print "</pre>";
+    print "    <pre>RESULT"; print($result);print "</pre>";
+    print "\n";
     $valor = sqlite_fetch_array($result);
-    print "<pre>RESULTADO"; print_r($valor);print "</pre>";
+    print "    <pre>RESULTADO"; print_r($valor);print "</pre>";
+    print "\n";
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($valor[0]>0) {
-        print "<p>Nombre de usuario y contraseña correctos.</p>\n";
+        print "    <p>Nombre de usuario y contraseña correctos.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT * FROM $dbTabla
             WHERE user='$usuario'";
@@ -56,11 +61,14 @@ print $consulta;
         $valor = sqlite_fetch_array($result);
     print "<pre>RESULTADO"; print_r($valor);print "</pre>";
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($valor[0]>0) {
-            print "<p>Contraseña incorrecta.</p>\n";
+            print "    <p>Contraseña incorrecta.</p>\n";
+            print "\n";
         } else {
-            print "<p>Nombre de usuario incorrecto.</p>\n";
+            print "    <p>Nombre de usuario incorrecto.</p>\n";
+            print "\n";
         }
     }
 }

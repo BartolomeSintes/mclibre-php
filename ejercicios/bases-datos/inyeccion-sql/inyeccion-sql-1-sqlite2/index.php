@@ -22,10 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 cabecera('Inicio', MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
-print "<p>Versión PHP: ".phpversion()."</p>";
-print "<p>Versión SQLite: ".sqlite_libversion()."</p>";
-print "<p>Codificación: ".sqlite_libencoding()."</p>";
+print "    <p>Versión PHP: ".phpversion()."</p>";
+print "\n";
+print "    <p>Versión SQLite: ".sqlite_libversion()."</p>";
+print "\n";
+print "    <p>Codificación: ".sqlite_libencoding()."</p>";
+print "\n";
 pie();
 ?>

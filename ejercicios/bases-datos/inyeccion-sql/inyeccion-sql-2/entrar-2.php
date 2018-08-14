@@ -1,6 +1,6 @@
 <?php
 /**
- * Inyección SQL 2 - entrar2.php
+ * Inyección SQL 2 - entrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2012 Bartolomé Sintes Marco
@@ -60,27 +60,33 @@ $usuario    = $_REQUEST["usuario"];
 $contraseña = $_REQUEST["contraseña"];
 
 if ($usuario == "" || $contraseña == "") {
-    print "<p>Hay que rellenar los dos campos.</p>\n";
+    print "    <p>Hay que rellenar los dos campos.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbTabla
         WHERE user='$usuario'
         AND password='$contraseña'";
     $result = pdo_query_multi($db, $consulta);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } else {
         if ($result->fetchColumn() > 0) {
-            print "<p>Nombre de usuario y contraseña correctos.</p>\n";
+            print "    <p>Nombre de usuario y contraseña correctos.</p>\n";
+            print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbTabla
                 WHERE user='$usuario'";
             $result = pdo_query_multi($db, $consulta);
             if (!$result) {
-                print "<p>Error en la consulta.</p>\n";
+                print "    <p>Error en la consulta.</p>\n";
+                print "\n";
             } elseif ($result->fetchColumn() > 0) {
-                print "<p>Contraseña incorrecta.</p>\n";
+                print "    <p>Contraseña incorrecta.</p>\n";
+                print "\n";
             } else {
-                print "<p>Nombre de usuario incorrecto.</p>\n";
+                print "    <p>Nombre de usuario incorrecto.</p>\n";
+                print "\n";
             }
         }
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Inyección SQL 3 - entrar2.php
+ * Inyección SQL 3 - entrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2011 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('funciones.php');
+include('biblioteca.php');
 $db = conectaDb();
 cabecera('Entrar 2', MENU_VOLVER, CABECERA_SIN_CURSOR);
 
@@ -34,7 +34,8 @@ $usuario    = $_REQUEST['usuario'];
 $contraseña = $_REQUEST['contraseña'];
 
 if (($usuario == "") || ($contraseña == "")) {
-    print "<p>Hay que rellenar los dos campos.</p>\n";
+    print "    <p>Hay que rellenar los dos campos.</p>\n";
+    print "\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbTabla
         WHERE user=?
@@ -42,20 +43,25 @@ if (($usuario == "") || ($contraseña == "")) {
     $result = $db->prepare($consulta);
     $result->execute([$usuario, $contraseña]);
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "    <p>Error en la consulta.</p>\n";
+        print "\n";
     } elseif ($result->fetchColumn()>0) {
-        print "<p>Nombre de usuario y contraseña correctos.</p>\n";
+        print "    <p>Nombre de usuario y contraseña correctos.</p>\n";
+        print "\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE user=?";
         $result = $db->prepare($consulta);
         $result->execute([$usuario]);
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "    <p>Error en la consulta.</p>\n";
+            print "\n";
         } elseif ($result->fetchColumn()>0) {
-            print "<p>Contraseña incorrecta.</p>\n";
+            print "    <p>Contraseña incorrecta.</p>\n";
+            print "\n";
         } else {
-            print "<p>Nombre de usuario incorrecto.</p>\n";
+            print "    <p>Nombre de usuario incorrecto.</p>\n";
+            print "\n";
         }
     }
 }
