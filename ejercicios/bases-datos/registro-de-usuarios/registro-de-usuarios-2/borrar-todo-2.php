@@ -1,6 +1,6 @@
 <?php
 /**
- * Registro de usuarios 2 - borrartodo2.php
+ * Registro de usuarios 2 - borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2013 Bartolomé Sintes Marco
@@ -31,34 +31,42 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la base de datos.</p>\n";
+        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos creada correctamente.</p>\n";
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
         $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             usuario VARCHAR($tamUsuario),
             password VARCHAR($tamCifrado),
             PRIMARY KEY(id) )";
         if ($db->query($consultaCreaTablaUsuarios)) {
-            print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Usuarios.</p>\n";
+            print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+            print "\n";
         }
         if ($administradorPassword!="") {
             $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '" . md5($administradorPassword) . "')";
             if ($db->query($consulta)) {
-                print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "\n";
             }
         }
     } else {
-        print "<p>Error al crear la base de datos.</p>\n";
+        print "    <p>Error al crear la base de datos.</p>\n";
+        print "\n";
     }
 }
 
@@ -69,9 +77,11 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbUsuarios";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "    <p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
@@ -79,17 +89,21 @@ function borraTodoSqlite($db)
         password VARCHAR($tamCifrado)
         )";
     if ($db->query($consultaCreaTablaUsuarios)) {
-        print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Usuarios.</p>\n";
+        print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     if ($administradorPassword!="") {
         $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
             '$administradorNombre', '" . md5($administradorPassword) . "')";
         if ($db->query($consulta)) {
-            print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "\n";
         }
     }
 }

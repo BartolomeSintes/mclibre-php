@@ -1,6 +1,6 @@
 <?php
 /**
- * Registro de usuarios 2 - registrar2.php
+ * Registro de usuarios 2 - registrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2013 Bartolomé Sintes Marco
@@ -36,10 +36,10 @@ if (isset($_SESSION['id'])) {
     $password2 = recoge("password2");
 
     if (!$usuario) {
-        header("Location:registrar1.php?aviso=Error: Nombre de usuario no permitido");
+        header("Location:registrar-1.php?aviso=Error: Nombre de usuario no permitido");
         exit();
     } elseif ($password != $password2) {
-        header("Location:registrar1.php?aviso=Error: Las contraseñas no coinciden");
+        header("Location:registrar-1.php?aviso=Error: Las contraseñas no coinciden");
         exit();
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
@@ -47,30 +47,35 @@ if (isset($_SESSION['id'])) {
         $result = $db->query($consulta);
         if (!$result) {
             cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
-            print "<p>Error en la consulta.</p>";
+            print "    <p>Error en la consulta.</p>";
+            print "\n";
         } elseif ($result->fetchColumn() != 0) {
-            header("Location:registrar1.php?aviso=Error: El nombre de usuario ya está registrado");
+            header("Location:registrar-1.php?aviso=Error: El nombre de usuario ya está registrado");
             exit();
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
             if (!$result) {
                 cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
-                print "<p>Error en la consulta.</p>";
+                print "    <p>Error en la consulta.</p>";
+                print "\n";
             } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
-                header("Location:registrar1.php?aviso=Error: Se ha alcanzado el número máximo de usuarios");
+                header("Location:registrar-1.php?aviso=Error: Se ha alcanzado el número máximo de usuarios");
                 exit();
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '" . md5($password) . "')";
                 if (!$db->query($consulta)) {
                     cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
-                    print "<p>Error al crear el registro.<p>\n";
+                    print "    <p>Error al crear el registro.<p>\n";
+                    print "\n";
                 } else {
                     cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
-                    print "  <p>Bienvenido/a, <strong>$usuario</strong>. Se ha "
-                        . "registrado su nombre y contraseña..</p>\n";
-                    print "  <p>Vuelva a la página de inicio.</p>\n";
+                    print "    <p>Bienvenido/a, <strong>$usuario</strong>. Se ha "
+                        . "registrado su nombre y contraseña.</p>\n";
+                    print "\n";
+                    print "    <p>Vuelva a la página de inicio.</p>\n";
+                    print "\n";
                 }
             }
             $db = null;

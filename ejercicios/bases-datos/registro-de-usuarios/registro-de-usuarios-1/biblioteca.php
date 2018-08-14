@@ -70,8 +70,10 @@ function conectaDb()
         return($db);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
-        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
+        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+        print "\n";
         pie();
         exit();
     }
@@ -116,23 +118,25 @@ function cabecera($texto, $menu=MENU_PRINCIPAL, $conCursor=CABECERA_SIN_CURSOR)
     } else {
         print "<body>\n";
     }
-    print "<h1>Registro de usuarios - $texto</h1>
-<div id=\"menu\">
-<ul>\n";
-    if ($menu == MENU_PRINCIPAL) {
-        print "  <li><a href=\"registrar1.php\">Registrar nuevo usuario</a></li>";
-        print "  <li><a href=\"borrartodo1.php\">Borrar todo</a></li>";
-    } else if ($menu == MENU_VOLVER) {
-        print "  <li><a href=\"index.php\">Volver al inicio</a></li>";
-    }
-    print "</ul>\n</div>\n";
+    print "  <h1>Registro de usuarios - $texto</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu == MENU_PRINCIPAL) {
+        print "      <li><a href=\"registrar-1.php\">Registrar nuevo usuario</a></li>\n";
+        print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+    } else if ($menu == MENU_VOLVER) {
+        print "      <li><a href=\"index.php\">Volver al inicio</a></li>\n";
+    }
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
 {
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";

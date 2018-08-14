@@ -1,6 +1,6 @@
 <?php
 /**
- * Registro usuarios - borrartodo2.php
+ * Registro usuarios - borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2013 Bartolomé Sintes Marco

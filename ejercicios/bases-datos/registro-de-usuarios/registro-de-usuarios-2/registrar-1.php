@@ -1,6 +1,6 @@
 <?php
 /**
- * Registro de usuarios 2 - registrar1.php
+ * Registro de usuarios 2 - registrar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2013 Bartolomé Sintes Marco
@@ -33,34 +33,40 @@ if (isset($_SESSION['id'])) {
 
     $aviso = recoge("aviso");
     if ($aviso) {
-        print "<p style=\"color: red\">$aviso</p>\n";
+        print "    <p style=\"color: red\">$aviso</p>\n";
+        print "\n";
     }
-    print "<form action=\"registrar2.php\" method=\"" . FORM_METHOD . "\">
-  <p>Escriba su nombre de usuario y contraseña:</p>
-  <table>
-    <tbody>
-      <tr>
-        <td>Nombre:</td>
-        <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-        . "maxlength=\"$tamUsuario\" id=\"cursor\" /> (hasta $tamUsuario caracteres)</td>
-      </tr>
-      <tr>
-        <td>Contraseña:</td>
-        <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
-        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>
-      </tr>
-      <tr>
-        <td>Repita la contraseña:</td>
-        <td><input type=\"password\" name=\"password2\" size=\"$tamPassword\" "
-        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>
-      </tr>
-      </tbody>
-  </table>
-  <p><strong>Nota</strong>: Los nombres de más de $tamUsuario caracteres y las
-  contraseñas de más de $tamPassword se recortarán a esas longitudes.</p>
-  <p><input type=\"submit\" value=\"Añadir\" />
-  <input type=\"reset\" value=\"Borrar\" />
-</form>\n";
+    print "    <form action=\"registrar-2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
+    print "\n";
+    print "      <table>\n";
+    print "        <tbody>\n";
+    print "          <tr>\n";
+    print "            <td>Nombre:</td>\n";
+    print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
+        . "maxlength=\"$tamUsuario\" id=\"cursor\" /> (hasta $tamUsuario caracteres)</td>\n";
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td>Contraseña:</td>\n";
+    print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
+        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>\n";
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td>Repita la contraseña:</td>\n";
+    print "            <td><input type=\"password\" name=\"password2\" size=\"$tamPassword\" "
+        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>\n";
+    print "          </tr>\n";
+    print "        </tbody>\n";
+    print "      </table>\n";
+    print "\n";
+    print "      <p><strong>Nota</strong>: Los nombres de más de $tamUsuario caracteres "
+        . "y las contraseñas de más de $tamPassword se recortarán a esas longitudes.</p>\n";
+    print "\n";
+    print "      <p>\n";
+    print "        <input type=\"submit\" value=\"Añadir\" />\n";
+    print "        <input type=\"reset\" value=\"Borrar\" />\n";
+    print "      </p>\n";
+    print "    </form>\n";
 }
 
 pie();

@@ -1,6 +1,6 @@
 <?php
 /**
- * Registro de usuarios 2 - conectar2.php
+ * Registro de usuarios 2 - conectar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2013 Bartolomé Sintes Marco
@@ -35,7 +35,7 @@ if (isset($_SESSION['id'])) {
     $password  = recoge("password");
 
     if (!$usuario) {
-        header("Location:conectar1.php?aviso=Error: Nombre de usuario no permitido");
+        header("Location:conectar-1.php?aviso=Error: Nombre de usuario no permitido");
         exit();
     } else {
         $consulta = "SELECT * FROM $dbUsuarios
@@ -43,7 +43,8 @@ if (isset($_SESSION['id'])) {
         $result = $db->query($consulta);
         if (!$result) {
             cabecera("Identificar 2", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
-            print "<p>Error en la consulta.</p>";
+            print "    <p>Error en la consulta.</p>";
+            print "\n";
         } else {
             $valor = $result->fetch();
             if ($valor["password"] == md5($password)) {
@@ -53,7 +54,7 @@ if (isset($_SESSION['id'])) {
                 header("Location:index.php");
                 exit();
             } else {
-                header("Location:conectar1.php?aviso=Error: Nombre o contraseña incorrecta");
+                header("Location:conectar-1.php?aviso=Error: Nombre o contraseña incorrecta");
                 exit();
             }
         }

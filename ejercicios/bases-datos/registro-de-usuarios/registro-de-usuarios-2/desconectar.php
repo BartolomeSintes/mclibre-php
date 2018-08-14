@@ -29,7 +29,8 @@ session_destroy();
 
 cabecera("Desconectar", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
 
-print "<p>Está usted <strong>desconectado</strong>.</p>\n";
+print "    <p>Está usted <strong>desconectado</strong>.</p>\n";
+print "\n";
 
 pie();
 ?>

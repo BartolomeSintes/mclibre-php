@@ -1,6 +1,6 @@
 <?php
 /**
- * Registro de usuarios 2 - conectar1.php
+ * Registro de usuarios 2 - conectar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2013 Bartolomé Sintes Marco
@@ -33,27 +33,32 @@ if (isset($_SESSION['id'])) {
 
     $aviso = recoge("aviso");
     if ($aviso) {
-        print "<p style=\"color: red\">$aviso</p>\n";
+        print "    <p style=\"color: red\">$aviso</p>\n";
+        print "\n";
     }
-    print "<form action=\"conectar2.php\" method=\"" . FORM_METHOD . "\">
-  <p>Escriba su nombre de usuario y contraseña:</p>
-  <table>
-    <tbody>
-      <tr>
-        <td>Nombre:</td>
-        <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-        . "maxlength=\"$tamUsuario\" id=\"cursor\" /></td>
-      </tr>
-      <tr>
-        <td>Contraseña:</td>
-        <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
-        . "maxlength=\"$tamPassword\" /></td>
-      </tr>
-      </tbody>
-  </table>
-  <p><input type=\"submit\" value=\"Añadir\" />
-  <input type=\"reset\" value=\"Borrar\" />
-</form>\n";
+    print "    <form action=\"conectar-2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
+    print "\n";
+    print "      <table>\n";
+    print "        <tbody>\n";
+    print "          <tr>\n";
+    print "            <td>Nombre:</td>\n";
+    print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
+        . "maxlength=\"$tamUsuario\" id=\"cursor\" /></td>\n";
+    print "          </tr>\n";
+    print "          <tr>\n";
+    print "            <td>Contraseña:</td>\n";
+    print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
+        . "maxlength=\"$tamPassword\" /></td>\n";
+    print "          </tr>\n";
+    print "        </tbody>\n";
+    print "      </table>\\n";
+    print "n";
+    print "      <p>\n";
+    print "        <input type=\"submit\" value=\"Añadir\" />\n";
+    print "        <input type=\"reset\" value=\"Borrar\" />\n";
+    print "      </p>\n";
+    print "    </form>\n";
 }
 
 pie();

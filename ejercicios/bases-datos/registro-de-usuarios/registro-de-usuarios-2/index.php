@@ -29,9 +29,10 @@ if (isset($_SESSION['id'])) {
     cabecera("Inicio", MENU_IDENTIFICADO, CABECERA_SIN_CURSOR);
 } else {
     cabecera("Inicio", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
-    print "<p><strong>Nota</strong>: El usuario Administrador se llama "
+    print "    <p><strong>Nota</strong>: El usuario Administrador se llama "
         . "<strong>$administradorNombre</strong> y su contraseña es "
         . "<strong>$administradorPassword</strong>.</p>\n";
+    print "\n";
 }
 pie();
 ?>

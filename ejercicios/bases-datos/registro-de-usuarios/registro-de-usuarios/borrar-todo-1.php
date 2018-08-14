@@ -1,6 +1,6 @@
 <?php
 /**
- * Registro usuarios - borrartodo1.php
+ * Registro usuarios - borrar-todo-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2013 Bartolomé Sintes Marco
@@ -32,11 +32,14 @@ if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] 
 } else {
     cabecera("Borrar todo 1", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
 
-    print "<form action=\"borrartodo2.php\" method=\"" . FORM_METHOD . "\">
-  <p>¿Está seguro?</p>
-  <p><input type=\"submit\" value=\"Sí\" name=\"si\" />
-    <input type=\"submit\" value=\"No\" name=\"no\" /></p>
-</form>\n";
+    print "    <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";
+    print "      <p>¿Está seguro?</p>\n";
+    print "\n";
+    print "      <p>\n";
+    print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
+    print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
+    print "      </p>\n";
+    print "    </form>\n";
 
     pie();
 }

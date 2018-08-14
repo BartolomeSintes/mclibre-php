@@ -80,8 +80,10 @@ function conectaDb()
         return($db);
     } catch(PDOException $e) {
         cabecera("Error grave", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
-        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "\n";
+        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+        print "\n";
         pie();
         exit();
     }
@@ -94,34 +96,42 @@ function borraTodoMySQL($db)
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la base de datos.</p>\n";
+        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "<p>Base de datos creada correctamente.</p>\n";
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
         $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             usuario VARCHAR($tamUsuario),
             password VARCHAR($tamCifrado),
             PRIMARY KEY(id) )";
         if ($db->query($consultaCreaTablaUsuarios)) {
-            print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear la tabla de Usuarios.</p>\n";
+            print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+            print "\n";
         }
         if ($administradorPassword!="") {
             $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '" . md5($administradorPassword) . "')";
             if ($db->query($consulta)) {
-                print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+                print "\n";
             } else {
-                print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "\n";
             }
         }
     } else {
-        print "<p>Error al crear la base de datos.</p>\n";
+        print "    <p>Error al crear la base de datos.</p>\n";
+        print "\n";
     }
 }
 
@@ -132,9 +142,11 @@ function borraTodoSqlite($db)
 
     $consulta = "DROP TABLE $dbUsuarios";
     if ($db->query($consulta)) {
-       print "<p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "    <p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
         id INTEGER PRIMARY KEY,
@@ -142,17 +154,21 @@ function borraTodoSqlite($db)
         password VARCHAR($tamCifrado)
         )";
     if ($db->query($consultaCreaTablaUsuarios)) {
-        print "<p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
+        print "\n";
     } else {
-        print "<p>Error al crear la tabla de Usuarios.</p>\n";
+        print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+        print "\n";
     }
     if ($administradorPassword!="") {
         $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '" . md5($administradorPassword)."')";
         if ($db->query($consulta)) {
-            print "<p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
+            print "\n";
         } else {
-            print "<p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+            print "\n";
         }
     }
 }
@@ -199,20 +215,22 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu=MENU_PRINCIPAL)
     } else {
         print "<body>\n";
     }
-    print "<h1>Registro de usuarios - $texto</h1>
-<div id=\"menu\">
-<ul>\n";
-    if ($menu == MENU_PRINCIPAL) {
-        print "  <li><a href=\"index.php\">Conectar</a></li>";
-    } elseif ($menu == $administradorNombre) {
-        print "  <li><a href=\"borrartodo1.php\">Borrar todo</a></li>
-  <li><a href=\"salir.php\">Desconectar</a></li>";
-    } else {
-        print "  <li><a href=\"salir.php\">Desconectar</a></li>";
-    }
-    print "</ul>\n</div>\n";
+    print "  <h1>Registro de usuarios - $texto</h1>\n";
     print "\n";
-    print "<div id=\"contenido\">\n";
+    print "  <div id=\"menu\">\n";
+    print "    <ul>\n";
+    if ($menu == MENU_PRINCIPAL) {
+        print "      <li><a href=\"index.php\">Conectar</a></li>\n";
+    } elseif ($menu == $administradorNombre) {
+        print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+        print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
+    } else {
+        print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
+    }
+    print "    </ul>\n";
+    print "  </div>\n";
+    print "\n";
+    print "  <div id=\"contenido\">\n";
 }
 
 function pie()
@@ -223,8 +241,9 @@ function pie()
         print "<p><strong>Nota</strong>: El usuario Administrador "
             . "se llama <strong>root</strong> y su contraseña es\ntambién "
             . "<strong>root</strong>.</p>\n";
+        print "\n";
     }
-    print "</div>\n";
+    print "  </div>\n";
     print "\n";
 
     print "  <footer>\n";
