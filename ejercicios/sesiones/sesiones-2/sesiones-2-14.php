@@ -94,22 +94,19 @@ if (!$accionOk) {
 }
 
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-print "    <fieldset>\n";
-print "      <legend>Formulario</legend>\n";
-print "      <table cellspacing=\"5\" class=\"borde\">\n";
-print "        <tbody>\n";
-print "          <tr>\n";
-print "            <td><strong>Escriba algún nombre:</strong></td>\n";
-print "            <td><input type=\"text\" name=\"nombre\" size=\"30\" maxlength=\"30\" /></td>\n";
-print "          </tr>\n";
-print "        </tbody>\n";
-print "      </table>\n";
+print "    <table cellspacing=\"5\" class=\"borde\">\n";
+print "      <tbody>\n";
+print "        <tr>\n";
+print "          <td><strong>Escriba algún nombre:</strong></td>\n";
+print "          <td><input type=\"text\" name=\"nombre\" size=\"30\" maxlength=\"30\" /></td>\n";
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
 print "n";
-print "      <p class=\"der\">\n";
-print "        <input type=\"submit\" value=\"Añadir\" name=\"accion\" />\n";
-print "        <input type=\"reset\" value=\"Borrar\" />\n";
-print "      </p>\n";
-print "    </fieldset>\n";
+print "    <p class=\"der\">\n";
+print "      <input type=\"submit\" value=\"Añadir\" name=\"accion\" />\n";
+print "      <input type=\"reset\" value=\"Borrar\" />\n";
+print "    </p>\n";
 print "  </form>\n";
 print "\n";
 

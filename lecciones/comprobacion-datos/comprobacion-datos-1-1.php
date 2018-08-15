@@ -12,18 +12,14 @@
   <h1>Comprobación de datos</h1>
 
   <form action="comprobacion-datos-1-2.php" method="get">
-    <fieldset>
-      <legend>Formulario</legend>
+    <p>Escriba cualquier cosa en el campo siguiente para analizarlo con distintas funciones de PHP:</p>
 
-      <p>Escriba cualquier cosa en el campo siguiente para analizarlo con distintas funciones de PHP:</p>
+    <p><strong>Dato:</strong> <input type="text" name="dato" /></p>
 
-      <p><strong>Dato:</strong> <input type="text" name="dato" /></p>
-
-      <p>
-        <input type="submit" value="Enviar" />
-        <input type="reset" value="Borrar" />
-      </p>
-    </fieldset>
+    <p>
+      <input type="submit" value="Enviar" />
+      <input type="reset" value="Borrar" />
+    </p>
   </form>
 
   <footer>
