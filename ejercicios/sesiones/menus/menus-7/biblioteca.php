@@ -72,11 +72,11 @@ function pie()
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
-    print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";
-    print "      Programación web en PHP</a> por <a href=\"http://www.mclibre.org/\">Bartolomé\n";
-    print "      Sintes Marco</a>.<br />\n";
-    print "      El programa PHP que genera esta página está bajo\n";
-    print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a></p>\n";
+    print "      Este programa forma parte del curso <strong><a href=\"http://www.mclibre.org/consultar/php/\">Programación \n";
+    print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\" >Bartolomé Sintes Marco</a>.<br />\n";
+    print "      El programa PHP que genera esta página se distribuye bajo \n";
+    print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.\n";
+    print "    </p>\n";
     print "  </footer>\n";
     print "</body>\n";
     print "</html>";

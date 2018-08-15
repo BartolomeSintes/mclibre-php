@@ -49,11 +49,11 @@ print "  <p><span style=\"border: black 2px solid; padding: 10px; font-size: 300
     </p>
 
     <p class="licencia">
-      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-      Sintes Marco</a>.<br />
-      El programa PHP que genera esta página está bajo
-      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
+      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      El programa PHP que genera esta página se distribuye bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
+    </p>
   </footer>
 </body>
 </html>
