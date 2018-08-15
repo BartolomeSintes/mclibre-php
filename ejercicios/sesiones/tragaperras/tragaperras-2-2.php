@@ -47,4 +47,4 @@ if ($accion == "moneda") {
 }
 
 // Redirección automática
-header("location:tragaperras-2-1.php");
+header("Location:tragaperras-2-1.php");

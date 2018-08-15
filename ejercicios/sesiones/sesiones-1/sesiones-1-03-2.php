@@ -46,7 +46,7 @@ $accionOk = false;
 // Comprobación de accion
 if ($accion != "Poner a cero" && $accion != "subir" && $accion != "bajar") {
     // Si no es una de las tres posibles acciones, se vuelve al formulario
-    header("location:sesiones-1-03-1.php");
+    header("Location:sesiones-1-03-1.php");
     exit;
 } else {
     $accionOk = true;
@@ -64,7 +64,7 @@ if ($accionOk) {
     }
 
     // y vuelve al formulario
-    header("location:sesiones-1-03-1.php");
+    header("Location:sesiones-1-03-1.php");
     exit;
 }
 
@@ -82,5 +82,5 @@ if ($accion == "Poner a cero") {
     $_SESSION["numero"] --;
 }
 
-header("location:sesiones-1-03-1.php");
+header("Location:sesiones-1-03-1.php");
 */

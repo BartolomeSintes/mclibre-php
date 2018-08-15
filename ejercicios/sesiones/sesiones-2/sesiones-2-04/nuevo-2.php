@@ -48,7 +48,7 @@ if ($valor != "") {
 
 if ($nombreOk && $valorOk) {
     $_SESSION[$nombre] = $valor;
-    header("location:index.php");
+    header("Location:index.php");
     exit;
 }
 

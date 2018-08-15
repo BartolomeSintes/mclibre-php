@@ -35,7 +35,7 @@ $nombre   = recoge("nombre");
 $nombreOk = false;
 
 if ($nombre == "") {
-    header("location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
+    header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
     exit();
 } else {
     $nombreOk = true;

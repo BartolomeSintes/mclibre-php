@@ -61,7 +61,7 @@ if ($edad == "") {
 if (!$nombreOk || !$edadOk) {
     $_SESSION["dato"]["nombre"] = $nombre;
     $_SESSION["dato"]["edad"] = $edad;
-    header("location:$paginaAnterior");
+    header("Location:$paginaAnterior");
     exit();
 }
 ?>

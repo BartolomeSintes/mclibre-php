@@ -49,4 +49,4 @@ if ($_SESSION["dados"] < 1) {
     $_SESSION["dados"] = 1;
 }
 
-header("location:sesiones-1-11-1.php");
+header("Location:sesiones-1-11-1.php");

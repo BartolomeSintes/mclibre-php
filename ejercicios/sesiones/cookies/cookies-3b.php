@@ -24,9 +24,9 @@
 
 $compruebaCookie = isset($_COOKIE["cookiePrueba"]) ? $_COOKIE["cookiePrueba"] : "";
 if ($compruebaCookie == "X") {
-    header("location:cookies-3a.php?admiteCookies=1");
+    header("Location:cookies-3a.php?admiteCookies=1");
 } else {
-    header("location:cookies-3a.php?admiteCookies=0");
+    header("Location:cookies-3a.php?admiteCookies=0");
 }
 exit();
 ?>

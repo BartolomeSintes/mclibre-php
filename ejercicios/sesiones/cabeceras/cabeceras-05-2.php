@@ -59,7 +59,7 @@ if ($edad == "") {
 }
 
 if (!$nombreOk || !$edadOk) {
-    header("location:$paginaAnterior?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
+    header("Location:$paginaAnterior?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
     exit();
 }
 

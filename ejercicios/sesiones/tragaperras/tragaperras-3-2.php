@@ -62,4 +62,4 @@ if ($accion == "jugar" && $_SESSION["monedas"] > 0) {
 }
 
 // Redirección automática
-header("location:tragaperras-3-1.php");
+header("Location:tragaperras-3-1.php");

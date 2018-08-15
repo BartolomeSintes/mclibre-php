@@ -35,16 +35,16 @@ $edad   = recoge("edad");
 $edadOk = false;
 
 if ($edad == "") {
-    header("location:cabeceras-03-1.php?aviso=No ha escrito su edad");
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
     exit();
 } elseif (!is_numeric($edad)) {
-    header("location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
     exit();
 } elseif (!ctype_digit($edad)) {
-    header("location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
     exit();
 } elseif ($edad < 18 || $edad > 130) {
-    header("location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
+    header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
     exit();
 } else {
     $edadOk = true;

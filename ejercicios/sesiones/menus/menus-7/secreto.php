@@ -25,7 +25,7 @@
 require_once "biblioteca.php";
 
 if (!isset($_SESSION["conectado"])) {
-    header("location:index.php");
+    header("Location:index.php");
 } else {
     cabecera("Secreto");
 

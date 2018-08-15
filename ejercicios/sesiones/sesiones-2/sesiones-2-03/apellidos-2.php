@@ -42,7 +42,7 @@ if ($apellidos != "") {
 
 if ($apellidosOk) {
     $_SESSION["apellidos"] = $apellidos;
-    header("location:index.php");
+    header("Location:index.php");
     exit;
 }
 

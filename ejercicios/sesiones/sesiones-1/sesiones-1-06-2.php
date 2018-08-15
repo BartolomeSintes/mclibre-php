@@ -50,4 +50,4 @@ if ($accion == "a") {
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
 
-header("location:sesiones-1-06-1.php");
+header("Location:sesiones-1-06-1.php");

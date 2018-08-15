@@ -107,7 +107,7 @@ if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
 $db = null;
 
 if (isset($_SESSION["error"])) {
-    header("location:insertar-1.php");
+    header("Location:insertar-1.php");
 } else {
-    header("location:index.php");
+    header("Location:index.php");
 }

@@ -41,7 +41,7 @@ $nombreOk = false;
 // Comprobación de nombre
 if ($nombre == "") {
     // Si no se recibe nombre, se vuelve al formulario
-    header("location:sesiones-1-02-1.php");
+    header("Location:sesiones-1-02-1.php");
     exit;
 } else {
     $nombreOk = true;
@@ -52,7 +52,7 @@ if ($nombreOk) {
     // guarda el nombre en la sesión
     $_SESSION["nombre"] = $nombre;
     // y vuelve al formulario
-    header("location:sesiones-1-02-1.php");
+    header("Location:sesiones-1-02-1.php");
     exit;
 }
 
@@ -64,5 +64,5 @@ $nombre   = recoge("nombre");
 if ($nombre != "") {
     $_SESSION["nombre"] = $nombre;
 }
-header("location:sesiones-1-02-1.php");
+header("Location:sesiones-1-02-1.php");
  */

@@ -47,7 +47,7 @@ $accionOk = true;
 if ($accion != "centro" && $accion != "izquierda" && $accion != "derecha"
     && $accion != "arriba" && $accion != "abajo") {
     // Si no es una de las tres posibles acciones, se vuelve al formulario
-    header("location:sesiones-1-05-1.php");
+    header("Location:sesiones-1-05-1.php");
     exit;
 } else {
     $accionOk = true;
@@ -83,7 +83,7 @@ if ($accionOk) {
     }
 
     // y vuelve al formulario
-    header("location:sesiones-1-05-1.php");
+    header("Location:sesiones-1-05-1.php");
     exit;
 }
 
@@ -117,5 +117,5 @@ if ($_SESSION["y"] > 200) {
     $_SESSION["y"] = 200;
 }
 
-header("location:sesiones-1-05-1.php");
+header("Location:sesiones-1-05-1.php");
 */

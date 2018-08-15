@@ -53,7 +53,7 @@ if ($cOk) {
             unset($_SESSION[$indice]);
         }
     }
-    header("location:index.php");
+    header("Location:index.php");
     exit;
 }
 ?>

@@ -38,7 +38,7 @@ $nombreOk = false;
 
 // Si no se utilizara la variable $nombreOk, se eliminaría el else
 if ($nombre == "") {
-    header("location:cabeceras-01-1.php");
+    header("Location:cabeceras-01-1.php");
     exit();
 } else {
     $nombreOk = true;
