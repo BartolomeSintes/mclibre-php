@@ -86,7 +86,7 @@ function recorta($campo, $cadena)
 
 function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var]!="")) ?
+    $tmp = (isset($_REQUEST[$var]) && $_REQUEST[$var] != "") ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
     if (get_magic_quotes_gpc()) {
         $tmp = stripslashes($tmp);

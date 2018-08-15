@@ -74,7 +74,7 @@ comprueba_pcre($patron, $texto, "son dos palabras");
 $patron = "/^[a-z]+$/i";
 comprueba_pcre($patron, $texto, "es una única palabra que contiene solamente caracteres ingleses");
 
-if ($texto!="") {
+if ($texto != "") {
     $patron = "/^a*e*i*o*u*$/";
     comprueba_pcre($patron, $texto, "es una cadena de vocales minúsculas sin acentuar en orden alfabético ");
 } else {

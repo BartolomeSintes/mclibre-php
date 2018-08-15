@@ -77,12 +77,12 @@ if ($accion == "jugar" && $_SESSION["monedas"] > 0) {
     // Si han salido dos cerezas
     } elseif (($_SESSION["fruta1"] == $cereza && $_SESSION["fruta2"] == $cereza) ||
         ($_SESSION["fruta2"] == $cereza && $_SESSION["fruta3"] == $cereza) ||
-        ($_SESSION["fruta1"] == $cereza && $_SESSION["fruta3"]== $cereza)) {
+        ($_SESSION["fruta1"] == $cereza && $_SESSION["fruta3"] == $cereza)) {
         $_SESSION["premio"] = 4;
     // Si ha salido una cereza
     } elseif ($_SESSION["fruta1"] == $cereza ||
         $_SESSION["fruta2"] == $cereza ||
-        $_SESSION["fruta3"]== $cereza) {
+        $_SESSION["fruta3"] == $cereza) {
         $_SESSION["premio"] = 1;
         // Si además de una cereza hay dos frutas iguales
         if ($_SESSION["fruta1"] == $_SESSION["fruta2"] ||

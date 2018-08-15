@@ -143,7 +143,7 @@ for ($i=1; $i<=$numeroValores; $i++) {
 
 $valoresTodoVacio = true;
 for ($i=1; $i<=$numeroValores; $i++) {
-    if ($valores[$i]!="") {
+    if ($valores[$i] != "") {
         $valoresTodoVacio = false;
     }
 }

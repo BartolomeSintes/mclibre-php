@@ -53,7 +53,7 @@ function borraTodoMySQL($db)
             print "    <p>Error al crear la tabla de Usuarios.</p>\n";
             print "\n";
         }
-        if ($administradorPassword!="") {
+        if ($administradorPassword != "") {
             $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
                 '$administradorNombre', '" . md5($administradorPassword) . "')";
             if ($db->query($consulta)) {
@@ -95,7 +95,7 @@ function borraTodoSqlite($db)
         print "    <p>Error al crear la tabla de Usuarios.</p>\n";
         print "\n";
     }
-    if ($administradorPassword!="") {
+    if ($administradorPassword != "") {
         $consulta = "INSERT INTO $dbUsuarios VALUES (NULL,
             '$administradorNombre', '" . md5($administradorPassword) . "')";
         if ($db->query($consulta)) {

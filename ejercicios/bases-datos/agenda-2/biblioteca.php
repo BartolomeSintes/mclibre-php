@@ -58,7 +58,7 @@ if ($dbMotor == MYSQL) {
 
 $administradorNombre   = "root";  // Nombre del usuario Administrador
 $administradorPassword = "root";  // Password del usuario Administrador
-// Si $administradorPassword!="", al crearse las tablas, se crea el usuario
+// Si $administradorPassword != "", al crearse las tablas, se crea el usuario
 // Si $administradorPassword == "", no se crea el usuario
 // Lo he hecho para que en el ejemplo colgado en la web la gente pueda entrar
 // como Administrador
@@ -323,7 +323,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menu_principal"
     print "    <ul>\n";
     if ($menu == "menu_principal") {
         print "      <li><a href=\"index.php\">Conectar</a></li>\n";
-    } elseif ($menu==$administradorNombre) {
+    } elseif ($menu == $administradorNombre) {
         print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
         print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
     } else {

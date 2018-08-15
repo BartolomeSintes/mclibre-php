@@ -210,7 +210,7 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
     print "\n";
 
     if ($cine != "on" && $deporte != "on" && $literatura != "on" &&
-        $musica !="on" && $tebeos != "on" && $television != "on") {
+        $musica != "on" && $tebeos != "on" && $television != "on") {
         print "  <p class=\"aviso\">No ha marcado ninguna afición.</p>\n";
     } else {
         print "  <p>Le gusta: ";

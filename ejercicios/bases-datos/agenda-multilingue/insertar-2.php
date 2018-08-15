@@ -62,7 +62,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
             if (!$result) {
                 print "    <p>" . _("Error en la consulta") . ".</p>\n";
                 print "\n";
-            } elseif ($result->fetchColumn()==1) {
+            } elseif ($result->fetchColumn() == 1) {
                 print "    <p>" . _("El registro ya existe") . ".</p>\n";
                 print "\n";
             } else {

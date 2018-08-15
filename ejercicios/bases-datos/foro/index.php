@@ -62,7 +62,7 @@ if (!$result) {
                     print "      <p class=\"dis_aut\">Propuesta por "
                         . "<strong>$valor[autor]</strong> el "
                         . fechaDma($valor["fecha"]) . " - ";
-                    if ($numInt==1) {
+                    if ($numInt == 1) {
                         print "1 intervención";
                     } else {
                         print "$numInt intervenciones";

@@ -167,7 +167,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     // Después busco el máximo y el mínimo (las funciones min y max
     // no sirven porque puede haber valores vacíos
     foreach ($valores as $valor) {
-        if ($valor!="") {
+        if ($valor != "") {
             if ($valor>$maximo) {
                 $maximo = $valor;
             }
@@ -178,7 +178,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     }
     // Por último se convierten a la cadena
     $cadena = "";
-    if ($maximo==$minimo) {
+    if ($maximo == $minimo) {
         foreach ($valores as $valor) {
             if ($valor == "") {
                 $cadena .= "_";

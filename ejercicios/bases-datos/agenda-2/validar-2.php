@@ -41,7 +41,7 @@ if (isset($_SESSION["multiagendaUsuario"])) {
     if (!$usuario|| ($usuario == "menu_principal")) {
         header("Location:index.php?aviso=Nombre de usuario no permitido");
         exit();
-    } elseif ($password!=md5($password2)) {
+    } elseif ($password != md5($password2)) {
         header("Location:index.php?aviso=Error: Las contraseñas no coinciden");
         exit();
     } else {
@@ -52,7 +52,7 @@ if (isset($_SESSION["multiagendaUsuario"])) {
             cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
             print "    <p>Error en la consulta.</p>";
             print "\n";
-        } elseif ($result->fetchColumn()!=0) {
+        } elseif ($result->fetchColumn() != 0) {
             cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
             print "    <p>El nombre de usuario ya está registrado.</p>";
             print "\n";

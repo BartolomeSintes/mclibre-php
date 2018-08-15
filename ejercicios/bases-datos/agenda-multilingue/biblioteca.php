@@ -348,7 +348,7 @@ function cabecera($texto, $menu="menu_principal")
     print "    <ul>\n";
     if ($menu == "menu_principal") {
         print "      <li><a href=\"index.php\">" . _("Conectar") . "</a></li>\n";
-    } elseif ($menu==$administradorNombre) {
+    } elseif ($menu == $administradorNombre) {
         print "      <li><a href=\"borrar-todo-1.php\">" . _("Borrar todo") . "</a></li>\n";
         print "      <li><a href=\"salir.php\">" . _("Desconectar") . "</a></li>\n";
     } else {

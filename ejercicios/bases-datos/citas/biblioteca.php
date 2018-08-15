@@ -398,7 +398,7 @@ function cabecera($texto, $menu="menu_principal")
         print "      <li><a href=\"cit-borrar-1.php\">Borrar</a></li>\n";
         print "      <li><a href=\"cit-etiquetas-1.php\">Asignar etiquetas</a></li>\n";
         print "      <li><a href=\"cit-eti-borrar-1.php\">Borrar etiquetas</a></li>\n";
-      } elseif ($menu==$administradorNombre) {
+      } elseif ($menu == $administradorNombre) {
         print "      <li><a href=\"adm-borrar-todo-1.php\">Borrar todo</a></li>\n";
         print "      <li><a href=\"adm-borrar-eti-1.php\">Borrar etiquetas</a></li>\n";
         print "      <li><a href=\"eti-listar.php\">Ver etiquetas</a></li>\n";

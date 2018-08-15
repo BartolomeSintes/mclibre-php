@@ -67,7 +67,7 @@ if (!isset($_SESSION["citasUsuario"])) {
                 if (!$result) {
                     print "    <p>Error en la consulta.</p>\n";
                     print "\n";
-                } elseif ($result->fetchColumn()==1) {
+                } elseif ($result->fetchColumn() == 1) {
                     print "    <p>El registro ya existe.</p>\n";
                     print "\n";
                 } else {

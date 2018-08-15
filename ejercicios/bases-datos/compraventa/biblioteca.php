@@ -317,7 +317,7 @@ function cabecera($texto, $menu="menu_principal")
     if ($menu == "menu_principal") {
         print "      <li><a href=\"index.php\">Conectar</a></li>\n";
         print "      <li><a href=\"listar.php\">Ver artículos</a></li>\n";
-    } elseif ($menu==$administradorNombre) {
+    } elseif ($menu == $administradorNombre) {
         print "      <li><a href=\"adm-borrar-todo-1.php\">Borrar todo</a></li>\n";
         print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
     } elseif ($menu == 'compra') {

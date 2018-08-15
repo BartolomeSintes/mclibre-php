@@ -194,7 +194,7 @@ function calendario ($fecha, $enlaces)
     $mes     = substr($fecha, 5, 2);
     $anyo    = substr($fecha, 0, 4);
 
-    $esBisiesto = (($anyo%400 == 0) || (($anyo%100 != 0) &amp;&amp; ($anyo%4 == 0)))
+    $esBisiesto = ($anyo%400 == 0 || ($anyo%100 != 0 &amp;&amp; $anyo%4 == 0))
                     ? "1" : "0";
     $duraMeses = ($esBisiesto) ?
         [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31] :

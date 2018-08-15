@@ -41,7 +41,7 @@ if (!$result) {
     print "      <h2>$fecha</h2>\n";
     print "\n";
     print "      <p>";
-    if ($result->fetchColumn()!=0) {
+    if ($result->fetchColumn() != 0) {
         $consulta = "SELECT * FROM $dbEntradas
             WHERE fecha='$fecha'";
         $result = $db->query($consulta);

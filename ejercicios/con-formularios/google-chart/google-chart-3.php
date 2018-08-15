@@ -76,7 +76,7 @@ function recogeNumero($var, $inicial, $minimo, $maximo) {
 function recogeTexto($var, $inicial, $valores) {
     $tmp = recoge($var);
     foreach ($valores as $valor) {
-        if ($tmp==$valor) {
+        if ($tmp == $valor) {
             return($tmp);
         }
     }
@@ -214,7 +214,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     // Después busco el máximo y el mínimo (las funciones min y max
     // no sirven porque puede haber valores vacíos
     foreach ($valores as $valor) {
-        if ($valor!="") {
+        if ($valor != "") {
             if ($valor>$maximo) {
                 $maximo = $valor;
             }
@@ -230,7 +230,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
 
     // Por último se convierten a la cadena
     $cadena = "";
-    if ($maximo==$minimo) {
+    if ($maximo == $minimo) {
         foreach ($valores as $valor) {
             // En los gráficos de tartas no pueden haber huecos en la cadena
             if ($tipoGrafica == "p" || $tipoGrafica == "p3") {

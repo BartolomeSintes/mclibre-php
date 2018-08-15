@@ -68,7 +68,7 @@ if ($autor == "'" . ANONIMO_AUTOR . "'" && $intervencion == "'" . ANONIMO_INTERV
             if (!$result) {
                 print "    <p>Error en la consulta.</p>\n";
                 print "\n";
-            } elseif ($result->fetchColumn()!=0) {
+            } elseif ($result->fetchColumn() != 0) {
                 print "    <p>Ya existe una intervención con ese autor y texto.</p>\n";
                 print "\n";
             } else {

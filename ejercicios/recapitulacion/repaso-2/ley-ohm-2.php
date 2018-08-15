@@ -121,7 +121,7 @@ if ($tensionOk && $intensidadOk && $resistenciaOk) {
     } elseif ($resistencia != "" && $tension != 0 && $resistencia == 0) {
         print "  <p class=\"aviso\">Si la resistencia es nula, la tensión no puede ser no nula.</p>\n";
         print "\n";
-    } elseif ($intensidad != "" && $tension !=0 && $intensidad == 0) {
+    } elseif ($intensidad != "" && $tension != 0 && $intensidad == 0) {
         print "  <p class=\"aviso\">Si la intensidad es nula, la tensión no puede ser no nula.</p>\n";
         print "\n";
     } else {

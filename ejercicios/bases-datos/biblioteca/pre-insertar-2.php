@@ -75,7 +75,7 @@ if (!$fechaOk) {
         } elseif ($resultObra->fetchColumn() == 0) {
             print "    <p>El identificador de Obra no es correcto.</p>\n";
             print "\n";
-        } elseif ($resultPrestamo->fetchColumn()!=0) {
+        } elseif ($resultPrestamo->fetchColumn() != 0) {
             print "    <p>El registro de préstamo ya existe.</p>\n";
             print "\n";
         } else {

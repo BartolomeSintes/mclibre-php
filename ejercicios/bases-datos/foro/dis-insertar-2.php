@@ -57,7 +57,7 @@ if ($autor == "'" . ANONIMO_AUTOR . "'" && $titulo == "'" . ANONIMO_TITULO . "'"
         if (!$result) {
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
-        } elseif ($result->fetchColumn()!=0) {
+        } elseif ($result->fetchColumn() != 0) {
             print "    <p>Ya existe una discusión con ese título, autor y descripción.</p>\n";
             print "\n";
         } else {

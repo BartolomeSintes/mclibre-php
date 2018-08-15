@@ -76,7 +76,7 @@ function recogeNumero($var, $inicial, $minimo, $maximo) {
 function recogeTexto($var, $inicial, $valores) {
     $tmp = recoge($var);
     foreach ($valores as $valor) {
-        if ($tmp==$valor) {
+        if ($tmp == $valor) {
             return($tmp);
         }
     }
@@ -237,7 +237,7 @@ if (!$okValores) {
     // Después busco el máximo y el mínimo (las funciones min y max
     // no sirven porque puede haber valores vacíos
     foreach ($valores as $valor) {
-        if ($valor!="") {
+        if ($valor != "") {
             if ($valor>$maximo) {
                 $maximo = $valor;
             }
@@ -249,7 +249,7 @@ if (!$okValores) {
 
     // Por último se convierten a la cadena
     $cadena = "";
-    if ($maximo==$minimo) {
+    if ($maximo == $minimo) {
         foreach ($valores as $valor) {
             if ($valor == "") {
                $cadena .= "_";
@@ -271,7 +271,7 @@ if (!$okValores) {
 
 $cadenaGrafica = "http://chart.apis.google.com/chart?chs={$tamanyoGraficaX}"
     . "x{$tamanyoGraficaY}&amp;chd=s:{$cadena}&amp;cht=$tipoGrafica";
-if ($tituloGrafica!="") {
+if ($tituloGrafica != "") {
     $tituloGrafica = str_replace(" ", "+", $tituloGrafica);
     $cadenaGrafica .= "&amp;chtt=$tituloGrafica";
 }
