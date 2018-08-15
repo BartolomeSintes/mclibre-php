@@ -95,7 +95,8 @@ if ($temperaturaOk && $unidadOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-04">4 de noviembre de 2016</time></p>
+      <time datetime="2016-11-04">4 de noviembre de 2016</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

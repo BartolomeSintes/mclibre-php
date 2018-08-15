@@ -91,7 +91,8 @@ if ($numeroOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-10-16">16 de octubre de 2014</time></p>
+      <time datetime="2014-10-16">16 de octubre de 2014</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

@@ -23,7 +23,8 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-07-26">26 de julio de 2018</time></p>
+      <time datetime="2018-07-26">26 de julio de 2018</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

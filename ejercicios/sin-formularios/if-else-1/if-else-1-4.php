@@ -63,7 +63,8 @@ if ($dado1 == $dado2 && $dado1 == $dado3) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-12">12 de octubre de 2017</time></p>
+      <time datetime="2017-10-12">12 de octubre de 2017</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

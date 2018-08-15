@@ -148,7 +148,8 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2016-12-12\">12 de diciembre de 2016</time></p>\n";
+    print "      <time datetime=\"2016-12-12\">12 de diciembre de 2016</time>\n";
+    print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
     print "      Este programa forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";

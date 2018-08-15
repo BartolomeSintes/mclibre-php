@@ -68,7 +68,6 @@ $bOk              = false;
 $preguntasMinimo  = 1;
 $respuestasMinimo = 2;
 $numeroMaximo     = 10;
-$encuestaRellenas = 0;
 
 // Comprobación de $preguntas (entero entre 2 y 10)
 if ($preguntas == "") {
@@ -161,7 +160,8 @@ if ($preguntasOk && $respuestasOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-05">5 de noviembre de 2015</time></p>
+      <time datetime="2015-11-05">5 de noviembre de 2015</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

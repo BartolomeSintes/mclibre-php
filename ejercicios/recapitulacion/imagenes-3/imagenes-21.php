@@ -63,7 +63,8 @@ print "  <p><img src=\"imagenes-21-svg.php?ancho=$ancho&amp;color={$colores[$col
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-10-27">27 de octubre de 2014</time></p>
+      <time datetime="2014-10-27">27 de octubre de 2014</time>
+    </p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

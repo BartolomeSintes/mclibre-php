@@ -35,6 +35,7 @@ if (!isset($_SESSION["numeroDibujos"])) {
 // Si no están guardado en la sesión los dibujos de la partida ....
 if (!isset($_SESSION["dibujos"])) {
     // ... creamos una matriz con todos los valores posibles (61 valores)
+    $valores = [];
     for ($i = 128000; $i <= 128060; $i++) {
         $valores[] = $i;
     }
@@ -100,7 +101,8 @@ for ($i = 0; $i < 2*$_SESSION["numeroDibujos"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-20">20 de noviembre de 2017</time></p>
+      <time datetime="2017-11-20">20 de noviembre de 2017</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

@@ -70,6 +70,11 @@ if ($jugadores == "") {
 }
 
 if ($jugadoresOk) {
+    $c1 = [];
+    $c2 = [];
+    $c3 = [];
+    $total = [];
+
     for ($i = 1; $i <= $jugadores; $i++) {
         $c1[$i] = rand(1, 10);
         $c2[$i] = rand(1, 10);
@@ -97,7 +102,8 @@ if ($jugadoresOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-31">31 de octubre de 2017</time></p>
+      <time datetime="2017-10-31">31 de octubre de 2017</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

@@ -258,7 +258,8 @@ if ($valoresTodoOk) {
 print "  <footer>\n";
 print "    <p class=\"ultmod\">\n";
 print "      Última modificación de esta página:\n";
-print "      <time datetime=\"2011-11-16\">16 de noviembre de 2011</time></p>\n";
+print "      <time datetime=\"2011-11-16\">16 de noviembre de 2011</time>\n";
+print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";
 print "      Esta página forma parte del curso <a href=\"http://www.mclibre.org/consultar/php/\">\n";

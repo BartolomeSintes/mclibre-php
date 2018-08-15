@@ -100,7 +100,8 @@ if (isset($_REQUEST["enviar"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2010-03-23">23 de marzo de 2010</time></p>
+      <time datetime="2010-03-23">23 de marzo de 2010</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

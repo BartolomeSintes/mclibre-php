@@ -15,7 +15,7 @@
     <p>Escriba un número (0 &lt; número &le; 20) y dibujaré una tabla cuadrada de
     ese tamaño con casillas de verificación en cada celda.</p>
 
-    <table cellspacing="5" class="borde">
+    <table class="borde">
       <tbody>
         <tr>
           <td><strong>Tamaño de la tabla:</strong></td>
@@ -33,7 +33,8 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-10-16">16 de octubre de 2014</time></p>
+      <time datetime="2016-10-16">16 de octubre de 2014</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

@@ -92,7 +92,8 @@ print "  </ol>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2011-11-14">14 de noviembre de 2011</time></p>
+      <time datetime="2011-11-14">14 de noviembre de 2011</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

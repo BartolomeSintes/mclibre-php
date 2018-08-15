@@ -14,7 +14,7 @@
   <form action="rombo-estrellas-1-2.php" method="get">
     <p>Escriba el alto (0 &lt; alto &le; 30) y mostraré un rombo de estrellas de ese tamaño.</p>
 
-    <table cellspacing="5" class="borde">
+    <table class="borde">
       <tbody>
         <tr>
           <td><strong>Alto:</strong></td>
@@ -32,7 +32,8 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-11-04">4 de noviembre de 2014</time></p>
+      <time datetime="2014-11-04">4 de noviembre de 2014</time>
+    </p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

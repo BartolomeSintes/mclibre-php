@@ -14,7 +14,7 @@
   <form action="calculos-estadisticos-1-2.php" method="get">
     <p>Escriba cuántos valores quiere introducir (0 &lt; valores &le; 20).</p>
 
-    <table cellspacing="5" class="borde">
+    <table class="borde">
       <tbody>
         <tr>
           <td><strong>Cantidad:</strong></td>
@@ -32,7 +32,8 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2009-04-09">9 de abril de 2009</time></p>
+      <time datetime="2009-04-09">9 de abril de 2009</time>
+    </p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

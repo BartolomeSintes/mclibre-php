@@ -83,7 +83,8 @@ print "            <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-09">9 de noviembre de 2017</time></p>
+      <time datetime="2017-11-09">9 de noviembre de 2017</time>
+    </p>
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

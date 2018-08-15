@@ -55,7 +55,8 @@ print "  </svg></p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-29">29 de septiembre de 2017</time></p>
+      <time datetime="2017-09-29">29 de septiembre de 2017</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

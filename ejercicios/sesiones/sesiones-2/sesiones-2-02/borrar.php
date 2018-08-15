@@ -46,7 +46,8 @@ session_destroy();
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
+      <time datetime="2017-11-15">15 de noviembre de 2017</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">

@@ -41,11 +41,11 @@ session_start();
 
   <form action="sesiones-2-11-2.php" method="get">
 <?php
-print "  <table>\n";
-print "    <tbody>\n";
-print "      <tr>\n";
-print "        <td>Escriba su nombre:</td>\n";
-print "        <td><input type=\"text\" name=\"nombre\" ";
+print "    <table>\n";
+print "      <tbody>\n";
+print "        <tr>\n";
+print "          <td>Escriba su nombre:</td>\n";
+print "          <td><input type=\"text\" name=\"nombre\" ";
 if (isset($_SESSION["dato"]["nombre"])) {
     print "value=\"{$_SESSION["dato"]["nombre"]}\" ";
 }
@@ -54,10 +54,10 @@ if (isset($_SESSION["aviso"]["nombre"])) {
     print " <span class=\"aviso\">{$_SESSION["aviso"]["nombre"]}</span>";
 }
 print "</td>\n";
-print "      </tr>\n";
-print "      <tr>\n";
-print "        <td>Escriba su edad (entre 18 y 130 años):</td>\n";
-print "        <td><input type=\"text\" name=\"edad\" ";
+print "        </tr>\n";
+print "        <tr>\n";
+print "          <td>Escriba su edad (entre 18 y 130 años):</td>\n";
+print "          <td><input type=\"text\" name=\"edad\" ";
 if (isset($_SESSION["dato"]["edad"])) {
     print "value=\"{$_SESSION["dato"]["edad"]}\" ";
 }
@@ -66,9 +66,9 @@ if (isset($_SESSION["aviso"]["edad"])) {
     print " <span class=\"aviso\">{$_SESSION["aviso"]["edad"]}</span>";
 }
 print "</td>\n";
-print "      </tr>\n";
-print "    </tbody>\n";
-print "  </table>\n";
+print "        </tr>\n";
+print "      </tbody>\n";
+print "    </table>\n";
 
 unset($_SESSION["aviso"]);
 unset($_SESSION["dato"]);
@@ -83,7 +83,8 @@ unset($_SESSION["dato"]);
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-11-15">15 de noviembre de 2017</time></p>
+      <time datetime="2017-11-15">15 de noviembre de 2017</time>
+    </p>
 
     <p class="licencia">
       Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
