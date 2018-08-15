@@ -117,7 +117,7 @@ $okValores = true;
 for ($i=1; $i<=$numeroValores; $i++) {
     if (!isset($valores[$i])) {
         $okValores = false;
-    } elseif (($valores[$i]!="")&&!(is_numeric($valores[$i]))) {
+    } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {
         $okValores = false;
     }
 }
@@ -224,7 +224,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
         }
     }
     // En los gráficos de tartas hay que contar desde cero
-    if (($tipoGrafica == "p") || ($tipoGrafica == "p3")) {
+    if ($tipoGrafica == "p" || $tipoGrafica == "p3") {
         $minimo = 0;
     }
 
@@ -233,7 +233,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     if ($maximo==$minimo) {
         foreach ($valores as $valor) {
             // En los gráficos de tartas no pueden haber huecos en la cadena
-            if (($tipoGrafica == "p") || ($tipoGrafica == "p3")) {
+            if ($tipoGrafica == "p" || $tipoGrafica == "p3") {
                 if (!($valor == "")) {
                    $cadena .= "f";
                 }
@@ -248,7 +248,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     } else {
         foreach ($valores as $valor) {
             // En los gráficos de tartas no pueden haber huecos en la cadena
-            if (($tipoGrafica == "p") || ($tipoGrafica == "p3")) {
+            if ($tipoGrafica == "p" || $tipoGrafica == "p3") {
                 if (!($valor == "")) {
                     $letra = round(($valor-$minimo)/($maximo-$minimo)*61);
                     $cadena .= $simpleEncoding[$letra];

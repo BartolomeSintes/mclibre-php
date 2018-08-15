@@ -349,7 +349,7 @@ function pie()
 {
     global $administradorPassword, $_SESSION;
 
-    if (($administradorPassword != "")&&!isset($_SESSION["compraventaUsuario"])) {
+    if ($administradorPassword != "" && !isset($_SESSION["compraventaUsuario"])) {
         print "    <p><strong>Nota</strong>: El usuario Administrador se llama "
             . "<strong>root</strong> y su contraseña es también <strong>root</strong>.</p>\n";
         print "\n";

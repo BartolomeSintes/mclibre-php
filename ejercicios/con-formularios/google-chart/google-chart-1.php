@@ -94,14 +94,14 @@ $okValores = true;
 for ($i=1; $i<$numeroValores; $i++) {
     if (!isset($valores[$i])) {
         $okValores = false;
-    } elseif (($valores[$i]!="")&&!(is_numeric($valores[$i]))) {
+    } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {
         $okValores = false;
     }
     // Al hacer clic en Añadir el útlimo valor todavía no existe
     if (!isset($_REQUEST["anyadir"])) {
         if (!isset($valores[$numeroValores])) {
             $okValores = false;
-        } elseif (($valores[$i]!="")&&!(is_numeric($valores[$i]))) {
+        } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {
             $okValores = false;
         }
     }

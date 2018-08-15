@@ -96,7 +96,7 @@ for ($i=1; $i<=$numeroValores; $i++) {
         $valores[$i] = "";
     } elseif ($valores[$i] == "") {  // Por si un valor es vacío
         $valoresTodoOk = false;
-    } elseif (($valores[$i]!="") && !is_numeric($valores[$i])) {  // Por si un valor no es numérico
+    } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {  // Por si un valor no es numérico
         $valoresOk[$i] = false;
         $valoresTodoOk = false;
     }

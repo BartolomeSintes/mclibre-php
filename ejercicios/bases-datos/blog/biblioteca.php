@@ -174,17 +174,17 @@ function calendario ($fecha, $enlaces)
 
     date_default_timezone_set(ZONA_HORARIA);
     if (!ctype_digit(substr($fecha, 5, 2)) || !ctype_digit(substr($fecha, 8, 2))
-        || !ctype_digit(substr($fecha, 0, 4))) {
+            || !ctype_digit(substr($fecha, 0, 4))) {
         $fecha = date("Y-m-d");
     } elseif (!checkdate((int)substr($fecha, 5, 2), (int)substr($fecha, 8, 2),
-                    (int)substr($fecha, 0, 4))) {
+            (int)substr($fecha, 0, 4))) {
         $fecha = date("Y-m-d");
     }
     $diaInicial = substr($fecha, 8, 2);
-    $mes     = substr($fecha, 5, 2);
-    $anyo    = substr($fecha, 0, 4);
+    $mes        = substr($fecha, 5, 2);
+    $anyo       = substr($fecha, 0, 4);
 
-    $esBisiesto = (($anyo%400 == 0) || (($anyo%100!=0) && ($anyo%4 == 0)))
+    $esBisiesto = ($anyo%400 == 0 || ($anyo%100 != 0 && $anyo%4 == 0))
                     ? "1" : "0";
     $duraMeses = ($esBisiesto) ?
         [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31] :
@@ -243,7 +243,7 @@ function calendario ($fecha, $enlaces)
             print "        <tr>\n";
             for ($i=0; $i<7; $i++) {
                 $num = $num_inicio + $i;
-                if (($num>0) && ($num<=$duraMeses[(int)($mes)])) {
+                if ($num > 0 && $num <= $duraMeses[(int)($mes)]) {
                     if ($enlaces == "editar") {
                         print "          <td class=\"enlace\"><a href=\"editar.php"
                             . "?fecha=$anyo-$mes-".sprintf("%02d", $num)

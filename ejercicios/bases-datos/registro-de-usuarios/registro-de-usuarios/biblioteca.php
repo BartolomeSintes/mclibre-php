@@ -237,7 +237,7 @@ function pie()
 {
     global $administradorPassword, $_SESSION;
 
-    if (($administradorPassword!="") &&!isset($_SESSION["multiagendaUsuario"])) {
+    if ($administradorPassword != "" && !isset($_SESSION["multiagendaUsuario"])) {
         print "<p><strong>Nota</strong>: El usuario Administrador "
             . "se llama <strong>root</strong> y su contraseña es\ntambién "
             . "<strong>root</strong>.</p>\n";

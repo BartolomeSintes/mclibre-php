@@ -62,7 +62,7 @@ if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito el número de valores "
         . "como número entero positivo.</p>\n";
     print "\n";
-} elseif (($numero < NUM_MINIMO) || ($numero > NUM_MAXIMO)) {
+} elseif ($numero < NUM_MINIMO || $numero > NUM_MAXIMO) {
     print "  <p class=\"aviso\">El número de valores debe estar entre "
         . NUM_MINIMO . " y " . NUM_MAXIMO . ".</p>\n";
     print "\n";
