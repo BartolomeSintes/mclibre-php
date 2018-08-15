@@ -2,7 +2,7 @@
 /**
  * Seleccione dibujos - foreach-1-02-2.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

@@ -2,7 +2,7 @@
 /**
  * Bases de datos 2-3 - config.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

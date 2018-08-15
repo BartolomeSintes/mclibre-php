@@ -2,7 +2,7 @@
 /**
  * Hoja de estilo  - cabeceras-11-css.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
   

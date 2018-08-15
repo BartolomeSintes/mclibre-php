@@ -2,7 +2,7 @@
 /**
  * Bases de datos 2-1 - biblioteca.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -84,7 +84,7 @@ function pie()
     print "  </main>\n";
     print "\n";
     print "  <footer>\n";
-    print "    <p>Escribe tu nombre</p>\n";
+    print "    <p>Escriba su nombre</p>\n";
     print "  </footer>\n";
     print "</body>\n";
     print "</html>";

@@ -2,7 +2,7 @@
 /**
  * Bases de datos 1-3 - listar.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

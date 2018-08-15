@@ -2,7 +2,7 @@
 /**
  * Bases de datos 1-4 - borrar-2.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

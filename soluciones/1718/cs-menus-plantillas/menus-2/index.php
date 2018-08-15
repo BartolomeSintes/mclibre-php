@@ -2,7 +2,7 @@
 /**
  * Menús 2 - index.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

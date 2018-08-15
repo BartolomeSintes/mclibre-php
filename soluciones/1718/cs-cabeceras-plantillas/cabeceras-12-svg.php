@@ -2,7 +2,7 @@
 /**
  * Imagen - cabeceras-12-svg.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

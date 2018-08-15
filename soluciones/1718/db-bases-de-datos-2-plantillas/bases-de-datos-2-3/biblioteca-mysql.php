@@ -2,7 +2,7 @@
 /**
  * Bases de datos 2-3 - biblioteca-mysql.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -40,6 +40,7 @@ function conectaDb()
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
         print "    <p>Error: " . $e->getMessage() . "</p>\n";
+        print "\n";
         pie();
         exit();
     }

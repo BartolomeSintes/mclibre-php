@@ -2,7 +2,7 @@
 /**
  * Elimine dibujos en orden - foreach-1-03-1.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -14,11 +14,11 @@ print "<!-- Ejercicio incompleto -->\n";
 <head>
   <meta charset="utf-8" />
   <title>Elimine dibujos. foreach (1). Sesiones.
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
   <style type="text/css">
-  button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
+    button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
   </style>
 </head>
 
@@ -30,7 +30,7 @@ print "/* Ejercicio incompleto */\n";
 ?>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

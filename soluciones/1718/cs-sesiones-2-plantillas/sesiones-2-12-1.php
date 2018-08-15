@@ -2,7 +2,7 @@
 /**
  * Sesiones (2) 12 - sesiones-2-12-1.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -38,7 +38,7 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
 ?>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Dibujos con cuadrados (Formulario). for (5).
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -16,7 +16,8 @@
       con el número de cuadrados que haya indicado.</p>
 
     <p><strong>Número de cuadrados por dibujo:</strong>
-      <input type="number" name="cuadrados" min="1" max="50" value="10" /></p>
+      <input type="number" name="cuadrados" min="1" max="50" value="10" />
+    </p>
 
     <p>
       <input type="submit" value="Dibujar" />
@@ -25,7 +26,7 @@
   </form>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

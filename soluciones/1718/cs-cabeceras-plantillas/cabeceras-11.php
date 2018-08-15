@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Hoja de estilo. Cabeceras.
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="cabeceras-11-css.php" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -14,7 +14,7 @@
   <p>Texto de la página</p>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

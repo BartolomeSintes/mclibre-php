@@ -2,7 +2,7 @@
 /**
  * Sesiones (2) 11 - sesiones-2-11-2.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -31,7 +31,7 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
   <p><a href="sesiones-2-11-1.php">Volver al inicio.</a></p>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

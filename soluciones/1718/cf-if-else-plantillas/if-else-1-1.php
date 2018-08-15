@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Calculadora de divisiones (Formulario). if ... elseif ... else ...
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -13,8 +13,7 @@
 
   <form action="if-else-1-2.php" method="get">
     <p>Escriba el dividendo y el divisor (0 &le; dividendo &lt; 1.000; 0 &lt; divisor &lt; 1.000)
-      para calcular el cociente y el resto de la división.
-    </p>
+      para calcular el cociente y el resto de la división.</p>
 
     <table>
       <tbody>
@@ -36,7 +35,7 @@
   </form>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

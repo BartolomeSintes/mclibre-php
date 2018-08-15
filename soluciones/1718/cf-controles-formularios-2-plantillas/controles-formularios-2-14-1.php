@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Datos personales 5 (Formulario). Controles en formularios (2).
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -21,9 +21,11 @@
         <tbody>
           <tr>
             <td><strong>Nombre:</strong><br />
-              <input type="text" name="nombre" size="20" maxlength="20" /></td>
+              <input type="text" name="nombre" size="20" maxlength="20" />
+            </td>
             <td><strong>Apellidos:</strong><br />
-              <input type="text" name="apellidos" size="20" maxlength="20" /></td>
+              <input type="text" name="apellidos" size="20" maxlength="20" />
+            </td>
             <td><strong>Edad:</strong><br />
               <select name="edad">
                 <option>...</option>
@@ -36,14 +38,17 @@
           </tr>
           <tr>
             <td><strong>Peso:</strong><br />
-              <input type="number" name="peso" min="1" max="250" /> kg</td>
+              <input type="number" name="peso" min="1" max="250" /> kg
+            </td>
             <td><strong>Sexo:</strong><br />
               <label><input type="radio" name="genero" value="hombre" />Hombre</label>
-              <label><input type="radio" name="genero" value="mujer" />Mujer</label></td>
+              <label><input type="radio" name="genero" value="mujer" />Mujer</label>
+            </td>
             <td><strong>Estado Civil:</strong><br />
               <label><input type="radio" name="estadoCivil" value="soltero" />Soltero</label>
               <label><input type="radio" name="estadoCivil" value="casado" />Casado</label>
-              <label><input type="radio" name="estadoCivil" value="otro" />Otro</label></td>
+              <label><input type="radio" name="estadoCivil" value="otro" />Otro</label>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -72,7 +77,7 @@
   </form>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

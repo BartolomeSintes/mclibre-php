@@ -2,7 +2,7 @@
 /**
  * Memorión (1) - memorion-1-2.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

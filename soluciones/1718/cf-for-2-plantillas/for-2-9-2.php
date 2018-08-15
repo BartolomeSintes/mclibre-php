@@ -2,7 +2,7 @@
 /**
  * Triángulo de estrellas 5 (Resultado) - for-2-9-2.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 ?>
@@ -11,7 +11,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Triángulo de estrellas 5 (Resultado). for (2).
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -28,7 +28,7 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
   <p><a href="for-2-9-1.php">Volver al formulario.</a></p>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

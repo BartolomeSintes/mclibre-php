@@ -2,7 +2,7 @@
 /**
  * Menús 2 - biblioteca.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -16,7 +16,7 @@ function cabecera($texto, $menu)
     print "  <meta charset=\"utf-8\" />\n";
 
     print "  <title>Ejercicio incompleto. Menús 2. Menús. \n";
-    print "    Escribe tu nombre</title>\n";
+    print "    Escriba su nombre</title>\n";
 
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
     print "  <link href=\"mclibre-php-soluciones-proyectos.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
@@ -45,7 +45,7 @@ function pie()
     print "  </main>\n";
     print "\n";
     print "  <footer>\n";
-    print "    <p>Escribe tu nombre</p>\n";
+    print "    <p>Escriba su nombre</p>\n";
     print "  </footer>\n";
     print "</body>\n";
     print "</html>";

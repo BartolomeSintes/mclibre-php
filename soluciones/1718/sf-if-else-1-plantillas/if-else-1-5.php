@@ -2,7 +2,7 @@
 /**
  * if ... else ... (1) 5 - if-else-1-5.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 ?>
@@ -11,7 +11,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Tres dados más altos. Juego. if .. elseif ... else ... (1).
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -39,7 +39,7 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
   </table>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

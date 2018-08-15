@@ -2,7 +2,7 @@
 /**
  * Menús 4 - comprobar.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

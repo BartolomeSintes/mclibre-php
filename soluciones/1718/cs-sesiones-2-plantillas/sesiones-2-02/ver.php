@@ -2,7 +2,7 @@
 /**
  * Sesiones (2) 02 - ver.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -14,7 +14,7 @@ print "<!-- Ejercicio incompleto -->\n";
 <head>
   <meta charset="utf-8" />
   <title>Ver datos. Sesiones (2) 02. Sesiones.
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -31,7 +31,7 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
   <p><a href="index.php">Volver al inicio.</a></p>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

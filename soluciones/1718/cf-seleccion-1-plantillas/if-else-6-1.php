@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Convertidor de temperaturas Celsius / Fahrenheit (Formulario). if ... elseif ... else ...
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -19,7 +19,8 @@
       <tbody>
         <tr>
           <td><strong>Temperatura:</strong></td>
-          <td><input type="number" name="temperatura" min="-500" max="10000" step="any" />
+          <td>
+            <input type="number" name="temperatura" min="-500" max="10000" step="any" />
             <select name="unidad">
               <option value="c" selected="selected">Celsius</option>
               <option value="f">Fahrenheit</option>
@@ -36,7 +37,7 @@
   </form>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

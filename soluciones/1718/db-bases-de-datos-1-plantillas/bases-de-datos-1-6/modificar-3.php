@@ -2,7 +2,7 @@
 /**
  * Bases de datos 1-6 - modificar-3.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

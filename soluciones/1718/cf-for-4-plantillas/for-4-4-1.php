@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Sucesiones aritméticas 4 (Formulario). for (4).
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -39,7 +39,7 @@
   </form>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

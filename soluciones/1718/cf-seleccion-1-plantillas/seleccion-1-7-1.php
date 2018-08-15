@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Reparto de tríos (Formulario). Selección (1).
-    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -31,15 +31,7 @@
   </form>
 
   <footer>
-    <p class="ultmod">
-      Última modificación de esta página:
-      <time datetime="2017-10-31">31 de octubre de 2017</time></p>
-
-    <p class="licencia">
-      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
-      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
-      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

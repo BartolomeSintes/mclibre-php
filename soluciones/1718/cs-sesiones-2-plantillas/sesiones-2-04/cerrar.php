@@ -2,7 +2,7 @@
 /**
  * Sesiones (2) 04 - cerrar.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

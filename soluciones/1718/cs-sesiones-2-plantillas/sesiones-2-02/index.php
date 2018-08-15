@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Nombre y apellidos (Inicio). Sesiones (2) 02. Sesiones.
-    Escribe tu nombre</title> 
+    Escriba su nombre</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -21,7 +21,7 @@
   </ul>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

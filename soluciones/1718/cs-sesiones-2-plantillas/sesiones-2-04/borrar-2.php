@@ -2,7 +2,7 @@
 /**
  * Sesiones (2) 04 - borrar-2.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -27,7 +27,7 @@ print "<!-- Ejercicio incompleto -->\n";
   <p><a href="borrar-1.php">Volver al formulario.</a></p>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

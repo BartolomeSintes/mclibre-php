@@ -2,7 +2,7 @@
 /**
  * Sesiones (2) 04 - borrar-1.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
@@ -31,7 +31,7 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
   <p><a href="index.php">Volver al inicio.</a></p>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

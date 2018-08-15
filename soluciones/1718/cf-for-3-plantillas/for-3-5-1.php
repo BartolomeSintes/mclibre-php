@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Tabla de multiplicar (Formulario). for (3).
-    Escribe tu nombre</title>
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
 </head>
@@ -28,8 +28,7 @@
           <td><strong>Número de columnas:</strong></td>
           <td><input type="number" name="columnas" min="1" max="100" value="10" /></td>
           <td><strong>Anchura:</strong></td>
-          <td><input type="number" name="anchura" min="30" max="100" value="70"  />
-            px</td>
+          <td><input type="number" name="anchura" min="30" max="100" value="70"  /> px</td>
         </tr>
       </tbody>
     </table>
@@ -41,7 +40,7 @@
   </form>
 
   <footer>
-    <p>Escribe tu nombre</p>
+    <p>Escriba su nombre</p>
   </footer>
 </body>
 </html>

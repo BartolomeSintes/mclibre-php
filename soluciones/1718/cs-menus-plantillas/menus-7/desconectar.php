@@ -2,7 +2,7 @@
 /**
  * Menús 7 - desconectar.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

@@ -2,7 +2,7 @@
 /**
  * Menús 7 - conectar.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 

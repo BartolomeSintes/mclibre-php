@@ -2,7 +2,7 @@
 /**
  * Sesiones (1) 12 - sesiones-1-12-2.php
  *
- * @author    Escribe tu nombre
+ * @author    Escriba su nombre
  *
  */
 
