@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include("biblioteca.php");
+include "biblioteca.php";
 cabecera("Borrar todo 1", CABECERA_SIN_CURSOR);
 
 print "    <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";

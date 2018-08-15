@@ -23,7 +23,7 @@
  */
 
 session_start();
-include("biblioteca.php");
+include "biblioteca.php";
 
 if (!isset($_SESSION["compraventaUsuario"]) || ($_SESSION["compraventaUsuario"] != $administradorNombre)) {
     header("Location:index.php");

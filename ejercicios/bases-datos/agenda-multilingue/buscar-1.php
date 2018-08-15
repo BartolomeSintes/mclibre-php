@@ -27,7 +27,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
     header("Location:index.php");
     exit();
 } else {
-    include("biblioteca.php");
+    include "biblioteca.php";
     $db = conectaDb();
     cabecera(_("Buscar") . " 1", $_SESSION["multiagendaUsuario"]);
 

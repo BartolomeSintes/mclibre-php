@@ -27,7 +27,7 @@ if (!isset($_SESSION["compraventaUsuario"])) {
     header("Location:index.php");
     exit();
 } else {
-    include("biblioteca.php");
+    include "biblioteca.php";
     $db = conectaDb();
     cabecera("Compra - Anular reservas 2", "compra");
 

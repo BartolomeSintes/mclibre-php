@@ -23,7 +23,7 @@
  */
 
 session_start();
-include("biblioteca.php");
+include "biblioteca.php";
 $db = conectaDb();
 
 $compraventa = recogeParaConsulta($db, "compraventa", "anonimo");

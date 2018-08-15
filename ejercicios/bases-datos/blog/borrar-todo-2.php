@@ -86,7 +86,7 @@ if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
     exit();
 } else {
-    include("biblioteca.php");
+    include "biblioteca.php";
     $db = conectaDb();
     cabecera("Borrar todo 2", CABECERA_SIN_CURSOR, "");
     if ($dbMotor == MYSQL) {

@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include("biblioteca.php");
+include "biblioteca.php";
 $db = conectaDb();
 cabecera("Editor - Borrar discusiones 2", CABECERA_SIN_CURSOR, "menuEditor", "");
 

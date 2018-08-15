@@ -27,7 +27,7 @@ if (!isset($_SESSION["citasUsuario"])) {
     header("Location:index.php");
     exit();
 } else {
-    include("biblioteca.php");
+    include "biblioteca.php";
     $db = conectaDb();
     cabecera("Etiquetas - Añadir 2", "menu_etiquetas");
 

@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include("biblioteca.php");
+include "biblioteca.php";
 $db = conectaDb();
 cabecera("Entrar 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
 

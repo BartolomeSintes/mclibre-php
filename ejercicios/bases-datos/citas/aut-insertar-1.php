@@ -27,7 +27,7 @@ if (!isset($_SESSION["citasUsuario"])) {
     header("Location:index.php");
     exit();
 } else {
-    include("biblioteca.php");
+    include "biblioteca.php";
     $db = conectaDb();
     cabecera("Autores - Añadir 1", "menu_autores");
     $consulta = "SELECT COUNT(*) FROM $dbAutores";
