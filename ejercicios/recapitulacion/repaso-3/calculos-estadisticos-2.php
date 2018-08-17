@@ -31,7 +31,7 @@ function cabecera($texto)
     print "  <title>Calculos estadísticos 2 ($texto). Repaso 3.\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco</title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link href=\"mclibre-php-soluciones.css\" rel=\"stylesheet\" type=\"text/css\" title=\"Color\" />\n";
+    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones.css\" title=\"Color\" />\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";

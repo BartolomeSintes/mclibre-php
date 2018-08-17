@@ -14,9 +14,9 @@ print "<!-- Ejercicio incompleto -->\n";
 <head>
   <meta charset="utf-8" />
   <title>Puntería 2. Minijuegos (1).
-    Escriba su nombre</title> 
+    Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
 </head>
 
 <body>
@@ -27,7 +27,7 @@ print "<!-- Ejercicio incompleto -->\n";
 
     <p><input type="image" name="dibujo" src="punteria-dibujo.php" alt="punteria" /></p>
   </form>
-  
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

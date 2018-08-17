@@ -16,7 +16,7 @@ print "<!-- Ejercicio incompleto -->\n";
   <title>Retato Robot. Minijuegos (1).
     Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
   <style type="text/css">
     table { border-collapse: collapse; ; margin-left: auto; margin-right: auto; }
     td { padding: 0; }

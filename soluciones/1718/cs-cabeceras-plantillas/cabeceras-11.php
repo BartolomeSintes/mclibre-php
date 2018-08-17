@@ -5,7 +5,7 @@
   <title>Hoja de estilo. Cabeceras.
     Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="cabeceras-11-css.php" rel="stylesheet" type="text/css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="cabeceras-11-css.php" title="Color" />
 </head>
 
 <body>

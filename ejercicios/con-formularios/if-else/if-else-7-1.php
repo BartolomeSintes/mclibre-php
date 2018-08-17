@@ -5,7 +5,7 @@
   <title>Convertidor de centímetros a kilómetros, metros y centímetros (Formulario) if ... elseif ... else ...
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
 </head>
 
 <body>

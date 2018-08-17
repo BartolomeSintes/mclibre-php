@@ -5,7 +5,7 @@
  * @author    Escriba su nombre
  *
  */
- 
+
 print "<!-- Ejercicio incompleto -->\n";
 
 ?>
@@ -16,12 +16,12 @@ print "<!-- Ejercicio incompleto -->\n";
   <title>Formulario 3 (Resultado). Cabeceras.
     Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
 </head>
 
 <body>
   <h1>Formulario 3 (Resultado)</h1>
-  
+
 <?php
 
 print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";

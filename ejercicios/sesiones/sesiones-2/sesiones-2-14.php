@@ -74,7 +74,7 @@ if ($accion == "Cerrar") {
   <title>Almacenamiento y borrado de datos en sesión. Sesiones (2) 014. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="mclibre-php-soluciones.css" rel="stylesheet" type="text/css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
 </head>
 
 <body>
