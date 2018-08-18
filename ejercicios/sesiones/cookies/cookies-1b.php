@@ -31,7 +31,7 @@ print "  <meta charset=\"utf-8\" />\n";
 print "  <title>Selección de colores (comprobación). Cookies.\n";
 print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
 print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones.css\" title=\"Color\" />\n";
+print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
 if ($color == "rojo") {
     print "  <style type=\"text/css\">body, a { color: red; }</style>\n";
 } elseif ($color == "azul") {

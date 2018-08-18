@@ -5,7 +5,7 @@
   <title>Calculadora de años bisiestos (Formulario). if ... elseif ... else ...
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>

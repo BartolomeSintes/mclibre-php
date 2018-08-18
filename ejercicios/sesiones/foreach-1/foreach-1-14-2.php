@@ -38,7 +38,7 @@ if (!isset($_SESSION["numero"])) {
   <title>Hombres y mujeres (Resultado). foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>

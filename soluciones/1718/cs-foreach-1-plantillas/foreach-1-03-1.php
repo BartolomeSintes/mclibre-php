@@ -16,7 +16,7 @@ print "<!-- Ejercicio incompleto -->\n";
   <title>Elimine dibujos. foreach (1). Sesiones.
     Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
   <style type="text/css">
     button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
   </style>

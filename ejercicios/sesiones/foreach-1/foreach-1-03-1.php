@@ -48,7 +48,7 @@ if (isset($_SESSION["dibujos"]) && !isset($_SESSION["deseado"])) {
   <title>Elimine dibujos. foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="mclibre-php-soluciones.css" title="Color" />
+  <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
   <style>
   button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
   </style>
