@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Hoja de estilo. Cabeceras.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="cabeceras-11-css.php" title="Color" />
 </head>

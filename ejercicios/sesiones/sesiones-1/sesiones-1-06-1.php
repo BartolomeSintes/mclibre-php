@@ -35,7 +35,7 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
 <head>
   <meta charset="utf-8" />
   <title>Votar una opción. Sesiones.
-    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>

@@ -107,7 +107,7 @@ function cabecera($texto, $menu=MENU_PRINCIPAL, $conCursor=CABECERA_SIN_CURSOR)
     print "<head>\n";
     print "  <meta charset=\"utf-8\" />\n";
     print "  <title>Registro de usuarios 1. $texto.\n";
-    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
     print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones-proyectos.css\" title=\"Color\" />\n";
     print "</head>\n";

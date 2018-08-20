@@ -55,7 +55,7 @@ if ($cociente == "" || !is_numeric($cociente) || $resto == "" || !is_numeric($re
 <head>
   <meta charset="utf-8" />
   <title>Dividir 1 (Resultado). Minijuegos (1).
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
   <style>table { text-align: right; }</style>

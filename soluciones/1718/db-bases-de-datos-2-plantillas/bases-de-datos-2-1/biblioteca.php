@@ -59,7 +59,7 @@ function cabecera($texto, $menu)
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\" />\n";
-    print "  <title>Ejercicio incompleto</title>\n";
+    print "  <title>Escriba su nombre</title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
     print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones-proyectos.css\" "
         . "title=\"Estilo Proyectos PHP de mclibre\" />\n";

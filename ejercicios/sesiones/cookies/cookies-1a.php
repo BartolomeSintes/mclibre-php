@@ -48,7 +48,7 @@ print "<html lang=\"es\">\n";
 print "<head>\n";
 print "  <meta charset=\"utf-8\" />\n";
 print "  <title>Selección de colores (selección). Cookies.\n";
-print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco</title>\n";
+print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
 print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
 print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
 print "</head>\n";

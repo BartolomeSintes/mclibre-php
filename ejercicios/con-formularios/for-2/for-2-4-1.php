@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Rectángulo de estrellas 2 (Formulario). for (2).
-    Ejercicios. PHP. Bartolomé Sintes Marco</title>
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
