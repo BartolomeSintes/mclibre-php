@@ -3,9 +3,9 @@
  * Variables (1) 3 - variables-1-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-27
+ * @version   2018-09-24
  * @link      http://www.mclibre.org
  *
 *  This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ print "  <p>Total: <span style=\"border: black 2px solid; padding: 10px; font-si
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-27">27 de septiembre de 2017</time>
+      <time datetime="2018-09-24">24 de septiembre de 2018</time>
     </p>
 
     <p class="licencia">

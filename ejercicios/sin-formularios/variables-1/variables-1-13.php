@@ -3,9 +3,9 @@
  * Variables (1) 13 - variables-1-13.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-29
+ * @version   2018-09-24
  * @link      http://www.mclibre.org
  *
 *  This program is free software: you can redistribute it and/or modify
@@ -42,18 +42,20 @@ $c1 = rand(50, 150);
 $c2 = rand(50, 150);
 $c3 = rand(50, 150);
 
-print "  <p><svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "    width=\"920\" height=\"320\" viewBox=\"-10 -10 920 320\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
-print "    <circle cx=\"$c1\" cy=\"150\" r=\"$c1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
-print "    <circle cx=\"" . (2 * $c1 + $c2) . "\" cy=\"150\" r=\"$c2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
-print "    <circle cx=\"" . (2 * $c1 + 2 * $c2 + $c3) . "\" cy=\"150\" r=\"$c3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
-print "  </svg></p>\n";
+print "  <p>\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "      width=\"920\" height=\"320\" viewBox=\"-10 -10 920 320\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
+print "      <circle cx=\"$c1\" cy=\"150\" r=\"$c1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
+print "      <circle cx=\"" . (2 * $c1 + $c2) . "\" cy=\"150\" r=\"$c2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
+print "      <circle cx=\"" . (2 * $c1 + 2 * $c2 + $c3) . "\" cy=\"150\" r=\"$c3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
+print "    </svg>\n";
+print "  </p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-29">29 de septiembre de 2017</time>
+      <time datetime="2018-09-24">24 de septiembre de 2018</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Variables (1) 5 - variables-1-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-27
+ * @version   2018-09-24
  * @link      http://www.mclibre.org
  *
 *  This program is free software: you can redistribute it and/or modify
@@ -38,9 +38,9 @@
   <p>Actualice la página para mostrar un nuevo trío de cartas.</p>
 
 <?php
-$a = rand(1, 10);
-$b = rand(1, 10);
-$c = rand(1, 10);
+$a      = rand(1, 10);
+$b      = rand(1, 10);
+$c      = rand(1, 10);
 $maximo = max($a, $b, $c);
 
 print "  <p>\n";
@@ -55,7 +55,7 @@ print "  <p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-27">27 de septiembre de 2017</time>
+      <time datetime="2018-09-24">24 de septiembre de 2018</time>
     </p>
 
     <p class="licencia">
