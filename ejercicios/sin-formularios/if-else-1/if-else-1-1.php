@@ -3,9 +3,9 @@
  * if ... else ... (1) 1 - if-else-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-12
+ * @version   2018-09-27
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ if ($dado1 == $dado2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-12">12 de octubre de 2017</time>
+      <time datetime="2018-09-27">27 de septiembre de 2018</time>
     </p>
 
     <p class="licencia">
