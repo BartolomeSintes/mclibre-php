@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-24
+ * @version   2018-09-28
  * @link      http://www.mclibre.org
  *
 *  This program is free software: you can redistribute it and/or modify
@@ -38,16 +38,19 @@
   <p>Actualice la página para mostrar tres nuevos círculos.</p>
 
 <?php
-$c1 = rand(50, 150);
-$c2 = rand(50, 150);
-$c3 = rand(50, 150);
+$r1 = rand(50, 150);
+$r2 = rand(50, 150);
+$r3 = rand(50, 150);
+$ancho = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
+$alto  = 2 * max($r1, $r2, $r3) + 20;
+$centros = max($r1, $r2, $r3);
 
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"920\" height=\"320\" viewBox=\"-10 -10 920 320\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
-print "      <circle cx=\"$c1\" cy=\"150\" r=\"$c1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
-print "      <circle cx=\"" . (2 * $c1 + $c2) . "\" cy=\"150\" r=\"$c2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
-print "      <circle cx=\"" . (2 * $c1 + 2 * $c2 + $c3) . "\" cy=\"150\" r=\"$c3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
+print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
+print "      <circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
+print "      <circle cx=\"" . (2 * $r1 + $r2) . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
+print "      <circle cx=\"" . (2 * $r1 + 2 * $r2 + $r3) . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>
@@ -55,7 +58,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-09-24">24 de septiembre de 2018</time>
+      <time datetime="2018-09-28">28 de septiembre de 2018</time>
     </p>
 
     <p class="licencia">

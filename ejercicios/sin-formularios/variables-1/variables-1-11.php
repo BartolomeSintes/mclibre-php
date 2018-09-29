@@ -8,7 +8,7 @@
  * @version   2018-09-24
  * @link      http://www.mclibre.org
  *
- *  This program is free software: you can redistribute it and/or modify
+*  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  any later version.
@@ -26,35 +26,40 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Círculos de color. Variables.
+  <title>Avance de ficha. Variables.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>Círculos de color</h1>
+  <h1>Avance de ficha</h1>
 
-  <p>Actualice la página para mostrar tres nuevos círculos.</p>
+  <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-$rojo  = rand(64, 255);
-$verde = rand(64, 255);
-$azul  = rand(64, 255);
+$dado = rand(1, 6);
 
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"400px\" height=\"300px\" viewBox=\"-200 -120 400 300\">\n";
-print "      <text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\">Verde: $verde</text>\n";
-print "      <text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\">Azul: $azul</text>\n";
-print "      <text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\">Rojo: $rojo</text>\n";
-print "      <path fill=\"rgb($rojo, 0, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\" />\n";
-print "      <path fill=\"rgb(0, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\" />\n";
-print "      <path fill=\"rgb(0, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\" />\n";
-print "      <path fill=\"rgb($rojo, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\" />\n";
-print "      <path fill=\"rgb($rojo, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\" />\n";
-print "      <path fill=\"rgb(0, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\" />\n";
-print "      <path fill=\"rgb($rojo, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\" />\n";
+print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
+print "  </p>\n";
+print "\n";
+print "  <p>\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "      width=\"620\" height=\"120\" viewBox=\"-15 -15 620 120\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
+print "      <rect x=\"0\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"50\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" >1</text>\n";
+print "      <rect x=\"100\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"150\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" >2</text>\n";
+print "      <rect x=\"200\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"250\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" >3</text>\n";
+print "      <rect x=\"300\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"350\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" >4</text>\n";
+print "      <rect x=\"400\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"450\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" >5</text>\n";
+print "      <rect x=\"500\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"550\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\" >6</text>\n";
+print "      <circle cx=\"" . (100 * $dado - 50) . "\" cy=\"50\" r=\"30\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>

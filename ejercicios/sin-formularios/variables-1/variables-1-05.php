@@ -8,7 +8,7 @@
  * @version   2018-09-24
  * @link      http://www.mclibre.org
  *
-*  This program is free software: you can redistribute it and/or modify
+ *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  any later version.
@@ -26,30 +26,37 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>La carta más alta. Variables.
+  <title>Círculos de color. Variables.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>La carta más altaa</h1>
+  <h1>Círculos de color</h1>
 
-  <p>Actualice la página para mostrar un nuevo trío de cartas.</p>
+  <p>Actualice la página para mostrar tres nuevos círculos.</p>
 
 <?php
-$a      = rand(1, 10);
-$b      = rand(1, 10);
-$c      = rand(1, 10);
-$maximo = max($a, $b, $c);
+$rojo  = rand(64, 255);
+$verde = rand(64, 255);
+$azul  = rand(64, 255);
 
 print "  <p>\n";
-print "    <img src=\"img/c$a.svg\" alt=\"$a\" height=\"200\" />\n";
-print "    <img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\" />\n";
-print "    <img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\" />\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      width=\"400px\" height=\"300px\" viewBox=\"-200 -120 400 300\">\n";
+print "      <text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\">Verde: $verde</text>\n";
+print "      <text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\">Azul: $azul</text>\n";
+print "      <text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\">Rojo: $rojo</text>\n";
+print "      <path fill=\"rgb($rojo, 0, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\" />\n";
+print "      <path fill=\"rgb(0, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\" />\n";
+print "      <path fill=\"rgb(0, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\" />\n";
+print "      <path fill=\"rgb($rojo, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\" />\n";
+print "      <path fill=\"rgb($rojo, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\" />\n";
+print "      <path fill=\"rgb(0, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\" />\n";
+print "      <path fill=\"rgb($rojo, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\" />\n";
+print "    </svg>\n";
 print "  </p>\n";
-print "\n";
-print "  <p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
 ?>
 
   <footer>

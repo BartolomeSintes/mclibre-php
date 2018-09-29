@@ -30,9 +30,9 @@
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-1">1 - Línea</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-2">2 - Círculo de color</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-3">3 - Tirada de dados</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-4">4 - Avance de ficha</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-5">5 - La carta más alta</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-11">11 - Círculos de color</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-4">4 - La carta más alta</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-5">5 - Círculos de color</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-11">11 - Avance de ficha</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-12">12 - Tres cuadrados</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-13">13 - Tres círculos</a></li>
       </ul>
@@ -42,9 +42,9 @@
         <li><a href="#ejercicio-1">1 - Línea</a></li>
         <li><a href="#ejercicio-2">2 - Círculo de color</a></li>
         <li><a href="#ejercicio-3">3 - Tirada de dados</a></li>
-        <li><a href="#ejercicio-4">4 - Avance de ficha</a></li>
-        <li><a href="#ejercicio-5">5 - La carta más alta</a></li>
-        <li><a href="#ejercicio-11">11 - Círculos de color</a></li>
+        <li><a href="#ejercicio-4">4 - La carta más alta</a></li>
+        <li><a href="#ejercicio-5">5 - Círculos de color</a></li>
+        <li><a href="#ejercicio-11">11 - Avance de ficha</a></li>
         <li><a href="#ejercicio-12">12 - Tres cuadrados</a></li>
         <li><a href="#ejercicio-13">13 - Tres círculos</a></li>
       </ul>
@@ -120,7 +120,60 @@ print "  &lt;p&gt;Total: &lt;span style=\"border: black 2px solid; padding: 10px
   </section>
 
   <section id="ejercicio-4">
-    <h2>Variables (1) 4 - Avance de ficha</h2>
+    <h2>Variables (1) 4 - La carta más alta</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$a      = rand(1, 10);
+$b      = rand(1, 10);
+$c      = rand(1, 10);
+$maximo = max($a, $b, $c);
+
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/c$a.svg\" alt=\"$a\" height=\"200\" /&gt;\n";
+print "    &lt;img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\" /&gt;\n";
+print "    &lt;img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\" /&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La carta más alta es un &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Variables (1) 5 - Círculos de color</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$rojo  = rand(64, 255);
+$verde = rand(64, 255);
+$azul  = rand(64, 255);
+
+print "  &lt;p&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      width=\"400px\" height=\"300px\" viewBox=\"-200 -120 400 300\"&gt;\n";
+print "      &lt;text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\"&gt;Verde: $verde&lt;/text&gt;\n";
+print "      &lt;text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\"&gt;Azul: $azul&lt;/text&gt;\n";
+print "      &lt;text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\"&gt;Rojo: $rojo&lt;/text&gt;\n";
+print "      &lt;path fill=\"rgb($rojo, 0, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\"/&gt;\n";
+print "      &lt;path fill=\"rgb(0, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\"/&gt;\n";
+print "      &lt;path fill=\"rgb(0, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\"/&gt;\n";
+print "      &lt;path fill=\"rgb($rojo, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\"/&gt;\n";
+print "      &lt;path fill=\"rgb($rojo, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\"/&gt;\n";
+print "      &lt;path fill=\"rgb(0, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\"/&gt;\n";
+print "      &lt;path fill=\"rgb($rojo, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\"/&gt;\n";
+print "    &lt;/svg&gt;\n";
+print "  &lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-11">
+    <h2>Variables (1) 11 - Avance de ficha</h2>
 
     <div class="codigo">
       <pre>
@@ -149,59 +202,6 @@ print "      &lt;text x=\"550\" y=\"80\" text-anchor=\"middle\" font-size=\"80\"
 print "      &lt;circle cx=\"" . (100 * $dado - 50) . "\" cy=\"50\" r=\"30\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;";
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
-  <section id="ejercicio-5">
-    <h2>Variables (1) 5 - La carta más alta</h2>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-$a      = rand(1, 10);
-$b      = rand(1, 10);
-$c      = rand(1, 10);
-$maximo = max($a, $b, $c);
-
-print "  &lt;p&gt;\n";
-print "    &lt;img src=\"img/c$a.svg\" alt=\"$a\" height=\"200\" /&gt;\n";
-print "    &lt;img src=\"img/c$b.svg\" alt=\"$b\" height=\"200\" /&gt;\n";
-print "    &lt;img src=\"img/c$c.svg\" alt=\"$c\" height=\"200\" /&gt;\n";
-print "  &lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;La carta más alta es un &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
-  <section id="ejercicio-11">
-    <h2>Variables (1) 11 - Círculos de color</h2>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-$rojo  = rand(64, 255);
-$verde = rand(64, 255);
-$azul  = rand(64, 255);
-
-print "  &lt;p&gt;\n";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"400px\" height=\"300px\" viewBox=\"-200 -120 400 300\"&gt;\n";
-print "      &lt;text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\"&gt;Verde: $verde&lt;/text&gt;\n";
-print "      &lt;text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\"&gt;Azul: $azul&lt;/text&gt;\n";
-print "      &lt;text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\"&gt;Rojo: $rojo&lt;/text&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, 0, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\"/&gt;\n";
-print "      &lt;path fill=\"rgb(0, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\"/&gt;\n";
-print "      &lt;path fill=\"rgb(0, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\"/&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\"/&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\"/&gt;\n";
-print "      &lt;path fill=\"rgb(0, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\"/&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\"/&gt;\n";
-print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -237,26 +237,27 @@ print "  &lt;/p&gt;";
 
     <div class="codigo">
       <pre>
-<code class="language-php">&lt;?php
-$c1 = rand(50, 150);
-$c2 = rand(50, 150);
-$c3 = rand(50, 150);
+<code class="language-php">$r1 = rand(50, 150);
+$r2 = rand(50, 150);
+$r3 = rand(50, 150);
+$ancho = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
+$alto  = 2 * max($r1, $r2, $r3) + 20;
+$centros = max($r1, $r2, $r3);
 
-print "  &lt;p&gt;";
+print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"920\" height=\"320\" viewBox=\"-10 -10 920 320\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
-print "      &lt;circle cx=\"$c1\" cy=\"150\" r=\"$c1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" /&gt;\n";
-print "      &lt;circle cx=\"" . (2 * $c1 + $c2) . "\" cy=\"150\" r=\"$c2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" /&gt;\n";
-print "      &lt;circle cx=\"" . (2 * $c1 + 2 * $c2 + $c3) ."\" cy=\"150\" r=\"$c3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" /&gt;\n";
+print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
+print "      &lt;circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" /&gt;\n";
+print "      &lt;circle cx=\"" . (2 * $r1 + $r2) . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" /&gt;\n";
+print "      &lt;circle cx=\"" . (2 * $r1 + 2 * $r2 + $r3) . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;";
-?&gt;</code>
+print "  &lt;/p&gt;\n";</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 24 de septiembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
