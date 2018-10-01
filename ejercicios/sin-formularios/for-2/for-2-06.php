@@ -3,9 +3,9 @@
  * for (2) 06 - for-2-06.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-05
+ * @version   2018-10-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ print "  <h2>$numero líneas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . (50 * $numero - 25). "px\" height=\"120px\" "
+print "      width=\"" . (50 * $numero - 25). "\" height=\"120\" "
     . " viewbox=\" -10 -10 " . (50 * $numero - 25) . " 120\" style=\"border: black 1px solid\" >\n";
 
 for ($i = 1; $i <= $numero; $i++) {
@@ -58,7 +58,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-05">5 de octubre de 2017</time>
+      <time datetime="2018-10-01">1 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

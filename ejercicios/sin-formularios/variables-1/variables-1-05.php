@@ -44,7 +44,7 @@ $azul  = rand(64, 255);
 
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"400px\" height=\"300px\" viewBox=\"-200 -120 400 300\">\n";
+print "      width=\"400\" height=\"300\" viewBox=\"-200 -120 400 300\">\n";
 print "      <text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\">Verde: $verde</text>\n";
 print "      <text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\">Azul: $azul</text>\n";
 print "      <text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\">Rojo: $rojo</text>\n";

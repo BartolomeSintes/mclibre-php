@@ -3,9 +3,9 @@
  * for (2) 08 - for-2-08.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-05
+ * @version   2018-10-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,7 +45,7 @@ print "  <h2>$numero franjas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . (60 * $numero + 20) . "px\" height=\"" . (30 * $numero + 20). "px\" "
+print "      width=\"" . (60 * $numero + 20) . "\" height=\"" . (30 * $numero + 20). "\" "
     . " viewbox=\"" . (- 30 * $numero - 10) . " " . (- 30 * $numero - 10) . " " . (60 * $numero + 20). " " . (30 * $numero + 20)
     . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
@@ -61,7 +61,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-05">5 de octubre de 2017</time>
+      <time datetime="2018-10-01">1 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

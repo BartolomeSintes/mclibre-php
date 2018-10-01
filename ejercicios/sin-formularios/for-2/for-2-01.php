@@ -3,9 +3,9 @@
  * for (2) 01 - for-2-01.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-05
+ * @version   2018-10-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ if ($circulos == 1) {
 }
 print "\n";
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"870px\" height=\"60px\" style=\"border: black 1px solid\">\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"870\" height=\"60\" style=\"border: black 1px solid\">\n";
 
 for ($i = 0; $i < $circulos; $i++) {
     print "      <circle cx=\"" . (90 * $i + 30). "\" cy=\"30\" r=\"30\" fill=\"black\" />\n";
@@ -60,7 +60,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-05">5 de octubre de 2017</time>
+      <time datetime="2018-10-01">1 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
