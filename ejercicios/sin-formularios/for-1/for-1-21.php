@@ -3,9 +3,9 @@
  * for (1) 12 - for-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-05
+ * @version   2018-10-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@
 <?php
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"400px\" height=\"400px\" viewBox=\"-200 -200 400 400\">\n";
+print "      width=\"400\" height=\"400\" viewBox=\"-200 -200 400 400\">\n";
 
 for ($i = 0; $i < 4; $i++) {
     print "      <circle cx=\"0\" cy=\"0\" r=\"" . (200 - 50 * $i) . "\" fill=\"red\" />\n";
@@ -68,7 +68,7 @@ print "  </ul>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-05">5 de octubre de 2017</time>
+      <time datetime="2018-10-01">1 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
