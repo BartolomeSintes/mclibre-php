@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Estructuras de control: sentencia condicional if elseif else. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../varios/php.css" title="mclibre" />
+  <link rel="icon" href="../varios/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../varios/highlight-php.css" />
+  <script src="../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <h1>Estructuras de control: sentencia condicional if ... elseif ... else ...</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>if ... elseif ... else ...</h2>
+
+      <ul>
+        <li><a href="#if">if ... elseif ... else</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="if">
+    <h2>if ... elseif ... else</h2>
+
+    <p>Las construcciones <a href="http://php.net/manual/es/control-structures.if.php">if</a>, <a href="http://php.net/manual/es/control-structures.else.php">else</a> y <a href="http://php.net/manual/es/control-structures.elseif.php">elseif</a> permite condicionar la ejecución de un bloque de sentencias al cumplimiento de una condición.</p>
+
+    <p>La sintaxis de la construcción <a href="http://php.net/manual/es/control-structures.if.php">if</a> más sencilla es la siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición) {
+    bloque_de_sentencias
+}</code>
+</pre>
+    </div>
+
+    <p>La condición se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias y si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="350" height="380" viewBox="-175 -10 350 380" style="background-color: white;" font-family="sans-serif">
+        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+
+        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+
+        <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
+        <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+
+        <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
+        <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <rect x="60" y="170" width="100" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE</text>
+
+        <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="black" />
+        <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+        <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
+
+        <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+      </svg>
+    </p>
+
+    <hr class="corta" />
+
+    <p>La construcción if se puede complicar añadiendo la instrucción <a href="http://php.net/manual/es/control-structures.else.php">else</a>:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición) {
+    bloque_de_sentencias_1
+} else {
+    bloque_de_sentencias_2
+}</code>
+</pre>
+    </div>
+
+    <p>La condición se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 2.</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="350" height="380" viewBox="-175 -10 350 380" style="background-color: white;" font-family="sans-serif">
+        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+
+        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+
+        <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
+        <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+
+        <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
+        <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <rect x="55" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 1</text>
+
+        <polyline points="-60,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-105,160 -110,170 -115,160" fill="black" stroke-width="2" stroke="black" />
+        <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+        <rect x="-165" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="-110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 2</text>
+
+        <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
+
+        <polyline points="-110,220 -110,260 0,260" fill="none" stroke-width="3" stroke="black" />
+
+        <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+      </svg>
+    </p>
+
+    <hr class="corta" />
+
+    <p>La construcción if ... else se puede extender añadiendo la instrucción <a href="http://php.net/manual/es/control-structures.elseif.php">elseif</a>:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición_1) {
+    bloque_de_sentencias_1
+} elseif (condición_2) {
+    bloque_de_sentencias_2
+} else {
+    bloque_de_sentencias_3
+}</code>
+</pre>
+    </div>
+
+    <p>La condición 1 se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y solamente si el resultado es <span class="php-con">false</span> se evalúa la condición 2, si el resultado de esta es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 2 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 3. En cualquier caso solamente se ejecuta uno de los tres bloques de sentencias.</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="520" viewBox="-300 -10 500 520" style="background-color: white;" font-family="sans-serif">
+        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+
+        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+
+        <polygon points="0,90 70,125 0,160 -70,125" fill="white" stroke-width="3" stroke="black" />
+        <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN 1</text>
+
+        <polyline points="70,125 110,125 110,180" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="105,170 110,180 115,170" fill="black" stroke-width="2" stroke="black" />
+        <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <rect x="55" y="180" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="110" y="212" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 1</text>
+
+        <polyline points="-70,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-105,160 -110,170 -115,160" fill="black" stroke-width="2" stroke="black" />
+        <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+        <polygon points="-110,170 -40,205 -110,240 -180,205" fill="white" stroke-width="3" stroke="black" />
+        <text x="-110" y="210" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN 2</text>
+
+        <polyline points="-40,205 0,205 0,260" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="5,250 0,260 -5,250" fill="black" stroke-width="2" stroke="black" />
+        <text x="-25" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <rect x="-55" y="260" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 2</text>
+
+        <polyline points="-180,205 -220,205 -220,260" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-225,250 -220,260 -215,250" fill="black" stroke-width="2" stroke="black" />
+        <text x="-195" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+        <rect x="-275" y="260" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="-220" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 3</text>
+
+        <polyline points="-220,310 -220,350 -110,350" fill="none" stroke-width="3" stroke="black" />
+
+        <polyline points="110,230 110,390 -110,390" fill="none" stroke-width="3" stroke="black" />
+
+        <polyline points="0,310 0,350 -110,350 -110,430" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-115,420 -110,430 -105,420" fill="black" stroke-width="2" stroke="black" />
+
+        <rect x="-160" y="430" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="-110" y="462" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+      </svg>
+    </p>
+
+    <hr class="corta" />
+
+    <p>Se pueden añadir tantas instrucciones elseif como se desee, teniendo en cuenta que en cualquier caso solamente se ejecuta uno de los bloques de sentencias.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición_1) {
+    bloque_de_sentencias_1
+} elseif (condición_2) {
+    bloque_de_sentencias_2
+} elseif (condición_3) {
+    bloque_de_sentencias_3
+ ...
+} elseif (condición_n) {
+    bloque_de_sentencias_n
+} else {
+    bloque_de_sentencias_n+1
+}</code>
+</pre>
+    </div>
+
+    <hr class="corta" />
+
+    <section id="if-else-abreviado">
+      <h3>Notación abreviada .. ? ... : ...</h3>
+      <p>La construcción</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">if (condición_1) {
+    $variable = expresion1;
+} else
+    $variable = expresion2;
+}</code>
+</pre>
+      </div>
+
+      <p>se puede sustituir por la construcción:</p>
+
+      <div class="codigo">
+        <pre><code class="language-php">$variable = (condición_1)? expresion1 : expresion2;</code></pre>
+      </div>
+
+      <p>que se suele escribir en varias líneas para facilitar la legibilidad:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">$variable = (condición_1)
+    ? expresion1
+    : expresion2;</code>
+</pre>
+      </div>
+    </section>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 3 de octubre de 2018</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
