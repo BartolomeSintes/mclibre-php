@@ -32,7 +32,7 @@
     </div>
   </nav>
 
-  <p>Las operaciones lógicas son expresiones matemáticas cuyo resultado es un valor booleano (verdadero o falso <span class="php-con">true</span> o <span class="php-con">false</span>). Estas expresiones se utilizan principalmente en las estructuras de control.</p>
+  <p>Las operaciones lógicas son expresiones matemáticas cuyo resultado es un valor booleano (verdadero o falso, en PHP, <span class="php-con">true</span> o <span class="php-con">false</span>). Estas expresiones se utilizan principalmente en las <a href="php-estructuras-control.html">estructuras de control</a>.</p>
 
   <section id="comparaciones">
     <h2>Comparaciones</h2>
@@ -49,47 +49,47 @@
       </thead>
       <tbody>
         <tr>
-          <td>$a == $b</td>
+          <td>expresión_1 == expresión_2</td>
           <td>Igual</td>
-          <td><span class="php-con">true</span> si $a es igual a $b.</td>
+          <td><span class="php-con">true</span> si expresión_1 es igual a expresión_2.</td>
         </tr>
         <tr>
-          <td>$a === $b</td>
+          <td>expresión_1 === expresión_2</td>
           <td>Idéntico</td>
-          <td><span class="php-con">true</span> si $a es igual a $b, y son del mismo tipo. (a partir de PHP 4) </td>
+          <td><span class="php-con">true</span> si expresión_1 es igual a expresión_2, y son del mismo tipo. (a partir de PHP 4) </td>
         </tr>
         <tr>
-          <td>$a != $b</td>
+          <td>expresión_1 != expresión_2</td>
           <td rowspan="2">Diferente</td>
-          <td rowspan="2"><span class="php-con">true</span> si $a no es igual a $b.</td>
+          <td rowspan="2"><span class="php-con">true</span> si expresión_1 no es igual a expresión_2.</td>
         </tr>
         <tr>
-          <td>$a &lt;&gt; $b</td>
+          <td>expresión_1 &lt;&gt; expresión_2</td>
         </tr>
         <tr>
-          <td>$a !== $b</td>
+          <td>expresión_1 !== expresión_2</td>
           <td>No idénticos</td>
-          <td><span class="php-con">true</span> si $a no es igual a $b, o si no son del mismo tipo. (a partir de PHP 4) </td>
+          <td><span class="php-con">true</span> si expresión_1 no es igual a expresión_2, o si no son del mismo tipo. (a partir de PHP 4) </td>
         </tr>
         <tr>
-          <td>$a &lt; $b</td>
+          <td>expresión_1 &lt; expresión_2</td>
           <td>Menor que</td>
-          <td><span class="php-con">true</span> si $a es estrictamente menor que $b.</td>
+          <td><span class="php-con">true</span> si expresión_1 es estrictamente menor que expresión_2.</td>
         </tr>
         <tr>
-          <td>$a &gt; $b</td>
+          <td>expresión_1 &gt; expresión_2</td>
           <td>Mayor que</td>
-          <td><span class="php-con">true</span> si $a es estrictamente mayor que $b.</td>
+          <td><span class="php-con">true</span> si expresión_1 es estrictamente mayor que expresión_2.</td>
         </tr>
         <tr>
-          <td>$a &lt;= $b</td>
+          <td>expresión_1 &lt;= expresión_2</td>
           <td>Menor o igual que</td>
-          <td><span class="php-con">true</span> si $a es menor o igual que $b.</td>
+          <td><span class="php-con">true</span> si expresión_1 es menor o igual que expresión_2.</td>
         </tr>
         <tr>
-          <td>$a &gt;= $b</td>
+          <td>expresión_1 &gt;= expresión_2</td>
           <td>Mayor o igual que</td>
-          <td><span class="php-con">true</span> si $a es mayor o igual que $b.</td>
+          <td><span class="php-con">true</span> si expresión_1 es mayor o igual que expresión_2.</td>
         </tr>
       </tbody>
     </table>
@@ -139,6 +139,31 @@ if ($nombrePadre != $nombreHijo) {
 
     <hr class="corta" />
 
+    <p>Así como en las asignaciones la variable se escribe siempre a la izquierda de la igualdad, en una comparación las variables pueden aparecer a la derecha de la comparación:.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+
+if ("Juan" == $nombre) {
+  print "&lt;p&gt;Tu nombre es Juan.&lt;/p&gt;\n";
+}
+
+if ("Juan" != $nombre) {
+  print "&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Tu nombre no es Juan.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <hr class="corta" />
+
     <p>Un error típico cuando se empieza a programar es confundir el operador comparación (==) con el operador de asignación (=), lo que produce resultados inesperados, como en el ejemplo siguiente:</p>
 
     <div class="filaflex">
@@ -168,11 +193,180 @@ if ($nombre != "Juan") {
 
     <p>Al escribir <span class="php-ope">=</span> en vez de <span class="php-ope">==</span>, PHP no compara el valor de la variable $nombre con la cadena "Juan", sino que cambia el valor de $nombre a "Juan". Como la asignación no da error, PHP le asigna el valor booleano <span class="php-con">true</span>, y escribe que el nombre es Juan.</p>
 
-    <p>Al no producir mensaje de error, este error puede ser difícil de localizar en programas largos o complejos.</p>
+    <p>Al no mostrar PHP ningún aviso o mensaje de error, este error puede ser difícil de localizar en programas largos o complejos.</p>
 
     <hr class="corta" />
 
-    <p>La diferencia entre los operadores <span class="php-ope">==</span> y <span class="php-ope">===</span> es que en el primer caso si las cadenas se pueden interpretar como números entonces se convierten a números antes de realizar la comparación, mientras que en el segundo caso no.</p>
+    <p>En principio no se pueden concatenar comparaciones:</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$entero = 6;
+$cadena = 6;
+$decimal = 6.0;
+
+if (<span class="codigo-resaltado">$entero == $cadena == $decimal</span>) {
+    print "&lt;p&gt;$entero, $cadena y $decimal son iguales.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$entero, $cadena y $decimal son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado">
+        <pre><code class="language-html"><b>Parse error</b>:  syntax error, unexpected '==' (T_IS_EQUAL) in <b>prueba.php</b> on line <b>6</b><br /></code></pre>
+      </div>
+    </div>
+
+    <p>En estos casos habría que concatenar comparaciones mediante operadores lógicos, como se explica en el <a href="#logicos">apartado siguiente</a>.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$entero = 6;
+$cadena = 6;
+$decimal = 6.0;
+
+if (<span class="codigo-resaltado">$entero == $cadena && $entero == $decimal</span>) {
+    print "&lt;p&gt;$entero, $cadena y $decimal son iguales.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;$entero, $cadena y $decimal son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado">
+        <pre><code class="language-html">&lt;p&gt;6, 6 y 6 son iguales.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <hr class="corta" />
+
+    <p>Hay que tener cuidado al comparar expresiones de tipos diferentes, ya que se pueden producir resultados inesperados.</p>
+
+    <p>PHP permite comparar expresiones de tipos distintos, y la comparación es correcta siempre que sea posible interpretar un dato de un tipo como un dato de otro tipo.</p>
+
+    <ul>
+      <li>Podemos comparar números enteros y decimales:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$entero = 5;
+$decimal = 5.0;
+
+if ($entero == $decimal) {
+  print "&lt;p&gt;$entero y $decimal son iguales.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;$entero y $decimal son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;5 y 5 son iguales.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>Podemos comparar números y cadenas ...:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$numero = 5;
+$cadena = "4+1";
+
+if ($numero == $cadena) {
+  print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;$numero y $cadena son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;5 y 5 son iguales.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>... pero con limitaciones:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$numero = 5;
+$cadena = "4+1";
+
+if ($numero == $cadena) {
+  print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;$numero y $cadena son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;5 y 4+1 son distintos.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>y hay situaciones especiales. Por ejemplo, cuando una cadena empieza por un número, PHP interpreta la cadena como número:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$numero = 5;
+$cadena = "5abc def";
+
+if ($numero == $cadena) {
+  print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;$numero y $cadena son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;5 y 5abc def son iguales.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$numero = 5;
+$cadena = "5+1";
+
+if ($numero == $cadena) {
+  print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;$numero y $cadena son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;5 y 5+1 son iguales.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <hr class="corta" />
+
+    <p>Para evitar problemas con las conversiones automáticas de tipo se pueden utilizar los operadores <span class="php-ope">===</span> o <span class="php-ope">!==</span>. La diferencia entre estos operadores y los operadores <span class="php-ope">==</span> y <span class="php-ope">!=</span> es que aquellos comprueban además si los tipos son iguales.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -234,30 +428,30 @@ if ($numero !== $texto) {
       </thead>
       <tbody>
         <tr>
-          <td>$a &amp;&amp; $b</td>
+          <td>expresión_1 &amp;&amp; expresión_2</td>
           <td rowspan="2">Y</td>
-          <td rowspan="2"><span class="php-con">true</span> si los dos, $a y $b, son <span class="php-con">true</span>.</td>
+          <td rowspan="2"><span class="php-con">true</span> si los dos, expresión_1 y expresión_2, son <span class="php-con">true</span>.</td>
         </tr>
         <tr>
-          <td>$a and $b</td>
+          <td>expresión_1 and expresión_2</td>
         </tr>
         <tr>
-          <td>$a || $b</td>
+          <td>expresión_1 || expresión_2</td>
           <td rowspan="2">O</td>
-          <td rowspan="2"><span class="php-con">true</span> si uno de los dos, $a o $b, es <span class="php-con">true</span>.</td>
+          <td rowspan="2"><span class="php-con">true</span> si uno de los dos, expresión_1 o expresión_2, es <span class="php-con">true</span>.</td>
         </tr>
         <tr>
-          <td>$a or $b</td>
+          <td>expresión_1 or expresión_2</td>
         </tr>
         <tr>
-          <td>$a xor $b</td>
+          <td>expresión_1 xor expresión_2</td>
           <td>O exclusivo (Xor)</td>
-          <td><span class="php-con">true</span> si sólo uno de los dos, $a o $b, es <span class="php-con">true</span>, pero no ambos.</td>
+          <td><span class="php-con">true</span> si sólo uno de los dos, expresión_1 o expresión_2, es <span class="php-con">true</span>, pero no ambos.</td>
         </tr>
         <tr>
-          <td>! $a</td>
+          <td>! expresión</td>
           <td>Negación</td>
-          <td><span class="php-con">true</span> si $a no es <span class="php-con">true</span>.</td>
+          <td><span class="php-con">true</span> si expresión no es <span class="php-con">true</span>.</td>
         </tr>
       </tbody>
     </table>
@@ -350,7 +544,7 @@ if ($todo) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 4 de octubre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
