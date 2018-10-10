@@ -2252,10 +2252,88 @@ Array
     <p>El bucle se ejecuta tantas veces como elementos tiene la matriz. En cada iteración, las variables $indice y $valor van tomando los valores de los índices y de la matriz para ese índice.</p>
 
     <p>Si sólo se necesitan los valores almacenados en la matriz se puede utilizar tanto la primera como la segunda forma. Si se necesitan tanto los índices como los valores se debe utilizar la segunda forma. Si sólo se necesitan los índices también se debe utilizar la segunda forma.</p>
+
+    <hr class="corta" />
+
+    <p>El diagrama de flujo siguiente explica gráficamente la ejecución de un bucle <span class="php-res">foreach</span> ...:</p>
+
+    <ul>
+      <li>Si la matriz no contiene elementos, el bucle no se ejecuta.</li>
+      <li>Si la matriz contiene elementos:
+        <ul>
+          <li>Se asigna el primer valor de la matriz a la variable auxiliar (y en su caso, el primer índice a la otra variable auxiliar)</li>
+          <li>(*) Se ejecuta el bloque de sentencias</li>
+          <li>Si la matriz no contiene más elementos, el bucle deja de ejecutarse.</li>
+          <li>Si la matriz todavía contiene más elementos:
+            <ul>
+              <li>Se asigna el siguiente valor de la matriz a la variable auxiliar (y en su caso, el siguiente índice a la otra variable auxiliar)</li>
+              <li>Se vuelve al punto (*) (es decir, se ejecuta de nuevo el bloque de sentencias, etc.)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <p class="izquierda">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="550" viewBox="-145 -10 500 550" style="background-color: white;" font-family="sans-serif" class="izquierda">
+        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+
+        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+
+        <polygon points="0,90 90,125 0,160 -90,125" fill="white" stroke-width="3" stroke="black" />
+        <text x="0" y="120" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">¿Hay elementos</text>
+        <text x="0" y="140" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">en la matriz?</text>
+
+        <polyline points="90,125 140,125 140,170" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="135,160 140,170 145,160" fill="black" stroke-width="2" stroke="black" />
+        <text x="115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <rect x="85" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="140" y="192" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Asigna</text>
+        <text x="140" y="212" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">primer valor</text>
+
+        <line x1="140" y1="220" x2="140" y2="300" stroke-width="3" stroke="black" />
+        <polyline points="135,290 140,300 145,290" fill="black" stroke-width="2" stroke="black" />
+
+        <rect x="85" y="300" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="140" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">Bloque</text>
+
+        <line x1="140" y1="350" x2="140" y2="390" stroke-width="3" stroke="black" />
+        <polyline points="135,380 140,390 145,380" fill="black" stroke-width="2" stroke="black" />
+
+        <polygon points="140,390 230,425 140,460 50,425" fill="white" stroke-width="3" stroke="black" />
+        <text x="140" y="425" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">¿Quedan elementos</text>
+        <text x="140" y="440" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">en la matriz?</text>
+
+        <polyline points="230,425 280,425 280,350" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="275,360 280,350 285,360" fill="black" stroke-width="2" stroke="black" />
+        <text x="255" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <rect x="225" y="300" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="280" y="322" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Asigna valor</text>
+        <text x="280" y="342" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">siguiente</text>
+
+        <polyline points="280,300 280,260 140,260" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="150,265 140,260 150,255" fill="black" stroke-width="2" stroke="black" />
+
+        <polyline points="50,425 0,425 0,485" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-5,475 0,485 5,475" fill="black" stroke-width="2" stroke="black" />
+        <text x="25" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+        <polyline points="-90,125 -140,125 -140,425, 0,425" fill="none" stroke-width="3" stroke="black" />
+        <text x="-115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+        <rect x="-50" y="485" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="517" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+      </svg>
+    </p>
+
   </section>
 
   <section id="ejemplos">
-    <h2>Ejemplos de bucles</h2>
+    <h2>Ejemplos de bucles <span class="php-res">foreach</span> ...</h2>
 
     <section id="matrices">
       <h3>Matrices</h3>
@@ -3609,7 +3687,7 @@ Array
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de noviembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
