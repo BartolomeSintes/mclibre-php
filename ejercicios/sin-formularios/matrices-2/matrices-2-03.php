@@ -3,9 +3,9 @@
  * Matrices (2) 03 - matrices-2-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-25
+ * @version   2017-11-26
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -65,7 +65,7 @@ print "  <p>{$mensajes[2][$idioma]} <strong>{$palabras[$dado-1][$idioma]}</stron
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-23">23 de octubre de 2017</time>
+      <time datetime="2018-10-10">10 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
