@@ -24,18 +24,192 @@
       <h2>Estructuras de control</h2>
 
       <ul>
-        <li><a href="#if">if ... elseif ... else</a></li>
+        <li><a href="#bloques">Bloques de instrucciones</a></li>
+        <li><a href="#if">if ... elseif ... else ...</a></li>
         <li><a href="#switch">switch</a></li>
-        <li><a href="#for">for</a></li>
-        <li><a href="#while">while</a></li>
-        <li><a href="#do">do ... while</a></li>
-        <li><a href="#foreach">foreach</a></li>
+        <li><a href="#for">Bucle for</a></li>
+        <li><a href="#while">Bucle while</a></li>
+        <li><a href="#do">Bucle do ... while</a></li>
+        <li><a href="#foreach">Bucle foreach</a></li>
       </ul>
     </div>
   </nav>
 
+  <p>Un programa PHP se ejecuta en principio de forma secuencial, desde la primera instrucción hasta la última y de una en una. Las estructuras de control permiten modificar este flujo, eligiendo entre instrucciones alternativas o repitiendo instrucciones.</p>
+
+  <section id="bloques">
+    <h2>Bloques de instrucciones</h2>
+
+    <p>Para indicar a PHP que varias instrucciones forman un bloque de instrucciones que se ejecutarán secuencialmente (aunque un bloque pueda a su vez contener estructuras de control), se utilizan las llaves { y }.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+{
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+print "&lt;p&gt;Adios&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+{ print "&lt;p&gt;Hola&lt;/p&gt;\n"; print "&lt;p&gt;Adios&lt;/p&gt;\n"; }
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+  &lt;p&gt;Adios&lt;/p&gt;</code>
+  </pre>
+      </div>
+    </div>
+
+    <p>La <a href="../otros/guia-estilo.html#estructuras-control">guía de estilo PSR-2</a> recomienda sangrar con cuatro espacios las instrucciones que formen el bloque y escribir las llaves en líneas distintas de las instrucciones del bloque.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+{
+    print "&lt;p&gt;Hola&lt;/p&gt;\n";
+    print "&lt;p&gt;Adios&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <hr class="corta" />
+
+    <p>No es necesario escribir un punto y coma (;) después de las llaves y, en general, se recomienda no hacerlo.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+{
+    print "&lt;p&gt;Hola&lt;/p&gt;\n";
+    print "&lt;p&gt;¿Qué tal?&lt;/p&gt;\n";
+<span class="codigo-resaltado">};</span>
+print "&lt;p&gt;Adios&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;¿Qué tal?&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+{
+    print "&lt;p&gt;Hola&lt;/p&gt;\n";
+    print "&lt;p&gt;¿Qué tal?&lt;/p&gt;\n";
+<span class="codigo-resaltado">}&nbsp;</span>
+print "&lt;p&gt;Adios&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;¿Qué tal?&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <hr class="corta" />
+
+    <p>Los bloques de instrucciones se emplean en las estructuras de control que se comentan en esta página (if ... elseif ... else, for, while, do ... while o foreach). No se suelen utilizar bloques cuando no hay estructuras de control. Si se quiere indicar visualmente al programador que unas instrucciones están relacionadas entre sí, basta con dejar una línea en blanco en el código fuente ...</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+print "&lt;p&gt;¿Qué tal?&lt;/p&gt;\n";
+
+print "&lt;p&gt;Recuerdos a la familia&lt;/p&gt;\n";
+print "&lt;p&gt;Adios&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;¿Qué tal?&lt;/p&gt;
+&lt;p&gt;Recuerdos a la familia&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>... o añadir líneas de comentarios:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Saludo
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+print "&lt;p&gt;¿Qué tal?&lt;/p&gt;\n";
+
+// Despedida
+print "&lt;p&gt;Recuerdos a la familia&lt;/p&gt;\n";
+print "&lt;p&gt;Adios&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;¿Qué tal?&lt;/p&gt;
+&lt;p&gt;Recuerdos a la familia&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+
+
+  </section>
+
   <section id="if">
-    <h2>if ... elseif ... else ...</h2>
+    <h2>Sentencia condicional if ... elseif ... else ...</h2>
 
     <p><strong>Nota</strong>: En la lección <a href="php-estructuras-control-condicional-if.html">Sentencia condicional if ... elseif ... else ...</a> se explica con más detalle esta estructura de control.</p>
 
@@ -45,13 +219,13 @@
 
     <div class="codigo">
       <pre>
-<code class="language-php">if (expresión) {
+<code class="language-php">if (condición) {
     bloque_de_sentencias
 }</code>
 </pre>
     </div>
 
-    <p>La expresión se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias y si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</p>
+    <p>La condición se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias y si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</p>
 
     <hr class="corta" />
 
@@ -59,7 +233,7 @@
 
     <div class="codigo">
       <pre>
-<code class="language-php">if (expresión) {
+<code class="language-php">if (condición) {
     bloque_de_sentencias_1
 } else {
     bloque_de_sentencias_2
@@ -67,7 +241,7 @@
 </pre>
     </div>
 
-    <p>La expresión se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 2.</p>
+    <p>La condición se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 2.</p>
 
     <hr class="corta" />
 
@@ -75,9 +249,9 @@
 
     <div class="codigo">
       <pre>
-<code class="language-php">if (expresión_1) {
+<code class="language-php">if (condición_1) {
     bloque_de_sentencias_1
-} elseif (expresión_2) {
+} elseif (condición_2) {
     bloque_de_sentencias_2
 } else {
     bloque_de_sentencias_3
@@ -85,7 +259,7 @@
 </pre>
     </div>
 
-    <p>La expresión 1 se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y solamente si el resultado es <span class="php-con">false</span> se evalúa la expresión 2, si el resultado de esta es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 2 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 3. En cualquier caso solamente se ejecuta uno de los tres bloques de sentencias.</p>
+    <p>La condición 1 se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y solamente si el resultado es <span class="php-con">false</span> se evalúa la condición 2, si el resultado de esta es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 2 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 3. En cualquier caso solamente se ejecuta uno de los tres bloques de sentencias.</p>
 
     <hr class="corta" />
 
@@ -93,14 +267,14 @@
 
     <div class="codigo">
       <pre>
-<code class="language-php">if (expresión_1) {
+<code class="language-php">if (condición_1) {
     bloque_de_sentencias_1
-} elseif (expresión_2) {
+} elseif (condición_2) {
     bloque_de_sentencias_2
-} elseif (expresión_3) {
+} elseif (condición_3) {
     bloque_de_sentencias_3
  ...
-} elseif (expresión_n) {
+} elseif (condición_n) {
     bloque_de_sentencias_n
 } else {
     bloque_de_sentencias_n+1
@@ -108,15 +282,13 @@
 </pre>
     </div>
 
-    <hr class="corta" />
-
     <section id="if-else-abreviado">
-      <h3>Notación abreviada .. ? ... : ...</h3>
-      <p>La construcción</p>
+      <h3>Notación abreviada para algunos if else: .. ? ... : ...</h3>
+      <p>Si la construcción if ... else ... simplemente asigna valor a una variable ...</p>
 
       <div class="codigo">
         <pre>
-<code class="language-php">if (expresión_1) {
+<code class="language-php">if (condición_1) {
     $variable = expresion1;
 } else
     $variable = expresion2;
@@ -124,17 +296,17 @@
 </pre>
       </div>
 
-      <p>se puede sustituir por la construcción:</p>
+      <p>... se puede sustituir por la construcción:</p>
 
       <div class="codigo">
-        <pre><code class="language-php">$variable = (expresión_1)? expresion1 : expresion2;</code></pre>
+        <pre><code class="language-php">$variable = (condición_1)? expresion1 : expresion2;</code></pre>
       </div>
 
       <p>que se suele escribir en varias líneas para facilitar la legibilidad:</p>
 
       <div class="codigo">
         <pre>
-<code class="language-php">$variable = (expresión_1)
+<code class="language-php">$variable = (condición_1)
     ? expresion1
     : expresion2;</code>
 </pre>
@@ -143,9 +315,9 @@
   </section>
 
   <section id="switch">
-    <h2>switch</h2>
+    <h2>Sentencia condicional switch</h2>
 
-    <p>La sentencia <a href="http://php.net/manual/es/control-structures.switch.php">switch</a> es equivalente a una construcción if ... elseif ... en las que las expresiones son comparaciones de igualdad de la misma expresión con valores distintos.</p>
+    <p>La sentencia <a href="http://php.net/manual/es/control-structures.switch.php">switch</a> es equivalente a una construcción if ... elseif ... en las que las expresiones son comparaciones de igualdad de la misma condición con valores distintos.</p>
 
     <p>La sintaxis de la sentencia switch es la siguiente:</p>
 
@@ -185,7 +357,7 @@
   </section>
 
   <section id="for">
-    <h2>for</h2>
+    <h2>Bucle for</h2>
 
     <p><strong>Nota</strong>: En la lección <a href="php-estructuras-control-bucle-for.html">Bucle for</a> se explica con más detalle esta estructura de control.</p>
 
@@ -230,25 +402,57 @@ for ($i = 0; $i &lt; 5; $i++) {
   </section>
 
   <section id="while">
-    <h2>while</h2>
+    <h2>Bucle while</h2>
 
     <p>La sintaxis del <a href="http://php.net/manual/es/control-structures.while.php">bucle while</a> es la siguiente:</p>
 
     <div class="codigo">
       <pre>
-<code class="language-php">while (expresión) {
+<code class="language-php">while (condición) {
     bloque_de_sentencias
 }</code>
 </pre>
     </div>
 
-    <p>La expresión se evalúa al principio de cada iteración: si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias; si el resultado es <span class="php-con">false</span> el bucle se termina.</p>
+    <p>La condición se evalúa al principio de cada iteración: si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias; si el resultado es <span class="php-con">false</span> el bucle se termina.</p>
 
-    <p>Cuando se programa un bucle while hay que tener cuidado en que la expresión deje de cumplirse en algún momento, porque si no es así, el bucle no terminaría nunca.</p>
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="350" height="410" viewBox="-175 -10 350 410" style="background-color: white;" font-family="sans-serif">
+        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+
+        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+
+        <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
+        <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+
+        <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
+        <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <rect x="60" y="170" width="100" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE</text>
+
+        <polyline points="-60,125 -110,125 -110,300 0,300 0,340" fill="none" stroke-width="3" stroke="black" />
+        <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+        <polyline points="-5,330 0,340 5,330" fill="black" stroke-width="2" stroke="black" />
+
+        <polyline points="110,220 110,260 0,260 0,160" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-5,170 0,160 5,170" fill="black" stroke-width="2" stroke="black" />
+
+        <rect x="-50" y="340" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="372" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+      </svg>
+    </p>
 
     <hr class="corta" />
 
-    <p>En los bucles while más sencillos, antes del bucle se inicializa una variable que se evalúa en la expresión y dentro del bucle se modifica la variable, como muestra el ejemplo siguiente:</p>
+    <p>Cuando se programa un bucle while hay que tener cuidado en que la condición deje de cumplirse en algún momento, porque si no es así, el bucle no terminaría nunca.</p>
+
+    <hr class="corta" />
+
+    <p>En los bucles while más sencillos, antes del bucle se inicializa una variable que se evalúa en la condición y dentro del bucle se modifica la variable, como muestra el ejemplo siguiente:</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -275,7 +479,7 @@ while ($i &lt; 5) {
   </section>
 
   <section id="do">
-    <h2>do ... while</h2>
+    <h2>Bucle do ... while</h2>
 
     <p>La sintaxis del <a href="http://php.net/manual/es/control-structures.do.while.php">bucle do ... while</a> es la siguiente:</p>
 
@@ -283,19 +487,57 @@ while ($i &lt; 5) {
       <pre>
 <code class="language-php">do {
     bloque_de_sentencias
-} while (expresión)</code>
+} while (condición)</code>
 </pre>
     </div>
 
-    <p>La expresión se evalúa al final de cada iteración: si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias; si el resultado es <span class="php-con">false</span> el bucle se termina.</p>
+    <p>La condición se evalúa al final de cada iteración: si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias; si el resultado es <span class="php-con">false</span> el bucle se termina.</p>
 
-    <p>El bucle do ... while es muy similar al bucle while, la principal diferencia es que en el bucle do ... while el bloque de sentencias se ejecuta por lo menos una vez mientras que en el bucle while depende de si la expresión es cierta o no la primera vez que se evalúa.</p>
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="350" height="430" viewBox="-175 -10 350 430" style="background-color: white;" font-family="sans-serif">
+        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
 
-    <p>Cuando se programa un bucle do ... while hay que tener cuidado en que la expresión deje de cumplirse en algún momento, porque si no es así, el bucle no terminaría nunca.</p>
+        <line x1="0" y1="50" x2="0" y2="130" stroke-width="3" stroke="black" />
+        <polyline points="-5,120 0,130 5,120" fill="black" stroke-width="2" stroke="black" />
+
+        <rect x="-50" y="130" width="100" height="50" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="162" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE</text>
+
+        <line x1="0" y1="180" x2="0" y2="220" stroke-width="3" stroke="black" />
+        <polyline points="-5,210 0,220 5,210" fill="black" stroke-width="2" stroke="black" />
+
+        <polygon points="0,220 60,255 0,290 -60,255" fill="white" stroke-width="3" stroke="black" />
+        <text x="0" y="260" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+
+        <polyline points="60,255 110,255 110,90 0,90" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="10,85 0,90 10,95" fill="black" stroke-width="2" stroke="black" />
+        <text x="85" y="245" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+        <polyline points="-60,255 -110,255 -110,320 0,320 0,360" fill="none" stroke-width="3" stroke="black" />
+        <text x="-85" y="245" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+        <polyline points="-5,350 0,360 5,350" fill="black" stroke-width="2" stroke="black" />
+
+        <rect x="-50" y="360" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+        <text x="0" y="392" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+
+<!--
+        <polyline points="110,220 110,260 0,260 0,160" fill="none" stroke-width="3" stroke="black" />
+        <polyline points="-5,170 0,160 5,170" fill="black" stroke-width="2" stroke="black" />
+
+-->
+</svg>
+    </p>
 
     <hr class="corta" />
 
-    <p>En los bucles do ... while más sencillos, antes del bucle se inicializa una variable que se evalúa en la expresión y dentro del bucle se modifica la variable, como muestra el ejemplo siguiente:</p>
+    <p>El bucle do ... while es muy similar al bucle while, la principal diferencia es que en el bucle do ... while el bloque de sentencias se ejecuta por lo menos una vez mientras que en el bucle while depende de si la condición es cierta o no la primera vez que se evalúa.</p>
+
+    <p>Cuando se programa un bucle do ... while hay que tener cuidado en que la condición deje de cumplirse en algún momento, porque si no es así, el bucle no terminaría nunca.</p>
+
+    <hr class="corta" />
+
+    <p>En los bucles do ... while más sencillos, antes del bucle se inicializa una variable que se evalúa en la condición y dentro del bucle se modifica la variable, como muestra el ejemplo siguiente:</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -322,7 +564,7 @@ do {
   </section>
 
   <section id="foreach">
-    <h2>foreach</h2>
+    <h2>Bucle foreach</h2>
 
     <p><strong>Nota</strong>: En la lección <a href="php-estructuras-control-bucle-foreach.html">Bucle foreach</a> se explica con más detalle esta estructura de control.</p>
 
