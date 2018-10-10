@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (1) 10 - matrices-1-10.php
+ * Matrices (1) 16 - matrices-1-16.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-13
+ * @version   2018-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,16 +26,16 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>De binario a Gray. Matrices (1).
+  <title>Cambio de bits. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>Convertidor de binario a código de Gray</h1>
+  <h1>Cambio de bits</h1>
 
-  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su conversión a código de Gray.</p>
+  <p>Actualice la página para mostrar una secuencia aleatoria de bits y la detección de cambios de bits consecutivos en la secuencia.</p>
 
 <?php
 $numero = 10;
@@ -47,38 +47,37 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la matriz
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "B: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial[$i] ";
+print "  <pre style=\"font-size: 300%\">\n";
+print " A: ";
+foreach ($inicial as $bit) {
+    print "$bit ";
 }
-print "</p>\n";
+print "\n";
+print "\n";
 
-// Creamos la matriz con el código Gray
+// Creamos la matriz con la detección de los cambios
 $resultado = [];
-$resultado[0] = $inicial[0];
 for ($i = 0; $i < $numero - 1; $i++) {
     if ($inicial[$i] == $inicial[$i+1]) {
-        $resultado[$i+1] = 0;
+        $resultado[$i] = 0;
     } else {
-        $resultado[$i+1] = 1;
+        $resultado[$i] = 1;
     }
 }
 
 // Mostramos los valores calculados
-print "\n";
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "G: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$resultado[$i] ";
+print "&Delta;A:  ";
+foreach ($resultado as $bit) {
+    print "$bit ";
 }
-print "</p>\n";
+print "\n";
+print "</pre>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-13">13 de octubre de 2017</time>
+      <time datetime="2018-10-10">10 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

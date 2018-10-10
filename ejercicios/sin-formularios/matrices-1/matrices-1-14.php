@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (1) 6 - matrices-1-06.php
+ * Matrices (1) 14 - matrices-1-14.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-24
+ * @version   2018-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,67 +26,80 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Negación. Matrices (1).
+  <title>"Y" lógico. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>Negación de bits</h1>
+  <h1>"Y" lógico</h1>
 
-  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su complementaria.</p>
+  <p>Actualice la página para mostrar dos secuencias aleatorias de bits y su conjunción lógica.</p>
 
 <?php
 $numero = 10;
 
-// Creamos la matriz de bits aleatorios
-$inicial = [];
+// Creamos la primera matriz de bits aleatorios
+$inicial1 = [];
 for ($i = 0; $i < $numero; $i++) {
-    $inicial[$i] = rand(0, 1);
+    $inicial1[$i] = rand(0, 1);
 }
 
-// Mostramos los bits aleatorios
+// Mostramos los bits aleatorios de la primera matriz
+print "  <pre style=\"font-size: 300%;\">\n";
+print "   A   : ";
+foreach ($inicial1 as $bit) {
+    print "$bit ";
+}
 print "\n";
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "A: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial[$i] ";
-}
-print "</p>\n";
+print "\n";
 
-// Creamos la matriz con los valores complementarios
+// Creamos la segunda matriz de bits aleatorios
+$inicial2 = [];
+for ($i = 0; $i < $numero; $i++) {
+    $inicial2[$i] = rand(0, 1);
+}
+
+// Mostramos los bits aleatorios de la segunda matriz
+print "   B   : ";
+foreach ($inicial2 as $bit) {
+    print "$bit ";
+}
+print "\n";
+print "\n";
+
+// Creamos la matriz con el resultado de la conjunción lógica
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    if ($inicial[$i] == 1) {
-        $resultado[$i] = 0;
-    } else {
+    if ($inicial1[$i] == 1 && $inicial2[$i] == 1 ) {
         $resultado[$i] = 1;
+    } else {
+        $resultado[$i] = 0;
     }
 }
 
 /* Otra forma de calcular los valores complementarios
-// Creamos la matriz con los valores complementarios
+// Creamos la matriz con el resultado de la conjunción lógica
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    $resultado[$i] = 1 - $inicial[$i];
+    $resultado[$i] = (int)($inicial1[$i] && $inicial2[$i]);
 }
 */
 
-// Mostramos los valores complementarios
-print "\n";
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "<span style=\"text-decoration: overline\">A</span>: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$resultado[$i] ";
+// Mostramos los valores calculados
+print "A and B: ";
+foreach ($resultado as $bit) {
+    print "$bit ";
 }
-print "</p>\n";
+print "\n";
+print "</pre>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-24">24 de octubre de 2017</time>
+      <time datetime="2018-10-10">10 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

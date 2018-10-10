@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (1) 8 - matrices-1-08.php
+ * Matrices (1) 13 - matrices-1-13.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-13
+ * @version   2018-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,80 +26,58 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>El bit más común. Matrices (1).
+  <title>Negación. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>El bit más común</h1>
+  <h1>Negación de bits</h1>
 
-  <p>Actualice la página para mostrar tres secuencias aleatorias de bits y una cuarta secuencia que indica cuál es el bit más común en esa posición.</p>
+  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su complementaria.</p>
 
 <?php
 $numero = 10;
 
-// Creamos la primera matriz de bits aleatorios
-$inicial1 = [];
+// Creamos la matriz de bits aleatorios
+$inicial = [];
 for ($i = 0; $i < $numero; $i++) {
-    $inicial1[$i] = rand(0, 1);
+    $inicial[$i] = rand(0, 1);
 }
 
-// Mostramos los bits aleatorios de la primera matriz
-print "\n";
+// Mostramos los bits aleatorios
 print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "A: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial1[$i] ";
+foreach ($inicial as $bit) {
+    print "$bit ";
 }
 print "</p>\n";
-
-// Creamos la segunda matriz de bits aleatorios
-$inicial2 = [];
-for ($i = 0; $i < $numero; $i++) {
-    $inicial2[$i] = rand(0, 1);
-}
-
-// Mostramos los bits aleatorios de la segunda matriz
 print "\n";
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "B: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial2[$i] ";
-}
-print "</p>\n";
 
-// Creamos la tercera matriz de bits aleatorios
-$inicial3 = [];
-for ($i = 0; $i < $numero; $i++) {
-    $inicial3[$i] = rand(0, 1);
-}
-
-// Mostramos los bits aleatorios de la tercera matriz
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "C: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial3[$i] ";
-}
-print "</p>\n";
-
-// Creamos la matriz con el resultado
+// Creamos la matriz con los valores complementarios
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    if ($inicial1[$i] + $inicial2[$i] + $inicial3[$i] > 1) {
-        $resultado[$i] = 1;
-    } else {
+    if ($inicial[$i] == 1) {
         $resultado[$i] = 0;
+    } else {
+        $resultado[$i] = 1;
     }
 }
 
-// Mostramos los valores calculados
-print "\n";
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
-print "R: ";
+/* Otra forma de calcular los valores complementarios
+// Creamos la matriz con los valores complementarios
+$resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    print "$resultado[$i] ";
+    $resultado[$i] = 1 - $inicial[$i];
+}
+*/
+
+// Mostramos los valores complementarios
+print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "<span style=\"text-decoration: overline\">A</span>: ";
+foreach ($resultado as $bit) {
+    print "$bit ";
 }
 print "</p>\n";
 ?>
@@ -107,7 +85,7 @@ print "</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-13">13 de octubre de 2017</time>
+      <time datetime="2018-10-10">10 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 12 - matrices-1-12.php
+ * Matrices (1) 22 - matrices-1-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -26,30 +26,37 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Partida de dados. Matrices (1).
+  <title>Jugada de Risk. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>Partida de dados</h1>
+  <h1>Jugada de Risk</h1>
 
-  <p>Actualice la página para mostrar una nueva partida de dados.</p>
+  <p>Actualice la página para mostrar una nueva tirada de Risk.</p>
 
 <?php
-$numero = rand(2, 7);
-
-print "  <h2>Jugador 1</h2>\n";
+// Mostramos con cuántos dados va a jugar el Atacante
+print "  <h2>Atacante</h2>\n";
+print "\n";
+$numero1 = rand(1, 3);
+if ($numero1 == 1) {
+    print "  <p>El atacante ataca con $numero1 dado:</p>\n";
+} else {
+    print "  <p>El atacante ataca con $numero1 dados:</p>\n";
+}
 print "\n";
 
-// Guardamos los valores del Jugador 1 en la matriz $dados1
+// Guardamos los valores del Atacante en la matriz $dados1
 $dados1 = [];
-for ($i = 0; $i < $numero; $i++) {
+for ($i = 0; $i < $numero1; $i++) {
     $dados1[$i] = rand(1, 6);
 }
 
-// Mostramos los resultados obtenidos por el Jugador 1
+// Ordenamos la matriz  $dados2 y mostramos los resultados obtenidos por el Atacante
+rsort($dados1);
 print "  <p>\n";
 foreach ($dados1 as $dado) {
     print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
@@ -57,16 +64,25 @@ foreach ($dados1 as $dado) {
 print "  </p>\n";
 print "\n";
 
-print "  <h2>Jugador 2</h2>\n";
+// Mostramos con cuántos dados va a jugar el Defensor
+print "  <h2>Defensor</h2>\n";
+print "\n";
+$numero2 = rand(1, 2);
+if ($numero2 == 1) {
+    print "  <p>El defensor defiende con $numero2 dado:</p>\n";
+} else {
+    print "  <p>El defensor defiende con $numero2 dados:</p>\n";
+}
 print "\n";
 
-// Guardamos los valores del Jugador 2 en la matriz $dados2
+// Guardamos los valores del Defensor en la matriz $dados2
 $dados2 = [];
-for ($i = 0; $i < $numero; $i++) {
+for ($i = 0; $i < $numero2; $i++) {
     $dados2[$i] = rand(1, 6);
 }
 
-// Mostramos los resultados obtenidos por el Jugador 2
+// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Defensor
+rsort($dados2);
 print "  <p>\n";
 foreach ($dados2 as $dado) {
     print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
@@ -74,53 +90,31 @@ foreach ($dados2 as $dado) {
 print "  </p>\n";
 print "\n";
 
-// En los acumuladores $gana1 $gana2 y $empate contamos cuántas partidas ha ganado cada uno
-print "  <h2>Resultado</h2>\n";
-print "\n";
-
-$gana1 = 0;
-$gana2 = 0;
-$empate = 0;
-for ($i = 0; $i < $numero; $i++) {
+// En los acumuladores $bajasAtacante $bajasDefensor contamos cuántas partidas ha perdido cada uno
+// El número de dados que se compara es el menor de los números de dados tirados
+$menor = min($numero1, $numero2);
+$bajasAtacante = 0;
+$bajasDefensor = 0;
+for ($i = 0; $i < $menor; $i++) {
     if ($dados1[$i] > $dados2[$i]) {
-        $gana1++;
-    } elseif ($dados1[$i] < $dados2[$i]) {
-        $gana2++;
+        $bajasDefensor++;
     } else {
-        $empate ++;
+        $bajasAtacante++;
     }
 }
 
-// Mostramos cuántas partidas ha ganado cada uno
-print "  <p>El jugador 1 ha ganado <strong>$gana1</strong> ve";
-if ($gana1 != 1) {
-    print "ces";
-} else {
-    print "z";
+// Mostramos cuántas partidas bajas ha tenido cada jugador
+print "  <h2>Resultado</h2>\n";
+print "\n";
+print "  <p>El atacante pierde <strong>$bajasAtacante</strong> unidad";
+if ($bajasAtacante != 1) {
+    print "es";
 }
-print ", el jugador 2 ha ganado <strong>$gana2</strong> ve";
-if ($gana2 != 1) {
-    print "ces";
-} else {
-    print "z";
-}
-print " y los jugadores han empatado <strong>$empate</strong> ve";
-if ($empate != 1) {
-    print "ces";
-} else {
-    print "z";
+print ". El defensor pierde <strong>$bajasDefensor</strong> unidad";
+if ($bajasDefensor != 1) {
+    print "es";
 }
 print ".</p>\n";
-print "\n";
-
-// Mostramos quién ha ganado la partida
-if ($gana1 > $gana2) {
-    print "  <p>En conjunto, ha ganado el jugador <strong>1</strong>.</p>\n";
-} elseif ($gana1 < $gana2) {
-    print "  <p>En conjunto, ha ganado el jugador <strong>2</strong>.</p>\n";
-} else {
-    print "  <p>En conjunto, han empatado.</p>\n";
-}
 ?>
 
   <footer>

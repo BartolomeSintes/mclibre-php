@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (1) 11 - matrices-1-11.php
+ * Matrices (1) 11 - matrices-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-13
+ * @version   2018-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,53 +26,50 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Ordenar dados. Matrices (1).
+  <title>Tirada de dados. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>Ordenar dados</h1>
+  <h1>Tirada de dados</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
 $numero = rand(2, 7);
 
-// Creamos la matriz de dados aleatorios
+// Guardamos los valores de los dados en la matriz $dados1
 $dados = [];
 for ($i = 0; $i < $numero; $i++) {
     $dados[$i] = rand(1, 6);
 }
 
-// Mostramos los dados
+// Mostramos las imágenes de los dados obtenidos
 print "  <h2>Tirada de $numero dados</h2>\n";
 print "\n";
 print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados[$i].svg\" alt=\"$dados[$i]\" title=\"$dados[$i]\" width=\"140\" height=\"140\" />\n";
+foreach ($dados as $dado) {
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Ordenamos los dados
-sort($dados);
-
-// Mostramos los dados ordenados
-print "  <h2>Tirada ordenada</h2>\n";
+// Mostramos los valores numéricos de los dados obtenidos
+print "  <h2>Resultado</h2>\n";
 print "\n";
-print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados[$i].svg\" alt=\"$dados[$i]\" title=\"$dados[$i]\" width=\"140\" height=\"140\" />\n";
+print "  <p>Los valores obtenidos son: ";
+foreach ($dados as $dado) {
+    print "$dado ";
 }
-print "  </p>\n";
+print "</p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-13">13 de octubre de 2017</time>
+      <time datetime="2018-10-10">10 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

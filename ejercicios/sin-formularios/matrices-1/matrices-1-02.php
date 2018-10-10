@@ -3,9 +3,9 @@
  * Matrices (1) 2 - matrices-1-02.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-12
+ * @version   2018-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,31 +26,34 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Dado. Matrices (1).
+  <title>Animales. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>Dado</h1>
+  <h1>Animales</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar un nuevo animal.</p>
 
 <?php
-$dado = rand(1, 6);
+$dibujos = [
+    "ballena.svg", "caballito-mar.svg", "camello.svg", "cebra.svg", "elefante.svg",
+    "hipopotamo.svg", "jirafa.svg", "leon.svg", "leopardo.svg", "medusa.svg",
+    "mono.svg", "oso.svg", "oso-blanco.svg", "pajaro.svg", "pinguino.svg",
+    "rinoceronte.svg", "serpiente.svg", "tigre.svg", "tortuga-marina.svg", "tortuga.svg"
+];
 
-$nombre = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis"];
+$animal = rand(0, count($dibujos) - 1);
 
-print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
-print "\n";
-print "  <p>Ha sacado un <strong>$nombre[$dado]</strong>.</p>\n";
+print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"Animal\" title=\"Animal\" height=\"250\" /></p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-12">12 de octubre de 2017</time>
+      <time datetime="2018-10-10">10 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

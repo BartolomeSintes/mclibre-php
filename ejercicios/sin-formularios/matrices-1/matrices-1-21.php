@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (1) 7 - matrices-1-07.php
+ * Matrices (1) 21 - matrices-1-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-13
+ * @version   2018-10-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,80 +26,53 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>"Y" lógico. Matrices (1).
+  <title>Ordenar dados. Matrices (1).
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>"Y" lógico</h1>
+  <h1>Ordenar dados</h1>
 
-  <p>Actualice la página para mostrar dos secuencias aleatorias de bits y su conjunción lógica.</p>
+  <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-$numero = 10;
+$numero = rand(2, 7);
 
-// Creamos la primera matriz de bits aleatorios
-$inicial1 = [];
+// Creamos la matriz de dados aleatorios
+$dados = [];
 for ($i = 0; $i < $numero; $i++) {
-    $inicial1[$i] = rand(0, 1);
+    $dados[$i] = rand(1, 6);
 }
 
-// Mostramos los bits aleatorios de la primera matriz
+// Mostramos los dados
+print "  <h2>Tirada de $numero dados</h2>\n";
 print "\n";
-print "  <pre style=\"font-size: 300%;\">\n";
-print "   A   : ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial1[$i] ";
+print "  <p>\n";
+foreach ($dados as $dado) {
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
 }
-print "\n";
-
-// Creamos la segunda matriz de bits aleatorios
-$inicial2 = [];
-for ($i = 0; $i < $numero; $i++) {
-    $inicial2[$i] = rand(0, 1);
-}
-
-// Mostramos los bits aleatorios de la segunda matriz
-print "\n";
-print "   B   : ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial2[$i] ";
-}
+print "  </p>\n";
 print "\n";
 
-// Creamos la matriz con el resultado de la conjunción lógica
-$resultado = [];
-for ($i = 0; $i < $numero; $i++) {
-    if ($inicial1[$i] == 1 && $inicial2[$i] == 1 ) {
-        $resultado[$i] = 1;
-    } else {
-        $resultado[$i] = 0;
-    }
-}
+// Ordenamos los dados
+sort($dados);
 
-/* Otra forma de calcular los valores complementarios
-// Creamos la matriz con el resultado de la conjunción lógica
-$resultado = [];
-for ($i = 0; $i < $numero; $i++) {
-    $resultado[$i] = (int)($inicial1[$i] && $inicial2[$i]);
-}
-*/
-
-// Mostramos los valores calculados
+// Mostramos los dados ordenados
+print "  <h2>Tirada ordenada</h2>\n";
 print "\n";
-print "A and B: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$resultado[$i] ";
+print "  <p>\n";
+foreach ($dados as $dado) {
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
 }
-print "</pre>\n";
+print "  </p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-13">13 de octubre de 2017</time>
+      <time datetime="2018-10-10">10 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
