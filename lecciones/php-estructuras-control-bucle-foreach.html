@@ -27,6 +27,7 @@
         <li><a href="#foreach">El bucle foreach</a></li>
         <li><a href="#problemas">Problemas al recorrer matrices con el bucle for</a></li>
         <li><a href="#sintaxis">Sintaxis del bucle foreach</a></li>
+        <li><a href="#diagrama-flujo">Diagrama de flujo</a></li>
         <li><a href="#ejemplos">Ejemplos de bucles</a>
           <ul>
             <li><a href="#matrices">Matrices</a></li>
@@ -2249,13 +2250,7 @@ Array
 </pre>
     </div>
 
-    <p>El bucle se ejecuta tantas veces como elementos tiene la matriz. En cada iteración, las variables $indice y $valor van tomando los valores de los índices y de la matriz para ese índice.</p>
-
-    <p>Si sólo se necesitan los valores almacenados en la matriz se puede utilizar tanto la primera como la segunda forma. Si se necesitan tanto los índices como los valores se debe utilizar la segunda forma. Si sólo se necesitan los índices también se debe utilizar la segunda forma.</p>
-
-    <hr class="corta" />
-
-    <p>El diagrama de flujo siguiente explica gráficamente la ejecución de un bucle <span class="php-res">foreach</span> ...:</p>
+    <p>La ejecución de esta estructura de control es la siguiente:</p>
 
     <ul>
       <li>Si la matriz no contiene elementos, el bucle no se ejecuta.</li>
@@ -2274,59 +2269,227 @@ Array
       </li>
     </ul>
 
+    <p>El bucle se ejecuta tantas veces como elementos tiene la matriz. En cada iteración, las variables $indice y $valor van tomando los valores de los índices y de la matriz para ese índice.</p>
+
+    <p>Si sólo se necesitan los valores almacenados en la matriz se puede utilizar tanto la primera como la segunda forma. Si se necesitan tanto los índices como los valores se debe utilizar la segunda forma. Si sólo se necesitan los índices también se debe utilizar la segunda forma.</p>
+  </section>
+
+  <section id="diagrama-flujo">
+    <h2>Diagrama de flujo</h2>
+
+    <p>El diagrama de flujo siguiente muestra la ejecución de un bucle <span class="php-res">foreach</span> .... Haga clic en los botones de avance y retroceso para ver la ejecución paso a paso:</p>
+
     <p class="izquierda">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="550" viewBox="-145 -10 500 550" style="background-color: white;" font-family="sans-serif" class="izquierda">
-        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="640" viewBox="-145 -100 500 640" style="background-color: white;" font-family="sans-serif" class="izquierda">
+        <rect x="-143" y="-98" width="496" height="83" rx="3" ry="3" fill="none" stroke="black" stroke-width="3" />
+        <line x1="-143" y1="-70" x2="353" y2="-70" stroke-width="2" stroke="black" />
+        <text x="70" y="-78" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">DIAGRAMA DE FLUJO BUCLE FOREACH</text>
+        <g onclick="svg_retrocede(0)">
+          <circle cx="290" cy="-45" r="17" fill="white" stroke-width="3" stroke="black" />
+          <polygon points="295,-35 280,-45 295,-55" fill="black" stroke-width="2" stroke="black" />
+        </g>
+        <g onclick="svg_avanza(0)">
+          <circle cx="330" cy="-45" r="17" fill="white" stroke-width="3" stroke="black" />
+          <polygon points="325,-35 340,-45 325,-55" fill="black" stroke-width="2" stroke="black" />
+        </g>
 
-        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
-        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+        <g id="svg01-p01">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">El programa llega al bucle foreach.</text>
+          <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+          <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
 
-        <polygon points="0,90 90,125 0,160 -90,125" fill="white" stroke-width="3" stroke="black" />
-        <text x="0" y="120" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">¿Hay elementos</text>
-        <text x="0" y="140" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">en la matriz?</text>
+          <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+          <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+        </g>
 
-        <polyline points="90,125 140,125 140,170" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="135,160 140,170 145,160" fill="black" stroke-width="2" stroke="black" />
-        <text x="115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+        <g id="svg01-p02">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Evalúa si la matriz tiene elementos ...</text>
+          <polygon points="0,90 90,125 0,160 -90,125" fill="white" stroke-width="3" stroke="black" />
+          <text x="0" y="120" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">¿Hay elementos</text>
+          <text x="0" y="140" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">en la matriz?</text>
+        </g>
 
-        <rect x="85" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="140" y="192" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Asigna</text>
-        <text x="140" y="212" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">primer valor</text>
+        <g id="svg01-p03">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si no hay ningún elemento,</text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">termina el bucle foreach.</text>
+          <polyline points="-90,125 -140,125 -140,425, 0,425 0,485" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="-5,475 0,485 5,475" fill="black" stroke-width="2" stroke="black" />
+          <text x="-115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
 
-        <line x1="140" y1="220" x2="140" y2="300" stroke-width="3" stroke="black" />
-        <polyline points="135,290 140,300 145,290" fill="black" stroke-width="2" stroke="black" />
+          <rect x="-50" y="485" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+          <text x="0" y="517" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+        </g>
 
-        <rect x="85" y="300" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="140" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">Bloque</text>
+        <g id="svg01-p04">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si hay algún elemento, asigna</text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">el primer elemento a la variable auxiliar ...</text>
+          <polyline points="90,125 140,125 140,170" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="135,160 140,170 145,160" fill="black" stroke-width="2" stroke="black" />
+          <text x="115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
 
-        <line x1="140" y1="350" x2="140" y2="390" stroke-width="3" stroke="black" />
-        <polyline points="135,380 140,390 145,380" fill="black" stroke-width="2" stroke="black" />
+          <rect x="85" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+          <text x="140" y="192" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Asigna</text>
+          <text x="140" y="212" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">primer valor</text>
+        </g>
 
-        <polygon points="140,390 230,425 140,460 50,425" fill="white" stroke-width="3" stroke="black" />
-        <text x="140" y="425" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">¿Quedan elementos</text>
-        <text x="140" y="440" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">en la matriz?</text>
+        <g id="svg01-p05">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">... ejecuta el bloque de instrucciones ...</text>
+          <line x1="140" y1="220" x2="140" y2="300" stroke-width="3" stroke="black" />
+          <polyline points="135,290 140,300 145,290" fill="black" stroke-width="2" stroke="black" />
 
-        <polyline points="230,425 280,425 280,350" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="275,360 280,350 285,360" fill="black" stroke-width="2" stroke="black" />
-        <text x="255" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+          <rect x="85" y="300" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+          <text x="140" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">Bloque</text>
+        </g>
 
-        <rect x="225" y="300" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="280" y="322" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Asigna valor</text>
-        <text x="280" y="342" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">siguiente</text>
+        <g id="svg01-p06">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">... y evalúa si hay más elementos.</text>
+          <line x1="140" y1="350" x2="140" y2="390" stroke-width="3" stroke="black" />
+          <polyline points="135,380 140,390 145,380" fill="black" stroke-width="2" stroke="black" />
 
-        <polyline points="280,300 280,260 140,260" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="150,265 140,260 150,255" fill="black" stroke-width="2" stroke="black" />
+          <polygon points="140,390 230,425 140,460 50,425" fill="white" stroke-width="3" stroke="black" />
+          <text x="140" y="425" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">¿Quedan elementos</text>
+          <text x="140" y="440" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">en la matriz?</text>
+        </g>
 
-        <polyline points="50,425 0,425 0,485" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="-5,475 0,485 5,475" fill="black" stroke-width="2" stroke="black" />
-        <text x="25" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+        <g id="svg01-p07">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si los hay, asigna el siguiente</text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">valor a la variable auxiliar ... </text>
+          <polyline points="230,425 280,425 280,350" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="275,360 280,350 285,360" fill="black" stroke-width="2" stroke="black" />
+          <text x="255" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
 
-        <polyline points="-90,125 -140,125 -140,425, 0,425" fill="none" stroke-width="3" stroke="black" />
-        <text x="-115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+          <rect x="225" y="300" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+          <text x="280" y="322" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Asigna valor</text>
+          <text x="280" y="342" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">siguiente</text>
+        </g>
 
-        <rect x="-50" y="485" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="517" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+        <g id="svg01-p08">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">... vuelve a ejecutar el bloque ...</text>
+          <polyline points="280,300 280,260 140,260" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="150,265 140,260 150,255" fill="black" stroke-width="2" stroke="black" />
+        </g>
+
+        <g id="svg01-p09">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">... y vuelve a evalúar si hay más elementos.</text>
+          <line x1="140" y1="350" x2="140" y2="390" stroke-width="3" stroke="black" />
+          <polyline points="135,380 140,390 145,380" fill="black" stroke-width="2" stroke="black" />
+
+          <polygon points="140,390 230,425 140,460 50,425" fill="white" stroke-width="3" stroke="black" />
+          <text x="140" y="425" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">¿Quedan elementos</text>
+          <text x="140" y="440" text-anchor="middle" font-family="sans-serif" font-size="14" fill="black">en la matriz?</text>
+        </g>
+
+        <g id="svg01-p10">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si no los hay, </text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">termina el bucle foreach.</text>
+          <polyline points="50,425 0,425 0,485" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="-5,475 0,485 5,475" fill="black" stroke-width="2" stroke="black" />
+          <text x="25" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+          <rect x="-50" y="485" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+          <text x="0" y="517" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+        </g>
+
+        <g id="svg01-p01-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">El programa llega al bucle foreach.</text>
+          <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+          <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">INICIO</text>
+
+          <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="red" />
+          <polyline points="5,80 0,90 -5,80" fill="red" stroke-width="2" stroke="red" />
+        </g>
+
+        <g id="svg01-p02-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Evalúa si la matriz tiene elementos ...</text>
+          <polygon points="0,90 90,125 0,160 -90,125" fill="white" stroke-width="3" stroke="red" />
+          <text x="0" y="120" text-anchor="middle" font-family="sans-serif" font-size="14" fill="red">¿Hay elementos</text>
+          <text x="0" y="140" text-anchor="middle" font-family="sans-serif" font-size="14" fill="red">en la matriz?</text>
+        </g>
+
+        <g id="svg01-p03-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si no hay ningún elemento,</text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">termina el bucle foreach.</text>
+          <polyline points="-90,125 -140,125 -140,425, 0,425 0,485" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="-5,475 0,485 5,475" fill="red" stroke-width="2" stroke="red" />
+          <text x="-115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+          <rect x="-50" y="485" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+          <text x="0" y="517" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+        </g>
+
+        <g id="svg01-p04-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si hay algún elemento, asigna</text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">el primer elemento a la variable auxiliar ...</text>
+          <polyline points="90,125 140,125 140,170" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="135,160 140,170 145,160" fill="red" stroke-width="2" stroke="red" />
+          <text x="115" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+          <rect x="85" y="170" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+          <text x="140" y="192" text-anchor="middle" font-family="sans-serif" font-size="18" fill="red">Asigna</text>
+          <text x="140" y="212" text-anchor="middle" font-family="sans-serif" font-size="18" fill="red">primer valor</text>
+        </g>
+
+        <g id="svg01-p05-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">... ejecuta el bloque de instrucciones ...</text>
+          <line x1="140" y1="220" x2="140" y2="300" stroke-width="3" stroke="red" />
+          <polyline points="135,290 140,300 145,290" fill="red" stroke-width="2" stroke="red" />
+
+          <rect x="85" y="300" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+          <text x="140" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">Bloque</text>
+        </g>
+
+        <g id="svg01-p06-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">... y evalúa si hay más elementos.</text>
+          <line x1="140" y1="350" x2="140" y2="390" stroke-width="3" stroke="red" />
+          <polyline points="135,380 140,390 145,380" fill="red" stroke-width="2" stroke="red" />
+
+          <polygon points="140,390 230,425 140,460 50,425" fill="white" stroke-width="3" stroke="red" />
+          <text x="140" y="425" text-anchor="middle" font-family="sans-serif" font-size="14" fill="red">¿Quedan elementos</text>
+          <text x="140" y="440" text-anchor="middle" font-family="sans-serif" font-size="14" fill="red">en la matriz?</text>
+        </g>
+
+        <g id="svg01-p07-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si los hay, asigna el siguiente</text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">valor a la variable auxiliar ... </text>
+          <polyline points="230,425 280,425 280,350" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="275,360 280,350 285,360" fill="red" stroke-width="2" stroke="red" />
+          <text x="255" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+          <rect x="225" y="300" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+          <text x="280" y="322" text-anchor="middle" font-family="sans-serif" font-size="18" fill="red">Asigna valor</text>
+          <text x="280" y="342" text-anchor="middle" font-family="sans-serif" font-size="18" fill="red">siguiente</text>
+        </g>
+
+        <g id="svg01-p08-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">... vuelve a ejecutar el bloque ...</text>
+          <polyline points="280,300 280,260 140,260 140,300" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="150,265 140,260 150,255" fill="red" stroke-width="2" stroke="red" />
+          <polyline points="135,290 140,300 145,290" fill="red" stroke-width="2" stroke="red" />
+
+          <rect x="85" y="300" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+          <text x="140" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">Bloque</text>
+        </g>
+
+        <g id="svg01-p09-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">... y vuelve a evalúar si hay más elementos.</text>
+          <line x1="140" y1="350" x2="140" y2="390" stroke-width="3" stroke="red" />
+          <polyline points="135,380 140,390 145,380" fill="red" stroke-width="2" stroke="red" />
+
+          <polygon points="140,390 230,425 140,460 50,425" fill="white" stroke-width="3" stroke="red" />
+          <text x="140" y="425" text-anchor="middle" font-family="sans-serif" font-size="14" fill="red">¿Quedan elementos</text>
+          <text x="140" y="440" text-anchor="middle" font-family="sans-serif" font-size="14" fill="red">en la matriz?</text>
+        </g>
+
+        <g id="svg01-p10-b" visibility="hidden">
+          <text x="70" y="-45" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si no los hay, </text>
+          <text x="70" y="-25" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">termina el bucle foreach.</text>
+          <polyline points="50,425 0,425 0,485" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="-5,475 0,485 5,475" fill="red" stroke-width="2" stroke="red" />
+          <text x="25" y="415" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+          <rect x="-50" y="485" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+          <text x="0" y="517" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+        </g>
       </svg>
     </p>
 
@@ -3686,8 +3849,62 @@ Array
     </section>
   </section>
 
+  <script>
+    var paso = [-1];
+    var pasos = [
+      ["svg01-p01", "svg01-p02", "svg01-p03", "svg01-p04", "svg01-p05", "svg01-p06", "svg01-p07", "svg01-p08", "svg01-p09", "svg01-p10"]
+    ];
+
+    function svg_cambia(svg, n) {
+      p = document.getElementById(pasos[svg].concat("-b")[n]);
+      if (p.getAttribute("visibility") == "hidden") {
+        p.setAttribute("visibility", "visible");
+      } else {
+        p.setAttribute("visibility", "hidden");
+      }
+      p = document.getElementById((pasos[svg][n]).concat("-b"));
+      if (p.getAttribute("visibility") == "hidden") {
+        p.setAttribute("visibility", "visible");
+      } else {
+        p.setAttribute("visibility", "hidden");
+      }
+    }
+
+    function svg_avanza(svg) {
+      if (paso[svg] == -1) {
+        paso[svg] = paso[svg] + 1;
+        svg_cambia(svg, paso[svg]);
+      } else {
+        if (paso[svg] == (pasos[svg].length - 1)) {
+          paso[svg] = -1;
+          svg_cambia(svg, pasos[svg].length - 1);
+        } else {
+          paso[svg] = paso[svg] + 1;
+          svg_cambia(svg, paso[svg] - 1);
+          svg_cambia(svg, paso[svg]);
+        }
+      }
+    }
+
+    function svg_retrocede(svg) {
+      if (paso[svg] == -1) {
+        paso[svg] = pasos[svg].length - 1;
+        svg_cambia(svg, paso[svg]);
+      } else {
+        if (paso[svg] == 0) {
+          paso[svg] = paso[svg] - 1;
+          svg_cambia(svg, [svg]);
+        } else {
+          paso[svg] = paso[svg] - 1;
+          svg_cambia(svg, paso[svg] + 1);
+          svg_cambia(svg, paso[svg]);
+        }
+      }
+    }
+  </script>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
