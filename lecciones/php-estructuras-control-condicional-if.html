@@ -55,46 +55,130 @@
 </pre>
     </div>
 
-    <p>Si el bloque de instrucciones contiene una única instrucción no es necesario escribir las llaves, pero se aconseja escribirlas siempre.</p>
+    <p>La ejecución de esta construcción es la siguiente:</p>
+
+    <ul>
+      <li>La condición se evalúa siempre.
+        <ul>
+          <li>Si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias</li>
+          <li>Si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</li>
+        </ul>
+      </li>
+    </ul>
 
     <hr class="corta" />
 
-    <p>El diagrama de flujo siguiente explica la ejecución de una sentencia <span class="php-res">if</span> ...:</p>
-
-    <ul>
-    <li>La condición se evalúa siempre.</li>
-    <li>Si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias</li>
-    <li>Si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</li>
-    </ul>
+    <p>El diagrama de flujo siguiente muestra la ejecución de una sentencia <span class="php-res">if</span> .... Haga clic en los botones de avance y retroceso para ver la ejecución paso a paso:</p>
 
     <p>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="350" height="380" viewBox="-175 -10 350 380" style="background-color: white;" font-family="sans-serif">
-        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="360" height="430" viewBox="-175 -50 360 430" style="background-color: white;" font-family="sans-serif">
 
-        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
-        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+        <g id="svg01-p01">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">El programa llega al if ...</text>
+          <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+          <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
 
-        <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
-        <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+          <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+          <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+        </g>
 
-        <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
-        <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+        <g id="svg01-p02">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Se evalúa la condición ... </text>
+          <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
+          <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+        </g>
 
-        <rect x="60" y="170" width="100" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE</text>
+        <g id="svg01-p03">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es true, ejecuta el bloque ... </text>
+          <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
+          <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
 
-        <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="black" />
-        <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+          <rect x="60" y="170" width="100" height="50" fill="white" stroke="black" stroke-width="3" />
+          <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE</text>
+        </g>
 
-        <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
+        <g id="svg01-p04">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y se termina el if.</text>
+          <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
 
-        <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+        </g>
+
+        <g id="svg01-p05">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es false, </text>
+          <text x="0" y="-15" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">se termina el if directamente.</text>
+          <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="black" />
+          <polyline points="0,260 0,300" fill="none" stroke-width="3" stroke="none" />
+          <polyline points="-5,290 0,300 5,290" fill="none" stroke-width="2" stroke="none" />
+          <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="transparent" stroke="none" stroke-width="3" />
+          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="none">FIN</text>
+        </g>
+
+        <g id="svg01-p01-b" visibility="hidden">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">El programa llega al if ...</text>
+          <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+          <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">INICIO</text>
+
+          <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="red" />
+          <polyline points="5,80 0,90 -5,80" fill="red" stroke-width="2" stroke="red" />
+        </g>
+
+        <g id="svg01-p02-b" visibility="hidden">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Se evalúa la condición ... </text>
+          <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="red" />
+          <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="red">CONDICIÓN</text>
+        </g>
+
+        <g id="svg01-p03-b" visibility="hidden">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es true, </text>
+          <text x="0" y="-15" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque ...</text>
+          <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="105,160 110,170 115,160" fill="red" stroke-width="2" stroke="red" />
+          <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+          <rect x="60" y="170" width="100" height="50" fill="white" stroke="red" stroke-width="3" />
+          <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE</text>
+        </g>
+
+        <g id="svg01-p04-b" visibility="hidden">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y se termina el if.</text>
+          <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
+
+          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+        </g>
+
+        <g id="svg01-p05-b" visibility="hidden">
+          <text x="0" y="-35" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es false, </text>
+          <text x="0" y="-15" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">se termina el if directamente.</text>
+          <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="0,260 0,300" fill="none" stroke-width="3" stroke="red" />
+          <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
+          <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="transparent" stroke="red" stroke-width="3" />
+          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+        </g>
+
+        <g id="svg01-controles">
+          <g id="svg01-avanza" onclick="svg_avanza(0)">
+            <circle cx="156" cy="10" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polyline points="150,0 165,10 150,20" fill="black" stroke-width="2" stroke="black" />
+          </g>
+          <g id="svg01-retrocede" onclick="svg_retrocede(0)">
+            <circle cx="113" cy="10" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polyline points="120,0 105,10 120,20" fill="black" stroke-width="2" stroke="black" />
+          </g>
+        </g>
       </svg>
     </p>
+
 
     <hr class="corta" />
 
@@ -742,6 +826,60 @@ if ($dado == 6) {
       </div>
     </section>
   </section>
+
+  <script>
+    var paso = [-1];
+    var pasos = [
+      ["svg01-p01", "svg01-p02", "svg01-p03", "svg01-p04", "svg01-p05"]
+    ];
+
+    function svg_cambia(svg, n) {
+      p = document.getElementById(pasos[svg].concat("-b")[n]);
+      if (p.getAttribute("visibility") == "hidden") {
+        p.setAttribute("visibility", "visible");
+      } else {
+        p.setAttribute("visibility", "hidden");
+      }
+      p = document.getElementById((pasos[svg][n]).concat("-b"));
+      if (p.getAttribute("visibility") == "hidden") {
+        p.setAttribute("visibility", "visible");
+      } else {
+        p.setAttribute("visibility", "hidden");
+      }
+    }
+
+    function svg_avanza(svg) {
+      if (paso[svg] == -1) {
+        paso[svg] = paso[svg] + 1;
+        svg_cambia(svg, paso[svg]);
+      } else {
+        if (paso[svg] == (pasos[svg].length - 1)) {
+          paso[svg] = -1;
+          svg_cambia(svg, pasos[svg].length - 1);
+        } else {
+          paso[svg] = paso[svg] + 1;
+          svg_cambia(svg, paso[svg] - 1);
+          svg_cambia(svg, paso[svg]);
+        }
+      }
+    }
+
+    function svg_retrocede(svg) {
+      if (paso[svg] == -1) {
+        paso[svg] = pasos[svg].length - 1;
+        svg_cambia(svg, paso[svg]);
+      } else {
+        if (paso[svg] == 0) {
+          paso[svg] = paso[svg] - 1;
+          svg_cambia(svg, [svg]);
+        } else {
+          paso[svg] = paso[svg] - 1;
+          svg_cambia(svg, paso[svg] + 1);
+          svg_cambia(svg, paso[svg]);
+        }
+      }
+    }
+  </script>
 
   <footer>
     <p class="ultmod">Última modificación de esta página: 8 de octubre de 2018</p>
