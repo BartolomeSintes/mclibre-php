@@ -24,9 +24,26 @@
       <h2>if ... elseif ... else ...</h2>
 
       <ul>
-        <li><a href="#if">if ...</a></li>
-        <li><a href="#if-else">if ... else ...</a></li>
-        <li><a href="#if-elseif-else">if ... elseif ... else ...</a></li>
+        <li><a href="#if">if ...</a>
+          <ul>
+            <li><a href="#if-sintaxis">Sintaxis</a></li>
+            <li><a href="#if-diagrama-flujo">Diagrama de flujo</a></li>
+            <li><a href="#if-ejemplos">Ejemplos</a></li>
+          </ul>
+        </li>
+        <li><a href="#if-else">if ... else ...</a>
+          <ul>
+            <li><a href="#if-else-sintaxis">Sintaxis</a></li>
+            <li><a href="#if-else-diagrama-flujo">Diagrama de flujo</a></li>
+            <li><a href="#if-else-abreviado">Notación ... ? ... : ...</a></li>
+          </ul>
+        </li>
+        <li><a href="#if-elseif-else">if ... elseif ... else ...</a>
+          <ul>
+            <li><a href="#if-elseif-else-sintaxis">Sintaxis</a></li>
+            <li><a href="#if-elseif-else-diagrama-flujo">Diagrama de flujo</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
@@ -43,159 +60,166 @@
   </ul>
 
   <section id="if">
-    <h2>Sentencia if ...</h2>
+    <h2>Sentencia condicional if ...</h2>
 
-    <p>La sintaxis de la construcción <a href="http://php.net/manual/es/control-structures.if.php">if</a> más sencilla es la siguiente:</p>
+    <section id="if-sintaxis">
+      <h3>Sintaxis de la sentencia condicional if ...</h3>
 
-    <div class="codigo">
-      <pre>
+      <p>La sintaxis de la construcción <a href="http://php.net/manual/es/control-structures.if.php">if</a> es la siguiente:</p>
+
+      <div class="codigo">
+        <pre>
 <code class="language-php">if (condición) {
     bloque_de_sentencias
 }</code>
 </pre>
-    </div>
+      </div>
 
-    <p>La ejecución de esta construcción es la siguiente:</p>
+      <p>La ejecución de esta construcción es la siguiente:</p>
 
-    <ul>
-      <li>La condición se evalúa siempre.
-        <ul>
-          <li>Si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias</li>
-          <li>Si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</li>
-        </ul>
-      </li>
-    </ul>
+      <ul>
+        <li>La condición se evalúa siempre.
+          <ul>
+            <li>Si el resultado es <span class="php-con">true</span> se ejecuta el bloque de sentencias</li>
+            <li>Si el resultado es <span class="php-con">false</span> no se ejecuta el bloque de sentencias.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
 
-    <hr class="corta" />
+    <section id="if-diagrama-flujo">
+      <h3>Diagrama de flujo de la sentencia condicional condicional if ...</h3>
 
-    <p>El diagrama de flujo siguiente muestra la ejecución de una sentencia <span class="php-res">if</span> ...:</p>
+      <p>El diagrama de flujo siguiente muestra la ejecución de una sentencia <span class="php-res">if</span> ...:</p>
 
-    <p>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="480" viewBox="-250 -100 500 480" style="background-color: white;" font-family="sans-serif">
-        <rect x="-248" y="-98" width="496" height="83" rx="3" ry="3" fill="none" stroke="black" stroke-width="3" />
-        <line x1="-248" y1="-70" x2="248" y2="-70" stroke-width="2" stroke="black" />
-        <text x="0" y="-77" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">DIAGRAMA DE FLUJO: SENTENCIA IF</text>
-        <text x="-40" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">Haga clic en los botones de avance y retroceso</text>
-        <text x="-40" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">para ver la ejecución paso a paso</text>
-        <g onclick="svg_retrocede(0)">
-          <circle cx="180" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
-          <polygon points="185,-33 170,-43 185,-53" fill="black" stroke-width="2" stroke="black" />
-        </g>
-        <g onclick="svg_avanza(0)">
-          <circle cx="223" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
-          <polygon points="218,-33 233,-43 218,-53" fill="black" stroke-width="2" stroke="black" />
-        </g>
+      <p>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="480" viewBox="-250 -100 500 480" style="background-color: white;" font-family="sans-serif">
+          <rect x="-248" y="-98" width="496" height="83" rx="3" ry="3" fill="none" stroke="black" stroke-width="3" />
+          <line x1="-248" y1="-70" x2="248" y2="-70" stroke-width="2" stroke="black" />
+          <text x="0" y="-77" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">DIAGRAMA DE FLUJO: SENTENCIA IF</text>
+          <text x="-40" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">Haga clic en los botones de avance y retroceso</text>
+          <text x="-40" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">para ver la ejecución paso a paso</text>
+          <g onclick="svg_retrocede(0)">
+            <circle cx="180" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polygon points="185,-33 170,-43 185,-53" fill="black" stroke-width="2" stroke="black" />
+          </g>
+          <g onclick="svg_avanza(0)">
+            <circle cx="223" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polygon points="218,-33 233,-43 218,-53" fill="black" stroke-width="2" stroke="black" />
+          </g>
 
-        <g id="svg01-p01">
-          <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">El programa llega al if</text>
-          <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-          <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+          <g id="svg01-p01">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">El programa llega al if.</text>
+            <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
 
-          <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
-          <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
-        </g>
+            <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+            <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+          </g>
 
-        <g id="svg01-p02">
-          <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Evalúa la condición.</text>
-          <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
-          <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
-        </g>
+          <g id="svg01-p02">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Evalúa la condición.</text>
+            <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
+            <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+          </g>
 
-        <g id="svg01-p03">
-          <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es true, ejecuta el bloque ... </text>
-          <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
-          <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
-          <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+          <g id="svg01-p03">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es true, ejecuta el bloque ...</text>
+            <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
+            <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
 
-          <rect x="60" y="170" width="100" height="50" fill="white" stroke="black" stroke-width="3" />
-          <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE</text>
-        </g>
+            <rect x="60" y="170" width="100" height="50" fill="white" stroke="black" stroke-width="3" />
+            <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE</text>
+          </g>
 
-        <g id="svg01-p04">
-          <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y termina el if.</text>
-          <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
-          <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
+          <g id="svg01-p04">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y termina el if.</text>
+            <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
 
-          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
-        </g>
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+          </g>
 
-        <g id="svg01-p05">
-          <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es false, </text>
-          <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">termina el if directamente.</text>
-          <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="black" />
-          <polyline points="0,260 0,300" fill="none" stroke-width="3" stroke="none" />
-          <polyline points="-5,290 0,300 5,290" fill="none" stroke-width="2" stroke="none" />
-          <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+          <g id="svg01-p05">
+            <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es false,</text>
+            <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">termina el if directamente.</text>
+            <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="0,260 0,300" fill="none" stroke-width="3" stroke="none" />
+            <polyline points="-5,290 0,300 5,290" fill="none" stroke-width="2" stroke="none" />
+            <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
 
-          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="transparent" stroke="none" stroke-width="3" />
-          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="none">FIN</text>
-        </g>
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="transparent" stroke="none" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="none">FIN</text>
+          </g>
 
-        <g id="svg01-p01-b" visibility="hidden">
-          <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">El programa llega al if.</text>
-          <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
-          <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">INICIO</text>
+          <g id="svg01-p01-b" visibility="hidden">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">El programa llega al if.</text>
+            <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">INICIO</text>
 
-          <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="red" />
-          <polyline points="5,80 0,90 -5,80" fill="red" stroke-width="2" stroke="red" />
-        </g>
+            <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="red" />
+            <polyline points="5,80 0,90 -5,80" fill="red" stroke-width="2" stroke="red" />
+          </g>
 
-        <g id="svg01-p02-b" visibility="hidden">
-          <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Evalúa la condición ... </text>
-          <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="red" />
-          <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="red">CONDICIÓN</text>
-        </g>
+          <g id="svg01-p02-b" visibility="hidden">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Evalúa la condición ...</text>
+            <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="red" />
+            <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="red">CONDICIÓN</text>
+          </g>
 
-        <g id="svg01-p03-b" visibility="hidden">
-          <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es true, </text>
-          <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque ...</text>
-          <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="red" />
-          <polyline points="105,160 110,170 115,160" fill="red" stroke-width="2" stroke="red" />
-          <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+          <g id="svg01-p03-b" visibility="hidden">
+            <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es true,</text>
+            <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque ...</text>
+            <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="105,160 110,170 115,160" fill="red" stroke-width="2" stroke="red" />
+            <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
 
-          <rect x="60" y="170" width="100" height="50" fill="white" stroke="red" stroke-width="3" />
-          <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE</text>
-        </g>
+            <rect x="60" y="170" width="100" height="50" fill="white" stroke="red" stroke-width="3" />
+            <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE</text>
+          </g>
 
-        <g id="svg01-p04-b" visibility="hidden">
-          <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y termina el if.</text>
-          <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="red" />
-          <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
+          <g id="svg01-p04-b" visibility="hidden">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y termina el if.</text>
+            <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
 
-          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
-          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
-        </g>
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+          </g>
 
-        <g id="svg01-p05-b" visibility="hidden">
-          <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es false, </text>
-          <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">termina el if directamente.</text>
-          <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="red" />
-          <polyline points="0,260 0,300" fill="none" stroke-width="3" stroke="red" />
-          <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
-          <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+          <g id="svg01-p05-b" visibility="hidden">
+            <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es false,</text>
+            <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">termina el if directamente.</text>
+            <polyline points="-60,125 -110,125 -110,260 0,260" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="0,260 0,300" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
+            <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
 
-          <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="transparent" stroke="red" stroke-width="3" />
-          <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
-        </g>
-      </svg>
-    </p>
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="transparent" stroke="red" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+          </g>
+        </svg>
+      </p>
+    </section>
 
-    <hr class="corta" />
+    <section id="if-ejemplos">
+      <h3>Programas de ejemplo con sentencias condicionales if ...</h3>
 
-    <p>Veamos un mismo programa de ejemplo ejecutado dos veces:</p>
-    <ul>
-      <li>El programa siguiente simula la tirada de un dado calculando un número al azar del 1 al 6, guardándolo en la variable $dado y mostrándolo al usuario. Después comprueba si el número obtenido es el máximo posible (6). Si lo es, el programa lo indica. Finalmente, el programa se despide del usuario hasta una próxima vez.</li>
-      <li>Para ver los dos posibles resultados de este programa en el primer ejemplo se obtiene un 6, en el segundo se obtiene un 2.</li>
-    </ul>
+      <p>Veamos un mismo programa de ejemplo ejecutado dos veces:</p>
+      <ul>
+        <li>El programa siguiente simula la tirada de un dado calculando un número al azar del 1 al 6, guardándolo en la variable $dado y mostrándolo al usuario. Después comprueba si el número obtenido es el máximo posible (6). Si lo es, el programa lo indica. Finalmente, el programa se despide del usuario hasta una próxima vez.</li>
+        <li>Para ver los dos posibles resultados de este programa en el primer ejemplo se obtiene un 6, en el segundo se obtiene un 2.</li>
+      </ul>
 
-    <div class="mcl-diapo" style="height: 24em">
-      <div id="Paso10">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (1)</strong></p>
+      <div class="mcl-diapo" style="height: 24em">
+        <div id="Paso10">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (1)</strong></p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -206,31 +230,31 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 &lt;p&gt;Ha sacado un 6.&lt;/p&gt;
 &lt;p&gt;¡Ha conseguido la máxima puntuación!&lt;/p&gt;
 &lt;p&gt;¡Hasta la próxima!&lt;/p&gt;</code>
 </pre>
+            </div>
           </div>
+
+          <p class="oculta-small">Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+
+          <p class="control">
+            <a href="#Paso11"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p class="oculta-small">Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+        <div id="Paso11">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 1</strong></p>
 
-        <p class="control">
-          <a href="#Paso11"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso11">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 1</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 <span class="codigo-resaltado">print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";</span>
 $dado = rand(1, 6);
@@ -241,29 +265,29 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
+            </div>
+
+            <div class="resultado-codigo">
+              <pre><code class="language-html"><span class="codigo-resaltado">&lt;h1&gt;Tirada de dado&lt;/h1&gt;</span></code></pre>
+            </div>
           </div>
 
-          <div class="resultado-codigo">
-            <pre><code class="language-html"><span class="codigo-resaltado">&lt;h1&gt;Tirada de dado&lt;/h1&gt;</span></code></pre>
-          </div>
+          <p>Se ejecuta la primera instrucción del programa.</p>
+
+          <p>En este caso, imprime el título de la página.</p>
+
+          <p class="control">
+            <a href="#Paso10"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso12"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>Se ejecuta la primera instrucción del programa.</p>
+        <div id="Paso12">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 2</strong></p>
 
-        <p>En este caso, imprime el título de la página.</p>
-
-        <p class="control">
-          <a href="#Paso10"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso12"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso12">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 2</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 <span class="codigo-resaltado">$dado = rand(1, 6);</span>
@@ -274,30 +298,30 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;</code>
 </pre>
 
+            </div>
           </div>
+
+          <p>A continuación, calcula un número al azar del 1 al 6 con la función rand() y guarda el valor en la variable $dado. En este ejemplo, supondremos que se ha obtenido un 6.</p>
+
+          <p class="control">
+            <a href="#Paso11"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso13"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>A continuación, calcula un número al azar del 1 al 6 con la función rand() y guarda el valor en la variable $dado. En este ejemplo, supondremos que se ha obtenido un 6.</p>
+        <div id="Paso13">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 3</strong></p>
 
-        <p class="control">
-          <a href="#Paso11"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso13"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso13">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 3</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -308,30 +332,30 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 <span class="codigo-resaltado">&lt;p&gt;Ha sacado un 6.&lt;/p&gt;</span></code>
 </pre>
+            </div>
           </div>
+
+          <p>A continuación se muestra el valor obtenido (en este caso, 6).</p>
+
+          <p class="control">
+            <a href="#Paso12"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso14"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>A continuación se muestra el valor obtenido (en este caso, 6).</p>
+        <div id="Paso14">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 4</strong></p>
 
-        <p class="control">
-          <a href="#Paso12"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso14"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso14">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 4</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -342,32 +366,32 @@ print "&lt;p&gt;Ha sacado un $dado.&lt;/p&gt;\n";
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 &lt;p&gt;Ha sacado un 6.&lt;/p&gt;</code>
 </pre>
+            </div>
           </div>
+
+          <p>A continuación se evalúa la condición ($dado == 6).</p>
+
+          <p>En este caso, la condición es cierta (<span class="php-con">true</span>).</p>
+
+          <p class="control">
+            <a href="#Paso13"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso15"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>A continuación se evalúa la condición ($dado == 6).</p>
+        <div id="Paso15">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 5</strong></p>
 
-        <p>En este caso, la condición es cierta (<span class="php-con">true</span>).</p>
-
-        <p class="control">
-          <a href="#Paso13"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso15"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso15">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 5</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -378,33 +402,33 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 &lt;p&gt;Ha sacado un 6.&lt;/p&gt;
 <span class="codigo-resaltado">&lt;p&gt;¡Ha conseguido la máxima puntuación!&lt;/p&gt;</span></code>
   </pre>
+            </div>
           </div>
+
+          <p>Como la condición es cierta (<span class="php-con">true</span>), a continuación se ejecutan las instrucciones del bloque <span class="php-res">if</span>.</p>
+
+          <p>En este caso el bloque consta de una sola instrucción que imprime el texto indicando que se ha obtenido la máxima puntuación.</p>
+
+          <p class="control">
+            <a href="#Paso14"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso16"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>Como la condición es cierta (<span class="php-con">true</span>), a continuación se ejecutan las instrucciones del bloque <span class="php-res">if</span>.</p>
+        <div id="Paso16">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 6</strong></p>
 
-        <p>En este caso el bloque consta de una sola instrucción que imprime el texto indicando que se ha obtenido la máxima puntuación.</p>
-
-        <p class="control">
-          <a href="#Paso14"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso16"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso16">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (1) - Paso 6</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -415,35 +439,35 @@ if ($dado == 6) {
 <span class="codigo-resaltado">print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";</span>
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 &lt;p&gt;Ha sacado un 6.&lt;/p&gt;
 &lt;p&gt;¡Ha conseguido la máxima puntuación!&lt;/p&gt;
 <span class="codigo-resaltado">&lt;p&gt¡Hasta la próxima!&lt;/p&gt;</span></code>
 </pre>
+            </div>
           </div>
+
+          <p>Una vez completado el bloque <span class="php-res">if</span> ..., el programa salta a la instrucción siguiente al bloque <span class="php-res">if</span> ..</p>
+
+          <p>La última instrucción del programa imprime una despedida y el programa termina.</p>
+
+          <p class="control">
+            <a href="#Paso15"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48" /> </p>
         </div>
-
-        <p>Una vez completado el bloque <span class="php-res">if</span> ..., el programa salta a la instrucción siguiente al bloque <span class="php-res">if</span> ..</p>
-
-        <p>La última instrucción del programa imprime una despedida y el programa termina.</p>
-
-        <p class="control">
-          <a href="#Paso15"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48" /> </p>
       </div>
-    </div>
 
-    <div class="mcl-diapo" style="height: 24em">
-      <div id="Paso20">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (2)</strong></p>
+      <div class="mcl-diapo" style="height: 24em">
+        <div id="Paso20">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (2)</strong></p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -454,30 +478,30 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 &lt;p&gt;Ha sacado un 2.&lt;/p&gt;
 &lt;p&gt;¡Hasta la próxima!&lt;/p&gt;</code>
 </pre>
+            </div>
           </div>
+
+          <p class="oculta-small">Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+
+          <p class="control">
+            <a href="#Paso21"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p class="oculta-small">Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+        <div id="Paso21">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 1</strong></p>
 
-        <p class="control">
-          <a href="#Paso21"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso21">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 1</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 <span class="codigo-resaltado">print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";</span>
 $dado = rand(1, 6);
@@ -488,29 +512,29 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
+            </div>
+
+            <div class="resultado-codigo">
+              <pre><code class="language-html"><span class="codigo-resaltado">&lt;h1&gt;Tirada de dado&lt;/h1&gt;</span></code></pre>
+            </div>
           </div>
 
-          <div class="resultado-codigo">
-            <pre><code class="language-html"><span class="codigo-resaltado">&lt;h1&gt;Tirada de dado&lt;/h1&gt;</span></code></pre>
-          </div>
+          <p>Se ejecuta la primera instrucción del programa.</p>
+
+          <p>En este caso, imprime el título de la página.</p>
+
+          <p class="control">
+            <a href="#Paso20"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso22"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>Se ejecuta la primera instrucción del programa.</p>
+        <div id="Paso22">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 2</strong></p>
 
-        <p>En este caso, imprime el título de la página.</p>
-
-        <p class="control">
-          <a href="#Paso20"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso22"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso22">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 2</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 <span class="codigo-resaltado">$dado = rand(1, 6);</span>
@@ -521,30 +545,30 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;</code>
 </pre>
 
+            </div>
           </div>
+
+          <p>A continuación, calcula un número al azar del 1 al 6 con la función rand() y guarda el valor en la variable $dado. En este ejemplo, supondremos que se ha obtenido un 2.</p>
+
+          <p class="control">
+            <a href="#Paso21"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso23"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>A continuación, calcula un número al azar del 1 al 6 con la función rand() y guarda el valor en la variable $dado. En este ejemplo, supondremos que se ha obtenido un 2.</p>
+        <div id="Paso23">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 3</strong></p>
 
-        <p class="control">
-          <a href="#Paso21"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso23"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso23">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 3</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -555,30 +579,30 @@ if ($dado == 6) {
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 <span class="codigo-resaltado">&lt;p&gt;Ha sacado un 2.&lt;/p&gt;</span></code>
 </pre>
+            </div>
           </div>
+
+          <p>A continuación se muestra el valor obtenido (en este caso, 2).</p>
+
+          <p class="control">
+            <a href="#Paso22"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso24"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>A continuación se muestra el valor obtenido (en este caso, 2).</p>
+        <div id="Paso24">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 4</strong></p>
 
-        <p class="control">
-          <a href="#Paso22"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso24"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso24">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 4</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -589,32 +613,32 @@ print "&lt;p&gt;Ha sacado un $dado.&lt;/p&gt;\n";
 print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 &lt;p&gt;Ha sacado un 2.&lt;/p&gt;</code>
 </pre>
+            </div>
           </div>
+
+          <p>A continuación se evalúa la condición ($dado == 6).</p>
+
+          <p>En este caso, la condición es falsa (<span class="php-con">false</span>).</p>
+
+          <p class="control">
+            <a href="#Paso23"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <a href="#Paso25"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
+          </p>
         </div>
 
-        <p>A continuación se evalúa la condición ($dado == 6).</p>
+        <div id="Paso25">
+          <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 6</strong></p>
 
-        <p>En este caso, la condición es falsa (<span class="php-con">false</span>).</p>
-
-        <p class="control">
-          <a href="#Paso23"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <a href="#Paso25"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48" /></a>
-        </p>
-      </div>
-
-      <div id="Paso25">
-        <p><strong>Ejemplo de <span class="php-res">if</span> ... (2) - Paso 6</strong></p>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+          <div class="filaflex">
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 print "&lt;h1&gt;Tirada de dado&lt;/h1&gt;\n";
 $dado = rand(1, 6);
@@ -625,91 +649,238 @@ if ($dado == 6) {
 <span class="codigo-resaltado">print "&lt;p&gt;¡Hasta la próxima!&lt;/p&gt;\n";</span>
 ?&gt;</code>
 </pre>
-          </div>
+            </div>
 
-          <div class="resultado-codigo">
-            <pre>
+            <div class="resultado-codigo">
+              <pre>
 <code class="language-html">&lt;h1&gt;Tirada de dado&lt;/h1&gt;
 &lt;p&gt;Ha sacado un 6.&lt;/p&gt;
 <span class="codigo-resaltado">&lt;p&gt¡Hasta la próxima!&lt;/p&gt;</span></code>
 </pre>
+            </div>
           </div>
+
+          <p>Como la condición es falsa, no se ejecutan las instrucciones del bloque y el programa salta a la instrucción siguiente al el bloque <span class="php-res">if</span> ...</p>
+
+          <p>La última instrucción del programa imprime una despedida y el programa termina.</p>
+
+          <p class="control">
+            <a href="#Paso24"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
+            <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48" /> </p>
         </div>
-
-        <p>Como la condición es falsa, no se ejecutan las instrucciones del bloque y el programa salta a la instrucción siguiente al el bloque <span class="php-res">if</span> ...</p>
-
-        <p>La última instrucción del programa imprime una despedida y el programa termina.</p>
-
-        <p class="control">
-          <a href="#Paso24"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48" /></a>
-          <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48" /> </p>
       </div>
-    </div>
-
+    </section>
   </section>
 
   <section id="if-else">
-    <h2>Sentencia if ... else ...</h2>
+    <h2>Sentencia condicional if ... else ...</h2>
 
-    <p>La construcción if se puede complicar añadiendo la instrucción <a href="http://php.net/manual/es/control-structures.else.php">else</a>:</p>
+    <section id="if-else-sintaxis">
+      <h3>Sintaxis de la sentencia condicional if ... else ...</h3>
 
-    <div class="codigo">
-      <pre>
+      <p>La construcción <span class="php-res">if</span> se puede ampliar añadiendo la instrucción <a href="http://php.net/manual/es/control-structures.else.php">else</a>:</p>
+
+      <div class="codigo">
+        <pre>
 <code class="language-php">if (condición) {
     bloque_de_sentencias_1
 } else {
     bloque_de_sentencias_2
 }</code>
 </pre>
-    </div>
+      </div>
 
-    <p>La condición se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 2.</p>
+      <p>La ejecución de esta construcción es la siguiente:</p>
 
-    <p>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="350" height="380" viewBox="-175 -10 350 380" style="background-color: white;" font-family="sans-serif">
-        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+      <ul>
+        <li>La condición se evalúa siempre.
+          <ul>
+            <li>Si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1</li>
+            <li>Si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 2.</li>
+          </ul>
+        </li>
+      </ul>
 
-        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
-        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+      <p>En cualquier caso, solamente se ejecuta uno de los dos bloques de sentencias.</p>
+    </section>
 
-        <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
-        <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+    <section id="if-else-diagrama-flujo">
+      <h3>Diagrama de flujo de la sentencia condicional if ... else ...</h3>
 
-        <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
-        <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+      <p>El diagrama de flujo siguiente muestra la ejecución de una sentencia <span class="php-res">if</span> ... <span class="php-res">else</span> ...:</p>
 
-        <rect x="55" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 1</text>
+      <p>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="480" viewBox="-250 -100 500 480" style="background-color: white;" font-family="sans-serif">
+          <rect x="-248" y="-98" width="496" height="83" rx="3" ry="3" fill="none" stroke="black" stroke-width="3" />
+          <line x1="-248" y1="-70" x2="248" y2="-70" stroke-width="2" stroke="black" />
+          <text x="0" y="-77" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">DIAGRAMA DE FLUJO: SENTENCIA IF ... ELSE ...</text>
+          <text x="-40" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">Haga clic en los botones de avance y retroceso</text>
+          <text x="-40" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">para ver la ejecución paso a paso</text>
+          <g onclick="svg_retrocede(1)">
+            <circle cx="180" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polygon points="185,-33 170,-43 185,-53" fill="black" stroke-width="2" stroke="black" />
+          </g>
+          <g onclick="svg_avanza(1)">
+            <circle cx="223" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polygon points="218,-33 233,-43 218,-53" fill="black" stroke-width="2" stroke="black" />
+          </g>
 
-        <polyline points="-60,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="-105,160 -110,170 -115,160" fill="black" stroke-width="2" stroke="black" />
-        <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+          <g id="svg02-p01">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">El programa llega al if else.</text>
+            <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
 
-        <rect x="-165" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="-110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 2</text>
+            <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+            <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+          </g>
 
-        <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
+          <g id="svg02-p02">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Evalúa la condición.</text>
+            <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="black" />
+            <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN</text>
+          </g>
 
-        <polyline points="-110,220 -110,260 0,260" fill="none" stroke-width="3" stroke="black" />
+          <g id="svg02-p03">
+            <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es true,</text>
+            <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">ejecuta el bloque correspondiente ...</text>
+            <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="105,160 110,170 115,160" fill="black" stroke-width="2" stroke="black" />
+            <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
 
-        <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
-      </svg>
-    </p>
+            <rect x="55" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+            <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 1</text>
+          </g>
 
-    <hr class="corta" />
+          <g id="svg02-p04">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y termina el if else.</text>
+            <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
+
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+          </g>
+
+          <g id="svg02-p05">
+            <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición es false,</text>
+            <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">ejecuta el bloque correspondiente ...</text>
+            <polyline points="-60,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-105,160 -110,170 -115,160" fill="black" stroke-width="2" stroke="black" />
+            <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+            <rect x="-165" y="170" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+            <text x="-110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 2</text>
+          </g>
+
+          <g id="svg02-p06">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y termina el if else.</text>
+            <polyline points="-110,220 -110,260 0,260 0,300" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-5,290 0,300 5,290" fill="black" stroke-width="2" stroke="black" />
+
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+          </g>
+
+          <g id="svg02-p01-b" visibility="hidden">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">El programa llega al if else.</text>
+            <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">INICIO</text>
+
+            <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="red" />
+            <polyline points="5,80 0,90 -5,80" fill="red" stroke-width="2" stroke="red" />
+          </g>
+
+          <g id="svg02-p02-b" visibility="hidden">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Evalúa la condición.</text>
+            <polygon points="0,90 60,125 0,160 -60,125" fill="white" stroke-width="3" stroke="red" />
+            <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="red">CONDICIÓN</text>
+          </g>
+
+          <g id="svg02-p03-b" visibility="hidden">
+            <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es true,</text>
+            <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque correspondiente ...</text>
+            <polyline points="60,125 110,125 110,170" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="105,160 110,170 115,160" fill="red" stroke-width="2" stroke="red" />
+            <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+            <rect x="55" y="170" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+            <text x="110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE 1</text>
+          </g>
+
+          <g id="svg02-p04-b" visibility="hidden">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y termina el if else.</text>
+            <polyline points="110,220 110,260 0,260 0,300" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
+
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+          </g>
+
+          <g id="svg02-p05-b" visibility="hidden">
+            <text x="0" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición es false,</text>
+            <text x="0" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque correspondiente ...</text>
+            <polyline points="-60,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-105,160 -110,170 -115,160" fill="red" stroke-width="2" stroke="red" />
+            <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+            <rect x="-165" y="170" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+            <text x="-110" y="202" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE 2</text>
+          </g>
+
+          <g id="svg02-p06-b" visibility="hidden">
+            <text x="0" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y termina el if else.</text>
+            <polyline points="-110,220 -110,260 0,260 0,300" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-5,290 0,300 5,290" fill="red" stroke-width="2" stroke="red" />
+
+            <rect x="-50" y="300" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="332" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+          </g>
+        </svg>
+      </p>
+    </section>
+
+    <section id="if-else-abreviado">
+      <h3>Notación abreviada .. ? ... : ...</h3>
+
+      <p>Su una sentencia condicional if ... else ... sigue el patrón siguiente:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">if (condición_1) {
+    $variable = expresion1;
+} else
+    $variable = expresion2;
+}</code>
+</pre>
+      </div>
+
+      <p>... entonces se puede sustituir por la construcción más compacta:</p>
+
+      <div class="codigo">
+        <pre><code class="language-php">$variable = (condición_1)? expresion1 : expresion2;</code></pre>
+      </div>
+
+      <p>que se puede escribir en varias líneas para facilitar la legibilidad:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">$variable = (condición_1)
+    ? expresion1
+    : expresion2;</code>
+</pre>
+      </div>
+    </section>
   </section>
 
   <section id="if-elseif-else">
-    <h2>Sentencia if ... elseif ... else ...</h2>
+    <h2>Sentencia condicional if ... elseif ... else ...</h2>
 
-    <p>La construcción if ... else se puede extender añadiendo la instrucción <a href="http://php.net/manual/es/control-structures.elseif.php">elseif</a>:</p>
+    <section id="if-elseif-else-sintaxis">
+      <h3>Sintaxis de la sentencia condicional if ... elseif ... else ...</h3>
 
-    <div class="codigo">
-      <pre>
+      <p>La construcción if ... else ... se puede extender añadiendo la instrucción <a href="http://php.net/manual/es/control-structures.elseif.php">elseif</a>:</p>
+
+      <div class="codigo">
+        <pre>
 <code class="language-php">if (condición_1) {
     bloque_de_sentencias_1
 } elseif (condición_2) {
@@ -718,67 +889,32 @@ if ($dado == 6) {
     bloque_de_sentencias_3
 }</code>
 </pre>
-    </div>
+      </div>
 
-    <p>La condición 1 se evalúa siempre, si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1 y solamente si el resultado es <span class="php-con">false</span> se evalúa la condición 2, si el resultado de esta es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 2 y si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 3. En cualquier caso solamente se ejecuta uno de los tres bloques de sentencias.</p>
+      <p>La ejecución de esta construcción es la siguiente:</p>
 
-    <p>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="460" viewBox="-300 -10 500 460" style="background-color: white;" font-family="sans-serif">
-        <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+      <ul>
+        <li>La condición 1 se evalúa siempre.
+          <ul>
+            <li>Si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 1</li>
+            <li>Si el resultado es <span class="php-con">false</span> se evalúa la condición 2.
+              <ul>
+                <li>Si el resultado es <span class="php-con">true</span> se ejecuta solamente el bloque de sentencias 2</li>
+                <li>Si el resultado es <span class="php-con">false</span> se ejecuta solamente el bloque de sentencias 3</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
 
-        <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
-        <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+      <p>En cualquier caso, solamente se ejecuta uno de los tres bloques de sentencias.</p>
 
-        <polygon points="0,90 70,125 0,160 -70,125" fill="white" stroke-width="3" stroke="black" />
-        <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN 1</text>
+      <hr class="corta" />
 
-        <polyline points="70,125 110,125 110,180" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="105,170 110,180 115,170" fill="black" stroke-width="2" stroke="black" />
-        <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+      <p>Se pueden añadir tantas instrucciones elseif como se desee, teniendo en cuenta que en cualquier caso solamente se ejecuta uno de los bloques de sentencias.</p>
 
-        <rect x="55" y="180" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="110" y="212" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 1</text>
-
-        <polyline points="-70,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="-105,160 -110,170 -115,160" fill="black" stroke-width="2" stroke="black" />
-        <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
-
-        <polygon points="-110,170 -40,205 -110,240 -180,205" fill="white" stroke-width="3" stroke="black" />
-        <text x="-110" y="210" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN 2</text>
-
-        <polyline points="-40,205 0,205 0,260" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="5,250 0,260 -5,250" fill="black" stroke-width="2" stroke="black" />
-        <text x="-25" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
-
-        <rect x="-55" y="260" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 2</text>
-
-        <polyline points="-180,205 -220,205 -220,260" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="-225,250 -220,260 -215,250" fill="black" stroke-width="2" stroke="black" />
-        <text x="-195" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
-
-        <rect x="-275" y="260" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
-        <text x="-220" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 3</text>
-
-        <polyline points="-220,310 -220,350 0,350" fill="none" stroke-width="3" stroke="black" />
-
-        <polyline points="110,230 110,350 0,350" fill="none" stroke-width="3" stroke="black" />
-
-        <polyline points="0,310 0,390" fill="none" stroke-width="3" stroke="black" />
-        <polyline points="-5,380 -0,390 5,380" fill="black" stroke-width="2" stroke="black" />
-
-        <rect x="-50" y="390" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
-        <text x="0" y="422" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
-      </svg>
-    </p>
-
-    <hr class="corta" />
-
-    <p>Se pueden añadir tantas instrucciones elseif como se desee, teniendo en cuenta que en cualquier caso solamente se ejecuta uno de los bloques de sentencias.</p>
-
-    <div class="codigo">
-      <pre>
+      <div class="codigo">
+        <pre>
 <code class="language-php">if (condición_1) {
     bloque_de_sentencias_1
 } elseif (condición_2) {
@@ -792,46 +928,214 @@ if ($dado == 6) {
     bloque_de_sentencias_n+1
 }</code>
 </pre>
-    </div>
-
-    <hr class="corta" />
-
-    <section id="if-else-abreviado">
-      <h3>Notación abreviada .. ? ... : ...</h3>
-      <p>La construcción</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">if (condición_1) {
-    $variable = expresion1;
-} else
-    $variable = expresion2;
-}</code>
-</pre>
       </div>
 
-      <p>se puede sustituir por la construcción:</p>
-
-      <div class="codigo">
-        <pre><code class="language-php">$variable = (condición_1)? expresion1 : expresion2;</code></pre>
-      </div>
-
-      <p>que se suele escribir en varias líneas para facilitar la legibilidad:</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">$variable = (condición_1)
-    ? expresion1
-    : expresion2;</code>
-</pre>
-      </div>
     </section>
+
+    <section id="if-elseif-else-diagrama-flujo">
+      <h3>Diagrama de flujo de la sentencia condicional if ... elseif ... else ...</h3>
+
+      <p>El diagrama de flujo siguiente muestra la ejecución de una sentencia <span class="php-res">if</span> ... <span class="php-res">elseif</span> ... <span class="php-res">else</span> ...:</p>
+
+      <p>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="550" viewBox="-300 -100 500 550" style="background-color: white;" font-family="sans-serif">
+          <rect x="-298" y="-98" width="496" height="83" rx="3" ry="3" fill="none" stroke="black" stroke-width="3" />
+          <line x1="-298" y1="-70" x2="198" y2="-70" stroke-width="2" stroke="black" />
+          <text x="-50" y="-77" text-anchor="middle" font-family="sans-serif" font-size="19" fill="black">DIAGRAMA DE FLUJO: SENTENCIA IF ELSEIF ELSE</text>
+          <text x="-90" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">Haga clic en los botones de avance y retroceso</text>
+          <text x="-90" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="green" class="no-paso-a-paso">para ver la ejecución paso a paso</text>
+          <g onclick="svg_retrocede(2)">
+            <circle cx="130" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polygon points="135,-33 120,-43 135,-53" fill="black" stroke-width="2" stroke="black" />
+          </g>
+          <g onclick="svg_avanza(2)">
+            <circle cx="173" cy="-43" r="17" fill="white" stroke-width="3" stroke="black" />
+            <polygon points="168,-33 183,-43 168,-53" fill="black" stroke-width="2" stroke="black" />
+          </g>
+
+          <g id="svg03-p01">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">El programa llega al if elseif else.</text>
+            <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">INICIO</text>
+
+            <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="black" />
+            <polyline points="5,80 0,90 -5,80" fill="black" stroke-width="2" stroke="black" />
+          </g>
+
+          <g id="svg03-p02">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Evalúa la condición del if.</text>
+            <polygon points="0,90 70,125 0,160 -70,125" fill="white" stroke-width="3" stroke="black" />
+            <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN 1</text>
+          </g>
+
+          <g id="svg03-p03">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición del if es true,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">ejecuta el bloque correspondiente ...</text>
+            <polyline points="70,125 110,125 110,180" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="105,170 110,180 115,170" fill="black" stroke-width="2" stroke="black" />
+            <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+            <rect x="55" y="180" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+            <text x="110" y="212" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 1</text>
+          </g>
+
+          <g id="svg03-p04">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y termina el if elseif else.</text>
+            <polyline points="110,230 110,350 0,350 0,390" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-5,380 -0,390 5,380" fill="black" stroke-width="2" stroke="black" />
+
+            <rect x="-50" y="390" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="422" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+          </g>
+
+          <g id="svg03-p05">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición del if es false,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">evalúa la condición del elseif.</text>
+            <polyline points="-70,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-105,160 -110,170 -115,160" fill="black" stroke-width="2" stroke="black" />
+            <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+            <polygon points="-110,170 -40,205 -110,240 -180,205" fill="white" stroke-width="3" stroke="black" />
+            <text x="-110" y="210" text-anchor="middle" font-family="sans-serif" font-size="16" fill="black">CONDICIÓN 2</text>
+          </g>
+
+          <g id="svg03-p06">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición del elseif es true,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">ejecuta el bloque correspondiente ...</text>
+            <polyline points="-40,205 0,205 0,260" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="5,250 0,260 -5,250" fill="black" stroke-width="2" stroke="black" />
+            <text x="-25" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+            <rect x="-55" y="260" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 2</text>
+          </g>
+
+          <g id="svg03-p07">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y termina el if elseif else.</text>
+            <polyline points="0,310 0,390" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-5,380 -0,390 5,380" fill="black" stroke-width="2" stroke="black" />
+
+            <rect x="-50" y="390" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="422" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+          </g>
+
+          <g id="svg03-p08">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">Si la condición del elseif es false,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none">ejecuta el bloque correspondiente ...</text>
+            <polyline points="-180,205 -220,205 -220,260" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-225,250 -220,260 -215,250" fill="black" stroke-width="2" stroke="black" />
+            <text x="-195" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+            <rect x="-275" y="260" width="110" height="50" fill="white" stroke="black" stroke-width="3" />
+            <text x="-220" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">BLOQUE 3</text>
+          </g>
+
+          <g id="svg03-p09">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="none"> ... y termina el if elseif else.</text>
+            <polyline points="-220,310 -220,350 0,350 0, 380" fill="none" stroke-width="3" stroke="black" />
+            <polyline points="-5,380 -0,390 5,380" fill="black" stroke-width="2" stroke="black" />
+
+            <rect x="-50" y="390" width="100" height="50" rx="25" ry="25" fill="white" stroke="black" stroke-width="3" />
+            <text x="0" y="422" text-anchor="middle" font-family="sans-serif" font-size="20" fill="black">FIN</text>
+          </g>
+
+          <g id="svg03-p01-b" visibility="hidden">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">El programa llega al if elseif else.</text>
+            <rect x="-50" y="0" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="32" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">INICIO</text>
+
+            <line x1="0" y1="50" x2="0" y2="90" stroke-width="3" stroke="red" />
+            <polyline points="5,80 0,90 -5,80" fill="red" stroke-width="2" stroke="red" />
+          </g>
+
+          <g id="svg03-p02-b" visibility="hidden">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Evalúa la condición del if.</text>
+            <polygon points="0,90 70,125 0,160 -70,125" fill="white" stroke-width="3" stroke="red" />
+            <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="16" fill="red">CONDICIÓN 1</text>
+          </g>
+
+          <g id="svg03-p03-b" visibility="hidden">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición del if es true,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque correspondiente ...</text>
+            <polyline points="70,125 110,125 110,180" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="105,170 110,180 115,170" fill="red" stroke-width="2" stroke="red" />
+            <text x="85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+            <rect x="55" y="180" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+            <text x="110" y="212" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE 1</text>
+          </g>
+
+          <g id="svg03-p04-b" visibility="hidden">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y termina el if elseif else.</text>
+            <polyline points="110,230 110,350 0,350 0,390" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-5,380 -0,390 5,380" fill="red" stroke-width="2" stroke="red" />
+
+            <rect x="-50" y="390" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="422" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+          </g>
+
+          <g id="svg03-p05-b" visibility="hidden">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición del if es false,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">evalúa la condición del elseif.</text>
+            <polyline points="-70,125 -110,125 -110,170" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-105,160 -110,170 -115,160" fill="red" stroke-width="2" stroke="red" />
+            <text x="-85" y="115" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+            <polygon points="-110,170 -40,205 -110,240 -180,205" fill="white" stroke-width="3" stroke="red" />
+            <text x="-110" y="210" text-anchor="middle" font-family="sans-serif" font-size="16" fill="red">CONDICIÓN 2</text>
+          </g>
+
+          <g id="svg03-p06-b" visibility="hidden">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición del elseif es true,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque correspondiente ...</text>
+            <polyline points="-40,205 0,205 0,260" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="5,250 0,260 -5,250" fill="red" stroke-width="2" stroke="red" />
+            <text x="-25" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">true</text>
+
+            <rect x="-55" y="260" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE 2</text>
+          </g>
+
+          <g id="svg03-p07-b" visibility="hidden">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y termina el if elseif else.</text>
+            <polyline points="0,310 0,390" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-5,380 -0,390 5,380" fill="red" stroke-width="2" stroke="red" />
+
+            <rect x="-50" y="390" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="422" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+          </g>
+
+          <g id="svg03-p08-b" visibility="hidden">
+            <text x="-80" y="-48" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">Si la condición del elseif es false,</text>
+            <text x="-80" y="-27" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black">ejecuta el bloque correspondiente ...</text>
+            <polyline points="-180,205 -220,205 -220,260" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-225,250 -220,260 -215,250" fill="red" stroke-width="2" stroke="red" />
+            <text x="-195" y="195" text-anchor="middle" font-family="sans-serif" font-size="18" fill="blue">false</text>
+
+            <rect x="-275" y="260" width="110" height="50" fill="white" stroke="red" stroke-width="3" />
+            <text x="-220" y="292" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">BLOQUE 3</text>
+          </g>
+
+          <g id="svg03-p09-b" visibility="hidden">
+            <text x="-80" y="-40" text-anchor="middle" font-family="sans-serif" font-size="18" fill="black"> ... y termina el if elseif else.</text>
+            <polyline points="-220,310 -220,350 0,350 0,380" fill="none" stroke-width="3" stroke="red" />
+            <polyline points="-5,380 -0,390 5,380" fill="red" stroke-width="2" stroke="red" />
+
+            <rect x="-50" y="390" width="100" height="50" rx="25" ry="25" fill="white" stroke="red" stroke-width="3" />
+            <text x="0" y="422" text-anchor="middle" font-family="sans-serif" font-size="20" fill="red">FIN</text>
+          </g>
+        </svg>
+      </p>
+    </section>
+
   </section>
 
   <script>
-    var paso = [-1];
+    var paso = [-1, -1, -1];
     var pasos = [
-      ["svg01-p01", "svg01-p02", "svg01-p03", "svg01-p04", "svg01-p05"]
+      ["svg01-p01", "svg01-p02", "svg01-p03", "svg01-p04", "svg01-p05"],
+      ["svg02-p01", "svg02-p02", "svg02-p03", "svg02-p04", "svg02-p05", "svg02-p06"],
+      ["svg03-p01", "svg03-p02", "svg03-p03", "svg03-p04", "svg03-p05", "svg03-p06", "svg03-p07", "svg03-p08", "svg03-p09"]
     ];
 
     function svg_cambia(svg, n) {
@@ -891,7 +1195,7 @@ if ($dado == 6) {
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 12 de octubre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
