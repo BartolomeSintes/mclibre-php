@@ -172,7 +172,7 @@ $nombres = [];
 <code class="language-php">&lt;?php
 $apellidos[1] = "García";
 
-print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
+print "&lt;p&gt;$apellidos[1]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -293,7 +293,7 @@ $datos = [
 ];
 
 print "&lt;p&gt;{$datos[1]["nombre"]} pesa {$datos[1]["peso"]} kilos&lt;/p&gt;\n";
-
+print "\n";
 print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " años&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -327,21 +327,21 @@ print "$datos";
       <div class="resultado-html">
         <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br /> Array
       </div>
-    </div>
+      </div>
 
-    <hr class="corta" />
+      <hr class="corta" />
 
-    <p>La función <a href="http://php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($variable [, $devolver])</span></a> permite imprimir todos los valores de una matriz de forma estructurada. En general, <span class="php-fun">print_r()</span> imprime cualquier variable compuesta de forma legible.</p>
+      <p>La función <a href="http://php.net/manual/en/function.print-r.php"><span class="php-fun">print_r($variable [, $devolver])</span></a> permite imprimir todos los valores de una matriz de forma estructurada. En general, <span class="php-fun">print_r()</span> imprime cualquier variable compuesta de forma legible.</p>
 
-    <p>Esta función no se suele utilizar en programas definitivos, pero puede ser útil mientras estamos elaborando un programa, por ejemplo para comprobar en un punto del programa si la matriz contiene los valores esperados. Una vez comprobado, la instrucción se puede comentar o borrar.</p>
+      <p>Esta función no se suele utilizar en programas definitivos, pero puede ser útil mientras estamos elaborando un programa, por ejemplo para comprobar en un punto del programa si la matriz contiene los valores esperados. Una vez comprobado, la instrucción se puede comentar o borrar.</p>
 
-    <hr class="corta" />
+      <hr class="corta" />
 
-    <p>Aunque print_r() genera espacios y saltos de línea en el código fuente de la página para indicar el anidamiento, print_r() no genera etiquetas html, por lo que el navegador no muestra esos espacios y saltos de línea.</p>
+      <p>Aunque print_r() genera espacios y saltos de línea en el código fuente de la página para indicar el anidamiento, print_r() no genera etiquetas html, por lo que el navegador no muestra esos espacios y saltos de línea.</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -349,17 +349,17 @@ $datos["apellidos"] = "Ramón y Cajal";
 print_r($datos);
 ?&gt;</code>
 </pre>
+        </div>
+        <div class="resultado-html">
+          Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )
+        </div>
       </div>
-      <div class="resultado-html">
-        Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )
-      </div>
-    </div>
 
-    <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
+      <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -369,20 +369,20 @@ print_r($datos);
 print "&lt;/pre&gt;";
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+        </div>
+        <div class="resultado-html">
+          <pre>Array
 (
     [nombre] =&gt; Santiago
     [apellidos] =&gt; Ramón y Cajal
 )
 </pre>
+        </div>
       </div>
-    </div>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos[1]["nombre"] = "Santiago";
 $datos[1]["apellidos"] = "Ramón y Cajal";
@@ -394,9 +394,9 @@ print_r($datos);
 print "&lt;/pre&gt;";
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+        </div>
+        <div class="resultado-html">
+          <pre>Array
 (
     [1] =&gt; Array
         (
@@ -411,16 +411,16 @@ print "&lt;/pre&gt;";
         )
 )
 </pre>
+        </div>
       </div>
-    </div>
 
-    <hr class="corta" />
+      <hr class="corta" />
 
-    <p>Si se añade un segundo argumento con el valor <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para guardar la respuesta en una variable que se puede imprimir posteriormente</p>
+      <p>Si se añade un segundo argumento con el valor <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para guardar la respuesta en una variable que se puede imprimir posteriormente</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -429,15 +429,15 @@ $tmp = print_r($datos, true);
 print "&lt;p&gt;La matriz es $tmp&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
+        </div>
+        <div class="resultado-html">
+          <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+        </div>
       </div>
-      <div class="resultado-html">
-        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
-      </div>
-    </div>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -445,22 +445,22 @@ $datos["apellidos"] = "Ramón y Cajal";
 print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
+        </div>
+        <div class="resultado-html">
+          <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+        </div>
       </div>
-      <div class="resultado-html">
-        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
-      </div>
-    </div>
 
-    <hr class="corta" />
+      <hr class="corta" />
 
-    <p>La notación con llaves ({}) no admite la función <span class="php-fun">print_r()</span>:</p>
+      <p>La notación con llaves ({}) no admite la función <span class="php-fun">print_r()</span>:</p>
 
-    <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
-      </div>
-      <div class="codigo">
-        <pre>
+      <div class="filaflex">
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+        </div>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -468,13 +468,13 @@ $datos["apellidos"] = "Ramón y Cajal";
 print "&lt;p&gt;La matriz es {print_r($datos, true)}&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-html">
-        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
+        </div>
+        <div class="resultado-html">
+          <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br />
 
-        <p>La matriz es {print_r(Array, true)}</p>
+          <p>La matriz es {print_r(Array, true)}</p>
+        </div>
       </div>
-    </div>
   </section>
 
   <section id="anadir-elementos">
@@ -493,11 +493,13 @@ $nombres = ["Alba", "Bernardo"];
 $nombres[] = "Carlos";
 
 print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
+print "\n";
 print "&lt;p&gt;$nombres[2]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-html">
+            <p>Bernardo</p>
             <p>Carlos</p>
           </div>
         </div>
@@ -612,6 +614,7 @@ print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
 $nombres[-3] = "Alba";
 
 print "&lt;p&gt;{$nombres[-3]}&lt;p&gt;\n";
+print "\n";
 print "&lt;p&gt;" . $nombres[-3] . "&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -685,6 +688,7 @@ print "&lt;p&gt;$nombres[1.7]&lt;p&gt;\n";
 $nombres[1.7] = "Alba";
 
 print "&lt;p&gt;{$nombres[1.2]}&lt;p&gt;\n";
+print "\n";
 print "&lt;p&gt;" . $nombres[1.2] . "&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -923,6 +927,7 @@ $nombres[25] = "Carmen";
 $elementos = count($nombres);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
 print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
@@ -953,6 +958,7 @@ $datos["ana"]["edad"]  = 30;
 $elementos = count($datos);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
@@ -997,6 +1003,7 @@ $datos["ana"]["edad"]  = 30;
 $elementos = count($datos, COUNT_RECURSIVE);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
@@ -1043,6 +1050,7 @@ $datos["ana"]["edad"]  = 30;
 $elementos = count($datos, COUNT_RECURSIVE) - count($datos);
 
 print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
 print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
@@ -1088,7 +1096,9 @@ $maximo = max($numeros);
 $minimo = min($numeros);
 
 print "&lt;pre&gt;"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "\n";
 print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
+print "\n";
 print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -1120,7 +1130,9 @@ $maximo = max($valores);
 $minimo = min($valores);
 
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
 print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
+print "\n";
 print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
@@ -1487,12 +1499,14 @@ if (in_array(15, $valores)) {
 } else {
   print "&lt;p&gt;15 no está en la matriz \$valores.&lt;/p&gt;\n";
 }
+print "\n";
 
 if (in_array(25, $valores)) {
   print "&lt;p&gt;25 está en la matriz \$valores.&lt;/p&gt;\n";
 } else {
   print "&lt;p&gt;25 no está en la matriz \$valores.&lt;/p&gt;\n";
 }
+print "\n";
 
 if (in_array("15", $valores, true)) {
   print "&lt;p&gt;\"15\" está en la matriz \$valores.&lt;/p&gt;\n";
@@ -1530,9 +1544,11 @@ if (in_array("15", $valores, true)) {
 $valores = [10, 40, 15, 30, 15, 40, 15];
 
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
 
 $encontrado = array_search(15, $valores);
 print "&lt;p&gt;$encontrado&lt;/p&gt;\n";
+print "\n";
 
 $encontrados = array_keys($valores, 15);
 print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
