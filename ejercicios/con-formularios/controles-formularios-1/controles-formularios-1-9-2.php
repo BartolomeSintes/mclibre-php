@@ -3,9 +3,9 @@
  * Controles en formularios (1) 9-2 - controles-formularios-1-9-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-01
+ * @version   2018-10-17
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -59,7 +59,7 @@ print "  </svg>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-01">1 de noviembre de 2016</time>
+      <time datetime="2018-10-17">17 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

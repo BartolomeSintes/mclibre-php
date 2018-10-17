@@ -24,7 +24,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-10-24">24 de octubre de 2016</time>
+      <time datetime="2018-10-17">17 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
