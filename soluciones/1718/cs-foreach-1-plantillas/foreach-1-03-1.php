@@ -17,7 +17,7 @@ print "<!-- Ejercicio incompleto -->\n";
     Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
-  <style type="text/css">
+  <style>
     button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
   </style>
 </head>

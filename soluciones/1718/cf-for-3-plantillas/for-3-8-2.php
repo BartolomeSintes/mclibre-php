@@ -14,7 +14,7 @@
     Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
-  <style type="text/css">
+  <style>
     td { text-align: center; }
   </style>
 </head>

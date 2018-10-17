@@ -33,11 +33,11 @@ print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mc
 print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
 print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
 if ($color == "rojo") {
-    print "  <style type=\"text/css\">body, a { color: red; }</style>\n";
+    print "  <style>body, a { color: red; }</style>\n";
 } elseif ($color == "azul") {
-    print "  <style type=\"text/css\">body, a { color: blue; }</style>\n";
+    print "  <style>body, a { color: blue; }</style>\n";
 } elseif ($color == "verde") {
-    print "  <style type=\"text/css\">body, a { color: green; }</style>\n";
+    print "  <style>body, a { color: green; }</style>\n";
 }
 print "</head>\n";
 print "\n";
