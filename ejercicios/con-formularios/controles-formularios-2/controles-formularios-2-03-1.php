@@ -33,7 +33,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-03">3 de noviembre de 2016</time>
+      <time datetime="2018-10-22">22 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
