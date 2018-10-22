@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-10
+ * @version   2018-10-22
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,12 +47,12 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la primera matriz
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "  <pre style=\"font-size: 300%;\">\n";
 print "A: ";
 foreach ($inicial1 as $bit) {
     print "$bit ";
 }
-print "</p>\n";
+print "\n";
 print "\n";
 
 // Creamos la segunda matriz de bits aleatorios
@@ -62,12 +62,11 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la segunda matriz
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "B: ";
 foreach ($inicial2 as $bit) {
     print "$bit ";
 }
-print "</p>\n";
+print "\n";
 print "\n";
 
 // Creamos la tercera matriz de bits aleatorios
@@ -77,12 +76,11 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la tercera matriz
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "C: ";
 foreach ($inicial3 as $bit) {
     print "$bit ";
 }
-print "</p>\n";
+print "\n";
 print "\n";
 
 // Creamos la matriz con el resultado
@@ -96,18 +94,18 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos los valores calculados
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "R: ";
 foreach ($resultado as $bit) {
     print "$bit ";
 }
-print "</p>\n";
+print "\n";
+print "</pre>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-10">10 de octubre de 2018</time>
+      <time datetime="2018-10-22">22 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

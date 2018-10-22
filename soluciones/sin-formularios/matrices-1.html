@@ -73,8 +73,8 @@
         </li>
         <li><a href="#ordenar-matrices">Ordenar matrices</a>
           <ul>
-            <li><a href="#ejercicio-21">11 - Tirada ordenada</a></li>
-            <li><a href="#ejercicio-22">12 - Jugada de Risk</a></li>
+            <li><a href="#ejercicio-21">21 - Tirada ordenada</a></li>
+            <li><a href="#ejercicio-22">22 - Jugada de Risk</a></li>
           </ul>
         </li>
       </ul>
@@ -295,7 +295,8 @@ if ($gana1 &gt; $gana2) {
 
       <div class="codigo">
         <pre>
-<code class="language-php">&lt;?php$numero = 10;
+<code class="language-php">&lt;?php
+$numero = 10;
 
 // Creamos la matriz de bits aleatorios
 $inicial = [];
@@ -304,12 +305,12 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
+print "  &lt;pre style=\"font-size: 300%;\"&gt;\n";
 print "A: ";
 foreach ($inicial as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "\n";
 print "\n";
 
 // Creamos la matriz con los valores complementarios
@@ -322,13 +323,20 @@ for ($i = 0; $i &lt; $numero; $i++) {
     }
 }
 
+/* Otra forma de calcular los valores complementarios
+// Creamos la matriz con los valores complementarios
+$resultado = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $resultado[$i] = 1 - $inicial[$i];
+}
+*/
+
 // Mostramos los valores complementarios
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
 print "&lt;span style=\"text-decoration: overline\"&gt;A&lt;/span&gt;: ";
 foreach ($resultado as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -387,12 +395,20 @@ print "\n";
 // Creamos la matriz con el resultado de la conjunción lógica
 $resultado = [];
 for ($i = 0; $i &lt; $numero; $i++) {
-    if ($inicial1[$i] == 1 &amp;&amp; $inicial2[$i] == 1 ) {
+    if ($inicial1[$i] == 1 && $inicial2[$i] == 1 ) {
         $resultado[$i] = 1;
     } else {
         $resultado[$i] = 0;
     }
 }
+
+/* Otra forma de calcular los valores complementarios
+// Creamos la matriz con el resultado de la conjunción lógica
+$resultado = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $resultado[$i] = (int)($inicial1[$i] && $inicial2[$i]);
+}
+*/
 
 // Mostramos los valores calculados
 print "A and B: ";
@@ -447,12 +463,12 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la primera matriz
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
+print "  &lt;pre style=\"font-size: 300%;\"&gt;\n";
 print "A: ";
 foreach ($inicial1 as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "\n";
 print "\n";
 
 // Creamos la segunda matriz de bits aleatorios
@@ -462,12 +478,11 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la segunda matriz
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
 print "B: ";
 foreach ($inicial2 as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "\n";
 print "\n";
 
 // Creamos la tercera matriz de bits aleatorios
@@ -477,12 +492,11 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la tercera matriz
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
 print "C: ";
 foreach ($inicial3 as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "\n";
 print "\n";
 
 // Creamos la matriz con el resultado
@@ -496,12 +510,12 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }
 
 // Mostramos los valores calculados
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
 print "R: ";
 foreach ($resultado as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "\n";
+print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -522,7 +536,7 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la matriz
-print "  &lt;pre style=\"font-size: 300%\"&gt;";
+print "  &lt;pre style=\"font-size: 300%\"&gt;\n";
 print " A: ";
 foreach ($inicial as $bit) {
     print "$bit ";
@@ -541,7 +555,7 @@ for ($i = 0; $i &lt; $numero - 1; $i++) {
 }
 
 // Mostramos los valores calculados
-print "&amp;Delta;A: ";
+print "&amp;Delta;A:  ";
 foreach ($resultado as $bit) {
     print "$bit ";
 }
@@ -567,12 +581,12 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la matriz
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
+print "  &lt;pre style=\"font-size: 300%\"&gt;\n";
 print "B: ";
 foreach ($inicial as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "\n";
 print "\n";
 
 // Creamos la matriz con el código Gray
@@ -587,12 +601,12 @@ for ($i = 0; $i &lt; $numero - 1; $i++) {
 }
 
 // Mostramos los valores calculados
-print "  &lt;p style=\"font-size: 300%; font-family: monospace;\"&gt;";
 print "G: ";
 foreach ($resultado as $bit) {
     print "$bit ";
 }
-print "&lt;/p&gt;\n";
+print "\n";
+print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -731,7 +745,7 @@ print ".&lt;/p&gt;\n";
     </section>
   </section>
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 22 de octubre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />

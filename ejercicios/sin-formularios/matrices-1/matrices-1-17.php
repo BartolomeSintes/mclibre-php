@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-10
+ * @version   2018-10-22
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,12 +47,12 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos los bits aleatorios de la matriz
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
+print "  <pre style=\"font-size: 300%\">\n";
 print "B: ";
 foreach ($inicial as $bit) {
     print "$bit ";
 }
-print "</p>\n";
+print "\n";
 print "\n";
 
 // Creamos la matriz con el código Gray
@@ -67,18 +67,18 @@ for ($i = 0; $i < $numero - 1; $i++) {
 }
 
 // Mostramos los valores calculados
-print "  <p style=\"font-size: 300%; font-family: monospace;\">";
 print "G: ";
 foreach ($resultado as $bit) {
     print "$bit ";
 }
-print "</p>\n";
+print "\n";
+print "</pre>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-10">10 de octubre de 2018</time>
+      <time datetime="2018-10-22">22 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
