@@ -2,8 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Datos personales 3 (Formulario). Controles en formularios (2).
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Datos personales 3 (Formulario).
+    Controles en formularios (2). Con formularios.
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>

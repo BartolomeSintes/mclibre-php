@@ -29,7 +29,8 @@ function cabecera($texto)
     print "<head>\n";
     print "  <meta charset=\"utf-8\" />\n";
     print "  <title>Convertidor de valores numéricos a cadena (simple encoding). ($texto). Google Chart.\n";
-    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
+    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
     print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
     print "</head>\n";

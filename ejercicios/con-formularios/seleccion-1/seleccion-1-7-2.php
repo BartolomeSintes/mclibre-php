@@ -3,9 +3,9 @@
  * Reparto de tríos (Resultado) - seleccion-1-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-10-31
+ * @version   2018-10-23
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,8 +26,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Reparto de tríos (Resultado). Selección (1).
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Reparto de tríos (Resultado).
+    Selección (1). Con formularios.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -102,7 +105,7 @@ if ($jugadoresOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-31">31 de octubre de 2017</time>
+      <time datetime="2018-10-23">23 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

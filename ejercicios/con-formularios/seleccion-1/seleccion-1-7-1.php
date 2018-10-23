@@ -2,8 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Reparto de tríos (Formulario). Selección (1).
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Reparto de tríos (Formulario).
+    Selección (1). Con formularios.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -33,7 +36,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-10-31">31 de octubre de 2017</time>
+      <time datetime="2018-10-23">23 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
