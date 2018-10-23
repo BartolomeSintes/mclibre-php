@@ -40,7 +40,7 @@
 <?php
 $numero = rand(2, 7);
 
-// Guardamos los valores de los dados en la matriz $dados1
+// Guardamos los valores de los dados en la matriz $dados
 $dados = [];
 for ($i = 0; $i < $numero; $i++) {
     $dados[$i] = rand(1, 6);
