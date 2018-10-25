@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Matrices de dimensión 1. Ejercicios sin formularios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Matrices de dimensión 1. Ejercicios sin formularios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="../../../varios/php.css" title="mclibre" />
   <link rel="icon" href="../../../varios/favicon.ico" />
@@ -32,21 +33,25 @@
             <li><a href="#ejercicio-03">03 - Nombres de animales</a></li>
           </ul>
         </li>
-        <li><a href="#con-bucles">Con bucles</a>
+        <li><a href="#con-bucles-foreach">Con bucles for y foreach</a>
           <ul>
             <li><a href="#ejercicio-11">11 - Tirada de dados</a></li>
-            <li><a href="#ejercicio-12">12 - Partida de dados</a></li>
-            <li><a href="#ejercicio-13">13 - Negación</a></li>
-            <li><a href="#ejercicio-14">14 - "Y" lógico</a></li>
-            <li><a href="#ejercicio-15">15 - El bit más común</a></li>
-            <li><a href="#ejercicio-16">16 - Cambio de bits</a></li>
-            <li><a href="#ejercicio-17">17 - De binario a Gray</a></li>
+            <li><a href="#ejercicio-12">12 - Negación</a></li>
+            <li><a href="#ejercicio-13">13 - Cambio de bits</a></li>
+            <li><a href="#ejercicio-14">14 - De binario a Gray</a></li>
+          </ul>
+        </li>
+        <li><a href="#con-bucles-for">Con bucles for</a>
+          <ul>
+            <li><a href="#ejercicio-21">21 - "Y" lógico</a></li>
+            <li><a href="#ejercicio-22">22 - El bit más común</a></li>
+            <li><a href="#ejercicio-23">23 - Partida de dados</a></li>
           </ul>
         </li>
         <li><a href="#ordenar-matrices">Ordenar matrices</a>
           <ul>
-            <li><a href="#ejercicio-21">21 - Tirada ordenada</a></li>
-            <li><a href="#ejercicio-22">22 - Jugada de Risk</a></li>
+            <li><a href="#ejercicio-31">31 - Tirada ordenada</a></li>
+            <li><a href="#ejercicio-32">32 - Jugada de Risk</a></li>
           </ul>
         </li>
       </ul>
@@ -60,21 +65,25 @@
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-03">03 - Nombres de animales</a></li>
           </ul>
         </li>
-        <li><a href="../../../soluciones/sin-formularios/matrices-1.html#con-bucles">Con bucles</a>
+        <li><a href="../../../soluciones/sin-formularios/matrices-1.html#con-bucles-foreach">Con bucles for y foreach</a>
           <ul>
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-11">11 - Tirada de dados</a></li>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-12">12 - Partida de dados</a></li>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-13">13 - Negación</a></li>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-14">14 - "Y" lógico</a></li>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-15">15 - El bit más común</a></li>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-16">16 - Cambio de bits</a></li>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-17">17 - De binario a Gray</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-12">12 - Negación</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-13">13 - Cambio de bits</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-14">14 - De binario a Gray</a></li>
+          </ul>
+        </li>
+        <li><a href="../../../soluciones/sin-formularios/matrices-1.html#con-bucles-for">Con bucles for</a>
+          <ul>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-21">21 - "Y" lógico</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-22">22 - El bit más común</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-23">23 - Partida de dados</a></li>
           </ul>
         </li>
         <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ordenar-matrices">Ordenar matrices</a>
           <ul>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-21">21 - Tirada ordenada</a></li>
-            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-22">22 - Jugada de Risk</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-31">31 - Tirada ordenada</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-32">32 - Jugada de Risk</a></li>
           </ul>
         </li>
       </ul>
@@ -170,8 +179,8 @@
     </section>
   </section>
 
-  <section id="con-bucles">
-    <h2>Con bucles</h2>
+  <section id="con-bucles-foreach">
+    <h2>Con bucles for y foreach</h2>
 
     <p>En estos ejercicios se aconseja utilizar bucles <span class="php-res">for</span> para crear las matrices de datos y bucles <span class="php-res">foreach</span> para recorrer las matrices de datos.</p>
 
@@ -203,16 +212,140 @@
     </section>
 
     <section id="ejercicio-12">
-      <h3>Matrices (1) 12 - Partida de dados</h3>
+      <h3>Matrices (1) 12 - Negación de bits</h3>
+
+      <p>Escriba un programa que muestre una secuencia aleatoria de 10 bits y su secuencia complementaria.</p>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>Con un bucle, cree una matriz de diez elementos con los valores aleatorios (0, 1, etc.)</li>
+          <li>Con otro bucle, cree otra matriz a partir de los valores de la primera. Si en la primera matriz el valor es es 0, en su complementaria es 1, y viceversa.</li>
+          <li>Con dos bucles más, escriba los valores de las dos matrices.</li>
+        </ul>
+      </details>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="matrices-1-12.php" style="height: 25em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="matrices-1-12.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-13">
+      <h3>Matrices (1) 13 - Cambio de bits</h3>
+
+      <p>Escriba un programa que muestre una secuencia aleatoria de 10 bits y la detección de cambios de bits consecutivos en la secuencia. Es decir:</p>
+      <ul>
+        <li>si en la primera secuencia un bit es igual al bit siguiente, el bit correspondiente del resultado será 0</li>
+        <li>si en la primera secuencia un bit es distinto al bit siguiente, el bit correspondiente del resultado será 1</li>
+      </ul>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>En el bucle que genera la matriz resultado se debe comparar cada valor de la secuencia inicial con el valor siguiente.</li>
+          <li>Ese bucle debe tener una iteración menos que el número de valores.</li>
+        </ul>
+      </details>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="matrices-1-13.php" style="height: 25em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="matrices-1-13.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-14">
+      <h3>Matrices (1) 14 - Convertidor de binario a código de Gray</h3>
+
+      <p>Escriba un programa que muestre una secuencia aleatoria de bits y su conversión a <a href="https://es.wikipedia.org/wiki/C%C3%B3digo_Gray">código de Gray</a>.</p>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>En el código de Gray, el primer bit es el mismo que el del número inicial.</li>
+          <li>Los siguientes bits indican si los bits consecutivos son iguales, como en el ejercicio anterior.</li>
+        </ul>
+      </details>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="matrices-1-14.php" style="height: 25em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="matrices-1-14.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section id="con-bucles-for">
+    <h2>Con bucles for</h2>
+
+    <p>En estos ejercicios se aconseja utilizar bucles <span class="php-res">for</span> tanto para crear las matrices de datos como para recorrer las matrices de datos.</p>
+
+    <section id="ejercicio-21">
+      <h3>Matrices (1) 21 - "Y" lógico</h3>
+
+      <p>Escriba un programa que muestre dos secuencias aleatorias de 10 bits y el resultado de hacer la conjunción lógica ("y" lógico) bit a bit.</p>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>La conjunción lógica de dos valores da como resultado 1 si los dos valores son 1.</li>
+        </ul>
+      </details>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="matrices-1-21.php" style="height: 31em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="matrices-1-21.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-22">
+      <h3>Matrices (1) 22 - El bit más común</h3>
+
+      <p>Escriba un programa que muestre tres secuencias aleatorias de 10 bits y una cuarta secuencia que indique cuál es el bit más común en esa posición.</p>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>Si la suma de los valores en una posición es mayor que uno es que en esa posición hay más unos que ceros.</li>
+        </ul>
+      </details>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="matrices-1-22.php" style="height: 35em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="matrices-1-22.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-23">
+      <h3>Matrices (1) 23 - Partida de dados</h3>
 
       <p>Escriba un programa que enfrente a dos jugadores tirando una serie de dados al azar entre 2 y 7 e indique el resultado. Los dados se comparan en orden (el primero con el primero, el segundo con el segundo, etc.) y gana el jugador que obtenga el número más alto.</p>
 
       <div class="filaflex">
         <div class="resultado-object">
-          <object type="text/html" data="matrices-1-12.php" style="height: 46em;">ERROR (no puede mostrarse el objeto)</object>
+          <object type="text/html" data="matrices-1-23.php" style="height: 46em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
         <div class="icono-enlace">
-          <a href="matrices-1-12.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+          <a href="matrices-1-23.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
         </div>
       </div>
 
@@ -231,146 +364,28 @@
         </ul>
       </details>
     </section>
-
-    <section id="ejercicio-13">
-      <h3>Matrices (1) 13 - Negación de bits</h3>
-
-      <p>Escriba un programa que muestre una secuencia aleatoria de 10 bits y su secuencia complementaria.</p>
-
-      <details>
-        <summary><strong>Ayuda</strong></summary>
-        <ul>
-          <li>Con un bucle, cree una matriz de diez elementos con los valores aleatorios (0, 1, etc.)</li>
-          <li>Con otro bucle, cree otra matriz a partir de los valores de la primera. Si en la primera matriz el valor es es 0, en su complementaria es 1, y viceversa.</li>
-          <li>Con dos bucles más, escriba los valores de las dos matrices.</li>
-        </ul>
-      </details>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="matrices-1-13.php" style="height: 25em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="matrices-1-13.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-14">
-      <h3>Matrices (1) 14 - "Y" lógico</h3>
-
-      <p>Escriba un programa que muestre dos secuencias aleatorias de 10 bits y el resultado de hacer la conjunción lógica ("y" lógico) bit a bit.</p>
-
-      <details>
-        <summary><strong>Ayuda</strong></summary>
-        <ul>
-          <li>La conjunción lógica de dos valores da como resultado 1 si los dos valores son 1.</li>
-        </ul>
-      </details>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="matrices-1-14.php" style="height: 31em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="matrices-1-14.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-15">
-      <h3>Matrices (1) 15 - El bit más común</h3>
-
-      <p>Escriba un programa que muestre tres secuencias aleatorias de 10 bits y una cuarta secuencia que indique cuál es el bit más común en esa posición.</p>
-
-      <details>
-        <summary><strong>Ayuda</strong></summary>
-        <ul>
-          <li>Si la suma de los valores en una posición es mayor que uno es que en esa posición hay más unos que ceros.</li>
-        </ul>
-      </details>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="matrices-1-15.php" style="height: 35em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="matrices-1-15.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-16">
-      <h3>Matrices (1) 16 - Cambio de bits</h3>
-
-      <p>Escriba un programa que muestre una secuencia aleatoria de 10 bits y la detección de cambios de bits consecutivos en la secuencia. Es decir:</p>
-      <ul>
-        <li>si en la primera secuencia un bit es igual al bit siguiente, el bit correspondiente del resultado será 0</li>
-        <li>si en la primera secuencia un bit es distinto al bit siguiente, el bit correspondiente del resultado será 1</li>
-      </ul>
-
-      <details>
-        <summary><strong>Ayuda</strong></summary>
-        <ul>
-          <li>En el bucle que genera la matriz resultado se debe comparar cada valor de la secuencia inicial con el valor siguiente.</li>
-          <li>Ese bucle debe tener una iteración menos que el número de valores.</li>
-        </ul>
-      </details>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="matrices-1-16.php" style="height: 25em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="matrices-1-16.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-17">
-      <h3>Matrices (1) 17 - Convertidor de binario a código de Gray</h3>
-
-      <p>Escriba un programa que muestre una secuencia aleatoria de bits y su conversión a <a href="https://es.wikipedia.org/wiki/C%C3%B3digo_Gray">código de Gray</a>.</p>
-
-      <details>
-        <summary><strong>Ayuda</strong></summary>
-        <ul>
-          <li>En el código de Gray, el primer bit es el mismo que el del número inicial.</li>
-          <li>Los siguientes bits indican si los bits consecutivos son iguales, como en el ejercicio anterior.</li>
-        </ul>
-      </details>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="matrices-1-17.php" style="height: 25em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="matrices-1-17.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
   </section>
 
   <section id="ordenar-matrices">
     <h2>Ordenar matrices</h2>
 
-    <section id="ejercicio-21">
-      <h3>Matrices (1) 21 - Tirada de dados ordenada</h3>
+    <section id="ejercicio-31">
+      <h3>Matrices (1) 31 - Tirada de dados ordenada</h3>
 
       <p>Escriba un programa que muestre una tirada de un número de dados al azar entre 2 y 7 y los ordene de menor a mayor.</p>
 
       <div class="filaflex">
         <div class="resultado-object">
-          <object type="text/html" data="matrices-1-21.php" style="height: 39em;">ERROR (no puede mostrarse el objeto)</object>
+          <object type="text/html" data="matrices-1-31.php" style="height: 39em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
         <div class="icono-enlace">
-          <a href="matrices-1-21.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+          <a href="matrices-1-31.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
         </div>
       </div>
     </section>
 
-    <section id="ejercicio-22">
-      <h3>Matrices (1) 22 - Jugada de Risk</h3>
+    <section id="ejercicio-32">
+      <h3>Matrices (1) 32 - Jugada de Risk</h3>
 
       <p>Escriba un programa que simule una tirada del noble juego de mesa <a href="https://es.wikipedia.org/wiki/Risk">Risk</a>. Las reglas son las siguientes:</p>
 
@@ -395,17 +410,17 @@
 
       <div class="filaflex">
         <div class="resultado-object">
-          <object type="text/html" data="matrices-1-22.php" style="height: 49em;">ERROR (no puede mostrarse el objeto)</object>
+          <object type="text/html" data="matrices-1-32.php" style="height: 49em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
         <div class="icono-enlace">
-          <a href="matrices-1-22.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+          <a href="matrices-1-32.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
         </div>
       </div>
     </section>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />

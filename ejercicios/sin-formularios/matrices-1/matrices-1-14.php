@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-22
+ * @version   2018-10-25
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,69 +26,51 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>"Y" lógico. Matrices (1).
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    De binario a Gray.
+    Matrices (1). Sin formularios.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>"Y" lógico</h1>
+  <h1>Convertidor de binario a código de Gray</h1>
 
-  <p>Actualice la página para mostrar dos secuencias aleatorias de bits y su conjunción lógica.</p>
+  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su conversión a código de Gray.</p>
 
 <?php
 $numero = 10;
 
-// Creamos la primera matriz de bits aleatorios
-$inicial1 = [];
+// Creamos la matriz de bits aleatorios
+$inicial = [];
 for ($i = 0; $i < $numero; $i++) {
-    $inicial1[$i] = rand(0, 1);
+    $inicial[$i] = rand(0, 1);
 }
 
-// Mostramos los bits aleatorios de la primera matriz
-print "  <pre style=\"font-size: 300%;\">\n";
-print "   A   : ";
-foreach ($inicial1 as $bit) {
+// Mostramos los bits aleatorios de la matriz
+print "  <pre style=\"font-size: 300%\">\n";
+print "B: ";
+foreach ($inicial as $bit) {
     print "$bit ";
 }
 print "\n";
 print "\n";
 
-// Creamos la segunda matriz de bits aleatorios
-$inicial2 = [];
-for ($i = 0; $i < $numero; $i++) {
-    $inicial2[$i] = rand(0, 1);
-}
-
-// Mostramos los bits aleatorios de la segunda matriz
-print "   B   : ";
-foreach ($inicial2 as $bit) {
-    print "$bit ";
-}
-print "\n";
-print "\n";
-
-// Creamos la matriz con el resultado de la conjunción lógica
+// Creamos la matriz con el código Gray
 $resultado = [];
-for ($i = 0; $i < $numero; $i++) {
-    if ($inicial1[$i] == 1 && $inicial2[$i] == 1 ) {
-        $resultado[$i] = 1;
+$resultado[0] = $inicial[0];
+for ($i = 0; $i < $numero - 1; $i++) {
+    if ($inicial[$i] == $inicial[$i+1]) {
+        $resultado[$i+1] = 0;
     } else {
-        $resultado[$i] = 0;
+        $resultado[$i+1] = 1;
     }
 }
 
-/* Otra forma de calcular los valores complementarios
-// Creamos la matriz con el resultado de la conjunción lógica
-$resultado = [];
-for ($i = 0; $i < $numero; $i++) {
-    $resultado[$i] = (int)($inicial1[$i] && $inicial2[$i]);
-}
-*/
-
 // Mostramos los valores calculados
-print "A and B: ";
+print "G: ";
 foreach ($resultado as $bit) {
     print "$bit ";
 }
@@ -99,7 +81,7 @@ print "</pre>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-22">22 de octubre de 2018</time>
+      <time datetime="2018-10-25">25 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
