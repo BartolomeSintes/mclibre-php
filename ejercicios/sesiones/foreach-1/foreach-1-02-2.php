@@ -3,9 +3,9 @@
  * Seleccione dibujos - foreach-1-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-30
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
