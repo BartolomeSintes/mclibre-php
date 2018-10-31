@@ -3,9 +3,9 @@
  * Hoja de estilo  - cabeceras-11-css.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-13
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ $tamano = rand(100, 300) / 100;
 print "body {\n";
 print "  background-color: hsl($color, 100%, 80%);\n";
 print "  font-family: sans-serif;\n";
-print "  font-size: " . $tamano . "rem;\n";
+print "  font-size: {$tamano}rem;\n";
 print "}\n";
 print "\n";
 

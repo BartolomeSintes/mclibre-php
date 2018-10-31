@@ -2,8 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Imagen. Cabeceras.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Imagen.
+    Cabeceras. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -16,7 +19,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-08">8 de noviembre de 2016</time>
+      <time datetime="2018-10-31">31 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Imagen - cabeceras-12-svg.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-08
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,8 +25,8 @@
 header("Content-type: image/svg+xml");
 
 $radio = rand(10, 20);
-$cx = rand(20, 130);
-$cy = rand(20, 130);
+$cx    = rand($radio + 1, 148 - $radio);
+$cy    = rand($radio + 1, 148 - $radio);
 
 print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "  width=\"150\" height=\"150\" viewBox=\"0 0 150 150\">\n";

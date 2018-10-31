@@ -3,9 +3,9 @@
  * Formulario 4-1 - cabeceras-04-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-09
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,8 +26,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Formulario 4 (Formulario). Cabeceras.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Formulario 4 (Formulario).
+    Cabeceras. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -65,7 +68,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-09">9 de noviembre de 2016</time>
+      <time datetime="2018-10-31">31 de octubre de 2018</time>
     </p>
 
     <p class="licencia">
