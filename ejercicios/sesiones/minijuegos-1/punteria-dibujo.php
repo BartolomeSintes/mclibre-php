@@ -3,9 +3,9 @@
  * Puntería 1 y 2 - punteria-dibujo.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-14
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@ $_SESSION["x"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
 $_SESSION["y"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
 
 print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "  width=\"{$_SESSION["ancho"]}px\" height=\"{$_SESSION["ancho"]}px\">\n";
+    . "  width=\"$_SESSION[ancho]\" height=\"$_SESSION[ancho]\">\n";
 print "  <rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
     . "x=\"0\" y=\"0\" width=\"$_SESSION[ancho]\" height=\"$_SESSION[ancho]\" />\n";
     print "  <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"$_SESSION[r]\" stroke=\"black\" stroke-width=\"0\" fill=\"black\" />\n";
