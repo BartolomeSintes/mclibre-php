@@ -3,9 +3,9 @@
  * Menús 1 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-11-05
+ * @version   2018-11-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,10 +28,13 @@ function cabecera($texto)
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\" />\n";
-    print "  <title>$texto. Menús 1. Menús. \n";
-    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
+    print "  <title>\n";
+    print "    $texto.\n";
+    print "    Menús 1. Menús.\n";
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
+    print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones-proyectos.css\" title=\"Color\" />\n";
+    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-proyectos.css\" title=\"Color\" />\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";
@@ -57,7 +60,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2017-11-05\">5 de noviembre de 2017</time>\n";
+    print "      <time datetime=\"2018-11-01\">1 de noviembre de 2018</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
