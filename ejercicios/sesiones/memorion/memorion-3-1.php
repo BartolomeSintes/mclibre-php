@@ -70,7 +70,7 @@ if (!isset($_SESSION["dibujos"])) {
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>

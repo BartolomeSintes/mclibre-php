@@ -5,7 +5,7 @@
   <title>Sucesiones aritméticas 3 (Formulario). for (4).
     Escriba su nombre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>

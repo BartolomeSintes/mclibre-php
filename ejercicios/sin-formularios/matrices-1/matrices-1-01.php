@@ -27,12 +27,12 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Dado. 
+    Dado.
     Matrices (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="mclibre-php-ejercicios.css" title="Color" />
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
