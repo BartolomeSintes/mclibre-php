@@ -1,6 +1,7 @@
 <?php
 /**
- * Variables (1) 12 - variables-1-12.php
+ .
+    Variables. Sin formularios.(1) 12 - variables-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -26,8 +27,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tres cuadrados. Variables.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Tres cuadrados.
+    Variables. Sin formularios.
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
