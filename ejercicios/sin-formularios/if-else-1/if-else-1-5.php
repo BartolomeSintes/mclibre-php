@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-27
+ * @version   2018-11-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,8 +26,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tres dados más altos. Juego. if .. elseif ... else ... (1).
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Tres dados más altos. Juego.
+    if .. elseif ... else ... (1). Sin formularios.
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -126,7 +129,7 @@ if ($trio1 > $trio2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-09-27">27 de septiembre de 2018</time>
+      <time datetime="2018-11-05">5 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">
