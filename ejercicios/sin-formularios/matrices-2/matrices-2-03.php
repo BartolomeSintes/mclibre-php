@@ -26,8 +26,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Tirada multilingüe. Matrices (2).
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Tirada multilingüe.
+    Matrices (2). Sin formularios.
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -65,7 +68,7 @@ print "  <p>{$mensajes[2][$idioma]} <strong>{$palabras[$dado-1][$idioma]}</stron
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-10">10 de octubre de 2018</time>
+      <time datetime="2018-11-05">5 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">
