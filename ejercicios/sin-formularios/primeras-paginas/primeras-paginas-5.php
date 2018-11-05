@@ -1,11 +1,12 @@
 <?php
 /**
- * Primeras páginas 5 - primeras-paginas-5.php
+ *
+    Primeras páginas. Sin formularios.5 - primeras-paginas-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-09-20
+ * @version   2018-11-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,8 +27,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Dado digital gráfico. Primeras páginas.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Dado digital gráfico.
+    Primeras páginas. Sin formularios.
+    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -44,7 +48,7 @@ print "  <p><img src=\"img/". rand(1, 6) . ".svg\" alt=\"Dado\" width=\"140\" he
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-20">20 de septiembre de 2017</time>
+      <time datetime="2018-11-05">5 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">
