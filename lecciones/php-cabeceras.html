@@ -95,6 +95,9 @@ header("Location:cabeceras-header-1-3.php");
     <p>En el primer ejemplo, se llama a la función <span class="php-fun">header()</span> después de un <span class="php-fun">print</span>, lo que provoca un aviso de error.</p>
 
     <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
@@ -121,6 +124,9 @@ header("Location:http://www.example.com");
     <p>En el segundo ejemplo, se llama a la función <span class="php-fun">header()</span> en un programa que ya ha generado contenido antes del fragmento PHP, lo que provoca un aviso de error:</p>
 
     <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
       <div class="codigo">
         <pre><span class="codigo-resaltado"><code class="language-html">&lt;p&gt;Intento fallido de redirección&lt;/p&gt;</code></span></pre>
         <pre>
@@ -149,6 +155,9 @@ header("Location:http://www.example.com");
     <p>Hay que tener en cuenta que una simple línea en blanco antes del bloque PHP sería suficiente para impedir el envío de la cabecera:</p>
 
     <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+      </div>
       <div class="codigo">
         <pre>
 <code class="language-php"><span class="codigo-resaltado"></span>
@@ -188,7 +197,7 @@ header("Location:http://www.example.com");
       <p>Los ejemplos siguientes muestran la influencia del tamaño del buffer. En estos ejemplos se utilizan las funciones <a href="http://php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="http://php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>, que permiten gestionar directamente el buffer de salida independientemente de la configuración del servidor. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página. Puede <a href="http://www.mclibre.org/consultar/especiales/php/buffer-salida.zip">descargar los ejemplos</a> para probarlos en su ordenador.</p>
 
       <ul>
-        <li>En el primer ejemplo, el buffer es de 1 byte. El contenido HTML generado por la instrucción <span class="php-res">print</span> no cabe en el buffer y la redirección produce un error.
+        <li>En el primer ejemplo, el buffer es de 1 byte. El contenido HTML generado por la instrucción <span class="php-res">print</span> no cabe en el buffer y la redirección no llega a realizarse.
 
           <div class="filaflex">
             <div class="columnaflex">
