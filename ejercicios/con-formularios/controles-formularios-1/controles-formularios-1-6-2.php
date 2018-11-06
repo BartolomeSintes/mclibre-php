@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-17
+ * @version   2018-11-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -50,14 +50,14 @@ function recoge($var)
 $fondo = recoge("fondo");
 $letra = recoge("letra");
 
-if ($fondo == "" && $letra == "") {
-    print "  <p>Usted no quiere cambiar nada</p>\n";
+if ($fondo != "" && $letra != "") {
+    print "  <p>Usted quiere cambiar: $fondo y $letra</p>\n";
+} elseif ($fondo != "") {
+    print "  <p>Usted quiere cambiar: $fondo</p>\n";
+} elseif ($letra != "") {
+    print "  <p>Usted quiere cambiar: $letra</p>\n";
 } else {
-    print "  <p>Usted quiere cambiar: $fondo";
-    if ($fondo != "" && $letra != "") {
-        print " y ";
-    }
-    print "$letra</p>\n";
+    print "  <p>Usted no quiere cambiar nada</p>\n";
 }
 ?>
 
@@ -66,7 +66,7 @@ if ($fondo == "" && $letra == "") {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-18">18 de octubre de 2018</time>
+      <time datetime="2018-11-05">5 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

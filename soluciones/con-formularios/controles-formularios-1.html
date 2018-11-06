@@ -188,7 +188,15 @@ function recoge($var)
 $fondo = recoge("fondo");
 $letra = recoge("letra");
 
-print "  &lt;p&gt;Usted quiere cambiar: $fondo, $letra&lt;/p&gt;\n";
+if ($fondo != "" && $letra != "") {
+  print "  &lt;p&gt;Usted quiere cambiar: $fondo y $letra&lt;/p&gt;\n";
+} elseif ($fondo != "") {
+  print "  &lt;p&gt;Usted quiere cambiar: $fondo&lt;/p&gt;\n";
+} elseif ($letra != "") {
+  print "  &lt;p&gt;Usted quiere cambiar: $letra&lt;/p&gt;\n";
+} else {
+  print "  &lt;p&gt;Usted no quiere cambiar nada&lt;/p&gt;\n";
+}
 ?&gt;</code>
 </pre>
     </div>
@@ -281,7 +289,7 @@ print "  &lt;/svg&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
