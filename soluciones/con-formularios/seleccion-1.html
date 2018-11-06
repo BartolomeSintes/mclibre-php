@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Selección (1). Soluciones. Con formularios. Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre" />
+  <link rel="icon" href="../../varios/favicon.ico" />
+  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <script src="../../varios/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <h1>Soluciones - Selección (1)</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+    </p>
+
+    <div class="toc">
+      <h2>Selección (1)</h2>
+
+      <h3>Enunciados</h3>
+      <ul>
+        <li><a href="../../ejercicios/con-formularios/seleccion-1/index.html#ejercicio-1">1 - Convertidor distancias</a></li>
+        <li><a href="../../ejercicios/con-formularios/seleccion-1/index.html#ejercicio-2">2 - Convertidor segundos (1)</a></li>
+        <li><a href="../../ejercicios/con-formularios/seleccion-1/index.html#ejercicio-3">3 - Comparador 3 números</a></li>
+        <li><a href="../../ejercicios/con-formularios/seleccion-1/index.html#ejercicio-4">4 - Convertidor temperaturas</a></li>
+        <li><a href="../../ejercicios/con-formularios/seleccion-1/index.html#ejercicio-5">5 - Tabla de una columna</a></li>
+        <li><a href="../../ejercicios/con-formularios/seleccion-1/index.html#ejercicio-6">6 - Tabla sin cabecera</a></li>
+        <li><a href="../../ejercicios/con-formularios/seleccion-1/index.html#ejercicio-7">7 - Reparto de tríos</a></li>
+      </ul>
+
+      <h3>Soluciones</h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Convertidor distancias</a></li>
+        <li><a href="#ejercicio-2">2 - Convertidor segundos (1)</a></li>
+        <li><a href="#ejercicio-3">3 - Comparador 3 números</a></li>
+        <li><a href="#ejercicio-4">4 - Convertidor temperaturas</a></li>
+        <li><a href="#ejercicio-5">5 - Tabla de una columna</a></li>
+        <li><a href="#ejercicio-6">6 - Tabla sin cabecera</a></li>
+        <li><a href="#ejercicio-7">7 - Reparto de tríos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/con-formularios/seleccion-1/index.html">Selección (1)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>Operaciones aritméticas 2 - Convertidor de pies y pulgadas a centímetros</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$pies     = recoge("pies");
+$pulgadas = recoge("pulgadas");
+
+$piesOk     = false;
+$pulgadasOk = false;
+
+if ($pies == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de pies.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($pies)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito los pies como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $piesOk = true;
+}
+
+if ($pulgadas == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de pulgadas.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($pulgadas)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito las pulgadas como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($pulgadas &lt; 0) {
+    print "  &lt;p class=\"aviso\"&gt;Las pulgadas no pueden ser negativas.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pulgadasOk = true;
+}
+
+if ($piesOk && $pulgadasOk) {
+    $centimetros = ($pies * 12 + $pulgadas) * 2.54;
+    print "  &lt;p&gt;$pies pies y $pulgadas pulgadas son $centimetros centímetros&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Operaciones aritméticas 3 - Convertidor de segundos a minutos y segundos</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$segundos = recoge("segundos");
+
+$segundosOk = false;
+
+if ($segundos == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de segundos.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($segundos)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito los segundos como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $segundosOk = true;
+}
+
+if ($segundosOk) {
+    $min = floor($segundos / 60);
+    $seg = $segundos % 60;
+    print "  &lt;p&gt;$segundos segundos son $min minutos y $seg segundos&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>if ... elseif ... else ... 3 - Comparador de tres números</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$numero1 = recoge("numero1");
+$numero2 = recoge("numero2");
+$numero3 = recoge("numero3");
+
+$numero1Ok = false;
+$numero2Ok = false;
+$numero3Ok = false;
+
+if ($numero1 == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($numero1)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($numero1 &lt;= -1000 || $numero1 &gt;= 1000) {
+    print "  &lt;p class=\"aviso\"&gt;El primer número no está entre -1.000 y 1.000.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $numero1Ok = true;
+}
+
+if ($numero2 == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo numero.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($numero2)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($numero2 &lt;= -1000 || $numero2 &gt;= 1000) {
+    print "  &lt;p class=\"aviso\"&gt;El segundo número no está entre -1.000 y 1.000.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $numero2Ok = true;
+}
+
+if ($numero3 == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tercer numero.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($numero3)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tercer número como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($numero3 &lt;= -1000 || $numero3 &gt;= 1000) {
+    print "  &lt;p class=\"aviso\"&gt;El tercer número no está entre -1.000 y 1.000.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $numero3Ok = true;
+}
+
+if ($numero1Ok && $numero2Ok && $numero3Ok) {
+    print "  &lt;p&gt;Primer número: &lt;strong&gt;$numero1&lt;/strong&gt;&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Segundo número: &lt;strong&gt;$numero2&lt;/strong&gt;&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Tercer número: &lt;strong&gt;$numero3&lt;/strong&gt;&lt;/p&gt;\n";
+    print "\n";
+    if ($numero1 == $numero2 && $numero2 == $numero3) {
+        print "  &lt;p&gt;Ha escrito tres números iguales.&lt;/p&gt;\n";
+    } elseif ($numero1 == $numero2 ||  $numero2 == $numero3 || $numero1 == $numero3) {
+        print "  &lt;p&gt;Ha escrito dos números iguales.&lt;/p&gt;\n";
+    } else {
+        print "  &lt;p&gt;Ha escrito tres números distintos.&lt;/p&gt;\n";
+    }
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>if ... elseif ... else ... 6 - Convertidor de temperaturas Celsius / Fahrenheit</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$temperatura = recoge("temperatura");
+$unidad      = recoge("unidad");
+
+$temperaturaOk = false;
+$unidadOk      = false;
+
+if ($temperatura == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la temperatura.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($temperatura)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la temperatura como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($temperatura &lt; -273.15 && $unidad == "c") {
+    print "  &lt;p class=\"aviso\"&gt;Una temperatura no puede ser tan baja.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($temperatura &lt;- 459.67 && $unidad == "f") {
+    print "  &lt;p class=\"aviso\"&gt;Una temperatura no puede ser tan baja.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($temperatura &gt;= 10000) {
+    print "  &lt;p class=\"aviso\"&gt;La temperatura no es inferior a 10.000.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $temperaturaOk = true;
+}
+
+if ($unidad == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito la unidad.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($unidad != "c" && $unidad != "f") {
+    print "  &lt;p class=\"aviso\"&gt;La unidad no es correcta.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $unidadOk = true;
+}
+
+if ($temperaturaOk && $unidadOk) {
+    if ($unidad == "c") {
+        $fahrenheit = round(1.8 * $temperatura + 32, 2);
+        print "  &lt;p&gt;$temperatura ºC son $fahrenheit ºF&lt;/p&gt;\n";
+    } else {
+        $celsius = round(($temperatura - 32) / 1.8, 2);
+        print "  &lt;p&gt;$temperatura ºF son $celsius ºC&lt;/p&gt;\n";
+    }
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>For (3) 2 - Tabla de una columna</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$filas = recoge("filas");
+
+$filasOk = false;
+
+$filasMinimo = 1;
+$filasMaximo = 200;
+
+if ($filas == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($filas)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($filas)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de filas "
+        . "como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($filas &lt; $filasMinimo || $filas &gt; $filasMaximo) {
+    print "  &lt;p class=\"aviso\"&gt;El número de filas debe estar entre "
+        . "$filasMinimo y $filasMaximo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $filasOk = true;
+}
+
+if ($filasOk) {
+    print "  &lt;table class=\"conborde\"&gt;\n";
+    print "    &lt;tbody&gt;\n";
+    for ($i = 1; $i &lt;= $filas; $i++) {
+        print "      &lt;tr&gt;\n";
+        print "        &lt;td&gt;$i&lt;/td&gt;\n";
+        print "      &lt;/tr&gt;\n";
+    }
+    print "    &lt;/tbody&gt;\n";
+    print "  &lt;/table&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-6">
+    <h2>For (3) 3 - Tabla de multiplicar sin cabecera</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$numero = recoge("numero");
+
+$numeroOk = false;
+
+$numeroMinimo = 1;
+$numeroMaximo = 100;
+
+if ($numero == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($numero)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($numero)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el tamaño de la tabla "
+        . "como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($numero &lt; $numeroMinimo || $numero &gt; $numeroMaximo) {
+    print "  &lt;p class=\"aviso\"&gt;El tamaño de la tabla debe estar entre "
+        . "$numeroMinimo y $numeroMaximo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $numeroOk = true;
+}
+
+if ($numeroOk) {
+    print "  &lt;table class=\"conborde\"&gt;\n";
+    print "    &lt;tbody&gt;\n";
+    for ($i = 1; $i &lt;= $numero; $i++) {
+        print "      &lt;tr&gt;\n";
+        for ($j = 1; $j &lt;= $numero; $j++) {
+            print "        &lt;td&gt;" . ($i * $j) . "&lt;/td&gt;\n";
+        }
+        print "      &lt;/tr&gt;\n";
+    }
+    print "    &lt;/tbody&gt;\n";
+    print "  &lt;/table&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-7">
+    <h2>Selección (1) 7 - Reparto de tríos</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
+
+$jugadores = recoge("jugadores");
+
+$jugadoresOk = false;
+
+$jugadoresMinimo = 3;
+$jugadoresMaximo = 10;
+
+if ($jugadores == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($jugadores)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($jugadores)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de jugadores "
+        . "como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($jugadores &lt; $jugadoresMinimo || $jugadores &gt; $jugadoresMaximo) {
+    print "  &lt;p class=\"aviso\"&gt;El número de jugadores debe estar entre "
+     . "$jugadoresMinimo y $jugadoresMaximo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $jugadoresOk = true;
+}
+
+if ($jugadoresOk) {
+    $c1 = [];
+    $c2 = [];
+    $c3 = [];
+    $total = [];
+
+    for ($i = 1; $i &lt;= $jugadores; $i++) {
+        $c1[$i] = rand(1, 10);
+        $c2[$i] = rand(1, 10);
+        $c3[$i] = rand(1, 10);
+        $total[$i] = $c1[$i] + $c2[$i] + $c3[$i];
+    }
+
+    $maximo = max($total);
+
+    print "  &lt;p&gt;La puntuación máxima ha sido &lt;strong&gt;$maximo puntos&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+
+    for ($i = 1; $i &lt;= $jugadores; $i++) {
+        print "  &lt;p&gt;Jugador $i:\n";
+        print "    &lt;img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\" title=\"$c1[$i]\" /&gt;\n";
+        print "    &lt;img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" title=\"$c2[$i]\" /&gt;\n";
+        print "    &lt;img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" title=\"$c3[$i]\" /&gt;\n";
+        print "  &lt;/p&gt;\n";
+    }
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 6 de noviembre de 2018</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
