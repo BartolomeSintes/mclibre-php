@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 05 - sesiones-1-05-2.php
+ * Sesiones (1) 04 - sesiones-1-04-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,13 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-05");
+session_name("sesiones-1-03");
 session_start();
-
-// Si alguna posición no está guardada en la sesión, las pone a cero
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-}
 
 // Funciones auxiliares
 function recoge($var)
@@ -39,83 +34,63 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogida de accion
-$accion   = recoge("accion");
-$accionOk = true;
+// Recogida de palabra
+$palabra   = recoge("palabra");
+$palabraOk = false;
 
-// Comprobación de accion
-if ($accion != "centro" && $accion != "izquierda" && $accion != "derecha"
-    && $accion != "arriba" && $accion != "abajo") {
-    // Si no es una de las tres posibles acciones, se vuelve al formulario
-    header("Location:sesiones-1-05-1.php");
+unset($_SESSION["error"]);
+
+// print $palabra; exit;
+// Comprobación de palabra
+if ($palabra == "") {
+    // Si no se recibe palabra, se vuelve al formulario
+    $_SESSION["error"] = "No ha escrito ninguna palabra";
+    header("Location:sesiones-1-04-1.php");
+    exit;
+} elseif (!ctype_upper($palabra)) {
+    // Si la palabra no está en mayúculas, se vuelve al formulario
+    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
+    header("Location:sesiones-1-04-1.php");
     exit;
 } else {
-    $accionOk = true;
+    $palabraOk = true;
 }
 
-// Si la accion recibibida es válida ...
-if ($accionOk) {
-    //se mueve el punto
-    if ($accion == "centro") {
-        $_SESSION["x"] = $_SESSION["y"] = 0;
-    } elseif ($accion == "izquierda") {
-        $_SESSION["x"] -= 20;
-    } elseif ($accion == "derecha") {
-        $_SESSION["x"] += 20;
-    } elseif ($accion == "arriba") {
-        $_SESSION["y"] -= 20;
-    } elseif ($accion == "abajo") {
-        $_SESSION["y"] += 20;
-    }
+// Si la palabra es correcta ...
+if ($palabraOk) {
+    // se queda en la página
+print "
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>
+    Formulario Nombre 1 (Resultado).
+    Sesiones (1). Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+</head>
 
-    // si sale por un lado, entra por el otro
-    if ($_SESSION["x"] > 200) {
-        $_SESSION["x"] = -200;
-    } elseif ($_SESSION["x"] < -200) {
-        $_SESSION["x"] = 200;
-    }
+<body>
+  <h1>Formulario Nombre 1 (Resultado)</h1>
+  <p><a href="sesiones-1-01-1.php">Volver a la primera página.</a></p>
 
-    // si sale por un lado, entra por el otro
-    if ($_SESSION["y"] > 200) {
-        $_SESSION["y"] = -200;
-    } elseif ($_SESSION["y"] < -200) {
-        $_SESSION["y"] = 200;
-    }
+  <footer>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2018-11-07">7 de noviembre de 2018</time>
+    </p>
 
-    // y vuelve al formulario
-    header("Location:sesiones-1-05-1.php");
-    exit;
+    <p class="licencia">
+      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      El programa PHP que genera esta página se distribuye bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
+    </p>
+  </footer>
+</body>
+</html>
+
 }
-
-/* La solución anterior sigue el patrón recogida+validación+ejecución
- * propuesta en los ejercicios de formularios
- * El programa podría hacerse más corto con el mismo resultado
-
-$accion = recoge("accion");
-
- if ($accion == "centro") {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-} elseif ($accion == "izquierda") {
-    $_SESSION["x"] -= 20;
-} elseif ($accion == "derecha") {
-    $_SESSION["x"] += 20;
-} elseif ($accion == "arriba") {
-    $_SESSION["y"] -= 20;
-} elseif ($accion == "abajo") {
-    $_SESSION["y"] += 20;
-}
-
-if ($_SESSION["x"] > 200) {
-    $_SESSION["x"] = -200;
-} elseif ($_SESSION["x"] < -200) {
-    $_SESSION["x"] = 200;
-}
-
-if ($_SESSION["y"] > 200) {
-    $_SESSION["y"] = -200;
-} elseif ($_SESSION["y"] < -200) {
-    $_SESSION["y"] = 200;
-}
-
-header("Location:sesiones-1-05-1.php");
-*/

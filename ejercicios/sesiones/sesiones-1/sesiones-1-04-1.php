@@ -1,41 +1,36 @@
 <?php
 /**
  * Sesiones (1) 04 - sesiones-1-04-1.php
-*
-* @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
-* @copyright 2018 Bartolomé Sintes Marco
-* @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
-* @version   2018-10-31
-* @link      http://www.mclibre.org
-*
-*  This program is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU Affero General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  any later version.
-*
-*  This program is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU Affero General Public License for more details.
-*
-*  You should have received a copy of the GNU Affero General Public License
-*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-// Se accede a la sesión
+ *
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2018 Bartolomé Sintes Marco
+ * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @version   2018-11-07
+ * @link      http://www.mclibre.org
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+// Accedemos a la sesión
 session_name("sesiones-1-04");
 session_start();
-
-// Si la posición no está guardada en la sesión, la pone a cero
-if (!isset($_SESSION["posicion"])) {
-    $_SESSION["posicion"] = 0;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Mover un punto a derecha e izquierda.
+    Formulario Palabras en mayúsculas y minúsculas (Formulario).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -44,39 +39,68 @@ if (!isset($_SESSION["posicion"])) {
 </head>
 
 <body>
-  <h1>Mover un punto a derecha e izquierda</h1>
+  <h1>Formulario Palabras en mayúsculas y minúsculas (Formulario)</h1>
 
   <form action="sesiones-1-04-2.php" method="get">
-    <p>Haga clic en los botones para mover el punto:</p>
 
-    <table>
-      <tr>
-        <th>
-          <button type="submit" name="accion" value="izquierda" style="font-size: 60px; line-height: 40px;">&#x261C;</button>
-          <button type="submit" name="accion" value="derecha" style="font-size: 60px; line-height: 40px;">&#x261E;</button>
-        <th>
-      </tr>
-      <tr>
-        <th>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-            width="600" height="20" viewbox="-300 0 600 20">
-            <line x1="-300" y1="10" x2="300" y2="10" stroke="black" stroke-width="5" />
 <?php
-// Dibuja el círculo en su posición
-print "            <circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
-?>
-          </svg>
-        </th>
-      </tr>
-    </table>
+//Si no hemos detectado error en la palabra en mayúsculas y hay guardada una palabra en la sesión ...
+if (!isset($_SESSION["mayusculasError"]) && !isset($_SESSION["minusculasError"])
+    && isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
+    // ... mostramos la palabra
+    print "    <p>Ha escrito una palabra en mayúsculas: <strong>$_SESSION[mayusculas]</strong>.</p>\n";
+    print "\n";
+    print "    <p>Ha escrito una palabra en minúsculas: <strong>$_SESSION[minusculas]</strong>.</p>\n";
+    print "\n";
+}
 
-    <p><input type="submit" name="accion" value="Volver al centro" /></p>
+print "    <p>Escriba una palabra en mayúsculas y otra en minúsculas:</p>\n";
+print "\n";
+
+// Si hemos detectado un error en la palabra en mayúsculas
+if (isset($_SESSION["mayusculasError"])) {
+    // Escribimos un aviso e incluimos el valor incorrecto en el control
+    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /> "
+        . "<span class=\"aviso\">$_SESSION[mayusculasError]</span></p>\n";
+    print "\n";
+} elseif (isset($_SESSION["minusculasError"])) {
+    // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control
+    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "\n";
+} else {
+    // Si no hemos detectado un error, escribimos el control vacío
+    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "\n";
+}
+
+// Si hemos detectado un error en la palabra en minúsculas
+if (isset($_SESSION["minusculasError"])) {
+    // Escribimos un aviso e incluimos el valor incorrecto en el control
+    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\" /> "
+    . "<span class=\"aviso\">$_SESSION[minusculasError]</span></p>\n";
+    print "\n";
+} elseif (isset($_SESSION["mayusculasError"])) {
+    // Si hemos detectado un error en la palabra en mayúsculas, incluimos el valor correcto en el control
+    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "\n";
+} else {
+    // Si no hemos detectado un error, escribimos el control vacío
+    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "\n";
+}
+
+?>
+
+    <p>
+      <input type="submit" value="Comprobar" />
+      <input type="reset" value="Borrar" />
+    </p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-07">7 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

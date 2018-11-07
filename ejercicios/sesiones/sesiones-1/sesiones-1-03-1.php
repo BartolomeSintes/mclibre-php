@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,21 +21,16 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
+// Accedemos a la sesión
 session_name("sesiones-1-03");
 session_start();
-
-// Si el número no está guardado en la sesión, lo pone a cero
-if (!isset($_SESSION["numero"])) {
-    $_SESSION["numero"] = 0;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Subir y bajar número.
+    Formulario Palabra en mayúsculas (Formulario).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -44,27 +39,45 @@ if (!isset($_SESSION["numero"])) {
 </head>
 
 <body>
-  <h1>Subir y bajar número</h1>
+  <h1>Formulario Palabra en mayúsculas (Formulario)</h1>
 
   <form action="sesiones-1-03-2.php" method="get">
-    <p>Haga clic en los botones para modificar el valor:</p>
+
+<?php
+//Si no hemos detectado un error y hay guardada una palabra en la sesión ...
+if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {
+    // ... mostramos la palabra
+    print "    <p>Ha escrito una palabra en mayúsculas: <strong>$_SESSION[palabra]</strong>.</p>\n";
+    print "\n";
+}
+
+// Si hemos detectado un error
+if (isset($_SESSION["error"])) {
+    print "    <p>Escriba una palabra en mayúsculas:</p>\n";
+    print "\n";
+    // Escribimos un aviso e incluimos el valor incorrecto en el control
+    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\" /> "
+        . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
+    print "\n";
+} else {
+    // Si no hemos detectado un error ...
+    print "    <p>Escriba una palabra en mayúsculas:</p>\n";
+    print "\n";
+    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "\n";
+}
+?>
 
     <p>
-      <button type="submit" name="accion" value="bajar" style="font-size: 4rem">-</button>
-<?php
-// Muestra el número, guardado en la sesión
-print "      <span style=\"font-size: 4rem\">$_SESSION[numero]</span>\n";
-?>
-      <button type="submit" name="accion" value="subir" style="font-size: 4rem">+</button>
+      <input type="submit" value="Comprobar" />
+      <input type="reset" value="Borrar" />
     </p>
-
-    <p><input type="submit" name="accion" value="Poner a cero" /></p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-07">7 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
+// Accedemos a la sesión
 session_name("sesiones-1-01");
 session_start();
 ?>
@@ -51,11 +51,11 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogida de nombre
+// Recogemos el nombre
 $nombre   = recoge("nombre");
 $nombreOk = false;
 
-// Comprobación de nombre
+// Comprobamos el nombre y escribimos avisos si es necesario
 if ($nombre == "") {
     print "  <p class=\"aviso\">No ha escrito su nombre.</p>\n";
 } else {
@@ -64,9 +64,9 @@ if ($nombre == "") {
 
 // Si el nombre es válido ...
 if ($nombreOk) {
-    // se guarda el nombre en la sesión
+    // guardamos el nombre en la sesión
     $_SESSION["nombre"] = $nombre;
-    // y se muestra
+    // y lo mostramos
     print "  <p>Su nombre es: <strong>$nombre</strong>.</p>\n";
 }
 ?>
@@ -76,7 +76,7 @@ if ($nombreOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-07">7 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

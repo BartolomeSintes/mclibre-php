@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 04 - sesiones-1-12-2.php
+ * Sesiones (1) 05 - sesiones-1-13-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-12");
+session_name("sesiones-1-13");
 session_start();
 
-// Si la posición no está guardada en la sesión, la pone a cero
-if (!isset($_SESSION["posicion"])) {
-    $_SESSION["posicion"] = 0;
+// Si alguna posición no está guardada en la sesión, las pone a cero
+if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
+    $_SESSION["x"] = $_SESSION["y"] = 0;
 }
 
 // Funciones auxiliares
@@ -44,9 +44,10 @@ $accion   = recoge("accion");
 $accionOk = true;
 
 // Comprobación de accion
-if ($accion != "centro" && $accion != "izquierda" && $accion != "derecha") {
+if ($accion != "centro" && $accion != "izquierda" && $accion != "derecha"
+    && $accion != "arriba" && $accion != "abajo") {
     // Si no es una de las tres posibles acciones, se vuelve al formulario
-    header("Location:sesiones-1-12-1.php");
+    header("Location:sesiones-1-13-1.php");
     exit;
 } else {
     $accionOk = true;
@@ -56,22 +57,33 @@ if ($accion != "centro" && $accion != "izquierda" && $accion != "derecha") {
 if ($accionOk) {
     //se mueve el punto
     if ($accion == "centro") {
-        $_SESSION["posicion"] = 0;
+        $_SESSION["x"] = $_SESSION["y"] = 0;
     } elseif ($accion == "izquierda") {
-        $_SESSION["posicion"] -= 20;
+        $_SESSION["x"] -= 20;
     } elseif ($accion == "derecha") {
-        $_SESSION["posicion"] += 20;
+        $_SESSION["x"] += 20;
+    } elseif ($accion == "arriba") {
+        $_SESSION["y"] -= 20;
+    } elseif ($accion == "abajo") {
+        $_SESSION["y"] += 20;
     }
 
     // si sale por un lado, entra por el otro
-    if ($_SESSION["posicion"] > 300) {
-        $_SESSION["posicion"] = -300;
-    } elseif ($_SESSION["posicion"] < -300) {
-        $_SESSION["posicion"] = 300;
+    if ($_SESSION["x"] > 200) {
+        $_SESSION["x"] = -200;
+    } elseif ($_SESSION["x"] < -200) {
+        $_SESSION["x"] = 200;
+    }
+
+    // si sale por un lado, entra por el otro
+    if ($_SESSION["y"] > 200) {
+        $_SESSION["y"] = -200;
+    } elseif ($_SESSION["y"] < -200) {
+        $_SESSION["y"] = 200;
     }
 
     // y vuelve al formulario
-    header("Location:sesiones-1-12-1.php");
+    header("Location:sesiones-1-13-1.php");
     exit;
 }
 
@@ -81,19 +93,29 @@ if ($accionOk) {
 
 $accion = recoge("accion");
 
-if ($accion == "centro") {
-    $_SESSION["posicion"] = 0;
+ if ($accion == "centro") {
+    $_SESSION["x"] = $_SESSION["y"] = 0;
 } elseif ($accion == "izquierda") {
-    $_SESSION["posicion"] -= 20;
+    $_SESSION["x"] -= 20;
 } elseif ($accion == "derecha") {
-    $_SESSION["posicion"] += 20;
+    $_SESSION["x"] += 20;
+} elseif ($accion == "arriba") {
+    $_SESSION["y"] -= 20;
+} elseif ($accion == "abajo") {
+    $_SESSION["y"] += 20;
 }
 
-if ($_SESSION["posicion"] > 300) {
-    $_SESSION["posicion"] = -300;
-} elseif ($_SESSION["posicion"] < -300) {
-    $_SESSION["posicion"] = 300;
+if ($_SESSION["x"] > 200) {
+    $_SESSION["x"] = -200;
+} elseif ($_SESSION["x"] < -200) {
+    $_SESSION["x"] = 200;
 }
 
-header("Location:sesiones-1-12-1.php");
+if ($_SESSION["y"] > 200) {
+    $_SESSION["y"] = -200;
+} elseif ($_SESSION["y"] < -200) {
+    $_SESSION["y"] = 200;
+}
+
+header("Location:sesiones-1-13-1.php");
 */

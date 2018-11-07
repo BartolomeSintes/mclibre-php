@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 06 - sesiones-1-06-2.php
+ * Sesiones (1) 06 - sesiones-1-14-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-06");
+session_name("sesiones-1-14");
 session_start();
 
 // Si algguno de los números de votos no está guardado en la sesión, los pone a cero
@@ -50,4 +50,4 @@ if ($accion == "a") {
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
 
-header("Location:sesiones-1-06-1.php");
+header("Location:sesiones-1-14-1.php");

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,7 @@ session_start();
   <h1>Formulario Nombre 2 (Formulario)</h1>
 
 <?php
-// Si hay un nombre guardado en la sesión, se muestra
+// Si hay un nombre guardado en la sesión, lo mostramos
 if (isset($_SESSION["nombre"])) {
     print "  <p>Su nombre es: <strong>$_SESSION[nombre]</strong>.</p>\n";
     print "\n";
@@ -54,7 +54,7 @@ if (isset($_SESSION["nombre"])) {
     <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20" /></p>
 
     <p>
-      <input type="submit" value="Siguiente" />
+      <input type="submit" value="Guardar" />
       <input type="reset" value="Borrar" />
     </p>
   </form>
@@ -62,7 +62,7 @@ if (isset($_SESSION["nombre"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-07">7 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

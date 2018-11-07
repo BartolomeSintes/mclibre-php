@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 06 - sesiones-1-06-1.php
+ * Sesiones (1) 06 - sesiones-1-14-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-06");
+session_name("sesiones-1-14");
 session_start();
 
 // Si algún contador no está guardado en la sesión, los pone a cero
@@ -46,7 +46,7 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
 <body>
   <h1>Votar una opción</h1>
 
-  <form action="sesiones-1-06-2.php" method="get">
+  <form action="sesiones-1-14-2.php" method="get">
     <p>Haga clic en los botones para votar por una opción:</p>
 
     <table>
@@ -76,13 +76,15 @@ print "        </td>\n";
       </tr>
     </table>
 
-    <p><button type="submit" name="accion" value="cero">Poner a cero</button></p>
+    <p>
+      <button type="submit" name="accion" value="cero">Poner a cero</button>
+    </p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-07">7 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

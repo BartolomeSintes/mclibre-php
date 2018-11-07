@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 05 - sesiones-1-05-1.php
+ * Sesiones (1) 04 - sesiones-1-04-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,20 +22,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-05");
+session_name("sesiones-1-03");
 session_start();
-
-// Si alguna posición no está guardada en la sesión, las pone a cero
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Mover un punto en dos dimensiones.
+    Formulario Palabra en Mayúsculas 2 (Formulario).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -44,49 +39,33 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
 </head>
 
 <body>
-  <h1>Mover un punto en dos dimensiones</h1>
+  <h1>Formulario Palabra en mayúsculas 2 (Formulario)</h1>
 
-  <form action="sesiones-1-05-2.php" method="get">
-    <p>Haga clic en los botones para mover el punto:</p>
+  <form action="sesiones-1-04-2.php" method="get">
+    <p>Escriba una palabra en mayúsculas:</p>
 
-    <table>
-      <tr>
-        <td>
-          <table style="float: left">
-            <tr>
-              <th style="width:70px"></th>
-              <th style="width:70px"><button type="submit" name="accion" value="arriba" style="font-size: 60px; line-height: 60px;">&#x1F446;</button></th>
-              <th style="width:70px"></th>
-            </tr>
-            <tr>
-              <th><button type="submit" name="accion" value="izquierda" style="font-size: 60px; line-height: 60px;">&#x1F448;</button></th>
-              <th><button type="submit" name="accion" value="centro">Volver al<br />centro</button></th>
-              <th><button type="submit" name="accion" value="derecha" style="font-size: 60px; line-height: 60px;">&#x1F449;</button></th>
-            </tr>
-            <tr>
-              <th></th>
-              <th><button type="submit" name="accion" value="abajo" style="font-size: 60px; line-height: 60px;">&#x1F447;</button></th>
-              <th></th>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-            width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid">
 <?php
-// Dibuja el círculo en su posición
-print "            <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" />\n";
+// Si hay un nombre guardado en la sesión, se muestra
+if (isset($_SESSION["error"])) {
+    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\"size=\"20\" maxlength=\"20\" /> "
+        . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
+    print "\n";
+} else {
+    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "\n";
+}
 ?>
-          </svg>
-        </td>
-      </tr>
-    </table>
+
+    <p>
+      <input type="submit" value="Comprobar" />
+      <input type="reset" value="Borrar" />
+    </p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-07">7 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">
