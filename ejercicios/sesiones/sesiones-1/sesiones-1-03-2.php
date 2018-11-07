@@ -47,7 +47,7 @@ $_SESSION["palabra"] = $palabra;
 if ($palabra == "") {
     // Si no se recibe palabra, guardamos en la sesión el mensaje de error
     $_SESSION["error"] = "No ha escrito ninguna palabra";
-} elseif (ctype_lower($palabra)) {
+} elseif (!ctype_upper($palabra)) {
     // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error
     $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
 } else {

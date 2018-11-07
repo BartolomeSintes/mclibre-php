@@ -51,7 +51,7 @@ $_SESSION["minusculas"] = $minusculas;
 if ($mayusculas == "") {
     // Si no se recibe palabra, guardamos en la sesión el mensaje de error
     $_SESSION["mayusculasError"] = "No ha escrito ninguna palabra";
-} elseif (ctype_lower($mayusculas)) {
+} elseif (!ctype_upper($mayusculas)) {
     // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error
     $_SESSION["mayusculasError"] = "No ha escrito la palabra en mayúsculas";
 } else {
@@ -62,7 +62,7 @@ if ($mayusculas == "") {
 if ($minusculas == "") {
     // Si no se recibe palabra, guardamos en la sesión el mensaje de error
     $_SESSION["minusculasError"] = "No ha escrito ninguna palabra";
-} elseif (ctype_upper($minusculas)) {
+} elseif (!ctype_upper($minusculas)) {
     // Si la palabra está en mayúsculas, guardamos en la sesión el mensaje de error
     $_SESSION["minusculasError"] = "No ha escrito la palabra en minúsculas";
 } else {
