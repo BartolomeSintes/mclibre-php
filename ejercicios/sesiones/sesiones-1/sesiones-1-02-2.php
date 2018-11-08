@@ -34,25 +34,25 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogemos el nombre
-$nombre   = recoge("nombre");
-$nombreOk = false;
+// Recogemos el texto
+$texto   = recoge("texto");
+$textoOk = false;
 
-// Comprobamos el nombre
-if ($nombre == "") {
-    // Si el nombre es vacío, no es correcto, pero no hacemos nada especial
+// Comprobamos el texto
+if ($texto == "") {
+    // Si el texto es vacío, no es correcto, pero no hacemos nada especial
 } else {
-    $nombreOk = true;
+    $textoOk = true;
 }
 
-// Si el nombre no es válido ...
-if (!$nombreOk) {
+// Si el texto no es válido ...
+if (!$textoOk) {
     // ... volvemos al formulario
     header("Location:sesiones-1-02-1.php");
     exit;
 } else {
-    // ... guardamos el nombre en la sesión
-    $_SESSION["nombre"] = $nombre;
+    // ... guardamos el texto en la sesión
+    $_SESSION["texto"] = $texto;
     // y volvemos al formulario
     header("Location:sesiones-1-02-1.php");
     exit;
@@ -62,9 +62,9 @@ if (!$nombreOk) {
  * propuesta en los ejercicios de formularios
  * El programa podría hacerse más corto con el mismo resultado
 
-$nombre   = recoge("nombre");
-if ($nombre != "") {
-    $_SESSION["nombre"] = $nombre;
+$texto   = recoge("texto");
+if ($texto != "") {
+    $_SESSION["texto"] = $texto;
 }
 header("Location:sesiones-1-02-1.php");
  */

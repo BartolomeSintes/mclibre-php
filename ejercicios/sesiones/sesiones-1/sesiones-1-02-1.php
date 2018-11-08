@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>
-    Formulario Nombre 2 (Formulario).
+    Formulario Texto 2 (Formulario).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,19 +39,19 @@ session_start();
 </head>
 
 <body>
-  <h1>Formulario Nombre 2 (Formulario)</h1>
+  <h1>Formulario Texto 2 (Formulario)</h1>
 
 <?php
-// Si hay un nombre guardado en la sesión, lo mostramos
-if (isset($_SESSION["nombre"])) {
-    print "  <p>Su nombre es: <strong>$_SESSION[nombre]</strong>.</p>\n";
+// Si hay un texto guardado en la sesión, lo mostramos
+if (isset($_SESSION["texto"])) {
+    print "  <p>El texto es: <strong>$_SESSION[texto]</strong>.</p>\n";
     print "\n";
 }
 ?>
   <form action="sesiones-1-02-2.php" method="get">
-    <p>Escriba su nombre:</p>
+    <p>Escriba texto:</p>
 
-    <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20" /></p>
+    <p><strong>Texto:</strong> <input type="text" name="texto" size="20" maxlength="20" /></p>
 
     <p>
       <input type="submit" value="Guardar" />

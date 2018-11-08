@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>
-    Formulario Nombre 1 (Resultado).
+    Formulario Texto 1 (Resultado).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,7 +39,7 @@ session_start();
 </head>
 
 <body>
-  <h1>Formulario Nombre 1 (Resultado)</h1>
+  <h1>Formulario Texto 1 (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -51,23 +51,23 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogemos el nombre
-$nombre   = recoge("nombre");
-$nombreOk = false;
+// Recogemos el texto
+$texto   = recoge("texto");
+$textoOk = false;
 
-// Comprobamos el nombre y escribimos avisos si es necesario
-if ($nombre == "") {
-    print "  <p class=\"aviso\">No ha escrito su nombre.</p>\n";
+// Comprobamos el texto y escribimos avisos si es necesario
+if ($texto == "") {
+    print "  <p class=\"aviso\">No ha escrito texto.</p>\n";
 } else {
-    $nombreOk = true;
+    $textoOk = true;
 }
 
-// Si el nombre es válido ...
-if ($nombreOk) {
-    // guardamos el nombre en la sesión
-    $_SESSION["nombre"] = $nombre;
+// Si el texto es válido ...
+if ($textoOk) {
+    // guardamos el texto en la sesión
+    $_SESSION["texto"] = $texto;
     // y lo mostramos
-    print "  <p>Su nombre es: <strong>$nombre</strong>.</p>\n";
+    print "  <p>El texto es: <strong>$texto</strong>.</p>\n";
 }
 ?>
 
