@@ -2,8 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Ejemplo de recogida de datos sin comprobación (Formulario). Ejemplo de ejercicio.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Ejemplo de recogida de datos sin comprobación (Formulario).
+    Recogida de datos. Ejemplos.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
@@ -34,7 +37,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-20">27 de septiembre de 2017</time>
+      <time datetime="2018-11-08">8 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

@@ -2,14 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Ejemplo de de recogida y comprobación de datos (Formulario). Ejemplo de ejercicio.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Ejemplo de recogida de datos con comprobación (Formulario).
+    Recogida de datos. Ejemplos.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
 </head>
 
 <body>
-  <h1>Ejemplo de recogida y comprobación de datos (Formulario)</h1>
+  <h1>Ejemplo de recogida de datos con comprobación (Formulario)</h1>
 
   <form action="ejemplo-recogida-datos-2-2.php" method="get">
     <table>
@@ -25,7 +28,8 @@
       </tbody>
     </table>
 
-    <p>Es mayor de edad y acepta las condiciones:
+    <p>
+      Es mayor de edad y acepta las condiciones:
       <input type="radio" name="acepto" value="Sí" /> Sí
       <input type="radio" name="acepto" value="No" /> No
     </p>
@@ -39,7 +43,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2017-09-20">27 de septiembre de 2017</time>
+      <time datetime="2018-11-08">8 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">
