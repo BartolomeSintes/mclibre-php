@@ -79,7 +79,7 @@ if ($acepto == "") {
     print "  <p class=\"aviso\">No ha indicado si acepta las condiciones.</p>\n";
     print "\n";
 } elseif ($acepto != "Sí" && $acepto != "No") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si acepta o no las condiciones.</p>\n";
     print "\n";
 } else {
     $aceptoOk = true;

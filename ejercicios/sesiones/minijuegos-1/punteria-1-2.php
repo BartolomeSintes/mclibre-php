@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -64,13 +64,13 @@ $xuOk = false;
 $yuOk = false;
 
 if ($xu == "" || !is_numeric($xu) || !ctype_digit($xu)) {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique la coordenada X del punto.</p>\n";
 } else {
     $xuOk = true;
 }
 
 if ($yu == "" || !is_numeric($yu) || !ctype_digit($yu)) {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique la coordenada Y del punto.</p>\n";
 } else {
     $yuOk = true;
 }
@@ -93,7 +93,7 @@ if ($xuOk && $yuOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-08">8 de noviembre de 2018</time>
     </p>
 
      <p class="licencia">

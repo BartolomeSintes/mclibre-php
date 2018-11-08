@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-22
+ * @version   2018-11-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -91,7 +91,7 @@ if ($edad == "...") {
     print "  <p class=\"aviso\">No ha indicado su edad.</p>\n";
     print "\n";
 } elseif ($edad != "1" && $edad != "2" && $edad != "3" && $edad != "4") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique su grupo de edad.</p>\n";
     print "\n";
 } else {
     $edadOk = true;
@@ -117,7 +117,7 @@ if ($sexo == "") {
     print "  <p class=\"aviso\">No ha indicado su sexo.</p>\n";
     print "\n";
 } elseif ($sexo != "hombre" && $sexo != "mujer") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si su sexo es hombre o mujer.</p>\n";
     print "\n";
 } else {
     $sexoOk = true;
@@ -127,49 +127,49 @@ if ($estadoCivil == "") {
     print "  <p class=\"aviso\">No ha indicado su estado civil.</p>\n";
     print "\n";
 } elseif ($estadoCivil != "soltero" && $estadoCivil != "casado" && $estadoCivil != "otro") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si su estado civil es soltero, casado u otro.</p>\n";
     print "\n";
 } else {
     $estadoCivilOk = true;
 }
 
 if ($cine != "" && $cine != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no el cine.</p>\n";
     print "\n";
 } else {
     $cineOk = true;
 }
 
 if ($deporte != "" && $deporte != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no el deporte.</p>\n";
     print "\n";
 } else {
     $deporteOk = true;
 }
 
 if ($literatura != "" && $literatura != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no la literatura.</p>\n";
     print "\n";
 } else {
     $literaturaOk = true;
 }
 
 if ($musica != "" && $musica != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no la música.</p>\n";
     print "\n";
 } else {
     $musicaOk = true;
 }
 
 if ($tebeos != "" && $tebeos != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gustan o no los tebeos.</p>\n";
     print "\n";
 } else {
     $tebeosOk = true;
 }
 
 if ($television != "" && $television != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no la televisión.</p>\n";
     print "\n";
 } else {
     $televisionOk = true;
@@ -245,7 +245,7 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-22">22 de octubre de 2018</time>
+      <time datetime="2018-11-08">8 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

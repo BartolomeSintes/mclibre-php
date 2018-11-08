@@ -48,7 +48,7 @@ function recoge($var)
 $dato = recoge("dato");
 
 if (!isset($_REQUEST["dato"])) {
-    print "  <p>Por favor, utilice el formulario.</p>\n";
+    print "  <p>Por favor, indique el dato a evaluar.</p>\n";
     print "\n";
 } else {
     if ($dato != $_REQUEST["dato"] && $dato != "") {

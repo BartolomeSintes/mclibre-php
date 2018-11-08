@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-22
+ * @version   2018-11-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,28 +61,28 @@ if ($sexo == "") {
     print "  <p class=\"aviso\">No ha indicado su sexo.</p>\n";
     print "\n";
 } elseif ($sexo != "hombre" && $sexo != "mujer") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si su sexo es hombre o mujer.</p>\n";
     print "\n";
 } else {
     $sexoOk = true;
 }
 
 if ($cine != "" && $cine != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no el cine.</p>\n";
     print "\n";
 } else {
     $cineOk = true;
 }
 
 if ($literatura != "" && $literatura != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no la literatura.</p>\n";
     print "\n";
 } else {
     $literaturaOk = true;
 }
 
 if ($musica != "" && $musica != "on") {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique si le gusta o no la música.</p>\n";
     print "\n";
 } else {
     $musicaOk = true;
@@ -122,7 +122,7 @@ if ($sexoOk && $cineOk && $literaturaOk && $musicaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-22">22 de octubre de 2018</time>
+      <time datetime="2018-11-08">8 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

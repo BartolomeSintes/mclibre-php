@@ -59,14 +59,14 @@ $verboOk       = false;
 $formaVerbalOk = false;
 
 if ($verbo == "" || !is_numeric($verbo) || !ctype_digit($verbo) || $verbo < 0 || $verbo >= $numeroVerbos) {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique un verbo dentro del rango.</p>\n";
     print "\n";
 } else {
     $verboOk = true;
 }
 
 if ($formaVerbal != 0 && $formaVerbal != 1 && $formaVerbal != 2) {
-    print "  <p class=\"aviso\">Por favor, utilice el formulario.</p>\n";
+    print "  <p class=\"aviso\">Por favor, indique una forma verbal dentro del rango.</p>\n";
     print "\n";
 } else {
     $formaVerbalOk = true;
