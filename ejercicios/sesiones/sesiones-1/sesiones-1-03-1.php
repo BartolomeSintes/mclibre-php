@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-07
+ * @version   2018-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -51,18 +51,16 @@ if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {
     print "\n";
 }
 
+print "    <p>Escriba una palabra en mayúsculas:</p>\n";
+print "\n";
 // Si hemos detectado un error
 if (isset($_SESSION["error"])) {
-    print "    <p>Escriba una palabra en mayúsculas:</p>\n";
-    print "\n";
-    // Escribimos un aviso e incluimos el valor incorrecto en el control
+    // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
     print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\" /> "
         . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
     print "\n";
 } else {
-    // Si no hemos detectado un error ...
-    print "    <p>Escriba una palabra en mayúsculas:</p>\n";
-    print "\n";
+    // Si no hemos detectado un error, mostramos el control
     print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /></p>\n";
     print "\n";
 }
@@ -77,7 +75,7 @@ if (isset($_SESSION["error"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-07">7 de noviembre de 2018</time>
+      <time datetime="2018-11-13">13 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 05 - sesiones-1-13-2.php
+ * Sesiones (1) 11 - sesiones-1-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-13
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,15 +22,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-13");
+session_name("sesiones-1-11");
 session_start();
 
-// Si alguna posición no está guardada en la sesión, pone a cero las dos
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-}
-
-// Funciones auxiliares
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -39,36 +33,20 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogida de accion
-$accion   = recoge("accion");
-
-// Dependiendo de la acción recibida, modifica el número guardado
-if ($accion == "centro") {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-} elseif ($accion == "izquierda") {
-    $_SESSION["x"] -= 20;
-} elseif ($accion == "derecha") {
-    $_SESSION["x"] += 20;
-} elseif ($accion == "arriba") {
-    $_SESSION["y"] -= 20;
-} elseif ($accion == "abajo") {
-    $_SESSION["y"] += 20;
+if (!isset($_SESSION["dados"])) {
+    $_SESSION["dados"] = 1;
 }
 
-// si sale por un lado, entra por el otro
-if ($_SESSION["x"] > 200) {
-    $_SESSION["x"] = -200;
-} elseif ($_SESSION["x"] < -200) {
-    $_SESSION["x"] = 200;
+$accion = recoge("accion");
+
+if ($accion == "subir") {
+    $_SESSION["dados"] ++;
+} elseif ($accion == "bajar") {
+    $_SESSION["dados"] --;
 }
 
-// si sale por un lado, entra por el otro
-if ($_SESSION["y"] > 200) {
-    $_SESSION["y"] = -200;
-} elseif ($_SESSION["y"] < -200) {
-    $_SESSION["y"] = 200;
+if ($_SESSION["dados"] < 1) {
+    $_SESSION["dados"] = 1;
 }
 
-// y vuelve al formulario
-header("Location:sesiones-1-13-1.php");
-?>
+header("Location:sesiones-1-11-1.php");

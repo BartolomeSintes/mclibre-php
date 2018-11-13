@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 02 - sesiones-1-04-2.php
+ * Sesiones (1) 04 - sesiones-1-04-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-07
+ * @version   2018-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -35,13 +35,8 @@ function recoge($var)
 }
 
 // Recogemos las dos palabras
-$mayusculas   = recoge("mayusculas");
-$minusculas   = recoge("minusculas");
-$mayusculasOk = false;
-$minusculasOk = false;
-
-unset($_SESSION["minusculasError"]);
-unset($_SESSION["mayusculasError"]);
+$mayusculas = recoge("mayusculas");
+$minusculas = recoge("minusculas");
 
 // Guardamos las palabras en la sesión
 $_SESSION["mayusculas"] = $mayusculas;
@@ -55,28 +50,21 @@ if ($mayusculas == "") {
     // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error
     $_SESSION["mayusculasError"] = "No ha escrito la palabra en mayúsculas";
 } else {
-    $mayusculasOk = true;
+    // Si la palabra es correcta, borramos los posibles errores anteriores
+    unset($_SESSION["mayusculasError"]);
 }
 
 // Comprobamos la palabra en minúsculas
 if ($minusculas == "") {
     // Si no se recibe palabra, guardamos en la sesión el mensaje de error
     $_SESSION["minusculasError"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_upper($minusculas)) {
+} elseif (!ctype_lower($minusculas)) {
     // Si la palabra está en mayúsculas, guardamos en la sesión el mensaje de error
     $_SESSION["minusculasError"] = "No ha escrito la palabra en minúsculas";
 } else {
-    $minusculasOk = true;
+    // Si la palabra es correcta, borramos los posibles errores anteriores
+    unset($_SESSION["minusculasError"]);
 }
 
-// Si alguna palabra no es válida ...
-if (!$mayusculasOk || !$minusculasOk) {
-    // ... volvemos al formulario
-    header("Location:sesiones-1-04-1.php");
-    exit;
-} else {
-    // Si las dos palabras son válidas ...
-    // ... también volvemos al formulario
-    header("Location:sesiones-1-04-1.php");
-    exit;
-}
+header("Location:sesiones-1-05-1.php");
+?>

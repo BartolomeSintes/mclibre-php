@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 05 - sesiones-1-13-2.php
+ * Sesiones (1) 02 - sesiones-1-02-2-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -21,14 +21,9 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
-session_name("sesiones-1-13");
+// Accedemos a la sesión
+session_name("sesiones-1-02-b");
 session_start();
-
-// Si alguna posición no está guardada en la sesión, pone a cero las dos
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-}
 
 // Funciones auxiliares
 function recoge($var)
@@ -39,36 +34,25 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogida de accion
-$accion   = recoge("accion");
+// Recogemos el texto
+$texto = recoge("texto");
 
-// Dependiendo de la acción recibida, modifica el número guardado
-if ($accion == "centro") {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-} elseif ($accion == "izquierda") {
-    $_SESSION["x"] -= 20;
-} elseif ($accion == "derecha") {
-    $_SESSION["x"] += 20;
-} elseif ($accion == "arriba") {
-    $_SESSION["y"] -= 20;
-} elseif ($accion == "abajo") {
-    $_SESSION["y"] += 20;
+// Comprobamos el texto
+if ($texto == "") {
+    // Si el texto es vacío, no es correcto, pero no hacemos nada especial
+} else {
+    // Si el texto es correcto, lo guardamos en la sesión
+    $_SESSION["texto"] = $texto;
 }
 
-// si sale por un lado, entra por el otro
-if ($_SESSION["x"] > 200) {
-    $_SESSION["x"] = -200;
-} elseif ($_SESSION["x"] < -200) {
-    $_SESSION["x"] = 200;
-}
+header("Location:sesiones-1-02-1-b.php");
+/* El programa podría hacerse más corto con el mismo resultado
 
-// si sale por un lado, entra por el otro
-if ($_SESSION["y"] > 200) {
-    $_SESSION["y"] = -200;
-} elseif ($_SESSION["y"] < -200) {
-    $_SESSION["y"] = 200;
+$texto   = recoge("texto");
+if ($texto != "") {
+    $_SESSION["texto"] = $texto;
 }
+header("Location:sesiones-1-02-1.php");
 
-// y vuelve al formulario
-header("Location:sesiones-1-13-1.php");
+*/
 ?>

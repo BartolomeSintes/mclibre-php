@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 01 - sesiones-1-01-1.php
+ * Sesiones (1) 11 - sesiones-1-11-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-13
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,15 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-01");
+session_name("sesiones-1-11");
 session_start();
+if (!isset($_SESSION["dados"])) {
+    $_SESSION["dados"] = 1;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Formulario Texto 1 (Formulario).
+    Tirada de dados.
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,30 +42,37 @@ session_start();
 </head>
 
 <body>
-  <h1>Formulario Texto 1 (Formulario)</h1>
+  <h1>Tirada de dados</h1>
 
 <?php
-// Si hay un texto guardado en la sesión, lo mostramos
-if (isset($_SESSION["texto"])) {
-    print "  <p>El último texto escrito es: <strong>$_SESSION[texto]</strong>.</p>\n";
-    print "\n";
+print "  <p style=\"font-size: 5rem; line-height: 4rem; margin:0; \">";
+for ($i = 1; $i <= $_SESSION["dados"]; $i++) {
+    print "&#" . rand(9856, 9861) . "; ";
 }
-?>
-  <form action="sesiones-1-01-2.php" method="get">
-    <p>Escriba texto:</p>
+print "</p>\n";
+print "\n";
 
-    <p><strong>Texto:</strong> <input type="text" name="texto" size="20" maxlength="20" /></p>
+?>
+  <form action="sesiones-1-11-2.php" method="get">
+    <p>Haga clic en los botones para aumentar o disminuir el número de dados o para volver a tirarlos:</p>
 
     <p>
-      <input type="submit" value="Siguiente" />
-      <input type="reset" value="Borrar" />
+      <button type="submit" name="accion" value="bajar" style="font-size: 2rem">-</button>
+<?php
+print "      <span style=\"font-size: 2rem\">$_SESSION[dados]</span>\n";
+?>
+      <button type="submit" name="accion" value="subir" style="font-size: 2rem">+</button>
+    </p>
+
+    <p>
+      <button type="submit" name="accion" value="tirar">Tirar dados</button>
     </p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-13">13 de noviembre de 2018</time>
+      <time datetime="2018-10-31">31 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

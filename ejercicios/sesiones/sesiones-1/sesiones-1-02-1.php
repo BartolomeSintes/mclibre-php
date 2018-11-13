@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-07
+ * @version   2018-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ session_start();
 <?php
 // Si hay un texto guardado en la sesión, lo mostramos
 if (isset($_SESSION["texto"])) {
-    print "  <p>El texto es: <strong>$_SESSION[texto]</strong>.</p>\n";
+    print "  <p>El último texto escrito es: <strong>$_SESSION[texto]</strong>.</p>\n";
     print "\n";
 }
 ?>

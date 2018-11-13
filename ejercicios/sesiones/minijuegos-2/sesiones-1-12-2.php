@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 03 - sesiones-1-11-2.php
+ * Sesiones (1) 12 - sesiones-1-12-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-13
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,15 +22,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-11");
+session_name("sesiones-1-12");
 session_start();
 
-// Si el número no está guardado en la sesión, lo pone a cero (el valor inicial)
-if (!isset($_SESSION["numero"])) {
-    $_SESSION["numero"] = 0;
-}
-
-// Funciones auxiliares
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -39,18 +33,22 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogida de accion
-$accion   = recoge("accion");
-
-// Dependiendo de la acción recibida, modifica el número guardado
-if ($accion == "cero") {
-    $_SESSION["numero"] = 0;
-} elseif ($accion == "subir") {
-    $_SESSION["numero"] ++;
-} elseif ($accion == "bajar") {
-    $_SESSION["numero"] --;
+if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]) || !isset($_SESSION["bd"])) {
+    $_SESSION["ax"] = $_SESSION["bx"];
+    $_SESSION["ad"] = $_SESSION["bd"] = 1;
 }
 
-// y vuelve al formulario
-header("Location:sesiones-1-11-1.php");
-?>
+$accion = recoge("accion");
+
+if ($accion == "a") {
+    $_SESSION["ad"] = rand(1, 6);
+    $_SESSION["ax"] += 5 * $_SESSION["ad"] ;
+} elseif ($accion == "b") {
+    $_SESSION["bd"] = rand(1, 6);
+    $_SESSION["bx"] += 5 * $_SESSION["bd"] ;
+} elseif ($accion == "empezar") {
+    $_SESSION["ad"] = $_SESSION["bd"] = 1;
+    $_SESSION["ax"] = $_SESSION["bx"] = 0;
+}
+
+header("Location:sesiones-1-12-1.php");

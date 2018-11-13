@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-07
+ * @version   2018-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -100,7 +100,7 @@ if (isset($_SESSION["minusculasError"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-07">7 de noviembre de 2018</time>
+      <time datetime="2018-11-13">13 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

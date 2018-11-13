@@ -59,7 +59,8 @@ if ($palabra == "") {
 // Si la palabra es correcta ...
 if ($palabraOk) {
     // se queda en la página
-print "
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -92,5 +93,3 @@ print "
   </footer>
 </body>
 </html>
-
-}

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-07
+ * @version   2018-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -57,14 +57,4 @@ if (!$textoOk) {
     header("Location:sesiones-1-02-1.php");
     exit;
 }
-
-/* La solución anterior sigue el patrón recogida+validación+ejecución
- * propuesta en los ejercicios de formularios
- * El programa podría hacerse más corto con el mismo resultado
-
-$texto   = recoge("texto");
-if ($texto != "") {
-    $_SESSION["texto"] = $texto;
-}
-header("Location:sesiones-1-02-1.php");
- */
+?>

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-07
+ * @version   2018-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -35,10 +35,7 @@ function recoge($var)
 }
 
 // Recogemos la palabra
-$palabra   = recoge("palabra");
-$palabraOk = false;
-
-unset($_SESSION["error"]);
+$palabra = recoge("palabra");
 
 // Guardamos la palabra en la sesión
 $_SESSION["palabra"] = $palabra;
@@ -51,17 +48,9 @@ if ($palabra == "") {
     // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error
     $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
 } else {
-    $palabraOk = true;
+    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión
+    unset($_SESSION["error"]);
 }
 
-// Si la palabra no es válida ...
-if (!$palabraOk) {
-    // ... volvemos al formulario
-    header("Location:sesiones-1-03-1.php");
-    exit;
-} else {
-    // Si la palabra es válida ...
-    // ... también volvemos al formulario
-    header("Location:sesiones-1-03-1.php");
-    exit;
-}
+header("Location:sesiones-1-03-1.php");
+?>

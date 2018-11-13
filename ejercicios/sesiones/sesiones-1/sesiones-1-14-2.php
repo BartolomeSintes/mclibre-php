@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-07
+ * @version   2018-11-13
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 session_name("sesiones-1-14");
 session_start();
 
-// Si algguno de los números de votos no está guardado en la sesión, los pone a cero
+// Si alguno de los números de votos no está guardado en la sesión, los pone a cero
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
