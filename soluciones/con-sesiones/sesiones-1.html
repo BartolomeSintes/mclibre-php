@@ -93,8 +93,8 @@
 
       <div class="codigo">
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">5</span>
-// Se accede a la sesión
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">5</span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;</code>
@@ -109,9 +109,10 @@ session_start();
 </pre>
         <pre>
 <code class="language-php">&lt;?php
-// Si hay un texto guardado en la sesión, se muestra
-if (isset($_SESSION["texto"])) {<span class="numero-circulo">6</span>
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";<span class="numero-circulo">4</span>
+// Si hay un texto guardado en la sesión, <span class="numero-circulo">6</span>
+if (isset($_SESSION["texto"])) {
+    // se muestra <span class="numero-circulo">4</span>
+    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -129,8 +130,8 @@ if (isset($_SESSION["texto"])) {<span class="numero-circulo">6</span>
 
       <div class="codigo">
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">3</span>
-// Se accede a la sesión
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;</code>
@@ -144,8 +145,8 @@ session_start();
 </code>
 </pre>
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">1</span>
-// Funciones auxiliares
+<code class="language-php">&lt;?php
+// Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -167,8 +168,8 @@ if ($texto == "") {
 
 // Si el texto es válido ...
 if ($textoOk) {
-  // guardamos el texto en la sesión
-    $_SESSION["texto"] = $texto;<span class="numero-circulo">2</span>
+  // guardamos el texto en la sesión <span class="numero-circulo">2</span>
+    $_SESSION["texto"] = $texto;
     // y lo mostramos
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$texto&lt;/strong&gt;.&lt;/p&gt;\n";
 }
@@ -206,8 +207,8 @@ if ($textoOk) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-02");<span class="numero-circulo">8</span>
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-02");
 session_start();
 ?&gt;</code>
 </pre>
@@ -221,9 +222,10 @@ session_start();
 </pre>
         <pre>
 <code class="language-php">&lt;?php
-// Si hay un texto guardado en la sesión, lo mostramos
-if (isset($_SESSION["texto"])) {<span class="numero-circulo">9</span>
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";<span class="numero-circulo">7</span>
+// Si hay un texto guardado en la sesión, <span class="numero-circulo">9</span>
+if (isset($_SESSION["texto"])) {
+    // lo mostramos <span class="numero-circulo">7</span>
+    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -241,12 +243,12 @@ if (isset($_SESSION["texto"])) {<span class="numero-circulo">9</span>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-02");<span class="numero-circulo">5</span>
+// Se accede a la sesión <span class="numero-circulo">5</span>
+session_name("sesiones-1-02");
 session_start();
 
-// Funciones auxiliares
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -260,21 +262,21 @@ $textoOk = false;
 
 // Comprobamos el texto
 if ($texto == "") {
-  <span class="numero-circulo">2</span>// Si el texto es vacío, no es correcto, pero no hacemos nada especial
+  // Si el texto es vacío, no es correcto, pero no hacemos nada especial <span class="numero-circulo">2</span>
 } else {
     $textoOk = true;
 }
 
 // Si el texto no es válido ...
 if (!$textoOk) {
-    // ... volvemos al formulario
-    header("Location:sesiones-1-02-1.php");<span class="numero-circulo">3</span>
+    // ... volvemos al formulario <span class="numero-circulo">3</span>
+    header("Location:sesiones-1-02-1.php");
     exit;
 } else {
-    // ... guardamos el texto en la sesión
-    $_SESSION["texto"] = $texto;<span class="numero-circulo">4</span>
-    // y volvemos al formulario
-    header("Location:sesiones-1-02-1.php");<span class="numero-circulo">6</span>
+    // ... guardamos el texto en la sesión <span class="numero-circulo">4</span>
+    $_SESSION["texto"] = $texto;
+    // y volvemos al formulario <span class="numero-circulo">6</span>
+    header("Location:sesiones-1-02-1.php");
     exit;
 }
 ?&gt;</code>
@@ -310,8 +312,8 @@ if (!$textoOk) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-02");<span class="numero-circulo">7</span>
+// Se accede a la sesión <span class="numero-circulo">7</span>
+session_name("sesiones-1-02");
 session_start();
 ?&gt;</code>
 </pre>
@@ -325,9 +327,10 @@ session_start();
 </pre>
         <pre>
 <code class="language-php">&lt;?php
-// Si hay un texto guardado en la sesión, lo mostramos
-if (isset($_SESSION["texto"])) {<span class="numero-circulo">8</span>
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";<span class="numero-circulo">6</span>
+// Si hay un texto guardado en la sesión, <span class="numero-circulo">8</span>
+if (isset($_SESSION["texto"])) {
+    // lo mostramos <span class="numero-circulo">6</span>
+    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -345,12 +348,12 @@ if (isset($_SESSION["texto"])) {<span class="numero-circulo">8</span>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-02");<span class="numero-circulo">4</span>
+// Se accede a la sesión <span class="numero-circulo">4</span>
+session_name("sesiones-1-02");
 session_start();
 
-// Funciones auxiliares
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -362,15 +365,13 @@ function recoge($var)<span class="numero-circulo">1</span>
 $texto   = recoge("texto");
 
 // Comprobamos el texto
-if ($texto == "") {
-    <span class="numero-circulo">2</span>// Si el texto es vacío, no hacemos nada especial
-} else {
-    // Si no es vacío, lo guardadmos en la sesión
-    $_SESSION["texto"] = $texto;<span class="numero-circulo">3</span>
+if ($texto != "") {
+    // Si el texto no es vacío, lo guardamos en la sesión
+    $_SESSION["texto"] = $texto;
 }
 
-// Volvemos al formulario
-header("Location:sesiones-1-02-1.php");<span class="numero-circulo">5</span>
+// Volvemos al formulario <span class="numero-circulo">5</span>
+header("Location:sesiones-1-02-1.php");
 ?&gt;</code>
 </pre>
       </div>
@@ -402,8 +403,8 @@ header("Location:sesiones-1-02-1.php");<span class="numero-circulo">5</span>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-03");<span class="numero-circulo">8</span>
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-03");
 session_start();
 ?&gt;</code>
 </pre>
@@ -419,8 +420,8 @@ session_start();
 </pre>
         <pre>
 <code class="language-php">&lt;?php
-//Si no hemos detectado un error y hay guardada una palabra en la sesión ...
-if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {<span class="numero-circulo">11</span>
+//Si no hemos detectado un error y hay guardada una palabra en la sesión ... <span class="numero-circulo">11</span>
+if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {
     // ... mostramos la palabra
     print "  &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
@@ -429,14 +430,14 @@ if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {<span class="num
 print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
 print "\n";
 
-// Si hemos detectado un error
-if (isset($_SESSION["error"])) {<span class="numero-circulo">9</span>
+// Si hemos detectado un error <span class="numero-circulo">9</span>
+if (isset($_SESSION["error"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
     print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\" /&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
-} else {<span class="numero-circulo">10</span>
-    // Si no hemos detectado un error ...
+} else {
+    // Si no hemos detectado un error, lo mostramos... <span class="numero-circulo">10</span>
     print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
     print "\n";
 }
@@ -452,12 +453,12 @@ if (isset($_SESSION["error"])) {<span class="numero-circulo">9</span>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-03");<span class="numero-circulo">3</span>
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-03");
 session_start();
 
-// Funciones auxiliares
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -468,23 +469,23 @@ function recoge($var)<span class="numero-circulo">1</span>
 // Recogemos la palabra
 $palabra   = recoge("palabra");
 
-// Guardamos la palabra en la sesión
-<span class="numero-circulo">2</span>$_SESSION["palabra"] = $palabra;
+// Guardamos la palabra en la sesión <span class="numero-circulo">2</span>
+$_SESSION["palabra"] = $palabra;
 
 // Comprobamos la palabra
-<span class="numero-circulo">4</span>if ($palabra == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error
+if ($palabra == "") {
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">4</span>
     $_SESSION["error"] = "No ha escrito ninguna palabra";
-<span class="numero-circulo">5</span>} elseif (!ctype_upper($palabra)) {
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error
+} elseif (!ctype_upper($palabra)) {
+    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error <span class="numero-circulo">5</span>
     $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
-<span class="numero-circulo">6</span>} else {
-    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión
+} else {
+    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión <span class="numero-circulo">6</span>
     unset($_SESSION["error"]);
 }
 
-// Volvemos al formulario
-<span class="numero-circulo">7</span>header("Location:sesiones-1-03-1.php");
+// Volvemos al formulario <span class="numero-circulo">7</span>
+header("Location:sesiones-1-03-1.php");
 ?&gt;</code>
 </pre>
       </div>
@@ -502,8 +503,8 @@ $palabra   = recoge("palabra");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-04");<span class="numero-circulo">8</span>
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-04");
 session_start();
 ?&gt;</code>
 </pre>
@@ -519,9 +520,9 @@ session_start();
 </pre>
         <pre>
 <code class="language-php">&lt;?php
-//Si no hemos detectado error en la palabra en mayúsculas y hay guardada una palabra en la sesión ...
+//Si no hemos detectado error en la palabra en mayúsculas y hay guardada una palabra en la sesión ... <span class="numero-circulo">12</span>
 if (!isset($_SESSION["mayusculasError"]) && !isset($_SESSION["minusculasError"])
-    && isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) { <span class="numero-circulo">12</span>
+    && isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
     // ... mostramos la palabra
     print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[mayusculas]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
@@ -533,17 +534,17 @@ print "    &lt;p&gt;Escriba una palabra en mayúsculas y otra en minúsculas:&lt
 print "\n";
 
 // Si hemos detectado un error en la palabra en mayúsculas
-if (isset($_SESSION["mayusculasError"])) { <span class="numero-circulo">9</span>
-    // Escribimos un aviso e incluimos el valor incorrecto en el control
+if (isset($_SESSION["mayusculasError"])) {
+    // Escribimos un aviso e incluimos el valor incorrecto en el control <span class="numero-circulo">9</span>
     print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[mayusculasError]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
-} elseif (isset($_SESSION["minusculasError"])) { <span class="numero-circulo">10</span>
-    // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control
+} elseif (isset($_SESSION["minusculasError"])) {
+    // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control <span class="numero-circulo">10</span>
     print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
     print "\n";
-} else { <span class="numero-circulo">11</span>
-    // Si no hemos detectado un error, escribimos el control vacío
+} else {
+    // Si no hemos detectado un error, escribimos el control vacío <span class="numero-circulo">11</span>
     print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
     print "\n";
 }
@@ -576,12 +577,12 @@ if (isset($_SESSION["minusculasError"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-04");<span class="numero-circulo">3</span>
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-04");
 session_start();
 
-// Funciones auxiliares
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -593,19 +594,19 @@ function recoge($var)<span class="numero-circulo">1</span>
 $mayusculas = recoge("mayusculas");
 $minusculas = recoge("minusculas");
 
-// Guardamos las palabras en la sesión
-<span class="numero-circulo">2</span>$_SESSION["mayusculas"] = $mayusculas;
+// Guardamos las palabras en la sesión <span class="numero-circulo">2</span>
+$_SESSION["mayusculas"] = $mayusculas;
 $_SESSION["minusculas"] = $minusculas;
 
-// Comprobamos la palabra en mayúsculas
-if ($mayusculas == "") { <span class="numero-circulo">4</span>
+// Comprobamos la palabra en mayúsculas <span class="numero-circulo">4</span>
+if ($mayusculas == "") {
     // Si no se recibe palabra, guardamos en la sesión el mensaje de error
     $_SESSION["mayusculasError"] = "No ha escrito ninguna palabra";
-} elseif (!ctype_upper($mayusculas)) { <span class="numero-circulo">5</span>}
-    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error
+} elseif (!ctype_upper($mayusculas)) {
+    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error <span class="numero-circulo">5</span>}
     $_SESSION["mayusculasError"] = "No ha escrito la palabra en mayúsculas";
-} else { <span class="numero-circulo">6</span>
-    // Si la palabra es correcta, borramos los posibles errores anteriores
+} else {
+    // Si la palabra es correcta, borramos los posibles errores anteriores <span class="numero-circulo">6</span>
     unset($_SESSION["mayusculasError"]);
 }
 
@@ -621,8 +622,8 @@ if ($minusculas == "") {
     unset($_SESSION["minusculasError"]);
 }
 
-// Volvemos al formulario
-<span class="numero-circulo">7</span>header("Location:sesiones-1-04-1.php");
+// Volvemos al formulario <span class="numero-circulo">7</span>
+header("Location:sesiones-1-04-1.php");
 ?&gt;</code>
 </pre>
       </div>
@@ -654,8 +655,8 @@ if ($minusculas == "") {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-11");<span class="numero-circulo">7</span>
+// Se accede a la sesión <span class="numero-circulo">7</span>
+session_name("sesiones-1-11");
 session_start();
 
 // Si el número no está guardado en la sesión, lo pone a cero
@@ -674,8 +675,8 @@ if (!isset($_SESSION["numero"])) {<span class="numero-circulo">8</span>
 </pre>
         <pre>
 <code class="language-php">&lt;?php
-// Muestra el número, guardado en la sesión
-print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";<span class="numero-circulo">6</span>
+// Muestra el número, guardado en la sesión <span class="numero-circulo">6</span>
+print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";
 ?&gt;</code>
 </pre>
         <pre>
@@ -691,17 +692,17 @@ print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-11");<span class="numero-circulo">3</span>
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-11");
 session_start();
 
-// Si el número no está guardado en la sesión, vuelve al formulario
-if (!isset($_SESSION["numero"])) {<span class="numero-circulo">4</span>
+// Si el número no está guardado en la sesión, lo pone a cero (el valor inicial) <span class="numero-circulo">4</span>
+if (!isset($_SESSION["numero"])) {
     $_SESSION["numero"] = 0;
 }
 
-// Funciones auxiliares
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -709,7 +710,10 @@ function recoge($var)<span class="numero-circulo">1</span>
     return $tmp;
 }
 
-// Dependiendo de la acción recibida, modifica el número guardado<span class="numero-circulo">2</span>
+// Recogida de accion
+$accion   = recoge("accion");
+
+// Dependiendo de la acción recibida, modifica el número guardado <span class="numero-circulo">2</span>
 if ($accion == "cero") {
     $_SESSION["numero"] = 0;
 } elseif ($accion == "subir") {
@@ -718,7 +722,7 @@ if ($accion == "cero") {
     $_SESSION["numero"] --;
 }
 
-// y vuelve al formulario<span class="numero-circulo">5</span>
+// y vuelve al formulario <span class="numero-circulo">5</span>
 header("Location:sesiones-1-11-1.php");
 ?&gt;</code>
 </pre>
@@ -750,12 +754,12 @@ header("Location:sesiones-1-11-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-12");<span class="numero-circulo">8</span>
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-12");
 session_start();
 
-// Si la posición no está guardada en la sesión, la pone a cero
-if (!isset($_SESSION["posicion"])) {<span class="numero-circulo">9</span>
+// Si la posición no está guardada en la sesión, la pone a cero <span class="numero-circulo">9</span>
+if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
 ?&gt;</code>
@@ -767,8 +771,8 @@ if (!isset($_SESSION["posicion"])) {<span class="numero-circulo">9</span>
             &lt;line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" /&gt;</code>
 </pre>
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">7</span>
-// Dibuja el círculo en su posición
+<code class="language-php">&lt;?php
+// Dibuja el círculo en su posición <span class="numero-circulo">7</span>
 print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" /&gt;\n";
 ?&gt;</code>
 <code class="language-html">          &lt;/svg&gt;
@@ -781,17 +785,17 @@ print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-12");<span class="numero-circulo">3</span>
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-12");
 session_start();
 
-// Si la posición no está guardada en la sesión, la pone a cero
-if (!isset($_SESSION["posicion"])) {<span class="numero-circulo">4</span>
+// Si la posición no está guardada en la sesión, la pone a cero <span class="numero-circulo">4</span>
+if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
 
-// Funciones auxiliares
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -803,7 +807,7 @@ function recoge($var)<span class="numero-circulo">1</span>
 $accion   = recoge("accion");
 
 
-// Dependiendo de la acción recibida, modifica el número guardado<span class="numero-circulo">2</span>
+// Dependiendo de la acción recibida, modifica el número guardado <span class="numero-circulo">2</span>
 if ($accion == "centro") {
     $_SESSION["posicion"] = 0;
 } elseif ($accion == "izquierda") {
@@ -812,14 +816,14 @@ if ($accion == "centro") {
     $_SESSION["posicion"] += 20;
 }
 
-// si sale por un lado, entra por el otro<span class="numero-circulo">5</span>
+// si sale por un lado, entra por el otro <span class="numero-circulo">5</span>
 if ($_SESSION["posicion"] &gt; 300) {
     $_SESSION["posicion"] = -300;
 } elseif ($_SESSION["posicion"] &lt; -300) {
     $_SESSION["posicion"] = 300;
 }
 
-// y vuelve al formulario<span class="numero-circulo">6</span>
+// y vuelve al formulario <span class="numero-circulo">6</span>
 header("Location:sesiones-1-12-1.php");
 ?&gt;</code>
 </pre>
@@ -851,12 +855,12 @@ header("Location:sesiones-1-12-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-13");<span class="numero-circulo">8</span>
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-13");
 session_start();
 
-// Si alguna posición no está guardada en la sesión, las pone a cero
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {<span class="numero-circulo">9</span>
+// Si alguna posición no está guardada en la sesión, las pone a cero <span class="numero-circulo">9</span>
+if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 }
 ?&gt;</code>
@@ -871,8 +875,8 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {<span class="numero-circu
 </code>
 </pre>
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">7</span>
-// Dibuja el círculo en su posición
+<code class="language-php">&lt;?php
+// Dibuja el círculo en su posición <span class="numero-circulo">7</span>
 print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" /&gt;\n";
 ?&gt;</code>
 </pre>
@@ -889,8 +893,8 @@ print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fi
 
       <div class="codigo">
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">3</span>
-// Se accede a la sesión
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-13");
 session_start();
 
@@ -899,8 +903,8 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 }
 
-// Funciones auxiliares
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -969,12 +973,12 @@ header("Location:sesiones-1-13-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión
-session_name("sesiones-1-14");<span class="numero-circulo">8</span>
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-14");
 session_start();
 
-// Si algún contador no está guardado en la sesión, los pone a cero
-if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {<span class="numero-circulo">9</span>
+// Si algún contador no está guardado en la sesión, los pone a cero <span class="numero-circulo">9</span>
+if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
 ?&gt;</code>
@@ -988,7 +992,8 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {<span class="numero-circu
         &lt;td&gt;</code>
 </pre>
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">6</span>
+<code class="language-php">&lt;?php
+// Dibujamos la primera barra <span class="numero-circulo">6</span>
 print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[a]\" height=\"50\"&gt;\n";
 print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hsl(200, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
@@ -1002,7 +1007,8 @@ print "          &lt;/svg&gt;\n";
         &lt;td&gt;</code>
 </pre>
         <pre>
-<code class="language-php">&lt;?php<span class="numero-circulo">7</span>
+<code class="language-php">&lt;?php
+// Dibujamos la segunda barra <span class="numero-circulo">7</span>
 print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[b]\" height=\"50\"&gt;\n";
 print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hsl(35, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
@@ -1023,14 +1029,17 @@ print "          &lt;/svg&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-session_name("sesiones-1-14");<span class="numero-circulo">3</span>
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-14");
 session_start();
 
-if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {<span class="numero-circulo">4</span>
+// Si alguno de los números de votos no está guardado en la sesión, los pone a cero <span class="numero-circulo">4</span>
+if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
 
-function recoge($var)<span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
     ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
@@ -1038,9 +1047,11 @@ function recoge($var)<span class="numero-circulo">1</span>
     return $tmp;
 }
 
+// Recogida de accion
 $accion = recoge("accion");
 
-if ($accion == "a") {<span class="numero-circulo">2</span>
+// Dependiendo de la acción recibida, modifica el número correspondiente <span class="numero-circulo">2</span>
+if ($accion == "a") {
     $_SESSION["a"] += 10;
 } elseif ($accion == "b") {
     $_SESSION["b"] += 10;
@@ -1048,7 +1059,8 @@ if ($accion == "a") {<span class="numero-circulo">2</span>
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
 
-header("Location:sesiones-1-14-1.php");<span class="numero-circulo">5</span>
+// y vuelve al formulario <span class="numero-circulo">5</span>
+header("Location:sesiones-1-14-1.php");
 ?&gt;</code>
 </pre>
       </div>
@@ -1056,7 +1068,7 @@ header("Location:sesiones-1-14-1.php");<span class="numero-circulo">5</span>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 13 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />

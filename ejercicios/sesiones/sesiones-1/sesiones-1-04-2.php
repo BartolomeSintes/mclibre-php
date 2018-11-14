@@ -66,5 +66,5 @@ if ($minusculas == "") {
     unset($_SESSION["minusculasError"]);
 }
 
-header("Location:sesiones-1-05-1.php");
+header("Location:sesiones-1-04-1.php");
 ?>

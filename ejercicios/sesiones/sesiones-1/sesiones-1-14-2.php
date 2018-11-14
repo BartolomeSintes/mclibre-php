@@ -42,6 +42,7 @@ function recoge($var)
 // Recogida de accion
 $accion = recoge("accion");
 
+// Dependiendo de la acción recibida, modifica el número correspondiente
 if ($accion == "a") {
     $_SESSION["a"] += 10;
 } elseif ($accion == "b") {
@@ -50,4 +51,6 @@ if ($accion == "a") {
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
 
+// y vuelve al formulario
 header("Location:sesiones-1-14-1.php");
+?>

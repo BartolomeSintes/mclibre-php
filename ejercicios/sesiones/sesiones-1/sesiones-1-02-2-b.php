@@ -38,21 +38,10 @@ function recoge($var)
 $texto = recoge("texto");
 
 // Comprobamos el texto
-if ($texto == "") {
-    // Si el texto es vacío, no es correcto, pero no hacemos nada especial
-} else {
-    // Si el texto es correcto, lo guardamos en la sesión
+if ($texto != "") {
+    // Si el texto no es vacío, lo guardamos en la sesión
     $_SESSION["texto"] = $texto;
 }
 
 header("Location:sesiones-1-02-1-b.php");
-/* El programa podría hacerse más corto con el mismo resultado
-
-$texto   = recoge("texto");
-if ($texto != "") {
-    $_SESSION["texto"] = $texto;
-}
-header("Location:sesiones-1-02-1.php");
-
-*/
 ?>
