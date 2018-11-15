@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,24 +24,7 @@
 
 session_name("sesiones-2-01");
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <title>
-    Formulario en tres pasos (Resultado).
-    Sesiones (2). Sesiones.
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
-</head>
 
-<body>
-  <h1>Formulario en tres pasos (Resultado)</h1>
-
-<?php
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -50,41 +33,15 @@ function recoge($var)
     return $tmp;
 }
 
-$correcto   = recoge("correcto");
-$correctoOk = false;
+$apellidos = recoge("apellidos");
 
-if ($correcto != "Sí" && $correcto != "No") {
-    print "  <p class=\"aviso\">No ha contestado Sí o No.</p>\n";
+if ($apellidos == "") {
+    $_SESSION["avisoApellido"] = "No ha escrito sus apellidos";
+    header("Location:sesiones-2-01-3.php");
+    exit;
 } else {
-    $correctoOk = true;
+    unset($_SESSION["avisoApellido"]);
+    $_SESSION["apellidos"] = $apellidos;
+    header("Location:sesiones-2-01-5.php");
+    exit;
 }
-
-if ($correctoOk) {
-    if ($correcto == "No") {
-        print "  <p>Su nombre y apellidos <strong>no</strong> son: <strong>$_SESSION[nombre] "
-            . "$_SESSION[apellidos]</strong>.</p>\n";
-    } else {
-        print "  <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] "
-            . "$_SESSION[apellidos]</strong>.</p>\n";
-    }
-}
-
-?>
-
-  <p><a href="sesiones-2-01-1.php">Volver a la primera página.</a></p>
-
-  <footer>
-    <p class="ultmod">
-      Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
-    </p>
-
-    <p class="licencia">
-      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
-      El programa PHP que genera esta página se distribuye bajo
-      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
-    </p>
-  </footer>
-</body>
-</html>

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,52 +33,16 @@ function recoge($var)
     return $tmp;
 }
 
-$apellidos   = recoge("apellidos");
-$apellidosOk = false;
+$apellidos = recoge("apellidos");
 
-if ($apellidos != "") {
-    $apellidosOk = true;
-}
-
-if ($apellidosOk) {
+if ($apellidos == "") {
+    $_SESSION["avisoApellido"] = "No ha escrito sus apellidos";
+    header("Location:apellidos-1.php");
+    exit;
+} else {
+    unset($_SESSION["avisoApellido"]);
     $_SESSION["apellidos"] = $apellidos;
     header("Location:index.php");
     exit;
 }
-
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <title>
-    Apellidos (2).
-    Sesiones (2). Sesiones.
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
-</head>
-
-<body>
-  <h1>Apellidos (2)</h1>
-
-  <p class="aviso">No ha escrito sus apellidos.</p>
-
-  <p><a href="apellidos-1.php">Volver al formulario.</a></p>
-
-  <footer>
-    <p class="ultmod">
-      Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
-    </p>
-
-    <p class="licencia">
-      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
-      El programa PHP que genera esta página se distribuye bajo
-      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
-    </p>
-  </footer>
-</body>
-</html>

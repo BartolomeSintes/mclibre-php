@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 02 - apellidos-2.php
+ * Sesiones (2) 03 - sesiones-2-03-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,16 +22,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-02");
+session_name("sesiones-2-03");
 session_start();
 
+if (!isset($_SESSION["paso"])) {
+    $_SESSION["paso"] = 1;
+    header("Location:sesiones-2-03-1.php");
+} elseif (isset($_SESSION["paso"]) && $_SESSION["paso"] != 5) {
+    header("Location:sesiones-2-03-$_SESSION[paso].php");
+    exit;
+} else {
+    $_SESSION["paso"] = 6;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Apellidos (2).
+    Formulario seguro en tres pasos (Formulario 3).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -40,41 +49,31 @@ session_start();
 </head>
 
 <body>
-  <h1>Apellidos (2)</h1>
+  <h1>Formulario seguro en tres pasos (Formulario 3)</h1>
+
+  <form action="sesiones-2-03-6.php" method="get">
+    <p>Escriba su segundo apellido:</p>
 
 <?php
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
-
-$apellidos   = recoge("apellidos");
-$apellidosOk = false;
-
-if ($apellidos == "") {
-    print "  <p class=\"aviso\">No ha escrito sus apellidos.</p>\n";
+if (isset($_SESSION["avisoApellido2"])) {
+    print "    <p><strong>Segundo apellido:</strong> <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\" /> "
+        . "<span class=\"aviso\">$_SESSION[avisoApellido2]</span></p>\n";
     print "\n";
 } else {
-    $apellidosOk = true;
-}
-
-if ($apellidosOk) {
-    $_SESSION["apellidos"] = $apellidos;
-    print "  <p>Se han guardado sus apellidos: <strong>$_SESSION[apellidos]</strong></p>\n";
+    print "    <p><strong>Segundo apellido:</strong> <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\" /></p>\n";
     print "\n";
-    print "  <p><a href=\"index.php\">Volver al inicio.</a></p>\n";
-} else {
-    print "  <p><a href=\"apellidos-1.php\">Volver al formulario.</a></p>\n";
 }
 ?>
+    <p>
+      <input type="submit" value="Siguiente" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-14">14 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

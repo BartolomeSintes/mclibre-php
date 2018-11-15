@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 02 - ver.php
+ * Sesiones (2) 03 - ver.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-02");
+session_name("sesiones-2-03");
 session_start();
 
 ?>
@@ -61,7 +61,7 @@ if (!isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-15">15 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

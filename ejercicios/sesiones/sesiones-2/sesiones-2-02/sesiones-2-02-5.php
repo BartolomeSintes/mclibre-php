@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 03 - apellidos-1.php
+ * Sesiones (2) 01 - sesiones-2-02-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-03");
+session_name("sesiones-2-02");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>
-    Apellidos (1).
+    Formulario de confirmación (Resultado).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,34 +39,13 @@ session_start();
 </head>
 
 <body>
-  <h1>Borrar datos (1)</h1>
+  <h1>Formulario de confirmación (Resultado)</h1>
 
 <?php
-if (isset($_SESSION["apellidos"])) {
-    print "  <p>Usted ya ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
+    print "  <p>Ha escrito y confirmado la palabra: <strong>$_SESSION[palabra1]</strong>.</p>\n";
     print "\n";
-}
 ?>
-  <form action="apellidos-2.php" method="get">
-    <p>Escriba sus apellidos:</p>
-
-<?php
-if (isset($_SESSION["avisoApellido"])) {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /> "
-        . "<span class=\"aviso\">$_SESSION[avisoApellido]</span></p>\n";
-    print "\n";
-} else {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /></p>\n";
-    print "\n";
-}
-?>
-    <p>
-      <input type="submit" value="Guardar" />
-      <input type="reset" value="Borrar" />
-    </p>
-  </form>
-
-  <p><a href="index.php">Volver al inicio.</a></p>
+  <p><a href="sesiones-2-02-1.php">Volver al principio.</a></p>
 
   <footer>
     <p class="ultmod">

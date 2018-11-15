@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 11 - sesiones-2-11-1.php
+ * Sesiones (2) 03 - borrar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,16 +22,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones_2_11");
+session_name("sesiones-2-03");
 session_start();
-
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Comprobación en formulario.
+    Borrar datos.
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -40,53 +40,16 @@ session_start();
 </head>
 
 <body>
-  <h1>Comprobación en formulario</h1>
+  <h1>Borrar datos</h1>
 
-  <form action="sesiones-2-11-2.php" method="get">
-<?php
-print "    <table>\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td>Escriba su nombre:</td>\n";
-print "          <td><input type=\"text\" name=\"nombre\" ";
-if (isset($_SESSION["dato"]["nombre"])) {
-    print "value=\"{$_SESSION["dato"]["nombre"]}\" ";
-}
-print "size=\"20\" maxlength=\"20\" />";
-if (isset($_SESSION["aviso"]["nombre"])) {
-    print " <span class=\"aviso\">{$_SESSION["aviso"]["nombre"]}</span>";
-}
-print "</td>\n";
-print "        </tr>\n";
-print "        <tr>\n";
-print "          <td>Escriba su edad (entre 18 y 130 años):</td>\n";
-print "          <td><input type=\"text\" name=\"edad\" ";
-if (isset($_SESSION["dato"]["edad"])) {
-    print "value=\"{$_SESSION["dato"]["edad"]}\" ";
-}
-print "size=\"5\" maxlength=\"3\" />";
-if (isset($_SESSION["aviso"]["edad"])) {
-    print " <span class=\"aviso\">{$_SESSION["aviso"]["edad"]}</span>";
-}
-print "</td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
-print "    </table>\n";
+  <p>Los datos han sido borrados.</p>
 
-unset($_SESSION["aviso"]);
-unset($_SESSION["dato"]);
-?>
-
-    <p>
-      <input type="submit" value="Comprobar" />
-      <input type="reset" value="Borrar" />
-    </p>
-  </form>
+  <p><a href="index.php">Volver al inicio.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-15">15 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

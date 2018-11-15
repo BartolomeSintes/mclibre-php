@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 02 - apellidos-1.php
+ * Sesiones (2) 03 - nombre-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,15 +22,37 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-02");
+session_name("sesiones-2-03");
 session_start();
+
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
+    return $tmp;
+}
+
+$nombre   = recoge("nombre");
+$nombreOk = false;
+
+if ($nombre != "") {
+    $nombreOk = true;
+}
+
+if ($nombreOk) {
+    $_SESSION["nombre"] = $nombre;
+    header("Location:index.php");
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Apellidos (1).
+    Nombre (2).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,26 +61,11 @@ session_start();
 </head>
 
 <body>
-  <h1>Borrar datos (1)</h1>
+  <h1>Nombre (2)</h1>
 
-<?php
-if (isset($_SESSION["apellidos"])) {
-    print "  <p>Usted ya ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
-    print "\n";
-}
-?>
-  <form action="apellidos-2.php" method="get">
-    <p>Escriba sus apellidos:</p>
+  <p class="aviso">No ha escrito su nombre.</p>
 
-    <p><strong>Apellidos:</strong> <input type="text" name="apellidos" size="30" maxlength="30" /></p>
-
-    <p>
-      <input type="submit" value="Guardar" />
-      <input type="reset" value="Borrar" />
-    </p>
-  </form>
-
-  <p><a href="index.php">Volver al inicio.</a></p>
+  <p><a href="nombre-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

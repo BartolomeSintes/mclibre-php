@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,24 +24,7 @@
 
 session_name("sesiones-2-01");
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <title>
-    Formulario en tres pasos (Formulario 2).
-    Sesiones (2). Sesiones.
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
-</head>
 
-<body>
-  <h1>Formulario en tres pasos (Formulario 2)</h1>
-
-<?php
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -50,48 +33,15 @@ function recoge($var)
     return $tmp;
 }
 
-$nombre   = recoge("nombre");
-$nombreOk = false;
+$nombre = recoge("nombre");
 
 if ($nombre == "") {
-    print "  <p class=\"aviso\">No ha escrito su nombre.</p>\n";
+    $_SESSION["avisoNombre"] = "No ha escrito su nombre";
+    header("Location:sesiones-2-01-1.php");
+    exit;
 } else {
-    $nombreOk = true;
-}
-
-if ($nombreOk) {
+    unset($_SESSION["avisoNombre"]);
     $_SESSION["nombre"] = $nombre;
-    print "  <form action=\"sesiones-2-01-3.php\" method=\"get\">\n";
-    print "    <p>Su nombre es: <strong>$nombre</strong>.</p>\n";
-    print "\n";
-    print "    <p>Escriba sus apellidos:</p>\n";
-    print "\n";
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /></p>\n";
-    print "\n";
-
-    print "    <p>\n";
-    print "      <input type=\"submit\" value=\"Siguiente\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
-    print "    </p>\n";
-    print "  </form>\n";
+    header("Location:sesiones-2-01-3.php");
+    exit;
 }
-
-?>
-
-  <p><a href="sesiones-2-01-1.php">Volver a la primera página.</a></p>
-
-  <footer>
-    <p class="ultmod">
-      Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
-    </p>
-
-    <p class="licencia">
-      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
-      El programa PHP que genera esta página se distribuye bajo
-      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
-    </p>
-  </footer>
-</body>
-</html>

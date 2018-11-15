@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 01 - sesiones-2-01-3.php
+ * Sesiones (2) 01 - sesiones-2-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>
-    Formulario en tres pasos (Formulario 3).
+    Formulario en dos pasos (Formulario 2).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,46 +39,31 @@ session_start();
 </head>
 
 <body>
-  <h1>Formulario en tres pasos (Formulario 3)</h1>
+  <h1>Formulario en dos pasos (Formulario 2)</h1>
+
+  <form action="sesiones-2-01-4.php" method="get">
+    <p>Escriba sus apellidos:</p>
 
 <?php
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
-
-$apellidos   = recoge("apellidos");
-$apellidosOk = false;
-
-if ($apellidos == "") {
-    print "  <p class=\"aviso\">No ha escrito sus apellidos.</p>\n";
-} else {
-    $apellidosOk = true;
-}
-
-if ($apellidosOk) {
-    $_SESSION["apellidos"] = $apellidos;
-
-    print "  <form action=\"sesiones-2-01-4.php\" method=\"get\">\n";
-    print "    <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $apellidos</strong>.</p>\n";
+if (isset($_SESSION["avisoApellido"])) {
+    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /> "
+        . "<span class=\"aviso\">$_SESSION[avisoApellido]</span></p>\n";
     print "\n";
-    print "    <p>¿Es correcto?\n";
-    print "      <input type=\"submit\" name=\"correcto\" value=\"Sí\" />\n";
-    print "      <input type=\"submit\" name=\"correcto\" value=\"No\" />\n";
-    print "    </p>\n";
-    print "  </form>\n";
+} else {
+    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /></p>\n";
+    print "\n";
 }
 ?>
-
-  <p><a href="sesiones-2-01-1.php">Volver a la primera página.</a></p>
+    <p>
+      <input type="submit" value="Siguiente" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-14">14 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

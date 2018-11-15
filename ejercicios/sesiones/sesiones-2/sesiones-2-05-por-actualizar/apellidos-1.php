@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 02 - nombre-1.php
+ * Sesiones (2) 03 - apellidos-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-02");
+session_name("sesiones-2-03");
 session_start();
 
 ?>
@@ -31,7 +31,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>
-    Nombre (1).
+    Apellidos (1).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -40,18 +40,19 @@ session_start();
 </head>
 
 <body>
-  <h1>Nombre (1)</h1>
+  <h1>Apellidos (1)</h1>
 
 <?php
-if (isset($_SESSION["nombre"])) {
-    print "  <p>Usted ya ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
+if (isset($_SESSION["apellidos"])) {
+    print "  <p>Usted ya ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
+    print "\n";
 }
+
 ?>
+  <form action="apellidos-2.php" method="get">
+    <p>Escriba sus apellidos:</p>
 
-  <form action="nombre-2.php" method="get">
-    <p>Escriba su nombre:</p>
-
-    <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20" /></p>
+    <p><strong>Apellidos:</strong> <input type="text" name="apellidos" size="30" maxlength="30" /></p>
 
     <p>
       <input type="submit" value="Guardar" />

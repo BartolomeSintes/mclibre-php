@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 12 - sesiones-2-12-1.php
+ * Sesiones (2) 01 - sesiones-2-01-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,16 +22,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones_2_12");
+session_name("sesiones-2-01");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Almacenamiento de datos en sesión.
+    Formulario en dos pasos (Resultado).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -40,37 +39,18 @@ session_start();
 </head>
 
 <body>
-  <h1>Almacenamiento de datos en sesión</h1>
-
-  <form action="sesiones-2-12-2.php" method="get">
-    <p>Escriba algún nombre: <input type="text" name="nombre" size="30" maxlength="30" /></p>
-
-    <p>
-      <input type="submit" value="Añadir" />
-      <input type="reset" value="Borrar" />
-    </p>
-  </form>
+  <h1>Formulario en dos pasos (Resultado)</h1>
 
 <?php
-if (!count($_SESSION)) {
-    print "  <p>Todavía no se han introducido nombres.</p>\n";
-} else {
-    print "  <p>Datos introducidos:</p>\n";
-    print "  <ul>\n";
-    foreach ($_SESSION["nombres"] as $valor) {
-        print "    <li>$valor</li>\n";
-    }
-    print "  </ul>\n";
+    print "  <p>Su nombre y apellidos son: <strong>$_SESSION[nombre] $_SESSION[apellidos]</strong>.</p>\n";
     print "\n";
-    print "  <p><a href=\"sesiones-2-12-2.php?accion=Cerrar\">Cerrar sesión "
-        . "(se perderán los datos almacenados).</a></p>\n";
-}
 ?>
+  <p><a href="sesiones-2-01-1.php">Volver al principio.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-14">14 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

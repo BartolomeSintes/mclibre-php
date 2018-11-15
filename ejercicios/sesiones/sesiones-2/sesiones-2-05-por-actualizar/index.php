@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 11 - sesiones-2-11-2.php
+ * Sesiones (2) 03 - index.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,55 +22,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones_2_11");
+session_name("sesiones-2-03");
 session_start();
-
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
-$nombre    = recoge("nombre");
-$edad      = recoge("edad");
-$nombreOk  = false;
-$edadOk    = false;
-
-$paginaAnterior = "sesiones-2-11-1.php";
-
-if ($nombre == "") {
-    $_SESSION["aviso"]["nombre"] = "No ha escrito su nombre";
-} else {
-    $nombreOk = true;
-}
-
-if ($edad == "") {
-    $_SESSION["aviso"]["edad"] = "No ha escrito su edad";
-} elseif (!is_numeric($edad)) {
-    $_SESSION["aviso"]["edad"] = "No ha escrito la edad como número";
-} elseif (!ctype_digit($edad)) {
-    $_SESSION["aviso"]["edad"] = "No ha escrito la edad como número entero";
-} elseif ($edad < 18 || $edad > 130) {
-    $_SESSION["aviso"]["edad"] = "La edad no está entre 18 y 130 años";
-} else {
-    $edadOk = true;
-}
-
-if (!$nombreOk || !$edadOk) {
-    $_SESSION["dato"]["nombre"] = $nombre;
-    $_SESSION["dato"]["edad"] = $edad;
-    header("Location:$paginaAnterior");
-    exit();
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Comprobación en formulario. Sesiones (2) 011 . Sesiones.
+    Nombre y apellidos (Inicio).
+    Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,15 +39,28 @@ if (!$nombreOk || !$edadOk) {
 </head>
 
 <body>
-  <h1>Comprobación en formulario</h1>
+  <h1>Nombre y apellidos (Inicio)</h1>
 
 <?php
-print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
-print "\n";
-print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
+if (!isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
+    print "  <p>Usted no ha escrito todavía ni su nombre ni sus apellidos</p>\n";
+} elseif (isset($_SESSION["nombre"]) and !isset($_SESSION["apellidos"])) {
+    print "  <p>Usted sólo ha escrito su nombre: <strong>$_SESSION[nombre]</strong></p>\n";
+} elseif (!isset($_SESSION["nombre"]) and isset($_SESSION["apellidos"])) {
+    print "  <p>Usted sólo ha escrito sus apellidos: <strong>$_SESSION[apellidos]</strong></p>\n";
+} else {
+    print "  <p>Usted ha escrito su nombre: <strong>$_SESSION[nombre]</strong></p>\n";
+    print "\n";
+    print "  <p>Usted ha escrito sus apellidos: <strong>$_SESSION[apellidos]</strong></p>\n";
+}
 ?>
 
-  <p><a href="sesiones-2-11-1.php">Volver al inicio.</a></p>
+  <p>Elija una opción:</p>
+  <ul>
+    <li><a href="nombre-1.php">Escribir su nombre</a></li>
+    <li><a href="apellidos-1.php">Escribir sus apellidos</a></li>
+    <li><a href="cerrar.php">Borrar la información</a></li>
+  </ul>
 
   <footer>
     <p class="ultmod">

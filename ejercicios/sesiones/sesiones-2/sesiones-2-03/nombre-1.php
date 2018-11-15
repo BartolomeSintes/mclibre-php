@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,15 +45,22 @@ session_start();
 <?php
 if (isset($_SESSION["nombre"])) {
     print "  <p>Usted ya ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
-    print "\n";
 }
-
 ?>
+
   <form action="nombre-2.php" method="get">
     <p>Escriba su nombre:</p>
 
-    <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20" /></p>
-
+<?php
+if (isset($_SESSION["avisoNombre"])) {
+    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\" /> "
+        . "<span class=\"aviso\">$_SESSION[avisoNombre]</span></p>\n";
+    print "\n";
+} else {
+    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "\n";
+}
+?>
     <p>
       <input type="submit" value="Guardar" />
       <input type="reset" value="Borrar" />
@@ -65,7 +72,7 @@ if (isset($_SESSION["nombre"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-15">15 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

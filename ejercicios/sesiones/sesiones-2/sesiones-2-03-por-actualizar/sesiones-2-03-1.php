@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 03 - apellidos-1.php
+ * Sesiones (2) 03 - sesiones-2-03-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,13 +24,25 @@
 
 session_name("sesiones-2-03");
 session_start();
+
+// Borrramos los datos por si estamos volvendo a empezar
+unset($_SESSION["nombre"]);
+unset($_SESSION["apellido1"]);
+unset($_SESSION["apellido2"]);
+
+if (isset($_SESSION["paso"]) && $_SESSION["paso"] != 1) {
+    header("Location:sesiones-2-03-$_SESSION[paso].php");
+    exit;
+} else {
+    $_SESSION["paso"] = 2;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Apellidos (1).
+    Formulario seguro en tres pasos (Formulario 1).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,47 +51,36 @@ session_start();
 </head>
 
 <body>
-  <h1>Borrar datos (1)</h1>
+  <h1>Formulario seguro en tres pasos (Formulario 1)</h1>
+
+  <form action="sesiones-2-03-2.php" method="get">
+    <p>Escriba su propio nombre:</p>
 
 <?php
-if (isset($_SESSION["apellidos"])) {
-    print "  <p>Usted ya ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
-    print "\n";
-}
-?>
-  <form action="apellidos-2.php" method="get">
-    <p>Escriba sus apellidos:</p>
-
-<?php
-if (isset($_SESSION["avisoApellido"])) {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /> "
-        . "<span class=\"aviso\">$_SESSION[avisoApellido]</span></p>\n";
+if (isset($_SESSION["avisoNombre"])) {
+    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\" /> "
+        . "<span class=\"aviso\">$_SESSION[avisoNombre]</span></p>\n";
     print "\n";
 } else {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /></p>\n";
+    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\" /></p>\n";
     print "\n";
 }
 ?>
-    <p>
-      <input type="submit" value="Guardar" />
-      <input type="reset" value="Borrar" />
-    </p>
+    <p><input type="submit" value="Siguiente" />
+      <input type="reset" value="Borrar" /></p>
   </form>
-
-  <p><a href="index.php">Volver al inicio.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-15">15 de noviembre de 2018</time>
+      <time datetime="2018-11-14">14 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">
-      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
-      El programa PHP que genera esta página se distribuye bajo
-      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
-    </p>
+      Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
+      Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>
 </body>
 </html>

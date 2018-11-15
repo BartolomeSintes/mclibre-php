@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 02 - nombre-2.php
+ * Sesiones (2) 01 - sesiones-2-02-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>
-    Nombre (2).
+    Formulario de confirmación (Formulario 2).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,41 +39,31 @@ session_start();
 </head>
 
 <body>
-  <h1>Nombre (2)</h1>
+  <h1>Formulario de confirmación (Formulario 2)</h1>
+
+  <form action="sesiones-2-02-4.php" method="get">
+    <p>Repita la palabra que acaba de escribir:</p>
 
 <?php
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
-
-$nombre   = recoge("nombre");
-$nombreOk = false;
-
-if ($nombre == "") {
-    print "  <p class=\"aviso\">No ha escrito su nombre.</p>\n";
+if (isset($_SESSION["aviso2"])) {
+    print "    <p><strong>Escriba de nuevo:</strong> <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\" /> "
+        . "<span class=\"aviso\">$_SESSION[aviso2]</span></p>\n";
     print "\n";
 } else {
-    $nombreOk = true;
-}
-
-if ($nombreOk) {
-    $_SESSION["nombre"] = $nombre;
-    print "  <p>Se ha guardado su nombre: <strong>$_SESSION[nombre]</strong></p>\n";
+    print "    <p><strong>Escriba de nuevo:</strong> <input type=\"text\" name=\"palabra2\" size=\"30\" maxlength=\"30\" /></p>\n";
     print "\n";
-    print "  <p><a href=\"index.php\">Volver al inicio.</a></p>\n";
-} else {
-    print "  <p><a href=\"nombre-1.php\">Volver al formulario.</a></p>\n";
 }
 ?>
+    <p>
+      <input type="submit" value="Siguiente" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2018-11-15">15 de noviembre de 2018</time>
     </p>
 
     <p class="licencia">

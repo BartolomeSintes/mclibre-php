@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 13 - sesiones-2-13-2.php
+ * Sesiones (2) 01 - sesiones-2-02-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-15
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+session_name("sesiones-2-02");
+session_start();
+
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -30,30 +33,23 @@ function recoge($var)
     return $tmp;
 }
 
-session_name("sesiones_2_13");
-session_start();
+$palabra2 = recoge("palabra2");
 
-$accion   = recoge("accion");
-$nombre   = recoge("nombre");
-$nombreOk = false;
-$paginaAnterior = "sesiones-2-13-1.php";
-
-if ($accion == "Cerrar") {
-    session_destroy();
-    header("Location:$paginaAnterior");
-    exit();
+if ($palabra2 == "") {
+    $_SESSION["aviso2"] = "No ha escrito nada";
+    header("Location:sesiones-2-02-3.php");
+    exit;
+} elseif (!ctype_alnum($palabra2)) {
+    $_SESSION["aviso2"] = "No ha escrito una sola palabra con letras y números";
+    header("Location:sesiones-2-02-3.php");
+    exit;
+} elseif ($_SESSION["palabra1"] != $palabra2) {
+    $_SESSION["aviso1"] = "No ha escrito la misma palabra. Comience de nuevo.";
+    header("Location:sesiones-2-02-1.php");
+    exit;
+} else {
+    unset($_SESSION["avisoApellido"]);
+    $_SESSION["palabra2"] = $palabra2;
+    header("Location:sesiones-2-02-5.php");
+    exit;
 }
-
-if ($nombre != "") {
-    $nombreOk = true;
-}
-
-if ($nombreOk) {
-    if (!isset($_SESSION["nombres"]) || !in_array($nombre, $_SESSION["nombres"])) {
-        $_SESSION["nombres"][] = $nombre;
-    }
-}
-
-header("Location:$paginaAnterior");
-exit();
-?>

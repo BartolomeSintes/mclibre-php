@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 03 - apellidos-1.php
+ * Sesiones (2) 03 - apellidos-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2018-10-31
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,13 +24,35 @@
 
 session_name("sesiones-2-03");
 session_start();
+
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
+    return $tmp;
+}
+
+$apellidos   = recoge("apellidos");
+$apellidosOk = false;
+
+if ($apellidos != "") {
+    $apellidosOk = true;
+}
+
+if ($apellidosOk) {
+    $_SESSION["apellidos"] = $apellidos;
+    header("Location:index.php");
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Apellidos (1).
+    Apellidos (2).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,39 +61,16 @@ session_start();
 </head>
 
 <body>
-  <h1>Borrar datos (1)</h1>
+  <h1>Apellidos (2)</h1>
 
-<?php
-if (isset($_SESSION["apellidos"])) {
-    print "  <p>Usted ya ha escrito que sus apellidos son: <strong>$_SESSION[apellidos]</strong></p>\n";
-    print "\n";
-}
-?>
-  <form action="apellidos-2.php" method="get">
-    <p>Escriba sus apellidos:</p>
+  <p class="aviso">No ha escrito sus apellidos.</p>
 
-<?php
-if (isset($_SESSION["avisoApellido"])) {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /> "
-        . "<span class=\"aviso\">$_SESSION[avisoApellido]</span></p>\n";
-    print "\n";
-} else {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\" /></p>\n";
-    print "\n";
-}
-?>
-    <p>
-      <input type="submit" value="Guardar" />
-      <input type="reset" value="Borrar" />
-    </p>
-  </form>
-
-  <p><a href="index.php">Volver al inicio.</a></p>
+  <p><a href="apellidos-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-15">15 de noviembre de 2018</time>
+      <time datetime="2018-10-31">31 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

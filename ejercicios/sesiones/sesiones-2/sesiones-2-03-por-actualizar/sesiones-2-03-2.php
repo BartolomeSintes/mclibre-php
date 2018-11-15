@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 03 - nombre-2.php
+ * Sesiones (2) 03 - sesiones-2-03-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,14 @@
 session_name("sesiones-2-03");
 session_start();
 
+if (!isset($_SESSION["paso"])) {
+    $_SESSION["paso"] = 1;
+    header("Location:sesiones-2-03-1.php");
+} elseif (isset($_SESSION["paso"]) && $_SESSION["paso"] != 2) {
+    header("Location:sesiones-2-03-$_SESSION[paso].php");
+    exit;
+}
+
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -37,12 +45,13 @@ $nombre = recoge("nombre");
 
 if ($nombre == "") {
     $_SESSION["avisoNombre"] = "No ha escrito su nombre";
-    header("Location:nombre-1.php");
+    $_SESSION["paso"] = 1;
+    header("Location:sesiones-2-03-1.php");
     exit;
 } else {
     unset($_SESSION["avisoNombre"]);
     $_SESSION["nombre"] = $nombre;
-    header("Location:index.php");
+    $_SESSION["paso"] = 3;
+    header("Location:sesiones-2-03-3.php");
     exit;
 }
-?>

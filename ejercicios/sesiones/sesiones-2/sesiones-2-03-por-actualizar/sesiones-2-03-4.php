@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (2) 12 - sesiones-2-12-2.php
+ * Sesiones (2) 03 - sesiones-2-03-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2018-11-14
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+session_name("sesiones-2-03");
+session_start();
+
+if (!isset($_SESSION["paso"])) {
+    $_SESSION["paso"] = 1;
+    header("Location:sesiones-2-03-1.php");
+} elseif (isset($_SESSION["paso"]) && $_SESSION["paso"] != 4) {
+    header("Location:sesiones-2-03-$_SESSION[paso].php");
+    exit;
+}
+
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -30,29 +41,17 @@ function recoge($var)
     return $tmp;
 }
 
-session_name("sesiones_2_12");
-session_start();
+$apellido1 = recoge("apellido1");
 
-$accion   = recoge("accion");
-$nombre   = recoge("nombre");
-$nombreOk = false;
-
-$paginaAnterior = "sesiones-2-12-1.php";
-
-if ($accion == "Cerrar") {
-    session_destroy();
-    header("Location:$paginaAnterior");
-    exit();
+if ($apellido1 == "") {
+    $_SESSION["avisoApellido1"] = "No ha escrito su primer apellido";
+    $_SESSION["paso"] = 3;
+    header("Location:sesiones-2-03-3.php");
+    exit;
+} else {
+    unset($_SESSION["avisoApellido1"]);
+    $_SESSION["apellido1"] = $apellido1;
+    $_SESSION["paso"] = 5;
+    header("Location:sesiones-2-03-5.php");
+    exit;
 }
-
-if ($nombre != "") {
-    $nombreOk = true;
-}
-
-if ($nombreOk) {
-    $_SESSION["nombres"][] = $nombre;
-}
-
-header("Location:$paginaAnterior");
-exit();
-?>

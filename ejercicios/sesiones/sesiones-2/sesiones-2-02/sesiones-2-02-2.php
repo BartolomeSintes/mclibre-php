@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 03 - nombre-2.php
+ * Sesiones (2) 01 - sesiones-2-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-03");
+session_name("sesiones-2-02");
 session_start();
 
 function recoge($var)
@@ -33,16 +33,19 @@ function recoge($var)
     return $tmp;
 }
 
-$nombre = recoge("nombre");
+$palabra1 = recoge("palabra1");
 
-if ($nombre == "") {
-    $_SESSION["avisoNombre"] = "No ha escrito su nombre";
-    header("Location:nombre-1.php");
+if ($palabra1 == "") {
+    $_SESSION["aviso1"] = "No ha escrito nada";
+    header("Location:sesiones-2-02-1.php");
+    exit;
+} elseif (!ctype_alnum($palabra1)) {
+    $_SESSION["aviso1"] = "No ha escrito una sola palabra con letras y números";
+    header("Location:sesiones-2-02-1.php");
     exit;
 } else {
-    unset($_SESSION["avisoNombre"]);
-    $_SESSION["nombre"] = $nombre;
-    header("Location:index.php");
+    unset($_SESSION["aviso1"]);
+    $_SESSION["palabra1"] = $palabra1;
+    header("Location:sesiones-2-02-3.php");
     exit;
 }
-?>

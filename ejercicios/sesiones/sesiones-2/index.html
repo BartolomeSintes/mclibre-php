@@ -22,238 +22,118 @@
 
       <ul>
         <li><a href="#ejercicio-01">01 - Formulario en tres pasos</a></li>
-        <li><a href="#ejercicio-02">02 - Form. independientes</a></li>
-        <li><a href="#ejercicio-03">03 - Nombre y apellidos</a></li>
-        <li><a href="#ejercicio-04">04 - Petición de datos</a></li>
-        <li><a href="#ejercicio-11">11 - Comprobación formulario</a></li>
-        <li><a href="#ejercicio-12">12 - Datos en sesión</a></li>
-        <li><a href="#ejercicio-13">13 - Datos ordenados</a></li>
+        <li><a href="#ejercicio-02">02 - Form. de confirmación</a></li>
+        <li><a href="#ejercicio-03">03 - Form. independientes</a></li>
       </ul>
     </div>
   </nav>
 
   <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1819/cs-sesiones-2-plantillas.zip">plantillas de los ejercicios Sesiones (2)</a>.</p>
 
-  <section id="con-entrada">
-    <h2>Con entrada de datos</h2>
+  <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html">página de soluciones</a>.</p>
 
-    <section id="ejercicio-01">
-      <h3>Sesiones (2) 01 - Formulario en tres pasos</h3>
+  <section id="ejercicio-01">
+    <h3>Sesiones (2) 01 - Formulario en dos pasos</h3>
 
-      <p>Escriba unos formularios encadenados que soliciten el nombre y los apellidos del usuario y pida confirmación.</p>
-      <ul>
-        <li>En la primera página, se solicita el nombre del usuario.</li>
-        <li>En la segunda página se muestra el nombre del usuario y se solicitan los apellidos del usuario.</li>
-        <li>En la tercera página se muestra el nombre y los apellidos del usuario y se solicita confirmación.</li>
-        <li>En la cuarta página se indica si el usuario ha confirmado o no los datos introducidos.</li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="sesiones-2-01/sesiones-2-01-1.php" style="height: 24em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="sesiones-2-01/sesiones-2-01-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-02">
-      <h3>Sesiones (2) 02 - Formularios independientes</h3>
-
-      <p>Escriba un conjunto de siete páginas que soliciten el nombre y los apellidos del usuario.</p>
-      <ul>
-        <li>En la página de inicio (index.html), se muestran enlaces a cuatro páginas.</li>
-        <li>La página "Escribir su nombre" (nombre-1.php) solicita el nombre del usuario y lo envía a otra página (nombre-2.php) que lo guarda en $_SESSION.</li>
-        <li>Si ya se ha escrito el nombre, la página nombre-1.php muestra un aviso.</li>
-        <li>La página "Escribir sus apellidos" (apellidos-1.php) solicita los apellidos del usuario y los envía a otra página (apellidos-2.php) que los guarda en $_SESSION.</li>
-        <li>Si ya se han escrito los apellidos, la página apellidos-1.php muestra un aviso.</li>
-        <li>La página "Ver su nombre y apellidos" (ver.php) muestra los datos almacenados en $_SESSION</li>
-        <li>La página "Borrar la información" (borrar.php) destruye la sesión.</li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="sesiones-2-02/index.php" style="height: 24em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="sesiones-2-02/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-03">
-      <h3>Sesiones (2) 03 - Nombre y apellidos</h3>
-
-      <p>Escriba un conjunto de seis páginas que soliciten el nombre y los apellidos del usuario.</p>
-      <ul>
-        <li>En la página de inicio (index.php), se muestran enlaces a tres páginas y se muestran los datos almacenados en $_SESSION.</li>
-        <li>La página "Escribir su nombre" (nombre-1.php) solicita el nombre del usuario y lo envía a otra página (nombre-2.php) que lo guarda en $_SESSION y se redirige directamente a la página de inicio.</li>
-        <li>La página "Escribir sus apellidos" (apellidos-1.php) solicita los apellidos del usuario y los envía a otra página (apellidos-2.php) que los guarda en $_SESSION y se redirige directamente a la página de inicio.</li>
-        <li>La página "Borrar la información" (borrar.php) destruye la sesión y se redirige directamente a la página de inicio.</li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="sesiones-2-03/index.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="sesiones-2-03/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio-04">
-      <h3>Sesiones (2) 04 - Petición de datos</h3>
-
-      <p>Escriba un conjunto de seis páginas que soliciten datos.</p>
-      <ul>
-        <li>En la página de inicio (index.php), se muestran enlaces a cuatro páginas.</li>
-        <li>La página "Guardar un nuevo dato" (nuevo-1.php) solicita el nombre del dato y su valor y lo envía a otra página (nuevo-2.php) que lo guarda en $_SESSION y se redirige directamente a la página de inicio.</li>
-        <li>La página "Ver los datos actuales" (ver.php) lista los datos de $_SESSION.</li>
-        <li>La página "Borrar datos" (borrar-1.php) muestra un formulario con los datos guardados y casillas de verificación para elegir los datos a borrar y las envía a otra página (borrar-2.php) que los borra de $_SESSION y se redirige directamente a la página de inicio.</li>
-        <li>La página "Cerrar la sesión" (cerrar.php) destruye la sesión y se redirige directamente a la página de inicio.</li>
-      </ul>
-
-      <div class="filaflex">
-        <div class="resultado-object">
-          <object type="text/html" data="sesiones-2-04/index.php" style="height: 29em;">ERROR (no puede mostrarse el objeto)</object>
-        </div>
-        <div class="icono-enlace">
-          <a href="sesiones-2-04/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
-        </div>
-      </div>
-
-      <h3>Comentarios</h3>
-
-      <ul>
-        <li class="incompleto">Por escribir</li>
-      </ul>
-    </section>
-  </section>
-
-  <section id="ejercicio-11">
-    <h2>Sesiones (2) 011 - Comprobación de formulario</h2>
-
-    <p>Escriba un programa que conste de dos páginas y que solicite un nombre y una edad.</p>
+    <p>Escriba dos formularios encadenados que soliciten el nombre y los apellidos del usuario.</p>
     <ul>
-      <li>En la primera página se solicita el nombre y una edad entre 18 y 130 años.</li>
-      <li>La segunda página comprueba si se ha escrito algo de texto y si se ha escrito un número entero entre 18 y 130.
+      <li>En la primera página, se solicita el nombre del usuario.</li>
+      <li>En la segunda página se comprueba el nombre del usuario:
         <ul>
-          <li>Si se ha escrito algo de texto y un número entero entre 18 y 130, los muestra.</li>
-          <li>Si no se ha escrito ningún texto en el nombre o un número entero entre 18 y 130 en la edad, vuelve automáticamente a la primera página, que muestra los valores escritos por el usuario y avisos correspondientes.</li>
+          <li>Si no se ha escrito nada, se vuelve a la primera página, mostrando un aviso.</li>
+          <li>Si se ha escrito algo, se pasa a la tercer página.</li>
         </ul>
       </li>
+      <li>En la tercera página se solicitan los apellidos del usuario.</li>
+      <li>En la cuarta página se comprueban los apeliidos del usuario:
+        <ul>
+          <li>Si no se ha escrito nada, se vuelve a la tercera página, mostrando un aviso.</li>
+          <li>Si se ha escrito algo, se pasa a la quinta página.</li>
+        </ul>
+      </li>
+      <li>La quinta página muestra el nombre y los apellidos introducidos.</li>
     </ul>
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="sesiones-2-11-1.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="sesiones-2-01/sesiones-2-01-1.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="sesiones-2-11-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="sesiones-2-01/sesiones-2-01-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
-
-    <h3>Comentarios</h3>
-    <ul>
-      <li>Ambas páginas utilizan sesiones:
-        <ul>
-          <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["dato"]["nombre"], $_SESSION["dato"]["edad"], $_SESSION["aviso"]["nombre"], $_SESSION["aviso"]["edad"]).</li>
-          <li>La primera página muestra los valores y avisos de la sesión (en caso de existir) y los borra.</li>
-        </ul>
-      </li>
-    </ul>
   </section>
 
-  <section id="ejercicio-12">
-    <h2>Sesiones (2) 012 - Almacenamiento de datos en sesión</h2>
+  <section id="ejercicio-02">
+    <h3>Sesiones (2) 02 - Formulario de confirmación</h3>
 
-    <p>Escriba un formulario que solicite nombres y los almacene en una sesión hasta que el usuario cierre la sesión.</p>
+    <p>Escriba dos formularios encadenados que soliciten una palabra dos veces y compruebe que se ha escrito la misma palabra.</p>
     <ul>
-      <li>La primera página:
+      <li>En la primera página, se solicita una palabra. La palabra puede estar formada por minúsculas, mayúsculas o números.</li>
+      <li>En la segunda página se comprueba la palabra:
         <ul>
-          <li>solicita un nombre</li>
-          <li>muestra todos los valores escritos anteriormente en forma de lista.</li>
-          <li>muestra un enlace para borrar todos los valores escritos anteriormente.</li>
+          <li>Si no se ha escrito nada, se vuelve a la primera página, mostrando un aviso.</li>
+          <li>Si se ha escrito más de una palabra o hay caracteres distintos a letras y números, se vuelve a la primera página, mostrando un aviso.</li>
+          <li>Si se ha escrito una palabra válida, se pasa a la tercera página.</li>
         </ul>
       </li>
-      <li>La segunda página comprueba:
+      <li>En la tercera página se pide repetir la palabra.</li>
+      <li>En la cuarta página se comprueba la segunda palabra:
         <ul>
-          <li>si se ha escrito algo de texto, lo guarda en en $_SESSION.</li>
-          <li>si se ha pedido borrar todos los nombres, los borra.</li>
-          <li>en todos los casos, vuelve automáticamente a la primera página.</li>
+          <li>Si no se ha escrito nada, se vuelve a la tercera página, mostrando un aviso.</li>
+          <li>Si se ha escrito más de una palabra o hay caracteres distintos a letras y números, se vuelve a la tercera página, mostrando un aviso.</li>
+          <li>Si la palabra es válida, pero no coincide con la primera, se vuelve a la primera página, mostrando un aviso.</li>
+          <li>Si se ha escrito una palabra válida, se pasa a la tercera página.</li>
         </ul>
       </li>
+      <li>La quinta página muestra el nombre y los apellidos introducidos.</li>
     </ul>
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="sesiones-2-12-1.php" style="height: 29em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="sesiones-2-02/sesiones-2-02-1.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="sesiones-2-12-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="sesiones-2-02/sesiones-2-02-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
-
-    <h3>Comentarios</h3>
-    <ul>
-      <li>Ambas páginas utilizan sesiones:
-        <ul>
-          <li>La primera página muestra los valores de la sesión (en caso de existir).</li>
-          <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["nombres"][...]).</li>
-          <li>La segunda página puede borrar los valores de $_SESSION con <span class="php-fun">unset()</span> o destruyendo la sesión.</li>
-        </ul>
-      </li>
-    </ul>
   </section>
 
-  <section id="ejercicio-13">
-    <h2>Sesiones (2) 013 - Almacenamiento de datos en sesión, sin repeticiones y ordenados</h2>
+  <section id="ejercicio-03">
+    <h3>Sesiones (2) 03 - Formularios independientes</h3>
 
-    <p>Escriba un formulario que solicite nombres y los almacene (si no se han escrito todavía) en una sesión hasta que el usuario cierre la sesión.</p>
+    <p>Escriba un conjunto de siete páginas que soliciten el nombre y los apellidos del usuario.</p>
     <ul>
-      <li>La primera página:
+      <li>En la página de inicio (index.html), se muestran enlaces a cuatro páginas:
         <ul>
-          <li>solicita un nombre</li>
-          <li>muestra todos los valores escritos anteriormente en forma de lista.</li>
-          <li>muestra un enlace para borrar todos los valores escritos anteriormente.</li>
+          <li>La página "Escribir su nombre" (nombre-1.php) solicita el nombre del usuario y lo envía a otra página (nombre-2.php).</li>
+          <li>Si ya se ha escrito el nombre, la página nombre-1.php lo muestra.</li>
+          <li>La página nombre-2.php comprueba si se ha escrito algo. Si no se ha escrito nada, se vuelve a la página nombre-1.php, mostrando un aviso. Si se ha escrito algo, se guarda el nombre en $_SESSION y se vuelve a la página inicial</li>
         </ul>
       </li>
-      <li>La segunda página comprueba:
+      <li>
         <ul>
-          <li>si se ha escrito algo de texto y ese texto todavía no está guardado, lo guarda en $_SESSION.</li>
-          <li>si se ha pedido borrar todos los nombres, los borra.</li>
-          <li>en todos los casos, vuelve automáticamente a la primera página.</li>
+          <li>La página "Escribir sus apellidos" (apellidos-1.php) solicita los apellidos del usuario y los envía a otra página (apellidos-2.php).</li>
+          <li>Si ya se ha escrito los apellidos, la página apellidos-1.php los muestra.</li>
+          <li>La página apellidos-2.php comprueba si se ha escrito algo. Si no se ha escrito nada, se vuelve a la página apellidos-1, mostrando un aviso. Si se ha escrito algo, se guardan los apellidos en $_SESSION y se vuelve a la página inicial</li>
         </ul>
       </li>
+      <li>La página "Ver su nombre y apellidos" (ver.php) muestra los datos almacenados en $_SESSION</li>
+      <li>La página "Borrar la información" (borrar.php) destruye la sesión.</li>
     </ul>
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="sesiones-2-13-1.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="sesiones-2-03/index.php" style="height: 24em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="sesiones-2-13-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="sesiones-2-03/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
-
-    <h3>Comentarios</h3>
-    <ul>
-      <li>Este ejercicio es prácticamente igual al ejercicio anterior</li>
-      <li>Ambas páginas utilizan sesiones:
-        <ul>
-          <li>La primera página ordena y muestra los valores de la sesión (en caso de existir).</li>
-          <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["nombres"][...]).</li>
-          <li>Para saber si un nombre ya ha sido registrado, se puede utilizar la función <a href="../../../lecciones/php-matrices.html#buscar">in_array()</a> que se explica en la lección sobre matrices.</li>
-          <li>La segunda página puede borrar los valores de $_SESSION con <span class="php-fun">unset()</span> o destruyendo la sesión.</li>
-        </ul>
-      </li>
-    </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 31 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 15 de noviembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />

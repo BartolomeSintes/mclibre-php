@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 02 - borrar.php
+ * Sesiones (2) 03 - nombre-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,16 +22,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones-2-02");
+session_name("sesiones-2-03");
 session_start();
-session_destroy();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Borrar datos.
+    Nombre (1).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -40,9 +40,25 @@ session_destroy();
 </head>
 
 <body>
-  <h1>Borrar datos</h1>
+  <h1>Nombre (1)</h1>
 
-  <p>Los datos han sido borrados.</p>
+<?php
+if (isset($_SESSION["nombre"])) {
+    print "  <p>Usted ya ha escrito que su nombre es: <strong>$_SESSION[nombre]</strong></p>\n";
+    print "\n";
+}
+
+?>
+  <form action="nombre-2.php" method="get">
+    <p>Escriba su nombre:</p>
+
+    <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20" /></p>
+
+    <p>
+      <input type="submit" value="Guardar" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
   <p><a href="index.php">Volver al inicio.</a></p>
 
