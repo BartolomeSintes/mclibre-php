@@ -1,6 +1,6 @@
 <?php
 /**
- * Elimine dibujos en orden - foreach-1-03-1.php
+ * Sesiones (2) 13 - matrices-1-02-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,23 +22,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("foreach-1-03");
+session_name("sesiones_2_13");
 session_start();
-
-$caracterMinimo = 127789;
-$caracterMaximo = 127871;
-$_SESSION["numeroDibujos"] = 7;
-
-if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
-    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$i] = mt_rand($caracterMinimo, $caracterMaximo);
-    }
-    $_SESSION["deseado"] = $_SESSION["dibujos"][array_rand($_SESSION["dibujos"])];
-}
-
-if (isset($_SESSION["dibujos"]) && !isset($_SESSION["deseado"])) {
-    $_SESSION["deseado"] = $_SESSION["dibujos"][array_rand($_SESSION["dibujos"])];
-}
 
 ?>
 <!DOCTYPE html>
@@ -46,33 +31,42 @@ if (isset($_SESSION["dibujos"]) && !isset($_SESSION["deseado"])) {
 <head>
   <meta charset="utf-8" />
   <title>
-    Elimine dibujos.
-    foreach (1). Sesiones.
+    Almacenamiento de datos en sesión.
+    Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
-  <style>
-  button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
-  </style>
 </head>
 
 <body>
+  <h1>Almacenamiento de datos en sesión</h1>
+
+  <form action="matrices-1-02-2.php" method="get">
+    <p>Escriba algún nombre: <input type="text" name="nombre" size="30" maxlength="30" /></p>
+
+    <p>
+      <input type="submit" value="Añadir" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
+
 <?php
-print "  <h1>$_SESSION[numeroDibujos] dibujos</h1>\n";
-print "\n";
-print "  <p>Haga clic en el siguiente dibujo: <span style=\"font-size: 400%\">"
-     . "&#$_SESSION[deseado];</span>.</p>\n";
-print "\n";
-print "  <form action=\"foreach-1-03-2.php\">\n";
-print "    <p>\n";
-foreach ($_SESSION["dibujos"] as $indice => $valor) {
-    print "      <button name=\"elimina\" value=\"$indice\" style=\"font-size: 400%\">\n";
-    print "        &#$valor;\n";
-    print "      </button>\n";
+if (!count($_SESSION)) {
+    print "  <p>Todavía no se han introducido nombres.</p>\n";
+} else {
+    print "  <p>Datos introducidos:</p>\n";
+    print "\n";
+    sort($_SESSION["nombres"]);
+    print "  <ul>\n";
+    foreach ($_SESSION["nombres"] as $valor) {
+        print "    <li>$valor</li>\n";
+    }
+    print "  </ul>\n";
+    print "\n";
+    print "  <p><a href=\"matrices-1-02-2.php?accion=Cerrar\">Cerrar sesión "
+        . "(se perderán los datos almacenados).</a></p>\n";
 }
-print "    </p>\n";
-print "  </form>\n";
 ?>
 
   <footer>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Hombres y mujeres (Formulario) - foreach-1-14-1.php
+ * Encuesta (Formulario) - matrices-1-23-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-foreach-1-14");
+session_name("cs-matrices-1-23");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <title>
-    Hombres y mujeres (Formulario).
+    Encuesta (Formulario).
     foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,30 +39,45 @@ session_start();
 </head>
 
 <body>
-  <h1>Hombres y mujeres (Formulario)</h1>
+  <h1>Encuesta (Formulario)</h1>
 
-  <p>Escriba un nombre propio en cada caja de texto y si se trata de un hombre o de una mujer.</p>
+<?php
+// Genera el número de preguntas y respuestas a mostrar
+$preguntas  = rand(1, 10);
+$respuestas = rand(2, 10);
 
-  <form action="foreach-1-14-2.php" method="get">
+// Guarda en la sesión el número de preguntas y respuestas
+$_SESSION["preguntas"]  = $preguntas;
+$_SESSION["respuestas"] = $respuestas;
+
+print "  <p>Valore de 1 a $respuestas cada uno de estos aspectos.</p>\n";
+?>
+
+  <form action="matrices-1-23-2.php" method="get">
     <table>
       <tbody>
 <?php
-// Genera el número de cajas de texto y botones radio a mostrar
-$numero = rand(1, 10);
+// Primera fila
+print "        <tr>\n";
+print "          <th></th>\n";
+// Bucle para generar la primera fila, las celdas sólo contienen números
+for ($j = 1; $j <= $respuestas; $j++) {
+    print "          <th>$j</th>\n";
+}
+print "        </tr>\n";
 
-// Guarda en la sesión el número de cajas de texto y botones radio
-$_SESSION["numero"] = $numero;
-
-// Bucle para generar las cajas de texto y los botones radio
-for ($i = 1; $i <= $numero; $i++) {
+// Bucle para generar las siguientes filas
+for ($i = 1; $i <= $preguntas; $i++) {
     print "        <tr>\n";
-    print "          <td>$i</td>\n";
-    // Los nombres de los controles son dos matrices (c[] y b())
-    // En cada fila el name del botón radio es el mismo (para que formen un botón radio)
-    // pero el value es distinto (h o m)
-    print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\" /></td>\n";
-    print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"h\" />Hombre</label></td>\n";
-    print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"m\" />Mujer</label></td>\n";
+    // La primera celda contiene el número de pregunta
+    print "          <th>Pregunta $i:</th>\n";
+    // Bucle para generar las celdas con los botones radio
+    for ($j = 1; $j <= $respuestas; $j++) {
+        // El nombre del control es una matriz (e[])
+        // En cada fila el name del control es el mismo (para que formen un botón radio)
+        // pero el value va cambiando
+        print "          <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\" /></td>\n";
+    }
     print "        </tr>\n";
 }
 ?>

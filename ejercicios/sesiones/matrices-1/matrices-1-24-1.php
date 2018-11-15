@@ -1,6 +1,6 @@
 <?php
 /**
- * Seleccione dibujos - foreach-1-02-1.php
+ * Hombres y mujeres (Formulario) - matrices-1-24-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -21,64 +21,59 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-session_name("foreach-1-02");
+// Se accede a la sesión
+session_name("cs-matrices-1-24");
 session_start();
-
-$caracterMinimo = 128512;
-$caracterMaximo = 128567;
-$_SESSION["numeroDibujos"] = 7;
-
-if (!isset($_SESSION["disponibles"]) || count($_SESSION["disponibles"]) == 0) {
-    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["disponibles"][$i] = mt_rand($caracterMinimo, $caracterMaximo);
-    }
-    unset($_SESSION["seleccionados"]);
-    $_SESSION["seleccionados"] = [];
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Seleccione dibujos.
+    Hombres y mujeres (Formulario).
     foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
-  <style>
-    button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
-  </style>
 </head>
 
 <body>
+  <h1>Hombres y mujeres (Formulario)</h1>
+
+  <p>Escriba un nombre propio en cada caja de texto y si se trata de un hombre o de una mujer.</p>
+
+  <form action="matrices-1-24-2.php" method="get">
+    <table>
+      <tbody>
 <?php
-print "  <h1>$_SESSION[numeroDibujos] dibujos para seleccionar</h1>\n";
-print "\n";
-print "  <p>Haga clic en un dibujo para seleccionarlo.</p>\n";
-print "\n";
-print "  <h2>Dibujos disponibles</h2>\n";
-print "\n";
-print "  <form action=\"foreach-1-02-2.php\">\n";
-print "    <p>\n";
-foreach ($_SESSION["disponibles"] as $indice => $valor) {
-    print "      <button name=\"selecciona\" value=\"$indice\" style=\"font-size: 400%\">\n";
-    print "        &#$valor;\n";
-    print "      </button>\n";
+// Genera el número de cajas de texto y botones radio a mostrar
+$numero = rand(1, 10);
+
+// Guarda en la sesión el número de cajas de texto y botones radio
+$_SESSION["numero"] = $numero;
+
+// Bucle para generar las cajas de texto y los botones radio
+for ($i = 1; $i <= $numero; $i++) {
+    print "        <tr>\n";
+    print "          <td>$i</td>\n";
+    // Los nombres de los controles son dos matrices (c[] y b())
+    // En cada fila el name del botón radio es el mismo (para que formen un botón radio)
+    // pero el value es distinto (h o m)
+    print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\" /></td>\n";
+    print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"h\" />Hombre</label></td>\n";
+    print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"m\" />Mujer</label></td>\n";
+    print "        </tr>\n";
 }
-print "    </p>\n";
-print "  </form>\n";
-print "\n";
-print "  <h2>Dibujos seleccionados</h2>\n";
-print "\n";
-print "  <p style=\"font-size: 400%; line-height: 25%;\">\n";
-foreach ($_SESSION["seleccionados"] as $valor) {
-    print "      &#$valor;\n";
-}
-print "  </p>\n";
 ?>
+      </tbody>
+    </table>
+
+    <p>
+      <input type="submit" value="Contar" />
+      <input type="reset" value="Borrar" />
+    </p>
+  </form>
 
   <footer>
     <p class="ultmod">

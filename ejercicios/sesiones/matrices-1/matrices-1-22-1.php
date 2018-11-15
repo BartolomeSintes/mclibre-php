@@ -1,6 +1,6 @@
 <?php
 /**
- * Palabras repetidas (Formulario) - foreach-1-12-1.php
+ * Palabras repetidas (Formulario) - matrices-1-22-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-foreach-1-12");
+session_name("cs-matrices-1-22");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ session_start();
 
   <p>Escriba una palabra en cada caja de texto y le diré si ha repetido alguna.</p>
 
-  <form action="foreach-1-12-2.php" method="get">
+  <form action="matrices-1-22-2.php" method="get">
     <table>
       <tbody>
 <?php

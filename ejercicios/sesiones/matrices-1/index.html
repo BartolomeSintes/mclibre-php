@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>foreach (1). Enunciados. Ejercicios (sesiones). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Matrices (1). Enunciados. Ejercicios (sesiones). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../../varios/php.css" title="mclibre" />
   <link rel="icon" href="../../../varios/favicon.ico" />
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <h1>Ejercicios (sesiones) - foreach (1) - Enunciados</h1>
+  <h1>Ejercicios (sesiones) - Matrices (1) - Enunciados</h1>
 
   <nav>
     <p>
@@ -21,11 +21,13 @@
     </p>
 
     <div class="toc">
-      <h2>foreach (1)</h2>
+      <h2>Matrices (1)</h2>
 
       <ul>
+        <li><a href="#ejercicio-12">12 - Datos en sesión</a></li>
+        <li><a href="#ejercicio-13">13 - Datos ordenados</a></li>
         <li><a href="#ejercicio-01">01 - Elimine dibujos</a></li>
-        <li><a href="#ejercicio-02">02 - Selecciones dibujos</a></li>
+        <li><a href="#ejercicio-02">02 - Seleccione dibujos</a></li>
         <li><a href="#ejercicio-02">03 - Elimine en orden</a></li>
         <li><a href="#ejercicio-11">11 - Tabla de una fila</a></li>
         <li><a href="#ejercicio-12">12 - Palabras repetidas</a></li>
@@ -36,12 +38,100 @@
     </div>
   </nav>
 
-  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1819/cs-foreach-1-plantillas.zip">plantillas de los ejercicios foreach (1)</a>.</p>
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/1819/cs-foreach-1-plantillas.zip">plantillas de los ejercicios Matrices (1)</a>.</p>
 
   <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html">página de soluciones</a>.</p>
 
+
+  <section id="ejercicio-12">
+    <h2>Sesiones (2) 012 - Almacenamiento de datos en sesión</h2>
+
+    <p>Escriba un formulario que solicite nombres y los almacene en una sesión hasta que el usuario cierre la sesión.</p>
+    <ul>
+      <li>La primera página:
+        <ul>
+          <li>solicita un nombre</li>
+          <li>muestra todos los valores escritos anteriormente en forma de lista.</li>
+          <li>muestra un enlace para borrar todos los valores escritos anteriormente.</li>
+        </ul>
+      </li>
+      <li>La segunda página comprueba:
+        <ul>
+          <li>si se ha escrito algo de texto, lo guarda en $_SESSION.</li>
+          <li>si se ha pedido borrar todos los nombres, los borra.</li>
+          <li>en todos los casos, vuelve automáticamente a la primera página.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="matrices-1-01-1.php" style="height: 29em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="matrices-1-01-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+
+    <h3>Comentarios</h3>
+    <ul>
+      <li>Ambas páginas utilizan sesiones:
+        <ul>
+          <li>La primera página muestra los valores de la sesión (en caso de existir).</li>
+          <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["nombres"][...]).</li>
+          <li>La segunda página puede borrar los valores de $_SESSION con <span class="php-fun">unset()</span> o destruyendo la sesión.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejercicio-13">
+    <h2>Sesiones (2) 013 - Almacenamiento de datos en sesión, sin repeticiones y ordenados</h2>
+
+    <p>Escriba un formulario que solicite nombres y los almacene (si no se han escrito todavía) en una sesión hasta que el usuario cierre la sesión.</p>
+    <ul>
+      <li>La primera página:
+        <ul>
+          <li>solicita un nombre</li>
+          <li>muestra todos los valores escritos anteriormente en forma de lista.</li>
+          <li>muestra un enlace para borrar todos los valores escritos anteriormente.</li>
+        </ul>
+      </li>
+      <li>La segunda página comprueba:
+        <ul>
+          <li>si se ha escrito algo de texto y ese texto todavía no está guardado, lo guarda en $_SESSION.</li>
+          <li>si se ha pedido borrar todos los nombres, los borra.</li>
+          <li>en todos los casos, vuelve automáticamente a la primera página.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="matrices-1-02-1.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="matrices-1-02-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+      </div>
+    </div>
+
+    <h3>Comentarios</h3>
+    <ul>
+      <li>Este ejercicio es prácticamente igual al ejercicio anterior</li>
+      <li>Ambas páginas utilizan sesiones:
+        <ul>
+          <li>La primera página ordena y muestra los valores de la sesión (en caso de existir).</li>
+          <li>La segunda página guarda los valores y avisos en la sesión (por ejemplo, $_SESSION["nombres"][...]).</li>
+          <li>Para saber si un nombre ya ha sido registrado, se puede utilizar la función <a href="../../../lecciones/php-matrices.html#buscar">in_array()</a> que se explica en la lección sobre matrices.</li>
+          <li>La segunda página puede borrar los valores de $_SESSION con <span class="php-fun">unset()</span> o destruyendo la sesión.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+
   <section id="ejercicio-01">
-    <h2>foreach (1) 01 - Elimine dibujos</h2>
+    <h2>Matrices (1) 01 - Elimine dibujos</h2>
 
     <p>Escriba un programa que muestre siete dibujos. Los dibujos serán entidades numéricas del rango 128000 a 128060 (emojis de animales) y pueden repetirse. Al hacer clic en un dibujo, el dibujo dejará de mostrarse. Cuando se elimine el último dibujo, se volverán a mostrar siete dibujos.</p>
 
@@ -53,16 +143,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="foreach-1-01-1.php" style="height: 20em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="matrices-1-11-1.php" style="height: 20em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="foreach-1-01-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="matrices-1-11-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
   </section>
 
   <section id="ejercicio-02">
-      <h2>foreach (1) 02 - Seleccione dibujos</h2>
+      <h2>Matrices (1) 02 - Seleccione dibujos</h2>
 
       <p>Escriba un programa que muestre siete dibujos. Los dibujos serán entidades numéricas del rango 128512 a 128567 (emojis de caras) y pueden repetirse. Al hacer clic en un dibujo, el dibujo se mostrará en la segunda fila de dibujos. Cuando se elimine el último dibujo, se volverán a mostrar siete dibujos para elegir.</p>
 
@@ -74,16 +164,16 @@
 
       <div class="filaflex">
         <div class="resultado-object">
-          <object type="text/html" data="foreach-1-02-1.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
+          <object type="text/html" data="matrices-1-12-1.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
         <div class="icono-enlace">
-          <a href="foreach-1-02-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+          <a href="matrices-1-12-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
         </div>
       </div>
     </section>
 
     <section id="ejercicio-03">
-      <h2>foreach (1) 03 - Elimine dibujos en el orden indicado</h2>
+      <h2>Matrices (1) 03 - Elimine dibujos en el orden indicado</h2>
 
       <p>Escriba un programa que muestre siete dibujos. Los dibujos serán entidades numéricas del rango 128512 a 128567 (emojis de alimentos y plantas) y pueden repetirse. Además se mostrará el dibujo que se quiere eliminar. Al hacer clic en el dibujo que coincida con el de muestra, el dibujo se eliminará. Cuando se elimine el último dibujo, se volverán a mostrar siete dibujos para elegir.</p>
 
@@ -95,10 +185,10 @@
 
       <div class="filaflex">
         <div class="resultado-object">
-          <object type="text/html" data="foreach-1-03-1.php" style="height: 23em;">ERROR (no puede mostrarse el objeto)</object>
+          <object type="text/html" data="matrices-1-13-1.php" style="height: 23em;">ERROR (no puede mostrarse el objeto)</object>
         </div>
         <div class="icono-enlace">
-          <a href="foreach-1-03-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+          <a href="matrices-1-13-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
         </div>
       </div>
     </section>
@@ -125,7 +215,7 @@
   </ul>
 
   <section id="ejercicio-11">
-    <h2>foreach (1) 11 - Tabla de una fila con casillas de verificación</h2>
+    <h2>Matrices (1) 11 - Tabla de una fila con casillas de verificación</h2>
 
     <p>Escriba un programa que muestre una tabla de una fila con casillas de verificación en cada celda y cuente las casillas marcadas. El programa constará de dos páginas:</p>
     <ul>
@@ -135,16 +225,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="foreach-1-11-1.php" style="height: 20em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="matrices-1-21-1.php" style="height: 20em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="foreach-1-11-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="matrices-1-21-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
   </section>
 
   <section id="ejercicio-12">
-    <h2>foreach (1) 12 - Palabras repetidas</h2>
+    <h2>Matrices (1) 12 - Palabras repetidas</h2>
 
     <p>Escriba un programa que permita introducir palabras y que compruebe si están o no repetidas. El programa constará de dos páginas:</p>
     <ul>
@@ -154,16 +244,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="foreach-1-12-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="matrices-1-22-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="foreach-1-12-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="matrices-1-22-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
   </section>
 
   <section id="ejercicio-13">
-    <h2>foreach (1) 13 - Encuesta</h2>
+    <h2>Matrices (1) 13 - Encuesta</h2>
 
     <p>Escriba un programa que permita contestar una encuesta ficticia. El programa constará de dos páginas:</p>
     <ul>
@@ -173,16 +263,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="foreach-1-13-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="matrices-1-23-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="foreach-1-13-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="matrices-1-23-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
   </section>
 
   <section id="ejercicio-14">
-    <h2>foreach (1) 14 - Hombres y mujeres</h2>
+    <h2>Matrices (1) 14 - Hombres y mujeres</h2>
 
     <p>Escriba un programa que permita introducir nombres de personas y su sexo y compruebe cuántas se han escrito.. El programa constará de dos páginas:</p>
     <ul>
@@ -192,16 +282,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="foreach-1-14-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="matrices-1-24-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="foreach-1-14-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="matrices-1-24-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
   </section>
 
   <section id="ejercicio-15">
-    <h2>foreach (1) 15 - Tabla cuadrada con casillas de verificación</h2>
+    <h2>Matrices (1) 15 - Tabla cuadrada con casillas de verificación</h2>
 
     <p>Escriba un programa que muestre una tabla cuadrada con casillas de verificación en cada celda y cuente las casillas marcadas. El programa constará de dos páginas:</p>
     <ul>
@@ -211,10 +301,10 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="foreach-1-15-1.php" style="height: 40em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="matrices-1-25-1.php" style="height: 40em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="foreach-1-15-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="matrices-1-25-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
       </div>
     </div>
   </section>

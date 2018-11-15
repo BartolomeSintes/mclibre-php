@@ -1,6 +1,6 @@
 <?php
 /**
- * Elimine dibujos en orden - foreach-1-03-2.php
+ * Elimine dibujos - matrices-1-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("foreach-1-03");
+session_name("matrices-1-11");
 session_start();
 
 if (!isset($_SESSION["dibujos"])) {
-    header("Location:foreach-1-03-1.php");
+    header("Location:matrices-1-11-1.php");
     exit;
 }
 
@@ -38,19 +38,16 @@ function recoge($var)
     return $tmp;
 }
 
-$elimina= recoge("elimina");
+$elimina = recoge("elimina");
 
 if ($elimina == "") {
 } elseif (!is_numeric($elimina)) {
 } elseif (!ctype_digit($elimina)) {
 } else {
-    if (isset($_SESSION["dibujos"][$elimina])
-        && $_SESSION["dibujos"][$elimina] == $_SESSION["deseado"]) {
+    if (isset($_SESSION["dibujos"][$elimina])) {
         unset($_SESSION["dibujos"][$elimina]);
-        unset($_SESSION["deseado"]);
     }
-    // Nota: Como compara los dibujos, si hay un dibujo repetido, lo elimina siempre
 }
 
-header("Location:foreach-1-03-1.php");
+header("Location:matrices-1-11-1.php");
 exit;

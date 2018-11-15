@@ -1,6 +1,6 @@
 <?php
 /**
- * Tabla con casillas de verificación (Formulario) - foreach-1-11-1.php
+ * Tabla con casillas de verificación (Formulario) - matrices-1-21-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-foreach-1-11");
+session_name("cs-matrices-1-21");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ session_start();
 
   <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>
 
-  <form action="foreach-1-11-2.php" method="get">
+  <form action="matrices-1-21-2.php" method="get">
     <table class="conborde">
       <tbody>
         <tr>

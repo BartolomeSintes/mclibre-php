@@ -1,6 +1,6 @@
 <?php
 /**
- * Seleccione dibujos - foreach-1-02-2.php
+ * Sesiones (2) 12 - matrices-1-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,14 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("foreach-1-02");
-session_start();
-
-if (!isset($_SESSION["disponibles"])) {
-    header("Location:foreach-1-02-1.php");
-    exit;
-}
-
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
@@ -38,17 +30,29 @@ function recoge($var)
     return $tmp;
 }
 
-$selecciona= recoge("selecciona");
+session_name("sesiones_2_12");
+session_start();
 
-if ($selecciona == "") {
-} elseif (!is_numeric($selecciona)) {
-} elseif (!ctype_digit($selecciona)) {
-} else {
-    if (isset($_SESSION["disponibles"][$selecciona])) {
-        $_SESSION["seleccionados"][] = $_SESSION["disponibles"][$selecciona];
-        unset($_SESSION["disponibles"][$selecciona]);
-    }
+$accion   = recoge("accion");
+$nombre   = recoge("nombre");
+$nombreOk = false;
+
+$paginaAnterior = "matrices-1-01-1.php";
+
+if ($accion == "Cerrar") {
+    session_destroy();
+    header("Location:$paginaAnterior");
+    exit();
 }
 
-header("Location:foreach-1-02-1.php");
-exit;
+if ($nombre != "") {
+    $nombreOk = true;
+}
+
+if ($nombreOk) {
+    $_SESSION["nombres"][] = $nombre;
+}
+
+header("Location:$paginaAnterior");
+exit();
+?>

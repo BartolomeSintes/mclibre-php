@@ -1,6 +1,6 @@
 <?php
 /**
- * Elimine dibujos - foreach-1-01-1.php
+ * Seleccione dibujos - matrices-1-12-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,17 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("foreach-1-01");
+session_name("matrices-1-12");
 session_start();
 
-$caracterMinimo = 128000;
-$caracterMaximo = 128060;
+$caracterMinimo = 128512;
+$caracterMaximo = 128567;
 $_SESSION["numeroDibujos"] = 7;
 
-if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
+if (!isset($_SESSION["disponibles"]) || count($_SESSION["disponibles"]) == 0) {
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$i] = mt_rand($caracterMinimo, $caracterMaximo);
+        $_SESSION["disponibles"][$i] = mt_rand($caracterMinimo, $caracterMaximo);
     }
+    unset($_SESSION["seleccionados"]);
+    $_SESSION["seleccionados"] = [];
 }
 ?>
 <!DOCTYPE html>
@@ -40,7 +42,7 @@ if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
 <head>
   <meta charset="utf-8" />
   <title>
-    Elimine dibujos.
+    Seleccione dibujos.
     foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -53,19 +55,29 @@ if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
 
 <body>
 <?php
-print "  <h1>$_SESSION[numeroDibujos] dibujos, y quedaron " . count($_SESSION["dibujos"]) . "</h1>\n";
+print "  <h1>$_SESSION[numeroDibujos] dibujos para seleccionar</h1>\n";
 print "\n";
-print "  <p>Haga clic en un dibujo para eliminarlo.</p>\n";
+print "  <p>Haga clic en un dibujo para seleccionarlo.</p>\n";
 print "\n";
-print "  <form action=\"foreach-1-01-2.php\">\n";
+print "  <h2>Dibujos disponibles</h2>\n";
+print "\n";
+print "  <form action=\"matrices-1-12-2.php\">\n";
 print "    <p>\n";
-foreach ($_SESSION["dibujos"] as $indice => $valor) {
-    print "      <button name=\"elimina\" value=\"$indice\" style=\"font-size: 400%\">\n";
+foreach ($_SESSION["disponibles"] as $indice => $valor) {
+    print "      <button name=\"selecciona\" value=\"$indice\" style=\"font-size: 400%\">\n";
     print "        &#$valor;\n";
     print "      </button>\n";
 }
 print "    </p>\n";
 print "  </form>\n";
+print "\n";
+print "  <h2>Dibujos seleccionados</h2>\n";
+print "\n";
+print "  <p style=\"font-size: 400%; line-height: 25%;\">\n";
+foreach ($_SESSION["seleccionados"] as $valor) {
+    print "      &#$valor;\n";
+}
+print "  </p>\n";
 ?>
 
   <footer>

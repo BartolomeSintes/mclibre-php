@@ -1,6 +1,6 @@
 <?php
 /**
- * Tabla con casillas de verificación (Resultado) - foreach-1-15-2.php
+ * Tabla con casillas de verificación (Resultado) - matrices-1-25-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-foreach-1-15");
+session_name("cs-matrices-1-25");
 session_start();
 
 // Si el tamaño de la tabla no está guardado en la sesión, vuelve al formulario
 if (!isset($_SESSION["numero"])) {
-    header("Location: foreach-1-15-1.php");
+    header("Location: matrices-1-25-1.php");
     exit;
 }
 ?>
@@ -117,7 +117,7 @@ if ($cOk) {
     }
 }
 ?>
-  <p><a href="foreach-1-15-1.php">Volver al formulario.</a></p>
+  <p><a href="matrices-1-25-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
