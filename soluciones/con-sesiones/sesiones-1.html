@@ -29,7 +29,7 @@
           <ul>
             <li><a href="../../ejercicios/sesiones/sesiones-1/index.html#ejercicio-01">01 - Texto (1)</a></li>
             <li><a href="../../ejercicios/sesiones/sesiones-1/index.html#ejercicio-02">02 - Texto (2)</a></li>
-            <li><a href="../../ejercicios/sesiones/sesiones-1/index.html#ejercicio-03">03 - Palabra en mayúsculas</a></li>
+            <li><a href="../../ejercicios/sesiones/sesiones-1/index.html#ejercicio-03">03 - Mayúsculas</a></li>
             <li><a href="../../ejercicios/sesiones/sesiones-1/index.html#ejercicio-04">04 - Mayúsc. y minúsculas</a></li>
           </ul>
         </li>
@@ -48,9 +48,12 @@
         <li><a href="#formularios">Formularios</a>
           <ul>
             <li><a href="#ejercicio-01">01 - Texto (1)</a></li>
-            <li><a href="#ejercicio-02-1">02 - Texto (2) - A</a></li>
-            <li><a href="#ejercicio-02-2">02 - Texto (2) - B</a></li>
-            <li><a href="#ejercicio-03">03 - Palabra en mayúsculas</a></li>
+            <li><a href="#ejercicio-02">02 - Texto (2) - A</a></li>
+            <li><a href="#ejercicio-02-b">02 - Texto (2) - B</a></li>
+            <li><a href="#ejercicio-03">03 - Mayúsculas - A</a></li>
+            <li><a href="#ejercicio-03-b">03 - Mayúsculas - B</a></li>
+            <li><a href="#ejercicio-03-c">03 - Mayúsculas - C</a></li>
+            <li><a href="#ejercicio-03-d">03 - Mayúsculas - D</a></li>
             <li><a href="#ejercicio-04">04 - Mayúsc. y minúsculas</a></li>
           </ul>
         </li>
@@ -184,7 +187,7 @@ if ($textoOk) {
       </div>
     </section>
 
-    <section id="ejercicio-02-1">
+    <section id="ejercicio-02">
       <h3>Sesiones (1) 02 - Formulario Texto (2) - Solución A</h3>
 
       <p>Esta primera solución intenta parecerse lo más posible a la solución propuesta para el ejercicio anterior. Este podría ser el orden en que se iría realizando este ejercicio:</p>
@@ -284,7 +287,7 @@ if (!$textoOk) {
       </div>
     </section>
 
-    <section id="ejercicio-02-2">
+    <section id="ejercicio-02-b">
       <h3>Sesiones (1) 02 - Formulario Texto (2) - Solución B</h3>
 
       <p>En esta segunda solución, vamos a simplificar la solución propuesta para en el apartado anterior. Las simplificaciones las haremos en la segunda página.</p>
@@ -307,13 +310,13 @@ if (!$textoOk) {
         <li>Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.</li>
       </ol>
 
-      <p>sesiones-1-02-1.php</p>
+      <p>sesiones-1-02-b-1.php</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 // Se accede a la sesión <span class="numero-circulo">7</span>
-session_name("sesiones-1-02");
+session_name("sesiones-1-02-b");
 session_start();
 ?&gt;</code>
 </pre>
@@ -337,19 +340,19 @@ if (isset($_SESSION["texto"])) {
 </pre>
         <pre>
 <code class="language-html">
-  &lt;form action="sesiones-1-02-2.php" method="get"&gt;
+  &lt;form action="sesiones-1-02-b-2.php" method="get"&gt;
     &lt;p&gt;Escriba texto:&lt;/p&gt;
 ...</code>
 </pre>
       </div>
 
-      <p>sesiones-1-02-2.php</p>
+      <p>sesiones-1-02-b-2.php</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 // Se accede a la sesión <span class="numero-circulo">4</span>
-session_name("sesiones-1-02");
+session_name("sesiones-1-02-b");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo">1</span>
@@ -371,14 +374,14 @@ if ($texto != "") {
 }
 
 // Volvemos al formulario <span class="numero-circulo">5</span>
-header("Location:sesiones-1-02-1.php");
+header("Location:sesiones-1-02-b-1.php");
 ?&gt;</code>
 </pre>
       </div>
     </section>
 
     <section id="ejercicio-03">
-      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas</h3>
+      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución A</h3>
 
       <p>Este ejercicio es parecido al anterior. La diferencia es que si la palabra escrita por el usuario es incorrecta, el formulario muestra un mensaje de error y la palabra incorrecta en la caja de texto para su correción.</p>
 
@@ -415,7 +418,7 @@ session_start();
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
-  &lt;form action="sesiones-1-02-2.php" method="get"&gt;
+  &lt;form action="sesiones-1-03-2.php" method="get"&gt;
 </code>
 </pre>
         <pre>
@@ -486,6 +489,313 @@ if ($palabra == "") {
 
 // Volvemos al formulario <span class="numero-circulo">7</span>
 header("Location:sesiones-1-03-1.php");
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-03-b">
+      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución B</h3>
+
+      <p>Esta solución establece tres variables de sesión en vez de las dos de la solución anterior: el mensaje de error, la palabra correcta y la palabra incorrecta.</p>
+
+      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
+
+      <ol>
+        <li>En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
+        <li>Borramos todas las variables de sesión establecidas anteriormente.</li>
+        <li>Por tanto, la página 2 debe conectarse a la sesión.</li>
+        <li>En la comprobación, si el dato es vacío, se guarda el aviso correspondiente.</li>
+        <li>Si la palabra no está en mayúsculas, se guarda el aviso correspondiente y la palabra escrita por el usuario (para mostrarla en la caja de texto).</li>
+        <li>Si la palabra es correcta, se guarda la palabra escrita por el usuario.</li>
+        <li>Finalmente, volvemos a la primera página.</li>
+        <li>La página 1 debe conectarse a la sesión.</li>
+        <li>Si hay un error y un intento guardados en la sesión, el formulario muestra el aviso y la palabra en la caja de texto.</li>
+        <li>Si hay un error guardado en la sesión, el formulario muestra el aviso.</li>
+        <li>Si no hay un error guardado en la sesión, el formulario muestra la caja de texto.</li>
+        <li>Si hay una palabra guardada en la sesión, la palabra correcta debe mostrarse antes del formulario (ya que la palabra sólo se guarda cuando es correcta).</li>
+      </ol>
+
+      <p>sesiones-1-03-b-1.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-03-b");
+session_start();
+?&gt;</code>
+</pre>
+        <pre>
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+...
+&lt;body&gt;
+  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
+
+  &lt;form action="sesiones-1-03-b-2.php" method="get"&gt;
+</code>
+</pre>
+        <pre>
+<code class="language-php">&lt;?php
+//Si hay guardada una palabra en la sesión ... <span class="numero-circulo">12</span>
+if (isset($_SESSION["palabra"])) {
+    // ... mostramos la palabra
+    print "  &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
+
+print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
+print "\n";
+
+if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
+  // Si hemos detectado un error y el usuario había escrito una palabra para corregir <span class="numero-circulo">9</span>
+  // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
+  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\" /&gt; "
+  . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
+  print "\n";
+} elseif (isset($_SESSION["error"])) {
+  // Si hemos detectado un error, pero no hay palabra para corregir <span class="numero-circulo">10</span>
+  // Mostramos el control, añadiendo el aviso
+  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /&gt; "
+      . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
+  print "\n";
+} else {
+  // Si no hemos detectado un error, mostramos simplemenete el control <span class="numero-circulo">11</span>
+  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
+  print "\n";
+}
+?&gt;</code>
+</pre>
+        <pre>
+<code class="language-html">...</code>
+</pre>
+      </div>
+
+      <p>sesiones-1-03-b-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-03-b");
+session_start();
+
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
+    return $tmp;
+}
+
+// Recogemos la palabra
+$palabra   = recoge("palabra");
+
+// Borramos todos los datos anteriores <span class="numero-circulo">2</span>
+unset($_SESSION["intento"]);
+unset($_SESSION["error"]);
+unset($_SESSION["palabra"]);
+
+// Comprobamos la palabra
+if ($palabra == "") {
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">4</span>
+    $_SESSION["error"] = "No ha escrito ninguna palabra";
+} elseif (!ctype_upper($palabra)) {
+    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior <span class="numero-circulo">5</span>
+    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
+    $_SESSION["intento"] = $palabra;
+} else {
+    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión <span class="numero-circulo">6</span>
+    $_SESSION["palabra"] = $palabra;
+}
+
+// Volvemos al formulario <span class="numero-circulo">7</span>
+header("Location:sesiones-1-03-b-1.php");
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-03-c">
+      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución C</h3>
+
+      <p>Esta solución es una variante de la anterior. La segunda página es igual, la diferencia está en la primera página. En vez de escribir un control completo distinto dependiendo de las variables guardadas en la sesión de la solución B, en esta solución el control se escribe en varios <span class="php-res">print</span> y entre medias se escribien bloques <span class="php-res">if</span> que añaden texto en caso necesario.</p>
+
+      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
+
+      <ol>
+        <li>En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
+        <li>Borramos todas las variables de sesión establecidas anteriormente.</li>
+        <li>Por tanto, la página 2 debe conectarse a la sesión.</li>
+        <li>En la comprobación, si el dato es vacío, se guarda el aviso correspondiente.</li>
+        <li>Si la palabra no está en mayúsculas, se guarda el aviso correspondiente y la palabra escrita por el usuario (para mostrarla en la caja de texto).</li>
+        <li>Si la palabra es correcta, se guarda la palabra escrita por el usuario.</li>
+        <li>Finalmente, volvemos a la primera página.</li>
+        <li>La página 1 debe conectarse a la sesión.</li>
+        <li>Si hay un intento guardados en la sesión, añadimos el atributo <span class="html-atri">value</span>.</li>
+        <li>Si hay un error guardado en la sesión, añadimos el error.</li>
+        <li>Si hay una palabra guardada en la sesión, la palabra correcta debe mostrarse antes del formulario (ya que la palabra sólo se guarda cuando es correcta).</li>
+      </ol>
+
+      <p>sesiones-1-03-c-1.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">8</span>
+session_name("sesiones-1-03-c");
+session_start();
+?&gt;</code>
+</pre>
+        <pre>
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+...
+&lt;body&gt;
+  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
+
+  &lt;form action="sesiones-1-03-c-2.php" method="get"&gt;
+</code>
+</pre>
+        <pre>
+<code class="language-php">&lt;?php
+  //Si hay guardada una palabra en la sesión ... <span class="numero-circulo">11</span>
+  if (isset($_SESSION["palabra"])) {
+      // ... mostramos la palabra
+      print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
+      print "\n";
+  }
+
+  print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
+  print "\n";
+
+  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" ";
+
+  // Si hay que incluir el intento anterior en value, lo incluimos <span class="numero-circulo">9</span>
+  if (isset($_SESSION["intento"])) {
+      print "value=\"$_SESSION[intento]\" ";
+  }
+
+  print "size=\"20\" maxlength=\"20\" /&gt; ";
+
+  // Si hay que incluir un aviso, lo incluimos <span class="numero-circulo">10</span>
+  if (isset($_SESSION["error"])) {
+      print "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
+  }
+
+  print "\n";
+?&gt;</code>
+</pre>
+        <pre>
+<code class="language-html">...</code>
+</pre>
+      </div>
+
+      <p>sesiones-1-03-c-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-03-c");
+session_start();
+
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
+    return $tmp;
+}
+
+// Recogemos la palabra
+$palabra   = recoge("palabra");
+
+// Borramos todos los datos anteriores <span class="numero-circulo">2</span>
+unset($_SESSION["intento"]);
+unset($_SESSION["error"]);
+unset($_SESSION["palabra"]);
+
+// Comprobamos la palabra
+if ($palabra == "") {
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">4</span>
+    $_SESSION["error"] = "No ha escrito ninguna palabra";
+} elseif (!ctype_upper($palabra)) {
+    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior <span class="numero-circulo">5</span>
+    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
+    $_SESSION["intento"] = $palabra;
+} else {
+    // Si la palabra es correcta, borramos el error anterior que pudiera haber en la sesión <span class="numero-circulo">6</span>
+    $_SESSION["palabra"] = $palabra;
+}
+
+// Volvemos al formulario <span class="numero-circulo">7</span>
+header("Location:sesiones-1-03-c-1.php");
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-03-d">
+      <h3>Sesiones (1) 03 - Formulario Palabra en mayúsculas - Solución D</h3>
+
+      <p>Esta solución es una variante de la anterior, en la que sólo cambia la segunda página. En vez de borrar todas las variables de sesión anteriores y en el bloque <span class="php-res">if elseif else</span> establecer las variables necesarias, en esta solución en cada opción del bloque <span class="php-res">if elseif else</span> se borran o establecen cada una de las variables de la sesión.</p>
+
+      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
+
+      <ol>
+        <li>En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
+        <li>En la comprobación, si el dato es vacío, se guarda el aviso correspondiente y se borran el intento y la palabra anteriores.</li>
+        <li>Si la palabra no está en mayúsculas, se guarda el aviso correspondiente y el intento y se borra la palabra anterior.</li>
+        <li>Si la palabra es correcta, se guarda la palabra escrita por el usuario y se borran el intento y el error anteriores.</li>
+        <li>Por tanto, la página 2 debe conectarse a la sesión.</li>
+        <li>Finalmente, volvemos a la primera página.</li>
+      </ol>
+
+      <p>sesiones-1-03-d-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">5</span>
+session_name("sesiones-1-03-d");
+session_start();
+
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
+    return $tmp;
+}
+
+// Recogemos la palabra
+$palabra   = recoge("palabra");
+
+// Comprobamos la palabra, guardamos el dato que queremos enseñar y borramos el resto
+if ($palabra == "") {
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">2</span>
+    unset($_SESSION["intento"]);
+    $_SESSION["error"] = "No ha escrito ninguna palabra";
+    unset($_SESSION["palabra"]);
+} elseif (!ctype_upper($palabra)) {
+    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior <span class="numero-circulo">3</span>
+    $_SESSION["intento"] = $palabra;
+    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
+    unset($_SESSION["palabra"]);
+} else {
+    // Si la palabra es correcta, guardamos en la sesión la palabra <span class="numero-circulo">4</span>
+    unset($_SESSION["intento"]);
+    unset($_SESSION["error"]);
+    $_SESSION["palabra"] = $palabra;
+}
+
+// Volvemos al formulario <span class="numero-circulo">6</span>
+header("Location:sesiones-1-03-d-1.php");
 ?&gt;</code>
 </pre>
       </div>
@@ -1068,7 +1378,7 @@ header("Location:sesiones-1-14-1.php");
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />

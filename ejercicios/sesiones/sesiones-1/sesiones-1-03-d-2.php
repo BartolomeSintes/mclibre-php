@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 02 - sesiones-1-02-2-b.php
+ * Sesiones (1) 02 - sesiones-1-03-d-b-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Accedemos a la sesión
-session_name("sesiones-1-02-b");
+session_name("sesiones-1-03-d");
 session_start();
 
 // Funciones auxiliares
@@ -34,14 +34,26 @@ function recoge($var)
     return $tmp;
 }
 
-// Recogemos el texto
-$texto = recoge("texto");
+// Recogemos la palabra
+$palabra = recoge("palabra");
 
-// Comprobamos el texto
-if ($texto != "") {
-    // Si el texto no es vacío, lo guardamos en la sesión
-    $_SESSION["texto"] = $texto;
+// Comprobamos la palabra, guardamos el dato que queremos enseñar y borramos el resto
+if ($palabra == "") {
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error
+    unset($_SESSION["intento"]);
+    $_SESSION["error"] = "No ha escrito ninguna palabra";
+    unset($_SESSION["palabra"]);
+} elseif (!ctype_upper($palabra)) {
+    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y el intento anterior
+    $_SESSION["intento"] = $palabra;
+    $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
+    unset($_SESSION["palabra"]);
+} else {
+    // Si la palabra es correcta, guardamos en la sesión la palabra
+    unset($_SESSION["intento"]);
+    unset($_SESSION["error"]);
+    $_SESSION["palabra"] = $palabra;
 }
 
-header("Location:sesiones-1-02-1-b.php");
+header("Location:sesiones-1-03-d-1.php");
 ?>
