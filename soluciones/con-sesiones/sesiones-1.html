@@ -54,7 +54,8 @@
             <li><a href="#ejercicio-03-b">03 - Mayúsculas - B</a></li>
             <li><a href="#ejercicio-03-c">03 - Mayúsculas - C</a></li>
             <li><a href="#ejercicio-03-d">03 - Mayúsculas - D</a></li>
-            <li><a href="#ejercicio-04">04 - Mayúsc. y minúsculas</a></li>
+            <li><a href="#ejercicio-04">04 - Mayúsc. y minúsc. - A</a></li>
+            <li><a href="#ejercicio-04-b">04 - Mayúsc. y minúsc. - B</a></li>
           </ul>
         </li>
         <li><a href="#graficos">Gráficos</a>
@@ -802,18 +803,16 @@ header("Location:sesiones-1-03-d-1.php");
     </section>
 
     <section id="ejercicio-04">
-      <h3>Sesiones (1) 04 - Formulario Palabras en mayúsculas y minúsculas</h3>
+      <h3>Sesiones (1) 04 - Formulario Palabras en mayúsculas y minúsculas - Solución A</h3>
 
-      <p class="incompleto"><img src="../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48" />Por completar.</p>
-
-      <p>Este ejercicio es parecido al anterior. La diferencia es que como hay dos controles, tenemos el doble de variables de sesión.</p>
+      <p>Este ejercicio es parecido al anterior. La diferencia es que como hay dos controles, tenemos el doble de variables de sesión. Además, hay que tener en cuenta que si un control se escribe bien, pero el otro se escribe mal, el valor correcto se debe incluir en el control para que el usuario no lo tenga quevolver a escribir.</p>
 
       <p>sesiones-1-04-1.php</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Se accede a la sesión <span class="numero-circulo">9</span>
 session_name("sesiones-1-04");
 session_start();
 ?&gt;</code>
@@ -825,12 +824,11 @@ session_start();
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
-  &lt;form action="sesiones-1-02-2.php" method="get"&gt;
-</code>
+  &lt;form action="sesiones-1-04-2.php" method="get"&gt;</code>
 </pre>
         <pre>
 <code class="language-php">&lt;?php
-//Si no hemos detectado error en la palabra en mayúsculas y hay guardada una palabra en la sesión ... <span class="numero-circulo">12</span>
+//Si no hemos detectado error en la palabra en mayúsculas y hay guardada una palabra en la sesión ... <span class="numero-circulo">14</span>
 if (!isset($_SESSION["mayusculasError"]) && !isset($_SESSION["minusculasError"])
     && isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
     // ... mostramos la palabra
@@ -845,21 +843,21 @@ print "\n";
 
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
-    // Escribimos un aviso e incluimos el valor incorrecto en el control <span class="numero-circulo">9</span>
+    // Escribimos un aviso e incluimos el valor incorrecto en el control <span class="numero-circulo">10</span>
     print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[mayusculasError]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
 } elseif (isset($_SESSION["minusculasError"])) {
-    // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control <span class="numero-circulo">10</span>
+    // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control <span class="numero-circulo">11</span>
     print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
     print "\n";
 } else {
-    // Si no hemos detectado un error, escribimos el control vacío <span class="numero-circulo">11</span>
+    // Si no hemos detectado un error, escribimos el control vacío <span class="numero-circulo">12</span>
     print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
     print "\n";
 }
 
-// Si hemos detectado un error en la palabra en minúsculas
+// Si hemos detectado un error en la palabra en minúsculas <span class="numero-circulo">13</span>
 if (isset($_SESSION["minusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
     print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\" /&gt; "
@@ -874,7 +872,6 @@ if (isset($_SESSION["minusculasError"])) {
     print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
     print "\n";
 }
-
 ?&gt;</code>
 </pre>
         <pre>
@@ -908,9 +905,9 @@ $minusculas = recoge("minusculas");
 $_SESSION["mayusculas"] = $mayusculas;
 $_SESSION["minusculas"] = $minusculas;
 
-// Comprobamos la palabra en mayúsculas <span class="numero-circulo">4</span>
+// Comprobamos la palabra en mayúsculas
 if ($mayusculas == "") {
-    // Si no se recibe palabra, guardamos en la sesión el mensaje de error
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">4</span>
     $_SESSION["mayusculasError"] = "No ha escrito ninguna palabra";
 } elseif (!ctype_upper($mayusculas)) {
     // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error <span class="numero-circulo">5</span>}
@@ -920,7 +917,7 @@ if ($mayusculas == "") {
     unset($_SESSION["mayusculasError"]);
 }
 
-// Comprobamos la palabra en minúsculas
+// Comprobamos la palabra en minúsculas <span class="numero-circulo">7</span>
 if ($minusculas == "") {
     // Si no se recibe palabra, guardamos en la sesión el mensaje de error
     $_SESSION["minusculasError"] = "No ha escrito ninguna palabra";
@@ -932,7 +929,152 @@ if ($minusculas == "") {
     unset($_SESSION["minusculasError"]);
 }
 
-// Volvemos al formulario <span class="numero-circulo">7</span>
+// Volvemos al formulario <span class="numero-circulo">8</span>
+header("Location:sesiones-1-04-1.php");
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-04-b">
+      <h3>Sesiones (1) 04 - Formulario Palabras en mayúsculas y minúsculas - Solución B</h3>
+
+      <p>Como en el caso del ejercicio 3, en el que se han ofrecido varias soluciones, esta solución es algo distinta a la anterior.</p>
+
+      <p>sesiones-1-04-b-1.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">9</span>
+session_name("sesiones-1-04-b");
+session_start();
+?&gt;</code>
+</pre>
+        <pre>
+<code class="language-html">
+&lt;!DOCTYPE html&gt;
+...
+&lt;body&gt;
+  &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
+
+  &lt;form action="sesiones-1-04-b-2.php" method="get"&gt;
+</code>
+</pre>
+        <pre>
+<code class="language-php">&lt;?php
+//Si están guardadas en la sesión las dos palabras ... <span class="numero-circulo">14</span>
+if (isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
+    // ... mostramos las dos palabras
+    print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[mayusculas]&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+    print "    &lt;p&gt;Ha escrito una palabra en minúsculas: &lt;strong&gt;$_SESSION[minusculas]&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
+
+print "    &lt;p&gt;Escriba una palabra en mayúsculas y otra en minúsculas:&lt;/p&gt;\n";
+print "\n";
+
+print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" ";
+
+if (isset($_SESSION["mayusculasIntento"])) {
+    // Si hemos detectado un intento incorrecto en la palabra en mayúsculas, incluimos el intento en el control <span class="numero-circulo">10</span>
+    print "value=\"$_SESSION[mayusculasIntento]\" ";
+} elseif (isset($_SESSION["minusculasError"]) && isset($_SESSION["mayusculas"])) {
+    // Si la palabra en mayúsculas es correcta, pero hemos detectado un error en la palabra en minúsculas, incluimos la palabra correcta en el control <span class="numero-circulo">11</span>
+    print "value=\"$_SESSION[mayusculas]\" ";
+}
+
+print "size=\"20\" maxlength=\"20\" /&gt; ";
+
+// Si hemos detectado un error en la palabra en mayúsculas <span class="numero-circulo">12</span>
+if (isset($_SESSION["mayusculasError"])) {
+    // Escribimos el aviso
+    print "&lt;span class=\"aviso\"&gt;$_SESSION[mayusculasError]&lt;/span&gt;";
+}
+
+print "&lt;/p&gt;\n";
+print "\n";
+
+print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" ";
+
+if (isset($_SESSION["minusculasIntento"])) {
+    // Si hemos detectado un intento incorrecto en la palabra en minúsculas, incluimos el intento en el control <span class="numero-circulo">13</span>
+    print "value=\"$_SESSION[minusculasIntento]\" ";
+} elseif (isset($_SESSION["mayusculasError"]) && isset($_SESSION["minusculas"])) {
+    // Si la palabra en minúsculas es correcta, pero hemos detectado un error en la palabra en mayúsculas, incluimos la palabra correcta en el control
+    print "value=\"$_SESSION[minusculas]\" ";
+}
+
+print "size=\"20\" maxlength=\"20\" /&gt; ";
+
+// Si hemos detectado un error en la palabra en minúsculas
+if (isset($_SESSION["minusculasError"])) {
+    // Escribimos el aviso
+    print "&lt;span class=\"aviso\"&gt;$_SESSION[minusculasError]&lt;/span&gt;";
+}
+
+print "&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+        <pre>
+<code class="language-html">...</code>
+</pre>
+      </div>
+
+      <p>sesiones-1-04-b-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Se accede a la sesión <span class="numero-circulo">3</span>
+session_name("sesiones-1-04-b");
+session_start();
+
+// Funciones auxiliares <span class="numero-circulo">1</span>
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
+    return $tmp;
+}
+
+// Recogemos las dos palabras
+$mayusculas = recoge("mayusculas");
+$minusculas = recoge("minusculas");
+
+// Borramos los valores anteriores <span class="numero-circulo">2</span>
+session_unset();
+
+// Comprobamos la palabra en mayúsculas
+if ($mayusculas == "") {
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error <span class="numero-circulo">4</span>
+    $_SESSION["mayusculasError"] = "No ha escrito ninguna palabra";
+} elseif (!ctype_upper($mayusculas)) {
+    // Si la palabra está en minúsculas, guardamos en la sesión el mensaje de error y la palabra <span class="numero-circulo">5</span>
+    $_SESSION["mayusculasIntento"] = $mayusculas;
+    $_SESSION["mayusculasError"] = "No ha escrito la palabra en mayúsculas";
+} else {
+    // Si la palabra es correcta, guardamos en la sesión la palabra <span class="numero-circulo">6</span>
+    $_SESSION["mayusculas"] = $mayusculas;
+}
+
+// Comprobamos la palabra en minúsculas <span class="numero-circulo">7</span>
+if ($minusculas == "") {
+    // Si no se recibe palabra, guardamos en la sesión el mensaje de error
+    $_SESSION["minusculasError"] = "No ha escrito ninguna palabra";
+} elseif (!ctype_lower($minusculas)) {
+    // Si la palabra está en mayúsculas, guardamos en la sesión el mensaje de error y la palabra
+    $_SESSION["minusculasIntento"] = $minusculas;
+    $_SESSION["minusculasError"] = "No ha escrito la palabra en minúsculas";
+} else {
+    // Si la palabra es correcta, guardamos en la sesión la palabra
+    $_SESSION["minusculas"] = $minusculas;
+}
+
+// Volvemos al formulario <span class="numero-circulo">8</span>
 header("Location:sesiones-1-04-1.php");
 ?&gt;</code>
 </pre>
@@ -1378,7 +1520,7 @@ header("Location:sesiones-1-14-1.php");
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
