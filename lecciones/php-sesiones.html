@@ -29,6 +29,7 @@
         <li><a href="#sesiones-crear">Crear la sesión</a></li>
         <li><a href="#sesiones-nombre">Nombre de sesión</a></li>
         <li><a href="#sesiones-utilizar">Utilizar la sesión</a></li>
+        <li><a href="#sesiones-borrar">Borrar elementos</a></li>
         <li><a href="#sesiones-destruir">Cerrar la sesión</a></li>
       </ul>
     </div>
@@ -196,7 +197,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
     <hr class="corta" />
 
-    <p>La creación de sesiones requiere el envío de cabeceras HTPP, por lo que la función session_start() debe utilizarse antes de empezar a escribir el contenido de la página. En caso contrario PHP producirá un aviso y no se creará la sesión. El motivo es que el identificador de sesión se utiliza en las cabeceras de respuesta HTTP y las cabeceras se envían antes del texto de la página. En la <a href="php-cabeceras.html">lección sobre cabeceras</a> se comenta con más detalle el problema del envío de cabeceras.</p>
+    <p>La creación de sesiones requiere el envío de cabeceras HTTP, por lo que la función session_start() debe utilizarse antes de empezar a escribir el contenido de la página. En caso contrario PHP producirá un aviso y no se creará la sesión. El motivo es que el identificador de sesión se utiliza en las cabeceras de respuesta HTTP y las cabeceras se envían antes del texto de la página. En la <a href="php-cabeceras.html">lección sobre cabeceras</a> se comenta con más detalle el problema del envío de cabeceras.</p>
 
     <p>El ejemplo siguiente es incorrecto, ya que utiliza la función session_start() después de haber escrito texto.</p>
 
@@ -410,8 +411,10 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";
 )</pre>
       </div>
     </div>
+  </section>
 
-    <hr class="corta" />
+  <section id="sesiones-borrar">
+    <h2>Borrar elementos de la sesión</h2>
 
     <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="http://php.net/manual/es/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
 
@@ -444,6 +447,97 @@ if (isset($_SESSION["nombre"])) {
 </pre>
       </div>
     </div>
+
+    <hr />
+
+    <p>Para borrar todos los valores de $_SESSION se pueden borrar uno a uno o utilizar la función <a href="http://php.net/manual/es/function.session-unset.php"><span class="php-fun">session_unset()</span></a>. Pero no se debe utilizar <span class="php-fun">unset</span>($_SESSION):</p>
+    <ul>
+      <li><span class="php-fun">unset</span>($_SESSION) impide que el resto de la página escriba o lea valores en $_SESSION, pero la sesión conserva los valores, por lo que otras páginas seguirían viendo esos valores.
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40" />
+          </div>
+          <div class="columnaflex">
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+session_start();
+$_SESSION["nombre"] = "Pepito";
+<span class="codigo-resaltado">unset($_SESSION);</span>
+$_SESSION["apellidos"] = "Conejo";
+header("Location:pagina-2.php");
+?&gt;</code>
+</pre>
+            </div>
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+session_start();
+$_SESSION["saludo"] = "Hola";
+print "&lt;pre&gt;\n";
+print_r ($_SESSION);
+print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+            </div>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [nombre] =&gt; Pepito
+    [saludo] =&gt; Hola
+)
+&lt;/pre&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li>la función <a href="http://php.net/manual/es/function.session-unset.php"><span class="php-fun">session_unset()</span></a> borra todos los valores pero permite que el resto de la página (y otras páginas) escriba o lea valores en $_SESSION.
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40" />
+          </div>
+          <div class="columnaflex">
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+session_start();
+$_SESSION["nombre"] = "Pepito";
+<span class="codigo-resaltado">session_unset($_SESSION);</span>
+$_SESSION["apellidos"] = "Conejo";
+header("Location:pagina-2.php");
+?&gt;</code>
+</pre>
+            </div>
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+session_start();
+$_SESSION["saludo"] = "Hola";
+print "&lt;pre&gt;\n";
+print_r ($_SESSION);
+print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+            </div>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;pre&gt;
+Array
+(
+    [apellidos] =&gt; Conejo
+    [saludo] =&gt; Hola
+)
+&lt;/pre&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section id="sesiones-destruir">
@@ -504,7 +598,7 @@ if (isset($_SESSION["nombre"])) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2017</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
