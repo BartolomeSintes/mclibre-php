@@ -149,7 +149,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 </pre>
     </div>
 
-    <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="http://php.net/manual/en/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
+    <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="http://php.net/manual/es/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
 
     <div class="codigo">
       <pre><code class="language-php">ini_set("session.save_handler", "files"); // Necesario únicamente cuando session.save_handler = user en php.ini
@@ -226,7 +226,7 @@ session_start();
   <section id="sesiones-nombre">
     <h2>Nombre de sesión</h2>
 
-    <p>En principio, cuando el navegador se conecta a un servidor, la sesión es única, es decir, todas las páginas del mismo dominio compartirán la misma matriz $_SESSION. La función <a href="http://php.net/manual/en/function.session-name.php"><span class="php-fun">session_name()</span></a> permite establecer un nombre de sesión específico, de manera que todas las páginas que declaren el mismo nombre de sesión accederán a la misma matriz $_SESSION y las que tengan nombres de sesión distintos accederán a matrices $_SESSION diferentes.</p>
+    <p>En principio, cuando el navegador se conecta a un servidor, la sesión es única, es decir, todas las páginas del mismo dominio compartirán la misma matriz $_SESSION. La función <a href="http://php.net/manual/es/function.session-name.php"><span class="php-fun">session_name()</span></a> permite establecer un nombre de sesión específico, de manera que todas las páginas que declaren el mismo nombre de sesión accederán a la misma matriz $_SESSION y las que tengan nombres de sesión distintos accederán a matrices $_SESSION diferentes.</p>
 
     <p>En el ejemplo siguiente, los dos primeros programas crean la misma variable en $_SESSION, pero como se ha utilizado la función <span class="php-fun">session_name()</span> con nombres diferentes, realmente lo hacen en matrices $_SESSION distintas.</p>
 
