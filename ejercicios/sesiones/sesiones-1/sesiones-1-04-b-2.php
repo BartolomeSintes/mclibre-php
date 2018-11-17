@@ -67,5 +67,6 @@ if ($minusculas == "") {
     $_SESSION["minusculas"] = $minusculas;
 }
 
+// Volvemos al formulario
 header("Location:sesiones-1-04-b-1.php");
 ?>
