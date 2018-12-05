@@ -1,11 +1,11 @@
 <?php
 /**
- * Bases de datos 2-3 - modificar-2.php
+ * Bases de datos 3-1 - modificar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2018-12-03
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,14 +61,6 @@ if ($id == "") {
             print "          <tr>\n";
             print "            <td>Apellidos:</td>\n";
             print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" maxlength=\"$tamApellidos\" value=\"$valor[apellidos]\" /></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Teléfono:</td>\n";
-            print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" maxlength=\"$tamTelefono\" value=\"$valor[telefono]\" /></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Correo:</td>\n";
-            print "            <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" maxlength=\"$tamCorreo\" value=\"$valor[correo]\" /></td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";

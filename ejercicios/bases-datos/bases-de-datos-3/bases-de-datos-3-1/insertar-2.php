@@ -1,11 +1,11 @@
 <?php
 /**
- * Bases de datos 2-3 - insertar-2.php
+ * Bases de datos 3-1 - insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2018-12-03
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,13 +29,9 @@ cabecera("Añadir 2", MENU_VOLVER);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
-$telefono  = recoge("telefono");
-$correo    = recoge("correo");
 
 $nombreOk    = false;
 $apellidosOk = false;
-$telefonoOk  = false;
-$correoOk    = false;
 
 if (mb_strlen($nombre, "UTF-8") > $tamNombre) {
     print "    <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
@@ -51,22 +47,8 @@ if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
     $apellidosOk = true;
 }
 
-if (mb_strlen($telefono, "UTF-8") > $tamTelefono) {
-    print "    <p class=\"aviso\">El teléfono no puede tener más de $tamTelefono caracteres.</p>\n";
-    print "\n";
-} else {
-    $telefonoOk = true;
-}
-
-if (mb_strlen($correo, "UTF-8") > $tamCorreo) {
-    print "    <p class=\"aviso\">El correo no puede tener más de $tamCorreo caracteres.</p>\n";
-    print "\n";
-} else {
-    $correoOk = true;
-}
-
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
-    if ($nombre == "" && $apellidos == ""  && $telefono == "" && $correo == "") {
+if ($nombreOk && $apellidosOk) {
+    if ($nombre == "" && $apellidos == "") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTabla";
@@ -80,23 +62,19 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbTabla
                 WHERE nombre=:nombre
-                AND apellidos=:apellidos
-                AND telefono=:telefono
-                AND correo=:correo";
+                AND apellidos=:apellidos";
             $result = $db->prepare($consulta);
-            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                ":telefono" => $telefono, ":correo" => $correo]);
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos]);
             if (!$result) {
                 print "    <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p>El registro ya existe.</p>\n";
             } else {
                 $consulta = "INSERT INTO $dbTabla
-                    (nombre, apellidos, telefono, correo)
-                    VALUES (:nombre, :apellidos, :telefono, :correo)";
+                    (nombre, apellidos)
+                    VALUES (:nombre, :apellidos)";
                 $result = $db->prepare($consulta);
-                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                    ":telefono" => $telefono, ":correo" => $correo])) {
+                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
                     print "    <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
                 } else {
                     print "    <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";

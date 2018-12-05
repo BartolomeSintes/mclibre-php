@@ -62,6 +62,7 @@ if ($id == "") {
             print "            <td>Apellidos:</td>\n";
             print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" maxlength=\"$tamApellidos\" value=\"$valor[apellidos]\" /></td>\n";
             print "          </tr>\n";
+            print "          <tr>\n";
             print "            <td>Teléfono:</td>\n";
             print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" maxlength=\"$tamTelefono\" value=\"$valor[telefono]\" /></td>\n";
             print "          </tr>\n";

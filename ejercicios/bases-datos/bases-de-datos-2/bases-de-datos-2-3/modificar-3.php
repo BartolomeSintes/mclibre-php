@@ -66,7 +66,7 @@ if (mb_strlen($correo, "UTF-8") > $tamCorreo) {
     $correoOk = true;
 }
 
-if ($nombreOk && $apellidosOk & $telefonoOk && $correoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     if ($id == "") {
         print "    <p>No se ha seleccionado ningún registro.</p>\n";
     } elseif ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
