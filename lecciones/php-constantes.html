@@ -85,21 +85,23 @@ print "&lt;p&gt;Autor: " . AUTOR . "&lt;/p&gt;\n";
 
     <hr class="corta" />
 
-    <p>Las constantes no se sustituyen dentro de una cadena por lo que es necesario sacarlas para mostrar su valor.</p>
+    <p>Las constantes no se sustituyen dentro de una cadena (ni siquiera escribiéndolas entre llaves), por lo que es necesario concatenarlas para mostrar su valor.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 define("PI", 3.14);
-print "&lt;p&gt;El valor de pi es PI&lt;/p&gt;\n";
-print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+print "&lt;p&gt;El valor de pi es PI&lt;/p&gt;\n";         // El valor NO se sustituye
+print "&lt;p&gt;El valor de pi es {PI}&lt;/p&gt;\n";       // El valor NO se sustituye
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n"; // El valor SÍ se sustituye
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
         <pre>
 <code class="language-html">&lt;p&gt;El valor de pi es PI&lt;/p&gt;
+&lt;p&gt;El valor de pi es {PI}&lt;/p&gt;
 &lt;p&gt;El valor de pi es 3.14&lt;/p&gt;</code>
 </pre>
       </div>
@@ -306,7 +308,7 @@ print "&lt;p&gt;Los enteros se guardan utilizando $tamano bytes&lt;/p&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 1 de diciembre de 2015</p>
+    <p class="ultmod">Última modificación de esta página: 3 de diciembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
