@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) JSON-RPC (Formulario).
+    Convertidor de distancias (1) Servicio web (Formulario).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (Formulario)</h1>
+  <h1>Convertidor de distancias (1) Servicio web (Formulario)</h1>
 
-  <form action="funciones-1-rpc-2.php" method="get">
+  <form action="funciones-1-2-ws-2.php" method="get">
     <p>
       Quiero convertir:
       <input type="number" name="numero" size="40" />

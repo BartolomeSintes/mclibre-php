@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (1) Sin funciones - funciones-1-2.php
+ * Convertidor de distancias (1) Servicio web - funciones-1-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) Sin funciones (Resultado).
+    Convertidor de distancias (1) Servicio web (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,18 +36,20 @@
 </head>
 
 <body>
-  <h1> Convertidor de distancias (1) Sin funciones (Resultado)</h1>
+  <h1>Convertidor de distancias (1) Servicio web (Resultado)</h1>
 
 <?php
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    : "";
     return $tmp;
 }
 
 $unidades = ["km", "m", "cm"];
+
+$camino = "http://localhost/apuntes/php/ejercicios/funciones/funciones-1-3/";
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -82,30 +84,13 @@ if (!in_array($final, $unidades)) {
 }
 
 if ($numeroOk && $inicialOk && $finalOk) {
-    // La unidad intermedia es el metro
-    $numeroIntermedio = 0;
-    if ($inicial == "km") {
-        $numeroIntermedio = $numero * 1000;
-    } elseif ($inicial == "m") {
-        $numeroIntermedio = $numero;
-    } elseif ($inicial == "cm") {
-        $numeroIntermedio = $numero / 100;
-    }
-
-    if ($final == "km") {
-        $numeroFinal = $numeroIntermedio / 1000;
-    } elseif ($final == "m") {
-        $numeroFinal = $numeroIntermedio;
-    } elseif ($final == "cm") {
-        $numeroFinal = $numeroIntermedio * 100;
-    }
-
-    $resultado = $numeroFinal;
-    print "  <p>$numero $inicial = $resultado $final.</p>\n";
+    $consulta = http_build_query(["from" => $inicial, "into" => $final, "value" => $numero]);
+    $respuesta = file_get_contents("{$camino}funciones-1-3-ws.php?$consulta");
+    print "  <p>$numero $inicial = $respuesta $final.</p>\n";
     print "\n";
 }
 ?>
-  <p><a href="funciones-1-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-1-3-ws-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

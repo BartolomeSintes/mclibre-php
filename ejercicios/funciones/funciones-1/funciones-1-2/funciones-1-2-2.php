@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (1) Con funciones - funciones-1-2.php
+ * Convertidor de distancias (2) Sin funciones - funciones-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) Con funciones (Resultado).
+    Convertidor de distancias (2) Sin funciones (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1> Convertidor de distancias (1) Con funciones (Resultado)</h1>
+  <h1>Convertidor de distancias (1) Sin funciones (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -47,28 +47,7 @@ function recoge($var)
     return $tmp;
 }
 
-function convierte($num, $uniOri, $uniFin) {
-    // La unidad intermedia es el metro
-    $numeroIntermedio = 0;
-    if ($uniOri == "km") {
-        $numeroIntermedio = $num * 1000;
-    } elseif ($uniOri == "m") {
-        $numeroIntermedio = $num;
-    } elseif ($uniOri == "cm") {
-        $numeroIntermedio = $num / 100;
-    }
-
-    if ($uniFin == "km") {
-        $numeroFinal = $numeroIntermedio / 1000;
-    } elseif ($uniFin == "m") {
-        $numeroFinal = $numeroIntermedio;
-    } elseif ($uniFin == "cm") {
-        $numeroFinal = $numeroIntermedio * 100;
-    }
-    return $numeroFinal;
-}
-
-$unidades = ["km", "m", "cm"];
+$unidades = ["km", "m", "cm", "mi", "yd", "ft", "in"];
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -103,12 +82,45 @@ if (!in_array($final, $unidades)) {
 }
 
 if ($numeroOk && $inicialOk && $finalOk) {
-    $resultado = convierte($numero, $inicial, $final);
-    print "  <p>$numero $inicial = $resultado $final.</p>\n";
+    // La unidad intermedia es el metro
+    $numeroIntermedio = 0;
+    if ($inicial == "km") {
+        $numeroIntermedio = $numero * 1000;
+    } elseif ($inicial == "m") {
+        $numeroIntermedio = $numero;
+    } elseif ($inicial == "cm") {
+        $numeroIntermedio = $numero / 100;
+    } elseif ($inicial == "mi") {
+        $numeroIntermedio = $numero * 1760 * 3 * 12 * 2.54 / 100;
+    } elseif ($inicial == "yd") {
+        $numeroIntermedio = $numero * 3 * 12 * 2.54 / 100;
+    } elseif ($inicial == "ft") {
+        $numeroIntermedio = $numero * 12 * 2.54 / 100;
+    } elseif ($inicial == "in") {
+        $numeroIntermedio = $numero * 2.54 / 100;
+    }
+
+    if ($final == "km") {
+        $numeroFinal = $numeroIntermedio / 1000;
+    } elseif ($final == "m") {
+        $numeroFinal = $numeroIntermedio;
+    } elseif ($final == "cm") {
+        $numeroFinal = $numeroIntermedio * 100;
+    } elseif ($final == "mi") {
+        $numeroFinal = $numeroIntermedio / 1760 / 3 / 12 / 2.54 * 100;
+    } elseif ($final == "yd") {
+        $numeroFinal = $numeroIntermedio / 3 / 12 / 2.54 * 100;
+    } elseif ($final == "ft") {
+        $numeroFinal = $numeroIntermedio / 12 / 2.54 * 100;
+    } elseif ($final == "in") {
+        $numeroFinal = $numeroIntermedio / 2.54 * 100;
+    }
+
+    print "  <p>$numero $inicial = $numeroFinal $final.</p>\n";
     print "\n";
 }
 ?>
-  <p><a href="funciones-1-fu-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-2-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

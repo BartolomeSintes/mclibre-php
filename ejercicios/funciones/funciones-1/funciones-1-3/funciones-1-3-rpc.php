@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (1) Con biblioteca - funciones-1-biblioteca.php
+ * Convertidor de distancias (1) JSON-RPC - funciones-1-3-rpc.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,13 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
 
 function convierte($num, $uniOri, $uniFin) {
     // La unidad intermedia es el metro
@@ -49,4 +42,22 @@ function convierte($num, $uniOri, $uniFin) {
         $numeroFinal = $numeroIntermedio * 100;
     }
     return $numeroFinal;
+}
+
+$validParams = ["km", "m", "cm"];
+
+$peticionOk = false;
+if ($_REQUEST["method"] == "convertir") {
+    if (in_array($_REQUEST["params"]["from"], $validParams)) {
+        if (in_array($_REQUEST["params"]["into"], $validParams)) {
+            $peticionOk = true;
+        }
+    }
+}
+
+if ($peticionOk == true) {
+    $result = convierte($_REQUEST["params"]["value"],$_REQUEST["params"]["from"], $_REQUEST["params"]["into"]);
+    print "{\"jsonrpc\" : \"2.0\", \"result\" : $result, \"id\" : $_REQUEST[id] }";
+} else {
+    print "{\"jsonrpc\" : \"2.0\", \"error\" : -1, \"id\" : $_REQUEST[id] }";
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (1) JSON-RPC- funciones-1-2.php
+ * Convertidor de distancias (1) Con biblioteca - funciones-1-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) JSON-RPC (Resultado).
+    Convertidor de distancias (1) Con biblioteca (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,20 +36,12 @@
 </head>
 
 <body>
-  <h1> Convertidor de distancias (Resultado)</h1>
+  <h1>Convertidor de distancias (1) Con biblioteca (Resultado)</h1>
 
 <?php
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
+include "funciones-1-3-bi-biblioteca.php";
 
 $unidades = ["km", "m", "cm"];
-
-$camino = "http://localhost/apuntes/php/ejercicios/funciones/funciones-1/";
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -84,25 +76,12 @@ if (!in_array($final, $unidades)) {
 }
 
 if ($numeroOk && $inicialOk && $finalOk) {
-    $id = rand();
-    $consulta = http_build_query(["jsonrpc" => "2.0", "method" => "convertir", "params" => ["from" => $inicial, "into" => $final, "value" => $numero], "id" => $id]);
-    $respuesta = json_decode(file_get_contents("{$camino}funciones-1-rpc.php?$consulta"), true);
-    if ($respuesta["id"] == $id) {
-        if (isset($respuesta["error"])) {
-            print "  <p class=\"aviso\">Error en la petición.</p>\n";
-            print "\n";
-        } else {
-            $resultado = $respuesta["result"];
-            print "  <p>$numero $inicial = $resultado $final.</p>\n";
-            print "\n";
-        }
-    } else {
-        print "  <p class=\"aviso\">La respuesta no corresponde a la petición.</p>\n";
-        print "\n";
-    }
+    $resultado = convierte($numero, $inicial, $final);
+    print "  <p>$numero $inicial = $resultado $final.</p>\n";
+    print "\n";
 }
 ?>
-  <p><a href="funciones-1-rpc-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-1-3-bi-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

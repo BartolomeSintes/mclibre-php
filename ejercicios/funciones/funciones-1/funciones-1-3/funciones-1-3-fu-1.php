@@ -14,7 +14,7 @@
 <body>
   <h1>Convertidor de distancias (1) Con funciones (Formulario)</h1>
 
-  <form action="funciones-1-fu-2.php" method="get">
+  <form action="funciones-1-3-fu-2.php" method="get">
     <p>
       Quiero convertir:
       <input type="number" name="numero" size="40" />

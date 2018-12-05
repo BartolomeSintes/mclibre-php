@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (1) Servicio web - funciones-1-2.php
+ * Convertidor de distancias (1) Servicio web - funciones-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) Servicio web (Resultado).
+    Buscador en la Wikipedia (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1> Convertidor de distancias (1) Servicio web (Resultado)</h1>
+  <h1>Buscador en la Wikipedia (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -47,50 +47,44 @@ function recoge($var)
     return $tmp;
 }
 
-$unidades = ["km", "m", "cm"];
+$camino = "https://es.wikipedia.org/w/api.php?action=opensearch&prop=extracts&format=json&formatversion=2&srwhat=title";
 
-$camino = "http://localhost/apuntes/php/ejercicios/funciones/funciones-1/";
+$cadena  = recoge("cadena");
 
-$numero  = recoge("numero");
-$inicial = recoge("inicial");
-$final   = recoge("final");
+$cadenaOk  = false;
 
-$numeroOk  = false;
-$inicialOk = false;
-$finalOk   = false;
-
-if ($numero == "") {
+if ($cadena == "") {
     print "  <p class=\"aviso\">No ha escrito nada.</p>\n";
     print "\n";
-} elseif (!is_numeric($numero)) {
-    print "  <p class=\"aviso\">No ha escrito un número.</p>\n";
-    print "\n";
 } else {
-    $numeroOk = true;
+    $cadenaOk = true;
 }
 
-if (!in_array($inicial, $unidades)) {
-    print "  <p class=\"aviso\">No ha elegido una unidad inicial válida.</p>\n";
-    print "\n";
-} else {
-    $inicialOk = true;
-}
+if ($cadenaOk) {
+    print "<p>Artículos de la Wikipedia relacionados con <strong>$cadena</strong>.</p>\n";
 
-if (!in_array($final, $unidades)) {
-    print "  <p class=\"aviso\">No ha elegido una unidad final válida.</p>\n";
-    print "\n";
-} else {
-    $finalOk = true;
-}
+    $consulta = http_build_query(["search" => $cadena]);
+    $respuesta = json_decode(file_get_contents("{$camino}&$consulta"));
+    // print "<pre>\n"; print_r($respuesta); print "</pre>\n";
 
-if ($numeroOk && $inicialOk && $finalOk) {
-    $consulta = http_build_query(["from" => $inicial, "into" => $final, "value" => $numero]);
-    $respuesta = file_get_contents("{$camino}funciones-1-ws.php?$consulta");
-    print "  <p>$numero $inicial = $respuesta $final.</p>\n";
+    $respuestas = count($respuesta[1]);
+
+    if ($respuestas == 0) {
+        print "<p>No se ha encontrado nada</p>\n";
+    } else {
+        print "  <ul>\n";
+        for ($i = 0; $i < $respuestas ; $i++) {
+            print "    <li><a href=\"{$respuesta[3][$i]}\">{$respuesta[1][$i]}</a>\n";
+            print "      <p>{$respuesta[2][$i]}</p>\n";
+            print "    </li>\n";
+        }
+        print "  </ul>\n";
+    }
+
     print "\n";
 }
 ?>
-  <p><a href="funciones-1-ws-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-1-4-ws-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) Sin funciones (Formulario).
+    Convertidor de distancias (1) Con biblioteca (Formulario).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (1) Sin funciones (Formulario)</h1>
+  <h1>Convertidor de distancias (1) Con biblioteca (Formulario)</h1>
 
-  <form action="funciones-1-2.php" method="get">
+  <form action="funciones-1-3-bi-2.php" method="get">
     <p>
       Quiero convertir:
       <input type="number" name="numero" size="40" />
