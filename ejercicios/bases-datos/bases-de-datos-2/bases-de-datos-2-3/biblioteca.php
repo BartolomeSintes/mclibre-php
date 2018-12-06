@@ -93,8 +93,11 @@ function cabecera($texto, $menu)
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\" />\n";
-    print "  <title>$texto. Bases de datos 2-3. Bases de datos (2). \n";
-    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
+    print "  <title>\n";
+    print "    $texto. \n";
+    print "    Bases de datos 3-1. Bases de datos (3). \n";
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
+    print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
     print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones-proyectos.css\" "
         . "title=\"Estilo Proyectos PHP de mclibre\" />\n";
