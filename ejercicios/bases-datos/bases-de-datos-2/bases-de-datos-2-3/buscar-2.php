@@ -31,8 +31,8 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
-$columna   = recogeColumna("columna", "apellidos");
-$orden     = recogeOrden("orden", "ASC");
+$columna   = recogeValores("columna", $columnas, "apellidos");
+$orden     = recogeValores("orden", $orden, "ASC");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE nombre LIKE :nombre

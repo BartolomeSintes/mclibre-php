@@ -31,7 +31,7 @@ define ("SQLITE", "SQLite");
 $dbMotor = SQLITE;                        // Base de datos empleada
 if ($dbMotor == MYSQL) {
     define("MYSQL_HOST", "mysql:host=localhost"); // Nombre de host MYSQL
-    define("MYSQL_USUARIO", "root");      // Nombre de usuario de MySQL
+    define("MYSQL_USER",    "root");      // Nombre de usuario de MySQL
     define("MYSQL_PASSWORD", "");         // Contraseña de usuario de MySQL
     $dbDb        = "mclibre_biblioteca";  // Nombre de la base de datos
     $dbObras     = $dbDb . ".obras";        // Nombre de la tabla Obras
@@ -72,7 +72,7 @@ function conectaDb()
 
     try {
         if ($dbMotor == MYSQL) {
-            $db = new PDO(MYSQL_HOST, MYSQL_USUARIO, MYSQL_PASSWORD);
+            $db = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
             $db = new PDO("sqlite:" . $dbDb);

@@ -43,6 +43,8 @@ $columnas = [                              // Nombre de las columnas de la tabla
     "apellidos"
 ];
 
+$orden = [ "ASC", "DESC" ];                // Valores de ordenación
+
 $dbMotor = SQLITE;                         // Base de datos empleada (MYSQL o SQLITE)
 
 if ($dbMotor == MYSQL) {
@@ -74,27 +76,14 @@ function recogeMatriz($var)
     return $tmpMatriz;
 }
 
-function recogeColumna($var, $var2)
+function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
-    global $columnas;
-
-    foreach($columnas as $columna) {
-        if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $columna) {
-            return $columna;
+    foreach($valoresValidos as $valorValido) {
+        if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $valorValido) {
+            return $valorValido;
         }
     }
-    return $var2;
-}
-
-function recogeOrden($var, $var2)
-{
-    if (isset($_REQUEST[$var]) && $_REQUEST[$var] == "ASC") {
-        return "ASC";
-    } elseif (isset($_REQUEST[$var]) && $_REQUEST[$var] == "DESC") {
-        return "DESC";
-    } else {
-        return $var2;
-    }
+    return $valorPredeterminado;
 }
 
 function cabecera($texto, $menu)

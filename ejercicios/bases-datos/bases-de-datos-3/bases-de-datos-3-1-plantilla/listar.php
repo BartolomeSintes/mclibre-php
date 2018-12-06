@@ -11,8 +11,8 @@ require_once "biblioteca.php";
 $db = conectaDb();
 cabecera("Listar", MENU_VOLVER);
 
-$columna = recogeColumna("columna", "apellidos");
-$orden   = recogeOrden("orden", "ASC");
+$columna = recogeValores("columna", $columnas, "apellidos");
+$orden   = recogeValores("orden", $orden, "ASC");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db->query($consulta);

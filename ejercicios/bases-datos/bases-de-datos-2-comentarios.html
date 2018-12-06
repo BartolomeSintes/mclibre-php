@@ -322,40 +322,29 @@ if (!$result) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">$columna = recogeColumna("columna", "apellidos");
-$orden   = recogeOrden("orden", "ASC");</code>
+<code class="language-php">$columna = recogeValores("columna", $columnas, "apellidos");
+$orden   = recogeValores("orden", $orden, "ASC");</code>
 </pre>
         </div>
-        <p>Las funciones recogeColumna() y recogeOrden() podrían ser las siguientes:</p>
+        <p>La función recogeValores() podría ser la siguiente:</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$columnas = [
+<code class="language-php">$columnas = [                              // Nombre de las columnas de la tabla
     "nombre",
     "apellidos"
 ];
 
-function recogeColumna($var, $var2)
-{
-    global $columnas;
+$orden = [ "ASC", "DESC" ];                // Valores de ordenación
 
-    foreach($columnas as $columna) {
-        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $columna) {
-            return $columna;
+function recogeValores($var, $valoresValidos, $valorPredeterminado)
+{
+    foreach($valoresValidos as $valorValido) {
+        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $valorValido) {
+            return $valorValido;
         }
     }
-    return $var2;
-}
-
-function recogeOrden($var, $var2)
-{
-    if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == "ASC") {
-        return "ASC";
-    } elseif (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == "DESC") {
-        return "DESC";
-    } else {
-        return $var2;
-    }
+    return $valorPredeterminado;
 }</code>
 </pre>
         </div>
@@ -409,7 +398,7 @@ print "        &lt;/th&gt;\n";</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />

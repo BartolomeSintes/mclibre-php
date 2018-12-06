@@ -71,7 +71,7 @@ if ($nombreOk && $apellidosOk) {
                 AND apellidos=:apellidos
                 AND id<>:id";
             $result = $db->prepare($consulta);
-            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos]);
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id]);
             if (!$result) {
                 print "    <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {

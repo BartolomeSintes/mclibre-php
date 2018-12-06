@@ -29,8 +29,8 @@ cabecera("Buscar 2", MENU_VOLVER);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
-$columna   = recogeColumna("columna", "apellidos");
-$orden     = recogeOrden("orden", "ASC");
+$columna   = recogeValores("columna", $columnas, "apellidos");
+$orden     = recogeValores("orden", $orden, "ASC");
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla
     WHERE nombre LIKE :nombre

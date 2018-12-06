@@ -425,7 +425,7 @@ if (!$result) {
 
       <p>Si no podemos usar parámetros, no queda más remedio que incluir los datos en la consulta. Como en ese caso PHP no hace ninguna desinfección de los datos, la tenemos que hacer nosotros previamente.</p>
 
-      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos). Podemos crear una función de recogida de datos específica que impida cualquier tipo de ataque de inyección por parte del usuario, como muestra el siguiente ejemplo</p>
+      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos), podemos crear una función de recogida de datos específica que impida cualquier tipo de ataque de inyección por parte del usuario, como muestra el siguiente ejemplo:</p>
 
       <div class="codigo">
         <pre>
@@ -435,20 +435,18 @@ $columnas = [
     "apellidos"
 ];
 
-function recogeColumna($var, $var2)
+function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
-    global $columnas;
-
-    foreach($columnas as $columna) {
-        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $columna) {
-            return $columna;
+    foreach($valoresValidos as $valorValido) {
+        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $valorValido) {
+            return $valorValido;
         }
     }
-    return $var2;
+    return $valorPredeterminado;
 }
 
 // EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$columna = recogeColumna("columna", "apellidos");
+$columna = recogeValores("columna", $columnas, "apellidos");
 $nombre  = $_REQUEST["nombre"];
 
 $consulta = "SELECT * FROM $dbTabla
@@ -972,7 +970,7 @@ if (!$result) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 12 de diciembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2018</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
