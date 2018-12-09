@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) JSON-RPC (Formulario).
+    Convertidor de distancias (3) JSON-RPC (Formulario).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -40,7 +40,7 @@
   <footer>
   <p class="ultmod">
     Última modificación de esta página:
-    <time datetime="2018-11-29">29 de noviembre de 2018</time>
+    <time datetime="2018-12-09">9 de diciembre de 2018</time>
   </p>
 
   <p class="licencia">

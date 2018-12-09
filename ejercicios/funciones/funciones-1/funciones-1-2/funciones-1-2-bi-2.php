@@ -1,11 +1,11 @@
 <?php
 /**
- * Convertidor de distancias (1) Con biblioteca - funciones-1-2-2.php
+ * Convertidor de distancias (2) Con biblioteca - funciones-1-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-29
+ * @version   2018-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) Con biblioteca (Resultado).
+    Convertidor de distancias (2) Con biblioteca (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,12 +36,12 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (1) Con biblioteca (Resultado)</h1>
+  <h1>Convertidor de distancias (2) Con biblioteca (Resultado)</h1>
 
 <?php
 include "funciones-1-2-bi-biblioteca.php";
 
-$unidades = ["km", "m", "cm"];
+$unidades = ["km", "m", "cm", "mm"];
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -86,7 +86,7 @@ if ($numeroOk && $inicialOk && $finalOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-29">29 de noviembre de 2018</time>
+      <time datetime="2018-12-09">9 de diciembre de 2018</time>
     </p>
 
     <p class="licencia">

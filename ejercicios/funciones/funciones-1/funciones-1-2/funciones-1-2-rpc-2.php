@@ -1,11 +1,11 @@
 <?php
 /**
- * Convertidor de distancias (1) JSON-RPC- funciones-1-2-2.php
+ * Convertidor de distancias (2) JSON-RPC- funciones-1-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-29
+ * @version   2018-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,13 +21,16 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+// ATENCIÓN: ESTE PROGRAMA NO ESIGUE EXACTAMENTE EL PROTOCOLO JSON-RPC
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) JSON-RPC (Resultado).
+    Convertidor de distancias (2) JSON-RPC (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -47,9 +50,9 @@ function recoge($var)
     return $tmp;
 }
 
-$unidades = ["km", "m", "cm"];
+$unidades = ["km", "m", "cm", "mm"];
 
-$camino = "http://localhost/apuntes/php/ejercicios/funciones/funciones-1-2/";
+$camino = "http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/";
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -107,7 +110,7 @@ if ($numeroOk && $inicialOk && $finalOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-29">29 de noviembre de 2018</time>
+      <time datetime="2018-12-09">9 de diciembre de 2018</time>
     </p>
 
     <p class="licencia">

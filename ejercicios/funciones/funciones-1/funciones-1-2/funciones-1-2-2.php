@@ -1,11 +1,11 @@
 <?php
 /**
- * Convertidor de distancias (2) Sin funciones - funciones-2-2.php
+ * Convertidor de distancias (2) Sin funciones - funciones-1-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-29
+ * @version   2018-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (1) Sin funciones (Resultado)</h1>
+  <h1>Convertidor de distancias (2) Sin funciones (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -47,7 +47,7 @@ function recoge($var)
     return $tmp;
 }
 
-$unidades = ["km", "m", "cm", "mi", "yd", "ft", "in"];
+$unidades = ["km", "m", "cm", "mm"];
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -90,14 +90,8 @@ if ($numeroOk && $inicialOk && $finalOk) {
         $numeroIntermedio = $numero;
     } elseif ($inicial == "cm") {
         $numeroIntermedio = $numero / 100;
-    } elseif ($inicial == "mi") {
-        $numeroIntermedio = $numero * 1760 * 3 * 12 * 2.54 / 100;
-    } elseif ($inicial == "yd") {
-        $numeroIntermedio = $numero * 3 * 12 * 2.54 / 100;
-    } elseif ($inicial == "ft") {
-        $numeroIntermedio = $numero * 12 * 2.54 / 100;
-    } elseif ($inicial == "in") {
-        $numeroIntermedio = $numero * 2.54 / 100;
+    } elseif ($inicial == "mm") {
+        $numeroIntermedio = $numero / 1000;
     }
 
     if ($final == "km") {
@@ -106,26 +100,21 @@ if ($numeroOk && $inicialOk && $finalOk) {
         $numeroFinal = $numeroIntermedio;
     } elseif ($final == "cm") {
         $numeroFinal = $numeroIntermedio * 100;
-    } elseif ($final == "mi") {
-        $numeroFinal = $numeroIntermedio / 1760 / 3 / 12 / 2.54 * 100;
-    } elseif ($final == "yd") {
-        $numeroFinal = $numeroIntermedio / 3 / 12 / 2.54 * 100;
-    } elseif ($final == "ft") {
-        $numeroFinal = $numeroIntermedio / 12 / 2.54 * 100;
-    } elseif ($final == "in") {
-        $numeroFinal = $numeroIntermedio / 2.54 * 100;
+    } elseif ($final == "mm") {
+        $numeroFinal = $numeroIntermedio * 1000;
     }
 
-    print "  <p>$numero $inicial = $numeroFinal $final.</p>\n";
+    $resultado = $numeroFinal;
+    print "  <p>$numero $inicial = $resultado $final.</p>\n";
     print "\n";
 }
 ?>
-  <p><a href="funciones-2-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-1-2-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-29">29 de noviembre de 2018</time>
+      <time datetime="2018-12-09">9 de diciembre de 2018</time>
     </p>
 
     <p class="licencia">

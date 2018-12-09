@@ -14,36 +14,22 @@
 <body>
   <h1>Convertidor de distancias (2) Sin funciones (Formulario)</h1>
 
-  <form action="funciones-2-2.php" method="get">
+  <form action="funciones-1-2-2.php" method="get">
     <p>
       Quiero convertir:
       <input type="number" name="numero" size="40" />
       <select name="inicial">
-        <optgroup label="Sistema métrico">
-          <option value="km">km</option>
-          <option value="m">m</option>
-          <option value="cm">cm</option>
-        </optgroup>
-        <optgroup label="Sistema anglosajón">
-          <option value="mi">milla</option>
-          <option value="yd">yarda</option>
-          <option value="ft">pies</option>
-          <option value="in">pulgadas</option>
-         </optgroup>
+        <option value="km">km</option>
+        <option value="m">m</option>
+        <option value="cm">cm</option>
+        <option value="mm">mm</option>
       </select>
       a
       <select name="final">
-        <optgroup label="Sistema métrico">
-          <option value="km">km</option>
-          <option value="m">m</option>
-          <option value="cm">cm</option>
-        </optgroup>
-        <optgroup label="Sistema anglosajón">
-          <option value="mi">milla</option>
-          <option value="yd">yarda</option>
-          <option value="ft">pies</option>
-          <option value="in">pulgadas</option>
-         </optgroup>
+        <option value="km">km</option>
+        <option value="m" selected="selected">m</option>
+        <option value="cm">cm</option>
+        <option value="mm">mm</option>
       </select>
     </p>
 
@@ -56,7 +42,7 @@
   <footer>
   <p class="ultmod">
     Última modificación de esta página:
-    <time datetime="2018-11-29">29 de noviembre de 2018</time>
+    <time datetime="2018-12-09">9 de diciembre de 2018</time>
   </p>
 
   <p class="licencia">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (1) Servicio web (Formulario).
+    Convertidor de distancias (2) Servicio web (Formulario).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (1) Servicio web (Formulario)</h1>
+  <h1>Convertidor de distancias (2) Servicio web (Formulario)</h1>
 
   <form action="funciones-1-2-ws-2.php" method="get">
     <p>
@@ -22,12 +22,14 @@
         <option value="km">km</option>
         <option value="m">m</option>
         <option value="cm">cm</option>
+        <option value="mm">mm</option>
       </select>
       a
       <select name="final">
         <option value="km">km</option>
         <option value="m" selected="selected">m</option>
         <option value="cm">cm</option>
+        <option value="mm">mm</option>
       </select>
     </p>
 
@@ -40,7 +42,7 @@
   <footer>
   <p class="ultmod">
     Última modificación de esta página:
-    <time datetime="2018-11-29">29 de noviembre de 2018</time>
+    <time datetime="2018-12-09">9 de diciembre de 2018</time>
   </p>
 
   <p class="licencia">

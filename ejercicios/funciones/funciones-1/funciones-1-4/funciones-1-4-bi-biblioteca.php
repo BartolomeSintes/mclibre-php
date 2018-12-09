@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (2) JSON-RPC - funciones-1-2-rpc.php
+ * Convertidor de distancias y tiempos Con biblioteca - funciones-1-4-biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// ATENCIÓN: ESTE PROGRAMA NO ESIGUE EXACTAMENTE EL PROTOCOLO JSON-RPC
+function recoge($var)
+{
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
+    return $tmp;
+}
 
 function convierte($num, $uniOri, $uniFin) {
     // La unidad intermedia es el metro
@@ -33,8 +39,6 @@ function convierte($num, $uniOri, $uniFin) {
         $numeroIntermedio = $num;
     } elseif ($uniOri == "cm") {
         $numeroIntermedio = $num / 100;
-    } elseif ($uniOri == "mm") {
-        $numeroIntermedio = $num / 1000;
     }
 
     if ($uniFin == "km") {
@@ -43,26 +47,6 @@ function convierte($num, $uniOri, $uniFin) {
         $numeroFinal = $numeroIntermedio;
     } elseif ($uniFin == "cm") {
         $numeroFinal = $numeroIntermedio * 100;
-    } elseif ($uniFin == "mm") {
-        $numeroFinal = $numeroIntermedio * 1000;
     }
     return $numeroFinal;
-}
-
-$validParams = ["km", "m", "cm", "mm"];
-
-$peticionOk = false;
-if ($_REQUEST["method"] == "convertir") {
-    if (in_array($_REQUEST["params"]["from"], $validParams)) {
-        if (in_array($_REQUEST["params"]["into"], $validParams)) {
-            $peticionOk = true;
-        }
-    }
-}
-
-if ($peticionOk == true) {
-    $result = convierte($_REQUEST["params"]["value"],$_REQUEST["params"]["from"], $_REQUEST["params"]["into"]);
-    print "{\"jsonrpc\" : \"2.0\", \"result\" : $result, \"id\" : $_REQUEST[id] }";
-} else {
-    print "{\"jsonrpc\" : \"2.0\", \"error\" : -1, \"id\" : $_REQUEST[id] }";
 }

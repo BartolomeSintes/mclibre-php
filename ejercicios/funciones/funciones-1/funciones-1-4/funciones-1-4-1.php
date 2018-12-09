@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (3) Con biblioteca (Formulario).
+    Convertidor de distancias y tiempos. Sin funciones (Formulario).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,22 +12,36 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (3) Con biblioteca (Formulario)</h1>
+  <h1>Convertidor de distancias y tiempos Sin funciones (Formulario)</h1>
 
-  <form action="funciones-1-3-bi-2.php" method="get">
+  <form action="funciones-1-4-2.php" method="get">
     <p>
       Quiero convertir:
       <input type="number" name="numero" size="40" />
       <select name="inicial">
-        <option value="km">km</option>
-        <option value="m">m</option>
-        <option value="cm">cm</option>
+        <optgroup label="Sistema métrico">
+          <option value="km">km</option>
+          <option value="m">m</option>
+          <option value="cm">cm</option>
+        </optgroup>
+        <optgroup label="Tiempo">
+          <option value="h">horas</option>
+          <option value="min">minutos</option>
+          <option value="s">segundos</option>
+         </optgroup>
       </select>
       a
       <select name="final">
-        <option value="km">km</option>
-        <option value="m" selected="selected">m</option>
-        <option value="cm">cm</option>
+        <optgroup label="Sistema métrico">
+          <option value="km">km</option>
+          <option value="m">m</option>
+          <option value="cm">cm</option>
+        </optgroup>
+        <optgroup label="Tiempo">
+          <option value="h">horas</option>
+          <option value="min">minutos</option>
+          <option value="s">segundos</option>
+         </optgroup>
       </select>
     </p>
 

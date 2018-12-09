@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (2) JSON-RPC - funciones-1-2-rpc.php
+ * Convertidor de distancias y tiempos JSON-RPC - funciones-1-4-rpc.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// ATENCIÓN: ESTE PROGRAMA NO ESIGUE EXACTAMENTE EL PROTOCOLO JSON-RPC
 
 function convierte($num, $uniOri, $uniFin) {
     // La unidad intermedia es el metro
@@ -33,8 +32,6 @@ function convierte($num, $uniOri, $uniFin) {
         $numeroIntermedio = $num;
     } elseif ($uniOri == "cm") {
         $numeroIntermedio = $num / 100;
-    } elseif ($uniOri == "mm") {
-        $numeroIntermedio = $num / 1000;
     }
 
     if ($uniFin == "km") {
@@ -43,13 +40,11 @@ function convierte($num, $uniOri, $uniFin) {
         $numeroFinal = $numeroIntermedio;
     } elseif ($uniFin == "cm") {
         $numeroFinal = $numeroIntermedio * 100;
-    } elseif ($uniFin == "mm") {
-        $numeroFinal = $numeroIntermedio * 1000;
     }
     return $numeroFinal;
 }
 
-$validParams = ["km", "m", "cm", "mm"];
+$validParams = ["km", "m", "cm"];
 
 $peticionOk = false;
 if ($_REQUEST["method"] == "convertir") {

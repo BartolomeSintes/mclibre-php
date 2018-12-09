@@ -1,11 +1,11 @@
 <?php
 /**
- * Convertidor de distancias (1) Servicio web - funciones-1-4-2.php
+ * Convertidor de distancias y tiempos Servicio web - funciones-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-29
+ * @version   2018-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Buscador en la Wikipedia (Resultado).
+    Convertidor de distancias y tiempos Servicio web (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Buscador en la Wikipedia (Resultado)</h1>
+  <h1>Convertidor de distancias y tiempos Servicio web (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -47,40 +47,46 @@ function recoge($var)
     return $tmp;
 }
 
-$camino = "https://es.wikipedia.org/w/api.php?action=opensearch&prop=extracts&format=json&formatversion=2&srwhat=title";
+$unidades = ["km", "m", "cm"];
 
-$cadena  = recoge("cadena");
+$camino = "http://localhost/apuntes/php/ejercicios/funciones/funciones-1-4/";
 
-$cadenaOk  = false;
+$numero  = recoge("numero");
+$inicial = recoge("inicial");
+$final   = recoge("final");
 
-if ($cadena == "") {
+$numeroOk  = false;
+$inicialOk = false;
+$finalOk   = false;
+
+if ($numero == "") {
     print "  <p class=\"aviso\">No ha escrito nada.</p>\n";
     print "\n";
+} elseif (!is_numeric($numero)) {
+    print "  <p class=\"aviso\">No ha escrito un número.</p>\n";
+    print "\n";
 } else {
-    $cadenaOk = true;
+    $numeroOk = true;
 }
 
-if ($cadenaOk) {
-    print "<p>Artículos de la Wikipedia relacionados con <strong>$cadena</strong>.</p>\n";
+if (!in_array($inicial, $unidades)) {
+    print "  <p class=\"aviso\">No ha elegido una unidad inicial válida.</p>\n";
+    print "\n";
+} else {
+    $inicialOk = true;
+}
 
-    $consulta = http_build_query(["search" => $cadena]);
-    $respuesta = json_decode(file_get_contents("{$camino}&$consulta"));
-    // print "<pre>\n"; print_r($respuesta); print "</pre>\n";
+if (!in_array($final, $unidades)) {
+    print "  <p class=\"aviso\">No ha elegido una unidad final válida.</p>\n";
+    print "\n";
+} else {
+    $finalOk = true;
+}
 
-    $respuestas = count($respuesta[1]);
-
-    if ($respuestas == 0) {
-        print "<p>No se ha encontrado nada</p>\n";
-    } else {
-        print "  <ul>\n";
-        for ($i = 0; $i < $respuestas ; $i++) {
-            print "    <li><a href=\"{$respuesta[3][$i]}\">{$respuesta[1][$i]}</a>\n";
-            print "      <p>{$respuesta[2][$i]}</p>\n";
-            print "    </li>\n";
-        }
-        print "  </ul>\n";
-    }
-
+if ($numeroOk && $inicialOk && $finalOk) {
+    $consulta = http_build_query(["from" => $inicial, "into" => $final, "value" => $numero]);
+    $respuesta = file_get_contents("{$camino}funciones-1-4-ws.php?$consulta");
+    print "  <p>$numero $inicial = $respuesta $final.</p>\n";
     print "\n";
 }
 ?>
@@ -89,7 +95,7 @@ if ($cadenaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-29">29 de noviembre de 2018</time>
+      <time datetime="2018-12-09">9 de diciembre de 2018</time>
     </p>
 
     <p class="licencia">

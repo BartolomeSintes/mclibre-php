@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Buscador en la Wikipedia (Formulario).
+    Convertidor de distancias y tiempos JSON-RPC (Formulario).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,12 +12,23 @@
 </head>
 
 <body>
-  <h1>Buscador en la Wikipedia (Formulario)</h1>
+  <h1>Convertidor de distancias (Formulario)</h1>
 
-  <form action="funciones-1-5-ws-2.php" method="get">
+  <form action="funciones-1-4-rpc-2.php" method="get">
     <p>
-      Buscar en la Wikipedia:
-      <input type="text" name="cadena" size="40" />
+      Quiero convertir:
+      <input type="number" name="numero" size="40" />
+      <select name="inicial">
+        <option value="km">km</option>
+        <option value="m">m</option>
+        <option value="cm">cm</option>
+      </select>
+      a
+      <select name="final">
+        <option value="km">km</option>
+        <option value="m" selected="selected">m</option>
+        <option value="cm">cm</option>
+      </select>
     </p>
 
     <p>

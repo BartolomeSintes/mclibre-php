@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias y tiempos. Sin funciones (Formulario).
+    Convertidor de distancias (3) Sin funciones (Formulario).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias y tiempos Sin funciones (Formulario)</h1>
+  <h1>Convertidor de distancias (3) Sin funciones (Formulario)</h1>
 
-  <form action="funciones-1-3-2.php" method="get">
+  <form action="funciones-2-2.php" method="get">
     <p>
       Quiero convertir:
       <input type="number" name="numero" size="40" />
@@ -24,10 +24,11 @@
           <option value="m">m</option>
           <option value="cm">cm</option>
         </optgroup>
-        <optgroup label="Tiempo">
-          <option value="h">horas</option>
-          <option value="min">minutos</option>
-          <option value="s">segundos</option>
+        <optgroup label="Sistema anglosajón">
+          <option value="mi">milla</option>
+          <option value="yd">yarda</option>
+          <option value="ft">pies</option>
+          <option value="in">pulgadas</option>
          </optgroup>
       </select>
       a
@@ -37,10 +38,11 @@
           <option value="m">m</option>
           <option value="cm">cm</option>
         </optgroup>
-        <optgroup label="Tiempo">
-          <option value="h">horas</option>
-          <option value="min">minutos</option>
-          <option value="s">segundos</option>
+        <optgroup label="Sistema anglosajón">
+          <option value="mi">milla</option>
+          <option value="yd">yarda</option>
+          <option value="ft">pies</option>
+          <option value="in">pulgadas</option>
          </optgroup>
       </select>
     </p>
@@ -54,7 +56,7 @@
   <footer>
   <p class="ultmod">
     Última modificación de esta página:
-    <time datetime="2018-11-29">29 de noviembre de 2018</time>
+    <time datetime="2018-12-09">9 de diciembre de 2018</time>
   </p>
 
   <p class="licencia">

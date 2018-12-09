@@ -1,11 +1,11 @@
 <?php
 /**
- * Convertidor de distancias (2) Sin funciones - funciones-1-3.php
+ * Convertidor de distancias (3) Sin funciones - funciones-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-29
+ * @version   2018-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (2) Sin funciones (Resultado).
+    Convertidor de distancias (3) Sin funciones (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (1) Sin funciones (Resultado)</h1>
+  <h1>Convertidor de distancias (3) Sin funciones (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -47,8 +47,7 @@ function recoge($var)
     return $tmp;
 }
 
-$unidadesDistancias = ["km", "m", "cm"];
-$unidadesTiempo = ["h", "min", "s"];
+$unidades = ["km", "m", "cm", "mi", "yd", "ft", "in"];
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -68,26 +67,18 @@ if ($numero == "") {
     $numeroOk = true;
 }
 
-if (!in_array($inicial, $unidadesDistancias) && !in_array($inicial, $unidadesTiempo)  ) {
+if (!in_array($inicial, $unidades)) {
     print "  <p class=\"aviso\">No ha elegido una unidad inicial válida.</p>\n";
     print "\n";
 } else {
     $inicialOk = true;
 }
 
-if (!in_array($final, $unidadesDistancias) && !in_array($final, $unidadesTiempo)  ) {
+if (!in_array($final, $unidades)) {
     print "  <p class=\"aviso\">No ha elegido una unidad final válida.</p>\n";
     print "\n";
 } else {
     $finalOk = true;
-}
-
-if ((in_array($inicial, $unidadesDistancias) && in_array($final, $unidadesTiempo)) ||
-    (in_array($inicial, $unidadesTiempo) && in_array($final, $unidadesDistancias))) {
-    print "  <p class=\"aviso\">No ha elegido unidades compatibles.</p>\n";
-    print "\n";
-    $inicialOk = false;
-    $finalOk   = false;
 }
 
 if ($numeroOk && $inicialOk && $finalOk) {
@@ -99,15 +90,14 @@ if ($numeroOk && $inicialOk && $finalOk) {
         $numeroIntermedio = $numero;
     } elseif ($inicial == "cm") {
         $numeroIntermedio = $numero / 100;
-    }
-
-    // La unidad intermedia es el minuto
-    if ($inicial == "h") {
-        $numeroIntermedio = $numero * 60;
-    } elseif ($inicial == "min") {
-        $numeroIntermedio = $numero;
-    } elseif ($inicial == "s") {
-        $numeroIntermedio = $numero / 60;
+    } elseif ($inicial == "mi") {
+        $numeroIntermedio = $numero * 1760 * 3 * 12 * 2.54 / 100;
+    } elseif ($inicial == "yd") {
+        $numeroIntermedio = $numero * 3 * 12 * 2.54 / 100;
+    } elseif ($inicial == "ft") {
+        $numeroIntermedio = $numero * 12 * 2.54 / 100;
+    } elseif ($inicial == "in") {
+        $numeroIntermedio = $numero * 2.54 / 100;
     }
 
     if ($final == "km") {
@@ -116,27 +106,26 @@ if ($numeroOk && $inicialOk && $finalOk) {
         $numeroFinal = $numeroIntermedio;
     } elseif ($final == "cm") {
         $numeroFinal = $numeroIntermedio * 100;
+    } elseif ($final == "mi") {
+        $numeroFinal = $numeroIntermedio / 1760 / 3 / 12 / 2.54 * 100;
+    } elseif ($final == "yd") {
+        $numeroFinal = $numeroIntermedio / 3 / 12 / 2.54 * 100;
+    } elseif ($final == "ft") {
+        $numeroFinal = $numeroIntermedio / 12 / 2.54 * 100;
+    } elseif ($final == "in") {
+        $numeroFinal = $numeroIntermedio / 2.54 * 100;
     }
-
-    if ($final == "h") {
-        $numeroFinal = $numeroIntermedio / 60;
-    } elseif ($final == "min") {
-        $numeroFinal = $numeroIntermedio;
-    } elseif ($final == "s") {
-        $numeroFinal = $numeroIntermedio * 60;
-    }
-
 
     print "  <p>$numero $inicial = $numeroFinal $final.</p>\n";
     print "\n";
 }
 ?>
-  <p><a href="funciones-1-3-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-2-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-29">29 de noviembre de 2018</time>
+      <time datetime="2018-12-09">9 de diciembre de 2018</time>
     </p>
 
     <p class="licencia">

@@ -1,11 +1,11 @@
 <?php
 /**
- * Convertidor de distancias (1) Con biblioteca - funciones-1-2-biblioteca.php
+ * Convertidor de distancias (2) Con biblioteca - funciones-1-2-biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-29
+ * @version   2018-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,6 +39,8 @@ function convierte($num, $uniOri, $uniFin) {
         $numeroIntermedio = $num;
     } elseif ($uniOri == "cm") {
         $numeroIntermedio = $num / 100;
+    } elseif ($uniOri == "mm") {
+        $numeroIntermedio = $num / 1000;
     }
 
     if ($uniFin == "km") {
@@ -47,6 +49,8 @@ function convierte($num, $uniOri, $uniFin) {
         $numeroFinal = $numeroIntermedio;
     } elseif ($uniFin == "cm") {
         $numeroFinal = $numeroIntermedio * 100;
+    } elseif ($uniFin == "mm") {
+        $numeroFinal = $numeroIntermedio * 1000;
     }
     return $numeroFinal;
 }

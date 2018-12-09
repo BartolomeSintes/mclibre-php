@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (3) Servicio web - funciones-1-3-biblioteca.php
+ * Convertidor de distancias y tiempos Servicio web - funciones-1-4-biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco

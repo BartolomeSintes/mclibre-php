@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (3) Con funciones - funciones-1-3-2.php
+ * Convertidor de distancias y tiempos Sin funciones - funciones-1-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (3) Con funciones (Resultado).
+    Convertidor de distancias y tiempos Sin funciones (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (3) Con funciones (Resultado)</h1>
+  <h1>Convertidor de distancias y tiempos Sin funciones (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -47,28 +47,8 @@ function recoge($var)
     return $tmp;
 }
 
-function convierte($num, $uniOri, $uniFin) {
-    // La unidad intermedia es el metro
-    $numeroIntermedio = 0;
-    if ($uniOri == "km") {
-        $numeroIntermedio = $num * 1000;
-    } elseif ($uniOri == "m") {
-        $numeroIntermedio = $num;
-    } elseif ($uniOri == "cm") {
-        $numeroIntermedio = $num / 100;
-    }
-
-    if ($uniFin == "km") {
-        $numeroFinal = $numeroIntermedio / 1000;
-    } elseif ($uniFin == "m") {
-        $numeroFinal = $numeroIntermedio;
-    } elseif ($uniFin == "cm") {
-        $numeroFinal = $numeroIntermedio * 100;
-    }
-    return $numeroFinal;
-}
-
-$unidades = ["km", "m", "cm"];
+$unidadesDistancias = ["km", "m", "cm"];
+$unidadesTiempo = ["h", "min", "s"];
 
 $numero  = recoge("numero");
 $inicial = recoge("inicial");
@@ -88,27 +68,70 @@ if ($numero == "") {
     $numeroOk = true;
 }
 
-if (!in_array($inicial, $unidades)) {
+if (!in_array($inicial, $unidadesDistancias) && !in_array($inicial, $unidadesTiempo)  ) {
     print "  <p class=\"aviso\">No ha elegido una unidad inicial válida.</p>\n";
     print "\n";
 } else {
     $inicialOk = true;
 }
 
-if (!in_array($final, $unidades)) {
+if (!in_array($final, $unidadesDistancias) && !in_array($final, $unidadesTiempo)  ) {
     print "  <p class=\"aviso\">No ha elegido una unidad final válida.</p>\n";
     print "\n";
 } else {
     $finalOk = true;
 }
 
+if ((in_array($inicial, $unidadesDistancias) && in_array($final, $unidadesTiempo)) ||
+    (in_array($inicial, $unidadesTiempo) && in_array($final, $unidadesDistancias))) {
+    print "  <p class=\"aviso\">No ha elegido unidades compatibles.</p>\n";
+    print "\n";
+    $inicialOk = false;
+    $finalOk   = false;
+}
+
 if ($numeroOk && $inicialOk && $finalOk) {
-    $resultado = convierte($numero, $inicial, $final);
-    print "  <p>$numero $inicial = $resultado $final.</p>\n";
+    // La unidad intermedia es el metro
+    $numeroIntermedio = 0;
+    if ($inicial == "km") {
+        $numeroIntermedio = $numero * 1000;
+    } elseif ($inicial == "m") {
+        $numeroIntermedio = $numero;
+    } elseif ($inicial == "cm") {
+        $numeroIntermedio = $numero / 100;
+    }
+
+    // La unidad intermedia es el minuto
+    if ($inicial == "h") {
+        $numeroIntermedio = $numero * 60;
+    } elseif ($inicial == "min") {
+        $numeroIntermedio = $numero;
+    } elseif ($inicial == "s") {
+        $numeroIntermedio = $numero / 60;
+    }
+
+    if ($final == "km") {
+        $numeroFinal = $numeroIntermedio / 1000;
+    } elseif ($final == "m") {
+        $numeroFinal = $numeroIntermedio;
+    } elseif ($final == "cm") {
+        $numeroFinal = $numeroIntermedio * 100;
+    }
+
+    if ($final == "h") {
+        $numeroFinal = $numeroIntermedio / 60;
+    } elseif ($final == "min") {
+        $numeroFinal = $numeroIntermedio;
+    } elseif ($final == "s") {
+        $numeroFinal = $numeroIntermedio * 60;
+    }
+
+
+    print "  <p>$numero $inicial = $numeroFinal $final.</p>\n";
     print "\n";
 }
 ?>
-  <p><a href="funciones-1-3-fu-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-1-4-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

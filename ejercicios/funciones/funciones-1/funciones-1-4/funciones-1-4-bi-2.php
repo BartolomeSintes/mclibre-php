@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (3) Con funciones - funciones-1-3-2.php
+ * Convertidor de distancias y tiempos Con biblioteca - funciones-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (3) Con funciones (Resultado).
+    Convertidor de distancias y tiempos Con biblioteca (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,37 +36,10 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (3) Con funciones (Resultado)</h1>
+  <h1>Convertidor de distancias y tiempos Con biblioteca (Resultado)</h1>
 
 <?php
-function recoge($var)
-{
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
-function convierte($num, $uniOri, $uniFin) {
-    // La unidad intermedia es el metro
-    $numeroIntermedio = 0;
-    if ($uniOri == "km") {
-        $numeroIntermedio = $num * 1000;
-    } elseif ($uniOri == "m") {
-        $numeroIntermedio = $num;
-    } elseif ($uniOri == "cm") {
-        $numeroIntermedio = $num / 100;
-    }
-
-    if ($uniFin == "km") {
-        $numeroFinal = $numeroIntermedio / 1000;
-    } elseif ($uniFin == "m") {
-        $numeroFinal = $numeroIntermedio;
-    } elseif ($uniFin == "cm") {
-        $numeroFinal = $numeroIntermedio * 100;
-    }
-    return $numeroFinal;
-}
+include "funciones-1-4-bi-biblioteca.php";
 
 $unidades = ["km", "m", "cm"];
 
@@ -108,7 +81,7 @@ if ($numeroOk && $inicialOk && $finalOk) {
     print "\n";
 }
 ?>
-  <p><a href="funciones-1-3-fu-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-1-4-bi-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

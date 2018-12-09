@@ -1,6 +1,6 @@
 <?php
 /**
- * Convertidor de distancias (3) Con funciones - funciones-1-3-2.php
+ * Convertidor de distancias y tiempos Con funciones - funciones-1-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Convertidor de distancias (3) Con funciones (Resultado).
+    Convertidor de distancias y tiempos Con funciones (Resultado).
     Funciones (1). Funciones.
     Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>Convertidor de distancias (3) Con funciones (Resultado)</h1>
+  <h1>Convertidor de distancias y tiempos Con funciones (Resultado)</h1>
 
 <?php
 function recoge($var)
@@ -108,7 +108,7 @@ if ($numeroOk && $inicialOk && $finalOk) {
     print "\n";
 }
 ?>
-  <p><a href="funciones-1-3-fu-1.php">Volver al formulario.</a></p>
+  <p><a href="funciones-1-4-fu-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
