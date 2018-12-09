@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 3-1 - index.php
+ * Bases de datos 3-2 - borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -24,10 +24,13 @@
 
 require_once "biblioteca.php";
 
-cabecera("Inicio", MENU_PRINCIPAL);
-
-if (isset($_SESSION["mensaje"])) {
-    print $_SESSION["mensaje"];
+if (!isset($_REQUEST["si"])) {
+    header("Location:index.php");
+    exit();
+} else {
+    $db = conectaDb();
+    cabecera("Borrar todo 2", MENU_VOLVER);
+    borraTodo($db);
+    $db = null;
+    pie();
 }
-
-pie();

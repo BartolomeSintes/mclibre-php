@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 3-2 - listar.php
+ * Bases de datos 3-2 - buscar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -25,41 +25,60 @@
 require_once "biblioteca.php";
 
 $db = conectaDb();
-cabecera("Listar", MENU_VOLVER);
+cabecera("Buscar 2", MENU_VOLVER);
 
-$columna = recogeValores("columna", $columnas, "apellidos");
-$orden   = recogeValores("orden", $orden, "ASC");
+$nombre    = recoge("nombre");
+$apellidos = recoge("apellidos");
+$telefono  = recoge("telefono");
+$columna   = recogeValores("columna", $columnas, "apellidos");
+$orden     = recogeValores("orden", $orden, "ASC");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla";
-$result = $db->query($consulta);
+$consulta = "SELECT COUNT(*) FROM $dbTabla
+    WHERE nombre LIKE :nombre
+    AND apellidos LIKE :apellidos
+    AND telefono LIKE :telefono";
+$result = $db->prepare($consulta);
+$result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%"]);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0 ) {
-    print "    <p>No se ha creado todavía ningún registro.</p>\n";
+} elseif ($result->fetchColumn() == 0) {
+    print "    <p>No se han encontrado registros.</p>\n";
 } else {
     $consulta = "SELECT * FROM $dbTabla
+        WHERE nombre LIKE :nombre
+        AND apellidos LIKE :apellidos
+        AND telefono LIKE :telefono
         ORDER BY $columna $orden";
-    $result = $db->query($consulta);
+    $result = $db->prepare($consulta);
+    $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%"]);
     if (!$result) {
         print "    <p>Error en la consulta.</p>\n";
     } else {
-        print "    <p>Listado completo de registros:</p>\n";
+        $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;telefono=$telefono";
+        print "    <p>Registros encontrados:</p>\n";
         print "\n";
         print "    <table class=\"conborde franjas\">\n";
         print "      <thead>\n";
         print "        <tr>\n";
         print "          <th>\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?columna=nombre&amp;orden=ASC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=nombre&amp;orden=ASC\">\n";
         print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
         print "            Nombre\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?columna=nombre&amp;orden=DESC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=nombre&amp;orden=DESC\">\n";
         print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
         print "          </th>\n";
         print "          <th>\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?columna=apellidos&amp;orden=ASC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=apellidos&amp;orden=ASC\">\n";
         print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
         print "            Apellidos\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?columna=apellidos&amp;orden=DESC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=apellidos&amp;orden=DESC\">\n";
+        print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
+        print "          </th>\n";
+        print "          <th>\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=telefono&amp;orden=ASC\">\n";
+        print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
+        print "            Teléfono\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=telefono&amp;orden=DESC\">\n";
         print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
         print "          </th>\n";
         print "        </tr>\n";
@@ -69,6 +88,7 @@ if (!$result) {
             print "        <tr>\n";
             print "          <td>$valor[nombre]</td>\n";
             print "          <td>$valor[apellidos]</td>\n";
+            print "          <td>$valor[telefono]</td>\n";
             print "        </tr>\n";
         }
         print "      </tbody>\n";

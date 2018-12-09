@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 3-1 - config.php
+ * Bases de datos 3-2 - config.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -31,12 +31,12 @@ $dbMotor = SQLITE;     // Valores posibles: MYSQL o SQLITE
 define("MYSQL_HOST",     "mysql:host=localhost");   // Nombre de host
 define("MYSQL_USER",     "root");                   // Nombre de usuario
 define("MYSQL_PASSWORD", "");                       // Contraseña de usuario
-define("MYSQL_DATABASE", "mclibre_base_datos_3_1"); // Nombre de la base de datos
+define("MYSQL_DATABASE", "mclibre_base_datos_3_2"); // Nombre de la base de datos
 define("MYSQL_TABLA",    "tabla");                  // Nombre de la tabla
 
 // Configuración para SQLite
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-3-1.sqlite"); // Ubicación de la base de datos
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-3-2.sqlite"); // Ubicación de la base de datos
 define("SQLITE_TABLA",   "tabla");                                       // Nombre de la tabla
 
 // Configuración Tabla Agenda
@@ -44,6 +44,7 @@ define("SQLITE_TABLA",   "tabla");                                       // Nomb
 define("MAX_REG_TABLA",  20); // Número máximo de registros en la tabla
 $tamNombre    = 40;           // Tamaño de la columna Nombre
 $tamApellidos = 60;           // Tamaño de la columna Apellidos
+$tamTelefono  = 10;           // Tamaño de la columna Teléfono
 
 // Método de envío de formularios
 

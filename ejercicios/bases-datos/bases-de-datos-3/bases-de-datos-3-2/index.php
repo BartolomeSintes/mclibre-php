@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 3-1 - index.php
+ * Bases de datos 3-2 - index.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -25,9 +25,5 @@
 require_once "biblioteca.php";
 
 cabecera("Inicio", MENU_PRINCIPAL);
-
-if (isset($_SESSION["mensaje"])) {
-    print $_SESSION["mensaje"];
-}
 
 pie();
