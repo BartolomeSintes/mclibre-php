@@ -60,7 +60,7 @@ function cabecera($texto, $menu)
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\" />\n";
-    print "  <title>$texto. Bases de datos 1-2. Bases de datos (1). \n";
+    print "  <title>$texto. Bases de datos 1-2. Bases de datos (1).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
     print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones-proyectos.css\" "

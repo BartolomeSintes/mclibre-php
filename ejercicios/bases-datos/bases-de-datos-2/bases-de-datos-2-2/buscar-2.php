@@ -51,24 +51,24 @@ if (!$result) {
     if (!$result) {
         print "    <p>Error en la consulta.</p>\n";
     } else {
-        $datos = "nombre=$nombre&amp;apellidos=$apellidos&amp;columna";
+        $datos = "nombre=$nombre&amp;apellidos=$apellidos";
         print "    <p>Registros encontrados:</p>\n";
         print "\n";
         print "    <table class=\"conborde franjas\">\n";
         print "      <thead>\n";
         print "        <tr>\n";
         print "          <th>\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;orden=ASC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=nombre&amp;orden=ASC\">\n";
         print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
         print "            Nombre\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;orden=DESC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=nombre&amp;orden=DESC\">\n";
         print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
         print "          </th>\n";
         print "          <th>\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=apellidos&amp;orden=ASC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=apellidos&amp;orden=ASC\">\n";
         print "              <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\" /></a>\n";
         print "            Apellidos\n";
-        print "            <a href=\"$_SERVER[PHP_SELF]?$datos=apellidos&amp;orden=DESC\">\n";
+        print "            <a href=\"$_SERVER[PHP_SELF]?$datos&amp;columna=apellidos&amp;orden=DESC\">\n";
         print "              <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\" /></a>\n";
         print "          </th>\n";
         print "        </tr>\n";
