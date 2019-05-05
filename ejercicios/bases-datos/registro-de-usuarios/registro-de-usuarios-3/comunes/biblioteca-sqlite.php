@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,14 +25,15 @@
 // Variables globales
 
 $dbDb               = SQLITE_DATABASE;                // Nombre de la base de datos
-$dbTablaUsuariosWeb = SQLITE_TABLA_USUARIOS_WEB;      // Nombre de la tabla
+$dbTablaUsuariosWeb = SQLITE_TABLA_USUARIOS_WEB;      // Nombre de la tabla de Usuarios de la web
 
 // Consultas
 
 $consultaCreaTablaUsuariosWeb = "CREATE TABLE $dbTablaUsuariosWeb (
     id INTEGER PRIMARY KEY,
     usuario VARCHAR($tamUsuariosWebUsuario),
-    password VARCHAR($tamUsuariosWebCifrado)
+    password VARCHAR($tamUsuariosWebCifrado),
+    nivel INTEGER NOT NULL
     )";
 
 // Funciones comunes de bases de datos (SQLITE)
@@ -46,9 +47,9 @@ function conectaDb()
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_ERROR, 1);
-        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
-        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p class=\"aviso\">Error: " . $e->getMessage() . "</p>\n";
         pie();
         exit();
     }
@@ -65,26 +66,26 @@ function borraTodo($db)
         print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
         print "\n";
     } else {
-        print "    <p>Error al borrar la tabla de Usuarios.</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la tabla de Usuarios.</p>\n";
         print "\n";
     }
-    if ($db->query($consultaCreaTablaUsuariosWebUsuarios)) {
+    if ($db->query($consultaCreaTablaUsuariosWeb)) {
         print "    <p>Tabla de Usuarios creada correctamente.</p>\n";
         print "\n";
 
         if ($administradorNombre != "") {
             $consulta = "INSERT INTO $dbTablaUsuariosWeb VALUES (NULL,
-                '$administradorNombre', '" . encripta($administradorPassword) . "')";
+                '$administradorNombre', '" . encripta($administradorPassword) . "', '" . NIVEL_3 . "')";
             if ($db->query($consulta)) {
                 print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
                 print "\n";
             } else {
-                print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+                print "    <p class=\"aviso\">Error al crear el registro de Usuario Administrador.</p>\n";
                 print "\n";
             }
         }
     } else {
-        print "    <p>Error al crear la tabla de Usuarios.</p>\n";
+        print "    <p class=\"aviso\">Error al crear la tabla de Usuarios.</p>\n";
         print "\n";
     }
 }

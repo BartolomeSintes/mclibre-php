@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,21 +23,24 @@
  */
 
 session_start();
-if (!isset($_SESSION["id"])) {
+
+require_once "../comunes/biblioteca.php";
+
+if (!isset($_SESSION["id"]) || $_SESSION["nivel"] != NIVEL_3) {
     header("location:../index.php");
     exit();
 }
-
-require_once "../comunes/biblioteca.php";
 
 $db = conectaDb();
 cabecera("Tabla Usuarios - Añadir 2", MENU_TABLA_USUARIOS_WEB, 1);
 
 $usuario  = recoge("usuario");
 $password = recoge("password");
+$nivel    = recoge("nivel");
 
 $usuarioOk  = false;
 $passwordOk = false;
+$nivelOk    = false;
 
 if ($usuario == "") {
     print "    <p class=\"aviso\">El nombre de usuario no puede estar vacío.</p>\n";
@@ -49,14 +52,24 @@ if ($usuario == "") {
     $usuarioOk = true;
 }
 
-if (mb_strlen($password, "UTF-8") > $tamUsuariosWebPassword) {
+if ($password == "") {
+    print "    <p class=\"aviso\">La contraseña no puede estar vacía.</p>\n";
+    print "\n";
+} elseif (mb_strlen($password, "UTF-8") > $tamUsuariosWebPassword) {
     print "    <p class=\"aviso\">La contraseña no puede tener más de $tamUsuariosWebPassword caracteres.</p>\n";
     print "\n";
 } else {
     $passwordOk = true;
 }
 
-if ($usuarioOk && $passwordOk) {
+if ($nivel != NIVEL_1 && $nivel != NIVEL_2 && $nivel != NIVEL_3) {
+    print "    <p class=\"aviso\">Nivel incorrecto.</p>\n";
+    print "\n";
+} else {
+    $nivelOk = true;
+}
+
+if ($usuarioOk && $passwordOk && $nivelOk) {
     $consulta = "SELECT COUNT(*) FROM $dbTablaUsuariosWeb";
     $result = $db->query($consulta);
     if (!$result) {
@@ -76,10 +89,10 @@ if ($usuarioOk && $passwordOk) {
             print "    <p>El registro ya existe.</p>\n";
         } else {
             $consulta = "INSERT INTO $dbTablaUsuariosWeb
-                (usuario, password)
-                VALUES (:usuario, :password)";
+                (usuario, password, nivel)
+                VALUES (:usuario, :password, :nivel)";
             $result = $db->prepare($consulta);
-            if ($result->execute([":usuario" => $usuario, ":password" => encripta($password)])) {
+            if ($result->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel])) {
                 print "    <p>Registro <strong>$usuario</strong> creado correctamente.</p>\n";
             } else {
                 print "    <p>Error al crear el registro <strong>$usuario</strong>.</p>\n";

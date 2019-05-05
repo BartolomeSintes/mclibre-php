@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,13 +33,24 @@ define("SQLITE",         "SQLite");        // Base de datos SQLITE
 define("MENU_PRINCIPAL",          "menuPrincipal");        // Menú principal
 define("MENU_INSTALAR",           "menuInstalar");         // Menú Instalar
 define("MENU_IDENTIFICAR",        "menuIdentificar");      // Menú Indentificar usuario
-define("MENU_IDENTIFICADO",       "menuIdentificado");     // Menú Usuario identificado
-define("MENU_TABLA_USUARIOS_WEB", "menuTablaUsuariosWeb"); // Menú Gestión Tabala Usuarios Web
+define("MENU_TABLA_USUARIOS_WEB", "menuTablaUsuariosWeb"); // Menú Gestión Tabla Usuarios Web
 define("MENU_ERROR",              "menuError");            // Menú Error conexión con BD
 
-$columnas_usuarios_web = [                 // Nombre de las columnas de la tabla
+
+define("NIVEL_1",           "1");                    // Usuario web de nivel Usuario
+define("NIVEL_2",           "2");                    // Usuario web de nivel Administrador
+define("NIVEL_3",           "3");                    // Usuario web de nivel Gran Jefe
+
+$usuariosWebNiveles = [
+    ["Usuario",       NIVEL_1],
+    ["Administrador", NIVEL_2],
+    ["Gran Jefe",     NIVEL_3]
+];
+
+$columnasUsuariosWeb = [                 // Nombre de las columnas de la tabla Usuarios web
     "usuario",
-    "password"
+    "password",
+    "nivel"
 ];
 
 $orden = [ "ASC", "DESC" ];                // Valores de ordenación
@@ -83,28 +94,49 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
-    if ($menu == MENU_PRINCIPAL) {
-        print "        <li><a href=\"acceso/conectar-1.php\">Identificarse</a></li>\n";
-    } elseif ($menu == MENU_INSTALAR) {
-        print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
-    } elseif ($menu == MENU_IDENTIFICAR) {
-        print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
-    } elseif ($menu == MENU_IDENTIFICADO) {
-        print "        <li><a href=\"db-usuarios/index.php\">Administrar usuarios</a></li>\n";
-        print "        <li><a href=\"acceso/salir.php\">Salir</a></li>\n";
-    } elseif ($menu == MENU_TABLA_USUARIOS_WEB) {
-        print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
-        print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
-        print "        <li><a href=\"listar.php\">Listar</a></li>\n";
-        print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
-        print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
-        print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
-        print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
-    } elseif ($menu == MENU_ERROR) {
-        print "        <li><a href=\"../index.php\">Inicio 1</a></li>\n";
-        print "        <li><a href=\"index.php\">Inicio 2</a></li>\n";
-    } else {
-        print "        <li>Error en la selección de menú</li>\n";
+    if (!isset($_SESSION["id"])) {
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"acceso/conectar-1.php\">Identificarse</a></li>\n";
+        } elseif ($menu == MENU_INSTALAR) {
+            print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
+        } elseif ($menu == MENU_IDENTIFICAR) {
+            print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
+        } elseif ($menu == MENU_ERROR) {
+            print "        <li><a href=\"../index.php\">Inicio 1</a></li>\n";
+            print "        <li><a href=\"index.php\">Inicio 2</a></li>\n";
+        } else {
+            print "        <li>Error en la selección de menú</li>\n";
+        }
+    } elseif ($_SESSION["nivel"] == 1) {
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"acceso/salir.php\">Salir</a></li>\n";
+        } elseif ($menu == MENU_ERROR) {
+            print "        <li><a href=\"../index.php\">Inicio 1</a></li>\n";
+            print "        <li><a href=\"index.php\">Inicio 2</a></li>\n";
+        } else {
+            print "        <li>Error en la selección de menú</li>\n";
+        }
+    } elseif ($_SESSION["nivel"] == 2 || $_SESSION["nivel"] == 3) {
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"db-usuarios/index.php\">Usuarios</a></li>\n";
+            print "        <li><a href=\"acceso/salir.php\">Salir</a></li>\n";
+        } elseif ($menu == MENU_INSTALAR) {
+            print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
+        } elseif ($menu == MENU_IDENTIFICAR) {
+            print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
+        } elseif ($menu == MENU_TABLA_USUARIOS_WEB) {
+            print "        <li><a href=\"../index.php\">Inicio</a></li>\n";
+            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
+            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
+            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
+            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
+        } elseif ($menu == MENU_ERROR) {
+            print "        <li><a href=\"../index.php\">Inicio 1</a></li>\n";
+            print "        <li><a href=\"index.php\">Inicio 2</a></li>\n";
+        } else {
+            print "        <li>Error en la selección de menú</li>\n";
+        }
     }
     print "      </ul>\n";
     print "    </nav>\n";
@@ -120,7 +152,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-04-18\">18 de abril de 2019</time>\n";
+    print "      <time datetime=\"2019-05-05\">5 de mayo de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

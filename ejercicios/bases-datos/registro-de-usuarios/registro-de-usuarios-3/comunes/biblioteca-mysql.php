@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,8 +24,8 @@
 
 // Variables globales
 
-$dbDb               = MYSQL_DATABASE;                          // Nombre de la base de datos
-$dbTablaUsuariosWeb = MYSQL_DATABASE . "." . MYSQL_TABLA_USUARIOS_WEB; // Nombre de la tabla
+$dbDb               = MYSQL_DATABASE;                                  // Nombre de la base de datos
+$dbTablaUsuariosWeb = MYSQL_DATABASE . "." . MYSQL_TABLA_USUARIOS_WEB; // Nombre de la tabla de Usuarios de la web
 
 // Consultas
 
@@ -37,6 +37,7 @@ $consultaCreaTablaUsuariosWeb = "CREATE TABLE $dbTablaUsuariosWeb (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     usuario VARCHAR($tamUsuariosWebUsuario),
     password VARCHAR($tamUsuariosWebCifrado),
+    nivel INTEGER NOT NULL,
     PRIMARY KEY(id)
     )";
 
@@ -84,7 +85,7 @@ function borraTodo($db)
 
             if ($administradorNombre != "") {
                 $consulta = "INSERT INTO $dbTablaUsuariosWeb VALUES (NULL,
-                    '$administradorNombre', '" . encripta($administradorPassword) . "')";
+                    '$administradorNombre', '" . encripta($administradorPassword) . "', '" . NIVEL_3 . "')";
                 if ($db->query($consulta)) {
                     print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
                     print "\n";

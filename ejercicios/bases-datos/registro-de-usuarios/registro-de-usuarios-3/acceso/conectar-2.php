@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,9 +48,9 @@ if (isset($_SESSION["id"])) {
         } else {
             $valor = $result->fetch();
             if ($valor["password"] == encripta($password)) {
-                $_SESSION["id"]  = $valor["id"];
-                $_SESSION["usuario"]  = $valor["usuario"];
-                $_SESSION["password"] = $valor["password"];
+                $_SESSION["id"]      = $valor["id"];
+                $_SESSION["usuario"] = $valor["usuario"];
+                $_SESSION["nivel"]   = $valor["nivel"];
                 header("Location:../index.php");
                 exit();
             } else {

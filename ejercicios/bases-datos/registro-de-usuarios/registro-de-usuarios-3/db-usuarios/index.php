@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,13 @@
  */
 
 session_start();
-if (!isset($_SESSION["id"])) {
+
+require_once "../comunes/biblioteca.php";
+
+if (!isset($_SESSION["id"]) || $_SESSION["nivel"] != NIVEL_3) {
     header("location:../index.php");
     exit();
 }
-
-require_once "../comunes/biblioteca.php";
 
 cabecera("Tabla Usuarios", MENU_TABLA_USUARIOS_WEB, 1);
 pie();

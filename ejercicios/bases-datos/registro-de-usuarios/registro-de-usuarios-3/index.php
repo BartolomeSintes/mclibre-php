@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,14 +25,15 @@
 require_once "comunes/biblioteca.php";
 
 session_start();
-if (isset($_SESSION["id"])) {
-    cabecera("Inicio", MENU_IDENTIFICADO, 0);
-} else {
-    cabecera("Inicio", MENU_PRINCIPAL, 0);
+
+cabecera("Inicio", MENU_PRINCIPAL, 0);
+
+if (!isset($_SESSION["id"])) {
     print "    <p><strong>Nota</strong>: El usuario Administrador se llama "
         . "<strong>$administradorNombre</strong> y su contraseña es "
         . "<strong>$administradorPassword</strong>.</p>\n";
     print "\n";
 }
+
 pie();
 ?>

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-04-18
+ * @version   2019-05-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,20 +32,20 @@ define("MYSQL_HOST",               "mysql:host=localhost");        // Nombre de 
 define("MYSQL_USER",               "root");                        // Nombre de usuario
 define("MYSQL_PASSWORD",           "root");                        // Contraseña de usuario
 define("MYSQL_DATABASE",           "mclibre_registro_usuarios_3"); // Nombre de la base de datos
-define("MYSQL_TABLA_USUARIOS_WEB", "usuariosweb");                // Nombre de la tabla
+define("MYSQL_TABLA_USUARIOS_WEB", "usuariosweb");                 // Nombre de la tabla
 
 // Configuración para SQLite
 
 define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-registro-usuarios-3.sqlite"); // Ubicación de la base de datos
 define("SQLITE_TABLA_USUARIOS_WEB", "usuariosweb");               // Nombre de la tabla
 
-// Configuración Tabla Agenda
+// Configuración Tabla Usuarios de la web
 
 define("MAX_REG_TABLA_USUARIOS_WEB",  20); // Número máximo de registros en la tabla de Usuarios de la web
+
 $tamUsuariosWebUsuario        = 20;  // Tamaño del campo Usuarios de la web > Usuario
 $tamUsuariosWebPassword       = 20;  // Tamaño del campo Usuarios de la web > Contraseña
 $tamUsuariosWebCifrado        = 32;  // Tamaño del campo Usuarios de la web > Contraseña encriptada
-$tamUsuariosWebMaxRegUsuarios = 20;  // Número máximo de registros en la tabla Usuarios de la web
 
 $administradorNombre   = "root";  // Nombre del usuario Administrador
 $administradorPassword = "root";  // Password del usuario Administrador
