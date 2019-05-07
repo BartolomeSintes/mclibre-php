@@ -1,11 +1,11 @@
 <?php
 /**
- * Registro de usuarios 3 - conectar-2.php
+ * Registro de usuarios 3 - acceso/conectar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ if (isset($_SESSION["id"])) {
         $result = $db->query($consulta);
         if (!$result) {
             cabecera("Identificar 2", MENU_IDENTIFICAR, 1);
-            print "    <p>Error en la consulta.</p>";
+            print "    <p class=\"aviso\">Error en la consulta.</p>";
             print "\n";
         } else {
             $valor = $result->fetch();

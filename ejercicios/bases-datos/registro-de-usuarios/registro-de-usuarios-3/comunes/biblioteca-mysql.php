@@ -1,11 +1,11 @@
 <?php
 /**
- * Registro de usuarios 3 - biblioteca-mysql.php
+ * Registro de usuarios 3 - comunes/biblioteca-mysql.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -34,11 +34,10 @@ $consultaCreaDb = "CREATE DATABASE $dbDb
     COLLATE utf8mb4_unicode_ci";
 
 $consultaCreaTablaUsuariosWeb = "CREATE TABLE $dbTablaUsuariosWeb (
-    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR($tamUsuariosWebUsuario),
     password VARCHAR($tamUsuariosWebCifrado),
-    nivel INTEGER NOT NULL,
-    PRIMARY KEY(id)
+    nivel INTEGER NOT NULL
     )";
 
 // Funciones comunes de bases de datos (MYSQL)
@@ -52,9 +51,9 @@ function conectaDb()
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_ERROR, 1);
-        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
-        print "    <p>Error: " . utf8_encode($e->getMessage()) . "</p>\n";
+        print "    <p class=\"aviso\">Error: " . utf8_encode($e->getMessage()) . "</p>\n";
         pie();
         exit();
     }
@@ -62,16 +61,16 @@ function conectaDb()
 
 function borraTodo($db)
 {
-    global $dbDb, $dbTablaUsuariosWeb, $consultaCreaDb, $consultaCreaTablaUsuariosWeb,
-        $administradorNombre, $administradorPassword,
-        $tamUsuariosWebUsuario, $tamUsuariosWebCifrado;
+    global $dbDb, $consultaCreaDb,
+        $dbTablaUsuariosWeb, $consultaCreaTablaUsuariosWeb,
+        $administradorNombre, $administradorPassword;
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
         print "    <p>Base de datos borrada correctamente.</p>\n";
         print "\n";
     } else {
-        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la base de datos.</p>\n";
         print "\n";
     }
     $consulta = $consultaCreaDb;
@@ -80,7 +79,7 @@ function borraTodo($db)
         print "\n";
         $consulta = $consultaCreaTablaUsuariosWeb;
         if ($db->query($consulta)) {
-            print "    <p>Tabla creada correctamente.</p>\n";
+            print "    <p>Tabla de Usuario creada correctamente.</p>\n";
             print "\n";
 
             if ($administradorNombre != "") {
@@ -90,16 +89,16 @@ function borraTodo($db)
                     print "    <p>Registro de Usuario Administrador creado correctamente.</p>\n";
                     print "\n";
                 } else {
-                    print "    <p>Error al crear el registro de Usuario Administrador.</p>\n";
+                    print "    <p class=\"aviso\">Error al crear el registro de Usuario Administrador.</p>\n";
                     print "\n";
                 }
             }
         } else {
-            print "    <p>Error al crear la tabla.</p>\n";
+            print "    <p class=\"aviso\">Error al crear la tabla de Usuarios.</p>\n";
             print "\n";
         }
     } else {
-        print "    <p>Error al crear la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error al crear la base de datos.</p>\n";
         print "\n";
     }
 }

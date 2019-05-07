@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -73,18 +73,18 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
     $consulta = "SELECT COUNT(*) FROM $dbTablaUsuariosWeb";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn() >= MAX_REG_TABLA_USUARIOS_WEB) {
-        print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
         print "\n";
-        print "    <p>Por favor, borre algún registro antes.</p>\n";
+        print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTablaUsuariosWeb
             WHERE usuario=:usuario";
         $result = $db->prepare($consulta);
         $result->execute([":usuario" => $usuario]);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() > 0) {
             print "    <p>El registro ya existe.</p>\n";
         } else {
@@ -95,7 +95,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
             if ($result->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel])) {
                 print "    <p>Registro <strong>$usuario</strong> creado correctamente.</p>\n";
             } else {
-                print "    <p>Error al crear el registro <strong>$usuario</strong>.</p>\n";
+                print "    <p class=\"aviso\">Error al crear el registro <strong>$usuario</strong>.</p>\n";
             }
         }
     }

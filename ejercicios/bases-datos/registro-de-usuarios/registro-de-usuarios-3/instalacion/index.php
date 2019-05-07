@@ -1,11 +1,11 @@
 <?php
 /**
- * Registro de usuarios 3 - instalar.php
+ * Registro de usuarios 3 - instalacion/instalar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

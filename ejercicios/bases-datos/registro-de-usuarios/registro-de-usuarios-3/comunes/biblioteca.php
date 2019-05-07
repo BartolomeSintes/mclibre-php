@@ -1,11 +1,11 @@
 <?php
 /**
- * Registro de usuarios 3 -  biblioteca.php
+ * Registro de usuarios 3 - comunes/biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -152,7 +152,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-05-05\">5 de mayo de 2019</time>\n";
+    print "      <time datetime=\"2019-05-07\">7 de mayo de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

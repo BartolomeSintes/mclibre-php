@@ -1,11 +1,11 @@
 <?php
 /**
- * Registro de usuarios 3 - biblioteca-sqlite.php
+ * Registro de usuarios 3 - comunes/biblioteca-sqlite.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -44,6 +44,8 @@ function conectaDb()
 
     try {
         $tmp = new PDO("sqlite:" . $dbDb);
+        // activate use of foreign key constraints
+        $tmp->exec("PRAGMA foreign_keys = ON;");
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_ERROR, 1);
@@ -58,8 +60,7 @@ function conectaDb()
 function borraTodo($db)
 {
     global $dbTablaUsuariosWeb, $consultaCreaTablaUsuariosWeb,
-        $administradorNombre, $administradorPassword,
-        $tamUsuariosWebUsuario, $tamUsuariosWebCifrado;
+        $administradorNombre, $administradorPassword;
 
     $consulta = "DROP TABLE $dbTablaUsuariosWeb";
     if ($db->query($consulta)) {

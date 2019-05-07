@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ if ($id == "") {
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn() == 0) {
         print "    <p>Registro no encontrado.</p>\n";
     } else {
@@ -53,7 +53,7 @@ if ($id == "") {
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } else {
             $valor = $result->fetch();
             print "    <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";

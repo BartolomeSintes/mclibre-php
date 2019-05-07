@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -79,7 +79,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() == 0) {
             print "    <p>Registro no encontrado.</p>\n";
         } else {
@@ -92,19 +92,19 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
             $result = $db->prepare($consulta);
             $result->execute([":usuario" => $usuario, ":id" => $id]);
             if (!$result) {
-                print "    <p>Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p>Ya existe un registro con ese nombre. "
                     . "No se ha guardado la modificación.</p>\n";
             } else {
                 $consulta = "UPDATE $dbTablaUsuariosWeb
-                    SET usuario=:usuario, password=:password, nivel=:nivel,
+                    SET usuario=:usuario, password=:password, nivel=:nivel
                     WHERE id=:id";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel, ":id" => $id])) {
                     print "    <p>Registro modificado correctamente.</p>\n";
                 } else {
-                    print "    <p>Error al modificar el registro.</p>\n";
+                    print "    <p class=\"aviso\">Error al modificar el registro.</p>\n";
                 }
             }
         }

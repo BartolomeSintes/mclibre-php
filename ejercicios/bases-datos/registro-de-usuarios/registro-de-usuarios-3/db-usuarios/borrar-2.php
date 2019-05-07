@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-05-05
+ * @version   2019-05-07
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ if (count($id) == 0) {
         $result = $db->prepare($consulta);
         $result->execute([":indice" => $indice]);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() == 1) {
             print "    <p>No se puede borrar el último usuario de la tabla.</p>\n";
         } else {
@@ -53,7 +53,7 @@ if (count($id) == 0) {
             $result = $db->prepare($consulta);
             $result->execute([":indice" => $indice]);
             if (!$result) {
-                print "    <p>Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() == 0) {
                 print "    <p>Registro no encontrado.</p>\n";
             } else {
@@ -63,7 +63,7 @@ if (count($id) == 0) {
                 if ($result->execute([":indice" => $indice])) {
                     print "    <p>Registro borrado correctamente.</p>\n";
                 } else {
-                    print "    <p>Error al borrar el registro.</p>\n";
+                    print "    <p class=\"aviso\">Error al borrar el registro.</p>\n";
                 }
             }
         }
