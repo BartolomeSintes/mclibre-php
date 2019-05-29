@@ -1,6 +1,6 @@
 <?php
 /**
- * Bases de datos 3-1 - listar.php
+ * Bases de datos 3-2 - listar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
