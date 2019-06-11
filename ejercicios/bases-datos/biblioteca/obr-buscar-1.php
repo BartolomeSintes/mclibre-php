@@ -38,7 +38,7 @@ if (!$result) {
 } else {
     cabecera("Obras - Buscar 1", CABECERA_CON_CURSOR, "menuObras");
     print "    <form action=\"obr-buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
-    print "      <p>Escriba el criterio de búsqueda (carácteres o números):</p>\n";
+    print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";
     print "      <table>\n";
     print "        <tbody>\n";

@@ -119,7 +119,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 
     <p>Al hacer referencia a los elementos de la matriz $_REQUEST, hay que tener en cuenta si la referencia se encuentra dentro de una cadena o fuera de ella.</p>
     <ul>
-      <li>Si se hace referencia dentro de una caden, el índice se debe escribir sin comillas. Si se escribe cualquier tipo de comillas (simples o dobles) se produce un error.
+      <li>Si se hace referencia dentro de una cadena, el índice se debe escribir sin comillas. Si se escribe cualquier tipo de comillas (simples o dobles) se produce un error.
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -330,7 +330,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 
       <hr class="corta" />
 
-      <p>Este problema se puede resolver incluyendo una estructura if ... else ... que considere la posiblidad de que no se haya escrito nada en el formulario:</p>
+      <p>Este problema se puede resolver incluyendo una estructura if ... else ... que considere la posibilidad de que no se haya escrito nada en el formulario:</p>
 
       <div class="filaflex cabecera">
         <div>ejemplo.html</div>
@@ -681,7 +681,7 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
 
       <p>A veces, al rellenar un formulario, los usuarios escriben por error espacios en blanco al principio o al final de las cajas de texto y si el programa PHP no tiene en cuenta esa posibilidad se pueden obtener resultados inesperados.</p>
 
-      <p>En el programa de ejemplo del apartado anterior en el que se escribía una estructura if ... else ... para avisar al usario si no escribía el nombre, si el usuario escribe únicamente espacios en blanco, el programa funciona, pero no da la respuesta adecuada ya que la cadena con espacios en blanco no es una cadena vacía.</p>
+      <p>En el programa de ejemplo del apartado anterior en el que se escribía una estructura if ... else ... para avisar al usuario si no escribía el nombre, si el usuario escribe únicamente espacios en blanco, el programa funciona, pero no da la respuesta adecuada ya que la cadena con espacios en blanco no es una cadena vacía.</p>
 
       <div class="filaflex cabecera">
         <div>ejemplo.html</div>
@@ -762,7 +762,7 @@ if (<span class="codigo-resaltado">trim($_REQUEST["nombre"]) == ""</span>) {
     <ul>
       <li>comprobar que el control esté definido con la función <span class="php-fun">isset()</span></li>
       <li>eliminar las etiquetas con la función <span class="php-fun">strip_tags()</span></li>
-      <li>eliminar los espacios en blanco inciales y finales con la función <span class="php-fun">trim()</span></li>
+      <li>eliminar los espacios en blanco iniciales y finales con la función <span class="php-fun">trim()</span></li>
     </ul>
 
     <p>Una manera de hacerlo sin complicar excesivamente el programa es guardar los valores de la matriz $_REQUEST en variables y realizar todas las comprobaciones al definir esas variables. En el resto del código basta con utilizar la variable en vez del elemento de la matriz $_REQUEST. En los siguientes ejemplos, se puede ver cómo el programa no genera avisos y muestra el mensaje correspondiente al dato recibido:</p>
@@ -908,7 +908,7 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br /><br
     <section id="ampersand">
       <h3>El carácter &amp; (ampersand)</h3>
 
-      <p>Si el usuario escribe en una entrada el carácter &amp; (ampersand, entidad de carácter &amp;amp;) y esa cadena se escribe en una página, la página se verá correctamente en el navegador, pero la página no será válida (el html será invalido).</p>
+      <p>Si el usuario escribe en una entrada el carácter &amp; (ampersand, entidad de carácter &amp;amp;) y esa cadena se escribe en una página, la página se verá correctamente en el navegador, pero la página no será válida (el html será inválido).</p>
 
       <p>La página es inválida porque el carácter &amp; indica el comienzo de una <a href="http://www.mclibre.org/consultar/htmlcss/html/html-entidades-caracter.html">entidad de carácter</a>, así que no el código fuente no puede haber un &amp; sin nada a continuación. Si se quiere mostrar un carácter &amp; en el navegador, en el código fuente debe escribirse la entidad de carácter &amp;amp;.</p>
 
@@ -1075,7 +1075,7 @@ if ($nombre == "") {
         </div>
       </div>
 
-      <p>El ejemplo anterior tiene el inconveniente de que la primera funcion que se aplica es <a href="http://php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> por lo que se elimará todo lo que esté entre marcas (&lt;&gt;).</p>
+      <p>El ejemplo anterior tiene el inconveniente de que la primera función que se aplica es <a href="http://php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> por lo que se eliminará todo lo que esté entre marcas (&lt;&gt;).</p>
 
       <div class="filaflex">
         <div class="resultado-html">
@@ -1163,7 +1163,7 @@ if ($nombre == "") {
 
     <p>La forma más cómoda de tener en cuenta todos los aspectos comentados en los puntos anteriores es definir una función recoge():</p>
     <ul>
-      <li>La funcion tendrá como argumento el nombre del control que se quiere recibir y devolverá el valor recibido (o una cadena vacía si el control no se ha recibido).</li>
+      <li>La función tendrá como argumento el nombre del control que se quiere recibir y devolverá el valor recibido (o una cadena vacía si el control no se ha recibido).</li>
       <li>Para tratar los datos recibidos se aplicarán únicamente las funciones <span class="php-fun">htmlspecialchars()</span> y <span class="php-fun">trim()</span>:
 
         <div class="codigo">
@@ -1246,7 +1246,7 @@ if ($nombre == "") {
 
       <p>Hay que hacer otra función que recoja y trate los datos en forma de matriz.</p>
       <ul>
-        <li>La funcion recogeMatriz() del ejemplo siguiente tiene como argumento el nombre del control que se quiere recibir (que debe ser una matriz de una dimensión, no sirve para matrices de dos o más dimensiones) y devuelve una matriz con los valores recibidos o una matriz vacía si el control no se ha recibido.</li>
+        <li>La función recogeMatriz() del ejemplo siguiente tiene como argumento el nombre del control que se quiere recibir (que debe ser una matriz de una dimensión, no sirve para matrices de dos o más dimensiones) y devuelve una matriz con los valores recibidos o una matriz vacía si el control no se ha recibido.</li>
       </ul>
 
       <div class="codigo">

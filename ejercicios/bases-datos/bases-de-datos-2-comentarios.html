@@ -38,7 +38,7 @@
 
     <ul>
       <li>En cualquier consulta, compruebe que la consulta no ha dado error.
-        <p>En el ejemplo siguiente se comprueba el resultado de la consulta antes de seguir. La consulta podría dar error si el SGBD no está disponible, si la base de datos no ha sido creada todavía, etc. Si es así, poco se puede hacer, salvo informar al ususario del problema.</p>
+        <p>En el ejemplo siguiente se comprueba el resultado de la consulta antes de seguir. La consulta podría dar error si el SGBD no está disponible, si la base de datos no ha sido creada todavía, etc. Si es así, poco se puede hacer, salvo informar al usuario del problema.</p>
 
         <div class="codigo">
           <pre>
@@ -97,7 +97,7 @@ if (!$result) {
       </li>
       <li>insertar-2.php
         <ul>
-          <li>Compruebe que el ususario no ha dejado todos los campos vacíos.
+          <li>Compruebe que el usuario no ha dejado todos los campos vacíos.
 
             <div class="codigo">
               <pre>
@@ -110,7 +110,7 @@ if (!$result) {
             </div>
           </li>
           <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
-            <p>Es conveniente hacer esta comprobación aunque se haya hecho ya en insertar1.php, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar1.php.</p>
+            <p>Es conveniente hacer esta comprobación aunque se haya hecho ya en insertar-1.php, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar-1.php.</p>
           </li>
           <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda.
 
@@ -169,7 +169,7 @@ if (!$result) {
       <li>borrar-2.php
         <ul>
           <li>Compruebe que se ha marcado algún registro para borrar.
-            <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la funcion <span class="php-fun">count()</span>.</p>
+            <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la función <span class="php-fun">count()</span>.</p>
 
             <div class="codigo">
               <pre>
@@ -244,7 +244,7 @@ if ($id == "") {
         </ul>
         <ul>
           <li>Compruebe que se ha encontrado el registro seleccionado para modificar.
-            <p>Esta comprobación es similar a la de comprobar que se han encontrado registros de buscar2.php.</p>
+            <p>Esta comprobación es similar a la de comprobar que se han encontrado registros de buscar-2.php.</p>
 
             <div class="codigo">
               <pre>
@@ -268,13 +268,13 @@ if (!$result) {
       <li>modificar-3.php
         <ul>
           <li>Compruebe que se ha recibido el id del registro a modificar
-            <p>Esta comprobación es la misma que la de modificar2.php.</p>
+            <p>Esta comprobación es la misma que la de modificar-2.php.</p>
           </li>
-          <li>Compruebe que el ususario no ha dejado todos los campos vacíos.
-            <p>Esta comprobación es la misma que la de modificar2.php.</p>
+          <li>Compruebe que el usuario no ha dejado todos los campos vacíos.
+            <p>Esta comprobación es la misma que la de modificar-2.php.</p>
           </li>
           <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda (es decir, que al modificar un registro lo hagamos coincidir con otro ya incluido en la agenda).
-            <p>Esta comprobación es similar a la de insertar2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
+            <p>Esta comprobación es similar a la de insertar-2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
 
             <div class="codigo">
               <pre>
@@ -307,7 +307,7 @@ if (!$result) {
   <section id="ejercicio-2">
     <h2>Bases de datos 2-2 - Mejoras</h2>
     <ul>
-      <li>Listados ordenables (listar.php, borrar1.ph, buscar2.php, modificar1.ph)
+      <li>Listados ordenables (listar.php, borrar-1.php, buscar-2.php, modificar-1.php)
 
         <p>En cualquier listado en forma de tabla, permita ordenar los registros en un orden determinado (por cualquier columna, en orden ascendente o descendente).</p>
         <p>Para ello la consulta que selecciona todos los registros podría incluir un ORDER BY</p>
@@ -348,7 +348,7 @@ function recogeValores($var, $valoresValidos, $valorPredeterminado)
 }</code>
 </pre>
         </div>
-        <p>En la cabecera de la tabla se insertarían dos imágenes que enlazarían a la propia página enviando cada una una columna y orden diferente (en el ejemplo siguiente ordenaría por la columna nombre de forma ascedente o descendente).</p>
+        <p>En la cabecera de la tabla se insertarían dos imágenes que enlazarían a la propia página enviando cada una una columna y orden diferente (en el ejemplo siguiente ordenaría por la columna nombre de forma ascendente o descendente).</p>
 
         <div class="codigo">
           <pre>
@@ -367,7 +367,7 @@ print "        &lt;/th&gt;\n";</code>
 
         <p>Las imágenes (arriba.png y abajo.png) se encuentran en las plantillas.</p>
 
-        <p>En el caso de la búsqueda (buscar2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda</p>
+        <p>En el caso de la búsqueda (buscar-2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda</p>
 
         <div class="codigo">
           <pre>

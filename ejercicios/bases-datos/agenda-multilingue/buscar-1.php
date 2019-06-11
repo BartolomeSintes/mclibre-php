@@ -42,7 +42,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
         print "\n";
     } else {
         print "    <form action=\"buscar-2.php\" method=\"get\">\n";
-        print "      <p>" . _("Escriba el criterio de búsqueda (carácteres o números)") . ":</p>\n";
+        print "      <p>" . _("Escriba el criterio de búsqueda (caracteres o números)") . ":</p>\n";
         print "      <table>\n";
         print "        <tbody>\n";
         print "          <tr>\n";

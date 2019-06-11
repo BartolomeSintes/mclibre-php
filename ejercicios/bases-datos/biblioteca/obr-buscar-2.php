@@ -67,24 +67,24 @@ if (!$result) {
         print "      <thead>\n";
         print "        <tr class=\"neg\">\n";
         print "          <th>\n";
-        print "            <a href=\"buscar2.php?$datos=autor&amp;orden=ASC\">"
+        print "            <a href=\"buscar-2.php?$datos=autor&amp;orden=ASC\">"
             . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
         print "            Autor\n";
-        print "            <a href=\"buscar2.php?$datos=autor&amp;orden=DESC\">"
+        print "            <a href=\"buscar-2.php?$datos=autor&amp;orden=DESC\">"
             . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
         print "          </th>\n";
         print "          <th>\n";
-        print "            <a href=\"buscar2.php?$datos=titulo&amp;orden=ASC\">"
+        print "            <a href=\"buscar-2.php?$datos=titulo&amp;orden=ASC\">"
             . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
         print "            Título\n";
-        print "            <a href=\"buscar2.php?$datos=titulo&amp;orden=DESC\">"
+        print "            <a href=\"buscar-2.php?$datos=titulo&amp;orden=DESC\">"
             . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
         print "          </th>\n";
         print "          <th>\n";
-        print "            <a href=\"buscar2.php?$datos=editorial&amp;orden=ASC\">"
+        print "            <a href=\"buscar-2.php?$datos=editorial&amp;orden=ASC\">"
             . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
         print "            Editorial\n";
-        print "            <a href=\"buscar2.php?$datos=editorial&amp;orden=DESC\">"
+        print "            <a href=\"buscar-2.php?$datos=editorial&amp;orden=DESC\">"
             . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
         print "          </th>\n";
         print "        </tr>\n";

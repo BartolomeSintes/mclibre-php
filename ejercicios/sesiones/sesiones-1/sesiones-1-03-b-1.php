@@ -66,7 +66,7 @@ if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
         . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
     print "\n";
 } else {
-    // Si no hemos detectado un error, mostramos simplemenete el control
+    // Si no hemos detectado un error, mostramos simplemente el control
     print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /></p>\n";
     print "\n";
 }

@@ -38,7 +38,7 @@ if (!$result) {
 } else {
     cabecera("Usuarios - Buscar 1", CABECERA_CON_CURSOR, "menuUsuarios");
     print "    <form action=\"usu-buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
-    print "      <p>Escriba el criterio de búsqueda (carácteres o números):</p>\n";
+    print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";
     print "      <table>\n";
     print "        <tbody>\n";

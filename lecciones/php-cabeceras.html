@@ -305,7 +305,7 @@ print "&lt;p&gt;&lt;a href=\"buffer-sobra-1.php\"&gt;Volver al principio&lt;/a&g
         <img src="../img/php/utf8-bom-con.png" alt="archivo UTF-8 sin BOM" width="1024" height="210" />
       </p>
 
-      <p>Esta marca de orden de bytes puede causar problemas si PHP no reconoce la marca de orden de bytes como un identificador de juego de caracteres, sino como caracteres situados antes de un framento PHP que se deben enviar al navegador. El comportamiento de PHP depende de las opciones elegidas al compilar el intérprete de PHP, por lo que la única solución viable es asegurarse de que los archivos no tienen BOM (como recomiendan las <a href="../otros/guia-estilo.html">guías de estilo</a> más populares).</p>
+      <p>Esta marca de orden de bytes puede causar problemas si PHP no reconoce la marca de orden de bytes como un identificador de juego de caracteres, sino como caracteres situados antes de un fragmento PHP que se deben enviar al navegador. El comportamiento de PHP depende de las opciones elegidas al compilar el intérprete de PHP, por lo que la única solución viable es asegurarse de que los archivos no tienen BOM (como recomiendan las <a href="../otros/guia-estilo.html">guías de estilo</a> más populares).</p>
 
       <hr class="corta" />
 
@@ -634,9 +634,9 @@ exit;
     <section id="mime-svg">
       <h3>Crear imágenes SVG</h3>
 
-      <p>El programa siguiente crea las etiquetas correspondientes a una imagen SVG, concretamente a un cuadrado de color aleatorio. Si escribimos directmente la url de ese programa en el navegador, el navegador muestra el contenido esperado.</p>
+      <p>El programa siguiente crea las etiquetas correspondientes a una imagen SVG, concretamente a un cuadrado de color aleatorio. Si escribimos directamente la url de ese programa en el navegador, el navegador muestra el contenido esperado.</p>
 
-      <p>Pero aunque el navegador consiga mostrar el cuadrado, realmente no estamos haciendo bien las cosas. Una imagen SVG debería entregarse al navegador con el tipo MIME <strong>image/svg+xml</strong>. En este caso, el programa no declara ningún tipo MIME, así que el servidor lo entrega con el tipo MIME predeterminado de los programas PHP, el tipo MIME <strong>text/html</strong> (es decir, como página web). Aunque estrictamente hablando el documento no es una página web válida porque le faltan las etiquetas básicas como <span class="html-eti">&lt;html&gt;</span>, <span class="html-eti">&lt;head&gt;</span>, <span class="html-eti">&lt;body&gt;</span>, etc. los navegadores aceptan las páginas invalidas e intentan interpretar el contenido de la mejor manera posible. En este caso, se interpreta la etiqueta <span class="html-eti">&lt;svg&gt;</span> como si estuviera en una página web y el resultado es el esperado.</p>
+      <p>Pero aunque el navegador consiga mostrar el cuadrado, realmente no estamos haciendo bien las cosas. Una imagen SVG debería entregarse al navegador con el tipo MIME <strong>image/svg+xml</strong>. En este caso, el programa no declara ningún tipo MIME, así que el servidor lo entrega con el tipo MIME predeterminado de los programas PHP, el tipo MIME <strong>text/html</strong> (es decir, como página web). Aunque estrictamente hablando el documento no es una página web válida porque le faltan las etiquetas básicas como <span class="html-eti">&lt;html&gt;</span>, <span class="html-eti">&lt;head&gt;</span>, <span class="html-eti">&lt;body&gt;</span>, etc. los navegadores aceptan las páginas inválidas e intentan interpretar el contenido de la mejor manera posible. En este caso, se interpreta la etiqueta <span class="html-eti">&lt;svg&gt;</span> como si estuviera en una página web y el resultado es el esperado.</p>
 
       <div class="filaflex">
         <div class="codigo">

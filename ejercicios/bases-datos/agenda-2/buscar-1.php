@@ -45,7 +45,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
     } else {
         cabecera("Buscar 1", CABECERA_CON_CURSOR, $_SESSION["multiagendaUsuario"]);
         print "    <form action=\"buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
-        print "      <p>Escriba el criterio de búsqueda (carácteres o números):</p>\n";
+        print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
         print "\n";
         print "      <table>\n";
         print "        <tbody>";

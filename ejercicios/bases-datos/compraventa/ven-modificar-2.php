@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - modificar2.php
+ * Compraventa - modificar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco

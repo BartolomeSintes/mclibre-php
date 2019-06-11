@@ -1,6 +1,6 @@
 <?php
 /**
- * Compraventa - anyadir2.php
+ * Compraventa - anyadir-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2008 Bartolomé Sintes Marco
