@@ -25,11 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Tabla de una fila con casillas de verificación (Resultado 1). foreach (1).
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta charset="utf-8">
+  <title>
+    Tabla de una fila con casillas de verificación (Resultado 1).
+    foreach (1).
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -77,7 +80,7 @@ if ($numeroOk) {
     // Bucle para generar las casillas de verificación
     for ($i = 1; $i <= $numero; $i++) {
         // El nombre del control es una matriz (c[])
-        print "          <td><label><input type=\"checkbox\" name=\"c[$i]\" /> $i</label></td>\n";
+        print "          <td><label><input type=\"checkbox\" name=\"c[$i]\"> $i</label></td>\n";
     }
     print "        </tr>\n";
     print "      </tbody>\n";
@@ -85,12 +88,12 @@ if ($numeroOk) {
     print "\n";
 
     // Se añade un control oculto con el número recibido para que le llegue a la página 3
-    print "    <p><input type=\"hidden\" name=\"numero\" value=\"$numero\" /></p>\n";
+    print "    <p><input type=\"hidden\" name=\"numero\" value=\"$numero\"></p>\n";
     print "\n";
 
     print "    <p>\n";
-    print "      <input type=\"submit\" value=\"Contar\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "      <input type=\"submit\" value=\"Contar\">\n";
+    print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "  </form>\n";
 }
@@ -106,7 +109,7 @@ if ($numeroOk) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

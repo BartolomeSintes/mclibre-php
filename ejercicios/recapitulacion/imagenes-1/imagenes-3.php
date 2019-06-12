@@ -25,11 +25,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Imágenes 3. Imágenes.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -90,17 +90,17 @@ print "        <tr>\n";
 if ($cuadro > $valorMinimoCuadro) {
     print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
         . ($cuadro - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
-        . "height=\"80\" alt=\"anterior\" /></button></td>\n";
+        . "height=\"80\" alt=\"anterior\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
 }
 print "          <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
-. "alt=\"Cuadro de Pieter Bruegel el viejo\" /></td>\n";
+. "alt=\"Cuadro de Pieter Bruegel el viejo\"></td>\n";
 // Si no es el último cuadro, muestra el botón derecho; si es el último la celda está vacía
 if ($cuadro < $valorMaximoCuadro) {
     print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
         . ($cuadro + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
-        . "alt=\"siguiente\" /></button></td>\n";
+        . "alt=\"siguiente\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
 }
@@ -119,17 +119,17 @@ print "        <tr>\n";
 if ($detalle > $valorMinimoDetalle) {
     print "          <td><button type=\"submit\" name=\"detalle\" value=\""
         . ($detalle - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
-        . "height=\"80\" alt=\"anterior\" /></button></td>\n";
+        . "height=\"80\" alt=\"anterior\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
 }
 print "          <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
-    . "alt=\"Detalle\" /></td>\n";
+    . "alt=\"Detalle\"></td>\n";
 // Si no es el último detalle, muestra el botón derecho; si es el último la celda está vacía
 if ($detalle < $valorMaximoDetalle) {
     print "          <td><button type=\"submit\" name=\"detalle\" value=\""
         . ($detalle + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
-        . "alt=\"siguiente\" /></button></td>\n";
+        . "alt=\"siguiente\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
 }
@@ -138,7 +138,7 @@ print "      </tbody>\n";
 print "    </table>\n";
 print "\n";
 // El número de cuadro se envía en un control oculto
-print "    <p><input type=\"hidden\" name=\"cuadro\" value=\"$cuadro\" /></p>\n";
+print "    <p><input type=\"hidden\" name=\"cuadro\" value=\"$cuadro\"></p>\n";
 print "  </form>\n";
 ?>
 
@@ -150,7 +150,7 @@ print "  </form>\n";
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

@@ -67,17 +67,17 @@ if (!isset($_SESSION["compraventaUsuario"])) {
             print "            <th>Anular reserva</th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
             print "              Artículo\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=articulo&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
             print "            </th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
             print "              Precio\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=precio&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
             print "            </th>\n";
             print "          </tr>\n";
             print "        </thead>\n";
@@ -91,7 +91,7 @@ if (!isset($_SESSION["compraventaUsuario"])) {
                 }
                 $tmp = !$tmp;
                 print "            <td align=\"center\"><input type=\"checkbox\" "
-                    . "name=\"id[$valor[id]]\" /></td>\n";
+                    . "name=\"id[$valor[id]]\"></td>\n";
                     print "            <td>$valor[articulo]</td>\n";
                     print "            <td>$valor[precio] &euro;</td>\n";
                     print "          </tr>\n";
@@ -99,7 +99,7 @@ if (!isset($_SESSION["compraventaUsuario"])) {
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
-            print "      <p><input type=\"submit\" value=\"Reservar\" /></p>\n";
+            print "      <p><input type=\"submit\" value=\"Reservar\"></p>\n";
             print "    </form>\n";
             print "\n";
         }

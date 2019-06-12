@@ -27,11 +27,11 @@ $color = isset($_COOKIE["cookieColor"])?$_COOKIE["cookieColor"]:"";
 print "<!DOCTYPE html>\n";
 print "<html lang=\"es\">\n";
 print "<head>\n";
-print "  <meta charset=\"utf-8\" />\n";
+print "  <meta charset=\"utf-8\">\n";
 print "  <title>Selección de colores (comprobación). Cookies.\n";
-print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
-print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
+print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
+print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+print "  <link rel=\"stylesheet\" href=\"mclibre-php-ejercicios.css\" title=\"Color\">\n";
 if ($color == "rojo") {
     print "  <style>body, a { color: red; }</style>\n";
 } elseif ($color == "azul") {
@@ -64,7 +64,7 @@ print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";
 print "      Este programa forma parte del curso <strong><a href=\"http://www.mclibre.org/consultar/php/\">Programación \n";
-print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\" >Bartolomé Sintes Marco</a>.<br />\n";
+print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\">Bartolomé Sintes Marco</a>.<br>\n";
 print "      El programa PHP que genera esta página se distribuye bajo \n";
 print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.\n";
 print "    </p>\n";

@@ -30,8 +30,8 @@ print "    <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n"
 print "      <p>¿Está seguro?</p>\n";
 print "\n";
 print "      <p>\n";
-print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
-print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
+print "        <input type=\"submit\" value=\"Sí\" name=\"si\">\n";
+print "        <input type=\"submit\" value=\"No\" name=\"no\">\n";
 print "      </p>\n";
 print "    </form>\n";
 

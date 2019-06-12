@@ -62,17 +62,17 @@ if (!$result) {
         print "          <tr>\n";
         print "            <td>Nombre:</td>\n";
         print "            <td><input type=\"text\" name=\"usuario\" size=\"" . TAM_USUARIO . "\" "
-            . "maxlength=\"" . TAM_USUARIO . "\" id=\"cursor\" /></td>\n";
+            . "maxlength=\"" . TAM_USUARIO . "\" id=\"cursor\"></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Contraseña:</td>\n";
         print "            <td><input type=\"password\" name=\"password\" size=\"" . TAM_PASSWORD . "\" "
-            . "maxlength=\"" . TAM_PASSWORD . "\" /></td>\n";
+            . "maxlength=\"" . TAM_PASSWORD . "\"></td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+        print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";
         print "\n";
         print "      <p><strong>Nota</strong>: Si no está ya registrado, le registraré como nuevo usuario.</p>\n";
         print "    </form>\n";

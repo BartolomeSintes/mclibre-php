@@ -48,17 +48,17 @@ if (!$result) {
     print "          <tr>\n";
     print "            <td>Usuario:</td>\n";
     print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-    . "maxlength=\"$tamUsuario\" id=\"cursor\" /></td>\n";
+    . "maxlength=\"$tamUsuario\" id=\"cursor\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Contraseña:</td>\n";
     print "            <td><input type=\"text\" name=\"contraseña\" size=\"$tamContraseña\" "
-    . "maxlength=\"$tamContraseña\" /></td>\n";
+    . "maxlength=\"$tamContraseña\"></td>\n";
     print "          </tr>\n";
     print "        </tbody>\n";
     print "      </table>\n";
     print "\n";
-    print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+    print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";
     print "    </form>\n";
     print "    \n";
 }

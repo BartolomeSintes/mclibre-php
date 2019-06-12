@@ -28,14 +28,14 @@ session_start();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Formulario Palabras en mayúsculas y minúsculas (Formulario).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -60,40 +60,40 @@ print "\n";
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /> "
+    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"> "
         . "<span class=\"aviso\">$_SESSION[mayusculasError]</span></p>\n";
     print "\n";
 } elseif (isset($_SESSION["minusculasError"])) {
     // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control
-    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"></p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"></p>\n";
     print "\n";
 }
 
 // Si hemos detectado un error en la palabra en minúsculas
 if (isset($_SESSION["minusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\" /> "
+    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"> "
     . "<span class=\"aviso\">$_SESSION[minusculasError]</span></p>\n";
     print "\n";
 } elseif (isset($_SESSION["mayusculasError"])) {
     // Si hemos detectado un error en la palabra en mayúsculas, incluimos el valor correcto en el control
-    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"></p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"></p>\n";
     print "\n";
 }
 
 ?>
 
     <p>
-      <input type="submit" value="Comprobar" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Comprobar">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -105,7 +105,7 @@ if (isset($_SESSION["minusculasError"])) {
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

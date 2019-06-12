@@ -80,24 +80,24 @@ if ($id == "") {
                     print "            <th>Borrar</th>\n";
                     print "            <th>\n";
                     print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=ASC\">"
-                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
                     print "              Autor\n";
                     print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=DESC\">"
-                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
                     print "            </th>\n";
                     print "            <th>\n";
                     print "              <a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=ASC\">"
-                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
                     print "              Fecha\n";
                     print "              <a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=DESC\">"
-                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
                     print "            </th>\n";
                     print "            <th>\n";
                     print "              <a href=\"$_SERVER[PHP_SELF]?campo=intervencion&amp;orden=ASC\">"
-                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                        . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
                     print "              Texto\n";
                     print "              <a href=\"$_SERVER[PHP_SELF]?campo=intervencion&amp;orden=DESC\">"
-                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                        . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
                     print "            </th>\n";
                     print "          </tr>\n";
                     print "        </thead>\n";
@@ -111,7 +111,7 @@ if ($id == "") {
                         }
                         $tmp = !$tmp;
                         print "            <td align=\"center\"><input "
-                            . " type=\"checkbox\" name=\"id[$valor[id]]\" /></td>\n";
+                            . " type=\"checkbox\" name=\"id[$valor[id]]\"></td>\n";
                         print "            <td>$valor[autor]</td>\n";
                         print "            <td>" . fechaDma($valor["fecha"]) . "</td>\n";
                         print "            <td>$valor[intervencion]</td>\n";
@@ -120,7 +120,7 @@ if ($id == "") {
                     print "        </tbody>\n";
                     print "      </table>\n";
                     print "\n";
-                    print "      <p><input type=\"submit\" value=\"Borrar\" /></p>\n";
+                    print "      <p><input type=\"submit\" value=\"Borrar\"></p>\n";
                     print "    </form>\n";
                     print "\n";
                 }

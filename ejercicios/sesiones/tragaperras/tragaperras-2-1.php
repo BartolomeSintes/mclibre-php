@@ -32,14 +32,14 @@ if (!isset($_SESSION["monedas"])) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Tragaperras (2).
     Minijuegos.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -60,11 +60,11 @@ print "      <tbody>\n";
 print "        <tr>\n";
 // Se muestran las tres imágenes de la combinación actual
 print "          <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$fruta1.svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
+    . "<img src=\"img/frutas/$fruta1.svg\" width=\"160\" alt=\"Imagen\"></td>\n";
 print "          <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$fruta2.svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
+    . "<img src=\"img/frutas/$fruta2.svg\" width=\"160\" alt=\"Imagen\"></td>\n";
 print "          <td style=\"border: black 4px solid; padding: 10px\">"
-    . "<img src=\"img/frutas/$fruta3.svg\" width=\"160\" alt=\"Imagen\" /></td>\n";
+    . "<img src=\"img/frutas/$fruta3.svg\" width=\"160\" alt=\"Imagen\"></td>\n";
 print "          <td style=\"vertical-align: top; text-align: center\">\n";
 // Se muestra el contador de monedas
 print "            <p><button type=\"submit\" name=\"accion\" value=\"moneda\">Meter moneda</button></p>\n";
@@ -84,7 +84,7 @@ print "  </form>\n";
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

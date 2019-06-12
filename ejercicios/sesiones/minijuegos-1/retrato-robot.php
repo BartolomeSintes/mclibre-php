@@ -38,14 +38,14 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"]) || !isset($_SESSION["c"])) 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Retato Robot.
     Minijuegos (1).
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
   <style>
     table { border-collapse: collapse; ; margin-left: auto; margin-right: auto; }
     td { padding: 0; }
@@ -84,19 +84,19 @@ if ($mod == 1) {
 // Se genera el formulario
 
 print "        <tr>\n";
-print "          <td><img src=\"img/retratos/retratos-$_SESSION[c]-3.jpg\" alt=\"ojos\" /></td>\n";
+print "          <td><img src=\"img/retratos/retratos-$_SESSION[c]-3.jpg\" alt=\"ojos\"></td>\n";
 print "          <td><button type=\"submit\" name=\"mod\" value=\"3\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
+    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
 print "        </tr>\n";
 print "        <tr>\n";
-print "          <td><img src=\"img/retratos/retratos-$_SESSION[b]-2.jpg\" alt=\"nariz\" /></td>\n";
+print "          <td><img src=\"img/retratos/retratos-$_SESSION[b]-2.jpg\" alt=\"nariz\"></td>\n";
 print "          <td><button type=\"submit\" name=\"mod\" value=\"2\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
+    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
 print "        </tr>\n";
 print "        <tr>\n";
-print "          <td><img src=\"img/retratos/retratos-$_SESSION[a]-1.jpg\" alt=\"boca\" /></td>\n";
+print "          <td><img src=\"img/retratos/retratos-$_SESSION[a]-1.jpg\" alt=\"boca\"></td>\n";
 print "          <td><button type=\"submit\" name=\"mod\" value=\"1\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\" /></button></td>\n";
+    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
 print "        </tr>\n";
 
 ?>
@@ -112,7 +112,7 @@ print "        </tr>\n";
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

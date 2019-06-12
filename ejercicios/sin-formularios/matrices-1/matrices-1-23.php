@@ -25,14 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Partida de dados.
     Matrices (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -55,7 +55,7 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos los resultados obtenidos por el Jugador 1
 print "  <p>\n";
 foreach ($dados1 as $dado) {
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -72,7 +72,7 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos los resultados obtenidos por el Jugador 2
 print "  <p>\n";
 foreach ($dados2 as $dado) {
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" />\n";
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -134,7 +134,7 @@ if ($gana1 > $gana2) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

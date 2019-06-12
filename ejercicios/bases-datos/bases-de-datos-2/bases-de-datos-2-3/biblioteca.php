@@ -92,15 +92,14 @@ function cabecera($texto, $menu)
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
     print "<head>\n";
-    print "  <meta charset=\"utf-8\" />\n";
+    print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
     print "    $texto.\n";
     print "    Bases de datos 3-1. Bases de datos (3).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
-    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-soluciones-proyectos.css\" "
-        . "title=\"Estilo Proyectos PHP de mclibre\" />\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";
@@ -140,7 +139,7 @@ function pie()
     print "\n";
     print "    <p class=\"licencia\">\n";
     print "      Este programa forma parte del curso <strong><a href=\"http://www.mclibre.org/consultar/php/\">Programación \n";
-    print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\" >Bartolomé Sintes Marco</a>.<br />\n";
+    print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\">Bartolomé Sintes Marco</a>.<br>\n";
     print "      El programa PHP que genera esta página se distribuye bajo \n";
     print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.\n";
     print "    </p>\n";

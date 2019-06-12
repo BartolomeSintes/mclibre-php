@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Controles en formularios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../varios/php.css" title="mclibre" />
-  <link rel="icon" href="../varios/favicon.ico" />
-  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.ico">
+  <link rel="stylesheet" href="../varios/highlight-php.css">
   <script src="../varios/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
@@ -16,8 +16,8 @@
 
   <nav>
     <p>
-      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
     </p>
 
     <div class="toc">
@@ -39,7 +39,7 @@
 
   <p>Esta lección comenta los aspectos de los formularios con respecto al procesamiento de los datos. Para conocer los aspectos de los formularios con respecto a su apariencia y navegación, se puede consultar la <a href="http://www.mclibre.org/consultar/htmlcss/html/html-formularios.html">lección sobre formularios en los apuntes de HTML y CSS</a>.</p>
 
-  <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />Falta comentar los nuevos controles introducidos en HTML 5 y HTML 5.1.</p>
+  <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Falta comentar los nuevos controles introducidos en HTML 5 y HTML 5.1.</p>
 
   <section id="previa">
     <h2>Explicación previa</h2>
@@ -48,7 +48,7 @@
     <ul>
       <li>que el control esté incluido en un formulario (<span class="html-eti">&lt;form&gt;</span>).</li>
       <li>que el formulario tenga establecido el atributo <span class="html-atri">action</span>, con la dirección absoluta o relativa del fichero php que procesará la información</li>
-      <li>que el control tenga establecido el atributo <span class="html-atri">name</span><br /> Nota: el atributo <span class="html-atri">name</span> puede contener cualquier carácter (números, acentos, guiones, etc), pero si contiene espacios, PHP sustituye los espacios por guiones bajos (_) al procesar los datos enviados.</li>
+      <li>que el control tenga establecido el atributo <span class="html-atri">name</span><br> Nota: el atributo <span class="html-atri">name</span> puede contener cualquier carácter (números, acentos, guiones, etc), pero si contiene espacios, PHP sustituye los espacios por guiones bajos (_) al procesar los datos enviados.</li>
       <li>que el formulario contenga un botón de tipo submit </li>
     </ul>
 
@@ -58,15 +58,15 @@
       <div class="codigo">
         <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly="readonly" /></p>
+        <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly></p>
 
-        <p><input type="submit" value="Enviar" /></p>
+        <p><input type="submit" value="Enviar"></p>
       </div>
     </div>
 
@@ -94,11 +94,11 @@ print "&lt;/pre&gt;\n";
 
     <p>El nombre del elemento de la matriz $_REQUEST coincide con el nombre del control (atributo <span class="html-atri">name</span>)en el formulario (excepto en el control de tipo imagen).</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>En los ejemplos que se encuentran en esta página, cada ejemplo muestra el código fuente de la página html, el aspecto que tiene el control y el contenido de la matriz $_REQUEST cuando se recibe la información.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <h3>Atributo <span class="html-atri">method</span></h3>
 
@@ -112,14 +112,14 @@ print "&lt;/pre&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="get"</span>&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
           </div>
           <div class="resultado-captura">
             <p>
-              <img src="../img/php/method-1.png" alt="Ejemplo de formulario" width="610" height="170" />
+              <img src="../img/php/method-1.png" alt="Ejemplo de formulario" width="610" height="170">
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ print "&lt;/pre&gt;";</code>
           </div>
           <div class="resultado-captura">
             <p>
-              <img src="../img/php/method-get-2.png" alt="Resultado de formulario con method get" width="680" height="170" />
+              <img src="../img/php/method-get-2.png" alt="Resultado de formulario con method get" width="680" height="170">
             </p>
           </div>
         </div>
@@ -144,14 +144,14 @@ print "&lt;/pre&gt;";</code>
           <div class="codigo">
             <pre>
 <code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="post"</span>&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
           </div>
           <div class="resultado-captura">
             <p>
-              <img src="../img/php/method-1.png" alt="Ejemplo de formulario" width="610" height="170" />
+              <img src="../img/php/method-1.png" alt="Ejemplo de formulario" width="610" height="170">
             </p>
           </div>
         </div>
@@ -166,14 +166,14 @@ print "&lt;/pre&gt;";</code>
           </div>
           <div class="resultado-captura">
             <p>
-              <img src="../img/php/method-post-2.png" alt="Resultado de formulario con method post" width="680" height="170" />
+              <img src="../img/php/method-post-2.png" alt="Resultado de formulario con method post" width="680" height="170">
             </p>
           </div>
         </div>
       </li>
     </ul>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>En caso de que haya varios controles que envíen información en un formulario con <span class="html-atri-valor">get</span>, los nombres y valores aparecen en la barra de dirección separados por el carácter ampersand (&amp;), como nombre1=valor1&amp;nombre2=valor2&amp;...</p>
 
@@ -181,15 +181,15 @@ print "&lt;/pre&gt;";</code>
       <div class="codigo">
         <pre>
 <code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="get"</span>&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre" /&gt;&lt;/p&gt;
-  &lt;p&gt;Apellidos: &lt;input type="text" name="apellidos" /&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar" /&gt;&lt;/p&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+  &lt;p&gt;Apellidos: &lt;input type="text" name="apellidos"&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
       </div>
       <div class="resultado-captura">
         <p>
-          <img src="../img/php/method-1b.png" alt="Ejemplo de formulario" width="680" height="210" />
+          <img src="../img/php/method-1b.png" alt="Ejemplo de formulario" width="680" height="210">
         </p>
       </div>
     </div>
@@ -204,7 +204,7 @@ print "&lt;/pre&gt;";</code>
       </div>
       <div class="resultado-captura">
         <p>
-          <img src="../img/php/method-get-2b.png" alt="Resultado de formulario con method get" width="680" height="180" />
+          <img src="../img/php/method-get-2b.png" alt="Resultado de formulario con method get" width="680" height="180">
         </p>
       </div>
     </div>
@@ -223,10 +223,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="submit" value="Submit" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="submit" value="Submit"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -237,10 +237,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="submit" value="Enviar" name="boton2" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="submit" value="Enviar" name="boton2"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="submit" value="Enviar" name="boton2" />
+        <input type="submit" value="Enviar" name="boton2">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -261,7 +261,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;button type="submit"&gt;Submit&lt;/button&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -311,15 +311,15 @@ print "&lt;/pre&gt;";</code>
 <code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="get"</span>&gt;
   &lt;p&gt;¿Sí o no?&lt;/p&gt;
   &lt;p&gt;
-    &lt;input type="submit" name="respuesta" value="Sí" /&gt;
-    &lt;input type="submit" name="respuesta" value="No" /&gt;
+    &lt;input type="submit" name="respuesta" value="Sí"&gt;
+    &lt;input type="submit" name="respuesta" value="No"&gt;
   &lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
       </div>
       <div class="resultado-captura">
         <p>
-          <img src="../img/php/form-submit-1.png" alt="Ejemplo de formulario" width="680" height="170" />
+          <img src="../img/php/form-submit-1.png" alt="Ejemplo de formulario" width="680" height="170">
         </p>
       </div>
     </div>
@@ -337,7 +337,7 @@ print "&lt;/pre&gt;";</code>
       </div>
       <div class="resultado-captura">
         <p>
-          <img src="../img/php/form-submit-2.png" alt="Resultado de formulario con method get" width="680" height="170" />
+          <img src="../img/php/form-submit-2.png" alt="Resultado de formulario con method get" width="680" height="170">
         </p>
       </div>
     </div>
@@ -356,10 +356,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="text" name="cajatexto1" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="text" name="cajatexto1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="text" name="cajatexto" readonly="readonly" />
+        <input type="text" name="cajatexto" readonly>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -371,10 +371,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="text" name="cajatexto2" value="Cualquier cosa" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="text" name="cajatexto2" value="Cualquier cosa"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="text" name="cajatexto" value="Cualquier cosa" readonly="readonly" />
+        <input type="text" name="cajatexto" value="Cualquier cosa" readonly>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -386,10 +386,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="password" name="cajapassword1" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="password" name="cajapassword1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="password" />
+        <input type="password">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -401,10 +401,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="password" name="cajapassword2" value="pezespada" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="password" name="cajapassword2" value="pezespada"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="password" value="pezespada" readonly="readonly" />
+        <input type="password" value="pezespada" readonly>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -419,7 +419,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;textarea rows="4" cols="20" name="areadetexto1"&gt;&lt;/textarea&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <textarea rows="4" cols="20" readonly="readonly"></textarea>
+        <textarea rows="4" cols="20" readonly></textarea>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -434,7 +434,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;textarea rows="4" cols="20" name="areadetexto2"&gt;Cualquier cosa&lt;/textarea&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <textarea rows="4" cols="20" readonly="readonly">Cualquier cosa</textarea>
+        <textarea rows="4" cols="20" readonly>Cualquier cosa</textarea>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -458,10 +458,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="checkbox" name="casilla1" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="checkbox" name="casilla1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="checkbox" name="casilla1" /> (sin marcar)
+        <input type="checkbox" name="casilla1"> (sin marcar)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -472,10 +472,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="checkbox" name="casilla2" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="checkbox" name="casilla2"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="checkbox" checked="checked" name="casilla2" /> (marcada)
+        <input type="checkbox" checked name="casilla2"> (marcada)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -487,10 +487,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="checkbox" name="casilla3" value="Tres" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="checkbox" name="casilla3" value="Tres"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="checkbox" checked="checked" name="casilla1" value="Tres" /> (marcada)
+        <input type="checkbox" checked name="casilla1" value="Tres"> (marcada)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -514,10 +514,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="radio" name="radio1" /&gt;<br />&lt;input type="radio" name="radio1" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="radio" name="radio1"&gt;<br>&lt;input type="radio" name="radio1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio1" /> <input type="radio" name="radio1" /> (sin marcar)
+        <input type="radio" name="radio1"> <input type="radio" name="radio1"> (sin marcar)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -528,10 +528,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="radio" name="radio2" /&gt;<br />&lt;input type="radio" name="radio2" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="radio" name="radio2"&gt;<br>&lt;input type="radio" name="radio2"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio2" checked="checked" /> <input type="radio" name="radio2" /> (marcado uno)
+        <input type="radio" name="radio2" checked> <input type="radio" name="radio2"> (marcado uno)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -543,10 +543,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="radio" name="radio3" /&gt;<br />&lt;input type="radio" name="radio3" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="radio" name="radio3"&gt;<br>&lt;input type="radio" name="radio3"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio3" /> <input type="radio" name="radio3" checked="checked" /> (marcado otro)
+        <input type="radio" name="radio3"> <input type="radio" name="radio3" checked> (marcado otro)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -559,12 +559,12 @@ print "&lt;/pre&gt;";</code>
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;input type="radio" name="radio4" value="Uno" /&gt;
-&lt;input type="radio" name="radio4" value="Dos" /&gt;</code>
+<code class="language-html">&lt;input type="radio" name="radio4" value="Uno"&gt;
+&lt;input type="radio" name="radio4" value="Dos"&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio4" checked="checked" value="Uno" /> <input type="radio" name="radio4" value="Dos" /> (marcado uno)
+        <input type="radio" name="radio4" checked value="Uno"> <input type="radio" name="radio4" value="Dos"> (marcado uno)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -577,12 +577,12 @@ print "&lt;/pre&gt;";</code>
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;input type="radio" name="radio5" value="Uno" /&gt;
-&lt;input type="radio" name="radio5" value="Dos" /&gt;</code>
+<code class="language-html">&lt;input type="radio" name="radio5" value="Uno"&gt;
+&lt;input type="radio" name="radio5" value="Dos"&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio5" value="Uno" /> <input type="radio" name="radio5" checked="checked" value="Dos" /> (marcado otro)
+        <input type="radio" name="radio5" value="Uno"> <input type="radio" name="radio5" checked value="Dos"> (marcado otro)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -676,7 +676,7 @@ print "&lt;/pre&gt;";</code>
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;select name="menu4[]" size="3" multiple="multiple"&gt;
+<code class="language-html">&lt;select name="menu4[]" size="3" multiple&gt;
   &lt;option&gt;Opción 1&lt;/option&gt;
   &lt;option&gt;Opción 2&lt;/option&gt;
   &lt;option&gt;Opción 3&lt;/option&gt;
@@ -685,13 +685,13 @@ print "&lt;/pre&gt;";</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <select name="menu4[]" size="3" multiple="multiple">
+        <select name="menu4[]" size="3" multiple>
             <option value="Opción 1">Opción 1</option>
             <option value="Opción 2">Opción 2</option>
-            <option value="Opción 3" selected="selected">Opción 3</option>
+            <option value="Opción 3" selected>Opción 3</option>
             <option value="Opción 4">Opción 4</option>
           </select>
-        <br /> (Marcados 1 y 3)
+        <br> (Marcados 1 y 3)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -719,10 +719,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="hidden" name="oculto1" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="hidden" name="oculto1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="hidden" name="oculto2" value="Cualquier cosa" />
+        <input type="hidden" name="oculto2" value="Cualquier cosa">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -734,10 +734,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="hidden" name="oculto2" value="Cualquier cosa" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="hidden" name="oculto2" value="Cualquier cosa"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="hidden" name="oculto" />
+        <input type="hidden" name="oculto">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -763,10 +763,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="image" name="gnu" alt="Logotipo GNU" src="gnu.jpg" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="image" name="gnu" alt="Logotipo GNU" src="gnu.jpg"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="image" name="GNU" alt="GNU" src="../img/gnu-head-sm.jpg" />
+        <input type="image" name="GNU" alt="GNU" src="../img/gnu-head-sm.jpg">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -780,7 +780,7 @@ print "&lt;/pre&gt;";</code>
     <p>Las coordenadas se reciben en $_REQUEST en dos elementos que añaden al nombre del control el sufijo _x e _y. En la barra de dirección el nombre aparece con el sufijo .x e .y.</p>
 
     <p class="captura">
-      <img src="../img/php/form-image-1.png" alt="Control de tipo image" width="650" height="180" />
+      <img src="../img/php/form-image-1.png" alt="Control de tipo image" width="650" height="180">
     </p>
 
     <p>Si se define el atributo <span class="html-atri">value</span>, el formulario debe enviar tanto las coordenadas como el nombre del control con el valor del atributo <span class="html-atri">value</span>. Actualmente (octubre de 2016), Google Chrome sí que lo hace, pero Firefox e Internet Explorer no lo hacen.</p>
@@ -801,10 +801,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="file" name="archivo1" /&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="file" name="archivo1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="file" />
+        <input type="file">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -827,11 +827,11 @@ print "&lt;/pre&gt;";</code>
         <pre>
 <code class="language-html">&lt;form enctype="multipart/form-data"
   action="ejemplo.php" method="post" &gt;
-&lt;input type="file" name="archivo2" /&gt;</code>
+&lt;input type="file" name="archivo2"&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <input type="file" />
+        <input type="file">
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -857,8 +857,8 @@ print "&lt;/pre&gt;";</code>
     <p class="ultmod">Última modificación de esta página: 26 de octubre de 2016</p>
 
     <p class="licencia">
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
   </footer>

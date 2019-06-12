@@ -25,11 +25,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Imágenes 1. Imágenes.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -73,10 +73,10 @@ print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
 print "      <tbody>\n";
 print "        <tr>\n";
 print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen - 1). "\">"
-     . "<img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\" /></button></td>\n";
-print "          <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\" /></td>\n";
+     . "<img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\"></button></td>\n";
+print "          <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\"></td>\n";
 print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen + 1). "\">"
-     . "<img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\" /></button></td>\n";
+     . "<img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\"></button></td>\n";
 print "        </tr>\n";
 print "      </tbody>\n";
 print "    </table>\n";
@@ -91,7 +91,7 @@ print "  </form>\n";
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

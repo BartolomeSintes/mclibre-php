@@ -25,14 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Reparto de tríos (Resultado).
     Selección (1). Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -92,9 +92,9 @@ if ($jugadoresOk) {
 
     for ($i = 1; $i <= $jugadores; $i++) {
         print "  <p>Jugador $i:\n";
-        print "    <img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\" title=\"$c1[$i]\" />\n";
-        print "    <img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" title=\"$c2[$i]\" />\n";
-        print "    <img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" title=\"$c3[$i]\" />\n";
+        print "    <img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\" title=\"$c1[$i]\">\n";
+        print "    <img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" title=\"$c2[$i]\">\n";
+        print "    <img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" title=\"$c3[$i]\">\n";
         print "  </p>\n";
     }
     print "\n";
@@ -110,7 +110,7 @@ if ($jugadoresOk) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

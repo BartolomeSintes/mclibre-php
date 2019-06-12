@@ -35,12 +35,12 @@ function cabecera($texto)
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
     print "<head>\n";
-    print "  <meta charset=\"utf-8\" />\n";
+    print "  <meta charset=\"utf-8\">\n";
     print "  <title>$texto. Validación.\n";
-    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>\n";
-    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    print "  <link rel=\"stylesheet\" href=\"mclibre-php-ejercicios.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";
@@ -91,7 +91,7 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     print "        <tr>\n";
     print "          <td>Nombre:</td>\n";
     print "          <td><input type=\"text\" name=\"nombre\" size=\""
-        . TAM_NOMBRE . "\" maxlength=\"" . TAM_NOMBRE . "\" value=\"$nombre\" />";
+        . TAM_NOMBRE . "\" maxlength=\"" . TAM_NOMBRE . "\" value=\"$nombre\">";
     if (isset($_REQUEST["nombre"]) && !$nombreOk) {
         print " <span class=\"aviso\">El nombre no es correcto</span>";
     }
@@ -100,7 +100,7 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     print "        <tr>\n";
     print "          <td>Teléfono:</td>\n";
     print "          <td><input type=\"text\" name=\"telefono\" size=\""
-        . TAM_TELEFONO . "\" maxlength=\"" . TAM_TELEFONO . "\" value=\"$telefono\" />";
+        . TAM_TELEFONO . "\" maxlength=\"" . TAM_TELEFONO . "\" value=\"$telefono\">";
     if (isset($_REQUEST["telefono"]) && !$telefonoOk) {
         print " <span class=\"aviso\">El teléfono no es correcto</span>";
     }
@@ -109,7 +109,7 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
     print "        <tr>\n";
     print "          <td>Correo:</td>\n";
     print "          <td><input type=\"text\" name=\"correo\" size=\""
-        . TAM_CORREO . "\" maxlength=\"" . TAM_CORREO . "\" value=\"$correo\" />";
+        . TAM_CORREO . "\" maxlength=\"" . TAM_CORREO . "\" value=\"$correo\">";
     if (isset($_REQUEST["correo"]) && !$correoOk) {
         print " <span class=\"aviso\">El correo no es correcto</span>";
     }
@@ -122,7 +122,7 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
         print "    <p><a href=\"$_SERVER[PHP_SELF]\">Volver al principio</a></p>\n";
         print "\n";
     }
-    print "    <p class=\"der\"><input type=\"submit\" name=\"enviar\" value=\"Enviar\" /></p>\n";
+    print "    <p class=\"der\"><input type=\"submit\" name=\"enviar\" value=\"Enviar\"></p>\n";
     print "  </form>\n";
 }
 ?>
@@ -135,7 +135,7 @@ if (isset($_REQUEST["enviar"]) && $nombreOk && $telefonoOk && $correoOk) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

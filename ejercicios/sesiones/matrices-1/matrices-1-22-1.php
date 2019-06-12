@@ -28,14 +28,14 @@ session_start();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Palabras repetidas (Formulario).
     foreach (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -58,7 +58,7 @@ for ($i = 1; $i <= $numero; $i++) {
     print "        <tr>\n";
     print "          <td>$i</td>\n";
     // El nombre del control es una matriz (c[])
-    print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\" /></td>\n";
+    print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\"></td>\n";
     print "        </tr>\n";
 }
 ?>
@@ -66,8 +66,8 @@ for ($i = 1; $i <= $numero; $i++) {
     </table>
 
     <p>
-      <input type="submit" value="Contar" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Contar">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -79,7 +79,7 @@ for ($i = 1; $i <= $numero; $i++) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

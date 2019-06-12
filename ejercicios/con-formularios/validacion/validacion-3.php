@@ -49,12 +49,12 @@ function cabecera($texto)
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
     print "<head>\n";
-    print "  <meta charset=\"utf-8\" />\n";
+    print "  <meta charset=\"utf-8\">\n";
     print "  <title>$texto. Validación.\n";
-    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>\n";
-    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    print "  <link rel=\"stylesheet\" href=\"mclibre-php-ejercicios.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";
@@ -75,10 +75,10 @@ function pie($conEnlace, $conBotones, $numeroValores)
 
     if ($conBotones) {
         print "    <p class=\"der\">\n";
-        print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
-        print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
-        print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
-        print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
+        print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\">\n";
+        print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\">\n";
+        print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\">\n";
+        print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\">\n";
         print "    </p>\n";
         print "  </form>\n";
         print "\n";
@@ -92,7 +92,7 @@ function pie($conEnlace, $conBotones, $numeroValores)
     print "\n";
     print "    <p class=\"licencia\">\n";
     print "      Este programa forma parte del curso <strong><a href=\"http://www.mclibre.org/consultar/php/\">Programación \n";
-    print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\" >Bartolomé Sintes Marco</a>.<br />\n";
+    print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\">Bartolomé Sintes Marco</a>.<br>\n";
     print "      El programa PHP que genera esta página se distribuye bajo \n";
     print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.\n";
     print "    </p>\n";
@@ -170,7 +170,7 @@ if ($valoresTodoOk) {
         print "        <tr>\n";
         print "          <td>Valor $i:</td>\n";
         print "          <td><input type=\"text\" name=\"valores[$i]\" size=\""
-            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" value=\"".$valores[$i]."\" />";
+            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" value=\"".$valores[$i]."\">";
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
         } elseif ($valores[$i] == "") {
@@ -191,7 +191,7 @@ if ($valoresTodoOk) {
         print "        <tr>\n";
         print "          <td>Valor $i:</td>\n";
         print "          <td><input type=\"text\" name=\"valores[$i]\" size=\""
-            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" />";
+            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\">";
         print "</td>\n";
         print "        </tr>\n";
     }

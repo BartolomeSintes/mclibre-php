@@ -70,12 +70,12 @@ if (!isset($_SESSION["citasUsuario"])) {
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Cita:</td>\n";
-            print "            <td><textarea name=\"cita\" cols=\"80\" rows=\"5\" id=\"cursor\" ></textarea></td>\n";
+            print "            <td><textarea name=\"cita\" cols=\"80\" rows=\"5\" id=\"cursor\"></textarea></td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
-            print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+            print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";
             print "    </form>\n";
         }
     }

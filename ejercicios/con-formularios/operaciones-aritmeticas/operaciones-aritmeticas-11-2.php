@@ -25,14 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Reloj (Resultado).
     Operaciones aritméticas. Con formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -102,7 +102,7 @@ $yM = $yC - round($largoMinutos * sin(-$minutos * 2 * pi() / 60 + pi() / 2));
 
 if ($horasOk && $minutosOk) {
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($ancho + 10) . "px\" height=\"" . ($ancho + 10) . "px\" viewBox=\"0 0 ". ($ancho + 10) . " " . ($ancho + 10) . "\" >\n";
+        . "    width=\"" . ($ancho + 10) . "px\" height=\"" . ($ancho + 10) . "px\" viewBox=\"0 0 ". ($ancho + 10) . " " . ($ancho + 10) . "\">\n";
     print "    <circle fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
     . "cx=\"" . (($ancho + 10) / 2) . "\" cy=\"" . (($ancho + 10) / 2) . "\" r=\"" . ($ancho / 2) . "\" />\n";
     print "    <line x1=\"$xC\" y1=\"$yC\" x2=\"$xH\" y2=\"$yH\" stroke-width=\"4\" stroke=\"black\" />\n";
@@ -121,7 +121,7 @@ if ($horasOk && $minutosOk) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

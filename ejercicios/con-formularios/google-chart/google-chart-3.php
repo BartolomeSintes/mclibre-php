@@ -27,12 +27,12 @@ function cabecera($texto)
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
     print "<head>\n";
-    print "  <meta charset=\"utf-8\" />\n";
+    print "  <meta charset=\"utf-8\">\n";
     print "  <title>Crea gráfica. ($texto). Google Chart.\n";
-    print "    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>\n";
-    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    print "  <link rel=\"stylesheet\" href=\"mclibre-php-ejercicios.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";
@@ -143,13 +143,13 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     print "                <td>Tamaño gráfica (ancho, entre "
         . "$tamanyoGraficaXMinimo y $tamanyoGraficaXMaximo):</td>\n";
     print "                <td><input type=\"text\" name=\"tamanyoGraficaX\" "
-        . "value=\"$tamanyoGraficaX\" size=\"5\" /> px</td>\n";
+        . "value=\"$tamanyoGraficaX\" size=\"5\"> px</td>\n";
     print "              </tr>\n";
     print "              <tr>\n";
     print "                <td>Tamaño gráfica (alto, entre "
         . "$tamanyoGraficaYMinimo y $tamanyoGraficaYMaximo):</td>\n";
     print "                <td><input type=\"text\" name=\"tamanyoGraficaY\" "
-        . "value=\"$tamanyoGraficaY\" size=\"5\" /> px</td>\n";
+        . "value=\"$tamanyoGraficaY\" size=\"5\"> px</td>\n";
     print "              </tr>\n";
     print "              <tr>\n";
     print "                <td>Tipo de gráfica:</td>\n";
@@ -169,7 +169,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
         print "              <tr>\n";
         print "                <td>Número $i:</td>\n";
         print "                <td><input type=\"text\" name=\"valores[$i]\" size=\"10\" "
-            . "value=\"$valores[$i]\" /></td>\n";
+            . "value=\"$valores[$i]\"></td>\n";
         print "              </tr>\n";
     }
     print "              </table>\n";
@@ -179,11 +179,11 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     print "    </table>\n";
     print "\n";
     print "    <p class=\"der\">\n";
-    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
-    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
-    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
-    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
+    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\">\n";
+    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\">\n";
+    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\">\n";
+    print "      <input type=\"reset\" value=\"Borrar\">\n";
+    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\">\n";
     print "    </p>\n";
     print "  </form>\n";
     print "\n";
@@ -274,7 +274,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     print "  <p>Gráfica correspondiente:</p\n";
     print "\n";
     print "  <p style=\"text-align:center; border: black solid 1px\"><img "
-        . "src=\"$cadenaGrafica\" alt=\"Gráfica\" /></p>\n";
+        . "src=\"$cadenaGrafica\" alt=\"Gráfica\"></p>\n";
     print "\n";
 }
 
@@ -286,7 +286,7 @@ print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";
 print "      Este programa forma parte del curso <strong><a href=\"http://www.mclibre.org/consultar/php/\">Programación \n";
-print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\" >Bartolomé Sintes Marco</a>.<br />\n";
+print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\">Bartolomé Sintes Marco</a>.<br>\n";
 print "      El programa PHP que genera esta página se distribuye bajo \n";
 print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.\n";
 print "    </p>\n";

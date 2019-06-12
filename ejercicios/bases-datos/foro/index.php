@@ -57,7 +57,7 @@ if (!$result) {
                     print "    <div class=\"discu\">\n";
                     print "      <h2><a href=\"hil-index.php?hilo=$valor[id]\">"
                         . "<img src=\"flecha.png\" alt=\"Ver intervenciones\" "
-                        . "title=\"Ver intervenciones\" /></a>$valor[titulo]</h2>\n";
+                        . "title=\"Ver intervenciones\"></a>$valor[titulo]</h2>\n";
                     print "\n";
                     print "      <p class=\"dis_aut\">Propuesta por "
                         . "<strong>$valor[autor]</strong> el "

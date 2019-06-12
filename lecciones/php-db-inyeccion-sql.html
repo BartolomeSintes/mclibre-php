@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Inyecciones SQL. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../varios/php.css" title="mclibre" />
-  <link rel="icon" href="../varios/favicon.ico" />
-  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.ico">
+  <link rel="stylesheet" href="../varios/highlight-php.css">
   <script src="../varios/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
@@ -16,8 +16,8 @@
 
   <nav>
     <p>
-      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
     </p>
 
     <div class="toc">
@@ -65,7 +65,7 @@
         <object type="text/html" data="../ejercicios/bases-datos/inyeccion-sql/inyeccion-sql-1/index.php" style="height: 27em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="../ejercicios/bases-datos/inyeccion-sql/inyeccion-sql-1/index.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="../ejercicios/bases-datos/inyeccion-sql/inyeccion-sql-1/index.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -83,16 +83,16 @@
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario y contraseña correctos.</p>
@@ -103,7 +103,7 @@
       </div>
     </div>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Para comprobar si la aplicación incluye los datos enviados por el usuario sin ningún tratamiento previo, podemos enviar una comilla (simple o doble) como dato.</p>
 
@@ -115,16 +115,16 @@
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="&#34;loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="&#34;loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario incorrecto.</p>
@@ -139,16 +139,16 @@
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="'loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="'loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Error en la consulta.</p>
@@ -199,7 +199,7 @@ AND campo2='loquesea'
 
     <p>Esta consulta no es correcta (contiene un error de sintaxis por culpa de la comilla dentro de las comillas de la segunda línea y cuando se ejecuta, la base de datos da error.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Ahora que sabemos que la consulta está delimitada por comillas dobles podemos escribir unos datos que modificarán la consulta y harán que la aplicación crea que hemos introducido datos de un usuario registrado.</p>
 
@@ -211,16 +211,16 @@ AND campo2='loquesea'
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR '1'='1" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR '1'='1"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario y contraseña correctos.</p>
@@ -244,7 +244,7 @@ AND campo2='loquesea' OR '1'='1'
 
     <p>Los nombres de campos se pueden averiguar mediante prueba y error. La idea es introducir datos que construyan consultas en las que aparezcan posibles nombres de los campos. En caso de que las consultas den error significa que el nombre es incorrecto, si no es así significa que hemos acertado el nombre de los campos.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Por ejemplo, vamos a probar si el nombre de uno de los campos es "usuario".</p>
 
@@ -258,16 +258,16 @@ AND campo2='loquesea' OR '1'='1'
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario='loquesea" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario='loquesea"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Error en la consulta.</p>
@@ -282,7 +282,7 @@ WHERE campo1='loquesea'
 AND campo2='loquesea' AND usuario='loquesea'
 </pre>
     </div>
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Otra posible entrada podría haber sido la siguiente:</p>
 
@@ -294,16 +294,16 @@ AND campo2='loquesea' AND usuario='loquesea'
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario is NULL; --" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND usuario is NULL; --"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Error en la consulta.</p>
@@ -323,7 +323,7 @@ AND campo2='loquesea' AND usuario is NULL; --'
 
     <p>En ambos casos hemos obtenido "Error en la consulta", por lo que sabemos que ningún campo se llama "usuario".</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Hacemos ahora un segundo intento, con el nombre "user"</p>
 
@@ -335,16 +335,16 @@ AND campo2='loquesea' AND usuario is NULL; --'
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND user is NULL; --" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND user is NULL; --"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario incorrecto.</p>
@@ -368,7 +368,7 @@ AND campo2='loquesea' AND user is NULL; --'
 
     <p>Los nombres de las tablas se pueden averiguar mediante prueba y error. La idea es introducir datos que construyan consultas en las que aparezcan posibles nombres de las tablas. En caso de que las consultas den error significa que el nombre es incorrecto, si no es así significa que hemos acertado el nombre de las tablas.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Por ejemplo, vamos a probar si el nombre de la tabla es "usuarios".</p>
 
@@ -382,16 +382,16 @@ AND campo2='loquesea' AND user is NULL; --'
           <tbody>
             <tr>
               <td>Usuario: </td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Error en la consulta.</p>
@@ -407,7 +407,7 @@ AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --'
 </pre>
     </div>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Hacemos ahora un segundo intento, con el nombre "tabla"</p>
 
@@ -419,16 +419,16 @@ AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM usuarios); --'
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario incorrecto.</p>
@@ -452,7 +452,7 @@ AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--
 
     <p>Una vez se conoce el nombre de la tabla de usuarios y los nombres de los campos se puede intentar conocer valores concretos de un registro mediante prueba y error. La idea es introducir datos que construyan consultas en las que aparezcan posibles contenidos de los campos. En caso de que las consultas den error significa que el contenido es incorrecto, si no es así significa que hemos acertado el contenido.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Por ejemplo, vamos a buscar nombres de usuarios.</p>
 
@@ -464,16 +464,16 @@ AND campo2='loquesea' AND 1=(SELECT COUNT(*) FROM tabla);--
           <tbody>
             <tr>
               <td>Usuario: </td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR user LIKE 'a%';--" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea' OR user LIKE 'a%';--"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario y contraseña correctos.</p>
@@ -499,7 +499,7 @@ AND campo2='loquesea' OR user LIKE 'a%';--
 
     <p>Una vez se conoce el nombre de la tabla de usuarios y los nombres de los campos se puede intentar editar la base de datos, por ejemplo, añadiendo un usuario.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>La técnica consiste en incluir una sentencia SQL que inserte un registro.</p>
 
@@ -511,16 +511,16 @@ AND campo2='loquesea' OR user LIKE 'a%';--
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; INSERT INTO tabla ('user', 'password') VALUES ('hacker', 'hacker'); --" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; INSERT INTO tabla ('user', 'password') VALUES ('hacker', 'hacker'); --"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario incorrecto</p>
@@ -548,7 +548,7 @@ AND campo2='loquesea'; INSERT INTO tabla VALUES (NULL, 'hacker', 'hacker'); --
 
     <p>Una vez se conoce el nombre de la tabla de usuarios vamos a realizar una acción destructiva, como por ejemplo borrar la tabla de usuarios.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>La técnica consiste en incluir una sentencia SQL que inserte un registro.
     </p>
@@ -561,16 +561,16 @@ AND campo2='loquesea'; INSERT INTO tabla VALUES (NULL, 'hacker', 'hacker'); --
           <tbody>
             <tr>
               <td>Usuario:</td>
-              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea" /></td>
+              <td><input type="text" name="usuario" size="80" maxlength="80" value="loquesea"></td>
             </tr>
             <tr>
               <td>Contraseña:</td>
-              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; DROP TABLE tabla; --" /></td>
+              <td><input type="text" name="contraseña" size="80" maxlength="80" value="loquesea'; DROP TABLE tabla; --"></td>
             </tr>
           </tbody>
         </table>
 
-        <p><input type="submit" value="Entrar" /></p>
+        <p><input type="submit" value="Entrar"></p>
       </div>
       <div class="resultado-html">
         <p>Nombre de usuario incorrecto</p>
@@ -598,7 +598,7 @@ AND campo2='loquesea'; DROP TABLE tabla; --
     <p class="mcl-centrado"><strong><a href="https://xkcd.com/327/">Exploits of a Mom</a></strong> (<a href="https://creativecommons.org/licenses/by-nc/2.5/">CC NC 2.5</a>)</p>
 
     <p class="mcl-centrado">
-      <img src="../img/otros/exploits-of-a-mom.png" alt="xkcd - Exploits of a Mom" width="666" height="205" />
+      <img src="../img/otros/exploits-of-a-mom.png" alt="xkcd - Exploits of a Mom" width="666" height="205">
     </p>
   </section>
 
@@ -606,8 +606,8 @@ AND campo2='loquesea'; DROP TABLE tabla; --
     <p class="ultmod">Última modificación de esta página: 29 de noviembre de 2012</p>
 
     <p class="licencia">
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
   </footer>

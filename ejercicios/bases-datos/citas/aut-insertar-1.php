@@ -48,16 +48,16 @@ if (!isset($_SESSION["citasUsuario"])) {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Nombre:</td>\n";
-        print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" id=\"cursor\" /></td>\n";
+        print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" id=\"cursor\"></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Apellidos:</td>\n";
-        print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" /></td>\n";
+        print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\"></td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+        print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";
         print "    </form>\n";
         print "\n";
     }

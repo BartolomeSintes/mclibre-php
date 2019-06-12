@@ -41,22 +41,22 @@ if (!$result) {
     print "        <tbody>\n";
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
-    print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" maxlength=\"$tamNombre\" autofocus=\"autofocus\" /></td>\n";
+    print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" maxlength=\"$tamNombre\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Apellidos:</td>\n";
-    print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" maxlength=\"$tamApellidos\" /></td>\n";
+    print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" maxlength=\"$tamApellidos\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Teléfono:</td>\n";
-    print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" maxlength=\"$tamTelefono\" /></td>\n";
+    print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" maxlength=\"$tamTelefono\"></td>\n";
     print "          </tr>\n";
     print "        </tbody>\n";
     print "      </table>\n";
     print "\n";
     print "      <p>\n";
-    print "        <input type=\"submit\" value=\"Buscar\" />\n";
-    print "        <input type=\"reset\" value=\"Reiniciar formulario\" />\n";
+    print "        <input type=\"submit\" value=\"Buscar\">\n";
+    print "        <input type=\"reset\" value=\"Reiniciar formulario\">\n";
     print "      </p>\n";
     print "    </form>\n";
 }

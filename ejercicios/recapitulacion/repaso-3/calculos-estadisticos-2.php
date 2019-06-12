@@ -27,11 +27,11 @@ function cabecera($texto)
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
     print "<head>\n";
-    print "  <meta charset=\"utf-8\" />\n";
+    print "  <meta charset=\"utf-8\">\n";
     print "  <title>Calculos estadísticos 2 ($texto). Repaso 3.\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
-    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n";
-    print "  <link rel=\"stylesheet\" type=\"text/css\" href=\"mclibre-php-ejercicios.css\" title=\"Color\" />\n";
+    print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    print "  <link rel=\"stylesheet\" href=\"mclibre-php-ejercicios.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";
@@ -154,7 +154,7 @@ if ($valoresTodoOk) {
         if (isset($valores[$i])) {
             print $valores[$i];
         }
-        print "\" />";
+        print "\">";
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
         } elseif ($valores[$i] == "") {
@@ -169,32 +169,32 @@ if ($valoresTodoOk) {
     print "  <p>\n";
     print "    <input type=\"checkbox\" name=\"suma\" ";
     if ($suma) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print " />Suma -\n";
+    print ">Suma -\n";
     print "    <input type=\"checkbox\" name=\"media\" ";
     if ($media) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print " />Media - \n";
+    print ">Media - \n";
     print "    <input type=\"checkbox\" name=\"maximo\" ";
     if ($maximo) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print " />Máximo - \n";
+    print ">Máximo - \n";
     print "    <input type=\"checkbox\" name=\"minimo\" ";
     if ($minimo) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print " />Mínimo\n";
+    print ">Mínimo\n";
     print "    </p>";
     print "\n";
     print "    <p class=\"der\">\n";
-    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
-    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
-    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
-    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\">\n";
+    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\">\n";
+    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\">\n";
+    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\">\n";
+    print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "  </form>\n";
 } else {
@@ -211,7 +211,7 @@ if ($valoresTodoOk) {
         if (isset($valores[$i])) {
             print $valores[$i];
         }
-        print "\" />";
+        print "\">";
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
         }
@@ -224,32 +224,32 @@ if ($valoresTodoOk) {
     print "    <p>\n";
     print "      <input type=\"checkbox\" name=\"suma\" ";
     if ($suma) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print "/> Suma -\n";
+    print "> Suma -\n";
     print "      <input type=\"checkbox\" name=\"media\" ";
     if ($media) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print "/> Media - \n";
+    print "> Media - \n";
     print "      <input type=\"checkbox\" name=\"maximo\" ";
     if ($maximo) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print "/> Máximo - \n";
+    print "> Máximo - \n";
     print "      <input type=\"checkbox\" name=\"minimo\" ";
     if ($minimo) {
-        print "checked=\"checked\" ";
+        print "checked ";
     }
-    print "/> Mínimo\n";
+    print "> Mínimo\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"der\">\n";
-    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\" />\n";
-    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\" />\n";
-    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\" />\n";
-    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "      <input type=\"hidden\" name=\"numeroValores\" value=\"$numeroValores\">\n";
+    print "      <input type=\"submit\" name=\"enviar\" value=\"Enviar\">\n";
+    print "      <input type=\"submit\" name=\"anyadir\" value=\"Añadir valor\">\n";
+    print "      <input type=\"submit\" name=\"quitar\" value=\"Quitar valor\">\n";
+    print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "  </form>\n";
     print "\n";
@@ -263,7 +263,7 @@ print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";
 print "      Este programa forma parte del curso <strong><a href=\"http://www.mclibre.org/consultar/php/\">Programación \n";
-print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\" >Bartolomé Sintes Marco</a>.<br />\n";
+print "      web en PHP</a></strong> de <a href=\"http://www.mclibre.org/\" rel=\"author\">Bartolomé Sintes Marco</a>.<br>\n";
 print "      El programa PHP que genera esta página se distribuye bajo \n";
 print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.\n";
 print "    </p>\n";

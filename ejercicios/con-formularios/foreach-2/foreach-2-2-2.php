@@ -25,12 +25,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Tablas con casillas de verificación (Resultado 1). foreach (2).
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+  <meta charset="utf-8">
+  <title>
+    Tablas con casillas de verificación (Resultado 1). foreach (2).
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
   <style>
     table { margin-bottom: 20px; }
   </style>
@@ -89,7 +90,7 @@ if ($tablasOk && $tamanoOk) {
             print "        <tr>\n";
             for ($j = 1; $j <= $tamano; $j++) {
                 $casilla = $i * $tamano + $j;
-                print "          <td><input type=\"checkbox\" name=\"c[$k][$casilla]\" /> $casilla</td>\n";
+                print "          <td><input type=\"checkbox\" name=\"c[$k][$casilla]\"> $casilla</td>\n";
             }
             print "        </tr>\n";
         }
@@ -98,10 +99,10 @@ if ($tablasOk && $tamanoOk) {
         print "\n";
     }
     print "    <p class=\"der\">\n";
-    print "      <input type=\"submit\" value=\"Contar\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
-    print "      <input type=\"hidden\" name=\"tamano\" value=\"$tamano\" />\n";
-    print "      <input type=\"hidden\" name=\"tablas\" value=\"$tablas\" />\n";
+    print "      <input type=\"submit\" value=\"Contar\">\n";
+    print "      <input type=\"reset\" value=\"Borrar\">\n";
+    print "      <input type=\"hidden\" name=\"tamano\" value=\"$tamano\">\n";
+    print "      <input type=\"hidden\" name=\"tablas\" value=\"$tablas\">\n";
     print "    </p>\n";
     print "  </form>\n";
 }
@@ -117,7 +118,7 @@ if ($tablasOk && $tamanoOk) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

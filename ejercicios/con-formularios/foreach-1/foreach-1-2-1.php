@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Palabras repetidas (Formulario). foreach (1).
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta charset="utf-8">
+  <title>
+    Palabras repetidas (Formulario).
+    foreach (1).
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -14,11 +17,11 @@
   <form action="foreach-1-2-2.php" method="get">
     <p>Escriba un número (0 &lt; número &le; 10) y dibujaré una tabla de una columna de ese tamaño con cajas de texto en cada celda.</p>
 
-    <p><strong>Tamaño de la tabla:</strong> <input type="number" name="numero" min="1" max="10" value="7" /></p>
+    <p><strong>Tamaño de la tabla:</strong> <input type="number" name="numero" min="1" max="10" value="7"></p>
 
     <p>
-      <input type="submit" value="Mostar" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Mostrar">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -30,7 +33,7 @@
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

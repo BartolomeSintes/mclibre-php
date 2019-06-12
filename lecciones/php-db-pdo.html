@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>PHP Data Objects (PDO). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../varios/php.css" title="mclibre" />
-  <link rel="icon" href="../varios/favicon.ico" />
-  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.ico">
+  <link rel="stylesheet" href="../varios/highlight-php.css">
   <script src="../varios/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
@@ -16,8 +16,8 @@
 
   <nav>
     <p>
-      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
     </p>
 
     <div class="toc">
@@ -297,7 +297,7 @@ $db = null;</code>
       </li>
     </ul>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>En los ejemplos, se define una variable $consulta que contiene la consulta y a continuación se ejecuta la consulta, pero podría estar en una sola:</p>
 
@@ -344,7 +344,7 @@ $result-&gt;execute();</code>
 
       <p>Dependiendo del tipo de consulta, el dato devuelto debe tratarse de formas distintas, como se ha explicado en el apartado anterior.</p>
 
-      <hr class="corta" />
+      <hr class="corta">
 
       <p>Si la consulta incluye datos introducidos por el usuario, los datos pueden incluirse directamente en la consulta, pero en ese caso, PHP no realiza ninguna "desinfección" de los datos, por lo que estaríamos corriendo riesgos de ataques:</p>
 
@@ -364,7 +364,7 @@ if (!$result) {
 </pre>
       </div>
 
-      <hr class="corta" />
+      <hr class="corta">
 
       <p>Para que PHP desinfecte los datos, estos deben enviarse al ejecutar la consulta, no al prepararla. Para ello es necesario indicar en la consulta la posición de los datos. Esto se puede hacer de dos maneras, mediante parámetros o mediante interrogantes, aunque se aconseja la utilización de parámetros:</p>
       <ul>
@@ -408,7 +408,7 @@ if (!$result) {
         </li>
       </ul>
 
-      <hr class="corta" />
+      <hr class="corta">
 
       <p>Aunque no vayan a causar problemas en las consultas, sigue siendo conveniente tratar los datos recibidos para eliminar los espacios en blanco iniciales y finales, tratar los caracteres especiales del html, etc., como se comenta en la <a href="php-recogida-datos.html">lección de Recogida de datos</a>.</p>
     </section>
@@ -696,7 +696,7 @@ if ($db-&gt;query($consulta)) {
 </pre>
       </div>
 
-      <hr class="corta" />
+      <hr class="corta">
 
       <p>Para añadir un registro a una tabla, se utiliza la consulta INSERT INTO.</p>
 
@@ -720,7 +720,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
 </pre>
       </div>
 
-      <hr class="corta" />
+      <hr class="corta">
 
       <p>Para modificar un registro a una tabla, se utiliza la consulta UPDATE.</p>
 
@@ -745,7 +745,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos,
 </pre>
       </div>
 
-      <hr class="corta" />
+      <hr class="corta">
 
       <p>Para borrar un registro de una tabla, se utiliza la consulta DELETE FROM.</p>
 
@@ -812,7 +812,7 @@ if (!$result) {
 </pre>
           </div>
         </li>
-        <li>Si la consulta se ejecuta correctamente, la consulta devuelve los registros correspondientes. <br />
+        <li>Si la consulta se ejecuta correctamente, la consulta devuelve los registros correspondientes. <br>
 
           <ul>
             <li>Para acceder a los registros devueltos por la consulta, se puede utilizar un bucle foreach.
@@ -973,8 +973,8 @@ if (!$result) {
     <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2018</p>
 
     <p class="licencia">
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
   </footer>

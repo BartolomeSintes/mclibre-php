@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Buscador en la Wikipedia (Formulario).
     Funciones (1). Funciones.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -17,12 +17,12 @@
   <form action="funciones-1-5-ws-2.php" method="get">
     <p>
       Buscar en la Wikipedia:
-      <input type="text" name="cadena" size="40" />
+      <input type="text" name="cadena" size="40">
     </p>
 
     <p>
-      <input type="submit" value="Convertir" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Convertir">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -35,7 +35,7 @@
   <p class="licencia">
     Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
     Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-    Sintes Marco</a>.<br />
+    Sintes Marco</a>.<br>
     El programa PHP que genera esta página está bajo
     <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
 </footer>

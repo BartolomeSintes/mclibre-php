@@ -25,11 +25,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Lights Out de una fila. Imágenes.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -112,9 +112,9 @@ if ($juegaOk) {
     for ($i = 1; $i <= $total; $i++) {
         print "          <td><button type=\"submit\" name=\"juega\" value=\"$i\">";
         if ($partida[$i] == 0) {
-            print "<img src=\"img/lightsout/circulo-negro.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
+            print "<img src=\"img/lightsout/circulo-negro.svg\" height=\"120\" alt=\"Ficha\"></button></td>\n";
         } else {
-            print "<img src=\"img/lightsout/circulo-blanco.svg\" height=\"120\" alt=\"Ficha\" /></button></td>\n";
+            print "<img src=\"img/lightsout/circulo-blanco.svg\" height=\"120\" alt=\"Ficha\"></button></td>\n";
         }
     }
     print "        </tr>\n";
@@ -124,16 +124,16 @@ if ($juegaOk) {
 
     print "    <p>\n";
     for ($i = 1; $i <= $total; $i++) {
-        print "      <input type=\"hidden\" name=\"partida[$i]\" value=\"$partida[$i]\" />\n";
+        print "      <input type=\"hidden\" name=\"partida[$i]\" value=\"$partida[$i]\">\n";
     }
     print "    </p>\n";
     print "\n";
 
-    print "    <p><input type=\"submit\" value=\"Reiniciar partida\" /></p>\n";
+    print "    <p><input type=\"submit\" value=\"Reiniciar partida\"></p>\n";
     print "  </form>\n";
 } else {
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
-    print "    <p><input type=\"submit\" value=\"Reiniciar partida\" /></p>\n";
+    print "    <p><input type=\"submit\" value=\"Reiniciar partida\"></p>\n";
     print "  </form>\n";
 }
 ?>
@@ -146,7 +146,7 @@ if ($juegaOk) {
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

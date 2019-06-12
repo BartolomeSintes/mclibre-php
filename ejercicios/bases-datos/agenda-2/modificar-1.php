@@ -65,31 +65,31 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
             print "            <th>Modificar</th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=ASC\">"
-                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
             print "              Nombre\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=DESC\">"
-                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
             print "            </th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">"
-                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
             print "              Apellidos\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">"
-                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
             print "            </th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=ASC\">"
-                . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+                . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\"></a>\n";
             print "              Teléfono\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=telefono&amp;orden=DESC\">"
-                . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+                . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\"></a>\n";
             print "            </th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=correo&amp;orden=ASC\">"
-                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
             print "              Correo\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=correo&amp;orden=DESC\">"
-                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
             print "           </th>\n";
             print "          </tr>\n";
             print "        </thead>\n";
@@ -103,7 +103,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
                 }
                 $tmp = !$tmp;
                 print "            <td align=\"center\"><input type=\"radio\" "
-                    . "name=\"id\" value=\"$valor[id]\" /></td>\n";
+                    . "name=\"id\" value=\"$valor[id]\"></td>\n";
                 print "            <td>$valor[nombre]</td>\n";
                 print "            <td>$valor[apellidos]</td>\n";
                 print "            <td>$valor[telefono]</td>\n";
@@ -113,7 +113,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
-            print "      <p><input type=\"submit\" value=\"Modificar\" /></p>\n";
+            print "      <p><input type=\"submit\" value=\"Modificar\"></p>\n";
             print "    </form>\n";
             print "\n";
         }

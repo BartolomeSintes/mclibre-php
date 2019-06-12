@@ -71,17 +71,17 @@ if (!$result) {
         print "        <tr class=\"neg\">\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=articulo&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "            Artículo\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=articulo&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "          </th>\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=precio&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "            Precio\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?compraventa=$compraventa&amp;campo=precio&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "          </th>\n";
         print "        </tr>\n";
         print "      </thead>\n";

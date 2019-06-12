@@ -44,7 +44,7 @@ print "        </thead>\n";
 print "        <tbody>\n";
 foreach ($result as $valor) {
     print "          <tr>\n";
-    print "            <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\" /></td>\n";
+    print "            <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\"></td>\n";
     print "            <td>$valor[nombre]</td>\n";
     print "            <td>$valor[apellidos]</td>\n";
     print "          </tr>\n";
@@ -53,8 +53,8 @@ print "        </tbody>\n";
 print "      </table>\n";
 print "\n";
 print "      <p>\n";
-print "        <input type=\"submit\" value=\"Borrar registro\" />\n";
-print "        <input type=\"reset\" value=\"Reiniciar formulario\" />\n";
+print "        <input type=\"submit\" value=\"Borrar registro\">\n";
+print "        <input type=\"reset\" value=\"Reiniciar formulario\">\n";
 print "      </p>\n";
 print "    </form>\n";
 

@@ -40,14 +40,14 @@ if (isset($_SESSION["paso"]) && $_SESSION["paso"] != 1) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Formulario seguro en tres pasos (Formulario 1).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -58,16 +58,16 @@ if (isset($_SESSION["paso"]) && $_SESSION["paso"] != 1) {
 
 <?php
 if (isset($_SESSION["avisoNombre"])) {
-    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\" /> "
+    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"> "
         . "<span class=\"aviso\">$_SESSION[avisoNombre]</span></p>\n";
     print "\n";
 } else {
-    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></p>\n";
     print "\n";
 }
 ?>
-    <p><input type="submit" value="Siguiente" />
-      <input type="reset" value="Borrar" /></p>
+    <p><input type="submit" value="Siguiente">
+      <input type="reset" value="Borrar"></p>
   </form>
 
   <footer>
@@ -78,7 +78,7 @@ if (isset($_SESSION["avisoNombre"])) {
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

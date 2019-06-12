@@ -55,24 +55,24 @@ if (!$result) {
         print "          <tr class=\"neg\">\n";
         print "            <th>Borrar</th>\n";
         print "            <th><a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "              Nombre\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=nombre&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "              Apellidos\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=dni&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\"></a>\n";
         print "              DNI\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=dni&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\"></a>\n";
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
@@ -86,7 +86,7 @@ if (!$result) {
             }
             $tmp = !$tmp;
             print "            <td align=\"center\"><input type=\"checkbox\" "
-                . "name=\"id[$valor[id]]\" /></td>\n";
+                . "name=\"id[$valor[id]]\"></td>\n";
             print "            <td>$valor[nombre]</td>\n";
             print "            <td>$valor[apellidos]</td>\n";
             print "            <td>$valor[dni]</td>\n";
@@ -95,7 +95,7 @@ if (!$result) {
         print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"Borrar\" /></p>\n";
+        print "      <p><input type=\"submit\" value=\"Borrar\"></p>\n";
         print "    </form>\n";
         print "\n";
     }

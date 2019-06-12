@@ -59,31 +59,31 @@ if (!$result) {
         print "        <tr class=\"neg\">\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "            Usuario\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "          </th>\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "            Título\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "          </th>\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\"></a>\n";
         print "            Fecha préstamo\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\"></a>\n";
         print "          </th>\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=devuelto&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\"></a>\n";
         print "            Fecha devolución\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=devuelto&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\"></a>\n";
         print "          </th>\n";
         print "        </tr>\n";
         print "      </thead>\n";

@@ -67,22 +67,22 @@ if (!$result) {
         print "          <tr class=\"neg\">\n";
         print "            <th>\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "              Usuario\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "              &nbsp; - &nbsp;\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "              Título\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "              &nbsp; - &nbsp;\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\"></a>\n";
         print "              Fecha préstamo\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=prestado&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\"></a>\n";
         print "            </th>\n";
         print "            <th>Fecha de devolución (dd-mm-aaaa)</th>\n";
         print "          </tr>\n";
@@ -100,13 +100,13 @@ if (!$result) {
         print "            </td>\n";
         print "            <td>\n";
         print "              <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
-            . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" id=\"cursor\" />\n";
+            . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" id=\"cursor\">\n";
         print "            </td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"Guardar devolución\" /></p>\n";
+        print "      <p><input type=\"submit\" value=\"Guardar devolución\"></p>\n";
         print "    </form>\n";
         print "    \n";
     }

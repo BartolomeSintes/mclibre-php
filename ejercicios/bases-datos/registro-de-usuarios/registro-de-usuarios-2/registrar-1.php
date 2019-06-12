@@ -44,17 +44,17 @@ if (isset($_SESSION["id"])) {
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
     print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-        . "maxlength=\"$tamUsuario\" id=\"cursor\" /> (hasta $tamUsuario caracteres)</td>\n";
+        . "maxlength=\"$tamUsuario\" id=\"cursor\"> (hasta $tamUsuario caracteres)</td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Contraseña:</td>\n";
     print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
-        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>\n";
+        . "maxlength=\"$tamPassword\"> (hasta $tamPassword caracteres)</td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Repita la contraseña:</td>\n";
     print "            <td><input type=\"password\" name=\"password2\" size=\"$tamPassword\" "
-        . "maxlength=\"$tamPassword\" /> (hasta $tamPassword caracteres)</td>\n";
+        . "maxlength=\"$tamPassword\"> (hasta $tamPassword caracteres)</td>\n";
     print "          </tr>\n";
     print "        </tbody>\n";
     print "      </table>\n";
@@ -63,8 +63,8 @@ if (isset($_SESSION["id"])) {
         . "y las contraseñas de más de $tamPassword se recortarán a esas longitudes.</p>\n";
     print "\n";
     print "      <p>\n";
-    print "        <input type=\"submit\" value=\"Añadir\" />\n";
-    print "        <input type=\"reset\" value=\"Borrar\" />\n";
+    print "        <input type=\"submit\" value=\"Añadir\">\n";
+    print "        <input type=\"reset\" value=\"Borrar\">\n";
     print "      </p>\n";
     print "    </form>\n";
 }

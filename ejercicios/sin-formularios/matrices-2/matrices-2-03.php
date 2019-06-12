@@ -25,14 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Tirada multilingüe.
     Matrices (2). Sin formularios.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -60,7 +60,7 @@ print "  <h1>{$mensajes[0][$idioma]}</h1>\n";
 print "\n";
 print "  <p>{$mensajes[1][$idioma]}</p>\n";
 print "\n";
-print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\" /></p>\n";
+print "  <p><img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\"></p>\n";
 print "\n";
 print "  <p>{$mensajes[2][$idioma]} <strong>{$palabras[$dado-1][$idioma]}</strong>.</p>\n";
 ?>
@@ -73,7 +73,7 @@ print "  <p>{$mensajes[2][$idioma]} <strong>{$palabras[$dado-1][$idioma]}</stron
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

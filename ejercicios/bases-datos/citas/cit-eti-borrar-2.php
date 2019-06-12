@@ -96,7 +96,7 @@ if (!isset($_SESSION["citasUsuario"])) {
                         foreach ($result as $indice => $valor) {
                             print "          <tr>\n";
                             print "            <th>Etiqueta:</th>\n";
-                            print "            <td><input type=\"checkbox\" name=\"id[$valor[id_eticita]]\" />\n";
+                            print "            <td><input type=\"checkbox\" name=\"id[$valor[id_eticita]]\">\n";
                             print "            <td>$valor[etiqueta]</td>\n";
                             print "          </tr>\n";
                         }
@@ -105,8 +105,8 @@ if (!isset($_SESSION["citasUsuario"])) {
                     print "      </table>\n";
                     print "\n";
                     print "      <p>\n";
-                    print "        <input type=\"hidden\" name=\"cita\" value=\"$id\" />\n";
-                    print "        <input type=\"submit\" value=\"Asignar\" />\n";
+                    print "        <input type=\"hidden\" name=\"cita\" value=\"$id\">\n";
+                    print "        <input type=\"submit\" value=\"Asignar\">\n";
                     print "      </p>\n";
                     print "    </form>\n";
                     print "\n";

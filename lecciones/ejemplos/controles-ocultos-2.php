@@ -25,11 +25,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Controles ocultos (Formulario 2). Controles ocultos.
-    Ejemplos. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+    Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -49,12 +49,12 @@ $nombre = recoge("nombre");
 print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
 print "\n";
 print "  <form action=\"controles-ocultos-3.php\" method=\"get\">\n";
-print "    <p>Escriba sus apellidos:<input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"20\" /></p>\n";
+print "    <p>Escriba sus apellidos:<input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"20\"></p>\n";
 print "\n";
 print "    <p class=\"der\">\n";
-print "      <input type=\"hidden\" name=\"nombre\" value=\"$nombre\" />\n";
-print "      <input type=\"submit\" value=\"Enviar\" />\n";
-print "      <input type=\"reset\" value=\"Borrar\" />\n";
+print "      <input type=\"hidden\" name=\"nombre\" value=\"$nombre\">\n";
+print "      <input type=\"submit\" value=\"Enviar\">\n";
+print "      <input type=\"reset\" value=\"Borrar\">\n";
 print "    </p>\n";
 print "  </form>\n";
 
@@ -70,7 +70,7 @@ print "  </form>\n";
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

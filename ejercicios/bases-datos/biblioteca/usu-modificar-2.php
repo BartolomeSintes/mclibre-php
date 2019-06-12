@@ -62,24 +62,24 @@ if ($id == "''") {
             print "          <tr>\n";
             print "            <td>Nombre:</td>\n";
             print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
-                . "maxlength=\"" . TAM_NOMBRE . "\" value=\"$valor[nombre]\" id=\"cursor\" /></td>\n";
+                . "maxlength=\"" . TAM_NOMBRE . "\" value=\"$valor[nombre]\" id=\"cursor\"></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Apellidos:</td>\n";
             print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
-                . "maxlength=\"" . TAM_APELLIDOS . "\" value=\"$valor[apellidos]\" /></td>\n";
+                . "maxlength=\"" . TAM_APELLIDOS . "\" value=\"$valor[apellidos]\"></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>DNI:</td>\n";
             print "            <td><input type=\"text\" name=\"dni\" size=\"" . TAM_DNI . "\" "
-                . "maxlength=\"" . TAM_DNI . "\" value=\"$valor[dni]\" /></td>\n";
+                . "maxlength=\"" . TAM_DNI . "\" value=\"$valor[dni]\"></td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
             print "      <p>\n";
-            print "        <input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
-            print "        <input type=\"submit\" value=\"Actualizar\" />\n";
+            print "        <input type=\"hidden\" name=\"id\" value=\"$id\">\n";
+            print "        <input type=\"submit\" value=\"Actualizar\">\n";
             print "      </p>\n";
             print "    </form>\n";
             print "\n";

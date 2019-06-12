@@ -25,14 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Fichas informativa de animales.
     Matrices (2). Sin formularios.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -69,7 +69,7 @@ $animal = rand(0, count($animales) - 1);
 print "  <h2>" . $animales[$animal][0] . "</h2>\n";
 print "\n";
 print "  <p><img src=\"img/animales/{$animales[$animal][1]}\" alt=\""
-    . "{$animales[$animal][0]}\" title=\"{$animales[$animal][0]}\" height=\"250\" /></p>\n";
+    . "{$animales[$animal][0]}\" title=\"{$animales[$animal][0]}\" height=\"250\"></p>\n";
 
 print "\n";
 print "  <p>Más <a href=\"{$animales[$animal][2]}\">información sobre este animal</a> en la Wikipedia</p>\n";
@@ -83,7 +83,7 @@ print "  <p>Más <a href=\"{$animales[$animal][2]}\">información sobre este ani
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

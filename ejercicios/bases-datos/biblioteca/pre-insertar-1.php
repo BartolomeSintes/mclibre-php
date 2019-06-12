@@ -108,13 +108,13 @@ if (!$result) {
             print "            </td>\n";
             print "            <td>\n";
             print "              <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
-                . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" id=\"cursor\" />\n";
+                . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" id=\"cursor\">\n";
             print "            </td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
-            print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+            print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";
             print "    </form>\n";
             print "\n";
         }

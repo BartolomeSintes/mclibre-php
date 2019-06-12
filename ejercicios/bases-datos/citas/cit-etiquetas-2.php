@@ -114,8 +114,8 @@ if (!isset($_SESSION["citasUsuario"])) {
                 print "      </table>\n";
                 print "\n";
                 print "      <p>\n";
-                print "        <input type=\"hidden\" name=\"cita\" value=\"$id\" />\n";
-                print "        <input type=\"submit\" value=\"Asignar\" />\n";
+                print "        <input type=\"hidden\" name=\"cita\" value=\"$id\">\n";
+                print "        <input type=\"submit\" value=\"Asignar\">\n";
                 print "      </p>\n";
                 print "    </form>\n";
                 print "\n";

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Comprobación de datos. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../varios/php.css" title="mclibre" />
-  <link rel="icon" href="../varios/favicon.ico" />
-  <link rel="stylesheet" href="../varios/highlight-php.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.ico">
+  <link rel="stylesheet" href="../varios/highlight-php.css">
   <script src="../varios/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
@@ -16,8 +16,8 @@
 
   <nav>
     <p>
-      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
     </p>
 
     <div class="toc">
@@ -150,7 +150,7 @@
 
     <p>Si un dato es demasiado grande para el tipo de variable, las funciones devolverán <span class="php-con">false</span>. Por ejemplo, si se usa como argumento un entero mayor que <span class="php-con">PHP_INT_MAX</span> (2147483647 en Windows), la función <span class="php-fun">is_int()</span> devolverá <span class="php-con">false</span>.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Estas funciones son en general de poca utilidad con datos provinientes de un formulario, ya que estas funciones lo que comprueban es el tipo de los datos y la información que llega de un formulario es siempre del tipo cadena. Las dos excepciones serían:</p>
 
@@ -180,7 +180,7 @@ if (is_numeric($numero)) {
       </div>
     </div>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>El siguiente formulario permite comprobar el resultado de las funciones is_ aplicadas a un dato recibido de un formulario.</p>
 
@@ -189,7 +189,7 @@ if (is_numeric($numero)) {
         <object type="text/html" data="comprobacion-datos/comprobacion-datos-is-1.php" style="height: 41em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="comprobacion-datos/comprobacion-datos-is-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="comprobacion-datos/comprobacion-datos-is-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -252,7 +252,7 @@ if (is_numeric($numero)) {
       </tbody>
     </table>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>Estas funciones se pueden aplicar a los datos recibidos de un formulario ya que hacen comprobaciones de todos los caracteres de una cadena. Quizás la más útil es:</p>
 
@@ -281,7 +281,7 @@ if (ctype_digit($numero)) {
       </div>
     </div>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>El siguiente formulario permite comprobar el resultado de las funciones ctype_ aplicadas a un dato recibido de un formulario.</p>
 
@@ -290,7 +290,7 @@ if (ctype_digit($numero)) {
         <object type="text/html" data="comprobacion-datos/comprobacion-datos-ctype-1.php" style="height: 39em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="comprobacion-datos/comprobacion-datos-ctype-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="comprobacion-datos/comprobacion-datos-ctype-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -345,9 +345,9 @@ if (ctype_digit($numero)) {
       </tbody>
     </table>
 
-    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />El problema de los filtros <span class="php-con">FILTER_VALIDATE_INT</span> y <span class="php-con">FILTER_VALIDATE_FLOAT</span> es que dan <span class="php-con">false</span> si el argumento es 0, lo que complica su uso para detectar números porque el caso del 0 debe considerarse aparte al hacer la validación. Se supone que ese comportamiento se corrigió en PHP 5.4, pero yo no tengo claro que el problema esté resuelto en versiones posteriores.</p>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">El problema de los filtros <span class="php-con">FILTER_VALIDATE_INT</span> y <span class="php-con">FILTER_VALIDATE_FLOAT</span> es que dan <span class="php-con">false</span> si el argumento es 0, lo que complica su uso para detectar números porque el caso del 0 debe considerarse aparte al hacer la validación. Se supone que ese comportamiento se corrigió en PHP 5.4, pero yo no tengo claro que el problema esté resuelto en versiones posteriores.</p>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">filter_var()</span> con el argumento <span class="php-con">FILTER_VALIDATE_INT</span>.</p>
 
@@ -370,7 +370,7 @@ if (filter_var($numero, FILTER_VALIDATE_INT)) {
       </div>
     </div>
 
-    <hr class="corta" />
+    <hr class="corta">
 
     <p>El siguiente formulario permite comprobar el resultado de la función filter_var() con diferentes filtros aplicada a un dato recibido de un formulario.</p>
 
@@ -379,7 +379,7 @@ if (filter_var($numero, FILTER_VALIDATE_INT)) {
         <object type="text/html" data="comprobacion-datos/comprobacion-datos-filter-1.php" style="height: 33em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="comprobacion-datos/comprobacion-datos-filter-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36" /></a>
+        <a href="comprobacion-datos/comprobacion-datos-filter-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -400,16 +400,16 @@ if (filter_var($numero, FILTER_VALIDATE_INT)) {
 
       <div class="filaflex">
         <div class="codigo">
-          <p>Número: <input type="text" name="texto" readonly="readonly" value="2.5" /></p>
+          <p>Número: <input type="text" name="texto" readonly value="2.5"></p>
 
-          <p><input type="submit" value="Enviar" /></p>
+          <p><input type="submit" value="Enviar"></p>
         </div>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
 
-$numero = $_REQUEST["numero"];<br />
+$numero = $_REQUEST["numero"];<br>
 if (function_exists("filter_var")) {
     if (filter_var($numero, FILTER_VALIDATE_INT)) {
         print "&lt;p&gt;Ha escrito el número entero $numero.&lt;/p&gt;\n";
@@ -452,8 +452,8 @@ if (function_exists("filter_var")) {
     <p class="ultmod">Última modificación de esta página: 4 de noviembre de 2016</p>
 
     <p class="licencia">
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
   </footer>

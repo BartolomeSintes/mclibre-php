@@ -48,16 +48,16 @@ if (!isset($_SESSION["compraventaUsuario"])) {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Artículo:</td>\n";
-        print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" id=\"cursor\" /></td>\n";
+        print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" id=\"cursor\"></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Precio:</td>\n";
-        print "            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" /> &euro;</td>\n";
+        print "            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\"> &euro;</td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+        print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";
         print "    </form>\n";
         print "\n";
     }

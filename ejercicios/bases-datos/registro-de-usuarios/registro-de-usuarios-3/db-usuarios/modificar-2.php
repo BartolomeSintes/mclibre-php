@@ -63,11 +63,11 @@ if ($id == "") {
             print "        <tbody>\n";
             print "          <tr>\n";
             print "            <td>Nombre de usuario:</td>\n";
-            print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" maxlength=\"$tamUsuariosWebUsuario\" value=\"$valor[usuario]\" autofocus=\"autofocus\"/></td>\n";
+            print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" maxlength=\"$tamUsuariosWebUsuario\" value=\"$valor[usuario]\" autofocus></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Contraseña:</td>\n";
-            print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosWebPassword\" maxlength=\"$tamUsuariosWebPassword\" /></td>\n";
+            print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosWebPassword\" maxlength=\"$tamUsuariosWebPassword\"></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Nivel:</td>\n";
@@ -87,9 +87,9 @@ if ($id == "") {
             print "      </table>\n";
             print "\n";
             print "      <p>\n";
-            print "        <input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
-            print "        <input type=\"submit\" value=\"Actualizar\" />\n";
-            print "        <input type=\"reset\" value=\"Reiniciar formulario\" />\n";
+            print "        <input type=\"hidden\" name=\"id\" value=\"$id\">\n";
+            print "        <input type=\"submit\" value=\"Actualizar\">\n";
+            print "        <input type=\"reset\" value=\"Reiniciar formulario\">\n";
             print "      </p>\n";
             print "    </form>\n";
         }

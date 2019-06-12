@@ -29,14 +29,14 @@ session_start();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Borrar datos (1).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -53,7 +53,7 @@ if (!count($_SESSION)) {
   print "      <tbody>\n";
     foreach($_SESSION as $indice => $valor) {
         print "        <tr>\n";
-        print "          <td><input type=\"checkbox\" name=\"c[$indice]\" value=\"$valor\" /></td>\n";
+        print "          <td><input type=\"checkbox\" name=\"c[$indice]\" value=\"$valor\"></td>\n";
         print "          <td>$indice: $valor</td>\n";
         print "        </tr>\n";
     }
@@ -61,8 +61,8 @@ if (!count($_SESSION)) {
     print "    </table>\n";
     print "\n";
     print "    <p>\n";
-    print "      <input type=\"submit\" value=\"Borrar\" />\n";
-    print "      <input type=\"reset\" value=\"Desmarcar casillas\" />\n";
+    print "      <input type=\"submit\" value=\"Borrar\">\n";
+    print "      <input type=\"reset\" value=\"Desmarcar casillas\">\n";
     print "    </p>\n";
     print "  </form>\n";
 }
@@ -78,7 +78,7 @@ if (!count($_SESSION)) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

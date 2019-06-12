@@ -46,12 +46,12 @@ if (!$result) {
     print "          <tr>\n";
     print "            <td>Autor:</td>\n";
     print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
-        . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\" /></td>\n";
+        . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Título:</td>\n";
     print "            <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
-        . "maxlength=\"" . TAM_TITULO . "\" /></td>\n";
+        . "maxlength=\"" . TAM_TITULO . "\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td style=\"vertical-align:top\">Descripción:</td>\n";
@@ -60,7 +60,7 @@ if (!$result) {
     print "        </tbody>\n";
     print "      </table>\n";
     print "\n";
-    print "      <p><input type=\"submit\" value=\"Añadir\" /></p>\n";
+    print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";
     print "    </form>\n";
     print "\n";
 }

@@ -38,14 +38,14 @@ if (!isset($_SESSION["paso"])) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Formulario seguro en tres pasos (Formulario 3).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -56,17 +56,17 @@ if (!isset($_SESSION["paso"])) {
 
 <?php
 if (isset($_SESSION["avisoApellido2"])) {
-    print "    <p><strong>Segundo apellido:</strong> <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\" /> "
+    print "    <p><strong>Segundo apellido:</strong> <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\"> "
         . "<span class=\"aviso\">$_SESSION[avisoApellido2]</span></p>\n";
     print "\n";
 } else {
-    print "    <p><strong>Segundo apellido:</strong> <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\" /></p>\n";
+    print "    <p><strong>Segundo apellido:</strong> <input type=\"text\" name=\"apellido2\" size=\"30\" maxlength=\"30\"></p>\n";
     print "\n";
 }
 ?>
     <p>
-      <input type="submit" value="Siguiente" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Siguiente">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -78,7 +78,7 @@ if (isset($_SESSION["avisoApellido2"])) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

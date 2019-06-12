@@ -45,19 +45,19 @@ print "        <tbody>\n";
 print "          <tr>\n";
 print "            <td>Nombre:</td>\n";
 print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" "
-    . "maxlength=\"$tamUsuariosWebUsuario\" autofocus=\"autofocus\"/></td>\n";
+    . "maxlength=\"$tamUsuariosWebUsuario\" autofocus></td>\n";
 print "          </tr>\n";
 print "          <tr>\n";
 print "            <td>Contraseña:</td>\n";
 print "            <td><input type=\"password\" name=\"password\" size=\"$tamUsuariosWebPassword\" "
-    . "maxlength=\"$tamUsuariosWebPassword\" /></td>\n";
+    . "maxlength=\"$tamUsuariosWebPassword\"></td>\n";
 print "          </tr>\n";
 print "        </tbody>\n";
 print "      </table>\n";
 print "\n";
 print "      <p>\n";
-print "        <input type=\"submit\" value=\"Identificar\" />\n";
-print "        <input type=\"reset\" value=\"Borrar\" />\n";
+print "        <input type=\"submit\" value=\"Identificar\">\n";
+print "        <input type=\"reset\" value=\"Borrar\">\n";
 print "      </p>\n";
 print "    </form>\n";
 pie();

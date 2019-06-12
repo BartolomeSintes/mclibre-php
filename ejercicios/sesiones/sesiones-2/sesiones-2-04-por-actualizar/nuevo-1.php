@@ -26,14 +26,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Nuevo dato (1).
     Sesiones (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -46,18 +46,18 @@
       <tbody>
         <tr>
           <td><strong>Nombre del dato:</strong></td>
-          <td><input type="text" name="nombre" size="20" maxlength="20" /></td>
+          <td><input type="text" name="nombre" size="20" maxlength="20"></td>
         </tr>
         <tr>
           <td><strong>Valor del dato:</strong></td>
-          <td><input type="text" name="valor" size="30" maxlength="30" /></td>
+          <td><input type="text" name="valor" size="30" maxlength="30"></td>
         </tr>
       </tbody>
     </table>
 
     <p>
-      <input type="submit" value="Guardar" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Guardar">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -71,7 +71,7 @@
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

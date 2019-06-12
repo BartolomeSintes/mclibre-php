@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
     Primeras páginas. Sin formularios.1 - primeras-paginas-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
@@ -25,7 +25,7 @@
 
 print "<html>\n";
 print "<head>\n";
-print "  <meta charset=\"utf-8\" />\n";
+print "  <meta charset=\"utf-8\">\n";
 print "</head>\n";
 print "\n";
 print "<body>\n";

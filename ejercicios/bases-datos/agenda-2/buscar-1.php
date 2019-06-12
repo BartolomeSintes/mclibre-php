@@ -52,27 +52,27 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
         print "          <tr>";
         print "            <td>Nombre:</td>";
         print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
-            . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\" /></td>";
+            . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\"></td>";
         print "          </tr>";
         print "          <tr>";
         print "            <td>Apellidos:</td>";
         print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
-            . "maxlength=\"" . TAM_APELLIDOS . "\" /></td>";
+            . "maxlength=\"" . TAM_APELLIDOS . "\"></td>";
         print "          </tr>";
         print "          <tr>";
         print "            <td>Teléfono:</td>";
         print "            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
-            . "maxlength=\"" . TAM_TELEFONO . "\" /></td>";
+            . "maxlength=\"" . TAM_TELEFONO . "\"></td>";
         print "          </tr>";
         print "          <tr>";
         print "            <td>Correo:</td>";
         print "            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
-            . "maxlength=\"" . TAM_CORREO . "\" /></td>";
+            . "maxlength=\"" . TAM_CORREO . "\"></td>";
         print "          </tr>";
         print "        </tbody>";
         print "      </table>";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"Buscar\" /></p>";
+        print "      <p><input type=\"submit\" value=\"Buscar\"></p>";
         print "    </form>\n";
         print "\n";
     }

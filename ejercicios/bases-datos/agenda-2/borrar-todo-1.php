@@ -35,8 +35,8 @@ if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] 
     print "      <p>¿Está seguro?</p>\n";
     print "\n";
     print "      <p>\n";
-    print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
-    print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
+    print "        <input type=\"submit\" value=\"Sí\" name=\"si\">\n";
+    print "        <input type=\"submit\" value=\"No\" name=\"no\">\n";
     print "      </p>\n";
     print "    </form>\n";
 

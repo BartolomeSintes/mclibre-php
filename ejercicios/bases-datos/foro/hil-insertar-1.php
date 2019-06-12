@@ -60,7 +60,7 @@ if (!$result) {
         print "          <tr>\n";
         print "            <td>Autor:</td>\n";
         print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
-            . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\" /></td>\n";
+            . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\"></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td style=\"vertical-align:top\">Texto:</td>\n";
@@ -70,8 +70,8 @@ if (!$result) {
         print "      </table>\n";
         print "\n";
         print "      <p>\n";
-        print "        <input type=\"submit\" value=\"Añadir\" />\n";
-        print "        <input type=\"hidden\" name=\"hilo\" value=\"$hilo\" />\n";
+        print "        <input type=\"submit\" value=\"Añadir\">\n";
+        print "        <input type=\"hidden\" name=\"hilo\" value=\"$hilo\">\n";
         print "      </p>\n";
         print "    </form>\n";
         print "\n";

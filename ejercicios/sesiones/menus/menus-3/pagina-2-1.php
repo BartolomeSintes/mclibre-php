@@ -30,8 +30,8 @@ print "    <form action=\"pagina-2-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>¿Está seguro de querer ir a la segunda página?</p>\n";
 print "\n";
 print "      <p>\n";
-print "        <input type=\"submit\" value=\"Sí\" name=\"si\" />\n";
-print "        <input type=\"submit\" value=\"No\" name=\"no\" />\n";
+print "        <input type=\"submit\" value=\"Sí\" name=\"si\">\n";
+print "        <input type=\"submit\" value=\"No\" name=\"no\">\n";
 print "      </p>\n";
 print "    </form>\n";
 

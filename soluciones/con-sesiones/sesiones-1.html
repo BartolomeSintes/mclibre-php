@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Sesiones (1). Soluciones. Ejercicios (sesiones). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../../varios/php.css" title="mclibre" />
-  <link rel="icon" href="../../varios/favicon.ico" />
-  <link rel="stylesheet" href="../../varios/highlight-php.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.ico">
+  <link rel="stylesheet" href="../../varios/highlight-php.css">
   <script src="../../varios/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
@@ -16,8 +16,8 @@
 
   <nav>
     <p>
-      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48" /></a>
-      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36" /></a>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
     </p>
 
     <div class="toc">
@@ -72,9 +72,9 @@
 
   <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sesiones/sesiones-1/index.html">Sesiones (1)</a>. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
 
-  <p class="incompleto"><img src="../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48" />No he terminado de actualizar esta página con las soluciones actuales. En el archivo para descargar se encuentra las soluciones completas actualizadas.</p>
+  <p class="incompleto"><img src="../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">No he terminado de actualizar esta página con las soluciones actuales. En el archivo para descargar se encuentra las soluciones completas actualizadas.</p>
 
-  <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48" />Para hacer estos ejercicios, se recomienda seguir el recorrido de la aplicación, suponiendo que el usuario introduce datos. Pero después hay que comprobar desde el principio (cerrando el navegador previamente) que la aplicación funciona correctamente (es decir, que la aplicación tiene en cuenta que la primera vez que se ejecuta, todavía no hay datos).</p>
+  <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Para hacer estos ejercicios, se recomienda seguir el recorrido de la aplicación, suponiendo que el usuario introduce datos. Pero después hay que comprobar desde el principio (cerrando el navegador previamente) que la aplicación funciona correctamente (es decir, que la aplicación tiene en cuenta que la primera vez que se ejecuta, todavía no hay datos).</p>
 
   <section id="formularios">
     <h2>Comprobación de formularios</h2>
@@ -437,12 +437,12 @@ print "\n";
 // Si hemos detectado un error <span class="numero-circulo">9</span>
 if (isset($_SESSION["error"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\" /&gt; "
+    print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\"&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, lo mostramos... <span class="numero-circulo">10</span>
-    print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -552,18 +552,18 @@ print "\n";
 if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
   // Si hemos detectado un error y el usuario había escrito una palabra para corregir <span class="numero-circulo">9</span>
   // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\" /&gt; "
+  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"&gt; "
   . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
   print "\n";
 } elseif (isset($_SESSION["error"])) {
   // Si hemos detectado un error, pero no hay palabra para corregir <span class="numero-circulo">10</span>
   // Mostramos el control, añadiendo el aviso
-  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /&gt; "
+  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt; "
       . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
   print "\n";
 } else {
   // Si no hemos detectado un error, mostramos simplemente el control <span class="numero-circulo">11</span>
-  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
+  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
   print "\n";
 }
 ?&gt;</code>
@@ -679,7 +679,7 @@ session_start();
       print "value=\"$_SESSION[intento]\" ";
   }
 
-  print "size=\"20\" maxlength=\"20\" /&gt; ";
+  print "size=\"20\" maxlength=\"20\"&gt; ";
 
   // Si hay que incluir un aviso, lo incluimos <span class="numero-circulo">10</span>
   if (isset($_SESSION["error"])) {
@@ -844,32 +844,32 @@ print "\n";
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control <span class="numero-circulo">10</span>
-    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /&gt; "
+    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[mayusculasError]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
 } elseif (isset($_SESSION["minusculasError"])) {
     // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control <span class="numero-circulo">11</span>
-    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt;t;/p&gt;\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío <span class="numero-circulo">12</span>
-    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
     print "\n";
 }
 
 // Si hemos detectado un error en la palabra en minúsculas <span class="numero-circulo">13</span>
 if (isset($_SESSION["minusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\" /&gt; "
+    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt; "
     . "&lt;span class=\"aviso\"&gt;$_SESSION[minusculasError]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
 } elseif (isset($_SESSION["mayusculasError"])) {
     // Si hemos detectado un error en la palabra en mayúsculas, incluimos el valor correcto en el control
-    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\" /&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -985,7 +985,7 @@ if (isset($_SESSION["mayusculasIntento"])) {
     print "value=\"$_SESSION[mayusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\" /&gt; ";
+print "size=\"20\" maxlength=\"20\"&gt; ";
 
 // Si hemos detectado un error en la palabra en mayúsculas <span class="numero-circulo">12</span>
 if (isset($_SESSION["mayusculasError"])) {
@@ -1006,7 +1006,7 @@ if (isset($_SESSION["minusculasIntento"])) {
     print "value=\"$_SESSION[minusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\" /&gt; ";
+print "size=\"20\" maxlength=\"20\"&gt; ";
 
 // Si hemos detectado un error en la palabra en minúsculas
 if (isset($_SESSION["minusculasError"])) {
@@ -1523,8 +1523,8 @@ header("Location:sesiones-1-14-1.php");
     <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2018</p>
 
     <p class="licencia">
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42" /></a><br />
-      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br />
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
   </footer>

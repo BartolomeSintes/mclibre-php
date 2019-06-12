@@ -48,11 +48,11 @@ if (!$result) {
     print "        <tbody>\n";
     print "          <tr>\n";
     print "            <td>Nombre de usuario:</td>\n";
-    print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" maxlength=\"$tamUsuariosWebUsuario\" autofocus=\"autofocus\"/></td>\n";
+    print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" maxlength=\"$tamUsuariosWebUsuario\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Contraseña:</td>\n";
-    print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosWebPassword\" maxlength=\"$tamUsuariosWebPassword\" /></td>\n";
+    print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosWebPassword\" maxlength=\"$tamUsuariosWebPassword\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Nivel:</td>\n";
@@ -68,8 +68,8 @@ if (!$result) {
     print "      </table>\n";
     print "\n";
     print "      <p>\n";
-    print "        <input type=\"submit\" value=\"Buscar\" />\n";
-    print "        <input type=\"reset\" value=\"Reiniciar formulario\" />\n";
+    print "        <input type=\"submit\" value=\"Buscar\">\n";
+    print "        <input type=\"reset\" value=\"Reiniciar formulario\">\n";
     print "      </p>\n";
     print "    </form>\n";
 }

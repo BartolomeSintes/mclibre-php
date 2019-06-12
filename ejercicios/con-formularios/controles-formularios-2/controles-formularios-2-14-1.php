@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Datos personales 5 (Formulario).
     Controles en formularios (2). Con formularios.
-    Ejercicios. Programación web en PHP. Bartolomé Sintes Marco. www.mclibre.org
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -20,11 +20,11 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Nombre:</strong><br />
-            <input type="text" name="nombre" size="20" maxlength="20" /></td>
-          <td><strong>Apellidos:</strong><br />
-            <input type="text" name="apellidos" size="20" maxlength="20" /></td>
-          <td><strong>Edad:</strong><br />
+          <td><strong>Nombre:</strong><br>
+            <input type="text" name="nombre" size="20" maxlength="20"></td>
+          <td><strong>Apellidos:</strong><br>
+            <input type="text" name="apellidos" size="20" maxlength="20"></td>
+          <td><strong>Edad:</strong><br>
             <select name="edad">
               <option>...</option>
               <option value="1">Menos de 20 años</option>
@@ -35,15 +35,15 @@
           </td>
         </tr>
         <tr>
-          <td><strong>Peso:</strong><br />
-            <input type="number" name="peso" min="1" max="250" /> kg</td>
-          <td><strong>Sexo:</strong><br />
-            <label><input type="radio" name="genero" value="hombre" />Hombre</label>
-            <label><input type="radio" name="genero" value="mujer" />Mujer</label></td>
-          <td><strong>Estado Civil:</strong><br />
-            <label><input type="radio" name="estadoCivil" value="soltero" />Soltero</label>
-            <label><input type="radio" name="estadoCivil" value="casado" />Casado</label>
-            <label><input type="radio" name="estadoCivil" value="otro" />Otro</label></td>
+          <td><strong>Peso:</strong><br>
+            <input type="number" name="peso" min="1" max="250"> kg</td>
+          <td><strong>Sexo:</strong><br>
+            <label><input type="radio" name="genero" value="hombre">Hombre</label>
+            <label><input type="radio" name="genero" value="mujer">Mujer</label></td>
+          <td><strong>Estado Civil:</strong><br>
+            <label><input type="radio" name="estadoCivil" value="soltero">Soltero</label>
+            <label><input type="radio" name="estadoCivil" value="casado">Casado</label>
+            <label><input type="radio" name="estadoCivil" value="otro">Otro</label></td>
         </tr>
       </tbody>
     </table>
@@ -52,21 +52,21 @@
       <tbody>
         <tr>
           <td rowspan="2" class="borde"><strong>Aficiones:</strong></td>
-          <td><label><input type="checkbox" name="cine" />Cine</label></td>
-          <td><label><input type="checkbox" name="literatura" />Literatura</label></td>
-          <td><label><input type="checkbox" name="tebeos" />Tebeos</label></td>
+          <td><label><input type="checkbox" name="cine">Cine</label></td>
+          <td><label><input type="checkbox" name="literatura">Literatura</label></td>
+          <td><label><input type="checkbox" name="tebeos">Tebeos</label></td>
         </tr>
         <tr>
-          <td><label><input type="checkbox" name="deporte" />Deporte</label></td>
-          <td><label><input type="checkbox" name="musica" />Música</label></td>
-          <td><label><input type="checkbox" name="television" />Televisión</label></td>
+          <td><label><input type="checkbox" name="deporte">Deporte</label></td>
+          <td><label><input type="checkbox" name="musica">Música</label></td>
+          <td><label><input type="checkbox" name="television">Televisión</label></td>
         </tr>
       </tbody>
     </table>
 
     <p>
-      <input type="submit" value="Enviar" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Enviar">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -78,7 +78,7 @@
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

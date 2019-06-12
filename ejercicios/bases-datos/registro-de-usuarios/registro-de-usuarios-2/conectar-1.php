@@ -44,19 +44,19 @@ if (isset($_SESSION["id"])) {
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
     print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-        . "maxlength=\"$tamUsuario\" id=\"cursor\" /></td>\n";
+        . "maxlength=\"$tamUsuario\" id=\"cursor\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Contraseña:</td>\n";
     print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
-        . "maxlength=\"$tamPassword\" /></td>\n";
+        . "maxlength=\"$tamPassword\"></td>\n";
     print "          </tr>\n";
     print "        </tbody>\n";
     print "      </table>\\n";
     print "n";
     print "      <p>\n";
-    print "        <input type=\"submit\" value=\"Añadir\" />\n";
-    print "        <input type=\"reset\" value=\"Borrar\" />\n";
+    print "        <input type=\"submit\" value=\"Añadir\">\n";
+    print "        <input type=\"reset\" value=\"Borrar\">\n";
     print "      </p>\n";
     print "    </form>\n";
 }

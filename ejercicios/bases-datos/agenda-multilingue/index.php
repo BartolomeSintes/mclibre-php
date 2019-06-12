@@ -71,16 +71,16 @@ if (!isset($_SESSION["multiagendaIdioma"]) && !isset($_REQUEST["idioma"])) {
             print "        <tbody>\n";
             print "          <tr>\n";
             print "            <td>" . _("Nombre") . ":</td>\n";
-            print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\" /></td>\n";
+            print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\"></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>" . _("Contraseña") . ":</td>\n";
-            print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" /></td>\n";
+            print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\"></td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
-            print "      <p><input type=\"submit\" value=\"" . _("Añadir") . "\" /></p>\n";
+            print "      <p><input type=\"submit\" value=\"" . _("Añadir") . "\"></p>\n";
             print "\n";
             print "      <p><strong>" . _("Nota") . "</strong>: "
                 . _("Si no está ya registrado, le registraré como nuevo usuario") . ".</p>\n";

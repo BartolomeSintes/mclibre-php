@@ -27,14 +27,14 @@ session_start();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Dividir 1 (Formulario).
     Minijuegos (1).
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
   <style>input { text-align: right; }</style>
 </head>
 
@@ -55,16 +55,16 @@ print "          <td>$_SESSION[a]</td>\n";
 print "          <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$_SESSION[b]</td>\n";
 print "        </tr>\n";
 print "        <tr>\n";
-print "          <td><input type=\"text\" name=\"resto\" size=\"3\" /></td>\n";
-print "          <td><input type=\"text\" name=\"cociente\" size=\"3\" /></td>\n";
+print "          <td><input type=\"text\" name=\"resto\" size=\"3\"></td>\n";
+print "          <td><input type=\"text\" name=\"cociente\" size=\"3\"></td>\n";
 print "        </tr>\n";
 print "      </tbody>\n";
 print "    </table>\n";
 ?>
 
     <p>
-      <input type="submit" value="Corregir" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Corregir">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -76,7 +76,7 @@ print "    </table>\n";
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

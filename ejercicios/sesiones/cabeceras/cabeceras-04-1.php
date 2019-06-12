@@ -25,14 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Formulario 4 (Formulario).
     Cabeceras. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -51,7 +51,7 @@ function recoge($var)
 $aviso = recoge("aviso");
 $edad  = recoge("edad");
 
-print "    <p>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" />";
+print "    <p>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\">";
 if ($aviso != "") {
     print " <span class=\"aviso\">$aviso</span>";
 }
@@ -60,8 +60,8 @@ print "\n";
 
 ?>
     <p>
-      <input type="submit" value="Comprobar" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Comprobar">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -73,7 +73,7 @@ print "\n";
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

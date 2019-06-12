@@ -65,29 +65,29 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
                 print "          <tr>\n";
                 print "            <td>" . _("Nombre") . ":</td>\n";
                 print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" "
-                    . "value=\"$valor[nombre]\" id=\"cursor\" /></td>\n";
+                    . "value=\"$valor[nombre]\" id=\"cursor\"></td>\n";
                 print "          </tr>\n";
                 print "          <tr>\n";
                 print "            <td>" . _("Apellidos") . ":</td>\n";
                 print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" "
-                    . "value=\"$valor[apellidos]\" /></td>\n";
+                    . "value=\"$valor[apellidos]\"></td>\n";
                 print "          </tr>\n";
                 print "          <tr>\n";
                 print "            <td>" . _("Teléfono") . ":</td>\n";
                 print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" "
-                    . "value=\"$valor[telefono]\" /></td>\n";
+                    . "value=\"$valor[telefono]\"></td>\n";
                 print "          </tr>\n";
                 print "          <tr>\n";
                 print "            <td>" . _("Correo") . ":</td>\n";
                 print "            <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" "
-                    . "value=\"$valor[correo]\" /></td>\n";
+                    . "value=\"$valor[correo]\"></td>\n";
                 print "          </tr>\n";
                 print "        </tbody>\n";
                 print "      </table>\n";
                 print "\n";
                 print "      <p>\n";
-                print "        <input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
-                print "        <input type=\"submit\" value=\"" . _("Actualizar") . "\" />\n";
+                print "        <input type=\"hidden\" name=\"id\" value=\"$id\">\n";
+                print "        <input type=\"submit\" value=\"" . _("Actualizar") . "\">\n";
                 print "      </p>\n";
                 print "    </form>\n";
                 print "\n";

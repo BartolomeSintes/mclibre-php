@@ -56,31 +56,31 @@ if (!$result) {
         print "            <th>Borrar</th>\n";
         print "            <th>\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "              Autor\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "              Fecha\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=fecha&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "              Título\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=descripcion&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\"></a>\n";
         print "              Descripción\n";
         print "              <a href=\"$_SERVER[PHP_SELF]?campo=descripcion&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\"></a>\n";
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
@@ -94,7 +94,7 @@ if (!$result) {
             }
             $tmp = !$tmp;
             print "            <td align=\"center\"><input type=\"radio\" "
-                . "name=\"id\" value=\"$valor[id]\" /></td>\n";
+                . "name=\"id\" value=\"$valor[id]\"></td>\n";
             print "            <td>$valor[autor]</td>\n";
             print "            <td>" . fechaDma($valor["fecha"]) . "</td>\n";
             print "            <td>$valor[titulo]</td>\n";
@@ -104,7 +104,7 @@ if (!$result) {
         print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
-        print "      <p><input type=\"submit\" value=\"Borrar\" /></p>\n";
+        print "      <p><input type=\"submit\" value=\"Borrar\"></p>\n";
         print "    </form>\n";
         print "\n";
     }

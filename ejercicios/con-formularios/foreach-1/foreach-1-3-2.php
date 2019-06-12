@@ -25,11 +25,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Encuesta (Resultado 1). foreach (1).
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta charset="utf-8">
+  <title>
+    Encuesta (Resultado 1).
+    foreach (1).
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -106,7 +109,7 @@ if ($preguntasOk && $respuestasOk) {
             // El nombre del control es una matriz (e[])
             // En cada fila el name del control es el mismo (para que formen un botón radio)
             // pero el value va cambiando
-            print "          <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\" /></td>\n";
+            print "          <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\"></td>\n";
         }
         print "        </tr>\n";
     }
@@ -116,14 +119,14 @@ if ($preguntasOk && $respuestasOk) {
 
     // Se añaden dos controles ocultos con los dos valores recibidos para que le lleguen a la página 3
     print "    <p>\n";
-    print "      <input type=\"hidden\" name=\"preguntas\" value=\"$preguntas\" />\n";
-    print "      <input type=\"hidden\" name=\"respuestas\" value=\"$respuestas\" />\n";
+    print "      <input type=\"hidden\" name=\"preguntas\" value=\"$preguntas\">\n";
+    print "      <input type=\"hidden\" name=\"respuestas\" value=\"$respuestas\">\n";
     print "    </p>\n";
     print "\n";
 
     print "    <p>\n";
-    print "      <input type=\"submit\" value=\"Contar\" />\n";
-    print "      <input type=\"reset\" value=\"Borrar\" />\n";
+    print "      <input type=\"submit\" value=\"Contar\">\n";
+    print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "  </form>\n";
 }
@@ -139,7 +142,7 @@ if ($preguntasOk && $respuestasOk) {
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br />
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

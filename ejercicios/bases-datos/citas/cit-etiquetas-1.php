@@ -64,17 +64,17 @@ if (!isset($_SESSION["citasUsuario"])) {
             print "            <th>Elegir</th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=ASC\">"
-                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
             print "              Autor\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=apellidos&amp;orden=DESC\">"
-                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
             print "            </th>\n";
             print "            <th>\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=cita&amp;orden=ASC\">"
-                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+                . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
             print "              Cita\n";
             print "              <a href=\"$_SERVER[PHP_SELF]?campo=cita&amp;orden=DESC\">"
-                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+                . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
             print "            </th>\n";
             print "          </tr>\n";
             print "        </thead>\n";
@@ -88,7 +88,7 @@ if (!isset($_SESSION["citasUsuario"])) {
             }
             $tmp = !$tmp;
             print "            <td align=\"center\"><input type=\"radio\" "
-                . "name=\"id\" value=\"$valor[id_cita]\" /></td>\n";
+                . "name=\"id\" value=\"$valor[id_cita]\"></td>\n";
             print "            <td>$valor[nombre] $valor[apellidos]</td>\n";
             print "            <td>$valor[cita]</td>\n";
             print "          </tr>\n";
@@ -96,7 +96,7 @@ if (!isset($_SESSION["citasUsuario"])) {
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
-            print "      <p><input type=\"submit\" value=\"Elegir\" /></p>\n";
+            print "      <p><input type=\"submit\" value=\"Elegir\"></p>\n";
             print "    </form>\n";
             print "\n";
        }

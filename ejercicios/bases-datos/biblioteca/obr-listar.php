@@ -54,24 +54,24 @@ if (!$result) {
         print "        <tr class=\"neg\">\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "            Autor\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=autor&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "          </th>\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"></a>\n";
         print "            Título\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=titulo&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"></a>\n";
         print "          </th>\n";
         print "          <th>\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=editorial&amp;orden=ASC\">"
-            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\" /></a>\n";
+            . "<img src=\"abajo.png\" alt=\"0-9\" title=\"0-9\"></a>\n";
         print "            Editorial\n";
         print "            <a href=\"$_SERVER[PHP_SELF]?campo=editorial&amp;orden=DESC\">"
-            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\" /></a>\n";
+            . "<img src=\"arriba.png\" alt=\"9-0\" title=\"9-0\"></a>\n";
         print "          </th>\n";
         print "        </tr>\n";
         print "      </thead>\n";

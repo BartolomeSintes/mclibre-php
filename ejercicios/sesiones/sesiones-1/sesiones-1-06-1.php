@@ -28,14 +28,14 @@ session_start();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>
     Formulario Palabra en Mayúsculas 2 (Formulario).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
@@ -47,18 +47,18 @@ session_start();
 <?php
 // Si hay un nombre guardado en la sesión, se muestra
 if (isset($_SESSION["error"])) {
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\"size=\"20\" maxlength=\"20\" /> "
+    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\"size=\"20\" maxlength=\"20\"> "
         . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
     print "\n";
 } else {
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\" /></p>\n";
+    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></p>\n";
     print "\n";
 }
 ?>
 
     <p>
-      <input type="submit" value="Comprobar" />
-      <input type="reset" value="Borrar" />
+      <input type="submit" value="Comprobar">
+      <input type="reset" value="Borrar">
     </p>
   </form>
 
@@ -70,7 +70,7 @@ if (isset($_SESSION["error"])) {
 
     <p class="licencia">
       Esta página forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br />
+      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
       y se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">
       Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.</p>
   </footer>

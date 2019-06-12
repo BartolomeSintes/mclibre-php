@@ -65,19 +65,19 @@ if (!isset($_SESSION["compraventaUsuario"])) {
                 print "          <tr>\n";
                 print "            <td>Artículo:</td>\n";
                 print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" "
-                    . "value=\"$valor[articulo]\" id=\"cursor\" /></td>\n";
+                    . "value=\"$valor[articulo]\" id=\"cursor\"></td>\n";
                 print "          </tr>\n";
                 print "          <tr>\n";
                 print "            <td>Precio:</td>\n";
                 print "            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" "
-                    . "value=\"$valor[precio]\" /></td>\n";
+                    . "value=\"$valor[precio]\"></td>\n";
                 print "          </tr>\n";
                 print "        </tbody>\n";
                 print "      </table>\n";
                 print "\n";
                 print "      <p>\n";
-                print "        <input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
-                print "        <input type=\"submit\" value=\"Actualizar\" />\n";
+                print "        <input type=\"hidden\" name=\"id\" value=\"$id\">\n";
+                print "        <input type=\"submit\" value=\"Actualizar\">\n";
                 print "      </p>\n";
                 print "    </form>\n";
                 print "\n";
