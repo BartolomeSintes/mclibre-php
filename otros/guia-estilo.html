@@ -26,7 +26,6 @@
       <ul>
         <li><a href="#introduccion">Introducción</a></li>
         <li><a href="#guia-estilo">Guía de estilo recomendada</a></li>
-        <li><a href="#no-adoptadas">No adoptadas</a></li>
         <li><a href="#herramientas">Herramientas</a></li>
         <li><a href="#saber-mas">Para saber más</a></li>
       </ul>
@@ -40,8 +39,16 @@
 
     <p>El estilo utilizado en estos apuntes y que se recomienda sigan los alumnos se basa:</p>
     <ul>
-      <li>en primer lugar, en las guías de estilo <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md">PSR-1</a> y <a href="https://www.php-fig.org/psr/psr-2/">PSR-2</a> del grupo <a href="https://www.php-fig.org/psr/psr-1/">PHP-FIG (PHP Framework Interop Group)</a>, un grupo en el que participan los autores de los frameworks PHP más populares,</li>
-      <li>en segundo lugar, en la <a href="http://pear.php.net/manual/en/standards.php">guía de estilo oficial</a> del proyecto <a href="http://pear.php.net/">PEAR</a>, el antiguo repositorio de bibliotecas para PHP que desde alrededor de 2015 se puede considerar obsoleto (y ha sido sustituido por <a href="https://getcomposer.org/">Composer</a> como herramienta de distribución de paquetes).
+      <li>en primer lugar, en dos de las guías de estilo del grupo <a href="https://www.php-fig.org/">PHP-FIG (PHP Framework Interop Group)</a>
+        <ul>
+          <li><a href="https://www.php-fig.org/psr/psr-1/">PSR-1</a></li>
+          <li><a href="https://www.php-fig.org/psr/psr-12/">PSR-12</a> (en agosto de 2019 PSR-12 ha sustituido a la antigua <a href="https://www.php-fig.org/psr/psr-2/">PSR-2</a>, creada en 2012)</li>
+        </ul>
+        <p>PHP-FIG es un grupo creado en 2009 para crear guías de estilo para programadores de PHP. El objetivo inicial era crear guías para los aspectos más elementales y contaron con la participación de los autores de los frameworks PHP más populares, pero con el paso del tiempo se ha creado una estructura más formal y se han publicado guías para temas más complejos. Eso ha producido el abandono de algunos participantes siginificativos <a href="https://www.doctrine-project.org/">Doctrine</a> y <a href="https://laravel.com/">Laravel</a> en 2016, <a href="https://symfony.com/">Symfony</a> en 2018, etc.).</p>
+      </li>
+      <li>en segundo lugar, en la <a href="http://pear.php.net/manual/en/standards.php">guía de estilo oficial</a> del proyecto <a href="http://pear.php.net/">PEAR</a>
+
+        <p>PEAR es el antiguo repositorio de bibliotecas para PHP que desde alrededor de 2015 se puede considerar obsoleto, ya que ha sido sustituido por <a href="https://getcomposer.org/">Composer</a> como herramienta de distribución de paquetes más popular.</p>
         <p><strong>Nota</strong>: En diciembre de 2018, PEAR sufrió una brecha de seguridad que no fue descubierta hasta enero de 2019 [<a href="https://thephp.cc/news/2019/02/blast-from-the-past">referencia</a>], lo que llevó al cierre inmediato del servidor de PEAR, aunque se volvió a abrir en febrero de 2019.</p>
       </li>
       <li>en tercer lugar, en las preferencias personales del autor.</li>
@@ -51,12 +58,12 @@
 
     <p>En esta lección se comentan las recomendaciones de estilo más importantes. Cuando las reglas de estilo ...</p>
     <ul>
-      <li>provienen de PSR-1, PSR-2 y PEAR, las reglas de estilo utilizan las expresiones "se debe ..." o "no se debe ...".</li>
-      <li>provienen de PSR-1, PSR-2 o PEAR, se indica entre corchetes el nombre de la guía.</li>
+      <li>provienen de PSR-1, PSR-12 y PEAR, las reglas de estilo utilizan las expresiones "se debe ..." o "no se debe ...".</li>
+      <li>provienen de PSR-1, PSR-12 o PEAR, se indica entre corchetes el nombre de la guía.</li>
       <li>son elecciones del profesor se utilizan las expresiones "se aconseja ..." o "no es necesario ...".</li>
     </ul>
 
-    <p>En la lección de configuración de Eclipse for PHP developers se explica cómo <a href="eclipse-configuracion-2.html#configuracion-editor">configurar Eclipse PHP</a> para <a href="eclipse-configuracion-2.html#psr2-elegir">formatear un programa de acuerdo con las recomendaciones de estilo PSR-2</a>.</p>
+    <p>En la lección de configuración de Eclipse for PHP developers se explica cómo <a href="http://www.mclibre.org/consultar/informatica/lecciones/eclipse-configuracion-2.html#configuracion-editor">configurar Eclipse PHP</a> para <a href="http://www.mclibre.org/consultar/informatica/lecciones/eclipse-configuracion-2.html#psr2-elegir">formatear un programa de acuerdo con las recomendaciones de estilo PSR-2</a>.</p>
   </section>
 
   <section id="guia-estilo">
@@ -67,7 +74,7 @@
 
       <p>[PSR-1] Los archivos deben guardarse en formato UTF-8 sin BOM.</p>
 
-      <p>[PSR-2] Los archivos deben utilizar el formato Unix (carácter LF como final de línea y al final de la última línea del archivo).</p>
+      <p>[PSR-12] Los archivos deben utilizar el formato Unix (carácter LF como final de línea y al final de la última línea del archivo).</p>
     </section>
 
     <section id="configuracion-php">
@@ -89,7 +96,7 @@ print "&lt;p&gt;Hola&lt;/p&gt;";
 </pre>
       </div>
 
-      <p>[PSR-2] También puede utilizarse <span class="php-con">&lt;?= ... ?&gt;</span>.</p>
+      <p>[PSR-1] También puede utilizarse <span class="php-con">&lt;?= ... ?&gt;</span>.</p>
 
       <div class="codigo">
         <pre><code class="language-php"><span class="preprocessor">&lt;?=</span> "&lt;p&gt;Hola&lt;/p&gt;" <strong>?&gt;</strong></code></pre>
@@ -474,32 +481,14 @@ $var = <span class="codigo-resaltado">foo($bar, $cel, $ona)</span>;
     </section>
   </section>
 
-  <section id="no-adoptadas">
-    <h2>Recomendaciones no adoptadas</h2>
-
-    <p>Se incluyen en este apartado algunas recomendaciones de las guías de estilo PSR-2 y PEAR no adoptadas en estos apuntes.</p>
-
-    <section id="formato-archivos-no-adoptadas">
-      <h3>Formatos de archivo</h3>
-
-      <p>[PEAR] Los archivos deben guardarse en formato ASCII y utilizar la codificación ISO-8859-1 o UTF-8 y el formato Unix (carácter LF como final de línea y al final de la última línea del archivo).</p>
-    </section>
-
-    <section id="gestion-errores">
-      <h3>Gestión de errores</h3>
-
-      <p class="incompleto">Por completar.</p>
-    </section>
-  </section>
-
   <section id="herramientas">
     <h2>Herramientas</h2>
 
-    <p><a href="http://pear.php.net/package/PHP_Beautifier">PHP-Beautifier</a> es un paquete PEAR que formatea automáticamente archivos PHP.</p>
-
-    <p><a href="http://pear.php.net/package/PHP_CodeSniffer">PHP_CodeSniffer</a> es un paquete PEAR que detecta errores de formateo en archivos PHP.</p>
-
-    <p><a href="http://pear.php.net/package/PhpDocumentor">phpDocumentor</a> es un paquete PEAR que detecta errores de formateo en archivos PHP.</p>
+    <ul>
+      <li><a href="http://pear.php.net/package/PHP_Beautifier">PHP-Beautifier</a> es un paquete PEAR que formatea automáticamente archivos PHP.</li>
+      <li><a href="http://pear.php.net/package/PHP_CodeSniffer">PHP_CodeSniffer</a> es un paquete PEAR que detecta errores de formateo en archivos PHP.</li>
+      <li><a href="http://pear.php.net/package/PhpDocumentor">phpDocumentor</a> es un paquete PEAR que detecta errores de formateo en archivos PHP.</li>
+    </ul>
   </section>
 
   <section id="saber-mas">
@@ -509,7 +498,7 @@ $var = <span class="codigo-resaltado">foo($bar, $cel, $ona)</span>;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 3 de febrero de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 13 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
