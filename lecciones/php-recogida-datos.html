@@ -62,7 +62,7 @@
   <section id="request">
     <h2>Matriz $_REQUEST</h2>
 
-    <p>Cuando se envía un formulario, PHP almacena la información recibida en una matriz llamada <a href="http://php.net/manual/es/language.variables.external.php" class="php-var">$_REQUEST</a>. El número de valores recibidos y los valores recibidos dependen tanto del formulario como de la acción del usuario.</p>
+    <p>Cuando se envía un formulario, PHP almacena la información recibida en una matriz llamada <a href="https://www.php.net/manual/es/language.variables.external.php" class="php-var">$_REQUEST</a>. El número de valores recibidos y los valores recibidos dependen tanto del formulario como de la acción del usuario.</p>
 
     <p>Cualquier control se envía solamente si está establecido su atributo <span class="html-atri">name</span>. El atributo <span class="html-atri">name</span> del control puede contener cualquier carácter (números, acentos, guiones, etc), pero si contiene espacios, los espacios se sustituyen por guiones bajos (_). Cada control crea un elemento de la matriz $_REQUEST, que se identifica como $_REQUEST[<span class="html-atri-valor">valor_del_atributo_name</span>] y que contiene el valor entregado por el formulario (en su caso).</p>
 
@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <p>Mientras se está programando, para comprobar que el fichero php está recibiendo la información enviada por el control, lo más fácil es utilizar la función <a href="http://php.net/manual/es/function.print-r.php"><span class="php-fun">print_r($matriz)</span></a> para mostrar el contenido de la matriz $_REQUEST. Una vez se ha comprobado que la información llega correctamente, la línea se debe comentar o eliminar.</p>
+    <p>Mientras se está programando, para comprobar que el fichero php está recibiendo la información enviada por el control, lo más fácil es utilizar la función <a href="https://www.php.net/manual/es/function.print-r.php"><span class="php-fun">print_r($matriz)</span></a> para mostrar el contenido de la matriz $_REQUEST. Una vez se ha comprobado que la información llega correctamente, la línea se debe comentar o eliminar.</p>
 
     <p>El siguiente ejemplo muestra lo que escribiría el programa PHP si recibiera la información del formulario anterior.</p>
 
@@ -496,7 +496,7 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
 
       <hr class="corta">
 
-      <p>Estos problemas se pueden resolver comprobando que el índice está definido antes de hacer referencia a él, utilizando la función <a href="http://php.net/manual/es/function.isset.php"><span class="php-fun">isset($variable)</span></a>, que admite como argumento una variable y devuelve <span class="php-ope">true</span> si existe y <span class="php-ope">false</span> si no existe.</p>
+      <p>Estos problemas se pueden resolver comprobando que el índice está definido antes de hacer referencia a él, utilizando la función <a href="https://www.php.net/manual/es/function.isset.php"><span class="php-fun">isset($variable)</span></a>, que admite como argumento una variable y devuelve <span class="php-ope">true</span> si existe y <span class="php-ope">false</span> si no existe.</p>
 
       <div class="filaflex cabecera">
         <div>ejemplo.html</div>
@@ -617,7 +617,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
     <section id="striptags">
       <h3>Eliminar etiquetas: <span class="php-fun">strip_tags($cadena)</span></h3>
 
-      <p>Una manera de resolver el problema anterior es utilizar la función <a href="http://php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags($cadena)</span></a>, que devuelve la cadena sin etiquetas, como muestra el siguiente ejemplo.</p>
+      <p>Una manera de resolver el problema anterior es utilizar la función <a href="https://www.php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags($cadena)</span></a>, que devuelve la cadena sin etiquetas, como muestra el siguiente ejemplo.</p>
 
       <div class="filaflex">
         <div class="resultado-html">
@@ -719,7 +719,7 @@ if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nom
         </div>
       </div>
 
-      <p>Este problema se puede resolver utilizando la función <a href="http://php.net/manual/es/function.trim.php" title="Ver manual de PHP"><span class="php-fun">trim($cadena)</span></a>, que elimina los espacios en blanco iniciales y finales y devuelve la cadena sin esos espacios. Modificando el ejemplo anterior, la cadena introducida queda reducida a la cadena vacía y la comprobación la detecta:</p>
+      <p>Este problema se puede resolver utilizando la función <a href="https://www.php.net/manual/es/function.trim.php" title="Ver manual de PHP"><span class="php-fun">trim($cadena)</span></a>, que elimina los espacios en blanco iniciales y finales y devuelve la cadena sin esos espacios. Modificando el ejemplo anterior, la cadena introducida queda reducida a la cadena vacía y la comprobación la detecta:</p>
 
       <div class="filaflex cabecera">
         <div>ejemplo.html</div>
@@ -940,7 +940,7 @@ if ($nombre == "") {
         </div>
       </div>
 
-      <p>La solución es sustituir el carácter &amp; por su entidad de carácter correspondiente (&amp;amp;). Eso se puede hacer con la función <a href="http://php.net/manual/es/function.str-replace.php" class="php-fun">str_replace()</a></p>
+      <p>La solución es sustituir el carácter &amp; por su entidad de carácter correspondiente (&amp;amp;). Eso se puede hacer con la función <a href="https://www.php.net/manual/es/function.str-replace.php" class="php-fun">str_replace()</a></p>
 
       <div class="filaflex">
         <div class="icono-ok">
@@ -1011,7 +1011,7 @@ if ($nombre == "") {
         <pre><code class="language-html">&lt;p&gt;Corrige: &lt;input type="text" value=<span class="codigo-resaltado">"Me llamo "Pepe""</span>&gt;&lt;/p&gt;</code></pre>
       </div>
 
-      <p>Como en el caso anterior, la solución es sustituir el carácter " por su entidad de carácter correspondiente (&amp;quot;). Eso se puede hacer con la función <a href="http://php.net/manual/es/function.str-replace.php" class="php-fun">str_replace()</a></p>
+      <p>Como en el caso anterior, la solución es sustituir el carácter " por su entidad de carácter correspondiente (&amp;quot;). Eso se puede hacer con la función <a href="https://www.php.net/manual/es/function.str-replace.php" class="php-fun">str_replace()</a></p>
 
       <div class="filaflex">
         <div class="icono-ok">
@@ -1046,7 +1046,7 @@ if ($nombre == "") {
     <section id="htmlspecialchars">
       <h3>Solución general: <span class="php-fun">htmlspecialchars()</span></h3>
 
-      <p>Además de los caracteres ampersand (&amp;) y comillas ("), también podrían dar problemas los caracteres comillas simples (') o las desigualdades (&lt; y &gt;). Se podría sustituir cada uno de ellos como se ha hecho en los ejemplos anteriores, pero la función <a href="http://php.net/manual/es/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a> realiza todas las sustituciones de una sola vez.</p>
+      <p>Además de los caracteres ampersand (&amp;) y comillas ("), también podrían dar problemas los caracteres comillas simples (') o las desigualdades (&lt; y &gt;). Se podría sustituir cada uno de ellos como se ha hecho en los ejemplos anteriores, pero la función <a href="https://www.php.net/manual/es/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a> realiza todas las sustituciones de una sola vez.</p>
 
       <p><strong>Nota</strong>: PHP 5.4.0 modificó el juego de caracteres predeterminado de esta función (de ISO-8859-1 a UTF-8). Si se está trabajando con ficheros en el código de caracteres ISO-8859-1, se deben añadir dos argumentos en la llamada a <span class="php-fun">htmlspecialchars()</span>: ENT_QUOTES e "ISO-8859-1" (sin comillas y con comillas respectivamente).</p>
 
@@ -1075,7 +1075,7 @@ if ($nombre == "") {
         </div>
       </div>
 
-      <p>El ejemplo anterior tiene el inconveniente de que la primera función que se aplica es <a href="http://php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> por lo que se eliminará todo lo que esté entre marcas (&lt;&gt;).</p>
+      <p>El ejemplo anterior tiene el inconveniente de que la primera función que se aplica es <a href="https://www.php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> por lo que se eliminará todo lo que esté entre marcas (&lt;&gt;).</p>
 
       <div class="filaflex">
         <div class="resultado-html">
@@ -1102,7 +1102,7 @@ if ($nombre == "") {
         </div>
       </div>
 
-      <p>Si no queremos quitar etiquetas, pero no queremos que se consideren como etiquetas sino como texto, habría que aplicar primero la función <a href="http://php.net/manual/es/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a>, como en el ejemplo siguiente.</p>
+      <p>Si no queremos quitar etiquetas, pero no queremos que se consideren como etiquetas sino como texto, habría que aplicar primero la función <a href="https://www.php.net/manual/es/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a>, como en el ejemplo siguiente.</p>
 
       <div class="filaflex">
         <div class="resultado-html">
@@ -1129,7 +1129,7 @@ if ($nombre == "") {
         </div>
       </div>
 
-      <p>En el ejemplo anterior la función <a href="http://php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> no hace nada puesto que las marcas &lt; y &gt; se han cambiado antes por las entidades de carácter &amp;lt; y &amp;gt; así que se podría simplificar el programa:</p>
+      <p>En el ejemplo anterior la función <a href="https://www.php.net/manual/es/function.strip-tags.php"><span class="php-fun">strip_tags()</span></a> no hace nada puesto que las marcas &lt; y &gt; se han cambiado antes por las entidades de carácter &amp;lt; y &amp;gt; así que se podría simplificar el programa:</p>
 
       <div class="filaflex">
         <div class="resultado-html">

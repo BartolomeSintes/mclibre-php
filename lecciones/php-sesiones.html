@@ -114,7 +114,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
     <hr class="corta">
 
-    <p>Las sesiones no deben confundirse con <a href="php-cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el disco duro del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="http://php.net/manual/es/book.session.php">capítulo dedicado a las sesiones</a>.</p>
+    <p>Las sesiones no deben confundirse con <a href="php-cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el disco duro del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="https://www.php.net/manual/es/book.session.php">capítulo dedicado a las sesiones</a>.</p>
 
     <p>El trabajo con sesiones tiene tres partes:</p>
     <ul>
@@ -149,7 +149,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 </pre>
     </div>
 
-    <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="http://php.net/manual/es/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
+    <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="https://www.php.net/manual/es/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
 
     <div class="codigo">
       <pre><code class="language-php">ini_set("session.save_handler", "files"); // Necesario únicamente cuando session.save_handler = user en php.ini
@@ -162,7 +162,7 @@ session_start();</code></pre>
   <section id="sesiones-crear">
     <h2>Crear la sesión</h2>
 
-    <p>En PHP, las sesiones se crean mediante la función <a href="http://php.net/manual/es/function.session-start.php"><span class="php-fun">session_start()</span></a>. Si la sesión no existía, esta función crea la sesión y le asocia un identificador de sesión único. Si la sesión ya existía, esta función permite que la página tenga acceso a la información vinculada a la sesión. Es decir, todas las páginas que quieran guardar datos en $_SESSION o leer datos de $_SESSION deben comenzar con la función <span class="php-fun">session_start()</span>.</p>
+    <p>En PHP, las sesiones se crean mediante la función <a href="https://www.php.net/manual/es/function.session-start.php"><span class="php-fun">session_start()</span></a>. Si la sesión no existía, esta función crea la sesión y le asocia un identificador de sesión único. Si la sesión ya existía, esta función permite que la página tenga acceso a la información vinculada a la sesión. Es decir, todas las páginas que quieran guardar datos en $_SESSION o leer datos de $_SESSION deben comenzar con la función <span class="php-fun">session_start()</span>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -226,7 +226,7 @@ session_start();
   <section id="sesiones-nombre">
     <h2>Nombre de sesión</h2>
 
-    <p>En principio, cuando el navegador se conecta a un servidor, la sesión es única, es decir, todas las páginas del mismo dominio compartirán la misma matriz $_SESSION. La función <a href="http://php.net/manual/es/function.session-name.php"><span class="php-fun">session_name()</span></a> permite establecer un nombre de sesión específico, de manera que todas las páginas que declaren el mismo nombre de sesión accederán a la misma matriz $_SESSION y las que tengan nombres de sesión distintos accederán a matrices $_SESSION diferentes.</p>
+    <p>En principio, cuando el navegador se conecta a un servidor, la sesión es única, es decir, todas las páginas del mismo dominio compartirán la misma matriz $_SESSION. La función <a href="https://www.php.net/manual/es/function.session-name.php"><span class="php-fun">session_name()</span></a> permite establecer un nombre de sesión específico, de manera que todas las páginas que declaren el mismo nombre de sesión accederán a la misma matriz $_SESSION y las que tengan nombres de sesión distintos accederán a matrices $_SESSION diferentes.</p>
 
     <p>En el ejemplo siguiente, los dos primeros programas crean la misma variable en $_SESSION, pero como se ha utilizado la función <span class="php-fun">session_name()</span> con nombres diferentes, realmente lo hacen en matrices $_SESSION distintas.</p>
 
@@ -308,14 +308,14 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
     <p>Referencia:</p>
     <ul>
-      <li><a href="http://php.net/manual/es/function.session-id.php#116836">Caracteres admitidos en el identificador de sesión</a>, que no es lo mismo que el nombre de sesión.</li>
+      <li><a href="https://www.php.net/manual/es/function.session-id.php#116836">Caracteres admitidos en el identificador de sesión</a>, que no es lo mismo que el nombre de sesión.</li>
     </ul>
   </section>
 
   <section id="sesiones-utilizar">
     <h2>Utilizar la sesión</h2>
 
-    <p>Cuando una página ha creado una sesión o ha accedido a una sesión ya existente mediante <span class="php-fun">session_start()</span>, la página tiene acceso a la matriz <a href="http://php.net/manual/es/reserved.variables.session.php">$_SESSION</a> que contiene las variables de esa sesión.</p>
+    <p>Cuando una página ha creado una sesión o ha accedido a una sesión ya existente mediante <span class="php-fun">session_start()</span>, la página tiene acceso a la matriz <a href="https://www.php.net/manual/es/reserved.variables.session.php">$_SESSION</a> que contiene las variables de esa sesión.</p>
 
     <p>La matriz $_SESSION es una matriz asociativa en la que se pueden definir valores como en cualquier otra matriz. La diferencia es que $_SESSION es accesible desde páginas diferentes (siempre que esas páginas tengan asociada la misma sesión), manteniéndose los valores de una página a otra.</p>
 
@@ -416,7 +416,7 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";
   <section id="sesiones-borrar">
     <h2>Borrar elementos de la sesión</h2>
 
-    <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="http://php.net/manual/es/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
+    <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="https://www.php.net/manual/es/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -450,7 +450,7 @@ if (isset($_SESSION["nombre"])) {
 
     <hr>
 
-    <p>Para borrar todos los valores de $_SESSION se pueden borrar uno a uno o utilizar la función <a href="http://php.net/manual/es/function.session-unset.php"><span class="php-fun">session_unset()</span></a>. Pero no se debe utilizar <span class="php-fun">unset</span>($_SESSION):</p>
+    <p>Para borrar todos los valores de $_SESSION se pueden borrar uno a uno o utilizar la función <a href="https://www.php.net/manual/es/function.session-unset.php"><span class="php-fun">session_unset()</span></a>. Pero no se debe utilizar <span class="php-fun">unset</span>($_SESSION):</p>
     <ul>
       <li><span class="php-fun">unset</span>($_SESSION) impide que el resto de la página escriba o lea valores en $_SESSION, pero la sesión conserva los valores, por lo que otras páginas seguirían viendo esos valores.
         <div class="filaflex">
@@ -494,7 +494,7 @@ Array
           </div>
         </div>
       </li>
-      <li>la función <a href="http://php.net/manual/es/function.session-unset.php"><span class="php-fun">session_unset()</span></a> borra todos los valores pero permite que el resto de la página (y otras páginas) escriba o lea valores en $_SESSION.
+      <li>la función <a href="https://www.php.net/manual/es/function.session-unset.php"><span class="php-fun">session_unset()</span></a> borra todos los valores pero permite que el resto de la página (y otras páginas) escriba o lea valores en $_SESSION.
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -549,7 +549,7 @@ Array
 
     <ul>
       <li>El usuario puede cerrar la sesión simplemente cerrando el navegador.</li>
-      <li>Un programa puede cerrar la sesión mediante la función <a href="http://php.net/manual/es/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
+      <li>Un programa puede cerrar la sesión mediante la función <a href="https://www.php.net/manual/es/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
       <li>El servidor puede cerrar la sesión cuando ha pasado el tiempo indicado en segundo en la directiva <a href="http://docs.php.net/session.configuration#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>.</li>
     </ul>
 

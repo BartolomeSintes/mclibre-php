@@ -22,8 +22,14 @@
 
       <ul>
         <li><a href="#que-es">Qué es</a></li>
-        <li><a href="#tipos-lenguajes">Tipos de lenguajes</a></li>
-        <li><a href="#compilados-interpretados">Compilados o interpretados</a></li>
+        <li><a href="#lenguajes-genealogia">Genealogía</a></li>
+        <li><a href="#lenguajes-tipos">Tipos</a>
+          <ul>
+            <li><a href="#imperativos-declarativos">Imperativos / Declarativos</a></li>
+            <li><a href="#compilados-interpretados">Compilados / Interpretados</a></li>
+            <li><a href="#tipificados-no">Tipificados / No tipificados</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
@@ -74,56 +80,325 @@
     <p>Los ordenadores siguen al pie de la letra las instrucciones de los programas ejecutables. Por tanto, los programas deben tener en cuenta todos los posibles resultados de todas las instrucciones e incluir las instrucciones a seguir en cada caso, de manera que el ordenador no se quede atascado en algún punto del programa. En el ejemplo citado de las raíces cuadradas, el programa tiene que tener en cuenta que no se pueden calcular las raíces cuadradas de números negativos (sin recurrir a los números complejos) y no tiene que pedirle al ordenador que lo haga porque seguramente se producirá un error y el programa se interrumpirá.</p>
   </section>
 
-  <section id="tipos-lenguajes">
-    <h2>Tipos de lenguajes de programación</h2>
+  <section id="lenguajes-genealogia">
+    <h2>Genealogía de los lenguajes de programación</h2>
 
-    <p>Existen muchísimos lenguajes de programación y formas de clasificarlos, puesto que la historia de la informática es también la historia de los lenguajes de programación.</p>
+    <p>El inicio de la informática moderna se suele situar en 1946, con <a href="https://es.wikipedia.org/wiki/ENIAC">ENIAC</a>, el primer ordenador de propósito general (aunque entre 1936 y 1945 Konrad Zuse construyó en Alemania varios prototipos de ordenadores de propósito general que fueron destruidos durante la segunda guerra mundial).</p>
+
+    <p>Esos ordenadores, como todos los que han venido después, tenían su propio <strong>lenguaje máquina</strong>, el conjunto de instrucciones que puede ejecutar la CPU. Para hacer manejable la tarea de programar los ordenadores, se crearon los <strong>lenguajes ensamblador</strong>, que utilizan palabras para referirse a las instrucciones. El problema de estos lenguajes es que están ligados a la CPU utilizada.</p>
+
+    <p>En los años 50 aparecieron los lenguajes de programación independientes de una máquina en concreto y en los años 60 se desarrollaron la mayoría de los conceptos en que se basan los actuales lenguajes de programación, perfeccionados a lo largo del tiempo.</p>
+
+    <p>Desde entonces, se han inventado muchísimos lenguajes de programación, que han permitido a los programadores resolver problemas cada vez más complejos.</p>
+
+    <hr class="corta">
+
+    <p>La imagen siguiente, basada en un <a href="https://commons.wikimedia.org/wiki/File:Genealogical_tree_of_programming_languages.svg">dibujo de la Wikipedia</a>, muestra algunos de los lenguajes de programación más importantes de la historia, la mayoría de los cuales se siguen utilizando en la actualidad:</p>
+
+    <p class="mcl-svg-figura">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 800" style="font-family: sans-serif; border: black 1px solid">
+        <line x1="120" y1="141" x2="200" y2="199" stroke="black" stroke-width="2" />
+        <line x1="120" y1="141" x2="160" y2="279" stroke="black" stroke-width="2" />
+        <line x1="120" y1="141" x2="70" y2="409" stroke="black" stroke-width="2" />
+        <line x1="545" y1="55" x2="370" y2="99" stroke="black" stroke-width="2" />
+        <line x1="595" y1="55" x2="750" y2="79" stroke="black" stroke-width="2" />
+        <line x1="750" y1="111" x2="750" y2="119" stroke="black" stroke-width="2" />
+        <line x1="370" y1="131" x2="370" y2="189" stroke="black" stroke-width="2" />
+        <line x1="550" y1="141" x2="370" y2="189" stroke="black" stroke-width="2" />
+        <line x1="550" y1="141" x2="720" y2="229" stroke="black" stroke-width="2" />
+        <line x1="520" y1="211" x2="590" y2="249" stroke="black" stroke-width="2" />
+        <line x1="520" y1="211" x2="425" y2="379" stroke="black" stroke-width="2" />
+        <line x1="290" y1="221" x2="330" y2="249" stroke="black" stroke-width="2" />
+        <line x1="370" y1="221" x2="330" y2="249" stroke="black" stroke-width="2" />
+        <line x1="785" y1="201" x2="785" y2="439" stroke="black" stroke-width="2" />
+        <line x1="720" y1="261" x2="720" y2="309" stroke="black" stroke-width="2" />
+        <line x1="590" y1="281" x2="590" y2="369" stroke="black" stroke-width="2" />
+        <line x1="330" y1="281" x2="590" y2="369" stroke="black" stroke-width="2" />
+        <line x1="330" y1="281" x2="425" y2="379" stroke="black" stroke-width="2" />
+        <line x1="330" y1="281" x2="135" y2="399" stroke="black" stroke-width="2" />
+        <line x1="720" y1="341" x2="655" y2="419" stroke="black" stroke-width="2" />
+        <line x1="590" y1="401" x2="590" y2="669" stroke="black" stroke-width="2" />
+        <line x1="425" y1="411" x2="500" y2="479" stroke="black" stroke-width="2" />
+        <line x1="505" y1="395" x2="555" y2="529" stroke="black" stroke-width="2" />
+        <line x1="345" y1="395" x2="215" y2="619" stroke="black" stroke-width="2" />
+        <line x1="425" y1="411" x2="425" y2="629" stroke="black" stroke-width="2" />
+        <line x1="162" y1="415" x2="215" y2="429" stroke="black" stroke-width="2" />
+        <line x1="135" y1="431" x2="165" y2="479" stroke="black" stroke-width="2" />
+        <line x1="135" y1="431" x2="80" y2="479" stroke="black" stroke-width="2" />
+        <line x1="215" y1="461" x2="165" y2="479" stroke="black" stroke-width="2" />
+        <line x1="215" y1="461" x2="215" y2="619" stroke="black" stroke-width="2" />
+        <line x1="290" y1="431" x2="355" y2="488" stroke="black" stroke-width="2" />
+        <line x1="785" y1="471" x2="747" y2="539" stroke="black" stroke-width="2" />
+        <line x1="470" y1="495" x2="415" y2="504" stroke="black" stroke-width="2" />
+        <line x1="500" y1="511" x2="532" y2="545" stroke="black" stroke-width="2" />
+        <line x1="500" y1="511" x2="500" y2="639" stroke="black" stroke-width="2" />
+        <line x1="355" y1="520" x2="315" y2="656" stroke="black" stroke-width="2" />
+        <line x1="578" y1="545" x2="652" y2="555" stroke="black" stroke-width="2" />
+        <text x="0" y="50" text-anchor="start" font-size="16">1950</text>
+        <text x="850" y="50" text-anchor="start" font-size="16">1950</text>
+        <line x1="40" y1="45" x2="845" y2="45" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="100" text-anchor="start" font-size="16">1955</text>
+        <text x="850" y="100" text-anchor="start" font-size="16">1955</text>
+        <line x1="40" y1="95" x2="845" y2="95" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="150" text-anchor="start" font-size="16">1960</text>
+        <text x="850" y="150" text-anchor="start" font-size="16">1960</text>
+        <line x1="40" y1="145" x2="845" y2="145" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="200" text-anchor="start" font-size="16">1965</text>
+        <text x="850" y="200" text-anchor="start" font-size="16">1965</text>
+        <line x1="40" y1="195" x2="845" y2="195" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="250" text-anchor="start" font-size="16">1970</text>
+        <text x="850" y="250" text-anchor="start" font-size="16">1970</text>
+        <line x1="40" y1="245" x2="845" y2="245" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="300" text-anchor="start" font-size="16">1975</text>
+        <text x="850" y="300" text-anchor="start" font-size="16">1975</text>
+        <line x1="40" y1="295" x2="845" y2="295" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="350" text-anchor="start" font-size="16">1980</text>
+        <text x="850" y="350" text-anchor="start" font-size="16">1980</text>
+        <line x1="40" y1="345" x2="845" y2="345" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="400" text-anchor="start" font-size="16">1985</text>
+        <text x="850" y="400" text-anchor="start" font-size="16">1985</text>
+        <line x1="40" y1="395" x2="845" y2="395" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="450" text-anchor="start" font-size="16">1990</text>
+        <text x="850" y="450" text-anchor="start" font-size="16">1990</text>
+        <line x1="40" y1="445" x2="845" y2="445" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="500" text-anchor="start" font-size="16">1995</text>
+        <text x="850" y="500" text-anchor="start" font-size="16">1995</text>
+        <line x1="40" y1="495" x2="845" y2="495" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="550" text-anchor="start" font-size="16">2000</text>
+        <text x="850" y="550" text-anchor="start" font-size="16">2000</text>
+        <line x1="40" y1="545" x2="845" y2="545" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="600" text-anchor="start" font-size="16">2005</text>
+        <text x="850" y="600" text-anchor="start" font-size="16">2005</text>
+        <line x1="40" y1="595" x2="845" y2="595" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="650" text-anchor="start" font-size="16">2010</text>
+        <text x="850" y="650" text-anchor="start" font-size="16">2010</text>
+        <line x1="40" y1="645" x2="845" y2="645" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="700" text-anchor="start" font-size="16">2015</text>
+        <text x="850" y="700" text-anchor="start" font-size="16">2015</text>
+        <line x1="40" y1="695" x2="845" y2="695" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <text x="0" y="750" text-anchor="start" font-size="16">2020</text>
+        <text x="850" y="750" text-anchor="start" font-size="16">2020</text>
+        <line x1="40" y1="745" x2="845" y2="745" stroke="black" stroke-width="0.5" stroke-dasharray="10 10" />
+        <rect x="545" y="39" width="50" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="570" y="63" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/A-0_System">A-0</a>
+        </text>
+        <rect x="670" y="79" width="160" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="750" y="103" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/FLOW-MATIC">FLOW-MATIC</a>
+        </text>
+        <rect x="308" y="99" width="125" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="370" y="123" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Fortran">FORTRAN</a>
+        </text>
+        <rect x="90" y="109" width="60" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="120" y="133" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">LISP</a>
+        </text>
+        <rect x="505" y="109" width="90" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="550" y="133" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/ALGOL">ALGOL</a>
+        </text>
+        <rect x="705" y="119" width="90" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="750" y="143" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/COBOL">COBOL</a>
+        </text>
+        <rect x="745" y="169" width="80" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="785" y="193" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/BASIC">BASIC</a>
+        </text>
+        <rect x="470" y="179" width="100" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="520" y="203" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Simula">SIMULA</a>
+        </text>
+        <rect x="262" y="189" width="55" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="290" y="213" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/APL_(programming_language)">APL</a>
+        </text>
+        <rect x="342" y="189" width="55" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="370" y="213" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/PL/I">PL/I</a>
+        </text>
+        <rect x="168" y="199" width="65" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="200" y="223" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Logo_(programming_language)">Logo</a>
+        </text>
+        <rect x="680" y="229" width="80" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="720" y="253" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Pascal_(programming_language)">Pascal</a>
+        </text>
+        <rect x="520" y="249" width="140" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="590" y="273" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Smalltalk">Smalltalk-72</a>
+        </text>
+        <rect x="315" y="249" width="30" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="330" y="273" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>
+        </text>
+        <rect x="112" y="279" width="95" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="160" y="303" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a>
+        </text>
+        <rect x="665" y="309" width="110" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="720" y="333" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Modula-2">Modula-2</a>
+        </text>
+        <rect x="525" y="369" width="130" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="590" y="393" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Objective-C">Objective C</a>
+        </text>
+        <rect x="345" y="379" width="160" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="425" y="403" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a>
+        </text>
+        <rect x="108" y="399" width="55" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="135" y="423" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Perl">Perl</a>
+        </text>
+        <rect x="265" y="399" width="50" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="290" y="423" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Self_(programming_language)">Self</a>
+        </text>
+        <rect x="50" y="409" width="40" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="70" y="433" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Tcl">Tcl</a>
+        </text>
+        <rect x="600" y="419" width="110" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="655" y="443" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Modula-3">Modula-3</a>
+        </text>
+        <rect x="175" y="429" width="80" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="215" y="453" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a>
+        </text>
+        <rect x="720" y="439" width="130" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="785" y="463" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Visual_Basic">VisualBasic</a>
+        </text>
+        <rect x="470" y="479" width="60" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="500" y="503" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>
+        </text>
+        <rect x="132" y="479" width="65" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="165" y="503" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Ruby_(programming_language)">Ruby</a>
+        </text>
+        <rect x="52" y="479" width="55" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="80" y="503" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/PHP">PHP</a>
+        </text>
+        <rect x="295" y="488" width="120" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="355" y="512" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a>
+        </text>
+        <rect x="532" y="529" width="45" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="555" y="553" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)">C#</a>
+        </text>
+        <rect x="652" y="539" width="190" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="747" y="563" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Visual_Basic_.NET">VisualBasic .NET</a>
+        </text>
+        <rect x="195" y="619" width="40" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="215" y="643" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a>
+        </text>
+        <rect x="395" y="629" width="60" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="425" y="653" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Rust_(programming_language)">Rust</a>
+        </text>
+        <rect x="466" y="639" width="68" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="500" y="663" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Kotlin_(programming_language)">Kotlin</a>
+        </text>
+        <rect x="252" y="656" width="125" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="315" y="680" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/TypeScript">TypeScript</a>
+        </text>
+        <rect x="558" y="669" width="65" height="32" fill="white" stroke="black" stroke-width="2" rx="5" ry="5" />
+        <text x="590" y="693" text-anchor="middle" font-size="24">
+          <a href="https://en.wikipedia.org/wiki/Swift_(programming_language)">Swift</a>
+        </text>
+      </svg>
+    </p>
+
+    <ul>
+      <li>Al hacer clic en el nombre de un lenguaje, se abre la página de la Wikipedia (en inglés) dedicada al lenguaje.</li>
+      <li>La posición vertical de cada lenguaje indica su fecha de creación. Posteriormente, cada lenguaje ha seguido su propia evolución y las versiones actuales pueden ser incluso incompatibles con las versiones originales.</li>
+      <li>Las líneas que unen los lenguajes significan que un lenguaje ha influido en el diseño del otro, aunque el dibujo es una simplificación y hay muchas más influencias que las indicadas, especialmente en los lenguajes más modernos que aúnan características de muchos lenguajes anteriores.</li>
+      <li>Algunos de estos lenguajes han sido importantes por la cantidad de aplicaciones que se han escrito con ellos, mientras que otros lo han sido por introducir ideas radicalmente nuevas que han influido en los lenguajes posteriores.</li>
+      <li>En este gráfico se podrían haber incluido otros lenguajes como Erlang, Haskell o Julia.</li>
+      <li>La mayoría de estos lenguajes siguen en uso y, en realidad, resulta cada vez más difícil que un lenguaje nuevo reemplace a los anteriores, pues no solamente tiene que tener ventajas evidentes sobre los anteriores, sino que debe competir con todas las herramientas auxiliares y colecciones de programas disponibles en los lenguajes antiguos.</li>
+    </ul>
+  </section>
+
+  <section id="lenguajes-tipos">
+    <h2>Tipos de lenguajes de programación</h2>
 
     <p>En los años 50, en los inicios de la informática, los lenguajes empleados eran los <strong>lenguajes máquina</strong>, que van intímamente asociados a cada CPU, puesto que sus instrucciones son las mismas que las de la CPU. En esos años aparecieron los <strong>lenguajes ensamblador</strong>, que utilizan palabras para referirse a las instrucciones, aunque siguen asociados a cada CPU.</p>
 
     <p>En los años 60 se desarrollaron la mayoría de tipos de lenguajes que se usan hoy en día:</p>
 
-    <ul>
-      <li>Los <strong>lenguajes imperativos</strong>, en los que el programador escribe paso a paso las tareas a realizar. Entre ellos, están
-        <ul>
-          <li>los <strong>lenguajes modulares</strong>, que permiten definir bloques de instrucciones y reutilizarlos para construir programas más complejos.</li>
-          <li>los <strong>lenguajes procedurales</strong>, que permiten definir procedimientos (rutinas, subrutinas, funciones, etc) y reutilizarlos.</li>
-          <li>los <strong>lenguajes orientados a objetos</strong>, en los que no se permite que cualquier porción del programa acceda a cualquier dato, sino que se agrupan en clases todos los procedimientos que se pueden aplicar a un tipo de datos</li>
-        </ul>
-      </li>
-      <li>Los <strong>lenguajes declarativos</strong>, en los que el programador no escribe los pasos a realizar, sino los pasos permitidos en cada situación y es el ordenador el que busca la secuencia adecuada. Entre ellos están:
-        <ul>
-          <li>los <strong>lenguajes funcionales</strong>, que utilizan como elemento básico las funciones y la recursividad</li>
-          <li>los <strong>lenguajes lógicos</strong>, que expresan las relaciones en términos lógicos y utilizan reglas de inferencia lógica para conseguir el resultadO.</li>
-        </ul>
-      </li>
-    </ul>
+    <p>Se pueden dar algunos criterios generales para distinguir unos lenguajes de otros, aunque cada vez más los lenguajes incluyen características que antes distinguían unos lenguajes de otros y las frontera están menos definidas. Algunos de esos criterios son los siguientes:</p>
 
-    <p>Existen lenguajes puros que siguen a rajatabla los principios de uno de estos tipos, pero la mayoría de lenguajes permiten mezclar tipos de programación diferentes.</p>
+    <section id="imperativos-declarativos">
+      <h3>Lenguajes imperativos y lenguajes declarativos</h3>
 
-    <p>No se puede afirmar la superioridad intrínseca de un tipo de lenguaje sobre otro, puesto que existen problemas que se abordan mejor con un tipo de lenguaje que otro.</p>
+      <ul>
+        <li>En los <strong>lenguajes imperativos</strong> el programador escribe paso a paso las tareas a realizar. Entre ellos, están
+          <ul>
+            <li>los <strong>lenguajes modulares</strong>, que permiten definir bloques de instrucciones y reutilizarlos para construir programas más complejos (Algol, COBOL, Fortran, etc.).</li>
+            <li>los <strong>lenguajes procedurales</strong>, que permiten definir procedimientos (rutinas, subrutinas, funciones, etc) y reutilizarlos (BASIC, Pascal, C, etc.).</li>
+            <li>los <strong>lenguajes orientados a objetos</strong>, en los que no se permite que cualquier porción del programa acceda a cualquier dato, sino que se agrupan en clases todos los procedimientos que se pueden aplicar a un tipo de datos (Smalltalk, C++, Java, etc.).</li>
+          </ul>
+        </li>
+        <li>En los <strong>lenguajes declarativos</strong> el programador no escribe los pasos a realizar, sino los pasos permitidos en cada situación y es el ordenador el que busca la secuencia adecuada. Entre ellos están:
+          <ul>
+            <li>los <strong>lenguajes funcionales</strong>, que utilizan como elemento básico las funciones y la recursividad (APL, Haskell, Erlang, etc.).</li>
+            <li>los <strong>lenguajes lógicos</strong>, que expresan las relaciones en términos lógicos y utilizan reglas de inferencia lógica para conseguir el resultado (Prolog, Datalog, etc.).</li>
+          </ul>
+        </li>
+      </ul>
 
-    <p>Por ejemplo, en los años 90 y 00, con el aumento de potencia de los microprocesadores, parecía que los lenguajes imperativos habían ganado la partida. Pero en los últimos años la potencia de las CPU no crece demasiado y en su lugar lo que se multiplica es el número de núcleos en cada CPU y en esa situación en la que lo más importante es poder "paralelizar" los programas (que se puedan ejecutar los programas en varios núcleos a la vez), los lenguajes declarativos llevan ventaja, por lo que está aumentando el interés por esos lenguajes.</p>
+      <p>Existen lenguajes puros que siguen a rajatabla los principios de uno de estos tipos, pero la mayoría de lenguajes permiten mezclar tipos de programación diferentes.</p>
+
+      <p>No se puede afirmar la superioridad intrínseca de un tipo de lenguaje sobre otro, puesto que existen problemas que se abordan mejor con un tipo de lenguaje que otro.</p>
+
+      <p>Por ejemplo, en los años finales del siglo XX y en los primeros del siglo XXI, con el aumento de potencia de los microprocesadores, parecía que los lenguajes imperativos habían ganado la partida a los declarativos. Pero en los últimos años el crecimiento de la potencia bruta de las CPU individuales se ha detenido y en su lugar lo que se multiplica es el número de núcleos en cada CPU y en esa situación en la que lo más importante es poder "paralelizar" los programas (que se puedan ejecutar los programas en varios núcleos a la vez), los lenguajes declarativos llevan ventaja, por lo que en los últimos años está aumentando el interés por esos lenguajes, sin que por desgracia se hayan obtenido todavía resultados revolucionarios.</p>
+    </section>
+
+    <section id="compilados-interpretados">
+      <h2>Lenguajes compilados e interpretados</h2>
+
+      <p>El programa de ordenador que es capaz de convertir el programa fuente escrito por el programador en el programa ejecutable que ejecuta el ordenador puede realizar esa tarea de dos formas distintas:</p>
+      <ul>
+        <li>si es un <strong>compilador</strong>, la tarea de conversión se realiza una sola vez, es decir, el compilador crea un fichero ejecutable, que es independiente del programa fuente. De esta manera, el usuario no necesita el programa fuente, sino únicamente el programa ejecutable.</li>
+        <li>si es un <strong>intérprete</strong>, la tarea de conversión se realiza cada vez que se quiere ejecutar el programa, es decir el intérprete lee una instrucción del programa fuente, la convierte en código ejecutable, la ejecuta y pasa a la siguiente. En este caso, el usuario necesita tener el programa fuente para poder ejecutarlo.</li>
+      </ul>
+
+      <p>En principio, cualquier lenguaje de programación puede ser compilado o interpretado, aunque por tradición hay lenguajes que suelen utilizar compiladores y otros que suelen utilizar intérpretes.</p>
+
+      <p>Se solía decir que para un mismo programa fuente, la compilación produce programas ejecutables más rápidos que los programas interpretados, pero la tendencia es a que esas diferencias se reduzcan.</p>
+
+      <p>Mi opinión personal es que las preferencias por compiladores o intérpretes pueden deberse a motivaciones no técnicas. Por ejemplo, el programador de software comercial preferirá el uso de compiladores para poder comercializar el programa ejecutable sin necesidad de hacer público el programa fuente, mientras que el programador de software libre no tiene problemas con los intérpretes.</p>
+    </section>
+
+    <section id="tipificados-no">
+      <h3>Lenguajes tipificados y lenguajes no tipificados</h3>
+
+      <p>En programación, los elementos que pueden almacenar información se llaman variables. Dependiendo del tipo de información (números, letras, etc) que se almacena se usan variables de un tipo o de otro. Una característica que diferencia unos lenguajes de otros es la rigidez o permisividad con respecto a los tipos de variables.</p>
+      <ul>
+        <li>Los <strong>lenguajes tipificados</strong> (también llamados de tipado estático) son aquellos en los que una variable guarda siempre un mismo tipo de datos. En algunos lenguajes tipificados se exige al programador que declare el tipo de cada variable y en otros lo determina el compilador. En algunos lenguajes tipificados se permite la conversión entre tipos de variables y en otros no.</li>
+        <li>Los <strong>lenguajes no tipificados</strong> (también llamados de tipado dinámico) no requieren la declaración de tipo de las variables y una misma variable puede almacenar valores de tipos distintos a lo largo de la ejecución del programa.</li>
+      </ul>
+
+      <p>Algunas ventajas de los lenguajes tipificados es que permiten detectar errores de tipo (cuando un dato de un tipo se guarda en una variable de otro tipo), que permiten a los compiladores optimizar mejor el código ejecutable y, en el caso de exigir la declaración de tipo de las variables, que facilitan la comprensión de los programas.</p>
+
+      <p>Algunas ventajas de los lenguajes no tipificados es la mayor flexibilidad de los programas, y una serie de características que aunque no se derivan necesariamente de la falta de tipificación suelen presentar los lenguajes no tipificados: simplicidad, mayor número de tipos de datos, metaprogramación (introspección, eval, etc.).</p>
+    </section>
   </section>
-
-  <section id="compilados-interpretados">
-    <h2>Lenguajes compilados e interpretados</h2>
-
-    <p>El programa de ordenador que es capaz de convertir el programa fuente escrito por el programador en el programa ejecutable que ejecuta el ordenador puede realizar esa tarea de dos formas distintas:</p>
-    <ul>
-      <li>si es un <strong>compilador</strong>, la tarea de conversión se realiza una sola vez, es decir, el compilador crea un fichero ejecutable, que es independiente del programa fuente. De esta manera, el usuario no necesita el programa fuente, sino únicamente el programa ejecutable.</li>
-      <li>si es un <strong>intérprete</strong>, la tarea de conversión se realiza cada vez que se quiere ejecutar el programa, es decir el intérprete lee una instrucción del programa fuente, la convierte en código ejecutable, la ejecuta y pasa a la siguiente. En este caso, el usuario necesita tener el programa fuente para poder ejecutarlo.</li>
-    </ul>
-
-    <p>En principio, cualquier lenguaje de programación puede ser compilado o interpretado, aunque por tradición hay lenguajes que suelen utilizar compiladores y otros que suelen utilizar intérpretes.</p>
-
-    <p>Se solía decir que para un mismo programa fuente, la compilación produce programas ejecutables más rápidos que los programas interpretados, pero la tendencia es a que esas diferencias se reduzcan.</p>
-
-    <p>Mi opinión personal es que las preferencias por compiladores o intérpretes pueden deberse a motivaciones no técnicas. Por ejemplo, el programador de software comercial preferirá el uso de compiladores para poder comercializar el programa ejecutable sin necesidad de hacer público el programa fuente, mientras que el programador de software libre no tiene problemas con los intérpretes.</p>
-  </section>
-
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de octubre de 2011</p>
+    <p class="ultmod">Última modificación de esta página:9 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Configuración recomendada para curso PHP. Visual Studio Code. Informática. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Configuración recomendada para curso PHP. Visual Studio Code. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../varios/php.css" title="mclibre">
   <link rel="icon" href="../varios/favicon.ico">
@@ -23,7 +23,7 @@
     </p>
 
     <div class="toc">
-      <h2>VSC PHP</h2>
+      <h2>VSC: Configuración</h2>
 
       <ul>
         <li><a href="#temas">Temas de color</a></li>
@@ -36,9 +36,11 @@
     </div>
   </nav>
 
-  <p>Esta es la configuración de Visual Studio Code que se recomienda para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
+  <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Esta lección está en elaboración.</p>
 
-  <p>Antes de configurar Visual Studio Code, se recomienda leer la lección <a href="vsc-personalizacion.html">Personalización de VSC</a>, en la que se explica detalladamente cómo se personaliza Visual Studio Code.</p>
+  <p>Esta es la configuración de Visual Studio Code que se recomienda para seguir este curso.</p>
+
+  <p>Esta lección no detalla los pasos para configurar Visual Studio Code. En caso necesario, puede consultar la lección <a href="http://www.mclibre.org/consultar/informatica/lecciones/vsc-personalizacion.html">Personalización de VSC</a> de los apuntes de <a href="http://www.mclibre.org/consultar/informatica/index.html">Informática general</a>, en la que se explica detalladamente cómo se personaliza Visual Studio Code. En dichos apuntes también puede consultar lecciones dedicadas a Visual Studio Code, como <a href="http://www.mclibre.org/consultar/informatica/lecciones/vsc.html">Presentación general</a>, <a href="http://www.mclibre.org/consultar/informatica/lecciones/vsc-instalacion.html">Instalación</a>, <a href="http://www.mclibre.org/consultar/informatica/lecciones/vsc-uso.html">Uso</a> y otras, que le pueden ser de ayuda si no conoce Visual Studio Code.</p>
 
   <section id="temas">
     <h2>Tema de color recomendado para el curso de PHP</h2>
@@ -94,7 +96,7 @@
   <section id="preferencias">
     <h2>Preferencias de configuración recomendadas para el curso de PHP</h2>
 
-    <p>Estas son las preferencias de configuración que se aconseja establecer para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
+    <p>Estas son las preferencias de configuración que se aconseja establecer para seguir el curso <a href="../index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
     <div class="codigo">
       <pre>
@@ -102,14 +104,24 @@
   //
   // PHP
   // Señala al ejecutable PHP.
-  "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+  "php.validate.executablePath": "C:/xampp/php/php.exe",
   //
   // Indica si linter se ejecuta al guardar o al escribir.
   "php.validate.run": "onType",
   //
   // PHP Intellisense
   // The path to a PHP 7+ executable.
-  "php.executablePath":  "C:\\xampp\\php\\php.exe"</code>
+  "php.executablePath":  "C:/xampp/php/php.exe"
+  //
+  // Open PHP/HTML/JS in Browser
+  // Url scheme to open in browser
+  "open-php-html-js-in-browser.urlToOpen": "custom",
+  // Base directory of your pages to serve from
+  "open-php-html-js-in-browser.documentRootFolder": "C:/Users/NombreDeUsuario/Documents/IAW/PHP",
+  // Custom url to open in browser
+  "open-php-html-js-in-browser.customUrlToOpen": "http://localhost/iaw/php/${relativeFile}",
+  // Browser to open
+  "open-php-html-js-in-browser.selectedBrowser": "Firefox",</code>
 </pre>
     </div>
   </section>
@@ -119,7 +131,7 @@
 
     <p>Estas son las extensiones que se aconseja instalar para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <section id="image-preview">
+    <section id="php-extension-pack">
       <h3>PHP Extension Pack</h3>
 
       <p><img src="../img/vscode/vsc-extension-php-extension-pack-logo.png" alt="Logotipo de PHP Extension Pack" width="128" height="67" class="izquierda"></p>
@@ -131,8 +143,27 @@
       <p>Repositorio GitHub: <a href="https://github.com/felixfbecker/vscode-php-pack"></a></p>
     </section>
 
-    <p>Para mirar: <a href="https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan">phpstan</a> [<a href="https://github.com/phpstan/phpstan">PHPStan</a>]</p>
+    <section id="open-php-html-js-in-browser">
+      <h3>PHP Open PHP/HTML/JS In Browser</h3>
+
+      <p><img src="../img/vscode/vsc-extension-open-php-html-js-in-browser-logo.png" alt="Logotipo de Open PHP/HTML/JS In Browser" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: PrimaFuture</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=PrimaFuture.open-php-html-js-in-browser">Open PHP/HTML/JS In Browser</a></p>
+
+      <p>Repositorio GitHub: No disponible</p>
+    </section>
+
+    <section>
+      <h3>Para mirar</h3>
+      <ul>
+        <li><a href="https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan">phpstan</a> [<a href="https://github.com/phpstan/phpstan">PHPStan</a>]</li>
+      </ul>
+    </section>
+
   </section>
+
 
   <section id="tareas">
     <h2>Tareas recomendadas para el curso de PHP</h2>
@@ -145,7 +176,7 @@
       "label": "Abrir en localhost (Firefox)",
       "command": "explorer",
       "windows": {
-        "command": "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
+        "command": "C:/Program Files/Mozilla Firefox/firefox.exe"
       },
       "args": [
         "localhost/${workspaceFolderBasename}/${relativeFile}"
@@ -159,7 +190,7 @@
       "label": "Abrir en localhost (Chrome)",
       "command": "explorer",
       "windows": {
-        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        "command": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
       },
       "args": [
         "localhost/${workspaceFolderBasename}/${relativeFile}"
@@ -225,7 +256,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 13 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
