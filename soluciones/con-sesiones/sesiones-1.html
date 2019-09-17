@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../varios/favicon.ico">
-  <link rel="stylesheet" href="../../varios/highlight-php.css">
-  <script src="../../varios/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
 </head>
 
 <body>
@@ -101,31 +100,25 @@
 // Se accede a la sesión <span class="numero-circulo">5</span>
 session_name("sesiones-1-01");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Texto 1 (Formulario)&lt;/h1&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 // Si hay un texto guardado en la sesión, <span class="numero-circulo">6</span>
 if (isset($_SESSION["texto"])) {
     // se muestra <span class="numero-circulo">4</span>
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
   &lt;form action="sesiones-1-01-2.php" method="get"&gt;
     &lt;p&gt;Escriba texto:&lt;/p&gt;
-...
+// ...
 </code>
 </pre>
       </div>
@@ -138,18 +131,14 @@ if (isset($_SESSION["texto"])) {
 // Se accede a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-01");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Texto 1 (Resultado)&lt;/h1&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var)
 {
@@ -177,13 +166,10 @@ if ($textoOk) {
     // y lo mostramos
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$texto&lt;/strong&gt;.&lt;/p&gt;\n";
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
     &lt;p&gt;&lt;a href="sesiones-1-01-1.php"&gt;Volver a la primera página.&lt;/a&gt;&lt;/p&gt;
-...
-</code>
+// ...</code>
 </pre>
       </div>
     </section>
@@ -214,31 +200,25 @@ if ($textoOk) {
 // Se accede a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-02");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 // Si hay un texto guardado en la sesión, <span class="numero-circulo">9</span>
 if (isset($_SESSION["texto"])) {
     // lo mostramos <span class="numero-circulo">7</span>
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
   &lt;form action="sesiones-1-02-2.php" method="get"&gt;
     &lt;p&gt;Escriba texto:&lt;/p&gt;
-...</code>
+// ...</code>
 </pre>
       </div>
 
@@ -319,31 +299,25 @@ if (!$textoOk) {
 // Se accede a la sesión <span class="numero-circulo">7</span>
 session_name("sesiones-1-02-b");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 // Si hay un texto guardado en la sesión, <span class="numero-circulo">8</span>
 if (isset($_SESSION["texto"])) {
     // lo mostramos <span class="numero-circulo">6</span>
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
   &lt;form action="sesiones-1-02-b-2.php" method="get"&gt;
     &lt;p&gt;Escriba texto:&lt;/p&gt;
-...</code>
+// ...</code>
 </pre>
       </div>
 
@@ -410,20 +384,16 @@ header("Location:sesiones-1-02-b-1.php");
 // Se accede a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-03");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
   &lt;form action="sesiones-1-03-2.php" method="get"&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 //Si no hemos detectado un error y hay guardada una palabra en la sesión ... <span class="numero-circulo">11</span>
 if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {
     // ... mostramos la palabra
@@ -530,7 +500,7 @@ session_start();
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
@@ -653,7 +623,7 @@ session_start();
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
@@ -820,7 +790,7 @@ session_start();
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
@@ -954,7 +924,7 @@ session_start();
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
@@ -1120,7 +1090,7 @@ if (!isset($_SESSION["numero"])) {<span class="numero-circulo">8</span>
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
     &lt;p&gt;
       &lt;button type="submit" name="accion" value="bajar" style="font-size: 4rem"&gt;-&lt;/button&gt;
 </code>
@@ -1135,7 +1105,7 @@ print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt
 <code class="language-html">
       &lt;button type="submit" name="accion" value="subir" style="font-size: 4rem"&gt;+&lt;/button&gt;
     &lt;/p&gt;
-...</code>
+// ...</code>
 </pre>
       </div>
 
@@ -1219,7 +1189,7 @@ if (!isset($_SESSION["posicion"])) {
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
             &lt;line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" /&gt;</code>
 </pre>
         <pre>
@@ -1228,7 +1198,7 @@ if (!isset($_SESSION["posicion"])) {
 print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" /&gt;\n";
 ?&gt;</code>
 <code class="language-html">          &lt;/svg&gt;
-...</code>
+// ...</code>
 </pre>
       </div>
 
@@ -1320,7 +1290,7 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
         &lt;td&gt;
           &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
           width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid"&gt;
@@ -1336,7 +1306,7 @@ print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fi
 <code class="language-html">
   &lt;/svg&gt;
   &lt;/td&gt;
-...
+// ...
 </code>
 </pre>
       </div>
@@ -1438,7 +1408,7 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
         <pre>
 <code class="language-html">
 &lt;!DOCTYPE html&gt;
-...
+// ...
       &lt;tr&gt;
         &lt;td style="vertical-align: top;"&gt;&lt;button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hsl(200, 100%, 50%);"&gt;&#x2714;&lt;/button&gt;&lt;/td&gt;
         &lt;td&gt;</code>
@@ -1471,7 +1441,7 @@ print "          &lt;/svg&gt;\n";
 <code class="language-html">        &lt;/td&gt;
       &lt;/tr&gt;
     &lt;/table&gt;
-...
+// ...
 </code>
 </pre>
       </div>
