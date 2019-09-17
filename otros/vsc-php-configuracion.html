@@ -98,32 +98,47 @@
 
     <p>Estas son las preferencias de configuración que se aconseja establecer para seguir el curso <a href="../index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <div class="codigo">
-      <pre>
-<code class="language-json">  // CONFIGURACIÓN PARA PHP
+    <p>Estas preferencias se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#preferencias">preferencias recomendadas</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Establezca dichas preferencias de configuración y después añada estas preferencias. Tenga en cuenta que estas preferencias deben añadirse dentro de las llaves inicial ({) y final (}.</p>
+
+    <section id="todas-preferencias">
+      <h3>Preferencias globales (Usuario)</h3>
+      <div class="codigo">
+        <pre>
+<code class="language-json">  // Configuraciones recomendadas para el curso Programación web en PHP de www.mclibre.org
   //
-  // PHP
-  // Señala al ejecutable PHP.
+  // PHP: Validate: Executable path
+  // Ubicación del intérprete de PHP.
   "php.validate.executablePath": "C:/xampp/php/php.exe",
   //
-  // Indica si linter se ejecuta al guardar o al escribir.
+  // PHP: Validate: Run
+  // Indica la validación se ejecuta al guardar o al escribir.
   "php.validate.run": "onType",
   //
-  // PHP Intellisense
-  // The path to a PHP 7+ executable.
-  "php.executablePath":  "C:/xampp/php/php.exe"
   //
-  // Open PHP/HTML/JS in Browser
-  // Url scheme to open in browser
-  "open-php-html-js-in-browser.urlToOpen": "custom",
-  // Base directory of your pages to serve from
-  "open-php-html-js-in-browser.documentRootFolder": "C:/Users/NombreDeUsuario/Documents/IAW/PHP",
-  // Custom url to open in browser
-  "open-php-html-js-in-browser.customUrlToOpen": "http://localhost/iaw/php/${relativeFile}",
-  // Browser to open
-  "open-php-html-js-in-browser.selectedBrowser": "Firefox",</code>
+  // Configuración de extensiones recomendadas para el curso Programación web en PHP de www.mclibre.org
+  //
+  // Extensión PHP Intellisense
+  // PHP: Executable Path
+  // Ubicación del intérprete de PHP.
+  "php.executablePath":  "C:/xampp/php/php.exe",
+  //</code>
 </pre>
-    </div>
+      </div>
+
+      <h3>Preferencias de área de trabajo o carpeta (Área de trabajo)</h3>
+      <div class="codigo">
+        <pre>
+<code class="language-json">{
+  // Configuraciones recomendadas para el curso Programación web en PHP de www.mclibre.org
+  //
+  // Workbench: Color Theme
+  // Tema de color
+  "workbench.colorTheme": "Default Dark+",
+  //
+}</code>
+</pre>
+      </div>
+    </section>
   </section>
 
   <section id="extensiones">
@@ -142,36 +157,22 @@
 
       <p>Repositorio GitHub: <a href="https://github.com/felixfbecker/vscode-php-pack"></a></p>
     </section>
-
-    <section id="open-php-html-js-in-browser">
-      <h3>PHP Open PHP/HTML/JS In Browser</h3>
-
-      <p><img src="../img/vscode/vsc-extension-open-php-html-js-in-browser-logo.png" alt="Logotipo de Open PHP/HTML/JS In Browser" width="128" height="128" class="izquierda"></p>
-
-      <p>Autor: PrimaFuture</p>
-
-      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=PrimaFuture.open-php-html-js-in-browser">Open PHP/HTML/JS In Browser</a></p>
-
-      <p>Repositorio GitHub: No disponible</p>
-    </section>
-
-    <section>
-      <h3>Para mirar</h3>
-      <ul>
-        <li><a href="https://marketplace.visualstudio.com/items?itemName=calsmurf2904.vscode-phpstan">phpstan</a> [<a href="https://github.com/phpstan/phpstan">PHPStan</a>]</li>
-      </ul>
-    </section>
-
   </section>
-
 
   <section id="tareas">
     <h2>Tareas recomendadas para el curso de PHP</h2>
 
     <p>Estas son las tareas que se aconseja crear para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <div class="codigo">
-      <pre>
+    <p>Estas tareas se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#tareas">tareas recomendadas</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Cree dichas tareas y después añada las tareas definidas a continuación. Tenga en cuenta que estas tareas deben añadirse dentro de la clave "tasks" (entre los corchetes inicial ([) y final (]) que definen la clave).</p>
+
+    <p>Una vez definidas las tareas, se recomienda definir los atajos de teclado que ejecuten estas tareas, tal y como se comenta en el apartado sobre <a href="#atajos-teclado">Atajos de teclado recomendados</a>.</p>
+
+    <section id="abrir-navegador">
+      <h3>Abrir páginas en el navegador (en el servidor local)</h3>
+
+      <div class="codigo">
+        <pre>
 <code class="language-json">    {
       "label": "Abrir en localhost (Firefox)",
       "command": "explorer",
@@ -179,7 +180,7 @@
         "command": "C:/Program Files/Mozilla Firefox/firefox.exe"
       },
       "args": [
-        "localhost/${workspaceFolderBasename}/${relativeFile}"
+        "localhost/iaw/php/${relativeFile}"
       ],
       "presentation": {
         "reveal": "never"
@@ -193,31 +194,26 @@
         "command": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
       },
       "args": [
-        "localhost/${workspaceFolderBasename}/${relativeFile}"
+        "localhost/iaw/php/${relativeFile}"
       ],
       "presentation": {
         "reveal": "never"
       },
       "problemMatcher": []
-    }</code>
+    },</code>
 </pre>
-    </div>
+      </div>
 
-    <p>En las tareas, los valores de "args" pueden adaptarse al alias configurado en el servidor web para acceder a los ficheros. Por ejemplo:</p>
-
-    <div class="codigo">
-      <pre>
-<code class="language-json">      "args": [
-        "localhost/nombre-alumno/iaw-php/${relativeFile}"
-      ],</code>
-</pre>
-    </div>
+      <p>En las tareas, en los valores de "args" pueden utilizarse las variables que se comentan en la página <a href="https://code.visualstudio.com/docs/editor/variables-reference">Listado de variables</a> de la documentación oficial de Visual Studio Code.</p>
+    </section>
   </section>
 
   <section id="atajos-teclado">
     <h2>Atajos de teclado recomendados para el curso de PHP</h2>
 
     <p>Estos son los atajos de teclado que se aconseja definir para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
+
+    <p>Estas atajos se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#atajos-teclado">atajos de teclado recomendados</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Cree dichos atajos de teclado y después añada los atajos de teclado definidos a continuación. Tenga en cuenta que estos atajos de teclado deben añadirse entre los corchetes inicial ([) y final (]).</p>
 
     <div class="codigo">
       <pre>
@@ -230,7 +226,7 @@
     "key": "ctrl+alt+l ctrl+alt+c",
     "command": "workbench.action.tasks.runTask",
     "args": "Abrir en localhost (Chrome)"
-  }</code>
+  },</code>
 </pre>
     </div>
 
@@ -242,13 +238,13 @@
       <ol>
         <li>Abra en una pestaña el programa PHP que quiera abrir en un navegador (servido por localhost):
           <p class="captura">
-            <img src="../img/vscode/vsc-php-atajos-usar-1.png" alt="VSC. Utilizar tarea" width="1024" height="260">
+            <img src="../img/vscode/vsc-php-atajos-usar-1.png" alt="VSC. Utilizar tarea" width="1024" height="280">
           </p>
         </li>
         <li>Pulse el atajo de teclado. Por ejemplo, <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+f</span>, uno de los atajos de teclado recomendados para el curso de PHP.</li>
         <li>En el ejemplo de las capturas, la página abierta en Visual Studio Code se abriría en el navegador:
           <p class="captura">
-            <img src="../img/vscode/vsc-php-atajos-usar-2.png" alt="VSC. Utilizar tarea" width="1024" height="260">
+            <img src="../img/vscode/vsc-php-atajos-usar-2.png" alt="VSC. Utilizar tarea" width="1024" height="280">
           </p>
         </li>
       </ol>
@@ -256,7 +252,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 13 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 16 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
