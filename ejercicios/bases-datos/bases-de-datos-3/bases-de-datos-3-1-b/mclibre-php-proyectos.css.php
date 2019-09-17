@@ -2,8 +2,6 @@
 require_once "biblioteca.php";
 header("Content-type: text/css");
 ?>
-@charset "utf-8";
-
 /* PROGRAMACION WEB EN PHP                  */
 /* Bartolome Sintes Marco                   */
 /* http://www.mclibre.org                   */
