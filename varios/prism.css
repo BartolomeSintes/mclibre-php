@@ -4,18 +4,22 @@
 /*                                          */
 /* Hoja de estilo para prism.js             */
 /*                                          */
-/* 17 de septiembre de 2019                 */
+/* 21 de septiembre de 2019                 */
 /*                                          */
 
-/* Colores para cuadros de código fuente y de terminal */
+/* AVISO: Cuando las clases están divididas en dos grupos
+  es porque el primer bloque está comprobado,
+  pero el segundo no (suelen ser clases de highlight.js que
+  no sé si son tablén clases de prism).
+*/
 
-div.terminal { background-color: #1e1e1e; color: white; padding-top: 5px; padding-bottom: 5px; }
-
-div.codigo { background-color: white; color: black; padding-top: 5px; padding-bottom: 5px; }
+div.codigo { background-color: #1e1e1e; color: white; }
 
 div.codigo.idle { background-color: white; color: black; }
 
-code { line-height: 120%; /* font-weight: bold; */ }
+div.codigo-nocolor { background-color: white; color:black; }
+
+div.codigo-nocolor pre code.language-html *[class] { color: black; }
 
 .line-numbers-rows > span:before { color: black; }
 
@@ -23,66 +27,43 @@ code { line-height: 120%; /* font-weight: bold; */ }
 
 .command-line-prompt > span:before { color: white; }
 
-/* Estilo para HTML imitando a Visual Studio Code con tema Light+ */
-
-code.language-html { }
-pre code.language-html .attr-name      { color: #FF0000; }          /* attribute name            */
-pre code.language-html .attr-value     { color: #0000FF; }          /* attribute value           */
-pre code.language-html .cdata          { }                            /* cdata                     */
-pre code.language-html .comment        { color: #008000; }          /* comment                   */
-pre code.language-html .doctype        { color: #000000; }          /* doctype                   */
-pre code.language-html .entity         { }                            /* entity                    */
-pre code.language-html .namespace      { }                            /* namespace                 */
-pre code.language-html .prolog         { }                            /* prolog                    */
-pre code.language-html .punctuation    { color: #000000; }          /* punctuation               */
-pre code.language-html .tag            { color: #911F00; }          /* Tags, attributes, configs */
-
 /* Estilo para HTML imitando a Visual Studio Code con tema Dark+ */
-
-code.language-html { }
 
 pre code.language-html .attr-name      { color: #9cdcfe; }          /* attribute name            */
 pre code.language-html .attr-value     { color: #ce9178; }          /* attribute value           */
 pre code.language-html .comment        { color: #6a9955; }          /* comment                   */
 pre code.language-html .doctype        { color: #569cd6; }          /* doctype                   */
+pre code.language-html .entity         { color: #569cd6; }          /* entity                    */
 pre code.language-html .punctuation    { color: #808080; }          /* punctuation               */
 pre code.language-html .tag            { color: #569cd6; }          /* Tags, attributes, configs */
 
 pre code.language-html .cdata          { }                            /* cdata                     */
-pre code.language-html .entity         { }                            /* entity                    */
 pre code.language-html .namespace      { }                            /* namespace                 */
 pre code.language-html .prolog         { }                            /* prolog                    */
 
-/* Estilo para CSS imitando a Brackets */
-/* Pasado a medias a Prism */
+/* Estilo para código fuente HTML imitando a Firefox */
 
-code.language-css { }
+div.resultado-codigo pre code.language-html .attr-name      { color: #000000; font-weight: bold; }  /* attribute name            */
+div.resultado-codigo pre code.language-html .attr-value     { color: #0000ff; }  /* attribute value           */
+div.resultado-codigo pre code.language-html .comment        { color: #008000; }  /* comment                   */
+div.resultado-codigo pre code.language-html .doctype        { color: #4682b4; }  /* doctype                   */
+div.resultado-codigo pre code.language-html .entity         { color: #ff4500; }  /* entity                    */
+div.resultado-codigo pre code.language-html .punctuation    { color: #000000; }  /* punctuation               */
+div.resultado-codigo pre code.language-html .tag            { color: #800080; font-weight: bold; }  /* Tags, attributes, configs */
 
-pre code.language-css .atrule        { color: #8757AD; }          /* @-rule till first "{" or ";"       */
-pre code.language-css .comment       { color: #535353; }          /* comment                            */
-pre code.language-css .string        { color: #E88501; }          /* string within a value              */
-pre code.language-css .function      { color: #E88501; } /* CSS function within a value        */
-pre code.language-css .important     { color: rgb( 63,127,127); } /* "!important" symbol                */
-pre code.language-css .property      { color: #8757AD; }          /* property name inside a rule        */
-pre code.language-css .selector      { color: #446FBD; }          /* tag in selectors                   */
+/* Estilo para CSS imitando a Visual Studio Code con tema Dark+ */
 
-pre code.language-css .hljs-id            { color: #446FBD; }          /* #some_name in selectors            */
-pre code.language-css .hljs-class         { color: #446FBD; }          /* .some_name in selectors            */
-pre code.language-css .hljs-attr_selector { color: rgb( 63,127,127); } /* attribute selector ([])            */
-pre code.language-css .hljs-pseudo        { color: #535353; }          /* pseudo classes/elements            */
-pre code.language-css .hljs-rules         { color: #000000; }          /* everything from "{" till "}"       */
-pre code.language-css .hljs-value         { color: #E88501; }          /* property value inside a rule       */
-pre code.language-css .hljs-number        { color: #6D8600; }          /* number within a value              */
-pre code.language-css .hljs-hexcolor      { color: #E88501; }          /* hex color (#FFFFFF) within a value */
-
-/* Estilo para Python */
-
-code.language-python { }
-/* si se cambia aquí line-height, hay que cambiar line-height también en los números de línea */
+pre code.language-css .comment       { color: #6a9955; }          /* comment                            */
+pre code.language-css .function      { color: #dcdcaa; }          /* CSS function within a value        */
+pre code.language-css .important     { color: #569cd6ff; }          /* "!important" symbol                */
+pre code.language-css .property      { color: #9cdcfe; }          /* property name inside a rule        */
+pre code.language-css .punctuation   { color: #d4d4d4; }          /* punctuation                        */
+pre code.language-css .rule          { color: #c586c0; }          /* @-rule till first "{" or ";"       */
+pre code.language-css .selector      { color: #d7ba7d; }          /* tag in selectors                   */
+pre code.language-css .string        { color: #ce9178; }          /* string within a value              */
 
 /* Estilo para Python imitando a Visual Studio Code con tema Dark+ */
 
-div.codigo { background-color: #1e1e1e; color: white; padding-top: 5px; padding-bottom: 5px; }
 code.language-python .boolean              { color: white;   } /* boolean                             */
 code.language-python .builtin              { color: #dcdcac; } /* built-in functions                  */
 code.language-python .class-name           { color: white    } /* class header class SomeName(...):   */
@@ -99,8 +80,7 @@ code.language-python .triple-quoted-string { color: #ce9178; } /* string (of any
 
 /* Estilo para Python imitando a IDLE */
 
-div.codigo.idle { background-color: white; color: black; padding-top: 5px; padding-bottom: 5px; }
-code.language-python .boolean              { color: black;   } /* boolean                             */
+div.idle code.language-python .boolean     { color: black;   } /* boolean                             */
 code.language-python .builtin              { color: #800080; } /* built-in functions                  */
 code.language-python .class-name           { color: black;   } /* class header class SomeName(...):   */
 code.language-python .comment              { color: #FF0000; } /* comment                             */
@@ -116,24 +96,23 @@ code.language-python .triple-quoted-string { color: #00AA00; } /* string (of any
 
 /* Estilo para PHP imitando a Visual Studio Code con tema Dark+ */
 
-div.codigo { background-color: #1e1e1e; color: #d4d4d4; padding-top: 5px; padding-bottom: 5px; }
 code.language-php .function2            { color: #dcdcaa; } /* añadido por mi a prism.js para que se vea como las funciones */
 
+code.language-php .comment              { color: #6a9955; } /* comment                             */
 code.language-php .delimiter            { color: #569cd6; } /* fragmento php                       */
 code.language-php .function             { color: #dcdcaa; } /* function header def some_name(...): */
 code.language-php .keyword              { color: #c586c0; } /* keyword                             */
 code.language-php .number               { color: #b5cea8; } /* number                              */
+code.language-php .operator             { color: #d4d4d4; } /* operators                           */
 code.language-php .punctuation          { color: #d4d4d4; } /* punctuation                         */
 code.language-php .variable             { color: #9cdcfe; } /* fragmento php                       */
-
+code.language-php .string               { color: #ce9178; } /* string (of any type)                */
+code.language-php .double-quoted-string { color: #ce9178; } /* string (of any type)                */
 
 code.language-php .boolean              { color: white;   } /* boolean                             */
 code.language-php .builtin              { color: #dcdcac; } /* built-in functions                  */
 code.language-php .class-name           { color: white    } /* class header class SomeName(...):   */
-code.language-php .comment              { color: #6a9955; } /* comment                             */
 code.language-php .decorator            { color: white;   } /* decorator                           */
-code.language-php .operator             { color: #d4d4d4; } /* operators                           */
-code.language-php .string               { color: #ce9178; } /* string (of any type)                */
 code.language-php .string-interpolation { color: white;   } /* string-interpolation                */
 code.language-php .triple-quoted-string { color: #ce9178; } /* string (of any type)                */
 
@@ -150,6 +129,16 @@ pre code.language-php .cdata          { }                            /* cdata   
 pre code.language-php .entity         { }                            /* entity                    */
 pre code.language-php .namespace      { }                            /* namespace                 */
 pre code.language-php .prolog         { }                            /* prolog                    */
+
+/* Estilo para JSON imitando a Visual Studio Code con tema Dark+ */
+
+pre code.language-json .boolean       { color: #569cd6; }          /* valor (booleano)          */
+pre code.language-json .comment       { color: #6a9955; }          /* comentario                */
+pre code.language-json .number        { color: #b5cea8; }          /* valor (número)            */
+pre code.language-json .property      { color: #9cdcfe; }          /* clave                     */
+pre code.language-json .punctuation   { color: #d4d4d4; }          /* puntuación, llaves, etc   */
+pre code.language-json .string        { color: #ce9178; }          /* valor (cadena)            */
+
 
 /* CSS para plugin Line Numbers de Prism */
 
@@ -171,7 +160,6 @@ pre.line-numbers > code {
   left: -2.8em;
   width: 2em; /* works for line-numbers below 1000 lines */
   letter-spacing: -1px;
-  line-height: 144.8%;
   border-right: 1px solid #999;
 
   -webkit-user-select: none;
@@ -197,36 +185,99 @@ pre.line-numbers > code {
 /* CSS para plugin Command Line de Prism */
 
 .command-line-prompt {
-	border-right: 1px solid #999;
-	display: block;
-	float: left;
-	font-size: 100%;
-	letter-spacing: -1px;
-	margin-right: 1em;
-	pointer-events: none;
-  line-height: 144.8%;
+  border-right: 1px solid #999;
+  display: block;
+  float: left;
+  font-size: 100%;
+  letter-spacing: -1px;
+  margin-right: 1em;
+  pointer-events: none;
 
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .command-line-prompt > span:before {
-	color: white;
-	content: ' ';
-	display: block;
-	padding-right: 0.8em;
+  color: white;
+  content: ' ';
+  display: block;
+  padding-right: 0.8em;
 }
 
 .command-line-prompt > span[data-user]:before {
-	content: "[" attr(data-user) "@" attr(data-host) "] $";
+  content: "[" attr(data-user) "@" attr(data-host) "] $";
 }
 
 .command-line-prompt > span[data-user="root"]:before {
-	content: "[" attr(data-user) "@" attr(data-host) "] #";
+  content: "[" attr(data-user) "@" attr(data-host) "] #";
 }
 
 .command-line-prompt > span[data-prompt]:before {
-	content: attr(data-prompt);
+  content: attr(data-prompt);
+}
+
+/* CSS para plugin Toolbar (utilizado por plugin Copy to Clipboard)  */
+
+div.code-toolbar {
+  position: relative;
+}
+
+div.code-toolbar > .toolbar {
+  position: absolute;
+  top: .3em;
+  right: .2em;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+div.code-toolbar:hover > .toolbar {
+  opacity: 1;
+}
+
+/* Separate line b/c rules are thrown out if selector is invalid.
+   IE11 and old Edge versions don't support :focus-within. */
+div.code-toolbar:focus-within > .toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+  display: inline-block;
+}
+
+div.code-toolbar > .toolbar a {
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar button {
+  background: none;
+  border: 0;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+div.code-toolbar > .toolbar a,
+div.code-toolbar > .toolbar button,
+div.code-toolbar > .toolbar span {
+  color: black;
+  font-size: 1.2em;
+  padding: .2em .5em;
+  background: white;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+  border-radius: .5em;
+}
+
+div.code-toolbar > .toolbar a:hover,
+div.code-toolbar > .toolbar a:focus,
+div.code-toolbar > .toolbar button:hover,
+div.code-toolbar > .toolbar button:focus,
+div.code-toolbar > .toolbar span:hover,
+div.code-toolbar > .toolbar span:focus {
+  text-decoration: none;
 }
