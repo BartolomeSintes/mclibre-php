@@ -1,7 +1,6 @@
 <?php
 /**
- .
-    Variables. Sin formularios.(1) 5 - variables-1-5.php
+ * Variables. Sin formularios.(1) 5 - variables-1-5.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
