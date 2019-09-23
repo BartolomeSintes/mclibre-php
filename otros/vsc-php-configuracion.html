@@ -96,7 +96,7 @@
 
     <p>Estas son las preferencias de configuración que se aconseja establecer para seguir el curso <a href="../index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <p>Estas preferencias se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#preferencias">preferencias recomendadas</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Establezca dichas preferencias de configuración y después añada estas preferencias. Tenga en cuenta que estas preferencias deben añadirse dentro de las llaves inicial ({) y final (}.</p>
+    <p>Las preferencias globales se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#preferencias">preferencias globales recomendadas</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Establezca dichas preferencias de configuración y después añada estas preferencias. Tenga en cuenta que estas preferencias deben añadirse dentro de las llaves inicial ({) y final (}.</p>
 
     <section id="todas-preferencias">
       <h3>Preferencias globales (Usuario)</h3>
@@ -106,19 +106,38 @@
   //
   // PHP: Validate: Executable path
   // Ubicación del intérprete de PHP.
-  "php.validate.executablePath": "C:/xampp/php/php.exe",
+  "php.validate.executablePath": "<span class="codigo-resaltado">C:/xampp/php/php.exe</span>",
   //
   // PHP: Validate: Run
   // Indica la validación se ejecuta al guardar o al escribir.
   "php.validate.run": "onType",
   //
   //
-  // Configuración de extensiones recomendadas para el curso Programación web en PHP de www.mclibre.org
+  // Configuraciones de extensiones recomendadas para el curso Programación web en PHP de www.mclibre.org
   //
   // Extensión PHP Intellisense
+  //
   // PHP: Executable Path
   // Ubicación del intérprete de PHP.
-  "php.executablePath":  "C:/xampp/php/php.exe",
+  "php.executablePath": "C:/xampp/php/php.exe",
+  //
+  //
+  // Extensión PHP CS Fixer
+  //
+  // Ubicación del ejecutable de php-cs-fixer
+  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vcode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  "php-cs-fixer.executablePathWindows": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  // Configuraciones de php-cs-fixer
+  "php-cs-fixer.onsave": false,
+  "php-cs-fixer.rules": "@PSR2",
+  "php-cs-fixer.config": ".php_cs;.php_cs.dist",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.pathMode": "override",
+  "php-cs-fixer.exclude": [],
+  "php-cs-fixer.autoFixByBracket": true,
+  "php-cs-fixer.autoFixBySemicolon": false,
+  "php-cs-fixer.formatHtml": false,
+  "php-cs-fixer.documentFormattingProvider": true,
   //
   //</code>
 </pre>
@@ -146,16 +165,88 @@
 
     <p>Estas son las extensiones que se aconseja instalar para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <section id="php-extension-pack">
-      <h3>PHP Extension Pack</h3>
+    <section id="php-intellisense">
+      <h3>PHP Intellisense</h3>
 
       <p><img src="../img/vscode/vsc-extension-php-extension-pack-logo.png" alt="Logotipo de PHP Extension Pack" width="128" height="67" class="izquierda"></p>
 
       <p>Autor: Felix Becker</p>
 
-      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-pack">PHP Extension Pack</a></p>
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-intellisense">PHP Intellisense</a></p>
 
-      <p>Repositorio GitHub: <a href="https://github.com/felixfbecker/vscode-php-pack"></a></p>
+      <p>Repositorio GitHub: <a href="https://github.com/felixfbecker/vscode-php-intellisense">PHP Intellisense</a></p>
+
+      <hr class="corta">
+
+      <p>Preferencias globales recomendadas para PHP Intellisense:</p>
+      <div class="codigo">
+        <pre>
+<code class="language-json">  // Extensión PHP Intellisense
+  //
+  // PHP: Executable Path
+  // Ubicación del intérprete de PHP.
+  "php.executablePath": "<span class="codigo-resaltado">C:/xampp/php/php.exe</span>",
+  //</code>
+</pre>
+      </div>
+
+      <hr class="corta">
+
+      <p>PHP Intellisene proporciona autocompletado, argumentos de funciones, acceso directo a definiciones, etc..</p>
+
+    </section>
+
+    <section id="php-cs-fixer">
+      <h3>PHP CS Fixer</h3>
+
+      <p><img src="../img/vscode/vsc-extension-php-cs-fixer-logo.png" alt="Logotipo de PHP cs fixer" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: junstyle</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=junstyle.php-cs-fixer">PHP CS Fixer</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/junstyle/vscode-php-cs-fixer">PHP CS Fixer</a></p>
+
+      <hr class="corta">
+
+      <p>Preferencias globales recomendadas para PHP CS Fixer:</p>
+      <div class="codigo">
+        <pre>
+<code class="language-json">  // Extensión PHP CS Fixer
+  //
+  // Ubicación del ejecutable de php-cs-fixer
+  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  "php-cs-fixer.executablePathWindows": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  // Configuraciones de php-cs-fixer
+  "php-cs-fixer.onsave": false,
+  "php-cs-fixer.rules": "@PSR2",
+  "php-cs-fixer.config": ".php_cs;.php_cs.dist",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.pathMode": "override",
+  "php-cs-fixer.exclude": [],
+  "php-cs-fixer.autoFixByBracket": true,
+  "php-cs-fixer.autoFixBySemicolon": false,
+  "php-cs-fixer.formatHtml": false,
+  "php-cs-fixer.documentFormattingProvider": true,
+  //</code>
+</pre>
+      </div>
+
+      <hr class="corta">
+
+      <p><a href="https://cs.symfony.com/">PHP Coding Standards Fixer (PHP CS-Fixer)</a> es una herramienta creada por los autores del framework PHP <a href="https://symfony.com/">Symfony</a>. Esta extensión permite utilizarla en Visual Studio Code.</p>
+
+      <p>Una vez instalada, aplique la herramienta mediante el atajo de teclado habitual para formatear código <span class="soft-atajo-teclado">Alt+Shift+f</span>.</p>
+
+      <p>La herramienta CS Fixer no está diseñada para formatear archivos con fragmentos HTML y fragmentos PHP, por ello al formatear estos archivos únicamente se formateará el código PHP, no el HTML.</p>
+
+      <p><strong>Notas</strong>:</p>
+      <ul>
+        <li>Realmente, esta extensión puede formatear también los fragmentos HTML (estableciendo a configuración "hp-cs-fixer.formatHtml" con el valor true), pero el resultado no me termina de gustar y por eso no recomiendo activarlo.</li>
+        <li>Existe una extensión para facilitar el formateo de fragmentos HTML,<a href="https://marketplace.visualstudio.com/items?itemName=rifi2k.format-html-in-php">Format HTML in PHP</a>, pero el resultado tampoco me termina de gustar y por eso no recomiendo instalarla.
+          <p>La <a href="https://github.com/RiFi2k/format-html-in-php/issues/27">issue #27</a> es una de la que megustaría ver resuelta antes de recomendar esta extensión.</p>
+        </li>
+      </ul>
     </section>
   </section>
 
@@ -177,10 +268,10 @@
       "label": "Abrir en localhost (Firefox)",
       "command": "explorer",
       "windows": {
-        "command": "C:/Program Files/Mozilla Firefox/firefox.exe"
+        "command": "<span class="codigo-resaltado">C:/Program Files/Mozilla Firefox/firefox.exe</span>"
       },
       "args": [
-        "localhost/iaw/php/${relativeFile}"
+        "<span class="codigo-resaltado">localhost/iaw-nombre-de-alumno/php/${relativeFile}</span>"
       ],
       "presentation": {
         "reveal": "never"
@@ -191,10 +282,10 @@
       "label": "Abrir en localhost (Chrome)",
       "command": "explorer",
       "windows": {
-        "command": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+        "command": "<span class="codigo-resaltado">C:/Program Files (x86)/Google/Chrome/Application/chrome.exe</span>"
       },
       "args": [
-        "localhost/iaw/php/${relativeFile}"
+        "<span class="codigo-resaltado">localhost/iaw-nombre-de-alumno/php/${relativeFile}</span>"
       ],
       "presentation": {
         "reveal": "never"
@@ -252,7 +343,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 22 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
