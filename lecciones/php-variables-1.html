@@ -44,17 +44,20 @@
     </ul>
 
     <div class="codigo">
-      <pre>
+<!-- Utilizo span porque highlight no detecta la ñ como parte del nombre de la variable -->
+<pre>
 <code class="language-php">&lt;?php
-// Ejemplos de nombres de variables (algunos de ellos no recomendados):
+// Ejemplos de nombres de variables:
 $edad   = 16;
-$_edad  = 17;
-$Edad   = 18;
-$__edad = 19;
-$EDAD   = 20;
-$_EDAD  = 21;
-$edad1  = 22;
-$edad_1 = 23;
+$edad1  = 17;
+$edad_1 = 18;
+// Ejemplos de nombres de variables (estilos NO redomendados)
+<span class="variable">$años</span> = 19;
+$_edad  = 20;
+$Edad   = 21;
+$__edad = 22;
+$EDAD   = 23;
+$_EDAD  = 24;
 ?&gt;</code>
 </pre>
     </div>
@@ -144,16 +147,18 @@ print $edad;
         <pre>
 <code class="language-php">&lt;?php
 $edad = 15;
-print $edad;
-print "\n";
+print "&lt;p&gt;$edad&lt;/p&gt;\n";
 $edad = 20;
-print $edad;
+print "&lt;p&gt;$edad&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">15 20</code></pre>
-      </div>
+          <pre>
+<code class="language-html">&lt;p&gt;15&lt;/p&gt;
+&lt;p&gt;20&lt;/p&gt;
+</code></pre>
+        </div>
     </div>
 
     <hr class="corta">
@@ -239,15 +244,17 @@ print $Edad;
         <pre>
 <code class="language-php">&lt;?php
 $edad = 15;
-print $edad;
-print "\n";
+print "&lt;p&gt;$edad&lt;/p&gt;\n";
 $edad = "quince";
-print $edad;
+print "&lt;p&gt;$edad&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">15 quince</code></pre>
+        <pre>
+<code class="language-html">&lt;p&gt;15&lt;/p&gt;
+&lt;p&gt;quince&lt;/p&gt;
+</code></pre>
       </div>
     </div>
   </section>
@@ -319,6 +326,22 @@ print "&lt;p&gt;¡Hola, $nombre! ¿Cómo está usted?&lt;/p&gt;\n";
       </div>
       <div class="resultado-codigo">
         <pre><code class="language-html">&lt;p&gt;¡Hola, Don Pepito! ¿Cómo está usted?&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>En el ejemplo siguiente no queda más remedio que utilizar el operador . (punto) porque uno de los datos que se intercala es el resultado de una operación.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$semanas = 5;
+print "&lt;p&gt;$semanas semanas son " . (7 * $semanas) . " días.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;5 semanas son 35 días.&lt;/p&gt;</code></pre>
       </div>
     </div>
   </section>
@@ -650,7 +673,7 @@ print "&lt;p&gt;2 por {$x} es {2 * $x}&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 23 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
