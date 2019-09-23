@@ -790,7 +790,8 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br><br>
 }</code>
 </pre>
         <pre>
-<code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
+<code class="language-php">
+if (<span class="codigo-resaltado">$nombre == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
@@ -826,16 +827,15 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br><br>
 <code class="language-php">&lt;?php
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
 <br>
-<br>
 </pre>
-        <pre class="codigo-resaltado">
+<pre class="codigo-resaltado">
 <code class="language-php">if (isset($_REQUEST["nombre"])) {
     $nombre = trim(strip_tags($_REQUEST["nombre"]));
 } else {
     $nombre = "";
 }</code>
 </pre>
-        <pre>
+<pre>
 <code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
@@ -875,10 +875,8 @@ print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code><br><br></pre>
         <pre class="codigo-resaltado"><code class="language-php">$nombre = (isset($_REQUEST["nombre"]))
     ? trim(strip_tags($_REQUEST["nombre"]))
-    : "";</code>
-</pre>
-        <pre>
-<code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
+    : "";
+if (<span class="codigo-resaltado">$nombre == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";

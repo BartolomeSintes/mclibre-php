@@ -415,10 +415,8 @@ if (isset($_SESSION["error"])) {
     print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
     print "\n";
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">...</code>
+?&gt;
+// ...</code>
 </pre>
       </div>
 
@@ -495,20 +493,16 @@ header("Location:sesiones-1-03-1.php");
 // Se accede a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-03-b");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
   &lt;form action="sesiones-1-03-b-2.php" method="get"&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 //Si hay guardada una palabra en la sesión ... <span class="numero-circulo">12</span>
 if (isset($_SESSION["palabra"])) {
     // ... mostramos la palabra
@@ -536,10 +530,8 @@ if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
   print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
   print "\n";
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">...</code>
+?&gt;
+// ...</code>
 </pre>
       </div>
 
@@ -618,49 +610,43 @@ header("Location:sesiones-1-03-b-1.php");
 // Se accede a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-03-c");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
   &lt;form action="sesiones-1-03-c-2.php" method="get"&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
-  //Si hay guardada una palabra en la sesión ... <span class="numero-circulo">11</span>
-  if (isset($_SESSION["palabra"])) {
-      // ... mostramos la palabra
-      print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
-      print "\n";
-  }
 
-  print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
-  print "\n";
+&lt;?php
+//Si hay guardada una palabra en la sesión ... <span class="numero-circulo">11</span>
+if (isset($_SESSION["palabra"])) {
+    // ... mostramos la palabra
+    print "    &lt;p&gt;Ha escrito una palabra en mayúsculas: &lt;strong&gt;$_SESSION[palabra]&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
 
-  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" ";
+print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
+print "\n";
 
-  // Si hay que incluir el intento anterior en value, lo incluimos <span class="numero-circulo">9</span>
-  if (isset($_SESSION["intento"])) {
-      print "value=\"$_SESSION[intento]\" ";
-  }
+print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" ";
 
-  print "size=\"20\" maxlength=\"20\"&gt; ";
+// Si hay que incluir el intento anterior en value, lo incluimos <span class="numero-circulo">9</span>
+if (isset($_SESSION["intento"])) {
+    print "value=\"$_SESSION[intento]\" ";
+}
 
-  // Si hay que incluir un aviso, lo incluimos <span class="numero-circulo">10</span>
-  if (isset($_SESSION["error"])) {
-      print "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
-  }
+print "size=\"20\" maxlength=\"20\"&gt; ";
 
-  print "\n";
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">...</code>
+// Si hay que incluir un aviso, lo incluimos <span class="numero-circulo">10</span>
+if (isset($_SESSION["error"])) {
+    print "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
+}
+
+print "\n";
+?&gt;
+// ...</code>
 </pre>
       </div>
 
@@ -785,19 +771,16 @@ header("Location:sesiones-1-03-d-1.php");
 // Se accede a la sesión <span class="numero-circulo">9</span>
 session_name("sesiones-1-04");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
-  &lt;form action="sesiones-1-04-2.php" method="get"&gt;</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+  &lt;form action="sesiones-1-04-2.php" method="get"&gt;
+
+&lt;?php
 //Si no hemos detectado error en la palabra en mayúsculas y hay guardada una palabra en la sesión ... <span class="numero-circulo">14</span>
 if (!isset($_SESSION["mayusculasError"]) && !isset($_SESSION["minusculasError"])
     && isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
@@ -842,10 +825,8 @@ if (isset($_SESSION["minusculasError"])) {
     print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
     print "\n";
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">...</code>
+?&gt;
+// ...</code>
 </pre>
       </div>
 
@@ -919,20 +900,16 @@ header("Location:sesiones-1-04-1.php");
 // Se accede a la sesión <span class="numero-circulo">9</span>
 session_name("sesiones-1-04-b");
 session_start();
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
 &lt;body&gt;
   &lt;h1&gt;Formulario Palabra en mayúsculas (Formulario)&lt;/h1&gt;
 
   &lt;form action="sesiones-1-04-b-2.php" method="get"&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 //Si están guardadas en la sesión las dos palabras ... <span class="numero-circulo">14</span>
 if (isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
     // ... mostramos las dos palabras
@@ -986,10 +963,8 @@ if (isset($_SESSION["minusculasError"])) {
 
 print "&lt;/p&gt;\n";
 print "\n";
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">...</code>
+?&gt;
+// ...</code>
 </pre>
       </div>
 
@@ -1085,24 +1060,18 @@ session_start();
 if (!isset($_SESSION["numero"])) {<span class="numero-circulo">8</span>
     $_SESSION["numero"] = 0;
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
     &lt;p&gt;
       &lt;button type="submit" name="accion" value="bajar" style="font-size: 4rem"&gt;-&lt;/button&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 // Muestra el número, guardado en la sesión <span class="numero-circulo">6</span>
 print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
       &lt;button type="submit" name="accion" value="subir" style="font-size: 4rem"&gt;+&lt;/button&gt;
     &lt;/p&gt;
 // ...</code>
@@ -1184,20 +1153,16 @@ session_start();
 if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
-            &lt;line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" /&gt;</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+            &lt;line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" /&gt;
+&lt;?php
 // Dibuja el círculo en su posición <span class="numero-circulo">7</span>
 print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" /&gt;\n";
-?&gt;</code>
-<code class="language-html">          &lt;/svg&gt;
+?&gt;
+          &lt;/svg&gt;
 // ...</code>
 </pre>
       </div>
@@ -1285,29 +1250,22 @@ session_start();
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
         &lt;td&gt;
           &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
           width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid"&gt;
-</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+
+&lt;?php
 // Dibuja el círculo en su posición <span class="numero-circulo">7</span>
 print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" /&gt;\n";
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
   &lt;/svg&gt;
   &lt;/td&gt;
-// ...
-</code>
+// ...</code>
 </pre>
       </div>
 
@@ -1403,46 +1361,36 @@ session_start();
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">
+?&gt;
+
 &lt;!DOCTYPE html&gt;
 // ...
       &lt;tr&gt;
         &lt;td style="vertical-align: top;"&gt;&lt;button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hsl(200, 100%, 50%);"&gt;&#x2714;&lt;/button&gt;&lt;/td&gt;
-        &lt;td&gt;</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+        &lt;td&gt;
+&lt;?php
 // Dibujamos la primera barra <span class="numero-circulo">6</span>
 print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[a]\" height=\"50\"&gt;\n";
 print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hsl(200, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
 print "          &lt;/svg&gt;\n";
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">        &lt;/td&gt;
+?&gt;
+
+      &lt;/td&gt;
       &lt;tr&gt;
         &lt;td&gt;&lt;button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hsl(35, 100%, 50%)"&gt;&#x2714;&lt;/button&gt;&lt;/td&gt;
-        &lt;td&gt;</code>
-</pre>
-        <pre>
-<code class="language-php">&lt;?php
+        &lt;td&gt;
+&lt;?php
 // Dibujamos la segunda barra <span class="numero-circulo">7</span>
 print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[b]\" height=\"50\"&gt;\n";
 print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hsl(35, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
 print "          &lt;/svg&gt;\n";
-?&gt;</code>
-</pre>
-        <pre>
-<code class="language-html">        &lt;/td&gt;
+?&gt;
+        &lt;/td&gt;
       &lt;/tr&gt;
     &lt;/table&gt;
-// ...
-</code>
+// ...</code>
 </pre>
       </div>
 

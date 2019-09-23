@@ -87,7 +87,7 @@
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong># 2018-09-01. Barto. He cambiado el directorio raíz del servidor
+<code class="language-configuracion"><strong># 2019-09-01. Barto. He cambiado el directorio raíz del servidor
 #</strong> DocumentRoot "C:/xampp/htdocs"
 <strong>DocumentRoot "C:/www"</strong></code>
 </pre>
@@ -148,9 +148,9 @@
 
       <p>A la hora de añadir otras páginas en el servidor, se puede hacer de varias formas:</p>
       <ul>
-        <li>Añadir nuestras páginas en el directorio predeterminado de XAMPP. Tiene el inconveniente de que ese directorio no está donde se suelen guardar los documentos (en Windows, Mis documentos) y estamos mezclando nuestros ficheros con los de XAMPP.</li>
+        <li>Añadir nuestras páginas en el directorio predeterminado de XAMPP. Tiene el inconveniente de que ese directorio no está donde se suelen guardar los documentos (en Windows, Documentos) y estamos mezclando nuestros ficheros con los de XAMPP.</li>
         <li>Cambiar el directorio raíz del servidor, modificando la directiva DocumentRoot (como se explica en la lección <a href="php-configuracion-2.html#document-root">Configuración 2</a>). Tiene el inconveniente de que no podríamos acceder a la página web de administración de XAMPP (aunque podríamos crear una directiva Alias para posibilitar el acceso).</li>
-        <li>Crear directorios de usuario, mediante la directiva UserDir (como se explica en la lección <a href="php-configuracion-2.html#user-dir">Configuración 2</a>). Es la mejor solución en un ordenador con varios usuarios de Windows para que cada usuario tenga sus propias páginas separadas e independientes del resto. Cada usuario puede guardar sus páginas en un directorio (con el mismo nombre para todos los usuarios, pero cada uno en su propia carpeta de Mis Documentos) y cada usuario sólo ve sus páginas.</li>
+        <li>Crear directorios de usuario, mediante la directiva UserDir (como se explica en la lección <a href="php-configuracion-2.html#user-dir">Configuración 2</a>). Es la mejor solución en un ordenador con varios usuarios de Windows para que cada usuario tenga sus propias páginas separadas e independientes del resto. Cada usuario puede guardar sus páginas en un directorio (con el mismo nombre para todos los usuarios, pero cada uno en su propia carpeta de Documentos) y cada usuario sólo ve sus páginas.</li>
         <li>Crear uno o varios alias, mediante la directiva Alias. Es la mejor solución cuando sólo hay un usuario de Windows que utiliza XAMPP. También se puede utilizar cuando hay varios usuarios, pero entonces estos tienen que tener en cuenta los alias creados por los demás, puesto que los nombres de los alias no se pueden repetir.</li>
       </ul>
 
@@ -172,11 +172,9 @@
 
       <p>En XAMPP 7.3 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-      <hr class="corta">
-
       <p>Además, hay que añadir en el archivo httpd.conf una directiva Alias dentro de la directiva &lt;IfModule alias_module&gt; (que ya existe en XAMPP 7.3).</p>
 
-      <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Mis Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
+      <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
 
       <table class="tabla-con-borde">
         <tbody>
@@ -187,13 +185,13 @@
           </tr>
           <tr>
             <td>Programas escritos en el curso de PHP</td>
-            <td>http://localhost/clase</td>
-            <td>Mis documentos/Cursos/PHP</td>
+            <td>http://localhost/clase/</td>
+            <td>Documentos &gt; Cursos &gt; PHP</td>
           </tr>
           <tr>
             <td>Programas escritos para el trabajo</td>
-            <td>http://localhost/curro</td>
-            <td>Mis documentos/Trabajo/PHP</td>
+            <td>http://localhost/curro/</td>
+            <td>Documentos &gt; Trabajo &gt; PHP</td>
           </tr>
         </tbody>
       </table>
@@ -206,7 +204,7 @@
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-<strong>    # 2018-09-01. He añadido este Alias para los programas escritos en el curso de PHP.</strong>
+<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.</strong>
     <strong>Alias <span class="codigo-resaltado">/clase</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -214,7 +212,7 @@
       Require all granted
     &lt;/Directory&gt;</strong>
 
-<strong>    # 2018-09-01. He añadido este Alias para los programas escritos para el trabajo.
+<strong>    # 2019-09-01. He añadido este Alias para los programas escritos para el trabajo.
     Alias <span class="codigo-resaltado">/curro</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Trabajo\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Trabajo\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -232,7 +230,7 @@
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-<strong>    # 2018-09-01. He añadido este Alias para los programas escritos en el curso de PHP.
+<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.
     Alias <span class="codigo-resaltado">/clase</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -240,7 +238,7 @@
       Require all granted
     &lt;/Directory&gt;</strong>
 
-<strong>    # 2018-09-01. He añadido este Alias para los programas escritos para el trabajo.
+<strong>    # 2019-09-01. He añadido este Alias para los programas escritos para el trabajo.
     Alias <span class="codigo-resaltado">/curro</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Trabajo/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"home/NombreDeUsuario/Documents/Trabajo/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -258,6 +256,66 @@
       <p>Como se comenta en el apartado de la directiva DocumentRoot, se debe incluir una directiva &lt;Directory&gt; para el directorio indicado en la directiva Alias.</p>
 
       <p>Hay que tener cuidado con las erratas, ya que cualquier error impedirá que Apache se ponga en marcha.</p>
+
+      <hr class="corta">
+
+      <p>Un alias puede abarcar varios pasos de la ruta, como muestra el ejemplo siguiente.</p>
+
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Programas</th>
+            <th>Ruta en el navegador</th>
+            <th>Carpeta en el disco</th>
+          </tr>
+          <tr>
+            <td>Programas escritos en el curso de PHP</td>
+            <td>http://localhost/iaw/php/</td>
+            <td>Documentos &gt; Cursos &gt; 2019 &gt; PHP</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>La directiva Alias sería la siguiente.</p>
+      <ul>
+        <li>en Windows:<br>
+
+          <div class="codigo">
+            <pre>
+<code class="language-configuracion">&lt;IfModule alias_module&gt;
+# ...
+<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.</strong>
+    <strong>Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\2019\PHP"</span>
+    &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\2019\PHP"</span>&gt;
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    &lt;/Directory&gt;</strong>
+# ...
+&lt;/IfModule&gt;</code>
+</pre>
+          </div>
+        </li>
+        <li>en GNU/Linux:<br>
+
+          <div class="codigo">
+            <pre>
+<code class="language-configuracion">&lt;IfModule alias_module&gt;
+# ...
+<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.
+    Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/2019/PHP"</span>
+    &lt;Directory <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/2019/PHP"</span>&gt;
+      Options Indexes FollowSymLinks Includes ExecCGI
+      AllowOverride All
+      Require all granted
+    &lt;/Directory&gt;</strong>
+# ...
+&lt;/IfModule&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+
     </section>
   </section>
 
@@ -399,7 +457,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2018-09-01. Barto. He cambiado error_reporting para mostrar todos los errores</strong>
+<code class="language-configuracion"><strong>; 2019-09-01. Barto. He cambiado error_reporting para mostrar todos los errores</strong>
 <strong>;</strong> error_reporting=E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT
 <strong>error_reporting=E_ALL </strong></code>
 </pre>
@@ -520,7 +578,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2018-09-01. Barto. Desactivo output_buffering
+<code class="language-configuracion"><strong>; 2019-09-01. Barto. Desactivo output_buffering
 ;</strong> output_buffering=4096
 <strong>output_buffering=0</strong></code>
 </pre>
@@ -600,7 +658,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2018-09-01. Barto. He cambiado el nombre del huso horario a Madrid
+<code class="language-configuracion"><strong>; 2019-09-01. Barto. He cambiado el nombre del huso horario a Madrid
 ;</strong> date.timezone=Europe/Berlin
 <strong>date.timezone=Europe/Madrid</strong></code>
 </pre>
@@ -630,12 +688,12 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2018-09-01. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173</strong>
+<code class="language-configuracion"><strong>; 2019-09-01. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173</strong>
 ; https://www.php.net/date.default-latitude
 ;date.default_latitude = 31.7667
 <strong>date.default_latitude=40.4173</strong>
 
-<strong>; 2018-09-01. Barto. He cambiado la longitud a Madrid: 3 42 22 W = -3.7063</strong>
+<strong>; 2019-09-01. Barto. He cambiado la longitud a Madrid: 3 42 22 W = -3.7063</strong>
 ; https://www.php.net/date.default-longitude
 ;date.default_longitude = 35.2333
 <strong>date.default_longitude=-3.7063</strong>
@@ -744,7 +802,7 @@ if (function_exists("finfo_open") &amp;&amp; function_exists("finfo_file") &amp;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 13 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 18 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
