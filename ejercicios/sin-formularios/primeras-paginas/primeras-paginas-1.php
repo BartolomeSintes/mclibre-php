@@ -1,7 +1,6 @@
 <?php
 /**
- *
-    Primeras páginas. Sin formularios.1 - primeras-paginas-1.php
+ * Primeras páginas. Sin formularios.1 - primeras-paginas-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -32,4 +31,3 @@ print "<body>\n";
 print "  <p>¡Hola, mundo!</p>\n";
 print "</body>\n";
 print "</html>";
-?>

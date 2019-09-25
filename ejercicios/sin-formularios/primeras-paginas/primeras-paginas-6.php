@@ -1,7 +1,6 @@
 <?php
 /**
- *
-    Primeras páginas. Sin formularios.6 - primeras-paginas-6.php
+ * Primeras páginas. Sin formularios.6 - primeras-paginas-6.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
