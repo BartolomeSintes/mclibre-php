@@ -55,29 +55,29 @@
   <section id="area-trabajo">
     <h2>Área de trabajo</h2>
 
-    <p>Esta es el área de trabajo recomendada para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
+    <p>En este curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a> se utilizará una <strong>carpeta</strong> como área de trabajo de Visual Studio Code (no un Espacio de trabajo).</p>
 
     <ol>
-      <li>Cree la carpeta Documentos &gt; IAW &gt; PHP:
+      <li>Con el Explorador de archivos de Windows, cree la carpeta Documentos &gt; IAW SuNombre &gt; PHP:
 
         <p class="captura">
           <img src="../img/vscode/vsc-php-area-trabajo-1.png" alt="VSC. Área de trabajo" width="1024" height="170">
         </p>
       </li>
 
-      <li>Cree las carpeta Documentos &gt; IAW &gt; PHP &gt; ejercicios y Documentos &gt; IAW &gt; PHP &gt; pruebas:
+      <li>Cree las carpeta Documentos &gt; IAW SuNombre &gt; PHP &gt; ejercicios y Documentos &gt; IAW SuNombre &gt; PHP &gt; pruebas:
         <p class="captura">
           <img src="../img/vscode/vsc-php-area-trabajo-2.png" alt="VSC. Área de trabajo" width="1024" height="200">
         </p>
       </li>
 
-      <li>Elija la opción de menú <span class="soft-menu">Archivo &gt; Abrir carpeta ...</span>:
+      <li>En Visual Studio Code, elija la opción de menú <span class="soft-menu">Archivo &gt; Abrir carpeta ...</span>:
         <p class="captura">
           <img src="../img/vscode/vsc-php-area-trabajo-3.png" alt="VSC. Área de trabajo" width="1024" height="200">
         </p>
       </li>
 
-      <li>Elija la carpeta Documentos &gt; IAW &gt; PHP:
+      <li>Elija la carpeta Documentos &gt; IAW SuNombre &gt; PHP:
         <p class="captura">
           <img src="../img/vscode/vsc-php-area-trabajo-4.png" alt="VSC. Área de trabajo" width="1024" height="576">
         </p>
@@ -96,13 +96,31 @@
 
     <p>Estas son las preferencias de configuración que se aconseja establecer para seguir el curso <a href="../index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
-    <p>Las preferencias globales se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#preferencias">preferencias globales recomendadas</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Establezca dichas preferencias de configuración y después añada estas preferencias. Tenga en cuenta que estas preferencias deben añadirse dentro de las llaves inicial ({) y final (}.</p>
-
-    <section id="todas-preferencias">
+    <section id="preferencias-globales">
       <h3>Preferencias globales (Usuario)</h3>
+
+      <p>En primer lugar, establezca las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#preferencias">preferencias globales recomendadas</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
+
+      <p>A continuación, añada las preferencias globales que se muestran a continuación, que son específicas para el curso de PHP.</p>
+
+      <p>Tenga en cuenta que estas preferencias deben añadirse dentro de las llaves inicial ({) y final (}).</p>
+
+      <p>Tenga en cuenta que puede ser necesario modificar las preferencias resaltadas del ejemplo siguiente:</p>
+      <ul>
+        <li>"php.validate.executablePath" y "php.executablePath": deben indicar la ruta hasta el ejecutable de PHP. El valor incluido en el ejemplo es el predeterminado de XAMPP en Windows.</li>
+        <li>"php-cs-fixer.executablePath" y "php-cs-fixer.executablePathWindows": debe indicar la ruta hasta el ejecutable de PHp CS Fixer. El valor incluido en el ejemplo es el predeterminado de VSCode (versión de usuario) en Windows 10. Como mínimo, en esta ruta será necesario cambiar el NombreDeUsuario.</li>
+        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o contrabarras dobles (\\), pero no contrabarras simples (\).</li>
+      </ul>
+
       <div class="codigo">
         <pre>
 <code class="language-json">  // Configuraciones recomendadas para el curso Programación web en PHP de www.mclibre.org
+  //
+  // PHP
+  // Establece los valores de configuración que se reemplazarán para el lenguaje PHP
+  "[php]": {
+    "editor.tabSize": 4,
+  },
   //
   // PHP: Validate: Executable path
   // Ubicación del intérprete de PHP.
@@ -119,18 +137,18 @@
   //
   // PHP: Executable Path
   // Ubicación del intérprete de PHP.
-  "php.executablePath": "C:/xampp/php/php.exe",
+  "php.executablePath": "<span class="codigo-resaltado">C:/xampp/php/php.exe</span>",
   //
   //
   // Extensión PHP CS Fixer
   //
   // Ubicación del ejecutable de php-cs-fixer
-  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vcode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
   "php-cs-fixer.executablePathWindows": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
   // Configuraciones de php-cs-fixer
   "php-cs-fixer.onsave": false,
   "php-cs-fixer.rules": "@PSR2",
-  "php-cs-fixer.config": ".php_cs;.php_cs.dist",
+  "php-cs-fixer.config": "php-cs-fixer-config.php"",
   "php-cs-fixer.allowRisky": false,
   "php-cs-fixer.pathMode": "override",
   "php-cs-fixer.exclude": [],
@@ -142,8 +160,13 @@
   //</code>
 </pre>
       </div>
+    </section>
 
+    <section id="preferencias-carpeta">
       <h3>Preferencias de área de trabajo o carpeta (Área de trabajo)</h3>
+
+      <p>Establezca las siguientes preferencias de área de trabajo:</p>
+
       <div class="codigo">
         <pre>
 <code class="language-json">{
@@ -163,7 +186,11 @@
   <section id="extensiones">
     <h2>Extensiones recomendadas para el curso de PHP</h2>
 
-    <p>Estas son las extensiones que se aconseja instalar para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
+    <p>Estas son las extensiones que se aconseja instalar para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>:</p>
+    <ul>
+      <li>PHP Intellisense</li>
+      <li>PHP CS Fixer</li>
+    </ul>
 
     <section id="php-intellisense">
       <h3>PHP Intellisense</h3>
@@ -178,7 +205,20 @@
 
       <hr class="corta">
 
-      <p>Preferencias globales recomendadas para PHP Intellisense:</p>
+      <p>PHP Intellisene proporciona autocompletado, argumentos de funciones, acceso directo a definiciones, etc..</p>
+
+      <hr class="corta">
+
+      <h4>Preferencias globales recomendadas para PHP Intellisense:</h4>
+
+      <p><strong>Nota</strong>: Estas preferencias están incluidas en el apartado anterior de preferencias de configuración. No es necesario añadirlas si ya se han añadido anteriormente.</p>
+
+      <p>Tenga en cuenta que puede ser necesario modificar la preferencia resaltada del ejemplo siguiente:</p>
+      <ul>
+        <li>"php.executablePath": debe indicar la ruta hasta el ejecutable de PHP. El valor incluido en el ejemplo es el predeterminado de XAMPP en Windows.</li>
+        <li>La ruta puede escribirse con barras (/, como en el ejemplo) o contrabarras dobles (\\), pero no contrabarras simples (\).</li>
+      </ul>
+
       <div class="codigo">
         <pre>
 <code class="language-json">  // Extensión PHP Intellisense
@@ -186,14 +226,10 @@
   // PHP: Executable Path
   // Ubicación del intérprete de PHP.
   "php.executablePath": "<span class="codigo-resaltado">C:/xampp/php/php.exe</span>",
+  //
   //</code>
 </pre>
       </div>
-
-      <hr class="corta">
-
-      <p>PHP Intellisene proporciona autocompletado, argumentos de funciones, acceso directo a definiciones, etc..</p>
-
     </section>
 
     <section id="php-cs-fixer">
@@ -209,31 +245,6 @@
 
       <hr class="corta">
 
-      <p>Preferencias globales recomendadas para PHP CS Fixer:</p>
-      <div class="codigo">
-        <pre>
-<code class="language-json">  // Extensión PHP CS Fixer
-  //
-  // Ubicación del ejecutable de php-cs-fixer
-  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
-  "php-cs-fixer.executablePathWindows": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
-  // Configuraciones de php-cs-fixer
-  "php-cs-fixer.onsave": false,
-  "php-cs-fixer.rules": "@PSR2",
-  "php-cs-fixer.config": ".php_cs;.php_cs.dist",
-  "php-cs-fixer.allowRisky": false,
-  "php-cs-fixer.pathMode": "override",
-  "php-cs-fixer.exclude": [],
-  "php-cs-fixer.autoFixByBracket": true,
-  "php-cs-fixer.autoFixBySemicolon": false,
-  "php-cs-fixer.formatHtml": false,
-  "php-cs-fixer.documentFormattingProvider": true,
-  //</code>
-</pre>
-      </div>
-
-      <hr class="corta">
-
       <p><a href="https://cs.symfony.com/">PHP Coding Standards Fixer (PHP CS-Fixer)</a> es una herramienta creada por los autores del framework PHP <a href="https://symfony.com/">Symfony</a>. Esta extensión permite utilizarla en Visual Studio Code.</p>
 
       <p>Una vez instalada, aplique la herramienta mediante el atajo de teclado habitual para formatear código <span class="soft-atajo-teclado">Alt+Shift+f</span>.</p>
@@ -244,9 +255,131 @@
       <ul>
         <li>Realmente, esta extensión puede formatear también los fragmentos HTML (estableciendo a configuración "hp-cs-fixer.formatHtml" con el valor true), pero el resultado no me termina de gustar y por eso no recomiendo activarlo.</li>
         <li>Existe una extensión para facilitar el formateo de fragmentos HTML,<a href="https://marketplace.visualstudio.com/items?itemName=rifi2k.format-html-in-php">Format HTML in PHP</a>, pero el resultado tampoco me termina de gustar y por eso no recomiendo instalarla.
-          <p>La <a href="https://github.com/RiFi2k/format-html-in-php/issues/27">issue #27</a> es una de la que megustaría ver resuelta antes de recomendar esta extensión.</p>
+          <p>La <a href="https://github.com/RiFi2k/format-html-in-php/issues/27">issue #27</a> es una de la que me gustaría ver resuelta antes de recomendar esta extensión.</p>
         </li>
       </ul>
+
+      <hr class="corta">
+
+      <h4>Preferencias globales recomendadas para PHP CS Fixer:</h4>
+
+      <p><strong>Nota</strong>: Estas preferencias están incluidas en el apartado anterior de preferencias de configuración. No es necesario añadirlas si ya se han añadido anteriormente.</p>
+
+      <p>Tenga en cuenta que puede ser necesario modificar la preferencia resaltada del ejemplo siguiente:</p>
+      <ul>
+        <li>"php-cs-fixer.executablePath" y "php-cs-fixer.executablePathWindows": deben indicar las rutas hasta el ejecutable de PHP. El valor incluido en el ejemplo es el predeterminado de XAMPP en Windows. Como mínimo, en esta ruta será necesario cambiar el NombreDeUsuario.</li>
+        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o contrabarras dobles (\\), pero no contrabarras simples (\).</li>
+      </ul>
+
+      <div class="codigo">
+        <pre>
+<code class="language-json">  // Extensión PHP CS Fixer
+  //
+  // Ubicación del ejecutable de php-cs-fixer
+  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  "php-cs-fixer.executablePathWindows": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  // Configuraciones de php-cs-fixer
+  "php-cs-fixer.onsave": false,
+  "php-cs-fixer.rules": "@PSR2",
+  "php-cs-fixer.config": "php-cs-fixer-config.php"",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.pathMode": "override",
+  "php-cs-fixer.exclude": [],
+  "php-cs-fixer.autoFixByBracket": true,
+  "php-cs-fixer.autoFixBySemicolon": false,
+  "php-cs-fixer.formatHtml": false,
+  "php-cs-fixer.documentFormattingProvider": true,
+  //
+  //</code>
+</pre>
+      </div>
+
+      <h4>Archivo de configuración de PHP CS Fixer</h4>
+
+      <p>Cree un fichero <strong>php-cs-fixer-config.php</strong> en la carpeta .vscode y copie en él la configuración recomendada para PHP CS Fixer que se muestra a continuación. Tenga en cuenta que el nombre del fichero se establece con la opción de configuración "php-cs-fixer.config" y el archivo de configuración puede estar fuera de la carpeta .vscode.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Archivo de configuración para PHP CS Fixer
+// 2019-09-26
+
+return PhpCsFixer\Config::create()
+    -&gt;setRules([
+        '@PSR2' =-&gt; true,
+        'align_multiline_comment' =-&gt; ['comment_type' =-&gt; 'all_multiline'],
+        'array_indentation' =-&gt; true,
+        'array_syntax' =-&gt; ['syntax' =-&gt; 'short'],
+        'binary_operator_spaces' =-&gt; [
+            'align_double_arrow' =-&gt; false,
+            'align_equals' =-&gt; false,
+        ],
+        'cast_spaces' =-&gt; true,
+        'combine_consecutive_issets' =-&gt; true,
+        'combine_consecutive_unsets' =-&gt; true,
+        'concat_space' =-&gt; ['spacing' =-&gt; 'one'],
+        'declare_equal_normalize' =-&gt; ['space' =-&gt; 'single'],
+        'explicit_indirect_variable' =-&gt; true,
+        'function_typehint_space' =-&gt; true,
+        'hash_to_slash_comment' =-&gt; true,
+        'include' =-&gt; true,
+        'linebreak_after_opening_tag' =-&gt; true,  // Me parece que no hace caso
+        'list_syntax' =-&gt; ['syntax' =-&gt; 'short'],
+        'lowercase_cast' =-&gt; true,
+        'lowercase_static_reference' =-&gt; true,
+        'magic_constant_casing' =-&gt; true,
+        'magic_method_casing' =-&gt; true,
+        'multiline_comment_opening_closing' =-&gt; true,
+        'multiline_whitespace_before_semicolons' =-&gt; true,
+        'native_function_casing' =-&gt; true,
+        'native_function_type_declaration_casing' =-&gt; true,
+        'new_with_braces' =-&gt; true,
+        'no_alternative_syntax' =-&gt; true,
+        'no_empty_statement' =-&gt; true,
+        'no_extra_blank_lines' =-&gt; true,
+        'no_mixed_echo_print' =-&gt; ['use' =-&gt; 'print'],
+        'no_multiline_whitespace_around_double_arrow' =-&gt; true,
+        'no_short_bool_cast' =-&gt; true,
+        'no_singleline_whitespace_before_semicolons' =-&gt; true,
+        'no_spaces_around_offset' =-&gt; true,
+        'no_superfluous_elseif' =-&gt; true,
+        'no_trailing_comma_in_list_call' =-&gt; true,
+        'no_trailing_comma_in_singleline_array' =-&gt; true,
+        'no_unneeded_control_parentheses' =-&gt; true,
+        'no_unneeded_curly_braces' =-&gt; true,
+        'no_unset_cast' =-&gt; true,
+        'no_unused_imports' =-&gt; true,
+        'no_useless_else' =-&gt; true,
+        'no_useless_return' =-&gt; true,
+        'no_whitespace_before_comma_in_array' =-&gt; true,
+        'no_whitespace_in_blank_line' =-&gt; true,
+        'normalize_index_brace' =-&gt; true,
+        'object_operator_without_whitespace' =-&gt; true,
+        'ordered_imports' =-&gt; true,
+        'phpdoc_align' =-&gt; true,
+        'phpdoc_indent' =-&gt; true,
+        'phpdoc_order' =-&gt; true,
+        'phpdoc_scalar' =-&gt; true,
+        'phpdoc_single_line_var_spacing' =-&gt; true,
+        'phpdoc_trim' =-&gt; true,
+        'phpdoc_types' =-&gt; true,
+        'semicolon_after_instruction' =-&gt; true,
+        'short_scalar_cast' =-&gt; true,
+        'single_line_comment_style' =-&gt; true,
+        'space_after_semicolon' =-&gt; true,
+        'standardize_not_equals' =-&gt; true,
+        'ternary_operator_spaces' =-&gt; true,
+        'ternary_to_null_coalescing' =-&gt; true,
+        'trailing_comma_in_multiline_array' =-&gt; true,
+        'trim_array_spaces' =-&gt; true,
+        'unary_operator_spaces' =-&gt; true,
+        'whitespace_after_comma_in_array' =-&gt; true,
+    ])
+    --&gt;setIndent("    ")
+    --&gt;setLineEnding("\n");
+</code>
+</pre>
+      </div>
     </section>
   </section>
 
@@ -262,6 +395,15 @@
     <section id="abrir-navegador">
       <h3>Abrir páginas en el navegador (en el servidor local)</h3>
 
+      <p>Tenga en cuenta que puede ser necesario modificar las preferencias resaltadas del ejemplo siguiente:</p>
+      <ul>
+        <li>"command": debe indicar la ruta hasta el ejecutable de Firefox o Chrome. El valor incluido en el ejemplo es el predeterminado en Windows 10.</li>
+        <li>"arg"s: debe indicar el alias definido en Apache para acceder a la carpeta abierta en Visual Studio Code como área de trabajo (el del ejemplo corresponde a lo propuesto en el <a href="../ejercicios/puesta-en-marcha/apache-1.html#ejercicio-5">ejercicio Apache (1) 5</a>).</li>
+        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o contrabarras dobles (\\), pero no contrabarras simples (\).</li>
+      </ul>
+
+      <p>Tenga en cuenta que para que las páginas se muestren en el navegador es necesario crear un alias en Apache, como se comenta en la lección <a href="php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
+
       <div class="codigo">
         <pre>
 <code class="language-json">    {
@@ -271,7 +413,7 @@
         "command": "<span class="codigo-resaltado">C:/Program Files/Mozilla Firefox/firefox.exe</span>"
       },
       "args": [
-        "<span class="codigo-resaltado">localhost/iaw-nombre-de-alumno/php/${relativeFile}</span>"
+        "localhost/<span class="codigo-resaltado">iaw-nombre-de-alumno/php</span>/${relativeFile}"
       ],
       "presentation": {
         "reveal": "never"
@@ -285,7 +427,7 @@
         "command": "<span class="codigo-resaltado">C:/Program Files (x86)/Google/Chrome/Application/chrome.exe</span>"
       },
       "args": [
-        "<span class="codigo-resaltado">localhost/iaw-nombre-de-alumno/php/${relativeFile}</span>"
+        "localhost/<span class="codigo-resaltado">iaw-nombre-de-alumno/php</span>/${relativeFile}"
       ],
       "presentation": {
         "reveal": "never"
@@ -305,6 +447,8 @@
     <p>Estos son los atajos de teclado que se aconseja definir para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
     <p>Estas atajos se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#atajos-teclado">atajos de teclado recomendados</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Cree dichos atajos de teclado y después añada los atajos de teclado definidos a continuación. Tenga en cuenta que estos atajos de teclado deben añadirse entre los corchetes inicial ([) y final (]).</p>
+
+    <p>Tenga en cuenta que la clave "args" del atajo debe coincidir con la clave "label" de la tarea correspondiente.</p>
 
     <div class="codigo">
       <pre>
@@ -343,7 +487,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
