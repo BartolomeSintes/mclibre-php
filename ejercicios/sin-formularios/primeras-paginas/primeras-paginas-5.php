@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo valor.</p>
 
 <?php
-print "  <p><img src=\"img/". rand(1, 6) . ".svg\" alt=\"Dado\" width=\"140\" height=\"140\"></p>\n";
+print "  <p><img src=\"img/" . rand(1, 6) . ".svg\" alt=\"Dado\" width=\"140\" height=\"140\"></p>\n";
 ?>
 
   <footer>
