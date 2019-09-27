@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Visual Studio Code. Enunciados. Ejercicios (puesta en marcha). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.ico">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (puesta en marcha) - Visual Studio Code - Enunciados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>VS Code</h2>
+
+      <h3><a href="#">Enunciados</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Ejecutar programas</a></li>
+        <li><a href="#ejercicio-2">2 - Formatear programas</a></li>
+        <li><a href="#ejercicio-3">3 - Configuración PHP</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Estos ejercicios permiten comprobar que se ha configurado correctamente Visual Studio Code.</p>
+
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../soluciones/1920/pm-vscode-plantillas.zip">plantillas de los ejercicios Visual Studio Code. Puesta en marcha</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>VS Code 1 - Ejecutar programas</h2>
+
+    <ol>
+      <li>Descargue y descomprima las plantillas.</li>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-1.php</strong>.</li>
+      <li>Ejecute el programa <strong>vscode-1.php</strong> con los atajos de teclado <span class="soft-atajo-teclado">Ctrl+Alt+l+f</span> y <span class="soft-atajo-teclado">Ctrl+Alt+l+c</span>.
+        <p>Si no se abre el navegador correspondiente, revise los atajos de teclado creados en Visual Studio Code, como se explica en la lección <a href="../../otros/vsc-php-configuracion.html#atajos-teclado">Configuración de Visual Studio Code</a>.</p>
+      </li>
+      <li>Compruebe que la dirección de la página es <strong>http://localhost/iaw-NombreDeAlumno/php/ejericios/puesta-en-marcha/vscode-1.php</strong>, donde NombreDeAlumno es su nombre.
+        <p>Si la dirección no contiene el alias <strong>/iaw-NombreDeAlumno/php</strong>, revise la tarea creada en Visual Studio Code, como se explica en la lección <a href="../../otros/vsc-php-configuracion.html#tareas">Configuración de Visual Studio Code</a>.</p>
+      </li>
+      <li>El resultado en el navegador debe ser este:
+        <div class="filaflex">
+          <div class="resultado-object">
+            <object type="text/html" data="vscode-1.php" style="height: 10em;">ERROR (no puede mostrarse el objeto)</object>
+          </div>
+          <div class="icono-enlace">
+            <a href="vscode-1.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+          </div>
+        </div>
+        <p>Si la página no se muestra por un error del servidor, compruebe que ha creado en Apache el alias <strong>/iaw-NombreDeAlumno/php</strong>, revise el archivo de configuración de Apache httpd.conf, como se explica en la lección <a href="../../otros/php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>VS Code 2 - Formatear programas</h2>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-2.php</strong>.:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?
+/*
+Programa de prueba de PHP CS Fixer
+*/
+$a     =        25    ;
+$b =    $a     +      $a*2 ;
+</code>
+</pre>
+        </div>
+      </li>
+      <li>Formatee con PHP CS Fixer el programa <strong>vscode-2.php</strong> con el ataje de teclado <span class="soft-atajo-teclado">Alt+Máy+f</span>.</li>
+      <li>Compruebe que el programa se formatea correctamente:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Programa de prueba de PHP CS Fixer
+$a = 25;
+$b = $a + $a * 2;
+  </code>
+  </pre>
+        </div>
+        <p>Si el programa no se formatea correctamente, compruebe que ha instalado la extensión PHP CS Fixer y que la ha configurado correctamente, como se explica en la lección <a href="../../otros/vsc-php-configuracion.html#php-cs-fixer">Configuración de Visual Studio Code</a>.</p>
+      </li>
+      <li>No es necesario ejecutar el programa, ya que no proporciona ninguna salida.</li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>VS Code 3 - Configuración de PHP</h2>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-3.php</strong>.:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?
+define("TEST", 99.9, true);
+</code>
+</pre>
+        </div>
+      </li>
+      <li>Ejecute el programa.</li>
+      <li>Compruebe que se muestra el siguiente error:
+
+        <div class="codigo">
+          <pre>
+<code class="language-html"><b>Deprecated</b>:  define(): Declaration of case-insensitive constants is deprecated in <b>vscode-3.php</b> on line <b>3</b></code>
+</pre>
+        </div>
+        <p>Si no se muestra el error, revise la directiva error_reporting en php.ini, como se explica en la lección <a href="../../otros/php-configuracion-1.html#error-reporting">Configuración de Apache y PHP</a>.</p>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 27 de septiembre de 2019</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

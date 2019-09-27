@@ -28,7 +28,7 @@
         <li><a href="#parse-errors">Parse errors</a></li>
         <li><a href="#warnings">Warnings</a></li>
         <li><a href="#notices">Notices</a></li>
-        <li><a href="#deprecated">Strict / Deprecated</a></li>
+        <li><a href="#deprecated">Deprecated</a></li>
       </ul>
     </div>
   </nav>
@@ -58,7 +58,7 @@
       <li>Avisos (notices)
         <p>El ordenador es capaz de ejecutar una instrucción determinada, pero detecta que el programador puede haberse equivocado. En ese caso, se dice que el compilador da avisos. Los avisos no siempre son señales de equivocaciones, pero deben evitarse.</p>
       </li>
-      <li>Obsolescencias (deprecated / strict)
+      <li>Obsolescencias (deprecated)
         <p>El compilador puede detectar que un programa utiliza características del lenguaje que actualmente funcionan correctamente, pero que no estarán (o pueden no estar) disponibles en futuras versiones, y generar un aviso de obsolescencia.</p>
       </li>
     </ul>
@@ -313,7 +313,7 @@ print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
     <h2>Obsolescencias (Strict / Deprecated)</h2>
 
     <ul>
-      <li>función obsoleta
+      <li>Constantes insensibles a mayúsculas/minúsculas
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -322,25 +322,22 @@ print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-$cadena = "ABC";
-if (eregi("a", $cadena)) {
-    print "'$cadena' contiene una 'a' o una  'A'\n";
-}
+define("TEST", 99.9, true);
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-html">
-            <b>Deprecated</b>: Function eregi() is deprecated in <b>ejemplo.php</b> on line <b>3</b><br> 'ABC' contiene una 'a' o una 'A'
+            <b>Deprecated</b>:  define(): Declaration of case-insensitive constants is deprecated in <b>ejemplo.php</b> on line <b>3</b>
           </div>
         </div>
 
-        <p>En este caso, el motivo del aviso es que la función <span class="php-fun">eregi()</span> está considerada obsoleta desde la versión PHP 5.3.0.</p>
+        <p>En este caso, el motivo del aviso es que desde la versión PHP 7.0 no se pueden definir constantes insensibles a mayúsculas (es decir, que se pueden escribir tanto en minúsculas como en mayúsculas).</p>
       </li>
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2013</p>
+    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
