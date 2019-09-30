@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <h1>La carta más altaa</h1>
+  <h1>La carta más alta</h1>
 
   <p>Actualice la página para mostrar un nuevo trío de cartas.</p>
 
