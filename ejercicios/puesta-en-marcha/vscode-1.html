@@ -26,7 +26,8 @@
       <ul>
         <li><a href="#ejercicio-1">1 - Ejecutar programas</a></li>
         <li><a href="#ejercicio-2">2 - Formatear programas</a></li>
-        <li><a href="#ejercicio-3">3 - Configuración PHP</a></li>
+        <li><a href="#ejercicio-3">3 - PHP error_reporting</a></li>
+        <li><a href="#ejercicio-4">4 - PHP output_buffering</a></li>
       </ul>
     </div>
   </nav>
@@ -56,7 +57,7 @@
             <a href="vscode-1.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
           </div>
         </div>
-        <p>Si la página no se muestra por un error del servidor, compruebe que ha creado en Apache el alias <strong>/iaw-NombreDeAlumno/php</strong>, revise el archivo de configuración de Apache httpd.conf, como se explica en la lección <a href="../../otros/php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
+        <p>Si la página no se muestra por un error del servidor, compruebe que ha creado el alias <strong>/iaw-NombreDeAlumno/php</strong> en el archivo de configuración de Apache httpd.conf y revise el alias, como se explica en la lección <a href="../../otros/php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
       </li>
     </ol>
   </section>
@@ -98,7 +99,7 @@ $b = $a + $a * 2;
   </section>
 
   <section id="ejercicio-3">
-    <h2>VS Code 3 - Configuración de PHP</h2>
+    <h2>VS Code 3 - Configuración de PHP (error_reporting)</h2>
 
     <ol>
       <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-3.php</strong>.:
@@ -114,18 +115,35 @@ define("TEST", 99.9, true);
       <li>Ejecute el programa.</li>
       <li>Compruebe que se muestra el siguiente error:
 
-        <div class="codigo">
-          <pre>
-<code class="language-html"><b>Deprecated</b>:  define(): Declaration of case-insensitive constants is deprecated in <b>vscode-3.php</b> on line <b>3</b></code>
-</pre>
+        <div class="resultado-html">
+          <b>Deprecated</b>: define(): Declaration of case-insensitive constants is deprecated in <b>vscode-3.php</b> on line <b>3</b>
         </div>
         <p>Si no se muestra el error, revise la directiva error_reporting en php.ini, como se explica en la lección <a href="../../otros/php-configuracion-1.html#error-reporting">Configuración de Apache y PHP</a>.</p>
       </li>
     </ol>
   </section>
 
+  <section id="ejercicio-4">
+    <h2>VS Code 4 - Configuración de PHP (output_buffering)</h2>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-4-1.php</strong>.</li>
+      <li>Ejecute el programa.</li>
+      <li>Haga clic en el enlace.</li>
+      <li>Compruebe que se muestra el siguiente error:
+        <div class="resultado-htmnl">
+          <b>Warning</b>: Cannot modify header information - headers already sent by (output started at vscode-4-2.php:1) in <b>vscode-4-2.php</b> on line <b>2</b><br />
+          <p>Esta es la página 2.</p>
+          <p>Si ve esta página es que tiene la configuración recomendada para desarrollo recomendada en estos apuntes.</p>
+          <p>Debe ver un aviso <strong>Warning</strong> al principio de esta página.</p>
+        </div>
+        <p>Si no se muestra el error, revise la directiva output_buffering en php.ini, como se explica en la lección <a href="../../otros/php-configuracion-1.html#output_buffering">Configuración de Apache y PHP</a>.</p>
+      </li>
+    </ol>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 30 de septiembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
