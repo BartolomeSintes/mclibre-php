@@ -80,7 +80,7 @@ if ($altura == "") {
 }
 
 if ($pesoOk && $alturaOk) {
-    $imc = round($peso / pow($altura / 100, 2));
+    $imc = round($peso / ($altura / 100) ** 2);
     print "  <p>Con un peso de <strong>$peso kg</strong> y una altura de <strong>"
         . "$altura cm</strong>, su índice de masa corporal es <strong>$imc</strong>.</p>\n";
     print "\n";

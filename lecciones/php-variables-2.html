@@ -295,9 +295,9 @@ tiene un área de 210.25 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-$maximo = pow(10, 308);  // 10^308
+$maximo = 10 **308;  // 10^308
 print "&lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: $maximo&lt;/p&gt;\n";
-
+print "\n";
 $demasiado = 10 * $maximo;
 print "&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es $demasiado&lt;/p&gt;\n";
 ?&gt;</code>
@@ -305,8 +305,9 @@ print "&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado
         </div>
         <div class="resultado-codigo">
           <pre>
-<code class="language-html">&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;
-&lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: 1.0E+308&lt;/p&gt;</code>
+<code class="language-html">&lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: 1.0E+308&lt;/p&gt;</code>
+
+&lt;p&gt;Si se intenta guardar 10&lt;sup&gt;309&lt;/sup&gt;, el resultado es INF&lt;/p&gt;
 </pre>
         </div>
       </div>

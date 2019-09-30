@@ -68,17 +68,17 @@ for ($i = 1; $i <= 7; $i++) {
 print "\n";
 
 for ($i = 0; $i <= 5; $i++) {
-    printf("%8d", pow(10, $i));
+    printf("%8d", 10 ** $i);
 }
 print "\n";
 
 for ($i = 0; $i <= 4; $i++) {
-    printf("  %1.4f", 1 / pow(10, $i));
+    printf("  %1.4f", 1 / 10 ** $i);
 }
 print "\n";
 
 for ($i = 0; $i <= 7; $i++) {
-    printf("%8d", pow(-1, $i));
+    printf("%8d", -1 ** $i);
 }
 print "\n";
 
