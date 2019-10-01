@@ -29,6 +29,7 @@
         <li><a href="#preferencias">Preferencias</a></li>
         <li><a href="#extensiones">Extensiones</a></li>
         <li><a href="#tareas">Tareas</a></li>
+        <li><a href="#snippets">Snippets</a></li>
         <li><a href="#atajos-teclado">Atajos de teclado</a></li>
       </ul>
     </div>
@@ -146,7 +147,7 @@
   // Configuraciones de php-cs-fixer
   "php-cs-fixer.onsave": false,
   "php-cs-fixer.rules": "@PSR2",
-  "php-cs-fixer.config": "php-cs-fixer-config.php"",
+  "php-cs-fixer.config": "php-cs-fixer-config.php",
   "php-cs-fixer.allowRisky": false,
   "php-cs-fixer.pathMode": "override",
   "php-cs-fixer.exclude": [],
@@ -279,7 +280,7 @@
   // Configuraciones de php-cs-fixer
   "php-cs-fixer.onsave": false,
   "php-cs-fixer.rules": "@PSR2",
-  "php-cs-fixer.config": "php-cs-fixer-config.php"",
+  "php-cs-fixer.config": "php-cs-fixer-config.php",
   "php-cs-fixer.allowRisky": false,
   "php-cs-fixer.pathMode": "override",
   "php-cs-fixer.exclude": [],
@@ -440,6 +441,29 @@ return PhpCsFixer\Config::create()
     </section>
   </section>
 
+  <section id="snippets">
+    <h2>Snippets recomendados para el curso de PHP</h2>
+
+    <p>Estos son los snippets que se aconseja definir para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-json">{
+    // Snippets recomendados para el curso Programación web en PHP de www.mclibre.org
+    //
+    "Pega HTML en PHP": {
+        "prefix": "mc1",
+        "body": [
+            "print \"${CLIPBOARD/(\")|(\\r\\n)/${1:?\\\":\\n\";\nprint \"}/g}\\n\";"
+        ],
+        "description": "Pega HTML (escapa comillas y añade print por línea)"
+    },
+    //
+}</code>
+</pre>
+    </div>
+  </section>
+
   <section id="atajos-teclado">
     <h2>Atajos de teclado recomendados para el curso de PHP</h2>
 
@@ -447,7 +471,7 @@ return PhpCsFixer\Config::create()
 
     <p>Estas atajos se deben añadir a las <a href="http://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html#atajos-teclado">atajos de teclado recomendados</a> en el curso de <a href="http://www.mclibre.org/consultar/htmlcss/">Páginas web HTML y hojas de estilo CSS</a> de <a href="http://www.mclibre.org/">mclibre.org</a>. Cree dichos atajos de teclado y después añada los atajos de teclado definidos a continuación. Tenga en cuenta que estos atajos de teclado deben añadirse entre los corchetes inicial ([) y final (]).</p>
 
-    <p>Tenga en cuenta que la clave "args" del atajo debe coincidir con la clave "label" de la tarea correspondiente.</p>
+    <p>Tenga en cuenta que la clave "args" del atajo debe coincidir con la clave "label" de la tarea correspondiente o con el nombre del snippet correspondiente.</p>
 
     <div class="codigo">
       <pre>
@@ -463,6 +487,15 @@ return PhpCsFixer\Config::create()
         "key": "ctrl+alt+l ctrl+alt+c",
         "command": "workbench.action.tasks.runTask",
         "args": "Abrir en localhost (Chrome)"
+    },
+    {
+        // Snippet: Pegar HTML en PHP
+        "key": "ctrl+alt+v",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "langId": "php",
+            "name": "Pega HTML en PHP"
+        }
     },</code>
 </pre>
     </div>
@@ -489,7 +522,7 @@ return PhpCsFixer\Config::create()
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 2 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
