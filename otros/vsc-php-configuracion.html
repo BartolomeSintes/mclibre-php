@@ -446,17 +446,35 @@ return PhpCsFixer\Config::create()
 
     <p>Estos son los snippets que se aconseja definir para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
 
+    <p>Una vez definidos los snippets, se recomienda definir los atajos de teclado que ejecuten estos snippets, tal y como se comenta en el apartado sobre <a href="#atajos-teclado">Atajos de teclado recomendados</a>.</p>
+
     <div class="codigo">
       <pre>
 <code class="language-json">{
     // Snippets recomendados para el curso Programación web en PHP de www.mclibre.org
     //
-    "Pega HTML en PHP": {
+    "Pega HTML en PHP (líneas)": {
         "prefix": "mc1",
         "body": [
-            "print \"${CLIPBOARD/(\")|(\\r\\n)/${1:?\\\":\\n\";\nprint \"}/g}\\n\";"
+            "print \"${CLIPBOARD/(\")|(\\r\\n)/${1:+\\\"}${2:+\\n\";\nprint \"}/g}\\n\";\n"
         ],
-        "description": "Pega HTML (escapa comillas y añade print por línea)"
+        "description": "Pega HTML (print por línea y escapa comillas)"
+    },
+    //
+    "Pega HTML en PHP (bloque)": {
+        "prefix": "mc2",
+        "body": [
+            "print \"${CLIPBOARD/\"/\\\"/g}\\n\";\n"
+        ],
+        "description": "Pega HTML (print único y escapa comillas)"
+    },
+    //
+    "Pega HTML en PHP (comillas)": {
+        "prefix": "mc3",
+        "body": [
+            "${CLIPBOARD/\"/\\\"/g}\n"
+        ],
+        "description": "Pega HTML (escapa comillas)"
     },
     //
 }</code>
@@ -489,14 +507,33 @@ return PhpCsFixer\Config::create()
         "args": "Abrir en localhost (Chrome)"
     },
     {
-        // Snippet: Pegar HTML en PHP
-        "key": "ctrl+alt+v",
+      // Snippet: Pegar HTML en PHP (líneas)
+      "key": "ctrl+alt+v ctrl+alt+l",
+      "command": "editor.action.insertSnippet",
+      "args": {
+          "langId": "php",
+          "name": "Pega HTML en PHP (líneas)"
+      }
+    },
+    {
+        // Snippet: Pegar HTML en PHP (bloque)
+        "key": "ctrl+alt+v ctrl+alt+b",
         "command": "editor.action.insertSnippet",
         "args": {
             "langId": "php",
-            "name": "Pega HTML en PHP"
+            "name": "Pega HTML en PHP (bloque)"
         }
-    },</code>
+    },
+    {
+        // Snippet: Pegar HTML en PHP (comillas)
+        "key": "ctrl+alt+v ctrl+alt+q",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "langId": "php",
+            "name": "Pega HTML en PHP (comillas)"
+        }
+    },
+    //</code>
 </pre>
     </div>
 
