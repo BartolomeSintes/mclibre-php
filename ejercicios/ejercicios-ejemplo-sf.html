@@ -29,9 +29,8 @@
           <ul>
             <li><a href="#solucion-sf-1">Descargar plantillas</a></li>
             <li><a href="#solucion-sf-2">Abrir archivo .php</a></li>
-            <li><a href="#solucion-sf-3">Personalizar ejercicio</a></li>
-            <li><a href="#solucion-sf-4">Añadir código HTML</a></li>
-            <li><a href="#solucion-sf-5">Completar el programa</a></li>
+            <li><a href="#solucion-sf-3">Añadir código HTML</a></li>
+            <li><a href="#solucion-sf-4">Completar el programa</a></li>
           </ul>
         </li>
       </ul>
@@ -93,14 +92,7 @@
         <li>Copie el archivo comprimido en la carpeta correspondiente (ejercicios/sin-formularios, ejercicios/con-formularios, etc.).</li>
         <li>Descomprima directamente el archivo comprimido (el archivo incluye una carpeta). En 7-zip se podría elegir la opción <span class="soft-menu">Extraer aquí</span>.</li>
         <li>Renombre la carpeta eliminando la parte final (-plantillas).</li>
-      </ul>
-    </section>
-
-    <section id="solucion-sf-2">
-      <h3>Abrir el archivo .php</h3>
-
-      <ul>
-        <li>Abra el archivo .php correspondiente al ejercicio:
+        <li>Si abre cualquier archivo .php verá que al principio hay un bloque de comentarios para indicar el nombre del autor del programa:
 
           <div class="codigo">
             <pre>
@@ -108,54 +100,26 @@
 /**
  * Ejemplo de ejercicio sin formulario - ejemplo-sf-1.php
  *
- * @author    Escriba su nombre
+ * @author    <span class="codigo-resaltado">Escriba su nombre</span>
  *
  */
 ?&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;
-    Ejemplo de ejercicio sin formulario.
-    Ejemplos.
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
-  &lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color"&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;h1&gt;Ejemplo de ejercicio sin formulario 1&lt;/h1&gt;
-
-  &lt;p&gt;Actualice la página para mostrar dos nuevos colores.&lt;/p&gt;
-
-  &lt;table&gt;
-    &lt;tbody&gt;
-&lt;?php
-
-print "  &lt;p class=\"aviso\"&gt;Ejercicio incompleto&lt;/p&gt;\n";
-
-?&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-
-  &lt;footer&gt;
-    &lt;p&gt;Escriba su nombre&lt;/p&gt;
-  &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
+...</code>
 </pre>
           </div>
+          <p>LEl texto Para no tener que ir cambiando una a una las expresiones "Escriba su nombre" por su propio nombre, en Visual Studio Code puede utilizar el buscador en archivos (haga clic en el icono en forma de lupa de la barra de actividades izquierda o escriba el atajo de teclado <span class="soft-atajo-teclado">Ctrl+Máy+h</span>) y cambiar todos los archivos de una sola vez.</p>
         </li>
       </ul>
     </section>
 
-    <section id="solucion-sf-3">
-      <h3>Personalizar el ejercicio</h3>
+    <section id="solucion-sf-2">
+      <h3>Abrir el archivo .php</h3>
 
       <ul>
-        <li>Personalice el programa escribiendo su nombre en los tres lugares indicados en la plantilla:
+        <li>Si ha hecho la busqueda y sustitución, su nombre aparecerá en los tres lugares indicados en la plantilla:
 
           <div class="codigo">
             <pre>
@@ -206,28 +170,28 @@ print "  &lt;p class=\"aviso\"&gt;Ejercicio incompleto&lt;/p&gt;\n";
       </ul>
     </section>
 
-    <section id="solucion-sf-4">
+    <section id="solucion-sf-3">
       <h3>Añadir el código HTML en los fragmentos PHP</h3>
 
+      <p>Complete la plantilla añadiendo el código HTML que deberá generar cada fragmento PHP. Ese código HTML se puede copiar del ejercicio de ejemplo.</p>
+
       <ul>
-        <li>Complete la plantilla añadiendo el código HTML que deberá generar cada fragmento PHP. Ese código HTML se puede copiar del ejercicio de ejemplo (mostrando el código fuente de la página web del ejercicio de ejemplo).
-          <div class="codigo">
+        <li>Abra el código fuente de la página web del ejercicio de ejemplo (<span class="soft-atajo-teclado">Ctrl+u</span>), seleccione y copie el fragmento HTML deseado:
+          <div class="resultado-codigo">
             <pre>
 <code class="language-html"> // ...
   &lt;table&gt;
     &lt;tbody&gt;</code></pre>
             <div class="codigo-resaltado">
               <pre>
-<code class="language-php"> &lt;?php
-      &lt;tr&gt;
+<code class="language-html">      &lt;tr&gt;
         &lt;th&gt;Color: hsl(49, 100%, 50%)&lt;/th&gt;
         &lt;th&gt;Color: hsl(352, 100%, 50%)&lt;/th&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td style="height: 50px; background-color: hsl(49, 100%, 50%)"&gt;&lt;/td&gt;
         &lt;td style="background-color: hsl(352, 100%, 50%)"&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-?&gt;</code>
+      &lt;/tr&gt;</code>
 </pre>
             </div>
             <pre>
@@ -236,14 +200,8 @@ print "  &lt;p class=\"aviso\"&gt;Ejercicio incompleto&lt;/p&gt;\n";
 // ...</code>
 </pre>
           </div>
-          <p><strong>Nota</strong>: El programa anterior es incorrecto porque no se puede escribir código HTML en un fragmento PHP, pero se corregirá a continuación.</p>
         </li>
-        <li>A continuación añada las instrucciones <span class="php-res">print</span>:
-          <ul>
-            <li>antes de añadir los <span class="php-res">print</span>, sustituya las comillas <strong>"</strong> por el carácter especial <strong>\"</strong></li>
-            <li>puede añadir un <span class="php-res">print</span> por línea o hacer varias líneas en un solo <span class="php-res">print</span></li>
-            <li>añada saltos de línea <strong>\n</strong> al final de cada <span class="php-res">print</span> para mejorar la legibilidad del código fuente generado</li>
-          </ul>
+        <li>Si tiene instalada la <a href="../otros/vsc-php-configuracion.html#mclibre-snippets">extensión mclibre.org Snippets</a>, utilice el atajo de teclado <span class="soft-atajo-teclado">Ctrl+Alt+v Ctrl+Alt+l</span> para pegar el código HTML en instrucciones <span class="php-res">print</span>:
           <div class="codigo">
             <pre>
   <code class="language-html"> // ...
@@ -269,12 +227,12 @@ print "      &lt;/tr&gt;\n";
   // ...</code>
 </pre>
           </div>
-          <p><strong>Nota</strong>: El programa anterior ya se puede ejecutar, pero mostraría siempre el mismo resultado.</p>
+          <p><strong>Nota</strong>: Este programa ya se puede ejecutar, pero mostraría siempre el mismo resultado.</p>
         </li>
       </ul>
     </section>
 
-    <section id="solucion-sf-5">
+    <section id="solucion-sf-4">
       <h3>Completar el programa</h3>
 
       <ul>
@@ -374,7 +332,7 @@ print "      &lt;/tr&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 3 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
