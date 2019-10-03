@@ -29,7 +29,6 @@
         <li><a href="#preferencias">Preferencias</a></li>
         <li><a href="#extensiones">Extensiones</a></li>
         <li><a href="#tareas">Tareas</a></li>
-        <li><a href="#snippets">Snippets</a></li>
         <li><a href="#atajos-teclado">Atajos de teclado</a></li>
       </ul>
     </div>
@@ -187,14 +186,36 @@
 
     <p>Estas son las extensiones que se aconseja instalar para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>:</p>
     <ul>
+      <li>mclibre.org Snippets</li>
       <li>PHP Intellisense</li>
       <li>PHP CS Fixer</li>
     </ul>
 
+    <section id="mclibre-snippets">
+      <h3>mclibre.org Snippets</h3>
+
+      <p><img src="../img/vscode/vsc-extension-mclibre-snippets-logo.png" alt="Logotipo de mclibre Snippets" width="128" height="128" class="izquierda"></p>
+
+      <p>Autor: Bartolomé Sintes</p>
+
+      <p>Marketplace: <a href="https://marketplace.visualstudio.com/items?itemName=BartolomeSintes.mclibre-org-snippets">mclibre Snippets</a></p>
+
+      <p>Repositorio GitHub: <a href="https://github.com/BartolomeSintes/mclibre-org-vscode-snippets-extension">mclibre Snippets</a></p>
+
+      <hr class="corta">
+
+      <p>Estos snippets permiten pegar código HTML en fragmentos PHP. Para ejecutarlos, se pueden utilizar estos enlaces de teclado:</p>
+      <ul>
+        <li><span class="soft-atajo-teclado">Ctrl+Alt+v Ctrl+Alt+l</span>: Pega el contenido del portapapeles (por ejemplo, código html), añadiendo una instrucción <span class="php-res">print</span> para cada línea.</li>
+        <li><span class="soft-atajo-teclado">Ctrl+Alt+v Ctrl+Alt+b</span>: Pega el contenido del portapapeles (por ejemplo, código html), añadiendo una única instrucción <span class="php-res">print</span>.</li>
+        <li><span class="soft-atajo-teclado">Ctrl+Alt+v Ctrl+Alt+q</span>: Pega el contenido del portapapeles (por ejemplo, código html), sustituyendo las comillas dobles (") por el carácter especial \".</li>
+      </ul>
+    </section>
+
     <section id="php-intellisense">
       <h3>PHP Intellisense</h3>
 
-      <p><img src="../img/vscode/vsc-extension-php-extension-pack-logo.png" alt="Logotipo de PHP Extension Pack" width="128" height="67" class="izquierda"></p>
+      <p><img src="../img/vscode/vsc-extension-php-intellisense.png" alt="Logotipo de PHP Intellisense" width="128" height="67" class="izquierda"></p>
 
       <p>Autor: Felix Becker</p>
 
@@ -204,7 +225,7 @@
 
       <hr class="corta">
 
-      <p>PHP Intellisene proporciona autocompletado, argumentos de funciones, acceso directo a definiciones, etc..</p>
+      <p>PHP Intellisense proporciona autocompletado, argumentos de funciones, acceso directo a definiciones, etc..</p>
 
       <hr class="corta">
 
@@ -441,47 +462,6 @@ return PhpCsFixer\Config::create()
     </section>
   </section>
 
-  <section id="snippets">
-    <h2>Snippets recomendados para el curso de PHP</h2>
-
-    <p>Estos son los snippets que se aconseja definir para seguir el curso <a href="http://www.mclibre.org/consultar/php/index.html">Iniciación a la programación de páginas web en PHP</a> de <a href="http://www.mclibre.org/">mclibre.org</a>.</p>
-
-    <p>Una vez definidos los snippets, se recomienda definir los atajos de teclado que ejecuten estos snippets, tal y como se comenta en el apartado sobre <a href="#atajos-teclado">Atajos de teclado recomendados</a>.</p>
-
-    <div class="codigo">
-      <pre>
-<code class="language-json">{
-    // Snippets recomendados para el curso Programación web en PHP de www.mclibre.org
-    //
-    "Pega HTML en PHP (líneas)": {
-        "prefix": "mc1",
-        "body": [
-            "print \"${CLIPBOARD/(\")|(\\r\\n)/${1:+\\\"}${2:+\\n\";\nprint \"}/g}\\n\";\n"
-        ],
-        "description": "Pega HTML (print por línea y escapa comillas)"
-    },
-    //
-    "Pega HTML en PHP (bloque)": {
-        "prefix": "mc2",
-        "body": [
-            "print \"${CLIPBOARD/\"/\\\"/g}\\n\";\n"
-        ],
-        "description": "Pega HTML (print único y escapa comillas)"
-    },
-    //
-    "Pega HTML en PHP (comillas)": {
-        "prefix": "mc3",
-        "body": [
-            "${CLIPBOARD/\"/\\\"/g}\n"
-        ],
-        "description": "Pega HTML (escapa comillas)"
-    },
-    //
-}</code>
-</pre>
-    </div>
-  </section>
-
   <section id="atajos-teclado">
     <h2>Atajos de teclado recomendados para el curso de PHP</h2>
 
@@ -505,33 +485,6 @@ return PhpCsFixer\Config::create()
         "key": "ctrl+alt+l ctrl+alt+c",
         "command": "workbench.action.tasks.runTask",
         "args": "Abrir en localhost (Chrome)"
-    },
-    {
-      // Snippet: Pegar HTML en PHP (líneas)
-      "key": "ctrl+alt+v ctrl+alt+l",
-      "command": "editor.action.insertSnippet",
-      "args": {
-          "langId": "php",
-          "name": "Pega HTML en PHP (líneas)"
-      }
-    },
-    {
-        // Snippet: Pegar HTML en PHP (bloque)
-        "key": "ctrl+alt+v ctrl+alt+b",
-        "command": "editor.action.insertSnippet",
-        "args": {
-            "langId": "php",
-            "name": "Pega HTML en PHP (bloque)"
-        }
-    },
-    {
-        // Snippet: Pegar HTML en PHP (comillas)
-        "key": "ctrl+alt+v ctrl+alt+q",
-        "command": "editor.action.insertSnippet",
-        "args": {
-            "langId": "php",
-            "name": "Pega HTML en PHP (comillas)"
-        }
     },
     //</code>
 </pre>
@@ -559,7 +512,7 @@ return PhpCsFixer\Config::create()
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 2 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 3 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
