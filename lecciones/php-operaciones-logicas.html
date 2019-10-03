@@ -275,13 +275,13 @@ if ($entero == $decimal) {
         </div>
       </li>
 
-      <li>Podemos comparar números y cadenas ...:
+      <li>Un número escrito como número (sin comillas) o como texto (con comillas) son iguales para PHP ...:
         <div class="filaflex">
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
 $numero = 5;
-$cadena = "4+1";
+$cadena = "5";
 
 if ($numero == $cadena) {
   print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
@@ -297,13 +297,13 @@ if ($numero == $cadena) {
         </div>
       </li>
 
-      <li>... pero con limitaciones:
+      <li>... pero PHP no efectúa cálculos en las cadenas:
         <div class="filaflex">
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-$numero = 5;
-$cadena = "4+1";
+$numero = 4 + 1;
+$cadena = "4 + 1";
 
 if ($numero == $cadena) {
   print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
@@ -319,7 +319,7 @@ if ($numero == $cadena) {
         </div>
       </li>
 
-      <li>y hay situaciones especiales. Por ejemplo, cuando una cadena empieza por un número, PHP interpreta la cadena como número:
+      <li>Además, hay situaciones especiales. Por ejemplo, cuando una cadena empieza por un número, PHP interpreta la cadena como número y descarta el resto:
         <div class="filaflex">
           <div class="codigo">
             <pre>
