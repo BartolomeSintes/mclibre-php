@@ -1955,6 +1955,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
 &lt;p&gt;10&lt;/p&gt;
 &lt;p&gt;11&lt;/p&gt;
+&lt;p&gt;12&lt;/p&gt;
 . . .</code>
                   </pre>
               </div>
@@ -2215,7 +2216,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 
             <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
 
-            <p>En este caso, la variable $i aumenta una unidad.</p>
+            <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 12.</p>
 
             <p class="control">
               <a href="#d67"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
@@ -2243,14 +2244,14 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
 &lt;p&gt;10&lt;/p&gt;
 &lt;p&gt;11&lt;/p&gt;
- . . .</code>
+</code>
  </pre>
               </div>
             </div>
 
             <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
 
-            <p>En este caso, $i es superior a 3 y es fácil ver que va a seguir siéndolo una y otra vez.</p>
+            <p>En este caso, $i es superior a 3 (vale 12), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
 
             <p class="control">
               <a href="#d68"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
@@ -2259,7 +2260,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
           </div>
 
           <div id="d610">
-            <p><strong>Ejemplo de bucle for incorrecto (1) - Paso 10, 13, 16, . . .</strong></p>
+            <p><strong>Ejemplo de bucle for incorrecto (1) - Paso 10</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -2278,15 +2279,14 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
 &lt;p&gt;10&lt;/p&gt;
 &lt;p&gt;11&lt;/p&gt;
- . . .
-<span class="codigo-resaltado">&lt;p&gt;número&lt;/p&gt;</span></code>
+<span class="codigo-resaltado">&lt;p&gt;12&lt;/p&gt;</span></code>
 </pre>
               </div>
             </div>
 
             <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
 
-            <p>En este caso, el bucle imprimirá una y otra vez el texto &lt;p&gt;número&lt;/p&gt;</p>
+            <p>En este caso, se imprime el texto &lt;p&gt;12&lt;/p&gt; ya que $i tiene el valor 12.</p>
 
             <p class="control">
               <a href="#d69"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
@@ -2295,7 +2295,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
           </div>
 
           <div id="d611">
-            <p><strong>Ejemplo de bucle for incorrecto (1) - Paso 11, 14, 17, ...</strong></p>
+            <p><strong>Ejemplo de bucle for incorrecto (1) - Paso 11</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -2314,13 +2314,14 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
 &lt;p&gt;10&lt;/p&gt;
 &lt;p&gt;11&lt;/p&gt;
- . . .</code></pre>
+&lt;p&gt;12&lt;/p&gt;
+</code></pre>
               </div>
             </div>
 
             <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
 
-            <p>En este caso, la variable $i aumentará una unidad cada vez</p>
+            <p>En este caso, la variable $i aumentará una unidad cada vez, por lo que ahora vale 13.</p>
 
             <p class="control">
               <a href="#d610"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
@@ -2348,6 +2349,115 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
 &lt;p&gt;10&lt;/p&gt;
 &lt;p&gt;11&lt;/p&gt;
+&lt;p&gt;12&lt;/p&gt;
+ . . .</code>
+ </pre>
+              </div>
+            </div>
+
+            <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+            <p>En este caso, $i es superior a 3 y es fácil ver que va a seguir siéndolo una y otra vez.</p>
+
+            <p class="control">
+              <a href="#d611"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d613"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d613">
+            <p><strong>Ejemplo de bucle for incorrecto (1) - Paso 13, 16, 19, ...</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 10; $i &gt; 3; $i++) {
+    <span class="codigo-resaltado">print "&lt;p&gt;$i&lt;/p&gt;\n";</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;10&lt;/p&gt;
+&lt;p&gt;11&lt;/p&gt;
+&lt;p&gt;12&lt;/p&gt;
+ . . .
+<span class="codigo-resaltado">&lt;p&gt;número&lt;/p&gt;</span></code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+            <p>En este caso, el bucle imprimirá una y otra vez el texto &lt;p&gt;número&lt;/p&gt;</p>
+
+            <p class="control">
+              <a href="#d612"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d614"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d614">
+            <p><strong>Ejemplo de bucle for incorrecto (1) - Paso 14, 17, 20, ...</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 10; $i &gt; 3; <span class="codigo-resaltado">$i++</span>) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;10&lt;/p&gt;
+&lt;p&gt;11&lt;/p&gt;
+&lt;p&gt;12&lt;/p&gt;
+ . . .</code></pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+            <p>En este caso, la variable $i aumentará una unidad cada vez</p>
+
+            <p class="control">
+              <a href="#d613"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d615"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d615">
+            <p><strong>Ejemplo de bucle for incorrecto (1) - Paso 12, 15, 18, ...</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 10; <span class="codigo-resaltado">$i &gt; 3</span>; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;10&lt;/p&gt;
+&lt;p&gt;11&lt;/p&gt;
+&lt;p&gt;12&lt;/p&gt;
  . . .</code>
  </pre>
               </div>
@@ -2358,8 +2468,8 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, $i seguirá siendo siempre superior a 3, por lo que el bucle no terminará nunca.</p>
 
             <p class="control">
-              <a href="#d611"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d610"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d614"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d613"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
         </div>
@@ -2390,8 +2500,8 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
 &lt;p&gt;1&lt;/p&gt;
 &lt;p&gt;1&lt;/p&gt;
-. . .
-&lt;p&gt;1&lt;/p&gt;</code>
+&lt;p&gt;1&lt;/p&gt;
+. . .</code>
 </pre>
               </div>
             </div>
@@ -2845,7 +2955,8 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
           </div>
         </div>
       </li>
-      <li>es conveniente que la expresión de continuación se defina mediante desigualdades en vez de por igualdades, para evitar caer en bucles infinitos
+
+      <li>si la variable de control se modifica dentro del cuerpo del bucle, la condición de continuación podría no dejar de cumplirse nunca, como en el caso siguiente:
 
         <div class="mcl-diapo" style="height: 320px;">
 
@@ -2857,19 +2968,20 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
                 <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-    for ($i = 1; $i != 4; $i = $i + 2) {
-        print "&lt;p&gt;$i&lt;/p&gt;\n";
-    }
-    print "&lt;p&gt;Final&lt;/p&gt;\n";
-    ?&gt;</code>
+for ($i = 1; $i &lt; 3; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
 </pre>
               </div>
               <div class="resultado-codigo">
                 <pre>
 <code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
 &lt;p&gt;1&lt;/p&gt;
-&lt;p&gt;3&lt;/p&gt;
-&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
 . . .</code>
 </pre>
               </div>
@@ -2890,21 +3002,23 @@ print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
                 <pre>
 <code class="language-php">&lt;?php
 <span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
-for ($i = 1; $i != 4; $i = $i + 2) {
+for ($i = 1; $i &lt; 3; $i++) {
     print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
 }
 print "&lt;p&gt;Final&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
               </div>
               <div class="resultado-codigo">
-                <pre><span class="codigo-resaltado"><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></span></pre>
+                <pre><code class="language-html"><span class="codigo-resaltado">&lt;p&gt;Comienzo&lt;/p&gt;</span></code></pre>
               </div>
             </div>
 
             <p>Se ejecuta la primera instrucción del programa.</p>
 
             <p>En este caso, imprime el párrafo de comienzo (aunque el usuario sólo recibirá la página producida cuando termine el programa, cosa que no va a ocurrir)</p>
+
 
             <p class="control">
               <a href="#d0800"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
@@ -2920,8 +3034,9 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
                 <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-for (<span class="codigo-resaltado">$i = 1</span>; $i != 4; $i = $i + 2) {
+for (<span class="codigo-resaltado">$i = 1</span>; $i &lt; 3; $i++) {
     print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
 }
 print "&lt;p&gt;Final&lt;/p&gt;\n";
 ?&gt;</code>
@@ -2950,6 +3065,558 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
                 <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+
+            <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+
+            <p>En este caso, $i es inferior a 3 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+            <p class="control">
+              <a href="#d0802"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0804"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0804">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 4</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    <span class="codigo-resaltado">print "&lt;p&gt;$i&lt;/p&gt;\n";</span>
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;1&lt;/p&gt;</span></code></pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecutan las instrucciones del bloque.</p>
+
+            <p>En este caso, se imprime el texto &lt;p&gt;1&lt;/p&gt; ya que $i tiene el valor 1.</p>
+
+            <p class="control">
+              <a href="#d0803"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0805"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0805">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 5</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    <span class="codigo-resaltado">$i--;</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta la siguiente instrucción del bloque.</p>
+
+            <p>En este caso, la variable $i diminuye una unidad, por lo que ahora vale 0.</p>
+
+            <p class="control">
+              <a href="#d0804"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0806"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0806">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 6</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta la instrucción de paso.</p>
+
+            <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
+
+            <p class="control">
+              <a href="#d0805"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0807"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0807">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 7</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+            <p>En este caso, $i es inferior a 3 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+
+            <p class="control">
+              <a href="#d0806"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0808"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0808">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 8</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    <span class="codigo-resaltado">print "&lt;p&gt;$i&lt;/p&gt;\n";</span>
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;1&lt;/p&gt;</span></code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+            <p>En este caso, se imprime el texto &lt;p&gt;1&lt;/p&gt; ya que $i sigue teniendo el valor 1.</p>
+
+            <p class="control">
+              <a href="#d0807"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0809"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0809">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 9</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    <span class="codigo-resaltado">$i--;</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta la siguiente instrucción del bloque.</p>
+
+            <p>En este caso, la variable $i diminuye una unidad, por lo que ahora vale 0.</p>
+
+            <p class="control">
+              <a href="#d0808"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0810"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0810">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 10</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+            <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
+
+            <p class="control">
+              <a href="#d0809"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0811"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0811">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 11</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+</code>
+ </pre>
+              </div>
+            </div>
+
+            <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+            <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
+
+            <p class="control">
+              <a href="#d0810"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0812"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0812">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 12, 16, 20, ...</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    <span class="codigo-resaltado">print "&lt;p&gt;$i&lt;/p&gt;\n";</span>
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+ . . .
+<span class="codigo-resaltado">&lt;p&gt;1&lt;/p&gt;</span></code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecutan de nuevo las instrucciones del bloque.</p>
+
+            <p>En este caso, el bucle imprimirá una y otra vez el texto &lt;p&gt;1&lt;/p&gt;</p>
+
+            <p class="control">
+              <a href="#d0811"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0813"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0813">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 13, 17, 21, ...</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    <span class="codigo-resaltado">$i--;</span>
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+ . . .
+&lt;p&gt;1&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta la siguiente instrucción del bloque.</p>
+
+            <p>En este caso, la variable $i diminuye una unidad, por lo que ahora vale 0.</p>
+
+            <p class="control">
+              <a href="#d0812"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0814"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0814">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 14, 18, 22, ...</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+ . . .
+&lt;p&gt;1&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta de nuevo la instrucción de paso.</p>
+
+            <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
+
+            <p class="control">
+              <a href="#d0813"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0815"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0815">
+            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 15, 19, 23, ...</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 3</span>; $i++) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+    $i--;
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+ . . .
+&lt;p&gt;1&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <p>A continuación se comprueba de nuevo que la condición de continuación se cumple.</p>
+
+            <p>En este caso, $i seguirá siendo siempre inferior a 3, por lo que el bucle no terminará nunca.</p>
+
+            <p class="control">
+              <a href="#d0814"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0812"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <li>es conveniente que la expresión de continuación se defina mediante desigualdades en vez de por igualdades, para evitar caer en bucles infinitos
+
+        <div class="mcl-diapo" style="height: 320px;">
+
+          <div id="d0900">
+            <p><strong>Ejemplo de bucle for incorrecto (4)</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+    for ($i = 1; $i != 4; $i = $i + 2) {
+        print "&lt;p&gt;$i&lt;/p&gt;\n";
+    }
+    print "&lt;p&gt;Final&lt;/p&gt;\n";
+    ?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;
+. . .</code>
+</pre>
+              </div>
+            </div>
+
+            <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+
+            <p class="control">
+              <a href="#d0901"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0901">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 1</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
+for ($i = 1; $i != 4; $i = $i + 2) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre><span class="codigo-resaltado"><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></span></pre>
+              </div>
+            </div>
+
+            <p>Se ejecuta la primera instrucción del programa.</p>
+
+            <p>En este caso, imprime el párrafo de comienzo (aunque el usuario sólo recibirá la página producida cuando termine el programa, cosa que no va a ocurrir)</p>
+
+            <p class="control">
+              <a href="#d0900"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0902"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0902">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 2</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+for (<span class="codigo-resaltado">$i = 1</span>; $i != 4; $i = $i + 2) {
+    print "&lt;p&gt;$i&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+
+            <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
+
+            <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+
+            <p class="control">
+              <a href="#d0901"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0903"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+            </p>
+          </div>
+
+          <div id="d0903">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 3</strong></p>
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 for ($i = 1; <span class="codigo-resaltado">$i != 4</span>; $i = $i + 2) {
     print "&lt;p&gt;$i&lt;/p&gt;\n";
 }
@@ -2967,13 +3634,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, $i es distinto de 4 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
 
             <p class="control">
-              <a href="#d0802"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0804"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0902"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0904"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0804">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 4</strong></p>
+          <div id="d0904">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 4</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3000,13 +3667,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, se imprime el texto &lt;p&gt;1&lt;/p&gt; ya que $i tiene el valor 1.</p>
 
             <p class="control">
-              <a href="#d0803"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0805"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0903"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0905"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0805">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 5</strong></p>
+          <div id="d0905">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 5</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3033,13 +3700,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, la variable $i aumenta en dos unidades, por lo que ahora vale 3.</p>
 
             <p class="control">
-              <a href="#d0804"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0806"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0904"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0906"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0806">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 6</strong></p>
+          <div id="d0906">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 6</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3066,13 +3733,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, $i es distinto de 4 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
 
             <p class="control">
-              <a href="#d0805"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0807"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0905"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0907"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0807">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 7</strong></p>
+          <div id="d0907">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 7</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3100,13 +3767,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, se imprime el texto &lt;p&gt;3&lt;/p&gt; ya que $i tiene el valor 3.</p>
 
             <p class="control">
-              <a href="#d0806"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0808"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0906"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0908"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0808">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 8</strong></p>
+          <div id="d0908">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 8</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3134,13 +3801,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, la variable $i aumenta en dos unidades, por lo que pasa a valer 5.</p>
 
             <p class="control">
-              <a href="#d0807"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0809"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0907"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0909"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0809">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 9</strong></p>
+          <div id="d0909">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 9</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3169,13 +3836,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, $i es diferente de 4 (vale 5) y es fácil ver que va a seguir siéndolo una y otra vez.</p>
 
             <p class="control">
-              <a href="#d0808"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0810"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0908"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0910"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0810">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 10, 13, 16, . . .</strong></p>
+          <div id="d0910">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 10, 13, 16, . . .</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3205,13 +3872,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, el bucle imprimirá una y otra vez el texto &lt;p&gt;número&lt;/p&gt;</p>
 
             <p class="control">
-              <a href="#d0809"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0811"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0909"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0911"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0811">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 11, 14, 17, ...</strong></p>
+          <div id="d0911">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 11, 14, 17, ...</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3240,13 +3907,13 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, la variable $i aumentará dos unidades cada vez</p>
 
             <p class="control">
-              <a href="#d0810"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0812"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0910"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0912"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
 
-          <div id="d0812">
-            <p><strong>Ejemplo de bucle for incorrecto (3) - Paso 12, 15, 18, ...</strong></p>
+          <div id="d0912">
+            <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 12, 15, 18, ...</strong></p>
 
             <div class="filaflex">
               <div class="codigo">
@@ -3275,8 +3942,8 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <p>En este caso, $i seguirá siendo siempre distinto de 4, por lo que el bucle no terminará nunca.</p>
 
             <p class="control">
-              <a href="#d0811"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-              <a href="#d0810"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+              <a href="#d0911"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+              <a href="#d0910"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
             </p>
           </div>
         </div>
@@ -3287,7 +3954,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 
     <div class="mcl-diapo" style="height: 320px;">
       <div id="d50">
-        <p><strong>Ejemplo de bucle for incorrecto (4)</strong></p>
+        <p><strong>Ejemplo de bucle for incorrecto (5)</strong></p>
 
         <div class="filaflex">
           <div class="codigo">
@@ -3317,7 +3984,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
       </div>
 
       <div id="d51">
-        <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 1</strong></p>
+        <p><strong>Ejemplo de bucle for incorrecto (5) - Paso 1</strong></p>
 
         <div class="filaflex">
           <div class="codigo">
@@ -3347,7 +4014,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
       </div>
 
       <div id="d52">
-        <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 2</strong></p>
+        <p><strong>Ejemplo de bucle for incorrecto (5) - Paso 2</strong></p>
 
         <div class="filaflex">
           <div class="codigo">
@@ -3377,7 +4044,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
       </div>
 
       <div id="d53">
-        <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 3</strong></p>
+        <p><strong>Ejemplo de bucle for incorrecto (5) - Paso 3</strong></p>
 
         <div class="filaflex">
           <div class="codigo">
@@ -3407,7 +4074,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
       </div>
 
       <div id="d54">
-        <p><strong>Ejemplo de bucle for incorrecto (4) - Paso 4</strong></p>
+        <p><strong>Ejemplo de bucle for incorrecto (5) - Paso 4</strong></p>
 
         <div class="filaflex">
           <div class="codigo">
@@ -3504,7 +4171,7 @@ for ($i = 0; $i &gt; 3; $i++) {
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 12 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
