@@ -22,7 +22,7 @@
       <tbody>
         <tr>
           <td><strong>Número de jugadores:</strong></td>
-          <td><input type="number" name="jugadores" min="3" max="10" value="6"> </td>
+          <td><input type="number" name="jugadores" min="3" max="10" value="6"></td>
         </tr>
       </tbody>
     </table>
