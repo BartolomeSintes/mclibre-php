@@ -3,9 +3,9 @@
  * Comprobación de datos filter_var() 2 - comprobacion-datos-filter-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-03
+ * @version   2019-10-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,8 +26,10 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Función filter_var() (Resultado). Comprobación de datos.
-    PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Función filter_var() (Resultado). Comprobación de datos.
+    PHP. Bartolomé Sintes Marco. www.mclibre.org
+</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
@@ -104,6 +106,16 @@ if (!isset($_REQUEST["dato"])) {
     }
     print "    </tr>\n";
 
+    $resultado = filter_var($dato, FILTER_VALIDATE_DOMAIN);
+    print "    <tr>\n";
+    print "      <td>FILTER_VALIDATE_DOMAIN</td>\n";
+    if ($resultado == true) {
+        print "      <td style=\"text-align: center\">true</td>\n";
+    } elseif ($resultado == false) {
+        print "      <td style=\"text-align: center\">false</td>\n";
+    }
+    print "    </tr>\n";
+
     $resultado = filter_var($dato, FILTER_VALIDATE_URL);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_URL</td>\n";
@@ -154,7 +166,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-03">3 de noviembre de 2016</time>
+      <time datetime="2019-10-08">8 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
