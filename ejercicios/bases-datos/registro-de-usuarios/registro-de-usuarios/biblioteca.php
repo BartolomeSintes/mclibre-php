@@ -217,7 +217,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu=MENU_PRINCIPAL)
     }
     print "  <h1>Registro de usuarios - $texto</h1>\n";
     print "\n";
-    print "  <div id=\"menu\">\n";
+    print "  <nav>\n";
     print "    <ul>\n";
     if ($menu == MENU_PRINCIPAL) {
         print "      <li><a href=\"index.php\">Conectar</a></li>\n";
@@ -228,9 +228,9 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu=MENU_PRINCIPAL)
         print "      <li><a href=\"salir.php\">Desconectar</a></li>\n";
     }
     print "    </ul>\n";
-    print "  </div>\n";
+    print "  </nav>\n";
     print "\n";
-    print "  <div id=\"contenido\">\n";
+    print "  <main>\n";
 }
 
 function pie()
@@ -243,7 +243,7 @@ function pie()
             . "<strong>root</strong>.</p>\n";
         print "\n";
     }
-    print "  </div>\n";
+    print "  </main>\n";
     print "\n";
 
     print "  <footer>\n";

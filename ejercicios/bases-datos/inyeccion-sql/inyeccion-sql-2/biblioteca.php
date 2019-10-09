@@ -140,7 +140,7 @@ function cabecera($texto, $menu, $conCursor)
     }
     print "  <h1>Inyección SQL 2 - $texto</h1>\n";
     print "\n";
-    print "  <div id=\"menu\">\n";
+    print "  <nav>\n";
     print "    <ul>\n";
     if ($menu == MENU_PRINCIPAL) {
         print "      <li><a href=\"entrar-1.php\">Entrar en el sistema</a></li>\n";
@@ -152,14 +152,14 @@ function cabecera($texto, $menu, $conCursor)
         print "      <li>Error en la selección de menú</li>\n";
     }
     print "    </ul>\n";
-    print "  </div>\n";
+    print "  </nav>\n";
     print "\n";
-    print "  <div id=\"contenido\">\n";
+    print "  <main>\n";
 }
 
 function pie()
 {
-    print "  </div>\n";
+    print "  </main>\n";
     print "\n";
 
     print "  <footer>\n";

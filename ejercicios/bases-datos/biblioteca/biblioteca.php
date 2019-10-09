@@ -193,7 +193,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal")
     }
     print "  <h1>Biblioteca - $texto</h1>\n";
     print "\n";
-    print "  <div id=\"menu\">\n";
+    print "  <nav>\n";
     print "    <ul>\n";
     if ($menu == "menuObras") {
         print "      <li><a href=\"index.php\">Inicio</a></li>\n";
@@ -225,14 +225,14 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal")
         print "      <li><a href=\"com-borrar-todo-1.php\">Borrar todo</a></li>\n";
     }
     print "    </ul>\n";
-    print "  </div>\n";
+    print "  </nav>\n";
     print "\n";
-    print "  <div id=\"contenido\">\n";
+    print "  <main>\n";
 }
 
 function pie()
 {
-    print "  </div>\n";
+    print "  </main>\n";
     print "\n";
 
     print "  <footer>\n";

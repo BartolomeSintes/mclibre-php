@@ -346,7 +346,7 @@ function cabecera($texto, $menu="menu_principal")
     }
     print " - " . _($texto) . "</h1>\n";
     print "\n";
-    print "  <div id=\"menu\">\n";
+    print "  <nav>\n";
     print "    <ul>\n";
     if ($menu == "menu_principal") {
         print "      <li><a href=\"index.php\">" . _("Conectar") . "</a></li>\n";
@@ -362,9 +362,9 @@ function cabecera($texto, $menu="menu_principal")
         print "      <li><a href=\"salir.php\">" . _("Desconectar") . "</a></li>\n";
     }
     print "    </ul>\n";
-    print "  </div>\n";
+    print "  </nav>\n";
     print "\n";
-    print "  <div id=\"contenido\">\n";
+    print "  <main>\n";
 }
 
 function pie()
@@ -376,7 +376,7 @@ function pie()
            . _("El usuario Administrador se llama <strong>root</strong> y su contraseña es también <strong>root</strong>") . ".</p>\n";
         print "\n";
     }
-    print "  </div>\n";
+    print "  </main>\n";
     print "\n";
 
     print "  <footer>\n";

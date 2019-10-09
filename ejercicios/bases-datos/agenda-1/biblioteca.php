@@ -170,7 +170,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR)
     }
     print "  <h1>Agenda - $texto</h1>\n";
     print "\n";
-    print "  <div id=\"menu\">\n";
+    print "  <nav>\n";
     print "    <ul>\n";
     print "      <li><a href=\"insertar-1.php\">Añadir</a></li>\n";
     print "      <li><a href=\"listar.php\">Listar</a></li>\n";
@@ -179,14 +179,14 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR)
     print "      <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
     print "      <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
     print "    </ul>\n";
-    print "  </div>\n";
+    print "  </nav>\n";
     print "\n";
-    print "  <div id=\"contenido\">\n";
+    print "  <main>\n";
 }
 
 function pie()
 {
-    print "  </div>\n";
+    print "  </main>\n";
     print "\n";
 
     print "  <footer>\n";
