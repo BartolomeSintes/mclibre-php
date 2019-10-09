@@ -28,7 +28,7 @@ function cabecera($texto)
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
-    print "  <head>\n";
+    print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
     print "    $texto.\n";
