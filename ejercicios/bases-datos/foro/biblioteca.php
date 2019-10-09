@@ -166,8 +166,10 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal",
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
-    print "  <title>Foro. $texto.\n";
-    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
+    print "  <title>\n";
+    print "    $texto. Foro.\n";
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
+    print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos-foro.css\" title=\"Color\">\n";
     print "</head>\n";

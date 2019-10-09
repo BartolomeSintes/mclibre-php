@@ -17,7 +17,8 @@
   <form action="for-3-5-2.php" method="get">
     <p>Escriba el número de filas y columnas (0 &lt; número &le; 100) y su tamaño
       (30 &le; altura &le; 100; 50 &le; anchura &le; 100) y mostraré la tabla de
-      multiplicar hasta esos valores.</p>
+      multiplicar hasta esos valores.
+    </p>
 
     <table>
       <tbody>

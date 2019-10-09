@@ -17,11 +17,14 @@
   <form action="controles-formularios-2-03-2.php" method="get">
     <p>Indique su sexo y aficiones:</p>
 
-    <p><strong>Sexo:</strong>
+    <p>
+      <strong>Sexo:</strong>
       <label><input type="radio" name="genero" value="hombre">Hombre</label>
-      <label><input type="radio" name="genero" value="mujer">Mujer</label></p>
+      <label><input type="radio" name="genero" value="mujer">Mujer</label>
+    </p>
 
-    <p><strong>Aficiones:</strong>
+    <p>
+      <strong>Aficiones:</strong>
       <label><input type="checkbox" name="cine">Cine</label>
       <label><input type="checkbox" name="literatura">Literatura</label>
       <label><input type="checkbox" name="musica">Música</label>

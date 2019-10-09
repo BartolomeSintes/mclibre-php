@@ -16,7 +16,8 @@
 
   <form action="for-3-2-2.php" method="get">
     <p>Escriba un número (0 &lt; número &le; 200) y mostraré una tabla de una columna
-      y tantas filas como indique.</p>
+      y tantas filas como indique.
+    </p>
 
     <table>
       <tbody>

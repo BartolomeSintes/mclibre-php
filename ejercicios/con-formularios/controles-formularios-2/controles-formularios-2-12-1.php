@@ -17,7 +17,8 @@
   <form action="controles-formularios-2-12-2.php" method="get">
     <p>Tamaño de la figura: <input type="number" name="lado" min="20" max="500" value="50"></p>
 
-    <p>Forma de la figura:
+    <p>
+      Forma de la figura:
       <label><input type="radio" name="forma" value="cuadrado">Cuadrado</label>
       <label><input type="radio" name="forma" value="circulo">Círculo </label>
     </p>

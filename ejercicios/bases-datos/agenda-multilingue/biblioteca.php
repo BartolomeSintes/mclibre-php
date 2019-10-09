@@ -329,8 +329,10 @@ function cabecera($texto, $menu="menu_principal")
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
-    print "  <title>" . _("Agenda multilingüe") . ". $texto.\n";
-    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
+    print "  <title>\n";
+    print "    " . _("Agenda multilingüe") . ". $texto.\n";
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
+    print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";

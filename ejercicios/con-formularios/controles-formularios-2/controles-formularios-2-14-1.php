@@ -20,11 +20,16 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Nombre:</strong><br>
-            <input type="text" name="nombre" size="20" maxlength="20"></td>
-          <td><strong>Apellidos:</strong><br>
-            <input type="text" name="apellidos" size="20" maxlength="20"></td>
-          <td><strong>Edad:</strong><br>
+          <td>
+            <strong>Nombre:</strong><br>
+            <input type="text" name="nombre" size="20" maxlength="20">
+          </td>
+          <td>
+            <strong>Apellidos:</strong><br>
+            <input type="text" name="apellidos" size="20" maxlength="20">
+          </td>
+          <td>
+            <strong>Edad:</strong><br>
             <select name="edad">
               <option>...</option>
               <option value="1">Menos de 20 años</option>
@@ -35,15 +40,21 @@
           </td>
         </tr>
         <tr>
-          <td><strong>Peso:</strong><br>
-            <input type="number" name="peso" min="1" max="250"> kg</td>
-          <td><strong>Sexo:</strong><br>
+          <td>
+            <strong>Peso:</strong><br>
+            <input type="number" name="peso" min="1" max="250"> kg
+          </td>
+          <td>
+            <strong>Sexo:</strong><br>
             <label><input type="radio" name="genero" value="hombre">Hombre</label>
-            <label><input type="radio" name="genero" value="mujer">Mujer</label></td>
-          <td><strong>Estado Civil:</strong><br>
+            <label><input type="radio" name="genero" value="mujer">Mujer</label>
+          </td>
+          <td>
+            <strong>Estado Civil:</strong><br>
             <label><input type="radio" name="estadoCivil" value="soltero">Soltero</label>
             <label><input type="radio" name="estadoCivil" value="casado">Casado</label>
-            <label><input type="radio" name="estadoCivil" value="otro">Otro</label></td>
+            <label><input type="radio" name="estadoCivil" value="otro">Otro</label>
+          </td>
         </tr>
       </tbody>
     </table>

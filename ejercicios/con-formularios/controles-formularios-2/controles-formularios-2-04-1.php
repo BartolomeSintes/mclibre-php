@@ -19,7 +19,8 @@
 
     <p>Confirme su dirección de correo: <input type="email" name="correo2" size="40"></p>
 
-    <p>Indique si quiere recibir correos nuestros:
+    <p>
+      Indique si quiere recibir correos nuestros:
       <select name="recibir">
         <option value="-1">...</option>
         <option value="1">Sí</option>
@@ -34,17 +35,17 @@
   </form>
 
   <footer>
-  <p class="ultmod">
-    Última modificación de esta página:
-    <time datetime="2018-10-22">22 de octubre de 2018</time>
+    <p class="ultmod">
+      Última modificación de esta página:
+      <time datetime="2018-10-22">22 de octubre de 2018</time>
     </p>
 
-  <p class="licencia">
-    Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-    Programación web en PHP</a> por <a href="http://www.mclibre.org/">Bartolomé
-    Sintes Marco</a>.<br>
-    El programa PHP que genera esta página está bajo
-    <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.</p>
-</footer>
+    <p class="licencia">
+      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
+      El programa PHP que genera esta página se distribuye bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
+    </p>
+  </footer>
 </body>
 </html>

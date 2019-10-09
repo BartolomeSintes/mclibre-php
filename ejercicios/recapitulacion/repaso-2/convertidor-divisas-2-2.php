@@ -26,8 +26,10 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Convertidor de divisas 2 (Resultado). Repaso (2).
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>
+    Convertidor de divisas 2 (Resultado). Repaso (2).
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>

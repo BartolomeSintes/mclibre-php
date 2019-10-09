@@ -16,7 +16,8 @@
 
   <form action="for-3-6-2.php" method="get">
     <p>Escriba un número (0 &lt; número &le; 20) y mostraré las tablas de
-      multiplicar hasta ese número.</p>
+      multiplicar hasta ese número.
+    </p>
 
     <table>
       <tbody>

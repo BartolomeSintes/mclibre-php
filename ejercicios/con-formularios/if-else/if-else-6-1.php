@@ -22,7 +22,8 @@
       <tbody>
         <tr>
           <td><strong>Temperatura:</strong></td>
-          <td><input type="number" name="temperatura" min="-500" max="10000" step="any">
+          <td>
+            <input type="number" name="temperatura" min="-500" max="10000" step="any">
             <select name="unidad">
               <option value="c" selected>Celsius</option>
               <option value="f">Fahrenheit</option>

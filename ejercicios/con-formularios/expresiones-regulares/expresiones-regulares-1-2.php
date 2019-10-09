@@ -26,7 +26,8 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Validación de entrada de texto 1 (Resultado). Expresiones regulares.
+  <title>
+    Validación de entrada de texto 1 (Resultado). Expresiones regulares.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

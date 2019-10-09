@@ -16,7 +16,8 @@
 
   <form action="for-3-0-2.php" method="get">
     <p>Escriba un número (0 &lt; número &le; 200) y mostraré esa cantidad
-      de varios elementos HTML.</p>
+      de varios elementos HTML.
+    </p>
 
     <table>
       <tbody>

@@ -17,7 +17,8 @@
   <form action="for-3-8-2.php" method="get">
     <p>Escriba dos números y mostraré una tabla con el número de columnas
       (0 &lt; columnas &le; 100) que indique y con las primeras celdas numeradas
-      (0 &lt; numeradas &le; 1.000).</p>
+      (0 &lt; numeradas &le; 1.000).
+    </p>
 
     <table>
       <tbody>

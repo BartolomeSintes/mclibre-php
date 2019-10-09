@@ -124,8 +124,10 @@ function cabecera($texto, $menu, $conCursor)
     print "<html lang=\"es\">\n";
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
-    print "  <title>Inyección SQL 2. $texto.\n";
-    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>\n";
+    print "  </title>\n";
+    print "    $texto. Inyección SQL 2.\n";
+    print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
+    print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
