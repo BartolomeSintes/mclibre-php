@@ -26,31 +26,31 @@ require_once "../comunes/biblioteca.php";
 
 if (!isset($_REQUEST["si"]) && !isset($_REQUEST["resi"]) && !isset($_REQUEST["fin"]) ) {
     cabecera("Instalación", MENU_INSTALAR, 1);
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">
-  <p>Instalación de la aplicación</p>
-  <p>Escriba en el archivo <strong>/comunes/config.php</strong>
-    el nombre de usuario en MySQL/SQLITE y su contraseña y pulse el botón <strong>Instalar</strong>.</p>
-  <p>Se creará el usuario administrador de nombre <strong>root</strong>
-    con contraseña <strong>root</strong>.</p>
-  <p>Una vez instalada la aplicación, borre la carpeta /instacion.</p>
-  <p><button type=\"submit\" value=\"Sí\" name=\"si\">Instalar aplicación</button></p>
-</form>\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">
+    <p>Instalación de la aplicación</p>
+    <p>Escriba en el archivo <strong>/comunes/config.php</strong>
+      el nombre de usuario en MySQL/SQLITE y su contraseña y pulse el botón <strong>Instalar</strong>.</p>
+    <p>Se creará el usuario administrador de nombre <strong>root</strong>
+      con contraseña <strong>root</strong>.</p>
+    <p>Una vez instalada la aplicación, borre la carpeta /instacion.</p>
+    <p><button type=\"submit\" value=\"Sí\" name=\"si\">Instalar aplicación</button></p>
+  </form>\n";
 } elseif (isset($_REQUEST["si"])) {
     cabecera("Instalación", MENU_INSTALAR, 1);
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">
-  <p>Instalación de la aplicación</p>
-  <p>¿Está usted seguro? ¡Se borrará la base de datos anterior!</p>
-  <p><button type=\"submit\" value=\"Sí\" name=\"resi\">Sí, Instalar aplicación</button></p>
-</form>\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">
+    <p>Instalación de la aplicación</p>
+    <p>¿Está usted seguro? ¡Se borrará la base de datos anterior!</p>
+    <p><button type=\"submit\" value=\"Sí\" name=\"resi\">Sí, Instalar aplicación</button></p>
+  </form>\n";
 } elseif (isset($_REQUEST["resi"])) {
     cabecera("Instalación", MENU_INSTALAR, 1);
     $db = conectaDb();
     borraTodo($db);
     $db = null;
-    print "<form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
-    print "  <p>Pulse el botón para iniciar la aplicación.</p>\n";
-    print "  <p><button type=\"submit\" value=\"Sí\" name=\"fin\">Iniciar la aplicación</button></p>\n";
-    print "</form>\n";
+    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
+    print "    <p>Pulse el botón para iniciar la aplicación.</p>\n";
+    print "    <p><button type=\"submit\" value=\"Sí\" name=\"fin\">Iniciar la aplicación</button></p>\n";
+    print "  </form>\n";
     pie();
 } else {
     header("location:../index.php");

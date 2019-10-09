@@ -35,7 +35,7 @@
 </head>
 
 <body>
-<h1>Convertidor de divisas (Resultado)</h1>
+  <h1>Convertidor de divisas (Resultado)</h1>
 
 <?php
 // Funciones auxiliares

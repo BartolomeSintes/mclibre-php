@@ -102,7 +102,6 @@ print "        </tr>\n";
 print "      </tbody>\n";
 print "    </table>\n";
 print "\n";
-
 print "    <p>\n";
 print "      <input type=\"hidden\" name=\"verbo\" value=\"$verbo\">\n";
 print "      <input type=\"hidden\" name=\"formaVerbal\" value=\"$formaVerbal\">\n";

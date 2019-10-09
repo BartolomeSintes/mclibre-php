@@ -13,6 +13,6 @@ print "\n";
 print "<body>\n";
 print "  <h1>Puesta en marcha. Visual Studio Code 1</h1>\n";
 print "\n";
-print "<p>Compruebe que está página se muestra correctamente en el navegador.</p>\n";
+print "  <p>Compruebe que está página se muestra correctamente en el navegador.</p>\n";
 print "</body>\n";
 print "</html>\n";

@@ -91,7 +91,7 @@ print "      </tbody>\n";
 print "    </table>\n";
 print "\n";
 print "    <p><input type=\"hidden\" name=\"gris\" value=\"$gris\">\n";
-print "</form>\n";
+print "  </form>\n";
 print "\n";
 ?>
   <footer>

@@ -58,8 +58,10 @@ if (isset($_SESSION["aviso1"])) {
     print "\n";
 }
 ?>
-    <p><input type="submit" value="Siguiente">
-      <input type="reset" value="Borrar"></p>
+    <p>
+      <input type="submit" value="Siguiente">
+      <input type="reset" value="Borrar">
+    </p>
   </form>
 
   <footer>

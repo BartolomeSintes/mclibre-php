@@ -104,8 +104,8 @@ if ($numeroOk) {
     print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "\n";
-    print "  <p><input type=\"hidden\" name=\"numero\" value=\"$numero\"></p>\n";
-    print "</form>\n";
+    print "    <p><input type=\"hidden\" name=\"numero\" value=\"$numero\"></p>\n";
+    print "  </form>\n";
     print "\n";
 }
 

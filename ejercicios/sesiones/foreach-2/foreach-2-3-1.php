@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<h1>Encuesta (Formulario 1)</h1>
+  <h1>Encuesta (Formulario 1)</h1>
 
   <form action="foreach-2-3-2.php" method="get">
     <p>Escriba el número de preguntas (1 &le; número &le; 10) y respuestas (2

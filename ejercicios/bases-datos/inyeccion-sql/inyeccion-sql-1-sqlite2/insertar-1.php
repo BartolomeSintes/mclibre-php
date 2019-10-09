@@ -27,7 +27,7 @@ $db = conectaDb();
 
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = sqlite_array_query($db, $consulta);
-// print "<pre>"; print_r($result); print "</pre>";
+// print "  <pre>"; print_r($result); print "</pre>";
 if (!$result) {
     cabecera("Añadir 1", MENU_VOLVER, CABECERA_SIN_CURSOR);
     print "    <p>Error en la consulta.</p>\n";

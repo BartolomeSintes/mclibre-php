@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<h1>Hombres y mujeres (Formulario 1)</h1>
+  <h1>Hombres y mujeres (Formulario 1)</h1>
 
   <form action="foreach-2-4-2.php" method="get">
     <p>Escriba un número (0 &lt; número &le; 10) y dibujaré una tabla de dos

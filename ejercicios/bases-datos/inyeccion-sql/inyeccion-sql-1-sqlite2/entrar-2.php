@@ -59,7 +59,7 @@ print $consulta;
             WHERE user='$usuario'";
         $result = sqlite_query_multi($db, $consulta);
         $valor = sqlite_fetch_array($result);
-    print "<pre>RESULTADO"; print_r($valor);print "</pre>";
+    print "    <pre>RESULTADO"; print_r($valor);print "</pre>";
         if (!$result) {
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
@@ -79,7 +79,7 @@ pie();
 <?
 /*
  if ($usuario == "" || $contraseña == "") {
-    print "<p>Hay que rellenar los dos campos.</p>\n";
+    print "  <p>Hay que rellenar los dos campos.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbTabla
         WHERE user='$usuario'
@@ -87,23 +87,23 @@ pie();
 print $consulta;
     $result = sqlite_query($db, $consulta);
     $valor = sqlite_fetch_array($result);
-    print "<pre>RESULTADO"; print_r($valor);print "</pre>";
+    print "  <pre>RESULTADO"; print_r($valor);print "</pre>";
     if (!$result) {
-        print "<p>Error en la consulta.</p>\n";
+        print "  <p>Error en la consulta.</p>\n";
     } elseif ($valor[0]>0) {
-        print "<p>Nombre de usuario y contraseña correctos.</p>\n";
+        print "  <p>Nombre de usuario y contraseña correctos.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTabla
             WHERE user='$usuario'";
         $result = sqlite_query($db, $consulta);
         $valor = sqlite_fetch_array($result);
-    print "<pre>RESULTADO"; print_r($valor);print "</pre>";
+    print "  <pre>RESULTADO"; print_r($valor);print "</pre>";
         if (!$result) {
-            print "<p>Error en la consulta.</p>\n";
+            print "  <p>Error en la consulta.</p>\n";
         } elseif ($valor[0]>0) {
-            print "<p>Contraseña incorrecta.</p>\n";
+            print "  <p>Contraseña incorrecta.</p>\n";
         } else {
-            print "<p>Nombre de usuario incorrecto.</p>\n";
+            print "  <p>Nombre de usuario incorrecto.</p>\n";
         }
     }
 }

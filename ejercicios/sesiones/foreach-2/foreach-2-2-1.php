@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<h1>Palabras repetidas (Formulario 1)</h1>
+  <h1>Palabras repetidas (Formulario 1)</h1>
 
   <form action="foreach-2-2-2.php" method="get">
     <p>Escriba un número (0 &lt; número &le; 10) y dibujaré una tabla de una

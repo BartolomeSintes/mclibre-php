@@ -181,12 +181,12 @@ print "                <td><input type=\"text\" name=\"tamanyoGraficaY\" "
     . "value=\"$tamanyoGraficaY\" size=\"5\"> px</td>\n";
 print "              </tr>\n";
 print "              <tr>\n";
-print "                <td colspan=\"2\">Título gráfica:";
+print "                <td colspan=\"2\">Título gráfica: ";
 print "<input type=\"text\" name=\"tituloGrafica\" "
     . "value=\"$tituloGrafica\" size=\"40\"></td>\n";
 print "              </tr>\n";
 print "              <tr>\n";
-print "                <td colspan=\"2\">Números en eje Y:";
+print "                <td colspan=\"2\">Números en eje Y: ";
 print "<input type=\"checkbox\" name=\"unidadesEjeY\" ";
     if ($unidadesEjeY == "on") {
         print "checked";

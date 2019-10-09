@@ -64,8 +64,8 @@ function conectaDb()
         return($db);
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "<p>Error: No puede conectarse con la base de datos.</p>\n";
-        print "<p>Error: " . $e->getMessage() . "</p>\n";
+        print "  <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "  <p>Error: " . $e->getMessage() . "</p>\n";
         pie();
         exit();
     }

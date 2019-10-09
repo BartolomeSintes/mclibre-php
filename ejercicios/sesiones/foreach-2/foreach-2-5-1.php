@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<h1>Tabla cuadrada con casillas de verificación (Formulario 1)</h1>
+  <h1>Tabla cuadrada con casillas de verificación (Formulario 1)</h1>
 
   <form action="foreach-2-5-2.php" method="get">
     <p>Escriba un número (0 &lt; número &le; 20) y dibujaré una tabla cuadrada de
