@@ -28,7 +28,7 @@ $db = conectaDb();
 $id = recogeParaConsulta($db, "id");
 
 if ($id == "''") {
-    cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
+    cabecera("Obras - Modificar 2", "menuObras");
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
     print "\n";
 } else {
@@ -36,11 +36,11 @@ if ($id == "''") {
         WHERE id=$id";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
+        cabecera("Obras - Modificar 2", "menuObras");
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
+        cabecera("Obras - Modificar 2", "menuObras");
         print "    <p>Registro no encontrado.</p>\n";
         print "\n";
     } else {
@@ -48,12 +48,12 @@ if ($id == "''") {
             WHERE id=$id";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera("Obras - Modificar 2", CABECERA_SIN_CURSOR, "menuObras");
+            cabecera("Obras - Modificar 2", "menuObras");
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } else {
             $valor = $result->fetch();
-            cabecera("Obras - Modificar 2", CABECERA_CON_CURSOR, "menuObras");
+            cabecera("Obras - Modificar 2", "menuObras");
             print "    <form action=\"obr-modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
             print "      <p>Modifique los campos que desee:</p>\n";
             print "\n";
@@ -62,7 +62,7 @@ if ($id == "''") {
             print "          <tr>\n";
             print "            <td>Autor:</td>\n";
             print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
-                . "maxlength=\"" . TAM_AUTOR . "\" value=\"$valor[autor]\" id=\"cursor\"></td>\n";
+                . "maxlength=\"" . TAM_AUTOR . "\" value=\"$valor[autor]\" autofocus></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Título:</td>\n";

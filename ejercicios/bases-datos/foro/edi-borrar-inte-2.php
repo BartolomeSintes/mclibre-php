@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Editor - Borrar intervenciones 2", CABECERA_SIN_CURSOR, "menuEditor", "");
+cabecera("Editor - Borrar intervenciones 2", "menuEditor", "");
 
 $id    = recogeParaConsulta($db, "id");
 $campo = recogeParaConsulta($db, "campo", "fecha");

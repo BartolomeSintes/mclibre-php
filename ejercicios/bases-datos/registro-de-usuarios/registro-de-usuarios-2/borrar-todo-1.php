@@ -29,7 +29,7 @@ if (isset($_SESSION["id"])) {
     header("Location:index.php");
     exit();
 } else {
-    cabecera("Borrar todo 1", MENU_VOLVER, CABECERA_SIN_CURSOR);
+    cabecera("Borrar todo 1", MENU_VOLVER);
 }
 
 print "    <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";

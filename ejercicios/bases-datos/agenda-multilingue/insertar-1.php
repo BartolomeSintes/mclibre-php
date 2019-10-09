@@ -48,7 +48,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>" . _("Nombre") . ":</td>\n";
-        print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" id=\"cursor\"></td>\n";
+        print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>" . _("Apellidos") . ":</td>\n";

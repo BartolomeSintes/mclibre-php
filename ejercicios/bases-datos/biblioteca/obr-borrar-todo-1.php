@@ -23,7 +23,7 @@
  */
 
 include "biblioteca.php";
-cabecera("Obras - Borrar todo 1", CABECERA_SIN_CURSOR, "menuObras");
+cabecera("Obras - Borrar todo 1", "menuObras");
 
 print "    <form action=\"obr-borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>¿Está seguro?</p>\n";

@@ -31,11 +31,11 @@ $consulta = "SELECT COUNT(*) FROM $dbDiscusiones
     WHERE id=$hilo";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
+    cabecera ("Discusiones - Intervenir en discusión 1", "menuHilos", $hilo);
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
+    cabecera ("Discusiones - Intervenir en discusión 1", "menuHilos", $hilo);
     print "    <p>La discusión solicitada no existe.</p>\n";
     print "\n";
 } else {
@@ -43,24 +43,24 @@ if (!$result) {
         WHERE id_discusion=$hilo";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
+        cabecera ("Discusiones - Intervenir en discusión 1", "menuHilos", $hilo);
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() >= MAX_REG_INTERVENCIONES) {
-        cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
+        cabecera ("Discusiones - Intervenir en discusión 1", "menuHilos", $hilo);
         print "    <p>Se ha alcanzado el número máximo de intervenciones que se pueden guardar.</p>\n";
         print "\n";
         print "    <p>Por favor, borre alguna intervención antes.</p>\n";
         print "\n";
     } else {
-        cabecera ("Discusiones - Intervenir en discusión 1", CABECERA_CON_CURSOR, "menuHilos", $hilo);
+        cabecera ("Discusiones - Intervenir en discusión 1", "menuHilos", $hilo);
         print "    <form action=\"hil-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <table>\n";
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Autor:</td>\n";
         print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
-            . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\"></td>\n";
+            . "maxlength=\"" . TAM_AUTOR . "\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td style=\"vertical-align:top\">Texto:</td>\n";

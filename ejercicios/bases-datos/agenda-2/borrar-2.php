@@ -30,7 +30,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
     exit();
 } else {
     $db = conectaDb();
-    cabecera("Borrar 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
+    cabecera("Borrar 2", $_SESSION["multiagendaUsuario"]);
 
     $id = recogeMatrizParaConsulta($db, "id");
 

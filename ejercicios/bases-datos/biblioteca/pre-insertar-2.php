@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Préstamos - Nuevo préstamo 2", CABECERA_SIN_CURSOR, "menuPrestamos");
+cabecera("Préstamos - Nuevo préstamo 2", "menuPrestamos");
 
 $idUsuario = recogeParaConsulta($db, "id_usuario");
 $idObra    = recogeParaConsulta($db, "id_obra");

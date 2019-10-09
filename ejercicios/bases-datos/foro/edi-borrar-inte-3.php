@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Editor - Borrar intervenciones 3", CABECERA_SIN_CURSOR, "menuEditor", "");
+cabecera("Editor - Borrar intervenciones 3", "menuEditor", "");
 
 $id = recogeMatrizParaConsulta($db, "id");
 

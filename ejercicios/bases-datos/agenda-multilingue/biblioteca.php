@@ -337,8 +337,7 @@ function cabecera($texto, $menu="menu_principal")
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    print "<body onload=\"document.getElementById('cursor').focus()\">\n";
+    print "<body>\n";
     if ($menu == "menu_principal") {
         print "  <h1>" . _("Agenda multilingüe");
     } else {

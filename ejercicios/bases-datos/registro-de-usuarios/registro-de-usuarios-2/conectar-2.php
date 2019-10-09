@@ -42,7 +42,7 @@ if (isset($_SESSION["id"])) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera("Identificar 2", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+            cabecera("Identificar 2", MENU_PRINCIPAL);
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } else {

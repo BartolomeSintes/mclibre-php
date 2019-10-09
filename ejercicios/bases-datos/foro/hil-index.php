@@ -27,7 +27,7 @@ $db = conectaDb();
 
 $hilo = recogeParaConsulta($db, "hilo");
 
-cabecera("Discusiones", CABECERA_SIN_CURSOR, "menuHilos", $hilo);
+cabecera("Discusiones", "menuHilos", $hilo);
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones WHERE id=$hilo";
 $result = $db->query($consulta);

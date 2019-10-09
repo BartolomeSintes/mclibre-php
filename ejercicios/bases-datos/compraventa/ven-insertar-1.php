@@ -48,7 +48,7 @@ if (!isset($_SESSION["compraventaUsuario"])) {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Artículo:</td>\n";
-        print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" id=\"cursor\"></td>\n";
+        print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Precio:</td>\n";

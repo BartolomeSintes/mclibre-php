@@ -29,7 +29,7 @@ if (isset($_SESSION["id"])) {
     header("Location:index.php");
     exit();
 } else {
-    cabecera("Identificar 1", MENU_VOLVER, CABECERA_CON_CURSOR);
+    cabecera("Identificar 1", MENU_VOLVER);
 
     $aviso = recoge("aviso");
     if ($aviso) {
@@ -44,7 +44,7 @@ if (isset($_SESSION["id"])) {
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
     print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-        . "maxlength=\"$tamUsuario\" id=\"cursor\"></td>\n";
+        . "maxlength=\"$tamUsuario\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Contraseña:</td>\n";

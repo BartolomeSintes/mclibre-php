@@ -22,8 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("CABECERA_CON_CURSOR", true);            // Para función cabecera()
-define("CABECERA_SIN_CURSOR", false);           // Para función cabecera()
 define("FORM_METHOD",         "get");           // Formularios se envían con GET
 //define("FORM_METHOD",         "post");          // Formularios se envían con POST
 define("MENU_PRINCIPAL",      "menuPrincipal"); // Menú principal
@@ -63,7 +61,7 @@ function conectaDb()
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera("Error grave", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+        cabecera("Error grave", MENU_PRINCIPAL);
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
         print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -152,7 +150,7 @@ function sqlite_query_multi($db, $query) {
     return (@$result);
 }
 
-function cabecera($texto, $menu, $conCursor)
+function cabecera($texto, $menu)
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
@@ -166,12 +164,7 @@ function cabecera($texto, $menu, $conCursor)
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    if ($conCursor) {
-        print "<body onload=\"document.getElementById('cursor').focus()\">\n";
-    } else {
-        print "<body>\n";
-    }
+    print "<body>\n";
     print "  <h1>Inyección SQL 1 - $texto</h1>\n";
     print "\n";
     print "  <nav>\n";

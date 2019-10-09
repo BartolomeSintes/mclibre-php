@@ -46,7 +46,7 @@ if (isset($_SESSION["id"])) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
+            cabecera("Registrar nuevo usuario 2", MENU_VOLVER);
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } elseif ($result->fetchColumn() != 0) {
@@ -56,7 +56,7 @@ if (isset($_SESSION["id"])) {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
             if (!$result) {
-                cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
+                cabecera("Registrar nuevo usuario 2", MENU_VOLVER);
                 print "    <p>Error en la consulta.</p>";
                 print "\n";
             } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
@@ -66,11 +66,11 @@ if (isset($_SESSION["id"])) {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '" . md5($password) . "')";
                 if (!$db->query($consulta)) {
-                    cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
+                    cabecera("Registrar nuevo usuario 2", MENU_VOLVER);
                     print "    <p>Error al crear el registro.<p>\n";
                     print "\n";
                 } else {
-                    cabecera("Registrar nuevo usuario 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
+                    cabecera("Registrar nuevo usuario 2", MENU_VOLVER);
                     print "    <p>Bienvenido/a, <strong>$usuario</strong>. Se ha "
                         . "registrado su nombre y contraseña.</p>\n";
                     print "\n";

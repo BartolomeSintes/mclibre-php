@@ -71,7 +71,7 @@ if (!isset($_SESSION["multiagendaIdioma"]) && !isset($_REQUEST["idioma"])) {
             print "        <tbody>\n";
             print "          <tr>\n";
             print "            <td>" . _("Nombre") . ":</td>\n";
-            print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\"></td>\n";
+            print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" autofocus></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>" . _("Contraseña") . ":</td>\n";

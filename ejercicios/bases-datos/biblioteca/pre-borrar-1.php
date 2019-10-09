@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Préstamos - Borrar 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+cabecera("Préstamos - Borrar 1", "menuPrestamos");
 
 $campo = recogeParaConsulta($db, "campo", "apellidos");
 $campo = quitaComillasExteriores($campo);

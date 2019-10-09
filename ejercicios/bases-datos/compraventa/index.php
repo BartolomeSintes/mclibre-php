@@ -58,7 +58,7 @@ if (!$result) {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Nombre:</td>\n";
-        print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" id=\"cursor\"></td>\n";
+        print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Contraseña:</td>\n";

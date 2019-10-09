@@ -37,24 +37,24 @@ if (!$usuario|| ($usuario == MENU_PRINCIPAL)) {
         WHERE usuario='$usuario'";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera("Identificación 2", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+        cabecera("Identificación 2", MENU_PRINCIPAL);
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera("Identificación 2", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+            cabecera("Identificación 2", MENU_PRINCIPAL);
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
-            cabecera("Identificación 2", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+            cabecera("Identificación 2", MENU_PRINCIPAL);
             print "    <p>Se ha alcanzado el número máximo de Usuarios que se pueden guardar.</p>\n";
             print "\n";
             print "    <p>Por favor, borre algún registro antes.</p>\n";
             print "\n";
         } else {
-            cabecera("Identificación 2", CABECERA_CON_CURSOR, MENU_PRINCIPAL);
+            cabecera("Identificación 2", MENU_PRINCIPAL);
             print "    <p><strong>$usuario</strong> es un nuevo usuario. Por favor, repita la contraseña para registrarse como usuario.</p>\n";
             print "\n";
             print "    <form action=\"validar-2.php\" method=\"" . FORM_METHOD . "\">\n";
@@ -62,7 +62,7 @@ if (!$usuario|| ($usuario == MENU_PRINCIPAL)) {
             print "        <tbody>\n";
             print "          <tr>\n";
             print "            <td>Contraseña:</td>\n";
-            print "            <td><input type=\"password\" name=\"password2\" id=\"cursor\"></td>\n";
+            print "            <td><input type=\"password\" name=\"password2\" autofocus></td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";
@@ -80,7 +80,7 @@ if (!$usuario|| ($usuario == MENU_PRINCIPAL)) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera("Identificación 2", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+            cabecera("Identificación 2", MENU_PRINCIPAL);
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } else {

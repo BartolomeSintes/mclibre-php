@@ -372,8 +372,7 @@ function cabecera($texto, $menu="menu_principal")
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    print "<body onload=\"document.getElementById('cursor').focus()\">\n";
+    print "<body>\n";
     print "  <h1>Citas - $texto</h1>\n";
     print "\n";
     print "  <nav>\n";

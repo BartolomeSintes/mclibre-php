@@ -26,9 +26,9 @@ require_once "biblioteca.php";
 
 session_start();
 if (isset($_SESSION["id"])) {
-    cabecera("Inicio", MENU_IDENTIFICADO, CABECERA_SIN_CURSOR);
+    cabecera("Inicio", MENU_IDENTIFICADO);
 } else {
-    cabecera("Inicio", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+    cabecera("Inicio", MENU_PRINCIPAL);
     print "    <p><strong>Nota</strong>: El usuario Administrador se llama "
         . "<strong>$administradorNombre</strong> y su contraseña es "
         . "<strong>$administradorPassword</strong>.</p>\n";

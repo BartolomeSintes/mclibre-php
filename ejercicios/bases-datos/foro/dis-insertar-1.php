@@ -28,17 +28,17 @@ $db = conectaDb();
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera("Iniciar discusión 1", CABECERA_SIN_CURSOR, "menuDiscusiones", "");
+    cabecera("Iniciar discusión 1", "menuDiscusiones", "");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_DISCUSIONES) {
-    cabecera("Iniciar discusión 1", CABECERA_SIN_CURSOR, "menuDiscusiones", "");
+    cabecera("Iniciar discusión 1", "menuDiscusiones", "");
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
     print "\n";
 } else {
-    cabecera("Iniciar discusión 1", CABECERA_CON_CURSOR, "menuDiscusiones", "");
+    cabecera("Iniciar discusión 1", "menuDiscusiones", "");
     print "    <form action=\"dis-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "\n";
     print "      <table>\n";
@@ -46,7 +46,7 @@ if (!$result) {
     print "          <tr>\n";
     print "            <td>Autor:</td>\n";
     print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
-        . "maxlength=\"" . TAM_AUTOR . "\" id=\"cursor\"></td>\n";
+        . "maxlength=\"" . TAM_AUTOR . "\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Título:</td>\n";

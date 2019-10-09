@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Añadir 2", CABECERA_SIN_CURSOR);
+cabecera("Añadir 2");
 
 $nombre    = recogeParaConsulta($db, "nombre");
 $apellidos = recogeParaConsulta($db, "apellidos");

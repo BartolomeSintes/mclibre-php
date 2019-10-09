@@ -30,7 +30,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
     exit();
 } else {
     $db = conectaDb();
-    cabecera("Añadir 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
+    cabecera("Añadir 2", $_SESSION["multiagendaUsuario"]);
 
     $nombre    = recogeParaConsulta($db, "nombre");
     $apellidos = recogeParaConsulta($db, "apellidos");

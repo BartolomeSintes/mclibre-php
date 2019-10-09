@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Discusiones - Añadir 2", CABECERA_SIN_CURSOR, "menuDiscusiones", "");
+cabecera("Discusiones - Añadir 2", "menuDiscusiones", "");
 
 date_default_timezone_set(ZONA_HORARIA);
 

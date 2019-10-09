@@ -27,7 +27,7 @@ include "biblioteca.php";
 session_start();
 session_destroy();
 
-cabecera("Desconectar", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+cabecera("Desconectar", MENU_PRINCIPAL);
 
 print "    <p>Está usted <strong>desconectado</strong>.</p>\n";
 print "\n";

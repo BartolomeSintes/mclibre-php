@@ -25,7 +25,7 @@
 include "biblioteca.php";
 
 $db = conectaDb();
-cabecera("Entrar 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
+cabecera("Entrar 2", MENU_VOLVER);
 
 // Esta página no desinfecta la entrada del usuario
 // por lo que puede sufrir inyecciones SQL

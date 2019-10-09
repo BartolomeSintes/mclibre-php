@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera ("Obras - Borrar 2", CABECERA_SIN_CURSOR, "menuObras");
+cabecera ("Obras - Borrar 2", "menuObras");
 
 $id = recogeMatrizParaConsulta($db, "id");
 

@@ -36,11 +36,11 @@ $consulta = "SELECT COUNT(*) FROM $dbPrestamos
     WHERE $dbPrestamos.devuelto='0000-00-00'";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera("Préstamos - Devolución 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+    cabecera("Préstamos - Devolución 1", "menuPrestamos");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera("Préstamos - Devolución 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+    cabecera("Préstamos - Devolución 1", "menuPrestamos");
     print "    <p>No hay préstamos pendientes de devolución.</p>\n";
     print "\n";
 } else {
@@ -54,11 +54,11 @@ if (!$result) {
         ORDER BY $campo $orden";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera("Préstamos - Devolución 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+        cabecera("Préstamos - Devolución 1", "menuPrestamos");
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } else {
-        cabecera("Préstamos - Devolución 1", CABECERA_CON_CURSOR, "menuPrestamos");
+        cabecera("Préstamos - Devolución 1", "menuPrestamos");
         print "    <form action=\"pre-devolucion-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <p>Seleccione el préstamo pendiente e indique la fecha de devolución:</p>\n";
         print "\n";
@@ -100,7 +100,7 @@ if (!$result) {
         print "            </td>\n";
         print "            <td>\n";
         print "              <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
-            . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" id=\"cursor\">\n";
+            . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" autofocus>\n";
         print "            </td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";

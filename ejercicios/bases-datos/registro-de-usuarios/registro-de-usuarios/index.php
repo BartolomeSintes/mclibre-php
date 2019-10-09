@@ -29,11 +29,11 @@ $db = conectaDb();
 $consulta = $consultaExisteTabla;
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera("Primera conexión", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+    cabecera("Primera conexión", MENU_PRINCIPAL);
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera("Primera conexión", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+    cabecera("Primera conexión", MENU_PRINCIPAL);
     print "    <p>Aparentemente, la base de datos no existe. Se creará a continuación.</p>";
     print "\n";
     if ($dbMotor == MYSQL) {
@@ -44,9 +44,9 @@ if (!$result) {
 } else {
     session_start();
     if (isset($_SESSION["multiagendaUsuario"])) {
-        cabecera("Inicio", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
+        cabecera("Inicio", $_SESSION["multiagendaUsuario"]);
     } else {
-        cabecera("Identificación 1", CABECERA_CON_CURSOR, MENU_PRINCIPAL);
+        cabecera("Identificación 1", MENU_PRINCIPAL);
         $aviso = recoge("aviso");
         if ($aviso) {
             print "    <p style=\"color: red\">$aviso</p>\n";
@@ -60,7 +60,7 @@ if (!$result) {
         print "          <tr>\n";
         print "            <td>Nombre:</td>\n";
         print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-            . "maxlength=\"$tamUsuario\" id=\"cursor\"></td>\n";
+            . "maxlength=\"$tamUsuario\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Contraseña:</td>\n";

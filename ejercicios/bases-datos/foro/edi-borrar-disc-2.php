@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Editor - Borrar discusiones 2", CABECERA_SIN_CURSOR, "menuEditor", "");
+cabecera("Editor - Borrar discusiones 2", "menuEditor", "");
 
 $id = recogeMatrizParaConsulta($db, "id");
 

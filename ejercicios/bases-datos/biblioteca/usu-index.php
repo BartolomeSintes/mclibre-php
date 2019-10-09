@@ -23,7 +23,7 @@
  */
 
 include "biblioteca.php";
-cabecera("Usuarios - Inicio", CABECERA_SIN_CURSOR, "menuUsuarios");
+cabecera("Usuarios - Inicio", "menuUsuarios");
 
 pie();
 ?>

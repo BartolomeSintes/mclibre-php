@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Obras - Listar", CABECERA_SIN_CURSOR, "menuObras");
+cabecera("Obras - Listar", "menuObras");
 
 $campo = recogeParaConsulta($db, "campo", "autor");
 $campo = quitaComillasExteriores($campo);

@@ -23,8 +23,6 @@
  */
 
 define("ZONA_HORARIA",           "Europe/Madrid");  // Zona horaria del servidor
-define("CABECERA_CON_CURSOR",    true);             // Para función cabecera()
-define("CABECERA_SIN_CURSOR",    false);            // Para función cabecera()
 define("FORM_METHOD",            "get");  // Formularios se envían con GET
 //define("FORM_METHOD",            "post"); // Formularios se envían con POST
 define("MYSQL",                  "MySQL");
@@ -74,7 +72,7 @@ function conectaDb()
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera("Error grave", CABECERA_SIN_CURSOR, "menuPrincipal", "");
+        cabecera("Error grave", "menuPrincipal", "");
         print "  <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "  <p>Error: " . $e->getMessage() . "</p>\n";
         pie();
@@ -160,7 +158,7 @@ function fechaDma($amd)
         . " a las ".substr($amd, 11, 8);
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal", $id="")
+function cabecera($texto, $menu="menuPrincipal", $id="")
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
@@ -174,12 +172,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal",
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos-foro.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    if ($conCursor) {
-        print "<body onload=\"document.getElementById('cursor').focus()\">\n";
-    } else {
-        print "<body>\n";
-    }
+    print "<body>\n";
     print "  <h1>Foro - $texto</h1>\n";
     print "\n";
     print "  <nav>\n";

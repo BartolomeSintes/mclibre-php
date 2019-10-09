@@ -28,8 +28,6 @@ define("MYSQL",               "MySQL");
 define("SQLITE",              "SQLite");
 define("MENU_PRINCIPAL",      "menuPrincipal"); // Menú principal
 define("MENU_VOLVER",         "menuVolver");    // Menú Volver a inicio
-define("CABECERA_CON_CURSOR", true);   // Para función cabecera()
-define("CABECERA_SIN_CURSOR", false);  // Para función cabecera()
 define("MAX_REG_USUARIOS",    20);     // Número máximo de registros en la tabla Usuarios
 $tamUsuario        = 20;  // Tamaño del campo Usuarios > Usuario
 $tamPassword       = 20;  // Tamaño del campo Usuarios > Contraseña
@@ -79,7 +77,7 @@ function conectaDb()
         }
         return($db);
     } catch(PDOException $e) {
-        cabecera("Error grave", CABECERA_SIN_CURSOR, MENU_PRINCIPAL);
+        cabecera("Error grave", MENU_PRINCIPAL);
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
         print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -195,7 +193,7 @@ function recoge($var, $var2="")
     return $tmp;
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu=MENU_PRINCIPAL)
+function cabecera($texto, $menu=MENU_PRINCIPAL)
 {
     global $administradorNombre;
 
@@ -209,12 +207,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu=MENU_PRINCIPAL)
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    if ($conCursor) {
-        print "<body onload=\"document.getElementById('cursor').focus()\">\n";
-    } else {
-        print "<body>\n";
-    }
+    print "<body>\n";
     print "  <h1>Registro de usuarios - $texto</h1>\n";
     print "\n";
     print "  <nav>\n";

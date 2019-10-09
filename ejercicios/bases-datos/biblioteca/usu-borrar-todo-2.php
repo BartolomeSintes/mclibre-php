@@ -129,7 +129,7 @@ if (!isset($_REQUEST["si"])) {
     exit();
 } else {
     $db = conectaDb();
-    cabecera("Usuarios - Borrar todo 2", CABECERA_SIN_CURSOR, "menuUsuarios");
+    cabecera("Usuarios - Borrar todo 2", "menuUsuarios");
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

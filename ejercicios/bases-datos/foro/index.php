@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Inicio", CABECERA_SIN_CURSOR, "menuPrincipal", "");
+cabecera("Inicio", "menuPrincipal", "");
 
 $consulta = "SELECT COUNT(*) FROM $dbDiscusiones";
 $result = $db->query($consulta);

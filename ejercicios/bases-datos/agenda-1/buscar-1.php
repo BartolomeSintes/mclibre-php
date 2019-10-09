@@ -28,15 +28,15 @@ $db = conectaDb();
 $consulta = "SELECT COUNT(*) FROM $dbAgenda";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera("Buscar 1", CABECERA_SIN_CURSOR);
+    cabecera("Buscar 1");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() == 0) {
-    cabecera("Buscar 1", CABECERA_SIN_CURSOR);
+    cabecera("Buscar 1");
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
     print "\n";
 } else {
-    cabecera("Buscar 1", CABECERA_CON_CURSOR);
+    cabecera("Buscar 1");
     print "    <form action=\"buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";
@@ -45,7 +45,7 @@ if (!$result) {
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
     print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
-        . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\"></td>\n";
+        . "maxlength=\"" . TAM_NOMBRE . "\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Apellidos:</td>\n";

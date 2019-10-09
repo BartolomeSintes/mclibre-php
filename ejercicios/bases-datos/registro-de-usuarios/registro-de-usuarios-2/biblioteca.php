@@ -26,8 +26,6 @@ define("FORM_METHOD",         "get");  // Formularios se envían con GET
 //define("FORM_METHOD",         "post"); // Formularios se envían con POST
 define("MYSQL",               "MySQL");
 define("SQLITE",              "SQLite");
-define("CABECERA_CON_CURSOR", true);   // Para función cabecera()
-define("CABECERA_SIN_CURSOR", false);  // Para función cabecera()
 
 define("MENU_PRINCIPAL",      "menuPrincipal");    // Menú principal
 define("MENU_VOLVER",         "menuVolver");       // Menú Volver a inicio
@@ -78,7 +76,7 @@ function conectaDb()
         }
         return($db);
     } catch(PDOException $e) {
-        cabecera("Error grave", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+        cabecera("Error grave", MENU_PRINCIPAL);
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
         print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -109,7 +107,7 @@ function recoge($var)
     return $tmp;
 }
 
-function cabecera($texto, $menu=MENU_PRINCIPAL, $conCursor=CABECERA_SIN_CURSOR)
+function cabecera($texto, $menu=MENU_PRINCIPAL)
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
@@ -121,12 +119,7 @@ function cabecera($texto, $menu=MENU_PRINCIPAL, $conCursor=CABECERA_SIN_CURSOR)
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    if ($conCursor) {
-        print "<body onload=\"document.getElementById('cursor').focus()\">\n";
-    } else {
-        print "<body>\n";
-    }
+    print "<body>\n";
     print "  <h1>Registro de usuarios - $texto</h1>\n";
     print "\n";
     print "  <nav>\n";

@@ -24,7 +24,7 @@
 
 require_once "biblioteca.php";
 
-cabecera("Registrar nuevo usuario 1", MENU_VOLVER, CABECERA_CON_CURSOR);
+cabecera("Registrar nuevo usuario 1", MENU_VOLVER);
 $aviso = recoge("aviso");
 if ($aviso) {
     print "    <p style=\"color: red\">$aviso</p>\n";
@@ -38,7 +38,7 @@ print "        <tbody>\n";
 print "          <tr>\n";
 print "            <td>Nombre:</td>\n";
 print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
-    . "maxlength=\"$tamUsuario\" id=\"cursor\"> (hasta $tamUsuario caracteres)</td>\n";
+    . "maxlength=\"$tamUsuario\" autofocus> (hasta $tamUsuario caracteres)</td>\n";
 print "          </tr>\n";
 print "          <tr>\n";
 print "            <td>Contraseña:</td>\n";

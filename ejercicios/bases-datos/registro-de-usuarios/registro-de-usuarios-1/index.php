@@ -24,7 +24,7 @@
 
 require_once "biblioteca.php";
 
-cabecera("Inicio", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+cabecera("Inicio", MENU_PRINCIPAL);
 
 pie();
 ?>

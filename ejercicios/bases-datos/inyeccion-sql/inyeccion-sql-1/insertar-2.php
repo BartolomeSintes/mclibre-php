@@ -25,7 +25,7 @@
 include "biblioteca.php";
 
 $db = conectaDb();
-cabecera("Añadir 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
+cabecera("Añadir 2", MENU_VOLVER);
 
 $usuario    = recoge("usuario");
 $contraseña = recoge("contraseña");

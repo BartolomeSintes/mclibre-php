@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Editor - Borrar discusiones 1", CABECERA_SIN_CURSOR, "menuEditor", "");
+cabecera("Editor - Borrar discusiones 1", "menuEditor", "");
 
 $campo = recogeParaConsulta($db, "campo", "fecha");
 $campo = quitaComillasExteriores($campo);

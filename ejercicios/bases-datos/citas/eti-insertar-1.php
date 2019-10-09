@@ -48,7 +48,7 @@ if (!isset($_SESSION["citasUsuario"])) {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Etiqueta:</td>\n";
-        print "            <td><input type=\"text\" name=\"etiqueta\" size=\"$tamEtiqueta\" id=\"cursor\"></td>\n";
+        print "            <td><input type=\"text\" name=\"etiqueta\" size=\"$tamEtiqueta\" autofocus></td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";

@@ -89,7 +89,7 @@ if (!isset($_REQUEST["si"])) {
     exit();
 } else {
     $db = conectaDb();
-    cabecera("Borrar todo 2", MENU_VOLVER, CABECERA_SIN_CURSOR);
+    cabecera("Borrar todo 2", MENU_VOLVER);
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

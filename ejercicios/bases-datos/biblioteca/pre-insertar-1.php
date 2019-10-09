@@ -30,11 +30,11 @@ date_default_timezone_set(ZONA_HORARIA);
 $consulta = "SELECT COUNT(*) FROM $dbPrestamos";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+    cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_PRESTAMOS) {
-    cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+    cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
@@ -45,19 +45,19 @@ if (!$result) {
     $consultaUsuarios = "SELECT COUNT(*) FROM $dbUsuarios";
     $resultUsuarios = $db->query($consultaUsuarios);
     if (!$resultObras) {
-        cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+        cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
         print "    <p>Error en la consulta de Obras.</p>\n";
         print "\n";
     } elseif (!$resultUsuarios) {
-        cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+        cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
         print "    <p>Error en la consulta de Usuarios.</p>\n";
         print "\n";
     } elseif ($resultObras->fetchColumn() == 0) {
-        cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+        cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
         print "    <p>No se ha creado todavía ningún registro de Obras.</p>\n";
         print "\n";
     } elseif ($resultUsuarios->fetchColumn() == 0) {
-        cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+        cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
         print "    <p>No se ha creado todavía ningún registro de Usuarios.</p>\n";
         print "\n";
     } else {
@@ -68,15 +68,15 @@ if (!$result) {
             ORDER BY autor ASC";
         $resultObras = $db->query($consultaObras);
         if (!$resultObras) {
-            cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+            cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
             print "    <p>Error en la consulta de Obras.</p>\n";
             print "\n";
         } elseif (!$resultUsuarios) {
-            cabecera("Préstamos - Nuevo préstamo 1", CABECERA_SIN_CURSOR, "menuPrestamos");
+            cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
             print "    <p>Error en la consulta de Usuarios.</p>\n";
             print "\n";
         } else {
-            cabecera("Préstamos - Nuevo préstamo 1", CABECERA_CON_CURSOR, "menuPrestamos");
+            cabecera("Préstamos - Nuevo préstamo 1", "menuPrestamos");
             print "    <form action=\"pre-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
             print "      <p>Seleccione obra y usuario e indique la fecha del préstamo:</p>\n";
             print "\n";
@@ -108,7 +108,7 @@ if (!$result) {
             print "            </td>\n";
             print "            <td>\n";
             print "              <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
-                . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" id=\"cursor\">\n";
+                . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" autofocus>\n";
             print "            </td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";

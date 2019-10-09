@@ -30,7 +30,7 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
     exit();
 } else {
     $db = conectaDb();
-    cabecera("Buscar 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
+    cabecera("Buscar 2", $_SESSION["multiagendaUsuario"]);
 
     $campo     = recogeParaConsulta($db, "campo", "apellidos");
     $campo     = quitaComillasExteriores($campo);

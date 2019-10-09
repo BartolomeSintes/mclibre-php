@@ -24,7 +24,7 @@
 
 require_once "biblioteca.php";
 
-cabecera("Borrar todo 1", MENU_VOLVER, CABECERA_SIN_CURSOR);
+cabecera("Borrar todo 1", MENU_VOLVER);
 
 print "    <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>¿Está seguro?</p>\n";

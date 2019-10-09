@@ -28,17 +28,17 @@ $db = conectaDb();
 $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
 $result = $db->query($consulta);
 if (!$result) {
-    cabecera("Usuarios - Añadir 1", CABECERA_SIN_CURSOR, "menuUsuarios");
+    cabecera("Usuarios - Añadir 1", "menuUsuarios");
     print "    <p>Error en la consulta.</p>\n";
     print "\n";
 } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
-    cabecera("Usuarios - Añadir 1", CABECERA_SIN_CURSOR, "menuUsuarios");
+    cabecera("Usuarios - Añadir 1", "menuUsuarios");
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
     print "\n";
 } else {
-    cabecera("Usuarios - Añadir 1", CABECERA_CON_CURSOR, "menuUsuarios");
+    cabecera("Usuarios - Añadir 1", "menuUsuarios");
     print "    <form action=\"usu-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";
@@ -47,7 +47,7 @@ if (!$result) {
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
     print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
-        . "maxlength=\"" . TAM_NOMBRE . "\" id=\"cursor\"></td>\n";
+        . "maxlength=\"" . TAM_NOMBRE . "\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Apellidos:</td>\n";

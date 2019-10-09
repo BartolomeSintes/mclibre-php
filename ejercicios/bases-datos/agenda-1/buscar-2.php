@@ -24,7 +24,7 @@
 
 include "biblioteca.php";
 $db = conectaDb();
-cabecera("Buscar 2", CABECERA_SIN_CURSOR);
+cabecera("Buscar 2");
 
 $campo     = recogeParaConsulta($db, "campo", "apellidos");
 $campo     = quitaComillasExteriores($campo);

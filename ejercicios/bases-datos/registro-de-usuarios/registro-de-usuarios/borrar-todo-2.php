@@ -33,7 +33,7 @@ if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] 
     exit();
 } else {
     $db = conectaDb();
-    cabecera("Borrar todo 2", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
+    cabecera("Borrar todo 2", $_SESSION["multiagendaUsuario"]);
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

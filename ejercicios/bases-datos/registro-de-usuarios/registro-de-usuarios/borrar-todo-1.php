@@ -30,7 +30,7 @@ if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] 
     header("Location:index.php");
     exit();
 } else {
-    cabecera("Borrar todo 1", CABECERA_SIN_CURSOR, $_SESSION["multiagendaUsuario"]);
+    cabecera("Borrar todo 1", $_SESSION["multiagendaUsuario"]);
 
     print "    <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>¿Está seguro?</p>\n";

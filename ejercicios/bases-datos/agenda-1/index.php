@@ -23,7 +23,7 @@
  */
 
 include "biblioteca.php";
-cabecera("Inicio", CABECERA_SIN_CURSOR);
+cabecera("Inicio");
 
 pie();
 ?>

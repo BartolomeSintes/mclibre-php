@@ -49,22 +49,22 @@ if (isset($_SESSION["multiagendaUsuario"])) {
             WHERE usuario='$usuario'";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
+            cabecera("Identificación 3", "menu_principal");
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } elseif ($result->fetchColumn() != 0) {
-            cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
+            cabecera("Identificación 3", "menu_principal");
             print "    <p>El nombre de usuario ya está registrado.</p>";
             print "\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
             if (!$result) {
-                cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
+                cabecera("Identificación 3", "menu_principal");
                 print "    <p>Error en la consulta.</p>";
                 print "\n";
             } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
-                cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
+                cabecera("Identificación 3", "menu_principal");
                 print "    <p>Se ha alcanzado el número máximo de Usuarios que se pueden guardar.</p>\n";
                 print "\n";
                 print "    <p>Por favor, borre algún registro antes.</p>\n";
@@ -73,7 +73,7 @@ if (isset($_SESSION["multiagendaUsuario"])) {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '$password')";
                 if (!$db->query($consulta)) {
-                    cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
+                    cabecera("Identificación 3", "menu_principal");
                     print "    <p>Error al crear el registro.<p>\n";
                     print "\n";
                 } else {
@@ -81,7 +81,7 @@ if (isset($_SESSION["multiagendaUsuario"])) {
                         WHERE usuario='$usuario'";
                     $result = $db->query($consulta);
                     if (!$result) {
-                        cabecera("Identificación 3", CABECERA_SIN_CURSOR, "menu_principal");
+                        cabecera("Identificación 3", "menu_principal");
                         print "    <p>Error en la consulta.</p>";
                         print "\n";
                     } else {
@@ -89,7 +89,7 @@ if (isset($_SESSION["multiagendaUsuario"])) {
                         session_start();
                         $_SESSION["multiagendaIdUsuario"] = $valor["id"];
                         $_SESSION["multiagendaUsuario"]   = $valor["usuario"];
-                        cabecera("Identificación 3", CABECERA_SIN_CURSOR, $usuario);
+                        cabecera("Identificación 3", $usuario);
                         print "    <p>Bienvenido/a, <strong>$usuario</strong>. Ya es usted "
                             . "un usuario registrado y puede crear su agenda.</p>";
                         print "\n";

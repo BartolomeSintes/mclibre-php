@@ -28,7 +28,7 @@ $db = conectaDb();
 $id = recogeParaConsulta($db, "id");
 
 if ($id == "''") {
-    cabecera("Usuarios - Modificar 2", CABECERA_SIN_CURSOR, "menuUsuarios");
+    cabecera("Usuarios - Modificar 2", "menuUsuarios");
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
     print "\n";
 } else {
@@ -36,11 +36,11 @@ if ($id == "''") {
         WHERE id=$id";
     $result = $db->query($consulta);
     if (!$result) {
-        cabecera("Usuarios - Modificar 2", CABECERA_SIN_CURSOR, "menuUsuarios");
+        cabecera("Usuarios - Modificar 2", "menuUsuarios");
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } elseif ($result->fetchColumn() == 0) {
-        cabecera("Usuarios - Modificar 2", CABECERA_SIN_CURSOR, "menuUsuarios");
+        cabecera("Usuarios - Modificar 2", "menuUsuarios");
         print "    <p>Registro no encontrado.</p>\n";
         print "\n";
     } else {
@@ -48,12 +48,12 @@ if ($id == "''") {
             WHERE id=$id";
         $result = $db->query($consulta);
         if (!$result) {
-            cabecera("Usuarios - Modificar 2", CABECERA_SIN_CURSOR, "menuUsuarios");
+            cabecera("Usuarios - Modificar 2", "menuUsuarios");
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } else {
             $valor = $result->fetch();
-            cabecera("Usuarios - Modificar 2", CABECERA_CON_CURSOR, "menuUsuarios");
+            cabecera("Usuarios - Modificar 2", "menuUsuarios");
             print "    <form action=\"usu-modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
             print "      <p>Modifique los campos que desee:</p>\n";
             print "\n";
@@ -62,7 +62,7 @@ if ($id == "''") {
             print "          <tr>\n";
             print "            <td>Nombre:</td>\n";
             print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
-                . "maxlength=\"" . TAM_NOMBRE . "\" value=\"$valor[nombre]\" id=\"cursor\"></td>\n";
+                . "maxlength=\"" . TAM_NOMBRE . "\" value=\"$valor[nombre]\" autofocus></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Apellidos:</td>\n";

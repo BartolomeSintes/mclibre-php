@@ -23,7 +23,7 @@
  */
 
 include "biblioteca.php";
-cabecera("Inicio", MENU_PRINCIPAL, CABECERA_SIN_CURSOR);
+cabecera("Inicio", MENU_PRINCIPAL);
 print "    <p>Versión PHP: ".phpversion()."</p>";
 print "\n";
 print "    <p>Versión SQLite: ".sqlite_libversion()."</p>";

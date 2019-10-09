@@ -130,7 +130,7 @@ if (!isset($_REQUEST["si"])) {
 } else {
     include "biblioteca.php";
     $db = conectaDb();
-    cabecera("Editor - Borrar todo 2", CABECERA_SIN_CURSOR, "menuEditor", "");
+    cabecera("Editor - Borrar todo 2", "menuEditor", "");
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {

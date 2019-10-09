@@ -22,8 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("CABECERA_CON_CURSOR",    true);   // Para función cabecera()
-define("CABECERA_SIN_CURSOR",    false);  // Para función cabecera()
 define("FORM_METHOD",            "get");  // Formularios se envían con GET
 //define("FORM_METHOD",            "post"); // Formularios se envían con POST
 define ("MYSQL", "MySQL");
@@ -171,7 +169,7 @@ function fechaAmd($dma)
     return substr($dma, 7, 4)."-".substr($dma, 4, 2)."-".substr($dma, 1, 2);
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal")
+function cabecera($texto, $menu="menuPrincipal")
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
@@ -185,12 +183,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menuPrincipal")
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    if ($conCursor) {
-        print "<body onload=\"document.getElementById('cursor').focus()\">\n";
-    } else {
-        print "<body>\n";
-    }
+    print "<body>\n";
     print "  <h1>Biblioteca - $texto</h1>\n";
     print "\n";
     print "  <nav>\n";

@@ -22,8 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("CABECERA_CON_CURSOR",    true);   // Para función cabecera()
-define("CABECERA_SIN_CURSOR",    false);  // Para función cabecera()
 define("FORM_METHOD",            "get");  // Formularios se envían con GET
 //define("FORM_METHOD",            "post"); // Formularios se envían con POST
 define("MYSQL",          "MySQL");
@@ -87,7 +85,7 @@ function conectaDb()
         }
         return($db);
     } catch (PDOException $e) {
-        cabecera("Error grave", CABECERA_SIN_CURSOR, "menu_principal");
+        cabecera("Error grave", "menu_principal");
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
 //        print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -291,7 +289,7 @@ function quitaComillasExteriores($var)
     return $var;
 }
 
-function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menu_principal")
+function cabecera($texto, $menu="menu_principal")
 {
     global $administradorNombre;
 
@@ -307,12 +305,7 @@ function cabecera($texto, $conCursor=CABECERA_SIN_CURSOR, $menu="menu_principal"
     print "  <link rel=\"stylesheet\" href=\"mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
-
-    if ($conCursor) {
-        print "<body onload=\"document.getElementById('cursor').focus()\">\n";
-    } else {
-        print "<body>\n";
-    }
+    print "<body>\n";
     print "  <h1>Agenda ";
     if ($menu == "menu_principal") {
         print "multiusuario";
