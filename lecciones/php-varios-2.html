@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Varios (2). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Situar el cursor en un control al cargar un formulario. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../varios/php.css" title="mclibre">
   <link rel="icon" href="../varios/favicon.ico">
@@ -11,7 +11,7 @@
 </head>
 
 <body onload="document.getElementById('cursor').focus()">
-  <h1>Varios (2)</h1>
+  <h1>Situar el cursor en un control al cargar un formulario</h1>
 
   <nav>
     <p>
@@ -20,24 +20,21 @@
     </p>
 
     <div class="toc">
-      <h2>Varios (2)</h2>
-
-      <ul>
-        <li><a href="#situar-cursor-en-control">Situar el cursor en un control al cargar un formulario</a></li>
-      </ul>
+      <h2>Cursor en formulario</h2>
     </div>
   </nav>
 
-  <section id="situar-cursor-en-control">
-    <h2>Situar el cursor en un control al cargar un formulario</h2>
+  <div class="aviso-antiguo">
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Para conseguir el resultado que se explica en esta página, en su lugar recomiendo utilizar el atributo <span class="html-atri">autofocus</span> (introducido en HTML 5) en el primer control del formulario, como se explica en la lección <a href="http://www.mclibre.org/consultar/htmlcss/html/html-formularios.html#atributo-autofocus">Formularios</a> de los apuntes de HTML y CSS.</p>
+  </div>
 
-    <p>Una forma de facilitar el uso de una página con controles es situar automáticamente el cursor en el control que probablemente va a utilizar el usuario, ahorrando al usuario el tener que hacer clic en ese control. Esto se puede conseguir mediante Javascript.</p>
+  <p>Una forma de facilitar el uso de una página con controles es situar automáticamente el cursor en el control que probablemente va a utilizar el usuario, ahorrando al usuario el tener que hacer clic en ese control. Esto se puede conseguir mediante Javascript.</p>
 
-    <p>Una manera de hacerlo es asignar el atributo <span class="html-atri">id</span> del control sobre el que se quiere situar el cursor automáticamente y establecer el atributo <span class="html-atri">onload</span> del elemento <span class="html-eti">body</span> con el valor <span class="html-atri-valor">document.getElementById('XYZ').focus()</span>, donde XYZ es el <span class="html-atri">id</span> del control, como muestra el ejemplo siguiente:</p>
+  <p>Una manera de hacerlo es asignar el atributo <span class="html-atri">id</span> del control sobre el que se quiere situar el cursor automáticamente y establecer el atributo <span class="html-atri">onload</span> del elemento <span class="html-eti">body</span> con el valor <span class="html-atri-valor">document.getElementById('XYZ').focus()</span>, donde XYZ es el <span class="html-atri">id</span> del control, como muestra el ejemplo siguiente:</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+  <div class="filaflex">
+    <div class="codigo">
+      <pre>
 <code class="language-html">&lt;body onload="document.getElementById('cursor').focus()"&gt;
 &lt;form action="validar1.php"&gt;
   &lt;p&gt;Al cargar esta página, el cursor sitúa automáticamente en la primera caja de texto:&lt;/p&gt;
@@ -57,30 +54,29 @@
 &lt;/form&gt;
 &lt;/body&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-html">
-        <p>Al cargar esta página, el cursor se sitúa automáticamente en la primera caja de texto:</p>
-
-        <table>
-          <tbody>
-            <tr>
-              <td>Usuario:</td>
-              <td><input type="text" name="usuario" id="cursor"></td>
-            </tr>
-            <tr>
-              <td>Contraseña:</td>
-              <td><input type="password" name="password"></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p><input type="submit" value="Entrar"></p>
-      </div>
     </div>
-  </section>
+    <div class="resultado-html">
+      <p>Al cargar esta página, el cursor se sitúa automáticamente en la primera caja de texto:</p>
+
+      <table>
+        <tbody>
+          <tr>
+            <td>Usuario:</td>
+            <td><input type="text" name="usuario" id="cursor"></td>
+          </tr>
+          <tr>
+            <td>Contraseña:</td>
+            <td><input type="password" name="password"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><input type="submit" value="Entrar"></p>
+    </div>
+  </div>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 20 de octubre de 2014</p>
+    <p class="ultmod">Última modificación de esta página: 9 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
