@@ -44,7 +44,7 @@
 $dado = rand(1, 6);
 
 print "  <p>\n";
-print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\">\n";
+print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
 print "  </p>\n";
 print "\n";
 print "  <p>\n";
@@ -70,7 +70,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-09-24">24 de septiembre de 2018</time>
+      <time datetime="2019-10-10">10 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

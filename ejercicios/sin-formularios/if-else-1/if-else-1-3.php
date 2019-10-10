@@ -55,12 +55,12 @@ $dado2a = rand(1, 6);
 $dado2b = rand(1, 6);
 
 print "        <td style=\"padding: 10px; background-color: red;\">\n";
-print "          <img src=\"img/$dado1a.svg\" alt=\"$dado1a\" title=\"$dado1a\" width=\"140\" height=\"140\">\n";
-print "          <img src=\"img/$dado1b.svg\" alt=\"$dado1b\" title=\"$dado1b\" width=\"140\" height=\"140\">\n";
+print "          <img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\">\n";
+print "          <img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\">\n";
 print "        </td>\n";
 print "        <td style=\"padding: 10px; background-color: blue;\">\n";
-print "          <img src=\"img/$dado2a.svg\" alt=\"$dado2a\" title=\"$dado2a\" width=\"140\" height=\"140\">\n";
-print "          <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" title=\"$dado2b\" width=\"140\" height=\"140\">\n";
+print "          <img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\">\n";
+print "          <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\">\n";
 print "        </td>\n";
 
 if ($dado1a == $dado1b) {
@@ -99,7 +99,7 @@ if ($pareja1 > $pareja2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2019-10-10">10 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

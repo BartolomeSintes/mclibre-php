@@ -54,7 +54,7 @@ print "\n";
 print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dado = rand(1, 6);
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" title=\"$dado\" width=\"140\" height=\"140\">\n";
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
     if ($dado > $maximo) {
         $maximo = $dado;
         $cantidad = 1;
@@ -76,7 +76,7 @@ if ($cantidad == 1) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2019-10-10">10 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

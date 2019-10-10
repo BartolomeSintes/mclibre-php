@@ -68,8 +68,7 @@ $animal = rand(0, count($animales) - 1);
 
 print "  <h2>" . $animales[$animal][0] . "</h2>\n";
 print "\n";
-print "  <p><img src=\"img/animales/{$animales[$animal][1]}\" alt=\""
-    . "{$animales[$animal][0]}\" title=\"{$animales[$animal][0]}\" height=\"250\"></p>\n";
+print "  <p><img src=\"img/animales/{$animales[$animal][1]}\" alt=\"{$animales[$animal][0]}\" height=\"250\"></p>\n";
 
 print "\n";
 print "  <p>Más <a href=\"{$animales[$animal][2]}\">información sobre este animal</a> en la Wikipedia</p>\n";
@@ -78,7 +77,7 @@ print "  <p>Más <a href=\"{$animales[$animal][2]}\">información sobre este ani
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2019-10-10">10 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

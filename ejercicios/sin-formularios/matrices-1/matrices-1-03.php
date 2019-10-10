@@ -59,13 +59,13 @@ $animal = rand(0, count($dibujos) - 1);
 
 print "  <h2>$nombres[$animal]</h2>\n";
 print "\n";
-print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[$animal]\" title=\"$nombres[$animal]\" height=\"250\"></p>\n";
+print "  <p><img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[$animal]\" height=\"250\"></p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2019-10-10">10 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
