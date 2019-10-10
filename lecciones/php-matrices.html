@@ -30,6 +30,7 @@
         <li><a href="#multidimensionales">Matrices de dimensión &gt; 1</a></li>
         <li><a href="#imprimir">Imprimir valores: print_r()</a></li>
         <li><a href="#anadir-elementos">Añadir elementos</a></li>
+        <li><a href="#union">Unión de matrices</a></li>
         <li><a href="#mas-informacion-general">Más sobre matrices</a></li>
         <li><a href="#borrar">Borrar matriz o elementos</a></li>
         <li><a href="#copiar">Copiar matriz</a></li>
@@ -151,7 +152,7 @@ print "&lt;p&gt;$nombres<span class="codigo-resaltado">[3]</span>&lt;p&gt;\n";
 
     <hr class="corta">
 
-    <p>Se puede crear una matriz vacía (para añadirle posteriormente elementos):</p>
+    <p>Se puede crear una matriz vacía (para añadirle posteriormente elementos). Se suele hacer para asegurarse de que una matriz ya utilizada en el programa no contiene elementos o para evitar errores si las operaciones que se van a realizar posteriormente requieren la existencia de la matriz (por ejemplo, si se van a utilizar uniones de matrices).</p>
 
     <div class="codigo">
       <pre>
@@ -264,7 +265,7 @@ print "&lt;p&gt;Camilo tiene {<span class="codigo-resaltado">$edades[Camilo]</sp
         <b>Notice</b>: Use of undefined constant Bárbara - assumed 'Bárbara' in <b>ejemplo.php</b> on line <b>4</b><br>
         <p>Bárbara tiene 19 años</p>
         <br>
-        <b>Notice</b>:  Use of undefined constant Camilo - assumed 'Camilo' in <b>ejemplo.php</b> on line <b>6</b><br>
+        <b>Notice</b>: Use of undefined constant Camilo - assumed 'Camilo' in <b>ejemplo.php</b> on line <b>6</b><br>
         <p>Camilo tiene 17 años</p>
       </div>
     </div>
@@ -373,14 +374,14 @@ $datos["apellidos"] = "Ramón y Cajal";
       <div class="resultado-html">
         <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br> Array
       </div>
-      </div>
+    </div>
 
-      <div class="filaflex">
-        <div class="icono-ok">
-          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
-        </div>
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -388,25 +389,25 @@ $datos["apellidos"] = "Ramón y Cajal";
 <span class="codigo-resaltado">print "{$datos}";</span>
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-html">
-          <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br> Array
+      </div>
+      <div class="resultado-html">
+        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br> Array
+      </div>
     </div>
-        </div>
 
-        <hr class="corta">
+    <hr class="corta">
 
-        <p>La función <a href="https://www.php.net/manual/es/function.print-r.php"><span class="php-fun">print_r($variable [, $devolver])</span></a> permite imprimir todos los valores de una matriz de forma estructurada. En general, <span class="php-fun">print_r()</span> imprime cualquier variable compuesta de forma legible.</p>
+    <p>La función <a href="https://www.php.net/manual/es/function.print-r.php"><span class="php-fun">print_r($variable [, $devolver])</span></a> permite imprimir todos los valores de una matriz de forma estructurada. En general, <span class="php-fun">print_r()</span> imprime cualquier variable compuesta de forma legible.</p>
 
-        <p>Esta función no se suele utilizar en programas definitivos, pero puede ser útil mientras estamos elaborando un programa, por ejemplo para comprobar en un punto del programa si la matriz contiene los valores esperados. Una vez comprobado, la instrucción se puede comentar o borrar.</p>
+    <p>Esta función no se suele utilizar en programas definitivos, pero puede ser útil mientras estamos elaborando un programa, por ejemplo para comprobar en un punto del programa si la matriz contiene los valores esperados. Una vez comprobado, la instrucción se puede comentar o borrar.</p>
 
-        <hr class="corta">
+    <hr class="corta">
 
-        <p>Aunque print_r() genera espacios y saltos de línea en el código fuente de la página para indicar el anidamiento, print_r() no genera etiquetas html, por lo que el navegador no muestra esos espacios y saltos de línea.</p>
+    <p>Aunque print_r() genera espacios y saltos de línea en el código fuente de la página para indicar el anidamiento, print_r() no genera etiquetas html, por lo que el navegador no muestra esos espacios y saltos de línea.</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -414,17 +415,17 @@ $datos["apellidos"] = "Ramón y Cajal";
 print_r($datos);
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-html">
-            Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )
-          </div>
-        </div>
+      </div>
+      <div class="resultado-html">
+        Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )
+      </div>
+    </div>
 
-        <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
+    <p>Para mejorar la legibilidad una solución es añadir la etiqueta <span class="html-eti">&lt;pre&gt;</span>, que fuerza al navegador a mostrar los espacios y saltos de línea.</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -434,20 +435,20 @@ print_r($datos);
 print "&lt;/pre&gt;";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-html">
-            <pre>Array
+      </div>
+      <div class="resultado-html">
+        <pre>Array
 (
 [nombre] =&gt; Santiago
 [apellidos] =&gt; Ramón y Cajal
 )
 </pre>
-          </div>
-        </div>
+      </div>
+    </div>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $datos[1]["nombre"] = "Santiago";
 $datos[1]["apellidos"] = "Ramón y Cajal";
@@ -459,9 +460,9 @@ print_r($datos);
 print "&lt;/pre&gt;";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-html">
-            <pre>Array
+      </div>
+      <div class="resultado-html">
+        <pre>Array
 (
 [1] =&gt; Array
     (
@@ -476,16 +477,16 @@ print "&lt;/pre&gt;";
     )
 )
 </pre>
-          </div>
-        </div>
+      </div>
+    </div>
 
-        <hr class="corta">
+    <hr class="corta">
 
-        <p>Si se añade un segundo argumento con el valor <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para concatenar la respuesta de la función o para guardarla en una variable que se puede imprimir posteriormente</p>
+    <p>Si se añade un segundo argumento con el valor <span class="php-con">true</span>, <span class="php-fun">print_r()</span> no imprime nada pero devuelve el texto que se imprimiría si no estuviera el argumento <span class="php-con">true</span>. Se utiliza para concatenar la respuesta de la función o para guardarla en una variable que se puede imprimir posteriormente</p>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -494,15 +495,15 @@ $tmp = print_r($datos, true);
 print "&lt;p&gt;La matriz es $tmp&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-html">
-            <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
-          </div>
-        </div>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+      </div>
+    </div>
 
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
@@ -510,11 +511,11 @@ $datos["apellidos"] = "Ramón y Cajal";
 print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-          </div>
-          <div class="resultado-html">
-            <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
-          </div>
-        </div>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz es Array ( [nombre] =&gt; Santiago [apellidos] =&gt; Ramón y Cajal )</p>
+      </div>
+    </div>
   </section>
 
   <section id="anadir-elementos">
@@ -602,6 +603,135 @@ print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
     </ul>
   </section>
 
+  <section id="union">
+    <h2>Unión de matrices</h2>
+
+    <p>Los operadores <strong>+</strong> (suma) <strong>+=</strong> (suma combinada) realizan la unión de dos matrices. La unión de dos matrices contiene todos los elementos de la primera matriz y únicamente los elementos de la segunda matriz cuyo índice no se encuentra en la primera matriz.</p>
+    <ul>
+      <li>En el ejemplo siguiente, al hacer la unión $a + $b, el resultado contiene los dos elementos de $a y el único elemento de $b cuyo índice no está en $a (el elemento $b[2]). Sin embargo, al hacer la unión $b + $a, el resultado contiene los tres elementos de $b pero ninguno de $a (ya que el índice de los dos elementos de $a, 0 y 1, están en $b).
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = ["Alba", "Bernardo"];
+
+$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
+
+print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+  (
+      [0] =&gt; Alba
+      [1] =&gt; Bernardo
+      [2] =&gt; Carlos
+  )
+  </pre>
+
+            <pre>Array
+  (
+      [0] =&gt; Antonio
+      [1] =&gt; Bárbara
+      [2] =&gt; Carlos
+  )</pre>
+          </div>
+        </div>
+      </li>
+      <li>Si los índice no coinciden, la unión contendrá todos los elementos:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = [0 =&gt; "Alba", 2 =&gt; "Bernardo"];
+
+$nombres_2 = [1 =&gt; "Antonio", 3 =&gt; "Bárbara", 5 =&gt; "Carlos"];
+
+print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre><pre>Array
+(
+    [0] =&gt; Alba
+    [2] =&gt; Bernardo
+    [1] =&gt; Antonio
+    [3] =&gt; Bárbara
+    [5] =&gt; Carlos
+)
+</pre>
+
+<pre>Array
+(
+    [1] =&gt; Antonio
+    [3] =&gt; Bárbara
+    [5] =&gt; Carlos
+    [0] =&gt; Alba
+    [2] =&gt; Bernardo
+)
+</pre></pre>
+          </div>
+        </div>
+      </li>
+      <li>El operador combinado <strong>+=</strong> realiza también la unión de dos matrices (y modifica, en su caso, la primera matriz).
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = ["Alba", "Bernardo"];
+
+$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
+
+$nombres_1 += $nombres_2;
+
+print "&lt;pre&gt;"; print_r($nombres_1); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+  (
+      [0] =&gt; Alba
+      [1] =&gt; Bernardo
+      [2] =&gt; Carlos
+  )
+  </pre>
+          </div>
+        </div>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = ["Alba", "Bernardo"];
+
+$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
+
+$nombres_2 += $nombres_1;
+
+print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+  (
+      [0] =&gt; Antonio
+      [1] =&gt; Bárbara
+      [2] =&gt; Carlos
+  )
+  </pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
   <section id="mas-informacion-general">
     <h2>Más información general sobre las matrices</h2>
 
@@ -666,7 +796,7 @@ print "&lt;p&gt;" . $nombres[-3] . "&lt;p&gt;\n";
       </div>
     </div>
 
-    <p>PHP no permite valores decimales en los índices numéricos. En caso de usarlos, PHP los trunca automáticamente a enteros (por lo que se recomienda utilizarlos con cuidado):</p>
+    <p>PHP no permite valores decimales en los índices numéricos. En caso de usarlos, PHP los trunca automáticamente a enteros (por lo que en general no se recomienda utilizarlos):</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -742,7 +872,7 @@ print "&lt;p&gt;" . $nombres[1.2] . "&lt;p&gt;\n";
 
     <hr class="corta">
 
-    <p>En el caso de las matrices multidimensionales, la misma información se puede guardar de varias formas distintas.</p>
+    <p>En el caso de las matrices multidimensionales, la misma información se puede guardar de varias formas distintas. Por ejemplo, la matriz siguiente guarda información sobre la edad y el peso de varias personas:</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -1803,13 +1933,13 @@ print "&lt;p&gt;$indice - $cuadrados[$indice]&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
       Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
       que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
-    </footer>
+  </footer>
 </body>
 </html>
