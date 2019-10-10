@@ -104,7 +104,7 @@ print "    <p>Elija una opción</p>\n";
 print "\n";
 print "    <ul>\n";
 print "      <li>Crear una cookie con una duración de\n";
-print "        <input type=\"text\" name=\"duracion\" value=\"10\" size=\"3\" maxlength=\"2\" id=\"cursor\">\n";
+print "        <input type=\"text\" name=\"duracion\" value=\"10\" size=\"3\" maxlength=\"2\" autofocus>\n";
 print "        segundos (entre " . DURACION_MIN . " y " . DURACION_MAX . ")\n";
 print "        <input type=\"submit\" value=\"Crear\" name=\"accion\">\n";
 print "      </li>\n";
