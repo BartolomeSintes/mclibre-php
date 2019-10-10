@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
- <head>
+<head>
   <meta charset="utf-8">
   <title>
     ctype_digit(). Comprobación de datos.

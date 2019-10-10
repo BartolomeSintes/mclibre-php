@@ -43,7 +43,7 @@ session_start();
   <form action="punteria-2.php" method="get">
     <p>Haga clic en el punto negro:</p>
 
-    <p><input type="image" name="dibujo" src="punteria-dibujo.php" alt="punteria"></p>
+    <p><input type="image" name="dibujo" src="punteria-dibujo.php" alt="Puntería"></p>
   </form>
 
 <?php
