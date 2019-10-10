@@ -134,7 +134,8 @@ print "  &lt;p&gt;&lt;img src=\"img/animales/$dibujos[$animal]\" alt=\"Animal\" 
 
     <section id="ejercicio-03">
       <h3>Matrices (1) 03 - Nombres de animales</h3>
-
+      <ul>
+      <li>Solución con dos matrices de una dimensión:
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
@@ -160,6 +161,44 @@ print "  &lt;p&gt;&lt;img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[
 ?&gt;</code>
 </pre>
       </div>
+      </li>
+      <li>Solución con una matriz de dos dimensiones:
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$animales = [
+  ["Ballena",          "ballena.svg"],
+  ["Caballito de mar", "caballito-mar.svg"],
+  ["Camello",          "camello.svg"],
+  ["Cebra",            "cebra.svg"],
+  ["Elefante",         "elefante.svg"],
+  ["Hipopótamo",       "hipopotamo.svg"],
+  ["Jirafa",           "jirafa.svg"],
+  ["León",             "leon.svg"],
+  ["Leopardo",         "leopardo.svg"],
+  ["Medusa",           "medusa.svg"],
+  ["Mono",             "mono.svg"],
+  ["Oso",              "oso.svg"],
+  ["Oso blanco",       "oso-blanco.svg"],
+  ["Pájaro",           "pajaro.svg"],
+  ["Pingüino",         "pinguino.svg"],
+  ["Rinoceronte",      "rinoceronte.svg"],
+  ["Serpiente",        "serpiente.svg"],
+  ["Tigre",            "tigre.svg"],
+  ["Tortuga marina",   "tortuga-marina.svg"],
+  ["Tortuga",          "tortuga.svg"],
+];
+
+$animal = rand(0, count($animales) - 1);
+
+print "  &lt;h2&gt;{$animales[$animal][0]}&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;&lt;img src=\"img/animales/{$animales[$animal][1]}\" alt=\"{$animales[$animal][0]}\" height=\"250\"&gt;&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      </li>
+      </ul>
     </section>
   </section>
 
