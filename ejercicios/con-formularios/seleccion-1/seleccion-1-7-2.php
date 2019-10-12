@@ -92,9 +92,9 @@ if ($jugadoresOk) {
 
     for ($i = 1; $i <= $jugadores; $i++) {
         print "  <p>Jugador $i:\n";
-        print "    <img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\" title=\"$c1[$i]\">\n";
-        print "    <img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\" title=\"$c2[$i]\">\n";
-        print "    <img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\" title=\"$c3[$i]\">\n";
+        print "    <img src=\"img/c$c1[$i].svg\" alt=\"$c1[$i]\">\n";
+        print "    <img src=\"img/c$c2[$i].svg\" alt=\"$c2[$i]\">\n";
+        print "    <img src=\"img/c$c3[$i].svg\" alt=\"$c3[$i]\">\n";
         print "  </p>\n";
     }
     print "\n";
@@ -105,7 +105,7 @@ if ($jugadoresOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-23">23 de octubre de 2018</time>
+      <time datetime="2019-10-12">12 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
