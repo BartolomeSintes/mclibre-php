@@ -8,6 +8,7 @@
   <link rel="icon" href="../varios/favicon.ico">
   <link rel="stylesheet" href="../varios/prism.css">
   <script src="../varios/prism-copy.js"></script>
+  <script src="../varios/prism.js"></script>
   <script src="../varios/clipboard.min.js"></script>
 </head>
 
@@ -106,13 +107,12 @@
       <p>Tenga en cuenta que puede ser necesario modificar las preferencias resaltadas del ejemplo siguiente:</p>
       <ul>
         <li>"php.validate.executablePath" y "php.executablePath": deben indicar la ruta hasta el ejecutable de PHP. El valor incluido en el ejemplo es el predeterminado de XAMPP en Windows.</li>
-        <li>"php-cs-fixer.executablePath" y "php-cs-fixer.executablePathWindows": debe indicar la ruta hasta el ejecutable de PHp CS Fixer. El valor incluido en el ejemplo es el predeterminado de VSCode (versión de usuario) en Windows 10. Como mínimo, en esta ruta será necesario cambiar el NombreDeUsuario.</li>
-        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o contrabarras dobles (\\), pero no contrabarras simples (\).</li>
+        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</li>
       </ul>
 
       <div class="codigo">
         <pre>
-<code class="language-json">  // Configuraciones recomendadas para el curso Programación web en PHP de www.mclibre.org
+<code class="copy-language-json">  // Configuraciones recomendadas para el curso Programación web en PHP de www.mclibre.org
   //
   // PHP
   // Establece los valores de configuración que se reemplazarán para el lenguaje PHP
@@ -141,8 +141,8 @@
   // Extensión PHP CS Fixer
   //
   // Ubicación del ejecutable de php-cs-fixer
-  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
-  "php-cs-fixer.executablePathWindows": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "php-cs-fixer.executablePathWindows": "${extensionPath}/php-cs-fixer.phar",
   // Configuraciones de php-cs-fixer
   "php-cs-fixer.onsave": false,
   "php-cs-fixer.rules": "@PSR2",
@@ -167,7 +167,7 @@
 
       <div class="codigo">
         <pre>
-<code class="language-json">{
+<code class="copy-language-json">{
   // Configuraciones recomendadas para el curso Programación web en PHP de www.mclibre.org
   //
   // Workbench: Color Theme
@@ -285,19 +285,13 @@
 
       <p><strong>Nota</strong>: Estas preferencias están incluidas en el apartado anterior de preferencias de configuración. No es necesario añadirlas si ya se han añadido anteriormente.</p>
 
-      <p>Tenga en cuenta que puede ser necesario modificar la preferencia resaltada del ejemplo siguiente:</p>
-      <ul>
-        <li>"php-cs-fixer.executablePath" y "php-cs-fixer.executablePathWindows": deben indicar las rutas hasta el ejecutable de PHP. El valor incluido en el ejemplo es el predeterminado de XAMPP en Windows. Como mínimo, en esta ruta será necesario cambiar el NombreDeUsuario.</li>
-        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o contrabarras dobles (\\), pero no contrabarras simples (\).</li>
-      </ul>
-
       <div class="codigo">
         <pre>
 <code class="language-json">  // Extensión PHP CS Fixer
   //
   // Ubicación del ejecutable de php-cs-fixer
-  "php-cs-fixer.executablePath": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
-  "php-cs-fixer.executablePathWindows": "<span class="codigo-resaltado">C:/Users/NombreDeUsuario/.vscode/extensions/junstyle.php-cs-fixer-0.1.123/php-cs-fixer.phar</span>",
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "php-cs-fixer.executablePathWindows": "${extensionPath}/php-cs-fixer.phar",
   // Configuraciones de php-cs-fixer
   "php-cs-fixer.onsave": false,
   "php-cs-fixer.rules": "@PSR2",
@@ -320,7 +314,7 @@
 
       <div class="codigo">
         <pre>
-<code class="language-php">&lt;?php
+<code class="copy-language-php">&lt;?php
 // Archivo de configuración para PHP CS Fixer
 // 2019-10-06
 
@@ -419,14 +413,14 @@ return PhpCsFixer\Config::create()
       <ul>
         <li>"command": debe indicar la ruta hasta el ejecutable de Firefox o Chrome. El valor incluido en el ejemplo es el predeterminado en Windows 10.</li>
         <li>"arg"s: debe indicar el alias definido en Apache para acceder a la carpeta abierta en Visual Studio Code como área de trabajo (el del ejemplo corresponde a lo propuesto en el <a href="../ejercicios/puesta-en-marcha/apache-1.html#ejercicio-5">ejercicio Apache (1) 5</a>).</li>
-        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o contrabarras dobles (\\), pero no contrabarras simples (\).</li>
+        <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</li>
       </ul>
 
       <p>Tenga en cuenta que para que las páginas se muestren en el navegador es necesario crear un alias en Apache, como se comenta en la lección <a href="php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
 
       <div class="codigo">
         <pre>
-<code class="language-json">      // Tareas recomendadas para el curso Programación web en PHP de www.mclibre.org
+<code class="copy-language-json">      // Tareas recomendadas para el curso Programación web en PHP de www.mclibre.org
       {
       "label": "Abrir en localhost (Firefox)",
       "command": "explorer",
@@ -473,7 +467,7 @@ return PhpCsFixer\Config::create()
 
     <div class="codigo">
       <pre>
-<code class="language-json">    // Atajos de teclado recomendados para el curso Programación web en PHP de www.mclibre.org
+<code class="copy-language-json">    // Atajos de teclado recomendados para el curso Programación web en PHP de www.mclibre.org
     {
         // Tarea: Abrir en locahost (Firefox)
         "key": "ctrl+alt+l ctrl+alt+f",
@@ -489,30 +483,10 @@ return PhpCsFixer\Config::create()
     //</code>
 </pre>
     </div>
-
-    <section id="atajos-utilizar">
-      <h3>Utilizar atajos de teclado</h3>
-
-      <p>Estos son los pasos a realizar para utilizar alguno de los atajos de teclado personalizados:</p>
-
-      <ol>
-        <li>Abra en una pestaña el programa PHP que quiera abrir en un navegador (servido por localhost):
-          <p class="captura">
-            <img src="../img/vscode/vsc-php-atajos-usar-1.png" alt="VSC. Utilizar tarea" width="1024" height="280">
-          </p>
-        </li>
-        <li>Pulse el atajo de teclado. Por ejemplo, <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+f</span>, uno de los atajos de teclado recomendados para el curso de PHP.</li>
-        <li>En el ejemplo de las capturas, la página abierta en Visual Studio Code se abriría en el navegador:
-          <p class="captura">
-            <img src="../img/vscode/vsc-php-atajos-usar-2.png" alt="VSC. Utilizar tarea" width="1024" height="280">
-          </p>
-        </li>
-      </ol>
-    </section>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 14 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
