@@ -61,12 +61,20 @@ print "\n";
 // Creamos la matriz con la detección de los cambios
 $resultado = [];
 for ($i = 0; $i < $numero - 1; $i++) {
-    if ($inicial[$i] == $inicial[$i+1]) {
+    if ($inicial[$i] == $inicial[$i + 1]) {
         $resultado[$i] = 0;
     } else {
         $resultado[$i] = 1;
     }
 }
+
+/*
+// Creamos la matriz con la detección de los cambios
+$resultado = [];
+for ($i = 0; $i < $numero - 1; $i++) {
+    $resultado[$i] = (int) ($inicial[$i] != $inicial[$i + 1]);
+}
+*/
 
 // Mostramos los valores calculados
 print "&Delta;A:  ";

@@ -31,25 +31,15 @@
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-03">03 - Nombres de animales</a></li>
           </ul>
         </li>
-        <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#con-bucles-foreach">Con bucles for y foreach</a>
+        <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#con-bucles">Con bucles</a>
           <ul>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-11">11 - Tirada de dados</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-12">12 - Negación</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-13">13 - Cambio de bits</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-14">14 - De binario a Gray</a></li>
-          </ul>
-        </li>
-        <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#con-bucles-for">Con bucles for</a>
-          <ul>
-            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-21">21 - "Y" lógico</a></li>
-            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-22">22 - El bit más común</a></li>
-            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-23">23 - Partida de dados</a></li>
-          </ul>
-        </li>
-        <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ordenar-matrices">Ordenar matrices</a>
-          <ul>
-            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-31">31 - Tirada ordenada</a></li>
-            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-32">32 - Jugada de Risk</a></li>
+            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-15">15 - "Y" lógico</a></li>
+            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-16">16 - El bit más común</a></li>
+            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-17">17 - Partida de dados</a></li>
           </ul>
         </li>
       </ul>
@@ -63,25 +53,15 @@
             <li><a href="#ejercicio-03">03 - Nombres de animales</a></li>
           </ul>
         </li>
-        <li><a href="#con-bucles-foreach">Con bucles for y foreach</a>
+        <li><a href="#con-bucles">Con bucles</a>
           <ul>
             <li><a href="#ejercicio-11">11 - Tirada de dados</a></li>
             <li><a href="#ejercicio-12">12 - Negación</a></li>
             <li><a href="#ejercicio-13">13 - Cambio de bits</a></li>
             <li><a href="#ejercicio-14">14 - De binario a Gray</a></li>
-          </ul>
-        </li>
-        <li><a href="#con-bucles-for">Con bucles for</a>
-          <ul>
-            <li><a href="#ejercicio-21">21 - "Y" lógico</a></li>
-            <li><a href="#ejercicio-22">22 - El bit más común</a></li>
-            <li><a href="#ejercicio-23">23 - Partida de dados</a></li>
-          </ul>
-        </li>
-        <li><a href="#ordenar-matrices">Ordenar matrices</a>
-          <ul>
-            <li><a href="#ejercicio-31">31 - Tirada ordenada</a></li>
-            <li><a href="#ejercicio-32">32 - Jugada de Risk</a></li>
+            <li><a href="#ejercicio-15">15 - "Y" lógico</a></li>
+            <li><a href="#ejercicio-16">16 - El bit más común</a></li>
+            <li><a href="#ejercicio-17">17 - Partida de dados</a></li>
           </ul>
         </li>
       </ul>
@@ -135,9 +115,9 @@ print "  &lt;p&gt;&lt;img src=\"img/animales/$dibujos[$animal]\" alt=\"Animal\" 
     <section id="ejercicio-03">
       <h3>Matrices (1) 03 - Nombres de animales</h3>
       <ul>
-      <li>Solución con dos matrices de una dimensión:
-      <div class="codigo">
-        <pre>
+        <li>Solución con dos matrices de una dimensión:
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $dibujos = [
     "ballena.svg", "caballito-mar.svg", "camello.svg", "cebra.svg", "elefante.svg",
@@ -160,11 +140,11 @@ print "\n";
 print "  &lt;p&gt;&lt;img src=\"img/animales/$dibujos[$animal]\" alt=\"$nombres[$animal]\" height=\"250\"&gt;&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
-      </li>
-      <li>Solución con una matriz de dos dimensiones:
-      <div class="codigo">
-        <pre>
+          </div>
+        </li>
+        <li>Solución con una matriz de dos dimensiones:
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $animales = [
   ["Ballena",          "ballena.svg"],
@@ -196,13 +176,13 @@ print "\n";
 print "  &lt;p&gt;&lt;img src=\"img/animales/{$animales[$animal][1]}\" alt=\"{$animales[$animal][0]}\" height=\"250\"&gt;&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
-      </li>
+          </div>
+        </li>
       </ul>
     </section>
   </section>
 
-  <section id="con-bucles-foreach">
+  <section id="con-bucles">
     <h2>Con bucles for y foreach</h2>
 
     <section id="ejercicio-11">
@@ -275,14 +255,6 @@ for ($i = 0; $i &lt; $numero; $i++) {
     }
 }
 
-/* Otra forma de calcular los valores complementarios
-// Creamos la matriz con los valores complementarios
-$resultado = [];
-for ($i = 0; $i &lt; $numero; $i++) {
-    $resultado[$i] = 1 - $inicial[$i];
-}
-*/
-
 // Mostramos los valores complementarios
 print "&lt;span style=\"text-decoration: overline\"&gt;A&lt;/span&gt;: ";
 foreach ($resultado as $bit) {
@@ -304,7 +276,6 @@ for ($i = 0; $i &lt; $numero; $i++) {
 }</code>
 </pre>
       </div>
-
     </section>
 
     <section id="ejercicio-13">
@@ -350,6 +321,19 @@ print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
+
+      <p>Una forma alternativa de detectar el cambio de bits, sin necesidad de recurrir a un <span class="php-res">if ... else ...</span> podría ser la siguiente:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">// Creamos la matriz con la detección de los cambios
+$resultado = [];
+for ($i = 0; $i &lt; $numero - 1; $i++) {
+    $resultado[$i] = (int) ($inicial[$i] != $inicial[$i + 1]);
+}</code>
+</pre>
+      </div>
+
     </section>
 
     <section id="ejercicio-14">
@@ -397,13 +381,9 @@ print "&lt;/pre&gt;\n";
 </pre>
       </div>
     </section>
-  </section>
 
-  <section id="con-bucles-for">
-    <h2>Con bucles for</h2>
-
-    <section id="ejercicio-21">
-      <h3>Matrices (1) 21 - "Y" lógico</h3>
+    <section id="ejercicio-15">
+      <h3>Matrices (1) 15 - "Y" lógico</h3>
 
       <div class="codigo">
         <pre>
@@ -495,8 +475,8 @@ for ($i = 0; $i &lt; $numero; $i++) {
       </div>
     </section>
 
-    <section id="ejercicio-22">
-      <h3>Matrices (1) 22 - El bit más común</h3>
+    <section id="ejercicio-16">
+      <h3>Matrices (1) 16 - El bit más común</h3>
 
       <div class="codigo">
         <pre>
@@ -568,8 +548,8 @@ print "&lt;/pre&gt;\n";
       </div>
     </section>
 
-    <section id="ejercicio-23">
-      <h3>Matrices (1) 23 - Partida de dados</h3>
+    <section id="ejercicio-17">
+      <h3>Matrices (1) 17 - Partida de dados</h3>
 
       <div class="codigo">
         <pre>
@@ -663,139 +643,8 @@ if ($gana1 &gt; $gana2) {
     </section>
   </section>
 
-  <section id="ordenar-matrices">
-    <h2>Ordenar matrices</h2>
-
-    <section id="ejercicio-31">
-      <h3>Matrices (1) 31 - Tirada de dados ordenada</h3>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$numero = rand(2, 7);
-
-// Creamos la matriz de dados aleatorios
-$dados = [];
-for ($i = 0; $i &lt; $numero; $i++) {
-    $dados[$i] = rand(1, 6);
-}
-
-// Mostramos los dados
-print "  &lt;h2&gt;Tirada de $numero dados&lt;/h2&gt;\n";
-print "\n";
-print "  &lt;p&gt;\n";
-foreach ($dados as $dado) {
-    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
-}
-print "  &lt;/p&gt;\n";
-print "\n";
-
-// Ordenamos los dados
-sort($dados);
-
-// Mostramos los dados ordenados
-print "  &lt;h2&gt;Tirada ordenada&lt;/h2&gt;\n";
-print "\n";
-print "  &lt;p&gt;\n";
-foreach ($dados as $dado) {
-    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
-}
-print "  &lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-32">
-      <h3>Matrices (1) 32 - Jugada de Risk</h3>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Mostramos con cuántos dados va a jugar el Atacante
-print "  &lt;h2&gt;Atacante&lt;/h2&gt;\n";
-print "\n";
-$numero1 = rand(1, 3);
-if ($numero1 == 1) {
-    print "  &lt;p&gt;El atacante ataca con $numero1 dado:&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;El atacante ataca con $numero1 dados:&lt;/p&gt;\n";
-}
-print "\n";
-
-// Guardamos los valores del Atacante en la matriz $dados1
-$dados1 = [];
-for ($i = 0; $i &lt; $numero1; $i++) {
-    $dados1[$i] = rand(1, 6);
-}
-
-// Ordenamos la matriz  $dados2 y mostramos los resultados obtenidos por el Atacante
-rsort($dados1);
-print "  &lt;p&gt;\n";
-foreach ($dados1 as $dado) {
-    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
-}
-print "  &lt;/p&gt;\n";
-print "\n";
-
-// Mostramos con cuántos dados va a jugar el Defensor
-print "  &lt;h2&gt;Defensor&lt;/h2&gt;\n";
-print "\n";
-$numero2 = rand(1, 2);
-if ($numero2 == 1) {
-    print "  &lt;p&gt;El defensor defiende con $numero2 dado:&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;El defensor defiende con $numero2 dados:&lt;/p&gt;\n";
-}
-print "\n";
-
-// Guardamos los valores del Defensor en la matriz $dados2
-$dados2 = [];
-for ($i = 0; $i &lt; $numero2; $i++) {
-    $dados2[$i] = rand(1, 6);
-}
-
-// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Defensor
-rsort($dados2);
-print "  &lt;p&gt;\n";
-foreach ($dados2 as $dado) {
-    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
-}
-print "  &lt;/p&gt;\n";
-print "\n";
-
-// En los acumuladores $bajasAtacante $bajasDefensor contamos cuántas partidas ha perdido cada uno
-// El número de dados que se compara es el menor de los números de dados tirados
-$menor = min($numero1, $numero2);
-$bajasAtacante = 0;
-$bajasDefensor = 0;
-for ($i = 0; $i &lt; $menor; $i++) {
-    if ($dados1[$i] &gt; $dados2[$i]) {
-        $bajasDefensor++;
-    } else {
-        $bajasAtacante++;
-    }
-}
-
-// Mostramos cuántas partidas bajas ha tenido cada jugador
-print "  &lt;h2&gt;Resultado&lt;/h2&gt;\n";
-print "\n";
-print "  &lt;p&gt;El atacante pierde &lt;strong&gt;$bajasAtacante&lt;/strong&gt; unidad";
-if ($bajasAtacante != 1) {
-    print "es";
-}
-print ". El defensor pierde &lt;strong&gt;$bajasDefensor&lt;/strong&gt; unidad";
-if ($bajasDefensor != 1) {
-    print "es";
-}
-print ".&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-  </section>
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
