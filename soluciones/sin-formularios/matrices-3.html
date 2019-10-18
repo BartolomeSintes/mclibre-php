@@ -21,16 +21,530 @@
 
     <div class="toc">
       <h2>Matrices (3)</h2>
+
+      <h3><a href="../../ejercicios/sin-formularios/matrices-3/index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-1">1 - Eliminar dado</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-2">2 - Eliminar animal</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-3">3 - Eliminar repetidos</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-4">4 - Buscar emoticono</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-5">5 - Contar corazones</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-6">6 - Unir matrices</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-11">11 - Tirada ordenada</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-12">12 - Ordenar cartas</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-13">13 - Jugada de Risk</a></li>
+      </ul>
+
+      <h3><a href="#">Soluciones</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Eliminar dado</a></li>
+        <li><a href="#ejercicio-2">2 - Eliminar animal</a></li>
+        <li><a href="#ejercicio-3">3 - Eliminar repetidos</a></li>
+        <li><a href="#ejercicio-4">4 - Buscar emoticono</a></li>
+        <li><a href="#ejercicio-5">5 - Contar corazones</a></li>
+        <li><a href="#ejercicio-6">6 - Unir matrices</a></li>
+        <li><a href="#ejercicio-11">11 - Tirada ordenada</a></li>
+        <li><a href="#ejercicio-12">12 - Ordenar cartas</a></li>
+        <li><a href="#ejercicio-13">13 - Jugada de Risk</a></li>
+      </ul>
     </div>
   </nav>
 
-
   <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sin-formularios/matrices-3/index.html">Matrices (3)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
 
-  <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Esta página de soluciones está en elaboración.</p>
+  <section id="ejercicio-1">
+    <h3>Matrices (3) 1 - Eliminar dado</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(1, 10);
+
+// Guardamos los valores de los dados en la matriz $dados
+$dados = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dados[$i] = rand(1, 6);
+}
+
+// Mostramos las imágenes de los dados obtenidos
+if ($numero == 1) {
+    print "  &lt;h2&gt;Tirada de $numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;Tirada de $numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($dados as $dado) {
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Guardamos el valor del dado a descartar
+$descarta = rand(1, 6);
+
+// Mostramos el dado a descartar
+print "  &lt;h2&gt;Dado a eliminar&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/$descarta.svg\" alt=\"$descarta\" width=\"80\" height=\"80\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Eliminamos el dado de la matriz
+for ($i = 0; $i &lt; $numero; $i++) {
+    if ($dados[$i] == $descarta) {
+        unset($dados[$i]);
+    }
+}
+
+// Mostramos las imágenes de los dados restantes
+print "  &lt;h2&gt;Dados restantes&lt;/h2&gt;\n";
+print "\n";
+if (count($dados) == 0) {
+    print "&lt;p&gt;No quedan dados.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;\n";
+    foreach ($dados as $dado) {
+        print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\"&gt;\n";
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h3>Matrices (3) 2 - Eliminar animal</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+$numero = rand(20, 30);
+
+// Guardamos los valores de los animales en la matriz $animales
+$animales = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $animales[$i] = rand(128000, 128060);
+}
+
+// Mostramos las imágenes de los animales obtenidos
+print "  &lt;h2&gt;$numero animales&lt;/h2&gt;\n";
+
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+foreach ($animales as $animal) {
+    print "    &#$animal;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Guardamos el valor del animal a descartar
+$descarta = $animales[array_rand($animales)];
+
+// Mostramos el animal a descartar
+print "  &lt;h2&gt;Animal a eliminar&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+print "    &#$descarta;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Eliminamos el animal de la matriz
+for ($i = 0; $i &lt; $numero; $i++) {
+    if ($animales[$i] == $descarta) {
+        unset($animales[$i]);
+    }
+}
+
+// Mostramos las imágenes de los animales restantes
+print "  &lt;h2&gt;Quedan " . count($animales) . " animales&lt;/h2&gt;\n";
+print "\n";
+if (count($animales) == 0) {
+    print "&lt;p&gt;No quedan animales.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+    foreach ($animales as $animal) {
+        print "    &#$animal;\n";
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h3>Matrices (3) 3 - Eliminar repetidos</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+$numero = rand(5, 15);
+
+// Guardamos los valores de las bolas en la matriz $bolas
+$bolas = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $bolas[$i] = rand(10102, 10111);
+}
+
+// Mostramos las imágenes de las bolas obtenidas
+print "  &lt;h2&gt;Entre estas $numero bolas ...&lt;/h2&gt;\n";
+
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+foreach ($bolas as $bola) {
+    print "    &#$bola;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Eliminamos las bolas duplicadas
+$resultado = array_unique($bolas);
+
+// Mostramos las imágenes de las bolas restantes
+print "  &lt;h2&gt;... hay " . count($resultado) . " bolas distintas&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+foreach ($resultado as $bola) {
+    print "    &#$bola;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h3>Matrices (3) 4 - Buscar emoticono</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+$numero = rand(10, 20);
+
+// Guardamos los valores de los emoticonos en la matriz $emoticonos
+$emoticonos = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $emoticonos[$i] = rand(128512, 128580);
+}
+
+// Mostramos las imágenes de los emoticonos obtenidos
+print "  &lt;h2&gt;$numero emoticonos ...&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+foreach ($emoticonos as $emoticono) {
+    print "    &#$emoticono;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Emoticono a buscar
+$busca = rand(128512, 128580);
+
+// Mostramos el resultado de la búscqueda
+if (in_array($busca, $emoticonos)) {
+  print "  &lt;p&gt;El emoticono &lt;span style=\"font-size: 400%;\"&gt;&#$busca;&lt;/span&gt; está entre ellos.&lt;/p&gt;\n";
+} else {
+  print "  &lt;p&gt;El emoticono &lt;span style=\"font-size: 400%;\"&gt;&#$busca;&lt;/span&gt; NO está entre ellos.&lt;/p&gt;\n";
+}
+print "\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h3>Matrices (3) 5 - Contar corazones</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+$numero = rand(7, 20);
+
+// Guardamos los valores de las frutas en la matriz $frutas
+$frutas = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $frutas[$i] = rand(128147, 128152);
+}
+
+// Mostramos las imágenes de las frutas obtenidas
+print "  &lt;h2&gt;$numero corazones&lt;/h2&gt;\n";
+
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+foreach ($frutas as $fruta) {
+    print "    &#$fruta;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Contamos las frutas
+$cuenta = array_count_values($frutas);
+
+// Mostramos el resultado de contar las frutas
+print "  &lt;h2&gt;Conteo&lt;/h2&gt;\n";
+print "\n";
+
+foreach ($cuenta as $indice =&gt; $valor) {
+  print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;&#$indice; $valor&lt;/p&gt;\n";
+}
+
+print "\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-6">
+    <h3>Matrices (3) 6 - Unir matrices</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+// Definimos las matrices con los rangos de emoticonos
+$emoticonos_1 = range(128512, 128580);
+$emoticonos_2 = range(129296, 129303);
+$emoticonos_3 = range(129312, 129327);
+$emoticonos_4 = [129392, 129393];
+$emoticonos_5 = range(129395, 129398);
+$emoticonos_6 = [129402, 129488];
+
+// Unimos las matrices en una sola
+$emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6);
+
+// Mostramos las imágenes de los emoticonos obtenidos
+print "  &lt;h2&gt;". count($emoticonos) . " emoticonos&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+foreach ($emoticonos as $emoticono) {
+    print "    &#$emoticono;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Mostramos un emoticono al azar
+print "  &lt;h2&gt;Uno al azar&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;&#". $emoticonos[rand(0, count($emoticonos)-1)] . ";&lt;/p&gt;\n";
+
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-11">
+    <h3>Matrices (3) 11 - Tirada ordenada</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+$numero = rand(2, 7);
+
+// Creamos la matriz de dados aleatorios
+$dados = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dados[$i] = rand(1, 6);
+}
+
+// Mostramos los dados
+print "  &lt;h2&gt;Tirada de $numero dados&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($dados as $dado) {
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Ordenamos los dados
+sort($dados);
+
+// Mostramos los dados ordenados
+print "  &lt;h2&gt;Tirada ordenada&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($dados as $dado) {
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-12">
+    <h3>Matrices (3) 12 - Ordenar cartas</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+$numero = rand(5, 10);
+
+// Creamos la matriz de cartas aleatorias
+$cartas = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $cartas[$i] = rand(127169, 127173);
+}
+
+// Mostramos las cartas
+print "  &lt;h2&gt;Mano de $numero cartas&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 700%; margin: 0; line-height: 100%;\"&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &#$carta;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Ordenamos las cartas
+$cartas_2 = array_unique($cartas);
+sort($cartas_2);
+
+// Mostramos las cartas ordenadas
+print "  &lt;h2&gt;Cartas distintas obtenidas (ordenadas)&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 700%; margin: 0; line-height: 100%;\"&gt;\n";
+foreach ($cartas_2 as $carta) {
+    print "    &#$carta;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Contamos las cartas
+$cartas_3 = array_count_values($cartas);
+
+// Mostramos las cartas contadas
+print "  &lt;h2&gt;Número de cartas obtenidas (sin ordenar)&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"line-height: 600%;\"&gt;\n";
+foreach ($cartas_3 as $indice =&gt; $valor) {
+    print "    &lt;span style=\"font-size: 500%;\"&gt;$valor&lt;/span&gt; &lt;span style=\"font-size: 700%;\"&gt;&#$indice; - &lt;/span&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Ordenamos las cartas
+arsort($cartas_3);
+
+// Mostramos las cartas contadas ordenadas
+print "  &lt;h2&gt;Número de cartas obtenidas (ordenada)&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"line-height: 600%;\"&gt;\n";
+foreach ($cartas_3 as $indice =&gt; $valor) {
+    print "    &lt;span style=\"font-size: 500%;\"&gt;$valor&lt;/span&gt; &lt;span style=\"font-size: 700%;\"&gt;&#$indice; - &lt;/span&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-13">
+    <h3>Matrices (3) 13 - Jugada de Risk</h3>
+
+    <div class="codigo">
+      <pre>
+  <code class="language-php">&lt;?php
+// Mostramos con cuántos dados va a jugar el Atacante
+print "  &lt;h2&gt;Atacante&lt;/h2&gt;\n";
+print "\n";
+$numero1 = rand(1, 3);
+if ($numero1 == 1) {
+    print "  &lt;p&gt;El atacante ataca con $numero1 dado:&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;El atacante ataca con $numero1 dados:&lt;/p&gt;\n";
+}
+print "\n";
+
+// Guardamos los valores del Atacante en la matriz $dados1
+$dados1 = [];
+for ($i = 0; $i &lt; $numero1; $i++) {
+    $dados1[$i] = rand(1, 6);
+}
+
+// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Atacante
+rsort($dados1);
+print "  &lt;p&gt;\n";
+foreach ($dados1 as $dado) {
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Mostramos con cuántos dados va a jugar el Defensor
+print "  &lt;h2&gt;Defensor&lt;/h2&gt;\n";
+print "\n";
+$numero2 = rand(1, 2);
+if ($numero2 == 1) {
+    print "  &lt;p&gt;El defensor defiende con $numero2 dado:&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;El defensor defiende con $numero2 dados:&lt;/p&gt;\n";
+}
+print "\n";
+
+// Guardamos los valores del Defensor en la matriz $dados2
+$dados2 = [];
+for ($i = 0; $i &lt; $numero2; $i++) {
+    $dados2[$i] = rand(1, 6);
+}
+
+// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Defensor
+rsort($dados2);
+print "  &lt;p&gt;\n";
+foreach ($dados2 as $dado) {
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// En los acumuladores $bajasAtacante $bajasDefensor contamos cuántas partidas ha perdido cada uno
+// El número de dados que se compara es el menor de los números de dados tirados
+$menor = min($numero1, $numero2);
+$bajasAtacante = 0;
+$bajasDefensor = 0;
+for ($i = 0; $i &lt; $menor; $i++) {
+    if ($dados1[$i] &gt; $dados2[$i]) {
+        $bajasDefensor++;
+    } else {
+        $bajasAtacante++;
+    }
+}
+
+// Mostramos cuántas bajas ha tenido cada jugador
+print "  &lt;h2&gt;Resultado&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;El atacante pierde &lt;strong&gt;$bajasAtacante&lt;/strong&gt; unidad";
+if ($bajasAtacante != 1) {
+    print "es";
+}
+print ". El defensor pierde &lt;strong&gt;$bajasDefensor&lt;/strong&gt; unidad";
+if ($bajasDefensor != 1) {
+    print "es";
+}
+print ".&lt;/p&gt;\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

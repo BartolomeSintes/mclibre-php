@@ -49,7 +49,7 @@ for ($i = 0; $i < $numero; $i++) {
     $frutas[$i] = rand(128147, 128152);
 }
 
-// Mostramos las imágenes de las frutas obtenidos
+// Mostramos las imágenes de las frutas obtenidas
 print "  <h2>$numero corazones</h2>\n";
 
 print "\n";
@@ -63,7 +63,7 @@ print "\n";
 // Contamos las frutas
 $cuenta = array_count_values($frutas);
 
-// Mostramos las imágenes de las fruta restantes
+// Mostramos el resultado de contar las frutas
 print "  <h2>Conteo</h2>\n";
 print "\n";
 

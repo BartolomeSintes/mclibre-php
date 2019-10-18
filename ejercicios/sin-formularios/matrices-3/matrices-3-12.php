@@ -97,6 +97,7 @@ foreach ($cartas_3 as $indice => $valor) {
     print "    <span style=\"font-size: 500%;\">$valor</span> <span style=\"font-size: 700%;\">&#$indice; - </span>\n";
 }
 print "  </p>\n";
+
 ?>
 
   <footer>

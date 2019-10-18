@@ -49,9 +49,6 @@ for ($i = 0; $i < $numero; $i++) {
     $animales[$i] = rand(128000, 128060);
 }
 
-// Guardamos el valor del animal a descartar
-$descarta = $animales[array_rand($animales)];
-
 // Mostramos las imágenes de los animales obtenidos
 print "  <h2>$numero animales</h2>\n";
 
@@ -62,6 +59,9 @@ foreach ($animales as $animal) {
 }
 print "  </p>\n";
 print "\n";
+
+// Guardamos el valor del animal a descartar
+$descarta = $animales[array_rand($animales)];
 
 // Mostramos el animal a descartar
 print "  <h2>Animal a eliminar</h2>\n";

@@ -63,7 +63,7 @@ print "\n";
 // Eliminamos las bolas duplicadas
 $resultado = array_unique($bolas);
 
-// Mostramos las imágenes de las bola restantes
+// Mostramos las imágenes de las bolas restantes
 print "  <h2>... hay " . count($resultado) . " bolas distintas</h2>\n";
 print "\n";
 print "  <p style=\"font-size: 400%; margin: 0;\">\n";

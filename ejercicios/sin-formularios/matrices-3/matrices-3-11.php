@@ -70,6 +70,7 @@ foreach ($dados as $dado) {
     print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\">\n";
 }
 print "  </p>\n";
+
 ?>
 
   <footer>

@@ -41,6 +41,7 @@
   <p>Actualice la página para mostrar un nuevo emoticono seleccionado al azar.</p>
 
 <?php
+// Definimos las matrices con los rangos de emoticonos
 $emoticonos_1 = range(128512, 128580);
 $emoticonos_2 = range(129296, 129303);
 $emoticonos_3 = range(129312, 129327);
@@ -48,6 +49,7 @@ $emoticonos_4 = [129392, 129393];
 $emoticonos_5 = range(129395, 129398);
 $emoticonos_6 = [129402, 129488];
 
+// Unimos las matrices en una sola
 $emoticonos = array_merge($emoticonos_1, $emoticonos_2, $emoticonos_3, $emoticonos_4, $emoticonos_5, $emoticonos_6);
 
 // Mostramos las imágenes de los emoticonos obtenidos

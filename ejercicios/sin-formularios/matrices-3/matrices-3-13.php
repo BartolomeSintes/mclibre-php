@@ -58,7 +58,7 @@ for ($i = 0; $i < $numero1; $i++) {
     $dados1[$i] = rand(1, 6);
 }
 
-// Ordenamos la matriz  $dados2 y mostramos los resultados obtenidos por el Atacante
+// Ordenamos la matriz $dados2 y mostramos los resultados obtenidos por el Atacante
 rsort($dados1);
 print "  <p>\n";
 foreach ($dados1 as $dado) {
@@ -106,7 +106,7 @@ for ($i = 0; $i < $menor; $i++) {
     }
 }
 
-// Mostramos cuántas partidas bajas ha tenido cada jugador
+// Mostramos cuántas bajas ha tenido cada jugador
 print "  <h2>Resultado</h2>\n";
 print "\n";
 print "  <p>El atacante pierde <strong>$bajasAtacante</strong> unidad";
@@ -118,6 +118,7 @@ if ($bajasDefensor != 1) {
     print "es";
 }
 print ".</p>\n";
+
 ?>
 
   <footer>

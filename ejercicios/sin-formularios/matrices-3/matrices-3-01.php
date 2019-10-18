@@ -49,9 +49,6 @@ for ($i = 0; $i < $numero; $i++) {
     $dados[$i] = rand(1, 6);
 }
 
-// Guardamos el valor del dado a descartar
-$descarta = rand(1, 6);
-
 // Mostramos las imágenes de los dados obtenidos
 if ($numero == 1) {
     print "  <h2>Tirada de $numero dado</h2>\n";
@@ -66,11 +63,14 @@ foreach ($dados as $dado) {
 print "  </p>\n";
 print "\n";
 
+// Guardamos el valor del dado a descartar
+$descarta = rand(1, 6);
+
 // Mostramos el dado a descartar
 print "  <h2>Dado a eliminar</h2>\n";
 print "\n";
 print "  <p>\n";
-    print "    <img src=\"img/$descarta.svg\" alt=\"$descarta\" width=\"80\" height=\"80\">\n";
+print "    <img src=\"img/$descarta.svg\" alt=\"$descarta\" width=\"80\" height=\"80\">\n";
 print "  </p>\n";
 print "\n";
 
