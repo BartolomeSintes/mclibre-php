@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Funciones de matrices. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.ico">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Funciones de matrices</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Funciones de matrices</h2>
+
+      <ul>
+        <li><a href="#contar">Contar elementos</a></li>
+        <li><a href="#maxmin">Máximo y mínimo</a></li>
+        <li><a href="#ordenar">Ordenar</a></li>
+        <li><a href="#buscar">Buscar un valor</a></li>
+        <li><a href="#reindexar">Reindexar</a></li>
+        <li><a href="#barajar">Barajar elementos</a></li>
+        <li><a href="#extraer-al-azar">Extraer elemento al azar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta lección se comentan varias funciones útiles para trabajar con matrices. La información general sobre matrices en PHP se encuentra en la lección <a href="php-matrices.html">Matrices</a>.</p>
+
+  <section id="contar">
+    <h2>Contar elementos de una matriz</h2>
+
+    <p>La función <a href="https://www.php.net/manual/es/function.count.php"><span class="php-fun">count($matriz)</span></a> permite contar los elementos de una matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres[1] = "Ana";
+$nombres[10] = "Bernardo";
+$nombres[25] = "Carmen";
+
+$elementos = count($nombres);
+
+print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz tiene 3 elementos.</p>
+        <pre>Array
+(
+    [1] =&gt; Ana
+    [10] =&gt; Bernardo
+    [25] =&gt; Carmen
+)</pre>
+      </div>
+    </div>
+
+    <p>En una matriz multidimensional, la función <span class="php-fun"><span class="php-fun">count($matriz)</span></span> considera la matriz como un vector de vectores y devuelve simplemente el número de elementos del primer índice:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["pepe"]["edad"] = 25;
+$datos["pepe"]["peso"] = 80;
+$datos["juan"]["edad"] = 22;
+$datos["juan"]["peso"] = 75;
+$datos["ana"]["edad"]  = 30;
+
+$elementos = count($datos);
+
+print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz tiene 3 elementos.</p>
+        <pre>Array
+(
+    [pepe] =&gt; Array
+        (
+            [edad] =&gt; 25
+            [peso] =&gt; 80
+        )
+
+    [juan] =&gt; Array
+        (
+            [edad] =&gt; 22
+            [peso] =&gt; 75
+        )
+
+    [ana] =&gt; Array
+        (
+            [edad] =&gt; 30
+        )
+
+)</pre>
+      </div>
+    </div>
+
+    <p>Para contar todos los elementos de una matriz multidimensional, habría que utilizar la función <span class="php-fun"><span class="php-fun">count($matriz, COUNT_RECURSIVE)</span></span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["pepe"]["edad"] = 25;
+$datos["pepe"]["peso"] = 80;
+$datos["juan"]["edad"] = 22;
+$datos["juan"]["peso"] = 75;
+$datos["ana"]["edad"]  = 30;
+
+$elementos = count($datos, COUNT_RECURSIVE);
+
+print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz tiene 8 elementos.</p>
+        <pre>Array
+(
+    [pepe] =&gt; Array
+        (
+            [edad] =&gt; 25
+            [peso] =&gt; 80
+        )
+
+    [juan] =&gt; Array
+        (
+            [edad] =&gt; 22
+            [peso] =&gt; 75
+        )
+
+    [ana] =&gt; Array
+        (
+            [edad] =&gt; 30
+        )
+
+)</pre>
+      </div>
+    </div>
+
+    <p>En el ejemplo anterior, la respuesta 8 se debe a que la función <span class="php-fun">count()</span>recursiva considera la matriz como un vector de vectores y cuenta los elementos que hay en cada nivel. Desde ese punto de vista, la matriz contiene tres elementos que a su vez contienen dos, dos y un elementos, lo que da un total de ocho elementos.</p>
+
+    <p>Si quisiéramos contar únicamente los elementos de una matriz bidimensional habría que restar los dos resultados anteriores (5 = 8 - 3):</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["pepe"]["edad"] = 25;
+$datos["pepe"]["peso"] = 80;
+$datos["juan"]["edad"] = 22;
+$datos["juan"]["peso"] = 75;
+$datos["ana"]["edad"]  = 30;
+
+$elementos = count($datos, COUNT_RECURSIVE) - count($datos);
+
+print "&lt;p&gt;La matriz tiene $elementos elementos.&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>La matriz tiene 5 elementos.</p>
+        <pre>Array
+(
+    [pepe] =&gt; Array
+        (
+            [edad] =&gt; 25
+            [peso] =&gt; 80
+        )
+
+    [juan] =&gt; Array
+        (
+            [edad] =&gt; 22
+            [peso] =&gt; 75
+        )
+
+    [ana] =&gt; Array
+        (
+            [edad] =&gt; 30
+        )
+
+)</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="maxmin">
+    <h2>Máximo y mínimo</h2>
+
+    <p>La función <a href="https://www.php.net/manual/es/function.max.php"><span class="php-fun">max($matriz, ...)</span></a> devuelve el valor máximo de una matriz (o varias). La función <a href="https://www.php.net/manual/es/function.min.php"><span class="php-fun">min($matriz, ...)</span></a> devuelve el valor mínimo de una matriz (o varias).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numeros = [10, 40, 15, -1];
+
+$maximo = max($numeros);
+$minimo = min($numeros);
+
+print "&lt;pre&gt;"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [0] =&gt; 10
+    [1] =&gt; 40
+    [2] =&gt; 15
+    [3] =&gt; -1
+)</pre>
+
+        <p>El máximo de la matriz es 40.</p>
+
+        <p>El mínimo de la matriz es -1.</p>
+      </div>
+    </div>
+
+    <p>Los valores no numéricos se tratan como 0, pero si 0 es el mínimo o el máximo, la función devuelve la cadena.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$valores = [10, 40, 15, "abc"];
+
+$maximo = max($valores);
+$minimo = min($valores);
+
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [0] =&gt; 10
+    [1] =&gt; 40
+    [2] =&gt; 15
+    [3] =&gt; abc
+)</pre>
+
+        <p>El máximo de la matriz es 40.</p>
+
+        <p>El mínimo de la matriz es abc.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ordenar">
+    <h2>Ordenar una matriz</h2>
+
+    <p>Existen varias <a href="https://www.php.net/manual/es/array.sorting.php">funciones para ordenar matrices</a>. Las más simples son las siguientes:</p>
+    <ul>
+      <li>Cuando los índices de la matriz que vamos a ordenar no son importantes y se pueden modificar, podemos utilizar las funciones <a href="https://www.php.net/manual/es/function.sort.php"><span class="php-fun">sort($matriz, $opciones)</span></a> y <a href="https://www.php.net/manual/es/function.rsort.php"><span class="php-fun">rsort($matriz, $opciones)</span></a>, que ordenan atendiendo únicamente a los valores de la matriz (no a sus índices), en orden creciente o decreciente, y reindexan la matriz:
+        <ul>
+          <li><a href="https://www.php.net/manual/es/function.sort.php"><span class="php-fun">sort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los valores y genera nuevos índices numéricos consecutivos a partir de cero:
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+sort($valores);
+
+print "&lt;p&gt;Matriz ordenada con sort():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-html">
+                <p>Matriz inicial:</p>
+                <pre>Array
+(
+    [5] =&gt; cinco
+    [1] =&gt; uno
+    [9] =&gt; nueve
+)</pre>
+                <p>Matriz ordenada con sort():</p>
+                <pre>Array
+(
+    [0] =&gt; cinco
+    [1] =&gt; nueve
+    [2] =&gt; uno
+)</pre>
+              </div>
+            </div>
+          </li>
+          <li><a href="https://www.php.net/manual/es/function.rsort.php"><span class="php-fun">rsort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico inverso de los valores y genera nuevos índices numéricos consecutivos a partir de cero:
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+rsort($valores);
+
+print "&lt;p&gt;Matriz ordenada con rsort():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-html">
+                <p>Matriz inicial:</p>
+                <pre>Array
+(
+    [5] =&gt; cinco
+    [1] =&gt; uno
+    [9] =&gt; nueve
+)</pre>
+                <p>Matriz ordenada con rsort():</p>
+                <pre>Array
+(
+    [0] =&gt; uno
+    [1] =&gt; nueve
+    [2] =&gt; cinco
+)</pre>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Cuando los índices de la matriz que vamos a ordenar son importantes y no se deben modificar, podemos ordenar atendiendo únicamente a los valores de la matriz u ordenar atendiendo únicamente a los índices de la matriz y ordenar en orden creciente o decreciente, por lo que PHP dispone de cuatro funciones:
+        <ul>
+          <li><a href="https://www.php.net/manual/es/function.asort.php"><span class="php-fun">asort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los valores
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+asort($valores);
+
+print "&lt;p&gt;Matriz ordenada con asort():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-html">
+                <p>Matriz inicial:</p>
+                <pre>Array
+(
+    [5] =&gt; cinco
+    [1] =&gt; uno
+    [9] =&gt; nueve
+)</pre>
+                <p>Matriz ordenada con asort():</p>
+                <pre>Array
+(
+    [5] =&gt; cinco
+    [9] =&gt; nueve
+    [1] =&gt; uno
+)</pre>
+              </div>
+            </div>
+          </li>
+          <li><a href="https://www.php.net/manual/es/function.arsort.php"><span class="php-fun">arsort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico inverso de los valores
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+arsort($valores);
+
+print "&lt;p&gt;Matriz ordenada con arsort():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-html">
+                <p>Matriz inicial:</p>
+                <pre>Array
+(
+    [5] =&gt; cinco
+    [1] =&gt; uno
+    [9] =&gt; nueve
+)</pre>
+                <p>Matriz ordenada con arsort():</p>
+                <pre>Array
+(
+    [1] =&gt; uno
+    [9] =&gt; nueve
+    [5] =&gt; cinco
+)</pre>
+              </div>
+            </div>
+          </li>
+          <li><a href="https://www.php.net/manual/es/function.ksort.php"><span class="php-fun">ksort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los índices
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+ksort($valores);
+
+print "&lt;p&gt;Matriz ordenada con ksort():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-html">
+                <p>Matriz inicial:</p>
+                <pre>Array
+(
+    [5] =&gt; cinco
+    [1] =&gt; uno
+    [9] =&gt; nueve
+)</pre>
+                <p>Matriz ordenada con ksort():</p>
+                <pre>Array
+(
+    [1] =&gt; uno
+    [5] =&gt; cinco
+    [9] =&gt; nueve
+)</pre>
+              </div>
+            </div>
+          </li>
+          <li><a href="https://www.php.net/manual/es/function.krsort.php"><span class="php-fun">krsort($matriz, $opciones)</span></a>: ordena por orden alfabético / numérico de los índices
+
+            <div class="filaflex">
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$valores = [5 =&gt; "cinco", 1 =&gt; "uno", 9 =&gt; "nueve"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+krsort($valores);
+
+print "&lt;p&gt;Matriz ordenada con krsort():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-html">
+                <p>Matriz inicial:</p>
+                <pre>Array
+(
+    [5] =&gt; cinco
+    [1] =&gt; uno
+    [9] =&gt; nueve
+)</pre>
+                <p>Matriz ordenada con krsort():</p>
+                <pre>Array
+(
+    [9] =&gt; nueve
+    [5] =&gt; cinco
+    [1] =&gt; uno
+)</pre>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>Para ver la diferencia entre estas funciones, la tabla siguiente resume los ejemplos anteriores:</p>
+
+    <table class="tabla-con-borde">
+      <tr>
+        <th>Matriz inicial</th>
+        <th><span class="php-fun">sort()</span></th>
+        <th><span class="php-fun">rsort()</span></th>
+        <th><span class="php-fun">asort()</span></th>
+        <th><span class="php-fun">arsort()</span></th>
+        <th><span class="php-fun">ksort()</span></th>
+        <th><span class="php-fun">krsort()</span></th>
+      </tr>
+      <tr>
+        <td>
+          <pre>Array
+(
+    [5] =&gt; cinco
+    [1] =&gt; uno
+    [9] =&gt; nueve
+)</pre>
+        </td>
+        <td>
+          <pre>Array
+(
+    [0] =&gt; cinco
+    [1] =&gt; nueve
+    [2] =&gt; uno
+)</pre>
+        </td>
+        <td>
+          <pre>Array
+(
+    [0] =&gt; uno
+    [1] =&gt; nueve
+    [2] =&gt; cinco
+)</pre>
+        </td>
+        <td>
+          <pre>Array
+(
+    [5] =&gt; cinco
+    [9] =&gt; nueve
+    [1] =&gt; uno
+)</pre>
+        </td>
+        <td>
+          <pre>Array
+(
+    [1] =&gt; uno
+    [9] =&gt; nueve
+    [5] =&gt; cinco
+)</pre>
+        </td>
+        <td>
+          <pre>Array
+(
+    [1] =&gt; uno
+    [5] =&gt; cinco
+    [9] =&gt; nueve
+)</pre>
+        </td>
+        <td>
+          <pre>Array
+(
+    [9] =&gt; nueve
+    [5] =&gt; cinco
+    [1] =&gt; uno
+)</pre>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section id="buscar">
+    <h2>Buscar un valor en una matriz</h2>
+
+    <p>La función booleana <a href="https://www.php.net/manual/es/function.in-array.php"><span class="php-fun">in_array($valor, $matriz[, $tipo])</span></a> devuelve <span class="php-con">true</span> si el valor se encuentra en la matriz. Si el argumento booleano <span class="php-var">$tipo</span> es <span class="php-con">true</span>, <span class="php-fun"><span class="php-fun">in_array()</span></span> comprueba además que los tipos coincidan.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$valores = [10, 40, 15, -1];
+
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+
+if (in_array(15, $valores)) {
+  print "&lt;p&gt;15 está en la matriz \$valores.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;15 no está en la matriz \$valores.&lt;/p&gt;\n";
+}
+print "\n";
+
+if (in_array(25, $valores)) {
+  print "&lt;p&gt;25 está en la matriz \$valores.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;25 no está en la matriz \$valores.&lt;/p&gt;\n";
+}
+print "\n";
+
+if (in_array("15", $valores, true)) {
+  print "&lt;p&gt;\"15\" está en la matriz \$valores.&lt;/p&gt;\n";
+} else {
+  print "&lt;p&gt;\"15\" no está en la matriz \$valores.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [0] =&gt; 10
+    [1] =&gt; 40
+    [2] =&gt; 15
+    [3] =&gt; -1
+)</pre>
+
+        <p>15 está en la matriz $valores.</p>
+
+        <p>25 no está en la matriz $valores.</p>
+
+        <p>"15" no está en la matriz $valores.</p>
+      </div>
+    </div>
+
+    <p>La función <a href="https://www.php.net/manual/es/function.array-search.php"><span class="php-fun">array_search($valor, $matriz[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve el índice correspondiente, pero si hay varios valores coincidente sólo devuelve el primero que encuentra.</p>
+
+    <p>La función <a href="https://www.php.net/manual/es/function.array-keys.php"><span class="php-fun">array_keys($matriz[, $valor[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve una matriz cuyos valores son los índices de todos los elementos coincidentes.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$valores = [10, 40, 15, 30, 15, 40, 15];
+
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+$encontrado = array_search(15, $valores);
+print "&lt;p&gt;$encontrado&lt;/p&gt;\n";
+print "\n";
+
+$encontrados = array_keys($valores, 15);
+print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [0] =&gt; 10
+    [1] =&gt; 40
+    [2] =&gt; 15
+    [3] =&gt; 30
+    [4] =&gt; 15
+    [5] =&gt; 40
+    [6] =&gt; 15
+)</pre>
+
+        <p>2</p>
+        <pre>Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 4
+    [2] =&gt; 6
+)</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="reindexar">
+    <h2>Reindexar una matriz</h2>
+
+    <p>La función <a href="https://www.php.net/manual/es/function.shuffle.php"><span class="php-fun">array_values($matriz)</span></a> devuelve los valores de una matriz en el mismo orden que en la matriz original, pero renumerando los índices desde cero</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres = ["a" =&gt; "Ana", "b" =&gt; "Bernardo", "c" =&gt; "Carmen", "d" =&gt; "David"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
+print "\n";
+
+$reindexada = array_values($nombres);
+
+print "&lt;p&gt;Matriz reindexada con array_values():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($reindexada); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Matriz inicial:</p>
+        <pre>Array
+(
+    [a] =&gt; Ana
+    [b] =&gt; Bernardo
+    [c] =&gt; Carmen
+    [d] =&gt; David
+)</pre>
+
+        <p>Matriz reindexada con array_values():</p>
+        <pre>Array
+(
+    [0] =&gt; Ana
+    [1] =&gt; Bernardo
+    [2] =&gt; Carmen
+    [3] =&gt; David
+)</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="barajar">
+    <h2>Barajar los elementos de una matriz</h2>
+
+    <p>La función <a href="https://www.php.net/manual/es/function.shuffle.php"><span class="php-fun">shuffle($matriz)</span></a> baraja los valores de una matriz. Los índices de la matriz original se pierden, ya que se renumeran desde cero.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numeros = [0, 1, 2, 3, 4, 5];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "\n";
+
+shuffle($numeros);
+
+print "&lt;p&gt;Matriz barajada con shuffle():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Matriz inicial:</p>
+        <pre>Array
+(
+    [0] =&gt; 0
+    [1] =&gt; 1
+    [2] =&gt; 2
+    [3] =&gt; 3
+    [4] =&gt; 4
+    [5] =&gt; 5
+)</pre>
+
+        <p>Matriz barajada con shuffle():</p>
+        <pre>Array
+(
+    [0] =&gt; 3
+    [1] =&gt; 1
+    [2] =&gt; 5
+    [3] =&gt; 0
+    [4] =&gt; 4
+    [5] =&gt; 2
+)</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numeros = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3, "d" =&gt; 4];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "\n";
+
+shuffle($numeros);
+
+print "&lt;p&gt;Matriz barajada con shuffle():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($numeros); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Matriz inicial:</p>
+        <pre>Array
+(
+    [a] =&gt; 1
+    [b] =&gt; 2
+    [c] =&gt; 3
+    [d] =&gt; 4
+)</pre>
+
+        <p>Matriz barajada con shuffle():</p>
+        <pre>Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 1
+    [2] =&gt; 4
+    [3] =&gt; 3
+)</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="extraer-al-azar">
+    <h2>Extraer al azar un elemento de una matriz</h2>
+
+    <p>La función <a href="https://www.php.net/manual/es/function.array-rand.php"><span class="php-fun">array_rand($matriz)</span></a> extrae al azar uno de los índices de la matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
+
+$indice = array_rand($cuadrados);
+
+print "&lt;p&gt;$indice&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <code class="language-html">&lt;p&gt;10&lt;/p&gt;</code>
+      </div>
+    </div>
+
+    <p>Una vez obtenido el índice se puede obtener el valor correspondiente de la matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
+
+$indice = array_rand($cuadrados);
+
+print "&lt;p&gt;$indice - $cuadrados[$indice]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>
+<code class="language-html">&lt;p&gt;10 - 100&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2019</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
