@@ -3,9 +3,9 @@
  * Controles en formularios (1) 7-1 - controles-formularios-1-7-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-17
+ * @version   2019-10-21
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@
 
   <form action="controles-formularios-1-7-2.php" method="get">
     <p>Elija los colores a cambiar:<br>
-      <?php
+<?php
 $color = rand(0, 360);
 
 print "      <label><input type=\"checkbox\" name=\"fondo\" value=\"hsl($color, 100%, 90%)\"> Color del fondo de la página</label><br>\n";
@@ -57,7 +57,7 @@ print "      <label><input type=\"checkbox\" name=\"letra\" value=\"hsl($color, 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-17">17 de octubre de 2018</time>
+      <time datetime="2019-10-21">21 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

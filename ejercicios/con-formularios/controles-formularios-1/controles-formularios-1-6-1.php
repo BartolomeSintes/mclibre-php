@@ -29,7 +29,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-17">18 de octubre de 2018</time>
+      <time datetime="2019-10-21">21 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
