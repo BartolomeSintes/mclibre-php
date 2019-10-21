@@ -60,7 +60,7 @@
 
       <p>El formulario incluye controles cuyo nombre está relacionado con la información que se va a escribir en ellos.</p>
 
-      <p>En la mayoría de ejercicios el formulario sólo contiene código HTML, pero en algunos necesarios se necesitan añadir instrucciones PHP.</p>
+      <p>En la mayoría de ejercicios el formulario sólo contiene código HTML, pero en algunos casos se necesitan añadir instrucciones PHP. En estos casos, el fichero incluye un fragmento PHP.</p>
     </section>
 
     <section id="resultado">
@@ -112,7 +112,7 @@
 
       <p>Al principio de cada página de ejercicios se encuentra un enlace para descargar las plantillas de los ejercicios que incluyen el código HTML "fijo" para ahorrarle trabajo. En algunas páginas de ejercicios hay disponibles páginas con soluciones comentadas. En la página de <a href="../soluciones/index.html">Soluciones de los ejercicios</a> puede descargar las soluciones completas de todos los ejercicios.</p>
 
-      <p>Para el ejemplo comentado aquí, puede descargar las <a href="../soluciones/1920/ejemplo-recogida-datos-1-plantillas.zip">plantillas del ejercicio</a> o <a href="../soluciones/1819/ejemplo-recogida-datos-1-soluciones.zip">las soluciones completas</a>.</p>
+      <p>Para el ejemplo comentado aquí, puede descargar las <a href="../soluciones/1920/ejemplo-recogida-datos-1-plantillas.zip">plantillas del ejercicio</a> o <a href="../soluciones/1920/ejemplo-recogida-datos-1-soluciones.zip">las soluciones completas</a>.</p>
 
     </section>
 
@@ -214,9 +214,16 @@
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -250,7 +257,7 @@ print "\n";
 </pre>
         </div>
 
-        <p>Por supuesto, la página podría contener un único fragmento PHP en la que los fragmentos HTML fueran generados por instrucciones <span class="php-res">print</span>.</p>
+        <p>Por supuesto, la página podría contener un único fragmento PHP en la que tod el código HTML fuera generado por instrucciones <span class="php-res">print</span>.</p>
       </section>
 
       <section id="solucion-nucleo-sin">
@@ -278,9 +285,16 @@ print "\n";
           <pre>
 <code class="language-php">function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -321,7 +335,7 @@ print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;
 
       <p>Al principio de cada página de ejercicios se encuentra un enlace para descargar las plantillas de los ejercicios que incluyen el código HTML "fijo" para ahorrarle trabajo. En algunas páginas de ejercicios hay disponibles páginas con soluciones comentadas. En la página de <a href="../soluciones/index.html">Soluciones de los ejercicios</a> puede descargar las soluciones completas de todos los ejercicios.</p>
 
-      <p>Para el ejemplo comentado aquí, puede descargar las <a href="../soluciones/1920/ejemplo-recogida-datos-2-plantillas.zip">plantillas del ejercicio</a> o <a href="../soluciones/1819/ejemplo-recogida-datos-2-soluciones.zip">las soluciones completas</a>.</p>
+      <p>Para el ejemplo comentado aquí, puede descargar las <a href="../soluciones/1920/ejemplo-recogida-datos-2-plantillas.zip">plantillas del ejercicio</a> o <a href="../soluciones/1920/ejemplo-recogida-datos-2-soluciones.zip">las soluciones completas</a>.</p>
 
       <section id="solucion-con">
         <h3>Solución </h3>
@@ -426,9 +440,16 @@ print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -504,7 +525,7 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
 </pre>
           </div>
 
-          <p>Por supuesto, la página podría contener un único fragmento PHP en la que los fragmentos HTML fueran generados por instrucciones <span class="php-res">print</span>.</p>
+          <p>Por supuesto, la página podría contener un único fragmento PHP en la todo el código HTML fuera generado por instrucciones <span class="php-res">print</span>.</p>
         </section>
 
         <section id="solucion-nucleo-con">
@@ -540,9 +561,16 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
             <pre>
 <code class="language-php">function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -608,7 +636,7 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
