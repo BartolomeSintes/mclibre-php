@@ -47,8 +47,7 @@
         </li>
         <li><a href="#funciones">Funciones recoge()</a>
           <ul>
-            <li><a href="#recoger-dato">dato</a></li>
-            <li><a href="#recoger-matriz">matriz de una dimensión</a></li>
+            <li><a href="#recoger-datos">datos simples o matrices</a></li>
             <li><a href="#recoger-predeterminado">valor predeterminado</a></li>
             <li><a href="#recoger-valores">dato entre lista de valores</a></li>
             <li><a href="#recoger-recortar">recoger y recortar</a></li>
@@ -68,7 +67,7 @@
     <p>El siguiente ejemplo muestra un ejemplo de formulario:</p>
 
     <div class="filaflex">
-      <div class="codigo">
+      <div class="resultado-codigo">
         <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
@@ -127,7 +126,7 @@ print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es $_REQUEST[nombre]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -143,7 +142,7 @@ print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[nombre]</s
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST["nombre"]</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es $_REQUEST["nombre"]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -159,7 +158,7 @@ print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST["nombre"]<
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST['nombre']</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es $_REQUEST['nombre']&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -177,7 +176,7 @@ print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST['nombre']<
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST["nombre"]</span> . "&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es " . $_REQUEST["nombre"] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -193,7 +192,7 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST["nombr
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST['nombre']</span> . "&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es " . $_REQUEST['nombre'] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -209,7 +208,7 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST['nombr
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST[nombre]</span> . "&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es " . $_REQUEST[nombre] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -229,7 +228,7 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST[nombre
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[\"nombre\"]</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es $_REQUEST[\"nombre\"]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -245,7 +244,7 @@ print "&lt;p&gt;Su nombre es <span class="codigo-resaltado">$_REQUEST[\"nombre\"
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">$_REQUEST[\'nombre\']</span> . "&lt;/p&gt;\n";
+print "&lt;p&gt;Su nombre es " . $_REQUEST[\'nombre\'] . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -373,7 +372,7 @@ if (<span class="codigo-resaltado">$_REQUEST["nombre"] == ""</span>) {
       <p>Eso puede ocurrir, por ejemplo, en el caso de las casillas de verificación y los botones radio, ya que los formularios envían el control solamente cuando se han marcado.</p>
 
       <div class="filaflex">
-        <div class="codigo">
+        <div class="resultado-codigo">
           <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
   &lt;p&gt;Deseo recibir información: &lt;input type="checkbox" name="acepto"&gt;&lt;/p&gt;
@@ -828,14 +827,14 @@ if (<span class="codigo-resaltado">$nombre == ""</span>) {
 print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";</code>
 <br>
 </pre>
-<pre class="codigo-resaltado">
+        <pre class="codigo-resaltado">
 <code class="language-php">if (isset($_REQUEST["nombre"])) {
     $nombre = trim(strip_tags($_REQUEST["nombre"]));
 } else {
     $nombre = "";
 }</code>
 </pre>
-<pre>
+        <pre>
 <code class="language-php">if (<span class="codigo-resaltado">$nombre == ""</span>) {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
 } else {
@@ -1004,8 +1003,10 @@ if ($nombre == "") {
 
       <p>El problema es que el código fuente contiene comillas dentro de comillas y el navegador no puede interpretar correctamente el código (en este caso, el valor del atributo value es solamente "Me llamo":</p>
 
-      <div class="codigo">
-        <pre><code class="language-html">&lt;p&gt;Corrige: &lt;input type="text" value=<span class="codigo-resaltado">"Me llamo "Pepe""</span>&gt;&lt;/p&gt;</code></pre>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Corrige: &lt;input type="text" value=<span class="codigo-resaltado">"Me llamo "Pepe""</span>&gt;&lt;/p&gt;</code>
+</pre>
       </div>
 
       <p>Como en el caso anterior, la solución es sustituir el carácter " por su entidad de carácter correspondiente (&amp;quot;). Eso se puede hacer con la función <a href="https://www.php.net/manual/es/function.str-replace.php" class="php-fun">str_replace()</a></p>
@@ -1167,65 +1168,114 @@ if ($nombre == "") {
           <pre><code class="language-php">trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))</code></pre>
         </div>
 
-        <p>De esta manera, si se reciben etiquetas (&lt;&gt;), las etiquetas no se borrarán, sino que se conservarán como texto.<br> Si se quisieran borrar las etiquetas, habría que aplicar las funciones <span class="php-fun">strip_tags()</span>, <span class="php-fun">trim()</span>, y <span class="php-fun">htmlspecialchars()</span>:</p>
+        <p>De esta manera, si se reciben etiquetas (&lt;&gt;), las etiquetas no se borrarán, sino que se conservarán como texto.<br> Si se quisieran borrar las etiquetas, habría que aplicar además la función <span class="php-fun">strip_tags()</span>:</p>
 
         <div class="codigo">
-          <pre><code class="language-php">htmlspecialchars(trim(strip_tags($_REQUEST[$var])), ENT_QUOTES, "UTF-8")</code></pre>
+          <pre><code class="language-php">trim(htmlspecialchars(strip_tags($_REQUEST[$var])), ENT_QUOTES, "UTF-8")</code></pre>
         </div>
       </li>
       <li>Una vez definida la función, al comienzo del programa se almacenarán en variables los datos devueltos por la función.</li>
       <li>En el resto del programa se trabaja con las variables.</li>
     </ul>
 
-    <p>A continuación se definen varias funciones. Las que más se utilizarán en estos apuntes son las dos primeras (recoger un dato y recoger una matriz):</p>
+    <p>A continuación se definen varias funciones. La más utilizada en los ejercicios propuestos en estos apuntes es la primera, que recoge tanto datos sueltos (números y cadenas) como matrices:</p>
     <ol>
-      <li>Recoger un dato</li>
-      <li>Recoger una matriz de una dimensión</li>
+      <li>Recoger datos sueltos (números y cadenas) y matrices</li>
       <li>Recoger un dato con valor predeterminado</li>
+      <li>Recoger un dato que se encuentra entre una lista de valores predeterminada</li>
       <li>Recoger y recortar los datos</li>
     </ol>
 
-    <hr class="corta">
+    <section id="recoger-datos">
+      <h3>Recoger datos</h3>
 
-    <section id="recoger-dato">
-      <h3>Recoger un dato</h3>
-
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La siguiente función se podrá utilizar en la mayoría de ejercicios propuestos en estos apuntes.</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La siguiente función se puede utilizar en casi todos los ejercicios con formularios propuestos en estos apuntes.</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-<strong>// FUNCIÓN DE RECOGIDA DE UN DATO</strong>
+// FUNCIÓN DE RECOGIDA DE DATOS
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+?&gt;</code>
+</pre>
+      </div>
+
+      <hr class="corta">
+
+      <p>Esta función se puede utilizar para recoger datos sueltos, como en el ejemplo siguiente:</p>
+
+      <div class="filaflex">
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;form action="ejemplo.php"&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+  &lt;p&gt;Apellido: &lt;input type="text" name="apellido"&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">
+          <p>Nombre: <input type="text" name="texto" value="Pepito" readonly></p>
+          <p>Apellido: <input type="text" name="texto" value="Conejo" readonly></p>
+          <p><input type="submit" value="Enviar"></p>
+        </div>
+      </div>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// FUNCIÓN DE RECOGIDA DE DATOS
+function recoge($var)
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp  = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
-<strong>// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR</strong>
-$nombre = recoge("nombre");
+// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
+$nombre   = recoge("nombre");
+$apellido = recoge("apellido");
 
 if ($nombre == "") {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
 } else {
     print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 }
+
+if ($apellido == "") {
+  print "&lt;p&gt;No ha escrito ningún apellido&lt;/p&gt;";
+} else {
+  print "&lt;p&gt;Su apellido es $apellido&lt;/p&gt;\n";
+}
 ?&gt;</code>
 </pre>
       </div>
-    </section>
 
-    <section id="recoger-matriz">
-      <h3>Recoger una matriz de una dimensión</h3>
-
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La siguiente función se podrá utilizar en los ejercicios propuestos en estos apuntes en los que se recojan matrices.</p>
-
-      <p>Si un formulario envía los datos en forma de matriz, como en el ejemplo siguiente, la función recoge() del punto anterior no serviría.</p>
+      <p>Esta función también se puede utilizar para recoger datos en forma de matriz, como en el ejemplo siguiente:</p>
 
       <div class="filaflex">
-        <div class="codigo">
+        <div class="resultado-codigo">
           <pre>
 <code class="language-html">&lt;form action="ejemplo.php"&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre[1]"&gt;&lt;/p&gt;
@@ -1241,30 +1291,27 @@ if ($nombre == "") {
         </div>
       </div>
 
-      <p>Hay que hacer otra función que recoja y trate los datos en forma de matriz.</p>
-      <ul>
-        <li>La función recogeMatriz() del ejemplo siguiente tiene como argumento el nombre del control que se quiere recibir (que debe ser una matriz de una dimensión, no sirve para matrices de dos o más dimensiones) y devuelve una matriz con los valores recibidos o una matriz vacía si el control no se ha recibido.</li>
-      </ul>
-
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-<strong>// FUNCIÓN DE RECOGIDA DE UNA MATRIZ DE UNA DIMENSIÓN</strong>
-function recogeMatriz($var)
+// FUNCIÓN DE RECOGIDA DE DATOS
+function recoge($var)
 {
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) &amp;&amp; is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice =&gt; $valor) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
-            $tmpMatriz[$indiceLimpio] = $valorLimpio;
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp  = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $tmpMatriz;
+    return $tmp;
 }
 
-<strong>// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR</strong>
-$nombre = recogeMatriz("nombre");
+// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
+$nombre = recoge("nombre");
 
 if ($nombre[1] == "") {
     print "&lt;p style=\"color: red\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
@@ -1285,14 +1332,14 @@ if ($nombre[2] == "") {
     <section id="recoger-predeterminado">
       <h3>Recoger un dato con valor predeterminado</h3>
 
-      <p>La función recoge() anterior se puede modificar para definir un valor predeterminado (es decir, que si el dato no existe, la función devuelve el valor enviado como segundo argumento y si no se envía el valor predeterminado la función devolvería la cadena vacía).</p>
+      <p>La siguiente función recoge(), que sólo permite recoger datos sueltos (no matrices), permite definir un valor predeterminado. Es decir, que si el dato no existe, la función devuelve el valor enviado como segundo argumento y si no se envía el valor predeterminado la función devolvería la cadena vacía.</p>
 
       <p>En el ejemplo siguiente, si no se recibe el nombre, se le asigna el nombre "pobrecito hablador".</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-<strong>// FUNCIÓN DE RECOGIDA DE UN DATO CON VALOR PREDETERMINADO</strong>
+// FUNCIÓN DE RECOGIDA DE UN DATO CON VALOR PREDETERMINADO
 function recoge($var, $var2="")
 {
     $tmp = (isset($_REQUEST[$var]) &amp;&amp; trim(strip_tags($_REQUEST[$var])) != "")
@@ -1301,7 +1348,7 @@ function recoge($var, $var2="")
     return $tmp;
 }
 
-<strong>// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR</strong>
+// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
 $nombre = recoge("nombre", "pobrecito hablador");
 print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 ?&gt;</code>
@@ -1312,14 +1359,14 @@ print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
     <section id="recoger-valores">
       <h3>Recoger dato entre una lista de valores</h3>
 
-      <p>La función recoge() anterior se puede modificar para que el valor recogido esté en una lista de valores posibles.</p>
+      <p>La siguiente función recoge(), que sólo permite recoger datos sueltos (no matrices), permite obligar a que el valor recogido esté en una lista de valores posibles.</p>
 
       <p>En el ejemplo siguiente, si el nombre recibido no es Ana, Bernardo o Carmen, se le asigna el nombre "Anónimo".</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-<strong>// FUNCIÓN DE RECOGIDA DE UN DATO DE UNA LISTA DE VALORES</strong>
+// FUNCIÓN DE RECOGIDA DE UN DATO DE UNA LISTA DE VALORES
 
 function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
@@ -1331,7 +1378,7 @@ function recogeValores($var, $valoresValidos, $valorPredeterminado)
     return $valorPredeterminado;
 }
 
-<strong>// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR</strong>
+// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
 $admitidos = ["Ana", "Bernardo", "Carmen"];
 $nombre = recoge("nombre", $admitidos, "Anónimo");
 print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
@@ -1343,12 +1390,12 @@ print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
     <section id="recoger-recortar">
       <h3>Recoger y recortar los datos</h3>
 
-      <p>En caso de que por algún motivo se quiera recortar el tamaño de los datos recibidos a un tamaño determinado se puede crear una función recorta() que recorte la longitud de los campos y llamarla desde la función recoge():</p>
+      <p>La siguiente función recoge(), que sólo permite recoger datos sueltos (no matrices), recorta los datos recibidos a una longitud determinada:</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-<strong>// FUNCIONES DE RECOGIDA Y RECORTE DE UN DATO</strong>
+// FUNCIONES DE RECOGIDA Y RECORTE DE UN DATO
 $tamNombre = 30;
 
 $recorta = [
@@ -1374,7 +1421,7 @@ function recoge($var)
     return $tmp;
 }
 
-<strong>// EJEMPLO DE USO DE LAS FUNCIONES ANTERIORES</strong>
+// EJEMPLO DE USO DE LAS FUNCIONES ANTERIORES
 $nombre = recoge("nombre");
 if ($nombre == "") {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;\n";
@@ -1388,7 +1435,7 @@ if ($nombre == "") {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
