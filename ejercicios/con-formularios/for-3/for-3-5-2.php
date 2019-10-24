@@ -3,9 +3,9 @@
  * Tabla de multiplicar (Resultado) - for-3-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-23
+ * @version   2019-10-24
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -44,9 +44,16 @@
 <?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -163,7 +170,7 @@ if ($filasOk && $columnasOk && $alturaOk && $anchuraOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-23">23 de octubre de 2018</time>
+      <time datetime="2019-10-24">24 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
