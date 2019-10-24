@@ -82,7 +82,7 @@ if ($numeroOk) {
     print "  <h2>Preformateado (&lt;pre&gt;)</h2>\n";
     print "\n";
     print "  <pre>";
-        for ($i = 1; $i <= $numero; $i++) {
+    for ($i = 1; $i <= $numero; $i++) {
         print "$i ";
     }
     print "</pre>\n";

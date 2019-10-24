@@ -78,11 +78,11 @@ if ($distancia == "") {
 if ($distanciaOk) {
     $distanciaOriginal = $distancia;
     if ($distancia >= 100000) {
-        $km = floor($distancia / 100000);
+        $km        = floor($distancia / 100000);
         $distancia = $distancia % 100000;
     }
     if ($distancia >= 100) {
-        $m = floor($distancia / 100);
+        $m         = floor($distancia / 100);
         $distancia = $distancia % 100;
     }
 

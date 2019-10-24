@@ -92,8 +92,8 @@ if ($minutos == "") {
     $minutosOk = true;
 }
 
-$ancho = 200;
-$largoHoras = 70;
+$ancho        = 200;
+$largoHoras   = 70;
 $largoMinutos = 90;
 
 $xC = ($ancho + 10) / 2;
@@ -109,9 +109,9 @@ $yM = $yC - round($largoMinutos * sin(-$minutos * 2 * pi() / 60 + pi() / 2));
 
 if ($horasOk && $minutosOk) {
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($ancho + 10) . "px\" height=\"" . ($ancho + 10) . "px\" viewBox=\"0 0 ". ($ancho + 10) . " " . ($ancho + 10) . "\">\n";
+        . "    width=\"" . ($ancho + 10) . "px\" height=\"" . ($ancho + 10) . "px\" viewBox=\"0 0 " . ($ancho + 10) . " " . ($ancho + 10) . "\">\n";
     print "    <circle fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
-    . "cx=\"" . (($ancho + 10) / 2) . "\" cy=\"" . (($ancho + 10) / 2) . "\" r=\"" . ($ancho / 2) . "\" />\n";
+        . "cx=\"" . (($ancho + 10) / 2) . "\" cy=\"" . (($ancho + 10) / 2) . "\" r=\"" . ($ancho / 2) . "\" />\n";
     print "    <line x1=\"$xC\" y1=\"$yC\" x2=\"$xH\" y2=\"$yH\" stroke-width=\"4\" stroke=\"black\" />\n";
     print "    <line x1=\"$xC\" y1=\"$yC\" x2=\"$xM\" y2=\"$yM\" stroke-width=\"2\" stroke=\"black\" />\n";
     print "  </svg>\n";

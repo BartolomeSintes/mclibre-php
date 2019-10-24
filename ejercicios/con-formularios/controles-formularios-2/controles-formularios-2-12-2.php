@@ -94,7 +94,7 @@ if ($ladoOk && $formaOk) {
         . "x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" />\n";
     } else {
         print "    <circle cx=\"" . ($lado + 10) / 2 . "\" cy=\"" . ($lado + 10) / 2
-            . "\" r=\"" . $lado / 2 . "\" stroke=\"black\" stroke-width=\"10\" fill=\"white\" />\n";
+            . "\" r=\"" . ($lado / 2) . "\" stroke=\"black\" stroke-width=\"10\" fill=\"white\" />\n";
     }
     print "  </svg>\n";
     print "\n";

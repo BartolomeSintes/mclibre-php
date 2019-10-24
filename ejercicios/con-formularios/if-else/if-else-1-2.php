@@ -91,7 +91,7 @@ if ($divisor == "") {
 
 if ($dividendoOk && $divisorOk) {
     $cociente = floor($dividendo / $divisor);
-    $resto = $dividendo - $cociente * $divisor;
+    $resto    = $dividendo - $cociente * $divisor;
     print "  <p>Dividendo: <strong>$dividendo</strong></p>\n";
     print "\n";
     print "  <p>Divisor: <strong>$divisor</strong></p>\n";

@@ -99,7 +99,9 @@ if ($valoresOk) {
 
     print "  <h2>Matriz inicial de valores</h2>\n";
     print "\n";
-    print "  <pre>\n"; print_r($matriz); print "</pre>\n";
+    print "  <pre>\n";
+    print_r($matriz);
+    print "</pre>\n";
     print "\n";
 
     // Ordena la matriz inicial
@@ -107,13 +109,17 @@ if ($valoresOk) {
         asort($matriz);
         print "  <h2>Matriz ordenada de valores (orden directo)</h2>\n";
         print "\n";
-        print "  <pre>\n"; print_r($matriz); print "</pre>\n";
+        print "  <pre>\n";
+        print_r($matriz);
+        print "</pre>\n";
         print "\n";
     } elseif ($orden == "inverso") {
         arsort($matriz);
         print "  <h2>Matriz ordenada de valores (orden inverso)</h2>\n";
         print "\n";
-        print "  <pre>\n"; print_r($matriz); print "</pre>\n";
+        print "  <pre>\n";
+        print_r($matriz);
+        print "</pre>\n";
         print "\n";
     } else {
         print "  <h2>Matriz ordenada de valores</h2>\n";

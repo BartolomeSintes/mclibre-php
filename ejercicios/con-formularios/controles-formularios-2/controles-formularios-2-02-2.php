@@ -69,7 +69,7 @@ if ($edad == "") {
 } elseif (!ctype_digit($edad)) {
     print "  <p class=\"aviso\">No ha escrito su edad como número entero.</p>\n";
     print "\n";
-} elseif ($edad < 5|| $edad > 130) {
+} elseif ($edad < 5 || $edad > 130) {
     print "  <p class=\"aviso\">Su edad no está entre 5 y 130 años.</p>\n";
     print "\n";
 } else {
@@ -82,7 +82,7 @@ if ($peso == "") {
 } elseif (!is_numeric($peso)) {
     print "  <p class=\"aviso\">No ha escrito su peso como número.</p>\n";
     print "\n";
-} elseif ($peso < 10|| $peso > 150) {
+} elseif ($peso < 10 || $peso > 150) {
     print "  <p class=\"aviso\">Su peso no está entre 10 y 150 kilos.</p>\n";
     print "\n";
 } else {

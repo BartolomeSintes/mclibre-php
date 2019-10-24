@@ -119,7 +119,7 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
     print "\n";
     if ($numero1 == $numero2 && $numero2 == $numero3) {
         print "  <p>Has escrito tres números iguales.</p>\n";
-    } elseif ($numero1 == $numero2 ||  $numero2 == $numero3 || $numero1 == $numero3) {
+    } elseif ($numero1 == $numero2 || $numero2 == $numero3 || $numero1 == $numero3) {
         print "  <p>Has escrito dos números iguales.</p>\n";
     } else {
         print "  <p>Has escrito tres números distintos.</p>\n";

@@ -95,7 +95,9 @@ if ($valoresOk) {
 
     print "  <h2>Matriz inicial de valores</h2>\n";
     print "\n";
-    print "  <pre>\n"; print_r($matriz); print "</pre>\n";
+    print "  <pre>\n";
+    print_r($matriz);
+    print "</pre>\n";
     print "\n";
 
     // Elimina los valores que coinciden con el indicado
@@ -120,7 +122,9 @@ if ($valoresOk) {
         print "\n";
         print "  <p>Se han eliminado " . ($numeroValores - count($matriz)) . " valor(es).</p>\n";
         print "\n";
-        print "  <pre>\n"; print_r($matriz); print "</pre>\n";
+        print "  <pre>\n";
+        print_r($matriz);
+        print "</pre>\n";
         print "\n";
     }
 }

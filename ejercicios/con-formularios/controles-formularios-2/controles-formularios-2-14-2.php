@@ -182,8 +182,7 @@ if ($television != "" && $television != "on") {
     $televisionOk = true;
 }
 
-if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk &&
-    $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
+if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk && $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
     print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
     print "\n";
     print "  <p>Sus apellidos son <strong>$apellidos</strong>.</p>\n";
@@ -219,8 +218,7 @@ if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
     }
     print "\n";
 
-    if ($cine != "on" && $deporte != "on" && $literatura != "on" &&
-        $musica != "on" && $tebeos != "on" && $television != "on") {
+    if ($cine != "on" && $deporte != "on" && $literatura != "on" && $musica != "on" && $tebeos != "on" && $television != "on") {
         print "  <p class=\"aviso\">No ha marcado ninguna afición.</p>\n";
     } else {
         print "  <p>Le gusta: ";

@@ -95,7 +95,9 @@ if ($valoresOk) {
 
     print "  <h2>Matriz de valores</h2>\n";
     print "\n";
-    print "  <pre>\n"; print_r($matriz); print "</pre>\n";
+    print "  <pre>\n";
+    print_r($matriz);
+    print "</pre>\n";
     print "\n";
 }
 

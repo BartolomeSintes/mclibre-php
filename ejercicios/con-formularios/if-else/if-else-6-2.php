@@ -69,7 +69,7 @@ if ($temperatura == "") {
 } elseif ($temperatura < -273.15 && $unidad == "c") {
     print "  <p class=\"aviso\">Una temperatura no puede ser tan baja.</p>\n";
     print "\n";
-} elseif ($temperatura <- 459.67 && $unidad == "f") {
+} elseif ($temperatura < -459.67 && $unidad == "f") {
     print "  <p class=\"aviso\">Una temperatura no puede ser tan baja.</p>\n";
     print "\n";
 } elseif ($temperatura >= 10000) {
