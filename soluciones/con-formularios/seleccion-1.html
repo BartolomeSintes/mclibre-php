@@ -56,9 +56,16 @@
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -109,9 +116,16 @@ if ($piesOk && $pulgadasOk) {
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -148,9 +162,16 @@ if ($segundosOk) {
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -230,9 +251,16 @@ if ($numero1Ok && $numero2Ok && $numero3Ok) {
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -251,7 +279,7 @@ if ($temperatura == "") {
 } elseif ($temperatura &lt; -273.15 && $unidad == "c") {
     print "  &lt;p class=\"aviso\"&gt;Una temperatura no puede ser tan baja.&lt;/p&gt;\n";
     print "\n";
-} elseif ($temperatura &lt;- 459.67 && $unidad == "f") {
+} elseif ($temperatura &lt; -459.67 && $unidad == "f") {
     print "  &lt;p class=\"aviso\"&gt;Una temperatura no puede ser tan baja.&lt;/p&gt;\n";
     print "\n";
 } elseif ($temperatura &gt;= 10000) {
@@ -294,9 +322,16 @@ if ($temperaturaOk && $unidadOk) {
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -350,9 +385,16 @@ if ($filasOk) {
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -408,9 +450,16 @@ if ($numeroOk) {
 <code class="language-php">&lt;?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -433,22 +482,22 @@ if ($jugadores == "") {
     print "\n";
 } elseif ($jugadores &lt; $jugadoresMinimo || $jugadores &gt; $jugadoresMaximo) {
     print "  &lt;p class=\"aviso\"&gt;El número de jugadores debe estar entre "
-     . "$jugadoresMinimo y $jugadoresMaximo.&lt;/p&gt;\n";
+        . "$jugadoresMinimo y $jugadoresMaximo.&lt;/p&gt;\n";
     print "\n";
 } else {
     $jugadoresOk = true;
 }
 
 if ($jugadoresOk) {
-    $c1 = [];
-    $c2 = [];
-    $c3 = [];
+    $c1    = [];
+    $c2    = [];
+    $c3    = [];
     $total = [];
 
     for ($i = 1; $i &lt;= $jugadores; $i++) {
-        $c1[$i] = rand(1, 10);
-        $c2[$i] = rand(1, 10);
-        $c3[$i] = rand(1, 10);
+        $c1[$i]    = rand(1, 10);
+        $c2[$i]    = rand(1, 10);
+        $c3[$i]    = rand(1, 10);
         $total[$i] = $c1[$i] + $c2[$i] + $c3[$i];
     }
 
@@ -472,7 +521,7 @@ if ($jugadoresOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 24 de octubre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

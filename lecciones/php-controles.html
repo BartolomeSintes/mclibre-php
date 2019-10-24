@@ -460,7 +460,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;input type="checkbox" name="casilla1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="checkbox" name="casilla1"> (sin marcar)
+        <input type="checkbox" name="casilla1" onclick="return false;"> (sin marcar)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -474,7 +474,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;input type="checkbox" name="casilla2"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="checkbox" checked name="casilla2"> (marcada)
+        <input type="checkbox" checked name="casilla2" onclick="return false;"> (marcada)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -489,7 +489,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;input type="checkbox" name="casilla3" value="Tres"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="checkbox" checked name="casilla1" value="Tres"> (marcada)
+        <input type="checkbox" checked name="casilla1" value="Tres" onclick="return false;"> (marcada)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -516,7 +516,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;input type="radio" name="radio1"&gt;<br>&lt;input type="radio" name="radio1"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio1"> <input type="radio" name="radio1"> (sin marcar)
+        <input type="radio" name="radio1" onclick="return false;"> <input type="radio" name="radio1" onclick="return false;"> (sin marcar)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -530,7 +530,7 @@ print "&lt;/pre&gt;";</code>
         <pre><code class="language-html">&lt;input type="radio" name="radio2"&gt;<br>&lt;input type="radio" name="radio2"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio2" checked> <input type="radio" name="radio2"> (marcado uno)
+        <input type="radio" name="radio2" checked onclick="return false;"> <input type="radio" name="radio2" onclick="return false;"> (marcado uno)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -542,10 +542,10 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="radio" name="radio3"&gt;<br>&lt;input type="radio" name="radio3"&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="radio" name="radio2"&gt;<br>&lt;input type="radio" name="radio2"&gt;</code></pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio3"> <input type="radio" name="radio3" checked> (marcado otro)
+        <input type="radio" name="radio3" onclick="return false;"> <input type="radio" name="radio3" checked onclick="return false;"> (marcado otro)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -558,12 +558,12 @@ print "&lt;/pre&gt;";</code>
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;input type="radio" name="radio4" value="Uno"&gt;
-&lt;input type="radio" name="radio4" value="Dos"&gt;</code>
+<code class="language-html">&lt;input type="radio" name="radio3" value="Uno"&gt;
+&lt;input type="radio" name="radio3" value="Dos"&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio4" checked value="Uno"> <input type="radio" name="radio4" value="Dos"> (marcado uno)
+        <input type="radio" name="radio4" checked value="Uno" onclick="return false;"> <input type="radio" name="radio4" value="Dos" onclick="return false;"> (marcado uno)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -576,12 +576,12 @@ print "&lt;/pre&gt;";</code>
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;input type="radio" name="radio5" value="Uno"&gt;
-&lt;input type="radio" name="radio5" value="Dos"&gt;</code>
+<code class="language-html">&lt;input type="radio" name="radio3" value="Uno"&gt;
+&lt;input type="radio" name="radio3" value="Dos"&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <input type="radio" name="radio5" value="Uno"> <input type="radio" name="radio5" checked value="Dos"> (marcado otro)
+        <input type="radio" name="radio5" value="Uno" onclick="return false;"> <input type="radio" name="radio5" checked value="Dos" onclick="return false;"> (marcado otro)
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -685,7 +685,7 @@ print "&lt;/pre&gt;";</code>
       </div>
       <div class="resultado-html">
         <select name="menu4[]" size="3" multiple>
-            <option value="Opción 1">Opción 1</option>
+            <option value="Opción 1" selected>Opción 1</option>
             <option value="Opción 2">Opción 2</option>
             <option value="Opción 3" selected>Opción 3</option>
             <option value="Opción 4">Opción 4</option>
@@ -847,7 +847,7 @@ print "&lt;/pre&gt;";</code>
       </div>
     </div>
 
-    <p>Antes de utilizar este control, hay que configurar en el archivo php.ini el tamaño máximo de los archivos que se pueden enviar (mediante la directiva post_max_size) y es conveniente leer el capítulo correspondiente a la <a href="https://www.php.net/manual/es/features.file-upload.php">subida de archivos</a> del manual de PHP para conocer la manera de evitar los posibles riesgos de seguridad.</p>
+    <p>Antes de utilizar este control, hay que configurar en el archivo php.ini el tamaño máximo de los archivos que se pueden enviar (mediante la directiva post_max_size) y es conveniente leer el capítulo correspondiente a la <a href="https://www.php.net/manual/en/features.file-upload.php">subida de archivos</a> del manual de PHP para conocer la manera de evitar los posibles riesgos de seguridad.</p>
 
     <p>En la lección <a href="php-cargar-archivos.html">Cargar archivos</a> se comenta un poco más el uso de este control.</p>
   </section>

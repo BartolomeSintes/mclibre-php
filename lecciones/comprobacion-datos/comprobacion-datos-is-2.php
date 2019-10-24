@@ -3,9 +3,9 @@
  * Comprobación de datos is_ 2 - comprobacion-datos-is-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-03
+ * @version   2019-10-24
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,11 +40,19 @@
 <?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
+
 // print "  <pre>"; print_r(get_defined_functions()); print "</pre>"; print "\n";
 
 $dato = recoge("dato");
@@ -81,7 +89,7 @@ if (!isset($_REQUEST["dato"])) {
     print "      <td>isset()</td>\n";
     if ($resultado == true) {
         print "      <td style=\"text-align: center\">true</td>\n";
-} elseif ($resultado == false) {
+    } elseif ($resultado == false) {
         print "      <td style=\"text-align: center\">false</td>\n";
     }
     print "    </tr>\n";
@@ -196,6 +204,40 @@ if (!isset($_REQUEST["dato"])) {
     }
     print "    </tr>\n";
 
+    if (function_exists("is_countable")) {
+        $resultado = is_countable($dato);
+        print "    <tr>\n";
+        print "      <td>is_countable()</td>\n";
+        if ($resultado == true) {
+            print "      <td style=\"text-align: center\">true</td>\n";
+        } elseif ($resultado == false) {
+            print "      <td style=\"text-align: center\">false</td>\n";
+        }
+        print "    </tr>\n";
+    } else {
+        print "    <tr>\n";
+        print "      <td>is_countable()</td>\n";
+        print "      <td>La función no está disponible en este servidor.</td>\n";
+        print "    </tr>\n";
+    }
+
+    if (function_exists("is_iterable")) {
+        $resultado = is_iterable($dato);
+        print "    <tr>\n";
+        print "      <td>is_iterable()</td>\n";
+        if ($resultado == true) {
+            print "      <td style=\"text-align: center\">true</td>\n";
+        } elseif ($resultado == false) {
+            print "      <td style=\"text-align: center\">false</td>\n";
+        }
+        print "    </tr>\n";
+    } else {
+        print "    <tr>\n";
+        print "      <td>is_iterable()</td>\n";
+        print "      <td>La función no está disponible en este servidor.</td>\n";
+        print "    </tr>\n";
+    }
+
     print "  </table>\n";
     print "\n";
 }
@@ -206,7 +248,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-03">3 de noviembre de 2016</time>
+      <time datetime="2019-10-24">24 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
