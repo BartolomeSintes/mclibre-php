@@ -3,9 +3,9 @@
  * Reparto de tríos (Resultado) - seleccion-1-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-23
+ * @version   2019-10-24
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,9 +41,16 @@
 <?php
 function recoge($var)
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
@@ -66,22 +73,22 @@ if ($jugadores == "") {
     print "\n";
 } elseif ($jugadores < $jugadoresMinimo || $jugadores > $jugadoresMaximo) {
     print "  <p class=\"aviso\">El número de jugadores debe estar entre "
-     . "$jugadoresMinimo y $jugadoresMaximo.</p>\n";
+        . "$jugadoresMinimo y $jugadoresMaximo.</p>\n";
     print "\n";
 } else {
     $jugadoresOk = true;
 }
 
 if ($jugadoresOk) {
-    $c1 = [];
-    $c2 = [];
-    $c3 = [];
+    $c1    = [];
+    $c2    = [];
+    $c3    = [];
     $total = [];
 
     for ($i = 1; $i <= $jugadores; $i++) {
-        $c1[$i] = rand(1, 10);
-        $c2[$i] = rand(1, 10);
-        $c3[$i] = rand(1, 10);
+        $c1[$i]    = rand(1, 10);
+        $c2[$i]    = rand(1, 10);
+        $c3[$i]    = rand(1, 10);
         $total[$i] = $c1[$i] + $c2[$i] + $c3[$i];
     }
 
@@ -105,7 +112,7 @@ if ($jugadoresOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-12">12 de octubre de 2019</time>
+      <time datetime="2019-10-24">24 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
