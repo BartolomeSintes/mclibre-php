@@ -15,9 +15,9 @@
   <h1>Dibuja cuadrado 3 (Formulario)</h1>
 
   <form action="controles-formularios-1-9-2.php" method="get">
-    <p>Escriba el tamaño: <input type="number" name="ancho" min="5" value="50" autofocus></p>
+    <p><label>Escriba el tamaño: <input type="number" name="ancho" min="5" value="50" autofocus></label></p>
 
-    <p>Escriba el grosor del borde: <input type="number" name="grosor" min="1" value="6"></p>
+    <p><label>Escriba el grosor del borde: <input type="number" name="grosor" min="1" value="6"></label></p>
 
     <p>
       <input type="submit" value="Enviar">
@@ -28,7 +28,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-21">21 de octubre de 2019</time>
+      <time datetime="2019-10-24">24 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

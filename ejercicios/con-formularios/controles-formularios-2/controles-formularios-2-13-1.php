@@ -19,16 +19,16 @@
     <table>
       <tbody>
         <tr>
-          <td>Tamaño de la figura:</td>
-          <td><input type="number" name="lado" min="20" max="500" value="200"></td>
+          <td><label for="control1">Tamaño de la figura:<label></td>
+          <td><input type="number" name="lado" min="20" max="500" value="200" id="control1"></td>
         </tr>
         <tr>
-          <td>Color inicial:</td>
-          <td><input type="color" name="inicial" value="#ffffff"></td>
+          <td><label for="control2">Color inicial:</label></td>
+          <td><input type="color" name="inicial" value="#ffffff" id="control2"></td>
         </tr>
         <tr>
-          <td>Color final:</td>
-          <td><input type="color" name="final" value="#000000"></td>
+          <td><label for="control3">Color final:</label></td>
+          <td><input type="color" name="final" value="#000000" id="control3"></td>
         </tr>
       </tbody>
     </table>

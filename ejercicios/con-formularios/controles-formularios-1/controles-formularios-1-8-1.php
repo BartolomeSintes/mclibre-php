@@ -15,7 +15,9 @@
   <h1>Colores 3 (Formulario)</h1>
 
   <form action="controles-formularios-1-8-2.php" method="get">
-    <p>Elija los colores a cambiar:<br> Color de fondo de la página: <input type="color" name="fondo" value="#ffffff"><br> Color de la letra de la página: <input type="color" name="letra" value="#000000">
+    <p>Elija los colores a cambiar:<br>
+      <label>Color de fondo de la página: <input type="color" name="fondo" value="#ffffff"></label><br>
+      <label>Color de la letra de la página: <input type="color" name="letra" value="#000000">
     </p>
 
     <p>
@@ -27,7 +29,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-21">21 de octubre de 2019</time>
+      <time datetime="2019-10-24">24 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

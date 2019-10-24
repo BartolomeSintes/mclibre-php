@@ -15,9 +15,9 @@
   <h1>Datos personales 1 (Formulario)</h1>
 
   <form action="controles-formularios-2-01-2.php" method="get">
-    <p>Escriba su nombre: <input type="text" name="nombre" size="20" maxlength="20"></p>
+    <p><label>Escriba su nombre: <input type="text" name="nombre" size="20" maxlength="20"></label></p>
 
-    <p>Escriba sus apellidos: <input type="text" name="apellidos" size="40" maxlength="40"></p>
+    <p><label>Escriba sus apellidos: <input type="text" name="apellidos" size="40" maxlength="40"></label></p>
 
     <p>
       <input type="submit" value="Enviar">

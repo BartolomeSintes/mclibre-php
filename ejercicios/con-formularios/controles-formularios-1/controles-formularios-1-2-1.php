@@ -15,7 +15,7 @@
   <h1>Dibuja cuadrado 1 (Formulario)</h1>
 
   <form action="controles-formularios-1-2-2.php" method="get">
-    <p>Escriba el tamaño: <input type="number" name="ancho" min="10" value="50"></p>
+    <p><label>Escriba el tamaño: <input type="number" name="ancho" min="10" value="50"></label></p>
 
     <p>
       <input type="submit" value="Enviar">
@@ -26,7 +26,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-21">21 de octubre de 2019</time>
+      <time datetime="2019-10-24">24 de octubre de 2019</time>
     </p>
 
     <p class="licencia">

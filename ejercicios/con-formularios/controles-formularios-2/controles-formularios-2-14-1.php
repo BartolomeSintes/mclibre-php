@@ -21,12 +21,16 @@
       <tbody>
         <tr>
           <td>
-            <strong>Nombre:</strong><br>
-            <input type="text" name="nombre" size="20" maxlength="20">
+            <label>
+              <strong>Nombre:</strong><br>
+              <input type="text" name="nombre" size="20" maxlength="20">
+            </label>
           </td>
           <td>
-            <strong>Apellidos:</strong><br>
-            <input type="text" name="apellidos" size="20" maxlength="20">
+            <label>
+              <strong>Apellidos:</strong><br>
+              <input type="text" name="apellidos" size="20" maxlength="20">
+            </label>
           </td>
           <td>
             <strong>Edad:</strong><br>
@@ -41,8 +45,10 @@
         </tr>
         <tr>
           <td>
-            <strong>Peso:</strong><br>
-            <input type="number" name="peso" min="1" max="250"> kg
+            <label>
+              <strong>Peso:</strong><br>
+              <input type="number" name="peso" min="1" max="250"> kg
+            </label>
           </td>
           <td>
             <strong>Sexo:</strong><br>

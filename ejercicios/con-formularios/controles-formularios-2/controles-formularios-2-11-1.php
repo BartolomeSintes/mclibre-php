@@ -15,9 +15,9 @@
   <h1>Cuadrado con bordes redondeados (Formulario)</h1>
 
   <form action="controles-formularios-2-11-2.php" method="get">
-    <p>Tamaño del cuadrado: <input type="number" name="lado" min="20" max="500" value="100"></p>
+    <p><label>Tamaño del cuadrado: <input type="number" name="lado" min="20" max="500" value="100"></label></p>
 
-    <p>Tamaño de la esquina redondeada: <input type="number" name="esquina" min="10" max="250" value="20"></p>
+    <p><label>Tamaño de la esquina redondeada: <input type="number" name="esquina" min="10" max="250" value="20"></label></p>
 
     <p>
       <input type="submit" value="Enviar">
