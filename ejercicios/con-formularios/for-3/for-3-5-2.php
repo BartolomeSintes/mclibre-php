@@ -21,7 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- ?>
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,19 +43,19 @@
 
 <?php
 function recoge($var)
-{
-    if (!isset($_REQUEST[$var])) {
-        $tmp = "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
-        });
-    }
-    return $tmp;
-}
+ {
+     if (!isset($_REQUEST[$var])) {
+         $tmp = "";
+     } elseif (!is_array($_REQUEST[$var])) {
+         $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+     } else {
+         $tmp = $_REQUEST[$var];
+         array_walk_recursive($tmp, function (&$valor) {
+             $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+         });
+     }
+     return $tmp;
+ }
 
 $filas    = recoge("filas");
 $columnas = recoge("columnas");
@@ -64,10 +64,10 @@ $anchura  = recoge("anchura");
 
 $filasOk = $columnasOk = $alturaOk = $anchuraOk = false;
 
-$filasMinimo   = $columnasMinimo = 1;
+$filasMinimo   = $columnasMinimo   = 1;
 $alturaMinimo  = 30;
 $anchuraMinimo = 50;
-$filasMaximo   = $columnasMaximo = $alturaMaximo = $anchuraMaximo = 100;
+$filasMaximo   = $columnasMaximo   = $alturaMaximo   = $anchuraMaximo   = 100;
 
 if ($filas == "") {
     print "  <p class=\"aviso\">No ha escrito el número de filas.</p>\n";
