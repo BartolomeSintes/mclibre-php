@@ -23,24 +23,24 @@
     <table>
       <tbody>
         <tr>
-          <td>Número mínimo de valores:</td>
-          <td><input type="number" name="numeroMinimo" min="1" value="10"></td>
+          <td><label for="numeroMinimo">Número mínimo de valores:</label></td>
+          <td><input type="number" name="numeroMinimo" min="1" value="10" id="numeroMinimo"></td>
         </tr>
         <tr>
-          <td>Número máximo de valores:</td>
-          <td><input type="number" name="numeroMaximo" min="1" value="20"></td>
+          <td><label for="numeroMaximo">Número máximo de valores:</label></td>
+          <td><input type="number" name="numeroMaximo" min="1" value="20" id="numeroMaximo"></td>
         </tr>
         <tr>
-          <td>Valor mínimo:</td>
-          <td><input type="number" name="valorMinimo" min="0" value="0"></td>
+          <td><label for="valorMinimo">Valor mínimo:</label></td>
+          <td><input type="number" name="valorMinimo" min="0" value="0" id="valorMinimo"></td>
         </tr>
         <tr>
-          <td>Valor máximo:</td>
-          <td><input type="number" name="valorMaximo" min="0" value="100"></td>
+          <td><label for="valorMaximo">Valor máximo:</label></td>
+          <td><input type="number" name="valorMaximo" min="0" value="100" id="valorMaximo"></td>
         </tr>
         <tr>
-          <td>Valor a eliminar:</td>
-          <td><input type="number" name="eliminar" min="0" value="0"></td>
+          <td><label for="eliminar">Valor a eliminar:</label></td>
+          <td><input type="number" name="eliminar" min="0" value="0" id="eliminar"></td>
         </tr>
       </tbody>
     </table>

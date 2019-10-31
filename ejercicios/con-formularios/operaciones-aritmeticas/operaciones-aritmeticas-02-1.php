@@ -20,12 +20,12 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Pies:</strong></td>
-          <td><input type="number" name="pies" min="0"></td>
+          <td><label for="pies">Pies:</label></td>
+          <td><input type="number" name="pies" min="0" id="pies"></td>
         </tr>
         <tr>
-          <td><strong>Pulgadas:</strong></td>
-          <td><input type="number" name="pulgadas" min="0" step="any"></td>
+          <td><label for="pulgadas">Pulgadas:</label></td>
+          <td><input type="number" name="pulgadas" min="0" step="any" id="pulgadas"></td>
         </tr>
       </tbody>
     </table>

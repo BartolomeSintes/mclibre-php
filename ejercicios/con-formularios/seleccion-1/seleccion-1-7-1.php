@@ -15,17 +15,9 @@
   <h1>Reparto de tríos (Formulario)</h1>
 
   <form action="seleccion-1-7-2.php" method="get">
-    <p>Escriba un número de jugadores (3 &lt; número &le; 10) y repartiré tres
-    cartas a cada jugador.</p>
+    <p>Escriba un número de jugadores (3 &lt; número &le; 10) y repartiré tres cartas a cada jugador.</p>
 
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Número de jugadores:</strong></td>
-          <td><input type="number" name="jugadores" min="3" max="10" value="6"></td>
-        </tr>
-      </tbody>
-    </table>
+    <p><label>Número de jugadores: <input type="number" name="jugadores" min="3" max="10" value="6"></label></p>
 
     <p>
       <input type="submit" value="Mostrar">

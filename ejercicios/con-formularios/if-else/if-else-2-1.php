@@ -15,19 +15,18 @@
   <h1>Comprobador de múltiplos (Formulario)</h1>
 
   <form action="if-else-2-2.php" method="get">
-
     <p>Escriba dos números enteros (0 &lt; números &lt; 1.000)
       para comprobar si uno es múltiplo del otro o no.</p>
 
     <table>
       <tbody>
         <tr>
-          <td><strong>Un número:</strong></td>
-          <td><input type="number" name="numero1" min="0" max="1000" step="any"></td>
+          <td><label for="numero1">Un número:</label></td>
+          <td><input type="number" name="numero1" min="0" max="1000" step="any" id="numero1"></td>
         </tr>
         <tr>
-          <td><strong>Otro número:</strong></td>
-          <td><input type="number" name="numero2" min="0" max="1000" step="any"></td>
+          <td><label for="numero2">Otro número:</label></td>
+          <td><input type="number" name="numero2" min="0" max="1000" step="any" id="numero2"></td>
         </tr>
       </tbody>
     </table>

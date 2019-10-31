@@ -19,17 +19,12 @@
       de varios elementos HTML.
     </p>
 
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Número:</strong></td>
-          <td><input type="number" name="numero" min="1" max="200" value="5"></td>
-        </tr>
-      </tbody>
-    </table>
+    <p><label>Número: <input type="number" name="numero" min="1" max="200" value="5"></label></p>
 
-    <p><input type="submit" value="Mostrar">
-      <input type="reset" value="Borrar"></p>
+    <p>
+      <input type="submit" value="Mostrar">
+      <input type="reset" value="Borrar">
+    </p>
   </form>
 
   <footer>

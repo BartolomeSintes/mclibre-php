@@ -19,14 +19,7 @@
       multiplicar hasta ese número.
     </p>
 
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Número:</strong></td>
-          <td><input type="number" name="numero" min="1" max="100" value="10"></td>
-        </tr>
-      </tbody>
-    </table>
+    <p><label>Número: <input type="number" name="numero" min="1" max="100" value="10"></label></p>
 
     <p>
       <input type="submit" value="Mostrar">

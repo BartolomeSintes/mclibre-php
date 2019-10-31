@@ -23,12 +23,12 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Número de columnas:</strong></td>
-          <td><input type="number" name="columnas" min="1" max="100" value="5"></td>
+          <td><label for="columnas">Número de columnas:</label></td>
+          <td><input type="number" name="columnas" min="1" max="100" value="5" id="columnas"></td>
         </tr>
         <tr>
-          <td><strong>Número de celdas numeradas:</strong></td>
-          <td><input type="number" name="numeradas" min="1" max="1000" value="17"></td>
+          <td><label for="numeradas">Número de celdas numeradas:</label></td>
+          <td><input type="number" name="numeradas" min="1" max="1000" value="17" id="numeradas"></td>
         </tr>
       </tbody>
     </table>

@@ -17,14 +17,7 @@
   <form action="if-else-5-2.php" method="get">
     <p>Escriba un año (0 &le; año &lt; 10.000) para comprobar si es bisiesto o no.</p>
 
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Año:</strong></td>
-          <td><input type="number" name="anyo" min="0" max="10000"></td>
-        </tr>
-      </tbody>
-    </table>
+    <p><label>Año: <input type="number" name="anyo" min="0" max="10000"></label></p>
 
     <p>
       <input type="submit" value="Comprobar">

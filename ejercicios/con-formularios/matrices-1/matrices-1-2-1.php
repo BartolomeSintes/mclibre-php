@@ -16,25 +16,26 @@
 
   <form action="matrices-1-2-2.php" method="get">
     <p>Indique el rango del número de valores y el rango de los valores y
-      mostraré un numero aleatorio de valores aleatorios en los rangos indicados.</p>
+      mostraré un numero aleatorio de valores aleatorios en los rangos indicados.
+    </p>
 
     <table>
       <tbody>
         <tr>
-          <td>Número mínimo de valores:</td>
-          <td><input type="number" name="numeroMinimo" min="1" value="10"></td>
+          <td><label for="numeroMinimo">Número mínimo de valores:</label></td>
+          <td><input type="number" name="numeroMinimo" min="1" value="10" id="numeroMinimo"></td>
         </tr>
         <tr>
-          <td>Número máximo de valores:</td>
-          <td><input type="number" name="numeroMaximo" min="1" value="20"></td>
+          <td><label for="numeroMaximo">Número máximo de valores:</label></td>
+          <td><input type="number" name="numeroMaximo" min="1" value="20" id="numeroMaximo"></td>
         </tr>
         <tr>
-          <td>Valor mínimo:</td>
-          <td><input type="number" name="valorMinimo" min="0" value="0"></td>
+          <td><label for="valorMinimo">Valor mínimo:</label></td>
+          <td><input type="number" name="valorMinimo" min="0" value="0" id="valorMinimo"></td>
         </tr>
         <tr>
-          <td>Valor máximo:</td>
-          <td><input type="number" name="valorMaximo" min="0" value="100"></td>
+          <td><label for="valorMaximo">Valor máximo:</label></td>
+          <td><input type="number" name="valorMaximo" min="0" value="100" id="valorMaximo"></td>
         </tr>
       </tbody>
     </table>

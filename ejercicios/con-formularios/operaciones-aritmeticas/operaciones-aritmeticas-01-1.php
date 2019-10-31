@@ -20,12 +20,12 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Peso:</strong></td>
-          <td><input type="number" name="peso" min="1"> kg</td>
+          <td><label for="peso">Peso:</label></td>
+          <td><input type="number" name="peso" min="1" id="peso"> <label for="peso">kg</label></td>
         </tr>
         <tr>
-          <td><strong>Altura:</strong></td>
-          <td><input type="number" name="altura" min="1"> cm</td>
+          <td><label for="altura">Altura:</label></td>
+          <td><input type="number" name="altura" min="1" id="altura"> <label for="altura">cm</label></td>
         </tr>
       </tbody>
     </table>

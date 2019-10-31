@@ -22,12 +22,12 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Dividendo:</strong></td>
-          <td><input type="number" name="dividendo" min="0" max="1000" step="any"></td>
+          <td><label for="dividendo">Dividendo:</label></td>
+          <td><input type="number" name="dividendo" min="0" max="1000" step="any" id="dividendo"></td>
         </tr>
         <tr>
-          <td><strong>Divisor:</strong></td>
-          <td><input type="number" name="divisor" min="0" max="1000" step="any"></td>
+          <td><label for="divisor">Divisor:</label></td>
+          <td><input type="number" name="divisor" min="0" max="1000" step="any" id="divisor"></td>
         </tr>
       </tbody>
     </table>

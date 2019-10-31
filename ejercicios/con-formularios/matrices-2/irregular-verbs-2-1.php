@@ -49,8 +49,8 @@ $formaVerbalNombre = ["infinitivo", "pasado", "participio"];
 $formaVerbal = rand(0, 2);
 $verbo       = rand(0, $numeroVerbos - 1);
 
-print "    <p>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>? ";
-print "<input type=\"text\" name=\"respuesta\" size=\"20\"></p>\n";
+print "    <p><label>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>? ";
+print "<input type=\"text\" name=\"respuesta\" size=\"20\"></label></p>\n";
 print "\n";
 print "    <p>\n";
 print "      <input type=\"hidden\" name=\"verbo\" value=\"$verbo\">\n";
