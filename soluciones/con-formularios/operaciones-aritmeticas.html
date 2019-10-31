@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Operaciones aritméticas. Soluciones. Ejercicios (con formularios). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.ico">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (con formularios) - Operaciones aritméticas - Soluciones</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Operaciones aritméticas</h2>
+
+      <h3><a href="../../ejercicios/con-formularios/operaciones-aritmeticas/index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="../../ejercicios/con-formularios/operaciones-aritmeticas/index.html#ejercicio-1">1 - Índice de masa corporal</a></li>
+        <li><a href="../../ejercicios/con-formularios/operaciones-aritmeticas/index.html#ejercicio-2">2 - Convertidor distancias</a></li>
+        <li><a href="../../ejercicios/con-formularios/operaciones-aritmeticas/index.html#ejercicio-3">3 - Convertidor segundos (1)</a></li>
+        <li><a href="../../ejercicios/con-formularios/operaciones-aritmeticas/index.html#ejercicio-4">4 - Convertidor segundos (2)</a></li>
+      </ul>
+
+      <h3><a href="#">Soluciones</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Índice de masa corporal</a></li>
+        <li><a href="#ejercicio-2">2 - Convertidor distancias</a></li>
+        <li><a href="#ejercicio-3">3 - Convertidor segundos (1)</a></li>
+        <li><a href="#ejercicio-4">4 - Convertidor segundos (2)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/con-formularios/seleccion-1/index.html">Selección (1)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>Operaciones aritméticas 1 - Índice de masa corporal</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+$peso   = recoge("peso");
+$altura = recoge("altura");
+
+$pesoOk   = false;
+$alturaOk = false;
+
+if ($peso == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($peso)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($peso &lt;= 0) {
+    print "  &lt;p class=\"aviso\"&gt;El peso no puede ser negativo o cero.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pesoOk = true;
+}
+
+if ($altura == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su altura.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($altura)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su altura como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($altura == 0) {
+    print "  &lt;p class=\"aviso\"&gt;La altura no puede ser cero.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $alturaOk = true;
+}
+
+if ($pesoOk && $alturaOk) {
+    $imc = round($peso / ($altura / 100) ** 2);
+    print "  &lt;p&gt;Con un peso de &lt;strong&gt;$peso kg&lt;/strong&gt; y una altura de &lt;strong&gt;"
+        . "$altura cm&lt;/strong&gt;, su índice de masa corporal es &lt;strong&gt;$imc&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Un imc muy alto indica obesidad. Los valores \"normales\" de imc "
+        . "están entre 20 y 25, pero esos límites dependen de la edad, del "
+        . "sexo, de la constitución física, etc.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Operaciones aritméticas 2 - Convertidor de pies y pulgadas a centímetros</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+$pies     = recoge("pies");
+$pulgadas = recoge("pulgadas");
+
+$piesOk     = false;
+$pulgadasOk = false;
+
+if ($pies == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de pies.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($pies)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito los pies como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $piesOk = true;
+}
+
+if ($pulgadas == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de pulgadas.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($pulgadas)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito las pulgadas como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($pulgadas &lt; 0) {
+    print "  &lt;p class=\"aviso\"&gt;Las pulgadas no pueden ser negativas.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pulgadasOk = true;
+}
+
+if ($piesOk && $pulgadasOk) {
+    $centimetros = ($pies * 12 + $pulgadas) * 2.54;
+    print "  &lt;p&gt;$pies pies y $pulgadas pulgadas son $centimetros centímetros&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Operaciones aritméticas 3 - Convertidor de segundos a minutos y segundos</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+$segundos = recoge("segundos");
+
+$segundosOk = false;
+
+if ($segundos == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de segundos.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($segundos)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito los segundos como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $segundosOk = true;
+}
+
+if ($segundosOk) {
+    $min = floor($segundos / 60);
+    $seg = $segundos % 60;
+    print "  &lt;p&gt;$segundos segundos son $min minutos y $seg segundos&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Operaciones aritméticas 4 - Convertidor de segundos a horas, minutos y segundos</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var)
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+$segundos = recoge("segundos");
+
+$segundosOk = false;
+
+if ($segundos == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el número de segundos.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($segundos)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito los segundos como número entero positivo.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $segundosOk = true;
+}
+
+if ($segundosOk) {
+    $h = floor($segundos / 3600);
+    $m = floor($segundos % 3600 / 60);
+    $s = $segundos % 60;
+    print "  &lt;p&gt;$segundos segundos son $h horas, $m minutos y $s segundos&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 31 de octubre de 2019</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
