@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <p>La redirección se ha realizado.</p>
+  <p>La redirección <strong>SÍ</strong> se ha realizado.</p>
 
   <p><a href="buffer-sobra-1.php">Volver al principio</a></p>
 </body>

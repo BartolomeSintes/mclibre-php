@@ -44,6 +44,8 @@
     </div>
   </nav>
 
+  <p>Puede <a href="../soluciones/1920/cs-ejemplos-plantillas.zip">descargar los ejemplos de esta página</a> para probarlos en su ordenador.</p>
+
   <section id="funcion-header">
     <h2>La función header()</h2>
 
@@ -68,12 +70,18 @@
           <pre>
 <code class="language-php">&lt;?php
 header("Location:cabeceras-header-1-3.php");
+
+print "&lt;p&gt;La redirección &lt;strong&gt;NO&lt;/strong&gt; se ha realizado&lt;/p&gt;";
+
+print "&lt;p&gt;&lt;a href=\"cabeceras-header-1-1.php\"&gt;Volver a la página 1&lt;/a&gt;&lt;/p&gt;";
 ?&gt;</code>
 </pre>
         </div>
         <div class="codigo">
           <pre>
 <code class="language-html">&lt;p&gt;Esta es la página 3.&lt;/p&gt;
+
+&lt;p&gt;La redirección &lt;strong&gt;SÍ&lt;/strong&gt; se ha realizado.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="cabeceras-header-1-1.php"&gt;Volver a la página 1&lt;/a&gt;&lt;/p&gt;</code>
 </pre>
@@ -193,7 +201,7 @@ header("Location:http://www.example.com");
 
       <hr class="corta">
 
-      <p>Los ejemplos siguientes muestran la influencia del tamaño del buffer. En estos ejemplos se utilizan las funciones <a href="https://www.php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="https://www.php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>, que permiten gestionar directamente el buffer de salida independientemente de la configuración del servidor. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página. Puede <a href="http://www.mclibre.org/consultar/especiales/php/buffer-salida.zip">descargar los ejemplos</a> para probarlos en su ordenador.</p>
+      <p>Los ejemplos siguientes muestran la influencia del tamaño del buffer. En estos ejemplos se utilizan las funciones <a href="https://www.php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="https://www.php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>, que permiten gestionar directamente el buffer de salida independientemente de la configuración del servidor. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página.</p>
 
       <ul>
         <li>En el primer ejemplo, el buffer es de 1 byte. El contenido HTML generado por la instrucción <span class="php-res">print</span> no cabe en el buffer y la redirección no llega a realizarse.
@@ -308,7 +316,7 @@ print "&lt;p&gt;&lt;a href=\"buffer-sobra-1.php\"&gt;Volver al principio&lt;/a&g
 
       <hr class="corta">
 
-      <p>Los ejemplos siguientes muestran la influencia del BOM cuando no hay buffer de salida. Puede <a href="http://www.mclibre.org/consultar/especiales/php/bom-test.zip">descargar los ejemplos</a> para probarlos en su ordenador.</p>
+      <p>Los ejemplos siguientes muestran la influencia del BOM cuando no hay buffer de salida.</p>
 
       <ul>
         <li>En el primer ejemplo, el fichero está guardado en UTF-8 <strong>con</strong> BOM. Al intentar hacer la redirección en la página 2, se produce un error porque la marca de orden de bytes se ha interpretado como contenido de la página.
@@ -548,13 +556,13 @@ if (condicion) {
       <p>Pero hay que tener en cuenta que <span class="php-res">exit</span> detiene no sólo la ejecución del programa, sino también la de los programas que hubieran llamado a esos programas, como se muestra en los ejemplos siguientes:</p>
 
       <ul>
-        <li>El programa ejemplo_1.php llama al programa ejemplo_2.php y el resultado incluye las instrucciones generadas por ambos programas. Es decir, si se ejecuta el programa ejemplo_1.php, el resultado final será una redirección a la página web de mclibre.
+        <li>El programa ejemplo-1.php llama al programa ejemplo-2.php y el resultado incluye las instrucciones generadas por ambos programas. Es decir, si se ejecuta el programa ejemplo-1.php, el resultado final será una redirección a la página web de mclibre.
 
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-// ejemplo_1.php
-include "ejemplo_2.php";
+// ejemplo-1.php
+include "ejemplo-2.php";
 header("Location:http://www.mclibre.org/");
 ?&gt;</code>
 </pre>
@@ -563,19 +571,19 @@ header("Location:http://www.mclibre.org/");
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-// ejemplo_2.php
+// ejemplo-2.php
 header("Location:http://www.example.com/");
 ?&gt;</code>
 </pre>
           </div>
         </li>
-        <li>Pero si en el segundo programa se añade <span class="php-res">exit</span>, se interrumpiría tanto el segundo como el primero. Es decir, si se ejecuta el programa ejemplo_3.php, el resultado final será una redirección a la página http://www.example.com/.
+        <li>Pero si en el segundo programa se añade <span class="php-res">exit</span>, se interrumpiría tanto el segundo como el primero. Es decir, si se ejecuta el programa ejemplo-3.php, el resultado final será una redirección a la página http://www.example.com/.
 
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-// ejemplo_3.php
-include "ejemplo_4.php";
+// ejemplo-3.php
+include "ejemplo-4.php";
 header("Location:http://www.mclibre.org/");
 ?&gt;</code>
 </pre>
@@ -584,7 +592,7 @@ header("Location:http://www.mclibre.org/");
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-// ejemplo_4.php
+// ejemplo-4.php
 header("Location:http://www.example.com/");
 exit;
 ?&gt;</code>
@@ -812,7 +820,7 @@ print "}\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 4 de noviembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
