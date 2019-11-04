@@ -56,16 +56,16 @@ $avisoEdad   = recoge("avisoEdad");
 print "    <table>\n";
 print "      <tbody>\n";
 print "        <tr>\n";
-print "          <td>Escriba su nombre:</td>\n";
-print "          <td><input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\">";
+print "          <td><label for=\"nombre\">Escriba su nombre:</label></td>\n";
+print "          <td><input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\">";
 if ($avisoNombre) {
     print " <span class=\"aviso\">$avisoNombre</span>";
 }
 print "</td>\n";
 print "        </tr>\n";
 print "        <tr>\n";
-print "          <td>Escriba su edad (entre 18 y 130 años):</td>\n";
-print "          <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\">";
+print "          <td><label for=\"edad\">Escriba su edad (entre 18 y 130 años):</label></td>\n";
+print "          <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\">";
 if ($avisoEdad) {
     print " <span class=\"aviso\">$avisoEdad</span>";
 }

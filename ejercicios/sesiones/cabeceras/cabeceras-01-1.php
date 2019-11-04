@@ -15,7 +15,7 @@
   <h1>Formulario 1 (Formulario)</h1>
 
   <form action="cabeceras-01-2.php" method="get">
-    <p>Escriba su nombre: <input type="text" name="nombre" size="20" maxlength="20"></p>
+    <p><label>Escriba su nombre: <input type="text" name="nombre" size="20" maxlength="20"></label></p>
 
     <p>
       <input type="submit" value="Comprobar">

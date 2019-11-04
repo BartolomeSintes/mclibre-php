@@ -98,10 +98,11 @@ if ($nombreOk && $edadOk) {
     </p>
 
     <p class="licencia">
-      Este programa forma parte del curso <a href="http://www.mclibre.org/consultar/php/">
-      <cite>Programación web en PHP</cite></a> por <cite>Bartolomé Sintes Marco</cite>.<br>
-      El programa PHP que genera esta página está bajo
-      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a></p>
+      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
+      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
+      El programa PHP que genera esta página se distribuye bajo
+      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
+    </p>
   </footer>
 </body>
 </html>

@@ -50,7 +50,7 @@ function recoge($var)
 
 $aviso = recoge("aviso");
 
-print "    <p>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\">";
+print "    <p><label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>";
 if ($aviso != "") {
     print " <span class=\"aviso\">$aviso</span>";
 }

@@ -50,7 +50,7 @@ function recoge($var)
 
 $aviso = recoge("aviso");
 
-print "    <p>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\">";
+print "    <p><label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"></label>";
 if ($aviso != "") {
     print " <span class=\"aviso\">$aviso</span>";
 }
