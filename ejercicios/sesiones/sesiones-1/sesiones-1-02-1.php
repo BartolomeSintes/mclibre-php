@@ -49,9 +49,7 @@ if (isset($_SESSION["texto"])) {
 }
 ?>
   <form action="sesiones-1-02-2.php" method="get">
-    <p>Escriba texto:</p>
-
-    <p><strong>Texto:</strong> <input type="text" name="texto" size="20" maxlength="20"></p>
+    <p><label>Escriba texto: <input type="text" name="texto" size="20" maxlength="20"></label></p>
 
     <p>
       <input type="submit" value="Guardar">

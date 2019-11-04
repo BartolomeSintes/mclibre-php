@@ -51,17 +51,14 @@ if (isset($_SESSION["palabra"])) {
     print "\n";
 }
 
-print "    <p>Escriba una palabra en mayúsculas:</p>\n";
-print "\n";
-
-print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" ";
+print "    <p><label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" ";
 
 // Si hay que incluir el intento anterior en value, lo incluimos
 if (isset($_SESSION["intento"])) {
     print "value=\"$_SESSION[intento]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"> ";
+print "size=\"20\" maxlength=\"20\"></label> ";
 
 // Si hay que incluir un aviso, lo incluimos
 if (isset($_SESSION["error"])) {

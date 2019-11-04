@@ -56,7 +56,7 @@ if (isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
 print "    <p>Escriba una palabra en mayúsculas y otra en minúsculas:</p>\n";
 print "\n";
 
-print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" ";
+print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" ";
 
 if (isset($_SESSION["mayusculasIntento"])) {
     // Si hemos detectado un intento incorrecto en la palabra en mayúsculas, incluimos el intento en el control
@@ -66,7 +66,7 @@ if (isset($_SESSION["mayusculasIntento"])) {
     print "value=\"$_SESSION[mayusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"> ";
+print "size=\"20\" maxlength=\"20\"></label> ";
 
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
@@ -77,7 +77,7 @@ if (isset($_SESSION["mayusculasError"])) {
 print "</p>\n";
 print "\n";
 
-print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" ";
+print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" ";
 
 if (isset($_SESSION["minusculasIntento"])) {
     // Si hemos detectado un intento incorrecto en la palabra en minúsculas, incluimos el intento en el control
@@ -87,7 +87,7 @@ if (isset($_SESSION["minusculasIntento"])) {
     print "value=\"$_SESSION[minusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"> ";
+print "size=\"20\" maxlength=\"20\"></label> ";
 
 // Si hemos detectado un error en la palabra en minúsculas
 if (isset($_SESSION["minusculasError"])) {

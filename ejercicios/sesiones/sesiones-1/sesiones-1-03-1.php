@@ -51,17 +51,15 @@ if (!isset($_SESSION["error"]) && isset($_SESSION["palabra"])) {
     print "\n";
 }
 
-print "    <p>Escriba una palabra en mayúsculas:</p>\n";
-print "\n";
 // Si hemos detectado un error
 if (isset($_SESSION["error"])) {
     // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\"> "
+    print "    <p><label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\"></label> "
         . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, mostramos el control
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 }
 ?>

@@ -60,32 +60,32 @@ print "\n";
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"> "
+    print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"></label> "
         . "<span class=\"aviso\">$_SESSION[mayusculasError]</span></p>\n";
     print "\n";
 } elseif (isset($_SESSION["minusculasError"])) {
     // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control
-    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    <p><strong>Mayúsculas:</strong> <input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 }
 
 // Si hemos detectado un error en la palabra en minúsculas
 if (isset($_SESSION["minusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"> "
+    print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"></label> "
     . "<span class=\"aviso\">$_SESSION[minusculasError]</span></p>\n";
     print "\n";
 } elseif (isset($_SESSION["mayusculasError"])) {
     // Si hemos detectado un error en la palabra en mayúsculas, incluimos el valor correcto en el control
-    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    <p><strong>Minúsculas:</strong> <input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 }
 

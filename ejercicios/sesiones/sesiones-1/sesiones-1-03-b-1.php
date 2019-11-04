@@ -51,23 +51,21 @@ if (isset($_SESSION["palabra"])) {
     print "\n";
 }
 
-print "    <p>Escriba una palabra en mayúsculas:</p>\n";
-print "\n";
 if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
     // Si hemos detectado un error y el usuario había escrito una palabra para corregir
     // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"> "
+    print "    <p><label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"></label> "
     . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
     print "\n";
 } elseif (isset($_SESSION["error"])) {
     // Si hemos detectado un error, pero no hay palabra para corregir
     // Mostramos el control, añadiendo el aviso
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"> "
+    print "    <p><label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></label> "
         . "<span class=\"aviso\">$_SESSION[error]</span></p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, mostramos simplemente el control
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Escriba una palabra en mayúsculas: <input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 }
 ?>
