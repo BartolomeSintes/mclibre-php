@@ -7,6 +7,8 @@
 </head>
 
 <body>
+  <p>Esta es la página 3</p>
+
   <p>La redirección <strong>SÍ</strong> se ha realizado.</p>
 
   <p><a href="buffer-sobra-1.php">Volver al principio</a></p>

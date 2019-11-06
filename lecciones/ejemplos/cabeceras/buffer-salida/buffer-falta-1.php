@@ -7,6 +7,8 @@
 </head>
 
 <body>
-  <p><a href="buffer-falta-2.php">Probar programa</a></p>
+  <p>Esta es la página 1.</p>
+
+  <p><a href="buffer-falta-2.php">Enlace a la página 2 (que redirige a la página 3)</a></p>
 </body>
 </html>

@@ -53,7 +53,6 @@ if ($nombre == "") {
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
-  <style>table { text-align: right; }</style>
 </head>
 
 <body>
