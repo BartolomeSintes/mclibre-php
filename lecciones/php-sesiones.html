@@ -41,11 +41,11 @@
 
     <p>Una de las limitaciones de las páginas web es que cada página web es un documento independiente. Eso hace que dos programas PHP no puedan, en principio, compartir información.</p>
 
-    <p>Aunque un formulario puede enviar información a un programa mediante controles ocultos (como se comenta en el <a href="php-varios-1.html#controles-ocultos">apartado sobre controles ocultos de la lección Varios</a>), o una página puede redirigir a otra página enviando la información en la dirección (como se comenta en la <a href="php-cabeceras.html#redirecciones">lección sobre cabeceras</a>), eso no puede considerarse compartir información, puesto que la página que recibe la información no puede saber si la información ha sido manipulada por el camino.</p>
+    <p>En principio, la única manera de enviar información de una página a otra es a través de un formulario y se trata d ela información que ha introducido el usuario en ese formulario. Como mucho podemos enviar información adicional mediante controles ocultos (como se comenta en el <a href="php-varios-1.html#controles-ocultos">apartado sobre controles ocultos de la lección Varios</a>), o podemos "imitar" a un formulario redirigiendo a otra página enviando información en la dirección (como se comenta en la <a href="php-cabeceras.html#redirecciones">lección sobre cabeceras</a>), pero esto no puede considerarse compartir información, puesto que la página que recibe la información no puede saber si la información ha sido manipulada por el camino ni quién se la envía.</p>
 
-    <p>Por compartir información nos estamos refiriendo a utilizar variables comunes, sin que la información salga del servidor.</p>
+    <p>Por compartir información nos estamos refiriendo a utilizar variables comunes en programas distintos, sin que la información salga del servidor.</p>
 
-    <p>El ejemplo siguiente muestra dos páginas: en la primera se crea una variable, que se puede utilizar en esa misma página. La segunda página, que se encuentra en el mismo servidor, no tiene acceso a la variable creada en el primer programa y por eso se produce un aviso.</p>
+    <p>El ejemplo siguiente muestra dos páginas: en la primera se crea una variable, que se puede utilizar en esa misma página. La segunda página, que se encuentra en el mismo servidor, no tiene acceso a la variable creada en el primer programa y por eso se produce un aviso al ejecutarla.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -78,7 +78,7 @@ print "&lt;p&gt;El nombre es $nombre&lt;/p&gt;";
 
     <p>PHP puede superar esta limitación mediante las sesiones. Las sesiones permiten que páginas distintas puedan acceder a una variable común, la matriz $_SESSION.</p>
 
-    <p>El ejemplo siguiente muestra dos páginas: en la primera se crea la variable en la matriz $_SESSION, que se puede utilizar en esa misma página. La segunda página, que se encuentra en el mismo servidor, tiene acceso a la variable creada en el primer programa (si se ha ejecutado antes, obviamente).</p>
+    <p>El ejemplo siguiente muestra dos páginas: en la primera se crea la variable en la matriz $_SESSION, que se puede utilizar en esa misma página. La segunda página, que se encuentra en el mismo servidor, tiene acceso a la variable creada en el primer programa (si se ha ejecutado antes el primer programa, obviamente).</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -113,7 +113,7 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
 
     <hr class="corta">
 
-    <p>Las sesiones no deben confundirse con <a href="php-cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el disco duro del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="https://www.php.net/manual/en/book.session.php">capítulo dedicado a las sesiones</a>.</p>
+    <p>Las sesiones no deben confundirse con <a href="php-cookies.html">las cookies</a>. Las cookies es un método que permite guardar información en el ordenador del cliente para recuperarla en el futuro, mientras que en las sesiones la información se mantiene en el servidor hasta que se cierra la sesión (por intervención del usuario o por tiempo). En el manual de PHP se ofrece un <a href="https://www.php.net/manual/en/book.session.php">capítulo dedicado a las sesiones</a>.</p>
 
     <p>El trabajo con sesiones tiene tres partes:</p>
     <ul>
@@ -121,10 +121,10 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
         <p>Cuando alguna página crea una sesión utilizando la función correspondiente, el servidor asocia al navegador del usuario un identificador de usuario único. El identificador se guarda en el usuario en forma de cookie o, si el navegador del usuario no permite la creación de cookies, añadiendo el identificador en la dirección de la página.</p>
       </li>
       <li>Utilización de la sesión
-        <p>Una vez creada la sesión, las páginas solicitadas por el mismo navegador pueden guardar y recuperar información en el servidor, información que se asocia al identificador de usuario, por lo que no es accesible a otras página. La información se conserva hasta que el usuario o el servidor destruyan la sesión.</p>
+        <p>Si ya se ha creado la sesión, las páginas solicitadas por el mismo navegador pueden guardar y recuperar información en el servidor, información que se asocia al identificador de usuario, por lo que no es accesible a otros usuarios. La información se conserva hasta que el usuario o el servidor destruyan la sesión.</p>
       </li>
       <li>Destrucción o cierre de la sesión
-        <p>Tanto el usuario como el servidor pueden cerrar la sesión. El usuario puede destruir la sesión cerrando el navegador. El servidor puede destruir la sesión cuando alguna página utilice la función correspondiente o debido al tiempo transcurrido desde su creación.</p>
+        <p>Tanto el usuario como el servidor pueden cerrar la sesión. El usuario puede destruir la sesión cerrando el navegador. El servidor puede destruir la sesión cuando alguna página utilice la función correspondiente o al cabo de un tiempo determinado (definido mediante la función <span class="php-fun"><a href="https://www.php.net/manual/en/function.session-set-cookie-params.php">session_set_cookie_params()</a></span>).</p>
       </li>
     </ul>
   </section>
@@ -505,7 +505,7 @@ Array
 <code class="language-php">&lt;?php
 session_start();
 $_SESSION["nombre"] = "Pepito";
-<span class="codigo-resaltado">session_unset($_SESSION);</span>
+<span class="codigo-resaltado">session_unset();</span>
 $_SESSION["apellidos"] = "Conejo";
 header("Location:pagina-2.php");
 ?&gt;</code>
@@ -547,9 +547,9 @@ Array
     <p>Las sesiones se pueden cerrar de varias maneras:</p>
 
     <ul>
-      <li>El usuario puede cerrar la sesión simplemente cerrando el navegador.</li>
+      <li>El usuario puede cerrar la sesión simplemente cerrando el navegador (no basta con cerrar las pestañas).</li>
       <li>Un programa puede cerrar la sesión mediante la función <a href="https://www.php.net/manual/en/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
-      <li>El servidor puede cerrar la sesión cuando ha pasado el tiempo indicado en segundo en la directiva <a href="http://docs.php.net/session.configuration#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>.</li>
+      <li>En general, el servidor cierra automáticamente las sesiones cuando ha pasado el tiempo indicado en segundos en la directiva <a href="http://docs.php.net/session.configuration#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>, pero la duración de una sesión en particular puede establecerse en el momento de su creación mediante la función <span class="php-fun"><a href="https://www.php.net/manual/en/function.session-set-cookie-params.php">session_set_cookie_params()</a></span> (tiempo que se puede modificar posteriormente).</li>
     </ul>
 
     <p>Cuando se destruye una sesión, el programa que ha destruido la sesión sigue teniendo acceso a los valores de $_SESSION creados antes de la destrucción de la sesión, pero las páginas siguientes no. Si se ejecuta el primero de los ejemplos siguientes y después el segundo, se obtienen los resultados indicados:</p>
@@ -597,7 +597,7 @@ if (isset($_SESSION["nombre"])) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

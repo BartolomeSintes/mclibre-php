@@ -8,7 +8,7 @@
 
 <body>
   <p>Esta es la página 1.</p>
-  
-  <p><a href="vscode-4-2.php">Enlace a página 2 (que redirige a la página 3)</a></p>
+
+  <p><a href="vscode-4-2.php">Enlace a la página 2 (que redirige a la página 3)</a></p>
 </body>
 </html>
