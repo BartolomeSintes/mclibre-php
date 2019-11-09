@@ -34,7 +34,7 @@ if (!isset($_SESSION["id"]) || $_SESSION["nivel"] != NIVEL_3) {
 $db = conectaDb();
 cabecera("Tabla Usuarios - Borrar 2", MENU_TABLA_USUARIOS_WEB, 1);
 
-$id = recogeMatriz("id");
+$id = recoge("id", []);
 
 if (count($id) == 0) {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";

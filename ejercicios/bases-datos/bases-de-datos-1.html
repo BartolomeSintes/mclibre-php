@@ -257,13 +257,12 @@ foreach ($result as $valor) {
 </pre>
         </div>
       </li>
-      <li>En la biblioteca será necesario añadir la función recogeMatriz() de la lección <a href="../../lecciones/php-recogida-datos.html#recoger-matriz">Recogida de datos</a>.</li>
       <li>Para borrar los registros, esta puede ser la consulta preparada de borrado:
 
         <div class="codigo">
           <pre>
 <code class="language-php">// Recoge los registros seleccionados
-$id = recogeMatriz("id");
+$id = recoge("id", []);
 
 foreach ($id as $indice =&gt; $valor) {
     $consulta = "DELETE FROM $dbTabla

@@ -27,7 +27,7 @@ require_once "biblioteca.php";
 $db = conectaDb();
 cabecera ("Borrar 2", MENU_VOLVER);
 
-$id = recogeMatriz("id");
+$id = recoge("id", []);
 
 if (count($id) == 0) {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";

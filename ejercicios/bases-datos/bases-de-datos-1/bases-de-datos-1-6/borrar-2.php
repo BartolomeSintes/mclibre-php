@@ -27,7 +27,7 @@ require_once "biblioteca.php";
 $db = conectaDb();
 cabecera ("Borrar 2", MENU_VOLVER);
 
-$id = recogeMatriz("id");
+$id = recoge("id", []);
 
 foreach ($id as $indice => $valor) {
     $consulta = "DELETE FROM $dbTabla
