@@ -1,6 +1,6 @@
 <?php
 /**
- * Formulario 1-2 - cabeceras-01-2.php
+ * Formulario 1-2 - cabeceras-01-2-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,31 +22,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function recoge($var, $m = "")
+function recoge($var)
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = (is_array($m)) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
-        });
-    }
+    $tmp = (isset($_REQUEST[$var]))
+        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+        : "";
     return $tmp;
 }
 
 // Recogemos el control
 $nombre   = recoge("nombre");
-$nombreOk = false;
 
-// Comprobamos el nombre. Si es vacío, volvemos al formulario
+// Comprobamos el nombre. Si es vacío volvemos al formulario
 if ($nombre == "") {
-    header("Location:cabeceras-01-1.php");
+    header("Location:cabeceras-01-1-b.php");
     exit();
-} else {
-    $nombreOk = true;
 }
 
 ?>
@@ -67,14 +57,12 @@ if ($nombre == "") {
   <h1>Formulario 1 (Resultado)</h1>
 
 <?php
-// Si el nombre es correcto, lo mostramos
-if ($nombreOk) {
-    print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
-    print "\n";
-}
+// Mostramos el nombre
+print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
+print "\n";
 
 ?>
-  <p><a href="cabeceras-01-1.php">Volver al formulario.</a></p>
+  <p><a href="cabeceras-01-1-b.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

@@ -41,25 +41,19 @@ function cabecera($texto)
     print "\n";
 }
 
-function recoge($var)
+function recoge($var, $m = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
-
-function recogeMatriz($var)
-{
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $valor) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
-            $tmpMatriz[$indiceLimpio] = $valorLimpio;
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $tmpMatriz;
+    return $tmp;
 }
 
 define("FORM_METHOD",         "get");
@@ -67,7 +61,7 @@ define("NUM_VALORES_INICIAL", 4);
 define("NUM_VALORES_MINIMO",  2);
 define("NUM_VALORES_MAXIMO",  15);
 
-$valores       = recogeMatriz("valor");
+$valores       = recoge("valor", []);
 $valoresOk     = [];
 $valoresTodoOk = true;
 $suma          = (recoge("suma") == "on");

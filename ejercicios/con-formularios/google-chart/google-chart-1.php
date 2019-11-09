@@ -41,25 +41,19 @@ function cabecera($texto)
     print "\n";
 }
 
-function limpia($var)
+function recoge($var, $m = "")
 {
-    return trim(strip_tags($var));
-}
-
-function recoge($var)
-{
-    return (isset($_REQUEST[$var])) ? limpia($_REQUEST[$var]) : "";
-}
-
-function recogeMatriz($var)
-{
-    $resul = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $valor) {
-            $resul[limpia($indice)] = limpia($valor);
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $resul;
+    return $tmp;
 }
 
 function recogeNumero($var, $inicial, $minimo, $maximo) {
@@ -88,9 +82,9 @@ if (isset($_REQUEST["anyadir"]) && ($numeroValores<$numeroValoresMaximo)) {
 }
 
 // Recoge valores numéricos y los valida
-$valores = recogeMatriz("valores");
+$valores = recoge("valores", []);
 $okValores = true;
-$valores = recogeMatriz("valores");
+$valores = recoge("valores", []);
 $okValores = true;
 
 for ($i=1; $i<$numeroValores; $i++) {

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2019-11-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -38,10 +38,10 @@
   <h1>Comprobación de datos con funciones ctype_ (Resultado)</h1>
 
 <?php
-function recoge($var)
+function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
-        $tmp = "";
+        $tmp = (is_array($m)) ? [] : "";
     } elseif (!is_array($_REQUEST[$var])) {
         $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
     } else {
@@ -70,8 +70,13 @@ if (!isset($_REQUEST["dato"])) {
         print "\n";
     }
 
-    print "  <p>El texto utilizado es el siguiente: <span style=\"font-size: 150%; border: black 1px solid; background-color: white;\">$dato</span></p>\n";
-    print "\n";
+    if (is_array($dato)) {
+        print "  <p>Se ha recibido una matriz, pero no se han analizado sus valores.</p>\n";
+        print "\n";
+    } else {
+        print "  <p>El texto utilizado es el siguiente: <span style=\"font-size: 150%; border: black 1px solid; background-color: white;\">$dato</span></p>\n";
+        print "\n";
+    }
 
     //  Funciones ctype_
 
@@ -204,7 +209,7 @@ print "  <p style=\"clear: both; padding-top: 1em;\"><a href=\"comprobacion-dato
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2019-11-09">9 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">

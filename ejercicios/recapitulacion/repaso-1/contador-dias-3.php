@@ -39,37 +39,26 @@
 
 <?php
 // Funciones auxiliares
-function recoge($var)
+function recoge($var, $m = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
-
-function recogeMatriz2($var)
-{
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $fila) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            if (is_array($fila)) {
-                foreach ($fila as $indice2 => $valor) {
-                    $indice2Limpio = trim(htmlspecialchars($indice2, ENT_QUOTES, "UTF-8"));
-                    $valorLimpio   = trim(htmlspecialchars($valor,   ENT_QUOTES, "UTF-8"));
-                    $tmpMatriz[$indiceLimpio][$indice2Limpio] = $valorLimpio;
-                }
-            }
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $tmpMatriz;
+    return $tmp;
 }
 
 // Recogida de datos
 $numero           = recoge("numero");
-$casillas         = recogeMatriz2("c");
-$numeroOk         = $casillasOk = false;
-
+$casillas         = recoge("c", []);
+$numeroOk         = false;
+$casillasOk       = false;
 $casillasMarcadas = count($casillas, COUNT_RECURSIVE) - count($casillas);
 $minimo           = 1;
 $maximo           = 20;
@@ -96,28 +85,31 @@ if ($numero == "") {
 }
 
 // Comprobación de $casillas
-if ($casillasMarcadas == 0) {
-    print "  <p>No ha marcado ninguna casilla.</p>\n";
-    print "\n";
-} elseif ($casillasMarcadas > 7 * $numero) {
-    print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
-    print "\n";
-} else {
-    $casillasOk = true;
-    foreach ($casillas as $indice => $valor) {
-        if (ctype_digit((string)$indice) && $indice <= $numero && is_array($valor)) {
-            foreach ($valor as $indice2 => $valor2) {
-                if (!ctype_digit((string)$indice2) || $indice2 > 7 || $valor2 != $valorCasilla) {
-                    $casillasOk = false;
-                }
-            }
-        } else {
-            $casillasOk = false;
-        }
-    }
-    if (!$casillasOk) {
-        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+// Comprueba $numeroOk por si se manipula la URL borrando numero
+if ($numeroOk) {
+    if ($casillasMarcadas == 0) {
+        print "  <p>No ha marcado ninguna casilla.</p>\n";
         print "\n";
+    } elseif ($casillasMarcadas > 7 * $numero) {
+        print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+        print "\n";
+    } else {
+        $casillasOk = true;
+        foreach ($casillas as $indice => $valor) {
+            if (ctype_digit((string)$indice) && $indice <= $numero && is_array($valor)) {
+                foreach ($valor as $indice2 => $valor2) {
+                    if (!ctype_digit((string)$indice2) || $indice2 > 7 || $valor2 != $valorCasilla) {
+                        $casillasOk = false;
+                    }
+                }
+            } else {
+                $casillasOk = false;
+            }
+        }
+        if (!$casillasOk) {
+            print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+            print "\n";
+        }
     }
 }
 
@@ -131,7 +123,7 @@ if ($numeroOk && $casillasOk) {
         } else {
             print "    <li>En la semana $i ha marcado <strong>"
                 . count($casillas[$i]) . "</strong> día";
-            if (count($casillas[$i])>1) {
+            if (count($casillas[$i]) > 1) {
                 print "s";
             }
             print "</li>\n";

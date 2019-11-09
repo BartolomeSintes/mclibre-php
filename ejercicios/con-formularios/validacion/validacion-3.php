@@ -22,26 +22,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-function recoge($var)
+function recoge($var, $m = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-    : "";
-    return $tmp;
-}
-
-function recogeMatriz($var)
-{
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $valor) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
-            $tmpMatriz[$indiceLimpio] = $valorLimpio;
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $tmpMatriz;
+    return $tmp;
 }
 
 function cabecera($texto)
@@ -104,37 +97,37 @@ function pie($conEnlace, $conBotones, $numeroValores)
 
 // Recoge el número de datos y lo valida, aumenta o reduce
 define("FORM_METHOD", "get");
-define("TAM_VALOR",   5);
+define("TAM_VALOR", 5);
 define("NUM_VALORES_INICIAL", 4);
-define("NUM_VALORES_MINIMO",  2);
-define("NUM_VALORES_MAXIMO",  10);
-define("CON_ENLACE",  true);
-define("SIN_ENLACE",  false);
+define("NUM_VALORES_MINIMO", 2);
+define("NUM_VALORES_MAXIMO", 10);
+define("CON_ENLACE", true);
+define("SIN_ENLACE", false);
 define("CON_BOTONES", true);
 define("SIN_BOTONES", false);
 
-$valores       = recogeMatriz("valores");
+$valores = recoge("valores", []);
 
 $numeroValores = recoge("numeroValores");
-if ($numeroValores<NUM_VALORES_MINIMO) {
+if ($numeroValores < NUM_VALORES_MINIMO) {
     $numeroValores = NUM_VALORES_MINIMO;
-} elseif ($numeroValores>NUM_VALORES_MAXIMO) {
+} elseif ($numeroValores > NUM_VALORES_MAXIMO) {
     $numeroValores = NUM_VALORES_MAXIMO;
 }
-if (isset($_REQUEST["anyadir"]) && ($numeroValores<NUM_VALORES_MAXIMO)) {
+if (isset($_REQUEST["anyadir"]) && ($numeroValores < NUM_VALORES_MAXIMO)) {
     $numeroValores++;
     $valores[$numeroValores] = "";  // Al añdir se crea un nuevo valor vacío
-} elseif (isset($_REQUEST["quitar"]) && ($numeroValores>NUM_VALORES_MINIMO)) {
+} elseif (isset($_REQUEST["quitar"]) && ($numeroValores > NUM_VALORES_MINIMO)) {
     $numeroValores--;
 }
 
 $valoresOk     = [];
 $valoresTodoOk = true;
-for ($i=1; $i<=$numeroValores; $i++) {
+for ($i = 1; $i <= $numeroValores; $i++) {
     $valoresOk[$i] = true;
     if (!isset($valores[$i])) {  // Por si falta un valor en la matriz
         $valoresTodoOk = false;
-        $valores[$i] = "";
+        $valores[$i]   = "";
     } elseif ($valores[$i] == "") {  // Por si un valor es vacío
         $valoresTodoOk = false;
     } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {  // Por si un valor no es numérico
@@ -144,7 +137,7 @@ for ($i=1; $i<=$numeroValores; $i++) {
 }
 
 $valoresTodoVacio = true;
-for ($i=1; $i<=$numeroValores; $i++) {
+for ($i = 1; $i <= $numeroValores; $i++) {
     if ($valores[$i] != "") {
         $valoresTodoVacio = false;
     }
@@ -154,24 +147,23 @@ if ($valoresTodoOk) {
     cabecera("Resultado válido");
     print"  <p>Los valores introducidos son correctos.</p>\n";
     print "\n";
-    for ($i=1; $i<=$numeroValores; $i++) {
+    for ($i = 1; $i <= $numeroValores; $i++) {
         print "  <p>Valor $i: <strong>$valores[$i]</strong></p>\n";
         print "\n";
     }
     pie(CON_ENLACE, SIN_BOTONES, $numeroValores);
-} elseif (!$valoresTodoVacio&&(isset($_REQUEST["enviar"])||
-        isset($_REQUEST["anyadir"])||isset($_REQUEST["quitar"]))) {
+} elseif (!$valoresTodoVacio && (isset($_REQUEST["enviar"]) || isset($_REQUEST["anyadir"]) || isset($_REQUEST["quitar"]))) {
     cabecera("Resultado inválido");
     print"  <p>Por favor, corrija los datos incorrectos y/o complete todas las casillas:</p>\n";
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     print "      <tbody>\n";
-    for ($i=1; $i<=$numeroValores; $i++) {
+    for ($i = 1; $i <= $numeroValores; $i++) {
         print "        <tr>\n";
         print "          <td>Valor $i:</td>\n";
         print "          <td><input type=\"text\" name=\"valores[$i]\" size=\""
-            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" value=\"".$valores[$i]."\">";
+            . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" value=\"" . $valores[$i] . "\">";
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
         } elseif ($valores[$i] == "") {
@@ -188,7 +180,7 @@ if ($valoresTodoOk) {
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
     print "      <tbody>\n";
-    for ($i=1; $i<=$numeroValores; $i++) {
+    for ($i = 1; $i <= $numeroValores; $i++) {
         print "        <tr>\n";
         print "          <td>Valor $i:</td>\n";
         print "          <td><input type=\"text\" name=\"valores[$i]\" size=\""
@@ -198,4 +190,3 @@ if ($valoresTodoOk) {
     }
     pie(SIN_ENLACE, CON_BOTONES, $numeroValores);
 }
-?>

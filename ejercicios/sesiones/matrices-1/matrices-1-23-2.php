@@ -49,22 +49,24 @@ if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
 
 <?php
 // Funciones auxiliares
-function recogeMatriz($var)
+function recoge($var, $m = "")
 {
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $valor) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
-            $tmpMatriz[$indiceLimpio] = $valorLimpio;
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $tmpMatriz;
+    return $tmp;
 }
 
 // Recogida de datos
-$b                = recogeMatriz("b");
-$bOk              = false;
+$b   = recoge("b", []);
+$bOk = false;
 
 // Se cuenta el número de elementos en la matriz $b
 $botonesRecibidos = count($b);

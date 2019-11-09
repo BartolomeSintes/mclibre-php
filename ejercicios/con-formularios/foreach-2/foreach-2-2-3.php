@@ -41,37 +41,26 @@
   <h1>Tablas con casillas de verificación (Resultado 2)</h1>
 
 <?php
-function recoge($var)
+function recoge($var, $m = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
-    return $tmp;
-}
-
-function recogeMatriz2($var)
-{
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $fila) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            if (is_array($fila)) {
-                foreach ($fila as $indice2 => $valor) {
-                    $indice2Limpio = trim(htmlspecialchars($indice2, ENT_QUOTES, "UTF-8"));
-                    $valorLimpio   = trim(htmlspecialchars($valor,   ENT_QUOTES, "UTF-8"));
-                    $tmpMatriz[$indiceLimpio][$indice2Limpio] = $valorLimpio;
-                }
-            }
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $tmpMatriz;
+    return $tmp;
 }
 
 $tablas           = recoge("tablas");
 $tamano           = recoge("tamano");
-$casillas         = recogeMatriz2("c");
-$tablasMinimo     = $tamanoMinimo = 1;
-$tablasMaximo     = $tamanoMaximo = 20;
+$casillas         = recoge("c", []);
+$tablasMinimo     = $tamanoMinimo     = 1;
+$tablasMaximo     = $tamanoMaximo     = 20;
 $casillaValor     = "on";
 $tablasOk         = false;
 $tamanoOk         = false;
@@ -102,26 +91,29 @@ if ($tamano == "") {
     $tamanoOk = true;
 }
 
-if ($casillasMarcadas == 0) {
-    print "  <p>No ha marcado ninguna casilla.</p>";
-} elseif ($casillasMarcadas > $tamano * $tamano * $tablas) {
-    print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
-} else {
-    $casillasOk = true;
-    foreach ($casillas as $indice => $valor) {
-        if (ctype_digit((string)$indice) && $indice <= $tablas && is_array($valor)) {
-            foreach ($valor as $indice2 => $valor2) {
-                if (!ctype_digit((string)$indice2) || $indice2 > $tamano * $tamano
+// Comprueba $tablasOk && $tamanoOk por si se manipula la URL borrando alguno de ellos
+if ($tablasOk && $tamanoOk) {
+    if ($casillasMarcadas == 0) {
+        print "  <p>No ha marcado ninguna casilla.</p>";
+    } elseif ($casillasMarcadas > $tamano * $tamano * $tablas) {
+        print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+    } else {
+        $casillasOk = true;
+        foreach ($casillas as $indice => $valor) {
+            if (ctype_digit((string)$indice) && $indice <= $tablas && is_array($valor)) {
+                foreach ($valor as $indice2 => $valor2) {
+                    if (!ctype_digit((string)$indice2) || $indice2 > $tamano * $tamano
                     || $valor2 != $casillaValor) {
-                    $casillasOk = false;
+                        $casillasOk = false;
+                    }
                 }
+            } else {
+                $casillasOk = false;
             }
-        } else {
-            $casillasOk = false;
         }
-    }
-    if (!$casillasOk) {
-        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+        if (!$casillasOk) {
+            print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+        }
     }
 }
 
@@ -132,7 +124,7 @@ if ($tablasOk && $tamanoOk && $casillasOk) {
         } else {
             print "  <p>En la tabla <strong>$k</strong> ha marcado <strong>"
                 . count($casillas[$k]) . "</strong> casilla";
-            if (count($casillas[$k])>1) {
+            if (count($casillas[$k]) > 1) {
                 print "s";
             }
             print " de un total de " . ($tamano * $tamano) . ": ";

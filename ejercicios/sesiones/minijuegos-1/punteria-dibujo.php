@@ -35,6 +35,6 @@ $_SESSION["y"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
 print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "  width=\"$_SESSION[ancho]\" height=\"$_SESSION[ancho]\">\n";
 print "  <rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
-    . "x=\"0\" y=\"0\" width=\"$_SESSION[ancho]\" height=\"$_SESSION[ancho]\">\n";
-    print "  <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"$_SESSION[r]\" stroke=\"black\" stroke-width=\"0\" fill=\"black\" />\n";
+    . "x=\"0\" y=\"0\" width=\"$_SESSION[ancho]\" height=\"$_SESSION[ancho]\" />\n";
+print "  <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"$_SESSION[r]\" stroke=\"black\" stroke-width=\"0\" fill=\"black\" />\n";
 print "</svg>";

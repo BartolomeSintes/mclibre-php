@@ -49,30 +49,24 @@ if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
 
 <?php
 // Funciones auxiliares
-function recoge($var)
+function recoge($var, $m = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
-function recogeMatriz($var)
-{
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $valor) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
-            $tmpMatriz[$indiceLimpio] = $valorLimpio;
-        }
-    }
-    return $tmpMatriz;
-}
-
 // Recogida de datos
-$b    = recogeMatriz("b");
-$bOk  = false;
+$b   = recoge("b", []);
+$bOk = false;
 
 // Comprobación de $b (botones radio)
 // Se cuenta el número de elementos en la matriz $b
@@ -119,7 +113,7 @@ if ($bOk) {
         print "  <ul>\n";
         // Bucle para escribir qué se ha contestado en cada pregunta
         foreach ($b as $indice => $valor) {
-           print "    <li>En la pregunta $indice se ha contestado $valor</li>\n";
+            print "    <li>En la pregunta $indice se ha contestado $valor</li>\n";
         }
         print "  </ul>\n";
         print "\n";

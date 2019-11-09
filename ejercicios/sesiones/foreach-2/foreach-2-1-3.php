@@ -49,31 +49,25 @@ if (!isset($_SESSION["numero"])) {
 
 <?php
 // Funciones auxiliares
-function recoge($var)
+function recoge($var, $m = "")
 {
-    $tmp = (isset($_REQUEST[$var]))
-        ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
-        : "";
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
     return $tmp;
 }
 
-function recogeMatriz($var)
-{
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $valor) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
-            $tmpMatriz[$indiceLimpio] = $valorLimpio;
-        }
-    }
-    return $tmpMatriz;
-}
-
 // Recogida de datos
-$c            = recogeMatriz("c");
-$cOk          = false;
-$cValor       = "on";
+$c      = recoge("c", []);
+$cOk    = false;
+$cValor = "on";
 
 // Comprobación de $c (casillas de verificación)
 // Se cuenta el número de elementos en la matriz $c
@@ -84,8 +78,8 @@ if ($casillasMarcadas == 0) {
     print "\n";
 // Si se han recibido demasiadas casillas
 } elseif ($casillasMarcadas > $_SESSION["numero"]) {
-        print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
-        print "\n";
+    print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
@@ -97,7 +91,7 @@ if ($casillasMarcadas == 0) {
         // o si el valor no es "on"
             || $valor != $cValor) {
             $cOk = false;
-       }
+        }
     }
     if (!$cOk) {
         print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
@@ -108,7 +102,7 @@ if ($casillasMarcadas == 0) {
 // Si las casillas recibidas con correctas ...
 if ($cOk) {
     print "  <p>Ha marcado <strong>$casillasMarcadas</strong> casilla";
-    if ($casillasMarcadas>1) {
+    if ($casillasMarcadas > 1) {
         print "s";
     }
     print " de un total de <strong>$_SESSION[numero]</strong>: <strong>";

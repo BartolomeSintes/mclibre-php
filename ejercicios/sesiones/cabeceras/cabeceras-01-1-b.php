@@ -3,23 +3,22 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Funciones ctype_ (Formulario). Comprobación de datos.
-    PHP. Bartolomé Sintes Marco. www.mclibre.org
+    Formulario 1 (Formulario).
+    Cabeceras. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
 </head>
 
 <body>
-  <form action="comprobacion-datos-ctype-2.php" method="get">
-    <h1>Comprobación de datos con funciones ctype_ (Formulario)</h1>
+  <h1>Formulario 1 (Formulario)</h1>
 
-    <p>Escriba cualquier cosa en el campo siguiente para analizarlo con las funciones ctype_ de PHP:</p>
-
-    <p><strong>Texto:</strong> <input type="text" name="dato" size="40"></p>
+  <form action="cabeceras-01-2-b.php" method="get">
+    <p><label>Escriba su nombre: <input type="text" name="nombre" size="20" maxlength="20"></label></p>
 
     <p>
-      <input type="submit" value="Enviar">
+      <input type="submit" value="Comprobar">
       <input type="reset" value="Borrar">
     </p>
   </form>
@@ -27,7 +26,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-11-09">9 de noviembre de 2019</time>
+      <time datetime="2018-10-31">31 de octubre de 2018</time>
     </p>
 
     <p class="licencia">

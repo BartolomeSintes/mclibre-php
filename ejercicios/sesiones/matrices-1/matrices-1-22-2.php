@@ -49,22 +49,24 @@ if (!isset($_SESSION["numero"])) {
 
 <?php
 // Funciones auxiliares
-function recogeMatriz($var)
+function recoge($var, $m = "")
 {
-    $tmpMatriz = [];
-    if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
-        foreach ($_REQUEST[$var] as $indice => $valor) {
-            $indiceLimpio = trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8"));
-            $valorLimpio  = trim(htmlspecialchars($valor,  ENT_QUOTES, "UTF-8"));
-            $tmpMatriz[$indiceLimpio] = $valorLimpio;
-        }
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
     }
-    return $tmpMatriz;
+    return $tmp;
 }
 
 // Recogida de datos
-$c            = recogeMatriz("c");
-$cOk          = false;
+$c   = recoge("c");
+$cOk = false;
 
 // Se cuenta el número de elementos en la matriz $c
 $cajasRecibidas = count($c);
@@ -73,8 +75,8 @@ $cajasRecibidas = count($c);
 
 // Si no se han recibido todas las cajas
 if ($cajasRecibidas != $_SESSION["numero"]) {
-  print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
-  print "\n";
+    print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
@@ -85,8 +87,8 @@ if ($cajasRecibidas != $_SESSION["numero"]) {
             || $indice < 1 || $indice > $_SESSION["numero"]
             // o si el contenido no es vacío o todo letras
            || (!ctype_alpha($valor) && $valor != "")) {
-                $cOk = false;
-            }
+            $cOk = false;
+        }
     }
     if (!$cOk) {
         print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";

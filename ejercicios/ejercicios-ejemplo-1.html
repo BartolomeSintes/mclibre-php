@@ -212,10 +212,10 @@
 </pre>
           <pre class="codigo-resaltado">
 <code class="language-php">&lt;?php
-function recoge($var)
+function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
-        $tmp = "";
+        $tmp = (is_array($m)) ? [] : "";
     } elseif (!is_array($_REQUEST[$var])) {
         $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
     } else {
@@ -283,10 +283,10 @@ print "\n";
         <div class="codigo">
           <pre><code class="language-php">&lt;?php</code></pre>
           <pre>
-<code class="language-php">function recoge($var)
+<code class="language-php">function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
-        $tmp = "";
+        $tmp = (is_array($m)) ? [] : "";
     } elseif (!is_array($_REQUEST[$var])) {
         $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
     } else {
@@ -299,7 +299,8 @@ print "\n";
 }
 
 $nombre = recoge("nombre");
-$edad   = recoge("edad");<br><br></code>
+$edad   = recoge("edad");
+</code>
 </pre>
           <pre class="codigo-resaltado">
 <code class="language-php">print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
@@ -438,10 +439,10 @@ print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;
 </pre>
             <pre class="codigo-resaltado">
 <code class="language-php">&lt;?php
-function recoge($var)
+function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
-        $tmp = "";
+        $tmp = (is_array($m)) ? [] : "";
     } elseif (!is_array($_REQUEST[$var])) {
         $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
     } else {
@@ -559,20 +560,20 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
           <div class="codigo">
             <pre><code class="language-php">&lt;?php</code></pre>
             <pre>
-<code class="language-php">function recoge($var)
-{
-    if (!isset($_REQUEST[$var])) {
-        $tmp = "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
-        });
-    }
-    return $tmp;
-}
+<code class="language-php">function recoge($var, $m = "")
+  {
+      if (!isset($_REQUEST[$var])) {
+          $tmp = (is_array($m)) ? [] : "";
+      } elseif (!is_array($_REQUEST[$var])) {
+          $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+      } else {
+          $tmp = $_REQUEST[$var];
+          array_walk_recursive($tmp, function (&$valor) {
+              $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+          });
+      }
+      return $tmp;
+  }
 
 $nombre = recoge("nombre");
 $edad   = recoge("edad");
@@ -636,7 +637,7 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 9 de noviembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
