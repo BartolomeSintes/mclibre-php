@@ -105,7 +105,7 @@ with a line not prefixed with asterisk
 ?>
 
 <?php
-// 'cast_spaces' => true,
+// 'cast_spaces' => ['space' => 'none'],
 $bar = (             string      )          $a;
 $foo = (int)$b;
 ?>
