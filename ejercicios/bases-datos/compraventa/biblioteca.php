@@ -234,9 +234,6 @@ function recogeParaConsulta($db, $var, $var2='')
 {
     $tmp = (isset($_REQUEST[$var])&&($_REQUEST[$var] != "")) ?
         trim(strip_tags($_REQUEST[$var])) : trim(strip_tags($var2));
-    if (get_magic_quotes_gpc()) {
-        $tmp = stripslashes($tmp);
-    }
     $tmp = str_replace("&", "&amp;",  $tmp);
     $tmp = str_replace('"', "&quot;", $tmp);
     $tmp = recorta($var, $tmp);

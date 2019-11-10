@@ -84,9 +84,6 @@ function recoge($var, $var2="")
     $tmp = (isset($_REQUEST[$var]) && trim(strip_tags($_REQUEST[$var])) != "")
     ? strip_tags(trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8")))
     : strip_tags(trim(htmlspecialchars($var2, ENT_QUOTES, "UTF-8")));
-    if (get_magic_quotes_gpc()) {
-        $tmp = stripslashes($tmp);
-    }
     $tmp = recorta($var, $tmp);
     return $tmp;
 }

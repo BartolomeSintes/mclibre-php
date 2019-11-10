@@ -81,9 +81,6 @@ function recogeParaConsulta($db, $var, $var2="")
 {
     $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var] != "")) ?
         strip_tags(trim(htmlspecialchars($_REQUEST[$var]))) : strip_tags(trim(htmlspecialchars($var2)));
-    if (get_magic_quotes_gpc()) {
-        $tmp = stripslashes($tmp);
-    }
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {
         $tmp = $db->quote($tmp);
