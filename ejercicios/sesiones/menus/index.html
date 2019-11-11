@@ -47,6 +47,19 @@
       <li>Las tres páginas (index.php, pagina-2.php y pagina-3.php) incluyen el mismo menú con enlaces a todas las páginas</li>
     </ul>
 
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Habrá una página biblioteca.php que incluya las siguientes funciones:
+          <ul>
+            <li>cabecera($texto), que genera el principio de la página (hasta la apertura de <span class="html-eti">&lt;main&gt;</span>). La variable $texto se mostrará en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span> de la página.</li>
+            <li>pie(), que genera el final de la página (a partir del cierre de <span class="html-eti">&lt;/main&gt;</span>).</li>
+          </ul>
+        </li>
+        <li>Las tres páginas del programa llamarán a las funciones cabecera() y pie(), incluyendo previamente el fichero biblioteca.php.</li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <div class="resultado-object">
         <object type="text/html" data="menus-1/index.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
@@ -55,18 +68,6 @@
         <a href="menus-1/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
-
-    <h3>Comentarios</h3>
-
-    <ul>
-      <li>Habrá una página biblioteca.php que incluya las siguientes funciones:
-        <ul>
-          <li>cabecera($texto), que genera el principio de la página (hasta la apertura de <span class="html-eti">&lt;main&gt;</span>). La variable $texto se mostrará en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span> de la página.</li>
-          <li>pie(), que genera el final de la página (a partir del cierre de <span class="html-eti">&lt;/main&gt;</span>).</li>
-        </ul>
-      </li>
-      <li>Las tres páginas del programa llamarán a las funciones cabecera() y pie(), incluyendo previamente el fichero biblioteca.php.</li>
-    </ul>
   </section>
 
   <section id="ejercicio-2">
@@ -78,6 +79,32 @@
       <li>Las otras dos páginas (pagina-2.php y pagina-3.php) incluyen un menú con un único enlace a la página principal.</li>
     </ul>
 
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Habrá una página biblioteca.php que incluya las siguientes funciones:
+          <ul>
+            <li>cabecera($texto, $menu), que genera el principio de la página (hasta la apertura de <span class="html-eti">&lt;main&gt;</span>).
+              <ul>
+                <li>El argumento $texto se mostrará en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span> de la página.</li>
+                <li>El argumento $menu seleccionará el menú que se muestra. Los posibles valores del argumento se pueden definir como constantes:
+
+                  <div class="codigo">
+                    <pre>
+  <code class="language-php">define("MENU_PRINCIPAL",  1);  // Para función cabecera()
+  define("MENU_SECUNDARIO", 2);  // Para función cabecera()</code>
+  </pre>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>pie(), que genera el final de la página (a partir del cierre de <span class="html-eti">&lt;/main&gt;</span>).</li>
+          </ul>
+        </li>
+        <li>Las tres páginas del programa llamarán a las funciones cabecera() y pie(), incluyendo previamente el fichero biblioteca.php.</li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <div class="resultado-object">
         <object type="text/html" data="menus-2/index.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
@@ -86,31 +113,6 @@
         <a href="menus-2/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
-
-    <h3>Comentarios</h3>
-
-    <ul>
-      <li>Habrá una página biblioteca.php que incluya las siguientes funciones:
-        <ul>
-          <li>cabecera($texto, $menu), que genera el principio de la página (hasta la apertura de <span class="html-eti">&lt;main&gt;</span>).
-            <ul>
-              <li>El argumento $texto se mostrará en <span class="html-eti">&lt;title&gt;</span> y <span class="html-eti">&lt;h1&gt;</span> de la página.</li>
-              <li>El argumento $menu seleccionará el menú que se muestra. Los posibles valores del argumento se pueden definir como constantes:
-
-                <div class="codigo">
-                  <pre>
-<code class="language-php">define("MENU_PRINCIPAL",  1);  // Para función cabecera()
-define("MENU_SECUNDARIO", 2);  // Para función cabecera()</code>
-</pre>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li>pie(), que genera el final de la página (a partir del cierre de <span class="html-eti">&lt;/main&gt;</span>).</li>
-        </ul>
-      </li>
-      <li>Las tres páginas del programa llamarán a las funciones cabecera() y pie(), incluyendo previamente el fichero biblioteca.php.</li>
-    </ul>
   </section>
 
   <section id="ejercicio-3">
@@ -125,6 +127,14 @@ define("MENU_SECUNDARIO", 2);  // Para función cabecera()</code>
       <li>Si el usuario intenta acceder directamente a las páginas (pagina-2b.php y pagina-3b.php) escribiendo la dirección en el navegador, se le redirigirá directamente a la página inicial</li>
     </ul>
 
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Las funciones cabecera() y pie() de biblioteca.php son similares a los del ejercicio anterior.</li>
+        <li>No es necesario recoger el valor enviado por el formulario. Simplemente comprobando que se ha recibido el control (con isset($_REQUEST["si"])) se sabe si el usuario ha hecho clic en "Sí" o no.</li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <div class="resultado-object">
         <object type="text/html" data="menus-3/index.php" style="height: 22em;">ERROR (no puede mostrarse el objeto)</object>
@@ -133,12 +143,6 @@ define("MENU_SECUNDARIO", 2);  // Para función cabecera()</code>
         <a href="menus-3/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
-
-    <h3>Comentarios</h3>
-    <ul>
-      <li>Las funciones cabecera() y pie() de biblioteca.php son similares a los del ejercicio anterior.</li>
-      <li>No es necesario recoger el valor enviado por el formulario. Simplemente comprobando que se ha recibido el control (con isset($_REQUEST["si"])) se sabe si el usuario ha hecho clic en "Sí" o no.</li>
-    </ul>
   </section>
 
   <section id="ejercicio-4">
@@ -194,6 +198,13 @@ define("MENU_SECUNDARIO", 2);  // Para función cabecera()</code>
       <li>La página desconectar.php destruye la sesión y redirige a index.php.</li>
     </ul>
 
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Puesto que todas las páginas pertenecen a la misma sesión, se puede crear la sesión en biblioteca.php en vez de en cada página.</li>
+      </ul>
+    </details>
+
     <div class="filaflex">
       <div class="resultado-object">
         <object type="text/html" data="menus-6/index.php" style="height: 19em;">ERROR (no puede mostrarse el objeto)</object>
@@ -202,12 +213,6 @@ define("MENU_SECUNDARIO", 2);  // Para función cabecera()</code>
         <a href="menus-6/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
-
-    <h3>Comentarios</h3>
-
-    <ul>
-      <li>Puesto que todas las páginas pertenecen a la misma sesión, se puede crear la sesión en biblioteca.php en vez de en cada página.</li>
-    </ul>
   </section>
 
   <section id="ejercicio-7">
