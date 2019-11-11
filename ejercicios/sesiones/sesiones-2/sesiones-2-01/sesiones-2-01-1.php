@@ -46,15 +46,15 @@ unset($_SESSION["apellidos"]);
   <h1>Formulario en dos pasos (Formulario 1)</h1>
 
   <form action="sesiones-2-01-2.php" method="get">
-    <p>Escriba su propio nombre:</p>
+    <p>Escriba su nombre:</p>
 
 <?php
 if (isset($_SESSION["avisoNombre"])) {
-    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"> "
+    print "    <p><label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label> "
         . "<span class=\"aviso\">$_SESSION[avisoNombre]</span></p>\n";
     print "\n";
 } else {
-    print "    <p><strong>Nombre:</strong> <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 }
 ?>

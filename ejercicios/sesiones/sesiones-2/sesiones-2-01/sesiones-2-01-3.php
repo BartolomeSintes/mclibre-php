@@ -46,11 +46,11 @@ session_start();
 
 <?php
 if (isset($_SESSION["avisoApellido"])) {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\"> "
+    print "    <p><label>Apellidos: <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\"></label> "
         . "<span class=\"aviso\">$_SESSION[avisoApellido]</span></p>\n";
     print "\n";
 } else {
-    print "    <p><strong>Apellidos:</strong> <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\"></p>\n";
+    print "    <p><label>Apellidos: <input type=\"text\" name=\"apellidos\" size=\"30\" maxlength=\"30\"></label></p>\n";
     print "\n";
 }
 ?>

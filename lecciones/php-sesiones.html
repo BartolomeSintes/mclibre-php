@@ -24,12 +24,12 @@
 
       <ul>
         <li><a href="#sesiones-introduccion">Introducción</a></li>
-        <li><a href="#sesiones-directiva-session-save-handler">session.save_handler</a></li>
         <li><a href="#sesiones-crear">Crear la sesión</a></li>
-        <li><a href="#sesiones-nombre">Nombre de sesión</a></li>
         <li><a href="#sesiones-utilizar">Utilizar la sesión</a></li>
-        <li><a href="#sesiones-borrar">Borrar elementos</a></li>
         <li><a href="#sesiones-destruir">Cerrar la sesión</a></li>
+        <li><a href="#sesiones-nombre">Nombre de sesión</a></li>
+        <li><a href="#sesiones-borrar">Borrar elementos</a></li>
+        <li><a href="#sesiones-directiva-session-save-handler">session.save_handler</a></li>
       </ul>
     </div>
   </nav>
@@ -129,35 +129,6 @@ print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
     </ul>
   </section>
 
-  <section id="sesiones-directiva-session-save-handler">
-    <h2>Directiva session.save_handler</h2>
-
-    <p>Para utilizar sesiones mediante el mecanismo propio de PHP (es decir, sin necesidad de crear funciones propias), la directiva session.save_handler del archivo de configuración php.ini debe tener el valor files.</p>
-
-    <div class="codigo">
-      <pre>
-<code class="language-configuracion">session.save_handler = files        ; Valor recomendado en este curso</code>
-</pre>
-    </div>
-
-    <p>Esta configuración es la más habitual, pero algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user.</p>
-
-    <div class="codigo">
-      <pre>
-<code class="language-configuracion">session.save_handler = user         ; Valor definido en algunos servidores</code>
-</pre>
-    </div>
-
-    <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="https://www.php.net/manual/en/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
-
-    <div class="codigo">
-      <pre><code class="language-php">ini_set("session.save_handler", "files"); // Necesario únicamente cuando session.save_handler = user en php.ini
-session_start();</code></pre>
-    </div>
-
-    <p>En este curso se supondrá que la directiva tiene el valor "files".</p>
-  </section>
-
   <section id="sesiones-crear">
     <h2>Crear la sesión</h2>
 
@@ -220,95 +191,6 @@ session_start();
     </div>
 
     <p><strong>Nota:</strong> Como se comenta también en la <a href="php-cabeceras.html#buffer">lección sobre cabeceras</a>, dependiendo de la configuración de la directiva <a href="../otros/php-configuracion-1.html#output-buffering">output_buffering</a>, la sesión podría crearse correctamente y no generarse el aviso.</p>
-  </section>
-
-  <section id="sesiones-nombre">
-    <h2>Nombre de sesión</h2>
-
-    <p>En principio, cuando el navegador se conecta a un servidor, la sesión es única, es decir, todas las páginas del mismo dominio compartirán la misma matriz $_SESSION. La función <a href="https://www.php.net/manual/en/function.session-name.php"><span class="php-fun">session_name()</span></a> permite establecer un nombre de sesión específico, de manera que todas las páginas que declaren el mismo nombre de sesión accederán a la misma matriz $_SESSION y las que tengan nombres de sesión distintos accederán a matrices $_SESSION diferentes.</p>
-
-    <p>En el ejemplo siguiente, los dos primeros programas crean la misma variable en $_SESSION, pero como se ha utilizado la función <span class="php-fun">session_name()</span> con nombres diferentes, realmente lo hacen en matrices $_SESSION distintas.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-session_name("ejemplo1");
-session_start();
-
-$_SESSION["nombre"] = "Pepito Conejo";
-print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>El nombre es Pepito Conejo</p>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-session_name("ejemplo2");
-session_start();
-
-$_SESSION["nombre"] = "Juan Fulánez";
-print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>El nombre es Juan Fulánez</p>
-      </div>
-    </div>
-
-    <p>Los dos programas siguientes acceden después a las matrices $_SESSION, pero cada uno accede a la matriz correspondiente al nombre de sesión.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-session_name("ejemplo1");
-session_start();
-
-print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>El nombre es Pepito Conejo</p>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-session_name("ejemplo2");
-session_start();
-
-print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>El nombre es Juan Fulánez</p>
-      </div>
-    </div>
-
-    <hr class="corta">
-
-    <p>El nombre de sesión distingue entre minúsculas y mayúsculas, es decir, dos sesiones con el mismo nombre, pero uno en minúsculas y otro en mayúsculas, son dos sesiones distintas.</p>
-
-    <p>El nombre de la sesión no puede contener únicamente números, ni tampoco puede contener los caracteres punto (.), ampersand (&amp;), más (+), corchete izquierdo ([) ni almohadilla (#).</p>
-
-    <p><strong>Nota</strong>: No he encontrado una lista oficial de caracteres no admitidos. Los caracteres . &amp; + [ y # los he encontrado probando manualmente, pero es posible que haya otros caracteres problemáticos.</p>
-
-    <p>Referencia:</p>
-    <ul>
-      <li><a href="https://www.php.net/manual/en/function.session-id.php#116836">Caracteres admitidos en el identificador de sesión</a>, que no es lo mismo que el nombre de sesión.</li>
-    </ul>
   </section>
 
   <section id="sesiones-utilizar">
@@ -412,10 +294,42 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";
     </div>
   </section>
 
-  <section id="sesiones-borrar">
-    <h2>Borrar elementos de la sesión</h2>
+  <section id="sesiones-destruir">
+    <h2>Cerrar la sesión</h2>
 
-    <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="https://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
+    <p>Cerrar una sesión es destruir la matriz $_SESSION y el identificador de la sesión.</p>
+
+    <p>Las sesiones se pueden cerrar de varias maneras:</p>
+
+    <ul>
+      <li>El usuario puede cerrar la sesión simplemente cerrando el navegador (no basta con cerrar las pestañas).</li>
+      <li>Un programa puede cerrar la sesión mediante la función <a href="https://www.php.net/manual/en/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
+      <li>En general, las cookies tienen una duración establecida en la directiva <a href="http://docs.php.net/session.configuration#ini.session.cookie-lifetime">session.cookie_lifetime</a> (y el servidor puede borrar la información cuando ha pasado el tiempo indicado en segundos en la directiva <a href="http://docs.php.net/session.configuration#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>), pero la duración de una sesión en particular puede establecerse en el momento de su creación mediante la función <span class="php-fun"><a href="https://www.php.net/manual/en/function.session-set-cookie-params.php">session_set_cookie_params()</a></span> (tiempo que se puede modificar posteriormente).</li>
+    </ul>
+
+    <p>Cuando se destruye una sesión, el programa que ha destruido la sesión sigue teniendo acceso a los valores de $_SESSION creados antes de la destrucción de la sesión, pero las páginas siguientes no. Si se ejecuta el primero de los ejemplos siguientes y después el segundo, se obtienen los resultados indicados:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_start();
+
+$_SESSION["nombre"] = "Pepito Conejo";
+session_destroy();
+
+if (isset($_SESSION["nombre"])) {
+    print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No sé su nombre.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Su nombre es Pepito Conejo.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
 
     <div class="filaflex">
       <div class="codigo">
@@ -428,6 +342,118 @@ if (isset($_SESSION["nombre"])) {
 } else {
     print "&lt;p&gt;No sé su nombre.&lt;/p&gt;\n";
 }
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;No sé su nombre.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="sesiones-nombre">
+    <h2>Nombre de sesión</h2>
+
+    <p>En principio, cuando el navegador se conecta a un servidor, la sesión es única, es decir, todas las páginas del mismo dominio compartirán la misma matriz $_SESSION. La función <a href="https://www.php.net/manual/en/function.session-name.php"><span class="php-fun">session_name()</span></a> permite establecer un nombre de sesión específico, de manera que todas las páginas que declaren el mismo nombre de sesión accederán a la misma matriz $_SESSION y las que tengan nombres de sesión distintos accederán a matrices $_SESSION diferentes.</p>
+
+    <p>En el ejemplo siguiente, los dos primeros programas crean la misma variable en $_SESSION, pero como se ha utilizado la función <span class="php-fun">session_name()</span> con nombres diferentes, realmente lo hacen en matrices $_SESSION distintas.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_name("ejemplo1");
+session_start();
+
+$_SESSION["nombre"] = "Pepito Conejo";
+print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>El nombre es Pepito Conejo</p>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_name("ejemplo2");
+session_start();
+
+$_SESSION["nombre"] = "Juan Fulánez";
+print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>El nombre es Juan Fulánez</p>
+      </div>
+    </div>
+
+    <p>Los dos programas siguientes acceden después a las matrices $_SESSION, pero cada uno accede a la matriz correspondiente al nombre de sesión.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_name("ejemplo1");
+session_start();
+
+print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>El nombre es Pepito Conejo</p>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_name("ejemplo2");
+session_start();
+
+print "&lt;p&gt;El nombre es $_SESSION[nombre]&lt;/p&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>El nombre es Juan Fulánez</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>El nombre de sesión distingue entre minúsculas y mayúsculas, es decir, dos sesiones con el mismo nombre, pero uno en minúsculas y otro en mayúsculas, son dos sesiones distintas.</p>
+
+    <p>El nombre de la sesión no puede contener únicamente números, ni tampoco puede contener los caracteres punto (.), ampersand (&amp;), más (+), corchete izquierdo ([) ni almohadilla (#).</p>
+
+    <p><strong>Nota</strong>: No he encontrado una lista oficial de caracteres no admitidos. Los caracteres . &amp; + [ y # los he encontrado probando manualmente, pero es posible que haya otros caracteres problemáticos.</p>
+
+    <p>Referencia:</p>
+    <ul>
+      <li><a href="https://www.php.net/manual/en/function.session-id.php#116836">Caracteres admitidos en el identificador de sesión</a>, que no es lo mismo que el nombre de sesión.</li>
+    </ul>
+  </section>
+
+  <section id="sesiones-borrar">
+    <h2>Borrar elementos de la sesión</h2>
+
+    <p>Los valores de $_SESSION se borran como en cualquier otra matriz mediante la función <a href="https://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+session_start();
+
+$_SESSION["nombre"] = "Pepito Conejo";
+
+print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
 
 unset($_SESSION["nombre"]);
 
@@ -447,9 +473,9 @@ if (isset($_SESSION["nombre"])) {
       </div>
     </div>
 
-    <hr>
+    <hr class="corta">
 
-    <p>Para borrar todos los valores de $_SESSION se pueden borrar uno a uno o utilizar la función <a href="https://www.php.net/manual/en/function.session-unset.php"><span class="php-fun">session_unset()</span></a>. Pero no se debe utilizar <span class="php-fun">unset</span>($_SESSION):</p>
+    <p>Para borrar todos los valores de $_SESSION se pueden borrar uno a uno o utilizar la función <a href="https://www.php.net/manual/en/function.session-unset.php"><span class="php-fun">session_unset()</span></a>, pero normalmente no se debe utilizar <span class="php-fun">unset</span>():</p>
     <ul>
       <li><span class="php-fun">unset</span>($_SESSION) impide que el resto de la página escriba o lea valores en $_SESSION, pero la sesión conserva los valores, por lo que otras páginas seguirían viendo esos valores.
         <div class="filaflex">
@@ -539,65 +565,37 @@ Array
     </ul>
   </section>
 
-  <section id="sesiones-destruir">
-    <h2>Cerrar la sesión</h2>
+  <section id="sesiones-directiva-session-save-handler">
+    <h2>Directiva session.save_handler</h2>
 
-    <p>Cerrar una sesión es destruir la matriz $_SESSION y el identificador de la sesión.</p>
+    <p>Para utilizar sesiones mediante el mecanismo propio de PHP (es decir, sin necesidad de crear funciones propias), la directiva session.save_handler del archivo de configuración php.ini debe tener el valor files.</p>
 
-    <p>Las sesiones se pueden cerrar de varias maneras:</p>
-
-    <ul>
-      <li>El usuario puede cerrar la sesión simplemente cerrando el navegador (no basta con cerrar las pestañas).</li>
-      <li>Un programa puede cerrar la sesión mediante la función <a href="https://www.php.net/manual/en/function.session-destroy.php"><span class="php-fun">session_destroy()</span></a>.</li>
-      <li>En general, el servidor cierra automáticamente las sesiones cuando ha pasado el tiempo indicado en segundos en la directiva <a href="http://docs.php.net/session.configuration#ini.session.gc-maxlifetime">session.gc_maxlifetime</a>, pero la duración de una sesión en particular puede establecerse en el momento de su creación mediante la función <span class="php-fun"><a href="https://www.php.net/manual/en/function.session-set-cookie-params.php">session_set_cookie_params()</a></span> (tiempo que se puede modificar posteriormente).</li>
-    </ul>
-
-    <p>Cuando se destruye una sesión, el programa que ha destruido la sesión sigue teniendo acceso a los valores de $_SESSION creados antes de la destrucción de la sesión, pero las páginas siguientes no. Si se ejecuta el primero de los ejemplos siguientes y después el segundo, se obtienen los resultados indicados:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-session_start();
-
-$_SESSION["nombre"] = "Pepito Conejo";
-session_destroy();
-
-if (isset($_SESSION["nombre"])) {
-    print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;No sé su nombre.&lt;/p&gt;\n";
-}
-?&gt;</code>
+    <div class="codigo">
+      <pre>
+<code class="language-configuracion">session.save_handler = files        ; Valor recomendado en este curso</code>
 </pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;Su nombre es Pepito Conejo.&lt;/p&gt;</code></pre>
-      </div>
     </div>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-session_start();
+    <p>Esta configuración es la más habitual, pero algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user.</p>
 
-if (isset($_SESSION["nombre"])) {
-    print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;No sé su nombre.&lt;/p&gt;\n";
-}
-?&gt;</code>
+    <div class="codigo">
+      <pre>
+<code class="language-configuracion">session.save_handler = user         ; Valor definido en algunos servidores</code>
 </pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;No sé su nombre.&lt;/p&gt;</code></pre>
-      </div>
     </div>
+
+    <p>Si se ha necesitado modificar php.ini, pero queremos ejecutar otros programas que no incluyen sus propias funciones de gestión de sesiones, se puede incluir en las páginas PHP la función <a href="https://www.php.net/manual/en/function.ini-set.php"><span class="php-fun">ini_set()</span></a> antes de abrir la sesión. Ese cambio sólo afectará a la página que incluya la llamada a la función.</p>
+
+    <div class="codigo">
+      <pre><code class="language-php">ini_set("session.save_handler", "files"); // Necesario únicamente cuando session.save_handler = user en php.ini
+session_start();</code></pre>
+    </div>
+
+    <p>En este curso se supondrá que la directiva tiene el valor "files".</p>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

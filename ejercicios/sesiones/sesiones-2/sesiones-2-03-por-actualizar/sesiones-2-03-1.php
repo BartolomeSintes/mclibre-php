@@ -54,7 +54,7 @@ if (isset($_SESSION["paso"]) && $_SESSION["paso"] != 1) {
   <h1>Formulario seguro en tres pasos (Formulario 1)</h1>
 
   <form action="sesiones-2-03-2.php" method="get">
-    <p>Escriba su propio nombre:</p>
+    <p>Escriba su nombre:</p>
 
 <?php
 if (isset($_SESSION["avisoNombre"])) {

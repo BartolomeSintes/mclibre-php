@@ -428,12 +428,12 @@ print "\n";
 // Si hemos detectado un error <span class="numero-circulo">9</span>
 if (isset($_SESSION["error"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\"&gt; "
+    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, lo mostramos... <span class="numero-circulo">10</span>
-    print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;
@@ -544,18 +544,18 @@ print "\n";
 if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
   // Si hemos detectado un error y el usuario había escrito una palabra para corregir <span class="numero-circulo">9</span>
   // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"&gt; "
+  print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
   . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
   print "\n";
 } elseif (isset($_SESSION["error"])) {
   // Si hemos detectado un error, pero no hay palabra para corregir <span class="numero-circulo">10</span>
   // Mostramos el control, añadiendo el aviso
-  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt; "
+  print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
       . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
   print "\n";
 } else {
   // Si no hemos detectado un error, mostramos simplemente el control <span class="numero-circulo">11</span>
-  print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
+  print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
   print "\n";
 }
 ?&gt;
@@ -665,14 +665,14 @@ if (isset($_SESSION["palabra"])) {
 print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
 print "\n";
 
-print "    &lt;p&gt;&lt;strong&gt;Palabra:&lt;/strong&gt; &lt;input type=\"text\" name=\"palabra\" ";
+print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" ";
 
 // Si hay que incluir el intento anterior en value, lo incluimos <span class="numero-circulo">9</span>
 if (isset($_SESSION["intento"])) {
     print "value=\"$_SESSION[intento]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"&gt; ";
+print "size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; ";
 
 // Si hay que incluir un aviso, lo incluimos <span class="numero-circulo">10</span>
 if (isset($_SESSION["error"])) {
@@ -846,32 +846,32 @@ print "\n";
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control <span class="numero-circulo">10</span>
-    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt; "
+    print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[mayusculasError]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
 } elseif (isset($_SESSION["minusculasError"])) {
     // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control <span class="numero-circulo">11</span>
-    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt;t;/p&gt;\n";
+    print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío <span class="numero-circulo">12</span>
-    print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
     print "\n";
 }
 
 // Si hemos detectado un error en la palabra en minúsculas <span class="numero-circulo">13</span>
 if (isset($_SESSION["minusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt; "
+    print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
     . "&lt;span class=\"aviso\"&gt;$_SESSION[minusculasError]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
 } elseif (isset($_SESSION["mayusculasError"])) {
     // Si hemos detectado un error en la palabra en mayúsculas, incluimos el valor correcto en el control
-    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/p&gt;\n";
+    print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;
@@ -978,7 +978,7 @@ if (isset($_SESSION["mayusculas"]) && isset($_SESSION["minusculas"]) ) {
 print "    &lt;p&gt;Escriba una palabra en mayúsculas y otra en minúsculas:&lt;/p&gt;\n";
 print "\n";
 
-print "    &lt;p&gt;&lt;strong&gt;Mayúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"mayusculas\" ";
+print "    &lt;p&gt;&lt;label&gt;Mayúsculas: &lt;input type=\"text\" name=\"mayusculas\" ";
 
 if (isset($_SESSION["mayusculasIntento"])) {
     // Si hemos detectado un intento incorrecto en la palabra en mayúsculas, incluimos el intento en el control <span class="numero-circulo">10</span>
@@ -988,7 +988,7 @@ if (isset($_SESSION["mayusculasIntento"])) {
     print "value=\"$_SESSION[mayusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"&gt; ";
+print "size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; ";
 
 // Si hemos detectado un error en la palabra en mayúsculas <span class="numero-circulo">12</span>
 if (isset($_SESSION["mayusculasError"])) {
@@ -999,7 +999,7 @@ if (isset($_SESSION["mayusculasError"])) {
 print "&lt;/p&gt;\n";
 print "\n";
 
-print "    &lt;p&gt;&lt;strong&gt;Minúsculas:&lt;/strong&gt; &lt;input type=\"text\" name=\"minusculas\" ";
+print "    &lt;p&gt;&lt;label&gt;Minúsculas: &lt;input type=\"text\" name=\"minusculas\" ";
 
 if (isset($_SESSION["minusculasIntento"])) {
     // Si hemos detectado un intento incorrecto en la palabra en minúsculas, incluimos el intento en el control <span class="numero-circulo">13</span>
@@ -1009,7 +1009,7 @@ if (isset($_SESSION["minusculasIntento"])) {
     print "value=\"$_SESSION[minusculas]\" ";
 }
 
-print "size=\"20\" maxlength=\"20\"&gt; ";
+print "size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; ";
 
 // Si hemos detectado un error en la palabra en minúsculas
 if (isset($_SESSION["minusculasError"])) {

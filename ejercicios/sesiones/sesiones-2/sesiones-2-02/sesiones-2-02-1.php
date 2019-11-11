@@ -50,11 +50,11 @@ unset($_SESSION["palabra2"]);
 
 <?php
 if (isset($_SESSION["aviso1"])) {
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"> "
+    print "    <p><label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label> "
         . "<span class=\"aviso\">$_SESSION[aviso1]</span></p>\n";
     print "\n";
 } else {
-    print "    <p><strong>Palabra:</strong> <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></p>\n";
+    print "    <p><label>Palabra: <input type=\"text\" name=\"palabra1\" size=\"20\" maxlength=\"20\"></label></p>\n";
     print "\n";
 }
 ?>
