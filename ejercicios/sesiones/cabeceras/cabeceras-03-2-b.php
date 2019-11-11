@@ -1,6 +1,6 @@
 <?php
 /**
- * Formulario 2-1 - cabeceras-02-1.php
+ * Formulario 3-2 - cabeceras-03-2-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
@@ -21,25 +21,7 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <title>
-    Formulario 2 (Formulario).
-    Cabeceras. Sesiones.
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
-</head>
 
-<body>
-  <h1>Formulario 2 (Formulario)</h1>
-
-  <form action="cabeceras-02-2.php" method="get">
-<?php
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -55,23 +37,50 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogemos el aviso
-$aviso = recoge("aviso");
+// Recogemos la edad
+$edad   = recoge("edad");
 
-print "    <p><label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>";
-// Si hay aviso, lo mostramos
-if ($aviso != "") {
-    print " <span class=\"aviso\">$aviso</span>";
+$edadOk = false;
+
+// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
+if ($edad == "") {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
+    exit();
+} elseif (!is_numeric($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
+    exit();
+} elseif (!ctype_digit($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
+    exit();
+} elseif ($edad < 18 || $edad > 130) {
+    header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
+    exit();
 }
-print "</p>\n";
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>
+    Formulario 3 (Resultado).
+    Cabeceras. Sesiones.
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
+</head>
+
+<body>
+  <h1>Formulario 3 (Resultado)</h1>
+
+<?php
+// Mostramos la edad
+print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
 print "\n";
 
 ?>
-    <p>
-      <input type="submit" value="Comprobar">
-      <input type="reset" value="Borrar">
-    </p>
-  </form>
+  <p><a href="cabeceras-03-1-b.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

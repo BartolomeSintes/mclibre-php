@@ -1,6 +1,6 @@
 <?php
 /**
- * Formulario 2-1 - cabeceras-02-1.php
+ * Formulario 4-1 - cabeceras-04-1-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Formulario 2 (Formulario).
+    Formulario 4 (Formulario).
     Cabeceras. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,9 +36,9 @@
 </head>
 
 <body>
-  <h1>Formulario 2 (Formulario)</h1>
+  <h1>Formulario 4 (Formulario)</h1>
 
-  <form action="cabeceras-02-2.php" method="get">
+  <form action="cabeceras-04-2-b.php" method="get">
 <?php
 function recoge($var, $m = "")
 {
@@ -55,11 +55,13 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogemos el aviso
+// Recogemos el aviso y la edad
 $aviso = recoge("aviso");
+$edad  = recoge("edad");
 
-print "    <p><label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>";
-// Si hay aviso, lo mostramos
+// Si hemos recibido la edad, la incluimos en el control
+print "    <p><label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\"></label>";
+// Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
     print " <span class=\"aviso\">$aviso</span>";
 }

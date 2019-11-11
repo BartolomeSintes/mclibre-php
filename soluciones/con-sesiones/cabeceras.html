@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cabeceras. Soluciones. Ejercicios (sesiones). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.ico">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios (sesiones) - Cabeceras - Soluciones</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Cabeceras</h2>
+
+      <h3><a href="../../ejercicios/sesiones/cabeceras/index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="../../ejercicios/sesiones/cabeceras/index.html#redireccion">Redirecciones</a>
+          <ul>
+            <li><a href="../../ejercicios/sesiones/cabeceras/index.html#ejercicio-1">1 - Formulario 1</a></li>
+            <li><a href="../../ejercicios/sesiones/cabeceras/index.html#ejercicio-2">2 - Formulario 2</a></li>
+            <li><a href="../../ejercicios/sesiones/cabeceras/index.html#ejercicio-3">3 - Formulario 3</a></li>
+            <li><a href="../../ejercicios/sesiones/cabeceras/index.html#ejercicio-4">4 - Formulario 4</a></li>
+            <li><a href="../../ejercicios/sesiones/cabeceras/index.html#ejercicio-5">5 - Formulario 5</a></li>
+          </ul>
+        </li>
+        <li><a href="../../ejercicios/sesiones/cabeceras/index.html#tipos-archivos">Tipos de archivos</a>
+          <ul>
+            <li><a href="../../ejercicios/sesiones/cabeceras/index.html#ejercicio-11">11 - Hoja de estilo</a></li>
+            <li><a href="../../ejercicios/sesiones/cabeceras/index.html#ejercicio-12">12 - Imagen</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3><a href="#">Soluciones</a></h3>
+      <ul>
+        <li><a href="#redireccion">Redirecciones</a>
+          <ul>
+            <li><a href="#ejercicio-1">1 - Formulario 1</a></li>
+            <li><a href="#ejercicio-2">2 - Formulario 2</a></li>
+            <li><a href="#ejercicio-3">3 - Formulario 3</a></li>
+            <li><a href="#ejercicio-4">4 - Formulario 4</a></li>
+            <li><a href="#ejercicio-5">5 - Formulario 5</a></li>
+          </ul>
+        </li>
+        <li><a href="#tipos-archivos">Tipos de archivos</a>
+          <ul>
+            <li><a href="#ejercicio-11">11 - Hoja de estilo</a></li>
+            <li><a href="#ejercicio-12">12 - Imagen</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sesiones/cabeceras/index.html">Cabeceras</a>. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
+
+  <section id="redireccion">
+    <h2>Redirecciones</h2>
+
+    <p>Estos ejercicios están formados por dos páginas:</p>
+    <ul>
+      <li>la primera página contiene un formulario que envía los datos a la segunda página</li>
+      <li>la segunda página recibe los datos. Si los datos contienen errores, se redirige a la primera página. Si no contienen errores, simplemente se muestran los datos.</li>
+    </ul>
+
+    <p>En la segunda página se puede utilizar la estructura de recogida y comprobación de datos vista en el tema anterior (variable $controlOk por cada $control recibido, etc.). En realidad, si sólo se recibe un control, esa estructura no es necesaria y el programa se puede simplificar. Por eso, en los cuatro primeros ejercicios se ofrecen dos versiones de la segunda página, una sin la estructura de recogida y comprobación de datos y otra con la estructura completa. Sin embargo en el ejericio quinto, en el que el formulario contiene dos controles, entonces sí que es conveniente incluir la estructura completa.</p>
+
+    <hr class="corta">
+
+    <p>Por otro lado, a partir del ejercicio 2, la primera página (el formulario) recibe datos de la segunda página. Por tanto, la primera página debe incluir la función recoge() y mostrar en caso necesario los datos. En estos ejercicios, la primera página no necesita comprobar los datos recibidos: simplemente, si se reciben, se muestran, y si no se reciben, no se muestran.</p>
+
+    <p>En esos ejercicios en los que ambas páginas reciben y envían datos, se recomienda hacer cada ejercicio siguiendo el recorrido de la aplicación. Es decir:</p>
+    <ul>
+      <li>empezar en la primera página, simplemente incluyendo el control.</li>
+      <li>continuar con la segunda página, recogiendo el dato enviado por la primera página, comprobando el dato y redirigiendo a la primera página si se detecta un error en el dato recibido o permaneciendo en la segunda si no se detecta ningún error.</li>
+      <li>completar la primera página, recogiendo los datos enviados por la segunda página y mostrándolos si se han recibido.</li>
+    </ul>
+
+    <section id="ejercicio-1">
+      <h3>Cabeceras 1 - Formulario 1</h3>
+
+      <p>cabeceras-01-2.php</p>
+      <ul>
+        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($nombreOk en este caso).
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el nombre
+$nombre   = recoge("nombre");
+
+// Comprobamos el nombre. Si es vacío volvemos al formulario
+if ($nombre == "") {
+    header("Location:cabeceras-01-1.php");
+    exit();
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 1 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Mostramos el nombre
+print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-01-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+        <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el nombre
+$nombre   = recoge("nombre");
+$nombreOk = false;
+
+// Comprobamos el nombre. Si es vacío, volvemos al formulario
+if ($nombre == "") {
+    header("Location:cabeceras-01-1.php");
+    exit();
+} else {
+    $nombreOk = true;
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 1 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Si el nombre es correcto, lo mostramos
+if ($nombreOk) {
+    print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-01-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-2">
+      <h3>Cabeceras 2 - Formulario 2</h3>
+
+      <p>cabeceras-02-1.php</p>
+      <ul>
+        <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "    &lt;p&gt;&lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+        <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso que le puede mandar la segunda página y lo muestre en caso necesario:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el aviso
+$aviso = recoge("aviso");
+
+print "    &lt;p&gt;&lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;";
+// Si hay aviso, lo mostramos
+if ($aviso != "") {
+    print " &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;";
+}
+print "&lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+
+      <p>cabeceras-02-2.php</p>
+      <ul>
+        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($nombreOk en este caso).
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el nombre
+$nombre   = recoge("nombre");
+
+// Comprobamos el nombre. Si es vacío volvemos al formulario enviando un aviso
+if ($nombre == "") {
+  header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
+    exit();
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 2 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Mostramos el nombre
+print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+print "\n";
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-02-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+        <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el nombre
+$nombre   = recoge("nombre");
+$nombreOk = false;
+
+// Comprobamos el nombre. Si es vacío, volvemos al formulario enviando un aviso
+if ($nombre == "") {
+    header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
+    exit();
+} else {
+    $nombreOk = true;
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 2 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Si el nombre es correcto, lo mostramos
+if ($nombreOk) {
+    print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-02-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-3">
+      <h3>Cabeceras 3 - Formulario 3</h3>
+
+      <p>cabeceras-03-1.php</p>
+      <ul>
+          <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
+
+            <div class="codigo">
+              <pre>
+  <code class="language-php">&lt;?php
+print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
+
+?&gt;</code>
+</pre>
+            </div>
+          </li>
+          <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso que le puede mandar la segunda página y lo muestre en caso necesario:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el aviso
+$aviso = recoge("aviso");
+
+print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;";
+// Si hay aviso, lo mostramos
+if ($aviso != "") {
+    print " &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;";
+}
+print "&lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+
+      <p>cabeceras-03-2.php</p>
+      <ul>
+        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($edadOk en este caso).
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos la edad
+$edad   = recoge("edad");
+
+$edadOk = false;
+
+// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
+if ($edad == "") {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
+    exit();
+} elseif (!is_numeric($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
+    exit();
+} elseif (!ctype_digit($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
+    exit();
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
+    exit();
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 3 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Mostramos la edad
+print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+print "\n";
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-03-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+        <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos la edad
+$edad   = recoge("edad");
+
+$edadOk = false;
+
+// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
+if ($edad == "") {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
+    exit();
+} elseif (!is_numeric($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
+    exit();
+} elseif (!ctype_digit($edad)) {
+    header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
+    exit();
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
+    exit();
+} else {
+    $edadOk = true;
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 3 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Si la edad es correcta, la mostramos
+if ($edadOk) {
+    print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
+    print "\n";
+}
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-03-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-4">
+      <h3>Cabeceras 4 - Formulario 4</h3>
+
+      <p>cabeceras-04-1.php</p>
+      <ul>
+          <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
+
+            <div class="codigo">
+              <pre>
+  <code class="language-php">&lt;?php
+print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
+
+?&gt;</code>
+</pre>
+            </div>
+          </li>
+          <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso y la edad que le puede mandar la segunda página y los mostraremos en caso necesario:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el aviso y la edad
+$aviso = recoge("aviso");
+$edad  = recoge("edad");
+
+// Si hemos recibido la edad, la incluimos en el control
+print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;";
+// Si hemos recibido un aviso, lo mostramos
+if ($aviso != "") {
+    print " &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;";
+}
+print "&lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+
+      <p>cabeceras-04-2.php</p>
+      <ul>
+        <li>Si sólo vamos a recoger un control, no es necesario utilizar variables auxiliares para almacenar la corrección del dato recibido ($edadOk en este caso).
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos la edad
+$edad   = recoge("edad");
+
+$edadOk = false;
+
+// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
+if ($edad == "") {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
+    exit();
+} elseif (!is_numeric($edad)) {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número&edad=$edad");
+    exit();
+} elseif (!ctype_digit($edad)) {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
+    exit();
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    header("Location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
+    exit();
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 4 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Mostramos la edad
+print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+print "\n";
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+        <li>Si queremos utilizar la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos la edad
+$edad   = recoge("edad");
+
+$edadOk = false;
+
+// Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
+if ($edad == "") {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
+    exit();
+} elseif (!is_numeric($edad)) {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número&edad=$edad");
+    exit();
+} elseif (!ctype_digit($edad)) {
+    header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
+    exit();
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    header("Location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
+    exit();
+} else {
+    $edadOk = true;
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 4 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Si la edad es correcta, la mostramos
+if ($edadOk) {
+    print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
+    print "\n";
+}
+
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-5">
+      <h3>Cabeceras 5 - Formulario 5</h3>
+
+      <p>cabeceras-05-1.php</p>
+      <ul>
+          <li>En un primer momento, añadimos a la primera página únicamente los dos controles, para que pueda enviar el dato a la segunda página:
+
+            <div class="codigo">
+              <pre>
+  <code class="language-php">&lt;?php
+print "    &lt;table&gt;\n";
+print "      &lt;tbody&gt;\n";
+print "        &lt;tr&gt;\n";
+print "          &lt;td&gt;&lt;label for=\"nombre\"&gt;Escriba su nombre:&lt;/label&gt;&lt;/td&gt;\n";
+print "          &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\"&gt;&lt;/td&gt;\n";
+print "        &lt;/tr&gt;\n";
+print "        &lt;tr&gt;\n";
+print "          &lt;td&gt;&lt;label for=\"edad\"&gt;Escriba su edad (entre 18 y 130 años):&lt;/label&gt;&lt;/td&gt;\n";
+print "          &lt;td&gt;&lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\" id=\"edad\"&gt;&lt;/td&gt;\n";
+print "        &lt;/tr&gt;\n";
+print "      &lt;/tbody&gt;\n";
+print "    &lt;/table&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+            </div>
+          </li>
+          <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja los avisos y los datos que le puede mandar la segunda página y los mostraremos en caso necesario:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos la edad y el nombre y los avisos correspondientes
+$nombre      = recoge("nombre");
+$avisoNombre = recoge("avisoNombre");
+$edad        = recoge("edad");
+$avisoEdad   = recoge("avisoEdad");
+
+print "    &lt;table&gt;\n";
+print "      &lt;tbody&gt;\n";
+print "        &lt;tr&gt;\n";
+print "          &lt;td&gt;&lt;label for=\"nombre\"&gt;Escriba su nombre:&lt;/label&gt;&lt;/td&gt;\n";
+// Si hemos recibido el nombre, lo incluimos en el control
+print "          &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\"&gt;";
+// Si hemos recibido un aviso sobre el nombre, lo mostramos
+if ($avisoNombre) {
+    print " &lt;span class=\"aviso\"&gt;$avisoNombre&lt;/span&gt;";
+}
+print "&lt;/td&gt;\n";
+print "        &lt;/tr&gt;\n";
+print "        &lt;tr&gt;\n";
+print "          &lt;td&gt;&lt;label for=\"edad\"&gt;Escriba su edad (entre 18 y 130 años):&lt;/label&gt;&lt;/td&gt;\n";
+// Si hemos recibido la edad, la incluimos en el control
+print "          &lt;td&gt;&lt;input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\"&gt;";
+// Si hemos recibido un aviso sobre la edad, lo mostramos
+if ($avisoEdad) {
+    print " &lt;span class=\"aviso\"&gt;$avisoEdad&lt;/span&gt;";
+}
+print "&lt;/td&gt;\n";
+print "        &lt;/tr&gt;\n";
+print "      &lt;/tbody&gt;\n";
+print "    &lt;/table&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+
+      <p>cabeceras-05-2.php</p>
+      <ul>
+        <li>Como vamos a recoger varios controles, utilizaremos la estructura de los programas de recogida y comprobación de datos vistos en el tema anterior, el programa podría ser el siguiente:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos el nombre y la edad
+$nombre      = recoge("nombre");
+$edad        = recoge("edad");
+
+$nombreOk    = false;
+$edadOk      = false;
+
+$avisoNombre = "";
+$avisoEdad   = "";
+
+// Comprobamos el nombre. Si detectamos un error, guardamos el aviso correspondiente
+if ($nombre == "") {
+    $avisoNombre = "No ha escrito su nombre";
+} else {
+    $nombreOk = true;
+}
+
+// Comprobamos la edad. Si detectamos un error, guardamos el aviso correspondiente
+if ($edad == "") {
+    $avisoEdad = "No ha escrito su edad";
+} elseif (!is_numeric($edad)) {
+    $avisoEdad = "No ha escrito la edad como número";
+} elseif (!ctype_digit($edad)) {
+    $avisoEdad = "No ha escrito la edad como número entero";
+} elseif ($edad &lt; 18 || $edad &gt; 130) {
+    $avisoEdad = "La edad no está entre 18 y 130 años";
+} else {
+    $edadOk = true;
+}
+
+// Si hay algún error, volvemos al formulario enviando los avisos y los datos recibidos
+if (!$nombreOk || !$edadOk) {
+    header("Location:cabeceras-05-1.php?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
+    exit();
+}
+
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;h1&gt;Formulario 4 (Resultado)&lt;/h1&gt;
+
+&lt;?php
+// Si el nombre y la edad son correctos, los mostramos
+if ($nombreOk && $edadOk) {
+    print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+    print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;
+  &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </section>
+
+  <section id="tipos-archivos">
+    <h2>Tipos de archivos</h2>
+
+    <section id="ejercicio-11">
+      <h3>Cabeceras 11 - Hoja de estilo</h3>
+
+      <p>cabeceras-11-css.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+header("Content-type: text/css");
+
+// en vez de elegir un color al azar entre 0 y 360 he utilizado
+// una fórmula para que salgan uno entre 19 valores: 0, 20, 40, etc.
+$color = 20 * rand(0, 18);
+$tamano = rand(100, 300) / 100;
+
+print "body {\n";
+print "  background-color: hsl($color, 100%, 80%);\n";
+print "  font-family: sans-serif;\n";
+print "  font-size: {$tamano}rem;\n";
+print "}\n";
+print "\n";
+
+print "h1 {\n";
+print "  padding: 0 10px 5px;\n";
+print "  border-radius: 10px;\n";
+print "  background-color: hsl($color, 100%, 30%);\n";
+print "  color: hsl($color, 100%, 60%);\n";
+print "}\n";
+print "\n";
+
+?&gt;
+footer {
+  border-top: black 1px solid;
+  margin-top: 2em;
+}</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-12">
+      <h3>Cabeceras 12 - Imagen</h3>
+
+      <p>cabeceras-12-svg.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+header("Content-type: image/svg+xml");
+
+$radio = rand(10, 20);
+$cx    = rand($radio + 1, 148 - $radio);
+$cy    = rand($radio + 1, 148 - $radio);
+
+print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
+    . "  width=\"150\" height=\"150\" viewBox=\"0 0 150 150\"&gt;\n";
+print "  &lt;rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
+    . "x=\"1\" y=\"1\" width=\"148\" height=\"148\" /&gt;\n";
+print "  &lt;circle cx=\"$cx\" cy=\"$cy\" r=\"$radio\" fill=\"black\" /&gt;\n";
+print "&lt;/svg&gt;";
+
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2019</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

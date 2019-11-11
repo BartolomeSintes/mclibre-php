@@ -3,9 +3,9 @@
  * Imagen - cabeceras-12-svg.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2019-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

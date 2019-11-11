@@ -3,9 +3,9 @@
  * Formulario 2-2 - cabeceras-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2019-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -37,10 +37,12 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+// Recogemos el nombre
 $nombre   = recoge("nombre");
 
 $nombreOk = false;
 
+// Comprobamos el nombre. Si es vacío, volvemos al formulario enviando un aviso
 if ($nombre == "") {
     header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
     exit();
@@ -66,6 +68,7 @@ if ($nombre == "") {
   <h1>Formulario 2 (Resultado)</h1>
 
 <?php
+// Si el nombre es correcto, lo mostramos
 if ($nombreOk) {
     print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
     print "\n";
@@ -77,7 +80,7 @@ if ($nombreOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2019-11-10">10 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">

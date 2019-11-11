@@ -3,9 +3,9 @@
  * Formulario 4-1 - cabeceras-04-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2019-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -55,10 +55,13 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+// Recogemos el aviso y la edad
 $aviso = recoge("aviso");
 $edad  = recoge("edad");
 
+// Si hemos recibido la edad, la incluimos en el control
 print "    <p><label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\"></label>";
+// Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
     print " <span class=\"aviso\">$aviso</span>";
 }
@@ -75,7 +78,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2019-11-10">10 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">

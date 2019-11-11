@@ -3,9 +3,9 @@
  * Formulario 1-2 - cabeceras-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2019-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -37,8 +37,9 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogemos el control
+// Recogemos el nombre
 $nombre   = recoge("nombre");
+
 $nombreOk = false;
 
 // Comprobamos el nombre. Si es vacío, volvemos al formulario
@@ -79,7 +80,7 @@ if ($nombreOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2019-11-10">10 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Formulario 2-1 - cabeceras-02-1.php
+ * Formulario 2-1 - cabeceras-02-1-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
@@ -38,7 +38,7 @@
 <body>
   <h1>Formulario 2 (Formulario)</h1>
 
-  <form action="cabeceras-02-2.php" method="get">
+  <form action="cabeceras-02-2-b.php" method="get">
 <?php
 function recoge($var, $m = "")
 {
@@ -59,7 +59,7 @@ function recoge($var, $m = "")
 $aviso = recoge("aviso");
 
 print "    <p><label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>";
-// Si hay aviso, lo mostramos
+// Si hemos recibido el aviso, lo mostramos
 if ($aviso != "") {
     print " <span class=\"aviso\">$aviso</span>";
 }
@@ -76,7 +76,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-11-10">10 de noviembre de 2019</time>
+      <time datetime="2018-11-10">10 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">

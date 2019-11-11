@@ -3,9 +3,9 @@
  * Formulario 5-2 - cabeceras-05-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2019-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -37,6 +37,7 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+// Recogemos el nombre y la edad
 $nombre      = recoge("nombre");
 $edad        = recoge("edad");
 
@@ -45,14 +46,15 @@ $edadOk      = false;
 
 $avisoNombre = "";
 $avisoEdad   = "";
-$paginaAnterior = "cabeceras-05-1.php";
 
+// Comprobamos el nombre. Si detectamos un error, guardamos el aviso correspondiente
 if ($nombre == "") {
     $avisoNombre = "No ha escrito su nombre";
 } else {
     $nombreOk = true;
 }
 
+// Comprobamos la edad. Si detectamos un error, guardamos el aviso correspondiente
 if ($edad == "") {
     $avisoEdad = "No ha escrito su edad";
 } elseif (!is_numeric($edad)) {
@@ -65,8 +67,9 @@ if ($edad == "") {
     $edadOk = true;
 }
 
+// Si hay algún error, volvemos al formulario enviando los avisos y los datos recibidos
 if (!$nombreOk || !$edadOk) {
-    header("Location:$paginaAnterior?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
+    header("Location:cabeceras-05-1.php?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
     exit();
 }
 
@@ -88,6 +91,7 @@ if (!$nombreOk || !$edadOk) {
   <h1>Formulario 5 (Resultado)</h1>
 
 <?php
+// Si el nombre y la edad son correctos, los mostramos
 if ($nombreOk && $edadOk) {
     print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
     print "\n";
@@ -101,7 +105,7 @@ if ($nombreOk && $edadOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2019-11-10">10 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">

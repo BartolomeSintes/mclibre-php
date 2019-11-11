@@ -3,9 +3,9 @@
  * Formulario 5-1 - cabeceras-05-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2019-11-10
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -55,6 +55,7 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+// Recogemos la edad y el nombre y los avisos correspondientes
 $nombre      = recoge("nombre");
 $avisoNombre = recoge("avisoNombre");
 $edad        = recoge("edad");
@@ -64,7 +65,9 @@ print "    <table>\n";
 print "      <tbody>\n";
 print "        <tr>\n";
 print "          <td><label for=\"nombre\">Escriba su nombre:</label></td>\n";
+// Si hemos recibido el nombre, lo incluimos en el control
 print "          <td><input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\">";
+// Si hemos recibido un aviso sobre el nombre, lo mostramos
 if ($avisoNombre) {
     print " <span class=\"aviso\">$avisoNombre</span>";
 }
@@ -72,7 +75,9 @@ print "</td>\n";
 print "        </tr>\n";
 print "        <tr>\n";
 print "          <td><label for=\"edad\">Escriba su edad (entre 18 y 130 años):</label></td>\n";
+// Si hemos recibido la edad, la incluimos en el control
 print "          <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\">";
+// Si hemos recibido un aviso sobre la edad, lo mostramos
 if ($avisoEdad) {
     print " <span class=\"aviso\">$avisoEdad</span>";
 }
@@ -92,7 +97,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2019-11-10">10 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">
