@@ -18,7 +18,7 @@
     <p>Escriba un número (0 &lt; número &le; 20) y mostraré una tabla de una fila
       de ese tamaño con casillas de verificación en cada celda.</p>
 
-    <p>Tamaño de la tabla: <input type="number" name="numero" min="1" max="20" value="10"></p>
+    <p><label>Tamaño de la tabla: <input type="number" name="numero" min="1" max="20" value="10"></label></p>
 
     <p>
       <input type="submit" value="Mostrar">

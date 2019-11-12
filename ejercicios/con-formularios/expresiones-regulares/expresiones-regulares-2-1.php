@@ -14,7 +14,7 @@
   <h1>Validación de entrada de texto 2 (Formulario)</h1>
 
   <form action="expresiones-regulares-2-2.php" method="get">
-    <p>Escriba algo: <input type="text" name="texto" size="80" maxlength="80"></p>
+    <p><label>Escriba algo: <input type="text" name="texto" size="80" maxlength="80"></label></p>
 
     <p class="der">
       <input type="submit" value="Enviar">

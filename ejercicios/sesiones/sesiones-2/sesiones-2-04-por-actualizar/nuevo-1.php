@@ -45,12 +45,12 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Nombre del dato:</strong></td>
-          <td><input type="text" name="nombre" size="20" maxlength="20"></td>
+          <td><label for="nombre">Nombre del dato:</label></td>
+          <td><input type="text" name="nombre" size="20" maxlength="20" id="nombre"></td>
         </tr>
         <tr>
-          <td><strong>Valor del dato:</strong></td>
-          <td><input type="text" name="valor" size="30" maxlength="30"></td>
+          <td><label for="valor">Valor del dato:</label></td>
+          <td><input type="text" name="valor" size="30" maxlength="30" id="valor"></td>
         </tr>
       </tbody>
     </table>

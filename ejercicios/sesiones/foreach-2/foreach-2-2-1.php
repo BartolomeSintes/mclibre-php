@@ -18,7 +18,7 @@
     <p>Escriba un número (0 &lt; número &le; 10) y dibujaré una tabla de una
     columna de ese tamaño con cajas de texto en cada celda.</p>
 
-    <p>Tamaño de la tabla: <input type="number" name="numero" min="1" max="10" value="7"></p>
+    <p><label>Tamaño de la tabla: <input type="number" name="numero" min="1" max="10" value="7"></label></p>
 
     <p>
       <input type="submit" value="Mostrar">

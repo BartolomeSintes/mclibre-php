@@ -52,7 +52,7 @@ if (isset($_SESSION["apellidos"])) {
   <form action="apellidos-2.php" method="get">
     <p>Escriba sus apellidos:</p>
 
-    <p><strong>Apellidos:</strong> <input type="text" name="apellidos" size="30" maxlength="30"></p>
+    <p><label>Apellidos: <input type="text" name="apellidos" size="30" maxlength="30"></label></p>
 
     <p>
       <input type="submit" value="Guardar">

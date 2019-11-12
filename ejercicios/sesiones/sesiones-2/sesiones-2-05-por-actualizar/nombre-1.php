@@ -52,7 +52,7 @@ if (isset($_SESSION["nombre"])) {
   <form action="nombre-2.php" method="get">
     <p>Escriba su nombre:</p>
 
-    <p><strong>Nombre:</strong> <input type="text" name="nombre" size="20" maxlength="20"></p>
+    <p><label>Nombre: <input type="text" name="nombre" size="20" maxlength="20"></label></p>
 
     <p>
       <input type="submit" value="Guardar">

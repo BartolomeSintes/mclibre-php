@@ -43,7 +43,7 @@ session_start();
   <h1>Almacenamiento de datos en sesión</h1>
 
   <form action="matrices-1-01-2.php" method="get">
-    <p>Escriba algún nombre: <input type="text" name="nombre" size="30" maxlength="30"></p>
+    <p><label>Escriba algún nombre: <input type="text" name="nombre" size="30" maxlength="30"></label></p>
 
     <p>
       <input type="submit" value="Añadir">
