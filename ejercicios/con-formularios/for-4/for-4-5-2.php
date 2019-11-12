@@ -1,26 +1,26 @@
 <?php
 /**
  * Sucesiones aritméticas 5 (Resultado) - for-4-5-2.php
-*
-* @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
-* @copyright 2016 Bartolomé Sintes Marco
-* @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
-* @version   2016-11-06
-* @link      http://www.mclibre.org
-*
-*  This program is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU Affero General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  any later version.
-*
-*  This program is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU Affero General Public License for more details.
-*
-*  You should have received a copy of the GNU Affero General Public License
-*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ *
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2016 Bartolomé Sintes Marco
+ * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @version   2016-11-06
+ * @link      http://www.mclibre.org
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -65,7 +65,7 @@ $inicialOk = $finalOk = $incrementoOk = $valoresOk = false;
 
 if ($inicial == "") {
     $inicialOk = true;
-} elseif (! is_numeric($inicial)) {
+} elseif (!is_numeric($inicial)) {
     print "  <p class=\"aviso\">No ha escrito el valor inicial como número.</p>\n";
     print "\n";
 } else {
@@ -74,7 +74,7 @@ if ($inicial == "") {
 
 if ($final == "") {
     $finalOk = true;
-} elseif (! is_numeric($final)) {
+} elseif (!is_numeric($final)) {
     print "  <p class=\"aviso\">No ha escrito el valor final como número.</p>\n";
     print "\n";
 } else {
@@ -83,7 +83,7 @@ if ($final == "") {
 
 if ($incremento == "") {
     $incrementoOk = true;
-} elseif (! is_numeric($incremento)) {
+} elseif (!is_numeric($incremento)) {
     print "  <p class=\"aviso\">No ha escrito el incremento como número.</p>\n";
     print "\n";
 } else {
@@ -92,10 +92,10 @@ if ($incremento == "") {
 
 if ($valores == "") {
     $valoresOk = true;
-} elseif (! is_numeric($valores)) {
+} elseif (!is_numeric($valores)) {
     print "  <p class=\"aviso\">No ha escrito el número de valores como número.</p>\n";
     print "\n";
-} elseif (! ctype_digit($valores)) {
+} elseif (!ctype_digit($valores)) {
     print "  <p class=\"aviso\">No ha escrito el número de valores "
         . "como número entero positivo.</p>\n";
     print "\n";
@@ -108,20 +108,20 @@ if ($valores == "") {
 
 // Comprobación de que se han recibido exactamente tres de los cuatro valores
 
-$recibidos = 0;
+$recibidos   = 0;
 $recibidosOk = false;
 
 if ($inicial != "") {
-    $recibidos ++;
+    $recibidos++;
 }
 if ($final != "") {
-    $recibidos ++;
+    $recibidos++;
 }
 if ($incremento != "") {
-    $recibidos ++;
+    $recibidos++;
 }
 if ($valores != "") {
-    $recibidos ++;
+    $recibidos++;
 }
 
 if ($recibidos != 3) {
@@ -171,7 +171,7 @@ if ($recibidosOk && $inicialOk && $finalOk && $incrementoOk && $valoresOk) {
         print "  <p>Términos de la sucesión:</p>\n";
         print "\n";
         print "  <ol>\n";
-        for ($i = 0; $i < $valores; $i ++) {
+        for ($i = 0; $i < $valores; $i++) {
             print "    <li>" . ($inicial + $incremento * $i) . "</li>\n";
         }
         print "  </ol>\n";

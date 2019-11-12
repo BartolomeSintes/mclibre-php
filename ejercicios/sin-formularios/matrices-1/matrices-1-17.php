@@ -81,8 +81,8 @@ print "\n";
 print "  <h2>Resultado</h2>\n";
 print "\n";
 
-$gana1 = 0;
-$gana2 = 0;
+$gana1  = 0;
+$gana2  = 0;
 $empate = 0;
 for ($i = 0; $i < $numero; $i++) {
     if ($dados1[$i] > $dados2[$i]) {
@@ -90,7 +90,7 @@ for ($i = 0; $i < $numero; $i++) {
     } elseif ($dados1[$i] < $dados2[$i]) {
         $gana2++;
     } else {
-        $empate ++;
+        $empate++;
     }
 }
 

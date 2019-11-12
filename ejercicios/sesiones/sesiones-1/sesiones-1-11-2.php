@@ -47,17 +47,16 @@ function recoge($var, $m = "")
 }
 
 // Recogida de accion
-$accion   = recoge("accion");
+$accion = recoge("accion");
 
 // Dependiendo de la acción recibida, modifica el número guardado
 if ($accion == "cero") {
     $_SESSION["numero"] = 0;
 } elseif ($accion == "subir") {
-    $_SESSION["numero"] ++;
+    $_SESSION["numero"]++;
 } elseif ($accion == "bajar") {
-    $_SESSION["numero"] --;
+    $_SESSION["numero"]--;
 }
 
 // y vuelve al formulario
 header("Location:sesiones-1-11-1.php");
-?>

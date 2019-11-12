@@ -47,9 +47,9 @@ if (!isset($_SESSION["dados"])) {
 $accion = recoge("accion");
 
 if ($accion == "subir") {
-    $_SESSION["dados"] ++;
+    $_SESSION["dados"]++;
 } elseif ($accion == "bajar") {
-    $_SESSION["dados"] --;
+    $_SESSION["dados"]--;
 }
 
 if ($_SESSION["dados"] < 1) {

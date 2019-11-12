@@ -50,8 +50,8 @@ for ($i = 0; $i < 4; $i++) {
     print "      <circle cx=\"0\" cy=\"0\" r=\"" . (200 - 50 * $i - 25) . "\" fill=\"#ddd\" />\n";
 }
 
-$disparos = rand(1,10);
-for ($i = 0; $i < $disparos; $i ++) {
+$disparos = rand(1, 10);
+for ($i = 0; $i < $disparos; $i++) {
     $x = rand(-180, 180);
     $y = rand(-180, 180);
     print "      <path fill=\"black\" stroke=\"white\" stroke-width=\"2\" "
