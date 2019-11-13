@@ -1,6 +1,6 @@
 <?php
 /**
- * Tabla con casillas de verificación (Formulario) - matrices-1-21-1.php
+ * Palabras repetidas (Formulario) - matrices-2-2-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-matrices-1-21");
+session_name("cs-matrices-2-2");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -30,8 +30,8 @@ session_start();
 <head>
   <meta charset="utf-8">
   <title>
-    Tabla de una fila con casillas de verificación (Formulario).
-    foreach (1). Sesiones.
+    Palabras repetidas (Formulario).
+    Matrices (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,28 +39,29 @@ session_start();
 </head>
 
 <body>
-  <h1>Tabla de una fila con casillas de verificación (Formulario)</h1>
+  <h1>Palabras repetidas (Formulario)</h1>
 
-  <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>
+  <p>Escriba una palabra en cada caja de texto y le diré si ha repetido alguna.</p>
 
-  <form action="matrices-1-21-2.php" method="get">
-    <table class="conborde">
+  <form action="matrices-2-2-2.php" method="get">
+    <table>
       <tbody>
-        <tr>
 <?php
-// Genera el número de casillas de verificación a mostrar
-$numero = rand(1, 20);
+// Genera el número de cajas de texto a mostrar
+$numero = rand(1, 10);
 
-// Guarda en la sesión el número de casillas de verificación
+// Guarda en la sesión el número de cajas de texto
 $_SESSION["numero"] = $numero;
 
-// Bucle para generar las casillas de verificación
+// Bucle para generar las cajas de texto
 for ($i = 1; $i <= $numero; $i++) {
+    print "        <tr>\n";
+    print "          <td>$i</td>\n";
     // El nombre del control es una matriz (c[])
-    print "          <td><label><input type=\"checkbox\" name=\"c[$i]\"> $i</label></td>\n";
+    print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\"></td>\n";
+    print "        </tr>\n";
 }
 ?>
-        </tr>
       </tbody>
     </table>
 

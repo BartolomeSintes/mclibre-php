@@ -1,6 +1,6 @@
 <?php
 /**
- * Tabla con casillas de verificación (Resultado) - matrices-1-25-2.php
+ * Encuesta (Resultado) - matrices-2-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-matrices-1-25");
+session_name("cs-matrices-2-3");
 session_start();
 
-// Si el tamaño de la tabla no está guardado en la sesión, vuelve al formulario
-if (!isset($_SESSION["numero"])) {
-    header("Location: matrices-1-25-1.php");
+// Si el número de preguntas y respuestas no está guardado en la sesión, vuelve al formulario
+if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
+    header("Location: matrices-2-3-1.php");
     exit;
 }
 ?>
@@ -36,8 +36,8 @@ if (!isset($_SESSION["numero"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Tabla cuadrada con casillas de verificación (Resultado).
-    foreach (1). Sesiones.
+    Encuesta (Resultado).
+    Matrices (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +45,7 @@ if (!isset($_SESSION["numero"])) {
 </head>
 
 <body>
-  <h1>Tabla cuadrada con casillas de verificación (Resultado)</h1>
+  <h1>Encuesta (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -65,61 +65,61 @@ function recoge($var, $m = "")
 }
 
 // Recogida de datos
-$c      = recoge("c", []);
-$cOk    = false;
-$cValor = "on";
+$b   = recoge("b", []);
+$bOk = false;
 
-// Se cuenta el número de elementos en la matriz $c
-$casillasMarcadas = count($c);
+// Se cuenta el número de elementos en la matriz $b
+$botonesRecibidos = count($b);
 
-// Comprobación de $c (casillas de verificación)
+// Comprobación de $b (botones radio)
 
-// Si se han recibido demasiadas casillas
-if ($casillasMarcadas > $_SESSION["numero"] * $_SESSION["numero"]) {
-    print "  <p class=\"aviso\">La matriz recibida es demasiado grande.</p>\n";
+// Si se han recibido demasiados botones
+if ($botonesRecibidos > $_SESSION["preguntas"]) {
+    print "  <p class=\"aviso\">Se han recibido demasiadas respuestas.</p>\n";
     print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
-    $cOk = true;
-    foreach ($c as $indice => $valor) {
-        // Si el índice es numérico (como es de tipo int hay que convertirlo a string
+    $bOk = true;
+    foreach ($b as $indice => $valor) {
+        // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
         if (!ctype_digit((string)$indice)
+            // o si el valor no es numérico
+            || !ctype_digit($valor)
             // o si el índice está fuera de rango
-            || $indice < 1 || $indice > $_SESSION["numero"] * $_SESSION["numero"]
-        // o si el valor no es "on"
-            || $valor != $cValor) {
-            $cOk = false;
+            || $indice < 1 || $indice > $_SESSION["preguntas"]
+            // o si el valor está fuera de rango
+            || $valor < 1 || $valor > $_SESSION["respuestas"]) {
+            $bOk = false;
         }
     }
-    if (!$cOk) {
-        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+    if (!$bOk) {
+        print "  <p class=\"aviso\">Las respuestas recibidas no son correctas.</p>\n";
         print "\n";
     }
 }
 
-// Si las casillas recibidas con correctas ...
-if ($cOk) {
-    // Si no se ha recibido ninguna casilla
-    if ($casillasMarcadas == 0) {
-        print "  <p>No ha marcado ninguna casilla.</p>\n";
+// Si los botones radio recibidos con correctos ...
+if ($bOk) {
+    // Si no se ha recibido ningún botón
+    if ($botonesRecibidos == 0) {
+        print "  <p>No se ha recibido ninguna respuesta.</p>\n";
         print "\n";
     } else {
-        print "  <p>Ha marcado <strong>$casillasMarcadas</strong> casilla";
-        if ($casillasMarcadas > 1) {
-            print "s";
+        print "  <p>Se han contestado <strong>$botonesRecibidos</strong> pregunta(s)";
+        print " de un total de <strong>$_SESSION[preguntas]</strong>.</p>\n";
+        print "\n";
+
+        print "  <ul>\n";
+        // Bucle para escribir qué se ha contestado en cada pregunta
+        foreach ($b as $indice => $valor) {
+            print "    <li>En la pregunta <strong>$indice</strong> se ha contestado <strong>$valor</strong></li>\n";
         }
-        print " de un total de <strong>" . ($_SESSION["numero"] * $_SESSION["numero"])
-            . "</strong>: <strong>";
-        // Bucle para escribir los índices de las casillas recibidas
-        foreach ($c as $indice => $valor) {
-            print "$indice ";
-        }
-        print "</strong></p>\n";
+        print "  </ul>\n";
         print "\n";
     }
 }
 ?>
-  <p><a href="matrices-1-25-1.php">Volver al formulario.</a></p>
+  <p><a href="matrices-2-3-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Encuesta (Resultado) - matrices-1-23-2.php
+ * Palabras repetidas (Resultado) - matrices-2-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-matrices-1-23");
+session_name("cs-matrices-2-2");
 session_start();
 
-// Si el número de preguntas y respuestas no está guardado en la sesión, vuelve al formulario
-if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
-    header("Location: matrices-1-23-1.php");
+// Si el número de cajas de texto no está guardado en la sesión, vuelve al formulario
+if (!isset($_SESSION["numero"])) {
+    header("Location: matrices-2-2-1.php");
     exit;
 }
 ?>
@@ -36,8 +36,8 @@ if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Encuesta (Resultado).
-    foreach (1). Sesiones.
+    Palabras repetidas (Resultado).
+    Matrices (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +45,7 @@ if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
 </head>
 
 <body>
-  <h1>Encuesta (Resultado)</h1>
+  <h1>Palabras repetidas (Resultado)</h1>
 
 <?php
 // Funciones auxiliares
@@ -65,61 +65,81 @@ function recoge($var, $m = "")
 }
 
 // Recogida de datos
-$b   = recoge("b", []);
-$bOk = false;
+$c   = recoge("c");
+$cOk = false;
 
-// Se cuenta el número de elementos en la matriz $b
-$botonesRecibidos = count($b);
+// Se cuenta el número de elementos en la matriz $c
+$cajasRecibidas = count($c);
 
-// Comprobación de $b (botones radio)
+// Comprobación de $c (cajas de texto)
 
-// Si se han recibido demasiados botones
-if ($botonesRecibidos > $_SESSION["preguntas"]) {
-    print "  <p class=\"aviso\">Se han recibido demasiadas respuestas.</p>\n";
+// Si no se han recibido todas las cajas
+if ($cajasRecibidas != $_SESSION["numero"]) {
+    print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
     print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
-    $bOk = true;
-    foreach ($b as $indice => $valor) {
+    $cOk = true;
+    foreach ($c as $indice => $valor) {
         // Si el índice no es numérico (como es de tipo int hay que convertirlo a string antes)
         if (!ctype_digit((string)$indice)
-            // o si el valor no es numérico
-            || !ctype_digit($valor)
             // o si el índice está fuera de rango
-            || $indice < 1 || $indice > $_SESSION["preguntas"]
-            // o si el valor está fuera de rango
-            || $valor < 1 || $valor > $_SESSION["respuestas"]) {
-            $bOk = false;
+            || $indice < 1 || $indice > $_SESSION["numero"]
+            // o si el contenido no es vacío o todo letras
+           || (!ctype_alpha($valor) && $valor != "")) {
+            $cOk = false;
         }
     }
-    if (!$bOk) {
-        print "  <p class=\"aviso\">Las respuestas recibidas no son correctas.</p>\n";
+    if (!$cOk) {
+        print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
         print "\n";
     }
 }
 
-// Si los botones radio recibidos con correctos ...
-if ($bOk) {
-    // Si no se ha recibido ningún botón
-    if ($botonesRecibidos == 0) {
-        print "  <p>No se ha recibido ninguna respuesta.</p>\n";
-        print "\n";
-    } else {
-        print "  <p>Se han contestado <strong>$botonesRecibidos</strong> pregunta(s)";
-        print " de un total de <strong>$_SESSION[preguntas]</strong>.</p>\n";
-        print "\n";
-
-        print "  <ul>\n";
-        // Bucle para escribir qué se ha contestado en cada pregunta
-        foreach ($b as $indice => $valor) {
-            print "    <li>En la pregunta <strong>$indice</strong> se ha contestado <strong>$valor</strong></li>\n";
+// Si las cajas de texto recibidas con correctas ...
+if ($cOk) {
+    // Bucle para contar las cajas que no son vacías
+    $cajasRellenas = 0;
+    foreach ($c as $indice => $valor) {
+        if ($c[$indice] != "") {
+            $cajasRellenas++;
         }
-        print "  </ul>\n";
-        print "\n";
+    }
+    print "  <p>Ha rellenado <strong>$cajasRellenas</strong> caja";
+    if ($cajasRellenas != 1) {
+        print "s";
+    }
+    print " de un total de <strong>$_SESSION[numero]</strong>.</p>\n";
+    print "\n";
+
+    if ($cajasRellenas > 1) {
+        // Bucle anidado para comprobar si hay repeticiones
+        $repeticion = false;
+        // Toma los valores de las cajas ...
+        foreach ($c as $indice1 => $valor1) {
+            // ... y los compara con todos los valores de las cajas
+            foreach ($c as $indice2 => $valor2) {
+                // Si los valores son iguales (pero distintos de la cadena vacía) hay repeticiones
+                if ($valor1 == $valor2 && $valor1 != ""
+                // pero como compara todos con todos también comparará cada elemento consigo mismo
+                // así que hay que comprobar que los índices sean distintos
+                    && $indice1 != $indice2) {
+                    $repeticion = true;
+                }
+            }
+        }
+        if ($repeticion) {
+            print "  <p>El texto de alguna caja está repetido.</p>\n";
+            print "\n";
+        } else {
+            print "  <p>El texto de cada caja es diferente.</p>\n";
+            print "\n";
+        }
     }
 }
 ?>
-  <p><a href="matrices-1-23-1.php">Volver al formulario.</a></p>
+
+  <p><a href="matrices-2-2-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

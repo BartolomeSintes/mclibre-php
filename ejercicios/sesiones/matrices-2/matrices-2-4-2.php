@@ -1,6 +1,6 @@
 <?php
 /**
- * Hombres y mujeres (Resultado) - matrices-1-24-2.php
+ * Hombres y mujeres (Resultado) - matrices-2-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,12 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-matrices-1-24");
+session_name("cs-matrices-2-4");
 session_start();
 
 // Si el número de cajas de texto no está guardado en la sesión, vuelve al formulario
 if (!isset($_SESSION["numero"])) {
-    header("Location: matrices-1-24-1.php");
+    header("Location: matrices-2-4-1.php");
     exit;
 }
 ?>
@@ -37,7 +37,7 @@ if (!isset($_SESSION["numero"])) {
   <meta charset="utf-8">
   <title>
     Hombres y mujeres (Resultado).
-    foreach (1). Sesiones.
+    Matrices (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -173,7 +173,7 @@ if ($cOk && $bOk) {
     }
 }
 ?>
-  <p><a href="matrices-1-24-1.php">Volver al formulario.</a></p>
+  <p><a href="matrices-2-4-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">

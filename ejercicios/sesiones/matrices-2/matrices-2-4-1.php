@@ -1,6 +1,6 @@
 <?php
 /**
- * Palabras repetidas (Formulario) - matrices-1-22-1.php
+ * Hombres y mujeres (Formulario) - matrices-2-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("cs-matrices-1-22");
+session_name("cs-matrices-2-4");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -30,8 +30,8 @@ session_start();
 <head>
   <meta charset="utf-8">
   <title>
-    Palabras repetidas (Formulario).
-    foreach (1). Sesiones.
+    Hombres y mujeres (Formulario).
+    Matrices (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,26 +39,30 @@ session_start();
 </head>
 
 <body>
-  <h1>Palabras repetidas (Formulario)</h1>
+  <h1>Hombres y mujeres (Formulario)</h1>
 
-  <p>Escriba una palabra en cada caja de texto y le diré si ha repetido alguna.</p>
+  <p>Escriba un nombre propio en cada caja de texto y si se trata de un hombre o de una mujer.</p>
 
-  <form action="matrices-1-22-2.php" method="get">
+  <form action="matrices-2-4-2.php" method="get">
     <table>
       <tbody>
 <?php
-// Genera el número de cajas de texto a mostrar
+// Genera el número de cajas de texto y botones radio a mostrar
 $numero = rand(1, 10);
 
-// Guarda en la sesión el número de cajas de texto
+// Guarda en la sesión el número de cajas de texto y botones radio
 $_SESSION["numero"] = $numero;
 
-// Bucle para generar las cajas de texto
+// Bucle para generar las cajas de texto y los botones radio
 for ($i = 1; $i <= $numero; $i++) {
     print "        <tr>\n";
     print "          <td>$i</td>\n";
-    // El nombre del control es una matriz (c[])
+    // Los nombres de los controles son dos matrices (c[] y b())
+    // En cada fila el name del botón radio es el mismo (para que formen un botón radio)
+    // pero el value es distinto (h o m)
     print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\"></td>\n";
+    print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"h\">Hombre</label></td>\n";
+    print "          <td><label><input type=\"radio\" name=\"b[$i]\" value=\"m\">Mujer</label></td>\n";
     print "        </tr>\n";
 }
 ?>
