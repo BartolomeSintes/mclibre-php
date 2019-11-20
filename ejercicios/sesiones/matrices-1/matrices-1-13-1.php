@@ -47,7 +47,7 @@ if (isset($_SESSION["dibujos"]) && !isset($_SESSION["deseado"])) {
   <meta charset="utf-8">
   <title>
     Elimine dibujos.
-    foreach (1). Sesiones.
+    Matrices (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

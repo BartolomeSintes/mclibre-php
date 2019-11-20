@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 13 - matrices-1-02-2.php
+ * Sesiones Matrices (2) 2 - matrices-1-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco

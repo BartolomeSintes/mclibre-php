@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (2) 13 - matrices-1-02-1.php
+ * Sesiones Matrices (2) 1 - matrices-1-02-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -32,7 +32,7 @@ session_start();
   <meta charset="utf-8">
   <title>
     Almacenamiento de datos en sesión.
-    Sesiones (2). Sesiones.
+    Matrices (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
