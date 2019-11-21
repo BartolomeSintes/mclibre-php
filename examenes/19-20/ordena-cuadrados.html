@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ordena cuadrados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.ico">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Ordena cuadrados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Ordena cuadrados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre un número de cuadrados de diferentes tamaños y colores indicado por el usuario. Además, el programa ordenará los dibujos por el criterio indicado por el usuario (tamaño o color, siendo el color el matiz del color en el formato HSL).</p>
+
+  <section id="comentarios">
+    <h2>Ordena cuadrados - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página muestra un formulario con dos controles:
+            <ul>
+              <li>El número de cuadrados que se van a mostrar (entre 4 y 12).</li>
+              <li>El criterio con el que se van a ordenar (tamaños o colores).</li>
+            </ul>
+          </li>
+          <li>La segunda página mostrará:
+            <ul>
+              <li>Si se han recibido valores incorrectos, los mensajes de error correspondientes.</li>
+              <li>El número de cuadrados indicado por el usuario.</li>
+              <li>Las imágenes de los cuadrados con tamaño entre 40 y 100px, y con color entre hsl(0, 50%, 50%) y hsl(360, 50%, 50%), al azar.</li>
+              <li>Las mismas imágenes, ordenadas por el criterio elegido por el usuario (tamaño o color).</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se mostrarán mensajes de error con la información faltante o incorrecta.</li>
+      <li>No se deben cambiar los nombres de los controles incluidos en las plantillas.</li>
+      <li>Al actualizar la segunda página, se mostrarán cuadrados distintos, pero se mostrará la misma cantidad de cuadrados, ordenados por el mismo criterio.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/ordena-cuadrados-1.png" alt="Ordena cuadrados" width="1012" height="200"></p>
+        <p class="captura"><img src="img/ordena-cuadrados-2.png" alt="Ordena cuadrados" width="1012" height="160"></p>
+        <p class="captura"><img src="img/ordena-cuadrados-3.png" alt="Ordena cuadrados" width="1012" height="155"></p>
+        <p class="captura"><img src="img/ordena-cuadrados-4.png" alt="Ordena cuadrados" width="1012" height="400"></p>
+        <p class="captura"><img src="img/ordena-cuadrados-5.png" alt="Ordena cuadrados" width="1012" height="400"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Ordena cuadrados - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">4</span> cuadrados&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">55</span>" height="<span class="codigo-resaltado">55</span>" fill="hsl(<span class="codigo-resaltado">120</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">93</span>" height="<span class="codigo-resaltado">93</span>" fill="hsl(<span class="codigo-resaltado">64</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">51</span>" height="<span class="codigo-resaltado">51</span>" fill="hsl(<span class="codigo-resaltado">88</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">74</span>" height="<span class="codigo-resaltado">74</span>" fill="hsl(<span class="codigo-resaltado">273</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;
+
+  &lt;h2&gt;Ordenados por <span class="codigo-resaltado">colores</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">93</span>" height="<span class="codigo-resaltado">93</span>" fill="hsl(<span class="codigo-resaltado">64</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">51</span>" height="<span class="codigo-resaltado">51</span>" fill="hsl(<span class="codigo-resaltado">88</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">55</span>" height="<span class="codigo-resaltado">55</span>" fill="hsl(<span class="codigo-resaltado">120</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="100" viewBox="0 0 100 100"&gt;
+      &lt;rect x="10" y="10" width="<span class="codigo-resaltado">74</span>" height="<span class="codigo-resaltado">74</span>" fill="hsl(<span class="codigo-resaltado">273</span>, 50%, 50%)" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 20 de noviembre de 2019</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
