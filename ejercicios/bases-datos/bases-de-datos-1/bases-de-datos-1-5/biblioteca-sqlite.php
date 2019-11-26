@@ -44,7 +44,7 @@ function conectaDb()
     global $dbDb;
 
     try {
-        $tmp = new PDO("sqlite:" . $dbDb);
+        $tmp = new PDO("sqlite:$dbDb");
         return($tmp);
     } catch(PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);

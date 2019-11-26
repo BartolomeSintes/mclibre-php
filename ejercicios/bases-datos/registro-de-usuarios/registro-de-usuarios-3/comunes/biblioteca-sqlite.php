@@ -43,7 +43,7 @@ function conectaDb()
     global $dbDb;
 
     try {
-        $tmp = new PDO("sqlite:" . $dbDb);
+        $tmp = new PDO("sqlite:$dbDb");
         // activate use of foreign key constraints
         $tmp->exec("PRAGMA foreign_keys = ON;");
         return($tmp);

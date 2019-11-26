@@ -86,7 +86,7 @@ function conectaDb()
             $db = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } elseif ($dbMotor == SQLITE) {
-            $db = new PDO("sqlite:" . $dbDb);
+            $db = new PDO("sqlite:$dbDb");
         }
         return($db);
     } catch (PDOException $e) {
