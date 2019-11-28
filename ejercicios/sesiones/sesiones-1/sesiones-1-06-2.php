@@ -55,7 +55,7 @@ if ($palabra == "") {
     header("Location:sesiones-1-04-1.php");
     exit;
 } elseif (!ctype_upper($palabra)) {
-    // Si la palabra no está en mayúculas, se vuelve al formulario
+    // Si la palabra no está en mayúsculas, se vuelve al formulario
     $_SESSION["error"] = "No ha escrito la palabra en mayúsculas";
     header("Location:sesiones-1-04-1.php");
     exit;

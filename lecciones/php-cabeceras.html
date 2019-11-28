@@ -206,7 +206,7 @@ header("Location:http://www.example.com");
       <p>Los ejemplos siguientes muestran la influencia del tamaño del buffer. En estos ejemplos se utilizan las funciones <a href="https://www.php.net/manual/en/function.ob-start.php"><span class="php-fun">ob_start()</span></a> y <a href="https://www.php.net/manual/en/function.ob-end-flush.php"><span class="php-fun">ob_end_flush()</span></a>, que permiten gestionar directamente el buffer de salida independientemente de la configuración del servidor. Estos buffers son temporales y desaparecen cuando se termina de ejecutar la página.</p>
 
       <ul>
-        <li>En el primer ejemplo, el buffer es de 1 byte. El contenido HTML generado por la instrucción <span class="php-res">print</span> no cabe en el buffer y la redirección no llega a realizarse, por loq ue el usuario ve el contenido de la página 2.
+        <li>En el primer ejemplo, el buffer es de 1 byte. El contenido HTML generado por la instrucción <span class="php-res">print</span> no cabe en el buffer y la redirección no llega a realizarse, por lo que el usuario ve el contenido de la página 2.
 
           <div class="filaflex">
             <div class="columnaflex">
@@ -473,7 +473,7 @@ header("Location:http://www.example.com?nombre=Pepito Conejo&amp;edad=25");
 </pre>
     </div>
 
-    <p>El nombre de la cabecera (location) se puede escribir en mayúculas o minúsculas y entre los dos puntos y la dirección puede haber espacios en blanco.</p>
+    <p>El nombre de la cabecera (location) se puede escribir en mayúsculas o minúsculas y entre los dos puntos y la dirección puede haber espacios en blanco.</p>
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
@@ -767,7 +767,7 @@ print "&lt;/svg&gt;";
         </div>
       </div>
 
-      <p>Pero aunque el navegador consiga mostrar el cuadrado, realmente no estamos haciendo bien las cosas. Una imagen SVG debería entregarse al navegador con el tipo MIME <strong>image/svg+xml</strong>. En este caso, el programa no declara ningún tipo MIME, así que el servidor lo entrega con el tipo MIME predeterminado de los programas PHP, el tipo MIME <strong>text/html</strong> (es decir, como página web). Aunque estrictamente hablando el documento no es una página web válida porque le faltan las etiquetas básicas como <span class="html-eti">&lt;html&gt;</span>, <span class="html-eti">&lt;head&gt;</span>, <span class="html-eti">&lt;body&gt;</span>, etc. los navegadores aceptan las páginas inválidas e intentan interpretar el contenido de la mejor manera posible. En este caso, el anevagdor consigue mostrar la imagen.</p>
+      <p>Pero aunque el navegador consiga mostrar el cuadrado, realmente no estamos haciendo bien las cosas. Una imagen SVG debería entregarse al navegador con el tipo MIME <strong>image/svg+xml</strong>. En este caso, el programa no declara ningún tipo MIME, así que el servidor lo entrega con el tipo MIME predeterminado de los programas PHP, el tipo MIME <strong>text/html</strong> (es decir, como página web). Aunque estrictamente hablando el documento no es una página web válida porque le faltan las etiquetas básicas como <span class="html-eti">&lt;html&gt;</span>, <span class="html-eti">&lt;head&gt;</span>, <span class="html-eti">&lt;body&gt;</span>, etc. los navegadores aceptan las páginas inválidas e intentan interpretar el contenido de la mejor manera posible. En este caso, el navegador consigue mostrar la imagen.</p>
 
       <p>Pero en otras circunstancias, este mismo programa no daría el resultado esperado. Como muestra el siguiente ejemplo, si el programa se llama en una etiqueta <span class="html-eti">&lt;img&gt;</span>, el navegador no puede mostrar la imagen. El problema es que en una etiqueta el navegador tiene que recibir obligatoriamente algún tipo MIME de imagen (jpg, png, svg, etc.). Como pasaba en el ejemplo anterior de la hoja de estilo, si el documento se sirve con un tipo MIME incorrecto, los navegadores no intentan siquiera mostrar el contenido.</p>
 
