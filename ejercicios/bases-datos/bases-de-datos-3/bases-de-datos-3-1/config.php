@@ -3,9 +3,9 @@
  * Bases de datos 3-1 - config.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-12-09
+ * @version   2019-11-28
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ $dbMotor = SQLITE;     // Valores posibles: MYSQL o SQLITE
 // Configuración para MYSQL
 
 define("MYSQL_HOST",     "mysql:host=localhost");   // Nombre de host
-define("MYSQL_USER",     "root");                   // Nombre de usuario
+define("MYSQL_USER",     "");                       // Nombre de usuario
 define("MYSQL_PASSWORD", "");                       // Contraseña de usuario
 define("MYSQL_DATABASE", "mclibre_base_datos_3_1"); // Nombre de la base de datos
 define("MYSQL_TABLA",    "tabla");                  // Nombre de la tabla
@@ -37,14 +37,18 @@ define("MYSQL_TABLA",    "tabla");                  // Nombre de la tabla
 // Configuración para SQLite
 
 define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-3-1.sqlite"); // Ubicación de la base de datos
-define("SQLITE_TABLA",   "tabla");                                       // Nombre de la tabla
+define("SQLITE_TABLA",    "tabla");                 // Nombre de la tabla
 
 // Configuración Tabla Agenda
 
-define("MAX_REG_TABLA",  20); // Número máximo de registros en la tabla
-$tamNombre    = 40;           // Tamaño de la columna Nombre
-$tamApellidos = 60;           // Tamaño de la columna Apellidos
+define("MAX_REG_TABLA", 20); // Número máximo de registros en la tabla
+$tamNombre    = 40;          // Tamaño de la columna Nombre
+$tamApellidos = 60;          // Tamaño de la columna Apellidos
 
 // Método de envío de formularios
 
-define("FORM_METHOD",    GET);     // Valores posibles: GET o POST
+define("FORM_METHOD", GET);  // Valores posibles: GET o POST
+
+// Hoja de estilo
+
+define("COLOR", 27);         // Color básico de la aplicación (0 - 360)
