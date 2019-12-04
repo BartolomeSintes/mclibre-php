@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-28
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,23 +32,23 @@ define("MYSQL_HOST",     "mysql:host=localhost");   // Nombre de host
 define("MYSQL_USER",     "");                       // Nombre de usuario
 define("MYSQL_PASSWORD", "");                       // Contraseña de usuario
 define("MYSQL_DATABASE", "mclibre_base_datos_3_1"); // Nombre de la base de datos
-define("MYSQL_TABLA",    "tabla");                  // Nombre de la tabla
+define("MYSQL_TABLE",    "tabla");                  // Nombre de la tabla
 
 // Configuración para SQLite
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-3-1.sqlite"); // Ubicación de la base de datos
-define("SQLITE_TABLA",    "tabla");                 // Nombre de la tabla
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre_base_datos_3_1.sqlite"); // Ubicación de la base de datos
+define("SQLITE_TABLE",    "tabla");                                                         // Nombre de la tabla
 
 // Configuración Tabla Agenda
 
-define("MAX_REG_TABLA", 20); // Número máximo de registros en la tabla
-$tamNombre    = 40;          // Tamaño de la columna Nombre
-$tamApellidos = 60;          // Tamaño de la columna Apellidos
+define("MAX_REG_TABLE", 20);  // Número máximo de registros en la tabla
+$tamNombre    = 40;           // Tamaño de la columna Nombre
+$tamApellidos = 60;           // Tamaño de la columna Apellidos
 
 // Método de envío de formularios
 
-define("FORM_METHOD", GET);  // Valores posibles: GET o POST
+define("FORM_METHOD", GET);   // Valores posibles: GET o POST
 
 // Hoja de estilo
 
-define("COLOR", 27);         // Color básico de la aplicación (0 - 360)
+define("COLOR", 27);          // Color básico de la aplicación (0 - 360)

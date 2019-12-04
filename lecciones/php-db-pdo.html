@@ -84,8 +84,8 @@ function conectaDb()
         $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp-&gt;exec("set names utf8mb4");
-        return($tmp);
-    } catch(PDOException $e) {
+        return $tmp;
+    } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
         print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
@@ -118,8 +118,8 @@ function conectaDb()
 
     try {
         $tmp = new PDO("sqlite:$dbDb");
-        return($tmp);
-    } catch(PDOException $e) {
+        return $tmp;
+    } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
         print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
@@ -203,8 +203,8 @@ function conectaDb()
         $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp-&gt;exec("set names utf8mb4");
-        return($tmp);
-    } catch(PDOException $e) {
+        return $tmp;
+    } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
         print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
@@ -227,8 +227,8 @@ function conectaDb()
 
     try {
         $tmp = new PDO("sqlite:$dbDb");
-        return($tmp);
-    } catch(PDOException $e) {
+        return $tmp;
+    } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
         print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
@@ -282,7 +282,7 @@ $db = null;</code>
 </pre>
         </div>
       </li>
-      <li>Pero si la consulta devuelve registros, el método devuelve los registros correspondientes o <span class="php-con">false</span>. En ese caso sí que es conveniente guardar lo que devuelve el método en una variable para procesarla posteriormente. Si contiene registros, la variable es de un tipo especial llamado <a href="https://www.php.net/manual/en/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero que se puede recorrer con un bucle <span class="php-res">foreach()</span>,
+      <li>Pero si la consulta devuelve registros, el método devuelve los registros correspondientes o <span class="php-con">false</span>. En ese caso sí que es conveniente guardar lo que devuelve el método en una variable para procesarla posteriormente. Si contiene registros, la variable es de un tipo especial llamado <a href="https://www.php.net/manual/en/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero que se puede recorrer con un bucle <span class="php-res">foreach ()</span>,
 
         <div class="codigo">
           <pre>
@@ -446,7 +446,7 @@ $columnas = [
 
 function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
-    foreach($valoresValidos as $valorValido) {
+    foreach ($valoresValidos as $valorValido) {
         if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $valorValido) {
             return $valorValido;
         }

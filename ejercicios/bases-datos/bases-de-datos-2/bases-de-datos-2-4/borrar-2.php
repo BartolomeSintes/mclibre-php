@@ -25,7 +25,7 @@
 require_once "biblioteca.php";
 
 $db = conectaDb();
-cabecera ("Borrar 2", MENU_VOLVER);
+cabecera("Borrar 2", MENU_VOLVER);
 
 $id = recoge("id", []);
 

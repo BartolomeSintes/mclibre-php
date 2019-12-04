@@ -51,7 +51,7 @@ if (!count($_SESSION)) {
   print "\n";
   print "    <table>\n";
   print "      <tbody>\n";
-    foreach($_SESSION as $indice => $valor) {
+    foreach ($_SESSION as $indice => $valor) {
         print "        <tr>\n";
         print "          <td><input type=\"checkbox\" name=\"c[$indice]\" value=\"$valor\"></td>\n";
         print "          <td>$indice: $valor</td>\n";

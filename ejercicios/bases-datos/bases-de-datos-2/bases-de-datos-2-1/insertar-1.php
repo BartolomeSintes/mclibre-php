@@ -3,9 +3,9 @@
  * Bases de datos 2-1 - insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() >= MAX_REG_TABLA) {
+} elseif ($result->fetchColumn() >= MAX_REG_TABLE) {
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
 } else {

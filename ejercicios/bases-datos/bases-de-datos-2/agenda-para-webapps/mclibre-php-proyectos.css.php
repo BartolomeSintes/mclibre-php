@@ -63,6 +63,12 @@ input {
   font-family: monospace;
 }
 
+.boton-invisible {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
 .aviso {
   color: red;
 }

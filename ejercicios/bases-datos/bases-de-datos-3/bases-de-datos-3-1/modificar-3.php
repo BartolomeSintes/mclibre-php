@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-28
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -71,7 +71,8 @@ if ($nombreOk && $apellidosOk) {
                 AND apellidos=:apellidos
                 AND id<>:id";
             $result = $db->prepare($consulta);
-            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id]);
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                ":id" => $id]);
             if (!$result) {
                 print "    <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
@@ -82,7 +83,8 @@ if ($nombreOk && $apellidosOk) {
                     SET nombre=:nombre, apellidos=:apellidos
                     WHERE id=:id";
                 $result = $db->prepare($consulta);
-                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
+                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                    ":id" => $id])) {
                     print "    <p>Registro modificado correctamente.</p>\n";
                 } else {
                     print "    <p>Error al modificar el registro.</p>\n";

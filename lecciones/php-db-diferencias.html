@@ -69,21 +69,19 @@
 <code class="language-php">// EJEMPLOS DE CONSULTAS CON COLLATE
 $consultaCreaDb = "CREATE DATABASE $dbDb
     CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci";  // NO distingue
+    COLLATE utf8mb4_unicode_ci";                               // NO distingue
 
 $consultaCreaDb = "CREATE DATABASE $dbDb
     CHARACTER SET utf8mb4
-    COLLATE utf8mb4_bin";         // SÍ distingue
+    COLLATE utf8mb4_bin";                                      // SÍ distingue
 
 $consulta = "SELECT * FROM $dbTabla
     WHERE nombre LIKE :nombre COLLATE utf8mb4_unicode_ci
-    AND apellidos LIKE :apellidos COLLATE utf8mb4_unicode_ci
-    ";                           // NO distingue
+    AND apellidos LIKE :apellidos COLLATE utf8mb4_unicode_ci"; // NO distingue
 
 $consulta = "SELECT * FROM $dbTabla
     WHERE nombre LIKE :nombre COLLATE utf8mb4_bin
-    AND apellidos LIKE :apellidos COLLATE utf8mb4_bin
-    ";                           // SÍ distingue</code>
+    AND apellidos LIKE :apellidos COLLATE utf8mb4_bin";        // SÍ distingue</code>
 </pre>
     </div>
 

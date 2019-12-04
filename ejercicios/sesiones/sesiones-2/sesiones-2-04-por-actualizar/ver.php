@@ -49,7 +49,7 @@ if (!count($_SESSION)) {
     print "  <p>Datos introducidos:</p>\n";
     print "\n";
     print "  <ul>\n";
-    foreach($_SESSION as $indice => $valor) {
+    foreach ($_SESSION as $indice => $valor) {
         print "    <li>$indice: $valor</li>\n";
     }
     print "  </ul>\n";

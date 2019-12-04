@@ -3,9 +3,9 @@
  * Bases de datos 2-3 - biblioteca-mysql.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 // Variables globales
 
 $dbDb    = MYSQL_DATABASE;                     // Nombre de la base de datos
-$dbTabla = MYSQL_DATABASE . "." . MYSQL_TABLA; // Nombre de la tabla
+$dbTabla = MYSQL_DATABASE . "." . MYSQL_TABLE; // Nombre de la tabla
 
 // Consultas
 
@@ -50,8 +50,8 @@ function conectaDb()
         $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp->exec("set names utf8mb4");
-        return($tmp);
-    } catch(PDOException $e) {
+        return $tmp;
+    } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";

@@ -54,7 +54,7 @@ if (!isset($_SESSION["compraventaUsuario"])) {
         } else {
             date_default_timezone_set("Europe/Madrid");
             $fecha_compra = date("Y-m-d H:i:s");
-            foreach($result as $valor) {
+            foreach ($result as $valor) {
                 $consulta = "UPDATE $dbArticulos
                     SET comprado='true', fecha_compra='$fecha_compra'
                     WHERE id='$valor[id]'";

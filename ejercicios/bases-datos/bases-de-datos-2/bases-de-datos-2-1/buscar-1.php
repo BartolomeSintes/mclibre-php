@@ -3,9 +3,9 @@
  * Bases de datos 2-1 - buscar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ cabecera("Buscar 1", MENU_VOLVER);
 $consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db->query($consulta);
 if (!$result) {
-    print "      <p>Error en la consulta.</p>\n";
+    print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {

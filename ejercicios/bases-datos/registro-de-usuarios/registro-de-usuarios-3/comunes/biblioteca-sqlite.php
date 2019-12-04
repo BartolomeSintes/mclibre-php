@@ -46,8 +46,8 @@ function conectaDb()
         $tmp = new PDO("sqlite:$dbDb");
         // activate use of foreign key constraints
         $tmp->exec("PRAGMA foreign_keys = ON;");
-        return($tmp);
-    } catch(PDOException $e) {
+        return $tmp;
+    } catch (PDOException $e) {
         cabecera("Error grave", MENU_ERROR, 1);
         print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";

@@ -40,7 +40,7 @@ function conectaDb()
         } elseif ($dbMotor == SQLITE) {
             $db = new PDO("sqlite:$dbDb");
         }
-        return($db);
+        return $db;
     } catch (PDOException $e) {
         print "          <li>Error: No puede conectarse con la base de datos.</li>\n";
         print "          <li>Error: " . $e->getMessage() . "</li>\n";

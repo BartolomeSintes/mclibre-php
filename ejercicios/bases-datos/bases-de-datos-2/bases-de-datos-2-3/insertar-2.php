@@ -3,9 +3,9 @@
  * Bases de datos 2-3 - insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -73,7 +73,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
         $result = $db->query($consulta);
         if (!$result) {
             print "    <p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn() >= MAX_REG_TABLA) {
+        } elseif ($result->fetchColumn() >= MAX_REG_TABLE) {
             print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
             print "    <p>Por favor, borre algún registro antes.</p>\n";
@@ -97,7 +97,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                 $result = $db->prepare($consulta);
                 if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
                     ":telefono" => $telefono, ":correo" => $correo])) {
-                    print "    <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
+                    print "    <p>Registro <strong>$nombre $apellidos $telefono $correo</strong> creado correctamente.</p>\n";
                 } else {
                     print "    <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";
                 }

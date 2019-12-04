@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-28
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -57,14 +57,14 @@ if (mb_strlen($telefono, "UTF-8") > $tamTelefono) {
 }
 
 if ($nombreOk && $apellidosOk && $telefonoOk) {
-    if ($nombre == "" && $apellidos == "" && $telefono == "") {
+    if ($nombre == "" && $apellidos == ""  && $telefono == "") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbTabla";
         $result = $db->query($consulta);
         if (!$result) {
             print "    <p>Error en la consulta.</p>\n";
-        } elseif ($result->fetchColumn() >= MAX_REG_TABLA) {
+        } elseif ($result->fetchColumn() >= MAX_REG_TABLE) {
             print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
             print "    <p>Por favor, borre algún registro antes.</p>\n";
@@ -74,7 +74,8 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
                 AND apellidos=:apellidos
                 AND telefono=:telefono";
             $result = $db->prepare($consulta);
-            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono]);
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                ":telefono" => $telefono]);
             if (!$result) {
                 print "    <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
@@ -84,10 +85,11 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
                     (nombre, apellidos, telefono)
                     VALUES (:nombre, :apellidos, :telefono)";
                 $result = $db->prepare($consulta);
-                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono])) {
-                    print "    <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
+                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                    ":telefono" => $telefono])) {
+                    print "    <p>Registro <strong>$nombre $apellidos $telefono</strong> creado correctamente.</p>\n";
                 } else {
-                    print "    <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";
+                    print "    <p>Error al crear el registro <strong>$nombre $apellidos $telefono</strong>.</p>\n";
                 }
             }
         }

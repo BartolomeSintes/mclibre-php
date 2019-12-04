@@ -3,9 +3,9 @@
  * Bases de datos 1-3 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,19 +24,25 @@
 
 // Constantes y variables globales
 
-define("FORM_METHOD",    "get");           // Formularios se envían con GET
-//define("FORM_METHOD",    "post");        // Formularios se envían con POST
+define("GET", "get");                      // Formularios se envían con GET
+define("POST", "post");                    // Formularios se envían con POST
 
-define("MYSQL",          "MySQL");         // Base de datos MySQL
-define("SQLITE",         "SQLite");        // Base de datos SQLITE
+define("MYSQL", "MySQL");                  // Base de datos MySQL
+define("SQLITE", "SQLite");                // Base de datos SQLITE
 
 define("MENU_PRINCIPAL", "menuPrincipal"); // Menú principal
-define("MENU_VOLVER",    "menuVolver");    // Menú Volver a inicio
+define("MENU_VOLVER", "menuVolver");       // Menú Volver a inicio
+
+// Constantes y variables configurables
+
+define("FORM_METHOD", GET);                // Valores posibles: GET o POST
+
+$dbMotor = SQLITE;                         // Valores posibles: MYSQL o SQLITE
 
 $tamNombre    = 40;                        // Tamaño de la columna Nombre
 $tamApellidos = 60;                        // Tamaño de la columna Apellidos
 
-$dbMotor = SQLITE;                         // Base de datos empleada (MYSQL o SQLITE)
+// Biblioteca base de datos
 
 if ($dbMotor == MYSQL) {
     require_once "biblioteca-mysql.php";
@@ -104,7 +110,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2017-12-05\">5 de diciembre de 2017</time>\n";
+    print "      <time datetime=\"2019-12-04\">4 de diciembre de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

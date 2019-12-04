@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-28
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,6 @@ if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
     $apellidosOk = true;
 }
 
-
 if (mb_strlen($telefono, "UTF-8") > $tamTelefono) {
     print "    <p class=\"aviso\">El teléfono no puede tener más de $tamTelefono caracteres.</p>\n";
     print "\n";
@@ -91,7 +90,8 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
                     . "No se ha guardado la modificación.</p>\n";
             } else {
                 $consulta = "UPDATE $dbTabla
-                    SET nombre=:nombre, apellidos=:apellidos, telefono=:telefono
+                    SET nombre=:nombre, apellidos=:apellidos,
+                        telefono=:telefono
                     WHERE id=:id";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,

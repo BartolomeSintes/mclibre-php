@@ -64,13 +64,13 @@ function recoge($var, $m = "")
 function recogeNumero($var, $inicial, $minimo, $maximo) {
     $tmp = recoge($var);
     if (!is_numeric($tmp)) {
-        return($inicial);
+        return $inicial;
     } elseif ($tmp < $minimo) {
-        return($minimo);
+        return $minimo;
     } elseif ($tmp > $maximo) {
-        return($maximo);
+        return $maximo;
     } else {
-        return($tmp);
+        return $tmp;
     }
 }
 
@@ -78,10 +78,10 @@ function recogeTexto($var, $inicial, $valores) {
     $tmp = recoge($var);
     foreach ($valores as $valor) {
         if ($tmp == $valor) {
-            return($tmp);
+            return $tmp;
         }
     }
-    return($inicial);
+    return $inicial;
 }
 
 // Recoge configuración de la gráfica

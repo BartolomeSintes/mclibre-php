@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-28
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,21 +24,19 @@
 
 // Constantes y variables globales
 
-define("GET",    "get");                   // Formularios se envían con GET
-define("POST",   "post");                  // Formularios se envían con POST
+define("GET", "get");                      // Formularios se envían con GET
+define("POST", "post");                    // Formularios se envían con POST
 
-define("MYSQL",          "MySQL");         // Base de datos MySQL
-define("SQLITE",         "SQLite");        // Base de datos SQLITE
+define("MYSQL", "MySQL");                  // Base de datos MySQL
+define("SQLITE", "SQLite");                // Base de datos SQLITE
 
 define("MENU_PRINCIPAL", "menuPrincipal"); // Menú principal
-define("MENU_VOLVER",    "menuVolver");    // Menú Volver a inicio
+define("MENU_VOLVER", "menuVolver");       // Menú Volver a inicio
 
-$columnas = [                              // Nombre de las columnas de la tabla
-    "nombre",
-    "apellidos"
+$columnasOrden = [                         // Nombre de las columnas de la tabla y valor de ordenación
+    "nombre ASC", "nombre DESC",
+    "apellidos ASC", "apellidos DESC"
 ];
-
-$orden = [ "ASC", "DESC" ];                // Valores de ordenación
 
 // Constantes y variables configurables
 
@@ -71,7 +69,7 @@ function recoge($var, $m = "")
 
 function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
-    foreach($valoresValidos as $valorValido) {
+    foreach ($valoresValidos as $valorValido) {
         if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $valorValido) {
             return $valorValido;
         }
@@ -125,7 +123,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-11-28\">28 de noviembre de 2019</time>\n";
+    print "      <time datetime=\"2019-12-04\">4 de diciembre de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

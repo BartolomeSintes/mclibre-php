@@ -189,7 +189,7 @@ function recoge($var, $m = "")
 
 function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
-    foreach($valoresValidos as $valorValido) {
+    foreach ($valoresValidos as $valorValido) {
         if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $valorValido) {
             return $valorValido;
         }

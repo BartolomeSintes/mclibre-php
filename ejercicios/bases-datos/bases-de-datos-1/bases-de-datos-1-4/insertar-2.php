@@ -3,9 +3,9 @@
  * Bases de datos 1-4 - insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2017 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2017-12-05
+ * @version   2019-12-04
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,8 +27,8 @@ require_once "biblioteca.php";
 $db = conectaDb();
 cabecera("Añadir 2", MENU_VOLVER);
 
-$nombre      = recoge("nombre");
-$apellidos   = recoge("apellidos");
+$nombre    = recoge("nombre");
+$apellidos = recoge("apellidos");
 
 $nombreOk    = false;
 $apellidosOk = false;
