@@ -30,8 +30,7 @@ cabecera("Borrar 1", MENU_VOLVER);
 $ordena = recogeValores("ordena", $columnasOrden, "apellidos ASC");
 $id     = recoge("id", []);
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
-    ORDER BY $ordena";
+$consulta = "SELECT COUNT(*) FROM $dbTabla";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
