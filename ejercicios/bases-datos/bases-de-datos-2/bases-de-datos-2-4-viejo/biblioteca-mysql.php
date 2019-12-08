@@ -25,7 +25,7 @@
 // Variables globales
 
 $dbDb    = MYSQL_DATABASE;                     // Nombre de la base de datos
-$dbTabla = MYSQL_DATABASE . "." . MYSQL_TABLA; // Nombre de la tabla
+$dbTabla = MYSQL_DATABASE . "." . MYSQL_TABLE; // Nombre de la tabla
 
 // Consultas
 

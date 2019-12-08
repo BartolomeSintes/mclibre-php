@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-04
+ * @version   2019-12-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

@@ -24,23 +24,23 @@
 
 // Constantes y variables globales
 
-define("GET",    "get");                   // Formularios se envían con GET
-define("POST",   "post");                  // Formularios se envían con POST
+define("GET", "get");                       // Formularios se envían con GET
+define("POST", "post");                     // Formularios se envían con POST
 
-define("MYSQL",          "MySQL");         // Base de datos MySQL
-define("SQLITE",         "SQLite");        // Base de datos SQLITE
+define("MYSQL", "MySQL");                   // Base de datos MySQL
+define("SQLITE", "SQLite");                 // Base de datos SQLITE
 
-define("MENU_PRINCIPAL", "menuPrincipal"); // Menú principal
-define("MENU_VOLVER",    "menuVolver");    // Menú Volver a inicio
+define("MENU_PRINCIPAL", "menuPrincipal");  // Menú principal
+define("MENU_VOLVER", "menuVolver");        // Menú Volver a inicio
 
-$columnas = [                              // Nombre de las columnas de la tabla
+$columnas = [                               // Nombre de las columnas de la tabla
     "nombre",
     "apellidos",
     "telefono",
-    "correo"
+    "correo",
 ];
 
-$orden = [ "ASC", "DESC" ];                // Valores de ordenación
+$orden = ["ASC", "DESC"];                   // Valores de ordenación
 
 // Constantes y variables configurables
 

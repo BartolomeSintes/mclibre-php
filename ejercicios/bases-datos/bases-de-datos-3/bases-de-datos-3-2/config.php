@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-04
+ * @version   2019-12-08
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,16 +28,16 @@ $dbMotor = SQLITE;     // Valores posibles: MYSQL o SQLITE
 
 // Configuración para MYSQL
 
-define("MYSQL_HOST",     "mysql:host=localhost");   // Nombre de host
-define("MYSQL_USER",     "");                       // Nombre de usuario
-define("MYSQL_PASSWORD", "");                       // Contraseña de usuario
-define("MYSQL_DATABASE", "mclibre_base_datos_3_2"); // Nombre de la base de datos
-define("MYSQL_TABLE",    "tabla");                  // Nombre de la tabla
+define("MYSQL_HOST", "mysql:host=localhost");        // Nombre de host
+define("MYSQL_USER", "");                            // Nombre de usuario
+define("MYSQL_PASSWORD", "");                        // Contraseña de usuario
+define("MYSQL_DATABASE", "mclibre_base_datos_3_2");  // Nombre de la base de datos
+define("MYSQL_TABLE", "tabla");                      // Nombre de la tabla
 
 // Configuración para SQLite
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre_base_datos_3_2.sqlite"); // Ubicación de la base de datos
-define("SQLITE_TABLE",    "tabla");                                                         // Nombre de la tabla
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-3-2.sqlite");  // Ubicación de la base de datos
+define("SQLITE_TABLE", "tabla");                                                             // Nombre de la tabla
 
 // Configuración Tabla Agenda
 
