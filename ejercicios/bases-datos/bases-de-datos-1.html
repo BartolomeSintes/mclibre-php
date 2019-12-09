@@ -20,7 +20,7 @@
     </p>
 
     <div class="toc">
-      <h2>Bases de datos (1)<input type="image" alt=" " autofocus></h2>
+      <h2>Bases de datos (1)</h2>
 
       <h3><a href="#">Enunciados</a></h3>
       <ul>
@@ -69,42 +69,94 @@
 
     <h3>Comentarios</h3>
     <ul>
+<!--
+      <li>La organización de las páginas puede ser la siguiente:
+        <p>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" style="background-color: white;" font-family="sans-serif" class="izquierda">
+            <defs>
+              <marker id="flechaNegra" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+              </marker>
+              <marker id="flechaRoja" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+              </marker>
+            </defs>
+
+            <svg x="200" y="140" width="120">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
+              <rect x="25" y="20" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="50" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="63" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">menú</text>
+            </svg>
+
+            <svg x="310" y="10" width="120">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
+              <rect x="25" y="20" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="50" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="63" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">menú</text>
+            </svg>
+            <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+
+            <svg x="330" y="140" width="120">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-1.php</text>
+              <rect x="25" y="20" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="50" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="63" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">menú</text>
+            </svg>
+          </svg>
+        </p>
+        <p>Las líneas negras corresponden a envíos de formularios y las líneas rojas a redirecciones.</p>
+      </li>
+-->
       <li>En una aplicación real, el borrado y creación de la base de datos estarían disponibles únicamente para el administrador, pero aquí cualquier usuario puede borrar y crear la base de datos.</li>
       <li>El proceso de borrar y crear la base de datos se realiza uno tras otro. Lógicamente, la primera vez que se realice el borrado y creación de la base de datos se obtendrá un mensaje de error en el borrado puesto que la base de datos no existe todavía, pero las veces siguientes no.</li>
       <li>Si el usuario intenta acceder directamente a la página que crea la tabla (escribiendo la dirección en el navegador), se le redireccionará directamente a la página inicial.</li>
-      <li>Esta pueden ser las consultas de creación de tabla para este proyecto:
+      <li>Esta pueden ser las consultas de creación de tabla para este proyecto cuando se trabaja con <strong>SQLite</strong>:
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Tamaño de los campos en la tabla
-$tamNombre    = 40; // Tamaño del campo Nombre
-$tamApellidos = 60; // Tamaño del campo Apellidos
+<code class="language-php">// Constantes y variables globales
 
-// Variables globales MYSQL
-$dbDb    = "mclibre_base_datos_1_1";          // Nombre de la base de datos
-$dbTabla = $dbDb . ".tabla";                  // Nombre de la tabla
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-1.sqlite"); // Ubicación de la base de datos
+define("SQLITE_TABLE_AGENDA", "tabla");                                                            // Nombre de la tabla
 
-// Consulta de creación de base de datos y tabla en MySQL
-$consultaCreaDb = "CREATE DATABASE $dbDb
+$dbTablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla
+
+// Consultas
+
+$consultaCreaTablaAgenda = "CREATE TABLE $dbTablaAgenda (
+    id INTEGER PRIMARY KEY,
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos)
+    )";</code>
+</pre>
+        </div>
+      </li>
+      <li>Esta pueden ser las consultas de creación de tabla para este proyecto cuando se trabaja con <strong>MySQL</strong>:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Constantes y variables globales
+
+define("MYSQL_HOST", "mysql:host=localhost");        // Nombre de host
+define("MYSQL_USER", "");                            // Nombre de usuario
+define("MYSQL_PASSWORD", "");                        // Contraseña de usuario
+define("MYSQL_DATABASE", "mclibre_base_datos_1_1");  // Nombre de la base de datos
+define("MYSQL_TABLE_AGENDA", "tabla");               // Nombre de la tabla
+
+$dbTablaAgenda = MYSQL_DATABASE . "." . MYSQL_TABLE_AGENDA;  // Nombre de la tabla
+
+// Consultas
+
+$consultaCreaDb = "CREATE DATABASE " . MYSQL_DATABASE . "
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci";
 
-$consultaCreaTabla = "CREATE TABLE $dbTabla (
+$consultaCreaTablaAgenda = "CREATE TABLE $dbTablaAgenda (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos),
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos),
     PRIMARY KEY(id)
-    )";
-
-// Variables globales SQLite
-$dbDb    = "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-1.sqlite";  // Nombre de la base de datos
-$dbTabla = "tabla";                                       // Nombre de la tabla
-
-// Consulta de creación de tabla en SQLite
-$consulta = "CREATE TABLE $dbTabla (
-    id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos)
     )";</code>
 </pre>
         </div>
@@ -145,8 +197,8 @@ $consulta = "CREATE TABLE $dbTabla (
 <code class="language-php">// Comprobar la longitud del dato recibido
 $nombre    = recoge("nombre");
 
-if (mb_strlen($nombre, "UTF-8") &gt; $tamNombre) {
-    print "      &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $tamNombre caracteres.&lt;/p&gt;\n";
+if (mb_strlen($nombre, "UTF-8") &gt; $tamAgendaNombre) {
+    print "      &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $tamAgendaNombre caracteres.&lt;/p&gt;\n";
 } else {
     $nombreOk = true;
 }</code>
@@ -161,7 +213,7 @@ if (mb_strlen($nombre, "UTF-8") &gt; $tamNombre) {
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "INSERT INTO $dbTabla
+$consulta = "INSERT INTO $dbTablaAgenda
     (nombre, apellidos)
     VALUES (:nombre, :apellidos)";
 $result = $db-&gt;prepare($consulta);
@@ -202,7 +254,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
         <div class="codigo">
           <pre>
 <code class="language-php">// Seleccionar todos los registros
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $dbTablaAgenda";
 $result = $db-&gt;query($consulta);
 
 foreach ($result as $valor) {
@@ -248,7 +300,7 @@ foreach ($result as $valor) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Imprime casilla de verificación
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $dbTablaAgenda";
 $result = $db-&gt;query($consulta);
 
 foreach ($result as $valor) {
@@ -265,7 +317,7 @@ foreach ($result as $valor) {
 $id = recoge("id", []);
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $dbTabla
+    $consulta = "DELETE FROM $dbTablaAgenda
         WHERE id=:indice";
     $result = $db-&gt;prepare($consulta);
     if ($result-&gt;execute([":indice" =&gt; $indice])) {
@@ -315,7 +367,7 @@ foreach ($id as $indice =&gt; $valor) {
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT * FROM $dbTabla
+$consulta = "SELECT * FROM $dbTablaAgenda
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
@@ -359,7 +411,7 @@ $result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellido
         <div class="codigo">
           <pre>
 <code class="language-php">// Imprime botón radio
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $dbTablaAgenda";
 $result = $db-&gt;query($consulta);
 
 foreach ($result as $valor) {
@@ -375,7 +427,7 @@ foreach ($result as $valor) {
 <code class="language-php">// Recoge el registro seleccionado
 $id = recoge("id");
 
-$consulta = "SELECT * FROM $dbTabla
+$consulta = "SELECT * FROM $dbTablaAgenda
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":id" =&gt; $id]);
@@ -388,7 +440,7 @@ $valor = $result-&gt;fetch();</code>
         <div class="codigo">
           <pre>
 <code class="language-php">// Muestra valor
-print "              &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$tamNombre\" maxlength=\"$tamNombre\" value=\"$valor[nombre]\" autofocus&gt;&lt;/td&gt;\n";</code>
+print "              &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$tamAgendaNombre\" maxlength=\"$tamAgendaNombre\" value=\"$valor[nombre]\" autofocus&gt;&lt;/td&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -409,7 +461,7 @@ print "          &lt;input type=\"hidden\" name=\"id\" value=\"$id\"&gt;\n";</co
 $apellidos = recoge("apellidos");
 $id        = recoge("id");
 
-$consulta = "UPDATE $dbTabla
+$consulta = "UPDATE $dbTablaAgenda
     SET nombre=:nombre, apellidos=:apellidos
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
