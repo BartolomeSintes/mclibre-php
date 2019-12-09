@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (2) - comunes/biblioteca.php
+ * Identificación de usuarios (1) - Agenda (2) - comunes/biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,12 +30,12 @@ define("POST", "post");                    // Formularios se envían con POST
 define("MYSQL", "MySQL");                  // Base de datos MySQL
 define("SQLITE", "SQLite");                // Base de datos SQLITE
 
-define("MENU_PRINCIPAL", "menuPrincipal");                    // Menú principal sin conectar
-define("MENU_PRINCIPAL_CONECTADO", "menuPrincipalConectado"); // Menú principal conectado
-define("MENU_AGENDA", "menuAgenda");                          // Menú Agenda
-define("MENU_VOLVER", "menuVolver");                          // Menú Volver a inicio
+define("MENU_PRINCIPAL", "menuPrincipal");                     // Menú principal sin conectar
+define("MENU_PRINCIPAL_CONECTADO", "menuPrincipalConectado");  // Menú principal conectado
+define("MENU_VOLVER", "menuAcceso");                           // Menú Acceso
+define("MENU_AGENDA", "menuAgenda");                           // Menú Agenda
 
-$columnasOrden = [                         // Nombre de las columnas de la tabla y valor de ordenación
+$columnasAgendaOrden = [                   // Nombre de las columnas de la tabla y valor de ordenación
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
     "telefono ASC", "telefono DESC",
@@ -88,7 +88,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Agenda (2). Identificación de usuarios (2).\n";
+    print "    $texto. Agenda (2). Identificación de usuarios (1).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -101,15 +101,17 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Identificación de usuarios (2) - Agenda (2) - $texto</h1>\n";
+    print "    <h1>Identificación de usuarios (1) - Agenda (2) - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
     if ($menu == MENU_PRINCIPAL) {
         print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
-    } else    if ($menu == MENU_PRINCIPAL_CONECTADO) {
+    } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
         print "        <li><a href=\"db-agenda/index.php\">Agenda</a></li>\n";
         print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
+    } elseif ($menu == MENU_VOLVER) {
+        print "        <li><a href=\"../index.php\">Volver</a></li>\n";
     } elseif ($menu == MENU_AGENDA) {
         print "        <li><a href=\"../index.php\">Volver</a></li>\n";
         print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
@@ -135,7 +137,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-12-05\">5 de diciembre de 2019</time>\n";
+    print "      <time datetime=\"2019-12-09\">9 de diciembre de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

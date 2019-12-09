@@ -32,7 +32,7 @@ $id = recoge("id");
 if ($id == "") {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $dbTabla
+    $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
        WHERE id=:id";
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
@@ -41,7 +41,7 @@ if ($id == "") {
     } elseif ($result->fetchColumn() == 0) {
         print "    <p>Registro no encontrado.</p>\n";
     } else {
-        $consulta = "SELECT * FROM $dbTabla
+        $consulta = "SELECT * FROM $dbTablaAgenda
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
@@ -56,19 +56,19 @@ if ($id == "") {
             print "        <tbody>\n";
             print "          <tr>\n";
             print "            <td>Nombre:</td>\n";
-            print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" maxlength=\"$tamNombre\" value=\"$valor[nombre]\" autofocus></td>\n";
+            print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamAgendaNombre\" maxlength=\"$tamAgendaNombre\" value=\"$valor[nombre]\" autofocus></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Apellidos:</td>\n";
-            print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" maxlength=\"$tamApellidos\" value=\"$valor[apellidos]\"></td>\n";
+            print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamAgendaApellidos\" maxlength=\"$tamAgendaApellidos\" value=\"$valor[apellidos]\"></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Teléfono:</td>\n";
-            print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" maxlength=\"$tamTelefono\" value=\"$valor[telefono]\"></td>\n";
+            print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamAgendaTelefono\" maxlength=\"$tamAgendaTelefono\" value=\"$valor[telefono]\"></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Correo:</td>\n";
-            print "            <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" maxlength=\"$tamCorreo\" value=\"$valor[correo]\"></td>\n";
+            print "            <td><input type=\"text\" name=\"correo\" size=\"$tamAgendaCorreo\" maxlength=\"$tamAgendaCorreo\" value=\"$valor[correo]\"></td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";

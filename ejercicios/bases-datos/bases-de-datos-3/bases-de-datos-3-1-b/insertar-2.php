@@ -35,14 +35,14 @@ $apellidosOk = false;
 unset($_SESSION["error"]);
 unset($_SESSION["mensaje"]);
 
-if (mb_strlen($nombre, "UTF-8") > $tamNombre) {
-    $_SESSION["error"] = "    <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $tamAgendaNombre) {
+    $_SESSION["error"] = "    <p class=\"aviso\">El nombre no puede tener más de $tamAgendaNombre caracteres.</p>\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
-    $_SESSION["error"] = "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $tamAgendaApellidos) {
+    $_SESSION["error"] = "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamAgendaApellidos caracteres.</p>\n";
 } else {
     $apellidosOk = true;
 }
@@ -51,7 +51,7 @@ if ($nombreOk && $apellidosOk) {
     if ($nombre == "" && $apellidos == "") {
         $_SESSION["error"] = "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $dbTabla";
+        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
         $result = $db->query($consulta);
         if (!$result) {
             $_SESSION["error"] = "    <p class=\"aviso\">Error en la consulta.</p>\n";
@@ -60,7 +60,7 @@ if ($nombreOk && $apellidosOk) {
                 . "\n"
                 . "      <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
-            $consulta = "SELECT COUNT(*) FROM $dbTabla
+            $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
                 WHERE nombre=:nombre
                 AND apellidos=:apellidos";
             $result = $db->prepare($consulta);
@@ -70,7 +70,7 @@ if ($nombreOk && $apellidosOk) {
             } elseif ($result->fetchColumn() > 0) {
                 $_SESSION["error"] ="      <p class=\"aviso\">El registro ya existe.</p>\n";
             } else {
-                $consulta = "INSERT INTO $dbTabla
+                $consulta = "INSERT INTO $dbTablaAgenda
                     (nombre, apellidos)
                     VALUES (:nombre, :apellidos)";
                 $result = $db->prepare($consulta);

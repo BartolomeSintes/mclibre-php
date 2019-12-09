@@ -33,7 +33,7 @@ if (count($id) == 0) {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
-        $consulta = "SELECT COUNT(*) FROM $dbTabla
+        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
             WHERE id=:indice";
         $result = $db->prepare($consulta);
         $result->execute([":indice" => $indice]);
@@ -42,7 +42,7 @@ if (count($id) == 0) {
         } elseif ($result->fetchColumn() == 0) {
             print "    <p>Registro no encontrado.</p>\n";
         } else {
-            $consulta = "DELETE FROM $dbTabla
+            $consulta = "DELETE FROM $dbTablaAgenda
                 WHERE id=:indice";
             $result = $db->prepare($consulta);
             if ($result->execute([":indice" => $indice])) {

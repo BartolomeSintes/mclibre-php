@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (1) - db-agenda/modificar-3.php
+ * Identificación de usuarios (1) - Agenda (1) - db-agenda/modificar-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -45,29 +45,29 @@ $apellidosOk = false;
 $telefonoOk  = false;
 $correoOk    = false;
 
-if (mb_strlen($nombre, "UTF-8") > $tamNombre) {
-    print "    <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $tamAgendaNombre) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $tamAgendaNombre caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
-    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $tamAgendaApellidos) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamAgendaApellidos caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
-if (mb_strlen($telefono, "UTF-8") > $tamTelefono) {
-    print "    <p class=\"aviso\">El teléfono no puede tener más de $tamTelefono caracteres.</p>\n";
+if (mb_strlen($telefono, "UTF-8") > $tamAgendaTelefono) {
+    print "    <p class=\"aviso\">El teléfono no puede tener más de $tamAgendaTelefono caracteres.</p>\n";
     print "\n";
 } else {
     $telefonoOk = true;
 }
 
-if (mb_strlen($correo, "UTF-8") > $tamCorreo) {
-    print "    <p class=\"aviso\">El correo no puede tener más de $tamCorreo caracteres.</p>\n";
+if (mb_strlen($correo, "UTF-8") > $tamAgendaCorreo) {
+    print "    <p class=\"aviso\">El correo no puede tener más de $tamAgendaCorreo caracteres.</p>\n";
     print "\n";
 } else {
     $correoOk = true;
@@ -79,7 +79,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     } elseif ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $dbTabla
+        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
@@ -91,7 +91,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
             // La consulta cuenta los registros con un id diferente porque MySQL no distingue
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-            $consulta = "SELECT COUNT(*) FROM $dbTabla
+            $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
                 WHERE nombre=:nombre
                 AND apellidos=:apellidos
                 AND telefono=:telefono
@@ -106,7 +106,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                 print "    <p>Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";
             } else {
-                $consulta = "UPDATE $dbTabla
+                $consulta = "UPDATE $dbTablaAgenda
                     SET nombre=:nombre, apellidos=:apellidos,
                         telefono=:telefono, correo=:correo
                     WHERE id=:id";

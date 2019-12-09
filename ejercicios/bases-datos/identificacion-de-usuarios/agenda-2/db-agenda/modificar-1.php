@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (2) - db-agenda/modificar-1.php
+ * Identificación de usuarios (1) - Agenda (2) - db-agenda/modificar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -34,17 +34,17 @@ if (!isset($_SESSION["conectado"])) {
 $db = conectaDb();
 cabecera("Modificar 1", MENU_AGENDA, 1);
 
-$ordena = recogeValores("ordena", $columnasOrden, "apellidos ASC");
+$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
 $id     = recoge("id");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla";
+$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTabla
+    $consulta = "SELECT * FROM $dbTablaAgenda
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {

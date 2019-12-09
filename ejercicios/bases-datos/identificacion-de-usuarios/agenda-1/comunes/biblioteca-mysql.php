@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (1) - comunes/biblioteca-mysql.php
+ * Identificación de usuarios (1) - Agenda (1) - comunes/biblioteca-mysql.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-02
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,21 +24,20 @@
 
 // Variables globales
 
-$dbDb    = MYSQL_DATABASE;                     // Nombre de la base de datos
-$dbTabla = MYSQL_DATABASE . "." . MYSQL_TABLE; // Nombre de la tabla
+$dbTablaAgenda = MYSQL_DATABASE . "." . MYSQL_TABLE_AGENDA; // Nombre de la tabla
 
 // Consultas
 
-$consultaCreaDb = "CREATE DATABASE $dbDb
+$consultaCreaDb = "CREATE DATABASE " . MYSQL_DATABASE . "
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci";
 
-$consultaCreaTabla = "CREATE TABLE $dbTabla (
+$consultaCreaTablaAgenda = "CREATE TABLE $dbTablaAgenda (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos),
-    telefono VARCHAR($tamTelefono),
-    correo VARCHAR($tamCorreo),
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos),
+    telefono VARCHAR($tamAgendaTelefono),
+    correo VARCHAR($tamAgendaCorreo),
     PRIMARY KEY(id)
     )";
 
@@ -52,7 +51,7 @@ function conectaDb()
         $tmp->exec("set names utf8mb4");
         return $tmp;
     } catch (PDOException $e) {
-        cabecera("Error grave", MENU_PRINCIPAL);
+        cabecera("Error grave", MENU_VOLVER, 1);
         print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
         print "    <p>Error: " . $e->getMessage() . "</p>\n";
@@ -63,9 +62,9 @@ function conectaDb()
 
 function borraTodo($db)
 {
-    global $dbDb, $consultaCreaDb, $consultaCreaTabla;
+    global $consultaCreaDb, $consultaCreaTablaAgenda;
 
-    $consulta = "DROP DATABASE $dbDb";
+    $consulta = "DROP DATABASE " . MYSQL_DATABASE;
     if ($db->query($consulta)) {
         print "    <p>Base de datos borrada correctamente.</p>\n";
         print "\n";
@@ -77,7 +76,7 @@ function borraTodo($db)
     if ($db->query($consulta)) {
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
-        $consulta = $consultaCreaTabla;
+        $consulta = $consultaCreaTablaAgenda;
         if ($db->query($consulta)) {
             print "    <p>Tabla creada correctamente.</p>\n";
             print "\n";

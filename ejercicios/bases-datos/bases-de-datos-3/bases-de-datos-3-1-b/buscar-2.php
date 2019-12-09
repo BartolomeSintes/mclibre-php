@@ -32,7 +32,7 @@ $apellidos = recoge("apellidos");
 $columna   = recogeValores("columna", $columnas, "apellidos");
 $orden     = recogeValores("orden", $orden, "ASC");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
+$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db->prepare($consulta);
@@ -42,7 +42,7 @@ if (!$result) {
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se han encontrado registros.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTabla
+    $consulta = "SELECT * FROM $dbTablaAgenda
         WHERE nombre LIKE :nombre
         AND apellidos LIKE :apellidos
         ORDER BY $columna $orden";

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,14 +29,14 @@ cabecera("Listar", MENU_VOLVER);
 
 $ordena = recogeValores("ordena", $columnasOrden, "apellidos ASC");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla";
+$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0 ) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTabla
+    $consulta = "SELECT * FROM $dbTablaAgenda
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {

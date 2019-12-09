@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ cabecera("Buscar 2", MENU_VOLVER);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
+$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db->prepare($consulta);
@@ -40,7 +40,7 @@ if (!$result) {
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se han encontrado registros.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTabla
+    $consulta = "SELECT * FROM $dbTablaAgenda
         WHERE nombre LIKE :nombre
         AND apellidos LIKE :apellidos";
     $result = $db->prepare($consulta);

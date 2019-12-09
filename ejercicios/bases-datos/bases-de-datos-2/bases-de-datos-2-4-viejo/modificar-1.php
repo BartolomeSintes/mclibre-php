@@ -30,14 +30,14 @@ cabecera("Modificar 1", MENU_VOLVER);
 $columna = recogeValores("columna", $columnas, "apellidos");
 $orden   = recogeValores("orden", $orden, "ASC");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla";
+$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTabla
+    $consulta = "SELECT * FROM $dbTablaAgenda
         ORDER BY $columna $orden";
     $result = $db->query($consulta);
     if (!$result) {

@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (1) - db-agenda/borrar-todo-1.php
+ * Identificación de usuarios (1) - Agenda (1) - db-agenda/borrar-todo-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

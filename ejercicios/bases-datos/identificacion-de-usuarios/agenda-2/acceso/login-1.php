@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (2) - acceso/login-1.php
+ * Identificación de usuarios (1) - Agenda (2) - acceso/login-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ if (isset($_SESSION["conectado"])) {
     exit();
 }
 
-cabecera("Login 1", MENU_PRINCIPAL, 1);
+cabecera("Login 1", MENU_VOLVER, 1);
 
 $aviso = recoge("aviso");
 if ($aviso) {
@@ -47,7 +47,7 @@ print "        <tbody>\n";
 print "          <tr>\n";
 print "            <td>Nombre:</td>\n";
 print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuarioNombre\" "
-    . "maxlength=\"$tamUsuarioNombre\" autofocus=\"autofocus\"/></td>\n";
+    . "maxlength=\"$tamUsuarioNombre\" autofocus/></td>\n";
 print "          </tr>\n";
 print "          <tr>\n";
 print "            <td>Contraseña:</td>\n";

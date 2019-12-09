@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-04
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@ require_once "biblioteca.php";
 $db = conectaDb();
 cabecera("Modificar 1", MENU_VOLVER);
 
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $dbTablaAgenda";
 $result = $db->query($consulta);
 
 print "    <form action=\"modificar-2.php\" method=\"" . FORM_METHOD . "\">\n";

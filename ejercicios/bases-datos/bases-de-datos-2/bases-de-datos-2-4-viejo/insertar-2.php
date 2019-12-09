@@ -39,26 +39,26 @@ $correoOk    = false;
 unset($_SESSION["error"]);
 unset($_SESSION["mensaje"]);
 
-if (mb_strlen($nombre, "UTF-8") > $tamNombre) {
-    $_SESSION["error"] = "    <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $tamAgendaNombre) {
+    $_SESSION["error"] = "    <p class=\"aviso\">El nombre no puede tener más de $tamAgendaNombre caracteres.</p>\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
-    $_SESSION["error"] = "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $tamAgendaApellidos) {
+    $_SESSION["error"] = "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamAgendaApellidos caracteres.</p>\n";
 } else {
     $apellidosOk = true;
 }
 
-if (mb_strlen($telefono, "UTF-8") > $tamTelefono) {
-    $_SESSION["error"] = "    <p class=\"aviso\">El teléfono no puede tener más de $tamTelefono caracteres.</p>\n";
+if (mb_strlen($telefono, "UTF-8") > $tamAgendaTelefono) {
+    $_SESSION["error"] = "    <p class=\"aviso\">El teléfono no puede tener más de $tamAgendaTelefono caracteres.</p>\n";
 } else {
     $telefonoOk = true;
 }
 
-if (mb_strlen($correo, "UTF-8") > $tamCorreo) {
-    $_SESSION["error"] = "     <p class=\"aviso\">El correo no puede tener más de $tamCorreo caracteres.</p>\n";
+if (mb_strlen($correo, "UTF-8") > $tamAgendaCorreo) {
+    $_SESSION["error"] = "     <p class=\"aviso\">El correo no puede tener más de $tamAgendaCorreo caracteres.</p>\n";
 } else {
     $correoOk = true;
 }
@@ -67,7 +67,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     if ($nombre == "" && $apellidos == ""  && $telefono == "" && $correo == "") {
         $_SESSION["error"] = "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $dbTabla";
+        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
         $result = $db->query($consulta);
         if (!$result) {
             $_SESSION["error"] = "    <p class=\"aviso\">Error en la consulta.</p>\n";
@@ -76,7 +76,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                 . "\n"
                 . "      <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
-            $consulta = "SELECT COUNT(*) FROM $dbTabla
+            $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
                 WHERE nombre=:nombre
                 AND apellidos=:apellidos
                 AND telefono=:telefono
@@ -89,7 +89,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
             } elseif ($result->fetchColumn() > 0) {
                 $_SESSION["error"] ="      <p class=\"aviso\">El registro ya existe.</p>\n";
             } else {
-                $consulta = "INSERT INTO $dbTabla
+                $consulta = "INSERT INTO $dbTablaAgenda
                     (nombre, apellidos, telefono, correo)
                     VALUES (:nombre, :apellidos, :telefono, :correo)";
                 $result = $db->prepare($consulta);

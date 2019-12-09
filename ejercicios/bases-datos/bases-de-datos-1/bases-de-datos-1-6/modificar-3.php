@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-04
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -33,22 +33,22 @@ $id          = recoge("id");
 $nombreOk    = false;
 $apellidosOk = false;
 
-if (mb_strlen($nombre, "UTF-8") > $tamNombre) {
-    print "    <p class=\"aviso\">El nombre no puede tener más de $tamNombre caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $tamAgendaNombre) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $tamAgendaNombre caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $tamApellidos) {
-    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamApellidos caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $tamAgendaApellidos) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamAgendaApellidos caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
 if ($nombreOk && $apellidosOk) {
-    $consulta = "UPDATE $dbTabla
+    $consulta = "UPDATE $dbTablaAgenda
         SET nombre=:nombre, apellidos=:apellidos
         WHERE id=:id";
     $result = $db->prepare($consulta);

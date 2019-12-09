@@ -44,8 +44,8 @@ define("SQLITE_TABLA",   "tabla");                                       // Nomb
 // Configuración Tabla Agenda
 
 define("MAX_REG_TABLA",  20); // Número máximo de registros en la tabla
-$tamNombre    = 40;           // Tamaño de la columna Nombre
-$tamApellidos = 60;           // Tamaño de la columna Apellidos
+$tamAgendaNombre    = 40;           // Tamaño de la columna Nombre
+$tamAgendaApellidos = 60;           // Tamaño de la columna Apellidos
 
 // Método de envío de formularios
 

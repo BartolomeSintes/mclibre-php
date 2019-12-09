@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,18 +32,18 @@ define("MYSQL_HOST", "mysql:host=localhost");        // Nombre de host
 define("MYSQL_USER", "");                            // Nombre de usuario
 define("MYSQL_PASSWORD", "");                        // Contraseña de usuario
 define("MYSQL_DATABASE", "mclibre_base_datos_3_1");  // Nombre de la base de datos
-define("MYSQL_TABLE", "tabla");                      // Nombre de la tabla
+define("MYSQL_TABLE_AGENDA", "tabla");               // Nombre de la tabla
 
 // Configuración para SQLite
 
 define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-3-1.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE", "tabla");                                                             // Nombre de la tabla
+define("SQLITE_TABLE_AGENDA", "tabla");                                                             // Nombre de la tabla
 
 // Configuración Tabla Agenda
 
 define("MAX_REG_TABLE", 20);  // Número máximo de registros en la tabla
-$tamNombre    = 40;           // Tamaño de la columna Nombre
-$tamApellidos = 60;           // Tamaño de la columna Apellidos
+$tamAgendaNombre    = 40;           // Tamaño de la columna Nombre
+$tamAgendaApellidos = 60;           // Tamaño de la columna Apellidos
 
 // Método de envío de formularios
 

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-04
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ cabecera("Modificar 2", MENU_VOLVER);
 
 $id = recoge("id");
 
-$consulta = "SELECT * FROM $dbTabla
+$consulta = "SELECT * FROM $dbTablaAgenda
     WHERE id=:id";
 $result = $db->prepare($consulta);
 $result->execute([":id" => $id]);
@@ -42,11 +42,11 @@ print "      <table>\n";
 print "        <tbody>\n";
 print "          <tr>\n";
 print "            <td>Nombre:</td>\n";
-print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" maxlength=\"$tamNombre\" value=\"$valor[nombre]\" autofocus></td>\n";
+print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamAgendaNombre\" maxlength=\"$tamAgendaNombre\" value=\"$valor[nombre]\" autofocus></td>\n";
 print "          </tr>\n";
 print "          <tr>\n";
 print "            <td>Apellidos:</td>\n";
-print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" maxlength=\"$tamApellidos\" value=\"$valor[apellidos]\"></td>\n";
+print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamAgendaApellidos\" maxlength=\"$tamAgendaApellidos\" value=\"$valor[apellidos]\"></td>\n";
 print "          </tr>\n";
 print "        </tbody>\n";
 print "      </table>\n";

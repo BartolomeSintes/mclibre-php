@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (1) - db-agenda/insertar-1.php
+ * Identificación de usuarios (1) - Agenda (1) - db-agenda/insertar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -34,11 +34,11 @@ if (!isset($_SESSION["conectado"])) {
 $db = conectaDb();
 cabecera("Añadir 1", MENU_AGENDA, 1);
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla";
+$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() >= MAX_REG_TABLE) {
+} elseif ($result->fetchColumn() >= MAX_REG_TABLE_AGENDA) {
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
 } else {
@@ -49,19 +49,19 @@ if (!$result) {
     print "        <tbody>\n";
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
-    print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamNombre\" maxlength=\"$tamNombre\" autofocus></td>\n";
+    print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamAgendaNombre\" maxlength=\"$tamAgendaNombre\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Apellidos:</td>\n";
-    print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamApellidos\" maxlength=\"$tamApellidos\"></td>\n";
+    print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamAgendaApellidos\" maxlength=\"$tamAgendaApellidos\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Teléfono:</td>\n";
-    print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamTelefono\" maxlength=\"$tamTelefono\"></td>\n";
+    print "            <td><input type=\"text\" name=\"telefono\" size=\"$tamAgendaTelefono\" maxlength=\"$tamAgendaTelefono\"></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Correo:</td>\n";
-    print "            <td><input type=\"text\" name=\"correo\" size=\"$tamCorreo\" maxlength=\"$tamCorreo\"></td>\n";
+    print "            <td><input type=\"text\" name=\"correo\" size=\"$tamAgendaCorreo\" maxlength=\"$tamAgendaCorreo\"></td>\n";
     print "          </tr>\n";
     print "        </tbody>\n";
     print "      </table>\n";

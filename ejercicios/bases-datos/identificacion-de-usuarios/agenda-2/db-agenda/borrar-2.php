@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (2) - db-agenda/borrar-2.php
+ * Identificación de usuarios (1) - Agenda (2) - db-agenda/borrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-02
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ if (count($id) == 0) {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
-        $consulta = "SELECT COUNT(*) FROM $dbTabla
+        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
             WHERE id=:indice";
         $result = $db->prepare($consulta);
         $result->execute([":indice" => $indice]);
@@ -49,7 +49,7 @@ if (count($id) == 0) {
         } elseif ($result->fetchColumn() == 0) {
             print "    <p>Registro no encontrado.</p>\n";
         } else {
-            $consulta = "DELETE FROM $dbTabla
+            $consulta = "DELETE FROM $dbTablaAgenda
                 WHERE id=:indice";
             $result = $db->prepare($consulta);
             if ($result->execute([":indice" => $indice])) {

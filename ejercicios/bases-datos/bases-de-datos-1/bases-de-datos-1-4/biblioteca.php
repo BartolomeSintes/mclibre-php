@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-04
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,8 +39,8 @@ define("FORM_METHOD", GET);                // Valores posibles: GET o POST
 
 $dbMotor = SQLITE;                         // Valores posibles: MYSQL o SQLITE
 
-$tamNombre    = 40;                        // Tamaño de la columna Nombre
-$tamApellidos = 60;                        // Tamaño de la columna Apellidos
+$tamAgendaNombre    = 40;                        // Tamaño de la columna Nombre
+$tamAgendaApellidos = 60;                        // Tamaño de la columna Apellidos
 
 // Biblioteca base de datos
 
@@ -93,7 +93,7 @@ function cabecera($texto, $menu)
         print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
         print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
     } elseif ($menu == MENU_VOLVER) {
-        print "        <li><a href=\"index.php\">Página inicial</a></li>\n";
+        print "        <li><a href=\"index.php\">Volver</a></li>\n";
     } else {
         print "        <li>Error en la selección de menú</li>\n";
     }
@@ -111,7 +111,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-12-04\">4 de diciembre de 2019</time>\n";
+    print "      <time datetime=\"2019-12-09\">9 de diciembre de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

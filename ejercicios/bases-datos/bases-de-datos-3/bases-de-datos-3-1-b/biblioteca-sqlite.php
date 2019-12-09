@@ -24,25 +24,22 @@
 
 // Variables globales
 
-$dbDb    = SQLITE_DATABASE;   // Nombre de la base de datos
-$dbTabla = SQLITE_TABLA;      // Nombre de la tabla
+$dbTablaAgenda = SQLITE_TABLA;      // Nombre de la tabla
 
 // Consultas
 
-$consultaCreaTabla = "CREATE TABLE $dbTabla (
+$consultaCreaTablaAgenda = "CREATE TABLE $dbTablaAgenda (
     id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos)
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos)
     )";
 
 // Funciones comunes de bases de datos (SQLITE)
 
 function conectaDb()
 {
-    global $dbDb;
-
     try {
-        $tmp = new PDO("sqlite:$dbDb");
+        $tmp = new PDO("sqlite:" . SQLITE_DATABASE);
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
@@ -56,9 +53,9 @@ function conectaDb()
 
 function borraTodo($db)
 {
-    global $dbTabla, $consultaCreaTabla;
+    global $dbTablaAgenda, $consultaCreaTablaAgenda;
 
-    $consulta = "DROP TABLE $dbTabla";
+    $consulta = "DROP TABLE $dbTablaAgenda";
     if ($db->query($consulta)) {
         print "    <p>Tabla borrada correctamente.</p>\n";
         print "\n";
@@ -66,7 +63,7 @@ function borraTodo($db)
         print "    <p>Error al borrar la tabla.</p>\n";
         print "\n";
     }
-    $consulta = $consultaCreaTabla;
+    $consulta = $consultaCreaTablaAgenda;
     if ($db->query($consulta)) {
         print "    <p>Tabla creada correctamente.</p>\n";
         print "\n";

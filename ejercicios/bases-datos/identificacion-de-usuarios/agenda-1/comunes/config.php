@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (2) - Agenda (1) - comunes/config.php
+ * Identificación de usuarios (1) - Agenda (1) - comunes/config.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-08
+ * @version   2019-12-09
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -28,33 +28,33 @@ $dbMotor = SQLITE;     // Valores posibles: MYSQL o SQLITE
 
 // Configuración para MYSQL
 
-define("MYSQL_HOST", "mysql:host=localhost");          // Nombre de host
-define("MYSQL_USER", "");                              // Nombre de usuario
-define("MYSQL_PASSWORD", "");                          // Contraseña de usuario
-define("MYSQL_DATABASE", "identificacion_2_agenda_1"); // Nombre de la base de datos
-define("MYSQL_TABLE", "agenda");                       // Nombre de la tabla
+define("MYSQL_HOST", "mysql:host=localhost");           // Nombre de host
+define("MYSQL_USER", "");                               // Nombre de usuario
+define("MYSQL_PASSWORD", "");                           // Contraseña de usuario
+define("MYSQL_DATABASE", "identificacion_1_agenda_1");  // Nombre de la base de datos
+define("MYSQL_TABLE_AGENDA", "agenda");                        // Nombre de la tabla
 
 // Configuración para SQLite
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/identificacion-2-agenda-1.sqlite"); // Ubicación de la base de datos
-define("SQLITE_TABLE", "agenda");                                                              // Nombre de la tabla
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/identificacion-1-agenda-1.sqlite");  // Ubicación de la base de datos
+define("SQLITE_TABLE_AGENDA", "agenda");                                                               // Nombre de la tabla
 
 // Configuración Tabla Agenda
 
-define("MAX_REG_TABLE", 20);  // Número máximo de registros en la tabla
-$tamNombre    = 40;           // Tamaño de la columna Nombre
-$tamApellidos = 60;           // Tamaño de la columna Apellidos
-$tamTelefono  = 10;           // Tamaño de la columna Teléfono
-$tamCorreo    = 50;           // Tamaño de la columna Correo
+define("MAX_REG_TABLE_AGENDA", 20);  // Número máximo de registros en la tabla Agenda
+$tamAgendaNombre    = 40;            // Tamaño de la columna Agenda > Nombre
+$tamAgendaApellidos = 60;            // Tamaño de la columna Agenda > Apellidos
+$tamAgendaTelefono  = 10;            // Tamaño de la columna Agenda > Teléfono
+$tamAgendaCorreo    = 50;            // Tamaño de la columna Agenda > Correo
 
 // Método de envío de formularios
 
-define("FORM_METHOD", GET);         // Valores posibles: GET o POST
+define("FORM_METHOD", GET);          // Valores posibles: GET o POST
 
 // Hoja de estilo
 
-define("COLOR", 27);                // Color básico de la aplicación (0 - 360)
+define("COLOR", 27);                 // Color básico de la aplicación (0 - 360)
 
 // Nombre de sesión
 
-define("SESSION_NAME", "agenda-1"); // Nombre de sesión
+define("SESSION_NAME", "agenda-1");  // Nombre de sesión
