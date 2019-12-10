@@ -1,6 +1,6 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - instalacion/borrar-todo-1.php
+ * Identificación de usuarios (1) - Agenda (3) - administrador/borrar-todo-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco

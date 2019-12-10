@@ -28,7 +28,7 @@ $dbTablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla
 
 // Consultas
 
-$consultaCreaTablaAgenda = "CREATE TABLE $dbTablaAgenda (
+$consultaCreaTabla = "CREATE TABLE $dbTablaAgenda (
     id INTEGER PRIMARY KEY,
     nombre VARCHAR($tamAgendaNombre),
     apellidos VARCHAR($tamAgendaApellidos)
@@ -53,7 +53,7 @@ function conectaDb()
 
 function borraTodo($db)
 {
-    global $dbTablaAgenda, $consultaCreaTablaAgenda;
+    global $dbTablaAgenda, $consultaCreaTabla;
 
     $consulta = "DROP TABLE $dbTablaAgenda";
     if ($db->query($consulta)) {
@@ -63,7 +63,7 @@ function borraTodo($db)
         print "    <p>Error al borrar la tabla.</p>\n";
         print "\n";
     }
-    $consulta = $consultaCreaTablaAgenda;
+    $consulta = $consultaCreaTabla;
     if ($db->query($consulta)) {
         print "    <p>Tabla creada correctamente.</p>\n";
         print "\n";

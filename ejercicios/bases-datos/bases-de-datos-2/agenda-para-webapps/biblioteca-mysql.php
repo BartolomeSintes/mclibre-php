@@ -32,7 +32,7 @@ $consultaCreaDb = "CREATE DATABASE " . MYSQL_DATABASE . "
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci";
 
-$consultaCreaTablaAgenda = "CREATE TABLE $dbTablaAgenda (
+$consultaCreaTabla = "CREATE TABLE $dbTablaAgenda (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR($tamAgendaNombre),
     apellidos VARCHAR($tamAgendaApellidos),
@@ -62,7 +62,7 @@ function conectaDb()
 
 function borraTodo($db)
 {
-    global $consultaCreaDb, $consultaCreaTablaAgenda;
+    global $consultaCreaDb, $consultaCreaTabla;
 
     $consulta = "DROP DATABASE " . MYSQL_DATABASE;
     if ($db->query($consulta)) {
@@ -76,7 +76,7 @@ function borraTodo($db)
     if ($db->query($consulta)) {
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
-        $consulta = $consultaCreaTablaAgenda;
+        $consulta = $consultaCreaTabla;
         if ($db->query($consulta)) {
             print "    <p>Tabla creada correctamente.</p>\n";
             print "\n";
