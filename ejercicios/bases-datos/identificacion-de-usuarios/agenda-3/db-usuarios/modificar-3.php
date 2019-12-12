@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - db-usuarios/modificar-3.php
+ * Identificación de usuarios - Agenda (3) - db-usuarios/modificar-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ if ($usuarioOk && $passwordOk) {
     } elseif ($usuario == "" || $password == "") {
         print "    <p>Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";
     } else {
-        $consulta = "SELECT * FROM $dbTablaUsuarios
+        $consulta = "SELECT * FROM $tablaUsuarios
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
@@ -72,7 +72,7 @@ if ($usuarioOk && $passwordOk) {
             if ($valor["usuario"] == ROOT_NAME) {
                 print "    <p>Este usuario no se puede modificar.</p>\n";
             } else {
-                $consulta = "SELECT COUNT(*) FROM $dbTablaUsuarios
+                $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
                     WHERE id=:id";
                 $result = $db->prepare($consulta);
                 $result->execute([":id" => $id]);
@@ -84,7 +84,7 @@ if ($usuarioOk && $passwordOk) {
                     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
                     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
                     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-                    $consulta = "SELECT COUNT(*) FROM $dbTablaUsuarios
+                    $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
                         WHERE usuario=:usuario
                         AND password=:password
                         AND id<>:id";
@@ -96,12 +96,12 @@ if ($usuarioOk && $passwordOk) {
                         print "    <p>Ya existe un registro con esos mismos valores. "
                             . "No se ha guardado la modificación.</p>\n";
                     } else {
-                        $consulta = "UPDATE $dbTablaUsuarios
+                        $consulta = "UPDATE $tablaUsuarios
                             SET usuario=:usuario, password=:password
                             WHERE id=:id";
                         $result = $db->prepare($consulta);
                         if ($result->execute([":usuario" => $usuario, ":password" => encripta($password),
-                            ":id" => $id, ])) {
+                            ":id" => $id])) {
                             print "    <p>Registro modificado correctamente.</p>\n";
                         } else {
                             print "    <p>Error al modificar el registro.</p>\n";

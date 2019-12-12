@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - db-usuarios/modificar-2.php
+ * Identificación de usuarios - Agenda (3) - db-usuarios/modificar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -39,7 +39,7 @@ $id = recoge("id");
 if ($id == "") {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $dbTablaUsuarios
+    $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
        WHERE id=:id";
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
@@ -48,7 +48,7 @@ if ($id == "") {
     } elseif ($result->fetchColumn() == 0) {
         print "    <p>Registro no encontrado.</p>\n";
     } else {
-        $consulta = "SELECT * FROM $dbTablaUsuarios
+        $consulta = "SELECT * FROM $tablaUsuarios
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);

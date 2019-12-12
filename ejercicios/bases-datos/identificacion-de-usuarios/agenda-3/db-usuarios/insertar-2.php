@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - db-usuarios/insertar-2.php
+ * Identificación de usuarios - Agenda (3) - db-usuarios/insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -58,7 +58,7 @@ if ($usuarioOk && $passwordOk) {
     if ($usuario == "" || $password == "") {
         print "    <p>Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $dbTablaUsuarios";
+        $consulta = "SELECT COUNT(*) FROM $tablaUsuarios";
         $result   = $db->query($consulta);
         if (!$result) {
             print "    <p>Error en la consulta.</p>\n";
@@ -67,7 +67,7 @@ if ($usuarioOk && $passwordOk) {
             print "\n";
             print "    <p>Por favor, borre algún registro antes.</p>\n";
         } else {
-            $consulta = "SELECT COUNT(*) FROM $dbTablaUsuarios
+            $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
                 WHERE usuario=:usuario
                 AND password=:password";
             $result = $db->prepare($consulta);
@@ -77,7 +77,7 @@ if ($usuarioOk && $passwordOk) {
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p>El registro ya existe.</p>\n";
             } else {
-                $consulta = "INSERT INTO $dbTablaUsuarios
+                $consulta = "INSERT INTO $tablaUsuarios
                     (usuario, password)
                     VALUES (:usuario, :password)";
                 $result = $db->prepare($consulta);

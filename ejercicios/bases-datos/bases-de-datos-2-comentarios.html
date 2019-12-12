@@ -41,7 +41,7 @@
 
         <div class="codigo">
           <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -77,7 +77,7 @@ $db = null;</code>
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -117,7 +117,7 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE nombre=:nombre
     AND apellidos=:apellidos";
 $result = $db-&gt;prepare($consulta);
@@ -143,7 +143,7 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -198,7 +198,7 @@ if (count($id) == 0) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
@@ -247,7 +247,7 @@ if ($id == "") {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":id" =&gt; $id]);
@@ -280,7 +280,7 @@ if (!$result) {
 <code class="language-php">// La consulta cuenta los registros con un id diferente porque MySQL no distingue
 // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
 // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE nombre=:nombre
     AND apellidos=:apellidos
     AND id&lt;&gt;:id";
@@ -313,7 +313,7 @@ if (!$result) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">$consulta = "SELECT * FROM $dbTablaAgenda
+<code class="language-php">$consulta = "SELECT * FROM $tablaAgenda
              ORDER BY $columna $orden";</code>
 </pre>
         </div>
@@ -329,7 +329,7 @@ $orden   = recogeValores("orden", $orden, "ASC");</code>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$columnas = [                              // Nombre de las columnas de la tabla
+<code class="language-php">$columnasAgendaOrden = [                              // Nombre de las columnas de la tabla
     "nombre",
     "apellidos"
 ];

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,22 +22,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Constantes y variables globales
+// Constantes comunes
 
-define("GET", "get");                      // Formularios se envían con GET
-define("POST", "post");                    // Formularios se envían con POST
+define("GET", "get");                       // Formularios se envían con GET
+define("POST", "post");                     // Formularios se envían con POST
 
-define("MYSQL", "MySQL");                  // Base de datos MySQL
-define("SQLITE", "SQLite");                // Base de datos SQLITE
+define("MYSQL", "MySQL");                   // Base de datos MySQL
+define("SQLITE", "SQLite");                 // Base de datos SQLITE
 
-define("MENU_PRINCIPAL", "menuPrincipal"); // Menú principal
-define("MENU_VOLVER", "menuVolver");       // Menú Volver a inicio
+define("MENU_PRINCIPAL", "menuPrincipal");  // Menú principal
+define("MENU_VOLVER", "menuVolver");        // Menú Volver a inicio
 
-$columnasOrden = [                         // Nombre de las columnas de la tabla y valor de ordenación
-    "nombre ASC", "nombre DESC",
-    "apellidos ASC", "apellidos DESC",
-    "telefono ASC", "telefono DESC"
-];
 
 // Constantes y variables configurables
 
@@ -124,7 +119,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-12-09\">9 de diciembre de 2019</time>\n";
+    print "      <time datetime=\"2019-12-12\">12 de diciembre de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

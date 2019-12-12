@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (1) - db-agenda/buscar-2.php
+ * Identificación de usuarios - Agenda (1) - db-agenda/buscar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ $telefono  = recoge("telefono");
 $correo    = recoge("correo");
 $ordena    = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
 
-$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos
     AND telefono LIKE :telefono
@@ -53,7 +53,7 @@ if (!$result) {
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se han encontrado registros.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTablaAgenda
+    $consulta = "SELECT * FROM $tablaAgenda
         WHERE nombre LIKE :nombre
         AND apellidos LIKE :apellidos
         AND telefono LIKE :telefono

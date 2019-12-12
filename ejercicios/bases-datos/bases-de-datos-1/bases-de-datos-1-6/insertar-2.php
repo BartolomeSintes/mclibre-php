@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ if (mb_strlen($apellidos, "UTF-8") > $tamAgendaApellidos) {
 }
 
 if ($nombreOk && $apellidosOk) {
-    $consulta = "INSERT INTO $dbTablaAgenda
+    $consulta = "INSERT INTO $tablaAgenda
         (nombre, apellidos)
         VALUES (:nombre, :apellidos)";
     $result = $db->prepare($consulta);

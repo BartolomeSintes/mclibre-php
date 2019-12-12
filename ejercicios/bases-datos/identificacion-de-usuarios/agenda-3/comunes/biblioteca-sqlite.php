@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - comunes/biblioteca-sqlite.php
+ * Identificación de usuarios - Agenda (3) - comunes/biblioteca-sqlite.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,28 +22,64 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Variables globales
+// Configuración específica para SQLite
 
-$dbTablaAgenda   = SQLITE_TABLE_AGENDA;    // Nombre de la tabla Agenda
-$dbTablaUsuarios = SQLITE_TABLE_USUARIOS;  // Nombre de la tabla Usuarios
+// Configuración general
 
-// Consultas
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/identificacion-agenda-3.sqlite");  // Ubicación de la base de datos
+define("SQLITE_TABLE_AGENDA", "agenda");                                                    // Nombre de la tabla Agenda
+define("SQLITE_TABLE_USUARIOS", "usuarios");                                                    // Nombre de la tabla Usuarios
 
-$consultaCreaTablaAgenda = "CREATE TABLE $dbTablaAgenda (
-    id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamAgendaNombre),
-    apellidos VARCHAR($tamAgendaApellidos),
-    telefono VARCHAR($tamAgendaTelefono),
-    correo VARCHAR($tamAgendaCorreo)
-    )";
+// Nombres de las tablas
 
-$consultaCreaTablaUsuarios = "CREATE TABLE $dbTablaUsuarios (
-    id INTEGER PRIMARY KEY,
-    usuario VARCHAR($tamUsuariosUsuario),
-    password VARCHAR($tamUsuariosPasswordCifrado)
-    )";
+$tablaAgenda   = SQLITE_TABLE_AGENDA;    // Nombre de la tabla Agenda
+$tablaUsuarios = SQLITE_TABLE_USUARIOS;  // Nombre de la tabla Usuarios
 
-// Funciones comunes de bases de datos (SQLITE)
+$tablas = [
+    $tablaUsuarios,
+    $tablaAgenda,
+];
+
+// Valores de ordenación de las tablas
+
+$columnasAgendaOrden = [
+    "nombre ASC", "nombre DESC",
+    "apellidos ASC", "apellidos DESC",
+    "telefono ASC", "telefono DESC",
+    "correo ASC", "correo DESC",
+];
+
+$columnasUsuariosOrden = [
+    "usuario ASC", "usuario DESC",
+    "password ASC", "password DESC",
+];
+
+// Consultas de borrado y creación de base de datos y tablas, etc.
+
+define(
+    "CONSULTA_INSERTA_USUARIO_ROOT",
+    "INSERT INTO $tablaUsuarios
+        VALUES (NULL, '" . ROOT_NAME . "', '" . ROOT_PASSWORD . "')"
+);
+
+$consultasCreaTabla = [
+    // Tabla Usuarios
+    "CREATE TABLE $tablaUsuarios (
+        id INTEGER PRIMARY KEY,
+        usuario VARCHAR($tamUsuariosUsuario),
+        password VARCHAR($tamUsuariosPasswordCifrado)
+    )",
+    // Tabla Agenda
+    "CREATE TABLE $tablaAgenda (
+        id INTEGER PRIMARY KEY,
+        nombre VARCHAR($tamAgendaNombre),
+        apellidos VARCHAR($tamAgendaApellidos),
+        telefono VARCHAR($tamAgendaTelefono),
+        correo VARCHAR($tamAgendaCorreo)
+    )",
+];
+
+// Funciones específicas de bases de datos (SQLITE)
 
 function conectaDb()
 {
@@ -60,9 +96,9 @@ function conectaDb()
     }
 }
 
-function borraTodo($db, $tablas, $consultasTablas, $consultaCreaDB="")
+function borraTodo($db, $nombresTablas, $consultasCreacionTablas)
 {
-    foreach ($tablas as $tabla) {
+    foreach ($nombresTablas as $tabla) {
         $consulta = "DROP TABLE $tabla";
         if ($db->query($consulta)) {
             print "    <p>Tabla <strong>$tabla</strong> borrada correctamente.</p>\n";
@@ -72,7 +108,8 @@ function borraTodo($db, $tablas, $consultasTablas, $consultaCreaDB="")
             print "\n";
         }
     }
-    foreach ($consultasTablas as $consulta) {
+
+    foreach ($consultasCreacionTablas as $consulta) {
         if ($db->query($consulta)) {
             print "    <p>Tabla creada correctamente.</p>\n";
             print "\n";
@@ -81,8 +118,8 @@ function borraTodo($db, $tablas, $consultasTablas, $consultaCreaDB="")
             print "\n";
         }
     }
-    $consulta = "INSERT INTO $tablas[0]
-        VALUES (NULL, '" . ROOT_NAME. "', '" . ROOT_PASSWORD . "')";
+
+    $consulta = CONSULTA_INSERTA_USUARIO_ROOT;
     if ($db->query($consulta)) {
         print "    <p>Registro de Usuario " . ROOT_NAME . " creado correctamente.</p>\n";
         print "\n";
@@ -92,10 +129,10 @@ function borraTodo($db, $tablas, $consultasTablas, $consultaCreaDB="")
     }
 }
 
-function existenTablas($db, $tablas)
+function existenTablas($db, $nombresTablas)
 {
     $existe = true;
-    foreach ($tablas as $tabla) {
+    foreach ($nombresTablas as $tabla) {
         $consulta = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
         $result   = $db->query($consulta);
         if (!$result) {

@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - db-usuarios/listar.php
+ * Identificación de usuarios - Agenda (3) - db-usuarios/listar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -36,14 +36,14 @@ cabecera("Usuarios - Listar", MENU_USUARIOS, 1);
 
 $ordena = recogeValores("ordena", $columnasUsuariosOrden, "usuario ASC");
 
-$consulta = "SELECT COUNT(*) FROM $dbTablaUsuarios";
+$consulta = "SELECT COUNT(*) FROM $tablaUsuarios";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0 ) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTablaUsuarios
+    $consulta = "SELECT * FROM $tablaUsuarios
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {

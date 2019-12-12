@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,11 +27,11 @@ require_once "biblioteca.php";
 $db = conectaDb();
 cabecera("Añadir 1", MENU_VOLVER);
 
-$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() >= MAX_REG_TABLE) {
+} elseif ($result->fetchColumn() >= MAX_REG_TABLE_AGENDA) {
     print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "    <p>Por favor, borre algún registro antes.</p>\n";
 } else {

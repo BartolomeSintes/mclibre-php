@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -54,7 +54,7 @@ if ($nombreOk && $apellidosOk) {
     } elseif ($nombre == "" && $apellidos == "") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+        $consulta = "SELECT COUNT(*) FROM $tablaAgenda
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
@@ -66,24 +66,25 @@ if ($nombreOk && $apellidosOk) {
             // La consulta cuenta los registros con un id diferente porque MySQL no distingue
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-            $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+            $consulta = "SELECT COUNT(*) FROM $tablaAgenda
                 WHERE nombre=:nombre
                 AND apellidos=:apellidos
                 AND id<>:id";
             $result = $db->prepare($consulta);
-            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id]);
+            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                ":id" => $id]);
             if (!$result) {
                 print "    <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p>Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";
             } else {
-                $consulta = "UPDATE $dbTablaAgenda
+                $consulta = "UPDATE $tablaAgenda
                     SET nombre=:nombre, apellidos=:apellidos
                     WHERE id=:id";
                 $result = $db->prepare($consulta);
-                if ($result->execute([":nombre" => $nombre,
-                    ":apellidos" => $apellidos, ":id" => $id, ])) {
+                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
+                    ":id" => $id])) {
                     print "    <p>Registro modificado correctamente.</p>\n";
                 } else {
                     print "    <p>Error al modificar el registro.</p>\n";

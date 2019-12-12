@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,19 +22,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Variables globales
+// Configuración específica para SQLite
 
-$dbTablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla
+// Configuración general
 
-// Consultas
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-3-1.sqlite");  // Ubicación de la base de datos
+define("SQLITE_TABLE_AGENDA", "agenda");                                                     // Nombre de la tabla
 
-$consultaCreaTabla = "CREATE TABLE $dbTablaAgenda (
+// Nombre de la tabla
+
+$tablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla
+
+// Valores de ordenación de las tablas
+
+$columnasAgendaOrden = [
+    "nombre ASC", "nombre DESC",
+    "apellidos ASC", "apellidos DESC",
+];
+
+// Consultas de borrado y creación de base de datos y tablas, etc.
+
+$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
     id INTEGER PRIMARY KEY,
     nombre VARCHAR($tamAgendaNombre),
     apellidos VARCHAR($tamAgendaApellidos)
     )";
 
-// Funciones comunes de bases de datos (SQLITE)
+// Funciones específicas de bases de datos (SQLITE)
 
 function conectaDb()
 {
@@ -51,11 +65,9 @@ function conectaDb()
     }
 }
 
-function borraTodo($db)
+function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
 {
-    global $dbTablaAgenda, $consultaCreaTabla;
-
-    $consulta = "DROP TABLE $dbTablaAgenda";
+    $consulta = "DROP TABLE $nombreTabla";
     if ($db->query($consulta)) {
         print "    <p>Tabla borrada correctamente.</p>\n";
         print "\n";
@@ -63,7 +75,8 @@ function borraTodo($db)
         print "    <p>Error al borrar la tabla.</p>\n";
         print "\n";
     }
-    $consulta = $consultaCreaTabla;
+
+    $consulta = $consultaCreacionTabla;
     if ($db->query($consulta)) {
         print "    <p>Tabla creada correctamente.</p>\n";
         print "\n";

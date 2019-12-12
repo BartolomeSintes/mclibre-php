@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (2) - comunes/biblioteca.php
+ * Identificación de usuarios - Agenda (2) - comunes/biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Constantes y variables globales
+// Constantes comunes
 
 define("GET", "get");                      // Formularios se envían con GET
 define("POST", "post");                    // Formularios se envían con POST
@@ -32,15 +32,8 @@ define("SQLITE", "SQLite");                // Base de datos SQLITE
 
 define("MENU_PRINCIPAL", "menuPrincipal");                     // Menú principal sin conectar
 define("MENU_PRINCIPAL_CONECTADO", "menuPrincipalConectado");  // Menú principal conectado
-define("MENU_VOLVER", "menuAcceso");                           // Menú Acceso
+define("MENU_VOLVER", "menuVolver");                           // Menú Volver
 define("MENU_AGENDA", "menuAgenda");                           // Menú Agenda
-
-$columnasAgendaOrden = [                   // Nombre de las columnas de la tabla y valor de ordenación
-    "nombre ASC", "nombre DESC",
-    "apellidos ASC", "apellidos DESC",
-    "telefono ASC", "telefono DESC",
-    "correo ASC", "correo DESC",
-];
 
 // Constantes y variables configurables
 
@@ -88,7 +81,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Agenda (2). Identificación de usuarios (1).\n";
+    print "    $texto. Agenda (2). Identificación de usuarios.\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -101,7 +94,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Identificación de usuarios (1) - Agenda (2) - $texto</h1>\n";
+    print "    <h1>Identificación de usuarios - Agenda (2) - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
@@ -137,7 +130,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-12-09\">9 de diciembre de 2019</time>\n";
+    print "      <time datetime=\"2019-12-12\">12 de diciembre de 2019</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

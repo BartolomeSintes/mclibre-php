@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (2) - db-agenda/borrar-1.php
+ * Identificación de usuarios - Agenda (2) - db-agenda/borrar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -37,14 +37,14 @@ cabecera("Borrar 1", MENU_AGENDA, 1);
 $ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
 $id     = recoge("id", []);
 
-$consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $dbTablaAgenda
+    $consulta = "SELECT * FROM $tablaAgenda
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {

@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - administrador/borrar-todo-2.php
+ * Identificación de usuarios - Agenda (3) - administrador/borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ $db = conectaDb();
 
 cabecera("Administrador - Borrar todo 2", MENU_ADMINISTRADOR, 1);
 
-borraTodo($db, $dbTablas, $consultasCreaTablas);
+borraTodo($db, $tablas, $consultasCreaTabla);
 
 $db = null;
 pie();

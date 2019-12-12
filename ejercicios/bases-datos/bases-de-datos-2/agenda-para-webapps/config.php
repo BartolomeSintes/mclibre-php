@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,35 +22,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Base de datos utilizada por el programa: MYSQL o SQLITE
+// Base de datos utilizada por la aplicación: MYSQL o SQLITE
 
-$dbMotor = SQLITE;     // Valores posibles: MYSQL o SQLITE
-
-// Configuración para MYSQL
-
-define("MYSQL_HOST", "mysql:host=localhost");  // Nombre de host
-define("MYSQL_USER", "");                      // Nombre de usuario
-define("MYSQL_PASSWORD", "");                  // Contraseña de usuario
-define("MYSQL_DATABASE", "agenda");            // Nombre de la base de datos
-define("MYSQL_TABLE_AGENDA", "tabla");                // Nombre de la tabla
-
-// Configuración para SQLite
-
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/agenda.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "tabla");                                             // Nombre de la tabla
+$dbMotor = SQLITE;                   // Valores posibles: MYSQL o SQLITE
 
 // Configuración Tabla Agenda
 
-define("MAX_REG_TABLE", 20);  // Número máximo de registros en la tabla
-$tamAgendaNombre    = 40;           // Tamaño de la columna Nombre
-$tamAgendaApellidos = 60;           // Tamaño de la columna Apellidos
-$tamAgendaTelefono  = 10;           // Tamaño de la columna Teléfono
-$tamAgendaCorreo    = 50;           // Tamaño de la columna Correo
+define("MAX_REG_TABLE_AGENDA", 20);  // Número máximo de registros en la tabla Agenda
+$tamAgendaNombre    = 40;            // Tamaño de la columna Agenda > Nombre
+$tamAgendaApellidos = 60;            // Tamaño de la columna Agenda > Apellidos
+$tamAgendaTelefono  = 10;            // Tamaño de la columna Agenda > Teléfono
+$tamAgendaCorreo    = 50;            // Tamaño de la columna Agenda > Correo
 
 // Método de envío de formularios
 
-define("FORM_METHOD", GET);   // Valores posibles: GET o POST
+define("FORM_METHOD", GET);          // Valores posibles: GET o POST
 
 // Hoja de estilo
 
-define("COLOR", 27);          // Color básico de la aplicación (0 - 360)
+define("COLOR", 27);                 // Color básico de la aplicación (0 - 360)

@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ $id = recoge("id");
 if ($id == "") {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+    $consulta = "SELECT COUNT(*) FROM $tablaAgenda
        WHERE id=:id";
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
@@ -41,7 +41,7 @@ if ($id == "") {
     } elseif ($result->fetchColumn() == 0) {
         print "    <p>Registro no encontrado.</p>\n";
     } else {
-        $consulta = "SELECT * FROM $dbTablaAgenda
+        $consulta = "SELECT * FROM $tablaAgenda
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);

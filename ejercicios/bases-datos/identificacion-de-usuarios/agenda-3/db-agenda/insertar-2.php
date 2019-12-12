@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - db-agenda/insertar-2.php
+ * Identificación de usuarios - Agenda (3) - db-agenda/insertar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -76,7 +76,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     if ($nombre == "" && $apellidos == ""  && $telefono == "" && $correo == "") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda";
+        $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
         $result = $db->query($consulta);
         if (!$result) {
             print "    <p>Error en la consulta.</p>\n";
@@ -85,7 +85,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
             print "\n";
             print "    <p>Por favor, borre algún registro antes.</p>\n";
         } else {
-            $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+            $consulta = "SELECT COUNT(*) FROM $tablaAgenda
                 WHERE nombre=:nombre
                 AND apellidos=:apellidos
                 AND telefono=:telefono
@@ -98,7 +98,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p>El registro ya existe.</p>\n";
             } else {
-                $consulta = "INSERT INTO $dbTablaAgenda
+                $consulta = "INSERT INTO $tablaAgenda
                     (nombre, apellidos, telefono, correo)
                     VALUES (:nombre, :apellidos, :telefono, :correo)";
                 $result = $db->prepare($consulta);

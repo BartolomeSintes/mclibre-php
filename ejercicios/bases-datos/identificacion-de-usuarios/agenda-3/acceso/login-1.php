@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - acceso/login-1.php
+ * Identificación de usuarios - Agenda (3) - acceso/login-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -36,10 +36,10 @@ $db = conectaDb();
 
 cabecera("Login 1", MENU_VOLVER, 1);
 
-if (!existenTablas($db, $dbTablas)) {
+if (!existenTablas($db, $tablas)) {
     print "<p>La base de datos no está creada. Se creará la base de datos.</p>\n";
     print "\n";
-    borraTodo($db, $dbTablas, $consultasCreaTablas);
+    borraTodo($db, $tablas, $consultasCreaTabla);
 }
 
 $aviso = recoge("aviso");

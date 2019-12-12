@@ -1,5 +1,24 @@
-2019-12-09
+2019-12-10
+- - -
+He conseguido quitar las variables globales. Mi idea era utilizar constantes,
+pero en PHP 5.4 (que es el que está en glup) no se pueden hacer matrices constantes.
+(a partir de PHP 5.6 sí que se puede).
+Así que he tenido que ponerles argumentos a borrarTodo(). Lo que queda feo es
+que SQLite necesita que le diga los nombres de las tablas para boorarla,
+pero MySQL no porque borra la base de datos.
+Para que el número de argumentos sea el mismo he tenido que poner los nombres de las tablas en el borraTodo() de MySQL.
 
+Si borraTodo() de MySQL creara la base de datos si no existe y a continuación
+borrara y creara las tablas como SQLite,  se utilizarían los mismos argumentos.
+
+En cuanto pueda usar en la web un PHP más moderno, podré usar matrices constantes y eliminar los argumentos.
+- - -
+Otra cosa que queda fea es $columnas Orden. No me gusta que esté en config,
+porque realmente no es algo para configurar. Así que
+lo he puesto en biblioteca-sqlite y -mysql pero queda feo porque está repetido.
+
+Podría hacer una función que mirara en la base de datos los nombres de las columnas, pero son ganas de hacer una consulta extra.
+- - -
 agenda3
 * La función existenTablas($db, $tablas) hace un print si falla la consulta.
 No me gusta porque no hace cabecera ni pie.

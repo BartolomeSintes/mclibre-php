@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -30,8 +30,8 @@ cabecera("Borrar 2", MENU_VOLVER);
 $id = recoge("id", []);
 
 foreach ($id as $indice => $valor) {
-    $consulta = "DELETE FROM $dbTablaAgenda
-    WHERE id=:indice";
+    $consulta = "DELETE FROM $tablaAgenda
+        WHERE id=:indice";
     $result = $db->prepare($consulta);
     if ($result->execute([":indice" => $indice])) {
         print "    <p>Registro borrado correctamente.</p>\n";

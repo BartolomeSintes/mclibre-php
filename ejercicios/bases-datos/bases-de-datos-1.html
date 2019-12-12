@@ -115,16 +115,18 @@
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Constantes y variables globales
+<code class="language-php">// Constantes comunes
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-1.sqlite"); // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "tabla");                                                            // Nombre de la tabla
+define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-1.sqlite");  // Ubicación de la base de datos
+define("SQLITE_TABLE_AGENDA", "agenda");                                                     // Nombre de la tabla
 
-$dbTablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla
+// Nombre de la tabla
 
-// Consultas
+$tablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla
 
-$consultaCreaTabla = "CREATE TABLE $dbTablaAgenda (
+// Consultas de borrado y creación de base de datos y tablas, etc.
+
+$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
     id INTEGER PRIMARY KEY,
     nombre VARCHAR($tamAgendaNombre),
     apellidos VARCHAR($tamAgendaApellidos)
@@ -136,23 +138,31 @@ $consultaCreaTabla = "CREATE TABLE $dbTablaAgenda (
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Constantes y variables globales
+<code class="language-php">
+// Configuración específica para MYSQL
+
+// Configuración general
 
 define("MYSQL_HOST", "mysql:host=localhost");        // Nombre de host
 define("MYSQL_USER", "");                            // Nombre de usuario
 define("MYSQL_PASSWORD", "");                        // Contraseña de usuario
 define("MYSQL_DATABASE", "mclibre_base_datos_1_1");  // Nombre de la base de datos
-define("MYSQL_TABLE_AGENDA", "tabla");               // Nombre de la tabla
+define("MYSQL_TABLE_AGENDA", "agenda");              // Nombre de la tabla
 
-$dbTablaAgenda = MYSQL_DATABASE . "." . MYSQL_TABLE_AGENDA;  // Nombre de la tabla
+$tablaAgenda = MYSQL_DATABASE . "." . MYSQL_TABLE_AGENDA;  // Nombre de la tabla
 
-// Consultas
+// Consultas de borrado y creación de base de datos y tablas, etc.
 
-$consultaCreaDb = "CREATE DATABASE " . MYSQL_DATABASE . "
-    CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci";
+define("CONSULTA_BORRA_DB", "DROP DATABASE " . MYSQL_DATABASE);
 
-$consultaCreaTabla = "CREATE TABLE $dbTablaAgenda (
+define(
+    "CONSULTA_CREA_DB",
+    "CREATE DATABASE " . MYSQL_DATABASE . "
+        CHARACTER SET utf8mb4
+        COLLATE utf8mb4_unicode_ci"
+);
+
+$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR($tamAgendaNombre),
     apellidos VARCHAR($tamAgendaApellidos),
@@ -213,7 +223,7 @@ if (mb_strlen($nombre, "UTF-8") &gt; $tamAgendaNombre) {
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "INSERT INTO $dbTablaAgenda
+$consulta = "INSERT INTO $tablaAgenda
     (nombre, apellidos)
     VALUES (:nombre, :apellidos)";
 $result = $db-&gt;prepare($consulta);
@@ -254,7 +264,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
         <div class="codigo">
           <pre>
 <code class="language-php">// Seleccionar todos los registros
-$consulta = "SELECT * FROM $dbTablaAgenda";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 
 foreach ($result as $valor) {
@@ -300,7 +310,7 @@ foreach ($result as $valor) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Imprime casilla de verificación
-$consulta = "SELECT * FROM $dbTablaAgenda";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 
 foreach ($result as $valor) {
@@ -317,7 +327,7 @@ foreach ($result as $valor) {
 $id = recoge("id", []);
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $dbTablaAgenda
+    $consulta = "DELETE FROM $tablaAgenda
         WHERE id=:indice";
     $result = $db-&gt;prepare($consulta);
     if ($result-&gt;execute([":indice" =&gt; $indice])) {
@@ -367,7 +377,7 @@ foreach ($id as $indice =&gt; $valor) {
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT * FROM $dbTablaAgenda
+$consulta = "SELECT * FROM $tablaAgenda
     WHERE nombre LIKE :nombre
     AND apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
@@ -411,7 +421,7 @@ $result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellido
         <div class="codigo">
           <pre>
 <code class="language-php">// Imprime botón radio
-$consulta = "SELECT * FROM $dbTablaAgenda";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 
 foreach ($result as $valor) {
@@ -427,7 +437,7 @@ foreach ($result as $valor) {
 <code class="language-php">// Recoge el registro seleccionado
 $id = recoge("id");
 
-$consulta = "SELECT * FROM $dbTablaAgenda
+$consulta = "SELECT * FROM $tablaAgenda
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":id" =&gt; $id]);
@@ -461,7 +471,7 @@ print "          &lt;input type=\"hidden\" name=\"id\" value=\"$id\"&gt;\n";</co
 $apellidos = recoge("apellidos");
 $id        = recoge("id");
 
-$consulta = "UPDATE $dbTablaAgenda
+$consulta = "UPDATE $tablaAgenda
     SET nombre=:nombre, apellidos=:apellidos
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);

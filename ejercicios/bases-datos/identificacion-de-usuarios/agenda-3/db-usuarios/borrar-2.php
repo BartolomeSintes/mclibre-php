@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - db-usuarios/borrar-2.php
+ * Identificación de usuarios - Agenda (3) - db-usuarios/borrar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ if (count($id) == 0) {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
-        $consulta = "SELECT * FROM $dbTablaUsuarios
+        $consulta = "SELECT * FROM $tablaUsuarios
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $indice]);
@@ -51,7 +51,7 @@ if (count($id) == 0) {
             if ($valor["usuario"] == ROOT_NAME) {
                 print "    <p>Este usuario no se puede borrar.</p>\n";
             } else {
-                $consulta = "SELECT COUNT(*) FROM $dbTablaUsuarios
+                $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
                     WHERE id=:indice";
                 $result = $db->prepare($consulta);
                 $result->execute([":indice" => $indice]);
@@ -60,7 +60,7 @@ if (count($id) == 0) {
                 } elseif ($result->fetchColumn() == 0) {
                     print "    <p>Registro no encontrado.</p>\n";
                 } else {
-                    $consulta = "DELETE FROM $dbTablaUsuarios
+                    $consulta = "DELETE FROM $tablaUsuarios
                         WHERE id=:indice";
                     $result = $db->prepare($consulta);
                     if ($result->execute([":indice" => $indice])) {

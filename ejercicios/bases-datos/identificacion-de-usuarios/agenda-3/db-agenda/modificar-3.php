@@ -1,11 +1,11 @@
 <?php
 /**
- * Identificación de usuarios (1) - Agenda (3) - db-agenda/modificar-3.php
+ * Identificación de usuarios - Agenda (3) - db-agenda/modificar-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-12-09
+ * @version   2019-12-11
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -79,7 +79,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     } elseif ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
         print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+        $consulta = "SELECT COUNT(*) FROM $tablaAgenda
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
@@ -91,7 +91,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
             // La consulta cuenta los registros con un id diferente porque MySQL no distingue
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-            $consulta = "SELECT COUNT(*) FROM $dbTablaAgenda
+            $consulta = "SELECT COUNT(*) FROM $tablaAgenda
                 WHERE nombre=:nombre
                 AND apellidos=:apellidos
                 AND telefono=:telefono
@@ -106,7 +106,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                 print "    <p>Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";
             } else {
-                $consulta = "UPDATE $dbTablaAgenda
+                $consulta = "UPDATE $tablaAgenda
                     SET nombre=:nombre, apellidos=:apellidos,
                         telefono=:telefono, correo=:correo
                     WHERE id=:id";
