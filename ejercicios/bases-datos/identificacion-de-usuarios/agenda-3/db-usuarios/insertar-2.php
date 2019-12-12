@@ -68,10 +68,9 @@ if ($usuarioOk && $passwordOk) {
             print "    <p>Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
-                WHERE usuario=:usuario
-                AND password=:password";
+                WHERE usuario=:usuario";
             $result = $db->prepare($consulta);
-            $result->execute([":usuario" => $usuario, ":password" => $password]);
+            $result->execute([":usuario" => $usuario]);
             if (!$result) {
                 print "    <p>Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {

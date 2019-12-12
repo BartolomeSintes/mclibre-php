@@ -27,11 +27,11 @@
 // Configuración general
 
 define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-2.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "agenda");                                                     // Nombre de la tabla
+define("SQLITE_TABLE_AGENDA", "agenda");                                                     // Nombre de la tabla Agenda
 
-// Nombre de la tabla
+// Nombres de las tablas
 
-$tablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla
+$tablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla Agenda
 
 // Consultas de borrado y creación de base de datos y tablas, etc.
 

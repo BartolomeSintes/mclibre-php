@@ -57,3 +57,7 @@ define("COLOR", 27);                 // Color básico de la aplicación (0 - 360
 // Nombre de sesión
 
 define("SESSION_NAME", "agenda-3");  // Nombre de sesión
+
+// Algoritmo hash para encriptar la contraseña de usuario
+
+define("ALGORITMO_HASH", "sha256");  // Algoritmo hash

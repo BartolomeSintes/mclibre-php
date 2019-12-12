@@ -34,10 +34,11 @@ if (!isset($_SESSION["conectado"])) {
 if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
     exit();
-} else {
-    $db = conectaDb();
-    cabecera("Borrar todo 2", MENU_AGENDA, 1);
-    borraTodo($db, $tablaAgenda, $consultaCreaTabla);
-    $db = null;
-    pie();
 }
+
+$db = conectaDb();
+cabecera("Borrar todo 2", MENU_AGENDA, 1);
+borraTodo($db, $tablaAgenda, $consultaCreaTabla);
+
+$db = null;
+pie();

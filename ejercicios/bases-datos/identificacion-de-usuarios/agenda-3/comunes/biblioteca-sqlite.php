@@ -136,6 +136,7 @@ function existenTablas($db, $nombresTablas)
         $consulta = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
         $result   = $db->query($consulta);
         if (!$result) {
+            $existe = false;
             print "    <p>Error en la consulta.</p>\n";
             print "\n";
         } else {

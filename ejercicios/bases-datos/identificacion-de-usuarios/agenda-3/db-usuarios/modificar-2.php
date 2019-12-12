@@ -60,7 +60,7 @@ if ($id == "") {
                 print "    <p>Este usuario no se puede modificar.</p>\n";
             } else {
                 print "    <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
-                print "      <p>Modifique los campos que desee:</p>\n";
+                print "      <p>Modifique los campos que desee (deje la contraseña en blanco para mantenerla):</p>\n";
                 print "\n";
                 print "      <table>\n";
                 print "        <tbody>\n";
@@ -70,7 +70,7 @@ if ($id == "") {
                 print "          </tr>\n";
                 print "          <tr>\n";
                 print "            <td>Contraseña:</td>\n";
-                print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosPassword\" maxlength=\"$tamUsuariosPassword\" value=\"$valor[password]\"></td>\n";
+                print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosPassword\" maxlength=\"$tamUsuariosPassword\"></td>\n";
                 print "          </tr>\n";
                 print "        </tbody>\n";
                 print "      </table>\n";

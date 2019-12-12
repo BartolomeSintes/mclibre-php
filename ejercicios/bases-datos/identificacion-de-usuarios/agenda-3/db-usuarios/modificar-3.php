@@ -58,8 +58,8 @@ if (mb_strlen($password, "UTF-8") > $tamUsuariosPassword) {
 if ($usuarioOk && $passwordOk) {
     if ($id == "") {
         print "    <p>No se ha seleccionado ningún registro.</p>\n";
-    } elseif ($usuario == "" || $password == "") {
-        print "    <p>Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";
+    } elseif ($usuario == "") {
+        print "    <p>Hay que rellenar el nombre de usuario. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT * FROM $tablaUsuarios
             WHERE id=:id";
@@ -86,25 +86,36 @@ if ($usuarioOk && $passwordOk) {
                     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
                     $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
                         WHERE usuario=:usuario
-                        AND password=:password
                         AND id<>:id";
                     $result = $db->prepare($consulta);
-                    $result->execute([":usuario" => $usuario, ":password" => $password, ":id" => $id]);
+                    $result->execute([":usuario" => $usuario, ":id" => $id]);
                     if (!$result) {
                         print "    <p>Error en la consulta.</p>\n";
                     } elseif ($result->fetchColumn() > 0) {
-                        print "    <p>Ya existe un registro con esos mismos valores. "
+                        print "    <p>Ya existe un registro con ese nombre de usuario. "
                             . "No se ha guardado la modificación.</p>\n";
                     } else {
-                        $consulta = "UPDATE $tablaUsuarios
-                            SET usuario=:usuario, password=:password
-                            WHERE id=:id";
-                        $result = $db->prepare($consulta);
-                        if ($result->execute([":usuario" => $usuario, ":password" => encripta($password),
-                            ":id" => $id])) {
-                            print "    <p>Registro modificado correctamente.</p>\n";
+                        if ($password != "") {
+                            $consulta = "UPDATE $tablaUsuarios
+                                SET usuario=:usuario, password=:password
+                                WHERE id=:id";
+                            $result = $db->prepare($consulta);
+                            if ($result->execute([":usuario" => $usuario, ":password" => encripta($password),
+                                ":id" => $id])) {
+                                print "    <p>Registro modificado correctamente.</p>\n";
+                            } else {
+                                print "    <p>Error al modificar el registro.</p>\n";
+                            }
                         } else {
-                            print "    <p>Error al modificar el registro.</p>\n";
+                            $consulta = "UPDATE $tablaUsuarios
+                                SET usuario=:usuario
+                                WHERE id=:id";
+                            $result = $db->prepare($consulta);
+                            if ($result->execute([":usuario" => $usuario, ":id" => $id])) {
+                                print "    <p>Registro modificado correctamente.</p>\n";
+                            } else {
+                                print "    <p>Error al modificar el registro.</p>\n";
+                            }
                         }
                     }
                 }

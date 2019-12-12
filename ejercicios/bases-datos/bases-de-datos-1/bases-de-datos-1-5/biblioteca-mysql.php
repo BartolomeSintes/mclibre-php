@@ -30,11 +30,11 @@ define("MYSQL_HOST", "mysql:host=localhost");        // Nombre de host
 define("MYSQL_USER", "");                            // Nombre de usuario
 define("MYSQL_PASSWORD", "");                        // Contraseña de usuario
 define("MYSQL_DATABASE", "mclibre_base_datos_1_5");  // Nombre de la base de datos
-define("MYSQL_TABLE_AGENDA", "agenda");              // Nombre de la tabla
+define("MYSQL_TABLE_AGENDA", "agenda");              // Nombre de la tabla Agenda
 
-// Nombre de la tabla
+// Nombres de las tablas
 
-$tablaAgenda = MYSQL_DATABASE . "." . MYSQL_TABLE_AGENDA;  // Nombre de la tabla
+$tablaAgenda = MYSQL_DATABASE . "." . MYSQL_TABLE_AGENDA;  // Nombre de la tabla Agenda
 
 // Consultas de borrado y creación de base de datos y tablas, etc.
 

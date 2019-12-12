@@ -157,6 +157,7 @@ function existenTablas($db, $nombresTablas)
     $consulta = "SELECT count(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '" . MYSQL_DATABASE . "'";
     $result   = $db->query($consulta);
     if (!$result) {
+        $existe = false;
         print "    <p>Error en la consulta.</p>\n";
         print "\n";
     } else {
@@ -172,6 +173,7 @@ function existenTablas($db, $nombresTablas)
                     AND table_name = '$tabla'";
                 $result = $db->query($consulta);
                 if (!$result) {
+                    $existe = false;
                     print "    <p>Error en la consulta.</p>\n";
                     print "\n";
                 } else {
