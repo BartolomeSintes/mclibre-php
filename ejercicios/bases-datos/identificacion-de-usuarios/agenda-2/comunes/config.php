@@ -55,4 +55,4 @@ define("SESSION_NAME", "agenda-2");  // Nombre de sesión
 
 // Algoritmo hash para encriptar la contraseña de usuario
 
-define("ALGORITMO_HASH", "sha256");  // Algoritmo hash
+define("HASH_ALGORITHM", "sha256");  // Algoritmo hash: Nombre

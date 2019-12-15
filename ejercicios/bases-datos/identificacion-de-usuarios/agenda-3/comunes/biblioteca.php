@@ -159,5 +159,5 @@ function pie()
 
 function encripta($cadena)
 {
-    return hash(ALGORITMO_HASH, $cadena);
+    return hash(HASH_ALGORITHM, $cadena);
 }
