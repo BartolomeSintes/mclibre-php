@@ -6,7 +6,7 @@
  * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2019-11-09
- * @link      http://www.mclibre.org
+ * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -64,7 +64,7 @@ if (!isset($_REQUEST["dato"])) {
     if ($dato != $_REQUEST["dato"] && $dato != "") {
         print " <p>El texto introducido contiene caracteres potencialmente problemáticos (comillas, ampersand, etiquetas html, etc.). "
             . "Por seguridad se ha aplicado al texto la función recoge() comentada en "
-            . "<a href=\"http://www.mclibre.org/consultar/php/lecciones/php-recogida-datos.html#recoger-datos\">estos apuntes</a>.</p>\n";
+            . "<a href=\"https://www.mclibre.org/consultar/php/lecciones/php-recogida-datos.html#recoger-datos\">estos apuntes</a>.</p>\n";
         print "\n";
         print "  <p>Tenga en cuenta que el resultado de las funciones mostrado puede ser diferente al que se obtendría utilizando el texto original.</p>\n";
         print "\n";
@@ -213,8 +213,8 @@ print "  <p style=\"clear: both; padding-top: 1em;\"><a href=\"comprobacion-dato
     </p>
 
     <p class="licencia">
-      Este programa forma parte del curso <strong><a href="http://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="http://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
+      Este programa forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación
+      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

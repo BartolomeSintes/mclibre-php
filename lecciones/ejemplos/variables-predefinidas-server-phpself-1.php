@@ -6,7 +6,7 @@
  * @copyright 2010 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2010-03-24
- * @link      http://www.mclibre.org
+ * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
