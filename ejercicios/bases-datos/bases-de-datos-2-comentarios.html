@@ -65,7 +65,7 @@ $db = null;</code>
           <li>Defina una constante que contenga el máximo número de registros que puede contener la agenda.
 
             <div class="codigo">
-              <pre><code class="language-php">define("MAX_REG_TABLA", 20);  // Número máximo de registros en la tabla</code></pre>
+              <pre><code class="language-php">define("MAX_REG_TABLE_AGENDA", 20);  // Número máximo de registros en la tabla</code></pre>
             </div>
           </li>
         </ul>
@@ -82,7 +82,7 @@ $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
-} elseif ($result-&gt;fetchColumn() &gt;= MAX_REG_TABLA) {
+} elseif ($result-&gt;fetchColumn() &gt;= MAX_REG_TABLE_AGENDA) {
     print "    &lt;p&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
     print "\n";
     print "    &lt;p&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
@@ -314,27 +314,26 @@ if (!$result) {
         <div class="codigo">
           <pre>
 <code class="language-php">$consulta = "SELECT * FROM $tablaAgenda
-             ORDER BY $columna $orden";</code>
+    ORDER BY $ordena";</code>
 </pre>
         </div>
         <p>La columna y el orden deberían haberse recogido previamente (en el ejemplo siguiente, se les da valores predeterminados para que la primera vez que se listan los registros se haga por orden alfabético del apellido):</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$columna = recogeValores("columna", $columnas, "apellidos");
-$orden   = recogeValores("orden", $orden, "ASC");</code>
+<code class="language-php">$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");</code>
 </pre>
         </div>
         <p>La función recogeValores() podría ser la siguiente:</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$columnasAgendaOrden = [                              // Nombre de las columnas de la tabla
-    "nombre",
-    "apellidos"
-];
+<code class="language-php">// Valores de ordenación de las tablas
 
-$orden = [ "ASC", "DESC" ];                // Valores de ordenación
+$columnasAgendaOrden = [
+    "nombre ASC", "nombre DESC",
+    "apellidos ASC", "apellidos DESC",
+];
 
 function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
@@ -347,43 +346,79 @@ function recogeValores($var, $valoresValidos, $valorPredeterminado)
 }</code>
 </pre>
         </div>
-        <p>En la cabecera de la tabla se insertarían dos imágenes que enlazarían a la propia página enviando cada una una columna y orden diferente (en el ejemplo siguiente ordenaría por la columna nombre de forma ascendente o descendente).</p>
+
+        <p>En la cabecera de la tabla se insertarían las imágenes de las flechas en dos botones la columna y el orden solicitado (en el ejemplo siguiente ordenaría por la columna nombre de forma ascendente o descendente). Las imágenes (arriba.svg y abajo.svg) se encuentran en las plantillas.</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">// En la dirección se escribe la entidad de carácter &amp;amp; en vez del carácter &amp;
-// para que el código HTML de la página sea válido
-
-print "        &lt;th&gt;";
-print "          &lt;a href=\"$_SERVER[PHP_SELF]?columna=nombre&amp;amp;orden=ASC\"&gt;\n";
-print "            &lt;img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"&gt;&lt;/a&gt;\n";
-print "          Nombre\n";
-print "          &lt;a href=\"$_SERVER[PHP_SELF]?columna=nombre&amp;amp;orden=DESC\"&gt;\n";
-print "            &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"&gt;&lt;/a&gt;\n";
-print "        &lt;/th&gt;\n";</code>
+<code class="language-php">print "            &lt;th&gt;\n";
+print "              &lt;button name=\"ordena\" value=\"nombre ASC\" class=\"boton-invisible\"&gt;\n";
+print "                &lt;img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";
+print "              &lt;/button&gt;\n";
+print "              Nombre\n";
+print "              &lt;button name=\"ordena\" value=\"nombre DESC\" class=\"boton-invisible\"&gt;\n";
+print "                &lt;img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\"&gt;\n";
+print "              &lt;/button&gt;\n";
+print "            &lt;/th&gt;\n";</code>
 </pre>
         </div>
 
-        <p>Las imágenes (arriba.png y abajo.png) se encuentran en las plantillas.</p>
+        <p>En el caso de las páginas listar.php y buscar-2.php, el formulario necesita enviar la información a la propia página, para reordenar el resultado.</p>
 
-        <p>En el caso de la búsqueda (buscar-2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda</p>
+        <p>En el caso de las páginas borrar-1.php y modificar-1.php, el formulario necesita enviar la información a dos páginas distintas:</p>
+        <ul>
+          <li>Si el usuario simplemente quiere reordenar los registros, el formulario debe enviar la información a la propia página.</li>
+          <li>Pero si el usuario quiere borrar o modificar, el formulario debe enviar la información a la página siguiente (borrar-2.php y modificar-2.php).</li>
+        </ul>
+
+        <p>Para conseguirlo, el atributo <span class="html-atri">action</span> del formualrio señalará a la propia página:</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">// En la dirección se escribe la entidad de carácter &amp;amp; en vez del carácter &amp;
-// para que el código HTML de la página sea válido
+<code class="language-php">print "    &lt;form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\"&gt;\n";</code>
+</pre>
+        </div>
 
-datos = "nombre=$nombre&amp;amp;apellidos=$apellidos&amp;amp;columna";
+        <p>En el caso de las páginas borrar-1.php y modificar-1.php, el botón Enviar del formulario incluirá el atributo <span class="html-atri">formaction</span>, que permite enviar la información a una página distinta de la indicada por elel atributo <span class="html-atri">action</span> del formulario.</p>
 
-// ...
+        <div class="codigo">
+          <pre>
+<code class="language-php">print "      &lt;p&gt;\n";
+print "        &lt;input type=\"submit\" value=\"Borrar registro\" formaction=\"borrar-2.php\"&gt;\n";
+print "        &lt;input type=\"reset\" value=\"Reiniciar formulario\"&gt;\n";
+print "      &lt;/p&gt;\n";</code>
+</pre>
+        </div>
 
-print "        &lt;th&gt;\n";
-print "          &lt;a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;amp;orden=ASC\"&gt;\n";
-print "            &lt;img src=\"abajo.png\" alt=\"A-Z\" title=\"A-Z\"&gt;&lt;/a&gt;\n";
-print "          Nombre\n";
-print "          &lt;a href=\"$_SERVER[PHP_SELF]?$datos=nombre&amp;amp;orden=DESC\"&gt;\n";
-print "            &lt;img src=\"arriba.png\" alt=\"Z-A\" title=\"Z-A\"&gt;&lt;/a&gt;\n";
-print "        &lt;/th&gt;\n";</code>
+        <p>En el caso de la búsqueda (buscar-2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda, por lo que los añadiremos en controles ocultos:</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">print "      &lt;p&gt;\n";
+print "        &lt;input type=\"hidden\" name=\"nombre\" value=\"$nombre\"&gt;\n";
+print "        &lt;input type=\"hidden\" name=\"apellidos\" value=\"$apellidos\"&gt;\n";
+print "      &lt;/p&gt;\n";</code>
+</pre>
+        </div>
+
+        <p>Las páginas borrar-1.php y modificar-1.php deberían recoger también las casillas de verificación y los botones radio, para que si se marcan algunas casillas o botones y se reordenan los registros, se puedan mantener marcadas las casillas ya marcadas.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
+$id     = recoge("id", []);
+
+foreach ($result as $valor) {
+    print "          &lt;tr&gt;\n";
+    if (isset($id[$valor["id"]])) {
+        print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\" checked&gt;&lt;/td&gt;\n";
+    } else {
+        print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\"&gt;&lt;/td&gt;\n";
+    }
+    print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
+    print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+    print "          &lt;/tr&gt;\n";
+}</code>
 </pre>
         </div>
       </li>
@@ -397,7 +432,7 @@ print "        &lt;/th&gt;\n";</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 16 de diciembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

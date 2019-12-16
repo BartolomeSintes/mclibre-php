@@ -114,10 +114,8 @@ $db = conectaDB();</code>
 <code class="language-php">// FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS SQLITE
 function conectaDb()
 {
-    global $dbDb;
-
     try {
-        $tmp = new PDO("sqlite:$dbDb");
+        $tmp = new PDO("sqlite:" . SQLITE_DATABASE);
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
@@ -223,10 +221,8 @@ function conectaDb()
 <code class="language-php">// biblioteca-sqlite.php
 function conectaDb()
 {
-    global $dbDb;
-
     try {
-        $tmp = new PDO("sqlite:$dbDb");
+        $tmp = new PDO("sqlite:" . SQLITE_DATABASE);
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
@@ -269,7 +265,7 @@ function conectaDb()
 require_once "biblioteca.php";
 $db = conectaDB();
 
-$consulta = "INSERT INTO $dbTabla
+$consulta = "INSERT INTO $tablaAgenda
     (nombre, apellidos)
     VALUES ("$nombre", "$apellidos")";
 if ($db-&gt;query($consulta)) {
@@ -290,7 +286,7 @@ $db = null;</code>
 require_once "biblioteca.php";
 $db = conectaDB();
 
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -313,11 +309,11 @@ $db = null;</code>
     <div class="codigo">
       <pre>
 <code class="language-php">// En dos líneas
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 
 // En una sola línea
-$result = $db-&gt;query("SELECT * FROM $dbTabla");</code>
+$result = $db-&gt;query("SELECT * FROM $tablaAgenda");</code>
 </pre>
     </div>
 
@@ -325,7 +321,7 @@ $result = $db-&gt;query("SELECT * FROM $dbTabla");</code>
 
     <div class="codigo">
       <pre>
-<code class="language-php">$consulta = "SELECT * FROM $dbTabla";
+<code class="language-php">$consulta = "SELECT * FROM $tablaAgenda";
 print "&lt;p&gt;Consulta: $consulta&lt;/p&gt;\n";
 $result = $db-&gt;query($consulta);</code>
 </pre>
@@ -345,7 +341,7 @@ $result = $db-&gt;query($consulta);</code>
       <div class="codigo">
         <pre>
 <code class="language-php">// Consulta preparada
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute();</code>
 </pre>
@@ -362,7 +358,7 @@ $result-&gt;execute();</code>
 <code class="language-php">$nombre    = $_REQUEST["nombre"];
 $apellidos = $_REQUEST["apellidos"];
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE <span class="codigo-resaltado">nombre=$nombre</span>
     AND <span class="codigo-resaltado">apellidos=$apellidos</span>";     // DESACONSEJADO: PHP NO DESINFECTA LOS DATOS
 $result = $db-&gt;prepare($consulta);
@@ -385,7 +381,7 @@ if (!$result) {
 <code class="language-php">$nombre    = $_REQUEST["nombre"];
 $apellidos = $_REQUEST["apellidos"];
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE <span class="codigo-resaltado">nombre=:nombre</span>
     AND <span class="codigo-resaltado">apellidos=:apellidos</span>";
 $result = $db-&gt;prepare($consulta);
@@ -404,7 +400,7 @@ if (!$result) {
 <code class="language-php">$nombre    = $_REQUEST["nombre"];
 $apellidos = $_REQUEST["apellidos"];
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE <span class="codigo-resaltado">nombre=?</span>
     AND <span class="codigo-resaltado">apellidos=?</span>";
 $result = $db-&gt;prepare($consulta);
@@ -458,7 +454,7 @@ function recogeValores($var, $valoresValidos, $valorPredeterminado)
 $columna = recogeValores("columna", $columnas, "apellidos");
 $nombre  = $_REQUEST["nombre"];
 
-$consulta = "SELECT * FROM $dbTabla
+$consulta = "SELECT * FROM $tablaAgenda
     WHERE nombre=:nombre
     ORDER BY <span class="codigo-resaltado">$columna</span> ASC";
 $result = $db-&gt;prepare($consulta);
@@ -493,9 +489,15 @@ if (!$result) {
         <div class="codigo">
           <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE BASE DE DATOS EN MYSQL
-$consultaCreaDb = "CREATE DATABASE $dbDb
-    CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci";
+
+define(
+    "CONSULTA_CREA_DB",
+    "CREATE DATABASE " . MYSQL_DATABASE . "
+        CHARACTER SET utf8mb4
+        COLLATE utf8mb4_unicode_ci"
+);
+
+$consulta = CONSULTA_CREA_DB;
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -513,7 +515,10 @@ if ($db-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE BASE DE DATOS EN MYSQL
-$consulta = "DROP DATABASE $dbDb";
+
+define("CONSULTA_BORRA_DB", "DROP DATABASE " . MYSQL_DATABASE);
+
+$consulta = CONSULTA_BORRA_DB;
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -529,10 +534,10 @@ if ($db-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN MYSQL
-$consulta = "CREATE TABLE $dbTabla (
+$consulta = "CREATE TABLE $tablaAgenda (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos),
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos),
     PRIMARY KEY(id)
     )";
 if ($db-&gt;query($consulta)) {
@@ -554,7 +559,7 @@ if ($db-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE TABLA EN SQLITE
-$consulta = "DROP TABLE $dbTabla";
+$consulta = "DROP TABLE $tablaAgenda";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -570,10 +575,10 @@ if ($db-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE CREACIÓN DE TABLA EN SQLite
-$consulta = "CREATE TABLE $dbTabla (
+$consulta = "CREATE TABLE $tablaAgenda (
     id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos)
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos)
     )";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
@@ -599,7 +604,7 @@ if ($db-&gt;query($consulta)) {
 // La conexión se debe realizar en cada página que acceda a la base de datos
 require_once "biblioteca.php";
 $db = conectaDb();
-borraTodo($db);
+borraTodo($db, $tablaAgenda, $consultaCreaTabla);
 $db = null;</code>
 </pre>
             </div>
@@ -609,18 +614,30 @@ $db = null;</code>
             <div class="codigo">
               <pre>
 <code class="language-php">// biblioteca-mysql.php
-$consultaCreaTabla = "CREATE TABLE $dbTabla (
+
+// Consultas de borrado y creación de base de datos y tablas, etc.
+
+define("CONSULTA_BORRA_DB", "DROP DATABASE " . MYSQL_DATABASE);
+
+define(
+    "CONSULTA_CREA_DB",
+    "CREATE DATABASE " . MYSQL_DATABASE . "
+        CHARACTER SET utf8mb4
+        COLLATE utf8mb4_unicode_ci"
+);
+
+$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos),
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos),
     PRIMARY KEY(id)
     )";
 
-function borraTodo($db)
-{
-    global $dbDb, $consultaCreaTabla;
+// Funciones específicas de bases de datos (MYSQL)
 
-    $consulta = "DROP DATABASE $dbDb";
+function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
+{
+    $consulta = CONSULTA_BORRA_DB;
     if ($db-&gt;query($consulta)) {
         print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -628,11 +645,12 @@ function borraTodo($db)
         print "    &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
         print "\n";
     }
-    $consulta = "CREATE DATABASE $dbDb";
+
+    $consulta = CONSULTA_CREA_DB;
     if ($db-&gt;query($consulta)) {
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
-        $consulta = $consultaCreaTabla;
+        $consulta = $consultaCreacionTabla;
         if ($db-&gt;query($consulta)) {
             print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
             print "\n";
@@ -653,17 +671,20 @@ function borraTodo($db)
             <div class="codigo">
               <pre>
 <code class="language-php">// biblioteca-sqlite.php
-$consultaCreaTabla = "CREATE TABLE $dbTabla (
+
+// Consultas de borrado y creación de base de datos y tablas, etc.
+
+$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
     id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamNombre),
-    apellidos VARCHAR($tamApellidos)
+    nombre VARCHAR($tamAgendaNombre),
+    apellidos VARCHAR($tamAgendaApellidos)
     )";
 
-function borraTodo($db)
-{
-    global $dbTabla, $consultaCreaTabla;
+// Funciones específicas de bases de datos (SQLITE)
 
-    $consulta = "DROP TABLE $dbTabla";
+function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
+{
+    $consulta = "DROP TABLE $nombreTabla";
     if ($db-&gt;query($consulta)) {
         print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -671,9 +692,11 @@ function borraTodo($db)
         print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
         print "\n";
     }
-    $consulta = $consultaCreaTabla;
+
+    $consulta = $consultaCreacionTabla;
     if ($db-&gt;query($consulta)) {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+        print "\n";
     } else {
         print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
         print "\n";
@@ -694,7 +717,7 @@ function borraTodo($db)
       <div class="codigo">
         <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE $dbTabla";
+$consulta = "DROP TABLE $tablaAgenda";
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -715,7 +738,7 @@ if ($db-&gt;query($consulta)) {
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "INSERT INTO $dbTabla
+$consulta = "INSERT INTO $tablaAgenda
     (nombre, apellidos)
     VALUES (:nombre, :apellidos)";
 $result = $db-&gt;prepare($consulta);
@@ -740,7 +763,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $id        = recoge("id");
 
-$consulta = "UPDATE $dbTabla
+$consulta = "UPDATE $tablaAgenda
     SET nombre=:nombre, apellidos=:apellidos
     WHERE id=:id";
 $result = $db-&gt;prepare($consulta);
@@ -766,7 +789,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos,
 $id = recoge("id", []);
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $dbTabla
+    $consulta = "DELETE FROM $tablaAgenda
         WHERE id=:indice";
     $result = $db-&gt;prepare($consulta);
     if ($result-&gt;execute([":indice" =&gt; $indice])) {
@@ -791,7 +814,7 @@ foreach ($id as $indice =&gt; $valor) {
           <div class="codigo">
             <pre>
     <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -808,7 +831,7 @@ if (!$result) {
           <div class="codigo">
             <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
-$consulta = "SELECT COUNT(*) FROM $dbTabla";
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -829,7 +852,7 @@ if (!$result) {
               <div class="codigo">
                 <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -848,7 +871,7 @@ if (!$result) {
               <div class="codigo">
                 <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
-$consulta = "SELECT * FROM $dbTabla";
+$consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -871,7 +894,7 @@ if (!$result) {
           <div class="codigo">
             <pre>
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
-$consulta = "SELECT COUNT(*) FROM $dbTabla";
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -880,7 +903,7 @@ if (!$result) {
     print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
     print "\n";
 } else {
-    $consulta = "SELECT * FROM $dbTabla";
+    $consulta = "SELECT * FROM $tablaAgenda";
     $result = $db-&gt;query($consulta);
     if (!$result) {
         print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
@@ -912,7 +935,7 @@ if (!$result) {
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
@@ -920,7 +943,7 @@ if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Se han encontrado {$result-&gt;fetchColumn()} registros.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -933,7 +956,7 @@ if (!$result) {
 <code class="language-php">// EJEMPLO DE CONSULTA DE SELECCIÓN DE REGISTROS
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT COUNT(*) FROM $dbTabla
+$consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE apellidos LIKE :apellidos";
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
@@ -941,7 +964,7 @@ if (!$result) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Se han encontrado " . $result-&gt;fetchColumn() . " registros.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Se han encontrado {$result-&gt;fetchColumn()} registros.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -979,7 +1002,7 @@ if (!$result) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 28 de noviembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 15 de diciembre de 2019</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
