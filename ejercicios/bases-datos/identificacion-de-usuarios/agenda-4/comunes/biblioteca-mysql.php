@@ -71,7 +71,7 @@ define(
 define(
     "CONSULTA_INSERTA_USUARIO_ROOT",
     "INSERT INTO $tablaUsuarios
-        VALUES (NULL, '" . ROOT_NAME . "', '" . ROOT_PASSWORD . "', $usuariosNiveles[Admninistrador])"
+        VALUES (NULL, '" . ROOT_NAME . "', '" . ROOT_PASSWORD . "', $usuariosNiveles[Administrador])"
 );
 
 $consultasCreaTabla = [

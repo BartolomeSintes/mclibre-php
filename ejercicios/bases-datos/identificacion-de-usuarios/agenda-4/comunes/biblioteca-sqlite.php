@@ -27,8 +27,8 @@
 // Configuración general
 
 define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/identificacion-agenda-4.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "agenda");                                                    // Nombre de la tabla Agenda
-define("SQLITE_TABLE_USUARIOS", "usuarios");                                                    // Nombre de la tabla Usuarios
+define("SQLITE_TABLE_AGENDA", "agenda");                                                      // Nombre de la tabla Agenda
+define("SQLITE_TABLE_USUARIOS", "usuarios");                                                  // Nombre de la tabla Usuarios
 
 // Nombres de las tablas
 

@@ -35,7 +35,7 @@ $usuario  = recoge("usuario");
 $password = recoge("password");
 
 if ($usuario != ROOT_NAME || encripta($password) != ROOT_PASSWORD) {
-    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrecta");
+    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
     exit();
 }
 

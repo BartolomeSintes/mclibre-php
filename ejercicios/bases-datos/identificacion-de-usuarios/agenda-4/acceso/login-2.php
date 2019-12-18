@@ -52,7 +52,7 @@ if (!$result) {
 
 $valor = $result->fetch();
 if ($valor["password"] != encripta($password)) {
-    header("Location:login-1.php?aviso=Error: Nombre o contraseña incorrecta");
+    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
     exit();
 }
 

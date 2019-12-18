@@ -24,7 +24,7 @@
 
 // Base de datos utilizada por la aplicación: MYSQL o SQLITE
 
-$dbMotor = SQLITE;                   // Valores posibles: MYSQL o SQLITE
+$dbMotor = SQLITE;                        // Valores posibles: MYSQL o SQLITE
 
 // Algoritmo hash para encriptar la contraseña de usuario
 

@@ -146,5 +146,5 @@ function pie()
 
 function encripta($cadena)
 {
-    return hash("sha256", $cadena);
+    return hash(HASH_ALGORITHM, $cadena);
 }

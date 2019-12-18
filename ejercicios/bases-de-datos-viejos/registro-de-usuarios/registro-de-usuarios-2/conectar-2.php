@@ -54,7 +54,7 @@ if (isset($_SESSION["id"])) {
                 header("Location:index.php");
                 exit();
             } else {
-                header("Location:conectar-1.php?aviso=Error: Nombre o contraseña incorrecta");
+                header("Location:conectar-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
                 exit();
             }
         }
