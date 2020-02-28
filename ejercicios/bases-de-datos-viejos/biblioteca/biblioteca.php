@@ -33,12 +33,12 @@ if ($dbMotor == MYSQL) {
     define("MYSQL_PASSWORD", "");         // Contraseña de usuario de MySQL
     $dbDb        = "mclibre_biblioteca";  // Nombre de la base de datos
     $dbObras     = $dbDb . ".obras";        // Nombre de la tabla Obras
-    $dbUsuarios  = $dbDb . ".usuarios";     // Nombre de la tabla Ususarios
+    $dbUsuarios  = $dbDb . ".usuarios";     // Nombre de la tabla Usuarios
     $dbPrestamos = $dbDb . ".prestamos";    // Nombre de la tabla de Préstamos
 } elseif ($dbMotor == SQLITE) {
     $dbDb        = "/home/barto/mclibre/tmp/mclibre/mclibre_biblioteca.sqlite";  // Nombre de la base de datos
     $dbObras     = "obras";               // Nombre de la tabla Obras
-    $dbUsuarios  = "usuarios";            // Nombre de la tabla Ususarios
+    $dbUsuarios  = "usuarios";            // Nombre de la tabla Usuarios
     $dbPrestamos = "prestamos";           // Nombre de la tabla de Préstamos
 }
 
