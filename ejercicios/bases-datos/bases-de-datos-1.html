@@ -38,11 +38,22 @@
 
   <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../soluciones/index.html">página de soluciones</a>.</p>
 
-  <p>El objetivo final es obtener una aplicación web capaz de gestionar una agenda. El título del ejercicio hace referencia a la funcionalidad añadida a la aplicación:</p>
+  <hr class="corta">
+
+  <p>El objetivo final de estos ejercicios es obtener una aplicación web capaz de gestionar una agenda. El título del ejercicio hace referencia a la funcionalidad añadida a la aplicación:</p>
 
   <p>Estos ejercicios van encadenados. Cada ejercicio se puede hacer a partir del ejercicio anterior, añadiendo las páginas necesarias.</p>
 
   <p>En estos ejercicios no se hace ninguna comprobación sobre los datos introducidos por el usuario, por lo que la aplicación no puede considerarse segura.</p>
+
+  <p>En cada ejercicio, se encuentran unos comentarios que incluyen un dibujo que indica las relaciones entre las diferentes páginas:</p>
+  <ul>
+    <li>El cuadro rojo a trazos indica las páginas añadidas a la aplicación en este ejercicio.</li>
+    <li>Las líneas negras indican inclusiones de bibliotecas.</li>
+    <li>Las flechas negras indican enlaces (aunque no esté indicado, desde cualquier página se puede volver a la página index.php).</li>
+    <li>Las flechas azules indican envíos de formularios.</li>
+    <li>Las flechas rojas indican redirecciones.</li>
+  </ul>
 
   <section id="ejercicio-1">
     <h2>Bases de datos (1) 1 - Borrar y crear la base de datos</h2>
@@ -69,10 +80,9 @@
 
     <h3>Comentarios</h3>
     <ul>
-<!--
       <li>La organización de las páginas puede ser la siguiente:
         <p>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" style="background-color: white;" font-family="sans-serif" class="izquierda">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" style="background-color: white;" font-family="sans-serif" class="izquierda">
             <defs>
               <marker id="flechaNegra" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
                 <path d="M0,4 L0,8 L6,6" style="fill: black;" />
@@ -80,34 +90,54 @@
               <marker id="flechaRoja" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
                 <path d="M0,4 L0,8 L6,6" style="fill: red;" />
               </marker>
+              <marker id="flechaAzul" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                <path d="M0,4 L0,8 L6,6" style="fill: blue;" />
+              </marker>
             </defs>
 
-            <svg x="200" y="140" width="120">
+            <!-- Bibliotecas -->
+            <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
+            <svg x="10" y="40">
+              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <!-- Páginas -->
+            <text x="330" y="20" text-anchor="start" font-family="sans-serif" font-size="14">La página index.php enlaza a las diferentes opciones del programa</text>
+            <svg x="330" y="40">
               <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
-              <rect x="25" y="20" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
-              <rect x="35" y="50" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
-              <text x="60" y="63" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">menú</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">menú</text>
             </svg>
 
-            <svg x="310" y="10" width="120">
+            <path d="M425,85 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="40">
               <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
-              <rect x="25" y="20" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
-              <rect x="35" y="50" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
-              <text x="60" y="63" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">menú</text>
-            </svg>
-            <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">confirma</text>
 
-            <svg x="330" y="140" width="120">
-              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-1.php</text>
-              <rect x="25" y="20" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
-              <rect x="35" y="50" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
-              <text x="60" y="63" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">menú</text>
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
             </svg>
+            <path d="M655,110 c-30,20 -170,10 -205,-10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
+
+            <rect x="20" y="30" width="260" height="200" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+            <rect x="330" y="30" width="430" height="110" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
           </svg>
         </p>
-        <p>Las líneas negras corresponden a envíos de formularios y las líneas rojas a redirecciones.</p>
       </li>
--->
       <li>En una aplicación real, el borrado y creación de la base de datos estarían disponibles únicamente para el administrador, pero aquí cualquier usuario puede borrar y crear la base de datos.</li>
       <li>El proceso de borrar y crear la base de datos se realiza uno tras otro. Lógicamente, la primera vez que se realice el borrado y creación de la base de datos se obtendrá un mensaje de error en el borrado puesto que la base de datos no existe todavía, pero las veces siguientes no.</li>
       <li>Si el usuario intenta acceder directamente a la página que crea la tabla (escribiendo la dirección en el navegador), se le redireccionará directamente a la página inicial.</li>
@@ -200,6 +230,64 @@ $consultaCreaTabla = "CREATE TABLE $tablaAgenda (
     <h3>Comentarios</h3>
 
     <ul>
+      <li>La organización de las páginas puede ser la siguiente:
+        <p>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" style="background-color: white;" font-family="sans-serif" class="izquierda">
+            <!-- Bibliotecas -->
+            <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
+            <svg x="10" y="40">
+              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <!-- Páginas -->
+            <text x="330" y="20" text-anchor="start" font-family="sans-serif" font-size="14">La página index.php enlaza a las diferentes opciones del programa</text>
+            <svg x="330" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">menú</text>
+            </svg>
+
+            <path d="M425,85 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">confirma</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+            <path d="M655,110 c-30,20 -170,10 -205,-10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
+
+            <path d="M425,90 c20,0 50,95 70,95" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="140">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <rect x="480" y="130" width="280" height="100" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+          </svg>
+        </p>
+      </li>
       <li>MySQL no permite guardar registros más largos que el tamaño del campo, por lo que se puede avisar al usuario del problema:
 
         <div class="codigo">
@@ -260,6 +348,70 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
     <h3>Comentarios</h3>
 
     <ul>
+      <li>La organización de las páginas puede ser la siguiente:
+        <p>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" style="background-color: white;" font-family="sans-serif" class="izquierda">
+            <!-- Bibliotecas -->
+            <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
+            <svg x="10" y="40">
+              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <!-- Páginas -->
+            <text x="330" y="20" text-anchor="start" font-family="sans-serif" font-size="14">La página index.php enlaza a las diferentes opciones del programa</text>
+            <svg x="330" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">menú</text>
+            </svg>
+
+            <path d="M425,85 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">confirma</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+            <path d="M655,110 c-30,20 -170,10 -205,-10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
+
+            <path d="M425,90 c20,0 50,95 70,95" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="140">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,95 c20,0 50,180 70,180" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="230">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">listar.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <rect x="480" y="220" width="120" height="100" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+          </svg>
+        </p>
+      </li>
       <li>Para listar los registros, esta puede ser la consulta de selección:
 
         <div class="codigo">
@@ -306,6 +458,83 @@ foreach ($result as $valor) {
     <h3>Comentarios</h3>
 
     <ul>
+      <li>La organización de las páginas puede ser la siguiente:
+        <p>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" style="background-color: white;" font-family="sans-serif" class="izquierda">
+            <!-- Bibliotecas -->
+            <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
+            <svg x="10" y="40">
+              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <!-- Páginas -->
+            <text x="330" y="20" text-anchor="start" font-family="sans-serif" font-size="14">La página index.php enlaza a las diferentes opciones del programa</text>
+            <svg x="330" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">menú</text>
+            </svg>
+
+            <path d="M425,85 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">confirma</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+            <path d="M655,110 c-30,20 -170,10 -205,-10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
+
+            <path d="M425,90 c20,0 50,95 70,95" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="140">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,95 c20,0 50,180 70,180" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="230">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">listar.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,100 c20,0 50,265 70,265" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="320">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="30" y="35" width="60" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">seleccionar</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <rect x="480" y="310" width="280" height="100" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+          </svg>
+        </p>
+      </li>
       <li>Para seleccionar los registros a borrar, se puede utilizar una casilla de verificación cuyo nombre contenga el id del registro. Lo mejor es que los nombres formen una matriz.
 
         <div class="codigo">
@@ -369,6 +598,96 @@ foreach ($id as $indice =&gt; $valor) {
     <h3>Comentarios</h3>
 
     <ul>
+      <li>La organización de las páginas puede ser la siguiente:
+        <p>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="510" viewBox="0 0 900 510" style="background-color: white;" font-family="sans-serif" class="izquierda">
+            <!-- Bibliotecas -->
+            <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
+            <svg x="10" y="40">
+              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <!-- Páginas -->
+            <text x="330" y="20" text-anchor="start" font-family="sans-serif" font-size="14">La página index.php enlaza a las diferentes opciones del programa</text>
+            <svg x="330" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">menú</text>
+            </svg>
+
+            <path d="M425,85 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">confirma</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+            <path d="M655,110 c-30,20 -170,10 -205,-10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
+
+            <path d="M425,90 c20,0 50,95 70,95" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="140">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,95 c20,0 50,180 70,180" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="230">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">listar.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,100 c20,0 50,265 70,265" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="320">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="30" y="35" width="60" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">seleccionar</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,105 c20,0 50,350 70,350" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="410">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">buscar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">buscar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <rect x="480" y="400" width="280" height="100" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+          </svg>
+        </p>
+      </li>
       <li>La primera página es un formulario como el de añadir registros.</li>
       <li>Para buscar los registros, esta puede ser la consulta preparada de selección:
 
@@ -417,6 +736,117 @@ $result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellido
     <h3>Comentarios</h3>
 
     <ul>
+      <li>La organización de las páginas puede ser la siguiente:
+        <p>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" style="background-color: white;" font-family="sans-serif" class="izquierda">
+            <!-- Bibliotecas -->
+            <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
+            <svg x="10" y="40">
+              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <!-- Páginas -->
+            <text x="330" y="20" text-anchor="start" font-family="sans-serif" font-size="14">La página index.php enlaza a las diferentes opciones del programa</text>
+            <svg x="330" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">menú</text>
+            </svg>
+
+            <path d="M425,85 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="40">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">confirma</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+            <path d="M655,110 c-30,20 -170,10 -205,-10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
+
+            <path d="M425,90 c20,0 50,95 70,95" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="140">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">insertar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,95 c20,0 50,180 70,180" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="230">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">listar.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,100 c20,0 50,265 70,265" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="320">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="30" y="35" width="60" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">seleccionar</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,105 c20,0 50,350 70,350" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <svg x="480" y="410">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">buscar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">buscar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+
+            <path d="M425,110 c20,0 50,435 70,435" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <rect x="480" y="490" width="415" height="100" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+
+            <svg x="480" y="500">
+              <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">modificar-1.php</text>
+              <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="30" y="35" width="60" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">seleccionar</text>
+
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">modificar-2.php</text>
+              <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <rect x="185" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="210" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">datos</text>
+              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <path d="M245,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+
+              <text x="360" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">modificar-3.php</text>
+              <rect x="325" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+          </svg>
+        </p>
+      </li>
       <li>La primera página es un formulario como el de borrar, salvo que en vez de una casilla de verificación, se puede utilizar un botón radio cuyo valor contenga el id del registro.
 
         <div class="codigo">
@@ -488,7 +918,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos,
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 15 de diciembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 9 de mayo de 2020</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
