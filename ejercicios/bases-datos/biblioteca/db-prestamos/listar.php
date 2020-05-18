@@ -1,25 +1,8 @@
 <?php
 /**
- * Biblioteca - db-prestamos/listar.php
- *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2020 Bartolomé Sintes Marco
+ * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2020-05-11
  * @link      https://www.mclibre.org
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Affero General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Affero General Public License for more details.
- *
- *  You should have received a copy of the GNU Affero General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 require_once "../comunes/biblioteca.php";
@@ -37,10 +20,10 @@ cabecera("Préstamos - Listar", MENU_PRESTAMOS, 1);
 $ordena = recogeValores("ordena", $columnasPrestamosOrden, "apellidos ASC");
 
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 if (!$result) {
     print "    <p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0 ) {
+} elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT $tablaPrestamos.id as id,
@@ -107,7 +90,11 @@ if (!$result) {
             print "          <tr>\n";
             print "            <td>$valor[nombre] $valor[apellidos]</td>\n";
             print "            <td>$valor[autor] - $valor[titulo]</td>\n";
-            print "            <td>$valor[prestado]</td>\n";
+            print "            <td>";
+            if ($valor["prestado"] != "0000-00-00") {
+                print $valor["prestado"];
+            }
+            print "</td>\n";
             print "            <td>";
             if ($valor["devuelto"] != "0000-00-00") {
                 print $valor["devuelto"];

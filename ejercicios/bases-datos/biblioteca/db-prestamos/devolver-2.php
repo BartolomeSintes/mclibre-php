@@ -1,25 +1,8 @@
 <?php
 /**
- * Biblioteca - db-prestamos/devolver-2.php
- *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2020 Bartolomé Sintes Marco
+ * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2020-05-11
  * @link      https://www.mclibre.org
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Affero General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Affero General Public License for more details.
- *
- *  You should have received a copy of the GNU Affero General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 require_once "../comunes/biblioteca.php";
@@ -52,8 +35,16 @@ if (!$result) {
     $idOk = true;
 }
 
-if (!checkdate(substr($devuelto, 5, 2), substr($devuelto, 8, 2), substr($devuelto, 0, 4))) {
-    print "    <p class=\"aviso\">La fecha <strong>$devuelto</strong> indicada no es una fecha válida.</p>\n";
+
+if ($devuelto == "") {
+    $devuelto   = "0000-00-00";
+    $devueltoOk = true;
+} elseif (mb_strlen($devuelto, "UTF-8") < $tamFecha) {
+    print "    <p class=\"aviso\">La fecha <strong>$devuelto</strong> de devolución no es una fecha válida.</p>\n";
+} elseif (!ctype_digit(substr($devuelto, 5, 2)) || !ctype_digit(substr($devuelto, 8, 2)) || !ctype_digit(substr($devuelto, 0, 4))) {
+    print "    <p class=\"aviso\">La fecha <strong>$devuelto</strong> de devolución no es una fecha válida.</p>\n";
+} elseif (!checkdate(substr($devuelto, 5, 2), substr($devuelto, 8, 2), substr($devuelto, 0, 4))) {
+    print "    <p class=\"aviso\">La fecha <strong>$devuelto</strong> de devolución no es una fecha válida.</p>\n";
 } else {
     $consulta = "SELECT prestado FROM $tablaPrestamos
         WHERE id=:id";
@@ -64,7 +55,7 @@ if (!checkdate(substr($devuelto, 5, 2), substr($devuelto, 8, 2), substr($devuelt
     } else {
         $prestado = $result->fetchColumn();
         if ($prestado > $devuelto) {
-            print "    <p class=\"aviso\">Error: fecha de devolución <strong>$devuelto</strong> anterior a la de préstamo <strong>$prestado</strong>.</p>\n";
+            print "    <p class=\"aviso\">La fecha de devolución <strong>$devuelto</strong> es anterior a la de préstamo <strong>$prestado</strong>.</p>\n";
         } else {
             $devueltoOk = true;
         }

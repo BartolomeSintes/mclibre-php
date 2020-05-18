@@ -1,25 +1,8 @@
 <?php
 /**
- * Biblioteca - comunes/config.php
- *
- * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2020 Bartolomé Sintes Marco
+ * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2020-05-11
  * @link      https://www.mclibre.org
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Affero General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Affero General Public License for more details.
- *
- *  You should have received a copy of the GNU Affero General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 // Base de datos utilizada por la aplicación: MYSQL o SQLITE
@@ -59,6 +42,7 @@ $tamPrestamosPersona  = 60;               // Tamaño de la columna Préstamos > 
 $tamPrestamosObra     = 60;               // Tamaño de la columna Préstamos > Obra
 $tamPrestamosPrestado = 20;               // Tamaño de la columna Préstamos > Fecha de Préstamo
 $tamPrestamosDevuelto = 20;               // Tamaño de la columna Préstamos > Fecha de Devolución
+$tamFecha             = 10;               // Longitud de una cadena de fecha (AAAA-MM-DD)
 
 // Usuario inicial
 
