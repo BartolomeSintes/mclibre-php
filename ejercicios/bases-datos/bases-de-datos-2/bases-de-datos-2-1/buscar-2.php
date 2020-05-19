@@ -19,7 +19,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaAgenda
 $result = $db->prepare($consulta);
 $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se han encontrado registros.</p>\n";
 } else {
@@ -29,7 +29,7 @@ if (!$result) {
     $result = $db->prepare($consulta);
     $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } else {
         print "    <p>Registros encontrados:</p>\n";
         print "\n";

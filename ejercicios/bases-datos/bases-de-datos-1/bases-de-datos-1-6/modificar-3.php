@@ -36,10 +36,10 @@ if ($nombreOk && $apellidosOk) {
         WHERE id=:id";
     $result = $db->prepare($consulta);
     if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-        ":id" => $id])) {
+        ":id" => $id, ])) {
         print "    <p>Registro modificado correctamente.</p>\n";
     } else {
-        print "    <p>Error al modificar el registro.</p>\n";
+        print "    <p class=\"aviso\">Error al modificar el registro.</p>\n";
     }
 }
 

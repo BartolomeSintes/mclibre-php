@@ -20,17 +20,17 @@ cabecera("Obras - Listar", MENU_OBRAS, 1);
 $ordena = recogeValores("ordena", $columnasObrasOrden, "titulo ASC");
 
 $consulta = "SELECT COUNT(*) FROM $tablaObras";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0 ) {
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+} elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $tablaObras
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } else {
         print "    <p>Listado completo de registros:</p>\n";
         print "\n";

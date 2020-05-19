@@ -40,6 +40,6 @@ if ($valor["password"] != encripta($password)) {
 }
 
 $_SESSION["conectado"] = true;
-$db = null;
+$db                    = null;
 header("Location:../index.php");
 exit();

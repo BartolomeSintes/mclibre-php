@@ -26,7 +26,7 @@ $tamUsuariosPassword        = 20;         // Tamaño de la Contraseña de Usuari
 define("MAX_REG_TABLE_PERSONAS", 20);     // Número máximo de registros en la tabla Personas
 $tamPersonasNombre    = 40;               // Tamaño de la columna Personas > Nombre
 $tamPersonasApellidos = 60;               // Tamaño de la columna Personas > Apellidos
-$tamPersonasDni       =  9;               // Tamaño de la columna Personas > DNI
+$tamPersonasDni       = 9;                // Tamaño de la columna Personas > DNI
 
 // Configuración Tabla Obras
 

@@ -47,17 +47,17 @@ if (mb_strlen($dni, "UTF-8") > $tamPersonasDni) {
 }
 
 if ($nombreOk && $apellidosOk && $dniOk) {
-    if ($nombre == "" && $apellidos == ""  && $dni == "") {
-        print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
+    if ($nombre == "" && $apellidos == "" && $dni == "") {
+        print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaPersonas";
-        $result = $db->query($consulta);
+        $result   = $db->query($consulta);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() >= MAX_REG_TABLE_PERSONAS) {
-            print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
-            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaPersonas
                 WHERE nombre=:nombre
@@ -65,21 +65,21 @@ if ($nombreOk && $apellidosOk && $dniOk) {
                 AND dni=:dni";
             $result = $db->prepare($consulta);
             $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                ":dni" => $dni]);
+                ":dni"                  => $dni, ]);
             if (!$result) {
-                print "    <p>Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
-                print "    <p>El registro ya existe.</p>\n";
+                print "    <p class=\"aviso\">El registro ya existe.</p>\n";
             } else {
                 $consulta = "INSERT INTO $tablaPersonas
                     (nombre, apellidos, dni)
                     VALUES (:nombre, :apellidos, :dni)";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                    ":dni" => $dni])) {
+                    ":dni" => $dni, ])) {
                     print "    <p>Registro <strong>$nombre $apellidos $dni</strong> creado correctamente.</p>\n";
                 } else {
-                    print "    <p>Error al crear el registro <strong>$nombre $apellidos $dni</strong>.</p>\n";
+                    print "    <p class=\"aviso\">Error al crear el registro <strong>$nombre $apellidos $dni</strong>.</p>\n";
                 }
             }
         }

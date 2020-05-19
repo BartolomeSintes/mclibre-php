@@ -47,17 +47,17 @@ if (mb_strlen($editorial, "UTF-8") > $tamObrasEditorial) {
 }
 
 if ($autorOk && $tituloOk && $editorialOk) {
-    if ($autor == "" && $titulo == ""  && $editorial == "") {
-        print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
+    if ($autor == "" && $titulo == "" && $editorial == "") {
+        print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaObras";
-        $result = $db->query($consulta);
+        $result   = $db->query($consulta);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() >= MAX_REG_TABLE_OBRAS) {
-            print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
-            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaObras
                 WHERE autor=:autor
@@ -65,21 +65,21 @@ if ($autorOk && $tituloOk && $editorialOk) {
                 AND editorial=:editorial";
             $result = $db->prepare($consulta);
             $result->execute([":autor" => $autor, ":titulo" => $titulo,
-                ":editorial" => $editorial]);
+                ":editorial"           => $editorial, ]);
             if (!$result) {
-                print "    <p>Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
-                print "    <p>El registro ya existe.</p>\n";
+                print "    <p class=\"aviso\">El registro ya existe.</p>\n";
             } else {
                 $consulta = "INSERT INTO $tablaObras
                     (autor, titulo, editorial)
                     VALUES (:autor, :titulo, :editorial)";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":autor" => $autor, ":titulo" => $titulo,
-                    ":editorial" => $editorial])) {
+                    ":editorial" => $editorial, ])) {
                     print "    <p>Registro <strong>$autor $titulo $editorial</strong> creado correctamente.</p>\n";
                 } else {
-                    print "    <p>Error al crear el registro <strong>$autor $titulo $editorial</strong>.</p>\n";
+                    print "    <p class=\"aviso\">Error al crear el registro <strong>$autor $titulo $editorial</strong>.</p>\n";
                 }
             }
         }

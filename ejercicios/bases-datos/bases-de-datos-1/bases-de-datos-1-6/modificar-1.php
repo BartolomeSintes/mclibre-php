@@ -11,7 +11,7 @@ $db = conectaDb();
 cabecera("Modificar 1", MENU_VOLVER);
 
 $consulta = "SELECT * FROM $tablaAgenda";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 
 print "    <form action=\"modificar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>Indique el registro que quiera modificar:</p>\n";

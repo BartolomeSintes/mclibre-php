@@ -38,7 +38,7 @@ if ($nombreOk && $apellidosOk) {
     if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
         print "    <p>Registro <strong>$nombre $apellidos</strong> creado correctamente.</p>\n";
     } else {
-        print "    <p>Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";
+        print "    <p class=\"aviso\">Error al crear el registro <strong>$nombre $apellidos</strong>.</p>\n";
     }
 }
 

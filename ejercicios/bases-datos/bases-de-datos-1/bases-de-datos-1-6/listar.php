@@ -11,7 +11,7 @@ $db = conectaDb();
 cabecera("Listar", MENU_VOLVER);
 
 $consulta = "SELECT * FROM $tablaAgenda";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 
 print "    <p>Listado completo de registros:</p>\n";
 print "\n";

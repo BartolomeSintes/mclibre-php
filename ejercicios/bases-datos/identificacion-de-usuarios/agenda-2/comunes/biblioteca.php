@@ -70,7 +70,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
     if ($profundidadDirectorio == 0) {
         print "  <link rel=\"stylesheet\" href=\"comunes/mclibre-php-proyectos.css.php\" title=\"Color\" />\n";
-    } else if ($profundidadDirectorio == 1) {
+    } elseif ($profundidadDirectorio == 1) {
         print "  <link rel=\"stylesheet\" href=\"../comunes/mclibre-php-proyectos.css.php\" title=\"Color\" />\n";
     }
     print "</head>\n";
@@ -113,7 +113,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2019-12-12\">12 de diciembre de 2019</time>\n";
+    print "      <time datetime=\"2020-05-19\">19 de mayo de 2020</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

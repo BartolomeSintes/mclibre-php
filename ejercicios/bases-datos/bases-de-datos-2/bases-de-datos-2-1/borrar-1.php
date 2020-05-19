@@ -11,16 +11,16 @@ $db = conectaDb();
 cabecera("Borrar 1", MENU_VOLVER);
 
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $tablaAgenda";
-    $result = $db->query($consulta);
+    $result   = $db->query($consulta);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } else {
         print "    <form action=\"borrar-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <p>Marque los registros que quiera borrar:</p>\n";

@@ -11,7 +11,7 @@ $db = conectaDb();
 cabecera("Borrar 1", MENU_VOLVER);
 
 $consulta = "SELECT * FROM $tablaAgenda";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 
 print "    <form action=\"borrar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>Marque los registros que quiera borrar:</p>\n";

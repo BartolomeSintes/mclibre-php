@@ -59,9 +59,9 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_VOLVER, 1);
-        print "    <p>Error: No puede conectarse con la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
-        print "    <p>Error: " . $e->getMessage() . "</p>\n";
+        print "    <p class=\"aviso\">Error: " . $e->getMessage() . "</p>\n";
         pie();
         exit();
     }
@@ -74,7 +74,7 @@ function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
         print "    <p>Base de datos borrada correctamente.</p>\n";
         print "\n";
     } else {
-        print "    <p>Error al borrar la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la base de datos.</p>\n";
         print "\n";
     }
 
@@ -87,11 +87,11 @@ function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
             print "    <p>Tabla creada correctamente.</p>\n";
             print "\n";
         } else {
-            print "    <p>Error al crear la tabla.</p>\n";
+            print "    <p class=\"aviso\">Error al crear la tabla.</p>\n";
             print "\n";
         }
     } else {
-        print "    <p>Error al crear la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error al crear la base de datos.</p>\n";
         print "\n";
     }
 }

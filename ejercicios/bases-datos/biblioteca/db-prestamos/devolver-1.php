@@ -21,9 +21,9 @@ $ordena = recogeValores("ordena", $columnasPrestamosOrden, "autor ASC");
 
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
     WHERE devuelto='0000-00-00'";
-$result   = $db->query($consulta);
+$result = $db->query($consulta);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No hay obras pendientes de devolución.</p>\n";
 } else {
@@ -39,7 +39,7 @@ if (!$result) {
         AND $tablaPrestamos.id_obra=$tablaObras.id
         AND $tablaPrestamos.devuelto='0000-00-00'
         ORDER BY $ordena";
-    $result   = $db->query($consulta);
+    $result = $db->query($consulta);
     if (!$result) {
         print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } else {

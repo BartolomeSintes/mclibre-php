@@ -14,9 +14,9 @@ $ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
 $id     = recoge("id", []);
 
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
@@ -24,7 +24,7 @@ if (!$result) {
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
         print "      <p>Marque los registros que quiera borrar:</p>\n";

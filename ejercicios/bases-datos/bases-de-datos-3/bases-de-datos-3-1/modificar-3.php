@@ -33,18 +33,18 @@ if (mb_strlen($apellidos, "UTF-8") > $tamAgendaApellidos) {
 
 if ($nombreOk && $apellidosOk) {
     if ($id == "") {
-        print "    <p>No se ha seleccionado ningún registro.</p>\n";
+        print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
     } elseif ($nombre == "" && $apellidos == "") {
-        print "    <p>Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
+        print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaAgenda
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() == 0) {
-            print "    <p>Registro no encontrado.</p>\n";
+            print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
             // La consulta cuenta los registros con un id diferente porque MySQL no distingue
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
@@ -55,11 +55,11 @@ if ($nombreOk && $apellidosOk) {
                 AND id<>:id";
             $result = $db->prepare($consulta);
             $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                ":id" => $id]);
+                ":id"                   => $id, ]);
             if (!$result) {
-                print "    <p>Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
-                print "    <p>Ya existe un registro con esos mismos valores. "
+                print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";
             } else {
                 $consulta = "UPDATE $tablaAgenda
@@ -67,10 +67,10 @@ if ($nombreOk && $apellidosOk) {
                     WHERE id=:id";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                    ":id" => $id])) {
+                    ":id" => $id, ])) {
                     print "    <p>Registro modificado correctamente.</p>\n";
                 } else {
-                    print "    <p>Error al modificar el registro.</p>\n";
+                    print "    <p class=\"aviso\">Error al modificar el registro.</p>\n";
                 }
             }
         }

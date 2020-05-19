@@ -18,12 +18,13 @@ $db = conectaDb();
 cabecera("Añadir 1", MENU_AGENDA, 1);
 
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() >= MAX_REG_TABLE_AGENDA) {
-    print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-    print "    <p>Por favor, borre algún registro antes.</p>\n";
+    print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+    print "\n";
+    print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
 } else {
     print "    <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba los datos del nuevo registro:</p>\n";

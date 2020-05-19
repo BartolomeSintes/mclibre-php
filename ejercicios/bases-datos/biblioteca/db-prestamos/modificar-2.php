@@ -20,16 +20,16 @@ cabecera("Préstamos - Modificar 2", MENU_PRESTAMOS, 1);
 $id = recoge("id");
 
 if ($id == "") {
-    print "    <p>No se ha seleccionado ningún registro.</p>\n";
+    print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
        WHERE id=:id";
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn() == 0) {
-        print "    <p>Registro no encontrado.</p>\n";
+        print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
         $consulta = "SELECT $tablaPrestamos.id as id,
             $tablaPersonas.id as id_persona,
@@ -46,12 +46,12 @@ if ($id == "") {
         AND $tablaPrestamos.id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
-        $consulta2  = "SELECT * FROM $tablaPersonas ORDER BY apellidos";
-        $result2    = $db->query($consulta2);
+        $consulta2 = "SELECT * FROM $tablaPersonas ORDER BY apellidos";
+        $result2   = $db->query($consulta2);
         $consulta3 = "SELECT * FROM $tablaObras ORDER BY autor";
         $result3   = $db->query($consulta3);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif (!$result2) {
             print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif (!$result3) {

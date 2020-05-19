@@ -48,25 +48,25 @@ if (!in_array($nivel, $usuariosNiveles)) {
 
 if ($usuarioOk && $passwordOk && $nivelOk) {
     if ($usuario == "" || $password == "" || $nivel == "") {
-        print "    <p>Hay que rellenar todos los campos. No se ha guardado el registro.</p>\n";
+        print "    <p class=\"aviso\">Hay que rellenar todos los campos. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaUsuarios";
         $result   = $db->query($consulta);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() >= MAX_REG_TABLE_USUARIOS) {
-            print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
-            print "    <p>Por favor, borre algún registro antes.</p>\n";
+            print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
                 WHERE usuario=:usuario";
             $result = $db->prepare($consulta);
             $result->execute([":usuario" => $usuario]);
             if (!$result) {
-                print "    <p>Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             } elseif ($result->fetchColumn() > 0) {
-                print "    <p>El registro ya existe.</p>\n";
+                print "    <p class=\"aviso\">El registro ya existe.</p>\n";
             } else {
                 $consulta = "INSERT INTO $tablaUsuarios
                     (usuario, password, nivel)
@@ -75,7 +75,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                 if ($result->execute([":usuario" => $usuario, ":password" => encripta($password)])) {
                     print "    <p>Registro <strong>$usuario " . encripta($password) . "</strong> creado correctamente.</p>\n";
                 } else {
-                    print "    <p>Error al crear el registro <strong>$usuario " . encripta($password) . "</strong>.</p>\n";
+                    print "    <p class=\"aviso\">Error al crear el registro <strong>$usuario " . encripta($password) . "</strong>.</p>\n";
                 }
             }
         }

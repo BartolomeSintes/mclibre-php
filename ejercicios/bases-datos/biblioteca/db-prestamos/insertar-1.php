@@ -20,13 +20,14 @@ cabecera("Préstamos - Añadir 1", MENU_PRESTAMOS, 1);
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos";
 $result   = $db->query($consulta);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() >= MAX_REG_TABLE_PRESTAMOS) {
-    print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-    print "    <p>Por favor, borre algún registro antes.</p>\n";
+    print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+    print "\n";
+    print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
 } else {
-    $consulta2  = "SELECT * FROM $tablaPersonas ORDER BY apellidos";
-    $result2    = $db->query($consulta2);
+    $consulta2 = "SELECT * FROM $tablaPersonas ORDER BY apellidos";
+    $result2   = $db->query($consulta2);
     $consulta3 = "SELECT * FROM $tablaObras ORDER BY autor";
     $result3   = $db->query($consulta3);
     if (!$result2) {

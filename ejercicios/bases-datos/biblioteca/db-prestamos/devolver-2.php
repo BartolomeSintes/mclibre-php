@@ -35,7 +35,6 @@ if (!$result) {
     $idOk = true;
 }
 
-
 if ($devuelto == "") {
     $devuelto   = "0000-00-00";
     $devueltoOk = true;
@@ -70,7 +69,7 @@ if ($idOk && $devueltoOk) {
     if ($result->execute([":id" => $id])) {
         print "    <p>Registro modificado correctamente.</p>\n";
     } else {
-        print "    <p>Error al modificar el registro.</p>\n";
+        print "    <p class=\"aviso\">Error al modificar el registro.</p>\n";
     }
 }
 

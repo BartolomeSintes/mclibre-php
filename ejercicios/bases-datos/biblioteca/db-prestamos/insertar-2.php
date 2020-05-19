@@ -63,11 +63,11 @@ if ($id_personaOk && $id_obraOk && $prestadoOk) {
     $consulta = "SELECT COUNT(*) FROM $tablaPrestamos";
     $result   = $db->query($consulta);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } elseif ($result->fetchColumn() >= MAX_REG_TABLE_PRESTAMOS) {
-        print "    <p>Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
         print "\n";
-        print "    <p>Por favor, borre algún registro antes.</p>\n";
+        print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
             WHERE id_persona=:id_persona
@@ -77,9 +77,9 @@ if ($id_personaOk && $id_obraOk && $prestadoOk) {
         $result->execute([":id_persona" => $id_persona, ":id_obra" => $id_obra,
             ":prestado"                 => $prestado, ]);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } elseif ($result->fetchColumn() > 0) {
-            print "    <p>El registro ya existe.</p>\n";
+            print "    <p class=\"aviso\">El registro ya existe.</p>\n";
         } else {
             $consulta = "INSERT INTO $tablaPrestamos
                 (id_persona, id_obra, prestado, devuelto)
@@ -89,7 +89,7 @@ if ($id_personaOk && $id_obraOk && $prestadoOk) {
                 ":prestado" => $prestado, ])) {
                 print "    <p>Registro creado correctamente.</p>\n";
             } else {
-                print "    <p>Error al crear el registro.</p>\n";
+                print "    <p class=\"aviso\">Error al crear el registro.</p>\n";
             }
         }
     }

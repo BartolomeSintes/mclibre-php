@@ -49,16 +49,16 @@ if (!in_array($nivel, $usuariosNiveles)) {
 
 if ($usuarioOk && $passwordOk && $nivelOk) {
     if ($id == "") {
-        print "    <p>No se ha seleccionado ningún registro.</p>\n";
+        print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
     } elseif ($usuario == "" || $nivel == "") {
-        print "    <p>Hay que rellenar el nombre y nivel de usuario. No se ha guardado el registro.</p>\n";
+        print "    <p class=\"aviso\">Hay que rellenar el nombre y nivel de usuario. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT * FROM $tablaUsuarios
             WHERE id=:id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
-            print "    <p>Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
         } else {
             $valor = $result->fetch();
             if ($valor["usuario"] == ROOT_NAME) {
@@ -69,9 +69,9 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                 $result = $db->prepare($consulta);
                 $result->execute([":id" => $id]);
                 if (!$result) {
-                    print "    <p>Error en la consulta.</p>\n";
+                    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
                 } elseif ($result->fetchColumn() == 0) {
-                    print "    <p>Registro no encontrado.</p>\n";
+                    print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
                 } else {
                     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
                     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
@@ -82,9 +82,9 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                     $result = $db->prepare($consulta);
                     $result->execute([":usuario" => $usuario, ":id" => $id]);
                     if (!$result) {
-                        print "    <p>Error en la consulta.</p>\n";
+                        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
                     } elseif ($result->fetchColumn() > 0) {
-                        print "    <p>Ya existe un registro con ese nombre de usuario. "
+                        print "    <p class=\"aviso\">Ya existe un registro con ese nombre de usuario. "
                             . "No se ha guardado la modificación.</p>\n";
                     } else {
                         if ($password != "") {
@@ -93,10 +93,10 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                                 WHERE id=:id";
                             $result = $db->prepare($consulta);
                             if ($result->execute([":usuario" => $usuario, ":password" => encripta($password),
-                                ":nivel" => $nivel, ":id" => $id])) {
+                                ":nivel" => $nivel, ":id" => $id, ])) {
                                 print "    <p>Registro modificado correctamente.</p>\n";
                             } else {
-                                print "    <p>Error al modificar el registro.</p>\n";
+                                print "    <p class=\"aviso\">Error al modificar el registro.</p>\n";
                             }
                         } else {
                             $consulta = "UPDATE $tablaUsuarios
@@ -104,10 +104,10 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                                 WHERE id=:id";
                             $result = $db->prepare($consulta);
                             if ($result->execute([":usuario" => $usuario,
-                                ":nivel" => $nivel, ":id" => $id])) {
+                                ":nivel" => $nivel, ":id" => $id, ])) {
                                 print "    <p>Registro modificado correctamente.</p>\n";
                             } else {
-                                print "    <p>Error al modificar el registro.</p>\n";
+                                print "    <p class=\"aviso\">Error al modificar el registro.</p>\n";
                             }
                         }
                     }

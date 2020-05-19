@@ -11,16 +11,16 @@ $db = conectaDb();
 cabecera("Modificar 1", MENU_VOLVER);
 
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result = $db->query($consulta);
+$result   = $db->query($consulta);
 if (!$result) {
-    print "    <p>Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $tablaAgenda";
-    $result = $db->query($consulta);
+    $result   = $db->query($consulta);
     if (!$result) {
-        print "    <p>Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
     } else {
         print "    <form action=\"modificar-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <p>Indique el registro que quiera modificar:</p>\n";
