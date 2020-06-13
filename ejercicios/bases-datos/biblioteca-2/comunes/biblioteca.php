@@ -149,6 +149,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"devolver-1.php\">Nueva devolución</a></li>\n";
             print "        <li><a href=\"listar.php\">Listar</a></li>\n";
             print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
             print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
         } elseif ($menu == MENU_USUARIOS) {
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
@@ -179,7 +180,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2020-05-25\">25 de mayo de 2020</time>\n";
+    print "      <time datetime=\"2020-06-13\">13 de junio de 2020</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
