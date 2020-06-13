@@ -87,9 +87,9 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
-        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
@@ -119,9 +119,9 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
-        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
@@ -204,9 +204,9 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
-        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
@@ -226,9 +226,9 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_PRINCIPAL);
-        print "    &lt;p&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos.&lt;/p&gt;\n";
         print "\n";
-        print "    &lt;p&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: " . $e-&gt;getMessage() . "&lt;/p&gt;\n";
         pie();
         exit();
     }
@@ -271,7 +271,7 @@ $consulta = "INSERT INTO $tablaAgenda
 if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
 } else {
-    print "    &lt;p&gt;Error al crear el registro.&lt;p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear el registro.&lt;p&gt;\n";
 }
 
 $db = null;</code>
@@ -289,7 +289,7 @@ $db = conectaDB();
 $consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
 } else {
     foreach ($result as $valor) {
         print "    &lt;p&gt;$valor[nombre] $valor[apellidos]&lt;/p&gt;\n";
@@ -364,7 +364,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaAgenda
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute();
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
       </div>
@@ -387,7 +387,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaAgenda
 $result = $db-&gt;prepare($consulta);
 $result-&gt;<span class="codigo-resaltado">execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])</span>;
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
           </div>
@@ -406,7 +406,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaAgenda
 $result = $db-&gt;prepare($consulta);
 $result-&gt;<span class="codigo-resaltado">execute([$nombre, $apellidos])</span>;
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
           </div>
@@ -460,7 +460,7 @@ $consulta = "SELECT * FROM $tablaAgenda
 $result = $db-&gt;prepare($consulta);
 $result-&gt;<span class="codigo-resaltado">execute([":nombre" =&gt; $nombre])</span>;
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
  ...</code>
 </pre>
       </div>
@@ -502,7 +502,7 @@ if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -523,7 +523,7 @@ if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -544,7 +544,7 @@ if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -564,7 +564,7 @@ if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -584,7 +584,7 @@ if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -642,7 +642,7 @@ function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
         print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
         print "\n";
     } else {
-        print "    &lt;p&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos.&lt;/p&gt;\n";
         print "\n";
     }
 
@@ -655,11 +655,11 @@ function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
             print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
             print "\n";
         } else {
-            print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+            print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla.&lt;/p&gt;\n";
             print "\n";
         }
     } else {
-        print "    &lt;p&gt;Error al crear la base de datos.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos.&lt;/p&gt;\n";
         print "\n";
     }
 }</code>
@@ -689,7 +689,7 @@ function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
         print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
         print "\n";
     } else {
-        print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla.&lt;/p&gt;\n";
         print "\n";
     }
 
@@ -698,7 +698,7 @@ function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
         print "\n";
     } else {
-        print "    &lt;p&gt;Error al crear la tabla.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla.&lt;/p&gt;\n";
         print "\n";
     }
 }</code>
@@ -722,7 +722,7 @@ if ($db-&gt;query($consulta)) {
     print "    &lt;p&gt;Tabla borrada correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al borrar la tabla.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -746,7 +746,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al crear el registro.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear el registro.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -771,7 +771,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos,
     print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Error al modificar el registro.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al modificar el registro.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -796,7 +796,7 @@ foreach ($id as $indice =&gt; $valor) {
         print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
         print "\n";
     } else {
-        print "    &lt;p&gt;Error al borrar el registro.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar el registro.&lt;/p&gt;\n";
         print "\n";
     }
 }</code>
@@ -817,7 +817,7 @@ foreach ($id as $indice =&gt; $valor) {
 $consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"p&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Consulta ejecutada.&lt;/p&gt;\n";
@@ -834,7 +834,7 @@ if (!$result) {
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
     $encontrados = $result-&gt;fetchColumn();
@@ -855,7 +855,7 @@ if (!$result) {
 $consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
     foreach ($result as $valor) {
@@ -874,7 +874,7 @@ if (!$result) {
 $consulta = "SELECT * FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
     while ($valor = $result-&gt;fetch()) {
@@ -897,7 +897,7 @@ if (!$result) {
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } elseif ($result-&gt;fetchColumn() == 0) {
     print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
@@ -906,7 +906,7 @@ if (!$result) {
     $consulta = "SELECT * FROM $tablaAgenda";
     $result = $db-&gt;query($consulta);
     if (!$result) {
-        print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
         print "\n";
     } else {
         foreach ($result as $valor) {
@@ -940,7 +940,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaAgenda
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$result-&gt;fetchColumn()} registros.&lt;/p&gt;\n";
@@ -961,7 +961,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaAgenda
 $result = $db-&gt;prepare($consulta);
 $result-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$result-&gt;fetchColumn()} registros.&lt;/p&gt;\n";
@@ -992,7 +992,7 @@ $consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
     ORDER BY $columna $orden";
 $result = $db-&gt;query($consulta);
 if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
 } else {
    ...</code>
@@ -1002,7 +1002,7 @@ if (!$result) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 15 de diciembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 19 de mayo de 2020</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
