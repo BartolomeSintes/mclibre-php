@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Cuenta palos. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Descarta palo. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../varios/favicon.ico">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>Exámenes - Cuenta palos</h1>
+  <h1>Exámenes - Descarta palo</h1>
 
   <nav>
     <p>
@@ -21,7 +21,7 @@
     </p>
 
     <div class="toc">
-      <h2>Exámenes - Cuenta palos</h2>
+      <h2>Exámenes - Descarta palo</h2>
 
       <ul>
         <li><a href="#comentarios">Comentarios</a></li>
@@ -31,18 +31,18 @@
     </div>
   </nav>
 
-  <p>En este ejercicio se debe crear un programa que muestre el número de cartas indicado por el usuario. Además, el programa señalará cuántas cartas hay de los palos indicados por el usuario y los mostrará.</p>
+  <p>En este ejercicio se debe crear un programa que muestre el número de cartas indicado por el usuario. Además, el programa mostrará también en orden inverso las cartas que no son del palo indicado por el usuario.</p>
 
   <section id="comentarios">
-    <h2>Cuenta palos - Comentarios</h2>
+    <h2>Descarta palo - Comentarios</h2>
 
     <ul>
       <li>El programa tendrá dos páginas:
         <ul>
-          <li>La primera página muestra un formulario con tres controles:
+          <li>La primera página muestra un formulario con dos controles:
             <ul>
               <li>El número de cartas que se va a mostrar (entre 3 y 7).</li>
-              <li>Los dos palos que se van a contar (Corazones, Rombos, Picas o Tréboles)</li>
+              <li>El palo que se va a descartar (Corazones, Rombos, Picas o Tréboles)</li>
             </ul>
           </li>
           <li>La segunda página mostrará:
@@ -50,47 +50,52 @@
               <li>Si se han recibido valores incorrectos, los mensajes de error correspondientes.</li>
               <li>El número de cartas indicado por el usuario.</li>
               <li>Las imágenes de las cartas del 1 al 10, al azar.</li>
-              <li>El número de cartas de cada uno de los dos palos elegidos por el usuario.</li>
+              <li>El número de cartas que no se han descartado por pertenecer al palo elegido.</li>
+              <li>Las imágenes de las cartas que no se han descartado, en orden inverso.</li>
             </ul>
           </li>
         </ul>
       </li>
       <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se mostrarán mensajes de error con la información faltante o incorrecta.</li>
       <li>No se deben cambiar los nombres de los controles incluidos en las plantillas.</li>
-      <li>Al actualizar la segunda página, se mostrarán cartas distintas, pero la misma cantidad de cartas y utilizando los mismos palos.</li>
+      <li>Al actualizar la segunda página, se mostrarán cartas distintas, pero la misma cantidad de cartas y descartando el mismo palo.</li>
       <li>Capturas de pantalla de ejemplo:
-          <p class="captura"><img src="img/cuenta-palos-1.png" alt="Cuenta palos" width="1008" height="225"></p>
-          <p class="captura"><img src="img/cuenta-palos-2.png" alt="Cuenta palos" width="1008" height="160"></p>
-          <p class="captura"><img src="img/cuenta-palos-3.png" alt="Cuenta palos" width="1008" height="155"></p>
-          <p class="captura"><img src="img/cuenta-palos-4.png" alt="Cuenta palos" width="1008" height="120"></p>
-          <p class="captura"><img src="img/cuenta-palos-5.png" alt="Cuenta palos" width="991" height="360"></p>
-          <p class="captura"><img src="img/cuenta-palos-6.png" alt="Cuenta palos" width="991" height="360"></p>
+          <p class="captura"><img src="img/descarta-palo-1.png" alt="Descarta palo" width="1012" height="200"></p>
+          <p class="captura"><img src="img/descarta-palo-2.png" alt="Descarta palo" width="1012" height="160"></p>
+          <p class="captura"><img src="img/descarta-palo-3.png" alt="Descarta palo" width="1012" height="160"></p>
+          <p class="captura"><img src="img/descarta-palo-4.png" alt="Descarta palo" width="1008" height="120"></p>
+          <p class="captura"><img src="img/descarta-palo-5.png" alt="Descarta palo" width="1012" height="355"></p>
       </li>
     </ul>
   </section>
 
   <section id="ejemplo-html">
-    <h2>Cuenta palos - Ejemplo de código HTML</h2>
+    <h2>Descarta palo - Ejemplo de código HTML</h2>
 
     <div class="codigo">
       <pre>
 <code class="language-html">  &lt;h2&gt;<span class="codigo-resaltado">3</span> cartas&lt;/h2&gt;
 
   &lt;p&gt;
-    &lt;img src="img/<span class="codigo-resaltado">d2</span>.svg" alt="<span class="codigo-resaltado">2</span>" width="100"&gt;
-    &lt;img src="img/<span class="codigo-resaltado">c1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="100"&gt;
-    &lt;img src="img/<span class="codigo-resaltado">t5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="100"&gt;
+    &lt;img src="img/<span class="codigo-resaltado">t8</span>.svg" alt="<span class="codigo-resaltado">8</span>" width="100"&gt;
+    &lt;img src="img/<span class="codigo-resaltado">p3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="100"&gt;
+    &lt;img src="img/<span class="codigo-resaltado">c8</span>.svg" alt="<span class="codigo-resaltado">8</span>" width="100"&gt;
   &lt;/p&gt;
 
   &lt;h2&gt;Resultado&lt;/h2&gt;
 
-  &lt;p&gt;<span class="codigo-resaltado">Hay 1 cartas de tréboles y 0 cartas de picas.</span>&lt;/p&gt;</code>
+  &lt;p&gt;Hay <span class="codigo-resaltado">2</span> cartas que no son <span class="codigo-resaltado">corazones</span>.&lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;img src="img/<span class="codigo-resaltado">p3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="100"&gt;
+    &lt;img src="img/<span class="codigo-resaltado">t8</span>.svg" alt="<span class="codigo-resaltado">8</span>" width="100"&gt;
+  &lt;/p&gt;</code>
 </pre>
     </div>
   </section>
 
   <section id="ejemplo-programa">
-    <h2>Cuenta palos - Ejemplo de programa</h2>
+    <h2>Descarta palo - Ejemplo de programa</h2>
 
     <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
 
@@ -98,16 +103,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="https://www.mclibre.org/consultar/examenes/php-examenes/18-19/cf-cuenta-palos/cuenta-palos-1.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="https://www.mclibre.org/consultar/examenes/php-examenes/19-20/cf-descarta-palo/descarta-palo-1.php" style="height: 40em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="https://www.mclibre.org/consultar/examenes/php-examenes/18-19/cf-cuenta-palos/cuenta-palos-1.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="https://www.mclibre.org/consultar/examenes/php-examenes/19-20/cf-descarta-palo/descarta-palo-1.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 20 de junio de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 8 de julio de 2020</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

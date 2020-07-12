@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Tirada de dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.ico">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Tirada de dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Tirada de dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+        <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que imite el funcionamiento básico de un solitario de dados.</p>
+
+  <section id="comentarios">
+    <h2>Tirada de dados - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra tres dados de seis caras:
+            <ul>
+              <li>La primera vez que se abre la página se muestran tres dados al azar.</li>
+              <li>Un botón permite volver a tirar los tres dados.</li>
+              <li>En cada tirada se muetra la puntuación más alta alcanzada y la más baja (sumando los tres valores).</li>
+              <li>Un botón permite reiniciar el juego.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón elegido, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario, ni modificar las cartas ni los contadores.</li>
+      <li>No se deben cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido (ni los dados ni los valores máximo y mínimo conseguidos).</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/tirada-dados-1.png" alt="Tirada de dados" width="1012" height="330"></p>
+        <p class="captura"><img src="img/tirada-dados-2.png" alt="Tirada de dados" width="1012" height="330"></p>
+        <p class="captura"><img src="img/tirada-dados-3.png" alt="Tirada de dados" width="1012" height="330"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Tirada de dados - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;p&gt;
+      &lt;img src="img/<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" width="140" height="140"&gt;
+      &lt;img src="img/<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="140" height="140"&gt;
+      &lt;img src="img/<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span>" width="140" height="140"&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;Valor máximo conseguido: <span class="codigo-resaltado">12</span>&lt;/p&gt;
+
+    &lt;p&gt;Valor mínimo conseguido: <span class="codigo-resaltado">7</span>&lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejemplo-programa">
+    <h2>Tirada dados - Ejemplo de programa</h2>
+
+    <p><strong>Nota:</strong> El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+    <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="https://www.mclibre.org/consultar/examenes/php-examenes/19-20/cs-tirada-dados/tirada-dados-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="https://www.mclibre.org/consultar/examenes/php-examenes/19-20/cs-tirada-dados/tirada-dados-1.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 8 de julio de 2020</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
