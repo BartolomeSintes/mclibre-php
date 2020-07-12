@@ -46,7 +46,7 @@ if ($prestado_1 != "" && $prestado_2 != "") {
 }
 
 if ($devuelto_1 != "" && $devuelto_2 != "") {
-    $consultaDevuelto          = "AND $tablaPrestamos.devuelto BETWEEN :devuelto_2 AND :devuelto_2 ";
+    $consultaDevuelto          = "AND $tablaPrestamos.devuelto BETWEEN :devuelto_1 AND :devuelto_2 ";
     $parametros[":devuelto_1"] = $devuelto_1;
     $parametros[":devuelto_2"] = $devuelto_2;
 } elseif ($devuelto_1 != "") {
