@@ -133,26 +133,30 @@
   <section id="problemas">
     <h2>Problemas en Windows 10 tras la instalación</h2>
 
-    <h3>Icono del Panel de control</h3>
+    <h3>Icono de acceso directo del Panel de control</h3>
 
-    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Parece ser que el instalador de XAMPP tiene un problema en Windows 10 y no crea la carpeta del menú inicio. [Referencias: foro de xampp <a href="https://community.apachefriends.org/viewtopic.php?p=264848&sid=17cfb01d459149d5db21648722fb158d">mensaje 14/05/19</a> y <a href="https://community.apachefriends.org/viewtopic.php?f=16&t=78192">mensaje 29/05/19</a>]</p>
+    <p>Parece ser que algunas veces el instalador de XAMPP no consigue crear la carpeta XAMPP del menú inicio con los iconos de acceso directo. [Referencias: foro de xampp <a href="https://community.apachefriends.org/viewtopic.php?p=264848&sid=17cfb01d459149d5db21648722fb158d">mensaje 14/05/19</a> y <a href="https://community.apachefriends.org/viewtopic.php?f=16&t=78192">mensaje 29/05/19</a>]. Por ello, una vez completada la instalación, compruebe si se ha creado la carpeta en el menú de inicio, como muestra la imagen siguiente:</p>
 
-    <p>Por ello, una vez completada la instalación, compruebe si se ha creado la carpeta en el menú de inicio. Si no se ha creado, abra el explorador de archivos, abra el directorio de instalación de XAMPP (en principio, C:\xampp\), haga clic derecho sobre el programa xampp-control.exe y elija la opción "Anclar a inicio" o "Anclar a la barra de tareas". Se añadirá un icono al menú de inicio (o a la barra de tareas) que permite abrir el panel de control de XAMPP.</p>
+    <p class="captura">
+      <img src="../img/xampp/xampp-error-ini-menu-windows-01.png" alt="Error de XAMPP - Menú de inicio de Windows" title="Error de XAMPP - Menú de inicio de Windows" width="320" height="225">
+    </p>
+
+    <p>Si no se ha creado, abra el explorador de archivos, abra el directorio de instalación de XAMPP (en principio, C:\xampp\), haga clic derecho sobre el programa xampp-control.exe y elija la opción "Anclar a inicio" o "Anclar a la barra de tareas". Se añadirá un icono al menú de inicio (o a la barra de tareas) que permite abrir el panel de control de XAMPP.</p>
 
     <h2>Permisos del archivo C:\xampp\xampp-control.ini</h2>
 
-    <p>En abril de 2020 se publicó <a href="https://www.incibe-cert.es/alerta-temprana/vulnerabilidades/cve-2020-11107">una vulnerabilidad en el panel de control de XAMPP</a>. Un atacante podía modificar el fichero xampp-control.ini y cambiar qué programa se ejecuta cuando se arranca un servidor desde el panel de control de XAMPP. La solución inmediata tomada por el equipo de desarrollo de XAMPP fue restringir los permisos de edición de ese fichero a los usuarios administradores.</p>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En abril de 2020 se publicó <a href="https://www.incibe-cert.es/alerta-temprana/vulnerabilidades/cve-2020-11107">una vulnerabilidad en el panel de control de XAMPP</a>. Un atacante podía modificar el fichero xampp-control.ini y cambiar qué programa se ejecuta cuando se arranca un servidor desde el panel de control de XAMPP. La solución inmediata tomada por el equipo de desarrollo de XAMPP fue restringir los permisos de edición de ese fichero a los usuarios administradores.</p>
 
     <p>Aunque esa solución corrige la vulnerabilidad, el problema es que si el usuario que abre el panel de control de XAMPP no es administrador, cuando se cierra el panel de control se produce un error puesto que la aplicación intenta escribir en el archivo .ini para el que no tiene permisos.</p>
 
-    <p>Si en fichero C:\xampp\xampp-control.ini no tiene los permisos adecuados, al salir del panel de control se producirá un error de acceso a ese archivo.</p>
+    <p>Si en fichero C:\xampp\xampp-control.ini no tiene los permisos adecuados, al salir del panel de control se producirá un error de acceso a ese archivo. Para cerrar esas ventanas, abra el Administrador de tareas de Windows y Finalice la tarea xampp-control.exe.</p>
 
     <p class="captura">
-      <img src="../img/xampp/xampp-control-panel-error-ini-01.png" alt="Error de XAMPP - permisos de xampp-control.ini" title="Error de XAMPP - permisos de xampp-control.ini" width="380" height="145">
+      <img src="../img/xampp/xampp-error-ini-control-panel-01.png" alt="Error de XAMPP - permisos de xampp-control.ini" title="Error de XAMPP - permisos de xampp-control.ini" width="380" height="145">
     </p>
 
     <p class="captura">
-      <img src="../img/xampp/xampp-control-panel-error-ini-02.png" alt="Error de XAMPP - permisos de xampp-control.ini" title="Error de XAMPP - permisos de xampp-control.ini" width="430" height="200">
+      <img src="../img/xampp/xampp-error-ini-control-panel-02.png" alt="Error de XAMPP - permisos de xampp-control.ini" title="Error de XAMPP - permisos de xampp-control.ini" width="430" height="200">
     </p>
 
     <p>Este problema se puede sortear, a la espera de que los programadores de XAMPP encuentren una mejor solución, aunque eso suponga estar expuesto a la vulnerabilidad comentada antes. Dos maneras de sortear el problema son:</p>
@@ -412,7 +416,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 15 de septiembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 21 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
