@@ -40,7 +40,7 @@
 
   <p>En estos apuntes se recomienda el paquete <a href="https://www.apachefriends.org/index.html">XAMPP</a>. En la lección <a href="xampp.html">Qué es XAMPP</a> se explica qué es XAMPP, qué versión se recomienda en estos apuntes y cómo conseguirla.</p>
 
-  <p>En esta lección se explica la Instalación y el uso de XAMPP en Windows 10. Las capturas corresponden a la instalación de XAMPP 7.1.8 en Windows 10.</p>
+  <p>En esta lección se explica la Instalación y el uso de XAMPP en Windows 10. Las capturas corresponden a la instalación de XAMPP 8.0.9 en Windows 10.</p>
 
   <section id="instalar">
     <h2>Instalar XAMPP en Windows 10</h2>
@@ -292,26 +292,56 @@
         <img src="../img/xampp/xampp-control-panel-firewall-01.png" alt="XAMPP - Panel de control" title="XAMPP - Arrancar Apache" width="668" height="434">
       </p>
 
-      <p>... como Apache abre puertos en el ordenador (por primera vez), el cortafuegos de Windows pide al usuario confirmación. Para poder utilizarlo hace falta al menos autorizar el acceso en redes privadas:</p>
+      <p>... como es la primera vez que Apache abre puertos en el ordenador, el cortafuegos de Windows pregunta al usuario en qué perfiles de red se permitirá que Apache se comunique con otros equipos. Si lo permitimos, otros equipos de la misma red local podrán ver páginas en nuestro servidor.</p>
 
       <p class="captura">
         <img src="../img/xampp/xampp-control-panel-firewall-02.png" alt="XAMPP - Aviso del cortafuegos de Windows" title="XAMPP - Aviso del cortafuegos de Windows" width="527" height="381">
       </p>
 
-      <hr class="corta">
+      <p>Para saber qué perfil es necesario autorizar, tendremos que saber qué perfil estamos utilizando. Para ello, tenemos que abrir la aplicación Configuración &gt; Red e Internet y hacer clic en Propiedades de Ethernet:</p>
+
+      <p class="captura">
+        <img src="../img/xampp/windows-configuracion-perfil-red-1.png" alt="Windows - Perfil de red" title="XAMPP - Windows - Perfil de red" width="1024" height="450">
+      </p>
+
+      <p>Se abrirá la pantalla del perfil de red, en la que podremos ver si nuestro perfil de red es red pública o red privada:</p>
+
+      <p class="captura">
+        <img src="../img/xampp/windows-configuracion-perfil-red-2.png" alt="Windows - Perfil de red" title="XAMPP - Windows - Perfil de red" width="1024" height="410">
+      </p>
+
+      <p>En principio, sería suficiente con autorizar el perfil que tengamos seleccionado (sea este público o privado). pero también podemos autorizar ambos perfiles para que Apache sea siempre accesible independientemente del perfil:</p>
+
+      <p class="captura">
+        <img src="../img/xampp/xampp-control-panel-firewall-03.png" alt="XAMPP - Aviso del cortafuegos de Windows" title="XAMPP - Aviso del cortafuegos de Windows" width="527" height="381">
+      </p>
 
       <p>Si el arranque de Apache tiene éxito, el panel de control mostrará el nombre del módulo con fondo verde, su identificador de proceso, los puertos abiertos (http y https), el botón "Start" se convertirá en el botón "Stop" y en la zona de notificación se verá el resultado de las operaciones realizadas.</p>
 
       <p class="captura">
-        <img src="../img/xampp/xampp-control-panel-firewall-03.png" alt="XAMPP - Apache arrancado" title="XAMPP - Apache arrancado" width="668" height="434">
+        <img src="../img/xampp/xampp-control-panel-firewall-04.png" alt="XAMPP - Apache arrancado" title="XAMPP - Apache arrancado" width="668" height="434">
+      </p>
+
+      <p>Si se abre el programa "Windows Defender Firewall con seguridad avanzada", en el apartado de Reglas de entrada se puede ver las nuevas reglas añadidas.</p>
+
+      <p class="captura">
+        <img src="../img/xampp/xampp-control-panel-firewall-05.png" alt="XAMPP - Cortafuegos de Windows" title="XAMPP - Cortafuegos de Windows" width="1182" height="200">
       </p>
 
       <hr class="corta">
 
-      <p>Si se abre el programa "Firewall de Windows con seguridad avanzada", en el apartado de Reglas de entrada se puede ver las nuevas reglas añadidas.</p>
+      <p>Si observamos que Apache no es accesible desde otros ordenadores de nuestra red pero sí desde el propio ordenador, seguramente es que sólo están autorizadas las conexiones para el perfil distinto al actual.</p>
+
+      <p>Abriendo el programa "Windows Defender Firewall con seguridad avanzada", en el apartado de Reglas de entrada seguramente podremos las reglas de Apache que bloquean el acceso a nuestro perfil de red..</p>
 
       <p class="captura">
-        <img src="../img/xampp/xampp-control-panel-firewall-04.png" alt="XAMPP - Cortafuegos de Windows" title="XAMPP - Cortafuegos de Windows" width="850" height="255">
+        <img src="../img/xampp/xampp-control-panel-firewall-06.png" alt="XAMPP - Cortafuegos de Windows" title="XAMPP - Cortafuegos de Windows" width="1047" height="240">
+      </p>
+
+      <p>Para permitir la conexión, basta con hacer clic derecho sobre la regla, elegir en el menú contextual la opción Propiedades y en la pestaña General hacer clic en Permitir la conexión y en Aceptar.</p>
+
+      <p class="captura">
+        <img src="../img/xampp/xampp-control-panel-firewall-07.png" alt="XAMPP - Cortafuegos de Windows" title="XAMPP - Cortafuegos de Windows" width="1047" height="600">
       </p>
     </section>
 
@@ -416,7 +446,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de septiembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 22 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
