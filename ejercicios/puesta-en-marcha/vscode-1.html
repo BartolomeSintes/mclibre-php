@@ -28,13 +28,14 @@
         <li><a href="#ejercicio-2">2 - Formatear programas</a></li>
         <li><a href="#ejercicio-3">3 - PHP error_reporting</a></li>
         <li><a href="#ejercicio-4">4 - PHP output_buffering</a></li>
+        <li><a href="#ejercicio-5">5 - mclibre.org Snippets</a></li>
       </ul>
     </div>
   </nav>
 
   <p>Estos ejercicios permiten comprobar que se ha configurado correctamente Visual Studio Code.</p>
 
-  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../soluciones/1920/pm-vscode-plantillas.zip">plantillas de los ejercicios Visual Studio Code (Puesta en marcha)</a>.</p>
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../soluciones/2122/pm-vscode-plantillas.zip">plantillas de los ejercicios Visual Studio Code (Puesta en marcha)</a>.</p>
 
   <section id="ejercicio-1">
     <h2>VS Code 1 - Ejecutar programas</h2>
@@ -42,11 +43,11 @@
     <ol>
       <li>Descargue y descomprima las plantillas.</li>
       <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-1.php</strong>.</li>
-      <li>Ejecute el programa <strong>vscode-1.php</strong> con los atajos de teclado <span class="soft-atajo-teclado">Ctrl+Alt+l+f</span> y <span class="soft-atajo-teclado">Ctrl+Alt+l+c</span>.
+      <li>Ejecute el programa <strong>vscode-1.php</strong> con los atajos de teclado <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+f</span> y <span class="soft-atajo-teclado">Ctrl+Alt+l Ctrl+Alt+c</span> y compruebe que la página se muestra tanto en Firefox como en Chrome, respectivamente.
         <p>Si no se abre el navegador correspondiente, revise los atajos de teclado creados en Visual Studio Code, como se explica en la lección <a href="../../otros/vsc-php-configuracion.html#atajos-teclado">Configuración de Visual Studio Code</a>.</p>
       </li>
-      <li>Compruebe que la dirección de la página es <strong>http://localhost/iaw-NombreDeAlumno/php/ejercicios/puesta-en-marcha/vscode-1.php</strong>, donde NombreDeAlumno es su nombre.
-        <p>Si la dirección no contiene el alias <strong>/iaw-NombreDeAlumno/php</strong>, revise la tarea creada en Visual Studio Code, como se explica en la lección <a href="../../otros/vsc-php-configuracion.html#tareas">Configuración de Visual Studio Code</a>.</p>
+      <li>Compruebe que la dirección de la página es <strong>http://localhost/iaw/php/ejercicios/puesta-en-marcha/vscode-1.php</strong>.
+        <p>Si la dirección no contiene el alias <strong>/iaw/php</strong>, revise la tarea creada en Visual Studio Code, como se explica en la lección <a href="../../otros/vsc-php-configuracion.html#tareas">Configuración de Visual Studio Code</a>.</p>
       </li>
       <li>El resultado en el navegador debe ser este:
         <div class="filaflex">
@@ -57,7 +58,7 @@
             <a href="vscode-1.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
           </div>
         </div>
-        <p>Si la página no se muestra por un error del servidor, compruebe que ha creado el alias <strong>/iaw-NombreDeAlumno/php</strong> en el archivo de configuración de Apache httpd.conf y revise el alias, como se explica en la lección <a href="../../otros/php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
+        <p>Si la página no se muestra por un error del servidor, compruebe que ha creado el alias <strong>/iaw/php</strong> en el archivo de configuración de Apache httpd.conf y reinicie el servidor, como se explica en la lección <a href="../../otros/php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
       </li>
     </ol>
   </section>
@@ -106,8 +107,8 @@ $b = $a + $a * 2;
 
         <div class="codigo">
           <pre>
-<code class="language-php">&lt;?
-define("TEST", 99.9, true);
+<code class="language-php">&lt;?php
+function test($a = [], $b) {}
 </code>
 </pre>
         </div>
@@ -116,7 +117,7 @@ define("TEST", 99.9, true);
       <li>Compruebe que se muestra el siguiente error:
 
         <div class="resultado-html">
-          <b>Deprecated</b>: define(): Declaration of case-insensitive constants is deprecated in <b>vscode-3.php</b> on line <b>3</b>
+          <b>Deprecated</b>: Required parameter $b follows optional parameter $a in <b>vscode-3.php</b> on line <b>3</b>
         </div>
         <p>Si no se muestra el error, revise la directiva error_reporting en php.ini, como se explica en la lección <a href="../../otros/php-configuracion-1.html#error-reporting">Configuración de Apache y PHP</a>.</p>
       </li>
@@ -130,20 +131,102 @@ define("TEST", 99.9, true);
       <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-4-1.php</strong>.</li>
       <li>Ejecute el programa.</li>
       <li>Haga clic en el enlace.</li>
-      <li>Compruebe que se muestra el siguiente error:
+      <li>Compruebe que se muestra la página vscode-4-2.php, incluyendo el siguiente aviso:
         <div class="resultado-htmnl">
           <b>Warning</b>: Cannot modify header information - headers already sent by (output started at vscode-4-2.php:1) in <b>vscode-4-2.php</b> on line <b>2</b><br />
           <p>Esta es la página 2.</p>
           <p>Si ve esta página es que tiene la configuración recomendada para desarrollo recomendada en estos apuntes.</p>
           <p>Debe ver un aviso <strong>Warning</strong> al principio de esta página.</p>
         </div>
-        <p>Si no se muestra el error, revise la directiva output_buffering en php.ini, como se explica en la lección <a href="../../otros/php-configuracion-1.html#output_buffering">Configuración de Apache y PHP</a>.</p>
+        <p>Si en su lugar se muestra la página vscode-4-3.php, revise la directiva output_buffering en php.ini, como se explica en la lección <a href="../../otros/php-configuracion-1.html#output_buffering">Configuración de Apache y PHP</a>.</p>
       </li>
     </ol>
   </section>
 
+  <section id="ejercicio-5">
+    <h2>VS Code 5 - Probar mclibre.org Snippets</h2>
+
+    <h3>Atajo <kbd>Ctrl+Alt+v Ctrl+Alt+l</kbd></h3>
+
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-5-1.php</strong>.</li>
+      <li>Copie el texto html siguiente:
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Página HTML 5 válida&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link rel="stylesheet" href="estilo.css" title="Color"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Pegue en el interior del fragmento PHP el texto, utlizando el atajo <kbd>Ctrl+Alt+v Ctrl+Alt+l</kbd></li>
+      <li>Compruebe que el código html se ha pegado dentro de instrucciones print, línea a línea.</li>
+      <li>Ejecute el programa.</li>
+      <li>Compruebe que se muestra la página correctamente.</li>
+      </ol>
+
+    <h3>Atajo <kbd>Ctrl+Alt+v Ctrl+Alt+b</kbd></h3>
+    <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-5-2.php</strong>.</li>
+      <li>Copie el texto html siguiente:
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Página HTML 5 válida&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link rel="stylesheet" href="estilo.css" title="Color"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Pegue en el interior del fragmento PHP el texto, utlizando el atajo <kbd>Ctrl+Alt+v Ctrl+Alt+b</kbd></li>
+      <li>Compruebe que el código html se ha pegado dentro de una única instrucción print.</li>
+      <li>Ejecute el programa.</li>
+      <li>Compruebe que se muestra la página correctamente.</li>
+    </ol>
+
+  <h3>Atajo <kbd>Ctrl+Alt+v Ctrl+Alt+q</kbd></h3>
+  <ol>
+      <li>Abra en Visual Studio Code el programa <strong>/ejercicios/pm-vscode/vscode-5-3.php</strong>.</li>
+      <li>Copie el texto html siguiente:
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Página HTML 5 válida&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link rel="stylesheet" href="estilo.css" title="Color"&gt;
+&lt;/head&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Pegue en la posición adecuada el texto, utlizando el atajo <kbd>Ctrl+Alt+v Ctrl+Alt+q</kbd></li>
+      <li>Compruebe que el código html se ha pegado añadiendo caracteres de escape (\) a las comillas.</li>
+      <li>Ejecute el programa.</li>
+      <li>Compruebe que se muestra la página correctamente.</li>
+    </ol>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 23 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

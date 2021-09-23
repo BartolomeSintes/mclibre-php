@@ -5,7 +5,7 @@ print "<head>\n";
 print "  <meta charset=\"utf-8\">\n";
 print "  <title>\n";
 print "    Visual Studio Code. Puesta en marcha.\n";
-print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
+print "    Escriba aquí su nombre\n";
 print "  </title>\n";
 print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
 print "</head>\n";
