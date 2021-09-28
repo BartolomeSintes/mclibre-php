@@ -57,7 +57,7 @@
   <section id="introduccion">
     <h2>Introducción</h2>
 
-    <p>Esta explicación sobre la configuración de Apache y PHP ha sido preparada para la versión XAMPP 7.3.9, pero seguramente se puede aplicar en cualquier versión 7.3.X.</p>
+    <p>Esta explicación sobre la configuración de Apache y PHP ha sido preparada para la versión XAMPP 8.0.9, pero seguramente se puede aplicar en cualquier versión 8.0.X.</p>
 
     <p>Cada vez que se modifica alguno de los ficheros de configuración es necesario detener y reiniciar el servidor.</p>
 
@@ -87,7 +87,7 @@
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong># 2019-09-01. Barto. He cambiado el directorio raíz del servidor
+<code class="language-configuracion"><strong># 2021-09-16. Barto. He cambiado el directorio raíz del servidor
 #</strong> DocumentRoot "C:/xampp/htdocs"
 <strong>DocumentRoot "C:/www"</strong></code>
 </pre>
@@ -102,16 +102,12 @@
 
     <p>En httpd.conf las líneas comentadas empiezan por el carácter almohadilla (#). En Windows, al escribir una ruta de directorio en httpd.conf se puede utilizar tanto la barra como la contrabarra (es decir, se puede escribir tanto C:\xampp como C:/xampp).</p>
 
-    <p>En XAMPP 7.3 el archivo <strong>httpd.conf</strong> se encuentra en el directorio:</p>
-    <ul>
-      <li>en Windows: <strong>C:\xampp\apache\conf\</strong></li>
-      <li>en GNU/Linux: <strong>/opt/lampp/etc/</strong></li>
-    </ul>
+    <p>En Windows el archivo <strong>httpd.conf</strong> se encuentra en el directorio <strong>C:\xampp\apache\conf\</strong>.</p>
 
     <p>Se puede abrir directamente el archivo <strong>httpd.conf</strong> haciendo clic en el botón "Config" correspondiente a Apache y eligiendo la primera opción:</p>
 
     <p class="captura">
-      <img src="../img/xampp/xampp-control-panel-httpd-conf.png" alt="XAMPP - Abrir httpd.conf" width="730" height="434">
+      <img src="../img/xampp/xampp-control-panel-httpd-conf.png" alt=" XAMPP - Abrir httpd.conf" width="730" height="434">
     </p>
 
     <p>En esta lección se comentan algunas directivas de configuración de Apache. Antes de modificar cualquier archivo de configuración, se recomienda hacer una copia de seguridad del archivo de configuración.</p>
@@ -119,7 +115,7 @@
     <section id="ubicacion">
       <h3>Ubicación de las páginas web</h3>
 
-      <p>Con la configuración inicial de XAMPP 7.3, al abrir en el navegador una dirección que empieza por <strong>http://localhost/</strong>, Apache busca el elemento solicitado a partir del directorio raíz del servidor, indicado por la directiva <strong>DocumentRoot</strong> del archivo httpd.conf:</p>
+      <p>Con la configuración inicial de XAMPP 8.0, al abrir en el navegador una dirección que empieza por <strong>http://localhost/</strong>, Apache busca el elemento solicitado a partir del directorio raíz del servidor, indicado por la directiva <strong>DocumentRoot</strong> del archivo httpd.conf:</p>
       <ul>
         <li>si se trata de un archivo:
           <ul>
@@ -129,7 +125,7 @@
         </li>
         <li>si se trata de un directorio:
           <ul>
-            <li>si encuentra el directorio, busca si existe alguno de los archivos indicados por la directiva <strong>DirectoryIndex</strong> (por ejemplo, en XAMPP 7.3, index.php index.pl index.cgi index.asp index.shtml index.html index.htm etc) :
+            <li>si encuentra el directorio, busca si existe alguno de los archivos indicados por la directiva <strong>DirectoryIndex</strong> (por ejemplo, en XAMPP 8.0, index.php index.pl index.cgi index.asp index.shtml index.html index.htm etc) :
               <ul>
                 <li>si encuentra alguno de esos archivos, lo sirve al navegador.</li>
                 <li>si no encuentra ninguno de esos archivos, Apache envía al navegador el listado del directorio.</li>
@@ -144,7 +140,7 @@
 
       <hr class="corta">
 
-      <p>En el directorio raíz del servidor, XAMPP 7.3 crea una serie de páginas que permiten administrar el servidor. Por eso al abrir en el navegador la dirección http://localhost se abre una página de administración propia de XAMPP.</p>
+      <p>En el directorio raíz del servidor, XAMPP 8.0 crea una serie de páginas que permiten administrar el servidor. Por eso al abrir en el navegador la dirección http://localhost se abre una página de administración propia de XAMPP.</p>
 
       <p>A la hora de añadir otras páginas en el servidor, se puede hacer de varias formas:</p>
       <ul>
@@ -170,9 +166,9 @@
 </pre>
       </div>
 
-      <p>En XAMPP 7.3 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.0 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-      <p>Además, hay que añadir en el archivo httpd.conf una directiva Alias dentro de la directiva &lt;IfModule alias_module&gt; (que ya existe en XAMPP 7.3).</p>
+      <p>Además, hay que añadir en el archivo httpd.conf una directiva Alias dentro de la directiva &lt;IfModule alias_module&gt; (que ya existe En XAMPP 8.0).</p>
 
       <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
 
@@ -204,21 +200,21 @@
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.</strong>
-    <strong>Alias <span class="codigo-resaltado">/clase</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\PHP"</span>
+    # 2021-09-16. He añadido este Alias para los programas escritos en el curso de PHP.
+    Alias <span class="codigo-resaltado">/clase</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
       AllowOverride All
       Require all granted
-    &lt;/Directory&gt;</strong>
+    &lt;/Directory&gt;
 
-<strong>    # 2019-09-01. He añadido este Alias para los programas escritos para el trabajo.
+    # 2021-09-16. He añadido este Alias para los programas escritos para el trabajo.
     Alias <span class="codigo-resaltado">/curro</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Trabajo\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Trabajo\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
       AllowOverride All
       Require all granted
-    &lt;/Directory&gt;</strong>
+    &lt;/Directory&gt;
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
@@ -230,21 +226,21 @@
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.
+    # 2021-09-16. He añadido este Alias para los programas escritos en el curso de PHP.
     Alias <span class="codigo-resaltado">/clase</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
       AllowOverride All
       Require all granted
-    &lt;/Directory&gt;</strong>
+    &lt;/Directory&gt;
 
-<strong>    # 2019-09-01. He añadido este Alias para los programas escritos para el trabajo.
+    # 2021-09-16. He añadido este Alias para los programas escritos para el trabajo.
     Alias <span class="codigo-resaltado">/curro</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Trabajo/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"home/NombreDeUsuario/Documents/Trabajo/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
       AllowOverride All
       Require all granted
-    &lt;/Directory&gt;</strong>
+    &lt;/Directory&gt;
 
 # ...
 &lt;/IfModule&gt;</code>
@@ -284,13 +280,13 @@
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.</strong>
-    <strong>Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\2019\PHP"</span>
+    # 2021-09-16. He añadido este Alias para los programas escritos en el curso de PHP.
+    Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\2019\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\2019\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
       AllowOverride All
       Require all granted
-    &lt;/Directory&gt;</strong>
+    &lt;/Directory&gt;
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
@@ -302,13 +298,13 @@
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-<strong>    # 2019-09-01. He añadido este Alias para los programas escritos en el curso de PHP.
+    # 2021-09-16. He añadido este Alias para los programas escritos en el curso de PHP.
     Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/2019/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/2019/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
       AllowOverride All
       Require all granted
-    &lt;/Directory&gt;</strong>
+    &lt;/Directory&gt;
 # ...
 &lt;/IfModule&gt;</code>
 </pre>
@@ -329,26 +325,22 @@
 
       <p>En php.ini las líneas comentadas empiezan por el carácter punto y coma (;).</p>
 
-      <p>En XAMPP 7.3 el archivo php.ini se encuentra:</p>
-      <ul>
-        <li>en Windows, en el directorio <strong>C:\xampp\php\php.ini</strong>.</li>
-        <li>en GNU/Linux, en el directorio <strong>/opt/lampp/etc</strong>.</li>
-      </ul>
+      <p>En Windows, el archivo php.ini se encuentra en el directorio <strong>C:\xampp\php\php.ini</strong></p>
 
       <p>Se puede abrir directamente el archivo <strong>php.ini</strong> haciendo clic en el botón "Config" correspondiente a Apache y eligiendo opción correspondiente:</p>
 
       <p class="captura">
-        <img src="../img/xampp/xampp-control-panel-php-ini.png" alt="XAMPP - Abrir php.ini" width="730" height="434">
+        <img src="../img/xampp/xampp-control-panel-php-ini.png" alt=" XAMPP - Abrir php.ini" width="730" height="434">
       </p>
 
-      <p><strong>Nota</strong>: La ruta del archivo php.ini que está utilizando Apache se puede ver en el campo "Loaded Configuration File" de la primera tabla que muestra la función <span class="php-fun">phpinfo()</span>. En el menú de la página de administración de XAMPP 7.3 hay una opción <span class="php-fun">phpinfo()</span> que muestra la configuración de PHP.</p>
+      <p><strong>Nota</strong>: La ruta del archivo php.ini que está utilizando Apache se puede ver en el campo "Loaded Configuration File" de la primera tabla que muestra la función <span class="php-fun">phpinfo()</span>. En el menú de la página de administración de XAMPP 8.0 hay una opción <span class="php-fun">phpinfo()</span> que muestra la configuración de PHP.</p>
 
       <p class="captura">
-        <img src="../img/xampp/xampp-dashboard-phpinfo.png" alt="XAMPP. PHPInfo en página de administración" width="1024" height="300">
+        <img src="../img/xampp/xampp-dashboard-phpinfo.png" alt=" XAMPP. PHPInfo en página de administración" width="1024" height="300">
       </p>
 
       <p class="captura">
-        <img src="../img/xampp/xampp-phpinfo.png" alt="XAMPP. php.ini en phpinfo" width="1024" height="480">
+        <img src="../img/xampp/xampp-phpinfo.png" alt=" XAMPP. php.ini en phpinfo" width="1024" height="490">
       </p>
     </section>
 
@@ -390,7 +382,7 @@
 </pre>
       </div>
 
-      <p>En XAMPP 7.3 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.0 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <hr class="corta">
 
@@ -453,15 +445,17 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
       <p>El inconveniente de utilizar una configuración tan exigente es que algunos paquetes de terceros (bibliotecas, CMS, etc.) pueden dejar de funcionar y a veces no queda más remedio que volver a un valor menos estricto para poderlos utilizar.</p>
 
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 7.3 esta directiva viene predeterminada con el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT, por lo que <strong>se recomienda modificarla</strong>:</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 8.0 esta directiva viene predeterminada con el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT, por lo que <strong>se recomienda modificarla</strong>:</p>
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2019-09-01. Barto. He cambiado error_reporting para mostrar todos los errores</strong>
+<code class="language-configuracion"><strong>; 2021-09-16. Barto. He cambiado error_reporting para mostrar todos los errores</strong>
 <strong>;</strong> error_reporting=E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT
 <strong>error_reporting=E_ALL </strong></code>
 </pre>
       </div>
+
+      <p><strong>Nota</strong>: En PHP 8.0 el valor predeterminado se ha <a href="https://www.php.net/manual/en/migration80.incompatible.php">cambiado a E_ALL</a>, aunque XAMPP 8.0 conserva el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT.</p>
 
       <hr class="corta">
 
@@ -574,11 +568,11 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 7.3 esta directiva viene predeterminada con el valor 4096, por lo que <strong>se recomienda modificarla</strong>:</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 8.0 esta directiva viene predeterminada con el valor 4096, por lo que <strong>se recomienda modificarla</strong>:</p>
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2019-09-01. Barto. Desactivo output_buffering
+<code class="language-configuracion"><strong>; 2021-09-16. Barto. Desactivo output_buffering
 ;</strong> output_buffering=4096
 <strong>output_buffering=0</strong></code>
 </pre>
@@ -598,7 +592,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>XAMPP 7.3 tiene activada la extensión PDO MySQL, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p> XAMPP 8.0 tiene activada la extensión PDO MySQL, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <p>La extensión pdo_mysql puede utilizar cualquiera de los dos drivers de bajo nivel: MySQL Client Library (libmysql) o <a href="https://www.php.net/manual/en/book.mysqlnd.php">MySQL Native Driver</a> (mysqlnd). La elección del driver se realiza en la compilación de PHP. El driver nativo mysqlnd se introdujo en PHP 5.3.0. XAMPP utiliza el driver mysqlnd desde XAMPP 1.7.2 (agosto de 2009).</p>
     </section>
@@ -614,7 +608,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>XAMPP 7.3 tiene activada la extensión PDO SQLite, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p> XAMPP 8.0 tiene activada la extensión PDO SQLite, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
     </section>
 
     <section id="session-save-handler">
@@ -628,7 +622,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>En XAMPP 7.3 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.0 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <p>Algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user. Si en nuestro servidor el valor es user, para evitar conflictos nuestros programas pueden modificar esta directiva en tiempo de ejecución, mediante la función ini_set("session.save_handler", "files"); (véase la <a href="../lecciones/php-sesiones.html">lección sobre sesiones</a>).</p>
     </section>
@@ -644,7 +638,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>En XAMPP 7.3 esta directiva viene predeterminada con el valor 0, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.0 esta directiva viene predeterminada con el valor 0, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
     </section>
 
     <section id="date-timezone">
@@ -654,11 +648,11 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
       <p>La directiva <span class="php-dir">date.timezone</span> establece la zona horaria predeterminada para todas las funciones de fecha y hora.</p>
 
-      <p>Al instalar XAMPP 7.3, el instalador da un valor estimado de la zona horaria. En el caso de España, XAMPP 7.3 asigna el valor Europe/Berlin que se puede cambiar al valor Europe/Madrid (hasta ahora no era necesario, puesto que entre Berlín y Madrid no hay diferencias horarias, pero eso puede cambiar en el futuro). Se puede consultar <a href="https://www.php.net/manual/en/timezones.php">la lista completa de zonas horarios permitidas</a> en la web de php.</p>
+      <p>Al instalar XAMPP 8.0, el instalador da un valor estimado de la zona horaria. En el caso de España, XAMPP 8.0 asigna el valor Europe/Berlin que se puede cambiar al valor Europe/Madrid (hasta ahora no era necesario, puesto que entre Berlín y Madrid no hay diferencias horarias, pero eso puede cambiar en el futuro). Se puede consultar <a href="https://www.php.net/manual/en/timezones.php">la lista completa de zonas horarios permitidas</a> en la web de php.</p>
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2019-09-01. Barto. He cambiado el nombre del huso horario a Madrid
+<code class="language-configuracion"><strong>; 2021-09-16. Barto. He cambiado el nombre del huso horario a Madrid
 ;</strong> date.timezone=Europe/Berlin
 <strong>date.timezone=Europe/Madrid</strong></code>
 </pre>
@@ -688,12 +682,12 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"><strong>; 2019-09-01. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173</strong>
+<code class="language-configuracion"><strong>; 2021-09-16. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173</strong>
 ; https://www.php.net/date.default-latitude
 ;date.default_latitude = 31.7667
 <strong>date.default_latitude=40.4173</strong>
 
-<strong>; 2019-09-01. Barto. He cambiado la longitud a Madrid: 3 42 22 W = -3.7063</strong>
+<strong>; 2021-09-16. Barto. He cambiado la longitud a Madrid: 3 42 22 W = -3.7063</strong>
 ; https://www.php.net/date.default-longitude
 ;date.default_longitude = 35.2333
 <strong>date.default_longitude=-3.7063</strong>
@@ -722,7 +716,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>En XAMPP 7.3 esta directiva viene predeterminada con el valor 8M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.0 esta directiva viene predeterminada con el valor 8M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <div class="codigo">
         <pre>
@@ -730,7 +724,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>En XAMPP 7.3 esta directiva viene predeterminada con el valor 2M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.0 esta directiva viene predeterminada con el valor 2M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
     </section>
 
     <section id="fileinfo">
@@ -744,7 +738,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"utf-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>XAMPP 7.3 tiene activada la extensión FileInfo, por lo que <strong>no</strong> es necesario modificarla.</p>
+      <p> XAMPP 8.0 tiene activada la extensión FileInfo, por lo que <strong>no</strong> es necesario modificarla.</p>
 
       <p>En este curso de PHP no se utiliza esta extensión, pero sí que se necesita en el <a href="https://www.mclibre.org/consultar/webapps/index.html">curso de Aplicaciones Web</a> (por ejemplo, con OwnCloud).</p>
 
@@ -802,7 +796,7 @@ if (function_exists("finfo_open") &amp;&amp; function_exists("finfo_file") &amp;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 16 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
