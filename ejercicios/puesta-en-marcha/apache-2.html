@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../varios/favicon.ico">
   <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism-copy.js"></script>
   <script src="../../varios/prism.js"></script>
+  <script src="../../varios/clipboard.min.js"></script>
 </head>
 
 <body>
@@ -24,10 +26,11 @@
 
       <h3><a href="#">Enunciados</a></h3>
       <ul>
-        <li><a href="#ejercicio-1">1 - Directiva DirectoryIndex</a></li>
-        <li><a href="#ejercicio-2">2 - Directiva DocumentRoot</a></li>
+        <li><a href="#ejercicio-1">1 - Directiva DocumentRoot</a></li>
+        <li><a href="#ejercicio-2">2 - Modificar DocumentRoot</a></li>
+        <li><a href="#ejercicio-3">3 - Directiva DirectoryIndex</a></li>
       </ul>
-<!--
+      <!--
       <h3>Soluciones</h3>
       <ul>
         <li><a href="../../soluciones/puesta-en-marcha/apache-1.html#ejercicio-1">1 - Alias</a></li>
@@ -40,57 +43,52 @@
     </div>
   </nav>
 
-  <p>Estos ejercicios tratan de la configuración de Apache. Los cambios que se realicen se deben deshacer al terminar los ejercicios, por lo que se recomienda hacer antes una copia de seguridad del fichero de configuración httpd.conf de Apache.</p>
+  <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Estos ejercicios tratan de la configuración de Apache. Los cambios que se realicen se deben deshacer al terminar los ejercicios, por lo que se recomienda hacer antes una <strong>copia de seguridad del fichero de configuración httpd.conf de Apache</strong> y restaurarlo al final.</p>
 
   <section id="ejercicio-1">
-    <h2>Apache (2) 1 - Directiva DirectoryIndex</h2>
+    <h2>Apache (2) 1 - Directiva DocumentRoot</h2>
+
     <ul>
-      <li>Cree la carpeta <strong>C:\tmp\apache-2\e01</strong></li>
-      <li>Cree con NotePad++ dos archivos <strong>index.html</strong> y <strong>home.html</strong> diferentes en la carpeta "C:\tmp\apache-2\e01". Por ejemplo:
+      <li>Abra el archivo httpd.conf con el Panel de control de XAMPP.</li>
+      <li>Compruebe que la directiva de Apache DocumentRoot tiene el valor "C:/xampp/htdocs":
 
         <div class="codigo">
           <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 7&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;p&gt;Esta es la página index.html del ejercicio 7.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
+<code class="language-configuracion">DocumentRoot <span class="codigo-resaltado">"C:/xampp/htdocs"</span>
+&lt;Directory <span class="codigo-resaltado">"C:/xampp/htdocs"</span>&gt;
+    #
+...</code>
 </pre>
         </div>
+      </li>
+      <li>En el directorio C:/xampp/htdocs, cree con Notepad++ el fichero e01-1.html. Por ejemplo:
 
         <div class="codigo">
           <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
+<code class="copy-language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Ejercicio 7&lt;/title&gt;
+  &lt;title&gt;Ejercicio Apache (2) 1&lt;/title&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;p&gt;Esta es la página home.html del ejercicio 7.&lt;/p&gt;
+  &lt;h1&gt;¡Hola, amigo!&lt;/h1&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
         </div>
       </li>
-      <li>Cree el alias <strong>/ejercicio-07</strong> que enlace a la carpeta "C:\tmp\apache-2\e01"</li>
-      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-07/</strong></li>
-      <li>Modifique en el archivo httpd.conf la directiva DirectoryIndex de manera que se abra primero el archivo home.html</li>
-      <li>Compruebe que en el navegador se muestra el archivo home.html al escribir <strong>http://localhost/ejercicio-07/</strong></li>
-      <li>Deshaga los cambios realizados en el archivo httpd.conf</li>
-      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-07/</strong></li>
+      <li>Compruebe en el navegador que puede ver la página web escribiendo la dirección http://localhost/e01-1.html:
+        <p class="captura">
+          <img src="../../img/ejercicios/puesta-en-marcha/pm-apache-2-1.png" alt="Ejercicios Apache (2) 1" width="1024" height="170">
+        </p>
+      </li>
     </ul>
   </section>
 
   <section id="ejercicio-2">
-    <h2>Apache (2) 2 - Modificación de DocumentRoot</h2>
+    <h2>Apache (2) 2 - Modificar DocumentRoot</h2>
     <ul>
       <li>Cree la carpeta <strong>C:\tmp\apache-2\e02</strong></li>
       <li>Cree con Notepad++ en la carpeta C:\tmp\apache-2\e02 un fichero que se llame <strong>prueba.html</strong> con el siguiente contenido:
@@ -118,8 +116,56 @@
     </ul>
   </section>
 
+  <section id="ejercicio-3">
+    <h2>Apache (2) 3 - Directiva DirectoryIndex</h2>
+
+    <ul>
+      <li>Cree la carpeta <strong>C:\tmp\apache-3\e03</strong></li>
+      <li>Cree con Notepad++ dos archivos <strong>index.html</strong> y <strong>home.html</strong> diferentes en la carpeta "C:\tmp\apache-2\e01". Por ejemplo:
+
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Ejercicio 3&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Esta es la página index.html del ejercicio 3.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Ejercicio 3&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Esta es la página home.html del ejercicio 3.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>Cree el alias <strong>/ejercicio-03</strong> que enlace a la carpeta "C:\tmp\apache-3\e03"</li>
+      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
+      <li>Modifique en el archivo httpd.conf la directiva DirectoryIndex de manera que se abra primero el archivo home.html</li>
+      <li>Compruebe que en el navegador se muestra el archivo home.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
+      <li>Deshaga los cambios realizados en el archivo httpd.conf</li>
+      <li>Compruebe que en el navegador se muestra el archivo index.html al escribir <strong>http://localhost/ejercicio-03/</strong></li>
+    </ul>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 21 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
