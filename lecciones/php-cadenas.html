@@ -616,26 +616,46 @@ print "&lt;p&gt;Pasa" <span class="php-ope">.</span> "tiempos&lt;/p&gt;\n";
       </div>
     </div>
 
-    <p>El mismo resultado se puede conseguir sin utilizar el operador . (punto):</p>
+    <p>Concatenar cadenas de texto como en el ejemplo anterior no sirve para mucho, ya que se podría escribir una única cadena en vez de varias cadenas concatenadas. El interés de la concatenación es que podemos concatenar cadenas con cosas que no son cadenas: variables, funciones, en general, expresiones. Por ejemplo</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+    <ul>
+      <li>concatenar el resultado de un cálculo numérico:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;Pasatiempos&lt;/p&gt;\n";
+  print "&lt;p&gt;3 * 5 + 12 = " . (3 * 5 + 12) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;Pasatiempos&lt;/p&gt;</code></pre>
-      </div>
-    </div>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;3 * 5 + 12 = 27&lt;/p&gt;</code></pre>
+          </div>
+        </div>
 
-    <p>Trabajando únicamente con cadenas, el operador . (punto) no parece demasiado útil, pero en la lección dedicada a <a href="php-variables-1.html#concatenar">Variables</a> se explica el uso del operador utilizando variables y cadenas, que es el uso más habitual.</p>
+        <p><strong>Nota</strong>: En general si la expresión concatenada es un cálculo aritmético, conviene rodearlo con paréntesis, aunque en algunos casos (si por ejemplo sólo hay multiplicaciones y divisiones) los paréntesis no sean estrictamente necesarios.</p>
+      </li>
+      <li>concatenar el valor devuelto por una función:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+  print "&lt;p&gt;Número al azar entre 1 y 10: " . rand(1, 10) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Número al azar entre 1 y 10: 8&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+      <li>El uso más habitual es concatenar variables, que se explica en la lección dedicada a <a href="php-variables-1.html#concatenar">Variables</a>
+      </li>
+    </ul>
 
     <hr class="corta">
 
-    <p>El operador de asignación con concatenación (.=) permite concatenar una cadena a otra y asignarla a esta:</p>
+    <p>El operador combinado de asignación con concatenación (.=) permite modificar una variable concatenándole una cadena o expresión:</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -658,12 +678,12 @@ print "&lt;p&gt;$cadena&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
       Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
-        que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
     </p>
   </footer>
 </body>
