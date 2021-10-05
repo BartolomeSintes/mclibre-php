@@ -29,9 +29,10 @@
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-3">3 - Tirada de dados</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-4">4 - La carta más alta</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-5">5 - Círculos de color</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-11">11 - Avance de ficha</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-12">12 - Tres cuadrados</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-13">13 - Tres círculos</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-11">11 - Cuatro círculos</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-12">12 - Avance de ficha</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-13">13 - Tres cuadrados</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-14">14 - Tres círculos</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
@@ -41,9 +42,10 @@
         <li><a href="#ejercicio-3">3 - Tirada de dados</a></li>
         <li><a href="#ejercicio-4">4 - La carta más alta</a></li>
         <li><a href="#ejercicio-5">5 - Círculos de color</a></li>
-        <li><a href="#ejercicio-11">11 - Avance de ficha</a></li>
-        <li><a href="#ejercicio-12">12 - Tres cuadrados</a></li>
-        <li><a href="#ejercicio-13">13 - Tres círculos</a></li>
+        <li><a href="#ejercicio-11">11 - Cuatro círculos</a></li>
+        <li><a href="#ejercicio-12">12 - Avance de ficha</a></li>
+        <li><a href="#ejercicio-13">13 - Tres cuadrados</a></li>
+        <li><a href="#ejercicio-14">14 - Tres círculos</a></li>
       </ul>
     </div>
   </nav>
@@ -170,7 +172,33 @@ print "  &lt;/p&gt;\n";
   </section>
 
   <section id="ejercicio-11">
-    <h2>Variables (1) 11 - Avance de ficha</h2>
+    <h2>Variables (1) 11 - Cuatro círculos</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$r     = rand(50, 150);
+$ancho = 8 * $r + 20;
+$alto  = 2 * $r + 20;
+
+print "  &lt;p&lg;Estos círculos tienen $r px de radio. Actualice la página para mostrar cuatro nuevos círculos.&lt;/p&lg;\n";
+print "\n";
+print "  &lt;p&lg;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&lg;\n";
+print "      &lt;circle cx=\"$r\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"red\" /&lg;\n";
+print "      &lt;circle cx=\"" . 3 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"yellow\" /&lg;\n";
+print "      &lt;circle cx=\"" . 5 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"green\" /&lg;\n";
+print "      &lt;circle cx=\"" . 7 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"blue\" /&lg;\n";
+print "    &lt;/svg&lg;\n";
+print "  &lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-12">
+    <h2>Variables (1) 12 - Avance de ficha</h2>
 
     <div class="codigo">
       <pre>
@@ -204,8 +232,8 @@ print "  &lt;/p&gt;";
     </div>
   </section>
 
-  <section id="ejercicio-12">
-    <h2>Variables (1) 12 - Tres cuadrados</h2>
+  <section id="ejercicio-13">
+    <h2>Variables (1) 13 - Tres cuadrados</h2>
 
     <div class="codigo">
       <pre>
@@ -229,12 +257,13 @@ print "  &lt;/p&gt;";
     </div>
   </section>
 
-  <section id="ejercicio-13">
-    <h2>Variables (1) 13 - Tres círculos</h2>
+  <section id="ejercicio-14">
+    <h2>Variables (1) 14 - Tres círculos</h2>
 
     <div class="codigo">
       <pre>
-<code class="language-php">$r1 = rand(50, 150);
+<code class="language-php">&lt;?php
+$r1 = rand(50, 150);
 $r2 = rand(50, 150);
 $r3 = rand(50, 150);
 $ancho = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
@@ -248,13 +277,14 @@ print "      &lt;circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" st
 print "      &lt;circle cx=\"" . (2 * $r1 + $r2) . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" /&gt;\n";
 print "      &lt;circle cx=\"" . (2 * $r1 + 2 * $r2 + $r3) . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;\n";</code>
+print "  &lt;/p&gt;\n";
+?&gt;</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

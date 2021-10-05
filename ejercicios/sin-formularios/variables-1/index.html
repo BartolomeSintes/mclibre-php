@@ -27,9 +27,10 @@
         <li><a href="#ejercicio-3">3 - Tirada de dados</a></li>
         <li><a href="#ejercicio-4">4 - La carta más alta</a></li>
         <li><a href="#ejercicio-5">5 - Círculos de color</a></li>
-        <li><a href="#ejercicio-11">11 - Avance de ficha</a></li>
-        <li><a href="#ejercicio-12">12 - Tres cuadrados</a></li>
-        <li><a href="#ejercicio-13">13 - Tres círculos</a></li>
+        <li><a href="#ejercicio-11">11 - Cuatro círculos</a></li>
+        <li><a href="#ejercicio-12">12 - Avance de ficha</a></li>
+        <li><a href="#ejercicio-13">13 - Tres cuadrados</a></li>
+        <li><a href="#ejercicio-14">14 - Tres círculos</a></li>
       </ul>
 
       <h3><a href="../../../soluciones/sin-formularios/variables-1.html">Soluciones</a></h3>
@@ -39,9 +40,10 @@
         <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-3">3 - Tirada de dados</a></li>
         <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-4">4 - La carta más alta</a></li>
         <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-5">5 - Círculos de color</a></li>
-        <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-11">11 - Avance de ficha</a></li>
-        <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-12">12 - Tres cuadrados</a></li>
-        <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-13">13 - Tres círculos</a></li>
+        <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-11">11 - Cuatro círculos</a></li>
+        <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-12">12 - Avance de ficha</a></li>
+        <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-13">13 - Tres cuadrados</a></li>
+        <li><a href="../../../soluciones/sin-formularios/variables-1.html#ejercicio-14">14 - Tres círculos</a></li>
       </ul>
     </div>
   </nav>
@@ -135,7 +137,183 @@
   </section>
 
   <section id="ejercicio-11">
-    <h2>Variables (1) 11 - Avance de ficha</h2>
+    <h2>Variables (1) 11 - Cuatro círculos</h2>
+
+    <p>Escriba un programa que cada vez que se ejecute muestre cuatro círculos contiguos con un radio entre 50 y 150 píxeles, al azar.</p>
+
+    <details>
+      <summary><strong>Ayuda</strong></summary>
+      <ul>
+        <li>Los círculos SVG se establecen dando las coordenadas del centro y el radio del círculo:
+          <p>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="-40 -40 460 160" style="background-color: white;" font-family="sans-serif">
+              <circle cx="50" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(0, 100%, 90%)" />
+              <circle cx="150" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(60, 100%, 90%)" />
+              <circle cx="250" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(120, 100%, 90%)" />
+              <circle cx="350" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(240, 100%, 90%)" />
+
+              <line x1="-40" y1="0" x2="400" y2="0" stroke-width="2" stroke="black" />
+              <polyline points="390,5 400,0 390,-5" fill="black" stroke-width="1" stroke="black" />
+              <text x="375" y="-15" font-family="sans-serif" font-size="20" fill="black">X</text>
+              <line x1="0" y1="-40" x2="0" y2="100" stroke-width="2" stroke="black" />
+              <polyline points="-5,90 0,100 5,90" fill="black" stroke-width="1" stroke="black" />
+              <text x="-20" y="90" font-family="sans-serif" font-size="20" fill="black">Y</text>
+
+              <line x1="0" y1="50" x2="350" y2="50" stroke-width="2" stroke="black" />
+              <polyline points="10,55 0,50 10,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="40,55 50,50 40,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="25" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="60,55 50,50 60,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="90,55 100,50 90,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="75" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="110,55 100,50 110,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="140,55 150,50 140,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="125" y="70" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="160,55 150,50 160,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="190,55 200,50 190,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="175" y="70" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="210,55 200,50 210,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="240,55 250,50 240,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="225" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="260,55 250,50 260,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="290,55 300,50 290,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="275" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="310,55 300,50 310,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="340,55 350,50 340,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="325" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+
+              <line x1="350" y1="0" x2="350" y2="50" stroke-width="2" stroke="black" />
+              <polyline points="345,10 350,0 355,10" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="345,40 350,50 355,40" fill="black" stroke-width="1" stroke="black" />
+              <text x="365" y="30" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+
+              <circle cx="50" cy="50" r="3" fill="black" />
+              <circle cx="150" cy="50" r="3" fill="black" />
+              <circle cx="250" cy="50" r="3" fill="black" />
+              <circle cx="350" cy="50" r="3" fill="black" />
+            </svg>
+          </p>
+        </li>
+        <li>El tamaño del dibujo SVG (<span class="html-atri">width</span>, <span class="html-atri">height</span> y <span class="html-atri">viewBox</span>) debe ser suficiente para abarcar el dibujo completo. El programa de muestra añade un margen de 10px alrededor.
+          <p>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="-40 -40 460 160" style="background-color: white;" font-family="sans-serif">
+              <circle cx="50" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(0, 100%, 90%)" />
+              <circle cx="150" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(60, 100%, 90%)" />
+              <circle cx="250" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(120, 100%, 90%)" />
+              <circle cx="350" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(240, 100%, 90%)" />
+
+              <line x1="-40" y1="0" x2="400" y2="0" stroke-width="2" stroke="black" />
+              <polyline points="390,5 400,0 390,-5" fill="black" stroke-width="1" stroke="black" />
+              <text x="375" y="-15" font-family="sans-serif" font-size="20" fill="black">X</text>
+              <line x1="0" y1="-40" x2="0" y2="100" stroke-width="2" stroke="black" />
+              <polyline points="-5,90 0,100 5,90" fill="black" stroke-width="1" stroke="black" />
+              <text x="-20" y="90" font-family="sans-serif" font-size="20" fill="black">Y</text>
+
+              <line x1="-10" y1="-10" x2="410" y2="-10" stroke-width="2" stroke="red" />
+              <line x1="-10" y1="0" x2="-10" y2="-20" stroke-width="2" stroke="red" />
+              <line x1="410" y1="0" x2="410" y2="-20" stroke-width="2" stroke="red" />
+
+              <line x1="0" y1="50" x2="350" y2="50" stroke-width="2" stroke="black" />
+              <polyline points="10,55 0,50 10,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="40,55 50,50 40,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="25" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="60,55 50,50 60,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="90,55 100,50 90,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="75" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="110,55 100,50 110,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="140,55 150,50 140,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="125" y="70" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="160,55 150,50 160,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="190,55 200,50 190,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="175" y="70" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="210,55 200,50 210,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="240,55 250,50 240,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="225" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="260,55 250,50 260,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="290,55 300,50 290,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="275" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="310,55 300,50 310,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="340,55 350,50 340,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="325" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+
+              <line x1="350" y1="0" x2="350" y2="50" stroke-width="2" stroke="black" />
+              <polyline points="345,10 350,0 355,10" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="345,40 350,50 355,40" fill="black" stroke-width="1" stroke="black" />
+              <text x="365" y="30" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+
+              <circle cx="50" cy="50" r="3" fill="black" />
+              <circle cx="150" cy="50" r="3" fill="black" />
+              <circle cx="250" cy="50" r="3" fill="black" />
+              <circle cx="350" cy="50" r="3" fill="black" />
+            </svg>
+
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="-40 -40 460 160" style="background-color: white;" font-family="sans-serif">
+              <circle cx="50" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(0, 100%, 90%)" />
+              <circle cx="150" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(60, 100%, 90%)" />
+              <circle cx="250" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(120, 100%, 90%)" />
+              <circle cx="350" cy="50" r="50" stroke="black" stroke-width="1" fill="hsl(240, 100%, 90%)" />
+
+              <line x1="-40" y1="0" x2="400" y2="0" stroke-width="2" stroke="black" />
+              <polyline points="390,5 400,0 390,-5" fill="black" stroke-width="1" stroke="black" />
+              <text x="375" y="-15" font-family="sans-serif" font-size="20" fill="black">X</text>
+              <line x1="0" y1="-40" x2="0" y2="100" stroke-width="2" stroke="black" />
+              <polyline points="-5,90 0,100 5,90" fill="black" stroke-width="1" stroke="black" />
+              <text x="-20" y="90" font-family="sans-serif" font-size="20" fill="black">Y</text>
+
+              <line x1="-20" y1="-10" x2="-20" y2="110" stroke-width="2" stroke="red" />
+              <line x1="-30" y1="-10" x2="-10" y2="-10" stroke-width="2" stroke="red" />
+              <line x1="-30" y1="110" x2="-10" y2="110" stroke-width="2" stroke="red" />
+
+              <line x1="0" y1="50" x2="350" y2="50" stroke-width="2" stroke="black" />
+              <polyline points="10,55 0,50 10,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="40,55 50,50 40,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="25" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="60,55 50,50 60,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="90,55 100,50 90,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="75" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="110,55 100,50 110,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="140,55 150,50 140,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="125" y="70" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="160,55 150,50 160,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="190,55 200,50 190,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="175" y="70" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="210,55 200,50 210,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="240,55 250,50 240,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="225" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="260,55 250,50 260,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="290,55 300,50 290,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="275" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+              <polyline points="310,55 300,50 310,45" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="340,55 350,50 340,45" fill="black" stroke-width="1" stroke="black" />
+              <text x="325" y="65" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+
+              <line x1="350" y1="0" x2="350" y2="50" stroke-width="2" stroke="black" />
+              <polyline points="345,10 350,0 355,10" fill="black" stroke-width="1" stroke="black" />
+              <polyline points="345,40 350,50 355,40" fill="black" stroke-width="1" stroke="black" />
+              <text x="365" y="30" font-family="sans-serif" font-size="18" text-anchor="middle" fill="black">r</text>
+
+              <circle cx="50" cy="50" r="3" fill="black" />
+              <circle cx="150" cy="50" r="3" fill="black" />
+              <circle cx="250" cy="50" r="3" fill="black" />
+              <circle cx="350" cy="50" r="3" fill="black" />
+            </svg>
+          </p>
+        </li>
+      </ul>
+    </details>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="variables-1-11.php" style="height: 34em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="variables-1-11.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-12">
+    <h2>Variables (1) 12 - Avance de ficha</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre una tirada de dados entre 1 y 6, al azar, y coloque la ficha en la posición correspondiente.</p>
 
@@ -170,16 +348,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="variables-1-11.php" style="height: 34em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="variables-1-12.php" style="height: 34em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="variables-1-11.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="variables-1-12.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
 
-  <section id="ejercicio-12">
-    <h2>Variables (1) 12 - Tres cuadrados</h2>
+  <section id="ejercicio-13">
+    <h2>Variables (1) 13 - Tres cuadrados</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre tres cuadrados contiguos con un lado entre 50 y 150 píxeles, al azar.</p>
 
@@ -282,16 +460,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="variables-1-12.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="variables-1-13.php" style="height: 26em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="variables-1-12.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="variables-1-13.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
 
-  <section id="ejercicio-13">
-    <h2>Variables (1) 13 - Tres círculos</h2>
+  <section id="ejercicio-14">
+    <h2>Variables (1) 14 - Tres círculos</h2>
 
     <p>Escriba un programa que cada vez que se ejecute muestre tres círculos contiguos con un radio entre 50 y 150 píxeles, al azar.</p>
 
@@ -430,16 +608,16 @@
 
     <div class="filaflex">
       <div class="resultado-object">
-        <object type="text/html" data="variables-1-13.php" style="height: 36em;">ERROR (no puede mostrarse el objeto)</object>
+        <object type="text/html" data="variables-1-14.php" style="height: 36em;">ERROR (no puede mostrarse el objeto)</object>
       </div>
       <div class="icono-enlace">
-        <a href="variables-1-13.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="variables-1-14.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
