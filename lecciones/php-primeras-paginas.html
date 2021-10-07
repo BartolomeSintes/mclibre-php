@@ -499,11 +499,11 @@ print "Hola";
   </section>
 
   <section id="html5">
-    <h2>Código HTML de páginas HTML 5 (con sintaxis XHTML) válidas</h2>
+    <h2>Código HTML de páginas HTML válidas</h2>
 
-    <p>Si queremos crear páginas HTML válidas debemos generar código HTML válido, es decir, generar todas las etiquetas HTML necesarias respetando las reglas sintácticas. En este curso se generarán páginas HTML 5 (siguiendo la sintaxis XHTML), y se utilizará el juego de caracteres UTF-8.</p>
+    <p>Si queremos crear páginas HTML válidas debemos generar código HTML válido, es decir, generar todas las etiquetas HTML necesarias respetando las reglas sintácticas. En este curso se generarán páginas HTML y se utilizará el juego de caracteres UTF-8.</p>
 
-    <p>El ejemplo siguiente muestra el código html de una página web HTML 5 válida con las líneas numeradas.</p>
+    <p>El ejemplo siguiente muestra el código html de una página web HTML válida con las líneas numeradas.</p>
 
     <div class="codigo">
       <pre class="line-numbers">
@@ -519,7 +519,9 @@ print "Hola";
 &lt;body&gt;
   &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code>
+&lt;/html&gt;
+
+</code>
 </pre>
     </div>
 
@@ -551,9 +553,11 @@ print "Hola";
   </section>
 
   <section id="html-valido">
-    <h2>Generar el código HTML de páginas HTML 5 (con sintaxis XHTML) válidas </h2>
+    <h2>Generar el código HTML de páginas HTML válidas </h2>
 
-    <p>La página PHP debe incluir o generar todo el código HTML necesario. El ejemplo siguiente genera una página válida mediante un único fragmento PHP.</p>
+    <p>La página PHP debe incluir o generar todo el código HTML necesario.</p>
+
+    <p>El ejemplo siguiente genera una página válida mediante un único fragmento PHP y una única instrucción print:</p>
 
     <p><strong>Nota</strong>: Dentro de la cadena todas las comillas están precedidas del carácter contrabarra (\), como se explica en la <a href="php-cadenas.html#cadenas">lección sobre cadenas</a>.</p>
 
@@ -572,6 +576,30 @@ print "&lt;!DOCTYPE html&gt;
   &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;";
+?&gt;</code>
+</pre>
+    </div>
+
+    <p>El ejemplo siguiente genera una página válida mediante un único fragmento PHP y una instrucción print por línea HTML:</p>
+
+    <p><strong>Nota</strong>: Los print acaban imprimiendo el carácter salto de línea \n para que en el código fuente HTML cada línea este en una línea distinta.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+print "&lt;!DOCTYPE html&gt;\n";
+print "&lt;html lang=\"es\"&gt;\n";
+print "&lt;head&gt;\n";
+print "  &lt;meta charset=\"utf-8\"&gt;\n";
+print "  &lt;title&gt;Página HTML 5 válida&lt;/title&gt;\n";
+print "  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n";
+print "  &lt;link rel=\"stylesheet\" href=\"estilo.css\" title=\"Color\"&gt;\n";
+print "&lt;/head&gt;\n";
+print "\n";
+print "&lt;body&gt;\n";
+print "  &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;\n";
+print "&lt;/body&gt;\n";
+print "&lt;/html&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -676,7 +704,7 @@ print "  &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
