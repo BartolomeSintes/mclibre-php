@@ -30,7 +30,7 @@
         <li><a href="#parentesis">Paréntesis</a></li>
         <li><a href="#combinados">Operadores combinados</a></li>
         <li><a href="#redondear">Redondear un número</a></li>
-        <li><a href="#potencias">Potencias</a></li>
+        <li><a href="#potencias">Potencias y raíces</a></li>
         <li><a href="#maxmin">Máximo y mínimo</a></li>
         <li><a href="#formatear">Formatear un número</a></li>
         <li><a href="#aleatorios">Números aleatorios</a></li>
@@ -438,7 +438,7 @@ print "&lt;p&gt;-2.3 se redondea con ceil() a " . ceil(-2.3) . "&lt;/p&gt;\n";
   </section>
 
   <section id="potencias">
-    <h2>Potencias</h2>
+    <h2>Potencias y raíces</h2>
 
     <p>La función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow(x, y)</span></a> calcula x elevado a y.</p>
 
@@ -449,24 +449,69 @@ print "&lt;p&gt;-2.3 se redondea con ceil() a " . ceil(-2.3) . "&lt;/p&gt;\n";
         <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . pow(2, 3) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . 2 ** 3 . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;2 = 8&lt;/p&gt;</code></pre>
+      <div class="resultado">
+<p>2<sup>3</sup> = 8</p>
+
+<p>2<sup>3</sup> = 8</p>
       </div>
     </div>
+
+    <p>La función <strong>pow()</strong> permite calcular raíces, teniendo en cuenta que una raíz n-ésima es una potencia 1/n.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . 2 ** 3 . "&lt;/p&gt;\n";
+print "&lt;p&gt;La raíz cuadrada de 25 es " . pow(25, 1 / 2) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cuadrada de 25 es " . pow(25, 0.5) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cuadrada de 25 es " . 25 ** (1 / 2) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cuadrada de 25 es " . 25 ** 0.5 . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cúbica de 1000 es " . pow(1000, 1 / 3) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cúbica de 1000 es " . 1000 ** (1 / 3) . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;2 = 8&lt;/p&gt;</code></pre>
+        <pre>
+<code class="language-html">&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cúbica de 1000 es 10&lt;/p&gt;
+
+&lt;p&gt;La raíz cúbica de 1000 es 10&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>En el caso de las raíces cuadradas, se puede utilizar también la  función <a href="https://www.php.net/manual/en/function.sqrt.php"><span class="php-fun">sqrt(x)</span></a>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;La raíz cuadrada de 25 es " . sqrt(25) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;</code>
+</pre>
       </div>
     </div>
   </section>
@@ -698,7 +743,7 @@ print "&lt;p&gt;" . mt_rand(100000000000, 200000000000) . "&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
