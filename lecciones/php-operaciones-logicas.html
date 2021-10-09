@@ -24,7 +24,9 @@
 
       <ul>
         <li><a href="#comparaciones">Comparaciones</a></li>
-        <li><a href="#logicos">Operadores lógicos</a></li>
+        <li><a href="#operadores">Operadores lógicos && || !</a></li>
+        <li><a href="#expresiones-compuestas">Expresiones compuestas</a></li>
+        <li><a href="#operadores-2">Operadores and or xor</a></li>
       </ul>
     </div>
   </nav>
@@ -410,15 +412,15 @@ if ($numero !== $texto) {
     </div>
   </section>
 
-  <section id="logicos">
-    <h2>Operadores lógicos</h2>
+  <section id="operadores">
+    <h2>Operadores lógicos: <span class="php-ope">&amp;&amp;</span> ("y" lógico), <span class="php-ope">||</span> ("o" lógico) y <span class="php-ope">!</span> (negación)</h2>
 
-    <p>Los operadores lógicos permiten combinar expresiones simples en expresiones más complejas.</p>
+    <p>Los operadores lógicos son las operaciones que trabajan con valores booleanos y permiten combinar expresiones simples para formar expresiones más complejas.</p>
 
     <table class="tabla-con-borde">
       <thead>
         <tr>
-          <th>Ejemplo</th>
+          <th>Operador</th>
           <th>Nombre</th>
           <th>Resultado</th>
         </tr>
@@ -426,24 +428,13 @@ if ($numero !== $texto) {
       <tbody>
         <tr>
           <td>expresión_1 &amp;&amp; expresión_2</td>
-          <td rowspan="2">Y</td>
-          <td rowspan="2"><span class="php-con">true</span> si los dos, expresión_1 y expresión_2, son <span class="php-con">true</span>.</td>
-        </tr>
-        <tr>
-          <td>expresión_1 and expresión_2</td>
+          <td>Y</td>
+          <td><span class="php-con">true</span> si los dos, expresión_1 y expresión_2, son <span class="php-con">true</span>.</td>
         </tr>
         <tr>
           <td>expresión_1 || expresión_2</td>
-          <td rowspan="2">O</td>
-          <td rowspan="2"><span class="php-con">true</span> si uno de los dos, expresión_1 o expresión_2, es <span class="php-con">true</span>.</td>
-        </tr>
-        <tr>
-          <td>expresión_1 or expresión_2</td>
-        </tr>
-        <tr>
-          <td>expresión_1 xor expresión_2</td>
-          <td>O exclusivo (Xor)</td>
-          <td><span class="php-con">true</span> si sólo uno de los dos, expresión_1 o expresión_2, es <span class="php-con">true</span>, pero no ambos.</td>
+          <td>O</td>
+          <td><span class="php-con">true</span> si uno de los dos, expresión_1 o expresión_2, es <span class="php-con">true</span>.</td>
         </tr>
         <tr>
           <td>!expresión</td>
@@ -453,13 +444,261 @@ if ($numero !== $texto) {
       </tbody>
     </table>
 
-    <p>Al escribir expresiones en las que se combinan varias comparaciones mediante operadores lógicos es conveniente utilizar paréntesis, aunque en muchos casos no sean necesarios porque las comparaciones tienen precedencia sobre los operadores lógicos.</p>
+    <ul>
+      <li><span class="php-ope">&amp;&amp;</span> ("y" lógico). Este operador da como resultado <span class="php-con">true</span> si y sólo si sus dos operandos son <span class="php-con">true</span>:
 
-    <h3>Diferencia entre <span class="php-con">and</span> y <span class="php-con">&amp;&amp;</span> y entre <span class="php-con">or</span> y <span class="php-con">||</span></h3>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+  print "&lt;p&gt;true && true = " . var_export(true && true, 1) . "&lt;/p&gt;\n";
+  print "\n";
+  print "&lt;p&gt;true && false = " . var_export(true && false, 1) . "&lt;/p&gt;\n";
+  print "\n";
+  print "&lt;p&gt;false && true = " . var_export(false && true, 1) . "&lt;/p&gt;\n";
+  print "\n";
+  print "&lt;p&gt;false && false = " . var_export(false && false, 1) . "&lt;/p&gt;\n";
+  print "\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;true && true = true&lt;/p&gt;
 
-    <p>Los operadores <span class="php-con">and</span> y <span class="php-con">&amp;&amp;</span> y los operadores <span class="php-con">or</span> y <span class="php-con">||</span> no son completamente equivalentes, ya que no tienen la misma precedencia. Concretamente, <span class="php-con">&amp;&amp;</span> y <span class="php-con">||</span> tienen mayor prioridad que <span class="php-con">and</span> y <span class="php-con">or</span>. Como además el operador de asignación <span class="php-con">=</span> tiene una prioridad intermedia, se pueden producir situaciones inesperadas, como muestran los siguientes ejemplos.</p>
+&lt;p&gt;true && false = false&lt;/p&gt;
 
-    <p>El ejemplo siguiente muestra el resultado esperado:</p>
+&lt;p&gt;false && true = false&lt;/p&gt;
+
+&lt;p&gt;false && false = false&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li><span class="php-ope">||</span> ("o" lógico). Este operador da como resultado <span class="php-con">false</span> si y sólo si sus dos operandos son <span class="php-con">false</span>:
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+  print "&lt;p&gt;true || true = " . var_export(true || true, 1) . "&lt;/p&gt;\n";
+  print "\n";
+  print "&lt;p&gt;true || false = " . var_export(true || false, 1) . "&lt;/p&gt;\n";
+  print "\n";
+  print "&lt;p&gt;false || true = " . var_export(false || true, 1) . "&lt;/p&gt;\n";
+  print "\n";
+  print "&lt;p&gt;false || false = " . var_export(false || false, 1) . "&lt;/p&gt;\n";
+  print "\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;true || true = true&lt;/p&gt;
+
+&lt;p&gt;true || false = true&lt;/p&gt;
+
+&lt;p&gt;false || true = true&lt;/p&gt;
+
+&lt;p&gt;false || false = false&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p><strong>Nota</strong>: En el lenguaje cotidiano, el "o" se utiliza a menudo en situaciones en las que sólo puede darse una de las dos alternativas. Por ejemplo, en un menú de restaurante se puede elegir "postre o café", pero no las dos cosas (salvo que se pague aparte, claro). En lógica, ese tipo de "o" se denomina "o exclusivo" (xor).</p>
+      </li>
+      <li><span class="php-ope">!</span> (negación). Este operador da como resultado <span class="php-con">true</span> si y sólo si su operando es <span class="php-con">false</span>:
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+  print "&lt;p&gt;!true = " . var_export(!true, 1) . "&lt;/p&gt;\n";
+  print "\n";
+  print "&lt;p&gt;!false = " . var_export(!false, 1) . "&lt;/p&gt;\n";
+  print "\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;!true = false&lt;/p&gt;
+
+&lt;p&gt;!false = true&lt;/p&gt;
+</code>
+</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="expresiones-compuestas">
+    <h2>Expresiones compuestas</h2>
+
+    <p>En las expresiones lógicas compuestas hay que prestar atención al orden en que se realizan las operaciones. De la misma manera que en las expresiones aritméticas las multiplicaciones o divisiones se efectúan antes de las sumas o las restas, en las operaciones lógicas se evalúan primero las negaciones (<span class="php-ope">!</span>), luego los "y" (<span class="php-ope">&amp;&amp;</span>) y por último los "o" (<span class="php-ope">||</span>).</p>
+
+    <p>Por supuesto, ese orden se puede alterar añadiendo paréntesis en las expresiones, ya que las operaciones entre paréntesis se realizan antes que las operaciones fuera de los paréntesis. En los ejemplos siguientes se compueba el orden en que se realizan las operaciones comparando los resultados sin paréntesis o con paréntesis:</p>
+
+    <ul>
+      <li>El operador <span class="php-ope">!</span> se evalúa antes que el operador <span class="php-ope">&amp;&amp;</span>:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;!true && false = " . var_export(!true && false, 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;(!true) && false = " . var_export((!true) && false, 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;!(true && false) = " . var_export(!(true && false), 1) . "&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;!true && false = = false&lt;/p&gt;
+
+&lt;p&gt;(!true) && false = = false&lt;/p&gt;
+
+&lt;p&gt;!(true && false) = = true&lt;/p&gt;
+</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li>El operador <span class="php-ope">!</span> se evalúa antes que el operador <span class="php-ope">||</span>:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;!false || true = " . var_export(!false || true, 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;(!false) || true = " . var_export((!false) || true, 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;!(false || true) = " . var_export(!(false || true), 1) . "&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;!false || true = true&lt;/p&gt;
+
+&lt;p&gt;(!false) || true = true&lt;/p&gt;
+
+&lt;p&gt;!(false || true) = false&lt;/p&gt;
+</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li>El operador <span class="php-ope">&amp;&amp;</span> se evalúa antes que el operador <span class="php-ope">||</span>:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;false && true || true = " . var_export(false && true || true, 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;(false && true) || true = " . var_export((false && true) || true, 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;false && (true || true) = " . var_export(false && (true || true), 1) . "&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;false && true || true = true&lt;/p&gt;
+
+&lt;p&gt;(false && true) || true = true&lt;/p&gt;
+
+&lt;p&gt;false && (true || true) = false&lt;/p&gt;
+</code>
+</pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;true || true && false = " . var_export(true || true && false, 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;true || (true && false) = " . var_export(true || (true && false), 1) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;(true || true) && false = " . var_export((true || true) && false, 1) . "&lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;true || true && false = true&lt;/p&gt;
+
+&lt;p&gt;true || (true && false) = true&lt;/p&gt;
+
+&lt;p&gt;(true || true)&& false = false&lt;/p&gt;
+</code>
+</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <hr class="corta">
+
+    <p>Cuando las expresiones que se combinan son comparaciones, no es necesario utilizar paréntesis, ya que las comparaciones se realizan antes de las operaciones lógicas</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$a = 10;
+$b = 20;
+
+if ($a == 10 && $b == 20) {
+print "&lt;p&gt;\$a y \$b son iguales.&lt;/p&gt;\n";
+} else {
+print "&lt;p&gt;\$a y \$b son distintos.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;$a y $b son distintos.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="operadores-2">
+    <h2>Operadores lógicos: <span class="php-ope">and</span> ("y" lógico), <span class="php-ope">or</span> ("o" lógico) y <span class="php-ope">xor</span> ("o" exclusivo lógico)</h2>
+
+    <p>En PHP también existen los operadores <span class="php-ope">and</span> ("y" lógico), <span class="php-ope">or</span> ("o" lógico) y <span class="php-ope">xor</span> ("o" exclusivo lógico) que realizan las operaciones lógicas correspondientes:</p>
+
+    <table class="tabla-con-borde">
+      <thead>
+        <tr>
+          <th>Operador</th>
+          <th>Nombre</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>expresión_1 and expresión_2</td>
+          <td>Y</td>
+          <td><span class="php-con">true</span> si los dos, expresión_1 y expresión_2, son <span class="php-con">true</span>.</td>
+        </tr>
+        <tr>
+          <td>expresión_1 or expresión_2</td>
+          <td>O</td>
+          <td><span class="php-con">true</span> si uno de los dos, expresión_1 o expresión_2, es <span class="php-con">true</span>.</td>
+        </tr>
+        <tr>
+          <td>expresión_1 xor expresión_2</td>
+          <td>O exclusivo</td>
+          <td><span class="php-con">true</span> si solo una de las expresiones es <span class="php-con">true</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> <strong>NO</strong> se recomienda utilizar estos operadores, porque tienen menos precedencia que el operador de asignación <span class="php-con">=</span> y los resultados pueden no ser los esperados, como muestran los siguientes ejemplos.</p>
+
+    <p>El ejemplo siguiente muestra el resultado esperado: como $var1 es <span class="php-con">true</span>, pero $var2 es <span class="php-con">false</span>, $todo toma el valor <span class="php-con">false</span>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -479,8 +718,6 @@ if ($todo) {
         <pre><code class="language-html">&lt;p&gt;falso&lt;/p&gt;</code></pre>
       </div>
     </div>
-
-    <p>La variable $todo sólo tomaría el valor <span class="php-con">true</span> si tanto $var1 como $var2 fueran <span class="php-con">true</span>, pero como $var2 es <span class="php-con">false</span>, $todo toma el valor <span class="php-con">false</span>.</p>
 
     <p>Sin embargo si se utiliza el operador <span class="php-con">and</span> en vez de <span class="php-con">&amp;&amp;</span>, el resultado no es el esperado:</p>
 
@@ -541,7 +778,7 @@ if ($todo) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 4 de octubre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 9 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
