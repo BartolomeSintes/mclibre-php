@@ -27,6 +27,7 @@
         <li><a href="#usar">Usar variables</a></li>
         <li><a href="#concatenar">Concatenar variables</a></li>
         <li><a href="#cadenas">Variables en cadenas</a></li>
+        <li><a href="#mostrar-variables">Variables para depuración</a></li>
       </ul>
     </div>
   </nav>
@@ -672,8 +673,141 @@ print "&lt;p&gt;2 por {$x} es {2 * $x}&lt;/p&gt;\n";
     </section>
   </section>
 
+  <section id="mostrar-variables">
+    <h2>Mostrar información sobre las variables para depuración de programas</h2>
+
+    <p>En la fase de elaboración de un programa, puede ser necesario verificar el valor de una variable para asegurarse del correcto funcionamiento del programa. Una forma rápida de hacerlo es utilizar las funciones que se comentan a continuación. Por supuesto, estas funciones deben eliminarse posteriormente, ya que en la versión final del programa no tiene sentido mostrar esos valores. La ventaja de haber utilizar funciones especiales en vez de <span class="php-fun">print</span> es que es fácil buscarlas y borrarlas.</p>
+
+    <ul>
+      <li>La función <a href="https://www.php.net/manual/en/function.var-dump.php"><span class="php-fun">var_dump($var_1, $var_2, ...)</span></a> imprime directamente el tipo y el valor de una o varias variables.
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+var_dump($nombre);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">string(4) "Pepe"</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$edad = 25;
+var_dump($edad);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">int(25)</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$estudiante = true;
+var_dump($estudiante);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">bool(true)</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+$edad = 25;
+var_dump($nombre, $edad);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">string(4) "Pepe" int(25) </code></pre>
+          </div>
+        </div>
+      </li>
+      <li>La función <a href="https://www.php.net/manual/en/function.var-export.php"><span class="php-fun">var_export($var_1, $return)</span></a> puede imprimir o devolver el valor de una variable.
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombre = "Pepe";
+var_export($nombre);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">'Pepe'</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$edad = 25;
+var_export($edad);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">25</code></pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$estudiante = true;
+var_export($estudiante);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">true</code></pre>
+          </div>
+        </div>
+
+        <p>Si se añade como argumento final el valor <span class="php-con">true</span>, la función no imprime nada, sino que devuelve el valor de la variable, de manera que se puede asignar o concatenar en cadenas.</p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$estudiante = true;
+$variable = var_export($estudiante, true);
+print "&lt;p&gt;La variable \$estudiante tiene el valor $variable&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La variable \$estudiante tiene el valor " . var_export($estudiante, true) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable $estudiante tiene el valor true&lt;/p&gt;
+
+&lt;p&gt;La variable $estudiante tiene el valor true&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
