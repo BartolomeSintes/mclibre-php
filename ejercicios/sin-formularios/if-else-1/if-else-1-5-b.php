@@ -3,7 +3,7 @@
  * if ... else ... (1) 5 - if-else-1-5-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2021-10-12
  * @link      https://www.mclibre.org
