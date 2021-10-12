@@ -1,11 +1,11 @@
 <?php
 /**
- * if ... else ... (1) 5 - if-else-1-5.php
+ * if ... else ... (1) 5 - if-else-1-5-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2021-10-12
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -67,56 +67,29 @@ print "          <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" heig
 print "          <img src=\"img/$dado2c.svg\" alt=\"$dado2c\" width=\"140\" height=\"140\">\n";
 print "        </td>\n";
 
-if ($dado1a == $dado1b && $dado1a == $dado1c) {
-    $trio1 = $dado1a;
-} else {
-    $trio1 = 0;
-}
+$trio1 = ($dado1a == $dado1b && $dado1a == $dado1c) ? $dado1a : 0;
+$trio2 = ($dado2a == $dado2b && $dado2a == $dado2c) ? $dado2a : 0;
 
-if ($dado2a == $dado2b && $dado2a == $dado2c) {
-    $trio2 = $dado2a;
-} else {
-    $trio2 = 0;
-}
-
-if ($dado1a == $dado1b || $dado1a == $dado1c) {
-    $pareja1 = $dado1a;
-} elseif ($dado1b == $dado1c) {
-    $pareja1 = $dado1b;
-} else {
-    $pareja1 = 0;
-}
-
-if ($dado2a == $dado2b || $dado2a == $dado2c) {
-    $pareja2 = $dado2a;
-} elseif ($dado2b == $dado2c) {
-    $pareja2 = $dado2b;
-} else {
-    $pareja2 = 0;
-}
+$pareja1 = ($dado1a == $dado1b || $dado1a == $dado1c) ? $dado1a : (($dado1b == $dado1c) ? $dado1b : 0);
+$pareja2 = ($dado2a == $dado2b || $dado2a == $dado2c) ? $dado2a : (($dado2b == $dado2c) ? $dado2b : 0);
 
 $total1 = $dado1a + $dado1b + $dado1c;
-
 $total2 = $dado2a + $dado2b + $dado2c;
 
 if ($trio1 > $trio2) {
     print "        <td>Ha ganado el jugador 1</td>\n";
 } elseif ($trio1 < $trio2) {
     print "        <td>Ha ganado el jugador 2</td>\n";
+} elseif ($pareja1 > $pareja2) {
+    print "        <td>Ha ganado el jugador 1</td>\n";
+} elseif ($pareja1 < $pareja2) {
+    print "        <td>Ha ganado el jugador 2</td>\n";
+} elseif ($total1 > $total2) {
+    print "        <td>Ha ganado el jugador 1</td>\n";
+} elseif ($total1 < $total2) {
+    print "        <td>Ha ganado el jugador 2</td>\n";
 } else {
-    if ($pareja1 > $pareja2) {
-        print "        <td>Ha ganado el jugador 1</td>\n";
-    } elseif ($pareja1 < $pareja2) {
-        print "        <td>Ha ganado el jugador 2</td>\n";
-    } else {
-        if ($total1 > $total2) {
-            print "        <td>Ha ganado el jugador 1</td>\n";
-        } elseif ($total1 < $total2) {
-            print "        <td>Ha ganado el jugador 2</td>\n";
-        } else {
-            print "        <td>Han empatado</td>\n";
-        }
-    }
+    print "        <td>Han empatado</td>\n";
 }
 ?>
       </tr>
@@ -126,7 +99,7 @@ if ($trio1 > $trio2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2021-10-12">12 de octubre de 2021</time>
     </p>
 
     <p class="licencia">
