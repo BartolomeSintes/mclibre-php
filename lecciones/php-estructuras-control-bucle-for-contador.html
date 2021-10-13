@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Contadores y acumuladores. Estructuras de control: bucle for. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Testigos, contadores y acumuladores. Estructuras de control: bucle for. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../varios/php.css" title="mclibre">
   <link rel="icon" href="../varios/favicon.svg">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>Contadores y acumuladores</h1>
+  <h1>Testigos, contadores y acumuladores</h1>
 
   <nav>
     <p>
@@ -20,24 +20,989 @@
     </p>
 
     <div class="toc">
-      <h2>Contadores y acumuladores</h2>
+      <h2>Testigos, contadores y acumuladores</h2>
 
       <ul>
+        <li><a href="#testigo">Testigo</a></li>
         <li><a href="#contador">Contador</a></li>
         <li><a href="#acumulador">Acumulador</a></li>
       </ul>
     </div>
   </nav>
 
-  <p>Entre las aplicaciones de los bucles se encuentran los contadores y acumuladores.</p>
+  <p>En la lección <a href="php-estructuras-control-bucle-for.html">Bucles for</a> se explica la sintaxis del bucle <span class="php-res">for</span>. En la definición del bucle se suele emplear una variable que juega el papel de variable de control del propio bucle, que puede aparecer en el cuerpo del bucle, pero que normalmente no se modifica en el cuerpo del bucle.</p>
+
+  <p>Pero en los cuerpos de los bucles pueden intervenir otras variables, que no suelen intervenir en el control del bucle, pero que realizan tareas necesarias para el programa. En esta lección se comentan tres tipos de situaciones, que podemos denominar testigos, contadores o acumladores, por el papel que juegan esas variables adicionales.</p>
+
+  <section id="testigo">
+    <h2>Testigo</h2>
+
+    <p>Se entiende por testigo una variable que indica simplemente si una condición se ha cumplido o no. Es un caso particular de contador, pero se suele hacer con variables lógicas en vez de numéricas (en el ejemplo siguiente, la variable que hace de testigo es la variable <span class="php-var">$encontrado</span>):</p>
+
+    <div class="mcl-diapo" style="height: 32em">
+      <div id="d1100">
+        <p><strong>Ejemplo de testigo</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;
+&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;
+&lt;p&gt;Final&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
+        <p class="control">
+          <a href="#d1101"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1101">
+        <p><strong>Ejemplo de testigo - Paso 1</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html"><span class="codigo-resaltado">&lt;p&gt;Comienzo&lt;/p&gt;</span></code></pre>
+          </div>
+        </div>
+
+        <p>Se ejecuta la primera instrucción del programa.</p>
+        <p>En este caso, imprime el párrafo de comienzo.</p>
+        <p class="control">
+          <a href="#d1100"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1102"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1102">
+        <p><strong>Ejemplo de testigo - Paso 2</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+<span class="codigo-resaltado">$encontrado = false;</span>
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>Se ejecuta la segunda instrucción del programa.</p>
+        <p>En este caso, inicializa la variable $encontrado.</p>
+        <p class="control">
+          <a href="#d1101"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1103"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1103">
+        <p><strong>Ejemplo de testigo - Paso 3</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for (<span class="codigo-resaltado">$i = 1;</span> $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
+        <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+        <p class="control">
+          <a href="#d1102"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1104"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1104">
+        <p><strong>Ejemplo de testigo - Paso 4</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 4 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1103"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1105"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1105">
+        <p><strong>Ejemplo de testigo - Paso 5</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    <span class="codigo-resaltado">$dado = rand(1, 6);</span>
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Se obtiene un valor aleatorio entre 1 y 6, por ejemplo, 1.</p>
+        <p class="control">
+          <a href="#d1104"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1106"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1106">
+        <p><strong>Ejemplo de testigo - Paso 6</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Tirada de dado: 1&lt;/p&gt;</span></code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor obtenido.</p>
+        <p class="control">
+          <a href="#d1105"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1107"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1107">
+        <p><strong>Ejemplo de testigo - Paso 7</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if <span class="codigo-resaltado">($dado == 5</span>) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba si el dado tiene el valor 5.</p>
+        <p>Como en este caso el valor es 1, la condición no se cumple, por lo que no se ejecutarán las instrucciones del bucle <span class="php-res">if</span> y se termina el bloque de instrucciones del bucle <span class="php-res">for</span>.</p>
+        <p class="control">
+          <a href="#d1106"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1108"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1108">
+        <p><strong>Ejemplo de testigo - Paso 8</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+        <p class="control">
+          <a href="#d1107"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1109"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1109">
+        <p><strong>Ejemplo de testigo - Paso 9</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 4 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1108"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1110"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1110">
+        <p><strong>Ejemplo de testigo - Paso 10</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    <span class="codigo-resaltado">$dado = rand(1, 6);</span>
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Se obtiene un valor aleatorio entre 1 y 6, por ejemplo, 5.</p>
+        <p class="control">
+          <a href="#d1109"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1111"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1111">
+        <p><strong>Ejemplo de testigo - Paso 11</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor obtenido.</p>
+        <p class="control">
+          <a href="#d1110"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1112"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1112">
+        <p><strong>Ejemplo de testigo - Paso 12</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if (<span class="codigo-resaltado">$dado == 5</span>) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba si el dado tiene el valor 5.</p>
+        <p>Como en este caso el valor es 5, la condición se cumple, por lo que se ejecutarán las instrucciones del bucle <span class="php-res">if</span>.</p>
+        <p class="control">
+          <a href="#d1111"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1113"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1113">
+        <p><strong>Ejemplo de testigo - Paso 13</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        <span class="codigo-resaltado">$encontrado = true;</span>
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>La variable <i>$encontrado</i> pasa a tomar el valor <span class="php-con">true</span> y se termina el bloque de instrucciones del bucle <span class="php-res">if</span>.</p>
+        <p class="control">
+          <a href="#d1112"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1114"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1114">
+        <p><strong>Ejemplo de testigo - Paso 14</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
+        <p class="control">
+          <a href="#d1113"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1115"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1115">
+        <p><strong>Ejemplo de testigo - Paso 15</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i es inferior a 4 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1114"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1116"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1116">
+        <p><strong>Ejemplo de testigo - Paso 16</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    <span class="codigo-resaltado">$dado = rand(1, 6);</span>
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecutan las instrucciones del bloque.</p>
+        <p>Se obtiene un valor aleatorio entre 1 y 6, por ejemplo, 4.</p>
+        <p class="control">
+          <a href="#d1115"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1117"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1117">
+        <p><strong>Ejemplo de testigo - Paso 17</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Tirada de dado: 4&lt;/p&gt;</span></code></pre>
+          </div>
+        </div>
+
+        <p>Se imprime el valor obtenido.</p>
+        <p class="control">
+          <a href="#d1116"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1118"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1118">
+        <p><strong>Ejemplo de testigo - Paso 18</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if (<span class="codigo-resaltado">$dado == 5</span>) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba si el dado tiene el valor 5.</p>
+        <p>Como en este caso el valor es 4, la condición no se cumple, por lo que no se ejecutarán las instrucciones del bucle <span class="php-res">if</span> y se termina el bloque de instrucciones del bucle <span class="php-res">for</span>.</p>
+        <p class="control">
+          <a href="#d1117"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1119"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1119">
+        <p><strong>Ejemplo de testigo - Paso 19</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se ejecuta la instrucción de paso.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
+        <p class="control">
+          <a href="#d1118"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1120"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1120">
+        <p><strong>Ejemplo de testigo - Paso 20</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba que la condición de continuación se cumple.</p>
+        <p>En este caso, $i ya no es inferior a 4 (vale 4), así que el bucle se termina y ya no se ejecutarán las instrucciones del bloque de sentencias.</p>
+        <p class="control">
+          <a href="#d1119"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1121"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1121">
+        <p><strong>Ejemplo de testigo - Paso 21</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if (<span class="codigo-resaltado">$encontrado</span>) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A continuación se comprueba la condifición del <span class="php-res">if</span>, que en este caso es el valor de la variable <i>$encontrado</i>.</p>
+        <p>Como $encontrado es ahora <span class="php-con">true</span>, se cumple la condición, así que se ejecuta el bloque correspondiente.</p>
+        <p class="control">
+          <a href="#d1120"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1122"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1122">
+        <p><strong>Ejemplo de testigo - Paso 22</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    <span class="codigo-resaltado">print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";</span>
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+print "&lt;p&gt;Final&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;</span></code></pre>
+          </div>
+        </div>
+
+        <p>Imprime la frase que indica que se ha encontrado al menos un 5.</p>
+        <p class="control">
+          <a href="#d1121"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1123"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+        </p>
+      </div>
+
+      <div id="d1123">
+        <p><strong>Ejemplo de testigo - Paso 23</strong></p>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
+$encontrado = false;
+for ($i = 1; $i &lt; 4; $i++) {
+    $dado = rand(1, 6);
+    print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
+    if ($dado == 5) {
+        $encontrado = true;
+    }
+}
+if ($encontrado) {
+    print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
+}
+<span class="codigo-resaltado">print "&lt;p&gt;Final&lt;/p&gt;\n";</span>
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Comienzo&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 1&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 5&lt;/p&gt;
+&lt;p&gt;Tirada de dado: 4&lt;/p&gt;
+&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;
+<span class="codigo-resaltado">&lt;p&gt;Final&lt;/p&gt;</span></code>
+</pre>
+          </div>
+        </div>
+
+        <p>Por último, imprime el párrafo final.</p>
+        <p class="control">
+          <a href="#d1122"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48">
+        </p>
+      </div>
+    </div>
+  </section>
 
   <section id="contador">
-    <h3>Contador</h3>
+    <h2>Contador</h2>
 
     <p>Se entiende por contador una variable que lleva la cuenta del número de veces que se ha cumplido una condición. El ejemplo siguiente es un ejemplo de programa con contador (en este caso, la variable que hace de contador es la variable <var>cuenta</var>):</p>
 
     <div class="mcl-diapo" style="height: 24em">
-      <div id="d1100">
+      <div id="d1200">
         <p><strong>Ejemplo de contador</strong></p>
 
         <div class="filaflex">
@@ -68,11 +1033,11 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 
         <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
         <p class="control">
-          <a href="#d1101"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1201"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1101">
+      <div id="d1201">
         <p><strong>Ejemplo de contador - Paso 1</strong></p>
 
         <div class="filaflex">
@@ -99,12 +1064,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>Se ejecuta la primera instrucción del programa.</p>
         <p>En este caso, imprime el párrafo de comienzo.</p>
         <p class="control">
-          <a href="#d1100"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1102"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1200"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1202"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1102">
+      <div id="d1202">
         <p><strong>Ejemplo de contador - Paso 2</strong></p>
 
         <div class="filaflex">
@@ -131,12 +1096,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>Se ejecuta la segunda instrucción del programa.</p>
         <p>En este caso, inicializa la variable $cuenta.</p>
         <p class="control">
-          <a href="#d1101"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1103"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1201"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1203"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1103">
+      <div id="d1203">
         <p><strong>Ejemplo de contador - Paso 3</strong></p>
 
         <div class="filaflex">
@@ -163,12 +1128,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
         <p>En este caso, la variable de control es $i y toma el valor 1.</p>
         <p class="control">
-          <a href="#d1102"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1104"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1202"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1204"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1104">
+      <div id="d1204">
         <p><strong>Ejemplo de contador - Paso 4</strong></p>
 
         <div class="filaflex">
@@ -195,12 +1160,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1103"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1105"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1203"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1205"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1105">
+      <div id="d1205">
         <p><strong>Ejemplo de contador - Paso 5</strong></p>
 
         <div class="filaflex">
@@ -227,12 +1192,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>Como $i no es divisible por dos (vale 1), el resto de $i entre dos es uno y la condición es falsa. Por tanto, el bloque dentro del <span class="php-res">if</span> no se ejecuta.</p>
         <p class="control">
-          <a href="#d1104"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1106"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1204"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1206"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1106">
+      <div id="d1206">
         <p><strong>Ejemplo de contador - Paso 6</strong></p>
 
         <div class="filaflex">
@@ -259,12 +1224,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
         <p class="control">
-          <a href="#d1105"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1107"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1205"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1207"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1107">
+      <div id="d1207">
         <p><strong>Ejemplo de contador - Paso 7</strong></p>
 
         <div class="filaflex">
@@ -291,12 +1256,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1106"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1108"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1206"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1208"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1108">
+      <div id="d1208">
         <p><strong>Ejemplo de contador - Paso 8</strong></p>
 
         <div class="filaflex">
@@ -323,12 +1288,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>Como $i es divisible por dos (vale 2), el resto de $i entre dos es cero y la condición es cierta.</p>
         <p class="control">
-          <a href="#d1107"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1109"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1207"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1209"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1109">
+      <div id="d1209">
         <p><strong>Ejemplo de contador - Paso 9</strong></p>
 
         <div class="filaflex">
@@ -355,12 +1320,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta el bloque dentro del <span class="php-res">if</span>.</p>
         <p>En este caso a la variable $cuenta (que valía 0) se le añade 1, por lo que ahora $cuenta vale 1.</p>
         <p class="control">
-          <a href="#d1108"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1110"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1208"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1210"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1110">
+      <div id="d1210">
         <p><strong>Ejemplo de contador - Paso 10</strong></p>
 
         <div class="filaflex">
@@ -387,12 +1352,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
         <p class="control">
-          <a href="#d1109"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1111"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1209"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1211"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1111">
+      <div id="d1211">
         <p><strong>Ejemplo de contador - Paso 11</strong></p>
 
         <div class="filaflex">
@@ -419,12 +1384,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1110"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1112"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1210"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1212"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1112">
+      <div id="d1212">
         <p><strong>Ejemplo de contador - Paso 12</strong></p>
 
         <div class="filaflex">
@@ -451,12 +1416,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>Como $i no es divisible por dos (vale 3), el resto de $i entre dos es uno y la condición es falsa. Por tanto, el bloque dentro del <span class="php-res">if</span> no se ejecuta.</p>
         <p class="control">
-          <a href="#d1111"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1113"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1211"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1213"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1113">
+      <div id="d1213">
         <p><strong>Ejemplo de contador - Paso 13</strong></p>
 
         <div class="filaflex">
@@ -483,12 +1448,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
         <p class="control">
-          <a href="#d1112"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1114"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1212"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1214"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1114">
+      <div id="d1214">
         <p><strong>Ejemplo de contador - Paso 14</strong></p>
 
         <div class="filaflex">
@@ -515,12 +1480,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 4), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1113"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1115"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1213"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1215"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1115">
+      <div id="d1215">
         <p><strong>Ejemplo de contador - Paso 15</strong></p>
 
         <div class="filaflex">
@@ -547,12 +1512,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>Como $i es divisible por dos (vale 4), el resto de $i entre dos es cero y la condición es cierta.</p>
         <p class="control">
-          <a href="#d1114"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1116"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1214"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1216"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1116">
+      <div id="d1216">
         <p><strong>Ejemplo de contador - Paso 16</strong></p>
 
         <div class="filaflex">
@@ -579,12 +1544,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta el bloque dentro del <span class="php-res">if</span>.</p>
         <p>En este caso a la variable $cuenta (que valía 1) se le añade 1, por lo que ahora $cuenta vale 2.</p>
         <p class="control">
-          <a href="#d1115"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1117"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1215"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1217"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1117">
+      <div id="d1217">
         <p><strong>Ejemplo de contador - Paso 17</strong></p>
 
         <div class="filaflex">
@@ -611,12 +1576,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 5.</p>
         <p class="control">
-          <a href="#d1116"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1118"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1216"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1218"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1118">
+      <div id="d1218">
         <p><strong>Ejemplo de contador - Paso 18</strong></p>
 
         <div class="filaflex">
@@ -643,12 +1608,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 5), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1117"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1119"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1217"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1219"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1119">
+      <div id="d1219">
         <p><strong>Ejemplo de contador - Paso 19</strong></p>
 
         <div class="filaflex">
@@ -675,12 +1640,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>Como $i no es divisible por dos (vale 5), el resto de $i entre dos es uno y la condición es falsa. Por tanto, el bloque dentro del <span class="php-res">if</span> no se ejecuta.</p>
         <p class="control">
-          <a href="#d1118"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1120"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1218"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1220"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1120">
+      <div id="d1220">
         <p><strong>Ejemplo de contador - Paso 20</strong></p>
 
         <div class="filaflex">
@@ -707,12 +1672,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 6.</p>
         <p class="control">
-          <a href="#d1119"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1121"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1219"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1221"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1121">
+      <div id="d1221">
         <p><strong>Ejemplo de contador - Paso 21</strong></p>
 
         <div class="filaflex">
@@ -739,12 +1704,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i ya no es inferior a 6 (vale 6), así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
         <p class="control">
-          <a href="#d1120"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1122"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1220"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1222"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1122">
+      <div id="d1222">
         <p><strong>Ejemplo de contador - Paso 22</strong></p>
 
         <div class="filaflex">
@@ -774,12 +1739,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
         <p>En este caso, imprime una frase con el valor del contador $cuenta.</p>
         <p class="control">
-          <a href="#d1121"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1123"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1221"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1223"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1123">
+      <div id="d1223">
         <p><strong>Ejemplo de contador - Paso 23</strong></p>
 
         <div class="filaflex">
@@ -809,7 +1774,7 @@ print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
 
         <p>Por último, imprime el párrafo final.</p>
         <p class="control">
-          <a href="#d1122"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1222"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48">
         </p>
       </div>
@@ -825,12 +1790,12 @@ print "&lt;p&gt;Desde 1 hasta 5 hay $cuenta múltiplos de 2.&lt;/p&gt;\n";
   </section>
 
   <section id="acumulador">
-    <h3>Acumulador</h3>
+    <h2>Acumulador</h2>
 
     <p>Se entiende por acumulador una variable que acumula el resultado de una operación. El ejemplo siguiente es un ejemplo de programa con acumulador (en este caso, la variable que hace de acumulador es la variable <var>suma</var>):</p>
 
     <div class="mcl-diapo" style="height: 24em">
-      <div id="d1200">
+      <div id="d1300">
         <p><strong>Ejemplo de acumulador</strong></p>
 
         <div class="filaflex">
@@ -859,11 +1824,11 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 
         <p>Puede ver la ejecución paso a paso de este programa utilizando los iconos de avance y retroceso situados abajo a la derecha.</p>
         <p class="control">
-          <a href="#d1201"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1301"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1201">
+      <div id="d1301">
         <p><strong>Ejemplo de acumulador - Paso 1</strong></p>
 
         <div class="filaflex">
@@ -888,12 +1853,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>Se ejecuta la primera instrucción del programa.</p>
         <p>En este caso, imprime el párrafo de comienzo.</p>
         <p class="control">
-          <a href="#d1200"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1202"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1300"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1302"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1202">
+      <div id="d1302">
         <p><strong>Ejemplo de acumulador - Paso 2</strong></p>
 
         <div class="filaflex">
@@ -918,12 +1883,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>Se ejecuta la segunda instrucción del programa.</p>
         <p>En este caso, inicializa la variable $suma.</p>
         <p class="control">
-          <a href="#d1201"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1203"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1301"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1303"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1203">
+      <div id="d1303">
         <p><strong>Ejemplo de acumulador - Paso 3</strong></p>
 
         <div class="filaflex">
@@ -948,12 +1913,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
         <p>En este caso, la variable de control es $i y toma el valor 1.</p>
         <p class="control">
-          <a href="#d1202"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1204"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1302"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1304"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1204">
+      <div id="d1304">
         <p><strong>Ejemplo de acumulador - Paso 4</strong></p>
 
         <div class="filaflex">
@@ -978,12 +1943,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1203"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1205"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1303"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1305"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1205">
+      <div id="d1305">
         <p><strong>Ejemplo de acumulador - Paso 5</strong></p>
 
         <div class="filaflex">
@@ -1008,12 +1973,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>En este caso a la variable $suma (que valía 0) se le añade $i (que vale 1), por lo que ahora $suma vale 1.</p>
         <p class="control">
-          <a href="#d1204"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1206"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1304"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1306"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1206">
+      <div id="d1306">
         <p><strong>Ejemplo de acumulador - Paso 6</strong></p>
 
         <div class="filaflex">
@@ -1038,12 +2003,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
         <p class="control">
-          <a href="#d1205"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1207"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1305"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1307"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1207">
+      <div id="d1307">
         <p><strong>Ejemplo de acumulador - Paso 7</strong></p>
 
         <div class="filaflex">
@@ -1068,12 +2033,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1206"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1208"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1306"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1308"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1208">
+      <div id="d1308">
         <p><strong>Ejemplo de acumulador - Paso 8</strong></p>
 
         <div class="filaflex">
@@ -1098,12 +2063,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>En este caso a la variable $suma (que valía 1) se le añade $i (que vale 2), por lo que ahora $suma vale 3.</p>
         <p class="control">
-          <a href="#d1207"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1209"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1307"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1309"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1209">
+      <div id="d1309">
         <p><strong>Ejemplo de acumulador - Paso 9</strong></p>
 
         <div class="filaflex">
@@ -1128,12 +2093,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
         <p class="control">
-          <a href="#d1208"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1210"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1308"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1310"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1210">
+      <div id="d1310">
         <p><strong>Ejemplo de acumulador - Paso 10</strong></p>
 
         <div class="filaflex">
@@ -1158,12 +2123,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1209"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1211"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1309"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1311"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1211">
+      <div id="d1311">
         <p><strong>Ejemplo de acumulador - Paso 11</strong></p>
 
         <div class="filaflex">
@@ -1188,12 +2153,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>En este caso a la variable $suma (que valía 3) se le añade $i (que vale 3), por lo que ahora $suma vale 6.</p>
         <p class="control">
-          <a href="#d1210"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1212"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1310"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1312"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1212">
+      <div id="d1312">
         <p><strong>Ejemplo de acumulador - Paso 12</strong></p>
 
         <div class="filaflex">
@@ -1218,12 +2183,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
         <p class="control">
-          <a href="#d1211"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1213"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1311"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1313"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1213">
+      <div id="d1313">
         <p><strong>Ejemplo de acumulador - Paso 13</strong></p>
 
         <div class="filaflex">
@@ -1248,12 +2213,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 4), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1212"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1214"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1312"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1314"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1214">
+      <div id="d1314">
         <p><strong>Ejemplo de acumulador - Paso 14</strong></p>
 
         <div class="filaflex">
@@ -1278,12 +2243,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>En este caso a la variable $suma (que valía 6) se le añade $i (que vale 4), por lo que ahora $suma vale 10.</p>
         <p class="control">
-          <a href="#d1213"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1215"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1313"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1315"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1215">
+      <div id="d1315">
         <p><strong>Ejemplo de acumulador - Paso 15</strong></p>
 
         <div class="filaflex">
@@ -1308,12 +2273,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 5.</p>
         <p class="control">
-          <a href="#d1214"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1216"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1314"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1316"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1216">
+      <div id="d1316">
         <p><strong>Ejemplo de acumulador - Paso 16</strong></p>
 
         <div class="filaflex">
@@ -1338,12 +2303,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i es inferior a 6 (vale 5), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
-          <a href="#d1215"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1217"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1315"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1317"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1217">
+      <div id="d1317">
         <p><strong>Ejemplo de acumulador - Paso 17</strong></p>
 
         <div class="filaflex">
@@ -1368,12 +2333,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecutan las instrucciones del bloque.</p>
         <p>En este caso a la variable $suma (que valía 10) se le añade $i (que vale 5), por lo que ahora $suma vale 15.</p>
         <p class="control">
-          <a href="#d1216"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1218"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1316"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1318"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1218">
+      <div id="d1318">
         <p><strong>Ejemplo de acumulador - Paso 18</strong></p>
 
         <div class="filaflex">
@@ -1398,12 +2363,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se ejecuta la instrucción de paso.</p>
         <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 6.</p>
         <p class="control">
-          <a href="#d1217"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1219"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1317"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1319"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1219">
+      <div id="d1319">
         <p><strong>Ejemplo de acumulador - Paso 19</strong></p>
 
         <div class="filaflex">
@@ -1429,12 +2394,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
         <p>En este caso, $i ya no es inferior a 6 (vale 6) así que no se ejecutan las instrucciones del bloque de sentencias y el bucle se termina.</p>
         <p class="control">
-          <a href="#d1218"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1220"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1318"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1320"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1220">
+      <div id="d1320">
         <p><strong>Ejemplo de acumulador - Paso 20</strong></p>
 
         <div class="filaflex">
@@ -1462,12 +2427,12 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         <p>Una vez terminado el bucle, se ejecuta la instrucción que sigue al bucle.</p>
         <p>En este caso, imprime una frase con el valor del acumulador $suma.</p>
         <p class="control">
-          <a href="#d1219"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
-          <a href="#d1221"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
+          <a href="#d1319"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1321"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
         </p>
       </div>
 
-      <div id="d1221">
+      <div id="d1321">
         <p><strong>Ejemplo de acumulador - Paso 21</strong></p>
 
         <div class="filaflex">
@@ -1495,7 +2460,7 @@ print "&lt;p&gt;La suma de los números de 1 a 5 es $suma.&lt;/p&gt;\n";
 
         <p>Por último, imprime el párrafo final.</p>
         <p class="control">
-          <a href="#d1220"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
+          <a href="#d1320"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <img src="../varios/iconos/icono-vacio.svg" alt="" width="48" height="48">
         </p>
       </div>
@@ -1510,7 +2475,7 @@ print "&lt;p&gt;La suma de los números de 1 a 5 es $suma.&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 20 de octubre de 2017</p>
+    <p class="ultmod">Última modificación de esta página: 13 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
