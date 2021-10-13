@@ -27,14 +27,17 @@
         <li><a href="#diagrama-flujo">Diagrama de flujo</a></li>
         <li><a href="#ejemplos">Ejemplos de bucles</a></li>
         <li><a href="#incorrectos">Bucles incorrectos</a></li>
+        <li><a href="#otros">Otros bucles for</a></li>
       </ul>
     </div>
   </nav>
 
+  <p>En general, un bucle es una estructura de control que permite repetir un bloque de instrucciones las veces que sea necesario. El bloque de instrucciones que se repite se suele llamar cuerpo del bucle y cada repetición se suele llamar iteración. PHP dispone de varias instrucciones para definir bucles. En esta lección se comenta una de ellas, el bucle <span class="php-res">for</span>.</p>
+
   <section id="sintaxis">
     <h2>Sintaxis del bucle for</h2>
 
-    <p>La sintaxis del <a href="https://www.php.net/manual/en/control-structures.for.php">bucle for</a> es la siguiente:</p>
+    <p>La sintaxis más habitual del <a href="https://www.php.net/manual/en/control-structures.for.php">bucle for</a> es la siguiente:</p>
 
     <div class="codigo">
       <pre>
@@ -4108,6 +4111,115 @@ for ($i = 0; $i &gt; 3; $i++) {
     </div>
   </section>
 
+  <section id="otros">
+    <h2>Otros bucles <span class="php-res">for</span></h2>
+
+    <p>Las expresiones que aparecen en el bucle <span class="php-res">for</span> (asignación inicial, condición de continuación y cambio de variable) no están limitadas a una sola expresión. Pueden contener varias expresiones, separadas por comas.</p>
+
+    <ul>
+      <li>En el ejemplo siguiente, se definen dos variables en la asignación inicial:
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+for <span class="codigo-resaltado">($i = 0, $j = 0;</span> $i &lt; 5; $i++) {
+    print "&lt;p&gt;i: $i - j: $j&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;i: 0 - j: 0&lt;/p&gt;
+&lt;p&gt;i: 1 - j: 0&lt;/p&gt;
+&lt;p&gt;i: 2 - j: 0&lt;/p&gt;
+&lt;p&gt;i: 3 - j: 0&lt;/p&gt;
+&lt;p&gt;i: 4 - j: 0&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li>En el ejemplo siguiente, además de definir dos variables en la asignación inicial, se modifican las dos en el cambio de variable:
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+for <span class="codigo-resaltado">($i = 0, $j = 0;</span> $i &lt; 5; <span class="codigo-resaltado">$i++, $j = $j +2</span>) {
+    print "&lt;p&gt;i: $i - j: $j&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;i: 0 - j: 0&lt;/p&gt;
+&lt;p&gt;i: 1 - j: 2&lt;/p&gt;
+&lt;p&gt;i: 2 - j: 4&lt;/p&gt;
+&lt;p&gt;i: 3 - j: 6&lt;/p&gt;
+&lt;p&gt;i: 4 - j: 8&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li>No se deben escribir varias expresiones en las condiciones de continuación porque sólo atenderá a la última expresión. En el ejemplo siguiente, además de definir dos variables en la asignación inicial y modificarlas en el cambio de variable, se escriben condiciones de continuación para ambas, pero el bucle continúa mientras se cumpla la segunda condición, independientemente de lo que ocurra con la primera:
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+for <span class="codigo-resaltado">($i = 0, $j = 0;</span> <span class="codigo-resaltado">$i &lt; 5, $j &lt; 13;</span> <span class="codigo-resaltado">$i++, $j = $j +2</span>) {
+    print "&lt;p&gt;i: $i - j: $j&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;i: 0 - j: 0&lt;/p&gt;
+&lt;p&gt;i: 1 - j: 2&lt;/p&gt;
+&lt;p&gt;i: 2 - j: 4&lt;/p&gt;
+&lt;p&gt;i: 3 - j: 6&lt;/p&gt;
+&lt;p&gt;i: 4 - j: 8&lt;/p&gt;
+&lt;p&gt;i: 5 - j: 10&lt;/p&gt;
+&lt;p&gt;i: 6 - j: 12&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li>Si se quiere hacer depender el bucle de las dos variables, hay que escribir una sola expresión en la que intervengan ambas variables. Por ejemplo  si queremos que el bucle continúe mientras las dos variables no superen un valor:
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+for <span class="codigo-resaltado">($i = 0, $j = 0;</span> <span class="codigo-resaltado">$i &lt; 5 && $j &lt; 13;</span> <span class="codigo-resaltado">$i++, $j = $j +2</span>) {
+    print "&lt;p&gt;i: $i - j: $j&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;i: 0 - j: 0&lt;/p&gt;
+&lt;p&gt;i: 1 - j: 2&lt;/p&gt;
+&lt;p&gt;i: 2 - j: 4&lt;/p&gt;
+&lt;p&gt;i: 3 - j: 6&lt;/p&gt;
+&lt;p&gt;i: 4 - j: 8&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+  </section>
+
   <script>
     var paso = [-1];
     var pasos = [
@@ -4171,7 +4283,7 @@ for ($i = 0; $i &gt; 3; $i++) {
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 13 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
