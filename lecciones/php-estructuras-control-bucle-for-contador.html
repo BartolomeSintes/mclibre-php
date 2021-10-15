@@ -39,7 +39,7 @@
 
     <p>Se entiende por testigo una variable que indica simplemente si una condición se ha cumplido o no. Es un caso particular de contador, pero se suele hacer con variables lógicas en vez de numéricas.</p>
 
-    <p>En el ejemplo siguiente, el programa indica si al simular unas tiradas de dados se ha obtenido algún 5. La variable que hace de testigo es la variable <span class="php-var">$encontrado</span>).</p>
+    <p>En el ejemplo siguiente, el programa indica si al simular unas tiradas de dados se ha obtenido algún 5. La variable que hace de testigo es la variable <span class="php-var">$hayCinco</span>).</p>
 
     <div class="mcl-diapo" style="height: 33em">
       <div id="d1100">
@@ -50,15 +50,15 @@
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -94,15 +94,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 <span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -132,15 +132,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-<span class="codigo-resaltado">$encontrado = false;</span>
-for ($i = 1; $i &lt; 4; $i++) {
+<span class="codigo-resaltado">$hayCinco = false;</span>
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -155,7 +155,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>Se ejecuta la segunda instrucción del programa.</p>
-        <p>En este caso, inicializa la variable $encontrado.</p>
+        <p>En este caso, inicializa la variable $hayCinco.</p>
         <p class="control">
           <a href="#d1101"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1103"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -170,15 +170,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for (<span class="codigo-resaltado">$i = 1;</span> $i &lt; 4; $i++) {
+$hayCinco = false;
+for (<span class="codigo-resaltado">$i = 0;</span> $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -193,7 +193,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
-        <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+        <p>En este caso, la variable de control es $i y toma el valor 0.</p>
         <p class="control">
           <a href="#d1102"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1104"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -208,15 +208,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+$hayCinco = false;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -231,7 +231,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1103"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1105"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -246,15 +246,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -284,15 +284,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -322,15 +322,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if <span class="codigo-resaltado">($dado == 5</span>) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -361,15 +361,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -385,7 +385,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
         <p class="control">
           <a href="#d1107"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1109"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -400,15 +400,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+$hayCinco = false;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -424,7 +424,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1108"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1110"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -439,15 +439,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -478,15 +478,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -517,15 +517,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if (<span class="codigo-resaltado">$dado == 5</span>) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -557,15 +557,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        <span class="codigo-resaltado">$encontrado = true;</span>
+        <span class="codigo-resaltado">$hayCinco = true;</span>
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -581,7 +581,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
           </div>
         </div>
 
-        <p>La variable <span class="php-var">$encontrado</span> pasa a tomar el valor <span class="php-con">true</span> y se termina el bloque de instrucciones del bucle <span class="php-res">if</span>.</p>
+        <p>La variable <span class="php-var">$hayCinco</span> pasa a tomar el valor <span class="php-con">true</span> y se termina el bloque de instrucciones del bucle <span class="php-res">if</span>.</p>
         <p class="control">
           <a href="#d1112"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1114"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -596,15 +596,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -621,7 +621,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
         <p class="control">
           <a href="#d1113"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1115"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -636,15 +636,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+$hayCinco = false;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -661,7 +661,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1114"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1116"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -676,15 +676,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -716,15 +716,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -756,15 +756,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if (<span class="codigo-resaltado">$dado == 5</span>) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -797,15 +797,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -823,7 +823,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
         <p class="control">
           <a href="#d1118"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1120"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -838,15 +838,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+$hayCinco = false;
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -864,7 +864,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i ya no es inferior a 4 (vale 4), así que el bucle se termina y ya no se ejecutarán las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i ya no es inferior a 3 (vale 3), así que el bucle se termina y ya no se ejecutarán las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1119"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1121"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -879,15 +879,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if (<span class="codigo-resaltado">$encontrado</span>) {
+if (<span class="codigo-resaltado">$hayCinco</span>) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -904,8 +904,8 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
           </div>
         </div>
 
-        <p>A continuación se comprueba la condifición del <span class="php-res">if</span>, que en este caso es el valor de la variable <span class="php-var">$encontrado</span>.</p>
-        <p>Como $encontrado es ahora <span class="php-con">true</span>, se cumple la condición, así que se ejecuta el bloque correspondiente.</p>
+        <p>A continuación se comprueba la condifición del <span class="php-res">if</span>, que en este caso es el valor de la variable <span class="php-var">$hayCinco</span>.</p>
+        <p>Como $hayCinco es ahora <span class="php-con">true</span>, se cumple la condición, así que se ejecuta el bloque correspondiente.</p>
         <p class="control">
           <a href="#d1120"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1122"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -920,15 +920,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     <span class="codigo-resaltado">print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";</span>
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -961,15 +961,15 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
             <pre>
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
-$encontrado = false;
-for ($i = 1; $i &lt; 4; $i++) {
+$hayCinco = false;
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
-        $encontrado = true;
+        $hayCinco = true;
     }
 }
-if ($encontrado) {
+if ($hayCinco) {
     print "&lt;p&gt;Ha salido al menos un 5.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;No ha salido ningún 5.&lt;/p&gt;\n";
@@ -1023,7 +1023,7 @@ if ($encontrado) {
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1063,7 +1063,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 <span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1097,7 +1097,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 <span class="codigo-resaltado">$cuenta = 0;</span>
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1131,7 +1131,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for (<span class="codigo-resaltado">$i = 1;</span> $i &lt; 4; $i++) {
+for (<span class="codigo-resaltado">$i = 0;</span> $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1149,7 +1149,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
-        <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+        <p>En este caso, la variable de control es $i y toma el valor 0.</p>
         <p class="control">
           <a href="#d1202"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1204"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1165,7 +1165,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1183,7 +1183,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1203"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1205"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1199,7 +1199,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1233,7 +1233,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     if ($dado == 5) {
@@ -1267,7 +1267,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if <span class="codigo-resaltado">($dado == 5</span>) {
@@ -1302,7 +1302,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1321,7 +1321,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
         <p class="control">
           <a href="#d1207"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1209"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1337,7 +1337,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1356,7 +1356,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1208"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1210"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1372,7 +1372,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1407,7 +1407,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     if ($dado == 5) {
@@ -1442,7 +1442,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if (<span class="codigo-resaltado">$dado == 5</span>) {
@@ -1478,7 +1478,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1513,7 +1513,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1533,7 +1533,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
         <p class="control">
           <a href="#d1213"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1215"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1549,7 +1549,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1569,7 +1569,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1214"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1216"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1585,7 +1585,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1621,7 +1621,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     if ($dado == 5) {
@@ -1657,7 +1657,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if (<span class="codigo-resaltado">$dado == 5</span>) {
@@ -1694,7 +1694,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1730,7 +1730,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1751,7 +1751,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
         <p class="control">
           <a href="#d1219"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1221"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1767,7 +1767,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1788,7 +1788,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i ya no es inferior a 4 (vale 4), así que el bucle se termina y ya no se ejecutarán las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i ya no es inferior a 3 (vale 3), así que el bucle se termina y ya no se ejecutarán las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1220"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1222"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -1804,7 +1804,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1841,7 +1841,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $cuenta = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     if ($dado == 5) {
@@ -1898,7 +1898,7 @@ print "&lt;p&gt;Han salido $cuenta cinco(s).&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -1936,7 +1936,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 <span class="codigo-resaltado">print "&lt;p&gt;Comienzo&lt;/p&gt;\n";</span>
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -1968,7 +1968,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 <span class="codigo-resaltado">$total = 0;</span>
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2000,7 +2000,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for (<span class="codigo-resaltado">$i = 1;</span> $i &lt; 4; $i++) {
+for (<span class="codigo-resaltado">$i = 0;</span> $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2016,7 +2016,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta el bucle. El primer paso es dar el valor inicial a la variable de control.</p>
-        <p>En este caso, la variable de control es $i y toma el valor 1.</p>
+        <p>En este caso, la variable de control es $i y toma el valor 0.</p>
         <p class="control">
           <a href="#d1302"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1304"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2032,7 +2032,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2048,7 +2048,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 0), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1303"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1305"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2064,7 +2064,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2096,7 +2096,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     $total = $total + $dado;
@@ -2128,7 +2128,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     <span class="codigo-resaltado">$total = $total + $dado;</span>
@@ -2161,7 +2161,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2178,7 +2178,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 1.</p>
         <p class="control">
           <a href="#d1307"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1309"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2194,7 +2194,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2211,7 +2211,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 1), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1308"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1310"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2227,7 +2227,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2260,7 +2260,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     $total = $total + $dado;
@@ -2293,7 +2293,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     <span class="codigo-resaltado">$total = $total + $dado;</span>
@@ -2327,7 +2327,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2345,7 +2345,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 2.</p>
         <p class="control">
           <a href="#d1312"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1314"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2361,7 +2361,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2379,7 +2379,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i es inferior a 4 (vale 3), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i es inferior a 3 (vale 2), así que se pasa a ejecutar las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1313"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1315"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2395,7 +2395,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     <span class="codigo-resaltado">$dado = rand(1, 6);</span>
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2429,7 +2429,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     <span class="codigo-resaltado">print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";</span>
     $total = $total + $dado;
@@ -2463,7 +2463,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     <span class="codigo-resaltado">$total = $total + $dado;</span>
@@ -2498,7 +2498,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; <span class="codigo-resaltado">$i++</span>) {
+for ($i = 0; $i &lt; 3; <span class="codigo-resaltado">$i++</span>) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2517,7 +2517,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se ejecuta la instrucción de paso.</p>
-        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 4.</p>
+        <p>En este caso, la variable $i aumenta una unidad, por lo que ahora vale 3.</p>
         <p class="control">
           <a href="#d1317"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1319"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2533,7 +2533,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; <span class="codigo-resaltado">$i &lt; 4;</span> $i++) {
+for ($i = 0; <span class="codigo-resaltado">$i &lt; 3;</span> $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2552,7 +2552,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
         </div>
 
         <p>A continuación se comprueba que la condición de continuación se cumple.</p>
-        <p>En este caso, $i ya no es inferior a 4 (vale 4), así que el bucle se termina y ya no se ejecutarán las instrucciones del bloque de sentencias.</p>
+        <p>En este caso, $i ya no es inferior a 3 (vale 3), así que el bucle se termina y ya no se ejecutarán las instrucciones del bloque de sentencias.</p>
         <p class="control">
           <a href="#d1318"><img src="../varios/iconos/icono-anterior.svg" alt="Anterior" title="Anterior" width="48" height="48"></a>
           <a href="#d1320"><img src="../varios/iconos/icono-siguiente.svg" alt="Siguiente" title="Siguiente" width="48" height="48"></a>
@@ -2568,7 +2568,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2603,7 +2603,7 @@ print "&lt;p&gt;Final&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 print "&lt;p&gt;Comienzo&lt;/p&gt;\n";
 $total = 0;
-for ($i = 1; $i &lt; 4; $i++) {
+for ($i = 0; $i &lt; 3; $i++) {
     $dado = rand(1, 6);
     print "&lt;p&gt;Tirada de dado: $dado&lt;/p&gt;\n";
     $total = $total + $dado;
@@ -2640,7 +2640,7 @@ print "&lt;p&gt;Ha obtenido $total puntos.&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 14 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 15 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
