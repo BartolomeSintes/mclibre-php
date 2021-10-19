@@ -29,6 +29,8 @@
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-01">01 - Números</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-02">02 - Animales</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-03">03 - Nombres de animales</a></li>
+            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-04">04 - Gestos de manos</a></li>
+            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-05">05 - Deportes</a></li>
           </ul>
         </li>
         <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#con-bucles">Con bucles</a>
@@ -51,6 +53,8 @@
             <li><a href="#ejercicio-01">01 - Números</a></li>
             <li><a href="#ejercicio-02">02 - Animales</a></li>
             <li><a href="#ejercicio-03">03 - Nombres de animales</a></li>
+            <li><a href="#ejercicio-04">04 - Gestos de manos</a></li>
+            <li><a href="#ejercicio-05">05 - Deportes</a></li>
           </ul>
         </li>
         <li><a href="#con-bucles">Con bucles</a>
@@ -174,6 +178,56 @@ $animal = rand(0, count($animales) - 1);
 print "  &lt;h2&gt;{$animales[$animal][0]}&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;&lt;img src=\"img/animales/{$animales[$animal][1]}\" alt=\"{$animales[$animal][0]}\" height=\"250\"&gt;&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-04">
+      <h3>Matrices (1) 04 - Gestos de manos</h3>
+      <ul>
+        <li>Solución con dos matrices de una dimensión:
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$emojis = [128070, 128071, 128072, 128073, 128074, 128075, 128076, 128077, 128078, 128079, 128080, 128133, 128170, 128400, 128405, 128406, 128588, 128591, 129295, 129304, 129305, 129306, 129307, 129308, 129310, 129311, 129330];
+$pieles = [127995, 127996, 127997, 127998, 127999];
+
+$emoji = rand(0, count($emojis) - 1);
+$piel = rand(0, 4);
+
+print "  &lt;p&gt;&lt;span style=\"font-size: 800%\"&gt;&#$emojis[$emoji];&#$pieles[$piel];&lt;/span&gt;&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ejercicio-05">
+      <h3>Matrices (1) 05 - Hombres y mujeres haciendo deporte</h3>
+      <ul>
+        <li>Solución con cuatro matrices de una dimensión:
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$emojis = [127939, 127940, 127946, 128675, 128692, 128693, 128694, 129336, 129337, 129341, 129342, 129495];
+$actividades = ["corriendo", "surfeando", "nadando", "remando", "pedaleando", "pedaleando en la montaña", "caminando", "dando volteretas", "haciendo malabares", "jugando al waterpolo", "jugando al balonmano", "escalando"];
+$generos = [9794, 9792];
+$generosTextos = ["Hombre", "Mujer"];
+
+$emoji = rand(0, count($emojis) - 1);
+$genero = rand(0, 1);
+
+print "  &lt;h2&gt;$generosTextos[$genero] $actividades[$emoji]&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;&lt;span style=\"font-size: 800%\"&gt;&#$emojis[$emoji];&#8205;&#$generos[$genero];&#65039;&lt;/span&gt;&lt;/p&gt;\n";
+print "\n";
+print "  &lt;h2&gt;Secuencia Unicode del emoji&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;&amp;#$emojis[$emoji];&amp;#8205;&amp;#$generos[$genero];&amp;#65039;";
 ?&gt;</code>
 </pre>
           </div>
@@ -644,7 +698,7 @@ if ($gana1 &gt; $gana2) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 19 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
