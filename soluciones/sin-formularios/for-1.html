@@ -427,20 +427,22 @@ if ($cantidad == 1) {
 <code class="language-php">&lt;?php
 print "  &lt;p&gt;\n";
 print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"400\" height=\"400\" viewBox=\"-200 -200 400 400\"&gt;\n";
+print "      width=\"420\" height=\"420\" viewBox=\"-210 -210 420 420\"&gt;\n";
 
-for ($i = 0; $i &lt; 4; $i++) {
-    print "      &lt;circle cx=\"0\" cy=\"0\" r=\"" . (200 - 50 * $i) . "\" fill=\"red\" /&gt;\n";
-    print "      &lt;circle cx=\"0\" cy=\"0\" r=\"" . (200 - 50 * $i - 25) . "\" fill=\"#ddd\" /&gt;\n";
+for ($i = 0; $i &lt; 5; $i++) {
+    print "      &lt;circle cx=\"0\" cy=\"0\" r=\"" . (200 - 40 * $i) . "\" fill=\"red\" /&gt;\n";
+    print "      &lt;circle cx=\"0\" cy=\"0\" r=\"" . (200 - 40 * $i - 20) . "\" fill=\"#ddd\" /&gt;\n";
 }
 
-$disparos = rand(1,10);
+$puntos = 0;
+$disparos = rand(1, 10);
 for ($i = 0; $i &lt; $disparos; $i++) {
-    $x = rand(-180, 180);
-    $y = rand(-180, 180);
+    $x = rand(-200, 200);
+    $y = rand(-200, 200);
+    $puntos += ((10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20)) &gt; 0 ? (10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20)) : 0);
     print "      &lt;path fill=\"black\" stroke=\"white\" stroke-width=\"2\" "
-     . "d=\"m $x,$y 3.5,-1.1 3.0,-2.7 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 "
-     . "-0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 z\" /&gt;\n";
+     . "d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 "
+     . "-0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" /&gt;\n";
 }
 print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;\n";
@@ -449,6 +451,7 @@ print "  &lt;h2&gt;Estadísticas&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;ul&gt;\n";
 print "    &lt;li&gt;Número de disparos: &lt;strong&gt;$disparos&lt;/strong&gt;.&lt;/li&gt;\n";
+print "    &lt;li&gt;Puntuación obtenida: &lt;strong&gt;$puntos&lt;/strong&gt;.&lt;/li&gt;\n";
 print "  &lt;/ul&gt;\n";
 ?&gt;</code>
 </pre>
@@ -456,7 +459,7 @@ print "  &lt;/ul&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 19 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
