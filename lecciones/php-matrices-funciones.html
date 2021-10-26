@@ -800,6 +800,73 @@ print "\n";
         </td>
       </tr>
     </table>
+
+    <hr class="corta">
+
+    <p>Si los valores a ordenar son cadenas que contienen caracteres no ingleses, se debe utilizar el segundo argumento con el valor <span class="php-con">SORT_LOCALE_STRING</span>, aunque también es necesario establecer el idioma con la función <a href="https://www.php.net/manual/en/function.setlocale.php"><span class="php-fun">setlocale($category, $locales, ...)</span></a>.</p>
+
+    <p>Por desgracia, el valor de $locales no es el mismo en Windows que en Linux. Por ejemplo, el locale para España sería "es_ES.UTF-8" en Linux y "es-ES.UTF-8".</p>
+
+    <p>Las vocales acentuadas se ordenan a continuación de las vocales sin acentuar, salvo si la palabra contiene más letras y entonces son las letras posteriores las que determinan el orden, como muestra el siguiente ejemplo.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+setlocale(LC_ALL, <span class="codigo-resaltado">"es-ES.UTF-8"</span>);
+
+$valores = ["áb", "ab", "aá", "aa", "aáb", "aab", "aác", "aad", "aae", "aáf"];
+
+print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+
+sort($valores, SORT_LOCALE_STRING);
+
+print "&lt;p&gt;Matriz ordenada con sort():&lt;/p&gt;\n";
+print "\n";
+print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
+print "\n";
+?&gt;</code>
+        </pre>
+      </div>
+      <div class="resultado-html">
+        <pre>
+Array
+(
+    [0] =&gt; áb
+    [1] =&gt; ab
+    [2] =&gt; aá
+    [3] =&gt; aa
+    [4] =&gt; aáb
+    [5] =&gt; aab
+    [6] =&gt; aác
+    [7] =&gt; aad
+    [8] =&gt; aae
+    [9] =&gt; aáf
+)
+</pre>
+
+        <p>Matriz ordenada con sort():</p>
+
+        <pre>
+Array
+(
+    [0] =&gt; aa
+    [1] =&gt; aá
+    [2] =&gt; aab
+    [3] =&gt; aáb
+    [4] =&gt; aác
+    [5] =&gt; aad
+    [6] =&gt; aae
+    [7] =&gt; aáf
+    [8] =&gt; ab
+    [9] =&gt; áb
+)
+</pre>
+      </div>
+    </div>
   </section>
 
   <section id="in-array">
@@ -1112,7 +1179,7 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 15 de noviembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
