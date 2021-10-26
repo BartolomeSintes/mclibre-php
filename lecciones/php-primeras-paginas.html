@@ -31,6 +31,7 @@
             <li><a href="#delimitador-2">delimitador &lt;?= ... ?&gt;</a></li>
           </ul>
         </li>
+        <li><a href="#instrucciones">Instrucciones PHP</a></li>
         <li><a href="#comentarios">Comentarios en páginas PHP</a></li>
         <li><a href="#html5">Código HTML 5 válido </a></li>
         <li><a href="#html-valido">Generar código válido</a></li>
@@ -383,6 +384,143 @@ $despedida = "Adios";
     </section>
   </section>
 
+  <section id="instrucciones">
+    <h2>Instrucciones PHP</h2>
+
+    <p>Los fragmentos PHP contienen instrucciones de PHP. Las instrucciones individuales deben terminarse por un punto y coma (;).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+print "&lt;p&gt;Adios&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>La última instrucción antes del cierre de un fragmento puede no llevar punto y coma, aunque se aconseja terminar todas las instrucciones con punto y coma, para evitar errores  si posteriormente se añaden instrucciones al final del fragmento o si se mueve esa última instrucción a un punto anterior del programa.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n";
+print "&lt;p&gt;Adios&lt;/p&gt;\n"<span class="codigo-resaltado">&nbsp;</span>
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Una línea puede contener varias instrucciones, aunque por legibilidad se recomienda escribir una sola instrucción por línea de programa.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n"; print "&lt;p&gt;Adios&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Los grupos de instrucciones se escriben entre llaves. Tras las llaves no es necesario escribir puntos y comas y se recomienda no hacerlo, pues en algunos casos puede ser incluso un error de sintaxis, aunque la última instrucción dentro de las llaves requiere el punto y coma.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$a = 5;
+if ($a == 5) {
+    print "&lt;p&gt;$a es cinco&lt;/p&gt;\n";
+    print "&lt;p&gt;¡Hasta otra!&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$a = 5;
+if ($a == 5) {
+    print "&lt;p&gt;$a es cinco&lt;/p&gt;\n";
+    print "&lt;p&gt;¡Hasta otra!&lt;/p&gt;\n";
+}<span class="codigo-resaltado">;</span>
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$a = 5;
+if ($a == 5) {
+    print "&lt;p&gt;$a es cinco&lt;/p&gt;\n";
+    print "&lt;p&gt;¡Hasta otra!&lt;/p&gt;\n";
+}<span class="codigo-resaltado">;</span> else {
+  print "&lt;p&gt;$a no es cinco&lt;/p&gt;\n";
+  print "&lt;p&gt;¡Hasta otra!&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p><b>Parse error</b>:  syntax error, unexpected 'else' (T_ELSE), expecting end of file in <b>ejemplo.php</b> on line <b>6</b></p>
+      </div>
+    </div>
+  </section>
+
   <section id="comentarios">
     <h2>Comentarios en páginas PHP</h2>
 
@@ -704,7 +842,7 @@ print "  &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
