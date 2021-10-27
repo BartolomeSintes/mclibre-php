@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 17 - matrices-1-17.php
+ * Matrices (1) 15 - matrices-1-15-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Partida de dados.
+    "Y" lógico.
     Matrices (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,82 +36,63 @@
 </head>
 
 <body>
-  <h1>Partida de dados</h1>
+  <h1>"Y" lógico</h1>
 
-  <p>Actualice la página para mostrar una nueva partida de dados.</p>
+  <p>Actualice la página para mostrar dos secuencias aleatorias de bits y su conjunción lógica.</p>
 
 <?php
-$numero = rand(2, 7);
+$numero = 10;
 
-print "  <h2>Jugador 1</h2>\n";
-print "\n";
-
-// Guardamos los valores del Jugador 1 en la matriz $dados1
-$dados1 = [];
+// Creamos la primera matriz de bits aleatorios
+$inicial1 = [];
 for ($i = 0; $i < $numero; $i++) {
-    $dados1[$i] = rand(1, 6);
+    $inicial1[$i] = rand(0, 1);
 }
 
-// Mostramos los resultados obtenidos por el Jugador 1
-print "  <p>\n";
+// Mostramos los bits aleatorios de la primera matriz
+print "  <pre style=\"font-size: 300%;\">\n";
+print "   A   : ";
+foreach ($inicial1 as $bit) {
+    print "$bit ";
+}
+print "\n";
+print "\n";
+
+// Creamos la segunda matriz de bits aleatorios
+$inicial2 = [];
 for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados1[$i].svg\" alt=\"$dados1[$i]\" width=\"140\" height=\"140\">\n";
+    $inicial2[$i] = rand(0, 1);
 }
-print "  </p>\n";
+
+// Mostramos los bits aleatorios de la segunda matriz
+print "   B   : ";
+foreach ($inicial2 as $bit) {
+    print "$bit ";
+}
+print "\n";
 print "\n";
 
-print "  <h2>Jugador 2</h2>\n";
-print "\n";
-
-// Guardamos los valores del Jugador 2 en la matriz $dados2
-$dados2 = [];
+// Creamos la matriz con el resultado de la conjunción lógica
+$resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    $dados2[$i] = rand(1, 6);
+    $resultado[$i] = ($inicial1[$i] == 1 && $inicial2[$i] == 1) ? 1 : 0;
 }
 
-// Mostramos los resultados obtenidos por el Jugador 2
-print "  <p>\n";
+/* Otra forma de calcular los valores complementarios
+// Creamos la matriz con el resultado de la conjunción lógica
+$resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados2[$i].svg\" alt=\"$dados2[$i]\" width=\"140\" height=\"140\">\n";
+    $resultado[$i] = (int)($inicial1[$i] && $inicial2[$i]);
 }
-print "  </p>\n";
-print "\n";
+*/
 
-// En los acumuladores $gana1 $gana2 y $empate contamos cuántas partidas ha ganado cada uno
-print "  <h2>Resultado</h2>\n";
-print "\n";
-
-$gana1  = 0;
-$gana2  = 0;
-$empate = 0;
-for ($i = 0; $i < $numero; $i++) {
-    if ($dados1[$i] > $dados2[$i]) {
-        $gana1++;
-    } elseif ($dados1[$i] < $dados2[$i]) {
-        $gana2++;
-    } else {
-        $empate++;
-    }
+// Mostramos los valores calculados
+print "A and B: ";
+foreach ($resultado as $bit) {
+    print "$bit ";
 }
-
-// Mostramos cuántas partidas ha ganado cada uno
-print "  <p>El jugador 1 ha ganado <strong>$gana1</strong> ve";
-print ($gana1 != 1) ? "ces" : "z";
-print ", el jugador 2 ha ganado <strong>$gana2</strong> ve";
-print ($gana2 != 1) ? "ces" : "z";
-print " y los jugadores han empatado <strong>$empate</strong> ve";
-print ($empate != 1) ? "ces" : "z";
-print ".</p>\n";
 print "\n";
-
-// Mostramos quién ha ganado la partida
-if ($gana1 > $gana2) {
-    print "  <p>En conjunto, ha ganado el jugador <strong>1</strong>.</p>\n";
-} elseif ($gana1 < $gana2) {
-    print "  <p>En conjunto, ha ganado el jugador <strong>2</strong>.</p>\n";
-} else {
-    print "  <p>En conjunto, han empatado.</p>\n";
-}
+print "</pre>\n";
 ?>
 
   <footer>

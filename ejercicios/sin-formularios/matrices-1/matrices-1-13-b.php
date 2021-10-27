@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 14 - matrices-1-14.php
+ * Matrices (1) 13 - matrices-1-13-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    De binario a Gray.
+    Cambio de bits.
     Matrices (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,9 +36,9 @@
 </head>
 
 <body>
-  <h1>Convertidor de binario a código de Gray</h1>
+  <h1>Cambio de bits</h1>
 
-  <p>Actualice la página para mostrar una secuencia aleatoria de bits y su conversión a código de Gray.</p>
+  <p>Actualice la página para mostrar una secuencia aleatoria de bits y la detección de cambios de bits consecutivos en la secuencia.</p>
 
 <?php
 $numero = 10;
@@ -51,24 +51,29 @@ for ($i = 0; $i < $numero; $i++) {
 
 // Mostramos los bits aleatorios de la matriz
 print "  <pre style=\"font-size: 300%\">\n";
-print "B: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial[$i] ";
+print " A: ";
+foreach ($inicial as $bit) {
+    print "$bit ";
 }
 print "\n";
 print "\n";
 
-// Creamos la matriz con el código Gray
-$resultado    = [];
-$resultado[0] = $inicial[0];
+// Creamos la matriz con la detección de los cambios
+$resultado = [];
 for ($i = 0; $i < $numero - 1; $i++) {
-    $resultado[$i + 1] = ($inicial[$i] == $inicial[$i + 1]) ? 0 : 1;
+    $resultado[$i] = ($inicial[$i] == $inicial[$i + 1]) ? 0 : 1;
 }
+
+// Creamos la matriz con la detección de los cambios
+// $resultado = [];
+// for ($i = 0; $i < $numero - 1; $i++) {
+//     $resultado[$i] = (int) ($inicial[$i] != $inicial[$i + 1]);
+// }
 
 // Mostramos los valores calculados
-print "G: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$resultado[$i] ";
+print "&Delta;A:  ";
+foreach ($resultado as $bit) {
+    print "$bit ";
 }
 print "\n";
 print "</pre>\n";

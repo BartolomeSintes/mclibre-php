@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 17 - matrices-1-17.php
+ * Matrices (1) 17 - matrices-1-17-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -54,8 +54,8 @@ for ($i = 0; $i < $numero; $i++) {
 
 // Mostramos los resultados obtenidos por el Jugador 1
 print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados1[$i].svg\" alt=\"$dados1[$i]\" width=\"140\" height=\"140\">\n";
+foreach ($dados1 as $dado) {
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -71,8 +71,8 @@ for ($i = 0; $i < $numero; $i++) {
 
 // Mostramos los resultados obtenidos por el Jugador 2
 print "  <p>\n";
-for ($i = 0; $i < $numero; $i++) {
-    print "    <img src=\"img/$dados2[$i].svg\" alt=\"$dados2[$i]\" width=\"140\" height=\"140\">\n";
+foreach ($dados2 as $dado) {
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";

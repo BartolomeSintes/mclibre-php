@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (1) 22 - matrices-1-22.php
+ * Matrices (1) 16 - matrices-1-16.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2021-10-27
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -52,8 +52,8 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos los bits aleatorios de la primera matriz
 print "  <pre style=\"font-size: 300%;\">\n";
 print "A: ";
-foreach ($inicial1 as $bit) {
-    print "$bit ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial1[$i] ";
 }
 print "\n";
 print "\n";
@@ -66,8 +66,8 @@ for ($i = 0; $i < $numero; $i++) {
 
 // Mostramos los bits aleatorios de la segunda matriz
 print "B: ";
-foreach ($inicial2 as $bit) {
-    print "$bit ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial2[$i] ";
 }
 print "\n";
 print "\n";
@@ -80,8 +80,8 @@ for ($i = 0; $i < $numero; $i++) {
 
 // Mostramos los bits aleatorios de la tercera matriz
 print "C: ";
-foreach ($inicial3 as $bit) {
-    print "$bit ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial3[$i] ";
 }
 print "\n";
 print "\n";
@@ -89,17 +89,13 @@ print "\n";
 // Creamos la matriz con el resultado
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    if ($inicial1[$i] + $inicial2[$i] + $inicial3[$i] > 1) {
-        $resultado[$i] = 1;
-    } else {
-        $resultado[$i] = 0;
-    }
+    $resultado[$i] =  ($inicial1[$i] + $inicial2[$i] + $inicial3[$i] > 1) ? 1 : 0;
 }
 
 // Mostramos los valores calculados
 print "R: ";
-foreach ($resultado as $bit) {
-    print "$bit ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$resultado[$i] ";
 }
 print "\n";
 print "</pre>\n";
@@ -108,7 +104,7 @@ print "</pre>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2021-10-27">27 de octubre de 2021</time>
     </p>
 
     <p class="licencia">

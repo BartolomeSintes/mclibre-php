@@ -3,9 +3,9 @@
  * Matrices (1) 11 - matrices-1-11.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2021-10-27
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -43,6 +43,9 @@
 <?php
 $numero = rand(2, 7);
 
+print "  <h2>Tirada de $numero dados</h2>\n";
+print "\n";
+
 // Guardamos los valores de los dados en la matriz $dados
 $dados = [];
 for ($i = 0; $i < $numero; $i++) {
@@ -50,11 +53,9 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos las imágenes de los dados obtenidos
-print "  <h2>Tirada de $numero dados</h2>\n";
-print "\n";
 print "  <p>\n";
-foreach ($dados as $dado) {
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
+for ($i = 0; $i < $numero; $i++) {
+    print "    <img src=\"img/$dados[$i].svg\" alt=\"$dados[$i]\" width=\"140\" height=\"140\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -63,8 +64,8 @@ print "\n";
 print "  <h2>Resultado</h2>\n";
 print "\n";
 print "  <p>Los valores obtenidos son: ";
-foreach ($dados as $dado) {
-    print "$dado ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$dados[$i] ";
 }
 print "</p>\n";
 ?>
@@ -72,7 +73,7 @@ print "</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2021-10-27">27 de octubre de 2021</time>
     </p>
 
     <p class="licencia">

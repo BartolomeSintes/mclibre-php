@@ -3,9 +3,9 @@
  * Matrices (1) 12 - matrices-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2021-10-27
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -52,8 +52,8 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos los bits aleatorios
 print "  <pre style=\"font-size: 300%;\">\n";
 print "A: ";
-foreach ($inicial as $bit) {
-    print "$bit ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$inicial[$i] ";
 }
 print "\n";
 print "\n";
@@ -61,25 +61,20 @@ print "\n";
 // Creamos la matriz con los valores complementarios
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    if ($inicial[$i] == 1) {
-        $resultado[$i] = 0;
-    } else {
-        $resultado[$i] = 1;
-    }
+    $resultado[$i] = ($inicial[$i] == 1) ? 0 : 1;
 }
 
-/* Otra forma de calcular los valores complementarios
+// Otra forma de calcular los valores complementarios
 // Creamos la matriz con los valores complementarios
-$resultado = [];
-for ($i = 0; $i < $numero; $i++) {
-    $resultado[$i] = 1 - $inicial[$i];
-}
-*/
+// $resultado = [];
+// for ($i = 0; $i < $numero; $i++) {
+//     $resultado[$i] = 1 - $inicial[$i];
+// }
 
 // Mostramos los valores complementarios
 print "<span style=\"text-decoration: overline\">A</span>: ";
-foreach ($resultado as $bit) {
-    print "$bit ";
+for ($i = 0; $i < $numero; $i++) {
+    print "$resultado[$i] ";
 }
 print "</pre>\n";
 ?>
@@ -87,7 +82,7 @@ print "</pre>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2021-10-27">27 de octubre de 2021</time>
     </p>
 
     <p class="licencia">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (1) 14 - matrices-1-14.php
+ * Matrices (1) 14 - matrices-1-14-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -52,8 +52,8 @@ for ($i = 0; $i < $numero; $i++) {
 // Mostramos los bits aleatorios de la matriz
 print "  <pre style=\"font-size: 300%\">\n";
 print "B: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$inicial[$i] ";
+foreach ($inicial as $bit) {
+    print "$bit ";
 }
 print "\n";
 print "\n";
@@ -67,8 +67,8 @@ for ($i = 0; $i < $numero - 1; $i++) {
 
 // Mostramos los valores calculados
 print "G: ";
-for ($i = 0; $i < $numero; $i++) {
-    print "$resultado[$i] ";
+foreach ($resultado as $bit) {
+    print "$bit ";
 }
 print "\n";
 print "</pre>\n";
