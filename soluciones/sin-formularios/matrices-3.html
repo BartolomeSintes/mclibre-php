@@ -24,8 +24,8 @@
 
       <h3><a href="../../ejercicios/sin-formularios/matrices-3/index.html">Enunciados</a></h3>
       <ul>
-        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-1">1 - Eliminar dado</a></li>
-        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-2">2 - Eliminar animal</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-1">1 - Cartas extremas</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-2">2 - Las cartas más altas</a></li>
         <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-3">3 - Eliminar repetidos</a></li>
         <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-4">4 - Buscar emoticono</a></li>
         <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-5">5 - Contar corazones</a></li>
@@ -33,12 +33,14 @@
         <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-11">11 - Tirada ordenada</a></li>
         <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-12">12 - Ordenar cartas</a></li>
         <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-13">13 - Jugada de Risk</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-14">14 - Reparto de cartas</a></li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-3/index.html#ejercicio-15">15 - Pares consecutivas</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
       <ul>
-        <li><a href="#ejercicio-1">1 - Eliminar dado</a></li>
-        <li><a href="#ejercicio-2">2 - Eliminar animal</a></li>
+        <li><a href="#ejercicio-1">1 - Cartas extremas</a></li>
+        <li><a href="#ejercicio-2">2 - Las cartas más altas</a></li>
         <li><a href="#ejercicio-3">3 - Eliminar repetidos</a></li>
         <li><a href="#ejercicio-4">4 - Buscar emoticono</a></li>
         <li><a href="#ejercicio-5">5 - Contar corazones</a></li>
@@ -46,6 +48,8 @@
         <li><a href="#ejercicio-11">11 - Tirada ordenada</a></li>
         <li><a href="#ejercicio-12">12 - Ordenar cartas</a></li>
         <li><a href="#ejercicio-13">13 - Jugada de Risk</a></li>
+        <li><a href="#ejercicio-14">14 - Reparto de cartas</a></li>
+        <li><a href="#ejercicio-15">15 - Pares consecutivas</a></li>
       </ul>
     </div>
   </nav>
@@ -53,63 +57,29 @@
   <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sin-formularios/matrices-3/index.html">Matrices (3)</a>, concretamente el fragmento PHP, sin el principio ni el final de la página que se puede dejar en un fragmento HTML. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
 
   <section id="ejercicio-1">
-    <h3>Matrices (3) 1 - Eliminar dado</h3>
+    <h3>Matrices (3) 1 - Cartas extremas</h3>
 
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$numero = rand(1, 10);
-
-// Guardamos los valores de los dados en la matriz $dados
-$dados = [];
-for ($i = 0; $i &lt; $numero; $i++) {
-    $dados[$i] = rand(1, 6);
+// Guardamos los valores de las cartas en la matriz $cartas
+$n = rand(5, 10);
+for ($i = 0; $i &lt; $n; $i++) {
+    $cartas[] = rand(1, 10);
 }
 
-// Mostramos las imágenes de los dados obtenidos
-if ($numero == 1) {
-    print "  &lt;h2&gt;Tirada de $numero dado&lt;/h2&gt;\n";
-} else {
-    print "  &lt;h2&gt;Tirada de $numero dados&lt;/h2&gt;\n";
-}
+// Mostramos las imágenes de las cartas obtenidas
+print "  &lt;h2&gt;Cartas&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
-foreach ($dados as $dado) {
-    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\"&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
 
-// Guardamos el valor del dado a descartar
-$descarta = rand(1, 6);
-
-// Mostramos el dado a descartar
-print "  &lt;h2&gt;Dado a eliminar&lt;/h2&gt;\n";
-print "\n";
-print "  &lt;p&gt;\n";
-print "    &lt;img src=\"img/$descarta.svg\" alt=\"$descarta\" width=\"80\" height=\"80\"&gt;\n";
-print "  &lt;/p&gt;\n";
-print "\n";
-
-// Eliminamos el dado de la matriz
-for ($i = 0; $i &lt; $numero; $i++) {
-    if ($dados[$i] == $descarta) {
-        unset($dados[$i]);
-    }
-}
-
-// Mostramos las imágenes de los dados restantes
-print "  &lt;h2&gt;Dados restantes&lt;/h2&gt;\n";
-print "\n";
-if (count($dados) == 0) {
-    print "&lt;p&gt;No quedan dados.&lt;/p&gt;\n";
-} else {
-    print "  &lt;p&gt;\n";
-    foreach ($dados as $dado) {
-        print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\"&gt;\n";
-    }
-}
-print "  &lt;/p&gt;\n";
+// Calculamos y mostramos los valores máximo y mínimo
+print "&lt;p&gt;La carta más alta es un " . max($cartas) . " y la carta más baja es un " . min($cartas) . "&lt;/p&gt;\n";
 print "\n";
 
 ?&gt;</code>
@@ -118,60 +88,61 @@ print "\n";
   </section>
 
   <section id="ejercicio-2">
-    <h3>Matrices (3) 2 - Eliminar animal</h3>
+    <h3>Matrices (3) 2 - Las cartas más altas</h3>
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
-$numero = rand(20, 30);
-
-// Guardamos los valores de los animales en la matriz $animales
-$animales = [];
-for ($i = 0; $i &lt; $numero; $i++) {
-    $animales[$i] = rand(128000, 128060);
+<code class="language-php">&lt;?php
+// Guardamos los valores de las cartas en la matriz $cartas
+$n = rand(5, 10);
+for ($i = 0; $i &lt; $n; $i++) {
+    $cartas[] = rand(1, 10);
 }
 
-// Mostramos las imágenes de los animales obtenidos
-print "  &lt;h2&gt;$numero animales&lt;/h2&gt;\n";
-
+// Mostramos las imágenes de las cartas obtenidas
+print "  &lt;h2&gt;Cartas&lt;/h2&gt;\n";
 print "\n";
-print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
-foreach ($animales as $animal) {
-    print "    &#$animal;\n";
+print "  &lt;p&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
 
-// Guardamos el valor del animal a descartar
-$descarta = $animales[array_rand($animales)];
+// Calculamos el valor máximo
+$eliminar = max($cartas);
 
-// Mostramos el animal a descartar
-print "  &lt;h2&gt;Animal a eliminar&lt;/h2&gt;\n";
+// Mostramos el valor máximo
+print "&lt;p&gt;La carta más alta es un $eliminar.&lt;/p&gt;\n";
 print "\n";
-print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
-print "    &#$descarta;\n";
+
+// Mostramos la carta de valor máximo
+print "  &lt;h2&gt;Carta a eliminar&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/cartas/t$eliminar.svg\" alt=\"$eliminar de tréboles\" width=\"100\"&gt;\n";
 print "  &lt;/p&gt;\n";
 print "\n";
 
-// Eliminamos el animal de la matriz
-for ($i = 0; $i &lt; $numero; $i++) {
-    if ($animales[$i] == $descarta) {
-        unset($animales[$i]);
+// Recorremos la matriz de valores de cartas y eliminamos los elementos que coinciden con el máximo
+for ($i = 0; $i &lt; $n; $i++) {
+    if ($cartas[$i] == $eliminar) {
+        unset($cartas[$i]);
     }
 }
 
-// Mostramos las imágenes de los animales restantes
-print "  &lt;h2&gt;Quedan " . count($animales) . " animales&lt;/h2&gt;\n";
+// Mostramos las imágenes de las cartas (las eliminadas ya no se mostrarán)
+print "  &lt;h2&gt;Cartas restantes&lt;/h2&gt;\n";
 print "\n";
-if (count($animales) == 0) {
-    print "&lt;p&gt;No quedan animales.&lt;/p&gt;\n";
-} else {
-    print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
-    foreach ($animales as $animal) {
-        print "    &#$animal;\n";
-    }
+print "  &lt;p&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
+print "\n";
+
+// Calculamos y mostramos el valor máximo actual
+print "&lt;p&gt;La carta más alta es ahora un " . max($cartas) . ".&lt;/p&gt;\n";
 print "\n";
 
 ?&gt;</code>
@@ -184,7 +155,7 @@ print "\n";
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 $numero = rand(5, 15);
 
 // Guardamos los valores de las bolas en la matriz $bolas
@@ -217,7 +188,6 @@ foreach ($resultado as $bola) {
 print "  &lt;/p&gt;\n";
 print "\n";
 
-
 ?&gt;</code>
 </pre>
     </div>
@@ -228,7 +198,7 @@ print "\n";
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 $numero = rand(10, 20);
 
 // Guardamos los valores de los emoticonos en la matriz $emoticonos
@@ -268,7 +238,7 @@ print "\n";
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 $numero = rand(7, 20);
 
 // Guardamos los valores de las frutas en la matriz $frutas
@@ -311,7 +281,7 @@ print "\n";
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 // Definimos las matrices con los rangos de emoticonos
 $emoticonos_1 = range(128512, 128580);
 $emoticonos_2 = range(129296, 129303);
@@ -349,7 +319,7 @@ print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;&#". $emoticonos[rand(0,
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 $numero = rand(2, 7);
 
 // Creamos la matriz de dados aleatorios
@@ -390,7 +360,7 @@ print "  &lt;/p&gt;\n";
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 $numero = rand(5, 10);
 
 // Creamos la matriz de cartas aleatorias
@@ -458,7 +428,7 @@ print "  &lt;/p&gt;\n";
 
     <div class="codigo">
       <pre>
-  <code class="language-php">&lt;?php
+<code class="language-php">&lt;?php
 // Mostramos con cuántos dados va a jugar el Atacante
 print "  &lt;h2&gt;Atacante&lt;/h2&gt;\n";
 print "\n";
@@ -542,9 +512,134 @@ print ".&lt;/p&gt;\n";
     </div>
   </section>
 
+  <section id="ejercicio-14">
+    <h3>Matrices (3) 14 - Reparto de cartas</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Guardamos los valores de las cartas en la matriz $cartas
+// $n es el número de cartas que repartiremos a cada jugador,
+// por lo que generamos 2 * $n cartas
+$n       = rand(2, 6);
+$cartas = [];
+for ($i = 0; $i &lt; 2 * $n; $i++) {
+    $cartas[] = rand(1, 10);
+}
+
+// Mostramos las imágenes de las cartas obtenidas
+print "  &lt;h2&gt;Las " . (2 * $n) . " cartas a repartir&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Barajamos los valores de las cartas
+shuffle($cartas);
+
+// Creamos una matriz con las $n primeras cartas
+$cartasA = [];
+for ($i = 0; $i &lt; $n; $i++) {
+  $cartasA[] = $cartas[$i];
+}
+
+// Creamos una matriz con las $n siguientes cartas
+for ($i = 0; $i &lt; $n; $i++) {
+  $cartasB[] = $cartas[$i+ $n];
+}
+
+// Mostramos las imágenes de las cartas del primer jugador
+print "  &lt;h2&gt;Las $n cartas del jugador A&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($cartasA as $carta) {
+    print "    &lt;img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Mostramos las imágenes de las cartas del segundo jugador
+print "  &lt;h2&gt;Las $n cartas del jugador B&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($cartasB as $carta) {
+    print "    &lt;img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-15">
+    <h3>Matrices (3) 15 - Cartas pares iguales consecutivas</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Guardamos los valores de las cartas en la matriz $cartas
+$n      = rand(3, 12);
+$cartas = [];
+for ($i = 0; $i &lt; $n; $i++) {
+    $cartas[] = rand(1, 10);
+}
+
+// Mostramos las imágenes de las cartas obtenidas
+print "  &lt;h2&gt;Las $n cartas&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Recorremos la matriz de cartas y si el valor de la carta es par, eliminamos el valor
+for ($i = 0; $i &lt; $n; $i++) {
+    if ($cartas[$i] % 2) {
+        unset($cartas[$i]);
+    }
+}
+
+// Mostramos las imágenes de las cartas (las eliminadas ya no se mostrarán)
+print "  &lt;h2&gt;Sin cartas impares&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($cartas as $carta) {
+    print "    &lt;img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Reindexamos la matirz de cartas para poderla recorrer con un bucle for
+// y que los índices sean consecutivos
+$cartas = array_values($cartas);
+
+// Recorremos la matriz de cartas (hasta el penúltimo valor)
+// comparando cada valor con el siguiente y si coinciden
+// damos el valor true a la variable testigo $consecutivas
+$consecutivas = false;
+for ($i = 0; $i &lt; count($cartas) - 1; $i++) {
+    if ($cartas[$i] == $cartas[$i + 1]) {
+        $consecutivas = true;
+    }
+}
+
+// Según el valor de consecutivas mostramos un mensaje distinto
+print ($consecutivas) ? "&lt;p&gt;Hay cartas iguales consecutivas&lt;/p&gt;\n" : "&lt;p&gt;No hay cartas iguales consecutivas&lt;/p&gt;\n";
+
+?&gt;</code>
+</pre>
+    </div>
+  </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 31 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

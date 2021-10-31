@@ -33,7 +33,7 @@
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-05">05 - Deportes</a></li>
           </ul>
         </li>
-        <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#con-bucles">Con bucles</a>
+        <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#con-bucles">Con bucles for o foreach</a>
           <ul>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-11">11 - Tirada de dados</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-12">12 - Negación</a></li>
@@ -42,6 +42,12 @@
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-15">15 - "Y" lógico</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-16">16 - El bit más común</a></li>
             <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-17">17 - Partida de dados</a></li>
+          </ul>
+        </li>
+        <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#con-bucles-foreach">Con bucles for y foreach</a>
+          <ul>
+            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-21">21 - Eliminar dado</a></li>
+            <li><a href="../../ejercicios/sin-formularios/matrices-1/index.html#ejercicio-22">22 - Eliminar animal</a></li>
           </ul>
         </li>
       </ul>
@@ -57,7 +63,7 @@
             <li><a href="#ejercicio-05">05 - Deportes</a></li>
           </ul>
         </li>
-        <li><a href="#con-bucles">Con bucles</a>
+        <li><a href="#con-bucles">Con bucles for o foreach</a>
           <ul>
             <li><a href="#ejercicio-11">11 - Tirada de dados</a></li>
             <li><a href="#ejercicio-12">12 - Negación</a></li>
@@ -66,6 +72,12 @@
             <li><a href="#ejercicio-15">15 - "Y" lógico</a></li>
             <li><a href="#ejercicio-16">16 - El bit más común</a></li>
             <li><a href="#ejercicio-17">17 - Partida de dados</a></li>
+          </ul>
+        </li>
+        <li><a href="#con-bucles-foreach">Con bucles for y foreach</a>
+          <ul>
+            <li><a href="#ejercicio-21">21 - Eliminar dado</a></li>
+            <li><a href="#ejercicio-22">22 - Eliminar animal</a></li>
           </ul>
         </li>
       </ul>
@@ -252,7 +264,7 @@ print "  &lt;p&gt;&amp;#$emojis[$emoji];&amp;#8205;&amp;#$generos[$genero];&amp;
   </section>
 
   <section id="con-bucles">
-    <h2>Con bucles for y foreach</h2>
+    <h2>Con bucles for o foreach</h2>
 
     <section id="ejercicio-11">
       <h3>Matrices (1) 11 - Tirada de dados</h3>
@@ -1054,8 +1066,139 @@ if ($gana1 &gt; $gana2) {
     </section>
   </section>
 
+  <section id="con-bucles-foreach">
+    <h2>Con bucles for o foreach</h2>
+
+    <section id="ejercicio-21">
+      <h3>Matrices (1) 21 - Eliminar dado</h3>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numero = rand(1, 10);
+
+// Guardamos los valores de los dados en la matriz $dados
+$dados = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dados[$i] = rand(1, 6);
+}
+
+// Mostramos las imágenes de los dados obtenidos
+if ($numero == 1) {
+    print "  &lt;h2&gt;Tirada de $numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;Tirada de $numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($dados as $dado) {
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Guardamos el valor del dado a descartar
+$descarta = rand(1, 6);
+
+// Mostramos el dado a descartar
+print "  &lt;h2&gt;Dado a eliminar&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/$descarta.svg\" alt=\"$descarta\" width=\"80\" height=\"80\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Eliminamos el dado de la matriz
+for ($i = 0; $i &lt; $numero; $i++) {
+    if ($dados[$i] == $descarta) {
+        unset($dados[$i]);
+    }
+}
+
+// Mostramos las imágenes de los dados restantes
+print "  &lt;h2&gt;Dados restantes&lt;/h2&gt;\n";
+print "\n";
+if (count($dados) == 0) {
+    print "&lt;p&gt;No quedan dados.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p&gt;\n";
+    foreach ($dados as $dado) {
+        print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"80\" height=\"80\"&gt;\n";
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-22">
+      <h3>Matrices (1) 22 - Eliminar animal</h3>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numero = rand(20, 30);
+
+// Guardamos los valores de los animales en la matriz $animales
+$animales = [];
+for ($i = 0; $i &lt; $numero; $i++) {
+    $animales[$i] = rand(128000, 128060);
+}
+
+// Mostramos las imágenes de los animales obtenidos
+print "  &lt;h2&gt;$numero animales&lt;/h2&gt;\n";
+
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+foreach ($animales as $animal) {
+    print "    &#$animal;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Guardamos el valor del animal a descartar
+$descarta = $animales[rand(0, $numero - 1)];
+
+// Mostramos el animal a descartar
+print "  &lt;h2&gt;Animal a eliminar&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+print "    &#$descarta;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
+
+// Eliminamos el animal de la matriz
+for ($i = 0; $i &lt; $numero; $i++) {
+    if ($animales[$i] == $descarta) {
+        unset($animales[$i]);
+    }
+}
+
+// Mostramos las imágenes de los animales restantes
+print "  &lt;h2&gt;Quedan " . count($animales) . " animales&lt;/h2&gt;\n";
+print "\n";
+if (count($animales) == 0) {
+    print "&lt;p&gt;No quedan animales.&lt;/p&gt;\n";
+} else {
+    print "  &lt;p style=\"font-size: 400%; margin: 0;\"&gt;\n";
+    foreach ($animales as $animal) {
+        print "    &#$animal;\n";
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+
+?&gt;</code>
+</pre>
+      </div>
+    </section>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 28 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

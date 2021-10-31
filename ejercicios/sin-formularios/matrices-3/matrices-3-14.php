@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (3) 1 - matrices-3-01.php
+ * Matrices (3) 14 - matrices-3-14.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Cartas extremas.
+    Reparto de cartas.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,27 +36,60 @@
 </head>
 
 <body>
-  <h1>Cartas extremas</h1>
+  <h1>Reparto de cartas</h1>
 
 <?php
 // Guardamos los valores de las cartas en la matriz $cartas
-$n = rand(5, 10);
-for ($i = 0; $i < $n; $i++) {
+// $n es el número de cartas que repartiremos a cada jugador,
+// por lo que generamos 2 * $n cartas
+$n       = rand(2, 6);
+$cartas = [];
+for ($i = 0; $i < 2 * $n; $i++) {
     $cartas[] = rand(1, 10);
 }
 
 // Mostramos las imágenes de las cartas obtenidas
-print "  <h2>Cartas</h2>\n";
+print "  <h2>Las " . (2 * $n) . " cartas a repartir</h2>\n";
 print "\n";
 print "  <p>\n";
 foreach ($cartas as $carta) {
-    print "    <img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\">\n";
+    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Calculamos y mostramos los valores máximo y mínimo
-print "<p>La carta más alta es un " . max($cartas) . " y la carta más baja es un " . min($cartas) . "</p>\n";
+// Barajamos los valores de las cartas
+shuffle($cartas);
+
+// Creamos una matriz con las $n primeras cartas
+$cartasA = [];
+for ($i = 0; $i < $n; $i++) {
+  $cartasA[] = $cartas[$i];
+}
+
+// Creamos una matriz con las $n siguientes cartas
+for ($i = 0; $i < $n; $i++) {
+  $cartasB[] = $cartas[$i+ $n];
+}
+
+// Mostramos las imágenes de las cartas del primer jugador
+print "  <h2>Las $n cartas del jugador A</h2>\n";
+print "\n";
+print "  <p>\n";
+foreach ($cartasA as $carta) {
+    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+}
+print "  </p>\n";
+print "\n";
+
+// Mostramos las imágenes de las cartas del segundo jugador
+print "  <h2>Las $n cartas del jugador B</h2>\n";
+print "\n";
+print "  <p>\n";
+foreach ($cartasB as $carta) {
+    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+}
+print "  </p>\n";
 print "\n";
 
 ?>

@@ -33,7 +33,7 @@
             <li><a href="#ejercicio-05">05 - Deportes</a></li>
           </ul>
         </li>
-        <li><a href="#con-bucles">Con bucles</a>
+        <li><a href="#con-bucles">Con bucles for o foreach</a>
           <ul>
             <li><a href="#ejercicio-11">11 - Tirada de dados</a></li>
             <li><a href="#ejercicio-12">12 - Negación</a></li>
@@ -42,6 +42,12 @@
             <li><a href="#ejercicio-15">15 - "Y" lógico</a></li>
             <li><a href="#ejercicio-16">16 - El bit más común</a></li>
             <li><a href="#ejercicio-17">17 - Partida de dados</a></li>
+          </ul>
+        </li>
+        <li><a href="#con-bucles-foreach">Con bucles for y foreach</a>
+          <ul>
+            <li><a href="#ejercicio-21">21 - Eliminar dado</a></li>
+            <li><a href="#ejercicio-22">22 - Eliminar animal</a></li>
           </ul>
         </li>
       </ul>
@@ -57,7 +63,7 @@
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-05">05 - Deportes</a></li>
           </ul>
         </li>
-        <li><a href="../../../soluciones/sin-formularios/matrices-1.html#con-bucles">Con bucles</a>
+        <li><a href="../../../soluciones/sin-formularios/matrices-1.html#con-bucles">Con bucles for o foreach</a>
           <ul>
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-11">11 - Tirada de dados</a></li>
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-12">12 - Negación</a></li>
@@ -66,6 +72,12 @@
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-15">15 - "Y" lógico</a></li>
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-16">16 - El bit más común</a></li>
             <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-17">17 - Partida de dados</a></li>
+          </ul>
+        </li>
+        <li><a href="#con-bucles-foreach">Con bucles for y foreach</a>
+          <ul>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-21">21 - Eliminar dado</a></li>
+            <li><a href="../../../soluciones/sin-formularios/matrices-1.html#ejercicio-22">22 - Eliminar animal</a></li>
           </ul>
         </li>
       </ul>
@@ -201,7 +213,7 @@
         <summary><strong>Ayuda</strong></summary>
         <ul>
           <li>Este programa se puede hacer, por ejemplo, con cuatro matrices, dos para almacenar la actividad (en una el código Unicode y en otra la descripción) y dos para almacenar el género (en una el código Unicode femenino/masculino y en otra la descripción Hombre/Mujer).</li>
-          <li style="line-height: 250%">Hay varias formas de obtener <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias.html#generos">emojis de hombres y mujeres</a>. En este ejercicio aparecen las <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias-generos.html#genero-3">secuencias de cuatro entidades</a>, que utilizan primero el caracter de la actividad, después el caráter ZWJ U+200D,  después el carácter U+2640 (signo femenino <span style="font-size: 300%">&#x2640;</span>) o U+2642 (signo masculino <span style="font-size: 300%">&#x2642;</span>) y por último el selector de variación 16 U+FE0F (para indicar que queremos la variante emoji, ya que los caracteres femenino / masculino tiene modo texto y modo emoji.
+          <li style="line-height: 250%">Hay varias formas de obtener <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias.html#generos">emojis de hombres y mujeres</a>. En este ejercicio aparecen las <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias-generos.html#genero-3">secuencias de cuatro entidades</a>, que utilizan primero el caracter de la actividad, después el caráter ZWJ U+200D, después el carácter U+2640 (signo femenino <span style="font-size: 300%">&#x2640;</span>) o U+2642 (signo masculino <span style="font-size: 300%">&#x2642;</span>) y por último el selector de variación 16 U+FE0F (para indicar que queremos la variante emoji, ya que los caracteres femenino / masculino tiene modo texto y modo emoji.
             <p style="line-height: 250%">Así, al escribir &amp;#128694; <span style="font-size: 300%">&#128694;</span> seguido de &amp;#8205; (carácter ZWJ), seguido de &amp;#9792; <span style="font-size: 300%">&#9792;</span> y terminado por &amp;#65039; (VS16), se convierte en <span style="font-size: 300%">&#128694;&#8205;&#9792;&#65039;</span>.</p>
           </li>
           <li>Las entidades numéricas que aparecen en este ejercicio son: 127939, 127940, 127946, 128675, 128692, 128693, 128694, 129336, 129337, 129341, 129342, 129495. Las entidades numércias femenino / masculino son en decimal 9792 y 9794, respectivamente.</li>
@@ -221,13 +233,14 @@
   </section>
 
   <section id="con-bucles">
-    <h2>Con bucles for y foreach</h2>
+    <h2>Con bucles for o foreach</h2>
 
-    <p>En estos ejercicios se aconseja utilizar:</p>
+    <p>Estos ejercicios están pensados para practicar tanto los bucles <span class="php-res">for</span> como los bucles <span class="php-res">foreach</span>.</p>
+
+    <p>Para ello, se puede resolver cada ejercicio dos veces. La primera vez, utilizando únicamente bucles <span class="php-res">for</span>. La segunda vez, reescribiendo en los programas algunos de los bucles <span class="php-res">for</span> por bucles <span class="php-res">foreach</span>:</p>
     <ul>
-      <li>bucles <span class="php-res">for</span> para crear las matrices de datos</li>
-      <li>bucles <span class="php-res">foreach</span> para mostrar las matrices de datos</li>
-      <li>Para transformar las matrices se recomienda utilizar <span class="php-res">foreach</span> cuando se pueda y bucles <span class="php-res">for</span> cuando sea necesario.</li>
+      <li>Los bucles que muestran los resultados se pueden reescribir con bucles <span class="php-res">foreach</span></li>
+      <li>Los bucles que realizan cálculos o cambian las matrices se pueden reescribir con bucles <span class="php-res">foreach</span> si no requieren acceder simultáneamente a varias posiciones de las matrices.</li>
     </ul>
 
     <section id="ejercicio-11">
@@ -406,8 +419,69 @@
     </section>
   </section>
 
+  <section id="con-bucles-foreach">
+    <h2>Con bucles for y foreach</h2>
+
+    <p>Estos ejercicios están pensados para practicar tanto los bucles <span class="php-res">for</span> como los bucles <span class="php-res">foreach</span>.</p>
+
+    <ul>
+      <li>Los bucles que crean las matrices de datos se escribirán con bucles <span class="php-res">for</span></li>
+      <li>Los bucles que muestran los resultados se escribirán con bucles <span class="php-res">foreach</span></li>
+      <li>Los bucles que realizan cálculos o cambian las matrices se pueden escribir con bucles <span class="php-res">foreach</span> si no requieren acceder simultáneamente a varias posiciones de las matrices.</li>
+    </ul>
+
+    <section id="ejercicio-21">
+      <h3>Matrices (1) 21 - Eliminar dado</h3>
+
+      <p>Escriba un programa:</p>
+      <ul>
+        <li>que muestre primero una tirada de un número de dados al azar entre 1 y 10</li>
+        <li>que muestre a continuación un dado al azar.</li>
+        <li>que muestre de nuevo la tirada inicial, pero habiendo eliminado de la tirada los dados que coincidan con el dado suelto (si hay alguno).</li>
+      </ul>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <ul>
+            <li>Utilice la instrucción <a href="../../../lecciones/php-matrices.html#borrar"><span class="php-res">unset()</span></a> para borrar los elementos de la matriz que coincidan con el valor a eliminar.</li>
+          </ul>
+        </ul>
+      </details>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="matrices-1-21.php" style="height: 31em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="matrices-1-21.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejercicio-22">
+      <h3>Matrices (1) 22 - Eliminar animal</h3>
+
+      <p>Escriba un programa:</p>
+      <ul>
+        <li>que muestre primero un grupo de entre 20 y 30 animales al azar (rango unicode: 128000 a 128060).</li>
+        <li>que muestre a continuación un animal al azar, pero que sea siempre uno de los anteriores.</li>
+        <li>que muestre de nuevo el grupo inicial, pero habiendo eliminado del grupo los animales que coincidan con el animal suelto (al menos habrá uno).</li>
+      </ul>
+
+      <div class="filaflex">
+        <div class="resultado-object">
+          <object type="text/html" data="matrices-1-22.php" style="height: 31em;">ERROR (no puede mostrarse el objeto)</object>
+        </div>
+        <div class="icono-enlace">
+          <a href="matrices-1-22.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+    </section>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 19 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 28 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
