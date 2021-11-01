@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-$numero = rand(1,10);
+$numero = rand(1, 10);
 $total = 0;
 
 if ($numero == 1) {

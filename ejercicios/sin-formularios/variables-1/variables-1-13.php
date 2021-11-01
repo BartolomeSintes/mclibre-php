@@ -52,7 +52,7 @@ print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
 print "      <rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" />\n";
 print "      <rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" />\n";
-print "      <rect x=\"" . ($c1+$c2) . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
+print "      <rect x=\"" . ($c1 + $c2) . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>

@@ -50,12 +50,16 @@ for ($i = 0; $i < 5; $i++) {
     print "      <circle cx=\"0\" cy=\"0\" r=\"" . (200 - 40 * $i - 20) . "\" fill=\"#ddd\" />\n";
 }
 
+for ($i = 0; $i < 10; $i++) {
+  print "      <text x=\"0\" y=\"" . (195 - 20 * $i) . "\" text-anchor=\"middle\" font-size=\"13\">" . ($i + 1) . "</text>\n";
+}
+
 $puntos = 0;
 $disparos = rand(1, 10);
 for ($i = 0; $i < $disparos; $i++) {
     $x = rand(-200, 200);
     $y = rand(-200, 200);
-    $puntos += ((10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20)) > 0 ? (10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20)) : 0);
+    $puntos += (10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20) > 0) ? 10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20) : 0;
     print "      <path fill=\"black\" stroke=\"white\" stroke-width=\"2\" "
      . "d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 "
      . "-0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" />\n";

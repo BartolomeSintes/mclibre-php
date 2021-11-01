@@ -805,7 +805,7 @@ print "\n";
 
     <p>Si los valores a ordenar son cadenas que contienen caracteres no ingleses, se debe utilizar el segundo argumento con el valor <span class="php-con">SORT_LOCALE_STRING</span>, aunque también es necesario establecer el idioma con la función <a href="https://www.php.net/manual/en/function.setlocale.php"><span class="php-fun">setlocale($category, $locales, ...)</span></a>.</p>
 
-    <p>Por desgracia, el valor de $locales no es el mismo en Windows que en Linux. Por ejemplo, el locale para España sería "es_ES.UTF-8" en Linux y "es-ES.UTF-8".</p>
+    <p>Por desgracia, el valor de $locales no es el mismo en Windows que en Linux. Por ejemplo, el locale para España sería "es_ES.UTF-8" en Linux y "es-ES.UTF-8" en Windows.</p>
 
     <p>Las vocales acentuadas se ordenan a continuación de las vocales sin acentuar, salvo si la palabra contiene más letras y entonces son las letras posteriores las que determinan el orden, como muestra el siguiente ejemplo.</p>
 
@@ -1123,7 +1123,9 @@ print "&lt;p&gt;$indice&lt;/p&gt;\n";
 </pre>
       </div>
       <div class="resultado-html">
-        <code class="language-html">&lt;p&gt;10&lt;/p&gt;</code>
+        <pre>
+<code class="language-html">&lt;p&gt;10&lt;/p&gt;</code>
+</pre>
       </div>
     </div>
 

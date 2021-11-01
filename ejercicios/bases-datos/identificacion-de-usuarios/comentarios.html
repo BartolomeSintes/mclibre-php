@@ -107,7 +107,7 @@ define("SESSION_NAME", "agenda-1");  // Nombre de sesión</code>
     } else if ($profundidadDirectorio == 1) {
         print "  &lt;link rel=\"stylesheet\" href=\"../comunes/mclibre-php-proyectos.css.php\" title=\"Color\" /&gt;\n";
     }
-  ...</code>
+    ...</code>
 </pre>
             </div>
           </li>
@@ -318,7 +318,7 @@ $consultasCreaTabla = [
         usuario VARCHAR($tamUsuariosUsuario),
         password VARCHAR($tamUsuariosPasswordCifrado)
     )",
-    ...</code>
+...</code>
 </pre>
             </div>
           </li>
@@ -409,7 +409,7 @@ borraTodo($db, $tablas, $consultasCreaTabla);</code>
             if ($valor["usuario"] == ROOT_NAME) {
                 print "    &lt;p&gt;Este usuario no se puede borrar.&lt;/p&gt;\n";
             } else {
-          ...</code>
+                ...</code>
 </pre>
             </div>
           </li>
@@ -428,13 +428,13 @@ borraTodo($db, $tablas, $consultasCreaTabla);</code>
           if ($valor["usuario"] == ROOT_NAME) {
               print "    &lt;p&gt;Este usuario no se puede modificar.&lt;/p&gt;\n";
           } else {
-          ...</code>
+              ...</code>
 </pre>
             </div>
             <p>Al cambiar el nombre del usuario hay que comprobar antes que el nuevo nombre no esté ya registrado</p>
             <div class="codigo">
               <pre>
-  <code class="language-php">                    // La consulta cuenta los registros con un id diferente porque MySQL no distingue
+<code class="language-php">                    // La consulta cuenta los registros con un id diferente porque MySQL no distingue
                     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
                     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
                     $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
@@ -447,13 +447,13 @@ borraTodo($db, $tablas, $consultasCreaTabla);</code>
                     } elseif ($result-&gt;fetchColumn() &gt; 0) {
                         print "    &lt;p&gt;Ya existe un registro con ese nombre de usuario. "
                             . "No se ha guardado la modificación.&lt;/p&gt;\n";
-          ...</code>
+                        ...</code>
 </pre>
             </div>
             <p>Si se ha dejado en blanco el campo de contraseña, se mantiene la contraseña anterior.</p>
             <div class="codigo">
               <pre>
-  <code class="language-php">                        if ($password != "") {
+<code class="language-php">                        if ($password != "") {
                             $consulta = "UPDATE $tablaUsuarios
                                 SET usuario=:usuario, password=:password
                                 WHERE id=:id";
@@ -615,7 +615,7 @@ $consultasCreaTabla = [
         password VARCHAR($tamUsuariosPasswordCifrado),
         nivel INTEGER
     )",
-  ...</code>
+    ...</code>
 </pre>
             </div>
           </li>
@@ -639,7 +639,7 @@ $consultasCreaTabla = [
         nivel INTEGER NOT NULL,
         PRIMARY KEY(id)
     )",
-  ...</code>
+    ...</code>
 </pre>
             </div>
           </li>
@@ -723,7 +723,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
     if ($usuario == "" || $password == "" || $nivel == "") {
         print "    &lt;p&gt;Hay que rellenar todos los campos. No se ha guardado el registro.&lt;/p&gt;\n";
     } else {
-      ...
+        ...
                 $consulta = "INSERT INTO $tablaUsuarios
                     (usuario, password, nivel)
                     VALUES (:usuario, :password, $nivel)";
@@ -733,7 +733,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                 } else {
                     print "    &lt;p&gt;Error al crear el registro &lt;strong&gt;$usuario " . encripta($password) . "&lt;/strong&gt;.&lt;/p&gt;\n";
                 }
-...</code>
+        ...</code>
 </pre>
             </div>
           </li>

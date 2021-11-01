@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo dibujo.</p>
 
 <?php
-$circulos = rand(1,10);
+$circulos = rand(1, 10);
 
 if ($circulos == 1) {
     print "  <h2>$circulos círculo</h2>\n";
