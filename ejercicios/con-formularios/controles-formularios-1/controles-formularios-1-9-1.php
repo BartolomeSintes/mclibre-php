@@ -15,7 +15,7 @@
   <h1>Dibuja cuadrado 3 (Formulario)</h1>
 
   <form action="controles-formularios-1-9-2.php" method="get">
-    <p><label>Escriba el tamaño: <input type="number" name="ancho" min="5" value="50" autofocus></label></p>
+    <p><label>Escriba el tamaño: <input type="number" name="ancho" min="5" value="50"></label></p>
 
     <p><label>Escriba el grosor del borde: <input type="number" name="grosor" min="1" value="6"></label></p>
 
