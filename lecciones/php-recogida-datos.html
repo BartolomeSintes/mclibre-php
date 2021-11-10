@@ -678,7 +678,7 @@ print "&lt;p&gt;Su nombre es " . <span class="codigo-resaltado">strip_tags($_REQ
     <section id="trim">
       <h3>Eliminar espacios en blanco iniciales y finales: <span class="php-fun">trim($cadena)</span></h3>
 
-      <p>A veces, al rellenar un formulario, los usuarios escriben por error espacios en blanco al principio o al final de las cajas de texto y si el programa PHP no tiene en cuenta esa posibilidad se pueden obtener resultados inesperados.</p>
+      <p>A veces, al rellenar un formulario, los usuarios escriben o pegan por error espacios en blanco (o incluso tabuladores o saltos de línea) al principio o al final de las cajas de texto y si el programa PHP no tiene en cuenta esa posibilidad se pueden obtener resultados inesperados.</p>
 
       <p>En el programa de ejemplo del apartado anterior en el que se escribía una estructura if ... else ... para avisar al usuario si no escribía el nombre, si el usuario escribe únicamente espacios en blanco, el programa funciona, pero no da la respuesta adecuada ya que la cadena con espacios en blanco no es una cadena vacía.</p>
 
@@ -718,7 +718,7 @@ if (<span class="codigo-resaltado"><span class="codigo-resaltado">$_REQUEST["nom
         </div>
       </div>
 
-      <p>Este problema se puede resolver utilizando la función <a href="https://www.php.net/manual/en/function.trim.php"><span class="php-fun">trim($cadena)</span></a>, que elimina los espacios en blanco iniciales y finales y devuelve la cadena sin esos espacios. Modificando el ejemplo anterior, la cadena introducida queda reducida a la cadena vacía y la comprobación la detecta:</p>
+      <p>Este problema se puede resolver utilizando la función <a href="https://www.php.net/manual/en/function.trim.php"><span class="php-fun">trim($cadena)</span></a>, que elimina los espacios en blanco iniciales y finales (además de saltos de línea y tabuladores) y devuelve la cadena sin esos espacios. Modificando el ejemplo anterior, la cadena introducida queda reducida a la cadena vacía y la comprobación la detecta:</p>
 
       <div class="filaflex cabecera">
         <div>ejemplo.html</div>

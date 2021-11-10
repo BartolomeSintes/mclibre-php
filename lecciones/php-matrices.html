@@ -134,7 +134,7 @@ print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 
     <hr class="corta">
 
-    <p>Si se solicita un valor no definido de una matriz, se produce un aviso (undefined offset). Los avisos no interrumpen la ejecución del programa, pero se deben corregir porque el programa seguramente no tendrá el comportamiento esperado:</p>
+    <p>Si se solicita un valor no definido de una matriz, se produce un aviso (Warning: Undefined array key en PHP 8, o Notice: undefined offset en PHP 7). Los avisos no interrumpen la ejecución del programa, pero se deben corregir porque el programa seguramente no tendrá el comportamiento esperado:</p>
 
     <div class="filaflex">
       <div class="icono-ok">
@@ -150,7 +150,7 @@ print "&lt;p&gt;$nombres<span class="codigo-resaltado">[3]</span>&lt;p&gt;\n";
 </pre>
       </div>
       <div class="resultado-html">
-        <p><b>Notice</b>: Undefined offset: 3 in <b>ejemplo.php</b> on line <b>4</b></p>
+        <p><b>Warning</b>: Undefined array key 3 in <b>ejemplo.php</b> on line <b>4</b></p>
       </div>
     </div>
 
@@ -1040,6 +1040,38 @@ Array
 )</pre>
       </div>
     </div>
+
+    <hr class="corta">
+
+    <p>También se pueden borrar todos los elementos de una matriz sin borrar la propia matriz asignando la matriz vacía ([]):</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
+
+print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+
+$matriz = [];
+
+print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [5] =&gt; 25
+    [-1] =&gt; negativo
+    [número 1] =&gt; cinco
+)
+
+Array
+(
+)</pre>
+      </div>
+    </div>
   </section>
 
   <section id="copiar">
@@ -1086,7 +1118,7 @@ print "&lt;pre&gt;\n"; print_r($cuadradosCopia); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 9 de noviembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
