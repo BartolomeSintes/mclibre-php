@@ -71,8 +71,6 @@
 
   <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sesiones/sesiones-1/index.html">Sesiones (1)</a>. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
 
-  <p class="incompleto"><img src="../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">No he terminado de actualizar esta página con las soluciones actuales. En el archivo para descargar se encuentra las soluciones completas actualizadas.</p>
-
   <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Para hacer estos ejercicios, se recomienda seguir el recorrido de la aplicación, suponiendo que el usuario introduce datos. Pero una vez completada la aplicación hay que comprobar desde el principio (cerrando el navegador previamente) que la aplicación funciona correctamente (es decir, que la aplicación tiene en cuenta que la primera vez que se ejecuta, todavía no hay datos).</p>
 
   <section id="formularios">
@@ -97,7 +95,7 @@
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">5</span>
+// Accedemos a la sesión <span class="numero-circulo">5</span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;
@@ -128,7 +126,7 @@ if (isset($_SESSION["texto"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;
@@ -166,7 +164,7 @@ if ($texto == "") {
     $textoOk = true;
 }
 
-// Si el texto es válido ...
+// Si el texto es válido,
 if ($textoOk) {
   // guardamos el texto en la sesión <span class="numero-circulo">2</span>
     $_SESSION["texto"] = $texto;
@@ -204,7 +202,7 @@ if ($textoOk) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Accedemos a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-02");
 session_start();
 ?&gt;
@@ -215,10 +213,9 @@ session_start();
   &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
 
 &lt;?php
-// Si hay un texto guardado en la sesión, <span class="numero-circulo">9</span>
+// Si hay un texto guardado en la sesión, lomostramos <span class="numero-circulo">9</span>
 if (isset($_SESSION["texto"])) {
-    // lo mostramos <span class="numero-circulo">7</span>
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n"; <span class="numero-circulo">7</span>
     print "\n";
 }
 ?&gt;
@@ -234,7 +231,7 @@ if (isset($_SESSION["texto"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">5</span>
+// Accedemos a la sesión <span class="numero-circulo">5</span>
 session_name("sesiones-1-02");
 session_start();
 
@@ -273,7 +270,7 @@ if (!$textoOk) {
 } else {
     // ... guardamos el texto en la sesión <span class="numero-circulo">4</span>
     $_SESSION["texto"] = $texto;
-    // y volvemos al formulario <span class="numero-circulo">6</span>
+    // Volvemos al formulario <span class="numero-circulo">6</span>
     header("Location:sesiones-1-02-1.php");
     exit;
 }
@@ -310,7 +307,7 @@ if (!$textoOk) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">7</span>
+// Accedemos a la sesión <span class="numero-circulo">7</span>
 session_name("sesiones-1-02-b");
 session_start();
 ?&gt;
@@ -321,10 +318,9 @@ session_start();
   &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
 
 &lt;?php
-// Si hay un texto guardado en la sesión, <span class="numero-circulo">8</span>
+// Si hay un texto guardado en la sesión, lo mostramos <span class="numero-circulo">8</span>
 if (isset($_SESSION["texto"])) {
-    // lo mostramos <span class="numero-circulo">6</span>
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n"; <span class="numero-circulo">6</span>
     print "\n";
 }
 ?&gt;
@@ -340,7 +336,7 @@ if (isset($_SESSION["texto"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">4</span>
+// Accedemos a la sesión <span class="numero-circulo">4</span>
 session_name("sesiones-1-02-b");
 session_start();
 
@@ -402,7 +398,7 @@ header("Location:sesiones-1-02-b-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Accedemos a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-03");
 session_start();
 ?&gt;
@@ -427,7 +423,7 @@ print "\n";
 
 // Si hemos detectado un error <span class="numero-circulo">9</span>
 if (isset($_SESSION["error"])) {
-    // Escribimos un aviso e incluimos el valor incorrecto en el control
+    // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
     print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[palabra]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
         . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
     print "\n";
@@ -446,7 +442,7 @@ if (isset($_SESSION["error"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-03");
 session_start();
 
@@ -518,7 +514,7 @@ header("Location:sesiones-1-03-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Accedemos a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-03-b");
 session_start();
 ?&gt;
@@ -568,7 +564,7 @@ if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-03-b");
 session_start();
 
@@ -642,7 +638,7 @@ header("Location:sesiones-1-03-b-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Accedemos a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-03-c");
 session_start();
 ?&gt;
@@ -690,7 +686,7 @@ print "\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-03-c");
 session_start();
 
@@ -759,7 +755,7 @@ header("Location:sesiones-1-03-c-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">5</span>
+// Accedemos a la sesión <span class="numero-circulo">5</span>
 session_name("sesiones-1-03-d");
 session_start();
 
@@ -817,7 +813,7 @@ header("Location:sesiones-1-03-d-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">9</span>
+// Accedemos a la sesión <span class="numero-circulo">9</span>
 session_name("sesiones-1-04");
 session_start();
 ?&gt;
@@ -884,7 +880,7 @@ if (isset($_SESSION["minusculasError"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-04");
 session_start();
 
@@ -953,7 +949,7 @@ header("Location:sesiones-1-04-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">9</span>
+// Accedemos a la sesión <span class="numero-circulo">9</span>
 session_name("sesiones-1-04-b");
 session_start();
 ?&gt;
@@ -1029,7 +1025,7 @@ print "\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-04-b");
 session_start();
 
@@ -1115,11 +1111,11 @@ header("Location:sesiones-1-04-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">7</span>
+// Accedemos a la sesión <span class="numero-circulo">7</span>
 session_name("sesiones-1-11");
 session_start();
 
-// Si el número no está guardado en la sesión, lo pone a cero
+// Si el número no está guardado en la sesión, ponemos el valor a cero
 if (!isset($_SESSION["numero"])) {<span class="numero-circulo">8</span>
     $_SESSION["numero"] = 0;
 }
@@ -1131,7 +1127,7 @@ if (!isset($_SESSION["numero"])) {<span class="numero-circulo">8</span>
       &lt;button type="submit" name="accion" value="bajar" style="font-size: 4rem"&gt;-&lt;/button&gt;
 
 &lt;?php
-// Muestra el número, guardado en la sesión <span class="numero-circulo">6</span>
+// Mostramos el número, guardado en la sesión <span class="numero-circulo">6</span>
 print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";
 ?&gt;
 
@@ -1146,11 +1142,11 @@ print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-11");
 session_start();
 
-// Si el número no está guardado en la sesión, lo pone a cero (el valor inicial) <span class="numero-circulo">4</span>
+// Si el número no está guardado en la sesión, ponemos el valor a cero <span class="numero-circulo">4</span>
 if (!isset($_SESSION["numero"])) {
     $_SESSION["numero"] = 0;
 }
@@ -1171,10 +1167,10 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogida de accion
+// Recogemos accion
 $accion   = recoge("accion");
 
-// Dependiendo de la acción recibida, modifica el número guardado <span class="numero-circulo">2</span>
+// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">2</span>
 if ($accion == "cero") {
     $_SESSION["numero"] = 0;
 } elseif ($accion == "subir") {
@@ -1183,7 +1179,7 @@ if ($accion == "cero") {
     $_SESSION["numero"]--;
 }
 
-// y vuelve al formulario <span class="numero-circulo">5</span>
+// Volvemos al formulario <span class="numero-circulo">5</span>
 header("Location:sesiones-1-11-1.php");
 ?&gt;</code>
 </pre>
@@ -1215,11 +1211,11 @@ header("Location:sesiones-1-11-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Accedemos a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-12");
 session_start();
 
-// Si la posición no está guardada en la sesión, la pone a cero <span class="numero-circulo">9</span>
+// Si la posición no está guardada en la sesión, ponemos el valor a cero <span class="numero-circulo">9</span>
 if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
@@ -1229,7 +1225,7 @@ if (!isset($_SESSION["posicion"])) {
 // ...
             &lt;line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" /&gt;
 &lt;?php
-// Dibuja el círculo en su posición <span class="numero-circulo">7</span>
+// Dibujamos el círculo en su posición <span class="numero-circulo">7</span>
 print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" /&gt;\n";
 ?&gt;
           &lt;/svg&gt;
@@ -1242,11 +1238,11 @@ print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-12");
 session_start();
 
-// Si la posición no está guardada en la sesión, la pone a cero <span class="numero-circulo">4</span>
+// Si la posición no está guardada en la sesión, ponemos el valor a cero <span class="numero-circulo">4</span>
 if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
@@ -1267,11 +1263,10 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogida de accion
+// Recogemos accion
 $accion   = recoge("accion");
 
-
-// Dependiendo de la acción recibida, modifica el número guardado <span class="numero-circulo">2</span>
+// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">2</span>
 if ($accion == "centro") {
     $_SESSION["posicion"] = 0;
 } elseif ($accion == "izquierda") {
@@ -1280,14 +1275,14 @@ if ($accion == "centro") {
     $_SESSION["posicion"] += 20;
 }
 
-// si sale por un lado, entra por el otro <span class="numero-circulo">5</span>
+// Si el punto sale por un lado, entra por el otro <span class="numero-circulo">5</span>
 if ($_SESSION["posicion"] &gt; 300) {
     $_SESSION["posicion"] = -300;
 } elseif ($_SESSION["posicion"] &lt; -300) {
     $_SESSION["posicion"] = 300;
 }
 
-// y vuelve al formulario <span class="numero-circulo">6</span>
+// Volvemos al formulario <span class="numero-circulo">6</span>
 header("Location:sesiones-1-12-1.php");
 ?&gt;</code>
 </pre>
@@ -1319,11 +1314,11 @@ header("Location:sesiones-1-12-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Accedemos a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-13");
 session_start();
 
-// Si alguna posición no está guardada en la sesión, las pone a cero <span class="numero-circulo">9</span>
+// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero <span class="numero-circulo">9</span>
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 }
@@ -1336,7 +1331,7 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
           width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid"&gt;
 
 &lt;?php
-// Dibuja el círculo en su posición <span class="numero-circulo">7</span>
+// Dibujamos el círculo en su posición <span class="numero-circulo">7</span>
 print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" /&gt;\n";
 ?&gt;
 
@@ -1351,11 +1346,11 @@ print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fi
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-13");
 session_start();
 
-// Si alguna posición no está guardada en la sesión, las pone a cero <span class="numero-circulo">4</span>
+// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero <span class="numero-circulo">4</span>
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 }
@@ -1376,10 +1371,10 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogida de accion
+// Recogemos accion
 $accion   = recoge("accion");
 
-// Dependiendo de la acción recibida, modifica el número guardado <span class="numero-circulo">2</span>
+// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">2</span>
 if ($accion == "centro") {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 } elseif ($accion == "izquierda") {
@@ -1392,21 +1387,21 @@ if ($accion == "centro") {
     $_SESSION["y"] += 20;
 }
 
-// si sale por un lado, entra por el otro <span class="numero-circulo">5</span>
+// Si el punto sale por la izquierda o la derecha, entra por el otro lado <span class="numero-circulo">5</span>
 if ($_SESSION["x"] &gt; 200) {
     $_SESSION["x"] = -200;
 } elseif ($_SESSION["x"] &lt; -200) {
     $_SESSION["x"] = 200;
 }
 
-// si sale por un lado, entra por el otro
+// Si el punto sale por arriba o por abajo, entra por el otro lado
 if ($_SESSION["y"] &gt; 200) {
     $_SESSION["y"] = -200;
 } elseif ($_SESSION["y"] &lt; -200) {
     $_SESSION["y"] = 200;
 }
 
-// y vuelve al formulario <span class="numero-circulo">6</span>
+// Volvemos al formulario <span class="numero-circulo">6</span>
 header("Location:sesiones-1-13-1.php");
 ?&gt;</code>
 </pre>
@@ -1437,11 +1432,11 @@ header("Location:sesiones-1-13-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">8</span>
+// Accedemos a la sesión <span class="numero-circulo">8</span>
 session_name("sesiones-1-14");
 session_start();
 
-// Si algún contador no está guardado en la sesión, los pone a cero <span class="numero-circulo">9</span>
+// Si algún contador no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo">9</span>
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
@@ -1483,11 +1478,11 @@ print "          &lt;/svg&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Se accede a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">3</span>
 session_name("sesiones-1-14");
 session_start();
 
-// Si alguno de los números de votos no está guardado en la sesión, los pone a cero <span class="numero-circulo">4</span>
+// Si alguno de los números de votos no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo">4</span>
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
@@ -1508,10 +1503,10 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogida de accion
+// Recogemos accion
 $accion = recoge("accion");
 
-// Dependiendo de la acción recibida, modifica el número correspondiente <span class="numero-circulo">2</span>
+// Dependiendo de la acción recibida, modificamos el número correspondiente <span class="numero-circulo">2</span>
 if ($accion == "a") {
     $_SESSION["a"] += 10;
 } elseif ($accion == "b") {
@@ -1520,7 +1515,7 @@ if ($accion == "a") {
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
 
-// y vuelve al formulario <span class="numero-circulo">5</span>
+// Volvemos al formulario <span class="numero-circulo">5</span>
 header("Location:sesiones-1-14-1.php");
 ?&gt;</code>
 </pre>
@@ -1529,7 +1524,7 @@ header("Location:sesiones-1-14-1.php");
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de noviembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 05 - sesiones-1-13-1.php
+ * Sesiones (1) 13 - sesiones-1-13-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-13
+ * @version   2021-11-11
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,11 +21,11 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
+// Accedemos a la sesión
 session_name("sesiones-1-13");
 session_start();
 
-// Si alguna posición no está guardada en la sesión, las pone a cero
+// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     $_SESSION["x"] = $_SESSION["y"] = 0;
 }
@@ -74,7 +74,7 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
             width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid">
 <?php
-// Dibuja el círculo en su posición
+// Dibujamos el círculo en su posición
 print "            <circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" />\n";
 ?>
           </svg>

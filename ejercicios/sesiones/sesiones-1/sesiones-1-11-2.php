@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 03 - sesiones-1-11-2.php
+ * Sesiones (1) 11 - sesiones-1-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-13
+ * @version   2021-11-11
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,11 +21,11 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
+// Accedemos a la sesión
 session_name("sesiones-1-11");
 session_start();
 
-// Si el número no está guardado en la sesión, lo pone a cero (el valor inicial)
+// Si el número no está guardado en la sesión, ponemos el valor a cero
 if (!isset($_SESSION["numero"])) {
     $_SESSION["numero"] = 0;
 }
@@ -46,10 +46,10 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogida de accion
+// Recogemos accion
 $accion = recoge("accion");
 
-// Dependiendo de la acción recibida, modifica el número guardado
+// Dependiendo de la acción recibida, modificamos el número guardado
 if ($accion == "cero") {
     $_SESSION["numero"] = 0;
 } elseif ($accion == "subir") {
@@ -58,5 +58,5 @@ if ($accion == "cero") {
     $_SESSION["numero"]--;
 }
 
-// y vuelve al formulario
+// Volvemos al formulario
 header("Location:sesiones-1-11-1.php");

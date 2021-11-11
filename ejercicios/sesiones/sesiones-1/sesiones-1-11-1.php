@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 03 - sesiones-1-11-1.php
+ * Sesiones (1) 11 - sesiones-1-11-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-13
+ * @version   2021-11-11
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,11 +21,11 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
+// Accedemos a la sesión
 session_name("sesiones-1-11");
 session_start();
 
-// Si el número no está guardado en la sesión, lo pone a cero
+// Si el número no está guardado en la sesión, ponemos el valor a cero
 if (!isset($_SESSION["numero"])) {
     $_SESSION["numero"] = 0;
 }
@@ -52,7 +52,7 @@ if (!isset($_SESSION["numero"])) {
     <p>
       <button type="submit" name="accion" value="bajar" style="font-size: 4rem">-</button>
 <?php
-// Muestra el número, guardado en la sesión
+// Mostramos el número, guardado en la sesión
 print "      <span style=\"font-size: 4rem\">$_SESSION[numero]</span>\n";
 ?>
       <button type="submit" name="accion" value="subir" style="font-size: 4rem">+</button>

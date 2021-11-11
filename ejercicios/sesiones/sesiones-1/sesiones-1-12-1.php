@@ -1,31 +1,31 @@
 <?php
 /**
- * Sesiones (1) 04 - sesiones-1-12-1.php
-*
-* @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
-* @copyright 2018 Bartolomé Sintes Marco
-* @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
-* @version   2018-11-13
-* @link      https://www.mclibre.org
-*
-*  This program is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU Affero General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  any later version.
-*
-*  This program is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU Affero General Public License for more details.
-*
-*  You should have received a copy of the GNU Affero General Public License
-*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-// Se accede a la sesión
+ * Sesiones (1) 12 - sesiones-1-12-1.php
+ *
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2021 Bartolomé Sintes Marco
+ * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @version   2021-11-11
+ * @link      https://www.mclibre.org
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+// Accedemos a la sesión
 session_name("sesiones-1-12");
 session_start();
 
-// Si la posición no está guardada en la sesión, la pone a cero
+// Si la posición no está guardada en la sesión, ponemos el valor a cero
 if (!isset($_SESSION["posicion"])) {
     $_SESSION["posicion"] = 0;
 }
@@ -62,7 +62,7 @@ if (!isset($_SESSION["posicion"])) {
             width="600" height="20" viewbox="-300 0 600 20">
             <line x1="-300" y1="10" x2="300" y2="10" stroke="black" stroke-width="5" />
 <?php
-// Dibuja el círculo en su posición
+// Dibujamos el círculo en su posición
 print "            <circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
 ?>
           </svg>
