@@ -45,7 +45,7 @@ $nombreOk = false;
 // Comprobamos el nombre. Si es vacío, volvemos al formulario
 if ($nombre == "") {
     header("Location:cabeceras-01-1.php");
-    exit();
+    exit;
 } else {
     $nombreOk = true;
 }

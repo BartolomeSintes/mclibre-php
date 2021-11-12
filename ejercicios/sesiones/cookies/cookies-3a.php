@@ -43,7 +43,7 @@ $admiteCookies  = recoge("admiteCookies");
 if ($admiteCookies == "") {
     setcookie("cookiePrueba", "X");
     header("Location:cookies-3b.php");
-    exit();
+    exit;
 }
 
 print "<!DOCTYPE html>\n";

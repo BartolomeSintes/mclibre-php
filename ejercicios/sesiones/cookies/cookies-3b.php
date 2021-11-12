@@ -28,5 +28,5 @@ if ($compruebaCookie == "X") {
 } else {
     header("Location:cookies-3a.php?admiteCookies=0");
 }
-exit();
+exit;
 ?>

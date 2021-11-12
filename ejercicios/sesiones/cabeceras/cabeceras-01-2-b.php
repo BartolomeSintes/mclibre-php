@@ -43,7 +43,7 @@ $nombre   = recoge("nombre");
 // Comprobamos el nombre. Si es vacío volvemos al formulario
 if ($nombre == "") {
     header("Location:cabeceras-01-1-b.php");
-    exit();
+    exit;
 }
 
 ?>

@@ -96,6 +96,7 @@
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -117,7 +118,7 @@ $nombre   = recoge("nombre");
 // Comprobamos el nombre. Si es vacío volvemos al formulario
 if ($nombre == "") {
     header("Location:cabeceras-01-1.php");
-    exit();
+    exit;
 }
 
 ?&gt;
@@ -141,6 +142,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -163,7 +165,7 @@ $nombreOk = false;
 // Comprobamos el nombre. Si es vacío, volvemos al formulario
 if ($nombre == "") {
     header("Location:cabeceras-01-1.php");
-    exit();
+    exit;
 } else {
     $nombreOk = true;
 }
@@ -211,6 +213,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -250,6 +253,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -271,7 +275,7 @@ $nombre   = recoge("nombre");
 // Comprobamos el nombre. Si es vacío volvemos al formulario enviando un aviso
 if ($nombre == "") {
   header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
-    exit();
+    exit;
 }
 
 ?&gt;
@@ -295,6 +299,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -317,7 +322,7 @@ $nombreOk = false;
 // Comprobamos el nombre. Si es vacío, volvemos al formulario enviando un aviso
 if ($nombre == "") {
     header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
-    exit();
+    exit;
 } else {
     $nombreOk = true;
 }
@@ -364,6 +369,7 @@ print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;inp
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -403,6 +409,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -426,16 +433,16 @@ $edadOk = false;
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
 if ($edad == "") {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
-    exit();
+    exit;
 } elseif (!is_numeric($edad)) {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
-    exit();
+    exit;
 } elseif (!ctype_digit($edad)) {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
-    exit();
+    exit;
 } elseif ($edad &lt; 18 || $edad &gt; 130) {
     header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
-    exit();
+    exit;
 }
 
 ?&gt;
@@ -459,6 +466,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -482,16 +490,16 @@ $edadOk = false;
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
 if ($edad == "") {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
-    exit();
+    exit;
 } elseif (!is_numeric($edad)) {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
-    exit();
+    exit;
 } elseif (!ctype_digit($edad)) {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
-    exit();
+    exit;
 } elseif ($edad &lt; 18 || $edad &gt; 130) {
     header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
-    exit();
+    exit;
 } else {
     $edadOk = true;
 }
@@ -538,6 +546,7 @@ print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;inp
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -579,6 +588,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -602,16 +612,16 @@ $edadOk = false;
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
 if ($edad == "") {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
-    exit();
+    exit;
 } elseif (!is_numeric($edad)) {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número&edad=$edad");
-    exit();
+    exit;
 } elseif (!ctype_digit($edad)) {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
-    exit();
+    exit;
 } elseif ($edad &lt; 18 || $edad &gt; 130) {
     header("Location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
-    exit();
+    exit;
 }
 
 ?&gt;
@@ -635,6 +645,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -658,16 +669,16 @@ $edadOk = false;
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
 if ($edad == "") {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
-    exit();
+    exit;
 } elseif (!is_numeric($edad)) {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número&edad=$edad");
-    exit();
+    exit;
 } elseif (!ctype_digit($edad)) {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad como número entero&edad=$edad");
-    exit();
+    exit;
 } elseif ($edad &lt; 18 || $edad &gt; 130) {
     header("Location:cabeceras-04-1.php?aviso=Su edad no está entre 18 y 130 años&edad=$edad");
-    exit();
+    exit;
 } else {
     $edadOk = true;
 }
@@ -726,6 +737,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -786,6 +798,7 @@ print "\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -834,7 +847,7 @@ if ($edad == "") {
 // Si hay algún error, volvemos al formulario enviando los avisos y los datos recibidos
 if (!$nombreOk || !$edadOk) {
     header("Location:cabeceras-05-1.php?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
-    exit();
+    exit;
 }
 
 ?&gt;
@@ -871,6 +884,7 @@ if ($nombreOk && $edadOk) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
+// Enviamos una cabecera para indicar al navegador que se trata de una hoja de estilo
 header("Content-type: text/css");
 
 // en vez de elegir un color al azar entre 0 y 360 he utilizado
@@ -910,6 +924,7 @@ footer {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
+// Enviamos una cabecera para indicar al navegador que se trata de una imagen
 header("Content-type: image/svg+xml");
 
 $radio = rand(10, 20);
@@ -930,7 +945,7 @@ print "&lt;/svg&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

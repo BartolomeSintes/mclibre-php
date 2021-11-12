@@ -45,7 +45,7 @@ $nombreOk = false;
 // Comprobamos el nombre. Si es vacío, volvemos al formulario enviando un aviso
 if ($nombre == "") {
     header("Location:cabeceras-02-1-b.php?aviso=No ha escrito su nombre");
-    exit();
+    exit;
 }
 
 ?>

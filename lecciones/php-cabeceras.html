@@ -544,8 +544,6 @@ if (condicion) {
         </li>
         <li>podemos utilizar la instrucción <a href="https://www.php.net/manual/en/function.exit.php"><span class="php-res">exit</span></a>, que detiene el programa en ese punto.
 
-          <p><strong>Nota</strong>: <span class="php-res">exit</span> no es una función, sino una palabra reservada del lenguaje, pero también se puede utilizar seguida de paréntesis como si fuera una función: <span class="php-res">exit()</span>. Se puede incluso incluir un valor numérico en los paréntesis, que sería el valor que devolvería el programa.</p>
-
           <p>El ejemplo anterior se podría escribir entonces de la siguiente manera, sin necesidad de incluir las instrucciones posteriores en un bloque <span class="php-res">else ...</span>:</p>
 
           <div class="codigo">
@@ -564,7 +562,16 @@ if (condicion) {
 
       <hr class="corta">
 
-      <p>Pero hay que tener en cuenta que <span class="php-res">exit</span> detiene no sólo la ejecución del programa, sino también la de los programas que hubieran llamado a esos programas, como se muestra en los ejemplos siguientes:</p>
+      <p><span class="php-res">exit</span> no es una función, sino una palabra reservada del lenguaje, pero también se puede utilizar seguida de paréntesis como si fuera una función: <span class="php-res">exit()</span>:</p>
+
+      <ul>
+        <li>Si el argumento de <span class="php-res">exit()</span> es un valor numérico, el programa se interrumpiría y devolvería ese valor. Se suele utilizar para la gestión de errores en programas PHP pensados para ser llamados en la línea de comandos.</li>
+        <li>Si el argumento de <span class="php-res">exit()</span> es una cadena, el programa escribiría ese valor y se interrumpiría.</li>
+      </ul>
+
+      <hr class="corta">
+
+      <p>Hay que tener en cuenta que <span class="php-res">exit</span> detiene no sólo la ejecución del programa, sino también la de los programas que hubieran llamado a esos programas, como se muestra en los ejemplos siguientes:</p>
 
       <ul>
         <li>El programa ejemplo-1.php llama al programa ejemplo-2.php y el resultado incluye las instrucciones generadas por ambos programas. Es decir, si se ejecuta el programa ejemplo-1.php, el resultado final será una redirección a la página web de mclibre.
@@ -835,7 +842,7 @@ print "&lt;/svg&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de noviembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 12 de noviembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

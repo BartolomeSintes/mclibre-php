@@ -48,7 +48,7 @@ $paginaAnterior = "matrices-1-02-1.php";
 if ($accion == "Cerrar") {
     session_destroy();
     header("Location:$paginaAnterior");
-    exit();
+    exit;
 }
 
 if ($nombre != "") {
@@ -62,5 +62,5 @@ if ($nombreOk) {
 }
 
 header("Location:$paginaAnterior");
-exit();
+exit;
 ?>

@@ -45,16 +45,16 @@ $edadOk = false;
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente
 if ($edad == "") {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad");
-    exit();
+    exit;
 } elseif (!is_numeric($edad)) {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número");
-    exit();
+    exit;
 } elseif (!ctype_digit($edad)) {
     header("Location:cabeceras-03-1.php?aviso=No ha escrito su edad como número entero");
-    exit();
+    exit;
 } elseif ($edad < 18 || $edad > 130) {
     header("Location:cabeceras-03-1.php?aviso=Su edad no está entre 18 y 130 años");
-    exit();
+    exit;
 } else {
     $edadOk = true;
 }
