@@ -770,8 +770,7 @@ $temporal = $temporalRuta . $temporalArchivo;
 // Copiamos el archivo cuyo tipo MIME se quiere averiguar
 $rc = copy($archivo, $temporal);
 if (!$rc) {
-    print "&lt;p&gt;Error copiando $archivo. Compruebe su configuración&lt;/p&gt;\n";
-    exit();
+    exit("&lt;p&gt;Error copiando $archivo. Compruebe su configuración.&lt;/p&gt;\n");
 }
 
 // El código siguiente está basado en OC/lib/helper.php

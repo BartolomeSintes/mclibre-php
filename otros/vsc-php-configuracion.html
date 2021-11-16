@@ -346,20 +346,24 @@ return (new PhpCsFixer\Config())
     <section id="abrir-navegador">
       <h3>Abrir páginas en el navegador (en el servidor local)</h3>
 
-      <p>Tenga en cuenta que puede ser necesario modificar las preferencias resaltadas del ejemplo siguiente:</p>
+      <p>Las siguientes tareas permiten abrir en los navegadores Firefox y Chrome las páginas que se están editando en Visual Studio Code, pero no como ficheros sino a través del servidor web.</p>
+
+      <p>Tenga en cuenta que para que las páginas se muestren en el navegador es necesario crear un alias en Apache, como se comenta en la lección <a href="php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
+
+      <p>Compruebe los campos enmarcados del ejemplo siguiente, por si necesita modificarlas:</p>
       <ul>
-        <li>"command": debe indicar la ruta hasta el ejecutable de Firefox o Chrome. El valor incluido en el ejemplo es el predeterminado en Windows 10.</li>
+        <li>"command": debe indicar la ruta hasta el ejecutable de Firefox o Chrome. El valor incluido en el ejemplo es el predeterminado en Windows 10.
+          <p>En particular, compruebe la ubicación del ejecutable de Chrome, ya que desde Chrome 85 (publicado en agosto de 2020) Chrome se instala en "C:\Archivos de programa\" y no en "C:\Archivos de programa (x86)" como hacía antes, pero las actualizaciones no cambian la ubicación del programa, por lo que si tiene Chrome instalado desde antes de 2020 la ruta seguramente será "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe".</p>
+        </li>
         <li>"arg"s: debe indicar el alias definido en Apache para acceder a la carpeta abierta en Visual Studio Code como área de trabajo (el del ejemplo corresponde a lo propuesto en el <a href="../ejercicios/puesta-en-marcha/apache-1.html#ejercicio-5">ejercicio Apache (1) 5</a>).</li>
         <li>Las rutas pueden escribirse con barras (/, como en el ejemplo) o con contrabarras dobles (\\), pero no con contrabarras simples (\).</li>
       </ul>
 
-      <p>Tenga en cuenta que para que las páginas se muestren en el navegador es necesario crear un alias en Apache, como se comenta en la lección <a href="php-configuracion-1.html#alias">Configuración de Apache y PHP</a>.</p>
-
       <div class="codigo">
         <pre>
-<code class="copy-language-json">      //
-      // Tareas recomendadas para el curso Programación web en PHP de www.mclibre.org
-      {
+<code class="copy-language-json">    //
+    // Tareas recomendadas para el curso Programación web en PHP de www.mclibre.org
+    {
       "label": "Abrir en localhost (Firefox)",
       "command": "explorer",
       "windows": {
@@ -426,7 +430,7 @@ return (new PhpCsFixer\Config())
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de septiembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
