@@ -26,7 +26,7 @@ header("Content-type: text/css");
 
 // en vez de elegir un color al azar entre 0 y 360 he utilizado
 // una fórmula para que salgan uno entre 19 valores: 0, 20, 40, etc.
-$color = 20 * rand(0, 18);
+$color  = 20 * rand(0, 18);
 $tamano = rand(100, 300) / 100;
 
 print "body {\n";
@@ -46,6 +46,6 @@ print "\n";
 
 ?>
 footer {
-  border-top: black 1px solid;
-  margin-top: 2em;
+    border-top: black 1px solid;
+    margin-top: 2em;
 }

@@ -28,6 +28,7 @@ $radio = rand(10, 20);
 $cx    = rand($radio + 1, 148 - $radio);
 $cy    = rand($radio + 1, 148 - $radio);
 
+print "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "  width=\"150\" height=\"150\" viewBox=\"0 0 150 150\">\n";
 print "  <rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "

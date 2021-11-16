@@ -40,8 +40,6 @@ function recoge($var, $m = "")
 // Recogemos la edad
 $edad   = recoge("edad");
 
-$edadOk = false;
-
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
 if ($edad == "") {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");

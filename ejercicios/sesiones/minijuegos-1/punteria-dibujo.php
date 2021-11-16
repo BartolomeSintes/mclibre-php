@@ -32,6 +32,7 @@ $_SESSION["r"]     = rand(10, 20);
 $_SESSION["x"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
 $_SESSION["y"]     = rand($_SESSION["r"], $_SESSION["ancho"] - $_SESSION["r"]);
 
+print "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 print "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "  width=\"$_SESSION[ancho]\" height=\"$_SESSION[ancho]\">\n";
 print "  <rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "

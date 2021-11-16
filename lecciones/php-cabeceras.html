@@ -758,6 +758,8 @@ print "}\n";
           <pre>
 <code class="language-php">&lt;?php
 $color = rand(0, 360);
+
+print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\" ?&gt;\n";
 print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "    width=\"100\" height=\"100\" viewBox=\"-5 -5 100 100\"&gt;\n";
 print "  &lt;rect fill=\"hsl($color, 100%, 70%)\" stroke=\"hsl($color, 100%, 30%)\" stroke-width=\"4\" "
@@ -765,6 +767,9 @@ print "  &lt;rect fill=\"hsl($color, 100%, 70%)\" stroke=\"hsl($color, 100%, 30%
 print "&lt;/svg&gt;";
 ?&gt;</code>
 </pre>
+        </div>
+        <div class="icono-ok">
+          <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
         </div>
         <div class="resultado-object">
           <object type="text/html" data="ejemplos/cabeceras/mime-svg-sin-mime.php" style="height: 8em">ERROR (no puede mostrarse el objeto)</object>
@@ -774,9 +779,9 @@ print "&lt;/svg&gt;";
         </div>
       </div>
 
-      <p>Pero aunque el navegador consiga mostrar el cuadrado, realmente no estamos haciendo bien las cosas. Una imagen SVG debería entregarse al navegador con el tipo MIME <strong>image/svg+xml</strong>. En este caso, el programa no declara ningún tipo MIME, así que el servidor lo entrega con el tipo MIME predeterminado de los programas PHP, el tipo MIME <strong>text/html</strong> (es decir, como página web). Aunque estrictamente hablando el documento no es una página web válida porque le faltan las etiquetas básicas como <span class="html-eti">&lt;html&gt;</span>, <span class="html-eti">&lt;head&gt;</span>, <span class="html-eti">&lt;body&gt;</span>, etc. los navegadores aceptan las páginas inválidas e intentan interpretar el contenido de la mejor manera posible. En este caso, el navegador consigue mostrar la imagen.</p>
+      <p>Pero aunque el navegador consiga mostrar el cuadrado, realmente no estamos haciendo bien las cosas. Una imagen SVG debería entregarse al navegador con el tipo MIME <strong>image/svg+xml</strong>. En este caso, el programa no declara ningún tipo MIME, así que el servidor lo entrega con el tipo MIME predeterminado de los programas PHP, el tipo MIME <strong>text/html</strong> (es decir, como página web). Aunque estrictamente hablando el documento no es una página web válida porque le faltan las etiquetas básicas como <span class="html-eti">&lt;html&gt;</span>, <span class="html-eti">&lt;head&gt;</span>, <span class="html-eti">&lt;body&gt;</span>, etc. los navegadores aceptan las páginas inválidas e intentan interpretar el contenido de la mejor manera posible. Por ello en este caso, el navegador consigue mostrar la imagen.</p>
 
-      <p>Pero en otras circunstancias, este mismo programa no daría el resultado esperado. Como muestra el siguiente ejemplo, si el programa se llama en una etiqueta <span class="html-eti">&lt;img&gt;</span>, el navegador no puede mostrar la imagen. El problema es que en una etiqueta el navegador tiene que recibir obligatoriamente algún tipo MIME de imagen (jpg, png, svg, etc.). Como pasaba en el ejemplo anterior de la hoja de estilo, si el documento se sirve con un tipo MIME incorrecto, los navegadores no intentan siquiera mostrar el contenido.</p>
+      <p>Pero en otras circunstancias, este mismo programa no daría el resultado esperado. Como muestra el siguiente ejemplo, si el programa anterior se llama en una etiqueta <span class="html-eti">&lt;img&gt;</span>, el navegador no puede mostrar la imagen. El problema es que en una etiqueta el navegador tiene que recibir obligatoriamente algún tipo MIME de imagen (jpg, png, svg, etc.). Como pasaba en el ejemplo anterior de la hoja de estilo, si el documento se sirve con un tipo MIME incorrecto, los navegadores no intentan siquiera mostrar el contenido.</p>
 
       <div class="filaflex">
         <div class="columnaflex">
@@ -787,6 +792,8 @@ print "&lt;/svg&gt;";
             <pre>
 <code class="language-php">&lt;?php
 $color = rand(0, 360);
+
+print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\" ?&gt;\n";
 print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "    width=\"100\" height=\"100\" viewBox=\"-5 -5 100 100\"&gt;\n";
 print "  &lt;rect fill=\"hsl($color, 100%, 70%)\" stroke=\"hsl($color, 100%, 30%)\" stroke-width=\"4\" "
@@ -819,6 +826,8 @@ print "&lt;/svg&gt;";
 <code class="language-php">&lt;?php
 header("Content-type: image/svg+xml");
 $color = rand(0, 360);
+
+print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\" ?&gt;\n";
 print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "    width=\"100\" height=\"100\" viewBox=\"-5 -5 100 100\"&gt;\n";
 print "  &lt;rect fill=\"hsl($color, 100%, 70%)\" stroke=\"hsl($color, 100%, 30%)\" stroke-width=\"4\" "
@@ -837,6 +846,11 @@ print "&lt;/svg&gt;";
         <div class="icono-enlace">
           <a href="ejemplos/cabeceras/mime-svg-con-mime.html"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
+      </div>
+
+      <p><strong>Nota</strong>: Los archivos .svg deben comenzar por la declaración XML, que no es necesaria cuando la imagen SVG se incluye en la página web.</p>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</code></pre>
       </div>
     </section>
   </section>

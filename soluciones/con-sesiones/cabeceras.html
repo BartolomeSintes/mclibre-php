@@ -274,7 +274,7 @@ $nombre   = recoge("nombre");
 
 // Comprobamos el nombre. Si es vacío volvemos al formulario enviando un aviso
 if ($nombre == "") {
-  header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
+    header("Location:cabeceras-02-1.php?aviso=No ha escrito su nombre");
     exit;
 }
 
@@ -512,7 +512,7 @@ if ($edad == "") {
 &lt;?php
 // Si la edad es correcta, la mostramos
 if ($edadOk) {
-    print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
+    print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
     print "\n";
 }
 
@@ -607,8 +607,6 @@ function recoge($var, $m = "")
 // Recogemos la edad
 $edad   = recoge("edad");
 
-$edadOk = false;
-
 // Comprobamos la edad. Si detectamos un error, volvemos al formulario enviando el aviso correspondiente y la edad
 if ($edad == "") {
     header("Location:cabeceras-04-1.php?aviso=No ha escrito su edad&edad=$edad");
@@ -691,7 +689,7 @@ if ($edad == "") {
 &lt;?php
 // Si la edad es correcta, la mostramos
 if ($edadOk) {
-    print "  <p>Su edad es <strong>$edad</strong> años.</p>\n";
+    print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
     print "\n";
 }
 
@@ -763,7 +761,7 @@ print "    &lt;table&gt;\n";
 print "      &lt;tbody&gt;\n";
 print "        &lt;tr&gt;\n";
 print "          &lt;td&gt;&lt;label for=\"nombre\"&gt;Escriba su nombre:&lt;/label&gt;&lt;/td&gt;\n";
-// Si hemos recibido el nombre, lo incluimos en el control
+// Incluimos el nombre recibido (aunque sea en blanco) en el control
 print "          &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\"&gt;";
 // Si hemos recibido un aviso sobre el nombre, lo mostramos
 if ($avisoNombre) {
@@ -773,7 +771,7 @@ print "&lt;/td&gt;\n";
 print "        &lt;/tr&gt;\n";
 print "        &lt;tr&gt;\n";
 print "          &lt;td&gt;&lt;label for=\"edad\"&gt;Escriba su edad (entre 18 y 130 años):&lt;/label&gt;&lt;/td&gt;\n";
-// Si hemos recibido la edad, la incluimos en el control
+// Incluimos la edad recibida (aunque sea en blanco) en el control
 print "          &lt;td&gt;&lt;input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\"&gt;";
 // Si hemos recibido un aviso sobre la edad, lo mostramos
 if ($avisoEdad) {
@@ -853,7 +851,7 @@ if (!$nombreOk || !$edadOk) {
 ?&gt;
 &lt;!DOCTYPE html&gt;
 // ...
-  &lt;h1&gt;Formulario 4 (Resultado)&lt;/h1&gt;
+  &lt;h1&gt;Formulario 5 (Resultado)&lt;/h1&gt;
 
 &lt;?php
 // Si el nombre y la edad son correctos, los mostramos
@@ -864,7 +862,7 @@ if ($nombreOk && $edadOk) {
     print "\n";
 }
 ?&gt;
-  &lt;p&gt;&lt;a href="cabeceras-04-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href="cabeceras-05-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 // ...</code>
 </pre>
           </div>
@@ -889,7 +887,7 @@ header("Content-type: text/css");
 
 // en vez de elegir un color al azar entre 0 y 360 he utilizado
 // una fórmula para que salgan uno entre 19 valores: 0, 20, 40, etc.
-$color = 20 * rand(0, 18);
+$color  = 20 * rand(0, 18);
 $tamano = rand(100, 300) / 100;
 
 print "body {\n";
@@ -909,8 +907,8 @@ print "\n";
 
 ?&gt;
 footer {
-  border-top: black 1px solid;
-  margin-top: 2em;
+    border-top: black 1px solid;
+    margin-top: 2em;
 }</code>
 </pre>
       </div>
@@ -931,6 +929,7 @@ $radio = rand(10, 20);
 $cx    = rand($radio + 1, 148 - $radio);
 $cy    = rand($radio + 1, 148 - $radio);
 
+print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\" ?&gt;\n";
 print "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
     . "  width=\"150\" height=\"150\" viewBox=\"0 0 150 150\"&gt;\n";
 print "  &lt;rect fill=\"none\" stroke=\"black\" stroke-width=\"1\" "
@@ -945,7 +944,7 @@ print "&lt;/svg&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
