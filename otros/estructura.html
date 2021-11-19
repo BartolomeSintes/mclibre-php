@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Estructura del curso. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+</head>
+
+<body>
+  <h1>Estructura del curso</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Estructura del curso</h2>
+
+      <ul>
+        <li><a href="#presentacion">Presentación</a></li>
+        <li><a href="#licencias">Licencias</a></li>
+        <li><a href="#contenido">Contenido del curso</a></li>
+        <li><a href="#formato-apuntes">Formato apuntes</a></li>
+        <li><a href="#programas">Software</a></li>
+        <li><a href="#novedades">Novedades</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="contenido">
+    <h2>Contenido del curso</h2>
+
+    <p>El curso se encuentra dividido en los siguientes apartados:</p>
+
+    <ol>
+      <li>Puesta en marcha: Instalación y configuración del servidor y del editor.</li>
+      <li>PHP, sin formularios: Primeras páginas en PHP, Variables (enteros, decimales y cadenas), Funciones, Estructuras de control if ... elseif ... else ... y bucle for, Matrices.</li>
+      <li>PHP, con formularios: Recogida, comprobación y utilización de datos proporcionados por el usuario en formularios.</li>
+      <li>PHP, con sesiones: Cabeceras HTTP, sesiones.</li>
+      <li>PHP, con bases de datos: Acceso a bases de datos desde PHP.</li>
+    </ol>
+  </section>
+
+  <p>Un navegador web se puede considerar desde dos puntos de vista:</p>
+  <ul>
+    <li>Los navegadores son por un lado visualizadores de documentos, las páginas web. Esas páginas web pueden contener texto, imágenes o vídeos y se conectan unas con otras mediante hiperenlaces. </li>
+    <li>Los navegadores son por otro lado entornos de ejecución de aplicaciones. Estas aplicaciones pueden trabajar con datos locales o remotos, aisladas o conectadas a otros navegadores, pero se ejecutan en el navegador.</li>
+  </ul>
+
+  <p>En sus inicios, la web era únicamente una colección de documentos, pero cada vez más, la web está formada por una colección de aplicaciones.</p>
+
+  <p>Para que una aplicación se pueda ejecutar en un navegador, las aplicaciones deben estar escritas en el lenguaje de programación JavaScript. Ese lenguaje se creó inicialmente para que los navegadores pudieran realizar pequeñas manipulaciones en las páginas web, y por eso los programas JavaScript en principio deben incluirse dentro de una página web. Pero, con el tiempo, la mejora del lenguaje ha permitido crear aplicaciones tan complejas como cualquier aplicación de escritorio. En la actualidad, a menudo la página web que contiene el programa JavaScript apenas incluye contenido, ya que todo el contenido lo genera el programa JavaScript.</p>
+
+  <p>Cuando creamos un sitio web de páginas web (no una aplicación), lo normal es ampliarlo añadiendo cada vez más páginas web, a medida que añadimos contenido. Sin embargo cuando creamos una aplicación, la tendencia es a ir ampliando el programa JavaScript, pero manteniendo una única página web.</p>
+
+  <p>En este curso vamos a aprender el lenguaje de programación PHP, un lenguaje que ha estado ligado a la web desde prácticamente sus inicios. PHP es un lenguaje de servidor, es decir, los programas de PHP se ejecutan en el servidor, no en el navegador. Los programas PHP lo que hacen es generar páginas web, y estas páginas se envían al navegador.</p>
+
+  <p>En este curso no vamos a utilizar el lenguaje de programación JavaScript, por lo que las páginas web que crearemos con PHP serán páginas web "puras", sin JavaScript incoporado. Aún así, a medida que veamos características de PHP, iremos creando conjuntos de páginas que imitarán el comportamiento de las aplicaciones JavaScript.</p>
+
+  <h2>Primera parte. PHP sin formularios</h2>
+
+  <p>Las primeras lecciones del curso son una introducción a los elementos básicos del lenguaje PHP, que son los de cualquier lenguaje de programación.</p>
+
+  <p>Una particularidad que tenemos que tener siempre presente es que cuando estamos viendo en el navegador una página con la extensión .php nuestro navegador no está ejecutando un programa PHP. En realidad, lo que hace nuestro navegador es pedirle al servidor que ejecute el programa PHP y el servidor nos entrega el resultado del programa. El resultado del programa será casi siempre una página web html porque eso es lo que puede mostrarnos el navegador.</p>
+
+  <p>Otro detalle importante a tener en cuenta es que al programar y probar los programas estamos jugando dos papeles muy distintos. Al programar tenemos que pensar que estamos en el servidor, porque los programas se ejecutan en el servidor. Pero al probar los programas en el navegador tenemos que pensar que no estamos en el servidor sino en un cliente, porque el resultado de los programas se visualiza en el navegador. En nuestro caso, el servidor y el navegador están en el mismo ordenador, pero normalmente no es así: los programas PHP están normalemente en un único servidor, pero los navegadores pueden estar en cualquier ordenador de escritorio o dispositivo móvil del mundo.</p>
+
+  <p>Una limitación de los programas de esta primera parte es que los programas no pueden pedir datos a los usuarios. Más adelante en el curso, veremos cómo puede un programa PHP recoger información del usuario y personalizar la página web en consecuencia, o conseguir información de bases de datos para construir la página web. Para que los programas no muestren Pero en las páginas de ejercicios de la primera parte utilizaremos la función <span class="php-fun">rand()</span>, para generar valores aleatorios que utilizaremos para crear resultados distintos en cada ejecución de los programas. Una vez abierta la página en el navegador, al actualizar la página en el navegador, obtendremos una página ligeramente distinta, la señal inequívoca de que la página se está creando por programa.</p>
+
+  <p>En los ejercicios <a href="../ejercicios/sin-formularios/primeras-paginas/index.html">Primeras páginas</a> veremos los programas más sencillos, en los que crearemos línea a línea la página web con la instrucción <span class="php-res">print</span>.</p>
+
+<p>COMPLETAR</p>
+
+<h2>Segunda parte. PHP con formularios</h2>
+
+<p>En esta segunda parte trabajaremos con formularios. Los formularios son los elementos de las páginas web que permiten al usuario introducir información. Al hacer clic en el botón enviar, el navegador solicita al servidor otra página web .php y acompaña la petición con la información introducida por el usuario. El servidor ejecuta el programa PHP
+
+  <h2>Restos</h2>
+
+  <p> Si las páginas web de nuestros programas fueran siempre iguales, entonces no haría falta usar PHP, sería suficiente con crear una página web html (no un programa PHP).</p>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2021</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
