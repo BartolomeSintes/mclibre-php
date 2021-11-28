@@ -95,7 +95,7 @@
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">5</span>
+<span  title="Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.">// Accedemos a la sesión<span class="numero-circulo">5</span></span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;
@@ -106,9 +106,9 @@ session_start();
   &lt;h1&gt;Formulario Texto 1 (Formulario)&lt;/h1&gt;
 
 &lt;?php
-// Si hay un texto guardado en la sesión, <span class="numero-circulo">6</span>
+<span title="Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.">// Si hay un texto guardado en la sesión, <span class="numero-circulo">6</span></span>
 if (isset($_SESSION["texto"])) {
-    // se muestra <span class="numero-circulo">4</span>
+<span title="La página 1 muestra el nombre guardado en $_SESSION.">    // se muestra <span class="numero-circulo">4</span></span>
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
@@ -126,7 +126,7 @@ if (isset($_SESSION["texto"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">3</span>
+<span title="Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.">// Accedemos a la sesión <span class="numero-circulo">3</span></span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;
@@ -137,7 +137,7 @@ session_start();
   &lt;h1&gt;Formulario Texto 1 (Resultado)&lt;/h1&gt;
 
 &lt;?php
-// Funciones auxiliares <span class="numero-circulo">1</span>
+<span title="Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. Es el procedimiento habitual: función recoge(); variable para recoger el dato; variable auxiliar que indica la corrección del dato; comprobación y mensajes de error; si el dato es correcto, mensaje final.">// Funciones auxiliares <span class="numero-circulo">1</span></span>
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -165,8 +165,8 @@ if ($texto == "") {
 }
 
 // Si el texto es válido,
-if ($textoOk) {
-  // guardamos el texto en la sesión <span class="numero-circulo">2</span>
+<span title="Si el dato es correcto, debemos guardarlo en una variable de sesión, para que la página 1 pueda acceder a él.">if ($textoOk) { <span class="numero-circulo">2</span></span>
+  // guardamos el texto en la sesión
     $_SESSION["texto"] = $texto;
     // y lo mostramos
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$texto&lt;/strong&gt;.&lt;/p&gt;\n";
@@ -213,7 +213,7 @@ session_start();
   &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
 
 &lt;?php
-// Si hay un texto guardado en la sesión, lomostramos <span class="numero-circulo">9</span>
+// Si hay un texto guardado en la sesión, lo mostramos <span class="numero-circulo">9</span>
 if (isset($_SESSION["texto"])) {
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n"; <span class="numero-circulo">7</span>
     print "\n";
@@ -1092,18 +1092,19 @@ header("Location:sesiones-1-04-1.php");
     <section id="ejercicio-11">
       <h3>Sesiones (1) 11 - Subir y bajar número</h3>
 
-      <ol start="0">
-        <li>Puesto que la página 2 redirige a la página 1, la página 2 no debe tener nada de HTML, ni ningún <span class="php-res">print</span>.</li>
-        <li>Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones, pero los tres tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>Como en los ejercicios anteriores: función recoge() y variable para recoger el dato</p>
-        </li>
-        <li>El valor guardado en la sesión se modifica en la página 2, dependiendo del dato recibido (se aumenta, se reduce o se pone a cero).</li>
-        <li>Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li>La variable de sesión se debe inicializar antes de modificarla (la manera más simple de hacerlo es darle valor si no existe).</li>
-        <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <p>Es importante recordar que el usuario sólo va a ver la página 1 del programa, ya que la página 2 va a redirigir siempre automáticamente a la página 1. Por ello, la página 2 no debe tener ningún framgento de HTML, ni ningún <span class="php-res">print</span>.</p>
+
+      <ol>
+        <li>Para que las dos páginas del programa puedan utilizar el número que hay que mostrar en pantalla (en la página 1 el número se muestra y en la página 2 se modifica), guardaremos ese número en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+        <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
         <li>La página 1 muestra el número guardado en $_SESSION.</li>
-        <li>Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li>Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
+        <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+        <li>Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+        <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones, pero los tres tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+        </li>
+        <li>En la página 2 modificamos el valor guardado en la sesión, dependiendo del dato recibido (se aumenta, se reduce o se pone a cero).</li>
+        <li>Finalmente, la página 2 redirige a la página 1.</li>
       </ol>
 
       <p>sesiones-1-11-1.php</p>
@@ -1111,12 +1112,12 @@ header("Location:sesiones-1-04-1.php");
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">7</span>
+// Accedemos a la sesión <span class="numero-circulo">1</span>
 session_name("sesiones-1-11");
 session_start();
 
 // Si el número no está guardado en la sesión, ponemos el valor a cero
-if (!isset($_SESSION["numero"])) {<span class="numero-circulo">8</span>
+if (!isset($_SESSION["numero"])) {<span class="numero-circulo">2</span>
     $_SESSION["numero"] = 0;
 }
 ?&gt;
@@ -1127,7 +1128,7 @@ if (!isset($_SESSION["numero"])) {<span class="numero-circulo">8</span>
       &lt;button type="submit" name="accion" value="bajar" style="font-size: 4rem"&gt;-&lt;/button&gt;
 
 &lt;?php
-// Mostramos el número, guardado en la sesión <span class="numero-circulo">6</span>
+// Mostramos el número, guardado en la sesión <span class="numero-circulo">3</span>
 print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt;\n";
 ?&gt;
 
@@ -1142,352 +1143,17 @@ print "      &lt;span style=\"font-size: 4rem\"&gt;$_SESSION[numero]&lt;/span&gt
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">3</span>
+// Accedemos a la sesión <span class="numero-circulo">4</span>
 session_name("sesiones-1-11");
 session_start();
 
-// Si el número no está guardado en la sesión, ponemos el valor a cero <span class="numero-circulo">4</span>
+// Si el número no está guardado en la sesión, redirigimos a la primera página <span class="numero-circulo">5</span>
 if (!isset($_SESSION["numero"])) {
-    $_SESSION["numero"] = 0;
+    header("Location:sesiones-1-11-1.php");
+    exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo">1</span>
-function recoge($var, $m = "")
-{
-    if (!isset($_REQUEST[$var])) {
-        $tmp = (is_array($m)) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
-        });
-    }
-    return $tmp;
-}
-
-// Recogemos accion
-$accion   = recoge("accion");
-
-// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">2</span>
-if ($accion == "cero") {
-    $_SESSION["numero"] = 0;
-} elseif ($accion == "subir") {
-    $_SESSION["numero"]++;
-} elseif ($accion == "bajar") {
-    $_SESSION["numero"]--;
-}
-
-// Volvemos al formulario <span class="numero-circulo">5</span>
-header("Location:sesiones-1-11-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-12">
-      <h3>Sesiones (1) 12 - Mover un punto a derecha e izquierda</h3>
-
-      <p>Este ejercicio es muy similar al anterior: mediante dos botones se aumenta o disminuye un valor. la diferencia es que en este ejercicio el valor no se muestra, pero se utiliza para situar un punto en una línea.</p>
-
-      <ol start="0">
-        <li>Puesto que la página 2 redirige a la página 1, la página 2 no debe tener nada de HTML, ni ningún <span class="php-res">print</span>.</li>
-        <li>Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones, pero los tres tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>Como en los ejercicios anteriores: función recoge() y variable para recoger el dato.</p>
-        </li>
-        <li>El valor que se utiliza en la página 1 se modifica en la página 2, dependiendo del dato recibido (se aumenta, se reduce o se pone a cero).</li>
-        <li>Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li>La variable de sesión se debe inicializar antes de modificarla (la manera más simple de hacerlo es darle valor si no existe).</li>
-        <li>Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
-        <li>Finalmente, la página 2 redirige a la página 1.</li>
-        <li>La página 1 dibuja el punto rojo en la imagen SVG utilizando el número guardado en $_SESSION.</li>
-        <li>Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li>Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
-      </ol>
-
-      <p>sesiones-1-12-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">8</span>
-session_name("sesiones-1-12");
-session_start();
-
-// Si la posición no está guardada en la sesión, ponemos el valor a cero <span class="numero-circulo">9</span>
-if (!isset($_SESSION["posicion"])) {
-    $_SESSION["posicion"] = 0;
-}
-?&gt;
-
-&lt;!DOCTYPE html&gt;
-// ...
-            &lt;line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" /&gt;
-&lt;?php
-// Dibujamos el círculo en su posición <span class="numero-circulo">7</span>
-print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" /&gt;\n";
-?&gt;
-          &lt;/svg&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-12-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">3</span>
-session_name("sesiones-1-12");
-session_start();
-
-// Si la posición no está guardada en la sesión, ponemos el valor a cero <span class="numero-circulo">4</span>
-if (!isset($_SESSION["posicion"])) {
-    $_SESSION["posicion"] = 0;
-}
-
-// Funciones auxiliares <span class="numero-circulo">1</span>
-function recoge($var, $m = "")
-{
-    if (!isset($_REQUEST[$var])) {
-        $tmp = (is_array($m)) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
-        });
-    }
-    return $tmp;
-}
-
-// Recogemos accion
-$accion   = recoge("accion");
-
-// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">2</span>
-if ($accion == "centro") {
-    $_SESSION["posicion"] = 0;
-} elseif ($accion == "izquierda") {
-    $_SESSION["posicion"] -= 20;
-} elseif ($accion == "derecha") {
-    $_SESSION["posicion"] += 20;
-}
-
-// Si el punto sale por un lado, entra por el otro <span class="numero-circulo">5</span>
-if ($_SESSION["posicion"] &gt; 300) {
-    $_SESSION["posicion"] = -300;
-} elseif ($_SESSION["posicion"] &lt; -300) {
-    $_SESSION["posicion"] = 300;
-}
-
-// Volvemos al formulario <span class="numero-circulo">6</span>
-header("Location:sesiones-1-12-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-13">
-      <h3>Sesiones (1) 13 - Mover un punto en dos dimensiones</h3>
-
-      <p>Este ejercicio es muy similar al anterior. La diferencia es que en este ejercicio se tendrán que guardar dos valores (coordenada X y coordenada Y) para situar el punto en el plano.</p>
-
-      <ol start="0">
-        <li>Puesto que la página 2 redirige a la página 1, la página 2 no debe tener nada de HTML, ni ningún <span class="php-res">print</span>.</li>
-        <li>Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 5 botones, pero los cinco tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>Como en los ejercicios anteriores: función recoge() y variable para recoger el dato.</p>
-        </li>
-        <li>Los dos valores que se utilizan en la página 1 se modifican en la página 2, dependiendo del dato recibido (se aumenta o se reduce uno de ellos o se ponen los dos a cero).</li>
-        <li>Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li>Las variables de sesión se deben inicializar antes de modificarlas (la manera más simple de hacerlo es darles valor si no existen).</li>
-        <li>Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
-        <li>Finalmente, la página 2 redirige a la página 1.</li>
-        <li>La página 1 constituye una imagen SVG utilizando los dos números guardados en $_SESSION.</li>
-        <li>Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li>Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que damos valor a las variables si no existen.</li>
-      </ol>
-
-      <p>sesiones-1-13-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">8</span>
-session_name("sesiones-1-13");
-session_start();
-
-// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero <span class="numero-circulo">9</span>
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-}
-?&gt;
-
-&lt;!DOCTYPE html&gt;
-// ...
-        &lt;td&gt;
-          &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-          width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid"&gt;
-
-&lt;?php
-// Dibujamos el círculo en su posición <span class="numero-circulo">7</span>
-print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" /&gt;\n";
-?&gt;
-
-  &lt;/svg&gt;
-  &lt;/td&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-13-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">3</span>
-session_name("sesiones-1-13");
-session_start();
-
-// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero <span class="numero-circulo">4</span>
-if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-}
-
-// Funciones auxiliares <span class="numero-circulo">1</span>
-function recoge($var, $m = "")
-{
-    if (!isset($_REQUEST[$var])) {
-        $tmp = (is_array($m)) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
-        });
-    }
-    return $tmp;
-}
-
-// Recogemos accion
-$accion   = recoge("accion");
-
-// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">2</span>
-if ($accion == "centro") {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
-} elseif ($accion == "izquierda") {
-    $_SESSION["x"] -= 20;
-} elseif ($accion == "derecha") {
-    $_SESSION["x"] += 20;
-} elseif ($accion == "arriba") {
-    $_SESSION["y"] -= 20;
-} elseif ($accion == "abajo") {
-    $_SESSION["y"] += 20;
-}
-
-// Si el punto sale por la izquierda o la derecha, entra por el otro lado <span class="numero-circulo">5</span>
-if ($_SESSION["x"] &gt; 200) {
-    $_SESSION["x"] = -200;
-} elseif ($_SESSION["x"] &lt; -200) {
-    $_SESSION["x"] = 200;
-}
-
-// Si el punto sale por arriba o por abajo, entra por el otro lado
-if ($_SESSION["y"] &gt; 200) {
-    $_SESSION["y"] = -200;
-} elseif ($_SESSION["y"] &lt; -200) {
-    $_SESSION["y"] = 200;
-}
-
-// Volvemos al formulario <span class="numero-circulo">6</span>
-header("Location:sesiones-1-13-1.php");
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="ejercicio-14">
-      <h3>Sesiones (1) 14 - Votar una opción</h3>
-
-      <p>Este ejercicio es muy similar al anterior. La diferencia es que cada valor se utiliza en un dibujo distinto.</p>
-
-      <ol start="0">
-        <li>Puesto que la página 2 redirige a la página 1, la página 2 no debe tener nada de HTML, ni ningún <span class="php-res">print</span>.</li>
-        <li>Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones, pero los tres tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
-          <p>No hace falta comprobar el dato porque el programa sólo hará caso de los valores correctos.</p>
-        </li>
-        <li>Los dos valores que se utilizan en la página 1 se modifican en la página 2, dependiendo del dato recibido (se aumenta uno de ellos o se ponen los dos a cero).</li>
-        <li>Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li>Las variables de sesión se deben inicializar antes de modificarlas (la manera más simple de hacerlo es darles valor si no existen).</li>
-        <li>Finalmente, la página 2 redirige a la página 1.</li>
-        <li>La página 1 constituye la primera imagen SVG utilizando uno de los números guardados en $_SESSION. El número se utiliza en dos sitios.</li>
-        <li>La página 1 constituye la segunda imagen SVG utilizando el otro número guardado en $_SESSION. El número se utiliza en dos sitios.</li>
-        <li>Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li>Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que damos valor a las variables si no existen.</li>
-      </ol>
-      <p>sesiones-1-14-1.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">8</span>
-session_name("sesiones-1-14");
-session_start();
-
-// Si algún contador no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo">9</span>
-if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
-    $_SESSION["a"] =  $_SESSION["b"] = 0;
-}
-?&gt;
-
-&lt;!DOCTYPE html&gt;
-// ...
-      &lt;tr&gt;
-        &lt;td style="vertical-align: top;"&gt;&lt;button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hsl(200, 100%, 50%);"&gt;&#x2714;&lt;/button&gt;&lt;/td&gt;
-        &lt;td&gt;
-&lt;?php
-// Dibujamos la primera barra <span class="numero-circulo">6</span>
-print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "            width=\"$_SESSION[a]\" height=\"50\"&gt;\n";
-print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hsl(200, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
-print "          &lt;/svg&gt;\n";
-?&gt;
-
-      &lt;/td&gt;
-      &lt;tr&gt;
-        &lt;td&gt;&lt;button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hsl(35, 100%, 50%)"&gt;&#x2714;&lt;/button&gt;&lt;/td&gt;
-        &lt;td&gt;
-&lt;?php
-// Dibujamos la segunda barra <span class="numero-circulo">7</span>
-print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "            width=\"$_SESSION[b]\" height=\"50\"&gt;\n";
-print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hsl(35, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
-print "          &lt;/svg&gt;\n";
-?&gt;
-        &lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/table&gt;
-// ...</code>
-</pre>
-      </div>
-
-      <p>sesiones-1-14-2.php</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">3</span>
-session_name("sesiones-1-14");
-session_start();
-
-// Si alguno de los números de votos no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo">4</span>
-if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
-    $_SESSION["a"] =  $_SESSION["b"] = 0;
-}
-
-// Funciones auxiliares <span class="numero-circulo">1</span>
+// Funciones auxiliares <span class="numero-circulo">6</span>
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -1506,7 +1172,340 @@ function recoge($var, $m = "")
 // Recogemos accion
 $accion = recoge("accion");
 
-// Dependiendo de la acción recibida, modificamos el número correspondiente <span class="numero-circulo">2</span>
+// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">7</span>
+if ($accion == "cero") {
+    $_SESSION["numero"] = 0;
+} elseif ($accion == "subir") {
+    $_SESSION["numero"]++;
+} elseif ($accion == "bajar") {
+    $_SESSION["numero"]--;
+}
+
+// Volvemos al formulario <span class="numero-circulo">8</span>
+header("Location:sesiones-1-11-1.php");</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-12">
+      <h3>Sesiones (1) 12 - Mover un punto a derecha e izquierda</h3>
+
+      <p>Este ejercicio es muy similar al anterior: mediante dos botones se aumenta o disminuye un valor. La diferencia es que en este ejercicio el valor no se muestra, pero se utiliza para situar un punto en una línea.</p>
+
+      <ol>
+        <li>Para que las dos páginas del programa puedan utilizar la coordenada del punto (en la página 1 el número se incluye en el dibujo y en la página 2 se modifica), guardaremos el número en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+        <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
+        <li>La página 1 coloca el punto rojo en el valor guardado en $_SESSION.</li>
+        <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+        <li>Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+        <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+        </li>
+        <li>En la página 2 modificamos el valor guardado en la sesión, dependiendo del dato recibido (se aumenta, se reduce o se pone a cero).</li>
+        <li>Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
+        <li>Finalmente, la página 2 redirige a la página 1.</li>
+      </ol>
+
+      <p>sesiones-1-12-1.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">1</span>
+session_name("sesiones-1-12");
+session_start();
+
+// Si la posición no está guardada en la sesión, ponemos el valor a cero <span class="numero-circulo">2</span>
+if (!isset($_SESSION["posicion"])) {
+    $_SESSION["posicion"] = 0;
+}
+?&gt;
+
+&lt;!DOCTYPE html&gt;
+// ...
+            &lt;line x1=\"-300\" y1=\"10\" x2=\"300\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" /&gt;
+&lt;?php
+// Dibujamos el círculo en su posición <span class="numero-circulo">3</span>
+print "            &lt;circle cx=\"$_SESSION[posicion]\" cy=\"10\" r=\"8\" fill=\"red\" /&gt;\n";
+?&gt;
+          &lt;/svg&gt;
+// ...</code>
+</pre>
+      </div>
+
+      <p>sesiones-1-12-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">4</span>
+session_name("sesiones-1-12");
+session_start();
+
+// Si la posición no está guardada en la sesión, redirigimos a la primera página <span class="numero-circulo">5</span>
+if (!isset($_SESSION["posicion"])) {
+    header("Location:sesiones-1-12-1.php");
+    exit;
+}
+
+// Funciones auxiliares <span class="numero-circulo">6</span>
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos accion
+$accion = recoge("accion");
+
+// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">7</span>
+if ($accion == "centro") {
+    $_SESSION["posicion"] = 0;
+} elseif ($accion == "izquierda") {
+    $_SESSION["posicion"] -= 20;
+} elseif ($accion == "derecha") {
+    $_SESSION["posicion"] += 20;
+}
+
+// Si el punto sale por un lado, entra por el otro <span class="numero-circulo">8</span>
+if ($_SESSION["posicion"] &gt; 300) {
+    $_SESSION["posicion"] = -300;
+} elseif ($_SESSION["posicion"] &lt; -300) {
+    $_SESSION["posicion"] = 300;
+}
+
+// Volvemos al formulario <span class="numero-circulo">9</span>
+header("Location:sesiones-1-12-1.php");</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-13">
+      <h3>Sesiones (1) 13 - Mover un punto en dos dimensiones</h3>
+
+      <p>Este ejercicio es muy similar al anterior. La diferencia es que en este ejercicio se tendrán que guardar dos valores (coordenada X y coordenada Y) para situar el punto en el plano.</p>
+
+      <ol >
+        <li>Para que las dos páginas del programa puedan utilizar las coordenadas del punto (en la página 1 los valores se incluyen en el dibujo y en la página 2 se modifican), guardaremos ambos números en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+        <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a las dos variables si no existe alguna de ellas.</li>
+        <li>La página 1 coloca el punto rojo mediante los dos valores guardados en $_SESSION.</li>
+        <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+        <li>Si alguna variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+        <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 5 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+        </li>
+        <li>En la página 2 modificamos el valor o los valores guardados en la sesión, dependiendo del dato recibido (se aumenta uno u otro, se reduce uno u otro o se ponen a cero ambos).</li>
+        <li>Para que cuando el punto salga por un lado del dibujo entre por el otro, se debe comprobar si el valor supera los extremos y, en su caso, cambiarlo por el otro valor extremo.</li>
+        <li>Finalmente, la página 2 redirige a la página 1.</li>.
+      </ol>
+
+      <p>sesiones-1-13-1.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">1</span>
+session_name("sesiones-1-13");
+session_start();
+
+// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero <span class="numero-circulo">2</span>
+if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
+    $_SESSION["x"] = $_SESSION["y"] = 0;
+}
+?&gt;
+
+&lt;!DOCTYPE html&gt;
+// ...
+        &lt;td&gt;
+          &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+            width="400" height="400" viewbox="-200 -200 400 400" style="border: black 2px solid"&gt;
+
+&lt;?php
+// Dibujamos el círculo en su posición <span class="numero-circulo">3</span>
+print "            &lt;circle cx=\"$_SESSION[x]\" cy=\"$_SESSION[y]\" r=\"8\" fill=\"red\" /&gt;\n";
+?&gt;
+
+  &lt;/svg&gt;
+  &lt;/td&gt;
+// ...</code>
+</pre>
+      </div>
+
+      <p>sesiones-1-13-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">4</span>
+session_name("sesiones-1-13");
+session_start();
+
+// Si alguna posición no está guardada en la sesión, redirigimos a la primera página <span class="numero-circulo">5</span>
+if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
+    header("Location:sesiones-1-13-1.php");
+    exit;
+}
+
+// Funciones auxiliares <span class="numero-circulo">6</span>
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos accion
+$accion = recoge("accion");
+
+// Dependiendo de la acción recibida, modificamos el número guardado <span class="numero-circulo">7</span>
+if ($accion == "centro") {
+    $_SESSION["x"] = $_SESSION["y"] = 0;
+} elseif ($accion == "izquierda") {
+    $_SESSION["x"] -= 20;
+} elseif ($accion == "derecha") {
+    $_SESSION["x"] += 20;
+} elseif ($accion == "arriba") {
+    $_SESSION["y"] -= 20;
+} elseif ($accion == "abajo") {
+    $_SESSION["y"] += 20;
+}
+
+// Si el punto sale por la izquierda o la derecha, entra por el otro lado <span class="numero-circulo">8</span>
+if ($_SESSION["x"] &gt; 200) {
+    $_SESSION["x"] = -200;
+} elseif ($_SESSION["x"] &lt; -200) {
+    $_SESSION["x"] = 200;
+}
+
+// Si el punto sale por arriba o por abajo, entra por el otro lado
+if ($_SESSION["y"] &gt; 200) {
+    $_SESSION["y"] = -200;
+} elseif ($_SESSION["y"] &lt; -200) {
+    $_SESSION["y"] = 200;
+}
+
+// Volvemos al formulario <span class="numero-circulo">9</span>
+header("Location:sesiones-1-13-1.php");</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="ejercicio-14">
+      <h3>Sesiones (1) 14 - Votar una opción</h3>
+
+      <p>Este ejercicio es muy similar al anterior. La diferencia es que cada valor se utiliza en un dibujo distinto.</p>
+
+      <ol>
+        <li>Los datos clave de este programa son las longitudes de las barras de colores. Para que las dos páginas del programa puedan utilizar o modificar estos valores, guardaremos ambos números en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+        <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a las dos variables si no existe alguna de ellas.</li>
+        <li>La página 1 dibuja la primera barra a partir de uno de los valores guardado en $_SESSION. El valor se utiliza en dos atributos.</li>
+        <li>La página 1 dibuja la segunda barra a partir del otro valor guardado en $_SESSION. El valor se utiliza en dos atributos.</li>
+        <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+        <li>Si alguna variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+        <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 3 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+          <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+        </li>
+        <li>En la página 2 modificamos uno o los dos valores, dependiendo del dato recibido (se aumenta uno, se aumenta el otroo se ponen a cero ambos).</li>
+        <li>Finalmente, la página 2 redirige a la página 1.</li>.
+      </ol>
+
+      <p>sesiones-1-14-1.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">1</span>
+session_name("sesiones-1-14");
+session_start();
+
+// Si algún contador no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo">2</span>
+if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
+    $_SESSION["a"] =  $_SESSION["b"] = 0;
+}
+?&gt;
+
+&lt;!DOCTYPE html&gt;
+// ...
+      &lt;tr&gt;
+        &lt;td style="vertical-align: top;"&gt;&lt;button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hsl(200, 100%, 50%);"&gt;&#x2714;&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;
+&lt;?php
+// Dibujamos la primera barra <span class="numero-circulo">3</span>
+print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "            width=\"$_SESSION[a]\" height=\"50\"&gt;\n";
+print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hsl(200, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
+print "          &lt;/svg&gt;\n";
+?&gt;
+
+      &lt;/td&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hsl(35, 100%, 50%)"&gt;&#x2714;&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;
+&lt;?php
+// Dibujamos la segunda barra <span class="numero-circulo">4</span>
+print "          &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "            width=\"$_SESSION[b]\" height=\"50\"&gt;\n";
+print "            &lt;line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hsl(35, 100%, 50%)\" stroke-width=\"50\" /&gt;\n";
+print "          &lt;/svg&gt;\n";
+?&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+// ...</code>
+</pre>
+      </div>
+
+      <p>sesiones-1-14-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">5</span>
+session_name("sesiones-1-14");
+session_start();
+
+// Si alguno de los números de votos no está guardado en la sesión, ponemos ambos a cero <span class="numero-circulo">6</span>
+if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
+    $_SESSION["a"] =  $_SESSION["b"] = 0;
+}
+
+// Funciones auxiliares <span class="numero-circulo">7</span>
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = (is_array($m)) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
+        });
+    }
+    return $tmp;
+}
+
+// Recogemos accion
+$accion = recoge("accion");
+
+// Dependiendo de la acción recibida, modificamos el número correspondiente <span class="numero-circulo">8</span>
 if ($accion == "a") {
     $_SESSION["a"] += 10;
 } elseif ($accion == "b") {
@@ -1515,7 +1514,7 @@ if ($accion == "a") {
     $_SESSION["a"] = $_SESSION["b"] = 0;
 }
 
-// Volvemos al formulario <span class="numero-circulo">5</span>
+// Volvemos al formulario <span class="numero-circulo">9</span>
 header("Location:sesiones-1-14-1.php");
 ?&gt;</code>
 </pre>
@@ -1524,7 +1523,7 @@ header("Location:sesiones-1-14-1.php");
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 25 de noviembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
