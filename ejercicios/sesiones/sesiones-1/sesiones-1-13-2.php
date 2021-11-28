@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-11
+ * @version   2021-11-25
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,13 +21,15 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Accedemos a la sesión
 session_name("sesiones-1-13");
 session_start();
 
-// Si alguna posición no está guardada en la sesión, ponemos los dos valores a cero
+// Si alguna posición no está guardada en la sesión, redirigimos a la primera página
 if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
-    $_SESSION["x"] = $_SESSION["y"] = 0;
+    header("Location:sesiones-1-13-1.php");
+    exit;
 }
 
 // Funciones auxiliares
@@ -47,7 +49,7 @@ function recoge($var, $m = "")
 }
 
 // Recogemos accion
-$accion   = recoge("accion");
+$accion = recoge("accion");
 
 // Dependiendo de la acción recibida, modificamos el número guardado
 if ($accion == "centro") {
@@ -78,4 +80,3 @@ if ($_SESSION["y"] > 200) {
 
 // Volvemos al formulario
 header("Location:sesiones-1-13-1.php");
-?>
