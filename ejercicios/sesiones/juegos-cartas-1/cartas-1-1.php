@@ -1,11 +1,11 @@
 <?php
 /**
- * Muestra cartas (1) - cartas-1-1.php
+ * Distribuye cartas (1) - cartas-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-23
+ * @version   2021-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,16 +26,18 @@ session_name("cartas-1");
 session_start();
 
 
-if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
+if (!isset($_SESSION["baraja"])) {
     $_SESSION["baraja"] = [];
-    foreach (["c", "d", "p", "t"] as $palo) {
+    foreach (["p", "c", "d", "t"] as $palo) {
         for ($i = 1; $i <= 13; $i++) {
             $_SESSION["baraja"][] = "$palo$i";
         }
     }
-    $nuevaCarta = array_rand($_SESSION["baraja"]);
-    $_SESSION["cartas"][]  = $_SESSION["baraja"][$nuevaCarta];
-    unset($_SESSION["baraja"][$nuevaCarta]);
+    shuffle($_SESSION["baraja"]);
+    $_SESSION["picas"] = [];
+    $_SESSION["corazones"] = [];
+    $_SESSION["diamantes"] = [];
+    $_SESSION["treboles"] = [];
 }
 
 ?>
@@ -44,8 +46,8 @@ if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Muestra cartas.
-    Minijuegos (2). Sesiones.
+    Distribuye cartas.
+    Juegos de cartas (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,30 +55,63 @@ if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
 </head>
 
 <body>
-  <h1>Muestra cartas</h1>
+  <h1>Distribuye cartas</h1>
 
   <form action="cartas-1-2.php" method="get">
-    <p>Haga clic en los botones para mostrar una carta más, una carta menos o reiniciar:</p>
-
-    <p>
-      <button type="submit" name="accion" value="menos"><span style="font-size: 4rem">&#x2796;</span></button>
-      <button type="submit" name="accion" value="reiniciar"><span style="font-size: 4rem">&#x274c;</span></button>
-      <button type="submit" name="accion" value="mas"><span style="font-size: 4rem">&#x2795;</span></button>
-    </p>
-
+    <p>Haga clic en los botones para añadir la carta a uno de los montones:</p>
 <?php
-print "        <p>\n";
-foreach ($_SESSION["cartas"] as $carta) {
-    print "          <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"100\">\n";
+print "    <table>\n";
+print "      <tr>\n";
+print "        <td rowspan=\"4\">\n";
+if (count($_SESSION["baraja"]) > 0) {
+    $carta = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
+    print "          <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"150\">\n";
+} else {
+    print "          <span style=\"font-size: 6rem\">&#x1f600;</span>\n";
 }
-print "        </p\n";
+print "        </td>\n";
+print "        <td><button type=\"submit\" name=\"accion\" value=\"picas\" style=\"width: 5rem\"><span style=\"font-size: 3rem\">&#x2660;&#xfe0f;</span></button></td>\n";
+print "        <td>\n";
+foreach ($_SESSION["picas"] as $carta) {
+    print "          <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"75\">\n";
+}
+print "        </td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"accion\" value=\"corazones\" style=\"width: 5rem\"><span style=\"font-size: 3rem\">&#x2665;&#xfe0f;</span></button></td>\n";
+print "        <td>\n";
+foreach ($_SESSION["corazones"] as $carta) {
+    print "          <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"75\">\n";
+}
+print "        </td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"accion\" value=\"diamantes\" style=\"width: 5rem\"><span style=\"font-size: 3rem\">&#x2666;&#xfe0f;</span></button></td>\n";
+print "        <td>\n";
+foreach ($_SESSION["diamantes"] as $carta) {
+    print "          <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"75\">\n";
+}
+print "        </td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"accion\" value=\"treboles\" style=\"width: 5rem\"><span style=\"font-size: 3rem\">&#x2663;&#xfe0f;</span></button></td>\n";
+print "        <td>\n";
+foreach ($_SESSION["treboles"] as $carta) {
+    print "          <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"75\">\n";
+}
+print "        </td>\n";
+print "      </tr>\n";
+print "    </table>\n";
 ?>
+
+    <p><input type="submit" name="accion" value="reiniciar"></p>
+
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-30">30 de noviembre de 2021</time>
+      <time datetime="2021-12-02">2 de diciembre de 2021</time>
     </p>
 
     <p class="licencia">

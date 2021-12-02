@@ -1,6 +1,6 @@
 <?php
 /**
- * Distribuye cartas (1) - cartas-1-2.php
+ * Siete y medio (1) - cartas-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -23,11 +23,11 @@
  */
 
 // Se accede a la sesión
-session_name("cartas-1");
+session_name("cartas-3");
 session_start();
 
 if (!isset($_SESSION["baraja"])) {
-    header("Location:cartas-1-1.php");
+    header("Location:cartas-3-1.php");
     exit;
 }
 
@@ -47,11 +47,19 @@ function recoge($var, $m = "")
 }
 
 $accion = recoge("accion");
-if (count($_SESSION["baraja"]) > 0 && in_array($accion, ["picas", "corazones", "diamantes", "treboles"])) {
-    $_SESSION[$accion][]  = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
+if ($accion == "otra" && $_SESSION["total"] < 7.5) {
+    $carta = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
+    $_SESSION["jugador"][]  = $carta;
     unset($_SESSION["baraja"][count($_SESSION["baraja"]) - 1]);
+    $tmp = substr($carta, 1);
+    if ($tmp == "11" || $tmp == "12" || $tmp == "13") {
+        $puntos = 0.5;
+    } else {
+        $puntos = $tmp;
+    }
+    $_SESSION["total"] += $puntos;
 } elseif ($accion == "reiniciar") {
     session_destroy();
 }
 
-header("Location:cartas-1-1.php");
+header("Location:cartas-3-1.php");

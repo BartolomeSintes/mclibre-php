@@ -1,6 +1,6 @@
 <?php
 /**
- * Distribuye cartas (1) - cartas-1-2.php
+ * Muestra cartas (1) - cartas-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -23,11 +23,11 @@
  */
 
 // Se accede a la sesión
-session_name("cartas-1");
+session_name("cartas-5");
 session_start();
 
-if (!isset($_SESSION["baraja"])) {
-    header("Location:cartas-1-1.php");
+if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
+    header("Location:cartas-5-1.php");
     exit;
 }
 
@@ -47,11 +47,19 @@ function recoge($var, $m = "")
 }
 
 $accion = recoge("accion");
-if (count($_SESSION["baraja"]) > 0 && in_array($accion, ["picas", "corazones", "diamantes", "treboles"])) {
-    $_SESSION[$accion][]  = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
-    unset($_SESSION["baraja"][count($_SESSION["baraja"]) - 1]);
+
+if ($accion == "mas" && count($_SESSION["cartas"]) < 52) {
+    $nuevaCarta = array_rand($_SESSION["baraja"]);
+    $_SESSION["cartas"][]  = $_SESSION["baraja"][$nuevaCarta];
+    unset($_SESSION["baraja"][$nuevaCarta]);
+} elseif ($accion == "menos" && count($_SESSION["cartas"]) > 0) {
+    // array_key_last() es para PHP > PHP 7.3
+    // $_SESSION["baraja"][]  = $_SESSION["cartas"][array_key_last($_SESSION["cartas"])];
+    // unset($_SESSION["cartas"][array_key_last($_SESSION["cartas"])]);
+    $_SESSION["baraja"][]  = $_SESSION["cartas"][count($_SESSION["cartas"]) - 1];
+    unset($_SESSION["cartas"][count($_SESSION["cartas"]) - 1]);
 } elseif ($accion == "reiniciar") {
     session_destroy();
 }
 
-header("Location:cartas-1-1.php");
+header("Location:cartas-5-1.php");
