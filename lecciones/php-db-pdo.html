@@ -104,7 +104,7 @@ $resultado-&gt;execute([<i>parámetros de la consulta</i>]);</code>
 <code class="language-php">// EJECUCIÓN DE UNA CONSULTA QUE NO VA A DEVOLVER REGISTROS
 if (!$pdo-&gt;query("<i>consulta</i>")) {
     ...        // Si la consulta falla
-{ else {
+} else {
     ...        // Si la consulta se ejecuta correctamente
 }</code>
 </pre>
@@ -118,7 +118,7 @@ if (!$pdo-&gt;query("<i>consulta</i>")) {
 $resultado = $pdo-&gt;query("<i>consulta</i>")
 if (!$resultado) {
     ...        // Si la consulta falla
-{ else {
+} else {
     ...        // Si la consulta se ejecuta correctamente
 }</code>
 </pre>
@@ -157,13 +157,14 @@ $resultado  = $pdo-&gt;query($consulta);</code>
       <p>Cuando la consulta puede devolver registros, se debe guardar la respuesta en una variable auxiliar. Esa variable es de un tipo especial llamado <a href="https://www.php.net/manual/en/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero de la que podemos ir extrayendo uno a uno los registros mediante un bucle <span class="php-res">foreach ()</span> o mediante los métodos fetch() o fetchColumn():</p>
 
       <ul>
-        <li>Si la consulta devuelve un único registro de una columna se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna.
+        <li>Si la consulta devuelve un único registro que contiene la respuesta buscada en la primera columna se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna del registro.
 
           <div class="codigo">
             <pre>
-<code class="language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
 $consulta  = "SELECT COUNT(*) FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -175,18 +176,22 @@ if (!$resultado) {
           </div>
         </li>
 
-        <li>Si la consulta devuelve un único registro se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro. Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz que contiene el registro son los nombres de las columnas de la tabla.
+        <li>Si la consulta devuelve un único registro, se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz son únicamente los nombres de las columnas de la tabla.
 
           <div class="codigo">
             <pre>
-<code class="language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
-$consulta  = "SELECT * FROM <i>tabla</i> WHERE id=<i>numero</i>";
-$resultado = $pdo-&gt;query($consulta);
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
+$valor = <i>valor</i>;       // Normalmente este valor vendrá de un formulario
+
+$consulta  = "SELECT * FROM <i>tabla</i> WHERE <i>id</i>=<i>:id</i>";   // Normalmente solo habrá un registro (o ninguno) con un id determinado
+$resultado = $pdo-&gt;prepare($consulta);
+$resultado -&gt;execute(["<i>:id</i>" =&gt; $valor);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
-    $valor = $resultado-&gt;fetch(PDO::FETCH_ASSOC);
+    $valor = $resultado-&gt;fetch();
     print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;";
     print "\n";
     print "    &lt;p&gt;$valor[<i>columna1</i>] - $valor[<i>columna2</i>] - etc.&lt;/p&gt;\n";
@@ -200,7 +205,7 @@ if (!$resultado) {
 
           <div class="codigo">
             <pre>
-<code class="language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta  = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -300,7 +305,7 @@ $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
              WHERE <span class="codigo-resaltado">columna1=<i>:valor1</i></span>
              AND <span class="codigo-resaltado">columna2=<i>:valor2</i></span>";
 $resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;<span class="codigo-resaltado">execute([":columna1" =&gt; $valor1, ":columna2" =&gt; $valor2])</span>;
+$resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1, ":valor2" =&gt; $valor2])</span>;
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -407,7 +412,7 @@ if (!$resultado) {
   <section id="ejemplos-codigo">
     <h2>Ejemplos de código</h2>
 
-    <p>A contnuación se ofrecen ejemplos de código de cómo se podría trabajar con PDO para realizar las tareas más habituales de gestión de una base de datos.</p>
+    <p>A continuación se ofrecen ejemplos de código de cómo se podría trabajar con PDO para realizar las tareas más habituales de gestión de una base de datos.</p>
 
     <p>La base de datos de estos ejemplos tiene una estructura muy simple: una sola tabla <i>agenda</i> con tres columnas: un identificador numérico (<i>id</i>), el nombre y los apellidos de una persona.</p>
 
@@ -439,9 +444,9 @@ $cfg["sqliteDatabase"] = "tmp.sqlite";                        // Ubicación de l
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbTablaAgenda"]        = "agenda";                      // Nombre de la tabla Agenda
-$cfg["dbTamAgendaNombre"]    = 40;                            // Tamaño de la columna Agenda &gt; Nombre
-$cfg["dbTamAgendaApellidos"] = 60;                            // Tamaño de la columna Agenda &gt; Apellidos</code>
+$cfg["dbAgendaTabla"]        = "agenda";                      // Nombre de la tabla Agenda
+$cfg["dbAgendaTamNombre"]    = 40;                            // Tamaño de la columna Agenda &gt; Nombre
+$cfg["dbAgendaTamApellidos"] = 60;                            // Tamaño de la columna Agenda &gt; Apellidos</code>
 </pre>
       </div>
 
@@ -460,9 +465,9 @@ $cfg["mysqlDatabase"] = "";                                   // Nombre de la ba
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbTablaAgenda"]        = "$cfg[mysqlDatabase].agenda";  // Nombre de la tabla Agenda
-$cfg["dbTamAgendaNombre"]    = 40;                            // Tamaño de la columna Agenda &gt; Nombre
-$cfg["dbTamAgendaApellidos"] = 60;                            // Tamaño de la columna Agenda &gt; Apellidos</code>
+$cfg["dbAgendaTabla"]        = "$cfg[mysqlDatabase].agenda";  // Nombre de la tabla Agenda
+$cfg["dbAgendaTamNombre"]    = 40;                            // Tamaño de la columna Agenda &gt; Nombre
+$cfg["dbAgendaTamApellidos"] = 60;                            // Tamaño de la columna Agenda &gt; Apellidos</code>
 </pre>
       </div>
     </section>
@@ -563,7 +568,7 @@ $pdo = conectaDb();</code>
         <div class="codigo">
           <pre>
 <code class="copy-language-php">// CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbTablaAgenda]";
+$consulta = "DROP TABLE IF EXISTS $cfg[dbAgendaTabla]";
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -579,10 +584,10 @@ if (!$pdo-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="copy-language-php">// SQLITE: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbTablaAgenda]  (
+$consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
              id INTEGER PRIMARY KEY,
-             nombre VARCHAR($cfg[dbTamAgendaNombre]),
-             apellidos VARCHAR($cfg[dbTamAgendaApellidos])
+             nombre VARCHAR($cfg[dbAgendaTamNombre]),
+             apellidos VARCHAR($cfg[dbAgendaTamApellidos])
              )";
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -628,7 +633,7 @@ if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -639,10 +644,10 @@ if (!$pdo-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="copy-language-php">// MYSQL: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbTablaAgenda]  (
+$consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
              id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-             nombre VARCHAR($cfg[dbTamAgendaNombre]),
-             apellidos VARCHAR($cfg[dbTamAgendaApellidos]),
+             nombre VARCHAR($cfg[dbAgendaTamNombre]),
+             apellidos VARCHAR($cfg[dbAgendaTamApellidos]),
              PRIMARY KEY(id)
              )";
 if (!$pdo-&gt;query($consulta)) {
@@ -660,7 +665,7 @@ if (!$pdo-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="copy-language-php">// CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbTablaAgenda]";
+$consulta = "DROP TABLE IF EXISTS $cfg[dbAgendaTabla]";
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -684,10 +689,10 @@ if (!$pdo-&gt;query($consulta)) {
           <div class="codigo">
             <pre>
 <code class="copy-language-php">// CONSULTA DE INSERCIÓN DE REGISTRO
-$nombre    = "Pepito";
+$nombre    = "Pepito";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Conejo";
 
-$consulta = "INSERT INTO $cfg[dbTablaAgenda]
+$consulta = "INSERT INTO $cfg[dbAgendaTabla]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 $resultado = $pdo-&gt;prepare($consulta);
@@ -706,11 +711,11 @@ if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apelli
           <div class="codigo">
             <pre>
 <code class="copy-language-php">// CONSULTA DE MODIFICACIÓN DE REGISTRO
-$id        = "1";
-$nombre    = "Napoleón";
-$apellidos = "Bonaparte";
+$id        = "1";                 // Normalmente estos valores vendrán de un formulario
+$nombre    = "Pepita";
+$apellidos = "Conejo";
 
-$consulta = "UPDATE $cfg[dbTablaAgenda]
+$consulta = "UPDATE $cfg[dbAgendaTabla]
              SET nombre=:nombre, apellidos=:apellidos
              WHERE id=:id";
 $resultado = $pdo-&gt;prepare($consulta);
@@ -732,10 +737,11 @@ if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apelli
           <div class="codigo">
             <pre>
 <code class="copy-language-php">// CONSULTA DE BORRADO DE REGISTROS
-$id = [1 =&gt; "on"];      // por ejemplo, [1 =&gt; "on", 3 =&gt; "on"]
+$id = [1 =&gt; "on"];     // Normalmente este valor vendrá de un formulario
+                       // en forma de matriz. Por ejemplo, [1 =&gt; "on", 3 =&gt; "on"]
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $cfg[dbTablaAgenda]
+    $consulta = "DELETE FROM $cfg[dbAgendaTabla]
                  WHERE id=:indice";
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
@@ -761,8 +767,8 @@ foreach ($id as $indice =&gt; $valor) {
 
           <div class="codigo">
             <pre>
-<code class="copy-language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$consulta = "SELECT COUNT(*) FROM $cfg[dbTablaAgenda]";
+<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -774,19 +780,22 @@ if (!$resultado) {
 </pre>
           </div>
         </li>
-        <li>Si la consulta devuelve un único registro se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro. Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz que contiene el registro son los nombres de las columnas de la tabla.
 
+        <li>Si la consulta devuelve un único registro, se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz son únicamente los nombres de las columnas de la tabla.
           <div class="codigo">
             <pre>
-<code class="language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbTablaAgenda]
-             WHERE id=1";
-$resultado = $pdo-&gt;query($consulta);
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
+$id = 1       // Normalmente este valor vendrá de un formulario
+
+$consulta  = "SELECT * FROM <i>tabla</i> WHERE id=:id";
+$resultado = $pdo-&gt;prepare($consulta);
+$resultado -&gt;execute([":id" = &gt; $id);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
-    $valor = $resultado-&gt;fetch(PDO::FETCH_ASSOC);
+    $valor = $resultado-&gt;fetch();
     print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;";
     print "\n";
     print "    &lt;p&gt;$valor[id] - $valor[nombre] - $valor[apellidos].&lt;/p&gt;\n";
@@ -803,8 +812,8 @@ if (!$resultado) {
 
               <div class="codigo">
                 <pre>
-<code class="copy-language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbTablaAgenda]";
+<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+$consulta = "SELECT * FROM $cfg[dbAgendaTabla]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -823,8 +832,8 @@ if (!$resultado) {
             <li>pero también se puede utilizar un bucle <span class="php-res">while</span> y la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php"><span class="php-fun">PDOStatement-&gt;fetch()</span></a>, que recupera el primer registro de la consulta. Es importante tener en cuenta que sólo se puede iterar una vez sobre el resultado de la consulta, ya que los registros se van eliminado del resultado de la consulta.
               <div class="codigo">
                 <pre>
-<code class="language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbTablaAgenda]";
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+$consulta = "SELECT * FROM $cfg[dbAgendaTabla]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
@@ -842,12 +851,12 @@ if (!$resultado) {
               </div>
             </li>
 
-            <li>Los dos ejemplos anteriores (foreach o fetch) no tratarían de forma adecuada el caso en el que la consulta no devolviera ningún registro, ya que no escribirían nada. Por ello se recomienda hacer primero una consulta que cuente el número de resultados de la consulta y, si es mayor que cero, hacer la consulta que recupera los registros.
+            <li>Los dos ejemplos anteriores (con <span class="php-res">foreach</span> o <span class="php-fun">fetch()</span>) no tratarían de forma adecuada el caso en el que la consulta no devolviera ningún registro, ya que no escribirían nada. Por ello se recomienda hacer primero una consulta que cuente el número de resultados de la consulta y, si es mayor que cero, hacer la consulta que recupera los registros.
 
               <div class="codigo">
                 <pre>
-<code class="copy-language-php">//  CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT COUNT(*) FROM $cfg[dbTablaAgenda]";
+<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
@@ -856,7 +865,7 @@ if (!$resultado) {
     print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
     print "\n";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbTablaAgenda]";
+    $consulta = "SELECT * FROM $cfg[dbAgendaTabla]";
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
@@ -890,9 +899,9 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$apellidos = recoge("apellidos");
+$apellidos = "Con";           // Normalmente este valor vendrá de un formulario
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbTablaAgenda]
+$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]
              WHERE apellidos LIKE :apellidos";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
@@ -911,9 +920,9 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$apellidos = recoge("apellidos");
+$apellidos = "nej";           // Normalmente este valor vendrá de un formulario
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbTablaAgenda]
+$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]
              WHERE apellidos LIKE :apellidos";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
@@ -933,19 +942,23 @@ if (!$resultado) {
     <section id="union-tablas">
       <h3>Consultas de unión de tablas</h3>
 
-      <p>Se pueden también realizar consultas de unión entre varias tablas (el ejemplo está sacado del <a href="../ejercicios/bases-de-datos-viejos/biblioteca-1.html">ejercicio de Biblioteca</a>):</p>
-
-      <p class="incompleto"><strong>Nota</strong>: Escribir como consulta preparada.</p>
+      <p>Se pueden también realizar consultas de unión entre varias tablas, como en el ejemplo siguiente. El ejemplo está sacado del <a href="../ejercicios/bases-de-datos-viejos/biblioteca-1.html">ejercicio de Biblioteca</a>) y devuelve los préstamos pendientes de devolver a partir de tres tablas de Usuarios, Obras y Préstamos:</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">// CONSULTA DE UNIÓN DE TABLAS
-$consulta = "SELECT $cfg[dbTablaPrestamos].id AS id, $cfg[dbTablaUsuarios].nombre as nombre,
-             $cfg[dbTablaUsuarios].apellidos as apellidos, $cfg[dbTablaObras].titulo as titulo,
-             $cfg[dbTablaPrestamos].prestado as prestado, $cfg[dbTablaPrestamos].devuelto as devuelto
+$consulta = "SELECT
+               $cfg[dbTablaPrestamos].id AS id,
+               $cfg[dbTablaUsuarios].nombre as nombre,
+               $cfg[dbTablaUsuarios].apellidos as apellidos,
+               $cfg[dbTablaObras].titulo as titulo,
+               $cfg[dbTablaPrestamos].prestado as prestado,
+               $cfg[dbTablaPrestamos].devuelto as devuelto
              FROM $cfg[dbTablaPrestamos], $cfg[dbTablaUsuarios], $cfg[dbTablaObras]
-             WHERE $cfg[dbTablaPrestamos].id_usuario=$cfg[dbTablaUsuarios].id AND
-             $cfg[dbTablaPrestamos].id_obra=$$cfg[dbTablaObras].id and $cfg[dbTablaPrestamos].devuelto='0000-00-00'
+             WHERE
+               $cfg[dbTablaPrestamos].id_usuario=$cfg[dbTablaUsuarios].id
+               AND $cfg[dbTablaPrestamos].id_obra=$$cfg[dbTablaObras].id
+               AND $cfg[dbTablaPrestamos].devuelto='0000-00-00'
              ORDER BY $columna $orden";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -971,7 +984,7 @@ if (!$resultado) {
       <li>biblioteca-mysql.php. En este fichero escribiremos los elementos comunes que necesitan adaptarse para utilizar MySQL.</li>
     </ul>
 
-    <p>Todas las páginas de la aplciación cargarán la biblioteca general, que a su vez cargará el fichero de configuración y una de las dos bibliotecas específicas, de acuerdo con la configuración escogida por el usuario.</p>
+    <p>Todas las páginas de la aplicación cargarán la biblioteca general, que a su vez cargará el fichero de configuración y una de las dos bibliotecas específicas, de acuerdo con la configuración escogida por el usuario.</p>
 
     <section id="conexion-configurable">
       <h3>Conexión configurable</h3>
@@ -986,7 +999,16 @@ if (!$resultado) {
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 // Base de datos utilizada por la aplicación
-<span class="codigo-resaltado">$cfg["dbMotor"]</span> = SQLITE;           // Valores posibles: MYSQL o SQLITE</code>
+<span class="codigo-resaltado">$cfg["dbMotor"]</span> = SQLITE;                                     // Valores posibles: MYSQL o SQLITE
+
+// Configuración para SQLite
+$cfg["sqliteDatabase"] = "tmp.sqlite";                        // Ubicación de la base de datos
+
+// Configuración para MySQL
+$cfg["mysqlHost"]     = "mysql:host=localhost";               // Nombre de host
+$cfg["mysqlUser"]     = "";                                   // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                   // Contraseña de usuario
+$cfg["mysqlDatabase"] = "";                                   // Nombre de la base de datos</code>
 </pre>
           </div>
         </li>
@@ -1086,8 +1108,8 @@ $pdo = conectaDb();</code>
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbTamAgendaNombre"]    = 40;                 // Tamaño de la columna Agenda &gt; Nombre
-$cfg["dbTamAgendaApellidos"] = 60;                 // Tamaño de la columna Agenda &gt; Apellidos</code>
+$cfg["dbAgendaTamNombre"]    = 40;                 // Tamaño de la columna Agenda &gt; Nombre
+$cfg["dbAgendaTamApellidos"] = 60;                 // Tamaño de la columna Agenda &gt; Apellidos</code>
 </pre>
           </div>
         </li>
@@ -1099,14 +1121,14 @@ $cfg["dbTamAgendaApellidos"] = 60;                 // Tamaño de la columna Agen
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbTablaAgenda"]        = "agenda";           // Nombre de la tabla Agenda
+$cfg["dbAgendaTabla"]        = "agenda";           // Nombre de la tabla Agenda
 
-// SQLITE: CONSULTA DE BORRADO Y CREACiÓN DE TABLA
+// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
 function borraTodo()
 {
     global $pdo, $cfg;
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbTablaAgenda]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[dbAgendaTabla]";
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         print "\n";
@@ -1115,11 +1137,11 @@ function borraTodo()
         print "\n";
     }
 
-    $consulta = "CREATE TABLE $cfg[dbTablaAgenda]  (
-                id INTEGER PRIMARY KEY,
-                nombre VARCHAR($cfg[dbTamAgendaNombre]),
-                apellidos VARCHAR($cfg[dbTamAgendaApellidos])
-              )";
+    $consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
+                 id INTEGER PRIMARY KEY,
+                 nombre VARCHAR($cfg[dbAgendaTamNombre]),
+                 apellidos VARCHAR($cfg[dbAgendaTamApellidos])
+                 )";
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         print "\n";
@@ -1137,14 +1159,11 @@ function borraTodo()
             <pre>
 <code class="language-php">// biblioteca-mysql.php
 
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
-// Configuración para MySQL
-$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
-$cfg["mysqlUser"]     = "";                                 // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "";                                 // Nombre de la base de datos
+// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+// Base de datos
+$db["TablaAgenda"] = "$cfg[mysqlDatabase].agenda";   // Nombre de la tabla Agenda
 
-// MYSQL: CONSULTA DE BORRADO Y CREACiÓN DE BASE DE DATOS Y TABLA
+// MYSQL: CONSULTAS DE BORRADO Y CREACiÓN DE BASE DE DATOS Y TABLA
 function borraTodo()
 {
     global $pdo, $cfg;
@@ -1155,7 +1174,7 @@ function borraTodo()
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         print "\n";
     } else {
-        print "    &lt;p&gt;Base de datos borrada correctamente.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
         print "\n";
     }
 
@@ -1168,10 +1187,10 @@ function borraTodo()
     } else {
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
-        $consulta = "CREATE TABLE $cfg[dbTablaAgenda]  (
+        $consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
                      id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-                     nombre VARCHAR($cfg[dbTamAgendaNombre]),
-                     apellidos VARCHAR($cfg[dbTamAgendaApellidos]),
+                     nombre VARCHAR($cfg[dbAgendaTamNombre]),
+                     apellidos VARCHAR($cfg[dbAgendaTamApellidos]),
                      PRIMARY KEY(id)
                      )";
         if (!$pdo-&gt;query($consulta)) {
@@ -1203,7 +1222,7 @@ $pdo = null;</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 20 de diciembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 21 de diciembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
