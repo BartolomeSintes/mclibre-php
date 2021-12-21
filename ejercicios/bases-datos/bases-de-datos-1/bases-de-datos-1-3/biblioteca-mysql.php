@@ -43,7 +43,7 @@ function borraTodo()
         print "    <p class=\"aviso\">Error al borrar la base de datos / {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {
-        print "    <p>Base de datos borrada correctamente.</p>\n";
+        print "    <p>Base de datos borrada correctamente (si existía).</p>\n";
         print "\n";
     }
 

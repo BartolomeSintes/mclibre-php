@@ -16,10 +16,6 @@ define("SQLITE", 2);                        // Base de datos SQLITE
 define("MENU_PRINCIPAL", 1);                // Menú principal
 define("MENU_VOLVER", 2);                   // Menú Volver a inicio
 
-// Base de datos utilizada por la aplicación: MYSQL o SQLITE
-
-$cfg["dbMotor"] = SQLITE;                   // Valores posibles: MYSQL o SQLITE
-
 // Variables configurables por el administrador de la aplicación
 
 require_once "config.php";
@@ -28,10 +24,6 @@ require_once "config.php";
 
 $cfg["dbAgendaTamNombre"]    = 40;          // Tamaño de la columna Agenda > Nombre
 $cfg["dbAgendaTamApellidos"] = 60;          // Tamaño de la columna Agenda > Apellidos
-
-// Método de envío de formularios
-
-$cfg["formMethod"] = GET;                   // Valores posibles: GET o POST
 
 // Biblioteca base de datos
 

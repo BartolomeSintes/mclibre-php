@@ -20,4 +20,8 @@ $cfg["sqliteDatabase"] = "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-5
 $cfg["mysqlHost"]     = "mysql:host=localhost";               // Nombre de host
 $cfg["mysqlUser"]     = "mclibre_base_datos_1_5";             // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                   // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_1_5";             // Nombre de la base de datos
+$cfg["mysqlDatabase"] = "mclibre_base_datos_1_5";              // Nombre de la base de datos
+
+// Método de envío de formularios
+
+$cfg["formMethod"] = GET;                   // Valores posibles: GET o POST
