@@ -5,59 +5,56 @@
  * @link      https://www.mclibre.org
  */
 
-// Configuración específica para SQLite
+// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 
-// Configuración general
+// Base de datos
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-3.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "agenda");                                                     // Nombre de la tabla Agenda
+$cfg["dbAgendaTabla"] = "agenda";                      // Nombre de la tabla Agenda
 
-// Nombres de las tablas
+// Funciones específicas de bases de datos (SQLite)
 
-$tablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla Agenda
-
-// Consultas de borrado y creación de base de datos y tablas, etc.
-
-$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
-    id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamAgendaNombre),
-    apellidos VARCHAR($tamAgendaApellidos)
-    )";
-
-// Funciones específicas de bases de datos (SQLITE)
+// SQLITE: CONEXIÓN CON LA BASE DE DATOS
 
 function conectaDb()
 {
+    global $cfg;
+
     try {
-        $tmp = new PDO("sqlite:" . SQLITE_DATABASE);
+        $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp->query("PRAGMA foreign_keys = ON");
         return $tmp;
     } catch (PDOException $e) {
-        cabecera("Error grave", MENU_PRINCIPAL);
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
         print "\n";
-        print "    <p class=\"aviso\">Error: " . $e->getMessage() . "</p>\n";
-        pie();
-        exit();
+        exit;
     }
 }
 
-function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
+// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
+
+function borraTodo()
 {
-    $consulta = "DROP TABLE $nombreTabla";
-    if ($db->query($consulta)) {
-        print "    <p>Tabla borrada correctamente.</p>\n";
+    global $pdo, $cfg;
+
+    $consulta = "DROP TABLE IF EXISTS $cfg[dbAgendaTabla]";
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al borrar la tabla / {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {
-        print "    <p class=\"aviso\">Error al borrar la tabla.</p>\n";
+        print "    <p>Tabla borrada correctamente (si existía).</p>\n";
         print "\n";
     }
 
-    $consulta = $consultaCreacionTabla;
-    if ($db->query($consulta)) {
-        print "    <p>Tabla creada correctamente.</p>\n";
+    $consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
+                 id INTEGER PRIMARY KEY,
+                 nombre VARCHAR($cfg[dbAgendaTamNombre]),
+                 apellidos VARCHAR($cfg[dbAgendaTamApellidos])
+                 )";
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al crear la tabla / {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {
-        print "    <p class=\"aviso\">Error al crear la tabla.</p>\n";
+        print "    <p>Tabla creada correctamente.</p>\n";
         print "\n";
     }
 }

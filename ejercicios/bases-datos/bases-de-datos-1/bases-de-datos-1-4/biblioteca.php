@@ -5,37 +5,39 @@
  * @link      https://www.mclibre.org
  */
 
-// Constantes comunes
+// Constantes y variables configurables por el programador de la aplicación
 
 define("GET", "get");                       // Formularios se envían con GET
 define("POST", "post");                     // Formularios se envían con POST
 
-define("MYSQL", "MySQL");                   // Base de datos MySQL
-define("SQLITE", "SQLite");                 // Base de datos SQLITE
+define("MYSQL", 1);                         // Base de datos MySQL
+define("SQLITE", 2);                        // Base de datos SQLITE
 
-define("MENU_PRINCIPAL", "menuPrincipal");  // Menú principal
-define("MENU_VOLVER", "menuVolver");        // Menú Volver a inicio
-
-// Constantes y variables configurables
+define("MENU_PRINCIPAL", 1);                // Menú principal
+define("MENU_VOLVER", 2);                   // Menú Volver a inicio
 
 // Base de datos utilizada por la aplicación: MYSQL o SQLITE
 
-$dbMotor = SQLITE;                          // Valores posibles: MYSQL o SQLITE
+$cfg["dbMotor"] = SQLITE;                   // Valores posibles: MYSQL o SQLITE
+
+// Variables configurables por el administrador de la aplicación
+
+require_once "config.php";
 
 // Configuración Tabla Agenda
 
-$tamAgendaNombre    = 40;                   // Tamaño de la columna Agenda > Nombre
-$tamAgendaApellidos = 60;                   // Tamaño de la columna Agenda > Apellidos
+$cfg["dbAgendaTamNombre"]    = 40;          // Tamaño de la columna Agenda > Nombre
+$cfg["dbAgendaTamApellidos"] = 60;          // Tamaño de la columna Agenda > Apellidos
 
 // Método de envío de formularios
 
-define("FORM_METHOD", GET);                 // Valores posibles: GET o POST
+$cfg["formMethod"] = GET;                   // Valores posibles: GET o POST
 
 // Biblioteca base de datos
 
-if ($dbMotor == MYSQL) {
+if ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";
-} elseif ($dbMotor == SQLITE) {
+} elseif ($cfg["dbMotor"] == SQLITE) {
     require_once "biblioteca-sqlite.php";
 }
 
@@ -100,7 +102,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2020-05-19\">19 de mayo de 2020</time>\n";
+    print "      <time datetime=\"2021-12-21\">21 de diciembre de 2021</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

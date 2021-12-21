@@ -7,21 +7,23 @@
 
 require_once "biblioteca.php";
 
-$db = conectaDb();
+$pdo = conectaDb();
 cabecera("Borrar 2", MENU_VOLVER);
 
 $id = recoge("id", []);
 
 foreach ($id as $indice => $valor) {
-    $consulta = "DELETE FROM $tablaAgenda
-        WHERE id=:indice";
-    $result = $db->prepare($consulta);
-    if ($result->execute([":indice" => $indice])) {
-        print "    <p>Registro borrado correctamente.</p>\n";
+    $consulta = "DELETE FROM $cfg[dbAgendaTabla]
+                 WHERE id=:indice";
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado->execute([":indice" => $indice])) {
+        print "    <p class=\"aviso\">Error al borrar el registro / {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
     } else {
-        print "    <p class=\"aviso\">Error al borrar el registro.</p>\n";
+        print "    <p>Registro borrado correctamente (si existía).</p>\n";
+        print "\n";
     }
 }
 
-$db = null;
+$pdo = null;
 pie();
