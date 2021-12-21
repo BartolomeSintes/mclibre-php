@@ -3,9 +3,9 @@
  * Menús 7 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2021-12-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,13 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("MENU_PRINCIPAL",  1);      // Para función cabecera()
-define("MENU_SECUNDARIO", 2);      // Para función cabecera()
-
 ini_set("session.save_handler", "files"); // Por si session.save_handler = user en php.ini
 
 session_name("menus7");
 session_start();
+
+define("MENU_PRINCIPAL",  1);      // Para función cabecera()
+define("MENU_SECUNDARIO", 2);      // Para función cabecera()
 
 function cabecera($texto)
 {
@@ -71,7 +71,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2018-11-01\">1 de noviembre de 2018</time>\n";
+    print "      <time datetime=\"2021-12-09\">9 de diciembre de 2021</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

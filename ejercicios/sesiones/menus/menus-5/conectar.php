@@ -3,9 +3,9 @@
  * Menús 5 - conectar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2021-12-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

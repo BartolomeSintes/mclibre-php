@@ -3,9 +3,9 @@
  * Menús 3 - pagina-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2021-12-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,13 +25,12 @@
 if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
     exit;
-} else {
-    require_once "biblioteca.php";
-
-    cabecera("Tercera página - Confirmado", MENU_SECUNDARIO);
-
-    print("    <p>Ha llegado usted a la tercera página</p>\n");
-
-    pie();
 }
 
+require_once "biblioteca.php";
+
+cabecera("Tercera página - Confirmado", MENU_SECUNDARIO);
+
+print "    <p>Ha llegado usted a la tercera página</p>\n";
+
+pie();

@@ -3,9 +3,9 @@
  * Menús 2 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2021-12-09
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -68,7 +68,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2018-11-01\">1 de noviembre de 2018</time>\n";
+    print "      <time datetime=\"2021-12-09\">9 de diciembre de 2021</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
