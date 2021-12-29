@@ -1,19 +1,20 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
 require_once "biblioteca.php";
 
 $pdo = conectaDb();
+
 cabecera("Borrar 2", MENU_VOLVER);
 
 $id = recoge("id", []);
 
 foreach ($id as $indice => $valor) {
-    $consulta = "DELETE FROM $cfg[dbAgendaTabla]
+    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
     $resultado = $pdo->prepare($consulta);
     if (!$resultado->execute([":indice" => $indice])) {
@@ -26,4 +27,5 @@ foreach ($id as $indice => $valor) {
 }
 
 $pdo = null;
+
 pie();

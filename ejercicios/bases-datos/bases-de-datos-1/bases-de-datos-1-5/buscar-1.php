@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
@@ -16,11 +16,11 @@ print "      <table>\n";
 print "        <tbody>\n";
 print "          <tr>\n";
 print "            <td>Nombre:</td>\n";
-print "            <td><input type=\"text\" name=\"nombre\" size=\"$cfg[dbAgendaTamNombre]\" maxlength=\"$cfg[dbAgendaTamNombre]\" autofocus></td>\n";
+print "            <td><input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" autofocus></td>\n";
 print "          </tr>\n";
 print "          <tr>\n";
 print "            <td>Apellidos:</td>\n";
-print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbAgendaTamApellidos]\" maxlength=\"$cfg[dbAgendaTamApellidos]\"></td>\n";
+print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\"></td>\n";
 print "          </tr>\n";
 print "        </tbody>\n";
 print "      </table>\n";

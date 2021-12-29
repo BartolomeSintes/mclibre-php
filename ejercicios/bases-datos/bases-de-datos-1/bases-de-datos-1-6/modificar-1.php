@@ -1,16 +1,17 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
 require_once "biblioteca.php";
 
 $pdo = conectaDb();
+
 cabecera("Modificar 1", MENU_VOLVER);
 
-$consulta  = "SELECT * FROM $cfg[dbAgendaTabla] ";
+$consulta  = "SELECT * FROM $cfg[dbPersonasTabla] ";
 $resultado = $pdo->query($consulta);
 
 if (!$resultado) {
@@ -45,4 +46,5 @@ if (!$resultado) {
     print "    </form>\n";
 }
 $pdo = null;
+
 pie();

@@ -1,18 +1,19 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
 require_once "biblioteca.php";
 
 $pdo = conectaDb();
+
 cabecera("Modificar 2", MENU_VOLVER);
 
 $id = recoge("id");
 
-$consulta = "SELECT * FROM $cfg[dbAgendaTabla]
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
              WHERE id=:id";
 $resultado = $pdo->prepare($consulta);
 $resultado->execute([":id" => $id]);
@@ -29,11 +30,11 @@ if (!$resultado) {
     print "        <tbody>\n";
     print "          <tr>\n";
     print "            <td>Nombre:</td>\n";
-    print "            <td><input type=\"text\" name=\"nombre\" size=\"$cfg[dbAgendaTamNombre]\" maxlength=\"$cfg[dbAgendaTamNombre]\" value=\"$valor[nombre]\" autofocus></td>\n";
+    print "            <td><input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$valor[nombre]\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Apellidos:</td>\n";
-    print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbAgendaTamApellidos]\" maxlength=\"$cfg[dbAgendaTamApellidos]\" value=\"$valor[apellidos]\"></td>\n";
+    print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\" value=\"$valor[apellidos]\"></td>\n";
     print "          </tr>\n";
     print "        </tbody>\n";
     print "      </table>\n";
@@ -47,4 +48,5 @@ if (!$resultado) {
 }
 
 $pdo = null;
+
 pie();

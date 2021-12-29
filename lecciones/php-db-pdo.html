@@ -208,6 +208,7 @@ if (!$resultado) {
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta  = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -275,6 +276,7 @@ $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
              AND <span class="codigo-resaltado">columna2=<i>$valor2</i></span>";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute();
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -306,6 +308,7 @@ $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
              AND <span class="codigo-resaltado">columna2=<i>:valor2</i></span>";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1, ":valor2" =&gt; $valor2])</span>;
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -335,6 +338,7 @@ $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
              AND <span class="codigo-resaltado">columna2=?</span>";
 $resultado = $cfg-&gt;prepare($consulta);
 $resultado-&gt;<span class="codigo-resaltado">execute([$valor1, $valor2])</span>;
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -399,6 +403,7 @@ $consulta = "SELECT * FROM <i>tabla</i>
              ORDER BY <span class="codigo-resaltado">$columna</span> ASC";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1])</span>;
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -414,7 +419,7 @@ if (!$resultado) {
 
     <p>A continuación se ofrecen ejemplos de código de cómo se podría trabajar con PDO para realizar las tareas más habituales de gestión de una base de datos.</p>
 
-    <p>La base de datos de estos ejemplos tiene una estructura muy simple: una sola tabla <i>agenda</i> con tres columnas: un identificador numérico (<i>id</i>), el nombre y los apellidos de una persona.</p>
+    <p>La base de datos de estos ejemplos tiene una estructura muy simple: una sola tabla <i>personas</i> con tres columnas: un identificador numérico (<i>id</i>), el nombre y los apellidos de una persona.</p>
 
     <p>La estructura general de estas consultas se repite con ligeras variaciones. Para elegir entre unas y otras estructuras basta con fijarse en dos aspectos:</p>
     <ul>
@@ -440,13 +445,13 @@ if (!$resultado) {
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 // Configuración para SQLite
-$cfg["sqliteDatabase"] = "tmp.sqlite";                        // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "tmp.sqlite";                            // Ubicación de la base de datos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbAgendaTabla"]        = "agenda";                      // Nombre de la tabla Agenda
-$cfg["dbAgendaTamNombre"]    = 40;                            // Tamaño de la columna Agenda &gt; Nombre
-$cfg["dbAgendaTamApellidos"] = 60;                            // Tamaño de la columna Agenda &gt; Apellidos</code>
+$cfg["dbPersonasTabla"]        = "personas";                      // Nombre de la tabla Personas
+$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
       </div>
 
@@ -458,16 +463,16 @@ $cfg["dbAgendaTamApellidos"] = 60;                            // Tamaño de la c
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 // Configuración para MySQL
-$cfg["mysqlHost"]     = "mysql:host=localhost";               // Nombre de host
-$cfg["mysqlUser"]     = "";                                   // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                   // Contraseña de usuario
-$cfg["mysqlDatabase"] = "";                                   // Nombre de la base de datos
+$cfg["mysqlHost"]     = "mysql:host=localhost";                   // Nombre de host
+$cfg["mysqlUser"]     = "";                                       // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
+$cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbAgendaTabla"]        = "$cfg[mysqlDatabase].agenda";  // Nombre de la tabla Agenda
-$cfg["dbAgendaTamNombre"]    = 40;                            // Tamaño de la columna Agenda &gt; Nombre
-$cfg["dbAgendaTamApellidos"] = 60;                            // Tamaño de la columna Agenda &gt; Apellidos</code>
+$cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de la tabla Personas
+$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
       </div>
     </section>
@@ -499,7 +504,6 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
-        print "\n";
         exit;
     }
 }
@@ -538,7 +542,6 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
-        print "\n";
         exit;
     }
 }
@@ -554,10 +557,10 @@ $pdo = conectaDb();</code>
     <section id="create-drop">
       <h3>Creación y borrado de bases de datos y tablas: Consultas CREATE DATABASE, DROP DATABASE, CREATE TABLE, DROP TABLE</h3>
 
-      <p>Estas consultas no son iguales en MySQL y SQLite. En los ejercicios propuestos estas consultas se incluyen en las bibliotecas específicas para que se pueda utilizar una u otra base de datos.</p>
+      <p>Las consultas de creación no son iguales en MySQL y SQLite. Para que una misma aplicación pueda trabajar con una u otra base de datos, en el apartado <a href="#configurable">aplicación configurable</a> estas consultas se incluyen en bibliotecas específicas.</p>
       <ul>
-        <li>En el caso de utilizar SQLite, no tiene sentido crear o borrar la base de datos ya que con SQLite cada base de datos es un fichero distinto y al conectar con la base de datos ya se dice con qué archivo se va a trabajar y se crea en caso necesario.</li>
-        <li>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. Los ejemplos no utilizan sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</li>
+        <li>Las consultas de creación de bases de datos CREATE DATABASE suelen ser específicas de cada base de datos. En el caso de utilizar SQLite, en realidad no tiene sentido crear o borrar la base de datos ya que con SQLite cada base de datos es un fichero distinto y al conectar con la base de datos ya se dice con qué archivo se va a trabajar y se crea en caso necesario.</li>
+        <li>Las consultas de creación de tablas CREATE TABLE suelen ser específicas de cada base de datos. Los ejemplos de este apartado no utilizan sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</li>
       </ul>
 
       <section id="create-sqlite">
@@ -565,10 +568,13 @@ $pdo = conectaDb();</code>
 
         <p>En el caso de utilizar SQLite, no tiene sentido crear o borrar la base de datos ya que SQLite trabaja con ficheros y cada fichero es una base de datos. Tan solo es necesario borrar y crear las tablas.</p>
 
+        <p>Para borrar una tabla, se utiliza la consulta DROP TABLE. Esta consulta no es específica de SQlite pero se comenta en este apartado por estar relacionada con las demás consultas de este apartado. Se ha añadido la condición IF EXISTS porque en algunas versiones de SQLite la consulta DROP TABLE da error si la tabla no existe.</p>
+
         <div class="codigo">
           <pre>
 <code class="copy-language-php">// CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbAgendaTabla]";
+$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -584,11 +590,12 @@ if (!$pdo-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="copy-language-php">// SQLITE: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
+$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
              id INTEGER PRIMARY KEY,
-             nombre VARCHAR($cfg[dbAgendaTamNombre]),
-             apellidos VARCHAR($cfg[dbAgendaTamApellidos])
+             nombre VARCHAR($cfg[dbPersonasTamNombre]),
+             apellidos VARCHAR($cfg[dbPersonasTamApellidos])
              )";
+
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -603,6 +610,23 @@ if (!$pdo-&gt;query($consulta)) {
       <section id="create-mysql">
         <h4>Creación y borrado de bases de datos y tablas en MySQL</h4>
 
+        <p>Para borrar una base de datos, se utiliza la consulta DROP DATABASE. Se ha añadido la condición IF EXISTS porque en algunas bases de datos la consulta DROP DATABASE da error si la tabla no existe.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="copy-language-php">// MYSQL: CONSULTA DE BORRADO DE BASE DE DATOS
+$consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
+
+if (!$pdo-&gt;query($consulta)) {
+    print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
+} else {
+    print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
+    print "\n";
+}</code>
+</pre>
+        </div>
+
         <p>Para crear una base de datos, se utiliza la consulta CREATE DATABASE.</p>
 
         <div class="codigo">
@@ -611,6 +635,7 @@ if (!$pdo-&gt;query($consulta)) {
 $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
              CHARACTER SET utf8mb4
              COLLATE utf8mb4_unicode_ci";
+
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -623,17 +648,18 @@ if (!$pdo-&gt;query($consulta)) {
 
         <p><strong>Nota</strong>: El juego de caracteres utilizado en este curso es <strong>UTF-8</strong>, por lo que en la base de datos MySQL se utiliza el juego de caracteres <strong>utf8mb4</strong> (que permite almacenar cualquier carácter Unicode) y el cotejamiento <strong>utf8mb4_unicode_ci</strong> (que implementa todos los criterios de ordenación de Unicode). Para una explicación más detallada se puede consultar <a href="https://mathiasbynens.be/notes/mysql-utf8mb4">el blog de Mathias Bynens</a>.</p>
 
-        <p>Para borrar una base de datos, se utiliza la consulta DROP DATABASE.</p>
+        <p>Para borrar una tabla, se utiliza la consulta DROP TABLE. Esta consulta no es específica de MySQL pero se comenta en este apartado por estar relacionada con las demás consultas de este apartado. Se ha añadido la condición IF EXISTS porque en algunas bases de datos la consulta DROP TABLE da error si la tabla no existe.</p>
 
         <div class="codigo">
           <pre>
-<code class="copy-language-php">// MYSQL: CONSULTA DE BORRADO DE BASE DE DATOS
-$consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
+<code class="copy-language-php">// CONSULTA DE BORRADO DE TABLA
+$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+
 if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
-    print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
+    print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -644,33 +670,18 @@ if (!$pdo-&gt;query($consulta)) {
         <div class="codigo">
           <pre>
 <code class="copy-language-php">// MYSQL: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
+$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
              id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-             nombre VARCHAR($cfg[dbAgendaTamNombre]),
-             apellidos VARCHAR($cfg[dbAgendaTamApellidos]),
+             nombre VARCHAR($cfg[dbPersonasTamNombre]),
+             apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
              PRIMARY KEY(id)
              )";
+
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
-    print "\n";
-}</code>
-</pre>
-        </div>
-
-        <p>Para borrar una tabla, se utiliza la consulta DROP TABLE. Esta consulta no es específica de MySQL pero se comenta en este apartado por estar relacionada con las anteriores.</p>
-
-        <div class="codigo">
-          <pre>
-<code class="copy-language-php">// CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbAgendaTabla]";
-if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
-} else {
-    print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -692,10 +703,11 @@ if (!$pdo-&gt;query($consulta)) {
 $nombre    = "Pepito";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Conejo";
 
-$consulta = "INSERT INTO $cfg[dbAgendaTabla]
+$consulta = "INSERT INTO $cfg[dbPersonasTabla]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 $resultado = $pdo-&gt;prepare($consulta);
+
 if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -715,10 +727,11 @@ $id        = "1";                 // Normalmente estos valores vendrán de un fo
 $nombre    = "Pepita";
 $apellidos = "Conejo";
 
-$consulta = "UPDATE $cfg[dbAgendaTabla]
+$consulta = "UPDATE $cfg[dbPersonasTabla]
              SET nombre=:nombre, apellidos=:apellidos
              WHERE id=:id";
 $resultado = $pdo-&gt;prepare($consulta);
+
 if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
     print "    &lt;p class=\"aviso\"&gt;Error al modificar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -741,9 +754,10 @@ $id = [1 =&gt; "on"];     // Normalmente este valor vendrá de un formulario
                        // en forma de matriz. Por ejemplo, [1 =&gt; "on", 3 =&gt; "on"]
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $cfg[dbAgendaTabla]
+    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
     $resultado = $pdo-&gt;prepare($consulta);
+
     if (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         print "\n";
@@ -768,8 +782,9 @@ foreach ($id as $indice =&gt; $valor) {
           <div class="codigo">
             <pre>
 <code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -813,8 +828,9 @@ if (!$resultado) {
               <div class="codigo">
                 <pre>
 <code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbAgendaTabla]";
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -833,8 +849,9 @@ if (!$resultado) {
               <div class="codigo">
                 <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbAgendaTabla]";
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
     print "\n";
@@ -856,8 +873,9 @@ if (!$resultado) {
               <div class="codigo">
                 <pre>
 <code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
     print "\n";
@@ -865,8 +883,9 @@ if (!$resultado) {
     print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
     print "\n";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbAgendaTabla]";
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
     $resultado = $pdo-&gt;query($consulta);
+
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
         print "\n";
@@ -901,10 +920,11 @@ if (!$resultado) {
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
 $apellidos = "Con";           // Normalmente este valor vendrá de un formulario
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              WHERE apellidos LIKE :apellidos";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -922,10 +942,11 @@ if (!$resultado) {
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
 $apellidos = "nej";           // Normalmente este valor vendrá de un formulario
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbAgendaTabla]
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              WHERE apellidos LIKE :apellidos";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
+
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
@@ -1048,7 +1069,6 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
-        print "\n";
         exit;
     }
 }</code>
@@ -1074,7 +1094,6 @@ function conectaDb()
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
-        print "\n";
         exit;
     }
 }</code>
@@ -1108,8 +1127,8 @@ $pdo = conectaDb();</code>
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbAgendaTamNombre"]    = 40;                 // Tamaño de la columna Agenda &gt; Nombre
-$cfg["dbAgendaTamApellidos"] = 60;                 // Tamaño de la columna Agenda &gt; Apellidos</code>
+$cfg["dbPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
           </div>
         </li>
@@ -1121,33 +1140,31 @@ $cfg["dbAgendaTamApellidos"] = 60;                 // Tamaño de la columna Agen
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbAgendaTabla"]        = "agenda";           // Nombre de la tabla Agenda
+$cfg["dbPersonasTabla"]        = "personas";         // Nombre de la tabla Personas
 
 // SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
 function borraTodo()
 {
     global $pdo, $cfg;
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbAgendaTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        print "\n";
     } else {
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
-        print "\n";
     }
+    print "\n";
 
-    $consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
+    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbAgendaTamNombre]),
-                 apellidos VARCHAR($cfg[dbAgendaTamApellidos])
+                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[dbPersonasTamApellidos])
                  )";
+
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        print "\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
-        print "\n";
     }
 }</code>
 </pre>
@@ -1161,7 +1178,7 @@ function borraTodo()
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$db["TablaAgenda"] = "$cfg[mysqlDatabase].agenda";   // Nombre de la tabla Agenda
+$cfg["dbPersonasTabla"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
 
 // MYSQL: CONSULTAS DE BORRADO Y CREACiÓN DE BASE DE DATOS Y TABLA
 function borraTodo()
@@ -1172,33 +1189,31 @@ function borraTodo()
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
-        print "\n";
     }
+    print "\n";
 
     $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
                  CHARACTER SET utf8mb4
                  COLLATE utf8mb4_unicode_ci";
+
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        print "\n";
     } else {
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
-        $consulta = "CREATE TABLE $cfg[dbAgendaTabla]  (
+        $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                      id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-                     nombre VARCHAR($cfg[dbAgendaTamNombre]),
-                     apellidos VARCHAR($cfg[dbAgendaTamApellidos]),
+                     nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                     apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
                      PRIMARY KEY(id)
                      )";
+
         if (!$pdo-&gt;query($consulta)) {
             print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-            print "\n";
         } else {
             print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
-            print "\n";
         }
     }
 }</code>
@@ -1222,7 +1237,7 @@ $pdo = null;</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de diciembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 29 de diciembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
