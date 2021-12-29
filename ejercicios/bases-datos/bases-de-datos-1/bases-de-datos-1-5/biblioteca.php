@@ -20,7 +20,7 @@ define("MENU_VOLVER", 2);                   // Menú Volver a inicio
 
 require_once "config.php";
 
-// Configuración Tabla Agenda
+// Configuración Tabla Personas
 
 $cfg["dbPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas > Nombre
 $cfg["dbPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas > Apellidos
@@ -57,7 +57,7 @@ function cabecera($texto, $menu)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Bases de datos 1-5. Bases de datos (1).\n";
+    print "    $texto. Bases de datos (1) 5. Bases de datos (1).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -66,7 +66,7 @@ function cabecera($texto, $menu)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Bases de datos 1-5 - $texto</h1>\n";
+    print "    <h1>Bases de datos (1) 5 - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
