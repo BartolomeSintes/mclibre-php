@@ -36,6 +36,7 @@ if ($nombreOk && $apellidosOk) {
                  SET nombre=:nombre, apellidos=:apellidos
                  WHERE id=:id";
     $resultado = $pdo->prepare($consulta);
+
     if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
         print "    <p class=\"aviso\">Error al modificar el registro / {$pdo->errorInfo()[2]}</p>\n";
         print "\n";

@@ -17,6 +17,7 @@ foreach ($id as $indice => $valor) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
     $resultado = $pdo->prepare($consulta);
+
     if (!$resultado->execute([":indice" => $indice])) {
         print "    <p class=\"aviso\">Error al borrar el registro / {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
