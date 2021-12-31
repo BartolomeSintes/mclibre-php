@@ -1,13 +1,14 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
 require_once "biblioteca.php";
 
-$db = conectaDb();
+$pdo = conectaDb();
+
 cabecera("Modificar 2", MENU_VOLVER);
 
 $id = recoge("id");
@@ -15,35 +16,37 @@ $id = recoge("id");
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $tablaAgenda
-       WHERE id=:id";
-    $result = $db->prepare($consulta);
-    $result->execute([":id" => $id]);
-    if (!$result) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                 WHERE id=:id";
+    $resultado = $pdo->prepare($consulta);
+    $resultado->execute([":id" => $id]);
+
+    if (!$resultado) {
         print "    <p class=\"aviso\">Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn() == 0) {
+    } elseif ($resultado->fetchColumn() == 0) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
-        $consulta = "SELECT * FROM $tablaAgenda
-            WHERE id=:id";
-        $result = $db->prepare($consulta);
-        $result->execute([":id" => $id]);
-        if (!$result) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+                     WHERE id=:id";
+        $resultado = $pdo->prepare($consulta);
+        $resultado->execute([":id" => $id]);
+
+        if (!$resultado) {
+            print "    <p class=\"aviso\">Error al seleccionar el registro / {$pdo->errorInfo()[2]}</p>\n";
         } else {
-            $valor = $result->fetch();
-            print "    <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
+            $valor = $resultado->fetch();
+            print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";
             print "      <p>Modifique los campos que desee:</p>\n";
             print "\n";
             print "      <table>\n";
             print "        <tbody>\n";
             print "          <tr>\n";
             print "            <td>Nombre:</td>\n";
-            print "            <td><input type=\"text\" name=\"nombre\" size=\"$tamAgendaNombre\" maxlength=\"$tamAgendaNombre\" value=\"$valor[nombre]\" autofocus></td>\n";
+            print "            <td><input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$valor[nombre]\" autofocus></td>\n";
             print "          </tr>\n";
             print "          <tr>\n";
             print "            <td>Apellidos:</td>\n";
-            print "            <td><input type=\"text\" name=\"apellidos\" size=\"$tamAgendaApellidos\" maxlength=\"$tamAgendaApellidos\" value=\"$valor[apellidos]\"></td>\n";
+            print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\" value=\"$valor[apellidos]\"></td>\n";
             print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";
@@ -58,5 +61,6 @@ if ($id == "") {
     }
 }
 
-$db = null;
+$pdo = null;
+
 pie();

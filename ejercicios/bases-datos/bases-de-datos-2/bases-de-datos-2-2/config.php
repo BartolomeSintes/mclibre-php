@@ -13,14 +13,14 @@ $cfg["dbMotor"] = SQLITE;                                   // Valores posibles:
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-2-3.sqlite";  // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-2-2.sqlite";  // Ubicación de la base de datos
 
 // Configuración para MySQL
 
 $cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_2_3";           // Nombre de usuario
+$cfg["mysqlUser"]     = "mclibre_base_datos_2_2";           // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_2_3";           // Nombre de la base de datos
+$cfg["mysqlDatabase"] = "mclibre_base_datos_2_2";           // Nombre de la base de datos
 
 // Método de envío de formularios
 

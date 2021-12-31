@@ -1,13 +1,14 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
 require_once "biblioteca.php";
 
 $db = conectaDb();
+
 cabecera("Modificar 2", MENU_VOLVER);
 
 $id = recoge("id");
@@ -67,4 +68,5 @@ if ($id == "") {
 }
 
 $db = null;
+
 pie();

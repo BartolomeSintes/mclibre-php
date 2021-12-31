@@ -1,52 +1,51 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
 require_once "biblioteca.php";
 
-$db = conectaDb();
+$pdo = conectaDb();
+
 cabecera("Buscar 2", MENU_VOLVER);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
-$ordena    = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
+$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
 
-$consulta = "SELECT COUNT(*) FROM $tablaAgenda
-    WHERE nombre LIKE :nombre
-    AND apellidos LIKE :apellidos
-    AND telefono LIKE :telefono
-    AND correo LIKE :correo";
-$result = $db->prepare($consulta);
-$result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
-    ":telefono"             => "%$telefono%", ":correo" => "%$correo%", ]);
-if (!$result) {
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+             WHERE nombre LIKE :nombre
+             AND apellidos LIKE :apellidos
+             AND telefono LIKE :telefono
+             AND correo LIKE :correo";
+$resultado = $pdo->prepare($consulta);
+$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
+
+if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0) {
+} elseif ($resultado->fetchColumn() == 0) {
     print "    <p>No se han encontrado registros.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $tablaAgenda
-        WHERE nombre LIKE :nombre
-        AND apellidos LIKE :apellidos
-        AND telefono LIKE :telefono
-        AND correo LIKE :correo
-        ORDER BY $ordena";
-    $result = $db->prepare($consulta);
-    $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
-        ":telefono"             => "%$telefono%", ":correo" => "%$correo%", ]);
-    if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+                 WHERE nombre LIKE :nombre
+                 AND apellidos LIKE :apellidos
+                 AND telefono LIKE :telefono
+                 AND correo LIKE :correo
+                 ORDER BY $ordena";
+    $resultado = $pdo->prepare($consulta);
+    $resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
+
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al seleccionar los registros / {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
+        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>\n";
         print "        <input type=\"hidden\" name=\"nombre\" value=\"$nombre\">\n";
         print "        <input type=\"hidden\" name=\"apellidos\" value=\"$apellidos\">\n";
-        print "        <input type=\"hidden\" name=\"telefono\" value=\"$telefono\">\n";
-        print "        <input type=\"hidden\" name=\"correo\" value=\"$correo\">\n";
         print "      </p>\n";
         print "\n";
         print "      <p>Registros encontrados:</p>\n";
@@ -93,7 +92,7 @@ if (!$result) {
         print "          </tr>\n";
         print "        </thead>\n";
         print "        <tbody>\n";
-        foreach ($result as $valor) {
+        foreach ($resultado as $valor) {
             print "          <tr>\n";
             print "            <td>$valor[nombre]</td>\n";
             print "            <td>$valor[apellidos]</td>\n";
@@ -107,5 +106,6 @@ if (!$result) {
     }
 }
 
-$db = null;
+$pdo = null;
+
 pie();

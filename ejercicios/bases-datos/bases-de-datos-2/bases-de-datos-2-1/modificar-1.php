@@ -1,28 +1,31 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
 require_once "biblioteca.php";
 
-$db = conectaDb();
+$pdo = conectaDb();
+
 cabecera("Modificar 1", MENU_VOLVER);
 
-$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result   = $db->query($consulta);
-if (!$result) {
+$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$resultado = $pdo->query($consulta);
+
+if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0) {
+} elseif ($resultado->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $tablaAgenda";
-    $result   = $db->query($consulta);
-    if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    $consulta  = "SELECT * FROM $cfg[dbPersonasTabla]";
+    $resultado = $pdo->query($consulta);
+
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al seleccionar todos los registros / {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <form action=\"modificar-2.php\" method=\"" . FORM_METHOD . "\">\n";
+        print "    <form action=\"modificar-2.php\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Indique el registro que quiera modificar:</p>\n";
         print "\n";
         print "      <table class=\"conborde franjas\">\n";
@@ -34,7 +37,7 @@ if (!$result) {
         print "          </tr>\n";
         print "        </thead>\n";
         print "        <tbody>\n";
-        foreach ($result as $valor) {
+        foreach ($resultado as $valor) {
             print "          <tr>\n";
             print "            <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\"></td>\n";
             print "            <td>$valor[nombre]</td>\n";
@@ -52,5 +55,6 @@ if (!$result) {
     }
 }
 
-$db = null;
+$pdo = null;
+
 pie();
