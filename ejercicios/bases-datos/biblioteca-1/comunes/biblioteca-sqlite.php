@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
@@ -118,7 +118,7 @@ function conectaDb()
 function borraTodo($db, $nombresTablas, $consultasCreacionTablas)
 {
     foreach ($nombresTablas as $tabla) {
-        $consulta = "DROP TABLE $tabla";
+        $consulta = "DROP TABLE IF EXISTS $tabla";
         if ($db->query($consulta)) {
             print "    <p>Tabla <strong>$tabla</strong> borrada correctamente.</p>\n";
             print "\n";

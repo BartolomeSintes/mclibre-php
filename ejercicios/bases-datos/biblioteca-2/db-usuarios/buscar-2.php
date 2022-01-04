@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
@@ -15,6 +15,7 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] != NIVEL_2) {
 }
 
 $db = conectaDb();
+
 cabecera("Usuarios - Buscar 2", MENU_USUARIOS, 1);
 
 $usuario  = recoge("usuario");
@@ -100,4 +101,5 @@ if (!$result) {
 }
 
 $db = null;
+
 pie();

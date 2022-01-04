@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
@@ -9,11 +9,11 @@
 
 $dbMotor = SQLITE;                   // Valores posibles: MYSQL o SQLITE
 
-// Configuración Tabla Agenda
+// Configuración Tabla Personas
 
 define("MAX_REG_TABLE_AGENDA", 20);  // Número máximo de registros en la tabla Agenda
-$tamAgendaNombre    = 40;            // Tamaño de la columna Agenda > Nombre
-$tamAgendaApellidos = 60;            // Tamaño de la columna Agenda > Apellidos
+$tamAgendaNombre    = 40;          // Tamaño de la columna Personas > Nombre
+$tamAgendaApellidos = 60;          // Tamaño de la columna Personas > Apellidos
 
 // Método de envío de formularios
 

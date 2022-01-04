@@ -34,7 +34,7 @@
     </div>
   </nav>
 
-  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../soluciones/1920/db-bases-de-datos-1-plantillas.zip">plantillas de los ejercicios Bases de datos (1) (Bases de datos)</a> que incluyen parte de las páginas (los fragmentos HTML y las bibliotecas específicas de bases de datos).</p>
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../soluciones/2122/db-bases-de-datos-1-plantillas.zip">plantillas de los ejercicios Bases de datos (1) (Bases de datos)</a> que incluyen parte de las páginas (los fragmentos HTML y las bibliotecas específicas de bases de datos).</p>
 
   <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../soluciones/index.html">página de soluciones</a>.</p>
 
@@ -82,7 +82,7 @@
     <ul>
       <li>La organización de las páginas puede ser la siguiente:
         <p>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" style="background-color: white;" font-family="sans-serif" class="izquierda">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" style="background-color: white;" font-family="sans-serif" class="izquierda">
             <defs>
               <marker id="flechaNegra" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
                 <path d="M0,4 L0,8 L6,6" style="fill: black;" />
@@ -98,16 +98,20 @@
             <!-- Bibliotecas -->
             <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
             <svg x="10" y="40">
-              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
-              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <text x="60" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="30" width="70" height="200" fill="none" stroke="black" stroke-width="2" />
 
               <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
-              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
               <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
-              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <line x1="95" y1="195" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
               <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="195" x2="150" y2="245" stroke="black" stroke-width="2" />
+              <text x="185" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
             </svg>
 
             <!-- Páginas -->
@@ -133,34 +137,44 @@
             </svg>
             <path d="M655,110 c-30,20 -170,10 -205,-10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
 
-            <rect x="20" y="30" width="260" height="200" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+            <rect x="10" y="30" width="270" height="300" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
             <rect x="330" y="30" width="430" height="110" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
           </svg>
         </p>
       </li>
       <li>En una aplicación real, el borrado y creación de la base de datos estarían disponibles únicamente para el administrador, pero aquí cualquier usuario puede borrar y crear la base de datos.</li>
-      <li>El proceso de borrar y crear la base de datos se realiza uno tras otro. Lógicamente, la primera vez que se realice el borrado y creación de la base de datos se obtendrá un mensaje de error en el borrado puesto que la base de datos no existe todavía, pero las veces siguientes no.</li>
+      <li>Las operaciones de borrar y crear la base de datos se realizan una a continuación de la otra.</li>
       <li>Si el usuario intenta acceder directamente a la página que crea la tabla (escribiendo la dirección en el navegador), se le redireccionará directamente a la página inicial.</li>
+      <li>Esta puede ser la configuración de las bases de datos para este proyecto:
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Configuración para SQLite
+
+$cfg["sqliteDatabase"] = "/mclibre-base-datos-1-1.sqlite";    // Ubicación de la base de datos
+
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlUser"]     = "mclibre_base_datos_1_1";           // Nombre de usuario
+$cfg["mysqlPassword"] = "mclibre_base_datos_1_1";           // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base de datos</code>
+</pre>
+        </div>
+      </li>
       <li>Esta pueden ser las consultas de creación de tabla para este proyecto cuando se trabaja con <strong>SQLite</strong>:
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Constantes comunes
+<code class="language-php">// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
 
-define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/mclibre-base-datos-1-1.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "agenda");                                                     // Nombre de la tabla Agenda
+$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
-// Nombres de las tablas
-
-$tablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla Agenda
-
-// Consultas de borrado y creación de base de datos y tablas, etc.
-
-$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
-    id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamAgendaNombre),
-    apellidos VARCHAR($tamAgendaApellidos)
-    )";</code>
+$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+             id INTEGER PRIMARY KEY,
+             nombre VARCHAR($cfg[dbPersonasTamNombre]),
+             apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+             )";</code>
 </pre>
         </div>
       </li>
@@ -168,36 +182,20 @@ $consultaCreaTabla = "CREATE TABLE $tablaAgenda (
 
         <div class="codigo">
           <pre>
-<code class="language-php">
-// Configuración específica para MYSQL
+<code class="language-php">// MYSQL: CONSULTAS DE BORRADO Y CREACiÓN DE BASE DE DATOS Y TABLA
 
-// Configuración general
+$consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
-define("MYSQL_HOST", "mysql:host=localhost");        // Nombre de host
-define("MYSQL_USER", "");                            // Nombre de usuario
-define("MYSQL_PASSWORD", "");                        // Contraseña de usuario
-define("MYSQL_DATABASE", "mclibre_base_datos_1_1");  // Nombre de la base de datos
-define("MYSQL_TABLE_AGENDA", "agenda");              // Nombre de la tabla Agenda
+$consulta = "CREATE DATABASE $cfg[mysqlDatabase]
+             CHARACTER SET utf8mb4
+             COLLATE utf8mb4_unicode_ci";
 
-$tablaAgenda = MYSQL_DATABASE . "." . MYSQL_TABLE_AGENDA;  // Nombre de la tabla Agenda
-
-// Consultas de borrado y creación de base de datos y tablas, etc.
-
-define("CONSULTA_BORRA_DB", "DROP DATABASE " . MYSQL_DATABASE);
-
-define(
-    "CONSULTA_CREA_DB",
-    "CREATE DATABASE " . MYSQL_DATABASE . "
-        CHARACTER SET utf8mb4
-        COLLATE utf8mb4_unicode_ci"
-);
-
-$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
-    id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR($tamAgendaNombre),
-    apellidos VARCHAR($tamAgendaApellidos),
-    PRIMARY KEY(id)
-    )";</code>
+$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+             nombre VARCHAR($cfg[dbPersonasTamNombre]),
+             apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+             PRIMARY KEY(id)
+             )";</code>
 </pre>
         </div>
       </li>
@@ -232,20 +230,24 @@ $consultaCreaTabla = "CREATE TABLE $tablaAgenda (
     <ul>
       <li>La organización de las páginas puede ser la siguiente:
         <p>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" style="background-color: white;" font-family="sans-serif" class="izquierda">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" style="background-color: white;" font-family="sans-serif" class="izquierda">
             <!-- Bibliotecas -->
             <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
             <svg x="10" y="40">
-              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
-              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <text x="60" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="30" width="70" height="200" fill="none" stroke="black" stroke-width="2" />
 
               <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
-              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
               <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
-              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <line x1="95" y1="195" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
               <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="195" x2="150" y2="245" stroke="black" stroke-width="2" />
+              <text x="185" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
             </svg>
 
             <!-- Páginas -->
@@ -293,11 +295,12 @@ $consultaCreaTabla = "CREATE TABLE $tablaAgenda (
         <div class="codigo">
           <pre>
 <code class="language-php">// Comprobar la longitud del dato recibido
-$nombre    = recoge("nombre");
-$nombreOk  = false;
+$nombre   = recoge("nombre");
+$nombreOk = false;
 
-if (mb_strlen($nombre, "UTF-8") &gt; $tamAgendaNombre) {
-    print "      &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $tamAgendaNombre caracteres.&lt;/p&gt;\n";
+if (mb_strlen($nombre, "UTF-8") &gt; $cfg["dbPersonasTamNombre"]) {
+    print "    &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $cfg[dbPersonasTamNombre] caracteres.&lt;/p&gt;\n";
+    print "\n";
 } else {
     $nombreOk = true;
 }</code>
@@ -309,17 +312,17 @@ if (mb_strlen($nombre, "UTF-8") &gt; $tamAgendaNombre) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Añadir un registro
-$nombre    = recoge("nombre");
-$apellidos = recoge("apellidos");
+$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+             (nombre, apellidos)
+             VALUES (:nombre, :apellidos)";
+$resultado = $pdo-&gt;prepare($consulta);
 
-$consulta = "INSERT INTO $tablaAgenda
-    (nombre, apellidos)
-    VALUES (:nombre, :apellidos)";
-$result = $db-&gt;prepare($consulta);
-if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
-    print "      &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al crear el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
-    print "      &lt;p&gt;Error al crear el registro.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
         </div>
@@ -350,20 +353,24 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
     <ul>
       <li>La organización de las páginas puede ser la siguiente:
         <p>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" style="background-color: white;" font-family="sans-serif" class="izquierda">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" style="background-color: white;" font-family="sans-serif" class="izquierda">
             <!-- Bibliotecas -->
             <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
             <svg x="10" y="40">
-              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
-              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <text x="60" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="30" width="70" height="200" fill="none" stroke="black" stroke-width="2" />
 
               <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
-              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
               <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
-              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <line x1="95" y1="195" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
               <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="195" x2="150" y2="245" stroke="black" stroke-width="2" />
+              <text x="185" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
             </svg>
 
             <!-- Páginas -->
@@ -417,14 +424,14 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]
         <div class="codigo">
           <pre>
 <code class="language-php">// Seleccionar todos los registros
-$consulta = "SELECT * FROM $tablaAgenda";
-$result = $db-&gt;query($consulta);
-
-foreach ($result as $valor) {
-    print "          &lt;tr&gt;\n";
-    print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
-    print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
-    print "          &lt;/tr&gt;\n";
+$consulta  = "SELECT * FROM $cfg[dbPersonasTabla] ";
+$resultado = $pdo-&gt;query($consulta);
+...
+foreach ($resultado as $valor) {
+    print "        &lt;tr&gt;\n";
+    print "          &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
+    print "          &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+    print "        &lt;/tr&gt;\n";
 }</code>
 </pre>
         </div>
@@ -464,16 +471,20 @@ foreach ($result as $valor) {
             <!-- Bibliotecas -->
             <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
             <svg x="10" y="40">
-              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
-              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <text x="60" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="30" width="70" height="200" fill="none" stroke="black" stroke-width="2" />
 
               <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
-              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
               <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
-              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <line x1="95" y1="195" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
               <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="195" x2="150" y2="245" stroke="black" stroke-width="2" />
+              <text x="185" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
             </svg>
 
             <!-- Páginas -->
@@ -539,13 +550,16 @@ foreach ($result as $valor) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Imprime casilla de verificación
-$consulta = "SELECT * FROM $tablaAgenda";
-$result = $db-&gt;query($consulta);
-
-foreach ($result as $valor) {
-    print "              &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\"&gt;&lt;/td&gt;\n";
-}</code>
+<code class="language-php">// Imprime casillas de verificación
+$consulta  = "SELECT * FROM $cfg[dbPersonasTabla] ";
+$resultado = $pdo-&gt;query($consulta);
+...
+foreach ($resultado as $valor) {
+    print "          &lt;tr&gt;\n";
+    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\"&gt;&lt;/td&gt;\n";
+    print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
+    print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+    print "          &lt;/tr&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -557,13 +571,15 @@ foreach ($result as $valor) {
 $id = recoge("id", []);
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $tablaAgenda
-        WHERE id=:indice";
-    $result = $db-&gt;prepare($consulta);
-    if ($result-&gt;execute([":indice" =&gt; $indice])) {
-        print "      &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
+    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+                 WHERE id=:indice";
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "\n";
     } else {
-        print "      &lt;p&gt;Error al borrar el registro.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
+        print "\n";
     }
 }</code>
 </pre>
@@ -604,16 +620,20 @@ foreach ($id as $indice =&gt; $valor) {
             <!-- Bibliotecas -->
             <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
             <svg x="10" y="40">
-              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
-              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <text x="60" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="30" width="70" height="200" fill="none" stroke="black" stroke-width="2" />
 
               <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
-              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
               <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
-              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <line x1="95" y1="195" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
               <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="195" x2="150" y2="245" stroke="black" stroke-width="2" />
+              <text x="185" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
             </svg>
 
             <!-- Páginas -->
@@ -693,15 +713,15 @@ foreach ($id as $indice =&gt; $valor) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Imprime casilla de verificación
+<code class="language-php">// Busca registros
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT * FROM $tablaAgenda
-    WHERE nombre LIKE :nombre
-    AND apellidos LIKE :apellidos";
-$result = $db-&gt;prepare($consulta);
-$result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);</code>
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+             WHERE nombre LIKE :nombre
+             AND apellidos LIKE :apellidos";
+$resultado = $pdo-&gt;prepare($consulta);
+$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);</code>
 </pre>
         </div>
         <p>El comodín (%) debe incluirse al ejecutar la consulta, no se podrían incluir en la definición de $consulta.</p>
@@ -742,16 +762,20 @@ $result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellido
             <!-- Bibliotecas -->
             <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
             <svg x="10" y="40">
-              <text x="60" y="60" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
-              <rect x="25" y="70" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+              <text x="60" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+              <rect x="25" y="30" width="70" height="200" fill="none" stroke="black" stroke-width="2" />
 
               <line x1="95" y1="95" x2="150" y2="45" stroke="black" stroke-width="2" />
-              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+              <text x="185" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
               <rect x="150" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-              <line x1="95" y1="95" x2="150" y2="145" stroke="black" stroke-width="2" />
-              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <line x1="95" y1="195" x2="150" y2="145" stroke="black" stroke-width="2" />
+              <text x="185" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
               <rect x="150" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+              <line x1="95" y1="195" x2="150" y2="245" stroke="black" stroke-width="2" />
+              <text x="185" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+              <rect x="150" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
             </svg>
 
             <!-- Páginas -->
@@ -851,12 +875,16 @@ $result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellido
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Imprime botón radio
-$consulta = "SELECT * FROM $tablaAgenda";
-$result = $db-&gt;query($consulta);
+<code class="language-php">// Imprime botones radio
+$consulta  = "SELECT * FROM $cfg[dbPersonasTabla] ";
+$resultado = $pdo-&gt;query($consulta);
 
-foreach ($result as $valor) {
-    print "              &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$valor[id]\"&gt;&lt;/td&gt;\n";
+foreach ($resultado as $valor) {
+    print "          &lt;tr&gt;\n";
+    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$valor[id]\"&gt;&lt;/td&gt;\n";
+    print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
+    print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+    print "          &lt;/tr&gt;\n";
 }</code>
 </pre>
         </div>
@@ -868,11 +896,10 @@ foreach ($result as $valor) {
 <code class="language-php">// Recoge el registro seleccionado
 $id = recoge("id");
 
-$consulta = "SELECT * FROM $tablaAgenda
-    WHERE id=:id";
-$result = $db-&gt;prepare($consulta);
-$result-&gt;execute([":id" =&gt; $id]);
-$valor = $result-&gt;fetch();</code>
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+             WHERE id=:id";
+$resultado = $pdo-&gt;prepare($consulta);
+$resultado-&gt;execute([":id" =&gt; $id]);</code>
 </pre>
         </div>
       </li>
@@ -881,7 +908,9 @@ $valor = $result-&gt;fetch();</code>
         <div class="codigo">
           <pre>
 <code class="language-php">// Muestra valor
-print "              &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$tamAgendaNombre\" maxlength=\"$tamAgendaNombre\" value=\"$valor[nombre]\" autofocus&gt;&lt;/td&gt;\n";</code>
+$valor = $resultado-&gt;fetch();
+...
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$valor[nombre]\" autofocus&gt;&lt;/td&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -890,7 +919,7 @@ print "              &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$t
         <div class="codigo">
           <pre>
 <code class="language-php">// Control oculto con el id del registro modificado
-print "          &lt;input type=\"hidden\" name=\"id\" value=\"$id\"&gt;\n";</code>
+print "        &lt;input type=\"hidden\" name=\"id\" value=\"$id\"&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -902,14 +931,16 @@ print "          &lt;input type=\"hidden\" name=\"id\" value=\"$id\"&gt;\n";</co
 $apellidos = recoge("apellidos");
 $id        = recoge("id");
 
-$consulta = "UPDATE $tablaAgenda
-    SET nombre=:nombre, apellidos=:apellidos
-    WHERE id=:id";
-$result = $db-&gt;prepare($consulta);
-if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
-    print "      &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+$consulta = "UPDATE $cfg[dbPersonasTabla]
+             SET nombre=:nombre, apellidos=:apellidos
+             WHERE id=:id";
+$resultado = $pdo-&gt;prepare($consulta);
+if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al modificar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "\n";
 } else {
-    print "      &lt;p&gt;Error al modificar el registro.&lt;/p&gt;\n";
+    print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+    print "\n";
 }</code>
 </pre>
         </div>
@@ -918,7 +949,7 @@ if ($result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos,
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de mayo de 2020</p>
+    <p class="ultmod">Última modificación de esta página: 21 de diciembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

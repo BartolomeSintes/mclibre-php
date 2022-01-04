@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
@@ -10,12 +10,12 @@
 // Configuración general
 
 define("SQLITE_DATABASE", "/home/barto/mclibre/tmp/mclibre/identificacion-agenda-4.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "agenda");                                                      // Nombre de la tabla Agenda
+define("SQLITE_TABLE_AGENDA", "agenda");                                                      // Nombre de la tabla Personas
 define("SQLITE_TABLE_USUARIOS", "usuarios");                                                  // Nombre de la tabla Usuarios
 
 // Nombres de las tablas
 
-$tablaAgenda   = SQLITE_TABLE_AGENDA;    // Nombre de la tabla Agenda
+$tablaAgenda   = SQLITE_TABLE_AGENDA;    // Nombre de la tabla Personas
 $tablaUsuarios = SQLITE_TABLE_USUARIOS;  // Nombre de la tabla Usuarios
 
 $tablas = [
@@ -84,7 +84,7 @@ function conectaDb()
 function borraTodo($db, $nombresTablas, $consultasCreacionTablas)
 {
     foreach ($nombresTablas as $tabla) {
-        $consulta = "DROP TABLE $tabla";
+        $consulta = "DROP TABLE IF EXISTS $tabla";
         if ($db->query($consulta)) {
             print "    <p>Tabla <strong>$tabla</strong> borrada correctamente.</p>\n";
             print "\n";

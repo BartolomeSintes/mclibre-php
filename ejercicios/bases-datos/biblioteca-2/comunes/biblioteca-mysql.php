@@ -1,7 +1,7 @@
 <?php
 /**
  * @author    Bartolomé Sintes Marco - bartolome.sintes+mclibre@gmail.com
- * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
 
@@ -60,7 +60,7 @@ $columnasPrestamosOrden = [
 
 // Consultas de borrado y creación de base de datos y tablas, etc.
 
-define("CONSULTA_BORRA_DB", "DROP DATABASE " . MYSQL_DATABASE);
+define("CONSULTA_BORRA_DB", "DROP DATABASE IF EXISTS " . MYSQL_DATABASE);
 
 define(
     "CONSULTA_CREA_DB",

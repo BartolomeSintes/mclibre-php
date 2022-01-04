@@ -250,7 +250,7 @@ $tamUsuariosPassword        = 20;         // Tamaño de la Contraseña de Usuari
 <code class="language-php">function borraTodo($db, $nombresTablas, $consultasCreacionTablas)
 {
     foreach ($nombresTablas as $tabla) {
-        $consulta = "DROP TABLE $tabla";
+        $consulta = "DROP TABLE IF EXISTS $tabla";
         if ($db-&gt;query($consulta)) {
             print "    &lt;p&gt;Tabla &lt;strong&gt;$tabla&lt;/strong&gt; borrada correctamente.&lt;/p&gt;\n";
             print "\n";
