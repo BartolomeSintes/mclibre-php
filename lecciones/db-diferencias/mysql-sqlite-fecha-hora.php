@@ -184,7 +184,7 @@ print "    <tr>\n";
 print "      <td>\n";
 print "        <h2>SQLite</h2>\n";
 $dbMotor = SQLITE;
-$dbDb    = "/home/barto/mclibre/tmp/mclibre/mclibre_db-diferencias.sqlite";  // Nombre de la base de datos
+$dbDb    = "/tmp/mclibre/sqlite/mclibre_db-diferencias.sqlite";  // Nombre de la base de datos
 $dbTabla = "fecha";             // Nombre de la tabla
 print "        <ol>\n";
 $db = conectaDb();

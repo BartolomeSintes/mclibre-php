@@ -40,7 +40,7 @@ if ($dbMotor == MYSQL) {
     $dbDb     = "mclibre_agenda";     // Nombre de la base de datos
     $dbAgenda = $dbDb . ".agenda";      // Nombre de la tabla
 } elseif ($dbMotor == SQLITE) {
-    $dbDb     = "/home/barto/mclibre/tmp/mclibre/mclibre_agenda.sqlite";  // Nombre de la base de datos
+    $dbDb     = "/tmp/mclibre/sqlite/mclibre_agenda.sqlite";  // Nombre de la base de datos
     $dbAgenda = "agenda";             // Nombre de la tabla
 }
 

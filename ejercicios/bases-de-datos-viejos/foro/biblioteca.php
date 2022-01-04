@@ -47,7 +47,7 @@ if ($dbMotor == MYSQL) {
     $dbDiscusiones    = $dbDb . ".discusiones";    // Nombre de la tabla Discusiones
     $dbIntervenciones = $dbDb . ".intervenciones"; // Nombre de la tabla Intervenciones
 } elseif ($dbMotor == SQLITE) {
-    $dbDb             = "/home/barto/mclibre/tmp/mclibre/mclibre_foro.sqlite";  // Nombre de la base de datos
+    $dbDb             = "/tmp/mclibre/sqlite/mclibre_foro.sqlite";  // Nombre de la base de datos
     $dbDiscusiones    = "discusiones";           // Nombre de la tabla Discusiones
     $dbIntervenciones = "intervenciones";        // Nombre de la tabla Intervenciones
 }
