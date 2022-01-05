@@ -9,7 +9,7 @@
 
 // Configuración general
 
-define("SQLITE_DATABASE", "/tmp/mclibre/sqlite/agenda.sqlite");  // Ubicación de la base de datos
+define("SQLITE_DATABASE", "/tmp/agenda.sqlite");  // Ubicación de la base de datos
 define("SQLITE_TABLE_AGENDA", "agenda");                                            // Nombre de la tabla Personas
 
 // Nombres de las tablas

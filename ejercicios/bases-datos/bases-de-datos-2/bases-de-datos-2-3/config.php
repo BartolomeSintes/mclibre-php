@@ -13,7 +13,7 @@ $cfg["dbMotor"] = SQLITE;                                   // Valores posibles:
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/mclibre/sqlite/mclibre-base-datos-2-3.sqlite";  // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-2-3.sqlite";  // Ubicación de la base de datos
 
 // Configuración para MySQL
 

@@ -52,7 +52,7 @@ if ($dbMotor == MYSQL) {
     $dbDb       = "mclibre_registrousuarios";  // Nombre de la base de datos
     $dbUsuarios = $dbDb . ".usuarios";      // Nombre de la tabla de Usuarios
 } elseif ($dbMotor == SQLITE) {
-    $dbDb       = "/tmp/mclibre/sqlite/mclibre_registrousuarios_2.sqlite";  // Nombre de la base de datos
+    $dbDb       = "/tmp/mclibre_registrousuarios_2.sqlite";  // Nombre de la base de datos
     $dbUsuarios = "usuarios";             // Nombre de la tabla de Usuarios
 }
 

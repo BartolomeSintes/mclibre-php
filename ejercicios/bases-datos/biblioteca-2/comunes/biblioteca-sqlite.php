@@ -9,7 +9,7 @@
 
 // Configuración general
 
-define("SQLITE_DATABASE", "/tmp/mclibre/sqlite/biblioteca.sqlite");  // Ubicación de la base de datos
+define("SQLITE_DATABASE", "/tmp/biblioteca.sqlite");  // Ubicación de la base de datos
 define("SQLITE_TABLE_USUARIOS", "usuarios");                                     // Nombre de la tabla Usuarios
 define("SQLITE_TABLE_PERSONAS", "personas");                                     // Nombre de la tabla Personas
 define("SQLITE_TABLE_OBRAS", "obras");                                           // Nombre de la tabla Obras

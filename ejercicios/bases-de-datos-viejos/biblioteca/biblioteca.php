@@ -36,7 +36,7 @@ if ($dbMotor == MYSQL) {
     $dbUsuarios  = $dbDb . ".usuarios";     // Nombre de la tabla Usuarios
     $dbPrestamos = $dbDb . ".prestamos";    // Nombre de la tabla de Préstamos
 } elseif ($dbMotor == SQLITE) {
-    $dbDb        = "/tmp/mclibre/sqlite/mclibre_biblioteca.sqlite";  // Nombre de la base de datos
+    $dbDb        = "/tmp/mclibre_biblioteca.sqlite";  // Nombre de la base de datos
     $dbObras     = "obras";               // Nombre de la tabla Obras
     $dbUsuarios  = "usuarios";            // Nombre de la tabla Usuarios
     $dbPrestamos = "prestamos";           // Nombre de la tabla de Préstamos

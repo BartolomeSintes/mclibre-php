@@ -44,7 +44,7 @@ if ($dbMotor == MYSQL) {
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='$dbDb'";
 } elseif ($dbMotor == SQLITE) {
-    $dbDb       = "/tmp/mclibre/sqlite/mclibre_registrousuarios.sqlite";  // Nombre de la base de datos
+    $dbDb       = "/tmp/mclibre_registrousuarios.sqlite";  // Nombre de la base de datos
     $dbUsuarios = "usuarios";             // Nombre de la tabla de Usuarios
     $consultaExisteTabla = "SELECT COUNT(*) as existe_db
         FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
