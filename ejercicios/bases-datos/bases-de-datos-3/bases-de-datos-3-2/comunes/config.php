@@ -5,37 +5,35 @@
  * @link      https://www.mclibre.org
  */
 
-// Base de datos utilizada por la aplicación: MYSQL o SQLITE
+// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 
-$dbMotor = SQLITE;                   // Valores posibles: MYSQL o SQLITE
+// Base de datos utilizada por la aplicación
 
-// Configuración Tabla Personas
+$cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
 
-define("MAX_REG_TABLE_AGENDA", 20);  // Número máximo de registros en la tabla Agenda
-$tamAgendaNombre    = 40;          // Tamaño de la columna Personas > Nombre
-$tamAgendaApellidos = 60;          // Tamaño de la columna Personas > Apellidos
-$tamAgendaTelefono  = 10;          // Tamaño de la columna Personas > Teléfono
-$tamAgendaCorreo    = 50;          // Tamaño de la columna Personas > Correo
+// Configuración para SQLite
 
-// Usuario inicial
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-2.sqlite";  // Ubicación de la base de datos
 
-$tamUsuarioNombre   = 20;            // Tamaño del Nombre de Usuario
-$tamUsuarioPassword = 20;            // Tamaño de la Contraseña de Usuario
-define("ROOT_NAME", "root");                                                                  // Usuario inicial: Nombre
-define("ROOT_PASSWORD", "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2");  // Usuario inicial: Contraseña
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_2";           // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_2";           // Nombre de la base de datos
+
+// Usuario de la aplicación
+
+$cfg["rootName"]      = "root";                             // Nombre del Usuario Administrador de la aplicación
+$cfg["rootPassword"]  = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2";  // Contraseña encriptada del Usuario Administrador de la aplicación
+$cfg["hashAlgorithm"] = "sha256";                           // Algoritmo hash para encriptar la contraseña de usuario
+                                                            // Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php
 
 // Método de envío de formularios
 
-define("FORM_METHOD", GET);          // Valores posibles: GET o POST
+$cfg["formMethod"] = GET;                                   // Valores posibles: GET o POST
 
-// Hoja de estilo
+// Otras configuraciones
 
-define("COLOR", 27);                 // Color básico de la aplicación (0 - 360)
-
-// Nombre de sesión
-
-define("SESSION_NAME", "agenda-2");  // Nombre de sesión
-
-// Algoritmo hash para encriptar la contraseña de usuario
-
-define("HASH_ALGORITHM", "sha256");  // Algoritmo hash: Nombre
+$cfg["dbPersonasmaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
+$cfg["sessionName"]      = "mclibre-bases-de-datos-3-2";    // Nombre de sesión

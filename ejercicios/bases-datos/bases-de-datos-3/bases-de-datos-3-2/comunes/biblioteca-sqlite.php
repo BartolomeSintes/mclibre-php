@@ -5,70 +5,57 @@
  * @link      https://www.mclibre.org
  */
 
-// Configuración específica para SQLite
+// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 
-// Configuración general
+// Base de datos
 
-define("SQLITE_DATABASE", "/tmp/identificacion-agenda-2.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "agenda");                                                    // Nombre de la tabla Personas
+$cfg["dbPersonasTabla"] = "personas";                       // Nombre de la tabla Personas
 
-// Nombres de las tablas
+// Funciones específicas de bases de datos (SQLite)
 
-$tablaAgenda = SQLITE_TABLE_AGENDA;      // Nombre de la tabla Personas
-
-// Valores de ordenación de las tablas
-
-$columnasAgendaOrden = [
-    "nombre ASC", "nombre DESC",
-    "apellidos ASC", "apellidos DESC",
-    "telefono ASC", "telefono DESC",
-    "correo ASC", "correo DESC",
-];
-
-// Consultas de borrado y creación de base de datos y tablas, etc.
-
-$consultaCreaTabla = "CREATE TABLE $tablaAgenda (
-    id INTEGER PRIMARY KEY,
-    nombre VARCHAR($tamAgendaNombre),
-    apellidos VARCHAR($tamAgendaApellidos),
-    telefono VARCHAR($tamAgendaTelefono),
-    correo VARCHAR($tamAgendaCorreo)
-    )";
-
-// Funciones específicas de bases de datos (SQLITE)
+// SQLITE: CONEXIÓN CON LA BASE DE DATOS
 
 function conectaDb()
 {
+    global $cfg;
+
     try {
-        $tmp = new PDO("sqlite:" . SQLITE_DATABASE);
+        $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp->query("PRAGMA foreign_keys = ON");
+        $tmp->query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
-        cabecera("Error grave", MENU_VOLVER, 1);
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
-        print "\n";
-        print "    <p class=\"aviso\">Error: " . $e->getMessage() . "</p>\n";
-        pie();
-        exit();
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
+        exit;
     }
 }
 
-function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
-{
-    $consulta = "DROP TABLE IF EXISTS $nombreTabla";
-    if ($db->query($consulta)) {
-        print "    <p>Tabla borrada correctamente.</p>\n";
-        print "\n";
-    } else {
-        print "    <p class=\"aviso\">Error al borrar la tabla.</p>\n";
-        print "\n";
-    }
+// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
 
-    $consulta = $consultaCreacionTabla;
-    if ($db->query($consulta)) {
-        print "    <p>Tabla creada correctamente.</p>\n";
-        print "\n";
+function borraTodo()
+{
+    global $pdo, $cfg;
+
+    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al borrar la tabla / {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <p class=\"aviso\">Error al crear la tabla.</p>\n";
-        print "\n";
+        print "    <p>Tabla borrada correctamente (si existía).</p>\n";
+    }
+    print "\n";
+
+    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                 id INTEGER PRIMARY KEY,
+                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+                 telefono VARCHAR($cfg[dbPersonasTamTelefono]),
+                 correo VARCHAR($cfg[dbPersonasTamCorreo])
+                 )";
+
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al crear la tabla / {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Tabla creada correctamente.</p>\n";
     }
 }
