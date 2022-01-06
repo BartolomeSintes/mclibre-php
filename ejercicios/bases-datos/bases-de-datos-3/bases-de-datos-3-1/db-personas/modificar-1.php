@@ -7,34 +7,36 @@
 
 require_once "../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
 if (!isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit;
 }
 
-$db = conectaDb();
+$pdo = conectaDb();
 
-cabecera("Modificar 1", MENU_AGENDA, 1);
+cabecera("Modificar 1", MENU_PERSONAS, PROFUNDIDAD_1);
 
-$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
-$id     = recoge("id");
+$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$id     = recoge("id", []);
 
-$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result   = $db->query($consulta);
-if (!$result) {
+$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$resultado = $pdo->query($consulta);
+
+if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0) {
+} elseif ($resultado->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $tablaAgenda
-        ORDER BY $ordena";
-    $result = $db->query($consulta);
-    if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+                  ORDER BY $ordena";
+    $resultado = $pdo->query($consulta);
+
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al seleccionar todos los registros / {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
+        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Indique el registro que quiera modificar:</p>\n";
         print "\n";
         print "      <table class=\"conborde franjas\">\n";
@@ -80,7 +82,7 @@ if (!$result) {
         print "          </tr>\n";
         print "        </thead>\n";
         print "        <tbody>\n";
-        foreach ($result as $valor) {
+        foreach ($resultado as $valor) {
             print "          <tr>\n";
             if ($id == $valor["id"]) {
                 print "            <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\" checked></td>\n";
@@ -104,6 +106,6 @@ if (!$result) {
     }
 }
 
-$db = null;
+$pdo = null;
 
 pie();

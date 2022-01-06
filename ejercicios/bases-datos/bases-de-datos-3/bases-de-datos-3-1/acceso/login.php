@@ -7,7 +7,9 @@
 
 require_once "../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
+
 $_SESSION["conectado"] = true;
+
 header("location:../index.php");
