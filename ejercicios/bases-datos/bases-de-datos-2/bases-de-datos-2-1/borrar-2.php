@@ -34,7 +34,7 @@ if (count($id) == 0) {
             if (!$resultado->execute([":indice" => $indice])) {
                 print "    <p class=\"aviso\">Error al borrar el registro / {$pdo->errorInfo()[2]}</p>\n";
             } else {
-                print "    <p>Registro borrado correctamente (si existía).</p>\n";
+                print "    <p>Registro borrado correctamente.</p>\n";
             }
         }
     }

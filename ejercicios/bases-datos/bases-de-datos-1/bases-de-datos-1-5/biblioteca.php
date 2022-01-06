@@ -25,7 +25,7 @@ require_once "config.php";
 $cfg["dbPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas > Nombre
 $cfg["dbPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas > Apellidos
 
-// Biblioteca base de datos
+// Carga Biblioteca específica de la base de datos utilizada
 
 if ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";

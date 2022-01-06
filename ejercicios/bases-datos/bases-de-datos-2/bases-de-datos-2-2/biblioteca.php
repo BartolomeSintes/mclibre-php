@@ -32,7 +32,7 @@ $cfg["dbPersonasColumnasOrden"] = [
     "apellidos ASC", "apellidos DESC",
 ];
 
-// Biblioteca base de datos
+// Carga Biblioteca específica de la base de datos utilizada
 
 if ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";
