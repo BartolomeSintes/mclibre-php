@@ -5,15 +5,16 @@
  * @link      https://www.mclibre.org
  */
 
-require_once "../comunes/biblioteca.php";
+require_once "../../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
+
 if (!isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit;
 }
 
-cabecera("Usuarios - Inicio", MENU_USUARIOS, 1);
+cabecera("Usuarios - Inicio", MENU_USUARIOS, PROFUNDIDAD_2);
 
 pie();

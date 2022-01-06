@@ -7,8 +7,9 @@
 
 require_once "../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
+
 if (!isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit;
@@ -19,12 +20,12 @@ if (!isset($_REQUEST["si"])) {
     exit();
 }
 
-$db = conectaDb();
+$pdo = conectaDb();
 
-cabecera("Administrador - Borrar todo 2", MENU_ADMINISTRADOR, 1);
+cabecera("Administrador - Borrar todo 2", MENU_ADMINISTRADOR, PROFUNDIDAD_1);
 
-borraTodo($db, $tablas, $consultasCreaTabla);
+borraTodo();
 
-$db = null;
+$pdo = null;
 
 pie();

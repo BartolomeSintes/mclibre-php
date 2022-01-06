@@ -5,56 +5,55 @@
  * @link      https://www.mclibre.org
  */
 
-require_once "../comunes/biblioteca.php";
+require_once "../../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
+
 if (!isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit;
 }
 
-$db = conectaDb();
+$pdo = conectaDb();
 
-cabecera("Agenda - Buscar 2", MENU_AGENDA, 1);
+cabecera("Personas - Buscar 2", MENU_PERSONAS, PROFUNDIDAD_2);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
-$ordena    = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
+$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
 
-$consulta = "SELECT COUNT(*) FROM $tablaAgenda
-    WHERE nombre LIKE :nombre
-    AND apellidos LIKE :apellidos
-    AND telefono LIKE :telefono
-    AND correo LIKE :correo";
-$result = $db->prepare($consulta);
-$result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
-    ":telefono"             => "%$telefono%", ":correo" => "%$correo%", ]);
-if (!$result) {
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+             WHERE nombre LIKE :nombre
+             AND apellidos LIKE :apellidos
+             AND telefono LIKE :telefono
+             AND correo LIKE :correo";
+$resultado = $pdo->prepare($consulta);
+$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
+
+if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0) {
+} elseif ($resultado->fetchColumn() == 0) {
     print "    <p>No se han encontrado registros.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $tablaAgenda
-        WHERE nombre LIKE :nombre
-        AND apellidos LIKE :apellidos
-        AND telefono LIKE :telefono
-        AND correo LIKE :correo
-        ORDER BY $ordena";
-    $result = $db->prepare($consulta);
-    $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
-        ":telefono"             => "%$telefono%", ":correo" => "%$correo%", ]);
-    if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+                 WHERE nombre LIKE :nombre
+                 AND apellidos LIKE :apellidos
+                 AND telefono LIKE :telefono
+                 AND correo LIKE :correo
+                 ORDER BY $ordena";
+    $resultado = $pdo->prepare($consulta);
+    $resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
+
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al seleccionar los registros / {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
+        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>\n";
         print "        <input type=\"hidden\" name=\"nombre\" value=\"$nombre\">\n";
         print "        <input type=\"hidden\" name=\"apellidos\" value=\"$apellidos\">\n";
-        print "        <input type=\"hidden\" name=\"telefono\" value=\"$telefono\">\n";
-        print "        <input type=\"hidden\" name=\"correo\" value=\"$correo\">\n";
         print "      </p>\n";
         print "\n";
         print "      <p>Registros encontrados:</p>\n";
@@ -64,44 +63,44 @@ if (!$result) {
         print "          <tr>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"nombre ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Nombre\n";
         print "              <button name=\"ordena\" value=\"nombre DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"apellidos ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Apellidos\n";
         print "              <button name=\"ordena\" value=\"apellidos DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"telefono ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Teléfono\n";
         print "              <button name=\"ordena\" value=\"telefono DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"correo ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Correo\n";
         print "              <button name=\"ordena\" value=\"correo DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
         print "        <tbody>\n";
-        foreach ($result as $valor) {
+        foreach ($resultado as $valor) {
             print "          <tr>\n";
             print "            <td>$valor[nombre]</td>\n";
             print "            <td>$valor[apellidos]</td>\n";
@@ -115,6 +114,6 @@ if (!$result) {
     }
 }
 
-$db = null;
+$pdo = null;
 
 pie();

@@ -5,125 +5,108 @@
  * @link      https://www.mclibre.org
  */
 
-// Configuración específica para SQLite
+// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 
-// Configuración general
+// Base de datos
 
-define("SQLITE_DATABASE", "/tmp/identificacion-agenda-3.sqlite");  // Ubicación de la base de datos
-define("SQLITE_TABLE_AGENDA", "agenda");                                                      // Nombre de la tabla Personas
-define("SQLITE_TABLE_USUARIOS", "usuarios");                                                  // Nombre de la tabla Usuarios
+$cfg["dbPersonasTabla"] = "personas";                       // Nombre de la tabla Personas
+$cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabla Usuarios
 
-// Nombres de las tablas
+// Funciones específicas de bases de datos (SQLite)
 
-$tablaAgenda   = SQLITE_TABLE_AGENDA;    // Nombre de la tabla Personas
-$tablaUsuarios = SQLITE_TABLE_USUARIOS;  // Nombre de la tabla Usuarios
-
-$tablas = [
-    $tablaUsuarios,
-    $tablaAgenda,
-];
-
-// Valores de ordenación de las tablas
-
-$columnasAgendaOrden = [
-    "nombre ASC", "nombre DESC",
-    "apellidos ASC", "apellidos DESC",
-    "telefono ASC", "telefono DESC",
-    "correo ASC", "correo DESC",
-];
-
-$columnasUsuariosOrden = [
-    "usuario ASC", "usuario DESC",
-    "password ASC", "password DESC",
-];
-
-// Consultas de borrado y creación de base de datos y tablas, etc.
-
-define(
-    "CONSULTA_INSERTA_USUARIO_ROOT",
-    "INSERT INTO $tablaUsuarios
-        VALUES (NULL, '" . ROOT_NAME . "', '" . ROOT_PASSWORD . "')"
-);
-
-$consultasCreaTabla = [
-    // Tabla Usuarios
-    "CREATE TABLE $tablaUsuarios (
-        id INTEGER PRIMARY KEY,
-        usuario VARCHAR($tamUsuariosUsuario),
-        password VARCHAR($tamUsuariosPasswordCifrado)
-    )",
-    // Tabla Agenda
-    "CREATE TABLE $tablaAgenda (
-        id INTEGER PRIMARY KEY,
-        nombre VARCHAR($tamAgendaNombre),
-        apellidos VARCHAR($tamAgendaApellidos),
-        telefono VARCHAR($tamAgendaTelefono),
-        correo VARCHAR($tamAgendaCorreo)
-    )",
-];
-
-// Funciones específicas de bases de datos (SQLITE)
+// SQLITE: CONEXIÓN CON LA BASE DE DATOS
 
 function conectaDb()
 {
+    global $cfg;
+
     try {
-        $tmp = new PDO("sqlite:" . SQLITE_DATABASE);
+        $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp->query("PRAGMA foreign_keys = ON");
+        $tmp->query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
-        cabecera("Error grave", MENU_VOLVER, 1);
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
-        print "\n";
-        print "    <p class=\"aviso\">Error: " . $e->getMessage() . "</p>\n";
-        pie();
-        exit();
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
+        exit;
     }
 }
 
-function borraTodo($db, $nombresTablas, $consultasCreacionTablas)
+// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
+
+function borraTodo()
 {
-    foreach ($nombresTablas as $tabla) {
-        $consulta = "DROP TABLE IF EXISTS $tabla";
-        if ($db->query($consulta)) {
-            print "    <p>Tabla <strong>$tabla</strong> borrada correctamente.</p>\n";
-            print "\n";
-        } else {
-            print "    <p class=\"aviso\">Error al borrar la tabla <strong>$tabla</strong>.</p>\n";
-            print "\n";
-        }
-    }
+    global $pdo, $cfg;
 
-    foreach ($consultasCreacionTablas as $consulta) {
-        if ($db->query($consulta)) {
-            print "    <p>Tabla creada correctamente.</p>\n";
-            print "\n";
-        } else {
-            print "    <p class=\"aviso\">Error al crear la tabla.</p>\n";
-            print "\n";
-        }
-    }
+    $consulta = "DROP TABLE IF EXISTS $cfg[dbUsuariosTabla]";
 
-    $consulta = CONSULTA_INSERTA_USUARIO_ROOT;
-    if ($db->query($consulta)) {
-        print "    <p>Registro de Usuario " . ROOT_NAME . " creado correctamente.</p>\n";
-        print "\n";
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al borrar la tabla Usuarios / {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <p class=\"aviso\">Error al crear el registro de Usuario " . ROOT_NAME . ".<p>\n";
-        print "\n";
+        print "    <p>Tabla Usuarios borrada correctamente (si existía).</p>\n";
+    }
+    print "\n";
+
+    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al borrar la tabla Personas / {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Tabla Personas borrada correctamente (si existía).</p>\n";
+    }
+    print "\n";
+
+    $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+                 id INTEGER PRIMARY KEY,
+                 usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
+                 password VARCHAR($cfg[dbUsuariosTamPassword])
+                 )";
+
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al crear la tabla Usuarios / {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Tabla Usuarios creada correctamente.</p>\n";
+    }
+
+    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                 id INTEGER PRIMARY KEY,
+                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+                 telefono VARCHAR($cfg[dbPersonasTamTelefono]),
+                 correo VARCHAR($cfg[dbPersonasTamCorreo])
+                 )";
+
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al crear la tabla Personas / {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Tabla Personas creada correctamente.</p>\n";
+    }
+
+    $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+                 VALUES (NULL, '$cfg[rootName]', '$cfg[rootPassword]')";
+
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al insertar el registro de usuario / {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Registro de usuario creado correctamente.</p>\n";
     }
 }
 
-function existenTablas($db, $nombresTablas)
+function existenTablas()
 {
+    global $pdo, $cfg;
+
     $existe = true;
-    foreach ($nombresTablas as $tabla) {
-        $consulta = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
-        $result   = $db->query($consulta);
-        if (!$result) {
+
+    foreach ($cfg["dbTablas"] as $tabla) {
+        $consulta  = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
+        $resultado = $pdo->query($consulta);
+
+        if (!$resultado) {
             $existe = false;
             print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             print "\n";
         } else {
-            if ($result->fetchColumn() == 0) {
+            if ($resultado->fetchColumn() == 0) {
                 $existe = false;
             }
         }
