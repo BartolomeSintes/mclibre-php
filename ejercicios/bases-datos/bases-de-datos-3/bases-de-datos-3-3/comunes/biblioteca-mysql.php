@@ -67,6 +67,16 @@ function borraTodo()
             print "    <p class=\"aviso\">Error al crear la tabla / {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Tabla creada correctamente.</p>\n";
+
+            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+                         (usuario, password)
+                         VALUES ($cfg[rootName]', '$cfg[rootPassword]')";
+
+            if (!$pdo->query($consulta)) {
+                print "    <p class=\"aviso\">Error al insertar el registro de usuario / {$pdo->errorInfo()[2]}</p>\n";
+            } else {
+                print "    <p>Registro de usuario creado correctamente.</p>\n";
+            }
         }
 
         $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
@@ -84,4 +94,45 @@ function borraTodo()
             print "    <p>Tabla creada correctamente.</p>\n";
         }
     }
+}
+
+function existenTablas()
+{
+    global $pdo, $cfg;
+
+    $existe = true;
+
+    $consulta  = "SELECT count(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$cfg[mysqlDatabase]'";
+    $resultado = $pdo->query($consulta);
+
+    if (!$resultado) {
+        $existe = false;
+        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "\n";
+    } else {
+        if ($resultado->fetchColumn() == 0) {
+            $existe = false;
+        } else {
+            foreach ($cfg["dbTablas"] as $tabla) {
+                // En information_schema.tables los nombres de las tablas no llevan el nombre
+                // de la base de datos, así que lo elimino
+                $tabla    = str_replace("$cfg[mysqlDatabase].", "", $tabla);
+                $consulta = "SELECT count(*) FROM information_schema.tables
+                             WHERE table_schema = '$cfg[mysqlDatabase]'
+                             AND table_name = '$tabla'";
+                $resultado = $pdo->query($consulta);
+
+                if (!$resultado) {
+                    $existe = false;
+                    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                    print "\n";
+                } else {
+                    if ($resultado->fetchColumn() == 0) {
+                        $existe = false;
+                    }
+                }
+            }
+        }
+    }
+    return $existe;
 }

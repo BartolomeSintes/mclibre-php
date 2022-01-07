@@ -11,7 +11,7 @@ session_name($cfg["sessionName"]);
 session_start();
 
 if (!isset($_SESSION["conectado"])) {
-    header("Location:../index.php");
+    header("Location:../../index.php");
     exit;
 }
 
@@ -41,7 +41,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["dbUsuariosTamPassword"]) {
 
 if ($usuarioOk && $passwordOk) {
     if ($usuario == "" || $password == "") {
-        print "    <p class=\"aviso\">Hay que rellenar los dos campos. No se ha guardado el registro.</p>\n";
+        print "    <p class=\"aviso\">Hay que rellenar todos los campos. No se ha guardado el registro.</p>\n";
     } else {
         $consulta  = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
         $resultado = $pdo->query($consulta);
@@ -61,7 +61,7 @@ if ($usuarioOk && $passwordOk) {
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error en la consulta.</p>\n";
             } elseif ($resultado->fetchColumn() > 0) {
-                print "    <p class=\"aviso\">El registro ya existe.</p>\n";
+                print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
             } else {
                 $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
                              (usuario, password)

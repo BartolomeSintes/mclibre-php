@@ -11,7 +11,7 @@ session_name($cfg["sessionName"]);
 session_start();
 
 if (!isset($_SESSION["conectado"])) {
-    header("Location:../index.php");
+    header("Location:../../index.php");
     exit;
 }
 
@@ -81,7 +81,7 @@ if ($usuarioOk && $passwordOk) {
                 } else {
                     $valor = $resultado->fetch();
                     if ($valor["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $valor["usuario"] != $usuario)) {
-                        print "    <p class=\"aviso\">Este usuario no se puede modificar.</p>\n";
+                        print "    <p class=\"aviso\">Del usuario Administrador inicial sólo se puede cambiar la contraseña.</p>\n";
                     } else {
                         $consulta = "UPDATE $cfg[dbUsuariosTabla]
                                      SET usuario=:usuario, password=:password

@@ -36,7 +36,7 @@ $usuariosNiveles = [
 
 require_once "config.php";
 
-// Biblioteca base de datos
+// Carga Biblioteca específica de la base de datos utilizada
 
 if ($dbMotor == MYSQL) {
     require_once "biblioteca-mysql.php";

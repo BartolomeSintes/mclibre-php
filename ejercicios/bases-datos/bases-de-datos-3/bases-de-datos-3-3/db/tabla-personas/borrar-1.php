@@ -11,7 +11,7 @@ session_name($cfg["sessionName"]);
 session_start();
 
 if (!isset($_SESSION["conectado"])) {
-    header("Location:../index.php");
+    header("Location:../../index.php");
     exit;
 }
 

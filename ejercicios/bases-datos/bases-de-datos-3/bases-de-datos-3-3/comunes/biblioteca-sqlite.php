@@ -65,6 +65,16 @@ function borraTodo()
         print "    <p class=\"aviso\">Error al crear la tabla Usuarios / {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla Usuarios creada correctamente.</p>\n";
+
+        $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+                     (usuario, password)
+                     VALUES ('$cfg[rootName]', '$cfg[rootPassword]')";
+
+        if (!$pdo->query($consulta)) {
+            print "    <p class=\"aviso\">Error al insertar el registro de usuario / {$pdo->errorInfo()[2]}</p>\n";
+        } else {
+            print "    <p>Registro de usuario creado correctamente.</p>\n";
+        }
     }
 
     $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
@@ -79,15 +89,6 @@ function borraTodo()
         print "    <p class=\"aviso\">Error al crear la tabla Personas / {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla Personas creada correctamente.</p>\n";
-    }
-
-    $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
-                 VALUES (NULL, '$cfg[rootName]', '$cfg[rootPassword]')";
-
-    if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al insertar el registro de usuario / {$pdo->errorInfo()[2]}</p>\n";
-    } else {
-        print "    <p>Registro de usuario creado correctamente.</p>\n";
     }
 }
 
