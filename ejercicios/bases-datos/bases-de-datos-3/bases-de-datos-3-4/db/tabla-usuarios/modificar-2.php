@@ -5,67 +5,66 @@
  * @link      https://www.mclibre.org
  */
 
-require_once "../comunes/biblioteca.php";
+require_once "../../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] != NIVEL_2) {
-    header("Location:../index.php");
+
+if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_ADMINISTRADOR) {
+    header("Location:../../index.php");
     exit;
 }
 
-$db = conectaDb();
+$pdo = conectaDb();
 
-cabecera("Usuarios - Modificar 2", MENU_USUARIOS, 1);
+cabecera("Usuarios - Modificar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $id = recoge("id");
 
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
-       WHERE id=:id";
-    $result = $db->prepare($consulta);
-    $result->execute([":id" => $id]);
-    if (!$result) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
+                 WHERE id=:id";
+    $resultado = $pdo->prepare($consulta);
+    $resultado->execute([":id" => $id]);
+
+    if (!$resultado) {
         print "    <p class=\"aviso\">Error en la consulta.</p>\n";
-    } elseif ($result->fetchColumn() == 0) {
+    } elseif ($resultado->fetchColumn() == 0) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
-        $consulta = "SELECT * FROM $tablaUsuarios
-            WHERE id=:id";
-        $result = $db->prepare($consulta);
-        $result->execute([":id" => $id]);
-        if (!$result) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+                     WHERE id=:id";
+        $resultado = $pdo->prepare($consulta);
+        $resultado->execute([":id" => $id]);
+
+        if (!$resultado) {
+            print "    <p class=\"aviso\">Error al seleccionar el registro / {$pdo->errorInfo()[2]}</p>\n";
         } else {
-            $valor = $result->fetch();
-            if ($valor["usuario"] == ROOT_NAME) {
-                print "    <p>Este usuario no se puede modificar.</p>\n";
+            $valor = $resultado->fetch();
+            if ($valor["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
+                print "    <p class=\"aviso\">Este usuario no se puede modificar.</p>\n";
             } else {
-                print "    <form action=\"modificar-3.php\" method=\"" . FORM_METHOD . "\">\n";
-                print "      <p>Modifique los campos que desee (deje la contraseña en blanco para mantenerla):</p>\n";
+                print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";
+                print "      <p>Modifique los campos que desee:</p>\n";
                 print "\n";
                 print "      <table>\n";
                 print "        <tbody>\n";
                 print "          <tr>\n";
                 print "            <td>Usuario:</td>\n";
-                print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosUsuario\" maxlength=\"$tamUsuariosUsuario\" value=\"$valor[usuario]\" autofocus></td>\n";
+                print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" value=\"$valor[usuario]\" autofocus></td>\n";
                 print "          </tr>\n";
                 print "          <tr>\n";
                 print "            <td>Contraseña:</td>\n";
-                print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosPassword\" maxlength=\"$tamUsuariosPassword\"></td>\n";
+                print "            <td><input type=\"text\" name=\"password\" size=\"$cfg[dbUsuariosTamPassword]\" maxlength=\"$cfg[dbUsuariosTamPassword]\"></td>\n";
                 print "          </tr>\n";
                 print "          <tr>\n";
                 print "            <td>Nivel:</td>\n";
                 print "            <td>\n";
                 print "              <select name=\"nivel\">\n";
-                foreach ($usuariosNiveles as $indice2 => $valor2) {
-                    print "                <option value=\"$valor2\"";
-                    if ($valor2 == $valor["nivel"]) {
-                        print " selected";
-                    }
-                    print ">$indice2</option>\n";
+                foreach ($cfg["usuariosNiveles"] as $indice => $valor) {
+                    print "                <option value=\"$valor\">$indice</option>\n";
                 }
                 print "              </select>\n";
                 print "            </td>\n";
@@ -84,6 +83,6 @@ if ($id == "") {
     }
 }
 
-$db = null;
+$pdo = null;
 
 pie();

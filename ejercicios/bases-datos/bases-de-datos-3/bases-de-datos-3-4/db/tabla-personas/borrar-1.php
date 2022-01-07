@@ -5,81 +5,91 @@
  * @link      https://www.mclibre.org
  */
 
-require_once "../comunes/biblioteca.php";
+require_once "../../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
+
 if (!isset($_SESSION["conectado"])) {
-    header("Location:../index.php");
+    header("Location:../../index.php");
     exit;
 }
 
-$db = conectaDb();
+$pdo = conectaDb();
 
-cabecera("Agenda - Listar", MENU_AGENDA, 1);
+cabecera("Personas - Borrar 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
+$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$resultado = $pdo->query($consulta);
 
-$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result   = $db->query($consulta);
-if (!$result) {
+$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$id     = recoge("id", []);
+
+if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta.</p>\n";
-} elseif ($result->fetchColumn() == 0) {
+} elseif ($resultado->fetchColumn() == 0) {
     print "    <p>No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $tablaAgenda
-        ORDER BY $ordena";
-    $result = $db->query($consulta);
-    if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    $consulta  = "SELECT * FROM $cfg[dbPersonasTabla]
+                  ORDER BY $ordena";
+    $resultado = $pdo->query($consulta);
+
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al seleccionar todos los registros / {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <p>Listado completo de registros:</p>\n";
+        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
+        print "      <p>Marque los registros que quiera borrar:</p>\n";
         print "\n";
-        print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
         print "      <table class=\"conborde franjas\">\n";
         print "        <thead>\n";
         print "          <tr>\n";
+        print "            <th>Borrar</th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"nombre ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Nombre\n";
         print "              <button name=\"ordena\" value=\"nombre DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"apellidos ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Apellidos\n";
         print "              <button name=\"ordena\" value=\"apellidos DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"telefono ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Teléfono\n";
         print "              <button name=\"ordena\" value=\"telefono DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"correo ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "              Correo\n";
         print "              <button name=\"ordena\" value=\"correo DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
         print "        <tbody>\n";
-        foreach ($result as $valor) {
+        foreach ($resultado as $valor) {
             print "          <tr>\n";
+            if (isset($id[$valor["id"]])) {
+                print "            <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\" checked></td>\n";
+            } else {
+                print "            <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\"></td>\n";
+            }
             print "            <td>$valor[nombre]</td>\n";
             print "            <td>$valor[apellidos]</td>\n";
             print "            <td>$valor[telefono]</td>\n";
@@ -88,10 +98,15 @@ if (!$result) {
         }
         print "        </tbody>\n";
         print "      </table>\n";
+        print "\n";
+        print "      <p>\n";
+        print "        <input type=\"submit\" value=\"Borrar registro\" formaction=\"borrar-2.php\">\n";
+        print "        <input type=\"reset\" value=\"Reiniciar formulario\">\n";
+        print "      </p>\n";
         print "    </form>\n";
     }
 }
 
-$db = null;
+$pdo = null;
 
 pie();

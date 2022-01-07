@@ -7,7 +7,7 @@
 
 require_once "../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
 
 if (isset($_SESSION["conectado"])) {
@@ -15,14 +15,14 @@ if (isset($_SESSION["conectado"])) {
     exit();
 }
 
-$db = conectaDb();
+$pdo = conectaDb();
 
-cabecera("Login 1", MENU_VOLVER, 1);
+cabecera("Login 1", MENU_VOLVER, PROFUNDIDAD_1);
 
-if (!existenTablas($db, $tablas)) {
+if (!existenTablas()) {
     print "<p>La base de datos no está creada. Se creará la base de datos.</p>\n";
     print "\n";
-    borraTodo($db, $tablas, $consultasCreaTabla);
+    borraTodo();
 }
 
 $aviso = recoge("aviso");
@@ -30,20 +30,18 @@ if ($aviso) {
     print "    <p class=\"aviso\">$aviso</p>\n";
     print "\n";
 }
-print "    <form action=\"login-2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "    <form action=\"login-2.php\" method=\"$cfg[formMethod]\">\n";
 print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
 print "\n";
 print "      <table>\n";
 print "        <tbody>\n";
 print "          <tr>\n";
 print "            <td>Nombre:</td>\n";
-print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosUsuario\" "
-    . "maxlength=\"$tamUsuariosUsuario\" autofocus/></td>\n";
+print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" autofocus/></td>\n";
 print "          </tr>\n";
 print "          <tr>\n";
 print "            <td>Contraseña:</td>\n";
-print "            <td><input type=\"password\" name=\"password\" size=\"$tamUsuariosPassword\" "
-    . "maxlength=\"$tamUsuariosPassword\" /></td>\n";
+print "            <td><input type=\"password\" name=\"password\" size=\"$cfg[usuariosTamPassword]\" maxlength=\"$cfg[usuariosTamPassword]\"/></td>\n";
 print "          </tr>\n";
 print "        </tbody>\n";
 print "      </table>\n";
@@ -54,6 +52,6 @@ print "        <input type=\"reset\" value=\"Borrar\" />\n";
 print "      </p>\n";
 print "    </form>\n";
 
-pie();
+$pdo = null;
 
-$db = null;
+pie();

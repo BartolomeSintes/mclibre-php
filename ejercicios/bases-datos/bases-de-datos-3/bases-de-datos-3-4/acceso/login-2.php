@@ -7,8 +7,9 @@
 
 require_once "../comunes/biblioteca.php";
 
-session_name(SESSION_NAME);
+session_name($cfg["sessionName"]);
 session_start();
+
 if (isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit();
@@ -17,29 +18,32 @@ if (isset($_SESSION["conectado"])) {
 $usuario  = recoge("usuario");
 $password = recoge("password");
 
-$db = conectaDb();
+$pdo = conectaDb();
 
 if (!$usuario) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
     exit();
 }
 
-$consulta = "SELECT * FROM $tablaUsuarios
-    WHERE usuario=:usuario";
-$result = $db->prepare($consulta);
-$result->execute([":usuario" => $usuario]);
-if (!$result) {
+$consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+             WHERE usuario=:usuario";
+$resultado = $pdo->prepare($consulta);
+$resultado->execute([":usuario" => $usuario]);
+
+if (!$resultado) {
     header("Location:login-1.php?aviso=Error: Error en la consulta");
     exit();
 }
 
-$valor = $result->fetch();
+$valor = $resultado->fetch();
+
 if ($valor["password"] != encripta($password)) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
     exit();
 }
 
 $_SESSION["conectado"] = $valor["nivel"];
-$db                    = null;
+
+$pdo = null;
+
 header("Location:../index.php");
-exit();

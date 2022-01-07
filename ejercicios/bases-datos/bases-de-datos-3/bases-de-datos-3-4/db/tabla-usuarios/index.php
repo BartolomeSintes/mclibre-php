@@ -5,11 +5,16 @@
  * @link      https://www.mclibre.org
  */
 
-require_once "../comunes/biblioteca.php";
+require_once "../../comunes/biblioteca.php";
 
 session_name($cfg["sessionName"]);
 session_start();
 
-session_destroy();
+if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_ADMINISTRADOR) {
+    header("Location:../../index.php");
+    exit;
+}
 
-header("location:../index.php");
+cabecera("Usuarios - Inicio", MENU_USUARIOS, PROFUNDIDAD_2);
+
+pie();

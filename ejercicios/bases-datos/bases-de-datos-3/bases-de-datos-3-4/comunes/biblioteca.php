@@ -5,42 +5,84 @@
  * @link      https://www.mclibre.org
  */
 
-// Constantes comunes
+// Constantes y variables configurables por el programador de la aplicación
 
-define("GET", "get");                      // Formularios se envían con GET
-define("POST", "post");                    // Formularios se envían con POST
+define("GET", "get");                       // Formularios se envían con GET
+define("POST", "post");                     // Formularios se envían con POST
 
-define("MYSQL", "MySQL");                  // Base de datos MySQL
-define("SQLITE", "SQLite");                // Base de datos SQLITE
+define("MYSQL", 1);                         // Base de datos MySQL
+define("SQLITE", 2);                        // Base de datos SQLITE
 
-define("MENU_PRINCIPAL", "menuPrincipal");                     // Menú principal sin conectar
-define("MENU_PRINCIPAL_CONECTADO", "menuPrincipalConectado");  // Menú principal conectado
-define("MENU_VOLVER", "menuVolver");                           // Menú Volver
-define("MENU_AGENDA", "menuAgenda");                           // Menú Agenda
-define("MENU_USUARIOS", "menuUsuarios");                       // Menú Usuarios
-define("MENU_ADMINISTRADOR", "menuAdministrador");             // Menú Administrador
+define("MENU_PRINCIPAL", 1);                // Menú principal sin conectar
+define("MENU_PRINCIPAL_CONECTADO", 2);      // Menú principal conectado
+define("MENU_VOLVER", 3);                   // Menú Volver a inicio
+define("MENU_ADMINISTRADOR", 4);            // Menú Administrador
+define("MENU_USUARIOS", 5);                 // Menú Usuarios
+define("MENU_PERSONAS", 6);                 // Menú Personas
 
-// Niveles de usuarios
+define("PROFUNDIDAD_0", 0);                 // Profundidad de nivel de la página: directorio raíz
+define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la página: subdirectorio
+define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la página: sub-subdirectorio
 
-define("NIVEL_1", "1");                    // Usuario web de nivel Usuario
-define("NIVEL_2", "2");                    // Usuario web de nivel Administrador
+define("NIVEL_USUARIO_BASICO", 1);          // Usuario web de nivel Usuario Básico
+define("NIVEL_ADMINISTRADOR", 2);           // Usuario web de nivel Administrador
 
-$usuariosNiveles = [
-    "Usuario"       => NIVEL_1,
-    "Administrador" => NIVEL_2,
-];
-
-// Constantes y variables configurables
+// Variables configurables por el administrador de la aplicación
 
 require_once "config.php";
 
-// Biblioteca base de datos
+// Configuración Usuario
 
-if ($dbMotor == MYSQL) {
+$cfg["usuariosTamPassword"] = 20;           // Tamaño de la Contraseña de Usuario
+
+// Configuración Tabla Personas
+
+$cfg["dbPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas > Nombre
+$cfg["dbPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas > Apellidos
+$cfg["dbPersonasTamTelefono"]  = 10;        // Tamaño de la columna Personas > Teléfono
+$cfg["dbPersonasTamCorreo"]    = 50;        // Tamaño de la columna Personas > Correo
+
+// Configuración Tabla Usuarios
+
+$cfg["dbUsuariosTamUsuario"]  = 20;         // Tamaño de la columna Usuarios > Nombre de Usuario
+$cfg["dbUsuariosTamPassword"] = 64;         // Tamaño de la columna Usuarios > Contraseña de Usuario (cifrada)
+
+// Valores de ordenación de la tabla
+
+$cfg["dbPersonasColumnasOrden"] = [
+    "nombre ASC", "nombre DESC",
+    "apellidos ASC", "apellidos DESC",
+    "telefono ASC", "telefono DESC",
+    "correo ASC", "correo DESC",
+];
+
+$cfg["dbUsuariosColumnasOrden"] = [
+    "usuario ASC", "usuario DESC",
+    "password ASC", "password DESC",
+    "nivel ASC", "nivel DESC",
+];
+
+// Niveles de usuario
+
+$cfg["usuariosNiveles"] = [
+    "Usuario Básico" => NIVEL_USUARIO_BASICO,
+    "Administrador"  => NIVEL_ADMINISTRADOR,
+];
+
+// Carga Biblioteca específica de la base de datos utilizada
+
+if ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";
-} elseif ($dbMotor == SQLITE) {
+} elseif ($cfg["dbMotor"] == SQLITE) {
     require_once "biblioteca-sqlite.php";
 }
+
+// Tablas
+
+$cfg["dbTablas"] = [
+    $cfg["dbUsuariosTabla"],
+    $cfg["dbPersonasTabla"],
+];
 
 // Funciones comunes
 
@@ -76,20 +118,22 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Agenda (4). Identificación de usuarios.\n";
+    print "    $texto. Bases de datos (3) 4. Bases de datos (3).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-    if ($profundidadDirectorio == 0) {
-        print "  <link rel=\"stylesheet\" href=\"comunes/mclibre-php-proyectos.css.php\" title=\"Color\" />\n";
-    } elseif ($profundidadDirectorio == 1) {
-        print "  <link rel=\"stylesheet\" href=\"../comunes/mclibre-php-proyectos.css.php\" title=\"Color\" />\n";
+    if ($profundidadDirectorio == PROFUNDIDAD_0) {
+        print "  <link rel=\"stylesheet\" href=\"comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
+    } elseif ($profundidadDirectorio == PROFUNDIDAD_1) {
+        print "  <link rel=\"stylesheet\" href=\"../comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
+    } elseif ($profundidadDirectorio == PROFUNDIDAD_2) {
+        print "  <link rel=\"stylesheet\" href=\"../../comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
     }
     print "</head>\n";
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Identificación de usuarios - Agenda (4) - $texto</h1>\n";
+    print "    <h1>Bases de datos (3) 4 - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
@@ -101,16 +145,46 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         } else {
             print "        <li>Error en la selección de menú</li>\n";
         }
-    } elseif ($_SESSION["conectado"] == NIVEL_1) {
+    } elseif ($_SESSION["conectado"] == NIVEL_USUARIO_BASICO) {
         if ($menu == MENU_PRINCIPAL) {
             print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
         } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
-            print "        <li><a href=\"db-agenda/index.php\">Agenda</a></li>\n";
+            print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
         } elseif ($menu == MENU_VOLVER) {
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-        } elseif ($menu == MENU_AGENDA) {
+        } elseif ($menu == MENU_PERSONAS) {
+            print "        <li><a href=\"../../index.php\">Volver</a></li>\n";
+            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
+            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
+            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
+            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
+        } else {
+            print "        <li>Error en la selección de menú</li>\n";
+        }
+    } elseif ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
+        } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
+            print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
+            print "        <li><a href=\"db/tabla-usuarios/index.php\">Usuarios</a></li>\n";
+            print "        <li><a href=\"administrador/index.php\">Administrador</a></li>\n";
+            print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
+        } elseif ($menu == MENU_VOLVER) {
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
+        } elseif ($menu == MENU_ADMINISTRADOR) {
+            print "        <li><a href=\"../index.php\">Volver</a></li>\n";
+            print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+        } elseif ($menu == MENU_USUARIOS) {
+            print "        <li><a href=\"../../index.php\">Volver</a></li>\n";
+            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
+            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
+            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
+            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
+        } elseif ($menu == MENU_PERSONAS) {
+            print "        <li><a href=\"../../index.php\">Volver</a></li>\n";
             print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
             print "        <li><a href=\"listar.php\">Listar</a></li>\n";
             print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
@@ -120,35 +194,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li>Error en la selección de menú</li>\n";
         }
     } else {
-        if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
-        } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
-            print "        <li><a href=\"db-agenda/index.php\">Agenda</a></li>\n";
-            print "        <li><a href=\"db-usuarios/index.php\">Usuarios</a></li>\n";
-            print "        <li><a href=\"administrador/index.php\">Administrador</a></li>\n";
-            print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
-        } elseif ($menu == MENU_VOLVER) {
-            print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-        } elseif ($menu == MENU_AGENDA) {
-            print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
-            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
-            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
-            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
-            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
-        } elseif ($menu == MENU_USUARIOS) {
-            print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
-            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
-            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
-            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
-            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
-        } elseif ($menu == MENU_ADMINISTRADOR) {
-            print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-            print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
-        } else {
-            print "        <li>Error en la selección de menú</li>\n";
-        }
+        print "        <li>Error en la selección de menú</li>\n";
     }
     print "      </ul>\n";
     print "    </nav>\n";
@@ -164,7 +210,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2020-05-19\">19 de mayo de 2020</time>\n";
+    print "      <time datetime=\"2022-01-07\">7 de enero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
@@ -180,5 +226,7 @@ function pie()
 
 function encripta($cadena)
 {
-    return hash(HASH_ALGORITHM, $cadena);
+    global $cfg;
+
+    return hash($cfg["hashAlgorithm"], $cadena);
 }
