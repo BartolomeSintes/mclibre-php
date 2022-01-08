@@ -1,10 +1,10 @@
 /* PRISM.CSS                                */
 /* Bartolome Sintes Marco                   */
-/* https://www.mclibre.org                   */
+/* https://www.mclibre.org                  */
 /*                                          */
 /* Hoja de estilo para prism.js             */
 /*                                          */
-/* 3 de octubre de 2019                     */
+/* 14 de diciembre de 2021                  */
 /*                                          */
 
 /* AVISO: Cuando las clases están divididas en dos grupos
@@ -21,11 +21,11 @@ div.codigo-nocolor { background-color: white; color:black; }
 
 div.codigo-nocolor pre code.language-html *[class] { color: black; }
 
-.line-numbers-rows > span:before { color: black; }
+.line-numbers-rows > span::before { color: black; }
 
 .command-line-prompt {border-right: 1px solid #999; }
 
-.command-line-prompt > span:before { color: white; }
+.command-line-prompt > span::before { color: white; }
 
 /* Estilo para HTML imitando a Visual Studio Code con tema Dark+ */
 
@@ -144,134 +144,130 @@ pre code.language-json .string        { color: #ce9178; }          /* valor (cad
 /* CSS para plugin Line Numbers de Prism */
 
 pre.line-numbers {
-  position: relative;
-  padding-left: 2.8em;
-  counter-reset: linenumber;
+    position: relative;
+    padding-left: 2.8em;
+    counter-reset: linenumber;
 }
 
 pre.line-numbers > code {
-  position: relative;
+    position: relative;
 }
 
 .line-numbers .line-numbers-rows {
-  position: absolute;
-  pointer-events: none;
-  top: -2px;            /* para ajustar la posición de los números */
-  font-size: 100%;
-  left: -2.8em;
-  width: 2em; /* works for line-numbers below 1000 lines */
-  letter-spacing: -1px;
-  border-right: 1px solid #999;
+    position: absolute;
+    pointer-events: none;
+    top: -2px;            /* para ajustar la posición de los números */
+    font-size: 100%;
+    left: -2.8em;
+    width: 2em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
 
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .line-numbers-rows > span {
-  pointer-events: none;
-  display: block;
-  counter-increment: linenumber;
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
 }
 
-.line-numbers-rows > span:before {
-  content: counter(linenumber);
-  color: white;
-  display: block;
-  padding-right: 0.8em;
-  text-align: right;
+.line-numbers-rows > span::before {
+    content: counter(linenumber);
+    color: white;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
 }
 
 /* CSS para plugin Command Line de Prism */
 
 .command-line-prompt {
-  border-right: 1px solid #999;
-  display: block;
-  float: left;
-  font-size: 100%;
-  letter-spacing: -1px;
-  margin-right: 1em;
-  pointer-events: none;
+    border-right: 1px solid #999;
+    display: block;
+    float: left;
+    font-size: 100%;
+    letter-spacing: -1px;
+    margin-right: 1em;
+    pointer-events: none;
 
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.command-line-prompt > span:before {
-  color: white;
-  content: ' ';
-  display: block;
-  padding-right: 0.8em;
+.command-line-prompt > span::before {
+    color: white;
+    content: ' ';
+    display: block;
+    padding-right: 0.8em;
 }
 
-.command-line-prompt > span[data-user]:before {
-  content: "[" attr(data-user) "@" attr(data-host) "] $";
+.command-line-prompt > span[data-user]::before {
+    content: "[" attr(data-user) "@" attr(data-host) "] $";
 }
 
-.command-line-prompt > span[data-user="root"]:before {
-  content: "[" attr(data-user) "@" attr(data-host) "] #";
+.command-line-prompt > span[data-user="root"]::before {
+    content: "[" attr(data-user) "@" attr(data-host) "] #";
 }
 
-.command-line-prompt > span[data-prompt]:before {
-  content: attr(data-prompt);
+.command-line-prompt > span[data-prompt]::before {
+    content: attr(data-prompt);
 }
 
 /* CSS para plugin Toolbar (utilizado por plugin Copy to Clipboard)  */
 
 div.code-toolbar {
-  position: relative;
+    position: relative;
 }
 
 div.code-toolbar > .toolbar {
-  position: absolute;
-  top: .3em;
-  right: .2em;
-  transition: opacity 0.3s ease-in-out;
-  opacity: 1;
+    position: absolute;
+    top: .3rem;
+    right: .2rem;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
 }
 
 div.code-toolbar:hover > .toolbar {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Separate line b/c rules are thrown out if selector is invalid.
    IE11 and old Edge versions don't support :focus-within. */
 div.code-toolbar:focus-within > .toolbar {
-  opacity: 1;
+    opacity: 1;
 }
 
 div.code-toolbar > .toolbar .toolbar-item {
-  display: inline-block;
+    display: inline-block;
 }
 
 div.code-toolbar > .toolbar a {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 div.code-toolbar > .toolbar button {
-  background: none;
-  border: 0;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-  padding: 0;
-  -webkit-user-select: none; /* for button */
-  -moz-user-select: none;
-  -ms-user-select: none;
+    background: none;
+    border: 0;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
 }
 
 div.code-toolbar > .toolbar a,
 div.code-toolbar > .toolbar button,
 div.code-toolbar > .toolbar span {
-  color: black;
-  font-size: 1.2em;
-  padding: .2em .5em;
-  background: white;
-  box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
-  border-radius: .5em;
+    color: black;
+    font-size: 1.2rem;
+    padding: 0 .2rem;
+    background: white;
+    border-radius: .3rem;
 }
 
 div.code-toolbar > .toolbar a:hover,
@@ -280,5 +276,5 @@ div.code-toolbar > .toolbar button:hover,
 div.code-toolbar > .toolbar button:focus,
 div.code-toolbar > .toolbar span:hover,
 div.code-toolbar > .toolbar span:focus {
-  text-decoration: none;
+    text-decoration: none;
 }

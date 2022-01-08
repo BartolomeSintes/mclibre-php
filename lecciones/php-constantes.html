@@ -44,7 +44,7 @@
 
     <p>Las constantes son elementos de PHP que guardan un valor fijo que no se puede modificar a lo largo del programa. Las constantes pueden ser <a href="#definir">definidas por el programa</a> o estar <a href="#predefinidas">predefinidas</a> por el propio PHP o por algún módulo. Los nombres de las constantes siguen las mismas reglas que los nombres de las variables, pero sin el dólar ($) inicial. La costumbre es escribir los nombres de las constantes en mayúsculas.</p>
 
-    <p>En principio, se puede no utilizar constantes nunca, puesto que las constantes definidas por el programa podrían reemplazarse por variables. La ventaja de usar constantes y variables es que se puede distinguir a simple vista si a lo largo de un programa algo va a permanecer constante (si es una constante) o puede cambiar (si es una variable). El inconveniente de usar constantes es que las constantes no se sustituyen dentro de las cadenas y es necesario sacarlas fuera de las cadenas, haciendo el código un poco más incómodo de escribir y leer. Desde el punto de vista del rendimiento, la diferencia es inapreciable.</p>
+    <p>En principio, en vez de constantes se podrían utilizar variables. La ventaja de usar constantes en vez de variables es que se puede distinguir a simple vista si a lo largo de un programa algo va a permanecer constante (si es una constante) o puede cambiar (si es una variable). El inconveniente de usar constantes es que las constantes no se sustituyen dentro de las cadenas y es necesario sacarlas fuera de las cadenas, haciendo el código un poco más incómodo de escribir y leer. Desde el punto de vista del rendimiento, la diferencia entre usar constantes o variables es inapreciable.</p>
   </section>
 
   <section id="definir">
@@ -83,6 +83,41 @@ print "&lt;p&gt;Autor: " . AUTOR . "&lt;/p&gt;\n";
 </pre>
       </div>
     </div>
+
+    <p>También se pueden definir constantes mediante la palabra reservada <span class="php-res">const</span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+const PI = 3.14;
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;El valor de pi es 3.14&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+const AUTOR = "Bartolomé Sintes Marco";
+print "&lt;p&gt;Autor: " . AUTOR . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Autor: Bartolomé Sintes Marco&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+    <hr class="corta">
 
     <p>La costumbre es escribir los nombres de las constantes en mayúsculas. Los nombres de las constantes deben empezar por una letra y tener sólo letras (acentos, etc), números y guiones bajos.</p>
 
@@ -132,6 +167,104 @@ print "&lt;p&gt;El valor de pi es " . pi . "&lt;/p&gt;";
 </pre>
       </div>
     </div>
+
+    <hr class="corta">
+
+    <p>Definir constantes mediante la función <span class="php-fun">define()</span> no es lo mismo que hacerlo mediante la palabra reservada <span class="php-res">const</span>.</p>
+    <ul>
+      <li>Las constantes definidas con <span class="php-fun">define()</span> se crean en tiempo de ejecución mientras que las constantes definidas con <span class="php-res">const</span> se crean en tiempo de compilación. Eso significa que las primeras se pueden crear en cualquier momento durante la ejecución de un programa, mientras que las segundas no, como muestra el siguiente ejemplo.
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$decimales = 6;
+if ($decimales == 6) {
+    define("PI", 3.141592);
+} else {
+    define("PI", 3.14);
+}
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;El valor de pi es 3.141592&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$decimales = 6;
+if ($decimales == 6) {
+    const PI = 3.141592;
+} else {
+    const PI = 3.14;
+}
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <b>Parse error</b>: syntax error, unexpected 'const' (T_CONST) in <b>ejemplo.php</b> on line <b>4</b>
+          </div>
+        </div>
+      </li>
+      <li>Sin embargo, al definir una constante en una clase, se debe hacer con <span class="php-res">const</span>, como muestra el siguiente ejemplo.
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+class Constantes
+{
+    define('PI', 3.14);
+}
+print "&lt;p&gt;El valor de pi es " . Constantes::PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <b>Parse error</b>: syntax error, unexpected 'define' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST) in <b>ejemplo.php</b> on line <b>15</b>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+class Constantes
+{
+    const PI = 3.14;
+}
+print "&lt;p&gt;El valor de pi es " . Constantes::PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;El valor de pi es 3.141592&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section id="predefinidas">
@@ -311,7 +444,7 @@ print "&lt;p&gt;Los enteros se guardan utilizando $tamano bytes&lt;/p&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 3 de diciembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 9 de diciembre de 2021</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
