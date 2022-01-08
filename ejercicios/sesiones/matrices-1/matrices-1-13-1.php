@@ -3,9 +3,9 @@
  * Elimine dibujos en orden - matrices-1-13-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2021-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,21 +22,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("matrices-1-13");
 session_start();
 
-$caracterMinimo = 127789;
-$caracterMaximo = 127871;
-$_SESSION["numeroDibujos"] = 7;
-
-if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
+// Si la principal variable de sesión no está definida ...
+if (!isset($_SESSION["dibujos"])) {
+    // ... creamos todas las variables de sesión
+    $_SESSION["numeroDibujos"] = 7;
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$i] = mt_rand($caracterMinimo, $caracterMaximo);
+        $_SESSION["dibujos"][$i] = mt_rand(127789, 127868);
     }
-    $_SESSION["deseado"] = $_SESSION["dibujos"][array_rand($_SESSION["dibujos"])];
-}
-
-if (isset($_SESSION["dibujos"]) && !isset($_SESSION["deseado"])) {
     $_SESSION["deseado"] = $_SESSION["dibujos"][array_rand($_SESSION["dibujos"])];
 }
 
@@ -59,13 +55,16 @@ if (isset($_SESSION["dibujos"]) && !isset($_SESSION["deseado"])) {
 
 <body>
 <?php
+// Escribimos el tíulo de la página
 print "  <h1>$_SESSION[numeroDibujos] dibujos</h1>\n";
 print "\n";
+// Escribimos el emoji que hay que seleccionar
 print "  <p>Haga clic en el siguiente dibujo: <span style=\"font-size: 400%\">"
      . "&#$_SESSION[deseado];</span>.</p>\n";
 print "\n";
 print "  <form action=\"matrices-1-13-2.php\">\n";
 print "    <p>\n";
+// Escribimos los emojis restantes en botones de formulario
 foreach ($_SESSION["dibujos"] as $indice => $valor) {
     print "      <button name=\"elimina\" value=\"$indice\" style=\"font-size: 400%\">\n";
     print "        &#$valor;\n";
@@ -78,7 +77,7 @@ print "  </form>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2021-12-04">4 de diciembre de 2021</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Sesiones Matrices (2) 2 - matrices-1-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2021-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
+session_name("matrices-1-02");
+session_start();
+
+// Si la variable de sesión no está definida ...
+if (!isset($_SESSION["nombres"])) {
+    // ... volvemos al formulario
+    header("Location:matrices-1-02-1.php");
+    exit;
+}
+
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -37,30 +49,32 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-session_name("sesiones_2_13");
-session_start();
-
+// Recogemos el nombre y el botón
 $accion   = recoge("accion");
 $nombre   = recoge("nombre");
 $nombreOk = false;
-$paginaAnterior = "matrices-1-02-1.php";
 
-if ($accion == "Cerrar") {
+// Si se nos pide cerrar la sesión
+if ($accion == "Cerrar sesión") {
+    // la cerramos y volvemos al formulario
     session_destroy();
-    header("Location:$paginaAnterior");
+    header("Location:matrices-1-02-1.php");
     exit;
 }
 
+// Si el nombre no es vacío, es correcto
 if ($nombre != "") {
     $nombreOk = true;
 }
 
+// Si el nombre es correcto ...
 if ($nombreOk) {
-    if (!isset($_SESSION["nombres"]) || !in_array($nombre, $_SESSION["nombres"])) {
+    // ... y además no está ya incluido en la matriz ...
+    if (!in_array($nombre, $_SESSION["nombres"])) {
+        // ... lo guardamos en la sesión
         $_SESSION["nombres"][] = $nombre;
     }
 }
 
-header("Location:$paginaAnterior");
-exit;
-?>
+// Volvemos al formulario
+header("Location:matrices-1-02-1.php");

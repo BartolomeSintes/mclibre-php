@@ -3,9 +3,9 @@
  * Seleccione dibujos - matrices-1-12-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2021-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,14 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("matrices-1-12");
 session_start();
 
+// Si la principal variable de sesión no está definida ...
 if (!isset($_SESSION["disponibles"])) {
+    // ... volvemos al formulario
     header("Location:matrices-1-12-1.php");
     exit;
 }
 
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -44,18 +48,22 @@ function recoge($var, $m = "")
     }
     return $tmp;
 }
+// Recogemos el emoji a seleccionar
+$selecciona = recoge("selecciona");
 
-$selecciona= recoge("selecciona");
+// Si el emoji recibido es uno de los disponibles ...
+if (isset($_SESSION["disponibles"][$selecciona])) {
+    // .. lo añadimos a la matriz de emojis seleccionados
+    $_SESSION["seleccionados"][] = $_SESSION["disponibles"][$selecciona];
+    // ... y lo eliminamos de la matriz de emojis disponibles
+    unset($_SESSION["disponibles"][$selecciona]);
 
-if ($selecciona == "") {
-} elseif (!is_numeric($selecciona)) {
-} elseif (!ctype_digit($selecciona)) {
-} else {
-    if (isset($_SESSION["disponibles"][$selecciona])) {
-        $_SESSION["seleccionados"][] = $_SESSION["disponibles"][$selecciona];
-        unset($_SESSION["disponibles"][$selecciona]);
+    // Si ya no quedan empojis disponibles ...
+    if (!count($_SESSION["disponibles"])) {
+        // ... destruimos la sesión (se volverá a crear al volver al formulario)
+        session_destroy();
     }
 }
 
+// Volvemos al formulario
 header("Location:matrices-1-12-1.php");
-exit;

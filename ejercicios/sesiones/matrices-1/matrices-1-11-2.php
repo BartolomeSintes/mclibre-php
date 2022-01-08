@@ -3,9 +3,9 @@
  * Elimine dibujos - matrices-1-11-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2021-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,14 +22,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("matrices-1-11");
 session_start();
 
+// Si la principal variable de sesión no está definida ...
 if (!isset($_SESSION["dibujos"])) {
+    // ... volvemos al formulario
     header("Location:matrices-1-11-1.php");
     exit;
 }
 
+// Funciones auxiliares
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
@@ -45,16 +49,17 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+// Recogemos el emoji a eliminar
 $elimina = recoge("elimina");
 
-if ($elimina == "") {
-} elseif (!is_numeric($elimina)) {
-} elseif (!ctype_digit($elimina)) {
-} else {
-    if (isset($_SESSION["dibujos"][$elimina])) {
-        unset($_SESSION["dibujos"][$elimina]);
-    }
+// Eliminamos el emoji recibido
+unset($_SESSION["dibujos"][$elimina]);
+
+// Si no quedan dibujos por eliminar ...
+if (!count($_SESSION["dibujos"])) {
+    // ... destruimos la sesión (se volverá a crear al volver al formulario)
+    session_destroy();
 }
 
+// Volvemos al formulario
 header("Location:matrices-1-11-1.php");
-exit;

@@ -3,9 +3,9 @@
  * Sesiones Matrices (1) 1 - matrices-1-01-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2021-12-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("sesiones_2_12");
+// Accedemos a la sesión
+session_name("matrices-1-01");
 session_start();
 
+// Si la variable de sesión no está definida ...
+if (!isset($_SESSION["nombres"])) {
+    // ... creamos la variable de sesión
+    $_SESSION["nombres"] = [];
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,28 +55,31 @@ session_start();
       <input type="submit" value="Añadir">
       <input type="reset" value="Borrar">
     </p>
-  </form>
 
 <?php
-if (!count($_SESSION)) {
-    print "  <p>Todavía no se han introducido nombres.</p>\n";
+// Si no hay ningún dato guardado ...
+if (!count($_SESSION["nombres"])) {
+    // ... lo indicamos
+    print "    <p>Todavía no se han introducido nombres.</p>\n";
 } else {
-    print "  <p>Datos introducidos:</p>\n";
-    print "  <ul>\n";
+    // si lo hay, los mostramos
+    print "    <p>Datos introducidos:</p>\n";
+    print "    <ul>\n";
     foreach ($_SESSION["nombres"] as $valor) {
-        print "    <li>$valor</li>\n";
+        print "      <li>$valor</li>\n";
     }
-    print "  </ul>\n";
+    print "    </ul>\n";
     print "\n";
-    print "  <p><a href=\"matrices-1-01-2.php?accion=Cerrar\">Cerrar sesión "
-        . "(se perderán los datos almacenados).</a></p>\n";
+    print "    <p><input type=\"submit\" name=\"accion\" value=\"Cerrar sesión\"> "
+        . "(se perderán los datos almacenados).</p>\n";
 }
 ?>
+  </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2021-12-04">4 de diciembre de 2021</time>
     </p>
 
     <p class="licencia">

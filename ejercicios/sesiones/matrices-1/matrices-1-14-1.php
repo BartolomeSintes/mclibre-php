@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones Matrices (2) 1 - matrices-1-02-1.php
+ * Descubra dibujos - matrices-1-14-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -23,13 +23,17 @@
  */
 
 // Accedemos a la sesión
-session_name("matrices-1-02");
+session_name("matrices-1-14");
 session_start();
 
-// Si la variable de sesión no está definida ...
-if (!isset($_SESSION["nombres"])) {
-    // ... creamos la variable de sesión
-    $_SESSION["nombres"] = [];
+// Si la principal variable de sesión no está definida ...
+if (!isset($_SESSION["dibujos"])) {
+    // ... creamos todas las variables de sesión
+    $_SESSION["numeroDibujos"] = 7;
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = mt_rand(128336, 128359);
+        $_SESSION["destapados"][$i] = false;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -37,47 +41,49 @@ if (!isset($_SESSION["nombres"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Almacenamiento de datos en sesión.
+    Descubra dibujos.
     Matrices (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
+  <style>
+    button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
+  </style>
 </head>
 
 <body>
-  <h1>Almacenamiento de datos en sesión</h1>
-
-  <form action="matrices-1-02-2.php" method="get">
-    <p><label>Escriba algún nombre: <input type="text" name="nombre" size="30" maxlength="30"></label></p>
-
-    <p>
-      <input type="submit" value="Añadir">
-      <input type="reset" value="Borrar">
-    </p>
-
 <?php
-// Si no hay ningún dato guardado ...
-if (!count($_SESSION["nombres"])) {
-    // ... lo indicamos
-    print "  <p>Todavía no se han introducido nombres.</p>\n";
-} else {
-    // ... si lo hay, los mostramos
-    print "  <p>Datos introducidos:</p>\n";
-    print "\n";
-    // Ordenamos la matriz
-    sort($_SESSION["nombres"]);
-    print "  <ul>\n";
-    foreach ($_SESSION["nombres"] as $valor) {
-        print "    <li>$valor</li>\n";
+// Contamos cuántos dibujos están destapados (true)
+$destapados = 0;
+for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+    if ($_SESSION["destapados"][$i]) {
+        $destapados += 1;
     }
-    print "  </ul>\n";
-    print "\n";
-    print "    <p><input type=\"submit\" name=\"accion\" value=\"Cerrar sesión\"> "
-        . "(se perderán los datos almacenados).</p>\n";
 }
+// Escribimos el tíulo de la página
+print "  <h1>$destapados dibujos visibles y " . (count($_SESSION["dibujos"]) - $destapados) . " dibujos ocultos</h1>\n";
+print "\n";
+print "  <p>Haga clic en un dibujo para mostrarlo u ocultarlo.</p>\n";
+print "\n";
+print "  <form action=\"matrices-1-14-2.php\">\n";
+print "    <p>\n";
+// Escribimos los emojis en botones de formulario ...
+for ($i = 0; $i< $_SESSION["numeroDibujos"]; $i++) {
+    print "      <button name=\"invierte\" value=\"$i\" style=\"font-size: 4rem; width: 6rem;\">\n";
+    // Si está destapado ...
+    if ($_SESSION["destapados"][$i]) {
+        // ... escribimos el emoji
+        print "        &#" . $_SESSION["dibujos"][$i] . ";\n";
+    } else {
+        // Si no está destapado, mostramos el interrogante
+        print "        &#10067;\n";
+    }
+    print "      </button>\n";
+}
+print "    </p>\n";
+print "  </form>\n";
 ?>
-</form>
 
   <footer>
     <p class="ultmod">

@@ -22,16 +22,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("matrices-1-11");
 session_start();
 
-$caracterMinimo = 128000;
-$caracterMaximo = 128060;
-$_SESSION["numeroDibujos"] = 7;
-
-if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
+// Si la principal variable de sesión no está definida ...
+if (!isset($_SESSION["dibujos"])) {
+    // ... creamos todas las variables de sesión
+    $_SESSION["numeroDibujos"] = 7;
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$i] = mt_rand($caracterMinimo, $caracterMaximo);
+        $_SESSION["dibujos"][$i] = mt_rand(128000, 128060);
     }
 }
 ?>
@@ -53,12 +53,14 @@ if (!isset($_SESSION["dibujos"]) || count($_SESSION["dibujos"]) == 0) {
 
 <body>
 <?php
+// Escribimos el tíulo de la página
 print "  <h1>$_SESSION[numeroDibujos] dibujos, y quedaron " . count($_SESSION["dibujos"]) . "</h1>\n";
 print "\n";
 print "  <p>Haga clic en un dibujo para eliminarlo.</p>\n";
 print "\n";
 print "  <form action=\"matrices-1-11-2.php\">\n";
 print "    <p>\n";
+// Escribimos los emojis en botones de formulario
 foreach ($_SESSION["dibujos"] as $indice => $valor) {
     print "      <button name=\"elimina\" value=\"$indice\" style=\"font-size: 400%\">\n";
     print "        &#$valor;\n";
@@ -71,7 +73,7 @@ print "  </form>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2021-12-04">4 de diciembre de 2021</time>
     </p>
 
     <p class="licencia">

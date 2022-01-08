@@ -1,6 +1,6 @@
 <?php
 /**
- * Elimine dibujos en orden - matrices-1-13-2.php
+ * Descubra dibujos - matrices-1-14-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -23,13 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("matrices-1-13");
+session_name("matrices-1-14");
 session_start();
 
 // Si la principal variable de sesión no está definida ...
 if (!isset($_SESSION["dibujos"])) {
     // ... volvemos al formulario
-    header("Location:matrices-1-13-1.php");
+    header("Location:matrices-1-14-1.php");
     exit;
 }
 
@@ -49,24 +49,14 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogemos el emoji a eliminar
-$elimina = recoge("elimina");
+// Recogemos el emoji a mostrar/ocultar
+$invierte = recoge("invierte");
 
-// Si el emoji recibido existe y coincide con el que se solicitaba ...
-if (isset($_SESSION["dibujos"][$elimina])
-    && $_SESSION["dibujos"][$elimina] == $_SESSION["deseado"]) {
-    // .. lo eliminamos de la matriz de emojis disponibles
-    unset($_SESSION["dibujos"][$elimina]);
-
-    // Si ya no quedan dibujos por eliminar
-    if (!count($_SESSION["dibujos"])) {
-        // ... destruimos la sesión (se volverá a crear al volver al formulario)
-        session_destroy();
-    } else {
-        // Si quedan dibujos elegimos uno de ellos como siguiente emoji a eliminar
-        $_SESSION["deseado"] = $_SESSION["dibujos"][array_rand($_SESSION["dibujos"])];
-    }
+// Si el emoji recibido existe ...
+if (isset($_SESSION["dibujos"][$invierte])) {
+    // ... invertimos el valor (de true a false y viceversa)
+    $_SESSION["destapados"][$invierte] = !$_SESSION["destapados"][$invierte];
 }
 
 // Volvemos al formulario
-header("Location:matrices-1-13-1.php");
+header("Location:matrices-1-14-1.php");
