@@ -1,11 +1,11 @@
 <?php
 /**
- * Combinación de dados - minijuegos-2-12-1.php
+ * Minijuegos (2) 2 - minijuegos-2-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-23
+ * @version   2018-10-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,14 +21,10 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
-session_name("minijuegos-2-12");
-session_start();
 
-if (!isset($_SESSION["nDados"]) || !isset($_SESSION["objetivo"])) {
-    header("Location:minijuegos-2-12-1.php");
-    exit;
-}
+// Se accede a la sesión
+session_name("minijuegos-2-1");
+session_start();
 
 function recoge($var, $m = "")
 {
@@ -45,13 +41,20 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-$accion = recoge("accion");
-
-if ($accion == "Reiniciar") {
-    session_destroy();
-} elseif ($accion == "Siguiente objetivo") {
-    $_SESSION["nDados"] += 1;
-    $_SESSION["objetivo"] = round(3.5 * $_SESSION["nDados"]);
+if (!isset($_SESSION["dados"])) {
+    $_SESSION["dados"] = 1;
 }
 
-header("Location:minijuegos-2-12-1.php");
+$accion = recoge("accion");
+
+if ($accion == "subir") {
+    $_SESSION["dados"]++;
+} elseif ($accion == "bajar") {
+    $_SESSION["dados"]--;
+}
+
+if ($_SESSION["dados"] < 1) {
+    $_SESSION["dados"] = 1;
+}
+
+header("Location:minijuegos-2-1-1.php");

@@ -1,6 +1,6 @@
 <?php
 /**
- * Mueve fichas - minijuegos-2-13-1.php
+ * Mueve fichas - minijuegos-2-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -23,7 +23,7 @@
  */
 // Se accede a la sesión
 
-session_name("minijuegos-2-13");
+session_name("minijuegos-2-5");
 session_start();
 
 if (!isset($_SESSION["dado"])) {
@@ -58,7 +58,7 @@ if (!isset($_SESSION["dado"])) {
 
   <p>El objetivo del juego es mover las tres fichas hasta la casilla de la derecha. Elija en cada turno una ficha y se desplazará hacia la meta tantas casillas como marque el dado.</p>
 
-  <form action="minijuegos-2-13-2.php" method="get">
+  <form action="minijuegos-2-5-2.php" method="get">
 
 <?php
 print "    <p>Movimiento: <img src=\"img/dados/$_SESSION[dado].svg\" alt=\"$_SESSION[dado]\" width=\"60\" height=\"60\"></p>\n";

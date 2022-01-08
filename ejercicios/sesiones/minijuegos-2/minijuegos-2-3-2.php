@@ -1,6 +1,6 @@
 <?php
 /**
- * Mueve fichas - minijuegos-2-13-2.php
+ * Quita cartas en orden (2) - minijuegos-2-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -22,12 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-
-session_name("minijuegos-2-13");
+session_name("minijuegos-2-3");
 session_start();
 
-if (!isset($_SESSION["dado"])  || !isset($_SESSION["r"]) || !isset($_SESSION["g"]) || !isset($_SESSION["b"])) {
-    header("Location:minijuegos-2-13-1.php");
+if (!isset($_SESSION["nCartas"]) || !isset($_SESSION["cartas"])) {
+    header("Location:minijuegos-2-3-1.php");
     exit;
 }
 
@@ -46,17 +45,15 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-$ficha = recoge("ficha");
+$accion = recoge("accion");
+$carta = recoge("carta");
 
-if ($ficha == "r" && $_SESSION["r"] + $_SESSION["dado"] <= 7) {
-    $_SESSION["r"] += $_SESSION["dado"];
-    $_SESSION["dado"] = rand(1, 6);
-} elseif ($ficha == "g" && $_SESSION["g"] + $_SESSION["dado"] <= 7) {
-    $_SESSION["g"] += $_SESSION["dado"];
-    $_SESSION["dado"] = rand(1, 6);
-} elseif ($ficha == "b" && $_SESSION["b"] + $_SESSION["dado"] <= 7) {
-    $_SESSION["b"] += $_SESSION["dado"];
-    $_SESSION["dado"] = rand(1, 6);
+if (is_numeric($carta) && $carta == min($_SESSION["cartas"])) {
+    unset($_SESSION["cartas"][array_search($carta, $_SESSION["cartas"])]);
 }
 
-header("Location:minijuegos-2-13-1.php");
+if ($accion == "Reiniciar") {
+    session_destroy();
+}
+
+header("Location:minijuegos-2-3-1.php");

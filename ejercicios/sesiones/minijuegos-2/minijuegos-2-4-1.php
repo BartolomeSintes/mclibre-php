@@ -1,6 +1,6 @@
 <?php
 /**
- * Combinación de dados - minijuegos-2-12-1.php
+ * Juego infinito de dados: alcanzar puntuación - minijuegos-2-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("minijuegos-2-12");
+session_name("minijuegos-2-4");
 session_start();
 
 if (!isset($_SESSION["nDados"])) {
@@ -36,7 +36,7 @@ if (!isset($_SESSION["nDados"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Combinación de dados.
+    Alcanzar puntuación.
     Minijuegos (2). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -45,9 +45,9 @@ if (!isset($_SESSION["nDados"])) {
 </head>
 
 <body>
-  <h1>El juego infinito: combinación de dados</h1>
+  <h1>El juego infinito de dados: alcanzar puntuación</h1>
 
-  <form action="minijuegos-2-12-2.php" method="get">
+  <form action="minijuegos-2-4-2.php" method="get">
 
 <?php
 print "     <p>Objetivo a conseguir: $_SESSION[objetivo]</p>\n";
