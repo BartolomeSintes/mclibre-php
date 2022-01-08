@@ -77,7 +77,6 @@ print "    </p>\n";
 ?>
 
     <p><input type="submit" name="accion" value="reiniciar"></p>
-
   </form>
 
   <footer>

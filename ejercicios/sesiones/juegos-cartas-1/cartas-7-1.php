@@ -1,11 +1,11 @@
 <?php
 /**
- * Muestra y oculta cartas (1) - cartas-1-1.php
+ * Cambio de cartas (1) - cartas-7-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-01-08
+ * @version   2021-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,27 +21,30 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-// AVISO:
-// Este programa crea dos matrices y va pasando las cartas de una a otra matriz.
-// Se podría hacer lo mismo con una sola matriz y guardando un número (el número
-// de crtas que se enseñan).
-
-
 // Se accede a la sesión
-session_name("cartas-5");
+session_name("cartas-7");
 session_start();
 
-
-if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
+if (!isset($_SESSION["baraja"])) {
     $_SESSION["baraja"] = [];
-    foreach (["c", "d", "p", "t"] as $palo) {
-        for ($i = 1; $i <= 13; $i++) {
+    foreach (["p", "c", "d", "t"] as $palo) {
+        for ($i = 1; $i <= 10; $i++) {
             $_SESSION["baraja"][] = "$palo$i";
         }
     }
-    shuffle($_SESSION["baraja"]);
-    $_SESSION["cartas"] = [];
+    for ($i = 0; $i < 5; $i++) {
+        $azar = array_rand($_SESSION["baraja"]);
+        $_SESSION["jugador"][] = $_SESSION["baraja"][$azar];
+        unset($_SESSION["baraja"][$azar]);
+    }
+    $_SESSION["cambios"] = 0;
+    $_SESSION["puntos"] = 0;
+    for ($i = 0; $i < 5; $i++) {
+        $jugador2[$i] = substr($_SESSION["jugador"][$i], 1);
+    }
+    foreach (array_count_values($jugador2) as $indice => $valor) {
+        $_SESSION["puntos"] +=  $indice * $valor * $valor;
+    }
 }
 
 ?>
@@ -50,7 +53,7 @@ if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Muestra cartas.
+    Cambio de cartas.
     Juegos de cartas (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -59,31 +62,32 @@ if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
 </head>
 
 <body>
-  <h1>Muestra y oculta cartas</h1>
+  <h1>Cambio de cartas (1)</h1>
 
-  <form action="cartas-1-2.php" method="get">
-    <p>Haga clic en los botones para mostrar una carta menos, reiniciar o mostrar una carta más:</p>
+  <p>La puntuación total es la suma de los valores de las cartas. Las cartas repetidas valen el doble, las repetidas tres veces el triple y las repetidas cuatro veces valen cuatro veces más.</p>
 
-    <p>
-      <button type="submit" name="accion" value="menos"><span style="font-size: 4rem">&#x2796;</span></button>
-      <button type="submit" name="accion" value="reiniciar"><span style="font-size: 4rem">&#x274c;</span></button>
-      <button type="submit" name="accion" value="mas"><span style="font-size: 4rem">&#x2795;</span></button>
-    </p>
+  <p>Puede cambiar hasta cinco cartas. Haga clic en la carta que desee cambiar:</p>
 
+  <form action="cartas-7-2.php" method="get">
 <?php
-print "        <p>\n";
-print "          <img src=\"img/cartas/dorso-rojo.svg\" alt=\"dorso\" width=\"100\">\n";
-foreach ($_SESSION["cartas"] as $carta) {
-    print "          <img src=\"img/cartas/$carta.svg\" alt=\"$carta\" width=\"100\">\n";
+print "    <p>\n";
+for ($i = 0; $i < 5; $i++) {
+    print "      <button type=\"submit\" name=\"accion\" value=\"$i\">\n";
+    print "        <img src=\"img/cartas/{$_SESSION["jugador"][$i]}.svg\" alt=\"{$_SESSION["jugador"][$i]}\" width=\"100\">\n";
+    print "      </button>\n";
 }
-print "        </p>\n";
+print "    </p>\n";
+print "\n";
+print "    <p>Cambios realizados: $_SESSION[cambios]. Puntuación: $_SESSION[puntos]</p>\n";
 ?>
+
+    <p><input type="submit" name="accion" value="Reiniciar"></p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-01-08">8 de enero de 2022</time>
+      <time datetime="2021-12-02">2 de diciembre de 2021</time>
     </p>
 
     <p class="licencia">

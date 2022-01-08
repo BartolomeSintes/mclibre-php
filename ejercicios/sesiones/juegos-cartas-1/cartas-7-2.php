@@ -1,6 +1,6 @@
 <?php
 /**
- * Distribuye cartas (1) - cartas-5-2.php
+ * Cambio de cartas (1) - cartas-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -23,11 +23,11 @@
  */
 
 // Se accede a la sesión
-session_name("cartas-1");
+session_name("cartas-7");
 session_start();
 
 if (!isset($_SESSION["baraja"])) {
-    header("Location:cartas-5-1.php");
+    header("Location:cartas-7-1.php");
     exit;
 }
 
@@ -47,11 +47,20 @@ function recoge($var, $m = "")
 }
 
 $accion = recoge("accion");
-if (count($_SESSION["baraja"]) > 0 && in_array($accion, ["picas", "corazones", "diamantes", "treboles"])) {
-    $_SESSION[$accion][]  = $_SESSION["baraja"][count($_SESSION["baraja"]) - 1];
-    unset($_SESSION["baraja"][count($_SESSION["baraja"]) - 1]);
-} elseif ($accion == "reiniciar") {
+if (in_array($accion, ["0", "1", "2", "3", "4"]) && $_SESSION["cambios"] < 5) {
+    $azar = array_rand($_SESSION["baraja"]);
+    $_SESSION["jugador"][$accion] = $_SESSION["baraja"][$azar];
+    unset($_SESSION["baraja"][$azar]);
+    $_SESSION["cambios"] += 1;
+    $_SESSION["puntos"] = 0;
+    for ($i = 0; $i < 5; $i++) {
+        $jugador2[$i] = substr($_SESSION["jugador"][$i], 1);
+    }
+    foreach (array_count_values($jugador2) as $indice => $valor) {
+        $_SESSION["puntos"] +=  $indice * $valor * $valor;
+    }
+} elseif ($accion == "Reiniciar") {
     session_destroy();
 }
 
-header("Location:cartas-5-1.php");
+header("Location:cartas-7-1.php");
