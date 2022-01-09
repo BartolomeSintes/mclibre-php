@@ -22,11 +22,12 @@ function conectaDb()
 
     try {
         $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp->query("PRAGMA foreign_keys = ON");
         $tmp->query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
         exit;
     }
 }
@@ -40,7 +41,8 @@ function borraTodo()
     $consulta = "DROP TABLE IF EXISTS $cfg[dbUsuariosTabla]";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al borrar la tabla Usuarios / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+
     } else {
         print "    <p>Tabla Usuarios borrada correctamente (si existía).</p>\n";
     }
@@ -49,7 +51,8 @@ function borraTodo()
     $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al borrar la tabla Personas / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+
     } else {
         print "    <p>Tabla Personas borrada correctamente (si existía).</p>\n";
     }
@@ -63,7 +66,7 @@ function borraTodo()
                  )";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la tabla Usuarios / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla Usuarios creada correctamente.</p>\n";
 
@@ -87,7 +90,7 @@ function borraTodo()
                  )";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la tabla Personas / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al crear la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla Personas creada correctamente.</p>\n";
     }

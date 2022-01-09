@@ -21,11 +21,12 @@ function conectaDb()
 
     try {
         $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp->query("PRAGMA foreign_keys = ON");
         $tmp->query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
         exit;
     }
 }
@@ -39,7 +40,7 @@ function borraTodo()
     $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al borrar la tabla / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla borrada correctamente (si existía).</p>\n";
     }
@@ -54,7 +55,7 @@ function borraTodo()
                  )";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la tabla / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla creada correctamente.</p>\n";
     }

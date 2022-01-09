@@ -26,7 +26,7 @@ function conectaDb()
         $tmp->exec("set names utf8mb4");
         return $tmp;
     } catch (PDOException $e) {
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
         exit;
     }
 }
@@ -40,7 +40,7 @@ function borraTodo()
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al borrar la base de datos / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Base de datos borrada correctamente (si existía).</p>\n";
     }
@@ -51,7 +51,7 @@ function borraTodo()
                  COLLATE utf8mb4_unicode_ci";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la base de datos / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al crear la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
@@ -64,7 +64,7 @@ function borraTodo()
                      )";
 
         if (!$pdo->query($consulta)) {
-            print "    <p class=\"aviso\">Error al crear la tabla / {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Tabla creada correctamente.</p>\n";
 
@@ -89,7 +89,7 @@ function borraTodo()
                      )";
 
         if (!$pdo->query($consulta)) {
-            print "    <p class=\"aviso\">Error al crear la tabla / {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Tabla creada correctamente.</p>\n";
         }

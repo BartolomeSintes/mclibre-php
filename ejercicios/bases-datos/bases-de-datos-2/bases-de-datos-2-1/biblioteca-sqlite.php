@@ -25,7 +25,7 @@ function conectaDb()
         $tmp->query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
         exit;
     }
 }

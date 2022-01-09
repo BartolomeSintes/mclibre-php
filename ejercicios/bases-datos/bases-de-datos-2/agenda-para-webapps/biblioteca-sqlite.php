@@ -59,7 +59,7 @@ function borraTodo($db, $nombreTabla, $consultaCreacionTabla)
         print "    <p>Tabla borrada correctamente.</p>\n";
         print "\n";
     } else {
-        print "    <p class=\"aviso\">Error al borrar la tabla.</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     }
 
