@@ -19,7 +19,7 @@ $resultado = $pdo->prepare($consulta);
 $resultado->execute([":id" => $id]);
 
 if (!$resultado) {
-    print "    <p class=\"aviso\">Error al seleccionar el registro / {$pdo->errorInfo()[2]}</p>\n";
+    print "    <p class=\"aviso\">Error al seleccionar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
     $valor = $resultado->fetch();

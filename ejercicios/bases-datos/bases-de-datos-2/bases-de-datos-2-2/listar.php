@@ -26,7 +26,7 @@ if (!$resultado) {
     $resultado = $pdo->query($consulta);
 
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar todos los registros / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al seleccionar todos los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Listado completo de registros:</p>\n";
         print "\n";

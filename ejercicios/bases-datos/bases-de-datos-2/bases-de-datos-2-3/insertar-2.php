@@ -82,7 +82,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                 $resultado = $pdo->prepare($consulta);
 
                 if (!$resultado->execute([":nombre" => "$nombre", ":apellidos" => "$apellidos", ":telefono" => "$telefono", ":correo" => "$correo"])) {
-                    print "    <p class=\"aviso\">Error al crear el registro / {$pdo->errorInfo()[2]}</p>\n";
+                    print "    <p class=\"aviso\">Error al crear el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                 } else {
                     print "    <p>Registro creado correctamente.</p>\n";
                 }

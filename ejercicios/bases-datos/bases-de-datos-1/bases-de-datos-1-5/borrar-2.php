@@ -19,7 +19,7 @@ foreach ($id as $indice => $valor) {
     $resultado = $pdo->prepare($consulta);
 
     if (!$resultado->execute([":indice" => $indice])) {
-        print "    <p class=\"aviso\">Error al borrar el registro / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al borrar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {
         print "    <p>Registro borrado correctamente (si existía).</p>\n";

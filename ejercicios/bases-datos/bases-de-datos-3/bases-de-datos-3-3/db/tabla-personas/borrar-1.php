@@ -35,7 +35,7 @@ if (!$resultado) {
     $resultado = $pdo->query($consulta);
 
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar todos los registros / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al seleccionar todos los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Marque los registros que quiera borrar:</p>\n";

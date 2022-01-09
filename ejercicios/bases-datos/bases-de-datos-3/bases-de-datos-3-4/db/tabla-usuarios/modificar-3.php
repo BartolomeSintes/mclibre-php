@@ -100,7 +100,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                         $resultado = $pdo->prepare($consulta);
 
                         if (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password), ":id" => $id])) {
-                            print "    <p class=\"aviso\">Error al modificar el registro / {$pdo->errorInfo()[2]}</p>\n";
+                            print "    <p class=\"aviso\">Error al modificar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                         } else {
                             print "    <p>Registro modificado correctamente.</p>\n";
                         }

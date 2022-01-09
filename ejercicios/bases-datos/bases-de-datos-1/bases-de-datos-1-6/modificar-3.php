@@ -38,7 +38,7 @@ if ($nombreOk && $apellidosOk) {
     $resultado = $pdo->prepare($consulta);
 
     if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
-        print "    <p class=\"aviso\">Error al modificar el registro / {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al modificar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {
         print "    <p>Registro modificado correctamente.</p>\n";

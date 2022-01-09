@@ -40,7 +40,7 @@ if ($id == "") {
         $resultado->execute([":id" => $id]);
 
         if (!$resultado) {
-            print "    <p class=\"aviso\">Error al seleccionar el registro / {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error al seleccionar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             $valor = $resultado->fetch();
             print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";

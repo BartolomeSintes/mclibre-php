@@ -78,7 +78,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                 $resultado = $pdo->prepare($consulta);
 
                 if (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel])) {
-                    print "    <p class=\"aviso\">Error al crear el registro / {$pdo->errorInfo()[2]}</p>\n";
+                    print "    <p class=\"aviso\">Error al crear el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                 } else {
                     print "    <p>Registro creado correctamente.</p>\n";
                 }

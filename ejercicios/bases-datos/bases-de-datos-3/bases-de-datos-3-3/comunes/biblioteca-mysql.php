@@ -73,7 +73,7 @@ function borraTodo()
                          VALUES ($cfg[rootName]', '$cfg[rootPassword]')";
 
             if (!$pdo->query($consulta)) {
-                print "    <p class=\"aviso\">Error al insertar el registro de usuario / {$pdo->errorInfo()[2]}</p>\n";
+                print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
                 print "    <p>Registro de usuario creado correctamente.</p>\n";
             }
