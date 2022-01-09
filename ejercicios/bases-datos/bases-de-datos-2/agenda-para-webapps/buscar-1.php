@@ -16,7 +16,7 @@ $result   = $db->query($consulta);
 if (!$result) {
     print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "    <p>No se ha creado todavía ningún registro.</p>\n";
+    print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
     print "    <form action=\"buscar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";

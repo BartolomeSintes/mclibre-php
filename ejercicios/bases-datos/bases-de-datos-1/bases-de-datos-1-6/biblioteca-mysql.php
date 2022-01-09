@@ -54,6 +54,7 @@ function borraTodo()
     } else {
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
+
         $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                      id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
                      nombre VARCHAR($cfg[dbPersonasTamNombre]),

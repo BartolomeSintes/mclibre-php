@@ -37,35 +37,36 @@
 
     <ul>
       <li>En cualquier consulta, compruebe que la consulta no ha dado error.
+        <p>Si se añade una consulta en una página que no la tenía, hay que conectarse antes a la base de datos y cerrar la conexión después (aunque las conexiones se cierran automáticamente, por lo que a menudo la conexión no se cierra explícitamente).</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$pdo = conectaDb();
+ ...
+$pdo = null;</code>
+</pre>
+        </div>
+
         <p>En el ejemplo siguiente se comprueba el resultado de la consulta antes de seguir. La consulta podría dar error si el SGBD no está disponible, si la base de datos no ha sido creada todavía, etc. Si es así, poco se puede hacer, salvo informar al usuario del problema.</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result = $db-&gt;query($consulta);
-if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
-    print "\n";
-} else {
- ...</code>
-</pre>
-        </div>
-        <p>Si se añade una consulta a una página que no la tenía, hay que conectarse a la base de datos al principio y cerrar la conexión al final.</p>
+<code class="language-php">$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$resultado = $pdo-&gt;query($consulta);
 
-        <div class="codigo">
-          <pre>
-<code class="language-php">$db = conectaDb();
- ...
-$db = null;</code>
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+} else {
+  ...</code>
 </pre>
         </div>
       </li>
-      <li>biblioteca.php
+      <li>config.php
         <ul>
-          <li>Defina una constante que contenga el máximo número de registros que puede contener la agenda.
+          <li>Defina una ocpión de configuración que contenga el máximo número de registros que puede contener la tabla de Personas.
 
             <div class="codigo">
-              <pre><code class="language-php">define("MAX_REG_TABLE_AGENDA", 20);  // Número máximo de registros en la tabla</code></pre>
+              <pre><code class="language-php">$cfg["dbPersonasmaxReg"] = 20;                              // Número máximo de registros en la tabla Personas</code></pre>
             </div>
           </li>
         </ul>
@@ -73,22 +74,21 @@ $db = null;</code>
       <li>insertar-1.php
         <ul>
           <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
-            <p>En el ejemplo siguiente la consulta devuelve un único registro con una única columna, que se obtiene con el método $result-&gt;fetchColumn().</p>
+            <p>En el ejemplo siguiente la consulta devuelve un único registro con una única columna, que se obtiene con el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">fetchColumn()</a>.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result = $db-&gt;query($consulta);
-if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
+<code class="language-php">$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$resultado = $pdo-&gt;query($consulta);
+
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasmaxReg"]) {
+    print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
     print "\n";
-} elseif ($result-&gt;fetchColumn() &gt;= MAX_REG_TABLE_AGENDA) {
-    print "    &lt;p&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
-    print "\n";
-    print "    &lt;p&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
 } else {
- ...</code>
+  ...</code>
 </pre>
             </div>
           </li>
@@ -100,16 +100,31 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">if ($nombre == "" &amp;&amp; $apellidos == "") {
-    print "    &lt;p&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
-    print "\n";
-} else {
- ...</code>
+<code class="language-php">    if ($nombre == "" && $apellidos == "") {
+        print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
+    } else {
+      ...</code>
 </pre>
             </div>
           </li>
           <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
             <p>Es conveniente hacer esta comprobación aunque se haya hecho ya en insertar-1.php, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar-1.php.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        $consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+        $resultado = $pdo-&gt;query($consulta);
+
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+        } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasmaxReg"]) {
+            print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
+            print "\n";
+            print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";
+        } else {
+          ...</code>
+</pre>
+            </div>
           </li>
           <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda.
 
@@ -117,19 +132,18 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda
-    WHERE nombre=:nombre
-    AND apellidos=:apellidos";
-$result = $db-&gt;prepare($consulta);
-$result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]);
-if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($result-&gt;fetchColumn() &gt; 0) {
-    print "    &lt;p&gt;El registro ya existe.&lt;/p&gt;\n";
-    print "\n";
-} else {
- ...</code>
+<code class="language-php">            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                         WHERE nombre=:nombre
+                         AND apellidos=:apellidos";
+            $resultado = $pdo-&gt;prepare($consulta);
+            $resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]);
+
+            if (!$resultado) {
+                print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+            } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+                print "    &lt;p class=\"aviso\"&gt;El registro ya existe.&lt;/p&gt;\n";
+            } else {
+              ...</code>
 </pre>
             </div>
           </li>
@@ -143,16 +157,15 @@ if (!$result) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda";
-$result = $db-&gt;query($consulta);
-if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($result-&gt;fetchColumn() == 0) {
-    print "    &lt;p&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
-    print "\n";
+<code class="language-php">$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$resultado = $pdo-&gt;query($consulta);
+
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+} elseif ($resultado-&gt;fetchColumn() == 0) {
+    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
- ...</code>
+  ...</code>
 </pre>
             </div>
           </li>
@@ -175,10 +188,9 @@ if (!$result) {
 <code class="language-php">$id = recoge("id", []);
 
 if (count($id) == 0) {
-    print "    &lt;p&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
- ...</code>
+  ...</code>
 </pre>
             </div>
           </li>
@@ -198,19 +210,18 @@ if (count($id) == 0) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda
-    WHERE nombre LIKE :nombre
-    AND apellidos LIKE :apellidos";
-$result = $db-&gt;prepare($consulta);
-$result-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);
-if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($result-&gt;fetchColumn() == 0) {
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+             WHERE nombre LIKE :nombre
+             AND apellidos LIKE :apellidos";
+$resultado = $pdo-&gt;prepare($consulta);
+$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);
+
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+} elseif ($resultado-&gt;fetchColumn() == 0) {
     print "    &lt;p&gt;No se han encontrado registros.&lt;/p&gt;\n";
-    print "\n";
 } else {
- ...</code>
+  ...</code>
 </pre>
             </div>
           </li>
@@ -233,10 +244,9 @@ if (!$result) {
 <code class="language-php">$id = recoge("id");
 
 if ($id == "") {
-    print "    &lt;p&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
- ...</code>
+  ...</code>
 </pre>
             </div>
           </li>
@@ -247,18 +257,17 @@ if ($id == "") {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $tablaAgenda
-    WHERE id=:id";
-$result = $db-&gt;prepare($consulta);
-$result-&gt;execute([":id" =&gt; $id]);
-if (!$result) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($result-&gt;fetchColumn() == 0) {
-    print "    &lt;p&gt;Registro no encontrado.&lt;/p&gt;\n";
-    print "\n";
-} else {
- ...</code>
+<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                 WHERE id=:id";
+    $resultado = $pdo-&gt;prepare($consulta);
+    $resultado-&gt;execute([":id" =&gt; $id]);
+
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+    } elseif ($resultado-&gt;fetchColumn() == 0) {
+        print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
+    } else {
+      ...</code>
 </pre>
             </div>
           </li>
@@ -284,17 +293,17 @@ $consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE nombre=:nombre
     AND apellidos=:apellidos
     AND id&lt;&gt;:id";
-$result = $db-&gt;prepare($consulta);
-$result-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);
-if (!$result) {
+$resultado = $db-&gt;prepare($consulta);
+$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);
+if (!$resultado) {
     print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
     print "\n";
-} elseif ($result-&gt;fetchColumn()&gt;0) {
+} elseif ($resultado-&gt;fetchColumn()&gt;0) {
     print "    &lt;p&gt;Ya existe un registro con esos mismos valores. "
         . "No se ha guardado la modificación.&lt;/p&gt;\n";
     print "\n";
 } else {
- ...</code>
+  ...</code>
 </pre>
             </div>
           </li>
@@ -408,7 +417,7 @@ print "      &lt;/p&gt;\n";</code>
 <code class="language-php">$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
 $id     = recoge("id", []);
 
-foreach ($result as $valor) {
+foreach ($resultado as $valor) {
     print "          &lt;tr&gt;\n";
     if (isset($id[$valor["id"]])) {
         print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\" checked&gt;&lt;/td&gt;\n";

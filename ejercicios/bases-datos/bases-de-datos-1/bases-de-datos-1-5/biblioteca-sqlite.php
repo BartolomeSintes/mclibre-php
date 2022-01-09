@@ -22,6 +22,7 @@ function conectaDb()
     try {
         $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
         $tmp->query("PRAGMA foreign_keys = ON");
+        $tmp->query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
         print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos / {$e->getMessage()}</p>\n";
