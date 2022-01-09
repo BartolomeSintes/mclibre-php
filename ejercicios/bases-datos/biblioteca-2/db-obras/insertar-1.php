@@ -21,7 +21,7 @@ cabecera("Obras - Añadir 1", MENU_OBRAS, 1);
 $consulta = "SELECT COUNT(*) FROM $tablaObras";
 $result   = $db->query($consulta);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() >= MAX_REG_TABLE_OBRAS) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";

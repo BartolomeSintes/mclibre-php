@@ -54,7 +54,7 @@ if ($autorOk && $tituloOk && $editorialOk) {
         $consulta = "SELECT COUNT(*) FROM $tablaObras";
         $result   = $db->query($consulta);
         if (!$result) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($result->fetchColumn() >= MAX_REG_TABLE_OBRAS) {
             print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
@@ -68,7 +68,7 @@ if ($autorOk && $tituloOk && $editorialOk) {
             $result->execute([":autor" => $autor, ":titulo" => $titulo,
                 ":editorial"           => $editorial, ]);
             if (!$result) {
-                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">El registro ya existe.</p>\n";
             } else {

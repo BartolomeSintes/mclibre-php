@@ -107,7 +107,7 @@ function existenTablas()
 
     if (!$resultado) {
         $existe = false;
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {
         if ($resultado->fetchColumn() == 0) {
@@ -124,7 +124,7 @@ function existenTablas()
 
                 if (!$resultado) {
                     $existe = false;
-                    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                     print "\n";
                 } else {
                     if ($resultado->fetchColumn() == 0) {

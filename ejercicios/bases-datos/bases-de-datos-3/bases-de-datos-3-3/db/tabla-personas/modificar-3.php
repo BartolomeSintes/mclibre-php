@@ -70,7 +70,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
         $resultado->execute([":id" => $id]);
 
         if (!$resultado) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($resultado->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
@@ -87,7 +87,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
             $resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":correo" => $correo, ":id" => $id]);
 
             if (!$resultado) {
-                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } elseif ($resultado->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";

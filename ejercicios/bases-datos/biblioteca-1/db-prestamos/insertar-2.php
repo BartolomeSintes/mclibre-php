@@ -31,7 +31,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaPersonas
 $result = $db->prepare($consulta);
 $result->execute([":id_persona" => $id_persona]);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p class=\"aviso\">La persona seleccionada no existe.</p>\n";
 } else {
@@ -43,7 +43,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaObras
 $result = $db->prepare($consulta);
 $result->execute([":id_obra" => $id_obra]);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p class=\"aviso\">La obra seleccionada no existe.</p>\n";
 } else {
@@ -64,7 +64,7 @@ if ($id_personaOk && $id_obraOk && $prestadoOk) {
     $consulta = "SELECT COUNT(*) FROM $tablaPrestamos";
     $result   = $db->query($consulta);
     if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif ($result->fetchColumn() >= MAX_REG_TABLE_PRESTAMOS) {
         print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
         print "\n";
@@ -78,7 +78,7 @@ if ($id_personaOk && $id_obraOk && $prestadoOk) {
         $result->execute([":id_persona" => $id_persona, ":id_obra" => $id_obra,
             ":prestado"                 => $prestado, ]);
         if (!$result) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($result->fetchColumn() > 0) {
             print "    <p class=\"aviso\">El registro ya existe.</p>\n";
         } else {

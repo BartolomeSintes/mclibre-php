@@ -23,7 +23,7 @@ $consulta  = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
 $resultado = $pdo->query($consulta);
 
 if (!$resultado) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() >= $cfg["dbUsuariosmaxReg"]) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";

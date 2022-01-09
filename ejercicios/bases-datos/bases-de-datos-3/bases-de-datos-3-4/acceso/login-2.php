@@ -26,18 +26,19 @@ if (!$usuario) {
 }
 
 $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
-             WHERE usuario=:usuario";
+             WHERE usuario=:usuario
+             AND password=:password";
 $resultado = $pdo->prepare($consulta);
-$resultado->execute([":usuario" => $usuario]);
+$resultado->execute([":usuario" => $usuario, ":password" => encripta($password)]);
 
 if (!$resultado) {
-    header("Location:login-1.php?aviso=Error: Error en la consulta");
+    header("Location:login-1.php?aviso=Error: Error en la consulta.");
     exit();
 }
 
 $valor = $resultado->fetch();
 
-if ($valor["password"] != encripta($password)) {
+if (!is_array($valor)) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
     exit();
 }

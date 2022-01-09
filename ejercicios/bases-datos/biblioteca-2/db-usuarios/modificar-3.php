@@ -59,7 +59,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             $valor = $result->fetch();
             if ($valor["usuario"] == ROOT_NAME) {
@@ -70,7 +70,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                 $result = $db->prepare($consulta);
                 $result->execute([":id" => $id]);
                 if (!$result) {
-                    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                 } elseif ($result->fetchColumn() == 0) {
                     print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
                 } else {
@@ -83,7 +83,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                     $result = $db->prepare($consulta);
                     $result->execute([":usuario" => $usuario, ":id" => $id]);
                     if (!$result) {
-                        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                     } elseif ($result->fetchColumn() > 0) {
                         print "    <p class=\"aviso\">Ya existe un registro con ese nombre de usuario. "
                             . "No se ha guardado la modificación.</p>\n";

@@ -35,7 +35,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaPersonas
 $result = $db->prepare($consulta);
 $result->execute([":id_persona" => $id_persona]);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p class=\"aviso\">La persona seleccionada no existe.</p>\n";
 } else {
@@ -47,7 +47,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaObras
 $result = $db->prepare($consulta);
 $result->execute([":id_obra" => $id_obra]);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p class=\"aviso\">La obra seleccionada no existe.</p>\n";
 } else {
@@ -88,7 +88,7 @@ if ($id_personaOk && $id_obraOk && $prestadoOk && $devueltoOk) {
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($result->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
@@ -103,7 +103,7 @@ if ($id_personaOk && $id_obraOk && $prestadoOk && $devueltoOk) {
             $result->execute([":id_persona" => $id_persona, ":id_obra" => $id_obra,
                 ":id"                       => $id, ]);
             if (!$result) {
-                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";

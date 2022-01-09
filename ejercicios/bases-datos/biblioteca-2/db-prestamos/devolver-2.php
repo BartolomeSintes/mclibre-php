@@ -29,7 +29,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
 $result = $db->prepare($consulta);
 $result->execute([":id" => $id]);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p class=\"aviso\">El préstamo seleccionado no existe.</p>\n";
 } else {
@@ -51,7 +51,7 @@ if ($devuelto == "") {
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
     if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         $prestado = $result->fetchColumn();
         if ($prestado > $devuelto) {

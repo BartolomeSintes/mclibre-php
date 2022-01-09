@@ -21,7 +21,7 @@ cabecera("Préstamos - Añadir 1", MENU_PRESTAMOS, 1);
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos";
 $result   = $db->query($consulta);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() >= MAX_REG_TABLE_PRESTAMOS) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
@@ -32,9 +32,9 @@ if (!$result) {
     $consulta3 = "SELECT * FROM $tablaObras ORDER BY autor";
     $result3   = $db->query($consulta3);
     if (!$result2) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif (!$result3) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <p>Escriba los datos del nuevo préstamo:</p>\n";

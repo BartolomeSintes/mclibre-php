@@ -24,7 +24,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
     WHERE devuelto='0000-00-00'";
 $result = $db->query($consulta);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>No hay obras pendientes de devolución.</p>\n";
 } else {
@@ -42,7 +42,7 @@ if (!$result) {
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"devolver-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <p>Seleccione el préstamo pendiente e indique la fecha de devolución:</p>\n";

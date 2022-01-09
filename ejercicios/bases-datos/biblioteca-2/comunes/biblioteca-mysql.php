@@ -174,7 +174,7 @@ function existenTablas($db, $nombresTablas)
     $result   = $db->query($consulta);
     if (!$result) {
         $existe = false;
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {
         if ($result->fetchColumn() == 0) {
@@ -190,7 +190,7 @@ function existenTablas($db, $nombresTablas)
                 $result = $db->query($consulta);
                 if (!$result) {
                     $existe = false;
-                    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                     print "\n";
                 } else {
                     if ($result->fetchColumn() == 0) {

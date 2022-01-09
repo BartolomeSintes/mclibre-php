@@ -47,7 +47,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
         $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
         $result   = $db->query($consulta);
         if (!$result) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($result->fetchColumn() >= MAX_REG_TABLE_AGENDA) {
             print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
@@ -61,7 +61,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
             $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
                 ":telefono"             => $telefono, ]);
             if (!$result) {
-                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } elseif ($result->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">El registro ya existe.</p>\n";
             } else {

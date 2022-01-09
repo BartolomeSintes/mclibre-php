@@ -136,7 +136,7 @@ $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
 $result = $db->prepare($consulta);
 $result->execute([":prestado" => $fecha]);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p>Haga clic en los días del mes con enlaces para ver los préstamos realizados en ese día.</p>\n";
 } else {
@@ -155,7 +155,7 @@ if (!$result) {
     $result = $db->prepare($consulta);
     $result->execute([":prestado" => $fecha]);
     if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Listado completo de registros:</p>\n";
         print "\n";

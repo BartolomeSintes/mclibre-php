@@ -26,7 +26,7 @@ $consulta  = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
 $resultado = $pdo->query($consulta);
 
 if (!$resultado) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {

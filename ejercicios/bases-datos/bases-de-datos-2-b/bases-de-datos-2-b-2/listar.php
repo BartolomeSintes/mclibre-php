@@ -16,7 +16,7 @@ $ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";
 $result   = $db->query($consulta);
 if (!$result) {
-    print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
@@ -24,7 +24,7 @@ if (!$result) {
         ORDER BY $ordena";
     $result = $db->query($consulta);
     if (!$result) {
-        print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Listado completo de registros:</p>\n";
         print "\n";

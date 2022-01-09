@@ -56,7 +56,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
         $resultado = $pdo->query($consulta);
 
         if (!$resultado) {
-            print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($resultado->fetchColumn() >= $cfg["dbUsuariosmaxReg"]) {
             print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
@@ -68,7 +68,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
             $resultado->execute([":usuario" => $usuario]);
 
             if (!$resultado) {
-                print "    <p class=\"aviso\">Error en la consulta.</p>\n";
+                print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } elseif ($resultado->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
             } else {
