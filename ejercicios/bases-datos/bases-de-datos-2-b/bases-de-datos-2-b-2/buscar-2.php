@@ -26,7 +26,7 @@ $result->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%",
 if (!$result) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($result->fetchColumn() == 0) {
-    print "    <p>No se han encontrado registros.</p>\n";
+    print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
 } else {
     $consulta = "SELECT * FROM $tablaAgenda
         WHERE nombre LIKE :nombre
