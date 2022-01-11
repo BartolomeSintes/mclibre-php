@@ -21,7 +21,7 @@ cabecera("Borrar 1", MENU_PERSONAS, PROFUNDIDAD_1);
 $consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo->query($consulta);
 
-$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 $id     = recoge("id", []);
 
 if (!$resultado) {

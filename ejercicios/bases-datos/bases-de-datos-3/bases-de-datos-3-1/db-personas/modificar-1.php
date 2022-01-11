@@ -18,7 +18,7 @@ $pdo = conectaDb();
 
 cabecera("Modificar 1", MENU_PERSONAS, PROFUNDIDAD_1);
 
-$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 $id     = recoge("id", []);
 
 $consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";

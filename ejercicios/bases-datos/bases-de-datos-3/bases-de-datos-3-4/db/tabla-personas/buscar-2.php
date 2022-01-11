@@ -23,7 +23,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
-$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              WHERE nombre LIKE :nombre
