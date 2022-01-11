@@ -15,7 +15,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
-$ordena    = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
+$ordena    = recogeValores("ordena", $columnasAgendaOrden, "nombre ASC");
 
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda
     WHERE nombre LIKE :nombre

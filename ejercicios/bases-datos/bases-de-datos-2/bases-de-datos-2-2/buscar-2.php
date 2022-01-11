@@ -13,7 +13,7 @@ cabecera("Buscar 2", MENU_VOLVER);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
-$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              WHERE nombre LIKE :nombre

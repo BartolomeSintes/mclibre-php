@@ -11,9 +11,10 @@ $pdo = conectaDb();
 
 cabecera("Modificar 3", MENU_VOLVER);
 
-$nombre      = recoge("nombre");
-$apellidos   = recoge("apellidos");
-$id          = recoge("id");
+$nombre    = recoge("nombre");
+$apellidos = recoge("apellidos");
+$id        = recoge("id");
+
 $nombreOk    = false;
 $apellidosOk = false;
 

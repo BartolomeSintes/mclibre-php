@@ -11,7 +11,7 @@ $db = conectaDb();
 
 cabecera("Borrar 1", MENU_VOLVER);
 
-$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
+$ordena = recogeValores("ordena", $columnasAgendaOrden, "nombre ASC");
 $id     = recoge("id", []);
 
 $consulta = "SELECT COUNT(*) FROM $tablaAgenda";

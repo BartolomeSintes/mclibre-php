@@ -18,7 +18,7 @@ $db = conectaDb();
 
 cabecera("Personas - Modificar 1", MENU_PERSONAS, 1);
 
-$ordena = recogeValores("ordena", $columnasPersonasOrden, "apellidos ASC");
+$ordena = recogeValores("ordena", $columnasPersonasOrden, "nombre ASC");
 $id     = recoge("id");
 
 $consulta = "SELECT COUNT(*) FROM $tablaPersonas";

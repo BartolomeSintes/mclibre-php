@@ -26,7 +26,7 @@ $prestado_1 = recoge("prestado_1");
 $prestado_2 = recoge("prestado_2");
 $devuelto_1 = recoge("devuelto_1");
 $devuelto_2 = recoge("devuelto_2");
-$ordena     = recogeValores("ordena", $columnasPrestamosOrden, "apellidos ASC");
+$ordena     = recogeValores("ordena", $columnasPrestamosOrden, "nombre ASC");
 
 // El número de parámetros en execute debe coincidir con el número de parámetros en la consulta.
 $consultaPrestado = "";

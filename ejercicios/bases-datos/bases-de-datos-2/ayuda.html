@@ -25,7 +25,6 @@
       <ul>
         <li><a href="#ejercicio-1">1 - Comprobaciones</a></li>
         <li><a href="#ejercicio-2">2 - Mejoras</a></li>
-        <li><a href="#ejercicio-3">3 - Ampliaciones</a></li>
       </ul>
     </div>
   </nav>
@@ -55,7 +54,7 @@ $pdo = null;</code>
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
   ...</code>
 </pre>
@@ -82,7 +81,7 @@ if (!$resultado) {
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasmaxReg"]) {
     print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
     print "\n";
@@ -116,7 +115,7 @@ if (!$resultado) {
         $resultado = $pdo-&gt;query($consulta);
 
         if (!$resultado) {
-            print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+            print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasmaxReg"]) {
             print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
             print "\n";
@@ -139,7 +138,7 @@ if (!$resultado) {
             $resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos]);
 
             if (!$resultado) {
-                print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+                print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
             } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
                 print "    &lt;p class=\"aviso\"&gt;El registro ya existe.&lt;/p&gt;\n";
             } else {
@@ -161,7 +160,7 @@ if (!$resultado) {
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } elseif ($resultado-&gt;fetchColumn() == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
@@ -217,9 +216,9 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } elseif ($resultado-&gt;fetchColumn() == 0) {
-    print "    &lt;p&gt;No se han encontrado registros.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;No se han encontrado registros.&lt;/p&gt;\n";
 } else {
   ...</code>
 </pre>
@@ -257,17 +256,17 @@ if ($id == "") {
 
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                 WHERE id=:id";
-    $resultado = $pdo-&gt;prepare($consulta);
-    $resultado-&gt;execute([":id" =&gt; $id]);
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                     WHERE id=:id";
+        $resultado = $pdo-&gt;prepare($consulta);
+        $resultado-&gt;execute([":id" =&gt; $id]);
 
-    if (!$resultado) {
-        print "    &lt;p class=\"aviso\"&gt;Error en la consulta.&lt;/p&gt;\n";
-    } elseif ($resultado-&gt;fetchColumn() == 0) {
-        print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
-    } else {
-      ...</code>
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif ($resultado-&gt;fetchColumn() == 0) {
+            print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
+        } else {
+          ...</code>
 </pre>
             </div>
           </li>
@@ -286,24 +285,23 @@ if ($id == "") {
 
             <div class="codigo">
               <pre>
-<code class="language-php">// La consulta cuenta los registros con un id diferente porque MySQL no distingue
-// mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
-// minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-$consulta = "SELECT COUNT(*) FROM $tablaAgenda
-    WHERE nombre=:nombre
-    AND apellidos=:apellidos
-    AND id&lt;&gt;:id";
-$resultado = $db-&gt;prepare($consulta);
-$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);
-if (!$resultado) {
-    print "    &lt;p&gt;Error en la consulta.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($resultado-&gt;fetchColumn()&gt;0) {
-    print "    &lt;p&gt;Ya existe un registro con esos mismos valores. "
-        . "No se ha guardado la modificación.&lt;/p&gt;\n";
-    print "\n";
-} else {
-  ...</code>
+<code class="language-php">            // La consulta cuenta los registros con un id diferente porque MySQL no distingue
+            // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
+            // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
+            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                         WHERE nombre=:nombre
+                         AND apellidos=:apellidos
+                         AND id&lt;&gt;:id";
+            $resultado = $pdo-&gt;prepare($consulta);
+            $resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);
+
+            if (!$resultado) {
+                print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+                print "    &lt;p class=\"aviso\"&gt;Ya existe un registro con esos mismos valores. "
+                    . "No se ha guardado la modificación.&lt;/p&gt;\n";
+            } else {
+              ...</code>
 </pre>
             </div>
           </li>
@@ -314,32 +312,38 @@ if (!$resultado) {
 
   <section id="ejercicio-2">
     <h2>Bases de datos (2) 2 - Mejoras</h2>
+
+    <p>En cualquier listado en forma de tabla, queremos poder ordenar los registros en un orden determinado (por cualquier columna, en orden ascendente o descendente).</p>
+
+    <p>Para ello deberíamos incluir un ORDER BY en las consultas que seleccionan los registros. Por ejemplo:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$consulta  = "SELECT * FROM $cfg[dbPersonasTabla]
+              ORDER BY $ordena";</code>
+</pre>
+    </div>
+
+    <p>La columna y el orden deberían haberse recogido previamente. Al tratarse de un dato proporcionado por el usuario, por seguridad deberían utilizarse consultas preparadas, pero los nombres de columnas no se pueden proporcionar como parámetros. Para resolver este problema, utilizaremos una función de recogida especial que comprobará si el dato recibido es uno de los valores posibles (los valores posibles son los nombres de las columnas y el tipo de ordenación, ASC o DESC). En caso de no recibir un valor de ordenación o recibir un valor incorrecto, se asignará un valor predeterminado.</p>
+
+    <p>La función recogeValores() tendrá tres argumentos: el campo a recoger, una matriz con los valores posibles y el valor predeterminado de ordenación. En el ejemplo siguiente, el valor predeterminado es listar por orden alfabético del nombre:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");</code>
+</pre>
+    </div>
+
     <ul>
-      <li>Listados ordenables (listar.php, borrar-1.php, buscar-2.php, modificar-1.php)
+      <li>biblioteca.php
 
-        <p>En cualquier listado en forma de tabla, permita ordenar los registros en un orden determinado (por cualquier columna, en orden ascendente o descendente).</p>
-        <p>Para ello la consulta que selecciona todos los registros podría incluir un ORDER BY</p>
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">$consulta = "SELECT * FROM $tablaAgenda
-    ORDER BY $ordena";</code>
-</pre>
-        </div>
-        <p>La columna y el orden deberían haberse recogido previamente (en el ejemplo siguiente, se les da valores predeterminados para que la primera vez que se listan los registros se haga por orden alfabético del apellido):</p>
+        <p>En biblioteca.php la función recogeValores() y la matriz de valores posibles podrían ser las siguientes:</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");</code>
-</pre>
-        </div>
-        <p>La función recogeValores() podría ser la siguiente:</p>
+<code class="language-php">// Valores de ordenación de la tabla
 
-        <div class="codigo">
-          <pre>
-<code class="language-php">// Valores de ordenación de las tablas
-
-$columnasAgendaOrden = [
+$cfg["dbPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
 ];
@@ -347,7 +351,7 @@ $columnasAgendaOrden = [
 function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
     foreach ($valoresValidos as $valorValido) {
-        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $valorValido) {
+        if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $valorValido) {
             return $valorValido;
         }
     }
@@ -355,93 +359,94 @@ function recogeValores($var, $valoresValidos, $valorPredeterminado)
 }</code>
 </pre>
         </div>
+      </li>
+      <li>listar.php, borrar-1.php, buscar-2.php, modificar-1.php
+        <p>Para ofrecer al usuario la posibilidad de ordenar los registros, podemos insertar en cada una de las cabeceras de cada columna de la tabla dos imágenes de flechas: <img src="../../../img/ejercicios/bases-de-datos/abajo.svg" alt="A-Z" title="A-Z" width="15" height="12"> y <img src="../../../img/ejercicios/bases-de-datos/arriba.svg" alt="Z-A" title="Z-A" width="15" height="12">, a ambos lados de los nombres de las columnas.</p>
 
-        <p>En la cabecera de la tabla se insertarían las imágenes de las flechas en dos botones la columna y el orden solicitado (en el ejemplo siguiente ordenaría por la columna nombre de forma ascendente o descendente). Las imágenes (arriba.svg y abajo.svg) se encuentran en las plantillas.</p>
+        <p>Para que al hacer clic en las imágenes, se actualice el contenido, cada imagen estará contenida en un botón que envíe el criterio de ordenación deseado.</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">print "            &lt;th&gt;\n";
-print "              &lt;button name=\"ordena\" value=\"nombre ASC\" class=\"boton-invisible\"&gt;\n";
-print "                &lt;img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";
-print "              &lt;/button&gt;\n";
-print "              Nombre\n";
-print "              &lt;button name=\"ordena\" value=\"nombre DESC\" class=\"boton-invisible\"&gt;\n";
-print "                &lt;img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\"&gt;\n";
-print "              &lt;/button&gt;\n";
-print "            &lt;/th&gt;\n";</code>
+<code class="language-php">        print "            &lt;th&gt;\n";
+        print "              &lt;button name=\"ordena\" value=\"nombre ASC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "              Nombre\n";
+        print "              &lt;button name=\"ordena\" value=\"nombre DESC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "            &lt;/th&gt;\n";</code>
 </pre>
         </div>
 
-        <p>En el caso de las páginas listar.php y buscar-2.php, el formulario necesita enviar la información a la propia página, para reordenar el resultado.</p>
-
-        <p>En el caso de las páginas borrar-1.php y modificar-1.php, el formulario necesita enviar la información a dos páginas distintas:</p>
+        <p>Por tanto, estas páginas deben incluir un formulario.</p>
         <ul>
-          <li>Si el usuario simplemente quiere reordenar los registros, el formulario debe enviar la información a la propia página.</li>
-          <li>Pero si el usuario quiere borrar o modificar, el formulario debe enviar la información a la página siguiente (borrar-2.php y modificar-2.php).</li>
+          <li>En el caso de las páginas listar.php y buscar-2.php, el formulario necesita enviar la información a la propia página, para reordenar el resultado.
+
+            <p>Para conseguirlo, el atributo <span class="html-atri">action</span> del formulario señalará a la propia página. Para referirse a la propia página se puede escribir su nombre o utilizar la variable predefinida <a href="../../../lecciones/php-variables-predefinidas.html#server">$_SERVER[PHP_SELF]</a>:</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        print "    &lt;form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\"&gt;\n";</code>
+</pre>
+            </div>
+            <p>Además, en el caso de la búsqueda (buscar-2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda, por lo que los añadiremos en controles ocultos:</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        print "      &lt;p&gt;\n";
+        print "        &lt;input type=\"hidden\" name=\"nombre\" value=\"$nombre\"&gt;\n";
+        print "        &lt;input type=\"hidden\" name=\"apellidos\" value=\"$apellidos\"&gt;\n";
+        print "      &lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+          <li>En el caso de las páginas borrar-1.php y modificar-1.php, el formulario necesita enviar la información a dos páginas distintas:
+            <ul>
+              <li>Si el usuario simplemente quiere reordenar los registros, el formulario debe enviar la información a la propia página.</li>
+              <li>Pero si el usuario quiere borrar o modificar, el formulario debe enviar la información a la página siguiente (borrar-2.php y modificar-2.php).</li>
+            </ul>
+
+            <p>Para conseguirlo, el botón Enviar de las páginas borrar-1.php y modificar-1.php incluirá el atributo <span class="html-atri">formaction</span>, que permite enviar la información a una página distinta de la indicada por el atributo <span class="html-atri">action</span> del formulario.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        print "      &lt;p&gt;\n";
+        print "        &lt;input type=\"submit\" value=\"Borrar registro\" formaction=\"borrar-2.php\"&gt;\n";
+        print "        &lt;input type=\"reset\" value=\"Reiniciar formulario\"&gt;\n";
+        print "      &lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
         </ul>
-
-        <p>Para conseguirlo, el atributo <span class="html-atri">action</span> del formulario señalará a la propia página:</p>
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">print "    &lt;form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\"&gt;\n";</code>
-</pre>
-        </div>
-
-        <p>En el caso de las páginas borrar-1.php y modificar-1.php, el botón Enviar del formulario incluirá el atributo <span class="html-atri">formaction</span>, que permite enviar la información a una página distinta de la indicada por el atributo <span class="html-atri">action</span> del formulario.</p>
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">print "      &lt;p&gt;\n";
-print "        &lt;input type=\"submit\" value=\"Borrar registro\" formaction=\"borrar-2.php\"&gt;\n";
-print "        &lt;input type=\"reset\" value=\"Reiniciar formulario\"&gt;\n";
-print "      &lt;/p&gt;\n";</code>
-</pre>
-        </div>
-
-        <p>En el caso de la búsqueda (buscar-2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda, por lo que los añadiremos en controles ocultos:</p>
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">print "      &lt;p&gt;\n";
-print "        &lt;input type=\"hidden\" name=\"nombre\" value=\"$nombre\"&gt;\n";
-print "        &lt;input type=\"hidden\" name=\"apellidos\" value=\"$apellidos\"&gt;\n";
-print "      &lt;/p&gt;\n";</code>
-</pre>
-        </div>
 
         <p>Las páginas borrar-1.php y modificar-1.php deberían recoger también las casillas de verificación y los botones radio, para que si se marcan algunas casillas o botones y se reordenan los registros, se puedan mantener marcadas las casillas ya marcadas.</p>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$ordena = recogeValores("ordena", $columnasAgendaOrden, "apellidos ASC");
-$id     = recoge("id", []);
+<code class="language-php">$id = recoge("id", []);
 
-foreach ($resultado as $valor) {
-    print "          &lt;tr&gt;\n";
-    if (isset($id[$valor["id"]])) {
-        print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\" checked&gt;&lt;/td&gt;\n";
-    } else {
-        print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\"&gt;&lt;/td&gt;\n";
-    }
-    print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
-    print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
-    print "          &lt;/tr&gt;\n";
-}</code>
+...
+
+        foreach ($resultado as $valor) {
+            print "          &lt;tr&gt;\n";
+            if (isset($id[$valor["id"]])) {
+                print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\" checked&gt;&lt;/td&gt;\n";
+            } else {
+                print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\"&gt;&lt;/td&gt;\n";
+            }
+            print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
+            print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+            print "          &lt;/tr&gt;\n";
+        }</code>
 </pre>
         </div>
       </li>
     </ul>
   </section>
 
-  <section id="ejercicio-3">
-    <h2>Bases de datos (2) 3 - Ampliaciones</h2>
-
-    <p>No hay comentarios para este ejercicio.</p>
-  </section>
-
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de diciembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 11 de enero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -11,7 +11,7 @@ $pdo = conectaDb();
 
 cabecera("Listar", MENU_VOLVER);
 
-$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 
 $consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo->query($consulta);
@@ -21,8 +21,8 @@ if (!$resultado) {
 } elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta  = "SELECT * FROM $cfg[dbPersonasTabla]
-                  ORDER BY $ordena";
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+                 ORDER BY $ordena";
     $resultado = $pdo->query($consulta);
 
     if (!$resultado) {
