@@ -36,14 +36,18 @@ function conectaDb()
     try {
         if ($dbMotor == MYSQL) {
             $db = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+            $db->exec("set session sql_mode='ALLOW_INVALID_DATES'");
         } elseif ($dbMotor == SQLITE) {
             $db = new PDO("sqlite:$dbDb");
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+            $db->query("PRAGMA foreign_keys = ON");
+            $db->query("PRAGMA encoding = 'UTF-8'");
         }
         return $db;
     } catch (PDOException $e) {
-        print "          <li>Error: No puede conectarse con la base de datos.</li>\n";
-        print "          <li>Error: " . $e->getMessage() . "</li>\n";
+        print "          <li>Error: No puede conectarse con la base de datos.{$e->getMessage()}</li>\n";
         print "        </ol>\n";
     }
 }
@@ -52,32 +56,32 @@ function borraTodoMySQL($db)
 {
     global $dbDb, $dbTabla;
 
-    print "<li>Borrado y creación de tabla en MySQL:\n";
-    print "  <ul>\n";
+    print "          <li>Borrado y creación de tabla en MySQL:\n";
+    print "            <ul>\n";
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "           <li>Base de datos borrada correctamente.</li>\n";
+        print "              <li>Base de datos borrada correctamente.</li>\n";
     } else {
-        print "           <li>Error al borrar la base de datos.</li>\n";
+        print "              <li>Error al borrar la base de datos.</li>\n";
     }
     $consulta = "CREATE DATABASE $dbDb";
     if ($db->query($consulta)) {
-        print "           <li>Base de datos creada correctamente.</li>\n";
+        print "              <li>Base de datos creada correctamente.</li>\n";
         $consultaCreaTabla = "CREATE TABLE $dbTabla (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
             fecha DATE,
             PRIMARY KEY(id)
             )";
         if ($db->query($consultaCreaTabla)) {
-            print "            <li>Tabla creada correctamente.</li>\n";
+            print "              <li>Tabla creada correctamente.</li>\n";
         } else {
-            print "            <li>Error al crear la tabla.</li>\n";
+            print "              <li>Error al crear la tabla.</li>\n";
         }
     } else {
-        print "            <li>Error al crear la base de datos.</li>\n";
+        print "              <li>Error al crear la base de datos.</li>\n";
     }
-    print "          </ul>\n";
-    print "        </li>\n";
+    print "            </ul>\n";
+    print "          </li>\n";
 }
 
 function borraTodoSqlite($db)
@@ -101,6 +105,7 @@ function borraTodoSqlite($db)
     } else {
         print "              <li>Error al crear la tabla de Préstamos.</li>\n";
     }
+    print "              <li>&nbsp;</li>\n";
     print "            </ul>\n";
     print "          </li>\n";
 }
@@ -123,6 +128,15 @@ function pruebaDb() {
         print "              <li>Error al crear el registro.<li>\n";
     }
     $fecha = "";
+    print "              <li>Fecha a insertar: $fecha</li>\n";
+    $consulta = "INSERT INTO $dbTabla
+        VALUES (NULL, '$fecha')";
+    if ($db->query($consulta)) {
+        print "              <li>Registro creado correctamente.</li>\n";
+    } else {
+        print "              <li>Error al crear el registro.<li>\n";
+    }
+    $fecha = date("Y") . "-00-00";
     print "              <li>Fecha a insertar: $fecha</li>\n";
     $consulta = "INSERT INTO $dbTabla
         VALUES (NULL, '$fecha')";
@@ -184,7 +198,7 @@ print "    <tr>\n";
 print "      <td>\n";
 print "        <h2>SQLite</h2>\n";
 $dbMotor = SQLITE;
-$dbDb    = "/tmp/mclibre_db-diferencias.sqlite";  // Nombre de la base de datos
+$dbDb    = "/tmp/mclibre-db-diferencias.sqlite";  // Nombre de la base de datos
 $dbTabla = "fecha";             // Nombre de la tabla
 print "        <ol>\n";
 $db = conectaDb();
@@ -196,7 +210,7 @@ print "      <td>\n";
 // Prueba con MySQL
 print "        <h2>MySQL</h2>\n";
 $dbMotor = MYSQL;
-$dbDb    = "mclibre_db-diferencias";     // Nombre de la base de datos
+$dbDb    = "mclibre_db_diferencias";     // Nombre de la base de datos
 $dbTabla = $dbDb . ".fecha";      // Nombre de la tabla
 print "        <ol>\n";
 $db = conectaDb();
@@ -212,7 +226,7 @@ print "\n";
 print "  <footer>\n";
 print "    <p class=\"ultmod\">\n";
 print "      Última modificación de esta página:\n";
-print "      <time datetime=\"2010-04-20\">20 de abril de 2010</time>\n";
+print "      <time datetime=\"2022-01-10\">10 de enero de 2022</time>\n";
 print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";

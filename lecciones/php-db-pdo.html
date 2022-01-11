@@ -70,6 +70,32 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
       </div>
     </section>
 
+    <section id="basicos-errores">
+      <h3>Manejo de errores de PDO</h3>
+
+      <p>PDO permite elegir al usuario entre tres formas distintas de <a href="https://www.php.net/manual/en/pdo.error-handling.php">gestionar los errores</a> encontrados al realizar las consultas (normalmente por errores de sintaxis):</p>
+      <ul>
+        <li>PDO::ERRMODE_SILENT
+          <p>En este modo, los errores de PDO no interrumpen la ejecución del programa, simplemente se guardan y se pueden consultar mediante los métodos <a href="https://www.php.net/manual/en/pdo.errorcode.php">errorCode()</a> y <a href="https://www.php.net/manual/en/pdo.errorinfo.php">errorInfo</a>. Si utilizamos este modo, nuestro programa tiene que encargarse de comprobar tras cada consulta si ha habido un error y tenerlo en cuenta.</p>
+        </li>
+        <li>PDO::ERRMODE_WARNING
+          <p>En este modo, PDO además de guardar los errores genera un aviso de tipo E_WARNING que, dependiendo de la <a href="../otros/php-configuracion-1.html#error-reporting">configuración de error_reporting</a>, se mostrará o no en pantalla.</p>
+        </li>
+        <li>PDO::ERRMODE_EXCEPTION
+        <p>En este modo, PDO genera una excepción de clase <a href="https://www.php.net/manual/en/class.pdoexception.php">PDOException</a>. Si utilizamos este modo, nuestro programa tiene que gestionar las excepciones, porque si no el programa se interrumpe con un error E_ERROR.</p>
+        </li>
+      </ul>
+
+      <p>Hasta PHP 8.0, publicado en 2020, el modo predeterminado era ERRMODE_SILENT, pero desde esa versión es ERRMODE_EXCEPTION. En estos apuntes se utiliza el modo PDO::ERRMODE_SILENT, que se puede abordar con simples estructuras if  .. else ..., mientras que el modo PDO::ERRMODE_EXCEPTION requiere estructuras try ... catch ... que no se tratan actualmente en estos apuntes.</p>
+
+      <p>El modo de manejo de errores se selecciona activando el atributo PDO::ATTR_ERRMODE tras conectarse con la base de datos, como se comenta más adelante en esta lección en el apartado dedicado a la conexión con la base de datos:</p>
+      <div class="codigo">
+        <pre>
+<code class="language-php">      $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);</code>
+</pre>
+      </div>
+    </section>
+
     <section id="basicos-ejecucion">
       <h3>Ejecución de las consultas</h3>
 
@@ -126,6 +152,18 @@ if (!$resultado) {
         </li>
       </ul>
 
+      <p>Cuando la consulta falle, es conveniente mostrar al usuario el motivo del fallo. Para ello, podemos utilizar los métodos <a href="https://www.php.net/manual/en/pdo.errorcode.php">errorCode()</a> y <a href="https://www.php.net/manual/en/pdo.errorinfo.php">errorInfo()</a>. errorCode() devuelve el código de error <a href="https://en.wikipedia.org/wiki/SQLSTATE" title="SQLSTATE en Wikipedia">SQLSTATE</a> definido en la norma ANSI SQL. errorInfo() devuelve una matriz con el código de error SQLSTATE, el código de error específico del driver y el mensaje de error específico del driver.</p>
+
+      <p>En los ejemplos y soluciones de ejercicios de estos apuntes cuando se produce un error se muestra un mensaje en español y a continuación el código de error SQLSTATE y el mensaje de error específico del driver.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";</code>
+</pre>
+      </div>
+
+      <hr class="corta">
+
       <p>En los ejemplos anteriores se ha escrito la consulta en la llamada al método, pero es habitual definir una variable $consulta que contenga la consulta y utilizar esa variable en la llamada al método:</p>
 
       <div class="codigo">
@@ -166,7 +204,7 @@ $consulta  = "SELECT COUNT(*) FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
@@ -188,7 +226,7 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado -&gt;execute(["<i>:id</i>" =&gt; $valor);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     $valor = $resultado-&gt;fetch();
@@ -210,7 +248,7 @@ $consulta  = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
@@ -278,7 +316,7 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute();
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
@@ -310,7 +348,7 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1, ":valor2" =&gt; $valor2])</span>;
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
@@ -340,7 +378,7 @@ $resultado = $cfg-&gt;prepare($consulta);
 $resultado-&gt;<span class="codigo-resaltado">execute([$valor1, $valor2])</span>;
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
@@ -405,7 +443,7 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1])</span>;
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     ...</code>
@@ -500,7 +538,9 @@ function conectaDb()
 
     try {
         $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp-&gt;query("PRAGMA foreign_keys = ON");
+        $tmp-&gt;query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
@@ -537,6 +577,7 @@ function conectaDb()
 
     try {
         $tmp = new PDO($cfg["mysqlHost"], $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp-&gt;exec("set names utf8mb4");
         return $tmp;
@@ -786,7 +827,7 @@ $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
@@ -807,7 +848,7 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado -&gt;execute([":id" = &gt; $id);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     $valor = $resultado-&gt;fetch();
@@ -832,7 +873,7 @@ $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
@@ -926,7 +967,7 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
@@ -948,7 +989,7 @@ $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
 
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
@@ -983,7 +1024,7 @@ $consulta = "SELECT
              ORDER BY $columna $orden";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     print "\n";
 } else {
    ...</code>
