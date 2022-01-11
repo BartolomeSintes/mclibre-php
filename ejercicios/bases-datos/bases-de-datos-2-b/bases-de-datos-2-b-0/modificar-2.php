@@ -48,14 +48,6 @@ if ($id == "") {
             print "            <td>Apellidos:</td>\n";
             print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\" value=\"$valor[apellidos]\"></td>\n";
             print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Teléfono:</td>\n";
-            print "            <td><input type=\"text\" name=\"telefono\" size=\"$cfg[dbPersonasTamTelefono]\" maxlength=\"$cfg[dbPersonasTamTelefono]\" value=\"$valor[telefono]\"></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Correo:</td>\n";
-            print "            <td><input type=\"text\" name=\"correo\" size=\"$cfg[dbPersonasTamCorreo]\" maxlength=\"$cfg[dbPersonasTamCorreo]\" value=\"$valor[correo]\"></td>\n";
-            print "          </tr>\n";
             print "        </tbody>\n";
             print "      </table>\n";
             print "\n";

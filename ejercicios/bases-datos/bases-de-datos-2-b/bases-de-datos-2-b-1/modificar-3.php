@@ -7,77 +7,89 @@
 
 require_once "biblioteca.php";
 
-$db = conectaDb();
+$pdo = conectaDb();
 
 cabecera("Modificar 3", MENU_VOLVER);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
+$telefono  = recoge("telefono");
 $id        = recoge("id");
 
 $nombreOk    = false;
 $apellidosOk = false;
+$telefonoOk  = false;
 
-if (mb_strlen($nombre, "UTF-8") > $tamAgendaNombre) {
-    print "    <p class=\"aviso\">El nombre no puede tener más de $tamAgendaNombre caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $cfg["dbPersonasTamNombre"]) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[dbPersonasTamNombre] caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $tamAgendaApellidos) {
-    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $tamAgendaApellidos caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $cfg["dbPersonasTamApellidos"]) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[dbPersonasTamApellidos] caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
-if ($nombreOk && $apellidosOk) {
+if (mb_strlen($telefono, "UTF-8") > $cfg["dbPersonasTamTelefono"]) {
+    print "    <p class=\"aviso\">El teléfono no puede tener más de $cfg[dbPersonasTamTelefono] caracteres.</p>\n";
+    print "\n";
+} else {
+    $telefonoOk = true;
+}
+
+if ($nombreOk && $apellidosOk && $telefonoOk) {
     if ($id == "") {
         print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
-    } elseif ($nombre == "" && $apellidos == "") {
+    } elseif ($nombre == "" && $apellidos == "" && $telefono == "") {
         print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $tablaAgenda
-            WHERE id=:id";
-        $result = $db->prepare($consulta);
-        $result->execute([":id" => $id]);
-        if (!$result) {
+        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                     WHERE id=:id";
+        $resultado = $pdo->prepare($consulta);
+        $resultado->execute([":id" => $id]);
+
+        if (!$resultado) {
             print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif ($result->fetchColumn() == 0) {
+        } elseif ($resultado->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
             // La consulta cuenta los registros con un id diferente porque MySQL no distingue
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-            $consulta = "SELECT COUNT(*) FROM $tablaAgenda
-                WHERE nombre=:nombre
-                AND apellidos=:apellidos
-                AND id<>:id";
-            $result = $db->prepare($consulta);
-            $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                ":id"                   => $id, ]);
-            if (!$result) {
+            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                         WHERE nombre=:nombre
+                         AND apellidos=:apellidos
+                         AND telefono=:telefono
+                         AND id<>:id";
+            $resultado = $pdo->prepare($consulta);
+            $resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":id" => $id]);
+
+            if (!$resultado) {
                 print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif ($result->fetchColumn() > 0) {
+            } elseif ($resultado->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                     . "No se ha guardado la modificación.</p>\n";
             } else {
-                $consulta = "UPDATE $tablaAgenda
-                    SET nombre=:nombre, apellidos=:apellidos
-                    WHERE id=:id";
-                $result = $db->prepare($consulta);
-                if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
-                    ":id" => $id, ])) {
-                    print "    <p>Registro modificado correctamente.</p>\n";
+                $consulta = "UPDATE $cfg[dbPersonasTabla]
+                             SET nombre=:nombre, apellidos=:apellidos,
+                                 telefono=:telefono
+                             WHERE id=:id";
+                $resultado = $pdo->prepare($consulta);
+
+                if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":id" => $id])) {
+                    print "    <p class=\"aviso\">Error al modificar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                 } else {
-                    print "    <p class=\"aviso\">Error al modificar el registro.</p>\n";
+                    print "    <p>Registro modificado correctamente.</p>\n";
                 }
             }
         }
     }
 }
 
-$db = null;
+$pdo = null;
 
 pie();

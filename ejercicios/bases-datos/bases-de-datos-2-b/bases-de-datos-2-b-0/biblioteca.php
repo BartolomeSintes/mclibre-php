@@ -24,16 +24,12 @@ require_once "config.php";
 
 $cfg["dbPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas > Nombre
 $cfg["dbPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas > Apellidos
-$cfg["dbPersonasTamTelefono"]  = 10;        // Tamaño de la columna Personas > Teléfono
-$cfg["dbPersonasTamCorreo"]    = 50;        // Tamaño de la columna Personas > Correo
 
 // Valores de ordenación de la tabla
 
 $cfg["dbPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
-    "telefono ASC", "telefono DESC",
-    "correo ASC", "correo DESC",
 ];
 
 // Carga Biblioteca específica de la base de datos utilizada
@@ -78,7 +74,7 @@ function cabecera($texto, $menu)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Bases de datos (2) 3. Bases de datos (2).\n";
+    print "    $texto. Bases de datos (2 B) 0. Bases de datos (2 B).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -87,7 +83,7 @@ function cabecera($texto, $menu)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Bases de datos (2) 3 - $texto</h1>\n";
+    print "    <h1>Bases de datos (2 B) 0 - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
@@ -117,7 +113,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-01-10\">10 de enero de 2022</time>\n";
+    print "      <time datetime=\"2022-01-11\">11 de enero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

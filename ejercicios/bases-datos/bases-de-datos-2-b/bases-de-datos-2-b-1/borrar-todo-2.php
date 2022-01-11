@@ -12,11 +12,12 @@ if (!isset($_REQUEST["si"])) {
     exit();
 }
 
-$db = conectaDb();
+$pdo = conectaDb();
 
 cabecera("Borrar todo 2", MENU_VOLVER);
-borraTodo($db, $tablaAgenda, $consultaCreaTabla);
 
-$db = null;
+borraTodo();
+
+$pdo = null;
 
 pie();

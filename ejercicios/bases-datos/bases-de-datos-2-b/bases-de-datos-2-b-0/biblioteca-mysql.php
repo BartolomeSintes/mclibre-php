@@ -60,8 +60,6 @@ function borraTodo()
                      id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
                      nombre VARCHAR($cfg[dbPersonasTamNombre]),
                      apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                     telefono VARCHAR($cfg[dbPersonasTamTelefono]),
-                     correo VARCHAR($cfg[dbPersonasTamCorreo]),
                      PRIMARY KEY(id)
                      )";
 

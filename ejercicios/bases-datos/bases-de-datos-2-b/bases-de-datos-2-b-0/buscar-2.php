@@ -13,17 +13,13 @@ cabecera("Buscar 2", MENU_VOLVER);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
-$telefono  = recoge("telefono");
-$correo    = recoge("correo");
-$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "apellidos ASC");
+$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              WHERE nombre LIKE :nombre
-             AND apellidos LIKE :apellidos
-             AND telefono LIKE :telefono
-             AND correo LIKE :correo";
+             AND apellidos LIKE :apellidos";
 $resultado = $pdo->prepare($consulta);
-$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
+$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
 
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -33,11 +29,9 @@ if (!$resultado) {
     $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
                  WHERE nombre LIKE :nombre
                  AND apellidos LIKE :apellidos
-                 AND telefono LIKE :telefono
-                 AND correo LIKE :correo
                  ORDER BY $ordena";
     $resultado = $pdo->prepare($consulta);
-    $resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
+    $resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"]);
 
     if (!$resultado) {
         print "    <p class=\"aviso\">Error al seleccionar los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -71,24 +65,6 @@ if (!$resultado) {
         print "                <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
         print "              </button>\n";
         print "            </th>\n";
-        print "            <th>\n";
-        print "              <button name=\"ordena\" value=\"telefono ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
-        print "              </button>\n";
-        print "              Teléfono\n";
-        print "              <button name=\"ordena\" value=\"telefono DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
-        print "              </button>\n";
-        print "            </th>\n";
-        print "            <th>\n";
-        print "              <button name=\"ordena\" value=\"correo ASC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
-        print "              </button>\n";
-        print "              Correo\n";
-        print "              <button name=\"ordena\" value=\"correo DESC\" class=\"boton-invisible\">\n";
-        print "                <img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
-        print "              </button>\n";
-        print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
         print "        <tbody>\n";
@@ -96,8 +72,6 @@ if (!$resultado) {
             print "          <tr>\n";
             print "            <td>$valor[nombre]</td>\n";
             print "            <td>$valor[apellidos]</td>\n";
-            print "            <td>$valor[telefono]</td>\n";
-            print "            <td>$valor[correo]</td>\n";
             print "          </tr>\n";
         }
         print "        </tbody>\n";

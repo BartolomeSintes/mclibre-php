@@ -5,21 +5,27 @@
  * @link      https://www.mclibre.org
  */
 
-// Base de datos utilizada por la aplicación: MYSQL o SQLITE
+// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 
-$dbMotor = SQLITE;                   // Valores posibles: MYSQL o SQLITE
+// Base de datos utilizada por la aplicación
 
-// Configuración Tabla Personas
+$cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
 
-define("MAX_REG_TABLE_AGENDA", 20);  // Número máximo de registros en la tabla Agenda
-$tamAgendaNombre    = 40;          // Tamaño de la columna Personas > Nombre
-$tamAgendaApellidos = 60;          // Tamaño de la columna Personas > Apellidos
-$tamAgendaTelefono  = 10;          // Tamaño de la columna Personas > Teléfono
+// Configuración para SQLite
+
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-2-b-2.sqlite";    // Ubicación de la base de datos
+
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlUser"]     = "mclibre_base_datos_2_b_2";         // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_2_b_2";         // Nombre de la base de datos
 
 // Método de envío de formularios
 
-define("FORM_METHOD", GET);          // Valores posibles: GET o POST
+$cfg["formMethod"] = GET;                                   // Valores posibles: GET o POST
 
-// Hoja de estilo
+// Otras configuraciones
 
-define("COLOR", 27);                 // Color básico de la aplicación (0 - 360)
+$cfg["dbPersonasmaxReg"] = 20;                              // Número máximo de registros en la tabla Personas

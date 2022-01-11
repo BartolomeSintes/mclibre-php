@@ -9,7 +9,7 @@ require_once "biblioteca.php";
 
 cabecera("Borrar todo 1", MENU_VOLVER);
 
-print "    <form action=\"borrar-todo-2.php\" method=\"" . FORM_METHOD . "\">\n";
+print "    <form action=\"borrar-todo-2.php\" method=\"$cfg[formMethod]\">\n";
 print "      <p>¿Está seguro?</p>\n";
 print "\n";
 print "      <p>\n";
