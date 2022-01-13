@@ -28,10 +28,11 @@ $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
              WHERE usuario LIKE :usuario
              AND password LIKE :password
              AND nivel LIKE :nivel";
-$resultado = $pdo->prepare($consulta);
-$resultado->execute([":usuario" => "%$usuario%", ":password" => "%$password%", ":nivel" => "%$nivel%"]);
 
+$resultado = $pdo->prepare($consulta);
 if (!$resultado) {
+    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} elseif (!$resultado->execute([":usuario" => "%$usuario%", ":password" => "%$password%", ":nivel" => "%$nivel%"])) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
@@ -41,11 +42,12 @@ if (!$resultado) {
                  AND password LIKE :password
                  AND nivel LIKE :nivel
                  ORDER BY $ordena";
-    $resultado = $pdo->prepare($consulta);
-    $resultado->execute([":usuario" => "%$usuario%", ":password" => "%$password%", ":nivel" => "%$nivel%"]);
 
+    $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":usuario" => "%$usuario%", ":password" => "%$password%", ":nivel" => "%$nivel%"])) {
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>\n";

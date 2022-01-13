@@ -22,11 +22,12 @@ $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              AND apellidos LIKE :apellidos
              AND telefono LIKE :telefono
              AND correo LIKE :correo";
-$resultado = $pdo->prepare($consulta);
-$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
 
+$resultado = $pdo->prepare($consulta);
 if (!$resultado) {
-    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} elseif (!$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"])) {
+    print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
 } else {
@@ -36,11 +37,12 @@ if (!$resultado) {
                  AND telefono LIKE :telefono
                  AND correo LIKE :correo
                  ORDER BY $ordena";
-    $resultado = $pdo->prepare($consulta);
-    $resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"]);
 
+    $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>\n";

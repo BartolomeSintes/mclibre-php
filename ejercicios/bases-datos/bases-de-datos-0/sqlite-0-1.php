@@ -64,7 +64,9 @@ $consulta = "INSERT INTO $cfg[dbPersonasTabla]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 $resultado = $pdo->prepare($consulta);
-if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
+if (!$resultado) {
+    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
     print "    <p class=\"aviso\">Error al crear el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
@@ -80,8 +82,11 @@ $apellidos = "Conejo";
 $consulta = "UPDATE $cfg[dbPersonasTabla]
              SET nombre=:nombre, apellidos=:apellidos
              WHERE id=:id";
+
 $resultado = $pdo->prepare($consulta);
-if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
+if (!$resultado) {
+    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
     print "    <p class=\"aviso\">Error al modificar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
@@ -89,11 +94,10 @@ if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id
     print "\n";
 }
 
-
 //  CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo->query($consulta);
-if (!$resultado) {
+
+$resultado = $pdo->query($consulta);if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
@@ -103,8 +107,8 @@ if (!$resultado) {
 
 //  CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo->query($consulta);
-if (!$resultado) {
+
+$resultado = $pdo->query($consulta);if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
@@ -116,10 +120,34 @@ if (!$resultado) {
     print "    </ul>\n";
 }
 
+//  CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO) !!!! PREPARADA AUNQUE NO HAGA FALTA
+
+$nombre = "";        // Normalmente estos valores vendrán de un formulario
+
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+             WHERE nombre LIKE :nombre";
+$resultado = $pdo->prepare($consulta);
+if (!$resultado) {
+    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} else {
+    $resultado->execute([":nombre" => "%$nombre%"]);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "\n";
+    } else {
+        print "    <p><strong>Registro(s) obtenido(s) (consulta preparada)</strong></p>";
+        print "    <ul>\n";
+        foreach ($resultado as $valor) {
+            print "      <li>$valor[id] - $valor[nombre] - $valor[apellidos]</li>\n";
+        }
+        print "    </ul>\n";
+    }
+}
+
 // CONSULTA QUE DEVUELVE UN ÚNICO REGISTRO
 $consulta  = "SELECT * FROM $cfg[dbPersonasTabla] WHERE id=1";
-$resultado = $pdo->query($consulta);
-if (!$resultado) {
+
+$resultado = $pdo->query($consulta);if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
@@ -135,8 +163,11 @@ $id = [1 => "on"];     // Normalmente este valor vendrá de un formulario
 foreach ($id as $indice => $valor) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
+
     $resultado = $pdo->prepare($consulta);
-    if (!$resultado->execute([":indice" => $indice])) {
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":indice" => $indice])) {
         print "    <p class=\"aviso\">Error al borrar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {

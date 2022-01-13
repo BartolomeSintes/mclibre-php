@@ -22,9 +22,9 @@ cabecera("Usuarios - Modificar 1", MENU_USUARIOS, PROFUNDIDAD_2);
 $ordena = recogeValores("ordena", $cfg["dbUsuariosColumnasOrden"], "usuario ASC");
 $id     = recoge("id", []);
 
-$consulta  = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
-$resultado = $pdo->query($consulta);
+$consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
 
+$resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() == 0) {
@@ -32,10 +32,10 @@ if (!$resultado) {
 } else {
     $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
                  ORDER BY $ordena";
-    $resultado = $pdo->query($consulta);
 
+    $resultado = $pdo->query($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar todos los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Indique el registro que quiera modificar:</p>\n";

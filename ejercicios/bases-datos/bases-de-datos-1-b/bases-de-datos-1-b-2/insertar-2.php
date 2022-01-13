@@ -42,7 +42,7 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["dbPersonasTamTelefono"]) {
     $telefonoOk = true;
 }
 
-if (mb_strlen($correo, "UTF-8") > $cfg["dbPersonasTamCorreo"] ) {
+if (mb_strlen($correo, "UTF-8") > $cfg["dbPersonasTamCorreo"]) {
     print "    <p class=\"aviso\">El correo no puede tener más de $cfg[dbPersonasTamCorreo]  caracteres.</p>\n";
     print "\n";
 } else {
@@ -53,11 +53,12 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "INSERT INTO $cfg[dbPersonasTabla]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";
-    $resultado = $pdo->prepare($consulta);
 
-    if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => "$telefono", ":correo" => "$correo"])) {
-        print "    <p class=\"aviso\">Error al crear el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        print "\n";
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => "$telefono", ":correo" => "$correo"])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Registro creado correctamente.</p>\n";
         print "\n";

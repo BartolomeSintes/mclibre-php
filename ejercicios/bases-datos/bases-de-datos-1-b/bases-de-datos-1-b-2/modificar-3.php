@@ -55,14 +55,14 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                  SET nombre=:nombre, apellidos=:apellidos,
                      telefono=:telefono, correo=:correo
                  WHERE id=:id";
-    $resultado = $pdo->prepare($consulta);
 
-    if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":correo" => $correo, ":id" => $id])) {
-        print "    <p class=\"aviso\">Error al modificar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        print "\n";
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":correo" => $correo, ":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Registro modificado correctamente.</p>\n";
-        print "\n";
     }
 }
 

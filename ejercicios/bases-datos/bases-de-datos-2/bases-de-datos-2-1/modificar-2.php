@@ -18,21 +18,23 @@ if ($id == "") {
 } else {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                  WHERE id=:id";
-    $resultado = $pdo->prepare($consulta);
-    $resultado->execute([":id" => $id]);
 
+    $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif ($resultado->fetchColumn() == 0) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
         $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
                      WHERE id=:id";
-        $resultado = $pdo->prepare($consulta);
-        $resultado->execute([":id" => $id]);
 
+        $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
-            print "    <p class=\"aviso\">Error al seleccionar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } elseif (!$resultado->execute([":id" => $id])) {
+            print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             $valor = $resultado->fetch();
             print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";

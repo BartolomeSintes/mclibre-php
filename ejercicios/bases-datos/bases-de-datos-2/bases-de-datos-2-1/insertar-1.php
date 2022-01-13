@@ -11,9 +11,9 @@ $pdo = conectaDb();
 
 cabecera("Añadir 1", MENU_VOLVER);
 
-$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo->query($consulta);
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 
+$resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() >= $cfg["dbPersonasmaxReg"]) {

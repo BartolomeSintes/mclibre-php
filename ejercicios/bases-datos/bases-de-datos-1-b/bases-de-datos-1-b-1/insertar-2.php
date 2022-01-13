@@ -44,9 +44,11 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
     $consulta = "INSERT INTO $cfg[dbPersonasTabla]
                  (nombre, apellidos, telefono)
                  VALUES (:nombre, :apellidos, :telefono)";
-    $resultado = $pdo->prepare($consulta);
 
-    if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => "$telefono"])) {
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => "$telefono"])) {
         print "    <p class=\"aviso\">Error al crear el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         print "\n";
     } else {

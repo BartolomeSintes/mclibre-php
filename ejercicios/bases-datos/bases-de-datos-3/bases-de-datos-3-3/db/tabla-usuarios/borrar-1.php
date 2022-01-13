@@ -19,9 +19,9 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Borrar 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
-$consulta  = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
-$resultado = $pdo->query($consulta);
+$consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
 
+$resultado = $pdo->query($consulta);
 $ordena = recogeValores("ordena", $cfg["dbUsuariosColumnasOrden"], "usuario ASC");
 $id     = recoge("id", []);
 
@@ -35,7 +35,7 @@ if (!$resultado) {
     $resultado = $pdo->query($consulta);
 
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar todos los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Marque los registros que quiera borrar:</p>\n";

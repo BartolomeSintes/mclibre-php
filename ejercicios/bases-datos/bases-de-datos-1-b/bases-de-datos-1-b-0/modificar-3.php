@@ -36,14 +36,14 @@ if ($nombreOk && $apellidosOk) {
     $consulta = "UPDATE $cfg[dbPersonasTabla]
                  SET nombre=:nombre, apellidos=:apellidos
                  WHERE id=:id";
-    $resultado = $pdo->prepare($consulta);
 
-    if (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
-        print "    <p class=\"aviso\">Error al modificar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        print "\n";
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Registro modificado correctamente.</p>\n";
-        print "\n";
     }
 }
 

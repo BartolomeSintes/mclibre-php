@@ -17,13 +17,13 @@ if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
-             WHERE id=:id";
-    $resultado = $pdo->prepare($consulta);
-    $resultado->execute([":id" => $id]);
+                 WHERE id=:id";
 
+    $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        print "\n";
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         $valor = $resultado->fetch();
         print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";

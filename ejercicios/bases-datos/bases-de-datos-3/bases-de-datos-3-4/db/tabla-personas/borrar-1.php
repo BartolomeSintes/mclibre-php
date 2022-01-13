@@ -19,12 +19,12 @@ $pdo = conectaDb();
 
 cabecera("Personas - Borrar 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
-$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo->query($consulta);
-
 $ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 $id     = recoge("id", []);
 
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+$resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() == 0) {
@@ -32,10 +32,10 @@ if (!$resultado) {
 } else {
     $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
                  ORDER BY $ordena";
-    $resultado = $pdo->query($consulta);
 
+    $resultado = $pdo->query($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al seleccionar todos los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Marque los registros que quiera borrar:</p>\n";

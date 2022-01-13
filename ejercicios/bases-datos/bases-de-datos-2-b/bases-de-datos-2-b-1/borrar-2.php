@@ -19,20 +19,23 @@ if (count($id) == 0) {
     foreach ($id as $indice => $valor) {
         $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                      WHERE id=:indice";
-        $resultado = $pdo->prepare($consulta);
-        $resultado->execute([":indice" => $indice]);
 
+        $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
-            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } elseif (!$resultado->execute([":indice" => $indice])) {
+            print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($resultado->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
             $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                          WHERE id=:indice";
-            $resultado = $pdo->prepare($consulta);
 
-            if (!$resultado->execute([":indice" => $indice])) {
-                print "    <p class=\"aviso\">Error al borrar el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            $resultado = $pdo->prepare($consulta);
+            if (!$resultado) {
+                print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            } elseif (!$resultado->execute([":indice" => $indice])) {
+                print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
                 print "    <p>Registro borrado correctamente.</p>\n";
             }

@@ -11,11 +11,11 @@ $pdo = conectaDb();
 
 cabecera("Borrar 1", MENU_VOLVER);
 
-$consulta  = "SELECT * FROM $cfg[dbPersonasTabla] ";
-$resultado = $pdo->query($consulta);
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 
+$resultado = $pdo->query($consulta);
 if (!$resultado) {
-    print "    <p class=\"aviso\">Error al seleccionar todos los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } else {
     print "    <form action=\"borrar-2.php\" method=\"$cfg[formMethod]\">\n";
     print "      <p>Marque los registros que quiera borrar:</p>\n";
