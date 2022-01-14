@@ -12,7 +12,7 @@ session_start();
 
 if (isset($_SESSION["conectado"])) {
     header("Location:../index.php");
-    exit();
+    exit;
 }
 
 $usuario  = recoge("usuario");
@@ -20,11 +20,11 @@ $password = recoge("password");
 
 if ($usuario != $cfg["rootName"] || encripta($password) != $cfg["rootPassword"]) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
-    exit();
+    exit;
 }
 
 $_SESSION["conectado"] = true;
 
 header("Location:../index.php");
 
-exit();
+exit;

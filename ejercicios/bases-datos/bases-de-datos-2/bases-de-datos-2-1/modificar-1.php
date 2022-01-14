@@ -23,7 +23,7 @@ if (!$resultado) {
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"modificar-2.php\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Indique el registro que quiera modificar:</p>\n";

@@ -12,35 +12,39 @@ session_start();
 
 if (isset($_SESSION["conectado"])) {
     header("Location:../index.php");
-    exit();
+    exit;
 }
+
+$pdo = conectaDb();
 
 $usuario  = recoge("usuario");
 $password = recoge("password");
 
-$pdo = conectaDb();
-
 if (!$usuario) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
-    exit();
+    exit;
 }
 
 $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
              WHERE usuario=:usuario
              AND password=:password";
-$resultado = $pdo->prepare($consulta);
-$resultado->execute([":usuario" => $usuario, ":password" => encripta($password)]);
 
+$resultado = $pdo->prepare($consulta);
 if (!$resultado) {
-    header("Location:login-1.php?aviso=Error: Error en la consulta.");
-    exit();
+    header("Location:login-1.php?aviso=Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    exit;
+}
+
+$resultado->execute([":usuario" => $usuario, ":password" => encripta($password)]);
+if (!$resultado) {
+    header("Location:login-1.php?aviso=Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    exit;
 }
 
 $valor = $resultado->fetch();
-
 if (!is_array($valor)) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
-    exit();
+    exit;
 }
 
 $_SESSION["conectado"] = $valor["nivel"];

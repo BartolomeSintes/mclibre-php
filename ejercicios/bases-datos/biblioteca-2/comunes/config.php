@@ -21,11 +21,11 @@ $tamUsuariosUsuario         = 20;         // Tamaño de la columna Usuarios > No
 $tamUsuariosPasswordCifrado = HASH_SIZE;  // Tamaño de la columna Usuarios > Contraseña de Usuario cifrada
 $tamUsuariosPassword        = 20;         // Tamaño de la Contraseña de Usuario en el formulario
 
-// Configuración Tabla Personas
+// Configuración de la tabla Personas
 
 define("MAX_REG_TABLE_PERSONAS", 20);     // Número máximo de registros en la tabla Personas
-$tamPersonasNombre    = 40;               // Tamaño de la columna Personas > Nombre
-$tamPersonasApellidos = 60;               // Tamaño de la columna Personas > Apellidos
+$tamPersonasNombre    = 40;                               // Tamaño de la columna Personas > Nombre
+$tamPersonasApellidos = 60;                               // Tamaño de la columna Personas > Apellidos
 $tamPersonasDni       = 9;                // Tamaño de la columna Personas > DNI
 
 // Configuración Tabla Obras
@@ -59,7 +59,7 @@ define("COLOR", 27);                      // Color básico de la aplicación (0 
 
 // Nombre de sesión
 
-define("SESSION_NAME", "biblioteca");       // Nombre de sesión
+define("SESSION_NAME", "biblioteca");            // Nombre de sesión
 
 // Zona horaria
 

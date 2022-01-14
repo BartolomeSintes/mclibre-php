@@ -31,10 +31,10 @@ if (!$resultado) {
 } else {
     $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
                  ORDER BY $ordena";
-    $resultado = $pdo->query($consulta);
 
+    $resultado = $pdo->query($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Listado completo de registros:</p>\n";
         print "\n";

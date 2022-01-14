@@ -22,11 +22,21 @@ $cfg["mysqlUser"]     = "mclibre_base_datos_3_1";           // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "mclibre_base_datos_3_1";           // Nombre de la base de datos
 
+// Configuración de la tabla Personas
+
+$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas > Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas > Apellidos
+$cfg["dbPersonasTamTelefono"]  = 10;                        // Tamaño de la columna Personas > Teléfono
+$cfg["dbPersonasTamCorreo"]    = 50;                        // Tamaño de la columna Personas > Correo
+
+// Número máximo de registros en las tablas
+
+$cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
+
+// Nombre de sesión
+
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión
+
 // Método de envío de formularios
 
 $cfg["formMethod"] = GET;                                   // Valores posibles: GET o POST
-
-// Otras configuraciones
-
-$cfg["dbPersonasmaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
-$cfg["sessionName"]      = "mclibre-bases-de-datos-3-1";    // Nombre de sesión

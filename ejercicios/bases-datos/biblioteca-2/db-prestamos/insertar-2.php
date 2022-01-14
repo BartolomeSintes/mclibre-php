@@ -90,7 +90,7 @@ if ($id_personaOk && $id_obraOk && $prestadoOk) {
                 ":prestado" => $prestado, ])) {
                 print "    <p>Registro creado correctamente.</p>\n";
             } else {
-                print "    <p class=\"aviso\">Error al crear el registro.</p>\n";
+                print "    <p class=\"aviso\">Error al ejecutar la consulta.</p>\n";
             }
         }
     }

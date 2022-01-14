@@ -29,12 +29,12 @@ if (!$resultado) {
 } elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
-    $consulta  = "SELECT * FROM $cfg[dbUsuariosTabla]
-                  ORDER BY $ordena";
-    $resultado = $pdo->query($consulta);
+    $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+                 ORDER BY $ordena";
 
+    $resultado = $pdo->query($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Listado completo de registros:</p>\n";
         print "\n";

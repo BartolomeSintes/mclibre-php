@@ -16,7 +16,7 @@ if (!isset($_SESSION["conectado"])) {
 
 if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
-    exit();
+    exit;
 }
 
 $pdo = conectaDb();

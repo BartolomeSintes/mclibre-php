@@ -9,8 +9,8 @@ $cfg["sqliteDatabase"] = "tmp.sqlite";                        // Ubicación de l
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
 $cfg["dbPersonasTabla"]        = "personas";                      // Nombre de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                          // Tamaño de la columna Personas > Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                          // Tamaño de la columna Personas > Apellidos
+$cfg["dbPersonasTamNombre"]    = 40;                                          // Tamaño de la columna Personas > Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                                          // Tamaño de la columna Personas > Apellidos
 
 // SQLITE: CONEXIÓN CON LA BASE DE DATOS
 function conectaDb()
@@ -67,7 +67,7 @@ $resultado = $pdo->prepare($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
-    print "    <p class=\"aviso\">Error al crear el registro. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
     print "    <p>Registro creado correctamente.</p>\n";

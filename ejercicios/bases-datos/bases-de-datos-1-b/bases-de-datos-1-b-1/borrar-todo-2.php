@@ -9,7 +9,7 @@ require_once "biblioteca.php";
 
 if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
-    exit();
+    exit;
 }
 
 $pdo = conectaDb();

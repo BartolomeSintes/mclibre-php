@@ -103,9 +103,9 @@ function existenTablas()
 
     $existe = true;
 
-    $consulta  = "SELECT count(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$cfg[mysqlDatabase]'";
-    $resultado = $pdo->query($consulta);
+    $consulta = "SELECT count(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$cfg[mysqlDatabase]'";
 
+    $resultado = $pdo->query($consulta);
     if (!$resultado) {
         $existe = false;
         print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -117,12 +117,13 @@ function existenTablas()
             foreach ($cfg["dbTablas"] as $tabla) {
                 // En information_schema.tables los nombres de las tablas no llevan el nombre
                 // de la base de datos, así que lo elimino
-                $tabla    = str_replace("$cfg[mysqlDatabase].", "", $tabla);
+                $tabla = str_replace("$cfg[mysqlDatabase].", "", $tabla);
+
                 $consulta = "SELECT count(*) FROM information_schema.tables
                              WHERE table_schema = '$cfg[mysqlDatabase]'
                              AND table_name = '$tabla'";
-                $resultado = $pdo->query($consulta);
 
+                $resultado = $pdo->query($consulta);
                 if (!$resultado) {
                     $existe = false;
                     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";

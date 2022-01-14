@@ -12,7 +12,7 @@ session_start();
 
 if (isset($_SESSION["conectado"])) {
     header("Location:../index.php");
-    exit();
+    exit;
 }
 
 cabecera("Login 1", MENU_VOLVER, PROFUNDIDAD_1);
@@ -22,6 +22,7 @@ if ($aviso) {
     print "    <p class=\"aviso\">$aviso</p>\n";
     print "\n";
 }
+
 print "    <form action=\"login-2.php\" method=\"$cfg[formMethod]\">\n";
 print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
 print "\n";

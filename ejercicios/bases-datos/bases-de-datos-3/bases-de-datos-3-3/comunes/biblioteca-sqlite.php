@@ -42,7 +42,6 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-
     } else {
         print "    <p>Tabla Usuarios borrada correctamente (si existía).</p>\n";
     }
@@ -52,7 +51,6 @@ function borraTodo()
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-
     } else {
         print "    <p>Tabla Personas borrada correctamente (si existía).</p>\n";
     }
@@ -102,9 +100,9 @@ function existenTablas()
     $existe = true;
 
     foreach ($cfg["dbTablas"] as $tabla) {
-        $consulta  = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
-        $resultado = $pdo->query($consulta);
+        $consulta = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
 
+        $resultado = $pdo->query($consulta);
         if (!$resultado) {
             $existe = false;
             print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";

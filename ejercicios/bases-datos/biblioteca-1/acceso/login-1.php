@@ -30,6 +30,7 @@ if ($aviso) {
     print "    <p class=\"aviso\">$aviso</p>\n";
     print "\n";
 }
+
 print "    <form action=\"login-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
 print "\n";

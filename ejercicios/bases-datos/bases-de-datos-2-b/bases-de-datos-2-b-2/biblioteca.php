@@ -20,13 +20,6 @@ define("MENU_VOLVER", 2);                   // Menú Volver a inicio
 
 require_once "config.php";
 
-// Configuración Tabla Personas
-
-$cfg["dbPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas > Nombre
-$cfg["dbPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas > Apellidos
-$cfg["dbPersonasTamTelefono"]  = 10;        // Tamaño de la columna Personas > Teléfono
-$cfg["dbPersonasTamCorreo"]    = 50;        // Tamaño de la columna Personas > Correo
-
 // Valores de ordenación de la tabla
 
 $cfg["dbPersonasColumnasOrden"] = [
@@ -117,7 +110,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-01-13\">13 de enero de 2022</time>\n";
+    print "      <time datetime=\"2022-01-14\">14 de enero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

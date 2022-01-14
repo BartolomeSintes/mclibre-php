@@ -22,6 +22,18 @@ $cfg["mysqlUser"]     = "mclibre_base_datos_3_4";           // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "mclibre_base_datos_3_4";           // Nombre de la base de datos
 
+// Configuración de la tabla Personas
+
+$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas > Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas > Apellidos
+$cfg["dbPersonasTamTelefono"]  = 10;                        // Tamaño de la columna Personas > Teléfono
+$cfg["dbPersonasTamCorreo"]    = 50;                        // Tamaño de la columna Personas > Correo
+
+// Número máximo de registros en las tablas
+
+$cfg["dbUsuariosmaxReg"] = 20;                              // Número máximo de registros en la tabla Usuarios
+$cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
+
 // Usuario de la aplicación
 
 $cfg["rootName"]      = "root";                             // Nombre del Usuario Administrador de la aplicación
@@ -30,12 +42,10 @@ $cfg["hashAlgorithm"] = "sha256";                           // Algoritmo hash pa
                                                             // Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php
 $cfg["rootPasswordModificable"] = false;                    // Contraseña del usuario Administrador se puede cambiar o no
 
+// Nombre de sesión
+
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión
+
 // Método de envío de formularios
 
 $cfg["formMethod"] = GET;                                   // Valores posibles: GET o POST
-
-// Otras configuraciones
-
-$cfg["dbUsuariosmaxReg"] = 20;                              // Número máximo de registros en la tabla Usuarios
-$cfg["dbPersonasmaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
-$cfg["sessionName"]      = "mclibre-bases-de-datos-3-4";    // Nombre de sesión
