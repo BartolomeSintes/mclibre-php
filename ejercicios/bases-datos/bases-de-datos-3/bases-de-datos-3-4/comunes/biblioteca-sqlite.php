@@ -5,16 +5,14 @@
  * @link      https://www.mclibre.org
  */
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS SQLITE
 
-// Base de datos
+// SQLITE: Nombres de las tablas
 
 $cfg["dbPersonasTabla"] = "personas";                       // Nombre de la tabla Personas
 $cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabla Usuarios
 
-// Funciones específicas de bases de datos (SQLite)
-
-// SQLITE: CONEXIÓN CON LA BASE DE DATOS
+// SQLITE: Conexión con la base de datos
 
 function conectaDb()
 {
@@ -32,7 +30,7 @@ function conectaDb()
     }
 }
 
-// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
+// SQLITE: Consultas de borrado y creación de tablas
 
 function borraTodo()
 {

@@ -109,8 +109,6 @@ $consultasCreaTabla = [
     )",
 ];
 
-// Funciones específicas de bases de datos (MYSQL)
-
 function conectaDb()
 {
     try {

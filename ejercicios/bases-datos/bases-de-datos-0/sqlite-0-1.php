@@ -6,13 +6,13 @@ print "<h1>Pruebas SQLite copiado de apuntes</h1>";
 // Configuración para SQLite
 $cfg["sqliteDatabase"] = "tmp.sqlite";                        // Ubicación de la base de datos
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS SQLITE
 // Base de datos
 $cfg["dbPersonasTabla"]        = "personas";                      // Nombre de la tabla Personas
 $cfg["dbPersonasTamNombre"]    = 40;                                          // Tamaño de la columna Personas > Nombre
 $cfg["dbPersonasTamApellidos"] = 60;                                          // Tamaño de la columna Personas > Apellidos
 
-// SQLITE: CONEXIÓN CON LA BASE DE DATOS
+// SQLITE: Conexión con la base de datos
 function conectaDb()
 {
     global $cfg;

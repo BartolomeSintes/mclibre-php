@@ -3,15 +3,13 @@
  * @author Escriba aquí su nombre
  */
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS MYSQL
 
-// Base de datos
+// MYSQL: Nombres de las tablas
 
 $cfg["dbPersonasTabla"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
 
-// Funciones específicas de bases de datos (MYSQL)
-
-// MYSQL: CONEXIÓN CON LA BASE DE DATOS
+// MYSQL: Conexión con la base de datos
 
 function conectaDb()
 {
@@ -29,7 +27,7 @@ function conectaDb()
     }
 }
 
-// MYSQL: CONSULTAS DE BORRADO Y CREACiÓN DE BASE DE DATOS Y TABLA
+// MYSQL: Consultas de borrado y creación de base de datos y tablas
 
 function borraTodo()
 {
