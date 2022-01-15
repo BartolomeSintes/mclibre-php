@@ -20,7 +20,7 @@ $pdo = conectaDb();
 cabecera("Usuarios - Modificar 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $ordena = recogeValores("ordena", $cfg["dbUsuariosColumnasOrden"], "usuario ASC");
-$id     = recoge("id", []);
+$id     = recoge("id");
 
 $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
 

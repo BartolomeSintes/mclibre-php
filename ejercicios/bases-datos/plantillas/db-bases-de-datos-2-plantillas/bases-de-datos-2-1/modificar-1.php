@@ -9,9 +9,9 @@ $pdo = conectaDb();
 
 cabecera("Modificar 1", MENU_VOLVER);
 
-$consulta  = "SELECT * FROM $cfg[dbPersonasTabla] ";
-$resultado = $pdo->query($consulta);
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla] ";
 
+$resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error al seleccionar todos los registros. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } else {

@@ -18,11 +18,11 @@ $pdo = conectaDb();
 cabecera("Personas - Modificar 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
 $ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
-$id     = recoge("id", []);
+$id     = recoge("id");
 
-$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
 $resultado = $pdo->query($consulta);
-
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif ($resultado->fetchColumn() == 0) {

@@ -17,9 +17,9 @@ $pdo = conectaDb();
 
 cabecera("Personas - Borrar 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
-$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo->query($consulta);
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 
+$resultado = $pdo->query($consulta);
 $ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 $id     = recoge("id", []);
 

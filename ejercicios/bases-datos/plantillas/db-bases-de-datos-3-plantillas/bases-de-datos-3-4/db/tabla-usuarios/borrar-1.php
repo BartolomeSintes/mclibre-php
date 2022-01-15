@@ -18,8 +18,8 @@ $pdo = conectaDb();
 cabecera("Usuarios - Borrar 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $consulta  = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
-$resultado = $pdo->query($consulta);
 
+$resultado = $pdo->query($consulta);
 $ordena = recogeValores("ordena", $cfg["dbUsuariosColumnasOrden"], "usuario ASC");
 $id     = recoge("id", []);
 
