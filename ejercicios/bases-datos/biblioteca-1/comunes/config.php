@@ -51,7 +51,7 @@ define("ROOT_PASSWORD", "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51
 
 // Método de envío de formularios
 
-define("FORM_METHOD", GET);               // Valores posibles: GET o POST
+define("FORM_METHOD", "get");               // Valores posibles: get o post
 
 // Hoja de estilo
 

@@ -49,10 +49,6 @@ $tamFecha             = 10;               // Longitud de una cadena de fecha (AA
 define("ROOT_NAME", "root");                                                                  // Usuario inicial: Nombre
 define("ROOT_PASSWORD", "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2");  // Usuario inicial: Contraseña
 
-// Método de envío de formularios
-
-define("FORM_METHOD", GET);               // Valores posibles: GET o POST
-
 // Hoja de estilo
 
 define("COLOR", 27);                      // Color básico de la aplicación (0 - 360)

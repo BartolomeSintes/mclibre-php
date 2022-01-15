@@ -30,4 +30,4 @@ $cfg["dbPersonasTamTelefono"]  = 10;                        // Tamaño de la col
 
 // Método de envío de formularios
 
-$cfg["formMethod"] = GET;                                   // Valores posibles: GET o POST
+$cfg["formMethod"] = "get";                                 // Valores posibles: get o post

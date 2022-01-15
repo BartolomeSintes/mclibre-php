@@ -50,7 +50,7 @@ $pdo = null;</code>
 
         <div class="codigo">
           <pre>
-<code class="language-php">$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
@@ -65,7 +65,7 @@ if (!$resultado) {
           <li>Defina una ocpión de configuración que contenga el máximo número de registros que puede contener la tabla de Personas.
 
             <div class="codigo">
-              <pre><code class="language-php">$cfg["dbPersonasmaxReg"] = 20;                              // Número máximo de registros en la tabla Personas</code></pre>
+              <pre><code class="language-php">$cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas</code></pre>
             </div>
           </li>
         </ul>
@@ -77,12 +77,12 @@ if (!$resultado) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasmaxReg"]) {
+} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasMaxReg"]) {
     print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
     print "\n";
     print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
@@ -111,12 +111,12 @@ if (!$resultado) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">        $consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
         $resultado = $pdo-&gt;query($consulta);
 
         if (!$resultado) {
             print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasmaxReg"]) {
+        } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasMaxReg"]) {
             print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
             print "\n";
             print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";
@@ -156,7 +156,7 @@ if (!$resultado) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta  = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 
 if (!$resultado) {

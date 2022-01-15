@@ -39,4 +39,4 @@ $cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión
 
 // Método de envío de formularios
 
-$cfg["formMethod"] = GET;                                   // Valores posibles: GET o POST
+$cfg["formMethod"] = "get";                                 // Valores posibles: get o post

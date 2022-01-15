@@ -1,0 +1,47 @@
+<?php
+/**
+ * @author Escriba aquí su nombre
+ */
+
+require_once "../comunes/biblioteca.php";
+
+session_name($cfg["sessionName"]);
+session_start();
+
+if (isset($_SESSION["conectado"])) {
+    header("Location:../index.php");
+    exit();
+}
+
+$usuario  = recoge("usuario");
+$password = recoge("password");
+
+$pdo = conectaDb();
+
+if (!$usuario) {
+    header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
+    exit();
+}
+
+$consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+             WHERE usuario=:usuario";
+$resultado = $pdo->prepare($consulta);
+$resultado->execute([":usuario" => $usuario]);
+
+if (!$resultado) {
+    header("Location:login-1.php?aviso=Error: Error en la consulta");
+    exit();
+}
+
+$valor = $resultado->fetch();
+
+if ($valor["password"] != encripta($password)) {
+    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
+    exit();
+}
+
+$_SESSION["conectado"] = true;
+
+$pdo = null;
+
+header("Location:../index.php");

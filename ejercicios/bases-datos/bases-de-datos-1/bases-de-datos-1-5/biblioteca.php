@@ -7,9 +7,6 @@
 
 // Constantes y variables configurables por el programador de la aplicación
 
-define("GET", "get");                       // Formularios se envían con GET
-define("POST", "post");                     // Formularios se envían con POST
-
 define("MYSQL", 1);                         // Base de datos MySQL
 define("SQLITE", 2);                        // Base de datos SQLITE
 
@@ -90,7 +87,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-01-14\">14 de enero de 2022</time>\n";
+    print "      <time datetime=\"2022-01-15\">15 de enero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

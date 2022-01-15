@@ -24,9 +24,6 @@
 
 // Constantes y variables globales
 
-define("GET",    "get");                   // Formularios se envían con GET
-define("POST",   "post");                  // Formularios se envían con POST
-
 define("MYSQL",          "MySQL");         // Base de datos MySQL
 define("SQLITE",         "SQLite");        // Base de datos SQLITE
 

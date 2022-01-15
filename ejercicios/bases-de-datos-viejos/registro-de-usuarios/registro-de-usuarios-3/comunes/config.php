@@ -56,4 +56,4 @@ $administradorPassword = "root";  // Password del usuario Administrador
 
 // Método de envío de formularios
 
-define("FORM_METHOD",    GET);     // Valores posibles: GET o POST
+define("FORM_METHOD",    "get");     // Valores posibles: get o post
