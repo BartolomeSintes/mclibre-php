@@ -19,7 +19,7 @@ $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!count($resultado = $resultado->fetchAll())) {
+} elseif (!count($registros = $resultado->fetchAll())) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
     print "    <p>Listado completo de registros:</p>\n";
@@ -58,11 +58,11 @@ if (!$resultado) {
     print "          </tr>\n";
     print "        </thead>\n";
     print "        <tbody>\n";
-    foreach ($resultado as $valor) {
+    foreach ($registros as $registro) {
         print "          <tr>\n";
-        print "            <td>$valor[nombre]</td>\n";
-        print "            <td>$valor[apellidos]</td>\n";
-        print "            <td>$valor[telefono]</td>\n";
+        print "            <td>$registro[nombre]</td>\n";
+        print "            <td>$registro[apellidos]</td>\n";
+        print "            <td>$registro[telefono]</td>\n";
         print "          </tr>\n";
     }
     print "        </tbody>\n";

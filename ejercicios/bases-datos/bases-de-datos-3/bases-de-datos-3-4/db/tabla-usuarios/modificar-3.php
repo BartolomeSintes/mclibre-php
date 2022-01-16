@@ -99,8 +99,8 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
             } elseif (!$resultado->execute([":id" => $id])) {
                 print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
-                $valor = $resultado->fetch();
-                if ($valor["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $valor["usuario"] != $usuario || $valor["nivel"] != $nivel)) {
+                $registro = $resultado->fetch();
+                if ($registro["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $registro["usuario"] != $usuario || $registro["nivel"] != $nivel)) {
                     print "    <p class=\"aviso\">Del usuario Administrador inicial sólo se puede cambiar la contraseña.</p>\n";
                 } else {
                     $consulta = "UPDATE $cfg[dbUsuariosTabla]

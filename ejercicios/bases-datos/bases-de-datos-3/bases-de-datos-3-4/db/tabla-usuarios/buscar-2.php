@@ -35,7 +35,7 @@ if (!$resultado) {
     print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif (!$resultado->execute([":usuario" => "%$usuario%", ":password" => "%$password%", ":nivel" => "%$nivel%"])) {
     print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!count($resultado = $resultado->fetchAll())) {
+} elseif (!count($registros = $resultado->fetchAll())) {
     print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
 } else {
     print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
@@ -80,11 +80,11 @@ if (!$resultado) {
     print "          </tr>\n";
     print "        </thead>\n";
     print "        <tbody>\n";
-    foreach ($resultado as $valor) {
+    foreach ($registros as $registro) {
         print "          <tr>\n";
-        print "            <td>$valor[usuario]</td>\n";
-        print "            <td>$valor[password]</td>\n";
-        print "            <td>" . array_search($valor["nivel"], $cfg["usuariosNiveles"]) . "</td>\n";
+        print "            <td>$registro[usuario]</td>\n";
+        print "            <td>$registro[password]</td>\n";
+        print "            <td>" . array_search($registro["nivel"], $cfg["usuariosNiveles"]) . "</td>\n";
         print "          </tr>\n";
     }
     print "        </tbody>\n";

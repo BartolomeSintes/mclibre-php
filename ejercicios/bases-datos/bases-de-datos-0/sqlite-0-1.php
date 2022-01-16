@@ -114,8 +114,8 @@ $resultado = $pdo->query($consulta);if (!$resultado) {
 } else {
     print "    <p><strong>Registro(s) obtenido(s)</strong></p>";
     print "    <ul>\n";
-    foreach ($resultado as $valor) {
-        print "      <li>$valor[id] - $valor[nombre] - $valor[apellidos]</li>\n";
+    foreach ($resultado as $registro) {
+        print "      <li>$registro[id] - $registro[nombre] - $registro[apellidos]</li>\n";
     }
     print "    </ul>\n";
 }
@@ -137,8 +137,8 @@ if (!$resultado) {
     } else {
         print "    <p><strong>Registro(s) obtenido(s) (consulta preparada)</strong></p>";
         print "    <ul>\n";
-        foreach ($resultado as $valor) {
-            print "      <li>$valor[id] - $valor[nombre] - $valor[apellidos]</li>\n";
+        foreach ($resultado as $registro) {
+            print "      <li>$registro[id] - $registro[nombre] - $registro[apellidos]</li>\n";
         }
         print "    </ul>\n";
     }
@@ -151,8 +151,8 @@ $resultado = $pdo->query($consulta);if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     print "\n";
 } else {
-    $valor = $resultado->fetch(PDO::FETCH_ASSOC);
-    print "    <p>$valor[id] - $valor[nombre] - etc.</p>\n";
+    $registro = $resultado->fetch(PDO::FETCH_ASSOC);
+    print "    <p>$registro[id] - $registro[nombre] - etc.</p>\n";
     print "\n";
 }
 
@@ -160,7 +160,7 @@ $resultado = $pdo->query($consulta);if (!$resultado) {
 $id = [1 => "on"];     // Normalmente este valor vendrá de un formulario
                        // en forma de matriz. Por ejemplo, [1 => "on", 3 => "on"]
 
-foreach ($id as $indice => $valor) {
+foreach ($id as $indice => $registro) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
 

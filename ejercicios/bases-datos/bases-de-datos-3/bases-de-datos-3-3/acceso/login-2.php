@@ -41,8 +41,8 @@ if (!$resultado) {
     exit;
 }
 
-$valor = $resultado->fetch();
-if (!is_array($valor)) {
+$registro = $resultado->fetch();
+if (!is_array($registro)) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
     exit;
 }

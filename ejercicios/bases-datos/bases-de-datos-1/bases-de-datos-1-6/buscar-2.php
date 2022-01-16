@@ -34,10 +34,10 @@ if (!$resultado) {
     print "        </tr>\n";
     print "      </thead>\n";
     print "      <tbody>\n";
-    foreach ($resultado as $valor) {
+    foreach ($resultado as $registro) {
         print "        <tr>\n";
-        print "          <td>$valor[nombre]</td>\n";
-        print "          <td>$valor[apellidos]</td>\n";
+        print "          <td>$registro[nombre]</td>\n";
+        print "          <td>$registro[apellidos]</td>\n";
         print "        </tr>\n";
     }
     print "      </tbody>\n";

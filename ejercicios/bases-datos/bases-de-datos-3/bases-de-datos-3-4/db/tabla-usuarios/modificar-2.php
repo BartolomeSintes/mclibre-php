@@ -32,9 +32,9 @@ if ($id == "") {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif (!$resultado->execute([":id" => $id])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif (!($valor = $resultado->fetch())) {
+    } elseif (!($registro = $resultado->fetch())) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
-    } elseif ($valor["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
+    } elseif ($registro["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
         print "    <p class=\"aviso\">Este usuario no se puede modificar.</p>\n";
     } else {
         print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";
@@ -44,7 +44,7 @@ if ($id == "") {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Usuario:</td>\n";
-        print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" value=\"$valor[usuario]\" autofocus></td>\n";
+        print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Contraseña:</td>\n";
@@ -54,8 +54,8 @@ if ($id == "") {
         print "            <td>Nivel:</td>\n";
         print "            <td>\n";
         print "              <select name=\"nivel\">\n";
-        foreach ($cfg["usuariosNiveles"] as $indice => $valor) {
-            print "                <option value=\"$valor\">$indice</option>\n";
+        foreach ($cfg["usuariosNiveles"] as $indice => $registro) {
+            print "                <option value=\"$registro\">$indice</option>\n";
         }
         print "              </select>\n";
         print "            </td>\n";

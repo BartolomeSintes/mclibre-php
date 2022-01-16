@@ -25,7 +25,7 @@ if ($id == "") {
     } elseif (!$resultado->execute([":id" => $id])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        $valor = $resultado->fetch();
+        $registro = $resultado->fetch();
         print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Modifique los campos que desee:</p>\n";
         print "\n";
@@ -33,15 +33,15 @@ if ($id == "") {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Nombre:</td>\n";
-        print "            <td><input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$valor[nombre]\" autofocus></td>\n";
+        print "            <td><input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Apellidos:</td>\n";
-        print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\" value=\"$valor[apellidos]\"></td>\n";
+        print "            <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\" value=\"$registro[apellidos]\"></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Teléfono:</td>\n";
-        print "            <td><input type=\"text\" name=\"telefono\" size=\"$cfg[dbPersonasTamTelefono]\" maxlength=\"$cfg[dbPersonasTamTelefono]\" value=\"$valor[telefono]\"></td>\n";
+        print "            <td><input type=\"text\" name=\"telefono\" size=\"$cfg[dbPersonasTamTelefono]\" maxlength=\"$cfg[dbPersonasTamTelefono]\" value=\"$registro[telefono]\"></td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";

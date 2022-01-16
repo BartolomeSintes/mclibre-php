@@ -36,7 +36,7 @@ if (!$resultado) {
     print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif (!$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%", ":telefono" => "%$telefono%", ":correo" => "%$correo%"])) {
     print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!count($resultado = $resultado->fetchAll())) {
+} elseif (!count($registros = $resultado->fetchAll())) {
     print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
 } else {
     print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
@@ -91,12 +91,12 @@ if (!$resultado) {
     print "          </tr>\n";
     print "        </thead>\n";
     print "        <tbody>\n";
-    foreach ($resultado as $valor) {
+    foreach ($registros as $registro) {
         print "          <tr>\n";
-        print "            <td>$valor[nombre]</td>\n";
-        print "            <td>$valor[apellidos]</td>\n";
-        print "            <td>$valor[telefono]</td>\n";
-        print "            <td>$valor[correo]</td>\n";
+        print "            <td>$registro[nombre]</td>\n";
+        print "            <td>$registro[apellidos]</td>\n";
+        print "            <td>$registro[telefono]</td>\n";
+        print "            <td>$registro[correo]</td>\n";
         print "          </tr>\n";
     }
     print "        </tbody>\n";
