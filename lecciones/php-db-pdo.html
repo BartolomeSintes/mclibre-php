@@ -73,7 +73,7 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
     <section id="basicos-errores">
       <h3>Manejo de errores de PDO</h3>
 
-      <p>PDO permite elegir al usuario entre tres formas distintas de <a href="https://www.php.net/manual/en/pdo.error-handling.php">gestionar los errores</a> encontrados al realizar las consultas (normalmente por errores de sintaxis):</p>
+      <p>PDO permite elegir al usuario entre tres formas distintas de <a href="https://www.php.net/manual/en/pdo.error-handling.php">gestionar los errores encontrado</a> al realizar las consultas (normalmente por errores de sintaxis de SQL):</p>
       <ul>
         <li>PDO::ERRMODE_SILENT
           <p>En este modo, los errores de PDO no interrumpen la ejecución del programa, simplemente se guardan y se pueden consultar mediante los métodos <a href="https://www.php.net/manual/en/pdo.errorcode.php">errorCode()</a> y <a href="https://www.php.net/manual/en/pdo.errorinfo.php">errorInfo</a>. Si utilizamos este modo, nuestro programa tiene que encargarse de comprobar tras cada consulta si ha habido un error y tenerlo en cuenta.</p>
@@ -82,11 +82,11 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
           <p>En este modo, PDO además de guardar los errores genera un aviso de tipo E_WARNING que, dependiendo de la <a href="../otros/php-configuracion-1.html#error-reporting">configuración de error_reporting</a>, se mostrará o no en pantalla.</p>
         </li>
         <li>PDO::ERRMODE_EXCEPTION
-        <p>En este modo, PDO genera una excepción de clase <a href="https://www.php.net/manual/en/class.pdoexception.php">PDOException</a>. Si utilizamos este modo, nuestro programa tiene que gestionar las excepciones, porque si no el programa se interrumpe con un error E_ERROR.</p>
+          <p>En este modo, PDO genera una excepción de clase <a href="https://www.php.net/manual/en/class.pdoexception.php">PDOException</a>. Si utilizamos este modo, nuestro programa tiene que gestionar las excepciones, porque si no el programa se interrumpe con un error E_ERROR.</p>
         </li>
       </ul>
 
-      <p>Hasta PHP 8.0, publicado en 2020, el modo predeterminado era ERRMODE_SILENT, pero desde esa versión es ERRMODE_EXCEPTION. En estos apuntes se utiliza el modo PDO::ERRMODE_SILENT, que se puede abordar con simples estructuras if  .. else ..., mientras que el modo PDO::ERRMODE_EXCEPTION requiere estructuras try ... catch ... que no se tratan actualmente en estos apuntes.</p>
+      <p>Hasta PHP 8.0, publicado en 2020, el modo predeterminado era ERRMODE_SILENT, pero desde esa versión es ERRMODE_EXCEPTION. En estos apuntes se utiliza el modo PDO::ERRMODE_SILENT, que se puede abordar con simples estructuras if .. else ..., mientras que el modo PDO::ERRMODE_EXCEPTION requiere estructuras try ... catch ... que no se tratan actualmente en estos apuntes.</p>
 
       <p>El modo de manejo de errores se selecciona activando el atributo PDO::ATTR_ERRMODE tras conectarse con la base de datos, como se comenta más adelante en esta lección en el apartado dedicado a la conexión con la base de datos:</p>
       <div class="codigo">
@@ -101,7 +101,7 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
 
       <p>Una vez realizada la conexión, las consultas SQL se realizar a través del objeto PDO. La ejecución de la consulta y el tratamiento de la respuesta se puede hacer de cuatro formas distintas, atendiendo a dos criterios:</p>
 
-      <p>Por un lado, se debe considerar si la consulta incluye información que nos ha llegado a través de un formulario.</p>
+      <p>Por un lado, se debe considerar si la consulta incluye información que nos ha llegado a través de un formulario. Por otro lado, se debe considerar si la consulta puede devolver registros:</p>
       <ul>
         <li>Si la consulta <strong>no</strong> incluye datos provinientes de un formulario, se puede utilizar el método <a href="https://www.php.net/manual/en/pdo.query.php"><span class="php-fun">PDO-&gt;query(<i>consulta</i>)</span></a>:
           <div class="codigo">
@@ -110,7 +110,37 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
 $pdo-&gt;query("<i>consulta</i>");</code>
 </pre>
           </div>
+
+          <ul>
+            <li>Si por el tipo de consulta de que se trata sabemos que la consulta <strong>no</strong> va a devolver registros, la consulta devolverá simplemente <span class="php-con">true</span> (si la consulta se realiza con éxito) o <span class="php-con">false</span> (si la consulta falla). En ese caso podemos utilizar directamente el resultado de la consulta en una estructura <span class="php-res">if ... else ...</span> para gestionar las tareas a realizar en cada caso. Conviene escribir la condición en negativo (con exclamación delante), para escribir en primer lugar el caso en el que la consulta falle, que normalmente contendrá menos líneas de programa:
+              <div class="codigo">
+                <pre>
+<code class="language-php">// EJECUCIÓN DE UNA CONSULTA QUE NO VA A DEVOLVER REGISTROS
+if (!$pdo-&gt;query("<i>consulta</i>")) {
+    ...    // Si la consulta falla
+} else {
+    ...    // Si la consulta se ejecuta correctamente
+}</code>
+</pre>
+              </div>
+            </li>
+            <li>Si la consulta puede devolver registros, devolverá <span class="php-con">false</span> (si la consulta falla) o cero, uno o varios registros. En ese caso conviene guardar el resultado de la consulta en una variable auxiliar y escribir la estructura <span class="php-res">if ... else ...</span> a partir de esa variable auxiliar:
+
+              <div class="codigo">
+                <pre>
+<code class="language-php">// EJECUCIÓN DE UNA CONSULTA QUE PUEDE DEVOLVER REGISTROS
+$resultado = $pdo-&gt;query("<i>consulta</i>")
+if (!$resultado) {
+    ...    // Si la consulta falla
+} else {
+    ...    // Si la consulta se ejecuta correctamente
+}</code>
+</pre>
+              </div>
+            </li>
+          </ul>
         </li>
+
         <li>Si la consulta <strong>sí</strong> incluye datos provinientes de un formulario, se deben utlizar consultas preparadas para evitar ataques de inyección SQL de los que el método query() no nos protege. El método para efectuar consultas es primero preparar la consulta con <a href="https://www.php.net/manual/en/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare(<i>consulta</i>)</span></a> y después ejecutarla con <span class="php-fun"><a href="https://www.php.net/manual/en/pdostatement.execute.php">PDO-&gt;execute(<i>[parámetros]</i>)</a></span>, que devuelve el resultado de la consulta.
           <div class="codigo">
             <pre>
@@ -119,31 +149,17 @@ $resultado = $pdo-&gt;prepare("<i>consulta</i>");
 $resultado-&gt;execute([<i>parámetros de la consulta</i>]);</code>
 </pre>
           </div>
-        </li>
-      </ul>
 
-      <p>Por otro lado, se debe considerar si la consulta puede devolver registros:</p>
-      <ul>
-        <li>Si por el tipo de consulta de que se trata sabemos que la consulta <strong>no</strong> va a devolver registros, la consulta (preparada o no) devolverá simplemente <span class="php-con">true</span> (si la consulta se realiza con éxito) o <span class="php-con">false</span> (si la consulta falla). En ese caso podemos utilizar directamente el resultado de la consulta en una estructura <span class="php-res">if ... else ...</span> para gestionar las tareas a realizar en cada caso. Conviene escribir la condición en negativo (con exclamación delante), para escribir en primer lugar el caso en el que la consulta falle, que normalmente contendrá menos líneas de programa:
-          <div class="codigo">
-            <pre>
-<code class="language-php">// EJECUCIÓN DE UNA CONSULTA QUE NO VA A DEVOLVER REGISTROS
-if (!$pdo-&gt;query("<i>consulta</i>")) {
-    ...        // Si la consulta falla
-} else {
-    ...        // Si la consulta se ejecuta correctamente
-}</code>
-</pre>
-          </div>
-        </li>
-        <li>Si la consulta puede devolver registros, devolverá <span class="php-con">false</span> (si la consulta falla) o cero, uno o varios registros. En ese caso conviene guardar el resultado de la consulta en una variable auxiliar y escribir la estructura <span class="php-res">if ... else ...</span> a partir de esa variable auxiliar:
+          <p>En este caso, independientemente de que la consulta devuelva a o no registros, debemos utilizar siempre una variable auxiliar y escribir la estructura <span class="php-res">if ... else ...</span> a partir de esa variable auxiliar, puesto que debemos comprobar si ha fallado tanto la preparación de la consulta como la ejecución de la sentencia preparada:</p>
 
           <div class="codigo">
             <pre>
-<code class="language-php">// EJECUCIÓN DE UNA CONSULTA QUE PUEDE DEVOLVER REGISTROS
-$resultado = $pdo-&gt;query("<i>consulta</i>")
+<code class="language-php">// EJECUCIÓN DE UNA CONSULTA PREPARARADA
+$resultado = $pdo-&gt;prepare("<i>consulta</i>")
 if (!$resultado) {
-    ...        // Si la consulta falla
+    ...        // Si la preparación de la consulta falla
+} elseif (!$resultado-&gt;execute([<i>parámetros de la consulta</i>]) {
+    ...        // Si la ejecución de la consulta falla
 } else {
     ...        // Si la consulta se ejecuta correctamente
 }</code>
@@ -151,6 +167,8 @@ if (!$resultado) {
           </div>
         </li>
       </ul>
+
+      <hr class="corta">
 
       <p>Cuando la consulta falle, es conveniente mostrar al usuario el motivo del fallo. Para ello, podemos utilizar los métodos <a href="https://www.php.net/manual/en/pdo.errorcode.php">errorCode()</a> y <a href="https://www.php.net/manual/en/pdo.errorinfo.php">errorInfo()</a>. errorCode() devuelve el código de error <a href="https://en.wikipedia.org/wiki/SQLSTATE" title="SQLSTATE en Wikipedia">SQLSTATE</a> definido en la norma ANSI SQL. errorInfo() devuelve una matriz con el código de error SQLSTATE, el código de error específico del driver y el mensaje de error específico del driver.</p>
 
@@ -177,7 +195,7 @@ $resultado = $pdo-&gt;query($consulta);</code>
 </pre>
       </div>
 
-      <p>Utilizar una variable auxiliar permite por ejemplo imprimir la consulta mientras se está programando para comprobar que no tiene errores, o poder en un futuro agrupar las consultas en un fichero aparte.</p>
+      <p>Utilizar una variable auxiliar permite por ejemplo imprimir la consulta mientras se está programando para comprobar que no tiene errores.</p>
 
       <div class="codigo">
         <pre>
@@ -195,66 +213,88 @@ $resultado  = $pdo-&gt;query($consulta);</code>
       <p>Cuando la consulta puede devolver registros, se debe guardar la respuesta en una variable auxiliar. Esa variable es de un tipo especial llamado <a href="https://www.php.net/manual/en/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero de la que podemos ir extrayendo uno a uno los registros mediante un bucle <span class="php-res">foreach ()</span> o mediante los métodos fetch() o fetchColumn():</p>
 
       <ul>
-        <li>Si la consulta devuelve un único registro que contiene la respuesta buscada en la primera columna se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna del registro.
+        <li>Si la consulta devuelve un único registro que contiene la respuesta buscada en la primera columna se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna del registro.
 
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
 $consulta  = "SELECT COUNT(*) FROM <i>tabla</i>";
-$resultado = $pdo-&gt;query($consulta);
 
+$resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
 } else {
-    print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p&gt;La tabla contiene {<span class="codigo-resaltado">$resultado-&gt;fetchColumn()</span>} registro(s).&lt;/p&gt;\n";
 }</code>
 </pre>
           </div>
         </li>
 
-        <li>Si la consulta devuelve un único registro, se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz son únicamente los nombres de las columnas de la tabla.
+        <li>Si la consulta devuelve un único registro, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envíara como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz serían únicamente los nombres de las columnas de la tabla.
 
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
-$valor = <i>valor</i>;       // Normalmente este valor vendrá de un formulario
+$id = <i>id</i>;          // Normalmente este valor vendrá de un formulario
 
 $consulta  = "SELECT * FROM <i>tabla</i> WHERE <i>id</i>=<i>:id</i>";   // Normalmente solo habrá un registro (o ninguno) con un id determinado
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado -&gt;execute(["<i>:id</i>" =&gt; $valor);
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute(["<i>:id</i>" =&gt; $id])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
-    $valor = $resultado-&gt;fetch();
+    $registro = <span class="codigo-resaltado">$resultado-&gt;fetch()</span>;
     print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;";
     print "\n";
-    print "    &lt;p&gt;$valor[<i>columna1</i>] - $valor[<i>columna2</i>] - etc.&lt;/p&gt;\n";
+    print "    &lt;p&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
           </div>
         </li>
 
-        <li>Si la consulta devuelve varios registros, la variable que guarda la respuesta se puede recorrer con un bucle <span class="php-res">foreach ()</span>. Cada registro obtenido en cada iteración sí tiene estrucura de matriz, en la que los índices son los nombres de las columnas:
+        <li>Si la consulta devuelve varios registros y necesitamos acceder a todos los registros a la vez para realizar alguna operación, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchall.php">PDOStatement-&gt;fetchAll()</a> para recuperar todos los registros en forma de matriz bidimensional.
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+$consulta = "SELECT * FROM <i>tabla</i>";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!count($registros = <span class="codigo-resaltado">$resultado-&gt;fetchAll()</span>)) {
+    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
+} else
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;ul&gt;\n";
+    <span class="codigo-resaltado">foreach ($registros as $registro)</span> {
+        print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
+    }
+    print "    &lt;/ul&gt;\n";
+    print "\n";
+}</code>
+</pre>
+          </div>
+        </li>
+
+        <li>Si la consulta devuelve varios registros y simplemente queremos acceder a los registros de forma consecutiva, podemos recorrer la variable que guarda la respuesta con un bucle <span class="php-res">foreach ()</span>.:
 
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta  = "SELECT * FROM <i>tabla</i>";
-$resultado = $pdo-&gt;query($consulta);
 
+$resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
     print "    &lt;ul&gt;\n";
-    foreach ($resultado as $valor) {
-        print "      &lt;li&gt;$valor[<i>columna1</i>] - $valor[<i>columna2</i>] - etc.&lt;/li&gt;\n";
+    <span class="codigo-resaltado">foreach ($resultado as $registro)</span> {
+        print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
     }
     print "    &lt;/ul&gt;\n";
     print "\n";
@@ -312,12 +352,12 @@ $valor2 = $_REQUEST["valor2"];
 $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
              WHERE <span class="codigo-resaltado">columna1=<i>$valor1</i></span>
              AND <span class="codigo-resaltado">columna2=<i>$valor2</i></span>";
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;execute();
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute();) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -326,7 +366,7 @@ if (!$resultado) {
         </div>
       </div>
 
-      <p>Para que PDO pueda desinfectar los datos provinientes de un formulario, estos deben enviarse al ejecutar la consulta, no al prepararla. Para ello, al definir la consulta es necesario indicar la posición de los datos y al ejecutar la consulta es necesario indicar el valor de los datos en forma de matriz. la posición de los datos se puede indicar de dos maneras distintas, mediante parámetros o mediante interrogantes (se aconseja la utilización de parámetros). </p>
+      <p>Para que PDO pueda desinfectar los datos provinientes de un formulario, estos deben enviarse al ejecutar la consulta, no al prepararla. Para ello, al definir la consulta es necesario indicar la posición de los datos y al ejecutar la consulta es necesario indicar el valor de los datos en forma de matriz. La posición de los datos se puede indicar de dos maneras distintas, mediante parámetros o mediante interrogantes (se aconseja la utilización de parámetros). </p>
       <ul>
         <li>consulta preparada mediante parámetros (:parametro)
           <p>En este caso las posiciones en la que se insertarán los datos provenientes del formulario se indican mediante cadenas de texto precedidas de dos puntos (:). La matriz con los datos debe incluir los nombres de los parámetros y los valores que sustituyen a los parámetros (el orden no es importante), como muestra el siguiente ejemplo:</p>
@@ -344,12 +384,12 @@ $valor2 = $_REQUEST["valor2"];
 $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
              WHERE <span class="codigo-resaltado">columna1=<i>:valor1</i></span>
              AND <span class="codigo-resaltado">columna2=<i>:valor2</i></span>";
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1, ":valor2" =&gt; $valor2])</span>;
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1, ":valor2" =&gt; $valor2])</span>;) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -374,12 +414,12 @@ $valor2 = $_REQUEST["valor2"];
 $consulta = "SELECT COUNT(*) FROM <i>tabla</i>
              WHERE <span class="codigo-resaltado">columna1=?</span>
              AND <span class="codigo-resaltado">columna2=?</span>";
-$resultado = $cfg-&gt;prepare($consulta);
-$resultado-&gt;<span class="codigo-resaltado">execute([$valor1, $valor2])</span>;
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;<span class="codigo-resaltado">execute([$valor1, $valor2])</span>;) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -409,7 +449,7 @@ if (!$resultado) {
 
       <p>Si no podemos usar parámetros, no queda más remedio que incluir los datos en la consulta. Como en ese caso PHP no hace ninguna desinfección de los datos, la desinfección la tenemos que hacer nosotros previamente.</p>
 
-      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos), podemos crear una función de recogida de datos específica que impida cualquier tipo de ataque de inyección por parte del usuario, como muestra el siguiente ejemplo:</p>
+      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos), podemos crear una función de recogida de datos específica que impida los ataques de inyección por parte del usuario, como muestra el siguiente ejemplo:</p>
 
       <div class="codigo">
         <pre>
@@ -437,14 +477,14 @@ $valor1  = $_REQUEST["valor1"];
 
 // CONSULTA PREPARADA CON PARÁMETROS: PDO PUEDE DESINFECTAR LOS DATOS
 $consulta = "SELECT * FROM <i>tabla</i>
-             WHERE columna1=<i>:valor1</i>
+             WHERE columna1=<span class="codigo-resaltado"><i>:valor1</i></span>
              ORDER BY <span class="codigo-resaltado">$columna</span> ASC";
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1])</span>;
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;<span class="codigo-resaltado">execute([":valor1" =&gt; $valor1])</span>;) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     ...</code>
 </pre>
@@ -453,18 +493,17 @@ if (!$resultado) {
   </section>
 
   <section id="ejemplos-codigo">
-    <h2>Ejemplos de código</h2>
+    <h2>Ejemplos de código para SQLite y MySQL</h2>
 
     <p>A continuación se ofrecen ejemplos de código de cómo se podría trabajar con PDO para realizar las tareas más habituales de gestión de una base de datos.</p>
 
     <p>La base de datos de estos ejemplos tiene una estructura muy simple: una sola tabla <i>personas</i> con tres columnas: un identificador numérico (<i>id</i>), el nombre y los apellidos de una persona.</p>
 
-    <p>La estructura general de estas consultas se repite con ligeras variaciones. Para elegir entre unas y otras estructuras basta con fijarse en dos aspectos:</p>
+    <p>La estructura general de estas consultas se repite con ligeras variaciones. La estructura concreta viene impuesta por dos aspectos:</p>
     <ul>
       <li>Si el resultado de la consulta va a ser únicamente <span class="php-con">true</span> o <span class="php-con">false</span>, o si el resultado pueden ser uno o varios registros con una o varias columnas de datos. Si se pueden obtener registros, el resultado de la consulta debe guardarse en una variable auxiliar.</li>
-      <li>Si en la consulta deben incluirse datos recibidos de un formulario o no. Si se incluyen datos recibidos de un formulario, es necesario utilizar consultas preparadas para prevenir ataques de inyección SQL.</li>
+      <li>Si en la consulta deben incluirse datos recibidos de un formulario o no. Si se incluyen datos recibidos de un formulario, es necesario utilizar consultas preparadas para prevenir ataques de inyección SQL. Si se utilzia una consulta preparada, el resultado de la preparación debe guardarse en una variable auxiliar.</li>
     </ul>
-
 
     <section id="opciones">
       <h3>Opciones del programa</h3>
@@ -483,13 +522,15 @@ if (!$resultado) {
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 // Configuración para SQLite
-$cfg["sqliteDatabase"] = "tmp.sqlite";                            // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "db.sqlite";                             // Ubicación de la base de datos
+
+// Configuración de la tabla Personas
+$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbPersonasTabla"]        = "personas";                      // Nombre de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos</code>
+$cfg["dbPersonasTabla"]        = "personas";                      // Nombre de la tabla Personas</code>
 </pre>
       </div>
 
@@ -506,11 +547,13 @@ $cfg["mysqlUser"]     = "";                                       // Nombre de u
 $cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
 $cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos
 
+// Configuración de la tabla Personas
+$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos
+
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos</code>
+$cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de la tabla Personas</code>
 </pre>
       </div>
     </section>
@@ -531,7 +574,8 @@ $cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de 
 
         <div class="codigo">
           <pre>
-<code class="copy-language-php">// SQLITE: CONEXIÓN CON LA BASE DE DATOS
+<code class="copy-language-php">// SQLITE: Conexión con la base de datos
+
 function conectaDb()
 {
     global $cfg;
@@ -543,7 +587,7 @@ function conectaDb()
         $tmp-&gt;query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
-        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
         exit;
     }
 }
@@ -570,7 +614,8 @@ $pdo = conectaDb();</code>
 
         <div class="codigo">
           <pre>
-<code class="copy-language-php">// MYSQL: CONEXIÓN CON LA BASE DE DATOS
+<code class="copy-language-php">// MYSQL: Conexión con la base de datos
+
 function conectaDb()
 {
     global $cfg;
@@ -582,7 +627,7 @@ function conectaDb()
         $tmp-&gt;exec("set names utf8mb4");
         return $tmp;
     } catch (PDOException $e) {
-        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
         exit;
     }
 }
@@ -607,9 +652,9 @@ $pdo = conectaDb();</code>
       <section id="create-sqlite">
         <h4>Creación y borrado de tablas en SQLite</h4>
 
-        <p>En el caso de utilizar SQLite, no tiene sentido crear o borrar la base de datos ya que SQLite trabaja con ficheros y cada fichero es una base de datos. Tan solo es necesario borrar y crear las tablas.</p>
+        <p>Con SQLite no tiene sentido crear o borrar la base de datos, ya que SQLite trabaja con ficheros y cada fichero es una base de datos. Tan solo es necesario borrar y crear las tablas.</p>
 
-        <p>Para borrar una tabla, se utiliza la consulta DROP TABLE. Esta consulta no es específica de SQlite pero se comenta en este apartado por estar relacionada con las demás consultas de este apartado. Se ha añadido la condición IF EXISTS porque en algunas versiones de SQLite la consulta DROP TABLE da error si la tabla no existe.</p>
+        <p>Para borrar una tabla, se utiliza la consulta DROP TABLE. Esta consulta no es específica de SQlite y funcionaría con otras bases de datos. Se ha añadido la condición IF EXISTS porque en algunas versiones de SQLite la consulta DROP TABLE da error si la tabla no existe.</p>
 
         <div class="codigo">
           <pre>
@@ -617,12 +662,11 @@ $pdo = conectaDb();</code>
 $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
 if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
-    print "\n";
-}</code>
+}
+print "\n";</code>
 </pre>
         </div>
 
@@ -638,11 +682,9 @@ $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
              )";
 
 if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
-    print "\n";
 }</code>
 </pre>
         </div>
@@ -650,6 +692,8 @@ if (!$pdo-&gt;query($consulta)) {
 
       <section id="create-mysql">
         <h4>Creación y borrado de bases de datos y tablas en MySQL</h4>
+
+        <p>Con MySQL, borraremos la base de datos (y las tablas existentes), crearemos de nuevo la base de datos y crearemos la tabla.</p>
 
         <p>Para borrar una base de datos, se utiliza la consulta DROP DATABASE. Se ha añadido la condición IF EXISTS porque en algunas bases de datos la consulta DROP DATABASE da error si la tabla no existe.</p>
 
@@ -659,12 +703,11 @@ if (!$pdo-&gt;query($consulta)) {
 $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
 if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
-    print "\n";
-}</code>
+}
+print "\n";</code>
 </pre>
         </div>
 
@@ -678,8 +721,7 @@ $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
              COLLATE utf8mb4_unicode_ci";
 
 if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -688,23 +730,6 @@ if (!$pdo-&gt;query($consulta)) {
         </div>
 
         <p><strong>Nota</strong>: El juego de caracteres utilizado en este curso es <strong>UTF-8</strong>, por lo que en la base de datos MySQL se utiliza el juego de caracteres <strong>utf8mb4</strong> (que permite almacenar cualquier carácter Unicode) y el cotejamiento <strong>utf8mb4_unicode_ci</strong> (que implementa todos los criterios de ordenación de Unicode). Para una explicación más detallada se puede consultar <a href="https://mathiasbynens.be/notes/mysql-utf8mb4">el blog de Mathias Bynens</a>.</p>
-
-        <p>Para borrar una tabla, se utiliza la consulta DROP TABLE. Esta consulta no es específica de MySQL pero se comenta en este apartado por estar relacionada con las demás consultas de este apartado. Se ha añadido la condición IF EXISTS porque en algunas bases de datos la consulta DROP TABLE da error si la tabla no existe.</p>
-
-        <div class="codigo">
-          <pre>
-<code class="copy-language-php">// CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
-
-if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
-} else {
-    print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
-    print "\n";
-}</code>
-</pre>
-        </div>
 
         <p>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. El ejemplo no utiliza sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</p>
 
@@ -719,11 +744,9 @@ $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
              )";
 
 if (!$pdo-&gt;query($consulta)) {
-    print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
-    print "\n";
 }</code>
 </pre>
         </div>
@@ -747,11 +770,12 @@ $apellidos = "Conejo";
 $consulta = "INSERT INTO $cfg[dbPersonasTabla]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
-$resultado = $pdo-&gt;prepare($consulta);
 
-if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
-    print "    &lt;p class=\"aviso\"&gt;Error al crear el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+$resultado = $pdo-&gt;prepare($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -771,11 +795,12 @@ $apellidos = "Conejo";
 $consulta = "UPDATE $cfg[dbPersonasTabla]
              SET nombre=:nombre, apellidos=:apellidos
              WHERE id=:id";
-$resultado = $pdo-&gt;prepare($consulta);
 
-if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
-    print "    &lt;p class=\"aviso\"&gt;Error al modificar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+$resultado = $pdo-&gt;prepare($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
     print "\n";
@@ -791,17 +816,17 @@ if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apelli
           <div class="codigo">
             <pre>
 <code class="copy-language-php">// CONSULTA DE BORRADO DE REGISTROS
-$id = [1 =&gt; "on"];     // Normalmente este valor vendrá de un formulario
-                       // en forma de matriz. Por ejemplo, [1 =&gt; "on", 3 =&gt; "on"]
+$id = [1 =&gt; "on", 3 =&gt; "on"];     // Normalmente este valor vendrá de un formulario (en este caso, como matriz).
 
 foreach ($id as $indice =&gt; $valor) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
-    $resultado = $pdo-&gt;prepare($consulta);
 
-    if (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
-        print "    &lt;p class=\"aviso\"&gt;Error al borrar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        print "\n";
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
         print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -818,17 +843,16 @@ foreach ($id as $indice =&gt; $valor) {
 
       <p>Para obtener registros que cumplan determinados criterios se utiliza una consulta SELECT. Estas consultas son iguales en MySQL y SQLite.</p>
       <ul>
-        <li>Si la consulta devuelve un único registro con una sola columna se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar el dato.
+        <li>Si la consulta devuelve un único registro con una sola columna se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar el dato.
 
           <div class="codigo">
             <pre>
 <code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo-&gt;query($consulta);
 
+$resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
 } else {
     print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -837,24 +861,24 @@ if (!$resultado) {
           </div>
         </li>
 
-        <li>Si la consulta devuelve un único registro, se puede utilizar la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz son únicamente los nombres de las columnas de la tabla.
+        <li>Si la consulta devuelve un único registro, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz son únicamente los nombres de las columnas de la tabla.
           <div class="codigo">
             <pre>
-<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
+<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
 $id = 1       // Normalmente este valor vendrá de un formulario
 
 $consulta  = "SELECT * FROM <i>tabla</i> WHERE id=:id";
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado -&gt;execute([":id" = &gt; $id);
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
-    $valor = $resultado-&gt;fetch();
+    $registro = $resultado-&gt;fetch();
     print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;";
     print "\n";
-    print "    &lt;p&gt;$valor[id] - $valor[nombre] - $valor[apellidos].&lt;/p&gt;\n";
+    print "    &lt;p&gt;$registro[id] - $registro[nombre] - $valor[apellidos].&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -870,74 +894,97 @@ if (!$resultado) {
                 <pre>
 <code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo-&gt;query($consulta);
 
+$resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
     print "    &lt;ul&gt;\n";
-    foreach ($resultado as $valor) {
-        print "      &lt;li&gt;$valor[id] - $valor[nombre] - $valor[apellidos]&lt;/li&gt;\n";
+    foreach ($resultado as $registro) {
+        print "      &lt;li&gt;$registro[id] - $registro[nombre] - $valor[apellidos]&lt;/li&gt;\n";
     }
     print "    &lt;/ul&gt;\n";
+    print "\n";
 }</code>
 </pre>
               </div>
             </li>
-            <li>pero también se puede utilizar un bucle <span class="php-res">while</span> y la función <a href="https://www.php.net/manual/en/pdostatement.fetch.php"><span class="php-fun">PDOStatement-&gt;fetch()</span></a>, que recupera el primer registro de la consulta. Es importante tener en cuenta que sólo se puede iterar una vez sobre el resultado de la consulta, ya que los registros se van eliminado del resultado de la consulta.
+            <li>pero también se puede utilizar un bucle <span class="php-res">while</span> y el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php"><span class="php-fun">PDOStatement-&gt;fetch()</span></a>, que recupera el primer registro de la consulta. Es importante tener en cuenta que sólo se puede iterar una vez sobre el resultado de la consulta, ya que los registros se van eliminado del resultado de la consulta.
               <div class="codigo">
                 <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo-&gt;query($consulta);
 
+$resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
     print "    &lt;ul&gt;\n";
-    while ($valor = $resultado-&gt;fetch()) {
-        print "      &lt;li&gt;$valor[id] - $valor[nombre] - $valor[apellidos]&lt;/li&gt;\n";
+    while ($registro = $resultado-&gt;fetch()) {
+        print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
         print "\n";
     }
     print "    &lt;/ul&gt;\n";
+    print "\n";
 }</code>
 </pre>
               </div>
             </li>
 
-            <li>Los dos ejemplos anteriores (con <span class="php-res">foreach</span> o <span class="php-fun">fetch()</span>) no tratarían de forma adecuada el caso en el que la consulta no devolviera ningún registro, ya que no escribirían nada. Por ello se recomienda hacer primero una consulta que cuente el número de resultados de la consulta y, si es mayor que cero, hacer la consulta que recupera los registros.
+            <li>Los dos ejemplos anteriores (con <span class="php-res">foreach</span> o <span class="php-fun">fetch()</span>) escribirían una lista vacía en el caso en el que la consulta no devolviera ningún registro, ya que no escribirían nada. Si en ese caso queremos mostrar un mensaje informativo, podríamos hacer primero una consulta que cuente el número de resultados de la consulta y, si es mayor que cero, hacer la consulta que recupera los registros.
+
+              <div class="codigo">
+                <pre>
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif ($resultado-&gt;fetchColumn() == 0) {
+    print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
+} else {
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+    $resultado = $pdo-&gt;query($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+        print "    &lt;ul&gt;\n";
+        foreach ($resultado as $registro) {
+            print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
+        }
+        print "    &lt;/ul&gt;\n";
+        print "\n";
+    }
+}</code>
+</pre>
+              </div>
+            </li>
+
+            <li>Podemos hacer lo mismo con una sola consulta utilizando el método <a href="https://www.php.net/manual/en/pdostatement.fetchall.php">PDOStatement-&gt;fetchAll()</a>, que recupera todos los registros devueltos por la consulta en forma de matriz.
 
               <div class="codigo">
                 <pre>
 <code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
 $resultado = $pdo-&gt;query($consulta);
-
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
-    print "\n";
-} elseif ($resultado-&gt;fetchColumn() == 0) {
-    print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!count($registros = $resultado-&gt;fetchAll())) {
+    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
-    $resultado = $pdo-&gt;query($consulta);
-
-    if (!$resultado) {
-        print "    &lt;p class=\"aviso\"&gt;Error en la consulta {$pdo-&gt;errorInfo()[2]}.&lt;/p&gt;\n";
-        print "\n";
-    } else {
-        print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
-        print "    &lt;ul&gt;\n";
-        foreach ($resultado as $valor) {
-            print "      &lt;li&gt;$valor[id] - $valor[nombre] - $valor[apellidos]&lt;/li&gt;\n";
-        }
-        print "    &lt;/ul&gt;\n";
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;ul&gt;\n";
+    foreach ($registros as $registro) {
+        print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
     }
+    print "    &lt;/ul&gt;\n";
+    print "\n";
 }</code>
 </pre>
               </div>
@@ -959,16 +1006,16 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$apellidos = "Con";           // Normalmente este valor vendrá de un formulario
+$apellidos = "con";           // Normalmente este valor vendrá de un formulario
 
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              WHERE apellidos LIKE :apellidos";
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">$apellidos%</span>"]);
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":apellidos" =&gt; <span class="codigo-resaltado">"$apellidos%"</span>])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -985,12 +1032,12 @@ $apellidos = "nej";           // Normalmente este valor vendrá de un formulario
 
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
              WHERE apellidos LIKE :apellidos";
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;execute([":apellidos" =&gt; "<span class="codigo-resaltado">%$apellidos%</span>"]);
 
+$resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":apellidos" =&gt; <span class="codigo-resaltado">"%$apellidos%"</span>])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
     print "\n";
@@ -1019,13 +1066,12 @@ $consulta = "SELECT
              FROM $cfg[dbTablaPrestamos], $cfg[dbTablaUsuarios], $cfg[dbTablaObras]
              WHERE
                $cfg[dbTablaPrestamos].id_usuario=$cfg[dbTablaUsuarios].id
-               AND $cfg[dbTablaPrestamos].id_obra=$$cfg[dbTablaObras].id
+               AND $cfg[dbTablaPrestamos].id_obra=$cfg[dbTablaObras].id
                AND $cfg[dbTablaPrestamos].devuelto='0000-00-00'
              ORDER BY $columna $orden";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
 } else {
    ...</code>
 </pre>
@@ -1048,6 +1094,52 @@ if (!$resultado) {
 
     <p>Todas las páginas de la aplicación cargarán la biblioteca general, que a su vez cargará el fichero de configuración y una de las dos bibliotecas específicas, de acuerdo con la configuración escogida por el usuario.</p>
 
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="450" height="360" viewBox="0 0 450 360" style="background-color: white;" font-family="sans-serif" class="izquierda">
+        <defs>
+          <marker id="flechaNegra" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+          </marker>
+          <marker id="flechaRoja" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+          </marker>
+          <marker id="flechaAzul" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: blue;" />
+          </marker>
+        </defs>
+
+        <!-- Bibliotecas -->
+        <text x="10" y="20" text-anchor="start" font-family="sans-serif" font-size="14">Todas las páginas incluyen biblioteca.php</text>
+        <svg x="10" y="40">
+          <text x="135" y="20" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+          <rect x="25" y="30" width="220" height="270" fill="none" stroke="black" stroke-width="2" />
+
+          <text x="30" y="50" text-anchor="left" font-family="sans-serif" font-size="14">&lt;?php</text>
+          <text x="30" y="70" text-anchor="left" font-family="sans-serif" font-size="14">...</text>
+          <text x="30" y="100" text-anchor="left" font-family="sans-serif" font-size="14">include "config.php";</text>
+          <text x="30" y="120" text-anchor="left" font-family="sans-serif" font-size="14">...</text>
+          <text x="30" y="160" text-anchor="left" font-family="sans-serif" font-size="14">if (SQLite) {</text>
+          <text x="40" y="180" text-anchor="left" font-family="sans-serif" font-size="14">include "biblioteca-sqlite.php"</text>
+          <text x="30" y="200" text-anchor="left" font-family="sans-serif" font-size="14">} elseif (MySQL) {</text>
+          <text x="40" y="220" text-anchor="left" font-family="sans-serif" font-size="14">include "biblioteca-mysql.php"</text>
+          <text x="30" y="240" text-anchor="left" font-family="sans-serif" font-size="14">}</text>
+          <text x="30" y="260" text-anchor="left" font-family="sans-serif" font-size="14">...</text>
+
+          <line x1="245" y1="95" x2="300" y2="45" stroke="black" stroke-width="2" />
+          <text x="335" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
+          <rect x="300" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+          <line x1="245" y1="195" x2="300" y2="145" stroke="black" stroke-width="2" />
+          <text x="335" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
+          <rect x="300" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+
+          <line x1="245" y1="195" x2="300" y2="245" stroke="black" stroke-width="2" />
+          <text x="335" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
+          <rect x="300" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
+        </svg>
+      </svg>
+    </p>
+
     <section id="conexion-configurable">
       <h3>Conexión configurable</h3>
 
@@ -1058,19 +1150,22 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// config.php
-
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+
 // Base de datos utilizada por la aplicación
-<span class="codigo-resaltado">$cfg["dbMotor"]</span> = SQLITE;                                     // Valores posibles: MYSQL o SQLITE
+
+$cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
 
 // Configuración para SQLite
-$cfg["sqliteDatabase"] = "tmp.sqlite";                        // Ubicación de la base de datos
+
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-1-6.sqlite";  // Ubicación de la base de datos
 
 // Configuración para MySQL
-$cfg["mysqlHost"]     = "mysql:host=localhost";               // Nombre de host
-$cfg["mysqlUser"]     = "";                                   // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                   // Contraseña de usuario
-$cfg["mysqlDatabase"] = "";                                   // Nombre de la base de datos</code>
+
+$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlUser"]     = "";                                 // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
+$cfg["mysqlDatabase"] = "";                                 // Nombre de la base de datos</code>
 </pre>
           </div>
         </li>
@@ -1099,21 +1194,24 @@ if ($cfg["dbMotor"] == SQLITE) {
             <pre>
 <code class="language-php">// biblioteca-sqlite.php
 
-// SQLITE: CONEXIÓN CON LA BASE DE DATOS
+// SQLITE: Conexión con la base de datos
+
 function conectaDb()
 {
     global $cfg;
 
     try {
         $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp-&gt;query("PRAGMA foreign_keys = ON");
+        $tmp-&gt;query("PRAGMA encoding = 'UTF-8'");
         return $tmp;
     } catch (PDOException $e) {
-        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
         exit;
     }
 }</code>
-  </pre>
+</pre>
           </div>
         </li>
         </li>
@@ -1123,18 +1221,19 @@ function conectaDb()
             <pre>
 <code class="language-php">// biblioteca-mysql.php
 
-// MYSQL: CONEXIÓN CON LA BASE DE DATOS
+// MYSQL: Conexión con la base de datos
+
 function conectaDb()
 {
     global $cfg;
 
     try {
         $tmp = new PDO($cfg["mysqlHost"], $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         $tmp-&gt;exec("set names utf8mb4");
-        return $tmp;
     } catch (PDOException $e) {
-        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos / {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
         exit;
     }
 }</code>
@@ -1160,16 +1259,15 @@ $pdo = conectaDb();</code>
 
       <p>El resultado sería</p>
       <ul>
-        <li>biblioteca.php: contiene las variables de configuración del programador comunes:
+        <li>config.php: contiene las variables de configuración del programador comunes:
 
           <div class="codigo">
             <pre>
-<code class="language-php">// biblioteca.php
+<code class="language-php">// config.php
+// Configuración de la tabla Personas
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-// Base de datos
-$cfg["dbPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos</code>
+$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
           </div>
         </li>
@@ -1178,19 +1276,22 @@ $cfg["dbPersonasTamApellidos"] = 60;                 // Tamaño de la columna Pe
           <div class="codigo">
             <pre>
 <code class="language-php">// biblioteca-sqlite.php
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS SQLITE
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-// Base de datos
-$cfg["dbPersonasTabla"]        = "personas";         // Nombre de la tabla Personas
+// SQLITE: Nombres de las tablas
 
-// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
+$cfg["dbPersonasTabla"] = "personas";                       // Nombre de la tabla Personas
+
+// SQLITE: Consultas de borrado y creación de tablas
+
 function borraTodo()
 {
     global $pdo, $cfg;
 
     $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+
     if (!$pdo-&gt;query($consulta)) {
-        print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
     }
@@ -1203,10 +1304,11 @@ function borraTodo()
                  )";
 
     if (!$pdo-&gt;query($consulta)) {
-        print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
         print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
     }
+    print "\n";
 }</code>
 </pre>
           </div>
@@ -1216,12 +1318,14 @@ function borraTodo()
           <div class="codigo">
             <pre>
 <code class="language-php">// biblioteca-mysql.php
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS MYSQL
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-// Base de datos
+// MYSQL: Nombres de las tablas
+
 $cfg["dbPersonasTabla"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
 
-// MYSQL: CONSULTAS DE BORRADO Y CREACiÓN DE BASE DE DATOS Y TABLA
+// MYSQL: Consultas de borrado y creación de base de datos y tablas
+
 function borraTodo()
 {
     global $pdo, $cfg;
@@ -1229,7 +1333,7 @@ function borraTodo()
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
     if (!$pdo-&gt;query($consulta)) {
-        print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
         print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
     }
@@ -1240,7 +1344,7 @@ function borraTodo()
                  COLLATE utf8mb4_unicode_ci";
 
     if (!$pdo-&gt;query($consulta)) {
-        print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
@@ -1253,7 +1357,7 @@ function borraTodo()
                      )";
 
         if (!$pdo-&gt;query($consulta)) {
-            print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         } else {
             print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
         }
@@ -1279,7 +1383,7 @@ $pdo = null;</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 29 de diciembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 16 de enero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
