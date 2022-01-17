@@ -47,7 +47,7 @@ if ($id == "") {
 
 if ($nombreOk && $apellidosOk && $idOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                     WHERE id=:id";
+                 WHERE id=:id";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
@@ -72,7 +72,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
             print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($resultado->fetchColumn() > 0) {
             print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
-                    . "No se ha guardado la modificación.</p>\n";
+                . "No se ha guardado la modificación.</p>\n";
         } else {
             $consulta = "UPDATE $cfg[dbPersonasTabla]
                          SET nombre=:nombre, apellidos=:apellidos

@@ -61,7 +61,6 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Registro creado correctamente.</p>\n";
-        print "\n";
     }
 }
 

@@ -44,7 +44,7 @@ $cfg["rootPasswordModificable"] = false;                    // Contraseña del u
 
 // Nombre de sesión
 
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-3";         // Nombre de sesión
 
 // Método de envío de formularios
 

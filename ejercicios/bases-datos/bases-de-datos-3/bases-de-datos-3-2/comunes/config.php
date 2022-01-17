@@ -42,7 +42,7 @@ $cfg["hashAlgorithm"] = "sha256";                           // Algoritmo hash pa
 
 // Nombre de sesión
 
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-2";         // Nombre de sesión
 
 // Método de envío de formularios
 
