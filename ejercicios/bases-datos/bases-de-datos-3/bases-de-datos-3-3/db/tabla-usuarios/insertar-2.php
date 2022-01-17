@@ -25,7 +25,10 @@ $password = recoge("password");
 $usuarioOk  = false;
 $passwordOk = false;
 
-if (mb_strlen($usuario, "UTF-8") > $cfg["dbUsuariosTamUsuario"]) {
+if ($usuario == "") {
+    print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
+    print "\n";
+} elseif (mb_strlen($usuario, "UTF-8") > $cfg["dbUsuariosTamUsuario"]) {
     print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[dbUsuariosTamUsuario] caracteres.</p>\n";
     print "\n";
 } else {
@@ -39,36 +42,31 @@ if (mb_strlen($password, "UTF-8") > $cfg["dbUsuariosTamPassword"]) {
     $passwordOk = true;
 }
 
-if ($usuario == "" || $password == "") {
-    print "    <p class=\"aviso\">Hay que rellenar todos los campos. No se ha guardado el registro.</p>\n";
-    $usuarioOk = $passwordOk = false;
-}
-
 if ($usuarioOk && $passwordOk) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
+    $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
+                 WHERE usuario=:usuario";
 
-    $resultado = $pdo->query($consulta);
+    $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif ($resultado->fetchColumn() >= $cfg["dbUsuariosmaxReg"]) {
-        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-        print "\n";
-        print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":usuario" => $usuario])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() > 0) {
+        print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
-                        WHERE usuario=:usuario";
+        $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
 
-        $resultado = $pdo->prepare($consulta);
+        $resultado = $pdo->query($consulta);
         if (!$resultado) {
-            print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif (!$resultado->execute([":usuario" => $usuario])) {
-            print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif ($resultado->fetchColumn() > 0) {
-            print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } elseif ($resultado->fetchColumn() >= $cfg["dbUsuariosmaxReg"]) {
+            print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
         } else {
             $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
-                            (usuario, password)
-                            VALUES (:usuario, :password)";
+                         (usuario, password)
+                         VALUES (:usuario, :password)";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {

@@ -50,7 +50,6 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        print "\n";
     } else {
         print "    <p>Registro creado correctamente.</p>\n";
         print "\n";

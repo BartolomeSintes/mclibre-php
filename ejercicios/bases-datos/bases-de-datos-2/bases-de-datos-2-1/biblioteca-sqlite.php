@@ -19,6 +19,7 @@ function conectaDb()
 
     try {
         $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp->query("PRAGMA foreign_keys = ON");
         $tmp->query("PRAGMA encoding = 'UTF-8'");
         return $tmp;

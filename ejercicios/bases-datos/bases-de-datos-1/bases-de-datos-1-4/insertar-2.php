@@ -33,15 +33,14 @@ if (mb_strlen($apellidos, "UTF-8") > $cfg["dbPersonasTamApellidos"]) {
 
 if ($nombreOk && $apellidosOk) {
     $consulta = "INSERT INTO $cfg[dbPersonasTabla]
-                (nombre, apellidos)
-                VALUES (:nombre, :apellidos)";
+                 (nombre, apellidos)
+                 VALUES (:nombre, :apellidos)";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        print "\n";
     } else {
         print "    <p>Registro creado correctamente.</p>\n";
         print "\n";
