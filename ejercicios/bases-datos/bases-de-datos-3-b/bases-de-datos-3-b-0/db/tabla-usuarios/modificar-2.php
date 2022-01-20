@@ -54,8 +54,8 @@ if ($id == "") {
         print "            <td>Nivel:</td>\n";
         print "            <td>\n";
         print "              <select name=\"nivel\">\n";
-        foreach ($cfg["usuariosNiveles"] as $indice => $registro) {
-            print "                <option value=\"$registro\">$indice</option>\n";
+        foreach ($cfg["usuariosNiveles"] as $indice => $valor) {
+            print "                <option value=\"$valor\">$indice</option>\n";
         }
         print "              </select>\n";
         print "            </td>\n";
