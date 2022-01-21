@@ -170,7 +170,7 @@ function pie()
     print "    </p>\n";
     print "  </footer>\n";
     print "</body>\n";
-    print "</html>";
+    print "</html>\n";
 }
 
 function encripta($cadena)
