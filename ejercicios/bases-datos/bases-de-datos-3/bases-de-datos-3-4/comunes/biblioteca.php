@@ -11,11 +11,10 @@ define("MYSQL", 1);                         // Base de datos MySQL
 define("SQLITE", 2);                        // Base de datos SQLITE
 
 define("MENU_PRINCIPAL", 1);                // Menú principal sin conectar
-define("MENU_PRINCIPAL_CONECTADO", 2);      // Menú principal conectado
-define("MENU_VOLVER", 3);                   // Menú Volver a inicio
-define("MENU_ADMINISTRADOR", 4);            // Menú Administrador
-define("MENU_USUARIOS", 5);                 // Menú Usuarios
-define("MENU_PERSONAS", 6);                 // Menú Personas
+define("MENU_VOLVER", 2);                   // Menú Volver a inicio
+define("MENU_ADMINISTRADOR", 3);            // Menú Administrador
+define("MENU_USUARIOS", 4);                 // Menú Usuarios
+define("MENU_PERSONAS", 5);                 // Menú Personas
 
 define("PROFUNDIDAD_0", 0);                 // Profundidad de nivel de la página: directorio raíz
 define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la página: subdirectorio
@@ -137,8 +136,6 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         }
     } elseif ($_SESSION["conectado"] == NIVEL_USUARIO_BASICO) {
         if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
-        } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
             print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
         } elseif ($menu == MENU_VOLVER) {
@@ -155,8 +152,6 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         }
     } elseif ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
         if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
-        } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
             print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"db/tabla-usuarios/index.php\">Usuarios</a></li>\n";
             print "        <li><a href=\"administrador/index.php\">Administrador</a></li>\n";
@@ -200,7 +195,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-01-17\">17 de enero de 2022</time>\n";
+    print "      <time datetime=\"2022-01-21\">21 de enero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

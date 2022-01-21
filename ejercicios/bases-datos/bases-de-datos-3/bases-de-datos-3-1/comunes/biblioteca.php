@@ -11,9 +11,8 @@ define("MYSQL", 1);                         // Base de datos MySQL
 define("SQLITE", 2);                        // Base de datos SQLITE
 
 define("MENU_PRINCIPAL", 1);                // Menú principal sin conectar
-define("MENU_PRINCIPAL_CONECTADO", 2);      // Menú principal conectado
-define("MENU_VOLVER", 3);                   // Menú Volver a inicio
-define("MENU_PERSONAS", 4);                 // Menú Personas
+define("MENU_VOLVER", 2);                   // Menú Volver a inicio
+define("MENU_PERSONAS", 3);                 // Menú Personas
 
 define("PROFUNDIDAD_0", 0);                 // Profundidad de nivel de la página: directorio raíz
 define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la página: subdirectorio
@@ -90,23 +89,29 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
-    if ($menu == MENU_PRINCIPAL) {
-        print "        <li><a href=\"acceso/login.php\">Conectarse</a></li>\n";
-    } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
-        print "        <li><a href=\"db-personas/index.php\">Personas</a></li>\n";
-        print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
-    } elseif ($menu == MENU_VOLVER) {
-        print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-    } elseif ($menu == MENU_PERSONAS) {
-        print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-        print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
-        print "        <li><a href=\"listar.php\">Listar</a></li>\n";
-        print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
-        print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
-        print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
-        print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+    if (!isset($_SESSION["conectado"])) {
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"acceso/login.php\">Conectarse</a></li>\n";
+        } else {
+            print "        <li>Error en la selección de menú</li>\n";
+        }
     } else {
-        print "        <li>Error en la selección de menú</li>\n";
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"db-personas/index.php\">Personas</a></li>\n";
+            print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
+        } elseif ($menu == MENU_VOLVER) {
+            print "        <li><a href=\"../index.php\">Volver</a></li>\n";
+        } elseif ($menu == MENU_PERSONAS) {
+            print "        <li><a href=\"../index.php\">Volver</a></li>\n";
+            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
+            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
+            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
+            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
+            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
+            print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
+        } else {
+            print "        <li>Error en la selección de menú</li>\n";
+        }
     }
     print "      </ul>\n";
     print "    </nav>\n";
@@ -122,7 +127,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-01-17\">17 de enero de 2022</time>\n";
+    print "      <time datetime=\"2022-01-21\">21 de enero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
