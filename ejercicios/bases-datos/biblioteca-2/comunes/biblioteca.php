@@ -11,7 +11,6 @@ define("MYSQL", "MySQL");                  // Base de datos MySQL
 define("SQLITE", "SQLite");                // Base de datos SQLITE
 
 define("MENU_PRINCIPAL", "menuPrincipal");                     // Menú principal sin conectar
-define("MENU_PRINCIPAL_CONECTADO", "menuPrincipalConectado");  // Menú principal conectado
 define("MENU_VOLVER", "menuVolver");                           // Menú Volver
 define("MENU_USUARIOS", "menuUsuarios");                       // Menú Usuarios
 define("MENU_ADMINISTRADOR", "menuAdministrador");             // Menú Administrador
@@ -102,8 +101,6 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         }
     } elseif ($_SESSION["conectado"] == NIVEL_1) {
         if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
-        } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
             print "        <li><a href=\"db-obras/index.php\">Obras</a></li>\n";
             print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
         } elseif ($menu == MENU_VOLVER) {
@@ -116,8 +113,6 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         }
     } else {
         if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"acceso/login-1.php\">Conectarse</a></li>\n";
-        } elseif ($menu == MENU_PRINCIPAL_CONECTADO) {
             print "        <li><a href=\"db-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"db-obras/index.php\">Obras</a></li>\n";
             print "        <li><a href=\"db-prestamos/index.php\">Préstamos</a></li>\n";
@@ -188,7 +183,7 @@ function pie()
     print "    </p>\n";
     print "  </footer>\n";
     print "</body>\n";
-    print "</html>";
+    print "</html>\n";
 }
 
 function encripta($cadena)
