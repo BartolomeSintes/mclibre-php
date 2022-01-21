@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>PDO. Enunciados. Ejercicios (bases de datos). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios - PDO - Enunciados</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>PDO</h2>
+
+      <h3><a href="#">Enunciados</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - SQLite: único</a></li>
+        <li><a href="#ejercicio-2">2 - SQLite: funciones</a></li>
+        <li><a href="#ejercicio-3">3 - SQLite: biblioteca</a></li>
+      </ul>
+
+      <h3><a href="../../../soluciones/bases-de-datos/pdo.html">Soluciones</a></h3>
+      <ul>
+        <li><a href="../../../soluciones/bases-de-datos/pdo.html#ejercicio-1">1 - SQLite: único</a></li>
+        <li><a href="../../../soluciones/bases-de-datos/pdo.html#ejercicio-2">2 - SQLite: funciones</a></li>
+        <li><a href="../../../soluciones/bases-de-datos/pdo.html#ejercicio-3">3 - SQLite: biblioteca</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta página de ejercicios está en elaboración.</p>
+
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/2122/db-pdo-plantillas.zip">plantillas de los ejercicios PDO</a> que incluyen parte de las páginas.</p>
+
+  <p>Puede consultar unas <a href="../../../soluciones/bases-de-datos/pdo.html">posibles soluciones</a> de estos ejercicios. Puede descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html#21-22-con-bases-de-datos">página de soluciones</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>PDO 1 - SQLite: programa único</h2>
+
+    <p>Escriba un programa a partir de los fragmentos de código de apartado <a href="../../../lecciones/php-db-pdo.html#ejemplos-codigo">Ejemplos de código</a> de la <a href="../../../lecciones/php-db-pdo.html">lección sobre PDO</a>.</p>
+
+    <p>El programa deberá realizar consecutivamente los siguientes pasos:</p>
+    <ol>
+      <li>Definir las opciones del programa (nombre de la base de datos, tamaño de los campos, nombre de la tabla).</li>
+      <li>Definir la función de conexión y crear el objeto PDO de conexión con la base de datos.</li>
+      <li>Borrar la tabla.</li>
+      <li>Crear la tabla.</li>
+      <li>Insertar un registro en la tabla.</li>
+      <li>Mostrar cuántos registros hay en la tabla (solo hay uno).</li>
+      <li>Mostrar los valores de los registros guardados en la tabla (solo hay uno).</li>
+      <li>Modificar el registro guardado en la tabla.</li>
+      <li>Mostrar los valores de los registros guardados en la tabla (solo hay uno).</li>
+      <li>Insertar un segundo registro en la tabla.</li>
+      <li>Mostrar cuántos registros hay en la tabla (hay dos registros).</li>
+      <li>Mostrar los valores de los registros guardados en la tabla (hay dos registros).</li>
+      <li>Borrar el primer registro guardado en la tabla.</li>
+      <li>Mostrar los valores de los registros guardados en la tabla (solo hay uno).</li>
+    </ol>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="pdo-1-sqlite.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="pdo-1-sqlite.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>PDO 2 - SQLite: programa con funciones</h2>
+
+    <p>Modifique el programa anterior creando funciones para cada una de las tareas. El resultado en pantalla debe ser el mismo que en el ejercicio anterior.</p>
+
+    <p>Las funciones serán las siguientes (se indican los parámetros, el resto de variables que necesite la función serán variables globales):</p>
+    <ol>
+      <li>conectaDb() [función ya definida en el ejercicio anterior]</li>
+      <li>borraTabla()</li>
+      <li>creaTabla()</li>
+      <li>insertaRegistro($nombre, $apellidos)</li>
+      <li>cuentaRegistros()</li>
+      <li>muestraRegistros()</li>
+      <li>modificaRegistro($id, $nombre, $apellidos)</li>
+      <li>borraRegistros($id)</li>
+    </ol>
+
+    <p>Tras las definiciones de las funciones, escriba el programa que genere el mismo resultado que el ejercicio anterior haciendo llamadas a las funciones anteriores.</p>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="pdo-2-sqlite.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="pdo-2-sqlite.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>PDO 3 - SQLite: programa con biblioteca</h2>
+
+    <p>Modifique el programa anterior distribuyendo el programa en tres ficheros: index.php, config.php y biblioteca.php. El resultado en pantalla debe ser el mismo que en el ejercicio anterior.</p>
+
+    <p>El contenido de cada fichero será el siguiente:</p>
+    <ol>
+      <li>config.php: definiciones de las variables de configuración</li>
+      <li>biblioteca.php: funciones</li>
+      <li>index.php: programa que genera el mismo resultado del ejercicio anterior</li>
+    </ol>
+
+    <p>El fichero index.php llamará al fichero biblioteca.php, que a su vez llamrá al fichero config.php.</p>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="pdo-3-sqlite/index.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="pdo-3-sqlite/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de enero de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
