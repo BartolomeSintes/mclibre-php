@@ -10,7 +10,7 @@ require_once "../../comunes/biblioteca.php";
 session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"])) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }
