@@ -1,0 +1,1972 @@
+{
+    "id": "mclibre-bases-de-datos-3-b-0-tests",
+    "version": "2.0",
+    "name": "bases-de-datos-3-b-0",
+    "url": "http://localhost",
+    "tests": [
+        {
+            "id": "configuracion",
+            "name": "Configuración",
+            "comment": "Define variables de configuración",
+            "commands": [
+                {
+                    "id": "configuracion-1",
+                    "command": "store",
+                    "target": "/iaw/php/ejercicios/db-bases-de-datos-3-b/bases-de-datos-3-b-0",
+                    "value": "urlBase"
+                },
+                {
+                    "id": "configuracion-2",
+                    "command": "store",
+                    "target": "Bases de datos (3 B) 0 -",
+                    "value": "h1Base"
+                },
+                {
+                    "id": "configuracion-3",
+                    "command": "store",
+                    "target": "1000",
+                    "value": "maxEspera"
+                }
+            ]
+        },
+        {
+            "id": "definiciones-generales",
+            "name": "Variables General",
+            "comment": "Define variables",
+            "commands": [
+                {
+                    "id": "definiciones-generales-1",
+                    "command": "store",
+                    "target": "${urlBase}/db/tabla-personas",
+                    "value": "urlPersonas"
+                },
+                {
+                    "id": "definiciones-generales-2",
+                    "command": "store",
+                    "target": "${h1Base} Administrador -",
+                    "value": "h1Administrador"
+                },
+                {
+                    "id": "definiciones-generales-3",
+                    "command": "store",
+                    "target": "${h1Base} Personas -",
+                    "value": "h1Personas"
+                },
+                {
+                    "id": "definiciones-generales-4",
+                    "command": "store",
+                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4",
+                    "value": "personasNombreCorto"
+                },
+                {
+                    "id": "definiciones-generales-5",
+                    "command": "store",
+                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4a",
+                    "value": "personasNombreLargo"
+                },
+                {
+                    "id": "definiciones-generales-6",
+                    "command": "store",
+                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6",
+                    "value": "personasApellidosCorto"
+                },
+                {
+                    "id": "definiciones-generales-7",
+                    "command": "store",
+                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
+                    "value": "personasApellidosLargo"
+                },
+                {
+                    "id": "definiciones-generales-8",
+                    "command": "store",
+                    "target": "0123456789",
+                    "value": "personasTelefonoCorto"
+                },
+                {
+                    "id": "definiciones-generales-9",
+                    "command": "store",
+                    "target": "01234567890",
+                    "value": "personasTelefonoLargo"
+                },
+                {
+                    "id": "definiciones-generales-10",
+                    "command": "store",
+                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5",
+                    "value": "personasCorreoCorto"
+                },
+                {
+                    "id": "definiciones-generales-11",
+                    "command": "store",
+                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5a",
+                    "value": "personasCorreoLargo"
+                }
+            ]
+        },
+        {
+            "id": "preparacion-desconexion-inicial",
+            "name": "Desconexión inicial",
+            "comment": "Se desconecta haciendo clic en Desconectar (si existe).",
+            "commands": [
+                {
+                    "id": "preparacion-desconexion-inicial-1",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.search('Desconectarse') > -1)",
+                    "value": "contieneDesconectarse"
+                },
+                {
+                    "id": "preparacion-desconexion-inicial-2",
+                    "command": "if",
+                    "target": "${contieneDesconectarse}",
+                    "value": ""
+                },
+                {
+                    "id": "preparacion-desconexion-inicial-3",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": ""
+                },
+                {
+                    "id": "preparacion-desconexion-inicial-4",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "preparacion-desconexion-inicial-5",
+                    "command": "assertText",
+                    "target": "xpath=//li[1]/a[1]",
+                    "value": "Conectarse"
+                }
+            ]
+        },
+        {
+            "id": "preparacion-borrar-todo-con",
+            "name": "Conexión como root",
+            "comment": "Se conecta como root / root. Abre Administrador > Borrar todo.",
+            "commands": [
+                {
+                    "id": "preparacion-borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Conectarse",
+                    "value": ""
+                },
+                {
+                    "id": "preparacion-borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Base} Login 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "preparacion-borrar-todo-con-3",
+                    "command": "type",
+                    "target": "name=usuario",
+                    "value": "root"
+                },
+                {
+                    "id": "preparacion-borrar-todo-con-4",
+                    "command": "type",
+                    "target": "name=password",
+                    "value": "root"
+                },
+                {
+                    "id": "preparacion-borrar-todo-con-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Identificar']",
+                    "value": ""
+                },
+                {
+                    "id": "preparacion-borrar-todo-con-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
+                    "value": "${maxEspera}"
+                }
+            ]
+        },
+        {
+            "id": "borrar-todo",
+            "name": "Borrar Todo",
+            "comment": "Borra todo.",
+            "commands": [
+                {
+                    "id": "borrar-todo-1",
+                    "command": "click",
+                    "target": "linkText=Administrador",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Administrador} Inicio\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-todo-3",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Administrador} Borrar todo 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-todo-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Sí']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Administrador} Borrar todo 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-todo-7",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Tabla Usuarios borrada correctamente (si existía).'))",
+                    "value": "detectadoSQLite"
+                },
+                {
+                    "id": "borrar-todo-8",
+                    "command": "if",
+                    "target": "${detectadoSQLite}",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-9",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Tabla Usuarios borrada correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-todo-10",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Tabla Personas borrada correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-todo-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla Usuarios creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Registro de usuario creado correctamente."
+                },
+                {
+                    "id": "borrar-todo-13",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Tabla Personas creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-14",
+                    "command": "else",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-15",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Base de datos borrada correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-todo-16",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Base de datos creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-17",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-18",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-19",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-20",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
+                    "value": "${maxEspera}"
+                }
+            ]
+        },
+        {
+            "id": "sin-registros",
+            "name": "Personas > Sin registros",
+            "comment": "Prueba las opciones del menú Personas cuando no hay registros",
+            "commands": [
+                {
+                    "id": "sin-registros-1",
+                    "command": "click",
+                    "target": "linkText=Personas",
+                    "value": ""
+                },
+                {
+                    "id": "sin-registros-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Inicio\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "sin-registros-3",
+                    "command": "click",
+                    "target": "linkText=Listar",
+                    "value": ""
+                },
+                {
+                    "id": "sin-registros-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "sin-registros-5",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "No se ha creado todavía ningún registro."
+                },
+                {
+                    "id": "sin-registros-6",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "sin-registros-7",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "sin-registros-8",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "No se ha creado todavía ningún registro."
+                },
+                {
+                    "id": "sin-registros-9",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "sin-registros-10",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "sin-registros-11",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "No se ha creado todavía ningún registro."
+                },
+                {
+                    "id": "sin-registros-12",
+                    "command": "click",
+                    "target": "linkText=Modificar",
+                    "value": ""
+                },
+                {
+                    "id": "sin-registros-13",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "sin-registros-14",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "No se ha creado todavía ningún registro."
+                }
+            ]
+        },
+        {
+            "id": "insertar",
+            "name": "Personas > Añadir registro",
+            "comment": "Comprueba Personas > Añadir registro",
+            "commands": [
+                {
+                    "id": "insertar-2-1",
+                    "comment": "(TEST) Insertar > Inserta correctamente",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-2-3",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "Numa"
+                },
+                {
+                    "id": "insertar-2-4",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "Nigerio"
+                },
+                {
+                    "id": "insertar-2-5",
+                    "command": "type",
+                    "target": "name=telefono",
+                    "value": "123456"
+                },
+                {
+                    "id": "insertar-2-6",
+                    "command": "type",
+                    "target": "name=correo",
+                    "value": "numa.nigerio@micorreo.com"
+                },
+                {
+                    "id": "insertar-2-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Añadir']",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-2-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-2-9",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "insertar-3-1",
+                    "comment": "(TEST) Insertar > Aviso Todos los campos vacíos",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-3-3",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Añadir']",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-3-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-3-5",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Hay que rellenar al menos uno de los campos. No se ha guardado el registro."
+                },
+                {
+                    "id": "insertar-3-6",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "insertar-3-7",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
+                    "id": "insertar-4-1",
+                    "comment": "(TEST) Insertar > Avisos individuales Nombre / Apellidos / Teléfono / Correo largos",
+                    "command": "open",
+                    "target": "${urlPersonas}/insertar-2.php?nombre=${personasNombreLargo}&apellidos=${personasApellidosLargo}&telefono=${personasTelefonoLargo}&correo=${personasCorreoLargo}",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-4-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "El nombre no puede tener más de 40 caracteres."
+                },
+                {
+                    "id": "insertar-4-4",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Los apellidos no pueden tener más de 60 caracteres."
+                },
+                {
+                    "id": "insertar-4-5",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "El teléfono no puede tener más de 10 caracteres."
+                },
+                {
+                    "id": "insertar-4-6",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "El correo no puede tener más de 50 caracteres."
+                },
+                {
+                    "id": "insertar-4-7",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "insertar-4-8",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "4"
+                },
+                {
+                    "id": "insertar-5-1",
+                    "comment": "(TEST) Insertar > Inserta un registro directamente",
+                    "command": "open",
+                    "target": "${urlPersonas}/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-5-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                }
+            ]
+        },
+        {
+            "id": "listar",
+            "name": "Personas > Listar",
+            "comment": "Comprueba Personas > Listar",
+            "commands": [
+                {
+                    "id": "listar-2-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que muestra el listado correctamente",
+                    "command": "click",
+                    "target": "linkText=Listar",
+                    "value": ""
+                },
+                {
+                    "id": "listar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-2-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-2-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-2-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-3-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (nombre ASC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='nombre ASC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-3-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-3-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-3-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-3-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-4-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (nombre DESC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='nombre DESC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-4-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-4-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-4-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-4-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-5-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (apellido ASC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='apellidos ASC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-5-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-5-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-5-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-5-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-6-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (apellido DESC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='apellidos DESC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-6-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-6-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-6-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-6-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-7-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (telefono ASC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='telefono ASC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-7-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-7-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-7-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-7-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-8-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (telefono DESC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='telefono DESC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-8-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-8-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-8-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-8-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-8-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-9-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (correo ASC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='correo ASC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-9-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-9-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-9-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-9-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-9-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-10-1",
+                    "comment": "(TEST) Personas > Listar > Prueba que ordena el listado correctamente. (correo DESC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='correo DESC']",
+                    "value": ""
+                },
+                {
+                    "id": "listar-10-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "listar-10-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-10-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-10-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-10-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                }
+            ]
+        },
+        {
+            "id": "borrar",
+            "name": "Personas > Borrar",
+            "comment": "Comprueba Borrar",
+            "commands": [
+                {
+                    "id": "borrar-2-1",
+                    "comment": "(TEST) Personas > Borrar > Añade un tercer registro",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-2-3",
+                    "command": "open",
+                    "target": "${urlPersonas}/insertar-2.php?nombre=Julio&apellidos=César&telefono=3141592&correo=julio.cesar@micorreo.com",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-2-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-2-5",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "borrar-3-1",
+                    "comment": "(TEST) Personas > Borrar > Reordena registros sin perder casillas marcadas. Marca casilla",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-3-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "borrar-3-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "borrar-3-5",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[2]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "borrar-3-6",
+                    "command": "click",
+                    "target": "name=id[1]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-4-1",
+                    "comment": "(TEST) Personas > Borrar > Reordena registros sin perder casillas marcadas. (apellidos ASC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='apellidos ASC']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-4-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "borrar-4-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "borrar-4-5",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[1]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-4-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[2]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "borrar-5-1",
+                    "comment": "(TEST) Personas > Borrar > Reordena registros sin perder casillas marcadas. (apellidos DESC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='apellidos DESC']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-5-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "borrar-5-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "borrar-5-5",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[1]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "borrar-6-1",
+                    "comment": "(TEST) Personas > Borrar > Intenta borrar registro sin marcar ninguno",
+                    "command": "click",
+                    "target": "name=id[1]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-2",
+                    "command": "verifyNotChecked",
+                    "target": "xpath=//input[@name=\"id[1]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-3",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Borrar registro']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-6-5",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "No se ha seleccionado ningún registro."
+                },
+                {
+                    "id": "borrar-7-1",
+                    "comment": "(TEST) Personas > Borrar > Intenta borrar dos registros inexistentes",
+                    "command": "open",
+                    "target": "${urlPersonas}/borrar-2.php?id[50]=on&id[60]=on",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-7-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Registro no encontrado."
+                },
+                {
+                    "id": "borrar-7-4",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Registro no encontrado."
+                },
+                {
+                    "id": "borrar-7-5",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-7-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-7-7",
+                    "command": "click",
+                    "target": "name=id[1]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-7-8",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[1]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-7-9",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Borrar registro']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-7-10",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-7-11",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro borrado correctamente."
+                },
+                {
+                    "id": "borrar-8-1",
+                    "comment": "(TEST) Borrar > Borra dos registros",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-8-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-8-3",
+                    "command": "click",
+                    "target": "name=id[2]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-8-4",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[2]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-8-5",
+                    "command": "click",
+                    "target": "name=id[3]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-8-6",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[3]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-8-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Borrar registro']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-8-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-8-9",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Registro borrado correctamente."
+                },
+                {
+                    "id": "borrar-8-10",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Registro borrado correctamente."
+                }
+            ]
+        },
+        {
+            "id": "buscar",
+            "name": "Personas > Buscar",
+            "comment": "Comprueba Buscar",
+            "commands": [
+                {
+                    "id": "buscar-2-1",
+                    "comment": "(TEST) Personas > Buscar > Inserta tres registros directamente",
+                    "command": "open",
+                    "target": "${urlPersonas}/insertar-2.php?nombre=Numa&apellidos=Nigerio&telefono=123456&correo=numa.nigerio@micorreo.com",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "buscar-2-4",
+                    "command": "open",
+                    "target": "${urlPersonas}/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-2-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-2-6",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "buscar-2-7",
+                    "command": "open",
+                    "target": "${urlPersonas}/insertar-2.php?nombre=Julio&apellidos=César&telefono=3141592&correo=julio.cesar@micorreo.com",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-2-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-2-9",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "buscar-3-1",
+                    "comment": "(TEST) Personas > Buscar > Encuentra registros correctamente (busca por Nombre)",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-3-3",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "u"
+                },
+                {
+                    "id": "buscar-3-4",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-3-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-3-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Julio"
+                },
+                {
+                    "id": "buscar-3-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "buscar-3-8",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-3-9",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "buscar-4-1",
+                    "comment": "(TEST) Personas > Buscar > Reordena los registros encontrado correctamente (reordena por nombre)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='nombre DESC']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-4-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "buscar-4-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Julio"
+                },
+                {
+                    "id": "buscar-4-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-4-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "buscar-4-7",
+                    "command": "click",
+                    "target": "xpath=//button[@value='nombre ASC']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-4-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-4-9",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Julio"
+                },
+                {
+                    "id": "buscar-4-10",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "buscar-4-11",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-4-12",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "buscar-5-1",
+                    "comment": "(TEST) Personas > Buscar > Encuentra registros correctamente (busca por Apellidos)",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-5-3",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "a"
+                },
+                {
+                    "id": "buscar-5-4",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-5-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-5-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Julio"
+                },
+                {
+                    "id": "buscar-5-7",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-5-8",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "2"
+                },
+                {
+                    "id": "buscar-6-1",
+                    "comment": "(TEST) Personas > Buscar > Encuentra registros correctamente (busca por Teléfono y Correo)",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-6-3",
+                    "command": "type",
+                    "target": "name=telefono",
+                    "value": "6"
+                },
+                {
+                    "id": "buscar-6-4",
+                    "command": "type",
+                    "target": "name=correo",
+                    "value": "g"
+                },
+                {
+                    "id": "buscar-6-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-6-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-6-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "buscar-6-8",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-6-9",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "2"
+                },
+                {
+                    "id": "buscar-7-1",
+                    "comment": "(TEST) Personas > Buscar > No encuentra registros correctamente (busca por Teléfono)",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-7-3",
+                    "command": "type",
+                    "target": "name=telefono",
+                    "value": "91"
+                },
+                {
+                    "id": "buscar-7-4",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-7-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "buscar-7-6",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "No se han encontrado registros."
+                }
+            ]
+        },
+        {
+            "id": "modificar",
+            "name": "Personas > Modificar",
+            "comment": "Comprueba Modificar",
+            "commands": [
+                {
+                    "id": "modificar-2-1",
+                    "comment": "(TEST) Personas > Modificar > Sin seleccionar registros.",
+                    "command": "open",
+                    "target": "${urlPersonas}/modificar-2.php",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "No se ha seleccionado ningún registro."
+                },
+                {
+                    "id": "modificar-2-4",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "modificar-2-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
+                    "id": "modificar-3-1",
+                    "comment": "(TEST) Personas > Modificar > Selecciona registro no existebnte.",
+                    "command": "open",
+                    "target": "${urlPersonas}/modificar-2.php?id=50",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-3-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro no encontrado."
+                },
+                {
+                    "id": "modificar-3-4",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "modificar-3-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
+                    "id": "modificar-4-1",
+                    "comment": "(TEST) Personas > Modificar > Reordena registros sin perder casillas marcadas. Marca casilla",
+                    "command": "click",
+                    "target": "linkText=Modificar",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-4-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "modificar-4-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "modificar-4-5",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[2]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "modificar-4-6",
+                    "command": "click",
+                    "target": "xpath=//tr[3]/td[1]/input",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-5-1",
+                    "comment": "(TEST) Personas > Modificar > Reordena registros sin perder casillas marcadas. (nombre ASC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='nombre ASC']",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-5-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "modificar-5-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "modificar-5-5",
+                    "command": "verifyChecked",
+                    "target": "xpath=//tr[3]/td[1]/input",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-5-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[2]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "modificar-6-1",
+                    "comment": "(TEST) Personas > Modificar > Reordena registros sin perder casillas marcadas. (nombre DESC)",
+                    "command": "click",
+                    "target": "xpath=//button[@value='nombre DESC']",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-6-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "modificar-6-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "modificar-6-5",
+                    "command": "verifyChecked",
+                    "target": "xpath=//tr[1]/td[1]/input",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-6-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "modificar-7-1",
+                    "comment": "(TEST) Personas > Modificar > Modifica correctamente",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Modificar registro']",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-7-3",
+                    "command": "assertValue",
+                    "target": "xpath=//input[@name='nombre']",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "modificar-7-4",
+                    "command": "assertValue",
+                    "target": "xpath=//input[@name='apellidos']",
+                    "value": "Conejo"
+                },
+                {
+                    "id": "modificar-7-5",
+                    "command": "assertValue",
+                    "target": "xpath=//input[@name='telefono']",
+                    "value": "98765"
+                },
+                {
+                    "id": "modificar-7-6",
+                    "command": "assertValue",
+                    "target": "xpath=//input[@name='correo']",
+                    "value": "pepito.conejo@micorreo.com"
+                },
+                {
+                    "id": "modificar-7-7",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "Pepita"
+                },
+                {
+                    "id": "modificar-7-8",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "Coneja"
+                },
+                {
+                    "id": "modificar-7-9",
+                    "command": "type",
+                    "target": "name=telefono",
+                    "value": "4567"
+                },
+                {
+                    "id": "modificar-7-10",
+                    "command": "type",
+                    "target": "name=correo",
+                    "value": "pepita.coneja@micorreo.com"
+                },
+                {
+                    "id": "modificar-7-11",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Actualizar']",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-7-12",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 3\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-7-13",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro modificado correctamente."
+                },
+                {
+                    "id": "modificar-7-14",
+                    "command": "click",
+                    "target": "linkText=Listar",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-7-15",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "modificar-7-16",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[1]",
+                    "value": "Pepita"
+                },
+                {
+                    "id": "modificar-7-17",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[2]",
+                    "value": "Coneja"
+                },
+                {
+                    "id": "modificar-7-18",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[3]",
+                    "value": "4567"
+                },
+                {
+                    "id": "modificar-7-19",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[4]",
+                    "value": "pepita.coneja@micorreo.com"
+                },
+                {
+                    "id": "modificar-7-20",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "modificar-7-21",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "modificar-7-22",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "modificar-7-23",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
+                    "value": "${maxEspera}"
+                }
+            ]
+        },
+        {
+            "id": "test-completo",
+            "name": "Test completo",
+            "comment": "Ejecuta todo",
+            "commands": [
+                {
+                    "id": "test-completo-1",
+                    "command": "run",
+                    "target": "Configuración",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-2",
+                    "command": "run",
+                    "target": "Variables General",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-3",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//main",
+                    "value": "20000"
+                },
+                {
+                    "id": "test-completo-5",
+                    "command": "run",
+                    "target": "Desconexión inicial",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-6",
+                    "command": "run",
+                    "target": "Conexión como root",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-7",
+                    "command": "run",
+                    "target": "Borrar Todo",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-8",
+                    "command": "run",
+                    "target": "Personas > Sin registros",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-9",
+                    "command": "run",
+                    "target": "Personas > Añadir registro",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-10",
+                    "command": "run",
+                    "target": "Personas > Listar",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-11",
+                    "command": "run",
+                    "target": "Personas > Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-12",
+                    "command": "run",
+                    "target": "Personas > Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "test-completo-13",
+                    "command": "run",
+                    "target": "Personas > Modificar",
+                    "value": ""
+                }
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "id": "suite",
+            "name": "Suite",
+            "persistSession": false,
+            "parallel": false,
+            "timeout": 300,
+            "tests": [
+                "test-completo"
+            ]
+        }
+    ]
+}
