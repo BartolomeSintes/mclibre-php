@@ -246,7 +246,7 @@ if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     $registro = <span class="codigo-resaltado">$resultado-&gt;fetch()</span>;
-    print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;\n";
     print "\n";
     print "    &lt;p&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/p&gt;\n";
     print "\n";
@@ -268,7 +268,7 @@ if (!$resultado) {
 } elseif (!count($registros = <span class="codigo-resaltado">$resultado-&gt;fetchAll()</span>)) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else
-    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
     <span class="codigo-resaltado">foreach ($registros as $registro)</span> {
         print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
@@ -291,7 +291,7 @@ $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
-    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
     <span class="codigo-resaltado">foreach ($resultado as $registro)</span> {
         print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
@@ -568,9 +568,15 @@ $cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de l
       <section id="conexion-sqlite">
         <h4>Conexión con SQLite 3</h4>
 
-        <p>En SQLite, no se hace una conexión a un servidor, sino que simplemente se indica el archivo que va a contener la base de datos. En SQLite no hay un servidor que gestiona todas las bases de datos, sino que cada base de datos es un archivo independiente (que debe estar situado en un directorio que exista y en el que el servidor web tenga permisos de escritura).</p>
-
         <p>Para poder utilizar SQLite mediante PDO, debe estar activada la extensión pdo_sqlite en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-sqlite">apartado extensión pdo_sqlite en la lección de configuración de Apache y PHP</a>).</p>
+
+        <p>En SQLite, no se hace una conexión a un servidor, sino que simplemente se indica el archivo que va a contener la base de datos. En SQLite no hay un servidor que gestiona todas las bases de datos, sino que cada base de datos es un archivo independiente.</p>
+
+        <p>PDO puede crear el archivo SQLite, pero no puede crear la ruta hasta el archivo.</p>
+        <ul>
+          <li>Si se indica simplemente el nombre del archivo SQLite, el archivo se creará en el mismo directorio que se encuentra el programa PHP. Si estamos haciendo pruebas o ejercicios, es una solución aceptable, pero en un servidor público no sería una buena idea guardar el fichero SQLite en un directorio público porque cualquier visitante podría obtener la base de datos completaque debe estar situado en un directorio que exista y en el que el servidor web tenga permisos de escritura).</li>
+          <li>Si se indica un camino, hay que asegurarse de que ese camino existe y el servidor tiene permisos para acceder a él.</li>
+        </ul>
 
         <div class="codigo">
           <pre>
@@ -685,7 +691,8 @@ if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
-}</code>
+}
+print "\n";</code>
 </pre>
         </div>
       </section>
@@ -876,9 +883,9 @@ if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     $registro = $resultado-&gt;fetch();
-    print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;p&gt;&lt;strong&gt;Registro obtenido&lt;/strong&gt;&lt;/p&gt;\n";
     print "\n";
-    print "    &lt;p&gt;$registro[id] - $registro[nombre] - $valor[apellidos].&lt;/p&gt;\n";
+    print "    &lt;p&gt;$registro[id] - $registro[nombre] - $registro[apellidos].&lt;/p&gt;\n";
     print "\n";
 }</code>
 </pre>
@@ -899,10 +906,10 @@ $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
-    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
     foreach ($resultado as $registro) {
-        print "      &lt;li&gt;$registro[id] - $registro[nombre] - $valor[apellidos]&lt;/li&gt;\n";
+        print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
     }
     print "    &lt;/ul&gt;\n";
     print "\n";
@@ -910,7 +917,7 @@ if (!$resultado) {
 </pre>
               </div>
             </li>
-            <li>pero también se puede utilizar un bucle <span class="php-res">while</span> y el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php"><span class="php-fun">PDOStatement-&gt;fetch()</span></a>, que recupera el primer registro de la consulta. Es importante tener en cuenta que sólo se puede iterar una vez sobre el resultado de la consulta, ya que los registros se van eliminado del resultado de la consulta.
+            <li>Para este caso también se puede utilizar un bucle <span class="php-res">while</span> y el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php"><span class="php-fun">PDOStatement-&gt;fetch()</span></a>, que recupera el primer registro de la consulta. Es importante tener en cuenta que sólo se puede iterar una vez sobre el resultado de la consulta, ya que los registros se van eliminado del resultado de la consulta.
               <div class="codigo">
                 <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
@@ -920,7 +927,7 @@ $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
-    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
     while ($registro = $resultado-&gt;fetch()) {
         print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
@@ -952,7 +959,7 @@ if (!$resultado) {
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
-        print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+        print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
         print "    &lt;ul&gt;\n";
         foreach ($resultado as $registro) {
             print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
@@ -978,7 +985,7 @@ if (!$resultado) {
 } elseif (!count($registros = $resultado-&gt;fetchAll())) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
-    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;";
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
     foreach ($registros as $registro) {
         print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
@@ -1383,7 +1390,7 @@ $pdo = null;</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 16 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 23 de enero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

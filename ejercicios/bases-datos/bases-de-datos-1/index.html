@@ -36,7 +36,7 @@
 
   <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/2122/db-bases-de-datos-1-plantillas.zip">plantillas de los ejercicios Bases de datos (1) (Bases de datos)</a> que incluyen parte de las páginas (los fragmentos HTML y las bibliotecas específicas de bases de datos).</p>
 
-  <p>Se pueden descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html">página de soluciones</a>.</p>
+  <p>Puede descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html#21-22-con-bases-de-datos">página de soluciones</a>.</p>
 
   <hr class="corta">
 
@@ -166,7 +166,7 @@ $cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base
 
         <div class="codigo">
           <pre>
-<code class="language-php">// SQLITE: CONSULTAS DE BORRADO Y CREACiÓN DE TABLA
+<code class="language-php">// SQLITE: Consultas de borrado y creación de tablas
 
 $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
@@ -182,7 +182,7 @@ $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
 
         <div class="codigo">
           <pre>
-<code class="language-php">// MYSQL: CONSULTAS DE BORRADO Y CREACiÓN DE BASE DE DATOS Y TABLA
+<code class="language-php">// MYSQL: Consultas de borrado y creación de base de datos y tablas
 
 $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
@@ -427,10 +427,10 @@ if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apelli
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 ...
-foreach ($resultado as $valor) {
+foreach ($resultado as $registro) {
     print "        &lt;tr&gt;\n";
-    print "          &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
-    print "          &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+    print "          &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+    print "          &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
     print "        &lt;/tr&gt;\n";
 }</code>
 </pre>
@@ -554,11 +554,11 @@ foreach ($resultado as $valor) {
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 ...
-foreach ($resultado as $valor) {
+foreach ($resultado as $registro) {
     print "          &lt;tr&gt;\n";
-    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$valor[id]]\"&gt;&lt;/td&gt;\n";
-    print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
-    print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$registro[id]]\"&gt;&lt;/td&gt;\n";
+    print "            &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+    print "            &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
     print "          &lt;/tr&gt;\n";</code>
 </pre>
         </div>
@@ -570,7 +570,7 @@ foreach ($resultado as $valor) {
 <code class="language-php">// Recoge los registros seleccionados
 $id = recoge("id", []);
 
-foreach ($id as $indice =&gt; $valor) {
+foreach ($id as $indice =&gt; $registro) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
     $resultado = $pdo-&gt;prepare($consulta);
@@ -879,11 +879,11 @@ $resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apell
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 $resultado = $pdo-&gt;query($consulta);
 
-foreach ($resultado as $valor) {
+foreach ($resultado as $registro) {
     print "          &lt;tr&gt;\n";
-    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$valor[id]\"&gt;&lt;/td&gt;\n";
-    print "            &lt;td&gt;$valor[nombre]&lt;/td&gt;\n";
-    print "            &lt;td&gt;$valor[apellidos]&lt;/td&gt;\n";
+    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$registro[id]\"&gt;&lt;/td&gt;\n";
+    print "            &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+    print "            &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
     print "          &lt;/tr&gt;\n";
 }</code>
 </pre>
@@ -908,9 +908,9 @@ $resultado-&gt;execute([":id" =&gt; $id]);</code>
         <div class="codigo">
           <pre>
 <code class="language-php">// Muestra valor
-$valor = $resultado-&gt;fetch();
+$registro = $resultado-&gt;fetch();
 ...
-print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$valor[nombre]\" autofocus&gt;&lt;/td&gt;\n";</code>
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus&gt;&lt;/td&gt;\n";</code>
 </pre>
         </div>
       </li>

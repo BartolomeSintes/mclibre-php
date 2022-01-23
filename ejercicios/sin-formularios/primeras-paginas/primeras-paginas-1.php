@@ -30,4 +30,4 @@ print "\n";
 print "<body>\n";
 print "  <p>¡Hola, mundo!</p>\n";
 print "</body>\n";
-print "</html>";
+print "</html>\n";
