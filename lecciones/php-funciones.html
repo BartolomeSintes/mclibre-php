@@ -23,112 +23,698 @@
       <h2>Funciones y bibliotecas</h2>
 
       <ul>
-        <li><a href="#funciones">Funciones</a></li>
-        <li><a href="#predeterminados">Argumentos predeterminados</a></li>
+        <li><a href="#sin-argumentos">Funciones sin argumentos</a></li>
+        <li><a href="#independencia">Independencia</a></li>
+        <li><a href="#variables-globales">Variables globales</a></li>
+        <li><a href="#con-argumentos">Funciones con argumentos</a></li>
+        <li><a href="#argumentos-por-valor">Paso por valor</a></li>
+        <li><a href="#argumentos-por-referencia">Paso por referencia</a></li>
+        <li><a href="#devolucion">Devolución de valores</a></li>
+        <li><a href="#argumentos-predeterminados">Argumentos predeterminados</a></li>
+        <li><a href="#argumentos-indeterminados">Argumentos indeterminados</a></li>
         <li><a href="#bibliotecas">Bibliotecas</a></li>
       </ul>
     </div>
   </nav>
 
-  <section id="funciones">
-    <h2>Funciones</h2>
+  <p>Una función es un grupo de instrucciones, independiente del programa principal, que se puede reutilizar a lo largo de un programa. Las funciones nos ahorran tener que repetir el grupo de instrucciones, sustituyendolos por simples llamadas a las funciones.</p>
 
-    <p>En PHP se pueden definir funciones, de manera que no haga falta escribir el mismo código varias veces. Las funciones deben definirse antes de utilizarlas (aunque no sea en el mismo fragmento de código php). Las funciones pueden no tener argumento o tener argumentos por valor o por referencia.</p>
+  <p>En esta lección se tratan primero las funciones sin argumentos y después las funciones con argumentos. Todo lo que se comenta sobre las funciones sin argumentos (forma de definirlas, nombre, etc.) se aplica también a las funciones con argumentos.</p>
+
+  <section id="sin-argumentos">
+    <h2>Funciones sin argumentos</h2>
+
+    <p>Las funciones se identifican por su nombre. Las funciones se definen mediante la palabra reservada <span class="php-res">function</span> seguida del nombre de la función y unos paréntesis, seguidos de un conjunto de instrucciones escritos entre llaves. La llave que abre el bloque de instrucciones se suele escribir al principio de la línea siguiente, no a continuación del nombre de la función.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">function nombreDelaFuncion()
+{
+    bloque_de_sentencias
+}</code>
+</pre>
+    </div>
+
+    <p>Las funciones se aprovechan en el resto del programa escribiendo el nombre de la función seguido de paréntesis. PHP ejecuta el bloque de instrucciones de la función cada vez que se llama a la función.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Definición de la función prueba()
+<span class="codigo-resaltado">function prueba()</span>
+{
+    print "&lt;p&gt;I will not waste chalk.&lt;/p&gt;\n";
+    print "\n";
+    print "&lt;p&gt;I will not skateboard in the halls.&lt;/p&gt;\n";
+    print "\n";
+    print "&lt;p&gt;I will not burp in class.&lt;/p&gt;\n";
+    print "\n";
+}
+
+print "&lt;p&gt;Programa de prueba.&lt;/p&gt;\n";
+print "\n";
+// Llamadas a la función prueba()
+<span class="codigo-resaltado">prueba();</span>
+<span class="codigo-resaltado">prueba();</span>
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;Programa de prueba.&lt;/p&gt;
+
+&lt;p&gt;I will not waste chalk.&lt;/p&gt;
+
+&lt;p&gt;I will not skateboard in the halls.&lt;/p&gt;
+
+&lt;p&gt;I will not burp in class.&lt;/p&gt;
+
+&lt;p&gt;I will not waste chalk.&lt;/p&gt;
+
+&lt;p&gt;I will not skateboard in the halls.&lt;/p&gt;
+
+&lt;p&gt;I will not burp in class.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <ul>
+      <li>Si se llama a una función definida en el mismo fichero, la función puede estar definida antes o después de la llamada.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Definición de la función prueba()
+function prueba()
+{
+    print "&lt;p&gt;Hola!&lt;/p&gt;\n";
+}
+
+// Llamada a la función prueba()
+prueba();
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Hola!&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Llamada a la función prueba()
+prueba();
+
+// Definición de la función prueba()
+function prueba()
+{
+  print "&lt;p&gt;Hola!&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Hola!&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
 
     <p>Los nombres de las funciones siguen las mismas reglas de los identificadores de PHP, es decir, deben comenzar por una letra o un guion bajo (_) y el resto de caracteres pueden ser letras, números o guiones bajos (se pueden utilizar caracteres no ingleses como acentos, eñes, etc), pero los nombres de funciones no distinguen entre mayúsculas o minúsculas.</p>
 
     <p>La <a href="../otros/guia-estilo.html">guía de estilo PEAR para PHP</a> recomienda que los nombres de las funciones sigan el estilo <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a> (es decir, sin espacios ni guiones, con la primera palabra en minúsculas y el resto con la primera letra en mayúsculas).</p>
 
-    <p>Ejemplo de función y de su uso:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+    <ul>
+      <li>Si no se llama a una función en el programa principal, las funciones no tienen ningún efecto en la salida del programa (excepto si contienen errores de sintaxis que impidan la ejecución del programa).
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaHipotenusa
-<span class="codigo-resaltado">function calculaHipotenusa($arg1, $arg2)</span>
+// Definición de la función prueba()
+function prueba()
 {
-    $hipotenusa = sqrt($arg1 * $arg1 + $arg2 * $arg2);
-    return $hipotenusa;
+    print "&lt;p&gt;I will not waste chalk.&lt;/p&gt;\n";
+    print "\n";
+    print "&lt;p&gt;I will not skateboard in the halls.&lt;/p&gt;\n";
+    print "\n";
+    print "&lt;p&gt;I will not burp in class.&lt;/p&gt;\n";
+    print "\n";
 }
 
-// ESTO ES UN EJEMPLO DE USO DE LA FUNCIÓN calculaHipotenusa
-$cateto1 = 12;
-$cateto2 = 16;
-$hipotenusa = <span class="codigo-resaltado">calculaHipotenusa($cateto1, $cateto2)</span>;
-
-print "&lt;p&gt;El triángulo de lados $cateto1, $cateto2 \n";
-print "y $hipotenusa es rectángulo.&lt;/p&gt;\n";
+print "&lt;p&gt;Programa de prueba.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;El triángulo de lados 12, 16 y 20 es rectángulo.&lt;/p&gt;</code></pre>
-      </div>
-    </div>
-
-    <hr class="corta">
-
-    <p>PHP no distingue entre mayúsculas y minúsculas en los nombres de las funciones.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Programa de prueba.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+      <li>PHP no distingue ente mayúsculas y minúsculas en el nombre de las funciones.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-
-// ESTA ES LA DEFINICIÓN DE LA FUNCIÓN calculaHipotenusa
-<span class="codigo-resaltado">function calculaHipotenusa($arg1, $arg2)</span>
+// Definición de la función prueba()
+function prueba()
 {
-    $hipotenusa = sqrt($arg1*$arg1+$arg2*$arg2);
-    return $hipotenusa;
+    print "&lt;p&gt;I will not waste chalk.&lt;/p&gt;\n";
+    print "\n";
 }
 
-// ESTO ES UN EJEMPLO DE USO DE LA FUNCIÓN calculaHipotenusa
-$cateto1 = 12;
-$cateto2 = 16;
-$hipotenusa = <span class="codigo-resaltado">CALCULAHIPOTENUSA($cateto1, $cateto2)</span>;
-
-print "&lt;p&gt;El triángulo de lados $cateto1, $cateto2 \n";
-print "y $hipotenusa es rectángulo.&lt;/p&gt;\n";
+// Llamadas a la función prueba()
+<span class="codigo-resaltado">prueba();</span>
+<span class="codigo-resaltado">PRUEBA();</span>
+<span class="codigo-resaltado">PrUeBa();</span>
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;El triángulo de lados 12, 16 y 20 es rectángulo.&lt;/p&gt;</code></pre>
-      </div>
-    </div>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;I will not waste chalk.&lt;/p&gt;
 
-    <hr class="corta">
+&lt;p&gt;I will not waste chalk.&lt;/p&gt;
 
-    <p>No se pueden definir dos funciones con el mismo nombre.</p>
+&lt;p&gt;I will not waste chalk.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+      <li>En un programa no se pueden definir dos veces la misma función.
 
-    <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
-      </div>
-      <div class="codigo">
-        <pre>
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 <span class="codigo-resaltado">function prueba()</span>
 {
-    return;
+    print "&lt;p&gt;Hola!&lt;/p&gt;\n";
 }
 
 <span class="codigo-resaltado">function Prueba()</span>
 {
-    return;
+    print "&lt;p&gt;Adios!&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-html">
-        <p><b>Fatal error</b>: Cannot redeclare Prueba() (previously declared in ejemplo.php:4) in <b>ejemplo.php</b> on line <b>10</b><br></p>
-      </div>
-    </div>
+          </div>
+          <div class="resultado-html">
+            <p><b>Fatal error</b>: Cannot redeclare Prueba() (previously declared in ejemplo.php:4) in <b>ejemplo.php</b> on line <b>7</b><br></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="independencia">
+    <h2>Independencia de las funciones respecto al programa principal</h2>
+
+    <p>Las funciones son independientes del resto del programa. En particular, las variables que aparecen en una función son independientes de las variables del programa principal. En principio, ni la función tiene acceso a las variables del programa principal, ni el programa principal tiene acceso a las variables de la función.</p>
+
+    <ul>
+      <li>En el siguiente ejemplo, tanto el programa principal como la función utilizan una variable con el mismo nombre ($a), pero para el programa se trata de dos variables distintas.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Definición de la función prueba()
+function prueba()
+{
+    $a = 42;
+    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "\n";
+}
+
+// Damos un valor a la variable
+$a = 100;
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "\n";
+// Llamamos a la función, que da un valor distinto a una variable con el mismo nombre
+prueba();
+// Pero en el programa principal, la variable no ha cambiado su valor
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable a es 100.&lt;/p&gt;
+
+&lt;p&gt;La variable a es 42.&lt;/p&gt;
+
+&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>En el siguiente ejemplo, la función genera un aviso ya que se hace referencia a una variable no definida. Esto se debe a que la función no da valor a la variable $a y la función no tiene acceso a la variable $a del programa principal. Otro detalle a señalar es que el aviso se genera cuando el programa principal llama a la función, es decir, cuando se ejecuta la función.
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Definición de la función prueba()
+function prueba()
+{
+    // Intentamos escribir el valor de la variable $a
+    // pero como no está definida, se produce un aviso
+    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "\n";
+}
+
+// Damos un valor a la variable
+$a = 100;
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "\n";
+// Llamamos a la función
+prueba();
+// Volvemos a escribir la variable
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Programa de prueba.&lt;/p&gt;
+
+&lt;p&gt;La variable a es 100.&lt;/p&gt;
+
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;5&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;La variable a es .&lt;/p&gt;
+
+&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>En el siguiente ejemplo, es el programa principal el que genera el aviso ya que se hace referencia a una variable no definida. Aunque hemos llamado a la función que da valor a una variable $a, el aviso se produce porque el programa no tiene acceso a la variable $a de la función.
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Definición de la función prueba()
+function prueba()
+{
+    // La variable $a sólo está definida en la función, no fuera de ella
+    $a = 42;
+    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "\n";
+}
+
+// Llamamos a la función
+prueba();
+// Intentamos escribir el valor de la variable $a
+// pero como no está definida, se produce un aviso
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable a es 42.&lt;/p&gt;
+
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $a in &lt;b&gt;ejemplo.php&lt;/b&gt; on line &lt;b&gt;13&lt;/b&gt;&lt;br /&gt;
+&lt;p&gt;La variable a es .&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="variables-globales">
+    <h2>Variables globales</h2>
+
+    <p>Podemos hacer que una función tenga acceso a las variables del programa principal, indicando en el cuerpo de la función los nombres de las variables precedidas de la palabra reservada <span class="php-res">global</span>.</p>
+
+    <ul>
+      <li>En el siguiente ejemplo, la función puede escribir el valor de la variable definida en el programa.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function prueba()
+{
+    // Declaramos la variable $a como global
+    global $a;
+
+    print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+    print "\n";
+}
+
+$a = 100;
+prueba();
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+      <li>El acceso a las variables globales es completo, es decir, las variables se pueden modificar, como muestra el siguiente ejemplo:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function prueba()
+{
+    global $a;
+
+    // Modificamos la variable $a en la función
+    $a = 50;
+}
+
+$a = 100;
+prueba();
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable a es 50.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
 
   </section>
 
-  <section id="predeterminados">
+  <section id="con-argumentos">
+    <h2>Funciones con argumentos (valores)</h2>
+
+    <p>Podemos enviar datos a una función incluyendo argumentos en su llamada. En la definición de la función deben indicarse los argumentos que se van a recibir, escribiéndolos entre los paréntesis como variables, separadas por comas. En el programa principal, los datos que se quieren enviar a la función simplemente se incluyen en la llamada a la función escribiéndolos entre los paréntesis, separados por comas. La función guarda los valores en los argumentos (como variables) en el orden indicado en la definición. Los argumentos se pueden utilizar o no en la función, pero si una función se define con argumentos, la llamada a la función debe incluir todos los argumentos indicados en la definición.</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">function nombreDelaFuncion($argumento_1, $argumento_2, etc ...) {
+    bloque_de_sentencias
+}</code>
+</pre>
+    </div>
+
+    <p>En este apartado se trata el caso más sencillo, es decir, cuando los argumentos son simplemente valores (número, cadenas, matrices, etc.). En los dos apartados siguientes se tratan los casos en los que los argumentos son variables del programa principal.</p>
+
+    <ul>
+      <li>En el ejemplo siguiente, enviamos una cadena a la función para que la incluya en la salida de la función.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function saludo($nombre)
+{
+    print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+}
+
+saludo("Don Pepito");
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>En el ejemplo siguiente, enviamos una cadena y un número a la función.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function saludo($nombre, $veces)
+{
+    for ($i = 0; $i &lt; $veces; $i++) {
+        print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+
+saludo("Don Pepito", 3);
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;
+
+&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;
+
+&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>El ejemplo siguiente produce un error porque en él se llama sin argumentos a una función que tiene definido un argumento.
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Definición de la función prueba($x) con 1 argumento
+function prueba($x)
+{
+    // Esta función no hace nada
+}
+
+// LLamamos a la función sin enviar el argumento
+prueba();
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado">
+            <pre><code class="language-html"><br />
+<b>Fatal error</b>:  Uncaught ArgumentCountError: Too few arguments to function prueba(), 0 passed in ejemplo.php on line 9 and exactly 1 expected in ejemplo.php:3
+Stack trace:
+#0 ejemplo.php(9): prueba()
+#1 {main}
+  thrown in <b>ejemplo.php</b> on line <b>3</b><br /></code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>PHP no produce error si se envía un argumento a una función que no tiene definidos argumentos, pero el argumento enviado no se utiliza para nada.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function saludo()
+{
+    print "&lt;p&gt;Hola!&lt;/p&gt;\n";
+}
+
+saludo("Don Pepito");
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="argumentos-por-valor">
+    <h2>Funciones con argumentos: paso por valor</h2>
+
+    <p>Cuando llamamos a una función escribiendo como argumento una variable del programa principal, lo único que se envía es el valor de la variable. En programación está situación se suele llamar "paso por valor".</p>
+
+    <ul>
+      <li>En el siguiente ejemplo, la función puede escribir el valor de la variable definida en el programa. La función conoce el valor, pero no sabe qué variable tenía ese valor.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Definición de la función prueba()
+function prueba($x)
+{
+    print "&lt;p&gt;La variable es $x.&lt;/p&gt;\n";
+    print "\n";
+}
+
+// Damos un valor a las variables
+$a = 100;
+$b = 50;
+print "&lt;p&gt;La variable a es $a y la variable b es $b.&lt;/p&gt;\n";
+print "\n";
+// Llamamos a la función
+prueba($a);
+prueba($b);
+// Volvemos a escribir las variables
+print "&lt;p&gt;La variable a es $a y la variable b es $b.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable a es 100 y la variable b es 50.&lt;/p&gt;
+
+&lt;p&gt;La variable es 100.&lt;/p&gt;
+
+&lt;p&gt;La variable es 50.&lt;/p&gt;
+
+&lt;p&gt;La variable a es 100 y la variable b es 50.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+      <li>En un paso por valor, la función recibe el valor pero no puede modificar la variable del programa principal, como muestra el siguiente ejemplo.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function prueba($x)
+{
+    $x = 200;
+    print "&lt;p&gt;La variable es $x.&lt;/p&gt;\n";
+    print "\n";
+}
+
+$a = 100;
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+print "\n";
+prueba($a);
+print "&lt;p&gt;La variable a es $a.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;La variable a es 100.&lt;/p&gt;
+
+&lt;p&gt;La variable es 200.&lt;/p&gt;
+
+&lt;p&gt;La variable a es 100.&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>El nombre de un argumento puede coincidir con el nombre de una variable del programa principal, pero PHP las trata como variables distintas.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function saludo($nombre)
+{
+    $nombre = "desconocido";
+    print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+    print "\n";
+}
+
+$nombre = "Don Pepito";
+saludo($nombre);
+print "&lt;p&gt;Hola, $nombre!&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;Hola, desconocido!&lt;/p&gt;
+
+&lt;p&gt;Hola, Don Pepito!&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="argumentos-por-referencia">
+    <h2>Funciones con argumentos: paso por referencia</h2>
+
+    <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
+
+    <p>manual de PHP: <a href="https://www.php.net/manual/en/language.references.pass.php">Paso por referencia</a></p>
+  </section>
+
+  <section id="devolucion">
+    <h2>Funciones que devuelven valores</h2>
+
+    <p>De la misma manera que el programa principal puede enviar valores a una función, una función puede devolver uno o varios valores al programa principal. La palabra reservada <span class="php-res">return</span> permite indicar la variable que se devuelve.</p>
+
+    <ul>
+      <li>El ejemplo siguiente muestra una función que devuelve la suma de los valores recibidos:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function suma($arg1, $arg2)
+{
+    <span class="codigo-resaltado">return</span> $arg1 + $arg2;
+}
+
+$a = 20;
+$b = 30;
+$suma = suma($a, $b);
+print "&lt;p&gt;$a + $b = $suma&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;$a + $b = " . suma($a, $b) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;
+
+&lt;p&gt;20 + 30 = 50&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>La ejecución de una función se interrumpe cuando se ejecuta un <span class="php-res">return</span>:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function suma($arg1, $arg2)
+{
+    return $arg1 + $arg2;
+    // Esta instrucción no se ejecuta nunca.
+    print "&lt;p&gt;Hola&lt;/p&gt;\n";
+}
+
+$a = 20;
+$b = 30;
+print "&lt;p&gt;$a + $b = " . suma($a, $b) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+      </li>
+
+      <li>Una función puede devolver varios valores, devolviendo una matriz. Desde PHP 7.1 (publicado en diciembre de 2016) para recoger los valores devueltos se pueden utilizar corchetes. Técnicamente, esta operación se denomina desestrucutrar la matriz y en versiones anteriores se debía hacer con la construcción del lenguaje <a href="https://www.php.net/manual/en/function.list.php"><span class="php-res">list()</span></a>. En el ejemplo siguiente, la función devuelve la suma y el producto de los valores recibidos:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function sumaProducto($arg1, $arg2)
+{
+    return [$arg1 + $arg2, $arg1 * $arg2];
+}
+
+$a = 20;
+$b = 30;
+[$suma, $producto] = sumaProducto($a, $b);
+print "&lt;p&gt;$a + $b = $suma&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;$a * $b = $producto&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre><code class="language-html">&lt;p&gt;20 + 30 = 50&lt;/p&gt;
+
+&lt;p&gt;20 * 30 = 600&lt;/p&gt;
+</code></pre>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="argumentos-predeterminados">
     <h2>Funciones con argumentos predeterminados</h2>
 
     <p>En PHP se pueden definir funciones con argumentos predeterminados, de manera que si en la llamada a la función no se envía un argumento, la función asume un valor predeterminado. Lógicamente, los argumentos predeterminados deben ser los últimos en la lista de argumentos, para evitar ambigüedades.</p>
@@ -161,6 +747,7 @@ $dato2 = 16;
 // EL TERCER ARGUMENTO INDICA EL TIPO DE MEDIA A CALCULAR
 $media = calculaMedia(<span class="codigo-resaltado">$dato1, $dato2, "geométrica"</span>);
 print "&lt;p&gt;La media geométrica de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
+print "\n";
 
 // AL NO PONER EL TERCER ARGUMENTO, DEVUELVE LA MEDIA ARITMÉTICA
 $media = calculaMedia(<span class="codigo-resaltado">$dato1, $dato2</span>);
@@ -171,10 +758,17 @@ print "&lt;p&gt;La media aritmética de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
       <div class="resultado-codigo">
         <pre>
 <code class="language-html">&lt;p&gt;La media geométrica de 12 y 16 es 6.9282032302755.&lt;/p&gt;
+
 &lt;p&gt;La media aritmética de 12 y 16 es 14.&lt;/p&gt;</code>
 </pre>
       </div>
     </div>
+  </section>
+
+  <section id="argumentos-indeterminados">
+    <h2>Funciones con un número de argumentos indeterminados</h2>
+
+    <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
   </section>
 
   <section id="bibliotecas">
@@ -287,6 +881,8 @@ print "  &lt;p&gt;Esta página también es válida&lt;/p&gt;";
 
     <p>Se pueden crear todas las bibliotecas que se necesiten e incluir cualquier número de bibliotecas en cualquier punto de un programa. Las bibliotecas pueden a su vez incluir otras bibliotecas.</p>
 
+    <p>Si una función está definida en una biblioteca, se debe incluir la biblioteca antes de llamar a la función o se generará un error.</p>
+
     <hr class="corta">
 
     <p>Normalmente, las bibliotecas suelen contener funciones, definiciones de constantes o inicialización de variables, pero en realidad pueden incluir cualquier tipo de código php, que se ejecutará en la posición en la que se incluya la biblioteca.</p>
@@ -364,7 +960,7 @@ print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de diciembre de 2018</p>
+    <p class="ultmod">Última modificación de esta página: 23 de enero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
