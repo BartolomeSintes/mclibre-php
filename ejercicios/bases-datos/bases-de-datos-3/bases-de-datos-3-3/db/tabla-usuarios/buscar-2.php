@@ -31,7 +31,7 @@ $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
 $resultado = $pdo->prepare($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!$resultado->execute([":usuario" => "%$usuario%", ":password" => "%$password%"])) {
+} elseif (!$resultado->execute([":usuario" => "%$usuario%", ":password" => "%" . encripta($password) . "%"])) {
     print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif (!count($registros = $resultado->fetchAll())) {
     print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
