@@ -65,6 +65,7 @@
               <pre>
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
+
 $_SESSION["conectado"] = true;
 header("location:../index.php");</code>
 </pre>
@@ -75,6 +76,7 @@ header("location:../index.php");</code>
               <pre>
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
+
 if (!isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit;
@@ -87,7 +89,9 @@ if (!isset($_SESSION["conectado"])) {
               <pre>
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
+
 session_destroy();
+
 header("location:../index.php");</code>
 </pre>
             </div>
@@ -508,7 +512,8 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             </div>
           </li>
           <li>[buscar-1.php y buscar-2.php]
-            <p>Buscar por contraseña no tiene demasiado sentido porque en la base de datos se guarda el <i>hash</i> de la contraseña. El único motivo para buscar por contraseñas podría ser para ver qué usuarios tienen la contraseña en blanco (o contraseñas triviales como 1234, por ejemplo).</p>
+            <p>No se incluye el campo contraseña en el formulario. Buscar por contraseña no tiene demasiado sentido porque en la base de datos se guarda el <i>hash</i> de la contraseña.</p>
+            <p>El único motivo para buscar por contraseñas podría ser para ver qué usuarios tienen la contraseña en blanco (o contraseñas triviales como 1234, por ejemplo). Pero como la búsqueda tiene en cuenta todos los campos, incluir la contraseña en la búsqueda reduce completamente los resultados de la búsqueda.</p>
           </li>
           <li>[modificar-2.php]
             <p>El nombre del Administrador inicial no se puede cambiar (su nombre se establece en la variable de configuración $cfg["rootName"]). Su contraseña se puede cambiar o no dependiendo del valor de la variable de configurtación $cfg["rootPasswordModificable"] (<span class="php-con">true</span> o <span class="php-con">false</span>). El bloqueo del cambio de contraseña lo he incluido para que la aplicación que tengo incluida en la página de ejercicios de los apuntes esté siempre accesible a los visitantes de la web:</p>
@@ -693,8 +698,8 @@ define("NIVEL_ADMINISTRADOR", 2);           // Usuario web de nivel Administrado
 // Niveles de usuario
 
 $cfg["usuariosNiveles"] = [
-    "Usuario Básico" =&gt; NIVEL_USUARIO_BASICO,
-    "Administrador"  =&gt; NIVEL_ADMINISTRADOR,
+    NIVEL_USUARIO_BASICO =&gt; "Usuario Básico",
+    NIVEL_ADMINISTRADOR =&gt; "Administrador",
 ];</code>
 </pre>
             </div>
@@ -727,7 +732,7 @@ $cfg["usuariosNiveles"] = [
 
         $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
                      (usuario, password, nivel)
-                     VALUES ('$cfg[rootName]', '$cfg[rootPassword]', " . $cfg["usuariosNiveles"]["Administrador"] . ")";
+                     VALUES ('$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
         ...</code>
 </pre>
             </div>
@@ -750,7 +755,7 @@ $cfg["usuariosNiveles"] = [
 
             $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
                          (usuario, password, nivel)
-                         VALUES ('$cfg[rootName]', '$cfg[rootPassword]', " . $cfg["usuariosNiveles"]["Administrador"] . ")";
+                         VALUES ('$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
             ...</code>
 </pre>
             </div>
@@ -813,8 +818,6 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] &lt; NIVEL_USUARIO_
         }
     } elseif ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
       ...
-    } else {
-        print "        &lt;li&gt;Error en la selección de menú&lt;/li&gt;\n";
     }</code>
 </pre>
             </div>
@@ -832,7 +835,7 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] &lt; NIVEL_USUARIO_
     print "            &lt;td&gt;\n";
     print "              &lt;select name=\"nivel\"&gt;\n";
     foreach ($cfg["usuariosNiveles"] as $indice =&gt; $valor) {
-        print "                &lt;option value=\"$valor\"&gt;$indice&lt;/option&gt;\n";
+        print "                &lt;option value=\"$indice\"&gt;$valor&lt;/option&gt;\n";
     }
     print "              &lt;/select&gt;\n";
     print "            &lt;/td&gt;\n";
@@ -850,7 +853,7 @@ $nivelOk    = false;
 if ($nivel == "") {
     print "    &lt;p class=\"aviso\"&gt;Hay que seleccionar un nivel de usuario.&lt;/p&gt;\n";
     print "\n";
-} elseif (!in_array($nivel, $cfg["usuariosNiveles"])) {
+} elseif (!array_key_exists($nivel, $cfg["usuariosNiveles"])) {
     print "    &lt;p class=\"aviso\"&gt;Nivel de usuario incorrecto.&lt;/p&gt;\n";
     print "\n";
 } else {
@@ -886,10 +889,27 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
         print "          &lt;tr&gt;\n";
         print "            &lt;td&gt;$registro[usuario]&lt;/td&gt;\n";
         print "            &lt;td&gt;$registro[password]&lt;/td&gt;\n";
-        print "            &lt;td&gt;" . array_search($registro["nivel"], $cfg["usuariosNiveles"]) . "&lt;/td&gt;\n";
+        print "            &lt;td&gt;{$cfg["usuariosNiveles"][$registro["nivel"]]}&lt;/td&gt;\n";
         print "          &lt;/tr&gt;\n";
     }
 ...</code>
+</pre>
+            </div>
+          </li>
+          <li>[buscar-1.php] En el menú de selección del nivel de usuario incluimos como primera opción una opción vacía para indicar que nos da igual el nivel de usuario:
+            <div class="codigo">
+              <pre>
+<code class="language-php">    print "          &lt;tr&gt;\n";
+    print "            &lt;td&gt;Nivel:&lt;/td&gt;\n";
+    print "            &lt;td&gt;\n";
+    print "              &lt;select name=\"nivel\"&gt;\n";
+    print "                &lt;option value=\"\"&gt;&lt;/option&gt;\n";
+    foreach ($cfg["usuariosNiveles"] as $indice =&gt; $valor) {
+        print "                &lt;option value=\"$indice\"&gt;$valor&lt;/option&gt;\n";
+    }
+    print "              &lt;/select&gt;\n";
+    print "            &lt;/td&gt;\n";
+    print "          &lt;/tr&gt;\n";</code>
 </pre>
             </div>
           </li>
@@ -899,7 +919,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 30 de enero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
