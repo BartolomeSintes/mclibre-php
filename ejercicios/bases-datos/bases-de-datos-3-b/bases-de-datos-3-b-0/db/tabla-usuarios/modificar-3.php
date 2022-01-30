@@ -49,7 +49,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["dbUsuariosTamPassword"]) {
 if ($nivel == "") {
     print "    <p class=\"aviso\">Hay que seleccionar un nivel de usuario.</p>\n";
     print "\n";
-} elseif (!in_array($nivel, $cfg["usuariosNiveles"])) {
+} elseif (!array_key_exists($nivel, $cfg["usuariosNiveles"])) {
     print "    <p class=\"aviso\">Nivel de usuario incorrecto.</p>\n";
     print "\n";
 } else {

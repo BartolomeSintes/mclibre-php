@@ -77,7 +77,7 @@ if (!$resultado) {
         }
         print "            <td>$registro[usuario]</td>\n";
         print "            <td>$registro[password]</td>\n";
-        print "            <td>" . array_search($registro["nivel"], $cfg["usuariosNiveles"]) . "</td>\n";
+        print "            <td>{$cfg["usuariosNiveles"][$registro["nivel"]]}</td>\n";
         print "          </tr>\n";
     }
     print "        </tbody>\n";

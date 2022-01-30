@@ -42,7 +42,7 @@ if (!$resultado) {
     print "              <select name=\"nivel\">\n";
     print "                <option value=\"\"></option>\n";
     foreach ($cfg["usuariosNiveles"] as $indice => $valor) {
-        print "                <option value=\"$valor\">$indice</option>\n";
+        print "                <option value=\"$indice\">$valor</option>\n";
     }
     print "              </select>\n";
     print "            </td>\n";
