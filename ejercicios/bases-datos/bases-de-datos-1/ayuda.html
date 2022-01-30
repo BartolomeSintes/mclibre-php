@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Bases de datos 1. Ayuda. Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios - Bases de datos 1 - Ayuda</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Bases de datos 1 - Ayuda</h2>
+
+      <ul>
+        <li><a href="#ejercicio-1">1 - Comprobaciones</a></li>
+        <li><a href="#ejercicio-2">2 - Mejoras</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP de los ejercicios <a href="index.html">Bases de datos (2)</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>Bases de datos (2) 1 - Comprobaciones</h2>
+
+    <ul>
+      <li>En cualquier consulta, compruebe que la consulta no ha dado error.
+        <p>En las páginas que hacen consultas, es necesario conectarse antes a la base de datos y es conveniente cerrar la conexión después (aunque como las conexiones se cierran automáticamente al terminar el programa, a menudo la conexión no se cierra explícitamente).</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$pdo = conectaDb();
+ ...
+$pdo = null;</code>
+</pre>
+        </div>
+
+        <p>En el ejemplo siguiente se comprueba el resultado de la consulta antes de seguir. La consulta podría dar error si el SGBD no está disponible, si la base de datos no ha sido creada todavía, etc. Si es así, poco se puede hacer, salvo informar al usuario del problema.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+  ...</code>
+</pre>
+        </div>
+      </li>
+      <li>config.php
+        <ul>
+          <li>Defina una ocpión de configuración que contenga el máximo número de registros que puede contener la tabla de Personas.
+
+            <div class="codigo">
+              <pre><code class="language-php">// Número máximo de registros en las tablas
+
+$cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas</code></pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>insertar-1.php
+        <ul>
+          <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
+            <p>En el ejemplo siguiente la consulta devuelve un único registro con una única columna, que se obtiene con el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">fetchColumn()</a>.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasMaxReg"]) {
+    print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
+    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
+} else {
+  ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>insertar-2.php
+        <ul>
+          <li>Compruebe que el usuario no ha dejado todos los campos vacíos.
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">if ($nombre == "" && $apellidos == "") {
+    print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
+    print "\n";
+    $nombreOk = $apellidosOk = false;
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Compruebe que no se ha alcanzado ya el número máximo de registros.
+            <p>Es conveniente hacer esta comprobación aunque se haya hecho ya en insertar-1.php, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar-1.php.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+    $resultado = $pdo-&gt;query($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasMaxReg"]) {
+        print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
+        print "\n";
+        print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";
+    } else {
+        ...</code>
+</pre>
+            </div>
+          </li>
+          <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda.
+
+            <p>Esta consulta se debe realizar con sentencias preparadas ya que incluye datos proporcionados por el usuario.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                     WHERE nombre=:nombre
+                     AND apellidos=:apellidos";
+
+        $resultado = $pdo-&gt;prepare($consulta);
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
+            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+            print "    &lt;p class=\"aviso\"&gt;El registro ya existe.&lt;/p&gt;\n";
+        } else {
+            ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>listar.php
+        <ul>
+          <li>Compruebe que hay registros que listar en la agenda.
+
+            <p>Para no tener que hacer una consulta contando los registros y otra recuperando los registros, utilizaremos el método <span class="php-fun">-&gt;fetchAll()</span> y la función <span class="php-fun">count()</span>.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+             ORDER BY $ordena";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!count($registros = $resultado-&gt;fetchAll())) {
+    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
+} else {
+  ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>borrar-1.php
+        <ul>
+          <li>Compruebe que hay registros que borrar en la agenda.
+            <p>Esta comprobación es la misma que la de listar.php</p>
+          </li>
+        </ul>
+      </li>
+      <li>borrar-2.php
+        <ul>
+          <li>Compruebe que se ha marcado algún registro para borrar.
+            <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la función <span class="php-fun">count()</span>.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">$id = recoge("id", []);
+
+if (count($id) == 0) {
+    print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
+} else {
+  ...</code>
+</pre>
+            </div>
+          </li>
+          <li>Compruebe que el registro a borrar existe.
+            <div class="codigo">
+              <pre>
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                     WHERE id=:indice";
+
+        $resultado = $pdo-&gt;prepare($consulta);
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif ($resultado-&gt;fetchColumn() == 0) {
+            print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
+        } else {
+  ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>buscar-1.php
+        <ul>
+          <li>Compruebe que hay registros que buscar en la agenda.
+            <p>Esta comprobación es la misma que la de listar.php</p>
+          </li>
+        </ul>
+      </li>
+      <li>buscar-2.php
+        <ul>
+          <li>Compruebe que se han encontrado registros.
+            <p>Esta comprobación es similar a la de comprobar que no se ha alcanzado el máximo de registros, pero utilizando sentencias preparadas:</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+             WHERE nombre LIKE :nombre
+             AND apellidos LIKE :apellidos";
+$resultado = $pdo-&gt;prepare($consulta);
+$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);
+
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif ($resultado-&gt;fetchColumn() == 0) {
+    print "    &lt;p class=\"aviso\"&gt;No se han encontrado registros.&lt;/p&gt;\n";
+} else {
+  ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>modificar-1.php
+        <ul>
+          <li>Compruebe que hay registros que modificar en la agenda.
+            <p>Esta comprobación es la misma que la de listar.php</p>
+          </li>
+        </ul>
+      </li>
+      <li>modificar-2.php
+        <ul>
+          <li>Compruebe que se ha marcado algún registro para modificar.
+            <p>Esta comprobación es similar a la de comprobar que se ha marcado algún registro para borrar, pero en este caso no se trata de una matriz</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">$id = recoge("id");
+
+if ($id == "") {
+    print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
+} else {
+  ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+        <ul>
+          <li>Compruebe que se ha encontrado el registro seleccionado para modificar.
+            <p>Esta comprobación es similar a la de comprobar que se han encontrado registros de buscar-2.php.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                     WHERE id=:id";
+        $resultado = $pdo-&gt;prepare($consulta);
+        $resultado-&gt;execute([":id" =&gt; $id]);
+
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif ($resultado-&gt;fetchColumn() == 0) {
+            print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
+        } else {
+          ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>modificar-3.php
+        <ul>
+          <li>Compruebe que se ha recibido el id del registro a modificar
+            <p>Esta comprobación es la misma que la de modificar-2.php.</p>
+          </li>
+          <li>Compruebe que el usuario no ha dejado todos los campos vacíos.
+            <p>Esta comprobación es la misma que la de modificar-2.php.</p>
+          </li>
+          <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda (es decir, que al modificar un registro lo hagamos coincidir con otro ya incluido en la agenda).
+            <p>Esta comprobación es similar a la de insertar-2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">            // La consulta cuenta los registros con un id diferente porque MySQL no distingue
+            // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
+            // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
+            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                         WHERE nombre=:nombre
+                         AND apellidos=:apellidos
+                         AND id&lt;&gt;:id";
+            $resultado = $pdo-&gt;prepare($consulta);
+            $resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);
+
+            if (!$resultado) {
+                print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+                print "    &lt;p class=\"aviso\"&gt;Ya existe un registro con esos mismos valores. "
+                    . "No se ha guardado la modificación.&lt;/p&gt;\n";
+            } else {
+              ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Bases de datos (2) 2 - Mejoras</h2>
+
+    <p>En cualquier listado en forma de tabla, queremos poder ordenar los registros en un orden determinado (por cualquier columna, en orden ascendente o descendente).</p>
+
+    <p>Para ello deberíamos incluir un ORDER BY en las consultas que seleccionan los registros. Por ejemplo:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$consulta  = "SELECT * FROM $cfg[dbPersonasTabla]
+              ORDER BY $ordena";</code>
+</pre>
+    </div>
+
+    <p>La columna y el orden deberían haberse recogido previamente. Al tratarse de un dato proporcionado por el usuario, por seguridad deberían utilizarse consultas preparadas, pero los nombres de columnas no se pueden proporcionar como parámetros. Para resolver este problema, utilizaremos una función de recogida especial que comprobará si el dato recibido es uno de los valores posibles (los valores posibles son los nombres de las columnas y el tipo de ordenación, ASC o DESC). En caso de no recibir un valor de ordenación o recibir un valor incorrecto, se asignará un valor predeterminado.</p>
+
+    <p>La función recogeValores() tendrá tres argumentos: el campo a recoger, una matriz con los valores posibles y el valor predeterminado de ordenación. En el ejemplo siguiente, el valor predeterminado es listar por orden alfabético del nombre:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");</code>
+</pre>
+    </div>
+
+    <ul>
+      <li>biblioteca.php
+
+        <p>En biblioteca.php la función recogeValores() y la matriz de valores posibles podrían ser las siguientes:</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Valores de ordenación de la tabla
+
+$cfg["dbPersonasColumnasOrden"] = [
+    "nombre ASC", "nombre DESC",
+    "apellidos ASC", "apellidos DESC",
+];
+
+function recogeValores($var, $registroesValidos, $registroPredeterminado)
+{
+    foreach ($registroesValidos as $registroValido) {
+        if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $registroValido) {
+            return $registroValido;
+        }
+    }
+    return $registroPredeterminado;
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>listar.php, borrar-1.php, buscar-2.php, modificar-1.php
+        <p>Para ofrecer al usuario la posibilidad de ordenar los registros, podemos insertar en cada una de las cabeceras de cada columna de la tabla dos imágenes de flechas: <img src="../../../img/ejercicios/bases-de-datos/abajo.svg" alt="A-Z" title="A-Z" width="15" height="12"> y <img src="../../../img/ejercicios/bases-de-datos/arriba.svg" alt="Z-A" title="Z-A" width="15" height="12">, a ambos lados de los nombres de las columnas.</p>
+
+        <p>Para que al hacer clic en las imágenes, se actualice el contenido, cada imagen estará contenida en un botón que envíe el criterio de ordenación deseado.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">        print "            &lt;th&gt;\n";
+        print "              &lt;button name=\"ordena\" value=\"nombre ASC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "              Nombre\n";
+        print "              &lt;button name=\"ordena\" value=\"nombre DESC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "            &lt;/th&gt;\n";</code>
+</pre>
+        </div>
+
+        <p>Por tanto, estas páginas deben incluir un formulario.</p>
+        <ul>
+          <li>En el caso de las páginas listar.php y buscar-2.php, el formulario necesita enviar la información a la propia página, para reordenar el resultado.
+
+            <p>Para conseguirlo, el atributo <span class="html-atri">action</span> del formulario señalará a la propia página. Para referirse a la propia página se puede escribir su nombre o utilizar la variable predefinida <a href="../../../lecciones/php-variables-predefinidas.html#server">$_SERVER[PHP_SELF]</a>:</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        print "    &lt;form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\"&gt;\n";</code>
+</pre>
+            </div>
+            <p>Además, en el caso de la búsqueda (buscar-2.php), el enlace a la propia página debe enviar también los valores que introdujo el usuario en la búsqueda, por lo que los añadiremos en controles ocultos:</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        print "      &lt;p&gt;\n";
+        print "        &lt;input type=\"hidden\" name=\"nombre\" value=\"$nombre\"&gt;\n";
+        print "        &lt;input type=\"hidden\" name=\"apellidos\" value=\"$apellidos\"&gt;\n";
+        print "      &lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+          <li>En el caso de las páginas borrar-1.php y modificar-1.php, el formulario necesita enviar la información a dos páginas distintas:
+            <ul>
+              <li>Si el usuario simplemente quiere reordenar los registros, el formulario debe enviar la información a la propia página.</li>
+              <li>Pero si el usuario quiere borrar o modificar, el formulario debe enviar la información a la página siguiente (borrar-2.php y modificar-2.php).</li>
+            </ul>
+
+            <p>Para conseguirlo, el botón Enviar de las páginas borrar-1.php y modificar-1.php incluirá el atributo <span class="html-atri">formaction</span>, que permite enviar la información a una página distinta de la indicada por el atributo <span class="html-atri">action</span> del formulario.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">        print "      &lt;p&gt;\n";
+        print "        &lt;input type=\"submit\" value=\"Borrar registro\" formaction=\"borrar-2.php\"&gt;\n";
+        print "        &lt;input type=\"reset\" value=\"Reiniciar formulario\"&gt;\n";
+        print "      &lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+
+        <p>Las páginas borrar-1.php y modificar-1.php deberían recoger también las casillas de verificación y los botones radio, para que si se marcan algunas casillas o botones y se reordenan los registros, se puedan mantener marcadas las casillas ya marcadas.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$id = recoge("id", []);
+
+...
+
+        foreach ($resultado as $registro) {
+            print "          &lt;tr&gt;\n";
+            if (isset($id[$registro["id"]])) {
+                print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$registro[id]]\" checked&gt;&lt;/td&gt;\n";
+            } else {
+                print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$registro[id]]\"&gt;&lt;/td&gt;\n";
+            }
+            print "            &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+            print "            &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
+            print "          &lt;/tr&gt;\n";
+        }</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 11 de enero de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

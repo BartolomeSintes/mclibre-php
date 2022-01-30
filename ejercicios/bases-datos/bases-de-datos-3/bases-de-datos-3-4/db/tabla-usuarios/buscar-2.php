@@ -20,20 +20,18 @@ $pdo = conectaDb();
 cabecera("Usuarios - Buscar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario  = recoge("usuario");
-$password = recoge("password");
 $nivel    = recoge("nivel");
 $ordena   = recogeValores("ordena", $cfg["dbUsuariosColumnasOrden"], "usuario ASC");
 
 $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
              WHERE usuario LIKE :usuario
-             AND password LIKE :password
              AND nivel LIKE :nivel
              ORDER BY $ordena";
 
 $resultado = $pdo->prepare($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!$resultado->execute([":usuario" => "%$usuario%", ":password" => "%" . encripta($password) . "%", ":nivel" => "%$nivel%"])) {
+} elseif (!$resultado->execute([":usuario" => "%$usuario%", ":nivel" => "%$nivel%"])) {
     print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif (!count($registros = $resultado->fetchAll())) {
     print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
@@ -41,7 +39,6 @@ if (!$resultado) {
     print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";
     print "      <p>\n";
     print "        <input type=\"hidden\" name=\"usuario\" value=\"$usuario\">\n";
-    print "        <input type=\"hidden\" name=\"password\" value=\"$password\">\n";
     print "        <input type=\"hidden\" name=\"nivel\" value=\"$nivel\">\n";
     print "      </p>\n";
     print "\n";

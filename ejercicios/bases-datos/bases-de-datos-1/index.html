@@ -149,16 +149,25 @@
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Configuración para SQLite
+<code class="language-php">// Base de datos utilizada por la aplicación
 
-$cfg["sqliteDatabase"] = "/mclibre-base-datos-1-1.sqlite";    // Ubicación de la base de datos
+$cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
+
+// Configuración para SQLite
+
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-1-1.sqlite";  // Ubicación de la base de datos
 
 // Configuración para MySQL
 
 $cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
 $cfg["mysqlUser"]     = "mclibre_base_datos_1_1";           // Nombre de usuario
-$cfg["mysqlPassword"] = "mclibre_base_datos_1_1";           // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base de datos</code>
+$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base de datos
+
+// Configuración de la tabla Personas
+
+$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
         </div>
       </li>
@@ -290,11 +299,21 @@ $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
           </svg>
         </p>
       </li>
+      <li>El tamaño de los campos en el formulario puede coincidir con el tamaño de los campos en la base de datos:
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Controles en el formulario
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" autofocus&gt;&lt;/td&gt;\n";
+...
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\"&gt;&lt;/td&gt;\n";</code>
+</pre>
+        </div>
+      </li>
       <li>MySQL no permite guardar registros más largos que el tamaño del campo, por lo que se puede avisar al usuario del problema:
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Comprobar la longitud del dato recibido
+<code class="language-php">// Comprueba la longitud del dato recibido
 $nombre   = recoge("nombre");
 $nombreOk = false;
 
@@ -311,19 +330,19 @@ if (mb_strlen($nombre, "UTF-8") &gt; $cfg["dbPersonasTamNombre"]) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Añadir un registro
-$consulta = "INSERT INTO $cfg[dbPersonasTabla]
-             (nombre, apellidos)
-             VALUES (:nombre, :apellidos)";
-$resultado = $pdo-&gt;prepare($consulta);
+<code class="language-php">    // Añade un registro
+    $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+                 (nombre, apellidos)
+                 VALUES (:nombre, :apellidos)";
 
-if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
-    print "    &lt;p class=\"aviso\"&gt;Error al crear el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
-} else {
-    print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
-    print "\n";
-}</code>
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+    }</code>
 </pre>
         </div>
       </li>
@@ -423,16 +442,22 @@ if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apelli
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Seleccionar todos los registros
+<code class="language-php">// Selecciona y muestra todos los registros
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
 $resultado = $pdo-&gt;query($consulta);
-...
-foreach ($resultado as $registro) {
-    print "        &lt;tr&gt;\n";
-    print "          &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
-    print "          &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
-    print "        &lt;/tr&gt;\n";
-}</code>
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    print "    &lt;p&gt;Listado completo de registros:&lt;/p&gt;\n";
+    ...
+    foreach ($resultado as $registro) {
+        print "        &lt;tr&gt;\n";
+        print "          &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+        print "          &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
+        print "        &lt;/tr&gt;\n";
+    }
+    ...</code>
 </pre>
         </div>
       </li>
@@ -546,20 +571,28 @@ foreach ($resultado as $registro) {
           </svg>
         </p>
       </li>
-      <li>Para seleccionar los registros a borrar, se puede utilizar una casilla de verificación cuyo nombre contenga el id del registro. Lo mejor es que los nombres formen una matriz.
+      <li>Para seleccionar los registros a borrar, se puede utilizar una casilla de verificación cuyo nombre contenga el id del registro. Lo mejor es que los nombres formen una matriz, para obtener a través de un único control todos los valores a borrar.
 
         <div class="codigo">
           <pre>
 <code class="language-php">// Imprime casillas de verificación
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
 $resultado = $pdo-&gt;query($consulta);
-...
-foreach ($resultado as $registro) {
-    print "          &lt;tr&gt;\n";
-    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$registro[id]]\"&gt;&lt;/td&gt;\n";
-    print "            &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
-    print "            &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
-    print "          &lt;/tr&gt;\n";</code>
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    print "    &lt;form action=\"borrar-2.php\" method=\"$cfg[formMethod]\"&gt;\n";
+    print "      &lt;p&gt;Marque los registros que quiera borrar:&lt;/p&gt;\n";
+    ...
+    foreach ($resultado as $registro) {
+        print "          &lt;tr&gt;\n";
+        print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"checkbox\" name=\"id[$registro[id]]\"&gt;&lt;/td&gt;\n";
+        print "            &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+        print "            &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
+        print "          &lt;/tr&gt;\n";
+    }
+    ...</code>
 </pre>
         </div>
       </li>
@@ -567,19 +600,20 @@ foreach ($resultado as $registro) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Recoge los registros seleccionados
+<code class="language-php">// Recoge y borra los registros seleccionados
 $id = recoge("id", []);
 
-foreach ($id as $indice =&gt; $registro) {
+foreach ($id as $indice =&gt; $valor) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
                  WHERE id=:indice";
+
     $resultado = $pdo-&gt;prepare($consulta);
-    if (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
-        print "    &lt;p class=\"aviso\"&gt;Error al borrar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        print "\n";
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
         print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
-        print "\n";
     }
 }</code>
 </pre>
@@ -720,8 +754,22 @@ $apellidos = recoge("apellidos");
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
              WHERE nombre LIKE :nombre
              AND apellidos LIKE :apellidos";
+
 $resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"]);</code>
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    print "    &lt;p&gt;Registros encontrados:&lt;/p&gt;\n";
+    ...
+    foreach ($resultado as $registro) {
+        print "        &lt;tr&gt;\n";
+        print "          &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+        print "          &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
+        print "        &lt;/tr&gt;\n";
+    }
+    ...</code>
 </pre>
         </div>
         <p>El comodín (%) debe incluirse al ejecutar la consulta, no se podrían incluir en la definición de $consulta.</p>
@@ -877,15 +925,22 @@ $resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apell
           <pre>
 <code class="language-php">// Imprime botones radio
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
-$resultado = $pdo-&gt;query($consulta);
 
-foreach ($resultado as $registro) {
-    print "          &lt;tr&gt;\n";
-    print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$registro[id]\"&gt;&lt;/td&gt;\n";
-    print "            &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
-    print "            &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
-    print "          &lt;/tr&gt;\n";
-}</code>
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    print "    &lt;form action=\"modificar-2.php\" method=\"$cfg[formMethod]\"&gt;\n";
+    print "      &lt;p&gt;Indique el registro que quiera modificar:&lt;/p&gt;\n";
+    ...
+    foreach ($resultado as $registro) {
+        print "          &lt;tr&gt;\n";
+        print "            &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$registro[id]\"&gt;&lt;/td&gt;\n";
+        print "            &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+        print "            &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
+        print "          &lt;/tr&gt;\n";
+    }
+    ...</code>
 </pre>
         </div>
       </li>
@@ -893,13 +948,23 @@ foreach ($resultado as $registro) {
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Recoge el registro seleccionado
+<code class="language-php">// Recoge el id del registro y selecciona el registro
 $id = recoge("id");
 
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
-             WHERE id=:id";
-$resultado = $pdo-&gt;prepare($consulta);
-$resultado-&gt;execute([":id" =&gt; $id]);</code>
+if ($id == "") {
+    print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
+} else {
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+                 WHERE id=:id";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        $registro = $resultado-&gt;fetch();
+        ...</code>
 </pre>
         </div>
       </li>
@@ -907,10 +972,10 @@ $resultado-&gt;execute([":id" =&gt; $id]);</code>
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Muestra valor
-$registro = $resultado-&gt;fetch();
-...
-print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus&gt;&lt;/td&gt;\n";</code>
+<code class="language-php">        // Muestra los valores del registro en el formulario
+        print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus&gt;&lt;/td&gt;\n";
+        ...
+        print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\" value=\"$registro[apellidos]\"&gt;&lt;/td&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -918,30 +983,29 @@ print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg
 
         <div class="codigo">
           <pre>
-<code class="language-php">// Control oculto con el id del registro modificado
-print "        &lt;input type=\"hidden\" name=\"id\" value=\"$id\"&gt;\n";</code>
+<code class="language-php">        // Control oculto con el id del registro modificado
+        print "        &lt;input type=\"hidden\" name=\"id\" value=\"$id\"&gt;\n";</code>
 </pre>
         </div>
       </li>
+      <li>En la tercera página, los datos recogidos deben comprobarse de la misma manera que se comprueban antes de insertarlos en insertar-2.php.</li>
       <li>En la tercera página, para modificar el registro seleccionado, esta puede ser la consulta preparada de actualización:
 
         <div class="codigo">
           <pre>
-<code class="language-php">$nombre    = recoge("nombre");
-$apellidos = recoge("apellidos");
-$id        = recoge("id");
+<code class="language-php">    // Actualiza el registro
+    $consulta = "UPDATE $cfg[dbPersonasTabla]
+                 SET nombre=:nombre, apellidos=:apellidos
+                 WHERE id=:id";
 
-$consulta = "UPDATE $cfg[dbPersonasTabla]
-             SET nombre=:nombre, apellidos=:apellidos
-             WHERE id=:id";
-$resultado = $pdo-&gt;prepare($consulta);
-if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
-    print "    &lt;p class=\"aviso\"&gt;Error al modificar el registro / {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    print "\n";
-} else {
-    print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
-    print "\n";
-}</code>
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+    }</code>
 </pre>
         </div>
       </li>
@@ -949,7 +1013,7 @@ if (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apelli
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de diciembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 24 de enero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

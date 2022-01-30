@@ -9,12 +9,15 @@ require_once "../comunes/biblioteca.php";
 
 session_name($cfg["sessionName"]);
 session_start();
+
 if (!isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit;
 }
 
-if (!isset($_REQUEST["si"])) {
+$borrar = recoge("borrar");
+
+if ($borrar != "Sí") {
     header("Location:index.php");
     exit;
 }

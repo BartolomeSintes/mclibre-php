@@ -9,6 +9,7 @@ require_once "../comunes/biblioteca.php";
 
 session_name($cfg["sessionName"]);
 session_start();
+
 if (!isset($_SESSION["conectado"])) {
     header("Location:../index.php");
     exit;
@@ -72,7 +73,7 @@ if ($id == "") {
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                    WHERE id=:id";
+                 WHERE id=:id";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

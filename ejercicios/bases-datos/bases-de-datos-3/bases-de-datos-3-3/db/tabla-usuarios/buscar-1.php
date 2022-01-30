@@ -36,10 +36,6 @@ if (!$resultado) {
     print "            <td>Usuario:</td>\n";
     print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" autofocus></td>\n";
     print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Contraseña:</td>\n";
-    print "            <td><input type=\"text\" name=\"password\" size=\"$cfg[usuariosTamPassword]\" maxlength=\"$cfg[usuariosTamPassword]\"></td>\n";
-    print "          </tr>\n";
     print "        </tbody>\n";
     print "      </table>\n";
     print "\n";

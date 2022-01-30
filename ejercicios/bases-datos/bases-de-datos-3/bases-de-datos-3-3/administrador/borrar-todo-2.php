@@ -15,7 +15,9 @@ if (!isset($_SESSION["conectado"])) {
     exit;
 }
 
-if (!isset($_REQUEST["si"])) {
+$borrar = recoge("borrar");
+
+if ($borrar != "Sí") {
     header("Location:index.php");
     exit;
 }

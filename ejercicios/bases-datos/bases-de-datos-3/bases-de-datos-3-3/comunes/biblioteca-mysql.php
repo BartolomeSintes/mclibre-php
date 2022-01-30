@@ -63,7 +63,7 @@ function borraTodo()
                      )";
 
         if (!$pdo->query($consulta)) {
-            print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Tabla creada correctamente.</p>\n";
 
@@ -88,7 +88,7 @@ function borraTodo()
                      )";
 
         if (!$pdo->query($consulta)) {
-            print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error al crear la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Tabla creada correctamente.</p>\n";
         }
