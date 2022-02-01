@@ -7,8 +7,8 @@
 
 // Constantes y variables configurables por el programador de la aplicación
 
-define("MYSQL", 1);                         // Base de datos MySQL
-define("SQLITE", 2);                        // Base de datos SQLITE
+define("SQLITE", 1);                        // Base de datos SQLITE
+define("MYSQL", 2);                         // Base de datos MySQL
 
 define("MENU_PRINCIPAL", 1);                // Menú principal
 define("MENU_VOLVER", 2);                   // Menú Volver a inicio
@@ -84,7 +84,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-01-30\">30 de enero de 2022</time>\n";
+    print "      <time datetime=\"2022-02-01\">1 de febrero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

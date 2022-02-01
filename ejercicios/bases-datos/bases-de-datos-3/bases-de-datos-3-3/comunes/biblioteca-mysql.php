@@ -30,11 +30,14 @@ function conectaDb()
     }
 }
 
-// MYSQL: Consultas de borrado y creación de base de datos y tablas
+// MYSQL: Borrado y creación de base de datos y tablas
 
 function borraTodo()
 {
     global $pdo, $cfg;
+
+    print "    <p>Sistema Gestor de Bases de Datos: MySQL</p>\n";
+    print "\n";
 
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
@@ -66,6 +69,7 @@ function borraTodo()
             print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Tabla creada correctamente.</p>\n";
+            print "\n";
 
             $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
                          (usuario, password)
@@ -75,6 +79,7 @@ function borraTodo()
                 print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
                 print "    <p>Registro de usuario creado correctamente.</p>\n";
+                print "\n";
             }
         }
 
@@ -95,13 +100,15 @@ function borraTodo()
     }
 }
 
+// MYSQL: Comprobación de existencia de las tablas
+
 function existenTablas()
 {
     global $pdo, $cfg;
 
     $existe = true;
 
-    $consulta = "SELECT count(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$cfg[mysqlDatabase]'";
+    $consulta = "SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name = '$cfg[mysqlDatabase]'";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
@@ -117,7 +124,7 @@ function existenTablas()
                 // de la base de datos, así que lo elimino
                 $tabla = str_replace("$cfg[mysqlDatabase].", "", $tabla);
 
-                $consulta = "SELECT count(*) FROM information_schema.tables
+                $consulta = "SELECT COUNT(*) FROM information_schema.tables
                              WHERE table_schema = '$cfg[mysqlDatabase]'
                              AND table_name = '$tabla'";
 

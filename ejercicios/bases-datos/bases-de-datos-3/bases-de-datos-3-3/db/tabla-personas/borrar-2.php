@@ -26,7 +26,7 @@ if (count($id) == 0) {
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                     WHERE id=:indice";
+                     WHERE id = :indice";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
@@ -37,7 +37,7 @@ if (count($id) == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
             $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                         WHERE id=:indice";
+                         WHERE id = :indice";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {

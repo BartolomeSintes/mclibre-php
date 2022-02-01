@@ -30,11 +30,14 @@ function conectaDb()
     }
 }
 
-// SQLITE: Consultas de borrado y creación de tablas
+// SQLITE: Borrado y creación de tablas
 
 function borraTodo()
 {
     global $pdo, $cfg;
+
+    print "    <p>Sistema Gestor de Bases de Datos: SQLite</p>\n";
+    print "\n";
 
     $consulta = "DROP TABLE IF EXISTS $cfg[dbUsuariosTabla]";
 
@@ -64,6 +67,7 @@ function borraTodo()
         print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla Usuarios creada correctamente.</p>\n";
+        print "\n";
 
         $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
                      (usuario, password)
@@ -75,6 +79,7 @@ function borraTodo()
             print "    <p>Registro de usuario creado correctamente.</p>\n";
         }
     }
+    print "\n";
 
     $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                  id INTEGER PRIMARY KEY,
@@ -91,6 +96,8 @@ function borraTodo()
     }
 }
 
+// SQLITE: Comprobación de existencia de las tablas
+
 function existenTablas()
 {
     global $pdo, $cfg;
@@ -98,7 +105,7 @@ function existenTablas()
     $existe = true;
 
     foreach ($cfg["dbTablas"] as $tabla) {
-        $consulta = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
+        $consulta = "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = '$tabla'";
 
         $resultado = $pdo->query($consulta);
         if (!$resultado) {

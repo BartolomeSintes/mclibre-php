@@ -15,7 +15,7 @@ $id = recoge("id", []);
 
 foreach ($id as $indice => $valor) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                 WHERE id=:indice";
+                 WHERE id = :indice";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

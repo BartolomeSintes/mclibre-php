@@ -26,8 +26,8 @@ if (!$usuario) {
 }
 
 $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
-             WHERE usuario=:usuario
-             AND password=:password";
+             WHERE usuario = :usuario
+             AND password = :password";
 
 $resultado = $pdo->prepare($consulta);
 if (!$resultado) {

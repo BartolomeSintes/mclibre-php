@@ -65,7 +65,7 @@ if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                 WHERE nombre=:nombre
+                 WHERE nombre = :nombre
                  AND apellidos LIKE :apellidos
                  AND telefono LIKE :telefono
                  AND correo LIKE :correo";

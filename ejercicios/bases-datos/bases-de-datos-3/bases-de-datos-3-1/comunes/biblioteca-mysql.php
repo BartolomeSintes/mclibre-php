@@ -29,11 +29,14 @@ function conectaDb()
     }
 }
 
-// MYSQL: Consultas de borrado y creación de base de datos y tablas
+// MYSQL: Borrado y creación de base de datos y tablas
 
 function borraTodo()
 {
     global $pdo, $cfg;
+
+    print "    <p>Sistema Gestor de Bases de Datos: MySQL</p>\n";
+    print "\n";
 
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 

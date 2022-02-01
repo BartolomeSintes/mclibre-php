@@ -44,7 +44,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["dbUsuariosTamPassword"]) {
 
 if ($usuarioOk && $passwordOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
-                 WHERE usuario=:usuario";
+                 WHERE usuario = :usuario";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

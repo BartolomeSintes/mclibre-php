@@ -56,7 +56,7 @@ if ($id == "") {
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                 WHERE id=:id";
+                 WHERE id = :id";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
@@ -70,9 +70,9 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
         $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                     WHERE nombre=:nombre
-                     AND apellidos=:apellidos
-                     AND telefono=:telefono
+                     WHERE nombre = :nombre
+                     AND apellidos = :apellidos
+                     AND telefono = :telefono
                      AND id<>:id";
 
         $resultado = $pdo->prepare($consulta);
@@ -85,9 +85,9 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
                 . "No se ha guardado la modificación.</p>\n";
         } else {
             $consulta = "UPDATE $cfg[dbPersonasTabla]
-                         SET nombre=:nombre, apellidos=:apellidos,
-                             telefono=:telefono
-                         WHERE id=:id";
+                         SET nombre = :nombre, apellidos = :apellidos,
+                             telefono = :telefono
+                         WHERE id = :id";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {

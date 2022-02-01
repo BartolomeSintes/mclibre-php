@@ -26,7 +26,7 @@ if (count($id) == 0) {
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
-                     WHERE id=:indice";
+                     WHERE id = :indice";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
@@ -39,7 +39,7 @@ if (count($id) == 0) {
             print "    <p class=\"aviso\">Este usuario no se puede borrar.</p>\n";
         } else {
             $consulta = "DELETE FROM $cfg[dbUsuariosTabla]
-                         WHERE id=:indice";
+                         WHERE id = :indice";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {

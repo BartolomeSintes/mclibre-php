@@ -56,7 +56,7 @@ if ($nivel == "") {
 
 if ($usuarioOk && $passwordOk && $nivelOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
-                 WHERE usuario=:usuario";
+                 WHERE usuario = :usuario";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

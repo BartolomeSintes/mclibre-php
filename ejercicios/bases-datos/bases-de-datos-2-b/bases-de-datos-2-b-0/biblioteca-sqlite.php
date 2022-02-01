@@ -29,11 +29,14 @@ function conectaDb()
     }
 }
 
-// SQLITE: Consultas de borrado y creación de tablas
+// SQLITE: Borrado y creación de tablas
 
 function borraTodo()
 {
     global $pdo, $cfg;
+
+    print "    <p>Sistema Gestor de Bases de Datos: SQLite</p>\n";
+    print "\n";
 
     $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 

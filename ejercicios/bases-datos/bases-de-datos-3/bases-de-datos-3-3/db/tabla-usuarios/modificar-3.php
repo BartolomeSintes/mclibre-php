@@ -52,7 +52,7 @@ if ($id == "") {
 
 if ($usuarioOk && $passwordOk && $idOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
-                 WHERE id=:id";
+                 WHERE id = :id";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
@@ -66,7 +66,7 @@ if ($usuarioOk && $passwordOk && $idOk) {
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
         $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
-                     WHERE usuario=:usuario
+                     WHERE usuario = :usuario
                      AND id<>:id";
 
         $resultado = $pdo->prepare($consulta);
@@ -79,7 +79,7 @@ if ($usuarioOk && $passwordOk && $idOk) {
                 . "No se ha guardado la modificación.</p>\n";
         } else {
             $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
-                         WHERE id=:id";
+                         WHERE id = :id";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {
@@ -92,8 +92,8 @@ if ($usuarioOk && $passwordOk && $idOk) {
                     print "    <p class=\"aviso\">Del usuario Administrador inicial sólo se puede cambiar la contraseña.</p>\n";
                 } else {
                     $consulta = "UPDATE $cfg[dbUsuariosTabla]
-                                 SET usuario=:usuario, password=:password
-                                 WHERE id=:id";
+                                 SET usuario = :usuario, password = :password
+                                 WHERE id = :id";
 
                     $resultado = $pdo->prepare($consulta);
                     if (!$resultado) {

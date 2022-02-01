@@ -52,9 +52,9 @@ if (mb_strlen($correo, "UTF-8") > $cfg["dbPersonasTamCorreo"]) {
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "UPDATE $cfg[dbPersonasTabla]
-                 SET nombre=:nombre, apellidos=:apellidos,
-                     telefono=:telefono, correo=:correo
-                 WHERE id=:id";
+                 SET nombre = :nombre, apellidos = :apellidos,
+                     telefono = :telefono, correo = :correo
+                 WHERE id = :id";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
