@@ -31,7 +31,7 @@ $cfg["dbPersonasTamCorreo"]    = 50;                        // Tamaño de la col
 
 // Número máximo de registros en las tablas
 
-$cfg["dbUsuariosmaxReg"] = 20;                              // Número máximo de registros en la tabla Usuarios
+$cfg["dbUsuariosMaxReg"] = 20;                              // Número máximo de registros en la tabla Usuarios
 $cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
 
 // Usuario de la aplicación
