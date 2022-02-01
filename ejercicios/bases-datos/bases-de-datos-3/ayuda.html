@@ -535,6 +535,18 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
               ...</code>
 </pre>
             </div>
+            <p>Al mostrar los valores de los campos, el campo nivel es un menú <span class="html-eti">&lt;select&gt;</span>. Para que se muestre la opción correspondiente al nivel actual del usuario debemos añadir el atributo <span class="html-atri">selected</span> al <span class="html-eti">&lt;option&gt;</span> correspondiente:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">        foreach ($cfg["usuariosNiveles"] as $indice =&gt; $valor) {
+            print "                &lt;option value=\"$indice\"";
+            if ($registro["nivel"] == $indice) {
+                print " selected";
+            }
+            print "&gt;$valor&lt;/option&gt;\n";
+        }</code>
+</pre>
+            </div>
           </li>
           <li>[modificar-3.php]
             <p>Al cambiar el nombre del usuario hay que comprobar antes que el nuevo nombre no esté ya registrado</p>
@@ -919,7 +931,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 1 de febrero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
