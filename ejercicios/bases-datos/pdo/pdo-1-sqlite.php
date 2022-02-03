@@ -162,8 +162,8 @@ $nombre    = "Pepita";
 $apellidos = "Conejo";
 
 $consulta = "UPDATE $cfg[dbPersonasTabla]
-             SET nombre=:nombre, apellidos=:apellidos
-             WHERE id=:id";
+             SET nombre = :nombre, apellidos = :apellidos
+             WHERE id = :id";
 
 $resultado = $pdo->prepare($consulta);
 if (!$resultado) {
@@ -261,7 +261,7 @@ $id = [1 => "on"];     // Normalmente este valor vendrá de un formulario (en es
 
 foreach ($id as $indice => $valor) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                 WHERE id=:indice";
+                 WHERE id = :indice";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

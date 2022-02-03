@@ -35,7 +35,7 @@ function borraTodo()
 {
     global $pdo, $cfg;
 
-    print "    <p>Sistema Gestor de Bases de Datos: MySQL</p>\n";
+    print "    <p>Sistema Gestor de Bases de Datos: MySQL.</p>\n";
     print "\n";
 
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
@@ -58,7 +58,7 @@ function borraTodo()
         print "\n";
 
         $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
-                     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+                     id INTEGER UNSIGNED AUTO_INCREMENT,
                      nombre VARCHAR($cfg[dbPersonasTamNombre]),
                      apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
                      telefono VARCHAR($cfg[dbPersonasTamTelefono]),

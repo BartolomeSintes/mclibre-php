@@ -67,7 +67,7 @@ if ($usuarioOk && $passwordOk && $idOk) {
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
         $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
                      WHERE usuario = :usuario
-                     AND id<>:id";
+                     AND id <> :id";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {

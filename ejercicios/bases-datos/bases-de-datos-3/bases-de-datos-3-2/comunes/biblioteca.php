@@ -104,7 +104,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         }
     } else {
         if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"db-personas/index.php\">Personas</a></li>\n";
+            print "        <li><a href=\"tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
         } elseif ($menu == MENU_VOLVER) {
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
@@ -134,7 +134,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-02-01\">1 de febrero de 2022</time>\n";
+    print "      <time datetime=\"2022-02-04\">4 de febrero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

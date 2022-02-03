@@ -36,7 +36,7 @@ function borraTodo()
 {
     global $pdo, $cfg;
 
-    print "    <p>Sistema Gestor de Bases de Datos: SQLite</p>\n";
+    print "    <p>Sistema Gestor de Bases de Datos: SQLite.</p>\n";
     print "\n";
 
     $consulta = "DROP TABLE IF EXISTS $cfg[dbUsuariosTabla]";
@@ -70,8 +70,8 @@ function borraTodo()
         print "\n";
 
         $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
-                     (usuario, password)
-                     VALUES ('$cfg[rootName]', '$cfg[rootPassword]')";
+                     (id, usuario, password)
+                     VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]')";
 
         if (!$pdo->query($consulta)) {
             print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";

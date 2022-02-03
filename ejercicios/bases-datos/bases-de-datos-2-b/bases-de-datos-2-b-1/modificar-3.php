@@ -73,7 +73,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
                      WHERE nombre = :nombre
                      AND apellidos = :apellidos
                      AND telefono = :telefono
-                     AND id<>:id";
+                     AND id <> :id";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {

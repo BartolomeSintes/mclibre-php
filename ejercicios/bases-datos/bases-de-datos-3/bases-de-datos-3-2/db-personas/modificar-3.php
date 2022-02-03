@@ -91,7 +91,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
                      AND apellidos = :apellidos
                      AND telefono = :telefono
                      AND correo = :correo
-                     AND id<>:id";
+                     AND id <> :id";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {

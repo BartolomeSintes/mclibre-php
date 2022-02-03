@@ -107,7 +107,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-02-01\">1 de febrero de 2022</time>\n";
+    print "      <time datetime=\"2022-02-04\">4 de febrero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

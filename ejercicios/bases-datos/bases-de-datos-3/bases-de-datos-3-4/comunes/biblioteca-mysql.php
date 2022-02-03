@@ -36,7 +36,7 @@ function borraTodo()
 {
     global $pdo, $cfg;
 
-    print "    <p>Sistema Gestor de Bases de Datos: MySQL</p>\n";
+    print "    <p>Sistema Gestor de Bases de Datos: MySQL.</p>\n";
     print "\n";
 
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
@@ -59,7 +59,7 @@ function borraTodo()
         print "\n";
 
         $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
-                     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+                     id INTEGER UNSIGNED AUTO_INCREMENT,
                      usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
                      password VARCHAR($cfg[dbUsuariosTamPassword]),
                      nivel INTEGER NOT NULL,
@@ -73,8 +73,8 @@ function borraTodo()
             print "\n";
 
             $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
-                         (usuario, password, nivel)
-                         VALUES ('$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
+                         (id, usuario, password, nivel)
+                         VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
 
             if (!$pdo->query($consulta)) {
                 print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -85,7 +85,7 @@ function borraTodo()
         print "\n";
 
         $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
-                     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+                     id INTEGER UNSIGNED AUTO_INCREMENT,
                      nombre VARCHAR($cfg[dbPersonasTamNombre]),
                      apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
                      telefono VARCHAR($cfg[dbPersonasTamTelefono]),

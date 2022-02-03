@@ -128,8 +128,8 @@ function modificaRegistro($id, $nombre, $apellidos)
     global $pdo, $cfg;
 
     $consulta = "UPDATE $cfg[dbPersonasTabla]
-                 SET nombre=:nombre, apellidos=:apellidos
-                 WHERE id=:id";
+                 SET nombre = :nombre, apellidos = :apellidos
+                 WHERE id = :id";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
@@ -150,7 +150,7 @@ function borraRegistros($id)
 
     foreach ($id as $indice => $valor) {
         $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                     WHERE id=:indice";
+                     WHERE id = :indice";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {

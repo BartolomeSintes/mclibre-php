@@ -35,7 +35,7 @@ function borraTodo()
 {
     global $pdo, $cfg;
 
-    print "    <p>Sistema Gestor de Bases de Datos: SQLite</p>\n";
+    print "    <p>Sistema Gestor de Bases de Datos: SQLite.</p>\n";
     print "\n";
 
     $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";

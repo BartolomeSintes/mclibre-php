@@ -63,7 +63,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
         $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                      WHERE nombre = :nombre
                      AND apellidos = :apellidos
-                     AND id<>:id";
+                     AND id <> :id";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
