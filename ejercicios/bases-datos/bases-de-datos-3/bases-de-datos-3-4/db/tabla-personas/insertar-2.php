@@ -10,7 +10,7 @@ require_once "../../comunes/biblioteca.php";
 session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] < NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }
@@ -66,9 +66,9 @@ if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                  WHERE nombre = :nombre
-                 AND apellidos LIKE :apellidos
-                 AND telefono LIKE :telefono
-                 AND correo LIKE :correo";
+                 AND apellidos = :apellidos
+                 AND telefono = :telefono
+                 AND correo = :correo";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

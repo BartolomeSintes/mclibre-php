@@ -10,7 +10,7 @@ require_once "../../comunes/biblioteca.php";
 session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] < NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }
@@ -21,7 +21,7 @@ cabecera("Personas - Listar", MENU_PERSONAS, PROFUNDIDAD_2);
 
 $ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
 
-if ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
     $consulta = "SELECT
                      personas.id,
                      personas.nombre,
@@ -35,7 +35,7 @@ if ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
                  ORDER BY $ordena";
 } else {
     $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
-                 WHERE id_usuario = $_SESSION[usuario]
+                 WHERE id_usuario = $_SESSION[id_usuario]
                  ORDER BY $ordena";
 }
 
@@ -87,7 +87,7 @@ if (!$resultado) {
     print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
     print "              </button>\n";
     print "            </th>\n";
-    if ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
         print "            <th>\n";
         print "              <button name=\"ordena\" value=\"usuario ASC\" class=\"boton-invisible\">\n";
         print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
@@ -107,7 +107,7 @@ if (!$resultado) {
         print "            <td>$registro[apellidos]</td>\n";
         print "            <td>$registro[telefono]</td>\n";
         print "            <td>$registro[correo]</td>\n";
-        if ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
             print "            <td>$registro[usuario]</td>\n";
         }
         print "          </tr>\n";

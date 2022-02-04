@@ -10,7 +10,7 @@ require_once "../../comunes/biblioteca.php";
 session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] < NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }
@@ -25,13 +25,13 @@ if (count($id) == 0) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
-        if ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
             $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                          WHERE id = :indice";
         } else {
             $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                          WHERE id = :indice
-                         AND id_usuario = $_SESSION[usuario]";
+                         AND id_usuario = $_SESSION[id_usuario]";
         }
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {

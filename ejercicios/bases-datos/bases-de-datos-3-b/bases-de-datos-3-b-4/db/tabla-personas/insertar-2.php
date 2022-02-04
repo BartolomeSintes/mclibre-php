@@ -10,7 +10,7 @@ require_once "../../comunes/biblioteca.php";
 session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] < NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }
@@ -69,7 +69,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                  AND apellidos LIKE :apellidos
                  AND telefono LIKE :telefono
                  AND correo LIKE :correo
-                 AND id_usuario = $_SESSION[usuario]";
+                 AND id_usuario = $_SESSION[id_usuario]";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
@@ -80,7 +80,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
         print "    <p class=\"aviso\">El registro ya existe.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                     WHERE id_usuario = $_SESSION[usuario]";
+                     WHERE id_usuario = $_SESSION[id_usuario]";
 
         $resultado = $pdo->query($consulta);
         if (!$resultado) {
@@ -92,7 +92,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
         } else {
             $consulta = "INSERT INTO $cfg[dbPersonasTabla]
                          (nombre, apellidos, telefono, correo, id_usuario)
-                         VALUES (:nombre, :apellidos, :telefono, :correo, $_SESSION[usuario] )";
+                         VALUES (:nombre, :apellidos, :telefono, :correo, $_SESSION[id_usuario] )";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {

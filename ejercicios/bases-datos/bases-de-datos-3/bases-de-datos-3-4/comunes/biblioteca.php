@@ -134,7 +134,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         } else {
             print "        <li>Error en la selección de menú</li>\n";
         }
-    } elseif ($_SESSION["conectado"] == NIVEL_USUARIO_BASICO) {
+    } elseif ($_SESSION["nivel"] == NIVEL_USUARIO_BASICO) {
         if ($menu == MENU_PRINCIPAL) {
             print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
@@ -150,7 +150,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         } else {
             print "        <li>Error en la selección de menú</li>\n";
         }
-    } elseif ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+    } elseif ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
         if ($menu == MENU_PRINCIPAL) {
             print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"db/tabla-usuarios/index.php\">Usuarios</a></li>\n";

@@ -58,9 +58,9 @@ if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                  WHERE nombre = :nombre
-                 AND apellidos LIKE :apellidos
-                 AND telefono LIKE :telefono
-                 AND correo LIKE :correo";
+                 AND apellidos = :apellidos
+                 AND telefono = :telefono
+                 AND correo = :correo";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

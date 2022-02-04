@@ -10,7 +10,7 @@ require_once "../../comunes/biblioteca.php";
 session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] < NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }
@@ -72,13 +72,13 @@ if ($id == "") {
 }
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
-    if ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
         $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
                      WHERE id = :id";
     } else {
         $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
                      WHERE id = :id
-                     AND id_usuario = $_SESSION[usuario]";
+                     AND id_usuario = $_SESSION[id_usuario]";
     }
 
     $resultado = $pdo->prepare($consulta);
@@ -92,7 +92,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
         // La consulta cuenta los registros con un id diferente porque MySQL no distingue
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        if ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
             $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
                          WHERE nombre = :nombre
                          AND apellidos = :apellidos
@@ -107,7 +107,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
                          AND telefono = :telefono
                          AND correo = :correo
                          AND id <> :id
-                         AND id_usuario = $_SESSION[usuario]";
+                         AND id_usuario = $_SESSION[id_usuario]";
         }
 
         $resultado = $pdo->prepare($consulta);

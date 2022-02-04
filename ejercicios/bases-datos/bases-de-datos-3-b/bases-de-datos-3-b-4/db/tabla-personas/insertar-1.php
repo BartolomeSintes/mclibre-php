@@ -10,7 +10,7 @@ require_once "../../comunes/biblioteca.php";
 session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] < NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] < NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }
@@ -20,7 +20,7 @@ $pdo = conectaDb();
 cabecera("Personas - Añadir 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-             WHERE id_usuario = $_SESSION[usuario]";
+             WHERE id_usuario = $_SESSION[id_usuario]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {

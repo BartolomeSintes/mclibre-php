@@ -47,7 +47,8 @@ if (!is_array($registro)) {
     exit;
 }
 
-$_SESSION["conectado"] = $registro["nivel"];
+$_SESSION["conectado"] = true;
+$_SESSION["nivel"]     = $registro["nivel"];
 
 $pdo = null;
 

@@ -108,7 +108,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Bases de datos (3 B) 4. Bases de datos (3).\n";
+    print "    $texto. Bases de datos (3 B) 4. Bases de datos (3 B).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -135,7 +135,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         } else {
             print "        <li>Error en la selección de menú</li>\n";
         }
-    } elseif ($_SESSION["conectado"] == NIVEL_USUARIO_BASICO) {
+    } elseif ($_SESSION["nivel"] == NIVEL_USUARIO_BASICO) {
         if ($menu == MENU_PRINCIPAL) {
             print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
@@ -151,7 +151,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         } else {
             print "        <li>Error en la selección de menú</li>\n";
         }
-    } elseif ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+    } elseif ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
         if ($menu == MENU_PRINCIPAL) {
             print "        <li><a href=\"db/tabla-personas/index.php\">Personas</a></li>\n";
             print "        <li><a href=\"db/tabla-usuarios/index.php\">Usuarios</a></li>\n";
