@@ -55,7 +55,7 @@ if ($autorOk && $tituloOk && $editorialOk) {
         print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaObras
-            WHERE id=:id";
+            WHERE id = :id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
@@ -67,10 +67,10 @@ if ($autorOk && $tituloOk && $editorialOk) {
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
             $consulta = "SELECT COUNT(*) FROM $tablaObras
-                WHERE autor=:autor
-                AND titulo=:titulo
-                AND editorial=:editorial
-                AND id<>:id";
+                WHERE autor = :autor
+                AND titulo = :titulo
+                AND editorial = :editorial
+                AND id <> :id";
             $result = $db->prepare($consulta);
             $result->execute([":autor" => $autor, ":titulo" => $titulo,
                 ":editorial"           => $editorial, ":id" => $id, ]);
@@ -81,9 +81,9 @@ if ($autorOk && $tituloOk && $editorialOk) {
                     . "No se ha guardado la modificación.</p>\n";
             } else {
                 $consulta = "UPDATE $tablaObras
-                    SET autor=:autor, titulo=:titulo,
-                        editorial=:editorial
-                    WHERE id=:id";
+                    SET autor = :autor, titulo = :titulo,
+                        editorial = :editorial
+                    WHERE id = :id";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":autor" => $autor, ":titulo" => $titulo,
                     ":editorial" => $editorial, ":id" => $id, ])) {

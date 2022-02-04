@@ -24,7 +24,7 @@ if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
-       WHERE id=:id";
+       WHERE id = :id";
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
     if (!$result) {
@@ -44,7 +44,7 @@ if ($id == "") {
         FROM $tablaPersonas, $tablaObras, $tablaPrestamos
         WHERE $tablaPrestamos.id_persona=$tablaPersonas.id
         AND $tablaPrestamos.id_obra=$tablaObras.id
-        AND $tablaPrestamos.id=:id";
+        AND $tablaPrestamos.id = :id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         $consulta2 = "SELECT * FROM $tablaPersonas ORDER BY apellidos";

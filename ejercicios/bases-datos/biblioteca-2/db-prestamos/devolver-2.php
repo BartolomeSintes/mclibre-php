@@ -25,7 +25,7 @@ $idOk       = false;
 $devueltoOk = false;
 
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
-    WHERE id=:id";
+    WHERE id = :id";
 $result = $db->prepare($consulta);
 $result->execute([":id" => $id]);
 if (!$result) {
@@ -47,7 +47,7 @@ if ($devuelto == "") {
     print "    <p class=\"aviso\">La fecha <strong>$devuelto</strong> de devolución no es una fecha válida.</p>\n";
 } else {
     $consulta = "SELECT prestado FROM $tablaPrestamos
-        WHERE id=:id";
+        WHERE id = :id";
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
     if (!$result) {
@@ -65,7 +65,7 @@ if ($devuelto == "") {
 if ($idOk && $devueltoOk) {
     $consulta = "UPDATE $tablaPrestamos
         SET devuelto='$devuelto'
-        WHERE id=:id";
+        WHERE id = :id";
     $result = $db->prepare($consulta);
     if ($result->execute([":id" => $id])) {
         print "    <p>Registro modificado correctamente.</p>\n";

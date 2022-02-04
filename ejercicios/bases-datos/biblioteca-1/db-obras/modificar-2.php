@@ -24,7 +24,7 @@ if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $consulta = "SELECT COUNT(*) FROM $tablaObras
-       WHERE id=:id";
+       WHERE id = :id";
     $result = $db->prepare($consulta);
     $result->execute([":id" => $id]);
     if (!$result) {
@@ -33,7 +33,7 @@ if ($id == "") {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
         $consulta = "SELECT * FROM $tablaObras
-            WHERE id=:id";
+            WHERE id = :id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {

@@ -25,7 +25,7 @@ if (!$usuario) {
 }
 
 $consulta = "SELECT * FROM $tablaUsuarios
-    WHERE usuario=:usuario";
+    WHERE usuario = :usuario";
 $result = $db->prepare($consulta);
 $result->execute([":usuario" => $usuario]);
 if (!$result) {

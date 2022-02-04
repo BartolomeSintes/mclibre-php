@@ -14,9 +14,11 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] != NIVEL_2) {
     exit;
 }
 
-if (!isset($_REQUEST["si"])) {
+$borrar = recoge("borrar");
+
+if ($borrar != "Sí") {
     header("Location:index.php");
-    exit();
+    exit;
 }
 
 $db = conectaDb();

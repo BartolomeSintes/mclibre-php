@@ -55,7 +55,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
         print "    <p class=\"aviso\">Hay que rellenar el nombre y nivel de usuario. No se ha guardado el registro.</p>\n";
     } else {
         $consulta = "SELECT * FROM $tablaUsuarios
-            WHERE id=:id";
+            WHERE id = :id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
@@ -66,7 +66,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                 print "    <p>Este usuario no se puede modificar.</p>\n";
             } else {
                 $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
-                    WHERE id=:id";
+                    WHERE id = :id";
                 $result = $db->prepare($consulta);
                 $result->execute([":id" => $id]);
                 if (!$result) {
@@ -78,8 +78,8 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
                     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
                     $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
-                        WHERE usuario=:usuario
-                        AND id<>:id";
+                        WHERE usuario = :usuario
+                        AND id <> :id";
                     $result = $db->prepare($consulta);
                     $result->execute([":usuario" => $usuario, ":id" => $id]);
                     if (!$result) {
@@ -90,8 +90,8 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                     } else {
                         if ($password != "") {
                             $consulta = "UPDATE $tablaUsuarios
-                                SET usuario=:usuario, password=:password, nivel=:nivel
-                                WHERE id=:id";
+                                SET usuario = :usuario, password = :password, nivel = :nivel
+                                WHERE id = :id";
                             $result = $db->prepare($consulta);
                             if ($result->execute([":usuario" => $usuario, ":password" => encripta($password),
                                 ":nivel" => $nivel, ":id" => $id, ])) {
@@ -101,8 +101,8 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
                             }
                         } else {
                             $consulta = "UPDATE $tablaUsuarios
-                                SET usuario=:usuario, nivel=:nivel
-                                WHERE id=:id";
+                                SET usuario = :usuario, nivel = :nivel
+                                WHERE id = :id";
                             $result = $db->prepare($consulta);
                             if ($result->execute([":usuario" => $usuario,
                                 ":nivel" => $nivel, ":id" => $id, ])) {

@@ -25,7 +25,7 @@ if (count($id) == 0) {
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "SELECT * FROM $tablaUsuarios
-            WHERE id=:id";
+            WHERE id = :id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $indice]);
         if (!$result) {
@@ -36,7 +36,7 @@ if (count($id) == 0) {
                 print "    <p>Este usuario no se puede borrar.</p>\n";
             } else {
                 $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
-                    WHERE id=:indice";
+                    WHERE id = :indice";
                 $result = $db->prepare($consulta);
                 $result->execute([":indice" => $indice]);
                 if (!$result) {
@@ -45,7 +45,7 @@ if (count($id) == 0) {
                     print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
                 } else {
                     $consulta = "DELETE FROM $tablaUsuarios
-                        WHERE id=:indice";
+                        WHERE id = :indice";
                     $result = $db->prepare($consulta);
                     if ($result->execute([":indice" => $indice])) {
                         print "    <p>Registro borrado correctamente.</p>\n";

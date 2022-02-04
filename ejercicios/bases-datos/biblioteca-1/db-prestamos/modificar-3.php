@@ -31,7 +31,7 @@ $devueltoOk   = false;
 $idOk         = false;
 
 $consulta = "SELECT COUNT(*) FROM $tablaPersonas
-    WHERE id=:id_persona";
+    WHERE id = :id_persona";
 $result = $db->prepare($consulta);
 $result->execute([":id_persona" => $id_persona]);
 if (!$result) {
@@ -43,7 +43,7 @@ if (!$result) {
 }
 
 $consulta = "SELECT COUNT(*) FROM $tablaObras
-    WHERE id=:id_obra";
+    WHERE id = :id_obra";
 $result = $db->prepare($consulta);
 $result->execute([":id_obra" => $id_obra]);
 if (!$result) {
@@ -84,7 +84,7 @@ if ($id_personaOk && $id_obraOk && $prestadoOk && $devueltoOk) {
         print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
-            WHERE id=:id";
+            WHERE id = :id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
@@ -96,9 +96,9 @@ if ($id_personaOk && $id_obraOk && $prestadoOk && $devueltoOk) {
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
             $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
-                WHERE id_persona=:id_persona
-                AND id_obra=:id_obra
-                AND id<>:id";
+                WHERE id_persona = :id_persona
+                AND id_obra = :id_obra
+                AND id <> :id";
             $result = $db->prepare($consulta);
             $result->execute([":id_persona" => $id_persona, ":id_obra" => $id_obra,
                 ":id"                       => $id, ]);
@@ -109,9 +109,9 @@ if ($id_personaOk && $id_obraOk && $prestadoOk && $devueltoOk) {
                     . "No se ha guardado la modificación.</p>\n";
             } else {
                 $consulta = "UPDATE $tablaPrestamos
-                    SET id_persona=:id_persona, id_obra=:id_obra,
-                        prestado=:prestado, devuelto=:devuelto
-                    WHERE id=:id";
+                    SET id_persona = :id_persona, id_obra = :id_obra,
+                        prestado = :prestado, devuelto = :devuelto
+                    WHERE id = :id";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":id_persona" => $id_persona, ":id_obra" => $id_obra,
                     ":prestado" => $prestado, ":devuelto" => $devuelto, ":id" => $id, ])) {

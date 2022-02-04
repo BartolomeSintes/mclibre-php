@@ -132,7 +132,7 @@ $_SESSION["dia"]  = $dia;
 calendario($db, $_SESSION["anyo"], $_SESSION["mes"], $_SESSION["dia"], "SELECT COUNT(*) FROM $tablaPrestamos WHERE prestado=");
 
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
-    WHERE prestado=:prestado";
+    WHERE prestado = :prestado";
 $result = $db->prepare($consulta);
 $result->execute([":prestado" => $fecha]);
 if (!$result) {
@@ -150,7 +150,7 @@ if (!$result) {
         FROM $tablaPersonas, $tablaObras, $tablaPrestamos
         WHERE $tablaPrestamos.id_persona=$tablaPersonas.id
         AND $tablaPrestamos.id_obra=$tablaObras.id
-        AND prestado=:prestado
+        AND prestado = :prestado
         ORDER BY $ordena";
     $result = $db->prepare($consulta);
     $result->execute([":prestado" => $fecha]);

@@ -168,7 +168,7 @@ function borraTodo($db, $nombresTablas, $consultasCreacionTablas)
 function existenTablas($db, $nombresTablas)
 {
     $existe   = true;
-    $consulta = "SELECT count(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '" . MYSQL_DATABASE . "'";
+    $consulta = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '" . MYSQL_DATABASE . "'";
     $result   = $db->query($consulta);
     if (!$result) {
         $existe = false;
@@ -182,7 +182,7 @@ function existenTablas($db, $nombresTablas)
                 // En information_schema.tables los nombres de las tablas no llevan el nombre
                 // de la base de datos, así que lo elimino
                 $tabla    = str_replace(MYSQL_DATABASE . ".", "", $tabla);
-                $consulta = "SELECT count(*) FROM information_schema.tables
+                $consulta = "SELECT COUNT(*) FROM information_schema.tables
                 WHERE table_schema = '" . MYSQL_DATABASE . "'
                     AND table_name = '$tabla'";
                 $result = $db->query($consulta);

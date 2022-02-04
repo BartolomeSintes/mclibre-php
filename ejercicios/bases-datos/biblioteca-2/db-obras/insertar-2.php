@@ -61,9 +61,9 @@ if ($autorOk && $tituloOk && $editorialOk) {
             print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaObras
-                WHERE autor=:autor
-                AND titulo=:titulo
-                AND editorial=:editorial";
+                WHERE autor = :autor
+                AND titulo = :titulo
+                AND editorial = :editorial";
             $result = $db->prepare($consulta);
             $result->execute([":autor" => $autor, ":titulo" => $titulo,
                 ":editorial"           => $editorial, ]);

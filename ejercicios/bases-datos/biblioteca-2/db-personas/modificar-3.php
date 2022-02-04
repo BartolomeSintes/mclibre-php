@@ -55,7 +55,7 @@ if ($nombreOk && $apellidosOk && $dniOk) {
         print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado la modificación.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaPersonas
-            WHERE id=:id";
+            WHERE id = :id";
         $result = $db->prepare($consulta);
         $result->execute([":id" => $id]);
         if (!$result) {
@@ -67,10 +67,10 @@ if ($nombreOk && $apellidosOk && $dniOk) {
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
             $consulta = "SELECT COUNT(*) FROM $tablaPersonas
-                WHERE nombre=:nombre
-                AND apellidos=:apellidos
-                AND dni=:dni
-                AND id<>:id";
+                WHERE nombre = :nombre
+                AND apellidos = :apellidos
+                AND dni = :dni
+                AND id <> :id";
             $result = $db->prepare($consulta);
             $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
                 ":dni"                  => $dni, ":id" => $id, ]);
@@ -81,9 +81,9 @@ if ($nombreOk && $apellidosOk && $dniOk) {
                     . "No se ha guardado la modificación.</p>\n";
             } else {
                 $consulta = "UPDATE $tablaPersonas
-                    SET nombre=:nombre, apellidos=:apellidos,
-                        dni=:dni
-                    WHERE id=:id";
+                    SET nombre = :nombre, apellidos = :apellidos,
+                        dni = :dni
+                    WHERE id = :id";
                 $result = $db->prepare($consulta);
                 if ($result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
                     ":dni" => $dni, ":id" => $id, ])) {

@@ -152,7 +152,7 @@ function existenTablas($db, $nombresTablas)
 {
     $existe = true;
     foreach ($nombresTablas as $tabla) {
-        $consulta = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
+        $consulta = "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = '$tabla'";
         $result   = $db->query($consulta);
         if (!$result) {
             $existe = false;

@@ -61,7 +61,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
             print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
-                WHERE usuario=:usuario";
+                WHERE usuario = :usuario";
             $result = $db->prepare($consulta);
             $result->execute([":usuario" => $usuario]);
             if (!$result) {

@@ -27,7 +27,7 @@ $id_obraOk    = false;
 $prestadoOk   = false;
 
 $consulta = "SELECT COUNT(*) FROM $tablaPersonas
-    WHERE id=:id_persona";
+    WHERE id = :id_persona";
 $result = $db->prepare($consulta);
 $result->execute([":id_persona" => $id_persona]);
 if (!$result) {
@@ -39,7 +39,7 @@ if (!$result) {
 }
 
 $consulta = "SELECT COUNT(*) FROM $tablaObras
-    WHERE id=:id_obra";
+    WHERE id = :id_obra";
 $result = $db->prepare($consulta);
 $result->execute([":id_obra" => $id_obra]);
 if (!$result) {
@@ -71,9 +71,9 @@ if ($id_personaOk && $id_obraOk && $prestadoOk) {
         print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
     } else {
         $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
-            WHERE id_persona=:id_persona
-            AND id_obra=:id_obra
-            AND prestado=:prestado";
+            WHERE id_persona = :id_persona
+            AND id_obra = :id_obra
+            AND prestado = :prestado";
         $result = $db->prepare($consulta);
         $result->execute([":id_persona" => $id_persona, ":id_obra" => $id_obra,
             ":prestado"                 => $prestado, ]);

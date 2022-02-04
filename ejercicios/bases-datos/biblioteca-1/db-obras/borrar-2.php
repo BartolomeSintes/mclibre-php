@@ -25,7 +25,7 @@ if (count($id) == 0) {
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "SELECT COUNT(*) FROM $tablaObras
-            WHERE id=:indice";
+            WHERE id = :indice";
         $result = $db->prepare($consulta);
         $result->execute([":indice" => $indice]);
         if (!$result) {
@@ -34,7 +34,7 @@ if (count($id) == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
             $consulta = "DELETE FROM $tablaObras
-                WHERE id=:indice";
+                WHERE id = :indice";
             $result = $db->prepare($consulta);
             if ($result->execute([":indice" => $indice])) {
                 print "    <p>Registro borrado correctamente.</p>\n";

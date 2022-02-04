@@ -61,9 +61,9 @@ if ($nombreOk && $apellidosOk && $dniOk) {
             print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaPersonas
-                WHERE nombre=:nombre
-                AND apellidos=:apellidos
-                AND dni=:dni";
+                WHERE nombre = :nombre
+                AND apellidos = :apellidos
+                AND dni = :dni";
             $result = $db->prepare($consulta);
             $result->execute([":nombre" => $nombre, ":apellidos" => $apellidos,
                 ":dni"                  => $dni, ]);
