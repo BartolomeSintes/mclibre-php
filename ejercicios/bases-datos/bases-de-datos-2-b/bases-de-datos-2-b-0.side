@@ -12,7 +12,7 @@
                 {
                     "id": "definiciones-generales-1",
                     "command": "store",
-                    "target": "/iaw/php/ejercicios/db-bases-de-datos-2-b/bases-de-datos-2-b-0",
+                    "target": "/mclibre/consultar/php/ejercicios/bases-datos/bases-de-datos-2-b/bases-de-datos-2-b-0",
                     "value": "urlBase"
                 },
                 {
@@ -85,7 +85,7 @@
                 {
                     "id": "borrar-todo-5",
                     "command": "executeScript",
-                    "target": "return (document.body.innerHTML.includes('Tabla borrada correctamente (si existía).'))",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
                     "value": "detectadoSQLite"
                 },
                 {
@@ -97,13 +97,13 @@
                 {
                     "id": "borrar-todo-7",
                     "command": "assertText",
-                    "target": "xpath=//p[1]",
+                    "target": "xpath=//p[2]",
                     "value": "Tabla borrada correctamente (si existía)."
                 },
                 {
                     "id": "borrar-todo-8",
                     "command": "assertText",
-                    "target": "xpath=//p[2]",
+                    "target": "xpath=//p[3]",
                     "value": "Tabla creada correctamente."
                 },
                 {
@@ -449,13 +449,32 @@
                     "value": "Registro creado correctamente."
                 },
                 {
-                    "id": "insertar-5-4",
+                    "id": "insertar-6-1",
+                    "comment": "(TEST) Insertar > Inserta un registro repetido",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=Pepito&apellidos=Conejo",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Base} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-6-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "El registro ya existe."
+                },
+                {
+                    "id": "insertar-6-4",
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": ""
                 },
                 {
-                    "id": "insertar-5-5",
+                    "id": "insertar-6-5",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
                     "value": "${maxEspera}"

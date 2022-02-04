@@ -12,7 +12,7 @@
                 {
                     "id": "configuracion-1",
                     "command": "store",
-                    "target": "/iaw/php/ejercicios/db-bases-de-datos-3-b/bases-de-datos-3-b-0",
+                    "target": "/mclibre/consultar/php/ejercicios/bases-datos/bases-de-datos-3-b/bases-de-datos-3-b-0",
                     "value": "urlBase"
                 },
                 {
@@ -226,7 +226,7 @@
                 {
                     "id": "borrar-todo-7",
                     "command": "executeScript",
-                    "target": "return (document.body.innerHTML.includes('Tabla Usuarios borrada correctamente (si existía).'))",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
                     "value": "detectadoSQLite"
                 },
                 {
@@ -238,31 +238,31 @@
                 {
                     "id": "borrar-todo-9",
                     "command": "assertText",
-                    "target": "xpath=//p[1]",
+                    "target": "xpath=//p[2]",
                     "value": "Tabla Usuarios borrada correctamente (si existía)."
                 },
                 {
                     "id": "borrar-todo-10",
                     "command": "assertText",
-                    "target": "xpath=//p[2]",
+                    "target": "xpath=//p[3]",
                     "value": "Tabla Personas borrada correctamente (si existía)."
                 },
                 {
                     "id": "borrar-todo-11",
                     "command": "assertText",
-                    "target": "xpath=//p[3]",
+                    "target": "xpath=//p[4]",
                     "value": "Tabla Usuarios creada correctamente."
                 },
                 {
                     "id": "borrar-todo-12",
                     "command": "assertText",
-                    "target": "xpath=//p[4]",
+                    "target": "xpath=//p[5]",
                     "value": "Registro de usuario creado correctamente."
                 },
                 {
                     "id": "borrar-todo-13",
                     "command": "assertText",
-                    "target": "xpath=//p[5]",
+                    "target": "xpath=//p[6]",
                     "value": "Tabla Personas creada correctamente."
                 },
                 {
@@ -570,6 +570,25 @@
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "insertar-6-1",
+                    "comment": "(TEST) Insertar > Inserta un registro repetido",
+                    "command": "open",
+                    "target": "${urlPersonas}/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "insertar-6-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "El registro ya existe."
                 }
             ]
         },
