@@ -26,7 +26,7 @@ $ordena   = recogeValores("ordena", $columnasUsuariosOrden, "password ASC");
 $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
     WHERE usuario LIKE :usuario
     AND password LIKE :password
-    AND nivel LIKE :nivel";
+    AND CAST(nivel AS VARCHAR) LIKE :nivel";
 $result = $db->prepare($consulta);
 $result->execute([":usuario" => "%$usuario%", ":password" => "%$password%",
     ":nivel"                 => "%$nivel%", ]);
@@ -38,7 +38,7 @@ if (!$result) {
     $consulta = "SELECT * FROM $tablaUsuarios
         WHERE usuario LIKE :usuario
         AND password LIKE :password
-        AND nivel LIKE :nivel
+        AND CAST(nivel AS VARCHAR) LIKE :nivel
         ORDER BY $ordena";
     $result = $db->prepare($consulta);
     $result->execute([":usuario" => "%$usuario%", ":password" => "%$password%",

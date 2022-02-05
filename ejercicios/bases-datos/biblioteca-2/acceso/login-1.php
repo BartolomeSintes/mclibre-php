@@ -55,6 +55,6 @@ print "        <input type=\"reset\" value=\"Borrar\" />\n";
 print "      </p>\n";
 print "    </form>\n";
 
-pie();
-
 $db = null;
+
+pie();

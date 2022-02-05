@@ -26,8 +26,8 @@ print "      <p><label><input type=\"checkbox\" name=\"demo\" value=\"Sí\"> Inc
 print "\n";
 print "      <p>Haga clic en Sí para borrar todos los datos.</p>\n";
 print "      <p>\n";
-print "        <input type=\"submit\" value=\"Sí\" name=\"borrar\">\n";
-print "        <input type=\"submit\" value=\"No\" name=\"borrar\">\n";
+print "        <input type=\"submit\" name=\"borrar\" value=\"Sí\">\n";
+print "        <input type=\"submit\" name=\"borrar\" value=\"No\">\n";
 print "      </p>\n";
 print "    </form>\n";
 

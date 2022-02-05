@@ -25,7 +25,7 @@ $ordena   = recogeValores("ordena", $cfg["dbUsuariosColumnasOrden"], "usuario AS
 
 $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
              WHERE usuario LIKE :usuario
-             AND nivel LIKE :nivel
+             AND CAST(nivel AS VARCHAR) LIKE :nivel
              ORDER BY $ordena";
 
 $resultado = $pdo->prepare($consulta);

@@ -17,6 +17,7 @@ $cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabl
 function conectaDb()
 {
     global $cfg;
+
     if (!is_dir(dirname($cfg["sqliteDatabase"]))) {
         print "    <p class=\"aviso\">Error: El directorio <strong>" . dirname($cfg["sqliteDatabase"]) . "</strong> no está disponible.</p>\n";
         exit;
@@ -99,7 +100,6 @@ function borraTodo()
     } else {
         print "    <p>Tabla Personas creada correctamente.</p>\n";
     }
-    print "\n";
 }
 
 // SQLITE: Comprobación de existencia de las tablas

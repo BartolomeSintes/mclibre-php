@@ -68,7 +68,7 @@ function borraTodo()
         if (!$pdo->query($consulta)) {
             print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
-            print "    <p>Tabla creada correctamente.</p>\n";
+            print "    <p>Tabla Usuarios creada correctamente.</p>\n";
             print "\n";
 
             $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
@@ -79,9 +79,9 @@ function borraTodo()
                 print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
                 print "    <p>Registro de usuario creado correctamente.</p>\n";
-                print "\n";
             }
         }
+        print "\n";
 
         $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
@@ -95,7 +95,7 @@ function borraTodo()
         if (!$pdo->query($consulta)) {
             print "    <p class=\"aviso\">Error al crear la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
-            print "    <p>Tabla creada correctamente.</p>\n";
+            print "    <p>Tabla Personas creada correctamente.</p>\n";
         }
     }
 }

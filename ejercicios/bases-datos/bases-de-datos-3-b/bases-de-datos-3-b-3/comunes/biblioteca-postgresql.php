@@ -66,7 +66,7 @@ function borraTodo()
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <p>Tabla usuarios creada correctamente.</p>\n";
+        print "    <p>Tabla Usuarios creada correctamente.</p>\n";
         print "\n";
 
         $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
@@ -92,9 +92,8 @@ function borraTodo()
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al crear la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <p>Tabla creada correctamente.</p>\n";
+        print "    <p>Tabla Personas creada correctamente.</p>\n";
     }
-    print "\n";
 }
 
 // POSTGRESQL: Comprobación de existencia de las tablas
