@@ -29,6 +29,7 @@
         <li><a href="#sesiones-destruir">Cerrar la sesión</a></li>
         <li><a href="#sesiones-nombre">Nombre de sesión</a></li>
         <li><a href="#sesiones-borrar">Borrar elementos</a></li>
+        <li><a href="#implementacion">Implementación sesiones</a></li>
         <li><a href="#sesiones-directiva-session-save-handler">session.save_handler</a></li>
       </ul>
     </div>
@@ -565,6 +566,52 @@ Array
     </ul>
   </section>
 
+  <section id="implementacion">
+    <h2>Implementación de las sesiones</h2>
+
+    <p>Al crear una sesión, el servidor asigna un identificador al usuario. Este identificador se guarda en el ordenador del cliente en forma de <i>cookie</i>, mientras que en el servidor se guarda un fichero con los valores de las variables de sesión. Cada vez que el cliente solicita una página al servidor, le envía la <i>cookie</i> que contiene el identificador y así el servidor puede recuperar los valores de la variable de sesión para utilizarlos al ejecutar la página.</p>
+    <p>De esta manera, el ordenador cliente no tiene acceso a los valores almacenados en la sesión.</p>
+
+    <ul>
+      <li>La página siguiente crea una variable de sesión
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+
+session_name("prueba");
+session_start();
+
+$_SESSION["nombre"] = "Barto";
+
+print "&lt;h1&gt;Prueba de sesión&lt;/h1&gt;\n";
+</code>
+</pre>
+        </div>
+      </li>
+      <li>Al ejecutar la páginas, en el ordenador cliente se crea una <i>cookie</i>, como puede comprobarse con las herramientas de desarrollador web del navegador. En Firefox las <i>cookies</i> se pueden consultar en la pestaña Almacenamiento &gt; Cookies. En Google Chrome las <i>cookies</i> se pueden consultar en la pestaña Aplicación &gt; Almacenamiento &gt; Cookies.
+        <p>En la captura siguiente, se puede comprobar como el nombre de la sesión corresponde al nombre de la <i>cookie</i>, cuyo valor es el identificador de la sesión en el servidor.</p>
+        <p class="mcl-centrado">
+          <img src="../img/php/sesiones-1.png" alt="Implementación de las sesiones (1)" width="1014" height="350">
+        </p>
+      </li>
+      <li>En el servidor se guarda la información de las sesiones en ficheros en directorios cuya ubicación se puede establecer con la directiva de PHP session.save_path o modificar en una página con la función <a href="https://www.php.net/manual/en/function.session-save-path.php"><span class="php-fun">sesion_save_path()</span></a>.
+        <p class="mcl-centrado">
+          <img src="../img/php/sesiones-2.png" alt="Implementación de las sesiones (2)" width="1014" height="295">
+        </p>
+      </li>
+      <li>En ese directorio podemos encontrar ficheros de texto plano que incluyen en su nombre el identificador de la sesión.
+        <p class="mcl-centrado">
+          <img src="../img/php/sesiones-3.png" alt="Implementación de las sesiones (3)" width="1024" height="210">
+        </p>
+      </li>
+      <li>El fichero contiene los nombres y valores de las variables de sesión:
+        <p class="mcl-centrado">
+          <img src="../img/php/sesiones-4.png" alt="Implementación de las sesiones (4)" width="1024" height="243">
+        </p>
+      </li>
+    </ul>
+  </section>
+
   <section id="sesiones-directiva-session-save-handler">
     <h2>Directiva session.save_handler</h2>
 
@@ -595,7 +642,7 @@ session_start();</code></pre>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 7 de febrero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
