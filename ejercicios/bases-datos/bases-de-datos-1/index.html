@@ -175,7 +175,7 @@ $cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la col
 
         <div class="codigo">
           <pre>
-<code class="language-php">// SQLITE: Consultas de borrado y creación de tablas
+<code class="language-php">// SQLITE: Borrado y creación de tablas
 
 $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
@@ -191,7 +191,7 @@ $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
 
         <div class="codigo">
           <pre>
-<code class="language-php">// MYSQL: Consultas de borrado y creación de base de datos y tablas
+<code class="language-php">// MYSQL: Borrado y creación de base de datos y tablas
 
 $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
@@ -200,7 +200,7 @@ $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
              COLLATE utf8mb4_unicode_ci";
 
 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
-             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+             id INTEGER UNSIGNED AUTO_INCREMENT,
              nombre VARCHAR($cfg[dbPersonasTamNombre]),
              apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
              PRIMARY KEY(id)
@@ -605,7 +605,7 @@ $id = recoge("id", []);
 
 foreach ($id as $indice =&gt; $valor) {
     $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                 WHERE id=:indice";
+                 WHERE id = :indice";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
@@ -772,7 +772,7 @@ if (!$resultado) {
     ...</code>
 </pre>
         </div>
-        <p>El comodín (%) debe incluirse al ejecutar la consulta, no se podrían incluir en la definición de $consulta.</p>
+        <p>los comodines (%) deben incluirse al ejecutar la consulta, no se podrían incluir en la definición de $consulta.</p>
       </li>
     </ul>
   </section>
@@ -955,7 +955,7 @@ if ($id == "") {
     print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
     $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
-                 WHERE id=:id";
+                 WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
@@ -995,8 +995,8 @@ if ($id == "") {
           <pre>
 <code class="language-php">    // Actualiza el registro
     $consulta = "UPDATE $cfg[dbPersonasTabla]
-                 SET nombre=:nombre, apellidos=:apellidos
-                 WHERE id=:id";
+                 SET nombre = :nombre, apellidos = :apellidos
+                 WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {

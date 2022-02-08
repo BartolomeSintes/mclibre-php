@@ -135,8 +135,8 @@ if (!$resultado) {
             <div class="codigo">
               <pre>
 <code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                     WHERE nombre=:nombre
-                     AND apellidos=:apellidos";
+                     WHERE nombre = :nombre
+                     AND apellidos = :apellidos";
 
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
@@ -202,7 +202,7 @@ if (count($id) == 0) {
             <div class="codigo">
               <pre>
 <code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                     WHERE id=:indice";
+                     WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
@@ -280,7 +280,7 @@ if ($id == "") {
             <div class="codigo">
               <pre>
 <code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                     WHERE id=:id";
+                     WHERE id = :id";
         $resultado = $pdo-&gt;prepare($consulta);
         $resultado-&gt;execute([":id" =&gt; $id]);
 
@@ -312,8 +312,8 @@ if ($id == "") {
             // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
             // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
             $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
-                         WHERE nombre=:nombre
-                         AND apellidos=:apellidos
+                         WHERE nombre = :nombre
+                         AND apellidos = :apellidos
                          AND id&lt;&gt;:id";
             $resultado = $pdo-&gt;prepare($consulta);
             $resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id]);

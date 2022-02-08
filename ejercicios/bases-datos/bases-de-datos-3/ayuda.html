@@ -52,7 +52,7 @@
         <ul>
           <li>acceso: gestión de la identificación del usuario (login.php, logout.php)</li>
           <li>comunes: configuración, bibliotecas, bases de datos y hoja de estilo (biblioteca.php, biblioteca-mysql.php, biblioteca-sqlite.php, config.php, mclibre-php-proyectos.css)</li>
-          <li>db-personas: páginas específicas para gestionar la tabla personas (borrar-1.php, borrar-2.php, borrar-todo-1.php, borrar-todo-2.php, buscar-1.php, buscar-2.php, index.php, insertar-1.php, insertar-2.php, listar.php, modificar-1.php, modificar-2.php, modificar-3.php)</li>
+          <li>tabla-personas: páginas específicas para gestionar la tabla personas (borrar-1.php, borrar-2.php, borrar-todo-1.php, borrar-todo-2.php, buscar-1.php, buscar-2.php, index.php, insertar-1.php, insertar-2.php, listar.php, modificar-1.php, modificar-2.php, modificar-3.php)</li>
           <li>img: flechas de ordenación (abajo.svg, arriba.svg)</li>
           <li>directorio raíz: incluye únicamente la página inicial index.php</li>
         </ul>
@@ -67,6 +67,7 @@
 session_start();
 
 $_SESSION["conectado"] = true;
+
 header("location:../index.php");</code>
 </pre>
             </div>
@@ -162,7 +163,7 @@ define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la págin
         }
     } else {
         if ($menu == MENU_PRINCIPAL) {
-            print "        &lt;li&gt;&lt;a href=\"db-personas/index.php\"&gt;Personas&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"tabla-personas/index.php\"&gt;Personas&lt;/a&gt;&lt;/li&gt;\n";
             print "        &lt;li&gt;&lt;a href=\"acceso/logout.php\"&gt;Desconectarse&lt;/a&gt;&lt;/li&gt;\n";
         } elseif ($menu == MENU_VOLVER) {
             print "        &lt;li&gt;&lt;a href=\"../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
@@ -183,9 +184,9 @@ define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la págin
           </li>
         </ul>
       </li>
-      <li>db-personas
+      <li>tabla-personas
         <ul>
-          <li>[todas en /db-personas] Todas las páginas de la gestión de la tabla de personas tienen un menú específico:
+          <li>[todas en /tabla-personas] Todas las páginas de la gestión de la tabla de personas tienen un menú específico:
             <div class="codigo">
               <pre>
 <code class="language-php">cabecera("Inicio", MENU_PERSONAS, PROFUNDIDAD_1);</code>
@@ -288,7 +289,7 @@ $cfg["dbUsuariosTamPassword"] = 64;         // Tamaño de la columna Usuarios &g
           </li>
           <li>[biblioteca-sqlite.php]
             <p>Modificamos la función borraTodo() para que borre y cree todas las tablas.</p>
-            <p>Una vez creadas las tablas, insertaremos un registro en la tabla de usuarios para que haya algún usuario que pueda conectarse. Los datos de ese usuario se encuentran como antes en el archivo de configuración.</p>
+            <p>Una vez creadas las tablas, insertaremos un registro en la tabla de usuarios para que haya algún usuario que pueda conectarse. Los datos de ese usuario se encuentran como antes en el archivo de configuración. Indicaremos el campo <i>id</i> para asegurar el valor del campo. En este caso, no es algo estrictamente necesario, pero sí que lo sería si insertáramos registros que estuvieran relacionados con registros de otras tablas (como haremos más adelante).</p>
             <div class="codigo">
               <pre>
 <code class="language-php">function borraTodo()
@@ -305,8 +306,8 @@ $cfg["dbUsuariosTamPassword"] = 64;         // Tamaño de la columna Usuarios &g
                  )";
     ...
         $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
-                     (usuario, password)
-                     VALUES ('$cfg[rootName]', '$cfg[rootPassword]')";
+                     (id, usuario, password)
+                     VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]')";
     ...
     $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                  id INTEGER PRIMARY KEY,
@@ -342,7 +343,7 @@ $cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabl
                  COLLATE utf8mb4_unicode_ci";
     ...
     $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
-                 id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+                 id INTEGER UNSIGNED AUTO_INCREMENT,
                  usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
                  password VARCHAR($cfg[dbUsuariosTamPassword]),
                  PRIMARY KEY(id)
@@ -353,7 +354,7 @@ $cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabl
                  VALUES ($cfg[rootName]', '$cfg[rootPassword]')";
     ...
     $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
-                 id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+                 id INTEGER UNSIGNED AUTO_INCREMENT,
                  nombre VARCHAR($cfg[dbPersonasTamNombre]),
                  apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
                  telefono VARCHAR($cfg[dbPersonasTamTelefono]),
@@ -412,7 +413,7 @@ $cfg["dbUsuariosColumnasOrden"] = [
 </pre>
         </div>
       </li>
-      <li>Tabla usuarios y Tabla personas
+      <li>Tabla Usuarios y tabla Personas
         <ul>
           <li>Crearemos dos carpetas /db/tabla-personas y db/tabla-usuarios con las mismas páginas de gestión de la tabla (insertar-1.php, insertar-2.php, etc.), pero adaptando los nombres de los campos a los de la tabla correspondiente.</li>
           <li>[config.php]
@@ -435,7 +436,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
           </li>
         </ul>
       </li>
-      <li>Tabla usuarios
+      <li>Tabla Usuarios
         <ul>
           <li>En la tabla usuarios hay que realizar algunas comprobaciones adicionales en algunas páginas.</li>
           <li>[insertar-2.php]
@@ -457,7 +458,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <div class="codigo">
               <pre>
 <code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
-                 WHERE usuario=:usuario";
+                 WHERE usuario = :usuario";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
@@ -495,7 +496,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
               <pre>
 <code class="language-php">    foreach ($id as $indice =&gt; $valor) {
         $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
-                     WHERE id=:indice";
+                     WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
@@ -520,7 +521,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <div class="codigo">
               <pre>
 <code class="language-php">    $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
-                 WHERE id=:id";
+                 WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
@@ -539,11 +540,11 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <div class="codigo">
               <pre>
 <code class="language-php">        foreach ($cfg["usuariosNiveles"] as $indice =&gt; $valor) {
-            print "                &lt;option value=\"$indice\"";
             if ($registro["nivel"] == $indice) {
-                print " selected";
+                print "                &lt;option value=\"$indice\" selected&gt;$valor&lt;/option&gt;\n";
+            } else {
+                print "                &lt;option value=\"$indice\"&gt;$valor&lt;/option&gt;\n";
             }
-            print "&gt;$valor&lt;/option&gt;\n";
         }</code>
 </pre>
             </div>
@@ -556,7 +557,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
         $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
-                     WHERE usuario=:usuario
+                     WHERE usuario = :usuario
                      AND id&lt;&gt;:id";
 
         $resultado = $pdo-&gt;prepare($consulta);
@@ -575,7 +576,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <div class="codigo">
               <pre>
 <code class="language-php">            $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
-                         WHERE id=:id";
+                         WHERE id = :id";
 
             $resultado = $pdo-&gt;prepare($consulta);
             if (!$resultado) {
@@ -606,7 +607,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
     $existe = true;
 
     foreach ($cfg["dbTablas"] as $tabla) {
-        $consulta = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='$tabla'";
+        $consulta = "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = '$tabla'";
 
         $resultado = $pdo-&gt;query($consulta);
         if (!$resultado) {
@@ -633,7 +634,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
 
     $existe = true;
 
-    $consulta = "SELECT count(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$cfg[mysqlDatabase]'";
+    $consulta = "SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name = '$cfg[mysqlDatabase]'";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
@@ -649,7 +650,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
                 // de la base de datos, así que lo elimino
                 $tabla = str_replace("$cfg[mysqlDatabase].", "", $tabla);
 
-                $consulta = "SELECT count(*) FROM information_schema.tables
+                $consulta = "SELECT COUNT(*) FROM information_schema.tables
                              WHERE table_schema = '$cfg[mysqlDatabase]'
                              AND table_name = '$tabla'";
 
@@ -743,8 +744,8 @@ $cfg["usuariosNiveles"] = [
         print "    &lt;p&gt;Tabla Usuarios creada correctamente.&lt;/p&gt;\n";
 
         $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
-                     (usuario, password, nivel)
-                     VALUES ('$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
+                     (id, usuario, password, nivel)
+                     VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
         ...</code>
 </pre>
             </div>
@@ -753,7 +754,7 @@ $cfg["usuariosNiveles"] = [
             <div class="codigo">
               <pre>
 <code class="language-php">        $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
-                     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+                     id INTEGER UNSIGNED AUTO_INCREMENT,
                      usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
                      password VARCHAR($cfg[dbUsuariosTamPassword]),
                      nivel INTEGER NOT NULL,
@@ -766,8 +767,8 @@ $cfg["usuariosNiveles"] = [
             print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
 
             $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
-                         (usuario, password, nivel)
-                         VALUES ('$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
+                         (id, usuario, password, nivel)
+                         VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
             ...</code>
 </pre>
             </div>
@@ -776,10 +777,11 @@ $cfg["usuariosNiveles"] = [
       </li>
       <li>Diferenciación entre los usuarios administradores y normales
         <ul>
-          <li>[login-2.php] Si el usuario se identifica correctamente, guardamos en la variable de sesión el nivel del usuario:
+          <li>[login-2.php] Si el usuario se identifica correctamente, guardamos otra variable de sesión con el nivel del usuario:
             <div class="codigo">
               <pre>
-<code class="language-php">$_SESSION["conectado"] = $registro["nivel"];</code>
+<code class="language-php">$_SESSION["conectado"] = true;
+$_SESSION["nivel"]     = $registro["nivel"];</code>
 </pre>
             </div>
           </li>
@@ -789,7 +791,7 @@ $cfg["usuariosNiveles"] = [
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] &lt; NIVEL_ADMINISTRADOR) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; NIVEL_ADMINISTRADOR) {
     header("Location:../index.php");
     exit;
 }</code>
@@ -801,7 +803,7 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] &lt; NIVEL_ADMINIST
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] &lt; NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; NIVEL_USUARIO_BASICO) {
     header("Location:../../index.php");
     exit;
 }</code>
@@ -812,7 +814,7 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] &lt; NIVEL_USUARIO_
             <div class="codigo">
               <pre>
 <code class="language-php">       ...
-    } elseif ($_SESSION["conectado"] == NIVEL_USUARIO_BASICO) {
+    } elseif ($_SESSION["nivel"] == NIVEL_USUARIO_BASICO) {
         if ($menu == MENU_PRINCIPAL) {
             print "        &lt;li&gt;&lt;a href=\"db/tabla-personas/index.php\"&gt;Personas&lt;/a&gt;&lt;/li&gt;\n";
             print "        &lt;li&gt;&lt;a href=\"acceso/logout.php\"&gt;Desconectarse&lt;/a&gt;&lt;/li&gt;\n";
@@ -828,7 +830,7 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] &lt; NIVEL_USUARIO_
         } else {
             print "        &lt;li&gt;Error en la selección de menú&lt;/li&gt;\n";
         }
-    } elseif ($_SESSION["conectado"] == NIVEL_ADMINISTRADOR) {
+    } elseif ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
       ...
     }</code>
 </pre>
@@ -925,13 +927,29 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
 </pre>
             </div>
           </li>
+          <li>[buscar-2.php] Para poder hacer una búsqueda con comodines, algunos sistemas gestores de bases de datos (como PostgreSQL) necesitan que el campo sea de tipo texto. Como nivel es de tipo numérico, debemos hacer la conversión (SQLite o MySQL no la necesitan, pero la admiten):
+            <div class="codigo">
+              <pre>
+<code class="language-php">$consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+             WHERE usuario LIKE :usuario
+             AND CAST(nivel AS VARCHAR) LIKE :nivel
+             ORDER BY $ordena";
+
+$resultado = $pdo-&gt;prepare($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":usuario" =&gt; "%$usuario%", ":nivel" =&gt; "%$nivel%"])) {
+    ...</code>
+</pre>
+            </div>
+          </li>
         </ul>
       </li>
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 1 de febrero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 5 de febrero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
