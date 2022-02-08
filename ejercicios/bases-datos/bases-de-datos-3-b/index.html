@@ -25,7 +25,20 @@
       <h3><a href="#">Enunciados</a></h3>
       <ul>
         <li><a href="#ejercicio-0">0 - Aplicación de ejemplo</a></li>
-        <li><a href="#ejercicio-1">1 - Ideas de mejora</a></li>
+        <li><a href="#ejercicio-1">1 - Mejoras (1)</a></li>
+        <li><a href="#ejercicio-2">2 - Mejoras (2)</a></li>
+        <li><a href="#ejercicio-3">3 - PostgreSQL</a></li>
+        <li><a href="#ejercicio-4">4 - Multiusuario (1)</a></li>
+        <li><a href="#ejercicio-5">5 - Multiusuario (2)</a></li>
+      </ul>
+
+      <h3><a href="ayuda.html">Ayuda</a></h3>
+      <ul>
+        <li><a href="ayuda.html#ejercicio-1">1 - Mejoras (1)</a></li>
+        <li><a href="ayuda.html#ejercicio-2">2 - Mejoras (2)</a></li>
+        <li><a href="ayuda.html#ejercicio-3">3 - PostgreSQL</a></li>
+        <li><a href="ayuda.html#ejercicio-4">4 - Agenda multiusuario</a></li>
+        <li><a href="ayuda.html#ejercicio-5">5 - Multiusuario (2)</a></li>
       </ul>
     </div>
   </nav>
@@ -33,6 +46,8 @@
   <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta página de ejercicios está en elaboración.</p>
 
   <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/2122/db-bases-de-datos-3-b-plantillas.zip">plantillas de los ejercicios Bases de datos (3 B) (Bases de datos)</a>, que contienen únicamente la aplicación de ejemplo 3 B 0.</p>
+
+  <p>La plantilla del ejercicio 1 es la aplición de ejemplo 3 (B) 0. La plantilla del ejercicio 3 es la solución del ejercicio 3 (B) 1. La plantilla del ejercicio 4 es la solución del ejericio 3 (B) 1 pero con el archivo comunes/demo.php adaptado al ejercicio.</p>
 
   <section id="ejercicio-0">
     <h2>Bases de datos (3 B) - 0 - Aplicación de ejemplo</h2>
@@ -50,22 +65,289 @@
   </section>
 
   <section id="ejercicio-1">
-    <h2>Bases de datos (3 B) - 1 - Ideas para mejorar la aplicación</h2>
+    <h2>Bases de datos (3 B) - 1 - Mejoras en la aplicación (1)</h2>
+
+    <p>Implemente estas mejoras en la aplicación:</p>
+    <ol>
+      <li>Al borrar todo, ofrecer la opción de insertar automáticamente algunos registros de prueba.</li>
+      <li>En SQLite, si no existe el directorio donde se quiere guardar la base de datos, mostrar un mensaje indicando el problema.
+        <details>
+          <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
+          <p>Para resolver este apartado puede utilizar las funciones <a href="https://www.php.net/manual/en/function.dirname.php"><span class="pfp-fun">dirname()</span></a> e <a href="https://www.php.net/manual/en/function.is-dir.php"><span class="pfp-fun">is_dir()</span></a></p>
+        </details>
+      </li>
+      <li>Al modificar el registro de un usuario, ofrecer la posibilidad de mantener la contraseña (por ejemplo, marcando una casilla).</li>
+      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["dbPersonasMaxReg"] o $cfg["dbUsuariosMaxReg"] es 0 o negativo.</li>
+    </ol>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="bases-de-datos-3-b-1/index.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="bases-de-datos-3-b-1/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Bases de datos (3 B) - 2 - Mejoras en la aplicación (2)</h2>
 
     <p>Implemente estas mejoras en la aplicación:</p>
     <ul>
-      <li>Al borrar todo, ofrecer la opción de insertar automáticamente algunos registros de prueba.</li>
       <li>Al borrar todo, ofrecer la opción de borrar una de las tablas (usuarios o personas) o las dos.</li>
       <li>En SQLite, si no existe el directorio donde se quiere guardar la base de datos, ofrecer la posibilidad de crearlo desde la propia aplicación.</li>
       <li>Al establecer la contraseña, indicar la fortaleza de la contraseña (por ejemplo, puntuando de cero a cuatro estrellas si tiene un mínimo de 8 caracteres, si tiene mayúsculas y minúsculas, si tiene números y letras, si incluye un carácter especial). Podría comprobarse también que no haya caracteres o números consecutivos</li>
-      <li>Al modificar el registro de un ususario, ofrecer la posibilidad de mantener la contraseña (por ejemplo, marcando una casilla).</li>
       <li>Al conectarse un usuario, que la aplicación le solicite periódicamente cambiar la contraseña (aunque esto se suele hacer por tiempo, por ejemplo cada 6 meses, en este caso se podría hacer cada N conexiones para poder probarlo).</li>
       <li>La inserción de registros repetidos se impide por el programa (en insertar-2.php y en modificar-3.php). Utilizar la restricción SQL UNIQUE para que ese trabajo lo haga la base de datos.</li>
+      <li>Comprobar si existe el usuario root en la función existenTablas()</li>
+      <li>Incluir un logotipo de la aplicación. Que se pueda subir el logotipo.</li>
+      <li>Eliminar de la fucnión cabecera el tercer argumento (profundidad de la página), haciendo que esa profundidad se detecte automáticamente por el programa.</li>
+      <li>La longitud del campo password debe ser suficiente para alojar el <i>hash</i> elegido. Hacer que la aplicación compruebe que es así.</li>
+    </ul>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Bases de datos (3 B) - 3 - Nueva base de datos: PostgreSQL</h2>
+
+    <p>Añadir a la aplicación la posibilidad de trabajar con una sistema gestor de bases de datos distinto, por ejemplo <a href="https://www.postgresql.org/">PostgreSQL</a>.</p>
+    <ol>
+      <li>Descargue <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">PostgreSQL</a>. En febrero de 2022, cuando se redactó este ejercicio, la última versión disponible para Windows era la versión 14.1, que puede descargar directamente con este enlace: <a href="https://www.mclibre.org/descargar/webapps/2122/PostgreSQL-14-1-x64.exe">PostgreSQL 14.1 para Windows (284 MB)</a>.</li>
+      <li>Instale PostgreSQL.
+        <ul>
+          <li>Contraseña del usuario <strong>postgres</strong>: postgres</li>
+          <li>Puerto: 5432</li>
+          <li>Configuración regional: Configuración regional por defecto</li>
+        </ul>
+      </li>
+      <li>Abra pgadmin4. Al entrar en pgadmin4 le pedirá primero un master password: master. Y a continuación la contraseña del usuario <strong>postgres</strong>: postgres.</li>
+      <li>Con pgadmin4, cree un rol (en postgreSQL, rol es lo mismo que usuario):
+        <ul>
+          <li>General &gt: Name: iaw</li>
+          <li>Definition &gt; Password: iaw</li>
+          <li>Privileges &gt: Can login</li>
+        </ul>
+      </li>
+      <li>Con pgadmin4, cree un rol (en postgreSQL, rol es lo mismo que usuario) y cree una base de datos con el mismo nombre que el usuario:
+        <ul>
+          <li>General &gt; Owner: iaw</li>
+          <li>Definition &gt; Encoding: UTF8</li>
+          <li>Definition &gt; Collation: Spanish_Spain.1252</li>
+          <li>Definition &gt; Character type: Spanish_Spain.1252</li>
+        </ul>
+      </li>
+      <li>En el archivo de configuración de PHP, active la extensión PDO para PostgreSQL. El nombre PostgreSQL se suele abreviar como pgsql.</li>
+      <li>Cree un archivo <strong>biblioteca-postgresql.php</strong> a partir de <strong>biblioteca-sqlite.php</strong> y modifique los archivos <strong>biblioteca.php</strong> y <strong>config.php</strong> para poder trabajar con PostgreSQL.</li>
+      <li>[config.php]
+        <p>En PostgreSQL para realizar la conexión se deben proporcionar cinco parámetros (host, puerto, base de datos, usuario y contraseña).</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Configuración para PostgreSQL
+
+$cfg["pgsqlHost"]     = "pgsql:host=localhost";             // Nombre de host
+$cfg["pgsqlPort"]     = "5432";                             // Número de puerto
+$cfg["pgsqlDatabase"] = "iaw";                              // Nombre de la base de datos
+$cfg["pgsqlUser"]     = "iaw";                              // Nombre de usuario
+$cfg["pgsqlPassword"] = "";                                 // Contraseña de usuario</code>
+</pre>
+        </div>
+      </li>
+      <li>[biblioteca-postgresql.php]
+        <p>En PostgreSQL, cuando nos conectamos a la base de datos nos conectamos con alguna base de datos ya existente. Esa base de datos no la podemos borrar puesto que es la base de datos activa y la que nos permite estar conectados. Por eso la función borraTodo() para PostgreSQL es como la función borraTodo() para SQLite, que borra y crea las tablas, y no como la función borraTodo() para MySQL, que borra y crea la base de datos. </p>
+        <p>Esta puede ser la función de conexión para PostgreSQL:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// POSTGRESQL: Conexión con la base de datos
+
+function conectaDb()
+{
+    global $cfg;
+
+    try {
+        $conexion = "$cfg[pgsqlHost];port=$cfg[pgsqlPort];dbname=$cfg[pgsqlDatabase];user=$cfg[pgsqlUser];password=$cfg[pgsqlPassword]";
+        $tmp = new PDO($conexion);
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        return $tmp;
+    } catch (PDOException $e) {
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        exit;
+    }
+}</code>
+</pre>
+        </div>
+        <p>Para crear un campo autonumérico en PostgreSQL, se suele utilizar el pseudo-tipo SERIAL, como muestra el siguiente ejemplo:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// POSTGRESQL: Borrado y creación de tablas
+
+    $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+                 id SERIAL PRIMARY KEY,
+                 usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
+                 password VARCHAR($cfg[dbUsuariosTamPassword]),
+                 nivel INTEGER NOT NULL
+                 )";</code>
+</pre>
+        </div>
+        <p>La consulta para comprobar la existencia de una tabla en PostgreSQL sería la siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// POSTGRESQL: Comprobación de existencia de las tablas
+
+        $consulta = "SELECT COUNT(*) FROM information_schema.tables WHERE table_name='$tabla'";</code>
+</pre>
+        </div>
+      </li>
+      <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y crenado registros de Personas.</li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Bases de datos (3 B) - 4 - Agenda multiusuario (1)</h2>
+
+    <p>Modifique la aplicación de manera que cada usuario básico de la aplicación sólo pueda trabajar con sus propios registros de Personas (listar, borrar, buscar, modificar).</p>
+    <ol>
+      <li>Añada en la tabla Personas un campo que contenga el id del usuario que crea el registro.
+        <details>
+          <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">// SQLITE:
+    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                 id INTEGER PRIMARY KEY,
+                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+                 telefono VARCHAR($cfg[dbPersonasTamTelefono]),
+                 correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                 id_usuario INTEGER,
+                 FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE
+                 )";
+
+// MYSQL:
+                 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                              id INTEGER UNSIGNED AUTO_INCREMENT,
+                              nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                              apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+                              telefono VARCHAR($cfg[dbPersonasTamTelefono]),
+                              correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                              id_usuario INTEGER UNSIGNED,
+                              FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE,
+                              PRIMARY KEY(id)
+                              )";</code>
+</pre>
+          </div>
+        </details>
+      </li>
+      <li>Al identificarse como usuario, guarde una variable de sesión con el <i>id</i> del usuario conectado.
+        <details>
+          <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">$_SESSION["id_usuario"]   = $registro["id"];</code>
+</pre>
+          </div>
+        </details>
+      </li>
+      <li>Los usuarios básicos sólo podrán administrar sus propios registros (listar, borrar, buscar, modificar).
+        <details>
+          <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
+          <p>Basta con añadir en las consultas la condición de que el campo de usuario (que indica el usuario que creó el registro) coincide con el usuario conectado. Por ejemplo:</p>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+                 WHERE id_usuario = $_SESSION[id_usuario]
+                 ORDER BY $ordena";</code>
+</pre>
+          </div>
+        </details>
+      </li>
+      <li>Un usuario básico podrá insertar un registro de Personas con los mismos datos que un registro de otro usuario, pero no repetir un registro propio.</li>
+      <li>Los usuarios administradores podrán listar, borrar y buscar todos los registros de Personas.
+        <details>
+          <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
+          <p>Las consultas deberá ser diferentes en función del nivel del usuario conectado. Si el nivel es administrador, las consultas deberán combinar la tabla Personas con la tabla Usuarios para mostrar el nombre de usuario del usuario que creó el registro. Por ejemplo:</p>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+    $consulta = "SELECT
+                     personas.id,
+                     personas.nombre,
+                     personas.apellidos,
+                     personas.correo,
+                     personas.telefono,
+                     usuarios.usuario
+                 FROM $cfg[dbPersonasTabla] as personas
+                 JOIN $cfg[dbUsuariosTabla] as usuarios
+                 ON personas.id_usuario = usuarios.id
+                 ORDER BY $ordena";
+} else {
+  $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+               WHERE id_usuario = $_SESSION[id_usuario]
+               ORDER BY $ordena";
+}</code>
+</pre>
+          </div>
+        </details>
+      </li>
+      <li>En los listados (listar, borrar, buscar, modificar) los usuarios adminstradores verán el nombre del usuario que creó el registro.
+        <details>
+          <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
+          <p>La columna Usuario se mostrará cuando el nivel del usuario conectado sea el nivel administrador.</p>
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">
+    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+        print "            &lt;th&gt;\n";
+        print "              &lt;button name=\"ordena\" value=\"usuario ASC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "              Usuario\n";
+        print "              &lt;button name=\"ordena\" value=\"usuario DESC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "            &lt;/th&gt;\n";
+    }
+...
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+            print "            &lt;td&gt;$registro[usuario]&lt;/td&gt;\n";
+        }
+</code>
+</pre>
+          </div>
+        </details>
+      </li>
+      <li>Compruebe que los usuarios administradores pueden ordenar los registros de personas por el campo usuario.</li>
+      <li>Los usuarios administradores no podrán insertar registros de Personas a nombre de otros usuarios, ni modificar el campo usuario de un registro de Personas (esta funcionalidad se deja para el ejercicio siguiente).</li>
+    </ol>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="bases-de-datos-3-b-4/index.php" style="height: 30em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="bases-de-datos-3-b-4/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Bases de datos (3 B) - 5 - Agenda multiusuario (2) Mejoras</h2>
+
+    <p>Modifique la aplicación del ejercicio anterior.</p>
+    <ul>
+      <li>Si al borrar un registro de Usuario, se van a borrar registros de Personas creados por ese usuario, convendría mostrar un aviso indicando por ejemplo el número de registros que se borrarán y solicitar confirmación.</li>
+      <li>Los usuarios administradores podrán insertar registros de Personas a nombre de otros usuarios.</li>
+      <li>Los usuarios administradores podrán modificar el campo usuario de un registro de Personas.</li>
+      <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y crenado registros de Personas.</li>
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 5 de febrero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

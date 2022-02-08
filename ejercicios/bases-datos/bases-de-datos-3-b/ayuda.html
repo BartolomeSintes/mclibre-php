@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Bases de datos (3 B). Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios - Bases de datos (3 B) - Ayuda</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Bases datos (3 B) - Ayuda</h2>
+
+      <h3><a href="index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="index.html#ejercicio-0">0 - Aplicación de ejemplo</a></li>
+        <li><a href="index.html#ejercicio-1">1 - Mejoras (1)</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Mejoras (2)</a></li>
+        <li><a href="index.html#ejercicio-3">3 - PostgreSQL</a></li>
+        <li><a href="index.html#ejercicio-4">4 - Agenda multiusuario</a></li>
+        <li><a href="index.html#ejercicio-5">5 - Multiusuario (2)</a></li>
+      </ul>
+
+      <h3><a href="#">Ayuda</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Mejoras (1)</a></li>
+        <li><a href="#ejercicio-2">2 - Mejoras (2)</a></li>
+        <li><a href="#ejercicio-3">3 - PostgreSQL</a></li>
+        <li><a href="#ejercicio-4">4 - Agenda multiusuario</a></li>
+        <li><a href="#ejercicio-5">5 - Multiusuario (2)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta página de comentarios está en elaboración.</p>
+
+  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP de los ejercicios <a href="index.html">Base de datos (3 B)</a>.</p>
+
+  <section id="ejercicio-1">
+    <h2>Bases de datos (3 B) - 1 - Mejoras en la aplicación (1)</h2>
+    <ol>
+      <li>Al borrar todo, ofrecer la opción de insertar automáticamente algunos registros de prueba.
+        <ul>
+          <li>[administrador/borrar-todo-1.php]
+            <p>Podemos incluir un control para que el usuario indique si quiere incluir registros de prueba en la base de datos ...</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">print "      &lt;p&gt;&lt;label&gt;&lt;input type=\"checkbox\" name=\"demo\" value=\"Sí\"&gt; Incluir datos de prueba&lt;/label&gt;&lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+          <li>[administrador/borrar-todo-2.php]
+            <p>... recogerlo y en caso afirmativo, llamar a una función que incluya los registros de prueba:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">$demo   = recoge("demo");
+...
+
+if ($demo == "Sí") {
+    insertaDemo();
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>[comunes/demo.php]
+            <p>Podemos indicar los registros a crear en una matriz e insertarlos recorriendo la matriz. En el ejemplo, los registros incluyen incluso el valor del id. En este caso no es necesario, pero sí lo sería si los registros de una tabla hicieran referencia a los registros de otra tabla, como ocurre en el ejercicio 4, por lo que preparamos ya el código para esa situación.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">// Registros de prueba opcionales
+
+$cfg["registrosDemo"] = [
+    [$cfg["dbUsuariosTabla"], [2, "usuario1", encripta("usuario1"), NIVEL_USUARIO_BASICO]],
+    [$cfg["dbUsuariosTabla"], [3, "usuario2", encripta("usuario2"), NIVEL_USUARIO_BASICO]],
+    [$cfg["dbUsuariosTabla"], [4, "admin1", encripta("admin1"), NIVEL_ADMINISTRADOR]],
+    [$cfg["dbPersonasTabla"], [1, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com"]],
+    [$cfg["dbPersonasTabla"], [2, "Numa", "Nigerio", "161803398", "numa.nigerio@example.com"]],
+    [$cfg["dbPersonasTabla"], [3, "Fulanito", "Mengánez", "314159265", "fulanito.menganez@example.com"]],
+];
+
+function insertaDemo()
+{
+    global $cfg, $pdo;
+
+    print "    &lt;p&gt;Insertando registros de prueba ...&lt;/p&gt;\n";
+    print "\n";
+    foreach ($cfg["registrosDemo"] as $registro) {
+        if ($registro[0] == $cfg["dbUsuariosTabla"]) {
+            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+                         (id, usuario, password, nivel)
+                         VALUES ({$registro[1][0]}, '{$registro[1][1]}', '{$registro[1][2]}',  {$registro[1][3]})";
+        } elseif ($registro[0] == $cfg["dbPersonasTabla"]) {
+            $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+                         (id, nombre, apellidos, telefono, correo)
+                         VALUES ({$registro[1][0]}, '{$registro[1][1]}', '{$registro[1][2]}', '{$registro[1][3]}', '{$registro[1][4]}')";
+        }
+
+        if (!$pdo-&gt;query($consulta)) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } else {
+            print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+        }
+        print "\n";
+    }
+}</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>En SQLite, si no existe el directorio donde se quiere guardar la base de datos, mostrar un mensaje indicando el problema.
+        <ul>
+          <li>[comunes/biblioteca-sqlite.php]
+            <p>Podemos aplicar la función <a href="https://www.php.net/manual/en/function.dirname.php"><span class="php-fun">dirname()</span></a>, que devuelve el camino padre (en este caso, elimina el nombre del archivo), a la variable de configuración $cfg["sqliteDatabase"]. Y a su resultado la función <a href="https://www.php.net/manual/en/function.is-dir.php"><span class="php-fun">is_dir()</span></a>, que indica si el camino es un directorio (es decir, si existe).</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">function conectaDb()
+{
+    global $cfg;
+
+    if (!is_dir(dirname($cfg["sqliteDatabase"]))) {
+        print "    &lt;p class=\"aviso\"&gt;Error: El directorio &lt;strong&gt;" . dirname($cfg["sqliteDatabase"]) . "&lt;/strong&gt; no está disponible.&lt;/p&gt;\n";
+        exit;
+    } else {
+        ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Al modificar el registro de un usuario, ofrecer la posibilidad de mantener la contraseña (por ejemplo, marcando una casilla).
+        <ul>
+          <li>[db/tabla-usuarios/modificar-2.php]
+            <p>En el formulario incluimos una casilla de verificación ...</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">        print "          &lt;tr&gt;\n";
+        print "            &lt;td&gt;Contraseña:&lt;/td&gt;\n";
+        print "            &lt;td&gt;\n";
+        print "              &lt;input type=\"text\" name=\"password\" size=\"$cfg[dbUsuariosTamPassword]\" maxlength=\"$cfg[dbUsuariosTamPassword]\"&gt;\n";
+        print "              &lt;input type=\"checkbox\" name=\"mantenerPassword\" value=\"Sí\"&gt; Mantener contraseña actual\n";
+        print "            &lt;/td&gt;\n";
+        print "          &lt;/tr&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+          <li>[db/tabla-usuarios/modificar-3.php]
+            <p>... recogemos el control y en función de su valor mantenemos o cambiamos la contraseña:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">$mantenerPassword = recoge("mantenerPassword");
+...
+                } elseif ($mantenerPassword == "Sí") {
+                    $consulta = "UPDATE $cfg[dbUsuariosTabla]
+                                 SET usuario = :usuario, nivel = :nivel
+                                 WHERE id = :id";
+                    $resultado = $pdo-&gt;prepare($consulta);
+                    if (!$resultado) {
+                        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+                    } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":nivel" =&gt; $nivel, ":id" =&gt; $id])) {
+                        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+                    } else {
+                        print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+                    }
+                } else {
+                    $consulta = "UPDATE $cfg[dbUsuariosTabla]
+                                 SET usuario = :usuario, password = :password, nivel = :nivel
+                                 WHERE id = :id";
+                    $resultado = $pdo-&gt;prepare($consulta);
+                    if (!$resultado) {
+                        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+                    } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":password" =&gt; encripta($password), ":nivel" =&gt; $nivel, ":id" =&gt; $id])) {
+                        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+                    } else {
+                        print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+                    }
+</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["dbPersonasMaxReg"] o $cfg["dbUsuariosMaxReg"] es 0 o negativo.
+        <ul>
+          <li>[db/tabla-personas/insertar-1.php, db/tabla-personas/insertar-2.php, db/tabla-usuarios/insertar-1.php, db/tabla-usuarios/insertar-2.php]
+            <p>Modificamos la condición de superación del número máximo de registros para que no se cumpla si la variable de configuración no es mayor que 0:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">    ...
+} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbUsuariosMaxReg"] && $cfg["dbUsuariosMaxReg"] &gt; 0) {
+    ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Bases de datos (3 B) - 2 - Mejoras en la aplicación (2)</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Bases de datos (3 B) - 3 - Nueva base de datos: PostgreSQL</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Bases de datos (3 B) - 4 - Agenda multiusuario (1)</h2>
+
+    <p>Modifique la aplicación de manera que cada usuario básico de la aplicación sólo pueda trabajar con sus propios registros de Personas (listar, borrar, buscar, modificar).</p>
+    <ol>
+      <li>Añada en la tabla Personas un campo que contenga el id del usuario que crea el registro.
+        <ul>
+          <li>[comunes/biblioteca-sqlite.php]
+            <div class="codigo">
+              <pre>
+<code class="language-php">// SQLITE:
+    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                 id INTEGER PRIMARY KEY,
+                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+                 telefono VARCHAR($cfg[dbPersonasTamTelefono]),
+                 correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                 id_usuario INTEGER,
+                 FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE
+                 )";</code>
+</pre>
+            </div>
+          </li>
+          <li>[comunes/biblioteca-mysql.php]
+            <div class="codigo">
+              <pre>
+<code class="language-php">// MYSQL:
+                 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                              id INTEGER UNSIGNED AUTO_INCREMENT,
+                              nombre VARCHAR($cfg[dbPersonasTamNombre]),
+                              apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+                              telefono VARCHAR($cfg[dbPersonasTamTelefono]),
+                              correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                              id_usuario INTEGER UNSIGNED,
+                              FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE,
+                              PRIMARY KEY(id)
+                              )";</code>
+</pre>
+            </div>
+          </li>
+          <li>[comunes/biblioteca.php]
+            <p>Para que se puedan ordenar los listados por el campo usuario debemos añadirlo a la matriz $cfg["dbPersonasColumnasOrden"]. Añadimos "usuario" y no "id_usuario" porque la columna mostrará el nombre del usuario.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">// Valores de ordenación de la tabla
+
+$cfg["dbPersonasColumnasOrden"] = [
+    "nombre ASC", "nombre DESC",
+    "apellidos ASC", "apellidos DESC",
+    "telefono ASC", "telefono DESC",
+    "correo ASC", "correo DESC",
+    "usuario ASC", "usuario DESC",
+];</code>
+</pre>
+            </div>
+          </li>
+          <li>[comunes/demo.php]
+            <p>Los registros de prueba deben incluir el campo id_usuario. Por ejemplo:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">// Registros de prueba opcionales
+
+$cfg["registrosDemo"] = [
+    [$cfg["dbUsuariosTabla"], [2, "usuario1", encripta("usuario1"), NIVEL_USUARIO_BASICO]],
+    [$cfg["dbUsuariosTabla"], [3, "usuario2", encripta("usuario2"), NIVEL_USUARIO_BASICO]],
+    [$cfg["dbUsuariosTabla"], [4, "admin1", encripta("admin1"), NIVEL_ADMINISTRADOR]],
+    [$cfg["dbPersonasTabla"], [1, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 2]],
+    [$cfg["dbPersonasTabla"], [2, "Numa", "Nigerio", "161803398", "numa.nigerio@example.com", 2]],
+    [$cfg["dbPersonasTabla"], [3, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 3]],
+    [$cfg["dbPersonasTabla"], [4, "Fulanito", "Mengánez", "314159265", "fulanito.menganez@example.com", 3]],
+    [$cfg["dbPersonasTabla"], [5, "Napoleón", "Bonaparte", "432520032", "napoleon.bonaparte@example.org", 3]],
+    [$cfg["dbPersonasTabla"], [6, "Julio", "César", "129644790 ", "julio.cesar@example.org", 4]],
+];</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Al identificarse como usuario, guarde una variable de sesión con el <i>id</i> del usuario conectado.
+        <ul>
+          <li>[acceso/login-2.php]
+            <p>El guardar el <i>id</i> del usuario conectado como variable de sesión nos permite que cada página "sepa" quién está realizando las operaciones, de la misma manera que la variable de sesión "nivel" nos permite "saber" si el usuario está autorizado a visualizar la página.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">$_SESSION["conectado"]  = true;
+$_SESSION["nivel"]      = $registro["nivel"];
+$_SESSION["id_usuario"] = $registro["id"];</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Los usuarios básicos sólo podrán administrar sus propios registros (listar, borrar, buscar, modificar).
+        <p>En todas las consultas SELECT de las páginas de adminstración de la tabla Personas se debe añadir la condición de que el campo id_usuario tenga el mismo valor que la variable de sesión id_usuario. Este valor no hace falta incluirlo como parámetro de la consulta preparada, puesto que no es un dato que se reciba del usuario.</p>
+
+        <p>Por ejemplo, en la página /db/tabla-personas/insertar-2.php, la consulta para comprobar si el registro que se quiere añadir ya existe sería ahora:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                 WHERE nombre = :nombre
+                 AND apellidos = :apellidos
+                 AND telefono = :telefono
+                 AND correo = :correo
+                 AND id_usuario = $_SESSION[id_usuario]";</code>
+</pre>
+        </div>
+
+        <p>Y la consulta para comprobar si se ha superado el número máximo de registros permitidos en la tabla sería ahora:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                     WHERE id_usuario = $_SESSION[id_usuario]";</code>
+</pre>
+        </div>
+
+        <p>En la consulta de inserción se tendrá que añadir el campo id_usuario:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">            $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+                         (nombre, apellidos, telefono, correo, id_usuario)
+                         VALUES (:nombre, :apellidos, :telefono, :correo, $_SESSION[id_usuario] )";</code>
+</pre>
+        </div>
+      </li>
+      <li>Un usuario básico podrá insertar un registro de Personas con los mismos datos que un registro de otro usuario, pero no repetir un registro propio.
+        <p>La consulta para comprobar si el registro que se quiere añadir que se ha mostrado en el apartado anterior cumple este requisito.</p>
+      </li>
+      <li>Los usuarios administradores podrán listar, borrar y buscar todos los registros de Personas.
+        <ul>
+          <p>Las consultas deberá ser diferentes en función del nivel del usuario conectado.</p>
+
+          <li>Las consultas del usuario administrador no incluirán generalmente la condición de que el registro pertenezca al usuario. Por ejemplo, en db/tabla-personas/buscar-1.php:
+            <div class="codigo">
+              <pre>
+<code class="language-php">if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+} else {
+    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+                 WHERE id_usuario = $_SESSION[id_usuario]";
+}</code>
+</pre>
+            </div>
+
+            <p>Las consultas del administrador que devuelvan registros de Personas deberán combinar la tabla Personas con la tabla Usuarios para mostrar el nombre de usuario del usuario que creó el registro. Por ejemplo, en db/tabla-personas/listar.php:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+    $consulta = "SELECT
+                     personas.id,
+                     personas.nombre,
+                     personas.apellidos,
+                     personas.correo,
+                     personas.telefono,
+                     usuarios.usuario
+                 FROM $cfg[dbPersonasTabla] as personas
+                 JOIN $cfg[dbUsuariosTabla] as usuarios
+                 ON personas.id_usuario = usuarios.id
+                 ORDER BY $ordena";
+} else {
+  $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+               WHERE id_usuario = $_SESSION[id_usuario]
+               ORDER BY $ordena";
+}</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>En los listados (listar, borrar, buscar, modificar) los usuarios adminstradores verán el nombre del usuario que creó el registro.
+        <p>La columna Usuario se mostrará cuando el nivel del usuario conectado sea el nivel administrador.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">
+    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+        print "            &lt;th&gt;\n";
+        print "              &lt;button name=\"ordena\" value=\"usuario ASC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "              Usuario\n";
+        print "              &lt;button name=\"ordena\" value=\"usuario DESC\" class=\"boton-invisible\"&gt;\n";
+        print "                &lt;img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\"&gt;\n";
+        print "              &lt;/button&gt;\n";
+        print "            &lt;/th&gt;\n";
+    }
+...
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+            print "            &lt;td&gt;$registro[usuario]&lt;/td&gt;\n";
+        }
+</code>
+</pre>
+        </div>
+      </li>
+      <li>Compruebe que los usuarios administradores pueden ordenar los registros de personas por el campo usuario.
+        <p>En el primer apartado de este ejercicio ya se ha indicado cómo añadir los valores de ordenación a la variable de configuración $cfg["dbPersonasColumnasOrden"].</p>
+      </li>
+      <li>Los usuarios administradores no podrán insertar registros de Personas a nombre de otros usuarios, ni modificar el campo usuario de un registro de Personas. (esta funcionalidad se deja para el ejercicio siguiente)
+        <p>Si no se incluyen controles para ello en los formularios de db/tabla-personas/insertar-1.php o db/tabla-personas/modificar-2.php, los usuarios administradores no pueden realizar estas tareas.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Bases de datos (3 B) - 5 - Agenda multiusuario (2)</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 5 de febrero de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
