@@ -125,7 +125,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Bases de datos (3 B) 1 - $texto</h1>\n";
+    print "    <h1>Bases de datos (3 B) 3 - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
@@ -196,7 +196,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-02-05\">5 de febrero de 2022</time>\n";
+    print "      <time datetime=\"2022-02-09\">9 de febrero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

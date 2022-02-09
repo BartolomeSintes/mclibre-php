@@ -35,8 +35,7 @@ if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
                  ON personas.id_usuario = usuarios.id
                  ORDER BY $ordena";
 } else {
-    $consulta = "SELECT *
-                 FROM $cfg[dbPersonasTabla]
+    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
                  WHERE id_usuario = $_SESSION[id_usuario]
                  ORDER BY $ordena";
 }
