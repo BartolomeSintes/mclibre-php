@@ -744,7 +744,7 @@ if (!$pdo-&gt;query($consulta)) {
           <pre>
 <code class="copy-language-php">// MYSQL: CONSULTA DE CREACIÓN DE TABLA
 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
-             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+             id INTEGER UNSIGNED AUTO_INCREMENT,
              nombre VARCHAR($cfg[dbPersonasTamNombre]),
              apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
              PRIMARY KEY(id)
@@ -818,7 +818,7 @@ if (!$resultado) {
 
         <li>Para borrar un registro de una tabla, se utiliza la consulta DELETE FROM.
 
-          <p><strong>Nota</strong>: En el ejemplo, los registros a borrar se reciben en forma de matriz y se recorre la matriz borrando un elemento en cada iteración.</p>
+          <p><strong>Nota</strong>: En el ejemplo siguiente los registros a borrar se reciben en forma de matriz y se recorre la matriz borrando un elemento en cada iteración.</p>
 
           <div class="codigo">
             <pre>
@@ -843,6 +843,30 @@ foreach ($id as $indice =&gt; $valor) {
           </div>
         </li>
       </ul>
+
+      <hr class="corta">
+
+      <p>Si el campo es de tipo numérico, y el valor a insertar es una cadena (como ocurre cuando recogemos el dato de un formulario), podríamos tener un problema de tipos al insertarlo. En el caso de los sistemas gestores de bases de datos que se usan en este curso (SQLite y MariaDB/MySQL de forma general, PostgreSQL en algún ejercicio) la conversión de tipos es automática y la cadena se convierte automáticamente en un valor numérico, pero puede que en otros sistemas la conversión no se realice y se produzca un error.</p>
+
+      <p>Si nos encontraramos con este problema, deberíamos realizar la conversión de cadena a entero. Para ello podríamos usar la función de PHP <a href="https://www.php.net/manual/en/function.intval.php"><span class="php-fun">intval()</span></a> como muestra el ejemplo siguiente en el que "edad" sería un campo INTEGER:</p>
+      <div class="codigo">
+        <pre>
+<code class="language-php">$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+              (nombre, edad)
+              VALUES (:nombre, :edad)";
+
+$resultado = $pdo-&gt;prepare($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, <span class="codigo-resaltado">":edad" =&gt; intval($edad)</span>])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+}</code>
+</pre>
+      </div>
+
+      <p>En las soluciones de los ejercicios de estos apuntes no se realiza la conversión, ya que SQLite, MySQL o PostgreSQL no lo necesitan.</p>
     </section>
 
     <section id="select">
@@ -1053,6 +1077,20 @@ if (!$resultado) {
           </div>
         </li>
       </ul>
+
+      <hr class="corta">
+
+      <p>Si el campo es de tipo numérico, y la cadena de búsqueda es una cadena, podríamos tener un problema de tipos al compararlos. En el caso de muchas bases de datos (como SQLite o MySQL) la conversión de tipos es automática y el valor numérico de la base de datos se convierte automáticamente en una cadena para permitir la búsqueda la cadena de búsqueda, pero en otras (como PostgreSQL) la conversión no se realiza y se produce un error.</p>
+
+      <p>Para escribir consultas que se puedan ejecutar sin problemas en el mayor número de sistemas gestores de bases de datos, es recomendable realizar la conversión usando la función SQL como muestra el ejemplo siguiente en el que "edad" sería un campo INTEGER:</p>
+      <div class="codigo">
+        <pre>
+<code class="language-php">$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+             WHERE nombre LIKE :nombre
+             AND <span class="codigo-resaltado">CAST(edad AS VARCHAR)</span> LIKE :edad
+             ORDER BY $ordena";</code>
+</pre>
+      </div>
     </section>
 
     <section id="union-tablas">
@@ -1357,7 +1395,7 @@ function borraTodo()
         print "\n";
 
         $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
-                     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+                     id INTEGER UNSIGNED AUTO_INCREMENT,
                      nombre VARCHAR($cfg[dbPersonasTamNombre]),
                      apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
                      PRIMARY KEY(id)
@@ -1390,7 +1428,7 @@ $pdo = null;</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 8 de febrero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
