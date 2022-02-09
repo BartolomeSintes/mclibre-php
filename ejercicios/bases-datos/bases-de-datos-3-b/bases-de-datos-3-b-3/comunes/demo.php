@@ -39,8 +39,8 @@ function insertaDemo()
     // https://stackoverflow.com/questions/244243/how-to-reset-postgres-primary-key-sequence-when-it-falls-out-of-sync?rq=1
     if ($cfg["dbMotor"] == POSTGRESQL) {
         foreach ($cfg["dbTablas"] as $tabla) {
-            $consulta  = "SELECT setval(pg_get_serial_sequence('$tabla', 'id'), coalesce(max(id),0) + 1, false) FROM $tabla";
             $consulta  = "SELECT setval(pg_get_serial_sequence('$tabla', 'id'), max(id)) FROM $tabla";
+            $consulta  = "SELECT setval(pg_get_serial_sequence('$tabla', 'id'), coalesce(max(id),0) + 1, false) FROM $tabla";
             $resultado = $pdo->query($consulta);
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
