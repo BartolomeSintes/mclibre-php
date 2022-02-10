@@ -45,7 +45,7 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["dbPersonasTamTelefono"]) {
 }
 
 if (mb_strlen($correo, "UTF-8") > $cfg["dbPersonasTamCorreo"]) {
-    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[dbPersonasTamCorreo]  caracteres.</p>\n";
+    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[dbPersonasTamCorreo] caracteres.</p>\n";
     print "\n";
 } else {
     $correoOk = true;
