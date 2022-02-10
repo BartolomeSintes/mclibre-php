@@ -40,8 +40,8 @@ if ($usuario == "") {
     $usuarioOk = true;
 }
 
-if (mb_strlen($password, "UTF-8") > $cfg["dbUsuariosTamPassword"]) {
-    print "    <p class=\"aviso\">La contraseña no puede tener más de $cfg[dbUsuariosTamPassword] caracteres.</p>\n";
+if (mb_strlen($password, "UTF-8") > $cfg["usuariosTamPassword"]) {
+    print "    <p class=\"aviso\">La contraseña no puede tener más de $cfg[usuariosTamPassword] caracteres.</p>\n";
     print "\n";
 } else {
     $passwordOk = true;

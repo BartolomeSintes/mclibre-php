@@ -48,7 +48,7 @@ if ($id == "") {
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Contraseña:</td>\n";
-        print "            <td><input type=\"text\" name=\"password\" size=\"$cfg[dbUsuariosTamPassword]\" maxlength=\"$cfg[dbUsuariosTamPassword]\"></td>\n";
+        print "            <td><input type=\"text\" name=\"password\" size=\"$cfg[usuariosTamPassword]\" maxlength=\"$cfg[usuariosTamPassword]\"></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Nivel:</td>\n";
