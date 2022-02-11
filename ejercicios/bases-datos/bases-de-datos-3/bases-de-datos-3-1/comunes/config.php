@@ -7,6 +7,10 @@
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 
+// Nombre de sesión
+
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión
+
 // Base de datos utilizada por la aplicación
 
 $cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
@@ -32,10 +36,6 @@ $cfg["dbPersonasTamCorreo"]    = 50;                        // Tamaño de la col
 // Número máximo de registros en las tablas
 
 $cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
-
-// Nombre de sesión
-
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión
 
 // Método de envío de formularios
 

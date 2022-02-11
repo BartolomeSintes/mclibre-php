@@ -7,20 +7,24 @@
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 
+// Nombre de sesión
+
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-3";       // Nombre de sesión
+
 // Base de datos utilizada por la aplicación
 
 $cfg["dbMotor"] = POSTGRESQL;                                   // Valores posibles: MYSQL o SQLITE
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-1.sqlite";    // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-3.sqlite";    // Ubicación de la base de datos
 
 // Configuración para MySQL
 
 $cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_3_b_1";         // Nombre de usuario
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_b_3";         // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_1";         // Nombre de la base de datos
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_3";         // Nombre de la base de datos
 
 // Configuración para PostgreSQL
 
@@ -49,10 +53,6 @@ $cfg["rootPassword"]  = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51
 $cfg["hashAlgorithm"] = "sha256";                           // Algoritmo hash para encriptar la contraseña de usuario
                                                             // Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php
 $cfg["rootPasswordModificable"] = false;                    // Contraseña del usuario Administrador se puede cambiar o no
-
-// Nombre de sesión
-
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-1";       // Nombre de sesión
 
 // Método de envío de formularios
 

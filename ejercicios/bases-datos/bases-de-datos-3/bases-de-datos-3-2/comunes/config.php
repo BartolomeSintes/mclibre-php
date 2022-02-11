@@ -7,6 +7,10 @@
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 
+// Nombre de sesión
+
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-2";         // Nombre de sesión
+
 // Base de datos utilizada por la aplicación
 
 $cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
@@ -39,10 +43,6 @@ $cfg["rootName"]      = "root";                             // Nombre del Usuari
 $cfg["rootPassword"]  = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2";  // Contraseña encriptada del Usuario Administrador de la aplicación
 $cfg["hashAlgorithm"] = "sha256";                           // Algoritmo hash para encriptar la contraseña de usuario
                                                             // Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php
-
-// Nombre de sesión
-
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-2";         // Nombre de sesión
 
 // Método de envío de formularios
 
