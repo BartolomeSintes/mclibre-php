@@ -34,7 +34,7 @@ if (!$resultado) {
     print "        <tbody>\n";
     print "          <tr>\n";
     print "            <td>Usuario:</td>\n";
-    print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" autofocus></td>\n";
+    print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" autofocus></td>\n";
     print "          </tr>\n";
     print "          <tr>\n";
     print "            <td>Nivel:</td>\n";

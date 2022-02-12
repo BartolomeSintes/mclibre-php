@@ -17,11 +17,11 @@ define("HASH_SIZE", 64);                  // Algoritmo hash: Longitud
 // Configuración Tabla Usuarios
 
 define("MAX_REG_TABLE_USUARIOS", 20);     // Número máximo de registros en la tabla Usuarios
-$tamUsuariosUsuario         = 20;         // Tamaño de la columna Usuarios > Nombre de Usuario
+$tamUsuariosUsuario         = 20;         // Tamaño de la columna Usuarios > Nombre de usuario
 $tamUsuariosPasswordCifrado = HASH_SIZE;  // Tamaño de la columna Usuarios > Contraseña de Usuario cifrada
 $tamUsuariosPassword        = 20;         // Tamaño de la Contraseña de Usuario en el formulario
 
-// Configuración de la tabla Personas
+// Tamaño de los campos en la tabla Personas
 
 define("MAX_REG_TABLE_PERSONAS", 20);     // Número máximo de registros en la tabla Personas
 $tamPersonasNombre    = 40;                               // Tamaño de la columna Personas > Nombre

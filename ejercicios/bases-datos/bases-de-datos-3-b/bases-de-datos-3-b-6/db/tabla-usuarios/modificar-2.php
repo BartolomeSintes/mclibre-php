@@ -44,12 +44,12 @@ if ($id == "") {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Usuario:</td>\n";
-        print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
+        print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Contraseña:</td>\n";
         print "            <td>\n";
-        print "              <input type=\"text\" name=\"password\" size=\"$cfg[usuariosTamPassword]\" maxlength=\"$cfg[usuariosTamPassword]\">\n";
+        print "              <input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\">\n";
         print "              <input type=\"checkbox\" name=\"mantenerPassword\" value=\"Sí\"> Mantener contraseña actual\n";
         print "            </td>\n";
         print "          </tr>\n";

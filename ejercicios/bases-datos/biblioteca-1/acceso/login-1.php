@@ -37,7 +37,7 @@ print "\n";
 print "      <table>\n";
 print "        <tbody>\n";
 print "          <tr>\n";
-print "            <td>Nombre:</td>\n";
+print "            <td>Usuario:</td>\n";
 print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosUsuario\" "
     . "maxlength=\"$tamUsuariosUsuario\" autofocus/></td>\n";
 print "          </tr>\n";

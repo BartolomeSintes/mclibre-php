@@ -44,11 +44,11 @@ if ($id == "") {
         print "        <tbody>\n";
         print "          <tr>\n";
         print "            <td>Usuario:</td>\n";
-        print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[dbUsuariosTamUsuario]\" maxlength=\"$cfg[dbUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
+        print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
         print "          </tr>\n";
         print "          <tr>\n";
         print "            <td>Contraseña:</td>\n";
-        print "            <td><input type=\"text\" name=\"password\" size=\"$cfg[usuariosTamPassword]\" maxlength=\"$cfg[usuariosTamPassword]\"></td>\n";
+        print "            <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\"></td>\n";
         print "          </tr>\n";
         print "        </tbody>\n";
         print "      </table>\n";

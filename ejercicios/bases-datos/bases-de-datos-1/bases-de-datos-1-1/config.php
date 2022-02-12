@@ -22,7 +22,7 @@ $cfg["mysqlUser"]     = "mclibre_base_datos_1_1";           // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base de datos
 
-// Configuración de la tabla Personas
+// Tamaño de los campos en la tabla Personas
 
 $cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas > Nombre
 $cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas > Apellidos

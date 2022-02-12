@@ -164,7 +164,7 @@ $cfg["mysqlUser"]     = "mclibre_base_datos_1_1";           // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base de datos
 
-// Configuración de la tabla Personas
+// Tamaño de los campos en la tabla Personas
 
 $cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas &gt; Nombre
 $cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas &gt; Apellidos</code>
@@ -299,13 +299,27 @@ $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
           </svg>
         </p>
       </li>
-      <li>El tamaño de los campos en el formulario puede coincidir con el tamaño de los campos en la base de datos:
+      <li>El tamaño de los campos en el formulario puede coincidir con el tamaño de los campos en la base de datos, pero en previsión de que no queramos que coincidan (lo que ocurrirá en ejercicios posteriores) es conveniente definir otras variables de configuración:
         <div class="codigo">
           <pre>
 <code class="language-php">// Controles en el formulario
-print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" autofocus&gt;&lt;/td&gt;\n";
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasTamNombre]\" autofocus&gt;&lt;/td&gt;\n";
 ...
-print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\"&gt;&lt;/td&gt;\n";</code>
+print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasTamApellidos]\"&gt;&lt;/td&gt;\n";</code>
+</pre>
+        </div>
+        <p>Estas constantes se pueden definir en config.php y en este caso hacerlas coincidir con el tamaño de los campos en la base de datos:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Tamaño de los campos en la tabla Personas
+
+$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas &gt; Nombre
+$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas &gt; Apellidos
+
+// Tamaño de los controles en los formularios
+
+$cfg["formPersonasTamNombre"]    = $cfg["dbPersonasTamNombre"];     // Tamaño de la caja de texto Personas &gt; Nombre
+$cfg["formPersonasTamApellidos"] = $cfg["dbPersonasTamApellidos"];  // Tamaño de la caja de texto Personas &gt; Apellidos</code>
 </pre>
         </div>
       </li>
@@ -973,9 +987,9 @@ if ($id == "") {
         <div class="codigo">
           <pre>
 <code class="language-php">        // Muestra los valores del registro en el formulario
-        print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[dbPersonasTamNombre]\" maxlength=\"$cfg[dbPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus&gt;&lt;/td&gt;\n";
+        print "            &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus&gt;&lt;/td&gt;\n";
         ...
-        print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[dbPersonasTamApellidos]\" maxlength=\"$cfg[dbPersonasTamApellidos]\" value=\"$registro[apellidos]\"&gt;&lt;/td&gt;\n";</code>
+        print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasTamApellidos]\" value=\"$registro[apellidos]\"&gt;&lt;/td&gt;\n";</code>
 </pre>
         </div>
       </li>
@@ -1013,7 +1027,7 @@ if ($id == "") {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 24 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 11 de febrero de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

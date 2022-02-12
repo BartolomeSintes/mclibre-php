@@ -17,11 +17,11 @@ define("HASH_SIZE", 64);                  // Algoritmo hash: Longitud
 // Configuración Tabla Usuarios
 
 define("MAX_REG_TABLE_USUARIOS", 20);     // Número máximo de registros en la tabla Usuarios
-$tamUsuariosUsuario         = 20;         // Tamaño de la columna Usuarios > Nombre de Usuario
+$tamUsuariosUsuario         = 20;         // Tamaño de la columna Usuarios > Nombre de usuario
 $tamUsuariosPasswordCifrado = HASH_SIZE;  // Tamaño de la columna Usuarios > Contraseña de Usuario cifrada
 $tamUsuariosPassword        = 20;         // Tamaño de la Contraseña de Usuario en el formulario
 
-// Configuración de la tabla Personas
+// Tamaño de los campos en la tabla Personas
 
 define("MAX_REG_TABLE_PERSONAS", 20);     // Número máximo de registros en la tabla Personas
 $tamPersonasNombre    = 40;                               // Tamaño de la columna Personas > Nombre
@@ -48,6 +48,10 @@ $tamFecha             = 10;               // Longitud de una cadena de fecha (AA
 
 define("ROOT_NAME", "root");                                                                  // Usuario inicial: Nombre
 define("ROOT_PASSWORD", "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2");  // Usuario inicial: Contraseña
+
+// Método de envío de formularios
+
+define("FORM_METHOD", "get");               // Valores posibles: get o post
 
 // Hoja de estilo
 

@@ -276,14 +276,15 @@ exit;</code>
             <p>Definimos dos tamaños de contraseña: el tamaño del control que el usuario escribe en el formulario y el tamaño del <i>hash</i> que se guarda en la base de datos</p>
             <div class="codigo">
               <pre>
-<code class="language-php">// Configuración Usuario
+<code class="language-php">// Tamaño de los campos en la tabla Usuarios
 
-$cfg["usuariosTamPassword"] = 20;           // Tamaño de la Contraseña de Usuario
+$cfg["dbUsuariosTamUsuario"]  = 20;                         // Tamaño de la columna Usuarios &gt; Nombre de usuario
+$cfg["dbUsuariosTamPassword"] = 64;                         // Tamaño de la columna Usuarios &gt; Contraseña de usuario (cifrada)
 
-// Configuración Tabla Usuarios
+// Tamaño de los controles en los formularios
 
-$cfg["dbUsuariosTamUsuario"]  = 20;         // Tamaño de la columna Usuarios &gt; Nombre de Usuario
-$cfg["dbUsuariosTamPassword"] = 64;         // Tamaño de la columna Usuarios &gt; Contraseña de Usuario (cifrada)</code>
+$cfg["formUsuariosTamUsuario"]  = $cfg["dbUsuariosTamUsuario"];     // Tamaño de la caja de texto Usuario &gt; Nombre de usuario
+$cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario &gt; Contraseña</code>
 </pre>
             </div>
           </li>

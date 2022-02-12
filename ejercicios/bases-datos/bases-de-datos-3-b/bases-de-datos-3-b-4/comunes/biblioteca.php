@@ -27,15 +27,6 @@ define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrado
 
 require_once "config.php";
 
-// Configuración Usuario
-
-$cfg["usuariosTamPassword"] = 20;           // Tamaño de la Contraseña de Usuario
-
-// Configuración Tabla Usuarios
-
-$cfg["dbUsuariosTamUsuario"]  = 20;         // Tamaño de la columna Usuarios > Nombre de Usuario
-$cfg["dbUsuariosTamPassword"] = 64;         // Tamaño de la columna Usuarios > Contraseña de Usuario (cifrada)
-
 // Valores de ordenación de la tabla
 
 $cfg["dbPersonasColumnasOrden"] = [
@@ -194,7 +185,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-02-09\">9 de febrero de 2022</time>\n";
+    print "      <time datetime=\"2022-02-12\">12 de febrero de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
