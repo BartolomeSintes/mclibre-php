@@ -19,10 +19,10 @@ require_once "config.php";
 
 // Carga Biblioteca específica de la base de datos utilizada
 
-if ($cfg["dbMotor"] == MYSQL) {
-    require_once "biblioteca-mysql.php";
-} elseif ($cfg["dbMotor"] == SQLITE) {
+if ($cfg["dbMotor"] == SQLITE) {
     require_once "biblioteca-sqlite.php";
+} elseif ($cfg["dbMotor"] == MYSQL) {
+    require_once "biblioteca-mysql.php";
 }
 
 // Funciones comunes
