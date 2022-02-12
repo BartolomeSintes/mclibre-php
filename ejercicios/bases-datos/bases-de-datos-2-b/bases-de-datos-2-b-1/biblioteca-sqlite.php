@@ -49,9 +49,9 @@ function borraTodo()
 
     $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                 telefono VARCHAR($cfg[dbPersonasTamTelefono])
+                 nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE,
+                 telefono VARCHAR($cfg[dbPersonasTamTelefono]) COLLATE NO CASE
                  )";
 
     if (!$pdo->query($consulta)) {

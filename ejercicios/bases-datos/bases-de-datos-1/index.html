@@ -181,8 +181,8 @@ $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
              id INTEGER PRIMARY KEY,
-             nombre VARCHAR($cfg[dbPersonasTamNombre]),
-             apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+             nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
+             apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE
              )";</code>
 </pre>
         </div>

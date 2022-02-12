@@ -49,8 +49,8 @@ function creaTabla()
 
     $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+                 nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE
                  )";
 
     if (!$pdo->query($consulta)) {
