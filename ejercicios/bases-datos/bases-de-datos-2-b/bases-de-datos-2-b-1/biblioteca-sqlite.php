@@ -51,7 +51,7 @@ function borraTodo()
                  id INTEGER PRIMARY KEY,
                  nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
                  apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE,
-                 telefono VARCHAR($cfg[dbPersonasTamTelefono]) COLLATE NO CASE
+                 telefono VARCHAR($cfg[dbPersonasTamTelefono]) COLLATE NOCASE
                  )";
 
     if (!$pdo->query($consulta)) {
