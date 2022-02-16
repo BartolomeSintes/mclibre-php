@@ -55,7 +55,7 @@ $cfg["formPersonasTamCorreo"]    = $cfg["dbPersonasTamCorreo"];     // Tamaño d
 $cfg["dbUsuariosMaxReg"] = 20;                              // Número máximo de registros en la tabla Usuarios
 $cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
 
-// Usuario de la aplicación
+// Usuario Administrador de la aplicación
 
 $cfg["rootName"]      = "root";                             // Nombre del Usuario Administrador de la aplicación
 $cfg["rootPassword"]  = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2";  // Contraseña encriptada del Usuario Administrador de la aplicación

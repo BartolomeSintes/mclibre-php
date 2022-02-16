@@ -27,7 +27,7 @@ define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrado
 
 require_once "config.php";
 
-// Valores de ordenación de la tabla
+// Valores de ordenación de las tablas
 
 $cfg["dbPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",

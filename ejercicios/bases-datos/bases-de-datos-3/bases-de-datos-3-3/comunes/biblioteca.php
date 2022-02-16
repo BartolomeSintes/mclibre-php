@@ -24,7 +24,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
 
 require_once "config.php";
 
-// Valores de ordenación de la tabla
+// Valores de ordenación de las tablas
 
 $cfg["dbPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
