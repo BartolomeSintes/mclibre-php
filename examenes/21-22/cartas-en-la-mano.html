@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cartas en la mano. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Cartas en la mano</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Cartas en la mano</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre una mano de varias cartas ordenadas.</p>
+
+  <section id="comentarios">
+    <h2>Cartas en la mano - Comentarios</h2>
+
+    <ul>
+      <li>El programa debe:
+        <ul>
+          <li>Mostrar entre 2 y 6 cartas de corazones, al azar, con valores entre el as y el diez, también al azar. Los valores se pueden repetir.</li>
+          <li>Mostrar esas mismas seis cartas, pero ordenadas en orden creciente y colocadas como cogidas por la mano (superpuestas y giradas).</li>
+          <li>Las cartas cogidas por la mano deben estar más o menos centradas, es decir, que a medida que hayan más cartas se deben extender tanto a la derecha como a la izquierda más o menos de la misma manera.</li>
+          <li>Mostrar una mano distinta cada vez que se actualice la página (aunque al generarse al azar puedan repetirse ocasionalmente).</li>
+        </ul>
+      </li>
+      <li>Al actualizar la página, se mostrará una hora distinta (aunque al generarse al azar puedan repetirse ocasionalmente)</li>
+      <li>El argumento de la transformación CSS rotate es un valor entero entre 0 y 360 que representa el ángulo con la vertical (la posición de las 0 horas o de los 0 minutos).</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cartas-en-la-mano-1.png" alt="Cartas en la mano" width="1171" height="640"></p>
+        <p class="captura"><img src="img/cartas-en-la-mano-2.png" alt="Cartas en la mano" width="1188" height="610"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Cartas en la mano - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" height="200"&gt;
+  &lt;/p&gt;
+
+  &lt;h2&gt;Cartas ordenadas&lt;/h2&gt;
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="520" height="320" viewBox="-210 -10 520 320"&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">4</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">-15</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">5</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">0</span>, 0, 200)"/&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">9</span>.svg" alt="<span class="codigo-resaltado">9</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" height="200"&gt;
+  &lt;/p&gt;
+
+  &lt;h2&gt;Cartas ordenadas&lt;/h2&gt;
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="520" height="320" viewBox="-210 -10 520 320"&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">1</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">-30</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">5</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">-15</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">5</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">0</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">9</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">15</span>, 0, 200)"/&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">10</span>.svg" alt="<span class="codigo-resaltado">10</span>" height="200"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span>" height="200"&gt;
+  &lt;/p&gt;
+
+  &lt;h2&gt;Cartas ordenadas&lt;/h2&gt;
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="520" height="320" viewBox="-210 -10 520 320"&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">2</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">-37.5</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">2</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">-22.5</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">4</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">-7.5</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">5</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">7.5</span>, 0, 200)"/&gt;
+      &lt;image href="img/cartas/c<span class="codigo-resaltado">10</span>.svg" x="0" y="0" height="200" transform="rotate(<span class="codigo-resaltado">22.5</span>, 0, 200)"/&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2021</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

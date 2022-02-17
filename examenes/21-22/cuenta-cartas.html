@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cuenta cartas. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Cuenta cartas</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Cuenta cartas</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre una partida del solitario "Cuenta cartas".</p>
+
+  <section id="comentarios">
+    <h2>Cuenta cartas - Comentarios</h2>
+
+    <ul>
+      <li>En el solitario "real", las reglas son las siguientes:
+        <ul>
+          <li>El jugador va sacando cartas y contando "uno, dos, tres, etc.".</li>
+          <li>Si coincide el número de carta con el número que dice, el jugador pierde.</li>
+        </ul>
+      </li>
+      <li>En esta versión:
+        <ul>
+          <li>Se muestran directamente siete cartas de tréboles al azar, con valores al azar entre 1 y 10.</li>
+          <li>Encima de las cartas se muestran los valores del 1 al 7.</li>
+          <li>Si coincide algún número con el número de la carta correspondiente inferior, el jugador pierde.</li>
+          <li>Si todas las cartas tienen valores distintos del número correpondiente superior, el jugador gana.</li>
+        </ul>
+      </li>
+      <li>Al actualizar la página, se mostrará una nueva partida.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cuenta-cartas-1.png" alt="Cuenta cartas" width="1188" height="390"></p>
+        <p class="captura"><img src="img/cuenta-cartas-2.png" alt="Cuenta cartas" width="1188" height="390"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Cuenta cartas - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;table&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style="text-align: center; font-size: 200%"&gt;<span class="codigo-resaltado">1</span>&lt;/td&gt;
+        &lt;td style="text-align: center; font-size: 200%"&gt;<span class="codigo-resaltado">2</span>&lt;/td&gt;
+        &lt;td style="text-align: center; font-size: 200%"&gt;<span class="codigo-resaltado">3</span>&lt;/td&gt;
+        &lt;td style="text-align: center; font-size: 200%"&gt;<span class="codigo-resaltado">4</span>&lt;/td&gt;
+        &lt;td style="text-align: center; font-size: 200%"&gt;<span class="codigo-resaltado">5</span>&lt;/td&gt;
+        &lt;td style="text-align: center; font-size: 200%"&gt;<span class="codigo-resaltado">6</span>&lt;/td&gt;
+        &lt;td style="text-align: center; font-size: 200%"&gt;<span class="codigo-resaltado">7</span>&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;img src="img/cartas/t<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" height="200"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;img src="img/cartas/t<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" height="200"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;img src="img/cartas/t<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" height="200"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;img src="img/cartas/t<span class="codigo-resaltado">9</span>.svg" alt="<span class="codigo-resaltado">9</span>" height="200"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;img src="img/cartas/t<span class="codigo-resaltado">8</span>.svg" alt="<span class="codigo-resaltado">8</span>" height="200"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;img src="img/cartas/t<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" height="200"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;img src="img/cartas/t<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" height="200"&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;p&gt;<span class="codigo-resaltado">¡Enhorabuena, has ganado!</span>&lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2021</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

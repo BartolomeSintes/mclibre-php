@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Dados contra dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Dados contra dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Dados contra dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que reparta cartas de una baraja francesa a varios jugadores.</p>
+
+  <section id="comentarios">
+    <h2>Dados contra dados - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página muestra un formulario con dos controles:
+            <ul>
+              <li>El número de dados que va a tirar el primer jugador (entre 1 y 10).</li>
+              <li>El número de dados que va a tirar el segundo jugador jugador (entre 1 y 10).</li>
+            </ul>
+          </li>
+          <li>La segunda página mostrará:
+            <ul>
+              <li>Si se han recibido valores incorrectos, los mensajes de error correspondientes.</li>
+              <li>Si los valores son correctos, la tirada de cada jugador, es decir, el número de dados que ha indicado cada jugador.</li>
+              <li>El jugador que obtenga el valor más alto, gana la partida.</li>
+              <li>Si los dos jugadores obtienen el mismo valor más alto, gana la partida el jugador que haya tirado menos dados.</li>
+              <li>Si tirando la misma cantidad de dados, los dos jugadores obtienen el mismo valor más alto, entonces han empatado.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se mostrarán mensajes de error con la información faltante o incorrecta.</li>
+      <li>No se deben cambiar los nombres de los controles incluidos en las plantillas.</li>
+      <li>Al actualizar la segunda página, se mostrarán dibujos distintos, pero se mostrará la misma cantidad y tipo de dibujos.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/dados-contra-dados-1.png" alt="Dados contra dados" width="1188" height="210"></p>
+        <p class="captura"><img src="img/dados-contra-dados-2.png" alt="Dados contra dados" width="1188" height="160"></p>
+        <p class="captura"><img src="img/dados-contra-dados-3.png" alt="Dados contra dados" width="1188" height="120"></p>
+        <p class="captura"><img src="img/dados-contra-dados-4.png" alt="Dados contra dados" width="1188" height="520"></p>
+        <p class="captura"><img src="img/dados-contra-dados-5.png" alt="Dados contra dados" width="1188" height="520"></p>
+        <p class="captura"><img src="img/dados-contra-dados-6.png" alt="Dados contra dados" width="1188" height="520"></p>
+        <p class="captura"><img src="img/dados-contra-dados-7.png" alt="Dados contra dados" width="1188" height="520"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Dados contra dados - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;Jugador A&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;img src="img/dados/<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="140" height="140"&gt;
+    &lt;img src="img/dados/<span class="codigo-resaltado">3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="140" height="140"&gt;
+    &lt;img src="img/dados/<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span>" width="140" height="140"&gt;
+    &lt;img src="img/dados/<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="140" height="140"&gt;
+  &lt;/p&gt;
+
+  &lt;h2&gt;Jugador B&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;img src="img/dados/<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="140" height="140"&gt;
+    &lt;img src="img/dados/<span class="codigo-resaltado">3</span>.svg" alt="<span class="codigo-resaltado">3</span>" width="140" height="140"&gt;
+  &lt;/p&gt;
+
+  &lt;p&gt;<span class="codigo-resaltado">Ha ganado el jugador &lt;strong&gt;A&lt;/strong&gt;</span>&lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2021</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
