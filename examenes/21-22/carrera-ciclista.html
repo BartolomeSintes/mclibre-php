@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Carrera ciclista. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Carrera ciclista</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Carrera ciclista</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que imite el movimiento de un ciclista por una pista.</p>
+
+  <section id="comentarios">
+    <h2>Carrera ciclista - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra la tirada realizada por un dado y la posición del ciclista en una pista:
+            <ul>
+              <li>La primera vez que se abre la página (o cuando se reinicia la partida) se muestra el dado vacío (valor 0) y al ciclista en la primera casilla</li>
+              <li>El ciclista es una entidad de carácter: &amp;#128692; <span style="font-size: 2.5em;">&#128692;</span>.</li>
+              <li>Un botón permite tirar o volver a tirar un dado.</li>
+              <li>En cada tirada se muestra la tirada del dado y se muestra el ciclista en la posición correspondiente, avanzando hacia la derecha na casilla por cada punto del dado.</li>
+              <li>Cuando el ciclista supera la meta, se muestra una bandera y ya no se muestra al ciclista.</li>
+              <li>La bandera es también una entidad de carácter: &amp;#127937; <span style="font-size: 2.5em;">&#127937;</span>.</li>
+              <li>Se puede seguir tirando el dado aunque ya se haya superado la meta.</li>
+              <li>Un botón permite reiniciar el juego en cualquier momento.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón elegido, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario, ni modificar los datos ni los contadores.</li>
+      <li>No se deben cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido (ni la tirada ni la posición del ciclista).</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/carrera-ciclista-1.png" alt="Carrera ciclista" width="1275" height="350"></p>
+        <p class="captura"><img src="img/carrera-ciclista-2.png" alt="Carrera ciclista" width="1275" height="350"></p>
+        <p class="captura"><img src="img/carrera-ciclista-3.png" alt="Carrera ciclista" width="1275" height="350"></p>
+        <p class="captura"><img src="img/carrera-ciclista-4.png" alt="Carrera ciclista" width="1340" height="350"></p>
+        <p class="captura"><img src="img/carrera-ciclista-5.png" alt="Carrera ciclista" width="1340" height="350"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Carrera ciclista - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;p class="mcl-svg-figura"&gt;
+      &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1300" height="120" viewBox="-10 -10 1300 120"&gt;
+        &lt;rect x="0" y="0" width="1200" height="100" stroke-width="2" stroke="black" fill="navajowhite" /&gt;
+        &lt;text x="25" y="90" font-size="25" text-anchor="middle"&gt;0&lt;/text&gt;
+        &lt;line x1="50" y1="0" x2="50" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="100" y1="0" x2="100" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="150" y1="0" x2="150" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="200" y1="0" x2="200" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="250" y1="0" x2="250" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;text x="275" y="90" font-size="25" text-anchor="middle"&gt;5&lt;/text&gt;
+        &lt;line x1="300" y1="0" x2="300" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="350" y1="0" x2="350" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="400" y1="0" x2="400" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="450" y1="0" x2="450" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="500" y1="0" x2="500" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;text x="525" y="90" font-size="25" text-anchor="middle"&gt;10&lt;/text&gt;
+        &lt;line x1="550" y1="0" x2="550" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="600" y1="0" x2="600" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="650" y1="0" x2="650" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="700" y1="0" x2="700" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="750" y1="0" x2="750" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;text x="775" y="90" font-size="25" text-anchor="middle"&gt;15&lt;/text&gt;
+        &lt;line x1="800" y1="0" x2="800" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="850" y1="0" x2="850" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="900" y1="0" x2="900" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="950" y1="0" x2="950" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="1000" y1="0" x2="1000" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;text x="1025" y="90" font-size="25" text-anchor="middle"&gt;20&lt;/text&gt;
+        &lt;line x1="1050" y1="0" x2="1050" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="1100" y1="0" x2="1100" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="1150" y1="0" x2="1150" y2="100" stroke-width="2" stroke="black" /&gt;
+        &lt;line x1="1200" y1="0" x2="1200" y2="100" stroke-width="2" stroke="black" /&gt;
+        <span class="codigo-resaltado">&lt;text x="<span class="codigo-resaltado">25</span>" y="60" font-size="35" text-anchor="middle" style="transform: scale(-1, 1); transform-box: fill-box; transform-origin: center;"&gt;&amp;#128692;&lt;/text&gt;</span>
+      &lt;/svg&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;img src="img/dados/<span class="codigo-resaltado">0</span>.svg" alt="0" width="100" height="100"&gt;&lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html"> ...
+        &lt;line x1="1200" y1="0" x2="1200" y2="100" stroke-width="2" stroke="black" /&gt;
+        <span class="codigo-resaltado">&lt;text x="<span class="codigo-resaltado">175</span>" y="60" font-size="35" text-anchor="middle" style="transform: scale(-1, 1); transform-box: fill-box; transform-origin: center;"&gt;&amp;#128692;&lt;/text&gt;</span>
+      &lt;/svg&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;img src="img/dados/<span class="codigo-resaltado">3</span>.svg" alt="0" width="100" height="100"&gt;&lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html"> ...
+        &lt;line x1="1200" y1="0" x2="1200" y2="100" stroke-width="2" stroke="black" /&gt;
+        <span class="codigo-resaltado">&lt;text x="<span class="codigo-resaltado">225</span>" y="60" font-size="35" text-anchor="middle" style="transform: scale(-1, 1); transform-box: fill-box; transform-origin: center;"&gt;&amp;#128692;&lt;/text&gt;</span>
+      &lt;/svg&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;img src="img/dados/<span class="codigo-resaltado">1</span>.svg" alt="0" width="100" height="100"&gt;&lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html"> ...
+        &lt;line x1="1200" y1="0" x2="1200" y2="100" stroke-width="2" stroke="black" /&gt;
+        <span class="codigo-resaltado">&lt;text x="1240" y="70" font-size="55" text-anchor="middle"&gt;&amp;#127937;&lt;/text&gt;</span>
+      &lt;/svg&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;&lt;img src="img/dados/<span class="codigo-resaltado">2</span>.svg" alt="2" width="100" height="100"&gt;&lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 23 de noviembre de 2021</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
