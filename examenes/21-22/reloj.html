@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Reloj. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Reloj</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Reloj</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre un reloj de manecillas.</p>
+
+  <section id="comentarios">
+    <h2>Reloj - Comentarios</h2>
+
+    <ul>
+      <li>El programa debe:
+        <ul>
+          <li>Mostrar una hora en formato numérico, al azar entre las 00:00 y las 11:59 (con dos cifras).</li>
+          <li>Mostrar un reloj de manecillas que indique la misma hora:
+            <ul>
+              <li>La manecilla de las horas apuntará a la posición correspondiente a la hora, sin tener en cuenta los minutos.</li>
+              <li>La manecilla de los minutos apuntará a la posición correspondiente a los minutos.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Al actualizar la página, se mostrará una hora distinta (aunque al generarse al azar puedan repetirse ocasionalmente)</li>
+      <li>El argumento de la transformación CSS rotate() es un valor entero entre 0 y 360 que representa el ángulo con la vertical (la posición de las 0 horas o de los 0 minutos).</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/reloj-1.png" alt="Reloj" width="1188" height="360"></p>
+        <p class="captura"><img src="img/reloj-2.png" alt="Reloj" width="1188" height="350"></p>
+        <p class="captura"><img src="img/reloj-3.png" alt="Reloj" width="1188" height="570"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Reloj - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;Son las <span class="codigo-resaltado">00</span>:<span class="codigo-resaltado">11</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="220" height="220" viewBox="-110 -110 220 220"&gt;
+      &lt;circle cx="0" cy="0" r="100" fill="white" stroke="black" stroke-width="5" /&gt;
+      &lt;line x1="0" y1="0" x2="0" y2="-60" stroke="black" stroke-width="5" transform="rotate(<span class="codigo-resaltado">0</span>, 0, 0)" /&gt;
+      &lt;line x1="0" y1="0" x2="0" y2="-80" stroke="black" stroke-width="5" transform="rotate(<span class="codigo-resaltado">66</span>, 0, 0)" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;Son las <span class="codigo-resaltado">02</span>:<span class="codigo-resaltado">15</span>&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="220" height="220" viewBox="-110 -110 220 220"&gt;
+      &lt;circle cx="0" cy="0" r="100" fill="white" stroke="black" stroke-width="5" /&gt;
+      &lt;line x1="0" y1="0" x2="0" y2="-60" stroke="black" stroke-width="5" transform="rotate(<span class="codigo-resaltado">60</span>, 0, 0)" /&gt;
+      &lt;line x1="0" y1="0" x2="0" y2="-80" stroke="black" stroke-width="5" transform="rotate(<span class="codigo-resaltado">90</span>, 0, 0)" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2021</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
