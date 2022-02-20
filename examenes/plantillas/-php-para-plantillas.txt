@@ -9,6 +9,11 @@ print "<!-- Ejercicio incompleto -->\n";
 
     Escriba aquí su nombre</title>
 
+  <title>
+    Sin título.
+    Escriba aquí su nombre
+  </title>
+
 print "<!-- Ejercicio incompleto -->\n";
 
 <?php
@@ -23,3 +28,50 @@ print "  <p class=\"aviso\">Ejercicio incompleto</p>\n";
   </footer>
 </body>
 </html>
+
+EJERCICIOS DE BASES DE DATOS
+
+todos los ficheros
+<?php
+/**
+ * @author Escriba aquí su nombre
+ */
+
+comunes/biblioteca.php
+    print "  <title>\n";
+    print "    $texto. Examen 2022-02-10.\n";
+    print "    Escriba su nombre.\n";
+    print "  </title>\n";
+
+    print "    <h1>Examen 2022-02-10  XXX - $texto</h1>\n";
+
+function pie()
+{
+    print "  </main>\n";
+    print "\n";
+    print "  <footer>\n";
+    print "    <p>Escriba aquí su nombre</p>\n";
+    print "  </footer>\n";
+    print "</body>\n";
+    print "</html>\n";
+}
+
+comunes/config.php
+// Nombre de sesión
+
+$cfg["sessionName"] = "iaw-examen";                         // Nombre de sesión
+
+// Base de datos utilizada por la aplicación
+
+$cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
+
+// Configuración para SQLite
+
+$cfg["sqliteDatabase"] = "/tmp/iaw-examen.sqlite";    // Ubicación de la base de datos
+
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlUser"]     = "iaw_examen";                       // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
+$cfg["mysqlDatabase"] = "iaw_examen";                       // Nombre de la base de datos

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Número de registros de usuarios. Bases de datos. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Bases de datos - Número de registros de usuarios</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Número de registros de usuarios</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que el número máximo de registros se establezca por usuario.</p>
+
+  <section id="comentarios">
+    <h2>Número de registros de usuarios - Comentarios</h2>
+
+    <ul>
+      <li>La aplicación debe funcionar tanto con SQLite como con MariaDB/MySQL. El usuario de MariaDB/MySQL deberá tener su nombre de pila, en minúsculas y sin acentos y ser un usuario con una base de datos de su mismo nombre. Haga una captura de pantalla de la creación del usuario y otra de la vista cuando entra en phpMyAdmin con ese usuario.</li>
+      <li>Al iniciar la aplicación por primera vez, el usuario root tendrá como número máximo de registros la variable de configuración $cfg["dbPersonasMaxReg"]:
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-1.png" alt="Número de registros de usuarios" width="1060" height="480"></p>
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-2.png" alt="Número de registros de usuarios" width="1060" height="210"></p>
+      </li>
+      <li>Al borrar todo y elegir el administrador incluir los registros de prueba, estos se crearán cada uno con un número máximo de registros distinto:
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-3.png" alt="Número de registros de usuarios" width="1060" height="280"></p>
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-4.png" alt="Número de registros de usuarios" width="1043" height="545"></p>
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-5.png" alt="Número de registros de usuarios" width="1077" height="280"></p>
+      </li>
+      <li>Al crear un nuevo usuario, se solicitará un número máximo de registros (obligatorio):
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-6.png" alt="Número de registros de usuarios" width="1077" height="300"></p>
+      </li>
+      <li>Si no se escribe un valor, se producirá el aviso correspondiente:
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-7.png" alt="Número de registros de usuarios" width="1077" height="150"></p>
+      </li>
+      <li>Los usuarios creados se mostrarán en el listado y se podrá ordenar el listado por el número máximo de registros:
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-8.png" alt="Número de registros de usuarios" width="1077" height="150"></p>
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-9.png" alt="Número de registros de usuarios" width="1077" height="300"></p>
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-10.png" alt="Número de registros de usuarios" width="1077" height="300"></p>
+      </li>
+      <li>Un usuario no puede crear un nuevo registro de Personas si el número de registros es mayor o igual que su número máximo, como le ocurriría al usuario "a" de estos ejemplos ya que su límite es 3 y los registros de prueba incluyen tres personas:
+        <p class="captura"><img src="img/db-2-numero-registros-usuarios-11.png" alt="Número de registros de usuarios" width="1077" height="180"></p>
+      </li>
+      <li>Haga con phpMyAdmin una copia de seguridad de la base de datos, como ususario con su nombre.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 17 de febrero de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
