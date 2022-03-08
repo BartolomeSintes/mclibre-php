@@ -45,7 +45,7 @@ function insertaDemo()
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
-                print "    <p>Contador autonumérico reestablecido.</p>\n";
+                print "    <p>Contador autonumérico restablecido.</p>\n";
                 print "\n";
             }
         }

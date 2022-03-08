@@ -62,7 +62,7 @@ if (!$resultado) {
       </li>
       <li>config.php
         <ul>
-          <li>Defina una ocpión de configuración que contenga el máximo número de registros que puede contener la tabla de Personas.
+          <li>Defina una opción de configuración que contenga el máximo número de registros que puede contener la tabla de Personas.
 
             <div class="codigo">
               <pre><code class="language-php">// Número máximo de registros en las tablas
@@ -371,9 +371,9 @@ $cfg["dbPersonasColumnasOrden"] = [
     "apellidos ASC", "apellidos DESC",
 ];
 
-function recogeValores($var, $registroesValidos, $registroPredeterminado)
+function recogeValores($var, $registrosValidos, $registroPredeterminado)
 {
-    foreach ($registroesValidos as $registroValido) {
+    foreach ($registrosValidos as $registroValido) {
         if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $registroValido) {
             return $registroValido;
         }

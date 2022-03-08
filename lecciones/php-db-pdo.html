@@ -141,7 +141,7 @@ if (!$resultado) {
           </ul>
         </li>
 
-        <li>Si la consulta <strong>sí</strong> incluye datos provinientes de un formulario, se deben utlizar consultas preparadas para evitar ataques de inyección SQL de los que el método query() no nos protege. El método para efectuar consultas es primero preparar la consulta con <a href="https://www.php.net/manual/en/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare(<i>consulta</i>)</span></a> y después ejecutarla con <span class="php-fun"><a href="https://www.php.net/manual/en/pdostatement.execute.php">PDO-&gt;execute(<i>[parámetros]</i>)</a></span>, que devuelve el resultado de la consulta.
+        <li>Si la consulta <strong>sí</strong> incluye datos provinientes de un formulario, se deben utilizar consultas preparadas para evitar ataques de inyección SQL de los que el método query() no nos protege. El método para efectuar consultas es primero preparar la consulta con <a href="https://www.php.net/manual/en/pdo.prepare.php"><span class="php-fun">PDO-&gt;prepare(<i>consulta</i>)</span></a> y después ejecutarla con <span class="php-fun"><a href="https://www.php.net/manual/en/pdostatement.execute.php">PDO-&gt;execute(<i>[parámetros]</i>)</a></span>, que devuelve el resultado de la consulta.
           <div class="codigo">
             <pre>
 <code class="language-php">// EJECUCIÓN DE UNA CONSULTA CON DATOS PROVENIENTES DE UN FORMULARIO
@@ -154,7 +154,7 @@ $resultado-&gt;execute([<i>parámetros de la consulta</i>]);</code>
 
           <div class="codigo">
             <pre>
-<code class="language-php">// EJECUCIÓN DE UNA CONSULTA PREPARARADA
+<code class="language-php">// EJECUCIÓN DE UNA CONSULTA PREPARADA
 $resultado = $pdo-&gt;prepare("<i>consulta</i>")
 if (!$resultado) {
     ...        // Si la preparación de la consulta falla
@@ -230,7 +230,7 @@ if (!$resultado) {
           </div>
         </li>
 
-        <li>Si la consulta devuelve un único registro, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envíara como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz serían únicamente los nombres de las columnas de la tabla.
+        <li>Si la consulta devuelve un único registro, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se enviara como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz serían únicamente los nombres de las columnas de la tabla.
 
           <div class="codigo">
             <pre>
@@ -502,7 +502,7 @@ if (!$resultado) {
     <p>La estructura general de estas consultas se repite con ligeras variaciones. La estructura concreta viene impuesta por dos aspectos:</p>
     <ul>
       <li>Si el resultado de la consulta va a ser únicamente <span class="php-con">true</span> o <span class="php-con">false</span>, o si el resultado pueden ser uno o varios registros con una o varias columnas de datos. Si se pueden obtener registros, el resultado de la consulta debe guardarse en una variable auxiliar.</li>
-      <li>Si en la consulta deben incluirse datos recibidos de un formulario o no. Si se incluyen datos recibidos de un formulario, es necesario utilizar consultas preparadas para prevenir ataques de inyección SQL. Si se utilzia una consulta preparada, el resultado de la preparación debe guardarse en una variable auxiliar.</li>
+      <li>Si en la consulta deben incluirse datos recibidos de un formulario o no. Si se incluyen datos recibidos de un formulario, es necesario utilizar consultas preparadas para prevenir ataques de inyección SQL. Si se utiliza una consulta preparada, el resultado de la preparación debe guardarse en una variable auxiliar.</li>
     </ul>
 
     <section id="opciones">
@@ -574,8 +574,7 @@ $cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de l
 
         <p>PDO puede crear el archivo SQLite, pero no puede crear la ruta hasta el archivo.</p>
         <ul>
-          <li>Si se indica simplemente el nombre del archivo SQLite, el archivo se creará en el mismo directorio que se encuentra el programa PHP. Si estamos haciendo pruebas o ejercicios, es una solución aceptable, pero en un servidor público no sería una buena idea guardar el fichero SQLite en un directorio público porque cualquier visitante podría obtener la base de datos completaque debe estar situado en un directorio que exista y en el que el servidor web tenga permisos de escritura).</li>
-          <li>Si se indica un camino, hay que asegurarse de que ese camino existe y el servidor tiene permisos para acceder a él.</li>
+          <li>Si se indica simplemente el nombre del archivo SQLite, el archivo se creará en el mismo directorio que se encuentra el programa PHP. No se aconseja hacerlo así por dos motivos. Por un lado, si las páginas del programa se encuentran distiburidas en varios directorios, cada página accedería a una base de datos distinta creada en cada directorio. Por otro lado, al guardar la base de datos en un directorio público, cualquier visitante podría obtener la base de datos completa. Por eso se recomienda guardar el archivo SQLite en un directorio fuera del directorio público, teniendo en cuenta que el directorio debe existir y el servidor web debe tener permisos de escritura en él.</li>
         </ul>
 
         <div class="codigo">
@@ -607,7 +606,7 @@ $pdo = conectaDb();</code>
         <p><strong>Notas</strong>:</p>
         <ul>
           <li>En las soluciones de los ejercicios proporcionadas en estos apuntes, los archivos se guardan en el directorio <strong>/tmp/</strong>. Para que funcionen las soluciones, se debe crear ese directorio o cambiarlo a otro.</li>
-          <li>En caso de error, la función conectaDb() imprime unos mensajes de error y termina el programa. Si quisieramos completar una página correcta, deberíamos imprimir el pie de página en caso de error y asegurarnos de que se ha escrito la cabecera antes de conectarse a la base de datos.</li>
+          <li>En caso de error, la función conectaDb() imprime unos mensajes de error y termina el programa. Si quisiéramos completar una página correcta, deberíamos imprimir el pie de página en caso de error y asegurarnos de que se ha escrito la cabecera antes de conectarse a la base de datos.</li>
         </ul>
       </section>
 
@@ -848,7 +847,7 @@ foreach ($id as $indice =&gt; $valor) {
 
       <p>Si el campo es de tipo numérico, y el valor a insertar es una cadena (como ocurre cuando recogemos el dato de un formulario), podríamos tener un problema de tipos al insertarlo. En el caso de los sistemas gestores de bases de datos que se usan en este curso (SQLite y MariaDB/MySQL de forma general, PostgreSQL en algún ejercicio) la conversión de tipos es automática y la cadena se convierte automáticamente en un valor numérico, pero puede que en otros sistemas la conversión no se realice y se produzca un error.</p>
 
-      <p>Si nos encontraramos con este problema, deberíamos realizar la conversión de cadena a entero. Para ello podríamos usar la función de PHP <a href="https://www.php.net/manual/en/function.intval.php"><span class="php-fun">intval()</span></a> como muestra el ejemplo siguiente en el que "edad" sería un campo INTEGER:</p>
+      <p>Si nos encontráramos con este problema, deberíamos realizar la conversión de cadena a entero. Para ello podríamos usar la función de PHP <a href="https://www.php.net/manual/en/function.intval.php"><span class="php-fun">intval()</span></a> como muestra el ejemplo siguiente en el que "edad" sería un campo INTEGER:</p>
       <div class="codigo">
         <pre>
 <code class="language-php">$consulta = "INSERT INTO $cfg[dbPersonasTabla]

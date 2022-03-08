@@ -73,7 +73,7 @@ foreach ($cartas as $carta) {
 print "  </p>\n";
 print "\n";
 
-// Reindexamos la matirz de cartas para poderla recorrer con un bucle for
+// Reindexamos la matriz de cartas para poderla recorrer con un bucle for
 // y que los índices sean consecutivos
 $cartas = array_values($cartas);
 

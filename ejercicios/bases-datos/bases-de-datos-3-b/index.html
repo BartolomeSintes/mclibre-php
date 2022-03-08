@@ -52,7 +52,7 @@
   <ul>
     <li>La plantilla del ejercicio 1 es la aplicación de ejemplo 3 (B) 0.</li>
     <li>La plantilla del ejercicio 3 es la solución del ejercicio 3 (B) 1.</li>
-    <li>La plantilla del ejercicio 4 es la solución del ejericio 3 (B) 1 pero con el archivo comunes/demo.php adaptado al ejercicio.</li>
+    <li>La plantilla del ejercicio 4 es la solución del ejercicio 3 (B) 1 pero con el archivo comunes/demo.php adaptado al ejercicio.</li>
     <li>La plantilla del ejercicio 6 es la solución del ejercicio 3 (B) 1.</li>
   </ul>
 
@@ -113,7 +113,7 @@
       <li>La inserción de registros repetidos se impide por el programa (en insertar-2.php y en modificar-3.php). Utilizar la restricción SQL UNIQUE para que ese trabajo lo haga la base de datos.</li>
       <li>Comprobar si existe el usuario root en la función existenTablas()</li>
       <li>Incluir un logotipo de la aplicación. Que se pueda subir el logotipo.</li>
-      <li>Eliminar de la fucnión cabecera el tercer argumento (profundidad de la página), haciendo que esa profundidad se detecte automáticamente por el programa.</li>
+      <li>Eliminar de la función cabecera el tercer argumento (profundidad de la página), haciendo que esa profundidad se detecte automáticamente por el programa.</li>
       <li>La longitud del campo password debe ser suficiente para alojar el <i>hash</i> elegido. Hacer que la aplicación compruebe que es así.</li>
     </ul>
   </section>
@@ -121,7 +121,7 @@
   <section id="ejercicio-3">
     <h2>Bases de datos (3 B) - 3 - Nueva base de datos: PostgreSQL</h2>
 
-    <p>Añadir a la aplicación del ejericio 1 la posibilidad de trabajar con una sistema gestor de bases de datos distinto, por ejemplo <a href="https://www.postgresql.org/">PostgreSQL</a>.</p>
+    <p>Añadir a la aplicación del ejercicio 1 la posibilidad de trabajar con una sistema gestor de bases de datos distinto, por ejemplo <a href="https://www.postgresql.org/">PostgreSQL</a>.</p>
     <ol>
       <li>Descargue <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">PostgreSQL</a>. En febrero de 2022, cuando se redactó este ejercicio, la última versión disponible para Windows era la versión 14.1, que puede descargar directamente con este enlace: <a href="https://www.mclibre.org/descargar/webapps/2122/PostgreSQL-14-1-x64.exe">PostgreSQL 14.1 para Windows (284 MB)</a>.</li>
       <li>Instale PostgreSQL.
@@ -221,7 +221,7 @@ function conectaDb()
             if (!$resultado) {
                 print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
             } else {
-                print "    &lt;p&gt;Contador autonumérico reestablecido.&lt;/p&gt;\n";
+                print "    &lt;p&gt;Contador autonumérico restablecido.&lt;/p&gt;\n";
                 print "\n";
             }
         }
@@ -229,14 +229,14 @@ function conectaDb()
   </pre>
           </div>
       </li>
-      <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y crenado registros de Personas.</li>
+      <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y creando registros de Personas.</li>
     </ol>
   </section>
 
   <section id="ejercicio-4">
     <h2>Bases de datos (3 B) - 4 - Agenda multiusuario (1)</h2>
 
-    <p>Modifique la aplicación del ejericio 1 de manera que cada usuario básico de la aplicación sólo pueda trabajar con sus propios registros de Personas (listar, borrar, buscar, modificar).</p>
+    <p>Modifique la aplicación del ejercicio 1 de manera que cada usuario básico de la aplicación sólo pueda trabajar con sus propios registros de Personas (listar, borrar, buscar, modificar).</p>
     <ol>
       <li>Añada en la tabla Personas un campo que contenga el id del usuario que crea el registro.
         <details>
@@ -324,7 +324,7 @@ function conectaDb()
           </div>
         </details>
       </li>
-      <li>En los listados (listar, borrar, buscar, modificar) los usuarios adminstradores verán el nombre del usuario que creó el registro.
+      <li>En los listados (listar, borrar, buscar, modificar) los usuarios administradores verán el nombre del usuario que creó el registro.
         <details>
           <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
           <p>La columna Usuario se mostrará cuando el nivel del usuario conectado sea el nivel administrador.</p>
@@ -374,7 +374,7 @@ function conectaDb()
       <li>Si al borrar un registro de Usuario, se van a borrar registros de Personas creados por ese usuario, convendría mostrar un aviso indicando por ejemplo el número de registros que se borrarán y solicitar confirmación.</li>
       <li>Los usuarios administradores podrán insertar registros de Personas a nombre de otros usuarios.</li>
       <li>Los usuarios administradores podrán modificar el campo usuario de un registro de Personas.</li>
-      <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y crenado registros de Personas.</li>
+      <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y creando registros de Personas.</li>
     </ul>
   </section>
 

@@ -104,7 +104,7 @@ $consulta = "SELECT * FROM $dbTabla
 
     <hr class="corta">
 
-    <p>Como SQLite guarda cadenas de txto, en SQLITE se pueden guardar fechas parcialmente definidas (por ejemplo, si no se conoce el mes o el día concreto se puede guardar el valor 00 en esas posiciones). Pero para poder guardar fechas parcialmente definidas en MySQL hay que activar el modo ALLOW_INVALID_DATES. Al realizar la conexión con la base de datos habría que ejecutar la orden siguiente:</p>
+    <p>Como SQLite guarda cadenas de texto, en SQLITE se pueden guardar fechas parcialmente definidas (por ejemplo, si no se conoce el mes o el día concreto se puede guardar el valor 00 en esas posiciones). Pero para poder guardar fechas parcialmente definidas en MySQL hay que activar el modo ALLOW_INVALID_DATES. Al realizar la conexión con la base de datos habría que ejecutar la orden siguiente:</p>
 
     <div class="codigo">
       <pre>
@@ -153,7 +153,7 @@ id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY</code>
 </pre>
       </div>
 
-      <p>La diferencia entre las dos últimas sintaxis es que BY DEFAULT permite que la consulta de inserrción establezca el campo, mientras que ALWAYS no lo permite (daría error).</p>
+      <p>La diferencia entre las dos últimas sintaxis es que BY DEFAULT permite que la consulta de inserción establezca el campo, mientras que ALWAYS no lo permite (daría error).</p>
 
       <p>En PostgreSQL podemos encontrarnos con un problema cuando insertamos uno o varios registros que incluyen el valor del campo <i>id</i> y a continuación insertamos un registro sin incluir el valor del campo <i>id</i>, ya que se produce un error. El motivo es que PostgreSQL no actualiza el valor del contador interno del campo, por lo que si insertamos un registro con el primer valor libre (es decir, el siguiente al último), al insertar un registro sin incluir el campo <i>id</i>, PostgreSQL aumenta el contador y le asigna el valor que ya hemos utilizado. Curiosamente, si repetimos la inserción sin incluir el campo <i>id</i> como PostgreSQL sigue aumentando el valor de contador, habrá un momento en que el intento tenga éxito, porque habremos llegado a un valor que no ha sido utilizado todavía.</p>
 
