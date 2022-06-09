@@ -16,7 +16,7 @@
 
   <form action="if-else-6-2.php" method="get">
     <p>Escriba una temperatura en grados Celsius o Fahrenheit (-273.15 &le; Celsius &lt; 10.000;
-      -459.67 &le; Fahrenheit &lt; 10.000) para convertila a la otra unidad (Fahrenheit o Celsius).
+      -459.67 &le; Fahrenheit &lt; 10.000) para convertirla a la otra unidad (Fahrenheit o Celsius).
     </p>
 
     <p>
