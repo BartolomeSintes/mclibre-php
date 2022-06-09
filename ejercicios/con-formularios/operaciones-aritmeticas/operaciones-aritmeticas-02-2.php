@@ -84,7 +84,7 @@ if ($pulgadas == "") {
 }
 
 if ($piesOk && $pulgadasOk) {
-    $centimetros = ($pies * 12 + $pulgadas) * 2.54;
+    $centimetros = round(($pies * 12 + $pulgadas) * 2.54, 2);
     print "  <p>$pies pies y $pulgadas pulgadas son $centimetros centímetros</p>\n";
     print "\n";
 }
@@ -94,7 +94,7 @@ if ($piesOk && $pulgadasOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2022-06-09">9 de junio de 2022</time>
     </p>
 
     <p class="licencia">
