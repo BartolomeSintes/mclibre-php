@@ -375,9 +375,6 @@ if ($lado == "") {
 } elseif ($lado &lt; 20 || $lado &gt; 500) {
     print "  &lt;p class=\"aviso\"&gt;El tamaño del lado no está entre 20 y 500 px.&lt;/p&gt;\n";
     print "\n";
-} elseif ($lado &lt; $esquina * 2) {
-    print "  &lt;p class=\"aviso\"&gt;El tamaño del lado debe ser al menos el doble que el de la esquina.&lt;/p&gt;\n";
-    print "\n";
 } else {
     $ladoOk = true;
 }
@@ -396,6 +393,15 @@ if ($esquina == "") {
     print "\n";
 } else {
     $esquinaOk = true;
+}
+
+if ($ladoOk && $esquinaOk) {
+    if ($lado &lt; $esquina * 2) {
+        print "  &lt;p class=\"aviso\"&gt;El tamaño del lado debe ser al menos el doble que el de la esquina.&lt;/p&gt;\n";
+        print "\n";
+        $ladoOk    = false;
+        $esquinaOk = false;
+    }
 }
 
 if ($ladoOk && $esquinaOk) {
