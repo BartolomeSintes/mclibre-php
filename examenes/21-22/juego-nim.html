@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego del Nim. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego del Nim</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego del Nim</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+        <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una versión simplificada del juego del Nim. En esta versión sólo hay una fila de cerillas y los jugadores solo pueden quitar hasta tres cerillas contiguas.</p>
+
+  <section id="comentarios">
+    <h2>Juego del Nim - Comentarios</h2>
+
+    <ul>
+      <li>Descripción del programa:
+        <ul>
+          <li>El programa muestra una imagen de un chico o de una chica, que indica el jugador al que le toca jugar.</li>
+          <li>A la derecha de la imagen del jugador se muestra inicialmente una cantidad de cerillas, al azar entre 7 y 12.</li>
+          <li>Al hacer clic en una cerilla, se eliminan esa cerilla y las situadas a su derecha y se cambia la imagen del jugador.</li>
+          <li>El jugador que elimina la última cerilla, pierde (es decir, cuando no quedan cerillas, el jugador al que le toca jugar ha ganado).</li>
+          <li>Al hacer clic en el botón Reiniciar, se muestra una nueva partida. El jugador inicial puede ser tanto la chica como el chico, al azar.</li>
+        </ul>
+      </li>
+      <li>El programa podrá tener dos páginas y utilizar sesiones.</li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario, ni se producirá ningún cambio.</li>
+      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página (con F5), no se producirá ningún cambio.</li>
+      <li><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Para simplificar el programa, todas las cerillas pueden ser botones del formulario, pero se valorará en la corrección del examen que sólo se puedan eliminar cerillas cuando se haga clic en una de las tres últimas cerillas de la fila.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/juego-nim-1.png" alt="Juego del Nim" width="1188" height="320"></p>
+        <p class="captura"><img src="img/juego-nim-2.png" alt="Juego del Nim" width="1188" height="320"></p>
+        <p class="captura"><img src="img/juego-nim-3.png" alt="Juego del Nim" width="1188" height="320"></p>
+        <p class="captura"><img src="img/juego-nim-4.png" alt="Juego del Nim" width="1188" height="320"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego del Nim - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;p&gt;
+      &lt;img src="img/<span class="codigo-resaltado">boy-1f466</span>.svg" alt="<span class="codigo-resaltado">Chico</span>" height="170"&gt;
+      &lt;button name="accion" value="<span class="codigo-resaltado">1</span>"&gt;
+        &lt;img src="img/cerilla.svg" alt="cerilla" width="30" height="150"&gt;
+      &lt;/button&gt;
+      &lt;button name="accion" value="<span class="codigo-resaltado">2</span>"&gt;
+        &lt;img src="img/cerilla.svg" alt="cerilla" width="30" height="150"&gt;
+      &lt;/button&gt;
+      &lt;button name="accion" value="<span class="codigo-resaltado">3</span>"&gt;
+        &lt;img src="img/cerilla.svg" alt="cerilla" width="30" height="150"&gt;
+      &lt;/button&gt;
+      &lt;button name="accion" value="<span class="codigo-resaltado">4</span>"&gt;
+        &lt;img src="img/cerilla.svg" alt="cerilla" width="30" height="150"&gt;
+      &lt;/button&gt;
+      &lt;button name="accion" value="<span class="codigo-resaltado">5</span>"&gt;
+        &lt;img src="img/cerilla.svg" alt="cerilla" width="30" height="150"&gt;
+      &lt;/button&gt;
+    &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;p&gt;
+      &lt;img src="img/<span class="codigo-resaltado">girl-1f467</span>.svg" alt="<span class="codigo-resaltado">Chica</span>" height="170"&gt;
+     <span class="codigo-resaltado"> &lt;span style="font-size: 200%"&gt;¡Ha ganado!&lt;/span&gt;</span>
+    &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejemplo-programa">
+    <h2>Juego del Nim - Ejemplo de programa</h2>
+
+    <p><strong>Nota</strong>: El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+    <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="https://www.mclibre.org/consultar/examenes/php-examenes/21-22/nim-1.php" style="height: 28em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="https://www.mclibre.org/consultar/examenes/php-examenes/21-22/nim-1.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 14 de junio de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

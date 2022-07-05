@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de cartas. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de cartas</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de cartas</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+        <li><a href="#ejemplo-programa">Ejemplo de programa</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre una partida de un juego de cartas para dos jugadores.</p>
+
+  <section id="comentarios">
+    <h2>Juego de cartas - Comentarios</h2>
+
+    <ul>
+      <li>El programa debe:
+        <ul>
+          <li>Mostrar nueve cartas, al azar, de palos distintos para cada jugador (picas y corazones). Los valores se pueden repetir.</li>
+          <li>Mostrar las cartas ordenadas de mayor a menor y compararlas una a una. Para cada pareja de cartas, el jugador que tiene la carta más grande obtiene dos puntos. En caso de empate, cada jugador obtiene un punto. Gana la partida el jugador que haya obtenido más puntos</li>
+          <li>Mostrar la puntuación de cada jugador e indicar quién ha gando la partida.</li>
+          <li>Mostrar una partida distinta cada vez que se actualice la página (aunque al generarse al azar puedan repetirse ocasionalmente).</li>
+        </ul>
+      </li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/juego-cartas-compara-1.png" alt="Juego de cartas" width="1171" height="650"></p>
+        <p class="captura"><img src="img/juego-cartas-compara-2.png" alt="Juego de cartas" width="1171" height="650"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de cartas - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;img src="img/cartas/p<span class="codigo-resaltado">9</span>.svg" alt="<span class="codigo-resaltado">9</span> de picas" height="100"&gt;
+    &lt;img src="img/cartas/p<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span> de picas" height="100"&gt;
+    ...
+    &lt;img src="img/cartas/p<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span> de picas" height="100"&gt;
+  &lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span> de corazones" height="100"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">3</span>.svg" alt="<span class="codigo-resaltado">3</span> de corazones" height="100"&gt;
+    ...
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span> de corazones" height="100"&gt;
+  &lt;/p&gt;
+
+  &lt;h2&gt;Cartas ordenadas de cada jugador y puntuación&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;img src="img/cartas/p<span class="codigo-resaltado">9</span>.svg" alt="<span class="codigo-resaltado">9</span> de picas" height="100" style="vertical-align: middle;"&gt;
+    &lt;img src="img/cartas/p<span class="codigo-resaltado">9</span>.svg" alt="<span class="codigo-resaltado">9</span> de picas" height="100" style="vertical-align: middle;"&gt;
+    ...
+    &lt;img src="img/cartas/p<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span> de picas" height="100" style="vertical-align: middle;"&gt;
+    &lt;span style="font-size: 300%;"&gt;<span class="codigo-resaltado">14</span>&lt;/span&gt;
+    &lt;span style="font-size: 300%;"&gt;<span class="codigo-resaltado">¡Gana!</span>&lt;/span&gt;
+  &lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span> de corazones" height="100" style="vertical-align: middle;"&gt;
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span> de corazones" height="100" style="vertical-align: middle;"&gt;
+    ...
+    &lt;img src="img/cartas/c<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span> de corazones" height="100" style="vertical-align: middle;"&gt;
+    &lt;span style="font-size: 300%;"&gt;<span class="codigo-resaltado">4</span>&lt;/span&gt;
+    &lt;span style="font-size: 300%;"&gt;<span class="codigo-resaltado">¡Pierde!</span>&lt;/span&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejemplo-programa">
+    <h2>Juego de cartas - Ejemplo de programa</h2>
+
+    <p><strong>Nota</strong>: El día del examen los alumnos no tienen acceso a este ejemplo, solamente tienen acceso a las capturas del apartado anterior.</p>
+
+    <p>Un ejemplo de programa puede probarse en la ventana siguiente:</p>
+
+    <div class="filaflex">
+      <div class="resultado-object">
+        <object type="text/html" data="https://www.mclibre.org/consultar/examenes/php-examenes/21-22/juego-cartas-compara.php" style="height: 43em;">ERROR (no puede mostrarse el objeto)</object>
+      </div>
+      <div class="icono-enlace">
+        <a href="https://www.mclibre.org/consultar/examenes/php-examenes/21-22/jjuego-cartas-compara.php"><img src="../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 22 de junio de 2021</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
