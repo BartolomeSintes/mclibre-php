@@ -41,7 +41,7 @@
 
   <p>En estos apuntes se recomienda el paquete <a href="https://www.apachefriends.org/index.html">XAMPP</a>. En la lección <a href="xampp.html">Qué es XAMPP</a> se explica qué es XAMPP, qué versión se recomienda en estos apuntes y cómo conseguirla.</p>
 
-  <p>En esta lección se explica la Instalación y el uso de XAMPP en Windows 10. Las capturas corresponden a la instalación de XAMPP 8.0.9 en Windows 10.</p>
+  <p>En esta lección se explica la Instalación y el uso de XAMPP en Windows 10. Las capturas corresponden a la instalación de XAMPP 8.1.6 en Windows 10.</p>
 
   <section id="instalar">
     <h2>Instalar XAMPP en Windows 10</h2>
@@ -233,25 +233,81 @@
 
     <p>Aunque esa solución corrige la vulnerabilidad, el problema es que si el usuario que abre el panel de control de XAMPP no es administrador, cuando se cierra el panel de control se produce un error puesto que la aplicación intenta escribir en el archivo .ini para el que no tiene permisos.</p>
 
-    <p>Si en fichero C:\xampp\xampp-control.ini no tiene los permisos adecuados, al salir del panel de control se producirá un error de acceso a ese archivo. Para cerrar esas ventanas, abra el Administrador de tareas de Windows y Finalice la tarea xampp-control.exe.</p>
+    <p>Si en fichero C:\xampp\xampp-control.ini no tiene los permisos adecuados, al salir del panel de control se producirá un error de acceso a ese archivo.</p>
 
     <p class="captura">
       <img src="../img/xampp/xampp-error-ini-control-panel-01.png" alt="Error de XAMPP - permisos de xampp-control.ini" title="Error de XAMPP - permisos de xampp-control.ini" width="380" height="145">
-    </p>
-
-    <p class="captura">
       <img src="../img/xampp/xampp-error-ini-control-panel-02.png" alt="Error de XAMPP - permisos de xampp-control.ini" title="Error de XAMPP - permisos de xampp-control.ini" width="430" height="200">
     </p>
+
+    <p>Si cierra estas ventanas haciendo clic en Aceptar, las ventanas vuelve a aparecer una y otra vez, por lo que es necesario finalizar el proceso. Para ello:</p>
+
+    <ul>
+      <li>haga clic derecho en la barra de inicio ...
+        <p class="captura">
+          <img src="../img/xampp/xampp-error-ini-control-panel-03.png" alt="Error de XAMPP - Finalizar tarea" title="Error de XAMPP - permisos de xampp-control.ini" width="900" height="330">
+        </p>
+      </li>
+      <li>y elija la opción "Administrador de tareas".
+        <p class="captura">
+          <img src="../img/xampp/xampp-error-ini-control-panel-04.png" alt="Error de XAMPP - Finalizar tarea" title="Error de XAMPP - permisos de xampp-control.ini" width="900" height="330">
+        </p>
+      </li>
+      <li>Se abrirá la ventana del Administrador de tareas. Haga clic derecho en xampp-control.exe ...
+        <p class="captura">
+          <img src="../img/xampp/xampp-error-ini-control-panel-05.png" alt="Error de XAMPP - Finalizar tarea" title="Error de XAMPP - permisos de xampp-control.ini" width="900" height="330">
+        </p>
+      </li>
+      <li>y elija la opción "Finalizar tarea".
+        <p class="captura">
+          <img src="../img/xampp/xampp-error-ini-control-panel-06.png" alt="Error de XAMPP - Finalizar tarea" title="Error de XAMPP - permisos de xampp-control.ini" width="900" height="330">
+        </p>
+      </li>
+    </ul>
 
     <p>Este problema se puede sortear, a la espera de que los programadores de XAMPP encuentren una mejor solución, aunque eso suponga estar expuesto a la vulnerabilidad comentada antes. Dos maneras de sortear el problema son:</p>
     <ul>
       <li>Ejecutar el panel de control como administrador. Se puede hacer de dos maneras:
         <ul>
-          <li>Cada vez que quiera ejecutar el panel de control, haga clic en el icono de acceso directo del panel de control y elija la opción Más &gt; Ejecutar como administrador.</li>
-          <li>Para que el panel de control de control se ejecute siempre como administrador, haga clic en el icono de acceso directo del panel de control y elija la opción Más &gt; Abrir la ubicación del archivo. Cuando se abra el explorador, haga clic derecho en el icono de acceso directo, elija la opción Propiedades &gt; Opciones avanzadas y marque la casilla Ejecutar como administración.</li>
+          <li>
+            Cada vez que quiera ejecutar el panel de control, haga clic en el icono de acceso directo del panel de control y elija la opción Más &gt; Ejecutar como administrador.
+
+            <p class="captura">
+              <img src="../img/xampp/xampp-error-ini-control-panel-11.png" alt="Error de XAMPP - Ejecutar como administrador" title="Error de XAMPP - Ejecutar como administrador" width="800" height="310">
+            </p>
+          </li>
+          <li>Para que el panel de control de control se ejecute siempre como administrador, ...
+            <ul>
+              <li>haga clic en el icono de acceso directo del panel de control y elija la opción Más &gt; Abrir la ubicación del archivo.
+                <p class="captura">
+                  <img src="../img/xampp/xampp-error-ini-control-panel-21.png" alt="Error de XAMPP - Ejecutar siempre como administrador" title="Error de XAMPP - Ejecutar siempre como administrador" width="750" height="310">
+                </p>
+              </li>
+              <li>Cuando se abra el explorador, ...
+                <p class="captura">
+                  <img src="../img/xampp/xampp-error-ini-control-panel-22.png" alt="Error de XAMPP - Ejecutar siempre como administrador" title="Error de XAMPP - Ejecutar siempre como administrador" width="1024" height="280">
+                </p>
+              </li>
+              <li>haga clic derecho en el icono de acceso directo, ...
+                <p class="captura">
+                  <img src="../img/xampp/xampp-error-ini-control-panel-23.png" alt="Error de XAMPP - Ejecutar siempre como administrador" title="Error de XAMPP - Ejecutar siempre como administrador" width="1024" height="380">
+                </p>
+              </li>
+              <li>en la pestaña "Acceso directo" elija la opción "Opciones avanzadas", ...
+                <p class="captura">
+                  <img src="../img/xampp/xampp-error-ini-control-panel-24.png" alt="Error de XAMPP - Ejecutar siempre como administrador" title="Error de XAMPP - Ejecutar siempre como administrador" width="393" height="543">
+                </p>
+              </li>
+              <li>marque la casilla "Ejecutar como administrador" y haga clic en Aceptar.
+                <p class="captura">
+                  <img src="../img/xampp/xampp-error-ini-control-panel-25.png" alt="Error de XAMPP - Ejecutar siempre como administrador" title="Error de XAMPP - Ejecutar siempre como administrador" width="393" height="543">
+                </p>
+              </li>
+            </ul>
+          </li>
         </ul>
       </li>
-      <li>Cambiar los permisos del archivo xampp-control.ini de manera que no se necesite ser administrador. Para ello, haga clic derecho en el archivo xampp-control.ini y en la pestaña Seguridad, haga clic en el botón Editar y conceda todos los permisos al grupo Todos. Esta solución no es nada recomendable, pues significaría mantener la vulnerabilidad en nuestro ordenador.</li>
+      <li>Otra forma de sortear el problema es cambiar los permisos del archivo xampp-control.ini de manera que no se necesite ser administrador. Para ello, haga clic derecho en el archivo xampp-control.ini y en la pestaña Seguridad, haga clic en el botón Editar y conceda todos los permisos al grupo Todos. Esta solución no es nada recomendable, pues significaría mantener la vulnerabilidad en nuestro ordenador.</li>
     </ul>
 
     <p>Referencia: <a href="https://community.apachefriends.org/f/viewtopic.php?p=270301">Consulta en el foro de XAMPP en septiembre de 2020</a></p>
@@ -275,14 +331,6 @@
       <h3>Abrir y cerrar el panel de control</h3>
 
       <p>Al panel de control de XAMPP se puede acceder mediante el menú de inicio "Todos los programas &gt; XAMPP &gt; XAMPP Control Panel" o, si ya está iniciado, mediante el icono del área de notificación.</p>
-
-      <p>La primera vez que se abre el panel de control de XAMPP, se muestra una ventana de selección de idioma que permite elegir entre inglés y alemán.</p>
-
-      <p class="captura">
-        <img src="../img/xampp/xampp-control-panel-01.png" alt="XAMPP - Panel de control" title="XAMPP - Panel de control" width="223" height="168">
-      </p>
-
-      <hr class="corta">
 
       <p>El panel de control de XAMPP se divide en tres zonas:</p>
       <ul>
@@ -471,7 +519,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 25 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 21 de septiembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
