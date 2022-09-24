@@ -13,29 +13,38 @@
   no sé si son también clases de prism).
 */
 
-div.codigo { background-color: #1e1e1e; color: white; }
+/* Colores para cuadros de código fuente y de terminal */
+
+div.terminal { background-color: #1e1e1e; color: white; padding-top: 5px; padding-bottom: 5px; }
+
+div.codigo { background-color: #1e1e1e; color: #ffffff; padding-top: 5px; padding-bottom: 5px; }
 
 div.codigo.idle { background-color: white; color: black; }
+
+code { line-height: 120%; /* font-weight: bold; */ }
+
+.line-numbers-rows > span:before { color: black; }
+
+.command-line-prompt { border-right: 1px solid #999; }
+
+.command-line-prompt > span:before { color: white; }
 
 div.codigo-nocolor { background-color: white; color:black; }
 
 div.codigo-nocolor pre code.language-html *[class] { color: black; }
 
-.line-numbers-rows > span::before { color: black; }
-
-.command-line-prompt {border-right: 1px solid #999; }
-
-.command-line-prompt > span::before { color: white; }
-
 /* Estilo para HTML imitando a Visual Studio Code con tema Dark+ */
-
-pre code.language-html .attr-name      { color: #9cdcfe; }          /* attribute name            */
-pre code.language-html .attr-value     { color: #ce9178; }          /* attribute value           */
-pre code.language-html .comment        { color: #6a9955; }          /* comment                   */
-pre code.language-html .doctype        { color: #569cd6; }          /* doctype                   */
-pre code.language-html .entity         { color: #569cd6; }          /* entity                    */
-pre code.language-html .punctuation    { color: #808080; }          /* punctuation               */
-pre code.language-html .tag            { color: #569cd6; }          /* Tags, attributes, configs */
+div.codigo code.language-html      { background-color: #1e1e1e; color: #ffffff;
+                                     padding-top: 5px; padding-bottom: 5px; }
+code.language-html .attr-name      { color: #9cdcfe; }          /* attribute name            */
+code.language-html .attr-value     { color: #ce9178; }          /* attribute value           */
+code.language-html .comment        { color: #6a9955; }          /* comment                   */
+code.language-html .doctype-tag    { color: #569cd6; }          /* doctype tag               */
+code.language-html .entity         { color: #569cd6; }          /* entity                    */
+code.language-html .name           { color: #9cdcfe; }          /* name                      */
+code.language-html .punctuation    { color: #808080; }          /* punctuation               */
+code.language-html .attr-equals    { color: #d4d4d4; }          /* = en atributos            */
+code.language-html .tag            { color: #569cd6; }          /* Tags, attributes, configs */
 
 /* pre code.language-html .cdata          { }                            /* cdata                     */
 /* pre code.language-html .namespace      { }                            /* namespace                 */
@@ -53,47 +62,26 @@ div.resultado-codigo pre code.language-html .punctuation    { color: #000000; } 
 div.resultado-codigo pre code.language-html .tag            { color: #800080; font-weight: bold; }  /* Tags, attributes, configs */
 
 /* Estilo para CSS imitando a Visual Studio Code con tema Dark+ */
-
-pre code.language-css .comment       { color: #6a9955; }          /* comment                            */
-pre code.language-css .function      { color: #dcdcaa; }          /* CSS function within a value        */
-pre code.language-css .important     { color: #569cd6ff; }          /* "!important" symbol                */
-pre code.language-css .property      { color: #9cdcfe; }          /* property name inside a rule        */
-pre code.language-css .punctuation   { color: #d4d4d4; }          /* punctuation                        */
-pre code.language-css .rule          { color: #c586c0; }          /* @-rule till first "{" or ";"       */
-pre code.language-css .selector      { color: #d7ba7d; }          /* tag in selectors                   */
-pre code.language-css .string        { color: #ce9178; }          /* string within a value              */
-
-/* Estilo para Python imitando a Visual Studio Code con tema Dark+ */
-
-code.language-python .boolean              { color: white;   } /* boolean                             */
-code.language-python .builtin              { color: #dcdcac; } /* built-in functions                  */
-code.language-python .class-name           { color: white    } /* class header class SomeName(...):   */
-code.language-python .comment              { color: #6a9955; } /* comment                             */
-code.language-python .decorator            { color: white;   } /* decorator                           */
-code.language-python .function             { color: #4ccab2; } /* function header def some_name(...): */
-code.language-python .keyword              { color: #c586c0; } /* keyword                             */
-code.language-python .number               { color: #b5cea8; } /* number                              */
-code.language-python .operator             { color: #d4d4d4; } /* operators                           */
-code.language-python .punctuation          { color: white;   } /* punctuation                         */
-code.language-python .string               { color: #ce9178; } /* string (of any type)                */
-code.language-python .string-interpolation { color: white;   } /* string-interpolation                */
-code.language-python .triple-quoted-string { color: #ce9178; } /* string (of any type)                */
-
-/* Estilo para Python imitando a IDLE */
-
-div.idle code.language-python .boolean     { color: black;   } /* boolean                             */
-code.language-python .builtin              { color: #800080; } /* built-in functions                  */
-code.language-python .class-name           { color: black;   } /* class header class SomeName(...):   */
-code.language-python .comment              { color: #FF0000; } /* comment                             */
-code.language-python .decorator            { color: black;   } /* decorator                           */
-code.language-python .function             { color: #0000FF; } /* function header def some_name(...): */
-code.language-python .keyword              { color: #FF7700; } /* keyword                             */
-code.language-python .number               { color: black;   } /* number                              */
-code.language-python .operator             { color: black;   } /* operators                           */
-code.language-python .punctuation          { color: black;   } /* punctuation                         */
-code.language-python .string               { color: #00AA00; } /* string (of any type)                */
-code.language-python .string-interpolation { color: black;   } /* string-interpolation                */
-code.language-python .triple-quoted-string { color: #00AA00; } /* string (of any type)                */
+pre code.language-css                 { color: #ce9178; }          /* color por defecto                  */
+pre code.language-css .atrule         { color: #c586c0; }          /* at-rule lo que no es @rule         */
+pre code.language-css .attribute      { color: #9cdcfe; }          /* atributo                           */
+pre code.language-css .attr-value     { color: #ce9178; }          /* valor de atributo                  */
+pre code.language-css .color          { color: #ce9178; }          /* color                              */
+pre code.language-css .comment        { color: #6a9955; }          /* comment                            */
+pre code.language-css .function       { color: #dcdcaa; }          /* CSS function within a value        */
+pre code.language-css .important      { color: #569cd6; }          /* "!important" symbol                */
+pre code.language-css .number         { color: #b5cea8; }          /* number                             */
+pre code.language-css .operator       { color: #d4d4d4; }          /* operator                           */
+pre code.language-css .property       { color: #9cdcfe; }          /* property name inside a rule        */
+pre code.language-css .pseudo-element { color: #d7ba7d; }          /* pseudo-element, pseudo-class       */
+pre code.language-css .punctuation    { color: #d4d4d4; }          /* punctuation                        */
+pre code.language-css .rule           { color: #ce9178; }          /* @-rule till first "{" or ";"       */
+pre code.language-css .selector       { color: #d7ba7d; }          /* tag in selectors                   */
+pre code.language-css .string         { color: #ce9178; }          /* NO SE DETECTA                      */
+pre code.language-css .string.url     { text-decoration: underline; text-decoration-skip-ink: none; } /* url */
+pre code.language-css .unit           { color: #b5cea8; }          /* unit                               */
+pre code.language-css .variable       { color: #9cdcfe; }          /* variable                           */
+/* pre code.language-css .constant       { color: #ce9178; }          /* constant (añadida por mí)          */
 
 /* Estilo para PHP imitando a Visual Studio Code con tema Dark+ */
 
@@ -119,17 +107,17 @@ code.language-php .triple-quoted-string { color: #ce9178; } /* string (of any ty
 
 /* Estilo para HTML en fichero .PHP imitando a Visual Studio Code con tema Dark+ */
 
-pre code.language-php .attr-name      { color: #9cdcfe; }          /* attribute name            */
-pre code.language-php .attr-value     { color: #ce9178; }          /* attribute value           */
-pre code.language-php .comment        { color: #6a9955; }          /* comment                   */
-pre code.language-php .doctype        { color: #569cd6; }          /* doctype                   */
-pre code.language-php .punctuation    { color: #ffffff; }          /* punctuation               */
-pre code.language-php .tag            { color: #569cd6; }          /* Tags, attributes, configs */
+code.language-php .attr-name      { color: #9cdcfe; }          /* attribute name            */
+code.language-php .attr-value     { color: #ce9178; }          /* attribute value           */
+code.language-php .comment        { color: #6a9955; }          /* comment                   */
+code.language-php .doctype        { color: #569cd6; }          /* doctype                   */
+code.language-php .punctuation    { color: #ffffff; }          /* punctuation               */
+code.language-php .tag            { color: #569cd6; }          /* Tags, attributes, configs */
 
-pre code.language-php .cdata          { }                            /* cdata                     */
-pre code.language-php .entity         { }                            /* entity                    */
-pre code.language-php .namespace      { }                            /* namespace                 */
-pre code.language-php .prolog         { }                            /* prolog                    */
+/* code.language-php .cdata          { }                            /* cdata                     */
+/* code.language-php .entity         { }                            /* entity                    */
+/* code.language-php .namespace      { }                            /* namespace                 */
+/* code.language-php .prolog         { }                            /* prolog                    */
 
 /* Estilo para JSON imitando a Visual Studio Code con tema Dark+ */
 
@@ -227,8 +215,8 @@ div.code-toolbar {
 
 div.code-toolbar > .toolbar {
     position: absolute;
-    top: .3rem;
-    right: .2rem;
+    top: .3em;
+    right: .2em;
     transition: opacity 0.3s ease-in-out;
     opacity: 1;
 }
@@ -258,16 +246,18 @@ div.code-toolbar > .toolbar button {
     line-height: normal;
     overflow: visible;
     padding: 0;
+    user-select: none; /* for button */
 }
 
 div.code-toolbar > .toolbar a,
-div.code-toolbar > .toolbar button,
+/* div.code-toolbar > .toolbar button, */
 div.code-toolbar > .toolbar span {
     color: black;
-    font-size: 1.2rem;
-    padding: 0 .2rem;
+    font-size: 1.2em;
+    padding: .2em .5em;
     background: white;
-    border-radius: .3rem;
+    box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+    border-radius: .5em;
 }
 
 div.code-toolbar > .toolbar a:hover,
@@ -277,4 +267,12 @@ div.code-toolbar > .toolbar button:focus,
 div.code-toolbar > .toolbar span:hover,
 div.code-toolbar > .toolbar span:focus {
     text-decoration: none;
+}
+
+button.copy-to-clipboard-button {
+    display: none;
+}
+
+div.codigo.copy button.copy-to-clipboard-button {
+    display: inline
 }
