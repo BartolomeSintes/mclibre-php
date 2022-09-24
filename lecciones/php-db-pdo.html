@@ -8,8 +8,6 @@
   <link rel="icon" href="../varios/favicon.svg">
   <link rel="stylesheet" href="../varios/prism.css">
   <script src="../varios/prism-copy.js"></script>
-  <script src="../varios/prism.js"></script>
-  <script src="../varios/clipboard.min.js"></script>
 </head>
 
 <body>
@@ -516,9 +514,9 @@ if (!$resultado) {
 
       <p>Estas podrían ser las opciones para <strong>SQLite</strong>:</p>
 
-      <div class="codigo">
+      <div class="codigo copy">
         <pre>
-<code class="copy-language-php">// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
+<code class="language-php">// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 // Configuración para SQLite
@@ -536,9 +534,9 @@ $cfg["dbPersonasTabla"]        = "personas";                      // Nombre de l
 
       <p>Estas podrían ser las opciones para <strong>MySQL</strong>:</p>
 
-      <div class="codigo">
+      <div class="codigo copy">
         <pre>
-<code class="copy-language-php">// MYSQL: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
+<code class="language-php">// MYSQL: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
 // Configuración para MySQL
@@ -577,9 +575,9 @@ $cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de l
           <li>Si se indica simplemente el nombre del archivo SQLite, el archivo se creará en el mismo directorio que se encuentra el programa PHP. No se aconseja hacerlo así por dos motivos. Por un lado, si las páginas del programa se encuentran distribuidas en varios directorios, cada página accedería a una base de datos distinta creada en cada directorio. Por otro lado, al guardar la base de datos en un directorio público, cualquier visitante podría obtener la base de datos completa. Por eso se recomienda guardar el archivo SQLite en un directorio fuera del directorio público, teniendo en cuenta que el directorio debe existir y el servidor web debe tener permisos de escritura en él.</li>
         </ul>
 
-        <div class="codigo">
+        <div class="codigo copy">
           <pre>
-<code class="copy-language-php">// SQLITE: Conexión con la base de datos
+<code class="language-php">// SQLITE: Conexión con la base de datos
 
 function conectaDb()
 {
@@ -617,9 +615,9 @@ $pdo = conectaDb();</code>
 
         <p>Para poder acceder a MySQL mediante PDO, debe estar activada la extensión php_pdo_mysql en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-mysql">apartado extensión pdo_mysql en la lección de configuración de Apache y PHP</a>).</p>
 
-        <div class="codigo">
+        <div class="codigo copy">
           <pre>
-<code class="copy-language-php">// MYSQL: Conexión con la base de datos
+<code class="language-php">// MYSQL: Conexión con la base de datos
 
 function conectaDb()
 {
@@ -661,9 +659,9 @@ $pdo = conectaDb();</code>
 
         <p>Para borrar una tabla, se utiliza la consulta DROP TABLE. Esta consulta no es específica de SQlite y funcionaría con otras bases de datos. Se ha añadido la condición IF EXISTS porque en algunas versiones de SQLite la consulta DROP TABLE da error si la tabla no existe.</p>
 
-        <div class="codigo">
+        <div class="codigo copy">
           <pre>
-<code class="copy-language-php">// CONSULTA DE BORRADO DE TABLA
+<code class="language-php">// CONSULTA DE BORRADO DE TABLA
 $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
 
 if (!$pdo-&gt;query($consulta)) {
@@ -677,9 +675,9 @@ print "\n";</code>
 
         <p>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. El ejemplo no utiliza sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</p>
 
-        <div class="codigo">
+        <div class="codigo copy">
           <pre>
-<code class="copy-language-php">// SQLITE: CONSULTA DE CREACIÓN DE TABLA
+<code class="language-php">// SQLITE: CONSULTA DE CREACIÓN DE TABLA
 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
              id INTEGER PRIMARY KEY,
              nombre VARCHAR($cfg[dbPersonasTamNombre]),
@@ -703,9 +701,9 @@ print "\n";</code>
 
         <p>Para borrar una base de datos, se utiliza la consulta DROP DATABASE. Se ha añadido la condición IF EXISTS porque en algunas bases de datos la consulta DROP DATABASE da error si la tabla no existe.</p>
 
-        <div class="codigo">
+        <div class="codigo copy">
           <pre>
-<code class="copy-language-php">// MYSQL: CONSULTA DE BORRADO DE BASE DE DATOS
+<code class="language-php">// MYSQL: CONSULTA DE BORRADO DE BASE DE DATOS
 $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
 if (!$pdo-&gt;query($consulta)) {
@@ -719,9 +717,9 @@ print "\n";</code>
 
         <p>Para crear una base de datos, se utiliza la consulta CREATE DATABASE.</p>
 
-        <div class="codigo">
+        <div class="codigo copy">
           <pre>
-<code class="copy-language-php">// MYSQL: CONSULTA DE CREACIÓN DE BASE DE DATOS
+<code class="language-php">// MYSQL: CONSULTA DE CREACIÓN DE BASE DE DATOS
 $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
              CHARACTER SET utf8mb4
              COLLATE utf8mb4_unicode_ci";
@@ -739,9 +737,9 @@ if (!$pdo-&gt;query($consulta)) {
 
         <p>Para crear una tabla, se utiliza la consulta CREATE TABLE. Las consultas de creación de tabla suelen ser específicas de cada base de datos. El ejemplo no utiliza sentencias preparadas (en caso de utilizarse sentencias preparadas, las variables no podrían ir como parámetros por tratarse de sentencias DDL).</p>
 
-        <div class="codigo">
+        <div class="codigo copy">
           <pre>
-<code class="copy-language-php">// MYSQL: CONSULTA DE CREACIÓN DE TABLA
+<code class="language-php">// MYSQL: CONSULTA DE CREACIÓN DE TABLA
 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
              id INTEGER UNSIGNED AUTO_INCREMENT,
              nombre VARCHAR($cfg[dbPersonasTamNombre]),
@@ -767,9 +765,9 @@ if (!$pdo-&gt;query($consulta)) {
       <ul>
         <li>Para añadir un registro a una tabla, se utiliza la consulta INSERT INTO.
 
-          <div class="codigo">
+          <div class="codigo copy">
             <pre>
-<code class="copy-language-php">// CONSULTA DE INSERCIÓN DE REGISTRO
+<code class="language-php">// CONSULTA DE INSERCIÓN DE REGISTRO
 $nombre    = "Pepito";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Conejo";
 
@@ -791,9 +789,9 @@ if (!$resultado) {
         </li>
         <li>Para modificar un registro a una tabla, se utiliza la consulta UPDATE.
 
-          <div class="codigo">
+          <div class="codigo copy">
             <pre>
-<code class="copy-language-php">// CONSULTA DE MODIFICACIÓN DE REGISTRO
+<code class="language-php">// CONSULTA DE MODIFICACIÓN DE REGISTRO
 $id        = "1";                 // Normalmente estos valores vendrán de un formulario
 $nombre    = "Pepita";
 $apellidos = "Conejo";
@@ -819,9 +817,9 @@ if (!$resultado) {
 
           <p><strong>Nota</strong>: En el ejemplo siguiente los registros a borrar se reciben en forma de matriz y se recorre la matriz borrando un elemento en cada iteración.</p>
 
-          <div class="codigo">
+          <div class="codigo copy">
             <pre>
-<code class="copy-language-php">// CONSULTA DE BORRADO DE REGISTROS
+<code class="language-php">// CONSULTA DE BORRADO DE REGISTROS
 $id = [1 =&gt; "on", 3 =&gt; "on"];     // Normalmente este valor vendrá de un formulario (en este caso, como matriz).
 
 foreach ($id as $indice =&gt; $valor) {
@@ -875,9 +873,9 @@ if (!$resultado) {
       <ul>
         <li>Si la consulta devuelve un único registro con una sola columna se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar el dato.
 
-          <div class="codigo">
+          <div class="codigo copy">
             <pre>
-<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
 $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
 
 $resultado = $pdo-&gt;query($consulta);
@@ -892,9 +890,9 @@ if (!$resultado) {
         </li>
 
         <li>Si la consulta devuelve un único registro, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetch.php">PDOStatement-&gt;fetch()</a> para recuperar el registro en forma de matriz. De forma predeterminada, los valores del registro aparecen repetidos en la matriz y para acceder a los valores se puede utilizar como índice tanto los nombres de las columnas de la tabla como números enteros correlativos (0, 1, 2, etc.). Si se envía como argumento la constante PDO::FETCH_ASSOC, los índices de la matriz son únicamente los nombres de las columnas de la tabla.
-          <div class="codigo">
+          <div class="codigo copy">
             <pre>
-<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
 $id = 1       // Normalmente este valor vendrá de un formulario
 
 $consulta  = "SELECT * FROM <i>tabla</i> WHERE id=:id";
@@ -920,9 +918,9 @@ if (!$resultado) {
           <ul>
             <li>Habitualmente se utiliza un bucle <span class="php-res">foreach</span> para recorrer todos los registros devueltos. Es importante tener en cuenta que sólo se puede iterar una vez sobre el resultado de la consulta, ya que los registros se van eliminado del resultado de la consulta.
 
-              <div class="codigo">
+              <div class="codigo copy">
                 <pre>
-<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 
 $resultado = $pdo-&gt;query($consulta);
@@ -997,9 +995,9 @@ if (!$resultado) {
 
             <li>Podemos hacer lo mismo con una sola consulta utilizando el método <a href="https://www.php.net/manual/en/pdostatement.fetchall.php">PDOStatement-&gt;fetchAll()</a>, que recupera todos los registros devueltos por la consulta en forma de matriz.
 
-              <div class="codigo">
+              <div class="codigo copy">
                 <pre>
-<code class="copy-language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
 $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
 
 $resultado = $pdo-&gt;query($consulta);
