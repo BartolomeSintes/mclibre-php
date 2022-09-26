@@ -38,9 +38,10 @@
           <ul>
             <li><a href="#php-ini">archivo php.ini</a></li>
             <li><a href="#directivas">directivas de configuración</a></li>
-            <li><a href="#short-open-tag">short_open_tag</a></li>
             <li><a href="#error-reporting">error_reporting</a></li>
             <li><a href="#output-buffering">output_buffering</a></li>
+            <li><a href="#short-open-tag">short_open_tag</a></li>
+            <li><a href="#display-errors">display_errors</a></li>
             <li><a href="#pdo-mysql">extensión pdo_mysql</a></li>
             <li><a href="#pdo-sqlite">extensión pdo_sqlite</a></li>
             <li><a href="#session-save-handler">session.save_handler</a></li>
@@ -352,67 +353,10 @@
       <p>En el archivo de configuración php.ini, las líneas que comienzan por <strong>;</strong> (punto y coma) son líneas comentadas, es decir, que no se tendrán en cuenta cuando PHP cargue el archivo. En el archivo de configuración se pueden encontrar bloques de varias líneas comentadas que explican el significado de una directiva y más adelante una línea sin comentar que establece el valor de la directiva. Un error de principiante bastante común es modificar el valor de la directiva en una línea comentada, lo que no sirve para nada.</p>
     </section>
 
-    <section id="short-open-tag">
-      <h3>short_open_tag</h3>
-
-      <p>Los fragmentos de código PHP se identifican mediante las etiquetas &lt;?php .... ?&gt;. La directiva <span class="php-dir">short_open_tag</span> especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
-
-      <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Directiva / Valor</th>
-            <th>Significado</th>
-          </tr>
-          <tr>
-            <td>short_open_tag=On</td>
-            <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
-          </tr>
-          <tr>
-            <td>short_open_tag=Off</td>
-            <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>Se recomienda que esta directiva tome el valor Off y que se utilice siempre la etiqueta &lt;?php para empezar los fragmentos de código php.</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-configuracion">short_open_tag=Off        ; Valor recomendado en este curso</code>
-</pre>
-      </div>
-
-      <p>En XAMPP 8.1 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
-
-      <hr class="corta">
-
-      <p>Si en el servidor la directiva toma el valor On, las páginas que contengan una declaración XML (páginas XHTML o dibujos SVG, por ejemplo) producirían un error. Este problema se resolvería utilizando un fragmento de código para generar la declaración XML.</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre><code class="language-php">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
-        </div>
-        <div class="resultado-html">
-          <strong>Parse error</strong>: parse error, unexpected T_STRING in <strong>ejemplo.php</strong> on line <strong>1</strong>
-        </div>
-      </div>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-html"></div>
-      </div>
-    </section>
-
     <section id="error-reporting">
       <h3>error_reporting</h3>
 
-      <p>La directiva <span class="php-dir">error_reporting</span> especifica el tipo de errores notificados por PHP. Por ejemplo:</p>
+      <p>La directiva <a href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-reporting"><span class="php-dir">error_reporting</span></a> especifica el tipo de errores notificados por PHP. Por ejemplo:</p>
 
       <table class="tabla-con-borde">
         <tbody>
@@ -581,6 +525,96 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
       <p>Al desactivar el buffer, dependiendo de la forma de compilación del intérprete PHP, se pueden encontrar problemas con los archivos UTF-8 con marca de orden de bytes (BOM), como se comenta en la <a href="../lecciones/php-cabeceras.html#bom">lección sobre cabeceras HTTP</a>.</p>
     </section>
 
+    <section id="short-open-tag">
+      <h3>short_open_tag</h3>
+
+      <p>Los fragmentos de código PHP se deben identificar mediante las etiquetas &lt;?php .... ?&gt;. La directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.short-open-tag"><span class="php-dir">short_open_tag</span> </a>especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
+
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Directiva / Valor</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <td>short_open_tag=On</td>
+            <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
+          </tr>
+          <tr>
+            <td>short_open_tag=Off</td>
+            <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Se recomienda que esta directiva tome el valor Off y que se utilice siempre la etiqueta &lt;?php para empezar los fragmentos de código php.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">short_open_tag=Off        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.1 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+
+      <hr class="corta">
+
+      <p>Si en el servidor la directiva toma el valor On, las páginas que contengan una declaración XML (páginas XHTML o dibujos SVG, por ejemplo) producirían un error. Este problema se resolvería utilizando un fragmento de código para generar la declaración XML.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
+        </div>
+        <div class="resultado-html">
+          <strong>Parse error</strong>: parse error, unexpected T_STRING in <strong>ejemplo.php</strong> on line <strong>1</strong>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html"></div>
+      </div>
+    </section>
+
+    <section id="display-errors">
+      <h3>display_errors</h3>
+
+      <p>La directiva <a href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.display-errors"><span class="php-dir">display_errors</span></a> establece si PHP incluye los distintos mensajes de error en la salida del programa.</p>
+
+      <table class="tabla-con-borde">
+        <tbody>
+          <tr>
+            <th>Directiva / Valor</th>
+            <th>Significado</th>
+          </tr>
+          <tr>
+            <td>display_errors=On</td>
+            <td>Se incluyen los mensajes de error en la salida del programa</td>
+          </tr>
+          <tr>
+            <td>display_errors=Off</td>
+            <td>No se incluyen los mensajes de error en la salida del programa</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>En un entorno de desarrollo se recomienda que esta directiva tome el valor On (para que el programador identifique más fácilmente los errores en sus programas), pero en un entorno de producción se recomienda que esta directiva tome el valor Off (por motivos de seguridad, es decir, para que un posible atacante no identifique errores en los programas que pudieran utilizarse contra el servidor).</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">display_errors=On        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.1 esta directiva viene predeterminada con valor On, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
+
     <section id="pdo-mysql">
       <h3>extensión pdo_mysql</h3>
 
@@ -706,9 +740,9 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
     <section id="post-max-size">
       <h3>post_max_size y upload_max_filesize</h3>
 
-      <p>La directiva post_max_size especifica el tamaño máximo de los datos que pueden enviarse al servidor.</p>
+      <p>La directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.post-max-size"><span class="php-dir">post_max_size</span></a> especifica el tamaño máximo de los datos que pueden enviarse al servidor.</p>
 
-      <p>La directiva upload_max_filesize especifica el tamaño máximo de un fichero que se envíe al servidor.</p>
+      <p>La directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize"><span class="php-dir">upload_max_filesize</span></a> especifica el tamaño máximo de un fichero que se envíe al servidor.</p>
 
       <p>Lógicamente, post_max_size debe ser superior a upload_max_filesize. Si el valor se expresa sin unidades, se interpreta como bytes. Se pueden utilizar las unidades K (kilobytes), M (megabytes) y G (Gigabytes).</p>
 
