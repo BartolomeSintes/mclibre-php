@@ -3,9 +3,9 @@
  * Seleccione dibujos - matrices-1-12-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-04
+ * @version   2022-09-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ if (!isset($_SESSION["disponibles"])) {
     // ... creamos todas las variables de sesión
     $_SESSION["numeroDibujos"] = 7;
     for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["disponibles"][$i] = mt_rand(128512, 128567);
+        $_SESSION["disponibles"][$i] = rand(128512, 128567);
     }
     $_SESSION["seleccionados"] = [];
 }
@@ -85,7 +85,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-12-04">4 de diciembre de 2021</time>
+      <time datetime="2022-09-26">26 de septiembre de 2022</time>
     </p>
 
     <p class="licencia">

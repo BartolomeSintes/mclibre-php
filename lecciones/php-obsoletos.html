@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../varios/php.css" title="mclibre">
   <link rel="icon" href="../varios/favicon.svg">
   <link rel="stylesheet" href="../varios/prism.css">
-  <script src="../varios/prism-copy.js"></script>
+  <script src="../varios/prism.js"></script>
 </head>
 
 <body>
@@ -21,34 +21,68 @@
 
     <div class="toc">
       <h2>Temas obsoletos</h2>
+
+      <ul>
+        <li><a href="#php-7-1">PHP 7.1 (2016)</a></li>
+        <li><a href="#php-5-6">PHP 5.6 (2014)</a></li>
+        <li><a href="#php-5-4">PHP 5.4 (2012)</a></li>
+        <li><a href="#otros">Otros</a></li>
+      </ul>
     </div>
   </nav>
 
-  <p>Estas son las lecciones que tratan aspectos de PHP que he dejado de explicar en clase porque han quedado "viejos" o se pueden abordar de una forma más "moderna".</p>
+  <p>El lenguaje PHP ha ido evolucionando a lo largo de su existencia. En algunos casos, las nuevas características o las nuevas notaciones deajn obsoletos las antiguas. En esta lección se comentan los cambios que he ido incorporando a los apuntes, ordenadas de acuerdo con la versión de PHP en la que se introdujeron.</p>
 
-  <ul>
-    <li><a href="php-obsoletos-matrices.html">Matrices</a>
-      <p>En esta lección se explica la notación clásica de matrices, que a partir del curso 2017/18 he dejado de utilizar y explicar en clase.</p>
-    </li>
-    <li><a href="php-obsoletos-cursor-formulario.html">Cursor en formulario</a>
-      <p>En esta lección se explica cómo situar el cursor automáticamente en un control de un formulario recurriendo a JavaScript. Con la introducción del atributo <span class="html-atri">autofocus</span> en HTML 5 este procedimiento se puede considerar obsoleto.</p>
-    </li>
-    <li><a href="php-obsoletos-recogida-datos.html">Funciones de recogida de datos</a>
-      <p>En esta lección se explican las funciones de recogida de datos de formularios que he dejado de utilizar a partir del curso 2019/20 porque las he sustituido por una única función que sirve tanto para datos sueltos como para matrices de cualquier dimensión.</p>
-    </li>
-  </ul>
+  <section id="php-7-1">
+    <h2>PHP 7.1 (diciembre de 2016)</h2>
 
-  <h2>Otros</h2>
+    <ul>
+      <li>Desde PHP 7.1, la función <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> es un alias de la función <a href="https://www.php.net/manual/en/function.mt-rand.php"><span class="php-fun">mt_rand()</span></a>, por lo que es indiferente usar una u otra. En versiones anteriores eran funciones distintas y la función <span class="php-fun">mt_rand()</span> era más rápida y estaba basada en el algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a>. [<a href="https://www.php.net/manual/en/migration71.incompatible.php#migration71.incompatible.rand-srand-aliases">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">mt_rand()</span> y utilizo siempre la función <span class="php-fun">rand()</span>.
+        <p>Consecuentemente, desde PHP 7.1 las funciones <a href="https://www.php.net/manual/en/function.getrandmax.php"><span class="php-fun">getrandmax()</span></a> y <a href="https://www.php.net/manual/en/function.mt-getrandmax.php"><span class="php-fun">mt_getrandmax()</span></a>, que devolvían el máximo valor que podía obtenerse con las funciones <span class="php-fun">rand()</span> y <span class="php-fun">mt_rand()</span> al ser llamadas sin argumentos, devuelven ahora el mismo valor, que coincide con <a href="php-constantes.html#phpintmax">PHP_INT_MAX</a>.</p>
+      </li>
 
-  <ul>
-    <li>Matrices como constantes
-      <p>PHP permite definir matrices como constantes con <a href="https://www.php.net/manual/en/function.define.php">define()</a> desde PHP 5.6 (publicado en agosto de 2014). [<a href="https://www.php.net/ChangeLog-5.php#5.6.0">ref.</a>: Removed inconsistency regarding behaviour of array in constants at run-time.]</p>
-      <p>PHP permite definir matrices como constantes con <span class="php-res">const</span> desde PHP 7.0 (publicado en diciembre de 2015). [<a href="https://www.php.net/ChangeLog-7.php#7.0.0">ref.</a>: Fixed oversight where define() did not support arrays yet const syntax did.]</p>
-    </li>
     </ul>
+  </section>
+
+  <section id="php-5-6">
+    <h2>PHP 5.6 (agosto de 2014)</h2>
+
+    <ul>
+      <li>En PHP 5.6 se introdujo la notación <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-ope">**</span></a> para la operación matemática potenciación. En versiones anteriores, PHP solo disponía de la función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow()</span></a>, que sigue existiendo en versiones posteriores. [<a href="https://www.php.net/manual/en/migration56.new-features.php#migration56.new-features.exponentiation">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">pow()</span> y utilizo siempre el operador <span class="php-ope">**</span>.</li>
+    </ul>
+  </section>
+
+  <section id="php-5-4">
+    <h2>PHP 5.4 (marzo de 2012)</h2>
+
+    <ul>
+      <li><a href="php-obsoletos-matrices.html">Matrices</a>
+        <p>En esta lección se explica la notación clásica de matrices, que dejé de utilizar y explicar en clase a partir del curso 2017/18.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="otros">
+    <h2>Otros</h2>
+
+    <p>Estas son las lecciones que tratan aspectos de PHP que he dejado de explicar en clase porque han quedado "viejos" o se pueden abordar de una forma más "moderna".</p>
+
+    <ul>
+      <li><a href="php-obsoletos-cursor-formulario.html">Cursor en formulario</a>
+        <p>En esta lección se explica cómo situar el cursor automáticamente en un control de un formulario recurriendo a JavaScript. Con la introducción del atributo <span class="html-atri">autofocus</span> en HTML 5 este procedimiento se puede considerar obsoleto.</p>
+      </li>
+      <li><a href="php-obsoletos-recogida-datos.html">Funciones de recogida de datos</a>
+        <p>En esta lección se explican las funciones de recogida de datos de formularios que he dejado de utilizar a partir del curso 2019/20 porque las he sustituido por una única función que sirve tanto para datos sueltos como para matrices de cualquier dimensión.</p>
+      </li>
+      <li>Matrices como constantes
+        <p>PHP permite definir matrices como constantes con <a href="https://www.php.net/manual/en/function.define.php">define()</a> desde PHP 5.6 (publicado en agosto de 2014). [<a href="https://www.php.net/ChangeLog-5.php#5.6.0">ref.</a>: Removed inconsistency regarding behaviour of array in constants at run-time.]</p>
+        <p>PHP permite definir matrices como constantes con <span class="php-res">const</span> desde PHP 7.0 (publicado en diciembre de 2015). [<a href="https://www.php.net/ChangeLog-7.php#7.0.0">ref.</a>: Fixed oversight where define() did not support arrays yet const syntax did.]</p>
+      </li>
+    </ul>
+  </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 19 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

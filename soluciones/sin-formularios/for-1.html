@@ -443,7 +443,7 @@ $disparos = rand(1, 10);
 for ($i = 0; $i &lt; $disparos; $i++) {
     $x = rand(-200, 200);
     $y = rand(-200, 200);
-    $puntos += ((10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20)) &gt; 0 ? (10 - floor(sqrt(pow($x, 2) + pow($y, 2)) / 20)) : 0);
+    $puntos += ((10 - floor(sqrt($x ** 2 + $y ** 2) / 20)) &gt; 0 ? (10 - floor(sqrt($x ** 2 + $y ** 2) / 20)) : 0);
     print "      &lt;path fill=\"black\" stroke=\"white\" stroke-width=\"2\" "
      . "d=\"m $x,$y m -1,-9 4.4,2.5 3.6,0.6 0.5,2.9 2.2,2.9 -2.2,3.1 "
      . "-0.1,3.6 -3.3,0.2 -1.7,2.7 -4,-1.4 -3.9,0.2 -0.9,-4.2 -2.7,-2.6 1.7,-3.4 0,-3 z\" /&gt;\n";
@@ -463,7 +463,7 @@ print "  &lt;/ul&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 19 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
