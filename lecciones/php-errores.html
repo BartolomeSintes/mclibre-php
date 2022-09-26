@@ -25,6 +25,7 @@
       <ul>
         <li><a href="#errores">Errores en un programa</a></li>
         <li><a href="#mensajes">Mensajes de error</a></li>
+        <li><a href="#fatal-errors">Fatal errors</a></li>
         <li><a href="#parse-errors">Parse errors</a></li>
         <li><a href="#warnings">Warnings</a></li>
         <li><a href="#notices">Notices</a></li>
@@ -84,8 +85,43 @@
     <p>Por supuesto, que un programa no genere mensajes de error no significa que el programa funcione correctamente, pero si genera mensajes de error probablemente no funcionará correctamente.</p>
   </section>
 
+  <section id="fatal-errors">
+    <h2>Errores fatales en tiempo de ejecución (E_ERROR: Fatal run-time errors)</h2>
+
+    <p>Los errores fatales son errores que impiden y detienen la ejecución del programa.</p>
+
+    <ul>
+      <li>Excepción no capturada
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$numero = 0;
+$resultado = 1 / $numero;
+print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <p><b>Fatal error</b>:  Uncaught DivisionByZeroError: Division by zero in ejemplo.php:3
+              Stack trace:
+              #0 {main}
+                thrown in <b>ejemplo.php</b> on line <b>3</b><br />
+            </p>
+          </div>
+        </div>
+
+        <p>En este caso, el motivo del aviso es que se intenta realizar un cálculo matemático imposible (dividir entre cero).</p>
+      </li>
+    </ul>
+  </section>
+
   <section id="parse-errors">
-    <h2>Errores sintácticos (Parse errors)</h2>
+    <h2>Errores sintácticos (E_PARSE: Parse errors)</h2>
 
     <p>Un programa está formado por las palabras reservadas del lenguaje, cadenas, variables, constantes o funciones, paréntesis, llaves, corchetes, signos de puntuación, operadores, etc, que además deben sucederse en un orden determinado. Los errores sintácticos se producen cuando el compilador no encuentra los símbolos (tokens) esperados o encuentra otros en su lugar.</p>
 
@@ -205,33 +241,10 @@ print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;\n";
   </section>
 
   <section id="warnings">
-    <h2>Advertencias (Warnings)</h2>
+    <h2>Advertencias (E_WARNING: Warnings)</h2>
 
     <p>Estos avisos indican que se ha producido un error de algún tipo que no impide la ejecución del resto del programa, aunque seguramente el programa no producirá el resultado esperado.</p>
     <ul>
-      <li>división por cero
-
-        <div class="filaflex">
-          <div class="icono-ok">
-            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
-          </div>
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$numero = 0;
-$resultado = 1 / $numero;
-print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-html">
-            <p><b>Warning</b>: Division by zero in <b>ejemplo.php</b> on line <b>3</b><br> Resultado:
-            </p>
-          </div>
-        </div>
-
-        <p>En este caso, el motivo del aviso es que se intenta realizar un cálculo matemático imposible (dividir entre cero).</p>
-      </li>
       <li>uso de cabeceras después de escribir texto
 
         <div class="filaflex">
@@ -259,7 +272,7 @@ exit;
   </section>
 
   <section id="notices">
-    <h2>Avisos (Notices)</h2>
+    <h2>Avisos (E_NOTICE: Notices)</h2>
 
     <p>Los avisos no impiden la ejecución de un programa, aunque seguramente el programa no producirá el resultado esperado.</p>
     <ul>
@@ -310,7 +323,7 @@ print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
   </section>
 
   <section id="deprecated">
-    <h2>Obsolescencias (Strict / Deprecated)</h2>
+    <h2>Obsolescencias (E_STRICT: Strict / E_DEPRECATED: Deprecated)</h2>
 
     <ul>
       <li>Constantes insensibles a mayúsculas/minúsculas
@@ -327,7 +340,7 @@ define("TEST", 99.9, true);
 </pre>
           </div>
           <div class="resultado-html">
-            <b>Deprecated</b>:  define(): Declaration of case-insensitive constants is deprecated in <b>ejemplo.php</b> on line <b>3</b>
+            <b>Deprecated</b>: define(): Declaration of case-insensitive constants is deprecated in <b>ejemplo.php</b> on line <b>3</b>
           </div>
         </div>
 
@@ -337,7 +350,7 @@ define("TEST", 99.9, true);
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
