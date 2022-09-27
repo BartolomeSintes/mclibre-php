@@ -3,9 +3,9 @@
  * Ejemplo de ejercicio sin formulario 1 - ejemplo-sf-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-08
+ * @version   2022-09-26
  * @link      https://www.mclibre.org
  *
 *  This program is free software: you can redistribute it and/or modify
@@ -47,12 +47,12 @@ $color1 = rand(0, 360);
 $color2 = rand(0, 360);
 
 print "      <tr>\n";
-print "        <th>Color: hsl($color1, 100%, 50%)</th>\n";
-print "        <th>Color: hsl($color2, 100%, 50%)</th>\n";
+print "        <th>Color: hwb($color1 20% 0%)</th>\n";
+print "        <th>Color: hwb($color2 20% 0%)</th>\n";
 print "      </tr>\n";
 print "      <tr>\n";
-print "        <td style=\"height: 50px; background-color: hsl($color1, 100%, 50%)\"></td>\n";
-print "        <td style=\"background-color: hsl($color2, 100%, 50%)\"></td>\n";
+print "        <td style=\"height: 50px; background-color: hwb($color1 20% 0%)\"></td>\n";
+print "        <td style=\"background-color: hwb($color2 20% 0%)\"></td>\n";
 print "      </tr>\n";
 ?>
     </tbody>
@@ -61,7 +61,7 @@ print "      </tr>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-08">8 de noviembre de 2018</time>
+      <time datetime="2022-09-26">26 de septiembre de 2022</time>
     </p>
 
     <p class="licencia">
