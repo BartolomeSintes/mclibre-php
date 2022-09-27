@@ -1,7 +1,3 @@
-<?php
-require_once "biblioteca.php";
-header("Content-type: text/css");
-?>
 /* PROGRAMACION WEB EN PHP                  */
 /* Bartolome Sintes Marco                   */
 /* https://www.mclibre.org                  */
@@ -13,11 +9,15 @@ header("Content-type: text/css");
 
 /* Esta parte es comun a todos los ejercicios proyectos */
 
+:root {
+    --main-color: 27;
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
-    background-color: hwb(<?= COLOR ?>, 90%, 5%);
+    background-color: hwb(var(--main-color) 90% 5%);
     color: black;
     font-family: sans-serif;
 }
@@ -25,14 +25,14 @@ body {
 h1 {
     margin: 0;
     padding: 5px 20px;
-    background-color: hwb(<?= COLOR ?>, 30%, 5%);
+    background-color: hwb(var(--main-color) 30% 5%);
     color: white;
     text-transform: uppercase;
 }
 
 nav {
     margin: 0;
-    background-color: hwb(<?= COLOR ?>, 50%, 5%);
+    background-color: hwb(var(--main-color) 50% 5%);
     color: white;
 }
 
@@ -48,7 +48,7 @@ nav li {
 }
 
 nav a {
-    background-color: hwb(<?= COLOR ?>, 50%, 5%);
+    background-color: hwb(var(--main-color) 50% 5%);
     color: white;
     font-weight: bold;
 }
@@ -87,7 +87,7 @@ table.conborde th {
 
 thead tr,
 table.franjas tbody tr:nth-child(even) {
-    background-color: hwb(<?= COLOR ?>, 70%, 5%);
+    background-color: hwb(var(--main-color) 70% 5%);
     color: black;
 }
 
@@ -108,3 +108,41 @@ footer cite {
 }
 
 /* Esta parte es especifica de este proyecto */
+
+div.discu {
+    border: black 2px solid;
+    margin: 10px 30px;
+}
+
+h2 {
+    background-color: #F6CF8F;
+    color: white;
+    font-weight: normal;
+    font-size: 120%;
+    margin: 0px;
+    padding: 0px 10px;
+}
+
+div.discu p {
+    margin: 5px 10px;
+}
+
+div.discu p.dis_aut {
+    background-color: #F7D7A2;
+    color: black;
+    margin: 0px;
+    padding: 3px 10px;
+}
+
+div.discu p.int_aut {
+    background-color: #F7D7A2;
+    border-top: black 1px solid;
+    color: black;
+    margin: 0px;
+    padding: 3px 10px;
+}
+
+div.discu a {
+    background-color: #F7D7A2;
+    color: black;
+}
