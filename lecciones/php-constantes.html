@@ -29,8 +29,10 @@
           <ul>
             <li><a href="#lista">Lista de constantes</a></li>
             <li><a href="#inf">INF </a></li>
-            <li><a href="#phpintmax">PHP_INT_MAX</a></li>
-            <li><a href="#phpintsize">PHP_INT_SIZE</a></li>
+            <li><a href="#php-int-size">PHP_INT_SIZE</a></li>
+            <li><a href="#php-int-max">PHP_INT_MAX / MIN</a></li>
+            <li><a href="#php-float-max">PHP_FLOAT_MAX / MIN</a></li>
+            <li><a href="#php-float-max">PHP_FLOAT_EPSILON / DIG</a></li>
           </ul>
         </li>
       </ul>
@@ -275,8 +277,8 @@ print "&lt;p&gt;El valor de pi es " . Constantes::PI . "&lt;/p&gt;\n";
     <ul>
       <li><a href="#lista">Lista completa de constantes predefinidas</a></li>
       <li><a href="#inf">INF </a></li>
-      <li><a href="#phpintmax">PHP_INT_MAX</a></li>
-      <li><a href="#phpintsize">PHP_INT_SIZE</a></li>
+      <li><a href="#php-int-max">PHP_INT_MAX</a></li>
+      <li><a href="#php-int-size">PHP_INT_SIZE</a></li>
     </ul>
 
     <section id="lista">
@@ -315,136 +317,179 @@ print "&lt;/pre&gt;\n";
     <section id="inf">
       <h3>INF </h3>
 
-      <p>La constante INF representa el infinito, es decir, cualquier número demasiado grande (positivo o negativo) para poderse guardar en una variable decimal.</p>
+      <p>La constante <a href="https://www.php.net/manual/en/math.constants.php#constant.inf"><span class="php.con">INF</span></a> representa el infinito, es decir, cualquier número demasiado grande (positivo o negativo) para poderse guardar en una variable decimal.</p>
     </section>
 
-    <section id="phpintmax">
-      <h3>PHP_INT_MAX</h3>
 
-      <p>PHP_INT_MAX es el valor del mayor entero que se puede guardar en una variable de tipo entero.</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
 <code class="language-php">&lt;?php
-$maximo = PHP_INT_MAX;
-print "&lt;p&gt;El mayor entero que se puede guardar \n";
-print "en una variable entera es $maximo&lt;/p&gt;\n";
+print "&lt;p&gt;\n";
+print "  &lt;strong&gt;Números enteros:&lt;/strong&gt;&lt;br&gt;\n";
+print "  Valor mínimo: " . PHP_INT_MIN . "&lt;br&gt;\n";
+print "&lt;/p&gt;\n";
+print "&lt;p&gt;\n";
+print "  &lt;strong&gt;Números decimales:&lt;/strong&gt;&lt;br&gt;\n";
+print "  Valor máximo: " . PHP_FLOAT_MAX . "&lt;br&gt;\n";
+print "  Valor mínimo: " . PHP_FLOAT_MIN . "&lt;br&gt;\n";
+print "  Valor más próximo a cero: " . PHP_FLOAT_EPSILON . "&lt;br&gt;\n";
+print "  Precisión: " . PHP_FLOAT_DIG . " decimales&lt;br&gt;\n";
+print "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;p&gt;El mayor entero que se puede guardar
-en una variable entera es 2147483647&lt;/p&gt;</code>
-</pre>
-        </div>
       </div>
-
-      <p>Ese valor depende del tamaño en bytes que ocupan las variables en la memoria, que depende del microprocesador, del sistema operativo y de la versión de PHP. En sistemas de 32 bits, los enteros suelen ocupar 4 bytes (32 bits). Como en una variable de tipo entero se guardan tanto valores positivos como negativos (utilizando la notación <a href="https://es.wikipedia.org/wiki/Complemento_a_dos">complemento a dos</a> para los negativos), el valor máximo suele ser <strong>2.147.483.647</strong> (2<sup>31</sup> - 1). En sistemas de 64 bits, los enteros suelen ocupar 8 bytes (64 bits) y el valor máximo suele ser <strong>9.223.372.036.854.775.807</strong> (2<sup>63</sup> - 1)</p>
-
-      <p><strong>Nota</strong>: En las versiones de PHP de 64 bits para Windows anteriores a PHP 7, los enteros tenían 4 bytes de tamaño. A partir de PHP 7, en las versiones de PHP de 64 bits para Windows los enteros tiene un tamaño de 8 bytes.</p>
-
-      <hr class="corta">
-
-      <h4>Notación complemento a dos</h4>
-
-      <p>En un byte (8 bits) se pueden almacenar 256 (2<sup>8</sup>) valores diferentes. Eso permite almacenar por ejemplo, desde el valor 0 hasta el 255. Para almacenar tanto números negativos como positivos, se utiliza la notación <a href="https://es.wikipedia.org/wiki/Complemento_a_dos">complemento a dos</a>, en la que la primera mitad de los valores representan los valores positivos (desde 0 hasta 127) y la segunda mitad de los valores representan los valores negativos (desde -128 hasta -1), como indica la tabla siguiente:</p>
-
-      <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <td>El valor ...</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>...</td>
-            <td>126</td>
-            <td>127</td>
-            <td>128</td>
-            <td>129</td>
-            <td>...</td>
-            <td>253</td>
-            <td>254</td>
-            <td>255</td>
-          </tr>
-          <tr>
-            <td>... representa el entero ...</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>...</td>
-            <td>126</td>
-            <td>127</td>
-            <td>-128</td>
-            <td>-127</td>
-            <td>..</td>
-            <td>-3</td>
-            <td>-2</td>
-            <td>-1</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>En cuatro bytes (32 bits) se pueden almacenar 4.294.967.296 (2<sup>32</sup>)valores distintos. En notación complemento a dos se pueden representar desde el valor -2.147.483.648 hasta 2.147.483.647.</p>
-
-      <p>Si se intenta guardar un número demasiado grande positivo, el resultado será seguramente incorrecto. En el ejemplo siguiente se fuerza a PHP a guardar como entero el valor siguiente al máximo valor posible. El valor se guarda, pero cuando se utiliza, PHP lo interpreta como negativo.</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$maximo = PHP_INT_MAX;
-print "&lt;p&gt;El mayor entero que se puede guardar \n";
-print "en una variable entera es $maximo&lt;p&gt;\n";
-$demasiado = (int)($maximo + 1);
-print "&lt;p&gt;Si se intenta guardar 1 más, \n";
-print "el resultado es $demasiado&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;p&gt;El mayor entero que se puede guardar
-en una variable entera es 2147483647&lt;/p&gt;
-&lt;p&gt;Si se intenta guardar 1 más,
-el resultado es -2147483648&lt;/p&gt;</code>
-</pre>
-        </div>
+      <iframe src="ejemplos/operaciones-aritmeticas-1.php" style="height: 21em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/operaciones-aritmeticas-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
-    </section>
+    </div>
 
-    <section id="phpintsize">
+    <section id="php-int-size">
       <h3>PHP_INT_SIZE</h3>
 
-      <p>PHP_INT_SIZE es el tamaño en bytes de las variables de tipo entero, que depende del ordenador, del sistema operativo y de la versión de PHP. En sistemas de 32 bits suele ser 4 bytes y en sistema de 64 bits suele ser 8 bytes.</p>
+      <p><a href="https://www.php.net/manual/en/reserved.constants.php#constant.php-int-size" class="separa-subrayado">PHP_INT_SIZE</a> es el tamaño en bytes de las variables de tipo entero, que depende del ordenador, del sistema operativo y de la versión de PHP. En sistemas de 32 bits suele ser 4 bytes y en sistema de 64 bits suele ser 8 bytes.</p>
 
       <div class="filaflex">
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-$tamano = PHP_INT_SIZE;
-print "&lt;p&gt;Los enteros se guardan utilizando $tamano bytes&lt;/p&gt;";
+print "&lt;p&gt;En este servidor los enteros ocupan " . PHP_INT_SIZE . " bytes.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;Los enteros se guardan utilizando 4 bytes&lt;/p&gt;</code></pre>
+        <iframe src="ejemplos/constantes-predefinidas-php-int-size.php" style="height: 6em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/constantes-predefinidas-php-int-size.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
 
       <p><strong>Nota</strong>: En las versiones de PHP de 64 bits para Windows anteriores a PHP 7, los enteros tenían 4 bytes de tamaño. A partir de PHP 7, en las versiones de PHP de 64 bits para Windows los enteros tiene un tamaño de 8 bytes.</p>
+    </section>
+
+    <section id="php-int-max">
+      <h3>PHP_INT_MAX y PHP_INT_MIN</h3>
+
+      <p><a href="https://www.php.net/manual/en/reserved.constants.php#constant.php-int-max" class="separa-subrayado">PHP_INT_MAX</a> es el mayor entero que se puede guardar en una variable de tipo entero.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;En este servidor el mayor entero posible es  " . PHP_INT_MAX . ".&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <iframe src="ejemplos/constantes-predefinidas-php-int-max.php" style="height: 6em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/constantes-predefinidas-php-int-max.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+
+      <p><a href="https://www.php.net/manual/en/reserved.constants.php#constant.php-int-min" class="separa-subrayado">PHP_INT_MIN</a> es el menor entero que se puede guardar en una variable de tipo entero.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;En este servidor el menor entero posible es  " . PHP_INT_MIN . ".&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <iframe src="ejemplos/constantes-predefinidas-php-int-min.php" style="height: 6em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/constantes-predefinidas-php-int-min.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+
+      <p>Estos valores dependen del tamaño en bytes que ocupan las variables en la memoria, que a su vez depende del microprocesador, del sistema operativo y de la versión de PHP. En una variable de tipo entero se guardan tanto valores positivos como negativos (utilizando la notación <a href="https://es.wikipedia.org/wiki/Complemento_a_dos">complemento a dos</a> para los negativos).</p>
+      <ul>
+        <li>En sistemas de 32 bits, los enteros suelen ocupar 4 bytes (32 bits). El valor máximo suele ser <strong>2.147.483.647</strong> (2<sup>31</sup> - 1) y el valor mínimo suele ser <strong>-2.147.483.648</strong> (-2<sup>31</sup>). </li>
+        <li>En sistemas de 64 bits, los enteros suelen ocupar 8 bytes (64 bits) y el valor máximo suele ser <strong>9.223.372.036.854.775.807</strong> (2<sup>63</sup> - 1) y el valor mínimo suele ser <strong>-9.223.372.036.854.775.808</strong> (-2<sup>63</sup>).</li>
+      </ul>
+
+      <p><strong>Nota</strong>: En las versiones de PHP de 64 bits para Windows anteriores a PHP 7, los enteros tenían 4 bytes de tamaño. A partir de PHP 7, en las versiones de PHP de 64 bits para Windows los enteros tiene un tamaño de 8 bytes.</p>
+    </section>
+
+    <section id="php-float-max">
+      <h3>PHP_FLOAT_MAX y PHP_FLOAT_MIN</h3>
+
+      <p><a href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-max" class="separa-subrayado">PHP_FLOAT_MAX</a> es el mayor decimal que se puede guardar en una variable de tipo decimal.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;En este servidor el mayor decimal posible es  " . PHP_FLOAT_MAX . ".&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <iframe src="ejemplos/constantes-predefinidas-php-float-max.php" style="height: 6em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/constantes-predefinidas-php-float-max.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+
+      <p><a href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-min" class="separa-subrayado">PHP_FLOAT_MIN</a> es el menor decimal que se puede guardar en una variable de tipo decimal.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;En este servidor el menor decimal posible es  " . PHP_FLOAT_MIN . ".&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <iframe src="ejemplos/constantes-predefinidas-php-float-min.php" style="height: 6em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/constantes-predefinidas-php-float-min.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+
+      <p>Estos valores corresponden al formato <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64">IEEE 754 64 bits</a> que utiliza PHP.</p>
+    </section>
+
+    <section id="php-float-epsilo">
+      <h3>PHP_FLOAT_EPSILON y PHP_FLOAT_DIG</h3>
+
+      <p><a href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-epsilon" class="separa-subrayado">PHP_FLOAT_EPSILON</a> es el mayor decimal que se puede guardar en una variable de tipo decimal.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;En este servidor el decimal más próximo a cero posible es  " . PHP_FLOAT_EPSILON . ".&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <iframe src="ejemplos/constantes-predefinidas-php-float-epsilon.php" style="height: 6em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/constantes-predefinidas-php-float-epsilon.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+
+      <p><a href="https://www.php.net/manual/en/reserved.constants.php#constant.php-float-dig" class="separa-subrayado">PHP_FLOAT_DIG</a> es el menor decimal que se puede guardar en una variable de tipo decimal.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;En este servidor un decimal se puede redondear " . PHP_FLOAT_DIG . " cifras sin pérdidas.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <iframe src="ejemplos/constantes-predefinidas-php-float-dig.php" style="height: 6em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/constantes-predefinidas-php-float-dig.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        </div>
+      </div>
+
+      <p>Estos valores corresponden al formato <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64">IEEE 754 64 bits</a> que utiliza PHP.</p>
     </section>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de diciembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
