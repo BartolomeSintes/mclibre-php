@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Temas obsoletos. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Cambios en el lenguaje. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../varios/php.css" title="mclibre">
   <link rel="icon" href="../varios/favicon.svg">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>Temas obsoletos</h1>
+  <h1>Cambios en el lenguaje</h1>
 
   <nav>
     <p>
@@ -20,7 +20,7 @@
     </p>
 
     <div class="toc">
-      <h2>Temas obsoletos</h2>
+      <h2>Cambios en el lenguaje</h2>
 
       <ul>
         <li><a href="#php-7-1">PHP 7.1 (2016)</a></li>
@@ -32,14 +32,18 @@
     </div>
   </nav>
 
-  <p>El lenguaje PHP ha ido evolucionando a lo largo de su existencia. En algunos casos, las nuevas características o las nuevas notaciones deajn obsoletos las antiguas. En esta lección se comentan los cambios que he ido incorporando a los apuntes, ordenadas de acuerdo con la versión de PHP en la que se introdujeron.</p>
+  <p>El lenguaje PHP ha ido evolucionando a lo largo de los años. En algunos casos, las nuevas características o las nuevas notaciones dejan obsoletos las antiguas. En esta lección se comentan los cambios que he ido incorporando a los apuntes, ordenados de acuerdo con la versión de PHP en la que se introdujeron.</p>
+
+  <p>Manual de PHP: <a href="https://www.php.net/manual/en/appendices.php">Apéndices</a></p>
 
   <section id="php-7-1">
     <h2>PHP 7.1 (diciembre de 2016)</h2>
 
+    <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration71.php">Cambios en PHP 7.1</a></p>
+
     <ul>
       <li>Desde PHP 7.1, la función <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> es un alias de la función <a href="https://www.php.net/manual/en/function.mt-rand.php"><span class="php-fun">mt_rand()</span></a>, por lo que es indiferente usar una u otra. En versiones anteriores eran funciones distintas y la función <span class="php-fun">mt_rand()</span> era más rápida y estaba basada en el algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a>. [<a href="https://www.php.net/manual/en/migration71.incompatible.php#migration71.incompatible.rand-srand-aliases">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">mt_rand()</span> y utilizo siempre la función <span class="php-fun">rand()</span>.
-        <p>Consecuentemente, desde PHP 7.1 las funciones <a href="https://www.php.net/manual/en/function.getrandmax.php"><span class="php-fun">getrandmax()</span></a> y <a href="https://www.php.net/manual/en/function.mt-getrandmax.php"><span class="php-fun">mt_getrandmax()</span></a>, que devolvían el máximo valor que podía obtenerse con las funciones <span class="php-fun">rand()</span> y <span class="php-fun">mt_rand()</span> al ser llamadas sin argumentos, devuelven ahora el mismo valor, que coincide con <a href="php-constantes.html#phpintmax">PHP_INT_MAX</a>.</p>
+        <p>Consecuentemente, desde PHP 7.1 las funciones <a href="https://www.php.net/manual/en/function.getrandmax.php"><span class="php-fun">getrandmax()</span></a> y <a href="https://www.php.net/manual/en/function.mt-getrandmax.php"><span class="php-fun">mt_getrandmax()</span></a>, que devolvían el máximo valor que podía obtenerse con las funciones <span class="php-fun">rand()</span> y <span class="php-fun">mt_rand()</span> al ser llamadas sin argumentos, devuelven ahora el mismo valor, que coincide con <a href="php-constantes.html#php-int-max">PHP_INT_MAX</a>.</p>
       </li>
 
     </ul>
@@ -47,6 +51,8 @@
 
   <section id="php-7-0">
     <h2>PHP 7.0 (diciembre de 2015)</h2>
+
+    <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration70.php">Cambios en PHP 7.0</a></p>
 
     <ul>
       <li>Desde PHP 5.4, la división por cero ya no genera un error E_WARNINIG, sino una excepción. En caso de que la excepción no sea capturada, se genera un error E_ERROR.</li>
@@ -58,6 +64,8 @@
   <section id="php-5-6">
     <h2>PHP 5.6 (agosto de 2014)</h2>
 
+    <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration56.php">Cambios en PHP 5.6</a></p>
+
     <ul>
       <li>En PHP 5.6 se introdujo la notación <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-ope">**</span></a> para la operación matemática potenciación. En versiones anteriores, PHP solo disponía de la función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow()</span></a>, que sigue existiendo en versiones posteriores. [<a href="https://www.php.net/manual/en/migration56.new-features.php#migration56.new-features.exponentiation">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">pow()</span> y utilizo siempre el operador <span class="php-ope">**</span>.</li>
     </ul>
@@ -65,6 +73,8 @@
 
   <section id="php-5-4">
     <h2>PHP 5.4 (marzo de 2012)</h2>
+
+    <p>Manual de PHP: <a href="https://web.archive.org/web/20200209090016/https://www.php.net/manual/en/migration54.php">Cambios en PHP 5.4</a> [copia en archive.org]</p>
 
     <ul>
       <li><a href="php-cambios-matrices.html">Matrices</a>
