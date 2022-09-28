@@ -23,14 +23,14 @@
       <h2>Operaciones aritméticas</h2>
 
       <ul>
-        <li><a href="#numeros">Números</a></li>
-        <li><a href="#operadores">Operadores aritméticos</a></li>
+        <li><a href="#tipos-numericos">Tipos numéricos</a></li>
+        <li><a href="#operaciones-basicas">Operaciones básicas</a></li>
+        <li><a href="#cociente-resto">Cociente y resto división</a></li>
+        <li><a href="#potencias">Potencias y raíces</a></li>
         <li><a href="#incremento">Incremento y decremento</a></li>
-        <li><a href="#resto">Resto de una división</a></li>
         <li><a href="#parentesis">Paréntesis</a></li>
         <li><a href="#combinados">Operadores combinados</a></li>
         <li><a href="#redondear">Redondear un número</a></li>
-        <li><a href="#potencias">Potencias y raíces</a></li>
         <li><a href="#maxmin">Máximo y mínimo</a></li>
         <li><a href="#formatear">Formatear un número</a></li>
         <li><a href="#aleatorios">Números aleatorios</a></li>
@@ -38,14 +38,24 @@
     </div>
   </nav>
 
-  <section id="numeros">
-    <h2>Números</h2>
+  <section id="tipos-numericos">
+    <h2>Tipos de datos numéricos: enteros y decimales</h2>
 
-    <p>Los números decimales se escriben con punto (.), no con coma (,).</p>
+    <p>PHP distingue entre números enteros (<i>integer</i>) y decimales (<i>float</i>). Al escribir un número decimal, el separador entre la parte entera y la parte decimal es el punto (.), no la coma (,).</p>
+
+    <p>En PHP, los valores de enteros y decimales no pueden ser arbitrariamente grandes. Los valores máximos dependen de la arquitectura del procesador (32 o 64 bits), del sistema operativo y de la versión de PHP</p>
+    <ul>
+      <li>En el caso de los enteros, en un sistema de 32 bits, el valor máximo de un entero es 2147483647 (2<sup>31</sup>-1). En un sistema de 64 bits, el valor máximo de un entero es 9223372036854775807 (2<sup>63</sup>-1).</li>
+      <li>En el caso de los decimales, PHP usa el formato <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64">IEEE 754 64 bits</a> y el valor máximo es 1.7976931348623E+308.</li>
+    </ul>
+
+    <p>Estos valores máximos (y otros relacionados) se guardan en varias constantes predefinidas (<a class="php-con">PHP_INT_MAX</a>, <a class="php-con">PHP_FLOAT_MAX</a>, etc), como se comenta en la lección <a href="php-constantes.html#php-int-max">Constantes y constantes predefinidas</a>.</p>
+
+    <p>Si se necesita trabajar con enteros mayores que los valores máximos, es necesario utilizar las <a href="https://www.php.net/manual/en/book.bc.php">funciones bcmath</a>.</p>
   </section>
 
-  <section id="operadores">
-    <h2>Operadores aritméticos</h2>
+  <section id="operaciones-basicas">
+    <h2>Operaciones básicas</h2>
 
     <p>Los operadores aritméticos básicos son los siguientes:</p>
 
@@ -88,20 +98,191 @@
           <td>Potenciación</td>
           <td>$a elevado a $b.</td>
         </tr>
+      </tbody>
+    </table>
+
+    <p>En general, el resultado de una operación es un número decimal si al menos uno de los números implicados es decimal. El resultado de una operación es entero solo cuando todos los números implicados son enteros, excepto si se trata de una división que da un resultado decimal o si el resultado es demasiado grande para representarlo mediante un entero.</p>
+
+    <p>Si el resultado de un cálculo con números enteros es demasiado grande para poderse representar con un entero, PHP lo convierte automáticamente en decimal, perdiéndose precisión.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;PHP_INT_MAX = " . PHP_INT_MAX . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;PHP_INT_MAX - 1 = " . PHP_INT_MAX - 1 . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;PHP_INT_MAX + 1 = " . PHP_INT_MAX + 1 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/operaciones-aritmeticas-1.php" style="height: 10em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/operaciones-aritmeticas-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Si el resultado de un cálculo con números decimales es demasiado grande para poderse representar con un decimal, PHP lo convierte automáticamente en la constante INF.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;PHP_FLOAT_MAX = " . PHP_FLOAT_MAX . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;PHP_FLOAT_MAX - 1 = " . PHP_FLOAT_MAX - 1E292 . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;PHP_FLOAT_MAX + 1 = " . PHP_FLOAT_MAX + 1E292 . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/operaciones-aritmeticas-2.php" style="height: 10em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/operaciones-aritmeticas-2.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="cociente-resto">
+    <h2>Cociente y resto de una división</h2>
+
+    <p>El cociente y resto de una división están relacionados con el dividendo y divisor mediante la fórmula:</p>
+
+    <p>
+      <img src="../img/matematicas/mates-cociente-resto.svg" alt="Cociente y resto de una división" width="541" height="283">
+    </p>
+
+    <table class="tabla-con-borde">
+      <thead>
+        <tr>
+          <th>Ejemplo</th>
+          <th>Nombre</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>$a % $b</td>
-          <td>Módulo</td>
+          <td>Módulo / Resto</td>
           <td>Resto de $a dividido por $b.
-
-            <p><strong>Cuidado</strong>: Los números se convierten a enteros antes de efectuar el cálculo. Por ejemplo, 5 % 2.5 da como resultado 1 y no 0 porque calcula el resto de 5 entre 2, no de 5 entre 2.5.</p>
+            <ul>
+              <li>Si algún número es decimal, se trunca a entero antes de efectuar el cálculo. Por ejemplo, 5 % 2.5 da como resultado 1 y no 0 porque calcula el resto de 5 entre 2, no el resto de 5 entre 2.5.</li>
+              <li>El resultado tiene el mismo signo que el dividendo. Por ejemplo, -5 % 2 da como resultado -1, pero 5 % -2 da como resultado 1.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>intdiv($a, $b)</td>
+          <td>Cociente</td>
+          <td>Cociente de $a dividido por $b.
+            <ul>
+              <li>No se trata de un operador, sino de una función, pero se incluye aquí por tratarse de una operación básica.</li>
+              <li>Si algún número es decimal, se trunca a entero antes de efectuar el cálculo. Por ejemplo, intdiv(5, 2.7) da como resultado 1 y no 2.3 porque calcula el resto de 5 entre 2, no el resto de 5 entre 2.7.</li>
+            </ul>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <p>Hay que tener en cuenta que en PHP un entero no puede ser arbitrariamente grande. A partir de cierto valor, que depende del sistema operativo, PHP convierte automáticamente los enteros en float, perdiéndose precisión. En un sistema de 32 bits, el valor máximo es 2147483647 (2<sup>31</sup>-1).</p>
+    <p><strong>Nota</strong>: Como se comenta en la lección <a href="php-varios-1.html#division-enteros">Varios</a>, el cociente y el divisor de una división en la que intervienen números enteros negativos no se calcula de la misma manera en los distintos lenguajes de programación.</p>
 
-    <p>Si se necesita trabajar con enteros mayores, es necesario utilizar las <a href="https://www.php.net/manual/en/book.bc.php">funciones bcmath</a>.</p>
+    <hr class="corta">
+
+    <p>La función <a href="https://www.php.net/manual/en/function.fmod.php"><span class="php-fun">fmod</span></a> calcula el resto de una división con números decimales</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;El resto de 17 dividido entre 3.1 es " . fmod(17, 3.1) . "&lt;/p&gt;\n";
+?&gt;</code>
+  </pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3.1 es 1.5&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="potencias">
+    <h2>Potencias y raíces</h2>
+
+    <p></p>
+
+    <p>El operador <a href="https://www.php.net/manual/en/language.operators.arithmetic.php">**</a> calcula potencias y raíces. PHP también dispone de la función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow(x, y)</span></a> para calcular potencias y raíces.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . 2 ** 3 . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . pow(2, 3) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado">
+        <p>2<sup>3</sup> = 8</p>
+
+        <p>2<sup>3</sup> = 8</p>
+      </div>
+    </div>
+
+    <p>Tanto el operador como la función permiten calcular raíces, teniendo en cuenta que una raíz n-ésima es una potencia 1/n.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;La raíz cuadrada de 25 es " . 25 ** (1 / 2) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cuadrada de 25 es " . 25 ** 0.5 . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cuadrada de 25 es " . pow(25, 1 / 2) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cuadrada de 25 es " . pow(25, 0.5) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cúbica de 1000 es " . 1000 ** (1 / 3) . "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;La raíz cúbica de 1000 es " . pow(1000, 1 / 3) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
+
+&lt;p&gt;La raíz cúbica de 1000 es 10&lt;/p&gt;
+
+&lt;p&gt;La raíz cúbica de 1000 es 10&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>En el caso de las raíces cuadradas, se puede utilizar también la función <a href="https://www.php.net/manual/en/function.sqrt.php"><span class="php-fun">sqrt(x)</span></a>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;La raíz cuadrada de 25 es " . sqrt(25) . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
   </section>
 
   <section id="incremento">
@@ -216,46 +397,6 @@ print "&lt;p&gt;" . ++$valor . "&lt;/p&gt;\n";
         <pre><code class="language-html">&lt;p&gt;b0a&lt;/p&gt;</code></pre>
       </div>
     </div>
-  </section>
-
-  <section id="resto">
-    <h2>Resto de una división</h2>
-
-    <p>El operador <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-fun">%</span></a> calcula el resto de una división entera</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;El resto de 17 dividido entre 3 es " . 17 % 3 . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3 es 2&lt;/p&gt;</code></pre>
-      </div>
-    </div>
-
-    <hr class="corta">
-
-    <p>La función <a href="https://www.php.net/manual/en/function.fmod.php"><span class="php-fun">fmod</span></a> calcula el resto de una división con números decimales</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;El resto de 17 dividido entre 3.1 es " . fmod(17, 3.1) . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;El resto de 17 dividido entre 3.1 es 1.5&lt;/p&gt;</code></pre>
-      </div>
-    </div>
-
-    <p>Hay que tener en cuenta que en PHP un entero no puede ser arbitrariamente grande. A partir de cierto valor, que depende del sistema operativo, PHP convierte automáticamente los enteros en float, perdiéndose precisión. En un sistema de 32 bits, el valor máximo es 2147483647 (2<sup>31</sup>-1).</p>
-
-    <p>Si se necesita trabajar con enteros mayores, es necesario utilizar las <a href="https://www.php.net/manual/en/book.bc.php">funciones bcmath</a>.</p>
   </section>
 
   <section id="parentesis">
@@ -442,85 +583,6 @@ print "&lt;p&gt;-2.3 se redondea con ceil() a " . ceil(-2.3) . "&lt;/p&gt;\n";
     </div>
   </section>
 
-  <section id="potencias">
-    <h2>Potencias y raíces</h2>
-
-    <p></p>
-
-    <p>El operador <a href="https://www.php.net/manual/en/language.operators.arithmetic.php">**</a> calcula potencias y raíces. PHP también dispone de la función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow(x, y)</span></a> para calcular potencias y raíces.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . 2 ** 3 . "&lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; = " . pow(2, 3) . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado">
-<p>2<sup>3</sup> = 8</p>
-
-<p>2<sup>3</sup> = 8</p>
-      </div>
-    </div>
-
-    <p>Tanto el operador como la función permiten calcular raíces, teniendo en cuenta que una raíz n-ésima es una potencia 1/n.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;La raíz cuadrada de 25 es " . 25 ** (1 / 2) . "&lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;La raíz cuadrada de 25 es " . 25 ** 0.5 . "&lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;La raíz cuadrada de 25 es " . pow(25, 1 / 2) . "&lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;La raíz cuadrada de 25 es " . pow(25, 0.5) . "&lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;La raíz cúbica de 1000 es " . 1000 ** (1 / 3) . "&lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;La raíz cúbica de 1000 es " . pow(1000, 1 / 3) . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre>
-<code class="language-html">&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
-
-&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
-
-&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
-
-&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;
-
-&lt;p&gt;La raíz cúbica de 1000 es 10&lt;/p&gt;
-
-&lt;p&gt;La raíz cúbica de 1000 es 10&lt;/p&gt;</code>
-</pre>
-      </div>
-    </div>
-
-    <p>En el caso de las raíces cuadradas, se puede utilizar también la  función <a href="https://www.php.net/manual/en/function.sqrt.php"><span class="php-fun">sqrt(x)</span></a>.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;La raíz cuadrada de 25 es " . sqrt(25) . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-codigo">
-        <pre>
-<code class="language-html">&lt;p&gt;La raíz cuadrada de 25 es 5&lt;/p&gt;</code>
-</pre>
-      </div>
-    </div>
-  </section>
-
   <section id="maxmin">
     <h2>Máximo y mínimo</h2>
 
@@ -665,7 +727,7 @@ print "&lt;p&gt;" . rand(-20, -10) . "&lt;/p&gt;\n";
       </div>
     </div>
 
-    <p>Si se llama a la función sin argumentos, esta devuelve un número entero aleatorio entre 0 y 2147483647. El valor 2147483647 (2<sup>31</sup> - 1) se debe a que PHP genera los números aleatorios mediante la versión de 32 bits del algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a> y el valor 2147483647 es el mayor que puede almacenar PHP en una variable entera (véase <a href="php-constantes.html#phpintmax">PHP_INT_MAX</a>).</p>
+    <p>Si se llama a la función sin argumentos, esta devuelve un número entero aleatorio entre 0 y 2147483647. El valor 2147483647 (2<sup>31</sup> - 1) se debe a que PHP genera los números aleatorios mediante la versión de 32 bits del algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a> y el valor 2147483647 es el mayor que puede almacenar PHP en una variable entera (véase <a href="php-constantes.html#php-int-max">PHP_INT_MAX</a>).</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -689,7 +751,7 @@ print "&lt;p&gt;" . rand() . "&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
