@@ -26,6 +26,7 @@
         <li><a href="#print-echo">Diferencias entre print y echo</a></li>
         <li><a href="#controles-ocultos">Uso de controles ocultos</a></li>
         <li><a href="#ampersand">El carácter &amp;</a></li>
+        <li><a href="#division-enteros">División de enteros</a></li>
       </ul>
     </div>
   </nav>
@@ -196,8 +197,88 @@ print "&lt;p&gt;&lt;img src=\"dibujo.php?ancho=100&amp;amp;alto=50\" alt=\"dibuj
     </ul>
   </section>
 
+  <section id="division-enteros">
+    <h2>División de números enteros</h2>
+
+    <p>En Matemáticas, la división de números enteros está definida de manera que <strong>el resto sea siempre positivo</strong>. Así, estos serían en Matemáticas los resultados de cuatro divisiones en los que intervienen enteros positivos y negativos:</p>
+
+    <p class="mcl-svg-figura">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="620" viewBox="0 0 620 100" style="font-size: 30px;">
+        <text x="35" y="35" text-anchor="end">13</text>
+        <text x="90" y="35" text-anchor="end">4</text>
+        <text x="90" y="90" text-anchor="end">3</text>
+        <text x="35" y="90" text-anchor="end">1</text>
+        <line x1="50" y1="0" x2="50" y2="50" stroke-width="2" stroke="black" />
+        <line x1="50" y1="50" x2="100" y2="50" stroke-width="2" stroke="black" />
+
+        <text x="185" y="35" text-anchor="end">13</text>
+        <text x="240" y="35" text-anchor="end">-4</text>
+        <text x="240" y="90" text-anchor="end">-3</text>
+        <text x="185" y="90" text-anchor="end">1</text>
+        <line x1="200" y1="0" x2="200" y2="50" stroke-width="2" stroke="black" />
+        <line x1="200" y1="50" x2="250" y2="50" stroke-width="2" stroke="black" />
+
+        <text x="335" y="35" text-anchor="end">-13</text>
+        <text x="390" y="35" text-anchor="end">4</text>
+        <text x="390" y="90" text-anchor="end">-4</text>
+        <text x="335" y="90" text-anchor="end">3</text>
+        <line x1="350" y1="0" x2="350" y2="50" stroke-width="2" stroke="black" />
+        <line x1="350" y1="50" x2="400" y2="50" stroke-width="2" stroke="black" />
+
+        <text x="485" y="35" text-anchor="end">-13</text>
+        <text x="540" y="35" text-anchor="end">-4</text>
+        <text x="540" y="90" text-anchor="end">4</text>
+        <text x="485" y="90" text-anchor="end">3</text>
+        <line x1="500" y1="0" x2="500" y2="50" stroke-width="2" stroke="black" />
+        <line x1="500" y1="50" x2="550" y2="50" stroke-width="2" stroke="black" />
+      </svg>
+    </p>
+
+    <p>Pero en los lenguajes de programación, la división de números enteros no sigue siempre esa regla.</p>
+
+    <p>En el caso de PHP (y JavaScript), la regla es que <strong>el resto sea del mismo signo que el dividendo</strong>. Así, estos serían en PHP los resultados de las cuatro divisiones del ejemplo anterior, que se obtendrían con los operadores // y %:</p>
+
+    <p class="mcl-svg-figura">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="620" viewBox="0 0 620 100" style="font-size: 30px;">
+        <text x="35" y="35" text-anchor="end">13</text>
+        <text x="90" y="35" text-anchor="end">4</text>
+        <text x="90" y="90" text-anchor="end">3</text>
+        <text x="35" y="90" text-anchor="end">1</text>
+        <line x1="50" y1="0" x2="50" y2="50" stroke-width="2" stroke="black" />
+        <line x1="50" y1="50" x2="100" y2="50" stroke-width="2" stroke="black" />
+
+        <text x="185" y="35" text-anchor="end">13</text>
+        <text x="240" y="35" text-anchor="end">-4</text>
+        <text x="240" y="90" text-anchor="end">-3</text>
+        <text x="185" y="90" text-anchor="end">1</text>
+        <line x1="200" y1="0" x2="200" y2="50" stroke-width="2" stroke="black" />
+        <line x1="200" y1="50" x2="250" y2="50" stroke-width="2" stroke="black" />
+
+        <text x="335" y="35" text-anchor="end">-13</text>
+        <text x="390" y="35" text-anchor="end">4</text>
+        <text x="390" y="90" text-anchor="end">-3</text>
+        <text x="335" y="90" text-anchor="end">-1</text>
+        <line x1="350" y1="0" x2="350" y2="50" stroke-width="2" stroke="black" />
+        <line x1="350" y1="50" x2="400" y2="50" stroke-width="2" stroke="black" />
+
+        <text x="485" y="35" text-anchor="end">-13</text>
+        <text x="540" y="35" text-anchor="end">-4</text>
+        <text x="540" y="90" text-anchor="end">3</text>
+        <text x="485" y="90" text-anchor="end">-1</text>
+        <line x1="500" y1="0" x2="500" y2="50" stroke-width="2" stroke="black" />
+        <line x1="500" y1="50" x2="550" y2="50" stroke-width="2" stroke="black" />
+      </svg>
+    </p>
+
+    <p>Si el dividendo es positivo, el resultado es el mismo, pero si el dividendo es negativo, el resultado es diferente.</p>
+
+    <p>Otros lenguajes siguen otras reglas. Por ejemplo, en Python el resto tiene el mismo signo que el divisor y en otros, como C o C++, el resultado no está definido y depende del compilador.</p>
+
+    <p>Referencia: <a href="https://en.wikipedia.org/wiki/Modulo_operation">Resto de la división de enteros (Wikipedia)</a></p>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de noviembre de 2015</p>
+    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
