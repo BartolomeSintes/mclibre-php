@@ -3,9 +3,9 @@
  * Primeras páginas. Sin formularios.2 - primeras-paginas-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2022-09-28
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
+  <link rel="stylesheet" href="primeras-paginas-2.css" title="Color">
 </head>
 
 <body>
@@ -45,7 +45,7 @@ print "  <p>¡Hola, mundo!</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2022-09-28">28 de septiembre de 2022</time>
     </p>
 
     <p class="licencia">
