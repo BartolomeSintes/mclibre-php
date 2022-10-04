@@ -3,9 +3,9 @@
  * Operaciones aritmeticas 3-2 - operaciones-aritmeticas-03-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2022-10-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -69,9 +69,9 @@ if ($segundos == "") {
 }
 
 if ($segundosOk) {
-    $min = floor($segundos / 60);
+    $min = intdiv($segundos, 60);
     $seg = $segundos % 60;
-    print "  <p>$segundos segundos son $min minutos y $seg segundos</p>\n";
+    print "  <p>$segundos segundos son $min minutos y $seg segundos.</p>\n";
     print "\n";
 }
 ?>
@@ -80,7 +80,7 @@ if ($segundosOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2022-10-04">4 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

@@ -206,9 +206,9 @@ if ($segundos == "") {
 }
 
 if ($segundosOk) {
-    $min = floor($segundos / 60);
+    $min = intdiv($segundos, 60);
     $seg = $segundos % 60;
-    print "  &lt;p&gt;$segundos segundos son $min minutos y $seg segundos&lt;/p&gt;\n";
+    print "  &lt;p&gt;$segundos segundos son $min minutos y $seg segundos.&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -252,10 +252,10 @@ if ($segundos == "") {
 }
 
 if ($segundosOk) {
-    $h = floor($segundos / 3600);
-    $m = floor($segundos % 3600 / 60);
+    $h = intdiv($segundos, 3600);
+    $m = intdiv($segundos % 3600, 60);
     $s = $segundos % 60;
-    print "  &lt;p&gt;$segundos segundos son $h horas, $m minutos y $s segundos&lt;/p&gt;\n";
+    print "  &lt;p&gt;$segundos segundos son $h horas, $m minutos y $s segundos.&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;</code>
@@ -264,7 +264,7 @@ if ($segundosOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de junio de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 4 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

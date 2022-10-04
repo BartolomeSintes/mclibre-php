@@ -3,9 +3,9 @@
  * Convertidor de bytes - convertidor-bytes-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-18
+ * @version   2022-10-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -84,17 +84,17 @@ if ($bytesOk) {
     $bytesOriginal = $bytes;
 
     if ($bytes >= 1024 * 1024 * 1024) {
-        $gb = floor($bytes / (1024 * 1024 * 1024));
+        $gb = intdiv($bytes, 1024 * 1024 * 1024);
         $bytes = $bytes % (1024 * 1024 * 1024);
     }
 
     if ($bytes >= 1024 * 1024) {
-        $mb = floor($bytes / (1024 * 1024));
+        $mb = intdiv($bytes, 1024 * 1024);
         $bytes = $bytes % (1024 * 1024);
     }
 
     if ($bytes >= 1024) {
-        $kb = floor($bytes / 1024);
+        $kb = intdiv($bytes, 1024);
         $bytes = $bytes % 1024;
     }
 
@@ -145,7 +145,7 @@ if ($bytesOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2022-10-04">4 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

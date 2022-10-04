@@ -3,9 +3,9 @@
  * Dividir 1-2 - dividir-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2022-10-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -76,7 +76,7 @@ if ($cociente == "" || !is_numeric($cociente) || $resto == "" || !is_numeric($re
 
 <?php
 if ($respuestaOk) {
-    $cocienteCorrecto = floor($_SESSION["a"] / $_SESSION["b"]);
+    $cocienteCorrecto = intdiv($_SESSION["a"], $_SESSION["b"]);
     $restoCorrecto    = $_SESSION["a"] % $_SESSION["b"];
     if ($cociente == $cocienteCorrecto && $resto == $restoCorrecto) {
         print "  <p>¡Respuesta correcta!</p>\n";
@@ -110,7 +110,7 @@ if ($respuestaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2022-10-04">4 de octubre de 2022</time>
     </p>
 
     <p class="licencia">
