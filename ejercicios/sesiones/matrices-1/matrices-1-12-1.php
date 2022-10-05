@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-09-26
+ * @version   2022-10-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ if (!isset($_SESSION["disponibles"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
   <style>
-    button { background-color: hsl(240, 100%, 98%); padding: 0; border: none;}
+    button { background-color: hwb(240 96% 0%); padding: 0; border: none;}
   </style>
 </head>
 
@@ -85,7 +85,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-09-26">26 de septiembre de 2022</time>
+      <time datetime="2022-10-05">5 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

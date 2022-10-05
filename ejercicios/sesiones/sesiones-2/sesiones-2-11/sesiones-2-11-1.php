@@ -3,9 +3,9 @@
  * Quita cartas - sesiones-2-11-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-25
+ * @version   2022-10-05
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,9 +63,9 @@ if ($_SESSION["cartas"] == 0) {
           width="210" height="250" viewBox="-10 -10 210 250">
           <defs>
             <pattern id="patron-1" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" >
-              <rect x="0" y="0" width="10" height="10" fill="hsl(0, 100%, 80%)" />
-              <line x1="0" y1="10" x2="10" y2="0" stroke="hsl(0, 100%, 90%)" stroke-width="1" />
-              <line x1="0" y1="0" x2="10" y2="10" stroke="hsl(0, 100%, 90%)" stroke-width="1" />
+              <rect x="0" y="0" width="10" height="10" fill="hwb(0 60% 0%)" />
+              <line x1="0" y1="10" x2="10" y2="0" stroke="hwb(0 80% 0%)" stroke-width="1" />
+              <line x1="0" y1="0" x2="10" y2="10" stroke="hwb(0 80% 0%)" stroke-width="1" />
             </pattern>
           </defs>
 
@@ -83,7 +83,7 @@ for ($i = 0; $i < $_SESSION["cartas"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-25">25 de noviembre de 2021</time>
+      <time datetime="2022-10-05">5 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Sesiones (1) 14 - sesiones-1-14-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-25
+ * @version   2022-10-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -53,25 +53,25 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
 
     <table>
       <tr>
-        <td style="vertical-align: top;"><button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hsl(200, 100%, 50%);">&#x2714;</button></td>
+        <td style="vertical-align: top;"><button type="submit" name="accion" value="a" style="font-size: 60px; line-height: 50px; color: hwb(200 0% 0%);">&#x2714;</button></td>
         <td>
 <?php
 // Dibujamos la primera barra
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[a]\" height=\"50\">\n";
-print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hsl(200, 100%, 50%)\" stroke-width=\"50\" />\n";
+print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[a]\" y2=\"25\" stroke=\"hwb(200 0% 0%)\" stroke-width=\"50\" />\n";
 print "          </svg>\n";
 ?>
         </td>
       </tr>
       <tr>
-        <td><button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hsl(35, 100%, 50%)">&#x2714;</button></td>
+        <td><button type="submit" name="accion" value="b" style="font-size: 60px; line-height: 50px; color: hwb(35 0% 0%)">&#x2714;</button></td>
 <?php
 // Dibujamos la segunda barra
 print "        <td>\n";
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"$_SESSION[b]\" height=\"50\">\n";
-print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hsl(35, 100%, 50%)\" stroke-width=\"50\" />\n";
+print "            <line x1=\"0\" y1=\"25\" x2=\"$_SESSION[b]\" y2=\"25\" stroke=\"hwb(35 0% 0%)\" stroke-width=\"50\" />\n";
 print "          </svg>\n";
 print "        </td>\n";
 ?>
@@ -86,7 +86,7 @@ print "        </td>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-13">13 de noviembre de 2018</time>
+      <time datetime="2022-10-05">5 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

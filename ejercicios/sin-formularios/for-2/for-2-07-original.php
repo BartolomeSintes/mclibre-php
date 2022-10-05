@@ -3,9 +3,9 @@
  * for (2) 07 - for-2-07.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   2022-10-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ print "      width=\"" . $radio * $numero * 2 . "\" height=\"" . $radio * $numer
     . " viewbox=\"" . - $radio * $numero . " " . - $radio * $numero . " " . $radio * $numero * 2 . " " . $radio * $numero * 2 . "\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . $radio * ($numero - $i) . "\" fill=\"hsl(" . $i * $paso . ", 75%, 50%)\" />\n";
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . $radio * ($numero - $i) . "\" fill=\"hwb(" . $i * $paso . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";
@@ -63,7 +63,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-05">5 de noviembre de 2018</time>
+      <time datetime="2022-10-05">5 de octubre de 2022</time>
     </p>
 
     <p class="licencia">
