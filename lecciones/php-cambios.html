@@ -23,6 +23,7 @@
       <h2>Cambios en el lenguaje</h2>
 
       <ul>
+        <li><a href="#php-8-0">PHP 8.0 (2020)</a></li>
         <li><a href="#php-7-3">PHP 7.3 (2018)</a></li>
         <li><a href="#php-7-1">PHP 7.1 (2016)</a></li>
         <li><a href="#php-7-0">PHP 7.0 (2015)</a></li>
@@ -36,6 +37,44 @@
   <p>El lenguaje PHP ha ido evolucionando a lo largo de los años. En algunos casos, las nuevas características o las nuevas notaciones dejan obsoletas las antiguas. En esta lección se comentan los cambios que he ido incorporando a los apuntes, ordenados de acuerdo con la versión de PHP en la que se introdujeron.</p>
 
   <p>Manual de PHP: <a href="https://www.php.net/manual/en/appendices.php">Apéndices</a></p>
+
+  <section id="php-8-0">
+    <h2>PHP 8.0 (noviembre de 2020)</h2>
+
+    <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration73.php">Cambios en PHP 7.3</a></p>
+
+    <ul>
+      <li id="php-8-0-comparaciones">A partir de PHP 8.0, la comparación entre números y cadenas no numéricas se realiza convirtiendo el número a cadena y comparando las cadenas, lo que supone un cambio en el resultado de algunas comparaciones:
+
+        <p>[<a href="https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.core.string-number-comparision">Referencia</a>]</p>
+
+        <table class="tabla-con-borde mcl-centrado">
+          <tbody>
+            <tr>
+              <th>Comparación</th>
+              <th>Resultado antes de PHP 8.0</th>
+              <th>Resultado después de PHP 8.0</th>
+            </tr>
+            <tr>
+              <td>0 == "lo que sea"</td>
+              <td class="mcl-centrado"><span class="php-con">true</span></td>
+              <td class="mcl-centrado"><span class="php-con">false</span></td>
+            </tr>
+            <tr>
+              <td>0 == ""</td>
+              <td class="mcl-centrado"><span class="php-con">true</span></td>
+              <td class="mcl-centrado"><span class="php-con">false</span></td>
+            </tr>
+            <tr>
+              <td>123 == "123abc"</td>
+              <td class="mcl-centrado"><span class="php-con">true</span></td>
+              <td class="mcl-centrado"><span class="php-con">false</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </section>
 
   <section id="php-7-3">
     <h2>PHP 7.3 (diciembre de 2018)</h2>

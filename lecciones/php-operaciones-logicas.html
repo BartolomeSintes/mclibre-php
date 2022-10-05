@@ -321,13 +321,13 @@ if ($numero == $cadena) {
         </div>
       </li>
 
-      <li>Además, hay situaciones especiales. Por ejemplo, cuando una cadena empieza por un número, PHP interpreta la cadena como número y descarta el resto:
+      <li>Si en la cadena hay espacios en blanco al principio o final de la cadena, los espacios se descartan al hacer la comparación:
         <div class="filaflex">
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
 $numero = 5;
-$cadena = "5abc def";
+$cadena = "   5   ";
 
 if ($numero == $cadena) {
   print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
@@ -338,15 +338,18 @@ if ($numero == $cadena) {
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;5 y 5abc def son iguales.&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">&lt;p&gt;5 y 5 son iguales.&lt;/p&gt;</code></pre>
           </div>
         </div>
+      </li>
+
+      <li>En PHP 8.0 se cambiaron algunos casos especiales de comparaciones, como se comenta en la lección de <a href="php-cambios.html#php-8-0-comparaciones">Cambios en el lenguaje</a>. Quizás el más relevante es que ahora el 0 ya no se considera igual que la cadena vacía
         <div class="filaflex">
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-$numero = 5;
-$cadena = "5+1";
+$numero = 0;
+$cadena = "";
 
 if ($numero == $cadena) {
   print "&lt;p&gt;$numero y $cadena son iguales.&lt;/p&gt;\n";
@@ -357,7 +360,7 @@ if ($numero == $cadena) {
 </pre>
           </div>
           <div class="resultado-codigo">
-            <pre><code class="language-html">&lt;p&gt;5 y 5+1 son iguales.&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">&lt;p&gt;0 y son distintos.&lt;/p&gt;</code></pre>
           </div>
         </div>
       </li>
@@ -648,18 +651,18 @@ print "\n";
         <pre>
 <code class="language-php">&lt;?php
 $a = 10;
-$b = 20;
+$b = -20;
 
-if ($a == 10 && $b == 20) {
-print "&lt;p&gt;\$a y \$b son iguales.&lt;/p&gt;\n";
+if ($a &gt; 0 && $b &gt; 0) {
+    print "&lt;p&gt;\$a y \$b son los dos positivos.&lt;/p&gt;\n";
 } else {
-print "&lt;p&gt;\$a y \$b son distintos.&lt;/p&gt;\n";
+    print "&lt;p&gt;\$a y \$b NO son los dos positivos.&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-codigo">
-        <pre><code class="language-html">&lt;p&gt;$a y $b son distintos.&lt;/p&gt;</code></pre>
+        <pre><code class="language-html">&lt;p&gt;$a y $b NO son los dos positivos.&lt;/p&gt;</code></pre>
       </div>
     </div>
   </section>
@@ -778,7 +781,7 @@ if ($todo) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
