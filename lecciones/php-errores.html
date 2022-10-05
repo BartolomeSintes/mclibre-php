@@ -326,7 +326,7 @@ print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
     <h2>Obsolescencias (E_STRICT: Strict / E_DEPRECATED: Deprecated)</h2>
 
     <ul>
-      <li>Constantes insensibles a mayúsculas/minúsculas
+      <li>Argumentos opcionales antes de argumentos obligatorios
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -335,22 +335,24 @@ print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-define("TEST", 99.9, true);
+function prueba($a = [], $b)
+{
+}
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-html">
-            <b>Deprecated</b>: define(): Declaration of case-insensitive constants is deprecated in <b>ejemplo.php</b> on line <b>3</b>
+            <b>Deprecated</b>: define():  Required parameter $b follows optional parameter $a in <b>ejemplo.php</b> on line <b>2</b>
           </div>
         </div>
 
-        <p>En este caso, el motivo del aviso es que desde la versión PHP 7.0 no se pueden definir constantes insensibles a mayúsculas (es decir, que se pueden escribir tanto en minúsculas como en mayúsculas).</p>
+        <p>En este caso, el motivo del aviso es que desde la versión PHP 8.0 se genera un aviso cuando se define un argumento opcional antes de los obligatorios.</p>
       </li>
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 5 d eoctubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

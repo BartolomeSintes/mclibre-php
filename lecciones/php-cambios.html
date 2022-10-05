@@ -23,6 +23,7 @@
       <h2>Cambios en el lenguaje</h2>
 
       <ul>
+        <li><a href="#php-7-3">PHP 7.3 (2018)</a></li>
         <li><a href="#php-7-1">PHP 7.1 (2016)</a></li>
         <li><a href="#php-7-0">PHP 7.0 (2015)</a></li>
         <li><a href="#php-5-6">PHP 5.6 (2014)</a></li>
@@ -36,13 +37,23 @@
 
   <p>Manual de PHP: <a href="https://www.php.net/manual/en/appendices.php">Apéndices</a></p>
 
+  <section id="php-7-3">
+    <h2>PHP 7.3 (diciembre de 2018)</h2>
+
+    <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration73.php">Cambios en PHP 7.3</a></p>
+
+    <ul>
+      <li>A partir de PHP 7.3, la función <a href="https://www.php.net/manual/en/function.define.php"><span class="php-fun">define()</span></a> genera un aviso E_DEPRECATED cuando se utilizan tres argumentos. El tercer argumento permitía definir constantes que no distinguieran entre mayúsculas y minúsculas. La función todavía atendía la petición, pero a partir de PHP 8 se genera un aviso E_WARNING y ya no se pueden crear constantes que no distingan entre mayúsculas y minúsculas.</li>
+    </ul>
+  </section>
+
   <section id="php-7-1">
     <h2>PHP 7.1 (diciembre de 2016)</h2>
 
     <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration71.php">Cambios en PHP 7.1</a></p>
 
     <ul>
-      <li>Desde PHP 7.1, la función <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> es un alias de la función <a href="https://www.php.net/manual/en/function.mt-rand.php"><span class="php-fun">mt_rand()</span></a>, por lo que es indiferente usar una u otra. En versiones anteriores eran funciones distintas y la función <span class="php-fun">mt_rand()</span> era más rápida y estaba basada en el algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a>. [<a href="https://www.php.net/manual/en/migration71.incompatible.php#migration71.incompatible.rand-srand-aliases">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">mt_rand()</span> y utilizo siempre la función <span class="php-fun">rand()</span>.
+      <li>A partir de PHP 7.1, la función <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> es un alias de la función <a href="https://www.php.net/manual/en/function.mt-rand.php"><span class="php-fun">mt_rand()</span></a>, por lo que es indiferente usar una u otra. En versiones anteriores eran funciones distintas y la función <span class="php-fun">mt_rand()</span> era más rápida y estaba basada en el algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a>. [<a href="https://www.php.net/manual/en/migration71.incompatible.php#migration71.incompatible.rand-srand-aliases">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">mt_rand()</span> y utilizo siempre la función <span class="php-fun">rand()</span>.
         <p>Consecuentemente, desde PHP 7.1 las funciones <a href="https://www.php.net/manual/en/function.getrandmax.php"><span class="php-fun">getrandmax()</span></a> y <a href="https://www.php.net/manual/en/function.mt-getrandmax.php"><span class="php-fun">mt_getrandmax()</span></a>, que devolvían el máximo valor que podía obtenerse con las funciones <span class="php-fun">rand()</span> y <span class="php-fun">mt_rand()</span> al ser llamadas sin argumentos, devuelven ahora el mismo valor, que coincide con <a href="php-constantes.html#php-int-max">PHP_INT_MAX</a>.</p>
       </li>
 
@@ -55,9 +66,9 @@
     <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration70.php">Cambios en PHP 7.0</a></p>
 
     <ul>
-      <li>Desde PHP 5.4, la división por cero ya no genera un error E_WARNING, sino una excepción. En caso de que la excepción no sea capturada, se genera un error E_ERROR.</li>
+      <li>A partir de PHP 5.4, la división por cero ya no genera un error E_WARNING, sino una excepción. En caso de que la excepción no sea capturada, se genera un error E_ERROR.</li>
       <li>Se eliminan la función split() y las funciones ereg_().</li>
-      <li>En PHP 7.0 se introdujo la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv()</span></a>, que calcula el cociente de la división de dos números enteros.</li>
+      <li>En PHP 7.0 se introdujo la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv()</span></a>, que calcula el cociente de la división de dos números enteros. En el curso 2022/23 he empezado a utilizarla para calcular cocientes, en vez de hacer floor() de la división.</li>
     </ul>
   </section>
 
@@ -103,7 +114,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de septiembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
