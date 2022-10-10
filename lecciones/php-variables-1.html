@@ -437,9 +437,9 @@ print "&lt;p&gt;¡<span class="codigo-resaltado">{$saludos[0][1]}</span>, $nombr
     </section>
 
     <section id="operaciones">
-      <h3>Operaciones aritméticas</h3>
+      <h3>Operaciones aritméticas y llamadas a funciones</h3>
 
-      <p>En el interior de las cadenas no se realizan operaciones aritméticas.</p>
+      <p>En el interior de las cadenas no se realizan operaciones aritméticas o llamadas a funciones.</p>
 
       <div class="filaflex">
         <div class="icono-ok">
@@ -452,15 +452,20 @@ $x = 3;
 $y = 4;
 print "&lt;p&gt;Suma: $x + $y = <span class="codigo-resaltado">$x + $y</span>&lt;/p&gt;\n";
 print "&lt;p&gt;Multiplicación: $x x $y = <span class="codigo-resaltado">$x * $y</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Potencia: $x ^ $y = <span class="codigo-resaltado">pow($x, $y)</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">3 + 4</span>&lt;/p&gt;<br>&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">3 x 4</span>&lt;/p&gt;</code></pre>
+          <pre>
+<code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">3 + 4</span>&lt;/p&gt;
+&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">3 x 4</span>&lt;/p&gt;
+&lt;p&gt;Potencia: 3 ^ 4 = <span class="codigo-resaltado">pow(3, 4)</span>&lt;/p&gt;
+</code></pre>
         </div>
       </div>
 
-      <p>Si se quiere mostrar el resultado de operaciones matemáticas, es necesario efectuar las operaciones fuera de las cadenas. En algunos casos no es necesario escribir las operaciones entre paréntesis, pero se recomienda escribirlas siempre entre paréntesis para no tener que preocuparse por cuándo hacen falta y cuándo no.</p>
+      <p>Si se quiere mostrar el resultado de operaciones matemáticas o de llamadas a funciones, es necesario efectuar las operaciones fuera de las cadenas. </p>
 
       <div class="filaflex">
         <div class="codigo">
@@ -468,43 +473,22 @@ print "&lt;p&gt;Multiplicación: $x x $y = <span class="codigo-resaltado">$x * $
 <code class="language-php">&lt;?php
 $x = 3;
 $y = 4;
-print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. ($x + $y) .</span> "&lt;/p&gt;\n";
-print "&lt;p&gt;Multiplicación: $x x $y = " <span class="codigo-resaltado">. ($x * $y) .</span> "&lt;/p&gt;\n";
+print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</span> "&lt;/p&gt;\n";
+print "&lt;p&gt;Multiplicación: $x x $y = " <span class="codigo-resaltado">. $x * $y .</span> "&lt;/p&gt;\n";
+print "&lt;p&gt;Potencia: $x ^ $y = " <span class="codigo-resaltado">. pow($x, $y) .</span> "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-codigo">
           <pre>
 <code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;
-&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;</code>
+&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;
+&lt;p&gt;Potencia: 3 ^ 4 = <span class="codigo-resaltado">81</span>&lt;/p&gt;</code>
 </pre>
         </div>
       </div>
 
-      <p>Si no se escriben paréntesis en las operaciones, pueden no producirse errores, pero el resultado puede ser distinto al esperado en algunos casos:</p>
-
-      <div class="filaflex">
-        <div class="icono-ok">
-          <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
-        </div>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$x = 3;
-$y = 4;
-
-print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</span> "&lt;/p&gt;\n";
-print "&lt;p&gt;Multiplicación: $x x $y = " <span class="codigo-resaltado">. $x * $y .</span> "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html"><span class="codigo-resaltado">4&lt;/p&gt;</span>
-&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;</code>
-</pre>
-        </div>
-      </div>
+      <p><strong>Nota</strong>: Antes de PHP 8.0 (publicado en noviembre de 2020), las expresiones que contenían sumas o restas debían escribirase entre paréntesis, como se comenta en la lección <a href="php-cambios.html#php-8-0-precedencia-concatenacion">Cambios en el lenguaje</a>.</p>
 
       <p>Por supuesto, siempre se pueden utilizar definir auxiliares que guarden los resultados y utilizar las variables auxiliares en la cadena.</p>
 
@@ -516,13 +500,19 @@ $x = 3;
 $y = 4;
 $suma = $x + $y;
 $producto = $x * $y;
+$potencia = pow($x, $y);
 print "&lt;p&gt;Suma: $x + $y = <span class="codigo-resaltado">$suma</span>&lt;/p&gt;\n";
 print "&lt;p&gt;Multiplicación: $x x $y = <span class="codigo-resaltado">$producto</span>&lt;/p&gt;\n";
+print "&lt;p&gt;Potencia: $x ^ $y = <span class="codigo-resaltado">$potencia</span>&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
         </div>
         <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;<br>&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;</code></pre>
+          <pre>
+<code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;
+&lt;p&gt;Multiplicación: 3 x 4 = <span class="codigo-resaltado">12</span>&lt;/p&gt;
+&lt;p&gt;Potencia: 3 ^ 4 = <span class="codigo-resaltado">81</span>&lt;/p&gt;
+</code></pre>
         </div>
       </div>
     </section>
@@ -807,7 +797,7 @@ print "&lt;p&gt;La variable \$estudiante tiene el valor " . var_export($estudian
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 4 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
