@@ -65,6 +65,40 @@ print "&lt;p&gt;Hola&lt;/p&gt;\n";
 
       <hr class="corta">
 
+      <p>Si el programa termina con un fragmento PHP, ese último fragmento PHP no necesita cerrarse. Los siguientes programas son correctos:</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Hola&lt;/p&gt;\n";</code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+  print "&lt;p&gt;Hola&lt;/p&gt;\n";
+?&gt;
+&lt;?php
+print "&lt;p&gt;Adios&lt;/p&gt;\n";</code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
+&lt;p&gt;Adios&lt;/p&gt;</code>
+</pre>
+        </div>
+      </div>
+
+      <hr class="corta">
+
       <p>Los fragmentos de PHP no pueden anidarse, es decir, no puede haber un fragmento dentro de otro:</p>
 
       <div class="filaflex">
@@ -117,40 +151,6 @@ print "&lt;pre&gt;$saludo&lt;pre&gt;";   // Se escribe el valor de la variable
         </div>
         <div class="resultado-codigo">
           <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
-        </div>
-      </div>
-
-      <hr class="corta">
-
-      <p>Si el programa termina con un fragmento PHP, ese último fragmento PHP no necesita cerrarse. Los siguientes programas son correctos:</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Hola&lt;/p&gt;\n";</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre><code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code></pre>
-        </div>
-      </div>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-  print "&lt;p&gt;Hola&lt;/p&gt;\n";
-?&gt;
-&lt;?php
-print "&lt;p&gt;Adios&lt;/p&gt;\n";</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;
-&lt;p&gt;Adios&lt;/p&gt;</code>
-</pre>
         </div>
       </div>
     </section>
@@ -306,6 +306,49 @@ print "&lt;p&gt;Hola&lt;/p&gt;\n";
 &lt;p&gt;¿Cómo estás?&lt;/p&gt;
 
 <span class="codigo-resaltado">print "&lt;p&gt;Adios&lt;/p&gt;\n";</span></code>
+</pre>
+        </div>
+      </div>
+
+      <hr class="corta">
+
+      <p>Se pueden fragmentar incluso las estructuras de PHP que ocupan varias líneas (aunque no es habitual hacerlo). Los siguientes programas son equivalentes:</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;¿Dos y dos son cuatro?&lt;/p&gt;</code>
+<code class="language-php">&lt;?php
+if (2 + 2 == 4) {
+    print "&lt;p&gt;Sí&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;No&lt;/p&gt;\n";
+}</code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;¿Dos y dos son cuatro?&lt;/p&gt;
+&lt;p&gt;Sí&lt;/p&gt;</code>
+</pre>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;¿Dos y dos son cuatro?&lt;/p&gt;</code>
+<code class="language-php">&lt;?php if (2 + 2 == 4) { ?&gt;</code>
+<code class="language-html">    &lt;p&gt;Sí&lt;/p&gt;</code>
+<code class="language-php">&lt;?php } else { ?&gt;</code>
+<code class="language-html">    &lt;p&gt;No&lt;/p&gt;</code>
+<code class="language-php">&lt;?php } ?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-codigo">
+          <pre>
+<code class="language-html">&lt;p&gt;¿Dos y dos son cuatro?&lt;/p&gt;
+&lt;p&gt;Sí&lt;/p&gt;</code>
 </pre>
         </div>
       </div>
@@ -842,7 +885,7 @@ print "  &lt;p&gt;Esta página es una página HTML 5 válida.&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 6 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

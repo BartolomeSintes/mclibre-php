@@ -185,78 +185,9 @@ tiene un área de 196 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
         </div>
       </div>
 
-      <p>Como las variables enteras se guardan en la memoria del ordenador utilizando un número de bytes fijo (que depende del ordenador, pero se puede averiguar mediante la constante predefinida <a href="php-constantes.html#php-int-size">PHP_INT_SIZE</a>), no se pueden guardar números arbitrariamente grandes o pequeños. El valor más grande que se puede almacenar se puede averiguar mediante la constante predefinida <a href="php-constantes.html#php-int-max">PHP_INT_MAX</a>. Los enteros se guardan en notación complemento a dos.</p>
+      <p>Las variables enteras se guardan en la memoria del ordenador utilizando un número de bytes fijo, por lo que no se pueden guardar números arbitrariamente grandes o pequeños. Ese número de bytes depende de la arquitectura del procesador (32 o 64 bits), del sistema operativo y de la versión de PHP, pero se puede averiguar mediante la constante predefinida <a href="php-constantes.html#php-int-size">PHP_INT_SIZE</a>). El valor más grande que se puede almacenar se puede averiguar mediante la constante predefinida <a href="php-constantes.html#php-int-max">PHP_INT_MAX</a>.</p>
 
-      <hr class="corta">
-
-      <h4>Notación complemento a dos</h4>
-
-      <p>En un byte (8 bits) se pueden almacenar 256 (2<sup>8</sup>) valores diferentes. Eso permite almacenar por ejemplo, desde el valor 0 hasta el 255. Para almacenar tanto números negativos como positivos, se utiliza la notación complemento a dos, en la que la primera mitad de los valores representan los valores positivos (desde 0 hasta 127) y la segunda mitad de los valores representan los valores negativos (desde -128 hasta -1), como indica la tabla siguiente </p>
-
-      <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <td>El valor ...</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>...</td>
-            <td>126</td>
-            <td>127</td>
-            <td>128</td>
-            <td>129</td>
-            <td>...</td>
-            <td>253</td>
-            <td>254</td>
-            <td>255</td>
-          </tr>
-          <tr>
-            <td>... representa el entero ...</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>...</td>
-            <td>126</td>
-            <td>127</td>
-            <td>-128</td>
-            <td>-127</td>
-            <td>..</td>
-            <td>-3</td>
-            <td>-2</td>
-            <td>-1</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>En cuatro bytes (32 bits) se pueden almacenar 4.294.967.296 (2<sup>32</sup>)valores distintos. En notación complemento a dos se pueden representar desde el valor -2.147.483.648 hasta 2.147.483.647.</p>
-
-      <p>Si se intenta guardar un número demasiado grande positivo, el resultado será seguramente incorrecto. En el ejemplo siguiente se fuerza a PHP a guardar como entero el valor siguiente al máximo valor posible. El valor se guarda, pero cuando se utiliza, PHP lo interpreta como negativo.</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$maximo = PHP_INT_MAX;
-print "&lt;p&gt;El mayor entero que se puede guardar en una variable entera es $maximo&lt;/p&gt;\n";
-
-$demasiado = (int)($maximo+1);
-print "&lt;p&gt;Si se intenta guardar 1 más, el resultado es $demasiado&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;p&gt;El mayor entero que se puede guardar en una variable entera es 2147483647&lt;/p&gt;
-&lt;p&gt;Si se intenta guardar 1 más, el resultado es -2147483648&lt;/p&gt;</code>
-</pre>
-        </div>
-      </div>
+      <p>Si el resultado de un cálculo con números enteros es demasiado grande para poderse representar con un entero, PHP lo convierte automáticamente en decimal, perdiéndose precisión.</p>
 
       <hr class="corta">
 
@@ -319,9 +250,7 @@ tiene un área de 210.25 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
 
       <hr class="corta">
 
-      <p>Como las variables decimales se guardan en la memoria del ordenador utilizando un número de bytes fijo (que depende del ordenador, aunque no existen constantes predefinidas para conocer su tamaño), no se pueden guardar números arbitrariamente grandes o pequeños. Normalmente las variables decimales siguen la norma <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 758</a>, concretamente el formato denominado "doble precisión", que emplea 8 bytes (64 bits) para almacenar un número.</p>
-
-      <p>De esos 64 bits, uno se utiliza para el signo, 53 para la parte fraccionaria y 11 para el exponente. Eso hace que el valor más grande que se pueda almacenar sea aproximadamente 1,8.10<sup>308</sup>.</p>
+      <p>Las variables decimales se guardan en todas las versiones de PHP mediante el formato <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64">IEEE 754 64 bits</a>, por lo que el valor máximo que se puede guardar u obtener mediante un cálculo es 1.7976931348623E+308.</p>
 
       <p>Si se intenta guardar un número demasiado grande positivo (tanto si ese valor se obtiene en un cálculo o si se escribe directamente) PHP no puede manejarlo y lo que hace es sustituirlo por la constante predefinida <a href="php-constantes.html#inf">INF</a>.</p>
 
@@ -329,7 +258,7 @@ tiene un área de 210.25 cm&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code>
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-$maximo = 10 **308;  // 10^308
+$maximo = 10 ** 308;  // 10^308
 print "&lt;p&gt;10&lt;sup&gt;308&lt;/sup&gt; se puede guardar en una variable decimal: $maximo&lt;/p&gt;\n";
 print "\n";
 $demasiado = 10 * $maximo;
@@ -651,7 +580,7 @@ if ($autorizado == false) {
     </section>
   </section>
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de noviembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 4 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
