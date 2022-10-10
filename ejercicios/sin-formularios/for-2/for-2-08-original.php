@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-05
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -49,13 +49,15 @@ print "  <h2>$numero franjas</h2>\n";
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-print "      width=\"" . ($radio * $numero * 2 + 20) . "\" height=\"" . ($radio * $numero + 20). "\" "
-    . " viewbox=\"" . (- $radio * $numero -10) . " " . (- $radio * $numero -10) . " " . ($radio * $numero * 2 + 20). " " . ($radio * $numero + 20)
+print "      width=\"" . $radio * $numero * 2 + 20 . "\" height=\"" . $radio * $numero + 20 . "\" "
+    . " viewbox=\"" . - $radio * $numero -10 . " " . - $radio * $numero -10 . " "
+    . $radio * $numero * 2 + 20 . " " . $radio * $numero + 20
     . "\" style=\"border: black 1px solid; background-color: white;\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
     $valor = $radio * ($numero - $i);
-    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb(" . $i * $paso . " 10% 10%)\" />\n";
+    print "      <path d=\"M -$valor,0 L $valor,0 A $valor $valor 0 0 0 -$valor,0 z\" fill=\"hwb("
+        . $i * $paso . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";
@@ -65,7 +67,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-05">5 de octubre de 2022</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Tablas con casillas de verificación (Resultado 1) - foreach-2-2-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-10-16
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -127,7 +127,7 @@ if ($tablasOk && $tamanoOk && $casillasOk) {
             if (count($casillas[$k]) > 1) {
                 print "s";
             }
-            print " de un total de " . ($tamano * $tamano) . ": ";
+            print " de un total de " . $tamano * $tamano . ": ";
             foreach ($casillas[$k] as $indice => $valor) {
                 print "<strong>$indice</strong> ";
             }
@@ -148,7 +148,7 @@ if ($tablasOk && $tamanoOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-10-16">16 de octubre de 2014</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

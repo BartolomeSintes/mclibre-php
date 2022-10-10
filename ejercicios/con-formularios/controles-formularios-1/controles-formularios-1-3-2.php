@@ -3,9 +3,9 @@
  * Controles en formularios (1) 3-2 - controles-formularios-1-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -57,9 +57,9 @@ function recoge($var, $m = "")
 $ancho = recoge("ancho");
 
 print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-    . "    width=\"" . ($ancho + 8) . "px\" height=\"" . ($ancho + 8) . "px\">\n";
+    . "    width=\"" . $ancho + 8 . "px\" height=\"" . $ancho + 8 . "px\">\n";
 print "    <rect fill=\"white\" stroke=\"black\" stroke-width=\"4\" "
-    . "x=\"2\" y=\"2\" width=\"" . ($ancho + 4) . "\" height=\"" . ($ancho + 4) . "\" />\n";
+    . "x=\"2\" y=\"2\" width=\"" . $ancho + 4 . "\" height=\"" . $ancho + 4 . "\" />\n";
 print "  </svg>\n";
 ?>
 
@@ -68,7 +68,7 @@ print "  </svg>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

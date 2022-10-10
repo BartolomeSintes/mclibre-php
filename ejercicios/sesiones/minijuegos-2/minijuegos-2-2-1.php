@@ -1,26 +1,26 @@
 <?php
 /**
  * Sesiones (1) 12 - sesiones-1-12-1.php
-*
-* @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
-* @copyright 2018 Bartolomé Sintes Marco
-* @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
-* @version   2018-10-31
-* @link      https://www.mclibre.org
-*
-*  This program is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU Affero General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  any later version.
-*
-*  This program is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU Affero General Public License for more details.
-*
-*  You should have received a copy of the GNU Affero General Public License
-*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ *
+ * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
+ * @copyright 2022 Bartolomé Sintes Marco
+ * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
+ * @version   2022-10-10
+ * @link      https://www.mclibre.org
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 // Se accede a la sesión
 session_name("sesiones-1-12");
 session_start();
@@ -54,7 +54,7 @@ if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]
         <td><button type="submit" name="accion" value="a" style="font-size: 40px; line-height: 40px;">A</button></td>
 <?php
 if (isset($_SESSION["ad"])) {
-    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . (9855 + $_SESSION["ad"]) . ";</span></td>\n ";
+    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . 9855 + $_SESSION["ad"] . ";</span></td>\n ";
 } else {
     print "        <td></td>\n";
 }
@@ -71,7 +71,7 @@ print "        </td>\n";
         <td><button type="submit" name="accion" value="b" style="font-size: 40px; line-height: 40px;">B</button></td>
 <?php
 if (isset($_SESSION["bd"])) {
-    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . (9855 + $_SESSION["bd"]) . ";</span></td>\n ";
+    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . 9855 + $_SESSION["bd"] . ";</span></td>\n ";
 } else {
     print "        <td></td>\n";
 }
@@ -94,7 +94,7 @@ print "        </td>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

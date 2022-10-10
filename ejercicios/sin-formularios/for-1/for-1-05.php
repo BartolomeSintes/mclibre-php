@@ -56,7 +56,8 @@ for ($i = 0; $i < $circulos; $i++) {
     print "        <td>\n";
     print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"70\" height=\"70\" font-size=\"45\">\n";
     print "            <circle cx=\"35\" cy=\"35\" r=\"30\" fill=\"hwb(" . rand(1, 360) . " 0% 0%)\" />\n";
-    print "            <text x=\"35\" y=\"50\" text-anchor=\"middle\" transform=\"rotate(" . rand(-80, 80) . " 35 35)\">" . rand(1, 9) . "</text>\n";
+    print "            <text x=\"35\" y=\"50\" text-anchor=\"middle\" transform=\"rotate("
+        . rand(-80, 80) . " 35 35)\">" . rand(1, 9) . "</text>\n";
     print "          </svg>\n";
     print "        </td>\n";
 }

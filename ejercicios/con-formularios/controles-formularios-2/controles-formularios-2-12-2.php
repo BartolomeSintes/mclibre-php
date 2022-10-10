@@ -3,9 +3,9 @@
  * Controles en formularios (2) 12-2 - controles-formularios-2-12-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -88,13 +88,13 @@ if ($forma == "") {
 
 if ($ladoOk && $formaOk) {
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($lado + 10) . "px\" height=\"" . ($lado + 10) . "px\">\n";
+        . "    width=\"" . $lado + 10 . "px\" height=\"" . $lado + 10 . "px\">\n";
     if ($forma == "cuadrado") {
         print "  <rect fill=\"white\" stroke=\"black\" stroke-width=\"10\" "
         . "x=\"5\" y=\"5\" width=\"$lado\" height=\"$lado\" />\n";
     } else {
         print "    <circle cx=\"" . ($lado + 10) / 2 . "\" cy=\"" . ($lado + 10) / 2
-            . "\" r=\"" . ($lado / 2) . "\" stroke=\"black\" stroke-width=\"10\" fill=\"white\" />\n";
+            . "\" r=\"" . $lado / 2 . "\" stroke=\"black\" stroke-width=\"10\" fill=\"white\" />\n";
     }
     print "  </svg>\n";
     print "\n";
@@ -105,7 +105,7 @@ if ($ladoOk && $formaOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

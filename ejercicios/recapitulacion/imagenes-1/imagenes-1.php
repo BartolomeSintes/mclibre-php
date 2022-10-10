@@ -3,9 +3,9 @@
  * Imágenes - imagenes-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-11-04
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -81,10 +81,10 @@ print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
 print "      <tbody>\n";
 print "        <tr>\n";
-print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen - 1). "\">"
+print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen - 1 . "\">"
      . "<img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\"></button></td>\n";
 print "          <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\"></td>\n";
-print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . ($imagen + 1). "\">"
+print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen + 1 . "\">"
      . "<img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\"></button></td>\n";
 print "        </tr>\n";
 print "      </tbody>\n";
@@ -95,7 +95,7 @@ print "  </form>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-11-01">1 de noviembre de 2014</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

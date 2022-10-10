@@ -3,12 +3,12 @@
  * Variables. Sin formularios.(1) 12 - variables-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-24
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
-*  This program is free software: you can redistribute it and/or modify
+ *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  any later version.
@@ -62,7 +62,7 @@ print "      <rect x=\"400\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black
 print "      <text x=\"450\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">5</text>\n";
 print "      <rect x=\"500\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
 print "      <text x=\"550\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">6</text>\n";
-print "      <circle cx=\"" . (100 * $dado - 50) . "\" cy=\"50\" r=\"30\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
+print "      <circle cx=\"" . 100 * $dado - 50 . "\" cy=\"50\" r=\"30\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>
@@ -70,7 +70,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

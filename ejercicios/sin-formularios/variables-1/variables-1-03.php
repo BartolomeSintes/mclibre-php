@@ -3,12 +3,12 @@
  * Variables. Sin formularios.(1) 3 - variables-1-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-24
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
-*  This program is free software: you can redistribute it and/or modify
+ *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  any later version.
@@ -49,14 +49,13 @@ print "    <img src=\"img/$dado1.svg\" alt=\"$dado1\" width=\"140\" height=\"140
 print "    <img src=\"img/$dado2.svg\" alt=\"$dado2\" width=\"140\" height=\"140\">\n";
 print "  </p>\n";
 print "\n";
-print "  <p>Total: <span style=\"border: black 2px solid; padding: 10px; font-size: 300%\">"
-     . ($dado1 + $dado2) . "</span></p>\n";
+print "  <p>Total: <span style=\"border: black 2px solid; padding: 10px; font-size: 300%\">" . $dado1 + $dado2 . "</span></p>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

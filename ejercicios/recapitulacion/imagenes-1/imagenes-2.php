@@ -3,9 +3,9 @@
  * Imágenes - imagenes-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-11-01
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -96,12 +96,12 @@ print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
 print "      <tbody>\n";
 print "        <tr>\n";
 print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-    . ($cuadro - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
+    . $cuadro - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
     . "height=\"80\" alt=\"anterior\"></button></td>\n";
 print "          <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
     . "alt=\"Cuadro de Pieter Bruegel el viejo\"></td>\n";
 print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-    . ($cuadro + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+    . $cuadro + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
     . "alt=\"siguiente\"></button></td>\n";
 print "        </tr>\n";
 print "      </tbody>\n";
@@ -115,14 +115,14 @@ print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
 print "      <tbody>\n";
 print "        <tr>\n";
 print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-    . ($detalle - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
+    . $detalle - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
     . "height=\"80\" alt=\"anterior\"></button></td>\n";
 // $cuadro debe ponerse entre llaves (o sacarse de la cadena). Si no se ponen,
 // PHP piensa que la variable se llama $cuadro_ y genera un aviso
 print "          <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
     . "alt=\"Detalle\"></td>\n";
 print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-    . ($detalle + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+    . $detalle + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
     . "alt=\"siguiente\"></button></td>\n";
 print "        </tr>\n";
 print "      </tbody>\n";
@@ -136,7 +136,7 @@ print "  </form>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-11-01">1 de noviembre de 2014</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

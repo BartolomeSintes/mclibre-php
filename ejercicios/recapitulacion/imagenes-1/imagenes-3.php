@@ -3,9 +3,9 @@
  * Imágenes - imagenes-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-11-01
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -98,7 +98,7 @@ print "        <tr>\n";
 // Si no es el primer cuadro, muestra el botón izquierdo; si es el primero la celda está vacía
 if ($cuadro > $valorMinimoCuadro) {
     print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-        . ($cuadro - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
+        . $cuadro - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
         . "height=\"80\" alt=\"anterior\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
@@ -108,7 +108,7 @@ print "          <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
 // Si no es el último cuadro, muestra el botón derecho; si es el último la celda está vacía
 if ($cuadro < $valorMaximoCuadro) {
     print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
-        . ($cuadro + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+        . $cuadro + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
         . "alt=\"siguiente\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
@@ -127,7 +127,7 @@ print "        <tr>\n";
 // Si no es el primer detalle, muestra el botón izquierdo; si es el primero la celda está vacía
 if ($detalle > $valorMinimoDetalle) {
     print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-        . ($detalle - 1) . "\"><img src=\"img/arrow-left-b.svg\" "
+        . $detalle - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
         . "height=\"80\" alt=\"anterior\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
@@ -137,7 +137,7 @@ print "          <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
 // Si no es el último detalle, muestra el botón derecho; si es el último la celda está vacía
 if ($detalle < $valorMaximoDetalle) {
     print "          <td><button type=\"submit\" name=\"detalle\" value=\""
-        . ($detalle + 1) . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
+        . $detalle + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
         . "alt=\"siguiente\"></button></td>\n";
 } else {
     print "          <td width=\"100\"></td>\n";
@@ -154,7 +154,7 @@ print "  </form>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2014-11-01">1 de noviembre de 2014</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

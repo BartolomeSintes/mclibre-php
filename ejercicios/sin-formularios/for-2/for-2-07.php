@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-05
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -52,7 +52,8 @@ print "      width=\"" . 60 * $numero . "\" height=\"" . 60 * $numero . "\" "
     . " viewbox=\"" . - 30 * $numero . " " . - 30 * $numero . " " . 60 * $numero . " " . 60 * $numero . "\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . (-30 * $i + 30 * $numero) . "\" fill=\"hwb(" . round($i * $paso) . " 10% 10%)\" />\n";
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . -30 * $i + 30 * $numero
+        . "\" fill=\"hwb(" . round($i * $paso) . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";
@@ -62,7 +63,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-05">5 de octubre de 2022</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

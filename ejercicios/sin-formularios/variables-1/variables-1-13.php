@@ -3,12 +3,12 @@
  * Variables. Sin formularios.(1) 13 - variables-1-13.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-24
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
-*  This program is free software: you can redistribute it and/or modify
+ *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  any later version.
@@ -52,7 +52,7 @@ print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
 print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
 print "      <rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" />\n";
 print "      <rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" />\n";
-print "      <rect x=\"" . ($c1 + $c2) . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
+print "      <rect x=\"" . $c1 + $c2 . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>
@@ -60,7 +60,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-09-24">24 de septiembre de 2018</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

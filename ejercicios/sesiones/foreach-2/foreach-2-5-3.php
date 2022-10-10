@@ -3,9 +3,9 @@
  * Tabla con casillas de verificación (Resultado) - foreach-2-5-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -105,8 +105,7 @@ if ($cOk) {
     if ($casillasMarcadas > 1) {
         print "s";
     }
-    print " de un total de <strong>" . ($_SESSION["numero"] * $_SESSION["numero"])
-        . "</strong>: <strong>";
+    print " de un total de <strong>" . $_SESSION["numero"] * $_SESSION["numero"] . "</strong>: <strong>";
     // Bucle para escribir los índices de las casillas recibidas
     foreach ($c as $indice => $valor) {
         print "$indice ";
@@ -122,7 +121,7 @@ if ($cOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-01">1 de noviembre de 2018</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

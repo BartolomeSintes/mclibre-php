@@ -182,7 +182,8 @@ if ($television != "" && $television != "on") {
     $televisionOk = true;
 }
 
-if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk && $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
+if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
+    && $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
     print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";
     print "\n";
     print "  <p>Sus apellidos son <strong>$apellidos</strong>.</p>\n";

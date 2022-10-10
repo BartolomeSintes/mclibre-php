@@ -3,10 +3,10 @@
  * Matrices (3) 14 - matrices-3-14.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-31
- * @link      http://www.mclibre.org
+ * @version   2022-10-10
+ * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -49,7 +49,7 @@ for ($i = 0; $i < 2 * $n; $i++) {
 }
 
 // Mostramos las imágenes de las cartas obtenidas
-print "  <h2>Las " . (2 * $n) . " cartas a repartir</h2>\n";
+print "  <h2>Las " . 2 * $n . " cartas a repartir</h2>\n";
 print "\n";
 print "  <p>\n";
 foreach ($cartas as $carta) {
@@ -96,7 +96,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-31">31 de octubre de 2021</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

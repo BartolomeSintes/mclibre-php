@@ -3,9 +3,9 @@
  * Sucesiones aritméticas 2 (Resultado) - for-4-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2016 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2016-11-06
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -113,7 +113,7 @@ if ($finalOk && $incrementoOk && $valoresOk) {
     print "\n";
     print "  <ol>\n";
     for ($i = 0; $i < $valores; $i++) {
-        print "    <li>" . ($inicial + $incremento * $i) . "</li>\n";
+        print "    <li>" . $inicial + $incremento * $i . "</li>\n";
     }
     print "  </ol>\n";
     print "\n";
@@ -125,7 +125,7 @@ if ($finalOk && $incrementoOk && $valoresOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-06">6 de noviembre de 2016</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

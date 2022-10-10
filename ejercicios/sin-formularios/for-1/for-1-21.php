@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-04
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -46,15 +46,16 @@ print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"420\" height=\"420\" viewBox=\"-210 -210 420 420\">\n";
 
 for ($i = 0; $i < 5; $i++) {
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . (200 - 40 * $i) . "\" fill=\"red\" />\n";
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . (200 - 40 * $i - 20) . "\" fill=\"#ddd\" />\n";
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . 200 - 40 * $i . "\" fill=\"red\" />\n";
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . 200 - 40 * $i - 20 . "\" fill=\"#ddd\" />\n";
 }
 
 for ($i = 0; $i < 10; $i++) {
-  print "      <text x=\"0\" y=\"" . (195 - 20 * $i) . "\" text-anchor=\"middle\" font-size=\"13\">" . ($i + 1) . "</text>\n";
+    print "      <text x=\"0\" y=\"" . 195 - 20 * $i
+        . "\" text-anchor=\"middle\" font-size=\"13\">" . $i + 1 . "</text>\n";
 }
 
-$puntos = 0;
+$puntos   = 0;
 $disparos = rand(1, 10);
 for ($i = 0; $i < $disparos; $i++) {
     $x = rand(-200, 200);
@@ -78,7 +79,7 @@ print "  </ul>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-04">4 de octubre de 2022</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

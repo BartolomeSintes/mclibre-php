@@ -82,7 +82,8 @@ if ($tiroX == "" && $tiroY == "" && $circuloX == "" && $circuloY == ""
 } else {
     if ($circuloX - $circuloR <= $tiroX && $tiroX <= $circuloX + $circuloR
         && $circuloY - $circuloR <= $tiroY && $tiroY <= $circuloY + $circuloR) {
-        print "  <p><strong>¡Correcto!</strong> Ha tardado " . round(microtime_float() - $tiempo, 1) . " s. Haga clic en el punto negro.</p>\n";
+        print "  <p><strong>¡Correcto!</strong> Ha tardado "
+            . round(microtime_float() - $tiempo, 1) . " s. Haga clic en el punto negro.</p>\n";
     } else {
         print "  <p><strong>¡Ha fallado!</strong> Haga clic en el punto negro.</p>\n";
     }

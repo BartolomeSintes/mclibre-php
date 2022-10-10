@@ -3,9 +3,9 @@
  * Imágenes - imagenes_6.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2014 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2014-10-27
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ print "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Grap
 print "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" "
     . "width=\"{$tamX}px\" height=\"{$tamY}px\" viewBox=\"0 0 $tamX $tamY\">\n";
 print "<path fill=\"white\" stroke=\"black\" stroke-width=\"3\" "
-        . "d=\"M 2,2 l" . ($tamX - 4) . ",0 l0," . ($tamY - 4) . " l-" . ($tamX - 4) . ",0z\" />\n";
+        . "d=\"M 2,2 l" . $tamX - 4 . ",0 l0," . $tamY - 4 . " l-" . $tamX - 4 . ",0z\" />\n";
 print "<circle cx=\"$circuloX\" cy=\"$circuloY\" r=\"$circuloR\" style=\"stroke:black; fill:black\" />\n";
 print "</svg>";
 ?>

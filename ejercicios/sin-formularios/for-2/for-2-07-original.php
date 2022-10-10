@@ -50,10 +50,12 @@ print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "      width=\"" . $radio * $numero * 2 . "\" height=\"" . $radio * $numero * 2 . "\" "
-    . " viewbox=\"" . - $radio * $numero . " " . - $radio * $numero . " " . $radio * $numero * 2 . " " . $radio * $numero * 2 . "\">\n";
+    . " viewbox=\"" . - $radio * $numero . " " . - $radio * $numero . " "
+    . $radio * $numero * 2 . " " . $radio * $numero * 2 . "\">\n";
 
 for ($i = 0; $i < $numero; $i++) {
-    print "      <circle cx=\"0\" cy=\"0\" r=\"" . $radio * ($numero - $i) . "\" fill=\"hwb(" . $i * $paso . " 10% 10%)\" />\n";
+    print "      <circle cx=\"0\" cy=\"0\" r=\"" . $radio * ($numero - $i)
+        . "\" fill=\"hwb(" . $i * $paso . " 10% 10%)\" />\n";
 }
 
 print "    </svg>\n";

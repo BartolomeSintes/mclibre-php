@@ -8,7 +8,7 @@
  * @version   2018-09-24
  * @link      https://www.mclibre.org
  *
-*  This program is free software: you can redistribute it and/or modify
+ *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  any later version.
@@ -58,7 +58,7 @@ print "  <p>La carta más alta es un <strong>$maximo</strong>.</p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-09-24">24 de septiembre de 2018</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

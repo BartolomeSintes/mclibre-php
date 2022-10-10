@@ -3,9 +3,9 @@
  * Tablas de colores (Resultado) - for-3-7-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -87,7 +87,7 @@ if ($numeroOk) {
     $paso = ($numero > 1) ? 255 / ($numero - 1) : 0;
     for ($k = 0; $k < $numero; $k++) {
         print "  <table class=\"conborde\">\n";
-        print "    <caption>Tabla nº" . (1 + $k) . "</caption>\n";
+        print "    <caption>Tabla nº" . 1 + $k . "</caption>\n";
         print "    <tbody>\n";
         for ($i = 0; $i < $numero; $i++) {
             print "      <tr>\n";
@@ -112,7 +112,7 @@ if ($numeroOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

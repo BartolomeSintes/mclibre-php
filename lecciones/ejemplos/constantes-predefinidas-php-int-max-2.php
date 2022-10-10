@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "<p>PHP_INT_MAX + 1 = " . (PHP_INT_MAX + 1) . ".</p>\n";
+print "<p>PHP_INT_MAX + 1 = " . PHP_INT_MAX + 1 . ".</p>\n";
 ?>
 </body>
 </html>

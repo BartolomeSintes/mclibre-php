@@ -3,9 +3,9 @@
  * Dibujos con líneas (Resultado) - for-5-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-10-22
+ * @version   2022-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -89,10 +89,11 @@ if ($lineasOk) {
     print "  <h2>Dibujo nº 1</h2>\n";
     print "\n";
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
-        . "height=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
+        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
+        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
         . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . ($largoDibujo + 2 * $margenDibujo) . " " . ($largoDibujo + 2 * $margenDibujo) . "\" \n"
+        . $largoDibujo + 2 * $margenDibujo . " "
+        . $largoDibujo + 2 * $margenDibujo . "\" \n"
         . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
     for ($i = 0; $i < $lineas; $i++) {
         print "    <line "
@@ -110,10 +111,11 @@ if ($lineasOk) {
     print "  <h2>Dibujo nº 2</h2>\n";
     print "\n";
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
-        . "height=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
+        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
+        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
         . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . ($largoDibujo + 2 * $margenDibujo) . " " . ($largoDibujo + 2 * $margenDibujo) . "\" \n"
+        . $largoDibujo + 2 * $margenDibujo . " "
+        . $largoDibujo + 2 * $margenDibujo . "\" \n"
         . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
     for ($i = 0; $i < $lineas; $i++) {
         print "    <line "
@@ -131,10 +133,11 @@ if ($lineasOk) {
     print "  <h2>Dibujo nº 3</h2>\n";
     print "\n";
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
-        . "height=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
+        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
+        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
         . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . ($largoDibujo + 2 * $margenDibujo) . " " . ($largoDibujo + 2 * $margenDibujo) . "\" \n"
+        . $largoDibujo + 2 * $margenDibujo . " "
+        . $largoDibujo + 2 * $margenDibujo . "\" \n"
         . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
     for ($i = 0; $i < $lineas; $i++) {
         print "    <line "
@@ -152,10 +155,11 @@ if ($lineasOk) {
     print "  <h2>Dibujo nº 4</h2>\n";
     print "\n";
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
-        . "height=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
+        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
+        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
         . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . ($largoDibujo + 2 * $margenDibujo) . " " . ($largoDibujo + 2 * $margenDibujo) . "\" \n"
+        . $largoDibujo + 2 * $margenDibujo . " "
+        . $largoDibujo + 2 * $margenDibujo . "\" \n"
         . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
     for ($i = 0; $i < $lineas; $i++) {
         print "    <line "
@@ -173,17 +177,18 @@ if ($lineasOk) {
     print "  <h2>Dibujo nº 5</h2>\n";
     print "\n";
     print "  <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n"
-        . "    width=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
-        . "height=\"" . ($largoDibujo + 2 * $margenDibujo) . "\" "
+        . "    width=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
+        . "height=\"" . $largoDibujo + 2 * $margenDibujo . "\" "
         . "viewBox=\"-$margenDibujo -$margenDibujo "
-        . ($largoDibujo + 2 * $margenDibujo) . " " . ($largoDibujo + 2 * $margenDibujo) . "\" \n"
+        . $largoDibujo + 2 * $margenDibujo . " "
+        . $largoDibujo + 2 * $margenDibujo . "\" \n"
         . "    stroke-width=\"1\" stroke=\"black\" style=\"background-color: $colorFondo\"> \n";
     for ($i = 0; $i < $lineas; $i++) {
         print "    <line "
             . "x1=\"0\" "
             . "y1=\"". $hueco * $i . "\" "
             . "x2=\"$largoDibujo\" "
-            . "y2=\"". ($largoDibujo - $hueco * $i) . "\" />\n";
+            . "y2=\"" . $largoDibujo - $hueco * $i . "\" />\n";
     }
     print "  </svg>\n";
     print "\n";
@@ -195,7 +200,7 @@ if ($lineasOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2016-11-06">6 de noviembre de 2016</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">
