@@ -34,7 +34,6 @@
           <ul>
             <li><a href="#if-else-sintaxis">Sintaxis</a></li>
             <li><a href="#if-else-diagrama-flujo">Diagrama de flujo</a></li>
-            <li><a href="#if-else-abreviado">Notación ... ? ... : ...</a></li>
           </ul>
         </li>
         <li><a href="#if-elseif-else">if ... elseif ... else ...</a>
@@ -43,6 +42,7 @@
             <li><a href="#if-elseif-else-diagrama-flujo">Diagrama de flujo</a></li>
           </ul>
         </li>
+        <li><a href="#if-else-abreviado">Operador ternario ... ? ... : ...</a></li>
       </ul>
     </div>
   </nav>
@@ -838,82 +838,6 @@ if ($dado == 6) {
         </svg>
       </p>
     </section>
-
-    <section id="if-else-abreviado">
-      <h3>Notación abreviada (...) ? ... : ...</h3>
-
-      <p>Su una sentencia condicional if ... else ... sigue el patrón siguiente:</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">if (condición_1) {
-    $variable = expresión_1;
-} else {
-    $variable = expresión_2;
-}</code>
-</pre>
-      </div>
-
-      <p>... entonces se puede sustituir por la construcción más compacta:</p>
-
-      <div class="codigo">
-        <pre><code class="language-php">$variable = (condición_1) ? expresión_1 : expresión_2;</code></pre>
-      </div>
-
-      <p>que se puede escribir en varias líneas para facilitar la legibilidad:</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">$variable = (condición_1)
-    ? expresión_1
-    : expresión_2;</code>
-</pre>
-      </div>
-
-      <hr>
-
-      <p>La notación abreviada se puede utilizar no solo para asignar variables, sino en otras situaciones, como muestra el siguiente ejemplo:</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">if (condición_1) {
-  print "cadena_1";
-} else {
-  print "cadena_2";
-}</code>
-</pre>
-      </div>
-
-      <p>... se puede sustituir por la construcción:</p>
-
-      <div class="codigo">
-        <pre><code class="language-php">print (condición_1) ? "cadena_1" : "cadena_2";</code></pre>
-      </div>
-
-      <hr>
-
-      <p>La notación abreviada se puede anidar, aunque no se recomienda hacerlo porque la instrucción resultante no resulta demasiado legible. Por ejemplo, la estructura</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">if (condición_1) {
-    $variable = expresión_1;
-} elseif (condición_2) {
-    $variable = expresión_2;
-} else {
-    $variable = expresión_3;
-}</code>
-</pre>
-      </div>
-
-      <p>... se puede sustituir por la construcción siguiente:</p>
-
-      <div class="codigo">
-        <pre><code class="language-php">$variable = (condición_1) ? expresión_1 : ((condición_2) ? expresión_2 : expresión_3);</code></pre>
-      </div>
-
-      <p>A partir de PHP 7.4, publicada en noviembre de 2019, es necesario escribir paréntesis para dejar claro el orden de ejecución de las asignaciones.</p>
-    </section>
   </section>
 
   <section id="if-elseif-else">
@@ -966,7 +890,8 @@ if ($dado == 6) {
     bloque_de_sentencias_2
 } elseif (condición_3) {
     bloque_de_sentencias_3
- ...
+} ... {
+    ...
 } elseif (condición_n) {
     bloque_de_sentencias_n
 } else {
@@ -1175,6 +1100,103 @@ if ($dado == 6) {
 
   </section>
 
+  <section id="if-else-abreviado">
+    <h3>Operador ternario ... ? ... : ...</h3>
+
+    <p>Documentación oficial PHP: <a href="https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary">Operador ternario ? :</a></p>
+
+    <p>La construcción <span class="php-res">if</span> <span class="php-res">else</span> (con una única instrucción en cada caso) ...</p>
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición_1) {
+    instrucción_1;
+} else {
+    instrucción_2;
+}</code>
+</pre>
+    </div>
+
+    <p> ... se puede escribir mediante el operador ternario <span class="php-ope"> ... ? ... : ...</span></p>
+    <div class="codigo">
+      <pre><code class="language-php">condición_1 ? instrucción_1 : instrucción_2;</code></pre>
+    </div>
+
+    <p>Por ejemplo, la construcción ...</p>
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición_1) {
+    print "cadena_1";
+} else {
+    print "cadena_2";
+}</code>
+</pre>
+    </div>
+
+    <p>... se puede sustituir por la construcción:</p>
+    <div class="codigo">
+      <pre><code class="language-php">condición_1 ? print "cadena_1" : print "cadena_2";</code></pre>
+    </div>
+
+    <p>Teniendo en cuenta que una expresión (cadenas, cálculos, comparaciones, llamadas a funciones, etc.) también se puede considerar como instrucción, también podríamos escribir:</p>
+
+    <div class="codigo">
+      <pre><code class="language-php">print condición_1 ? "cadena_1" : "cadena_2";</code></pre>
+    </div>
+
+    <hr class="corta">
+
+    <p>De la misma manera, la construcción:</p>
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición_1) {
+    $variable = expresión_1;
+} else {
+    $variable = expresión_2;
+}</code>
+</pre>
+    </div>
+
+    <p>... se puede sustituir por la construcción:</p>
+
+    <div class="codigo">
+      <pre><code class="language-php">$variable = condición_1 ? expresión_1 : expresión_2;</code></pre>
+    </div>
+
+    <p>que si las expresiones son muy largas se puede escribir en varias líneas para facilitar la legibilidad:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">$variable = condición_1
+    ? expresión_1
+    : expresión_2;</code>
+</pre>
+    </div>
+
+    <hr class="corta">
+
+    <p>La notación abreviada se puede anidar, aunque no se recomienda hacerlo porque la instrucción resultante no resulta demasiado legible. Por ejemplo, la estructura</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">if (condición_1) {
+    $variable = expresión_1;
+} elseif (condición_2) {
+    $variable = expresión_2;
+} else {
+    $variable = expresión_3;
+}</code>
+</pre>
+    </div>
+
+    <p>... se puede sustituir por la construcción siguiente:</p>
+
+    <div class="codigo">
+      <pre><code class="language-php">$variable = condición_1 ? expresión_1 : (condición_2 ? expresión_2 : expresión_3);</code></pre>
+    </div>
+
+    <p>A partir de PHP 7.4, publicada en noviembre de 2019, es necesario escribir paréntesis en las expresiones anidadas para dejar claro el orden de ejecución de las asignaciones.</p>
+  </section>
+
   <script>
     var paso = [-1, -1, -1];
     var pasos = [
@@ -1240,7 +1262,7 @@ if ($dado == 6) {
   </script>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
