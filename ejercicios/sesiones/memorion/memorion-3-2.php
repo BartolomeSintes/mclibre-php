@@ -36,7 +36,7 @@ if (!isset($_SESSION["numeroDibujos"])) {
 function recoge($var, $m = "")
 {
     if (!isset($_REQUEST[$var])) {
-        $tmp = (is_array($m)) ? [] : "";
+        $tmp = is_array($m) ? [] : "";
     } elseif (!is_array($_REQUEST[$var])) {
         $tmp = trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"));
     } else {
