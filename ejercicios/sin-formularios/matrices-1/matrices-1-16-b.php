@@ -89,7 +89,7 @@ print "\n";
 // Creamos la matriz con el resultado
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    $resultado[$i] =  ($inicial1[$i] + $inicial2[$i] + $inicial3[$i] > 1) ? 1 : 0;
+    $resultado[$i] =  $inicial1[$i] + $inicial2[$i] + $inicial3[$i] > 1 ? 1 : 0;
 }
 
 // Mostramos los valores calculados

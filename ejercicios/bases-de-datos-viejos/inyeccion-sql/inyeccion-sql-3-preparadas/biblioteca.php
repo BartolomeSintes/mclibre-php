@@ -79,7 +79,7 @@ function recorta($campo, $cadena)
 
 function recogeParaConsulta($db, $var, $var2="")
 {
-    $tmp = (isset($_REQUEST[$var]) && ($_REQUEST[$var] != "")) ?
+    $tmp = isset($_REQUEST[$var]) && ($_REQUEST[$var] != "") ?
         strip_tags(trim(htmlspecialchars($_REQUEST[$var]))) : strip_tags(trim(htmlspecialchars($var2)));
     $tmp = recorta($var, $tmp);
     if (!is_numeric($tmp)) {

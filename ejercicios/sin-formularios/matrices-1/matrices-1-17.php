@@ -3,9 +3,9 @@
  * Matrices (1) 17 - matrices-1-17.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-27
+ * @version   2022-10-11
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -95,12 +95,12 @@ for ($i = 0; $i < $numero; $i++) {
 }
 
 // Mostramos cuántas partidas ha ganado cada uno
-print "  <p>El jugador 1 ha ganado <strong>$gana1</strong> ve";
-print ($gana1 != 1) ? "ces" : "z";
-print ", el jugador 2 ha ganado <strong>$gana2</strong> ve";
-print ($gana2 != 1) ? "ces" : "z";
-print " y los jugadores han empatado <strong>$empate</strong> ve";
-print ($empate != 1) ? "ces" : "z";
+print "  <p>El jugador 1 ha ganado <strong>$gana1</strong> ";
+print $gana1 != 1 ? "veces" : "vez";
+print ", el jugador 2 ha ganado <strong>$gana2</strong>";
+print $gana2 != 1 ? "veces" : "vez";
+print " y los jugadores han empatado <strong>$empate</strong>";
+print $empate != 1 ? "veces" : "vez";
 print ".</p>\n";
 print "\n";
 
@@ -117,7 +117,7 @@ if ($gana1 > $gana2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-27">27 de octubre de 2021</time>
+      <time datetime="2022-10-11">11 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

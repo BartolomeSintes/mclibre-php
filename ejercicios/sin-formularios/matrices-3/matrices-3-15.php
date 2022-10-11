@@ -88,7 +88,7 @@ for ($i = 0; $i < count($cartas) - 1; $i++) {
 }
 
 // Según el valor de consecutivas mostramos un mensaje distinto
-print ($consecutivas) ? "<p>Hay cartas iguales consecutivas</p>\n" : "<p>No hay cartas iguales consecutivas</p>\n";
+print $consecutivas ? "<p>Hay cartas iguales consecutivas</p>\n" : "<p>No hay cartas iguales consecutivas</p>\n";
 
 ?>
   <footer>

@@ -348,11 +348,11 @@ if ($trio1 &gt; $trio2) {
 
         <div class="codigo">
             <pre>
-<code class="language-php">$trio1 = ($dado1a == $dado1b && $dado1a == $dado1c) ? $dado1a : 0;
-$trio2 = ($dado2a == $dado2b && $dado2a == $dado2c) ? $dado2a : 0;
+<code class="language-php">$trio1 = $dado1a == $dado1b && $dado1a == $dado1c ? $dado1a : 0;
+$trio2 = $dado2a == $dado2b && $dado2a == $dado2c ? $dado2a : 0;
 
-$pareja1 = ($dado1a == $dado1b || $dado1a == $dado1c) ? $dado1a : (($dado1b == $dado1c) ? $dado1b : 0);
-$pareja2 = ($dado2a == $dado2b || $dado2a == $dado2c) ? $dado2a : (($dado2b == $dado2c) ? $dado2b : 0);
+$pareja1 = $dado1a == $dado1b || $dado1a == $dado1c ? $dado1a : ($dado1b == $dado1c ? $dado1b : 0);
+$pareja2 = $dado2a == $dado2b || $dado2a == $dado2c ? $dado2a : ($dado2b == $dado2c ? $dado2b : 0);
 
 $total1 = $dado1a + $dado1b + $dado1c;
 $total2 = $dado2a + $dado2b + $dado2c;

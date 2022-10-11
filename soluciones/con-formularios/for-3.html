@@ -664,7 +664,7 @@ if ($numero == "") {
 }
 
 if ($numeroOk) {
-    $paso = ($numero &gt; 1) ? 255 / ($numero - 1) : 0;
+    $paso = $numero &gt; 1 ? 255 / ($numero - 1) : 0;
     for ($k = 0; $k &lt; $numero; $k++) {
         print "  &lt;table class=\"conborde\"&gt;\n";
         print "    &lt;caption&gt;Tabla nº" . 1 + $k . "&lt;/caption&gt;\n";
@@ -766,8 +766,8 @@ if ($numeradasOk && $columnasOk) {
     for ($i = 1; $i &lt;= $filas; $i++) {
         print "      &lt;tr&gt;\n";
         for ($j = 1; $j &lt;= $columnas; $j++) {
-            print "        &lt;td&gt;" . (($contador &lt;= $numeradas) ? $contador++ : "")
-                . "&lt;/td&gt;\n";
+            // Los paréntesis aquí son necesarios
+            print "        &lt;td&gt;" . ($contador &lt;= $numeradas ? $contador++ : "") . "&lt;/td&gt;\n";
         }
         print "      &lt;/tr&gt;\n";
     }
@@ -782,7 +782,7 @@ if ($numeradasOk && $columnasOk) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

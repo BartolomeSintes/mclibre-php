@@ -75,7 +75,7 @@ print "\n";
 // Creamos la matriz con el resultado de la conjunción lógica
 $resultado = [];
 for ($i = 0; $i < $numero; $i++) {
-    $resultado[$i] = ($inicial1[$i] == 1 && $inicial2[$i] == 1) ? 1 : 0;
+    $resultado[$i] = $inicial1[$i] == 1 && $inicial2[$i] == 1 ? 1 : 0;
 }
 
 /* Otra forma de calcular los valores complementarios
