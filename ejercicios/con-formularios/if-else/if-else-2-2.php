@@ -101,8 +101,8 @@ if ($numero2 == "") {
 }
 
 if ($numero1Ok && $numero2Ok) {
-    $mayor = ($numero1 >= $numero2) ? $numero1 : $numero2;
-    $menor = ($numero1 >= $numero2) ? $numero2 : $numero1;
+    $mayor = $numero1 >= $numero2 ? $numero1 : $numero2;
+    $menor = $numero1 >= $numero2 ? $numero2 : $numero1;
     print "  <p>Número 1: <strong>$numero1</strong></p>\n";
     print "\n";
     print "  <p>Número 2: <strong>$numero2</strong></p>\n";

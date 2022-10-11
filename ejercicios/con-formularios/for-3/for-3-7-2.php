@@ -84,7 +84,7 @@ if ($numero == "") {
 }
 
 if ($numeroOk) {
-    $paso = ($numero > 1) ? 255 / ($numero - 1) : 0;
+    $paso = $numero > 1 ? 255 / ($numero - 1) : 0;
     for ($k = 0; $k < $numero; $k++) {
         print "  <table class=\"conborde\">\n";
         print "    <caption>Tabla nº" . 1 + $k . "</caption>\n";

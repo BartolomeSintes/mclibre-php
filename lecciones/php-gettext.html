@@ -222,7 +222,7 @@ print "&lt;p&gt;" . _("Esta página está en castellano") . "&lt;/p&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$language = (isset($_REQUEST["language"])) ? trim(strip_tags($_REQUEST["language"])) : "es_ES";
+$language = isset($_REQUEST["language"]) ? trim(strip_tags($_REQUEST["language"])) : "es_ES";
 putenv("LC_ALL=$language");
 setlocale(LC_ALL, $language);
 bindtextdomain("messages", "./locale");

@@ -62,7 +62,7 @@ print "\n";
 $resultado    = [];
 $resultado[0] = $inicial[0];
 for ($i = 0; $i < $numero - 1; $i++) {
-    $resultado[$i + 1] = ($inicial[$i] == $inicial[$i + 1]) ? 0 : 1;
+    $resultado[$i + 1] = $inicial[$i] == $inicial[$i + 1] ? 0 : 1;
 }
 
 // Mostramos los valores calculados

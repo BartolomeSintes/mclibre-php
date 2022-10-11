@@ -61,7 +61,7 @@ print "\n";
 // Creamos la matriz con la detección de los cambios
 $resultado = [];
 for ($i = 0; $i < $numero - 1; $i++) {
-    $resultado[$i] = ($inicial[$i] == $inicial[$i + 1]) ? 0 : 1;
+    $resultado[$i] = $inicial[$i] == $inicial[$i + 1] ? 0 : 1;
 }
 
 // Creamos la matriz con la detección de los cambios

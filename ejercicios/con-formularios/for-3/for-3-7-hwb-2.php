@@ -84,8 +84,8 @@ if ($numero == "") {
 }
 
 if ($numeroOk) {
-    $pasoH = ($numero > 1) ? 360 / ($numero - 1) : 0;
-    $paso = ($numero > 1) ? 100 / ($numero - 1) : 0;
+    $pasoH = $numero > 1 ? 360 / ($numero - 1) : 0;
+    $paso = $numero > 1 ? 100 / ($numero - 1) : 0;
     for ($k = 0; $k < $numero; $k++) {
         print "  <table class=\"conborde\">\n";
         print "    <caption>Hue: " . round($k * $pasoH) . "</caption>\n";

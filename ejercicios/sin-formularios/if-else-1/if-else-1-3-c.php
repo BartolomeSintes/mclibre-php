@@ -3,9 +3,9 @@
  * if ... else ... (1) 3 - if-else-1-3-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-05
+ * @version   202-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,8 +63,8 @@ print "          <img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" heig
 print "          <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\">\n";
 print "        </td>\n";
 
-$pareja1 = ($dado1a == $dado1b)? $dado1a : 0;
-$pareja2 = ($dado2a == $dado2b) ? $dado2a : 0;
+$pareja1 = $dado1a == $dado1b ? $dado1a : 0;
+$pareja2 = $dado2a == $dado2b ? $dado2a : 0;
 
 $total1 = $dado1a + $dado1b;
 $total2 = $dado2a + $dado2b;
@@ -88,7 +88,7 @@ if ($pareja1 > $pareja2) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-10">10 de octubre de 2019</time>
+      <time datetime="2022-10-10">10 de octubre de 2022</time>
     </p>
 
     <p class="licencia">
