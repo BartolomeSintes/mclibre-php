@@ -25,7 +25,7 @@
       <ul>
         <li><a href="#que-es">¿Qué es una variable?</a></li>
         <li><a href="#usar">Usar variables</a></li>
-        <li><a href="#concatenar">Concatenar variables</a></li>
+        <li><a href="#concatenar">Concatenar variables y cadenas</a></li>
         <li><a href="#cadenas">Variables en cadenas</a></li>
         <li><a href="#mostrar-variables">Variables para depuración</a></li>
       </ul>
@@ -263,7 +263,35 @@ print "&lt;p&gt;$edad&lt;/p&gt;\n";
   <section id="concatenar">
     <h2>Concatenar variables y cadenas</h2>
 
-    <p>El operador . (punto) permite concatenar dos o más cadenas o variables.</p>
+    <p>En general se desaconseja escribir cadenas muy largas en un programa, porque tanto si el editor ajusta la línea como si no, el programa resulta incómodo de leer (si no se ajusta la línea porque hay que desplazarse a la derecha para poder leer el contenido, si se ajusta la línea porque el sangrado se pierde en la segunda línea y siguientes). Una manera de evitar cadenas demasiado largas podría consistir en escribir varias instrucciones <span class="php-res">print</span> consecutivas:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Este párrafo es bastante largo. Si lo escribimos en una sola línea, el código fuente "
+print "del programa resulta incómodo de leer, así que la partimos en varias cadenas escritas "
+print "en instrucciones print consecutivas.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Pero también se puede utilizar el operador de concatenación . (punto), que permite concatenar cadenas.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Este párrafo es bastante largo. Si lo escribimos en una sola línea, el código fuente "
+    . "del programa resulta incómodo de leer, así que la partimos en varias cadenas concatenadas "
+    . "por el operador de concatenación: . (punto)&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>El operador . (punto) también permite concatenar cadenas o variables.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -298,7 +326,43 @@ print "&lt;p&gt;$cadena4&lt;/p&gt;\n";
       </div>
     </div>
 
-    <p>El operador . (punto) se puede utilizar en la instrucción print. En el ejemplo siguiente se concatenan una cadena, una variable y una cadena.</p>
+    <p>El operador . (punto) debe escribirse entre espacios en blancos, no solamente porque sea el formato recomendado, sino para evitar posibles errores. El programa de ejemplo siguiente es incorrecto:
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;1.5 + 1 = " . 1.5 + <span class="codigo-resaltado">1.</span> "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado">
+        <p><strong>Parse error</strong>: syntax error, unexpected double-quoted string &quot;&lt;/p&gt;\n&quot; in<strong>ejemplo.php</strong> on line <strong>2</strong></p>
+      </div>
+    </div>
+
+    <p>Al escribir el operador punto unido al número 1, PHP interpreta que se trata de un número decimal y no sabe qué hacer con la cadena que hay a continuación. Separando el operador punto del número, el programa funcionaría correctamente.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;1.5 + 1 = " . 1.5 + <span class="codigo-resaltado">1 .</span> "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre><code class="language-html">&lt;p&gt;1.5 + 1 = 2.5&lt;p&gt;</code></pre>
+      </div>
+    </div>
+
+    <p>El operador . (punto) se puede utilizar en la instrucción <span class="php-res">print</span>. En el ejemplo siguiente se concatenan una cadena, una variable y una cadena.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -488,7 +552,7 @@ print "&lt;p&gt;Potencia: $x ^ $y = " <span class="codigo-resaltado">. pow($x, $
         </div>
       </div>
 
-      <p><strong>Nota</strong>: Antes de PHP 8.0 (publicado en noviembre de 2020), las expresiones que contenían sumas o restas debían escribirase entre paréntesis, como se comenta en la lección <a href="php-cambios.html#php-8-0-precedencia-concatenacion">Cambios en el lenguaje</a>.</p>
+      <p><strong>Nota</strong>: Antes de PHP 8.0 (publicado en noviembre de 2020), las expresiones que contenían sumas o restas debían escribirse entre paréntesis, como se comenta en la lección <a href="php-cambios.html#php-8-0-precedencia-concatenacion">Cambios en el lenguaje</a>.</p>
 
       <p>Por supuesto, siempre se pueden utilizar definir auxiliares que guarden los resultados y utilizar las variables auxiliares en la cadena.</p>
 
@@ -797,7 +861,7 @@ print "&lt;p&gt;La variable \$estudiante tiene el valor " . var_export($estudian
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 11 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
