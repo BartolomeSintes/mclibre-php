@@ -23,6 +23,7 @@
       <h2>Cambios en el lenguaje</h2>
 
       <ul>
+        <li><a href="#php-8-1">PHP 8.1 (2021)</a></li>
         <li><a href="#php-8-0">PHP 8.0 (2020)</a></li>
         <li><a href="#php-7-3">PHP 7.3 (2018)</a></li>
         <li><a href="#php-7-1">PHP 7.1 (2016)</a></li>
@@ -38,6 +39,92 @@
 
   <p>Manual de PHP: <a href="https://www.php.net/manual/en/appendices.php">Apéndices</a></p>
 
+  <section id="php-8-1">
+    <h2>PHP 8.1 (noviembre de 2021)</h2>
+
+    <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration81.php">Cambios en PHP 8.1</a></p>
+
+    <ul>
+      <li id="php-8-1-conversion-decimales-enteros">[<a href="https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.core.implicit-float-conversion">Referencia</a>] A partir de PHP 8.1 cuando la conversión de decimales a enteros supone una pérdida de precisión se genera un error <span class="php-con">E_DEPRECATED</span>, aunque la conversión todavía se realiza. Por ejemplo, en PHP se podían utilizar números decimales como índices de matrices porque se convierten automáticamente a enteros (eliminado la parte decimal). Todavía se puede hacer, pero se genera un error <span class="php-con">E_DEPRECATED</span>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Antes de PHP 8.1, se podían utilizar índices decimales que PHP
+// convertía a enteros quitando la parte decimal.
+// Todavía se puede hacer, pero PHP genera errores E_DEPRECATED
+$nombres[1.7] = "Alba";
+
+print "&lt;p&gt;$nombres[1]&lt;p&gt;\n";
+?&gt;</code>
+  </pre>
+          </div>
+          <div class="resultado-html">
+            <b>Deprecated</b>: Implicit conversion from float 1.7 to int loses precision in <b>ejemplo.php</b> on line <b>5</b>
+            <p>Alba</p>
+
+          </div>
+        </div>
+
+        <p>En cualquier versión de PHP, la conversión automática a enteros no se realiza directamente dentro de las cadenas, por lo que es necesario utilizar llaves o concatenar las expresiones: </p>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Antes de PHP 8.1, se podían utilizar índices decimales que PHP
+// convertía a enteros quitando la parte decimal.
+// Todavía se puede hacer, pero PHP genera errores E_DEPRECATED
+$nombres[1.7] = "Alba";
+
+print "&lt;p&gt;$nombres[1.7]&lt;p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <b>Parse error</b>: syntax error, unexpected '.', expecting ']' in <b>ejemplo.php</b> on line <b>7</b>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Antes de PHP 8.1, se podían utilizar índices decimales que PHP
+// convertía a enteros quitando la parte decimal.
+// Todavía se puede hacer, pero PHP genera errores E_DEPRECATED
+$nombres[1.7] = "Alba";
+
+print "&lt;p&gt;{$nombres[1.2]}&lt;p&gt;\n";
+print "\n";
+print "&lt;p&gt;" . $nombres[1.2] . "&lt;p&gt;\n";
+?&gt;</code>
+  </pre>
+          </div>
+          <div class="resultado-html">
+            <p><b>Deprecated</b>: Implicit conversion from float 1.7 to int loses precision in <b>ejemplo.php</b> on line <b>5</b></p>
+            <p><b>Deprecated</b>: Implicit conversion from float 1.7 to int loses precision in <b>ejemplo.php</b> on line <b>7</b></p>
+            <p>Alba</p>
+            <p><b>Deprecated</b>: Implicit conversion from float 1.7 to int loses precision in <b>ejemplo.php</b> on line <b>9</b></p>
+            <p>Alba</p>
+          </div>
+        </div>
+
+
+      </li>
+    </ul>
+  </section>
+
   <section id="php-8-0">
     <h2>PHP 8.0 (noviembre de 2020)</h2>
 
@@ -46,45 +133,31 @@
     <ul>
       <li id="php-8-0-precedencia-concatenacion">A partir de PHP 8.0 la operación concatenación se efectúa después de las sumas y restas (o de las rotaciones de bits). Eso significa que ya no es necesario escribir entre paréntesis las expresiones concatenadas en las que se utilizan sumas o restas, como hacía falta antes de PHP 8.0. Los dos ejemplos siguientes son correctos y producen el mismo resultado:
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $x = 3;
 $y = 4;
 // Antes de PHP 8.0, la expresión debía escribirse entre paréntesis
 // porque incluía una suma:
 print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. ($x + $y) .</span> "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;</code>
-</pre>
-        </div>
-      </div>
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$x = 3;
-$y = 4;
+print "\n";
 // A partir de PHP 8.0, los paréntesis no son necesarios
 print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</span> "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;</code>
-</pre>
-        </div>
-      </div>
-         </li>
-      <li id="php-8-0-comparaciones">A partir de PHP 8.0, la comparación entre números y cadenas no numéricas se realiza convirtiendo el número a cadena y comparando las cadenas, lo que supone un cambio en el resultado de algunas comparaciones:
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;
 
-        <p>[<a href="https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.core.string-number-comparision">Referencia</a>]</p>
+&lt;p&gt;Suma: 3 + 4 = <span class="codigo-resaltado">7</span>&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
+      <li id="php-8-0-comparaciones">[<a href="https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.core.string-number-comparision">Referencia</a>] A partir de PHP 8.0, la comparación entre números y cadenas no numéricas se realiza convirtiendo el número a cadena y comparando las cadenas, lo que supone un cambio en el resultado de algunas comparaciones:
 
         <table class="tabla-con-borde mcl-centrado">
           <tbody>
@@ -121,6 +194,7 @@ print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</sp
 
     <ul>
       <li>A partir de PHP 7.3, la función <a href="https://www.php.net/manual/en/function.define.php"><span class="php-fun">define()</span></a> genera un aviso E_DEPRECATED cuando se utilizan tres argumentos. El tercer argumento permitía definir constantes que no distinguieran entre mayúsculas y minúsculas. La función todavía atendía la petición, pero a partir de PHP 8 se genera un aviso E_WARNING y ya no se pueden crear constantes que no distingan entre mayúsculas y minúsculas.</li>
+      <li>En PHP 7.3 se añadió la función <a href="https://www.php.net/manual/en/function.is-countable.php"><span class="php-fun">is_countable()</span></a>.</li>
     </ul>
   </section>
 
@@ -130,10 +204,35 @@ print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</sp
     <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration71.php">Cambios en PHP 7.1</a></p>
 
     <ul>
-      <li>A partir de PHP 7.1, la función <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> es un alias de la función <a href="https://www.php.net/manual/en/function.mt-rand.php"><span class="php-fun">mt_rand()</span></a>, por lo que es indiferente usar una u otra. En versiones anteriores eran funciones distintas y la función <span class="php-fun">mt_rand()</span> era más rápida y estaba basada en el algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a>. [<a href="https://www.php.net/manual/en/migration71.incompatible.php#migration71.incompatible.rand-srand-aliases">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">mt_rand()</span> y utilizo siempre la función <span class="php-fun">rand()</span>.
+      <li>[<a href="https://www.php.net/manual/en/migration71.incompatible.php#migration71.incompatible.rand-srand-aliases">Referencia</a>]. A partir de PHP 7.1, la función <a href="https://www.php.net/manual/en/function.rand.php"><span class="php-fun">rand()</span></a> es un alias de la función <a href="https://www.php.net/manual/en/function.mt-rand.php"><span class="php-fun">mt_rand()</span></a>, por lo que es indiferente usar una u otra. En versiones anteriores eran funciones distintas y la función <span class="php-fun">mt_rand()</span> era más rápida y estaba basada en el algoritmo <a href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a>. En el curso 2022/23 dejé de usar la función <span class="php-fun">mt_rand()</span> y utilizo siempre la función <span class="php-fun">rand()</span>.
         <p>Consecuentemente, desde PHP 7.1 las funciones <a href="https://www.php.net/manual/en/function.getrandmax.php"><span class="php-fun">getrandmax()</span></a> y <a href="https://www.php.net/manual/en/function.mt-getrandmax.php"><span class="php-fun">mt_getrandmax()</span></a>, que devolvían el máximo valor que podía obtenerse con las funciones <span class="php-fun">rand()</span> y <span class="php-fun">mt_rand()</span> al ser llamadas sin argumentos, devuelven ahora el mismo valor, que coincide con <a href="php-constantes.html#php-int-max">PHP_INT_MAX</a>.</p>
       </li>
+      <li>En PHP 7.1 se añadió la función <a href="https://www.php.net/manual/en/function.is-iterable.php"><span class="php-fun">is_iterable()</span></a>.</li>
+      <li>[<a href="https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.support-for-negative-string-offsets">Referencia</a>] En PHP 7.1 se añadió la posibilidad de usar índices negativos para referirse a posiciones en una cadena (-1 es el último carácter, -2 el penúltimo, etc.). También se admitió la inclusión de referencias con índices negativos dentro de cadenas (para escribir el valor en un print, como muestra el ejemplo siguiente).
 
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$cadena = "abcde";
+// Antes de PHP 7.1, las expresiones con índices negativos debían escribirse entre llaves
+print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-resaltado">{$cadena[-1]}</span>&lt;/p&gt;\n";
+print "\n";
+// A partir de PHP 7.1, se pueden escribir dentro de las cadenas referencias a variables
+// con índices negativos
+print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-resaltado">$cadena[-1]</span>&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;<span class="codigo-resaltado">abcde</span> empieza por <span class="codigo-resaltado">a</span> y acaba por <span class="codigo-resaltado">e</span>&lt;/p&gt;
+
+&lt;p&gt;<span class="codigo-resaltado">abcde</span> empieza por <span class="codigo-resaltado">a</span> y acaba por <span class="codigo-resaltado">e</span>&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
+      </li>
     </ul>
   </section>
 
@@ -143,7 +242,7 @@ print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</sp
     <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration70.php">Cambios en PHP 7.0</a></p>
 
     <ul>
-      <li>A partir de PHP 5.4, la división por cero ya no genera un error E_WARNING, sino una excepción. En caso de que la excepción no sea capturada, se genera un error E_ERROR.</li>
+      <li>[<a href="https://www.php.net/manual/en/migration70.incompatible.php#migration70.incompatible.integers.div-by-zero">Referencia</a>] A partir de PHP 7.0, la división por cero ya no genera un error E_WARNING, sino una excepción. En caso de que la excepción no sea capturada, se genera un error E_ERROR.</li>
       <li>Se eliminan la función split() y las funciones ereg_().</li>
       <li>En PHP 7.0 se introdujo la función <a href="https://www.php.net/manual/en/function.intdiv.php"><span class="php-fun">intdiv()</span></a>, que calcula el cociente de la división de dos números enteros. En el curso 2022/23 he empezado a utilizarla para calcular cocientes, en vez de hacer floor() de la división.</li>
     </ul>
@@ -155,7 +254,7 @@ print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</sp
     <p>Manual de PHP: <a href="https://www.php.net/manual/en/migration56.php">Cambios en PHP 5.6</a></p>
 
     <ul>
-      <li>En PHP 5.6 se introdujo la notación <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-ope">**</span></a> para la operación matemática potenciación. En versiones anteriores, PHP solo disponía de la función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow()</span></a>, que sigue existiendo en versiones posteriores. [<a href="https://www.php.net/manual/en/migration56.new-features.php#migration56.new-features.exponentiation">Referencia</a>]. En el curso 2022/23 dejé de usar la función <span class="php-fun">pow()</span> y utilizo siempre el operador <span class="php-ope">**</span>.</li>
+      <li>[<a href="https://www.php.net/manual/en/migration56.new-features.php#migration56.new-features.exponentiation">Referencia</a>] En PHP 5.6 se introdujo la notación <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-ope">**</span></a> para la operación matemática potenciación. En versiones anteriores, PHP solo disponía de la función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow()</span></a>, que sigue existiendo en versiones posteriores. En el curso 2022/23 dejé de usar la función <span class="php-fun">pow()</span> y utilizo siempre el operador <span class="php-ope">**</span>.</li>
     </ul>
   </section>
 
@@ -191,7 +290,7 @@ print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</sp
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 17 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

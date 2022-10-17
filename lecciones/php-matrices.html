@@ -758,121 +758,28 @@ print "&lt;p&gt;$datos[0] $datos[1] nació en $datos[2].&lt;p&gt;\n";
 
     <hr class="corta">
 
-    <p>Los valores de los índices numéricos suelen ser siempre positivos, pero PHP también permite que sean negativos, aunque hay que tener cuidado al imprimirlos:</p>
+    <p>Los valores de los índices numéricos suelen ser siempre positivos, pero PHP también permite que sean negativos:</p>
 
     <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
-      </div>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$nombres[-3] = "Hola";
+$nombres[-3] = "Alba";
 
 print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <b>Parse error</b>: syntax error, unexpected '-', expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in <b>ejemplo.php</b> on line <b>3</b>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
-      </div>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombres[-3] = "Alba";
-
-print "&lt;p&gt;{$nombres[-3]}&lt;p&gt;\n";
-print "\n";
-print "&lt;p&gt;" . $nombres[-3] . "&lt;p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>Alba</p>
-
         <p>Alba</p>
       </div>
     </div>
 
-    <p>PHP no permite valores decimales en los índices numéricos. En caso de usarlos, PHP los trunca automáticamente a enteros (por lo que en general no se recomienda utilizarlos):</p>
+    <p><strong>Nota</strong>: Actualmente (octubre de 2022), Visual Studio Code muestra un aviso cuando se utilizan índices negativos dentro de cadenas (como en el ejemplo anterior), pero ese aviso no es correcto.</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombres[1.7] = "Alba";
+    <hr class="corta">
 
-print "&lt;p&gt;$nombres[1]&lt;p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>Alba</p>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombres[1.7] = "Alba";
-
-print "&lt;p&gt;" . $nombres[1.2] . "&lt;p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>Alba</p>
-      </div>
-    </div>
-
-    <p>Como en el caso de los negativos, hay que tener cuidado al imprimirlos: </p>
-
-    <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
-      </div>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombres[1.7] = "Alba";
-
-print "&lt;p&gt;$nombres[1.7]&lt;p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <b>Parse error</b>: syntax error, unexpected '.', expecting ']' in <b>ejemplo.php</b> on line <b>3</b>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="icono-ok">
-        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
-      </div>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombres[1.7] = "Alba";
-
-print "&lt;p&gt;{$nombres[1.2]}&lt;p&gt;\n";
-print "\n";
-print "&lt;p&gt;" . $nombres[1.2] . "&lt;p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>Alba</p>
-
-        <p>Alba</p>
-      </div>
-    </div>
+    <p>PHP no permite valores decimales en los índices numéricos, aunque sí que se pueden escribir decimales en los índices porque PHP los trunca automáticamente a enteros y trabaja con los valores enteros. Por ello, se recomienda <strong>NO</strong> utilizar nunca decimales en los índices numéricos. De hecho, a partir de PHP 8.1, si la conversión de enteros a decimales supone una pérdida de precisión se genera un error <span class="php-con">E_DEPRECATED</span>, como se comenta en la lección <a href="php-cambios.html#php-8-1-conversion-decimales-enteros">Cambios en el lenguaje</a>.</p>
 
     <hr class="corta">
 
