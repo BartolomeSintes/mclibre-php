@@ -24,7 +24,6 @@
 
       <ul>
         <li><a href="#que-es">Qué es una matriz</a></li>
-        <li><a href="#notacion">Notación compacta</a></li>
         <li><a href="#crear">Crear una matriz</a></li>
         <li><a href="#asociativas">Matrices asociativas</a></li>
         <li><a href="#multidimensionales">Matrices de dimensión &gt; 1</a></li>
@@ -34,6 +33,7 @@
         <li><a href="#mas-informacion-general">Más sobre matrices</a></li>
         <li><a href="#borrar">Borrar matriz o elementos</a></li>
         <li><a href="#copiar">Copiar matriz</a></li>
+        <li><a href="#notacion">Notación clásica</a></li>
       </ul>
     </div>
   </nav>
@@ -52,23 +52,14 @@
     <p>Si los elementos de una matriz son a su vez también matrices, se necesitan varios índices para identificar a los datos. Se dice entonces que las matrices son multidimensionales.</p>
   </section>
 
-  <section id="notacion">
-    <h2>Notación compacta de matrices</h2>
-
-    <p>En PHP 5.4 (publicado en marzo de 2012) se introdujo en PHP la notación compacta de matrices. Como se explica en la lección <a href="php-cambios-matrices.html">Notación clásica de matrices</a>, la diferencia entre ambas notaciones reside en la manera de definir matrices o de añadir valores a una matriz.</p>
-
-    <p>Desde el curso 2017/18, en estos apuntes se utiliza la notación compacta en los ejemplos y soluciones de ejercicios, aunque los alumnos pueden utilizar la notación clásica si así lo desean.</p>
-  </section>
-
   <section id="crear">
     <h2>Crear una matriz</h2>
 
-    <p>En la notación compacta, las matrices se crean empleando corchetes ([]).</p>
+    <p>Las matrices se definen mediante corchetes ([]).</p>
 
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Notación compacta
 $nombres = ["Ana", "Bernardo", "Carmen"];
 ?&gt;</code>
 </pre>
@@ -79,7 +70,6 @@ $nombres = ["Ana", "Bernardo", "Carmen"];
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Notación compacta
 $nombres = ["Ana", "Bernardo", "Carmen", ];
 ?&gt;</code>
 </pre>
@@ -110,7 +100,45 @@ print "&lt;p&gt;$nombres[0]&lt;/p&gt;\n";
 
     <hr class="corta">
 
-    <p>Una vez creada la matriz, los elementos individuales se pueden utilizar como si fueran variables independientes. Pero para referirse a un elemento individual, hay que indicar siempre el índice correspondiente.</p>
+    <p>También se pueden crear matrices asignando directamente un elemento de la matriz.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$apellidos[0] = "García";
+
+print "&lt;p&gt;$apellidos[0]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>García</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Una matriz puede almacenar datos de tipos distintos. </p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos = ["Santiago", "Ramón y Cajal", 1852];
+
+print "&lt;p&gt;$datos[0] $datos[1] nació en $datos[2].&lt;p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Santiago Ramón y Cajal nació en 1852.</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Una vez creada la matriz, los elementos individuales se pueden utilizar en el programa como si fueran variables independientes. Para referirse a un elemento individual, hay que indicar siempre el índice correspondiente.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -165,33 +193,14 @@ $nombres = [];
 ?&gt;</code>
 </pre>
     </div>
-
-    <hr class="corta">
-
-    <p>También se pueden crear matrices asignando directamente un elemento de la matriz.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$apellidos[1] = "García";
-
-print "&lt;p&gt;$apellidos[1]&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>García</p>
-      </div>
-    </div>
   </section>
 
   <section id="asociativas">
     <h2>Matrices asociativas</h2>
 
-    <p>Las matrices de PHP son matrices <i>asociativas</i>, es decir, que los índices no tienen por qué ser correlativos, ni siquiera tienen por qué ser números.</p>
+    <p>Los índices de las matrices pueden ser números enteros o cadenas. En el caso de ser números, estos no tienen por qué ser correlativos. Este tipo de matrices se denominan matrices <i>asociativas</i>, ya que las matrices lo que hacen es asociar una relación entre un índice y un valor.</p>
 
-    <p>Al crear matrices asociativas, debemos indicar el valor de los índices, utilizando la notación <strong>$indice =&gt; $valor</strong>:</p>
+    <p>Para crear matrices asociativas, debemos indicar el valor de los índices, utilizando la notación <strong>$indice =&gt; $valor</strong>:</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -525,7 +534,7 @@ print "&lt;p&gt;La matriz es " . print_r($datos, true) . "&lt;/p&gt;\n";
   <section id="anadir-elementos">
     <h2>Añadir elementos a una matriz</h2>
 
-    <p>En la notación compacta, se pueden añadir elementos a una matriz indicando o no el índice del nuevo elemento:</p>
+    <p>Se pueden añadir elementos a una matriz indicando o no el índice del nuevo elemento:</p>
     <ul>
       <li>Si no se indica el índice, el nuevo elemento toma como índice el siguiente al mayor de los existentes (o el índice 0 si no había ningún valor numérico):
 
@@ -738,24 +747,6 @@ print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
 
   <section id="mas-informacion-general">
     <h2>Más información general sobre las matrices</h2>
-
-    <p>Cada elemento de la matriz se comporta como una variable independiente y se pueden almacenar datos de tipos distintos en una misma matriz.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos = ["Santiago", "Ramón y Cajal", 1852];
-
-print "&lt;p&gt;$datos[0] $datos[1] nació en $datos[2].&lt;p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>Santiago Ramón y Cajal nació en 1852.</p>
-      </div>
-    </div>
-
     <hr class="corta">
 
     <p>Los valores de los índices numéricos suelen ser siempre positivos, pero PHP también permite que sean negativos:</p>
@@ -1024,8 +1015,14 @@ print "&lt;pre&gt;\n"; print_r($cuadradosCopia); print "&lt;/pre&gt;\n";
     </div>
   </section>
 
+  <section id="notacion">
+    <h2>Notación clásica de matrices</h2>
+
+    <p>En PHP 5.4 (publicado en marzo de 2012) se introdujo en PHP la notación compacta de matrices, que es la que se explica en esta lección y se utiliza en estos apuntes desde el curso 2017/18. Como se explica en la lección <a href="php-cambios-matrices.html">Notación clásica de matrices</a>, la diferencia entre ambas notaciones reside en la manera de definir matrices o de añadir valores a una matriz.</p>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 9 de noviembre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
