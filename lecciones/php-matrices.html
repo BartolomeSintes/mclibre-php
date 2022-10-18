@@ -162,23 +162,24 @@ print "&lt;p&gt;$nombres[1]&lt;/p&gt;\n";
 
     <hr class="corta">
 
-    <p>Si se solicita un valor no definido de una matriz, se produce un aviso (Warning: Undefined array key en PHP 8, o Notice: undefined offset en PHP 7). Los avisos no interrumpen la ejecución del programa, pero se deben corregir porque el programa seguramente no tendrá el comportamiento esperado:</p>
+    <p>Si se solicita un valor no definido de una matriz, se produce un aviso. Los avisos no interrumpen la ejecución del programa, pero se deben corregir porque el programa seguramente no tendrá el comportamiento esperado:</p>
 
     <div class="filaflex">
       <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
       </div>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 $nombres = ["Ana", "Bernardo", "Carmen"];
 
-print "&lt;p&gt;$nombres<span class="codigo-resaltado">[3]</span>&lt;p&gt;\n";
+print "&lt;p&gt;Nombre: $nombres<span class="codigo-resaltado">[3]</span>&lt;p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
         <p><b>Warning</b>: Undefined array key 3 in <b>ejemplo.php</b> on line <b>4</b></p>
+        <p>Nombre:</p>
       </div>
     </div>
 
@@ -268,18 +269,30 @@ print "&lt;p&gt;Bárbara tiene <span class="codigo-resaltado">$edades[Bárbara]<
 <code class="language-php">&lt;?php
 $edades = ["Andrés" =&gt; 20, "Bárbara" =&gt; 19, "Camilo" =&gt; 17];
 
-print "&lt;p&gt;Bárbara tiene " . <span class="codigo-resaltado">$edades[Bárbara]</span> . " años&lt;/p&gt;\n";
-print "\n";
-print "&lt;p&gt;Camilo tiene {<span class="codigo-resaltado">$edades[Camilo]</span>} años&lt;/p&gt;\n";
+print "&lt;p&gt;Bárbara tiene " <span class="codigo-resaltado">. $edades[Bárbara] .</span> " años&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <b>Notice</b>: Use of undefined constant Bárbara - assumed 'Bárbara' in <b>ejemplo.php</b> on line <b>4</b><br>
-        <p>Bárbara tiene 19 años</p>
-        <br>
-        <b>Notice</b>: Use of undefined constant Camilo - assumed 'Camilo' in <b>ejemplo.php</b> on line <b>6</b><br>
-        <p>Camilo tiene 17 años</p>
+        <b>Fatal error</b>: Uncaught Error: Undefined constant "Bárbara" in ejemplo.php:4 Stack trace #0 {main} thrown in <b>ejemplo</b> on line <b>4</b>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$edades = ["Andrés" =&gt; 20, "Bárbara" =&gt; 19, "Camilo" =&gt; 17];
+
+print "&lt;p&gt;Camilo tiene <span class="codigo-resaltado">{$edades[Camilo]}</span> años&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <b>Fatal error</b>: Uncaught Error: Undefined constant "Camilo" in ejemplo.php:4 Stack trace #0 {main} thrown in <b>ejemplo</b> on line <b>4</b>
       </div>
     </div>
 
@@ -317,7 +330,7 @@ print "&lt;p&gt;Camilo tiene {<span class="codigo-resaltado">$edades["Camilo"]</
 
     <div class="filaflex">
       <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
       </div>
       <div class="codigo">
         <pre>
@@ -332,9 +345,9 @@ print "&lt;p&gt;<span class="codigo-resaltado">$datos[0][nombre]</span> tiene <s
 </pre>
       </div>
       <div class="resultado-html">
-        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br>
+        <b>Warning</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br>
         <br>
-        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br>
+        <b>Warning</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>6</b><br>
 
         <p>Array[nombre] tiene Array[edad] años.</p>
       </div>
@@ -372,7 +385,7 @@ print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " año
 
     <div class="filaflex">
       <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
       </div>
       <div class="codigo">
         <pre>
@@ -380,18 +393,18 @@ print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " año
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
-<span class="codigo-resaltado">print "$datos";</span>
+<span class="codigo-resaltado">print "Datos: $datos";</span>
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br> Array
+        <b>Warning</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br> Array
       </div>
     </div>
 
     <div class="filaflex">
       <div class="icono-ok">
-        <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
       </div>
       <div class="codigo">
         <pre>
@@ -399,12 +412,12 @@ $datos["apellidos"] = "Ramón y Cajal";
 $datos["nombre"] = "Santiago";
 $datos["apellidos"] = "Ramón y Cajal";
 
-<span class="codigo-resaltado">print "{$datos}";</span>
+<span class="codigo-resaltado">print "Datos: {$datos}";</span>
 ?&gt;</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <b>Notice</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br> Array
+        <b>Warning</b>: Array to string conversion in <b>ejemplo.php</b> on line <b>5</b><br> Array
       </div>
     </div>
 
@@ -904,7 +917,7 @@ print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
     [número 1] =&gt; cinco
 )
 
-<strong>Notice</strong>:  Undefined variable: matriz in prueba.php on line 8
+<b>Warning</b>:  Undefined variable $matriz in <b>prueba.php</b> on line 8
 </pre>
       </div>
     </div>

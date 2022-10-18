@@ -117,6 +117,27 @@ print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;";
 
         <p>En este caso, el motivo del aviso es que se intenta realizar un cálculo matemático imposible (dividir entre cero).</p>
       </li>
+      <li>ausencia del símbolo $ en el nombre de una variable
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$edad = 18;
+print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <b>Fatal error</b>: Uncaught Error: Undefined constant "edad" in ejemplo.php:3 Stack trace #0 {main} thrown in <b>ejemplo</b> on line <b>3</b>
+          </div>
+        </div>
+
+        <p>En este caso, el motivo del aviso es que PHP encuentra una palabra (edad) que no es un término del lenguaje, ni una variable (porque no empieza por $) ni una cadena (porque no está entre comillas. PHP genera un aviso y supone que se trata de una cadena, y por eso escribe "edad".</p>
+      </li>
     </ul>
   </section>
 
@@ -245,6 +266,27 @@ print "&lt;p&gt;Resultado: $resultado&lt;/p&gt;\n";
 
     <p>Estos avisos indican que se ha producido un error de algún tipo que no impide la ejecución del resto del programa, aunque seguramente el programa no producirá el resultado esperado.</p>
     <ul>
+      <li>variable no definida
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Edad: $edad&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <b>Warning</b>: Undefined variable: edad in <b>ejemplo.php</b> on line <b>2</b><br>
+            <p>Edad:</p>
+          </div>
+        </div>
+
+        <p>En este caso, el motivo del aviso es que se utiliza una variable a la que no se había asignado valor previamente. El programa funciona puesto que PHP le asigna el valor de cadena vacía, pero se desaconseja utilizar variables no establecidas previamente.</p>
+      </li>
       <li>uso de cabeceras después de escribir texto
 
         <div class="filaflex">
@@ -276,49 +318,6 @@ exit;
 
     <p>Los avisos no impiden la ejecución de un programa, aunque seguramente el programa no producirá el resultado esperado.</p>
     <ul>
-      <li>variable no definida
-
-        <div class="filaflex">
-          <div class="icono-ok">
-            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
-          </div>
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-print "&lt;p&gt;Edad: $edad&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-html">
-            <b>Notice</b>: Undefined variable: edad in <b>ejemplo.php</b> on line <b>2</b><br>
-            <p>Edad:</p>
-          </div>
-        </div>
-
-        <p>En este caso, el motivo del aviso es que se utiliza una variable a la que no se había asignado valor previamente. El programa funciona puesto que PHP le asigna el valor de cadena vacía, pero se desaconseja utilizar variables no establecidas previamente.</p>
-      </li>
-      <li>ausencia del símbolo $ en el nombre de una variable
-
-        <div class="filaflex">
-          <div class="icono-ok">
-            <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
-          </div>
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$edad = 18;
-print "&lt;p&gt;Edad: " . edad . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-html">
-            <b>Notice</b>: Use of undefined constant edad - assumed 'edad' in <b>ejemplo.php</b> on line <b>3</b><br>
-            <p>Edad: edad</p>
-          </div>
-        </div>
-
-        <p>En este caso, el motivo del aviso es que PHP encuentra una palabra (edad) que no es un término del lenguaje, ni una variable (porque no empieza por $) ni una cadena (porque no está entre comillas. PHP genera un aviso y supone que se trata de una cadena, y por eso escribe "edad".</p>
-      </li>
     </ul>
   </section>
 
@@ -352,7 +351,7 @@ function prueba($a = [], $b)
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

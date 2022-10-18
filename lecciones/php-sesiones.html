@@ -69,7 +69,7 @@ print "&lt;p&gt;El nombre es $nombre&lt;/p&gt;";</code>
 </pre>
       </div>
       <div class="resultado-html">
-        <b>Notice</b>: Undefined variable: nombre in <b>ejemplo.php</b> on line <b>2</b>
+        <b>Warning</b>: Undefined variable $nombre in <b>ejemplo.php</b> on line <b>2</b>
 
         <p>El nombre es </p>
       </div>
@@ -238,7 +238,10 @@ print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";</code>
 <code class="language-php">&lt;?php
 session_start();
 
-// Este código es incorrecto, ya que PHP no puede crear un índice numérico en $_SESSION
+// Este código es incorrecto, ya que PHP no puede crear un índice
+// numérico en $_SESSION. Aunque en la ejecución de este programa
+// $_SESSION contiene el elemento con índice numérico, el valor
+// no se guardará en la sesión y no estará disponible para otras páginas.
 $_SESSION[] = "Pepito Conejo";
 print "&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt;\n";
 print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";</code>
@@ -247,11 +250,13 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";</code>
       <div class="resultado-html">
         <p>Se ha guardado su nombre.</p>
 
-        <b>Notice</b>: Unknown: Skipping numeric key 0 in <b>Unknown</b> on line <b>0</b>
-
         <pre>Array
 (
+     [0] =&gt; Pepito Conejo
 )</pre>
+
+        <b>Warning</b>: Unknown: Skipping numeric key 0 in <b>Unknown</b> on line <b>0</b>
+
       </div>
     </div>
 
@@ -618,7 +623,7 @@ session_start();</code></pre>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 7 de febrero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
