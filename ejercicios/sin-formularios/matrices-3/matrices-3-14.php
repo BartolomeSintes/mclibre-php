@@ -42,7 +42,7 @@
 // Guardamos los valores de las cartas en la matriz $cartas
 // $n es el número de cartas que repartiremos a cada jugador,
 // por lo que generamos 2 * $n cartas
-$n       = rand(2, 6);
+$n      = rand(2, 6);
 $cartas = [];
 for ($i = 0; $i < 2 * $n; $i++) {
     $cartas[] = rand(1, 10);
@@ -64,12 +64,12 @@ shuffle($cartas);
 // Creamos una matriz con las $n primeras cartas
 $cartasA = [];
 for ($i = 0; $i < $n; $i++) {
-  $cartasA[] = $cartas[$i];
+    $cartasA[] = $cartas[$i];
 }
 
 // Creamos una matriz con las $n siguientes cartas
 for ($i = 0; $i < $n; $i++) {
-  $cartasB[] = $cartas[$i+ $n];
+    $cartasB[] = $cartas[$i + $n];
 }
 
 // Mostramos las imágenes de las cartas del primer jugador

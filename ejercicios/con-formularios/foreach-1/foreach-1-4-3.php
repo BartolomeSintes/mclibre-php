@@ -82,11 +82,11 @@ if ($numero == "") {
 // Comprobación de $c (cajas de texto)
 // Se cuenta el número de elementos en la matriz $c
 $cajasRecibidas = count($c);
-$cOk = false;
+$cOk            = false;
 // Si no se han recibido todas las cajas
 if ($cajasRecibidas != $numero) {
-  print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
-  print "\n";
+    print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
@@ -97,8 +97,8 @@ if ($cajasRecibidas != $numero) {
             || $indice < 1 || $indice > $numero
             // o si el contenido no es vacío o todo letras
            || (!ctype_alpha($valor) && $valor != "")) {
-                $cOk = false;
-            }
+            $cOk = false;
+        }
     }
     if (!$cOk) {
         print "  <p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
@@ -139,8 +139,8 @@ if ($botonesRecibidos == 0) {
 if ($numeroOk && $cOk && $bOk) {
     // Se cuentan los datos completos y el número de hombres y mujeres
     $datosCompletos = 0;
-    $datosHombres = 0;
-    $datosMujeres = 0;
+    $datosHombres   = 0;
+    $datosMujeres   = 0;
 
     // Bucle para recorrer la matriz $b (botones radio)
     foreach ($b as $indice => $valor) {

@@ -29,8 +29,8 @@ cabecera("Préstamos - Borrar 2", "menuPrestamos");
 $id = recogeMatrizParaConsulta($db, "id");
 
 if (count($id) == 0) {
-  print "    <p>No se ha marcado nada para borrar.</p>\n";
-  print "\n";
+    print "    <p>No se ha marcado nada para borrar.</p>\n";
+    print "\n";
 } else {
     foreach ($id as $indice => $valor) {
         $consulta = "DELETE FROM $dbPrestamos
@@ -45,6 +45,5 @@ if (count($id) == 0) {
     }
 }
 
-$db = NULL;
+$db = null;
 pie();
-?>

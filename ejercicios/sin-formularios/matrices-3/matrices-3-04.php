@@ -64,9 +64,9 @@ $busca = rand(128512, 128580);
 
 // Mostramos el resultado de la búsqueda
 if (in_array($busca, $emoticonos)) {
-  print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> está entre ellos.</p>\n";
+    print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> está entre ellos.</p>\n";
 } else {
-  print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> NO está entre ellos.</p>\n";
+    print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> NO está entre ellos.</p>\n";
 }
 print "\n";
 

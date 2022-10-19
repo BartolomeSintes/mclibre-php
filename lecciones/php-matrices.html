@@ -29,10 +29,9 @@
         <li><a href="#multidimensionales">Matrices de dimensión &gt; 1</a></li>
         <li><a href="#imprimir">Imprimir valores: print_r()</a></li>
         <li><a href="#anadir-elementos">Añadir elementos</a></li>
-        <li><a href="#union">Unión de matrices</a></li>
-        <li><a href="#mas-informacion-general">Más sobre matrices</a></li>
         <li><a href="#borrar">Borrar matriz o elementos</a></li>
         <li><a href="#copiar">Copiar matriz</a></li>
+        <li><a href="#union">Unir matrices</a></li>
         <li><a href="#notacion">Notación clásica</a></li>
       </ul>
     </div>
@@ -317,12 +316,37 @@ print "&lt;p&gt;Camilo tiene {<span class="codigo-resaltado">$edades["Camilo"]</
       </div>
     </div>
 
+    <hr class="corta">
+
+    <p>Los valores de los índices numéricos suelen ser siempre positivos, pero PHP también permite que sean negativos:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres[-3] = "Alba";
+
+print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Alba</p>
+      </div>
+    </div>
+
+    <p><strong>Nota</strong>: Actualmente (octubre de 2022), Visual Studio Code muestra un aviso cuando se utilizan índices negativos dentro de cadenas (como en el ejemplo anterior), pero ese aviso no es correcto.</p>
+
+    <hr class="corta">
+
+    <p>PHP no permite valores decimales en los índices numéricos, aunque sí que se pueden escribir decimales en los índices porque PHP los trunca automáticamente a enteros y trabaja con los valores enteros. Pese a ello, se recomienda <strong>NO</strong> utilizar nunca decimales en los índices numéricos. De hecho, a partir de PHP 8.1, si la conversión de enteros a decimales supone una pérdida de precisión se genera un error <span class="php-con">E_DEPRECATED</span>, como se comenta en la lección <a href="php-cambios.html#php-8-1-conversion-decimales-enteros">Cambios en el lenguaje</a>.</p>
+
   </section>
 
   <section id="multidimensionales">
     <h2>Matrices multidimensionales</h2>
 
-    <p>Las matrices pueden ser multidimensionales, es decir, matrices cuyos elementos son a su vez matrices. Para referirse a los elementos concretos, se necesitan utilizar varios índices (tantos como dimensiones -niveles de anidamiento- tenga la matriz).</p>
+    <p>Las matrices pueden ser multidimensionales, es decir, una matriz puede tener elementos que sean a su vez. Para referirse a los elementos concretos, se necesitan utilizar varios índices (tantos como dimensiones -niveles de anidamiento- tenga la matriz).</p>
 
     <hr class="corta">
 
@@ -374,6 +398,80 @@ print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " año
       <div class="resultado-html">
         <p>pepe tiene 25 años</p>
         <p>juan pesa 75 kilos</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>En el caso de las matrices multidimensionales, la misma información se puede guardar de varias formas distintas. Por ejemplo, la matriz siguiente guarda información sobre la edad y el peso de varias personas:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos["pepe"]["edad"] = 25;
+$datos["pepe"]["peso"] = 80;
+$datos["juan"]["edad"] = 22;
+$datos["juan"]["peso"] = 75;
+
+print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [pepe] =&gt; Array
+        (
+            [edad] =&gt; 25
+            [peso] =&gt; 80
+        )
+
+    [juan] =&gt; Array
+        (
+            [edad] =&gt; 22
+            [peso] =&gt; 75
+        )
+
+)</pre>
+      </div>
+    </div>
+
+    <p>En el ejemplo anterior se ha utilizado el nombre de la persona como índice de la matriz, lo que no es una buena idea, ya que no podríamos guardar los datos de dos personas con el mismo nombre. Sería mejor guardar la información de manera similar a como se guardaría en una base de datos. Una matriz de dos dimensiones sería en ese caso el equivalente a una tabla, el primer índice correspondería al número de registro y el segundo índice iría tomando los valores de los campos de la tabla (nombre, edad, peso, etc).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$datos[0]["nombre"] = "pepe";
+$datos[0]["edad"] = 25;
+$datos[0]["peso"] = 80;
+$datos[1]["nombre"] = "juan";
+$datos[1]["edad"] = 22;
+$datos[1]["peso"] = 75;
+
+print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [0] =&gt; Array
+        (
+            [nombre] =&gt; pepe
+            [edad] =&gt; 25
+            [peso] =&gt; 80
+        )
+
+    [1] =&gt; Array
+        (
+            [nombre] =&gt; juan
+            [edad] =&gt; 22
+            [peso] =&gt; 75
+        )
+
+)</pre>
       </div>
     </div>
   </section>
@@ -629,237 +727,6 @@ print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
     </ul>
   </section>
 
-  <section id="union">
-    <h2>Unión de matrices</h2>
-
-    <p>Los operadores <strong>+</strong> (suma) <strong>+=</strong> (suma combinada) realizan la unión de dos matrices. La unión de dos matrices contiene todos los elementos de la primera matriz y únicamente los elementos de la segunda matriz cuyo índice no se encuentra en la primera matriz.</p>
-    <ul>
-      <li>En el ejemplo siguiente, al hacer la unión $a + $b, el resultado contiene los dos elementos de $a y el único elemento de $b cuyo índice no está en $a (el elemento $b[2]). Sin embargo, al hacer la unión $b + $a, el resultado contiene los tres elementos de $b pero ninguno de $a (ya que el índice de los dos elementos de $a, 0 y 1, están en $b).
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombres_1 = ["Alba", "Bernardo"];
-
-$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
-
-print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
-print "\n";
-print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-html">
-            <pre>Array
-  (
-      [0] =&gt; Alba
-      [1] =&gt; Bernardo
-      [2] =&gt; Carlos
-  )
-</pre>
-
-            <pre>Array
-  (
-      [0] =&gt; Antonio
-      [1] =&gt; Bárbara
-      [2] =&gt; Carlos
-  )</pre>
-          </div>
-        </div>
-      </li>
-      <li>Si los índices no coinciden, la unión contendrá todos los elementos:
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombres_1 = [0 =&gt; "Alba", 2 =&gt; "Bernardo"];
-
-$nombres_2 = [1 =&gt; "Antonio", 3 =&gt; "Bárbara", 5 =&gt; "Carlos"];
-
-print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
-print "\n";
-print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-html">
-            <pre>Array
-(
-    [0] =&gt; Alba
-    [2] =&gt; Bernardo
-    [1] =&gt; Antonio
-    [3] =&gt; Bárbara
-    [5] =&gt; Carlos
-)
-</pre>
-
-            <pre>Array
-(
-    [1] =&gt; Antonio
-    [3] =&gt; Bárbara
-    [5] =&gt; Carlos
-    [0] =&gt; Alba
-    [2] =&gt; Bernardo
-)
-</pre>
-          </div>
-        </div>
-      </li>
-      <li>El operador combinado <strong>+=</strong> realiza también la unión de dos matrices (y modifica, en su caso, la primera matriz).
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombres_1 = ["Alba", "Bernardo"];
-
-$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
-
-$nombres_1 += $nombres_2;
-
-print "&lt;pre&gt;"; print_r($nombres_1); print "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-html">
-            <pre>Array
-  (
-      [0] =&gt; Alba
-      [1] =&gt; Bernardo
-      [2] =&gt; Carlos
-  )
-</pre>
-          </div>
-        </div>
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-$nombres_1 = ["Alba", "Bernardo"];
-
-$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
-
-$nombres_2 += $nombres_1;
-
-print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-html">
-            <pre>Array
-  (
-      [0] =&gt; Antonio
-      [1] =&gt; Bárbara
-      [2] =&gt; Carlos
-  )
-</pre>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <section id="mas-informacion-general">
-    <h2>Más información general sobre las matrices</h2>
-    <hr class="corta">
-
-    <p>Los valores de los índices numéricos suelen ser siempre positivos, pero PHP también permite que sean negativos:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$nombres[-3] = "Alba";
-
-print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>Alba</p>
-      </div>
-    </div>
-
-    <p><strong>Nota</strong>: Actualmente (octubre de 2022), Visual Studio Code muestra un aviso cuando se utilizan índices negativos dentro de cadenas (como en el ejemplo anterior), pero ese aviso no es correcto.</p>
-
-    <hr class="corta">
-
-    <p>PHP no permite valores decimales en los índices numéricos, aunque sí que se pueden escribir decimales en los índices porque PHP los trunca automáticamente a enteros y trabaja con los valores enteros. Por ello, se recomienda <strong>NO</strong> utilizar nunca decimales en los índices numéricos. De hecho, a partir de PHP 8.1, si la conversión de enteros a decimales supone una pérdida de precisión se genera un error <span class="php-con">E_DEPRECATED</span>, como se comenta en la lección <a href="php-cambios.html#php-8-1-conversion-decimales-enteros">Cambios en el lenguaje</a>.</p>
-
-    <hr class="corta">
-
-    <p>En el caso de las matrices multidimensionales, la misma información se puede guardar de varias formas distintas. Por ejemplo, la matriz siguiente guarda información sobre la edad y el peso de varias personas:</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos["pepe"]["edad"] = 25;
-$datos["pepe"]["peso"] = 80;
-$datos["juan"]["edad"] = 22;
-$datos["juan"]["peso"] = 75;
-
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [pepe] =&gt; Array
-        (
-            [edad] =&gt; 25
-            [peso] =&gt; 80
-        )
-
-    [juan] =&gt; Array
-        (
-            [edad] =&gt; 22
-            [peso] =&gt; 75
-        )
-
-)</pre>
-      </div>
-    </div>
-
-    <p>En el ejemplo anterior se ha utilizado el nombre de la persona como índice de la matriz, lo que no es una buena idea, ya que no podríamos guardar los datos de dos personas con el mismo nombre. Sería mejor guardar la información de manera similar a como se guardaría en una base de datos. Una matriz de dos dimensiones sería en ese caso el equivalente a una tabla, el primer índice correspondería al número de registro y el segundo índice iría tomando los valores de los campos de la tabla (nombre, edad, peso, etc).</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$datos[0]["nombre"] = "pepe";
-$datos[0]["edad"] = 25;
-$datos[0]["peso"] = 80;
-$datos[1]["nombre"] = "juan";
-$datos[1]["edad"] = 22;
-$datos[1]["peso"] = 75;
-
-print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [0] =&gt; Array
-        (
-            [nombre] =&gt; pepe
-            [edad] =&gt; 25
-            [peso] =&gt; 80
-        )
-
-    [1] =&gt; Array
-        (
-            [nombre] =&gt; juan
-            [edad] =&gt; 22
-            [peso] =&gt; 75
-        )
-
-)</pre>
-      </div>
-    </div>
-  </section>
-
   <section id="borrar">
     <h2>Borrar una matriz o elementos de una matriz</h2>
 
@@ -1026,6 +893,135 @@ print "&lt;pre&gt;\n"; print_r($cuadradosCopia); print "&lt;/pre&gt;\n";
 )</pre>
       </div>
     </div>
+  </section>
+
+  <section id="union">
+    <h2>Unir matrices</h2>
+
+    <p>Los operadores <strong>+</strong> (suma) <strong>+=</strong> (suma combinada) realizan la unión de dos matrices. La unión de dos matrices contiene todos los elementos de la primera matriz y únicamente los elementos de la segunda matriz cuyo índice no se encuentra en la primera matriz.</p>
+    <ul>
+      <li>En el ejemplo siguiente, al hacer la unión $a + $b, el resultado contiene los dos elementos de $a y el único elemento de $b cuyo índice no está en $a (el elemento $b[2]). Sin embargo, al hacer la unión $b + $a, el resultado contiene los tres elementos de $b pero ninguno de $a (ya que el índice de los dos elementos de $a, 0 y 1, están en $b).
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = ["Alba", "Bernardo"];
+
+$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
+
+print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+  (
+      [0] =&gt; Alba
+      [1] =&gt; Bernardo
+      [2] =&gt; Carlos
+  )
+</pre>
+
+            <pre>Array
+  (
+      [0] =&gt; Antonio
+      [1] =&gt; Bárbara
+      [2] =&gt; Carlos
+  )</pre>
+          </div>
+        </div>
+      </li>
+      <li>Si los índices no coinciden, la unión contendrá todos los elementos:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = [0 =&gt; "Alba", 2 =&gt; "Bernardo"];
+
+$nombres_2 = [1 =&gt; "Antonio", 3 =&gt; "Bárbara", 5 =&gt; "Carlos"];
+
+print "&lt;pre&gt;"; print_r($nombres_1 + $nombres_2); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;pre&gt;"; print_r($nombres_2 + $nombres_1); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+(
+    [0] =&gt; Alba
+    [2] =&gt; Bernardo
+    [1] =&gt; Antonio
+    [3] =&gt; Bárbara
+    [5] =&gt; Carlos
+)
+</pre>
+
+            <pre>Array
+(
+    [1] =&gt; Antonio
+    [3] =&gt; Bárbara
+    [5] =&gt; Carlos
+    [0] =&gt; Alba
+    [2] =&gt; Bernardo
+)
+</pre>
+          </div>
+        </div>
+      </li>
+      <li>El operador combinado <strong>+=</strong> realiza también la unión de dos matrices (y modifica, en su caso, la primera matriz).
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = ["Alba", "Bernardo"];
+
+$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
+
+$nombres_1 += $nombres_2;
+
+print "&lt;pre&gt;"; print_r($nombres_1); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+  (
+      [0] =&gt; Alba
+      [1] =&gt; Bernardo
+      [2] =&gt; Carlos
+  )
+</pre>
+          </div>
+        </div>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres_1 = ["Alba", "Bernardo"];
+
+$nombres_2 = ["Antonio", "Bárbara", "Carlos"];
+
+$nombres_2 += $nombres_1;
+
+print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>Array
+  (
+      [0] =&gt; Antonio
+      [1] =&gt; Bárbara
+      [2] =&gt; Carlos
+  )
+</pre>
+          </div>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section id="notacion">

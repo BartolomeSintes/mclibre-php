@@ -335,9 +335,9 @@ $resultado = filter_var($dato, FILTER_VALIDATE_INT);
 print "    <tr>\n";
 print "      <td>FILTER_VALIDATE_INT</td>\n";
 if ($resultado == true) {
-  print "      <td>true</td>\n";
+    print "      <td>true</td>\n";
 } elseif ($resultado == false) {
-  print "      <td>false</td>\n";
+    print "      <td>false</td>\n";
 }
 print "    </tr>\n";
 
@@ -345,9 +345,9 @@ $resultado = filter_var($dato, FILTER_VALIDATE_BOOLEAN);
 print "    <tr>\n";
 print "      <td>FILTER_VALIDATE_BOOLEAN</td>\n";
 if ($resultado == true) {
-  print "      <td>true</td>\n";
+    print "      <td>true</td>\n";
 } elseif ($resultado == false) {
-  print "      <td>false</td>\n";
+    print "      <td>false</td>\n";
 }
 print "    </tr>\n";
 
@@ -355,9 +355,9 @@ $resultado = filter_var($dato, FILTER_VALIDATE_FLOAT);
 print "    <tr>\n";
 print "      <td>FILTER_VALIDATE_FLOAT</td>\n";
 if ($resultado == true) {
-  print "      <td>true</td>\n";
+    print "      <td>true</td>\n";
 } elseif ($resultado == false) {
-  print "      <td>false</td>\n";
+    print "      <td>false</td>\n";
 }
 print "    </tr>\n";
 
@@ -365,9 +365,9 @@ $resultado = filter_var($dato, FILTER_VALIDATE_URL);
 print "    <tr>\n";
 print "      <td>FILTER_VALIDATE_URL</td>\n";
 if ($resultado == true) {
-  print "      <td>true</td>\n";
+    print "      <td>true</td>\n";
 } elseif ($resultado == false) {
-  print "      <td>false</td>\n";
+    print "      <td>false</td>\n";
 }
 print "    </tr>\n";
 
@@ -375,9 +375,9 @@ $resultado = filter_var($dato, FILTER_VALIDATE_EMAIL);
 print "    <tr>\n";
 print "      <td>FILTER_VALIDATE_EMAIL</td>\n";
 if ($resultado == true) {
-  print "      <td>true</td>\n";
+    print "      <td>true</td>\n";
 } elseif ($resultado == false) {
-  print "      <td>false</td>\n";
+    print "      <td>false</td>\n";
 }
 print "    </tr>\n";
 
@@ -385,9 +385,9 @@ $resultado = filter_var($dato, FILTER_VALIDATE_IP);
 print "    <tr>\n";
 print "      <td>FILTER_VALIDATE_IP</td>\n";
 if ($resultado == true) {
-  print "      <td>true</td>\n";
+    print "      <td>true</td>\n";
 } elseif ($resultado == false) {
-  print "      <td>false</td>\n";
+    print "      <td>false</td>\n";
 }
 print "    </tr>\n";
 

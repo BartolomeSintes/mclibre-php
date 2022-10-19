@@ -257,7 +257,7 @@ $textoOk = false;
 
 // Comprobamos el texto
 if ($texto == "") {
-  // Si el texto es vacío, no es correcto, pero no hacemos nada especial <span class="numero-circulo">2</span>
+    // Si el texto es vacío, no es correcto, pero no hacemos nada especial <span class="numero-circulo">2</span>
 } else {
     $textoOk = true;
 }
@@ -538,21 +538,21 @@ print "    &lt;p&gt;Escriba una palabra en mayúsculas:&lt;/p&gt;\n";
 print "\n";
 
 if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
-  // Si hemos detectado un error y el usuario había escrito una palabra para corregir <span class="numero-circulo">9</span>
-  // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
-  print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
-  . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
-  print "\n";
+    // Si hemos detectado un error y el usuario había escrito una palabra para corregir <span class="numero-circulo">9</span>
+    // Mostramos el control, añadiendo el aviso e incluyendo el valor incorrecto en el control
+    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" value=\"$_SESSION[intento]\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
+    . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
+    print "\n";
 } elseif (isset($_SESSION["error"])) {
-  // Si hemos detectado un error, pero no hay palabra para corregir <span class="numero-circulo">10</span>
-  // Mostramos el control, añadiendo el aviso
-  print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
-      . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
-  print "\n";
+    // Si hemos detectado un error, pero no hay palabra para corregir <span class="numero-circulo">10</span>
+    // Mostramos el control, añadiendo el aviso
+    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt; "
+        . "&lt;span class=\"aviso\"&gt;$_SESSION[error]&lt;/span&gt;&lt;/p&gt;\n";
+    print "\n";
 } else {
-  // Si no hemos detectado un error, mostramos simplemente el control <span class="numero-circulo">11</span>
-  print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-  print "\n";
+    // Si no hemos detectado un error, mostramos simplemente el control <span class="numero-circulo">11</span>
+    print "    &lt;p&gt;&lt;label&gt;Palabra: &lt;input type=\"text\" name=\"palabra\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;
 // ...</code>

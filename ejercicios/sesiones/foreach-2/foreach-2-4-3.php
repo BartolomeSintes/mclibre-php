@@ -76,8 +76,8 @@ $cajasRecibidas = count($c);
 
 // Si no se han recibido todas las cajas
 if ($cajasRecibidas != $_SESSION["numero"]) {
-  print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
-  print "\n";
+    print "  <p class=\"aviso\">La matriz recibida no es correcta.</p>\n";
+    print "\n";
 } else {
     // Bucle para comprobar si todos los índices y valores son correctos
     $cOk = true;
@@ -88,8 +88,8 @@ if ($cajasRecibidas != $_SESSION["numero"]) {
             || $indice < 1 || $indice > $_SESSION["numero"]
             // o si el contenido no es vacío o todo letras
            || (!ctype_alpha($valor) && $valor != "")) {
-                $cOk = false;
-            }
+            $cOk = false;
+        }
     }
     if (!$cOk) {
         print "  <p class=\"aviso\">La matriz de nombres recibida no es correcta.</p>\n";
@@ -130,8 +130,8 @@ if ($botonesRecibidos == 0) {
 if ($cOk && $bOk) {
     // Se cuentan los datos completos y el número de hombres y mujeres
     $datosCompletos = 0;
-    $datosHombres = 0;
-    $datosMujeres = 0;
+    $datosHombres   = 0;
+    $datosMujeres   = 0;
 
     // Bucle para recorrer la matriz $b (botones radio)
     foreach ($b as $indice => $valor) {

@@ -68,7 +68,7 @@ print "  <h2>Conteo</h2>\n";
 print "\n";
 
 foreach ($cuenta as $indice => $valor) {
-  print "  <p style=\"font-size: 400%; margin: 0;\">&#$indice; $valor</p>\n";
+    print "  <p style=\"font-size: 400%; margin: 0;\">&#$indice; $valor</p>\n";
 }
 
 print "\n";
