@@ -76,7 +76,7 @@ $nombres = ["Ana", "Bernardo", "Carmen", ];
 
     <hr class="corta">
 
-    <p>Para hacer referencia a los valores individuales de la matriz, se deben utilizar índices, que se escriben entre corchetes ([ ]). Si al crear la matriz no se han indicado otros valores de índices, el primer término tiene el índice [0], el segundo tiene el índice [1], etc.:</p>
+    <p>Para hacer referencia a los valores individuales de la matriz, se deben utilizar índices, que se escriben entre corchetes ([ ]). Si al crear la matriz no se han indicado los valores de índices, PHP asigna al primer término el índice [0], el índice [1] al segundo, etc.:</p>
 
     <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices.</p>
 
@@ -198,14 +198,19 @@ $nombres = [];
   <section id="asociativas">
     <h2>Matrices asociativas</h2>
 
-    <p>Los índices de las matrices pueden ser números enteros o cadenas. En el caso de ser números, estos no tienen por qué ser correlativos. Este tipo de matrices se denominan matrices <i>asociativas</i>, ya que las matrices lo que hacen es asociar una relación entre un índice y un valor.</p>
+    <p>En PHP, los índices de las matrices pueden ser números enteros o cadenas. Este tipo de matrices se denominan <strong>matrices asociativas</strong>, ya que las matrices no son colecciones ordenadas de elementos a los que se acceden mediante números positivos correlativos, sino conjuntos de valores que se identifican mediante etiquetas. </p>
 
-    <p>Para crear matrices asociativas, debemos indicar el valor de los índices, utilizando la notación <strong>$indice =&gt; $valor</strong>:</p>
+    <p>Podemos crear una matriz asociativa indicando el valor de los índices o utilizando la notación <strong>$indice =&gt; $valor</strong>:</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
+// Matriz definida elemento a elemento
+$cuadrados[3] = 9;
+$cuadrados[5] = 25;
+$cuadrados[10] = 100;
+// Matriz definida con la notación =&gt;
 $cuadrados = [3 =&gt; 9, 5 =&gt; 25, 10 =&gt; 100];
 
 print "&lt;p&gt;El cuadrado de 3 es $cuadrados[3]&lt;/p&gt;\n";
@@ -214,6 +219,24 @@ print "&lt;p&gt;El cuadrado de 3 es $cuadrados[3]&lt;/p&gt;\n";
       </div>
       <div class="resultado-html">
         <p>El cuadrado de 3 es 9</p>
+      </div>
+    </div>
+
+    <p>En una matriz asociativa, los índices pueden ser números enteros (positivos o negativos) o cadenas:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Matriz definida elemento a elemento
+$matriz[10] = "diez";
+$matriz[-1] = "menos uno";
+$matriz["uno"] = 1;
+$matriz["ciento veinte"] = 120;
+// Matriz definida con la notación =&gt;
+$matriz = [10 =&gt; "diez", -1 =&gt; "menos uno", "uno" =&gt; 1, "ciento veinte" =&gt; 120];
+?&gt;</code>
+</pre>
       </div>
     </div>
 
@@ -304,9 +327,9 @@ print "&lt;p&gt;Camilo tiene <span class="codigo-resaltado">{$edades[Camilo]}</s
 <code class="language-php">&lt;?php
 $edades = ["Andrés" =&gt; 20, "Bárbara" =&gt; 19, "Camilo" =&gt; 17];
 
-print "&lt;p&gt;Bárbara tiene " . <span class="codigo-resaltado">$edades["Bárbara"]</span> . " años&lt;/p&gt;\n";
+print "&lt;p&gt;Bárbara tiene " <span class="codigo-resaltado">. $edades["Bárbara"] .</span> " años&lt;/p&gt;\n";
 print "\n";
-print "&lt;p&gt;Camilo tiene {<span class="codigo-resaltado">$edades["Camilo"]</span>} años&lt;/p&gt;\n";
+print "&lt;p&gt;Camilo tiene <span class="codigo-resaltado">{$edades["Camilo"]}</span> años&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -346,7 +369,37 @@ print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
   <section id="multidimensionales">
     <h2>Matrices multidimensionales</h2>
 
-    <p>Las matrices pueden ser multidimensionales, es decir, una matriz puede tener elementos que sean a su vez. Para referirse a los elementos concretos, se necesitan utilizar varios índices (tantos como dimensiones -niveles de anidamiento- tenga la matriz).</p>
+    <p>Las matrices pueden ser multidimensionales, es decir, una matriz puede tener elementos que sean a su vez matrices. Para referirse a los elementos concretos, se necesitan utilizar varios índices (tantos como dimensiones -niveles de anidamiento- tenga la matriz).</p>
+
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// Definiciones equivalentes de una mismsa matriz
+// En una sola línea:
+$matriz = [[20, 30, 40], [100, 200, 300]];
+// En varias líneas para facilitar la lectura:
+$matriz = [
+  [20, 30, 40],
+  [100, 200, 300]
+];
+// Definiendo los elementos de primer nivel:
+$matriz[0] = [20, 30, 40];
+$matriz[1] = [100, 200, 300];
+// Definiendo los elementos de segundo nivel:
+$matriz[0][0] = 20;
+$matriz[0][1] = 30;
+$matriz[0][2] = 40;
+$matriz[1][0] = 100;
+$matriz[1][1] = 200;
+$matriz[1][2] = 300;
+?&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p>Las matrices multidimensionales siguen siendo asociativas, es decir, cada índice puede ser un número entero o una cadena. Además, el número de elementos de cada submatriz puede ser distinto, y los índices de las submatrices pueden repetirse en elementos distintos.</p>
 
     <hr class="corta">
 
@@ -721,6 +774,21 @@ print "&lt;p&gt;$nombres[3]&lt;/p&gt;\n";
           <div class="resultado-html">
             <p>Bernardo</p>
             <p>Carlos</p>
+          </div>
+        </div>
+      </li>
+      <li>Si queremos crear índice numéricos correlativos, podemos aprovechar que PHP genera automáticamente valores crecientes para simplificar la definición:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Para crear una matriz con índices numéricos correlativos ...
+// ... podemos indicar todos los índices:
+$letrasGriegas = [2 =&gt "gamma", 3 =&gt; "delta", 4 =&gt; "epsilon"];
+// ... o indicar únicamente el primero y dejar que PHP asigne el resto:
+$letrasGriegas = [2 =&gt "gamma", "delta", "epsilon"];
+?&gt;</code>
+</pre>
           </div>
         </div>
       </li>
