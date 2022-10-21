@@ -3,9 +3,9 @@
  * Matrices (1) 12 - matrices-1-12.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-27
+ * @version   2022-10-21
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -76,13 +76,14 @@ print "<span style=\"text-decoration: overline\">A</span>: ";
 for ($i = 0; $i < $numero; $i++) {
     print "$resultado[$i] ";
 }
+print "\n";
 print "</pre>\n";
 ?>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-27">27 de octubre de 2021</time>
+      <time datetime="2021-10-21">21 de octubre de 2022</time>
     </p>
 
     <p class="licencia">
