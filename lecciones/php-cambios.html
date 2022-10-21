@@ -119,8 +119,9 @@ print "&lt;p&gt;" . $nombres[1.2] . "&lt;p&gt;\n";
             <p>Alba</p>
           </div>
         </div>
-
-
+      </li>
+      <li>[<a href="https://www.php.net/manual/en/migration81.incompatible.php#migration81.incompatible.standard">Referencia</a>] En PHP 8.1 la función <a href="https://www.php.net/manual/en/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a> aplica de forma predeterminada la opción <span class="php-con">ENT_QUOTES</span>, es decir, convertir tanto las comillas dobles como las simples (en las entidades &amp;quot; y &amp;#039; respectivamente). Antes, convertía únicamente las comillas dobles.
+        <p>Por lo tanto en la <a href="php-recogida-datos.html#funciones">función recoge() de la lección Recogida de datos</a> que se utiliza en estos apuntes para la recogida de datos de formularios ya no es necesario incluir los argumentos <span class="php-con">ENT_QUOTES</span> y "UTF-8". El argumento "UTF-8" ya no era necesario desde PHP 5.6.</p>
       </li>
     </ul>
   </section>
@@ -257,6 +258,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
 
     <ul>
       <li>[<a href="https://www.php.net/manual/en/migration56.new-features.php#migration56.new-features.exponentiation">Referencia</a>] En PHP 5.6 se introdujo la notación <a href="https://www.php.net/manual/en/language.operators.arithmetic.php"><span class="php-ope">**</span></a> para la operación matemática potenciación. En versiones anteriores, PHP solo disponía de la función <a href="https://www.php.net/manual/en/function.pow.php"><span class="php-fun">pow()</span></a>, que sigue existiendo en versiones posteriores. En el curso 2022/23 dejé de usar la función <span class="php-fun">pow()</span> y utilizo siempre el operador <span class="php-ope">**</span>.</li>
+      <li>[<a href="https://web.archive.org/web/20160310094249/http://php.net/manual/en/ini.core.php">Referencia en archive.org</a>] En PHP 5.6 se cambió en php.ini la directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.default-charset">default_charset</a> a UTF-8 (en versiones anteriores no se daba valor a esta directiva).</li>
     </ul>
   </section>
 
@@ -267,6 +269,8 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
 
     <ul>
       <li>En PHP 5.4 se introdujo la notación compacta de matrices. Personalmente, dejé de utilizar y/o explicar en clase la notación clásica a partir del curso 2017/18, aunque dejé en los apuntes una lección dedicada a la <a href="php-cambios-matrices.html">notación clásica de Matrices</a>.</li>
+      <li>En PHP 5.4 se modificó el juego de caracteres predeterminado de la función <a href="https://www.php.net/manual/en/function.htmlspecialchars.php"><span class="php-fun">htmlspecialchars()</span></a> de ISO-8859-1 a UTF-8. Si se está trabajando con ficheros en el código de caracteres ISO-8859-1, se deben añadir dos argumentos en la llamada a <span class="php-fun">htmlspecialchars()</span>: ENT_QUOTES e "ISO-8859-1" (sin comillas y con comillas respectivamente).</li>
+
     </ul>
   </section>
 
@@ -290,7 +294,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

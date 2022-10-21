@@ -82,8 +82,8 @@ function recorta($campo, $cadena)
 function recoge($var, $var2="")
 {
     $tmp = (isset($_REQUEST[$var]) && trim(strip_tags($_REQUEST[$var])) != "")
-    ? strip_tags(trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8")))
-    : strip_tags(trim(htmlspecialchars($var2, ENT_QUOTES, "UTF-8")));
+    ? strip_tags(trim(htmlspecialchars($_REQUEST[$var])))
+    : strip_tags(trim(htmlspecialchars($var2)));
     $tmp = recorta($var, $tmp);
     return $tmp;
 }
@@ -93,14 +93,14 @@ function recogeMatriz($var)
     $tmpMatriz = [];
     if (isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
         foreach ($_REQUEST[$var] as $indice => $valor) {
-            $tmp = strip_tags(trim(htmlspecialchars($indice, ENT_QUOTES, "UTF-8")));
+            $tmp = strip_tags(trim(htmlspecialchars($indice)));
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }
             $tmp = recorta($var, $tmp);
             $indiceLimpio = $tmp;
 
-            $tmp = strip_tags(trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8")));
+            $tmp = strip_tags(trim(htmlspecialchars($valor)));
             if (get_magic_quotes_gpc()) {
                 $tmp = stripslashes($tmp);
             }

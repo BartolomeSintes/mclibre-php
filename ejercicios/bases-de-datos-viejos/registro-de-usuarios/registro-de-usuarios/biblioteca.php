@@ -184,8 +184,8 @@ function recorta($campo, $cadena)
 function recoge($var, $var2="")
 {
     $tmp = (isset($_REQUEST[$var]) && trim(strip_tags($_REQUEST[$var])) != "")
-    ? strip_tags(trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8")))
-    : strip_tags(trim(htmlspecialchars($var2, ENT_QUOTES, "UTF-8")));
+    ? strip_tags(trim(htmlspecialchars($_REQUEST[$var])))
+    : strip_tags(trim(htmlspecialchars($var2)));
     $tmp = recorta($var, $tmp);
     return $tmp;
 }

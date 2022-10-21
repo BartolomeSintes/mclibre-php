@@ -33,7 +33,7 @@ if (!isset($_SESSION["g"]) || !isset($_SESSION["m"]) || !isset($_SESSION["moneda
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    ? trim(htmlspecialchars($_REQUEST[$var]))
     : "";
     return $tmp;
 }

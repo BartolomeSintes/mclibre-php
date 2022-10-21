@@ -33,7 +33,7 @@ if (!isset($_SESSION["cantidad"])) {
 function recoge($var)
 {
     $tmp = (isset($_REQUEST[$var]))
-    ? trim(htmlspecialchars($_REQUEST[$var], ENT_QUOTES, "UTF-8"))
+    ? trim(htmlspecialchars($_REQUEST[$var]))
     : "";
     return $tmp;
 }
