@@ -127,7 +127,7 @@ Array
         <pre>
 <code class="language-php">&lt;?php
 $uno = [1 =&gt; 1, 2 =&gt; 2, 3 =&gt; 4];
-$dos = [1 =&gt; 1, 2 =&gt; 3, 3 =&gt; 9];
+$dos = [3 =&gt; 1, 3 =&gt; 3, 4 =&gt; 9];
 
 $final = array_merge($uno, $dos);
 
@@ -149,13 +149,13 @@ Array
       </div>
     </div>
 
-    <p>Pero si los índices no son numéricos, al mezclar las matrices los valores se sobrescriben.</p>
+    <p>Si los índices no son numéricos y hay índices que coinciden, al mezclar las matrices los valores se sobrescriben.</p>
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 $uno = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 4];
-$dos = ["a" =&gt; 2, "b" =&gt; 4, "c" =&gt; 6];
+$dos = ["b" =&gt; 10, "c" =&gt; 20, "d" =&gt; 40];
 
 $final = array_merge($uno, $dos);
 
@@ -168,19 +168,20 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
 Array
 (
     [a] =&gt; 2
-    [b] =&gt; 4
-    [c] =&gt; 6
+    [b] =&gt; 10
+    [c] =&gt; 20
+    [d] =&gt; 40
 )</pre>
       </div>
     </div>
 
-    <p>Si hay índices numéricos e índices no numéricos, al mezclar las matrices los valores de índices numéricos se conservan, pero los no numéricos se sobrescriben.</p>
+    <p>Si hay índices numéricos e índices no numéricos y hay índices que coinciden, al mezclar las matrices los valores de índices numéricos se conservan, pero los no numéricos se sobrescriben.</p>
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
 $uno = [1 =&gt; 1, "b" =&gt; 2, "c" =&gt; 4];
-$dos = [1 =&gt; 100, "b" =&gt; 4, "c" =&gt; 6];
+$dos = [1 =&gt; 100, "c" =&gt; 40, "d" =&gt; 60];
 
 $final = array_merge($uno, $dos);
 
@@ -193,9 +194,10 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
 Array
 (
     [0] =&gt; 1
-    [b] =&gt; 4
-    [c] =&gt; 6
+    [b] =&gt; 2
+    [c] =&gt; 40
     [1] =&gt; 100
+    [d] =&gt; 60
 )</pre>
       </div>
     </div>
@@ -278,7 +280,7 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
       </div>
     </div>
 
-    <p>Para contar todos los elementos de una matriz multidimensional, habría que utilizar la función <span class="php-fun"><span class="php-fun">count($matriz, COUNT_RECURSIVE)</span></span>.</p>
+    <p>Para contar todos los elementos de una matriz multidimensional, se puede utilizar la función <span class="php-fun"><span class="php-fun">count($matriz, COUNT_RECURSIVE)</span></span>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -325,7 +327,7 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 
     <p>En el ejemplo anterior, la respuesta 8 se debe a que la función <span class="php-fun">count()</span>recursiva considera la matriz como un vector de vectores y cuenta los elementos que hay en cada nivel. Desde ese punto de vista, la matriz contiene tres elementos que a su vez contienen dos, dos y un elementos, lo que da un total de ocho elementos.</p>
 
-    <p>Si quisiéramos contar únicamente los elementos de una matriz bidimensional habría que restar los dos resultados anteriores (5 = 8 - 3):</p>
+    <p>Si quisiéramos contar únicamente los valores de una matriz bidimensional podríamos restar los dos resultados anteriores (5 = 8 - 3):</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -369,6 +371,8 @@ print "&lt;pre&gt;\n"; print_r($datos); print "&lt;/pre&gt;\n";
 )</pre>
       </div>
     </div>
+
+    <p>En matrices de más dimensiones no podríamos utilizar este procedimiento.</p>
   </section>
 
   <section id="array-count-values">
@@ -439,22 +443,22 @@ print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
       </div>
     </div>
 
-    <p>Los valores no numéricos se tratan como 0, pero si 0 es el mínimo o el máximo, la función devuelve la cadena.</p>
+    <p>Si los valores de la matriz incluyen números y cadenas, como PHP convierte los números a cadenas para hacer las comparaciones entre ellos (<a href="php-cambios.html#php-8-0-comparaciones">desde PHP 8.0</a>) y las cadenas van después de los números, así que el mínimo será siempre uno de los números (el menor) y el máximo una de las cadenas (la última por orden alfabético).</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$valores = [10, 40, 15, "abc"];
+$valores = [10, "d", 40, "abc"];
 
 $maximo = max($valores);
 $minimo = min($valores);
 
 print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
 print "\n";
-print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
-print "\n";
 print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;El máximo de la matriz es $maximo.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -462,14 +466,15 @@ print "&lt;p&gt;El mínimo de la matriz es $minimo.&lt;/p&gt;\n";
         <pre>Array
 (
     [0] =&gt; 10
-    [1] =&gt; 40
-    [2] =&gt; 15
+    [1] =&gt; d
+    [2] =&gt; 4
     [3] =&gt; abc
-)</pre>
+)
+</pre>
 
-        <p>El máximo de la matriz es 40.</p>
+        <p>El mínimo de la matriz es 4.</p>
 
-        <p>El mínimo de la matriz es abc.</p>
+        <p>El máximo de la matriz es d.</p>
       </div>
     </div>
   </section>
@@ -896,6 +901,13 @@ if (in_array(25, $valores)) {
 }
 print "\n";
 
+if (in_array("15", $valores)) {
+    print "&lt;p&gt;\"15\" está en la matriz \$valores.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;\"15\" no está en la matriz \$valores.&lt;/p&gt;\n";
+}
+print "\n";
+
 if (in_array("15", $valores, true)) {
     print "&lt;p&gt;\"15\" está en la matriz \$valores.&lt;/p&gt;\n";
 } else {
@@ -917,13 +929,15 @@ if (in_array("15", $valores, true)) {
 
         <p>25 no está en la matriz $valores.</p>
 
+        <p>"15" está en la matriz $valores.</p>
+
         <p>"15" no está en la matriz $valores.</p>
       </div>
     </div>
 
-    <p>La función <a href="https://www.php.net/manual/en/function.array-search.php"><span class="php-fun">array_search($valor, $matriz[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve el índice correspondiente, pero si hay varios valores coincidentes sólo devuelve el primero que encuentra.</p>
+    <p>La función <a href="https://www.php.net/manual/en/function.array-search.php"><span class="php-fun">array_search($valor, $matriz[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve el índice correspondiente del primer valor que encuentra. Si no lo encuentra, devuelve <span class="php-con">false</span>.</p>
 
-    <p>La función <a href="https://www.php.net/manual/en/function.array-keys.php"><span class="php-fun">array_keys($matriz[, $valor[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve una matriz cuyos valores son los índices de todos los elementos coincidentes.</p>
+    <p>La función <a href="https://www.php.net/manual/en/function.array-keys.php"><span class="php-fun">array_keys($matriz[, $valor[, $tipo])</span></a> busca el valor en la matriz y, si lo encuentra, devuelve una matriz cuyos valores son los índices de todos los elementos coincidentes. Si no lo encuentra, devuelve una matriz vacía.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -935,10 +949,17 @@ print "&lt;pre&gt;\n"; print_r($valores); print "&lt;/pre&gt;\n";
 print "\n";
 
 $encontrado = array_search(15, $valores);
-print "&lt;p&gt;$encontrado&lt;/p&gt;\n";
+print "&lt;p&gt;15: $encontrado&lt;/p&gt;\n";
+print "\n";
+
+$encontrado = array_search(20, $valores);
+print "&lt;p&gt;20: $encontrado&lt;/p&gt;\n";
 print "\n";
 
 $encontrados = array_keys($valores, 15);
+print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
+
+$encontrados = array_keys($valores, 20);
 print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
@@ -948,19 +969,24 @@ print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
 (
     [0] =&gt; 10
     [1] =&gt; 40
-    [2] =&gt; 15
+    <span class="codigo-resaltado">[2] =&gt; 15</span>
     [3] =&gt; 30
-    [4] =&gt; 15
+    <span class="codigo-resaltado">[4] =&gt; 15</span>
     [5] =&gt; 40
-    [6] =&gt; 15
+    <span class="codigo-resaltado">[6] =&gt; 15</span>
 )</pre>
 
-        <p>2</p>
+        <p>15: <span class="codigo-resaltado">2</span></p>
+
+        <p>20: </p>
         <pre>Array
 (
-    [0] =&gt; 2
-    [1] =&gt; 4
-    [2] =&gt; 6
+    [0] =&gt; <span class="codigo-resaltado">2</span>
+    [1] =&gt; <span class="codigo-resaltado">4</span>
+    [2] =&gt; <span class="codigo-resaltado">6</span>
+)</pre>
+        <pre>Array
+(
 )</pre>
       </div>
     </div>
@@ -975,7 +1001,7 @@ print "&lt;pre&gt;\n"; print_r($encontrados); print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$nombres = ["a" =&gt; "Ana", "b" =&gt; "Bernardo", "c" =&gt; "Carmen", "d" =&gt; "David"];
+$nombres = ["a" =&gt; "Ana", 20 =&gt; "Bernardo", "c" =&gt; "Carmen", "d" =&gt; "David"];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
@@ -996,7 +1022,7 @@ print "\n";
         <pre>Array
 (
     [a] =&gt; Ana
-    [b] =&gt; Bernardo
+    [20] =&gt; Bernardo
     [c] =&gt; Carmen
     [d] =&gt; David
 )</pre>
@@ -1022,7 +1048,7 @@ print "\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numeros = [0, 1, 2, 3, 4, 5];
+$numeros = [10, 20, 30, 40, 50, 60];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
@@ -1040,26 +1066,32 @@ print "\n";
       </div>
       <div class="resultado-html">
         <p>Matriz inicial:</p>
-        <pre>Array
+
+        <pre>
+Array
 (
-    [0] =&gt; 0
-    [1] =&gt; 1
-    [2] =&gt; 2
-    [3] =&gt; 3
-    [4] =&gt; 4
-    [5] =&gt; 5
-)</pre>
+    [0] =&gt; 10
+    [1] =&gt; 20
+    [2] =&gt; 30
+    [3] =&gt; 40
+    [4] =&gt; 50
+    [5] =&gt; 60
+)
+</pre>
 
         <p>Matriz barajada con shuffle():</p>
-        <pre>Array
+
+        <pre>
+Array
 (
-    [0] =&gt; 3
-    [1] =&gt; 1
-    [2] =&gt; 5
-    [3] =&gt; 0
-    [4] =&gt; 4
-    [5] =&gt; 2
-)</pre>
+    [0] =&gt; 30
+    [1] =&gt; 60
+    [2] =&gt; 10
+    [3] =&gt; 20
+    [4] =&gt; 50
+    [5] =&gt; 40
+)
+</pre>
       </div>
     </div>
 
@@ -1067,7 +1099,7 @@ print "\n";
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numeros = ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3, "d" =&gt; 4];
+$numeros = ["a" =&gt; 10, "b" =&gt; 20, "c" =&gt; 30, "d" =&gt; 40];
 
 print "&lt;p&gt;Matriz inicial:&lt;/p&gt;\n";
 print "\n";
@@ -1087,19 +1119,19 @@ print "\n";
         <p>Matriz inicial:</p>
         <pre>Array
 (
-    [a] =&gt; 1
-    [b] =&gt; 2
-    [c] =&gt; 3
-    [d] =&gt; 4
+    [a] =&gt; 10
+    [b] =&gt; 20
+    [c] =&gt; 30
+    [d] =&gt; 40
 )</pre>
 
         <p>Matriz barajada con shuffle():</p>
         <pre>Array
 (
-    [0] =&gt; 2
-    [1] =&gt; 1
-    [2] =&gt; 4
-    [3] =&gt; 3
+    [0] =&gt; 20
+    [1] =&gt; 10
+    [2] =&gt; 40
+    [3] =&gt; 30
 )</pre>
       </div>
     </div>
@@ -1108,7 +1140,7 @@ print "\n";
   <section id="array_rand">
     <h2>Extraer al azar un elemento de una matriz</h2>
 
-    <p>La función <a href="https://www.php.net/manual/en/function.array-rand.php"><span class="php-fun">array_rand($matriz)</span></a> extrae al azar uno de los índices de la matriz.</p>
+    <p>La función <a href="https://www.php.net/manual/en/function.array-rand.php"><span class="php-fun">array_rand($matriz)</span></a> extrae al azar uno de los índices de la matriz. Una vez obtenido el índice se puede obtener el valor correspondiente de la matriz.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -1118,35 +1150,25 @@ $cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
 
 $indice = array_rand($cuadrados);
 
-print "&lt;p&gt;$indice&lt;/p&gt;\n";
+print "&lt;pre&gt;\n"; print_r($cuadrados); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;p&gt;Índice al azar: $indice&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;Valor al azar: $cuadrados[$indice]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html">
-        <pre>
-<code class="language-html">&lt;p&gt;10&lt;/p&gt;</code>
-</pre>
-      </div>
-    </div>
-
-    <p>Una vez obtenido el índice se puede obtener el valor correspondiente de la matriz.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
-
-$indice = array_rand($cuadrados);
-
-print "&lt;p&gt;$indice - $cuadrados[$indice]&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <pre>
-<code class="language-html">&lt;p&gt;10 - 100&lt;/p&gt;</code>
-</pre>
+      <div class="resultado-html"><pre>
+  Array
+  (
+      [2] =&gt; 4
+      [3] =&gt; 9
+      [7] =&gt; 49
+      [10] =&gt; 100
+  )
+  </pre>
+        <p>Índice al azar: 7</p>
+        <p>Valor al azar: 49</p>
       </div>
     </div>
   </section>
@@ -1181,7 +1203,7 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
