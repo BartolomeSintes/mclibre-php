@@ -158,7 +158,7 @@ print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</sp
           </div>
         </div>
       </li>
-      <li id="php-8-0-comparaciones">[<a href="https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.core.string-number-comparision">Referencia</a>] A partir de PHP 8.0, la comparación entre números y cadenas no numéricas se realiza convirtiendo el número a cadena y comparando las cadenas, lo que supone un cambio en el resultado de algunas comparaciones:
+      <li id="php-8-0-comparaciones">[<a href="https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.core.string-number-comparision">Referencia</a>] A partir de PHP 8.0, la comparación entre números y cadenas no numéricas (es decir, que no se pueden interpretar como números) se realiza convirtiendo el número a cadena y comparando las cadenas, lo que supone un cambio en el resultado de algunas comparaciones:
 
         <table class="tabla-con-borde mcl-centrado">
           <tbody>
@@ -184,6 +184,131 @@ print "&lt;p&gt;Suma: $x + $y = " <span class="codigo-resaltado">. $x + $y .</sp
             </tr>
           </tbody>
         </table>
+
+        <hr class="corta">
+
+        <p>Antes de PHP 8.0, para comparar entre números y cadenas, las cadenas no numéricas se convertían a 0. Pero a partir de PHP 8.0 son los números los que se convierten a cadenas y cualquier cadena no numérica se considera mayor que cualquier número.</p>
+
+        <div class="filaflex cabecera">
+          <div>Código fuente</div>
+          <div>Resultado en PHP 7.4</div>
+          <div>Resultado en PHP 8.0</div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+if ("a" &gt; 4) {
+    print "&lt;p&gt;\"a\" &gt; 4&lt;/p&gt;";
+} else {
+    print "&lt;p&gt;4 &gt; \"a\"&lt;/p&gt;";
+}
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">4 &gt; "a"</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">"a" &gt; 4</code>
+</pre>
+          </div>
+        </div>
+
+        <hr class="corta">
+
+        <p>Antes de PHP 8.0, las funciones de ordenación de matrices con elementos de tipos distintos podían dar resultados inconsistentes. En el ejemplo siguiente se ordenan dos matrices que contiene los mismos tres valores, pero en orden diferente. En PHP 7.4 el resultado no se obtenía el mismo resultado, pero a partir de PHP 8.0 sí.</p>
+
+        <div class="filaflex cabecera">
+          <div>Código fuente</div>
+          <div>Resultado en PHP 7.4</div>
+          <div>Resultado en PHP 8.0</div>
+        </div>
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$valores = [5, "44", "b", ];
+print "&lt;pre&gt;Matriz 1: "; print_r($valores); print "&lt;/pre&gt;\n";
+sort($valores);
+print "&lt;pre&gt;Matriz 1 ordenada: "; print_r($valores); print "&lt;/pre&gt;\n";
+
+$valores = [5, "b", "44", ];
+print "&lt;pre&gt;Matriz 2: "; print_r($valores); print "&lt;/pre&gt;\n";
+sort($valores);
+print "&lt;pre&gt;Matriz 2 ordenada: "; print_r($valores); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">Matriz 1: Array
+(
+    [0] =&gt; 5
+    [1] =&gt; 44
+    [2] =&gt; b
+)
+
+Matriz 1 ordenada: Array
+(
+    [0] =&gt; 5
+    [1] =&gt; 44
+    [2] =&gt; b
+)
+
+Matriz 2: Array
+(
+    [0] =&gt; 5
+    [1] =&gt; b
+    [2] =&gt; 44
+)
+
+Matriz 2 ordenada: Array
+(
+    [0] =&gt; 44
+    [1] =&gt; b
+    [2] =&gt; 5
+)</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">Matriz 1: Array
+(
+    [0] =&gt; 5
+    [1] =&gt; 44
+    [2] =&gt; b
+)
+
+Matriz 1 ordenada: Array
+(
+    [0] =&gt; 5
+    [1] =&gt; 44
+    [2] =&gt; b
+)
+
+Matriz 2: Array
+(
+    [0] =&gt; 5
+    [1] =&gt; b
+    [2] =&gt; 44
+)
+
+Matriz 2 ordenada: Array
+(
+    [0] =&gt; 5
+    [1] =&gt; 44
+    [2] =&gt; b
+)
+</code>
+</pre>
+          </div>
+        </div>
       </li>
       <li>A partir de PHP 8.0, un conjunto de avisos <span class="php-con">E_WARNINGS</span> se han reconvertido en errores <span class="php-con">E_ERROR</span>: constantes no definidas, etc.</li>
       <li>A partir de PHP 8.0, un conjunto de avisos <span class="php-con">E_NOTICE</span> se han reconvertido en avisos <span class="php-con">E_WARNING</span>: variables no definidas, índices de matrices no definidos, intento de conversión de matriz en cadena, etc.</li>
@@ -294,7 +419,7 @@ print "&lt;p&gt;$cadena empieza por $cadena[0] y acaba por <span class="codigo-r
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
