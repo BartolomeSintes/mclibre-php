@@ -91,7 +91,7 @@ print "&lt;/pre&gt;\n";
       </div>
     </div>
 
-    <p>El nombre del elemento de la matriz $_REQUEST coincide con el nombre del control (atributo <span class="html-atri">name</span>)en el formulario (excepto en el control de tipo imagen).</p>
+    <p>El nombre del elemento de la matriz $_REQUEST coincide con el nombre del control (atributo <span class="html-atri">name</span>) en el formulario (excepto en el control de tipo imagen).</p>
 
     <hr class="corta">
 
@@ -212,25 +212,27 @@ print "&lt;/pre&gt;";</code>
   <section id="submit">
     <h2>Botón Enviar (<span class="html-eti">input</span> <span class="html-atri-valor">submit</span>, <span class="html-eti">button</span>)</h2>
 
-    <p>Este control se puede crear con la etiqueta <span class="html-eti">&lt;input&gt;</span> o con la etiqueta <span class="html-eti">&lt;button&gt;</span>. En ambos casos, este control se envía siempre que esté definido el atributo <span class="html-atri">name</span> y que se haya hecho clic en el botón. El valor enviado es el valor del atributo <span class="html-atri">value</span> o el contenido de la etiqueta.</p>
+    <p>Este control se puede crear con la etiqueta <span class="html-eti">&lt;input&gt;</span> o con la etiqueta <span class="html-eti">&lt;button&gt;</span>. En ambos casos, este control se envía siempre que esté definido el atributo <span class="html-atri">name</span> y que se haya hecho clic en el botón. El valor enviado es el valor del atributo <span class="html-atri">value</span>.</p>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="submit" value="Submit"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="submit" value="Submit">
-      </div>
+      <iframe src="ejemplos/formularios/form-input-submit-1-1.php" style="height: 6em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-submit-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -238,34 +240,37 @@ print "&lt;/pre&gt;";</code>
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="submit" value="Enviar" name="boton2"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="submit" value="Enviar" name="boton2">
-      </div>
+      <iframe src="ejemplos/formularios/form-input-submit-2-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
     [boton2] =&gt; Enviar
 )</pre>
       </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-submit-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
     </div>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
         <pre><code class="language-html">&lt;button type="submit"&gt;Submit&lt;/button&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="submit" value="Submit">
-      </div>
+      <iframe src="ejemplos/formularios/form-button-submit-1-1.php" style="height: 6em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-button-submit-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -273,14 +278,15 @@ print "&lt;/pre&gt;";</code>
       <div class="codigo">
         <pre><code class="language-html">&lt;button type="submit" name="boton3"&gt;Enviar&lt;/button&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <button type="submit" name="boton3" value="enviado">Enviar</button>
-      </div>
+      <iframe src="ejemplos/formularios/form-button-submit-2-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
-    [boton3] =&gt; Enviar
+    [boton3] =&gt;
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-button-submit-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -288,56 +294,53 @@ print "&lt;/pre&gt;";</code>
       <div class="codigo">
         <pre><code class="language-html">&lt;button type="submit" name="boton4" value="enviado"&gt;Enviar&lt;/button&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <button type="submit" name="boton3">Enviar</button>
-      </div>
+      <iframe src="ejemplos/formularios/form-button-submit-3-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
     [boton4] =&gt; enviado
 )</pre>
       </div>
-    </div>
-
-    <p>Normalmente no se suele dar el atributo <span class="html-atri">name</span> al botón enviar ya que la información se envía cuando se hace clic en el botón. pero en algunos casos si que puede ser conveniente. Por ejemplo cuando el formulario contiene varios botones y queremos saber cuál se ha pulsado, como en el ejemplo siguiente, en el que los atributos <span class="html-atri">name</span> son iguales, pero los atributos <span class="html-atri">value</span> son distintos:</p>
-
-    <div class="filaflex">
-      <div class="nogrow">
-        <p>ejemplo.html</p>
-      </div>
-      <div class="codigo">
-        <pre>
-<code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="get"</span>&gt;
-  &lt;p&gt;¿Sí o no?&lt;/p&gt;
-  &lt;p&gt;
-    &lt;input type="submit" name="respuesta" value="Sí"&gt;
-    &lt;input type="submit" name="respuesta" value="No"&gt;
-  &lt;/p&gt;
-&lt;/form&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-captura">
-        <p>
-          <img src="../img/php/form-submit-1.png" alt="Ejemplo de formulario" width="680" height="170">
-        </p>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-button-submit-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
+    <p>Normalmente no se suele dar el atributo <span class="html-atri">name</span> al botón Enviar ya que el usuario no aporta información en el botón, simplemente hace clic en él para enviar el formulario, pero en algunos casos sí que puede ser conveniente. Por ejemplo, si el formulario contiene varios botones y queremos saber cuál se ha pulsado, como en el ejemplo siguiente, en el que los atributos <span class="html-atri">name</span> son iguales, pero los atributos <span class="html-atri">value</span> son distintos:</p>
+
+    <div class="filaflex cabecera">
+      <div>Código fuente</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
     <div class="filaflex">
-      <div class="nogrow">
-        <p>ejemplo.php</p>
-      </div>
       <div class="codigo">
-        <pre>
-<code class="language-php">print "&lt;pre&gt;";
-print_r($_REQUEST);
-print "&lt;/pre&gt;";</code>
-</pre>
+        <pre><code class="language-html">&lt;p&gt;¿Sí o no?&lt;/p&gt;
+
+&lt;p&gt;
+  &lt;input type="submit" name="respuesta" value="Sí"&gt;
+  &lt;input type="submit" name="respuesta" value="No"&gt;
+&lt;/p&gt;</code></pre>
       </div>
-      <div class="resultado-captura">
-        <p>
-          <img src="../img/php/form-submit-2.png" alt="Resultado de formulario con method get" width="680" height="170">
-        </p>
+      <iframe src="ejemplos/formularios/form-input-submit-3-1.php" style="height: 13em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
+(
+    [respuesta] =&gt Sí;
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+  [respuesta] =&gt No;
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-submit-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -345,101 +348,184 @@ print "&lt;/pre&gt;";</code>
   <section id="text">
     <h2>Caja de texto, caja de contraseña y área de texto (<span class="html-eti">input</span> <span class="html-atri-valor">text</span>, <span class="html-eti">input</span> <span class="html-atri-valor">password</span>, <span class="html-eti">textarea</span>)</h2>
 
-    <p>Este control se envía siempre. El valor enviado es el contenido de la caja o área.</p>
+    <p>Los controles caja de texto, caja de contraseña y área de texto se envían siempre, aunque estén vacíos. El valor enviado es el contenido de la caja o área.</p>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="text" name="cajatexto1"&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="text" name="cajaTexto1"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="text" name="cajatexto" readonly>
-      </div>
+      <iframe src="ejemplos/formularios/form-input-text-1-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
-    [cajatexto1] =&gt;
+    [cajaTexto1] =&gt;
 )</pre>
       </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre><code class="language-html">&lt;input type="text" name="cajatexto2" value="Cualquier cosa"&gt;</code></pre>
-      </div>
-      <div class="resultado-html">
-        <input type="text" name="cajatexto" value="Cualquier cosa" readonly>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [cajatexto2] =&gt; Cualquier cosa
-)</pre>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-text-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="password" name="cajapassword1"&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="password" name="cajaPassword1"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="password">
-      </div>
+      <iframe src="ejemplos/formularios/form-input-password-1-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
-    [cajapassword1] =&gt;
+    [cajaPassword1] =&gt;
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-password-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="password" name="cajapassword2" value="pezespada"&gt;</code></pre>
+        <pre><code class="language-html">&lt;textarea rows="4" cols="20" name="areaTexto1"&gt;&lt;/textarea&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="password" value="pezespada" readonly>
-      </div>
+      <iframe src="ejemplos/formularios/form-textarea-1-1.php" style="height: 10em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
-    [cajapassword2] =&gt; pezespada
+    [areaTexto1] =&gt;
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-textarea-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>El atributo <span class="html-atri">placeholder</span> permite añadir al control un texto que desaparece al escribir en él. Ese texto no se envía en ningún caso.</p>
+
+    <div class="filaflex cabecera">
+      <div>Código fuente</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="text" name="cajaTexto2" placeholder="Escriba aquí cualquier cosa"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-input-text-2-1.php" style="height: 7em;"></iframe>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [cajaTexto2] =&gt;
+)</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-text-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;textarea rows="4" cols="20" name="areadetexto1"&gt;&lt;/textarea&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="password" name="cajaPassword2" placeholder="Escriba aquí su contraseña"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <textarea rows="4" cols="20" readonly></textarea>
-      </div>
+      <iframe src="ejemplos/formularios/form-input-password-2-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
-    [areadetexto1] =&gt;
+    [cajaPassword2] =&gt;
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-password-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;textarea rows="4" cols="20" name="areadetexto2"&gt;Cualquier cosa&lt;/textarea&gt;</code></pre>
+        <pre><code class="language-html">&lt;textarea rows="4" cols="20" name="areaTexto2" placeholder="Escriba aquí cualquier cosa"&gt;&lt;/textarea&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <textarea rows="4" cols="20" readonly>Cualquier cosa</textarea>
-      </div>
+      <iframe src="ejemplos/formularios/form-textarea-2-1.php" style="height: 10em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
-    [areadetexto2] =&gt; Cualquier cosa
+    [areaTexto2] =&gt;
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-textarea-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>El atributo <span class="html-atri">value</span> permite incluir texto en las cajas de texto y contraseña (en las área de texto se debe escribir en el interior de la etiqueta <span class="html-eti">textarea</span>). Si no se borra, ese texto sí que se envía, por lo que se recomienda utilizar en su lugar el atributo <span class="html-atri">placeholder</span>.</p>
+
+    <div class="filaflex cabecera">
+      <div class="icono-ok"></div>
+      <div>Código fuente</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="text" name="cajaTexto3" value="Escriba aquí cualquier cosa"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-input-text-3-1.php" style="height: 7em;"></iframe>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [cajaTexto3] =&gt; Escriba aquí cualquier cosa
+)</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-text-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;input type="password" name="cajaPassword3" value="Escriba aquí su contraseña"&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-input-password-3-1.php" style="height: 7em;"></iframe>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [cajaPassword3] =&gt; Escriba aquí su contraseña
+)</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-password-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;textarea rows="4" cols="20" name="areaTexto3"&gt;Escriba aquí cualquier cosa&lt;/textarea&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-textarea-3-1.php" style="height: 10em;"></iframe>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [areaTexto3] =&gt; Escriba aquí cualquier cosa
+)</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-textarea-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -451,51 +537,54 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="checkbox" name="casilla1"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="checkbox" name="casilla1" onclick="return false;"> (sin marcar)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+      <iframe src="ejemplos/formularios/form-input-checkbox-1-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
 (
 )</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [casilla1] =&gt; on
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-checkbox-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="checkbox" name="casilla2"&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="checkbox" name="casilla2" value="Tres"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="checkbox" checked name="casilla2" onclick="return false;"> (marcada)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+      <iframe src="ejemplos/formularios/form-input-checkbox-2-1.php" style="height: 12em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
 (
-    [casilla2] =&gt; on
 )</pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre><code class="language-html">&lt;input type="checkbox" name="casilla3" value="Tres"&gt;</code></pre>
-      </div>
-      <div class="resultado-html">
-        <input type="checkbox" checked name="casilla1" value="Tres" onclick="return false;"> (marcada)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+        </div>
+        <div class="resultado-html">
+          <pre>Array
 (
-    [casilla3] =&gt; Tres
+    [casilla2] =&gt; Tres
 )</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-checkbox-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -506,88 +595,77 @@ print "&lt;/pre&gt;";</code>
     <p>Este control se envía solamente si se marca alguno de los botones radio que forman el control. El valor enviado es "on" si el botón marcado no tiene definido el atributo <span class="html-atri">value</span> o el valor del atributo <span class="html-atri">value</span> si éste está definido.</p>
 
     <div class="filaflex cabecera">
+      <div class="icono-ok"></div>
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="radio" name="radio1"&gt;<br>&lt;input type="radio" name="radio1"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="radio" name="radio1" onclick="return false;"> <input type="radio" name="radio1" onclick="return false;"> (sin marcar)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+      <iframe src="ejemplos/formularios/form-input-radio-1-1.php" style="height: 18em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
 (
 )</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [radio1] =&gt; on
+)</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [radio1] =&gt; on
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-radio-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <div class="filaflex">
-      <div class="codigo">
-        <pre><code class="language-html">&lt;input type="radio" name="radio2"&gt;<br>&lt;input type="radio" name="radio2"&gt;</code></pre>
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
       </div>
-      <div class="resultado-html">
-        <input type="radio" name="radio2" checked onclick="return false;"> <input type="radio" name="radio2" onclick="return false;"> (marcado uno)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [radio2] =&gt; on
-)</pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre><code class="language-html">&lt;input type="radio" name="radio2"&gt;<br>&lt;input type="radio" name="radio2"&gt;</code></pre>
-      </div>
-      <div class="resultado-html">
-        <input type="radio" name="radio3" onclick="return false;"> <input type="radio" name="radio3" checked onclick="return false;"> (marcado otro)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [radio2] =&gt; on
-)</pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;input type="radio" name="radio3" value="Uno"&gt;
-&lt;input type="radio" name="radio3" value="Dos"&gt;</code>
+<code class="language-html">&lt;input type="radio" name="radio2" value="Uno"&gt;
+&lt;input type="radio" name="radio2" value="Dos"&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html">
-        <input type="radio" name="radio4" checked value="Uno" onclick="return false;"> <input type="radio" name="radio4" value="Dos" onclick="return false;"> (marcado uno)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+      <iframe src="ejemplos/formularios/form-input-radio-2-1.php" style="height: 18em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
 (
-    [radio3] =&gt; Uno
 )</pre>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-html">&lt;input type="radio" name="radio3" value="Uno"&gt;
-&lt;input type="radio" name="radio3" value="Dos"&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <input type="radio" name="radio5" value="Uno" onclick="return false;"> <input type="radio" name="radio5" checked value="Dos" onclick="return false;"> (marcado otro)
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+        </div>
+        <div class="resultado-html">
+          <pre>Array
 (
-    [radio3] =&gt; Dos
+    [radio2] =&gt; Uno
 )</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [radio2] =&gt; Dos
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-radio-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -601,7 +679,7 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
     </div>
 
@@ -615,8 +693,8 @@ print "&lt;/pre&gt;";</code>
       </div>
       <div class="resultado-html">
         <select name="menu1">
-            <option></option>
-          </select>
+          <option></option>
+        </select>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -637,9 +715,9 @@ print "&lt;/pre&gt;";</code>
       </div>
       <div class="resultado-html">
         <select name="menu3">
-            <option>Opción 1</option>
-            <option>Opción 2</option>
-          </select>
+          <option>Opción 1</option>
+          <option>Opción 2</option>
+        </select>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -660,9 +738,9 @@ print "&lt;/pre&gt;";</code>
       </div>
       <div class="resultado-html">
         <select name="menu3">
-            <option>Opción 1</option>
-            <option>Opción 2</option>
-          </select>
+          <option>Opción 1</option>
+          <option>Opción 2</option>
+        </select>
       </div>
       <div class="resultado-html">
         <pre>Array
@@ -685,11 +763,11 @@ print "&lt;/pre&gt;";</code>
       </div>
       <div class="resultado-html">
         <select name="menu4[]" size="3" multiple>
-            <option value="Opción 1" selected>Opción 1</option>
-            <option value="Opción 2">Opción 2</option>
-            <option value="Opción 3" selected>Opción 3</option>
-            <option value="Opción 4">Opción 4</option>
-          </select>
+          <option value="Opción 1" selected>Opción 1</option>
+          <option value="Opción 2">Opción 2</option>
+          <option value="Opción 3" selected>Opción 3</option>
+          <option value="Opción 4">Opción 4</option>
+        </select>
         <br> (Marcados 1 y 3)
       </div>
       <div class="resultado-html">
@@ -712,7 +790,7 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
     </div>
 
@@ -756,7 +834,7 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
     </div>
 
@@ -794,7 +872,7 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_REQUEST</div>
     </div>
 
@@ -817,7 +895,7 @@ print "&lt;/pre&gt;";</code>
 
     <div class="filaflex cabecera">
       <div>Código fuente</div>
-      <div>Control</div>
+      <div>Ejemplo</div>
       <div>$_FILES</div>
     </div>
 
@@ -853,7 +931,7 @@ print "&lt;/pre&gt;";</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2016</p>
+    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
