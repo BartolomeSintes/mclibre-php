@@ -48,17 +48,15 @@ $fruta3 = rand(1, $simbolosNumero);
 
 // Se genera el formulario
 print "  <table style=\"margin-left: auto; margin-right: auto; border: black 4px solid; border-spacing: 10px;\">\n";
-print "    <tbody>\n";
-print "      <tr>\n";
+print "    <tr>\n";
 // Se muestran las tres imágenes de la combinación actual
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
+print "      <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$fruta1.svg\" width=\"160\" alt=\"Imagen\"></td>\n";
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
+print "      <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$fruta2.svg\" width=\"160\" alt=\"Imagen\"></td>\n";
-print "        <td style=\"border: black 4px solid; padding: 10px\">"
+print "      <td style=\"border: black 4px solid; padding: 10px\">"
     . "<img src=\"img/frutas/$fruta3.svg\" width=\"160\" alt=\"Imagen\"></td>\n";
-print "      </tr>\n";
-print "    </tbody>\n";
+print "    </tr>\n";
 print "  </table>\n";
 ?>
 

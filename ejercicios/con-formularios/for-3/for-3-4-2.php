@@ -81,23 +81,21 @@ if ($numero == "") {
 
 if ($numeroOk) {
     print "  <table class=\"conborde\">\n";
-    print "    <tbody>\n";
-    print "      <tr>\n";
-    print "        <th>X</th>\n";
+    print "    <tr>\n";
+    print "      <th>X</th>\n";
     for ($j = 1; $j <= $numero; $j++) {
-        print "        <th>$j</th>\n";
+        print "      <th>$j</th>\n";
     }
-    print "      </tr>\n";
+    print "    </tr>\n";
 
     for ($i = 1; $i <= $numero; $i++) {
-        print "      <tr>\n";
-        print "        <th>$i</th>\n";
+        print "    <tr>\n";
+        print "      <th>$i</th>\n";
         for ($j = 1; $j <= $numero; $j++) {
-            print "        <td>" . $i * $j . "</td>\n";
+            print "      <td>" . $i * $j . "</td>\n";
         }
-        print "      </tr>\n";
+        print "    </tr>\n";
     }
-    print "    </tbody>\n";
     print "  </table>\n";
     print "\n";
 }

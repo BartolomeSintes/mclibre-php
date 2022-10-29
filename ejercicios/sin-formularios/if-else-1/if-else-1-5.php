@@ -41,13 +41,12 @@
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
   <table>
-    <tbody>
-      <tr>
-        <th>Jugador 1</th>
-        <th>Jugador 2</th>
-        <th>Resultado</th>
-      </tr>
-      <tr>
+    <tr>
+      <th>Jugador 1</th>
+      <th>Jugador 2</th>
+      <th>Resultado</th>
+    </tr>
+    <tr>
 <?php
 $dado1a = rand(1, 6);
 $dado1b = rand(1, 6);
@@ -56,16 +55,16 @@ $dado2a = rand(1, 6);
 $dado2b = rand(1, 6);
 $dado2c = rand(1, 6);
 
-print "        <td style=\"padding: 10px; background-color: red;\">\n";
-print "          <img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\">\n";
-print "          <img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\">\n";
-print "          <img src=\"img/$dado1c.svg\" alt=\"$dado1c\" width=\"140\" height=\"140\">\n";
-print "        </td>\n";
-print "        <td style=\"padding: 10px; background-color: blue;\">\n";
-print "          <img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\">\n";
-print "          <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\">\n";
-print "          <img src=\"img/$dado2c.svg\" alt=\"$dado2c\" width=\"140\" height=\"140\">\n";
-print "        </td>\n";
+print "      <td style=\"padding: 10px; background-color: red;\">\n";
+print "        <img src=\"img/$dado1a.svg\" alt=\"$dado1a\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$dado1b.svg\" alt=\"$dado1b\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$dado1c.svg\" alt=\"$dado1c\" width=\"140\" height=\"140\">\n";
+print "      </td>\n";
+print "      <td style=\"padding: 10px; background-color: blue;\">\n";
+print "        <img src=\"img/$dado2a.svg\" alt=\"$dado2a\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$dado2b.svg\" alt=\"$dado2b\" width=\"140\" height=\"140\">\n";
+print "        <img src=\"img/$dado2c.svg\" alt=\"$dado2c\" width=\"140\" height=\"140\">\n";
+print "      </td>\n";
 
 if ($dado1a == $dado1b && $dado1a == $dado1c) {
     $trio1 = $dado1a;
@@ -100,27 +99,26 @@ $total1 = $dado1a + $dado1b + $dado1c;
 $total2 = $dado2a + $dado2b + $dado2c;
 
 if ($trio1 > $trio2) {
-    print "        <td>Ha ganado el jugador 1</td>\n";
+    print "      <td>Ha ganado el jugador 1</td>\n";
 } elseif ($trio1 < $trio2) {
-    print "        <td>Ha ganado el jugador 2</td>\n";
+    print "      <td>Ha ganado el jugador 2</td>\n";
 } else {
     if ($pareja1 > $pareja2) {
-        print "        <td>Ha ganado el jugador 1</td>\n";
+        print "      <td>Ha ganado el jugador 1</td>\n";
     } elseif ($pareja1 < $pareja2) {
-        print "        <td>Ha ganado el jugador 2</td>\n";
+        print "      <td>Ha ganado el jugador 2</td>\n";
     } else {
         if ($total1 > $total2) {
-            print "        <td>Ha ganado el jugador 1</td>\n";
+            print "      <td>Ha ganado el jugador 1</td>\n";
         } elseif ($total1 < $total2) {
-            print "        <td>Ha ganado el jugador 2</td>\n";
+            print "      <td>Ha ganado el jugador 2</td>\n";
         } else {
-            print "        <td>Han empatado</td>\n";
+            print "      <td>Han empatado</td>\n";
         }
     }
 }
 ?>
-      </tr>
-    </tbody>
+    </tr>
   </table>
 
   <footer>

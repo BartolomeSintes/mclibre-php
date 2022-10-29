@@ -94,15 +94,13 @@ if ($numeroOk) {
     // Formulario que envía los datos a la página 3
     print "  <form action=\"foreach-2-1-3.php\" method=\"get\">\n";
     print "    <table class=\"conborde\">\n";
-    print "      <tbody>\n";
-    print "        <tr>\n";
+    print "      <tr>\n";
     // Bucle para generar las casillas de verificación
     for ($i = 1; $i <= $numero; $i++) {
         // El nombre del control es una matriz (c[])
-        print "          <td><label><input type=\"checkbox\" name=\"c[$i]\"> $i</label></td>\n";
+        print "        <td><label><input type=\"checkbox\" name=\"c[$i]\"> $i</label></td>\n";
     }
-    print "        </tr>\n";
-    print "      </tbody>\n";
+    print "      </tr>\n";
     print "    </table>\n";
     print "\n";
     print "    <p>\n";

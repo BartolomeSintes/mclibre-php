@@ -41,30 +41,28 @@ if ($id == "") {
         print "      <p>Modifique los campos que desee:</p>\n";
         print "\n";
         print "      <table>\n";
-        print "        <tbody>\n";
-        print "          <tr>\n";
-        print "            <td>Usuario:</td>\n";
-        print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Contraseña:</td>\n";
-        print "            <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\"></td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Nivel:</td>\n";
-        print "            <td>\n";
-        print "              <select name=\"nivel\">\n";
+        print "        <tr>\n";
+        print "          <td>Usuario:</td>\n";
+        print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Contraseña:</td>\n";
+        print "          <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\"></td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Nivel:</td>\n";
+        print "          <td>\n";
+        print "            <select name=\"nivel\">\n";
         foreach ($cfg["usuariosNiveles"] as $indice => $valor) {
             if ($registro["nivel"] == $indice) {
-                print "                <option value=\"$indice\" selected>$valor</option>\n";
+                print "              <option value=\"$indice\" selected>$valor</option>\n";
             } else {
-                print "                <option value=\"$indice\">$valor</option>\n";
+                print "              <option value=\"$indice\">$valor</option>\n";
             }
         }
-        print "              </select>\n";
-        print "            </td>\n";
-        print "          </tr>\n";
-        print "        </tbody>\n";
+        print "            </select>\n";
+        print "          </td>\n";
+        print "        </tr>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

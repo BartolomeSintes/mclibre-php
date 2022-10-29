@@ -88,26 +88,24 @@ if ($numeroOk) {
     for ($k = 0; $k < $numero; $k++) {
         print "  <table class=\"conborde\">\n";
         print "    <caption>Hue: " . $k * $paso . "</caption>\n";
-        print "    <tbody>\n";
-        print "      <tr>\n";
-        print "        <td>S \ L</td>\n";
+        print "    <tr>\n";
+        print "      <td>S \ L</td>\n";
         for ($j = 0; $j < $numero; $j++) {
-            print "        <td>" . round($j * $paso / 255 * 100) . "%</td>\n";
+            print "      <td>" . round($j * $paso / 255 * 100) . "%</td>\n";
         }
-        print "      </tr>\n";
+        print "    </tr>\n";
         for ($i = 0; $i < $numero; $i++) {
-            print "      <tr>\n";
-            print "        <td>" . round($i * $paso / 255 * 100) . "%</td>\n";
+            print "    <tr>\n";
+            print "      <td>" . round($i * $paso / 255 * 100) . "%</td>\n";
             for ($j = 0; $j < $numero; $j++) {
-                print "        <td style=\"background-color:hsl("
+                print "      <td style=\"background-color:hsl("
                     . round($k * $paso) . "," . round($i * $paso / 255 * 100)
                     . "%," . round($j * $paso / 255 * 100) . "%)\" title=\"H:"
                     . round($k * $paso) . " S:" . round($i * $paso / 255 * 100)
                     . "% L:" . round($j * $paso / 255 * 100) . "%\"></td>\n";
             }
-            print "      </tr>\n";
+            print "    </tr>\n";
         }
-        print "    </tbody>\n";
         print "  </table>\n";
         print "\n";
     }

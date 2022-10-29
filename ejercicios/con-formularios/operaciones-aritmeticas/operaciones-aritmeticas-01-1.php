@@ -18,16 +18,14 @@
     <p>Escriba su peso en kilogramos y su altura en centímetros para calcular su índice de masa corporal.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="peso">Peso:</label></td>
-          <td><input type="number" name="peso" min="1" id="peso"> <label for="peso">kg</label></td>
-        </tr>
-        <tr>
-          <td><label for="altura">Altura:</label></td>
-          <td><input type="number" name="altura" min="1" id="altura"> <label for="altura">cm</label></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="peso">Peso:</label></td>
+        <td><input type="number" name="peso" min="1" id="peso"> <label for="peso">kg</label></td>
+      </tr>
+      <tr>
+        <td><label for="altura">Altura:</label></td>
+        <td><input type="number" name="altura" min="1" id="altura"> <label for="altura">cm</label></td>
+      </tr>
     </table>
 
     <p>

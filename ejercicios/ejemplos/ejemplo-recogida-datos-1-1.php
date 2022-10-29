@@ -16,16 +16,14 @@
 
   <form action="ejemplo-recogida-datos-1-2.php" method="get">
     <table>
-      <tbody>
-        <tr>
-          <td>Escriba su nombre:</td>
-          <td><input type="text" name="nombre" size="30" maxlength="20"></td>
-        </tr>
-        <tr>
-          <td>Escriba su edad:</td>
-          <td><input type="number" name="edad" min="1" max="120"> años</td>
-        </tr>
-      </tbody>
+      <tr>
+        <td>Escriba su nombre:</td>
+        <td><input type="text" name="nombre" size="30" maxlength="20"></td>
+      </tr>
+      <tr>
+        <td>Escriba su edad:</td>
+        <td><input type="number" name="edad" min="1" max="120"> años</td>
+      </tr>
     </table>
 
     <p>

@@ -19,20 +19,18 @@
     </p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>Valor inicial:</strong></td>
-          <td><input type="number" name="inicial" step="any" value="0"></td>
-        </tr>
-        <tr>
-          <td><strong>Incremento:</strong></td>
-          <td><input type="number" name="incremento" step="any" value="1"></td>
-        </tr>
-        <tr>
-          <td><strong>Número de valores:</strong></td>
-          <td><input type="number" name="valores" step="1" min="1" value="5"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Valor inicial:</strong></td>
+        <td><input type="number" name="inicial" step="any" value="0"></td>
+      </tr>
+      <tr>
+        <td><strong>Incremento:</strong></td>
+        <td><input type="number" name="incremento" step="any" value="1"></td>
+      </tr>
+      <tr>
+        <td><strong>Número de valores:</strong></td>
+        <td><input type="number" name="valores" step="1" min="1" value="5"></td>
+      </tr>
     </table>
 
     <p>

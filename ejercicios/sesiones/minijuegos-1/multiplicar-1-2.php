@@ -88,20 +88,18 @@ if ($respuestaOk) {
         print "\n";
 
         print "  <table class=\"grande\">\n";
-        print "    <tbody>\n";
-        print "      <tr>\n";
-        print "        <td></td>\n";
-        print "        <td>$_SESSION[a]</td>\n";
-        print "      </tr>\n";
-        print "      <tr>\n";
-        print "        <td>x</td>\n";
-        print "        <td>$_SESSION[b]</td>\n";
-        print "      </tr>\n";
-        print "      <tr>\n";
-        print "        <td colspan=\"2\" style=\"border-top: black 2px solid;\">"
+        print "    <tr>\n";
+        print "      <td></td>\n";
+        print "      <td>$_SESSION[a]</td>\n";
+        print "    </tr>\n";
+        print "    <tr>\n";
+        print "      <td>x</td>\n";
+        print "      <td>$_SESSION[b]</td>\n";
+        print "    </tr>\n";
+        print "    <tr>\n";
+        print "      <td colspan=\"2\" style=\"border-top: black 2px solid;\">"
             . "$respuestaCorrecta</td>\n";
-        print "      </tr>\n";
-        print "    </tbody>\n";
+        print "    </tr>\n";
         print "  </table>\n";
     }
 }

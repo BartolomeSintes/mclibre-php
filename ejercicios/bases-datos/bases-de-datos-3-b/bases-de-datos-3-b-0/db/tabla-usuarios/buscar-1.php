@@ -31,23 +31,21 @@ if (!$resultado) {
     print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";
     print "      <table>\n";
-    print "        <tbody>\n";
-    print "          <tr>\n";
-    print "            <td>Usuario:</td>\n";
-    print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" autofocus></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Nivel:</td>\n";
-    print "            <td>\n";
-    print "              <select name=\"nivel\">\n";
-    print "                <option value=\"\"></option>\n";
+    print "        <tr>\n";
+    print "          <td>Usuario:</td>\n";
+    print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" autofocus></td>\n";
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>Nivel:</td>\n";
+    print "          <td>\n";
+    print "            <select name=\"nivel\">\n";
+    print "              <option value=\"\"></option>\n";
     foreach ($cfg["usuariosNiveles"] as $indice => $valor) {
-        print "                <option value=\"$indice\">$valor</option>\n";
+        print "              <option value=\"$indice\">$valor</option>\n";
     }
-    print "              </select>\n";
-    print "            </td>\n";
-    print "          </tr>\n";
-    print "        </tbody>\n";
+    print "            </select>\n";
+    print "          </td>\n";
+    print "        </tr>\n";
     print "      </table>\n";
     print "\n";
     print "      <p>\n";

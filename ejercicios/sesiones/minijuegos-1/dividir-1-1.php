@@ -49,16 +49,14 @@ $_SESSION["a"] = rand(10, 99);
 $_SESSION["b"] = rand(1, 9);
 
 print "    <table class=\"grande derecha\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td>$_SESSION[a]</td>\n";
-print "          <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$_SESSION[b]</td>\n";
-print "        </tr>\n";
-print "        <tr>\n";
-print "          <td><input type=\"text\" name=\"resto\" size=\"3\"></td>\n";
-print "          <td><input type=\"text\" name=\"cociente\" size=\"3\"></td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      <tr>\n";
+print "        <td>$_SESSION[a]</td>\n";
+print "        <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$_SESSION[b]</td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><input type=\"text\" name=\"resto\" size=\"3\"></td>\n";
+print "        <td><input type=\"text\" name=\"cociente\" size=\"3\"></td>\n";
+print "      </tr>\n";
 print "    </table>\n";
 ?>
 

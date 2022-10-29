@@ -92,16 +92,14 @@ if ($tablasOk && $tamanoOk) {
     for ($k = 1; $k <= $tablas; $k++) {
         print "    <table border=\"1\">\n";
         print "      <caption>Tabla nº $k</caption>\n";
-        print "      <tbody>\n";
         for ($i = 0; $i < $tamano; $i++) {
-            print "        <tr>\n";
+            print "      <tr>\n";
             for ($j = 1; $j <= $tamano; $j++) {
                 $casilla = $i * $tamano + $j;
-                print "          <td><input type=\"checkbox\" name=\"c[$k][$casilla]\"> $casilla</td>\n";
+                print "        <td><input type=\"checkbox\" name=\"c[$k][$casilla]\"> $casilla</td>\n";
             }
-            print "        </tr>\n";
+            print "      </tr>\n";
         }
-        print "      </tbody>\n";
         print "    </table>\n";
         print "\n";
     }

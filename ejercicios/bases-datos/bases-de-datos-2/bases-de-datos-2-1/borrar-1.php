@@ -30,15 +30,13 @@ if (!$resultado) {
     print "            <th>Apellidos</th>\n";
     print "          </tr>\n";
     print "        </thead>\n";
-    print "        <tbody>\n";
     foreach ($registros as $registro) {
-        print "          <tr>\n";
-        print "            <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$registro[id]]\"></td>\n";
-        print "            <td>$registro[nombre]</td>\n";
-        print "            <td>$registro[apellidos]</td>\n";
-        print "          </tr>\n";
+        print "        <tr>\n";
+        print "          <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$registro[id]]\"></td>\n";
+        print "          <td>$registro[nombre]</td>\n";
+        print "          <td>$registro[apellidos]</td>\n";
+        print "        </tr>\n";
     }
-    print "        </tbody>\n";
     print "      </table>\n";
     print "\n";
     print "      <p>\n";

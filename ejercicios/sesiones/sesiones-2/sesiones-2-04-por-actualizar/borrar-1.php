@@ -50,14 +50,12 @@ if (!count($_SESSION)) {
     print "    <p>Marque los datos a borrar:</p>\n";
     print "\n";
     print "    <table>\n";
-    print "      <tbody>\n";
     foreach ($_SESSION as $indice => $valor) {
-        print "        <tr>\n";
-        print "          <td><input type=\"checkbox\" name=\"c[$indice]\" value=\"$valor\"></td>\n";
-        print "          <td>$indice: $valor</td>\n";
-        print "        </tr>\n";
+        print "      <tr>\n";
+        print "        <td><input type=\"checkbox\" name=\"c[$indice]\" value=\"$valor\"></td>\n";
+        print "        <td>$indice: $valor</td>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
     print "    <p>\n";

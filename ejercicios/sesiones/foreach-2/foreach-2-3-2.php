@@ -117,29 +117,27 @@ if ($preguntasOk && $respuestasOk) {
     // Formulario que envía los datos a la página 3
     print "  <form action=\"foreach-2-3-3.php\" method=\"get\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
-    print "        <tr>\n";
-    print "          <th></th>\n";
+    print "      <tr>\n";
+    print "        <th></th>\n";
     // Bucle para generar la primera fila, las celdas sólo contienen números
     for ($j = 1; $j <= $respuestas; $j++) {
-        print "          <th>$j</th>\n";
+        print "        <th>$j</th>\n";
     }
-    print "        </tr>\n";
+    print "      </tr>\n";
     // Bucle para generar las siguientes filas
     for ($i = 1; $i <= $preguntas; $i++) {
-        print "        <tr>\n";
+        print "      <tr>\n";
         // La primera celda contiene el número de pregunta
-        print "          <th>Pregunta $i:</th>\n";
+        print "        <th>Pregunta $i:</th>\n";
         // Bucle para generar las celdas con los botones radio
         for ($j = 1; $j <= $respuestas; $j++) {
             // El nombre del control es una matriz (e[])
             // En cada fila el name del control es el mismo (para que formen un botón radio)
             // pero el value va cambiando
-            print "          <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\"></td>\n";
+            print "        <td><input type=\"radio\" name=\"b[$i]\" value=\"$j\"></td>\n";
         }
-        print "        </tr>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
     print "    <p>\n";

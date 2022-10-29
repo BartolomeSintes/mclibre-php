@@ -69,7 +69,7 @@ function recogeNumero($var, $inicial, $minimo, $maximo) {
     }
 }
 
-// Recoge el núemro de datos y lo valida, aumenta o reduce
+// Recoge el número de datos y lo valida, aumenta o reduce
 $numeroValoresInicial = 4;
 $numeroValoresMinimo  = 2;
 $numeroValoresMaximo  = 15;

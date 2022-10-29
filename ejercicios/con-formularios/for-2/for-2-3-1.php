@@ -17,12 +17,10 @@
     <p>Escriba el tamaño de los cuadrados (1 &le; números &le; 15) y dibujaré dos cuadrados.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>Tamaño:</strong></td>
-          <td><input type="number" name="tamano" min="1" max="15" value="5"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Tamaño:</strong></td>
+        <td><input type="number" name="tamano" min="1" max="15" value="5"></td>
+      </tr>
     </table>
 
     <p>

@@ -19,16 +19,14 @@
       para comprobar si uno es múltiplo del otro o no.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="numero1">Un número:</label></td>
-          <td><input type="number" name="numero1" min="0" max="1000" step="any" id="numero1"></td>
-        </tr>
-        <tr>
-          <td><label for="numero2">Otro número:</label></td>
-          <td><input type="number" name="numero2" min="0" max="1000" step="any" id="numero2"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="numero1">Un número:</label></td>
+        <td><input type="number" name="numero1" min="0" max="1000" step="any" id="numero1"></td>
+      </tr>
+      <tr>
+        <td><label for="numero2">Otro número:</label></td>
+        <td><input type="number" name="numero2" min="0" max="1000" step="any" id="numero2"></td>
+      </tr>
     </table>
 
     <p>

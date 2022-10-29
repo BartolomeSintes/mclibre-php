@@ -153,24 +153,22 @@ if (!$result) {
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
         foreach ($result as $valor) {
-            print "          <tr>\n";
-            print "            <td>$valor[nombre] $valor[apellidos]</td>\n";
-            print "            <td>$valor[autor] - $valor[titulo]</td>\n";
-            print "            <td>";
+            print "        <tr>\n";
+            print "          <td>$valor[nombre] $valor[apellidos]</td>\n";
+            print "          <td>$valor[autor] - $valor[titulo]</td>\n";
+            print "          <td>";
             if ($valor["prestado"] != "0000-00-00") {
                 print $valor["prestado"];
             }
             print "</td>\n";
-            print "            <td>";
+            print "          <td>";
             if ($valor["devuelto"] != "0000-00-00") {
                 print $valor["devuelto"];
             }
             print "</td>\n";
-            print "          </tr>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
         print "      </table>\n";
         print "    </form>\n";
     }

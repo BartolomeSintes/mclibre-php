@@ -18,16 +18,14 @@
       número de segmentos (1 &lt; franjas &le; 6) y dibujaré esos segmentos.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>Tamaño:</strong></td>
-          <td><input type="number" name="tamano" min="5" max="8" value="5"></td>
-        </tr>
-        <tr>
-          <td><strong>Número de segmentos:</strong></td>
-          <td><input type="number" name="segmentos" min="2" max="6" value="3"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Tamaño:</strong></td>
+        <td><input type="number" name="tamano" min="5" max="8" value="5"></td>
+      </tr>
+      <tr>
+        <td><strong>Número de segmentos:</strong></td>
+        <td><input type="number" name="segmentos" min="2" max="6" value="3"></td>
+      </tr>
     </table>
 
     <p>

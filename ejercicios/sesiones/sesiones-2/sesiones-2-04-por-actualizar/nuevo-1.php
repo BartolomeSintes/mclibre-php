@@ -43,16 +43,14 @@
     <p>Escriba el nuevo dato:</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="nombre">Nombre del dato:</label></td>
-          <td><input type="text" name="nombre" size="20" maxlength="20" id="nombre"></td>
-        </tr>
-        <tr>
-          <td><label for="valor">Valor del dato:</label></td>
-          <td><input type="text" name="valor" size="30" maxlength="30" id="valor"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="nombre">Nombre del dato:</label></td>
+        <td><input type="text" name="nombre" size="20" maxlength="20" id="nombre"></td>
+      </tr>
+      <tr>
+        <td><label for="valor">Valor del dato:</label></td>
+        <td><input type="text" name="valor" size="30" maxlength="30" id="valor"></td>
+      </tr>
     </table>
 
     <p>

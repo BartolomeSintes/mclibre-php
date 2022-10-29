@@ -49,20 +49,18 @@ $_SESSION["a"] = rand(1, 9);
 $_SESSION["b"] = rand(1, 9);
 
 print "    <table class=\"grande derecha\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td></td>\n";
-print "          <td>$_SESSION[a]</td>\n";
-print "        </tr>\n";
-print "        <tr>\n";
-print "          <td>x</td>\n";
-print "          <td>$_SESSION[b]</td>\n";
-print "        </tr>\n";
-print "        <tr>\n";
-print "          <td colspan=\"2\" style=\"border-top: black 2px solid;\">\n";
-print "            <input type=\"text\" name=\"respuesta\" size=\"3\"></td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      <tr>\n";
+print "        <td></td>\n";
+print "        <td>$_SESSION[a]</td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td>x</td>\n";
+print "        <td>$_SESSION[b]</td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td colspan=\"2\" style=\"border-top: black 2px solid;\">\n";
+print "          <input type=\"text\" name=\"respuesta\" size=\"3\"></td>\n";
+print "      </tr>\n";
 print "    </table>\n";
 ?>
 

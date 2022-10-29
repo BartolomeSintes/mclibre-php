@@ -81,13 +81,11 @@ if ($columnas == "") {
 
 if ($columnasOk) {
     print "  <table class=\"conborde\">\n";
-    print "    <tbody>\n";
-    print "      <tr>\n";
+    print "    <tr>\n";
     for ($i = 1; $i <= $columnas; $i++) {
-        print "        <td>$i</td>\n";
+        print "      <td>$i</td>\n";
     }
-    print "      </tr>\n";
-    print "    </tbody>\n";
+    print "    </tr>\n";
     print "  </table>\n";
     print "\n";
 }

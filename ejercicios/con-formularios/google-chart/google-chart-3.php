@@ -61,20 +61,23 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-function recogeNumero($var, $inicial, $minimo, $maximo) {
+function recogeNumero($var, $inicial, $minimo, $maximo)
+{
     $tmp = recoge($var);
     if (!is_numeric($tmp)) {
         return $inicial;
-    } elseif ($tmp < $minimo) {
-        return $minimo;
-    } elseif ($tmp > $maximo) {
-        return $maximo;
-    } else {
-        return $tmp;
     }
+    if ($tmp < $minimo) {
+        return $minimo;
+    }
+    if ($tmp > $maximo) {
+        return $maximo;
+    }
+    return $tmp;
 }
 
-function recogeTexto($var, $inicial, $valores) {
+function recogeTexto($var, $inicial, $valores)
+{
     $tmp = recoge($var);
     foreach ($valores as $valor) {
         if ($tmp == $valor) {
@@ -88,34 +91,46 @@ function recogeTexto($var, $inicial, $valores) {
 $tamanyoGraficaXInicial = 400;
 $tamanyoGraficaXMinimo  = 200;
 $tamanyoGraficaXMaximo  = 600;
-$tamanyoGraficaX = recogeNumero("tamanyoGraficaX", $tamanyoGraficaXInicial,
-    $tamanyoGraficaXMinimo, $tamanyoGraficaXMaximo);
+$tamanyoGraficaX        = recogeNumero(
+    "tamanyoGraficaX",
+    $tamanyoGraficaXInicial,
+    $tamanyoGraficaXMinimo,
+    $tamanyoGraficaXMaximo
+);
 
 $tamanyoGraficaYInicial = 200;
 $tamanyoGraficaYMinimo  = 100;
 $tamanyoGraficaYMaximo  = 300;
-$tamanyoGraficaY = recogeNumero("tamanyoGraficaY", $tamanyoGraficaYInicial,
-    $tamanyoGraficaYMinimo, $tamanyoGraficaYMaximo);
+$tamanyoGraficaY        = recogeNumero(
+    "tamanyoGraficaY",
+    $tamanyoGraficaYInicial,
+    $tamanyoGraficaYMinimo,
+    $tamanyoGraficaYMaximo
+);
 
 $tipoGraficaValores = ["lc", "p", "p3"];
-$tipoGrafica = recogeTexto("tipoGrafica", "lc", $tipoGraficaValores);
+$tipoGrafica        = recogeTexto("tipoGrafica", "lc", $tipoGraficaValores);
 
-// Recoge el núemro de datos y lo valida, aumenta o reduce
+// Recoge el número de datos y lo valida, aumenta o reduce
 $numeroValoresInicial = 4;
 $numeroValoresMinimo  = 2;
 $numeroValoresMaximo  = 15;
-$numeroValores = recogeNumero("numeroValores", $numeroValoresInicial,
-    $numeroValoresMinimo, $numeroValoresMaximo);
-if (isset($_REQUEST["anyadir"]) && ($numeroValores<$numeroValoresMaximo)) {
+$numeroValores        = recogeNumero(
+    "numeroValores",
+    $numeroValoresInicial,
+    $numeroValoresMinimo,
+    $numeroValoresMaximo
+);
+if (isset($_REQUEST["anyadir"]) && ($numeroValores < $numeroValoresMaximo)) {
     $numeroValores++;
-} elseif (isset($_REQUEST["quitar"]) && ($numeroValores>$numeroValoresMinimo)) {
+} elseif (isset($_REQUEST["quitar"]) && ($numeroValores > $numeroValoresMinimo)) {
     $numeroValores--;
 }
 
 // Recoge valores numéricos y los valida
-$valores = recoge("valores", []);
+$valores   = recoge("valores", []);
 $okValores = true;
-for ($i=1; $i<=$numeroValores; $i++) {
+for ($i = 1; $i <= $numeroValores; $i++) {
     if (!isset($valores[$i])) {
         $okValores = false;
     } elseif ($valores[$i] != "" && !is_numeric($valores[$i])) {
@@ -132,50 +147,48 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
         cabecera("Formulario");
         print"  <p>Escribe los valores numéricos (puedes escribir entre "
             . "$numeroValoresMinimo y $numeroValoresMaximo valores):</p>\n";
-            }
+    }
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
     print "    <table>\n";
-    print "      <tbody valign=\"top\">\n";
-    print "        <tr>\n";
-    print "          <td>\n";
-    print "            <table>\n";
-    print "              <tr>\n";
-    print "                <td>Tamaño gráfica (ancho, entre "
+    print "      <tr>\n";
+    print "        <td valign=\"top\">\n";
+    print "          <table>\n";
+    print "            <tr>\n";
+    print "              <td>Tamaño gráfica (ancho, entre "
         . "$tamanyoGraficaXMinimo y $tamanyoGraficaXMaximo):</td>\n";
-    print "                <td><input type=\"text\" name=\"tamanyoGraficaX\" "
+    print "              <td><input type=\"text\" name=\"tamanyoGraficaX\" "
         . "value=\"$tamanyoGraficaX\" size=\"5\"> px</td>\n";
-    print "              </tr>\n";
-    print "              <tr>\n";
-    print "                <td>Tamaño gráfica (alto, entre "
+    print "            </tr>\n";
+    print "            <tr>\n";
+    print "              <td>Tamaño gráfica (alto, entre "
         . "$tamanyoGraficaYMinimo y $tamanyoGraficaYMaximo):</td>\n";
-    print "                <td><input type=\"text\" name=\"tamanyoGraficaY\" "
+    print "              <td><input type=\"text\" name=\"tamanyoGraficaY\" "
         . "value=\"$tamanyoGraficaY\" size=\"5\"> px</td>\n";
-    print "              </tr>\n";
-    print "              <tr>\n";
-    print "                <td>Tipo de gráfica:</td>\n";
-    print "                <td>\n";
-    print "                  <select name=\"tipoGrafica\">\n";
-    print "                    <option value=\"lc\">Línea</option>\n";
-    print "                    <option value=\"p\">Tarta</option>\n";
-    print "                    <option value=\"p3\">Tarta 3D</option>\n";
-    print "                  </select>\n";
-    print "                </td>\n";
-    print "              </tr>\n";
-    print "            </table>\n";
-    print "          </td>\n";
-    print "          <td style=\"border-left: black solid 1px\">\n";
-    print "            <table>\n";
-    for ($i=1; $i<=$numeroValores; $i++) {
-        print "              <tr>\n";
-        print "                <td>Número $i:</td>\n";
-        print "                <td><input type=\"text\" name=\"valores[$i]\" size=\"10\" "
+    print "            </tr>\n";
+    print "            <tr>\n";
+    print "              <td>Tipo de gráfica:</td>\n";
+    print "              <td>\n";
+    print "                <select name=\"tipoGrafica\">\n";
+    print "                  <option value=\"lc\">Línea</option>\n";
+    print "                  <option value=\"p\">Tarta</option>\n";
+    print "                  <option value=\"p3\">Tarta 3D</option>\n";
+    print "                </select>\n";
+    print "              </td>\n";
+    print "            </tr>\n";
+    print "          </table>\n";
+    print "        </td>\n";
+    print "        <td style=\"border-left: black solid 1px\" valign=\"top\">\n";
+    print "          <table>\n";
+    for ($i = 1; $i <= $numeroValores; $i++) {
+        print "            <tr>\n";
+        print "              <td>Número $i:</td>\n";
+        print "              <td><input type=\"text\" name=\"valores[$i]\" size=\"10\" "
             . "value=\"$valores[$i]\"></td>\n";
-        print "              </tr>\n";
+        print "            </tr>\n";
     }
-    print "              </table>\n";
-    print "           </td>\n";
-    print "         </tr>\n";
-    print "      </tbody>\n";
+    print "            </table>\n";
+    print "         </td>\n";
+    print "       </tr>\n";
     print "    </table>\n";
     print "\n";
     print "    <p class=\"der\">\n";
@@ -188,12 +201,12 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     print "  </form>\n";
     print "\n";
 } else {
-// Si los valores son correctos se convierten a cadena
+    // Si los valores son correctos se convierten a cadena
     cabecera("Resultado válido");
     print "  <p>Los datos introducidos son correctos.</p>\n";
     print "\n";
     print "  <p>Datos introducidos (* si falta un dato): ";
-    for ($i=1; $i<=$numeroValores; $i++) {
+    for ($i = 1; $i <= $numeroValores; $i++) {
         if ($valores[$i] == "") {
             print "* ";
         } else {
@@ -205,7 +218,7 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
 
     $simpleEncoding = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     // Empiezo buscando un valor cualquiera en la lista de valores
-    $minimo = $maximo = 0;
+    $minimo        = $maximo = 0;
     $patronValores = "/^[+-]?[0-9]{1,6}$/"; // Este patrón NO admite la cadena vacía
     foreach ($valores as $valor) {
         if (preg_match($patronValores, $valor)) {
@@ -216,10 +229,10 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
     // no sirven porque puede haber valores vacíos
     foreach ($valores as $valor) {
         if ($valor != "") {
-            if ($valor>$maximo) {
+            if ($valor > $maximo) {
                 $maximo = $valor;
             }
-            if ($valor<$minimo) {
+            if ($valor < $minimo) {
                 $minimo = $valor;
             }
         }
@@ -236,13 +249,13 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
             // En los gráficos de tartas no pueden haber huecos en la cadena
             if ($tipoGrafica == "p" || $tipoGrafica == "p3") {
                 if (!($valor == "")) {
-                   $cadena .= "f";
+                    $cadena .= "f";
                 }
             } else {
                 if ($valor == "") {
                     $cadena .= "_";
                 } else {
-                  $cadena .= "f";
+                    $cadena .= "f";
                 }
             }
         }
@@ -251,14 +264,14 @@ if (!isset($_REQUEST["enviar"]) || !$okValores) {
             // En los gráficos de tartas no pueden haber huecos en la cadena
             if ($tipoGrafica == "p" || $tipoGrafica == "p3") {
                 if (!($valor == "")) {
-                    $letra = round(($valor-$minimo)/($maximo-$minimo)*61);
+                    $letra = intval(round(($valor - $minimo) / ($maximo - $minimo) * 61));
                     $cadena .= $simpleEncoding[$letra];
                 }
             } else {
                 if ($valor == "") {
                     $cadena .= "_";
                 } else {
-                    $letra = round(($valor-$minimo)/($maximo-$minimo)*61);
+                    $letra = intval(round(($valor - $minimo) / ($maximo - $minimo) * 61));
                     $cadena .= $simpleEncoding[$letra];
                 }
             }
@@ -293,4 +306,3 @@ print "    </p>\n";
 print "  </footer>\n";
 print "</body>\n";
 print "</html>\n";
-?>

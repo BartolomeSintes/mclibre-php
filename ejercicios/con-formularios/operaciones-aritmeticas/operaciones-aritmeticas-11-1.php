@@ -17,16 +17,14 @@
   <form action="operaciones-aritmeticas-11-2.php" method="get">
 
   <table>
-    <tbody>
-      <tr>
-        <td><label for="horas">Horas:</label></td>
-        <td><input type="number" name="horas" min="0" max="11" value="3" id="horas"></td>
-      </tr>
-      <tr>
-        <td><label for="minutos">Minutos:</label></td>
-        <td><input type="number" name="minutos" min="0" max="59" value="30" id="minutos"></td>
-      </tr>
-    </tbody>
+    <tr>
+      <td><label for="horas">Horas:</label></td>
+      <td><input type="number" name="horas" min="0" max="11" value="3" id="horas"></td>
+    </tr>
+    <tr>
+      <td><label for="minutos">Minutos:</label></td>
+      <td><input type="number" name="minutos" min="0" max="59" value="30" id="minutos"></td>
+    </tr>
   </table>
 
     <p>

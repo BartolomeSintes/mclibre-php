@@ -50,19 +50,17 @@ if (!$resultado) {
     print "            </th>\n";
     print "          </tr>\n";
     print "        </thead>\n";
-    print "        <tbody>\n";
     foreach ($registros as $registro) {
-        print "          <tr>\n";
+        print "        <tr>\n";
         if ($id == $registro["id"]) {
-            print "            <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$registro[id]\" checked></td>\n";
+            print "          <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$registro[id]\" checked></td>\n";
         } else {
-            print "            <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$registro[id]\"></td>\n";
+            print "          <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$registro[id]\"></td>\n";
         }
-        print "            <td>$registro[nombre]</td>\n";
-        print "            <td>$registro[apellidos]</td>\n";
-        print "          </tr>\n";
+        print "          <td>$registro[nombre]</td>\n";
+        print "          <td>$registro[apellidos]</td>\n";
+        print "        </tr>\n";
     }
-    print "        </tbody>\n";
     print "      </table>\n";
     print "\n";
     print "      <p>\n";

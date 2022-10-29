@@ -17,20 +17,18 @@
   <form action="controles-formularios-2-13-2.php" method="get">
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="control1">Tamaño de la figura:<label></td>
-          <td><input type="number" name="lado" min="20" max="500" value="200" id="control1"></td>
-        </tr>
-        <tr>
-          <td><label for="control2">Color inicial:</label></td>
-          <td><input type="color" name="inicial" value="#ffffff" id="control2"></td>
-        </tr>
-        <tr>
-          <td><label for="control3">Color final:</label></td>
-          <td><input type="color" name="final" value="#000000" id="control3"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="control1">Tamaño de la figura:<label></td>
+        <td><input type="number" name="lado" min="20" max="500" value="200" id="control1"></td>
+      </tr>
+      <tr>
+        <td><label for="control2">Color inicial:</label></td>
+        <td><input type="color" name="inicial" value="#ffffff" id="control2"></td>
+      </tr>
+      <tr>
+        <td><label for="control3">Color final:</label></td>
+        <td><input type="color" name="final" value="#000000" id="control3"></td>
+      </tr>
     </table>
 
     <p>
@@ -42,7 +40,7 @@
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2022-10-29">29 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

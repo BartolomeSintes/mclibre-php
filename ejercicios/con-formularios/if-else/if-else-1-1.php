@@ -20,16 +20,14 @@
     </p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="dividendo">Dividendo:</label></td>
-          <td><input type="number" name="dividendo" min="0" max="1000" step="any" id="dividendo"></td>
-        </tr>
-        <tr>
-          <td><label for="divisor">Divisor:</label></td>
-          <td><input type="number" name="divisor" min="0" max="1000" step="any" id="divisor"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="dividendo">Dividendo:</label></td>
+        <td><input type="number" name="dividendo" min="0" max="1000" step="any" id="dividendo"></td>
+      </tr>
+      <tr>
+        <td><label for="divisor">Divisor:</label></td>
+        <td><input type="number" name="divisor" min="0" max="1000" step="any" id="divisor"></td>
+      </tr>
     </table>
 
     <p>

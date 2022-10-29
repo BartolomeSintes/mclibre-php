@@ -39,16 +39,14 @@ if (!$resultado) {
     print "          <th>Correo</th>\n";
     print "        </tr>\n";
     print "      </thead>\n";
-    print "      <tbody>\n";
     foreach ($resultado as $registro) {
-        print "        <tr>\n";
-        print "          <td>$registro[nombre]</td>\n";
-        print "          <td>$registro[apellidos]</td>\n";
-        print "          <td>$registro[telefono]</td>\n";
-        print "          <td>$registro[correo]</td>\n";
-        print "        </tr>\n";
+        print "      <tr>\n";
+        print "        <td>$registro[nombre]</td>\n";
+        print "        <td>$registro[apellidos]</td>\n";
+        print "        <td>$registro[telefono]</td>\n";
+        print "        <td>$registro[correo]</td>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
 }
 

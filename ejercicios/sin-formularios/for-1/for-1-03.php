@@ -50,17 +50,15 @@ if ($circulos == 1) {
 }
 print "\n";
 print "  <table class=\"conborde\">\n";
-print "    <tbody>\n";
-print "      <tr>\n";
+print "    <tr>\n";
 for ($i = 0; $i < $circulos; $i++) {
-    print "        <td>\n";
-    print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"70\" height=\"70\">\n";
-    print "            <circle cx=\"35\" cy=\"35\" r=\"30\" fill=\"hwb(" . rand(1, 360) . " 0% 0%)\" />\n";
-    print "          </svg>\n";
-    print "        </td>\n";
+    print "      <td>\n";
+    print "        <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"70\" height=\"70\">\n";
+    print "          <circle cx=\"35\" cy=\"35\" r=\"30\" fill=\"hwb(" . rand(1, 360) . " 0% 0%)\" />\n";
+    print "        </svg>\n";
+    print "      </td>\n";
 }
-print "      </tr>\n";
-print "    </tbody>\n";
+print "    </tr>\n";
 print "  </table>\n";
 ?>
 

@@ -63,46 +63,44 @@ if ($id == "") {
             print "      <p>Modifique los campos que desee:</p>\n";
             print "\n";
             print "      <table>\n";
-            print "        <tbody>\n";
-            print "          <tr>\n";
-            print "            <td>Persona:</td>\n";
-            print "            <td>\n";
+            print "        <tr>\n";
+            print "          <td>Persona:</td>\n";
+            print "          <td>\n";
             print "            <select name=\"id_persona\">\n";
-            print "                <option value=\"\"></option>\n";
+            print "              <option value=\"\"></option>\n";
             foreach ($result2 as $valor2) {
-                print "                <option value=\"$valor2[id]\"";
+                print "              <option value=\"$valor2[id]\"";
                 if ($valor2["id"] == $valor["id_persona"]) {
                     print " selected";
                 }
                 print ">$valor2[nombre] $valor2[apellidos]</option>\n";
             }
-            print "              </select>\n";
-            print "            </td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Obra:</td>\n";
-            print "            <td>\n";
+            print "            </select>\n";
+            print "          </td>\n";
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Obra:</td>\n";
+            print "          <td>\n";
             print "            <select name=\"id_obra\">\n";
-            print "                <option value=\"\"></option>\n";
+            print "              <option value=\"\"></option>\n";
             foreach ($result3 as $valor3) {
-                print "                <option value=\"$valor3[id]\"";
+                print "              <option value=\"$valor3[id]\"";
                 if ($valor3["id"] == $valor["id_obra"]) {
                     print " selected";
                 }
                 print ">$valor3[autor] - $valor3[titulo]</option>\n";
             }
-            print "              </select>\n";
-            print "            </td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Fecha de préstamo:</td>\n";
-            print "            <td><input type=\"date\" name=\"prestado\" value=\"$valor[prestado]\"></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Fecha de devolución:</td>\n";
-            print "            <td><input type=\"date\" name=\"devuelto\" value=\"$valor[devuelto]\"></td>\n";
-            print "          </tr>\n";
-            print "        </tbody>\n";
+            print "            </select>\n";
+            print "          </td>\n";
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Fecha de préstamo:</td>\n";
+            print "          <td><input type=\"date\" name=\"prestado\" value=\"$valor[prestado]\"></td>\n";
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Fecha de devolución:</td>\n";
+            print "          <td><input type=\"date\" name=\"devuelto\" value=\"$valor[devuelto]\"></td>\n";
+            print "        </tr>\n";
             print "      </table>\n";
             print "\n";
             print "      <p>\n";

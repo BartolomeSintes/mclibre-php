@@ -18,16 +18,14 @@
     <p>Escriba un número de pies y pulgadas para convertir a centímetros.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="pies">Pies:</label></td>
-          <td><input type="number" name="pies" min="0" id="pies"></td>
-        </tr>
-        <tr>
-          <td><label for="pulgadas">Pulgadas:</label></td>
-          <td><input type="number" name="pulgadas" min="0" step="any" id="pulgadas"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="pies">Pies:</label></td>
+        <td><input type="number" name="pies" min="0" id="pies"></td>
+      </tr>
+      <tr>
+        <td><label for="pulgadas">Pulgadas:</label></td>
+        <td><input type="number" name="pulgadas" min="0" step="any" id="pulgadas"></td>
+      </tr>
     </table>
 
     <p>

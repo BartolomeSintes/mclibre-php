@@ -58,7 +58,6 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"]) || !isset($_SESSION["c"])) 
 
   <form action="retrato-robot.php" method="get">
     <table>
-      <tbody>
 <?php
 // Funciones auxiliares
 function recoge($var, $m = "")
@@ -90,24 +89,23 @@ if ($mod == 1) {
 
 // Se genera el formulario
 
-print "        <tr>\n";
-print "          <td><img src=\"img/retratos/retratos-$_SESSION[c]-3.jpg\" alt=\"ojos\"></td>\n";
-print "          <td><button type=\"submit\" name=\"mod\" value=\"3\">"
+print "      <tr>\n";
+print "        <td><img src=\"img/retratos/retratos-$_SESSION[c]-3.jpg\" alt=\"ojos\"></td>\n";
+print "        <td><button type=\"submit\" name=\"mod\" value=\"3\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
-print "        </tr>\n";
-print "        <tr>\n";
-print "          <td><img src=\"img/retratos/retratos-$_SESSION[b]-2.jpg\" alt=\"nariz\"></td>\n";
-print "          <td><button type=\"submit\" name=\"mod\" value=\"2\">"
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><img src=\"img/retratos/retratos-$_SESSION[b]-2.jpg\" alt=\"nariz\"></td>\n";
+print "        <td><button type=\"submit\" name=\"mod\" value=\"2\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
-print "        </tr>\n";
-print "        <tr>\n";
-print "          <td><img src=\"img/retratos/retratos-$_SESSION[a]-1.jpg\" alt=\"boca\"></td>\n";
-print "          <td><button type=\"submit\" name=\"mod\" value=\"1\">"
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><img src=\"img/retratos/retratos-$_SESSION[a]-1.jpg\" alt=\"boca\"></td>\n";
+print "        <td><button type=\"submit\" name=\"mod\" value=\"1\">"
     . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
-print "        </tr>\n";
+print "      </tr>\n";
 
 ?>
-      </tbody>
     </table>
   </form>
 

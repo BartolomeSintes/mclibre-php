@@ -108,21 +108,19 @@ if (!$resultado) {
     print "            </th>\n";
     print "          </tr>\n";
     print "        </thead>\n";
-    print "        <tbody>\n";
     foreach ($registros as $registro) {
-        print "          <tr>\n";
-        print "            <td>$registro[nombre]</td>\n";
-        print "            <td>$registro[apellidos]</td>\n";
-        print "            <td>$registro[telefono]</td>\n";
-        print "            <td>$registro[correo]</td>\n";
+        print "        <tr>\n";
+        print "          <td>$registro[nombre]</td>\n";
+        print "          <td>$registro[apellidos]</td>\n";
+        print "          <td>$registro[telefono]</td>\n";
+        print "          <td>$registro[correo]</td>\n";
         if ($registro["nacido"] == "0000-00-00") {
-            print "            <td></td>\n";
+            print "          <td></td>\n";
         } else {
-            print "            <td>$registro[nacido]</td>\n";
+            print "          <td>$registro[nacido]</td>\n";
         }
-        print "          </tr>\n";
+        print "        </tr>\n";
     }
-    print "        </tbody>\n";
     print "      </table>\n";
     print "    </form>\n";
 }

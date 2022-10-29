@@ -86,15 +86,13 @@ if (!$result) {
         print "              </button>\n";
         print "            </th>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
         foreach ($result as $valor) {
-            print "          <tr>\n";
-            print "            <td>$valor[usuario]</td>\n";
-            print "            <td>$valor[password]</td>\n";
-            print "            <td>" . array_search($valor["nivel"], $usuariosNiveles) . "</td>\n";
-            print "          </tr>\n";
+            print "        <tr>\n";
+            print "          <td>$valor[usuario]</td>\n";
+            print "          <td>$valor[password]</td>\n";
+            print "          <td>" . array_search($valor["nivel"], $usuariosNiveles) . "</td>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
         print "      </table>\n";
         print "    </form>\n";
     }

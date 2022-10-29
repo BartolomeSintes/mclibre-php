@@ -107,16 +107,14 @@ if ($numeradasOk && $columnasOk) {
     $filas = ceil($numeradas / $columnas);
     $contador = 1;
     print "  <table class=\"conborde\">\n";
-    print "    <tbody>\n";
     for ($i = 1; $i <= $filas; $i++) {
-        print "      <tr>\n";
+        print "    <tr>\n";
         for ($j = 1; $j <= $columnas; $j++) {
             // Los paréntesis aquí son necesarios
-            print "        <td>" . ($contador <= $numeradas ? $contador++ : "") . "</td>\n";
+            print "      <td>" . ($contador <= $numeradas ? $contador++ : "") . "</td>\n";
         }
-        print "      </tr>\n";
+        print "    </tr>\n";
     }
-    print "    </tbody>\n";
     print "  </table>\n";
     print "\n";
 }

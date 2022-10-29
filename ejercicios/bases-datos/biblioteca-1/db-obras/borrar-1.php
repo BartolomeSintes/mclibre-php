@@ -70,20 +70,18 @@ if (!$result) {
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
         foreach ($result as $valor) {
-            print "          <tr>\n";
+            print "        <tr>\n";
             if (isset($id[$valor["id"]])) {
-                print "            <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\" checked></td>\n";
+                print "          <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\" checked></td>\n";
             } else {
-                print "            <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\"></td>\n";
+                print "          <td class=\"centrado\"><input type=\"checkbox\" name=\"id[$valor[id]]\"></td>\n";
             }
-            print "            <td>$valor[titulo]</td>\n";
-            print "            <td>$valor[autor]</td>\n";
-            print "            <td>$valor[editorial]</td>\n";
-            print "          </tr>\n";
+            print "          <td>$valor[titulo]</td>\n";
+            print "          <td>$valor[autor]</td>\n";
+            print "          <td>$valor[editorial]</td>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

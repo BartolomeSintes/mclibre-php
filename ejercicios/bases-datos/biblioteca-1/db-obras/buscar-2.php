@@ -87,15 +87,13 @@ if (!$result) {
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
         foreach ($result as $valor) {
-            print "          <tr>\n";
-            print "            <td>$valor[autor]</td>\n";
-            print "            <td>$valor[titulo]</td>\n";
-            print "            <td>$valor[editorial]</td>\n";
-            print "          </tr>\n";
+            print "        <tr>\n";
+            print "          <td>$valor[autor]</td>\n";
+            print "          <td>$valor[titulo]</td>\n";
+            print "          <td>$valor[editorial]</td>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
         print "      </table>\n";
         print "    </form>\n";
     }

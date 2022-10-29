@@ -56,34 +56,32 @@ if ($id == "") {
         print "      <p>Modifique los campos que desee:</p>\n";
         print "\n";
         print "      <table>\n";
-        print "        <tbody>\n";
-        print "          <tr>\n";
-        print "            <td>Categoría:</td>\n";
-        print "            <td>\n";
-        print "              <select name=\"categoria\">\n";
+        print "        <tr>\n";
+        print "          <td>Categoría:</td>\n";
+        print "          <td>\n";
+        print "            <select name=\"categoria\">\n";
         foreach ($registrosCategorias as $categoria) {
             if ($registro["categoria"] == $categoria[1]) {
-                print "                <option value=\"$categoria[0]\" selected>$categoria[1]</option>\n";
+                print "              <option value=\"$categoria[0]\" selected>$categoria[1]</option>\n";
             } else {
-                print "                <option value=\"$categoria[0]\">$categoria[1]</option>\n";
+                print "              <option value=\"$categoria[0]\">$categoria[1]</option>\n";
             }
         }
-        print "              </select>\n";
-        print "            </td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Título:</td>\n";
-        print "            <td><input type=\"text\" name=\"titulo\" size=\"$cfg[formNoticiasTamTitulo]\" maxlength=\"$cfg[formNoticiasTamTitulo]\" value=\"$registro[titulo]\"></td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Cuerpo:</td>\n";
-        print "            <td><textarea name=\"cuerpo\" rows=\"$cfg[formNoticiasTamCuerpoY]\" cols=\"$cfg[formNoticiasTamCuerpoX]\">$registro[cuerpo]</textarea></td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Creado:</td>\n";
-        print "            <td><input type=\"date\" name=\"creado\" value=\"$registro[creado]\"></td>\n";
-        print "          </tr>\n";
-        print "        </tbody>\n";
+        print "            </select>\n";
+        print "          </td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Título:</td>\n";
+        print "          <td><input type=\"text\" name=\"titulo\" size=\"$cfg[formNoticiasTamTitulo]\" maxlength=\"$cfg[formNoticiasTamTitulo]\" value=\"$registro[titulo]\"></td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Cuerpo:</td>\n";
+        print "          <td><textarea name=\"cuerpo\" rows=\"$cfg[formNoticiasTamCuerpoY]\" cols=\"$cfg[formNoticiasTamCuerpoX]\">$registro[cuerpo]</textarea></td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Creado:</td>\n";
+        print "          <td><input type=\"date\" name=\"creado\" value=\"$registro[creado]\"></td>\n";
+        print "        </tr>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

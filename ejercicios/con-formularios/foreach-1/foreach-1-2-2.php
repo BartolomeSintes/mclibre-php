@@ -81,16 +81,14 @@ if ($numeroOk) {
     print "\n";
     print "  <form action=\"foreach-1-2-3.php\" method=\"get\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
     // Bucle para generar las cajas de texto
     for ($i = 1; $i <= $numero; $i++) {
-        print "        <tr>\n";
-        print "          <td>$i</td>\n";
+        print "      <tr>\n";
+        print "        <td>$i</td>\n";
         // El nombre del control es una matriz (c[])
-        print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\"></td>\n";
-        print "        </tr>\n";
+        print "        <td><input type=\"text\" name=\"c[$i]\" size=\"30\"></td>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
 

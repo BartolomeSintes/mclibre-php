@@ -47,30 +47,28 @@ if ($id == "") {
                 print "      <p>Modifique los campos que desee (deje la contraseña en blanco para mantenerla):</p>\n";
                 print "\n";
                 print "      <table>\n";
-                print "        <tbody>\n";
-                print "          <tr>\n";
-                print "            <td>Usuario:</td>\n";
-                print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosUsuario\" maxlength=\"$tamUsuariosUsuario\" value=\"$valor[usuario]\" autofocus></td>\n";
-                print "          </tr>\n";
-                print "          <tr>\n";
-                print "            <td>Contraseña:</td>\n";
-                print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosPassword\" maxlength=\"$tamUsuariosPassword\"></td>\n";
-                print "          </tr>\n";
-                print "          <tr>\n";
-                print "            <td>Nivel:</td>\n";
-                print "            <td>\n";
-                print "              <select name=\"nivel\">\n";
+                print "        <tr>\n";
+                print "          <td>Usuario:</td>\n";
+                print "          <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosUsuario\" maxlength=\"$tamUsuariosUsuario\" value=\"$valor[usuario]\" autofocus></td>\n";
+                print "        </tr>\n";
+                print "        <tr>\n";
+                print "          <td>Contraseña:</td>\n";
+                print "          <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosPassword\" maxlength=\"$tamUsuariosPassword\"></td>\n";
+                print "        </tr>\n";
+                print "        <tr>\n";
+                print "          <td>Nivel:</td>\n";
+                print "          <td>\n";
+                print "            <select name=\"nivel\">\n";
                 foreach ($usuariosNiveles as $indice2 => $valor2) {
-                    print "                <option value=\"$valor2\"";
+                    print "              <option value=\"$valor2\"";
                     if ($valor2 == $valor["nivel"]) {
                         print " selected";
                     }
                     print ">$indice2</option>\n";
                 }
-                print "              </select>\n";
-                print "            </td>\n";
-                print "          </tr>\n";
-                print "        </tbody>\n";
+                print "            </select>\n";
+                print "          </td>\n";
+                print "        </tr>\n";
                 print "      </table>\n";
                 print "\n";
                 print "      <p>\n";

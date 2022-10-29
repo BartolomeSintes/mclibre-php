@@ -62,28 +62,26 @@ $edad        = recoge("edad");
 $avisoEdad   = recoge("avisoEdad");
 
 print "    <table>\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td><label for=\"nombre\">Escriba su nombre:</label></td>\n";
+print "      <tr>\n";
+print "        <td><label for=\"nombre\">Escriba su nombre:</label></td>\n";
 // Incluimos el nombre recibido (aunque sea en blanco) en el control
-print "          <td><input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\">";
+print "        <td><input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\">";
 // Si hemos recibido un aviso sobre el nombre, lo mostramos
 if ($avisoNombre) {
     print " <span class=\"aviso\">$avisoNombre</span>";
 }
 print "</td>\n";
-print "        </tr>\n";
-print "        <tr>\n";
-print "          <td><label for=\"edad\">Escriba su edad (entre 18 y 130 años):</label></td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><label for=\"edad\">Escriba su edad (entre 18 y 130 años):</label></td>\n";
 // Incluimos la edad recibida (aunque sea en blanco) en el control
-print "          <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\">";
+print "        <td><input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\">";
 // Si hemos recibido un aviso sobre la edad, lo mostramos
 if ($avisoEdad) {
     print " <span class=\"aviso\">$avisoEdad</span>";
 }
 print "</td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      </tr>\n";
 print "    </table>\n";
 print "\n";
 

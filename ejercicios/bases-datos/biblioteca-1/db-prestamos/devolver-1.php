@@ -48,23 +48,21 @@ if (!$result) {
         print "      <p>Seleccione el préstamo pendiente e indique la fecha de devolución:</p>\n";
         print "\n";
         print "      <table>\n";
-        print "        <tbody>\n";
-        print "          <tr>\n";
-        print "            <td>Préstamo:</td>\n";
-        print "            <td>\n";
-        print "            <select name=\"id\">\n";
-        print "                <option value=\"\"></option>\n";
+        print "        <tr>\n";
+        print "          <td>Préstamo:</td>\n";
+        print "          <td>\n";
+        print "          <select name=\"id\">\n";
+        print "              <option value=\"\"></option>\n";
         foreach ($result as $valor) {
-            print "                <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos] - $valor[autor] - $valor[titulo] - $valor[prestado]</option>\n";
+            print "              <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos] - $valor[autor] - $valor[titulo] - $valor[prestado]</option>\n";
         }
-        print "              </select>\n";
-        print "            </td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Fecha de devolución:</td>\n";
-        print "            <td><input type=\"date\" name=\"devuelto\" value=\"" . date("Y-m-j") . "\"></td>\n";
-        print "          </tr>\n";
-        print "        </tbody>\n";
+        print "            </select>\n";
+        print "          </td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Fecha de devolución:</td>\n";
+        print "          <td><input type=\"date\" name=\"devuelto\" value=\"" . date("Y-m-j") . "\"></td>\n";
+        print "        </tr>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

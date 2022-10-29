@@ -40,34 +40,32 @@ if (!$result) {
         print "      <p>Escriba los datos del nuevo préstamo:</p>\n";
         print "\n";
         print "      <table>\n";
-        print "        <tbody>\n";
-        print "          <tr>\n";
-        print "            <td>Persona:</td>\n";
-        print "            <td>\n";
-        print "            <select name=\"id_persona\">\n";
-        print "                <option value=\"\"></option>\n";
+        print "        <tr>\n";
+        print "          <td>Persona:</td>\n";
+        print "          <td>\n";
+        print "          <select name=\"id_persona\">\n";
+        print "              <option value=\"\"></option>\n";
         foreach ($result2 as $valor) {
-            print "                <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos]</option>\n";
+            print "              <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos]</option>\n";
         }
-        print "              </select>\n";
-        print "            </td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Obra:</td>\n";
-        print "            <td>\n";
-        print "            <select name=\"id_obra\">\n";
-        print "                <option value=\"\"></option>\n";
+        print "            </select>\n";
+        print "          </td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Obra:</td>\n";
+        print "          <td>\n";
+        print "          <select name=\"id_obra\">\n";
+        print "              <option value=\"\"></option>\n";
         foreach ($result3 as $valor) {
-            print "                <option value=\"$valor[id]\">$valor[autor] - $valor[titulo]</option>\n";
+            print "              <option value=\"$valor[id]\">$valor[autor] - $valor[titulo]</option>\n";
         }
-        print "              </select>\n";
-        print "            </td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Fecha de préstamo:</td>\n";
-        print "            <td><input type=\"date\" name=\"prestado\" value=\"" . date("Y-m-j") . "\"></td>\n";
-        print "          </tr>\n";
-        print "        </tbody>\n";
+        print "            </select>\n";
+        print "          </td>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Fecha de préstamo:</td>\n";
+        print "          <td><input type=\"date\" name=\"prestado\" value=\"" . date("Y-m-j") . "\"></td>\n";
+        print "        </tr>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

@@ -75,15 +75,13 @@ if ($numeroOk) {
     print "\n";
     print "  <form action=\"foreach-2-1-3.php\" method=\"get\">\n";
     print "    <table border=\"1\">\n";
-    print "      <tbody>\n";
     for ($i = 1; $i <= $numero; $i++) {
-        print "        <tr>\n";
+        print "      <tr>\n";
         for ($j = 1; $j <= $numero; $j++) {
-            print "          <td><input type=\"checkbox\" name=\"c[$i][$j]\">$i$j</td>\n";
+            print "        <td><input type=\"checkbox\" name=\"c[$i][$j]\">$i$j</td>\n";
         }
-        print "        </tr>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
     print "    <p class=\"der\">\n";

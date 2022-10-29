@@ -45,7 +45,6 @@ session_start();
 
   <form action="matrices-2-5-2.php" method="get">
     <table class="conborde">
-      <tbody>
 <?php
 // Recogida de datos
 $numero = rand(2, 20);
@@ -57,16 +56,15 @@ $_SESSION["numero"] = $numero;
 // Creamos un contador para generar el índice de la casilla de verificación
 $contador = 1;
 for ($i = 0; $i < $numero; $i++) {
-    print "        <tr>\n";
+    print "      <tr>\n";
     for ($j = 1; $j <= $numero; $j++) {
         // El nombre del control es una matriz (c[])
-        print "          <td><label><input type=\"checkbox\" name=\"c[$contador]\"> $contador</label></td>\n";
+        print "        <td><label><input type=\"checkbox\" name=\"c[$contador]\"> $contador</label></td>\n";
         $contador++;
     }
-    print "        </tr>\n";
+    print "      </tr>\n";
 }
 ?>
-      </tbody>
     </table>
 
     <p>

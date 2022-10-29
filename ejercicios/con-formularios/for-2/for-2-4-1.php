@@ -18,16 +18,14 @@
       de estrellas de ese tamaño.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>Ancho:</strong></td>
-          <td><input type="number" name="ancho" min="2" max="100" value="7"></td>
-        </tr>
-        <tr>
-          <td><strong>Alto:</strong></td>
-          <td><input type="number" name="alto" min="2" max="100" value="5"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Ancho:</strong></td>
+        <td><input type="number" name="ancho" min="2" max="100" value="7"></td>
+      </tr>
+      <tr>
+        <td><strong>Alto:</strong></td>
+        <td><input type="number" name="alto" min="2" max="100" value="5"></td>
+      </tr>
     </table>
 
     <p>

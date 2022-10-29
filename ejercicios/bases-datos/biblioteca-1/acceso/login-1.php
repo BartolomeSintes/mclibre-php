@@ -35,18 +35,16 @@ print "    <form action=\"login-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
 print "\n";
 print "      <table>\n";
-print "        <tbody>\n";
-print "          <tr>\n";
-print "            <td>Usuario:</td>\n";
-print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosUsuario\" "
+print "        <tr>\n";
+print "          <td>Usuario:</td>\n";
+print "          <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosUsuario\" "
     . "maxlength=\"$tamUsuariosUsuario\" autofocus/></td>\n";
-print "          </tr>\n";
-print "          <tr>\n";
-print "            <td>Contraseña:</td>\n";
-print "            <td><input type=\"password\" name=\"password\" size=\"$tamUsuariosPassword\" "
+print "        </tr>\n";
+print "        <tr>\n";
+print "          <td>Contraseña:</td>\n";
+print "          <td><input type=\"password\" name=\"password\" size=\"$tamUsuariosPassword\" "
     . "maxlength=\"$tamUsuariosPassword\" /></td>\n";
-print "          </tr>\n";
-print "        </tbody>\n";
+print "        </tr>\n";
 print "      </table>\n";
 print "\n";
 print "      <p>\n";

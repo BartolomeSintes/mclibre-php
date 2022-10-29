@@ -143,23 +143,21 @@ if ($anchura == "") {
 
 if ($filasOk && $columnasOk && $alturaOk && $anchuraOk) {
     print "  <table class=\"conborde\" style=\"table-layout: fixed; border-collapse: collapse; width: " . $anchura * ($columnas + 1) . "px\">\n";
-    print "    <tbody>\n";
-    print "      <tr style=\"height: {$altura}px\">\n";
-    print "        <th>X</th>\n";
+    print "    <tr style=\"height: {$altura}px\">\n";
+    print "      <th>X</th>\n";
     for ($j = 1; $j <= $columnas; $j++) {
-        print "        <th>$j</th>\n";
+        print "      <th>$j</th>\n";
     }
-    print "      </tr>\n";
+    print "    </tr>\n";
 
     for ($i = 1; $i <= $filas; $i++) {
-        print "      <tr style=\"height: {$altura}px\">\n";
-        print "        <th>$i</th>\n";
+        print "    <tr style=\"height: {$altura}px\">\n";
+        print "      <th>$i</th>\n";
         for ($j = 1; $j <= $columnas; $j++) {
-            print "        <td>" . $i * $j . "</td>\n";
+            print "      <td>" . $i * $j . "</td>\n";
         }
-        print "      </tr>\n";
+        print "    </tr>\n";
     }
-    print "    </tbody>\n";
     print "  </table>\n";
     print "\n";
 }

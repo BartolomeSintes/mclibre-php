@@ -82,23 +82,21 @@ if (isset($_REQUEST["enviar"])) {
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
-    print "        <tr>\n";
-    print "          <td>Nombre:</td>\n";
-    print "          <td><input type=\"text\" name=\"nombre\" size=\""
+    print "      <tr>\n";
+    print "        <td>Nombre:</td>\n";
+    print "        <td><input type=\"text\" name=\"nombre\" size=\""
         . TAM_NOMBRE . "\" maxlength=\"" . TAM_NOMBRE . "\"></td>\n";
-    print "        </tr>\n";
-    print "        <tr>\n";
-    print "          <td>Teléfono:</td>\n";
-    print "          <td><input type=\"text\" name=\"telefono\" size=\""
+    print "      </tr>\n";
+    print "      <tr>\n";
+    print "        <td>Teléfono:</td>\n";
+    print "        <td><input type=\"text\" name=\"telefono\" size=\""
         . TAM_TELEFONO . "\" maxlength=\"" . TAM_TELEFONO . "\"></td>\n";
-    print "        </tr>\n";
-    print "        <tr>\n";
-    print "          <td>Correo:</td>\n";
-    print "          <td><input type=\"text\" name=\"correo\" size=\""
+    print "      </tr>\n";
+    print "      <tr>\n";
+    print "        <td>Correo:</td>\n";
+    print "        <td><input type=\"text\" name=\"correo\" size=\""
         . TAM_CORREO . "\" maxlength=\"" . TAM_CORREO . "\"></td>\n";
-    print "        </tr>\n";
-    print "      </tbody>\n";
+    print "      </tr>\n";
     print "    </table>\n";
     print "\n";
     print "    <p class=\"der\"><input type=\"submit\" name=\"enviar\" value=\"Enviar\"></p>\n";

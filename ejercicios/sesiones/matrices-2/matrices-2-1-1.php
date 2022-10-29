@@ -45,8 +45,7 @@ session_start();
 
   <form action="matrices-2-1-2.php" method="get">
     <table class="conborde">
-      <tbody>
-        <tr>
+      <tr>
 <?php
 // Genera el número de casillas de verificación a mostrar
 $numero = rand(1, 20);
@@ -57,11 +56,10 @@ $_SESSION["numero"] = $numero;
 // Bucle para generar las casillas de verificación
 for ($i = 1; $i <= $numero; $i++) {
     // El nombre del control es una matriz (c[])
-    print "          <td><label><input type=\"checkbox\" name=\"c[$i]\"> $i</label></td>\n";
+    print "        <td><label><input type=\"checkbox\" name=\"c[$i]\"> $i</label></td>\n";
 }
 ?>
         </tr>
-      </tbody>
     </table>
 
     <p>

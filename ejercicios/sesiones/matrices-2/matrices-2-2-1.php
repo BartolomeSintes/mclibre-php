@@ -45,7 +45,6 @@ session_start();
 
   <form action="matrices-2-2-2.php" method="get">
     <table>
-      <tbody>
 <?php
 // Genera el número de cajas de texto a mostrar
 $numero = rand(1, 10);
@@ -55,14 +54,13 @@ $_SESSION["numero"] = $numero;
 
 // Bucle para generar las cajas de texto
 for ($i = 1; $i <= $numero; $i++) {
-    print "        <tr>\n";
-    print "          <td>$i</td>\n";
+    print "      <tr>\n";
+    print "        <td>$i</td>\n";
     // El nombre del control es una matriz (c[])
-    print "          <td><input type=\"text\" name=\"c[$i]\" size=\"30\"></td>\n";
-    print "        </tr>\n";
+    print "        <td><input type=\"text\" name=\"c[$i]\" size=\"30\"></td>\n";
+    print "      </tr>\n";
 }
 ?>
-      </tbody>
     </table>
 
     <p>

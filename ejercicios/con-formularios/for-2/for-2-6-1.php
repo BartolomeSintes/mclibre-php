@@ -18,12 +18,10 @@
       de estrellas de ese tamaño.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>Ancho:</strong></td>
-          <td><input type="number" name="ancho" min="1" max="100" value="7"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Ancho:</strong></td>
+        <td><input type="number" name="ancho" min="1" max="100" value="7"></td>
+      </tr>
     </table>
 
     <p>

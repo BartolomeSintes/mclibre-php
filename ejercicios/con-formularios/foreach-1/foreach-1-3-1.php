@@ -18,16 +18,14 @@
     <p>Escriba el número de preguntas (1 &le; número &le; 10) y respuestas (2 &le; número &le; 10) y mostraré una encuesta ficticia.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>Número de preguntas:</strong></td>
-          <td><input type="number" name="preguntas" min="1" max="10" value="7"></td>
-        </tr>
-        <tr>
-          <td><strong>Número de respuestas:</strong></td>
-          <td><input type="number" name="respuestas" min="2" max="10" value="3"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Número de preguntas:</strong></td>
+        <td><input type="number" name="preguntas" min="1" max="10" value="7"></td>
+      </tr>
+      <tr>
+        <td><strong>Número de respuestas:</strong></td>
+        <td><input type="number" name="respuestas" min="2" max="10" value="3"></td>
+      </tr>
     </table>
 
     <p>

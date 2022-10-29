@@ -97,16 +97,14 @@ $respuestas = [$irregularVerbs[$verbo][0], $irregularVerbs[$verbo][1], $irregula
 shuffle($respuestas);
 
 print "    <table>\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>?</td>\n";
-print "          <td>\n";
-print "            <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[0]\">$respuestas[0]</label></p>\n";
-print "            <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[1]\">$respuestas[1]</label></p>\n";
-print "            <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[2]\">$respuestas[2]</label></p>\n";
-print "          </td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      <tr>\n";
+print "        <td>¿Cuál es el <strong>$formaVerbalNombre[$formaVerbal]</strong> de <strong>{$irregularVerbs[$verbo][3]}</strong>?</td>\n";
+print "        <td>\n";
+print "          <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[0]\">$respuestas[0]</label></p>\n";
+print "          <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[1]\">$respuestas[1]</label></p>\n";
+print "          <p><label><input type=\"radio\" name=\"respuesta\" value=\"$respuestas[2]\">$respuestas[2]</label></p>\n";
+print "        </td>\n";
+print "      </tr>\n";
 print "    </table>\n";
 print "\n";
 print "    <p>\n";

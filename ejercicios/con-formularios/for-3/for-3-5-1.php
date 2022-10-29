@@ -21,20 +21,18 @@
     </p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="filas">Número de filas:</label></td>
-          <td><input type="number" name="filas" min="1" max="100" value="5" id="filas"></td>
-          <td><label for="altura">Altura:</label></td>
-          <td><input type="number" name="altura" min="30" max="100" value="50" id="altura"> <label for="altura">px</label></td>
-        </tr>
-        <tr>
-          <td><label for="columnas">Número de columnas:</label></td>
-          <td><input type="number" name="columnas" min="1" max="100" value="10" id="columnas"></td>
-          <td><label for="anchura">Anchura:</label></td>
-          <td><input type="number" name="anchura" min="30" max="100" value="70" id="anchura"> <label for="anchura">px</label></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="filas">Número de filas:</label></td>
+        <td><input type="number" name="filas" min="1" max="100" value="5" id="filas"></td>
+        <td><label for="altura">Altura:</label></td>
+        <td><input type="number" name="altura" min="30" max="100" value="50" id="altura"> <label for="altura">px</label></td>
+      </tr>
+      <tr>
+        <td><label for="columnas">Número de columnas:</label></td>
+        <td><input type="number" name="columnas" min="1" max="100" value="10" id="columnas"></td>
+        <td><label for="anchura">Anchura:</label></td>
+        <td><input type="number" name="anchura" min="30" max="100" value="70" id="anchura"> <label for="anchura">px</label></td>
+      </tr>
     </table>
 
     <p>

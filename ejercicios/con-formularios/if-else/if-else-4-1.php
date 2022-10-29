@@ -19,20 +19,18 @@
       para comprobar si hay números iguales.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="numero1">Primer número</label>:</td>
-          <td><input type="number" name="numero1" min="-1000" max="1000" step="any" id="numero1"></td>
-        </tr>
-        <tr>
-          <td><label for="numero2">Segundo número:</label></td>
-          <td><input type="number" name="numero2" min="-1000" max="1000" step="any" id="numero2"></td>
-        </tr>
-        <tr>
-          <td><label for="numero3">Tercer número:</label></td>
-          <td><input type="number" name="numero3" min="-1000" max="1000" step="any" id="numero3"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="numero1">Primer número</label>:</td>
+        <td><input type="number" name="numero1" min="-1000" max="1000" step="any" id="numero1"></td>
+      </tr>
+      <tr>
+        <td><label for="numero2">Segundo número:</label></td>
+        <td><input type="number" name="numero2" min="-1000" max="1000" step="any" id="numero2"></td>
+      </tr>
+      <tr>
+        <td><label for="numero3">Tercer número:</label></td>
+        <td><input type="number" name="numero3" min="-1000" max="1000" step="any" id="numero3"></td>
+      </tr>
     </table>
 
     <p>

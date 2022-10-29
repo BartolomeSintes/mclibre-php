@@ -70,20 +70,18 @@ if (!$result) {
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
         foreach ($result as $valor) {
-            print "          <tr>\n";
+            print "        <tr>\n";
             if ($id == $valor["id"]) {
-                print "            <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\" checked></td>\n";
+                print "          <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\" checked></td>\n";
             } else {
-                print "            <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\"></td>\n";
+                print "          <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\"></td>\n";
             }
-            print "            <td>$valor[usuario]</td>\n";
-            print "            <td>$valor[password]</td>\n";
-            print "            <td>" . array_search($valor["nivel"], $usuariosNiveles) . "</td>\n";
-            print "          </tr>\n";
+            print "          <td>$valor[usuario]</td>\n";
+            print "          <td>$valor[password]</td>\n";
+            print "          <td>" . array_search($valor["nivel"], $usuariosNiveles) . "</td>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

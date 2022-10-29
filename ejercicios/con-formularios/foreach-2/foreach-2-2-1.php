@@ -18,16 +18,14 @@
       tablas cuadradas de ese tamaño con casillas de verificación en cada celda.</p>
 
     <table class="borde">
-      <tbody>
-        <tr>
-          <td><strong>Número de tablas:</strong></td>
-          <td><input type="text" name="tablas" size="3" maxlength="3"></td>
-        </tr>
-        <tr>
-          <td><strong>Tamaño:</strong></td>
-          <td><input type="text" name="tamano" size="3" maxlength="3"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Número de tablas:</strong></td>
+        <td><input type="text" name="tablas" size="3" maxlength="3"></td>
+      </tr>
+      <tr>
+        <td><strong>Tamaño:</strong></td>
+        <td><input type="text" name="tamano" size="3" maxlength="3"></td>
+      </tr>
     </table>
 
     <p class="der">

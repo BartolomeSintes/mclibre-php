@@ -18,12 +18,10 @@
     ese tamaño con casillas de verificación en cada celda.</p>
 
     <table class="borde">
-      <tbody>
-        <tr>
-          <td><strong>Tamaño de la tabla:</strong></td>
-          <td><input type="text" name="numero" size="3" maxlength="3"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Tamaño de la tabla:</strong></td>
+        <td><input type="text" name="numero" size="3" maxlength="3"></td>
+      </tr>
     </table>
 
     <p class="der">

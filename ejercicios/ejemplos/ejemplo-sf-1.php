@@ -41,21 +41,19 @@
   <p>Actualice la página para mostrar dos nuevos colores.</p>
 
   <table>
-    <tbody>
 <?php
 $color1 = rand(0, 360);
 $color2 = rand(0, 360);
 
-print "      <tr>\n";
-print "        <th>Color: hwb($color1 20% 0%)</th>\n";
-print "        <th>Color: hwb($color2 20% 0%)</th>\n";
-print "      </tr>\n";
-print "      <tr>\n";
-print "        <td style=\"height: 50px; background-color: hwb($color1 20% 0%)\"></td>\n";
-print "        <td style=\"background-color: hwb($color2 20% 0%)\"></td>\n";
-print "      </tr>\n";
+print "    <tr>\n";
+print "      <th>Color: hwb($color1 20% 0%)</th>\n";
+print "      <th>Color: hwb($color2 20% 0%)</th>\n";
+print "    </tr>\n";
+print "    <tr>\n";
+print "      <td style=\"height: 50px; background-color: hwb($color1 20% 0%)\"></td>\n";
+print "      <td style=\"background-color: hwb($color2 20% 0%)\"></td>\n";
+print "    </tr>\n";
 ?>
-    </tbody>
   </table>
 
   <footer>

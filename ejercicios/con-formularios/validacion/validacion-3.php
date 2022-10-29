@@ -58,7 +58,6 @@ function cabecera($texto)
 
 function pie($conEnlace, $conBotones, $numeroValores)
 {
-    print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
 
@@ -158,11 +157,10 @@ if ($valoresTodoOk) {
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
     for ($i = 1; $i <= $numeroValores; $i++) {
-        print "        <tr>\n";
-        print "          <td>Valor $i:</td>\n";
-        print "          <td><input type=\"text\" name=\"valores[$i]\" size=\""
+        print "      <tr>\n";
+        print "        <td>Valor $i:</td>\n";
+        print "        <td><input type=\"text\" name=\"valores[$i]\" size=\""
             . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\" value=\"" . $valores[$i] . "\">";
         if (!$valoresOk[$i]) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
@@ -170,7 +168,7 @@ if ($valoresTodoOk) {
             print " <span class=\"aviso\">Escriba un valor</span>";
         }
         print "</td>\n";
-        print "        </tr>\n";
+        print "      </tr>\n";
     }
     pie(CON_ENLACE, CON_BOTONES, $numeroValores);
 } else {
@@ -179,14 +177,13 @@ if ($valoresTodoOk) {
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
     for ($i = 1; $i <= $numeroValores; $i++) {
-        print "        <tr>\n";
-        print "          <td>Valor $i:</td>\n";
-        print "          <td><input type=\"text\" name=\"valores[$i]\" size=\""
+        print "      <tr>\n";
+        print "        <td>Valor $i:</td>\n";
+        print "        <td><input type=\"text\" name=\"valores[$i]\" size=\""
             . TAM_VALOR . "\" maxlength=\"" . TAM_VALOR . "\">";
         print "</td>\n";
-        print "        </tr>\n";
+        print "      </tr>\n";
     }
     pie(SIN_ENLACE, CON_BOTONES, $numeroValores);
 }

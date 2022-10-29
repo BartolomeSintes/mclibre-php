@@ -52,40 +52,38 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
     <p>Haga clic en los colores:</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td>
-            <button type="submit" name="eleccion" value="red">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                   width="50" height="50" viewBox="0 0 50 50" style="background-color: red">
-              </svg>
-            </button>
-          </td>
-          <td>
-            <button type="submit" name="eleccion" value="yellow">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                   width="50" height="50" viewBox="0 0 50 50" style="background-color: yellow">
-              </svg>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button type="submit" name="eleccion" value="blue">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                   width="50" height="50" viewBox="0 0 50 50" style="background-color: blue">
-              </svg>
-            </button>
-          </td>
-          <td>
-            <button type="submit" name="eleccion" value="green">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                   width="50" height="50" viewBox="0 0 50 50" style="background-color: green">
-              </svg>
-            </button>
-          </td>
-        </tr>
-      </tbody>
+      <tr>
+        <td>
+          <button type="submit" name="eleccion" value="red">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 width="50" height="50" viewBox="0 0 50 50" style="background-color: red">
+            </svg>
+          </button>
+        </td>
+        <td>
+          <button type="submit" name="eleccion" value="yellow">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 width="50" height="50" viewBox="0 0 50 50" style="background-color: yellow">
+            </svg>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" name="eleccion" value="blue">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 width="50" height="50" viewBox="0 0 50 50" style="background-color: blue">
+            </svg>
+          </button>
+        </td>
+        <td>
+          <button type="submit" name="eleccion" value="green">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 width="50" height="50" viewBox="0 0 50 50" style="background-color: green">
+            </svg>
+          </button>
+        </td>
+      </tr>
     </table>
 
     <p><input type="submit" name="eleccion" value="Reiniciar"></p>

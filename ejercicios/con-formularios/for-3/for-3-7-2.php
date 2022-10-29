@@ -88,19 +88,17 @@ if ($numeroOk) {
     for ($k = 0; $k < $numero; $k++) {
         print "  <table class=\"conborde\">\n";
         print "    <caption>Tabla nº" . 1 + $k . "</caption>\n";
-        print "    <tbody>\n";
         for ($i = 0; $i < $numero; $i++) {
-            print "      <tr>\n";
+            print "    <tr>\n";
             for ($j = 0; $j < $numero; $j++) {
-                print "        <td style=\"background-color:rgb("
+                print "      <td style=\"background-color:rgb("
                     . round($k * $paso) . "," . round($i * $paso) . ","
                     . round($j * $paso) . ")\" title=\"R:" . round($k * $paso)
                     . " G:" . round($i * $paso) . " B:" . round($j * $paso)
                     . "\"></td>\n";
             }
-            print "      </tr>\n";
+            print "    </tr>\n";
         }
-        print "    </tbody>\n";
         print "  </table>\n";
         print "\n";
     }

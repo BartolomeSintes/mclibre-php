@@ -31,12 +31,10 @@ if (!$resultado) {
     print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";
     print "      <table>\n";
-    print "        <tbody>\n";
-    print "          <tr>\n";
-    print "            <td>Usuario:</td>\n";
-    print "            <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" autofocus></td>\n";
-    print "          </tr>\n";
-    print "        </tbody>\n";
+    print "        <tr>\n";
+    print "          <td>Usuario:</td>\n";
+    print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" autofocus></td>\n";
+    print "        </tr>\n";
     print "      </table>\n";
     print "\n";
     print "      <p>\n";

@@ -21,31 +21,29 @@
     <p>Indique si quiere los valores ordenados en orden directo o inverso.</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><label for="numeroMinimo">Número mínimo de valores:</label></td>
-          <td><input type="number" name="numeroMinimo" min="1" value="10" id="numeroMinimo"></td>
-        </tr>
-        <tr>
-          <td><label for="numeroMaximo">Número máximo de valores:</label></td>
-          <td><input type="number" name="numeroMaximo" min="1" value="20" id="numeroMaximo"></td>
-        </tr>
-        <tr>
-          <td><label for="valorMinimo">Valor mínimo:</label></td>
-          <td><input type="number" name="valorMinimo" min="0" value="0" id="valorMinimo"></td>
-        </tr>
-        <tr>
-          <td><label for="valorMaximo">Valor máximo:</label></td>
-          <td><input type="number" name="valorMaximo" min="0" value="100" id="valorMaximo"></td>
-        </tr>
-        <tr>
-          <td>Ordenar por orden ...:</td>
-          <td>
-            <label><input type="radio" name="orden" value="directo"> Directo</label>
-            <label><input type="radio" name="orden" value="inverso"> Inverso</label>
-          </td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><label for="numeroMinimo">Número mínimo de valores:</label></td>
+        <td><input type="number" name="numeroMinimo" min="1" value="10" id="numeroMinimo"></td>
+      </tr>
+      <tr>
+        <td><label for="numeroMaximo">Número máximo de valores:</label></td>
+        <td><input type="number" name="numeroMaximo" min="1" value="20" id="numeroMaximo"></td>
+      </tr>
+      <tr>
+        <td><label for="valorMinimo">Valor mínimo:</label></td>
+        <td><input type="number" name="valorMinimo" min="0" value="0" id="valorMinimo"></td>
+      </tr>
+      <tr>
+        <td><label for="valorMaximo">Valor máximo:</label></td>
+        <td><input type="number" name="valorMaximo" min="0" value="100" id="valorMaximo"></td>
+      </tr>
+      <tr>
+        <td>Ordenar por orden ...:</td>
+        <td>
+          <label><input type="radio" name="orden" value="directo"> Directo</label>
+          <label><input type="radio" name="orden" value="inverso"> Inverso</label>
+        </td>
+      </tr>
     </table>
 
     <p>
