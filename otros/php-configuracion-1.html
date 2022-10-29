@@ -174,23 +174,21 @@ DocumentRoot "C:/www"</code>
       <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
 
       <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Programas</th>
-            <th>Ruta en el navegador</th>
-            <th>Carpeta en el disco</th>
-          </tr>
-          <tr>
-            <td>Programas escritos en el curso de PHP</td>
-            <td>http://localhost/clase/</td>
-            <td>Documentos &gt; Cursos &gt; PHP</td>
-          </tr>
-          <tr>
-            <td>Programas escritos para el trabajo</td>
-            <td>http://localhost/curro/</td>
-            <td>Documentos &gt; Trabajo &gt; PHP</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Programas</th>
+          <th>Ruta en el navegador</th>
+          <th>Carpeta en el disco</th>
+        </tr>
+        <tr>
+          <td>Programas escritos en el curso de PHP</td>
+          <td>http://localhost/clase/</td>
+          <td>Documentos &gt; Cursos &gt; PHP</td>
+        </tr>
+        <tr>
+          <td>Programas escritos para el trabajo</td>
+          <td>http://localhost/curro/</td>
+          <td>Documentos &gt; Trabajo &gt; PHP</td>
+        </tr>
       </table>
 
       <p>Para ello, hay que añadir en el archivo httpd.conf dos directivas Alias dentro de la directiva &lt;IfModule alias_module&gt;. En esta directiva se pueden crear redirecciones, alias y alias de script. Para mantener el archivo bien organizado, se recomienda escribir los alias a continuación de las líneas de comentario relativas a los alias. El ejemplo siguiente muestra los dos alias del ejemplo anterior.</p>
@@ -259,18 +257,16 @@ DocumentRoot "C:/www"</code>
       <p>Un alias puede abarcar varios pasos de la ruta, como muestra el ejemplo siguiente.</p>
 
       <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Programas</th>
-            <th>Ruta en el navegador</th>
-            <th>Carpeta en el disco</th>
-          </tr>
-          <tr>
-            <td>Programas escritos en el curso de PHP</td>
-            <td>http://localhost/iaw/php/</td>
-            <td>Documentos &gt; Cursos &gt; 2019 &gt; PHP</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Programas</th>
+          <th>Ruta en el navegador</th>
+          <th>Carpeta en el disco</th>
+        </tr>
+        <tr>
+          <td>Programas escritos en el curso de PHP</td>
+          <td>http://localhost/iaw/php/</td>
+          <td>Documentos &gt; Cursos &gt; 2019 &gt; PHP</td>
+        </tr>
       </table>
 
       <p>La directiva Alias sería la siguiente.</p>
@@ -359,24 +355,22 @@ DocumentRoot "C:/www"</code>
       <p>La directiva <a href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-reporting"><span class="php-dir">error_reporting</span></a> especifica el tipo de errores notificados por PHP. Por ejemplo:</p>
 
       <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Directiva / Valor</th>
-            <th>Significado</th>
-          </tr>
-          <tr>
-            <td>error_reporting=E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED</td>
-            <td>Se muestran todos los errores, menos los avisos y obsoletos.</td>
-          </tr>
-          <tr>
-            <td>error_reporting=E_ALL &amp; ~E_DEPRECATED</td>
-            <td>Se muestran todos los errores, menos los obsoletos</td>
-          </tr>
-          <tr>
-            <td>error_reporting=E_ALL ; Valor recomendado en este curso </td>
-            <td>Se muestran todos los errores (Valor recomendado)</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Directiva / Valor</th>
+          <th>Significado</th>
+        </tr>
+        <tr>
+          <td>error_reporting=E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECATED</td>
+          <td>Se muestran todos los errores, menos los avisos y obsoletos.</td>
+        </tr>
+        <tr>
+          <td>error_reporting=E_ALL &amp; ~E_DEPRECATED</td>
+          <td>Se muestran todos los errores, menos los obsoletos</td>
+        </tr>
+        <tr>
+          <td>error_reporting=E_ALL ; Valor recomendado en este curso </td>
+          <td>Se muestran todos los errores (Valor recomendado)</td>
+        </tr>
       </table>
 
       <p>En un entorno de producción se suelen ocultar a los clientes los mensajes de error por motivos de seguridad (aunque se deben registrar en el archivo de logs), pero en un entorno de desarrollo es conveniente mostrar el mayor número de errores y avisos para corregirlos. Para mostrar todos los errores, la directiva <span class="php-dir">error_reporting</span> debe tomar el valor E_ALL</p>
@@ -406,77 +400,75 @@ error_reporting=E_ALL </code>
       <p>Los dieciséis <a href="https://www.php.net/manual/en/errorfunc.constants.php">posibles valores de esta directiva</a>, que se pueden combinar con el operador lógico &amp; (Y), son los siguientes:</p>
 
       <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Tipo de error</th>
-            <th>Descripción</th>
-          </tr>
-          <tr>
-            <td>E_ALL</td>
-            <td>Todos los errores y avisos.</td>
-          </tr>
-          <tr>
-            <td>E_ERROR</td>
-            <td>Errores fatales detectados en tiempo de ejecución.</td>
-          </tr>
-          <tr>
-            <td>E_WARNING</td>
-            <td>Advertencias (errores no fatales) detectados en tiempo de ejecución.</td>
-          </tr>
-          <tr>
-            <td>E_PARSE</td>
-            <td>Errores de sintaxis detectados en tiempo de compilación.</td>
-          </tr>
-          <tr>
-            <td>E_NOTICE</td>
-            <td>Avisos detectados en tiempo de ejecución (pueden deberse a errores involuntarios o a errores intencionados, por ejemplo, utilizar una variable no inicializada, pero utilizarla teniendo en cuenta que se inicializará automáticamente a una cadena vacía).</td>
-          </tr>
-          <tr>
-            <td>E_STRICT</td>
-            <td>Avisos detectados en tiempo de ejecución, al activarlos PHP sugiere cambios en el código para que una mejor interoperabilidad y compatibilidad en el futuro.<br>
-            </td>
-          </tr>
-          <tr>
-            <td>E_RECOVERABLE_ERROR </td>
-            <td>Error recuperable.</td>
-          </tr>
-          <tr>
-            <td>E_DEPRECATED</td>
-            <td>Advertencias sobre código obsoleto que no funcionará en futuras versiones de PHP.</td>
-          </tr>
-          <tr>
-            <td>E_CORE_ERROR</td>
-            <td>Errores fatales detectados durante el arranque inicial de PHP.</td>
-          </tr>
-          <tr>
-            <td>E_CORE_WARNING</td>
-            <td>Advertencias (errores no fatales) detectados durante el arranque inicial de PHP.</td>
-          </tr>
-          <tr>
-            <td>E_COMPILE_ERROR</td>
-            <td>Errores fatales detectados en tiempo de compilación.</td>
-          </tr>
-          <tr>
-            <td>E_COMPILE_WARNING</td>
-            <td>Advertencias (errores no fatales) detectados en tiempo de compilación.</td>
-          </tr>
-          <tr>
-            <td>E_USER_ERROR</td>
-            <td>Mensajes de error generados por el usuario.</td>
-          </tr>
-          <tr>
-            <td>E_USER_WARNING</td>
-            <td>Advertencias generadas por el usuario.</td>
-          </tr>
-          <tr>
-            <td>E_USER_NOTICE</td>
-            <td>Avisos generados por el usuario.</td>
-          </tr>
-          <tr>
-            <td>E_USER_DEPRECATED </td>
-            <td>Advertencias generadas por el usuario sobre código que no funcionará en futuras versiones de PHP.</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Tipo de error</th>
+          <th>Descripción</th>
+        </tr>
+        <tr>
+          <td>E_ALL</td>
+          <td>Todos los errores y avisos.</td>
+        </tr>
+        <tr>
+          <td>E_ERROR</td>
+          <td>Errores fatales detectados en tiempo de ejecución.</td>
+        </tr>
+        <tr>
+          <td>E_WARNING</td>
+          <td>Advertencias (errores no fatales) detectados en tiempo de ejecución.</td>
+        </tr>
+        <tr>
+          <td>E_PARSE</td>
+          <td>Errores de sintaxis detectados en tiempo de compilación.</td>
+        </tr>
+        <tr>
+          <td>E_NOTICE</td>
+          <td>Avisos detectados en tiempo de ejecución (pueden deberse a errores involuntarios o a errores intencionados, por ejemplo, utilizar una variable no inicializada, pero utilizarla teniendo en cuenta que se inicializará automáticamente a una cadena vacía).</td>
+        </tr>
+        <tr>
+          <td>E_STRICT</td>
+          <td>Avisos detectados en tiempo de ejecución, al activarlos PHP sugiere cambios en el código para que una mejor interoperabilidad y compatibilidad en el futuro.<br>
+          </td>
+        </tr>
+        <tr>
+          <td>E_RECOVERABLE_ERROR </td>
+          <td>Error recuperable.</td>
+        </tr>
+        <tr>
+          <td>E_DEPRECATED</td>
+          <td>Advertencias sobre código obsoleto que no funcionará en futuras versiones de PHP.</td>
+        </tr>
+        <tr>
+          <td>E_CORE_ERROR</td>
+          <td>Errores fatales detectados durante el arranque inicial de PHP.</td>
+        </tr>
+        <tr>
+          <td>E_CORE_WARNING</td>
+          <td>Advertencias (errores no fatales) detectados durante el arranque inicial de PHP.</td>
+        </tr>
+        <tr>
+          <td>E_COMPILE_ERROR</td>
+          <td>Errores fatales detectados en tiempo de compilación.</td>
+        </tr>
+        <tr>
+          <td>E_COMPILE_WARNING</td>
+          <td>Advertencias (errores no fatales) detectados en tiempo de compilación.</td>
+        </tr>
+        <tr>
+          <td>E_USER_ERROR</td>
+          <td>Mensajes de error generados por el usuario.</td>
+        </tr>
+        <tr>
+          <td>E_USER_WARNING</td>
+          <td>Advertencias generadas por el usuario.</td>
+        </tr>
+        <tr>
+          <td>E_USER_NOTICE</td>
+          <td>Avisos generados por el usuario.</td>
+        </tr>
+        <tr>
+          <td>E_USER_DEPRECATED </td>
+          <td>Advertencias generadas por el usuario sobre código que no funcionará en futuras versiones de PHP.</td>
+        </tr>
       </table>
 
       <p><strong>Nota</strong>: En PHP 5.0, 5.1, 5.2 y 5.3 E_STRICT no estaba incluido en E_ALL, por lo que se debía escribir E_ALL | E_STRICT para incluir todos los errores. En PHP 5.4 E_STRICT se incluyó en E_ALL, por lo que era suficiente escribir E_ALL para incluir todos los errores. Desde 7.0 los errores detectados por E_STRICT se clasifican en otras categorías (como se comenta en <a href="https://www.php.net/manual/en/migration70.incompatible.php">las notas de versión de PHP 7.0</a>), por lo que E_SCTRICT ya no cumple ninguna función, aunque se mantiene por compatibilidad con versiones anteriores.</p>
@@ -488,20 +480,18 @@ error_reporting=E_ALL </code>
       <p>La directiva output_buffering especifica si la salida del programa se envía a medida que se va generando o se utiliza un buffer intermedio para reducir el tráfico de salida del servidor.</p>
 
       <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Directiva / Valor</th>
-            <th>Significado</th>
-          </tr>
-          <tr>
-            <td>output_buffering=4096</td>
-            <td>Se utiliza un buffer de 4096 bytes.</td>
-          </tr>
-          <tr>
-            <td>output_buffering=0 ; Valor recomendado en este curso</td>
-            <td>No se utiliza buffer.</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Directiva / Valor</th>
+          <th>Significado</th>
+        </tr>
+        <tr>
+          <td>output_buffering=4096</td>
+          <td>Se utiliza un buffer de 4096 bytes.</td>
+        </tr>
+        <tr>
+          <td>output_buffering=0 ; Valor recomendado en este curso</td>
+          <td>No se utiliza buffer.</td>
+        </tr>
       </table>
 
       <p>En un entorno de producción se suele utilizar un buffer de salida, pero este puede enmascarar errores de programación (básicamente, la creación de contenido de la página antes del envío de cabeceras, como se comenta en la <a href="../lecciones/php-cabeceras.html">lección sobre cabeceras HTTP</a>). Por eso es conveniente desactivar el buffer y poder detectar ese tipo de errores al escribir los programas.</p>
@@ -531,20 +521,18 @@ output_buffering=0</code>
       <p>Los fragmentos de código PHP se deben identificar mediante las etiquetas &lt;?php .... ?&gt;. La directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.short-open-tag"><span class="php-dir">short_open_tag</span> </a>especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
 
       <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Directiva / Valor</th>
-            <th>Significado</th>
-          </tr>
-          <tr>
-            <td>short_open_tag=On</td>
-            <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
-          </tr>
-          <tr>
-            <td>short_open_tag=Off</td>
-            <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Directiva / Valor</th>
+          <th>Significado</th>
+        </tr>
+        <tr>
+          <td>short_open_tag=On</td>
+          <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
+        </tr>
+        <tr>
+          <td>short_open_tag=Off</td>
+          <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
+        </tr>
       </table>
 
       <p>Se recomienda que esta directiva tome el valor Off y que se utilice siempre la etiqueta &lt;?php para empezar los fragmentos de código php.</p>
@@ -588,20 +576,18 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
       <p>La directiva <a href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.display-errors"><span class="php-dir">display_errors</span></a> establece si PHP incluye los distintos mensajes de error en la salida del programa.</p>
 
       <table class="tabla-con-borde">
-        <tbody>
-          <tr>
-            <th>Directiva / Valor</th>
-            <th>Significado</th>
-          </tr>
-          <tr>
-            <td>display_errors=On</td>
-            <td>Se incluyen los mensajes de error en la salida del programa</td>
-          </tr>
-          <tr>
-            <td>display_errors=Off</td>
-            <td>No se incluyen los mensajes de error en la salida del programa</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Directiva / Valor</th>
+          <th>Significado</th>
+        </tr>
+        <tr>
+          <td>display_errors=On</td>
+          <td>Se incluyen los mensajes de error en la salida del programa</td>
+        </tr>
+        <tr>
+          <td>display_errors=Off</td>
+          <td>No se incluyen los mensajes de error en la salida del programa</td>
+        </tr>
       </table>
 
       <p>En un entorno de desarrollo se recomienda que esta directiva tome el valor On (para que el programador identifique más fácilmente los errores en sus programas), pero en un entorno de producción se recomienda que esta directiva tome el valor Off (por motivos de seguridad, es decir, para que un posible atacante no identifique errores en los programas que pudieran utilizarse contra el servidor).</p>

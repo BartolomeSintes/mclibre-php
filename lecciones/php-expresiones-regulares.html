@@ -174,204 +174,200 @@ if ($encontrado) {
     <p>Los siguientes patrones son comunes a POSIX extendido y a compatibles con Perl, con una diferencia muy importante que es que las clases de carácter que incluyen caracteres alfabéticos ([[:alnum:]], [[:alpha:]], etc.) en POSIX <strong>no</strong> incluyen vocales acentuadas, ñ, ç, etc, mientras que en PECR sí.</p>
 
     <table class="tabla-con-borde">
-      <tbody>
-        <tr>
-          <th>Patrón</th>
-          <th>Significado</th>
-        </tr>
-        <tr>
-          <td>c</td>
-          <td>carácter c</td>
-        </tr>
-        <tr>
-          <td>.</td>
-          <td>cualquier carácter</td>
-        </tr>
-        <tr>
-          <td>^c</td>
-          <td>empezar por el carácter c</td>
-        </tr>
-        <tr>
-          <td>c$</td>
-          <td>terminar por el carácter c</td>
-        </tr>
-        <tr>
-          <td>c+</td>
-          <td>1 o más caracteres c</td>
-        </tr>
-        <tr>
-          <td>c*</td>
-          <td>0 o más caracteres c</td>
-        </tr>
-        <tr>
-          <td>c?</td>
-          <td>0 o 1 caracteres c</td>
-        </tr>
-        <tr>
-          <td>\n</td>
-          <td>nueva línea</td>
-        </tr>
-        <tr>
-          <td>\t</td>
-          <td>tabulador</td>
-        </tr>
-        <tr>
-          <td>\</td>
-          <td>escape, para escribir delante de caracteres especiales: ^ . [ ] % ( ) | * ? { } \</td>
-        </tr>
-        <tr>
-          <td>(cd)</td>
-          <td>caracteres c y d agrupados</td>
-        </tr>
-        <tr>
-          <td>c|d</td>
-          <td>carácter c o d</td>
-        </tr>
-        <tr>
-          <td>c{n}</td>
-          <td>n veces el carácter c</td>
-        </tr>
-        <tr>
-          <td>c{n,}</td>
-          <td>n o más caracteres c</td>
-        </tr>
-        <tr>
-          <td>c{n,m}</td>
-          <td>desde n hasta m caracteres c</td>
-        </tr>
-        <tr>
-          <td>[a-z]</td>
-          <td>cualquier letra minúscula</td>
-        </tr>
-        <tr>
-          <td>[A-Z]</td>
-          <td>cualquier letra mayúscula</td>
-        </tr>
-        <tr>
-          <td>[0-9]</td>
-          <td>cualquier dígito</td>
-        </tr>
-        <tr>
-          <td>[cde]</td>
-          <td>cualquiera de los caracteres c, d o e</td>
-        </tr>
-        <tr>
-          <td>[c-f]</td>
-          <td>cualquier letra entre c y f (es decir, c, d, e o f)</td>
-        </tr>
-        <tr>
-          <td>[^c]</td>
-          <td>que no esté el carácter c</td>
-        </tr>
-        <tr>
-          <td>[[:alnum:]]</td>
-          <td>cualquier letra o dígito </td>
-        </tr>
-        <tr>
-          <td>[[:alpha:]]</td>
-          <td>cualquier letra </td>
-        </tr>
-        <tr>
-          <td>[[:digit:]]</td>
-          <td>cualquier dígito</td>
-        </tr>
-        <tr>
-          <td>[[:lower:]]</td>
-          <td>cualquier letra minúscula </td>
-        </tr>
-        <tr>
-          <td>[[:punct:]]</td>
-          <td>cualquier marca de puntuación</td>
-        </tr>
-        <tr>
-          <td>[[:space:]]</td>
-          <td>cualquier espacio en blanco </td>
-        </tr>
-        <tr>
-          <td>[[:upper:]]</td>
-          <td>cualquier letra mayúscula </td>
-        </tr>
-      </tbody>
+      <tr>
+        <th>Patrón</th>
+        <th>Significado</th>
+      </tr>
+      <tr>
+        <td>c</td>
+        <td>carácter c</td>
+      </tr>
+      <tr>
+        <td>.</td>
+        <td>cualquier carácter</td>
+      </tr>
+      <tr>
+        <td>^c</td>
+        <td>empezar por el carácter c</td>
+      </tr>
+      <tr>
+        <td>c$</td>
+        <td>terminar por el carácter c</td>
+      </tr>
+      <tr>
+        <td>c+</td>
+        <td>1 o más caracteres c</td>
+      </tr>
+      <tr>
+        <td>c*</td>
+        <td>0 o más caracteres c</td>
+      </tr>
+      <tr>
+        <td>c?</td>
+        <td>0 o 1 caracteres c</td>
+      </tr>
+      <tr>
+        <td>\n</td>
+        <td>nueva línea</td>
+      </tr>
+      <tr>
+        <td>\t</td>
+        <td>tabulador</td>
+      </tr>
+      <tr>
+        <td>\</td>
+        <td>escape, para escribir delante de caracteres especiales: ^ . [ ] % ( ) | * ? { } \</td>
+      </tr>
+      <tr>
+        <td>(cd)</td>
+        <td>caracteres c y d agrupados</td>
+      </tr>
+      <tr>
+        <td>c|d</td>
+        <td>carácter c o d</td>
+      </tr>
+      <tr>
+        <td>c{n}</td>
+        <td>n veces el carácter c</td>
+      </tr>
+      <tr>
+        <td>c{n,}</td>
+        <td>n o más caracteres c</td>
+      </tr>
+      <tr>
+        <td>c{n,m}</td>
+        <td>desde n hasta m caracteres c</td>
+      </tr>
+      <tr>
+        <td>[a-z]</td>
+        <td>cualquier letra minúscula</td>
+      </tr>
+      <tr>
+        <td>[A-Z]</td>
+        <td>cualquier letra mayúscula</td>
+      </tr>
+      <tr>
+        <td>[0-9]</td>
+        <td>cualquier dígito</td>
+      </tr>
+      <tr>
+        <td>[cde]</td>
+        <td>cualquiera de los caracteres c, d o e</td>
+      </tr>
+      <tr>
+        <td>[c-f]</td>
+        <td>cualquier letra entre c y f (es decir, c, d, e o f)</td>
+      </tr>
+      <tr>
+        <td>[^c]</td>
+        <td>que no esté el carácter c</td>
+      </tr>
+      <tr>
+        <td>[[:alnum:]]</td>
+        <td>cualquier letra o dígito </td>
+      </tr>
+      <tr>
+        <td>[[:alpha:]]</td>
+        <td>cualquier letra </td>
+      </tr>
+      <tr>
+        <td>[[:digit:]]</td>
+        <td>cualquier dígito</td>
+      </tr>
+      <tr>
+        <td>[[:lower:]]</td>
+        <td>cualquier letra minúscula </td>
+      </tr>
+      <tr>
+        <td>[[:punct:]]</td>
+        <td>cualquier marca de puntuación</td>
+      </tr>
+      <tr>
+        <td>[[:space:]]</td>
+        <td>cualquier espacio en blanco </td>
+      </tr>
+      <tr>
+        <td>[[:upper:]]</td>
+        <td>cualquier letra mayúscula </td>
+      </tr>
     </table>
 
     <p>Los siguientes patrones son exclusivos de compatibles con Perl y no existen en POSIX extendido:</p>
 
     <table class="tabla-con-borde">
-      <tbody>
-        <tr>
-          <th>Patrón</th>
-          <th>Significado</th>
-        </tr>
-        <tr>
-          <td>[[:ascii:]]</td>
-          <td>caracteres con código ASCII de 0 a 127</td>
-        </tr>
-        <tr>
-          <td>[[:blank:]]</td>
-          <td>espacios o tabuladores</td>
-        </tr>
-        <tr>
-          <td>[[:cntrl:]]</td>
-          <td>caracteres de control</td>
-        </tr>
-        <tr>
-          <td>[[:graph:]]</td>
-          <td>caracteres de impresión, salvo el espacio</td>
-        </tr>
-        <tr>
-          <td>[[:print:]]</td>
-          <td>caracteres de impresión, espacio incluido</td>
-        </tr>
-        <tr>
-          <td>[[:word:]]<br>
-          </td>
-          <td>cualquier letra o dígito y el guion bajo</td>
-        </tr>
-        <tr>
-          <td>[[:xdigit:]]</td>
-          <td>cualquier dígito hexadecimal</td>
-        </tr>
-        <tr>
-          <td>\w</td>
-          <td>cualquier letra o dígito y el guion bajo</td>
-        </tr>
-        <tr>
-          <td>\W</td>
-          <td>cualquier cosa que no sea letra o dígito y el guion bajo</td>
-        </tr>
-        <tr>
-          <td>\s</td>
-          <td>cualquier espacio en blanco</td>
-        </tr>
-        <tr>
-          <td>\S</td>
-          <td>cualquier cosa que no sea un espacio en blanco</td>
-        </tr>
-        <tr>
-          <td>\d</td>
-          <td>cualquier dígito</td>
-        </tr>
-        <tr>
-          <td>\D</td>
-          <td>cualquier cosa que no sea un dígito</td>
-        </tr>
-        <tr>
-          <td>\b</td>
-          <td>inicio o final de palabra</td>
-        </tr>
-        <tr>
-          <td>\A</td>
-          <td>comienzo</td>
-        </tr>
-        <tr>
-          <td>\Z</td>
-          <td>final (incluido salto de línea)</td>
-        </tr>
-        <tr>
-          <td>\z</td>
-          <td>final</td>
-        </tr>
-      </tbody>
+      <tr>
+        <th>Patrón</th>
+        <th>Significado</th>
+      </tr>
+      <tr>
+        <td>[[:ascii:]]</td>
+        <td>caracteres con código ASCII de 0 a 127</td>
+      </tr>
+      <tr>
+        <td>[[:blank:]]</td>
+        <td>espacios o tabuladores</td>
+      </tr>
+      <tr>
+        <td>[[:cntrl:]]</td>
+        <td>caracteres de control</td>
+      </tr>
+      <tr>
+        <td>[[:graph:]]</td>
+        <td>caracteres de impresión, salvo el espacio</td>
+      </tr>
+      <tr>
+        <td>[[:print:]]</td>
+        <td>caracteres de impresión, espacio incluido</td>
+      </tr>
+      <tr>
+        <td>[[:word:]]<br>
+        </td>
+        <td>cualquier letra o dígito y el guion bajo</td>
+      </tr>
+      <tr>
+        <td>[[:xdigit:]]</td>
+        <td>cualquier dígito hexadecimal</td>
+      </tr>
+      <tr>
+        <td>\w</td>
+        <td>cualquier letra o dígito y el guion bajo</td>
+      </tr>
+      <tr>
+        <td>\W</td>
+        <td>cualquier cosa que no sea letra o dígito y el guion bajo</td>
+      </tr>
+      <tr>
+        <td>\s</td>
+        <td>cualquier espacio en blanco</td>
+      </tr>
+      <tr>
+        <td>\S</td>
+        <td>cualquier cosa que no sea un espacio en blanco</td>
+      </tr>
+      <tr>
+        <td>\d</td>
+        <td>cualquier dígito</td>
+      </tr>
+      <tr>
+        <td>\D</td>
+        <td>cualquier cosa que no sea un dígito</td>
+      </tr>
+      <tr>
+        <td>\b</td>
+        <td>inicio o final de palabra</td>
+      </tr>
+      <tr>
+        <td>\A</td>
+        <td>comienzo</td>
+      </tr>
+      <tr>
+        <td>\Z</td>
+        <td>final (incluido salto de línea)</td>
+      </tr>
+      <tr>
+        <td>\z</td>
+        <td>final</td>
+      </tr>
     </table>
   </section>
 
