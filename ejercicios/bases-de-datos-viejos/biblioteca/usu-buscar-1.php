@@ -41,23 +41,21 @@ if (!$result) {
     print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";
     print "      <table>\n";
-    print "        <tbody>\n";
-    print "          <tr>\n";
-    print "            <td>Nombre:</td>\n";
-    print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+    print "        <tr>\n";
+    print "          <td>Nombre:</td>\n";
+    print "          <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
         . "maxlength=\"" . TAM_NOMBRE . "\" autofocus></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Apellidos:</td>\n";
-    print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>Apellidos:</td>\n";
+    print "          <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
         . "maxlength=\"" . TAM_APELLIDOS . "\"></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>DNI:</td>\n";
-    print "            <td><input type=\"text\" name=\"dni\" size=\"" . TAM_DNI . "\" "
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>DNI:</td>\n";
+    print "          <td><input type=\"text\" name=\"dni\" size=\"" . TAM_DNI . "\" "
         . "maxlength=\"" . TAM_DNI . "\"></td>\n";
-    print "          </tr>\n";
-    print "        </tbody>\n";
+    print "        </tr>\n";
     print "      </table>\n";
     print "\n";
     print "      <p><input type=\"submit\" value=\"Buscar\"></p>\n";

@@ -40,18 +40,16 @@ if (isset($_SESSION["id"])) {
     print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
     print "\n";
     print "      <table>\n";
-    print "        <tbody>\n";
-    print "          <tr>\n";
-    print "            <td>Nombre:</td>\n";
-    print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
+    print "        <tr>\n";
+    print "          <td>Nombre:</td>\n";
+    print "          <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
         . "maxlength=\"$tamUsuario\" autofocus></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Contraseña:</td>\n";
-    print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>Contraseña:</td>\n";
+    print "          <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
         . "maxlength=\"$tamPassword\"></td>\n";
-    print "          </tr>\n";
-    print "        </tbody>\n";
+    print "        </tr>\n";
     print "      </table>\\n";
     print "n";
     print "      <p>\n";

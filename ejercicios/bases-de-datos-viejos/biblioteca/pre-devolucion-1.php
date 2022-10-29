@@ -87,23 +87,21 @@ if (!$result) {
         print "            <th>Fecha de devolución (dd-mm-aaaa)</th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
-        print "          <tr>\n";
-        print "            <td>\n";
-        print "              <select name=\"id\">\n";
+        print "        <tr>\n";
+        print "          <td>\n";
+        print "            <select name=\"id\">\n";
         foreach ($result as $valor) {
-            print "                <option value=\"$valor[id]\">$valor[apellidos], "
+            print "              <option value=\"$valor[id]\">$valor[apellidos], "
                 . "$valor[nombre] - $valor[titulo] - " . fechaDma($valor["prestado"])
                 . "</option>\n";
         }
-        print "              </select>\n";
-        print "            </td>\n";
-        print "            <td>\n";
-        print "              <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
+        print "            </select>\n";
+        print "          </td>\n";
+        print "          <td>\n";
+        print "            <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
             . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" autofocus>\n";
-        print "            </td>\n";
-        print "          </tr>\n";
-        print "        </tbody>\n";
+        print "          </td>\n";
+        print "        </tr>\n";
         print "      </table>\n";
         print "\n";
         print "      <p><input type=\"submit\" value=\"Guardar devolución\"></p>\n";

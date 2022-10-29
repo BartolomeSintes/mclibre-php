@@ -42,28 +42,26 @@ if (!$result) {
     print "      <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";
     print "      <table>\n";
-    print "        <tbody>\n";
-    print "          <tr>\n";
-    print "            <td>Nombre:</td>\n";
-    print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+    print "        <tr>\n";
+    print "          <td>Nombre:</td>\n";
+    print "          <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
         . "maxlength=\"" . TAM_NOMBRE . "\" autofocus></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Apellidos:</td>\n";
-    print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>Apellidos:</td>\n";
+    print "          <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
         . "maxlength=\"" . TAM_APELLIDOS . "\"></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Teléfono:</td>\n";
-    print "            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>Teléfono:</td>\n";
+    print "          <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
         . "maxlength=\"" . TAM_TELEFONO . "\"></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Correo:</td>\n";
-    print "            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>Correo:</td>\n";
+    print "          <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
         . "maxlength=\"" . TAM_CORREO . "\"></td>\n";
-    print "          </tr>\n";
-    print "        </tbody>\n";
+    print "        </tr>\n";
     print "      </table>\n";
     print "\n";
     print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";

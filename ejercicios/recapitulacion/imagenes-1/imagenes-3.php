@@ -93,28 +93,26 @@ if ($detalle == "" || !is_numeric($detalle) || !ctype_digit($detalle)) {
 // Se genera el formulario del cuadro
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
+print "      <tr>\n";
 // Si no es el primer cuadro, muestra el botón izquierdo; si es el primero la celda está vacía
 if ($cuadro > $valorMinimoCuadro) {
-    print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
+    print "        <td><button type=\"submit\" name=\"cuadro\" value=\""
         . $cuadro - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
         . "height=\"80\" alt=\"anterior\"></button></td>\n";
 } else {
-    print "          <td width=\"100\"></td>\n";
+    print "        <td width=\"100\"></td>\n";
 }
-print "          <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
+print "        <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
 . "alt=\"Cuadro de Pieter Bruegel el viejo\"></td>\n";
 // Si no es el último cuadro, muestra el botón derecho; si es el último la celda está vacía
 if ($cuadro < $valorMaximoCuadro) {
-    print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
+    print "        <td><button type=\"submit\" name=\"cuadro\" value=\""
         . $cuadro + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
         . "alt=\"siguiente\"></button></td>\n";
 } else {
-    print "          <td width=\"100\"></td>\n";
+    print "        <td width=\"100\"></td>\n";
 }
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      </tr>\n";
 print "    </table>\n";
 print "  </form>\n";
 print "\n";
@@ -122,28 +120,26 @@ print "\n";
 // Se genera el formulario del detalle del cuadro
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
+print "      <tr>\n";
 // Si no es el primer detalle, muestra el botón izquierdo; si es el primero la celda está vacía
 if ($detalle > $valorMinimoDetalle) {
-    print "          <td><button type=\"submit\" name=\"detalle\" value=\""
+    print "        <td><button type=\"submit\" name=\"detalle\" value=\""
         . $detalle - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
         . "height=\"80\" alt=\"anterior\"></button></td>\n";
 } else {
-    print "          <td width=\"100\"></td>\n";
+    print "        <td width=\"100\"></td>\n";
 }
-print "          <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
+print "        <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
     . "alt=\"Detalle\"></td>\n";
 // Si no es el último detalle, muestra el botón derecho; si es el último la celda está vacía
 if ($detalle < $valorMaximoDetalle) {
-    print "          <td><button type=\"submit\" name=\"detalle\" value=\""
+    print "        <td><button type=\"submit\" name=\"detalle\" value=\""
         . $detalle + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
         . "alt=\"siguiente\"></button></td>\n";
 } else {
-    print "          <td width=\"100\"></td>\n";
+    print "        <td width=\"100\"></td>\n";
 }
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      </tr>\n";
 print "    </table>\n";
 print "\n";
 // El número de cuadro se envía en un control oculto

@@ -80,20 +80,18 @@ if (!isset($_SESSION["compraventaUsuario"])) {
             print "            </th>\n";
             print "          </tr>\n";
             print "        </thead>\n";
-            print "        <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "          <tr>\n";
+                print "        <tr>\n";
             } else {
-                print "          <tr class=\"neg\">\n";
+                print "        <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "            <td>$valor[articulo]</td>\n";
-            print "            <td>$valor[precio] &euro;</td>\n";
-            print "          </tr>\n";
+            print "          <td>$valor[articulo]</td>\n";
+            print "          <td>$valor[precio] &euro;</td>\n";
+            print "        </tr>\n";
         }
-            print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
             print "      <p><input type=\"submit\" value=\"Comprar\"></p>\n";

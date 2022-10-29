@@ -88,30 +88,28 @@ if (!$result) {
             print "            <th>Fecha de préstamo (dd-mm-aaaa)</th>\n";
             print "          </tr>\n";
             print "        </thead>\n";
-            print "        <tbody>\n";
-            print "          <tr>\n";
-            print "            <td>\n";
-            print "              <select name=\"id_usuario\">\n";
+            print "        <tr>\n";
+            print "          <td>\n";
+            print "            <select name=\"id_usuario\">\n";
             foreach ($resultUsuarios as $valor) {
-                print "                <option value=\"$valor[id]\">$valor[nombre] "
+                print "              <option value=\"$valor[id]\">$valor[nombre] "
                     . "$valor[apellidos] - $valor[dni]</option>\n";
             }
-            print "              </select>\n";
-            print "            </td>\n";
-            print "            <td>\n";
-            print "              <select name=\"id_obra\">\n";
+            print "            </select>\n";
+            print "          </td>\n";
+            print "          <td>\n";
+            print "            <select name=\"id_obra\">\n";
             foreach ($resultObras as $valor) {
-                print "                <option value=\"$valor[id]\">$valor[autor] "
+                print "              <option value=\"$valor[id]\">$valor[autor] "
                     . "- $valor[titulo]</option>\n";
             }
-            print "              </select>\n";
-            print "            </td>\n";
-            print "            <td>\n";
-            print "              <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
+            print "            </select>\n";
+            print "          </td>\n";
+            print "          <td>\n";
+            print "            <input type=\"text\" name=\"fecha\" size=\"" . TAM_FECHA . "\" "
                 . "maxlength=\"" . TAM_FECHA . "\" value=\"" . date("d-m-Y") . "\" autofocus>\n";
-            print "            </td>\n";
-            print "          </tr>\n";
-            print "        </tbody>\n";
+            print "          </td>\n";
+            print "        </tr>\n";
             print "      </table>\n";
             print "\n";
             print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";

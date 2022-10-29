@@ -61,12 +61,10 @@ if (!$usuario|| ($usuario == "menu_principal")) {
             print "\n";
             print "    <form action=\"validar-2.php\" method=\"" . FORM_METHOD . "\">\n";
             print "      <table>\n";
-            print "        <tbody>\n";
-            print "          <tr>\n";
-            print "            <td>Contraseña:</td>\n";
-            print "            <td><input type=\"password\" name=\"password2\" autofocus></td>\n";
-            print "          </tr>\n";
-            print "        </tbody>\n";
+            print "        <tr>\n";
+            print "          <td>Contraseña:</td>\n";
+            print "          <td><input type=\"password\" name=\"password2\" autofocus></td>\n";
+            print "        </tr>\n";
             print "      </table>\n";
             print "\n";
             print "      <p>\n";

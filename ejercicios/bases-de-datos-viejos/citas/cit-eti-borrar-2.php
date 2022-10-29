@@ -73,15 +73,14 @@ if (!isset($_SESSION["citasUsuario"])) {
                     print "      <p>Marque las etiquetas a borrar:</p>\n";
                     print "\n";
                     print "      <table border=\"1\">\n";
-                    print "        <tbody>\n";
-                    print "          <tr>\n";
-                    print "            <th>Autor:</th>\n";
-                    print "            <td colspan=\"2\">$nombre</td>\n";
-                    print "          </tr>\n";
-                    print "          <tr>\n";
-                    print "            <th>Cita:</th>\n";
-                    print "            <td colspan=\"2\">$cita</td>\n";
-                    print "          </tr>\n";
+                    print "        <tr>\n";
+                    print "          <th>Autor:</th>\n";
+                    print "          <td colspan=\"2\">$nombre</td>\n";
+                    print "        </tr>\n";
+                    print "        <tr>\n";
+                    print "          <th>Cita:</th>\n";
+                    print "          <td colspan=\"2\">$cita</td>\n";
+                    print "        </tr>\n";
     // En esta consulta he tenido que añadir id_eticita porque las dos
     // tablas tienen un campo id y quiero el id de la eticita no de la cita
                     $consulta = "SELECT $dbEtiCitas.id as id_eticita, * FROM $dbEtiCitas, $dbEtiquetas
@@ -94,14 +93,13 @@ if (!isset($_SESSION["citasUsuario"])) {
                         print "\n";
                     } else {
                         foreach ($result as $indice => $valor) {
-                            print "          <tr>\n";
-                            print "            <th>Etiqueta:</th>\n";
-                            print "            <td><input type=\"checkbox\" name=\"id[$valor[id_eticita]]\">\n";
-                            print "            <td>$valor[etiqueta]</td>\n";
-                            print "          </tr>\n";
+                            print "        <tr>\n";
+                            print "          <th>Etiqueta:</th>\n";
+                            print "          <td><input type=\"checkbox\" name=\"id[$valor[id_eticita]]\">\n";
+                            print "          <td>$valor[etiqueta]</td>\n";
+                            print "        </tr>\n";
                         }
                     }
-                    print "        </tbody>\n";
                     print "      </table>\n";
                     print "\n";
                     print "      <p>\n";

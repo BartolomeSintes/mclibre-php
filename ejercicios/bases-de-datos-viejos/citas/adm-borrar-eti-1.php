@@ -69,21 +69,19 @@ if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administ
             print "            </th>\n";
             print "          </tr>\n";
             print "        </thead>\n";
-            print "        <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "          <tr>\n";
+                print "        <tr>\n";
             } else {
-                print "          <tr class=\"neg\">\n";
+                print "        <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "            <td align=\"center\"><input type=\"checkbox\" "
+            print "          <td align=\"center\"><input type=\"checkbox\" "
                 . "name=\"id[$valor[id]]\"></td>\n";
-            print "            <td>$valor[etiqueta]</td>\n";
-            print "          </tr>\n";
+            print "          <td>$valor[etiqueta]</td>\n";
+            print "        </tr>\n";
         }
-            print "        </tbody>\n";
             print "      </table>\n";
             print "\n";
             print "      <p><input type=\"submit\" value=\"Borrar\"></p>\n";

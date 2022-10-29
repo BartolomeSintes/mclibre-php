@@ -60,30 +60,28 @@ if ($id == "") {
             print "      <p>Modifique los campos que desee:</p>\n";
             print "\n";
             print "      <table>\n";
-            print "        <tbody>\n";
-            print "          <tr>\n";
-            print "            <td>Nombre de usuario:</td>\n";
-            print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" maxlength=\"$tamUsuariosWebUsuario\" value=\"$valor[usuario]\" autofocus></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Contraseña:</td>\n";
-            print "            <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosWebPassword\" maxlength=\"$tamUsuariosWebPassword\"></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Nivel:</td>\n";
-            print "            <td>\n";
-            print "              <select name=\"nivel\">\n";
+            print "        <tr>\n";
+            print "          <td>Nombre de usuario:</td>\n";
+            print "          <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" maxlength=\"$tamUsuariosWebUsuario\" value=\"$valor[usuario]\" autofocus></td>\n";
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Contraseña:</td>\n";
+            print "          <td><input type=\"text\" name=\"password\" size=\"$tamUsuariosWebPassword\" maxlength=\"$tamUsuariosWebPassword\"></td>\n";
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Nivel:</td>\n";
+            print "          <td>\n";
+            print "            <select name=\"nivel\">\n";
             foreach ($usuariosWebNiveles as $valorNivel) {
                 if ($valor["nivel"] == $valorNivel[1]) {
-                    print "                <option value=\"$valorNivel[1]\" selected>$valorNivel[0]</option>\n";
+                    print "              <option value=\"$valorNivel[1]\" selected>$valorNivel[0]</option>\n";
                 } else {
-                    print "                <option value=\"$valorNivel[1]\">$valorNivel[0]</option>\n";
+                    print "              <option value=\"$valorNivel[1]\">$valorNivel[0]</option>\n";
                 }
             }
-            print "              </select>\n";
-            print "            </td>\n";
-            print "          </tr>\n";
-            print "        </tbody>\n";
+            print "            </select>\n";
+            print "          </td>\n";
+            print "        </tr>\n";
             print "      </table>\n";
             print "\n";
             print "      <p>\n";

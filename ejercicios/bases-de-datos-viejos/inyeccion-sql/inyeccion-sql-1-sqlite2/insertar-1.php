@@ -44,18 +44,16 @@ if (!$result) {
     print "      <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";
     print "      <table>\n";
-    print "        <tbody>\n";
-    print "          <tr>\n";
-    print "            <td>Usuario:</td>\n";
-    print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
+    print "        <tr>\n";
+    print "          <td>Usuario:</td>\n";
+    print "          <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
     . "maxlength=\"$tamUsuario\" autofocus></td>\n";
-    print "          </tr>\n";
-    print "          <tr>\n";
-    print "            <td>Contraseña:</td>\n";
-    print "            <td><input type=\"text\" name=\"contraseña\" size=\"$tamContraseña\" "
+    print "        </tr>\n";
+    print "        <tr>\n";
+    print "          <td>Contraseña:</td>\n";
+    print "          <td><input type=\"text\" name=\"contraseña\" size=\"$tamContraseña\" "
     . "maxlength=\"$tamContraseña\"></td>\n";
-    print "          </tr>\n";
-    print "        </tbody>\n";
+    print "        </tr>\n";
     print "      </table>\n";
     print "\n";
     print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";

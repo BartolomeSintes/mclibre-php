@@ -56,17 +56,15 @@ if (!$result) {
         cabecera("Discusiones - Intervenir en discusión 1", "menuHilos", $hilo);
         print "    <form action=\"hil-insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
         print "      <table>\n";
-        print "        <tbody>\n";
-        print "          <tr>\n";
-        print "            <td>Autor:</td>\n";
-        print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
+        print "        <tr>\n";
+        print "          <td>Autor:</td>\n";
+        print "          <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
             . "maxlength=\"" . TAM_AUTOR . "\" autofocus></td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td style=\"vertical-align:top\">Texto:</td>\n";
-        print "            <td><textarea rows=\"10\" cols=\"40\" name=\"intervencion\"></textarea></td>\n";
-        print "          </tr>\n";
-        print "        </tbody>\n";
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td style=\"vertical-align:top\">Texto:</td>\n";
+        print "          <td><textarea rows=\"10\" cols=\"40\" name=\"intervencion\"></textarea></td>\n";
+        print "        </tr>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

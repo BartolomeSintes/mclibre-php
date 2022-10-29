@@ -142,11 +142,10 @@ if ($valoresTodoOk) {
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
     for ($i=1; $i<=$numeroValores; $i++) {
-        print "        <tr>\n";
-        print "          <td>Valor $i:</td>\n";
-        print "          <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
+        print "      <tr>\n";
+        print "        <td>Valor $i:</td>\n";
+        print "        <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
         if (isset($valores[$i])) {
             print $valores[$i];
         }
@@ -157,9 +156,8 @@ if ($valoresTodoOk) {
             print " <span class=\"aviso\">Escriba un valor</span>";
         }
         print "</td>\n";
-        print "        </tr>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>";
     print "\n";
     print "  <p>\n";
@@ -199,11 +197,10 @@ if ($valoresTodoOk) {
     print "\n";
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">";
     print "    <table>\n";
-    print "      <tbody>\n";
     for ($i=1; $i<=$numeroValores; $i++) {
-        print "        <tr>\n";
-        print "          <td>Valor $i:</td>\n";
-        print "          <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
+        print "      <tr>\n";
+        print "        <td>Valor $i:</td>\n";
+        print "        <td><input type=\"text\" name=\"valor[$i]\" size=\"5\" value=\"";
         if (isset($valores[$i])) {
             print $valores[$i];
         }
@@ -212,9 +209,8 @@ if ($valoresTodoOk) {
             print " <span class=\"aviso\">El valor no es correcto</span>";
         }
         print "</td>\n";
-        print "        </tr>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
     print "    <p>\n";

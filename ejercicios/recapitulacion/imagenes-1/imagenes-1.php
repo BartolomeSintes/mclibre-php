@@ -79,15 +79,13 @@ if ($imagen == "" || !is_numeric($imagen) || !ctype_digit($imagen)) {
 // Se genera el formulario
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen - 1 . "\">"
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen - 1 . "\">"
      . "<img src=\"img/arrow-left-b.svg\" height=\"80\" alt=\"anterior\"></button></td>\n";
-print "          <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\"></td>\n";
-print "          <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen + 1 . "\">"
+print "        <td><img src=\"img/bruegel/bruegel-1-$imagen.jpg\" alt=\"La torre de Babel, de Pieter Bruegel el viejo\"></td>\n";
+print "        <td><button type=\"submit\" name=\"imagen\" value=\"" . $imagen + 1 . "\">"
      . "<img src=\"img/arrow-right-b.svg\" height=\"80\" alt=\"siguiente\"></button></td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      </tr>\n";
 print "    </table>\n";
 print "  </form>\n";
 ?>

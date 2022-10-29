@@ -34,23 +34,21 @@ print "    <form action=\"registrar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
 print "\n";
 print "      <table>\n";
-print "        <tbody>\n";
-print "          <tr>\n";
-print "            <td>Nombre:</td>\n";
-print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
+print "        <tr>\n";
+print "          <td>Nombre:</td>\n";
+print "          <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuario\" "
     . "maxlength=\"$tamUsuario\" autofocus> (hasta $tamUsuario caracteres)</td>\n";
-print "          </tr>\n";
-print "          <tr>\n";
-print "            <td>Contraseña:</td>\n";
-print "            <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
+print "        </tr>\n";
+print "        <tr>\n";
+print "          <td>Contraseña:</td>\n";
+print "          <td><input type=\"password\" name=\"password\" size=\"$tamPassword\" "
     . "maxlength=\"$tamPassword\"> (hasta $tamPassword caracteres)</td>\n";
-print "          </tr>\n";
-print "          <tr>\n";
-print "            <td>Repita la contraseña:</td>\n";
-print "            <td><input type=\"password\" name=\"password2\" size=\"$tamPassword\" "
+print "        </tr>\n";
+print "        <tr>\n";
+print "          <td>Repita la contraseña:</td>\n";
+print "          <td><input type=\"password\" name=\"password2\" size=\"$tamPassword\" "
     . "maxlength=\"$tamPassword\"> (hasta $tamPassword caracteres)</td>\n";
-print "          </tr>\n";
-print "          </tbody>\n";
+print "        </tr>\n";
 print "      </table>\n";
 print "\n";
 print "      <p><strong>Nota</strong>: Los nombres de más de $tamUsuario caracteres y las "

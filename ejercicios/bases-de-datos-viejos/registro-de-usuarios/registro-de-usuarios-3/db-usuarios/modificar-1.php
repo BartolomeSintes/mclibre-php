@@ -80,16 +80,14 @@ if (!$result) {
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
         foreach ($result as $valor) {
-            print "          <tr>\n";
-            print "            <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\"></td>\n";
-            print "            <td>$valor[usuario]</td>\n";
-            print "            <td>$valor[password]</td>\n";
-            print "            <td>" . $usuariosWebNiveles[$valor["nivel"] - 1][0] . "</td>\n";
-            print "          </tr>\n";
+            print "        <tr>\n";
+            print "          <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$valor[id]\"></td>\n";
+            print "          <td>$valor[usuario]</td>\n";
+            print "          <td>$valor[password]</td>\n";
+            print "          <td>" . $usuariosWebNiveles[$valor["nivel"] - 1][0] . "</td>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
         print "      <p>\n";

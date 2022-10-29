@@ -17,12 +17,10 @@
     <p>Escriba cuántos valores quiere introducir (0 &lt; valores &le; 20).</p>
 
     <table class="borde">
-      <tbody>
-        <tr>
-          <td><strong>Cantidad:</strong></td>
-          <td><input type="text" name="numero" size="2" maxlength="2"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Cantidad:</strong></td>
+        <td><input type="text" name="numero" size="2" maxlength="2"></td>
+      </tr>
     </table>
 
     <p class="der">

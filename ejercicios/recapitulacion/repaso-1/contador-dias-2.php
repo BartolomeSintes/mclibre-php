@@ -84,30 +84,29 @@ if ($numeroOk) {
     print "  <form action=\"contador-dias-3.php\" method=\"get\">\n";
     print "    <p>Marque las casillas de verificación que quiera y contaré cuántas ha marcado.</p>\n";
     print "\n";
-    print "    <table class=\"conborde\">\n";
-    print "      <tbody style=\"text-align: center\">\n";
-    print "        <tr>\n";
-    print "          <th>Semana</th>\n";
-    print "          <th>Lunes</th>";
-    print "          <th>Martes</th>\n";
-    print "          <th>Miércoles</th>\n";
-    print "          <th>Jueves</th>";
-    print "          <th>Viernes</th>\n";
-    print "          <th>Sábado</th>\n";
-    print "          <th>Domingo</th>";
-    print "        </tr>\n";
+    print "    <table class=\"conborde\" style=\"text-align: center\">\n";
+    print "      <tr>\n";
+    print "        <th>Semana</th>\n";
+    print "        <th>Lunes</th>\n";
+    print "        <th>Martes</th>\n";
+    print "        <th>Miércoles</th>\n";
+    print "        <th>Jueves</th>\n";
+    print "        <th>Viernes</th>\n";
+    print "        <th>Sábado</th>\n";
+    print "        <th>Domingo</th>\n";
+    print "      </tr>\n";
     for ($i = 1; $i <= $numero; $i++) {
-        print "        <tr>\n";
-        print "          <th>$i</th>\n";
+        print "      <tr>\n";
+        print "        <th>$i</th>\n";
         for ($j = 1; $j <= 7; $j++) {
-            print "          <td><input type=\"checkbox\" name=\"c[$i][$j]\"></td>\n";
+            print "        <td><input type=\"checkbox\" name=\"c[$i][$j]\"></td>\n";
         }
-        print "        </tr>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
+    print "\n";
     print "    <p>\n";
-    print "      <input type=\"submit\" value=\"Convertir\">\n";
+    print "      <input type=\"submit\" value=\"Contar\">\n";
     print "      <input type=\"reset\" value=\"Borrar\">\n";
     print "    </p>\n";
     print "\n";

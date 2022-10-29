@@ -58,23 +58,21 @@ if ($id == "''") {
             print "      <p>Modifique los campos que desee:</p>\n";
             print "\n";
             print "      <table>\n";
-            print "        <tbody>\n";
-            print "          <tr>\n";
-            print "            <td>Autor:</td>\n";
-            print "            <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
+            print "        <tr>\n";
+            print "          <td>Autor:</td>\n";
+            print "          <td><input type=\"text\" name=\"autor\" size=\"" . TAM_AUTOR . "\" "
                 . "maxlength=\"" . TAM_AUTOR . "\" value=\"$valor[autor]\" autofocus></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Título:</td>\n";
-            print "            <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Título:</td>\n";
+            print "          <td><input type=\"text\" name=\"titulo\" size=\"" . TAM_TITULO . "\" "
                 . "maxlength=\"" . TAM_TITULO . "\" value=\"$valor[titulo]\"></td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Editorial:</td>\n";
-            print "            <td><input type=\"text\" name=\"editorial\" size=\"" . TAM_EDITORIAL . "\" "
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Editorial:</td>\n";
+            print "          <td><input type=\"text\" name=\"editorial\" size=\"" . TAM_EDITORIAL . "\" "
                 . "maxlength=\"" . TAM_EDITORIAL . "\" value=\"$valor[editorial]\"></td>\n";
-            print "          </tr>\n";
-            print "        </tbody>\n";
+            print "        </tr>\n";
             print "      </table>\n";
             print "\n";
             print "      <p>\n";

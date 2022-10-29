@@ -65,28 +65,26 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
                 print "      <p>Modifique los campos que desee:</p>\n";
                 print "\n";
                 print "      <table>\n";
-                print "        <tbody>\n";
-                print "          <tr>\n";
-                print "            <td>Nombre:</td>\n";
-                print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+                print "        <tr>\n";
+                print "          <td>Nombre:</td>\n";
+                print "          <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
                     . "maxlength=\"" . TAM_NOMBRE . "\" value=\"$valor[nombre]\" autofocus></td>\n";
-                print "          </tr>\n";
-                print "          <tr>\n";
-                print "            <td>Apellidos:</td>\n";
-                print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+                print "        </tr>\n";
+                print "        <tr>\n";
+                print "          <td>Apellidos:</td>\n";
+                print "          <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
                     . "maxlength=\"" . TAM_APELLIDOS . "\" value=\"$valor[apellidos]\"></td>\n";
-                print "          </tr>\n";
-                print "          <tr>\n";
-                print "            <td>Teléfono:</td>\n";
-                print "            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
+                print "        </tr>\n";
+                print "        <tr>\n";
+                print "          <td>Teléfono:</td>\n";
+                print "          <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
                     . "maxlength=\"" . TAM_TELEFONO . "\" value=\"$valor[telefono]\"></td>\n";
-                print "          </tr>\n";
-                print "          <tr>\n";
-                print "            <td>Correo:</td>\n";
-                print "            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
+                print "        </tr>\n";
+                print "        <tr>\n";
+                print "          <td>Correo:</td>\n";
+                print "          <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
                     . "maxlength=\"" . TAM_CORREO . "\" value=\"$valor[correo]\"></td>\n";
-                print "          </tr>\n";
-                print "        </tbody>\n";
+                print "        </tr>\n";
                 print "      </table>\n";
                 print "\n";
                 print "      <p>\n";

@@ -61,18 +61,16 @@ if (!isset($_SESSION["compraventaUsuario"])) {
                 print "      <p>Modifique los campos que desee:</p>\n";
                 print "\n";
                 print "      <table>\n";
-                print "        <tbody>\n";
-                print "          <tr>\n";
-                print "            <td>Artículo:</td>\n";
-                print "            <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" "
+                print "        <tr>\n";
+                print "          <td>Artículo:</td>\n";
+                print "          <td><input type=\"text\" name=\"articulo\" size=\"$tamArticulo\" "
                     . "value=\"$valor[articulo]\" autofocus></td>\n";
-                print "          </tr>\n";
-                print "          <tr>\n";
-                print "            <td>Precio:</td>\n";
-                print "            <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" "
+                print "        </tr>\n";
+                print "        <tr>\n";
+                print "          <td>Precio:</td>\n";
+                print "          <td><input type=\"text\" name=\"precio\" size=\"$tamPrecio\" "
                     . "value=\"$valor[precio]\"></td>\n";
-                print "          </tr>\n";
-                print "        </tbody>\n";
+                print "        </tr>\n";
                 print "      </table>\n";
                 print "\n";
                 print "      <p>\n";

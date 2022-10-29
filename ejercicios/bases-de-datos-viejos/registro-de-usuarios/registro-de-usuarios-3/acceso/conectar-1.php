@@ -41,18 +41,16 @@ print "    <form action=\"conectar-2.php\" method=\"" . FORM_METHOD . "\">\n";
 print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
 print "\n";
 print "      <table>\n";
-print "        <tbody>\n";
-print "          <tr>\n";
-print "            <td>Nombre:</td>\n";
-print "            <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" "
+print "        <tr>\n";
+print "          <td>Nombre:</td>\n";
+print "          <td><input type=\"text\" name=\"usuario\" size=\"$tamUsuariosWebUsuario\" "
     . "maxlength=\"$tamUsuariosWebUsuario\" autofocus></td>\n";
-print "          </tr>\n";
-print "          <tr>\n";
-print "            <td>Contraseña:</td>\n";
-print "            <td><input type=\"password\" name=\"password\" size=\"$tamUsuariosWebPassword\" "
+print "        </tr>\n";
+print "        <tr>\n";
+print "          <td>Contraseña:</td>\n";
+print "          <td><input type=\"password\" name=\"password\" size=\"$tamUsuariosWebPassword\" "
     . "maxlength=\"$tamUsuariosWebPassword\"></td>\n";
-print "          </tr>\n";
-print "        </tbody>\n";
+print "        </tr>\n";
 print "      </table>\n";
 print "\n";
 print "      <p>\n";

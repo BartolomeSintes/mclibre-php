@@ -103,18 +103,16 @@ if ($juegaOk) {
     }
     print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
-    print "        <tr>\n";
+    print "      <tr>\n";
     for ($i = 1; $i <= $total; $i++) {
-        print "          <td><button type=\"submit\" name=\"juega\" value=\"$i\">";
+        print "        <td><button type=\"submit\" name=\"juega\" value=\"$i\">";
         if ($partida[$i] == 0) {
             print "<img src=\"img/lightsout/circulo-negro.svg\" height=\"120\" alt=\"Ficha\"></button></td>\n";
         } else {
             print "<img src=\"img/lightsout/circulo-blanco.svg\" height=\"120\" alt=\"Ficha\"></button></td>\n";
         }
     }
-    print "        </tr>\n";
-    print "      </tbody>\n";
+    print "      </tr>\n";
     print "    </table>\n";
     print "\n";
 

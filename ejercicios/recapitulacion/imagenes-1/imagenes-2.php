@@ -93,18 +93,16 @@ if ($detalle == "" || !is_numeric($detalle) || !ctype_digit($detalle)) {
 // Se genera el formulario del cuadro
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"cuadro\" value=\""
     . $cuadro - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
     . "height=\"80\" alt=\"anterior\"></button></td>\n";
-print "          <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
+print "        <td><img src=\"img/bruegel/bruegel-$cuadro.jpg\" "
     . "alt=\"Cuadro de Pieter Bruegel el viejo\"></td>\n";
-print "          <td><button type=\"submit\" name=\"cuadro\" value=\""
+print "        <td><button type=\"submit\" name=\"cuadro\" value=\""
     . $cuadro + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
     . "alt=\"siguiente\"></button></td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      </tr>\n";
 print "    </table>\n";
 print "  </form>\n";
 print "\n";
@@ -112,20 +110,18 @@ print "\n";
 // Se genera el formulario del detalle del cuadro
 print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto\">\n";
-print "      <tbody>\n";
-print "        <tr>\n";
-print "          <td><button type=\"submit\" name=\"detalle\" value=\""
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"detalle\" value=\""
     . $detalle - 1 . "\"><img src=\"img/arrow-left-b.svg\" "
     . "height=\"80\" alt=\"anterior\"></button></td>\n";
 // $cuadro debe ponerse entre llaves (o sacarse de la cadena). Si no se ponen,
 // PHP piensa que la variable se llama $cuadro_ y genera un aviso
-print "          <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
+print "        <td><img src=\"img/bruegel/bruegel-{$cuadro}-$detalle.jpg\" "
     . "alt=\"Detalle\"></td>\n";
-print "          <td><button type=\"submit\" name=\"detalle\" value=\""
+print "        <td><button type=\"submit\" name=\"detalle\" value=\""
     . $detalle + 1 . "\"><img src=\"img/arrow-right-b.svg\" height=\"80\" "
     . "alt=\"siguiente\"></button></td>\n";
-print "        </tr>\n";
-print "      </tbody>\n";
+print "      </tr>\n";
 print "    </table>\n";
 print "\n";
 // El número de cuadro se envía en un control oculto

@@ -48,28 +48,26 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
         print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
         print "\n";
         print "      <table>\n";
-        print "        <tbody>";
-        print "          <tr>";
-        print "            <td>Nombre:</td>";
-        print "            <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
+        print "        <tr>";
+        print "          <td>Nombre:</td>";
+        print "          <td><input type=\"text\" name=\"nombre\" size=\"" . TAM_NOMBRE . "\" "
             . "maxlength=\"" . TAM_NOMBRE . "\" autofocus></td>";
-        print "          </tr>";
-        print "          <tr>";
-        print "            <td>Apellidos:</td>";
-        print "            <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
+        print "        </tr>";
+        print "        <tr>";
+        print "          <td>Apellidos:</td>";
+        print "          <td><input type=\"text\" name=\"apellidos\" size=\"" . TAM_APELLIDOS . "\" "
             . "maxlength=\"" . TAM_APELLIDOS . "\"></td>";
-        print "          </tr>";
-        print "          <tr>";
-        print "            <td>Teléfono:</td>";
-        print "            <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
+        print "        </tr>";
+        print "        <tr>";
+        print "          <td>Teléfono:</td>";
+        print "          <td><input type=\"text\" name=\"telefono\" size=\"" . TAM_TELEFONO . "\" "
             . "maxlength=\"" . TAM_TELEFONO . "\"></td>";
-        print "          </tr>";
-        print "          <tr>";
-        print "            <td>Correo:</td>";
-        print "            <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
+        print "        </tr>";
+        print "        <tr>";
+        print "          <td>Correo:</td>";
+        print "          <td><input type=\"text\" name=\"correo\" size=\"" . TAM_CORREO . "\" "
             . "maxlength=\"" . TAM_CORREO . "\"></td>";
-        print "          </tr>";
-        print "        </tbody>";
+        print "        </tr>";
         print "      </table>";
         print "\n";
         print "      <p><input type=\"submit\" value=\"Buscar\"></p>";

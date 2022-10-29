@@ -77,23 +77,21 @@ if (!$result) {
         print "            </th>\n";
         print "          </tr>\n";
         print "        </thead>\n";
-        print "        <tbody>\n";
         $tmp = true;
         foreach ($result as $valor) {
             if ($tmp) {
-                print "          <tr>\n";
+                print "        <tr>\n";
             } else {
-                print "          <tr class=\"neg\">\n";
+                print "        <tr class=\"neg\">\n";
             }
             $tmp = !$tmp;
-            print "            <td align=\"center\"><input type=\"radio\" "
+            print "          <td align=\"center\"><input type=\"radio\" "
                 . "name=\"id\" value=\"$valor[id]\"></td>\n";
-            print "            <td>$valor[nombre]</td>\n";
-            print "            <td>$valor[apellidos]</td>\n";
-            print "            <td>$valor[dni]</td>\n";
-            print "          </tr>\n";
+            print "          <td>$valor[nombre]</td>\n";
+            print "          <td>$valor[apellidos]</td>\n";
+            print "          <td>$valor[dni]</td>\n";
+            print "        </tr>\n";
         }
-        print "        </tbody>\n";
         print "      </table>\n";
         print "\n";
         print "      <p><input type=\"submit\" value=\"Modificar\"></p>\n";

@@ -85,14 +85,12 @@ if ($numeroOk) {
     print "\n";
     print "  <form action=\"calculos-estadisticos-1-3.php\" method=\"" . FORM_METHOD . "\">\n";
     print "    <table>\n";
-    print "      <tbody>\n";
     for ($i=1; $i<=$numero; $i++) {
-        print "        <tr>\n";
-        print "          <td><strong>Número $i</strong>:</td>\n";
-        print "          <td><input type=\"text\" name=\"n[$i]\" size=\"6\" maxlength=\"4\"></td>\n";
-        print "        </tr>\n";
+        print "      <tr>\n";
+        print "        <td><strong>Número $i</strong>:</td>\n";
+        print "        <td><input type=\"text\" name=\"n[$i]\" size=\"6\" maxlength=\"4\"></td>\n";
+        print "      </tr>\n";
     }
-    print "      </tbody>\n";
     print "    </table>\n";
     print "\n";
     print "    <p>\n";

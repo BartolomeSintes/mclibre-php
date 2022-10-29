@@ -18,20 +18,18 @@
     <p>Dado este circuito <img src="circuito.png" alt="Ley de Ohm" width="200" height="135">, escriba la tensión, la intensidad o la resistencia y comprobaré si los valores son correctos o completaré el valor que falte:</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>Tensión:</strong></td>
-          <td><input type="number" name="tension" step="any"> V</td>
-        </tr>
-        <tr>
-          <td><strong>Intensidad:</strong></td>
-          <td><input type="number" name="intensidad" step="any"> A</td>
-        </tr>
-        <tr>
-          <td><strong>Resistencia:</strong></td>
-          <td><input type="number" name="resistencia" min="0" step="any"> &Omega;</td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Tensión:</strong></td>
+        <td><input type="number" name="tension" step="any"> V</td>
+      </tr>
+      <tr>
+        <td><strong>Intensidad:</strong></td>
+        <td><input type="number" name="intensidad" step="any"> A</td>
+      </tr>
+      <tr>
+        <td><strong>Resistencia:</strong></td>
+        <td><input type="number" name="resistencia" min="0" step="any"> &Omega;</td>
+      </tr>
     </table>
 
     <p>

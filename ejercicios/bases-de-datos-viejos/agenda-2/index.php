@@ -58,18 +58,16 @@ if (!$result) {
         print "      <p>Escriba su nombre de usuario y contraseña:</p>\n";
         print "\n";
         print "      <table>\n";
-        print "        <tbody>\n";
-        print "          <tr>\n";
-        print "            <td>Nombre:</td>\n";
-        print "            <td><input type=\"text\" name=\"usuario\" size=\"" . TAM_USUARIO . "\" "
+        print "        <tr>\n";
+        print "          <td>Nombre:</td>\n";
+        print "          <td><input type=\"text\" name=\"usuario\" size=\"" . TAM_USUARIO . "\" "
             . "maxlength=\"" . TAM_USUARIO . "\" autofocus></td>\n";
-        print "          </tr>\n";
-        print "          <tr>\n";
-        print "            <td>Contraseña:</td>\n";
-        print "            <td><input type=\"password\" name=\"password\" size=\"" . TAM_PASSWORD . "\" "
+        print "        </tr>\n";
+        print "        <tr>\n";
+        print "          <td>Contraseña:</td>\n";
+        print "          <td><input type=\"password\" name=\"password\" size=\"" . TAM_PASSWORD . "\" "
             . "maxlength=\"" . TAM_PASSWORD . "\"></td>\n";
-        print "          </tr>\n";
-        print "        </tbody>\n";
+        print "        </tr>\n";
         print "      </table>\n";
         print "\n";
         print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";

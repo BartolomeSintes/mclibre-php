@@ -54,25 +54,23 @@ if (!isset($_SESSION["citasUsuario"])) {
             print "      <p>Escriba los datos de la nueva cita:</p>\n";
             print "\n";
             print "      <table>\n";
-            print "        <tbody>\n";
-            print "          <tr>\n";
-            print "            <td>Autor:</td>\n";
-            print "            <td>\n";
-            print "              <select name=\"autor\">\n";
+            print "        <tr>\n";
+            print "          <td>Autor:</td>\n";
+            print "          <td>\n";
+            print "            <select name=\"autor\">\n";
             $consulta = "SELECT * FROM $dbAutores
                 ORDER by apellidos ASC";
             $result = $db->query($consulta);
             foreach ($result as $indice => $valor) {
-                print "                <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos]</option>\n";
+                print "              <option value=\"$valor[id]\">$valor[nombre] $valor[apellidos]</option>\n";
             }
-            print "              </select>\n";
-            print "            </td>\n";
-            print "          </tr>\n";
-            print "          <tr>\n";
-            print "            <td>Cita:</td>\n";
-            print "            <td><textarea name=\"cita\" cols=\"80\" rows=\"5\" autofocus></textarea></td>\n";
-            print "          </tr>\n";
-            print "        </tbody>\n";
+            print "            </select>\n";
+            print "          </td>\n";
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Cita:</td>\n";
+            print "          <td><textarea name=\"cita\" cols=\"80\" rows=\"5\" autofocus></textarea></td>\n";
+            print "        </tr>\n";
             print "      </table>\n";
             print "\n";
             print "      <p><input type=\"submit\" value=\"Añadir\"></p>\n";

@@ -17,20 +17,18 @@
     <p>Dado la ecuación de segundo grado <span style="font-size: 200%">a.x<sup>2</sup> + b.x + c = 0</span>, escriba los valores de los tres coeficientes y resolveré la ecuación:</p>
 
     <table>
-      <tbody>
-        <tr>
-          <td><strong>a:</strong></td>
-          <td><input type="number" name="a" step="any"></td>
-        </tr>
-        <tr>
-          <td><strong>b:</strong></td>
-          <td><input type="number" name="b" step="any"></td>
-        </tr>
-        <tr>
-          <td><strong>c:</strong></td>
-          <td><input type="number" name="c" step="any"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>a:</strong></td>
+        <td><input type="number" name="a" step="any"></td>
+      </tr>
+      <tr>
+        <td><strong>b:</strong></td>
+        <td><input type="number" name="b" step="any"></td>
+      </tr>
+      <tr>
+        <td><strong>c:</strong></td>
+        <td><input type="number" name="c" step="any"></td>
+      </tr>
     </table>
 
     <p>

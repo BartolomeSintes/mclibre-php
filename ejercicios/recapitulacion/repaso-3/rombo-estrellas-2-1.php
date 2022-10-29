@@ -17,12 +17,10 @@
     <p>Escriba el alto (0 &lt; alto &le; 30) y mostraré un rombo de estrellas de ese tamaño.</p>
 
     <table class="borde">
-      <tbody>
-        <tr>
-          <td><strong>Alto:</strong></td>
-          <td><input type="text" name="alto" size="3" maxlength="3"></td>
-        </tr>
-      </tbody>
+      <tr>
+        <td><strong>Alto:</strong></td>
+        <td><input type="text" name="alto" size="3" maxlength="3"></td>
+      </tr>
     </table>
 
     <p class="der">
