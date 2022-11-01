@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Formularios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Formularios</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Formularios</h2>
+
+      <ul>
+        <li><a href="#intro">Introducción</a></li>
+        <li><a href="#creacion-formularios">Creación de formularios</a></li>
+        <li><a href="#recepcion-datos">Recepción datos</a></li>
+        <li><a href="#visibilidad-datos">Visibilidad datos enviados</a></li>
+        <li><a href="#ataques-inyeccion">Ataques de inyección</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta lección está en elaboración.</p>
+
+  <p>Esta lección comenta el uso de los formularios para conseguir páginas web PHP interactivas.</p>
+
+  <section id="intro">
+    <h2>Introducción</h2>
+
+    <p>Los formularios son los elementos de las páginas web que permiten a un usuario introducir información en una página web. Así, los formularios nos permiten crear páginas web PHP interactivas en las que el contenido de la página se adapta a la información proporcionada por el usuario.</p>
+
+    <p>En el caso más simple, se suelen distribuir las tareas en dos páginas independientes:</p>
+    <p class="mcl-centrado">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="300" viewBox="100 0 400 210" style="background-color: white;" font-family="sans-serif">
+        <defs>
+          <marker id="flechaNegra" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+          </marker>
+          <marker id="flechaAzul" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: blue;" />
+          </marker>
+        </defs>
+
+        <text x="190" y="15" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
+        <text x="190" y="35" text-anchor="middle" font-family="sans-serif" font-size="14">(formulario)</text>
+        <rect x="130" y="50" width="120" height="150" fill="none" stroke="black" stroke-width="2" />
+        <text x="190" y="70" text-anchor="middle" font-family="sans-serif" font-size="14">Formulario</text>
+        <rect x="140" y="80" width="100" height="100" fill="none" stroke="black" stroke-width="2" stroke-dasharray="5 5" />
+        <text x="145" y="102" text-anchor="start" font-family="sans-serif" font-size="10">Nombre:</text>
+        <rect x="187" y="91" width="45" height="16" fill="none" stroke="black" stroke-width="1" />
+        <text x="190" y="102" text-anchor="start" font-family="sans-serif" font-size="10">Fulanito</text>
+        <text x="145" y="132" text-anchor="start" font-family="sans-serif" font-size="10">Curso:</text>
+        <circle cx="185" cy="129" r="3" fill="none" stroke="gray" stroke-width="1" />
+        <text x="190" y="132" text-anchor="start" font-family="sans-serif" font-size="10">1º</text>
+        <circle cx="210" cy="129" r="3" fill="none" stroke="gray" stroke-width="1" />
+        <circle cx="210" cy="129" r="2" fill="black" stroke="gray" stroke-width="1" />
+        <text x="215" y="132" text-anchor="start" font-family="sans-serif" font-size="10">2º</text>
+        <rect x="145" y="155" width="40" height="16" fill="#ddd" stroke="black" rx="3" ry="3" stroke-width="1" />
+        <text x="165" y="167" text-anchor="middle" font-family="sans-serif" font-size="10">Enviar</text>
+
+        <text x="310" y="45" text-anchor="middle" font-family="sans-serif" font-size="10">al pulsar Enviar</text>
+        <text x="310" y="60" text-anchor="middle" font-family="sans-serif" font-size="10">pasa a la 2ª página</text>
+        <path d="M255,80 c20,-10 70,-15 100,-5" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+
+        <rect x="370" y="50" width="120" height="150" fill="none" stroke="black" stroke-width="2" />
+        <text x="430" y="15" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
+        <text x="430" y="35" text-anchor="middle" font-family="sans-serif" font-size="14">(resultado)</text>
+        <text x="430" y="70" text-anchor="middle" font-family="sans-serif" font-size="14">Resultado</text>
+        <text x="380" y="100" text-anchor="start" font-family="sans-serif" font-size="10">¡Hola, Fulanito!</text>
+        <text x="380" y="120" text-anchor="start" font-family="sans-serif" font-size="10">Estudia 2º.</text>
+        <text x="380" y="150" text-anchor="start" font-family="sans-serif" font-size="10" fill="blue" style="text-decoration: underline">Volver al formulario</text>
+
+        <text x="310" y="180" text-anchor="middle" font-family="sans-serif" font-size="10">al hacer clic en el enlace</text>
+        <text x="310" y="195" text-anchor="middle" font-family="sans-serif" font-size="10">vuelve a la 1º página</text>
+        <path d="M365,150 c-20,10 -70,15 -100,5" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+      </svg>
+    </p>
+
+    <ul>
+      <li>Inicialmente, el navegador muestra la primera página, que contiene el formulario. El usuario completa los controles y pulsa el botón Enviar.</li>
+      <li>Al pulsar el botón Enviar, el navegador muestra la segunda página. Al solicitar la segunda página al servidor, el navegador envía también la información introducida por el usuario en el formulario. El programa PHP que genera la segunda página utiliza la información para personalizar el contenido.</li>
+      <li>Normalmente, la segunda página incluye un enlace que permite al usuario volver de nuevo a la primera página para empezar de nuevo el proceso.</li>
+    </ul>
+
+    <p>El ejemplo siguiente corresponde a la imagen anterior (la página con el formulario se llama form-1-1.php y la página que recibe los datos se llama form-1-2.php):</p>
+
+    <div class="filaflex">
+      <div class="resultado">
+        <iframe src="ejemplos/formularios/form-1-1.php" style="height: 11em;"></iframe>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="creacion-formularios">
+    <h2>Creación de formularios</h2>
+
+    <p>Las etiquetas de HTML que permiten la creación de formularios y de los diferentes tipos de controles (cajas de texto, casillas de verificación, botones radio, etc.) se comentan en las lecciones <a href="https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html">Formularios (1)</a> y <a href="https://www.mclibre.org/consultar/htmlcss/html/html-formularios-2.html">Formularios (2)</a> de los apuntes de <a href="https://www.mclibre.org/consultar/htmlcss/index.html">Páginas web HTML y hojas de estilo CSS</a>.</p>
+
+    <p>Este curso de PHP se centra en el tratamiento de los datos proporcionados por el usuario mediante el uso de formularios, no en el diseño de formularios. De hecho, en la mayoría de ejercicios propuestos en estos apuntes, los formularios están incluidos en las plantillas de los ejercicios y el alumno no necesita crearlos, pero se recomienda tener un conocimiento general de las etiquetas y atributos relacionados con formularios.</p>
+  </section>
+
+  <section id="recepcion-datos">
+    <h2>Recepción de los datos</h2>
+
+    <p>Cuando un formulario envía los datos a una página PHP, los datos están automáticamente a disposición del programa PHP en una matriz llamada $_REQUEST. Cada dato recibido es un elemento de la matriz $_REQUEST: el índice del elemento es el nombre del control (salvo en el control de tipo imagen) y el valor del elemento es el dato introducido o seleccionado por el usuario en el control.</p>
+
+    <p>En el siguiente ejemplo, el programa que recibe los datos del formulario simplemente muestra el contenido de la matriz $_REQUEST utilizando la función <span class="php-fun">print_r()</span> que muestra los índices y valores de la matriz. La página con el formulario se llama form-2-1.php y la página que recibe los datos se llama form-2-2.php</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// form-2-2.php
+print "&lt;pre&gt;";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-2-1.php" style="height: 9em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Como se puede comprobar en el ejemplo anterior, el control de caja de texto crea siempre un elemento en la matriz $_REQUEST (aunque la caja de texto se deje vacía), mientras que el botón radio solamente crea un elemento en la matriz $_REQUEST si se elige una de las opciones del botón radioe.</p>
+
+    <p>En la lección <a href="php-controles.html">Controles en formularios</a> de estos apuntes se detallan las particularidades de cada tipo de control.</p>
+  </section>
+
+  <section id="visibilidad-datos">
+    <h2>Visibilidad de los datos enviados: el atributo <span class="html-atri">method</span></h2>
+
+    <p>El atributo <span class="html-atri">method</span> de la etiqueta <span class="html-eti">&lt;form&gt;</span> permite elegir si la información de los controles se incluye en la URL de llamada a la página (<span class="html-atri">method</span>="<span class="html-atri-valor">get</span>") o se incluyen en las cabeceras HTPP (<span class="html-atri">method</span>="<span class="html-atri-valor">post</span>"). Si no se incluye el atributo, el comportamiento es el mismo que con <span class="html-atri-valor">get</span>.</p>
+
+    <p>La diferencia es que con el valor <span class="html-atri-valor">get</span> se pueden ver en la barra de dirección los nombres de los controles y los valores introducidos por el usuario, mientras que con el valor <span class="html-atri-valor">post</span> no. Los datos recibidos son los mismos y desde el punto de vista de la seguridad ambos métodos son equivalentes (es decir, inseguros si se utiliza http y seguros si se utiliza https).</p>
+
+    <p>Normalmente, los formularios disponibles en Internet utilizan el método <span class="html-atri-valor">post</span>, de manera que las URL sean más "limpias" al no contener los datos de los formularios. Pero en estos apuntes, los formularios utilzian el método <span class="html-atri-valor">get</span>, de manera que se puedan simular fácilmente ataques de inyección, como se comenta en el apartado siguiente.</p>
+
+    <ul>
+      <li>Formulario con <span class="html-atri-valor">post</span>
+        <p>El formulario envía el valor de un control incluyéndolo en una cabecera HTTP, que no es visible para el usuario, como se ve en el ejemplo siguiente:</p>
+        <div class="filaflex">
+          <iframe src="ejemplos/formularios/form-3-1.php" style="height: 9em;"></iframe>
+          <div class="icono-enlace">
+            <a href="ejemplos/formularios/form-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          Formulario:
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;form action="form-3-2.php" <span class="codigo-resaltado">method="post"</span>&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-captura">
+            <p>
+              <img src="../img/php/form-method-post-1.png" alt="Ejemplo de formulario" width="900" height="200">
+            </p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          Recepción del formulario:
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;pre&gt;";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-captura">
+            <p>
+              <img src="../img/php/form-method-post-2.png" alt="Ejemplo de formulario" width="900" height="200">
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>Formulario con <span class="html-atri-valor">get</span>
+
+        <p>El formulario envía el valor de un control incluyéndolo al final de la URL, añadiendo un interrogante, el nombre del control, un signo igual y el valor (es decir, ?nombre=valor), como se ve en el ejemplo siguiente. Haga clic en el icono de enlace al ejemplo situado a la derecha del ejemplo para poder ver las URL en su navegador):</p>
+
+        <div class="filaflex">
+          <iframe src="ejemplos/formularios/form-4-1.php" style="height: 9em;"></iframe>
+          <div class="icono-enlace">
+            <a href="ejemplos/formularios/form-4-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          Formulario:
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;form action="form-4-1.php" <span class="codigo-resaltado">method="get"</span>&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-captura">
+            <p>
+              <img src="../img/php/form-method-get-1.png" alt="Ejemplo de formulario" width="900" height="200">
+            </p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          Recepción del formulario:
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;pre&gt;";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-captura">
+            <p>
+              <img src="../img/php/form-method-get-2.png" alt="Ejemplo de formulario" width="900" height="200">
+            </p>
+          </div>
+        </div>
+
+        <hr class="corta">
+
+        <p>En caso de que haya varios controles que envíen información en un formulario con <span class="html-atri-valor">get</span>, los nombres y valores aparecen en la barra de dirección separados por el carácter ampersand (&amp;), como nombre1=valor1&amp;nombre2=valor2&amp;...</p>
+
+        <div class="filaflex">
+          <iframe src="ejemplos/formularios/form-5-1.php" style="height: 9em;"></iframe>
+          <div class="icono-enlace">
+            <a href="ejemplos/formularios/form-5-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          Formulario:
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;form action="form-5-1.php" <span class="codigo-resaltado">method="get"</span>&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;Apellidos: &lt;input type="text" <span class="codigo-resaltado">name="apellidos"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-captura">
+            <p>
+              <img src="../img/php/form-method-get-3.png" alt="Ejemplo de formulario" width="900" height="220">
+            </p>
+          </div>
+        </div>
+
+        <div class="filaflex">
+          Recepción del formulario:
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+print "&lt;pre&gt;";
+print_r($_REQUEST);
+print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-captura">
+            <p>
+              <img src="../img/php/form-method-get-4.png" alt="Ejemplo de formulario" width="900" height="220">
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <hr>
+
+    <p>PHP incluye en la matriz $_REQUEST todos los datos que llegan junto con la petición de la página, tanto si están incluidos en la URL como si están incluidos en cabeceras HTTP. PHP también crea otras dos matrices, $_GET y $_POST, que contienen los datos recibidos por uno de los métodos, $_GET los recibidos en la URL (<span class="html-atri-valor">get</span>) y $_POST los recibidos en cabeceras (<span class="html-atri-valor">post</span>).</p>
+  </section>
+
+  <section id="ataques-inyeccion">
+    <h2>Ataques de inyección</h2>
+
+    <p>Es importante ser consciente de que cualquier página PHP puede recibir datos y que se pueden enviar datos a cualquier página PHP. Enviar datos a una página que no espera recibir datos no suele afectar al funcionamiento de la página y por tanto no suele suponer un riesgo de seguridad, pero si hablamos de una página que espera recibir datos de un formulario, entonces estamos ante la posibilidad de que la página sea "atacada" con datos inesperados que sí pueden afectar a su funcionamiento. Este tipo de ataques se denominan en general ataques de inyección y pueden ser de muy divera naturaleza, según cuál sea el objetivo del ataque.</p>
+
+    <p>Por ello, una página que reciba datos de un formulario debe protegerse ante este tipo de ataques. Por ejemplo, debe funcionar correctamente aunque no le lleguen los datos esperados o aunque los datos no tengan el formato esperado.</p>
+
+    <p>Para realizar un ataque de inyección, basta con editar la URL y modificar los datos, borrando, modificando o añadiendo nuevos datos, respetando la notación ?clave1=valor1&amp;clave2=valor2 .... Puede abrir el ejemplo siguiente en una nueva pestaña y modifcar la URL como se muestra en las capturas siguientes.</p>
+
+    <div class="filaflex">
+      <iframe src="ejemplos/formularios/form-4-1.php" style="height: 9em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-4-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <ul>
+      <li>En este caso se ha editado la URL borrando los datos, por lo que la matriz $_REQUEST no contiene ningún elemento:
+        <p class="mcl-centrado">
+          <img src="../img/php/form-inyeccion-1.png" alt="Ejemplo de formulario" width="900" height="200">
+        </p>
+      </li>
+      <li>En este caso se ha editado la URL sustituyendo el dato nombre por edad, que aparece entonces en la matriz $_REQUEST:
+        <p class="mcl-centrado">
+          <img src="../img/php/form-inyeccion-2.png" alt="Ejemplo de formulario" width="900" height="210">
+        </p>
+      </li>
+      <li>En este caso se ha editado la URL incluyendo dos datos, usuario y password, para probar si esta página permite acceder a una parte privada de la web:
+        <p class="mcl-centrado">
+          <img src="../img/php/form-inyeccion-3.png" alt="Ejemplo de formulario" width="900" height="220">
+        </p>
+      </li>
+    </ul>
+
+    <p>Si el programa PHP trabaja con $_REQUEST o $_GET, el ataque de inyección se puede realizar manipùlando la URL. Si el programa PHP trabaja con $_POST, el ataque de inyección se tendría que realizar con alguna herramienta que generara las cabeceras HTTP.</p>
+  </section>
+
+  <section id="proteccion">
+    <h2>Recogida de formularios segura</h2>
+
+    <p>Los programas que recogen datos de formularios necesitan protegerse de los ataques de inyección. En estos apuntes, se recomienda:</p>
+
+    <ul>
+      <li>en primer lugar, no utilizar directamente la matriz $_REQUEST, sino recurrir a variables auxiliares creadas a partir de los valores de $_REQUEST, pero realizando sobre unas operaciones básicas que nos eviten problemas posteriores. En la lección <a href="php-recogida-datos.html">Recogida de datos</a> se comentan con detalle esas operaciones básicas y se propone el uso de una función recoge() para la creación de las variables auxiliares.</li>
+      <li>en segundo lugar, realizar comprobaciones sobre los valores recibidos, para asegurarse de que el programa no trabaja con valores problemáticos (por ejemplo, asegurarse de que se ha recibido un número si se esperaba recibir un número, etc.). Además, estas comprobaciones nos permitirán mostrar avisos al usuario para ayudarle a utilizar correctamente nuestros formularios. En la lección <a href="php-comprobacion-datos.html">Comprobación de datos</a> se comenta con detalle cómo estructurar los programas para realizar las comprobaciones y mostrar los avisos en su caso.</li>
+    </ul>
+
+    <p>Las soluciones de los ejercicios propuestos siguen las recomendaciones de estas lecciones.</p>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
