@@ -17,7 +17,10 @@
       (sin marcar, marcado uno o marcado otro)
     </p>
 
-    <p><input type="submit" value="Enviar"></p>
+    <p>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+    </p>
   </form>
 </body>
 </html>

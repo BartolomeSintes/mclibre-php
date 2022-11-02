@@ -51,6 +51,34 @@
       <li>que el formulario contenga un botón de tipo submit </li>
     </ul>
 
+    <div class="filaflex cabecera">
+      <div>Código fuente</div>
+      <div>Ejemplo</div>
+      <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;!-- Formulario --&gt;
+&lt;form action="ejemplo.php"&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-1-1.php" style="height: 11em;"></iframe>
+      <div class="resultado-html">
+        <pre>Array
+(
+)</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
     <p>El siguiente ejemplo muestra un formulario válido (ejemplo.html):</p>
 
     <div class="filaflex">
@@ -96,117 +124,6 @@ print "&lt;/pre&gt;\n";
     <hr class="corta">
 
     <p>En los ejemplos que se encuentran en esta página, cada ejemplo muestra el código fuente de la página html, el aspecto que tiene el control y el contenido de la matriz $_REQUEST cuando se recibe la información.</p>
-
-    <hr class="corta">
-
-    <h3>Atributo <span class="html-atri">method</span></h3>
-
-    <p>El atributo <span class="html-atri">method</span> de la etiqueta <span class="html-eti">&lt;form&gt;</span> permite elegir si la información de los controles se incluye en la llamada a la página (<span class="html-atri">method</span>="<span class="html-atri-valor">get</span>") o se proporciona posteriormente (<span class="html-atri">method</span>="<span class="html-atri-valor">post</span>"). Si el atributo no está definido, la información se incluye. Desde el punto de vista de la seguridad ambos métodos son equivalentes.</p>
-
-    <p>La diferencia es que con el valor <span class="html-atri-valor">get</span> se pueden ver en la barra de dirección los nombres de los controles y los valores introducidos por el usuario, mientras que con el valor <span class="html-atri-valor">post</span> no, pero los datos recibidos son idénticos.</p>
-
-    <ul>
-      <li>Formulario con <span class="html-atri-valor">get</span>
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="get"</span>&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
-&lt;/form&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-captura">
-            <p>
-              <img src="../img/php/method-1.png" alt="Ejemplo de formulario" width="610" height="170">
-            </p>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">print "&lt;pre&gt;";
-print_r($_REQUEST);
-print "&lt;/pre&gt;";</code>
-</pre>
-          </div>
-          <div class="resultado-captura">
-            <p>
-              <img src="../img/php/method-get-2.png" alt="Resultado de formulario con method get" width="680" height="170">
-            </p>
-          </div>
-        </div>
-      </li>
-      <li>Formulario con <span class="html-atri-valor">post</span>
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="post"</span>&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
-&lt;/form&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-captura">
-            <p>
-              <img src="../img/php/method-1.png" alt="Ejemplo de formulario" width="610" height="170">
-            </p>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">print "&lt;pre&gt;";
-print_r($_REQUEST);
-print "&lt;/pre&gt;";</code>
-</pre>
-          </div>
-          <div class="resultado-captura">
-            <p>
-              <img src="../img/php/method-post-2.png" alt="Resultado de formulario con method post" width="680" height="170">
-            </p>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-    <hr class="corta">
-
-    <p>En caso de que haya varios controles que envíen información en un formulario con <span class="html-atri-valor">get</span>, los nombres y valores aparecen en la barra de dirección separados por el carácter ampersand (&amp;), como nombre1=valor1&amp;nombre2=valor2&amp;...</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-html">&lt;form action="ejemplo.php" <span class="codigo-resaltado">method="get"</span>&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
-  &lt;p&gt;Apellidos: &lt;input type="text" name="apellidos"&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
-&lt;/form&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-captura">
-        <p>
-          <img src="../img/php/method-1b.png" alt="Ejemplo de formulario" width="680" height="210">
-        </p>
-      </div>
-    </div>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">print "&lt;pre&gt;";
-print_r($_REQUEST);
-print "&lt;/pre&gt;";</code>
-</pre>
-      </div>
-      <div class="resultado-captura">
-        <p>
-          <img src="../img/php/method-get-2b.png" alt="Resultado de formulario con method get" width="680" height="180">
-        </p>
-      </div>
-    </div>
   </section>
 
   <section id="submit">
@@ -681,6 +598,7 @@ print "&lt;/pre&gt;";</code>
       <div>Código fuente</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
@@ -691,16 +609,15 @@ print "&lt;/pre&gt;";</code>
 &lt;/select&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html">
-        <select name="menu1">
-          <option></option>
-        </select>
-      </div>
+      <iframe src="ejemplos/formularios/form-select-1-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
     [menu1] =&gt;
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-select-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -713,17 +630,23 @@ print "&lt;/pre&gt;";</code>
 &lt;/select&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html">
-        <select name="menu3">
-          <option>Opción 1</option>
-          <option>Opción 2</option>
-        </select>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+      <iframe src="ejemplos/formularios/form-select-2-1.php" style="height: 13em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
 (
     [menu2] =&gt; Opción 1
 )</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [menu2] =&gt; Opción 2
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-select-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -736,17 +659,23 @@ print "&lt;/pre&gt;";</code>
 &lt;/select&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html">
-        <select name="menu3">
-          <option>Opción 1</option>
-          <option>Opción 2</option>
-        </select>
-      </div>
-      <div class="resultado-html">
-        <pre>Array
+      <iframe src="ejemplos/formularios/form-select-3-1.php" style="height: 13em;"></iframe>
+      <div class="columnaflex">
+        <div class="resultado-html">
+          <pre>Array
 (
     [menu3] =&gt; Uno
 )</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array
+(
+    [menu3] =&gt; Dos
+)</pre>
+        </div>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-select-3-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -761,15 +690,7 @@ print "&lt;/pre&gt;";</code>
 &lt;/select&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html">
-        <select name="menu4[]" size="3" multiple>
-          <option value="Opción 1" selected>Opción 1</option>
-          <option value="Opción 2">Opción 2</option>
-          <option value="Opción 3" selected>Opción 3</option>
-          <option value="Opción 4">Opción 4</option>
-        </select>
-        <br> (Marcados 1 y 3)
-      </div>
+      <iframe src="ejemplos/formularios/form-select-4-1.php" style="height: 13em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -779,6 +700,9 @@ print "&lt;/pre&gt;";</code>
             [1] =&gt; Opción 3
          )
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-select-4-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -792,20 +716,22 @@ print "&lt;/pre&gt;";</code>
       <div>Código fuente</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="hidden" name="oculto1"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="hidden" name="oculto2" value="Cualquier cosa">
-      </div>
+      <iframe src="ejemplos/formularios/form-input-hidden-1-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
     [oculto1] =&gt;
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-hidden-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -813,14 +739,15 @@ print "&lt;/pre&gt;";</code>
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="hidden" name="oculto2" value="Cualquier cosa"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="hidden" name="oculto">
-      </div>
+      <iframe src="ejemplos/formularios/form-input-hidden-2-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
     [oculto2] =&gt; Cualquier cosa
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-hidden-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
   </section>
@@ -836,21 +763,23 @@ print "&lt;/pre&gt;";</code>
       <div>Código fuente</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
+      <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
-        <pre><code class="language-html">&lt;input type="image" name="gnu" src="gnu.jpg" alt="Logotipo GNU"&gt;</code></pre>
+        <pre><code class="language-html">&lt;input type="image" name="gnu" src="gnu.jpg" alt="Logotipo GNU" height="100"&gt;</code></pre>
       </div>
-      <div class="resultado-html">
-        <input type="image" name="gnu" src="../img/gnu-head-sm.jpg" alt="Logotipo GNU">
-      </div>
+      <iframe src="ejemplos/formularios/form-input-image-1-1.php" style="height: 9em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
-    [gnu_x] =&gt; 89
-    [gnu_y] =&gt; 111
+    [gnu_x] =&gt; 47
+    [gnu_y] =&gt; 34
 )</pre>
+      </div>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-image-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -859,8 +788,6 @@ print "&lt;/pre&gt;";</code>
     <p class="captura">
       <img src="../img/php/form-image-1.png" alt="Control de tipo image" width="650" height="180">
     </p>
-
-    <p>Si se define el atributo <span class="html-atri">value</span>, el formulario debe enviar tanto las coordenadas como el nombre del control con el valor del atributo <span class="html-atri">value</span>. Actualmente (octubre de 2016), Google Chrome sí que lo hace, pero Firefox e Internet Explorer no lo hacen.</p>
   </section>
 
   <section id="file">
@@ -931,7 +858,7 @@ print "&lt;/pre&gt;";</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 2 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
