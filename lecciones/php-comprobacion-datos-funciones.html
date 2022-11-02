@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Funciones de comprobación de datos. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Funciones de comprobación de datos</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Funciones comprobación</h2>
+
+      <ul>
+        <li><a href="#comprobacion-formularios">Comprobación formularios</a></li>
+        <li><a href="#is">Funciones is_</a></li>
+        <li><a href="#ctype">Funciones ctype_</a></li>
+        <li><a href="#filter">Funciones filter_</a></li>
+        <li><a href="#exists">Funciones xxx_exists()</a></li>
+        <li><a href="#regulares">Expresiones regulares</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta lección se comentan una serie de familias de funciones que permiten comprobar la existencia, el tipo o el contenido de un dato:</p>
+
+  <ul>
+    <li><a href="#is">funciones <span class="php-fun">is_</span></a></li>
+    <li><a href="#ctype">funciones <span class="php-fun">ctype_</span></a></li>
+    <li><a href="#filter">funciones <span class="php-fun">filter_</span></a></li>
+    <li><a href="#exists">funciones <span class="php-fun">_exists</span></a></li>
+    <li><a href="#regulares">expresiones regulares</a></li>
+  </ul>
+
+  <section id="comprobacion-formularios">
+    <h2>Funciones de comprobación para la comprobación de formularios</h2>
+
+    <p>En la lección de <a href="php-comprobacion-datos.html">Comprobación de datos provenientes de un formulario</a> aprovecharemos dos de las funciones comentadas en esta página:</p>
+
+    <ul>
+      <li>Comprobación de números con <span class="php-fun">is_numeric()</span>
+
+        <p>Para comprobar si el dato que se ha recibido es un número (o se puede interpretar como número) se debe utilizar la función <span class="php-fun">is_numeric($valor)</span>. Esta función lógica devuelve <span class="php-con">true</span> si el argumento se puede interpretar como número y <span class="php-con">false</span> si no lo es.</p>
+
+        <p>El motivo por el que se debe utilizar la función <span class="php-fun">is_numeric($valor)</span>, es que lo que se recibe a través de un formulario se guarda siempre como cadena (aunque sea un número). La función <span class="php-fun">is_numeric($valor)</span> es la única que comprueba si el argumento se puede interpretar como número (aunque el argumento sea de tipo cadena), las funciones <span class="php-fun">is_int($valor)</span> o <span class="php-fun">is_float($valor)</span> hacen solamente comprobaciones sobre el tipo de los datos y devolverían siempre <span class="php-con">false</span>.</p>
+      </li>
+      <li>Comprobación de números enteros positivos con <span class="php-fun">ctype_digit()</span>
+
+        <p>Para comprobar si el dato que se ha recibido es un número entero positivo (sin decimales) se puede utilizar la función <span class="php-fun">ctype_digit($valor)</span>. Esta función lógica devuelve <span class="php-con">true</span> si todos los caracteres del argumento son dígitos (0, 1, ..., 9) y <span class="php-con">false</span> si no lo son.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="is">
+    <h2>Funciones is_</h2>
+
+    <p>Las funciones is_ son un conjunto de funciones booleanas que devuelven <span class="php-con">true</span> si el argumento es de un tipo de datos determinado y <span class="php-con">false</span> si no lo son.</p>
+
+    <table class="tabla-con-borde">
+      <tr>
+        <th></th>
+        <th>Función</th>
+        <th>Tipo de datos</th>
+        <th>alias (funciones equivalentes)</th>
+      </tr>
+      <tr>
+        <td rowspan="2">existencia</td>
+        <td><a href="https://www.php.net/manual/en/function.isset.php" class="php-fun">isset($valor)</a></td>
+        <td>devuelve si el dato está definido o no</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/language.types.null.php" class="php-fun">is_null($valor)</a></td>
+        <td><span class="php-con">null</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td rowspan="4">números</td>
+        <td><a href="https://www.php.net/manual/en/function.is-bool.php" class="php-fun">is_bool($valor)</a></td>
+        <td>booleano</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-numeric.php" class="php-fun">is_numeric($valor)</a></td>
+        <td>número (puede tener signo, parte decimal y estar expresado en notación decimal u otra; si el argumento es una cadena la función devuelve <span class="php-con">true</span> si los números están expresados en notación decimal, exponencial u octal, pero devuelve <span class="php-con">false</span> si los números están expresados en notación hexadecimal o binaria).</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-int.php" class="php-fun">is_int($valor)</a></td>
+        <td>entero</td>
+        <td><a href="https://www.php.net/manual/en/function.is-integer.php" class="php-fun">is_integer($valor)</a>, <a href="https://www.php.net/manual/en/function.is-long.php" class="php-fun">is_long($valor)</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-float.php" class="php-fun">is_float($valor)</a></td>
+        <td>float</td>
+        <td><a href="https://www.php.net/manual/en/function.is-double.php" class="php-fun">is_double($valor)</a>, <a href="https://www.php.net/manual/en/function.is-real.php" class="php-fun"><s title="obsoleto (deprecated) desde PHP 7.4">is_real($valor)</s></a></td>
+      </tr>
+      <tr>
+        <td>cadenas</td>
+        <td><a href="https://www.php.net/manual/en/function.is-string.php" class="php-fun">is_string($valor)</a></td>
+        <td>cadena</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td rowspan="7">otros</td>
+        <td><a href="https://www.php.net/manual/en/function.is-scalar.php" class="php-fun">is_scalar($valor)</a></td>
+        <td>escalar (entero, float, cadena o booleano)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-array.php" class="php-fun">is_array($valor)</a></td>
+        <td>matriz</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-callable.php" class="php-fun">is_callable($valor)</a></td>
+        <td>función</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-object.php" class="php-fun">is_object($valor)</a></td>
+        <td>object</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-resource.php" class="php-fun">is_resource($valor)</a></td>
+        <td>recurso</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-countable.php" class="php-fun">is_countable($valor)</a></td>
+        <td>contable (matriz u objeto que implementa Countable)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.is-iterable.php" class="php-fun">is_iterable($valor)</a></td>
+        <td>iterable (matriz u objeto que implementa Traversable)</td>
+        <td></td>
+      </tr>
+    </table>
+
+    <p>Si un dato es demasiado grande para el tipo de variable, las funciones devolverán <span class="php-con">false</span>. Por ejemplo, si se usa como argumento un entero mayor que <span class="php-con">PHP_INT_MAX</span> (2147483647 en Windows), la función <span class="php-fun">is_int()</span> devolverá <span class="php-con">false</span>.</p>
+
+    <p><strong>Nota</strong>:</p>
+    <ul>
+      <li>El alias <span class="php-fun">is_real()</span> está declarado obsoleto (<i>deprecated</i>) desde PHP 7.4 (noviembre 2019).</li>
+    </ul>
+
+    <hr class="corta">
+
+    <p>Estas funciones son en general de poca utilidad con datos provinientes de un formulario, ya que estas funciones lo que comprueban es el tipo de los datos y la información que llega de un formulario es siempre del tipo cadena. Las dos excepciones serían:</p>
+
+    <ul>
+      <li>la función <span class="php-fun">is_numeric()</span>, que evalúa si el argumento se puede interpretar como número (aunque el tipo sea cadena). Por tanto esta función se puede utilizar para comprobar si un dato recibido es un número.</li>
+      <li>la función <span class="php-fun">isset()</span>, que evalúa si el argumento está o no definido, independientemente de su tipo.</li>
+    </ul>
+
+    <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">is_numeric()</span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numero = $_REQUEST["numero"];
+
+if (is_numeric($numero)) {
+    print "&lt;p&gt;Ha escrito un número: $numero.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;NO ha escrito un número: $numero.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="comprobacion-datos/comprobacion-isnumeric.html" style="height: 13em"></iframe>
+    </div>
+
+    <hr class="corta">
+
+    <p>El siguiente formulario permite comprobar el resultado de las funciones is_ aplicadas a un dato recibido de un formulario.</p>
+
+    <div class="filaflex">
+      <iframe src="comprobacion-datos/comprobacion-datos-is-1.php" style="height: 41em;"></iframe>
+      <div class="icono-enlace">
+        <a href="comprobacion-datos/comprobacion-datos-is-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ctype">
+    <h2>Funciones ctype_</h2>
+
+    <p>Las funciones ctype_ son un conjunto de funciones booleanas que devuelven si todos los caracteres de una cadena son de un tipo determinado, de acuerdo con el juego de caracteres local. Estas funciones son las mismas que las que proporciona la biblioteca estándar de C ctype.h.</p>
+
+    <table class="tabla-con-borde">
+      <tr>
+        <th>Función</th>
+        <th>Tipo de datos</th>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-alnum.php" class="php-fun">ctype_alnum($valor)</a></td>
+        <td>alfanuméricos</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-alpha.php"><span class="php-fun">ctype_alpha($valor)</span></a></td>
+        <td>alfabéticos (mayúsculas o minúsculas, con acentos, ñ, ç, etc)</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-cntrl.php" class="php-fun">ctype_cntrl($valor)</a></td>
+        <td>caracteres de control (salto de línea, tabulador, etc)</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-digit.php" class="php-fun">ctype_digit($valor)</a></td>
+        <td>dígitos</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-graph.php" class="php-fun">ctype_graph($valor)</a></td>
+        <td>caracteres imprimibles (excepto espacios)</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-lower.php" class="php-fun">ctype_lower($valor)</a></td>
+        <td>minúsculas</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-print.php" class="php-fun">ctype_print($valor)</a></td>
+        <td>caracteres imprimibles</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-punct.php" class="php-fun">ctype_punct($valor)</a></td>
+        <td>signos de puntuación (caracteres imprimibles que no son alfanuméricos ni espacios en blanco)</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-space.php" class="php-fun">ctype_space($valor)</a></td>
+        <td>espacios en blanco (espacios, tabuladores, saltos de línea, etc)</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-upper.php" class="php-fun">ctype_upper($valor)</a></td>
+        <td>mayúsculas</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.php.net/manual/en/function.ctype-xdigit.php" class="php-fun">ctype_xdigit($valor)</a></td>
+        <td>dígitos hexadecimales</td>
+      </tr>
+    </table>
+
+    <hr class="corta">
+
+    <p>Estas funciones se pueden aplicar a los datos recibidos de un formulario ya que hacen comprobaciones de todos los caracteres de una cadena. Quizás la más útil es:</p>
+
+    <ul>
+      <li>la función <span class="php-fun">ctype_digit()</span>, que evalúa si todos los caracteres son dígitos, por lo que permite identificar los números enteros positivos (sin punto decimal ni signo negativo)</li>
+    </ul>
+
+    <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">ctype_digit()</span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numero = $_REQUEST["numero"];
+
+if (ctype_digit($numero)) {
+    print "&lt;p&gt;Ha escrito un entero positivo: $numero.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;NO ha escrito un entero positivo: $numero.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="comprobacion-datos/comprobacion-ctypedigit.html" style="height: 13em"></iframe>
+    </div>
+
+    <hr class="corta">
+
+    <p>El siguiente formulario permite comprobar el resultado de las funciones ctype_ aplicadas a un dato recibido de un formulario.</p>
+
+    <div class="filaflex">
+      <iframe src="comprobacion-datos/comprobacion-datos-ctype-1.php" style="height: 37em;"></iframe>
+      <div class="icono-enlace">
+        <a href="comprobacion-datos/comprobacion-datos-ctype-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="filter">
+    <h2>Funciones filter_</h2>
+
+    <p>Las funciones filter se crearon como extensión PECL, pero se incluyeron en PHP 5.2 (2006).</p>
+
+    <p>La función filter más simple es la función <a href="https://www.php.net/manual/en/function.filter-var.php" class="php-fun">filter_var($valor [, $filtro [, $opciones]])</a>, que devuelve los datos filtrados o <span class="php-con">false</span> si el filtro falla.</p>
+
+    <p>Los filtros predefinidos de validación son los siguientes:</p>
+
+    <table class="tabla-con-borde">
+      <tr>
+        <th>Filtro</th>
+        <th>Tipo de datos</th>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_INT</td>
+        <td>entero</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_BOOLEAN</td>
+        <td>booleano</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_FLOAT</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_REGEXP</td>
+        <td>expresión regular</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_DOMAIN</td>
+        <td>dominio web</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_URL</td>
+        <td>URL no internacionalizada</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_EMAIL</td>
+        <td>dirección de correo</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_IP</td>
+        <td>dirección IP</td>
+      </tr>
+      <tr>
+        <td>FILTER_VALIDATE_MAC</td>
+        <td>dirección MAC física</td>
+      </tr>
+    </table>
+
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">El problema de los filtros <span class="php-con">FILTER_VALIDATE_INT</span> y <span class="php-con">FILTER_VALIDATE_FLOAT</span> es que dan <span class="php-con">false</span> si el argumento es 0, lo que complica su uso para detectar números porque el caso del 0 debe considerarse aparte al hacer la validación. Se supone que ese comportamiento se corrigió en PHP 5.4, pero yo no tengo claro que el problema esté resuelto en versiones posteriores.</p>
+
+    <hr class="corta">
+
+    <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">filter_var()</span> con el argumento <span class="php-con">FILTER_VALIDATE_INT</span>.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$numero = $_REQUEST["numero"];
+
+if (filter_var($numero, FILTER_VALIDATE_INT)) {
+    print "&lt;p&gt;Ha escrito un número entero: $numero.&lt;/p&gt;\n";
+} else {
+    print "&lt;p&gt;NO ha escrito un número entero: $numero.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="comprobacion-datos/comprobacion-filter.html" style="height: 13em;"></iframe>
+    </div>
+
+    <hr class="corta">
+
+    <p>El siguiente formulario permite comprobar el resultado de la función filter_var() con diferentes filtros aplicada a un dato recibido de un formulario.</p>
+
+    <div class="filaflex">
+      <iframe src="comprobacion-datos/comprobacion-datos-filter-1.php" style="height: 33em;"></iframe>
+      <div class="icono-enlace">
+        <a href="comprobacion-datos/comprobacion-datos-filter-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p><strong>Nota</strong>: <span class="php-con">FILTER_VALIDATE_REGEXP</span> no está incluido en el ejemplo anterior porque requiere una expresión regular con la que comprobar el argumento enviado.</p>
+  </section>
+
+  <section id="exists">
+    <h2>Funciones xxx_exists()</h2>
+
+    <section id="functionexists">
+      <h3>Función function_exists()</h3>
+
+      <p>La función booleana <a href="https://www.php.net/manual/en/function.function-exists.php" class="php-fun">function_exists()</a> devuelve si la función existe o no.</p>
+
+      <p>Algunas de las funciones que se comentan en esta página no existen en versiones antiguas de PHP que todavía se utilizan, por lo que puede ser conveniente comprobar si una función existe antes de utilizarla.</p>
+
+      <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">function_exists()</span>.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <p>Número: <input type="text" name="texto" readonly value="2.5"></p>
+
+          <p><input type="submit" value="Enviar"></p>
+        </div>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
+
+$numero = $_REQUEST["numero"];<br>
+if (function_exists("filter_var")) {
+    if (filter_var($numero, FILTER_VALIDATE_INT)) {
+        print "&lt;p&gt;Ha escrito el número entero $numero.&lt;/p&gt;\n";
+    } else {
+        print "&lt;p&gt;NO ha escrito un número entero.&lt;/p&gt;\n";
+    }
+} else {
+    print "&lt;p&gt;La función &lt;strong&gt;filter_var&lt;/strong&gt; "
+        . "no está disponible en este servidor.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html">
+          <pre>Array (
+    [numero] =&gt; 2.5
+)</pre>
+
+          <p>La función <strong>filter_var</strong> no está disponible en este servidor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="arraykeyexists">
+      <h3>Función array_key_exists()</h3>
+
+      <p>La función booleana <a href="https://www.php.net/manual/en/function.array-key-exists.php" class="php-fun">array_key_exists($indice, $matriz)</a> devuelve si un elemento determinado de una matriz existe o no.</p>
+
+      <p>Para comprobar si existe un elemento de una matriz también se puede utilizar la función <span class="php-fun">isset()</span> comentada en el apartado siguiente.</p>
+    </section>
+  </section>
+
+  <section id="regulares">
+    <h2>Expresiones regulares</h2>
+
+    <p>Las expresiones regulares se explican en <a href="php-expresiones-regulares.html">otra lección</a>.</p>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 2 de noviembre de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
