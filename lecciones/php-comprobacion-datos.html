@@ -23,28 +23,441 @@
       <h2>Comprobación de datos</h2>
 
       <ul>
-        <li><a href="#comprobar-numeros">Comprobar números</a></li>
-        <li><a href="#is">Funciones is_</a></li>
-        <li><a href="#ctype">Funciones ctype_</a></li>
-        <li><a href="#filter">Funciones filter_</a></li>
-        <li><a href="#exists">Funciones xxx_exists()</a></li>
-        <li><a href="#regulares">Expresiones regulares</a></li>
+        <li><a href="#estructura-general">Estructura general</a></li>
+        <li><a href="#input-text">Ejemplo texto</a></li>
+        <li><a href="#input-number-decimal">Ejemplo número decimal</a></li>
+        <li><a href="#input-number-entero">Ejemplo número entero</a></li>
+        <li><a href="#input-radio">Ejemplo botón radio</a></li>
       </ul>
     </div>
   </nav>
 
-  <p>Antes de utilizar en un programa los datos recibidos a través de un formulario, es necesario comprobar si el dato recibido corresponde a lo esperado. Algunas comprobaciones se pueden hacer con comparaciones (si no es vacío, si es un valor comprendido entre unos valores determinado, etc.), pero antes de hacer esas comparaciones hay que comprobar que es del tipo esperado (número entero o decimal, texto, etc.) para procesarlo sin error.</p>
+  <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta lección está en elaboración.</p>
 
-  <p>En esta lección se comentan una serie de familias de funciones que permiten comprobar la existencia, el tipo o el contenido de un dato:</p>
+  <p>En esta lección se comenta una estructura de recogida y comprobación de datos que se recomienda utilizar en todos los ejercicios propuestos en estos apuntes.</p>
 
-  <ul>
-    <li><a href="#is">funciones <span class="php-fun">is_</span></a></li>
-    <li><a href="#ctype">funciones <span class="php-fun">ctype_</span></a></li>
-    <li><a href="#filter">funciones <span class="php-fun">filter_</span></a></li>
-    <li><a href="#exists">funciones <span class="php-fun">_exists</span></a></li>
-    <li><a href="#regulares">expresiones regulares</a></li>
-  </ul>
+  <section id="estructura-general">
+    <h2>Estructura general</h2>
 
+    <p>Si pudiéramos confiar en los datos recibidos en la matriz $_REQUEST, un programa PHP que recibe datos podría ponerse a utilizarlos directamente, pero para evitar ataques de inyección, debemos realizar una serie de pasos previos que nos permitan confiar en los datos recibidos.</p>
+
+    <p>Para conseguirlo, en estos apuntes se recomienda que todos los programas que reciban datos realicen los siguientes pasos:</p>
+    <ul>
+      <li><strong>Definición de la función recoge()</strong>
+        <p>Para poder utilizar la función recoge() en el paso siguiente, debemos incoporarla al programa copiándola y pegándola de la lección <a href="php-recogida-datos.html#funciones">Recogida de datos</a> (en la mayoría de situaciones, podemos utilziar la <a href="php-recogida-datos.html#recoger-datos">función recoge() de datos simples o matices</a>).</p>
+      </li>
+      <li><strong>Definición de variables</strong>
+        <ul>
+          <li><strong>Variables que recogen los datos</strong>
+            <p>La idea es utilizar una variable para cada control de formulario que reciba el programa. El nombre de la variable puede coincidir con el nombre del control. Las variables se obtienen llamando a la función recoge(), dando como argumento el nombre del control en el formulario (que coincide con el nombre del índice en la matriz $_REQUEST).</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+$nombreControl1 = recoge("nombreControl1");
+$nombreControl2 = recoge("nombreControl2");
+...
+?&gt;</code>
+</pre>
+            </div>
+          </li>
+          <li><strong>Variables auxiliares de comprobación</strong>
+            <p>La idea es definir una variable <i>booleana</i> auxiliar para cada variable que recoge un dato y que indique si el dato que hemos recibido es aceptable para el programa o no. Si es aceptable, el valor de esta variable auxiliar será <span class="php-con">true</span>. Si no es aceptable, el valor de esta variable auxiliar será <span class="php-con">false</span>. El nombre de esas variables pueden coincidir con los nombres de las variables que recoges los datos añadiéndoles las letras Ok. El valor inicial de esas variables será <span class="php-con">false</span> ya que en principio debemos desconfiar siempre de los datos recibidos.</p>
+            <p>En estos apuntes se añaden las letras Ok en vez de las letras OK (en mayúsculas) para respetar la notación <i>camelcase</i> en los nombres de las variables. Recuerde que si cambia de minúsculas o mayúsculas alguna letra del nombre de una variable, para PHP se tratará de una variable distinta.</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+$nombreControl1Ok = false;
+$nombreControl2Ok = false;
+...
+?&gt;</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Validación de cada variable y generación de avisos de errores</strong>
+        <p>Para cada una de las variables que recogen los datos, escribiremos un bloque de instrucciones <span class="php-res">if ... elseif ... else ...</span> en el que cada condición nos permitirá detectar un tipo de error en el dato recibido. Si se detecta un error, el programa escribirá un mensaje de error indicando el motivo del error. Si no se detecta ningún error, a la variable auxiliar de comprobación se le dará el valor <span class="php-con">true</span> para indicar que ese dato en concreto es fiable.</p>
+        <p>El número de comprobaciones dependerá del tipo de control que estemos comprobando y del rango de valores que admita nuestro programa para esa variable en concreto. El orden de las comprobaciones también es importante, de los errores más generales a los más específicos.</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+if (condicion_1) {
+    print "mensaje de error 1 (indicando porque el dato no es correcto)";
+} elseif (condicion_2) {
+    print "mensaje de error 2 (indicando porque el dato no es correcto)";
+} ... {
+} else {
+    $nombreControlOk = true;
+}
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li><strong>Si todo es correcto, ejecución del programa</strong>
+        <p>El último paso consiste en comprobar que todas las variables auxiliares tiene el valor <span class="php-con">true</span> (es decir, que no se ha detectado ningún problema en los datos recibidos) y si es así, ejecutar el programa (es decir, procesar los datos recibidos y mostrar el resultado al usuario).</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+if ($nombreControl1Ok &amp;&amp; $nombreControl2Ok &amp;&amp; ...) {
+    ... // instrucciones del programa
+}
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="input-text">
+    <h2>Ejemplo de recogida de texto</h2>
+
+    <p>El caso más simple podría ser la recogida de una caja de texto en la que queremos que el usuario escriba su nombre.</p>
+
+    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir algo de contenido sería utilizar el atributo <span class="html-atri">required</span> en el formulario, pero el usuario podría escribir simplemente espacios en blanco y de todas formas debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir siquiera el control.</p>
+
+    <div class="filaflex">
+      <iframe src="ejemplos/formularios/form-recogida-input-text-1.php" style="height: 7em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-recogida-input-text-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>En este caso, el único aviso que vamos a dar al usuario es si deja el campo en blanco, lo que podemos hacer con la siguiente comprobación:</p>
+    <div class="codigo">
+      <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+if ($nombre == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+    print "\n";
+} ... </code>
+</pre>
+    </div>
+
+    <p>El proceso de recogida de datos completo podría ser el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = is_array($m) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor));
+        });
+    }
+    return $tmp;
+}
+
+// Variables que recogen los datos
+$nombre = recoge("nombre");
+
+// Variables auxiliares de comprobación
+$nombreOk = false;
+
+// Validación de datos y generación de avisos
+if ($nombre == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $nombreOk = true;
+}
+
+// Si todo es correcto, ejecución del programa
+if ($nombreOk) {
+    print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="input-number-decimal">
+    <h2>Ejemplo de recogida de número decimal</h2>
+
+    <p>Otro caso podría ser la recogida de un valor numérico en la que queremos que el usuario escriba un valor que puede ser decimal dentro de un rango.</p>
+
+    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor decimal en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">step</span>, <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o recibir una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span>.</p>
+
+    <div class="filaflex">
+      <iframe src="ejemplos/formularios/form-recogida-input-number-1-1.php" style="height: 7em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-recogida-input-number-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>En este caso, podemos dar varios avisos distintos:</p>
+    <ul>
+      <li>Si se deja el campo en blanco:
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+if ($peso == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso.&lt;/p&gt;\n";
+    print "\n";
+} ... </code>
+</pre>
+        </div>
+      </li>
+      <li>Si no se escribe un número:
+        <div class="codigo">
+          <pre>
+    <code class="language-php">...
+} elseif (!is_numeric($peso)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso como número.&lt;/p&gt;\n";
+    print "\n";
+} ...</code>
+</pre>
+        </div>
+      </li>
+      <li>Si el peso no está entre dos valores (por ejemplo, entre 40 y 150 kg):
+        <div class="codigo">
+          <pre>
+    <code class="language-php">...
+} elseif ($peso &lt; 40 || $peso &gt; 150) {
+    print "  &lt;p class=\"aviso\"&gt;¿Está seguro de que su peso es $peso kg?&lt;/p&gt;\n";
+    print "\n";
+} ... </code>
+</pre>
+        </div>
+      </li>
+    </ul>
+
+    <p>El orden en que hacemos las comprobaciones es importante:</p>
+    <ul>
+      <li>Es necesario comprobar antes si el dato es vacío que si el dato es numérico porque la función is_numeric() devuelve <span class="php-con">false</span> cuando se prueba una cadena vacía. Si comprobamos antes si el dato es numérico el programa nos diría simplemente que no hemos escrito un número, cuando es preferible que nos diga que el valor es vacío.</li>
+      <li>Es necesario comprobar si el dato es numérico antes de comprobar si está fuera del rango deseado, porque si el dato es una cadena de letras nos diría simplemente que está fuera del rango, cuando es preferible que nos diga que no es un número. El motivo es que PHP considera que la cadena de letras está por encima de los números ya que al hacer la comparación los números se convierten a cadenas y las cadenas de números van antes que las cadenas de letras.</li>
+    </ul>
+
+    <p>El proceso de recogida de datos completo podría ser el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = is_array($m) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor));
+        });
+    }
+    return $tmp;
+}
+
+// Variables que recogen los datos
+$peso = recoge("peso");
+
+// Variables auxiliares de comprobación
+$pesoOk = false;
+
+// Validación de datos y generación de avisos
+if ($peso == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($peso)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su peso como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($peso &lt; 40 || $peso &gt; 150) {
+    print "  &lt;p class=\"aviso\"&gt;¿Está seguro de que su peso es $peso kg?&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pesoOk = true;
+}
+
+// Si todo es correcto, ejecución del programa
+if ($pesoOk) {
+    print "  &lt;p&gt;Su peso es &lt;strong&gt;$peso&lt;/strong&gt; kg.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="input-number-entero">
+    <h2>Ejemplo de recogida de número entero</h2>
+
+    <p>Otro caso podría ser la recogida de un valor numérico en la que queremos que el usuario escriba un valor entero (no decimal) dentro de un rango.</p>
+
+    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor entero en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o  recibir un valor decimal o una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span>.</p>
+
+    <div class="filaflex">
+      <iframe src="ejemplos/formularios/form-recogida-input-number-2-1.php" style="height: 7em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-recogida-input-number-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>Este caso es similar al caso anterior de números decimales, pero añadiendo la comprobación de los números decimales (esta comprobación la tendríamos que hacer después de haber comprobado que se trata de un número y antes de comproabr si está fuera del rango deseado):</p>
+    <ul>
+      <li>Si se escribe un número decimal:
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+} elseif (!ctype_digit($edad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número entero.&lt;/p&gt;\n";
+    print "\n";
+} ... </code>
+</pre>
+        </div>
+      </li>
+    </ul>
+    <p>El proceso de recogida de datos completo podría ser el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = is_array($m) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor));
+        });
+    }
+    return $tmp;
+}
+
+// Variables que recogen los datos
+$edad = recoge("edad");
+
+// Variables auxiliares de comprobación
+$edadOk = false;
+
+// Validación de datos y generación de avisos
+if ($edad == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($edad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($edad)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número entero.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($edad &lt; 0 || $edad &gt; 120) {
+    print "  &lt;p class=\"aviso\"&gt;¿Está seguro de que su edad es $edad?&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $edadOk = true;
+}
+
+// Si todo es correcto, ejecución del programa
+if ($edadOk) {
+    print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="input-radio">
+    <h2>Ejemplo de recogida de botón radio</h2>
+
+    <p>Otro caso podría ser la recogida de un botón radio en la que queremos que el usuario haya elegido alguna de las opciones propuestas.</p>
+
+    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor entero en un rango sería utilizar el atributo <span class="html-atri">required</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control o recibir un valor distinto a los esperados. En el ejemplo siguiente, para poder forzar el envío de valores distintos a los que ofrece el formulario debemos manipular la URL y para ello debemos abrir el ejemplo en una nueva pestaña.</p>
+
+    <div class="filaflex">
+      <iframe src="ejemplos/formularios/form-recogida-input-radio-1.php" style="height: 7em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-recogida-input-radio-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>En este caso mostraremos únicamente dos avisos: si no se ha marcado ninguna opción o si se ha recibido un valor que no corresponde a ninguna de las opciones del control en el formulario.</p>
+    <ul>
+      <li>Si se deja el campo en blanco:
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+if ($gusta == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado si le gusta el formulario.&lt;/p&gt;\n";
+    print "\n";
+}  ... </code>
+</pre>
+        </div>
+      </li>
+      <li>Si el valor recibido no corresponde a ninguno de los valores del control en el formulario (es decir si es distinto simultáneamente a todos los valores)
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+} elseif ($gusta != "Sí" && $gusta != "No") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido ninguna de las opciones disponibles.&lt;/p&gt;\n";
+    print "\n";
+} ... </code>
+</pre>
+        </div>
+      </li>
+    </ul>
+    <p>El proceso de recogida de datos completo podría ser el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+function recoge($var, $m = "")
+{
+    if (!isset($_REQUEST[$var])) {
+        $tmp = is_array($m) ? [] : "";
+    } elseif (!is_array($_REQUEST[$var])) {
+        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+    } else {
+        $tmp = $_REQUEST[$var];
+        array_walk_recursive($tmp, function (&$valor) {
+            $valor = trim(htmlspecialchars($valor));
+        });
+    }
+    return $tmp;
+}
+
+// Variables que recogen los datos
+$gusta = recoge("gusta");
+
+// Variables auxiliares de comprobación
+$gustaOk = false;
+
+// Validación de datos y generación de avisos
+if ($gusta == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado si le gusta el formulario.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($gusta != "Sí" && $gusta != "No") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido ninguna de las opciones disponibles.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $gustaOk = true;
+}
+
+// Si todo es correcto, ejecución del programa
+if ($gustaOk) {
+    print "  &lt;p&gt;&lt;strong&gt;$gusta&lt;/strong&gt; le gusta este formulario.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <!--
   <p>Pero antes se comenta un caso especial, la comprobación de números, para la que se aconseja utilizar las funciones <span class="php-fun">is_numeric()</span> y <span class="php-fun">ctype_digit()</span>.</p>
 
   <section id="comprobar-numeros">
@@ -66,390 +479,9 @@
       <p>Para comprobar si el dato que se ha recibido es un número entero positivo (sin decimales) se puede utilizar la función <span class="php-fun">ctype_digit($valor)</span>. Esta función lógica devuelve <span class="php-con">true</span> si todos los caracteres del argumento son dígitos (0, 1, ..., 9) y <span class="php-con">false</span> si no lo son.</p>
     </section>
   </section>
-
-  <section id="is">
-    <h2>Funciones is_</h2>
-
-    <p>Las funciones is_ son un conjunto de funciones booleanas que devuelven <span class="php-con">true</span> si el argumento es de un tipo de datos determinado y <span class="php-con">false</span> si no lo son.</p>
-
-    <table class="tabla-con-borde">
-      <tr>
-        <th></th>
-        <th>Función</th>
-        <th>Tipo de datos</th>
-        <th>alias (funciones equivalentes)</th>
-      </tr>
-      <tr>
-        <td rowspan="2">existencia</td>
-        <td><a href="https://www.php.net/manual/en/function.isset.php" class="php-fun">isset($valor)</a></td>
-        <td>devuelve si el dato está definido o no</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/language.types.null.php" class="php-fun">is_null($valor)</a></td>
-        <td><span class="php-con">null</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td rowspan="4">números</td>
-        <td><a href="https://www.php.net/manual/en/function.is-bool.php" class="php-fun">is_bool($valor)</a></td>
-        <td>booleano</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-numeric.php" class="php-fun">is_numeric($valor)</a></td>
-        <td>número (puede tener signo, parte decimal y estar expresado en notación decimal u otra; si el argumento es una cadena la función devuelve <span class="php-con">true</span> si los números están expresados en notación decimal, exponencial u octal, pero devuelve <span class="php-con">false</span> si los números están expresados en notación hexadecimal o binaria).</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-int.php" class="php-fun">is_int($valor)</a></td>
-        <td>entero</td>
-        <td><a href="https://www.php.net/manual/en/function.is-integer.php" class="php-fun">is_integer($valor)</a>, <a href="https://www.php.net/manual/en/function.is-long.php" class="php-fun">is_long($valor)</a></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-float.php" class="php-fun">is_float($valor)</a></td>
-        <td>float</td>
-        <td><a href="https://www.php.net/manual/en/function.is-double.php" class="php-fun">is_double($valor)</a>, <a href="https://www.php.net/manual/en/function.is-real.php" class="php-fun"><s title="obsoleto (deprecated) desde PHP 7.4">is_real($valor)</s></a></td>
-      </tr>
-      <tr>
-        <td>cadenas</td>
-        <td><a href="https://www.php.net/manual/en/function.is-string.php" class="php-fun">is_string($valor)</a></td>
-        <td>cadena</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td rowspan="7">otros</td>
-        <td><a href="https://www.php.net/manual/en/function.is-scalar.php" class="php-fun">is_scalar($valor)</a></td>
-        <td>escalar (entero, float, cadena o booleano)</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-array.php" class="php-fun">is_array($valor)</a></td>
-        <td>matriz</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-callable.php" class="php-fun">is_callable($valor)</a></td>
-        <td>función</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-object.php" class="php-fun">is_object($valor)</a></td>
-        <td>object</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-resource.php" class="php-fun">is_resource($valor)</a></td>
-        <td>recurso</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-countable.php" class="php-fun">is_countable($valor)</a></td>
-        <td>contable (matriz u objeto que implementa Countable)</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.is-iterable.php" class="php-fun">is_iterable($valor)</a></td>
-        <td>iterable (matriz u objeto que implementa Traversable)</td>
-        <td></td>
-      </tr>
-    </table>
-
-    <p>Si un dato es demasiado grande para el tipo de variable, las funciones devolverán <span class="php-con">false</span>. Por ejemplo, si se usa como argumento un entero mayor que <span class="php-con">PHP_INT_MAX</span> (2147483647 en Windows), la función <span class="php-fun">is_int()</span> devolverá <span class="php-con">false</span>.</p>
-
-    <p><strong>Nota</strong>:</p>
-    <ul>
-      <li>El alias <span class="php-fun">is_real()</span> está declarado obsoleto (<i>deprecated</i>) desde PHP 7.4 (noviembre 2019).</li>
-    </ul>
-
-    <hr class="corta">
-
-    <p>Estas funciones son en general de poca utilidad con datos provinientes de un formulario, ya que estas funciones lo que comprueban es el tipo de los datos y la información que llega de un formulario es siempre del tipo cadena. Las dos excepciones serían:</p>
-
-    <ul>
-      <li>la función <span class="php-fun">is_numeric()</span>, que evalúa si el argumento se puede interpretar como número (aunque el tipo sea cadena). Por tanto esta función se puede utilizar para comprobar si un dato recibido es un número.</li>
-      <li>la función <span class="php-fun">isset()</span>, que evalúa si el argumento está o no definido, independientemente de su tipo.</li>
-    </ul>
-
-    <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">is_numeric()</span>.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$numero = $_REQUEST["numero"];
-
-if (is_numeric($numero)) {
-    print "&lt;p&gt;Ha escrito un número: $numero.&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;NO ha escrito un número: $numero.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-      <iframe src="comprobacion-datos/comprobacion-isnumeric.html" style="height: 13em"></iframe>
-    </div>
-
-    <hr class="corta">
-
-    <p>El siguiente formulario permite comprobar el resultado de las funciones is_ aplicadas a un dato recibido de un formulario.</p>
-
-    <div class="filaflex">
-      <iframe src="comprobacion-datos/comprobacion-datos-is-1.php" style="height: 41em;"></iframe>
-      <div class="icono-enlace">
-        <a href="comprobacion-datos/comprobacion-datos-is-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="ctype">
-    <h2>Funciones ctype_</h2>
-
-    <p>Las funciones ctype_ son un conjunto de funciones booleanas que devuelven si todos los caracteres de una cadena son de un tipo determinado, de acuerdo con el juego de caracteres local. Estas funciones son las mismas que las que proporciona la biblioteca estándar de C ctype.h.</p>
-
-    <table class="tabla-con-borde">
-      <tr>
-        <th>Función</th>
-        <th>Tipo de datos</th>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-alnum.php" class="php-fun">ctype_alnum($valor)</a></td>
-        <td>alfanuméricos</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-alpha.php"><span class="php-fun">ctype_alpha($valor)</span></a></td>
-        <td>alfabéticos (mayúsculas o minúsculas, con acentos, ñ, ç, etc)</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-cntrl.php" class="php-fun">ctype_cntrl($valor)</a></td>
-        <td>caracteres de control (salto de línea, tabulador, etc)</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-digit.php" class="php-fun">ctype_digit($valor)</a></td>
-        <td>dígitos</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-graph.php" class="php-fun">ctype_graph($valor)</a></td>
-        <td>caracteres imprimibles (excepto espacios)</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-lower.php" class="php-fun">ctype_lower($valor)</a></td>
-        <td>minúsculas</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-print.php" class="php-fun">ctype_print($valor)</a></td>
-        <td>caracteres imprimibles</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-punct.php" class="php-fun">ctype_punct($valor)</a></td>
-        <td>signos de puntuación (caracteres imprimibles que no son alfanuméricos ni espacios en blanco)</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-space.php" class="php-fun">ctype_space($valor)</a></td>
-        <td>espacios en blanco (espacios, tabuladores, saltos de línea, etc)</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-upper.php" class="php-fun">ctype_upper($valor)</a></td>
-        <td>mayúsculas</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.php.net/manual/en/function.ctype-xdigit.php" class="php-fun">ctype_xdigit($valor)</a></td>
-        <td>dígitos hexadecimales</td>
-      </tr>
-    </table>
-
-    <hr class="corta">
-
-    <p>Estas funciones se pueden aplicar a los datos recibidos de un formulario ya que hacen comprobaciones de todos los caracteres de una cadena. Quizás la más útil es:</p>
-
-    <ul>
-      <li>la función <span class="php-fun">ctype_digit()</span>, que evalúa si todos los caracteres son dígitos, por lo que permite identificar los números enteros positivos (sin punto decimal ni signo negativo)</li>
-    </ul>
-
-    <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">ctype_digit()</span>.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$numero = $_REQUEST["numero"];
-
-if (ctype_digit($numero)) {
-    print "&lt;p&gt;Ha escrito un entero positivo: $numero.&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;NO ha escrito un entero positivo: $numero.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-      <iframe src="comprobacion-datos/comprobacion-ctypedigit.html" style="height: 13em"></iframe>
-    </div>
-
-    <hr class="corta">
-
-    <p>El siguiente formulario permite comprobar el resultado de las funciones ctype_ aplicadas a un dato recibido de un formulario.</p>
-
-    <div class="filaflex">
-      <iframe src="comprobacion-datos/comprobacion-datos-ctype-1.php" style="height: 37em;"></iframe>
-      <div class="icono-enlace">
-        <a href="comprobacion-datos/comprobacion-datos-ctype-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="filter">
-    <h2>Funciones filter_</h2>
-
-    <p>Las funciones filter se crearon como extensión PECL, pero se incluyeron en PHP 5.2 (2006).</p>
-
-    <p>La función filter más simple es la función <a href="https://www.php.net/manual/en/function.filter-var.php" class="php-fun">filter_var($valor [, $filtro [, $opciones]])</a>, que devuelve los datos filtrados o <span class="php-con">false</span> si el filtro falla.</p>
-
-    <p>Los filtros predefinidos de validación son los siguientes:</p>
-
-    <table class="tabla-con-borde">
-      <tr>
-        <th>Filtro</th>
-        <th>Tipo de datos</th>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_INT</td>
-        <td>entero</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_BOOLEAN</td>
-        <td>booleano</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_FLOAT</td>
-        <td>float</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_REGEXP</td>
-        <td>expresión regular</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_DOMAIN</td>
-        <td>dominio web</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_URL</td>
-        <td>URL no internacionalizada</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_EMAIL</td>
-        <td>dirección de correo</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_IP</td>
-        <td>dirección IP</td>
-      </tr>
-      <tr>
-        <td>FILTER_VALIDATE_MAC</td>
-        <td>dirección MAC física</td>
-      </tr>
-    </table>
-
-    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">El problema de los filtros <span class="php-con">FILTER_VALIDATE_INT</span> y <span class="php-con">FILTER_VALIDATE_FLOAT</span> es que dan <span class="php-con">false</span> si el argumento es 0, lo que complica su uso para detectar números porque el caso del 0 debe considerarse aparte al hacer la validación. Se supone que ese comportamiento se corrigió en PHP 5.4, pero yo no tengo claro que el problema esté resuelto en versiones posteriores.</p>
-
-    <hr class="corta">
-
-    <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">filter_var()</span> con el argumento <span class="php-con">FILTER_VALIDATE_INT</span>.</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-$numero = $_REQUEST["numero"];
-
-if (filter_var($numero, FILTER_VALIDATE_INT)) {
-    print "&lt;p&gt;Ha escrito un número entero: $numero.&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;NO ha escrito un número entero: $numero.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-      <iframe src="comprobacion-datos/comprobacion-filter.html" style="height: 13em;"></iframe>
-    </div>
-
-    <hr class="corta">
-
-    <p>El siguiente formulario permite comprobar el resultado de la función filter_var() con diferentes filtros aplicada a un dato recibido de un formulario.</p>
-
-    <div class="filaflex">
-      <iframe src="comprobacion-datos/comprobacion-datos-filter-1.php" style="height: 33em;"></iframe>
-      <div class="icono-enlace">
-        <a href="comprobacion-datos/comprobacion-datos-filter-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-
-    <p><strong>Nota</strong>: <span class="php-con">FILTER_VALIDATE_REGEXP</span> no está incluido en el ejemplo anterior porque requiere una expresión regular con la que comprobar el argumento enviado.</p>
-  </section>
-
-  <section id="exists">
-    <h2>Funciones xxx_exists()</h2>
-
-    <section id="functionexists">
-      <h3>Función function_exists()</h3>
-
-      <p>La función booleana <a href="https://www.php.net/manual/en/function.function-exists.php" class="php-fun">function_exists()</a> devuelve si la función existe o no.</p>
-
-      <p>Algunas de las funciones que se comentan en esta página no existen en versiones antiguas de PHP que todavía se utilizan, por lo que puede ser conveniente comprobar si una función existe antes de utilizarla.</p>
-
-      <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">function_exists()</span>.</p>
-
-      <div class="filaflex">
-        <div class="codigo">
-          <p>Número: <input type="text" name="texto" readonly value="2.5"></p>
-
-          <p><input type="submit" value="Enviar"></p>
-        </div>
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-print "&lt;pre&gt;"; print_r($_REQUEST); print "&lt;/pre&gt;\n";
-
-$numero = $_REQUEST["numero"];<br>
-if (function_exists("filter_var")) {
-    if (filter_var($numero, FILTER_VALIDATE_INT)) {
-        print "&lt;p&gt;Ha escrito el número entero $numero.&lt;/p&gt;\n";
-    } else {
-        print "&lt;p&gt;NO ha escrito un número entero.&lt;/p&gt;\n";
-    }
-} else {
-    print "&lt;p&gt;La función &lt;strong&gt;filter_var&lt;/strong&gt; "
-        . "no está disponible en este servidor.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-        </div>
-        <div class="resultado-html">
-          <pre>Array (
-    [numero] =&gt; 2.5
-)</pre>
-
-          <p>La función <strong>filter_var</strong> no está disponible en este servidor.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="arraykeyexists">
-      <h3>Función array_key_exists()</h3>
-
-      <p>La función booleana <a href="https://www.php.net/manual/en/function.array-key-exists.php" class="php-fun">array_key_exists($indice, $matriz)</a> devuelve si un elemento determinado de una matriz existe o no.</p>
-
-      <p>Para comprobar si existe un elemento de una matriz también se puede utilizar la función <span class="php-fun">isset()</span> comentada en el apartado siguiente.</p>
-    </section>
-  </section>
-
-  <section id="regulares">
-    <h2>Expresiones regulares</h2>
-
-    <p>Las expresiones regulares se explican en <a href="php-expresiones-regulares.html">otra lección</a>.</p>
-  </section>
-
+-->
   <footer>
-    <p class="ultmod">Última modificación de esta página: 24 de octubre de 2019</p>
+    <p class="ultmod">Última modificación de esta página: 2 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
