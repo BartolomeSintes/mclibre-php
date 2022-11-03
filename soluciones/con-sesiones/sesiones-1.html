@@ -140,15 +140,16 @@ session_start();
 <span title="Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. Es el procedimiento habitual: función recoge(); variable para recoger el dato; variable auxiliar que indica la corrección del dato; comprobación y mensajes de error; si el dato es correcto, mensaje final.">// Funciones auxiliares <span class="numero-circulo">1</span></span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -238,15 +239,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -343,15 +345,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -449,15 +452,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -571,15 +575,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -693,15 +698,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -762,15 +768,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -887,15 +894,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -1032,15 +1040,16 @@ session_start();
 // Funciones auxiliares <span class="numero-circulo">1</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -1156,15 +1165,16 @@ if (!isset($_SESSION["numero"])) {
 // Funciones auxiliares <span class="numero-circulo">6</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -1251,15 +1261,16 @@ if (!isset($_SESSION["posicion"])) {
 // Funciones auxiliares <span class="numero-circulo">6</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -1358,15 +1369,16 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
 // Funciones auxiliares <span class="numero-circulo">6</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -1489,15 +1501,16 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
 // Funciones auxiliares <span class="numero-circulo">7</span>
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }

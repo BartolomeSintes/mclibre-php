@@ -3,9 +3,9 @@
  * Controles en formularios (2) 4-2 - controles-formularios-2-04-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-24
+ * @version   2022-11-03
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,15 +41,16 @@
 <?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -63,10 +64,10 @@ $correo2Ok = false;
 $recibirOk = false;
 
 if ($correo == "") {
-    print "  <p class=\"aviso\">No ha escrito su dirección de correo.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito la primera dirección de correo.</p>\n";
     print "\n";
 } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    print "  <p class=\"aviso\">No ha escrito una dirección de correo correcta.</p>\n";
+    print "  <p class=\"aviso\">La primera dirección de correo no es correcta.</p>\n";
     print "\n";
 } else {
     $correoOk = true;
@@ -106,7 +107,7 @@ if ($correoOk && $correo2Ok && $recibirOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-24">24 de octubre de 2019</time>
+      <time datetime="2022-11-03">3 de noviembre de 2022</time>
     </p>
 
     <p class="licencia">

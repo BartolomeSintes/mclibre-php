@@ -161,6 +161,7 @@
   &lt;p&gt;Su edad es &lt;strong&gt;4&lt;/strong&gt; años.&lt;/p&gt;</code>
 </pre>
           <pre>
+
 <code class="language-html">  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_1-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 
   &lt;footer&gt;
@@ -212,15 +213,16 @@
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -235,6 +237,7 @@ print "\n";
 ?&gt;</code>
 </pre>
           <pre>
+
 <code class="language-html">  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_1-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 
   &lt;footer&gt;
@@ -281,17 +284,19 @@ print "\n";
         <div class="codigo">
           <pre><code class="language-php">&lt;?php</code></pre>
           <pre>
-<code class="language-php">function recoge($var, $m = "")
+<code class="language-php">// FUNCIÓN DE RECOGIDA DE DATOS
+function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -384,6 +389,7 @@ print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;
   &lt;p&gt;&lt;strong&gt;Sí&lt;/strong&gt; acepta las condiciones.&lt;/p</code>
 </pre>
             <pre>
+
 <code class="language-html">
   &lt;p&gt;&lt;a href="ejemplo_recogida_datos_2-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 
@@ -437,15 +443,16 @@ print "  &lt;p&gt;Su edad es &lt;strong&gt;$edad&lt;/strong&gt; años.&lt;/p&gt;
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -502,6 +509,7 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
 ?&gt;</code>
 </pre>
             <pre>
+
 <code class="language-html">  &lt;p&gt;&lt;a href="ejemplo_recogida_datos_2-1.php"&gt;Volver al formulario.&lt;/a&gt;&lt;/p&gt;
 
   &lt;footer&gt;
@@ -556,20 +564,22 @@ if ($nombreOk &amp;&amp; $edadOk &amp;&amp; $aceptoOk) {
           <div class="codigo">
             <pre><code class="language-php">&lt;?php</code></pre>
             <pre>
-<code class="language-php">function recoge($var, $m = "")
-  {
-      if (!isset($_REQUEST[$var])) {
-          $tmp = is_array($m) ? [] : "";
-      } elseif (!is_array($_REQUEST[$var])) {
-          $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-      } else {
-          $tmp = $_REQUEST[$var];
-          array_walk_recursive($tmp, function (&$valor) {
-              $valor = trim(htmlspecialchars($valor));
-          });
-      }
-      return $tmp;
-  }
+<code class="language-php">// FUNCIÓN DE RECOGIDA DE DATOS
+function recoge($var, $m = "")
+{
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
+    }
+    return $tmp;
+}
 
 $nombre = recoge("nombre");
 $edad   = recoge("edad");

@@ -61,15 +61,16 @@
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -90,15 +91,16 @@ print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -122,15 +124,16 @@ print "  &lt;/svg&gt;\n";
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -155,15 +158,16 @@ print "  &lt;/svg&gt;\n";
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -184,15 +188,16 @@ print "  &lt;p&gt;Su fruta preferida es $fruta.&lt;/p&gt;\n";
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -213,15 +218,16 @@ print "  &lt;p&gt;&lt;img src=\"img/frutas/$fruta\" width=\"300\"&gt;&lt;/p&gt;\
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -264,15 +270,16 @@ print "  &lt;label&gt;&lt;input type=\"checkbox\" name=\"letra\" value=\"hwb($co
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -294,15 +301,16 @@ print "  &lt;style&gt;body { background-color: $fondo; color: $letra; }&lt;/styl
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -324,15 +332,16 @@ print "  &lt;style&gt;body { background-color: $fondo; color: $letra; }&lt;/styl
 <code class="language-php">&lt;?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }

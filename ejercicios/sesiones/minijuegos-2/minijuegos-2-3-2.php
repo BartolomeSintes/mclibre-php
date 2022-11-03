@@ -32,15 +32,16 @@ if (!isset($_SESSION["nCartas"]) || !isset($_SESSION["cartas"])) {
 
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
