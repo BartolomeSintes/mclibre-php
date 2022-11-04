@@ -74,7 +74,7 @@ if ($lineas == "") {
 } elseif ($lineas < $lineasMinimo || $lineas > $lineasMaximo) {
     print "  <p class=\"aviso\">El número de líneas debe estar entre "
         . "$lineasMinimo y $lineasMaximo.</p>\n";
-        print "\n";
+    print "\n";
 } else {
     $lineasOk = true;
 }

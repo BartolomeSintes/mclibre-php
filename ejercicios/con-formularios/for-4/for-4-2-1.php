@@ -14,8 +14,7 @@
   <h1>Sucesiones aritméticas 2 (Formulario)</h1>
 
   <form action="for-4-2-2.php" method="get">
-    <p>Escriba los tres valores y le mostraré los términos de la sucesión
-      aritmética correspondiente.</p>
+    <p>Escriba los tres valores y le mostraré los términos de la sucesión aritmética correspondiente.</p>
 
     <table>
       <tr>

@@ -15,9 +15,7 @@
   <h1>Tabla de una columna (Formulario)</h1>
 
   <form action="for-3-2-2.php" method="get">
-    <p>Escriba un número (0 &lt; número &le; 200) y mostraré una tabla de una columna
-      y tantas filas como indique.
-    </p>
+    <p>Escriba un número (0 &lt; número &le; 200) y mostraré una tabla de una columna y tantas filas como indique.</p>
 
     <p><label>Número de filas: <input type="number" name="filas" min="1" max="200" value="10"></label></p>
 

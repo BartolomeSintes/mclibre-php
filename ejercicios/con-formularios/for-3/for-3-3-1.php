@@ -15,9 +15,7 @@
   <h1>Tabla de multiplicar sin cabecera (Formulario)</h1>
 
   <form action="for-3-3-2.php" method="get">
-    <p>Escriba un número (0 &lt; número &le; 100) y mostraré la tabla de
-      multiplicar hasta ese número.
-    </p>
+    <p>Escriba un número (0 &lt; número &le; 100) y mostraré la tabla de multiplicar hasta ese número.</p>
 
     <p><label>Número: <input type="number" name="numero" min="1" max="100" value="10"></label></p>
 

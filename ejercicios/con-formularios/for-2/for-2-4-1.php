@@ -14,8 +14,7 @@
   <h1>Rectángulo de estrellas 2 (Formulario)</h1>
 
   <form action="for-2-4-2.php" method="get">
-    <p>Escriba el alto y ancho (1 &lt; números &le; 100) y mostraré un rectángulo
-      de estrellas de ese tamaño.</p>
+    <p>Escriba el alto y ancho (1 &lt; números &le; 100) y mostraré un rectángulo de estrellas de ese tamaño.</p>
 
     <table>
       <tr>

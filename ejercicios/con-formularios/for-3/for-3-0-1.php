@@ -15,8 +15,7 @@
   <h1>Varios elementos (Formulario)</h1>
 
   <form action="for-3-0-2.php" method="get">
-    <p>Escriba un número (0 &lt; número &le; 200) y mostraré esa cantidad
-      de varios elementos HTML.
+    <p>Escriba un número (0 &lt; número &le; 200) y mostraré esa cantidad de varios elementos HTML.
     </p>
 
     <p><label>Número: <input type="number" name="numero" min="1" max="200" value="5"></label></p>

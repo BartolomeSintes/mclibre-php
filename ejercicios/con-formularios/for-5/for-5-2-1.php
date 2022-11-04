@@ -14,11 +14,12 @@
   <h1>Dibujos con cuadrados (Formulario)</h1>
 
   <form action="for-5-2-2.php" method="get">
-    <p>Escriba un número (0 &lt; número &le; 50) y mostraré unos dibujos
-      con el número de cuadrados que haya indicado.</p>
+    <p>Escriba un número (0 &lt; número &le; 50) y mostraré unos dibujos con el número de cuadrados que haya indicado.</p>
 
-    <p><strong>Número de cuadrados por dibujo:</strong>
-      <input type="number" name="cuadrados" min="1" max="50" value="10"></p>
+    <p>
+      <strong>Número de cuadrados por dibujo:</strong>
+      <input type="number" name="cuadrados" min="1" max="50" value="10">
+    </p>
 
     <p>
       <input type="submit" value="Dibujar">

@@ -14,11 +14,12 @@
   <h1>Dibujos con líneas (Formulario)</h1>
 
   <form action="for-5-1-2.php" method="get">
-    <p>Escriba un número (0 &lt; número &le; 50) y mostraré unos dibujos
-      con el número de líneas que haya indicado.</p>
+    <p>Escriba un número (0 &lt; número &le; 50) y mostraré unos dibujos con el número de líneas que haya indicado.</p>
 
-    <p><strong>Número de líneas por dibujo:</strong>
-      <input type="number" name="lineas" min="1" max="50" value="10"></p>
+    <p>
+      <strong>Número de líneas por dibujo:</strong>
+      <input type="number" name="lineas" min="1" max="50" value="10">
+    </p>
 
     <p>
       <input type="submit" value="Dibujar">

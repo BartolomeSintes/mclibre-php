@@ -14,8 +14,7 @@
   <h1>Triángulo de estrellas 1 (Formulario)</h1>
 
   <form action="for-2-5-2.php" method="get">
-    <p>Escriba el ancho (0 &lt; ancho &le; 100) y mostraré un triángulo
-       de estrellas de ese tamaño.</p>
+    <p>Escriba el ancho (0 &lt; ancho &le; 100) y mostraré un triángulo de estrellas de ese tamaño.</p>
 
     <table>
       <tr>
