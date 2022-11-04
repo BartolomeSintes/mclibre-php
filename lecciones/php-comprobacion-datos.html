@@ -28,6 +28,7 @@
         <li><a href="#input-number-decimal">Ejemplo número decimal</a></li>
         <li><a href="#input-number-entero">Ejemplo número entero</a></li>
         <li><a href="#input-radio">Ejemplo botón radio</a></li>
+        <li><a href="#input-checkbox">Ejemplo casillas verificación</a></li>
       </ul>
     </div>
   </nav>
@@ -44,7 +45,7 @@
     <p>Para conseguirlo, en estos apuntes se recomienda que todos los programas que reciban datos realicen los siguientes pasos:</p>
     <ul>
       <li><strong>Definición de la función recoge()</strong>
-        <p>Para poder utilizar la función recoge() en el paso siguiente, debemos incoporarla al programa copiándola y pegándola de la lección <a href="php-recogida-datos.html#funciones">Recogida de datos</a> (en la mayoría de situaciones, podemos utilziar la <a href="php-recogida-datos.html#recoger-datos">función recoge() de datos simples o matices</a>).</p>
+        <p>Para poder utilizar la función recoge() en el paso siguiente, debemos incoporarla al programa copiándola y pegándola de la lección <a href="php-recogida-datos.html#funciones">Recogida de datos</a> (en la mayoría de situaciones, podemos utilizar la <a href="php-recogida-datos.html#recoger-datos">función recoge() de datos simples o matices</a>).</p>
       </li>
       <li><strong>Definición de variables</strong>
         <ul>
@@ -119,7 +120,14 @@ if ($nombreControl1Ok &amp;&amp; $nombreControl2Ok &amp;&amp; ...) {
     <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir algo de contenido sería utilizar el atributo <span class="html-atri">required</span> en el formulario, pero el usuario podría escribir simplemente espacios en blanco y de todas formas debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir siquiera el control.</p>
 
     <div class="filaflex">
-      <iframe src="ejemplos/formularios/form-recogida-input-text-1.php" style="height: 7em;"></iframe>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;form action="form-recogida-input-text-2.php" method="get"&gt;
+  &lt;p&gt;Escriba su nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-recogida-input-text-1.php" style="height: 8em;"></iframe>
       <div class="icono-enlace">
         <a href="ejemplos/formularios/form-recogida-input-text-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -190,7 +198,14 @@ if ($nombreOk) {
     <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor decimal en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">step</span>, <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o recibir una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span>.</p>
 
     <div class="filaflex">
-      <iframe src="ejemplos/formularios/form-recogida-input-number-1-1.php" style="height: 7em;"></iframe>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;form action="form-recogida-input-number-1-2.php" method="get"&gt;
+  &lt;p&gt;Escriba su peso: &lt;input type="text" name="peso"&gt; kg&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-recogida-input-number-1-1.php" style="height: 8em;"></iframe>
       <div class="icono-enlace">
         <a href="ejemplos/formularios/form-recogida-input-number-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -296,10 +311,17 @@ if ($pesoOk) {
 
     <p>Otro caso podría ser la recogida de un valor numérico en la que queremos que el usuario escriba un valor entero (no decimal) dentro de un rango.</p>
 
-    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor entero en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o  recibir un valor decimal o una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span>.</p>
+    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor entero en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o recibir un valor decimal o una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span>.</p>
 
     <div class="filaflex">
-      <iframe src="ejemplos/formularios/form-recogida-input-number-2-1.php" style="height: 7em;"></iframe>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;form action="form-recogida-input-number-2-2.php" method="get"&gt;
+  &lt;p&gt;Escriba su edad: &lt;input type="text" name="edad"&gt; años&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-recogida-input-number-2-1.php" style="height: 8em;"></iframe>
       <div class="icono-enlace">
         <a href="ejemplos/formularios/form-recogida-input-number-2-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -382,7 +404,21 @@ if ($edadOk) {
     <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor entero en un rango sería utilizar el atributo <span class="html-atri">required</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control o recibir un valor distinto a los esperados. En el ejemplo siguiente, para poder forzar el envío de valores distintos a los que ofrece el formulario debemos manipular la URL y para ello debemos abrir el ejemplo en una nueva pestaña.</p>
 
     <div class="filaflex">
-      <iframe src="ejemplos/formularios/form-recogida-input-radio-1.php" style="height: 7em;"></iframe>
+      <div class="codigo">
+        <pre><code class="language-html">&lt;form action="form-recogida-input-radio-2.php" method="get"&gt;
+  &lt;p&gt;
+      ¿Le gusta este formulario?
+      &lt;input type="radio" name="gusta" value="Sí"&gt; Sí
+      &lt;input type="radio" name="gusta" value="No"&gt; No
+  &lt;/p&gt;
+
+  &lt;p&gt;
+      &lt;input type="submit" value="Enviar"&gt;
+      &lt;input type="reset" value="Borrar"&gt;
+  &lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-recogida-input-radio-1.php" style="height: 17em;"></iframe>
       <div class="icono-enlace">
         <a href="ejemplos/formularios/form-recogida-input-radio-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -461,31 +497,123 @@ if ($gustaOk) {
     </div>
   </section>
 
-  <!--
-  <p>Pero antes se comenta un caso especial, la comprobación de números, para la que se aconseja utilizar las funciones <span class="php-fun">is_numeric()</span> y <span class="php-fun">ctype_digit()</span>.</p>
+  <section id="input-checkbox">
+    <h2>Ejemplo de recogida de varias casillas de verificación</h2>
 
-  <section id="comprobar-numeros">
-    <h2>Comprobación de números con <span class="php-fun">is_numeric()</span> y <span class="php-fun">ctype_digit()</span></h2>
+    <p>En este ejemplo se muestra la recogida de varios controles, concretamente dos casillas de verificación. Las casillas de verificación son controles independientes unos de otros.</p>
 
-    <p>Cuando se quiere comprobar que un dato recibido recibido a través de un formulario es un número, en el caso de las funciones <span class="php-fun">is_</span> o <span class="php-fun">ctype_</span>, sólo tiene sentido utilizar dos de ellas.</p>
+    <p><strong>Nota</strong>: En el caso de las casillas de verificación, un ataque de inyección lo que haría sería cambiar el valor recibido. En el ejemplo siguiente, para poder forzar el envío de valores distintos a los que ofrece el formulario debemos manipular la URL y para ello debemos abrir el ejemplo en una nueva pestaña.</p>
 
-    <section id="comprobar-numero">
-      <h3>Comprobación de números con <span class="php-fun">is_numeric()</span></h3>
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;form action="form-recogida-input-checkbox-2.php" method="get"&gt;
+  &lt;p&gt;
+      ¿Sabe programar en estos lenguajes?
+      &lt;input type="checkbox" name="python" value="Sí"&gt; Python
+      &lt;input type="checkbox" name="php" value="Sí"&gt; PHP
+  &lt;/p&gt;
 
-      <p>Para comprobar si el dato que se ha recibido es un número (o se puede interpretar como número) se debe utilizar la función <span class="php-fun">is_numeric($valor)</span>. Esta función lógica devuelve <span class="php-con">true</span> si el argumento se puede interpretar como número y <span class="php-con">false</span> si no lo es.</p>
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-recogida-input-checkbox-1.php" style="height: 13em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-recogida-input-checkbox-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
 
-      <p>El motivo por el que se debe utilizar la función <span class="php-fun">is_numeric($valor)</span>, es que lo que se recibe a través de un formulario se guarda siempre como cadena (aunque sea un número). La función <span class="php-fun">is_numeric($valor)</span> es la única que comprueba si el argumento se puede interpretar como número (aunque el argumento sea de tipo cadena), la función <span class="php-fun">is_int($valor)</span> o <span class="php-fun">is_float($valor)</span> hacen solamente comprobaciones sobre el tipo de los datos y devolverían siempre <span class="php-con">false</span>.</p>
-    </section>
+    <p>En este caso mostraremos únicamente un aviso por cada casilla de verificación: si se ha recibido un valor no vacío que no corresponde al valor del control en el formulario ("Sí", en ambos casos). Ambos bloques <span class="php-res">if ... else ...</span> son muy parecidos.</p>
 
-    <section id="comprobar-entero">
-      <h3>Comprobación de números enteros positivos con <span class="php-fun">ctype_digit()</span></h3>
+    <ul>
+      <li>Si cada uno de los valores recibidos no son vacíos ni corresponden a los valores de los controles en el formulario:
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+if ($python != "Sí" && $python != "") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en Python.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pythonOk = true;
+}
 
-      <p>Para comprobar si el dato que se ha recibido es un número entero positivo (sin decimales) se puede utilizar la función <span class="php-fun">ctype_digit($valor)</span>. Esta función lógica devuelve <span class="php-con">true</span> si todos los caracteres del argumento son dígitos (0, 1, ..., 9) y <span class="php-con">false</span> si no lo son.</p>
-    </section>
+if ($php != "Sí" && $php != "") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en PHP.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $phpOk = true;
+}</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+    <p>El proceso de recogida de datos completo podría ser el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($var, $m = "")
+{
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Variables que recogen los datos
+$python = recoge("python");
+$php    = recoge("php");
+
+// Variables auxiliares de comprobación
+$pythonOk = false;
+$phpOk    = false;
+
+// Validación de datos y generación de avisos
+if ($python != "Sí" && $python != "") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en Python.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $pythonOk = true;
+}
+
+if ($php != "Sí" && $php != "") {
+    print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en PHP.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $phpOk = true;
+}
+
+// Si todo es correcto, ejecución del programa
+if ($pythonOk && $phpOk) {
+    if ($python && $php) {
+        print "  &lt;p&gt;Sabe programar en Python y en PHP.&lt;/p&gt;\n";
+        print "\n";
+    } elseif ($python && !$php) {
+        print "  &lt;p&gt;Sabe programar en Python, pero no en PHP.&lt;/p&gt;\n";
+        print "\n";
+    } elseif (!$python && $php) {
+        print "  &lt;p&gt;Sabe programar en PHP, pero no en Python.&lt;/p&gt;\n";
+        print "\n";
+    } else {
+        print "  &lt;p&gt;No sabe programar ni en Python ni en PHP.&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+?&gt;</code>
+</pre>
+    </div>
   </section>
--->
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 2 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
