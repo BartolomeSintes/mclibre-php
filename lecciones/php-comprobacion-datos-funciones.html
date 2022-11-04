@@ -162,7 +162,7 @@
     <p>Estas funciones son en general de poca utilidad con datos provinientes de un formulario, ya que estas funciones lo que comprueban es el tipo de los datos y la información que llega de un formulario es siempre del tipo cadena. Las dos excepciones serían:</p>
 
     <ul>
-      <li>la función <span class="php-fun">is_numeric()</span>, que evalúa si el argumento se puede interpretar como número (aunque el tipo sea cadena). Por tanto esta función se puede utilizar para comprobar si un dato recibido es un número.</li>
+      <li>la función <span class="php-fun">is_numeric()</span>, que evalúa si el argumento se puede interpretar como número (aunque el tipo sea cadena). Por tanto esta función se puede utilizar para comprobar si un dato recibido de un formulario es un número o no.</li>
       <li>la función <span class="php-fun">isset()</span>, que evalúa si el argumento está o no definido, independientemente de su tipo.</li>
     </ul>
 
@@ -172,22 +172,30 @@
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numero = $_REQUEST["numero"];
+$dato = recoge("dato");
 
-if (is_numeric($numero)) {
-    print "&lt;p&gt;Ha escrito un número: $numero.&lt;/p&gt;\n";
+if ($dato == "") {
+    print "  &lt;p&gt;No ha escrito nada.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($dato)) {
+    print "  &lt;p&gt;NO ha escrito un número: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
 } else {
-    print "&lt;p&gt;NO ha escrito un número: $numero.&lt;/p&gt;\n";
+    print "  &lt;p&gt;Ha escrito un número: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
       </div>
-      <iframe src="comprobacion-datos/comprobacion-isnumeric.html" style="height: 13em"></iframe>
+      <iframe src="comprobacion-datos/comprobacion-isnumeric-1.php" style="height: 19.5em"></iframe>
+      <div class="icono-enlace">
+        <a href="comprobacion-datos/comprobacion-isnumeric-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
     </div>
 
     <hr class="corta">
 
-    <p>El siguiente formulario permite comprobar el resultado de las funciones is_ aplicadas a un dato recibido de un formulario.</p>
+    <p>El siguiente formulario permite comprobar el resultado de las funciones is_ aplicadas a un dato recibido de un formulario. Como los datos que se reciben de un formulario son de tipo cadena, casi todas las funciones devuelven el resultado <span class="php-con">false</span>, y resultan inútiles en este contexto.</p>
 
     <div class="filaflex">
       <iframe src="comprobacion-datos/comprobacion-datos-is-1.php" style="height: 41em;"></iframe>
@@ -200,7 +208,7 @@ if (is_numeric($numero)) {
   <section id="ctype">
     <h2>Funciones ctype_</h2>
 
-    <p>Las funciones ctype_ son un conjunto de funciones booleanas que devuelven si todos los caracteres de una cadena son de un tipo determinado, de acuerdo con el juego de caracteres local. Estas funciones son las mismas que las que proporciona la biblioteca estándar de C ctype.h.</p>
+    <p>Las funciones ctype_ son un conjunto de funciones booleanas que devuelven si todos los caracteres de una cadena son de una categoría determinada, de acuerdo con el juego de caracteres local. Estas funciones son las mismas que las que proporciona la biblioteca estándar de C ctype.h.</p>
 
     <table class="tabla-con-borde">
       <tr>
@@ -255,7 +263,7 @@ if (is_numeric($numero)) {
 
     <hr class="corta">
 
-    <p>Estas funciones se pueden aplicar a los datos recibidos de un formulario ya que hacen comprobaciones de todos los caracteres de una cadena. Quizás la más útil es:</p>
+    <p>Estas funciones se pueden aplicar a los datos recibidos de un formulario ya que estas funciones trabajan con cadenas. El problema es que normalmente en una cadena se encuentran caracteres de distintas categorías (letras, números, espacios, puntuación, etc.) y en ese caso estas funciones devuelven el resutlado <span class="php-con">false</span>. Quizás la más útil es:</p>
 
     <ul>
       <li>la función <span class="php-fun">ctype_digit()</span>, que evalúa si todos los caracteres son dígitos, por lo que permite identificar los números enteros positivos (sin punto decimal ni signo negativo)</li>
@@ -267,17 +275,25 @@ if (is_numeric($numero)) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numero = $_REQUEST["numero"];
+$dato = recoge("dato");
 
-if (ctype_digit($numero)) {
-    print "&lt;p&gt;Ha escrito un entero positivo: $numero.&lt;/p&gt;\n";
+if ($dato == "") {
+    print "  &lt;p&gt;No ha escrito nada.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!ctype_digit($dato)) {
+    print "  &lt;p&gt;NO ha escrito un entero positivo: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
 } else {
-    print "&lt;p&gt;NO ha escrito un entero positivo: $numero.&lt;/p&gt;\n";
+    print "  &lt;p&gt;Ha escrito un entero positivo: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
       </div>
-      <iframe src="comprobacion-datos/comprobacion-ctypedigit.html" style="height: 13em"></iframe>
+      <iframe src="comprobacion-datos/comprobacion-ctypedigit-1.php" style="height: 21em"></iframe>
+      <div class="icono-enlace">
+        <a href="comprobacion-datos/comprobacion-ctypedigit-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
     </div>
 
     <hr class="corta">
@@ -285,7 +301,7 @@ if (ctype_digit($numero)) {
     <p>El siguiente formulario permite comprobar el resultado de las funciones ctype_ aplicadas a un dato recibido de un formulario.</p>
 
     <div class="filaflex">
-      <iframe src="comprobacion-datos/comprobacion-datos-ctype-1.php" style="height: 37em;"></iframe>
+      <iframe src="comprobacion-datos/comprobacion-datos-ctype-1.php" style="height: 38em;"></iframe>
       <div class="icono-enlace">
         <a href="comprobacion-datos/comprobacion-datos-ctype-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -344,28 +360,70 @@ if (ctype_digit($numero)) {
       </tr>
     </table>
 
+    <!--
     <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">El problema de los filtros <span class="php-con">FILTER_VALIDATE_INT</span> y <span class="php-con">FILTER_VALIDATE_FLOAT</span> es que dan <span class="php-con">false</span> si el argumento es 0, lo que complica su uso para detectar números porque el caso del 0 debe considerarse aparte al hacer la validación. Se supone que ese comportamiento se corrigió en PHP 5.4, pero yo no tengo claro que el problema esté resuelto en versiones posteriores.</p>
+    -->
 
     <hr class="corta">
 
-    <p>El ejemplo siguiente muestra el uso de la función <span class="php-fun">filter_var()</span> con el argumento <span class="php-con">FILTER_VALIDATE_INT</span>.</p>
+    <p>En el caso de las funciones anteriores (funciones is_ y funciones ctype_) estas se pueden utilizar directamente en las condiciones de los bloques <span class="php-res">if ... elseif ... else ...</span> puesto que devuelven un valor lógico. En el caso de la función <span class="php-fun">filter_var()</span> esta únicamente devuelve un valor lógico cuando el valor no pasa el filtro. Cuando el valor sí que pasa el filtro, la función devuelve el propio valor.</p>
+
+    <p>Por ello resulta aconsejable hacer una comparación de tipo con el valor <span class="php-con">false</span> para detectar que el valor no ha pasado el filtro, como muestra el siguiente ejemplo.</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$numero = $_REQUEST["numero"];
+$dato = recoge("dato");
 
-if (filter_var($numero, FILTER_VALIDATE_INT)) {
-    print "&lt;p&gt;Ha escrito un número entero: $numero.&lt;/p&gt;\n";
+if ($dato == "") {
+    print "  &lt;p&gt;No ha escrito nada.&lt;/p&gt;\n";
+    print "\n";
+} elseif (filter_var($dato, FILTER_VALIDATE_INT) === false) {
+    print "  &lt;p&gt;NO ha escrito un número entero: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
 } else {
-    print "&lt;p&gt;NO ha escrito un número entero: $numero.&lt;/p&gt;\n";
+    print "  &lt;p&gt;Ha escrito un número entero: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
 }
 ?&gt;</code>
 </pre>
       </div>
-      <iframe src="comprobacion-datos/comprobacion-filter.html" style="height: 13em;"></iframe>
+      <iframe src="comprobacion-datos/comprobacion-filter-1-1.php" style="height: 21em;"></iframe>
+      <div class="icono-enlace">
+        <a href="comprobacion-datos/comprobacion-filter-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
     </div>
+
+    <p>El caso del filtro <span class="php-con">FILTER_VALIDATE_BOOLEAN</span> es especial porque en este caso cuando el valor pase el filtro sí que será un valor lógico (que puede ser <span class="php-con">false</span>), por lo que la detección debe ser distinta.</p>
+
+    <p class="incompleto">Falta ejemplo</p>
+<!--
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$dato = recoge("dato");
+
+if ($dato == "") {
+    print "  &lt;p&gt;No ha escrito nada.&lt;/p&gt;\n";
+    print "\n";
+} elseif (filter_var($dato, FILTER_VALIDATE_INT)
+       || filter_var($dato, FILTER_VALIDATE_INT) == 0) {
+    print "  &lt;p&gt;Ha escrito un número entero: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    print "  &lt;p&gt;NO ha escrito un número entero: &lt;strong&gt;$dato&lt;/strong&gt;.&lt;/p&gt;\n";
+    print "\n";
+}
+?&gt;</code>
+</pre>
+      </div>
+      <iframe src="comprobacion-datos/comprobacion-filter-2-1.php" style="height: 22em;"></iframe>
+    </div> -->
 
     <hr class="corta">
 
@@ -444,7 +502,7 @@ if (function_exists("filter_var")) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 2 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 4 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

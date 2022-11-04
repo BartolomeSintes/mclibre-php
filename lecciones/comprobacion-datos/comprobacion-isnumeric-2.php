@@ -32,14 +32,14 @@ $dato = recoge("dato");
 if ($dato == "") {
     print "  <p>No ha escrito nada.</p>\n";
     print "\n";
-} elseif (is_numeric($dato)) {
-    print "  <p>Ha escrito un número: <strong>$dato</strong>.</p>\n";
+} elseif (!is_numeric($dato)) {
+    print "  <p>NO ha escrito un número: <strong>$dato</strong>.</p>\n";
     print "\n";
 } else {
-    print "  <p>NO ha escrito un número: <strong>$dato</strong>.</p>\n";
+    print "  <p>Ha escrito un número: <strong>$dato</strong>.</p>\n";
     print "\n";
 }
 ?>
-  <p><a href="comprobacion-isnumeric.html">Volver al formulario.</a></p>
+  <p><a href="comprobacion-isnumeric-1.php">Volver al formulario.</a></p>
 </body>
 </html>

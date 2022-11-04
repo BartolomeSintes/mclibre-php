@@ -40,15 +40,16 @@
 <?php
 function recoge($var, $m = "")
 {
-    if (!isset($_REQUEST[$var])) {
-        $tmp = is_array($m) ? [] : "";
-    } elseif (!is_array($_REQUEST[$var])) {
-        $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-    } else {
-        $tmp = $_REQUEST[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor));
-        });
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
     }
     return $tmp;
 }
@@ -89,83 +90,115 @@ if (!isset($_REQUEST["dato"])) {
     print "      <th>Devuelve</th>\n";
     print "    </tr>\n";
 
+
+    $resultado = filter_var($dato, FILTER_VALIDATE_BOOLEAN);
+    print "    <tr>\n";
+    print "      <td>FILTER_VALIDATE_BOOLEAN</td>\n";
+    if ($resultado === false && $dato != false) {
+        print "      <td style=\"text-align: center\">false (NO cumple)</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado (cumple)</td>\n";
+    }
+    print "    </tr>\n";
+
+    $filtros = [
+        [FILTER_VALIDATE_INT, "FILTER_VALIDATE_INT"],
+        [FILTER_VALIDATE_FLOAT, "FILTER_VALIDATE_FLOAT"],
+        [FILTER_VALIDATE_DOMAIN, "FILTER_VALIDATE_DOMAIN"],
+        [FILTER_VALIDATE_URL, "FILTER_VALIDATE_URL"],
+        [FILTER_VALIDATE_EMAIL, "FILTER_VALIDATE_EMAIL"],
+        [FILTER_VALIDATE_IP, "FILTER_VALIDATE_IP"],
+        [FILTER_VALIDATE_MAC, "FILTER_VALIDATE_MAC"],
+    ];
+    foreach ($filtros as $filtro) {
+        $resultado = filter_var($dato, $filtro[0]);
+        print "    <tr>\n";
+        print "      <td>$filtro[1]</td>\n";
+        if ($resultado === false) {
+            print "      <td style=\"text-align: center\">false</td>\n";
+        } else {
+            print "      <td style=\"text-align: center\">$resultado</td>\n";
+        }
+        print "    </tr>\n";
+    }
+
     $resultado = filter_var($dato, FILTER_VALIDATE_INT);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_INT</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
     $resultado = filter_var($dato, FILTER_VALIDATE_BOOLEAN);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_BOOLEAN</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
     $resultado = filter_var($dato, FILTER_VALIDATE_FLOAT);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_FLOAT</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
     $resultado = filter_var($dato, FILTER_VALIDATE_DOMAIN);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_DOMAIN</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
     $resultado = filter_var($dato, FILTER_VALIDATE_URL);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_URL</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
     $resultado = filter_var($dato, FILTER_VALIDATE_EMAIL);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_EMAIL</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
     $resultado = filter_var($dato, FILTER_VALIDATE_IP);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_IP</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
     $resultado = filter_var($dato, FILTER_VALIDATE_MAC);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_MAC</td>\n";
-    if ($resultado == true) {
-        print "      <td style=\"text-align: center\">true</td>\n";
-    } elseif ($resultado == false) {
+    if ($resultado === false) {
         print "      <td style=\"text-align: center\">false</td>\n";
+    } else {
+        print "      <td style=\"text-align: center\">$resultado</td>\n";
     }
     print "    </tr>\n";
 
@@ -179,7 +212,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-11-09">9 de noviembre de 2019</time>
+      <time datetime="2022-11-03">3 de noviembre de 2022</time>
     </p>
 
     <p class="licencia">
