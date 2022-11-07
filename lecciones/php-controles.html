@@ -51,71 +51,48 @@
       <li>que el formulario contenga un botón de tipo submit </li>
     </ul>
 
+    <p>El siguiente ejemplo muestra un formulario válido:</p>
+
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Código fuente del formulario</div>
       <div>Ejemplo</div>
-      <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
     </div>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;!-- Formulario --&gt;
-&lt;form action="ejemplo.php"&gt;
+<code class="language-html">&lt;!-- Formulario (form-input-1.php) --&gt;
+&lt;form action="form-input-2.php"&gt;
   &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
   &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
       </div>
-      <iframe src="ejemplos/formularios/form-1-1.php" style="height: 11em;"></iframe>
-      <div class="resultado-html">
-        <pre>Array
-(
-)</pre>
-      </div>
+      <iframe src="ejemplos/formularios/form-input-1.php" style="height: 8em;"></iframe>
       <div class="icono-enlace">
-        <a href="ejemplos/formularios/form-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-
-    <p>El siguiente ejemplo muestra un formulario válido (ejemplo.html):</p>
-
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
-<code class="language-html">&lt;form action="ejemplo.php"&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
-&lt;/form&gt;</code>
-</pre>
-      </div>
-      <div class="resultado-html">
-        <p>Nombre: <input type="text" name="texto" value="Pepito Conejo" readonly></p>
-
-        <p><input type="submit" value="Enviar"></p>
+        <a href="ejemplos/formularios/form-input-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <p>El programa que recibe los datos los guarda automáticamente en la matriz $_REQUEST. Mediante la orden <span class="php-fun">print_r($_REQUEST)</span> se puede mostrar el contenido de la matriz $_REQUEST.</p>
 
-    <p>El siguiente ejemplo muestra lo que escribiría el programa PHP (ejemplo.php) si recibiera la información del formulario anterior (ejemplo.html).</p>
+    <p>El siguiente ejemplo muestra lo que escribiría el programa PHP (form-input-2.php) si recibiera la información del formulario anterior (form-input-1.php).</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
+// Página que recibe los datos del formulario (form-input-2.php)
 print "&lt;pre&gt;";
 print_r($_REQUEST);
 print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html">
-        <pre>Array
-(
-    [nombre] =&gt; Pepito Conejo
-)</pre>
+      <iframe src="ejemplos/formularios/form-input-2.php?nombre=" style="height: 9em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-input-2.php?nombre="><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
@@ -142,7 +119,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="submit" value="Submit"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-submit-1-1.php" style="height: 6em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-submit-1-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -157,7 +134,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="submit" value="Enviar" name="boton2"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-submit-2-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-submit-2-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -180,7 +157,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;button type="submit"&gt;Submit&lt;/button&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-button-submit-1-1.php" style="height: 6em;"></iframe>
+      <iframe src="ejemplos/formularios/form-button-submit-1-1.php" style="height: 7em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -195,7 +172,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;button type="submit" name="boton3"&gt;Enviar&lt;/button&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-button-submit-2-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-button-submit-2-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -211,7 +188,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;button type="submit" name="boton4" value="enviado"&gt;Enviar&lt;/button&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-button-submit-3-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-button-submit-3-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -278,7 +255,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="text" name="cajaTexto1"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-text-1-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-text-1-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -294,7 +271,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="password" name="cajaPassword1"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-password-1-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-password-1-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -335,7 +312,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="text" name="cajaTexto2" placeholder="Escriba aquí cualquier cosa"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-text-2-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-text-2-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -351,7 +328,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="password" name="cajaPassword2" placeholder="Escriba aquí su contraseña"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-password-2-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-password-2-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -396,7 +373,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="text" name="cajaTexto3" value="Escriba aquí cualquier cosa"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-text-3-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-text-3-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -415,7 +392,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="password" name="cajaPassword3" value="Escriba aquí su contraseña"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-password-3-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-password-3-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -609,7 +586,7 @@ print "&lt;/pre&gt;\n";
 &lt;/select&gt;</code>
 </pre>
       </div>
-      <iframe src="ejemplos/formularios/form-select-1-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-select-1-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -723,7 +700,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="hidden" name="oculto1"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-hidden-1-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-hidden-1-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -739,7 +716,7 @@ print "&lt;/pre&gt;\n";
       <div class="codigo">
         <pre><code class="language-html">&lt;input type="hidden" name="oculto2" value="Cualquier cosa"&gt;</code></pre>
       </div>
-      <iframe src="ejemplos/formularios/form-input-hidden-2-1.php" style="height: 7em;"></iframe>
+      <iframe src="ejemplos/formularios/form-input-hidden-2-1.php" style="height: 8em;"></iframe>
       <div class="resultado-html">
         <pre>Array
 (
@@ -858,7 +835,7 @@ print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 2 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

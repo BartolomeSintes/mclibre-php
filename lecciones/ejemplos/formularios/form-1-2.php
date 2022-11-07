@@ -41,7 +41,7 @@ if (!$nombre) {
 }
 print "\n";
 
-if ($curso != "1º" && $curso != "2º") {
+if ($curso != "Primero" && $curso != "Segundo") {
     print "  <p>No ha indicado el curso que estudia.</p>\n";
 } else {
     print "  <p>Estudia $curso.</p>\n";
@@ -49,6 +49,5 @@ if ($curso != "1º" && $curso != "2º") {
 print "\n";
 ?>
   <p><a href="form-1-1.php">Volver al formulario.</a></p>
-
 </body>
 </html>

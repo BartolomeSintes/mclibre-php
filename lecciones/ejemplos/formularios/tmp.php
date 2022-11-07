@@ -10,11 +10,11 @@
 </head>
 
 <body>
-<?php
-print "  <pre>";
-print_r($_REQUEST);
-print "<a href=\"form-textarea-3-1.php\">Volver al formulario.</a>\n";
-print "  </pre>";
-?>
+  <form action="form-textarea-3-2.php" method="get">
+    <p>Nombre: <input type="text" name="texto" value="&lt;body onload=&#34;alert('Hola')&#34;&gt;" readonly></p>
+    <p><input type="submit" value="Enviar"></p>
+
+    <p><input type="submit" value="Enviar"></p>
+  </form>
 </body>
 </html>

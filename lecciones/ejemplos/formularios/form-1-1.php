@@ -17,8 +17,8 @@
 
     <p>
       Curso:
-      <input type="radio" name="curso" value="1º"> 1º
-      <input type="radio" name="curso" value="2º"> 2º
+      <input type="radio" name="curso" value="Primero"> 1º
+      <input type="radio" name="curso" value="Segundo"> 2º
     </p>
 
     <p>

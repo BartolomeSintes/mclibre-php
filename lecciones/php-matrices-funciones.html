@@ -167,7 +167,7 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
         <pre>
 Array
 (
-    [a] =&gt; 2
+    [a] =&gt; 1
     [b] =&gt; 10
     [c] =&gt; 20
     [d] =&gt; 40
@@ -175,13 +175,13 @@ Array
       </div>
     </div>
 
-    <p>Si hay índices numéricos e índices no numéricos y hay índices que coinciden, al mezclar las matrices los valores de índices numéricos se conservan, pero los no numéricos se sobrescriben.</p>
+    <p>Si hay índices numéricos e índices no numéricos y hay índices que coinciden, al mezclar las matrices los valores de índices numéricos se conservan (aunque se renumeren los índices), pero los no numéricos se sobrescriben.</p>
     <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-$uno = [1 =&gt; 1, "b" =&gt; 2, "c" =&gt; 4];
-$dos = [1 =&gt; 100, "c" =&gt; 40, "d" =&gt; 60];
+$uno = [2 =&gt; 1, "b" =&gt; 2, "c" =&gt; 4];
+$dos = [2 =&gt; 100, "c" =&gt; 40, "d" =&gt; 60];
 
 $final = array_merge($uno, $dos);
 

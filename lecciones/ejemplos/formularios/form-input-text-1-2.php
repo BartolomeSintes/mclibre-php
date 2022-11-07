@@ -13,7 +13,7 @@
 <?php
 print "  <pre>";
 print_r($_REQUEST);
-print "<a href=\"form-input-text-1-1.php\">Volver al formulario.</a>";
+print "<a href=\"form-input-text-1-1.php\">Volver al formulario.</a>\n";
 print "  </pre>";
 ?>
 </body>

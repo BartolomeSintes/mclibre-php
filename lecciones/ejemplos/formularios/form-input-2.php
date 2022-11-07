@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    input textarea (1). Controles en Formularios.
+    form input. Formularios.
     Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,9 @@
 <?php
 print "  <pre>";
 print_r($_REQUEST);
-print "<a href=\"form-textarea-1-1.php\">Volver al formulario.</a>\n";
+print "<a href=\"form-input-1.php\">Volver al formulario.</a>\n";
 print "  </pre>";
 ?>
+
 </body>
 </html>

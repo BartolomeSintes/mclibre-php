@@ -16,6 +16,5 @@ print_r($_REQUEST);
 print "</pre>\n";
 ?>
   <p><a href="form-5-1.php">Volver al formulario.</a></p>
-
 </body>
 </html>
