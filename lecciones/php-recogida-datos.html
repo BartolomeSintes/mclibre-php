@@ -1187,13 +1187,15 @@ if ($nombre == "") {
       <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La siguiente función se puede utilizar en casi todos los ejercicios con formularios propuestos en estos apuntes, tanto para recoger datos sueltos (números o cadenas) como para recoger datos en forma de matriz de cualquier dimensión.</p>
       <p>Para que la función sepa si el dato que queremos recoger es una matriz, la función tiene un segundo argumento opcional.</p>
       <ul>
-        <li>Si el dato a recoger no es una matriz, la función sólo requiere un argumento, el nombre del control.</li>
+        <li>Si el dato a recoger es un escalar, es decir, no es una matriz, la función sólo requiere un argumento, el nombre del control.</li>
         <li>Si el dato a recoger es una matriz, la función requiere dos argumentos, el nombre del control y una matriz vacía.</li>
       </ul>
 
+      <p>Si el dato recibido no es del tipo indicado al llamar a la función (escalar/matriz), la función recoge devuelve una cadena vacía o una matriz vacía.</p>
+
       <div class="codigo copy">
         <pre>
-<code class="language-php">// FUNCIÓN DE RECOGIDA DE DATOS
+<code class="language-php">// Función de recogida de datos
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -1214,29 +1216,41 @@ function recoge($var, $m = "")
 
       <hr class="corta">
 
-      <p>Esta función se puede utilizar para recoger datos sueltos, como en el ejemplo siguiente:</p>
+      <p>Esta función se puede utilizar para recoger datos escalares, como en el ejemplo siguiente:</p>
 
       <div class="filaflex">
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;form action="ejemplo.php"&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
-  &lt;p&gt;Apellido: &lt;input type="text" name="apellido"&gt;&lt;/p&gt;
+        <div class="columnaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;!-- Formulario --&gt;
+&lt;form action="recoge-escalar-2.php"&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;Apellidos: &lt;input type="text" <span class="codigo-resaltado">name="apellidos"</span>&gt;&lt;/p&gt;
+
   &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">// Variables que recogen los datos
+$nombre    = <span class="codigo-resaltado">recoge("nombre")</span>;
+$apellidos = <span class="codigo-resaltado">recoge("apellidos")</span>;</code>
+</pre>
+          </div>
         </div>
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" value="Pepito" readonly></p>
-          <p>Apellido: <input type="text" name="texto" value="Conejo" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
+        <iframe src="ejemplos/recogida-datos/recoge-escalar-1.php" style="height: 18em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/recogida-datos/recoge-escalar-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
 
+      <p>El código del programa que recibe los datos (recibe-escalar-2.php) podría ser el siguiente:</p>
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// FUNCIÓN DE RECOGIDA DE DATOS
+// Función de recogida de datos
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -1253,41 +1267,54 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$nombre   = recoge("nombre");
-$apellido = recoge("apellido");
+// Variables que recogen los datos
+$nombre    = <span class="codigo-resaltado">recoge("nombre")</span>;
+$apellidos = <span class="codigo-resaltado">recoge("apellidos")</span>;
 
+// Programa que utiliza los datos recogidos
 if ($nombre == "") {
     print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
 } else {
-    print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
+    print "&lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
 }
 
-if ($apellido == "") {
+if ($apellidos == "") {
     print "&lt;p&gt;No ha escrito ningún apellido&lt;/p&gt;";
 } else {
-    print "&lt;p&gt;Su apellido es $apellido&lt;/p&gt;\n";
+    print "&lt;p&gt;Sus apellidos son &lt;strong&gt;$apellidos&lt;/strong&gt;.&lt;/p&gt;\n";
 }
 ?&gt;</code>
 </pre>
       </div>
 
+      <hr class="corta">
+
       <p>Esta función también se puede utilizar para recoger datos en forma de matriz, como en el ejemplo siguiente:</p>
 
       <div class="filaflex">
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;form action="ejemplo.php"&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" name="nombre[1]"&gt;&lt;/p&gt;
-  &lt;p&gt;Apellido: &lt;input type="text" name="nombre[2]"&gt;&lt;/p&gt;
+        <div class="columnaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;!-- Formulario --&gt;
+&lt;form action="ejemplo.php"&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre[1]"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;Apellido: &lt;input type="text" <span class="codigo-resaltado">name="nombre[2]"</span>&gt;&lt;/p&gt;
+
   &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
 &lt;/form&gt;</code>
 </pre>
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">// Variables que recogen los datos
+$nombre = <span class="codigo-resaltado">recoge("nombre", [])</span>;</code>
+</pre>
+          </div>
         </div>
-        <div class="resultado-html">
-          <p>Nombre: <input type="text" name="texto" value="Pepito" readonly></p>
-          <p>Apellido: <input type="text" name="texto" value="Conejo" readonly></p>
-          <p><input type="submit" value="Enviar"></p>
+        <iframe src="ejemplos/recogida-datos/recoge-matriz-1.php" style="height: 11em;"></iframe>
+        <div class="icono-enlace">
+          <a href="ejemplos/recogida-datos/recoge-matriz-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
         </div>
       </div>
 
@@ -1312,7 +1339,7 @@ function recoge($var, $m = "")
 }
 
 // EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$nombre = recoge("nombre", []);
+$nombre = <span class="codigo-resaltado">recoge("nombre", [])</span>;
 
 if ($nombre[1] == "") {
     print "&lt;p style=\"color: red\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
@@ -1321,7 +1348,7 @@ if ($nombre[1] == "") {
 }
 
 if ($nombre[2] == "") {
-    print "&lt;p style=\"color: red\"&gt;No ha escrito su apellido.&lt;/p&gt;\n";
+    print "&lt;p style=\"color: red\"&gt;No ha escrito ningún apellido.&lt;/p&gt;\n";
 } else {
     print "&lt;p&gt;Su apellido es &lt;strong&gt;$nombre[2]&lt;/strong&gt;.&lt;/p&gt;\n";
 }
@@ -1390,7 +1417,7 @@ print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 8 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
