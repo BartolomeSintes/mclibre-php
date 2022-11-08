@@ -43,9 +43,9 @@ if ($edad == "") {
     print "  <p class=\"aviso\">No ha escrito su edad como número.</p>\n";
     print "\n";
 } elseif (!ctype_digit($edad)) {
-    print "  <p class=\"aviso\">No ha escrito su edad como número entero.</p>\n";
+    print "  <p class=\"aviso\">No ha escrito su edad como número entero positivo.</p>\n";
     print "\n";
-} elseif ($edad < 0 || $edad > 120) {
+} elseif ($edad < 5 || $edad > 120) {
     print "  <p class=\"aviso\">¿Está seguro de que su edad es $edad?</p>\n";
     print "\n";
 } else {

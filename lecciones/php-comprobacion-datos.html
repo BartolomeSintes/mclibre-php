@@ -29,6 +29,7 @@
         <li><a href="#input-number-entero">Ejemplo número entero</a></li>
         <li><a href="#input-radio">Ejemplo botón radio</a></li>
         <li><a href="#input-checkbox">Ejemplo casillas verificación</a></li>
+        <li><a href="#input-relacionados">Ejemplo controles relacionados</a></li>
       </ul>
     </div>
   </nav>
@@ -195,7 +196,7 @@ if ($nombreOk) {
 
     <p>Otro caso podría ser la recogida de un valor numérico en la que queremos que el usuario escriba un valor que puede ser decimal dentro de un rango.</p>
 
-    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor decimal en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">step</span>, <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o recibir una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span>.</p>
+    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor decimal en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">step</span>, <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o recibir una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span> en vez de <span class="html-eti">number</span>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -307,11 +308,11 @@ if ($pesoOk) {
   </section>
 
   <section id="input-number-entero">
-    <h2>Ejemplo de recogida de número entero</h2>
+    <h2>Ejemplo de recogida de número entero positivo</h2>
 
-    <p>Otro caso podría ser la recogida de un valor numérico en la que queremos que el usuario escriba un valor entero (no decimal) dentro de un rango.</p>
+    <p>Otro caso podría ser la recogida de un valor numérico en la que queremos que el usuario escriba un valor entero (no decimal) positivo.</p>
 
-    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor entero en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o recibir un valor decimal o una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span>.</p>
+    <p><strong>Nota</strong>: Una forma de forzar al usuario a escribir un valor entero en un rango sería utilizar en el formulario un control de tipo <span class="html-eti">number</span> con los atributos <span class="html-atri">min</span> y <span class="html-atri">max</span>, pero debemos pensar que siempre podemos sufrir un ataque de inyección y no recibir el control, o recibir un valor decimal o una cadena de texto. Para facilitar la prueba de valores incorrectos sin necesidad de editar la URL, el ejemplo siguiente utiliza un control de tipo <span class="html-eti">text</span> en vez de <span class="html-eti">number</span>.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -329,12 +330,12 @@ if ($pesoOk) {
 
     <p>Este caso es similar al caso anterior de números decimales, pero añadiendo la comprobación de los números decimales (esta comprobación la tendríamos que hacer después de haber comprobado que se trata de un número y antes de comproabr si está fuera del rango deseado):</p>
     <ul>
-      <li>Si se escribe un número decimal:
+      <li>Si se escribe un número entero positivo:
         <div class="codigo">
           <pre>
 <code class="language-php">// Validación de datos y generación de avisos
 } elseif (!ctype_digit($edad)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número entero.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número entero positivo.&lt;/p&gt;\n";
     print "\n";
 } ... </code>
 </pre>
@@ -377,9 +378,9 @@ if ($edad == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número.&lt;/p&gt;\n";
     print "\n";
 } elseif (!ctype_digit($edad)) {
-    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número entero.&lt;/p&gt;\n";
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su edad como número entero positivo.&lt;/p&gt;\n";
     print "\n";
-} elseif ($edad &lt; 0 || $edad &gt; 120) {
+} elseif ($edad &lt; 5 || $edad &gt; 120) {
     print "  &lt;p class=\"aviso\"&gt;¿Está seguro de que su edad es $edad?&lt;/p&gt;\n";
     print "\n";
 } else {
@@ -407,14 +408,14 @@ if ($edadOk) {
       <div class="codigo">
         <pre><code class="language-html">&lt;form action="form-recogida-input-radio-2.php" method="get"&gt;
   &lt;p&gt;
-      ¿Le gusta este formulario?
-      &lt;input type="radio" name="gusta" value="Sí"&gt; Sí
-      &lt;input type="radio" name="gusta" value="No"&gt; No
+    ¿Le gusta este formulario?
+    &lt;input type="radio" name="gusta" value="Sí"&gt; Sí
+    &lt;input type="radio" name="gusta" value="No"&gt; No
   &lt;/p&gt;
 
   &lt;p&gt;
-      &lt;input type="submit" value="Enviar"&gt;
-      &lt;input type="reset" value="Borrar"&gt;
+    &lt;input type="submit" value="Enviar"&gt;
+    &lt;input type="reset" value="Borrar"&gt;
   &lt;/p&gt;
 &lt;/form&gt;</code></pre>
       </div>
@@ -449,6 +450,9 @@ if ($gusta == "") {
         </div>
       </li>
     </ul>
+
+    <p><strong>Nota</strong>: Realmente sería suficiente con la segunda condición, puesto que si el botón se deja en blanco, es un valor distinto de "Sí" y de "No" y el mensaje de aviso es similar. El interés de separar esas dos comprobaciones es que en el primer caso (si no se ha marcado una opción) es un olvido del usuario, pero en el segundo caso (si llega un valor no vacío distinto a los del formulario) se trataría de un ataque de inyección. En una página disponible en la web, en el primer caso sería conveniente informar al usuario, pero en el segundo sería mejor redirigir al formulario o a la página principal del sitio, sin mediar explicaciones (en el ejemplo simplemente mostramos un aviso en ambos casos).</p>
+
     <p>El proceso de recogida de datos completo podría ser el siguiente:</p>
 
     <div class="codigo">
@@ -500,7 +504,7 @@ if ($gustaOk) {
   <section id="input-checkbox">
     <h2>Ejemplo de recogida de varias casillas de verificación</h2>
 
-    <p>En este ejemplo se muestra la recogida de varios controles, concretamente dos casillas de verificación. Las casillas de verificación son controles independientes unos de otros.</p>
+    <p>Si estamos recogiendo datos provenientes de varios controles, debemos realizar la validación de cada uno de ellos en bloques <span class="php-res">if ... else ...</span> independientes. En el ejemplo siguiente se muestra la recogida de dos casillas de verificación. Las casillas de verificación son controles independientes unos de otros.</p>
 
     <p><strong>Nota</strong>: En el caso de las casillas de verificación, un ataque de inyección lo que haría sería cambiar el valor recibido. En el ejemplo siguiente, para poder forzar el envío de valores distintos a los que ofrece el formulario debemos manipular la URL y para ello debemos abrir el ejemplo en una nueva pestaña.</p>
 
@@ -508,9 +512,9 @@ if ($gustaOk) {
       <div class="codigo">
         <pre><code class="language-html">&lt;form action="form-recogida-input-checkbox-2.php" method="get"&gt;
   &lt;p&gt;
-      ¿Sabe programar en estos lenguajes?
-      &lt;input type="checkbox" name="python" value="Sí"&gt; Python
-      &lt;input type="checkbox" name="php" value="Sí"&gt; PHP
+    ¿Sabe programar en estos lenguajes?
+    &lt;input type="checkbox" name="python" value="Sí"&gt; Python
+    &lt;input type="checkbox" name="php" value="Sí"&gt; PHP
   &lt;/p&gt;
 
   &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
@@ -522,21 +526,21 @@ if ($gustaOk) {
       </div>
     </div>
 
-    <p>En este caso mostraremos únicamente un aviso por cada casilla de verificación: si se ha recibido un valor no vacío que no corresponde al valor del control en el formulario ("Sí", en ambos casos). Ambos bloques <span class="php-res">if ... else ...</span> son muy parecidos.</p>
+    <p>En este caso la validación consistirá únicamente en comprobar si se ha recibido un valor no vacío que no corresponde al valor del control en el formulario ("PHP" o "Py", en este caso). Ambos bloques <span class="php-res">if ... else ...</span> son muy parecidos.</p>
 
     <ul>
-      <li>Si cada uno de los valores recibidos no son vacíos ni corresponden a los valores de los controles en el formulario:
+      <li>Si cada uno de los valores recibidos no es vacío ni corresponde al valor enviado por el control en el formulario:
         <div class="codigo">
           <pre>
 <code class="language-php">// Validación de datos y generación de avisos
-if ($python != "Sí" && $python != "") {
+if ($python != "Py" && $python != "") {
     print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en Python.&lt;/p&gt;\n";
     print "\n";
 } else {
     $pythonOk = true;
 }
 
-if ($php != "Sí" && $php != "") {
+if ($php != "PHP" && $php != "") {
     print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en PHP.&lt;/p&gt;\n";
     print "\n";
 } else {
@@ -577,14 +581,14 @@ $pythonOk = false;
 $phpOk    = false;
 
 // Validación de datos y generación de avisos
-if ($python != "Sí" && $python != "") {
+if ($python != "Py" && $python != "") {
     print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en Python.&lt;/p&gt;\n";
     print "\n";
 } else {
     $pythonOk = true;
 }
 
-if ($php != "Sí" && $php != "") {
+if ($php != "PHP" && $php != "") {
     print "  &lt;p class=\"aviso\"&gt;Por favor, indique si sabe programar o no en PHP.&lt;/p&gt;\n";
     print "\n";
 } else {
@@ -612,8 +616,181 @@ if ($pythonOk && $phpOk) {
     </div>
   </section>
 
+  <section id="input-relacionados">
+    <h2>Ejemplo de recogida de varios controles relacionados entre sí</h2>
+
+    <p>En la mayoría de los casos las comprobaciones de cada uno de los controles son independientes, es decir, que el valor recibido de un control es correcto o incorrecto independientemente de los valores recibidos en otros controles. Pero en algunos casos no es así. En esos casos, se aconseja considerar los casos particulares en un bloque <span class="php-res">if ... else ...</span> adicional posterior a la validación de cada control.</p>
+
+    <p>En el ejemplo siguiente se muestra la recogida de tres controles, un botón radio y dos cajas de texto. El programa simula una especie de calculadora básica y además de validar las entradas de forma similar a ejemplos anteriores debemos tener en cuenta que no se puede dividir por cero.</p>
+
+    <p><strong>Nota</strong>: En el ejemplo siguiente, para poder forzar el envío de valores distintos a los que ofrece el formulario en el botón radio debemos manipular la URL y para ello debemos abrir el ejemplo en una nueva pestaña.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre><code class="language-html">&lt;form action="form-recogida-input-relacionados-2.php" method="get"&gt;
+  &lt;p&gt;
+    Operación:
+    &lt;input type="radio" name="operacion" value="suma"&gt; Suma
+    &lt;input type="radio" name="operacion" value="resta"&gt; Resta
+    &lt;input type="radio" name="operacion" value="multiplicacion"&gt; Multiplicación
+    &lt;input type="radio" name="operacion" value="division"&gt; División
+  &lt;/p&gt;
+  &lt;p&gt;
+    Números:
+    &lt;input type="text" name="x"&gt;
+    &lt;input type="text" name="y"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;input type="submit" value="Enviar"&gt;
+    &lt;input type="reset" value="Borrar"&gt;
+  &lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-recogida-input-relacionados-1.php" style="height: 25em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-recogida-input-relacionados-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p>En este caso las validación de la operación es la correspondiente a un botón radio y las validaciones de los números son las correspondientes a un número decimal.</p>
+
+    <ul>
+      <li>La validación de la operación es la correspondiente a un botón radio
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Validación de datos y generación de avisos
+if ($operacion == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado la operación a realizar.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($operacion != "suma" && $operacion != "resta" && $operacion != "multiplicacion" && $operacion != "division") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido ninguna de las operaciones disponibles.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $operacionOk = true;
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>Las validaciones de los números son las correspondientes a números decimales
+        <div class="codigo">
+          <pre>
+<code class="language-php">if ($x == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($x)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número como número.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $xOk = true;
+}
+
+if ($y == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($y)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número como número.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $yOk = true;
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>Pero siempre que se realizan operaciones aritméticas hay que recordar el caso problemático de la división por cero. Si el usuario elige hacer una división y el segundo número es 0, debemos avisarle. Además, cambiaremos una de las variables auxiliares a <span class="php-con">false</span>, para que falle la comprobación final antes de la ejecución del programa principal.
+        <div class="codigo">
+          <pre>
+<code class="language-php">if ($operacion == "division" && $y == 0) {
+    print "  &lt;p class=\"aviso\"&gt;No se puede dividir por cero.&lt;/p&gt;\n";
+    print "\n";
+    $operacionOk = false;
+}</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+    <p>El proceso de recogida de datos completo podría ser el siguiente:</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Función de recogida de datos
+function recoge($var, $m = "")
+{
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Variables que recogen los datos
+$operacion = recoge("operacion");
+$x         = recoge("x");
+$y         = recoge("y");
+
+// Variables auxiliares de comprobación
+$operacionOk = false;
+$xOk         = false;
+$yOk         = false;
+
+// Validación de datos y generación de avisos
+if ($operacion == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha indicado la operación a realizar.&lt;/p&gt;\n";
+    print "\n";
+} elseif ($operacion != "suma" && $operacion != "resta" && $operacion != "multiplicacion" && $operacion != "division") {
+    print "  &lt;p class=\"aviso\"&gt;No ha elegido ninguna de las operaciones disponibles.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $operacionOk = true;
+}
+
+if ($x == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($x)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el primer número como número.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $xOk = true;
+}
+
+if ($y == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número.&lt;/p&gt;\n";
+    print "\n";
+} elseif (!is_numeric($y)) {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito el segundo número como número.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $yOk = true;
+}
+
+if ($operacion == "division" && $y == 0) {
+    print "  &lt;p class=\"aviso\"&gt;No se puede dividir por cero.&lt;/p&gt;\n";
+    print "\n";
+    $operacionOk = false;
+}
+
+// Si todo es correcto, ejecución del programa
+if ($operacionOk && $xOk && $yOk) {
+    print ($operacion == "suma") ? "&lt;p&gt;$x + $y = " . $x + $y . "&lt;/p&gt;" : "";
+    print ($operacion == "resta") ? "&lt;p&gt;$x - $y = " . $x - $y . "&lt;/p&gt;" : "";
+    print ($operacion == "multiplicacion") ? "&lt;p&gt;$x * $y = " . $x * $y . "&lt;/p&gt;" : "";
+    print ($operacion == "division") ? "&lt;p&gt;$x / $y = " . $x / $y . "&lt;/p&gt;" : "";
+}
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 8 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

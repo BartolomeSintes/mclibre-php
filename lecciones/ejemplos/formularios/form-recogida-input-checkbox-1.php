@@ -13,8 +13,8 @@
   <form action="form-recogida-input-checkbox-2.php" method="get">
     <p>
         ¿Sabe programar en estos lenguajes?
-        <input type="checkbox" name="python" value="Sí"> Python
-        <input type="checkbox" name="php" value="Sí"> PHP
+        <input type="checkbox" name="python" value="Py"> Python
+        <input type="checkbox" name="php" value="PHP"> PHP
     </p>
 
     <p><input type="submit" value="Enviar"></p>

@@ -38,14 +38,14 @@ $pythonOk = false;
 $phpOk    = false;
 
 // Validación de datos y generación de avisos
-if ($python != "Sí" && $python != "") {
+if ($python != "Py" && $python != "") {
     print "  <p class=\"aviso\">Por favor, indique si sabe programar o no en Python.</p>\n";
     print "\n";
 } else {
     $pythonOk = true;
 }
 
-if ($php != "Sí" && $php != "") {
+if ($php != "PHP" && $php != "") {
     print "  <p class=\"aviso\">Por favor, indique si sabe programar o no en PHP.</p>\n";
     print "\n";
 } else {
