@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Recogida input number (1). Recogida de datos.
+    Comprobación input number (1). Comprobación de datos.
     Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

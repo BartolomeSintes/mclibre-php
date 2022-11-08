@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Comprobación input text. Comprobación de datos.
+  name repetidos. Formularios.
     Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-  <form action="form-recogida-input-text-2.php" method="get">
-    <p>Escriba su nombre: <input type="text" name="nombre"></p>
+<?php
+print "  <pre>";
+print_r($_REQUEST);
+print "<a href=\"form-name-repetido-1.php\">Volver al formulario.</a>\n";
+print "  </pre>";
+?>
 
-    <p><input type="submit" value="Enviar"></p>
-  </form>
 </body>
 </html>

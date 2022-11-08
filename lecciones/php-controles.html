@@ -54,7 +54,7 @@
     <p>El siguiente ejemplo muestra un formulario válido:</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente del formulario</div>
+      <div>Código HTML del formulario</div>
       <div>Ejemplo</div>
       <div class="icono-enlace"></div>
     </div>
@@ -100,7 +100,33 @@ print "&lt;/pre&gt;\n";
 
     <hr class="corta">
 
-    <p>En los ejemplos que se encuentran en esta página, cada ejemplo muestra el código fuente de la página html, el aspecto que tiene el control y el contenido de la matriz $_REQUEST cuando se recibe la información.</p>
+    <p>Los controles deben de tener nombres distintos. Si varios controles tienen el mismo nombre, en la matriz $_REQUEST solo se recibirá uno de ellos, el último, como muestra el siguiente ejemplo.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksemi.svg" alt="Desaconsejado" title="Desaconsejado" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;!-- Formulario (form-name-repetido-1.php) --&gt;
+&lt;form action="form-name-repetido-2.php"&gt;
+  &lt;p&gt;Nombre 1: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
+  &lt;p&gt;Nombre 2: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-name-repetido-1.php" style="height: 9em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-name-repetido-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p><strong>Nota</strong>: El código HTML del formulario no es incorrecto, pero el programa PHP no recibiría todos los datos.</p>
+
+    <hr class="corta">
+
+    <p>Los ejemplos que se encuentran a continuación se componen de cuatro elementos: la etiqueta html, una página de ejemplo que se puede probar, el contenido de la matriz $_REQUEST cuando se recibe la información y un enlace al ejemplo para ejectuarlo en una pestaña aparte.</p>
   </section>
 
   <section id="submit">
@@ -109,7 +135,7 @@ print "&lt;/pre&gt;\n";
     <p>Este control se puede crear con la etiqueta <span class="html-eti">&lt;input&gt;</span> o con la etiqueta <span class="html-eti">&lt;button&gt;</span>. En ambos casos, este control se envía siempre que esté definido el atributo <span class="html-atri">name</span> y que se haya hecho clic en el botón. El valor enviado es el valor del atributo <span class="html-atri">value</span>.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -147,7 +173,7 @@ print "&lt;/pre&gt;\n";
     </div>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -203,7 +229,7 @@ print "&lt;/pre&gt;\n";
     <p>Normalmente no se suele dar el atributo <span class="html-atri">name</span> al botón Enviar ya que el usuario no aporta información en el botón, simplemente hace clic en él para enviar el formulario, pero en algunos casos sí que puede ser conveniente. Por ejemplo, si el formulario contiene varios botones y queremos saber cuál se ha pulsado, como en el ejemplo siguiente, en el que los atributos <span class="html-atri">name</span> son iguales, pero los atributos <span class="html-atri">value</span> son distintos:</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -245,7 +271,7 @@ print "&lt;/pre&gt;\n";
     <p>Los controles caja de texto, caja de contraseña y área de texto se envían siempre, aunque estén vacíos. El valor enviado es el contenido de la caja o área.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -302,7 +328,7 @@ print "&lt;/pre&gt;\n";
     <p>El atributo <span class="html-atri">placeholder</span> permite añadir al control un texto que desaparece al escribir en él. Ese texto no se envía en ningún caso.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -360,7 +386,7 @@ print "&lt;/pre&gt;\n";
 
     <div class="filaflex cabecera">
       <div class="icono-ok"></div>
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -430,7 +456,7 @@ print "&lt;/pre&gt;\n";
     <p>Este control se envía solamente si se marca la casilla. El valor enviado es "on" si la casilla no tiene definido el atributo <span class="html-atri">value</span> o el valor del atributo <span class="html-atri">value</span> si éste está definido.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -490,7 +516,7 @@ print "&lt;/pre&gt;\n";
 
     <div class="filaflex cabecera">
       <div class="icono-ok"></div>
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -572,7 +598,7 @@ print "&lt;/pre&gt;\n";
     <p>Si el menú admite selección múltiple, entonces el nombre del menú debe acabar con corchetes ([]) y se envía como una matriz, de tantos elementos como opciones se hayan elegido.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -690,7 +716,7 @@ print "&lt;/pre&gt;\n";
     <p>Este control se envía siempre y el valor enviado es el valor del atributo <span class="html-atri">value</span>.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -737,7 +763,7 @@ print "&lt;/pre&gt;\n";
     <p>El origen de las coordenadas es el extremo superior izquierdo de la imagen. El valor X aumenta a medida que nos desplazamos a la derecha y el valor Y aumenta a medida que nos desplazamos hacia abajo.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
       <div class="icono-enlace"></div>
@@ -775,7 +801,7 @@ print "&lt;/pre&gt;\n";
     <p>En un formulario "normal", este control se envía siempre y el valor enviado es el nombre del archivo elegido.</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_REQUEST</div>
     </div>
@@ -798,7 +824,7 @@ print "&lt;/pre&gt;\n";
     <p>Para que este control envíe toda la información, el formulario debe tener el atributo <span class="html-atri">enctype</span> con el valor <span class="html-atri-valor">multipart/form-data</span> y ser enviado con el método <span class="html-atri-valor">POST</span>. La información se almacena entonces en la matriz $_FILES (pero no en la variable $_REQUEST).</p>
 
     <div class="filaflex cabecera">
-      <div>Código fuente</div>
+      <div>Etiqueta html</div>
       <div>Ejemplo</div>
       <div>$_FILES</div>
     </div>
@@ -835,7 +861,7 @@ print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 7 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 8 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
