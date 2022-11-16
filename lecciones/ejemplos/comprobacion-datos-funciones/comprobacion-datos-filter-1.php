@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Función filter_var() (Formulario). Comprobación de datos.
+    Función filter_var() (Formulario). Funciones de comprobación de datos.
     PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
