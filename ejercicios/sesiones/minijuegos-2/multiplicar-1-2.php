@@ -1,6 +1,6 @@
 <?php
 /**
- * Puntería 2 - punteria-2.php
+ * Multiplicar 1-2 - multiplicar-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -21,32 +21,15 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("punteria");
+session_name("multiplicar-1");
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <title>
-    Puntería 2.
-    Minijuegos (1).
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
-</head>
 
-<body>
-  <h1>Puntería 2</h1>
+// Si algún número no está guardado en la sesión, vuelve al formulario
+if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
+    header("Location:multiplicar-1-1.php");
+    exit;
+}
 
-  <form action="punteria-2.php" method="get">
-    <p>Haga clic en el punto negro:</p>
-
-    <p><input type="image" name="dibujo" src="punteria-dibujo.php" alt="Puntería"></p>
-  </form>
-
-<?php
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -63,34 +46,68 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-$xu = recoge("dibujo_x");
-$yu = recoge("dibujo_y");
+$respuesta = recoge("respuesta");
 
-$xuOk = false;
-$yuOk = false;
+$respuestaOk = false;
 
-if ($xu == "" || !is_numeric($xu) || !ctype_digit($xu)) {
-    $xuOk = false;
+if ($respuesta == "" || !is_numeric($respuesta)) {
+    header("Location:multiplicar-1-1.php");
+    exit;
 } else {
-    $xuOk = true;
+    $respuestaOk = true;
 }
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>
+    Multiplicar 1 (Resultado).
+    Minijuegos (2).
+    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
+  <style>table { text-align: right; }</style>
+</head>
 
-if ($yu == "" || !is_numeric($yu) || !ctype_digit($yu)) {
-    $yuOk = false;
-} else {
-    $yuOk = true;
-}
+<body>
+  <h1>Multiplicar 1 (Resultado)</h1>
 
-if ($xuOk && $yuOk) {
-    if (($xu - $_SESSION["x"]) * ($xu - $_SESSION["x"]) + ($yu - $_SESSION["y"]) * ($yu - $_SESSION["y"]) <= $_SESSION["r"] * $_SESSION["r"]) {
-        print "  <p>¡Enhorabuena! Ha acertado.</p>\n";
+<?php
+if ($respuestaOk) {
+    $respuestaCorrecta = $_SESSION["a"] * $_SESSION["b"];
+    if ($respuesta == $respuestaCorrecta) {
+        print "  <p>¡Respuesta correcta!</p>\n";
         print "\n";
     } else {
-        print "  <p>Lo siento, ha fallado. Pruebe de nuevo.</p>\n";
+        print "  <p class=\"aviso\">¡Respuesta incorrecta!</p>\n";
         print "\n";
+
+        print "  <p>La respuesta correcta no es <strong>$respuesta</strong>. "
+            . "La respuesta correcta es <strong>$respuestaCorrecta</strong>.</p>\n";
+        print "\n";
+
+        print "  <table class=\"grande\">\n";
+        print "    <tr>\n";
+        print "      <td></td>\n";
+        print "      <td>$_SESSION[a]</td>\n";
+        print "    </tr>\n";
+        print "    <tr>\n";
+        print "      <td>x</td>\n";
+        print "      <td>$_SESSION[b]</td>\n";
+        print "    </tr>\n";
+        print "    <tr>\n";
+        print "      <td colspan=\"2\" style=\"border-top: black 2px solid;\">"
+            . "$respuestaCorrecta</td>\n";
+        print "    </tr>\n";
+        print "  </table>\n";
     }
 }
 ?>
+
+  <p><a href="multiplicar-1-1.php">Volver al formulario.</a></p>
+
   <footer>
     <p class="ultmod">
       Última modificación de esta página:

@@ -1,11 +1,11 @@
 <?php
 /**
- * Multiplicar 1-2 - multiplicar-1-2.php
+ * Dividir 1-2 - dividir-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2022-10-04
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,12 +21,12 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("multiplicar-1");
+session_name("dividir-1");
 session_start();
 
 // Si algún número no está guardado en la sesión, vuelve al formulario
 if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
-    header("Location:multiplicar-1-1.php");
+    header("Location:dividir-1-1.php");
     exit;
 }
 
@@ -46,24 +46,25 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-$respuesta = recoge("respuesta");
-
+$cociente    = recoge("cociente");
+$resto       = recoge("resto");
 $respuestaOk = false;
 
-if ($respuesta == "" || !is_numeric($respuesta)) {
-    header("Location:multiplicar-1-1.php");
+if ($cociente == "" || !is_numeric($cociente) || $resto == "" || !is_numeric($resto)) {
+    header("Location:dividir-1-1.php");
     exit;
 } else {
     $respuestaOk = true;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>
-    Multiplicar 1 (Resultado).
-    Minijuegos (1).
+    Dividir 1 (Resultado).
+    Minijuegos (2).
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,46 +73,43 @@ if ($respuesta == "" || !is_numeric($respuesta)) {
 </head>
 
 <body>
-  <h1>Multiplicar 1 (Resultado)</h1>
+  <h1>Dividir 1 (Resultado)</h1>
 
 <?php
 if ($respuestaOk) {
-    $respuestaCorrecta = $_SESSION["a"] * $_SESSION["b"];
-    if ($respuesta == $respuestaCorrecta) {
+    $cocienteCorrecto = intdiv($_SESSION["a"], $_SESSION["b"]);
+    $restoCorrecto    = $_SESSION["a"] % $_SESSION["b"];
+    if ($cociente == $cocienteCorrecto && $resto == $restoCorrecto) {
         print "  <p>¡Respuesta correcta!</p>\n";
         print "\n";
     } else {
         print "  <p class=\"aviso\">¡Respuesta incorrecta!</p>\n";
         print "\n";
 
-        print "  <p>La respuesta correcta no es <strong>$respuesta</strong>. "
-            . "La respuesta correcta es <strong>$respuestaCorrecta</strong>.</p>\n";
+        print "  <p>La respuesta correcta no es <strong>$cociente</strong> y <strong>$resto</strong>. "
+            . "La respuesta correcta es <strong>$cocienteCorrecto</strong> y <strong>$restoCorrecto</strong>.</p>\n";
         print "\n";
 
-        print "  <table class=\"grande\">\n";
+        print "  <table class=\"grande derecha\">\n";
         print "    <tr>\n";
-        print "      <td></td>\n";
         print "      <td>$_SESSION[a]</td>\n";
+        print "      <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$_SESSION[b]</td>\n";
         print "    </tr>\n";
         print "    <tr>\n";
-        print "      <td>x</td>\n";
-        print "      <td>$_SESSION[b]</td>\n";
-        print "    </tr>\n";
-        print "    <tr>\n";
-        print "      <td colspan=\"2\" style=\"border-top: black 2px solid;\">"
-            . "$respuestaCorrecta</td>\n";
+        print "      <td>$restoCorrecto</td>\n";
+        print "      <td>$cocienteCorrecto</td>\n";
         print "    </tr>\n";
         print "  </table>\n";
     }
 }
 ?>
 
-  <p><a href="multiplicar-1-1.php">Volver al formulario.</a></p>
+  <p><a href="dividir-1-1.php">Volver al formulario.</a></p>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2022-10-04">4 de octubre de 2022</time>
     </p>
 
     <p class="licencia">

@@ -38,7 +38,7 @@ if (!isset($_SESSION["ancho"]) || !isset($_SESSION["r"])
   <meta charset="utf-8">
   <title>
     Puntería 1 (Resultado).
-    Minijuegos (1).
+    Minijuegos (2).
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

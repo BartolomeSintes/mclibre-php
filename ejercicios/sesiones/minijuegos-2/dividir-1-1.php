@@ -1,6 +1,6 @@
 <?php
 /**
- * Puntería 1-1 - punteria-1-1.php
+ * Dividir 1-1 - dividir-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -21,27 +21,49 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+session_name("dividir-1");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>
-    Puntería 1 (Formulario).
-    Minijuegos (1).
+    Dividir 1 (Formulario).
+    Minijuegos (2).
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
+  <style>input { text-align: right; }</style>
 </head>
 
 <body>
-  <h1>Puntería 1 (Formulario)</h1>
+  <h1>Dividir 1 (Formulario)</h1>
 
-  <form action="punteria-1-2.php" method="get">
-    <p>Haga clic en el punto negro:</p>
+  <form action="dividir-1-2.php" method="get">
+    <p>Escriba el resultado de la siguiente división:</p>
 
-    <p><input type="image" name="dibujo" src="punteria-dibujo.php" alt="Puntería"></p>
+<?php
+$_SESSION["a"] = rand(10, 99);
+$_SESSION["b"] = rand(1, 9);
+
+print "    <table class=\"grande derecha\">\n";
+print "      <tr>\n";
+print "        <td>$_SESSION[a]</td>\n";
+print "        <td style=\"border-left: black 2px solid; border-bottom: black 2px solid;\">$_SESSION[b]</td>\n";
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><input type=\"text\" name=\"resto\" size=\"3\"></td>\n";
+print "        <td><input type=\"text\" name=\"cociente\" size=\"3\"></td>\n";
+print "      </tr>\n";
+print "    </table>\n";
+?>
+
+    <p>
+      <input type="submit" value="Corregir">
+      <input type="reset" value="Borrar">
+    </p>
   </form>
 
   <footer>

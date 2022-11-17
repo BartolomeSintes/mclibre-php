@@ -1,6 +1,6 @@
 <?php
 /**
- * Retrato Robot - retrato-robot.php
+ * Puntería 2 - punteria-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -21,45 +21,32 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-session_name("retrato-robot");
+session_name("punteria");
 session_start();
-
-// Variables auxiliares
-$valorMinimo = 1;
-$valorMaximo = 7;
-
-// Valores iniciales
-if (!isset($_SESSION["a"]) || !isset($_SESSION["b"]) || !isset($_SESSION["c"])) {
-    $_SESSION["a"] = rand($valorMinimo, $valorMaximo);
-    $_SESSION["b"] = rand($valorMinimo, $valorMaximo);
-    $_SESSION["c"] = rand($valorMinimo, $valorMaximo);
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>
-    Retato Robot.
-    Minijuegos (1).
+    Puntería 2.
+    Minijuegos (2).
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-ejercicios.css" title="Color">
-  <style>
-    table { border-collapse: collapse; ; margin-left: auto; margin-right: auto; }
-    td { padding: 0; }
-    img { vertical-align: bottom; }
-  </style>
 </head>
 
 <body>
-  <h1>Retrato Robot</h1>
+  <h1>Puntería 2</h1>
 
-  <form action="retrato-robot.php" method="get">
-    <table>
+  <form action="punteria-2.php" method="get">
+    <p>Haga clic en el punto negro:</p>
+
+    <p><input type="image" name="dibujo" src="punteria-dibujo.php" alt="Puntería"></p>
+  </form>
+
 <?php
-// Funciones auxiliares
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -76,40 +63,34 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogida de datos
-$mod = recoge("mod");
+$xu = recoge("dibujo_x");
+$yu = recoge("dibujo_y");
 
-// Se renueva la imagen solicitada
-if ($mod == 1) {
-    $_SESSION["a"] = rand($valorMinimo, $valorMaximo);
-} elseif ($mod == 2) {
-    $_SESSION["b"] = rand($valorMinimo, $valorMaximo);
-} elseif ($mod == 3) {
-    $_SESSION["c"] = rand($valorMinimo, $valorMaximo);
+$xuOk = false;
+$yuOk = false;
+
+if ($xu == "" || !is_numeric($xu) || !ctype_digit($xu)) {
+    $xuOk = false;
+} else {
+    $xuOk = true;
 }
 
-// Se genera el formulario
+if ($yu == "" || !is_numeric($yu) || !ctype_digit($yu)) {
+    $yuOk = false;
+} else {
+    $yuOk = true;
+}
 
-print "      <tr>\n";
-print "        <td><img src=\"img/retratos/retratos-$_SESSION[c]-3.jpg\" alt=\"ojos\"></td>\n";
-print "        <td><button type=\"submit\" name=\"mod\" value=\"3\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
-print "      </tr>\n";
-print "      <tr>\n";
-print "        <td><img src=\"img/retratos/retratos-$_SESSION[b]-2.jpg\" alt=\"nariz\"></td>\n";
-print "        <td><button type=\"submit\" name=\"mod\" value=\"2\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
-print "      </tr>\n";
-print "      <tr>\n";
-print "        <td><img src=\"img/retratos/retratos-$_SESSION[a]-1.jpg\" alt=\"boca\"></td>\n";
-print "        <td><button type=\"submit\" name=\"mod\" value=\"1\">"
-    . "<img src=\"img/refresh.svg\" height=\"60\" alt=\"cambiar\"></button></td>\n";
-print "      </tr>\n";
-
+if ($xuOk && $yuOk) {
+    if (($xu - $_SESSION["x"]) * ($xu - $_SESSION["x"]) + ($yu - $_SESSION["y"]) * ($yu - $_SESSION["y"]) <= $_SESSION["r"] * $_SESSION["r"]) {
+        print "  <p>¡Enhorabuena! Ha acertado.</p>\n";
+        print "\n";
+    } else {
+        print "  <p>Lo siento, ha fallado. Pruebe de nuevo.</p>\n";
+        print "\n";
+    }
+}
 ?>
-    </table>
-  </form>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
