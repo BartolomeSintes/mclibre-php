@@ -1,11 +1,11 @@
 <?php
 /**
- * Minijuegos (2) 1 - minijuegos-2-1-1.php
+ * Quita cartas en orden (1) - minijuegos-3-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2021-11-23
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,21 +21,24 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 // Se accede a la sesión
-session_name("minijuegos-2-1");
+session_name("minijuegos-3-3");
 session_start();
-if (!isset($_SESSION["dados"])) {
-    $_SESSION["dados"] = 1;
+
+if (!isset($_SESSION["nCartas"])) {
+    $_SESSION["nCartas"] = 5;
+    $_SESSION["cartas"]  = range(1, $_SESSION["nCartas"]);
+    shuffle($_SESSION["cartas"]);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>
-    Tirada de dados.
-    Minijuegos (2). Sesiones.
+    Quita cartas en orden.
+    Minijuegos (3). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,37 +46,26 @@ if (!isset($_SESSION["dados"])) {
 </head>
 
 <body>
-  <h1>Tirada de dados</h1>
+  <h1>Quita cartas en orden</h1>
 
+  <form action="minijuegos-3-3-2.php" method="get">
+    <p>Haga clic en las cartas en orden numérico creciente:</p>
 <?php
-print "  <p style=\"font-size: 5rem; line-height: 4rem; margin:0; \">";
-for ($i = 1; $i <= $_SESSION["dados"]; $i++) {
-    print "&#" . rand(9856, 9861) . "; ";
+print "        <p>\n";
+foreach ($_SESSION["cartas"] as $carta) {
+    print "        <button type=\"submit\" name=\"carta\" value=\"$carta\" style=\"border: none; background-color: transparent;\" >\n";
+    print "          <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+    print "        </button>\n";
 }
-print "</p>\n";
-print "\n";
-
+print "        </p\n";
 ?>
-  <form action="minijuegos-2-1-2.php" method="get">
-    <p>Haga clic en los botones para aumentar o disminuir el número de dados o para volver a tirarlos:</p>
-
-    <p>
-      <button type="submit" name="accion" value="bajar" style="font-size: 2rem">-</button>
-<?php
-print "      <span style=\"font-size: 2rem\">$_SESSION[dados]</span>\n";
-?>
-      <button type="submit" name="accion" value="subir" style="font-size: 2rem">+</button>
-    </p>
-
-    <p>
-      <button type="submit" name="accion" value="tirar">Tirar dados</button>
-    </p>
+    <p><input type="submit" name="accion" value="Reiniciar"></p>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2021-11-23">23 de noviembre de 2021</time>
     </p>
 
     <p class="licencia">

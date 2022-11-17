@@ -38,7 +38,7 @@ if (!isset($_SESSION["longitud"]) || !isset($_SESSION["objetivo"]) || !isset($_S
   <meta charset="utf-8">
   <title>
     Simon (4).
-    Minijuegos (2). Sesiones.
+    Minijuegos. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -1,11 +1,11 @@
 <?php
 /**
- * Quita cartas en orden (2) - minijuegos-2-3-2.php
+ * Minijuegos (3) 2 - minijuegos-3-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-23
+ * @version   2018-10-31
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,14 +21,10 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Se accede a la sesión
-session_name("minijuegos-2-3");
-session_start();
 
-if (!isset($_SESSION["nCartas"]) || !isset($_SESSION["cartas"])) {
-    header("Location:minijuegos-2-3-1.php");
-    exit;
-}
+// Se accede a la sesión
+session_name("minijuegos-3-1");
+session_start();
 
 function recoge($var, $m = "")
 {
@@ -46,15 +42,20 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+if (!isset($_SESSION["dados"])) {
+    $_SESSION["dados"] = 1;
+}
+
 $accion = recoge("accion");
-$carta = recoge("carta");
 
-if (is_numeric($carta) && $carta == min($_SESSION["cartas"])) {
-    unset($_SESSION["cartas"][array_search($carta, $_SESSION["cartas"])]);
+if ($accion == "subir") {
+    $_SESSION["dados"]++;
+} elseif ($accion == "bajar") {
+    $_SESSION["dados"]--;
 }
 
-if ($accion == "Reiniciar") {
-    session_destroy();
+if ($_SESSION["dados"] < 1) {
+    $_SESSION["dados"] = 1;
 }
 
-header("Location:minijuegos-2-3-1.php");
+header("Location:minijuegos-3-1-1.php");

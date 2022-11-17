@@ -1,6 +1,6 @@
 <?php
 /**
- * Mueve fichas - minijuegos-2-5-2.php
+ * Mueve fichas - minijuegos-3-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -23,11 +23,11 @@
  */
 // Se accede a la sesión
 
-session_name("minijuegos-2-5");
+session_name("minijuegos-3-5");
 session_start();
 
 if (!isset($_SESSION["dado"])  || !isset($_SESSION["r"]) || !isset($_SESSION["g"]) || !isset($_SESSION["b"])) {
-    header("Location:minijuegos-2-5-1.php");
+    header("Location:minijuegos-3-5-1.php");
     exit;
 }
 
@@ -60,4 +60,4 @@ if ($ficha == "r" && $_SESSION["r"] + $_SESSION["dado"] <= 7) {
     $_SESSION["dado"] = rand(1, 6);
 }
 
-header("Location:minijuegos-2-5-1.php");
+header("Location:minijuegos-3-5-1.php");
