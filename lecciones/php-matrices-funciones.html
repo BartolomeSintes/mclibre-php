@@ -127,7 +127,7 @@ Array
         <pre>
 <code class="language-php">&lt;?php
 $uno = [1 =&gt; 1, 2 =&gt; 2, 3 =&gt; 4];
-$dos = [3 =&gt; 1, 3 =&gt; 3, 4 =&gt; 9];
+$dos = [2 =&gt; 1, 3 =&gt; 3, 4 =&gt; 9];
 
 $final = array_merge($uno, $dos);
 
@@ -176,6 +176,7 @@ Array
     </div>
 
     <p>Si hay índices numéricos e índices no numéricos y hay índices que coinciden, al mezclar las matrices los valores de índices numéricos se conservan (aunque se renumeren los índices), pero los no numéricos se sobrescriben.</p>
+
     <div class="filaflex">
       <div class="codigo">
         <pre>
@@ -201,6 +202,82 @@ Array
 )</pre>
       </div>
     </div>
+
+    <p>Por la manera en que realiza la mezcla de marices, el orden de las matrices al llamar a la función afecta al resultado.</p>
+    <ul>
+      <li>Si los índices no núméricos no coinciden, las matrices obtenidas contienen los mismos valores, aunque no en el mismo orden.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$uno = [1 =&gt; 10, "a" =&gt; 20];
+$dos = [1 =&gt; 30, "b" =&gt; 40];
+
+$final = array_merge($uno, $dos);
+
+print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+
+$final = array_merge($dos, $uno);
+
+print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>
+Array
+(
+    [0] =&gt; 10
+    [a] =&gt; 20
+    [1] =&gt; 30
+    [b] =&gt; 40
+)
+Array
+(
+    [0] =&gt; 30
+    [a] =&gt; 40
+    [1] =&gt; 10
+    [b] =&gt; 20
+)</pre>
+          </div>
+        </div>
+      </li>
+      <li> Pero si hay índices no numéricos que coinciden, las matrices obtenidas no contienen los mismos valores.
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$uno = [1 =&gt; 10, "a" =&gt; 20];
+$dos = [1 =&gt; 30, "a" =&gt; 40];
+
+$final = array_merge($uno, $dos);
+
+print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+
+$final = array_merge($dos, $uno);
+
+print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>
+Array
+(
+    [0] =&gt; 10
+    [a] =&gt; 40
+    [1] =&gt; 30
+)
+Array
+(
+    [0] =&gt; 30
+    [a] =&gt; 20
+    [1] =&gt; 10
+)</pre>
+          </div>
+        </div>
+        </li>
+      </ul>
   </section>
 
   <section id="count">
@@ -1203,7 +1280,7 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
