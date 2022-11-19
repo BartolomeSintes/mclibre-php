@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Minijuegos (1). Soluciones. Ejercicios (Sesiones). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios Sesiones - Minijuegos (1) - Soluciones</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Minijuegos (1)</h2>
+
+      <h3><a href="#">Enunciados</a></h3>
+      <ul>
+        <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-1">1 - Nueva carta</a></li>
+        <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-2">2 - La carta más alta (1)</a></li>
+        <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-3">3 - La carta más alta (2)</a></li>
+        <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-4">4 - Nuevas cartas</a></li>
+        <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-5">5 - Jugada de tres cartas</a></li>
+        <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-6">6 - Partida de tres cartas</a></li>
+      </ul>
+
+      <h3><a href="#">Soluciones</a></h3>
+      <ul>
+        <li><a href="#ejercicio-1">1 - Nueva carta</a></li>
+        <li><a href="#ejercicio-2">2 - La carta más alta (1)</a></li>
+        <li><a href="#ejercicio-3">3 - La carta más alta (2)</a></li>
+        <li><a href="#ejercicio-4">4 - Nuevas cartas</a></li>
+        <li><a href="#ejercicio-5">5 - Jugada de tres cartas</a></li>
+        <li><a href="#ejercicio-6">6 - Partida de tres cartas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sesiones/minijuegos-1/index.html">Sesiones Minijuegos (1)</a>. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
+
+  <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Para hacer estos ejercicios, se recomienda seguir el recorrido de la aplicación, suponiendo que el usuario introduce datos. Pero una vez completada la aplicación hay que comprobar desde el principio (cerrando el navegador previamente) que la aplicación funciona correctamente (es decir, que la aplicación tiene en cuenta que la primera vez que se ejecuta, todavía no hay datos).</p>
+
+  <p>Es importante recordar que el usuario sólo va a ver la página 1 del programa, ya que la página 2 va a redirigir siempre automáticamente a la página 1. Por ello, la página 2 no debe tener ningún fragmento de HTML, ni ningún <span class="php-res">print</span>.</p>
+
+  <section id="ejercicio-1">
+    <h3>Minijuegos (1) 1 - Nueva carta</h3>
+
+    <ol>
+      <li>Para que las dos páginas del programa puedan utilizar el número que hay que mostrar en pantalla (el número se muestra en la página 1 y se modifica en la página 2), guardaremos ese número en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
+      <li>La página 1 muestra la carta guardada en $_SESSION (el número guardado corresponde al nombre del fichero de la imagen de la carta).</li>
+      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li>Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
+        <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+      </li>
+      <li>En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nueva", cambiamos el valor de la carta al azar.</li>
+      <li>Finalmente, la página 2 redirige a la página 1.</li>
+    </ol>
+
+    <p>minijuegos-1-1-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">1</span>
+session_name("minijuegos-1-1");
+session_start();
+
+// Si el valor de sesión no existe, redirigimos a la primera página <span class="numero-circulo">2</span>
+if (!isset($_SESSION["carta"])) {
+    header("location:minijuegos-1-1-1.php");
+    exit;
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+...
+  &lt;form action="minijuegos-1-1-2.php"&gt;
+&lt;?php
+// Mostramos la carta, guardada en la sesión <span class="numero-circulo">3</span>
+print "    &lt;p&gt;&lt;img src=\"img/cartas/c$_SESSION[carta].svg\" alt=\"$_SESSION[carta] de corazones\" height=\"150\"&gt;&lt;/p&gt;\n";
+print "\n";
+?&gt;
+    &lt;p&gt;&lt;button type="submit" name="accion" value="nueva"&gt;Nueva carta&lt;/button&gt;&lt;/p&gt;
+  &lt;/form&gt;
+...</code>
+</pre>
+    </div>
+
+    <p>minijuegos-1-1-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">4</span>
+session_name("minijuegos-1-1");
+session_start();
+
+// Si el valor de sesión no existe, redirigimos a la primera página <span class="numero-circulo">5</span>
+if (!isset($_SESSION["carta"])) {
+    header("location:minijuegos-1-1-1.php");
+    exit;
+}
+
+// Funciones auxiliares <span class="numero-circulo">6</span>
+function recoge($var, $m = "")
+{
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos accion
+$accion = recoge("accion");
+
+// Si recibimos "nueva", modificamos el número de carta <span class="numero-circulo">7</span>
+if ($accion == "nueva") {
+    $_SESSION["carta"] = rand(1, 10);
+}
+
+// Volvemos al formulario<span class="numero-circulo">8</span>
+header("location:minijuegos-1-1-1.php");</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h3>Minijuegos (1) 2 - La carta más alta (1)</h3>
+
+    <p>Este ejercicio añade al anterior la capacidad de "recordar" la carta más alta mostrada hasta el momento, así como la posibilidad de reiniciar el proceso.</p>
+
+    <ol>
+      <li>Para que las dos páginas del programa puedan utilizar el número de carta y el valor máximo obtenido (en la página 1 se muestran esos valores y en la página 2 se modifican), guardaremos esos valores en $_SESSION. Por tanto, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a ambas variables si no existes.</li>
+      <li>La página 1 muestra la carta y el valor máximo, ambos valores guardados en $_SESSION.</li>
+      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li>Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará un valor inicial.</li>
+      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+        <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
+      </li>
+      <li>Si recibimos el valor "reiniciar", damos a las variables de sesión los valores iniciales (1 en las dos).</li>
+      <li>Si recibimos el valor "nueva", cambiamos el valor de la carta y comprobamos si la nueva carta es superior al máximo anterior, en cuyo caso lo actualizamos.</li>
+      <li>Finalmente, la página 2 redirige a la página 1.</li>
+    </ol>
+
+    <p>minijuegos-1-2-1.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+// Accedemos a la sesión <span class="numero-circulo">1</span>
+session_name("minijuegos-1-2");
+session_start();
+
+// Si los valores de sesión no existen, ponemos los dos valores de sesión a uno <span class="numero-circulo">2</span>
+if (!isset($_SESSION["carta"])) {
+    $_SESSION["carta"] = $_SESSION["maximo"] = 1;
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+// ...
+  &lt;form action="minijuegos-1-2-2.php"&gt;
+&lt;?php
+// Mostramos la carta, guardada en la sesión <span class="numero-circulo">3</span>
+print "    &lt;p&gt;&lt;img src=\"img/cartas/p$_SESSION[carta].svg\" alt=\"$_SESSION[carta] de picas\" height=\"150\"&gt;&lt;/p&gt;\n";
+print "\n";
+// Mostramos el máximo, guardado en la sesión
+print "    &lt;p&gt;Carta más alta obtenida: $_SESSION[maximo]&lt;/p&gt;\n";
+print "\n";
+?&gt;
+// ...</code>
+</pre>
+    </div>
+
+    <p>minijuegos-1-2-2.php</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php// Accedemos a la sesión <span class="numero-circulo">4</span>
+session_name("minijuegos-1-2");
+session_start();
+
+// Si los valores de sesión no existen, redirigimos a la primera página <span class="numero-circulo">5</span>
+if (!isset($_SESSION["carta"])) {
+    header("location:minijuegos-1-2-1.php");
+    exit;
+}
+
+// Funciones auxiliares <span class="numero-circulo">6</span>
+function recoge($var, $m = "")
+{
+    $tmp = is_array($m) ? [] : "";
+    if (isset($_REQUEST[$var])) {
+        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
+        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
+            $tmp = $_REQUEST[$var];
+            array_walk_recursive($tmp, function (&$valor) {
+                $valor = trim(htmlspecialchars($valor));
+            });
+        }
+    }
+    return $tmp;
+}
+
+$accion = recoge("accion");
+
+// Si recibimos "reiniciar", reiniciamos los valores de sesión <span class="numero-circulo">7</span>
+if ($accion == "reiniciar") {
+    $_SESSION["maximo"] = $_SESSION["carta"] = 1;
+// Si recibimos "nueva", modificamos el número de carta<span class="numero-circulo">8</span>
+// y comprobamos si se ha superado el máximo anterior
+} elseif ($accion == "nueva") {
+    $_SESSION["carta"] = rand(1, 10);
+    if ($_SESSION["carta"] &gt; $_SESSION["maximo"]) {
+        $_SESSION["maximo"] = $_SESSION["carta"];
+    }
+}
+
+// Volvemos al formulario <span class="numero-circulo">9</span>
+header("location:minijuegos-1-2-1.php");
+</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h3>Minijuegos (1) 3 - La carta más alta (2)</h3>
+
+    <p class="incompleto">Por completar</p>
+  </section>
+
+  <section id="ejercicio-4">
+    <h3>Minijuegos (1) 4 - Nuevas cartas</h3>
+
+    <p class="incompleto">Por completar</p>
+  </section>
+
+  <section id="ejercicio-5">
+    <h3>Minijuegos (1) 5 - Jugada de tres cartas</h3>
+
+    <p class="incompleto">Por completar</p>
+  </section>
+
+  <section id="ejercicio-6">
+    <h3>Minijuegos (1) 6 - Partida de tres cartas</h3>
+
+    <p class="incompleto">Por completar</p>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
