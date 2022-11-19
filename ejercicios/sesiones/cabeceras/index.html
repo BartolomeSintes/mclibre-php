@@ -83,6 +83,39 @@
         </li>
       </ul>
 
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>La organización de las páginas puede ser la siguiente (las líneas negras corresponden a envíos de formularios y las líneas rojas a redirecciones):
+            <p>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="230" viewBox="0 -10 240 160" style="background-color: white;" font-family="sans-serif" class="izquierda">
+                <defs>
+                  <marker id="flechaNegra2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+                  </marker>
+                  <marker id="flechaRoja2" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+                  </marker>
+                </defs>
+
+                <rect x="30" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="65" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
+                <rect x="38" y="60" width="55" height="20" fill="none" stroke="black" stroke-width="1" />
+                <text x="43" y="73" text-anchor="start" font-family="sans-serif" font-size="10">formulario</text>
+                <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra2)" />
+
+                <rect x="160" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="195" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
+                <text x="195" y="70" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+                <text x="195" y="90" text-anchor="middle" font-family="sans-serif" font-size="10">comprueba</text>
+                <path d="M160,130 c-10,10 -40,20 -50,10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja2)" />
+              </svg>
+            </p>
+          </li>
+          <li>Si la página 2 recibe el control vacío, debe redirigir a la página 1. Como la redirección solo puede hacerse si la página no ha generado todavía contenido html, la recogida y la comprobación deben hacerse al principio del todo de la página 2.</li>
+        </ul>
+      </details>
+
       <div class="filaflex">
         <iframe src="cabeceras-01-1.php" style="height: 17em;"></iframe>
         <div class="icono-enlace">
@@ -95,6 +128,47 @@
       <h3>Cabeceras 2 - Formulario 2</h3>
 
       <p>Mejore el programa anterior haciendo que, si no se ha escrito ningún texto, al volver automáticamente a la primera página muestre un aviso.</p>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>La organización de las páginas puede ser la siguiente (las líneas negras corresponden a envíos de formularios y las líneas rojas a redirecciones):
+            <p>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="245" viewBox="0 -10 240 175" style="background-color: white;" font-family="sans-serif" class="izquierda">
+                <defs>
+                  <marker id="flechaNegra" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+                  </marker>
+                  <marker id="flechaRoja" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+                  </marker>
+                </defs>
+
+                <rect x="30" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="65" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
+                <text x="65" y="60" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+                <rect x="38" y="70" width="55" height="20" fill="none" stroke="black" stroke-width="1" />
+                <text x="43" y="83" text-anchor="start" font-family="sans-serif" font-size="10">formulario</text>
+                <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+
+                <rect x="160" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="195" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
+                <text x="195" y="70" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+                <text x="195" y="90" text-anchor="middle" font-family="sans-serif" font-size="10">comprueba</text>
+                <path d="M160,130 c-10,10 -40,20 -50,10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja)" />
+                <text x="130" y="160" text-anchor="middle" font-family="sans-serif" font-size="10" fill="red">aviso</text>
+              </svg>
+            </p>
+          </li>
+          <li>El orden en que se pueden programar las páginas, de manera que las podamos ir probando a medida que las programamos, es el siguiente:
+            <ul>
+              <li>Añadir el control del formulario en la primera página página (sin recoger ni mostrar el aviso).</li>
+              <li>Programar la página 2 (recogida y comprobación). El aviso que se envía a la página 1 se puede incluir en la redirección, utilizando la notación .php?aviso=XXX.</li>
+              <li>Completar la página 1 (recogida del aviso). En la página 1 no es necesario hacer la recogida al principio del todo, como ocurre en la página 2, puesto que esta página no hace redirecciones. Tampoco es necesario que la página 1 compruebe el aviso, basta con añadir el aviso al formulario si se recibe un aviso no vacío.</li>
+            </ul>
+          </li>
+        </ul>
+      </details>
 
       <div class="filaflex">
         <iframe src="cabeceras-02-1.php" style="height: 17em;"></iframe>
@@ -118,6 +192,13 @@
         </li>
       </ul>
 
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>La diferencia con respecto al ejercicio anterior es que la página 2 debe enviar diferentes tipos de avisos.</li>
+        </ul>
+      </details>
+
       <div class="filaflex">
         <iframe src="cabeceras-03-1.php" style="height: 17em;"></iframe>
         <div class="icono-enlace">
@@ -130,6 +211,41 @@
       <h3>Cabeceras 4 - Formulario 4</h3>
 
       <p>Mejore el programa anterior haciendo que si no se ha escrito un número correcto, al volver al formulario muestre en la caja de texto el valor incorrecto que había escrito el usuario.</p>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>La organización de las páginas puede ser la siguiente (las líneas negras corresponden a envíos de formularios y las líneas rojas a redirecciones):
+            <p>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="250" viewBox="0 -10 240 175" style="background-color: white;" font-family="sans-serif" class="izquierda">
+                <defs>
+                  <marker id="flechaNegra4" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+                  </marker>
+                  <marker id="flechaRoja4" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+                  </marker>
+                </defs>
+
+                <rect x="30" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="65" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
+                <text x="65" y="60" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+                <rect x="38" y="70" width="55" height="20" fill="none" stroke="black" stroke-width="1" />
+                <text x="43" y="83" text-anchor="start" font-family="sans-serif" font-size="10">formulario</text>
+                <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra4)" />
+
+                <rect x="160" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="195" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
+                <text x="195" y="70" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+                <text x="195" y="90" text-anchor="middle" font-family="sans-serif" font-size="10">comprueba</text>
+                <path d="M160,130 c-10,10 -40,20 -50,10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja4)" />
+                <text x="130" y="160" text-anchor="middle" font-family="sans-serif" font-size="10" fill="red">aviso, valor</text>
+              </svg>
+            </p>
+          </li>
+          <li>Al hacer las redirecciones debemos enviar tanto el aviso como el valor recibido, utilizando la notación .php?aviso=XXX&edad=YYY.</li>
+        </ul>
+      </details>
 
       <div class="filaflex">
         <iframe src="cabeceras-04-1.php" style="height: 17em;"></iframe>
@@ -148,11 +264,47 @@
         <li>La segunda página comprueba si se ha escrito algo de texto y si se ha escrito un número entero entre 18 y 130.
           <ul>
             <li>Si se ha escrito algo de texto y un número entero entre 18 y 130, los muestra.</li>
-            <li>Si no se ha escrito ningún texto en el nombre o un número entero entre 18 y 130 en la edad, vuelve automáticamente a la primera página que muestra un aviso.</li>
-            <li>Si ambos campos están mal rellenados, puede mostrar sólo un aviso y cuando se corrige un campo, mostrar el otro. Una posible mejora del programa sería mostrar ambos avisos simultáneamente, como hace el programa de ejemplo.</li>
+            <li>Si no se ha escrito ningún texto en el nombre o un número entero entre 18 y 130 en la edad, vuelve automáticamente a la primera página, mostrando los avisos correspondientes.</li>
+            <li>Si ambos campos están mal rellenados, se muestran los dos avisos.</li>
           </ul>
         </li>
       </ul>
+
+      <details>
+        <summary><strong>Ayuda</strong></summary>
+        <ul>
+          <li>La organización de las páginas puede ser la siguiente (las líneas negras corresponden a envíos de formularios y las líneas rojas a redirecciones):
+            <p>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="260" viewBox="0 -10 240 190" style="background-color: white;" font-family="sans-serif" class="izquierda">
+                <defs>
+                  <marker id="flechaNegra5" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+                  </marker>
+                  <marker id="flechaRoja5" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+                    <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+                  </marker>
+                </defs>
+
+                <rect x="30" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="65" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-1.php</text>
+                <text x="65" y="60" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+                <rect x="38" y="70" width="55" height="20" fill="none" stroke="black" stroke-width="1" />
+                <text x="43" y="83" text-anchor="start" font-family="sans-serif" font-size="10">formulario</text>
+                <path d="M100,30 c10,-10 40,-20 50,-10" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra5)" />
+
+                <rect x="160" y="30" width="70" height="100" fill="none" stroke="black" stroke-width="2" />
+                <text x="195" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">pagina-2.php</text>
+                <text x="195" y="70" text-anchor="middle" font-family="sans-serif" font-size="10">recoge</text>
+                <text x="195" y="90" text-anchor="middle" font-family="sans-serif" font-size="10">comprueba</text>
+                <path d="M160,130 c-10,10 -40,20 -50,10" stroke="red" stroke-width="2" fill="transparent" style="marker-end: url(#flechaRoja5)" />
+                <text x="130" y="160" text-anchor="middle" font-family="sans-serif" font-size="10" fill="red">aviso1, valor1</text>
+                <text x="130" y="175" text-anchor="middle" font-family="sans-serif" font-size="10" fill="red">aviso2, valor2</text>
+              </svg>
+            </p>
+          </li>
+          <li>Al hacer las redirecciones debemos enviar los dos avisos y los dos valores recibidos. Como la redirección debe hacerse después de comprobar los dos valores recibidos, tendremos que almacenar los avisos en dos variables auxiliares e incluirlos posteriormente en la redirección .</li>
+        </ul>
+      </details>
 
       <div class="filaflex">
         <iframe src="cabeceras-05-1.php" style="height: 19em;"></iframe>
@@ -198,7 +350,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

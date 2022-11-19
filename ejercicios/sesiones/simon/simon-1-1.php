@@ -1,6 +1,6 @@
 <?php
 /**
- * Colores en orden (1) - minijuegos-2-14-1.php
+ * Colores en orden (1) - simon-1-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco

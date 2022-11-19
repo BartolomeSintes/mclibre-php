@@ -1,6 +1,6 @@
 <?php
 /**
- * Quita cartas en orden (2) - minijuegos-2-11-2.php
+ * Quita cartas en orden (2) - simon-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
