@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones Minijuegos (1) 3 - minijuegos-1-5-1.php
+ * Sesiones Minijuegos (1) 5º - minijuegos-1-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
@@ -22,9 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("minijuegos-1-5");
 session_start();
 
+// Si los valores de sesión no existen, redirigimos a la segunda página
 if (!isset($_SESSION["carta1"])) {
     header("location:minijuegos-1-5-2.php");
     exit;
@@ -51,13 +53,15 @@ if (!isset($_SESSION["carta1"])) {
 print "    <p>\n";
 print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\">\n";
+// Mostramos las tres cartas, guardadas en la sesión
 print "        <image href=\"img/cartas/c$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/>\n";
 print "        <image href=\"img/cartas/c$_SESSION[carta2].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(0, 0, 150)\"/>\n";
 print "        <image href=\"img/cartas/c$_SESSION[carta3].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(15, 0, 150)\"/>\n";
 print "      </svg>\n";
 print "    </p>\n";
 print "\n";
-print "    <p>Ha obtenido $_SESSION[mano] $_SESSION[valor].</p>\n";
+// Mostramos la jugada, guardada en la sesión
+print "    <p>Ha obtenido $_SESSION[mano].</p>\n";
 print "\n";
 ?>
     <p><button type="submit" name="accion" value="nuevas">Nuevas cartas</button></p>

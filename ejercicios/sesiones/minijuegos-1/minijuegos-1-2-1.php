@@ -22,12 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("minijuegos-1-2");
 session_start();
 
+// Si los valores de sesión no existen, ponemos los dos valores de sesión a uno
 if (!isset($_SESSION["carta"])) {
-    $_SESSION["carta"] = 1;
-    $_SESSION["maximo"] = $_SESSION["carta"];
+    $_SESSION["carta"] = $_SESSION["maximo"] = 1;
 }
 ?>
 <!DOCTYPE html>
@@ -48,8 +49,10 @@ if (!isset($_SESSION["carta"])) {
 
   <form action="minijuegos-1-2-2.php">
 <?php
+// Mostramos la carta, guardada en la sesión
 print "    <p><img src=\"img/cartas/p$_SESSION[carta].svg\" alt=\"$_SESSION[carta] de picas\" height=\"150\"></p>\n";
 print "\n";
+// Mostramos el máximo, guardado en la sesión
 print "    <p>Carta más alta obtenida: $_SESSION[maximo]</p>\n";
 print "\n";
 ?>

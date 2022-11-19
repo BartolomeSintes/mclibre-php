@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones Minijuegos (1) 3 - minijuegos-1-5-2.php
+ * Sesiones Minijuegos (1) 5 - minijuegos-1-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
@@ -22,9 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("minijuegos-1-5");
 session_start();
 
+// Si los valores de sesión no existen, damos valor a las tres cartas
 if (!isset($_SESSION["carta1"])) {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
@@ -48,26 +50,26 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+// Recogemos accion
 $accion = recoge("accion");
 
+// Si recibimos "nuevas", reiniciamos los valores de las cartas
 if ($accion == "nuevas") {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
     $_SESSION["carta3"] = rand(1, 10);
 }
 
+// Comprobamos si se ha obtenido un trío, una pareja o cartas distintas
 if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSION["carta3"]) {
-    $_SESSION["mano"] = "un trío de ";
-    $_SESSION["valor"] = $_SESSION["carta1"];
-} else if ($_SESSION["carta1"] == $_SESSION["carta2"] || $_SESSION["carta1"] == $_SESSION["carta3"]) {
-    $_SESSION["mano"] = "una pareja de ";
-    $_SESSION["valor"] = $_SESSION["carta1"];
-} else if ($_SESSION["carta2"] == $_SESSION["carta3"]) {
-    $_SESSION["mano"] = "una pareja de ";
-    $_SESSION["valor"] = $_SESSION["carta2"];
+    $_SESSION["mano"] = "un trío de $_SESSION[carta1]";
+} elseif ($_SESSION["carta1"] == $_SESSION["carta2"] || $_SESSION["carta1"] == $_SESSION["carta3"]) {
+    $_SESSION["mano"] = "una pareja de $_SESSION[carta1]";
+} elseif ($_SESSION["carta2"] == $_SESSION["carta3"]) {
+    $_SESSION["mano"] = "una pareja de $_SESSION[carta2]";
 } else {
-    $_SESSION["mano"] = "un ";
-    $_SESSION["valor"] = max($_SESSION["carta1"], $_SESSION["carta2"], $_SESSION["carta3"]);
+    $_SESSION["mano"] = "un " . max($_SESSION["carta1"], $_SESSION["carta2"], $_SESSION["carta3"]);
 }
 
+// Volvemos al formulario
 header("location:minijuegos-1-5-1.php");

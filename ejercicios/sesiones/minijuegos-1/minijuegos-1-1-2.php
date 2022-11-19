@@ -22,9 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("minijuegos-1-1");
 session_start();
 
+// Si el valor de sesión no existe, redirigimos a la primera página
 if (!isset($_SESSION["carta"])) {
     header("location:minijuegos-1-1-1.php");
     exit;
@@ -47,10 +49,13 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+// Recogemos accion
 $accion = recoge("accion");
 
+// Si recibimos "nueva", modificamos el número de carta
 if ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
 }
 
+// Volvemos al formulario
 header("location:minijuegos-1-1-1.php");

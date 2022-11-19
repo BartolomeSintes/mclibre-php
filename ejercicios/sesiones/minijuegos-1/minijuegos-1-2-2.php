@@ -22,9 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("minijuegos-1-2");
 session_start();
 
+// Si los valores de sesión no existen, redirigimos a la primera página
 if (!isset($_SESSION["carta"])) {
     header("location:minijuegos-1-2-1.php");
     exit;
@@ -49,8 +51,11 @@ function recoge($var, $m = "")
 
 $accion = recoge("accion");
 
+// Si recibimos "reiniciar", reiniciamos los valores de sesión
 if ($accion == "reiniciar") {
-    session_destroy();
+    $_SESSION["maximo"] = $_SESSION["carta"] = 1;
+// Si recibimos "nueva", modificamos el número de carta
+// y comprobamos si se ha superado el máximo anterior
 } elseif ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
     if ($_SESSION["carta"] > $_SESSION["maximo"]) {
@@ -58,4 +63,5 @@ if ($accion == "reiniciar") {
     }
 }
 
+// Volvemos al formulario
 header("location:minijuegos-1-2-1.php");

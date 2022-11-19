@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones Minijuegos (1) 1 - minijuegos-1-1-1.php
+ * Sesiones Minijuegos (1) 6 - minijuegos-1-6-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
@@ -23,12 +23,13 @@
  */
 
 // Accedemos a la sesión
-session_name("minijuegos-1-1");
+session_name("minijuegos-1-6");
 session_start();
 
-// Si el valor de sesión no existe, ponemos el valor de la carta a uno
-if (!isset($_SESSION["carta"])) {
-    $_SESSION["carta"] = 1;
+// Si los valores de sesión no existen, redirigimos a la segunda página
+if (!isset($_SESSION["cartaR1"])) {
+    header("location:minijuegos-1-6-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ if (!isset($_SESSION["carta"])) {
 <head>
   <meta charset="utf-8">
   <title>
-    Nueva carta (1).
+    Partida de tres cartas.
     Minijuegos (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -45,15 +46,28 @@ if (!isset($_SESSION["carta"])) {
 </head>
 
 <body>
-  <h1>Nueva carta (1)</h1>
+  <h1>Partida de tres cartas</h1>
 
-  <form action="minijuegos-1-1-2.php">
+  <form action="minijuegos-1-6-2.php">
 <?php
-// Mostramos la carta, guardada en la sesión
-print "    <p><img src=\"img/cartas/c$_SESSION[carta].svg\" alt=\"$_SESSION[carta] de corazones\" height=\"150\"></p>\n";
+print "    <p>\n";
+print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "           width=\"400\" height=\"190\" viewBox=\"-50 -10 400 190\">\n";
+// Mostramos las seis cartas, guardadas en la sesión
+print "        <image href=\"img/cartas/p$_SESSION[cartaN1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/>\n";
+print "        <image href=\"img/cartas/p$_SESSION[cartaN2].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(0, 0, 150)\"/>\n";
+print "        <image href=\"img/cartas/p$_SESSION[cartaN3].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(15, 0, 150)\"/>\n";
+print "        <image href=\"img/cartas/d$_SESSION[cartaR1].svg\" x=\"200\" y=\"0\" height=\"150\" transform=\"rotate(-15, 200, 150)\"/>\n";
+print "        <image href=\"img/cartas/d$_SESSION[cartaR2].svg\" x=\"200\" y=\"0\" height=\"150\" transform=\"rotate(0, 200, 150)\"/>\n";
+print "        <image href=\"img/cartas/d$_SESSION[cartaR3].svg\" x=\"200\" y=\"0\" height=\"150\" transform=\"rotate(15, 200, 150)\"/>\n";
+print "      </svg>\n";
+print "    </p>\n";
+print "\n";
+// Mostramos el ganador, guardado en la sesión
+print "<p>$_SESSION[ganador]</p>\n";
 print "\n";
 ?>
-    <p><button type="submit" name="accion" value="nueva">Nueva carta</button></p>
+    <p><button type="submit" name="accion" value="nuevas">Nuevas cartas</button></p>
   </form>
 
   <footer>

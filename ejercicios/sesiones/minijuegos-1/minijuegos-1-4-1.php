@@ -22,9 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Accedemos a la sesión
 session_name("minijuegos-1-4");
 session_start();
 
+// Si los valores de sesión no existen, damos valor a las tres cartas
 if (!isset($_SESSION["carta1"])) {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
@@ -52,6 +54,7 @@ if (!isset($_SESSION["carta1"])) {
 print "    <p>\n";
 print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\">\n";
+// Mostramos las tres cartas, guardadas en la sesión
 print "        <image href=\"img/cartas/t$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/>\n";
 print "        <image href=\"img/cartas/t$_SESSION[carta2].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(0, 0, 150)\"/>\n";
 print "        <image href=\"img/cartas/t$_SESSION[carta3].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(15, 0, 150)\"/>\n";
