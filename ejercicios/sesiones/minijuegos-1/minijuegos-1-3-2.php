@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-17
+ * @version   2022-11-21
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -56,16 +56,18 @@ $accion = recoge("accion");
 if ($accion == "reiniciar") {
     $_SESSION["maximo"]   = $_SESSION["carta"] = 1;
     $_SESSION["intentos"] = 0;
-// Si recibimos "nueva", modificamos el número de carta,
-// aumentamos el contador y
-// comprobamos si se ha superado el máximo anterior
+// Si recibimos "nueva", modificamos el número de carta, ...
 } elseif ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
-    if ($_SESSION["maximo"] < 10) {
-        $_SESSION["intentos"]++;
-    }
+    //  ... comprobamos si se ha superado el máximo anterior
+    //  para cambiar el máximo por la nueva carta
     if ($_SESSION["carta"] > $_SESSION["maximo"]) {
         $_SESSION["maximo"] = $_SESSION["carta"];
+    }
+    //  ... comprobamos si no hemos obtenido todavía un 10
+    //  para incrementar el contador
+    if ($_SESSION["maximo"] < 10) {
+        $_SESSION["intentos"]++;
     }
 }
 

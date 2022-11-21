@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones Minijuegos (1) 5º - minijuegos-1-5-1.php
+ * Sesiones Minijuegos (1) 5 - minijuegos-1-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-17
+ * @version   2022-11-21
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,10 +26,11 @@
 session_name("minijuegos-1-5");
 session_start();
 
-// Si los valores de sesión no existen, redirigimos a la segunda página
+// Si los valores de sesión no existen, damos valor a las tres cartas
 if (!isset($_SESSION["carta1"])) {
-    header("location:minijuegos-1-5-2.php");
-    exit;
+    $_SESSION["carta1"] = rand(1, 10);
+    $_SESSION["carta2"] = rand(1, 10);
+    $_SESSION["carta3"] = rand(1, 10);
 }
 ?>
 <!DOCTYPE html>
@@ -60,8 +61,18 @@ print "        <image href=\"img/cartas/c$_SESSION[carta3].svg\" x=\"0\" y=\"0\"
 print "      </svg>\n";
 print "    </p>\n";
 print "\n";
-// Mostramos la jugada, guardada en la sesión
-print "    <p>Ha obtenido $_SESSION[mano].</p>\n";
+
+// Comprobamos si se ha obtenido un trío, una pareja o cartas distintas
+// y mostramos la jugada obtenida en cada caso
+if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSION["carta3"]) {
+    print "    <p>Ha obtenido un trío de $_SESSION[carta1].<p>\n";
+} elseif ($_SESSION["carta1"] == $_SESSION["carta2"] || $_SESSION["carta1"] == $_SESSION["carta3"]) {
+    print "    <p>Ha obtenido una pareja de $_SESSION[carta1].<p>\n";
+} elseif ($_SESSION["carta2"] == $_SESSION["carta3"]) {
+    print "    <p>Ha obtenido una pareja de $_SESSION[carta2].<p>\n";
+} else {
+    print "    <p>Ha obtenido un " . max($_SESSION["carta1"], $_SESSION["carta2"], $_SESSION["carta3"]) . ".<p>\n";
+}
 print "\n";
 ?>
     <p><button type="submit" name="accion" value="nuevas">Nuevas cartas</button></p>
@@ -70,7 +81,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-11-17">17 de noviembre de 2022</time>
+      <time datetime="2022-11-21">21 de noviembre de 2022</time>
     </p>
 
     <p class="licencia">

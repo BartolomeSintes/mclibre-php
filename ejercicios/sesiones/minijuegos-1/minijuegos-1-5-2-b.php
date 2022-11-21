@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones Minijuegos (1) 1 - minijuegos-1-1-2.php
+ * Sesiones Minijuegos (1) 5 - minijuegos-1-5-2-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
@@ -23,13 +23,15 @@
  */
 
 // Accedemos a la sesión
-session_name("minijuegos-1-1");
+session_name("minijuegos-1-5-b");
 session_start();
 
-// Si el valor de sesión no existe, redirigimos a la primera página
-if (!isset($_SESSION["carta"])) {
-    header("location:minijuegos-1-1-1.php");
-    exit;
+// Si los valores de sesión no existen, damos valor a las tres cartas
+// Más adelante comprobamos qué jugada se ha obtenido
+if (!isset($_SESSION["carta1"])) {
+    $_SESSION["carta1"] = rand(1, 10);
+    $_SESSION["carta2"] = rand(1, 10);
+    $_SESSION["carta3"] = rand(1, 10);
 }
 
 // Funciones auxiliares
@@ -52,10 +54,23 @@ function recoge($var, $m = "")
 // Recogemos accion
 $accion = recoge("accion");
 
-// Si recibimos "nueva", modificamos el número de carta
-if ($accion == "nueva") {
-    $_SESSION["carta"] = rand(1, 10);
+// Si recibimos "nuevas", reiniciamos los valores de las cartas
+if ($accion == "nuevas") {
+    $_SESSION["carta1"] = rand(1, 10);
+    $_SESSION["carta2"] = rand(1, 10);
+    $_SESSION["carta3"] = rand(1, 10);
+}
+
+// Comprobamos si se ha obtenido un trío, una pareja o cartas distintas
+if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSION["carta3"]) {
+    $_SESSION["mano"] = "un trío de $_SESSION[carta1]";
+} elseif ($_SESSION["carta1"] == $_SESSION["carta2"] || $_SESSION["carta1"] == $_SESSION["carta3"]) {
+    $_SESSION["mano"] = "una pareja de $_SESSION[carta1]";
+} elseif ($_SESSION["carta2"] == $_SESSION["carta3"]) {
+    $_SESSION["mano"] = "una pareja de $_SESSION[carta2]";
+} else {
+    $_SESSION["mano"] = "un " . max($_SESSION["carta1"], $_SESSION["carta2"], $_SESSION["carta3"]);
 }
 
 // Volvemos al formulario
-header("location:minijuegos-1-1-1.php");
+header("location:minijuegos-1-5-1-b.php");

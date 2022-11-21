@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-17
+ * @version   2022-11-21
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -64,7 +64,7 @@ print "      </svg>\n";
 print "    </p>\n";
 print "\n";
 // Mostramos el ganador, guardado en la sesión
-print "<p>$_SESSION[ganador]</p>\n";
+print "    <p>$_SESSION[ganador]</p>\n";
 print "\n";
 ?>
     <p><button type="submit" name="accion" value="nuevas">Nuevas cartas</button></p>
@@ -73,7 +73,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-11-17">17 de noviembre de 2022</time>
+      <time datetime="2022-11-21">21 de noviembre de 2022</time>
     </p>
 
     <p class="licencia">
