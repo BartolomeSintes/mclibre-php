@@ -59,15 +59,15 @@ if ($accion == "reiniciar") {
 // Si recibimos "nueva", modificamos el número de carta, ...
 } elseif ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
-    //  ... comprobamos si se ha superado el máximo anterior
-    //  para cambiar el máximo por la nueva carta
-    if ($_SESSION["carta"] > $_SESSION["maximo"]) {
-        $_SESSION["maximo"] = $_SESSION["carta"];
-    }
     //  ... comprobamos si no hemos obtenido todavía un 10
     //  para incrementar el contador
     if ($_SESSION["maximo"] < 10) {
         $_SESSION["intentos"]++;
+    }
+    //  ... comprobamos si se ha superado el máximo anterior
+    //  para cambiar el máximo por la nueva carta
+    if ($_SESSION["carta"] > $_SESSION["maximo"]) {
+        $_SESSION["maximo"] = $_SESSION["carta"];
     }
 }
 
