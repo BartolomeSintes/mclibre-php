@@ -22,7 +22,7 @@
     <div class="toc">
       <h2>Minijuegos (1)</h2>
 
-      <h3><a href="#">Enunciados</a></h3>
+      <h3><a href="../../ejercicios/sesiones/minijuegos-1/index.html">Enunciados</a></h3>
       <ul>
         <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-1">1 - Nueva carta</a></li>
         <li><a href="../../ejercicios/sesiones/minijuegos-1/index.html#ejercicio-2">2 - La carta más alta (1)</a></li>
@@ -48,7 +48,7 @@
 
   <p>En esta página se muestran una parte de las soluciones de los ejercicios <a href="../../ejercicios/sesiones/minijuegos-1/index.html">Sesiones Minijuegos (1)</a>. La solución completa se puede descargar de la <a href="../index.html">página de soluciones</a>.</p>
 
-  <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Para hacer estos ejercicios, se recomienda seguir el recorrido de la aplicación, suponiendo que el usuario introduce datos. Pero una vez completada la aplicación hay que comprobar desde el principio (cerrando el navegador previamente) que la aplicación funciona correctamente (es decir, que la aplicación tiene en cuenta que la primera vez que se ejecuta, todavía no hay datos).</p>
+  <p><img src="../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Una vez completada la aplicación hay que comprobar desde el principio (cerrando el navegador previamente) que la aplicación funciona correctamente (es decir, que la aplicación tiene en cuenta que la primera vez que se ejecuta, todavía no hay datos).</p>
 
   <p>Es importante recordar que el usuario sólo va a ver la página 1 del programa, ya que la página 2 va a redirigir siempre automáticamente a la página 1. Por ello, la página 2 no debe tener ningún fragmento de HTML, ni ningún <span class="php-res">print</span>.</p>
 
@@ -56,16 +56,16 @@
     <h3>Minijuegos (1) 1 - Nueva carta</h3>
 
     <ol>
-      <li>Para que las dos páginas del programa puedan utilizar el número de carta, guardaremos ese valor en $_SESSION. Ese valor se muestra en la página 1 y se modifica en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
-      <li>La página 1 muestra la carta guardada en $_SESSION (el número guardado corresponde al nombre del fichero de la imagen de la carta).</li>
-      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-      <li>Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
-      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
+      <li id="li-1-1">Para que las dos páginas del programa puedan utilizar el número de carta, guardaremos ese valor en $_SESSION. Ese valor se muestra en la página 1 y se modifica en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-1-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlo o modificarlo provocaría un error, por lo que damos valor a la variable si no existe.</li>
+      <li id="li-1-3">La página 1 muestra la carta guardada en $_SESSION (el número guardado corresponde al nombre del fichero de la imagen de la carta).</li>
+      <li id="li-1-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-1-5">Si la variable de sesión no está definida, redirigiremos a la página 1 donde se le dará un valor inicial.</li>
+      <li id="li-1-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
         <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
       </li>
-      <li>En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nueva", cambiamos el valor de la carta al azar.</li>
-      <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <li id="li-1-7">En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nueva", cambiamos el valor de la carta al azar.</li>
+      <li id="li-1-8">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
 
     <p>minijuegos-1-1-1.php</p>
@@ -73,20 +73,20 @@
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">1</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-1-1">1</span>
 session_name("minijuegos-1-1");
 session_start();
 
-// Si el valor de sesión no existe, ponemos el valor de la carta a uno <span class="numero-circulo">2</span>
+// Si el valor de sesión no existe, ponemos el valor de la carta a uno <span class="numero-circulo" tooltip-id="li-1-2">2</span>
 if (!isset($_SESSION["carta"])) {
     $_SESSION["carta"] = 1;
 }
-?&gt;
-&lt;!DOCTYPE html&gt;
+?&gt;</code>
+<code class="language-html">&lt;!DOCTYPE html&gt;
 ...
-  &lt;form action="minijuegos-1-1-2.php"&gt;
-&lt;?php
-// Mostramos la carta, guardada en la sesión <span class="numero-circulo">3</span>
+  &lt;form action="minijuegos-1-1-2.php"&gt;</code>
+<code class="language-php">&lt;?php
+// Mostramos la carta, guardada en la sesión <span class="numero-circulo" tooltip-id="li-1-3">3</span>
 print "    &lt;p&gt;&lt;img src=\"img/cartas/c$_SESSION[carta].svg\" alt=\"$_SESSION[carta] de corazones\" height=\"150\"&gt;&lt;/p&gt;\n";
 print "\n";
 ?&gt;
@@ -101,17 +101,17 @@ print "\n";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">4</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-1-4">4</span>
 session_name("minijuegos-1-1");
 session_start();
 
-// Si el valor de sesión no existe, redirigimos a la primera página <span class="numero-circulo">5</span>
+// Si el valor de sesión no existe, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-1-5">5</span>
 if (!isset($_SESSION["carta"])) {
     header("location:minijuegos-1-1-1.php");
     exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo">6</span>
+// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-1-6">6</span>
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -131,12 +131,12 @@ function recoge($var, $m = "")
 // Recogemos accion
 $accion = recoge("accion");
 
-// Si recibimos "nueva", modificamos el número de carta <span class="numero-circulo">7</span>
+// Si recibimos "nueva", modificamos el número de carta <span class="numero-circulo" tooltip-id="li-1-7">7</span>
 if ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
 }
 
-// Volvemos al formulario <span class="numero-circulo">8</span>
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-1-8">8</span>
 header("location:minijuegos-1-1-1.php");</code>
 </pre>
     </div>
@@ -148,18 +148,18 @@ header("location:minijuegos-1-1-1.php");</code>
     <p>Este ejercicio añade al anterior la capacidad de llevar la cuenta de la carta más alta mostrada hasta el momento, así como la posibilidad de reiniciar el proceso.</p>
 
     <ol>
-      <li>Para que las dos páginas del programa puedan utilizar el número de carta y el valor máximo obtenido, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a ambas variables si no existen.</li>
-      <li>La página 1 muestra la carta y el valor máximo, ambos valores guardados en $_SESSION.</li>
-      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-      <li>Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará un valor inicial.</li>
-      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+      <li id="li-2-1">Para que las dos páginas del programa puedan utilizar el número de carta y el valor máximo obtenido, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-2-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a ambas variables si no existen.</li>
+      <li id="li-2-3">La página 1 muestra la carta y el valor máximo, ambos valores guardados en $_SESSION.</li>
+      <li id="li-2-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-2-5">Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará un valor inicial.</li>
+      <li id="li-2-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
         <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
       </li>
-      <li>Si recibimos el valor "reiniciar", damos a las variables de sesión los valores iniciales (1 en las dos).</li>
-      <li>Si recibimos el valor "nueva", cambiamos el valor de la carta ...</li>
-      <li>... y comprobamos si la nueva carta es superior al máximo anterior, en cuyo caso lo actualizamos al nuevo valor.</li>
-      <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <li id="li-2-7">Si recibimos el valor "reiniciar", damos a las variables de sesión los valores iniciales (1 en las dos).</li>
+      <li id="li-2-8">Si recibimos el valor "nueva", cambiamos el valor de la carta ...</li>
+      <li id="li-2-9">... y comprobamos si la nueva carta es superior al máximo anterior, en cuyo caso lo actualizamos al nuevo valor.</li>
+      <li id="li-2-10">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
 
     <p>minijuegos-1-2-1.php</p>
@@ -167,27 +167,27 @@ header("location:minijuegos-1-1-1.php");</code>
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">1</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-1">1</span>
 session_name("minijuegos-1-2");
 session_start();
 
-// Si los valores de sesión no existen, ponemos los dos valores de sesión a uno <span class="numero-circulo">2</span>
+// Si los valores de sesión no existen, ponemos los dos valores de sesión a uno <span class="numero-circulo" tooltip-id="li-2-2">2</span>
 if (!isset($_SESSION["carta"])) {
     $_SESSION["carta"] = $_SESSION["maximo"] = 1;
 }
 ?&gt;
 &lt;!DOCTYPE html&gt;
-// ...
+...
   &lt;form action="minijuegos-1-2-2.php"&gt;
 &lt;?php
-// Mostramos la carta, guardada en la sesión <span class="numero-circulo">3</span>
+// Mostramos la carta, guardada en la sesión <span class="numero-circulo" tooltip-id="li-2-3">3</span>
 print "    &lt;p&gt;&lt;img src=\"img/cartas/p$_SESSION[carta].svg\" alt=\"$_SESSION[carta] de picas\" height=\"150\"&gt;&lt;/p&gt;\n";
 print "\n";
 // Mostramos el máximo, guardado en la sesión
 print "    &lt;p&gt;Carta más alta obtenida: $_SESSION[maximo]&lt;/p&gt;\n";
 print "\n";
 ?&gt;
-// ...</code>
+...</code>
 </pre>
     </div>
 
@@ -195,17 +195,17 @@ print "\n";
 
     <div class="codigo">
       <pre>
-<code class="language-php">&lt;?php// Accedemos a la sesión <span class="numero-circulo">4</span>
+<code class="language-php">&lt;?php// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-4">4</span>
 session_name("minijuegos-1-2");
 session_start();
 
-// Si los valores de sesión no existen, redirigimos a la primera página <span class="numero-circulo">5</span>
+// Si los valores de sesión no existen, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-2-5">5</span>
 if (!isset($_SESSION["carta"])) {
     header("location:minijuegos-1-2-1.php");
     exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo">6</span>
+// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-2-6">6</span>
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -224,20 +224,20 @@ function recoge($var, $m = "")
 
 $accion = recoge("accion");
 
-// Si recibimos "reiniciar", reiniciamos los valores de sesión <span class="numero-circulo">7</span>
+// Si recibimos "reiniciar", reiniciamos los valores de sesión <span class="numero-circulo" tooltip-id="li-2-7">7</span>
 if ($accion == "reiniciar") {
     $_SESSION["maximo"] = $_SESSION["carta"] = 1;
-    // Si recibimos "nueva", modificamos el número de carta ... <span class="numero-circulo">8</span>
+    // Si recibimos "nueva", modificamos el número de carta ... <span class="numero-circulo" tooltip-id="li-2-8">8</span>
 } elseif ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
-    //  ... y comprobamos si se ha superado el máximo anterior <span class="numero-circulo">9</span>
+    //  ... y comprobamos si se ha superado el máximo anterior <span class="numero-circulo" tooltip-id="li-2-9">9</span>
     //  para cambiar el máximo por la nueva carta
     if ($_SESSION["carta"] &gt; $_SESSION["maximo"]) {
         $_SESSION["maximo"] = $_SESSION["carta"];
     }
 }
 
-// Volvemos al formulario <span class="numero-circulo">10</span>
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-2-10">10</span>
 header("location:minijuegos-1-2-1.php");
 </code>
 </pre>
@@ -250,19 +250,19 @@ header("location:minijuegos-1-2-1.php");
     <p>Este ejercicio añade al anterior la capacidad de llevar la cuenta del número de cartas mostradas desde que se inicia o reinicia el proceso.</p>
 
     <ol>
-      <li>Para que las dos páginas del programa puedan utilizar el número de carta, el valor máximo obtenido y el número de cartas mostradas hasta conseguir el máximo, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las tres variables si no existen.</li>
-      <li>La página 1 muestra la carta, el valor máximo y el contador de cartas, valores guardados en $_SESSION.</li>
-      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-      <li>Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará un valor inicial.</li>
-      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
+      <li id="li-3-1">Para que las dos páginas del programa puedan utilizar el número de carta, el valor máximo obtenido y el número de cartas mostradas hasta conseguir el máximo, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-3-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las tres variables si no existen.</li>
+      <li id="li-3-3">La página 1 muestra la carta, el valor máximo y el contador de cartas, valores guardados en $_SESSION.</li>
+      <li id="li-3-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-3-5">Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará un valor inicial.</li>
+      <li id="li-3-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 hay 2 botones que tienen el mismo <span class="html-atri">name</span>, por lo que sólo hay que recoger un dato.
         <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
       </li>
-      <li>Si recibimos el valor "reiniciar", damos a las variables de sesión los valores iniciales (1 en las dos).</li>
-      <li>Si recibimos el valor "nueva", cambiamos el valor de la carta ...</li>
-      <li>... y comprobamos si la nueva carta es superior al máximo anterior, en cuyo caso lo actualizamos al nuevo valor, ...</li>
-      <li>... y comprobamos si todavía no hemos sacado un 10 (que es la carta más alta posible), en cuyo caso aumentadmos el contador de cartas mostradas.</li>
-      <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <li id="li-3-7">Si recibimos el valor "reiniciar", damos a las variables de sesión los valores iniciales (1 en las dos).</li>
+      <li id="li-3-8">Si recibimos el valor "nueva", cambiamos el valor de la carta ...</li>
+      <li id="li-3-9">... comprobamos si todavía no hemos sacado un 10 (que es la carta más alta posible), en cuyo caso aumentamos el contador de cartas mostradas. Es importante realizar esta comprobación antes de comprobar si la carta es superior al máximo, porque si no no contaríamos el turno en que obtenemos un 10.</li>
+      <li id="li-3-10">... y comprobamos si la nueva carta es superior al máximo anterior, en cuyo caso lo actualizamos al nuevo valor.</li>
+      <li id="li-3-11">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
 
     <p>minijuegos-1-3-1.php</p>
@@ -270,21 +270,21 @@ header("location:minijuegos-1-2-1.php");
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">1</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-1">1</span>
 session_name("minijuegos-1-3");
 session_start();
 
-// Si los valores de sesión no existen, ponemos los valores iniciales <span class="numero-circulo">2</span>
+// Si los valores de sesión no existen, ponemos los valores iniciales <span class="numero-circulo" tooltip-id="li-3-2">2</span>
 if (!isset($_SESSION["carta"])) {
     $_SESSION["maximo"] = $_SESSION["carta"] = 1;
     $_SESSION["intentos"] = 0;
 }
 ?&gt;
 &lt;!DOCTYPE html&gt;
-// ...
+...
   &lt;form action="minijuegos-1-3-2.php"&gt;
 &lt;?php
-// Mostramos la carta, guardada en la sesión <span class="numero-circulo">3</span>
+// Mostramos la carta, guardada en la sesión <span class="numero-circulo" tooltip-id="li-3-3">3</span>
 print "    &lt;p&gt;&lt;img src=\"img/cartas/d$_SESSION[carta].svg\" alt=\"$_SESSION[carta] de diamantes\" height=\"150\"&gt;&lt;/p&gt;\n";
 print "\n";
 // Mostramos el máximo, guardado en la sesión
@@ -294,7 +294,7 @@ print "\n";
 print "    &lt;p&gt;Intentos hasta conseguir un 10: $_SESSION[intentos]&lt;/p&gt;\n";
 print "\n";
 ?&gt;
-// ...</code>
+...</code>
 </pre>
     </div>
 
@@ -302,17 +302,17 @@ print "\n";
 
     <div class="codigo">
       <pre>
-<code class="language-php">&lt;?php// Accedemos a la sesión <span class="numero-circulo">4</span>
+<code class="language-php">&lt;?php// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-3-4">4</span>
 session_name("minijuegos-1-3");
 session_start();
 
-// Si los valores de sesión no existen, redirigimos a la primera página <span class="numero-circulo">5</span>
+// Si los valores de sesión no existen, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-3-5">5</span>
 if (!isset($_SESSION["carta"])) {
     header("location:minijuegos-1-3-1.php");
     exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo">6</span>
+// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-6">6</span>
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -331,26 +331,26 @@ function recoge($var, $m = "")
 
 $accion = recoge("accion");
 
-// Si recibimos "reiniciar", reiniciamos los valores de sesión <span class="numero-circulo">7</span>
+// Si recibimos "reiniciar", reiniciamos los valores de sesión <span class="numero-circulo" tooltip-id="li-3-7">7</span>
 if ($accion == "reiniciar") {
     $_SESSION["maximo"]   = $_SESSION["carta"] = 1;
     $_SESSION["intentos"] = 0;
-// Si recibimos "nueva", modificamos el número de carta, ... <span class="numero-circulo">8</span>
+// Si recibimos "nueva", modificamos el número de carta, ... <span class="numero-circulo" tooltip-id="li-3-8">8</span>
 } elseif ($accion == "nueva") {
     $_SESSION["carta"] = rand(1, 10);
-    //  ... comprobamos si se ha superado el máximo anterior <span class="numero-circulo">9</span>
-    //  para cambiar el máximo por la nueva carta
-    if ($_SESSION["carta"] &gt; $_SESSION["maximo"]) {
-        $_SESSION["maximo"] = $_SESSION["carta"];
-    }
-    //  ... comprobamos si no hemos obtenido todavía un 10 <span class="numero-circulo">10</span>
+    //  ... comprobamos si no hemos obtenido todavía un 10 <span class="numero-circulo" tooltip-id="li-3-9">9</span>
     //  para incrementar el contador
     if ($_SESSION["maximo"] &lt; 10) {
         $_SESSION["intentos"]++;
     }
+    //  ... comprobamos si se ha superado el máximo anterior <span class="numero-circulo" tooltip-id="li-3-10">10</span>
+    //  para cambiar el máximo por la nueva carta
+    if ($_SESSION["carta"] &gt; $_SESSION["maximo"]) {
+        $_SESSION["maximo"] = $_SESSION["carta"];
+    }
 }
 
-// Volvemos al formulario <span class="numero-circulo">11</span>
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-3-11">11</span>
 header("location:minijuegos-1-3-1.php");
 </code>
 </pre>
@@ -361,16 +361,16 @@ header("location:minijuegos-1-3-1.php");
     <h3>Minijuegos (1) 4 - Nuevas cartas</h3>
 
     <ol>
-      <li>Para que las dos páginas del programa puedan utilizar los números de las cartas, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen.</li>
-      <li>La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta).</li>
-      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-      <li>Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará los valores iniciales.</li>
-      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
+      <li id="li-4-1">Para que las dos páginas del programa puedan utilizar los números de las cartas, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-4-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen.</li>
+      <li id="li-4-3">La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta).</li>
+      <li id="li-4-4">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-4-5">Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará los valores iniciales.</li>
+      <li id="li-4-6">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
         <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
       </li>
-      <li>En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
-      <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <li id="li-4-7">En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
+      <li id="li-4-8">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
 
     <p>minijuegos-1-4-1.php</p>
@@ -378,11 +378,11 @@ header("location:minijuegos-1-3-1.php");
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">1</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-4-1">1</span>
 session_name("minijuegos-1-4");
 session_start();
 
-// Si los valores de sesión no existen, damos valor a las tres cartas <span class="numero-circulo">2</span>
+// Si los valores de sesión no existen, damos valor a las tres cartas <span class="numero-circulo" tooltip-id="li-4-2">2</span>
 if (!isset($_SESSION["carta1"])) {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
@@ -396,7 +396,7 @@ if (!isset($_SESSION["carta1"])) {
 print "    &lt;p&gt;\n";
 print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\"&gt;\n";
-// Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo">3</span>
+// Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-4-3">3</span>
 print "        &lt;image href=\"img/cartas/t$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/t$_SESSION[carta2].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(0, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/t$_SESSION[carta3].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(15, 0, 150)\"/&gt;\n";
@@ -415,17 +415,17 @@ print "\n";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">4</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-4-4">4</span>
 session_name("minijuegos-1-4");
 session_start();
 
-// Si el valor de sesión no existe, redirigimos a la primera página <span class="numero-circulo">5</span>
+// Si el valor de sesión no existe, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-4-5">5</span>
 if (!isset($_SESSION["carta"])) {
     header("location:minijuegos-1-4-1.php");
     exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo">6</span>
+// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-4-6">6</span>
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -445,14 +445,14 @@ function recoge($var, $m = "")
 // Recogemos accion
 $accion = recoge("accion");
 
-// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo">7</span>
+// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo" tooltip-id="li-4-7">7</span>
 if ($accion == "nuevas") {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
     $_SESSION["carta3"] = rand(1, 10);
 }
 
-// Volvemos al formulario <span class="numero-circulo">8</span>
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-4-8">8</span>
 header("location:minijuegos-1-4-1.php");</code>
 </pre>
     </div>
@@ -475,17 +475,17 @@ header("location:minijuegos-1-4-1.php");</code>
 
     <p>En esta versión, únicamente guardamos en $_SESSION los valores de las tres cartas.</p>
     <ol>
-      <li>Para que las dos páginas del programa puedan utilizar los números de las cartas, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen.</li>
-      <li>La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta) ...</li>
-      <li>La página 1 analiza la jugada obtenida y muestra el resultado correspondiente, comprobando si las tres cartas son iguales, si hay dos cartas iguales o si las tres cartas son distintas, en cuyo caso muestra el valor de la carta más grande.</li>
-      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-      <li>Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará los valores iniciales.</li>
-      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
+      <li id="li-5-a-1">Para que las dos páginas del programa puedan utilizar los números de las cartas, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-5-a-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen.</li>
+      <li id="li-5-a-3">La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta) ...</li>
+      <li id="li-5-a-4">La página 1 analiza la jugada obtenida y muestra el resultado correspondiente, comprobando si las tres cartas son iguales, si hay dos cartas iguales o si las tres cartas son distintas, en cuyo caso muestra el valor de la carta más grande.</li>
+      <li id="li-5-a-5">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-5-a-6">Si las variables de sesión no están definidas, redirigiremos a la página 1 donde se les dará los valores iniciales.</li>
+      <li id="li-5-a-7">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
         <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
       </li>
-      <li>En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
-      <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <li id="li-5-a-8">En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
+      <li id="li-5-a-9">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
 
     <p>minijuegos-1-5-1.php</p>
@@ -493,11 +493,11 @@ header("location:minijuegos-1-4-1.php");</code>
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">1</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-5-a-1">1</span>
 session_name("minijuegos-1-5");
 session_start();
 
-// Si los valores de sesión no existen, damos valor a las tres cartas <span class="numero-circulo">2</span>
+// Si los valores de sesión no existen, damos valor a las tres cartas <span class="numero-circulo" tooltip-id="li-5-a-2">2</span>
 if (!isset($_SESSION["carta1"])) {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
@@ -511,14 +511,14 @@ if (!isset($_SESSION["carta1"])) {
 print "    &lt;p&gt;\n";
 print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\"&gt;\n";
-// Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo">3</span>
+// Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-5-a-3">3</span>
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta2].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(0, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta3].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(15, 0, 150)\"/&gt;\n";
 print "      &lt;/svg&gt;\n";
 print "    &lt;/p&gt;\n";
 print "\n";
-// Comprobamos si se ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo">4</span>
+// Comprobamos si se ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo" tooltip-id="li-5-a-4">4</span>
 // y mostramos la jugada obtenida en cada caso
 if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSION["carta3"]) {
     print "    &lt;p&gt;Ha obtenido un trío de $_SESSION[carta1].&lt;p&gt;\n";
@@ -542,17 +542,17 @@ print "\n";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">5</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-5-a-5">5</span>
 session_name("minijuegos-1-5");
 session_start();
 
-// Si los valores de sesión no existen, redirigimos a la primera página <span class="numero-circulo">6</span>
+// Si los valores de sesión no existen, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-5-a-6">6</span>
 if (!isset($_SESSION["carta1"])) {
   header("location:minijuegos-1-5-1.php");
   exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo">7</span>
+// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-5-a-7">7</span>
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -572,14 +572,14 @@ function recoge($var, $m = "")
 // Recogemos accion
 $accion = recoge("accion");
 
-// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo">8</span>
+// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo" tooltip-id="li-5-a-8">8</span>
 if ($accion == "nuevas") {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
     $_SESSION["carta3"] = rand(1, 10);
 }
 
-// Volvemos al formulario <span class="numero-circulo">9</span>
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-5-a-9">9</span>
 header("location:minijuegos-1-5-1.php");</code>
 </pre>
     </div>
@@ -591,18 +591,18 @@ header("location:minijuegos-1-5-1.php");</code>
     <p>En esta versión, guardamos en $_SESSION los valores de las tres cartas y la descripción de la jugada obtenida.</p>
 
     <ol>
-      <li>Para que las dos páginas del programa puedan utilizar los números de las cartas y la jugada obtenida, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen. Para que la página 1 no contenga ninguna "lógica" de programa, sino que simplemente muestre los valores obtenidos en la página 2, redirigiremos a la página 2 para su cálculo.</li>
-      <li>La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta) ...</li>
-      <li>... y la jugada obtenida.</li>
-      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-      <li>Si las variables de sesión no están definidas, les damos valores a las tres cartas al azar. No volvemos inmediatamente a la página 1 porque queda por determinar la jugada obtenida (trío, pareja o valores sueltos).</li>
-      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
+      <li id="li-5-b-1">Para que las dos páginas del programa puedan utilizar los números de las cartas y la jugada obtenida, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-5-b-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen. Para que la página 1 no contenga ninguna "lógica" de programa, sino que simplemente muestre los valores obtenidos en la página 2, redirigiremos a la página 2 para su cálculo.</li>
+      <li id="li-5-b-3">La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta) ...</li>
+      <li id="li-5-b-4">... y la jugada obtenida.</li>
+      <li id="li-5-b-5">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-5-b-6">Si las variables de sesión no están definidas, les damos valores a las tres cartas al azar. No volvemos inmediatamente a la página 1 porque queda por determinar la jugada obtenida (trío, pareja o valores sueltos).</li>
+      <li id="li-5-b-7">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
         <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
       </li>
-      <li>En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
-      <li>El análisis de la jugada obtenida se realiza independientemente del dato recibido, de manera que el análisis se realice tanto cuando se han cambiado las cartas como cuando se han asignado las cartas por primera vez.</li>
-      <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <li id="li-5-b-8">En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
+      <li id="li-5-b-9">El análisis de la jugada obtenida se realiza independientemente del dato recibido, de manera que el análisis se realice tanto cuando se han cambiado las cartas como cuando se han asignado las cartas por primera vez.</li>
+      <li id="li-5-b-10">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
 
     <p>minijuegos-1-5-1-b.php</p>
@@ -610,11 +610,11 @@ header("location:minijuegos-1-5-1.php");</code>
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">1</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-5-b-1">1</span>
 session_name("minijuegos-1-5-b");
 session_start();
 
-// Si los valores de sesión no existen, redirigimos a la segunda página <span class="numero-circulo">2</span>
+// Si los valores de sesión no existen, redirigimos a la segunda página <span class="numero-circulo" tooltip-id="li-5-b-2">2</span>
 if (!isset($_SESSION["carta1"])) {
     header("location:minijuegos-1-5-2.php");
     exit;
@@ -627,14 +627,14 @@ if (!isset($_SESSION["carta1"])) {
 print "    &lt;p&gt;\n";
 print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "           width=\"260\" height=\"190\" viewBox=\"-50 -10 260 190\"&gt;\n";
-// Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo">3</span>
+// Mostramos las tres cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-5-b-3">3</span>
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta2].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(0, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/c$_SESSION[carta3].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(15, 0, 150)\"/&gt;\n";
 print "      &lt;/svg&gt;\n";
 print "    &lt;/p&gt;\n";
 print "\n";
-// Mostramos la jugada obtenida, guardada en la sesión <span class="numero-circulo">4</span>
+// Mostramos la jugada obtenida, guardada en la sesión <span class="numero-circulo" tooltip-id="li-5-b-4">4</span>
 print "    &lt;p&gt;Ha obtenido $_SESSION[mano].&lt;/p&gt;\n";
 print "\n";
 ?&gt;
@@ -649,11 +649,11 @@ print "\n";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">5</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-5-b-5">5</span>
 session_name("minijuegos-1-5-b");
 session_start();
 
-// Si los valores de sesión no existen, damos valor a las tres cartas <span class="numero-circulo">6</span>
+// Si los valores de sesión no existen, damos valor a las tres cartas <span class="numero-circulo" tooltip-id="li-5-b-6">6</span>
 // Más adelante comprobamos qué jugada se ha obtenido
 if (!isset($_SESSION["carta1"])) {
     $_SESSION["carta1"] = rand(1, 10);
@@ -661,7 +661,7 @@ if (!isset($_SESSION["carta1"])) {
     $_SESSION["carta3"] = rand(1, 10);
 }
 
-// Funciones auxiliares <span class="numero-circulo">7</span>
+// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-5-b-7">7</span>
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -681,14 +681,14 @@ function recoge($var, $m = "")
 // Recogemos accion
 $accion = recoge("accion");
 
-// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo">8</span>
+// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo" tooltip-id="li-5-b-8">8</span>
 if ($accion == "nuevas") {
     $_SESSION["carta1"] = rand(1, 10);
     $_SESSION["carta2"] = rand(1, 10);
     $_SESSION["carta3"] = rand(1, 10);
 }
 
-// Comprobamos si se ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo">9</span>
+// Comprobamos si se ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo" tooltip-id="li-5-b-9">9</span>
 if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSION["carta3"]) {
     $_SESSION["mano"] = "un trío de $_SESSION[carta1]";
 } elseif ($_SESSION["carta1"] == $_SESSION["carta2"] || $_SESSION["carta1"] == $_SESSION["carta3"]) {
@@ -699,7 +699,7 @@ if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSI
     $_SESSION["mano"] = "un " . max($_SESSION["carta1"], $_SESSION["carta2"], $_SESSION["carta3"]);
 }
 
-// Volvemos al formulario <span class="numero-circulo">10</span>
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-5-b-10">10</span>
 header("location:minijuegos-1-5-1.php");</code>
 </pre>
     </div>
@@ -708,23 +708,23 @@ header("location:minijuegos-1-5-1.php");</code>
   <section id="ejercicio-6">
     <h3>Minijuegos (1) 6 - Partida de tres cartas</h3>
 
-    <p>En esta versión, guardamos en $_SESSION los valores de las tres cartas y la descripción de la jugada obtenida.</p>
+    <p>En esta versión, guardamos en $_SESSION los valores de las tres cartas y el resultado de la partida.</p>
 
     <ol>
-      <li>Para que las dos páginas del programa puedan utilizar los números de las cartas y la jugada obtenida, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-      <li>Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen. Para que la página 1 no contenga ninguna "lógica" de programa, sino que simplemente muestre los valores obtenidos en la página 2, redirigiremos a la página 2 para su cálculo.</li>
-      <li>La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta) ...</li>
-      <li>... y quién es el ganador.</li>
-      <li>Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
-      <li>Si las variables de sesión no están definidas, les damos valores a las seis cartas al azar. No volvemos inmediatamente a la página 1 porque queda por determinar quién es el ganador.</li>
-      <li>La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
+      <li id="li-6-1">Para que las dos páginas del programa puedan utilizar los números de las cartas y la jugada obtenida, guardaremos esos valores en $_SESSION. Esos valores se muestran en la página 1 y se modifican en la página 2. Para ello, debemos unir la página 1 a una sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+      <li id="li-6-2">Cuando se abre la página 1 por primera vez, $_SESSION no contiene ningún dato e intentar imprimirlos o modificarlos provocaría un error, por lo que damos valor a las variables si no existen. Para que la página 1 no contenga ninguna "lógica" de programa, sino que simplemente muestre los valores obtenidos en la página 2, redirigiremos a la página 2 para su cálculo.</li>
+      <li id="li-6-3">La página 1 muestra las cartas guardadas en $_SESSION (los números guardados corresponden al nombre del fichero de la imagen de la carta) ...</li>
+      <li id="li-6-4">... y quién es el ganador.</li>
+      <li id="li-6-5">Para que la página 2 pueda modificar los datos guardados en $_SESSION, debemos unir la página a la misma sesión que la página 1.</li>
+      <li id="li-6-6">Si las variables de sesión no están definidas, les damos valores a las seis cartas al azar. No volvemos inmediatamente a la página 1 porque queda por determinar quién es el ganador.</li>
+      <li id="li-6-7">La página 2 debe recoger el dato enviado por el formulario de la página 1. En la página 1 el único control es un botón con atributo <span class="html-atri">name</span>, por lo que sólo hay que recoger ese dato.
         <p>Como en cualquier página que recibe un control de un formulario, añadimos la función recoge() y definimos una variable para recoger el dato</p>
       </li>
-      <li>En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
-      <li>El análisis del resultado de la partida se realiza independientemente del dato recibido, tanto cuando se han cambiado las cartas como cuando se han asignado las cartas por primera vez. En primer lugar analizamos la jugada obtenida por el primer jugador (como en el ejercicio 5) y guardamos el resultado en dos variables auxiliares $manoN y $valorN. $manoN valdrá 3, 2 o 1 si el jugador ha obtenido tres cartas iguales, 2 cartas iguales o tres cartas distintas, respectivamente. $valorR contendrá el valor del trío, de la pareja o de la carta más alta, respectivamente.</li>
-      <li>A continuación, analizaremos la jugada obtenida por el segundo jugador, guardando el resultado en dos variables auxiliares $manoR y $valorR.</li>
-      <li>Por último, comparamos los valores de $manoN y $manoR y de $valorN y $valorR para determinador el ganador.</li>
-      <li>Finalmente, la página 2 redirige a la página 1.</li>
+      <li id="li-6-8">En general, la página 2 modifica los valores guardados en la sesión, dependiendo de la petición recibida. En este caso, cuando recibimos el valor "nuevas", cambiamos los valores de las cartas al azar.</li>
+      <li id="li-6-9">El análisis del resultado de la partida se realiza independientemente del dato recibido, tanto cuando se han cambiado las cartas como cuando se han asignado las cartas por primera vez. En primer lugar analizamos la jugada obtenida por el primer jugador (como en el ejercicio 5) y guardamos el resultado en dos variables auxiliares $manoN y $valorN. $manoN valdrá 3, 2 o 1 si el jugador ha obtenido tres cartas iguales, 2 cartas iguales o tres cartas distintas, respectivamente. $valorR contendrá el valor del trío, de la pareja o de la carta más alta, respectivamente.</li>
+      <li id="li-6-10">A continuación, analizaremos la jugada obtenida por el segundo jugador, guardando el resultado en dos variables auxiliares $manoR y $valorR.</li>
+      <li id="li-6-11">Por último, comparamos los valores de $manoN y $manoR y de $valorN y $valorR para determinador el ganador.</li>
+      <li id="li-6-12">Finalmente, la página 2 redirige a la página 1.</li>
     </ol>
 
     <p>minijuegos-1-6-1.php</p>
@@ -732,11 +732,11 @@ header("location:minijuegos-1-5-1.php");</code>
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">1</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-6-1">1</span>
 session_name("minijuegos-1-6");
 session_start();
 
-// Si los valores de sesión no existen, redirigimos a la segunda página
+// Si los valores de sesión no existen, redirigimos a la segunda página<span class="numero-circulo" tooltip-id="li-6-2">2</span>
 if (!isset($_SESSION["cartaR1"])) {
     header("location:minijuegos-1-6-2.php");
     exit;
@@ -749,7 +749,7 @@ if (!isset($_SESSION["cartaR1"])) {
 print "    &lt;p&gt;\n";
 print "      &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "           width=\"400\" height=\"190\" viewBox=\"-50 -10 400 190\"&gt;\n";
-// Mostramos las seis cartas, guardadas en la sesión <span class="numero-circulo">3</span>
+// Mostramos las seis cartas, guardadas en la sesión <span class="numero-circulo" tooltip-id="li-6-2">3</span>
 print "        &lt;image href=\"img/cartas/p$_SESSION[cartaN1].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(-15, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/p$_SESSION[cartaN2].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(0, 0, 150)\"/&gt;\n";
 print "        &lt;image href=\"img/cartas/p$_SESSION[cartaN3].svg\" x=\"0\" y=\"0\" height=\"150\" transform=\"rotate(15, 0, 150)\"/&gt;\n";
@@ -759,7 +759,7 @@ print "        &lt;image href=\"img/cartas/d$_SESSION[cartaR3].svg\" x=\"200\" y
 print "      &lt;/svg&gt;\n";
 print "    &lt;/p&gt;\n";
 print "\n";
-// Mostramos el ganador, guardado en la sesión <span class="numero-circulo">4</span>
+// Mostramos el ganador, guardado en la sesión <span class="numero-circulo" tooltip-id="li-6-4">4</span>
 print "    &lt;p&gt;$_SESSION[ganador]&lt;/p&gt;\n";
 print "\n";
 ?&gt;
@@ -774,11 +774,11 @@ print "\n";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo">5</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-6-5">5</span>
 session_name("minijuegos-1-6");
 session_start();
 
-// Si los valores de sesión no existen, damos valor a las seis cartas <span class="numero-circulo">6</span>
+// Si los valores de sesión no existen, damos valor a las seis cartas <span class="numero-circulo" tooltip-id="li-6-6">6</span>
 // Más adelante comprobamos quién es el ganador
 if (!isset($_SESSION["cartaN1"])) {
     $_SESSION["cartaN1"] = rand(1, 10);
@@ -789,7 +789,7 @@ if (!isset($_SESSION["cartaN1"])) {
     $_SESSION["cartaR3"] = rand(1, 10);
 }
 
-// Funciones auxiliares <span class="numero-circulo">7</span>
+// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-6-7">7</span>
 function recoge($var, $m = "")
 {
     $tmp = is_array($m) ? [] : "";
@@ -809,7 +809,7 @@ function recoge($var, $m = "")
 // Recogemos accion
 $accion = recoge("accion");
 
-// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo">8</span>
+// Si recibimos "nuevas", reiniciamos los valores de las cartas <span class="numero-circulo" tooltip-id="li-6-8">8</span>
 if ($accion == "nuevas") {
     $_SESSION["cartaN1"] = rand(1, 10);
     $_SESSION["cartaN2"] = rand(1, 10);
@@ -819,7 +819,7 @@ if ($accion == "nuevas") {
     $_SESSION["cartaR3"] = rand(1, 10);
 }
 
-// Comprobamos si el primer jugador ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo">9</span>
+// Comprobamos si el primer jugador ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo" tooltip-id="li-6-9">9</span>
 if ($_SESSION["cartaN1"] == $_SESSION["cartaN2"] && $_SESSION["cartaN2"] == $_SESSION["cartaN3"]) {
     $manoN  = 3;
     $valorN = $_SESSION["cartaN1"];
@@ -834,7 +834,7 @@ if ($_SESSION["cartaN1"] == $_SESSION["cartaN2"] && $_SESSION["cartaN2"] == $_SE
     $valorN = max($_SESSION["cartaN1"], $_SESSION["cartaN2"], $_SESSION["cartaN3"]);
 }
 
-// Comprobamos si el segundo jugador ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo">10</span>
+// Comprobamos si el segundo jugador ha obtenido un trío, una pareja o cartas distintas <span class="numero-circulo" tooltip-id="li-6-10">10</span>
 if ($_SESSION["cartaR1"] == $_SESSION["cartaR2"] && $_SESSION["cartaR2"] == $_SESSION["cartaR3"]) {
     $manoR  = 3;
     $valorR = $_SESSION["cartaR1"];
@@ -849,7 +849,7 @@ if ($_SESSION["cartaR1"] == $_SESSION["cartaR2"] && $_SESSION["cartaR2"] == $_SE
     $valorR = max($_SESSION["cartaR1"], $_SESSION["cartaR2"], $_SESSION["cartaR3"]);
 }
 
-// Comparamos el resultado de ambos jugadores para saber quién ha ganado <span class="numero-circulo">11</span>
+// Comparamos el resultado de ambos jugadores para saber quién ha ganado <span class="numero-circulo" tooltip-id="li-6-11">11</span>
 if ($manoN &gt; $manoR) {
     $_SESSION["ganador"] = "Ha ganado el jugador de las cartas negras.";
 } elseif ($manoR &gt; $manoN) {
@@ -862,14 +862,35 @@ if ($manoN &gt; $manoR) {
     $_SESSION["ganador"] = "Han empatado.";
 }
 
-// Volvemos al formulario <span class="numero-circulo">12</span>
+// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-6-12">12</span>
 header("location:minijuegos-1-5-1.php");</code>
 </pre>
     </div>
   </section>
 
+  <script>
+    function muestra() {
+      var elementos = document.querySelectorAll("[tooltip-id]");
+      for (var i = 0; i < elementos.length; i++) {
+        const x1 = elementos[i].getAttribute("tooltip-id");
+        if (document.getElementById('tp-' + x1)) {
+          document.getElementById('tp-' + x1).remove();
+        }
+        elementos[i].classList.add("tooltip");
+        const x2 = document.getElementById(x1).textContent;
+        const tp = document.createElement("span");
+        tp.classList.add("tooltiptext");
+        tp.setAttribute('id', 'tp-' + x1);
+        tp.textContent = x2;
+        elementos[i].appendChild(tp)
+        elementos[i].style.display = 'revert';
+      }
+    }
+    window.onload = muestra;
+  </script>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 22 de noviembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
