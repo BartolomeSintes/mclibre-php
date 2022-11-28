@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ruleta de la fortuna. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Ruleta de la fortuna</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Ruleta de la fortuna</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre una ruleta girando.</p>
+
+  <section id="comentarios">
+    <h2>Ruleta de la fortuna - Comentarios</h2>
+
+    <ul>
+      <li>El programa debe:
+        <ul>
+          <li>Mostrar una ruleta dividida en seis sectores iguales numerados del 1 al 6.</li>
+          <li>Al abrirse la página, la flecha de la ruleta debe girar una vuelta completa y quedar apuntando a uno de los valores numéricos (para llegar al 1 dará una vuelta completa).</li>
+          <li>La velocidad de rotación de la flecha será constante (1.2 segundos por vuelta, 0.2 segundos por sector).</li>
+          <li>Al detenerse la flecha se mostrará a la derecha de la ruleta el valor obtenido.</li>
+          <li>La ruleta volverá girar cada vez que se actualice la página mostrando un resultado distinto (aunque al generarse al azar puedan repetirse ocasionalmente).</li>
+        </ul>
+      </li>
+      <li>El argumento de la transformación CSS rotate es un valor entero entre 0 y 360 que representa el ángulo con la vertical (la posición de las 0 horas o de los 0 minutos).</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/ruleta-fortuna-1.png" alt="Ruleta de la fortuna" width="1012" height="290"></p>
+      </li>
+      <li>Ejemplo de ejecución del programa:
+        <p>
+          <svg width="320" height="220" viewBox="-10 -10 320 220">
+            <path d="M 100,100 150,13 A 100,100 0 0,1 200,100 Z" fill="hwb(0 40% 0%)" />
+            <path d="M 100,100 200,100 A 100,100 0 0,1 150,187 Z" fill="hwb(60 40% 0%)" />
+            <path d="M 100,100 150,187 A 100,100 0 0,1 50,187 Z" fill="hwb(120 40% 0%)" />
+            <path d="M 100,100 50,187 A 100,100 0 0,1 0,100 Z" fill="hwb(180 40% 0%)" />
+            <path d="M 100,100 0,100 A 100,100 0 0,1 50,13 Z" fill="hwb(240 40% 0%)" />
+            <path d="M 100,100 50,13 A 100,100 0 0,1 150,13 Z" fill="hwb(300 40% 0%)" />
+            <text x="100" y="37" text-anchor="middle" font-family="sans-serif" font-size="40">1</text>
+            <text x="167" y="76" text-anchor="middle" font-family="sans-serif" font-size="40">2</text>
+            <text x="167" y="146" text-anchor="middle" font-family="sans-serif" font-size="40">3</text>
+            <text x="100" y="192" text-anchor="middle" font-family="sans-serif" font-size="40">4</text>
+            <text x="32" y="146" text-anchor="middle" font-family="sans-serif" font-size="40">5</text>
+            <text x="32" y="76" text-anchor="middle" font-family="sans-serif" font-size="40">6</text>
+            <circle cx="100" cy="100" r="100" stroke="black" stroke-width="4" fill="none" />
+            <g>
+              <polygon points="100,40 115,55 105,55 105,150 115,160 105,160 100,155 95,160 85,160 95,150 95,55 85,55" stroke="black" stroke-width="2" fill="white" />
+              <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="600 100 100" dur="2.2s" repeatCount="1" fill="freeze" />
+            </g>
+            <circle cx="100" cy="100" r="8" stroke="black" stroke-width="2" fill="#888" />
+            <text x="250" y="130" text-anchor="middle" font-family="sans-serif" font-size="90" opacity="0">5
+              <animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="2.2s" fill="freeze" />
+            </text>
+          </svg>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Ruleta de la fortuna - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">      &lt;g&gt;
+        &lt;polygon points="100,40 115,55 105,55 105,150 115,160 105,160 100,155 95,160 85,160 95,150 95,55 85,55" stroke="black" stroke-width="2" fill="white" /&gt;
+        &lt;animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="<span class="codigo-resaltado">360</span> 100 100" dur="<span class="codigo-resaltado">1.2</span>s" repeatCount="1" fill="freeze" /&gt;
+      &lt;/g&gt;
+      &lt;circle cx="100" cy="100" r="8" stroke="black" stroke-width="2" fill="#888" /&gt;
+      &lt;text x="250" y="130" text-anchor="middle" font-family="sans-serif" font-size="90" opacity="0"&gt;<span class="codigo-resaltado">1</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">1.2</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</code>
+</pre>
+    </div>
+    <div class="codigo">
+      <pre>
+<code class="language-html">      &lt;g&gt;
+        &lt;polygon points="100,40 115,55 105,55 105,150 115,160 105,160 100,155 95,160 85,160 95,150 95,55 85,55" stroke="black" stroke-width="2" fill="white" /&gt;
+        &lt;animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="<span class="codigo-resaltado">420</span> 100 100" dur="<span class="codigo-resaltado">1.4</span>s" repeatCount="1" fill="freeze" /&gt;
+      &lt;/g&gt;
+      &lt;circle cx="100" cy="100" r="8" stroke="black" stroke-width="2" fill="#888" /&gt;
+      &lt;text x="250" y="130" text-anchor="middle" font-family="sans-serif" font-size="90" opacity="0"&gt;<span class="codigo-resaltado">2</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">1.4</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">      &lt;g&gt;
+        &lt;polygon points="100,40 115,55 105,55 105,150 115,160 105,160 100,155 95,160 85,160 95,150 95,55 85,55" stroke="black" stroke-width="2" fill="white" /&gt;
+        &lt;animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="<span class="codigo-resaltado">480</span> 100 100" dur="<span class="codigo-resaltado">1.6</span>s" repeatCount="1" fill="freeze" /&gt;
+      &lt;/g&gt;
+      &lt;circle cx="100" cy="100" r="8" stroke="black" stroke-width="2" fill="#888" /&gt;
+      &lt;text x="250" y="130" text-anchor="middle" font-family="sans-serif" font-size="90" opacity="0"&gt;<span class="codigo-resaltado">3</span>
+        &lt;animate dur="0.1s" attributeName="opacity" from="0" to="1" begin="<span class="codigo-resaltado">1.6</span>s" fill="freeze" /&gt;
+      &lt;/text&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 25 de noviembre de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
