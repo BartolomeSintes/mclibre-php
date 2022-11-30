@@ -3,9 +3,9 @@
  * Minijuegos: Tragaperras (3) - tragaperras-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2022-11-30
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,15 +24,10 @@
 session_name("tragaperras-3");
 session_start();
 
-$simbolosNumero = 8;   // Número de frutas
-
 // Valores iniciales variables sesión
-if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) ||
-    !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])) {
-    $_SESSION["monedas"] = 0;
-    $_SESSION["fruta1"] = rand(1, $simbolosNumero);
-    $_SESSION["fruta2"] = rand(1, $simbolosNumero);
-    $_SESSION["fruta3"] = rand(1, $simbolosNumero);
+if (!isset($_SESSION["monedas"]) || !isset($_SESSION["fruta1"]) || !isset($_SESSION["fruta2"]) || !isset($_SESSION["fruta3"])) {
+    header("Location:tragaperras-3-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -78,7 +73,7 @@ print "  </form>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-10-31">31 de octubre de 2018</time>
+      <time datetime="2022-11-30">30 de noviembre de 2022</time>
     </p>
 
     <p class="licencia">

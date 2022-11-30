@@ -3,9 +3,9 @@
  * Minijuegos: Tragaperras (4) - tragaperras-4-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-10-31
+ * @version   2022-11-30
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -65,7 +65,9 @@ if ($accion == "moneda") {
     $_SESSION["cara"] = "plain";
 }
 
-// Si se ha jugado, se genera una nueva combinación, se pierde una moneda y se comprueba el premio
+// Si se ha jugado y hay monedas insertadas,
+// se genera una nueva combinación, se pierde una moneda
+// se comprueba si hay premio y se elige la cara
 if ($accion == "jugar" && $_SESSION["monedas"] > 0) {
     $_SESSION["fruta1"] = rand(1, $simbolosNumero);
     $_SESSION["fruta2"] = rand(1, $simbolosNumero);
