@@ -1,6 +1,6 @@
 <?php
 /**
- * Simon (3) - simon-3-1.php
+ * Simon (3) - simon-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -89,7 +89,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
     <p><input type="submit" name="eleccion" value="Reiniciar"></p>
     </form>
 
-    <?php
+<?php
 if (count($_SESSION["jugador"])) {
     print "  <p>Colores elegidos:</p>\n";
     print "\n";

@@ -1,11 +1,11 @@
 <?php
 /**
- * Simon (3) - simon-3-1.php
+ * Simon (5) - simon-5-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-30
+ * @version   2022-11-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -23,14 +23,16 @@
  */
 
 // Se accede a la sesión
-session_name("simon-3");
+session_name("simon-5");
 session_start();
 
-$longitud = rand(2, 7);
 $colores = ["red", "yellow", "green", "blue"];
 
-if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SESSION["fallo"]) || !isset($_SESSION["completado"])) {
-    for ($i = 0; $i < $longitud; $i++) {
+// Reinicia cuando falta alguno o cuando fallo es true
+if (!isset($_SESSION["longitud"]) || !isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SESSION["fallo"]) || !isset($_SESSION["completado"]) || $_SESSION["fallo"]) {
+    $_SESSION["longitud"] = 3;
+    unset($_SESSION["objetivo"]);
+    for ($i = 0; $i < $_SESSION["longitud"]; $i++) {
         $_SESSION["objetivo"][] = $colores[array_rand($colores)];
     }
     $_SESSION["jugador"] = [];
@@ -44,7 +46,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
 <head>
   <meta charset="utf-8">
   <title>
-    Simon (3).
+    Simon (5).
     Minijuegos. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -53,9 +55,11 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
 </head>
 
 <body>
-  <h1>Simon (3)</h1>
+  <h1>Simon (5)</h1>
 
 <?php
+    print "    <h2>Secuencia de $_SESSION[longitud] colores</h2>\n";
+    print "\n";
     print "    <p>Secuencia a reproducir:</p>\n";
     print "\n";
     print "    <p>\n";
@@ -67,7 +71,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
     print "    </p>\n";
 
 ?>
-  <form action="simon-3-2.php" method="get">
+  <form action="simon-5-2.php" method="get">
     <p>Haga clic para comenzar el juego:</p>
 
     <p><input type="submit" name="eleccion" value="Comenzar"></p>
@@ -76,7 +80,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-30">30 de noviembre de 2021</time>
+      <time datetime="2022-11-29">29 de noviembre de 2022</time>
     </p>
 
     <p class="licencia">

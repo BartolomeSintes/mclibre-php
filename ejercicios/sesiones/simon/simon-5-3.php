@@ -1,11 +1,11 @@
 <?php
 /**
- * Simon (3) - simon-3-3.php
+ * Simon (5) - simon-5-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-30
+ * @version   2022-11-29
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -21,12 +21,13 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 // Se accede a la sesión
-session_name("simon-3");
+session_name("simon-5");
 session_start();
 
-if (!isset($_SESSION["jugador"])) {
-    header("Location:simon-3-1.php");
+if (!isset($_SESSION["longitud"]) || !isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SESSION["fallo"]) || !isset($_SESSION["completado"])) {
+    header("Location:simon-5-1.php");
     exit;
 }
 
@@ -46,22 +47,51 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
+$colores = ["red", "yellow", "green", "blue"];
+
 $eleccion = recoge("eleccion");
 
-if ($eleccion == "Reiniciar") {
+if ($_SESSION["fallo"] && $eleccion == "Reintentar secuencia") {
+    $_SESSION["jugador"] = [];
+    $_SESSION["fallo"]   = false;
+    header("Location:simon-5-1.php");
+    exit;
+}
+
+if ($_SESSION["fallo"] && $eleccion == "Reiniciar") {
     session_destroy();
-    header("Location:simon-3-1.php");
+    header("Location:simon-5-1.php");
     exit;
 }
 
-if ($_SESSION["completado"] || $_SESSION["fallo"]) {
-    header("Location:simon-3-2.php");
+if ($_SESSION["completado"] && $eleccion == "Siguiente nivel") {
+    $_SESSION["longitud"] += 1;
+    unset($_SESSION["objetivo"]);
+    for ($i = 0; $i < $_SESSION["longitud"]; $i++) {
+        $_SESSION["objetivo"][] = $colores[array_rand($colores)];
+    }
+    $_SESSION["jugador"]    = [];
+    $_SESSION["fallo"]      = false;
+    $_SESSION["completado"] = false;
+    header("Location:simon-5-1.php");
     exit;
 }
 
-if (in_array($eleccion, ["red", "yellow", "green", "blue"])) {
+if ($_SESSION["completado"] && $eleccion == "Repetir nivel") {
+    unset($_SESSION["objetivo"]);
+    for ($i = 0; $i < $_SESSION["longitud"]; $i++) {
+        $_SESSION["objetivo"][] = $colores[array_rand($colores)];
+    }
+    $_SESSION["jugador"]    = [];
+    $_SESSION["fallo"]      = false;
+    $_SESSION["completado"] = false;
+    header("Location:simon-5-1.php");
+    exit;
+}
+
+if (!$_SESSION["fallo"] && !$_SESSION["completado"] && in_array($eleccion, ["red", "yellow", "green", "blue"])) {
     $_SESSION["jugador"][] = $eleccion;
-    $_SESSION["fallo"] = false;
+    $_SESSION["fallo"]     = false;
     for ($i = 0; $i < count($_SESSION["jugador"]); $i++) {
         if ($_SESSION["jugador"][$i] != $_SESSION["objetivo"][$i]) {
             $_SESSION["fallo"] = true;
@@ -72,4 +102,4 @@ if (in_array($eleccion, ["red", "yellow", "green", "blue"])) {
     }
 }
 
-header("Location:simon-3-2.php");
+header("Location:simon-5-2.php");

@@ -56,7 +56,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
   <h1>Simon (2)</h1>
 
   <form action="simon-2-2.php" method="get">
-  <?php
+<?php
     print "    <p>Secuencia a reproducir:</p>\n";
     print "\n";
     print "    <p>\n";
@@ -108,7 +108,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
     <p><input type="submit" name="eleccion" value="Reiniciar"></p>
   </form>
 
-    <?php
+<?php
 if (count($_SESSION["jugador"])) {
     print "  <p>Colores elegidos:</p>\n";
     print "\n";

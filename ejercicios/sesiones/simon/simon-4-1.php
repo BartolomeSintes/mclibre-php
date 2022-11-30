@@ -38,7 +38,6 @@ if (!isset($_SESSION["longitud"]) || !isset($_SESSION["objetivo"]) || !isset($_S
     $_SESSION["jugador"] = [];
     $_SESSION["fallo"] = false;
     $_SESSION["completado"] = false;
-    $_SESSION["jugar"] = false;
 }
 
 if ($_SESSION["completado"]) {
@@ -50,7 +49,6 @@ if ($_SESSION["completado"]) {
     $_SESSION["jugador"] = [];
     $_SESSION["fallo"] = false;
     $_SESSION["completado"] = false;
-    $_SESSION["jugar"] = false;
 }
 
 ?>
@@ -70,7 +68,7 @@ if ($_SESSION["completado"]) {
 <body>
   <h1>Simon (4)</h1>
 
-  <?php
+<?php
     print "    <p>Secuencia a reproducir:</p>\n";
     print "\n";
     print "    <p>\n";

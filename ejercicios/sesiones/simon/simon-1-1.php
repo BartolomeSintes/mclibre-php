@@ -88,7 +88,7 @@ if (!isset($_SESSION["colores"])) {
     <p><input type="submit" name="eleccion" value="Reiniciar"></p>
     </form>
 
-    <?php
+<?php
 if (count($_SESSION["colores"])) {
     print "    <p>Colores: elegidos:</p>\n";
     print "\n";
