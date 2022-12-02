@@ -3,9 +3,9 @@
  * Memorión (2) - memorion-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2022-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,11 +26,22 @@
 session_name("memorion-2");
 session_start();
 
-// Si no está guardado en la sesión el número de dibujos ...
+// Si no está definido en la sesión el número de dibujos ....
 if (!isset($_SESSION["numeroDibujos"])) {
-    // ... redirigimos a la primera página
-    header("Location:memorion-2-1.php");
-    exit;
+    // ... guardamos el número de dibujos en la sesión
+    $_SESSION["numeroDibujos"] = 5;
+}
+
+// Si no están definidos en la sesión los dibujos de la partida ....
+if (!isset($_SESSION["dibujos"])) {
+    // Matriz con todos los valores posibles (61 valores)
+    $valores = range(128000, 128060);
+    // Los barajamos
+    shuffle($valores);
+    // Guardamos los N primeros (N es el número de dibujos)
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = $valores[$i];
+    }
 }
 
 // Funciones auxiliares
@@ -60,8 +71,10 @@ if ($accion == "nueva") {
     // ... y redirigimos a la primera página
     header("Location:memorion-2-1.php");
     exit;
+}
+
 // Si se ha pulsado "Cambiar número de dibujos" ...
-} elseif ($accion == "numero") {
+if ($accion == "numero") {
     // ... redirigimos al formulario correspondiente
     header("Location:memorion-2-3.php");
     exit;
@@ -69,4 +82,3 @@ if ($accion == "nueva") {
 
 // Redirigimos a la primera página
 header("Location:memorion-2-1.php");
-exit;

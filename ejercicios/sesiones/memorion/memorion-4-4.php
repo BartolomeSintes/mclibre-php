@@ -3,9 +3,9 @@
  * Memorión (4) - memorion-4-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2022-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,10 +26,9 @@
 session_name("memorion-4");
 session_start();
 
-// Si no están guardado en la sesión los dibujos de la partida ....
-if (!isset($_SESSION["numeroDibujos"])) {
-    // ... redirigimos a la primera página
-    header("Location:memorion-4-1.php");
+// Si no están definidas las variables de sesión, redirigimos a la segunda página
+if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
+    header("Location:memorion-4-2.php");
     exit;
 }
 
@@ -52,9 +51,6 @@ function recoge($var, $m = "")
 
 // Recogemos el número de dibujos
 $numeroDibujos = recoge("numeroDibujos");
-// Número mínimo y máximo de dibujos
-$numeroDibujosMinimo = 2;
-$numeroDibujosMaximo = 61;
 
 // Variable auxiliar dato correcto
 $numeroDibujosOk = false;
@@ -63,7 +59,7 @@ $numeroDibujosOk = false;
 if ($numeroDibujos == "") {
 } elseif (!is_numeric($numeroDibujos)) {
 } elseif (!ctype_digit($numeroDibujos)) {
-} elseif ($numeroDibujos < $numeroDibujosMinimo || $numeroDibujos > $numeroDibujosMaximo) {
+} elseif ($numeroDibujos < 2 || $numeroDibujos > 61) {
 } else {
     $numeroDibujosOk = true;
 }
@@ -74,11 +70,10 @@ if ($numeroDibujosOk) {
     $_SESSION["numeroDibujos"] = $numeroDibujos;
     // Borramos la partida
     unset($_SESSION["dibujos"]);
-    // Redirigimos a la primera página
-    header("Location:memorion-4-1.php");
-    exit;
-// ... y si no, redirigimos al formulario
-} else {
-    header("Location:memorion-4-3.php");
+    // Redirigimos a la segunda página
+    header("Location:memorion-4-2.php");
     exit;
 }
+
+// Redirigimos a la tercera página
+header("Location:memorion-4-3.php");

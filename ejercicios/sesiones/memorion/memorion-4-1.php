@@ -3,9 +3,9 @@
  * Memorión (4) - memorion-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2022-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,42 +26,11 @@
 session_name("memorion-4");
 session_start();
 
-// Si no está guardado en la sesión el número de dibujos ....
-if (!isset($_SESSION["numeroDibujos"])) {
-    // ... guardamos el número de dibujos en la sesión
-    $_SESSION["numeroDibujos"] = 5;
-}
-
-// Si no están guardado en la sesión los dibujos de la partida ....
-if (!isset($_SESSION["dibujos"])) {
-    // ... creamos una matriz con todos los valores posibles (61 valores)
-    $valores = [];
-    for ($i = 128000; $i <= 128060; $i++) {
-        $valores[] = $i;
-    }
-
-    // Los barajamos
-    shuffle($valores);
-
-    // Cogemos los N primeros (N es el número de dibujos)
-    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$i] = $valores[$i];
-        // Las fichas estarán boca abajo
-        $_SESSION["lado"][$i]   = "dorso";
-    }
-
-    // Duplicamos los valores (creamos valores de N a 2N-1)
-    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$_SESSION["numeroDibujos"] + $i] = $valores[$i];
-        $_SESSION["lado"][$_SESSION["numeroDibujos"] + $i]    = "dorso";
-    }
-
-    // Los barajamos de nuevo
-    shuffle($_SESSION["dibujos"]);
-
-    // No se ha elegido ni la primera ficha ni la segunda de la jugada
-    $_SESSION["primera"] = -1;
-    $_SESSION["segunda"] = -1;
+// Si no están definidas las variables de sesión, redirigimos a la segunda página
+if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"]) || !isset($_SESSION["lado"])
+                                       || !isset($_SESSION["primera"]) || !isset($_SESSION["segunda"])) {
+    header("Location:memorion-4-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -89,11 +58,11 @@ if (!isset($_SESSION["dibujos"])) {
     <p>
 <?php
 // Mostramos los dibujos seleccionados en botones
-for ($i = 0; $i < 2*$_SESSION["numeroDibujos"]; $i++) {
-    // La ficha puede estar boca arriba (se ve el dibujo) ...
+for ($i = 0; $i < 2 * $_SESSION["numeroDibujos"]; $i++) {
+    // La ficha puede estar boca arriba (se ve el dibujo del animal) ...
     if ($_SESSION["primera"] == $i || $_SESSION["segunda"] == $i) {
         print "      <button type=\"button\" style=\"font-size: 70px; width: 100px; height: 100px;\">&#{$_SESSION["dibujos"][$i]};</button> \n";
-    } else { // ... o boca abajo (se ve el dibujo común)
+    } else { // ... o boca abajo (se ve el dibujo del dorso)
         print "      <button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\">&#10026;</button> \n";
     }
 }
@@ -104,7 +73,7 @@ for ($i = 0; $i < 2*$_SESSION["numeroDibujos"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-01">1 de noviembre de 2018</time>
+      <time datetime="2022-12-02">2 de diciembre de 2022</time>
     </p>
 
     <p class="licencia">

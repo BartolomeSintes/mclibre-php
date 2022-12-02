@@ -3,9 +3,9 @@
  * Memorión (2) - memorion-2-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2022-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,27 +26,10 @@
 session_name("memorion-2");
 session_start();
 
-// Si no está guardado en la sesión el número de dibujos ....
-if (!isset($_SESSION["numeroDibujos"])) {
-    // ... guardamos el número de dibujos en la sesión
-    $_SESSION["numeroDibujos"] = 5;
-}
-
-// Si no están guardado en la sesión los dibujos de la partida ....
-if (!isset($_SESSION["dibujos"])) {
-    // ... creamos una matriz con todos los valores posibles (61 valores)
-    $valores = [];
-    for ($i = 128000; $i <= 128060; $i++) {
-        $valores[] = $i;
-    }
-
-    // Los barajamos
-    shuffle($valores);
-
-    // Cogemos los N primeros (N es el número de dibujos)
-    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
-        $_SESSION["dibujos"][$i] = $valores[$i];
-    }
+// Si no están definidas las variables de sesión, redirigimos a la segunda página
+if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
+    header("Location:memorion-2-2.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -84,7 +67,7 @@ for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-01">1 de noviembre de 2018</time>
+      <time datetime="2022-12-02">2 de diciembre de 2022</time>
     </p>
 
     <p class="licencia">

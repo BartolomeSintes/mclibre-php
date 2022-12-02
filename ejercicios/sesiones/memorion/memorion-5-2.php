@@ -3,9 +3,9 @@
  * Memorión (5) - memorion-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2022 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-01
+ * @version   2022-12-02
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,11 +26,40 @@
 session_name("memorion-5");
 session_start();
 
-// Si no están guardado en la sesión los dibujos de la partida ....
+// Si no está definido en la sesión el número de dibujos ....
 if (!isset($_SESSION["numeroDibujos"])) {
-    // ... redirigimos a la primera página
-    header("Location:memorion-5-1.php");
-    exit;
+    // ... guardamos el número de dibujos en la sesión
+    $_SESSION["numeroDibujos"] = 5;
+}
+
+// Si no están definidos en la sesión los dibujos de la partida ....
+if (!isset($_SESSION["dibujos"])) {
+    // Matriz con todos los valores posibles (61 valores)
+    $valores = range(128000, 128060);
+    // Los barajamos
+    shuffle($valores);
+    // Guardamos los N primeros (N es el número de dibujos)
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$i] = $valores[$i];
+    }
+    // Duplicamos los valores (creamos valores de N a 2N-1)
+    for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["dibujos"][$_SESSION["numeroDibujos"] + $i] = $valores[$i];
+    }
+    // Los barajamos de nuevo
+    shuffle($_SESSION["dibujos"]);
+
+    // Guardamos las fichas boca abajo
+    for ($i = 0; $i < 2 * $_SESSION["numeroDibujos"]; $i++) {
+        $_SESSION["lado"][$i] = "dorso";
+    }
+
+    // No se ha elegido ni la primera ficha ni la segunda de la jugada
+    $_SESSION["primera"] = -1;
+    $_SESSION["segunda"] = -1;
+
+    // No se ha realizado ninguna jugada
+    $_SESSION["jugadas"] = 0;
 }
 
 // Funciones auxiliares
@@ -50,13 +79,13 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Recogemos los datos (botón y carta)
+// Recogemos los datos (botón y ficha)
 $accion = recoge("accion");
-$gira= recoge("gira");
+$gira   = recoge("gira");
 
 // Variables auxiliares comprobación de datos
 $accionOk = false;
-$giraOk = false;
+$giraOk   = false;
 
 // Validamos el dato recibido, sin hacer nada si el dato no es válido
 if ($gira == "") {
@@ -82,45 +111,45 @@ if ($giraOk || $accionOk) {
         // ... y redirigimos a la primera página
         header("Location:memorion-5-1.php");
         exit;
-    // Si se ha pulsado "Cambiar número de dibujos" ...
-    } elseif ($accion == "numero") {
+        // Si se ha pulsado "Cambiar número de dibujos" ...
+    }
+    if ($accion == "numero") {
         // ... redirigimos al formulario correspondiente
         header("Location:memorion-5-3.php");
         exit;
-    // Si se ha pulsado una ficha ...
-    } else {
-        // Si se ha pulsado una ficha que está boca abajo ...
-        if ($_SESSION["lado"][$gira] == "dorso") {
-            // ... la giramos
-            $_SESSION["lado"][$gira] = "dibujo";
-            // Si no hay ninguna carta girada ...
-            if ($_SESSION["primera"] == -1) {
-                // ... guardamos qué ficha hemos girado
-                $_SESSION["primera"] = $gira;
-            // Si hay sólo una ficha girada ...
-            } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] == -1) {
-                // ... guardamos qué ficha hemos girado
-                $_SESSION["segunda"] = $gira;
-                $_SESSION["jugadas"] += 1;
-            // Si ya hay dos giradas ...
-            } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] != -1) {
-                // Si son diferentes
-                if ($_SESSION["dibujos"][$_SESSION["primera"]] != $_SESSION["dibujos"][$_SESSION["segunda"]]) {
-                    // ... damos la vuelta a las dos fichas
-                    $_SESSION["lado"][$_SESSION["primera"]] = "dorso";
-                    $_SESSION["lado"][$_SESSION["segunda"]] = "dorso";
-                }
-                // Guardamos esa ficha como primera ficha de la jugada siguiente
-                $_SESSION["primera"] = $gira;
-                $_SESSION["segunda"] = -1;
-            }
-        }
-        // Redirigimos a la primera página
-        header("Location:memorion-5-1.php");
-        exit;
+        // Si se ha pulsado una ficha ...
     }
-// ... y si no, redirigimos a la primera página
-} else {
+    // Si se ha pulsado una ficha que está boca abajo ...
+    if ($_SESSION["lado"][$gira] == "dorso") {
+        // ... la giramos
+        $_SESSION["lado"][$gira] = "dibujo";
+        // Si no hay ninguna ficha girada ...
+        if ($_SESSION["primera"] == -1) {
+            // ... guardamos qué ficha hemos girado
+            $_SESSION["primera"] = $gira;
+        // Si hay sólo una ficha girada ...
+        } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] == -1) {
+            // ... guardamos qué ficha hemos girado y aumentamos el contador de jugadas
+            $_SESSION["segunda"] = $gira;
+            $_SESSION["jugadas"] += 1;
+        // Si ya hay dos giradas ...
+        } elseif ($_SESSION["primera"] != -1 && $_SESSION["segunda"] != -1) {
+            // Si son diferentes
+            if ($_SESSION["dibujos"][$_SESSION["primera"]] != $_SESSION["dibujos"][$_SESSION["segunda"]]) {
+                // ... damos la vuelta a las dos fichas
+                $_SESSION["lado"][$_SESSION["primera"]] = "dorso";
+                $_SESSION["lado"][$_SESSION["segunda"]] = "dorso";
+            }
+            // Guardamos esa ficha como primera ficha de la jugada siguiente
+            $_SESSION["primera"] = $gira;
+            $_SESSION["segunda"] = -1;
+        }
+    }
+    // Redirigimos a la primera página
     header("Location:memorion-5-1.php");
     exit;
+
+
 }
+// ... y si no, redirigimos a la primera página
+header("Location:memorion-5-1.php");

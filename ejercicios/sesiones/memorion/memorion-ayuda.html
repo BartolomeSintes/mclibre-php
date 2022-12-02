@@ -22,8 +22,18 @@
     </p>
 
     <div class="toc">
-      <h2>Ayuda Memorión</h2>
+      <h2>Memorión</h2>
 
+      <h3><a href="index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="index.html#ejercicio-1">1 - Memorión (1)</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Memorión (2)</a></li>
+        <li><a href="index.html#ejercicio-3">3 - Memorión (3)</a></li>
+        <li><a href="index.html#ejercicio-4">4 - Memorión (4)</a></li>
+        <li><a href="index.html#ejercicio-5">5 - Memorión (5)</a></li>
+      </ul>
+
+      <h3><a href="#">Ayuda</a></h3>
       <ul>
         <li><a href="#ejercicio-1">1 - Memorión (1)</a></li>
         <li><a href="#ejercicio-2">2 - Memorión (2)</a></li>
@@ -282,10 +292,10 @@ if (!isset($_SESSION["dibujos"])) {
           <pre>
 <code class="language-php">// Mostramos los dibujos seleccionados en botones
 for ($i = 0; $i &lt; 2*$_SESSION["numeroDibujos"]; $i++) {
-    // La ficha puede estar boca arriba (se ve el dibujo) ...
+    // La ficha puede estar boca arriba (se ve el dibujo del animal) ...
     if ($_SESSION["lado"][$i] == "dibujo") {
         print "      &lt;button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px;\"&gt;&amp;#{$_SESSION["dibujos"][$i]};&lt;/button&gt; \n";
-    } else { // ... o boca abajo (se ve el dibujo común)
+    } else { // ... o boca abajo (se ve el dibujo del dorso)
         print "      &lt;button type=\"submit\" name=\"gira\" value=\"$i\" style=\"font-size: 70px; width: 100px; height: 100px; color: black;\"&gt;&amp;#10026;&lt;/button&gt; \n";
     }
 }</code>
@@ -347,7 +357,7 @@ if ($giraOk || $accionOk) {
         if ($_SESSION["lado"][$gira] == "dorso") {
             // ... la giramos
             $_SESSION["lado"][$gira] = "dibujo";
-            // Si no hay ninguna carta girada ...
+            // Si no hay ninguna ficha girada ...
             if ($_SESSION["primera"] == -1) {
                 // ... guardamos qué ficha hemos girado
                 $_SESSION["primera"] = $gira;</code>
