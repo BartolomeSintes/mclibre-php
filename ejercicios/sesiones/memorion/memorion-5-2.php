@@ -113,12 +113,14 @@ if ($giraOk || $accionOk) {
         exit;
         // Si se ha pulsado "Cambiar número de dibujos" ...
     }
+
     if ($accion == "numero") {
         // ... redirigimos al formulario correspondiente
         header("Location:memorion-5-3.php");
         exit;
         // Si se ha pulsado una ficha ...
     }
+
     // Si se ha pulsado una ficha que está boca abajo ...
     if ($_SESSION["lado"][$gira] == "dorso") {
         // ... la giramos
@@ -145,11 +147,7 @@ if ($giraOk || $accionOk) {
             $_SESSION["segunda"] = -1;
         }
     }
-    // Redirigimos a la primera página
-    header("Location:memorion-5-1.php");
-    exit;
-
-
 }
-// ... y si no, redirigimos a la primera página
+
+// Redirigimos a la primera página
 header("Location:memorion-5-1.php");
