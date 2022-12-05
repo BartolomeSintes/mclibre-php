@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Funciones y bibliotecas. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Funciones. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../varios/php.css" title="mclibre">
   <link rel="icon" href="../varios/favicon.svg">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>Funciones y bibliotecas</h1>
+  <h1>Funciones</h1>
 
   <nav>
     <p>
@@ -20,7 +20,7 @@
     </p>
 
     <div class="toc">
-      <h2>Funciones y bibliotecas</h2>
+      <h2>Funciones</h2>
 
       <ul>
         <li><a href="#sin-argumentos">Funciones sin argumentos</a></li>
@@ -32,7 +32,6 @@
         <li><a href="#devolucion">Devolución de valores</a></li>
         <li><a href="#argumentos-predeterminados">Argumentos predeterminados</a></li>
         <li><a href="#argumentos-indeterminados">Argumentos indeterminados</a></li>
-        <li><a href="#bibliotecas">Bibliotecas</a></li>
       </ul>
     </div>
   </nav>
@@ -769,194 +768,6 @@ print "&lt;p&gt;La media aritmética de $dato1 y $dato2 es $media.&lt;/p&gt;\n";
     <h2>Funciones con un número de argumentos indeterminados</h2>
 
     <p class="incompleto">Por completar. No se utiliza en los ejercicios propuestos en estos apuntes.</p>
-  </section>
-
-  <section id="bibliotecas">
-    <h2>Bibliotecas</h2>
-
-    <p>Las bibliotecas son archivos php que se pueden incluir en cualquier otro archivo php. Las bibliotecas se suelen utilizar para centralizar fragmentos de código que se utilizan en varias páginas. De esa manera, si se quiere hacer alguna modificación, no es necesario hacer el cambio en todos las páginas sino únicamente en la biblioteca.</p>
-
-    <p>Por ejemplo, si definimos en la biblioteca una función que imprima la cabecera de las páginas, desde cualquier página se puede incluir la biblioteca mediante la construcción <a href="https://www.php.net/manual/en/function.include.php"><span class="php-fun">include</span></a> y llamar a la función como si se hubiera definido en la propia página:</p>
-    <ul>
-      <li>biblioteca.php
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-function cabecera($titulo)
-{
-    print "&lt;!DOCTYPE html&gt;\n";
-    print "&lt;html lang=\"es\"&gt;\n";
-    print "&lt;head&gt;\n";
-    print "  &lt;meta charset=\"utf-8\"&gt;\n";
-    print "  &lt;title&gt;$titulo&lt;/title&gt;\n";
-    print "  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n";
-    print "  &lt;link rel=\"stylesheet\" href=\"estilo.css\" title=\"Color\"&gt;\n";
-    print "&lt;/head&gt;\n";
-    print "\n";
-    print "&lt;body&gt;\n";
-    print "  &lt;h1&gt;$titulo&lt;/h1&gt;\n";
-    print "\n";
-}
-?&gt;</code>
-</pre>
-        </div>
-      </li>
-      <li>pagina-1.php
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-<span class="codigo-resaltado">include "biblioteca.php";</span>
-cabecera("Página de ejemplo");
-print "  &lt;p&gt;Esta página es válida&lt;/p&gt;";
-?&gt;</code></pre>
-            <pre>
-<code class="language-html">&lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Página de ejemplo&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;link rel="stylesheet" href="estilo.css" title="Color"&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;h1&gt;Página de ejemplo&lt;/h1&gt;
-
-  &lt;p&gt;Esta página es válida&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
-      <li>pagina-2.php
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-<span class="codigo-resaltado">include "biblioteca.php";</span>
-cabecera("Otra página de ejemplo");
-print "  &lt;p&gt;Esta página también es válida&lt;/p&gt;";
-?&gt;</code>
-</pre>
-            <pre>
-<code class="language-html">&lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
-<code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;title&gt;Otra página de ejemplo&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;link rel="stylesheet" href="estilo.css" title="Color"&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;h1&gt;Otra página de ejemplo&lt;/h1&gt;
-
-  &lt;p&gt;Esta página también es válida&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-    <hr class="corta">
-
-    <p>Se pueden crear todas las bibliotecas que se necesiten e incluir cualquier número de bibliotecas en cualquier punto de un programa. Las bibliotecas pueden a su vez incluir otras bibliotecas.</p>
-
-    <p>Si una función está definida en una biblioteca, se debe incluir la biblioteca antes de llamar a la función o se generará un error.</p>
-
-    <hr class="corta">
-
-    <p>Normalmente, las bibliotecas suelen contener funciones, definiciones de constantes o inicialización de variables, pero en realidad pueden incluir cualquier tipo de código php, que se ejecutará en la posición en la que se incluya la biblioteca.</p>
-
-    <p>Sobre este punto en concreto, la <a href="https://www.php-fig.org/psr/psr-1/#23-side-effects">guía de estilo PSR-1</a> comenta que en cualquier fichero de una biblioteca se pueden definir funciones, constantes, clases, etc. o se puede incluir parte de la lógica del programa (generar salida, modificar variables, etc.), pero prescribe que no se hagan las dos cosas en un mismo fichero.</p>
-
-    <p>En el ejemplo siguiente, las bibliotecas modifican variables, lo que afecta a su valor.</p>
-    <ul>
-      <li>biblioteca-1.php
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$i = 1;
-?&gt;</code>
-</pre>
-        </div>
-      </li>
-      <li>biblioteca-2.php
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">&lt;?php
-$i = $i + 10;
-?&gt;</code>
-</pre>
-        </div>
-      </li>
-      <li>Programa:
-
-        <div class="filaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-include "biblioteca-1.php";
-print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-include "biblioteca-2.php";
-print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-include "biblioteca-2.php";
-print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
-<code class="language-html">&lt;p&gt;Ahora $i vale 1&lt;/p&gt;
-&lt;p&gt;Ahora $i vale 11&lt;/p&gt;
-&lt;p&gt;Ahora $i vale 21&lt;/p&gt;</code>
-</pre>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-    <hr class="corta">
-
-    <p>Existe una construcción similar a <a href="https://www.php.net/manual/en/function.include.php"><span class="php-fun">include</span></a>, la construcción <a href="https://www.php.net/manual/en/function.require.php"><span class="php-fun">require</span></a>. La diferencia con respecto a <span class="php-fun">include</span> es que <span class="php-fun">require</span> produce un error si no se encuentra el archivo (y no se procesa el resto de la página), mientras que <span class="php-fun">include</span> sólo produce un aviso (y se procesa el resto de la página).</p>
-
-    <p>En un mismo archivo php se pueden incluir varias construcciones <span class="php-fun">include</span> o <span class="php-fun">require</span>, pero si las bibliotecas incluidas contienen definiciones de funciones, al incluir de nuevo la definición de la función se genera un error.</p>
-
-    <p>Para que no ocurra este problema se pueden utilizar las funciones <a href="https://www.php.net/manual/en/function.include-once.php"><span class="php-fun">include_once</span></a> o <a href="https://www.php.net/manual/en/function.require-once.php"><span class="php-fun">require_once</span></a>, que también incluyen los ficheros pero que, en caso de que los ficheros ya se hayan incluido, entonces no los incluyen.</p>
-
-    <hr class="corta">
-
-    <p>Las bibliotecas están habitualmente en el mismo servidor que los programas, pero podrían estar en otros servidores y acceder a ellas por HTTP, no como ficheros locales. La directiva de configuración <a href="https://www.php.net/manual/en/filesystem.configuration.php">allow_url_include</a> permite acceder a bibliotecas por HTTP (suele estar desactivada).</p>
-
-    <hr class="corta">
-
-    <p>Las cuatro construcciones (<span class="php-fun">include</span>, <span class="php-fun">require</span>, <span class="php-fun">include_once</span> y <span class="php-fun">require_once</span>) pueden utilizarse escribiendo entre paréntesis el nombre de los ficheros o sin escribir paréntesis.</p>
-
-    <hr class="corta">
-
-    <p>La guía de estilo del proyecto PEAR prescribe el uso de la construcción <span class="php-fun">require_once</span> en el caso de bibliotecas cuya inclusión no dependa de ninguna condición y que no se utilicen paréntesis alrededor de los nombres de las bibliotecas.</p>
-
   </section>
 
   <footer>
