@@ -86,6 +86,22 @@ print "&lt;p&gt;Autor: " . AUTOR . "&lt;/p&gt;\n";
       </div>
     </div>
 
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+define("LIBRO", ["Don Quijote", "Cervantes", 1605]);
+print "&lt;p&gt;" . LIBRO[1] . " escribió " . LIBRO[0] . " en " . LIBRO[2] . ".&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Cervantes escribió Don Quijote en 1605.&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
     <p>También se pueden definir constantes mediante la palabra reservada <span class="php-res">const</span>.</p>
 
     <div class="filaflex">
@@ -119,9 +135,28 @@ print "&lt;p&gt;Autor: " . AUTOR . "&lt;/p&gt;\n";
 </pre>
       </div>
     </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+const LIBRO = ["Don Quijote", "Cervantes", 1605];
+print "&lt;p&gt;" . LIBRO[1] . " escribió " . LIBRO[0] . " en " . LIBRO[2] . ".&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Cervantes escribió Don Quijote en 1605.&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <p><strong>Nota</strong>: Se pueden definir matrices como constantes desde PHP 5.6 mediante <span class="php-res">const</span> y desde PHP 7.0 mediante <span class="php-fun">define()</span>.</p>
+
     <hr class="corta">
 
-    <p>La costumbre es escribir los nombres de las constantes en mayúsculas. Los nombres de las constantes deben empezar por una letra y tener sólo letras (acentos, etc), números y guiones bajos.</p>
+    <p>La costumbre es escribir los nombres de las constantes en mayúsculas. Los nombres de las constantes deben empezar por una letra (con o sin acentos) o un guion bajo y estar formados solo por letras, números y guiones bajos.</p>
 
     <hr class="corta">
 
@@ -457,7 +492,7 @@ print "&lt;p&gt;En este servidor un decimal se puede redondear " . PHP_FLOAT_DIG
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 28 de septiembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
