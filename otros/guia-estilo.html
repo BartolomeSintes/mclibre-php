@@ -40,10 +40,14 @@
     <ul>
       <li>en primer lugar, en dos de las guías de estilo del grupo <a href="https://www.php-fig.org/">PHP-FIG (PHP Framework Interop Group)</a>
         <ul>
-          <li><a href="https://www.php-fig.org/psr/psr-1/">PSR-1</a></li>
-          <li><a href="https://www.php-fig.org/psr/psr-12/">PSR-12</a> (en agosto de 2019 PSR-12 ha sustituido a la antigua <a href="https://www.php-fig.org/psr/psr-2/">PSR-2</a>, creada en 2012)</li>
+          <li><a href="https://www.php-fig.org/psr/psr-1/">PSR-1</a> (publicada en mayo de 2012)</li>
+          <li><a href="https://www.php-fig.org/per/coding-style/">PER Coding Style</a> (publicada en junio de 2022)</li>
         </ul>
-        <p>PHP-FIG es un grupo creado en 2009 para crear guías de estilo para programadores de PHP. El objetivo inicial era crear guías para los aspectos más elementales y contaron con la participación de los autores de los frameworks PHP más populares, pero con el paso del tiempo se ha creado una estructura más formal y se han publicado guías para temas más complejos. Eso ha producido el abandono de algunos participantes significativos <a href="https://www.doctrine-project.org/">Doctrine</a> y <a href="https://laravel.com/">Laravel</a> en 2016, <a href="https://symfony.com/">Symfony</a> en 2018, etc.).</p>
+        <p>PHP-FIG es un grupo creado en 2009 para crear guías de estilo para programadores de PHP. El objetivo inicial era crear guías para los aspectos más elementales y contaron con la participación de los autores de los frameworks PHP más populares, pero con el paso del tiempo se creó una estructura más formal y se han publicado guías para temas más complejos. Eso ha ido produciendo el abandono de algunos participantes significativos (<a href="https://www.doctrine-project.org/">Doctrine</a> y <a href="https://laravel.com/">Laravel</a> en 2016, <a href="https://symfony.com/">Symfony</a> en 2018, <a href="https://www.drupal.org/">Drupal</a> en 2022, etc.).</p>
+
+        <p>La guía de estilo PER Coding Style sustituyó en junio de 2022 a la guía <a href="https://www.php-fig.org/psr/psr-12/">PSR-12</a>, que a su vez había sustituido en agosto de 2019 a la guía <a href="https://www.php-fig.org/psr/psr-2/">PSR-2</a>, publicada en mayo de 2012. La guía de estilo PER Coding Style pretende ser un documento en actualización continua (como la norma HTML del WHATWG). La primera versión es una copia de PSR-12 y la intención del PHP-FIG es por un lado mejorar la redacción de las reglas ya existentes y por otro añadir reglas para las novedades introducidas en el lenguaje PHP desde 2019.</p>
+
+        <p>PSR signfifca PHP Standard Recommendation y PER significa PHP Evolving Recommendation.</p>
       </li>
       <li>en segundo lugar, en la <a href="https://pear.php.net/manual/en/standards.php">guía de estilo oficial</a> del proyecto <a href="https://pear.php.net/">PEAR</a>
 
@@ -57,12 +61,12 @@
 
     <p>En esta lección se comentan las recomendaciones de estilo más importantes. Cuando las reglas de estilo ...</p>
     <ul>
-      <li>provienen de PSR-1, PSR-12 y PEAR, las reglas de estilo utilizan las expresiones "se debe ..." o "no se debe ...".</li>
-      <li>provienen de PSR-1, PSR-12 o PEAR, se indica entre corchetes el nombre de la guía.</li>
+      <li>provienen de PSR-1, PER Coding Style y PEAR, las reglas de estilo utilizan las expresiones "se debe ..." o "no se debe ...".</li>
+      <li>provienen de PSR-1, PER Coding Style o PEAR, se indica entre corchetes el nombre de la guía.</li>
       <li>son elecciones del profesor se utilizan las expresiones "se aconseja ..." o "no es necesario ...".</li>
     </ul>
 
-    <p>En la <a href="vsc-php-configuracion.html#php-cs-fixer">configuración recomendada para Visual Studio Code</a> se explica cómo configurar y utilizar la extensión PHP CS Fixer, que formatea automáticamente de acuerdo con PSR-2 (y con otros criterios adicionales que se comentan en esa página).</p>
+    <p>En la lección <a href="vsc-php-configuracion.html#php-cs-fixer">Configuración recomendada para Visual Studio Code</a> se explica cómo configurar y utilizar la extensión PHP CS Fixer, para formatear automáticamente de acuerdo con PER Coding Style (y con otros criterios adicionales que se comentan en la lección <a href="vsc-php-cs-fixer.html">Configuración PHP CS Fixer</a>).</p>
 
     <p>En cursos anteriores, cuando en estos apuntes se recomendaba utilizar el editor Eclipse for PHP developers, en la lección de configuración de Eclipse se explicaba cómo <a href="https://www.mclibre.org/consultar/informatica/lecciones/eclipse-configuracion-2.html#configuracion-editor">configurar Eclipse PHP</a> para <a href="https://www.mclibre.org/consultar/informatica/lecciones/eclipse-configuracion-2.html#psr2-elegir">formatear un programa de acuerdo con las recomendaciones de estilo PSR-2</a>.</p>
   </section>
@@ -75,7 +79,7 @@
 
       <p>[PSR-1] Los archivos deben guardarse en formato UTF-8 sin BOM.</p>
 
-      <p>[PSR-12] Los archivos deben utilizar el formato Unix (carácter LF como final de línea y al final de la última línea del archivo).</p>
+      <p>[PER Coding style] Los archivos deben utilizar el formato Unix (carácter LF como final de línea y al final de la última línea del archivo).</p>
     </section>
 
     <section id="configuracion-php">
@@ -87,7 +91,7 @@
     <section id="delimitadores">
       <h3>Delimitadores de bloque PHP</h3>
 
-      <p>Los fragmentos PHP deben delimitarse con <span class="php-con">&lt;?php ... ?&gt;</span> y no con <span class="php-con">&lt;? ... ?&gt;</span>.</p>
+      <p>[PSR-1] Los fragmentos PHP deben delimitarse con <span class="php-con">&lt;?php ... ?&gt;</span> y no con <span class="php-con">&lt;? ... ?&gt;</span>.</p>
 
       <div class="codigo">
         <pre>
@@ -503,7 +507,7 @@ $var = <span class="codigo-resaltado">foo($bar, $cel, $ona)</span>;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de septiembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 8 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
