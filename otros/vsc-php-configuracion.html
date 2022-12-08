@@ -149,7 +149,7 @@
 
       <h4>Preferencias globales recomendadas para PHP CS Fixer:</h4>
 
-      <p><strong>Nota</strong>: En el apartado siguiente, <a href="#preferencias">Preferencias de configuración recomendadas</a>, se han incluido las configuraciones de esta extensión, por lo que no hace incluirlas en este momento (pero sí debería crearse el archivo de configuración de PHP CS Fixer).</p>
+      <p><strong>Nota</strong>: En el apartado siguiente, <a href="#preferencias">Preferencias de configuración recomendadas</a>, se han incluido las configuraciones de esta extensión, por lo que no hace falta incluirlas, pero sí que debe crearse el <a href="#configuracion-php-cs-fixer">archivo de configuración de PHP CS Fixer</a> que se comenta a continuación de estas preferencias globales.</p>
 
       <div class="codigo">
         <pre>
@@ -174,7 +174,7 @@
 </pre>
       </div>
 
-      <h4>Archivo de configuración de PHP CS Fixer</h4>
+      <h4 id="configuracion-php-cs-fixer">Archivo de configuración de PHP CS Fixer</h4>
 
       <p>Cree un fichero <strong>php-cs-fixer-config.php</strong> en la carpeta .vscode y copie en él la configuración recomendada para PHP CS Fixer que se muestra a continuación. Tenga en cuenta que el nombre del fichero se establece con la opción de configuración "php-cs-fixer.config" y el archivo de configuración puede estar fuera de la carpeta .vscode.</p>
 
@@ -183,41 +183,35 @@
       <div class="codigo copy">
         <pre>
 <code class="language-php">&lt;?php
+
 // Apuntes del curso Programación web en PHP
 // https://www.mclibre.org/consultar/php/
 //
 // Archivo de configuración para PHP CS Fixer
-// 2021-09-16
+// 2022-12-05
 
 return (new PhpCsFixer\Config())
     -&gt;setRules([
-        '@PSR2'                   =&gt; true,
-        'align_multiline_comment' =&gt; ['comment_type' =&gt; 'all_multiline'],
-        'array_indentation'       =&gt; true,
-        'array_syntax'            =&gt; ['syntax' =&gt; 'short'],
-        'binary_operator_spaces'  =&gt; [
-            'default'   =&gt; 'align_single_space_minimal',
-            'operators' =&gt; [],
-        ],
+        '@PER'                                        =&gt; true,
+        'align_multiline_comment'                     =&gt; ['comment_type' =&gt; 'all_multiline'],
+        'array_indentation'                           =&gt; true,
+        'array_syntax'                                =&gt; ['syntax' =&gt; 'short'],
+        'binary_operator_spaces'                      =&gt; ['default' =&gt; 'align_single_space_minimal', 'operators' =&gt; [], ],
         'cast_spaces'                                 =&gt; ['space' =&gt; 'none'],
         'combine_consecutive_issets'                  =&gt; true,
-        'combine_consecutive_unsets'                  =&gt; true,
         'concat_space'                                =&gt; ['spacing' =&gt; 'one'],
-        'declare_equal_normalize'                     =&gt; ['space' =&gt; 'single'],
         'explicit_indirect_variable'                  =&gt; true,
         'function_typehint_space'                     =&gt; true,
         'include'                                     =&gt; true,
         'linebreak_after_opening_tag'                 =&gt; true,
         'list_syntax'                                 =&gt; ['syntax' =&gt; 'short'],
-        'lowercase_cast'                              =&gt; true,
-        'lowercase_static_reference'                  =&gt; true,
         'magic_constant_casing'                       =&gt; true,
         'magic_method_casing'                         =&gt; true,
         'multiline_comment_opening_closing'           =&gt; true,
         'multiline_whitespace_before_semicolons'      =&gt; true,
         'native_function_casing'                      =&gt; true,
         'native_function_type_declaration_casing'     =&gt; true,
-        'new_with_braces'                             =&gt; true,
+        'no_alias_language_construct_call'            =&gt; true,
         'no_alternative_syntax'                       =&gt; true,
         'no_empty_statement'                          =&gt; true,
         'no_extra_blank_lines'                        =&gt; true,
@@ -227,32 +221,20 @@ return (new PhpCsFixer\Config())
         'no_singleline_whitespace_before_semicolons'  =&gt; true,
         'no_spaces_around_offset'                     =&gt; true,
         'no_superfluous_elseif'                       =&gt; true,
-        'no_trailing_comma_in_list_call'              =&gt; true,
-        'no_trailing_comma_in_singleline_array'       =&gt; true,
         'no_unneeded_control_parentheses'             =&gt; true,
         'no_unneeded_curly_braces'                    =&gt; true,
         'no_unset_cast'                               =&gt; true,
         'no_unused_imports'                           =&gt; true,
+        'no_useless_concat_operator'                  =&gt; true,
         'no_useless_else'                             =&gt; true,
         'no_useless_return'                           =&gt; true,
         'no_whitespace_before_comma_in_array'         =&gt; true,
-        'no_whitespace_in_blank_line'                 =&gt; true,
         'normalize_index_brace'                       =&gt; true,
         'object_operator_without_whitespace'          =&gt; true,
-        'ordered_imports'                             =&gt; true,
-        'phpdoc_align'                                =&gt; true,
-        'phpdoc_indent'                               =&gt; true,
-        'phpdoc_order'                                =&gt; true,
-        'phpdoc_scalar'                               =&gt; true,
-        'phpdoc_single_line_var_spacing'              =&gt; true,
-        'phpdoc_trim'                                 =&gt; true,
-        'phpdoc_types'                                =&gt; true,
         'semicolon_after_instruction'                 =&gt; true,
-        'short_scalar_cast'                           =&gt; true,
         'single_line_comment_style'                   =&gt; true,
         'space_after_semicolon'                       =&gt; true,
         'standardize_not_equals'                      =&gt; true,
-        'ternary_operator_spaces'                     =&gt; true,
         'ternary_to_null_coalescing'                  =&gt; true,
         'trailing_comma_in_multiline'                 =&gt; true,
         'trim_array_spaces'                           =&gt; true,
@@ -260,8 +242,7 @@ return (new PhpCsFixer\Config())
         'whitespace_after_comma_in_array'             =&gt; true,
     ])
     -&gt;setIndent("    ")
-    -&gt;setLineEnding("\n");
-</code>
+    -&gt;setLineEnding("\n");</code>
 </pre>
       </div>
     </section>
@@ -428,7 +409,7 @@ return (new PhpCsFixer\Config())
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de octubre de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 7 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
