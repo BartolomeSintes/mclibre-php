@@ -82,10 +82,10 @@
         <li>Añada en el formulario un botón "Meter moneda" que represente el haber metido una moneda en la máquina tragaperras y que envíe el formulario.</li>
         <li>Cada vez que se mete una moneda, en la segunda página la cantidad de monedas aumenta en 1.</li>
         <li>La segunda página guarda la cantidad de monedas en una variable de sesión (por ejemplo, $_SESSION["monedas"]).</li>
-        <li>La segunda página redirige a la primera siempre.</li>
+        <li>La segunda página redirige finalmente a la primera página.</li>
         <li>Cuando se vuelve a la primera página cada vez que se mete una moneda, se renueva la combinación de frutas.</li>
         <li>En el formulario, muestre la cantidad de monedas introducidas.</li>
-        <li>Si al acceder a cualquiera de las dos páginas no está definida la variable de sesión, se le debe dar el valor 0.</li>
+        <li>Si al acceder a cualquiera de las dos páginas no está definida la variable de sesión, se le debe dar el valor 0. Para no tener que repetir la definición de las variables de sesión en cada página, en la primera página se puede redirigir a la segunda página si las variables de sesión no están definidas.</li>
       </ul>
     </details>
 
@@ -109,7 +109,7 @@
         <li>Sólo se debe renovar la combinación de frutas cuando se juega, no cuando se mete una moneda. Para ello, las frutas a mostrar se guardarán en variables de sesión, no en variables "normales" y se cambiarán en la segunda página.</li>
         <li>Cada vez que se juega, se pierde una moneda.</li>
         <li>Sólo se puede jugar si el contador de monedas es distinto de cero.</li>
-        <li>Si al acceder a cualquiera de las dos páginas no están definidas las variables de sesión, se definirá una combinación de frutas y el número de monedas se pondrá a cero.</li>
+        <li>Las tres frutas se deben guardar como variables de sesión.</li>
       </ul>
     </details>
 
@@ -147,6 +147,7 @@
         <li>Añada al contador de monedas el premio obtenido.</li>
         <li>Asigne la cara triste si se pierde y la alegre si se gana.</li>
         <li>Muestre el premio obtenido (el número de veces que se gana la apuesta) y la cara, triste (imagen face-sad.svg) o alegre (imagen face-smile.svg) correspondiente.</li>
+        <li>El premio obtenido y la cara a mostrar se deben guardar como variables de sesión.</li>
       </ul>
     </details>
 
@@ -171,6 +172,7 @@
         <li>Los premios se multiplican por el número de monedas apostadas</li>
         <li>La cantidad apostada se pierde siempre.</li>
         <li>Si se meten monedas o se aumenta la apuesta, muestre una cara indiferente.</li>
+        <li>La apuesta se debe guardar como variables de sesión.</li>
       </ul>
     </details>
 
@@ -183,7 +185,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 2 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
