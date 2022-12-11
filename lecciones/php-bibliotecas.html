@@ -21,17 +21,254 @@
 
     <div class="toc">
       <h2>Bibliotecas</h2>
+
+      <ul>
+        <li><a href="#que-es">Qué son</a></li>
+        <li><a href="#como-se-usan">Cómo se utilizan</a></li>
+        <li><a href="#problemas">Problemas en la carga</a></li>
+      </ul>
     </div>
   </nav>
 
-  <p>Las bibliotecas son archivos php que se pueden incluir en cualquier otro archivo php. Las bibliotecas se suelen utilizar para centralizar fragmentos de código que se utilizan en varias páginas. De esa manera, si se quiere hacer alguna modificación, no es necesario hacer el cambio en todos las páginas sino únicamente en la biblioteca.</p>
+  <p>Las bibliotecas permiten centralizar y reutilizar código, lo que reduce el tamaño y complejidad del código fuente de los programas. El concepto de biblioteca existen en casi todos los lenguajes de programación, pero en PHP están implementadas de una forma sencilla y fácil de utilizar.</p>
 
-  <p>Por ejemplo, si definimos en la biblioteca una función que imprima la cabecera de las páginas, desde cualquier página se puede incluir la biblioteca mediante la construcción <a href="https://www.php.net/manual/en/function.include.php"><span class="php-fun">include</span></a> y llamar a la función como si se hubiera definido en la propia página:</p>
-  <ul>
-    <li>biblioteca.php
+  <section id="que-es">
+    <h2>Qué son las bibliotecas en PHP</h2>
 
-      <div class="codigo">
+    <p>En PHP, una biblioteca es un archivo PHP que se incluye tal cual en otro archivo PHP. Para incluir un archivo, se puede utilizar la expresión <a href="https://www.php.net/manual/en/function.include.php"><span class="php-fun">include</span></a> seguida de la ruta hasta el archivo que se quiere incluir, sin necesidad de paréntesis, como muestra la figura siguiente:</p>
+
+    <p>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1000" viewBox="0 0 855 250" style="background-color: white;" font-family="sans-serif">
+        <defs>
+          <marker id="flechaNegra" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: black;" />
+          </marker>
+          <marker id="flechaRoja" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: red;" />
+          </marker>
+          <marker id="flechaAzul" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: blue;" />
+          </marker>
+          <marker id="flechaVerde" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: green;" />
+          </marker>
+        </defs>
+
+        <!-- Página y biblioteca -->
+        <text x="220" y="25" text-anchor="middle" font-family="sans-serif" font-size="14">Cuando una página incluye una bilblioteca ...</text>
+        <svg x="10" y="40">
+          <rect x="5" y="5" width="430" height="200" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+
+          <text x="100" y="30" text-anchor="middle" font-family="sans-serif" font-size="14">pagina.php</text>
+          <rect x="20" y="40" width="160" height="150" fill="none" stroke="black" stroke-width="2" />
+          <text x="35" y="60" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">&lt;?php</text>
+          <rect x="30" y="71" width="140" height="20" fill="none" stroke="black" stroke-width="1" />
+          <text x="35" y="85" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">include "biblioteca.php";</text>
+          <text x="35" y="110" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">print "&lt;p&gt;¡Adios!&lt;/p&gt;;</text>
+
+          <path d="M180,80 c0,0 70,-20 70,-20" stroke="green" stroke-width="2" fill="transparent" style="marker-end: url(#flechaVerde)" />
+          <text x="220" y="63" text-anchor="middle" font-family="sans-serif" fill="green" font-size="12" transform="rotate(-15 215 63)">include</text>
+
+          <text x="340" y="30" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca.php</text>
+          <rect x="260" y="40" width="160" height="150" fill="none" stroke="black" stroke-width="2" />
+          <text x="275" y="60" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">&lt;?php</text>
+          <text x="275" y="85" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">print "&lt;p&gt;¡Hola!&lt;/p&gt;;</text>
+        </svg>
+
+        <text x="497" y="160" text-anchor="middle" font-family="sans-serif" font-size="60">&hArr;</text>
+
+        <!-- Páginas -->
+        <text x="650" y="15" text-anchor="middle" font-family="sans-serif" font-size="14">... el contenido de la biblioteca se inserta íntegro</text>
+        <text x="650" y="35" text-anchor="middle" font-family="sans-serif" font-size="14">en la posición en la que encuentra el include.</text>
+        <svg x="540" y="40">
+          <rect x="5" y="5" width="200" height="200" stroke="red" stroke-width="2" stroke-dasharray="5 5" fill="none" />
+
+          <text x="100" y="30" text-anchor="middle" font-family="sans-serif" font-size="14">pagina.php</text>
+          <rect x="20" y="40" width="160" height="150" fill="none" stroke="black" stroke-width="2" />
+          <text x="35" y="60" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">&lt;?php</text>
+          <rect x="30" y="71" width="140" height="20" fill="none" stroke="black" stroke-width="1" />
+          <text x="35" y="85" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">print "&lt;p&gt;¡Hola!&lt;/p&gt;;</text>
+          <text x="35" y="110" text-anchor="start" font-family="sans-serif" fill="black" font-size="12">print "&lt;p&gt;¡Adios!&lt;/p&gt;;</text>
+        </svg>
+
+      </svg>
+    </p>
+
+    <p>Por motivos de seguridad, las bibliotecas deben estar en el mismo servidor que los programas que las incluyen y el acceso se debe hacer mediante rutas relativas.</p>
+
+    <p><strong>Nota</strong>: PHP permitía también acceder a bibliotecas mediante rutas absolutas por http/https. Para ello se necesitaba activar la directiva de configuración <a href="https://www.php.net/manual/en/filesystem.configuration.php">allow_url_include</a>, que estaba desactivada por defecto. Pero desde PHP 7.4 (2019) el uso de esta directiva está desaconsejado y si se activa, al intentar cargar una biblioteca remota se genera un error E_DEPRECATED.</p>
+
+    <hr class="corta">
+
+    <p>Las bibliotecas puede incluir cualquier tipo de código y pueden ser llamadas en cualquier punto del programa y, en su caso, tantas veces como se quiera. El intérprete de PHP simplemente sustituye las llamadas a las bibliotecas por el contenido de las bibliotecas y ejecuta el resultado obtenido.</p>
+
+    <p>En el ejemplo siguiente, un programa incluye dos bibliotecas distintas (una de ellas dos veces). Además las bibliotecas definen y modifican una variable utilizada en el programa. Es importante señalar que al utilizar bibliotecas no se están compartiendo variables entre programas distintos, ya que sólo se está ejecutnado un programa, aquel en el que las bibliotecas se incluyen de forma literal. Al ejecutar un programa que incluye bibliotecas, las bibliotecas no se ejecutan de forma independiente, sino únicamente en la medida en que se insertan en el programa ejecutado.</p>
+
+    <div class="filaflex">
+      <div class="columnaflex">
+        <ul>
+          <li>biblioteca-1.php
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+$i = 1;</code>
+</pre>
+            </div>
+          </li>
+          <li>biblioteca-2.php
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+$i = $i + 10;</code>
+</pre>
+            </div>
+          </li>
+          <li>Programa:
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+include "biblioteca-1.php";
+print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
+include "biblioteca-2.php";
+print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
+include "biblioteca-2.php";
+print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resultado-codigo">
         <pre>
+<code class="language-html">&lt;p&gt;Ahora $i vale 1&lt;/p&gt;
+&lt;p&gt;Ahora $i vale 11&lt;/p&gt;
+&lt;p&gt;Ahora $i vale 21&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Las bibliotecas se pueden llamar unas a otras, como en el ejemplo siguiente. Nótese cómo la primera instrucción <span class="php-fun">print</span> que se ejecuta es la de biblioteca-2, ya que las bibliotecas se incluyen en el punto en que son llamadas.</p>
+
+    <div class="filaflex">
+      <div class="columnaflex">
+        <ul>
+          <li>biblioteca-1.php
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+include "biblioteca-2.php";
+print "&lt;p&gt;Estoy en la biblioteca 1.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+          <li>biblioteca-2.php
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Estoy en la biblioteca 2.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+          <li>Programa:
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+include "biblioteca-1.php";
+print "&lt;p&gt;Estoy en el programa.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Estoy en la biblioteca 2.&lt;/p&gt;
+&lt;p&gt;Estoy en la biblioteca 1.&lt;/p&gt;
+&lt;p&gt;Estoy en el programa.&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Las bibliotecas pueden contener código php, código html o una mezcla de ambos, sin que esto afecte a la forma de incluirlas.</p>
+
+    <div class="filaflex">
+      <div class="columnaflex">
+        <ul>
+          <li>biblioteca-1.php
+
+            <div class="codigo">
+              <pre>
+<code class="language-html">&lt;p&gt;Estoy en la biblioteca 1.&lt;/p&gt;</code>
+</pre>
+            </div>
+          </li>
+          <li>biblioteca-2.php
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+print "&lt;p&gt;Estoy en la biblioteca 2.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+          <li>biblioteca-3.php
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;p&gt;Estoy en la biblioteca 3.&lt;/p&gt;
+&lt;?php
+print "&lt;p&gt;Sigo en la biblioteca 3.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+          <li>Programa:
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+include "biblioteca-1.php";
+include "biblioteca-2.php";
+include "biblioteca-3.php";
+print "&lt;p&gt;Estoy en el programa.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Estoy en la biblioteca 1.&lt;/p&gt;
+&lt;p&gt;Estoy en la biblioteca 2.&lt;/p&gt;
+&lt;p&gt;Estoy en la biblioteca 3.&lt;/p&gt;
+&lt;p&gt;Sigo en la biblioteca 3.&lt;/p&gt;
+&lt;p&gt;Estoy en el programa.&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-se-usan">
+    <h2>Cómo se utilizan las bibliotecas</h2>
+
+    <p>Las bibliotecas se suelen utilizar para centralizar en un único lugar fragmentos de código que se utilizan en varias páginas. De esa manera, si se quiere hacer alguna modificación, no es necesario hacer el cambio en todos las páginas sino únicamente en la biblioteca.</p>
+
+    <p>El problema es que no es fácil que haya fragmentos de código no triviales que se puedan utilizar sin modificaciones en diversos programas. Por ese motivo, las bibliotecas no suelen contener instrucciones sueltas, como en los ejemplos del apartado anterior, sino que suelen contener definiciones de funciones, definiciones de constantes o inicialización de variables.</p>
+
+    <p>Sobre este punto, la <a href="https://www.php-fig.org/psr/psr-1/#23-side-effects">guía de estilo PSR-1</a> comenta que en cualquier fichero de una biblioteca se pueden definir funciones, constantes, clases, etc. o se puede incluir parte de la lógica del programa (generar salida, modificar variables, etc.), pero prescribe que no se hagan las dos cosas en un mismo fichero.</p>
+
+    <hr class="corta">
+
+    <p>Por ejemplo, si definimos en la biblioteca una función que imprima la cabecera de las páginas, desde cualquier página se puede incluir la biblioteca mediante la construcción <a href="https://www.php.net/manual/en/function.include.php"><span class="php-fun">include</span></a> y llamar a la función como si se hubiera definido en la propia página:</p>
+    <ul>
+      <li>biblioteca.php
+
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 function cabecera($titulo)
 {
@@ -47,28 +284,26 @@ function cabecera($titulo)
     print "&lt;body&gt;\n";
     print "  &lt;h1&gt;$titulo&lt;/h1&gt;\n";
     print "\n";
-}
-?&gt;</code>
+}</code>
 </pre>
-      </div>
-    </li>
-    <li>pagina-1.php
+        </div>
+      </li>
+      <li>pagina-1.php
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-<span class="codigo-resaltado">include "biblioteca.php";</span>
-cabecera("Página de ejemplo");
-print "  &lt;p&gt;Esta página es válida&lt;/p&gt;";
-?&gt;</code></pre>
-          <pre>
+include "biblioteca.php";
+<span class="codigo-resaltado">cabecera("Página de ejemplo");</span>
+print "  &lt;p&gt;Esta página es válida&lt;/p&gt;";</code></pre>
+            <pre>
 <code class="language-html">&lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
@@ -85,27 +320,26 @@ print "  &lt;p&gt;Esta página es válida&lt;/p&gt;";
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
+          </div>
         </div>
-      </div>
-    </li>
-    <li>pagina-2.php
+      </li>
+      <li>pagina-2.php
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-<span class="codigo-resaltado">include "biblioteca.php";</span>
-cabecera("Otra página de ejemplo");
-print "  &lt;p&gt;Esta página también es válida&lt;/p&gt;";
-?&gt;</code>
+include "biblioteca.php";
+<span class="codigo-resaltado">cabecera("Otra página de ejemplo");</span>
+print "  &lt;p&gt;Esta página también es válida&lt;/p&gt;";</code>
 </pre>
-          <pre>
+            <pre>
 <code class="language-html">&lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
@@ -122,93 +356,165 @@ print "  &lt;p&gt;Esta página también es válida&lt;/p&gt;";
 &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </section>
 
-  <hr class="corta">
+  <section id="problemas">
+    <h2>Potenciales problemas en la carga de bibliotecas</h2>
 
-  <p>Se pueden crear todas las bibliotecas que se necesiten e incluir cualquier número de bibliotecas en cualquier punto de un programa. Las bibliotecas pueden a su vez incluir otras bibliotecas.</p>
+    <p>Cuando una biblioteca contiene definiciones de elementos (funciones, constantes, etc.), pueden ocurrir dos problemas:</p>
 
-  <p>Si una función está definida en una biblioteca, se debe incluir la biblioteca antes de llamar a la función o se generará un error.</p>
+    <ul>
+      <li>Que por algún motivo, no se encuentre la biblioteca (por ejemplo, porque el camino hasta la biblioteca no sea correcto). Las llamadas posteriores a las funciones o constantes provocarían errores en el programa.</li>
+      <li>Que por algún motivo, se incluya dos veces a la misma biblioteca (por ejemplo, porque se llame a dos bibliotecas que a su vez llaman a una tercera). Dado que PHP no permite redefinir funciones o constantes con el mismo nombre, la segunda inclusión provocaría errores (E_WARNING en el caso de repetirse la definición de una constante, E_ERROR en el caso de repetirse la definición de una función).</li>
+    </ul>
 
-  <hr class="corta">
+    <p>Con relación al primer problema (que no se encuentre la biblioteca), PHP dispone de la expresión <a href="https://www.php.net/manual/en/function.require.php"><span class="php-fun">require</span></a> construcciones más, además de <a href="https://www.php.net/manual/en/function.include.php"><span class="php-fun">include</span></a>. La diferencia entre ellas es que <span class="php-fun">require</span> produce un error E_COMPILE_ERROR si no se encuentra el archivo (y se interrumpe el programa), mientras que <span class="php-fun">include</span> sólo produce un aviso E_WARNING (y se procesa el resto de la página).</p>
 
-  <p>Normalmente, las bibliotecas suelen contener funciones, definiciones de constantes o inicialización de variables, pero en realidad pueden incluir cualquier tipo de código php, que se ejecutará en la posición en la que se incluya la biblioteca.</p>
-
-  <p>Sobre este punto en concreto, la <a href="https://www.php-fig.org/psr/psr-1/#23-side-effects">guía de estilo PSR-1</a> comenta que en cualquier fichero de una biblioteca se pueden definir funciones, constantes, clases, etc. o se puede incluir parte de la lógica del programa (generar salida, modificar variables, etc.), pero prescribe que no se hagan las dos cosas en un mismo fichero.</p>
-
-  <p>En el ejemplo siguiente, las bibliotecas modifican variables, lo que afecta a su valor.</p>
-  <ul>
-    <li>biblioteca-1.php
-
-      <div class="codigo">
-        <pre>
+    <div class="filaflex">
+      <div class="columnaflex">
+        <ul>
+          <li>biblioteca-1.php
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
-$i = 1;
-?&gt;</code>
+print "&lt;p&gt;Estoy en la biblioteca.&lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+          <li>Programa:
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">include</span> "biblioteca-11.php";
+print "&lt;p&gt;Estoy en el programa.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html"><b>Warning</b>:  include(biblioteca-11.php): Failed to open stream: No such file or directory in <b>ejemplo.php</b> on line <b>2</b><br>
+<b><span class="codigo-resaltado">Warning</span></b>:  include(): Failed opening 'biblioteca-11.php' for inclusion (include_path='...') in <b>ejemplo.php</b> on line <b>2</b><br>
+<p><span class="codigo-resaltado">Estoy en el programa.</span></p></code>
 </pre>
       </div>
-    </li>
-    <li>biblioteca-2.php
+    </div>
 
-      <div class="codigo">
-        <pre>
+    <div class="filaflex">
+      <div class="columnaflex">
+        <ul>
+          <li>biblioteca-1.php
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
-$i = $i + 10;
-?&gt;</code>
+print "&lt;p&gt;Estoy en la biblioteca.&lt;/p&gt;\n";</code>
+</pre>
+            </div>
+          </li>
+          <li>Programa:
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+<span class="codigo-resaltado">require</span> "biblioteca-11.php";
+print "&lt;p&gt;Estoy en el programa.&lt;/p&gt;";</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">
+<b>Warning</b>:  require(biblioteca-11.php): Failed to open stream: No such file or directory in <b>ejemplo.php</b> on line <b>3</b><br>
+<b><span class="codigo-resaltado">Fatal error</span></b>:  Uncaught Error: Failed opening required 'biblioteca-11.php' (include_path='...') in ejemplo.php:3
+Stack trace: #0 {main} thrown in <b>ejemplo.php</b> on line <b>3</b></code>
 </pre>
       </div>
-    </li>
-    <li>Programa:
+    </div>
 
-      <div class="filaflex">
-        <div class="codigo">
-          <pre>
+    <p>Con relación al segundo problema (que una misma biblioteca se incluya dos veces), PHP dispone de las expresiones <a href="https://www.php.net/manual/en/function.include-once.php"><span class="php-fun">include_once</span></a> y <a href="https://www.php.net/manual/en/function.require-once.php"><span class="php-fun">require_once</span></a>. Ambas expresiones no incluyen las bibliotecas si ya se han incluido anteriormente. La diferencia entre ellas es la misma que entre <span class="php-fun">include</span> y <span class="php-fun">require</span>, es decir, el error que generan si no encuentran la biblioteca a incluir.</p>
+
+    <div class="filaflex">
+      <div class="columnaflex">
+        <ul>
+          <li>biblioteca-1.php
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+function saludo() {
+    print "&lt;p&gt;Hola&lt;/p&gt;\n";
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Programa:
+            <div class="codigo">
+              <pre>
 <code class="language-php">&lt;?php
 include "biblioteca-1.php";
-print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-include "biblioteca-2.php";
-print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-include "biblioteca-2.php";
-print "&lt;p&gt;Ahora \$i vale $i&lt;/p&gt;\n";
-?&gt;</code>
+include "biblioteca-1.php";
+saludo();</code>
 </pre>
-        </div>
-        <div class="resultado-codigo">
-          <pre>
-<code class="language-html">&lt;p&gt;Ahora $i vale 1&lt;/p&gt;
-&lt;p&gt;Ahora $i vale 11&lt;/p&gt;
-&lt;p&gt;Ahora $i vale 21&lt;/p&gt;</code>
-</pre>
-        </div>
+            </div>
+          </li>
+        </ul>
       </div>
-    </li>
-  </ul>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html"><b>Fatal error</b>:  Cannot redeclare saludo() (previously declared in biblioteca-1.php:4) in <b>biblioteca-1.php</b> on line <b>3</b></code>
+</pre>
+      </div>
+    </div>
 
-  <hr class="corta">
+    <div class="filaflex">
+      <div class="columnaflex">
+        <ul>
+          <li>biblioteca-1.php
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+function saludo() {
+    print "&lt;p&gt;Hola&lt;/p&gt;\n";
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Programa:
+            <div class="codigo">
+              <pre>
+<code class="language-php">&lt;?php
+include_once "biblioteca-1.php";
+include_once "biblioteca-1.php";
+saludo();</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resultado-codigo">
+        <pre>
+<code class="language-html">&lt;p&gt;Hola&lt;/p&gt;</code>
+</pre>
+      </div>
+    </div>
 
-  <p>Existe una construcción similar a <a href="https://www.php.net/manual/en/function.include.php"><span class="php-fun">include</span></a>, la construcción <a href="https://www.php.net/manual/en/function.require.php"><span class="php-fun">require</span></a>. La diferencia con respecto a <span class="php-fun">include</span> es que <span class="php-fun">require</span> produce un error si no se encuentra el archivo (y no se procesa el resto de la página), mientras que <span class="php-fun">include</span> sólo produce un aviso (y se procesa el resto de la página).</p>
+    <p>La elección de una expresión u otra depende del contenido de la biblioteca y de la estructura de nuestro aplicación:</p>
+    <ul>
+      <li>Si la biblioteca contiene código ejecutable (no únicamente definiciones) y puede ser llamada varias veces en el mismo programa, lógicamente no debe utilizarse ni <span class="php-fun">include_once</span> ni <span class="php-fun">require_once</span>.</li>
+      <li>Si el contenido de las bibliotecas es imprescindible para el buen funcionamiento de la aplicación, como suele ocurrir en la mayoría de los casos, es preferible usar <span class="php-fun">require</span> o <span class="php-fun">require_once</span> a <span class="php-fun">include</span> o <span class="php-fun">include_once</span>, para evitar que se ejecuten de forma incompleta los programas.</li>
+    </ul>
 
-  <p>En un mismo archivo php se pueden incluir varias construcciones <span class="php-fun">include</span> o <span class="php-fun">require</span>, pero si las bibliotecas incluidas contienen definiciones de funciones, al incluir de nuevo la definición de la función se genera un error.</p>
+    <p>La guía de estilo del proyecto PEAR prescribe el uso de la construcción <span class="php-fun">require_once</span> en el caso de bibliotecas cuya inclusión no dependa de ninguna condición y que no se utilicen paréntesis alrededor de los nombres de las bibliotecas.</p>
 
-  <p>Para que no ocurra este problema se pueden utilizar las funciones <a href="https://www.php.net/manual/en/function.include-once.php"><span class="php-fun">include_once</span></a> o <a href="https://www.php.net/manual/en/function.require-once.php"><span class="php-fun">require_once</span></a>, que también incluyen los ficheros pero que, en caso de que los ficheros ya se hayan incluido, entonces no los incluyen.</p>
-
-  <hr class="corta">
-
-  <p>Por motivos de seguridad, siempre se ha recomendado que las bibliotecas estén en el mismo servidor que los programas, pero PHP permitía que estuverian en otros servidores. Para ello se necesitaba activar la directiva de configuración <a href="https://www.php.net/manual/en/filesystem.configuration.php">allow_url_include</a>, que estaba desactivada por defecto. Desde PHP 7.4 (2019) esta directiva está desaconsejada y si se activa, al intentar cargar una biblioteca remota se genera un error E_DEPRECATED.</p>
-
-  <hr class="corta">
-
-  <p>Las cuatro construcciones (<span class="php-fun">include</span>, <span class="php-fun">require</span>, <span class="php-fun">include_once</span> y <span class="php-fun">require_once</span>) pueden utilizarse escribiendo entre paréntesis el nombre de los ficheros o sin escribir paréntesis.</p>
-
-  <hr class="corta">
-
-  <p>La guía de estilo del proyecto PEAR prescribe el uso de la construcción <span class="php-fun">require_once</span> en el caso de bibliotecas cuya inclusión no dependa de ninguna condición y que no se utilicen paréntesis alrededor de los nombres de las bibliotecas.</p>
+  </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 11 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
