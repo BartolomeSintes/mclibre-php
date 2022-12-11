@@ -207,6 +207,26 @@ print "&lt;p&gt;El valor de pi es " . pi . "&lt;/p&gt;";
 
     <hr class="corta">
 
+    <p>No se puede definir dos veces la misma constante (independientemente de que se defina con <span class="php-fun">define()</span> o con <span class="php-res">const</span>). Si se intenta, se genera un aviso E_WARNING y la segunda definición no se ejecuta.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+define("PI", 3.14);
+define("PI", 3.141592);
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado">
+<b>Warning</b>:  Constant PI already defined in <b>ejemplo.php</b> on line <b>3</b>
+<p>El valor de pi es 3.14</p>
+      </div>
+    </div>
+
+    <hr class="corta">
+
     <p>Definir constantes mediante la función <span class="php-fun">define()</span> no es lo mismo que hacerlo mediante la palabra reservada <span class="php-res">const</span>.</p>
     <ul>
       <li>Las constantes definidas con <span class="php-fun">define()</span> se crean en tiempo de ejecución mientras que las constantes definidas con <span class="php-res">const</span> se crean en tiempo de compilación. Eso significa que las primeras se pueden crear en cualquier momento durante la ejecución de un programa, mientras que las segundas no, como muestra el siguiente ejemplo.
