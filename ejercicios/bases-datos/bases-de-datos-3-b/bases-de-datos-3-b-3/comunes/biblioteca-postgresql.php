@@ -9,8 +9,8 @@
 
 // POSTGRESQL: Nombres de las tablas
 
-$cfg["dbPersonasTabla"] = "personas";   // Nombre de la tabla Personas
-$cfg["dbUsuariosTabla"] = "usuarios";   // Nombre de la tabla Usuarios
+$cfg["tablaPersonas"] = "personas";   // Nombre de la tabla Personas
+$cfg["tablaUsuarios"] = "usuarios";   // Nombre de la tabla Usuarios
 
 // POSTGRESQL: Conexión con la base de datos
 
@@ -38,7 +38,7 @@ function borraTodo()
     print "    <p>Sistema Gestor de Bases de Datos: PostgreSQL.</p>\n";
     print "\n";
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbUsuariosTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaUsuarios]";
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -47,7 +47,7 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -56,10 +56,10 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                  id SERIAL PRIMARY KEY,
-                 usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                 password VARCHAR($cfg[dbUsuariosTamPassword]),
+                 usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                 password VARCHAR($cfg[tablaUsuariosTamPassword]),
                  nivel INTEGER NOT NULL
                  )";
 
@@ -69,7 +69,7 @@ function borraTodo()
         print "    <p>Tabla Usuarios creada correctamente.</p>\n";
         print "\n";
 
-        $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+        $consulta = "INSERT INTO $cfg[tablaUsuarios]
                      (id, usuario, password, nivel)
                      VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
 
@@ -81,12 +81,12 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id SERIAL PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                 telefono VARCHAR($cfg[dbPersonasTamTelefono]),
-                 correo VARCHAR($cfg[dbPersonasTamCorreo])
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                 telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
+                 correo VARCHAR($cfg[tablaPersonasTamCorreo])
                  )";
 
     if (!$pdo->query($consulta)) {

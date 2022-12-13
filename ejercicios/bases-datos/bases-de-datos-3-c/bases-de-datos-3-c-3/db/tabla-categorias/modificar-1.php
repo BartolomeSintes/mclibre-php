@@ -19,10 +19,10 @@ $pdo = conectaDb();
 
 cabecera("Categorías - Modificar 1", MENU_CATEGORIAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["dbCategoriasColumnasOrden"], "categoria ASC");
+$ordena = recogeValores("ordena", $cfg["tablaCategoriasColumnasOrden"], "categoria ASC");
 $id     = recoge("id");
 
-$consulta = "SELECT * FROM $cfg[dbCategoriasTabla]
+$consulta = "SELECT * FROM $cfg[tablaCategorias]
              ORDER BY $ordena";
 
 $resultado = $pdo->query($consulta);

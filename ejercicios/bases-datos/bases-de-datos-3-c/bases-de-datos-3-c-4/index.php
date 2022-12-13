@@ -20,7 +20,7 @@ if ($categoria == "") {
     $categoria = "%";
 }
 
-$consulta = "SELECT * FROM $cfg[dbCategoriasTabla]
+$consulta = "SELECT * FROM $cfg[tablaCategorias]
              ORDER BY categoria";
 
 $resultado = $pdo->query($consulta);
@@ -42,8 +42,8 @@ if (!$resultado) {
                 noticias.titulo,
                 noticias.cuerpo,
                 noticias.creado
-             FROM $cfg[dbNoticiasTabla] as noticias
-             JOIN $cfg[dbCategoriasTabla] as categorias
+             FROM $cfg[tablaNoticias] as noticias
+             JOIN $cfg[tablaCategorias] as categorias
              ON noticias.id_categoria = categorias.id
              WHERE noticias.id_categoria LIKE :categoria
              ORDER BY creado DESC LIMIT $cfg[portadaNumeroNoticias]";

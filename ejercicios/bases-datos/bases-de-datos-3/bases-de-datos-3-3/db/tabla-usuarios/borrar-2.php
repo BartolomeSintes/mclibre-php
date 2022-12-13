@@ -25,7 +25,7 @@ if (count($id) == 0) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
-        $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+        $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                      WHERE id = :indice";
 
         $resultado = $pdo->prepare($consulta);
@@ -38,7 +38,7 @@ if (count($id) == 0) {
         } elseif ($registro["usuario"] == $cfg["rootName"]) {
             print "    <p class=\"aviso\">Este usuario no se puede borrar.</p>\n";
         } else {
-            $consulta = "DELETE FROM $cfg[dbUsuariosTabla]
+            $consulta = "DELETE FROM $cfg[tablaUsuarios]
                          WHERE id = :indice";
 
             $resultado = $pdo->prepare($consulta);

@@ -11,7 +11,7 @@ $pdo = conectaDb();
 
 cabecera("Listar", MENU_VOLVER);
 
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {

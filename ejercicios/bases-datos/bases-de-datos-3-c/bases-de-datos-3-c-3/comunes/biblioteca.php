@@ -46,24 +46,24 @@ if ($cfg["dbMotor"] == SQLITE) {
 // Tablas
 
 $cfg["dbTablas"] = [
-    $cfg["dbUsuariosTabla"],
-    $cfg["dbCategoriasTabla"],
-    $cfg["dbNoticiasTabla"],
+    $cfg["tablaUsuarios"],
+    $cfg["tablaCategorias"],
+    $cfg["tablaNoticias"],
 ];
 
 // Valores de ordenación de las tablas
 
-$cfg["dbUsuariosColumnasOrden"] = [
+$cfg["tablaUsuariosColumnasOrden"] = [
     "usuario ASC", "usuario DESC",
     "password ASC", "password DESC",
     "nivel ASC", "nivel DESC",
 ];
 
-$cfg["dbCategoriasColumnasOrden"] = [
+$cfg["tablaCategoriasColumnasOrden"] = [
     "categoria ASC", "categoria DESC",
 ];
 
-$cfg["dbNoticiasColumnasOrden"] = [
+$cfg["tablaNoticiasColumnasOrden"] = [
     "categoria ASC", "categoria DESC",
     "titulo ASC", "titulo DESC",
     "cuerpo ASC", "cuerpo DESC",
@@ -207,7 +207,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-02-15\">15 de febrero de 2022</time>\n";
+    print "      <time datetime=\"2022-12-13\">13 de diciembre de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

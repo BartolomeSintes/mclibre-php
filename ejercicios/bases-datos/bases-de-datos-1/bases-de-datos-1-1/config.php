@@ -24,8 +24,8 @@ $cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base
 
 // Tamaño de los campos en la tabla Personas
 
-$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas > Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas > Apellidos
+$cfg["tablaPersonasTamNombre"]    = 40;                     // Tamaño de la columna Personas > Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la columna Personas > Apellidos
 
 // Método de envío de formularios
 

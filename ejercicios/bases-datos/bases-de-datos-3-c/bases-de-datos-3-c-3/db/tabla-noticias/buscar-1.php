@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Noticias - Buscar 1", MENU_NOTICIAS, PROFUNDIDAD_2);
 
-$consulta = "SELECT * FROM $cfg[dbCategoriasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaCategorias]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
@@ -29,7 +29,7 @@ if (!$resultado) {
     print "\n";
     print "    <p class=\"aviso\">Por favor, cree algún registro de Categorías antes.</p>\n";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbNoticiasTabla]";
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaNoticias]";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {

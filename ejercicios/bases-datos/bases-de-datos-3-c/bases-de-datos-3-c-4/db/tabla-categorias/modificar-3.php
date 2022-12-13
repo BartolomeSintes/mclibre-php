@@ -28,8 +28,8 @@ $idOk        = false;
 if ($categoria == "") {
     print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
-} elseif (mb_strlen($categoria, "UTF-8") > $cfg["dbCategoriasTamCategoria"]) {
-    print "    <p class=\"aviso\">La categoría no puede tener más de $cfg[dbCategoriasTamCategoria] caracteres.</p>\n";
+} elseif (mb_strlen($categoria, "UTF-8") > $cfg["tablaCategoriasTamCategoria"]) {
+    print "    <p class=\"aviso\">La categoría no puede tener más de $cfg[tablaCategoriasTamCategoria] caracteres.</p>\n";
     print "\n";
 } else {
     $categoriaOk = true;
@@ -42,7 +42,7 @@ if ($id == "") {
 }
 
 if ($categoriaOk && $idOk) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbCategoriasTabla]
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaCategorias]
                  WHERE id = :id";
 
     $resultado = $pdo->prepare($consulta);
@@ -56,7 +56,7 @@ if ($categoriaOk && $idOk) {
         // La consulta cuenta los registros con un id diferente porque MySQL no distingue
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbCategoriasTabla]
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaCategorias]
                      WHERE categoria = :categoria
                      AND id <> :id";
 
@@ -69,7 +69,7 @@ if ($categoriaOk && $idOk) {
             print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                 . "No se ha guardado la modificación.</p>\n";
         } else {
-            $consulta = "UPDATE $cfg[dbCategoriasTabla]
+            $consulta = "UPDATE $cfg[tablaCategorias]
                          SET categoria = :categoria
                          WHERE id = :id";
             $resultado = $pdo->prepare($consulta);

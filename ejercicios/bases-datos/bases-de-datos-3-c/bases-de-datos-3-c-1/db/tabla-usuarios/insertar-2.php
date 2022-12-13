@@ -30,8 +30,8 @@ $nivelOk    = false;
 if ($usuario == "") {
     print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
     print "\n";
-} elseif (mb_strlen($usuario, "UTF-8") > $cfg["dbUsuariosTamUsuario"]) {
-    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[dbUsuariosTamUsuario] caracteres.</p>\n";
+} elseif (mb_strlen($usuario, "UTF-8") > $cfg["tablaUsuariosTamUsuario"]) {
+    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.</p>\n";
     print "\n";
 } else {
     $usuarioOk = true;
@@ -55,7 +55,7 @@ if ($nivel == "") {
 }
 
 if ($usuarioOk && $passwordOk && $nivelOk) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE usuario = :usuario";
 
     $resultado = $pdo->prepare($consulta);
@@ -66,17 +66,17 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
 
         $resultado = $pdo->query($consulta);
         if (!$resultado) {
             print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif ($resultado->fetchColumn() >= $cfg["dbUsuariosMaxReg"] && $cfg["dbUsuariosMaxReg"] > 0) {
+        } elseif ($resultado->fetchColumn() >= $cfg["tablaUsuariosMaxReg"] && $cfg["tablaUsuariosMaxReg"] > 0) {
             print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
             print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
         } else {
-            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+            $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (usuario, password, nivel)
                          VALUES (:usuario, :password, :nivel)";
 

@@ -28,9 +28,9 @@ $cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_4";         // Nombre de la base
 
 // Número máximo de registros en las tablas (el valor 0 o negativo indica que no hay límite)
 
-$cfg["dbUsuariosMaxReg"]   = 20;                            // Número máximo de registros en la tabla Usuarios
-$cfg["dbCategoriasMaxReg"] = 20;                            // Número máximo de registros en la tabla Categorías
-$cfg["dbNoticiasMaxReg"]   = 20;                            // Número máximo de registros en la tabla Noticias
+$cfg["tablaUsuariosMaxReg"]   = 20;                         // Número máximo de registros en la tabla Usuarios
+$cfg["tablaCategoriasMaxReg"] = 20;                         // Número máximo de registros en la tabla Categorías
+$cfg["tablaNoticiasMaxReg"]   = 20;                         // Número máximo de registros en la tabla Noticias
 
 // Niveles de usuario
 

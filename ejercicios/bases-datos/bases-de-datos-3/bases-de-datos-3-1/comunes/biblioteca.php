@@ -23,7 +23,7 @@ require_once "config.php";
 
 // Valores de ordenación de la tabla
 
-$cfg["dbPersonasColumnasOrden"] = [
+$cfg["tablaPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
     "telefono ASC", "telefono DESC",
@@ -128,7 +128,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-02-12\">12 de febrero de 2022</time>\n";
+    print "      <time datetime=\"2022-12-13\">13 de diciembre de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

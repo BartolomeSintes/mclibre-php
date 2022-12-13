@@ -26,10 +26,10 @@ if (count($id) == 0) {
 } else {
     foreach ($id as $indice => $valor) {
         if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                          WHERE id = :indice";
         } else {
-            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                          WHERE id = :indice
                          AND id_usuario = $_SESSION[id_usuario]";
         }
@@ -41,7 +41,7 @@ if (count($id) == 0) {
         } elseif ($resultado->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
-            $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+            $consulta = "DELETE FROM $cfg[tablaPersonas]
                          WHERE id = :indice";
 
             $resultado = $pdo->prepare($consulta);

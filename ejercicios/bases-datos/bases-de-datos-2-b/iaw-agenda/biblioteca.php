@@ -19,7 +19,7 @@ require_once "config.php";
 
 // Valores de ordenación de la tabla
 
-$cfg["dbPersonasColumnasOrden"] = [
+$cfg["tablaPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
     "telefono ASC", "telefono DESC",

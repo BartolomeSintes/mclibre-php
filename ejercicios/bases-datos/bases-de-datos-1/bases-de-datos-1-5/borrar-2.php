@@ -14,7 +14,7 @@ cabecera("Borrar 2", MENU_VOLVER);
 $id = recoge("id", []);
 
 foreach ($id as $indice => $valor) {
-    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+    $consulta = "DELETE FROM $cfg[tablaPersonas]
                  WHERE id = :indice";
 
     $resultado = $pdo->prepare($consulta);

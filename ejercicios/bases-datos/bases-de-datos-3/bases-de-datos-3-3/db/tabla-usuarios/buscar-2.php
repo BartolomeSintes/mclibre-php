@@ -20,9 +20,9 @@ $pdo = conectaDb();
 cabecera("Usuarios - Buscar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario  = recoge("usuario");
-$ordena   = recogeValores("ordena", $cfg["dbUsuariosColumnasOrden"], "usuario ASC");
+$ordena   = recogeValores("ordena", $cfg["tablaUsuariosColumnasOrden"], "usuario ASC");
 
-$consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+$consulta = "SELECT * FROM $cfg[tablaUsuarios]
              WHERE usuario LIKE :usuario
              ORDER BY $ordena";
 

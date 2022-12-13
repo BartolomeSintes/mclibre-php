@@ -19,12 +19,12 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Añadir 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() >= $cfg["dbUsuariosMaxReg"]) {
+} elseif ($resultado->fetchColumn() >= $cfg["tablaUsuariosMaxReg"]) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";

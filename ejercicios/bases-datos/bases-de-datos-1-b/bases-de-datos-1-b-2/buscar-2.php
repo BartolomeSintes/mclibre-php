@@ -16,7 +16,7 @@ $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
 
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+$consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre
              AND apellidos LIKE :apellidos
              AND telefono LIKE :telefono

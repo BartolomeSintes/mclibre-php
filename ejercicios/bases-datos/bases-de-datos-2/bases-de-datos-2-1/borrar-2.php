@@ -17,7 +17,7 @@ if (count($id) == 0) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                      WHERE id = :indice";
 
         $resultado = $pdo->prepare($consulta);
@@ -28,7 +28,7 @@ if (count($id) == 0) {
         } elseif ($resultado->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
-            $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+            $consulta = "DELETE FROM $cfg[tablaPersonas]
                          WHERE id = :indice";
 
             $resultado = $pdo->prepare($consulta);

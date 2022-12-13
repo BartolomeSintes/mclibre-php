@@ -25,7 +25,7 @@ if (!$usuario) {
     exit;
 }
 
-$consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+$consulta = "SELECT * FROM $cfg[tablaUsuarios]
              WHERE usuario = :usuario
              AND password = :password";
 

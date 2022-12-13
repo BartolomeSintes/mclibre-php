@@ -28,31 +28,31 @@ $cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_1";         // Nombre de la base
 
 // Tamaño de los campos en la tabla Usuarios
 
-$cfg["dbUsuariosTamUsuario"]  = 20;                         // Tamaño de la columna Usuarios > Nombre de usuario
-$cfg["dbUsuariosTamPassword"] = 64;                         // Tamaño de la columna Usuarios > Contraseña de usuario (cifrada)
+$cfg["tablaUsuariosTamUsuario"]  = 20;                      // Tamaño de la columna Usuarios > Nombre de usuario
+$cfg["tablaUsuariosTamPassword"] = 64;                      // Tamaño de la columna Usuarios > Contraseña de usuario (cifrada)
 
 // Tamaño de los controles en los formularios
 
-$cfg["formUsuariosTamUsuario"]  = $cfg["dbUsuariosTamUsuario"];     // Tamaño de la caja de texto Usuario > Nombre de usuario
+$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario > Nombre de usuario
 $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario > Contraseña
 
 // Tamaño de los campos en la tabla Noticias
 
-$cfg["dbNoticiasTamCategoria"] = 40;                        // Tamaño de la columna Noticias > Categoría
-$cfg["dbNoticiasTamTitulo"]    = 60;                        // Tamaño de la columna Noticias > Título
-$cfg["dbNoticiasTamCuerpo"]    = 200;                       // Tamaño de la columna Noticias > Cuerpo
+$cfg["tablaNoticiasTamCategoria"] = 40;                     // Tamaño de la columna Noticias > Categoría
+$cfg["tablaNoticiasTamTitulo"]    = 60;                     // Tamaño de la columna Noticias > Título
+$cfg["tablaNoticiasTamCuerpo"]    = 200;                    // Tamaño de la columna Noticias > Cuerpo
 
 // Tamaño de los controles en los formularios
 
-$cfg["formNoticiasTamCategoria"] = $cfg["dbNoticiasTamCategoria"];  // Tamaño de la caja de texto Noticias > Categoría
-$cfg["formNoticiasTamTitulo"]    = $cfg["dbNoticiasTamTitulo"];     // Tamaño de la caja de texto Noticias > Título
-$cfg["formNoticiasTamCuerpoX"]   = 60;                              // Tamaño X del área de texto Noticias > Cuerpo
-$cfg["formNoticiasTamCuerpoY"]   = 5;                               // Tamaño Y del área de texto Noticias > Cuerpo
+$cfg["formNoticiasTamCategoria"] = $cfg["tablaNoticiasTamCategoria"];  // Tamaño de la caja de texto Noticias > Categoría
+$cfg["formNoticiasTamTitulo"]    = $cfg["tablaNoticiasTamTitulo"];     // Tamaño de la caja de texto Noticias > Título
+$cfg["formNoticiasTamCuerpoX"]   = 60;                                 // Tamaño X del área de texto Noticias > Cuerpo
+$cfg["formNoticiasTamCuerpoY"]   = 5;                                  // Tamaño Y del área de texto Noticias > Cuerpo
 
 // Número máximo de registros en las tablas (el valor 0 o negativo indica que no hay límite)
 
-$cfg["dbUsuariosMaxReg"] = 20;                            // Número máximo de registros en la tabla Usuarios
-$cfg["dbNoticiasMaxReg"] = 20;                            // Número máximo de registros en la tabla Noticias
+$cfg["tablaUsuariosMaxReg"] = 20;                          // Número máximo de registros en la tabla Usuarios
+$cfg["tablaNoticiasMaxReg"] = 20;                          // Número máximo de registros en la tabla Noticias
 
 // Usuario Administrador de la aplicación
 

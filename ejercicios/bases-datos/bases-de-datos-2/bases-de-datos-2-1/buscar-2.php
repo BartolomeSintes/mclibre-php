@@ -14,7 +14,7 @@ cabecera("Buscar 2", MENU_VOLVER);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+$consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre
              AND apellidos LIKE :apellidos";
 

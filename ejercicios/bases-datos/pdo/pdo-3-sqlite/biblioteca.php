@@ -31,7 +31,7 @@ function borraTabla()
 {
     global $pdo, $cfg;
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -47,10 +47,10 @@ function creaTabla()
 {
     global $pdo, $cfg;
 
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
                  )";
 
     if (!$pdo->query($consulta)) {
@@ -67,7 +67,7 @@ function insertaRegistro($nombre, $apellidos)
 {
     global $pdo, $cfg;
 
-    $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos)
                  VALUES (:nombre, :apellidos)";
 
@@ -88,7 +88,7 @@ function cuentaRegistros()
 {
     global $pdo, $cfg;
 
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
@@ -105,7 +105,7 @@ function muestraRegistros()
 {
     global $pdo, $cfg;
 
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
@@ -127,7 +127,7 @@ function modificaRegistro($id, $nombre, $apellidos)
 {
     global $pdo, $cfg;
 
-    $consulta = "UPDATE $cfg[dbPersonasTabla]
+    $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos
                  WHERE id = :id";
 
@@ -149,7 +149,7 @@ function borraRegistros($id)
     global $pdo, $cfg;
 
     foreach ($id as $indice => $valor) {
-        $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+        $consulta = "DELETE FROM $cfg[tablaPersonas]
                      WHERE id = :indice";
 
         $resultado = $pdo->prepare($consulta);

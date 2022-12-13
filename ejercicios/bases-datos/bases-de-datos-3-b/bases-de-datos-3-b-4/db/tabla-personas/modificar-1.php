@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Personas - Modificar 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
+$ordena = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
 $id     = recoge("id");
 if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
     $consulta = "SELECT
@@ -29,12 +29,12 @@ if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
                      personas.correo,
                      personas.telefono,
                      usuarios.usuario
-                 FROM $cfg[dbPersonasTabla] as personas
-                 JOIN $cfg[dbUsuariosTabla] as usuarios
+                 FROM $cfg[tablaPersonas] as personas
+                 JOIN $cfg[tablaUsuarios] as usuarios
                  ON personas.id_usuario = usuarios.id
                  ORDER BY $ordena";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id_usuario = $_SESSION[id_usuario]
                  ORDER BY $ordena";
 }

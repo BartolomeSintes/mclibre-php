@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Noticias - Añadir 1", MENU_NOTICIAS, PROFUNDIDAD_2);
 
-$consulta = "SELECT * FROM $cfg[dbCategoriasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaCategorias]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
@@ -29,12 +29,12 @@ if (!$resultado) {
     print "\n";
     print "    <p class=\"aviso\">Por favor, cree algún registro de Categorías antes.</p>\n";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbNoticiasTabla]";
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaNoticias]";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif ($resultado->fetchColumn() >= $cfg["dbNoticiasMaxReg"] && $cfg["dbNoticiasMaxReg"] > 0) {
+    } elseif ($resultado->fetchColumn() >= $cfg["tablaNoticiasMaxReg"] && $cfg["tablaNoticiasMaxReg"] > 0) {
         print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
         print "\n";
         print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";

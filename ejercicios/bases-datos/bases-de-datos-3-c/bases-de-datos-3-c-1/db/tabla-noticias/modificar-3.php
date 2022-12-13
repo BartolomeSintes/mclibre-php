@@ -31,22 +31,22 @@ $cuerpoOk    = false;
 $creadoOk    = false;
 $idOk        = false;
 
-if (mb_strlen($categoria, "UTF-8") > $cfg["dbNoticiasTamCategoria"]) {
-    print "    <p class=\"aviso\">La categoría no puede tener más de $cfg[dbNoticiasTamCategoria] caracteres.</p>\n";
+if (mb_strlen($categoria, "UTF-8") > $cfg["tablaNoticiasTamCategoria"]) {
+    print "    <p class=\"aviso\">La categoría no puede tener más de $cfg[tablaNoticiasTamCategoria] caracteres.</p>\n";
     print "\n";
 } else {
     $categoriaOk = true;
 }
 
-if (mb_strlen($titulo, "UTF-8") > $cfg["dbNoticiasTamTitulo"]) {
-    print "    <p class=\"aviso\">El título no puede tener más de $cfg[dbNoticiasTamTitulo] caracteres.</p>\n";
+if (mb_strlen($titulo, "UTF-8") > $cfg["tablaNoticiasTamTitulo"]) {
+    print "    <p class=\"aviso\">El título no puede tener más de $cfg[tablaNoticiasTamTitulo] caracteres.</p>\n";
     print "\n";
 } else {
     $tituloOk = true;
 }
 
-if (mb_strlen($cuerpo, "UTF-8") > $cfg["dbNoticiasTamCuerpo"]) {
-    print "    <p class=\"aviso\">El cuerpo de la noticia no puede tener más de $cfg[dbNoticiasTamCuerpo] caracteres.</p>\n";
+if (mb_strlen($cuerpo, "UTF-8") > $cfg["tablaNoticiasTamCuerpo"]) {
+    print "    <p class=\"aviso\">El cuerpo de la noticia no puede tener más de $cfg[tablaNoticiasTamCuerpo] caracteres.</p>\n";
     print "\n";
 } else {
     $cuerpoOk = true;
@@ -75,7 +75,7 @@ if ($id == "") {
 }
 
 if ($categoriaOk && $tituloOk && $cuerpoOk && $idOk && $creadoOk) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbNoticiasTabla]
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaNoticias]
                  WHERE id = :id";
 
     $resultado = $pdo->prepare($consulta);
@@ -89,7 +89,7 @@ if ($categoriaOk && $tituloOk && $cuerpoOk && $idOk && $creadoOk) {
         // La consulta cuenta los registros con un id diferente porque MySQL no distingue
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbNoticiasTabla]
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaNoticias]
                      WHERE categoria = :categoria
                      AND titulo = :titulo
                      AND cuerpo = :cuerpo
@@ -105,7 +105,7 @@ if ($categoriaOk && $tituloOk && $cuerpoOk && $idOk && $creadoOk) {
             print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                 . "No se ha guardado la modificación.</p>\n";
         } else {
-            $consulta = "UPDATE $cfg[dbNoticiasTabla]
+            $consulta = "UPDATE $cfg[tablaNoticias]
                          SET categoria = :categoria, titulo = :titulo,
                          cuerpo = :cuerpo, creado = :creado
                          WHERE id = :id";

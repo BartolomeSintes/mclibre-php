@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Categorías - Buscar 1", MENU_CATEGORIAS, PROFUNDIDAD_2);
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbCategoriasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaCategorias]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {

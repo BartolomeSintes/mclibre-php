@@ -19,9 +19,9 @@ $pdo = conectaDb();
 
 cabecera("Personas - Listar", MENU_PERSONAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
+$ordena = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
 
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+$consulta = "SELECT * FROM $cfg[tablaPersonas]
              ORDER BY $ordena";
 
 $resultado = $pdo->query($consulta);

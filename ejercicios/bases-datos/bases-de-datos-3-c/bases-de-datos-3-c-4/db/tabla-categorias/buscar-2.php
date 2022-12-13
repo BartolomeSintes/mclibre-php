@@ -20,9 +20,9 @@ $pdo = conectaDb();
 cabecera("Categorías - Buscar 2", MENU_CATEGORIAS, PROFUNDIDAD_2);
 
 $categoria = recoge("categoria");
-$ordena    = recogeValores("ordena", $cfg["dbCategoriasColumnasOrden"], "categoria ASC");
+$ordena    = recogeValores("ordena", $cfg["tablaCategoriasColumnasOrden"], "categoria ASC");
 
-$consulta = "SELECT * FROM $cfg[dbCategoriasTabla]
+$consulta = "SELECT * FROM $cfg[tablaCategorias]
              WHERE categoria LIKE :categoria
              ORDER BY $ordena";
 

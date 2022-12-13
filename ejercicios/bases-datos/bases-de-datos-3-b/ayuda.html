@@ -82,12 +82,12 @@ if ($demo == "Sí") {
 <code class="language-php">// Registros de prueba opcionales
 
 $cfg["registrosDemo"] = [
-    [$cfg["dbUsuariosTabla"], [2, "usuario1", encripta("usuario1"), NIVEL_USUARIO_BASICO]],
-    [$cfg["dbUsuariosTabla"], [3, "usuario2", encripta("usuario2"), NIVEL_USUARIO_BASICO]],
-    [$cfg["dbUsuariosTabla"], [4, "admin1", encripta("admin1"), NIVEL_ADMINISTRADOR]],
-    [$cfg["dbPersonasTabla"], [1, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com"]],
-    [$cfg["dbPersonasTabla"], [2, "Numa", "Nigerio", "161803398", "numa.nigerio@example.com"]],
-    [$cfg["dbPersonasTabla"], [3, "Fulanito", "Mengánez", "314159265", "fulanito.menganez@example.com"]],
+    [$cfg["tablaUsuarios"], [2, "usuario1", encripta("usuario1"), NIVEL_USUARIO_BASICO]],
+    [$cfg["tablaUsuarios"], [3, "usuario2", encripta("usuario2"), NIVEL_USUARIO_BASICO]],
+    [$cfg["tablaUsuarios"], [4, "admin1", encripta("admin1"), NIVEL_ADMINISTRADOR]],
+    [$cfg["tablaPersonas"], [1, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com"]],
+    [$cfg["tablaPersonas"], [2, "Numa", "Nigerio", "161803398", "numa.nigerio@example.com"]],
+    [$cfg["tablaPersonas"], [3, "Fulanito", "Mengánez", "314159265", "fulanito.menganez@example.com"]],
 ];
 
 function insertaDemo()
@@ -97,12 +97,12 @@ function insertaDemo()
     print "    &lt;p&gt;Insertando registros de prueba ...&lt;/p&gt;\n";
     print "\n";
     foreach ($cfg["registrosDemo"] as $registro) {
-        if ($registro[0] == $cfg["dbUsuariosTabla"]) {
-            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+        if ($registro[0] == $cfg["tablaUsuarios"]) {
+            $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (id, usuario, password, nivel)
                          VALUES ({$registro[1][0]}, '{$registro[1][1]}', '{$registro[1][2]}',  {$registro[1][3]})";
-        } elseif ($registro[0] == $cfg["dbPersonasTabla"]) {
-            $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+        } elseif ($registro[0] == $cfg["tablaPersonas"]) {
+            $consulta = "INSERT INTO $cfg[tablaPersonas]
                          (id, nombre, apellidos, telefono, correo)
                          VALUES ({$registro[1][0]}, '{$registro[1][1]}', '{$registro[1][2]}', '{$registro[1][3]}', '{$registro[1][4]}')";
         }
@@ -163,7 +163,7 @@ function insertaDemo()
 <code class="language-php">$mantenerPassword = recoge("mantenerPassword");
 ...
                 } elseif ($mantenerPassword == "Sí") {
-                    $consulta = "UPDATE $cfg[dbUsuariosTabla]
+                    $consulta = "UPDATE $cfg[tablaUsuarios]
                                  SET usuario = :usuario, nivel = :nivel
                                  WHERE id = :id";
                     $resultado = $pdo-&gt;prepare($consulta);
@@ -175,7 +175,7 @@ function insertaDemo()
                         print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
                     }
                 } else {
-                    $consulta = "UPDATE $cfg[dbUsuariosTabla]
+                    $consulta = "UPDATE $cfg[tablaUsuarios]
                                  SET usuario = :usuario, password = :password, nivel = :nivel
                                  WHERE id = :id";
                     $resultado = $pdo-&gt;prepare($consulta);
@@ -192,14 +192,14 @@ function insertaDemo()
           </li>
         </ul>
       </li>
-      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["dbPersonasMaxReg"] o $cfg["dbUsuariosMaxReg"] es 0 o negativo.
+      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["tablaPersonasMaxReg"] o $cfg["tablaUsuariosMaxReg"] es 0 o negativo.
         <ul>
           <li>[db/tabla-personas/insertar-1.php, db/tabla-personas/insertar-2.php, db/tabla-usuarios/insertar-1.php, db/tabla-usuarios/insertar-2.php]
             <p>Modificamos la condición de superación del número máximo de registros para que no se cumpla si la variable de configuración no es mayor que 0:</p>
             <div class="codigo">
               <pre>
 <code class="language-php">    ...
-} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbUsuariosMaxReg"] && $cfg["dbUsuariosMaxReg"] &gt; 0) {
+} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["tablaUsuariosMaxReg"] && $cfg["tablaUsuariosMaxReg"] &gt; 0) {
     ...</code>
 </pre>
             </div>
@@ -232,14 +232,14 @@ function insertaDemo()
             <div class="codigo">
               <pre>
 <code class="language-php">// SQLITE:
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE,
-                 telefono VARCHAR($cfg[dbPersonasTamTelefono]) COLLATE NOCASE,
-                 correo VARCHAR($cfg[dbPersonasTamCorreo]) COLLATE NOCASE,
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE,
+                 telefono VARCHAR($cfg[tablaPersonasTamTelefono]) COLLATE NOCASE,
+                 correo VARCHAR($cfg[tablaPersonasTamCorreo]) COLLATE NOCASE,
                  id_usuario INTEGER,
-                 FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE
+                 FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE
                  )";</code>
 </pre>
             </div>
@@ -248,26 +248,26 @@ function insertaDemo()
             <div class="codigo">
               <pre>
 <code class="language-php">// MYSQL:
-                 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                 $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                               id INTEGER UNSIGNED AUTO_INCREMENT,
-                              nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                              apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                              telefono VARCHAR($cfg[dbPersonasTamTelefono]),
-                              correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                              nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                              apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                              telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
+                              correo VARCHAR($cfg[tablaPersonasTamCorreo]),
                               id_usuario INTEGER UNSIGNED,
-                              FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE,
+                              FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE,
                               PRIMARY KEY(id)
                               )";</code>
 </pre>
             </div>
           </li>
           <li>[comunes/biblioteca.php]
-            <p>Para que se puedan ordenar los listados por el campo usuario debemos añadirlo a la matriz $cfg["dbPersonasColumnasOrden"]. Añadimos "usuario" y no "id_usuario" porque la columna mostrará el nombre del usuario.</p>
+            <p>Para que se puedan ordenar los listados por el campo usuario debemos añadirlo a la matriz $cfg["tablaPersonasColumnasOrden"]. Añadimos "usuario" y no "id_usuario" porque la columna mostrará el nombre del usuario.</p>
             <div class="codigo">
               <pre>
 <code class="language-php">// Valores de ordenación de las tablas
 
-$cfg["dbPersonasColumnasOrden"] = [
+$cfg["tablaPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
     "telefono ASC", "telefono DESC",
@@ -284,15 +284,15 @@ $cfg["dbPersonasColumnasOrden"] = [
 <code class="language-php">// Registros de prueba opcionales
 
 $cfg["registrosDemo"] = [
-    [$cfg["dbUsuariosTabla"], [2, "usuario1", encripta("usuario1"), NIVEL_USUARIO_BASICO]],
-    [$cfg["dbUsuariosTabla"], [3, "usuario2", encripta("usuario2"), NIVEL_USUARIO_BASICO]],
-    [$cfg["dbUsuariosTabla"], [4, "admin1", encripta("admin1"), NIVEL_ADMINISTRADOR]],
-    [$cfg["dbPersonasTabla"], [1, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 2]],
-    [$cfg["dbPersonasTabla"], [2, "Numa", "Nigerio", "161803398", "numa.nigerio@example.com", 2]],
-    [$cfg["dbPersonasTabla"], [3, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 3]],
-    [$cfg["dbPersonasTabla"], [4, "Fulanito", "Mengánez", "314159265", "fulanito.menganez@example.com", 3]],
-    [$cfg["dbPersonasTabla"], [5, "Napoleón", "Bonaparte", "432520032", "napoleon.bonaparte@example.org", 3]],
-    [$cfg["dbPersonasTabla"], [6, "Julio", "César", "129644790 ", "julio.cesar@example.org", 4]],
+    [$cfg["tablaUsuarios"], [2, "usuario1", encripta("usuario1"), NIVEL_USUARIO_BASICO]],
+    [$cfg["tablaUsuarios"], [3, "usuario2", encripta("usuario2"), NIVEL_USUARIO_BASICO]],
+    [$cfg["tablaUsuarios"], [4, "admin1", encripta("admin1"), NIVEL_ADMINISTRADOR]],
+    [$cfg["tablaPersonas"], [1, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 2]],
+    [$cfg["tablaPersonas"], [2, "Numa", "Nigerio", "161803398", "numa.nigerio@example.com", 2]],
+    [$cfg["tablaPersonas"], [3, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 3]],
+    [$cfg["tablaPersonas"], [4, "Fulanito", "Mengánez", "314159265", "fulanito.menganez@example.com", 3]],
+    [$cfg["tablaPersonas"], [5, "Napoleón", "Bonaparte", "432520032", "napoleon.bonaparte@example.org", 3]],
+    [$cfg["tablaPersonas"], [6, "Julio", "César", "129644790 ", "julio.cesar@example.org", 4]],
 ];</code>
 </pre>
             </div>
@@ -319,7 +319,7 @@ $_SESSION["id_usuario"] = $registro["id"];</code>
         <p>Por ejemplo, en la página /db/tabla-personas/insertar-2.php, la consulta para comprobar si el registro que se quiere añadir ya existe sería ahora:</p>
         <div class="codigo">
           <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE nombre = :nombre
                  AND apellidos = :apellidos
                  AND telefono = :telefono
@@ -331,7 +331,7 @@ $_SESSION["id_usuario"] = $registro["id"];</code>
         <p>Y la consulta para comprobar si se ha superado el número máximo de registros permitidos en la tabla sería ahora:</p>
         <div class="codigo">
           <pre>
-<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                      WHERE id_usuario = $_SESSION[id_usuario]";</code>
 </pre>
         </div>
@@ -339,7 +339,7 @@ $_SESSION["id_usuario"] = $registro["id"];</code>
         <p>En la consulta de inserción se tendrá que añadir el campo id_usuario:</p>
         <div class="codigo">
           <pre>
-<code class="language-php">            $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+<code class="language-php">            $consulta = "INSERT INTO $cfg[tablaPersonas]
                          (nombre, apellidos, telefono, correo, id_usuario)
                          VALUES (:nombre, :apellidos, :telefono, :correo, $_SESSION[id_usuario] )";</code>
 </pre>
@@ -356,9 +356,9 @@ $_SESSION["id_usuario"] = $registro["id"];</code>
             <div class="codigo">
               <pre>
 <code class="language-php">if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 } else {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE id_usuario = $_SESSION[id_usuario]";
 }</code>
 </pre>
@@ -375,12 +375,12 @@ $_SESSION["id_usuario"] = $registro["id"];</code>
                      personas.correo,
                      personas.telefono,
                      usuarios.usuario
-                 FROM $cfg[dbPersonasTabla] as personas
-                 JOIN $cfg[dbUsuariosTabla] as usuarios
+                 FROM $cfg[tablaPersonas] as personas
+                 JOIN $cfg[tablaUsuarios] as usuarios
                  ON personas.id_usuario = usuarios.id
                  ORDER BY $ordena";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id_usuario = $_SESSION[id_usuario]
                  ORDER BY $ordena";
 }</code>
@@ -415,7 +415,7 @@ $_SESSION["id_usuario"] = $registro["id"];</code>
         </div>
       </li>
       <li>Compruebe que los usuarios administradores pueden ordenar los registros de personas por el campo usuario.
-        <p>En el primer apartado de este ejercicio ya se ha indicado cómo añadir los valores de ordenación a la variable de configuración $cfg["dbPersonasColumnasOrden"].</p>
+        <p>En el primer apartado de este ejercicio ya se ha indicado cómo añadir los valores de ordenación a la variable de configuración $cfg["tablaPersonasColumnasOrden"].</p>
       </li>
       <li>Los usuarios administradores no podrán insertar registros de Personas a nombre de otros usuarios, ni modificar el campo usuario de un registro de Personas. (esta funcionalidad se deja para el ejercicio siguiente)
         <p>Si no se incluyen controles para ello en los formularios de db/tabla-personas/insertar-1.php o db/tabla-personas/modificar-2.php, los usuarios administradores no pueden realizar estas tareas.</p>

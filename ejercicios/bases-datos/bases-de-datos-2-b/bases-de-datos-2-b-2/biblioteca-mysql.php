@@ -9,7 +9,7 @@
 
 // MYSQL: Nombres de las tablas
 
-$cfg["dbPersonasTabla"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
+$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
 
 // MYSQL: Conexión con la base de datos
 
@@ -57,12 +57,12 @@ function borraTodo()
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+        $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
-                     nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                     apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                     telefono VARCHAR($cfg[dbPersonasTamTelefono]),
-                     correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                     nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                     apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                     telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
+                     correo VARCHAR($cfg[tablaPersonasTamCorreo]),
                      PRIMARY KEY(id)
                      )";
 

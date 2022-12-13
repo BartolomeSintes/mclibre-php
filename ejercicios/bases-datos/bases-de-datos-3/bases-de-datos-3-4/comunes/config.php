@@ -28,32 +28,32 @@ $cfg["mysqlDatabase"] = "mclibre_base_datos_3_4";           // Nombre de la base
 
 // Tamaño de los campos en la tabla Usuarios
 
-$cfg["dbUsuariosTamUsuario"]  = 20;                         // Tamaño de la columna Usuarios > Nombre de usuario
-$cfg["dbUsuariosTamPassword"] = 64;                         // Tamaño de la columna Usuarios > Contraseña de usuario (cifrada)
+$cfg["tablaUsuariosTamUsuario"]  = 20;                      // Tamaño de la columna Usuarios > Nombre de usuario
+$cfg["tablaUsuariosTamPassword"] = 64;                      // Tamaño de la columna Usuarios > Contraseña de usuario (cifrada)
 
 // Tamaño de los controles en los formularios
 
-$cfg["formUsuariosTamUsuario"]  = $cfg["dbUsuariosTamUsuario"];     // Tamaño de la caja de texto Usuario > Nombre de usuario
+$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario > Nombre de usuario
 $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario > Contraseña
 
 // Tamaño de los campos en la tabla Personas
 
-$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas > Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas > Apellidos
-$cfg["dbPersonasTamTelefono"]  = 10;                        // Tamaño de la columna Personas > Teléfono
-$cfg["dbPersonasTamCorreo"]    = 50;                        // Tamaño de la columna Personas > Correo
+$cfg["tablaPersonasTamNombre"]    = 40;                     // Tamaño de la columna Personas > Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la columna Personas > Apellidos
+$cfg["tablaPersonasTamTelefono"]  = 10;                     // Tamaño de la columna Personas > Teléfono
+$cfg["tablaPersonasTamCorreo"]    = 50;                     // Tamaño de la columna Personas > Correo
 
 // Tamaño de los controles en los formularios
 
-$cfg["formPersonasTamNombre"]    = $cfg["dbPersonasTamNombre"];     // Tamaño de la caja de texto Personas > Nombre
-$cfg["formPersonasTamApellidos"] = $cfg["dbPersonasTamApellidos"];  // Tamaño de la caja de texto Personas > Apellidos
-$cfg["formPersonasTamTelefono"]  = $cfg["dbPersonasTamTelefono"];   // Tamaño de la caja de texto Personas > Teléfono
-$cfg["formPersonasTamCorreo"]    = $cfg["dbPersonasTamCorreo"];     // Tamaño de la caja de texto Personas > Correo
+$cfg["formPersonasTamNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño de la caja de texto Personas > Nombre
+$cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño de la caja de texto Personas > Apellidos
+$cfg["formPersonasTamTelefono"]  = $cfg["tablaPersonasTamTelefono"];   // Tamaño de la caja de texto Personas > Teléfono
+$cfg["formPersonasTamCorreo"]    = $cfg["tablaPersonasTamCorreo"];     // Tamaño de la caja de texto Personas > Correo
 
 // Número máximo de registros en las tablas
 
-$cfg["dbUsuariosMaxReg"] = 20;                              // Número máximo de registros en la tabla Usuarios
-$cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
+$cfg["tablaUsuariosMaxReg"] = 20;                           // Número máximo de registros en la tabla Usuarios
+$cfg["tablaPersonasMaxReg"] = 20;                           // Número máximo de registros en la tabla Personas
 
 // Usuario Administrador de la aplicación
 

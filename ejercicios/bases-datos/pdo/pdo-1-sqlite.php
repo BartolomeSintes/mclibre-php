@@ -30,12 +30,12 @@
 $cfg["sqliteDatabase"] = "/tmp/pdo-1.sqlite";                             // Ubicación de la base de datos
 
 // Tamaño de los campos en la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas > Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas > Apellidos
+$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas > Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas > Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 // Base de datos
-$cfg["dbPersonasTabla"] = "personas";                      // Nombre de la tabla Personas
+$cfg["tablaPersonas"] = "personas";                      // Nombre de la tabla Personas
 
 //
 //
@@ -68,7 +68,7 @@ $pdo = conectaDb();
 // PASO 3: Borrar la tabla.
 
 // CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+$consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
 if (!$pdo->query($consulta)) {
     print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -82,10 +82,10 @@ print "\n";
 // PASO 4: Borrar la tabla.
 
 // SQLITE: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
              id INTEGER PRIMARY KEY,
-             nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
-             apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE
+             nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+             apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
              )";
 
 if (!$pdo->query($consulta)) {
@@ -103,7 +103,7 @@ print "\n";
 $nombre    = "Pepito";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Conejo";
 
-$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+$consulta = "INSERT INTO $cfg[tablaPersonas]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 
@@ -122,7 +122,7 @@ if (!$resultado) {
 // PASO 6: Mostrar cuántos registros hay en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
@@ -137,7 +137,7 @@ if (!$resultado) {
 // PASO 7: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
@@ -161,7 +161,7 @@ $id        = "1";                 // Normalmente estos valores vendrán de un fo
 $nombre    = "Pepita";
 $apellidos = "Conejo";
 
-$consulta = "UPDATE $cfg[dbPersonasTabla]
+$consulta = "UPDATE $cfg[tablaPersonas]
              SET nombre = :nombre, apellidos = :apellidos
              WHERE id = :id";
 
@@ -180,7 +180,7 @@ if (!$resultado) {
 // PASO 9: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
@@ -203,7 +203,7 @@ if (!$resultado) {
 $nombre    = "Numa";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Nigerio";
 
-$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+$consulta = "INSERT INTO $cfg[tablaPersonas]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 
@@ -222,7 +222,7 @@ if (!$resultado) {
 // PASO 11: Mostrar cuántos registros hay en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
@@ -237,7 +237,7 @@ if (!$resultado) {
 // PASO 12: Mostrar los valores de los dos registros guardados en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
@@ -260,7 +260,7 @@ if (!$resultado) {
 $id = [1 => "on"];     // Normalmente este valor vendrá de un formulario (en este caso, como matriz).
 
 foreach ($id as $indice => $valor) {
-    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+    $consulta = "DELETE FROM $cfg[tablaPersonas]
                  WHERE id = :indice";
 
     $resultado = $pdo->prepare($consulta);
@@ -279,7 +279,7 @@ foreach ($id as $indice => $valor) {
 // PASO 14: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {

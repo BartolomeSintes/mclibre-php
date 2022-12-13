@@ -30,8 +30,8 @@ if ($id == "") {
                 noticias.titulo,
                 noticias.cuerpo,
                 noticias.creado
-             FROM $cfg[dbNoticiasTabla] as noticias
-             JOIN $cfg[dbCategoriasTabla] as categorias
+             FROM $cfg[tablaNoticias] as noticias
+             JOIN $cfg[tablaCategorias] as categorias
              ON noticias.id_categoria = categorias.id
              WHERE noticias.id = :id";
 
@@ -43,7 +43,7 @@ if ($id == "") {
     } elseif (!($registro = $resultado->fetch())) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
-        $consulta = "SELECT * FROM $cfg[dbCategoriasTabla]";
+        $consulta = "SELECT * FROM $cfg[tablaCategorias]";
 
         $resultado = $pdo->query($consulta);
         if (!$resultado) {

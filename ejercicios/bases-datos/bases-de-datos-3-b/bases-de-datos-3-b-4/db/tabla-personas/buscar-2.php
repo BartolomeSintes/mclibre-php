@@ -23,7 +23,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $correo    = recoge("correo");
-$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
+$ordena    = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
 
 if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
     $consulta = "SELECT
@@ -33,8 +33,8 @@ if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
                      personas.correo,
                      personas.telefono,
                      usuarios.usuario
-                 FROM $cfg[dbPersonasTabla] as personas
-                 JOIN $cfg[dbUsuariosTabla] as usuarios
+                 FROM $cfg[tablaPersonas] as personas
+                 JOIN $cfg[tablaUsuarios] as usuarios
                  ON personas.id_usuario = usuarios.id
                  WHERE nombre LIKE :nombre
                  AND apellidos LIKE :apellidos
@@ -42,7 +42,7 @@ if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
                  AND correo LIKE :correo
                  ORDER BY $ordena";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE nombre LIKE :nombre
                  AND apellidos LIKE :apellidos
                  AND telefono LIKE :telefono

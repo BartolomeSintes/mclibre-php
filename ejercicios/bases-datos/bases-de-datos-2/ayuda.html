@@ -61,7 +61,7 @@ $pdo = null;</code>
             <div class="codigo">
               <pre><code class="language-php">// Número máximo de registros en las tablas
 
-$cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas</code></pre>
+$cfg["tablaPersonasMaxReg"] = 20;                           // Número máximo de registros en la tabla Personas</code></pre>
             </div>
           </li>
         </ul>
@@ -73,12 +73,12 @@ $cfg["dbPersonasMaxReg"] = 20;                              // Número máximo d
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasMaxReg"]) {
+} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["tablaPersonasMaxReg"]) {
     print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
     print "\n";
     print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
@@ -110,7 +110,7 @@ if (!$resultado) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                      WHERE nombre = :nombre
                      AND apellidos = :apellidos";
 
@@ -131,12 +131,12 @@ if (!$resultado) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
         print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["dbPersonasMaxReg"]) {
+    } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["tablaPersonasMaxReg"]) {
         print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
         print "\n";
         print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";
@@ -155,7 +155,7 @@ if (!$resultado) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+<code class="language-php">$consulta = "SELECT * FROM $cfg[tablaPersonas]
              ORDER BY $ordena";
 
 $resultado = $pdo-&gt;query($consulta);
@@ -196,7 +196,7 @@ if (count($id) == 0) {
           <li>Compruebe que el registro a borrar existe.
             <div class="codigo">
               <pre>
-<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                      WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
@@ -227,7 +227,7 @@ if (count($id) == 0) {
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+<code class="language-php">$consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre
              AND apellidos LIKE :apellidos";
 
@@ -275,7 +275,7 @@ if ($id == "") {
 
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+<code class="language-php">    $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -320,7 +320,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
             <p>Esta comprobación es la misma que la de borrar-2.php</p>
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -343,7 +343,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
 <code class="language-php">        // La consulta cuenta los registros con un id diferente porque MySQL no distingue
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                      WHERE nombre = :nombre
                      AND apellidos = :apellidos
                      AND id&lt;&gt;:id";
@@ -375,7 +375,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
 
     <div class="codigo">
       <pre>
-<code class="language-php">$consulta  = "SELECT * FROM $cfg[dbPersonasTabla]
+<code class="language-php">$consulta  = "SELECT * FROM $cfg[tablaPersonas]
               ORDER BY $ordena";</code>
 </pre>
     </div>
@@ -386,7 +386,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
 
     <div class="codigo">
       <pre>
-<code class="language-php">$ordena = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");</code>
+<code class="language-php">$ordena = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");</code>
 </pre>
     </div>
 
@@ -399,7 +399,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
           <pre>
 <code class="language-php">// Valores de ordenación de la tabla
 
-$cfg["dbPersonasColumnasOrden"] = [
+$cfg["tablaPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
 ];

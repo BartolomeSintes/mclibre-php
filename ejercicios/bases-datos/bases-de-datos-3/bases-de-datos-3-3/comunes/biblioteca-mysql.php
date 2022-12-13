@@ -9,8 +9,8 @@
 
 // MYSQL: Nombres de las tablas
 
-$cfg["dbPersonasTabla"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
-$cfg["dbUsuariosTabla"] = "$cfg[mysqlDatabase].usuarios";   // Nombre de la tabla Usuarios
+$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
+$cfg["tablaUsuarios"] = "$cfg[mysqlDatabase].usuarios";   // Nombre de la tabla Usuarios
 
 // MYSQL: Conexión con la base de datos
 
@@ -58,10 +58,10 @@ function borraTodo()
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+        $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
-                     usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                     password VARCHAR($cfg[dbUsuariosTamPassword]),
+                     usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                     password VARCHAR($cfg[tablaUsuariosTamPassword]),
                      PRIMARY KEY(id)
                      )";
 
@@ -71,7 +71,7 @@ function borraTodo()
             print "    <p>Tabla Usuarios creada correctamente.</p>\n";
             print "\n";
 
-            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+            $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (usuario, password)
                          VALUES ($cfg[rootName]', '$cfg[rootPassword]')";
 
@@ -83,12 +83,12 @@ function borraTodo()
         }
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+        $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
-                     nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                     apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                     telefono VARCHAR($cfg[dbPersonasTamTelefono]),
-                     correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                     nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                     apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                     telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
+                     correo VARCHAR($cfg[tablaPersonasTamCorreo]),
                      PRIMARY KEY(id)
                      )";
 

@@ -30,14 +30,14 @@ require_once "config.php";
 
 // Valores de ordenación de las tablas
 
-$cfg["dbPersonasColumnasOrden"] = [
+$cfg["tablaPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
     "telefono ASC", "telefono DESC",
     "correo ASC", "correo DESC",
 ];
 
-$cfg["dbUsuariosColumnasOrden"] = [
+$cfg["tablaUsuariosColumnasOrden"] = [
     "usuario ASC", "usuario DESC",
     "password ASC", "password DESC",
     "nivel ASC", "nivel DESC",
@@ -63,8 +63,8 @@ if ($cfg["dbMotor"] == SQLITE) {
 // Tablas
 
 $cfg["dbTablas"] = [
-    $cfg["dbUsuariosTabla"],
-    $cfg["dbPersonasTabla"],
+    $cfg["tablaUsuarios"],
+    $cfg["tablaPersonas"],
 ];
 
 // Funciones comunes
@@ -188,7 +188,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-02-12\">12 de febrero de 2022</time>\n";
+    print "      <time datetime=\"2022-12-13\">13 de diciembre de 2022</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

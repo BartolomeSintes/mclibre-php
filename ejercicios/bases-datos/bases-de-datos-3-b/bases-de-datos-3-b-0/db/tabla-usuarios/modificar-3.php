@@ -32,8 +32,8 @@ $idOk       = false;
 if ($usuario == "") {
     print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
     print "\n";
-} elseif (mb_strlen($usuario, "UTF-8") > $cfg["dbUsuariosTamUsuario"]) {
-    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[dbUsuariosTamUsuario] caracteres.</p>\n";
+} elseif (mb_strlen($usuario, "UTF-8") > $cfg["tablaUsuariosTamUsuario"]) {
+    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.</p>\n";
     print "\n";
 } else {
     $usuarioOk = true;
@@ -63,7 +63,7 @@ if ($id == "") {
 }
 
 if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
     $resultado = $pdo->prepare($consulta);
@@ -77,7 +77,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
         // La consulta cuenta los registros con un id diferente porque MySQL no distingue
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                      WHERE usuario = :usuario
                      AND id <> :id";
 
@@ -90,7 +90,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
             print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                 . "No se ha guardado la modificación.</p>\n";
         } else {
-            $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+            $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                          WHERE id = :id";
 
             $resultado = $pdo->prepare($consulta);
@@ -103,7 +103,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
                 if ($registro["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $registro["usuario"] != $usuario || $registro["nivel"] != $nivel)) {
                     print "    <p class=\"aviso\">Del usuario Administrador inicial sólo se puede cambiar la contraseña.</p>\n";
                 } else {
-                    $consulta = "UPDATE $cfg[dbUsuariosTabla]
+                    $consulta = "UPDATE $cfg[tablaUsuarios]
                                  SET usuario = :usuario, password = :password, nivel = :nivel
                                  WHERE id = :id";
 

@@ -19,12 +19,12 @@ $pdo = conectaDb();
 
 cabecera("Categorías - Añadir 1", MENU_CATEGORIAS, PROFUNDIDAD_2);
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbCategoriasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaCategorias]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() >= $cfg["dbCategoriasMaxReg"] && $cfg["dbCategoriasMaxReg"] > 0) {
+} elseif ($resultado->fetchColumn() >= $cfg["tablaCategoriasMaxReg"] && $cfg["tablaCategoriasMaxReg"] > 0) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
     print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";

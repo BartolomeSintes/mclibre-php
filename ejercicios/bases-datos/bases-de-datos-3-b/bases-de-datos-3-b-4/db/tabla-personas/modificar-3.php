@@ -31,29 +31,29 @@ $telefonoOk  = false;
 $correoOk    = false;
 $idOk        = false;
 
-if (mb_strlen($nombre, "UTF-8") > $cfg["dbPersonasTamNombre"]) {
-    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[dbPersonasTamNombre] caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $cfg["tablaPersonasTamNombre"]) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $cfg["dbPersonasTamApellidos"]) {
-    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[dbPersonasTamApellidos] caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $cfg["tablaPersonasTamApellidos"]) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[tablaPersonasTamApellidos] caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
-if (mb_strlen($telefono, "UTF-8") > $cfg["dbPersonasTamTelefono"]) {
-    print "    <p class=\"aviso\">El teléfono no puede tener más de $cfg[dbPersonasTamTelefono] caracteres.</p>\n";
+if (mb_strlen($telefono, "UTF-8") > $cfg["tablaPersonasTamTelefono"]) {
+    print "    <p class=\"aviso\">El teléfono no puede tener más de $cfg[tablaPersonasTamTelefono] caracteres.</p>\n";
     print "\n";
 } else {
     $telefonoOk = true;
 }
 
-if (mb_strlen($correo, "UTF-8") > $cfg["dbPersonasTamCorreo"]) {
-    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[dbPersonasTamCorreo] caracteres.</p>\n";
+if (mb_strlen($correo, "UTF-8") > $cfg["tablaPersonasTamCorreo"]) {
+    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[tablaPersonasTamCorreo] caracteres.</p>\n";
     print "\n";
 } else {
     $correoOk = true;
@@ -73,10 +73,10 @@ if ($id == "") {
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
     if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-        $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
                      WHERE id = :id";
     } else {
-        $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
                      WHERE id = :id
                      AND id_usuario = $_SESSION[id_usuario]";
     }
@@ -93,7 +93,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
         if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                          WHERE nombre = :nombre
                          AND apellidos = :apellidos
                          AND telefono = :telefono
@@ -101,7 +101,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
                          AND id <> :id
                          AND id_usuario = $registro[id_usuario]";
         } else {
-            $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                          WHERE nombre = :nombre
                          AND apellidos = :apellidos
                          AND telefono = :telefono
@@ -119,7 +119,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
             print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
                 . "No se ha guardado la modificación.</p>\n";
         } else {
-            $consulta = "UPDATE $cfg[dbPersonasTabla]
+            $consulta = "UPDATE $cfg[tablaPersonas]
                          SET nombre = :nombre, apellidos = :apellidos,
                              telefono = :telefono, correo = :correo
                          WHERE id = :id";

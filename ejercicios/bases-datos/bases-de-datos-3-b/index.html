@@ -86,7 +86,7 @@
         </details>
       </li>
       <li>Al modificar el registro de un usuario, ofrecer la posibilidad de mantener la contraseña (por ejemplo, marcando una casilla).</li>
-      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["dbPersonasMaxReg"] o $cfg["dbUsuariosMaxReg"] es 0 o negativo.</li>
+      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["tablaPersonasMaxReg"] o $cfg["tablaUsuariosMaxReg"] es 0 o negativo.</li>
     </ol>
 
     <div class="filaflex">
@@ -187,10 +187,10 @@ function conectaDb()
           <pre>
 <code class="language-php">// POSTGRESQL: Borrado y creación de tablas
 
-    $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                  id SERIAL,
-                 usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                 password VARCHAR($cfg[dbUsuariosTamPassword]),
+                 usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                 password VARCHAR($cfg[tablaUsuariosTamPassword]),
                  nivel INTEGER NOT NULL,
                  PRIMARY KEY(id)
                  )";</code>
@@ -241,25 +241,25 @@ function conectaDb()
           <div class="codigo">
             <pre>
 <code class="language-php">// SQLITE:
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE,
-                 telefono VARCHAR($cfg[dbPersonasTamTelefono]) COLLATE NOCASE,
-                 correo VARCHAR($cfg[dbPersonasTamCorreo]) COLLATE NOCASE,
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE,
+                 telefono VARCHAR($cfg[tablaPersonasTamTelefono]) COLLATE NOCASE,
+                 correo VARCHAR($cfg[tablaPersonasTamCorreo]) COLLATE NOCASE,
                  id_usuario INTEGER,
-                 FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE
+                 FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE
                  )";
 
 // MYSQL:
-                 $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+                 $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                               id INTEGER UNSIGNED AUTO_INCREMENT,
-                              nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                              apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                              telefono VARCHAR($cfg[dbPersonasTamTelefono]),
-                              correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                              nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                              apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                              telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
+                              correo VARCHAR($cfg[tablaPersonasTamCorreo]),
                               id_usuario INTEGER UNSIGNED,
-                              FOREIGN KEY(id_usuario) REFERENCES $cfg[dbUsuariosTabla](id) ON DELETE CASCADE ON UPDATE CASCADE,
+                              FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE,
                               PRIMARY KEY(id)
                               )";</code>
 </pre>
@@ -284,7 +284,7 @@ function conectaDb()
 
           <div class="codigo">
             <pre>
-<code class="language-php">    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+<code class="language-php">    $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id_usuario = $_SESSION[id_usuario]
                  ORDER BY $ordena";</code>
 </pre>
@@ -307,12 +307,12 @@ function conectaDb()
                      personas.correo,
                      personas.telefono,
                      usuarios.usuario
-                 FROM $cfg[dbPersonasTabla] as personas
-                 JOIN $cfg[dbUsuariosTabla] as usuarios
+                 FROM $cfg[tablaPersonas] as personas
+                 JOIN $cfg[tablaUsuarios] as usuarios
                  ON personas.id_usuario = usuarios.id
                  ORDER BY $ordena";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
                WHERE id_usuario = $_SESSION[id_usuario]
                ORDER BY $ordena";
 }</code>

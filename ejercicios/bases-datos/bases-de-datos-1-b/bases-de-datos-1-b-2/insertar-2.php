@@ -21,36 +21,36 @@ $apellidosOk = false;
 $telefonoOk  = false;
 $correoOk    = false;
 
-if (mb_strlen($nombre, "UTF-8") > $cfg["dbPersonasTamNombre"]) {
-    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[dbPersonasTamNombre] caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $cfg["tablaPersonasTamNombre"]) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $cfg["dbPersonasTamApellidos"]) {
-    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[dbPersonasTamApellidos] caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $cfg["tablaPersonasTamApellidos"]) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[tablaPersonasTamApellidos] caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
-if (mb_strlen($telefono, "UTF-8") > $cfg["dbPersonasTamTelefono"]) {
-    print "    <p class=\"aviso\">El teléfono no puede tener más de $cfg[dbPersonasTamTelefono] caracteres.</p>\n";
+if (mb_strlen($telefono, "UTF-8") > $cfg["tablaPersonasTamTelefono"]) {
+    print "    <p class=\"aviso\">El teléfono no puede tener más de $cfg[tablaPersonasTamTelefono] caracteres.</p>\n";
     print "\n";
 } else {
     $telefonoOk = true;
 }
 
-if (mb_strlen($correo, "UTF-8") > $cfg["dbPersonasTamCorreo"]) {
-    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[dbPersonasTamCorreo] caracteres.</p>\n";
+if (mb_strlen($correo, "UTF-8") > $cfg["tablaPersonasTamCorreo"]) {
+    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[tablaPersonasTamCorreo] caracteres.</p>\n";
     print "\n";
 } else {
     $correoOk = true;
 }
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
-    $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";
 

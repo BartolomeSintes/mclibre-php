@@ -11,7 +11,7 @@ $pdo = conectaDb();
 
 cabecera("Buscar 1", MENU_VOLVER);
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {

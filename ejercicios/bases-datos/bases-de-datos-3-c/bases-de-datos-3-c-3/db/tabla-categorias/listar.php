@@ -19,9 +19,9 @@ $pdo = conectaDb();
 
 cabecera("Categorías - Listar", MENU_CATEGORIAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["dbCategoriasColumnasOrden"], "categoria ASC");
+$ordena = recogeValores("ordena", $cfg["tablaCategoriasColumnasOrden"], "categoria ASC");
 
-$consulta = "SELECT * FROM $cfg[dbCategoriasTabla]
+$consulta = "SELECT * FROM $cfg[tablaCategorias]
              ORDER BY $ordena";
 
 $resultado = $pdo->query($consulta);

@@ -33,21 +33,21 @@ $cfg["formUsuariosTamPassword"] = 20;                       // Tamaño de la caj
 
 // Tamaño de los campos en la tabla Personas
 
-$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas > Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas > Apellidos
-$cfg["dbPersonasTamTelefono"]  = 10;                        // Tamaño de la columna Personas > Teléfono
-$cfg["dbPersonasTamCorreo"]    = 50;                        // Tamaño de la columna Personas > Correo
+$cfg["tablaPersonasTamNombre"]    = 40;                     // Tamaño de la columna Personas > Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la columna Personas > Apellidos
+$cfg["tablaPersonasTamTelefono"]  = 10;                     // Tamaño de la columna Personas > Teléfono
+$cfg["tablaPersonasTamCorreo"]    = 50;                     // Tamaño de la columna Personas > Correo
 
 // Tamaño de los controles en los formularios
 
-$cfg["formPersonasTamNombre"]    = $cfg["dbPersonasTamNombre"];     // Tamaño de la caja de texto Personas > Nombre
-$cfg["formPersonasTamApellidos"] = $cfg["dbPersonasTamApellidos"];  // Tamaño de la caja de texto Personas > Apellidos
-$cfg["formPersonasTamTelefono"]  = $cfg["dbPersonasTamTelefono"];   // Tamaño de la caja de texto Personas > Teléfono
-$cfg["formPersonasTamCorreo"]    = $cfg["dbPersonasTamCorreo"];     // Tamaño de la caja de texto Personas > Correo
+$cfg["formPersonasTamNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño de la caja de texto Personas > Nombre
+$cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño de la caja de texto Personas > Apellidos
+$cfg["formPersonasTamTelefono"]  = $cfg["tablaPersonasTamTelefono"];   // Tamaño de la caja de texto Personas > Teléfono
+$cfg["formPersonasTamCorreo"]    = $cfg["tablaPersonasTamCorreo"];     // Tamaño de la caja de texto Personas > Correo
 
 // Número máximo de registros en las tablas
 
-$cfg["dbPersonasMaxReg"] = 20;                              // Número máximo de registros en la tabla Personas
+$cfg["tablaPersonasMaxReg"] = 20;                           // Número máximo de registros en la tabla Personas
 
 // Usuario Administrador de la aplicación
 

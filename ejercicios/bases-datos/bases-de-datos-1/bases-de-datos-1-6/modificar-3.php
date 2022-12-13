@@ -18,22 +18,22 @@ $id        = recoge("id");
 $nombreOk    = false;
 $apellidosOk = false;
 
-if (mb_strlen($nombre, "UTF-8") > $cfg["dbPersonasTamNombre"]) {
-    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[dbPersonasTamNombre] caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $cfg["tablaPersonasTamNombre"]) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $cfg["dbPersonasTamApellidos"]) {
-    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[dbPersonasTamApellidos] caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $cfg["tablaPersonasTamApellidos"]) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[tablaPersonasTamApellidos] caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
 if ($nombreOk && $apellidosOk) {
-    $consulta = "UPDATE $cfg[dbPersonasTabla]
+    $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos
                  WHERE id = :id";
 

@@ -278,12 +278,12 @@ exit;</code>
               <pre>
 <code class="language-php">// Tamaño de los campos en la tabla Usuarios
 
-$cfg["dbUsuariosTamUsuario"]  = 20;                         // Tamaño de la columna Usuarios &gt; Nombre de usuario
-$cfg["dbUsuariosTamPassword"] = 64;                         // Tamaño de la columna Usuarios &gt; Contraseña de usuario (cifrada)
+$cfg["tablaUsuariosTamUsuario"]  = 20;                      // Tamaño de la columna Usuarios &gt; Nombre de usuario
+$cfg["tablaUsuariosTamPassword"] = 64;                      // Tamaño de la columna Usuarios &gt; Contraseña de usuario (cifrada)
 
 // Tamaño de los controles en los formularios
 
-$cfg["formUsuariosTamUsuario"]  = $cfg["dbUsuariosTamUsuario"];     // Tamaño de la caja de texto Usuario &gt; Nombre de usuario
+$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario &gt; Nombre de usuario
 $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario &gt; Contraseña</code>
 </pre>
             </div>
@@ -296,26 +296,26 @@ $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño d
 <code class="language-php">function borraTodo()
 {
     ...
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbUsuariosTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaUsuarios]";
     ...
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
     ...
-    $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                  id INTEGER PRIMARY KEY,
-                 usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                 password VARCHAR($cfg[dbUsuariosTamPassword])
+                 usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                 password VARCHAR($cfg[tablaUsuariosTamPassword])
                  )";
     ...
-        $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+        $consulta = "INSERT INTO $cfg[tablaUsuarios]
                      (id, usuario, password)
                      VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]')";
     ...
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE,
-                 telefono VARCHAR($cfg[dbPersonasTamTelefono]) COLLATE NOCASE,
-                 correo VARCHAR($cfg[dbPersonasTamCorreo]) COLLATE NOCASE
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE,
+                 telefono VARCHAR($cfg[tablaPersonasTamTelefono]) COLLATE NOCASE,
+                 correo VARCHAR($cfg[tablaPersonasTamCorreo]) COLLATE NOCASE
                  )";
 }</code>
 </pre>
@@ -325,8 +325,8 @@ $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño d
               <pre>
 <code class="language-php">// SQLITE: Nombres de las tablas
 
-$cfg["dbPersonasTabla"] = "personas";                       // Nombre de la tabla Personas
-$cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabla Usuarios</code>
+$cfg["tablaPersonas"] = "personas";                       // Nombre de la tabla Personas
+$cfg["tablaUsuarios"] = "usuarios";                       // Nombre de la tabla Usuarios</code>
 </pre>
             </div>
           </li>
@@ -343,23 +343,23 @@ $cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabl
                  CHARACTER SET utf8mb4
                  COLLATE utf8mb4_unicode_ci";
     ...
-    $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                  id INTEGER UNSIGNED AUTO_INCREMENT,
-                 usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                 password VARCHAR($cfg[dbUsuariosTamPassword]),
+                 usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                 password VARCHAR($cfg[tablaUsuariosTamPassword]),
                  PRIMARY KEY(id)
                  )";
     ...
-    $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+    $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password)
                  VALUES ($cfg[rootName]', '$cfg[rootPassword]')";
     ...
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER UNSIGNED AUTO_INCREMENT,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
-                 telefono VARCHAR($cfg[dbPersonasTamTelefono]),
-                 correo VARCHAR($cfg[dbPersonasTamCorreo]),
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                 telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
+                 correo VARCHAR($cfg[tablaPersonasTamCorreo]),
                  PRIMARY KEY(id)
                  )";
 }</code>
@@ -371,14 +371,14 @@ $cfg["dbUsuariosTabla"] = "usuarios";                       // Nombre de la tabl
               <pre>
 <code class="language-php">// Valores de ordenación de las tablas
 
-$cfg["dbPersonasColumnasOrden"] = [
+$cfg["tablaPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
     "telefono ASC", "telefono DESC",
     "correo ASC", "correo DESC",
 ];
 
-$cfg["dbUsuariosColumnasOrden"] = [
+$cfg["tablaUsuariosColumnasOrden"] = [
     "usuario ASC", "usuario DESC",
     "password ASC", "password DESC",
 ];</code>
@@ -447,8 +447,8 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
 <code class="language-php">if ($usuario == "") {
     print "    &lt;p class=\"aviso\"&gt;Hay que escribir un nombre de usuario.&lt;/p&gt;\n";
     print "\n";
-} elseif (mb_strlen($usuario, "UTF-8") &gt; $cfg["dbUsuariosTamUsuario"]) {
-    print "    &lt;p class=\"aviso\"&gt;El nombre de usuario no puede tener más de $cfg[dbUsuariosTamUsuario] caracteres.&lt;/p&gt;\n";
+} elseif (mb_strlen($usuario, "UTF-8") &gt; $cfg["tablaUsuariosTamUsuario"]) {
+    print "    &lt;p class=\"aviso\"&gt;El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.&lt;/p&gt;\n";
     print "\n";
 } else {
     $usuarioOk = true;
@@ -458,7 +458,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <p>No puede haber dos usuarios con el mismo nombre de usuario:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
+<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE usuario = :usuario";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -476,7 +476,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <p>En la tabla guardamos la contraseña encriptada:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+<code class="language-php">            $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (usuario, password)
                          VALUES (:usuario, :password)";
 
@@ -496,7 +496,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <div class="codigo">
               <pre>
 <code class="language-php">    foreach ($id as $indice =&gt; $valor) {
-        $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+        $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                      WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
@@ -521,7 +521,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <p>El nombre del Administrador inicial no se puede cambiar (su nombre se establece en la variable de configuración $cfg["rootName"]). Su contraseña se puede cambiar o no dependiendo del valor de la variable de configuración $cfg["rootPasswordModificable"] (<span class="php-con">true</span> o <span class="php-con">false</span>). El bloqueo del cambio de contraseña lo he incluido para que la aplicación que tengo incluida en la página de ejercicios de los apuntes esté siempre accesible a los visitantes de la web:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+<code class="language-php">    $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -557,7 +557,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
 <code class="language-php">        // La consulta cuenta los registros con un id diferente porque MySQL no distingue
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[dbUsuariosTabla]
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                      WHERE usuario = :usuario
                      AND id&lt;&gt;:id";
 
@@ -576,7 +576,7 @@ define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la págin
             <p>El nombre del Administrador inicial no se puede cambiar y la contraseña solo puede cambiarse si la variable de configuración $cfg["rootPasswordModificable"] es <span class="php-con">true</span>.:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">            $consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+<code class="language-php">            $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                          WHERE id = :id";
 
             $resultado = $pdo-&gt;prepare($consulta);
@@ -721,7 +721,7 @@ $cfg["usuariosNiveles"] = [
             <p>Añadimos el campo nivel en los posibles valores de ordenación de la tabla Usuarios.</p>
             <div class="codigo">
               <pre>
-<code class="language-php">$cfg["dbUsuariosColumnasOrden"] = [
+<code class="language-php">$cfg["tablaUsuariosColumnasOrden"] = [
     "usuario ASC", "usuario DESC",
     "password ASC", "password DESC",
     "nivel ASC", "nivel DESC",
@@ -732,10 +732,10 @@ $cfg["usuariosNiveles"] = [
           <li>[biblioteca-sqlite.php] Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+<code class="language-php">    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                  id INTEGER PRIMARY KEY,
-                 usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                 password VARCHAR($cfg[dbUsuariosTamPassword]),
+                 usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                 password VARCHAR($cfg[tablaUsuariosTamPassword]),
                  nivel INTEGER
                  )";
 
@@ -744,7 +744,7 @@ $cfg["usuariosNiveles"] = [
     } else {
         print "    &lt;p&gt;Tabla Usuarios creada correctamente.&lt;/p&gt;\n";
 
-        $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+        $consulta = "INSERT INTO $cfg[tablaUsuarios]
                      (id, usuario, password, nivel)
                      VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
         ...</code>
@@ -754,10 +754,10 @@ $cfg["usuariosNiveles"] = [
           <li>[biblioteca-mysql.php] Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:
             <div class="codigo">
               <pre>
-<code class="language-php">        $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+<code class="language-php">        $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
-                     usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                     password VARCHAR($cfg[dbUsuariosTamPassword]),
+                     usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                     password VARCHAR($cfg[tablaUsuariosTamPassword]),
                      nivel INTEGER NOT NULL,
                      PRIMARY KEY(id)
                      )";
@@ -767,7 +767,7 @@ $cfg["usuariosNiveles"] = [
         } else {
             print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
 
-            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+            $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (id, usuario, password, nivel)
                          VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
             ...</code>
@@ -880,7 +880,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
         print "    &lt;p&gt;Hay que rellenar todos los campos. No se ha guardado el registro.&lt;/p&gt;\n";
     } else {
         ...
-            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+            $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (usuario, password, nivel)
                          VALUES (:usuario, :password, :nivel)";
 
@@ -931,7 +931,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
           <li>[buscar-2.php] Para poder hacer una búsqueda con comodines, algunos sistemas gestores de bases de datos (como PostgreSQL) necesitan que el campo sea de tipo texto. Como nivel es de tipo numérico, debemos hacer la conversión (SQLite o MySQL no la necesitan, pero la admiten):
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT * FROM $cfg[dbUsuariosTabla]
+<code class="language-php">$consulta = "SELECT * FROM $cfg[tablaUsuarios]
              WHERE usuario LIKE :usuario
              AND CAST(nivel AS VARCHAR) LIKE :nivel
              ORDER BY $ordena";

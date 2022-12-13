@@ -9,8 +9,8 @@
 
 // MYSQL: Nombres de las tablas
 
-$cfg["dbUsuariosTabla"] = "$cfg[mysqlDatabase].usuarios";   // Nombre de la tabla Usuarios
-$cfg["dbNoticiasTabla"] = "$cfg[mysqlDatabase].noticias";   // Nombre de la tabla Noticias
+$cfg["tablaUsuarios"] = "$cfg[mysqlDatabase].usuarios";   // Nombre de la tabla Usuarios
+$cfg["tablaNoticias"] = "$cfg[mysqlDatabase].noticias";   // Nombre de la tabla Noticias
 
 // MYSQL: Conexión con la base de datos
 
@@ -58,10 +58,10 @@ function borraTodo()
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[dbUsuariosTabla]  (
+        $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
-                     usuario VARCHAR($cfg[dbUsuariosTamUsuario]),
-                     password VARCHAR($cfg[dbUsuariosTamPassword]),
+                     usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                     password VARCHAR($cfg[tablaUsuariosTamPassword]),
                      nivel INTEGER NOT NULL,
                      PRIMARY KEY(id)
                      )";
@@ -72,7 +72,7 @@ function borraTodo()
             print "    <p>Tabla Usuarios creada correctamente.</p>\n";
             print "\n";
 
-            $consulta = "INSERT INTO $cfg[dbUsuariosTabla]
+            $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (id, usuario, password, nivel)
                          VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
 
@@ -84,11 +84,11 @@ function borraTodo()
         }
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[dbNoticiasTabla]  (
+        $consulta = "CREATE TABLE $cfg[tablaNoticias]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
-                     categoria VARCHAR($cfg[dbNoticiasTamCategoria]),
-                     titulo VARCHAR($cfg[dbNoticiasTamTitulo]),
-                     cuerpo VARCHAR($cfg[dbNoticiasTamCuerpo]),
+                     categoria VARCHAR($cfg[tablaNoticiasTamCategoria]),
+                     titulo VARCHAR($cfg[tablaNoticiasTamTitulo]),
+                     cuerpo VARCHAR($cfg[tablaNoticiasTamCuerpo]),
                      creado DATE,
                      PRIMARY KEY(id)
                      )";

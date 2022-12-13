@@ -117,18 +117,18 @@
             <svg x="330" y="40">
               <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">index.php</text>
               <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
-              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
-              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">menú</text>
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">menú</text>
             </svg>
 
-            <path d="M425,85 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
+            <path d="M425,85 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
             <svg x="480" y="40">
               <text x="60" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-1.php</text>
               <rect x="25" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
-              <rect x="35" y="35" width="50" height="20" fill="none" stroke="blue" stroke-width="1" />
-              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="blue" font-size="10">confirma</text>
+              <rect x="35" y="35" width="50" height="20" fill="none" stroke="black" stroke-width="1" />
+              <text x="60" y="48" text-anchor="middle" font-family="sans-serif" fill="black" font-size="10">confirma</text>
 
-              <path d="M95,45 c0,0 70,0 70,0" stroke="blue" stroke-width="2" fill="transparent" style="marker-end: url(#flechaAzul)" />
+              <path d="M95,45 c0,0 70,0 70,0" stroke="black" stroke-width="2" fill="transparent" style="marker-end: url(#flechaNegra)" />
 
               <text x="210" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">borrar-todo-2.php</text>
               <rect x="175" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
@@ -164,8 +164,8 @@ $cfg["mysqlDatabase"] = "mclibre_base_datos_1_1";           // Nombre de la base
 
 // Tamaño de los campos en la tabla Personas
 
-$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas &gt; Apellidos</code>
+$cfg["tablaPersonasTamNombre"]    = 40;                     // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
         </div>
       </li>
@@ -175,12 +175,12 @@ $cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la col
           <pre>
 <code class="language-php">// SQLITE: Borrado y creación de tablas
 
-$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+$consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
-$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
              id INTEGER PRIMARY KEY,
-             nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
-             apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE
+             nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+             apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
              )";</code>
 </pre>
         </div>
@@ -197,10 +197,10 @@ $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
              CHARACTER SET utf8mb4
              COLLATE utf8mb4_unicode_ci";
 
-$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
              id INTEGER UNSIGNED AUTO_INCREMENT,
-             nombre VARCHAR($cfg[dbPersonasTamNombre]),
-             apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+             nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+             apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
              PRIMARY KEY(id)
              )";</code>
 </pre>
@@ -309,13 +309,13 @@ print "            &lt;td&gt;&lt;input type=\"text\" name=\"apellidos\" size=\"$
           <pre>
 <code class="language-php">// Tamaño de los campos en la tabla Personas
 
-$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas &gt; Apellidos
+$cfg["tablaPersonasTamNombre"]    = 40;                     // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la columna Personas &gt; Apellidos
 
 // Tamaño de los controles en los formularios
 
-$cfg["formPersonasTamNombre"]    = $cfg["dbPersonasTamNombre"];     // Tamaño de la caja de texto Personas &gt; Nombre
-$cfg["formPersonasTamApellidos"] = $cfg["dbPersonasTamApellidos"];  // Tamaño de la caja de texto Personas &gt; Apellidos</code>
+$cfg["formPersonasTamNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño de la caja de texto Personas &gt; Nombre
+$cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño de la caja de texto Personas &gt; Apellidos</code>
 </pre>
         </div>
       </li>
@@ -327,8 +327,8 @@ $cfg["formPersonasTamApellidos"] = $cfg["dbPersonasTamApellidos"];  // Tamaño d
 $nombre   = recoge("nombre");
 $nombreOk = false;
 
-if (mb_strlen($nombre, "UTF-8") &gt; $cfg["dbPersonasTamNombre"]) {
-    print "    &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $cfg[dbPersonasTamNombre] caracteres.&lt;/p&gt;\n";
+if (mb_strlen($nombre, "UTF-8") &gt; $cfg["tablaPersonasTamNombre"]) {
+    print "    &lt;p class=\"aviso\"&gt;El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.&lt;/p&gt;\n";
     print "\n";
 } else {
     $nombreOk = true;
@@ -341,7 +341,7 @@ if (mb_strlen($nombre, "UTF-8") &gt; $cfg["dbPersonasTamNombre"]) {
         <div class="codigo">
           <pre>
 <code class="language-php">    // Añade un registro
-    $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos)
                  VALUES (:nombre, :apellidos)";
 
@@ -451,7 +451,7 @@ if (mb_strlen($nombre, "UTF-8") &gt; $cfg["dbPersonasTamNombre"]) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Selecciona y muestra todos los registros
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -582,7 +582,7 @@ if (!$resultado) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Imprime casillas de verificación
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -610,7 +610,7 @@ if (!$resultado) {
 $id = recoge("id", []);
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+    $consulta = "DELETE FROM $cfg[tablaPersonas]
                  WHERE id = :indice";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -755,7 +755,7 @@ foreach ($id as $indice =&gt; $valor) {
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+$consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre
              AND apellidos LIKE :apellidos";
 
@@ -926,7 +926,7 @@ if (!$resultado) {
         <div class="codigo">
           <pre>
 <code class="language-php">// Imprime botones radio
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -956,7 +956,7 @@ $id = recoge("id");
 if ($id == "") {
     print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -996,7 +996,7 @@ if ($id == "") {
         <div class="codigo">
           <pre>
 <code class="language-php">    // Actualiza el registro
-    $consulta = "UPDATE $cfg[dbPersonasTabla]
+    $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos
                  WHERE id = :id";
 

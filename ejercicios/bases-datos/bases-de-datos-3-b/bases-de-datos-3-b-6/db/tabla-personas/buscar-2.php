@@ -26,9 +26,9 @@ $correo    = recoge("correo");
 $ano       = recoge("ano");
 $mes       = recoge("mes");
 $dia       = recoge("dia");
-$ordena    = recogeValores("ordena", $cfg["dbPersonasColumnasOrden"], "nombre ASC");
+$ordena    = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
 
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+$consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre
              AND apellidos LIKE :apellidos
              AND telefono LIKE :telefono

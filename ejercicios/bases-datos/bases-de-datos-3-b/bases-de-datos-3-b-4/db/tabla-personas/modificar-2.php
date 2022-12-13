@@ -25,10 +25,10 @@ if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-        $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
                      WHERE id = :id";
     } else {
-        $consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
                      WHERE id = :id
                      AND id_usuario = $_SESSION[id_usuario]";
     }

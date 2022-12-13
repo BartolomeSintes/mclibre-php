@@ -9,7 +9,7 @@
 
 // SQLITE: Nombres de las tablas
 
-$cfg["dbPersonasTabla"] = "personas";                       // Nombre de la tabla Personas
+$cfg["tablaPersonas"] = "personas";                       // Nombre de la tabla Personas
 
 // SQLITE: Conexión con la base de datos
 
@@ -38,7 +38,7 @@ function borraTodo()
     print "    <p>Sistema Gestor de Bases de Datos: SQLite.</p>\n";
     print "\n";
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -47,10 +47,10 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos]) COLLATE NOCASE
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
                  )";
 
     if (!$pdo->query($consulta)) {

@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Noticias - Buscar 1", MENU_NOTICIAS, PROFUNDIDAD_2);
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbNoticiasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaNoticias]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
