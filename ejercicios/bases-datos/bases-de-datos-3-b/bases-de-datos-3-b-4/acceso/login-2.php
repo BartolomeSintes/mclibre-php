@@ -51,6 +51,4 @@ $_SESSION["conectado"]  = true;
 $_SESSION["nivel"]      = $registro["nivel"];
 $_SESSION["id_usuario"] = $registro["id"];
 
-$pdo = null;
-
 header("Location:../index.php");

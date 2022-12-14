@@ -133,6 +133,4 @@ if ($categoriaOk && $tituloOk && $cuerpoOk && $idOk && $creadoOk) {
     }
 }
 
-$pdo = null;
-
 pie();

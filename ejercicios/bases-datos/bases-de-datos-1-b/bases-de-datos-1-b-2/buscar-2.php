@@ -50,6 +50,4 @@ if (!$resultado) {
     print "    </table>\n";
 }
 
-$pdo = null;
-
 pie();

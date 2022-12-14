@@ -68,6 +68,4 @@ if (!$resultado) {
     print "    </form>\n";
 }
 
-$pdo = null;
-
 pie();

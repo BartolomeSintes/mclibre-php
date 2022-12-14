@@ -28,6 +28,4 @@ cabecera("Borrar todo 2", MENU_PERSONAS, PROFUNDIDAD_1);
 
 borraTodo();
 
-$pdo = null;
-
 pie();

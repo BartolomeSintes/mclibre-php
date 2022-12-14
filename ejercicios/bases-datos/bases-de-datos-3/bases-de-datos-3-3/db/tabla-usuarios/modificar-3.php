@@ -109,6 +109,4 @@ if ($usuarioOk && $passwordOk && $idOk) {
     }
 }
 
-$pdo = null;
-
 pie();

@@ -51,6 +51,4 @@ print "        <input type=\"reset\" value=\"Borrar\" />\n";
 print "      </p>\n";
 print "    </form>\n";
 
-$pdo = null;
-
 pie();

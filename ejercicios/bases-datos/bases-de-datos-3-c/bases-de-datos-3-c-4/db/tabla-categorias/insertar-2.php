@@ -71,6 +71,4 @@ if ($categoriaOk) {
     }
 }
 
-$pdo = null;
-
 pie();

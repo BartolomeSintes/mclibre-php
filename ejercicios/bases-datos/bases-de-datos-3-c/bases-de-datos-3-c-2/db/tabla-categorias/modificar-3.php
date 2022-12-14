@@ -84,6 +84,4 @@ if ($categoriaOk && $idOk) {
     }
 }
 
-$pdo = null;
-
 pie();

@@ -118,6 +118,4 @@ if ($categoriaOk && $tituloOk && $cuerpoOk && $creadoOk) {
     }
 }
 
-$pdo = null;
-
 pie();

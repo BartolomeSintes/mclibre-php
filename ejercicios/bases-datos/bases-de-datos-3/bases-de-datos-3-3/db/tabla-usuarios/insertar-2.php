@@ -80,6 +80,4 @@ if ($usuarioOk && $passwordOk) {
     }
 }
 
-$pdo = null;
-
 pie();

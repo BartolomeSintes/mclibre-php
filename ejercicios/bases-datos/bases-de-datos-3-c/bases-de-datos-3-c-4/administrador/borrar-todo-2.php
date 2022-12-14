@@ -34,6 +34,4 @@ if ($demo == "Sí") {
     insertaDemo();
 }
 
-$pdo = null;
-
 pie();

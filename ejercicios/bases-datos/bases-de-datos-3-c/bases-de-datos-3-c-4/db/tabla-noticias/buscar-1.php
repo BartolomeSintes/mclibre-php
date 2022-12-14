@@ -78,6 +78,4 @@ if (!$resultado) {
     }
 }
 
-$pdo = null;
-
 pie();

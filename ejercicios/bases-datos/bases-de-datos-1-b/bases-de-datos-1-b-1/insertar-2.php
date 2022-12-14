@@ -55,6 +55,4 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
     }
 }
 
-$pdo = null;
-
 pie();

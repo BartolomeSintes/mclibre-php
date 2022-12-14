@@ -20,6 +20,4 @@ cabecera("Borrar todo 2", MENU_VOLVER);
 
 borraTodo();
 
-$pdo = null;
-
 pie();

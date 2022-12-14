@@ -76,6 +76,4 @@ if ($nombreOk && $apellidosOk) {
     }
 }
 
-$pdo = null;
-
 pie();

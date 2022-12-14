@@ -47,6 +47,4 @@ if (!$resultado) {
     print "  </div>\n";
 }
 
-$pdo = null;
-
 pie();

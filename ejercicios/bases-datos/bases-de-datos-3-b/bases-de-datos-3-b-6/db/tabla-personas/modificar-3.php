@@ -132,6 +132,4 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $nacidoOk)
     }
 }
 
-$pdo = null;
-
 pie();

@@ -50,6 +50,4 @@ if (!is_array($registro)) {
 $_SESSION["conectado"] = true;
 $_SESSION["nivel"]     = $registro["nivel"];
 
-$pdo = null;
-
 header("Location:../index.php");

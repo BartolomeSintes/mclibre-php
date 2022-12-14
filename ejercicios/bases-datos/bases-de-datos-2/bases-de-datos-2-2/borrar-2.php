@@ -43,6 +43,4 @@ if (count($id) == 0) {
     }
 }
 
-$pdo = null;
-
 pie();

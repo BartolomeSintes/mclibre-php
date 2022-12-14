@@ -90,6 +90,4 @@ if ($nombreOk && $apellidosOk && $idOk) {
     }
 }
 
-$pdo = null;
-
 pie();

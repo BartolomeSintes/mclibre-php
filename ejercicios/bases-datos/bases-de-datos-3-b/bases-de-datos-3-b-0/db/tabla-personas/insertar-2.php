@@ -104,6 +104,4 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     }
 }
 
-$pdo = null;
-
 pie();

@@ -27,6 +27,4 @@ foreach ($id as $indice => $valor) {
     }
 }
 
-$pdo = null;
-
 pie();

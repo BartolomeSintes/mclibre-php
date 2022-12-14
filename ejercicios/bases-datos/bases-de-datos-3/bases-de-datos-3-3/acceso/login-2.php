@@ -49,6 +49,4 @@ if (!is_array($registro)) {
 
 $_SESSION["conectado"] = true;
 
-$pdo = null;
-
 header("Location:../index.php");

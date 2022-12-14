@@ -133,6 +133,4 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
     }
 }
 
-$pdo = null;
-
 pie();
