@@ -9,13 +9,13 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>SQLite (3). PDO. Ejercicios (bases de datos). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Configurable. PDO. Ejercicios (bases de datos). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mclibre-php-proyectos.css" title="Color">
 </head>
 
 <body>
-  <h1>PDO 3 - SQLite: programa con biblioteca</h1>
+  <h1>PDO 5 - Base de datos configurable: SQLite o MySQL</h1>
 
   <main>
 <?php

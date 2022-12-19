@@ -4,33 +4,20 @@
  * @license   https://www.gnu.org/licenses/agpl-3.0.txt AGPL 3 or later
  * @link      https://www.mclibre.org
  */
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <title>SQLite (2). PDO. Ejercicios (bases de datos). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="mclibre-php-proyectos.css" title="Color">
-</head>
 
-<body>
-  <h1>PDO 2 - SQLite: programa con funciones</h1>
+require_once "config.php";
 
-  <main>
-<?php
-
-// SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
+// MYSQL: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
 
 function conectaDb()
 {
     global $cfg;
 
     try {
-        $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp = new PDO($cfg["mysqlHost"], $cfg["mysqlUser"], $cfg["mysqlPassword"]);
         $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-        $tmp->query("PRAGMA foreign_keys = ON");
-        $tmp->query("PRAGMA encoding = 'UTF-8'");
+        $tmp->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        $tmp->exec("set names utf8mb4");
         return $tmp;
     } catch (PDOException $e) {
         print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
@@ -38,33 +25,44 @@ function conectaDb()
     }
 }
 
-// SQLITE: FUNCIÓN DE BORRADO Y CREACIÓN DE TABLA
+// MYSQL: FUNCIÓN DE BORRADO Y CREACIÓN DE BASE DE DATOS Y TABLA
 
 function borraTodo()
 {
     global $pdo, $cfg;
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
+    $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al borrar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <p>Tabla borrada correctamente (si existía).</p>\n";
+        print "    <p>Base de datos borrada correctamente (si existía).</p>\n";
     }
     print "\n";
 
+    $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci";
+
+    if (!$pdo->query($consulta)) {
+        print "    <p class=\"aviso\">Error al crear la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Base de datos creada correctamente.</p>\n";
+        print "\n";
+    }
+
     $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
-                 id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
-                 )";
+        id INTEGER UNSIGNED AUTO_INCREMENT,
+        nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+        apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+        PRIMARY KEY(id)
+        )";
 
     if (!$pdo->query($consulta)) {
         print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla creada correctamente.</p>\n";
     }
-    print "\n";
 }
 
 // FUNCIÓN DE INSERCIÓN DE REGISTRO
@@ -169,64 +167,3 @@ function borraRegistros($id)
         }
     }
 }
-
-// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
-
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
-
-// Configuración para SQLite
-
-$cfg["sqliteDatabase"] = "/tmp/pdo-2.sqlite";                             // Ubicación de la base de datos
-
-// Tamaño de los campos en la tabla Personas
-
-$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas > Nombre
-$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas > Apellidos
-
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-
-// Base de datos
-
-$cfg["tablaPersonas"] = "personas";                      // Nombre de la tabla Personas
-
-$pdo = conectaDb();
-
-borraTodo();
-
-insertaRegistro("Pepito", "Conejo");
-
-cuentaRegistros();
-
-muestraRegistros();
-
-modificaRegistro(1, "Pepita", "Conejo");
-
-muestraRegistros();
-
-insertaRegistro("Numa", "Nigerio");
-
-cuentaRegistros();
-
-muestraRegistros();
-
-borraRegistros([1 => "on"]);
-
-muestraRegistros();
-
-print "  </main>\n";
-print "\n";
-print "  <footer>\n";
-print "    <p class=\"ultmod\">\n";
-print "      Última modificación de esta página:\n";
-print "      <time datetime=\"2022-12-15\">15 de diciembre de 2022</time>\n";
-print "    </p>\n";
-print "\n";
-print "    <p class=\"licencia\">\n";
-print "      Este programa forma parte del curso <strong><a href=\"https://www.mclibre.org/consultar/php/\">Programación \n";
-print "      web en PHP</a></strong> de <a href=\"https://www.mclibre.org/\" rel=\"author\">Bartolomé Sintes Marco</a>.<br>\n";
-print "      El programa PHP que genera esta página se distribuye bajo \n";
-print "      <a rel=\"license\" href=\"https://www.gnu.org/licenses/agpl-3.0.txt\">licencia AGPL 3 o posterior</a>.\n";
-print "    </p>\n";
-print "  </footer>\n";
-print "</body>\n";
-print "</html>\n";

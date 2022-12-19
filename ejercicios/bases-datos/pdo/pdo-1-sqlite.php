@@ -26,15 +26,20 @@
 // SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+
 // Configuración para SQLite
+
 $cfg["sqliteDatabase"] = "/tmp/pdo-1.sqlite";                             // Ubicación de la base de datos
 
 // Tamaño de los campos en la tabla Personas
+
 $cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas > Nombre
 $cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas > Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+
 // Base de datos
+
 $cfg["tablaPersonas"] = "personas";                      // Nombre de la tabla Personas
 
 //
@@ -60,7 +65,7 @@ function conectaDb()
 }
 
 // CONEXIÓN CON LA BASE DE DATOS
-// La conexión se debe realizar en cada página que acceda a la base de datos
+
 $pdo = conectaDb();
 
 //
@@ -68,6 +73,7 @@ $pdo = conectaDb();
 // PASO 3: Borrar la tabla.
 
 // CONSULTA DE BORRADO DE TABLA
+
 $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
 if (!$pdo->query($consulta)) {
@@ -79,9 +85,10 @@ print "\n";
 
 //
 //
-// PASO 4: Borrar la tabla.
+// PASO 4: Crear la tabla.
 
 // SQLITE: CONSULTA DE CREACIÓN DE TABLA
+
 $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
              id INTEGER PRIMARY KEY,
              nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
@@ -100,6 +107,7 @@ print "\n";
 // PASO 5: Insertar un registro en la tabla.
 
 // CONSULTA DE INSERCIÓN DE REGISTRO
+
 $nombre    = "Pepito";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Conejo";
 
@@ -122,6 +130,7 @@ if (!$resultado) {
 // PASO 6: Mostrar cuántos registros hay en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
@@ -137,6 +146,7 @@ if (!$resultado) {
 // PASO 7: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+
 $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
@@ -157,6 +167,7 @@ if (!$resultado) {
 // PASO 8: Modificar el registro guardado en la tabla.
 
 // CONSULTA DE MODIFICACIÓN DE REGISTRO
+
 $id        = "1";                 // Normalmente estos valores vendrán de un formulario
 $nombre    = "Pepita";
 $apellidos = "Conejo";
@@ -180,6 +191,7 @@ if (!$resultado) {
 // PASO 9: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+
 $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
@@ -200,6 +212,7 @@ if (!$resultado) {
 // PASO 10: Insertar un segundo registro en la tabla.
 
 // CONSULTA DE INSERCIÓN DE REGISTRO
+
 $nombre    = "Numa";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Nigerio";
 
@@ -222,6 +235,7 @@ if (!$resultado) {
 // PASO 11: Mostrar cuántos registros hay en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
@@ -237,6 +251,7 @@ if (!$resultado) {
 // PASO 12: Mostrar los valores de los dos registros guardados en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+
 $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
@@ -257,6 +272,7 @@ if (!$resultado) {
 // PASO 13: Borrar el primer registro guardado en la tabla.
 
 // CONSULTA DE BORRADO DE REGISTROS
+
 $id = [1 => "on"];     // Normalmente este valor vendrá de un formulario (en este caso, como matriz).
 
 foreach ($id as $indice => $valor) {
@@ -279,6 +295,7 @@ foreach ($id as $indice => $valor) {
 // PASO 14: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+
 $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
@@ -299,7 +316,7 @@ print "\n";
 print "  <footer>\n";
 print "    <p class=\"ultmod\">\n";
 print "      Última modificación de esta página:\n";
-print "      <time datetime=\"2022-12-13\">13 de diciembre de 2022</time>\n";
+print "      <time datetime=\"2022-12-15\">15 de diciembre de 2022</time>\n";
 print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";

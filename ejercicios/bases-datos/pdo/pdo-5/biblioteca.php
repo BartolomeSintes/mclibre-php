@@ -5,53 +5,21 @@
  * @link      https://www.mclibre.org
  */
 
+// Constantes y variables configurables por el programador de la aplicación
+
+define("SQLITE", 1);                        // Base de datos SQLITE
+define("MYSQL", 2);                         // Base de datos MySQLo
+
+// Variables configurables por el administrador de la aplicación
+
 require_once "config.php";
 
-// SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
+// Carga Biblioteca específica de la base de datos utilizada
 
-function conectaDb()
-{
-    global $cfg;
-
-    try {
-        $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
-        $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-        $tmp->query("PRAGMA foreign_keys = ON");
-        $tmp->query("PRAGMA encoding = 'UTF-8'");
-        return $tmp;
-    } catch (PDOException $e) {
-        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
-        exit;
-    }
-}
-
-// SQLITE: FUNCIÓN DE BORRADO Y CREACIÓN DE TABLA
-
-function borraTodo()
-{
-    global $pdo, $cfg;
-
-    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
-
-    if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al borrar la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } else {
-        print "    <p>Tabla borrada correctamente (si existía).</p>\n";
-    }
-    print "\n";
-
-    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
-                 id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
-                 )";
-
-    if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } else {
-        print "    <p>Tabla creada correctamente.</p>\n";
-    }
-    print "\n";
+if ($cfg["dbMotor"] == SQLITE) {
+    require_once "biblioteca-sqlite.php";
+} elseif ($cfg["dbMotor"] == MYSQL) {
+    require_once "biblioteca-mysql.php";
 }
 
 // FUNCIÓN DE INSERCIÓN DE REGISTRO

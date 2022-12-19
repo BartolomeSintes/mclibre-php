@@ -27,6 +27,8 @@
         <li><a href="../../ejercicios/bases-datos/pdo/index.html#ejercicio-1">1 - SQLite: único</a></li>
         <li><a href="../../ejercicios/bases-datos/pdo/index.html#ejercicio-2">2 - SQLite: funciones</a></li>
         <li><a href="../../ejercicios/bases-datos/pdo/index.html#ejercicio-3">3 - SQLite: biblioteca</a></li>
+        <li><a href="../../ejercicios/bases-datos/pdo/index.html#ejercicio-4">4 - MySQL: biblioteca</a></li>
+        <li><a href="../../ejercicios/bases-datos/pdo/index.html#ejercicio-5">5 - DB configurable</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
@@ -53,16 +55,21 @@
 // SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+
 // Configuración para SQLite
+
 $cfg["sqliteDatabase"] = "/tmp/pdo-1.sqlite";                             // Ubicación de la base de datos
 
-// Configuración de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos
+// Tamaño de los campos en la tabla Personas
+
+$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas &gt; Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+
 // Base de datos
-$cfg["dbPersonasTabla"] = "personas";                      // Nombre de la tabla Personas
+
+$cfg["tablaPersonas"] = "personas";                      // Nombre de la tabla Personas
 
 //
 //
@@ -87,7 +94,7 @@ function conectaDb()
 }
 
 // CONEXIÓN CON LA BASE DE DATOS
-// La conexión se debe realizar en cada página que acceda a la base de datos
+
 $pdo = conectaDb();
 
 //
@@ -95,7 +102,8 @@ $pdo = conectaDb();
 // PASO 3: Borrar la tabla.
 
 // CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+
+$consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -106,13 +114,14 @@ print "\n";
 
 //
 //
-// PASO 4: Borrar la tabla.
+// PASO 4: Crear la tabla.
 
 // SQLITE: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+
+$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
              id INTEGER PRIMARY KEY,
-             nombre VARCHAR($cfg[dbPersonasTamNombre]),
-             apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+             nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+             apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
              )";
 
 if (!$pdo-&gt;query($consulta)) {
@@ -127,10 +136,11 @@ print "\n";
 // PASO 5: Insertar un registro en la tabla.
 
 // CONSULTA DE INSERCIÓN DE REGISTRO
+
 $nombre    = "Pepito";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Conejo";
 
-$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+$consulta = "INSERT INTO $cfg[tablaPersonas]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 
@@ -149,7 +159,8 @@ if (!$resultado) {
 // PASO 6: Mostrar cuántos registros hay en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -164,7 +175,8 @@ if (!$resultado) {
 // PASO 7: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -184,13 +196,14 @@ if (!$resultado) {
 // PASO 8: Modificar el registro guardado en la tabla.
 
 // CONSULTA DE MODIFICACIÓN DE REGISTRO
+
 $id        = "1";                 // Normalmente estos valores vendrán de un formulario
 $nombre    = "Pepita";
 $apellidos = "Conejo";
 
-$consulta = "UPDATE $cfg[dbPersonasTabla]
-             SET nombre=:nombre, apellidos=:apellidos
-             WHERE id=:id";
+$consulta = "UPDATE $cfg[tablaPersonas]
+             SET nombre = :nombre, apellidos = :apellidos
+             WHERE id = :id";
 
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
@@ -207,7 +220,8 @@ if (!$resultado) {
 // PASO 9: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -227,10 +241,11 @@ if (!$resultado) {
 // PASO 10: Insertar un segundo registro en la tabla.
 
 // CONSULTA DE INSERCIÓN DE REGISTRO
+
 $nombre    = "Numa";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Nigerio";
 
-$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+$consulta = "INSERT INTO $cfg[tablaPersonas]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 
@@ -249,7 +264,8 @@ if (!$resultado) {
 // PASO 11: Mostrar cuántos registros hay en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -264,7 +280,8 @@ if (!$resultado) {
 // PASO 12: Mostrar los valores de los dos registros guardados en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -284,11 +301,12 @@ if (!$resultado) {
 // PASO 13: Borrar el primer registro guardado en la tabla.
 
 // CONSULTA DE BORRADO DE REGISTROS
+
 $id = [1 =&gt; "on"];     // Normalmente este valor vendrá de un formulario (en este caso, como matriz).
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                 WHERE id=:indice";
+    $consulta = "DELETE FROM $cfg[tablaPersonas]
+                 WHERE id = :indice";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
@@ -306,7 +324,8 @@ foreach ($id as $indice =&gt; $valor) {
 // PASO 14: Mostrar los valores del registro guardado en la tabla.
 
 // CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -331,7 +350,6 @@ if (!$resultado) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-
 // SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
 
 function conectaDb()
@@ -350,13 +368,13 @@ function conectaDb()
     }
 }
 
-// FUNCIÓN DE BORRADO DE TABLA
+// SQLITE: FUNCIÓN DE BORRADO Y CREACIÓN DE TABLA
 
-function borraTabla()
+function borraTodo()
 {
     global $pdo, $cfg;
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -364,18 +382,11 @@ function borraTabla()
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
     }
     print "\n";
-}
 
-// SQLITE: FUNCIÓN DE CREACIÓN DE TABLA
-
-function creaTabla()
-{
-    global $pdo, $cfg;
-
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
                  )";
 
     if (!$pdo-&gt;query($consulta)) {
@@ -392,7 +403,7 @@ function insertaRegistro($nombre, $apellidos)
 {
     global $pdo, $cfg;
 
-    $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos)
                  VALUES (:nombre, :apellidos)";
 
@@ -413,7 +424,7 @@ function cuentaRegistros()
 {
     global $pdo, $cfg;
 
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
@@ -430,7 +441,7 @@ function muestraRegistros()
 {
     global $pdo, $cfg;
 
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
@@ -452,9 +463,9 @@ function modificaRegistro($id, $nombre, $apellidos)
 {
     global $pdo, $cfg;
 
-    $consulta = "UPDATE $cfg[dbPersonasTabla]
-                 SET nombre=:nombre, apellidos=:apellidos
-                 WHERE id=:id";
+    $consulta = "UPDATE $cfg[tablaPersonas]
+                 SET nombre = :nombre, apellidos = :apellidos
+                 WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
@@ -474,8 +485,8 @@ function borraRegistros($id)
     global $pdo, $cfg;
 
     foreach ($id as $indice =&gt; $valor) {
-        $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                     WHERE id=:indice";
+        $consulta = "DELETE FROM $cfg[tablaPersonas]
+                     WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
@@ -492,22 +503,25 @@ function borraRegistros($id)
 // SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+
 // Configuración para SQLite
+
 $cfg["sqliteDatabase"] = "/tmp/pdo-2.sqlite";                             // Ubicación de la base de datos
 
-// Configuración de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos
+// Tamaño de los campos en la tabla Personas
+
+$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas &gt; Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+
 // Base de datos
-$cfg["dbPersonasTabla"] = "personas";                      // Nombre de la tabla Personas
+
+$cfg["tablaPersonas"] = "personas";                      // Nombre de la tabla Personas
 
 $pdo = conectaDb();
 
-borraTabla();
-
-creaTabla();
+borraTodo();
 
 insertaRegistro("Pepito", "Conejo");
 
@@ -541,21 +555,25 @@ muestraRegistros();
       <li>config.php:
         <div class="codigo">
           <pre>
-<code class="language-php">&lt;?php// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
+<code class="language-php">&lt;?php
+// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+
 // Configuración para SQLite
+
 $cfg["sqliteDatabase"] = "/tmp/pdo-3.sqlite";                             // Ubicación de la base de datos
 
-// Configuración de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos
+// Tamaño de los campos en la tabla Personas
+
+$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas &gt; Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-// Base de datos
-$cfg["dbPersonasTabla"] = "personas";                      // Nombre de la tabla Personas
 
-?&gt;</code>
+// Base de datos
+
+$cfg["tablaPersonas"] = "personas";                      // Nombre de la tabla Personas</code>
 </pre>
         </div>
       </li>
@@ -584,13 +602,13 @@ function conectaDb()
     }
 }
 
-// FUNCIÓN DE BORRADO DE TABLA
+// SQLITE: FUNCIÓN DE BORRADO Y CREACIÓN DE TABLA
 
-function borraTabla()
+function borraTodo()
 {
     global $pdo, $cfg;
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -598,18 +616,11 @@ function borraTabla()
         print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
     }
     print "\n";
-}
 
-// SQLITE: FUNCIÓN DE CREACIÓN DE TABLA
-
-function creaTabla()
-{
-    global $pdo, $cfg;
-
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
                  )";
 
     if (!$pdo-&gt;query($consulta)) {
@@ -626,7 +637,7 @@ function insertaRegistro($nombre, $apellidos)
 {
     global $pdo, $cfg;
 
-    $consulta = "INSERT INTO $cfg[dbPersonasTabla]
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos)
                  VALUES (:nombre, :apellidos)";
 
@@ -647,7 +658,7 @@ function cuentaRegistros()
 {
     global $pdo, $cfg;
 
-    $consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
@@ -664,7 +675,7 @@ function muestraRegistros()
 {
     global $pdo, $cfg;
 
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
@@ -686,9 +697,9 @@ function modificaRegistro($id, $nombre, $apellidos)
 {
     global $pdo, $cfg;
 
-    $consulta = "UPDATE $cfg[dbPersonasTabla]
-                 SET nombre=:nombre, apellidos=:apellidos
-                 WHERE id=:id";
+    $consulta = "UPDATE $cfg[tablaPersonas]
+                 SET nombre = :nombre, apellidos = :apellidos
+                 WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
     if (!$resultado) {
@@ -708,8 +719,8 @@ function borraRegistros($id)
     global $pdo, $cfg;
 
     foreach ($id as $indice =&gt; $valor) {
-        $consulta = "DELETE FROM $cfg[dbPersonasTabla]
-                     WHERE id=:indice";
+        $consulta = "DELETE FROM $cfg[tablaPersonas]
+                     WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
         if (!$resultado) {
@@ -721,8 +732,7 @@ function borraRegistros($id)
             print "\n";
         }
     }
-}
-?&gt;</code>
+}</code>
 </pre>
         </div>
       </li>
@@ -735,9 +745,7 @@ require_once "biblioteca.php";
 
 $pdo = conectaDb();
 
-borraTabla();
-
-creaTabla();
+borraTodo();
 
 insertaRegistro("Pepito", "Conejo");
 
@@ -766,7 +774,7 @@ muestraRegistros();
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 15 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
