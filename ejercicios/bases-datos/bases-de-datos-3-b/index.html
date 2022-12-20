@@ -151,7 +151,7 @@
           <pre>
 <code class="language-php">// Configuración para PostgreSQL
 
-$cfg["pgsqlHost"]     = "pgsql:host=localhost";             // Nombre de host
+$cfg["pgsqlHost"]     = "localhost";                        // Nombre de host
 $cfg["pgsqlPort"]     = "5432";                             // Número de puerto
 $cfg["pgsqlDatabase"] = "iaw";                              // Nombre de la base de datos
 $cfg["pgsqlUser"]     = "iaw";                              // Nombre de usuario
@@ -171,8 +171,7 @@ function conectaDb()
     global $cfg;
 
     try {
-        $conexion = "$cfg[pgsqlHost];port=$cfg[pgsqlPort];dbname=$cfg[pgsqlDatabase];user=$cfg[pgsqlUser];password=$cfg[pgsqlPassword]";
-        $tmp = new PDO($conexion);
+        $tmp = new PDO("pgsql:host=$cfg[pgsqlHost];port=$cfg[pgsqlPort];dbname=$cfg[pgsqlDatabase];user=$cfg[pgsqlUser];password=$cfg[pgsqlPassword]");
         $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         return $tmp;
     } catch (PDOException $e) {

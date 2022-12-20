@@ -28,7 +28,7 @@ $cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_3";         // Nombre de la base
 
 // Configuración para PostgreSQL
 
-$cfg["pgsqlHost"]     = "pgsql:host=localhost";             // Nombre de host
+$cfg["pgsqlHost"]     = "localhost";                        // Nombre de host
 $cfg["pgsqlPort"]     = "5432";                             // Número de puerto
 $cfg["pgsqlDatabase"] = "mclibre";                          // Nombre de la base de datos
 $cfg["pgsqlUser"]     = "mclibre";                          // Nombre de usuario

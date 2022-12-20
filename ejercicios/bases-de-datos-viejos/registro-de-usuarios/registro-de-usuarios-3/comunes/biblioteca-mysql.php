@@ -47,7 +47,6 @@ function conectaDb()
     try {
         $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        $tmp->exec("set names utf8mb4");
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_ERROR, 1);

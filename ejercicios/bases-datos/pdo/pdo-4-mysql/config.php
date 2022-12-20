@@ -12,9 +12,9 @@
 // Configuración para MySQL
 
 $cfg["mysqlHost"]     = "localhost";                              // Nombre de host
-$cfg["mysqlUser"]     = "root";                                       // Nombre de usuario
+$cfg["mysqlUser"]     = "";                                       // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
-$cfg["mysqlDatabase"] = "pdo_4";                                       // Nombre de la base de datos
+$cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos
 
 // Configuración de la tabla Personas
 

@@ -28,11 +28,11 @@ $dbMotor = SQLITE;     // Valores posibles: MYSQL o SQLITE
 
 // Configuración para MYSQL
 
-define("MYSQL_HOST",               "mysql:host=localhost");        // Nombre de host
-define("MYSQL_USER",               "root");                        // Nombre de usuario
-define("MYSQL_PASSWORD",           "root");                        // Contraseña de usuario
-define("MYSQL_DATABASE",           "mclibre_registro_usuarios_3"); // Nombre de la base de datos
-define("MYSQL_TABLA_USUARIOS_WEB", "usuariosweb");                 // Nombre de la tabla
+define("MYSQL_HOST",               "mysql:host=localhost;charset=utf8mb4"); // Nombre de host
+define("MYSQL_USER",               "root");                                 // Nombre de usuario
+define("MYSQL_PASSWORD",           "root");                                 // Contraseña de usuario
+define("MYSQL_DATABASE",           "mclibre_registro_usuarios_3");          // Nombre de la base de datos
+define("MYSQL_TABLA_USUARIOS_WEB", "usuariosweb");                          // Nombre de la tabla
 
 // Configuración para SQLite
 

@@ -19,8 +19,7 @@ function conectaDb()
     global $cfg;
 
     try {
-        $conexion = "$cfg[pgsqlHost];port=$cfg[pgsqlPort];dbname=$cfg[pgsqlDatabase];user=$cfg[pgsqlUser];password=$cfg[pgsqlPassword]";
-        $tmp      = new PDO($conexion);
+        $tmp = new PDO("pgsql:host=$cfg[pgsqlHost];port=$cfg[pgsqlPort];dbname=$cfg[pgsqlDatabase];user=$cfg[pgsqlUser];password=$cfg[pgsqlPassword]");
         $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         return $tmp;
     } catch (PDOException $e) {

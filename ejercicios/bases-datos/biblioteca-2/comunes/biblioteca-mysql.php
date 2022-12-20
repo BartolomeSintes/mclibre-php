@@ -9,14 +9,14 @@
 
 // Configuración general
 
-define("MYSQL_HOST", "mysql:host=localhost");         // Nombre de host
-define("MYSQL_USER", "");                             // Nombre de usuario
-define("MYSQL_PASSWORD", "");                         // Contraseña de usuario
-define("MYSQL_DATABASE", "biblioteca");               // Nombre de la base de datos
-define("MYSQL_TABLE_USUARIOS", "usuarios");           // Nombre de la tabla Usuarios
-define("MYSQL_TABLE_PERSONAS", "personas");           // Nombre de la tabla Personas
-define("MYSQL_TABLE_OBRAS", "obras");                 // Nombre de la tabla Obras
-define("MYSQL_TABLE_PRESTAMOS", "prestamos");         // Nombre de la tabla Préstamos
+define("MYSQL_HOST", "mysql:host=localhost;charset=utf8mb4");   // Nombre de host
+define("MYSQL_USER", "");                                       // Nombre de usuario
+define("MYSQL_PASSWORD", "");                                   // Contraseña de usuario
+define("MYSQL_DATABASE", "biblioteca");                         // Nombre de la base de datos
+define("MYSQL_TABLE_USUARIOS", "usuarios");                     // Nombre de la tabla Usuarios
+define("MYSQL_TABLE_PERSONAS", "personas");                     // Nombre de la tabla Personas
+define("MYSQL_TABLE_OBRAS", "obras");                           // Nombre de la tabla Obras
+define("MYSQL_TABLE_PRESTAMOS", "prestamos");                   // Nombre de la tabla Préstamos
 
 // Nombres de las tablas
 
@@ -114,7 +114,6 @@ function conectaDb()
     try {
         $tmp = new PDO(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
         $tmp->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        $tmp->exec("set names utf8mb4");
         return $tmp;
     } catch (PDOException $e) {
         cabecera("Error grave", MENU_VOLVER, 1);
