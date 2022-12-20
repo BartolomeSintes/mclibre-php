@@ -58,12 +58,23 @@
     <section id="basicos-conexion">
       <h3>Conexión con la base de datos</h3>
 
-      <p>Para trabajar con una base de datos en nuestro programa, simplemente nos conectaremos con la base de datos creando un objeto PDO. La información necesaria para la conexión con la base de datos específica se incluye como argumento:</p>
+      <p>Para trabajar con una base de datos en nuestro programa, simplemente nos conectaremos con la base de datos creando un objeto PDO. La información necesaria para la conexión con la base de datos específica se incluye como uno o varios argumentos:</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">// CONEXIÓN CON LA BASE DE DATOS
+
 $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
+</pre>
+      </div>
+
+      <p>La información para la conexión consiste en primer lugar en el DSN (<a href="https://en.wikipedia.org/wiki/Data_source_name">Data Source Name</a>), que indica como mínimo el nombre de la base de datos (sqlite, mysql, pgsql, etc.) y su ubicación. En su caso, el segundo y tercer argumento son el nombre y contraseña del usuario de la base de datos.</p>
+
+      <p>Si por algún motivo PDO no puede conectarse con la base de datos, se genera una excepción. En los ejemplos y soluciones de ejercicios de estos apuntes cuando se produce esta excepción se muestra un mensaje en español y a continuación el código de error SQLSTATE y el mensaje de error específico del driver.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";</code>
 </pre>
       </div>
     </section>
@@ -105,6 +116,7 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
           <div class="codigo">
             <pre>
 <code class="language-php">// EJECUCIÓN DE UNA CONSULTA SIN DATOS PROVENIENTES DE UN FORMULARIO
+
 $pdo-&gt;query("<i>consulta</i>");</code>
 </pre>
           </div>
@@ -114,6 +126,7 @@ $pdo-&gt;query("<i>consulta</i>");</code>
               <div class="codigo">
                 <pre>
 <code class="language-php">// EJECUCIÓN DE UNA CONSULTA QUE NO VA A DEVOLVER REGISTROS
+
 if (!$pdo-&gt;query("<i>consulta</i>")) {
     ...    // Si la consulta falla
 } else {
@@ -127,6 +140,7 @@ if (!$pdo-&gt;query("<i>consulta</i>")) {
               <div class="codigo">
                 <pre>
 <code class="language-php">// EJECUCIÓN DE UNA CONSULTA QUE PUEDE DEVOLVER REGISTROS
+
 $resultado = $pdo-&gt;query("<i>consulta</i>")
 if (!$resultado) {
     ...    // Si la consulta falla
@@ -143,6 +157,7 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// EJECUCIÓN DE UNA CONSULTA CON DATOS PROVENIENTES DE UN FORMULARIO
+
 $resultado = $pdo-&gt;prepare("<i>consulta</i>");
 $resultado-&gt;execute([<i>parámetros de la consulta</i>]);</code>
 </pre>
@@ -153,6 +168,7 @@ $resultado-&gt;execute([<i>parámetros de la consulta</i>]);</code>
           <div class="codigo">
             <pre>
 <code class="language-php">// EJECUCIÓN DE UNA CONSULTA PREPARADA
+
 $resultado = $pdo-&gt;prepare("<i>consulta</i>")
 if (!$resultado) {
     ...        // Si la preparación de la consulta falla
@@ -185,9 +201,11 @@ if (!$resultado) {
       <div class="codigo">
         <pre>
 <code class="language-php">// En una sola línea de programa
+
 $resultado = $pdo-&gt;query("SELECT * FROM <i>tabla</i>");
 
 // En dos líneas de programa
+
 $consulta  = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);</code>
 </pre>
@@ -211,11 +229,12 @@ $resultado  = $pdo-&gt;query($consulta);</code>
       <p>Cuando la consulta puede devolver registros, se debe guardar la respuesta en una variable auxiliar. Esa variable es de un tipo especial llamado <a href="https://www.php.net/manual/en/language.types.resource.php">recurso</a> que no se puede acceder directamente, pero de la que podemos ir extrayendo uno a uno los registros mediante un bucle <span class="php-res">foreach ()</span> o mediante los métodos fetch() o fetchColumn():</p>
 
       <ul>
-        <li>Si la consulta devuelve un único registro que contiene la respuesta buscada en la primera columna se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna del registro.
+        <li>Si la consulta devuelve un único registro que contiene la respuesta buscada en la primera columna, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">PDOStatement-&gt;fetchColumn()</a> para recuperar la primera columna del registro.
 
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+
 $consulta  = "SELECT COUNT(*) FROM <i>tabla</i>";
 
 $resultado = $pdo-&gt;query($consulta);
@@ -233,6 +252,7 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
+
 $id = <i>id</i>;          // Normalmente este valor vendrá de un formulario
 
 $consulta  = "SELECT * FROM <i>tabla</i> WHERE <i>id</i>=<i>:id</i>";   // Normalmente solo habrá un registro (o ninguno) con un id determinado
@@ -253,11 +273,36 @@ if (!$resultado) {
           </div>
         </li>
 
-        <li>Si la consulta devuelve varios registros y necesitamos acceder a todos los registros a la vez para realizar alguna operación, se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchall.php">PDOStatement-&gt;fetchAll()</a> para recuperar todos los registros en forma de matriz bidimensional.
+        <li>Si la consulta devuelve varios registros y simplemente queremos acceder a los registros de forma consecutiva, podemos recorrer la variable que guarda la respuesta con un bucle <span class="php-res">foreach ()</span>. En este caso, si la consulta no devuelve ningún registro no se escribiría ningún mensaje específico, simplemente no se escribiría nada:
 
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+
+$consulta  = "SELECT * FROM <i>tabla</i>";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
+    print "    &lt;ul&gt;\n";
+    <span class="codigo-resaltado">foreach ($resultado as $registro)</span> {
+        print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
+    }
+    print "    &lt;/ul&gt;\n";
+    print "\n";
+}</code>
+</pre>
+          </div>
+        </li>
+
+        <li>Si la consulta devuelve varios registros y necesitamos acceder a todos los registros a la vez para realizar alguna operación (como por ejemplo comprobar si no se ha recibido ningún registro), se puede utilizar el método <a href="https://www.php.net/manual/en/pdostatement.fetchall.php">PDOStatement-&gt;fetchAll()</a> para recuperar todos los registros en forma de matriz bidimensional.
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
+
 $consulta = "SELECT * FROM <i>tabla</i>";
 
 $resultado = $pdo-&gt;query($consulta);
@@ -269,29 +314,6 @@ if (!$resultado) {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
     <span class="codigo-resaltado">foreach ($registros as $registro)</span> {
-        print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
-    }
-    print "    &lt;/ul&gt;\n";
-    print "\n";
-}</code>
-</pre>
-          </div>
-        </li>
-
-        <li>Si la consulta devuelve varios registros y simplemente queremos acceder a los registros de forma consecutiva, podemos recorrer la variable que guarda la respuesta con un bucle <span class="php-res">foreach ()</span>.:
-
-          <div class="codigo">
-            <pre>
-<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta  = "SELECT * FROM <i>tabla</i>";
-
-$resultado = $pdo-&gt;query($consulta);
-if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} else {
-    print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
-    print "    &lt;ul&gt;\n";
-    <span class="codigo-resaltado">foreach ($resultado as $registro)</span> {
         print "      &lt;li&gt;$registro[<i>columna1</i>] - $registro[<i>columna2</i>] - etc.&lt;/li&gt;\n";
     }
     print "    &lt;/ul&gt;\n";
@@ -329,6 +351,7 @@ if (!$resultado) {
       <div class="codigo">
         <pre>
 <code class="language-php">// Consulta preparada
+
 $consulta  = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;prepare($consulta);
 $resultado-&gt;execute();</code>
@@ -364,7 +387,7 @@ if (!$resultado) {
         </div>
       </div>
 
-      <p>Para que PDO pueda desinfectar los datos provinientes de un formulario, estos deben enviarse al ejecutar la consulta, no al prepararla. Para ello, al definir la consulta es necesario indicar la posición de los datos y al ejecutar la consulta es necesario indicar el valor de los datos en forma de matriz. La posición de los datos se puede indicar de dos maneras distintas, mediante parámetros o mediante interrogantes (se aconseja la utilización de parámetros). </p>
+      <p>Para que PDO pueda desinfectar los datos provinientes de un formulario, estos deben enviarse al ejecutar la consulta, no al prepararla. Para ello, al definir la consulta es necesario indicar la posición de los datos y al ejecutar la consulta es necesario indicar el valor de los datos en forma de matriz. La posición de los datos se puede indicar de dos maneras distintas, mediante parámetros o mediante interrogantes (se aconseja la utilización de parámetros para evitar errores). </p>
       <ul>
         <li>consulta preparada mediante parámetros (:parametro)
           <p>En este caso las posiciones en la que se insertarán los datos provenientes del formulario se indican mediante cadenas de texto precedidas de dos puntos (:). La matriz con los datos debe incluir los nombres de los parámetros y los valores que sustituyen a los parámetros (el orden no es importante), como muestra el siguiente ejemplo:</p>
@@ -431,7 +454,7 @@ if (!$resultado) {
       <p><strong>Notas</strong>:</p>
       <ul>
         <li>Aunque no vayan a causar problemas en las consultas, sigue siendo conveniente tratar los datos recibidos para eliminar los espacios en blanco iniciales y finales, tratar los caracteres especiales del html, etc., como se comenta en la <a href="php-recogida-datos.html">lección de Recogida de datos</a>.</li>
-        <li>La sintaxis mediante interrogantes es más cómoda, pero tiene el inconveniente de que podemos equivocarnos en el orden de los valores. Sin embargo con la sintaxis mediante parámetros, aunque sea más larga de escribir, no se puede cometer ese error.</li>
+        <li>La sintaxis mediante interrogantes es más cómoda, pero tiene el inconveniente de que podemos equivocarnos en el orden de los parámetros. Sin embargo con la sintaxis mediante parámetros, aunque sea más larga de escribir, no se puede cometer ese error.</li>
       </ul>
     </section>
 
@@ -452,6 +475,7 @@ if (!$resultado) {
       <div class="codigo">
         <pre>
 <code class="language-php">// FUNCIÓN DE RECOGIDA DE UN DATO QUE SÓLO PUEDE TOMAR DETERMINADOS VALORES
+
 function recogeValores($var, $valoresValidos, $valorPredeterminado)
 {
     if (isset($_REQUEST[$var]) && in_array($_REQUEST[$nombre], $valoresValidos)) {
@@ -519,16 +543,21 @@ if (!$resultado) {
 <code class="language-php">// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+
 // Configuración para SQLite
-$cfg["sqliteDatabase"] = "db.sqlite";                             // Ubicación de la base de datos
+
+$cfg["sqliteDatabase"] = "/tmp/db.sqlite";                        // Ubicación de la base de datos
 
 // Configuración de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos
+
+$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas &gt; Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+
 // Base de datos
-$cfg["dbPersonasTabla"]        = "personas";                      // Nombre de la tabla Personas</code>
+
+$cfg["tablaPersonas"] = "personas";                               // Nombre de la tabla Personas</code>
 </pre>
       </div>
 
@@ -539,19 +568,24 @@ $cfg["dbPersonasTabla"]        = "personas";                      // Nombre de l
 <code class="language-php">// MYSQL: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
 // OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+
 // Configuración para MySQL
-$cfg["mysqlHost"]     = "mysql:host=localhost";                   // Nombre de host
+
+$cfg["mysqlHost"]     = "localhost";                              // Nombre de host
 $cfg["mysqlUser"]     = "";                                       // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
 $cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos
 
 // Configuración de la tabla Personas
-$cfg["dbPersonasTamNombre"]    = 40;                              // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                              // Tamaño de la columna Personas &gt; Apellidos
+
+$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas &gt; Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+
 // Base de datos
-$cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de la tabla Personas</code>
+
+$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";           // Nombre de la tabla Personas</code>
 </pre>
       </div>
     </section>
@@ -570,9 +604,9 @@ $cfg["dbPersonasTabla"]        = "$cfg[mysqlDatabase].personas";  // Nombre de l
 
         <p>En SQLite, no se hace una conexión a un servidor, sino que simplemente se indica el archivo que va a contener la base de datos. En SQLite no hay un servidor que gestiona todas las bases de datos, sino que cada base de datos es un archivo independiente.</p>
 
-        <p>PDO puede crear el archivo SQLite, pero no puede crear la ruta hasta el archivo.</p>
+        <p>Tenga en cuenta que PDO puede crear el archivo SQLite, pero no puede crear la ruta hasta el archivo, que debe existir previamente.</p>
         <ul>
-          <li>Si se indica simplemente el nombre del archivo SQLite, el archivo se creará en el mismo directorio que se encuentra el programa PHP. No se aconseja hacerlo así por dos motivos. Por un lado, si las páginas del programa se encuentran distribuidas en varios directorios, cada página accedería a una base de datos distinta creada en cada directorio. Por otro lado, al guardar la base de datos en un directorio público, cualquier visitante podría obtener la base de datos completa. Por eso se recomienda guardar el archivo SQLite en un directorio fuera del directorio público, teniendo en cuenta que el directorio debe existir y el servidor web debe tener permisos de escritura en él.</li>
+          <li>Si se indica simplemente el nombre del archivo SQLite, el archivo se creará en el mismo directorio que se encuentra el programa PHP. No se aconseja hacerlo así por dos motivos. En primer lugar, porque al guardar la base de datos en un directorio público, cualquier visitante podría obtener la base de datos completa escribiendo su url. Ens egundo lugar, porque si las páginas del programa se encuentran distribuidas en varios directorios, cada página accedería a una base de datos distinta creada en cada directorio. Por eso se recomienda guardar el archivo SQLite en un directorio fuera del directorio público, teniendo en cuenta que el directorio debe existir y el servidor web debe tener permisos de escritura en él.</li>
         </ul>
 
         <div class="codigo copy">
@@ -603,6 +637,8 @@ $pdo = conectaDb();</code>
 
         <p><strong>Notas</strong>:</p>
         <ul>
+          <li>El <a href="https://www.php.net/manual/en/ref.pdo-sqlite.connection.php">DSN para SQLite</a> sólo permite indicar la ubicación de la base de datos SQLite (que puede ser un archivo físico, en memoria o en un fichero temporal gestionado por PHP). En estos apuntes se utiliza siempre un archivo físico.</li>
+          <li>El comando de SQLite "PRAGMA foreign keys = ON" es necesario para poder usar restricciones <a href="https://www.sqlite.org/foreignkeys.html">FOREIGN KEY en SQLite</a>.</li>
           <li>En las soluciones de los ejercicios proporcionadas en estos apuntes, los archivos se guardan en el directorio <strong>/tmp/</strong>. Para que funcionen las soluciones, se debe crear ese directorio o cambiarlo a otro.</li>
           <li>En caso de error, la función conectaDb() imprime unos mensajes de error y termina el programa. Si quisiéramos completar una página correcta, deberíamos imprimir el pie de página en caso de error y asegurarnos de que se ha escrito la cabecera antes de conectarse a la base de datos.</li>
         </ul>
@@ -611,7 +647,7 @@ $pdo = conectaDb();</code>
       <section id="conexion-mysql">
         <h4>Conexión con MySQL</h4>
 
-        <p>En el caso de MySQL, para crear el objeto PDO se necesita proporcionar el nombre del servidor, el nombre de usuario y la contraseña. En el ejemplo siguiente esos datos se proporcionan como constantes que deberían definirse en el programa.</p>
+        <p>En el caso de MySQL, para crear el objeto PDO se necesita proporcionar el nombre del servidor, el nombre de usuario de la base de datos y la contraseña. En el ejemplo siguiente esos datos se proporcionan como constantes que deberían definirse en el programa. El usuario de la base de datos se debe crear previamente.</p>
 
         <p>Para poder acceder a MySQL mediante PDO, debe estar activada la extensión php_pdo_mysql en el archivo de configuración php.ini (véase el <a href="../otros/php-configuracion-1.html#pdo-mysql">apartado extensión pdo_mysql en la lección de configuración de Apache y PHP</a>).</p>
 
@@ -624,10 +660,9 @@ function conectaDb()
     global $cfg;
 
     try {
-        $tmp = new PDO($cfg["mysqlHost"], $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
         $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        $tmp-&gt;exec("set names utf8mb4");
         return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
@@ -640,6 +675,11 @@ function conectaDb()
 $pdo = conectaDb();</code>
 </pre>
         </div>
+
+        <p><strong>Notas</strong>:</p>
+        <ul>
+          <li>El <a href="https://www.php.net/manual/en/ref.pdo-mysql.connection.php">DSN para MySQL</a> permite indicar el servidor en el que se encuentra la base de datos, su puerto, el nombre de la base de datos y el juego de caracteres. En estos apuntes se indican únicamente el servidor (localhost) y el juego de caracteres (<a href="https://dev.mysql.com/doc/refman/8.0/en/charset-unicode-utf8mb4.html">utf8mb4</a>). El nombre de usuario de la base de datos y su contraseña se añaden como segundo y tercer parámetros.</li>
+          </ul>
       </section>
     </section>
 
@@ -662,7 +702,8 @@ $pdo = conectaDb();</code>
         <div class="codigo copy">
           <pre>
 <code class="language-php">// CONSULTA DE BORRADO DE TABLA
-$consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+
+$consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
 if (!$pdo-&gt;query($consulta)) {
     print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -678,10 +719,11 @@ print "\n";</code>
         <div class="codigo copy">
           <pre>
 <code class="language-php">// SQLITE: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+
+$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
              id INTEGER PRIMARY KEY,
-             nombre VARCHAR($cfg[dbPersonasTamNombre]),
-             apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+             nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+             apellidos VARCHAR($cfg[tablaPersonasTamApellidos])
              )";
 
 if (!$pdo-&gt;query($consulta)) {
@@ -704,6 +746,7 @@ print "\n";</code>
         <div class="codigo copy">
           <pre>
 <code class="language-php">// MYSQL: CONSULTA DE BORRADO DE BASE DE DATOS
+
 $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
 if (!$pdo-&gt;query($consulta)) {
@@ -720,6 +763,7 @@ print "\n";</code>
         <div class="codigo copy">
           <pre>
 <code class="language-php">// MYSQL: CONSULTA DE CREACIÓN DE BASE DE DATOS
+
 $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
              CHARACTER SET utf8mb4
              COLLATE utf8mb4_unicode_ci";
@@ -740,10 +784,11 @@ if (!$pdo-&gt;query($consulta)) {
         <div class="codigo copy">
           <pre>
 <code class="language-php">// MYSQL: CONSULTA DE CREACIÓN DE TABLA
-$consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+
+$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
              id INTEGER UNSIGNED AUTO_INCREMENT,
-             nombre VARCHAR($cfg[dbPersonasTamNombre]),
-             apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+             nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+             apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
              PRIMARY KEY(id)
              )";
 
@@ -768,10 +813,11 @@ if (!$pdo-&gt;query($consulta)) {
           <div class="codigo copy">
             <pre>
 <code class="language-php">// CONSULTA DE INSERCIÓN DE REGISTRO
+
 $nombre    = "Pepito";            // Normalmente estos valores vendrán de un formulario
 $apellidos = "Conejo";
 
-$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+$consulta = "INSERT INTO $cfg[tablaPersonas]
              (nombre, apellidos)
              VALUES (:nombre, :apellidos)";
 
@@ -792,11 +838,12 @@ if (!$resultado) {
           <div class="codigo copy">
             <pre>
 <code class="language-php">// CONSULTA DE MODIFICACIÓN DE REGISTRO
+
 $id        = "1";                 // Normalmente estos valores vendrán de un formulario
 $nombre    = "Pepita";
 $apellidos = "Conejo";
 
-$consulta = "UPDATE $cfg[dbPersonasTabla]
+$consulta = "UPDATE $cfg[tablaPersonas]
              SET nombre=:nombre, apellidos=:apellidos
              WHERE id=:id";
 
@@ -820,10 +867,11 @@ if (!$resultado) {
           <div class="codigo copy">
             <pre>
 <code class="language-php">// CONSULTA DE BORRADO DE REGISTROS
+
 $id = [1 =&gt; "on", 3 =&gt; "on"];     // Normalmente este valor vendrá de un formulario (en este caso, como matriz).
 
 foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $cfg[dbPersonasTabla]
+    $consulta = "DELETE FROM $cfg[tablaPersonas]
                  WHERE id=:indice";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -848,7 +896,7 @@ foreach ($id as $indice =&gt; $valor) {
       <p>Si nos encontráramos con este problema, deberíamos realizar la conversión de cadena a entero. Para ello podríamos usar la función de PHP <a href="https://www.php.net/manual/en/function.intval.php"><span class="php-fun">intval()</span></a> como muestra el ejemplo siguiente en el que "edad" sería un campo INTEGER:</p>
       <div class="codigo">
         <pre>
-<code class="language-php">$consulta = "INSERT INTO $cfg[dbPersonasTabla]
+<code class="language-php">$consulta = "INSERT INTO $cfg[tablaPersonas]
               (nombre, edad)
               VALUES (:nombre, :edad)";
 
@@ -876,7 +924,7 @@ if (!$resultado) {
           <div class="codigo copy">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -893,6 +941,7 @@ if (!$resultado) {
           <div class="codigo copy">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
+
 $id = 1       // Normalmente este valor vendrá de un formulario
 
 $consulta  = "SELECT * FROM <i>tabla</i> WHERE id=:id";
@@ -921,7 +970,8 @@ if (!$resultado) {
               <div class="codigo copy">
                 <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -942,7 +992,8 @@ if (!$resultado) {
               <div class="codigo">
                 <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -966,7 +1017,8 @@ if (!$resultado) {
               <div class="codigo">
                 <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -974,7 +1026,7 @@ if (!$resultado) {
 } elseif ($resultado-&gt;fetchColumn() == 0) {
     print "    &lt;p&gt;No se ha creado todavía ningún registro en la tabla.&lt;/p&gt;\n";
 } else {
-    $consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
@@ -998,7 +1050,8 @@ if (!$resultado) {
               <div class="codigo copy">
                 <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE PUEDE DEVOLVER VARIOS REGISTROS (O UNO O NINGUNO)
-$consulta = "SELECT * FROM $cfg[dbPersonasTabla]";
+
+$consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -1034,9 +1087,10 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+
 $apellidos = "con";           // Normalmente este valor vendrá de un formulario
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
              WHERE apellidos LIKE :apellidos";
 
 $resultado = $pdo-&gt;prepare($consulta);
@@ -1056,9 +1110,10 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+
 $apellidos = "nej";           // Normalmente este valor vendrá de un formulario
 
-$consulta = "SELECT COUNT(*) FROM $cfg[dbPersonasTabla]
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
              WHERE apellidos LIKE :apellidos";
 
 $resultado = $pdo-&gt;prepare($consulta);
@@ -1082,7 +1137,7 @@ if (!$resultado) {
       <p>Para escribir consultas que se puedan ejecutar sin problemas en el mayor número de sistemas gestores de bases de datos, es recomendable realizar la conversión usando la función SQL como muestra el ejemplo siguiente en el que "edad" sería un campo INTEGER:</p>
       <div class="codigo">
         <pre>
-<code class="language-php">$consulta = "SELECT * FROM $cfg[dbPersonasTabla]
+<code class="language-php">$consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre
              AND <span class="codigo-resaltado">CAST(edad AS VARCHAR)</span> LIKE :edad
              ORDER BY $ordena";</code>
@@ -1093,23 +1148,24 @@ if (!$resultado) {
     <section id="union-tablas">
       <h3>Consultas de unión de tablas</h3>
 
-      <p>Se pueden también realizar consultas de unión entre varias tablas, como en el ejemplo siguiente. El ejemplo está sacado del <a href="../ejercicios/bases-de-datos-viejos/biblioteca-1.html">ejercicio de Biblioteca</a>) y devuelve los préstamos pendientes de devolver a partir de tres tablas de Usuarios, Obras y Préstamos:</p>
+      <p>Se pueden también realizar consultas de unión entre varias tablas, como en el ejemplo siguiente. El ejemplo está sacado del <a href="../ejercicios/bases-de-datos-viejos/biblioteca-1.html">ejercicio de Biblioteca</a> y devuelve los préstamos pendientes de devolver a partir de tres tablas de Usuarios, Obras y Préstamos:</p>
 
       <div class="codigo">
         <pre>
 <code class="language-php">// CONSULTA DE UNIÓN DE TABLAS
+
 $consulta = "SELECT
-               $cfg[dbTablaPrestamos].id AS id,
-               $cfg[dbTablaUsuarios].nombre as nombre,
-               $cfg[dbTablaUsuarios].apellidos as apellidos,
-               $cfg[dbTablaObras].titulo as titulo,
-               $cfg[dbTablaPrestamos].prestado as prestado,
-               $cfg[dbTablaPrestamos].devuelto as devuelto
-             FROM $cfg[dbTablaPrestamos], $cfg[dbTablaUsuarios], $cfg[dbTablaObras]
+               $cfg[tablaPrestamos].id AS id,
+               $cfg[tablaUsuarios].nombre as nombre,
+               $cfg[tablaUsuarios].apellidos as apellidos,
+               $cfg[tablaObras].titulo as titulo,
+               $cfg[tablaPrestamos].prestado as prestado,
+               $cfg[tablaPrestamos].devuelto as devuelto
+             FROM $cfg[tablaPrestamos], $cfg[tablaUsuarios], $cfg[tablaObras]
              WHERE
-               $cfg[dbTablaPrestamos].id_usuario=$cfg[dbTablaUsuarios].id
-               AND $cfg[dbTablaPrestamos].id_obra=$cfg[dbTablaObras].id
-               AND $cfg[dbTablaPrestamos].devuelto='0000-00-00'
+               $cfg[tablaPrestamos].id_usuario=$cfg[tablaUsuarios].id
+               AND $cfg[tablaPrestamos].id_obra=$cfg[tablaObras].id
+               AND $cfg[tablaPrestamos].devuelto='0000-00-00'
              ORDER BY $columna $orden";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -1148,6 +1204,9 @@ if (!$resultado) {
           <marker id="flechaAzul" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
             <path d="M0,4 L0,8 L6,6" style="fill: blue;" />
           </marker>
+          <marker id="flechaVerde" markerWidth="12" markerHeight="12" refX="0" refY="6" orient="auto">
+            <path d="M0,4 L0,8 L6,6" style="fill: green;" />
+          </marker>
         </defs>
 
         <!-- Bibliotecas -->
@@ -1167,15 +1226,18 @@ if (!$resultado) {
           <text x="30" y="240" text-anchor="left" font-family="sans-serif" font-size="14">}</text>
           <text x="30" y="260" text-anchor="left" font-family="sans-serif" font-size="14">...</text>
 
-          <line x1="245" y1="95" x2="300" y2="45" stroke="black" stroke-width="2" />
+          <line x1="246" y1="94" x2="290" y2="50" stroke="green" stroke-width="2" style="marker-end: url(#flechaVerde)" />
+          <text x="272" y="60" text-anchor="middle" font-family="sans-serif" fill="green" font-size="12" transform="rotate(-45 270 60)">include</text>
           <text x="335" y="10" text-anchor="middle" font-family="sans-serif" font-size="14">config.php</text>
           <rect x="300" y="20" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-          <line x1="245" y1="195" x2="300" y2="145" stroke="black" stroke-width="2" />
+          <line x1="246" y1="194" x2="290" y2="150" stroke="green" stroke-width="2" style="marker-end: url(#flechaVerde)" />
+          <text x="272" y="160" text-anchor="middle" font-family="sans-serif" fill="green" font-size="12" transform="rotate(-45 270 160)">include</text>
           <text x="335" y="110" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-sqlite.php</text>
           <rect x="300" y="120" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
 
-          <line x1="245" y1="195" x2="300" y2="245" stroke="black" stroke-width="2" />
+          <line x1="246" y1="196" x2="290" y2="240" stroke="green" stroke-width="2" style="marker-end: url(#flechaVerde)" />
+          <text x="262" y="233" text-anchor="middle" font-family="sans-serif" fill="green" font-size="12" transform="rotate(45 262 233)">include</text>
           <text x="335" y="210" text-anchor="middle" font-family="sans-serif" font-size="14">biblioteca-mysql.php</text>
           <rect x="300" y="220" width="70" height="50" fill="none" stroke="black" stroke-width="2" />
         </svg>
@@ -1200,11 +1262,11 @@ $cfg["dbMotor"] = SQLITE;                                   // Valores posibles:
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-1-6.sqlite";  // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/db.sqlite";                  // Ubicación de la base de datos
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlHost"]     = "localhost";                        // Nombre de host
 $cfg["mysqlUser"]     = "";                                 // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "";                                 // Nombre de la base de datos</code>
@@ -1270,10 +1332,10 @@ function conectaDb()
     global $cfg;
 
     try {
-        $tmp = new PDO($cfg["mysqlHost"], $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
         $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        $tmp-&gt;exec("set names utf8mb4");
+        return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
         exit;
@@ -1288,7 +1350,9 @@ function conectaDb()
             <pre>
 <code class="language-php">// EJEMPLO DE USO DE CONEXIÓN CONFIGURABLE
 // La conexión se debe realizar en cada página que acceda a la base de datos
+
 require_once "biblioteca.php";
+
 $pdo = conectaDb();</code>
 </pre>
           </div>
@@ -1308,8 +1372,8 @@ $pdo = conectaDb();</code>
 <code class="language-php">// config.php
 // Configuración de la tabla Personas
 
-$cfg["dbPersonasTamNombre"]    = 40;                        // Tamaño de la columna Personas &gt; Nombre
-$cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la columna Personas &gt; Apellidos</code>
+$cfg["tablaPersonasTamNombre"]    = 40;                     // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
           </div>
         </li>
@@ -1322,7 +1386,7 @@ $cfg["dbPersonasTamApellidos"] = 60;                        // Tamaño de la col
 
 // SQLITE: Nombres de las tablas
 
-$cfg["dbPersonasTabla"] = "personas";                       // Nombre de la tabla Personas
+$cfg["tablaPersonas"] = "personas";                       // Nombre de la tabla Personas
 
 // SQLITE: Consultas de borrado y creación de tablas
 
@@ -1330,7 +1394,7 @@ function borraTodo()
 {
     global $pdo, $cfg;
 
-    $consulta = "DROP TABLE IF EXISTS $cfg[dbPersonasTabla]";
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
     if (!$pdo-&gt;query($consulta)) {
         print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
@@ -1339,10 +1403,10 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                  id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                 apellidos VARCHAR($cfg[dbPersonasTamApellidos])
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos])
                  )";
 
     if (!$pdo-&gt;query($consulta)) {
@@ -1364,7 +1428,7 @@ function borraTodo()
 
 // MYSQL: Nombres de las tablas
 
-$cfg["dbPersonasTabla"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
+$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
 
 // MYSQL: Consultas de borrado y creación de base de datos y tablas
 
@@ -1391,10 +1455,10 @@ function borraTodo()
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[dbPersonasTabla]  (
+        $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
-                     nombre VARCHAR($cfg[dbPersonasTamNombre]),
-                     apellidos VARCHAR($cfg[dbPersonasTamApellidos]),
+                     nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                     apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
                      PRIMARY KEY(id)
                      )";
 
@@ -1413,9 +1477,13 @@ function borraTodo()
           <div class="codigo">
             <pre>
 <code class="language-php">// EJEMPLO DE USO DE BORRADO CONFIGURABLE
+
 require_once "biblioteca.php";
+
 $pdo = conectaDb();
+
 borraTodo();
+
 $pdo = null;</code>
 </pre>
           </div>
@@ -1425,7 +1493,7 @@ $pdo = null;</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de febrero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 20 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
