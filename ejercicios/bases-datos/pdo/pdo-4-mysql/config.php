@@ -11,10 +11,10 @@
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "mysql:host=localhost";                   // Nombre de host
-$cfg["mysqlUser"]     = "";                                       // Nombre de usuario
+$cfg["mysqlHost"]     = "localhost";                              // Nombre de host
+$cfg["mysqlUser"]     = "root";                                       // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
-$cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos
+$cfg["mysqlDatabase"] = "pdo_4";                                       // Nombre de la base de datos
 
 // Configuración de la tabla Personas
 

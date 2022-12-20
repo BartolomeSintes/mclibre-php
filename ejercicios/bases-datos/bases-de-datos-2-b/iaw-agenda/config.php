@@ -17,7 +17,7 @@ $cfg["sqliteDatabase"] = "/tmp/iaw-agenda.sqlite";          // Ubicación de la 
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlHost"]     = "localhost";                        // Nombre de host
 $cfg["mysqlUser"]     = "iaw_agenda";                       // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "iaw_agenda";                       // Nombre de la base de datos

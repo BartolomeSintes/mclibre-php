@@ -19,7 +19,7 @@ $cfg["sqliteDatabase"] = "/tmp/pdo-5.sqlite";                             // Ubi
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "mysql:host=localhost";                   // Nombre de host
+$cfg["mysqlHost"]     = "localhost";                              // Nombre de host
 $cfg["mysqlUser"]     = "";                                       // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
 $cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos

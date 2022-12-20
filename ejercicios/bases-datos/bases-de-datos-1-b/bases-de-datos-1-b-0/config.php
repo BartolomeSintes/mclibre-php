@@ -17,7 +17,7 @@ $cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-1-b-0.sqlite";    // Ubicació
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "mysql:host=localhost";             // Nombre de host
+$cfg["mysqlHost"]     = "localhost";                        // Nombre de host
 $cfg["mysqlUser"]     = "mclibre_base_datos_1_b_0";         // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "mclibre_base_datos_1_b_0";         // Nombre de la base de datos
