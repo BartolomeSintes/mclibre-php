@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>phpMyAdmin de XAMPP. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+</head>
+
+<body>
+  <h1>phpMyAdmin de XAMPP</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>phpMyAdmin XAMPP</h2>
+
+      <ul>
+        <li><a href="#iniciar-mariadb">Iniciar MariaDB</a></li>
+        <li><a href="#abrir-pma">Abrir phpMyAdmin</a></li>
+        <li><a href="#crear-usuario">Crear usuario</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Los ejercicios de bases de datos propuestos en estos apuntes se pueden realizar trabajando con cualquier base de datos. En la lección <a href="../lecciones/php-db-pdo.html">PDO</a> se mencionan dos de ellas: SQLite y MySQL/MariaDB. Como se comenta en la lección <a href="xampp.html">XAMPP</a>, XAMPP incluye MariaDB, base de datos equivalente a MySQL (en el interfaz de XAMPP aparece a menudo la palabra MySQL pero se refiere siempre a MariaDB).</p>
+
+  <p>Un servidor MariaDB se puede gestionar mediante la aplicación web <a ref="https://www.phpmyadmin.net/">phpMyAdmin</a>, que también está incluida en XAMPP. En esta lección se comenta cómo utilizar la aplicación phpMyAdmin incluida en XAMPP para crear los usuarios de MariaDB que utilicen las aplicaciones de los ejercicios. En los apuntes de <a href="https://www.mclibre.org/consultar/webapps/">Aplicaciones Web</a> de mclibre.org hay unas lecciones dedicadas a la instalación y administración de phpMyAdmin como aplicación independiente, que amplían lo tratado en esta lección.</p>
+
+  <p>las capturas de esta página correponden a XAMPP 8.1.6 (mayo de 2022) pero son similares a las de otras versiones.</p>
+
+  <section id="iniciar-mariadb">
+    <h3>Iniciar MariaDB de XAMPP</h3>
+
+    <p>Para poner en marcha el servidor MariaDB instalado por XAMPP se puede utilizar el panel de control de XAMPP</p>
+    <ol>
+      <li>Si MariaDB está detenido, el botón de arranque/parada de MariaDB mostrará el texto "Start". Haga clic en él para iniciar MariaDB.
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-01.png" alt="iniciar MariaDB de XAMPP" width="668" height="250">
+        </p>
+      </li>
+      <li>Si el servidor arranca correctamente, se mostrará el mensaje correspondiente en la parte inferior del panel de control, se mostrará con fondo de color verde el texto "MySQL" de la columna "Module" y el botón de arranque/parada mostrará el texto "Stop". Pulsando en él, se detendría el servidor.
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-02.png" alt="iniciar MariaDB de XAMPP" width="668" height="434">
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="abrir-pma">
+    <h3>Abrir phpMyAdmin de XAMPP</h3>
+
+    <p>La aplicación phpMyAdmin instalada en XAMPP es accesible desde el panel de adminstración web (dashborad) de XAMPP.</p>
+
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Inicialmente, XAMPP instala MariaDB con el usuario administrador <strong>root</strong> sin contraseña y configura phpMyAdmin para que se conecte automática con ese usuario (sin contraseña). Si ha cambiado la contraseña del administrador de MariaDB, deberá cambiar el fichero de configuración de phpMyAdmin config.inc.php.</p>
+
+    <ol>
+      <li>Para abir el panel de adminstración web (dashborad) de XAMPP, abra en el navegador la dirección <a href="http://localhost/">http://localhost/</a> (se abrirá automáticamente la página dashboard). Haga clic en el enlace phpMyAdmin situado arriba a la derecha:
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-11.png" alt="phpMyAdmin de XAMPP" width="1014" height="435">
+        </p>
+      </li>
+      <li>Si el servidor rechaza la conexión de phpMyAdmin (por estar detenido o por error en el nombre de usuario o la contraseña) se mostrará un mensaje de error:
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-12.png" alt="phpMyAdmin de XAMPP" width="1014" height="720">
+        </p>
+      </li>
+      <li>Si el servidor acepta la conexión, se abrirá phpMyAdmin. En los cuadros puede consultarse la versión de los servidores y aplicaciones utilizadas (Apache, PHP, MariaDB, phpMyAdmin).
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-13.png" alt="phpMyAdmin de XAMPP" width="995" height="346">
+        </p>
+      </li>
+      <li>
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-14.png" alt="phpMyAdmin de XAMPP" width="995" height="346">
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="crear-usuario">
+    <h3>Crear usuario</h3>
+
+    <p>Para crear un usuario ...</p>
+    <ol>
+      <li>Haga clic en el enlace "Cuentas de usuarios":
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-21.png" alt="phpMyAdmin de XAMPP" width="995" height="135">
+        </p>
+      </li>
+      <li>Haga clic en el enlace "Agregar cuenta de usuario"
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-22.png" alt="phpMyAdmin de XAMPP" width="995" height="709">
+        </p>
+      </li>
+      <li>Complete la información de la cuenta:
+        <ul>
+          <li>Nombre de usuario</li>
+          <li>Nombre de Host: Seleccione a la izquierda <strong>Local</strong></li>
+          <li>Contraseña (dos veces)</li>
+          <li>Marque la casilla "Crear base de datos con el mismo nombre" para crear un usuario que olo puede crear una base de datos que se tiene que llamar igual que el propio usuario.</li>
+        </ul>
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-23.png" alt="phpMyAdmin de XAMPP" width="995" height="717">
+        </p>
+      </li>
+      <li>Haga clic en el botón "Continuar" situado al final de la página:
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-24.png" alt="phpMyAdmin de XAMPP" width="995" height="110">
+        </p>
+      </li>
+      <li>Si el usuario se crea, se mostrará la consulta efectuada, un mensaje de éxito y en el panel izquierdo se mostrará el nombre del usuario.
+        <p class="captura">
+          <img src="../img/xampp-phpmyadmin/xampp-pma-25.png" alt="phpMyAdmin de XAMPP" width="995" height="290">
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de diciembre de 2022</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
