@@ -314,7 +314,7 @@ foreach ($id as $indice =&gt; $valor) {
     } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
-        print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
         print "\n";
     }
 }
@@ -494,7 +494,7 @@ function borraRegistros($id)
         } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
             print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         } else {
-            print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
+            print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
             print "\n";
         }
     }
@@ -728,7 +728,7 @@ function borraRegistros($id)
         } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
             print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         } else {
-            print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
+            print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
             print "\n";
         }
     }

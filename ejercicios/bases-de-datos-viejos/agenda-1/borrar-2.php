@@ -36,7 +36,7 @@ if (count($id) == 0) {
         $consulta = "DELETE FROM $dbAgenda
             WHERE id=$indice";
         if ($db->query($consulta)) {
-            print "    <p>Registro borrado correctamente.</p>\n";
+            print "    <p>Registro borrado correctamente (si existía).</p>\n";
             print "\n";
         } else {
             print "    <p>Error al borrar el registro.</p>\n";
