@@ -181,6 +181,8 @@ function conectaDb()
 }</code>
 </pre>
         </div>
+        <p><strong>Nota</strong>: El <a href="https://www.php.net/manual/en/ref.pdo-pgsql.connection.php">DSN para PostgreSQL</a> permite indicar el servidor en el que se encuentra la base de datos, su puerto, el nombre de la base de datos, el nombre de usuario de la base de datos y su contraseña.</p>
+
         <p>Para crear un campo autonumérico en PostgreSQL, se suele utilizar el pseudo-tipo SERIAL, como muestra el siguiente ejemplo:</p>
         <div class="codigo">
           <pre>
@@ -206,8 +208,8 @@ function conectaDb()
       </li>
       <li>[comunes/demo.php]
         <p>Para que después de insertar los registros de prueba, el contador autonumérico de las claves principales se actualice, realice las siguientes consultas:</p>
-          <div class="codigo">
-            <pre>
+        <div class="codigo">
+          <pre>
   <code class="language-php">
     if ($cfg["dbMotor"] == POSTGRESQL) {
         foreach ($cfg["dbTablas"] as $tabla) {
@@ -222,7 +224,7 @@ function conectaDb()
         }
     }</code>
   </pre>
-          </div>
+        </div>
       </li>
       <li>Compruebe el funcionamiento del programa insertando como administrador registros de Usuarios y Personas, entrando como alguno de los usuarios básicos y creando registros de Personas.</li>
     </ol>
@@ -432,7 +434,7 @@ function conectaDb()
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de febrero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 20 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
