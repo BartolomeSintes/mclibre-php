@@ -48,7 +48,7 @@ if (count($id) == 0) {
                         WHERE id = :indice";
                     $result = $db->prepare($consulta);
                     if ($result->execute([":indice" => $indice])) {
-                        print "    <p>Registro borrado correctamente (si existía).</p>\n";
+                        print "    <p>Registro borrado correctamente.</p>\n";
                     } else {
                         print "    <p class=\"aviso\">Error al borrar el registro.</p>\n";
                     }
