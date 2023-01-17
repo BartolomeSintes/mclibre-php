@@ -880,7 +880,7 @@ foreach ($id as $indice =&gt; $valor) {
     } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
-        print "    &lt;p&gt;Registro borrado correctamente.&lt;/p&gt;\n";
+        print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
         print "\n";
     }
 }</code>
@@ -897,8 +897,8 @@ foreach ($id as $indice =&gt; $valor) {
       <div class="codigo">
         <pre>
 <code class="language-php">$consulta = "INSERT INTO $cfg[tablaPersonas]
-              (nombre, edad)
-              VALUES (:nombre, :edad)";
+             (nombre, edad)
+             VALUES (:nombre, :edad)";
 
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
@@ -942,9 +942,9 @@ if (!$resultado) {
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
 
-$id = 1       // Normalmente este valor vendrá de un formulario
+$id = 1;       // Normalmente este valor vendrá de un formulario
 
-$consulta  = "SELECT * FROM <i>tabla</i> WHERE id=:id";
+$consulta  = "SELECT * FROM $cfg[tablaPersonas] WHERE id=:id";
 
 $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
