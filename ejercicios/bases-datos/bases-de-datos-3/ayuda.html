@@ -119,8 +119,8 @@ define("MENU_PRINCIPAL", 1);                // Menú principal sin conectar
 define("MENU_VOLVER", 2);                   // Menú Volver a inicio
 define("MENU_PERSONAS", 3);                 // Menú Personas
 
-define("PROFUNDIDAD_0", 0);                 // Profundidad de nivel de la página: directorio raíz
-define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la página: subdirectorio</code>
+define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la página: directorio raíz
+define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la página: subdirectorio</code>
 </pre>
             </div>
           </li>
@@ -130,11 +130,7 @@ define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la págin
 <code class="language-php">function cabecera($texto, $menu, $profundidadDirectorio)
 {
     ...
-    if ($profundidadDirectorio == PROFUNDIDAD_0) {
-        print "  &lt;link rel=\"stylesheet\" <span class="codigo-resaltado">href=\"comunes/</span>mclibre-php-proyectos.css\" title=\"Color\" /&gt;\n";
-    } elseif ($profundidadDirectorio == PROFUNDIDAD_1) {
-        print "  &lt;link rel=\"stylesheet\" <span class="codigo-resaltado">href=\"../comunes/</span>mclibre-php-proyectos.css\" title=\"Color\" /&gt;\n";
-    }
+    print "  &lt;link rel=\"stylesheet\" href=\"<span class="codigo-resaltado">{$profundidadDirectorio}</span>comunes/mclibre-php-proyectos.css\" title=\"Color\" /&gt;\n";
     ...</code>
 </pre>
             </div>
@@ -429,9 +425,9 @@ $cfg["tablaUsuariosColumnasOrden"] = [
             <p>Debemos definir un nivel más de profundidad:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">define("PROFUNDIDAD_0", 0);                 // Profundidad de nivel de la página: directorio raíz
-define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la página: subdirectorio
-define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la página: sub-subdirectorio</code>
+<code class="language-php">define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la página: directorio raíz
+define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la página: subdirectorio
+define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la página: sub-subdirectorio</code>
 </pre>
             </div>
           </li>
@@ -950,7 +946,7 @@ if (!$resultado) {
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de febrero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 17 d eenero de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

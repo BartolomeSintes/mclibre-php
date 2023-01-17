@@ -16,9 +16,9 @@ define("MENU_ADMINISTRADOR", 3);            // Menú Administrador
 define("MENU_USUARIOS", 4);                 // Menú Usuarios
 define("MENU_NOTICIAS", 5);                 // Menú Noticias
 
-define("PROFUNDIDAD_0", 0);                 // Profundidad de nivel de la página: directorio raíz
-define("PROFUNDIDAD_1", 1);                 // Profundidad de nivel de la página: subdirectorio
-define("PROFUNDIDAD_2", 2);                 // Profundidad de nivel de la página: sub-subdirectorio
+define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la página: directorio raíz
+define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la página: subdirectorio
+define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la página: sub-subdirectorio
 
 define("NIVEL_USUARIO_BASICO", 10);         // Usuario web de nivel Usuario Básico
 define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrador
@@ -103,13 +103,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-    if ($profundidadDirectorio == PROFUNDIDAD_0) {
-        print "  <link rel=\"stylesheet\" href=\"comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
-    } elseif ($profundidadDirectorio == PROFUNDIDAD_1) {
-        print "  <link rel=\"stylesheet\" href=\"../comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
-    } elseif ($profundidadDirectorio == PROFUNDIDAD_2) {
-        print "  <link rel=\"stylesheet\" href=\"../../comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
-    }
+    print "  <link rel=\"stylesheet\" href=\"{$profundidadDirectorio}comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";
