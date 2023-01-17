@@ -161,7 +161,7 @@ if (!$resultado) {
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (!count($registros = $resultado-&gt;fetchAll())) {
+} elseif (count($registros = $resultado-&gt;fetchAll()) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
     ...</code>
@@ -236,7 +236,7 @@ if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (!count($registros = $resultado-&gt;fetchAll())) {
+} elseif (count($registros = $resultado-&gt;fetchAll()) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se han encontrado registros.&lt;/p&gt;\n";
 } else {
     ...</code>

@@ -28,7 +28,7 @@ $consulta = "SELECT
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!count($registros = $resultado->fetchAll())) {
+} elseif (count($registros = $resultado->fetchAll()) == 0) {
     print "    <p class=\"aviso\">No se ha publicado todavía ninguna noticia.</p>\n";
 } else {
     print "  <div class=\"noticias\">\n";

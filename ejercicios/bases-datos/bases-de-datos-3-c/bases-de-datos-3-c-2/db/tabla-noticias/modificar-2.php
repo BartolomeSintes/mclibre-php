@@ -49,7 +49,7 @@ if ($id == "") {
         if (!$resultado) {
             print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
-            $registrosCategorias = $resultado->fetchAll();
+            $registros = $resultado->fetchAll();
         }
 
         print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";
@@ -60,7 +60,7 @@ if ($id == "") {
         print "          <td>Categoría:</td>\n";
         print "          <td>\n";
         print "            <select name=\"categoria\">\n";
-        foreach ($registrosCategorias as $categoria) {
+        foreach ($registros as $categoria) {
             if ($registro["categoria"] == $categoria[1]) {
                 print "              <option value=\"$categoria[0]\" selected>$categoria[1]</option>\n";
             } else {

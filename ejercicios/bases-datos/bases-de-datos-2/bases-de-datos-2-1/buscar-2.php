@@ -23,7 +23,7 @@ if (!$resultado) {
     print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
 } elseif (!$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"])) {
     print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!count($registros = $resultado->fetchAll())) {
+} elseif (count($registros = $resultado->fetchAll()) == 0) {
     print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
 } else {
     print "    <p>Registros encontrados:</p>\n";

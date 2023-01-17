@@ -27,7 +27,7 @@ $consulta = "SELECT * FROM $cfg[tablaCategorias]
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!count($registros = $resultado->fetchAll())) {
+} elseif (count($registros = $resultado->fetchAll()) == 0) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
     print "    <p>Listado completo de registros:</p>\n";
