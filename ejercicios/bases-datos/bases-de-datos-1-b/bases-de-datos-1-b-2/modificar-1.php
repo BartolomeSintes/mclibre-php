@@ -47,6 +47,5 @@ if (!$resultado) {
     print "      </p>\n";
     print "    </form>\n";
 }
-$pdo = null;
 
 pie();
