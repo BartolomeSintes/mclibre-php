@@ -11,7 +11,7 @@
 
 <body>
 <?php
-print "  <pre>";
+print "  <pre>\n";
 print_r($_REQUEST);
 print "<a href=\"form-input-checkbox-1-1.php\">Volver al formulario.</a>\n";
 print "  </pre>";
