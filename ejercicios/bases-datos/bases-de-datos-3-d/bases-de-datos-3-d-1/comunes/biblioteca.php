@@ -14,8 +14,7 @@ define("MENU_PRINCIPAL", 1);                // Menú principal sin conectar
 define("MENU_VOLVER", 2);                   // Menú Volver a inicio
 define("MENU_ADMINISTRADOR", 3);            // Menú Administrador
 define("MENU_USUARIOS", 4);                 // Menú Usuarios
-define("MENU_CATEGORIAS", 5);               // Menú Categorías
-define("MENU_NOTICIAS", 6);                 // Menú Noticias
+define("MENU_NOTICIAS", 5);                 // Menú Noticias
 
 define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la página: directorio raíz
 define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la página: subdirectorio
@@ -27,6 +26,21 @@ define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrado
 // Variables configurables por el administrador de la aplicación
 
 require_once "config.php";
+
+// Valores de ordenación de las tablas
+
+$cfg["tablaUsuariosColumnasOrden"] = [
+    "usuario ASC", "usuario DESC",
+    "password ASC", "password DESC",
+    "nivel ASC", "nivel DESC",
+];
+
+$cfg["tablaNoticiasColumnasOrden"] = [
+    "categoria ASC", "categoria DESC",
+    "titulo ASC", "titulo DESC",
+    "cuerpo ASC", "cuerpo DESC",
+    "creado ASC", "creado DESC",
+];
 
 // Niveles de usuario
 
@@ -47,27 +61,7 @@ if ($cfg["dbMotor"] == SQLITE) {
 
 $cfg["dbTablas"] = [
     $cfg["tablaUsuarios"],
-    $cfg["tablaCategorias"],
     $cfg["tablaNoticias"],
-];
-
-// Valores de ordenación de las tablas
-
-$cfg["tablaUsuariosColumnasOrden"] = [
-    "usuario ASC", "usuario DESC",
-    "password ASC", "password DESC",
-    "nivel ASC", "nivel DESC",
-];
-
-$cfg["tablaCategoriasColumnasOrden"] = [
-    "categoria ASC", "categoria DESC",
-];
-
-$cfg["tablaNoticiasColumnasOrden"] = [
-    "categoria ASC", "categoria DESC",
-    "titulo ASC", "titulo DESC",
-    "cuerpo ASC", "cuerpo DESC",
-    "creado ASC", "creado DESC",
 ];
 
 // Funciones comunes
@@ -105,7 +99,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Bases de datos (3 C) 3. Bases de datos (3 C).\n";
+    print "    $texto. Bases de datos (3 D) 1. Bases de datos (3 D).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -114,7 +108,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Bases de datos (3 C) 3 - $texto</h1>\n";
+    print "    <h1>Bases de datos (3 D) 1 - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
@@ -128,18 +122,10 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         }
     } elseif ($_SESSION["nivel"] == NIVEL_USUARIO_BASICO) {
         if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"db/tabla-categorias/index.php\">Categorías</a></li>\n";
             print "        <li><a href=\"db/tabla-noticias/index.php\">Noticias</a></li>\n";
             print "        <li><a href=\"acceso/logout.php\">Desconectarse</a></li>\n";
         } elseif ($menu == MENU_VOLVER) {
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
-        } elseif ($menu == MENU_CATEGORIAS) {
-            print "        <li><a href=\"../../index.php\">Volver</a></li>\n";
-            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
-            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
-            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
-            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
-            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
         } elseif ($menu == MENU_NOTICIAS) {
             print "        <li><a href=\"../../index.php\">Volver</a></li>\n";
             print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
@@ -152,7 +138,6 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         }
     } elseif ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
         if ($menu == MENU_PRINCIPAL) {
-            print "        <li><a href=\"db/tabla-categorias/index.php\">Categorías</a></li>\n";
             print "        <li><a href=\"db/tabla-noticias/index.php\">Noticias</a></li>\n";
             print "        <li><a href=\"db/tabla-usuarios/index.php\">Usuarios</a></li>\n";
             print "        <li><a href=\"administrador/index.php\">Administrador</a></li>\n";
@@ -163,13 +148,6 @@ function cabecera($texto, $menu, $profundidadDirectorio)
             print "        <li><a href=\"../index.php\">Volver</a></li>\n";
             print "        <li><a href=\"borrar-todo-1.php\">Borrar todo</a></li>\n";
         } elseif ($menu == MENU_USUARIOS) {
-            print "        <li><a href=\"../../index.php\">Volver</a></li>\n";
-            print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
-            print "        <li><a href=\"listar.php\">Listar</a></li>\n";
-            print "        <li><a href=\"borrar-1.php\">Borrar</a></li>\n";
-            print "        <li><a href=\"buscar-1.php\">Buscar</a></li>\n";
-            print "        <li><a href=\"modificar-1.php\">Modificar</a></li>\n";
-        } elseif ($menu == MENU_CATEGORIAS) {
             print "        <li><a href=\"../../index.php\">Volver</a></li>\n";
             print "        <li><a href=\"insertar-1.php\">Añadir registro</a></li>\n";
             print "        <li><a href=\"listar.php\">Listar</a></li>\n";

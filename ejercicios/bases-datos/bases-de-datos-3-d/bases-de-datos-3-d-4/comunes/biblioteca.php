@@ -28,13 +28,6 @@ define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrado
 
 require_once "config.php";
 
-// Niveles de usuario
-
-$cfg["usuariosNiveles"] = [
-    NIVEL_USUARIO_BASICO => "Usuario Básico",
-    NIVEL_ADMINISTRADOR  => "Administrador",
-];
-
 // Carga Biblioteca específica de la base de datos utilizada
 
 if ($cfg["dbMotor"] == SQLITE) {
@@ -43,32 +36,9 @@ if ($cfg["dbMotor"] == SQLITE) {
     require_once "biblioteca-mysql.php";
 }
 
-// Tablas
+// Variables relacionadas con la estructura de la base de datos
 
-$cfg["dbTablas"] = [
-    $cfg["tablaUsuarios"],
-    $cfg["tablaCategorias"],
-    $cfg["tablaNoticias"],
-];
-
-// Valores de ordenación de las tablas
-
-$cfg["tablaUsuariosColumnasOrden"] = [
-    "usuario ASC", "usuario DESC",
-    "password ASC", "password DESC",
-    "nivel ASC", "nivel DESC",
-];
-
-$cfg["tablaCategoriasColumnasOrden"] = [
-    "categoria ASC", "categoria DESC",
-];
-
-$cfg["tablaNoticiasColumnasOrden"] = [
-    "categoria ASC", "categoria DESC",
-    "titulo ASC", "titulo DESC",
-    "cuerpo ASC", "cuerpo DESC",
-    "creado ASC", "creado DESC",
-];
+require_once "config-db.php";
 
 // Funciones comunes
 
@@ -105,7 +75,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Bases de datos (3 C) 2. Bases de datos (3 C).\n";
+    print "    $texto. Bases de datos (3 D) 4. Bases de datos (3 D).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -114,7 +84,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Bases de datos (3 C) 2 - $texto</h1>\n";
+    print "    <h1>Bases de datos (3 D) 4 - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
