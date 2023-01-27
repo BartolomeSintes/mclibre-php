@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Bases de datos (3 C). Enunciados. Ejercicios (bases de datos). PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios - Bases de datos (3 C) - Enunciados</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Bases de datos (3 C)</h2>
+
+      <h3><a href="#">Enunciados</a></h3>
+      <ul>
+        <li><a href="#ejercicio-0">0 - Aplicación de ejemplo</a></li>
+        <li><a href="#ejercicio-1">1 - Confirmar contraseña</a></li>
+        <li><a href="#ejercicio-2">2 - Estadísticas administrador</a></li>
+        <li><a href="#ejercicio-3">3 - Datos repetidos</a></li>
+        <li><a href="#ejercicio-4">4 - Registros incompletos</a></li>
+        <li><a href="#ejercicio-5">5 - Cambiar contraseña</a></li>
+        <li><a href="#ejercicio-6">6 - Usuario mirón</a></li>
+        <li><a href="#ejercicio-7">7 - Correo de usuarios</a></li>
+        <li><a href="#ejercicio-8">8 - Número máximo registros</a></li>
+        <li><a href="#ejercicio-9">9 - Contador de conexiones</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Esta página de ejercicios contiene algunos de los ejercicios planteados en exámenes durante el curso 2021/22.</p>
+
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/2223/db-bases-de-datos-3-c-plantillas.zip">plantillas de los ejercicios Bases de datos (3 C) (Bases de datos)</a>. En todos los ejercicios, la plantilla es la aplicación de ejemplo 3 (B) 1</p>
+
+  <p>Puede descargar unas posibles soluciones de estos ejercicios en la <a href="../../../soluciones/index.html#21-22-con-bases-de-datos">página de soluciones</a>.</p>
+
+  <section id="ejercicio-0">
+    <h2>Bases de datos (3 C) - 0 - Aplicación de ejemplo</h2>
+
+    <p>Esta aplicación es la aplicación que se puede utilizar de base para el resto de ejercicios (es idéntica al ejercicio Bases de datos (3 B) 1).</p>
+
+    <div class="filaflex">
+      <iframe src="bases-de-datos-3-c-0/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="bases-de-datos-3-c-0/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-1">
+    <h2>Bases de datos (3 C) - 1 - Confirmar contraseña</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que al crear un nuevo usuario de la aplicación, la contraseña no se muestre en la pantalla al escribirla y en su lugar se solicite dos veces para confirmarla.</p>
+
+    <ul>
+      <li>Al crear un nuevo usuario, el formulario no mostrará la contraseña y la pedirá por duplicado:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-confirma-contrasena-1.png" alt="Confirma contraseña" width="1012" height="300"></p>
+      </li>
+      <li>Si las contraseñas no coinciden, se mostrará un mensaje de error:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-confirma-contrasena-2.png" alt="Confirma contraseña" width="1012" height="150"></p>
+      </li>
+      <li>Si la contraseña es demasiado larga, se mostrará un mensaje de error (no dos):
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-confirma-contrasena-3.png" alt="Confirma contraseña" width="1012" height="150"></p>
+      </li>
+      <li>Si todos los datos son correctos, se creará el nuevo usuario:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-confirma-contrasena-4.png" alt="Confirma contraseña" width="1012" height="150"></p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-confirma-contrasena/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-confirma-contrasena/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Bases de datos (3 C) - 2 Estadísticas de administrador</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que al crear un nuevo usuario de la aplicación, la contraseña no se muestre en la pantalla al escribirla y en su lugar se solicite dos veces para confirmarla.</p>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que el administrador pueda consultar un página con estadísticas de la base de datos (por ejemplo, el número de registros guardados en cada tabla).</p>
+
+    <ul>
+      <li>Los usuarios administradores pueden ver en su menú una nueva opción, "Estadísticas":
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-estadisticas-administrador-1.png" alt="Estadísticas de administrador" width="1077" height="290"></p>
+      </li>
+      <li>La página de estadísticas muestra el número de registros guardados en cada tabla:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-estadisticas-administrador-2.png" alt="Estadísticas de administrador" width="1077" height="290"></p>
+      </li>
+      <li>Únicamente los administradores podrán abrir esa página.</li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-estadisticas-administrador/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-estadisticas-administrador/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Bases de datos (3 C) - 3 Datos repetidos</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que se solicite confirmación si al crear un nuevo registro de Personas, ya existe en la tabla un registro con el mismo correo, teléfono o combinación de nombre y apellidos.</p>
+
+    <ul>
+      <li>Al crear un nuevo usuario, el formulario es el mismo de siempre:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-datos-repetidos-1.png" alt="Datos repetidos" width="1077" height="290"></p>
+      </li>
+      <li>Si el nuevo registro coincide con uno ya existente, se mostrará el aviso de siempre:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-datos-repetidos-2.png" alt="Datos repetidos" width="1077" height="150"></p>
+      </li>
+      <li>Si el nuevo registro coincide parcialmente con uno ya existente (el mismo correo, el mismo teléfono o la misma combinación de nombre y apellidos), se mostrará un formulario de confirmación:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-datos-repetidos-3.png" alt="Datos repetidos" width="1077" height="210"></p>
+      </li>
+      <li>Si se hace clic en No, se volverá a la página index.php:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-datos-repetidos-4.png" alt="Datos repetidos" width="1077" height="110"></p>
+      </li>
+      <li>Si se hace clic en Sí, se guardará el registro (haciendo las comprobaciones habituales de la inserción de un registro de Personas):
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-datos-repetidos-5.png" alt="Datos repetidos" width="1087" height="149"></p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-datos-repetidos/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-datos-repetidos/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Bases de datos (3 C) - 4 - Registros incompletos</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que el menú de personas ofrezca a los usuarios básicos y a los administradores una opción nueva llamada "Incompletos", que mostrará los registros en los que falte algún dato y ofrecerá la posibilidad de completarlos.</p>
+
+    <ul>
+      <li>Si no falta ningún dato en ningún registro, se mostrará un aviso:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-personas-incompletos-1.png" alt="Registros de personas incompletos" width="1012" height="150"></p>
+      </li>
+      <li>Si hay registros en los que falta algún dato, se mostrará la lista de ellos:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-personas-incompletos-2.png" alt="Registros de personas incompletos" width="1012" height="300"></p>
+      </li>
+      <li>Al seleccionar un registro, se mostrará un formulario en el que únicamente se podrán rellenar los campos vacíos. Los campos no vacíos deberán guardarse en controles ocultos.
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-personas-incompletos-3.png" alt="Registros de personas incompletos" width="1012" height="300"></p>
+      </li>
+      <li>Los nuevos datos se guardarán en la base de datos:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-personas-incompletos-4.png" alt="Registros de personas incompletos" width="1012" height="150"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-personas-incompletos-5.png" alt="Registros de personas incompletos" width="1012" height="300"></p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-personas-incompletos/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-personas-incompletos/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Bases de datos (3 C) - 5 - Cambiar contraseña</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que un usuario pueda cambiar su contraseña.</p>
+
+    <ul>
+      <li>Los usuarios básicos pueden ver en su menú principal una nueva opción, "Usuarios":
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-cambiar-password-1.png" alt="Cambiar password de usuario" width="990" height="121"></p>
+      </li>
+      <li>Los usuarios básicos pueden ver en el menú "Usuarios", la opción "Modificar password"":
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-cambiar-password-2.png" alt="Cambiar password de usuario" width="990" height="124"></p>
+      </li>
+      <li>La opción "Modificar password" muestra un formulario en el que se puede escribir la nueva contraseña:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-cambiar-password-3.png" alt="Cambiar password de usuario" width="1004" height="245"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-cambiar-password-4.png" alt="Cambiar password de usuario" width="1004" height="245"></p>
+      </li>
+      <li>Compruebe que el usuario ha cambiado la contraseña, saliendo de la aplicación y entrando con la nueva contraseña</li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-cambia-password/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-cambia-password/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-6">
+    <h2>Bases de datos (3 C) - 6 - Usuario mirón</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que haya un nuevo tipo de usuario que lo único que podrá hacer es ver los registros de personas existentes en la base de datos.</p>
+
+    <ul>
+      <li>Al crear un nuevo usuario de la aplicación, se ofrecerá la opción "Usuario mirón":
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-usuario-miron-1.png" alt="Usuario mirón" width="1012" height="310"></p>
+      </li>
+      <li>Un usuario mirón debe identificarse como el resto de usuarios de la aplicación:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-usuario-miron-2.png" alt="Usuario mirón" width="1012" height="250"></p>
+      </li>
+      <li>El usuario mirón sólo tendrá la posibilidad de ver los registros de Personas creadas por el resto de usuarios:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-usuario-miron-3.png" alt="Usuario mirón" width="1012" height="120"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-usuario-miron-4.png" alt="Usuario mirón" width="1012" height="120"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-usuario-miron-5.png" alt="Usuario mirón" width="1012" height="260"></p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-usuario-miron/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-usuario-miron/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-7">
+    <h2>Bases de datos (3 C) - 7 - Correo de usuarios</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que haya que proporcionar un correo electrónico para cada usuario de la aplicación.</p>
+
+    <ul>
+      <li>La aplicación debe funcionar tanto con SQLite como con MariaDB/MySQL. El usuario de MariaDB/MySQL deberá tener su nombre de pila, en minúsculas y sin acentos y ser un usuario con una base de datos de su mismo nombre. Haga una captura de pantalla de la creación del usuario y otra de la vista cuando entra en phpMyAdmin con ese usuario.</li>
+      <li>Al iniciar la aplicación por primera vez, el usuario root tendrá la dirección de correo root@example.com (la dirección será una variable de configuración):
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-1.png" alt="Correo de usuarios" width="1012" height="310"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-2.png" alt="Correo de usuarios" width="1012" height="210"></p>
+      </li>
+      <li>Al borrar todo y elegir el administrador incluir los registros de prueba, estos se crearán con direcciones @example.com:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-3.png" alt="Correo de usuarios" width="1012" height="280"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-4.png" alt="Correo de usuarios" width="995" height="540"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-5.png" alt="Correo de usuarios" width="1043" height="280"></p>
+      </li>
+      <li>Al crear un nuevo usuario, se solicitará la dirección de correo electrónico (obligatoria):
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-6.png" alt="Correo de usuarios" width="1012" height="290"></p>
+      </li>
+      <li>Si no se escribe la dirección de correo electrónico o esta es demasiado larga, se producirá el aviso correspondiente:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-7.png" alt="Correo de usuarios" width="1012" height="150"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-8.png" alt="Correo de usuarios" width="1012" height="150"></p>
+      </li>
+      <li>Los usuarios creados se mostrarán en el listado y se podrá ordenar el listado por la dirección de correo:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-9.png" alt="Correo de usuarios" width="1012" height="150"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-10.png" alt="Correo de usuarios" width="1043" height="300"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-1-correo-usuarios-11.png" alt="Correo de usuarios" width="1043" height="305"></p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-correo-usuarios/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-correo-usuarios/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-8">
+    <h2>Bases de datos (3 C) - 8 - Número de registros máximo por usuario</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que el número máximo de registros se establezca por usuario.</p>
+
+    <p><strong>Nota</strong>: la aplicación no identifica al usuario que ha creado el registro de persona, por lo que el número máximo de registros se debe comparar con el total de registros de personas, independientemente de qué usuario los haya creado.</p>
+
+    <ul>
+      <li>La aplicación debe funcionar tanto con SQLite como con MariaDB/MySQL. El usuario de MariaDB/MySQL deberá tener su nombre de pila, en minúsculas y sin acentos y ser un usuario con una base de datos de su mismo nombre. Haga una captura de pantalla de la creación del usuario y otra de la vista cuando entra en phpMyAdmin con ese usuario.</li>
+      <li>Al iniciar la aplicación por primera vez, el usuario root tendrá como número máximo de registros la variable de configuración $cfg["tablaPersonasMaxReg"]:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-1.png" alt="Número de registros de usuarios" width="1060" height="480"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-2.png" alt="Número de registros de usuarios" width="1060" height="210"></p>
+      </li>
+      <li>Al borrar todo y elegir el administrador incluir los registros de prueba, estos se crearán cada uno con un número máximo de registros distinto:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-3.png" alt="Número de registros de usuarios" width="1060" height="280"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-4.png" alt="Número de registros de usuarios" width="1043" height="545"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-5.png" alt="Número de registros de usuarios" width="1077" height="280"></p>
+      </li>
+      <li>Al crear un nuevo usuario, se solicitará un número máximo de registros (obligatorio):
+        <p class="captura"><img src="i../../../examenes/21-22/mg/db-2-numero-registros-usuarios-6.png" alt="Número de registros de usuarios" width="1077" height="300"></p>
+      </li>
+      <li>Si no se escribe un valor, se producirá el aviso correspondiente:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-7.png" alt="Número de registros de usuarios" width="1077" height="150"></p>
+      </li>
+      <li>Los usuarios creados se mostrarán en el listado y se podrá ordenar el listado por el número máximo de registros:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-8.png" alt="Número de registros de usuarios" width="1077" height="150"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-9.png" alt="Número de registros de usuarios" width="1077" height="300"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-10.png" alt="Número de registros de usuarios" width="1077" height="300"></p>
+      </li>
+      <li>Un usuario no puede crear un nuevo registro de Personas si el número de registros es mayor o igual que su número máximo, como le ocurriría al usuario "a" de estos ejemplos ya que su límite es 3 y los registros de prueba incluyen tres personas:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-2-numero-registros-usuarios-11.png" alt="Número de registros de usuarios" width="1077" height="180"></p>
+      </li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-numero-registros-usuario/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-numero-registros-usuario/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicio-9">
+    <h2>Bases de datos (3 C) - 9 - Contador de número de conexiones</h2>
+
+    <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que se lleve la cuenta del número de conexiones que ha realizado cada usuario y se le avise cuando el número de conexiones supere un valor de configuración predefinido.</p>
+
+    <ul>
+      <li>La aplicación debe funcionar tanto con SQLite como con MariaDB/MySQL. El usuario de MariaDB/MySQL deberá tener su nombre de pila, en minúsculas y sin acentos y ser un usuario con una base de datos de su mismo nombre. Haga una captura de pantalla de la creación del usuario y otra de la vista cuando entra en phpMyAdmin con ese usuario.</li>
+      <li>Al iniciar la aplicación por primera vez, el usuario root tendrá como número de conexiones el valor 0. La variable de configuración que contiene el valor a partir del cual se avisará a los usuarios se puede llamar $cfg["numeroConexionesAviso"], cuyo valor puede ser 3:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-1.png" alt="Contador de número de conexiones" width="1012" height="480"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-2.png" alt="Contador de número de conexiones" width="1012" height="210"></p>
+      </li>
+      <li>Al borrar todo y elegir el administrador incluir los registros de prueba, el número de conexiones de todos los usuarios será cero:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-3.png" alt="Contador de número de conexiones" width="1012" height="320"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-4.png" alt="Contador de número de conexiones" width="995" height="580"></p>
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-5.png" alt="Contador de número de conexiones" width="1012" height="280"></p>
+      </li>
+      <li>Al conectarse y desconectarse los usuarios, se actualizarán los contadores de cada usuario:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-6.png" alt="Contador de número de conexiones" width="1012" height="280"></p>
+      </li>
+      <li>El listado de usuario se podrá ordenar por el campo Número de conexiones:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-7.png" alt="Contador de número de conexiones" width="1012" height="280"></p>
+      </li>
+      <li>Si el número de conexiones ha superado el valor predefinido, se mostrará un aviso al realizarse la conexión:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-8.png" alt="Contador de número de conexiones" width="1012" height="150"></p>
+      </li>
+      <li>El aviso se mostrará sea siempre una vez superado el número de conexiones predefinidas:
+        <p class="captura"><img src="../../../examenes/21-22/img/db-3-contador-conexiones-9.png" alt="Contador de número de conexiones" width="1012" height="153"></p>
+      </li>
+      <li>Al cambiar la contraseña, el contador se volverá a poner a cero.</li>
+    </ul>
+
+    <div class="filaflex">
+      <iframe src="db-contador-conexiones/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="db-contador-conexiones/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 27 de enero de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

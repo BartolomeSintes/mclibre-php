@@ -1,0 +1,56 @@
+<?php
+/**
+ * @author Escriba aquí su nombre
+ */
+
+require_once "../../comunes/biblioteca.php";
+
+session_name($cfg["sessionName"]);
+session_start();
+
+if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] < NIVEL_USUARIO_BASICO) {
+    header("Location:../../index.php");
+    exit;
+}
+
+$pdo = conectaDb();
+
+cabecera("Usuarios - Modificar password 2", MENU_USUARIOS, PROFUNDIDAD_2);
+
+$password         = recoge("password");
+
+$passwordOk = false;
+
+if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
+    print "    <p class=\"aviso\">La contraseña no puede tener más de $cfg[formUsuariosTamPassword] caracteres.</p>\n";
+    print "\n";
+} else {
+    $passwordOk = true;
+}
+
+if ($passwordOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                 WHERE id = $_SESSION[id_usuario]";
+
+    $resultado = $pdo->query($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() == 0) {
+        print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
+    } else {
+        $consulta = "UPDATE $cfg[tablaUsuarios]
+                     SET password = :password
+                     WHERE id = $_SESSION[id_usuario]";
+
+        $resultado = $pdo->prepare($consulta);
+        if (!$resultado) {
+            print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } elseif (!$resultado->execute([":password" => encripta($password)])) {
+            print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } else {
+            print "    <p>Registro modificado correctamente.</p>\n";
+        }
+    }
+}
+
+pie();
