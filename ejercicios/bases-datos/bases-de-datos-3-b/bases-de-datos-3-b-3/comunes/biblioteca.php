@@ -47,7 +47,7 @@ $cfg["tablaUsuariosColumnasOrden"] = [
 
 $cfg["usuariosNiveles"] = [
     NIVEL_USUARIO_BASICO => "Usuario Básico",
-    NIVEL_ADMINISTRADOR => "Administrador",
+    NIVEL_ADMINISTRADOR  => "Administrador",
 ];
 
 // Carga Biblioteca específica de la base de datos utilizada

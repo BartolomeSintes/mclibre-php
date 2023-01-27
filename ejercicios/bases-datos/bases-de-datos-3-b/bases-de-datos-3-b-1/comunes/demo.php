@@ -21,7 +21,7 @@ function insertaDemo()
         if ($registro[0] == $cfg["tablaUsuarios"]) {
             $consulta = "INSERT INTO $cfg[tablaUsuarios]
                          (id, usuario, password, nivel)
-                         VALUES ({$registro[1][0]}, '{$registro[1][1]}', '{$registro[1][2]}',  {$registro[1][3]})";
+                         VALUES ({$registro[1][0]}, '{$registro[1][1]}', '{$registro[1][2]}', {$registro[1][3]})";
         } elseif ($registro[0] == $cfg["tablaPersonas"]) {
             $consulta = "INSERT INTO $cfg[tablaPersonas]
                          (id, nombre, apellidos, telefono, correo)
