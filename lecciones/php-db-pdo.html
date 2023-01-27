@@ -308,7 +308,7 @@ $consulta = "SELECT * FROM <i>tabla</i>";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (!count($registros = <span class="codigo-resaltado">$resultado-&gt;fetchAll()</span>)) {
+} elseif (count($registros = <span class="codigo-resaltado">$resultado-&gt;fetchAll()</span>) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
@@ -1056,7 +1056,7 @@ $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (!count($registros = $resultado-&gt;fetchAll())) {
+} elseif (count($registros = $resultado-&gt;fetchAll()) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
