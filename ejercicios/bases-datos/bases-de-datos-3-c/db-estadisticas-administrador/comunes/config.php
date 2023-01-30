@@ -21,10 +21,10 @@ $cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-c-estadisticas-administrador
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "localhost";                        // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_3_c_estadisticas_administrador";         // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_estadisticas_administrador";         // Nombre de la base de datos
+$cfg["mysqlHost"]     = "localhost";                                                // Nombre de host
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_c_estadisticas_administrador";        // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                                         // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_estadisticas_administrador";        // Nombre de la base de datos
 
 // Tamaño de los campos en la tabla Usuarios
 

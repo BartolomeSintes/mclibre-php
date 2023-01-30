@@ -62,6 +62,7 @@ function borraTodo()
                      usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                      password VARCHAR($cfg[tablaUsuariosTamPassword]),
                      nivel INTEGER NOT NULL,
+                     conexiones INTEGER,
                      PRIMARY KEY(id)
                      )";
 
@@ -72,8 +73,8 @@ function borraTodo()
             print "\n";
 
             $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                         (id, usuario, password, nivel)
-                         VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
+                         (id, usuario, password, nivel, conexiones)
+                         VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ", 0)";
 
             if (!$pdo->query($consulta)) {
                 print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";

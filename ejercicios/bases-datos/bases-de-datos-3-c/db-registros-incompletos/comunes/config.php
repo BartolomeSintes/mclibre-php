@@ -21,9 +21,9 @@ $cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-c-registros-incompletos.sqli
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "localhost";                        // Nombre de host
+$cfg["mysqlHost"]     = "localhost";                                            // Nombre de host
 $cfg["mysqlUser"]     = "mclibre_base_datos_3_c_registros_incompletos";         // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
+$cfg["mysqlPassword"] = "";                                                     // Contraseña de usuario
 $cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_registros_incompletos";         // Nombre de la base de datos
 
 // Tamaño de los campos en la tabla Usuarios
