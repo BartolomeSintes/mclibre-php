@@ -392,7 +392,7 @@
                     "id": "datos-repetidos-5-1",
                     "comment": "(TEST) Mismo Nombre y Apellidos. No confirma inserción",
                     "command": "open",
-                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=BBB&telefono=456&correo=a@exameple.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=BBB&telefono=456&correo=a@example.com",
                     "value": ""
                 },
                 {
@@ -435,7 +435,7 @@
                     "id": "datos-repetidos-6-1",
                     "comment": "(TEST) Mismo Nombre y Apellidos. Confirma inserción",
                     "command": "open",
-                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=BBB&telefono=456&correo=a@exameple.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=BBB&telefono=456&correo=a@example.com",
                     "value": ""
                 },
                 {
@@ -484,7 +484,7 @@
                     "id": "datos-repetidos-7-1",
                     "comment": "(TEST) Mismo Correo. Confirma inserción",
                     "command": "open",
-                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=XXX&apellidos=YYY&telefono=123&correo=xxx.yyy@exameple.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=XXX&apellidos=YYY&telefono=123&correo=xxx.yyy@example.com",
                     "value": ""
                 },
                 {
@@ -579,38 +579,117 @@
                     "value": "Registro creado correctamente."
                 },
                 {
-                    "id": "datos-repetidos-8-9",
+                    "id": "datos-repetidos-9-1",
+                    "comment": "(TEST) Comprueba registros insertados",
+                    "command": "click",
+                    "target": "linkText=Listar",
+                    "value": ""
+                },
+                {
+                    "id": "datos-repetidos-9-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Listar\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "datos-repetidos-9-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "datos-repetidos-9-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "10"
+                },
+                {
+                    "id": "datos-repetidos-9-5",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td",
+                    "value": "AAA"
+                },
+                {
+                    "id": "datos-repetidos-9-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "BBB"
+                },
+                {
+                    "id": "datos-repetidos-9-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[3]",
+                    "value": "123"
+                },
+                {
+                    "id": "datos-repetidos-9-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[4]",
+                    "value": "aaa.bbb@example.com"
+                },
+                {
+                    "id": "datos-repetidos-9-9",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[2]",
+                    "value": "CCC"
+                },
+                {
+                    "id": "datos-repetidos-9-10",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[3]",
+                    "value": "456"
+                },
+                {
+                    "id": "datos-repetidos-9-11",
+                    "command": "assertText",
+                    "target": "xpath=//tr[4]/td[4]",
+                    "value": "bbb@example.com"
+                },
+                {
+                    "id": "datos-repetidos-9-12",
+                    "command": "assertText",
+                    "target": "xpath=//tr[8]/td[4]",
+                    "value": "xxx.yyy@example.com"
+                },
+                {
+                    "id": "datos-repetidos-9-13",
+                    "command": "assertText",
+                    "target": "xpath=//tr[9]/td[3]",
+                    "value": "789"
+                },
+                {
+                    "id": "datos-repetidos-9-14",
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": ""
                 },
                 {
-                    "id": "datos-repetidos-8-10",
+                    "id": "datos-repetidos-9-15",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
                     "value": "${maxEspera}"
                 },
                 {
-                    "id": "datos-repetidos-8-11",
+                    "id": "datos-repetidos-9-16",
                     "command": "assertText",
                     "target": "xpath=//li[4]/a",
                     "value": "Desconectarse"
                 },
                 {
-                    "id": "datos-repetidos-9-1",
+                    "id": "datos-repetidos-10-1",
                     "comment": "(TEST) Desconexión final",
                     "command": "click",
                     "target": "linkText=Desconectarse",
                     "value": ""
                 },
                 {
-                    "id": "datos-repetidos-9-2",
+                    "id": "datos-repetidos-10-2",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
                     "value": "${maxEspera}"
                 },
                 {
-                    "id": "datos-repetidos-9-3",
+                    "id": "datos-repetidos-10-3",
                     "command": "assertText",
                     "target": "xpath=//li/a",
                     "value": "Conectarse"
