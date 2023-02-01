@@ -24,9 +24,10 @@ $password  = recoge("password");
 $nivel     = recoge("nivel");
 $registros = recoge("registros");
 
-$usuarioOk  = false;
-$passwordOk = false;
-$nivelOk    = false;
+$usuarioOk   = false;
+$passwordOk  = false;
+$nivelOk     = false;
+$registrosOk = false;
 
 if ($usuario == "") {
     print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
