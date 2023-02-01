@@ -43,13 +43,13 @@
                 {
                     "id": "definiciones-generales-6",
                     "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6",
+                    "target": "abcdefghi1abcdefghi2",
                     "value": "usuariosPasswordCorto"
                 },
                 {
                     "id": "definiciones-generales-7",
                     "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
+                    "target": "abcdefghi1abcdefghi2a",
                     "value": "usuariosPasswordLargo"
                 }
             ]
@@ -347,12 +347,18 @@
                 },
                 {
                     "id": "confirma-contrasena-2-4",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Hay que seleccionar un nivel de usuario."
+                },
+                {
+                    "id": "confirma-contrasena-2-5",
                     "command": "storeXpathCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
                     "value": "cuentaAvisos"
                 },
                 {
-                    "id": "confirma-contrasena-2-5",
+                    "id": "confirma-contrasena-2-6",
                     "command": "assert",
                     "target": "cuentaAvisos",
                     "value": "2"

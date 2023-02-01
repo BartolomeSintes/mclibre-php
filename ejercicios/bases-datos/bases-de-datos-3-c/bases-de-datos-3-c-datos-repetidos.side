@@ -42,13 +42,13 @@
                 {
                     "id": "definiciones-generales-6",
                     "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6",
+                    "target": "abcdefghi1abcdefghi2",
                     "value": "usuariosPasswordCorto"
                 },
                 {
                     "id": "definiciones-generales-7",
                     "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
+                    "target": "abcdefghi1abcdefghi2a",
                     "value": "usuariosPasswordLargo"
                 }
             ]
@@ -351,6 +351,18 @@
                     "value": "El registro ya existe."
                 },
                 {
+                    "id": "datos-repetidos-2-4",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-2-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
                     "id": "datos-repetidos-3-1",
                     "comment": "(TEST) Mismo Nombre. Inserta registro",
                     "command": "open",
@@ -409,24 +421,36 @@
                 },
                 {
                     "id": "datos-repetidos-5-4",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-5-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
+                    "id": "datos-repetidos-5-6",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Por favor, confirme que desea insertar el registro.'))",
                     "value": "${detectadaCadena}"
                 },
                 {
-                    "id": "datos-repetidos-5-5",
+                    "id": "datos-repetidos-5-7",
                     "command": "assert",
                     "target": "${detectadaCadena}",
                     "value": "true"
                 },
                 {
-                    "id": "datos-repetidos-5-6",
+                    "id": "datos-repetidos-5-8",
                     "command": "click",
                     "target": "xpath=//input[@value='No']",
                     "value": ""
                 },
                 {
-                    "id": "datos-repetidos-5-7",
+                    "id": "datos-repetidos-5-9",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Datos repetidos - Personas - Inicio\"]",
                     "value": "${maxEspera}"
@@ -452,30 +476,42 @@
                 },
                 {
                     "id": "datos-repetidos-6-4",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-6-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
+                    "id": "datos-repetidos-6-6",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Por favor, confirme que desea insertar el registro.'))",
                     "value": "${detectadaCadena}"
                 },
                 {
-                    "id": "datos-repetidos-6-5",
+                    "id": "datos-repetidos-6-7",
                     "command": "assert",
                     "target": "${detectadaCadena}",
                     "value": "true"
                 },
                 {
-                    "id": "datos-repetidos-6-6",
+                    "id": "datos-repetidos-6-8",
                     "command": "click",
                     "target": "xpath=//input[@value='Sí']",
                     "value": ""
                 },
                 {
-                    "id": "datos-repetidos-6-7",
+                    "id": "datos-repetidos-6-9",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 3\"]",
                     "value": "${maxEspera}"
                 },
                 {
-                    "id": "datos-repetidos-6-8",
+                    "id": "datos-repetidos-6-10",
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "Registro creado correctamente."
@@ -501,30 +537,42 @@
                 },
                 {
                     "id": "datos-repetidos-7-4",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-7-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
+                    "id": "datos-repetidos-7-6",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Por favor, confirme que desea insertar el registro.'))",
                     "value": "${detectadaCadena}"
                 },
                 {
-                    "id": "datos-repetidos-7-5",
+                    "id": "datos-repetidos-7-7",
                     "command": "assert",
                     "target": "${detectadaCadena}",
                     "value": "true"
                 },
                 {
-                    "id": "datos-repetidos-7-6",
+                    "id": "datos-repetidos-7-8",
                     "command": "click",
                     "target": "xpath=//input[@value='Sí']",
                     "value": ""
                 },
                 {
-                    "id": "datos-repetidos-7-7",
+                    "id": "datos-repetidos-7-9",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 3\"]",
                     "value": "${maxEspera}"
                 },
                 {
-                    "id": "datos-repetidos-7-8",
+                    "id": "datos-repetidos-7-10",
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "Registro creado correctamente."
@@ -550,30 +598,42 @@
                 },
                 {
                     "id": "datos-repetidos-8-4",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-8-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1"
+                },
+                {
+                    "id": "datos-repetidos-8-6",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Por favor, confirme que desea insertar el registro.'))",
                     "value": "${detectadaCadena}"
                 },
                 {
-                    "id": "datos-repetidos-8-5",
+                    "id": "datos-repetidos-8-7",
                     "command": "assert",
                     "target": "${detectadaCadena}",
                     "value": "true"
                 },
                 {
-                    "id": "datos-repetidos-8-6",
+                    "id": "datos-repetidos-8-8",
                     "command": "click",
                     "target": "xpath=//input[@value='Sí']",
                     "value": ""
                 },
                 {
-                    "id": "datos-repetidos-8-7",
+                    "id": "datos-repetidos-8-9",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 3\"]",
                     "value": "${maxEspera}"
                 },
                 {
-                    "id": "datos-repetidos-8-8",
+                    "id": "datos-repetidos-8-10",
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "Registro creado correctamente."
