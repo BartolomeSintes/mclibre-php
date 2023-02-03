@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Bases de datos (3 C). Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../../varios/prism.css">
+  <script src="../../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Ejercicios - Bases de datos (3 C) - Ayuda</h1>
+
+  <nav>
+    <p>
+      <a href="../../../index.html"><img src="../../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Bases datos (3 C) - Ayuda</h2>
+
+      <h3><a href="index.html">Enunciados</a></h3>
+      <ul>
+        <li><a href="index.html#ejercicio-0">0 - Aplicación de ejemplo</a></li>
+        <li><a href="index.html#ejercicio-1">1 - Estadísticas admin.</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Confirmar contraseña</a></li>
+        <li><a href="index.html#ejercicio-3">3 - Usuario mirón</a></li>
+        <li><a href="index.html#ejercicio-4">4 - Correo de usuarios</a></li>
+        <li><a href="index.html#ejercicio-5">5 - Datos repetidos</a></li>
+        <li><a href="index.html#ejercicio-6">6 - Registros incompletos</a></li>
+        <li><a href="index.html#ejercicio-7">7 - Cambiar contraseña</a></li>
+        <li><a href="index.html#ejercicio-8">8 - Contador de conexiones</a></li>
+        <li><a href="index.html#ejercicio-9">9 - Número máximo registros</a></li>
+      </ul>
+
+      <h3><a href="#">Ayuda</a></h3>
+      <ul>
+        <li><a href="#cambios-comunes">0 - Cambios comunes</a></li>
+        <li><a href="#ejercicio-1">1 - Estadísticas admin.</a></li>
+        <li><a href="#ejercicio-2">2 - Confirmar contraseña</a></li>
+        <li><a href="#ejercicio-3">3 - Usuario mirón</a></li>
+        <li><a href="#ejercicio-4">4 - Correo de usuarios</a></li>
+        <li><a href="#ejercicio-5">5 - Datos repetidos</a></li>
+        <li><a href="#ejercicio-6">6 - Registros incompletos</a></li>
+        <li><a href="#ejercicio-7">7 - Cambiar contraseña</a></li>
+        <li><a href="#ejercicio-8">8 - Contador de conexiones</a></li>
+        <li><a href="#ejercicio-9">9 - Número máximo registros</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta página de comentarios está en elaboración.</p>
+
+  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP de los ejercicios <a href="index.html">Base de datos (3 C)</a>.</p>
+
+  <section id="cambios-comunes">
+    <h2>Bases de datos (3 C) - Cambios comunes</h2>
+
+    <p>En todos los ejercicios es conveniente (y necesario para la comprobación de los programas con Selenium) realizar los siguientes cambios.</p>
+
+    <ol>
+      <li>[comunes/config.php] Para que no haya interferencias entre ejercicios, los nombres de sesión deben ser distintos. Se puede utilizar por ejemplo el nombre del ejercicio.
+        <div class="codigo">
+          <pre>
+<code class="language-php">$cfg["sessionName"] = "nombre-de-ejercicio";       // Nombre de sesión</code>
+</pre>
+        </div>
+      </li>
+      <li>[comunes/config.php] Para que no haya interferencias entre ejercicios, las bases de datos deben ser distintas. Se puede utilizar por ejemplo el nombre del ejercicio. Durante la realización del ejercicio, en el caso de MySQL/MariaDB la contraseña puede no tener seguridad.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Configuración para SQLite
+
+$cfg["sqliteDatabase"] = "/tmp/nombre-de-ejercicio.sqlite";    // Ubicación de la base de datos
+
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "localhost";                        // Nombre de host
+$cfg["mysqlUser"]     = "nombre-de-ejercicio";              // Nombre de usuario
+$cfg["mysqlPassword"] = "nombre-de-ejercicio";              // Contraseña de usuario
+$cfg["mysqlDatabase"] = "nombre-de-ejercicio";              // Nombre de la base de datos</code>
+</pre>
+        </div>
+      </li>
+      <li>[comunes/biblioteca.php] Para poder comprobar el funcionamiento de los programas con Selenium, el título de las páginas debe coincidir con el de las capturas de ejemplo.
+        <div class="codigo">
+          <pre>
+<code class="language-php">function cabecera($texto, $menu, $profundidadDirectorio)
+{
+    ...
+    print "    $texto. <span class="codigo-resaltado">nombre del ejercicio</span>. Bases de datos (3 C).\n";
+    ...
+    print "    &lt;h1&gt;<span class="codigo-resaltado">nombre del ejercicio</span> - $texto&lt;/h1&gt;\n";</code>
+    ...
+</pre>
+        </div>
+      </li>
+    </ol>
+
+  </section>
+
+  <section id="ejercicio-1">
+    <h2>Bases de datos (3 C) 1 - Estadísticas de administrador</h2>
+    <ol>
+      <li>Los usuarios administradores pueden ver en su menú una nueva opción, "Estadísticas".
+        <ul>
+          <li>[comunes/biblioteca.php]
+            <p>Incluimos el enlace a la página estadisticas.php en el menú del Administrador.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">        ...
+        } elseif ($menu == MENU_ADMINISTRADOR) {
+            print "        &lt;li&gt;&lt;a href=\"../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"estadisticas.php\"&gt;Estadísticas&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"borrar-todo-1.php\"&gt;Borrar todo&lt;/a&gt;&lt;/li&gt;\n";
+        } ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>La página de estadísticas muestra el número de registros guardados en cada tabla:
+        <ul>
+          <li>[administrador/estadisticas.php]
+            <p>Hacemos una consulta para contar los registros que hay en la tabla y escribimos el mensaje correspondiente dependiendo del número obtenido. Esto lo haremos para las dos tablas.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    $numero = $resultado-&gt;fetchColumn();
+    if ($numero == 0) {
+        print "    &lt;p&gt;La tabla Usuarios no contiene registros.&lt;/p&gt;\n";
+    } elseif ($numero == 1) {
+        print "    &lt;p&gt;La tabla Usuarios contiene $numero registro.&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;La tabla Usuarios contiene $numero registros.&lt;/p&gt;\n";
+    }
+}</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Únicamente los administradores podrán abrir esa página.
+        <ul>
+          <li>[administrador/estadisticas.php]
+            <p>Restringiremos el acceso a usuarios de nivel Administrador.</p>
+            <div class="codigo">
+              <pre>
+  <code class="language-php">if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; <span class="codigo-resaltado">NIVEL_ADMINISTRADOR</span>) {
+    header("Location:../index.php");
+    exit;
+}</code>
+  </pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section id="ejercicio-2">
+    <h2>Bases de datos (3 C) 2 - Confirmar contraseña</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-3">
+    <h2>Bases de datos (3 C) 3 - Usuario mirón</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-4">
+    <h2>Bases de datos (3 C) 4 - Correo de usuarios</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>Bases de datos (3 C) 5 - Datos repetidos</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-6">
+    <h2>Bases de datos (3 C) 6 - Registros incompletos</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-7">
+    <h2>Bases de datos (3 C) 7 - Cambiar contraseña</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-8">
+    <h2>Bases de datos (3 C) 8 - Contador de número de conexiones</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-9">
+    <h2>Bases de datos (3 C) 9 - Número máximo de registros por usuario</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 3 de febrero de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
