@@ -23,7 +23,7 @@
       <h3><a href="#">Enunciados</a></h3>
       <ul>
         <li><a href="#ejercicio-1">1 - Tirar dados</a></li>
-        <li><a href="#ejercicio-2">2 - Carrera de coches</a></li>
+        <li><a href="#ejercicio-2">2 - Carrera de puntos</a></li>
         <li><a href="#ejercicio-3">3 - Quita cartas en orden</a></li>
         <li><a href="#ejercicio-4">4 - Juego infinito de dados</a></li>
         <li><a href="#ejercicio-5">5 - Mueve fichas</a></li>
@@ -31,19 +31,22 @@
     </div>
   </nav>
 
-  <p><img src="../../../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Esta página de ejercicios está incompleta.</p>
+  <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/2223/cs-minijuegos-3-plantillas.zip">plantillas de los ejercicios Minijuegos (3) (Sesiones)</a>.</p>
 
   <section id="ejercicio-1">
     <h3>Minijuegos (3) 1 - Tirar dados</h3>
 
     <p>Escriba un programa de dos páginas que muestre un valor numérico y permita subirlo o bajarlo mediante dos botones. Ese valor numérico es el número de dados que se muestran en la página.</p>
     <ul>
-      <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span>.</li>
-      <li>La segunda página recibe el dato, modifica el número (el valor mínimo es 1) y redirige a la primera página.</li>
-      <li>El número se guarda en una variable de sesión. Si la variable no está definida, se le dará el valor 1.</li>
       <li>Los dados que se muestran en la primera página corresponden a entidades de carácter: de &amp;#9856; <span style="font-size: 2rem; line-height: 1rem">&#9856;</span> a &amp;#9861; <span style="font-size: 2rem; line-height: 1rem">&#9861;</span></li>
-      <li>Los dados se generan con un bucle <span class="php-res">for</span></li>
+      <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span>.</li>
+      <li>La segunda página recibe el control, modifica o mantiene el número de dados (el valor mínimo es 1 dado) y redirige a la primera página.</li>
     </ul>
+
+    <details>
+      <summary>Ayuda adicional (haga clic en esta línea para verla)</summary>
+      <p>Se puede utilizar únicamente una variable de sesión, que guarde el número de dados y cuyo valor inicial sea 1. No es necesario guardar los valores de los dados como variables de sesión, ya que se pueden generar en la primera página.</p>
+    </details>
 
     <div class="filaflex">
       <iframe src="minijuegos-3-1-1.php" style="height: 24em;"></iframe>
@@ -54,19 +57,24 @@
   </section>
 
   <section id="ejercicio-2">
-    <h3>Minijuegos (3) 2 - Carrera de coches (1)</h3>
+    <h3>Minijuegos (3) 2 - Carrera de puntos</h3>
 
-    <p>Escriba un programa de dos páginas que muestre dos puntos sobre dos línea y permita moverlos mediante dos botones que tiran dos dados.</p>
+    <p>Escriba un programa de dos páginas que muestre dos puntos sobre dos líneas y permita moverlos mediante dos botones que tiran dos dados.</p>
     <ul>
       <li>La primera página contiene un formulario con tres botones de tipo <span class="html-atri-valor">submit</span> con el mismo <span class="html-atri">name</span>.</li>
-      <li>La segunda página recibe el dato, modifica el número (el valor mínimo es 1) y redirige a la primera página.</li>
-      <li>El número se guarda en una variable de sesión. Si la variable no está definida, se le dará el valor 1.</li>
-      <li>Los dados que se muestran en la primera página corresponden a entidades de carácter: de &amp;#9856; <span style="font-size: 2rem; line-height: 1rem">&#9856;</span> a &amp;#9861; <span style="font-size: 2rem; line-height: 1rem">&#9861;</span></li>
-      <li>Los dados se generan con un bucle <span class="php-res">for</span></li>
+      <li>La segunda página recibe el control, cambia el valor de un dado o de los dos y las posiciones de los puntos y redirige a la primera página.</li>
     </ul>
 
+    <details>
+      <summary>Ayuda adicional (haga clic en esta línea para verla)</summary>
+      <ul>
+        <li>Las variables de sesión pueden ser los valores de los dos dados y las posiciones de los dos puntos</li>
+        <li>Los puntos avanzan 5 unidades por cada punto del dado.</li>
+      </ul>
+    </details>
+
     <div class="filaflex">
-      <iframe src="minijuegos-3-2-1.php" style="height: 23em;"></iframe>
+      <iframe src="minijuegos-3-2-1.php" style="height: 24em;"></iframe>
       <div class="icono-enlace">
         <a href="minijuegos-3-2-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -89,7 +97,7 @@
   <section id="ejercicio-4">
     <h3>Minijuegos (3) 4 - Juego infinito de dados</h3>
 
-    <p>Escriba un programa de dos páginas en el que se vayan tirando dados hasta conseguir una puntuación objetivo. Cuando se consigue el objetivo, se define un nuevo objetivo y se lanza un dado más que antes. El objetivo a conseguir es el número de dados multiplicado por 3,5 (redondeado al entero inferior cuando el resultado no es entero).</p>
+    <p>Escriba un programa de dos páginas en el que se vayan tirando dados hasta conseguir una puntuación objetivo. Cuando se consigue el objetivo, se define un nuevo objetivo y se lanza un dado más que antes. El objetivo a conseguir es el número de dados multiplicado por 3,5 (redondeado al entero superior cuando el resultado no es entero).</p>
 
     <div class="filaflex">
       <iframe src="minijuegos-3-4-1.php" style="height: 27em;"></iframe>
@@ -104,8 +112,17 @@
 
     <p>Escriba un programa de dos páginas en el que se puedan mover tres fichas hacia la derecha tantas casillas como indica el dado. El objetivo es que las tres fichas alcancen la última casilla de su fila</p>
 
+    <details>
+      <summary>Ayuda adicional (haga clic en esta línea para verla)</summary>
+      <ul>
+        <li>Las variables de sesión pueden ser las posiciones de los tres puntos y el valor del dado.</li>
+        <li>Si el mensaje con el resultado de la partida se genera en la segunda página, también puede ser una variable de sesión.</li>
+        <li>Como el tablero de juego es una tabla html, se puede utilizar un bucle <span class="php-res">for</span> que dibuje el punto cuando el ínidice del bucle coincida con la posición del punto.</li>
+      </ul>
+    </details>
+
     <div class="filaflex">
-      <iframe src="minijuegos-3-5-1.php" style="height: 31em;"></iframe>
+      <iframe src="minijuegos-3-5-1.php" style="height: 36em;"></iframe>
       <div class="icono-enlace">
         <a href="minijuegos-3-5-1.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
@@ -113,7 +130,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de enero de 2021</p>
+    <p class="ultmod">Última modificación de esta página: 7 de febrero de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Minijuegos (3) 2 - minijuegos-3-1-2.php
+ * Minijuegos (3) 1 - minijuegos-3-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco

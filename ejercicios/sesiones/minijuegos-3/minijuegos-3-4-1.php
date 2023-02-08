@@ -27,7 +27,7 @@ session_start();
 
 if (!isset($_SESSION["nDados"])) {
     $_SESSION["nDados"]   = 1;
-    $_SESSION["objetivo"] = rand(3, 4);
+    $_SESSION["objetivo"] = 4;
 }
 
 ?>

@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 12 - sesiones-1-12-1.php
+ * Minijuegos (3) 2 - minijuegos-3-2-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2023-02-08
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-12");
+session_name("minijuegos-3-2");
 session_start();
 if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]) || !isset($_SESSION["bd"])) {
     $_SESSION["ax"] = $_SESSION["bx"] = 0;
-    $_SESSION["ad"] = $_SESSION["bd"] = 1;
+    $_SESSION["ad"] = $_SESSION["bd"] = 0;
 }
 
 ?>
@@ -35,8 +35,8 @@ if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]
 <head>
   <meta charset="utf-8">
   <title>
-    Carrera de coches (1).
-    Sesiones (1). Sesiones.
+    Carrera de puntos.
+    Minijuegos (3). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,48 +44,37 @@ if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]
 </head>
 
 <body>
-  <h1>Carrera de coches (1)</h1>
+  <h1>Carrera de puntos</h1>
 
-  <form action="sesiones-1-12-2.php" method="get">
+  <form action="minijuegos-3-2-2.php" method="get">
     <p>Haga clic en los botones para tirar el dado y mover el punto:</p>
 
-    <table>
-      <tr>
-        <td><button type="submit" name="accion" value="a" style="font-size: 40px; line-height: 40px;">A</button></td>
 <?php
-if (isset($_SESSION["ad"])) {
-    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . 9855 + $_SESSION["ad"] . ";</span></td>\n ";
-} else {
-    print "        <td></td>\n";
-}
+print "    <table>\n";
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"accion\" value=\"a\" style=\"font-size: 40px; line-height: 40px;\">A</button></td>\n";
+print "        <td><img src=\"img/dados/$_SESSION[ad].svg\" alt=\"$_SESSION[ad]\" width=\"50\" height=\"50\"></td>\n ";
 print "        <td>\n";
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
-print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" />\n";
+print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"gray\" stroke-width=\"5\" />\n";
 print "            <circle cx=\"$_SESSION[ax]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
 print "          </svg>\n";
 print "        </td>\n";
-?>
-      </tr>
-      <tr>
-        <td><button type="submit" name="accion" value="b" style="font-size: 40px; line-height: 40px;">B</button></td>
-<?php
-if (isset($_SESSION["bd"])) {
-    print "        <td><span style=\"font-size: 3rem; line-height: 1rem\">&#" . 9855 + $_SESSION["bd"] . ";</span></td>\n ";
-} else {
-    print "        <td></td>\n";
-}
+print "      </tr>\n";
+print "      <tr>\n";
+print "        <td><button type=\"submit\" name=\"accion\" value=\"b\" style=\"font-size: 40px; line-height: 40px;\">B</button></td>\n";
+print "        <td><img src=\"img/dados/$_SESSION[bd].svg\" alt=\"$_SESSION[bd]\" width=\"50\" height=\"50\"></td>\n ";
 print "        <td>\n";
 print "          <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
 print "            width=\"620\" height=\"20\" viewbox=\"-10 0 610 20\">\n";
-print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"black\" stroke-width=\"5\" />\n";
-print "            <circle cx=\"$_SESSION[bx]\" cy=\"10\" r=\"8\" fill=\"red\" />\n";
+print "            <line x1=\"0\" y1=\"10\" x2=\"600\" y2=\"10\" stroke=\"gray\" stroke-width=\"5\" />\n";
+print "            <circle cx=\"$_SESSION[bx]\" cy=\"10\" r=\"8\" fill=\"blue\" />\n";
 print "          </svg>\n";
 print "        </td>\n";
+print "      </tr>\n";
+print "    </table>\n";
 ?>
-      </tr>
-    </table>
-
     <p>
       <button type="submit" name="accion" value="empezar">Volver a empezar</button>
     </p>
@@ -94,7 +83,7 @@ print "        </td>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2023-02-08">8 de febrero de 2023</time>
     </p>
 
     <p class="licencia">

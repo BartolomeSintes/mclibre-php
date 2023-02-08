@@ -26,7 +26,7 @@
 session_name("minijuegos-3-5");
 session_start();
 
-if (!isset($_SESSION["dado"])  || !isset($_SESSION["r"]) || !isset($_SESSION["g"]) || !isset($_SESSION["b"])) {
+if (!isset($_SESSION["dado"]) || !isset($_SESSION["r"]) || !isset($_SESSION["g"]) || !isset($_SESSION["b"]) || !isset($_SESSION["mensaje"])) {
     header("Location:minijuegos-3-5-1.php");
     exit;
 }
@@ -49,7 +49,9 @@ function recoge($var, $m = "")
 
 $ficha = recoge("ficha");
 
-if ($ficha == "r" && $_SESSION["r"] + $_SESSION["dado"] <= 7) {
+if ($ficha == "Reiniciar") {
+    session_destroy();
+} elseif ($ficha == "r" && $_SESSION["r"] + $_SESSION["dado"] <= 7) {
     $_SESSION["r"] += $_SESSION["dado"];
     $_SESSION["dado"] = rand(1, 6);
 } elseif ($ficha == "g" && $_SESSION["g"] + $_SESSION["dado"] <= 7) {
@@ -59,5 +61,12 @@ if ($ficha == "r" && $_SESSION["r"] + $_SESSION["dado"] <= 7) {
     $_SESSION["b"] += $_SESSION["dado"];
     $_SESSION["dado"] = rand(1, 6);
 }
+
+if ($_SESSION["r"] == 7 && $_SESSION["g"] == 7 && $_SESSION["b"] == 7) {
+    $_SESSION["mensaje"] = "¡Enhorabuena! Ha ganado.";
+} elseif ($_SESSION["r"] + $_SESSION["dado"] > 7 && $_SESSION["g"] + $_SESSION["dado"] > 7 && $_SESSION["b"] + $_SESSION["dado"] > 7) {
+    $_SESSION["mensaje"] = "¡Lo siento! Ha perdido. Pulse Reiniciar para jugar otra partida.";
+}
+
 
 header("Location:minijuegos-3-5-1.php");

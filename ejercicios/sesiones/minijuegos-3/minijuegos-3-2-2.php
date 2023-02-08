@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 12 - sesiones-1-12-2.php
+ * Minijuegos (3) 2 - minijuegos-3-2-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2018 Bartolomé Sintes Marco
@@ -22,8 +22,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Se accede a la sesión
-session_name("sesiones-1-12");
+session_name("minijuegos-3-2");
 session_start();
+
+if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]) || !isset($_SESSION["bd"])) {
+    header("Location:minijuegos-3-2-1.php");
+    exit;
+}
 
 function recoge($var, $m = "")
 {
@@ -41,11 +46,6 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-if (!isset($_SESSION["ax"]) || !isset($_SESSION["bx"]) || !isset($_SESSION["ad"]) || !isset($_SESSION["bd"])) {
-    $_SESSION["ax"] = $_SESSION["bx"];
-    $_SESSION["ad"] = $_SESSION["bd"] = 1;
-}
-
 $accion = recoge("accion");
 
 if ($accion == "a") {
@@ -55,8 +55,8 @@ if ($accion == "a") {
     $_SESSION["bd"] = rand(1, 6);
     $_SESSION["bx"] += 5 * $_SESSION["bd"] ;
 } elseif ($accion == "empezar") {
-    $_SESSION["ad"] = $_SESSION["bd"] = 1;
+    $_SESSION["ad"] = $_SESSION["bd"] = 0;
     $_SESSION["ax"] = $_SESSION["bx"] = 0;
 }
 
-header("Location:sesiones-1-12-1.php");
+header("Location:minijuegos-3-2-1.php");

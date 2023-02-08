@@ -26,11 +26,12 @@
 session_name("minijuegos-3-5");
 session_start();
 
-if (!isset($_SESSION["dado"])) {
-    $_SESSION["dado"] = rand(1, 6);
-    $_SESSION["r"]    = 0;
-    $_SESSION["g"]    = 0;
-    $_SESSION["b"]    = 0;
+if (!isset($_SESSION["mensaje"])) {
+    $_SESSION["dado"]    = rand(1, 6);
+    $_SESSION["r"]       = 0;
+    $_SESSION["g"]       = 0;
+    $_SESSION["b"]       = 0;
+    $_SESSION["mensaje"] = "";
 }
 
 ?>
@@ -49,7 +50,6 @@ if (!isset($_SESSION["dado"])) {
       table { border-collapse: collapse; }
       td { border: black 2px solid; width: 60px; height: 60px; }
       button { background-color: transparent; border: none; }
-
   </style>
 </head>
 
@@ -111,14 +111,22 @@ for ($i = 0; $i < 8; $i++) {
 }
 print "      </tr>\n";
 print "    </table>\n";
+print "    <p>\n";
+if ($_SESSION["mensaje"] != "") {
+    print "    <p>$_SESSION[mensaje]</p>\n";
+    print "\n";
+}
+print "        <input type=\"submit\" name=\"ficha\" value=\"Reiniciar\">\n";
+print "    </p>\n";
 print "\n";
+
 ?>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-23">23 de noviembre de 2021</time>
+      <time datetime="2023-02-08">8 de febrero de 2023</time>
     </p>
 
     <p class="licencia">
