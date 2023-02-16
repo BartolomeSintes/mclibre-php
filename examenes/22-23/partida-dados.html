@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Partida de dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Partida de dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Partida de dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule un Partida de dados para dos jugadores.</p>
+
+  <section id="comentarios">
+    <h2>Partida de dados - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra las tiradas de 3 dados de ambos jugadores y la cantidad de tiradas pendientes entre paréntesis:
+            <ul>
+              <li>La primera vez que se abre la página (o cuando se reinicia la partida) los dados en blanco y 5 tiradas pendientes.</li>
+              <li>Mientras queden tiradas pendientes, cada vez que un jugador hace clic en su botón "Tiro dados", los dados cambian.</li>
+              <li>Cada vez que se tiran los dados, el número de tiradas pendientes se reduce.</li>
+              <li>Si un jugador ya no quiere tirar más los dados, puede hacer clic en su botón "Me planto", que reduce a cero las tiradas pendientes.</li>
+              <li>Cuando los dos jugadores se quedan sin tiradas pendientes, se muestra el resultado de la partida. Gana el jugador con la puntuación más alta.</li>
+              <li>La puntuación de cada jugador es la suma de sus dados. Gana el jugador con la puntuación más alta.</li>
+              <li>Un botón permite reiniciar el juego en cualquier momento.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón elegido, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario, ni modificar los datos ni los contadores.</li>
+      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <ul>
+          <li>Empieza la partida:
+            <p class="captura"><img src="img/partida-dados-1.png" alt="Partida de dados" width="1012" height="440"></p>
+          </li>
+          <li>El jugador A tira una vez:
+            <p class="captura"><img src="img/partida-dados-2.png" alt="Partida de dados" width="1012" height="440"></p>
+          </li>
+          <li>El jugador B tira dos veces hasta superar al jugador A:
+            <p class="captura"><img src="img/partida-dados-3.png" alt="Partida de dados" width="1012" height="440"></p>
+          </li>
+          <li>El jugador A tira hasta quedarse sin tiradas, sin conseguir superar al jugador B:
+            <p class="captura"><img src="img/partida-dados-4.png" alt="Partida de dados" width="1012" height="440"></p>
+          </li>
+          <li>El jugador B se planta y la partida termina, ganando el jugador B:
+            <p class="captura"><img src="img/partida-dados-5.png" alt="Partida de dados" width="1012" height="440"></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Partida de dados - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td style="font-size: 7em"&gt;A&lt;/td&gt;
+        &lt;td&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="140" height="140" /&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">1</span>.svg" alt="<span class="codigo-resaltado">1</span>" width="140" height="140" /&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span>" width="140" height="140" /&gt;
+        &lt;/td&gt;
+        &lt;td style="font-size: 7em"&gt;(<span class="codigo-resaltado">0</span>)&lt;/td&gt;
+        &lt;td&gt;
+          &lt;button type="submit" name="accion" value="tiroA"&gt;Tiro dados&lt;/button&gt;&lt;br&gt;
+          &lt;br&gt;
+          &lt;button type="submit" name="accion" value="plantoA"&gt;Me planto&lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style="font-size: 7em"&gt;B&lt;/td&gt;
+        &lt;td&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span>" width="140" height="140" /&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">6</span>.svg" alt="<span class="codigo-resaltado">6</span>" width="140" height="140" /&gt;
+          &lt;img src="img/dados/<span class="codigo-resaltado">2</span>.svg" alt="<span class="codigo-resaltado">2</span>" width="140" height="140" /&gt;
+        &lt;/td&gt;
+        &lt;td style="font-size: 7em"&gt;(<span class="codigo-resaltado">0</span>)&lt;/td&gt;
+        &lt;td&gt;
+          &lt;button type="submit" name="accion" value="tiroB"&gt;Tiro dados&lt;/button&gt;&lt;br&gt;
+          &lt;br&gt;
+          &lt;button type="submit" name="accion" value="plantoB"&gt;Me planto&lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    <span class="codigo-resaltado">&lt;p&gt;Ha ganado el jugador B&lt;/p&gt;</span></code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 7 de febrero de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

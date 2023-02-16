@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de cartas. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de cartas</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de cartas</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule un juego de cartas para dos jugadores.</p>
+
+  <section id="comentarios">
+    <h2>Juego de cartas - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra el estado de la partida:
+            <ul>
+              <li>Los jugadores van jugando por turnos consecutivos.</li>
+              <li>Cada jugador tiene dos cartas al azar entre 1 y 10 (el jugador A cartas de corazones y el jugador B cartas de picas). Las cartas pueden repetirse..</li>
+              <li>El jugador al que le toca el turno, puede pulsar cualquiera de las cuatro cartas para cambiarla por otra carta al azar, o puede pulsar uno de los botones "Todas" para que se cambian las dos cartas de la fila correspondiente.</li>
+              <li>El jugador cuyas cartas sumen más puntos gana un punto. Si hay empate, nadie gana ningún punto.</li>
+              <li>Los puntos se muestran a la izquierda de las cartas.</li>
+              <li>El jugador que alcanza cinco puntos gana la partida.</li>
+              <li>En la parte superior, la página indica a quién le toca el turno o quién ha ganado la partida.</li>
+              <li>Un botón permite reiniciar el juego en cualquier momento.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón elegido, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario, ni modificar los datos ni los contadores.</li>
+      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <ul>
+          <li>Empieza la partida:
+            <p class="captura"><img src="img/juego-cartas-1.png" alt="Juego de cartas" width="995" height="600"></p>
+          </li>
+          <li>El jugador A cambia el 6 del jugador B y gana el punto:
+            <p class="captura"><img src="img/juego-cartas-2.png" alt="Juego de cartas" width="995" height="490"></p>
+          </li>
+          <li>El jugador B cambia las dos cartas del jugador A, pero A vuelve a ganar el punto:
+            <p class="captura"><img src="img/juego-cartas-3.png" alt="Juego de cartas" width="995" height="490"></p>
+          </li>
+          <li>El jugador A cambia el 5 del jugador B y gana el punto:
+            <p class="captura"><img src="img/juego-cartas-4.png" alt="Juego de cartas" width="995" height="490"></p>
+          </li>
+          <li>El jugador B cambia su as, pero vuelve a perder:
+            <p class="captura"><img src="img/juego-cartas-5.png" alt="Juego de cartas" width="995" height="490"></p>
+          </li>
+          <li>El jugador A cambia uno de sus 5 y gana el punto y la partida:
+            <p class="captura"><img src="img/juego-cartas-6.png" alt="Juego de cartas" width="995" height="490"></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de cartas - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">    &lt;p style="font-size: 2em"&gt;<span class="codigo-resaltado">Le toca jugar a A</span>&lt;/p&gt;
+
+    &lt;p&gt;
+      &lt;span style="font-size: 7em"&gt;A: <span class="codigo-resaltado">0</span>&lt;/span&gt;
+      &lt;button type="submit" name="accion" value="A1"&gt;
+        &lt;img src="img/cartas/c<span class="codigo-resaltado">9</span>.svg" alt="<span class="codigo-resaltado">9</span>" width="140" height="140" /&gt;
+      &lt;/button&gt;
+      &lt;button type="submit" name="accion" value="A2"&gt;
+        &lt;img src="img/cartas/c<span class="codigo-resaltado">5</span>.svg" alt="<span class="codigo-resaltado">5</span>" width="140" height="140" /&gt;
+      &lt;/button&gt;
+      &lt;button type="submit" name="accion" value="A" style="font-size: 2em"&gt;Todas&lt;/button&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;
+      &lt;span style="font-size: 7em"&gt;B: <span class="codigo-resaltado">0</span>&lt;/span&gt;
+      &lt;button type="submit" name="accion" value="B1"&gt;
+        &lt;img src="img/cartas/p<span class="codigo-resaltado">10</span>.svg" alt="<span class="codigo-resaltado">10</span>" width="140" height="140" /&gt;
+      &lt;/button&gt;
+      &lt;button type="submit" name="accion" value="B2"&gt;
+        &lt;img src="img/cartas/p<span class="codigo-resaltado">4</span>.svg" alt="<span class="codigo-resaltado">4</span>" width="140" height="140" /&gt;
+      &lt;/button&gt;
+      &lt;button type="submit" name="accion" value="B" style="font-size: 2em"&gt;Todas&lt;/button&gt;
+    &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 15 de febrero de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

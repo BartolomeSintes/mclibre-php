@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Usuario bloqueado. Bases de datos. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Bases de datos - Usuario bloqueado</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Usuario bloqueado</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe ampliar la aplicación proporcionada en la plantilla de manera que al crear un usuario se pueda indicar si el usuario está o no bloqueado. Un usuario bloqueado no podrá acceder a la aplicación. La aplicación debe funcionar tanto en SQLite como en MySQL. Haga una captura de la pantalla en MySQL en la que se vea la base de datos de la aplicación y el contenido de la tabla de usuarios.</p>
+
+  <section id="comentarios">
+    <h2>Usuario bloqueado - Comentarios</h2>
+
+    <p>Campo "bloqueado" en la tabla Usuarios</p>
+    <ul>
+      <li>La tabla de Usuarios incluirá un nuevo campo llamado "bloqueado" que podrá tener dos valores, uno que represente que el usuario está bloqueado y otro que no (pueden ser valores numéricos o cadenas, a elección del alumno, pero se aconseja utilizar valores numéricos).</li>
+      <li>Los usuarios iniciales (tanto el usuario root como los del fichero demo.php) no estarán bloqueados.</li>
+    </ul>
+
+    <p>Creación de usuarios</p>
+    <ul>
+      <li>Al crear un usuario, se deberá indicar si el usuario está inicialmente bloqueado. El valor por defecto del botón radio será No.
+        <p class="captura"><img src="img/db-usuario-bloqueado-1.png" alt="Usuario bloqueado" width="1012" height="290"></p>
+      </li>
+      <li>El programa comprobará que el valor recibido es uno de los dos permitidos:
+        <p class="captura"><img src="img/db-usuario-bloqueado-2.png" alt="Usuario bloqueado" width="1012" height="180"></p>
+      </li>
+    </ul>
+
+    <p>Conexión</p>
+    <ul>
+      <li>Si un usuario bloqueado intenta conectarse, se mostrará un aviso indicando que no puede hacerlo:
+        <p class="captura"><img src="img/db-usuario-bloqueado-11.png" alt="Usuario bloqueado" width="1012" height="120"></p>
+      </li>
+    </ul>
+
+    <p>Listado de usuarios</p>
+    <ul>
+      <li>El listado de usuarios mostrará una columna "Bloqueado" indicando el estado del usuario:
+        <p class="captura"><img src="img/db-usuario-bloqueado-21.png" alt="Usuario bloqueado" width="1012" height="300"></p>
+      </li>
+      <li>El listado de usuarios se podrá ordenar por el campo "Bloqueado":
+        <p class="captura"><img src="img/db-usuario-bloqueado-21.png" alt="Usuario bloqueado" width="1012" height="300"></p>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 15 de febrero de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
