@@ -57,7 +57,7 @@ session_start();</code>
         </div>
       </li>
 
-      <li>Si al acceder a la primera página no están definidas las variables de sesión, redirija a la la segunda página, en la que se led dará valor.
+      <li>Si al acceder a la primera página no están definidas las variables de sesión, redirija a la segunda página, en la que se le dará valor.
         <div class="codigo">
           <pre>
 <code class="language-php">// Si no están definidas las variables de sesión, redirigimos a la segunda página
@@ -69,7 +69,7 @@ if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
         </div>
       </li>
 
-      <li>Si al acceder a la segunda página no están definidas las variables de sesión, se le debe dar valor. En este programa, las variables de sesión guardarán el número de dibujos y los propios dibujos. El número de dibujos es un valor al azar. para seleccioanr los dibujos podemos generar una matriz con todos los dibujos posibles, barajar la matriz y quedarnos con los primeros N elementos (siendo N el número de dibujos obtenido al azar):
+      <li>Si al acceder a la segunda página no están definidas las variables de sesión, se le debe dar valor. En este programa, las variables de sesión guardarán el número de dibujos y los propios dibujos. El número de dibujos es un valor al azar. para seleccionar los dibujos podemos generar una matriz con todos los dibujos posibles, barajar la matriz y quedarnos con los primeros N elementos (siendo N el número de dibujos obtenido al azar):
         <div class="codigo">
           <pre>
 <code class="language-php">// Si no están definidas las variables de sesión, las definimos
@@ -197,7 +197,7 @@ if ($numeroDibujos == "") {
         </div>
       </li>
 
-      <li>Si se intenta acceder a la tercera o cuarta página sin haber pasado por la primera o segunda página (y por tanto no estarán creadas las variables de seisión)., se redirigirá automáticamente a la segunda página, sin indicar nada al usuario.
+      <li>Si se intenta acceder a la tercera o cuarta página sin haber pasado por la primera o segunda página (y por tanto no estarán creadas las variables de sesión)., se redirigirá automáticamente a la segunda página, sin indicar nada al usuario.
         <div class="codigo">
           <pre>
 <code class="language-php">// Si no están definidas las variables de sesión, redirigimos a la segunda página
@@ -209,7 +209,7 @@ if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
         </div>
       </li>
 
-      <li>Si se envía un valor numérico en el rango permitido, se borrarán los dibujos y se redirigirá a la segunda página, en la que se vovlerá a generar la matriz de dibujos. Si se envían a la cuarta página valores no permitidos, se redirigirá automáticamente a la tercera página, sin indicar nada al usuario.
+      <li>Si se envía un valor numérico en el rango permitido, se borrarán los dibujos y se redirigirá a la segunda página, en la que se volverá a generar la matriz de dibujos. Si se envían a la cuarta página valores no permitidos, se redirigirá automáticamente a la tercera página, sin indicar nada al usuario.
         <div class="codigo">
           <pre>
 <code class="language-php">// Si el dato es válido ...

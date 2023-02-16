@@ -137,7 +137,7 @@ print "&lt;/pre&gt;\n";
       </div>
     </div>
 
-    <p>Como se puede comprobar en el ejemplo anterior, el control de caja de texto crea siempre un elemento en la matriz $_REQUEST (aunque la caja de texto se deje vacía), mientras que el botón radio solamente crea un elemento en la matriz $_REQUEST si se elige una de las opciones del botón radioe.</p>
+    <p>Como se puede comprobar en el ejemplo anterior, el control de caja de texto crea siempre un elemento en la matriz $_REQUEST (aunque la caja de texto se deje vacía), mientras que el botón radio solamente crea un elemento en la matriz $_REQUEST si se elige una de las opciones del botón radio.</p>
 
     <p>En la lección <a href="php-controles.html">Controles en formularios</a> de estos apuntes se detallan las particularidades de cada tipo de control.</p>
   </section>
@@ -145,7 +145,7 @@ print "&lt;/pre&gt;\n";
   <section id="visibilidad-datos">
     <h2>Visibilidad de los datos enviados: el atributo <span class="html-atri">method</span></h2>
 
-    <p>El atributo <span class="html-atri">method</span> de la etiqueta <span class="html-eti">&lt;form&gt;</span> permite elegir si la información de los controles se incluye en la URL de llamada a la página (<span class="html-atri">method</span>="<span class="html-atri-valor">get</span>") o se incluyen en las cabeceras HTPP (<span class="html-atri">method</span>="<span class="html-atri-valor">post</span>"). Si no se incluye el atributo, el comportamiento es el mismo que con <span class="html-atri-valor">get</span>.</p>
+    <p>El atributo <span class="html-atri">method</span> de la etiqueta <span class="html-eti">&lt;form&gt;</span> permite elegir si la información de los controles se incluye en la URL de llamada a la página (<span class="html-atri">method</span>="<span class="html-atri-valor">get</span>") o se incluyen en las cabeceras HTTP (<span class="html-atri">method</span>="<span class="html-atri-valor">post</span>"). Si no se incluye el atributo, el comportamiento es el mismo que con <span class="html-atri-valor">get</span>.</p>
 
     <p>La diferencia es que con el valor <span class="html-atri-valor">get</span> se pueden ver en la barra de dirección los nombres de los controles y los valores introducidos por el usuario, mientras que con el valor <span class="html-atri-valor">post</span> no. Los datos recibidos son los mismos y desde el punto de vista de la seguridad ambos métodos son equivalentes (es decir, inseguros si se utiliza http y seguros si se utiliza https).</p>
 
@@ -303,11 +303,11 @@ print "&lt;/pre&gt;\n";
   <section id="ataques-inyeccion">
     <h2>Ataques de inyección</h2>
 
-    <p>Es importante ser consciente de que cualquier página PHP puede recibir datos y que se pueden enviar datos a cualquier página PHP. Enviar datos a una página que no espera recibir datos no suele afectar al funcionamiento de la página y por tanto no suele suponer un riesgo de seguridad, pero si hablamos de una página que espera recibir datos de un formulario, entonces estamos ante la posibilidad de que la página sea "atacada" con datos inesperados que sí pueden afectar a su funcionamiento. Este tipo de ataques se denominan en general ataques de inyección y pueden ser de muy divera naturaleza, según cuál sea el objetivo del ataque.</p>
+    <p>Es importante ser consciente de que cualquier página PHP puede recibir datos y que se pueden enviar datos a cualquier página PHP. Enviar datos a una página que no espera recibir datos no suele afectar al funcionamiento de la página y por tanto no suele suponer un riesgo de seguridad, pero si hablamos de una página que espera recibir datos de un formulario, entonces estamos ante la posibilidad de que la página sea "atacada" con datos inesperados que sí pueden afectar a su funcionamiento. Este tipo de ataques se denominan en general ataques de inyección y pueden ser de muy diversa naturaleza, según cuál sea el objetivo del ataque.</p>
 
     <p>Por ello, una página que reciba datos de un formulario debe protegerse ante este tipo de ataques. Por ejemplo, debe funcionar correctamente aunque no le lleguen los datos esperados o aunque los datos no tengan el formato esperado.</p>
 
-    <p>Para realizar un ataque de inyección, basta con editar la URL y modificar los datos, borrando, modificando o añadiendo nuevos datos, respetando la notación ?clave1=valor1&amp;clave2=valor2 .... Puede abrir el ejemplo siguiente en una nueva pestaña y modifcar la URL como se muestra en las capturas siguientes.</p>
+    <p>Para realizar un ataque de inyección, basta con editar la URL y modificar los datos, borrando, modificando o añadiendo nuevos datos, respetando la notación ?clave1=valor1&amp;clave2=valor2 .... Puede abrir el ejemplo siguiente en una nueva pestaña y modificar la URL como se muestra en las capturas siguientes.</p>
 
     <div class="filaflex">
       <iframe src="ejemplos/formularios/form-4-1.php" style="height: 9em;"></iframe>
