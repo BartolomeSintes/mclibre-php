@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de cartas. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de cartas</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de cartas</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre una partida de un sencillo juego de cartas.</p>
+
+  <section id="comentarios">
+    <h2>Juego de cartas - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá una sola página.</li>
+      <li>La página mostrará cuatro cartas al azar, del 1 al 10, de palos al azar (corazones, diamantes, picas o tréboles). Las cartas se pueden repetir.</li>
+      <li>Si las cuatro cartas tienen números distintos, gana la chica, lo que se indica con las imágenes <img src="img/princess-u1f478.svg" alt="Ganadora" height="100"> (princess-u1f478.svg) y <img src="img/man-u1f468-modificado.svg" alt="Perdedor" height="92"> (man-u1f468-modificado.svg).</li>
+      <li>Si no es así, gana el chico, los que se indica con las imágenes <img src="img/prince-u1f934.svg" alt="Ganador" height="100"> (prince-u1f934.svg) y <img src="img/woman-u1f469-modificado.svg" alt="Perdedora" height="92"> (woman-u1f469-modificado.svg).</li>
+      <li>El palo de las cartas no afecta al resultado de la partida, que solo depende de los valores numéricos de las cartas.</li>
+      <li>Al actualizar la página, se mostrará una nueva partida.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/juego-cartas-2-1.png" alt="Juego de cartas" width="1012" height="220"></p>
+        <p class="captura"><img src="img/juego-cartas-2-2.png" alt="Juego de cartas" width="1012" height="220"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de cartas - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    <span class="codigo-resaltado">&lt;img src="img/man-u1f468-modificado.svg" alt="Perdedor" height="92"&gt;</span>
+    &lt;img src="img/cartas/<span class="codigo-resaltado">d8</span>.svg" alt="<span class="codigo-resaltado">8 de diamantes</span>" height="100"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">t10</span>.svg" alt="<span class="codigo-resaltado">10 de treboles</span>" height="100"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">c5</span>.svg" alt="<span class="codigo-resaltado">5 de corazones</span>" height="100"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">c2</span>.svg" alt="<span class="codigo-resaltado">2 de treboles</span>" height="100"&gt;
+    <span class="codigo-resaltado">&lt;img src="img/princess-u1f478.svg" alt="Ganadora" height="100"&gt;</span>
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    <span class="codigo-resaltado">&lt;img src="img/prince-u1f934.svg" alt="Ganador" height="100"&gt;</span>
+    &lt;img src="img/cartas/<span class="codigo-resaltado">d7</span>.svg" alt="<span class="codigo-resaltado">7 de diamantes</span>" height="100"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">t5</span>.svg" alt="<span class="codigo-resaltado">5 de treboles</span>" height="100"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">p2</span>.svg" alt="<span class="codigo-resaltado">2 de picas</span>" height="100"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">p2</span>.svg" alt="<span class="codigo-resaltado">2 de corazones</span>" height="100"&gt;
+    <span class="codigo-resaltado">&lt;img src="img/woman-u1f469-modificado.svg" alt="Perdedora" height="92"&gt;</span>
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de febrero de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
