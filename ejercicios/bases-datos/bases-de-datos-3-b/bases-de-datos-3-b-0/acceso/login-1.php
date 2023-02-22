@@ -46,8 +46,8 @@ print "        </tr>\n";
 print "      </table>\n";
 print "\n";
 print "      <p>\n";
-print "        <input type=\"submit\" value=\"Identificar\" />\n";
-print "        <input type=\"reset\" value=\"Borrar\" />\n";
+print "        <input type=\"submit\" value=\"Identificar\">\n";
+print "        <input type=\"reset\" value=\"Borrar\">\n";
 print "      </p>\n";
 print "    </form>\n";
 

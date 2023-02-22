@@ -105,7 +105,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-    print "  <link rel=\"stylesheet\" href=\"{$profundidadDirectorio}comunes/mclibre-php-proyectos.css\" title=\"Color\" />\n";
+    print "  <link rel=\"stylesheet\" href=\"{$profundidadDirectorio}comunes/mclibre-php-proyectos.css\" title=\"Color\">\n";
     print "</head>\n";
     print "\n";
     print "<body>\n";

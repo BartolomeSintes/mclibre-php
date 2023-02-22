@@ -80,9 +80,9 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
     if ($profundidadDirectorio == 0) {
-        print "  <link rel=\"stylesheet\" href=\"comunes/mclibre-php-proyectos.css.php\" title=\"Color\" />\n";
+        print "  <link rel=\"stylesheet\" href=\"comunes/mclibre-php-proyectos.css.php\" title=\"Color\">\n";
     } elseif ($profundidadDirectorio == 1) {
-        print "  <link rel=\"stylesheet\" href=\"../comunes/mclibre-php-proyectos.css.php\" title=\"Color\" />\n";
+        print "  <link rel=\"stylesheet\" href=\"../comunes/mclibre-php-proyectos.css.php\" title=\"Color\">\n";
     }
     print "</head>\n";
     print "\n";
