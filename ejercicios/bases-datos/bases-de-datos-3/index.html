@@ -26,6 +26,7 @@
         <li><a href="#ejercicio-2">2 - Usuario único</a></li>
         <li><a href="#ejercicio-3">3 - Tabla de usuarios</a></li>
         <li><a href="#ejercicio-4">4 - Categorías de usuarios</a></li>
+        <li><a href="#ejercicio-5">5 - Mejoras</a></li>
       </ul>
 
       <h3><a href="ayuda.html">Ayuda</a></h3>
@@ -34,6 +35,7 @@
         <li><a href="ayuda.html#ejercicio-2">2 - Usuario único</a></li>
         <li><a href="ayuda.html#ejercicio-3">3 - Tabla de usuarios</a></li>
         <li><a href="ayuda.html#ejercicio-4">4 - Categorías de usuarios</a></li>
+        <li><a href="ayuda.html#ejercicio-5">5 - Mejoras</a></li>
       </ul>
     </div>
   </nav>
@@ -42,10 +44,11 @@
 
   <p>Para facilitar la realización de los ejercicios, se proporcionan unas <a href="../../../soluciones/2223/db-bases-de-datos-3-plantillas.zip">plantillas de los ejercicios Identificación de usuarios</a>:</p>
   <ul>
-    <li>Las plantillas para el ejercicio 1 son los ficheros de la solución del ejercicio Bases de Datos 2 (B) 2, sin modificar pero distribuidos en carpetas.</li>
-    <li>Las plantillas para el ejercicio 2 son los ficheros de la solución del ejercicio 1.</li>
-    <li>Las plantillas para el ejercicio 3 son los ficheros de la solución del ejercicio 2, sin apenas modificar pero con una nueva carpeta db que contiene la carpeta tabla-usuarios que es un duplicado de tabla-personas y con las bibliotecas específicas modificadas (funciones borraTodo() modificadas y funciones existenTablas() añadidas).</li>
-    <li>Las plantillas para el ejercicio 4 son los ficheros de la solución del ejercicio 3.</li>
+    <li>La plantilla para el ejercicio 1 son los ficheros de la solución del ejercicio Bases de Datos 2 (B) 2, sin modificar pero distribuidos en carpetas.</li>
+    <li>La plantilla para el ejercicio 2 son los ficheros de la solución del ejercicio 1.</li>
+    <li>La plantilla para el ejercicio 3 son los ficheros de la solución del ejercicio 2, sin apenas modificar pero con una nueva carpeta db que contiene la carpeta tabla-usuarios que es un duplicado de tabla-personas y con las bibliotecas específicas modificadas (funciones borraTodo() modificadas y funciones existenTablas() añadidas).</li>
+    <li>La plantilla para el ejercicio 4 son los ficheros de la solución del ejercicio 3.</li>
+    <li>La plantilla para el ejercicio 5 son los ficheros de la solución del ejercicio 4.</li>
   </ul>
 
   <p>Para ayudarle en la realización de estos ejercicios puede consultar una <a href="ayuda.html">página de comentarios</a> con fragmentos de código.</p>
@@ -123,8 +126,32 @@
     </div>
   </section>
 
+  <section id="ejercicio-5">
+    <h2>Bases de datos (3) - 5 - Mejoras en la aplicación</h2>
+
+    <p>Implemente estas mejoras en el ejercicio anterior:</p>
+    <ol>
+      <li>Al borrar todo, ofrecer la opción de insertar automáticamente algunos registros de prueba.</li>
+      <li>En SQLite, si no existe el directorio donde se quiere guardar la base de datos, mostrar un mensaje indicando el problema.
+        <details>
+          <summary>Ayuda (haga clic aquí si no se le ocurre cómo hacerlo)</summary>
+          <p>Para resolver este apartado puede utilizar las funciones <a href="https://www.php.net/manual/en/function.dirname.php"><span class="pfp-fun">dirname()</span></a> e <a href="https://www.php.net/manual/en/function.is-dir.php"><span class="pfp-fun">is_dir()</span></a></p>
+        </details>
+      </li>
+      <li>Al modificar el registro de un usuario, ofrecer la posibilidad de mantener la contraseña (por ejemplo, marcando una casilla).</li>
+      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["tablaPersonasMaxReg"] o $cfg["tablaUsuariosMaxReg"] es 0 o negativo.</li>
+    </ol>
+
+    <div class="filaflex">
+      <iframe src="bases-de-datos-3-5/index.php" style="height: 30em;"></iframe>
+      <div class="icono-enlace">
+        <a href="bases-de-datos-3-5/index.php"><img src="../../../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 20 de abril de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
