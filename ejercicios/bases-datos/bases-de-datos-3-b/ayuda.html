@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Bases de datos (3 B). Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <title>Bases de datos (3 C). Comentarios. Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../../varios/favicon.svg">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>Ejercicios - Bases de datos (3 B) - Ayuda</h1>
+  <h1>Ejercicios - Bases de datos (3 C) - Ayuda</h1>
 
   <nav>
     <p>
@@ -20,263 +20,203 @@
     </p>
 
     <div class="toc">
-      <h2>Bases datos (3 B) - Ayuda</h2>
+      <h2>Bases datos (3 C) - Ayuda</h2>
 
       <h3><a href="index.html">Enunciados</a></h3>
       <ul>
         <li><a href="index.html#ejercicio-0">0 - Aplicación de ejemplo</a></li>
-        <li><a href="index.html#ejercicio-1">1 - Mejoras (1)</a></li>
-        <li><a href="index.html#ejercicio-2">2 - Mejoras (2)</a></li>
-        <li><a href="index.html#ejercicio-3">3 - PostgreSQL</a></li>
-        <li><a href="index.html#ejercicio-4">4 - Agenda multiusuario</a></li>
-        <li><a href="index.html#ejercicio-5">5 - Multiusuario (2)</a></li>
-        <li><a href="index.html#ejercicio-6">6 - Fecha</a></li>
+        <li><a href="index.html#ejercicio-1">1 - Estadísticas admin.</a></li>
+        <li><a href="index.html#ejercicio-2">2 - Confirmar contraseña</a></li>
+        <li><a href="index.html#ejercicio-3">3 - Usuario mirón</a></li>
+        <li><a href="index.html#ejercicio-4">4 - Correo de usuarios</a></li>
+        <li><a href="index.html#ejercicio-5">5 - Datos repetidos</a></li>
+        <li><a href="index.html#ejercicio-6">6 - Registros incompletos</a></li>
+        <li><a href="index.html#ejercicio-7">7 - Cambiar contraseña</a></li>
+        <li><a href="index.html#ejercicio-8">8 - Contador de conexiones</a></li>
+        <li><a href="index.html#ejercicio-9">9 - Número máximo registros</a></li>
       </ul>
 
       <h3><a href="#">Ayuda</a></h3>
       <ul>
-        <li><a href="#ejercicio-1">1 - Mejoras (1)</a></li>
-        <li><a href="#ejercicio-2">2 - Mejoras (2)</a></li>
-        <li><a href="#ejercicio-3">3 - PostgreSQL</a></li>
-        <li><a href="#ejercicio-4">4 - Agenda multiusuario</a></li>
-        <li><a href="#ejercicio-5">5 - Multiusuario (2)</a></li>
-        <li><a href="#ejercicio-6">6 - Fecha</a></li>
+        <li><a href="#cambios-comunes">0 - Cambios comunes</a></li>
+        <li><a href="#ejercicio-1">1 - Estadísticas admin.</a></li>
+        <li><a href="#ejercicio-2">2 - Confirmar contraseña</a></li>
+        <li><a href="#ejercicio-3">3 - Usuario mirón</a></li>
+        <li><a href="#ejercicio-4">4 - Correo de usuarios</a></li>
+        <li><a href="#ejercicio-5">5 - Datos repetidos</a></li>
+        <li><a href="#ejercicio-6">6 - Registros incompletos</a></li>
+        <li><a href="#ejercicio-7">7 - Cambiar contraseña</a></li>
+        <li><a href="#ejercicio-8">8 - Contador de conexiones</a></li>
+        <li><a href="#ejercicio-9">9 - Número máximo registros</a></li>
       </ul>
     </div>
   </nav>
 
   <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta página de comentarios está en elaboración.</p>
 
-  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP de los ejercicios <a href="index.html">Base de datos (3 B)</a>.</p>
+  <p>Esta página contiene comentarios ampliados con fragmentos de código PHP de los ejercicios <a href="index.html">Base de datos (3 C)</a>.</p>
+
+  <section id="cambios-comunes">
+    <h2>Bases de datos (3 C) - Cambios comunes</h2>
+
+    <p>En todos los ejercicios es conveniente (y necesario para la comprobación de los programas con Selenium) realizar los siguientes cambios.</p>
+
+    <ol>
+      <li>[comunes/config.php] Para que no haya interferencias entre ejercicios, los nombres de sesión deben ser distintos. Se puede utilizar por ejemplo el nombre del ejercicio.
+        <div class="codigo">
+          <pre>
+<code class="language-php">$cfg["sessionName"] = "nombre-de-ejercicio";       // Nombre de sesión</code>
+</pre>
+        </div>
+      </li>
+      <li>[comunes/config.php] Para que no haya interferencias entre ejercicios, las bases de datos deben ser distintas. Se puede utilizar por ejemplo el nombre del ejercicio. Durante la realización del ejercicio, en el caso de MySQL/MariaDB la contraseña puede no tener seguridad.
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Configuración para SQLite
+
+$cfg["sqliteDatabase"] = "/tmp/nombre-de-ejercicio.sqlite";    // Ubicación de la base de datos
+
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "localhost";                        // Nombre de host
+$cfg["mysqlUser"]     = "nombre-de-ejercicio";              // Nombre de usuario
+$cfg["mysqlPassword"] = "nombre-de-ejercicio";              // Contraseña de usuario
+$cfg["mysqlDatabase"] = "nombre-de-ejercicio";              // Nombre de la base de datos</code>
+</pre>
+        </div>
+      </li>
+      <li>[comunes/biblioteca.php] Para poder comprobar el funcionamiento de los programas con Selenium, el título de las páginas debe coincidir con el de las capturas de ejemplo.
+        <div class="codigo">
+          <pre>
+<code class="language-php">function cabecera($texto, $menu, $profundidadDirectorio)
+{
+    ...
+    print "    $texto. <span class="codigo-resaltado">nombre del ejercicio</span>. Bases de datos (3 C).\n";
+    ...
+    print "    &lt;h1&gt;<span class="codigo-resaltado">nombre del ejercicio</span> - $texto&lt;/h1&gt;\n";</code>
+    ...
+</pre>
+        </div>
+      </li>
+    </ol>
+
+  </section>
+
+  <section id="ejercicio-1">
+    <h2>Bases de datos (3 C) 1 - Estadísticas de administrador</h2>
+    <ol>
+      <li>Los usuarios administradores pueden ver en su menú una nueva opción, "Estadísticas".
+        <ul>
+          <li>[comunes/biblioteca.php]
+            <p>Incluimos el enlace a la página estadisticas.php en el menú del Administrador.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">        ...
+        } elseif ($menu == MENU_ADMINISTRADOR) {
+            print "        &lt;li&gt;&lt;a href=\"../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"estadisticas.php\"&gt;Estadísticas&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"borrar-todo-1.php\"&gt;Borrar todo&lt;/a&gt;&lt;/li&gt;\n";
+        } ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>La página de estadísticas muestra el número de registros guardados en cada tabla:
+        <ul>
+          <li>[administrador/estadisticas.php]
+            <p>Hacemos una consulta para contar los registros que hay en la tabla y escribimos el mensaje correspondiente dependiendo del número obtenido. Esto lo haremos para las dos tablas.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
+
+$resultado = $pdo-&gt;query($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    $numero = $resultado-&gt;fetchColumn();
+    if ($numero == 0) {
+        print "    &lt;p&gt;La tabla Usuarios no contiene registros.&lt;/p&gt;\n";
+    } elseif ($numero == 1) {
+        print "    &lt;p&gt;La tabla Usuarios contiene $numero registro.&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;La tabla Usuarios contiene $numero registros.&lt;/p&gt;\n";
+    }
+}</code>
+</pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Únicamente los administradores podrán abrir esa página.
+        <ul>
+          <li>[administrador/estadisticas.php]
+            <p>Restringiremos el acceso a usuarios de nivel Administrador.</p>
+            <div class="codigo">
+              <pre>
+  <code class="language-php">if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; <span class="codigo-resaltado">NIVEL_ADMINISTRADOR</span>) {
+    header("Location:../index.php");
+    exit;
+}</code>
+  </pre>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </section>
 
   <section id="ejercicio-2">
-    <h2>Bases de datos (3 B) - 2 - Mejoras en la aplicación (2)</h2>
+    <h2>Bases de datos (3 C) 2 - Confirmar contraseña</h2>
 
     <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
   </section>
 
   <section id="ejercicio-3">
-    <h2>Bases de datos (3 B) - 3 - Nueva base de datos: PostgreSQL</h2>
+    <h2>Bases de datos (3 C) 3 - Usuario mirón</h2>
 
     <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
   </section>
 
   <section id="ejercicio-4">
-    <h2>Bases de datos (3 B) - 4 - Agenda multiusuario (1)</h2>
+    <h2>Bases de datos (3 C) 4 - Correo de usuarios</h2>
 
-    <p>Modifique la aplicación de manera que cada usuario básico de la aplicación sólo pueda trabajar con sus propios registros de Personas (listar, borrar, buscar, modificar).</p>
-    <ol>
-      <li>Añada en la tabla Personas un campo que contenga el id del usuario que crea el registro.
-        <ul>
-          <li>[comunes/biblioteca-sqlite.php]
-            <div class="codigo">
-              <pre>
-<code class="language-php">// SQLITE:
-    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
-                 id INTEGER PRIMARY KEY,
-                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
-                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE,
-                 telefono VARCHAR($cfg[tablaPersonasTamTelefono]) COLLATE NOCASE,
-                 correo VARCHAR($cfg[tablaPersonasTamCorreo]) COLLATE NOCASE,
-                 id_usuario INTEGER,
-                 FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE
-                 )";</code>
-</pre>
-            </div>
-          </li>
-          <li>[comunes/biblioteca-mysql.php]
-            <div class="codigo">
-              <pre>
-<code class="language-php">// MYSQL:
-                 $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
-                              id INTEGER UNSIGNED AUTO_INCREMENT,
-                              nombre VARCHAR($cfg[tablaPersonasTamNombre]),
-                              apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
-                              telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
-                              correo VARCHAR($cfg[tablaPersonasTamCorreo]),
-                              id_usuario INTEGER UNSIGNED,
-                              FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE,
-                              PRIMARY KEY(id)
-                              )";</code>
-</pre>
-            </div>
-          </li>
-          <li>[comunes/biblioteca.php]
-            <p>Para que se puedan ordenar los listados por el campo usuario debemos añadirlo a la matriz $cfg["tablaPersonasColumnasOrden"]. Añadimos "usuario" y no "id_usuario" porque la columna mostrará el nombre del usuario.</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">// Valores de ordenación de las tablas
-
-$cfg["tablaPersonasColumnasOrden"] = [
-    "nombre ASC", "nombre DESC",
-    "apellidos ASC", "apellidos DESC",
-    "telefono ASC", "telefono DESC",
-    "correo ASC", "correo DESC",
-    "usuario ASC", "usuario DESC",
-];</code>
-</pre>
-            </div>
-          </li>
-          <li>[comunes/demo.php]
-            <p>Los registros de prueba deben incluir el campo id_usuario. Por ejemplo:</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">// Registros de prueba opcionales
-
-$cfg["registrosDemo"] = [
-    [$cfg["tablaUsuarios"], [2, "usuario1", encripta("usuario1"), NIVEL_USUARIO_BASICO]],
-    [$cfg["tablaUsuarios"], [3, "usuario2", encripta("usuario2"), NIVEL_USUARIO_BASICO]],
-    [$cfg["tablaUsuarios"], [4, "admin1", encripta("admin1"), NIVEL_ADMINISTRADOR]],
-    [$cfg["tablaPersonas"], [1, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 2]],
-    [$cfg["tablaPersonas"], [2, "Numa", "Nigerio", "161803398", "numa.nigerio@example.com", 2]],
-    [$cfg["tablaPersonas"], [3, "Pepito", "Conejo", "271828182", "pepito.conejo@example.com", 3]],
-    [$cfg["tablaPersonas"], [4, "Fulanito", "Mengánez", "314159265", "fulanito.menganez@example.com", 3]],
-    [$cfg["tablaPersonas"], [5, "Napoleón", "Bonaparte", "432520032", "napoleon.bonaparte@example.org", 3]],
-    [$cfg["tablaPersonas"], [6, "Julio", "César", "129644790 ", "julio.cesar@example.org", 4]],
-];</code>
-</pre>
-            </div>
-          </li>
-        </ul>
-      </li>
-      <li>Al identificarse como usuario, guarde una variable de sesión con el <i>id</i> del usuario conectado.
-        <ul>
-          <li>[acceso/login-2.php]
-            <p>El guardar el <i>id</i> del usuario conectado como variable de sesión nos permite que cada página "sepa" quién está realizando las operaciones, de la misma manera que la variable de sesión "nivel" nos permite "saber" si el usuario está autorizado a visualizar la página.</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">$_SESSION["conectado"]  = true;
-$_SESSION["nivel"]      = $registro["nivel"];
-$_SESSION["id_usuario"] = $registro["id"];</code>
-</pre>
-            </div>
-          </li>
-        </ul>
-      </li>
-      <li>Los usuarios básicos sólo podrán administrar sus propios registros (listar, borrar, buscar, modificar).
-        <p>En todas las consultas SELECT de las páginas de administración de la tabla Personas se debe añadir la condición de que el campo id_usuario tenga el mismo valor que la variable de sesión id_usuario. Este valor no hace falta incluirlo como parámetro de la consulta preparada, puesto que no es un dato que se reciba del usuario.</p>
-
-        <p>Por ejemplo, en la página /db/tabla-personas/insertar-2.php, la consulta para comprobar si el registro que se quiere añadir ya existe sería ahora:</p>
-        <div class="codigo">
-          <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                 WHERE nombre = :nombre
-                 AND apellidos = :apellidos
-                 AND telefono = :telefono
-                 AND correo = :correo
-                 AND id_usuario = $_SESSION[id_usuario]";</code>
-</pre>
-        </div>
-
-        <p>Y la consulta para comprobar si se ha superado el número máximo de registros permitidos en la tabla sería ahora:</p>
-        <div class="codigo">
-          <pre>
-<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                     WHERE id_usuario = $_SESSION[id_usuario]";</code>
-</pre>
-        </div>
-
-        <p>En la consulta de inserción se tendrá que añadir el campo id_usuario:</p>
-        <div class="codigo">
-          <pre>
-<code class="language-php">            $consulta = "INSERT INTO $cfg[tablaPersonas]
-                         (nombre, apellidos, telefono, correo, id_usuario)
-                         VALUES (:nombre, :apellidos, :telefono, :correo, $_SESSION[id_usuario] )";</code>
-</pre>
-        </div>
-      </li>
-      <li>Un usuario básico podrá insertar un registro de Personas con los mismos datos que un registro de otro usuario, pero no repetir un registro propio.
-        <p>La consulta para comprobar si el registro que se quiere añadir que se ha mostrado en el apartado anterior cumple este requisito.</p>
-      </li>
-      <li>Los usuarios administradores podrán listar, borrar y buscar todos los registros de Personas.
-        <ul>
-          <p>Las consultas deberá ser diferentes en función del nivel del usuario conectado.</p>
-
-          <li>Las consultas del usuario administrador no incluirán generalmente la condición de que el registro pertenezca al usuario. Por ejemplo, en db/tabla-personas/buscar-1.php:
-            <div class="codigo">
-              <pre>
-<code class="language-php">if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
-} else {
-    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                 WHERE id_usuario = $_SESSION[id_usuario]";
-}</code>
-</pre>
-            </div>
-
-            <p>Las consultas del administrador que devuelvan registros de Personas deberán combinar la tabla Personas con la tabla Usuarios para mostrar el nombre de usuario del usuario que creó el registro. Por ejemplo, en db/tabla-personas/listar.php:</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-    $consulta = "SELECT
-                     personas.id,
-                     personas.nombre,
-                     personas.apellidos,
-                     personas.correo,
-                     personas.telefono,
-                     usuarios.usuario
-                 FROM $cfg[tablaPersonas] as personas
-                 JOIN $cfg[tablaUsuarios] as usuarios
-                 ON personas.id_usuario = usuarios.id
-                 ORDER BY $ordena";
-} else {
-    $consulta = "SELECT * FROM $cfg[tablaPersonas]
-                 WHERE id_usuario = $_SESSION[id_usuario]
-                 ORDER BY $ordena";
-}</code>
-</pre>
-            </div>
-          </li>
-        </ul>
-      </li>
-      <li>En los listados (listar, borrar, buscar, modificar) los usuarios administradores verán el nombre del usuario que creó el registro.
-        <p>La columna Usuario se mostrará cuando el nivel del usuario conectado sea el nivel administrador.</p>
-
-        <div class="codigo">
-          <pre>
-<code class="language-php">
-    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-        print "            &lt;th&gt;\n";
-        print "              &lt;button name=\"ordena\" value=\"usuario ASC\" class=\"boton-invisible\"&gt;\n";
-        print "                &lt;img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";
-        print "              &lt;/button&gt;\n";
-        print "              Usuario\n";
-        print "              &lt;button name=\"ordena\" value=\"usuario DESC\" class=\"boton-invisible\"&gt;\n";
-        print "                &lt;img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\"&gt;\n";
-        print "              &lt;/button&gt;\n";
-        print "            &lt;/th&gt;\n";
-    }
-...
-        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
-            print "            &lt;td&gt;$registro[usuario]&lt;/td&gt;\n";
-        }
-</code>
-</pre>
-        </div>
-      </li>
-      <li>Compruebe que los usuarios administradores pueden ordenar los registros de personas por el campo usuario.
-        <p>En el primer apartado de este ejercicio ya se ha indicado cómo añadir los valores de ordenación a la variable de configuración $cfg["tablaPersonasColumnasOrden"].</p>
-      </li>
-      <li>Los usuarios administradores no podrán insertar registros de Personas a nombre de otros usuarios, ni modificar el campo usuario de un registro de Personas. (esta funcionalidad se deja para el ejercicio siguiente)
-        <p>Si no se incluyen controles para ello en los formularios de db/tabla-personas/insertar-1.php o db/tabla-personas/modificar-2.php, los usuarios administradores no pueden realizar estas tareas.</p>
-      </li>
-    </ol>
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
   </section>
 
   <section id="ejercicio-5">
-    <h2>Bases de datos (3 B) - 5 - Agenda multiusuario (2)</h2>
+    <h2>Bases de datos (3 C) 5 - Datos repetidos</h2>
 
     <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
   </section>
 
   <section id="ejercicio-6">
-    <h2>Bases de datos (3 B) - 6 - Campo de fecha</h2>
+    <h2>Bases de datos (3 C) 6 - Registros incompletos</h2>
 
     <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
   </section>
 
+  <section id="ejercicio-7">
+    <h2>Bases de datos (3 C) 7 - Cambiar contraseña</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-8">
+    <h2>Bases de datos (3 C) 8 - Contador de número de conexiones</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+  <section id="ejercicio-9">
+    <h2>Bases de datos (3 C) 9 - Número máximo de registros por usuario</h2>
+
+    <p><img src="../../../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+  </section>
+
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de febrero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 3 de febrero de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
