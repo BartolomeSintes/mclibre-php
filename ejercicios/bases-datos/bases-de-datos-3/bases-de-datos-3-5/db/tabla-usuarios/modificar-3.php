@@ -107,6 +107,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
                     $consulta = "UPDATE $cfg[tablaUsuarios]
                                  SET usuario = :usuario, nivel = :nivel
                                  WHERE id = :id";
+
                     $resultado = $pdo->prepare($consulta);
                     if (!$resultado) {
                         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -119,6 +120,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
                     $consulta = "UPDATE $cfg[tablaUsuarios]
                                  SET usuario = :usuario, password = :password, nivel = :nivel
                                  WHERE id = :id";
+
                     $resultado = $pdo->prepare($consulta);
                     if (!$resultado) {
                         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
