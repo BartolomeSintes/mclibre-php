@@ -99,7 +99,7 @@ function cabecera($texto, $menu, $profundidadDirectorio)
     print "<head>\n";
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
-    print "    $texto. Estadísticas. Bases de datos (3 C).\n";
+    print "    $texto. Estadísticas. Bases de datos (3 B).\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";

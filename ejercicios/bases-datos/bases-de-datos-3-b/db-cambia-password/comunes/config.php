@@ -9,7 +9,7 @@
 
 // Nombre de sesión
 
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-c-cambia-password";         // Nombre de sesión
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-cambia-password";         // Nombre de sesión
 
 // Base de datos utilizada por la aplicación
 
@@ -17,7 +17,7 @@ $cfg["dbMotor"] = SQLITE;                                   // Valores posibles:
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-c-cambia-password.sqlite";    // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-cambia-password.sqlite";    // Ubicación de la base de datos
 
 // Configuración para MySQL
 
