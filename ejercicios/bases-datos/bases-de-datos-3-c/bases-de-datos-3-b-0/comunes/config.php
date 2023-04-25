@@ -22,9 +22,9 @@ $cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-0.sqlite";    // Ubicació
 // Configuración para MySQL
 
 $cfg["mysqlHost"]     = "localhost";                        // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_3_b_0";         // Nombre de usuario
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_c_0";         // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_0";         // Nombre de la base de datos
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_0";         // Nombre de la base de datos
 
 // Tamaño de los campos en la tabla Usuarios
 
@@ -50,7 +50,7 @@ $cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamañ
 $cfg["formPersonasTamTelefono"]  = $cfg["tablaPersonasTamTelefono"];   // Tamaño de la caja de texto Personas > Teléfono
 $cfg["formPersonasTamCorreo"]    = $cfg["tablaPersonasTamCorreo"];     // Tamaño de la caja de texto Personas > Correo
 
-// Número máximo de registros en las tablas
+// Número máximo de registros en las tablas (el valor 0 o negativo indica que no hay límite)
 
 $cfg["tablaUsuariosMaxReg"] = 20;                           // Número máximo de registros en la tabla Usuarios
 $cfg["tablaPersonasMaxReg"] = 20;                           // Número máximo de registros en la tabla Personas

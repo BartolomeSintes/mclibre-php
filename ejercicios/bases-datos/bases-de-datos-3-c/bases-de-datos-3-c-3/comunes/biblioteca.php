@@ -9,7 +9,6 @@
 
 define("SQLITE", 1);                        // Base de datos SQLITE
 define("MYSQL", 2);                         // Base de datos MySQL
-define("POSTGRESQL", 3);                    // Base de datos PostgreSQL
 
 define("MENU_PRINCIPAL", 1);                // Menú principal sin conectar
 define("MENU_VOLVER", 2);                   // Menú Volver a inicio
@@ -35,6 +34,7 @@ $cfg["tablaPersonasColumnasOrden"] = [
     "apellidos ASC", "apellidos DESC",
     "telefono ASC", "telefono DESC",
     "correo ASC", "correo DESC",
+    "usuario ASC", "usuario DESC",
 ];
 
 $cfg["tablaUsuariosColumnasOrden"] = [
@@ -56,8 +56,6 @@ if ($cfg["dbMotor"] == SQLITE) {
     require_once "biblioteca-sqlite.php";
 } elseif ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";
-} elseif ($cfg["dbMotor"] == POSTGRESQL) {
-    require_once "biblioteca-postgresql.php";
 }
 
 // Tablas

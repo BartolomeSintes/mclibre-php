@@ -72,26 +72,43 @@ if ($id == "") {
 }
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                 WHERE id = :id";
+    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                     WHERE id = :id";
+    } else {
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                     WHERE id = :id
+                     AND id_usuario = $_SESSION[id_usuario]";
+    }
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif (!$resultado->execute([":id" => $id])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif ($resultado->fetchColumn() == 0) {
+    } elseif (!$registro = $resultado->fetch()) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
         // La consulta cuenta los registros con un id diferente porque MySQL no distingue
         // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
         // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                     WHERE nombre = :nombre
-                     AND apellidos = :apellidos
-                     AND telefono = :telefono
-                     AND correo = :correo
-                     AND id <> :id";
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                         WHERE nombre = :nombre
+                         AND apellidos = :apellidos
+                         AND telefono = :telefono
+                         AND correo = :correo
+                         AND id <> :id
+                         AND id_usuario = $registro[id_usuario]";
+        } else {
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                         WHERE nombre = :nombre
+                         AND apellidos = :apellidos
+                         AND telefono = :telefono
+                         AND correo = :correo
+                         AND id <> :id
+                         AND id_usuario = $_SESSION[id_usuario]";
+        }
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {

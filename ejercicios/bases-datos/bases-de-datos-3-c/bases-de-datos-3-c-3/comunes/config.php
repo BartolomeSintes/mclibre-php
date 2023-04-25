@@ -9,30 +9,22 @@
 
 // Nombre de sesión
 
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-3";       // Nombre de sesión
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-c-3";       // Nombre de sesión
 
 // Base de datos utilizada por la aplicación
 
-$cfg["dbMotor"] = POSTGRESQL;                                   // Valores posibles: MYSQL o SQLITE
+$cfg["dbMotor"] = SQLITE;                                   // Valores posibles: MYSQL o SQLITE
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-3.sqlite";    // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-c-3.sqlite";    // Ubicación de la base de datos
 
 // Configuración para MySQL
 
 $cfg["mysqlHost"]     = "localhost";                        // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_3_b_3";         // Nombre de usuario
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_b_4";         // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_3";         // Nombre de la base de datos
-
-// Configuración para PostgreSQL
-
-$cfg["pgsqlHost"]     = "localhost";                        // Nombre de host
-$cfg["pgsqlPort"]     = "5432";                             // Número de puerto
-$cfg["pgsqlDatabase"] = "mclibre";                          // Nombre de la base de datos
-$cfg["pgsqlUser"]     = "mclibre";                          // Nombre de usuario
-$cfg["pgsqlPassword"] = "";                                 // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_4";         // Nombre de la base de datos
 
 // Tamaño de los campos en la tabla Usuarios
 

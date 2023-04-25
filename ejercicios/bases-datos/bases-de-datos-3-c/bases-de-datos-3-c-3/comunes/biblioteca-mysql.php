@@ -89,6 +89,8 @@ function borraTodo()
                      apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
                      telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
                      correo VARCHAR($cfg[tablaPersonasTamCorreo]),
+                     id_usuario INTEGER UNSIGNED,
+                     FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE,
                      PRIMARY KEY(id)
                      )";
 

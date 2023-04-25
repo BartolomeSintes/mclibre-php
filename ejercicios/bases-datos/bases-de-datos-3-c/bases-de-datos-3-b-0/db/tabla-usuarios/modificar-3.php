@@ -19,10 +19,11 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Modificar 3", MENU_USUARIOS, PROFUNDIDAD_2);
 
-$usuario  = recoge("usuario");
-$password = recoge("password");
-$nivel    = recoge("nivel");
-$id       = recoge("id");
+$usuario          = recoge("usuario");
+$password         = recoge("password");
+$nivel            = recoge("nivel");
+$id               = recoge("id");
+$mantenerPassword = recoge("mantenerPassword");
 
 $usuarioOk  = false;
 $passwordOk = false;
@@ -102,6 +103,19 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
                 $registro = $resultado->fetch();
                 if ($registro["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $registro["usuario"] != $usuario || $registro["nivel"] != $nivel)) {
                     print "    <p class=\"aviso\">Del usuario Administrador inicial sólo se puede cambiar la contraseña.</p>\n";
+                } elseif ($mantenerPassword == "Sí") {
+                    $consulta = "UPDATE $cfg[tablaUsuarios]
+                                 SET usuario = :usuario, nivel = :nivel
+                                 WHERE id = :id";
+
+                    $resultado = $pdo->prepare($consulta);
+                    if (!$resultado) {
+                        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                    } elseif (!$resultado->execute([":usuario" => $usuario, ":nivel" => $nivel, ":id" => $id])) {
+                        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                    } else {
+                        print "    <p>Registro modificado correctamente.</p>\n";
+                    }
                 } else {
                     $consulta = "UPDATE $cfg[tablaUsuarios]
                                  SET usuario = :usuario, password = :password, nivel = :nivel

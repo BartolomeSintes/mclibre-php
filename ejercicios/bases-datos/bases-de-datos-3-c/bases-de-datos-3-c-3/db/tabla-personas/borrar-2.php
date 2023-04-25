@@ -25,9 +25,14 @@ if (count($id) == 0) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                     WHERE id = :indice";
-
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                         WHERE id = :indice";
+        } else {
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                         WHERE id = :indice
+                         AND id_usuario = $_SESSION[id_usuario]";
+        }
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
             print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";

@@ -19,7 +19,12 @@ $pdo = conectaDb();
 
 cabecera("Personas - Buscar 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+} else {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                 WHERE id_usuario = $_SESSION[id_usuario]";
+}
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {

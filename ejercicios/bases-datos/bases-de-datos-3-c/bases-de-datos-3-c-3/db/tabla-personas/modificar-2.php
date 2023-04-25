@@ -24,8 +24,14 @@ $id = recoge("id");
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
-    $consulta = "SELECT * FROM $cfg[tablaPersonas]
-                 WHERE id = :id";
+    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                     WHERE id = :id";
+    } else {
+        $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                     WHERE id = :id
+                     AND id_usuario = $_SESSION[id_usuario]";
+    }
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

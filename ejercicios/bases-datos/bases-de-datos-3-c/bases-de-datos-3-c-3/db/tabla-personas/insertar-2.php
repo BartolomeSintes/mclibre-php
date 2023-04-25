@@ -68,7 +68,8 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
                  WHERE nombre = :nombre
                  AND apellidos = :apellidos
                  AND telefono = :telefono
-                 AND correo = :correo";
+                 AND correo = :correo
+                 AND id_usuario = $_SESSION[id_usuario]";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
@@ -78,7 +79,8 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">El registro ya existe.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                     WHERE id_usuario = $_SESSION[id_usuario]";
 
         $resultado = $pdo->query($consulta);
         if (!$resultado) {
@@ -89,8 +91,8 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
             print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
         } else {
             $consulta = "INSERT INTO $cfg[tablaPersonas]
-                         (nombre, apellidos, telefono, correo)
-                         VALUES (:nombre, :apellidos, :telefono, :correo)";
+                         (nombre, apellidos, telefono, correo, id_usuario)
+                         VALUES (:nombre, :apellidos, :telefono, :correo, $_SESSION[id_usuario] )";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {

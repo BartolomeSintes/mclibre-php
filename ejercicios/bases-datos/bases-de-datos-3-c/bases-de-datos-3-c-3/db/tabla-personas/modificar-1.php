@@ -21,10 +21,23 @@ cabecera("Personas - Modificar 1", MENU_PERSONAS, PROFUNDIDAD_2);
 
 $ordena = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
 $id     = recoge("id");
-
-$consulta = "SELECT * FROM $cfg[tablaPersonas]
-             ORDER BY $ordena";
-
+if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+    $consulta = "SELECT
+                     personas.id,
+                     personas.nombre,
+                     personas.apellidos,
+                     personas.correo,
+                     personas.telefono,
+                     usuarios.usuario
+                 FROM $cfg[tablaPersonas] as personas
+                 JOIN $cfg[tablaUsuarios] as usuarios
+                 ON personas.id_usuario = usuarios.id
+                 ORDER BY $ordena";
+} else {
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                 WHERE id_usuario = $_SESSION[id_usuario]
+                 ORDER BY $ordena";
+}
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -74,6 +87,17 @@ if (!$resultado) {
     print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
     print "              </button>\n";
     print "            </th>\n";
+    if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+        print "            <th>\n";
+        print "              <button name=\"ordena\" value=\"usuario ASC\" class=\"boton-invisible\">\n";
+        print "                <img src=\"../../img/abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\">\n";
+        print "              </button>\n";
+        print "              Usuario\n";
+        print "              <button name=\"ordena\" value=\"usuario DESC\" class=\"boton-invisible\">\n";
+        print "                <img src=\"../../img/arriba.svg\" alt=\"Z-A\" title=\"Z-A\" width=\"15\" height=\"12\">\n";
+        print "              </button>\n";
+        print "            </th>\n";
+    }
     print "          </tr>\n";
     print "        </thead>\n";
     foreach ($registros as $registro) {
@@ -87,6 +111,9 @@ if (!$resultado) {
         print "          <td>$registro[apellidos]</td>\n";
         print "          <td>$registro[telefono]</td>\n";
         print "          <td>$registro[correo]</td>\n";
+        if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
+            print "          <td>$registro[usuario]</td>\n";
+        }
         print "        </tr>\n";
     }
     print "      </table>\n";

@@ -92,7 +92,9 @@ function borraTodo()
                  nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
                  apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE,
                  telefono VARCHAR($cfg[tablaPersonasTamTelefono]) COLLATE NOCASE,
-                 correo VARCHAR($cfg[tablaPersonasTamCorreo]) COLLATE NOCASE
+                 correo VARCHAR($cfg[tablaPersonasTamCorreo]) COLLATE NOCASE,
+                 id_usuario INTEGER,
+                 FOREIGN KEY(id_usuario) REFERENCES $cfg[tablaUsuarios](id) ON DELETE CASCADE ON UPDATE CASCADE
                  )";
 
     if (!$pdo->query($consulta)) {
