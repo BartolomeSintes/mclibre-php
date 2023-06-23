@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de cartas. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de cartas</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de cartas</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule un solitario de cartas.</p>
+
+  <section id="comentarios">
+    <h2>Juego de cartas - Comentarios</h2>
+
+    <ul>
+      <li>El programa podrá tener dos páginas y utilizar sesiones:
+        <ul>
+          <li>La primera página muestra el estado de la partida:
+            <ul>
+              <li>Para poder jugar, el jugador tiene que haber elegido uno de los cuatro palos de la baraja.</li>
+              <li>Los cuatro palos se muestran mediante las secuencias Unicode &amp;#x2660;&amp;#xfe0f; <span style="font-size: 2rem">&#x2660;&#xfe0f;</span> - &amp;#x2663;&amp;#xfe0f; <span style="font-size: 2rem">&#x2663;&#xfe0f;</span> - &amp;#x2665;&amp;#xfe0f; <span style="font-size: 2rem">&#x2665;&#xfe0f;</span> y &amp;#x2666;&amp;#xfe0f; <span style="font-size: 2rem">&#x2666;&#xfe0f;</span></li>
+              <li>Al jugar, se descubre una carta. Si el palo de la carta coincide con el palo elegido por el jugador, se anota un punto. Las cartas pueden repetirse.</li>
+              <li>El palo elegido se puede cambiar en cualquier momento.</li>
+              <li>El juego no termina nunca.</li>
+              <li>Los contadores indican el número de puntos ganados y de cartas jugadas.</li>
+              <li>Un botón permite reiniciar el juego en cualquier momento.</li>
+            </ul>
+          </li>
+          <li>La segunda página recoge el botón elegido, modifica las variables de sesión y redirige a la primera página.</li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se redirigirá a la primera página sin informar al usuario, ni modificar los datos ni los contadores.</li>
+      <li>No se debe cambiar el nombre del control incluido en las plantillas.</li>
+      <li>Al actualizar la primera página, no se modificará el contenido.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <ul>
+          <li>Empieza la partida (todavía no puede Jugar):
+            <p class="captura"><img src="img/cs-elige-palo-1.png" alt="Juego de cartas" width="1022" height="350"></p>
+          </li>
+          <li>El jugador elige el palo de picas (ya podría jugar):
+            <p class="captura"><img src="img/cs-elige-palo-2.png" alt="Juego de cartas" width="1022" height="350"></p>
+          </li>
+          <li>El jugador cambia el palo elegido a corazones (antes de jugar):
+            <p class="captura"><img src="img/cs-elige-palo-3.png" alt="Juego de cartas" width="1022" height="350"></p>
+          </li>
+          <li>El jugador juega y gana el punto:
+            <p class="captura"><img src="img/cs-elige-palo-4.png" alt="Juego de cartas" width="1022" height="350"></p>
+          </li>
+          <li>El jugador vuelve a jugar sin cambiar el palo, pero esta vez pierde:
+            <p class="captura"><img src="img/cs-elige-palo-5.png" alt="Juego de cartas" width="1022" height="350"></p>
+          </li>
+          <li>El jugador cambia el palo elegido a tréboles (desaparece la carta jugada anterior, pero se mantiene la puntuación):
+            <p class="captura"><img src="img/cs-elige-palo-6.png" alt="Juego de cartas" width="1022" height="350"></p>
+          </li>
+          <li>El jugador juega, pero vuelve a perder:
+            <p class="captura"><img src="img/cs-elige-palo-7.png" alt="Juego de cartas" width="1022" height="350"></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de cartas - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;button type="submit" name="accion" value="AP" style="font-size: 2rem"&gt;&amp;#x2660;&amp;#xfe0f;&lt;/button&gt;
+          &lt;button type="submit" name="accion" value="AT" style="font-size: 2rem"&gt;&amp;#x2663;&amp;#xfe0f;&lt;/button&gt;
+        &lt;/td&gt;
+        &lt;td rowspan="2"&gt;&lt;img src="img/cartas/<span class="codigo-resaltado">vacia</span>.svg" alt="<span class="codigo-resaltado">vacia</span>" height="160"&gt;&lt;/td&gt;
+        &lt;td rowspan="2"&gt;&lt;img src="img/cartas/<span class="codigo-resaltado">vacia</span>.svg" alt="<span class="codigo-resaltado">vacia</span>" height="160"&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;button type="submit" name="accion" value="AC" style="font-size: 2rem"&gt;&amp;#x2665;&amp;#xfe0f;&lt;/button&gt;
+          &lt;button type="submit" name="accion" value="AD" style="font-size: 2rem"&gt;&amp;#x2666;&amp;#xfe0f;&lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;&lt;input type="submit" name="accion" value="Reiniciar"&gt;&lt;/th&gt;
+        &lt;td style="font-size: 2rem"&gt;<span class="codigo-resaltado"></span>&lt;/td&gt;
+        &lt;td style="font-size: 2rem"&gt;<span class="codigo-resaltado">0/0</span>&lt;/td&gt;
+      &lt;/tr&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;button type="submit" name="accion" value="AP" style="font-size: 2rem"&gt;&amp;#x2660;&amp;#xfe0f;&lt;/button&gt;
+          &lt;button type="submit" name="accion" value="AT" style="font-size: 2rem"&gt;&amp;#x2663;&amp;#xfe0f;&lt;/button&gt;
+        &lt;/td&gt;
+        &lt;td rowspan="2"&gt;&lt;img src="img/cartas/<span class="codigo-resaltado">t</span>.svg" alt="<span class="codigo-resaltado">t</span>" height="160"&gt;&lt;/td&gt;
+        &lt;td rowspan="2"&gt;&lt;img src="img/cartas/<span class="codigo-resaltado">c3</span>.svg" alt="<span class="codigo-resaltado">c3</span>" height="160"&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;button type="submit" name="accion" value="AC" style="font-size: 2rem"&gt;&amp;#x2665;&amp;#xfe0f;&lt;/button&gt;
+          &lt;button type="submit" name="accion" value="AD" style="font-size: 2rem"&gt;&amp;#x2666;&amp;#xfe0f;&lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;&lt;input type="submit" name="accion" value="Reiniciar"&gt;&lt;/th&gt;
+        &lt;td style="font-size: 2rem"&gt;<span class="codigo-resaltado">¡Fallaste!</span>&lt;/td&gt;
+        &lt;td style="font-size: 2rem"&gt;<span class="codigo-resaltado">1/3</span>&lt;/td&gt;
+      &lt;/tr&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 22 de junio de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
