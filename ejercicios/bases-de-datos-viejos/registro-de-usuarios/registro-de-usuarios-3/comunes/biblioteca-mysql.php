@@ -52,7 +52,7 @@ function conectaDb()
         cabecera("Error grave", MENU_ERROR, 1);
         print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos.</p>\n";
         print "\n";
-        print "    <p class=\"aviso\">Error: " . utf8_encode($e->getMessage()) . "</p>\n";
+        print "    <p class=\"aviso\">Error: {$e->getMessage()}</p>\n";
         pie();
         exit();
     }
