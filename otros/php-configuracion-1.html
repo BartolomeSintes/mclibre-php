@@ -58,7 +58,7 @@
   <section id="introduccion">
     <h2>Introducción</h2>
 
-    <p>Esta explicación sobre la configuración de Apache y PHP ha sido preparada para la versión XAMPP 8.1.6, pero seguramente se puede aplicar en cualquier versión 8.1.6.</p>
+    <p>Esta explicación sobre la configuración de Apache y PHP ha sido preparada para la versión XAMPP 8.2.4, pero seguramente se puede aplicar en cualquier versión 8.2.X e incluso 8.X.</p>
 
     <p>Cada vez que se modifica alguno de los ficheros de configuración es necesario detener y reiniciar el servidor.</p>
 
@@ -88,7 +88,7 @@
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion"># 2022-09-13. Barto. He cambiado el directorio raíz del servidor
+<code class="language-configuracion"># 2023-09-11. Barto. He cambiado el directorio raíz del servidor
 # DocumentRoot "C:/xampp/htdocs"
 DocumentRoot "C:/www"</code>
 </pre>
@@ -116,7 +116,7 @@ DocumentRoot "C:/www"</code>
     <section id="ubicacion">
       <h3>Ubicación de las páginas web</h3>
 
-      <p>Con la configuración inicial de XAMPP 8.1, al abrir en el navegador una dirección que empieza por <strong>http://localhost/</strong>, Apache busca el elemento solicitado a partir del directorio raíz del servidor, indicado por la directiva <strong>DocumentRoot</strong> del archivo httpd.conf:</p>
+      <p>Con la configuración inicial de XAMPP 8.2, al abrir en el navegador una dirección que empieza por <strong>http://localhost/</strong>, Apache busca el elemento solicitado a partir del directorio raíz del servidor, indicado por la directiva <strong>DocumentRoot</strong> del archivo httpd.conf:</p>
       <ul>
         <li>si se trata de un archivo:
           <ul>
@@ -126,7 +126,7 @@ DocumentRoot "C:/www"</code>
         </li>
         <li>si se trata de un directorio:
           <ul>
-            <li>si encuentra el directorio, busca si existe alguno de los archivos indicados por la directiva <strong>DirectoryIndex</strong> (por ejemplo, en XAMPP 8.1, index.php index.pl index.cgi index.asp index.shtml index.html index.htm etc) :
+            <li>si encuentra el directorio, busca si existe alguno de los archivos indicados por la directiva <strong>DirectoryIndex</strong> (por ejemplo, en XAMPP 8.2, index.php index.pl index.cgi index.asp index.shtml index.html index.htm etc) :
               <ul>
                 <li>si encuentra alguno de esos archivos, lo sirve al navegador.</li>
                 <li>si no encuentra ninguno de esos archivos, Apache envía al navegador el listado del directorio.</li>
@@ -141,7 +141,7 @@ DocumentRoot "C:/www"</code>
 
       <hr class="corta">
 
-      <p>En el directorio raíz del servidor, XAMPP 8.1 crea una serie de páginas que permiten administrar el servidor. Por eso al abrir en el navegador la dirección http://localhost se abre una página de administración propia de XAMPP.</p>
+      <p>En el directorio raíz del servidor, XAMPP 8.2 crea una serie de páginas que permiten administrar el servidor. Por eso al abrir en el navegador la dirección http://localhost se abre una página de administración propia de XAMPP.</p>
 
       <p>A la hora de añadir otras páginas en el servidor, se puede hacer de varias formas:</p>
       <ul>
@@ -167,9 +167,9 @@ DocumentRoot "C:/www"</code>
 </pre>
       </div>
 
-      <p>En XAMPP 8.1 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.2 esta directiva no está comentada de forma predeterminada, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
-      <p>Además, hay que añadir en el archivo httpd.conf una directiva Alias dentro de la directiva &lt;IfModule alias_module&gt; (que ya existe En XAMPP 8.1).</p>
+      <p>Además, hay que añadir en el archivo httpd.conf una directiva Alias dentro de la directiva &lt;IfModule alias_module&gt; (que ya existe En XAMPP 8.2).</p>
 
       <p>Como ejemplo, vamos a crear un par de alias. Supongamos que un usuario está siguiendo un curso de PHP y al mismo tiempo en su trabajo también escribe programas en PHP. Este usuario quiere guardar los archivos en diferentes carpetas de Documentos, pero al mismo tiempo acceder fácilmente a los archivos sin tener que escribir direcciones muy largas:</p>
 
@@ -199,7 +199,7 @@ DocumentRoot "C:/www"</code>
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-    # 2022-09-13. He añadido este Alias para los programas escritos en el curso de PHP.
+    # 2023-09-11. He añadido este Alias para los programas escritos en el curso de PHP.
     Alias <span class="codigo-resaltado">/clase</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -207,7 +207,7 @@ DocumentRoot "C:/www"</code>
       Require all granted
     &lt;/Directory&gt;
 
-    # 2022-09-13. He añadido este Alias para los programas escritos para el trabajo.
+    # 2023-09-11. He añadido este Alias para los programas escritos para el trabajo.
     Alias <span class="codigo-resaltado">/curro</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Trabajo\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Trabajo\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -225,7 +225,7 @@ DocumentRoot "C:/www"</code>
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-    # 2022-09-13. He añadido este Alias para los programas escritos en el curso de PHP.
+    # 2023-09-11. He añadido este Alias para los programas escritos en el curso de PHP.
     Alias <span class="codigo-resaltado">/clase</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -233,7 +233,7 @@ DocumentRoot "C:/www"</code>
       Require all granted
     &lt;/Directory&gt;
 
-    # 2022-09-13. He añadido este Alias para los programas escritos para el trabajo.
+    # 2023-09-11. He añadido este Alias para los programas escritos para el trabajo.
     Alias <span class="codigo-resaltado">/curro</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Trabajo/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"home/NombreDeUsuario/Documents/Trabajo/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -277,7 +277,7 @@ DocumentRoot "C:/www"</code>
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-    # 2022-09-13. He añadido este Alias para los programas escritos en el curso de PHP.
+    # 2023-09-11. He añadido este Alias para los programas escritos en el curso de PHP.
     Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\2019\PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"C:\Users\NombreDeUsuario\Documents\Cursos\2019\PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -295,7 +295,7 @@ DocumentRoot "C:/www"</code>
             <pre>
 <code class="language-configuracion">&lt;IfModule alias_module&gt;
 # ...
-    # 2022-09-13. He añadido este Alias para los programas escritos en el curso de PHP.
+    # 2023-09-11. He añadido este Alias para los programas escritos en el curso de PHP.
     Alias <span class="codigo-resaltado">/iaw/php</span> <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/2019/PHP"</span>
     &lt;Directory <span class="codigo-resaltado">"/home/NombreDeUsuario/Documents/Cursos/2019/PHP"</span>&gt;
       Options Indexes FollowSymLinks Includes ExecCGI
@@ -330,10 +330,10 @@ DocumentRoot "C:/www"</code>
         <img src="../img/xampp/xampp-control-panel-php-ini.png" alt="XAMPP - Abrir php.ini" width="730" height="434">
       </p>
 
-      <p><strong>Nota</strong>: La ruta del archivo php.ini que está utilizando Apache se puede ver en el campo "Loaded Configuration File" de la primera tabla que muestra la función <span class="php-fun">phpinfo()</span>. En el menú de la página de administración de XAMPP 8.1 hay una opción <span class="php-fun">phpinfo()</span> que muestra la configuración de PHP.</p>
+      <p><strong>Nota</strong>: La ruta del archivo php.ini que está utilizando Apache se puede ver en el campo "Loaded Configuration File" de la primera tabla que muestra la función <span class="php-fun">phpinfo()</span>. En el menú de la página de administración de XAMPP 8.2 hay una opción <span class="php-fun">phpinfo()</span> que muestra la configuración de PHP.</p>
 
       <p class="captura">
-        <img src="../img/xampp/xampp-dashboard-phpinfo.png" alt="XAMPP. PHPInfo en página de administración" width="1024" height="300">
+        <img src="../img/xampp/xampp-dashboard-phpinfo.png" alt="XAMPP. PHPInfo en página de administración" width="1024" height="250">
       </p>
 
       <p class="captura">
@@ -383,17 +383,17 @@ DocumentRoot "C:/www"</code>
 
       <p>El inconveniente de utilizar una configuración tan exigente es que algunos paquetes de terceros (bibliotecas, CMS, etc.) pueden dejar de funcionar y a veces no queda más remedio que volver a un valor menos estricto para poderlos utilizar.</p>
 
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 8.1 esta directiva viene predeterminada con el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT, por lo que <strong>se recomienda modificarla</strong>:</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 8.2 esta directiva viene predeterminada con el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT, por lo que <strong>se recomienda modificarla</strong>:</p>
 
       <div class="codigo copy">
         <pre>
-<code class="language-configuracion">; 2022-09-13. Barto. He cambiado error_reporting para mostrar todos los errores
+<code class="language-configuracion">; 2023-09-11. Barto. He cambiado error_reporting para mostrar todos los errores
 ; error_reporting=E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT
 error_reporting=E_ALL </code>
 </pre>
       </div>
 
-      <p><strong>Nota</strong>: En PHP 8.1 el valor predeterminado se ha <a href="https://www.php.net/manual/en/migration80.incompatible.php">cambiado a E_ALL</a>, aunque XAMPP 8.1 conserva el valor E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT.</p>
+      <p><strong>Nota</strong>: Desde PHP 8.0, el valor predeterminado de la directiva <span class="php-dir">error_reporting</span> se <a href="https://www.php.net/manual/en/migration80.incompatible.php">cambió a E_ALL</a>, aunque XAMPP 8.2 conserva el valor anterior, E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT.</p>
 
       <hr class="corta">
 
@@ -502,11 +502,11 @@ error_reporting=E_ALL </code>
 </pre>
       </div>
 
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 8.1 esta directiva viene predeterminada con el valor 4096, por lo que <strong>se recomienda modificarla</strong>:</p>
+      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En XAMPP 8.2 esta directiva viene predeterminada con el valor 4096, por lo que <strong>se recomienda modificarla</strong>:</p>
 
       <div class="codigo copy">
         <pre>
-<code class="language-configuracion">; 2022-09-13. Barto. Desactivo output_buffering
+<code class="language-configuracion">; 2023-09-11. Barto. Desactivo output_buffering
 ; output_buffering=4096
 output_buffering=0</code>
 </pre>
@@ -543,7 +543,7 @@ output_buffering=0</code>
 </pre>
       </div>
 
-      <p>En XAMPP 8.1 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <hr class="corta">
 
@@ -598,7 +598,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>En XAMPP 8.1 esta directiva viene predeterminada con valor On, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con valor On, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
     </section>
 
     <section id="pdo-mysql">
@@ -612,7 +612,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p> XAMPP 8.1 tiene activada la extensión PDO MySQL, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p> XAMPP 8.2 tiene activada la extensión PDO MySQL, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <p>La extensión pdo_mysql puede utilizar cualquiera de los dos drivers de bajo nivel: MySQL Client Library (libmysql) o <a href="https://www.php.net/manual/en/book.mysqlnd.php">MySQL Native Driver</a> (mysqlnd). La elección del driver se realiza en la compilación de PHP. El driver nativo mysqlnd se introdujo en PHP 5.3.0. XAMPP utiliza el driver mysqlnd desde XAMPP 1.7.2 (agosto de 2009).</p>
     </section>
@@ -628,7 +628,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p> XAMPP 8.1 tiene activada la extensión PDO SQLite, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p> XAMPP 8.2 tiene activada la extensión PDO SQLite, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
     </section>
 
     <section id="session-save-handler">
@@ -642,7 +642,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>En XAMPP 8.1 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <p>Algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user. Si en nuestro servidor el valor es user, para evitar conflictos nuestros programas pueden modificar esta directiva en tiempo de ejecución, mediante la función ini_set("session.save_handler", "files"); (véase la <a href="../lecciones/php-sesiones.html">lección sobre sesiones</a>).</p>
     </section>
@@ -658,7 +658,7 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
 </pre>
       </div>
 
-      <p>En XAMPP 8.1 esta directiva viene predeterminada con el valor 0, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor 0, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
     </section>
 
     <section id="date-timezone">
@@ -668,11 +668,11 @@ print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
 
       <p>La directiva <span class="php-dir">date.timezone</span> establece la zona horaria predeterminada para todas las funciones de fecha y hora.</p>
 
-      <p>Al instalar XAMPP 8.1, el instalador asigna un valor estimado de la zona horaria (por eso se añade al final del fichero de configuración por lo que hay dos apartados [Date] en el fichero). En el caso de España, XAMPP 8.1 asigna el valor Europe/Berlin que se puede cambiar al valor Europe/Madrid (hasta ahora no era necesario, puesto que entre Berlín y Madrid no hay diferencias horarias, pero eso puede cambiar en el futuro). Se puede consultar <a href="https://www.php.net/manual/en/timezones.php">la lista completa de zonas horarios permitidas</a> en el manual de php.</p>
+      <p>Al instalar XAMPP 8.2, el instalador asigna un valor estimado de la zona horaria (por eso se añade al final del fichero de configuración por lo que hay dos apartados [Date] en el fichero). En el caso de España, XAMPP 8.2 asigna el valor Europe/Berlin que se puede cambiar al valor Europe/Madrid (hasta ahora no era necesario, puesto que entre Berlín y Madrid no hay diferencias horarias, pero eso puede cambiar en el futuro). Se puede consultar <a href="https://www.php.net/manual/en/timezones.php">la lista completa de zonas horarios permitidas</a> en el manual de php.</p>
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion">; 2022-09-13. Barto. He cambiado el nombre del huso horario a Madrid
+<code class="language-configuracion">; 2023-09-11. Barto. He cambiado el nombre del huso horario a Madrid
 ; date.timezone=Europe/Berlin
 date.timezone=Europe/Madrid</code>
 </pre>
@@ -691,34 +691,34 @@ date.timezone=Europe/Madrid</code>
 ;date.default_longitude = 35.2333
 
 ; https://www.php.net/date.sunrise-zenith
-;date.sunrise_zenith = 90.583333
+;date.sunrise_zenith = 90.83333
 
 ; https://www.php.net/date.sunset-zenith
-;date.sunset_zenith = 90.583333</code>
+;date.sunset_zenith = 90.83333</code>
 </pre>
       </div>
 
-      <p>Estas directivas se han <a href="https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.date">declarado obsoletas en PHP 8.1</a> y se eliminarán en PHP 9.0, por lo que se desaconseja su uso.</p>
+      <p>Estas directivas se han <a href="https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.date">declararon obsoletas en PHP 8.1</a> y se eliminarán en PHP 9.0, por lo que se desaconseja su uso.</p>
 
-      <p>La latitud y longitud predeterminadas corresponden a la ciudad de Jerusalén. Si se quieren asignar los valores correspondientes a la ciudad de Madrid, habría que cambiarlos a:</p>
+      <p>La latitud y longitud anteriores corresponden a la ciudad de Jerusalén. Si se quieren asignar los valores correspondientes a la ciudad de Madrid, por ejemplo, habría que cambiarlos a:</p>
 
       <div class="codigo">
         <pre>
-<code class="language-configuracion">; 2022-09-13. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173
+<code class="language-configuracion">; 2023-09-11. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173
 ; https://www.php.net/date.default-latitude
 ;date.default_latitude = 31.7667
 date.default_latitude=40.4173
 
-; 2022-09-13. Barto. He cambiado la longitud a Madrid: 3 42 22 W = -3.7063
+; 2023-09-11. Barto. He cambiado la longitud a Madrid: 3 42 22 W = -3.7063
 ; https://www.php.net/date.default-longitude
 ;date.default_longitude = 35.2333
 date.default_longitude=-3.7063
 
 ; https://www.php.net/date.sunrise-zenith
-;date.sunrise_zenith = 90.583333
+;date.sunrise_zenith = 90.83333
 
 ; https://www.php.net/date.sunset-zenith
-;date.sunset_zenith = 90.583333</code>
+;date.sunset_zenith = 90.83333</code>
 </pre>
       </div>
     </section>
@@ -738,7 +738,7 @@ date.default_longitude=-3.7063
 </pre>
       </div>
 
-      <p>En XAMPP 8.1 esta directiva viene predeterminada con el valor 40M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor 40M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
 
       <div class="codigo">
         <pre>
@@ -746,7 +746,7 @@ date.default_longitude=-3.7063
 </pre>
       </div>
 
-      <p>En XAMPP 8.1 esta directiva viene predeterminada con el valor 40M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor 40M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
     </section>
 
     <section id="fileinfo">
@@ -760,7 +760,7 @@ date.default_longitude=-3.7063
 </pre>
       </div>
 
-      <p> XAMPP 8.1 tiene activada la extensión FileInfo, por lo que <strong>no</strong> es necesario modificarla.</p>
+      <p> XAMPP 8.2 tiene activada la extensión FileInfo, por lo que <strong>no</strong> es necesario modificarla.</p>
 
       <p>En este curso de PHP no se utiliza esta extensión, pero sí que se necesita en el <a href="https://www.mclibre.org/consultar/webapps/index.html">curso de Aplicaciones Web</a> (por ejemplo, con OwnCloud).</p>
 
@@ -774,30 +774,15 @@ date.default_longitude=-3.7063
 // Este programa comprueba el tipo MIME de un archivo cualquiera
 
 // Para probarlo, copie un archivo cualquiera (exe, zip, png, jpg, txt, etc.),
-// cambie su nombre (por ejemplo tmp.tmp) y escriba su ruta (por ejemplo C:):
-$archivo = "<span class="codigo-resaltado">C:/tmp.tmp</span>";
+// cambie su nombre (por ejemplo tmp.tmp) y escriba su ruta (por ejemplo C:/tmp):
+$archivo = "C:/tmp/tmp.tmp";
 
 // Se muestran los errores por si acaso
 ini_set("display_errors", "on");
 
-// Escriba aquí la ruta del directorio temporal que usa PHP
-$temporalRuta = "<span class="codigo-resaltado">C:/WINDOWS/Temp/</span>";
-
-// OC genera una archivo temporal
-$temporalArchivo = "temporal";
-
-// Unimos las dos variables anteriores en una sola variable
-$temporal = $temporalRuta . $temporalArchivo;
-
-// Copiamos el archivo cuyo tipo MIME se quiere averiguar
-$rc = copy($archivo, $temporal);
-if (!$rc) {
-    exit("&lt;p&gt;Error copiando $archivo. Compruebe su configuración.&lt;/p&gt;\n");
-}
-
 // El código siguiente está basado en OC/lib/helper.php
-if (function_exists("finfo_open") &amp;&amp; function_exists("finfo_file") &amp;&amp; $finfo = finfo_open(FILEINFO_MIME)) {
-    $info = strtolower(finfo_file($finfo, $temporal));
+if (function_exists("finfo_open") && function_exists("finfo_file") && $finfo = finfo_open(FILEINFO_MIME)) {
+    $info = finfo_file($finfo, $archivo);
     if ($info) {
         $mimeType = substr($info, 0, strpos($info, ";"));
         print "&lt;p&gt;El tipo MIME del archivo $archivo es: $mimeType&lt;/p&gt;\n";
@@ -817,7 +802,7 @@ if (function_exists("finfo_open") &amp;&amp; function_exists("finfo_file") &amp;
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 14 de septiembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 11 de septiembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
