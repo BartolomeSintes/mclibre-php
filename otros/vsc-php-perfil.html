@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>PHP. Perfil recomendado. Visual Studio Code. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Visual Studio Code. Perfil recomendado para el curso Programación web en PHP</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>VSC: Perfil</h2>
+
+      <ul>
+        <li><a href="#perfil">Instalación</a></li>
+        <li><a href="#preferencias">Preferencias</a></li>
+        <li><a href="#php-cs-fixer">PHP CS Fixer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>Visual Studio Code permite utilizar perfiles, lo que permite cambiar de forma sencilla entre distintas configuraciones (extensiones instaladas, preferencias, tareas y atajos). Además, los perfiles se pueden compartir, lo que facilita la puesta a punto del editor en distintos ordenadores. Por desgracia, los perfiles todavía tienen algunas limitaciones, por lo que la configuración a veces no puede ser completamente automática y requiere algunos pasos finales manuales.</p>
+
+  <p>En esta lección se comenta cómo instalar y completar de configurar un perfil que incluye tanto la <a href="vsc-php-configuracion.html">Configuración recomendada</a> para seguir este curso de PHP como la <a href="https://mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html">Configuración recomendada</a> para seguir el curso de HTML y CSS.</p>
+
+  <p>Referencias:</p>
+  <ul>
+    <li>Documentación oficial <a href="https://code.visualstudio.com/docs/editor/profiles">Profiles in Visual Studio Code</a></li>
+  </ul>
+
+  <!-- <p>Esta lección no detalla los pasos para configurar Visual Studio Code. En caso necesario, puede consultar la lección <a href="https://www.mclibre.org/consultar/informatica/lecciones/vsc-personalizacion.html">Personalización de VSC</a> de los apuntes de <a href="https://www.mclibre.org/consultar/informatica/index.html">Informática general</a>, en la que se explica detalladamente cómo se personaliza Visual Studio Code. En dichos apuntes también puede consultar lecciones dedicadas a Visual Studio Code, como <a href="https://www.mclibre.org/consultar/informatica/lecciones/vsc.html">Presentación general</a>, <a href="https://www.mclibre.org/consultar/informatica/lecciones/vsc-instalacion.html">Instalación</a>, <a href="https://www.mclibre.org/consultar/informatica/lecciones/vsc-uso.html">Uso</a> y otras, que le pueden ser de ayuda si no conoce Visual Studio Code.</p> -->
+
+  <section id="perfil">
+    <h2>Instalación del perfil</h2>
+
+    <p>Los perfiles de VSCode se pueden compartir mediante <i>gists</i> de GitHub. El perfil que corresponde a la configuración recomendada para seguir estos apuntes se encuentra disponible en <a href="https://gist.github.com/BartolomeSintes/b2ad1d8c4e87bf8015c5c136a095134f">https://gist.github.com/BartolomeSintes/b2ad1d8c4e87bf8015c5c136a095134f</a>.</p>
+
+    <p>Una vez creado y seleccionado el perfil en Visual Studio Code, se requieren un par de ajustes adicionales que se comentan a continuación.</p>
+  </section>
+
+  <section id="preferencias">
+    <h2>Preferencias</h2>
+
+    <p>No es posible exportar o importar en un perfil rutas de archivos en el archivo de preferencias, por lo que la preferencia que indica la ruta al ejecutable php no está incluida en el perfil. En realidad, sí que está incluida pero comentada, por lo que es necesario descomentarla:</p>
+
+    <ul>
+      <li>Busque la preferencia "php.validate.executablePath" en el archivo de preferencias ...
+
+        <div class="codigo">
+          <pre>
+<code class="language-json">...
+  //
+  // PHP: Validate: Executable path
+  // Ubicación del intérprete de PHP.
+  // "php.validate.executablePath": "<span class="codigo-resaltado">C:/xampp/php/php.exe</span>",
+...</code>
+</pre>
+        </div>
+      </li>
+      <li>... y descoméntela:
+        <div class="codigo">
+          <pre>
+<code class="language-json">...
+  //
+  // PHP: Validate: Executable path
+  // Ubicación del intérprete de PHP.
+  "php.validate.executablePath": "<span class="codigo-resaltado">C:/xampp/php/php.exe</span>",
+...</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="php-cs-fixer">
+    <h2>Archivo de configuración de PHP CS Fixer</h2>
+
+    <p>No es posible incluir en la exportación un perfil archivos adicionales, por lo que es necesario crear manualmente el archivo de configuración de la extensión PHP CS Fixer.</p>
+
+    <ul>
+      <li>Cree la carpeta .vscode en la carpeta raíz.</li>
+      <li>Cree el fichero <strong>php-cs-fixer-config.php</strong> en la carpeta .vscode</li>
+      <li>Copie en este fichero la configuración recomendada para PHP CS Fixer que se muestra a continuación.
+        <div class="codigo copy">
+          <pre>
+<code class="language-php">&lt;?php
+
+  // Apuntes del curso Programación web en PHP
+  // https://www.mclibre.org/consultar/php/
+  //
+  // Archivo de configuración para PHP CS Fixer
+  // 2022-12-05
+
+  return (new PhpCsFixer\Config())
+      -&gt;setRules([
+          '@PER'                                        =&gt; true,
+          'align_multiline_comment'                     =&gt; ['comment_type' =&gt; 'all_multiline'],
+          'array_indentation'                           =&gt; true,
+          'array_syntax'                                =&gt; ['syntax' =&gt; 'short'],
+          'binary_operator_spaces'                      =&gt; ['default' =&gt; 'align_single_space_minimal', 'operators' =&gt; [], ],
+          'cast_spaces'                                 =&gt; ['space' =&gt; 'none'],
+          'combine_consecutive_issets'                  =&gt; true,
+          'concat_space'                                =&gt; ['spacing' =&gt; 'one'],
+          'explicit_indirect_variable'                  =&gt; true,
+          'function_typehint_space'                     =&gt; true,
+          'include'                                     =&gt; true,
+          'linebreak_after_opening_tag'                 =&gt; true,
+          'list_syntax'                                 =&gt; ['syntax' =&gt; 'short'],
+          'magic_constant_casing'                       =&gt; true,
+          'magic_method_casing'                         =&gt; true,
+          'multiline_comment_opening_closing'           =&gt; true,
+          'multiline_whitespace_before_semicolons'      =&gt; true,
+          'native_function_casing'                      =&gt; true,
+          'native_function_type_declaration_casing'     =&gt; true,
+          'no_alias_language_construct_call'            =&gt; true,
+          'no_alternative_syntax'                       =&gt; true,
+          'no_empty_statement'                          =&gt; true,
+          'no_extra_blank_lines'                        =&gt; true,
+          'no_mixed_echo_print'                         =&gt; ['use' =&gt; 'print'],
+          'no_multiline_whitespace_around_double_arrow' =&gt; true,
+          'no_short_bool_cast'                          =&gt; true,
+          'no_singleline_whitespace_before_semicolons'  =&gt; true,
+          'no_spaces_around_offset'                     =&gt; true,
+          'no_superfluous_elseif'                       =&gt; true,
+          'no_unneeded_control_parentheses'             =&gt; true,
+          'no_unneeded_curly_braces'                    =&gt; true,
+          'no_unset_cast'                               =&gt; true,
+          'no_unused_imports'                           =&gt; true,
+          'no_useless_concat_operator'                  =&gt; true,
+          'no_useless_else'                             =&gt; true,
+          'no_useless_return'                           =&gt; true,
+          'no_whitespace_before_comma_in_array'         =&gt; true,
+          'normalize_index_brace'                       =&gt; true,
+          'object_operator_without_whitespace'          =&gt; true,
+          'semicolon_after_instruction'                 =&gt; true,
+          'single_line_comment_style'                   =&gt; true,
+          'space_after_semicolon'                       =&gt; true,
+          'standardize_not_equals'                      =&gt; true,
+          'ternary_to_null_coalescing'                  =&gt; true,
+          'trailing_comma_in_multiline'                 =&gt; true,
+          'trim_array_spaces'                           =&gt; true,
+          'unary_operator_spaces'                       =&gt; true,
+          'whitespace_after_comma_in_array'             =&gt; true,
+      ])
+      -&gt;setIndent("    ")
+      -&gt;setLineEnding("\n");</code>
+  </pre>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 15 de septiembre de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
