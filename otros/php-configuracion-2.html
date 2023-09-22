@@ -23,110 +23,35 @@
       <h2>Configurar Apache (2)</h2>
 
       <ul>
-        <li><a href="#introduccion">Introducción</a></li>
         <li><a href="#configuracion-apache">Configuración de Apache</a>
           <ul>
-            <li><a href="#control-acceso">Control de acceso</a></li>
             <li><a href="#document-root">DocumentRoot</a></li>
             <li><a href="#user-dir">UserDir</a></li>
           </ul>
         </li>
+        <li><a href="#configuracion-php">Configuración de PHP</a>
+          <ul>
+            <li><a href="#short-open-tag">short_open_tag</a></li>
+            <li><a href="#display-errors">display_errors</a></li>
+            <li><a href="#pdo-mysql">extensión pdo_mysql</a></li>
+            <li><a href="#pdo-sqlite">extensión pdo_sqlite</a></li>
+            <li><a href="#session-save-handler">session.save_handler</a></li>
+            <li><a href="#session-use-trans-sid">session.use_trans_sid </a></li>
+            <li><a href="#date-timezone">date.timezone</a></li>
+            <li><a href="#post-max-size">post_max_size</a></li>
+            <li><a href="#fileinfo">extensión fileinfo</a></li>
+          </ul>
+        </li>
+        <li><a href="#otros">Otros</a></li>
       </ul>
     </div>
   </nav>
 
-  <section id="introduccion">
-    <h2>Introducción</h2>
 
-    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"><strong>Nota</strong>: Esta página contiene información sobre la configuración de Apache y PHP que <strong>no</strong> se utiliza en clase, pero que puede resultar de interés.</p>
-
-    <p>Esta explicación sobre la configuración de Apache y PHP se escribió para XAMPP 1.8.3 y puede no funcionar en versiones posteriores.</p>
-  </section>
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"> Esta página contiene información sobre aspectos de la configuración de Apache y de PHP que <strong>no</strong> utilizo en clase, o que no es necesario explicar con todo detalle en clase porque forma parte de las prácticas más extendidas, pero que puede resultar de interés. Los aspectos que sí explico en clase se comentan en la lección <a href="php-configuracion-1.html">Configuración de Apache y PHP</a>.</p>
 
   <section id="configuracion-apache">
     <h2>Configuración de Apache</h2>
-
-    <section id="control-acceso">
-      <h3>Control de acceso en Apache</h3>
-
-      <p>En Apache 2.2. el control de acceso se realizaba mediante las directivas Order, Allow, Deny, and Satisfy.</p>
-
-      <p>En Apache 2.4 , el control de acceso se realiza mediante el módulo mod_authz_host, que utiliza otras directivas, aunque el módulo mod_access_compat permite utilizar las directivas antiguas.</p>
-
-      <p>En el caso de XAMPP, la versión XAMPP 1.8.0 (que ya incluía Apache 2.4.2) utilizaba todavía las directivas habituales de Apache 2.2 order y deny. El fichero httpd.conf contenía una directiva Directory general que restringía el acceso general a los directorios utilizando las directivas Order y Deny</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-configuracion"># Each directory to which Apache has access can be configured with respect
-# to which services and features are allowed and/or disabled in that
-# directory (and its subdirectories).
-#
-# First, we configure the "default" to be a very restrictive set of
-# features.
-#
-&lt;Directory /&gt;
-    Options FollowSymLinks
-    AllowOverride None
-    <strong>Order deny,allow
-    Deny from all</strong>
-&lt;/Directory&gt;</code>
-</pre>
-      </div>
-
-      <p>Por eso, cuando el usuario quería permitir el acceso a un directorio (por ejemplo en un alias) debían utilizarse esas mismas directivas. Por ejemplo</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-configuracion">&lt;IfModule alias_module&gt;
-
-   Alias /mi-proyecto/mi-carpeta "C:\Users\NombreDeUsuario\Documents\PHP"
-   &lt;Directory "C:\Users\NombreDeUsuario\Documents\PHP"&gt;
-     Options Indexes FollowSymLinks Includes ExecCGI
-     AllowOverride All
-     <strong>Order allow,deny
-     Allow from all</strong>
-   &lt;/Directory&gt;
-
-   ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
-&lt;/IfModule&gt;</code>
-</pre>
-      </div>
-
-      <p>Sin embargo, la versión XAMPP 1.8.3 (que incluye Apache 2.4.4) utiliza ya la directiva Require. El fichero httpd.conf contiene una directiva Directory general que restringe el acceso general a los directorios utilizando la directiva Require</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-configuracion"># Deny access to the entirety of your server's filesystem. You must
-# explicitly permit access to web content directories in other
-# &lt;Directory&gt; blocks below.
-#
-&lt;Directory /&gt;
-    AllowOverride none
-    <strong>Require all denied</strong>
-&lt;/Directory&gt;</code>
-</pre>
-      </div>
-
-      <p>Por eso, cuando el usuario quiere permitir el acceso a un directorio (por ejemplo en un alias) debe utilizarse esa misma directiva. Por ejemplo</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-configuracion">&lt;IfModule alias_module&gt;
-
-   Alias /mi-proyecto/mi-carpeta "C:\Users\NombreDeUsuario\Documents\PHP"
-   &lt;Directory "C:\Users\NombreDeUsuario\Documents\PHP"&gt;
-     Options Indexes FollowSymLinks Includes ExecCGI
-     AllowOverride All
-     <strong>Require all granted</strong>
-   &lt;/Directory&gt;
-
-   ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
-&lt;/IfModule&gt;</code>
-</pre>
-      </div>
-
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">En este curso se aconseja el uso de versiones posteriores a XAMPP 1.8.0, por lo que los ejemplos utilizarán la directiva Require. En caso de que un alumno no pueda utilizar versiones posteriores a XAMPP 1.8.0 (por ejemplo, porque utiliza Windows XP), deberá emplear las directivas Order y Allow.</p>
-    </section>
 
     <section id="document-root">
       <h3>DocumentRoot</h3>
@@ -135,7 +60,7 @@
 
       <p>La directiva DocumentRoot especifica el directorio donde se encuentran las páginas web. Cuando en la barra de dirección del navegador se escriba una dirección que comience por http://localhost/, el servidor buscará los archivos a partir de ese directorio. La directiva DocumentRoot va acompañada de una directiva &lt;Directory&gt; que especifica qué servicios y características están permitidos o prohibidos en el directorio.</p>
 
-      <p>En XAMPP 7.0 el valor predeterminado de DocumentRoot es el siguiente:</p>
+      <p>En XAMPP el valor predeterminado de DocumentRoot es el siguiente:</p>
 
       <div class="codigo">
         <pre>
@@ -228,7 +153,7 @@ DocumentRoot "C:/xampp/htdocs"
 
       <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48"><strong>Nota</strong>: En este curso <strong>no</strong> se recomienda el uso de UserDir, aunque se comente aquí cómo hacerlo.</p>
 
-      <p>Como en un ordenador con Windows XP puede haber varios usuarios, puede ser un problema que todos los usuarios utilicen el mismo directorio raíz. La directiva UserDir permite que cada usuario guarde sus páginas en su propio directorio Mis Documentos y que cada uno acceda a ellos escribiendo en el navegador la dirección http://localhost/~<em>nombre-de-usuario</em>.</p>
+      <p>Como en un ordenador con Windows puede haber varios usuarios, puede ser un problema que todos los usuarios utilicen el mismo directorio raíz. La directiva UserDir permite que cada usuario guarde sus páginas en su propio directorio Documentos y que cada uno acceda a ellos escribiendo en el navegador la dirección http://localhost/~<em>nombre-de-usuario</em>.</p>
 
       <p>Hay que tener en cuenta que aunque se definan directorios de usuarios, http://localhost sigue mostrando el directorio indicado por la directiva DocumentRoot.</p>
 
@@ -289,8 +214,308 @@ UserDir "Documents/www"
     </section>
   </section>
 
+  <section id="configuracion-php">
+    <h2>Configuración de PHP</h2>
+
+    <section id="short-open-tag">
+      <h3>short_open_tag</h3>
+
+      <p>Los fragmentos de código PHP se deben identificar mediante las etiquetas &lt;?php .... ?&gt;. La directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.short-open-tag"><span class="php-dir">short_open_tag</span> </a>especifica si también se admiten las etiquetas &lt;? ... ?&gt;.</p>
+
+      <table class="tabla-con-borde">
+        <tr>
+          <th>Directiva / Valor</th>
+          <th>Significado</th>
+        </tr>
+        <tr>
+          <td>short_open_tag=On</td>
+          <td>Se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt;</td>
+        </tr>
+        <tr>
+          <td>short_open_tag=Off</td>
+          <td>No se admite el uso de &lt;? ... ?&gt; en vez de &lt;?php ... ?&gt; (Valor recomendado)</td>
+        </tr>
+      </table>
+
+      <p>Se recomienda que esta directiva tome el valor Off y que se utilice siempre la etiqueta &lt;?php para empezar los fragmentos de código php.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">short_open_tag=Off        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con valor Off, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+
+      <hr class="corta">
+
+      <p>Si en el servidor la directiva toma el valor On, las páginas que contengan una declaración XML (páginas XHTML o dibujos SVG, por ejemplo) producirían un error. Este problema se resolvería utilizando un fragmento de código para generar la declaración XML.</p>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre><code class="language-php">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
+        </div>
+        <div class="resultado-html">
+          Parse error: parse error, unexpected T_STRING in <strong>ejemplo.php</strong> on line <strong>1</strong>
+        </div>
+      </div>
+
+      <div class="filaflex">
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+print "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?" . "&gt;\n";
+?&gt;</code>
+</pre>
+        </div>
+        <div class="resultado-html"></div>
+      </div>
+    </section>
+
+    <section id="display-errors">
+      <h3>display_errors</h3>
+
+      <p>La directiva <a href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.display-errors"><span class="php-dir">display_errors</span></a> establece si PHP incluye los distintos mensajes de error en la salida del programa.</p>
+
+      <table class="tabla-con-borde">
+        <tr>
+          <th>Directiva / Valor</th>
+          <th>Significado</th>
+        </tr>
+        <tr>
+          <td>display_errors=On</td>
+          <td>Se incluyen los mensajes de error en la salida del programa</td>
+        </tr>
+        <tr>
+          <td>display_errors=Off</td>
+          <td>No se incluyen los mensajes de error en la salida del programa</td>
+        </tr>
+      </table>
+
+      <p>En un entorno de desarrollo se recomienda que esta directiva tome el valor On (para que el programador identifique más fácilmente los errores en sus programas), pero en un entorno de producción se recomienda que esta directiva tome el valor Off (por motivos de seguridad, es decir, para que un posible atacante no identifique errores en los programas que pudieran utilizarse contra el servidor).</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">display_errors=On        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con valor On, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
+
+    <section id="pdo-mysql">
+      <h3>extensión pdo_mysql</h3>
+
+      <p>Para acceder a la base de datos MySQL mediante la biblioteca PDO, debe estar activada la extensión PDO MySQL.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">extension=pdo_mysql        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p> XAMPP 8.2 tiene activada la extensión PDO MySQL, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+
+      <p>La extensión pdo_mysql puede utilizar cualquiera de los dos drivers de bajo nivel: MySQL Client Library (libmysql) o <a href="https://www.php.net/manual/en/book.mysqlnd.php">MySQL Native Driver</a> (mysqlnd). La elección del driver se realiza en la compilación de PHP. El driver nativo mysqlnd se introdujo en PHP 5.3.0. XAMPP utiliza el driver mysqlnd desde XAMPP 1.7.2 (agosto de 2009).</p>
+    </section>
+
+    <section id="pdo-sqlite">
+      <h3>extensión pdo_sqlite</h3>
+
+      <p>Para acceder a la base de datos SQLite mediante la biblioteca PDO, debe estar activada la extensión PDO SQLite.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">extension=pdo_sqlite        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p> XAMPP 8.2 tiene activada la extensión PDO SQLite, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
+
+    <section id="session-save-handler">
+      <h3 id="session.sa">session.save_handler</h3>
+
+      <p>Para utilizar sesiones mediante el mecanismo propio de PHP (es decir, sin necesidad de crear funciones propias), la directiva session.save_handler debe tener el valor files.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">session.save_handler=files        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor files, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+
+      <p>Algunos gestores de contenidos (CMS) tienen sus propias funciones de gestión de sesiones y requieren que esta directiva tome el valor user. Si en nuestro servidor el valor es user, para evitar conflictos nuestros programas pueden modificar esta directiva en tiempo de ejecución, mediante la función ini_set("session.save_handler", "files"); (véase la <a href="../lecciones/php-sesiones.html">lección sobre sesiones</a>).</p>
+    </section>
+
+    <section id="session-use-trans-sid">
+      <h3>session.use_trans_sid </h3>
+
+      <p>Las sesiones normalmente almacenan el identificador de sesión en forma de cookie en el ordenador del usuario. En caso de las cookies estén deshabilitadas en el navegador, las sesiones no funcionarán. La directiva session.use_trans_sid permite utilizar sesiones aunque las cookies estén desactivadas, añadiendo el identificador de la sesión a la dirección de la página como un control más. En general no se aconseja ese uso, pues hace visible al usuario el identificador de la sesión y, sin querer, el usuario puede enviarlo a otra persona que podría acceder a la misma sesión desde otro ordenador.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">session.use_trans_sid=0        ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor 0, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
+
+    <section id="date-timezone">
+      <h3>date.timezone</h3>
+
+      <p>Las <a href="https://www.php.net/manual/en/book.datetime.php">funciones relacionadas con fechas y horas</a> se configuran mediante <a href="https://www.php.net/manual/en/datetime.configuration.php">varias directivas</a>.</p>
+
+      <p>La directiva <span class="php-dir">date.timezone</span> establece la zona horaria predeterminada para todas las funciones de fecha y hora.</p>
+
+      <p>Al instalar XAMPP 8.2, el instalador asigna un valor estimado de la zona horaria (por eso se añade al final del fichero de configuración por lo que hay dos apartados [Date] en el fichero). En el caso de España, XAMPP 8.2 asigna el valor Europe/Berlin que se puede cambiar al valor Europe/Madrid (hasta ahora no era necesario, puesto que entre Berlín y Madrid no hay diferencias horarias, pero eso puede cambiar en el futuro). Se puede consultar <a href="https://www.php.net/manual/en/timezones.php">la lista completa de zonas horarios permitidas</a> en el manual de php.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">; 2023-09-11. Barto. He cambiado el nombre del huso horario a Madrid
+; date.timezone=Europe/Berlin
+date.timezone=Europe/Madrid</code>
+</pre>
+      </div>
+
+      <hr class="corta">
+
+      <p>En el primer apartado [Date] se muestran otras cuatro directivas relacionadas (que no están definidas porque están comentadas):</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">; https://www.php.net/date.default-latitude
+;date.default_latitude = 31.7667
+
+; https://www.php.net/date.default-longitude
+;date.default_longitude = 35.2333
+
+; https://www.php.net/date.sunrise-zenith
+;date.sunrise_zenith = 90.83333
+
+; https://www.php.net/date.sunset-zenith
+;date.sunset_zenith = 90.83333</code>
+</pre>
+      </div>
+
+      <p>Estas directivas se han <a href="https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.date">declararon obsoletas en PHP 8.1</a> y se eliminarán en PHP 9.0, por lo que se desaconseja su uso.</p>
+
+      <p>La latitud y longitud anteriores corresponden a la ciudad de Jerusalén. Si se quieren asignar los valores correspondientes a la ciudad de Madrid, por ejemplo, habría que cambiarlos a:</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">; 2023-09-11. Barto. He cambiado la latitud a Madrid: 40 25 02 N = 40.4173
+; https://www.php.net/date.default-latitude
+;date.default_latitude = 31.7667
+date.default_latitude=40.4173
+
+; 2023-09-11. Barto. He cambiado la longitud a Madrid: 3 42 22 W = -3.7063
+; https://www.php.net/date.default-longitude
+;date.default_longitude = 35.2333
+date.default_longitude=-3.7063
+
+; https://www.php.net/date.sunrise-zenith
+;date.sunrise_zenith = 90.83333
+
+; https://www.php.net/date.sunset-zenith
+;date.sunset_zenith = 90.83333</code>
+</pre>
+      </div>
+    </section>
+
+    <section id="post-max-size">
+      <h3>post_max_size y upload_max_filesize</h3>
+
+      <p>La directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.post-max-size"><span class="php-dir">post_max_size</span></a> especifica el tamaño máximo de los datos que pueden enviarse al servidor.</p>
+
+      <p>La directiva <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize"><span class="php-dir">upload_max_filesize</span></a> especifica el tamaño máximo de un fichero que se envíe al servidor.</p>
+
+      <p>Lógicamente, post_max_size debe ser superior a upload_max_filesize. Si el valor se expresa sin unidades, se interpreta como bytes. Se pueden utilizar las unidades K (kilobytes), M (megabytes) y G (Gigabytes).</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">post_max_size=40M                ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor 40M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">upload_max_filesize=40M          ; Valor recomendado en este curso</code>
+</pre>
+      </div>
+
+      <p>En XAMPP 8.2 esta directiva viene predeterminada con el valor 40M, por lo que <strong>no</strong> es necesario modificarla, aunque conviene comprobar su valor.</p>
+    </section>
+
+    <section id="fileinfo">
+      <h3>extensión fileinfo</h3>
+
+      <p>La extensión <a href="https://www.php.net/manual/en/book.fileinfo.php">fileinfo</a> permite detectar el tipo MIME de un archivo.</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-configuracion">extension=fileinfo</code>
+</pre>
+      </div>
+
+      <p> XAMPP 8.2 tiene activada la extensión FileInfo, por lo que <strong>no</strong> es necesario modificarla.</p>
+
+      <p>En este curso de PHP no se utiliza esta extensión, pero sí que se necesita en el <a href="https://www.mclibre.org/consultar/webapps/index.html">curso de Aplicaciones Web</a> (por ejemplo, con OwnCloud).</p>
+
+      <p><strong>Nota</strong>:</p>
+      <ul>
+        <li>En un hilo del antiguo foro de ownCloud (<a href="https://web.archive.org/web/20140922200729/https://forum.owncloud.org/viewtopic.php?f=17&t=7739">copia en archive.org</a>) se mostraba un programa para probar el funcionamiento de fileinfo:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+// Este programa comprueba el tipo MIME de un archivo cualquiera
+
+// Para probarlo, copie un archivo cualquiera (exe, zip, png, jpg, txt, etc.),
+// cambie su nombre (por ejemplo tmp.tmp) y escriba su ruta (por ejemplo C:/tmp):
+$archivo = "C:/tmp/tmp.tmp";
+
+// Se muestran los errores por si acaso
+ini_set("display_errors", "on");
+
+// El código siguiente está basado en OC/lib/helper.php
+if (function_exists("finfo_open") && function_exists("finfo_file") && $finfo = finfo_open(FILEINFO_MIME)) {
+  $info = finfo_file($finfo, $archivo);
+  if ($info) {
+      $mimeType = substr($info, 0, strpos($info, ";"));
+      print "&lt;p&gt;El tipo MIME del archivo $archivo es: $mimeType&lt;/p&gt;\n";
+  } else {
+      print "&lt;p&gt;No se ha obtenido información sobre el tipo del archivo.&lt;/p&gt;\n";
+  }
+  finfo_close($finfo);
+} else {
+  print "&lt;p&gt;La extensión fileinfo no se ha encontrado. Compruebe su configuración.&lt;/p&gt;\n";
+}
+?&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </section>
+
+
+  <section id="otros">
+    <h2>Otros</h2>
+
+    <p>En la lección <a href="apache-cambios.html">Cambios en Apache</a> se comentan aspectos de Apache que he dejado de explicar en clase porque han quedado "viejos" o se pueden abordar de una forma más "moderna":</p>
+
+    <ul>
+      <li><a href="apache-cambios.html#control-acceso">Control de acceso a directorios</a></li>
+    </ul>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 12 de septiembre de 2016</p>
+    <p class="ultmod">Última modificación de esta página: 22 de septiembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
