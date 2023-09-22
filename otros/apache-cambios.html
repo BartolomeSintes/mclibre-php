@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cambios en Apache. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../varios/php.css" title="mclibre">
+  <link rel="icon" href="../varios/favicon.svg">
+  <link rel="stylesheet" href="../varios/prism.css">
+  <script src="../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Cambios en Apache</h1>
+
+  <nav>
+    <p>
+      <a href="../index.html"><img src="../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="php-configuracion-2.html"><img src="../varios/iconos/icono-obsoleto.svg" alt="Obsoleto" title="Obsoleto" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Cambios en Apache</h2>
+
+      <ul>
+        <li><a href="#control-acceso">Control de acceso</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="aviso-antiguo">
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Esta lección comenta detalles del servidor Apache que había en los apuntes y que he eliminado porque ya no son relevantes debido a su antigüedad. Seguramente acabe eliminándolos.</p>
+  </div>
+
+  <section id="control-acceso">
+    <h3>Control de acceso a directorios</h3>
+
+    <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">Apache 2.2 <a href="https://httpd.apache.org/security/vulnerabilities_22.html">dejó de mantenerse</a> en diciembre de 2017. Las principales distribuciones de Linux incluyen Apache 2.4 desde hace años: Debian 8.0 (2015),  Ubuntu 14.04 y RedHat 7 (2014).</p>
+
+    <p>En Apache 2.2. el control de acceso se realizaba mediante las directivas Order, Allow, Deny, and Satisfy. La última versión de XAMPP que incluía Apache 2.2 fue XAMPP 1.7.2 (2009). XAMPP 1.8.0 (2012), que ya incluía Apache 2.4.2, utilizaba todavía las directivas habituales de Apache 2.2 order y deny.</p>
+
+    <p>El fichero httpd.conf contenía una directiva Directory general que restringía el acceso general a los directorios utilizando las directivas Order y Deny</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-configuracion"># Each directory to which Apache has access can be configured with respect
+# to which services and features are allowed and/or disabled in that
+# directory (and its subdirectories).
+#
+# First, we configure the "default" to be a very restrictive set of
+# features.
+#
+&lt;Directory /&gt;
+    Options FollowSymLinks
+    AllowOverride None
+    <strong>Order deny,allow
+    Deny from all</strong>
+&lt;/Directory&gt;</code>
+</pre>
+    </div>
+
+    <p>Por eso, cuando el usuario quería permitir el acceso a un directorio (por ejemplo en un alias) debían utilizarse esas mismas directivas. Por ejemplo</p>
+
+    <div class="codigo">
+      <pre>
+<code class="language-configuracion">&lt;IfModule alias_module&gt;
+
+   Alias /mi-proyecto/mi-carpeta "C:\Users\NombreDeUsuario\Documents\PHP"
+   &lt;Directory "C:\Users\NombreDeUsuario\Documents\PHP"&gt;
+     Options Indexes FollowSymLinks Includes ExecCGI
+     AllowOverride All
+     <strong>Order allow,deny
+     Allow from all</strong>
+   &lt;/Directory&gt;
+
+   ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
+&lt;/IfModule&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 22 de septiembre de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
