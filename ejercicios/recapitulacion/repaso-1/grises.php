@@ -3,9 +3,9 @@
  * Grises - grises.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-19
+ * @version   2023-09-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -91,7 +91,7 @@ print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"get\">\n";
 print "    <table style=\"margin-left: auto; margin-right: auto;\">\n";
 print "      <tr>\n";
 print "        <td><input type=\"submit\" name=\"mas\" value=\"+\" style=\"font-size: 300%\"></td>\n";
-print "        <td style=\"width: 100px; height: 100px; background-color: rgb($gris, $gris, $gris)\"></td>\n";
+print "        <td style=\"width: 100px; height: 100px; background-color: rgb($gris $gris $gris)\"></td>\n";
 print "        <td><input type=\"submit\" name=\"menos\" value=\"-\" style=\"font-size: 300%\"></td>\n";
 print "      </tr>\n";
 print "    </table>\n";
@@ -103,7 +103,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-19">19 de noviembre de 2015</time>
+      <time datetime="2023-09-26">26 de septiembre de 2023</time>
     </p>
 
     <p class="licencia">

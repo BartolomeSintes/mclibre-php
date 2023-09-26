@@ -3,9 +3,9 @@
  * Imágenes - imagenes-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2023-09-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -85,7 +85,7 @@ for ($i = 1; $i <= $cuadros; $i++) {
     $colorR = rand(1, 255);
     $colorG = rand(1, 255);
     $colorB = rand(1, 255);
-    $color  = "rgb($colorR, $colorG, $colorB)";
+    $color  = "rgb($colorR $colorG $colorB)";
     print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" "
         . "width=\"{$ancho}px\" height=\"{$ancho}px\">\n";
     print "      <path fill=\"$color\" stroke=\"black\" stroke-width=\"3\" "
@@ -99,7 +99,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2023</p>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * RGB Test - rgb-test.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2015 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2015-11-18
+ * @version   2023-09-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -77,7 +77,7 @@ if ($respuesta == "1" || $respuesta == "2" || $respuesta == "3" || $respuesta ==
 
 $color = [];
 for ($i = 1; $i <= 4; $i++) {
-    $color[$i] = "rgb(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ")";
+    $color[$i] = "rgb(" . rand(0, 255) . " " . rand(0, 255) . " " . rand(0, 255) . ")";
 }
 
 $solucion = rand(1, 4);
@@ -99,7 +99,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2015-11-18">18 de noviembre de 2015</time>
+      <time datetime="2023-09-26">26 de septiembre de 2023</time>
     </p>
 
     <p class="licencia">

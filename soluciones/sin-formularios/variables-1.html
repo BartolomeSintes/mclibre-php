@@ -82,7 +82,7 @@ print "  &lt;/p&gt;";
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$color = "rgb(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ")";
+$color = "rgb(" . rand(0, 255) . " " . rand(0, 255) . " " . rand(0, 255) . ")";
 
 print "  &lt;p&gt;Color: $color&lt;/p&gt;\n";
 print "\n";
@@ -156,13 +156,13 @@ print "      width=\"400\" height=\"300\" viewBox=\"-200 -120 400 300\"&gt;\n";
 print "      &lt;text x=\"100\" y=\"-90\" text-anchor=\"start\" font-size=\"20\"&gt;Verde: $verde&lt;/text&gt;\n";
 print "      &lt;text x=\"-100\" y=\"-90\" text-anchor=\"end\" font-size=\"20\"&gt;Azul: $azul&lt;/text&gt;\n";
 print "      &lt;text x=\"0\" y=\"155\" text-anchor=\"middle\" font-size=\"20\"&gt;Rojo: $rojo&lt;/text&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, 0, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\" /&gt;\n";
-print "      &lt;path fill=\"rgb(0, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\" /&gt;\n";
-print "      &lt;path fill=\"rgb(0, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\" /&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, $verde, 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\" /&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, 0, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\" /&gt;\n";
-print "      &lt;path fill=\"rgb(0, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\" /&gt;\n";
-print "      &lt;path fill=\"rgb($rojo, $verde, $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\" /&gt;\n";
+print "      &lt;path fill=\"rgb($rojo 0 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 1, 0, 73.85 36.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 1, -73.85 36.92\" /&gt;\n";
+print "      &lt;path fill=\"rgb(0 $verde 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 1, 0, 0 -93.44 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 1, 73.85 36.92\" /&gt;\n";
+print "      &lt;path fill=\"rgb(0 0 $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 1, 0, -73.85 36.92 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 1, 0 -93.44\" /&gt;\n";
+print "      &lt;path fill=\"rgb($rojo $verde 0)\" stroke=\"black\" stroke-width=\"1\" d=\"M 73.85 36.92 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 1, 0 33.44 A 75 75 0, 0, 0, 73.85 36.92\" /&gt;\n";
+print "      &lt;path fill=\"rgb($rojo 0 $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M -73.85 36.92 A 75 75, 0, 0, 0, 0 33.44 A 75 75 0, 0, 1, -33.85 -16.92 A 75 75 0, 0, 0, -73.85 36.92\" /&gt;\n";
+print "      &lt;path fill=\"rgb(0 $verde $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 -93.44 A 75 75, 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 1, 33.85 -16.92 A 75 75 0, 0, 0, 0 -93.44\" /&gt;\n";
+print "      &lt;path fill=\"rgb($rojo $verde $azul)\" stroke=\"black\" stroke-width=\"1\" d=\"M 0 33.44 A 75 75, 0, 0, 0, 33.85 -16.92 A 75 75 0, 0, 0, -33.85 -16.92 A 75 75 0, 0, 0, 0 33.44\" /&gt;\n";
 print "    &lt;/svg&gt;\n";
 print "  &lt;/p&gt;\n";
 ?&gt;</code>
@@ -283,7 +283,7 @@ print "  &lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
