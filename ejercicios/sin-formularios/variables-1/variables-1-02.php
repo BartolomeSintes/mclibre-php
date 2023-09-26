@@ -3,9 +3,9 @@
  * Variables. Sin formularios.(1) 2 - variables-1-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-09-24
+ * @version   2023-09-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@
   <p>Actualice la página para mostrar un nuevo círculo.</p>
 
 <?php
-$color = "rgb(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ")";
+$color = "rgb(" . rand(0, 255) . " " . rand(0, 255) . " " . rand(0, 255) . ")";
 
 print "  <p>Color: $color</p>\n";
 print "\n";
@@ -56,7 +56,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-09-24">24 de septiembre de 2018</time>
+      <time datetime="2023-09-26">26 de septiembre de 2023</time>
     </p>
 
     <p class="licencia">
