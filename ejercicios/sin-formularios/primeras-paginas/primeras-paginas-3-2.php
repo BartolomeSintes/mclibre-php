@@ -3,9 +3,9 @@
  * Primeras páginas. Sin formularios.3-2 - primeras-paginas-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-09-28
+ * @version   2023-09-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,10 +22,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
+<?php
+print "<!DOCTYPE html>\n";
+print "<html lang=\"es\">\n";
+print "<head>\n";
+print "  <meta charset=\"utf-8\">\n";
+?>
   <title>
     Primeras páginas 3-2.
     Primeras páginas. Sin formularios.
@@ -47,7 +49,7 @@ print "  <p><a href=\"primeras-paginas-3-1.php\">Volver a la página inicial</a>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-09-28">28 de septiembre de 2022</time>
+      <time datetime="2023-09-26">26 de septiembre de 2023</time>
     </p>
 
     <p class="licencia">

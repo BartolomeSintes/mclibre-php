@@ -3,9 +3,9 @@
  * Primeras páginas. Sin formularios.3-1 - primeras-paginas-3-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-09-28
+ * @version   2023-09-26
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -26,34 +26,36 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>
-    Primeras páginas 3-1.
-    Primeras páginas. Sin formularios.
-    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
-  </title>
+<?php
+print "  <title>\n";
+print "    Primeras páginas 3-1.\n";
+print "    Primeras páginas. Sin formularios.\n";
+print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
+print "  </title>\n";
+?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="primeras-paginas-3.css" title="Color">
 </head>
 
 <body>
+  <h1>Mi segundo programa</h1>
+
+  <p><a href="primeras-paginas-3-2.php">Ir al saludo</a></p>
 <?php
-print "  <h1>Mi segundo programa</h1>\n";
 print "\n";
-print "  <p><a href=\"primeras-paginas-3-2.php\">Ir al saludo</a></p>\n";
+print "  <footer>\n";
+print "    <p class=\"ultmod\">\n";
+print "      Última modificación de esta página:\n";
+print "      <time datetime=\"2023-09-26\">26 de septiembre de 2023</time>\n";
+print "    </p>\n";
+print "\n";
+print "    <p class=\"licencia\">\n";
+print "      Este programa forma parte del curso <strong><a href=\"https://www.mclibre.org/consultar/php/\">Programación\n";
+print "      web en PHP</a></strong> de <a href=\"https://www.mclibre.org/\" rel=\"author\">Bartolomé Sintes Marco</a>.<br>\n";
+print "      El programa PHP que genera esta página se distribuye bajo\n";
+print "      <a rel=\"license\" href=\"http://www.gnu.org/licenses/agpl.txt\">licencia AGPL 3 o posterior</a>.\n";
+print "    </p>\n";
+print "  </footer>\n";
+print "</body>\n";
+print "</html>\n";
 ?>
-
-  <footer>
-    <p class="ultmod">
-      Última modificación de esta página:
-      <time datetime="2022-09-28">28 de septiembre de 2022</time>
-    </p>
-
-    <p class="licencia">
-      Este programa forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
-      El programa PHP que genera esta página se distribuye bajo
-      <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
-    </p>
-  </footer>
-</body>
-</html>
