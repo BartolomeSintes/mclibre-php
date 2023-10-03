@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Avance de ficha.
+    Tres cuadrados.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,33 +36,23 @@
 </head>
 
 <body>
-  <h1>Avance de ficha</h1>
+  <h1>Tres cuadrados</h1>
 
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <p>Actualice la página para mostrar tres nuevos cuadrados.</p>
 
 <?php
-$dado = rand(1, 6);
+$c1    = rand(50, 150);
+$c2    = rand(50, 150);
+$c3    = rand(50, 150);
+$ancho = $c1 + $c2 + $c3 + 20;
+$alto  = max($c1, $c2, $c3) + 20;
 
 print "  <p>\n";
-print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
-print "  </p>\n";
-print "\n";
-print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"620\" height=\"120\" viewBox=\"-15 -15 620 120\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
-print "      <rect x=\"0\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
-print "      <text x=\"50\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">1</text>\n";
-print "      <rect x=\"100\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
-print "      <text x=\"150\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">2</text>\n";
-print "      <rect x=\"200\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
-print "      <text x=\"250\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">3</text>\n";
-print "      <rect x=\"300\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
-print "      <text x=\"350\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">4</text>\n";
-print "      <rect x=\"400\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
-print "      <text x=\"450\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">5</text>\n";
-print "      <rect x=\"500\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
-print "      <text x=\"550\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">6</text>\n";
-print "      <circle cx=\"" . 100 * $dado - 50 . "\" cy=\"50\" r=\"30\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
+print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
+print "      <rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" />\n";
+print "      <rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" />\n";
+print "      <rect x=\"" . $c1 + $c2 . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>

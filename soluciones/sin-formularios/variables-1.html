@@ -30,9 +30,10 @@
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-4">4 - La carta más alta</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-5">5 - Círculos de color</a></li>
         <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-11">11 - Cuatro círculos</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-12">12 - Avance de ficha</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-13">13 - Tres cuadrados</a></li>
-        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-14">14 - Tres círculos</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-12">12 - Tres cuadrados</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-13">13 - Tres círculos</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-14">14 - Avance de ficha</a></li>
+        <li><a href="../../ejercicios/sin-formularios/variables-1/index.html#ejercicio-15">15 - Ataque alienígena</a></li>
       </ul>
 
       <h3><a href="#">Soluciones</a></h3>
@@ -43,9 +44,10 @@
         <li><a href="#ejercicio-4">4 - La carta más alta</a></li>
         <li><a href="#ejercicio-5">5 - Círculos de color</a></li>
         <li><a href="#ejercicio-11">11 - Cuatro círculos</a></li>
-        <li><a href="#ejercicio-12">12 - Avance de ficha</a></li>
-        <li><a href="#ejercicio-13">13 - Tres cuadrados</a></li>
-        <li><a href="#ejercicio-14">14 - Tres círculos</a></li>
+        <li><a href="#ejercicio-12">12 - Tres cuadrados</a></li>
+        <li><a href="#ejercicio-13">13 - Tres círculos</a></li>
+        <li><a href="#ejercicio-14">14 - Avance de ficha</a></li>
+        <li><a href="#ejercicio-15">15 - Ataque alienígena</a></li>
       </ul>
     </div>
   </nav>
@@ -197,7 +199,58 @@ print "  &lt;/p&gt;\n";
   </section>
 
   <section id="ejercicio-12">
-    <h2>Variables (1) 12 - Avance de ficha</h2>
+    <h2>Variables (1) 12 - Tres cuadrados</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$c1    = rand(50, 150);
+$c2    = rand(50, 150);
+$c3    = rand(50, 150);
+$ancho = $c1 + $c2 + $c3 + 20;
+$alto  = max($c1, $c2, $c3) + 20;
+
+print "  &lt;p&gt;";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
+print "      &lt;rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" /&gt;\n";
+print "      &lt;rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" /&gt;\n";
+print "      &lt;rect x=\"" . $c1 + $c2 . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" /&gt;\n";
+print "    &lt;/svg&gt;\n";
+print "  &lt;/p&gt;";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-13">
+    <h2>Variables (1) 13 - Tres círculos</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$r1 = rand(50, 150);
+$r2 = rand(50, 150);
+$r3 = rand(50, 150);
+$ancho = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
+$alto  = 2 * max($r1, $r2, $r3) + 20;
+$centros = max($r1, $r2, $r3);
+
+print "  &lt;p&gt;\n";
+print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
+print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
+print "      &lt;circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" /&gt;\n";
+print "      &lt;circle cx=\"" . 2 * $r1 + $r2 . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" /&gt;\n";
+print "      &lt;circle cx=\"" . 2 * $r1 + 2 * $r2 + $r3 . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" /&gt;\n";
+print "    &lt;/svg&gt;\n";
+print "  &lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-14">
+    <h2>Variables (1) 14 - Avance de ficha</h2>
 
     <div class="codigo">
       <pre>
@@ -231,59 +284,51 @@ print "  &lt;/p&gt;";
     </div>
   </section>
 
-  <section id="ejercicio-13">
-    <h2>Variables (1) 13 - Tres cuadrados</h2>
+  <section id="ejercicio-15">
+    <h2>Variables (1) 15 - Ataque alienígena</h2>
 
+    <p>El primer fragmento PHP dibuja los dados:</p>
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$c1    = rand(50, 150);
-$c2    = rand(50, 150);
-$c3    = rand(50, 150);
-$ancho = $c1 + $c2 + $c3 + 20;
-$alto  = max($c1, $c2, $c3) + 20;
+$d1    = rand(1, 6);
+$d2    = rand(1, 6);
+$d3    = rand(1, 6);
+$total = $d1 + $d2 + $d3;
 
-print "  &lt;p&gt;";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
-print "      &lt;rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" /&gt;\n";
-print "      &lt;rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" /&gt;\n";
-print "      &lt;rect x=\"" . $c1 + $c2 . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" /&gt;\n";
-print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;";
+print "  &lt;p&gt;\n";
+print "    &lt;img src=\"img/$d1.svg\" alt=\"$d1\" width=\"120\" height=\"120\"&gt;\n";
+print "    &lt;img src=\"img/$d2.svg\" alt=\"$d2\" width=\"120\" height=\"120\"&gt;\n";
+print "    &lt;img src=\"img/$d3.svg\" alt=\"$d3\" width=\"120\" height=\"120\"&gt;\n";
+print "  &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
     </div>
-  </section>
 
-  <section id="ejercicio-14">
-    <h2>Variables (1) 14 - Tres círculos</h2>
-
+    <p>El segundo fragmento PHP dibuja las explosiones:</p>
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-$r1 = rand(50, 150);
-$r2 = rand(50, 150);
-$r3 = rand(50, 150);
-$ancho = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
-$alto  = 2 * max($r1, $r2, $r3) + 20;
-$centros = max($r1, $r2, $r3);
-
-print "  &lt;p&gt;\n";
-print "    &lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\"&gt;\n";
-print "      &lt;circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" /&gt;\n";
-print "      &lt;circle cx=\"" . 2 * $r1 + $r2 . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" /&gt;\n";
-print "      &lt;circle cx=\"" . 2 * $r1 + 2 * $r2 + $r3 . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" /&gt;\n";
-print "    &lt;/svg&gt;\n";
-print "  &lt;/p&gt;\n";
+print "      &lt;text x=\"" . $d1 * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\"&gt;\n";
+print "        &amp;#x1f4a5;\n";
+print "        &lt;animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . $d1 * 0.1 + 0.5 . "s\" fill=\"freeze\" /&gt;\n";
+print "      &lt;/text&gt;\n";
+print "      &lt;text x=\"" . ($d1 + $d2) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\"&gt;\n";
+print "        &amp;#x1f4a5;\n";
+print "        &lt;animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2) * 0.1 + 0.5 . "s\" fill=\"freeze\" /&gt;\n";
+print "      &lt;/text&gt;\n";
+print "      &lt;text x=\"" . ($d1 + $d2 + $d3) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\"&gt;\n";
+print "        &amp;#x1f4a5;\n";
+print "        &lt;animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2 + $d3) * 0.1 + 0.5 . "s\" fill=\"freeze\" /&gt;\n";
+print "      &lt;/text&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 26 de septiembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 3 de octubre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

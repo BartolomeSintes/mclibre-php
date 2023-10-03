@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Tres círculos.
+    Avance de ficha.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,24 +36,33 @@
 </head>
 
 <body>
-  <h1>Tres círculos</h1>
+  <h1>Avance de ficha</h1>
 
-  <p>Actualice la página para mostrar tres nuevos círculos.</p>
+  <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-$r1 = rand(50, 150);
-$r2 = rand(50, 150);
-$r3 = rand(50, 150);
-$ancho = 2 * $r1 + 2 * $r2 + 2 * $r3 + 20;
-$alto  = 2 * max($r1, $r2, $r3) + 20;
-$centros = max($r1, $r2, $r3);
+$dado = rand(1, 6);
 
 print "  <p>\n";
+print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
+print "  </p>\n";
+print "\n";
+print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
-print "      <circle cx=\"$r1\" cy=\"$centros\" r=\"$r1\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
-print "      <circle cx=\"" . 2 * $r1 + $r2 . "\" cy=\"$centros\" r=\"$r2\" stroke=\"black\" stroke-width=\"2\" fill=\"green\" />\n";
-print "      <circle cx=\"" . 2 * $r1 + 2 * $r2 + $r3 . "\" cy=\"$centros\" r=\"$r3\" stroke=\"black\" stroke-width=\"2\" fill=\"blue\" />\n";
+print "      width=\"620\" height=\"120\" viewBox=\"-15 -15 620 120\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
+print "      <rect x=\"0\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"50\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">1</text>\n";
+print "      <rect x=\"100\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"150\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">2</text>\n";
+print "      <rect x=\"200\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"250\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">3</text>\n";
+print "      <rect x=\"300\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"350\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">4</text>\n";
+print "      <rect x=\"400\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"450\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">5</text>\n";
+print "      <rect x=\"500\" y=\"0\" width=\"100\" height=\"100\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />\n";
+print "      <text x=\"550\" y=\"80\" text-anchor=\"middle\" font-size=\"80\" fill=\"lightgray\">6</text>\n";
+print "      <circle cx=\"" . 100 * $dado - 50 . "\" cy=\"50\" r=\"30\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>
