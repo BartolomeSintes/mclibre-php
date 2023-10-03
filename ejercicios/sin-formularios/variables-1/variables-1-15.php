@@ -93,7 +93,7 @@ print "      </text>\n";
 ?>
       <text x="0" y="20" text-anchor="middle" font-size="60" fill="lightgray">
         &#x1f6f8;
-        <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 -5" to="840 -5" begin="0.5s" dur="1.8s" repeatCount="1" fill="freeze" />
+        <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 -5" to="840 -5" begin="0.5s" dur="2s" repeatCount="1" fill="freeze" />
       </text>
     </svg>
   </p>
