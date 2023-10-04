@@ -44,7 +44,6 @@
 $d1    = rand(1, 6);
 $d2    = rand(1, 6);
 $d3    = rand(1, 6);
-$total = $d1 + $d2 + $d3;
 
 print "  <p>\n";
 print "    <img src=\"img/$d1.svg\" alt=\"$d1\" width=\"120\" height=\"120\">\n";
@@ -78,20 +77,20 @@ print "\n";
       <line x1="700" y="0" x2="640" y2="80" stroke="black" stroke-width="1" fill="none" />
       <line x1="740" y="0" x2="680" y2="80" stroke="black" stroke-width="1" fill="none" />
 <?php
-print "      <text x=\"" . $d1 * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\">\n";
+print "      <text x=\"" . $d1 * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\">\n";
 print "        &#x1f4a5;\n";
 print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . $d1 * 0.1 + 0.5 . "s\" fill=\"freeze\" />\n";
 print "      </text>\n";
-print "      <text x=\"" . ($d1 + $d2) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\">\n";
+print "      <text x=\"" . ($d1 + $d2) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\">\n";
 print "        &#x1f4a5;\n";
 print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2) * 0.1 + 0.5 . "s\" fill=\"freeze\" />\n";
 print "      </text>\n";
-print "      <text x=\"" . ($d1 + $d2 + $d3) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" fill=\"lightgray\" opacity=\"0\">\n";
+print "      <text x=\"" . ($d1 + $d2 + $d3) * 40 + 10 . "\" y=\"45\" text-anchor=\"middle\" font-size=\"20\" opacity=\"0\">\n";
 print "        &#x1f4a5;\n";
 print "        <animate dur=\"0.1s\" attributeName=\"opacity\" from=\"0\" to=\"1\" begin=\"" . ($d1 + $d2 + $d3) * 0.1 + 0.5 . "s\" fill=\"freeze\" />\n";
 print "      </text>\n";
 ?>
-      <text x="0" y="20" text-anchor="middle" font-size="60" fill="lightgray">
+      <text x="0" y="20" text-anchor="middle" font-size="60">
         &#x1f6f8;
         <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 -5" to="840 -5" begin="0.5s" dur="2s" repeatCount="1" fill="freeze" />
       </text>
