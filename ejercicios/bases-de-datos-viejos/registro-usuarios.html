@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
   <style>
     div.agenda {
       background-color: #FDF0D9;
@@ -109,7 +111,8 @@
   <p>Estas pueden ser las consultas de creación de tabla para este proyecto:</p>
 
   <div class="codigo">
-    <pre>// Consultas de creación de tablas en MySQL
+    <pre>
+<code class="language-php">// Consultas de creación de tablas en MySQL
 $consultaCreaTablaUsuarios = "CREATE TABLE $dbUsuarios (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     usuario VARCHAR($tamUsuario),
@@ -129,7 +132,7 @@ $consultaExisteTabla = "SELECT COUNT(*) as existe_db
 
 // Consulta de comprobación de existencia de tablas en SQLite (para la primera vez que se use la página)
 $consultaExisteTabla = "SELECT COUNT(*) as existe_db
-    FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";
+    FROM sqlite_master WHERE type='table' AND name='$dbUsuarios'";</code>
 </pre>
   </div>
 

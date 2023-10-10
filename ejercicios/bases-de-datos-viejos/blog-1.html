@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
   <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
   <style>
     div.foro {
       background-color: #E5F9F9;
@@ -153,7 +155,8 @@
   <p>Esta puede ser la consulta de creación de tabla para este proyecto:</p>
 
   <div class="codigo">
-    <pre>// Tamaño de los campos en la tabla
+    <pre>
+<code class="language-php">// Tamaño de los campos en la tabla
 define("TAM_ENTRADA",         255);  // Tamaño del campo Entradas &gt; Entrada
 define("MAX_REG_ENTRADAS",    10);   // Número máximo de registros en la tabla Entradas
 
@@ -169,7 +172,7 @@ $consulta = "CREATE TABLE $dbEntradas (
     id INTEGER PRIMARY KEY,
     fecha DATE,
     entrada VARCHAR(".TAM_ENTRADA.")
-    )";
+    )";</code>
 </pre>
   </div>
 
@@ -183,7 +186,8 @@ $consulta = "CREATE TABLE $dbEntradas (
     </ul>
 
     <div class="codigo">
-      <pre>&lt;?php
+      <pre>
+<code class="language-php">&lt;?php
 function calendario ($fecha, $enlaces)
 {
     global $db, $dbEntradas;
@@ -282,7 +286,7 @@ function calendario ($fecha, $enlaces)
     print "  &lt;/table&gt;\n&lt;/div&gt;\n";
     print "\n";
 }
-?&gt;
+?&gt;</code>
 </pre>
     </div>
   </section>

@@ -117,7 +117,8 @@
   <p>Estas pueden ser las consultas de creación de tablas para este proyecto:</p>
 
   <div class="codigo">
-    <pre>// Tamaño de los campos en la tabla
+    <pre>
+<code class="language-php">// Tamaño de los campos en la tabla
 define("TAM_TITULO",        50);  // Tamaño del campo Obras &gt; Título
 define("TAM_AUTOR",         50);  // Tamaño del campo Obras &gt; Autor
 define("TAM_EDITORIAL",     50);  // Tamaño del campo Obras &gt; Editorial
@@ -169,20 +170,21 @@ $consultaCreaTablaPrestamos = "CREATE TABLE $dbPrestamos (
     id_obra INTEGER UNSIGNED,
     prestado DATE,
     devuelto DATE
-    )";
+    )";</code>
 </pre>
   </div>
 
   <p>Y esta puede ser la consulta que enlaza las tres tablas:</p>
 
   <div class="codigo">
-    <pre>$consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
+    <pre>
+<code class="language-php">$consulta = "SELECT $dbPrestamos.id AS id, $dbUsuarios.nombre as nombre,
     $dbUsuarios.apellidos as apellidos, $dbObras.titulo as titulo,
     $dbPrestamos.prestado as prestado, $dbPrestamos.devuelto as devuelto
     FROM $dbPrestamos, $dbUsuarios, $dbObras
     WHERE $dbPrestamos.id_usuario=$dbUsuarios.id
     AND $dbPrestamos.id_obra=$dbObras.id
-    ORDER BY $campo $orden";
+    ORDER BY $campo $orden";</code>
 </pre>
   </div>
 
