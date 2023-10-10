@@ -1,6 +1,6 @@
 <?php
 /**
- * Agenda multiusuario -  borrar-2.php
+ * Blog - leer.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -23,35 +23,38 @@
  */
 
 include "biblioteca.php";
-session_start();
+$db = conectaDb();
 
-if (!isset($_SESSION["multiagendaUsuario"])) {
-    header("Location:index.php");
-    exit();
+$fecha = recogeFecha($db, "fecha");
+
+cabecera("Leer", CABECERA_SIN_CURSOR, $fecha);
+calendario($fecha, "leer");
+
+$consulta = "SELECT COUNT(*) FROM $dbEntradas
+    WHERE fecha='$fecha'";
+$result = $db->query($consulta);
+if (!$result) {
+    print "    <p>Error en la consulta.</p>\n";
+    print "\n";
 } else {
-    $db = conectaDb();
-    cabecera("Borrar 2", $_SESSION["multiagendaUsuario"]);
-
-    $id = recogeMatrizParaConsulta($db, "id");
-
-    if (count($id) == 0) {
-      print "    <p>No se ha marcado nada para borrar.</p>\n";
-      print "\n";
+    print "    <div class=\"entrada\">\n";
+    print "      <h2>$fecha</h2>\n";
+    print "\n";
+    print "      <p>";
+    if ($result->fetchColumn() != 0) {
+        $consulta = "SELECT * FROM $dbEntradas
+            WHERE fecha='$fecha'";
+        $result = $db->query($consulta);
+        $valor = $result->fetch();
+        print $valor["entrada"];
     } else {
-        foreach ($id as $indice => $valor) {
-            $consulta = "DELETE FROM $dbAgenda
-                WHERE id=$indice";
-            if ($db->query($consulta)) {
-                print "    <p>Registro borrado correctamente (si existía).</p>\n";
-                print "\n";
-            } else {
-                print "    <p>Error al borrar el registro.</p>\n";
-                print "\n";
-            }
-        }
+        print "Todavía no se ha escrito la entrada de este día.";
     }
-
-    $db = NULL;
-    pie();
+    print"</p>\n";
+    print "    </div>\n";
+    print "\n";
 }
+
+$db = NULL;
+pie();
 ?>

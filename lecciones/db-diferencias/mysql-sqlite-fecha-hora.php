@@ -90,7 +90,7 @@ function borraTodoSqlite($db)
 
     print "          <li>Borrado y creación de tabla en SQLite:\n";
     print "            <ul>\n";
-    $consulta = "DROP TABLE $dbTabla";
+    $consulta = "DROP TABLE IF EXISTS $dbTabla";
     if ($db->query($consulta)) {
         print "              <li>Tabla borrada correctamente.</li>\n";
     } else {

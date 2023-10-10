@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  biblioteca.php
+ * Agenda multiusuario -  biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -161,7 +161,7 @@ function borraTodoSqlite($db)
     global $dbAgenda, $dbUsuarios, $administradorNombre,
         $administradorPassword;
 
-    $consulta = "DROP TABLE $dbAgenda";
+    $consulta = "DROP TABLE IF EXISTS $dbAgenda";
     if ($db->query($consulta)) {
         print "    <p>Tabla de Agenda borrada correctamente.</p>\n";
         print "\n";
@@ -169,7 +169,7 @@ function borraTodoSqlite($db)
         print "    <p>Error al borrar la tabla de Agenda.</p>\n";
         print "\n";
     }
-    $consulta = "DROP TABLE $dbUsuarios";
+    $consulta = "DROP TABLE IF EXISTS $dbUsuarios";
     if ($db->query($consulta)) {
         print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
         print "\n";

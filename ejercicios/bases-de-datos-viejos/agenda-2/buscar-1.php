@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  burcar-1.php
+ * Agenda multiusuario -  burcar-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco

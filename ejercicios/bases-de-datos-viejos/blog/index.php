@@ -1,6 +1,6 @@
 <?php
 /**
- * Agenda multiusuario -  borrar-2.php
+ * Blog - index.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco
@@ -23,35 +23,10 @@
  */
 
 include "biblioteca.php";
-session_start();
+cabecera("Inicio", CABECERA_SIN_CURSOR, "");
 
-if (!isset($_SESSION["multiagendaUsuario"])) {
-    header("Location:index.php");
-    exit();
-} else {
-    $db = conectaDb();
-    cabecera("Borrar 2", $_SESSION["multiagendaUsuario"]);
+print "    <p>Bienvenido a mi blog.</p>\n";
+print "\n";
 
-    $id = recogeMatrizParaConsulta($db, "id");
-
-    if (count($id) == 0) {
-      print "    <p>No se ha marcado nada para borrar.</p>\n";
-      print "\n";
-    } else {
-        foreach ($id as $indice => $valor) {
-            $consulta = "DELETE FROM $dbAgenda
-                WHERE id=$indice";
-            if ($db->query($consulta)) {
-                print "    <p>Registro borrado correctamente (si existía).</p>\n";
-                print "\n";
-            } else {
-                print "    <p>Error al borrar el registro.</p>\n";
-                print "\n";
-            }
-        }
-    }
-
-    $db = NULL;
-    pie();
-}
+pie();
 ?>

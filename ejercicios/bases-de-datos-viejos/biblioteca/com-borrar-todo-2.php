@@ -93,7 +93,7 @@ function borraTodoSqlite($db)
 {
     global $dbObras, $dbUsuarios, $dbPrestamos;
 
-    $consulta = "DROP TABLE $dbObras";
+    $consulta = "DROP TABLE IF EXISTS $dbObras";
     if ($db->query($consulta)) {
        print "    <p>Tabla de Obras borrada correctamente.</p>\n";
        print "\n";
@@ -101,7 +101,7 @@ function borraTodoSqlite($db)
         print "    <p>Error al borrar la tabla de Obras.</p>\n";
         print "\n";
     }
-    $consulta = "DROP TABLE $dbUsuarios";
+    $consulta = "DROP TABLE IF EXISTS $dbUsuarios";
     if ($db->query($consulta)) {
        print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
        print "\n";
@@ -109,7 +109,7 @@ function borraTodoSqlite($db)
         print "    <p>Error al borrar la tabla de Usuarios.</p>\n";
         print "\n";
     }
-    $consulta = "DROP TABLE $dbPrestamos";
+    $consulta = "DROP TABLE IF EXISTS $dbPrestamos";
     if ($db->query($consulta)) {
        print "    <p>Tabla de Préstamos borrada correctamente.</p>\n";
        print "\n";

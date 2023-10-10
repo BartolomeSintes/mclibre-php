@@ -1,11 +1,11 @@
 <?php
 /**
- * Inyección SQL 3 - borrar-todo-2.php
+ * Blog - borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2011 Bartolomé Sintes Marco
+ * @copyright 2009 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2011-05-18
+ * @version   2009-05-21
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,11 +22,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include "biblioteca.php";
-
 function borraTodoMySQL($db)
 {
-    global $dbDb, $dbTabla, $tamUsuario, $tamContraseña;
+    global $dbDb, $dbEntradas;
 
     $consulta = "DROP DATABASE $dbDb";
     if ($db->query($consulta)) {
@@ -40,17 +38,17 @@ function borraTodoMySQL($db)
     if ($db->query($consulta)) {
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
-        $consulta = "CREATE TABLE $dbTabla (
+        $consulta = "CREATE TABLE $dbEntradas (
             id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-            user VARCHAR($tamUsuario),
-            password VARCHAR($tamContraseña),
+            fecha DATE,
+            entrada VARCHAR(".TAM_ENTRADA."),
             PRIMARY KEY(id)
             )";
         if ($db->query($consulta)) {
-            print "    <p>Tabla creada correctamente.</p>\n";
+            print "    <p>Tabla de Entradas creada correctamente.</p>\n";
             print "\n";
         } else {
-            print "    <p>Error al crear la tabla.</p>\n";
+            print "    <p>Error al crear la tabla de Entradas.</p>\n";
             print "\n";
         }
     } else {
@@ -61,26 +59,25 @@ function borraTodoMySQL($db)
 
 function borraTodoSqlite($db)
 {
-    global $dbTabla, $tamUsuario, $tamContraseña;
+    global $dbEntradas;
 
-    $consulta = "DROP TABLE IF EXISTS $dbTabla";
+    $consulta = "DROP TABLE IF EXISTS $dbEntradas";
     if ($db->query($consulta)) {
-        print "    <p>Tabla borrada correctamente.</p>\n";
+        print "    <p>Tabla de Entradas borrada correctamente.</p>\n";
         print "\n";
     } else {
-        print "    <p>Error al borrar la tabla.</p>\n";
-        print "\n";
+        print "    <p>Error al borrar la tabla de Entradas.</p>\n";
     }
-    $consulta = "CREATE TABLE $dbTabla (
+    $consulta = "CREATE TABLE $dbEntradas (
         id INTEGER PRIMARY KEY,
-        user VARCHAR($tamUsuario),
-        password VARCHAR($tamContraseña)
+        fecha DATE,
+        entrada VARCHAR(".TAM_ENTRADA.")
         )";
     if ($db->query($consulta)) {
-        print "    <p>Tabla creada correctamente.</p>\n";
+        print "    <p>Tabla de Entradas creada correctamente.</p>\n";
         print "\n";
     } else {
-        print "    <p>Error al crear la tabla.</p>\n";
+        print "    <p>Error al crear la tabla de Entradas.</p>\n";
         print "\n";
     }
 }
@@ -89,14 +86,15 @@ if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
     exit();
 } else {
+    include "biblioteca.php";
     $db = conectaDb();
-    cabecera("Borrar todo 2", MENU_VOLVER);
+    cabecera("Borrar todo 2", CABECERA_SIN_CURSOR, "");
     if ($dbMotor == MYSQL) {
         borraTodoMySQL($db);
     } elseif ($dbMotor == SQLITE) {
         borraTodoSqlite($db);
     }
-    $db = null;
+    $db = NULL;
     pie();
 }
 ?>

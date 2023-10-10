@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  validar-2.php
+ * Agenda multiusuario -  validar-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco

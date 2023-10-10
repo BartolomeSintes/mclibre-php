@@ -28,7 +28,7 @@ function borraTodoMySQL($db)
 {
     global $dbDb, $dbObras, $dbUsuarios, $dbPrestamos;
 
-    $consulta = "DROP TABLE $dbPrestamos";
+    $consulta = "DROP TABLE IF EXISTS $dbPrestamos";
     if ($db->query($consulta)) {
         print "    <p>Tabla de Préstamos borrada correctamente.</p>\n";
         print "\n";
@@ -57,7 +57,7 @@ function borraTodoSqlite($db)
 {
     global $dbDb, $dbObras, $dbUsuarios, $dbPrestamos;
 
-    $consulta = "DROP TABLE $dbPrestamos";
+    $consulta = "DROP TABLE IF EXISTS $dbPrestamos";
     if ($db->query($consulta)) {
        print "    <p>Tabla de Préstamos borrada correctamente.</p>\n";
        print "\n";

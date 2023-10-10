@@ -65,7 +65,7 @@ function borraTodoSqlite($db)
 {
     global $dbAgenda;
 
-    $consulta = "DROP TABLE $dbAgenda";
+    $consulta = "DROP TABLE IF EXISTS $dbAgenda";
     if ($db->query($consulta)) {
        print "    <p>Tabla de Agenda borrada correctamente.</p>\n";
        print "\n";

@@ -174,7 +174,7 @@ function borraTodoSqlite($db)
         $tamNombre, $tamApellidos, $tamTelefono, $tamCorreo,
         $administradorNombre, $administradorPassword;
 
-    $consulta = "DROP TABLE $dbAgenda";
+    $consulta = "DROP TABLE IF EXISTS $dbAgenda";
     if ($db->query($consulta)) {
        print "    <p>" . _("Tabla de Agenda borrada correctamente") . ".</p>\n";
        print "\n";
@@ -182,7 +182,7 @@ function borraTodoSqlite($db)
         print "    <p>" . _("Error al borrar la tabla de Agenda") . ".</p>\n";
         print "\n";
     }
-    $consulta = "DROP TABLE $dbUsuarios";
+    $consulta = "DROP TABLE IF EXISTS $dbUsuarios";
     if ($db->query($consulta)) {
        print "    <p>" . _("Tabla de Usuarios borrada correctamente") . ".</p>\n";
        print "\n";

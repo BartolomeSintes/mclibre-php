@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  listar.php
+ * Agenda multiusuario -  listar.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco

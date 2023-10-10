@@ -75,7 +75,7 @@ function borraTodoSqlite($db)
     global $dbUsuarios, $administradorNombre, $administradorPassword,
         $tamUsuario, $tamCifrado;
 
-    $consulta = "DROP TABLE $dbUsuarios";
+    $consulta = "DROP TABLE IF EXISTS $dbUsuarios";
     if ($db->query($consulta)) {
         print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
         print "\n";

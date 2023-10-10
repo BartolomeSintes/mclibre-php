@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiagenda -  borrar-todo-2.php
+ * Agenda multiusuario -  borrar-todo-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2009 Bartolomé Sintes Marco

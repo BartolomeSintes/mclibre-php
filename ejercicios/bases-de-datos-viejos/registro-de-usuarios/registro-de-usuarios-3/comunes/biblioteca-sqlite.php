@@ -62,7 +62,7 @@ function borraTodo($db)
     global $dbTablaUsuariosWeb, $consultaCreaTablaUsuariosWeb,
         $administradorNombre, $administradorPassword;
 
-    $consulta = "DROP TABLE $dbTablaUsuariosWeb";
+    $consulta = "DROP TABLE IF EXISTS $dbTablaUsuariosWeb";
     if ($db->query($consulta)) {
         print "    <p>Tabla de Usuarios borrada correctamente.</p>\n";
         print "\n";
