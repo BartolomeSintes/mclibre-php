@@ -3,9 +3,9 @@
  * Variables. Sin formularios.(1) 11 - variables-1-11.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-05
+ * @version   2023-10-10
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ print "  <p>Estos círculos tienen $r px de radio. Actualice la página para mos
 print "\n";
 print "  <p>\n";
 print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\" font-family=\"sans-serif\">\n";
+print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\">\n";
 print "      <circle cx=\"$r\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"red\" />\n";
 print "      <circle cx=\"" . 3 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"yellow\" />\n";
 print "      <circle cx=\"" . 5 * $r . "\" cy=\"$r\" r=\"$r\" stroke=\"black\" stroke-width=\"1\" fill=\"green\" />\n";
@@ -59,7 +59,7 @@ print "  </p>\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-05">5 de octubre de 2021</time>
+      <time datetime="2021-10-10">10 de octubre de 2023</time>
     </p>
 
     <p class="licencia">

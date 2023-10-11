@@ -1,6 +1,6 @@
 <?php
 /**
- * Variables. Sin formularios.(1) 12 - variables-1-12.php
+ * Variables. Sin formularios.(1) 2 B - variables-1-2-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Tres cuadrados.
+    Círculo de color.
     Variables. Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,23 +36,21 @@
 </head>
 
 <body>
-  <h1>Tres cuadrados</h1>
+  <h1>Círculo de color</h1>
 
-  <p>Actualice la página para mostrar tres nuevos cuadrados.</p>
+  <p>Actualice la página para mostrar un nuevo círculo.</p>
 
 <?php
-$c1    = rand(50, 150);
-$c2    = rand(50, 150);
-$c3    = rand(50, 150);
-$ancho = $c1 + $c2 + $c3 + 20;
-$alto  = max($c1, $c2, $c3) + 20;
+$r = rand(0, 255);
+$g = rand(0, 255);
+$b = rand(0, 255);
 
+print "  <p>Color: rgb($r $g $b)</p>\n";
+print "\n";
 print "  <p>\n";
-print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"\n";
-print "      width=\"$ancho\" height=\"$alto\" viewBox=\"-10 -10 $ancho $alto\" style=\"background-color: white;\">\n";
-print "      <rect x=\"0\" y=\"0\" width=\"$c1\" height=\"$c1\" fill=\"red\" />\n";
-print "      <rect x=\"$c1\" y=\"0\" width=\"$c2\" height=\"$c2\" fill=\"green\" />\n";
-print "      <rect x=\"" . $c1 + $c2 . "\" y=\"0\" width=\"$c3\" height=\"$c3\" fill=\"blue\" />\n";
+print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+print "      width=\"100\" height=\"100\">\n";
+print "      <circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"rgb($r $g $b)\" />\n";
 print "    </svg>\n";
 print "  </p>\n";
 ?>
