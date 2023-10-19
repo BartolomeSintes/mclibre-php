@@ -31,9 +31,9 @@
         <li><a href="index.html#ejercicio-04">04 - Círculos numerados</a></li>
         <li><a href="index.html#ejercicio-05">05 - Círculos girados</a></li>
         <li><a href="index.html#ejercicio-11">11 - Contar puntos</a></li>
-        <li><a href="index.html#ejercicio-12">12 - Dado máximo</a></li>
-        <li><a href="index.html#ejercicio-13">13 - Dado mínimo</a></li>
-        <li><a href="index.html#ejercicio-14">14 - Contar pares e impares</a></li>
+        <li><a href="index.html#ejercicio-12">12 - Contar pares e impares</a></li>
+        <li><a href="index.html#ejercicio-13">13 - Dado máximo</a></li>
+        <li><a href="index.html#ejercicio-14">14 - Dado mínimo</a></li>
         <li><a href="index.html#ejercicio-15">15 - Contar dados máximos</a></li>
         <li><a href="index.html#ejercicio-21">21 - Diana</a></li>
       </ul>
@@ -46,9 +46,9 @@
         <li><a href="#ejercicio-04">04 - Círculos numerados</a></li>
         <li><a href="#ejercicio-05">05 - Círculos girados</a></li>
         <li><a href="#ejercicio-11">11 - Contar puntos</a></li>
-        <li><a href="#ejercicio-12">12 - Dado máximo</a></li>
-        <li><a href="#ejercicio-13">13 - Dado mínimo</a></li>
-        <li><a href="#ejercicio-14">14 - Contar pares e impares</a></li>
+        <li><a href="#ejercicio-12">12 - Contar pares e impares</a></li>
+        <li><a href="#ejercicio-13">13 - Dado máximo</a></li>
+        <li><a href="#ejercicio-14">14 - Dado mínimo</a></li>
         <li><a href="#ejercicio-15">15 - Contar dados máximos</a></li>
         <li><a href="#ejercicio-21">21 - Diana</a></li>
       </ul>
@@ -275,69 +275,7 @@ print "  &lt;p&gt;El total de puntos obtenidos es &lt;strong&gt;$total&lt;/stron
   </section>
 
   <section id="ejercicio-12">
-    <h3>for (1) 12 - Dado máximo</h3>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-$numero = rand(1, 10);
-$maximo = 0;
-
-if ($numero == 1) {
-    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
-} else {
-    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
-}
-print "\n";
-print "  &lt;p&gt;\n";
-for ($i = 0; $i &lt; $numero; $i++) {
-    $dado = rand(1, 6);
-    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
-    if ($dado &gt; $maximo) {
-        $maximo = $dado;
-    }
-}
-print "  &lt;/p&gt;\n";
-print "\n";
-print "  &lt;p&gt;El valor más grande obtenido es &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
-  <section id="ejercicio-13">
-    <h3>for (1) 13 - Dado mínimo</h3>
-
-    <div class="codigo">
-      <pre>
-<code class="language-php">&lt;?php
-$numero = rand(1, 10);
-$minimo = 7;
-
-if ($numero == 1) {
-    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
-} else {
-    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
-}
-print "\n";
-print "  &lt;p&gt;\n";
-for ($i = 0; $i &lt; $numero; $i++) {
-    $dado = rand(1, 6);
-    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
-    if ($dado &lt; $minimo) {
-        $minimo = $dado;
-    }
-}
-print "  &lt;/p&gt;\n";
-print "\n";
-print "  &lt;p&gt;El valor más pequeño obtenido es &lt;strong&gt;$minimo&lt;/strong&gt;.&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-    </div>
-  </section>
-
-  <section id="ejercicio-14">
-    <h3>for (1) 14 - Contar pares e impares</h3>
+    <h3>for (1) 12 - Contar pares e impares</h3>
 
     <div class="codigo">
       <pre>
@@ -375,6 +313,68 @@ if ($impares == 1) {
 } else {
     print "$impares números impares.&lt;/p&gt;\n";
 }
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-13">
+    <h3>for (1) 13 - Dado máximo</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(1, 10);
+$maximo = 0;
+
+if ($numero == 1) {
+    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dado = rand(1, 6);
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
+    if ($dado &gt; $maximo) {
+        $maximo = $dado;
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;El valor más grande obtenido es &lt;strong&gt;$maximo&lt;/strong&gt;.&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <section id="ejercicio-14">
+    <h3>for (1) 14 - Dado mínimo</h3>
+
+    <div class="codigo">
+      <pre>
+<code class="language-php">&lt;?php
+$numero = rand(1, 10);
+$minimo = 7;
+
+if ($numero == 1) {
+    print "  &lt;h2&gt;$numero dado&lt;/h2&gt;\n";
+} else {
+    print "  &lt;h2&gt;$numero dados&lt;/h2&gt;\n";
+}
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $numero; $i++) {
+    $dado = rand(1, 6);
+    print "    &lt;img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\"&gt;\n";
+    if ($dado &lt; $minimo) {
+        $minimo = $dado;
+    }
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+print "  &lt;p&gt;El valor más pequeño obtenido es &lt;strong&gt;$minimo&lt;/strong&gt;.&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
     </div>
@@ -465,7 +465,7 @@ print "  &lt;/ul&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 10 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 19 de octubre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

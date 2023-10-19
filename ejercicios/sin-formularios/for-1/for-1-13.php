@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Dado mínimo.
+    Dado máximo.
     for (1). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,13 +36,13 @@
 </head>
 
 <body>
-  <h1>Dado mínimo</h1>
+  <h1>Dado máximo</h1>
 
   <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
 $numero = rand(1, 10);
-$minimo = 7;
+$maximo = 0;
 
 if ($numero == 1) {
     print "  <h2>$numero dado</h2>\n";
@@ -54,13 +54,13 @@ print "  <p>\n";
 for ($i = 0; $i < $numero; $i++) {
     $dado = rand(1, 6);
     print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"140\" height=\"140\">\n";
-    if ($dado < $minimo) {
-        $minimo = $dado;
+    if ($dado > $maximo) {
+        $maximo = $dado;
     }
 }
 print "  </p>\n";
 print "\n";
-print "  <p>El valor más pequeño obtenido es <strong>$minimo</strong>.</p>\n";
+print "  <p>El valor más grande obtenido es <strong>$maximo</strong>.</p>\n";
 ?>
 
   <footer>
