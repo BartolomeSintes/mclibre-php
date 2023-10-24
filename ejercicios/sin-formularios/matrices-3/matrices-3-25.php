@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (3) 1 - matrices-3-01.php
+ * Matrices (3) 25 - matrices-3-25.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Cartas extremas.
+    Cartas pares iguales consecutivas.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,28 +36,59 @@
 </head>
 
 <body>
-  <h1>Cartas extremas</h1>
+  <h1>Cartas pares iguales consecutivas</h1>
 
 <?php
 // Guardamos los valores de las cartas en la matriz $cartas
-$n = rand(5, 10);
+$n      = rand(3, 12);
+$cartas = [];
 for ($i = 0; $i < $n; $i++) {
     $cartas[] = rand(1, 10);
 }
 
 // Mostramos las imágenes de las cartas obtenidas
-print "  <h2>Cartas</h2>\n";
+print "  <h2>Las $n cartas</h2>\n";
 print "\n";
 print "  <p>\n";
 foreach ($cartas as $carta) {
-    print "    <img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\">\n";
+    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Calculamos y mostramos los valores máximo y mínimo
-print "<p>La carta más alta es un " . max($cartas) . " y la carta más baja es un " . min($cartas) . "</p>\n";
+// Recorremos la matriz de cartas y si el valor de la carta es par, eliminamos el valor
+for ($i = 0; $i < $n; $i++) {
+    if ($cartas[$i] % 2) {
+        unset($cartas[$i]);
+    }
+}
+
+// Mostramos las imágenes de las cartas (las eliminadas ya no se mostrarán)
+print "  <h2>Sin cartas impares</h2>\n";
 print "\n";
+print "  <p>\n";
+foreach ($cartas as $carta) {
+    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+}
+print "  </p>\n";
+print "\n";
+
+// Reindexamos la matriz de cartas para poderla recorrer con un bucle for
+// y que los índices sean consecutivos
+$cartas = array_values($cartas);
+
+// Recorremos la matriz de cartas (hasta el penúltimo valor)
+// comparando cada valor con el siguiente y si coinciden
+// damos el valor true a la variable testigo $consecutivas
+$consecutivas = false;
+for ($i = 0; $i < count($cartas) - 1; $i++) {
+    if ($cartas[$i] == $cartas[$i + 1]) {
+        $consecutivas = true;
+    }
+}
+
+// Según el valor de consecutivas mostramos un mensaje distinto
+print $consecutivas ? "<p>Hay cartas iguales consecutivas</p>\n" : "<p>No hay cartas iguales consecutivas</p>\n";
 
 ?>
   <footer>

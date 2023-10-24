@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (3) 2 - matrices-3-02.php
+ * Matrices (3) 26 - matrices-3-26.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-31
+ * @version   2021-10-29
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    La carta más alta.
+    Ases.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,66 +36,67 @@
 </head>
 
 <body>
-  <h1>La carta más alta</h1>
+  <h1>Muestra ases</h1>
 
 <?php
-// Guardamos los valores de las cartas en la matriz $cartas
-$n = rand(5, 10);
+$n     = rand(5, 10);
+$palos = ["c", "d", "p", "t"];
 for ($i = 0; $i < $n; $i++) {
-    $cartas[] = rand(1, 10);
+    $cartas[] = array_rand($palos);
 }
 
-// Mostramos las imágenes de las cartas obtenidas
-print "  <h2>Cartas</h2>\n";
+print "  <h2>$n ases </h2>\n";
 print "\n";
 print "  <p>\n";
 foreach ($cartas as $carta) {
-    print "    <img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\">\n";
+    print "    <img src=\"img/cartas/{$palos[$carta]}1.svg\" alt=\"as de $palos[$carta]\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Calculamos el valor máximo
-$eliminar = max($cartas);
+$eliminar = array_rand($palos);
 
-// Mostramos el valor máximo
-print "<p>La carta más alta es un $eliminar.</p>\n";
-print "\n";
-
-// Mostramos la carta de valor máximo
 print "  <h2>Carta a eliminar</h2>\n";
 print "\n";
-print "  <p>\n";
-print "    <img src=\"img/cartas/t$eliminar.svg\" alt=\"$eliminar de tréboles\" width=\"100\">\n";
-print "  </p>\n";
-print "\n";
-
-// Recorremos la matriz de valores de cartas y eliminamos los elementos que coinciden con el máximo
-for ($i = 0; $i < $n; $i++) {
-    if ($cartas[$i] == $eliminar) {
-        unset($cartas[$i]);
+print "    <img src=\"img/cartas/{$palos[$eliminar]}1.svg\" alt=\"as de $palos[$eliminar]\" width=\"100\">\n";
+foreach ($cartas as $indice => $valor) {
+    if ($valor == $eliminar) {
+        unset($cartas[$indice]);
     }
 }
 
-// Mostramos las imágenes de las cartas (las eliminadas ya no se mostrarán)
 print "  <h2>Cartas restantes</h2>\n";
-print "\n";
 print "  <p>\n";
 foreach ($cartas as $carta) {
-    print "    <img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\">\n";
+    print "    <img src=\"img/cartas/{$palos[$carta]}1.svg\" alt=\"as de $palos[$carta]\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Calculamos y mostramos el valor máximo actual
-print "<p>La carta más alta es ahora un " . max($cartas) . ".</p>\n";
+$eliminar = array_rand($palos);
+
+print "  <h2>Carta a eliminar</h2>\n";
+print "\n";
+print "    <img src=\"img/cartas/{$palos[$eliminar]}1.svg\" alt=\"as de $palos[$eliminar]\" width=\"100\">\n";
+foreach ($cartas as $indice => $valor) {
+    if ($valor == $eliminar) {
+        unset($cartas[$indice]);
+    }
+}
+
+print "  <h2>Cartas restantes</h2>\n";
+print "  <p>\n";
+foreach ($cartas as $carta) {
+    print "    <img src=\"img/cartas/{$palos[$carta]}1.svg\" alt=\"as de $palos[$carta]\" width=\"100\">\n";
+}
+print "  </p>\n";
 print "\n";
 
 ?>
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-31">31 de octubre de 2021</time>
+      <time datetime="2021-10-29">29 de octubre de 2021</time>
     </p>
 
     <p class="licencia">

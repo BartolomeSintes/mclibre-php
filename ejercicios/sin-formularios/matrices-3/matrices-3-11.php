@@ -3,10 +3,10 @@
  * Matrices (3) 11 - matrices-3-11.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2021 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-17
- * @link      https://www.mclibre.org
+ * @version   2021-10-31
+ * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Ordenar dados.
+    Cartas extremas.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,52 +36,39 @@
 </head>
 
 <body>
-  <h1>Ordenar dados</h1>
-
-  <p>Actualice la página para mostrar una nueva tirada.</p>
+  <h1>Cartas extremas</h1>
 
 <?php
-$numero = rand(2, 7);
-
-// Creamos la matriz de dados aleatorios
-$dados = [];
-for ($i = 0; $i < $numero; $i++) {
-    $dados[$i] = rand(1, 6);
+// Guardamos los valores de las cartas en la matriz $cartas
+$n = rand(5, 10);
+for ($i = 0; $i < $n; $i++) {
+    $cartas[] = rand(1, 10);
 }
 
-// Mostramos los dados
-print "  <h2>Tirada de $numero dados</h2>\n";
+// Mostramos las imágenes de las cartas obtenidas
+print "  <h2>Cartas</h2>\n";
 print "\n";
 print "  <p>\n";
-foreach ($dados as $dado) {
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\">\n";
+foreach ($cartas as $carta) {
+    print "    <img src=\"img/cartas/t$carta.svg\" alt=\"$carta de tréboles\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Ordenamos los dados
-sort($dados);
-
-// Mostramos los dados ordenados
-print "  <h2>Tirada ordenada</h2>\n";
+// Calculamos y mostramos los valores máximo y mínimo
+print "<p>La carta más alta es un " . max($cartas) . " y la carta más baja es un " . min($cartas) . "</p>\n";
 print "\n";
-print "  <p>\n";
-foreach ($dados as $dado) {
-    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\">\n";
-}
-print "  </p>\n";
 
 ?>
-
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-10-17">17 de octubre de 2019</time>
+      <time datetime="2021-10-31">31 de octubre de 2021</time>
     </p>
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
+      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

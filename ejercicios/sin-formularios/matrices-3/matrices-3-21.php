@@ -1,9 +1,9 @@
 <?php
 /**
- * Matrices (3) 4 - matrices-3-04.php
+ * Matrices (3) 21 - matrices-3-21.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
  * @version   2019-10-17
  * @link      https://www.mclibre.org
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Busca emoticono.
+    Ordenar dados.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,39 +36,40 @@
 </head>
 
 <body>
-  <h1>Busca emoticono</h1>
+  <h1>Ordenar dados</h1>
 
-  <p>Actualice la página para mostrar un nuevo grupo de emoticonos.</p>
+  <p>Actualice la página para mostrar una nueva tirada.</p>
 
 <?php
-$numero = rand(10, 20);
+$numero = rand(2, 7);
 
-// Guardamos los valores de los emoticonos en la matriz $emoticonos
-$emoticonos = [];
+// Creamos la matriz de dados aleatorios
+$dados = [];
 for ($i = 0; $i < $numero; $i++) {
-    $emoticonos[$i] = rand(128512, 128580);
+    $dados[$i] = rand(1, 6);
 }
 
-// Mostramos las imágenes de los emoticonos obtenidos
-print "  <h2>$numero emoticonos ...</h2>\n";
+// Mostramos los dados
+print "  <h2>Tirada de $numero dados</h2>\n";
 print "\n";
-print "  <p style=\"font-size: 400%; margin: 0;\">\n";
-foreach ($emoticonos as $emoticono) {
-    print "    &#$emoticono;\n";
+print "  <p>\n";
+foreach ($dados as $dado) {
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Emoticono a buscar
-$busca = rand(128512, 128580);
+// Ordenamos los dados
+sort($dados);
 
-// Mostramos el resultado de la búsqueda
-if (in_array($busca, $emoticonos)) {
-    print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> está entre ellos.</p>\n";
-} else {
-    print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> NO está entre ellos.</p>\n";
-}
+// Mostramos los dados ordenados
+print "  <h2>Tirada ordenada</h2>\n";
 print "\n";
+print "  <p>\n";
+foreach ($dados as $dado) {
+    print "    <img src=\"img/$dado.svg\" alt=\"$dado\" width=\"100\" height=\"100\">\n";
+}
+print "  </p>\n";
 
 ?>
 

@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (3) 3 - matrices-3-03.php
+ * Matrices (3) 22 - matrices-3-22.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2018 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-10-17
+ * @version   2018-11-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Elimina repetidos.
+    Ordenar cartas.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,42 +36,67 @@
 </head>
 
 <body>
-  <h1>Elimina valores repetidos</h1>
+  <h1>Ordenar cartas</h1>
 
-  <p>Actualice la página para mostrar un nuevo grupo de valores.</p>
+  <p>Actualice la página para mostrar una nueva mano.</p>
 
 <?php
-$numero = rand(5, 15);
+$numero = rand(5, 10);
 
-// Guardamos los valores de las bolas en la matriz $bolas
-$bolas = [];
+// Creamos la matriz de cartas aleatorias
+$cartas = [];
 for ($i = 0; $i < $numero; $i++) {
-    $bolas[$i] = rand(10102, 10111);
+    $cartas[$i] = rand(127169, 127173);
 }
 
-// Mostramos las imágenes de las bolas obtenidas
-print "  <h2>Entre estas $numero bolas ...</h2>\n";
-
+// Mostramos las cartas
+print "  <h2>Mano de $numero cartas</h2>\n";
 print "\n";
-print "  <p style=\"font-size: 400%; margin: 0;\">\n";
-foreach ($bolas as $bola) {
-    print "    &#$bola;\n";
+print "  <p style=\"font-size: 700%; margin: 0; line-height: 100%;\">\n";
+foreach ($cartas as $carta) {
+    print "    &#$carta;\n";
+}
+print "  </p>\n";
+print "\n";
+
+// Ordenamos las cartas
+$cartas_2 = array_unique($cartas);
+sort($cartas_2);
+
+// Mostramos las cartas ordenadas
+print "  <h2>Cartas distintas obtenidas (ordenadas)</h2>\n";
+print "\n";
+print "  <p style=\"font-size: 700%; margin: 0; line-height: 100%;\">\n";
+foreach ($cartas_2 as $carta) {
+    print "    &#$carta;\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Eliminamos las bolas duplicadas
-$resultado = array_unique($bolas);
+// Contamos las cartas
+$cartas_3 = array_count_values($cartas);
 
-// Mostramos las imágenes de las bolas restantes
-print "  <h2>... hay " . count($resultado) . " bolas distintas</h2>\n";
+// Mostramos las cartas contadas
+print "  <h2>Número de cartas obtenidas (sin ordenar)</h2>\n";
 print "\n";
-print "  <p style=\"font-size: 400%; margin: 0;\">\n";
-foreach ($resultado as $bola) {
-    print "    &#$bola;\n";
+print "  <p style=\"line-height: 600%;\">\n";
+foreach ($cartas_3 as $indice => $valor) {
+    print "    <span style=\"font-size: 500%;\">$valor</span> <span style=\"font-size: 700%;\">&#$indice; - </span>\n";
 }
 print "  </p>\n";
 print "\n";
+
+// Ordenamos las cartas
+arsort($cartas_3);
+
+// Mostramos las cartas contadas ordenadas
+print "  <h2>Número de cartas obtenidas (ordenada)</h2>\n";
+print "\n";
+print "  <p style=\"line-height: 600%;\">\n";
+foreach ($cartas_3 as $indice => $valor) {
+    print "    <span style=\"font-size: 500%;\">$valor</span> <span style=\"font-size: 700%;\">&#$indice; - </span>\n";
+}
+print "  </p>\n";
 
 ?>
 

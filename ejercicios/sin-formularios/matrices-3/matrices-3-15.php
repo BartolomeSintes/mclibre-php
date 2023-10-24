@@ -3,10 +3,10 @@
  * Matrices (3) 15 - matrices-3-15.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-10-31
- * @link      http://www.mclibre.org
+ * @version   2019-10-17
+ * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Cartas pares iguales consecutivas.
+    Cuenta corazones.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,70 +36,54 @@
 </head>
 
 <body>
-  <h1>Cartas pares iguales consecutivas</h1>
+  <h1>Cuenta corazones</h1>
+
+  <p>Actualice la página para mostrar un nuevo grupo de corazones.</p>
 
 <?php
-// Guardamos los valores de las cartas en la matriz $cartas
-$n      = rand(3, 12);
-$cartas = [];
-for ($i = 0; $i < $n; $i++) {
-    $cartas[] = rand(1, 10);
+$numero = rand(7, 20);
+
+// Guardamos los valores de las frutas en la matriz $frutas
+$frutas = [];
+for ($i = 0; $i < $numero; $i++) {
+    $frutas[$i] = rand(128147, 128152);
 }
 
-// Mostramos las imágenes de las cartas obtenidas
-print "  <h2>Las $n cartas</h2>\n";
+// Mostramos las imágenes de las frutas obtenidas
+print "  <h2>$numero corazones</h2>\n";
+
 print "\n";
-print "  <p>\n";
-foreach ($cartas as $carta) {
-    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+print "  <p style=\"font-size: 400%; margin: 0;\">\n";
+foreach ($frutas as $fruta) {
+    print "    &#$fruta;\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Recorremos la matriz de cartas y si el valor de la carta es par, eliminamos el valor
-for ($i = 0; $i < $n; $i++) {
-    if ($cartas[$i] % 2) {
-        unset($cartas[$i]);
-    }
-}
+// Contamos las frutas
+$cuenta = array_count_values($frutas);
 
-// Mostramos las imágenes de las cartas (las eliminadas ya no se mostrarán)
-print "  <h2>Sin cartas impares</h2>\n";
-print "\n";
-print "  <p>\n";
-foreach ($cartas as $carta) {
-    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
-}
-print "  </p>\n";
+// Mostramos el resultado de contar las frutas
+print "  <h2>Conteo</h2>\n";
 print "\n";
 
-// Reindexamos la matriz de cartas para poderla recorrer con un bucle for
-// y que los índices sean consecutivos
-$cartas = array_values($cartas);
-
-// Recorremos la matriz de cartas (hasta el penúltimo valor)
-// comparando cada valor con el siguiente y si coinciden
-// damos el valor true a la variable testigo $consecutivas
-$consecutivas = false;
-for ($i = 0; $i < count($cartas) - 1; $i++) {
-    if ($cartas[$i] == $cartas[$i + 1]) {
-        $consecutivas = true;
-    }
+foreach ($cuenta as $indice => $valor) {
+    print "  <p style=\"font-size: 400%; margin: 0;\">&#$indice; $valor</p>\n";
 }
 
-// Según el valor de consecutivas mostramos un mensaje distinto
-print $consecutivas ? "<p>Hay cartas iguales consecutivas</p>\n" : "<p>No hay cartas iguales consecutivas</p>\n";
+print "\n";
 
 ?>
+
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-10-31">31 de octubre de 2021</time>
+      <time datetime="2019-10-17">17 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br>
+      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>

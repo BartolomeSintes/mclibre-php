@@ -3,9 +3,9 @@
  * Matrices (3) 14 - matrices-3-14.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2019 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-10-10
+ * @version   2019-10-17
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Reparto de cartas.
+    Busca emoticono.
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,72 +36,51 @@
 </head>
 
 <body>
-  <h1>Reparto de cartas</h1>
+  <h1>Busca emoticono</h1>
+
+  <p>Actualice la página para mostrar un nuevo grupo de emoticonos.</p>
 
 <?php
-// Guardamos los valores de las cartas en la matriz $cartas
-// $n es el número de cartas que repartiremos a cada jugador,
-// por lo que generamos 2 * $n cartas
-$n      = rand(2, 6);
-$cartas = [];
-for ($i = 0; $i < 2 * $n; $i++) {
-    $cartas[] = rand(1, 10);
+$numero = rand(10, 20);
+
+// Guardamos los valores de los emoticonos en la matriz $emoticonos
+$emoticonos = [];
+for ($i = 0; $i < $numero; $i++) {
+    $emoticonos[$i] = rand(128512, 128580);
 }
 
-// Mostramos las imágenes de las cartas obtenidas
-print "  <h2>Las " . 2 * $n . " cartas a repartir</h2>\n";
+// Mostramos las imágenes de los emoticonos obtenidos
+print "  <h2>$numero emoticonos ...</h2>\n";
 print "\n";
-print "  <p>\n";
-foreach ($cartas as $carta) {
-    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+print "  <p style=\"font-size: 400%; margin: 0;\">\n";
+foreach ($emoticonos as $emoticono) {
+    print "    &#$emoticono;\n";
 }
 print "  </p>\n";
 print "\n";
 
-// Barajamos los valores de las cartas
-shuffle($cartas);
+// Emoticono a buscar
+$busca = rand(128512, 128580);
 
-// Creamos una matriz con las $n primeras cartas
-$cartasA = [];
-for ($i = 0; $i < $n; $i++) {
-    $cartasA[] = $cartas[$i];
+// Mostramos el resultado de la búsqueda
+if (in_array($busca, $emoticonos)) {
+    print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> está entre ellos.</p>\n";
+} else {
+    print "  <p>El emoticono <span style=\"font-size: 400%;\">&#$busca;</span> NO está entre ellos.</p>\n";
 }
-
-// Creamos una matriz con las $n siguientes cartas
-for ($i = 0; $i < $n; $i++) {
-    $cartasB[] = $cartas[$i + $n];
-}
-
-// Mostramos las imágenes de las cartas del primer jugador
-print "  <h2>Las $n cartas del jugador A</h2>\n";
-print "\n";
-print "  <p>\n";
-foreach ($cartasA as $carta) {
-    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
-}
-print "  </p>\n";
-print "\n";
-
-// Mostramos las imágenes de las cartas del segundo jugador
-print "  <h2>Las $n cartas del jugador B</h2>\n";
-print "\n";
-print "  <p>\n";
-foreach ($cartasB as $carta) {
-    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
-}
-print "  </p>\n";
 print "\n";
 
 ?>
+
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-10-10">10 de octubre de 2022</time>
+      <time datetime="2019-10-17">17 de octubre de 2019</time>
     </p>
 
     <p class="licencia">
       Este programa forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación
-      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author" >Bartolomé Sintes Marco</a>.<br>
+      web en PHP</a></strong> de <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a>.<br>
       El programa PHP que genera esta página se distribuye bajo
       <a rel="license" href="http://www.gnu.org/licenses/agpl.txt">licencia AGPL 3 o posterior</a>.
     </p>
