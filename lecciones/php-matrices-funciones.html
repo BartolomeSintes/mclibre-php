@@ -32,7 +32,7 @@
         <li><a href="#in-array">Buscar un valor</a></li>
         <li><a href="#array-values">Reindexar</a></li>
         <li><a href="#shuffle">Barajar elementos</a></li>
-        <li><a href="#array_rand">Extraer elemento al azar</a></li>
+        <li><a href="#array-rand">Extraer elemento(s) al azar</a></li>
         <li><a href="#array-unique">Eliminar valores repetidos</a></li>
       </ul>
     </div>
@@ -276,8 +276,8 @@ Array
 )</pre>
           </div>
         </div>
-        </li>
-      </ul>
+      </li>
+    </ul>
   </section>
 
   <section id="count">
@@ -1214,14 +1214,16 @@ print "\n";
     </div>
   </section>
 
-  <section id="array_rand">
-    <h2>Extraer al azar un elemento de una matriz</h2>
+  <section id="array-rand">
+    <h2>Extraer al azar elementos de una matriz</h2>
 
-    <p>La función <a href="https://www.php.net/manual/en/function.array-rand.php"><span class="php-fun">array_rand($matriz)</span></a> extrae al azar uno de los índices de la matriz. Una vez obtenido el índice se puede obtener el valor correspondiente de la matriz.</p>
+    <p>La función <a href="https://www.php.net/manual/en/function.array-rand.php"><span class="php-fun">array_rand($matriz [,$cantidad])</span></a> extrae al azar uno o varios de los índices de la matriz. Una vez obtenido el índice se puede obtener el valor correspondiente de la matriz.</p>
 
-    <div class="filaflex">
-      <div class="codigo">
-        <pre>
+    <ul>
+      <li>Si el único argumento es el nombre de la matriz, la función <span class="php-fun">array_rand($matriz)</span> devuelve un único valor:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 $cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100];
 
@@ -1234,8 +1236,9 @@ print "\n";
 print "&lt;p&gt;Valor al azar: $cuadrados[$indice]&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
-      </div>
-      <div class="resultado-html"><pre>
+          </div>
+          <div class="resultado-html">
+            <pre>
   Array
   (
       [2] =&gt; 4
@@ -1244,10 +1247,54 @@ print "&lt;p&gt;Valor al azar: $cuadrados[$indice]&lt;/p&gt;\n";
       [10] =&gt; 100
   )
   </pre>
-        <p>Índice al azar: 7</p>
-        <p>Valor al azar: 49</p>
-      </div>
-    </div>
+            <p>Índice al azar: 7</p>
+            <p>Valor al azar: 49</p>
+          </div>
+        </div>
+      </li>
+      <li>Si se añade un número como segundo argumento, la función <span class="php-fun">array_rand($matriz, $cantidad)</span> devuelve una matriz con el número de índices solicitado. Los valores de los índices que devuelve la función no se repiten y se devuelven ordenados de menor a mayor:
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$cuadrados = [2 =&gt; 4, 3 =&gt; 9, 7 =&gt; 49, 10 =&gt; 100, 11 =&gt; 121, 15 =&gt; 225];
+
+$indices = array_rand($cuadrados, 3);
+
+print "&lt;pre&gt;\n"; print_r($cuadrados); print "&lt;/pre&gt;\n";
+print "\n";
+print "&lt;p&gt;Índices al azar: ";
+foreach ($indices as $indice) {
+    print "$indice ";
+}
+print "&lt;/p&gt;\n";
+print "\n";
+print "&lt;p&gt;Valores al azar: ";
+foreach ($indices as $indice) {
+    print "$cuadrados[$indice] ";
+}
+print "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <pre>
+  Array
+  (
+      [2] =&gt; 4
+      [3] =&gt; 9
+      [7] =&gt; 49
+      [10] =&gt; 100
+      [11] =&gt; 121
+      [15] =&gt; 225
+  )
+  </pre>
+            <p>Índices al azar: 2 11 15</p>
+            <p>Valores al azar: 4 121 225</p>
+          </div>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <section id="array-unique">
@@ -1280,7 +1327,7 @@ print "&lt;pre&gt;\n"; print_r($final); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
