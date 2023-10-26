@@ -258,7 +258,27 @@ print "&lt;p&gt;$matriz[1]&lt;/p&gt;\n";
 
     <hr class="corta">
 
-    <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices, pero los índices deben escribirse sin comillas, aunque sean cadenas.</p>
+    <p>PHP sustituye las referencias a valores de matrices de una dimensión dentro de las cadenas, por lo que no es necesario concatenar cadenas y referencias a matrices de una dimensión.</p>
+
+    <div class="filaflex">
+      <div class="icono-ok">
+        <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+      </div>
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$nombres = ["Andrés", "Bárbara", "Camilo"];
+
+print "&lt;p&gt;Ella se llama <span class="codigo-resaltado">$nombres[1]</span>&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <p>Ella se llama Bárbara</p>
+      </div>
+    </div>
+
+    <p>Si los índices no son numéricos, sino cadenas, los índices deben escribirse sin comillas.</p>
 
     <div class="filaflex">
       <div class="icono-ok">
@@ -374,11 +394,9 @@ print "&lt;p&gt;$nombres[-3]&lt;p&gt;\n";
       </div>
     </div>
 
-    <p><strong>Nota</strong>: Actualmente (octubre de 2022), Visual Studio Code muestra un aviso cuando se utilizan índices negativos dentro de cadenas (como en el ejemplo anterior), pero ese aviso no es correcto.</p>
-
     <hr class="corta">
 
-    <p>PHP no permite valores decimales en los índices numéricos, aunque sí que se pueden escribir decimales en los índices porque PHP los trunca automáticamente a enteros y trabaja con los valores enteros. Pese a ello, se recomienda <strong>NO</strong> utilizar nunca decimales en los índices numéricos. De hecho, a partir de PHP 8.1, si la conversión de enteros a decimales supone una pérdida de precisión se genera un error <span class="php-con">E_DEPRECATED</span>, como se comenta en la lección <a href="php-cambios.html#php-8-1-conversion-decimales-enteros">Cambios en el lenguaje</a>.</p>
+    <p>PHP no permite valores decimales en los índices numéricos, aunque se pueden escribir decimales en los índices porque PHP los trunca automáticamente a enteros y trabaja con los valores enteros. Pese a ello, se recomienda <strong>NO</strong> utilizar nunca decimales en los índices numéricos. De hecho, a partir de PHP 8.1, si la conversión de enteros a decimales supone una pérdida de precisión se genera un error <span class="php-con">E_DEPRECATED</span>, como se comenta en la lección <a href="php-cambios.html#php-8-1-conversion-decimales-enteros">Cambios en el lenguaje</a>.</p>
 
   </section>
 
@@ -772,6 +790,23 @@ print "&lt;p&gt;$nombres[0]&lt;/p&gt;\n";
           </div>
         </div>
       </li>
+      <li>Si se añade un elemento a una matriz que no estaba definida previamente, PHP crea la matriz y guarda el elemento con el índice 0:
+
+        <div class="filaflex">
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+$nombres[] = "Carlos";
+
+print "&lt;p&gt;$nombres[0]&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-html">
+            <p>Carlos</p>
+          </div>
+        </div>
+      </li>
       <li>Indicando el índice, se asigna el elemento de la matriz:
 
         <div class="filaflex">
@@ -809,6 +844,136 @@ $letrasGriegas = [2 =&gt "gamma", "delta", "epsilon"];
         </div>
       </li>
     </ul>
+
+    <hr class="corta">
+
+    <p>Los siguientes ejemplos que crean una matriz con tres valores numéricos del 1 al 6 son prácticamente equivalentes:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$dados = [];
+for ($i = 0; $i &lt; 3; $i++) {
+    $dados[$i] = rand(1, 6);
+}
+
+print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html"><pre>Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 4
+    [2] =&gt; 6
+)
+        </pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 3; $i++) {
+    $dados[] = rand(1, 6);
+}
+
+print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html"><pre>Array
+(
+    [0] =&gt; 6
+    [1] =&gt; 3
+    [2] =&gt; 3
+)
+        </pre>
+      </div>
+    </div>
+
+    <p>La diferencia es que en el primer caso nos aseguramos de que la matriz no contenga valores (al igualarla a una matriz vacía) y cuáles son los índices de los elementos creados (0, 1 y 2). En el segundo caso damos por supuesto que la matriz no contiene valores y que al añadir valores a una matriz vacía PHP les dará 0, 1, 2 etc. como índice. En caso de que no sea así nos podemos encontrar con sorpresas.</p>
+
+    <p>Si repetimos en el mismo programa estos ejemplos de código, el resultado final no es el mismo:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$dados = [];
+for ($i = 0; $i &lt; 3; $i++) {
+    $dados[$i] = rand(1, 6);
+}
+
+print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+
+$dados = [];
+for ($i = 0; $i &lt; 3; $i++) {
+    $dados[$i] = rand(1, 6);
+}
+
+print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html"><pre>Array
+(
+    [0] =&gt; 4
+    [1] =&gt; 2
+    [2] =&gt; 1
+)
+        </pre>
+<pre>Array
+(
+    [0] =&gt; 4
+    [1] =&gt; 5
+    [2] =&gt; 2
+)
+        </pre>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+for ($i = 0; $i &lt; 3; $i++) {
+    $dados[] = rand(1, 6);
+}
+
+print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+
+for ($i = 0; $i &lt; 3; $i++) {
+  $dados[] = rand(1, 6);
+}
+
+print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html"><pre>Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 4
+    [2] =&gt; 4
+)
+        </pre>
+<pre>Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 4
+    [2] =&gt; 4
+    [3] =&gt; 6
+    [4] =&gt; 3
+    [5] =&gt; 2
+)
+        </pre>
+      </div>
+    </div>
+
+    <p>En el segundo ejemplo, la segunda vez que añadimos elementos a la matriz, estos se añaden a los ya existentes.</p>
   </section>
 
   <section id="borrar">
@@ -1115,7 +1280,7 @@ print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
