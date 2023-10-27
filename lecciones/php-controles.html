@@ -23,7 +23,7 @@
       <h2>Controles en formularios</h2>
 
       <ul>
-        <li><a href="#previa">Explicación previa</a></li>
+        <li><a href="#previa">Recepción de los controles</a></li>
         <li><a href="#submit">Botón Enviar (<span class="html-eti">input</span> <span class="html-atri-valor">submit</span>, <span class="html-eti">button</span>)</a></li>
         <li><a href="#text">Caja de texto, caja de contraseña y área de texto (<span class="html-eti">input</span> <span class="html-atri-valor">text</span>, <span class="html-eti">input</span> <span class="html-atri-valor">password</span>, <span class="html-eti">textarea</span>)</a></li>
         <li><a href="#checkbox">Casilla de verificación (<span class="html-eti">input</span> <span class="html-atri-valor">checkbox</span>)</a></li>
@@ -38,28 +38,27 @@
 
   <p>Esta lección comenta los aspectos de los formularios con respecto al procesamiento de los datos. Para conocer los aspectos de los formularios con respecto a su apariencia y navegación, se puede consultar la <a href="https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html">lección sobre formularios en los apuntes de HTML y CSS</a>.</p>
 
-  <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Falta comentar los nuevos controles introducidos en HTML 5.</p>
+  <p>Los ejemplos incluidos en los apartados dedicados a los diferentes controles se componen de cuatro elementos: la etiqueta html, una página de ejemplo que se puede probar, el contenido de la matriz $_REQUEST cuando se recibe la información y un enlace al ejemplo para ejecutarlo en una pestaña aparte.</p>
+
+  <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48"> Falta comentar los controles introducidos en HTML 5.</p>
 
   <section id="previa">
-    <h2>Explicación previa</h2>
+    <h2>Cómo se recibe la información enviada por los controles de los formularios</h2>
 
     <p>Para que un control envíe información es necesario:</p>
     <ul>
       <li>que el control esté incluido en un formulario (<span class="html-eti">&lt;form&gt;</span>).</li>
       <li>que el formulario tenga establecido el atributo <span class="html-atri">action</span>, con la dirección absoluta o relativa del fichero php que procesará la información</li>
-      <li>que el control tenga establecido el atributo <span class="html-atri">name</span><br> <strong>Nota</strong>: el atributo <span class="html-atri">name</span> puede contener cualquier carácter (números, acentos, guiones, etc), pero si contiene espacios, PHP sustituye los espacios por guiones bajos (_) al procesar los datos enviados.</li>
+      <li>que el control tenga establecido el atributo <span class="html-atri">name</span></li>
       <li>que el formulario contenga un botón de tipo submit </li>
     </ul>
 
-    <p>El siguiente ejemplo muestra un formulario válido:</p>
+    <p>El programa que recibe los datos los guarda automáticamente en la matriz $_REQUEST.</p>
 
-    <div class="filaflex cabecera">
-      <div>Código HTML del formulario</div>
-      <div>Ejemplo</div>
-      <div class="icono-enlace"></div>
-    </div>
+    <p>El siguiente ejemplo muestra un formulario y la página que recibe los datos del formulario. En el ejemplo siguiente, la página que recibe los datos muestra el contenido de la matriz $_REQUEST mediante la orden <span class="php-fun">print_r($_REQUEST)</span>.</p>
 
     <div class="filaflex">
+      <div class="columnaflex">
       <div class="codigo">
         <pre>
 <code class="language-html">&lt;!-- Formulario (form-input-1.php) --&gt;
@@ -69,17 +68,6 @@
 &lt;/form&gt;</code>
 </pre>
       </div>
-      <iframe src="ejemplos/controles-formularios/form-input-1.php" style="height: 8em;"></iframe>
-      <div class="icono-enlace">
-        <a href="ejemplos/controles-formularios/form-input-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-      </div>
-    </div>
-
-    <p>El programa que recibe los datos los guarda automáticamente en la matriz $_REQUEST. Mediante la orden <span class="php-fun">print_r($_REQUEST)</span> se puede mostrar el contenido de la matriz $_REQUEST.</p>
-
-    <p>El siguiente ejemplo muestra lo que escribiría el programa PHP (form-input-2.php) si recibiera la información del formulario anterior (form-input-1.php).</p>
-
-    <div class="filaflex">
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
@@ -90,13 +78,14 @@ print "&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <iframe src="ejemplos/controles-formularios/form-input-2.php?nombre=" style="height: 9em;"></iframe>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-input-1.php" style="height: 18em;"></iframe>
       <div class="icono-enlace">
-        <a href="ejemplos/controles-formularios/form-input-2.php?nombre="><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="ejemplos/controles-formularios/form-input-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
-    <p>El nombre del elemento de la matriz $_REQUEST coincide con el nombre del control (atributo <span class="html-atri">name</span>) en el formulario (excepto en el control de tipo imagen).</p>
+    <p>El nombre del elemento de la matriz $_REQUEST coincide con el nombre del control (atributo <span class="html-atri">name</span>) en el formulario, con algunas excepciones que se comentan más adelante.</p>
 
     <hr class="corta">
 
@@ -126,7 +115,51 @@ print "&lt;/pre&gt;\n";
 
     <hr class="corta">
 
-    <p>Los ejemplos que se encuentran a continuación se componen de cuatro elementos: la etiqueta html, una página de ejemplo que se puede probar, el contenido de la matriz $_REQUEST cuando se recibe la información y un enlace al ejemplo para ejecutarlo en una pestaña aparte.</p>
+    <p>El nombre de un control puede seguir la notación de las matrices de PHP, es decir, incluir corchetes e índices (numéricos o cadenas). La matriz $_REQUEST contendrá entonces una matriz llamada como el control y con los índices indicados, como muestra el ejemplo siguiente:</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;!-- Formulario (form-name-matriz-1.php) --&gt;
+&lt;form action="form-name-matriz-2.php" method="get"&gt;
+  &lt;p&gt;Primer apellido: &lt;input type="text" <span class="codigo-resaltado">name="apellidos[1]"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;Segundo apellido: &lt;input type="text" <span class="codigo-resaltado">name="apellidos[2]"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-name-matriz-1.php" style="height: 13em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-name-matriz-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>El nombre del control puede contener cualquier carácter (números, acentos, guiones, etc), pero en la matriz $_REQUEST PHP convierte en guiones bajos (_) tres caracteres: los espacios en blanco ( ), el punto (.) y el corchete abierto ([) si no va acompañado de un corchete cerrado (]).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;!-- Formulario (form-name-caracteres especiales-1.php) --&gt;
+&lt;form action="form-name-caracteres especiales-2.php" method="get"&gt;
+  &lt;p&gt;Primer dato: &lt;input type="text" name="ejemplo.a"&gt;&lt;/p&gt;
+
+  &lt;p&gt;Segundo dato: &lt;input type="text" name="ejemplo b"&gt;&lt;/p&gt;
+
+  &lt;p&gt;Tercer dato: &lt;input type="text" name="ejemplo[c"&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-name-caracteres-especiales-1.php" style="height: 14em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-name-caracteres-especiales-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
   </section>
 
   <section id="submit">
@@ -815,7 +848,7 @@ print "&lt;/pre&gt;\n";
     <p>Las coordenadas se reciben en $_REQUEST en dos elementos que añaden al nombre del control el sufijo _x e _y. En la barra de dirección el nombre aparece con el sufijo .x e .y.</p>
 
     <p class="captura">
-      <img src="../img/php/form-image-1.png" alt="Control de tipo image" width="650" height="180">
+      <img src="../img/php/form-image-1.png" alt="Control de tipo image" width="750" height="200">
     </p>
   </section>
 
@@ -887,7 +920,7 @@ print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 21 de enero de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 27 de octubre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
