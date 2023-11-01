@@ -1,6 +1,6 @@
 <?php
 /**
- * Matrices (3) 4 - matrices-3-04.php
+ * Matrices (3) 2 - matrices-3-02-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Cartas sin repetición.
+    Dados de póker (con texto en atributo alt).
     Matrices (3). Sin formularios.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,25 +36,24 @@
 </head>
 
 <body>
-  <h1>Cartas sin repetición</h1>
+  <h1>Dados de póker (con texto en atributo alt)</h1>
 
 <?php
-// Guardamos los valores de las cartas en la matriz $cartas
-$n = rand(5, 10);
-$cartas = range(1, 10);
-// Barajamos las cartas
-shuffle($cartas);
-// Creamos una nueva matriz con los primeros valores de $cartas (el número de valores que queremos mostrar)
+// Guardamos los nombres de las imágenes en la matriz $dadosPoker
+$dadosPoker = ["N" => "Negros", "R" => "Rojos", "J" => "Jota", "Q" => "Reina", "K" => "Rey", "A" => "As"];
+
+// Guardamos los valores de los dados en la matriz $dados
+$n = rand(3, 7);
 for ($i = 0; $i < $n; $i++) {
-    $cartas2[] = $cartas[$i];
+    $dados[] = array_rand($dadosPoker);
 }
 
-// Mostramos las imágenes de las cartas guardadas en $cartas2
-print "  <h2>$n cartas sin repetición</h2>\n";
+// Mostramos las imágenes y los atributos alt de los dados obtenidos
+print "  <h2>Tirada de $n dados</h2>\n";
 print "\n";
 print "  <p>\n";
-foreach ($cartas2 as $carta) {
-    print "    <img src=\"img/cartas/c$carta.svg\" alt=\"$carta de corazones\" width=\"100\">\n";
+foreach ($dados as $dado) {
+    print "    <img src=\"img/dados-poker/$dado.svg\" alt=\"$dadosPoker[$dado]\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";

@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (3) 1 - matrices-3-01.php
+ * Matrices (3) 1 - matrices-3-03.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-10-24
+ * @version   2023-11-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -51,11 +51,9 @@ print "  <h2>Extracción de $n cartas</h2>\n";
 print "\n";
 print "  <p>\n";
 for ($i = 0; $i < $n; $i++) {
-    $palo = array_rand($palos);
+    $palo   = array_rand($palos);
     $numero = rand(1, 10);
-    $carta = $palos[$palo][0] . $numero;
-    $alt = $numero . " de " . $palos[$palo][1];
-    print "    <img src=\"img/cartas/$carta.svg\" alt=\"$alt\" width=\"100\">\n";
+    print "    <img src=\"img/cartas/{$palos[$palo][0]}$numero.svg\" alt=\"$numero de {$palos[$palo][1]}\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -64,7 +62,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-10-30">30 de octubre de 2023</time>
+      <time datetime="2023-11-01">1 de noviembre de 2023</time>
     </p>
 
     <p class="licencia">

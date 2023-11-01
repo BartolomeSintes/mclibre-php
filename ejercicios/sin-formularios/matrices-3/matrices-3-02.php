@@ -5,7 +5,7 @@
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-10-24
+ * @version   2023-11-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,8 @@
 
 <?php
 // Guardamos los nombres de las imágenes en la matriz $dadosPoker
-$dadosPoker = [["N", "Negros"], ["R", "Rojos"], ["J", "Jota"], ["Q", "Reina"], ["K", "Rey"], ["A", "As"]];
+$dadosPoker   = ["N", "R", "J", "Q", "K", "A"];
+$nombresPoker = ["Negros", "Rojos", "Jota", "Reina", "Rey", "As"];
 
 // Guardamos los valores de los dados en la matriz $dados
 // Cuidado: se guardan los índices, no los valores
@@ -54,7 +55,7 @@ print "  <h2>Tirada de $n dados</h2>\n";
 print "\n";
 print "  <p>\n";
 foreach ($dados as $dado) {
-    print "    <img src=\"img/dados-poker/{$dadosPoker[$dado][0]}.svg\" alt=\"{$dadosPoker[$dado][1]}\" width=\"100\">\n";
+    print "    <img src=\"img/dados-poker/$dadosPoker[$dado].svg\" alt=\"$nombresPoker[$dado]\" width=\"100\">\n";
 }
 print "  </p>\n";
 print "\n";
@@ -63,7 +64,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-10-24">24 de octubre de 2023</time>
+      <time datetime="2023-11-01">1 de noviembre de 2023</time>
     </p>
 
     <p class="licencia">

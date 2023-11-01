@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (3) 1 - matrices-3-01.php
+ * Matrices (3) 1 - matrices-3-03-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-10-24
+ * @version   2023-11-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -63,7 +63,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-10-30">30 de octubre de 2023</time>
+      <time datetime="2023-11-01">1 de noviembre de 2023</time>
     </p>
 
     <p class="licencia">

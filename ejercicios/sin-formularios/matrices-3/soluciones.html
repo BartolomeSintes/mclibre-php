@@ -69,10 +69,67 @@
   <section id="ejercicio-1">
     <h3>Matrices (3) 1 - Dados de póker</h3>
 
-    <p>En esta solución, los valores de los dados que se guardan no son las caras de los dados (N, R, J, etc.), sino los índices de la matriz $dadosPoker.</p>
+    <p>A continuación se muestran cuatro soluciones. En las dos primeras, los valores de los dados a mostrar se generan al mostrarlos. En las dos últimas, los valores de los dados se guardan en una matriz y posteriormente se muestran los dados.</p>
 
-    <div class="codigo">
-      <pre>
+    <ol>
+      <li>En esta solución, el valor del dado que se va a mostrar no es la cara del dado ("N", "R", "J", etc.), sino el índice de la matriz $dadosPoker.
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Guardamos los nombres de las imágenes en la matriz $dadosPoker
+$dadosPoker = ["N", "R", "J", "Q", "K", "A"];
+
+// Generamos el número de dados que vamos a mostrar
+$n = rand(3, 7);
+
+print "  &lt;h2&gt;Tirada de $n dados&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $n; $i++) {
+    // Generamos el valor de un dado
+    // Cuidado: se trata de un índice, no del valor
+    $dado = <span class="codigo-resaltado">array_rand($dadosPoker)</span>;
+    // Mostramos la imagen del dado
+    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dadosPoker[$dado]</span>.svg\" alt=\"<span class="codigo-resaltado">$dadosPoker[$dado]</span>\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>En esta solución, el valor del dado que se va a mostrar es la cara del dado ("N", "R", "J", etc.).
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Guardamos los nombres de las imágenes en la matriz $dadosPoker
+$dadosPoker = ["N", "R", "J", "Q", "K", "A"];
+
+// Generamos el número de dados que vamos a mostrar
+$n = rand(3, 7);
+
+print "  &lt;h2&gt;Tirada de $n dados&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+for ($i = 0; $i &lt; $n; $i++) {
+    // Generamos el valor de un dado
+    // Cuidado: se trata de un índice, no del valor
+    $dado = <span class="codigo-resaltado">$dadosPoker[array_rand($dadosPoker)]</span>;
+    // Mostramos la imagen del dado
+    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dado</span>.svg\" alt=\"<span class="codigo-resaltado">$dado</span>\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>En esta solución, los valores de los dados que se guardan no son las caras de los dados (N, R, J, etc.), sino los índices de la matriz $dadosPoker.
+
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Guardamos los nombres de las imágenes en la matriz $dadosPoker
 $dadosPoker = ["N", "R", "J", "Q", "K", "A"];
@@ -95,12 +152,12 @@ print "  &lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
-    </div>
+        </div>
+      </li>
+      <li>En esta solución, los valores de los dados que se guardan son las caras de los dados (N, R, J, etc.).
 
-    <p>En esta solución, los valores de los dados que se guardan son las caras de los dados (N, R, J, etc.).</p>
-
-    <div class="codigo">
-      <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Guardamos los nombres de las imágenes en la matriz $dadosPoker
 $dadosPoker = ["N", "R", "J", "Q", "K", "A"];
@@ -122,16 +179,52 @@ print "  &lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
-    </div>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <section id="ejercicio-2">
     <h3>Matrices (3) 2 - Dados de póker (con texto en atributo <span class="html-atri">alt</span>)</h3>
 
-    <p>En esta solución, los valores de los dados que se guardan no son las caras de los dados (N, R, J, etc.), sino los índices de la matriz $dadosPoker. La matriz tiene además dos dimensiones, para guardar tanto la cara del dado como la descripción correspondiente (que se usa para el atributo <span class="html-atri">alt</span>).</p>
+    <p>A continuación se muestran tres soluciones. En las tres se guardan los valores de los dados en una matriz y posteriormente se muestran los dados. La diferencia entre ellas es la estructura de la matriz o matrices que guardan los nombres de los ficheros SVG ("N", "R", "J", etc.) y los textos que describen las caras ("Negros", "Rojos", "Jota", etc.).</p>
 
-    <div class="codigo">
-      <pre>
+    <ol>
+      <li>En esta solución, los nombres de los ficheros ("N", "R", "J", etc.) y los textos que describen las caras ("Negros", "Rojos", "Jota", etc.) se guardan en dos matrices distintas. Los valores de los dados que se van a mostrar, que se guardan en otra matriz, no son las caras de los dados (N, R, J, etc.), sino los índices de la matriz $dadosPoker.
+
+        <p>Un detalle importante de esta solución es que puesto que los nombres de los ficheros y los textos que describen las caras se guardan en dos matrices distintas, es crucial que el orden en las dos matrices sea el mismo, para que un único índice nos permita acceder a los dos valores relacionados.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Guardamos los nombres de las imágenes en la matriz $dadosPoker
+$dadosPoker   = ["N", "R", "J", "Q", "K", "A"];
+$nombresPoker = ["Negros", "Rojos", "Jota", "Reina", "Rey", "As"];
+
+// Guardamos los valores de los dados en la matriz $dados
+// Cuidado: se guardan los índices, no los valores
+$n = rand(3, 7);
+for ($i = 0; $i &lt; $n; $i++) {
+    $dados[] = <span class="codigo-resaltado">array_rand($dadosPoker)</span>;
+}
+
+// Mostramos las imágenes y los atributos alt de los dados obtenidos
+print "  &lt;h2&gt;Tirada de $n dados&lt;/h2&gt;\n";
+print "\n";
+print "  &lt;p&gt;\n";
+foreach ($dados as $dado) {
+    print "    &lt;img src=\"img/dados-poker/<span class="codigo-resaltado">$dadosPoker[$dado]</span>.svg\" alt=\"<span class="codigo-resaltado">$nombresPoker[$dado]</span>\" width=\"100\"&gt;\n";
+}
+print "  &lt;/p&gt;\n";
+print "\n";
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+      <li>En esta solución, la matriz que contiene los nombres de los ficheros y los textos que describen las caras tiene dos dimensiones.
+
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Guardamos los nombres de las imágenes en la matriz $dadosPoker
 $dadosPoker = [["N", "Negros"], ["R", "Rojos"], ["J", "Jota"], ["Q", "Reina"], ["K", "Rey"], ["A", "As"]];
@@ -154,12 +247,12 @@ print "  &lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
-    </div>
+        </div>
+      </li>
+      <li>En esta solución, la matriz $dadosPoker tiene una dimensión, pero los índices de esta matriz son los valores de las caras de los dados (N, R, J, etc.) y los valores son las descripciones de las caras.
 
-    <p>En esta solución, la matriz $dadosPoker tiene una dimensión, pero los índices son los valores de las caras de los dados (N, R, J, etc.).</p>
-
-    <div class="codigo">
-      <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Guardamos los nombres de las imágenes en la matriz $dadosPoker
 $dadosPoker = ["N" =&gt; "Negros", "R" =&gt; "Rojos", "J" =&gt; "Jota", "Q" =&gt; "Reina", "K" =&gt; "Rey", "A" =&gt; "As"];
@@ -181,16 +274,19 @@ print "  &lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
-    </div>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <section id="ejercicio-3">
     <h3>Matrices (3) 3 - Cartas de cuatro palos</h3>
 
-    <p>En esta solución, no se guardan los valores en una matriz, sino que se generan en el momento de mostrar la carta. El valor del palo que se genera es un índice de la matriz de dos dimensiones $palos. Como tanto el número como el palo aparecen en dos lugares de la página (en el nombre del fichero a mostrar y en el atributo <span class="html-atri">alt</span>), guardamos estos valores en dos variables auxiliares. La matriz $palos tiene dos dimensiones: el primer elemento de cada elemento de la matriz $palos ([0]) es la inicial del palo y el segundo ([1]) es el nombre del palo.</p>
+    <ol>
+      <li>En esta solución, no se guardan los valores en una matriz, sino que se generan en el momento de mostrar la carta. El valor del palo que se genera es un índice de la matriz de dos dimensiones $palos. Como tanto el número como el palo aparecen en dos lugares de la página (en el nombre del fichero a mostrar y en el atributo <span class="html-atri">alt</span>), guardamos estos valores en dos variables auxiliares. La matriz $palos tiene dos dimensiones: el primer elemento de cada elemento de la matriz $palos ([0]) es la inicial del palo y el segundo ([1]) es el nombre del palo.
 
-    <div class="codigo">
-      <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Guardamos los nombres de los cuatro palos
 $palos = [["c", "corazones"], ["d", "diamantes"], ["p", "picas"], ["t", "tréboles"]];
@@ -204,23 +300,20 @@ print "  &lt;h2&gt;Extracción de $n cartas&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
 for ($i = 0; $i &lt; $n; $i++) {
-    $palo = <span class="codigo-resaltado">array_rand($palos)</span>;
+    $palo   = <span class="codigo-resaltado">array_rand($palos)</span>;
     $numero = <span class="codigo-resaltado">rand(1, 10)</span>;
-    $carta = <span class="codigo-resaltado">$palos[$palo][0] . $numero</span>;
-    $alt = $numero . " de " . <span class="codigo-resaltado">$palos[$palo][1]</span>;
-    print "    &lt;img src=\"img/cartas/$carta.svg\" alt=\"$alt\" width=\"100\"&gt;\n";
+    print "    &lt;img src=\"img/cartas/<span class="codigo-resaltado">{$palos[$palo][0]}$numero</span>.svg\" alt=\"<span class="codigo-resaltado">$numero</span> de <span class="codigo-resaltado">{$palos[$palo][1]}</span>\" width=\"100\"&gt;\n";
 }
 print "  &lt;/p&gt;\n";
 print "\n";
-
 ?&gt;</code>
 </pre>
-    </div>
+        </div>
+      </li>
+      <li>En esta solución, se guardan los valores en una matriz $cartas de dos dimensiones (aunque no sea necesario). En cada elemento de la matriz $cartas, el primer elemento de cada elemento de la matriz ([0]) es la inicial del palo y el segundo ([1]) es el número de la carta.
 
-    <p>En esta solución, se guardan los valores en una matriz $cartas de dos dimensiones (aunque no sea necesario). En cada elemento de la matriz $cartas, el primer elemento de cada elemento de la matriz ([0]) es la inicial del palo y el segundo ([1]) es el número de la carta.</p>
-
-    <div class="codigo">
-      <pre>
+        <div class="codigo">
+          <pre>
 <code class="language-php">&lt;?php
 // Guardamos los nombres de los cuatro palos
 $palos = ["c" =&gt; "corazones", "d"=&gt; "diamantes", "p" =&gt; "picas", "t" =&gt; "tréboles"];
@@ -243,7 +336,9 @@ print "  &lt;/p&gt;\n";
 print "\n";
 ?&gt;</code>
 </pre>
-    </div>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <section id="ejercicio-4">
@@ -251,15 +346,18 @@ print "\n";
 
     <div class="codigo">
       <pre>
-<code class="language-php">&lt;?php// Guardamos los valores de las cartas en la matriz $cartas
+<code class="language-php">&lt;?php
+// Guardamos los valores de las cartas en la matriz $cartas
 $n = rand(5, 10);
 $cartas = range(1, 10);
+// Barajamos las cartas
 shuffle($cartas);
+// Creamos una nueva matriz con los primeros valores de $cartas (el número de valores que queremos mostrar)
 for ($i = 0; $i &lt; $n; $i++) {
     $cartas2[] = $cartas[$i];
 }
 
-// Mostramos las imágenes de las cartas obtenidas
+// Mostramos las imágenes de las cartas guardadas en $cartas2
 print "  &lt;h2&gt;$n cartas sin repetición&lt;/h2&gt;\n";
 print "\n";
 print "  &lt;p&gt;\n";
@@ -856,7 +954,7 @@ print $consecutivas ? "&lt;p&gt;Hay cartas iguales consecutivas&lt;/p&gt;\n" : "
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 30 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 1 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

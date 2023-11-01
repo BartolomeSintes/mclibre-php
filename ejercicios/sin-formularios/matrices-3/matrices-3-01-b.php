@@ -1,11 +1,11 @@
 <?php
 /**
- * Matrices (3) 1 - matrices-3-01.php
+ * Matrices (3) 1 - matrices-3-01-b.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2023-10-24
+ * @version   2023-11-01
  * @link      http://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,17 +42,17 @@
 // Guardamos los nombres de las imágenes en la matriz $dadosPoker
 $dadosPoker = ["N", "R", "J", "Q", "K", "A"];
 
-// Guardamos los valores de los dados en la matriz $dados
+// Generamos el número de dados que vamos a mostrar
 $n = rand(3, 7);
-for ($i = 0; $i < $n; $i++) {
-    $dados[] = $dadosPoker[array_rand($dadosPoker)];
-}
 
-// Mostramos las imágenes de los dados obtenidos
 print "  <h2>Tirada de $n dados</h2>\n";
 print "\n";
 print "  <p>\n";
-foreach ($dados as $dado) {
+for ($i = 0; $i < $n; $i++) {
+    // Generamos el valor de un dado
+    // Cuidado: se trata de un índice, no del valor
+    $dado = $dadosPoker[array_rand($dadosPoker)];
+    // Mostramos la imagen del dado
     print "    <img src=\"img/dados-poker/$dado.svg\" alt=\"$dado\" width=\"100\">\n";
 }
 print "  </p>\n";
@@ -62,7 +62,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2023-10-30">30 de octubre de 2023</time>
+      <time datetime="2023-11-01">1 de noviembre de 2023</time>
     </p>
 
     <p class="licencia">
