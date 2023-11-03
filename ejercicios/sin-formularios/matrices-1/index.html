@@ -179,12 +179,15 @@
       <details>
         <summary><strong>Ayuda</strong></summary>
         <ul>
-          <li>Este programa se puede hacer, por ejemplo, con dos matrices, una para almacenar los códigos Unicode de las actividades y otra para almacenar los códigos Unicode Fitzpatrick de los tonos de piel.</li>
-          <li style="line-height: 250%">Los tonos de color de piel se consiguen con <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias.html#fitzpatrick">los modificadores Fitzpatrick</a> &amp;#127995; &amp;#127996; &amp;#127997; &amp;#127998; y &amp;#127999; <span style="font-size: 300%">&#127995; &#127996; &#127997; &#127998; y &#127999;</span>.</li>
-          <li>Hay varias formas de combinar los modificadores Fitzpatrick con emojis. En este ejercicio aparecen las <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias-colores.html#colores-piel-1">secuencias más simples</a>, en las que el modificador se escribe a continuación del carácter del emoji.
-            <p style="line-height: 250%">Así, al escribir &amp;#128077; <span style="font-size: 300%">&#128077;</span> seguido de &amp;#127998; <span style="font-size: 300%">&#127998;</span>, se convierte en <span style="font-size: 300%">&#128077;&#127998;</span>.</p>
+          <li>Las entidades numéricas que corresponden a diferentes gestos con las manos son: 128070, 128071, 128072, 128073, 128074, 128075, 128076, 128077, 128078, 128079, 128080, 128133, 128170, 128400, 128405, 128406, 128588, 128591, 129295, 129304, 129305, 129306, 129307, 129308, 129310, 129311, 129330.
+            <p>Como estos valores no son consecutivos, no se pueden generar con un simple <span class="php-fun">rand()</span>. Los valores se pueden guardar en una matriz.</p>
           </li>
-          <li>Las entidades numéricas que aparecen en este ejercicio son: 128070, 128071, 128072, 128073, 128074, 128075, 128076, 128077, 128078, 128079, 128080, 128133, 128170, 128400, 128405, 128406, 128588, 128591, 129295, 129304, 129305, 129306, 129307, 129308, 129310, 129311, 129330.</li>
+          <li style="line-height: 250%">Los tonos de color de piel se consiguen con <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias.html#fitzpatrick">los modificadores Fitzpatrick</a> &amp;#127995; &amp;#127996; &amp;#127997; &amp;#127998; y &amp;#127999; <span style="font-size: 300%">&#127995; &#127996; &#127997; &#127998; y &#127999;</span>.
+            <p>Como estos valores sí que son consecutivos se pueden generar con un simple <span class="php-fun">rand()</span>, aunque también se pueden guardar en una matriz.</p>
+          </li>
+          <li>Hay varias formas de combinar los modificadores Fitzpatrick con emojis. En este ejercicio aparecen las <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias-colores.html#gr-colores-piel-1">secuencias más simples</a>, en las que el modificador se escribe a continuación del carácter del emoji.
+            <p style="line-height: 250%">Así, al escribir &amp;#128077; <span style="font-size: 300%">&#128077;</span> seguido de &amp;#127998; <span style="font-size: 300%">&#127998;</span>, es decir, &amp;#128077;&amp;#127998; se convierte en <span style="font-size: 300%">&#128077;&#127998;</span>.</p>
+          </li>
         </ul>
       </details>
 
@@ -204,12 +207,15 @@
       <details>
         <summary><strong>Ayuda</strong></summary>
         <ul>
-          <li>Este programa se puede hacer, por ejemplo, con cuatro matrices, dos para almacenar la actividad (en una el código Unicode y en otra la descripción) y dos para almacenar el género (en una el código Unicode femenino/masculino y en otra la descripción Hombre/Mujer).</li>
-          <li style="line-height: 250%">Hay varias formas de obtener <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias.html#generos">emojis de hombres y mujeres</a>. En este ejercicio aparecen las <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias-generos.html#genero-3">secuencias de cuatro entidades</a>, que utilizan primero el caracter de la actividad, después el carácter ZWJ U+200D, después el carácter U+2640 (signo femenino <span style="font-size: 300%">&#x2640;</span>) o U+2642 (signo masculino <span style="font-size: 300%">&#x2642;</span>) y por último el selector de variación 16 U+FE0F (para indicar que queremos la variante emoji, ya que los caracteres femenino / masculino tiene modo texto y modo emoji.
-            <p style="line-height: 250%">Así, al escribir &amp;#128694; <span style="font-size: 300%">&#128694;</span> seguido de &amp;#8205; (carácter ZWJ), seguido de &amp;#9792; <span style="font-size: 300%">&#9792;</span> y terminado por &amp;#65039; (VS16), se convierte en <span style="font-size: 300%">&#128694;&#8205;&#9792;&#65039;</span>.</p>
+          <li>Las entidades numéricas que corresponden a actividades físicas son: 127939, 127940, 127946, 128675, 128692, 128693, 128694, 129336, 129337, 129341, 129342, 129495. Las entidades numéricas femenino / masculino son 9792 y 9794, respectivamente.
+            <p>Como estos valores no son consecutivos, no se pueden generar con un simple <span class="php-fun">rand()</span>. Los valores se pueden guardar en dos matrices.</p>
           </li>
-          <li>Las entidades numéricas que aparecen en este ejercicio son: 127939, 127940, 127946, 128675, 128692, 128693, 128694, 129336, 129337, 129341, 129342, 129495. Las entidades numéricas femenino / masculino son en decimal 9792 y 9794, respectivamente.</li>
-          <li>Las descripciones de los deportes son: "corriendo", "surfeando", "nadando", "remando", "pedaleando", "pedaleando en la montaña", "caminando", "dando volteretas", "haciendo malabares", "jugando al waterpolo", "jugando al balonmano", "escalando".</li>
+          <li>Las descripciones de los deportes son: "corriendo", "surfeando", "nadando", "remando", "pedaleando", "pedaleando en la montaña", "caminando", "dando volteretas", "haciendo malabares", "jugando al waterpolo", "jugando al balonmano", "escalando". Las descripciones de los géneros son "Hombre" y "Mujer".
+            <p>Estos valores se pueden guardar en dos matrices.</p>
+          </li>
+          <li style="line-height: 250%">Hay varias formas de obtener <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias.html#generos">emojis de hombres y mujeres</a>. En este ejercicio aparecen las <a href="https://www.mclibre.org/consultar/htmlcss/html/html-unicode-secuencias-generos.html#gr-genero-5">secuencias de cuatro entidades</a>, que utilizan primero el caracter de la actividad, después el carácter ZWJ U+200D, después el carácter U+2640 (signo femenino <span style="font-size: 300%">&#x2640;</span>) o U+2642 (signo masculino <span style="font-size: 300%">&#x2642;</span>) y por último el selector de variación 16 U+FE0F (para indicar que queremos la variante emoji, ya que los caracteres femenino / masculino tiene modo texto y modo emoji).
+            <p style="line-height: 250%">Así, al escribir &amp;#128694; <span style="font-size: 300%">&#128694;</span> seguido de &amp;#8205; (carácter ZWJ), seguido de &amp;#9792; <span style="font-size: 300%">&#9792;</span> y terminado por &amp;#65039; (VS16), es decir &amp;#128694;&amp;#8205;&amp;#9792;&amp;#65039; se convierte en <span style="font-size: 300%">&#128694;&#8205;&#9792;&#65039;</span>.</p>
+          </li>
         </ul>
       </details>
 
