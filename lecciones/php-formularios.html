@@ -116,7 +116,9 @@
   <section id="recepcion-datos">
     <h2>Recepción de los datos</h2>
 
-    <p>Cuando un formulario envía los datos a una página PHP, los datos están automáticamente a disposición del programa PHP en una matriz llamada $_REQUEST. Cada dato recibido es un elemento de la matriz $_REQUEST: el índice del elemento es el nombre del control (salvo en el control de tipo imagen) y el valor del elemento es el dato introducido o seleccionado por el usuario en el control.</p>
+    <p>Cuando un formulario envía los datos a una página PHP, los datos están automáticamente a disposición del programa PHP en una matriz llamada $_REQUEST. Cada dato recibido es un elemento de la matriz $_REQUEST: el índice del elemento es el nombre del control y el valor del elemento es el dato introducido o seleccionado por el usuario en el control.</p>
+
+    <p><strong>Nota</strong>: Si el atributo <span class="html-atri">name</span> contiene espacios en blanco o puntos o el carácter [ (sin el carácter ]), estos se convierten en guiones bajos en la matriz $_REQUEST.</p>
 
     <p>En el siguiente ejemplo, el programa que recibe los datos del formulario simplemente muestra el contenido de la matriz $_REQUEST utilizando la función <span class="php-fun">print_r()</span> que muestra los índices y valores de la matriz. La página con el formulario se llama form-2-1.php y la página que recibe los datos se llama form-2-2.php</p>
 
