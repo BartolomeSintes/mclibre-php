@@ -43,24 +43,27 @@
 
     <p>Podemos distinguir dos tipos de errores:</p>
     <ul>
-      <li>Errores sintácticos (parse errors)
-        <p>Un programa debe estar escrito según las reglas del lenguaje de programación. Si un programa no cumple alguna regla, se dice que el programa tiene un error sintáctico.</p>
+      <li>Errores sintácticos (<i>parse errors</i>)
+        <p>Un programa debe estar escrito según las reglas del lenguaje de programación. Si un programa no cumple alguna regla, se dice que el programa tiene un error sintáctico. Estos errores detienen la ejecución de los programas.</p>
       </li>
-      <li>Errores no sintácticos (errors)
-        <p>Aunque un programa siga las reglas del lenguaje, el ordenador puede ser incapaz de ejecutar una instrucción determinada (dependiendo del error, el ordenador y de continuar con la ejecución del programa. En ese caso, se dice que el programa tiene errores no sintácticos.</p>
+      <li>Errores no sintácticos (<i>errors</i>)
+        <p>Aunque un programa siga las reglas del lenguaje, el intérprete de PHP puede ser incapaz de ejecutar una instrucción determinada. En ese caso, se dice que el programa tiene errores no sintácticos. Dependiendo del error, la ejecución del programa puede detenerse o continuar (aunque seguramente obteniendo resultados distintos a los  esperados).</p>
       </li>
     </ul>
 
     <p>Entre los errores no sintácticos, se pueden distinguir varios tipos de errores:</p>
     <ul>
-      <li>Advertencias (warnings)
-        <p>El ordenador es incapaz de ejecutar una instrucción determinada, pero el ordenador puede continuar con la ejecución del programa. En ese caso, se dice que el compilador da advertencias.</p>
+      <li>Errores fatales (<i>fatal errors</i>)
+        <p>El intérprete de PHP no es capaz de ejecutar una instrucción determinada, ni continuar con la ejecución del programa.</p>
       </li>
-      <li>Avisos (notices)
-        <p>El ordenador es capaz de ejecutar una instrucción determinada, pero detecta que el programador puede haberse equivocado. En ese caso, se dice que el compilador da avisos. Los avisos no siempre son señales de equivocaciones, pero deben evitarse.</p>
+      <li>Advertencias (<i>warnings</i>)
+        <p>El intérprete de PHP es incapaz de ejecutar una instrucción determinada, pero puede continuar con la ejecución del programa. En ese caso, se dice que el compilador da advertencias.</p>
       </li>
-      <li>Obsolescencias (deprecated)
-        <p>El compilador puede detectar que un programa utiliza características del lenguaje que actualmente funcionan correctamente, pero que no estarán (o pueden no estar) disponibles en futuras versiones, y generar un aviso de obsolescencia.</p>
+      <li>Avisos (<i>notices</i>)
+        <p>Los avisos se producen cuando el intérprete de PHP es capaz de ejecutar una instrucción determinada, pero sospecha que el programador puede haberse equivocado. Los avisos no siempre son señales de equivocaciones, pero deben evitarse.</p>
+      </li>
+      <li>Obsolescencias (<i>deprecated</i>)
+        <p>El intérprete de PHP puede detectar que un programa utiliza características del lenguaje que actualmente funcionan correctamente, pero que no estarán (o pueden no estar) disponibles en futuras versiones, y genera un aviso de obsolescencia.</p>
       </li>
     </ul>
 
@@ -345,13 +348,13 @@ function prueba($a = [], $b)
           </div>
         </div>
 
-        <p>En este caso, el motivo del aviso es que desde la versión PHP 8.0 se genera un aviso cuando se define un argumento opcional antes de los obligatorios.</p>
+        <p>En este caso, el motivo del aviso es que se ha definido un argumento opcional antes de los obligatorios. Este aviso en concreto se produce desde la versión PHP 8.0.</p>
       </li>
     </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 4 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
