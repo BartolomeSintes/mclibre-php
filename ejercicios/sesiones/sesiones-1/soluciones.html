@@ -141,16 +141,20 @@ session_start();
 
 &lt;?php
 <span title="Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. Es el procedimiento habitual: función recoge(); variable para recoger el dato; variable auxiliar que indica la corrección del dato; comprobación y mensajes de error; si el dato es correcto, mensaje final.">// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-1-1">1</span></span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -240,16 +244,20 @@ session_name("sesiones-1-02");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-2-a-1">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -346,16 +354,20 @@ session_name("sesiones-1-02-b");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-2-b-1">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -453,16 +465,20 @@ session_name("sesiones-1-03");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-a-1">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -576,16 +592,20 @@ session_name("sesiones-1-03-b");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-b-1">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -699,16 +719,20 @@ session_name("sesiones-1-03-c");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-c-1">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -769,16 +793,20 @@ session_name("sesiones-1-03-d");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-d-1">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -895,16 +923,20 @@ session_name("sesiones-1-04");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -1041,16 +1073,20 @@ session_name("sesiones-1-04-b");
 session_start();
 
 // Funciones auxiliares <span class="numero-circulo">1</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -1166,16 +1202,20 @@ if (!isset($_SESSION["numero"])) {
 }
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-11-6">6</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -1262,16 +1302,20 @@ if (!isset($_SESSION["posicion"])) {
 }
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-12-6">6</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -1370,16 +1414,20 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
 }
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-13-6">6</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -1502,16 +1550,20 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
 }
 
 // Funciones auxiliares <span class="numero-circulo" tooltip-id="li-14-7">7</span>
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }

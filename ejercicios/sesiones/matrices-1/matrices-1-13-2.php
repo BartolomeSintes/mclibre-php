@@ -34,16 +34,20 @@ if (!isset($_SESSION["dibujos"])) {
 }
 
 // Funciones auxiliares
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
