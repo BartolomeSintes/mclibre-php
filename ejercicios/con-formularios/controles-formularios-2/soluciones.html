@@ -58,16 +58,20 @@
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -111,16 +115,20 @@ if ($nombreOk && $apellidosOk) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -179,16 +187,20 @@ if ($edadOk && $pesoOk) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -275,16 +287,20 @@ if ($sexoOk && $cineOk && $literaturaOk && $musicaOk) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -348,16 +364,20 @@ if ($correoOk && $correo2Ok && $recibirOk) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -430,16 +450,20 @@ if ($ladoOk && $esquinaOk) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -502,16 +526,20 @@ if ($ladoOk && $formaOk) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
@@ -581,16 +609,20 @@ if ($ladoOk && $inicialOk && $finalOk) {
     <div class="codigo">
       <pre>
 <code class="language-php">&lt;?php
-function recoge($var, $m = "")
+// Función de recogida de datos
+function recoge($key, $type = "")
 {
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
+    if ($type != "" && $type != []) {
+        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    }
+    $tmp = is_array($type) ? [] : "";
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
             });
         }
     }
