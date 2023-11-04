@@ -29,19 +29,19 @@ function recoge($var, $m = "")
     return $tmp;
 }
 
-// Variables que recogen los datos
-$nombre   = recoge("nombre", []);
+// Variable que recoge los datos
+$apellidos = recoge("apellidos", []);
 
-if ($nombre[1] == "") {
-    print "<p>No ha escrito ningún nombre</p>";
+if ($apellidos[1] == "") {
+    print "<p>No ha escrito su primer apellido</p>";
 } else {
-    print "<p>Su nombre es <strong>$nombre[1]</strong>.</p>\n";
+    print "<p>Su primer apellido es <strong>$apellidos[1]</strong>.</p>\n";
 }
 
-if ($nombre[2] == "") {
-    print "<p>No ha escrito ningún apellido</p>";
+if ($apellidos[2] == "") {
+    print "<p>No ha escrito su segundo apellido</p>";
 } else {
-    print "<p>Sus apellidos son <strong>$nombre[2]</strong>.</p>\n";
+    print "<p>Su segundo apellido es <strong>$apellidos[2]</strong>.</p>\n";
 }
 ?>
 

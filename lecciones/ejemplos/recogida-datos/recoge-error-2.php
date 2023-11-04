@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Función recoge() (dato escalar). Recogida de datos.
+    Función recoge() (genera error). Recogida de datos.
     Ejemplos. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,22 +33,16 @@ function recoge($key, $type = "")
 }
 
 // Variables que recogen los datos
-$nombre   = recoge("nombre");
-$apellidos = recoge("apellidos");
+$apellidos = recoge("apellidos", "[]");
 
-if ($nombre == "") {
-    print "<p>No ha escrito ningún nombre</p>";
+if ($apellidos[1] == "") {
+    print "<p>No ha escrito su primer apellido</p>";
 } else {
-    print "<p>Su nombre es <strong>$nombre</strong>.</p>\n";
+    print "<p>Su primer apellido es <strong>$apellidos[1]</strong>.</p>\n";
 }
 
-if ($apellidos == "") {
-    print "<p>No ha escrito ningún apellido</p>";
-} else {
-    print "<p>Sus apellidos son <strong>$apellidos</strong>.</p>\n";
-}
 ?>
 
-<p><a href="recoge-escalar-1.php">Volver al formulario.</a></p>
+<p><a href="recoge-error-1.php">Volver al formulario.</a></p>
 </body>
 </html>

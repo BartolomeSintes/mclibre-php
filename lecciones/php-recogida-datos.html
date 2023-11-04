@@ -45,16 +45,12 @@
             <li><a href="#htmlspecialchars"><span class="php-fun">htmlspecialchars()</span></a></li>
           </ul>
         </li>
-        <li><a href="#funciones">Funciones recoge()</a>
-          <ul>
-            <li><a href="#recoger-datos">datos simples o matrices</a></li>
-            <li><a href="#recoger-predeterminado">valor predeterminado</a></li>
-            <li><a href="#recoger-valores">dato entre lista de valores</a></li>
-          </ul>
-        </li>
+        <li><a href="#funcion">Función recoge()</a></li>
       </ul>
     </div>
   </nav>
+
+  <p>En esta lección se comentan algunos aspectos prácticos que debemos tener en cuenta en nuestros programas al recoger datos de formularios (entre ellos, el más importante, la seguridad ante ataques). En los ejercicios propuestos en estos apuntes (sección PHP, con formularios) se espera que se apliquen esas recomendaciones. Para facilitar su aplicación, se recomienda el uso de la función que se comenta en la lección <a href="php-funcion-recoge.html">Función recoge()</a>. También se recomienda implementar la comprobación de los datos recibidos, como se comenta en las lecciones <a href="php-comprobacion-datos-funciones.html">Funciones de comprobación de datos</a> y <a href="php-comprobacion-datos.html">Ejemplos de comprobación de datos</a>.</p>
 
   <section id="request">
     <h2>Matriz $_REQUEST</h2>
@@ -1151,8 +1147,8 @@ if ($nombre == "") {
     </section>
   </section>
 
-  <section id="funciones">
-    <h2>Funciones de recogida de datos</h2>
+  <section id="funcion">
+    <h2>Función de recogida de datos</h2>
 
     <p>La forma más cómoda de tener en cuenta todos los aspectos comentados en los puntos anteriores es definir una función recoge():</p>
     <ul>
@@ -1170,254 +1166,14 @@ if ($nombre == "") {
         </div>
       </li>
       <li>Una vez definida la función, al comienzo del programa se almacenarán en variables los datos devueltos por la función.</li>
-      <li>En el resto del programa se trabaja con las variables.</li>
+      <li>En el resto del programa se trabaja con las variables, nunca con la matriz $_REQUEST.</li>
     </ul>
 
-    <p>A continuación se definen varias funciones. La más utilizada en los ejercicios propuestos en estos apuntes es la primera, que recoge tanto datos sueltos (números y cadenas) como matrices:</p>
-    <ol>
-      <li>Recoger datos sueltos (números y cadenas) y matrices</li>
-      <li>Recoger un dato con valor predeterminado</li>
-      <li>Recoger un dato que se encuentra entre una lista de valores predeterminada</li>
-      <li>Recoger y recortar los datos</li>
-    </ol>
-
-    <section id="recoger-datos">
-      <h3>Función recoge() para recoger datos simples o matrices</h3>
-
-      <p><img src="../varios/iconos/icono-warning.svg" alt="¡Atención!" title="¡Atención!" width="55" height="48">La siguiente función se puede utilizar en casi todos los ejercicios con formularios propuestos en estos apuntes, tanto para recoger datos sueltos (números o cadenas) como para recoger datos en forma de matriz de cualquier dimensión.</p>
-      <p>Para que la función sepa si el dato que queremos recoger es una matriz, la función tiene un segundo argumento opcional.</p>
-      <ul>
-        <li>Si el dato a recoger es un escalar, es decir, no es una matriz, la función sólo requiere un argumento, el nombre del control.</li>
-        <li>Si el dato a recoger es una matriz, la función requiere dos argumentos, el nombre del control y una matriz vacía.</li>
-      </ul>
-
-      <p>Si el dato recibido no es del tipo indicado al llamar a la función (escalar/matriz), la función recoge devuelve una cadena vacía o una matriz vacía.</p>
-
-      <div class="codigo copy">
-        <pre>
-<code class="language-php">// Función de recogida de datos
-function recoge($var, $m = "")
-{
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
-            });
-        }
-    }
-    return $tmp;
-}</code>
-</pre>
-      </div>
-
-      <hr class="corta">
-
-      <p>Esta función se puede utilizar para recoger datos escalares, como en el ejemplo siguiente:</p>
-
-      <div class="filaflex">
-        <div class="columnaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-html">&lt;!-- Formulario --&gt;
-&lt;form action="recoge-escalar-2.php"&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre"</span>&gt;&lt;/p&gt;
-
-  &lt;p&gt;Apellidos: &lt;input type="text" <span class="codigo-resaltado">name="apellidos"</span>&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
-&lt;/form&gt;</code>
-</pre>
-          </div>
-          <div class="codigo">
-            <pre>
-<code class="language-php">// Variables que recogen los datos
-$nombre    = <span class="codigo-resaltado">recoge("nombre")</span>;
-$apellidos = <span class="codigo-resaltado">recoge("apellidos")</span>;</code>
-</pre>
-          </div>
-        </div>
-        <iframe src="ejemplos/recogida-datos/recoge-escalar-1.php" style="height: 18em;"></iframe>
-        <div class="icono-enlace">
-          <a href="ejemplos/recogida-datos/recoge-escalar-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
-      </div>
-
-      <p>El código del programa que recibe los datos (recibe-escalar-2.php) podría ser el siguiente:</p>
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// Función de recogida de datos
-function recoge($var, $m = "")
-{
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// Variables que recogen los datos
-$nombre    = <span class="codigo-resaltado">recoge("nombre")</span>;
-$apellidos = <span class="codigo-resaltado">recoge("apellidos")</span>;
-
-// Programa que utiliza los datos recogidos
-if ($nombre == "") {
-    print "&lt;p&gt;No ha escrito ningún nombre&lt;/p&gt;";
-} else {
-    print "&lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
-}
-
-if ($apellidos == "") {
-    print "&lt;p&gt;No ha escrito ningún apellido&lt;/p&gt;";
-} else {
-    print "&lt;p&gt;Sus apellidos son &lt;strong&gt;$apellidos&lt;/strong&gt;.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-
-      <hr class="corta">
-
-      <p>Esta función también se puede utilizar para recoger datos en forma de matriz, como en el ejemplo siguiente:</p>
-
-      <div class="filaflex">
-        <div class="columnaflex">
-          <div class="codigo">
-            <pre>
-<code class="language-html">&lt;!-- Formulario --&gt;
-&lt;form action="ejemplo.php"&gt;
-  &lt;p&gt;Nombre: &lt;input type="text" <span class="codigo-resaltado">name="nombre[1]"</span>&gt;&lt;/p&gt;
-
-  &lt;p&gt;Apellido: &lt;input type="text" <span class="codigo-resaltado">name="nombre[2]"</span>&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
-&lt;/form&gt;</code>
-</pre>
-          </div>
-          <div class="codigo">
-            <pre>
-<code class="language-php">// Variables que recogen los datos
-$nombre = <span class="codigo-resaltado">recoge("nombre", [])</span>;</code>
-</pre>
-          </div>
-        </div>
-        <iframe src="ejemplos/recogida-datos/recoge-matriz-1.php" style="height: 11em;"></iframe>
-        <div class="icono-enlace">
-          <a href="ejemplos/recogida-datos/recoge-matriz-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
-        </div>
-      </div>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// FUNCIÓN DE RECOGIDA DE DATOS
-function recoge($var, $m = "")
-{
-    $tmp = is_array($m) ? [] : "";
-    if (isset($_REQUEST[$var])) {
-        if (!is_array($_REQUEST[$var]) && !is_array($m)) {
-            $tmp = trim(htmlspecialchars($_REQUEST[$var]));
-        } elseif (is_array($_REQUEST[$var]) && is_array($m)) {
-            $tmp = $_REQUEST[$var];
-            array_walk_recursive($tmp, function (&$valor) {
-                $valor = trim(htmlspecialchars($valor));
-            });
-        }
-    }
-    return $tmp;
-}
-
-// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$nombre = <span class="codigo-resaltado">recoge("nombre", [])</span>;
-
-if ($nombre[1] == "") {
-    print "&lt;p style=\"color: red\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;Su nombre es &lt;strong&gt;$nombre[1]&lt;/strong&gt;.&lt;/p&gt;\n";
-}
-
-if ($nombre[2] == "") {
-    print "&lt;p style=\"color: red\"&gt;No ha escrito ningún apellido.&lt;/p&gt;\n";
-} else {
-    print "&lt;p&gt;Su apellido es &lt;strong&gt;$nombre[2]&lt;/strong&gt;.&lt;/p&gt;\n";
-}
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="recoger-predeterminado">
-      <h3>Función recoge() para recoger un dato con valor predeterminado</h3>
-
-      <p>La siguiente función recoge(), que sólo permite recoger datos sueltos (no matrices), permite definir un valor predeterminado. Es decir, que si el dato no existe, la función devuelve el valor enviado como segundo argumento y si no se envía el valor predeterminado la función devuelve la cadena vacía.</p>
-
-      <p>En el ejemplo siguiente, si no se recibe el nombre, se le asigna el nombre "pobrecito hablador".</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// FUNCIÓN DE RECOGIDA DE UN DATO CON VALOR PREDETERMINADO
-function recoge($var, $var2="")
-{
-    $tmp = (isset($_REQUEST[$var]) &amp;&amp; trim(strip_tags($_REQUEST[$var])) != "")
-        ? trim(htmlspecialchars($_REQUEST[$var]))
-        : trim(htmlspecialchars($var2));
-    return $tmp;
-}
-
-// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$nombre = recoge("nombre", "pobrecito hablador");
-print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-    </section>
-
-    <section id="recoger-valores">
-      <h3>Función recoge() para recoger un dato perteneciente a una lista de valores</h3>
-
-      <p>La siguiente función recoge(), que sólo permite recoger datos sueltos (no matrices), únicamente admite un valor si se encuentra entre los elementos de una matriz de valores posibles. Si el valor recogido no es uno de los valores posibles, asigna un valor predeterminado.</p>
-
-      <p>En el ejemplo siguiente, si el nombre recibido no es Ana, Bernardo o Carmen, se le asigna el nombre "Anónimo".</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// FUNCIÓN DE RECOGIDA DE UN DATO DE UNA LISTA DE VALORES
-
-function recogeValores($var, $valoresValidos, $valorPredeterminado)
-{
-    foreach ($valoresValidos as $valorValido) {
-        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $valorValido) {
-            return $valorValido;
-        }
-    }
-    return $valorPredeterminado;
-}
-
-// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$admitidos = ["Ana", "Bernardo", "Carmen"];
-$nombre = recogeValores("nombre", $admitidos, "Anónimo");
-print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-    </section>
+    <p>La función recoge() se encuentra en la lección <a href="php-funcion-recoge.html">Función recoge()</a>.</p>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 8 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 3 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
