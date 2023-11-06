@@ -50,7 +50,7 @@ session_start();
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
-    if ($type != "" && $type != []) {
+    if ($type !== "" && $type !== []) {
         trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
     }
     $tmp = is_array($type) ? [] : "";
