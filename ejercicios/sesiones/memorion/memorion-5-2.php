@@ -69,7 +69,7 @@ function recoge($key, $type = "")
     if ($type !== "" && $type !== []) {
         trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
     }
-    $tmp = is_array($type) ? [] : "";
+    $tmp = $type;
     if (isset($_REQUEST[$key])) {
         if (!is_array($_REQUEST[$key]) && !is_array($type)) {
             $tmp = trim(htmlspecialchars($_REQUEST[$key]));
