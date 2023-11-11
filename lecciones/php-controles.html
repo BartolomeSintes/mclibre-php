@@ -115,6 +115,31 @@ print "&lt;/pre&gt;\n";
 
     <hr class="corta">
 
+    <p>El nombre de un control puede ser tanto una cadena de texto como un número. En la matriz $_REQUEST los índices son siempre de tipo cadena excepto si nombre del control es un número entero en cuyo caso el índice es de tipo entero. Los datos enviados por el formulario y recibidos en la matriz $_REQUEST son siempre de tipo cadena, como muestra el siguiente ejemplo.</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;!-- Formulario (form-name-cadena-numero-1.php) --&gt;
+&lt;form action="form-name-cadena-numero-2.php" method="get"&gt;
+  &lt;p&gt;Dato 1: &lt;input type="text" name="1"&gt;&lt;/p&gt;
+
+  &lt;p&gt;Dato 2: &lt;input type="number" name="n" step="any"&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-name-cadena-numero-1.php" style="height: 16em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-name-cadena-numero-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <p><strong>Nota</strong>: En los ejercicios propuestos en estos apuntes los nombres de los controles nunca son números debido al procedimiento de recogida de datos que se propone en la lección <a href="php-recogida-datos.html">Recogida de datos</a>. En ese procedimiento, para cada dato recibido se crea una variable que se llama como el control (esto se hace simplemente por simplificar los programas y que sea fácil recordar qué variable corresponde a cada control). Como el nombre de una variable no puede ser un número, los nombres de los controles que se emplean en los ejercicios no son números, pero nada impediría hacerlo (bastaría con elegir nombres de variables válidos, simplemente no coincidrían con los nombres de los controles).</p>
+
+    <hr class="corta">
+
     <p>El nombre de un control puede seguir la notación de las matrices de PHP, es decir, incluir corchetes e índices (numéricos o cadenas). La matriz $_REQUEST contendrá entonces una matriz llamada como el control y con los índices indicados, como muestra el ejemplo siguiente:</p>
 
     <div class="filaflex">
@@ -920,7 +945,7 @@ print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 27 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
