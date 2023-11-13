@@ -43,9 +43,11 @@
 
     <ul>
       <li>La siguiente función se puede utilizar en casi todos los ejercicios con formularios propuestos en estos apuntes, tanto para recoger datos sueltos (números o cadenas) como para recoger datos en forma de matriz de cualquier dimensión.</li>
-      <li>Está función tiene un argumento obligatorio, el nombre del control que se quiere recibir y devuelve el valor recibido (o una cadena vacía si el control no se ha recibido).</li>
-      <li>La función tiene un segundo argumento opcional, que permite indicar a la función que el dato recibido tiene estructura de matriz. Este segundo argumento debe tomar el valor [] (matriz vacía). Para recibir datos escalares (números o cadenas), no es necesario escribir el segundo argumento.</li>
-      <li>Si no se recibe el dato o si el dato recibido no es del tipo indicado al llamar a la función (escalar/matriz), la función devuelve una cadena vacía o una matriz vacía.</li>
+      <li>La función tiene un argumento obligatorio, el nombre del control que se quiere recibir, y devuelve el valor recibido (o una cadena vacía si el control no se ha recibido). El nombre del control puede ser una cadena o un número entero.</li>
+      <li>La función tiene un segundo argumento opcional que permite indicar a la función si el dato recibido tiene estructura de matriz. Este segundo argumento debe tomar el valor [] (matriz vacía). Para recibir datos escalares (números o cadenas), no es necesario escribir el segundo argumento, aunque se puede escribir una cadena vacía ("").</li>
+      <li>Si no se recibe el dato, la función devuelve una cadena vacía o una matriz vacía (dependiendo del tipo de dato esperado, escalar o matriz).</li>
+      <li>Si el dato recibido no es del tipo esperado (escalar o matriz), la función devuelve una cadena vacía o una matriz con el valor vacío (dependiendo del tipo de dato esperado, escalar o matriz).</li>
+      <li>Si los argumentos no son correctos (es decir, si el primer argumento no es ni una cadena ni un número entero, o si el segundo argumento no es ni una cadena vacía ni una matriz vacía), la función genera un error fatal (del tipo E_USER_ERROR) y un mensaje de error que permite identificar y corregir el error en el programa fácilmente.</li>
     </ul>
 
     <div class="codigo copy">
@@ -346,10 +348,72 @@ $apellidos = <span class="codigo-resaltado">recoge("apellidos", [])</span>;</cod
   <section id="ampliada">
     <h2>Función recoge() ampliada</h2>
 
-    <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por completar.</p>
+    <ul>
+      <li>La siguiente función amplía las capacidades de la función recoge() básica comentada en el apartado anterior.</li>
+      <li>La función se puede utilizar en casi todos los ejercicios con formularios propuestos en estos apuntes, tanto para recoger datos sueltos (números o cadenas) como para recoger datos en forma de matriz de cualquier dimensión.</li>
+      <li>La función tiene un argumento obligatorio, el nombre del control que se quiere recibir, y devuelve el valor recibido (o una cadena vacía si el control no se ha recibido). El nombre del control puede ser una cadena o un número entero.</li>
+      <li>La función tiene un segundo argumento opcional que permite indicar a la función si el dato recibido tiene estructura de matriz. Este segundo argumento debe tomar el valor [] (matriz vacía). Para recibir datos escalares (números o cadenas), no es necesario escribir el segundo argumento, aunque se puede escribir una cadena vacía ("").</li>
+      <li>La función tiene un tercer argumento opcional que permite definir un valor predeterminado para el dato recibido. Este tercer argumento debe escribirse como una cadena. Al recibir datos escalares, el valor predeterminado se asignará cuando no llegue el control, o cuando el dato recibido sea vacío, o cuando el dato recibido no esté entre los valores permitidos por el cuarto argumento que se comenta a continuación. Al recibir datos en forma de matriz, el valor predeterminado se asignará cuando el dato recibido sea vacío, o cuando el dato recibido no esté entre los valores permitidos por el cuarto argumento que se comenta a continuación, pero no cuando no llegue el control ya en este caso la función no conoce el índice que debería tener el dato.</li>
+      <li>La función tiene un cuarto argumento opcional que permite definir el conjunto de valores permitidos para el dato recibido. Este cuarto argumento debe escribirse como una matriz de cadenas (cada cadena es uno de los valores permitidos). Cuando el dato recibido no se encuentre entre los valores permitidos, se asignará el valor predeterminado con el tercer argumento, o la cadena vacía si no hay valor predeterminado. Si se indica este cuarto argumento, la cadena vacía o el valor predeterminado deben incluirse entre los valores permitidos. Esto último es necesario para poder indicar si se desean conservar los valores vacíos recibidos como valores vacíos (incluyendo la cadena vacía entre los valores permitidos), o si se desean sustituir por el valor predeterminado (incluyendo únicamente el valor predeterminado entre los valores permitidos, pero no no incluyendo la cadena vacía).</li>
+      <li>Si no se recibe el dato, la función devuelve una cadena vacía o una matriz vacía (dependiendo del tipo de dato esperado, escalar o matriz).</li>
+      <li>Si el dato recibido no es del tipo esperado (escalar o matriz) y no se ha indicado un valor predeterminado, la función devuelve una cadena vacía o una matriz con el valor vacío (dependiendo del tipo de dato esperado, escalar o matriz).</li>
+      <li>Si el dato recibido no es del tipo esperado (escalar o matriz) y se ha indicado un valor predeterminado y la cadena vacía no se encuentra entre los valores permitidos, la función devuelve el valor predeterminado o una matriz con el valor predeterminado (dependiendo del tipo de dato esperado, escalar o matriz).</li>
+      <li>Si el dato recibido no es del tipo esperado (escalar o matriz) y se ha indicado un valor predeterminado y la cadena vacía se encuentra entre los valores permitidos, la función devuelve el valor vacío o una matriz con el valor vacío (dependiendo del tipo de dato esperado, escalar o matriz).</li>
+      <li>Si los argumentos no son correctos (es decir, si el primer argumento no es ni una cadena ni un número entero, o si el segundo argumento no es ni una cadena vacía ni una matriz vacía, o si el tercer argumento no es una cadena, o si el cuarto argumento no es una matriz de cadenas, o si la cadena vacía o el valor predeterminado no están incluidos en los valores permitidos cuando deben estarlo), la función genera un error fatal (del tipo E_USER_ERROR) y un mensaje de error que permite identificar y corregir el error en el programa fácilmente.</li>
+      <li>La función admite la sintaxis de nombres de argumentos introducida en PHP 8.0.0. Los nombres de los argumentos son key, type, default y allowed.</li>
+    </ul>
+
+    <div class="codigo copy">
+      <pre>
+<code class="language-php">// Función de recogida de datos
+function recoge($key, $type = "", $default = null, $allowed = null)
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    } elseif (isset($default) && !is_string($default)) {
+        trigger_error("Function recoge(): Argument #3 (\$default) is optional, but if provided, it must be a string", E_USER_ERROR);
+    } elseif (isset($allowed) && !is_array($allowed)) {
+        trigger_error("Function recoge(): Argument #4 (\$allowed) is optional, but if provided, it must be an array of strings", E_USER_ERROR);
+    } elseif (is_array($allowed) && array_filter($allowed, function ($value) { return !is_string($value); })) {
+        trigger_error("Function recoge(): Argument #4 (\$allowed) is optional, but if provided, it must be an array of strings", E_USER_ERROR);
+    } elseif (!isset($default) && isset($allowed) && !in_array("", $allowed)) {
+        trigger_error("Function recoge(): If argument #3 (\$default) is not set and argument #4 (\$allowed) is set, the empty string must be included in the \$allowed array", E_USER_ERROR);
+    } elseif (isset($default, $allowed) && !in_array($default, $allowed)) {
+        trigger_error("Function recoge(): If arguments #3 (\$default) and #4 (\$allowed) are set, the \$default string must be included in the \$allowed array", E_USER_ERROR);
+    }
+
+    if ($type == "") {
+        if (!isset($_REQUEST[$key]) || (is_array($_REQUEST[$key]) != is_array($type))) {
+            $tmp = "";
+        } else {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        }
+        if ($tmp == "" && !isset($allowed) || isset($allowed) && !in_array($tmp, $allowed)) {
+            $tmp = $default ?? "";
+        }
+    } else {
+        if (!isset($_REQUEST[$key]) || (is_array($_REQUEST[$key]) != is_array($type))) {
+            $tmp = [];
+        } else {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) use ($default, $allowed) {
+                $value = trim(htmlspecialchars($value));
+                if ($value == "" && !isset($allowed) || isset($allowed) && !in_array($value, $allowed)) {
+                    $value = $default ?? "";
+                }
+            });
+        }
+    }
+    return $tmp;
+}</code>
+</pre>
+    </div>
+
+    <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por completar con ejemplos.</p>
 
     <!--
-
     <section id="recoger-predeterminado">
       <h3>Función recoge() para recoger un dato con valor predeterminado</h3>
 
