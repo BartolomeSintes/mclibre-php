@@ -24,7 +24,7 @@
 
       <ul>
         <li><a href="#basica">Función recoge() básica</a></li>
-        <li><a href="#avanzada">Función recoge() avanzada</a></li>
+        <li><a href="#ampliada">Función recoge() ampliada</a></li>
       </ul>
     </div>
   </nav>
@@ -45,7 +45,7 @@
       <li>La siguiente función se puede utilizar en casi todos los ejercicios con formularios propuestos en estos apuntes, tanto para recoger datos sueltos (números o cadenas) como para recoger datos en forma de matriz de cualquier dimensión.</li>
       <li>Está función tiene un argumento obligatorio, el nombre del control que se quiere recibir y devuelve el valor recibido (o una cadena vacía si el control no se ha recibido).</li>
       <li>La función tiene un segundo argumento opcional, que permite indicar a la función que el dato recibido tiene estructura de matriz. Este segundo argumento debe tomar el valor [] (matriz vacía). Para recibir datos escalares (números o cadenas), no es necesario escribir el segundo argumento.</li>
-      <li>Si el dato recibido no es del tipo indicado al llamar a la función (escalar/matriz), la función devuelve una cadena vacía o una matriz vacía.</li>
+      <li>Si no se recibe el dato o si el dato recibido no es del tipo indicado al llamar a la función (escalar/matriz), la función devuelve una cadena vacía o una matriz vacía.</li>
     </ul>
 
     <div class="codigo copy">
@@ -53,8 +53,10 @@
 <code class="language-php">// Función de recogida de datos
 function recoge($key, $type = "")
 {
-    if ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
     }
     $tmp = $type;
     if (isset($_REQUEST[$key])) {
@@ -111,8 +113,10 @@ $apellidos = <span class="codigo-resaltado">recoge("apellidos")</span>;</code>
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
-    if ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
     }
     $tmp = $type;
     if (isset($_REQUEST[$key])) {
@@ -187,8 +191,10 @@ $apellidos = <span class="codigo-resaltado">recoge("apellidos", [])</span>;</cod
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
-    if ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
     }
     $tmp = $type;
     if (isset($_REQUEST[$key])) {
@@ -337,10 +343,10 @@ $apellidos = <span class="codigo-resaltado">recoge("apellidos", [])</span>;</cod
     </div>
   </section>
 
-  <section id="avanzada">
-    <h2>Función recoge() avanzada</h2>
+  <section id="ampliada">
+    <h2>Función recoge() ampliada</h2>
 
-    <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por escribir.</p>
+    <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Por completar.</p>
 
     <!--
 
@@ -405,7 +411,7 @@ print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 13 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -28,8 +28,10 @@ session_start();
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
-    if ($type !== "" && $type !== []) {
-        trigger_error("Function recoge(): argument #2 (\$type) must be an empty array or an empty string.", E_USER_ERROR);
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
     }
     $tmp = $type;
     if (isset($_REQUEST[$key])) {
