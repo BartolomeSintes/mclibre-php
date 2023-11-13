@@ -15,14 +15,14 @@ print "  <pre>\n";
 print_r($_REQUEST);
 print "\n";
 foreach ($_REQUEST as $indice => $valor) {
-    if (is_integer($indice)) {
+    if (is_int($indice)) {
         print "El índice $indice es de tipo entero.\n";
     } elseif (is_string($indice)) {
         print "El índice $indice es de tipo cadena.\n";
     } else {
         print "El índice $indice no es de tipo entero ni cadena.\n";
     }
-    if (is_integer($valor)) {
+    if (is_int($valor)) {
         print "El valor $valor es de tipo entero.\n\n";
     } elseif (is_string($valor)) {
         print "El valor $valor es de tipo cadena.\n\n";
