@@ -140,13 +140,13 @@ print "&lt;/pre&gt;\n";
 
     <hr class="corta">
 
-    <p>El nombre de un control puede seguir la notación de las matrices de PHP, es decir, incluir corchetes e índices (numéricos o cadenas). La matriz $_REQUEST contendrá entonces una matriz llamada como el control y con los índices indicados, como muestra el ejemplo siguiente:</p>
+    <p>El nombre de un control puede seguir la notación de las matrices de PHP, es decir, incluir corchetes e índices (numéricos o cadenas). La matriz $_REQUEST contendrá entonces una matriz llamada como el control y con los índices indicados, como muestran los ejemplos siguientes:</p>
 
     <div class="filaflex">
       <div class="codigo">
         <pre>
-<code class="language-html">&lt;!-- Formulario (form-name-matriz-1.php) --&gt;
-&lt;form action="form-name-matriz-2.php" method="get"&gt;
+<code class="language-html">&lt;!-- Formulario (form-name-matriz-1-1.php) --&gt;
+&lt;form action="form-name-matriz-1-2.php" method="get"&gt;
   &lt;p&gt;Primer apellido: &lt;input type="text" <span class="codigo-resaltado">name="apellidos[1]"</span>&gt;&lt;/p&gt;
 
   &lt;p&gt;Segundo apellido: &lt;input type="text" <span class="codigo-resaltado">name="apellidos[2]"</span>&gt;&lt;/p&gt;
@@ -155,15 +155,34 @@ print "&lt;/pre&gt;\n";
 &lt;/form&gt;</code>
 </pre>
       </div>
-      <iframe src="ejemplos/controles-formularios/form-name-matriz-1.php" style="height: 13em;"></iframe>
+      <iframe src="ejemplos/controles-formularios/form-name-matriz-1-1.php" style="height: 13em;"></iframe>
       <div class="icono-enlace">
-        <a href="ejemplos/controles-formularios/form-name-matriz-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+        <a href="ejemplos/controles-formularios/form-name-matriz-1-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;!-- Formulario (form-name-matriz-2-1.php) --&gt;
+&lt;form action="form-name-matriz-2-2.php" method="get"&gt;
+  &lt;p&gt;Primer apellido: &lt;input type="text" <span class="codigo-resaltado">name="apellidos[primero]"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;Segundo apellido: &lt;input type="text" <span class="codigo-resaltado">name="apellidos[segundo]"</span>&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/controles-formularios/form-name-matriz-2-1.php" style="height: 13em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/controles-formularios/form-name-matriz-2-2.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
       </div>
     </div>
 
     <hr class="corta">
 
-    <p>El nombre del control puede contener cualquier carácter (números, acentos, guiones, etc), pero en la matriz $_REQUEST PHP convierte en guiones bajos (_) tres caracteres: los espacios en blanco ( ), el punto (.) y el corchete abierto ([) si no va acompañado de un corchete cerrado (]) [<a href="https://www.php.net/manual/en/language.variables.external.php">Referencia</a>]. En el ejemplo siguiente hay tres controles que contienen esos tres caracteres y al enviar el formulario puede verse como en la matriz $_REQUEST los índices contienen guíones bajos en vez de esos caracteres.</p>
+    <p>El nombre del control puede contener cualquier carácter (números, acentos, guiones, etc), pero en la matriz $_REQUEST PHP convierte en guiones bajos (_) los espacios en blanco ( ), el punto (.) y el corchete abierto ([) si no va acompañado de un corchete cerrado (]) [<a href="https://www.php.net/manual/en/language.variables.external.php">Referencia</a>]. En el ejemplo siguiente hay tres controles que contienen esos tres caracteres y al enviar el formulario puede verse como en la matriz $_REQUEST los índices contienen guíones bajos en vez de esos caracteres.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -945,7 +964,7 @@ print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de noviembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

@@ -13,7 +13,7 @@
 <?php
 print "  <pre>\n";
 print_r($_REQUEST);
-print "<a href=\"form-name-matriz-1.php\">Volver al formulario.</a>\n";
+print "<a href=\"form-name-matriz-2-1.php\">Volver al formulario.</a>\n";
 print "  </pre>\n";
 ?>
 </body>

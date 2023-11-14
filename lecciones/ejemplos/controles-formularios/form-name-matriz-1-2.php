@@ -10,12 +10,11 @@
 </head>
 
 <body>
-  <form action="form-name-matriz-2.php" method="get">
-    <p>Primer apellido: <input type="text" name="apellidos[1]"></p>
-
-    <p>Segundo apellido: <input type="text" name="apellidos[2]"></p>
-
-    <p><input type="submit" value="Enviar"></p>
-  </form>
+<?php
+print "  <pre>\n";
+print_r($_REQUEST);
+print "<a href=\"form-name-matriz-1-1.php\">Volver al formulario.</a>\n";
+print "  </pre>\n";
+?>
 </body>
 </html>
