@@ -118,7 +118,7 @@
 
     <p>Cuando un formulario envía los datos a una página PHP, los datos están automáticamente a disposición del programa PHP en una matriz llamada $_REQUEST. Cada dato recibido es un elemento de la matriz $_REQUEST: el índice del elemento es el nombre del control y el valor del elemento es el dato introducido o seleccionado por el usuario en el control.</p>
 
-    <p><strong>Nota</strong>: Si el atributo <span class="html-atri">name</span> contiene espacios en blanco o puntos o el carácter [ (sin el carácter ]), estos se convierten en guiones bajos en la matriz $_REQUEST.</p>
+    <p><strong>Nota</strong>: Si el atributo <span class="html-atri">name</span> contiene espacios en blanco, puntos o el carácter [ (sin el carácter ]), estos se convierten en guiones bajos en la matriz $_REQUEST.</p>
 
     <p>En el siguiente ejemplo, el programa que recibe los datos del formulario simplemente muestra el contenido de la matriz $_REQUEST utilizando la función <span class="php-fun">print_r()</span> que muestra los índices y valores de la matriz. La página con el formulario se llama form-2-1.php y la página que recibe los datos se llama form-2-2.php</p>
 
@@ -142,6 +142,28 @@ print "&lt;/pre&gt;\n";
     <p>Como se puede comprobar en el ejemplo anterior, el control de caja de texto crea siempre un elemento en la matriz $_REQUEST (aunque la caja de texto se deje vacía), mientras que el botón radio solamente crea un elemento en la matriz $_REQUEST si se elige una de las opciones del botón radio.</p>
 
     <p>En la lección <a href="php-controles.html">Controles en formularios</a> de estos apuntes se detallan las particularidades de cada tipo de control.</p>
+
+    <hr class="corta">
+
+    <p>Los valores que se reciben de un formulario son siempre de tipo cadena, aunque sean valores numéricos. Sin embargo, los nombres de los controles que se reciben de un formulario (y que se convierten en índices de la matriz $_REQUEST) pueden ser de tipo entero (si son números enteros) o de tipo cadena (si no son números enteros).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-html">&lt;form action="form-6-2.php" method="get"&gt;
+  &lt;p&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/p&gt;
+
+  &lt;p&gt;Edad: &lt;input type="number" name="1"&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;input type="submit" value="Enviar"&gt;&lt;/p&gt;
+&lt;/form&gt;</code>
+</pre>
+      </div>
+      <iframe src="ejemplos/formularios/form-6-1.php" style="height: 13em;"></iframe>
+      <div class="icono-enlace">
+        <a href="ejemplos/formularios/form-6-1.php"><img src="../varios/iconos/icono-enlace.svg" alt="Enlace a ejemplo" title="Enlace a ejemplo" width="31" height="36"></a>
+      </div>
+    </div>
   </section>
 
   <section id="visibilidad-datos">
@@ -353,7 +375,7 @@ print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 2 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 14 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
