@@ -137,7 +137,7 @@ print "&lt;p&gt;$datos[0] $datos[1] nació en $datos[2].&lt;p&gt;\n";
 
     <hr class="corta">
 
-    <p>Una vez creada la matriz, los elementos individuales se pueden utilizar en el programa como si fueran variables independientes. Para referirse a un elemento individual, hay que indicar siempre el índice correspondiente.</p>
+    <p>Una vez creada la matriz, los elementos individuales se pueden utilizar en el programa como cualquier otra variable. Para referirse a un elemento individual, hay que indicar siempre el índice correspondiente.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -437,7 +437,7 @@ $matriz[1][2] = 300;
 
     <hr class="corta">
 
-    <p>PHP no sustituye las referencias a valores de matrices de más de una dimensión dentro de las cadenas, por lo que se necesita o bien utilizar llaves, o bien concatenar cadenas y referencias a matrices. Como en el caso de las matrices de una dimensión, los índices que sean cadenas deben escribirse con comillas si la referencia está dentro de una cadena o entre llaves.</p>
+    <p id="print-matrices-multidimensionales">PHP no sustituye las referencias a valores de matrices de más de una dimensión dentro de las cadenas, por lo que se necesita o bien utilizar llaves, o bien concatenar cadenas y referencias a matrices. Como en el caso de las matrices de una dimensión, los índices que sean cadenas deben escribirse con comillas si la referencia está dentro de una cadena o entre llaves.</p>
 
     <div class="filaflex">
       <div class="icono-ok">
@@ -476,9 +476,9 @@ $datos = [
     ["nombre" =&gt; "juan", "edad" =&gt; 22, "peso" =&gt; 75]
 ];
 
-print "&lt;p&gt;{$datos[1]["nombre"]} pesa {$datos[1]["peso"]} kilos&lt;/p&gt;\n";
+print "&lt;p&gt;<span class="codigo-resaltado">{$datos[1]["nombre"]}</span> pesa <span class="codigo-resaltado">{$datos[1]["peso"]}</span> kilos&lt;/p&gt;\n";
 print "\n";
-print "&lt;p&gt;" . $datos[0]["nombre"] . " tiene " . $datos[0]["edad"] . " años&lt;/p&gt;\n";
+print "&lt;p&gt;"<span class="codigo-resaltado"> . $datos[0]["nombre"] . </span>" tiene "<span class="codigo-resaltado"> . $datos[0]["edad"] . </span>" años&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
@@ -862,7 +862,8 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html"><pre>Array
+      <div class="resultado-html">
+        <pre>Array
 (
     [0] =&gt; 2
     [1] =&gt; 4
@@ -884,7 +885,8 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html"><pre>Array
+      <div class="resultado-html">
+        <pre>Array
 (
     [0] =&gt; 6
     [1] =&gt; 3
@@ -918,14 +920,15 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html"><pre>Array
+      <div class="resultado-html">
+        <pre>Array
 (
     [0] =&gt; 4
     [1] =&gt; 2
     [2] =&gt; 1
 )
         </pre>
-<pre>Array
+        <pre>Array
 (
     [0] =&gt; 4
     [1] =&gt; 5
@@ -953,14 +956,15 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
 ?&gt;</code>
 </pre>
       </div>
-      <div class="resultado-html"><pre>Array
+      <div class="resultado-html">
+        <pre>Array
 (
     [0] =&gt; 1
     [1] =&gt; 4
     [2] =&gt; 4
 )
         </pre>
-<pre>Array
+        <pre>Array
 (
     [0] =&gt; 1
     [1] =&gt; 4
@@ -979,7 +983,7 @@ print"&lt;pre&gt;"; print_r($dados); print"&lt;/pre&gt;\n";
   <section id="borrar">
     <h2>Borrar una matriz o elementos de una matriz</h2>
 
-    <p>La función <a href="https://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a> permite borrar una matriz o elementos de una matriz.</p>
+    <p>En general, la función <a href="https://www.php.net/manual/en/function.unset.php"><span class="php-fun">unset()</span></a> permite borrar variables. En el caso de las matrices, <span class="php-fun">unset()</span> permite borrar tanto la matriz completa como elementos de la matriz.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -989,6 +993,7 @@ $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
 
 print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
 
+// Borramos un elemento de la matriz
 unset($matriz[5]);
 
 print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
@@ -1019,6 +1024,7 @@ $matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
 
 print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
 
+// Borramos la matriz completa
 unset($matriz);
 
 print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
@@ -1038,7 +1044,43 @@ print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
       </div>
     </div>
 
-    <p>Si se intenta borrar un elemento no definido, PHP no genera ningún aviso.</p>
+    <hr class="corta">
+
+    <p>La función <span class="php-fun">unset()</span> permite borrar varias variables a la vez, escribiendo los nombres de las variables como argumentos (separadas por comas).</p>
+
+    <div class="filaflex">
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+$matriz = [5 =&gt; 25, -1 =&gt; "negativo", "número 1" =&gt; "cinco"];
+
+print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+
+// Borramos dos elementos de la matriz de una vez
+unset($matriz[5], $matriz["número 1"]);
+
+print "&lt;pre&gt;\n"; print_r($matriz); print "&lt;/pre&gt;\n";
+?&gt;</code>
+</pre>
+      </div>
+      <div class="resultado-html">
+        <pre>Array
+(
+    [5] =&gt; 25
+    [-1] =&gt; negativo
+    [número 1] =&gt; cinco
+)
+
+Array
+(
+    [-1] =&gt; negativo
+)</pre>
+      </div>
+    </div>
+
+    <hr class="corta">
+
+    <p>Si se borra un elemento que no estaba definido, PHP no genera ningún aviso.</p>
 
     <div class="filaflex">
       <div class="codigo">
@@ -1048,6 +1090,7 @@ $nombres = ["Alba", "Bernardo"];
 
 print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
 
+// "Borrramos" un elemento que no existe
 unset($matriz[3]);
 
 print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
@@ -1060,6 +1103,7 @@ print "&lt;pre&gt;\n"; print_r($nombres); print "&lt;/pre&gt;\n";
     [0] =&gt; Alba
     [1] =&gt; Bernardo
 )
+
 Array
 (
     [0] =&gt; Alba
@@ -1280,7 +1324,7 @@ print "&lt;pre&gt;"; print_r($nombres_2); print "&lt;/pre&gt;\n";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 25 de octubre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 16 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
