@@ -21,7 +21,7 @@ cabecera("Usuarios - Buscar 2", MENU_USUARIOS, 1);
 $usuario  = recoge("usuario");
 $password = recoge("password");
 $nivel    = recoge("nivel");
-$ordena   = recogeValores("ordena", $columnasUsuariosOrden, "password ASC");
+$ordena   = recoge("ordena", default: "password ASC", allowed: $columnasUsuariosOrden);
 
 $consulta = "SELECT COUNT(*) FROM $tablaUsuarios
     WHERE usuario LIKE :usuario

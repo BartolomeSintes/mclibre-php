@@ -19,7 +19,7 @@ $db = conectaDb();
 
 cabecera("Obras - Listar", MENU_OBRAS, 1);
 
-$ordena = recogeValores("ordena", $columnasObrasOrden, "titulo ASC");
+$ordena = recoge("ordena", default: "titulo ASC", allowed: $columnasObrasOrden);
 
 $consulta = "SELECT COUNT(*) FROM $tablaObras";
 $result   = $db->query($consulta);

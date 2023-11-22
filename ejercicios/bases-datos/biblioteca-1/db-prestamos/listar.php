@@ -18,7 +18,7 @@ $db = conectaDb();
 
 cabecera("Préstamos - Listar", MENU_PRESTAMOS, 1);
 
-$ordena = recogeValores("ordena", $columnasPrestamosOrden, "nombre ASC");
+$ordena = recoge("ordena", default: "nombre ASC", allowed: $columnasPrestamosOrden);
 
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos";
 $result   = $db->query($consulta);

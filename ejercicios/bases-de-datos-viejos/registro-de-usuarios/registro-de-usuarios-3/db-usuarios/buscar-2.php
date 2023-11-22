@@ -39,8 +39,8 @@ $usuario  = recoge("usuario");
 $password = recoge("password");
 $nivel    = recoge("nivel");
 
-$columna = recogeValores("columna", $columnasUsuariosWeb, "usuario");
-$orden   = recogeValores("orden", $orden, "ASC");
+$columna = recoge("columna", default: "usuario", allowed: $columnasUsuariosWeb);
+$orden   = recoge("orden", default: "ASC", allowed: $orden);
 
 $consulta = "SELECT COUNT(*) FROM $dbTablaUsuariosWeb
     WHERE usuario LIKE :usuario

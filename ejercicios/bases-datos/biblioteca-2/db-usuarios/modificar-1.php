@@ -18,7 +18,7 @@ $db = conectaDb();
 
 cabecera("Usuarios - Modificar 1", MENU_USUARIOS, 1);
 
-$ordena = recogeValores("ordena", $columnasUsuariosOrden, "password ASC");
+$ordena = recoge("ordena", default: "password ASC", allowed: $columnasUsuariosOrden);
 $id     = recoge("id");
 
 $consulta = "SELECT COUNT(*) FROM $tablaUsuarios";

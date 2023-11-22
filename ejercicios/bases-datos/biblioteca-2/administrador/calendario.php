@@ -108,7 +108,7 @@ $db = conectaDb();
 cabecera("Calendario", MENU_ADMINISTRADOR, 1);
 
 $fecha  = recoge("fecha");
-$ordena = recogeValores("ordena", $columnasPrestamosOrden, "nombre ASC");
+$ordena = recoge("ordena", default: "nombre ASC", allowed: $columnasPrestamosOrden);
 
 if ($fecha == "") {
     $fecha = $_SESSION["anyo"] . "-" . $_SESSION["mes"] . "-" . $_SESSION["dia"];

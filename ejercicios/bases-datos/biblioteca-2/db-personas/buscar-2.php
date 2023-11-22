@@ -21,7 +21,7 @@ cabecera("Personas - Buscar 2", MENU_PERSONAS, 1);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $dni       = recoge("dni");
-$ordena    = recogeValores("ordena", $columnasPersonasOrden, "nombre ASC");
+$ordena    = recoge("ordena", default: "nombre ASC", allowed: $columnasPersonasOrden);
 
 $consulta = "SELECT COUNT(*) FROM $tablaPersonas
     WHERE nombre LIKE :nombre

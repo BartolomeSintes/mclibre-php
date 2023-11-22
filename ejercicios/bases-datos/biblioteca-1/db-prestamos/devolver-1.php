@@ -18,7 +18,7 @@ $db = conectaDb();
 
 cabecera("Préstamos - Devolver 1", MENU_PRESTAMOS, 1);
 
-$ordena = recogeValores("ordena", $columnasPrestamosOrden, "autor ASC");
+$ordena = recoge("ordena", default: "autor ASC", allowed: $columnasPrestamosOrden);
 
 $consulta = "SELECT COUNT(*) FROM $tablaPrestamos
     WHERE devuelto='0000-00-00'";

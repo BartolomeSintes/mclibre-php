@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Noticias - Listar", MENU_NOTICIAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["tablaNoticiasColumnasOrden"], "categoria ASC");
+$ordena = recoge("ordena", default: "categoria ASC", allowed: $cfg["tablaNoticiasColumnasOrden"]);
 
 $consulta = "SELECT * FROM $cfg[tablaNoticias]
              ORDER BY $ordena";

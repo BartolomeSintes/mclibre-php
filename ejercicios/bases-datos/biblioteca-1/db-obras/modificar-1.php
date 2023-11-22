@@ -18,7 +18,7 @@ $db = conectaDb();
 
 cabecera("Obras - Modificar 1", MENU_OBRAS, 1);
 
-$ordena = recogeValores("ordena", $columnasObrasOrden, "titulo ASC");
+$ordena = recoge("ordena", default: "titulo ASC", allowed: $columnasObrasOrden);
 $id     = recoge("id");
 
 $consulta = "SELECT COUNT(*) FROM $tablaObras";

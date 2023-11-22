@@ -382,18 +382,18 @@ if ($nombreOk && $apellidosOk && $idOk) {
 
     <p>La columna y el orden deberían haberse recogido previamente. Al tratarse de un dato proporcionado por el usuario, por seguridad deberían utilizarse consultas preparadas, pero los nombres de columnas no se pueden proporcionar como parámetros. Para resolver este problema, utilizaremos una función de recogida especial que comprobará si el dato recibido es uno de los valores posibles (los valores posibles son los nombres de las columnas y el tipo de ordenación, ASC o DESC). En caso de no recibir un valor de ordenación o recibir un valor incorrecto, se asignará un valor predeterminado.</p>
 
-    <p>La función recogeValores() tendrá tres argumentos: el campo a recoger, una matriz con los valores posibles y el valor predeterminado de ordenación. En el ejemplo siguiente, el valor predeterminado es listar por orden alfabético del nombre:</p>
+    <p>La función recoge() tendrá tres argumentos: el campo a recoger, una matriz con los valores posibles (argumento <i>allowed</i>) y el valor predeterminado de ordenación (argumento <i>default</i>). En el ejemplo siguiente, el valor predeterminado es listar por orden alfabético del nombre:</p>
 
     <div class="codigo">
       <pre>
-<code class="language-php">$ordena = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");</code>
+<code class="language-php">$ordena = recoge("ordena", default: "nombre ASC", allowed: $cfg["tablaPersonasColumnasOrden"]);</code>
 </pre>
     </div>
 
     <ul>
       <li>biblioteca.php
 
-        <p>En biblioteca.php la función recogeValores() y la matriz de valores posibles podrían ser las siguientes:</p>
+        <p>En biblioteca.php la matriz de valores posibles podría ser la siguiente:</p>
 
         <div class="codigo">
           <pre>
@@ -402,17 +402,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
 $cfg["tablaPersonasColumnasOrden"] = [
     "nombre ASC", "nombre DESC",
     "apellidos ASC", "apellidos DESC",
-];
-
-function recogeValores($var, $registrosValidos, $registroPredeterminado)
-{
-    foreach ($registrosValidos as $registroValido) {
-        if (isset($_REQUEST[$var]) && $_REQUEST[$var] == $registroValido) {
-            return $registroValido;
-        }
-    }
-    return $registroPredeterminado;
-}</code>
+];</code>
 </pre>
         </div>
       </li>

@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Personas - Listar", MENU_PERSONAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
+$ordena = recoge("ordena", default: "nombre ASC", allowed: $cfg["tablaPersonasColumnasOrden"]);
 
 if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
     $consulta = "SELECT

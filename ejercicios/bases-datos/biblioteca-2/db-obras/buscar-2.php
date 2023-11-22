@@ -21,7 +21,7 @@ cabecera("Obras - Buscar 2", MENU_OBRAS, 1);
 $autor     = recoge("autor");
 $titulo    = recoge("titulo");
 $editorial = recoge("editorial");
-$ordena    = recogeValores("ordena", $columnasObrasOrden, "autor ASC");
+$ordena    = recoge("ordena", default: "autor ASC", allowed: $columnasObrasOrden);
 
 $consulta = "SELECT COUNT(*) FROM $tablaObras
     WHERE autor LIKE :autor

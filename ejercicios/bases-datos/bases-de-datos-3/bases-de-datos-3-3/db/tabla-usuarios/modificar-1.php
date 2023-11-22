@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Modificar 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["tablaUsuariosColumnasOrden"], "usuario ASC");
+$ordena = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 $id     = recoge("id");
 
 $consulta = "SELECT * FROM $cfg[tablaUsuarios]

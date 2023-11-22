@@ -18,7 +18,7 @@ $db = conectaDb();
 
 cabecera("Usuarios - Listar", MENU_USUARIOS, 1);
 
-$ordena = recogeValores("ordena", $columnasUsuariosOrden, "usuario ASC");
+$ordena = recoge("ordena", default: "usuario ASC", allowed: $columnasUsuariosOrden);
 
 $consulta = "SELECT COUNT(*) FROM $tablaUsuarios";
 $result   = $db->query($consulta);

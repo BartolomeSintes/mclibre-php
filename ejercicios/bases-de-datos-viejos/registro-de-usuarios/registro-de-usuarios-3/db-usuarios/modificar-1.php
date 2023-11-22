@@ -34,8 +34,8 @@ if (!isset($_SESSION["id"]) || $_SESSION["nivel"] != NIVEL_3) {
 $db = conectaDb();
 cabecera("Tabla Usuarios - Modificar 1", MENU_TABLA_USUARIOS_WEB, 1);
 
-$columna = recogeValores("columna", $columnasUsuariosWeb, "usuario");
-$orden   = recogeValores("orden", $orden, "ASC");
+$columna = recoge("columna", default: "usuario", allowed: $columnasUsuariosWeb);
+$orden   = recoge("orden", default: "ASC", allowed: $orden);
 
 $consulta = "SELECT COUNT(*) FROM $dbTablaUsuariosWeb";
 $result = $db->query($consulta);

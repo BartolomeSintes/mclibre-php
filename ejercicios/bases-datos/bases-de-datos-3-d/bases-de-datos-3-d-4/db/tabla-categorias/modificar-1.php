@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Categorías - Modificar 1", MENU_CATEGORIAS, PROFUNDIDAD_2);
 
-$ordena = recogeValores("ordena", $cfg["tablaCategoriasColumnasOrden"], "categoria ASC");
+$ordena = recoge("ordena", default: "categoria ASC", allowed: $cfg["tablaCategoriasColumnasOrden"]);
 $id     = recoge("id");
 
 $consulta = "SELECT * FROM $cfg[tablaCategorias]

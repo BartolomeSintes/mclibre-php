@@ -25,7 +25,7 @@ $cuerpo    = recoge("cuerpo");
 $ano       = recoge("ano");
 $mes       = recoge("mes");
 $dia       = recoge("dia");
-$ordena    = recogeValores("ordena", $cfg["tablaNoticiasColumnasOrden"], "categoria ASC");
+$ordena    = recoge("ordena", default: "categoria ASC", allowed: $cfg["tablaNoticiasColumnasOrden"]);
 
 $consulta = "SELECT * FROM $cfg[tablaNoticias]
              WHERE categoria LIKE :categoria

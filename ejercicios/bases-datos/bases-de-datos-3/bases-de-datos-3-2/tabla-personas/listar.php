@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Listar", MENU_PERSONAS, PROFUNDIDAD_1);
 
-$ordena = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
+$ordena = recoge("ordena", default: "nombre ASC", allowed: $cfg["tablaPersonasColumnasOrden"]);
 
 $consulta = "SELECT * FROM $cfg[tablaPersonas]
              ORDER BY $ordena";

@@ -442,37 +442,6 @@ print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
 </pre>
       </div>
     </section>
-
-    <section id="recoger-valores">
-      <h3>Función recoge() para recoger un dato perteneciente a una lista de valores</h3>
-
-      <p>La siguiente función recoge(), que sólo permite recoger datos sueltos (no matrices), únicamente admite un valor si se encuentra entre los elementos de una matriz de valores posibles. Si el valor recogido no es uno de los valores posibles, asigna un valor predeterminado.</p>
-
-      <p>En el ejemplo siguiente, si el nombre recibido no es Ana, Bernardo o Carmen, se le asigna el nombre "Anónimo".</p>
-
-      <div class="codigo">
-        <pre>
-<code class="language-php">&lt;?php
-// FUNCIÓN DE RECOGIDA DE UN DATO DE UNA LISTA DE VALORES
-
-function recogeValores($var, $valoresValidos, $valorPredeterminado)
-{
-    foreach ($valoresValidos as $valorValido) {
-        if (isset($_REQUEST[$var]) &amp;&amp; $_REQUEST[$var] == $valorValido) {
-            return $valorValido;
-        }
-    }
-    return $valorPredeterminado;
-}
-
-// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
-$admitidos = ["Ana", "Bernardo", "Carmen"];
-$nombre = recogeValores("nombre", $admitidos, "Anónimo");
-print "&lt;p&gt;Su nombre es $nombre&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-      </div>
-    </section>
 -->
   </section>
 

@@ -14,7 +14,7 @@ cabecera("Buscar 2", MENU_VOLVER);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
-$ordena    = recogeValores("ordena", $cfg["tablaPersonasColumnasOrden"], "nombre ASC");
+$ordena    = recoge("ordena", default: "nombre ASC", allowed: $cfg["tablaPersonasColumnasOrden"]);
 
 $consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre

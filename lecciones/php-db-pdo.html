@@ -470,22 +470,13 @@ if (!$resultado) {
 
       <p>Si no podemos usar parámetros, no queda más remedio que incluir los datos en la consulta. Como en ese caso PHP no hace ninguna desinfección de los datos, la desinfección la tenemos que hacer nosotros previamente.</p>
 
-      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos), podemos crear una función de recogida de datos específica que impida los ataques de inyección por parte del usuario, como muestra el siguiente ejemplo:</p>
+      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos), podemos utilizar la función recoge con los parámetros opcionales <i>default</i> y <i>allowed</i> para impedir los ataques de inyección por parte del usuario, como muestra el siguiente ejemplo:</p>
 
       <div class="codigo">
         <pre>
-<code class="language-php">// FUNCIÓN DE RECOGIDA DE UN DATO QUE SÓLO PUEDE TOMAR DETERMINADOS VALORES
+<code class="language-php">
 
-function recogeValores($var, $valoresValidos, $valorPredeterminado)
-{
-    if (isset($_REQUEST[$var]) && in_array($_REQUEST[$nombre], $valoresValidos)) {
-        return $_REQUEST[$var];
-    } else {
-        return $valorPredeterminado;
-    }
-}
-
-// EJEMPLO DE USO DE LA FUNCIÓN ANTERIOR
+// EJEMPLO DE USO
 
 // Matriz con los nombres válidos de las columnas de la tabla
 $columnas = [
@@ -494,7 +485,7 @@ $columnas = [
     ...
 ];
 
-$columna = recogeValores("columna", $columnas, "columna1");
+$columna = recoge("columna", default: "columna1", allowed: $columnas);
 $valor1  = $_REQUEST["valor1"];
 
 // CONSULTA PREPARADA CON PARÁMETROS: PDO PUEDE DESINFECTAR LOS DATOS
