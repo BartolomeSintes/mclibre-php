@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de dados. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de dados</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de dados</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplos de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una partida de un juego de dados de tres jugadores. El juego consiste en lanzar 10 dados sobre un terreno de juego repartido en forma de franajas horizontales entre las tres jugadoras. El terreno de cada jugadora es del mismo color que el color de piel de la jugadora. Cada dado puede caer en el terreno de cualquiera de las jugadoras. La puntuación de cada jugadora es la suma de los dados que han caído en su terreno. Gana la partida la jugadora que haya acumulado más puntos. Las medallas muestran la posición final de las jugadoras. En caso de empate, las jugadoras empatadas se llevan la misma medalla.</p>
+
+  <section id="comentarios">
+    <h2>Juego de dados - Comentarios</h2>
+
+    <ul>
+      <li>El programa debe:
+        <ul>
+          <li>Mostrar una partida del juego.</li>
+          <li>Mostrar los rostros de las jugadoras en el extremo izquierdo de su terreno de juego, cada uno de un color.</li>
+          <li>Mostrar los 10 dados, cada uno situado en uno de los terrenos de las jugadoras, al azar.</li>
+          <li>Mostrar el resultado final de la partida, mediante medallas situadas en el extremo derecho del terreno de juego. La medalla contiene el número que indica la posición obtenida (1, 2 o 3).</li>
+          <li>En caso de empate, las jugadoras empatadas obtendrán la misma medalla.</li>
+          <li>Los colores del terreno de juego son:
+            hwb(22 77% 3%) <span style="background-color: hwb(22 77% 3%)">&nbsp;&nbsp;&nbsp;&nbsp;</span>,
+            hwb(30 41% 27%) <span style="background-color: hwb(30 41% 27%)">&nbsp;&nbsp;&nbsp;&nbsp;</span> y
+            hwb(16 19% 61%) <span style="background-color: hwb(16 19% 61%)">&nbsp;&nbsp;&nbsp;&nbsp;</span>.
+          </li>
+          <li>Los <i>emojis</i> de cada jugadora son:
+            &amp;#x1F467;&amp;#x1F3FB; <span style="font-size: 200%">&#x1F467;&#x1F3FB;</span>,
+            &amp;#x1F467;&amp;#x1F3FD; <span style="font-size: 200%">&#x1F467;&#x1F3FD;</span> y
+            &amp;#x1F467;&amp;#x1F3FE; <span style="font-size: 200%">&#x1F467;&#x1F3FE;</span>
+          </li>
+          <li>Los <i>emojis</i> de cada medalla son:
+            Oro: &amp;#x1f947; <span style="font-size: 200%">&#x1f947;</span>,
+            Plata: &amp;#x1f948; <span style="font-size: 200%">&#x1f948;</span> y
+            Bronce: &amp;#x1f949; <span style="font-size: 200%">&#x1f949;</span>
+          </li>
+        </ul>
+      </li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/sf-juego-dados-2-1.png" alt="Juego de dados" width="1012" height="430"></p>
+        <p class="captura"><img src="img/sf-juego-dados-2-2.png" alt="Juego de dados" width="1012" height="430"></p>
+        <p class="captura"><img src="img/sf-juego-dados-2-3.png" alt="Juego de dados" width="1012" height="430"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de dados - Ejemplos de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;table style="text-align: center"&gt;
+    &lt;tr style="background-color: hwb(22 77% 3%)"&gt;
+      &lt;td style="font-size: 3rem"&gt;&amp;#x1F467;&amp;#x1F3FB;&lt;/td&gt;
+      <span class="codigo-resaltado">&lt;td&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img/dados/1.svg" alt="1" width="70" height="70"&gt;&lt;/td&gt;</span>
+      ...
+      <span class="codigo-resaltado">&lt;td&gt;&lt;/td&gt;</span>
+      &lt;td style="font-size: 3rem"&gt;<span class="codigo-resaltado">&amp;#x1f947;</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style="background-color: hwb(30 41% 27%)"&gt;
+      &lt;td style="font-size: 3rem"&gt;&amp;#x1F467;&amp;#x1F3FD;&lt;/td&gt;
+      <span class="codigo-resaltado">&lt;td&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;/td&gt;</span>
+      ..
+      <span class="codigo-resaltado">&lt;td&gt;&lt;/td&gt;</span>
+      &lt;td style="font-size: 3rem"&gt;<span class="codigo-resaltado">&amp;#x1f948;</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style="background-color: hwb(16 19% 61%)"&gt;
+      &lt;td style="font-size: 3rem"&gt;&amp;#x1F467;&amp;#x1F3FF;&lt;/td&gt;
+      <span class="codigo-resaltado">&lt;td&gt;&lt;img src="img/dados/2.svg" alt="2" width="80" height="80"&gt;&lt;/td&gt;</span>
+      <span class="codigo-resaltado">&lt;td&gt;&lt;/td&gt;</span>
+      ...
+      <span class="codigo-resaltado">&lt;td&gt;<span class="codigo-resaltado">&lt;img src="img/dados/5.svg" alt="5" width="80" height="80"&gt;</span>&lt;/td&gt;</span>
+      &lt;td style="font-size: 3rem"&gt;&amp;<span class="codigo-resaltado">#x1f949;</span>&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

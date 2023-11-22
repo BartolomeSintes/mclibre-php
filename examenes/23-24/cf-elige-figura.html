@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Elige figura y tamaño. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Elige figura y tamaño</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Elige figura y tamaño</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que muestre un dibujo formado por cuatro figuras de la misma formas y tamaño, indicados por el usuario, y de distinto color.</p>
+
+  <section id="comentarios">
+    <h2>Elige figura y tamaño - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página muestra un formulario con dos controles:
+            <ul>
+              <li>La forma de las figuras (círculos o cuadrados).</li>
+              <li>El tamaño de las figuras (de 50 a 150 unidades de radio o de 100 a 300 unidades de lado).</li>
+            </ul>
+          </li>
+          <li>La segunda página mostrará:
+            <ul>
+              <li>Un grupo de cuatro círculos o de cuatro cuadrados formando un cuadrado.</li>
+              <li>La esquina superior izquierda del conjunto estará situada en el origen del plano SVG.</li>
+              <li>El tamaño de la figura será el indicado por el usuario.</li>
+              <li>Los colores de los círculos o cuadrados son siempre los mismos.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se mostrarán mensajes de error con la información faltante o incorrecta.</li>
+      <li>Si no se ha elegido una figura correcta, no es necesario mostrar un mensaje de error relativo al tamaño.</li>
+      <li>No se deben cambiar los nombres de los controles incluidos en las plantillas.</li>
+      <li>Al actualizar la segunda página, se mostrará el mismo dibujo.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cf-elige-figura-1.png" alt="Elige figura y tamaño" width="1012" height="210"></p>
+        <p class="captura"><img src="img/cf-elige-figura-2.png" alt="Elige figura y tamaño" width="1012" height="130"></p>
+        <p class="captura"><img src="img/cf-elige-figura-3.png" alt="Elige figura y tamaño" width="1012" height="130"></p>
+        <p class="captura"><img src="img/cf-elige-figura-4.png" alt="Elige figura y tamaño" width="1012" height="120"></p>
+        <p class="captura"><img src="img/cf-elige-figura-5.png" alt="Elige figura y tamaño" width="1012" height="350"></p>
+        <p class="captura"><img src="img/cf-elige-figura-6.png" alt="Elige figura y tamaño" width="1012" height="350"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Elige figura y tamaño - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;Cuatro círculos de <span class="codigo-resaltado">50</span>px de radio&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">200</span>" height="<span class="codigo-resaltado">200</span>" style="background-color: white;"&gt;
+      &lt;circle cx="<span class="codigo-resaltado">50</span>" cy="<span class="codigo-resaltado">50</span>" r="50" fill="red" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">150</span>" cy="<span class="codigo-resaltado">50</span>" r="50" fill="green" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">50</span>" cy="<span class="codigo-resaltado">150</span>" r="50" fill="yellow" /&gt;
+      &lt;circle cx="<span class="codigo-resaltado">150</span>" cy="<span class="codigo-resaltado">150</span>" r="50" fill="blue" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;h2&gt;Cuatro cuadrados de <span class="codigo-resaltado">100</span>px de lado&lt;/h2&gt;
+
+  &lt;p&gt;
+    &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+      width="<span class="codigo-resaltado">200</span>" height="<span class="codigo-resaltado">200</span>" style="background-color: white;"&gt;
+      &lt;rect x="0" y="0" width="<span class="codigo-resaltado">100</span>" height="<span class="codigo-resaltado">100</span>" fill="red" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">100</span>" y="0" width="<span class="codigo-resaltado">100</span>" height="<span class="codigo-resaltado">100</span>" fill="green" /&gt;
+      &lt;rect x="0" y="<span class="codigo-resaltado">100</span>" width="<span class="codigo-resaltado">100</span>" height="<span class="codigo-resaltado">100</span>" fill="yellow" /&gt;
+      &lt;rect x="<span class="codigo-resaltado">100</span>" y="<span class="codigo-resaltado">100</span>" width="<span class="codigo-resaltado">100</span>" height="<span class="codigo-resaltado">100</span>" fill="blue" /&gt;
+    &lt;/svg&gt;
+  &lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>

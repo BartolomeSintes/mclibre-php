@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Juego de cartas. Exámenes. PHP. Bartolomé Sintes Marco. www.mclibre.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../varios/php.css" title="mclibre">
+  <link rel="icon" href="../../varios/favicon.svg">
+  <link rel="stylesheet" href="../../varios/prism.css">
+  <script src="../../varios/prism.js"></script>
+</head>
+
+<body>
+  <h1>Exámenes - Juego de cartas</h1>
+
+  <nav>
+    <p>
+      <a href="../../index.html"><img src="../../varios/iconos/icono-php.svg" alt="Índice de PHP" title="Índice de PHP" width="48" height="48"></a>
+      <a href="#"><img src="../../varios/iconos/icono-arrow-circle-up.svg" alt="Principio de la página" title="Principio de la página" width="36" height="36"></a>
+      <a href="../examenes.html"><img src="../../varios/iconos/icono-school.svg" alt="Exámenes" title="Exámenes" width="36" height="36"></a>
+    </p>
+
+    <div class="toc">
+      <h2>Exámenes - Juego de cartas</h2>
+
+      <ul>
+        <li><a href="#comentarios">Comentarios</a></li>
+        <li><a href="#ejemplo-html">Ejemplo de código HTML</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p>En este ejercicio se debe crear un programa que simule una partida de un juego de cartas. En este juego cada jugador saca un número de cartas  numeradas correlativamente al azar. Habrá conseguido su objetivo si, al sacar alguna de las cartas, el número de orden coincide con el número de la carta. Gana el juego el jugador que haya conseguido su objetivo cuando el otro jugador no lo ha conseguido.</p>
+
+  <p><strong>Nota:</strong>: El juego es casi equilibrado aunque el número de cartas no coincida, ya que la probabilidad de no conseguir el objetivo es casi del 36,8% a partir de 5 cartas (exactamente !n/n! siendo n el número de cartas).</p>
+
+  <section id="comentarios">
+    <h2>Juego de cartas - Comentarios</h2>
+
+    <ul>
+      <li>El programa tendrá dos páginas:
+        <ul>
+          <li>La primera página muestra un formulario con cuatro controles, dos para cada jugador:
+            <ul>
+              <li>El palo de las cartas (corazones, diamantes, picas o tréboles).</li>
+              <li>El número de cartas (de 5 a 10 cartas).</li>
+            </ul>
+          </li>
+          <li>La segunda página mostrará:
+            <ul>
+              <li>El número de cartas indicado de cada jugador, del palo indicado, ordenadas al azar.</li>
+              <li>El resultado de la partida, indicando en su caso el valor de la primera carta cuya posición coincide.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Si se intenta acceder directamente a la segunda página sin pasar por la primera o si se envía a la segunda página información distinta a la esperada, se mostrarán mensajes de error con la información faltante o incorrecta.</li>
+      <li>Los palos de los jugadores deben ser distintos.</li>
+      <li>No se deben cambiar los nombres de los controles incluidos en las plantillas.</li>
+      <li>Al actualizar la segunda página, se mostrará una partida distinta, pero sin modificarse el número de cartas y el palo de ningún jugador.</li>
+      <li>Capturas de pantalla de ejemplo:
+        <p class="captura"><img src="img/cf-juego-cartas-1-1.png" alt="Juego de cartas" width="1012" height="225"></p>
+        <p class="captura"><img src="img/cf-juego-cartas-1-2.png" alt="Juego de cartas" width="1012" height="210"></p>
+        <p class="captura"><img src="img/cf-juego-cartas-1-3.png" alt="Juego de cartas" width="1012" height="210"></p>
+        <p class="captura"><img src="img/cf-juego-cartas-1-4.png" alt="Juego de cartas" width="1012" height="430"></p>
+        <p class="captura"><img src="img/cf-juego-cartas-1-5.png" alt="Juego de cartas" width="1012" height="430"></p>
+        <p class="captura"><img src="img/cf-juego-cartas-1-6.png" alt="Juego de cartas" width="1012" height="430"></p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejemplo-html">
+    <h2>Juego de cartas - Ejemplo de código HTML</h2>
+
+    <div class="codigo">
+      <pre>
+<code class="language-html">  &lt;p&gt;
+    &lt;span style="font-size: 300%; vertical-align: top;"&gt;A:&lt;/span&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">d4</span>.svg" alt="<span class="codigo-resaltado">4 de diamantes</span>" width="80"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">d6</span>.svg" alt="<span class="codigo-resaltado">6 de diamantes</span>" width="80"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">d3</span>.svg" alt="<span class="codigo-resaltado">3 de diamantes</span>" width="80"&gt;
+    ...
+    &lt;img src="img/cartas/<span class="codigo-resaltado">d7</span>.svg" alt="<span class="codigo-resaltado">7 de diamantes</span>" width="80"&gt;
+  &lt;/p&gt;
+
+  &lt;p&gt;
+    &lt;span style="font-size: 300%; vertical-align: top;"&gt;B:&lt;/span&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">p3</span>.svg" alt="<span class="codigo-resaltado">3 de picas</span>" width="80"&gt;
+    &lt;img src="img/cartas/<span class="codigo-resaltado">p1</span>.svg" alt="<span class="codigo-resaltado">1 de picas</span>" width="80"&gt;
+    ...
+    &lt;img src="img/cartas/<span class="codigo-resaltado">p4</span>.svg" alt="<span class="codigo-resaltado">4 de picas</span>" width="80"&gt;
+  &lt;/p&gt;
+
+  &lt;p&gt;<span class="codigo-resaltado">Ha ganado A porque ha coincidido al menos la carta &lt;strong&gt;3&lt;/strong&gt;, pero no ha coincidido ninguna carta del jugador B.</span>&lt;/p&gt;</code>
+</pre>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ultmod">Última modificación de esta página: 21 de noviembre de 2023</p>
+
+    <p class="licencia">
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
+      Esta página forma parte del curso <strong><a href="https://www.mclibre.org/consultar/php/">Programación web en PHP</a></strong> por <a href="https://www.mclibre.org/" rel="author">Bartolomé Sintes Marco</a><br>
+      que se distribuye bajo una <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+    </p>
+  </footer>
+</body>
+</html>
