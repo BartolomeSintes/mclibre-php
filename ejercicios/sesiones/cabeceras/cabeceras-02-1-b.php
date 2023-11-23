@@ -65,12 +65,17 @@ function recoge($key, $type = "")
 // Recogemos el aviso
 $aviso = recoge("aviso");
 
-print "    <p><label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>";
-// Si hemos recibido el aviso, lo mostramos
-if ($aviso != "") {
-    print " <span class=\"aviso\">$aviso</span>";
+// Si hemos recibido un aviso, lo mostramos
+if ($aviso == "") {
+    print "    <p>\n";
+    print "      <label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "    </p>\n";
+} else {
+    print "    <p>\n";
+    print "      <label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
+    print "      <span class=\"aviso\">$aviso</span>\n";
+    print "    </p>\n";
 }
-print "</p>\n";
 print "\n";
 
 ?>

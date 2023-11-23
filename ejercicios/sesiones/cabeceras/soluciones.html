@@ -217,9 +217,9 @@ if ($nombreOk) {
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-print "    &lt;p&gt;&lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-print "\n";
-
+print "    &lt;p&gt;\n";
+print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
+print "    &lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
@@ -255,15 +255,44 @@ function recoge($key, $type = "")
 // Recogemos el aviso
 $aviso = recoge("aviso");
 
-print "    &lt;p&gt;&lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;";
-// Si hay aviso, lo mostramos
+print "    &lt;p&gt;\n";
+print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
+// Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
-    print " &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;";
+    print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
 }
-print "&lt;/p&gt;\n";
+print "    &lt;/p&gt;\n";
 print "\n";
 
 ?&gt;</code>
+</pre>
+          </div>
+        </li>
+        <li>Podemos conseguir el mismo resultado con este código, en el que se repiten líneas, pero que puede ser más fácil de entender.
+          <div class="codigo">
+            <pre>
+<code class="language-php">// Si hemos recibido un aviso, lo mostramos
+if ($aviso == "") {
+    print "    &lt;p&gt;\n";
+    print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
+    print "    &lt;/p&gt;\n";
+} else {
+    print "    &lt;p&gt;\n";
+    print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
+    print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
+    print "    &lt;/p&gt;\n";
+}</code>
+</pre>
+          </div>
+        </li>
+        <li>En realidad, podemos incluso prescindir de la condición e incluir siempre el <span class="html-eti">&lt;span&gt;</span> con el aviso. Si se recibe un aviso, se mostrará, pero si no se recibe nada, la variable $aviso es una cadena vacía, de manera que únicamente estaremos añadiendo un <span class="html-eti">&lt;span&gt;</span> vacío, que no se verá en la página. Si el <span class="html-eti">&lt;span&gt;</span> de clase aviso se resaltara de otra manera, por ejemplo con un borde, entonces no deberíamos utilizar este código, porque se vería en la página un rectángulo vacío.
+          <div class="codigo">
+            <pre>
+<code class="language-php">print "    &lt;p&gt;\n";
+print "      &lt;label&gt;Escriba su nombre: &lt;input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"&gt;&lt;/label&gt;\n";
+print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
+print "    &lt;/p&gt;\n";
+print "\n";</code>
 </pre>
           </div>
         </li>
@@ -390,18 +419,19 @@ if ($nombreOk) {
 
       <p>cabeceras-03-1.php</p>
       <ul>
-          <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
+        <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-
-?&gt;</code>
+print "    &lt;p&gt;\n";
+print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;\n";
+print "    &lt;/p&gt;\n";
+print "\n";</code>
 </pre>
-            </div>
-          </li>
-          <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso que le puede mandar la segunda página y lo muestre en caso necesario:
+          </div>
+        </li>
+        <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso que le puede mandar la segunda página y lo muestre en caso necesario:
 
           <div class="codigo">
             <pre>
@@ -432,12 +462,13 @@ function recoge($key, $type = "")
 // Recogemos el aviso
 $aviso = recoge("aviso");
 
-print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;";
-// Si hay aviso, lo mostramos
+print "    &lt;p&gt;\n";
+print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;\n";
+// Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
-    print " &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;";
+    print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
 }
-print "&lt;/p&gt;\n";
+print "    &lt;/p&gt;\n";
 print "\n";
 
 ?&gt;</code>
@@ -588,18 +619,20 @@ if ($edadOk) {
 
       <p>cabeceras-04-1.php</p>
       <ul>
-          <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
+        <li>En un primer momento, añadimos a la primera página únicamente el control, para que pueda enviar el dato a la segunda página:
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
-print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;&lt;/p&gt;\n";
-
+print "    &lt;p&gt;\n";
+print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;\n";
+print "    &lt;/p&gt;\n";
+print "\n";
 ?&gt;</code>
 </pre>
-            </div>
-          </li>
-          <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso y la edad que le puede mandar la segunda página y los mostraremos en caso necesario:
+          </div>
+        </li>
+        <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja el aviso y la edad que le puede mandar la segunda página y los mostraremos en caso necesario:
 
           <div class="codigo">
             <pre>
@@ -631,13 +664,18 @@ function recoge($key, $type = "")
 $aviso = recoge("aviso");
 $edad  = recoge("edad");
 
+print "    &lt;p&gt;\n";
+print "      &lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" ";
 // Si hemos recibido la edad, la incluimos en el control
-print "    &lt;p&gt;&lt;label&gt;Escriba su edad (entre 18 y 130 años): &lt;input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;";
+if ($edad != "") {
+    print "value=\"$edad\" ";
+}
+print "size=\"5\" maxlength=\"3\"&gt;&lt;/label&gt;\n";
 // Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
-    print " &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;";
+    print "      &lt;span class=\"aviso\"&gt;$aviso&lt;/span&gt;\n";
 }
-print "&lt;/p&gt;\n";
+print "    &lt;/p&gt;\n";
 print "\n";
 
 ?&gt;</code>
@@ -786,10 +824,10 @@ if ($edadOk) {
 
       <p>cabeceras-05-1.php</p>
       <ul>
-          <li>En un primer momento, añadimos a la primera página únicamente los dos controles, para que pueda enviar el dato a la segunda página:
+        <li>En un primer momento, añadimos a la primera página únicamente los dos controles, para que pueda enviar el dato a la segunda página:
 
-            <div class="codigo">
-              <pre>
+          <div class="codigo">
+            <pre>
 <code class="language-php">&lt;?php
 print "    &lt;table&gt;\n";
 print "      &lt;tbody&gt;\n";
@@ -807,9 +845,10 @@ print "\n";
 
 ?&gt;</code>
 </pre>
-            </div>
-          </li>
-          <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja los avisos y los datos que le puede mandar la segunda página y los mostraremos en caso necesario:
+          </div>
+        </li>
+        <li>Después de hacer la segunda página, completaremos la primera página de manera que la primera página recoja los avisos y los datos que le puede mandar la segunda página y los mostraremos en caso necesario.
+        <p>En este código, el aviso sólo se incluye cuando se ha recibido, pero el atributo <span class="html-atri">value</span> se incluye siempre, aunque sea vacío, ya que este atributo con un valor vacío no afecta nunca a la visualización de la página.</p>
 
           <div class="codigo">
             <pre>
@@ -844,28 +883,26 @@ $edad        = recoge("edad");
 $avisoEdad   = recoge("avisoEdad");
 
 print "    &lt;table&gt;\n";
-print "      &lt;tbody&gt;\n";
-print "        &lt;tr&gt;\n";
-print "          &lt;td&gt;&lt;label for=\"nombre\"&gt;Escriba su nombre:&lt;/label&gt;&lt;/td&gt;\n";
+print "      &lt;tr&gt;\n";
+print "        &lt;td&gt;&lt;label for=\"nombre\"&gt;Escriba su nombre:&lt;/label&gt;&lt;/td&gt;\n";
 // Incluimos el nombre recibido (aunque sea en blanco) en el control
-print "          &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\"&gt;";
+print "        &lt;td&gt;&lt;input type=\"text\" name=\"nombre\" value=\"$nombre\" size=\"20\" maxlength=\"20\" id=\"nombre\"&gt;";
 // Si hemos recibido un aviso sobre el nombre, lo mostramos
 if ($avisoNombre) {
     print " &lt;span class=\"aviso\"&gt;$avisoNombre&lt;/span&gt;";
 }
 print "&lt;/td&gt;\n";
-print "        &lt;/tr&gt;\n";
-print "        &lt;tr&gt;\n";
-print "          &lt;td&gt;&lt;label for=\"edad\"&gt;Escriba su edad (entre 18 y 130 años):&lt;/label&gt;&lt;/td&gt;\n";
+print "      &lt;/tr&gt;\n";
+print "      &lt;tr&gt;\n";
+print "        &lt;td&gt;&lt;label for=\"edad\"&gt;Escriba su edad (entre 18 y 130 años):&lt;/label&gt;&lt;/td&gt;\n";
 // Incluimos la edad recibida (aunque sea en blanco) en el control
-print "          &lt;td&gt;&lt;input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\"&gt;";
+print "        &lt;td&gt;&lt;input type=\"text\" name=\"edad\" value=\"$edad\" size=\"5\" maxlength=\"3\" id=\"edad\"&gt;";
 // Si hemos recibido un aviso sobre la edad, lo mostramos
 if ($avisoEdad) {
     print " &lt;span class=\"aviso\"&gt;$avisoEdad&lt;/span&gt;";
 }
 print "&lt;/td&gt;\n";
-print "        &lt;/tr&gt;\n";
-print "      &lt;/tbody&gt;\n";
+print "      &lt;/tr&gt;\n";
 print "    &lt;/table&gt;\n";
 print "\n";
 
@@ -935,7 +972,7 @@ if ($edad == "") {
     $edadOk = true;
 }
 
-// Si hay algún error, volvemos al formulario enviando los avisos y los datos recibidos
+// Si hemos detectado algún error, volvemos al formulario enviando los avisos y los datos recibidos
 if (!$nombreOk || !$edadOk) {
     header("Location:cabeceras-05-1.php?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
     exit;
@@ -1037,7 +1074,7 @@ print "&lt;/svg&gt;";
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 5 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 23 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

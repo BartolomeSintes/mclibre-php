@@ -65,12 +65,13 @@ function recoge($key, $type = "")
 // Recogemos el aviso
 $aviso = recoge("aviso");
 
-print "    <p><label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"></label>";
-// Si hay aviso, lo mostramos
+print "    <p>\n";
+print "      <label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"></label>\n";
+// Si hemos recibido un aviso, lo mostramos
 if ($aviso != "") {
-    print " <span class=\"aviso\">$aviso</span>";
+    print "      <span class=\"aviso\">$aviso</span>\n";
 }
-print "</p>\n";
+print "    </p>\n";
 print "\n";
 
 ?>

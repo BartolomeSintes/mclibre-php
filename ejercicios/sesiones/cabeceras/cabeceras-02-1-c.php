@@ -1,11 +1,11 @@
 <?php
 /**
- * Formulario 3-1 - cabeceras-03-1-b.php
+ * Formulario 2-1 - cabeceras-02-1-c.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2019 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2019-11-10
+ * @version   2023-11-23
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Formulario 3 (Formulario).
+    Formulario 2 (Formulario).
     Cabeceras. Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -36,9 +36,9 @@
 </head>
 
 <body>
-  <h1>Formulario 3 (Formulario)</h1>
+  <h1>Formulario 2 (Formulario)</h1>
 
-  <form action="cabeceras-03-2-b.php" method="get">
+  <form action="cabeceras-02-2-c.php" method="get">
 <?php
 // Función de recogida de datos
 function recoge($key, $type = "")
@@ -65,9 +65,10 @@ function recoge($key, $type = "")
 // Recogemos el aviso
 $aviso = recoge("aviso");
 
-// Incluimos siempre el aviso
+// Incluimos siempre el aviso (si no hemos recibido aviso, no se verá nada,
+// únicamente en el código fuente se verá un <span> sin contenido)
 print "    <p>\n";
-print "      <label>Escriba su edad (entre 18 y 130 años): <input type=\"text\" name=\"edad\" size=\"5\" maxlength=\"3\"></label>\n";
+print "      <label>Escriba su nombre: <input type=\"text\" name=\"nombre\" size=\"20\" maxlength=\"20\"></label>\n";
 print "      <span class=\"aviso\">$aviso</span>\n";
 print "    </p>\n";
 print "\n";
@@ -82,7 +83,7 @@ print "\n";
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2019-11-10">10 de noviembre de 2019</time>
+      <time datetime="2018-11-10">10 de noviembre de 2019</time>
     </p>
 
     <p class="licencia">

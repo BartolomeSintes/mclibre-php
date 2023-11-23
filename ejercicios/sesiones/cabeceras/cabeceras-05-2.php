@@ -74,7 +74,7 @@ if ($edad == "") {
     $edadOk = true;
 }
 
-// Si hay algún error, volvemos al formulario enviando los avisos y los datos recibidos
+// Si hemos detectado algún error, volvemos al formulario enviando los avisos y los datos recibidos
 if (!$nombreOk || !$edadOk) {
     header("Location:cabeceras-05-1.php?nombre=$nombre&avisoNombre=$avisoNombre&edad=$edad&avisoEdad=$avisoEdad");
     exit;
