@@ -3,9 +3,9 @@
  * Simon (5) - simon-5-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-29
+ * @version   2023-12-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify

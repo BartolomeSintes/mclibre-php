@@ -3,9 +3,9 @@
  * Simon (3) - simon-3-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-30
+ * @version   2023-12-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -87,7 +87,7 @@ if (!isset($_SESSION["objetivo"]) || !isset($_SESSION["jugador"]) || !isset($_SE
     </table>
 
     <p><input type="submit" name="eleccion" value="Reiniciar"></p>
-    </form>
+  </form>
 
 <?php
 if (count($_SESSION["jugador"])) {
@@ -100,6 +100,7 @@ if (count($_SESSION["jugador"])) {
         print "    </svg>\n";
     }
     print "  </p>\n";
+    print "\n";
 }
 
 if ($_SESSION["fallo"]) {
@@ -116,7 +117,7 @@ if ($_SESSION["completado"]) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-30">30 de noviembre de 2021</time>
+      <time datetime="2023-12-05">5 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">

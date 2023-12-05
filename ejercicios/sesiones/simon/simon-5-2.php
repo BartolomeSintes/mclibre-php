@@ -3,9 +3,9 @@
  * Simon (5) - simon-5-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2022 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2022-11-29
+ * @version   2023-12-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ if (!isset($_SESSION["longitud"]) || !isset($_SESSION["objetivo"]) || !isset($_S
   <h1>Simon (5)</h1>
 
 <?php
-    print "    <h2>Secuencia de $_SESSION[longitud] colores</h2>\n";
+    print "  <h2>Secuencia de $_SESSION[longitud] colores</h2>\n";
     print "\n";
 ?>
   <form action="simon-5-3.php" method="get">
@@ -89,54 +89,50 @@ if (!isset($_SESSION["longitud"]) || !isset($_SESSION["objetivo"]) || !isset($_S
         </td>
       </tr>
     </table>
-
 <?php
 if (count($_SESSION["jugador"])) {
-    print "  <p>Colores elegidos:</p>\n";
     print "\n";
-    print "  <p>\n";
+    print "    <p>Colores elegidos:</p>\n";
+    print "\n";
+    print "    <p>\n";
     foreach ($_SESSION["jugador"] as $color) {
-        print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-        print "         width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
-        print "    </svg>\n";
+        print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+        print "           width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
+        print "      </svg>\n";
     }
-    print "  </p>\n";
+    print "    </p>\n";
 }
 
 if ($_SESSION["fallo"]) {
-    print "  <p>¡Lo siento! Se ha equivocado.</p>\n";
     print "\n";
-    print "  <p>Pulse Reintentar para reintentar la misma secuencia o Reiniciar para comenzar de nuevo desde el principio.</p>\n";
+    print "    <p>¡Lo siento! Se ha equivocado.</p>\n";
+    print "\n";
+    print "    <p>Pulse Reintentar para reintentar la misma secuencia o Reiniciar para comenzar de nuevo desde el principio.</p>\n";
     print "\n";
     print "    <p>\n";
     print "      <input type=\"submit\" name=\"eleccion\" value=\"Reintentar secuencia\">\n";
     print "      <input type=\"submit\" name=\"eleccion\" value=\"Reiniciar\">\n";
     print "    </p>\n";
-    print "\n";
 }
 
 if ($_SESSION["completado"]) {
-    print "  <p>¡Enhorabuena! Ha repetido correctamente la secuencia.</p>\n";
     print "\n";
-    print "  <p>Pulse Siguiente para intentar una secuencia más larga o Repetir para intentar una secuencia de la misma longitud.</p>\n";
+    print "    <p>¡Enhorabuena! Ha repetido correctamente la secuencia.</p>\n";
+    print "\n";
+    print "    <p>Pulse Siguiente para intentar una secuencia más larga o Repetir para intentar una secuencia de la misma longitud.</p>\n";
     print "\n";
     print "    <p>\n";
     print "      <input type=\"submit\" name=\"eleccion\" value=\"Siguiente nivel\">\n";
     print "      <input type=\"submit\" name=\"eleccion\" value=\"Repetir nivel\">\n";
     print "    </p>\n";
-    print "\n";
 }
-
-// print "<pre>";
-// print_r($_SESSION);
-// print "</pre>";
 ?>
   </form>
 
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2022-11-29">29 de noviembre de 2022</time>
+      <time datetime="2023-12-05">5 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">

@@ -3,9 +3,9 @@
  * Simon (4) - simon-4-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-30
+ * @version   2023-12-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -69,15 +69,15 @@ if ($_SESSION["completado"]) {
   <h1>Simon (4)</h1>
 
 <?php
-    print "    <p>Secuencia a reproducir:</p>\n";
+    print "  <p>Secuencia a reproducir:</p>\n";
     print "\n";
-    print "    <p>\n";
+    print "  <p>\n";
     foreach ($_SESSION["objetivo"] as $color) {
-        print "      <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
-        print "           width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
-        print "      </svg>\n";
+        print "    <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" \n";
+        print "         width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" style=\"background-color: $color\">\n";
+        print "    </svg>\n";
     }
-    print "    </p>\n";
+    print "  </p>\n";
 
 ?>
   <form action="simon-4-2.php" method="get">
@@ -89,7 +89,7 @@ if ($_SESSION["completado"]) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2021-11-30">30 de noviembre de 2021</time>
+      <time datetime="2023-12-05">5 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">
