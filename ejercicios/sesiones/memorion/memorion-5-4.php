@@ -32,7 +32,6 @@ if (!isset($_SESSION["numeroDibujos"]) || !isset($_SESSION["dibujos"])) {
     exit;
 }
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

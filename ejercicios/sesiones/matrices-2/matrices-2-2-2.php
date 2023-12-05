@@ -48,7 +48,6 @@ if (!isset($_SESSION["numero"])) {
   <h1>Palabras repetidas (Resultado)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

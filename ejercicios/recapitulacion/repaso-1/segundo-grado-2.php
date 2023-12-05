@@ -38,7 +38,6 @@
   <h1>Ecuación de segundo grado (Resultado)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

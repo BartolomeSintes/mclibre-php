@@ -32,7 +32,6 @@ if (!isset($_SESSION["carta"])) {
     exit;
 }
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

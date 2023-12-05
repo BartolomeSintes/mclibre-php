@@ -48,7 +48,6 @@ if (!isset($_SESSION["preguntas"]) || !isset($_SESSION["respuestas"])) {
   <h1>Encuesta (Resultado)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

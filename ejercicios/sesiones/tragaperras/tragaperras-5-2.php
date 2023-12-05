@@ -24,7 +24,6 @@
 session_name("tragaperras-5");
 session_start();
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

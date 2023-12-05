@@ -54,7 +54,6 @@ if (!isset($_SESSION["dibujos"])) {
     }
 }
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

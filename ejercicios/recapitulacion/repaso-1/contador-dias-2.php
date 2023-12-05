@@ -38,7 +38,6 @@
   <h1>Contador de días (Resultado 1)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

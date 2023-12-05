@@ -34,7 +34,6 @@ if (!isset($_SESSION["carta1"])) {
     $_SESSION["carta3"] = rand(1, 10);
 }
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

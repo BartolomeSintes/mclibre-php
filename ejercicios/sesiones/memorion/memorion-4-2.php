@@ -59,7 +59,6 @@ if (!isset($_SESSION["dibujos"])) {
     $_SESSION["segunda"] = -1;
 }
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

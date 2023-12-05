@@ -39,7 +39,6 @@
   <h1>Hombres y mujeres (Resultado 2)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

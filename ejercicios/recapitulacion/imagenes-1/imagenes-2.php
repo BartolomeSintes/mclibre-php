@@ -38,7 +38,6 @@
   <h1>Pieter Bruegel el viejo</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

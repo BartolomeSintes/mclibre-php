@@ -39,7 +39,6 @@
   <h1>Palabras repetidas (Resultado 2)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

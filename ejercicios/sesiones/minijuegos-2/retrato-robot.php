@@ -59,7 +59,6 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"]) || !isset($_SESSION["c"])) 
   <form action="retrato-robot.php" method="get">
     <table>
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

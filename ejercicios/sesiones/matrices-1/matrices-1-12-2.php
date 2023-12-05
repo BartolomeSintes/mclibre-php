@@ -33,7 +33,6 @@ if (!isset($_SESSION["disponibles"])) {
     exit;
 }
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

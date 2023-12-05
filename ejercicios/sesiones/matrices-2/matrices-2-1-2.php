@@ -48,7 +48,6 @@ if (!isset($_SESSION["numero"])) {
   <h1>Tabla de una fila con casillas de verificación (Resultado)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

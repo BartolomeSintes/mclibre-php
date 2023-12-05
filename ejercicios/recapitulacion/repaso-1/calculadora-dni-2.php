@@ -38,7 +38,6 @@
   <h1>Calculadora de letra del DNI (Resultado)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

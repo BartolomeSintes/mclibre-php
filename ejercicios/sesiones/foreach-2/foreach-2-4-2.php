@@ -42,7 +42,6 @@ session_start();
   <h1>Hombres y mujeres (Formulario 2)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

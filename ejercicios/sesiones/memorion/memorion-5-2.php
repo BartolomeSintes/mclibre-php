@@ -62,7 +62,6 @@ if (!isset($_SESSION["dibujos"])) {
     $_SESSION["jugadas"] = 0;
 }
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

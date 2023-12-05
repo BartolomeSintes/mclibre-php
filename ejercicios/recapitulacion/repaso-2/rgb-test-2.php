@@ -44,7 +44,6 @@ session_start();
   <h1>RGB Test 2</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

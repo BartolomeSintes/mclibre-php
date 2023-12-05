@@ -42,7 +42,6 @@ session_start();
   <h1>Tabla de una fila con casillas de verificación (Formulario 2)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
