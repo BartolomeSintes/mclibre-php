@@ -3,9 +3,9 @@
  * Sesiones (2) 01 - sesiones-2-02-3.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2023-12-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,7 @@ session_start();
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-15">15 de noviembre de 2018</time>
+      <time datetime="2023-12-05">5 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">

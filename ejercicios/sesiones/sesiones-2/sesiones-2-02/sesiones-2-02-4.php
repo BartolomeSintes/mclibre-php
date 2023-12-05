@@ -3,9 +3,9 @@
  * Sesiones (2) 01 - sesiones-2-02-4.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2018 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2018-11-15
+ * @version   2023-12-05
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -58,11 +58,12 @@ if ($palabra2 == "") {
     header("Location:sesiones-2-02-3.php");
     exit;
 } elseif ($_SESSION["palabra1"] != $palabra2) {
+    unset($_SESSION["aviso2"]);
     $_SESSION["aviso1"] = "No ha escrito la misma palabra. Comience de nuevo.";
     header("Location:sesiones-2-02-1.php");
     exit;
 } else {
-    unset($_SESSION["avisoApellido"]);
+    unset($_SESSION["aviso2"]);
     $_SESSION["palabra2"] = $palabra2;
     header("Location:sesiones-2-02-5.php");
     exit;
