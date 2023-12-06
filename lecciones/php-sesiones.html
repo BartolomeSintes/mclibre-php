@@ -238,11 +238,12 @@ print "&lt;p&gt;Su nombre es $_SESSION[nombre].&lt;/p&gt;\n";</code>
 <code class="language-php">&lt;?php
 session_start();
 
-// Este código es incorrecto, ya que PHP no puede crear un índice
-// numérico en $_SESSION. Aunque en la ejecución de este programa
-// $_SESSION contiene el elemento con índice numérico, el valor
-// no se guardará en la sesión y no estará disponible para otras páginas.
-$_SESSION[] = "Pepito Conejo";
+// Este código es incorrecto, ya que PHP no puede crear un índice numérico
+// en $_SESSION. Aunque en la ejecución de este programa $_SESSION contiene
+// el elemento con índice numérico, y por eso se muestra en la pantalla, la
+// sesión se destruye al finalizar la página y no estará disponible para
+// otras páginas.
+$_SESSION[0] = "Pepito Conejo";
 print "&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt;\n";
 print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";</code>
 </pre>
@@ -260,6 +261,12 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";</code>
       </div>
     </div>
 
+    <p>El mensaje de error se produce al finalizar la página, cuando PHP intenta guardar los datos de sesión. Este limitación tiene su origen en el serializador empleado habitualmente por PHP. PHP dispone de otro serializador que no tiene esta limitación. Para utilizarlo debería configurarse la directiva de configuración <a href="https://www.php.net/manual/en/session.configuration.php#ini.session.serialize-handler"><span class="php-dir">session.serialize_handler</span></a> con el valor <strong>php_serialize</strong> en vez de el valor habitual <strong>php</strong></p>
+
+    <hr class="corta">
+
+    <p>La matriz $_SESSION puede tener más de una dimensión y en ese caso los segundos índices ya no tiene la limitación de no poder ser números.</p>
+
     <div class="filaflex">
       <div class="icono-ok">
         <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
@@ -270,7 +277,7 @@ print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";</code>
 session_start();
 
 // Este código es correcto, ya que el primer índice no es numérico
-$_SESSION["nombres"][] = "Pepito Conejo";
+$_SESSION["nombres"][0] = "Pepito Conejo";
 print "&lt;p&gt;Se ha guardado su nombre.&lt;/p&gt;\n";
 print "&lt;pre&gt;"; print_r($_SESSION); print "&lt;/pre&gt;\n";</code>
 </pre>
@@ -623,7 +630,7 @@ session_start();</code></pre>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 18 de octubre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 27 de noviembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
