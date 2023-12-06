@@ -12,7 +12,7 @@ function muestra() {
         tp.setAttribute('id', 'tp-' + x1);
         tp.textContent = x2;
         elementos[i].appendChild(tp)
-        elementos[i].style.display = 'revert';
+        elementos[i].removeAttribute("title");
     }
 }
 window.onload = muestra;
