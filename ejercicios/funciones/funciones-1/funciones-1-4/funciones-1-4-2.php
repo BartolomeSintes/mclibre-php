@@ -140,7 +140,6 @@ if ($numeroOk && $inicialOk && $finalOk) {
         $numeroFinal = $numeroIntermedio * 60;
     }
 
-
     print "  <p>$numero $inicial = $numeroFinal $final.</p>\n";
     print "\n";
 }

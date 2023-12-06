@@ -27,11 +27,9 @@
 // Se podría hacer lo mismo con una sola matriz y guardando un número (el número
 // de crtas que se enseñan).
 
-
 // Se accede a la sesión
 session_name("cartas-5");
 session_start();
-
 
 if (!isset($_SESSION["baraja"]) || !isset( $_SESSION["cartas"])) {
     $_SESSION["baraja"] = [];

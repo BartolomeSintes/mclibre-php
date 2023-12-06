@@ -95,7 +95,6 @@ if (!isset($_REQUEST["dato"])) {
     print "      <th>Devuelve</th>\n";
     print "    </tr>\n";
 
-
     $resultado = filter_var($dato, FILTER_VALIDATE_BOOLEAN);
     print "    <tr>\n";
     print "      <td>FILTER_VALIDATE_BOOLEAN</td>\n";

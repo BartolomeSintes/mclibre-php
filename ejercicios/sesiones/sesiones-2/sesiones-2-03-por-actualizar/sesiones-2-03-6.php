@@ -33,7 +33,6 @@ if (!isset($_SESSION["paso"])) {
     exit;
 }
 
-
 // Función de recogida de datos
 function recoge($key, $type = "")
 {

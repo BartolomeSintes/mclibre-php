@@ -74,5 +74,4 @@ if ($_SESSION["r"] == 7 && $_SESSION["g"] == 7 && $_SESSION["b"] == 7) {
     $_SESSION["mensaje"] = "¡Lo siento! Ha perdido. Pulse Reiniciar para jugar otra partida.";
 }
 
-
 header("Location:minijuegos-3-5-1.php");

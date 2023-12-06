@@ -25,7 +25,6 @@ $cfg["registrosDemo"] = [
     [$cfg["tablaNoticias"], [8, "Firefox", "Publicado Firefox 97", "La nueva versión de Firefox admite el nuevo mecanismo de las capas CSS (@layer), que facilitan la organización de las hojas de estilo.",  "2022-02-08"]],
 ];
 
-
 function insertaDemo()
 {
     global $cfg, $pdo;

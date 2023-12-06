@@ -438,7 +438,7 @@ session_name("minijuegos-1-4");
 session_start();
 
 // Si el valor de sesión no existe, redirigimos a la primera página <span class="numero-circulo" tooltip-id="li-4-5">5</span>
-if (!isset($_SESSION["carta"])) {
+if (!isset($_SESSION["carta1"])) {
     header("location:minijuegos-1-4-1.php");
     exit;
 }
@@ -487,7 +487,7 @@ header("location:minijuegos-1-4-1.php");</code>
     <p>Este programa lo podemos enfocar de dos maneras:</p>
     <ul>
       <li>efectuando el análisis de la jugada obtenida en la página 1, de manera que en $_SESSION solo necesitaríamos guardar los valores de las tres cartas.</li>
-      <li>efectuando el análisis de la jugada obtenida en la página 1, de manera que en $_SESSION también deberíamos guardar la jugada obtenida.</li>
+      <li>efectuando el análisis de la jugada obtenida en la página 2, de manera que en $_SESSION también deberíamos guardar la jugada obtenida.</li>
     </ul>
 
     <p>El segundo enfoque tiene la ventaja de que el papel de ambas páginas está claramente separado: la página 1 se encarga únicamente de mostrar el resultado y la página 2 se encarga únicamente de calcular los datos. La "lógica" del programa está separada de la visualización de los datos.</p>

@@ -22,7 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 function convierte($num, $uniOri, $uniFin) {
     // La unidad intermedia es el metro
     $numeroIntermedio = 0;

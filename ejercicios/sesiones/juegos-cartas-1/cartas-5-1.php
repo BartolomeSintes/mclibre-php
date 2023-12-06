@@ -25,7 +25,6 @@
 session_name("cartas-1");
 session_start();
 
-
 if (!isset($_SESSION["baraja"])) {
     $_SESSION["baraja"] = [];
     foreach (["p", "c", "d", "t"] as $palo) {

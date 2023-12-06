@@ -33,7 +33,6 @@ define("MENU_IDENTIFICAR",        "menuIdentificar");      // Menú Indentificar
 define("MENU_TABLA_USUARIOS_WEB", "menuTablaUsuariosWeb"); // Menú Gestión Tabla Usuarios Web
 define("MENU_ERROR",              "menuError");            // Menú Error conexión con BD
 
-
 define("NIVEL_1",           "1");                    // Usuario web de nivel Usuario
 define("NIVEL_2",           "2");                    // Usuario web de nivel Administrador
 define("NIVEL_3",           "3");                    // Usuario web de nivel Gran Jefe
