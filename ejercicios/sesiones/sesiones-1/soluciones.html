@@ -47,7 +47,8 @@
       <ul>
         <li><a href="#formularios">Formularios</a>
           <ul>
-            <li><a href="#ejercicio-01">01 - Texto (1)</a></li>
+            <li><a href="#ejercicio-01">01 - Texto (1) - A</a></li>
+            <li><a href="#ejercicio-01-b">01 - Texto (1) - B</a></li>
             <li><a href="#ejercicio-02">02 - Texto (2) - A</a></li>
             <li><a href="#ejercicio-02-b">02 - Texto (2) - B</a></li>
             <li><a href="#ejercicio-03">03 - Mayúsculas - A</a></li>
@@ -80,12 +81,16 @@
     <h2>Comprobación de formularios</h2>
 
     <section id="ejercicio-01">
-      <h3>Sesiones (1) 01 - Formulario Texto (1)</h3>
+      <h3>Sesiones (1) 01 - Formulario Texto (1) - Solución A</h3>
+
+      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que la solución B sigue el procedimiento recomendado en estos apuntes de crear una variable auxiliar $xxOk por cada variable que recoge un control del formulario, mientras que la solución A no utiliza esa variable auxiliar ya que en este caso solamente se recoge un control.</p>
+
+      <p>La página 1 del ejercicio debe mostrar el último texto escrito por el usuario, texto que es recogido por la segunda página. Para compartir esa información (el texto) entre ambas páginas recurriremos a una variable de sesión, por ejemplo $_SESSION["texto"].</p>
 
       <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
 
       <ol>
-        <li id="li-1-1">Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. Es el procedimiento habitual: función recoge(); variable para recoger el dato; variable auxiliar que indica la corrección del dato; comprobación y mensajes de error; si el dato es correcto, mensaje final.</li>
+        <li id="li-1-1">Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. En este caso caso, como solo recibimos un dato, podemos simplificar el procedimiento habitual, ahorrándonos la variable auxiliar y realizar los pasos: función recoge(); variable para recoger el dato; comprobación y mensajes de error; si el dato es correcto, mensaje final.</li>
         <li id="li-1-2">Si el dato es correcto, debemos guardarlo en una variable de sesión, para que la página 1 pueda acceder a él.</li>
         <li id="li-1-3">Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
         <li id="li-1-4">La página 1 muestra el nombre guardado en $_SESSION.</li>
@@ -98,7 +103,7 @@
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-<span  title="Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.">// Accedemos a la sesión<span class="numero-circulo" tooltip-id="li-1-5">5</span></span>
+// Accedemos a la sesión<span class="numero-circulo" tooltip-id="li-1-5">5</span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;
@@ -109,9 +114,9 @@ session_start();
   &lt;h1&gt;Formulario Texto 1 (Formulario)&lt;/h1&gt;
 
 &lt;?php
-<span title="Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.">// Si hay un texto guardado en la sesión, <span class="numero-circulo" tooltip-id="li-1-6">6</span></span>
+// Si hay un texto guardado en la sesión, <span class="numero-circulo" tooltip-id="li-1-6" title="Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.">6</span>
 if (isset($_SESSION["texto"])) {
-<span title="La página 1 muestra el nombre guardado en $_SESSION.">    // se muestra <span class="numero-circulo" tooltip-id="li-1-4">4</span></span>
+    // se muestra <span class="numero-circulo" tooltip-id="li-1-4">4</span>
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
@@ -129,7 +134,7 @@ if (isset($_SESSION["texto"])) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-<span title="Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.">// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-1-3">3</span></span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-1-3">3</span>
 session_name("sesiones-1-01");
 session_start();
 ?&gt;
@@ -140,8 +145,7 @@ session_start();
   &lt;h1&gt;Formulario Texto 1 (Resultado)&lt;/h1&gt;
 
 &lt;?php
-<span title="Primero, la página 2 debe recoger el dato enviado por el formulario de la página 1. Es el procedimiento habitual: función recoge(); variable para recoger el dato; variable auxiliar que indica la corrección del dato; comprobación y mensajes de error; si el dato es correcto, mensaje final.">// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-1-1">1</span></span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-1-1">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -165,18 +169,12 @@ function recoge($key, $type = "")
 
 // Recogemos el texto
 $texto   = recoge("texto");
-$textoOk = false;
 
 // Comprobamos el texto y escribimos avisos si es necesario
 if ($texto == "") {
     print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
-} else {
-    $textoOk = true;
-}
-
-// Si el texto es válido,
-<span title="Si el dato es correcto, debemos guardarlo en una variable de sesión, para que la página 1 pueda acceder a él.">if ($textoOk) { <span class="numero-circulo" tooltip-id="li-1-2">2</span></span>
-  // guardamos el texto en la sesión
+} else {<span class="numero-circulo" tooltip-id="li-1-2">2</span>
+    // Si el texto es válido, guardamos el texto en la sesión ...
     $_SESSION["texto"] = $texto;
     // y lo mostramos
     print "  &lt;p&gt;El texto es: &lt;strong&gt;$texto&lt;/strong&gt;.&lt;/p&gt;\n";
@@ -189,10 +187,52 @@ if ($texto == "") {
       </div>
     </section>
 
+    <section id="ejercicio-01-b">
+      <h3>Sesiones (1) 01 - Formulario Texto (1) - Solución B</h3>
+
+      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que la solución B sigue el procedimiento recomendado en estos apuntes de crear una variable auxiliar $xxOk por cada variable que recoge un control del formulario, mientras que la solución A no utiliza esa variable auxiliar ya que en este caso solamente se recoge un control.</p>
+
+      <p>Se muestra únicamente la parte de la segunda página en la que aparece la variable auxiliar $textoOK.</p>
+
+      <p>sesiones-1-01-b-2.php</p>
+
+      <div class="codigo">
+        <pre>
+<code class="language-php">&lt;?php
+// ...
+
+// Recogemos el texto
+$texto   = recoge("texto");
+$textoOk = false;
+
+// Comprobamos el texto y escribimos avisos si es necesario
+if ($texto == "") {
+    print "  &lt;p class=\"aviso\"&gt;No ha escrito su nombre.&lt;/p&gt;\n";
+} else {
+    $textoOk = true;
+}
+
+// Si el texto es válido,
+if ($textoOk) {
+  // guardamos el texto en la sesión
+    $_SESSION["texto"] = $texto;
+    // y lo mostramos
+    print "  &lt;p&gt;El texto es: &lt;strong&gt;$texto&lt;/strong&gt;.&lt;/p&gt;\n";
+}
+?&gt;
+
+    &lt;p&gt;&lt;a href="sesiones-1-01-b-1.php"&gt;Volver a la primera página.&lt;/a&gt;&lt;/p&gt;
+// ...</code>
+</pre>
+      </div>
+    </section>
+
     <section id="ejercicio-02">
       <h3>Sesiones (1) 02 - Formulario Texto (2) - Solución A</h3>
 
-      <p>Esta primera solución intenta parecerse lo más posible a la solución propuesta para el ejercicio anterior. Este podría ser el orden en que se iría realizando este ejercicio:</p>
+      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que en la solución A $_SESSION["texto"] nunca es vacío, es decir, antes de que el usuario escriba texto en el formulario $_SESSION["texto"] no existe, mientras que en la solución B $_SESSION["texto"] existe siempre, pero tiene un valor vacío hasta que el usuario escribe texto en el formulario.</p>
+
+      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
 
       <ol start="0">
         <li id="li-2-a-0">Puesto que la página 2 redirige a la página 1, la página 2 no debe tener nada de HTML, ni ningún <span class="php-res">print</span>.</li>
@@ -245,8 +285,7 @@ if (isset($_SESSION["texto"])) {
 session_name("sesiones-1-02");
 session_start();
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-2-a-1">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-2-a-1">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -299,24 +338,19 @@ if (!$textoOk) {
     <section id="ejercicio-02-b">
       <h3>Sesiones (1) 02 - Formulario Texto (2) - Solución B</h3>
 
-      <p>En esta segunda solución, vamos a simplificar la solución propuesta para en el apartado anterior. Las simplificaciones las haremos en la segunda página.</p>
+      <p><strong>Nota</strong>: La diferencia entre las dos soluciones propuestas para este ejercicio es que en la solución A $_SESSION["texto"] nunca es vacío, es decir, antes de que el usuario escriba texto en el formulario $_SESSION["texto"] no existe, mientras que en la solución B $_SESSION["texto"] existe siempre, pero tiene un valor vacío hasta que el usuario escribe texto en el formulario.</p>
+
+      <p>Este podría ser el orden en que se iría realizando este ejercicio:</p>
 
       <ol>
-        <li>La página 2 redirige siempre a la página 1, así que la función header() no hace falta que esté dentro del <span class="php-res">if</span> y del <span class="php-res">else</span>. Simplemente, se puede poner fuera, más concretamente después.</li>
-        <li>La segunda página sólo tiene que guardar el texto en $_SESSION["texto"] si no es vacío y redirigir, por lo que podemos ahorrarnos la variable $textoOk.</li>
-      </ol>
-
-      <p>Así, los pasos del programa serían:</p>
-
-      <ol>
-        <li id="li-2-b-1">En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
-        <li id="li-2-b-2">En la comprobación, si no se recibe nada, no escribe ningún mensaje.</li>
-        <li id="li-2-b-3">Pero si se ha recibido algo, el dato se guarda en una variable de sesión, para que la página 1 pueda acceder a él.</li>
-        <li id="li-2-b-4">Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
-        <li id="li-2-b-5">Finalmente, la página 2 redirige a la página 1.</li>
-        <li id="li-2-b-6">La página 1 muestra el nombre guardado en $_SESSION.</li>
-        <li id="li-2-b-7">Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
-        <li id="li-2-b-8">Pero la primera vez que se abre la página, $_SESSION no contiene ningún dato e intentar imprimirlo provocaría un error, por lo que añadimos la condición de que la variable que vamos a imprimir exista.</li>
+        <li id="li-2-b-1">Para que la página 1 pueda usar datos de $_SESSION, debemos unir la página a la sesión. Conviene dar nombre a la sesión para que cada ejercicio utilice su propia matriz $_SESSION distinta del resto.</li>
+        <li id="li-2-b-2">La primera vez que se abre la página, $_SESSION no contiene ningún dato, por lo que al acceder a él provocaríamos un error. Para evitar ese problema, creamos la variable de sesión si esta no existe, dándole el valor vacío.</li>
+        <li id="li-2-b-3">Si hay un valor no vacío en la variable de sesión, lo mostramos.</li>
+        <li id="li-2-b-4">Para que la página 2 pueda guardar datos en $_SESSION, debemos unir la página a la sesión. El nombre de la sesión debe ser el mismo en ambas páginas.</li>
+        <li id="li-2-b-5">Si alguien accediera a la segunda página directamente, sin pasar por la página 1, $_SESSION no contendría ningún dato, por lo que al acceder a él provocaríamos un error. Para evitar ese problema, creamos la variable de sesión si esta no existe, dándole el valor vacío. En este caso, en realidad, esta precaución no es necesaria, porque no accedemos al valor sino que simplemente lo establecemos si es necesario, pero en general suele ser necesario.</li>
+        <li id="li-2-b-6">En la página 2 recogemos el dato enviado por el formulario de la página 1: función recoge() y variable para recoger el dato</li>
+        <li id="li-2-b-7">Si se ha recibido algo, el dato se guarda en una variable de sesión, para que la página 1 pueda acceder a él.</li>
+        <li id="li-2-b-8">Finalmente, la página 2 redirige siempre a la página 1.</li>
       </ol>
 
       <p>sesiones-1-02-b-1.php</p>
@@ -324,9 +358,13 @@ if (!$textoOk) {
       <div class="codigo">
         <pre>
 <code class="language-php">&lt;?php
-// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-b-7">7</span>
+// Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-b-1">1</span>
 session_name("sesiones-1-02-b");
 session_start();
+// Si no existe la variable de sesión, la creamos vacía <span class="numero-circulo" tooltip-id="li-2-b-2">2</span>
+if (!isset($_SESSION["texto"])) {
+    $_SESSION["texto"] = "";
+}
 ?&gt;
 
 &lt;!DOCTYPE html&gt;
@@ -334,10 +372,9 @@ session_start();
 &lt;body&gt;
   &lt;h1&gt;Formulario Texto 2 (Formulario)&lt;/h1&gt;
 
-&lt;?php
-// Si hay un texto guardado en la sesión, lo mostramos <span class="numero-circulo" tooltip-id="li-2-b-8">8</span>
-if (isset($_SESSION["texto"])) {
-    print "  &lt;p&gt;El texto es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n"; <span class="numero-circulo" tooltip-id="li-2-b-6">6</span>
+&lt;?php// Si hay un texto no vacío guardado en la sesión, lo mostramos <span class="numero-circulo" tooltip-id="li-2-b-3">3</span>
+if ($_SESSION["texto"] != "") {
+    print "  &lt;p&gt;El último texto escrito es: &lt;strong&gt;$_SESSION[texto]&lt;/strong&gt;.&lt;/p&gt;\n";
     print "\n";
 }
 ?&gt;
@@ -356,9 +393,12 @@ if (isset($_SESSION["texto"])) {
 // Accedemos a la sesión <span class="numero-circulo" tooltip-id="li-2-b-4">4</span>
 session_name("sesiones-1-02-b");
 session_start();
+// Si no existe la variable de sesión, la creamos vacía <span class="numero-circulo" tooltip-id="li-2-b-5">5</span>
+if (!isset($_SESSION["texto"])) {
+    $_SESSION["texto"] = "";
+}
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-2-b-1">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-2-b-6">6</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -382,15 +422,18 @@ function recoge($key, $type = "")
 
 // Recogemos el texto
 $texto   = recoge("texto");
+$textoOk = false;
+
+// Recogemos el texto
+$texto = recoge("texto");
 
 // Comprobamos el texto
-if ($texto != "") {
+if ($texto != "") { <span class="numero-circulo" tooltip-id="li-2-b-7">7</span>
     // Si el texto no es vacío, lo guardamos en la sesión
     $_SESSION["texto"] = $texto;
 }
 
-// Volvemos al formulario <span class="numero-circulo" tooltip-id="li-2-b-5">5</span>
-header("Location:sesiones-1-02-b-1.php");
+header("Location:sesiones-1-02-1.php"); <span class="numero-circulo" tooltip-id="li-2-b-8">8</span>
 ?&gt;</code>
 </pre>
       </div>
@@ -470,8 +513,7 @@ if (isset($_SESSION["error"])) {
 session_name("sesiones-1-03");
 session_start();
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-a-1">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-a-1">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -599,8 +641,7 @@ if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
 session_name("sesiones-1-03-b");
 session_start();
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-b-1">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-b-1">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -728,8 +769,7 @@ print "\n";
 session_name("sesiones-1-03-c");
 session_start();
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-c-1">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-c-1">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -804,8 +844,7 @@ header("Location:sesiones-1-03-c-1.php");
 session_name("sesiones-1-03-d");
 session_start();
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-3-d-1">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-3-d-1">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -936,8 +975,7 @@ if (isset($_SESSION["minusculasError"])) {
 session_name("sesiones-1-04");
 session_start();
 
-// Funciones auxiliares <span class="numero-circulo">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -1088,8 +1126,7 @@ print "\n";
 session_name("sesiones-1-04-b");
 session_start();
 
-// Funciones auxiliares <span class="numero-circulo">1</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo">1</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -1219,8 +1256,7 @@ if (!isset($_SESSION["numero"])) {
     exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-11-6">6</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-11-6">6</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -1321,8 +1357,7 @@ if (!isset($_SESSION["posicion"])) {
     exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-12-6">6</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-12-6">6</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -1435,8 +1470,7 @@ if (!isset($_SESSION["x"]) || !isset($_SESSION["y"])) {
     exit;
 }
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-13-6">6</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-13-6">6</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -1573,8 +1607,7 @@ if (!isset($_SESSION["a"]) || !isset($_SESSION["b"])) {
     $_SESSION["a"] =  $_SESSION["b"] = 0;
 }
 
-// Funciones auxiliares <span class="numero-circulo" tooltip-id="li-14-7">7</span>
-// Función de recogida de datos
+// Función de recogida de datos <span class="numero-circulo" tooltip-id="li-14-7">7</span>
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -1617,7 +1650,7 @@ header("Location:sesiones-1-14-1.php");
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de noviembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 5 de diciembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

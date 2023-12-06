@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Accedemos a la sesión
-session_name("sesiones-1-01");
+session_name("sesiones-1-01-b");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ if (isset($_SESSION["texto"])) {
     print "\n";
 }
 ?>
-  <form action="sesiones-1-01-2.php" method="get">
+  <form action="sesiones-1-01-b-2.php" method="get">
     <p>
       <label>
         Escriba texto:

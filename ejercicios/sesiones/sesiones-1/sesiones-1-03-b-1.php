@@ -3,9 +3,9 @@
  * Sesiones (1) 03 - sesiones-1-03-b-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-11
+ * @version   2023-12-06
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -79,7 +79,7 @@ if (isset($_SESSION["error"]) && isset($_SESSION["intento"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-13">13 de noviembre de 2018</time>
+      <time datetime="2023-12-06">6 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">

@@ -1,11 +1,11 @@
 <?php
 /**
- * Sesiones (1) 02 - sesiones-1-02-1-b.php
+ * Sesiones (1) 02 - sesiones-1-02-b-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-11
+ * @version   2023-12-06
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,10 @@
 // Accedemos a la sesión
 session_name("sesiones-1-02-b");
 session_start();
+// Si no existe la variable de sesión, la creamos vacía
+if (!isset($_SESSION["texto"])) {
+    $_SESSION["texto"] = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,14 +46,19 @@ session_start();
   <h1>Formulario Texto 2 (Formulario)</h1>
 
 <?php
-// Si hay un texto guardado en la sesión, lo mostramos
-if (isset($_SESSION["texto"])) {
+// Si hay un texto no vacío guardado en la sesión, lo mostramos
+if ($_SESSION["texto"] != "") {
     print "  <p>El último texto escrito es: <strong>$_SESSION[texto]</strong>.</p>\n";
     print "\n";
 }
 ?>
   <form action="sesiones-1-02-b-2.php" method="get">
-    <p><label>Escriba texto: <input type="text" name="texto" size="20" maxlength="20"></label></p>
+    <p>
+      <label>
+        Escriba texto:
+        <input type="text" name="texto" size="20" maxlength="20">
+      </label>
+    </p>
 
     <p>
       <input type="submit" value="Guardar">
@@ -60,7 +69,7 @@ if (isset($_SESSION["texto"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-13">13 de noviembre de 2018</time>
+      <time datetime="2023-12-06">6 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">

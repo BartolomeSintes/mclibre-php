@@ -3,9 +3,9 @@
  * Sesiones (1) 04 - sesiones-1-04-1.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-11
+ * @version   2023-12-06
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -60,32 +60,62 @@ print "\n";
 // Si hemos detectado un error en la palabra en mayúsculas
 if (isset($_SESSION["mayusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"></label> "
-        . "<span class=\"aviso\">$_SESSION[mayusculasError]</span></p>\n";
+    print "    <p>\n";
+    print "      <label>\n";
+    print "        Mayúsculas:\n";
+    print "        <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
+    print "      <span class=\"aviso\">$_SESSION[mayusculasError]</span>\n";
+    print "    </p>\n";
     print "\n";
 } elseif (isset($_SESSION["minusculasError"])) {
     // Si hemos detectado un error en la palabra en minúsculas, incluimos el valor correcto en el control
-    print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\"></label></p>\n";
+    print "    <p>\n";
+    print "      <label>\n";
+    print "        Mayúsculas:\n";
+    print "        <input type=\"text\" name=\"mayusculas\" value=\"$_SESSION[mayusculas]\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
+    print "     </p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    <p><label>Mayúsculas: <input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\"></label></p>\n";
+    print "    <p>\n";
+    print "      <label>\n";
+    print "        Mayúsculas:\n";
+    print "        <input type=\"text\" name=\"mayusculas\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
+    print "    </p>\n";
     print "\n";
 }
 
 // Si hemos detectado un error en la palabra en minúsculas
 if (isset($_SESSION["minusculasError"])) {
     // Escribimos un aviso e incluimos el valor incorrecto en el control
-    print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"></label> "
-    . "<span class=\"aviso\">$_SESSION[minusculasError]</span></p>\n";
+    print "    <p>\n";
+    print "      <label>\n";
+    print "        Minúsculas:\n";
+    print "        <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
+    print "      <span class=\"aviso\">$_SESSION[minusculasError]</span>\n";
+    print "    </p>\n";
     print "\n";
 } elseif (isset($_SESSION["mayusculasError"])) {
     // Si hemos detectado un error en la palabra en mayúsculas, incluimos el valor correcto en el control
-    print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\"></label></p>\n";
+    print "    <p>\n";
+    print "      <label>\n";
+    print "        Minúsculas:\n";
+    print "        <input type=\"text\" name=\"minusculas\" value=\"$_SESSION[minusculas]\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
+    print "    </p>\n";
     print "\n";
 } else {
     // Si no hemos detectado un error, escribimos el control vacío
-    print "    <p><label>Minúsculas: <input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\"></label></p>\n";
+    print "    <p>\n";
+    print "      <label>\n";
+    print "        Minúsculas:\n";
+    print "        <input type=\"text\" name=\"minusculas\" size=\"20\" maxlength=\"20\">\n";
+    print "      </label>\n";
+    print "    </p>\n";
     print "\n";
 }
 
@@ -100,7 +130,7 @@ if (isset($_SESSION["minusculasError"])) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-13">13 de noviembre de 2018</time>
+      <time datetime="2023-12-06">6 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">

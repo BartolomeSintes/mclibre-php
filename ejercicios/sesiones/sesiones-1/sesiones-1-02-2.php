@@ -3,9 +3,9 @@
  * Sesiones (1) 02 - sesiones-1-02-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-11
+ * @version   2023-12-06
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 session_name("sesiones-1-02");
 session_start();
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
@@ -49,26 +48,12 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el texto
-$texto   = recoge("texto");
-$textoOk = false;
+$texto = recoge("texto");
 
 // Comprobamos el texto
-if ($texto == "") {
-    // Si el texto es vacío, no es correcto, pero no hacemos nada especial
-} else {
-    $textoOk = true;
+if ($texto != "") {
+    // Si el texto no es vacío, lo guardamos en la sesión
+    $_SESSION["texto"] = $texto;
 }
 
-// Si el texto no es válido ...
-if (!$textoOk) {
-    // ... volvemos al formulario
-    header("Location:sesiones-1-02-1.php");
-    exit;
-} else {
-    // ... guardamos el texto en la sesión
-    $_SESSION["texto"] = $texto;
-    // Volvemos al formulario
-    header("Location:sesiones-1-02-1.php");
-    exit;
-}
-?>
+header("Location:sesiones-1-02-1.php");

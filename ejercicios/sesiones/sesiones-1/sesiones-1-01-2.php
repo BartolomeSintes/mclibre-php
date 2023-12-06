@@ -3,9 +3,9 @@
  * Sesiones (1) 01 - sesiones-1-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-11
+ * @version   2023-12-06
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -42,7 +42,6 @@ session_start();
   <h1>Formulario Texto 1 (Resultado)</h1>
 
 <?php
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
@@ -67,18 +66,12 @@ function recoge($key, $type = "")
 
 // Recogemos el texto
 $texto   = recoge("texto");
-$textoOk = false;
 
 // Comprobamos el texto y escribimos avisos si es necesario
 if ($texto == "") {
     print "  <p class=\"aviso\">No ha escrito texto.</p>\n";
 } else {
-    $textoOk = true;
-}
-
-// Si el texto es válido ...
-if ($textoOk) {
-    // guardamos el texto en la sesión
+    // Si el texto es válido guardamos el texto en la sesión
     $_SESSION["texto"] = $texto;
     // y lo mostramos
     print "  <p>El texto es: <strong>$texto</strong>.</p>\n";
@@ -90,7 +83,7 @@ if ($textoOk) {
   <footer>
     <p class="ultmod">
       Última modificación de esta página:
-      <time datetime="2018-11-13">13 de noviembre de 2018</time>
+      <time datetime="2023-12-06">6 de diciembre de 2023</time>
     </p>
 
     <p class="licencia">

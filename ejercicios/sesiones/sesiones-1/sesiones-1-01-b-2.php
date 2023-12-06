@@ -1,6 +1,6 @@
 <?php
 /**
- * Sesiones (1) 01 - sesiones-1-01-1.php
+ * Sesiones (1) 01 - sesiones-1-01-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
  * @copyright 2023 Bartolomé Sintes Marco
@@ -22,7 +22,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Accedemos a la sesión
-session_name("sesiones-1-01");
+session_name("sesiones-1-01-b");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <title>
-    Formulario Texto 1 (Formulario).
+    Formulario Texto 1 (Resultado).
     Sesiones (1). Sesiones.
     Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org
   </title>
@@ -39,28 +39,52 @@ session_start();
 </head>
 
 <body>
-  <h1>Formulario Texto 1 (Formulario)</h1>
+  <h1>Formulario Texto 1 (Resultado)</h1>
 
 <?php
-// Si hay un texto guardado en la sesión, lo mostramos
-if (isset($_SESSION["texto"])) {
-    print "  <p>El último texto escrito es: <strong>$_SESSION[texto]</strong>.</p>\n";
-    print "\n";
+// Función de recogida de datos
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
+// Recogemos el texto
+$texto   = recoge("texto");
+$textoOk = false;
+
+// Comprobamos el texto y escribimos avisos si es necesario
+if ($texto == "") {
+    print "  <p class=\"aviso\">No ha escrito texto.</p>\n";
+} else {
+    $textoOk = true;
+}
+
+// Si el texto es válido ...
+if ($textoOk) {
+    // guardamos el texto en la sesión
+    $_SESSION["texto"] = $texto;
+    // y lo mostramos
+    print "  <p>El texto es: <strong>$texto</strong>.</p>\n";
 }
 ?>
-  <form action="sesiones-1-01-2.php" method="get">
-    <p>
-      <label>
-        Escriba texto:
-        <input type="text" name="texto" size="20" maxlength="20">
-      </label>
-    </p>
 
-    <p>
-      <input type="submit" value="Siguiente">
-      <input type="reset" value="Borrar">
-    </p>
-  </form>
+  <p><a href="sesiones-1-01-b-1.php">Volver a la primera página.</a></p>
 
   <footer>
     <p class="ultmod">

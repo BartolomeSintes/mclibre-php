@@ -3,9 +3,9 @@
  * Sesiones (1) 02 - sesiones-1-02-b-2.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-11-11
+ * @version   2023-12-06
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -24,8 +24,11 @@
 // Accedemos a la sesión
 session_name("sesiones-1-02-b");
 session_start();
+// Si no existe la variable de sesión, la creamos vacía
+if (!isset($_SESSION["texto"])) {
+    $_SESSION["texto"] = "";
+}
 
-// Funciones auxiliares
 // Función de recogida de datos
 function recoge($key, $type = "")
 {
@@ -49,6 +52,10 @@ function recoge($key, $type = "")
 }
 
 // Recogemos el texto
+$texto   = recoge("texto");
+$textoOk = false;
+
+// Recogemos el texto
 $texto = recoge("texto");
 
 // Comprobamos el texto
@@ -57,5 +64,4 @@ if ($texto != "") {
     $_SESSION["texto"] = $texto;
 }
 
-header("Location:sesiones-1-02-b-1.php");
-?>
+header("Location:sesiones-1-02-1.php");
