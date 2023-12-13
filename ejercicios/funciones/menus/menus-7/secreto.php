@@ -3,9 +3,9 @@
  * Menús 4 - secreto.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-09
+ * @version   2023-12-12
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@ require_once "biblioteca.php";
 if (!isset($_SESSION["conectado"])) {
     header("Location:index.php");
 } else {
-    cabecera("Secreto");
+    cabecera("Secreto", MENU_SECUNDARIO);
 
     print "    <p>A esta página sólo se puede llegar si usted está <strong>conectado</strong>.</p>\n";
 

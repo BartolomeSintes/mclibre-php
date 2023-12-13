@@ -3,9 +3,9 @@
  * Menús 7 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-09
+ * @version   2023-12-12
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,10 +27,11 @@ ini_set("session.save_handler", "files"); // Por si session.save_handler = user 
 session_name("menus7");
 session_start();
 
-define("MENU_PRINCIPAL",  1);      // Para función cabecera()
-define("MENU_SECUNDARIO", 2);      // Para función cabecera()
+// Menús de las distintas páginas
+define("MENU_PRINCIPAL", 1);
+define("MENU_SECUNDARIO", 2);
 
-function cabecera($texto)
+function cabecera($texto, $menu)
 {
     print "<!DOCTYPE html>\n";
     print "<html lang=\"es\">\n";
@@ -51,11 +52,17 @@ function cabecera($texto)
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
-    if (isset($_SESSION["conectado"])) {
-        print "        <li><a href=\"secreto.php\">Secreto</a></li>\n";
-        print "        <li><a href=\"desconectar.php\">Desconectar</a></li>\n";
+    if (!isset($_SESSION["conectado"])) {
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"conectar.php\">Conectar</a></li>\n";
+        }
     } else {
-        print "        <li><a href=\"conectar.php\">Conectar</a></li>\n";
+        if ($menu == MENU_PRINCIPAL) {
+            print "        <li><a href=\"secreto.php\">Secreto</a></li>\n";
+            print "        <li><a href=\"desconectar.php\">Desconectar</a></li>\n";
+        } elseif ($menu == MENU_SECUNDARIO) {
+            print "        <li><a href=\"index.php\">Inicio</a></li>\n";
+        }
     }
     print "      </ul>\n";
     print "    </nav>\n";
@@ -71,7 +78,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2021-12-09\">9 de diciembre de 2021</time>\n";
+    print "      <time datetime=\"2023-12-12\">12 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
