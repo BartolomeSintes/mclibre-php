@@ -220,8 +220,8 @@ print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;";
 </pre>
       </div>
       <div class="resultado">
-<b>Warning</b>:  Constant PI already defined in <b>ejemplo.php</b> on line <b>3</b>
-<p>El valor de pi es 3.14</p>
+        <b>Warning</b>: Constant PI already defined in <b>ejemplo.php</b> on line <b>3</b>
+        <p>El valor de pi es 3.14</p>
       </div>
     </div>
 
@@ -229,14 +229,16 @@ print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;";
 
     <p>Definir constantes mediante la función <span class="php-fun">define()</span> no es lo mismo que hacerlo mediante la palabra reservada <span class="php-res">const</span>.</p>
     <ul>
-      <li>Las constantes definidas con <span class="php-fun">define()</span> se crean en tiempo de ejecución mientras que las constantes definidas con <span class="php-res">const</span> se crean en tiempo de compilación. Eso significa que las primeras se pueden crear en cualquier momento durante la ejecución de un programa, mientras que las segundas no, como muestra el siguiente ejemplo.
+      <li>Las constantes definidas con <span class="php-fun">define()</span> se crean en tiempo de ejecución mientras que las constantes definidas con <span class="php-res">const</span> se crean en tiempo de compilación.
+        <ul>
+          <li>Por ejemplo, las constantes definidas mediante <span class="php-fun">define()</span> pueden depender de una condición, que se evalúa cuando se ejecuta el programa, pero las constantes definidas mediante <span class="php-res">const</span> no.
 
-        <div class="filaflex">
-          <div class="icono-ok">
-            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
-          </div>
-          <div class="codigo">
-            <pre>
+            <div class="filaflex">
+              <div class="icono-ok">
+                <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+              </div>
+              <div class="codigo">
+                <pre>
 <code class="language-php">&lt;?php
 $decimales = 6;
 if ($decimales == 6) {
@@ -247,10 +249,102 @@ if ($decimales == 6) {
 print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;El valor de pi es 3.141592&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <div class="filaflex">
+              <div class="icono-ok">
+                <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+              </div>
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$decimales = 6;
+if ($decimales == 6) {
+    const PI = 3.141592;
+} else {
+    const PI = 3.14;
+}
+print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-html">
+                <b>Parse error</b>: syntax error, unexpected 'const' (T_CONST) in <b>ejemplo.php</b> on line <b>4</b>
+              </div>
+            </div>
+          </li>
+          <li>Por ejemplo, las constantes definidas mediante <span class="php-fun">define()</span> pueden depender de variables del programa, que se evalúan cuando se ejecuta el programa, pero las constantes definidas mediante <span class="php-res">const</span> no.
+
+            <div class="filaflex">
+              <div class="icono-ok">
+                <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+              </div>
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$a = 5;
+define("CINCO", $a);
+print "&lt;p&gt;CINCO es " . CINCO . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <pre>
+<code class="language-html">&lt;p&gt;CINCO es 5&lt;/p&gt;</code>
+</pre>
+              </div>
+            </div>
+
+            <div class="filaflex">
+              <div class="icono-ok">
+                <img src="../varios/iconos/icono-okno.svg" alt="Incorrecto" title="Incorrecto" width="40" height="40">
+              </div>
+              <div class="codigo">
+                <pre>
+<code class="language-php">&lt;?php
+$a = 5;
+const CINCO = $a;
+print "&lt;p&gt;CINCO es " . CINCO . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+              </div>
+              <div class="resultado-codigo">
+                <b>Fatal error</b>: Constant expression contains invalid operations in <b>ejemplo.php</b> on line <b>3</b>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>En una función, las constantes se deben definir mediante <span class="php-fun">define()</span> (y se pueden utilizar fuera de la función), pero no se pueden definir mediante <span class="php-res">const</span>.
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+function prueba()
+{
+    define("ABC", 5);
+    print "&lt;p&gt;ABC es " . ABC . "&lt;/p&gt;\n";
+}
+
+prueba();
+print "&lt;p&gt;ABC es " . ABC . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
           </div>
           <div class="resultado-codigo">
             <pre>
-<code class="language-html">&lt;p&gt;El valor de pi es 3.141592&lt;/p&gt;</code>
+<code class="language-html">&lt;p&gt;ABC es 5&lt;/p&gt;<br>
+&lt;p&gt;ABC es 5&lt;/p&gt;</code>
 </pre>
           </div>
         </div>
@@ -262,22 +356,45 @@ print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
           <div class="codigo">
             <pre>
 <code class="language-php">&lt;?php
-$decimales = 6;
-if ($decimales == 6) {
-    const PI = 3.141592;
-} else {
-    const PI = 3.14;
+function prueba()
+{
+    const ABC = 5;
+    print "&lt;p&gt;ABC es " . ABC . "&lt;/p&gt;\n";
 }
-print "&lt;p&gt;El valor de pi es " . PI . "&lt;/p&gt;\n";
+
+prueba();
+print "&lt;p&gt;ABC es " . ABC . "&lt;/p&gt;\n";
 ?&gt;</code>
 </pre>
           </div>
           <div class="resultado-html">
-            <b>Parse error</b>: syntax error, unexpected 'const' (T_CONST) in <b>ejemplo.php</b> on line <b>4</b>
+            <b>Parse error</b>: syntax error, unexpected token &quot;const&quot; in <b>prueba.php</b> on line <b>4</b>
           </div>
         </div>
       </li>
-      <li>Sin embargo, al definir una constante en una clase, se debe hacer con <span class="php-res">const</span>, como muestra el siguiente ejemplo.
+      <li>Sin embargo, al definir una constante en una clase, se debe hacer con <span class="php-res">const</span>.
+
+        <div class="filaflex">
+          <div class="icono-ok">
+            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
+          </div>
+          <div class="codigo">
+            <pre>
+<code class="language-php">&lt;?php
+class Constantes
+{
+    const PI = 3.14;
+}
+print "&lt;p&gt;El valor de pi es " . Constantes::PI . "&lt;/p&gt;\n";
+?&gt;</code>
+</pre>
+          </div>
+          <div class="resultado-codigo">
+            <pre>
+<code class="language-html">&lt;p&gt;El valor de pi es 3.141592&lt;/p&gt;</code>
+</pre>
+          </div>
+        </div>
 
         <div class="filaflex">
           <div class="icono-ok">
@@ -296,28 +413,6 @@ print "&lt;p&gt;El valor de pi es " . Constantes::PI . "&lt;/p&gt;\n";
           </div>
           <div class="resultado-html">
             <b>Parse error</b>: syntax error, unexpected 'define' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST) in <b>ejemplo.php</b> on line <b>15</b>
-          </div>
-        </div>
-
-        <div class="filaflex">
-          <div class="icono-ok">
-            <img src="../varios/iconos/icono-oksi.svg" alt="Correcto" title="Correcto" width="40" height="40">
-          </div>
-          <div class="codigo">
-            <pre>
-<code class="language-php">&lt;?php
-class Constantes
-{
-    const PI = 3.14;
-}
-print "&lt;p&gt;El valor de pi es " . Constantes::PI . "&lt;/p&gt;\n";
-?&gt;</code>
-</pre>
-          </div>
-          <div class="resultado-codigo">
-            <pre>
-<code class="language-html">&lt;p&gt;El valor de pi es 3.141592&lt;/p&gt;</code>
-</pre>
           </div>
         </div>
       </li>
@@ -512,7 +607,7 @@ print "&lt;p&gt;En este servidor un decimal se puede redondear " . PHP_FLOAT_DIG
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 6 de diciembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 14 de diciembre de 2022</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
