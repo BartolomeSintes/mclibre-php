@@ -40,21 +40,6 @@ $cfg["dbTablas"] = [
     $cfg["tablaNoticias"],
 ];
 
-// Niveles de usuario
-
-$cfg["usuariosNiveles"] = [
-    NIVEL_USUARIO_BASICO => "Usuario Básico",
-    NIVEL_ADMINISTRADOR  => "Administrador",
-];
-
-// Carga Biblioteca específica de la base de datos utilizada
-
-if ($cfg["dbMotor"] == SQLITE) {
-    require_once "biblioteca-sqlite.php";
-} elseif ($cfg["dbMotor"] == MYSQL) {
-    require_once "biblioteca-mysql.php";
-}
-
 // Valores de ordenación de las tablas
 
 $cfg["tablaUsuariosColumnasOrden"] = [
@@ -73,6 +58,21 @@ $cfg["tablaNoticiasColumnasOrden"] = [
     "cuerpo ASC", "cuerpo DESC",
     "creado ASC", "creado DESC",
 ];
+
+// Niveles de usuario
+
+$cfg["usuariosNiveles"] = [
+    NIVEL_USUARIO_BASICO => "Usuario Básico",
+    NIVEL_ADMINISTRADOR  => "Administrador",
+];
+
+// Carga Biblioteca específica de la base de datos utilizada
+
+if ($cfg["dbMotor"] == SQLITE) {
+    require_once "biblioteca-sqlite.php";
+} elseif ($cfg["dbMotor"] == MYSQL) {
+    require_once "biblioteca-mysql.php";
+}
 
 // Funciones comunes
 
@@ -222,7 +222,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2023-12-15\">15 de diciembre de 2023</time>\n";
+    print "      <time datetime=\"2023-12-16\">16 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

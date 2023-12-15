@@ -29,16 +29,16 @@
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/pdo-1.sqlite";                             // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/pdo-1.sqlite";           // Ubicación de la base de datos
 
 // Tamaño de los campos en la tabla Personas
 
-$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas > Nombre
-$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas > Apellidos
+$cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas > Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas > Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 
-// Base de datos
+// Nombres de las tablas
 
 $cfg["tablaPersonas"] = "personas";                      // Nombre de la tabla Personas
 

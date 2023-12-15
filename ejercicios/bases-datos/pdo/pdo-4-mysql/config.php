@@ -11,18 +11,18 @@
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "localhost";                              // Nombre de host
-$cfg["mysqlUser"]     = "";                                       // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
-$cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos
+$cfg["mysqlHost"]     = "localhost";           // Nombre de host
+$cfg["mysqlUser"]     = "";                    // Nombre de usuario
+$cfg["mysqlPassword"] = "";                    // Contraseña de usuario
+$cfg["mysqlDatabase"] = "";                    // Nombre de la base de datos
 
 // Configuración de la tabla Personas
 
-$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas > Nombre
-$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas > Apellidos
+$cfg["tablaPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas > Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas > Apellidos
 
 // OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
 
-// Base de datos
+// Nombre de las tablas
 
-$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";           // Nombre de la tabla Personas
+$cfg["tablaPersonas"] = ".personas";           // Nombre de la tabla Personas

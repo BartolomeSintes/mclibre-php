@@ -5,6 +5,8 @@
  * @link      https://www.mclibre.org
  */
 
+// Variables configurables por el administrador de la aplicación
+
 require_once "config.php";
 
 // SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS

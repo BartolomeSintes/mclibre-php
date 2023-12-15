@@ -32,6 +32,11 @@ require_once "config.php";
 $cfg["tablaPersonas"] = "personas";         // Nombre de la tabla Personas
 $cfg["tablaUsuarios"] = "usuarios";         // Nombre de la tabla Usuarios
 
+$cfg["dbTablas"] = [
+    $cfg["tablaPersonas"],
+    $cfg["tablaUsuarios"],
+];
+
 // Valores de ordenación de las tablas
 
 $cfg["tablaPersonasColumnasOrden"] = [
@@ -62,13 +67,6 @@ if ($cfg["dbMotor"] == SQLITE) {
 } elseif ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";
 }
-
-// Tablas
-
-$cfg["dbTablas"] = [
-    $cfg["tablaPersonas"],
-    $cfg["tablaUsuarios"],
-];
 
 // Funciones comunes
 
@@ -202,7 +200,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2023-12-15\">15 de diciembre de 2023</time>\n";
+    print "      <time datetime=\"2023-12-16\">16 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

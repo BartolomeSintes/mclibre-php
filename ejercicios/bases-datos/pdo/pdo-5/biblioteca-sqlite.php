@@ -5,13 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// SQLITE: DEFINICIONES ESPECÍFICAS
-
-// SQLITE: Nombres de las tablas
-
-$cfg["tablaPersonas"] = "personas";                       // Nombre de la tabla Personas
-
-// SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
+// SQLITE: Conexión con la base de datos
 
 function conectaDb()
 {
@@ -29,7 +23,7 @@ function conectaDb()
     }
 }
 
-// SQLITE: FUNCIÓN DE BORRADO Y CREACIÓN DE TABLA
+// SQLITE: Borrado y creación de tabla
 
 function borraTodo()
 {

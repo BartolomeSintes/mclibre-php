@@ -8,11 +8,15 @@
 // Constantes y variables configurables por el programador de la aplicación
 
 define("SQLITE", 1);                        // Base de datos SQLITE
-define("MYSQL", 2);                         // Base de datos MySQLo
+define("MYSQL", 2);                         // Base de datos MySQL
 
 // Variables configurables por el administrador de la aplicación
 
 require_once "config.php";
+
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";         // Nombre de la tabla Personas
 
 // Carga Biblioteca específica de la base de datos utilizada
 
