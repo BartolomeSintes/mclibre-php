@@ -7,7 +7,11 @@
 
 // OPCIONES RELACIONADAS CON LA ESTRUCTURA DE LA BASE DE DATOS
 
-// Tablas
+// Nombres de las tablas
+
+$cfg["tablaUsuarios"]   = "usuarios";       // Nombre de la tabla Usuarios
+$cfg["tablaCategorias"] = "categorias";     // Nombre de la tabla Categorías
+$cfg["tablaNoticias"]   = "noticias";       // Nombre de la tabla Noticias
 
 $cfg["dbTablas"] = [
     $cfg["tablaUsuarios"],

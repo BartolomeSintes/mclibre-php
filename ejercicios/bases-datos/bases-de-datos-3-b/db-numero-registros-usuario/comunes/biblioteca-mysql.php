@@ -7,11 +7,6 @@
 
 // FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS MYSQL
 
-// MYSQL: Nombres de las tablas
-
-$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
-$cfg["tablaUsuarios"] = "$cfg[mysqlDatabase].usuarios";   // Nombre de la tabla Usuarios
-
 // MYSQL: Conexión con la base de datos
 
 function conectaDb()
@@ -19,13 +14,16 @@ function conectaDb()
     global $cfg;
 
     try {
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];dbname=$cfg[mysqlDatabase];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+    } catch (PDOException $e) {
         $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
-        $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-        $tmp->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        return $tmp;
     } catch (PDOException $e) {
         print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
         exit;
+    } finally {
+        $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        $tmp->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        return $tmp;
     }
 }
 
@@ -57,46 +55,54 @@ function borraTodo()
         print "    <p>Base de datos creada correctamente.</p>\n";
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
-                     id INTEGER UNSIGNED AUTO_INCREMENT,
-                     usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
-                     password VARCHAR($cfg[tablaUsuariosTamPassword]),
-                     nivel INTEGER NOT NULL,
-                     registros INTEGER,
-                     PRIMARY KEY(id)
-                     )";
+        $consulta = "USE $cfg[mysqlDatabase]";
 
         if (!$pdo->query($consulta)) {
-            print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
-            print "    <p>Tabla Usuarios creada correctamente.</p>\n";
+            print "    <p>Base de datos seleccionada correctamente.</p>\n";
             print "\n";
-
-            $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                         (id, usuario, password, nivel)
-                         VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ", $cfg[tablaPersonasMaxReg])";
+            $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+                         id INTEGER UNSIGNED AUTO_INCREMENT,
+                         usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
+                         password VARCHAR($cfg[tablaUsuariosTamPassword]),
+                          nivel INTEGER NOT NULL,
+                         registros INTEGER,
+                         PRIMARY KEY(id)
+                         )";
 
             if (!$pdo->query($consulta)) {
-                print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
-                print "    <p>Registro de usuario creado correctamente.</p>\n";
+                print "    <p>Tabla Usuarios creada correctamente.</p>\n";
+                print "\n";
+
+                $consulta = "INSERT INTO $cfg[tablaUsuarios]
+                             (id, usuario, password, nivel)
+                             VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ", $cfg[tablaPersonasMaxReg])";
+
+                if (!$pdo->query($consulta)) {
+                    print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                } else {
+                    print "    <p>Registro de usuario creado correctamente.</p>\n";
+                }
             }
-        }
-        print "\n";
+            print "\n";
 
-        $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
-                     id INTEGER UNSIGNED AUTO_INCREMENT,
-                     nombre VARCHAR($cfg[tablaPersonasTamNombre]),
-                     apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
-                     telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
-                     correo VARCHAR($cfg[tablaPersonasTamCorreo]),
-                     PRIMARY KEY(id)
-                     )";
+            $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+                         id INTEGER UNSIGNED AUTO_INCREMENT,
+                         nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                         apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                         telefono VARCHAR($cfg[tablaPersonasTamTelefono]),
+                         correo VARCHAR($cfg[tablaPersonasTamCorreo]),
+                         PRIMARY KEY(id)
+                         )";
 
-        if (!$pdo->query($consulta)) {
-            print "    <p class=\"aviso\">Error al crear la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } else {
-            print "    <p>Tabla Personas creada correctamente.</p>\n";
+            if (!$pdo->query($consulta)) {
+                print "    <p class=\"aviso\">Error al crear la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            } else {
+                print "    <p>Tabla Personas creada correctamente.</p>\n";
+            }
         }
     }
 }

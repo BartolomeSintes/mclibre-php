@@ -28,6 +28,18 @@ define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrado
 
 require_once "config.php";
 
+// Nombres de las tablas
+
+$cfg["tablaUsuarios"]   = "usuarios";       // Nombre de la tabla Usuarios
+$cfg["tablaCategorias"] = "categorias";     // Nombre de la tabla Categorías
+$cfg["tablaNoticias"]   = "noticias";       // Nombre de la tabla Noticias
+
+$cfg["dbTablas"] = [
+    $cfg["tablaUsuarios"],
+    $cfg["tablaCategorias"],
+    $cfg["tablaNoticias"],
+];
+
 // Niveles de usuario
 
 $cfg["usuariosNiveles"] = [
@@ -42,14 +54,6 @@ if ($cfg["dbMotor"] == SQLITE) {
 } elseif ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";
 }
-
-// Tablas
-
-$cfg["dbTablas"] = [
-    $cfg["tablaUsuarios"],
-    $cfg["tablaCategorias"],
-    $cfg["tablaNoticias"],
-];
 
 // Valores de ordenación de las tablas
 
@@ -218,7 +222,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-12-13\">13 de diciembre de 2022</time>\n";
+    print "      <time datetime=\"2023-12-15\">15 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

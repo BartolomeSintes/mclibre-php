@@ -21,6 +21,10 @@ define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la págin
 
 require_once "config.php";
 
+// Nombre de la tabla
+
+$cfg["tablaPersonas"] = "personas";         // Nombre de la tabla Personas
+
 // Valores de ordenación de la tabla
 
 $cfg["tablaPersonasColumnasOrden"] = [
@@ -143,7 +147,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-12-13\">13 de diciembre de 2022</time>\n";
+    print "      <time datetime=\"2023-12-15\">15 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

@@ -24,6 +24,11 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
 
 require_once "config.php";
 
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";         // Nombre de la tabla Personas
+$cfg["tablaUsuarios"] = "usuarios";         // Nombre de la tabla Usuarios
+
 // Valores de ordenación de las tablas
 
 $cfg["tablaPersonasColumnasOrden"] = [
@@ -49,8 +54,8 @@ if ($cfg["dbMotor"] == SQLITE) {
 // Tablas
 
 $cfg["dbTablas"] = [
-    $cfg["tablaUsuarios"],
     $cfg["tablaPersonas"],
+    $cfg["tablaUsuarios"],
 ];
 
 // Funciones comunes
@@ -169,7 +174,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2022-12-13\">13 de diciembre de 2022</time>\n";
+    print "      <time datetime=\"2023-12-15\">15 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

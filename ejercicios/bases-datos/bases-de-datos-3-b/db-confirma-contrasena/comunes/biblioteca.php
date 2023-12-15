@@ -27,6 +27,11 @@ define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrado
 
 require_once "config.php";
 
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";         // Nombre de la tabla Personas
+$cfg["tablaUsuarios"] = "usuarios";         // Nombre de la tabla Usuarios
+
 // Valores de ordenación de las tablas
 
 $cfg["tablaPersonasColumnasOrden"] = [
@@ -60,8 +65,8 @@ if ($cfg["dbMotor"] == SQLITE) {
 // Tablas
 
 $cfg["dbTablas"] = [
-    $cfg["tablaUsuarios"],
     $cfg["tablaPersonas"],
+    $cfg["tablaUsuarios"],
 ];
 
 // Funciones comunes
@@ -196,7 +201,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2023-01-30\">30 de enero de 2023</time>\n";
+    print "      <time datetime=\"2023-12-15\">15 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

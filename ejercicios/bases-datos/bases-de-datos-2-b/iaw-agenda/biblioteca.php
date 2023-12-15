@@ -17,6 +17,10 @@ define("MENU_VOLVER", 2);                   // Menú Volver a inicio
 
 require_once "config.php";
 
+// Nombre de la tabla
+
+$cfg["tablaPersonas"] = "personas";         // Nombre de la tabla Personas
+
 // Valores de ordenación de la tabla
 
 $cfg["tablaPersonasColumnasOrden"] = [
@@ -125,7 +129,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2023-01-17\">17 de enero de 2023</time>\n";
+    print "      <time datetime=\"2023-12-15\">15 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";

@@ -7,11 +7,6 @@
 
 // FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS pgsql
 
-// POSTGRESQL: Nombres de las tablas
-
-$cfg["tablaPersonas"] = "personas";   // Nombre de la tabla Personas
-$cfg["tablaUsuarios"] = "usuarios";   // Nombre de la tabla Usuarios
-
 // POSTGRESQL: Conexión con la base de datos
 
 function conectaDb()

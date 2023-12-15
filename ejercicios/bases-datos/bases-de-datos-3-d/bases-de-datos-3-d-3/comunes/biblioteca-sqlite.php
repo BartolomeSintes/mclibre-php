@@ -7,12 +7,6 @@
 
 // FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS SQLITE
 
-// SQLITE: Nombres de las tablas
-
-$cfg["tablaUsuarios"]   = "usuarios";                       // Nombre de la tabla Usuarios
-$cfg["tablaCategorias"] = "categorias";                     // Nombre de la tabla Noticias
-$cfg["tablaNoticias"]   = "noticias";                       // Nombre de la tabla Noticias
-
 // SQLITE: Conexión con la base de datos
 
 function conectaDb()
