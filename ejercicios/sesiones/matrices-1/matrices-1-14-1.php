@@ -61,6 +61,7 @@ for ($i = 0; $i < $_SESSION["numeroDibujos"]; $i++) {
         $destapados += 1;
     }
 }
+
 // Escribimos el tíulo de la página
 print "  <h1>$destapados dibujos visibles y " . count($_SESSION["dibujos"]) - $destapados . " dibujos ocultos</h1>\n";
 print "\n";

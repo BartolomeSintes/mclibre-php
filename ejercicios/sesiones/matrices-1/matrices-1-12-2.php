@@ -54,6 +54,7 @@ function recoge($key, $type = "")
     }
     return $tmp;
 }
+
 // Recogemos el emoji a seleccionar
 $selecciona = recoge("selecciona");
 

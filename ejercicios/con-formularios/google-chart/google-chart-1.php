@@ -109,6 +109,7 @@ for ($i=1; $i<$numeroValores; $i++) {
         }
     }
 }
+
 // Si no se ha hecho clic en Enviar o los valores no son correctos
 if (!isset($_REQUEST["enviar"]) || !$okValores) {
     if (isset($_REQUEST["enviar"])) {
