@@ -5,7 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// Constantes y variables configurables por el programador de la aplicación
+// Constantes configurables por el programador de la aplicación
 
 define("SQLITE", 1);                        // Base de datos SQLITE
 define("MYSQL", 2);                         // Base de datos MySQL
@@ -27,6 +27,8 @@ define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrado
 // Variables configurables por el administrador de la aplicación
 
 require_once "config.php";
+
+// Variables configurables por el programador de la aplicación
 
 // Nombres de las tablas
 
@@ -222,7 +224,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2023-12-16\">16 de diciembre de 2023</time>\n";
+    print "      <time datetime=\"2023-12-18\">18 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
