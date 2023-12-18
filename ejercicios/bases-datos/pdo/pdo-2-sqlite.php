@@ -170,9 +170,7 @@ function borraRegistros($id)
     }
 }
 
-// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
-
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// Variables configurables por el administrador de la aplicación
 
 // Configuración para SQLite
 
@@ -183,7 +181,7 @@ $cfg["sqliteDatabase"] = "/tmp/pdo-2.sqlite";           // Ubicación de la base
 $cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas > Nombre
 $cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas > Apellidos
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+// Variables configurables por el programador de la aplicación
 
 // Nombres de las tablas
 
@@ -218,7 +216,7 @@ print "\n";
 print "  <footer>\n";
 print "    <p class=\"ultmod\">\n";
 print "      Última modificación de esta página:\n";
-print "      <time datetime=\"2022-12-15\">15 de diciembre de 2022</time>\n";
+print "      <time datetime=\"2023-12-18\">18 de diciembre de 2023</time>\n";
 print "    </p>\n";
 print "\n";
 print "    <p class=\"licencia\">\n";

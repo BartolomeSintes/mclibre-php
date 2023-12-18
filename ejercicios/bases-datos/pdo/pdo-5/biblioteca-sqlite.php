@@ -5,6 +5,8 @@
  * @link      https://www.mclibre.org
  */
 
+// SQLITE: FUNCIONES ESPECÍFICAS
+
 // SQLITE: Conexión con la base de datos
 
 function conectaDb()
@@ -28,6 +30,9 @@ function conectaDb()
 function borraTodo()
 {
     global $pdo, $cfg;
+
+    print "    <p class=\"aviso\">Está utilizando SQLite</p>\n";
+    print "\n";
 
     $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 

@@ -33,6 +33,9 @@ function borraTodo()
 {
     global $pdo, $cfg;
 
+    print "    <p class=\"aviso\">Está utilizando MySQL con el usuario $cfg[mysqlUser]</p>\n";
+    print "\n";
+
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
     if (!$pdo->query($consulta)) {

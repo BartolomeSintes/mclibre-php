@@ -5,9 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// MYSQL: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
-
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// Variables configurables por el administrador de la aplicación
 
 // Configuración para MySQL
 
@@ -20,9 +18,3 @@ $cfg["mysqlDatabase"] = "";                    // Nombre de la base de datos
 
 $cfg["tablaPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas > Nombre
 $cfg["tablaPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas > Apellidos
-
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-
-// Nombre de las tablas
-
-$cfg["tablaPersonas"] = ".personas";           // Nombre de la tabla Personas

@@ -5,7 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// Constantes y variables configurables por el programador de la aplicación
+// Constantes configurables por el programador de la aplicación
 
 define("SQLITE", 1);                        // Base de datos SQLITE
 define("MYSQL", 2);                         // Base de datos MySQL
@@ -13,6 +13,8 @@ define("MYSQL", 2);                         // Base de datos MySQL
 // Variables configurables por el administrador de la aplicación
 
 require_once "config.php";
+
+// Variables configurables por el programador de la aplicación
 
 // Nombres de las tablas
 
@@ -25,6 +27,8 @@ if ($cfg["dbMotor"] == SQLITE) {
 } elseif ($cfg["dbMotor"] == MYSQL) {
     require_once "biblioteca-mysql.php";
 }
+
+// Funciones comunes
 
 // FUNCIÓN DE INSERCIÓN DE REGISTRO
 

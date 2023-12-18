@@ -9,6 +9,14 @@
 
 require_once "config.php";
 
+// Variables configurables por el programador de la aplicación
+
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";           // Nombre de la tabla Personas
+
+// Funciones
+
 // MYSQL: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
 
 function conectaDb()

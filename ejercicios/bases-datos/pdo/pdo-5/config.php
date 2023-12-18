@@ -5,9 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
-
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// Variables configurables por el administrador de la aplicación
 
 // Base de datos utilizada por la aplicación
 
