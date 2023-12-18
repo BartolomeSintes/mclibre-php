@@ -95,7 +95,7 @@ $pdo = new PDO("<i>informacion-para-la-conexion</i>");</code>
         </li>
       </ul>
 
-      <p>Hasta PHP 8.0, publicado en 2020, el modo predeterminado era ERRMODE_SILENT, pero desde esa versión es ERRMODE_EXCEPTION. En estos apuntes se utiliza el modo PDO::ERRMODE_SILENT, que se puede abordar con simples estructuras if .. else ..., mientras que el modo PDO::ERRMODE_EXCEPTION requiere estructuras try ... catch ... que no se tratan actualmente en estos apuntes.</p>
+      <p>Hasta PHP 8.0, publicado en 2020, el modo predeterminado era ERRMODE_SILENT, pero desde esa versión es ERRMODE_EXCEPTION. En estos apuntes se utiliza el modo PDO::ERRMODE_SILENT, que se puede abordar con simples estructuras if .. else ..., mientras que el modo PDO::ERRMODE_EXCEPTION requiere estructuras try ... catch ... que no se utilizan en estos apuntes (excepto en la conexión con las bases de datos).</p>
 
       <p>El modo de manejo de errores se selecciona activando el atributo PDO::ATTR_ERRMODE tras conectarse con la base de datos, como se comenta más adelante en esta lección en el apartado dedicado a la conexión con la base de datos:</p>
       <div class="codigo">
@@ -537,18 +537,7 @@ if (!$resultado) {
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/db.sqlite";                        // Ubicación de la base de datos
-
-// Configuración de la tabla Personas
-
-$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas &gt; Nombre
-$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas &gt; Apellidos
-
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-
-// Base de datos
-
-$cfg["tablaPersonas"] = "personas";                               // Nombre de la tabla Personas</code>
+$cfg["sqliteDatabase"] = "/tmp/db.sqlite";                        // Ubicación de la base de datos</code>
 </pre>
       </div>
 
@@ -565,18 +554,7 @@ $cfg["tablaPersonas"] = "personas";                               // Nombre de l
 $cfg["mysqlHost"]     = "localhost";                              // Nombre de host
 $cfg["mysqlUser"]     = "";                                       // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                       // Contraseña de usuario
-$cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos
-
-// Configuración de la tabla Personas
-
-$cfg["tablaPersonasTamNombre"]    = 40;                           // Tamaño de la columna Personas &gt; Nombre
-$cfg["tablaPersonasTamApellidos"] = 60;                           // Tamaño de la columna Personas &gt; Apellidos
-
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-
-// Base de datos
-
-$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";           // Nombre de la tabla Personas</code>
+$cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos</code>
 </pre>
       </div>
     </section>
@@ -651,13 +629,16 @@ function conectaDb()
     global $cfg;
 
     try {
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];dbname=$cfg[mysqlDatabase];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+    } catch (PDOException $e) {
         $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
-        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-        $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
         exit;
+    } finally {
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        return $tmp;
     }
 }
 
@@ -669,8 +650,10 @@ $pdo = conectaDb();</code>
 
         <p><strong>Notas</strong>:</p>
         <ul>
-          <li>El <a href="https://www.php.net/manual/en/ref.pdo-mysql.connection.php">DSN para MySQL</a> permite indicar el servidor en el que se encuentra la base de datos, su puerto, el nombre de la base de datos y el juego de caracteres. En estos apuntes se indican únicamente el servidor (localhost) y el juego de caracteres (<a href="https://dev.mysql.com/doc/refman/8.0/en/charset-unicode-utf8mb4.html">utf8mb4</a>). El nombre de usuario de la base de datos y su contraseña se añaden como segundo y tercer parámetros.</li>
-          </ul>
+          <li>El <a href="https://www.php.net/manual/en/ref.pdo-mysql.connection.php">DSN para MySQL</a> permite indicar el servidor en el que se encuentra la base de datos, su puerto, el nombre de la base de datos y el juego de caracteres. En estos apuntes se indican el servidor (localhost), el nombre de la base de datos y el juego de caracteres (<a href="https://dev.mysql.com/doc/refman/8.0/en/charset-unicode-utf8mb4.html">utf8mb4</a>). El nombre de usuario de la base de datos y su contraseña se añaden como segundo y tercer parámetros.</li>
+          <li>Si en la conexión se indica el nombre de la base de datos, en las consultas posteriores basta con indicar el nombre de la tabla afectada, mientras que si en la la conexión no se indica en nombre de la base de datos, en las consultas posteriores se debe indicar también el nombre de la base de datos en la que se encuentra la tabla afectada (siguiendo el formato nombreDB.nombreTabla). Para unificar las consultas en distintas nombres de bases de datos (SQLite no requiere nunca el nombre de la base de datos, PostgreSQL requiere indicar el nombre de la base de datos en la conexión y MariDB permite las dos formas), en estos apuntes se incluye el nombre de la base de datos en la conexión.</li>
+          <li>Si se indica el nombre de la base de datos en la conexión, un posible problema es que MariaDB requiere que la base de datos exista. Y si no existe, se produce una excepción. Para permitir que nuestros programas realicen la conexión aunque no exista la base de datos, la función intenta en segundo lugar conectarse sin indicar el nombre de la base de datos. En este caso habría que asegurarse que nuestros programas crean la base de datos antes de hacer consultas.</li>
+        </ul>
       </section>
     </section>
 
@@ -749,7 +732,7 @@ print "\n";</code>
 </pre>
         </div>
 
-        <p>Para crear una base de datos, se utiliza la consulta CREATE DATABASE.</p>
+        <p>Para crear una base de datos, se utiliza la consulta CREATE DATABASE. En el caso de MySQL es necesario indicar con una consulta USE que se desea trabajar con esa base de datos (independientemente de que nos hayamos conectado indicando el nombre de la base de datos en el DSN o no).</p>
 
         <div class="codigo copy">
           <pre>
@@ -764,6 +747,15 @@ if (!$pdo-&gt;query($consulta)) {
 } else {
     print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
     print "\n";
+
+    $consulta = "USE $cfg[mysqlDatabase]";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
 }</code>
 </pre>
         </div>
@@ -1323,13 +1315,16 @@ function conectaDb()
     global $cfg;
 
     try {
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];dbname=$cfg[mysqlDatabase];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+    } catch (PDOException $e) {
         $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
-        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-        $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        return $tmp;
     } catch (PDOException $e) {
         print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
         exit;
+    } finally {
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        return $tmp;
     }
 }</code>
 </pre>
@@ -1354,9 +1349,20 @@ $pdo = conectaDb();</code>
     <section id="create-drop-configurable">
       <h4>Borrado y creación de base de datos y tablas configurable</h4>
 
-      <p>El resultado sería</p>
+      <p>El resultado podría ser el siguiente</p>
       <ul>
-        <li>config.php: contiene las variables de configuración del programador comunes:
+        <li>biblioteca.php: contiene las variables de configuración elegidas por el programador (y que en principio el adminitrador de la aplicación no tiene por qué tener interés en modificar):
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">// biblioteca.php
+// Configuración de la tabla Personas
+
+$cfg["tablaPersonas"] = "personas";                         // Nombre de la tabla Personas</code>
+</pre>
+          </div>
+        </li>
+        <li>config.php: contiene las variables de configuración elegidas por el administrador de la aplicación:
 
           <div class="codigo">
             <pre>
@@ -1374,10 +1380,6 @@ $cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la col
             <pre>
 <code class="language-php">// biblioteca-sqlite.php
 // FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS SQLITE
-
-// SQLITE: Nombres de las tablas
-
-$cfg["tablaPersonas"] = "personas";                       // Nombre de la tabla Personas
 
 // SQLITE: Consultas de borrado y creación de tablas
 
@@ -1417,10 +1419,6 @@ function borraTodo()
 <code class="language-php">// biblioteca-mysql.php
 // FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS MYSQL
 
-// MYSQL: Nombres de las tablas
-
-$cfg["tablaPersonas"] = "$cfg[mysqlDatabase].personas";   // Nombre de la tabla Personas
-
 // MYSQL: Consultas de borrado y creación de base de datos y tablas
 
 function borraTodo()
@@ -1446,17 +1444,26 @@ function borraTodo()
         print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
         print "\n";
 
-        $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
-                     id INTEGER UNSIGNED AUTO_INCREMENT,
-                     nombre VARCHAR($cfg[tablaPersonasTamNombre]),
-                     apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
-                     PRIMARY KEY(id)
-                     )";
+        $consulta = "USE $cfg[mysqlDatabase]";
 
         if (!$pdo-&gt;query($consulta)) {
-            print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
         } else {
-            print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+            print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
+            print "\n";
+
+            $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+                         id INTEGER UNSIGNED AUTO_INCREMENT,
+                         nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                         apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                         PRIMARY KEY(id)
+                         )";
+
+            if (!$pdo-&gt;query($consulta)) {
+                print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            } else {
+                print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+            }
         }
     }
 }</code>
@@ -1482,7 +1489,7 @@ borraTodo();</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de enero de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 17 de diciembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
