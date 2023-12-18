@@ -36,6 +36,8 @@
         <li><a href="#ejercicio-1">1 - SQLite: único</a></li>
         <li><a href="#ejercicio-2">2 - SQLite: funciones</a></li>
         <li><a href="#ejercicio-3">3 - SQLite: biblioteca</a></li>
+        <li><a href="#ejercicio-4">4 - MySQL: biblioteca</a></li>
+        <li><a href="#ejercicio-5">5 - DB configurable</a></li>
       </ul>
     </div>
   </nav>
@@ -54,9 +56,7 @@
 //
 // PASO 1: Definir las opciones del programa
 
-// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
-
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// Variables configurables por el administrador de la aplicación
 
 // Configuración para SQLite
 
@@ -67,7 +67,7 @@ $cfg["sqliteDatabase"] = "/tmp/pdo-1.sqlite";           // Ubicación de la base
 $cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
 $cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
+// Variables configurables por el programador de la aplicación
 
 // Nombres de las tablas
 
@@ -502,22 +502,18 @@ function borraRegistros($id)
     }
 }
 
-// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
-
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// Variables configurables por el administrador de la aplicación
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/pdo-2.sqlite";         // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/pdo-2.sqlite";           // Ubicación de la base de datos
 
 // Tamaño de los campos en la tabla Personas
 
-$cfg["tablaPersonasTamNombre"]    = 40;               // Tamaño de la columna Personas &gt; Nombre
-$cfg["tablaPersonasTamApellidos"] = 60;               // Tamaño de la columna Personas &gt; Apellidos
+$cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos
 
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-
-// Nombres de las tablas
+// Variables configurables por el programador de la aplicación
 
 $cfg["tablaPersonas"] = "personas";                   // Nombre de la tabla Personas
 
@@ -558,9 +554,7 @@ muestraRegistros();
         <div class="codigo">
           <pre>
 <code class="language-php">&lt;?php
-// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
-
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// Variables configurables por el administrador de la aplicación
 
 // Configuración para SQLite
 
@@ -569,13 +563,7 @@ $cfg["sqliteDatabase"] = "/tmp/pdo-3.sqlite";           // Ubicación de la base
 // Tamaño de los campos en la tabla Personas
 
 $cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
-$cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos
-
-// OPCIONES DISPONIBLES PARA EL PROGRAMADOR DE LA APLICACIÓN
-
-// Nombres de las tablas
-
-$cfg["tablaPersonas"] = "personas";                     // Nombre de la tabla Personas</code>
+$cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos</code>
 </pre>
         </div>
       </li>
@@ -587,6 +575,12 @@ $cfg["tablaPersonas"] = "personas";                     // Nombre de la tabla Pe
 // Variables configurables por el administrador de la aplicación
 
 require_once "config.php";
+
+// Variables configurables por el programador de la aplicación
+
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";           // Nombre de la tabla Personas
 
 // SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
 
@@ -777,8 +771,605 @@ muestraRegistros();
     </ul>
   </section>
 
+  <section id="ejercicio-4">
+    <h2>PDO 4 - MySQL: programa con biblioteca</h2>
+
+    <ul>
+      <li>config.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Variables configurables por el administrador de la aplicación
+
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "localhost";           // Nombre de host
+$cfg["mysqlUser"]     = "";                    // Nombre de usuario
+$cfg["mysqlPassword"] = "";                    // Contraseña de usuario
+$cfg["mysqlDatabase"] = "";                    // Nombre de la base de datos
+
+// Configuración de la tabla Personas
+
+$cfg["tablaPersonasTamNombre"]    = 40;        // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;        // Tamaño de la columna Personas &gt; Apellidos</code>
+</pre>
+        </div>
+      </li>
+
+      <li>biblioteca.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Variables configurables por el administrador de la aplicación
+
+require_once "config.php";
+
+// Variables configurables por el programador de la aplicación
+
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";           // Nombre de la tabla Personas
+
+// Funciones
+
+// MYSQL: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
+
+function conectaDb()
+{
+    global $cfg;
+
+    try {
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];dbname=$cfg[mysqlDatabase];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+    } catch (PDOException $e) {
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+    } catch (PDOException $e) {
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        exit;
+    } finally {
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        return $tmp;
+    }
+}
+
+// MYSQL: FUNCIÓN DE BORRADO Y CREACIÓN DE BASE DE DATOS Y TABLA
+
+function borraTodo()
+{
+    global $pdo, $cfg;
+
+    $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
+                 CHARACTER SET utf8mb4
+                 COLLATE utf8mb4_unicode_ci";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+
+    $consulta = "USE $cfg[mysqlDatabase]";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+                 id INTEGER UNSIGNED AUTO_INCREMENT,
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                 PRIMARY KEY(id)
+                 )";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    }
+}
+
+// FUNCIÓN DE INSERCIÓN DE REGISTRO
+
+function insertaRegistro($nombre, $apellidos)
+{
+    global $pdo, $cfg;
+
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
+                 (nombre, apellidos)
+                 VALUES (:nombre, :apellidos)";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE CONTEO DE REGISTROS
+
+function cuentaRegistros()
+{
+    global $pdo, $cfg;
+
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo-&gt;query($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE SELECCIÓN DE TODOS LOS REGISTROS
+
+function muestraRegistros()
+{
+    global $pdo, $cfg;
+
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo-&gt;query($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
+        print "    &lt;ul&gt;\n";
+        foreach ($resultado as $registro) {
+            print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
+        }
+        print "    &lt;/ul&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE MODIFICACIÓN DE REGISTRO
+
+function modificaRegistro($id, $nombre, $apellidos)
+{
+    global $pdo, $cfg;
+
+    $consulta = "UPDATE $cfg[tablaPersonas]
+                 SET nombre = :nombre, apellidos = :apellidos
+                 WHERE id = :id";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE BORRADO DE REGISTROS
+
+function borraRegistros($id)
+{
+    global $pdo, $cfg;
+
+    foreach ($id as $indice =&gt; $valor) {
+        $consulta = "DELETE FROM $cfg[tablaPersonas]
+                     WHERE id = :indice";
+
+        $resultado = $pdo-&gt;prepare($consulta);
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } else {
+            print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
+            print "\n";
+        }
+    }
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>index.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+require_once "biblioteca.php";
+
+$pdo = conectaDb();
+
+borraTodo();
+
+insertaRegistro("Pepito", "Conejo");
+
+cuentaRegistros();
+
+muestraRegistros();
+
+modificaRegistro(1, "Pepita", "Conejo");
+
+muestraRegistros();
+
+insertaRegistro("Numa", "Nigerio");
+
+cuentaRegistros();
+
+muestraRegistros();
+
+borraRegistros([1 =&gt; "on"]);
+
+muestraRegistros();
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ejercicio-5">
+    <h2>PDO 5 - Base de datos configurable: SQLite o MySQL</h2>
+
+    <ul>
+      <li>config.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Variables configurables por el administrador de la aplicación
+
+// Base de datos utilizada por la aplicación
+
+$cfg["dbMotor"] = SQLITE;                               // Valores posibles: MYSQL o SQLITE
+
+// Configuración para SQLite
+
+$cfg["sqliteDatabase"] = "/tmp/pdo-5.sqlite";           // Ubicación de la base de datos
+
+// Configuración para MySQL
+
+$cfg["mysqlHost"]     = "localhost";                    // Nombre de host
+$cfg["mysqlUser"]     = "";                             // Nombre de usuario
+$cfg["mysqlPassword"] = "";                             // Contraseña de usuario
+$cfg["mysqlDatabase"] = "";                             // Nombre de la base de datos
+
+// Tamaño de los campos en la tabla Personas
+
+$cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos</code>
+</pre>
+        </div>
+      </li>
+
+      <li>biblioteca.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// Constantes configurables por el programador de la aplicación
+
+define("SQLITE", 1);                        // Base de datos SQLITE
+define("MYSQL", 2);                         // Base de datos MySQL
+
+// Variables configurables por el administrador de la aplicación
+
+require_once "config.php";
+
+// Variables configurables por el programador de la aplicación
+
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";         // Nombre de la tabla Personas
+
+// Carga Biblioteca específica de la base de datos utilizada
+
+if ($cfg["dbMotor"] == SQLITE) {
+    require_once "biblioteca-sqlite.php";
+} elseif ($cfg["dbMotor"] == MYSQL) {
+    require_once "biblioteca-mysql.php";
+}
+
+// Funciones comunes
+
+// FUNCIÓN DE INSERCIÓN DE REGISTRO
+
+function insertaRegistro($nombre, $apellidos)
+{
+    global $pdo, $cfg;
+
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
+                 (nombre, apellidos)
+                 VALUES (:nombre, :apellidos)";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE CONTEO DE REGISTROS
+
+function cuentaRegistros()
+{
+    global $pdo, $cfg;
+
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo-&gt;query($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;La tabla contiene {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE SELECCIÓN DE TODOS LOS REGISTROS
+
+function muestraRegistros()
+{
+    global $pdo, $cfg;
+
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo-&gt;query($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s):&lt;/strong&gt;&lt;/p&gt;\n";
+        print "    &lt;ul&gt;\n";
+        foreach ($resultado as $registro) {
+            print "      &lt;li&gt;$registro[id] - $registro[nombre] - $registro[apellidos]&lt;/li&gt;\n";
+        }
+        print "    &lt;/ul&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE MODIFICACIÓN DE REGISTRO
+
+function modificaRegistro($id, $nombre, $apellidos)
+{
+    global $pdo, $cfg;
+
+    $consulta = "UPDATE $cfg[tablaPersonas]
+                 SET nombre = :nombre, apellidos = :apellidos
+                 WHERE id = :id";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+}
+
+// FUNCIÓN DE BORRADO DE REGISTROS
+
+function borraRegistros($id)
+{
+    global $pdo, $cfg;
+
+    foreach ($id as $indice =&gt; $valor) {
+        $consulta = "DELETE FROM $cfg[tablaPersonas]
+                     WHERE id = :indice";
+
+        $resultado = $pdo-&gt;prepare($consulta);
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } else {
+            print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
+            print "\n";
+        }
+    }
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>biblioteca-sqlite.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// SQLITE: FUNCIONES ESPECÍFICAS
+
+// SQLITE: Conexión con la base de datos
+
+function conectaDb()
+{
+    global $cfg;
+
+    try {
+        $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        $tmp-&gt;query("PRAGMA foreign_keys = ON");
+        $tmp-&gt;query("PRAGMA encoding = 'UTF-8'");
+        return $tmp;
+    } catch (PDOException $e) {
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        exit;
+    }
+}
+
+// SQLITE: Borrado y creación de tabla
+
+function borraTodo()
+{
+    global $pdo, $cfg;
+
+    print "    &lt;p class=\"aviso\"&gt;Está utilizando SQLite&lt;/p&gt;\n";
+    print "\n";
+
+    $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Tabla borrada correctamente (si existía).&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+                 id INTEGER PRIMARY KEY,
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
+                 )";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    }
+    print "\n";
+}</code>
+</pre>
+        </div>
+      </li>
+
+      <li>biblioteca-mysql.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+// MYSQL: FUNCIONES ESPECÍFICAS
+
+// MYSQL: Conexión con la base de datos
+
+function conectaDb()
+{
+    global $cfg;
+
+    try {
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];dbname=$cfg[mysqlDatabase];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+    } catch (PDOException $e) {
+        $tmp = new PDO("mysql:host=$cfg[mysqlHost];charset=utf8mb4", $cfg["mysqlUser"], $cfg["mysqlPassword"]);
+    } catch (PDOException $e) {
+        print "    &lt;p class=\"aviso\"&gt;Error: No puede conectarse con la base de datos. {$e-&gt;getMessage()}&lt;/p&gt;\n";
+        exit;
+    } finally {
+        $tmp-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        $tmp-&gt;setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+        return $tmp;
+    }
+}
+
+// MYSQL: Borrado y creación de base de datos y tabla
+
+function borraTodo()
+{
+    global $pdo, $cfg;
+
+    print "    &lt;p class=\"aviso\"&gt;Está utilizando MySQL con el usuario $cfg[mysqlUser]&lt;/p&gt;\n";
+    print "\n";
+
+    $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al borrar la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Base de datos borrada correctamente (si existía).&lt;/p&gt;\n";
+    }
+    print "\n";
+
+    $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
+                 CHARACTER SET utf8mb4
+                 COLLATE utf8mb4_unicode_ci";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la base de datos. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Base de datos creada correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+
+    $consulta = "USE $cfg[mysqlDatabase]";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Base de datos seleccionada correctamente.&lt;/p&gt;\n";
+        print "\n";
+    }
+
+    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+                 id INTEGER UNSIGNED AUTO_INCREMENT,
+                 nombre VARCHAR($cfg[tablaPersonasTamNombre]),
+                 apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
+                 PRIMARY KEY(id)
+                 )";
+
+    if (!$pdo-&gt;query($consulta)) {
+        print "    &lt;p class=\"aviso\"&gt;Error al crear la tabla. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
+    }
+}
+</code>
+</pre>
+        </div>
+      </li>
+
+      <li>index.php:
+        <div class="codigo">
+          <pre>
+<code class="language-php">&lt;?php
+require_once "biblioteca.php";
+
+$pdo = conectaDb();
+
+borraTodo();
+
+insertaRegistro("Pepito", "Conejo");
+
+cuentaRegistros();
+
+muestraRegistros();
+
+modificaRegistro(1, "Pepita", "Conejo");
+
+muestraRegistros();
+
+insertaRegistro("Numa", "Nigerio");
+
+cuentaRegistros();
+
+muestraRegistros();
+
+borraRegistros([1 =&gt; "on"]);
+
+muestraRegistros();
+?&gt;</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+  </section>
+
   <footer>
-    <p class="ultmod">Última modificación de esta página: 15 de diciembre de 2022</p>
+    <p class="ultmod">Última modificación de esta página: 18 de diciembre de 2023</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
