@@ -61,8 +61,6 @@ $recorta = [
     "password"  => $tamPassword
 ];
 
-ini_set("session.save_handler", "files"); // Por si session.save_handler = user en php.ini
-
 function conectaDb()
 {
     global $dbMotor, $dbDb;

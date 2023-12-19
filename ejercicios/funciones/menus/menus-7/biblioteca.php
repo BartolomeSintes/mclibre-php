@@ -22,8 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-ini_set("session.save_handler", "files"); // Por si session.save_handler = user en php.ini
-
 session_name("menus7");
 session_start();
 

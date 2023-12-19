@@ -1,11 +1,11 @@
 <?php
 /**
- * Menús 6 - biblioteca.php
+ * Menús 4 - biblioteca.php
  *
  * @author    Bartolomé Sintes Marco <bartolome.sintes+mclibre@gmail.com>
- * @copyright 2021 Bartolomé Sintes Marco
+ * @copyright 2023 Bartolomé Sintes Marco
  * @license   http://www.gnu.org/licenses/agpl.txt AGPL 3 or later
- * @version   2021-12-09
+ * @version   2023-12-19
  * @link      https://www.mclibre.org
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -22,12 +22,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-session_name("menus6");
-session_start();
-
-define("MENU_PRINCIPAL",  1);      // Para función cabecera()
-define("MENU_SECUNDARIO", 2);      // Para función cabecera()
-
 function cabecera($texto)
 {
     print "<!DOCTYPE html>\n";
@@ -36,7 +30,7 @@ function cabecera($texto)
     print "  <meta charset=\"utf-8\">\n";
     print "  <title>\n";
     print "    $texto.\n";
-    print "    Menús 6. Menús.\n";
+    print "    Menús 4. Menús.\n";
     print "    Ejercicios. PHP. Bartolomé Sintes Marco. www.mclibre.org\n";
     print "  </title>\n";
     print "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
@@ -45,15 +39,14 @@ function cabecera($texto)
     print "\n";
     print "<body>\n";
     print "  <header>\n";
-    print "    <h1>Menús 6 - $texto</h1>\n";
+    print "    <h1>Menús 4 - $texto</h1>\n";
     print "\n";
     print "    <nav>\n";
     print "      <ul>\n";
-    if (isset($_SESSION["conectado"])) {
-        print "        <li><a href=\"desconectar.php\">Desconectar</a></li>\n";
-    } else {
-        print "        <li><a href=\"conectar.php\">Conectar</a></li>\n";
-    }
+    print "        <li><a href=\"index.php\">Inicio</a></li>\n";
+    print "        <li><a href=\"conectar.php\">Conectar</a></li>\n";
+    print "        <li><a href=\"desconectar.php\">Desconectar</a></li>\n";
+    print "        <li><a href=\"comprobar.php\">Comprobar</a></li>\n";
     print "      </ul>\n";
     print "    </nav>\n";
     print "  </header>\n";
@@ -68,7 +61,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2021-12-09\">9 de diciembre de 2021</time>\n";
+    print "      <time datetime=\"2023-12-19\">19 de diciembre de 2023</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
