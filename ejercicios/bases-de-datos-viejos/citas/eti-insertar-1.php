@@ -25,7 +25,7 @@
 session_start();
 if (!isset($_SESSION["citasUsuario"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     include "biblioteca.php";
     $db = conectaDb();

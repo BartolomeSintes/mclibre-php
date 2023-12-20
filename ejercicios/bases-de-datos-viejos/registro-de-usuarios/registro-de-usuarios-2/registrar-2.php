@@ -26,7 +26,7 @@ require_once "biblioteca.php";
 session_start();
 if (isset($_SESSION["id"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
 
@@ -36,10 +36,10 @@ if (isset($_SESSION["id"])) {
 
     if (!$usuario) {
         header("Location:registrar-1.php?aviso=Error: Nombre de usuario no permitido");
-        exit();
+        exit;
     } elseif ($password != $password2) {
         header("Location:registrar-1.php?aviso=Error: Las contraseñas no coinciden");
-        exit();
+        exit;
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE usuario='$usuario'";
@@ -50,7 +50,7 @@ if (isset($_SESSION["id"])) {
             print "\n";
         } elseif ($result->fetchColumn() != 0) {
             header("Location:registrar-1.php?aviso=Error: El nombre de usuario ya está registrado");
-            exit();
+            exit;
         } else {
             $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
             $result = $db->query($consulta);
@@ -60,7 +60,7 @@ if (isset($_SESSION["id"])) {
                 print "\n";
             } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
                 header("Location:registrar-1.php?aviso=Error: Se ha alcanzado el número máximo de usuarios");
-                exit();
+                exit;
             } else {
                 $consulta = "INSERT INTO $dbUsuarios
                     VALUES (NULL, '$usuario', '" . md5($password) . "')";

@@ -35,15 +35,15 @@ $password2 = quitaComillasExteriores($password2);
 session_start();
 if (isset($_SESSION["citasUsuario"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     session_destroy();
     if (!$usuario || ($usuario == "menu_principal")) {
         header("Location:index.php?aviso=Nombre de usuario no permitido");
-        exit();
+        exit;
     } elseif ($password != md5($password2)) {
         header("Location:index.php?aviso=Error: Las contraseñas no coinciden");
-        exit();
+        exit;
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE usuario='$usuario'";

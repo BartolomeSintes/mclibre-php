@@ -27,7 +27,7 @@ require_once "biblioteca.php";
 session_start();
 if (isset($_SESSION["id"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
 
@@ -36,7 +36,7 @@ if (isset($_SESSION["id"])) {
 
     if (!$usuario) {
         header("Location:conectar-1.php?aviso=Error: Nombre de usuario no permitido");
-        exit();
+        exit;
     } else {
         $consulta = "SELECT * FROM $dbUsuarios
             WHERE usuario='$usuario'";
@@ -52,10 +52,10 @@ if (isset($_SESSION["id"])) {
                 $_SESSION["usuario"]  = $valor["usuario"];
                 $_SESSION["password"] = $valor["password"];
                 header("Location:index.php");
-                exit();
+                exit;
             } else {
                 header("Location:conectar-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
-                exit();
+                exit;
             }
         }
         $db = null;

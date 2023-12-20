@@ -36,7 +36,7 @@ $password2 = quitaComillasExteriores($password2);
 // Comprobación inicial por si se recarga la página nada más registrar un nuevo usuario
 if (isset($_SESSION["multiagendaUsuario"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $tmpIdioma = $_SESSION["multiagendaIdioma"];
     session_destroy();
@@ -44,10 +44,10 @@ if (isset($_SESSION["multiagendaUsuario"])) {
     $_SESSION["multiagendaIdioma"] = $tmpIdioma;
     if (!$usuario || ($usuario == "menu_principal")) {
         header("Location:index.php?aviso=" . _("Nombre de usuario no permitido"));
-        exit();
+        exit;
     } elseif ($password != md5($password2)) {
         header("Location:index.php?aviso=" . _("Error: Las contraseñas no coinciden"));
-        exit();
+        exit;
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios
             WHERE usuario='$usuario'";

@@ -27,10 +27,10 @@ session_start();
 
 if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] != $administradorNombre)) {
     header("Location:index.php");
-    exit();
+    exit;
 } elseif (!isset($_REQUEST["si"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
     cabecera("Borrar todo 2", $_SESSION["multiagendaUsuario"]);

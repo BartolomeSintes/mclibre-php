@@ -27,7 +27,7 @@ include "biblioteca.php";
 
 if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administradorNombre)) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
     cabecera("Borrar etiquetas 2", $_SESSION["citasUsuario"]);

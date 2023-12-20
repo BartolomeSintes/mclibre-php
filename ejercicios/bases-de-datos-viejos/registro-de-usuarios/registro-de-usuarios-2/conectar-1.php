@@ -27,7 +27,7 @@ require_once "biblioteca.php";
 session_start();
 if (isset($_SESSION["id"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     cabecera("Identificar 1", MENU_VOLVER);
 

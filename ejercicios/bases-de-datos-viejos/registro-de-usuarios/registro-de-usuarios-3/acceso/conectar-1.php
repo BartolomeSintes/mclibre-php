@@ -25,7 +25,7 @@
 session_start();
 if (isset($_SESSION["id"])) {
     header("Location:../index.php");
-    exit();
+    exit;
 }
 
 require_once "../comunes/biblioteca.php";

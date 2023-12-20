@@ -27,7 +27,7 @@ session_start();
 
 if (!isset($_SESSION["multiagendaUsuario"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
     cabecera("Borrar 1", $_SESSION["multiagendaUsuario"]);

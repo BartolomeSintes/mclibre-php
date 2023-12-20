@@ -27,7 +27,7 @@ session_start();
 
 if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] != $administradorNombre)) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     cabecera("Borrar todo 1", $_SESSION["multiagendaUsuario"]);
 

@@ -126,7 +126,7 @@ function borraTodoSqlite($db)
 
 if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
     cabecera("Obras - Borrar todo 2", "menuObras");

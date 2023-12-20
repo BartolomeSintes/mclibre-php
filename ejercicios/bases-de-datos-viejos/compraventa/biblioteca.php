@@ -87,7 +87,7 @@ function conectaDb()
 //        print "    <p>Error: " . $e->getMessage() . "</p>\n";
 //        print "\n";
         pie();
-        exit();
+        exit;
     }
 }
 

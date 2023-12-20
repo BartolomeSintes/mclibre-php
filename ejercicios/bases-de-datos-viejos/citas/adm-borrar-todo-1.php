@@ -27,7 +27,7 @@ include "biblioteca.php";
 
 if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administradorNombre)) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     cabecera("Borrar todo 1", $_SESSION["citasUsuario"]);
 

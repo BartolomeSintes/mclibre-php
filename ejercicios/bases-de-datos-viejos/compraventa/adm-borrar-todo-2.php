@@ -27,10 +27,10 @@ include "biblioteca.php";
 
 if (!isset($_SESSION["compraventaUsuario"]) || ($_SESSION["compraventaUsuario"] != $administradorNombre)) {
     header("Location:index.php");
-    exit();
+    exit;
 } elseif (!isset($_REQUEST["si"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
     cabecera("Borrar todo 2");

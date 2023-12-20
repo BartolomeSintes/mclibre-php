@@ -54,6 +54,6 @@ if (!isset($_REQUEST["si"]) && !isset($_REQUEST["resi"]) && !isset($_REQUEST["fi
     pie();
 } else {
     header("location:../index.php");
-    exit();
+    exit;
 }
 ?>

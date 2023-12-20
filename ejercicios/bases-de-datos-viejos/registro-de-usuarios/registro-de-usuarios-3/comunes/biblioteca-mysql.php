@@ -54,7 +54,7 @@ function conectaDb()
         print "\n";
         print "    <p class=\"aviso\">Error: {$e->getMessage()}</p>\n";
         pie();
-        exit();
+        exit;
     }
 }
 

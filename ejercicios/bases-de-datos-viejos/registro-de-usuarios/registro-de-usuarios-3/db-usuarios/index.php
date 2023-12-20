@@ -28,7 +28,7 @@ require_once "../comunes/biblioteca.php";
 
 if (!isset($_SESSION["id"]) || $_SESSION["nivel"] != NIVEL_3) {
     header("location:../index.php");
-    exit();
+    exit;
 }
 
 cabecera("Tabla Usuarios", MENU_TABLA_USUARIOS_WEB, 1);

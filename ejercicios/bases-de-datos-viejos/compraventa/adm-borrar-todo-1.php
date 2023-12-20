@@ -27,7 +27,7 @@ include "biblioteca.php";
 
 if (!isset($_SESSION["compraventaUsuario"]) || ($_SESSION["compraventaUsuario"] != $administradorNombre)) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     cabecera("Borrar todo 1", $_SESSION["compraventaUsuario"]);
 

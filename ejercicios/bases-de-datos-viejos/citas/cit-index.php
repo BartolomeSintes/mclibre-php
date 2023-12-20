@@ -27,7 +27,7 @@ include "biblioteca.php";
 
 if (!isset($_SESSION["citasUsuario"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } elseif ($_SESSION["citasUsuario"] == $administradorNombre) {
     cabecera("", $_SESSION["citasUsuario"]);
 } else {

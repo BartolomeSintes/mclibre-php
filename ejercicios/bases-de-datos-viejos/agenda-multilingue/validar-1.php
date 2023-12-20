@@ -33,7 +33,7 @@ $password = quitaComillasExteriores($password);
 
 if (!$usuario || ($usuario == "menu_principal")) {
     header("Location:index.php?aviso=" . _("Nombre de usuario no permitido"));
-    exit();
+    exit;
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
         WHERE usuario='$usuario'";
@@ -89,11 +89,11 @@ if (!$usuario || ($usuario == "menu_principal")) {
                 $_SESSION["multiagendaIdUsuario"] = $valor["id"];
                 $_SESSION["multiagendaUsuario"]   = $valor["usuario"];
                 header("Location:index.php");
-                exit();
+                exit;
             }
             else {
                 header("Location:index.php?aviso=" . _("El usuario ya existe, pero la contraseña no es correcta"));
-                exit();
+                exit;
             }
         }
     }

@@ -111,11 +111,11 @@ function borraTodoSqlite($db)
 session_start();
 if (isset($_SESSION["id"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     if (!isset($_REQUEST["si"])) {
         header("Location:index.php");
-        exit();
+        exit;
     } else {
         $db = conectaDb();
         cabecera("Borrar todo 2", MENU_VOLVER);

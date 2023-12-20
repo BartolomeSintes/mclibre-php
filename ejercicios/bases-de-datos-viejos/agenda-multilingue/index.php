@@ -37,7 +37,7 @@ if (!isset($_SESSION["multiagendaIdioma"]) && !isset($_REQUEST["idioma"])) {
     if (isset($_REQUEST["idioma"])) {
         $_SESSION["multiagendaIdioma"] = recogeIdioma();
         header("Location:$_SERVER[PHP_SELF]");
-        exit();
+        exit;
     }
     $consulta = $consultaExisteTabla;
     $result = $db->query($consulta);

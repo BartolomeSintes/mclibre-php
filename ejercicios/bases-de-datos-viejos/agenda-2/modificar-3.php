@@ -27,7 +27,7 @@ session_start();
 
 if (!isset($_SESSION["multiagendaUsuario"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     $db = conectaDb();
     cabecera("Modificar 3", $_SESSION["multiagendaUsuario"]);

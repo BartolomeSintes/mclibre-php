@@ -84,7 +84,7 @@ function borraTodoSqlite($db)
 
 if (!isset($_REQUEST["si"])) {
     header("Location:index.php");
-    exit();
+    exit;
 } else {
     include "biblioteca.php";
     $db = conectaDb();
