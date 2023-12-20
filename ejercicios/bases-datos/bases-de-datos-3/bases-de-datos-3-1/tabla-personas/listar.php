@@ -17,7 +17,7 @@ if (!isset($_SESSION["conectado"])) {
 
 $pdo = conectaDb();
 
-cabecera("Listar", MENU_PERSONAS, PROFUNDIDAD_1);
+cabecera("Personas - Listar", MENU_PERSONAS, PROFUNDIDAD_1);
 
 $ordena = recoge("ordena", default: "nombre ASC", allowed: $cfg["tablaPersonasColumnasOrden"]);
 

@@ -17,7 +17,7 @@ if (!isset($_SESSION["conectado"])) {
 
 $pdo = conectaDb();
 
-cabecera("Buscar 1", MENU_PERSONAS, PROFUNDIDAD_1);
+cabecera("Personas - Buscar 1", MENU_PERSONAS, PROFUNDIDAD_1);
 
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 

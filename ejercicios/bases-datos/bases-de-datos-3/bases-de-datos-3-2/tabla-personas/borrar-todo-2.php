@@ -24,7 +24,7 @@ if ($borrar != "Sí") {
 
 $pdo = conectaDb();
 
-cabecera("Borrar todo 2", MENU_PERSONAS, PROFUNDIDAD_1);
+cabecera("Personas - Borrar todo 2", MENU_PERSONAS, PROFUNDIDAD_1);
 
 borraTodo();
 

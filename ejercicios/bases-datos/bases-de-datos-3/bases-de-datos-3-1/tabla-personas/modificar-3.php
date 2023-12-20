@@ -17,7 +17,7 @@ if (!isset($_SESSION["conectado"])) {
 
 $pdo = conectaDb();
 
-cabecera("Modificar 3", MENU_PERSONAS, PROFUNDIDAD_1);
+cabecera("Personas - Modificar 3", MENU_PERSONAS, PROFUNDIDAD_1);
 
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");

@@ -15,7 +15,7 @@ if (!isset($_SESSION["conectado"])) {
     exit;
 }
 
-cabecera("Borrar todo 1", MENU_PERSONAS, PROFUNDIDAD_1);
+cabecera("Personas - Borrar todo 1", MENU_PERSONAS, PROFUNDIDAD_1);
 
 print "    <form action=\"borrar-todo-2.php\" method=\"$cfg[formMethod]\">\n";
 print "      <p>¿Está seguro?</p>\n";

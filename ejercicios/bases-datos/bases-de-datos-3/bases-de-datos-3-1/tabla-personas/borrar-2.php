@@ -17,7 +17,7 @@ if (!isset($_SESSION["conectado"])) {
 
 $pdo = conectaDb();
 
-cabecera("Borrar 2", MENU_PERSONAS, PROFUNDIDAD_1);
+cabecera("Personas - Borrar 2", MENU_PERSONAS, PROFUNDIDAD_1);
 
 $id = recoge("id", []);
 

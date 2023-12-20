@@ -15,6 +15,6 @@ if (!isset($_SESSION["conectado"])) {
     exit;
 }
 
-cabecera("Inicio", MENU_PERSONAS, PROFUNDIDAD_1);
+cabecera("Personas - Inicio", MENU_PERSONAS, PROFUNDIDAD_1);
 
 pie();
