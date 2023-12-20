@@ -12,7 +12,7 @@ session_start();
 
 if (isset($_SESSION["conectado"])) {
     header("Location:../index.php");
-    exit();
+    exit;
 }
 
 $db = conectaDb();

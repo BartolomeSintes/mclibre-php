@@ -11,7 +11,7 @@ session_name(SESSION_NAME);
 session_start();
 if (isset($_SESSION["conectado"])) {
     header("Location:../index.php");
-    exit();
+    exit;
 }
 
 $usuario  = recoge("usuario");
@@ -21,7 +21,7 @@ $db = conectaDb();
 
 if (!$usuario) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
-    exit();
+    exit;
 }
 
 $consulta = "SELECT * FROM $tablaUsuarios
@@ -30,16 +30,16 @@ $result = $db->prepare($consulta);
 $result->execute([":usuario" => $usuario]);
 if (!$result) {
     header("Location:login-1.php?aviso=Error: Error en la consulta");
-    exit();
+    exit;
 }
 
 $valor = $result->fetch();
 if ($valor["password"] != encripta($password)) {
     header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
-    exit();
+    exit;
 }
 
 $_SESSION["conectado"] = $valor["nivel"];
 $db                    = null;
 header("Location:../index.php");
-exit();
+exit;
