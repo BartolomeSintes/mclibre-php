@@ -50,7 +50,7 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                  id SERIAL PRIMARY KEY,
                  usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                  password VARCHAR($cfg[tablaUsuariosTamPassword]),
@@ -58,7 +58,7 @@ function borraTodo()
                  )";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al crear la tabla $cfg[tablaUsuarios]. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla Usuarios creada correctamente.</p>\n";
         print "\n";
@@ -75,7 +75,7 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id SERIAL PRIMARY KEY,
                  nombre VARCHAR($cfg[tablaPersonasTamNombre]),
                  apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
@@ -84,9 +84,9 @@ function borraTodo()
                  )";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la tabla Personas. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al crear la tabla $cfg[tablaPersonas]. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "    <p>Tabla Personas creada correctamente.</p>\n";
+        print "    <p>Tabla $cfg[tablaPersonas] creada correctamente.</p>\n";
     }
 }
 

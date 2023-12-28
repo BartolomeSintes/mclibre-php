@@ -298,7 +298,7 @@ $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño d
     ...
     $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
     ...
-    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                  id INTEGER PRIMARY KEY,
                  usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                  password VARCHAR($cfg[tablaUsuariosTamPassword])
@@ -308,7 +308,7 @@ $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño d
                      (id, usuario, password)
                      VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]')";
     ...
-    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
                  nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
                  apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE,
@@ -341,7 +341,7 @@ $cfg["tablaUsuarios"] = "usuarios";                       // Nombre de la tabla 
                  CHARACTER SET utf8mb4
                  COLLATE utf8mb4_unicode_ci";
     ...
-    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                  id INTEGER UNSIGNED AUTO_INCREMENT,
                  usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                  password VARCHAR($cfg[tablaUsuariosTamPassword]),
@@ -352,7 +352,7 @@ $cfg["tablaUsuarios"] = "usuarios";                       // Nombre de la tabla 
                  (usuario, password)
                  VALUES ($cfg[rootName]', '$cfg[rootPassword]')";
     ...
-    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER UNSIGNED AUTO_INCREMENT,
                  nombre VARCHAR($cfg[tablaPersonasTamNombre]),
                  apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
@@ -730,7 +730,7 @@ $cfg["usuariosNiveles"] = [
           <li>[biblioteca-sqlite.php] Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+<code class="language-php">    $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                  id INTEGER PRIMARY KEY,
                  usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                  password VARCHAR($cfg[tablaUsuariosTamPassword]),
@@ -752,7 +752,7 @@ $cfg["usuariosNiveles"] = [
           <li>[biblioteca-mysql.php] Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:
             <div class="codigo">
               <pre>
-<code class="language-php">        $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+<code class="language-php">        $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
                      usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                      password VARCHAR($cfg[tablaUsuariosTamPassword]),

@@ -86,7 +86,7 @@ print "\n";
 
 // SQLITE: CONSULTA DE CREACIÓN DE TABLA
 
-$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+$consulta = "CREATE TABLE $cfg[tablaPersonas] (
              id INTEGER PRIMARY KEY,
              nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
              apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE

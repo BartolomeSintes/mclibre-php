@@ -72,7 +72,7 @@ function borraTodo()
         print "\n";
     }
 
-    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER UNSIGNED AUTO_INCREMENT,
                  nombre VARCHAR($cfg[tablaPersonasTamNombre]),
                  apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),

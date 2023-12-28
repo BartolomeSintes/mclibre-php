@@ -57,7 +57,7 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                  id INTEGER PRIMARY KEY,
                  usuario VARCHAR($cfg[tablaUsuariosTamUsuario]) COLLATE NOCASE,
                  password VARCHAR($cfg[tablaUsuariosTamPassword]) COLLATE NOCASE,
@@ -65,7 +65,7 @@ function borraTodo()
                  )";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la tabla Usuarios. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error al crear la tabla $cfg[tablaUsuarios]. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Tabla Usuarios creada correctamente.</p>\n";
         print "\n";
@@ -82,7 +82,7 @@ function borraTodo()
     }
     print "\n";
 
-    $consulta = "CREATE TABLE $cfg[tablaNoticias]  (
+    $consulta = "CREATE TABLE $cfg[tablaNoticias] (
                  id INTEGER PRIMARY KEY,
                  categoria VARCHAR($cfg[tablaNoticiasTamCategoria]) COLLATE NOCASE,
                  titulo VARCHAR($cfg[tablaNoticiasTamTitulo]) COLLATE NOCASE,

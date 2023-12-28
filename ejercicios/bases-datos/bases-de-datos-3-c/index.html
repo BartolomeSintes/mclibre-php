@@ -159,7 +159,7 @@ function conectaDb()
           <pre>
 <code class="language-php">// POSTGRESQL: Borrado y creación de tablas
 
-    $consulta = "CREATE TABLE $cfg[tablaUsuarios]  (
+    $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                  id SERIAL,
                  usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                  password VARCHAR($cfg[tablaUsuariosTamPassword]),
@@ -213,7 +213,7 @@ function conectaDb()
           <div class="codigo">
             <pre>
 <code class="language-php">// SQLITE:
-    $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+    $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                  id INTEGER PRIMARY KEY,
                  nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
                  apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE,
@@ -224,7 +224,7 @@ function conectaDb()
                  )";
 
 // MYSQL:
-                 $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+                 $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                               id INTEGER UNSIGNED AUTO_INCREMENT,
                               nombre VARCHAR($cfg[tablaPersonasTamNombre]),
                               apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),

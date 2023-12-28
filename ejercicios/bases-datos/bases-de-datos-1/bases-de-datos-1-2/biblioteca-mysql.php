@@ -63,7 +63,7 @@ function borraTodo()
             print "    <p>Base de datos seleccionada correctamente.</p>\n";
             print "\n";
 
-            $consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+            $consulta = "CREATE TABLE $cfg[tablaPersonas] (
                          id INTEGER UNSIGNED AUTO_INCREMENT,
                          nombre VARCHAR($cfg[tablaPersonasTamNombre]),
                          apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),

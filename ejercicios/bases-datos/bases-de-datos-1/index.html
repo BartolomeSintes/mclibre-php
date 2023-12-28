@@ -177,7 +177,7 @@ $cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la col
 
 $consulta = "DROP TABLE IF EXISTS $cfg[tablaPersonas]";
 
-$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+$consulta = "CREATE TABLE $cfg[tablaPersonas] (
              id INTEGER PRIMARY KEY,
              nombre VARCHAR($cfg[tablaPersonasTamNombre]) COLLATE NOCASE,
              apellidos VARCHAR($cfg[tablaPersonasTamApellidos]) COLLATE NOCASE
@@ -197,7 +197,7 @@ $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
              CHARACTER SET utf8mb4
              COLLATE utf8mb4_unicode_ci";
 
-$consulta = "CREATE TABLE $cfg[tablaPersonas]  (
+$consulta = "CREATE TABLE $cfg[tablaPersonas] (
              id INTEGER UNSIGNED AUTO_INCREMENT,
              nombre VARCHAR($cfg[tablaPersonasTamNombre]),
              apellidos VARCHAR($cfg[tablaPersonasTamApellidos]),
