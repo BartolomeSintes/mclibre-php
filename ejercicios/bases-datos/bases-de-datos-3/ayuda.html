@@ -1064,6 +1064,7 @@ function insertaDemo()
                     $consulta = "UPDATE $cfg[tablaUsuarios]
                                  SET usuario = :usuario, nivel = :nivel
                                  WHERE id = :id";
+
                     $resultado = $pdo-&gt;prepare($consulta);
                     if (!$resultado) {
                         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";

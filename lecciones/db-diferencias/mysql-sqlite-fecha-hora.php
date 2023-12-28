@@ -22,11 +22,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define("MYSQL",     "MySQL");
-define("SQLITE",    "SQLite");
+define("MYSQL", "MySQL");
+define("SQLITE", "SQLite");
 define("TAM_FECHA", 10);                        // Tamaño del campo Fecha
 define("MYSQL_HOST", "mysql:host=localhost");   // Nombre de host MYSQL
-define("MYSQL_USER",    "root");                // Nombre de usuario de MySQL
+define("MYSQL_USER", "root");                   // Nombre de usuario de MySQL
 define("MYSQL_PASSWORD", "");                   // Contraseña de usuario de MySQL
 
 function conectaDb()
@@ -110,8 +110,8 @@ function borraTodoSqlite($db)
     print "          </li>\n";
 }
 
-function pruebaDb() {
-
+function pruebaDb()
+{
     global $dbMotor, $db, $dbTabla;
 
     // Inserción de registro
@@ -152,14 +152,14 @@ function pruebaDb() {
     print "          <li>Recuperación de fecha:\n";
     print "            <ul>\n";
     $consulta = "SELECT COUNT(*) FROM $dbTabla";
-    $result = $db->query($consulta);
+    $result   = $db->query($consulta);
     if (!$result) {
         print "              <li>Error en la consulta.</li>\n";
     } elseif ($result->fetchColumn() == 0) {
         print "              <li>No se ha creado todavía ningún registro.</li>\n";
     } else {
         $consulta = "SELECT * FROM $dbTabla";
-        $result = $db->query($consulta);
+        $result   = $db->query($consulta);
         if (!$result) {
             print "              <li>Error en la consulta.</li>\n";
         } else {
@@ -238,4 +238,3 @@ print "    </p>\n";
 print "  </footer>\n";
 print "</body>\n";
 print "</html>\n";
-?>

@@ -1150,6 +1150,7 @@ $consulta = "SELECT
                AND $cfg[tablaPrestamos].id_obra=$cfg[tablaObras].id
                AND $cfg[tablaPrestamos].devuelto='0000-00-00'
              ORDER BY $columna $orden";
+
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";

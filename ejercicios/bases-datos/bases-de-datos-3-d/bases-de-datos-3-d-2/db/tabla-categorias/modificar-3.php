@@ -72,6 +72,7 @@ if ($categoriaOk && $idOk) {
             $consulta = "UPDATE $cfg[tablaCategorias]
                          SET categoria = :categoria
                          WHERE id = :id";
+
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
