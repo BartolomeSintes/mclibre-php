@@ -129,10 +129,6 @@ function existenTablas()
             $existe = false;
         } else {
             foreach ($cfg["dbTablas"] as $tabla) {
-                // En information_schema.tables los nombres de las tablas no llevan el nombre
-                // de la base de datos, así que lo elimino
-                $tabla = str_replace("$cfg[mysqlDatabase].", "", $tabla);
-
                 $consulta = "SELECT COUNT(*) FROM information_schema.tables
                              WHERE table_schema = '$cfg[mysqlDatabase]'
                              AND table_name = '$tabla'";
