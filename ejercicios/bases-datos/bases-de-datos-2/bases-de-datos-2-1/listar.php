@@ -11,30 +11,43 @@ $pdo = conectaDb();
 
 cabecera("Listar", MENU_VOLVER);
 
-$consulta = "SELECT * FROM $cfg[tablaPersonas]";
+$hayRegistrosOk = false;
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
     print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (count($registros = $resultado->fetchAll()) == 0) {
+} elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
-    print "    <p>Listado completo de registros:</p>\n";
-    print "\n";
-    print "    <table class=\"conborde franjas\">\n";
-    print "      <thead>\n";
-    print "        <tr>\n";
-    print "          <th>Nombre</th>\n";
-    print "          <th>Apellidos</th>\n";
-    print "        </tr>\n";
-    print "      </thead>\n";
-    foreach ($registros as $registro) {
-        print "      <tr>\n";
-        print "        <td>$registro[nombre]</td>\n";
-        print "        <td>$registro[apellidos]</td>\n";
-        print "      </tr>\n";
+    $hayRegistrosOk = true;
+}
+
+if ($hayRegistrosOk) {
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo->query($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Listado completo de registros:</p>\n";
+        print "\n";
+        print "    <table class=\"conborde franjas\">\n";
+        print "      <thead>\n";
+        print "        <tr>\n";
+        print "          <th>Nombre</th>\n";
+        print "          <th>Apellidos</th>\n";
+        print "        </tr>\n";
+        print "      </thead>\n";
+        foreach ($resultado as $registro) {
+            print "      <tr>\n";
+            print "        <td>$registro[nombre]</td>\n";
+            print "        <td>$registro[apellidos]</td>\n";
+            print "      </tr>\n";
+        }
+        print "    </table>\n";
     }
-    print "    </table>\n";
 }
 
 pie();
