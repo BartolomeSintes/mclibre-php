@@ -45,7 +45,7 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["tablaPersonasTamTelefono"]) {
 if ($nombre == "" && $apellidos == "" && $telefono == "") {
     print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
-    $nombreOk = $apellidosOk = $telefonoOk == false;
+    $nombreOk = $apellidosOk = $telefonoOk = false;
 }
 
 if ($id == "") {
@@ -53,6 +53,8 @@ if ($id == "") {
 } else {
     $idOk = true;
 }
+
+$registroEncontradoOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
@@ -66,38 +68,46 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
     } elseif ($resultado->fetchColumn() == 0) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
-        // La consulta cuenta los registros con un id diferente porque MySQL no distingue
-        // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
-        // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                     WHERE nombre = :nombre
-                     AND apellidos = :apellidos
-                     AND telefono = :telefono
-                     AND id <> :id";
+        $registroEncontradoOk = true;
+    }
+}
 
-        $resultado = $pdo->prepare($consulta);
-        if (!$resultado) {
-            print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos,  ":telefono" => $telefono, ":id" => $id])) {
-            print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif ($resultado->fetchColumn() > 0) {
-            print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
-                . "No se ha guardado la modificación.</p>\n";
-        } else {
-            $consulta = "UPDATE $cfg[tablaPersonas]
-                         SET nombre = :nombre, apellidos = :apellidos,
-                             telefono = :telefono
-                         WHERE id = :id";
+$existeRegistroOk = false;
 
-            $resultado = $pdo->prepare($consulta);
-            if (!$resultado) {
-                print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":id" => $id])) {
-                print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } else {
-                print "    <p>Registro modificado correctamente.</p>\n";
-            }
-        }
+if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk) {
+    // La consulta cuenta los registros con un id diferente porque MySQL no distingue
+    // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
+    // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                 WHERE nombre = :nombre
+                 AND apellidos = :apellidos
+                 AND telefono = :telefono
+                 AND id <> :id";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() > 0) {
+        print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. No se ha guardado la modificación.</p>\n";
+    } else {
+        $existeRegistroOk = true;
+    }
+}
+
+if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk && $existeRegistroOk) {
+    $consulta = "UPDATE $cfg[tablaPersonas]
+                 SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono
+                 WHERE id = :id";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Registro modificado correctamente.</p>\n";
     }
 }
 
