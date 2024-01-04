@@ -77,8 +77,8 @@ function borraTodo()
                 print "\n";
 
                 $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                             (usuario, password)
-                             VALUES ($cfg[rootName]', '$cfg[rootPassword]')";
+                             (id, usuario, password)
+                             VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]')";
 
                 if (!$pdo->query($consulta)) {
                     print "    <p class=\"aviso\">Error al insertar el registro de usuario. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
@@ -100,7 +100,7 @@ function borraTodo()
             if (!$pdo->query($consulta)) {
                 print "    <p class=\"aviso\">Error al crear la tabla $cfg[tablaPersonas]. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
-                print "    <p>Tabla $cfg[tablaPersonas] creada correctamente.</p>\n";
+                print "    <p>Tabla Personas creada correctamente.</p>\n";
             }
         }
     }

@@ -12,4 +12,4 @@ session_start();
 
 $_SESSION["conectado"] = true;
 
-header("location:../index.php");
+header("Location:../index.php");

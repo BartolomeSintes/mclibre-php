@@ -21,9 +21,33 @@ cabecera("Personas - Modificar 2", MENU_PERSONAS, PROFUNDIDAD_2);
 
 $id = recoge("id");
 
+$idOk = false;
+
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
+    $idOk = true;
+}
+
+$registroEncontradoOk = false;
+
+if ($idOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                 WHERE id = :id";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() == 0) {
+        print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
+    } else {
+        $registroEncontradoOk = true;
+    }
+}
+
+if ($idOk && $registroEncontradoOk) {
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
@@ -32,9 +56,8 @@ if ($id == "") {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif (!$resultado->execute([":id" => $id])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif (!($registro = $resultado->fetch())) {
-        print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
+        $registro = $resultado->fetch();
         print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Modifique los campos que desee:</p>\n";
         print "\n";

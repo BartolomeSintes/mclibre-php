@@ -26,5 +26,3 @@ if ($usuario != $cfg["rootName"] || encripta($password) != $cfg["rootPassword"])
 $_SESSION["conectado"] = true;
 
 header("Location:../index.php");
-
-exit;

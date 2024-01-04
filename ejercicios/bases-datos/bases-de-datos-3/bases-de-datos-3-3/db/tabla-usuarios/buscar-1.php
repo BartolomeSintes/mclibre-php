@@ -19,6 +19,8 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Buscar 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
+$hayRegistrosOk = false;
+
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
 
 $resultado = $pdo->query($consulta);
@@ -27,6 +29,10 @@ if (!$resultado) {
 } elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">No se ha creado todavía ningún registro.</p>\n";
 } else {
+    $hayRegistrosOk = true;
+}
+
+if ($hayRegistrosOk) {
     print "    <form action=\"buscar-2.php\" method=\"$cfg[formMethod]\">\n";
     print "      <p>Escriba el criterio de búsqueda (caracteres o números):</p>\n";
     print "\n";

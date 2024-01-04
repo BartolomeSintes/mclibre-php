@@ -21,11 +21,19 @@ cabecera("Usuarios - Borrar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $id = recoge("id", []);
 
+$idSeleccionadosOk = false;
+
 if (count($id) == 0) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
+    $idSeleccionadosOk = true;
+}
+
+if ($idSeleccionadosOk) {
     foreach ($id as $indice => $valor) {
-        $consulta = "SELECT * FROM $cfg[tablaUsuarios]
+        $registroEncontradoOk = false;
+
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                      WHERE id = :indice";
 
         $resultado = $pdo->prepare($consulta);
@@ -33,21 +41,40 @@ if (count($id) == 0) {
             print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif (!$resultado->execute([":indice" => $indice])) {
             print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif (!($registro = $resultado->fetch())) {
+        } elseif ($resultado->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
-        } elseif ($registro["usuario"] == $cfg["rootName"]) {
-            print "    <p class=\"aviso\">Este usuario no se puede borrar.</p>\n";
         } else {
+            $registroEncontradoOk = true;
+        }
+
+        $registroRootOk = false;
+
+        if ($registroEncontradoOk) {
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                         WHERE id = :indice
+                         AND usuario = :usuario";
+
+            $resultado = $pdo->prepare($consulta);
+            if (!$resultado) {
+                print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            } elseif (!$resultado->execute([":indice" => $indice, ":usuario" => $cfg["rootName"]])) {
+                print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            } elseif ($resultado->fetchColumn() > 0) {
+                print "    <p class=\"aviso\">Este usuario no se puede borrar.</p>\n";
+            } else {
+                $registroRootOk = true;
+            }
+        }
+
+        if ($registroEncontradoOk && $registroRootOk) {
             $consulta = "DELETE FROM $cfg[tablaUsuarios]
                          WHERE id = :indice";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-                print "\n";
             } elseif (!$resultado->execute([":indice" => $indice])) {
                 print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-                print "\n";
             } else {
                 print "    <p>Registro borrado correctamente.</p>\n";
             }
