@@ -25,6 +25,7 @@ print "\n";
 print "      <p><label><input type=\"checkbox\" name=\"demo\" value=\"Sí\"> Incluir datos de prueba</label></p>\n";
 print "\n";
 print "      <p>Haga clic en Sí para borrar todos los datos.</p>\n";
+print "\n";
 print "      <p>\n";
 print "        <input type=\"submit\" name=\"borrar\" value=\"Sí\">\n";
 print "        <input type=\"submit\" name=\"borrar\" value=\"No\">\n";

@@ -9,7 +9,7 @@
 
 // Nombre de sesión
 
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-correo-usuarios";         // Nombre de sesión
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-correo-usuarios"; // Nombre de sesión
 
 // Base de datos utilizada por la aplicación
 
@@ -17,14 +17,14 @@ $cfg["dbMotor"] = SQLITE;                                   // Valores posibles:
 
 // Configuración para SQLite
 
-$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-correo-usuarios.sqlite";    // Ubicación de la base de datos
+$cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-correo-usuarios.sqlite";  // Ubicación de la base de datos
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "localhost";                                        // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_3_c_correo_usuarios";           // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                                 // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_correo_usuarios";           // Nombre de la base de datos
+$cfg["mysqlHost"]     = "localhost";                                // Nombre de host
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_b_correo_usuarios";   // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                         // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_correo_usuarios";   // Nombre de la base de datos
 
 // Tamaño de los campos en la tabla Usuarios
 
@@ -36,7 +36,7 @@ $cfg["tablaUsuariosTamCorreo"]   = 50;                      // Tamaño de la col
 
 $cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario > Nombre de usuario
 $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario > Contraseña
-$cfg["formUsuariosTamCorreo"]  = $cfg["tablaUsuariosTamCorreo"];    // Tamaño de la caja de texto Usuario > Correo
+$cfg["formUsuariosTamCorreo"]   = $cfg["tablaUsuariosTamCorreo"];   // Tamaño de la caja de texto Usuario > Correo
 
 // Tamaño de los campos en la tabla Personas
 
@@ -63,7 +63,7 @@ $cfg["rootName"]      = "root";                             // Nombre del Usuari
 $cfg["rootPassword"]  = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2";  // Contraseña encriptada del Usuario Administrador de la aplicación
 $cfg["rootCorreo"]    = "root@example.com";                 // Correo del Usuario Administrador de la aplicación
 $cfg["hashAlgorithm"] = "sha256";                           // Algoritmo hash para encriptar la contraseña de usuario
-                                                            // Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php
+// Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php
 $cfg["rootPasswordModificable"] = false;                    // Contraseña del usuario Administrador se puede cambiar o no
 
 // Método de envío de formularios

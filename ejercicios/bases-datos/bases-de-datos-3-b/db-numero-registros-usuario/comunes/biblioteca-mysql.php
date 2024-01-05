@@ -62,11 +62,12 @@ function borraTodo()
         } else {
             print "    <p>Base de datos seleccionada correctamente.</p>\n";
             print "\n";
+
             $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                          id INTEGER UNSIGNED AUTO_INCREMENT,
                          usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                          password VARCHAR($cfg[tablaUsuariosTamPassword]),
-                          nivel INTEGER NOT NULL,
+                         nivel INTEGER NOT NULL,
                          registros INTEGER,
                          PRIMARY KEY(id)
                          )";
@@ -101,7 +102,7 @@ function borraTodo()
             if (!$pdo->query($consulta)) {
                 print "    <p class=\"aviso\">Error al crear la tabla $cfg[tablaPersonas]. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
-                print "    <p>Tabla $cfg[tablaPersonas] creada correctamente.</p>\n";
+                print "    <p>Tabla Personas creada correctamente.</p>\n";
             }
         }
     }

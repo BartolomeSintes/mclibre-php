@@ -9,7 +9,7 @@
 
 // Nombre de sesión
 
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-registros-incompletos";       // Nombre de sesión
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-b-registros-incompletos";               // Nombre de sesión
 
 // Base de datos utilizada por la aplicación
 
@@ -21,10 +21,10 @@ $cfg["sqliteDatabase"] = "/tmp/mclibre-base-datos-3-b-registros-incompletos.sqli
 
 // Configuración para MySQL
 
-$cfg["mysqlHost"]     = "localhost";                                            // Nombre de host
-$cfg["mysqlUser"]     = "mclibre_base_datos_3_c_registros_incompletos";         // Nombre de usuario
-$cfg["mysqlPassword"] = "";                                                     // Contraseña de usuario
-$cfg["mysqlDatabase"] = "mclibre_base_datos_3_c_registros_incompletos";         // Nombre de la base de datos
+$cfg["mysqlHost"]     = "localhost";                                    // Nombre de host
+$cfg["mysqlUser"]     = "mclibre_base_datos_3_b_registros_incompletos"; // Nombre de usuario
+$cfg["mysqlPassword"] = "";                                             // Contraseña de usuario
+$cfg["mysqlDatabase"] = "mclibre_base_datos_3_b_registros_incompletos"; // Nombre de la base de datos
 
 // Tamaño de los campos en la tabla Usuarios
 

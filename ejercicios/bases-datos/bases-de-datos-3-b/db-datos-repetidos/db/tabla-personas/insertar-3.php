@@ -70,6 +70,23 @@ if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
     $nombreOk = $apellidosOk = $telefonoOk = $correoOk = false;
 }
 
+$limiteRegistrosOk = false;
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+
+$resultado = $pdo->query($consulta);
+if (!$resultado) {
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} elseif ($resultado->fetchColumn() >= $cfg["tablaPersonasMaxReg"] && $cfg["tablaPersonasMaxReg"] > 0) {
+    print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+    print "\n";
+    print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
+} else {
+    $limiteRegistrosOk = true;
+}
+
+$existeRegistroOk = false;
+
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE nombre = :nombre
@@ -85,29 +102,22 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">El registro ya existe.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+        $existeRegistroOk = true;
+    }
+}
 
-        $resultado = $pdo->query($consulta);
-        if (!$resultado) {
-            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif ($resultado->fetchColumn() >= $cfg["tablaPersonasMaxReg"] && $cfg["tablaPersonasMaxReg"] > 0) {
-            print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-            print "\n";
-            print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
-        } else {
-            $consulta = "INSERT INTO $cfg[tablaPersonas]
-                         (nombre, apellidos, telefono, correo)
-                         VALUES (:nombre, :apellidos, :telefono, :correo)";
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $existeRegistroOk) {
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
+                 (nombre, apellidos, telefono, correo)
+                 VALUES (:nombre, :apellidos, :telefono, :correo)";
 
-            $resultado = $pdo->prepare($consulta);
-            if (!$resultado) {
-                print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":correo" => $correo])) {
-                print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } else {
-                print "    <p>Registro creado correctamente.</p>\n";
-            }
-        }
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":correo" => $correo])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Registro creado correctamente.</p>\n";
     }
 }
 

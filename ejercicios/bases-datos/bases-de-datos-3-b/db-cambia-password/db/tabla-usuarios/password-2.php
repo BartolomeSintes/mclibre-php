@@ -19,7 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Modificar password 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
-$password         = recoge("password");
+$password = recoge("password");
 
 $passwordOk = false;
 
@@ -31,27 +31,33 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
 }
 
 if ($passwordOk) {
+    $registroEncontradoOk = false;
+
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE id = $_SESSION[id_usuario]";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
-        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif ($resultado->fetchColumn() == 0) {
         print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
     } else {
-        $consulta = "UPDATE $cfg[tablaUsuarios]
-                     SET password = :password
-                     WHERE id = $_SESSION[id_usuario]";
+        $registroEncontradoOk = true;
+    }
+}
 
-        $resultado = $pdo->prepare($consulta);
-        if (!$resultado) {
-            print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif (!$resultado->execute([":password" => encripta($password)])) {
-            print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } else {
-            print "    <p>Registro modificado correctamente.</p>\n";
-        }
+if ($passwordOk && $registroEncontradoOk) {
+    $consulta = "UPDATE $cfg[tablaUsuarios]
+                 SET password = :password
+                 WHERE id = $_SESSION[id_usuario]";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":password" => encripta($password)])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Registro modificado correctamente.</p>\n";
     }
 }
 

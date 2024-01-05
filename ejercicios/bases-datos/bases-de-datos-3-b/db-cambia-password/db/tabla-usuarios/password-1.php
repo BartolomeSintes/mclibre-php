@@ -19,15 +19,21 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Modificar password 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
-$consulta = "SELECT * FROM $cfg[tablaUsuarios]
+$registroEncontradoOk = false;
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
              WHERE id = $_SESSION[id_usuario]";
 
 $resultado = $pdo->query($consulta);
 if (!$resultado) {
-    print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!($registro = $resultado->fetch())) {
+    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} elseif ($resultado->fetchColumn() == 0) {
     print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
 } else {
+    $registroEncontradoOk = true;
+}
+
+if ($registroEncontradoOk) {
     print "    <form action=\"password-2.php\" method=\"$cfg[formMethod]\">\n";
     print "      <p>Modifique la contraseña:</p>\n";
     print "\n";

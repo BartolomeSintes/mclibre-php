@@ -51,18 +51,18 @@ $_SESSION["conectado"] = true;
 $_SESSION["nivel"]     = $registro["nivel"];
 
 $consulta = "UPDATE $cfg[tablaUsuarios]
-             SET conexiones = " . ($registro["conexiones"] + 1) . "
+             SET conexiones = " . $registro["conexiones"] + 1 . "
              WHERE id = :id";
 
 $resultado = $pdo->prepare($consulta);
 if (!$resultado) {
     header("Location:login-1.php?aviso=Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
     exit;
-} elseif (!$resultado->execute([":id" => $registro["id"]])) {
+}
+if (!$resultado->execute([":id" => $registro["id"]])) {
     header("Location:login-1.php?aviso=Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
     exit;
 }
-
 if ($registro["conexiones"] + 1 > $cfg["numeroConexionesAviso"]) {
     cabecera("Login 2", MENU_VOLVER, PROFUNDIDAD_1);
 
