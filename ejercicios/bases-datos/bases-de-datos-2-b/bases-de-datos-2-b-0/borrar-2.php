@@ -13,15 +13,15 @@ cabecera("Borrar 2", MENU_VOLVER);
 
 $id = recoge("id", []);
 
-$idSeleccionadosOk = false;
+$idOk = false;
 
 if (count($id) == 0) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
-    $idSeleccionadosOk = true;
+    $idOk = true;
 }
 
-if ($idSeleccionadosOk) {
+if ($idOk) {
     foreach ($id as $indice => $valor) {
         $registroEncontradoOk = false;
 
