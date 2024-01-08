@@ -63,21 +63,6 @@ if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
     $nombreOk = $apellidosOk = $telefonoOk = $correoOk = false;
 }
 
-$limiteRegistrosOk = false;
-
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
-
-$resultado = $pdo->query($consulta);
-if (!$resultado) {
-    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() >= $cfg["tablaPersonasMaxReg"]) {
-    print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-    print "\n";
-    print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
-} else {
-    $limiteRegistrosOk = true;
-}
-
 $existeRegistroOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
@@ -99,7 +84,24 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $existeRegistroOk) {
+$limiteRegistrosOk = false;
+
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $existeRegistroOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo->query($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() >= $cfg["tablaPersonasMaxReg"]) {
+        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
+    } else {
+        $limiteRegistrosOk = true;
+    }
+}
+
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $existeRegistroOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";

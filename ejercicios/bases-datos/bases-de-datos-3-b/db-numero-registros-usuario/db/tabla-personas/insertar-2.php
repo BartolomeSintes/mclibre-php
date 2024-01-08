@@ -63,6 +63,27 @@ if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
     $nombreOk = $apellidosOk = $telefonoOk = $correoOk = false;
 }
 
+$existeRegistroOk = false;
+
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                 WHERE nombre = :nombre
+                 AND apellidos = :apellidos
+                 AND telefono = :telefono
+                 AND correo = :correo";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":correo" => $correo])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() > 0) {
+        print "    <p class=\"aviso\">El registro ya existe.</p>\n";
+    } else {
+        $existeRegistroOk = true;
+    }
+}
+
 $limiteRegistrosOk = false;
 
 $consulta = "SELECT registros FROM $cfg[tablaUsuarios]
@@ -88,28 +109,7 @@ if (!$resultado) {
     }
 }
 
-$existeRegistroOk = false;
-
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
-    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                 WHERE nombre = :nombre
-                 AND apellidos = :apellidos
-                 AND telefono = :telefono
-                 AND correo = :correo";
-
-    $resultado = $pdo->prepare($consulta);
-    if (!$resultado) {
-        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono, ":correo" => $correo])) {
-        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif ($resultado->fetchColumn() > 0) {
-        print "    <p class=\"aviso\">El registro ya existe.</p>\n";
-    } else {
-        $existeRegistroOk = true;
-    }
-}
-
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $existeRegistroOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $existeRegistroOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";

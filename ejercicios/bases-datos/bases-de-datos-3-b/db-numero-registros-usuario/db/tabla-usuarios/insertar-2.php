@@ -72,21 +72,6 @@ if ($registros == "") {
     $registrosOk = true;
 }
 
-$limiteRegistrosOk = false;
-
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
-
-$resultado = $pdo->query($consulta);
-if (!$resultado) {
-    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() >= $cfg["tablaUsuariosMaxReg"] && $cfg["tablaUsuariosMaxReg"] > 0) {
-    print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-    print "\n";
-    print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
-} else {
-    $limiteRegistrosOk = true;
-}
-
 $existeRegistroOk = false;
 
 if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk) {
@@ -105,7 +90,24 @@ if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk) {
     }
 }
 
-if ($usuarioOk && $passwordOk && $limiteRegistrosOk && $existeRegistroOk) {
+$limiteRegistrosOk = false;
+
+if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk && $existeRegistroOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
+
+    $resultado = $pdo->query($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() >= $cfg["tablaUsuariosMaxReg"] && $cfg["tablaUsuariosMaxReg"] > 0) {
+        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
+    } else {
+        $limiteRegistrosOk = true;
+    }
+}
+
+if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk && $existeRegistroOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password, nivel, registros)
                  VALUES (:usuario, :password, :nivel, :registros)";
