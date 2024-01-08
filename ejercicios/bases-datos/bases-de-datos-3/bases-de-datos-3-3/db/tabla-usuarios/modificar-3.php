@@ -92,7 +92,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
 
 $registroRootOk = false;
 
-if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $existeRegistroOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -111,7 +111,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     }
 }
 
-if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroRootOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $existeRegistroOk && $registroRootOk) {
     $consulta = "UPDATE $cfg[tablaUsuarios]
                  SET usuario = :usuario, password = :password
                  WHERE id = :id";

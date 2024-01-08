@@ -82,7 +82,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
 
 $existeRegistroOk = false;
 
-if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
+if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
@@ -104,7 +104,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
 
 $registroRootOk = false;
 
-if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
+if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $existeRegistroOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -123,7 +123,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     }
 }
 
-if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroRootOk) {
+if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $existeRegistroOk && $registroRootOk) {
     $consulta = "UPDATE $cfg[tablaUsuarios]
                  SET usuario = :usuario, password = :password, nivel = :nivel
                  WHERE id = :id";
