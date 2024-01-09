@@ -110,7 +110,7 @@ if ($categoriaOk && $tituloOk && $cuerpoOk && $idOk && $creadoOk) {
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
             print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif (!$resultado->execute([":categoria" => $categoria, ":titulo" => $titulo,  ":cuerpo" => $cuerpo, ":creado" => $creado, ":id" => $id])) {
+        } elseif (!$resultado->execute([":categoria" => $categoria, ":titulo" => $titulo, ":cuerpo" => $cuerpo, ":creado" => $creado, ":id" => $id])) {
             print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } elseif ($resultado->fetchColumn() > 0) {
             print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. "
@@ -124,7 +124,7 @@ if ($categoriaOk && $tituloOk && $cuerpoOk && $idOk && $creadoOk) {
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif (!$resultado->execute([":categoria" => $categoria, ":titulo" => $titulo,  ":cuerpo" => $cuerpo, ":creado" => $creado, ":id" => $id])) {
+            } elseif (!$resultado->execute([":categoria" => $categoria, ":titulo" => $titulo, ":cuerpo" => $cuerpo, ":creado" => $creado, ":id" => $id])) {
                 print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } else {
                 print "    <p>Registro modificado correctamente.</p>\n";

@@ -118,6 +118,4 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
     }
 }
 
-$db = null;
-
 pie();

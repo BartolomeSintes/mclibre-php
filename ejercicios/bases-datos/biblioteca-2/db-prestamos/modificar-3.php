@@ -124,6 +124,4 @@ if ($id_personaOk && $id_obraOk && $prestadoOk && $devueltoOk) {
     }
 }
 
-$db = null;
-
 pie();

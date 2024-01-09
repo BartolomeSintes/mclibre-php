@@ -27,7 +27,7 @@ if (!$resultado) {
 } elseif ($resultado->fetchColumn() >= $cfg["tablaPersonasMaxReg"] && $cfg["tablaPersonasMaxReg"] > 0) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
-    print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
+    print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
 } else {
     print "    <form action=\"insertar-2.php\" method=\"$cfg[formMethod]\">\n";
     print "      <p>Escriba los datos del nuevo registro:</p>\n";

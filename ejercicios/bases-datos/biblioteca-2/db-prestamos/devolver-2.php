@@ -74,6 +74,4 @@ if ($idOk && $devueltoOk) {
     }
 }
 
-$db = null;
-
 pie();

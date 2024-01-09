@@ -44,10 +44,8 @@ if (count($id) == 0) {
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-                print "\n";
             } elseif (!$resultado->execute([":indice" => $indice])) {
                 print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-                print "\n";
             } else {
                 print "    <p>Registro borrado correctamente.</p>\n";
             }

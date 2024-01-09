@@ -174,6 +174,4 @@ if (!$result) {
     }
 }
 
-$db = null;
-
 pie();

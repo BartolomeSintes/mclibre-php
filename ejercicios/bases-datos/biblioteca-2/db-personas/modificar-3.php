@@ -96,6 +96,4 @@ if ($nombreOk && $apellidosOk && $dniOk) {
     }
 }
 
-$db = null;
-
 pie();

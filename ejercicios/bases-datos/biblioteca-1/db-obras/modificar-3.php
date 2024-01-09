@@ -96,6 +96,4 @@ if ($autorOk && $tituloOk && $editorialOk) {
     }
 }
 
-$db = null;
-
 pie();

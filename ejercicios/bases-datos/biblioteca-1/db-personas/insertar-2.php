@@ -58,7 +58,7 @@ if ($nombreOk && $apellidosOk && $dniOk) {
         } elseif ($result->fetchColumn() >= MAX_REG_TABLE_PERSONAS) {
             print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
             print "\n";
-            print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
+            print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
         } else {
             $consulta = "SELECT COUNT(*) FROM $tablaPersonas
                 WHERE nombre = :nombre
@@ -86,7 +86,5 @@ if ($nombreOk && $apellidosOk && $dniOk) {
         }
     }
 }
-
-$db = null;
 
 pie();

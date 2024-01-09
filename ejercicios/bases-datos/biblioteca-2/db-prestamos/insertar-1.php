@@ -25,7 +25,7 @@ if (!$result) {
 } elseif ($result->fetchColumn() >= MAX_REG_TABLE_PRESTAMOS) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
     print "\n";
-    print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
+    print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
 } else {
     $consulta2 = "SELECT * FROM $tablaPersonas ORDER BY apellidos";
     $result2   = $db->query($consulta2);
@@ -75,7 +75,5 @@ if (!$result) {
         print "    </form>\n";
     }
 }
-
-$db = null;
 
 pie();

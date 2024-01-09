@@ -27,6 +27,4 @@ cabecera("Administrador - Borrar todo 2", MENU_ADMINISTRADOR, 1);
 
 borraTodo($db, $tablas, $consultasCreaTabla);
 
-$db = null;
-
 pie();
