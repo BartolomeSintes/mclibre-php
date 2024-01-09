@@ -533,7 +533,7 @@ if (!$resultado) {
         <pre>
 <code class="language-php">// SQLITE: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// VARIABLES CONFIGURABLES POR EL ADMINISTRADOR DE LA APLICACIÓN
 
 // Configuración para SQLite
 
@@ -547,7 +547,7 @@ $cfg["sqliteDatabase"] = "/tmp/db.sqlite";                        // Ubicación 
         <pre>
 <code class="language-php">// MYSQL: OPCIONES DE CONFIGURACIÓN DEL PROGRAMA
 
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// VARIABLES CONFIGURABLES POR EL ADMINISTRADOR DE LA APLICACIÓN
 
 // Configuración para MySQL
 
@@ -557,6 +557,27 @@ $cfg["mysqlPassword"] = "";                                       // Contraseña
 $cfg["mysqlDatabase"] = "";                                       // Nombre de la base de datos</code>
 </pre>
       </div>
+
+      <p>Estas podrían ser las opciones comunes a ambas bases de datos:</p>
+
+      <div class="codigo copy">
+        <pre>
+<code class="language-php">// Variables configurables por el programador de la aplicación
+
+// Nombres de las tablas
+
+$cfg["tablaPersonas"] = "personas";           // Nombre de la tabla Personas
+
+// Variables configurables por el administrador de la aplicación
+
+// Tamaño de los campos en la tabla Personas
+
+$cfg["tablaPersonasTamNombre"]    = 40;                 // Tamaño de la columna Personas &gt; Nombre
+$cfg["tablaPersonasTamApellidos"] = 60;                 // Tamaño de la columna Personas &gt; Apellidos
+</code>
+</pre>
+      </div>
+
     </section>
 
     <section id="conexion">
@@ -1238,7 +1259,7 @@ if (!$resultado) {
           <div class="codigo">
             <pre>
 <code class="language-php">// config.php
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// VARIABLES CONFIGURABLES POR EL ADMINISTRADOR DE LA APLICACIÓN
 
 // Base de datos utilizada por la aplicación
 
@@ -1490,7 +1511,7 @@ borraTodo();</code>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de diciembre de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 9 de enero de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>

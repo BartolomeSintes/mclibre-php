@@ -5,7 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// MYSQL: FUNCIONES ESPECÍFICAS
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS MYSQL
 
 // MYSQL: Conexión con la base de datos
 

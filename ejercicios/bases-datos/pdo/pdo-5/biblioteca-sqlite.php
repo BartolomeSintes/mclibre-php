@@ -5,7 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// SQLITE: FUNCIONES ESPECÍFICAS
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS SQLITE
 
 // SQLITE: Conexión con la base de datos
 

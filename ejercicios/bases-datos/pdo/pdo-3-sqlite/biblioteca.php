@@ -15,7 +15,7 @@ require_once "config.php";
 
 $cfg["tablaPersonas"] = "personas";           // Nombre de la tabla Personas
 
-// Funciones
+// FUNCIONES ESPECÍFICAS DE LA BASE DE DATOS SQLITE
 
 // SQLITE: FUNCIÓN DE CONEXIÓN CON LA BASE DE DATOS
 
