@@ -1,5 +1,5 @@
 ﻿<?php
-header("location:vscode-4-3.php");
+header("Location:vscode-4-3.php");
 ?>
 <p>Esta es la página 2.</p>
 

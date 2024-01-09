@@ -78,4 +78,4 @@ if ($_SESSION["carta1"] == $_SESSION["carta2"] && $_SESSION["carta2"] == $_SESSI
 }
 
 // Volvemos al formulario
-header("location:minijuegos-1-5-1-b.php");
+header("Location:minijuegos-1-5-1-b.php");

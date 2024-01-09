@@ -116,4 +116,4 @@ if ($manoN > $manoR) {
 }
 
 // Volvemos al formulario
-header("location:minijuegos-1-6-1.php");
+header("Location:minijuegos-1-6-1.php");

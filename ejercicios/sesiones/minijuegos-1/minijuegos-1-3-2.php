@@ -28,7 +28,7 @@ session_start();
 
 // Si los valores de sesión no existen, redirigimos a la primera página
 if (!isset($_SESSION["carta"])) {
-    header("location:minijuegos-1-3-1.php");
+    header("Location:minijuegos-1-3-1.php");
     exit;
 }
 
@@ -77,4 +77,4 @@ if ($accion == "reiniciar") {
 }
 
 // Volvemos al formulario
-header("location:minijuegos-1-3-1.php");
+header("Location:minijuegos-1-3-1.php");
