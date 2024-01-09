@@ -97,83 +97,113 @@
                 {
                     "id": "borrar-todo-3",
                     "command": "click",
-                    "target": "xpath=//input[@value='Sí']",
+                    "target": "xpath=//input[@value='No']",
                     "value": ""
                 },
                 {
                     "id": "borrar-todo-4",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Base} Borrar todo 2\"]",
+                    "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
                     "value": "${maxEspera}"
                 },
                 {
                     "id": "borrar-todo-5",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Base} Borrar todo 1\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-todo-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Sí']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"${h1Base} Borrar todo 2\"]",
+                    "value": "${maxEspera}"
+                },
+                {
+                    "id": "borrar-todo-9",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
                     "value": "detectadoSQLite"
                 },
                 {
-                    "id": "borrar-todo-6",
+                    "id": "borrar-todo-10",
                     "command": "if",
                     "target": "${detectadoSQLite}",
                     "value": ""
                 },
                 {
-                    "id": "borrar-todo-7",
+                    "id": "borrar-todo-11",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
                     "value": "Tabla borrada correctamente (si existía)."
                 },
                 {
-                    "id": "borrar-todo-8",
+                    "id": "borrar-todo-12",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
                     "value": "Tabla creada correctamente."
                 },
                 {
-                    "id": "borrar-todo-9",
+                    "id": "borrar-todo-13",
                     "command": "else",
                     "target": "",
                     "value": ""
                 },
                 {
-                    "id": "borrar-todo-10",
+                    "id": "borrar-todo-14",
                     "command": "assertText",
                     "target": "xpath=//p[1]",
                     "value": "Sistema Gestor de Bases de Datos: MySQL."
                 },
                 {
-                    "id": "borrar-todo-11",
+                    "id": "borrar-todo-15",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
                     "value": "Base de datos borrada correctamente (si existía)."
                 },
                 {
-                    "id": "borrar-todo-12",
+                    "id": "borrar-todo-16",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
                     "value": "Base de datos creada correctamente."
                 },
                 {
-                    "id": "borrar-todo-13",
+                    "id": "borrar-todo-17",
                     "command": "assertText",
                     "target": "xpath=//p[4]",
+                    "value": "Base de datos seleccionada correctamente."
+                },
+                {
+                    "id": "borrar-todo-18",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
                     "value": "Tabla creada correctamente."
                 },
                 {
-                    "id": "borrar-todo-14",
+                    "id": "borrar-todo-19",
                     "command": "end",
                     "target": "",
                     "value": ""
                 },
                 {
-                    "id": "borrar-todo-15",
+                    "id": "borrar-todo-20",
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": ""
                 },
                 {
-                    "id": "borrar-todo-16",
+                    "id": "borrar-todo-21",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
                     "value": "${maxEspera}"
