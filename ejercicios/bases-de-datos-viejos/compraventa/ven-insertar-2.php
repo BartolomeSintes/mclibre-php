@@ -77,7 +77,6 @@ if (!isset($_SESSION["compraventaUsuario"])) {
             }
         }
     }
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

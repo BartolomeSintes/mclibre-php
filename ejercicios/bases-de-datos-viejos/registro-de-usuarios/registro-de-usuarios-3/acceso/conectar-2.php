@@ -58,8 +58,7 @@ if (isset($_SESSION["id"])) {
                 exit;
             }
         }
-        $db = null;
-        pie();
+                pie();
     }
 }
 ?>

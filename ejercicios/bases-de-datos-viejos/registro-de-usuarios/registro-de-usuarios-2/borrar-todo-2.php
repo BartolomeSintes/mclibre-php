@@ -124,8 +124,7 @@ if (isset($_SESSION["id"])) {
         } elseif ($dbMotor == SQLITE) {
             borraTodoSqlite($db);
         }
-        $db = null;
-        pie();
+                pie();
     }
 }
 ?>

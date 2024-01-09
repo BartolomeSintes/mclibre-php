@@ -70,6 +70,4 @@ if ($autor == "''" && $titulo == "''" && $editorial == "''") {
     }
 }
 
-$db = NULL;
 pie();
-?>

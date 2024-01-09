@@ -77,7 +77,6 @@ if (!isset($_SESSION["citasUsuario"])) {
             print "    </form>\n";
         }
     }
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

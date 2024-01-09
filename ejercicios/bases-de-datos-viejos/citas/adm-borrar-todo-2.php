@@ -40,7 +40,6 @@ if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administ
         borraTodoSqlite($db);
     }
     $_SESSION = [];
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

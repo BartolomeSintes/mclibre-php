@@ -53,7 +53,6 @@ if (!isset($_SESSION["citasUsuario"])) {
             print "\n";
         }
             }
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

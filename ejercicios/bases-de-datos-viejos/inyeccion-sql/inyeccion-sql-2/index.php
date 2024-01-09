@@ -27,4 +27,3 @@ include "biblioteca.php";
 cabecera("Inicio", MENU_PRINCIPAL);
 
 pie();
-?>

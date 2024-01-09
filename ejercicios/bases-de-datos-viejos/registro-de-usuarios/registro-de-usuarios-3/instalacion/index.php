@@ -46,14 +46,13 @@ if (!isset($_REQUEST["si"]) && !isset($_REQUEST["resi"]) && !isset($_REQUEST["fi
     cabecera("Instalación", MENU_INSTALAR, 1);
     $db = conectaDb();
     borraTodo($db);
-    $db = null;
-    print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
+        print "  <form action=\"$_SERVER[PHP_SELF]\" method=\"" . FORM_METHOD . "\">\n";
     print "    <p>Pulse el botón para iniciar la aplicación.</p>\n";
     print "    <p><button type=\"submit\" value=\"Sí\" name=\"fin\">Iniciar la aplicación</button></p>\n";
     print "  </form>\n";
     pie();
 } else {
-    header("location:../index.php");
+    header("Location:../index.php");
     exit;
 }
 ?>

@@ -29,4 +29,3 @@ print "    <p>Bienvenido a mi blog.</p>\n";
 print "\n";
 
 pie();
-?>

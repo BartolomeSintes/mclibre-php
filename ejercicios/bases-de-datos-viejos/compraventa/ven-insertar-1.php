@@ -59,7 +59,6 @@ if (!isset($_SESSION["compraventaUsuario"])) {
         print "    </form>\n";
         print "\n";
     }
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

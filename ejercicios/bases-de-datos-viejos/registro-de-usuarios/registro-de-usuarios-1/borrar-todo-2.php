@@ -95,7 +95,6 @@ if (!isset($_REQUEST["si"])) {
     } elseif ($dbMotor == SQLITE) {
         borraTodoSqlite($db);
     }
-    $db = null;
-    pie();
+        pie();
 }
 ?>

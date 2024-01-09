@@ -35,4 +35,3 @@ if (!isset($_SESSION["citasUsuario"])) {
 }
 
 pie();
-?>

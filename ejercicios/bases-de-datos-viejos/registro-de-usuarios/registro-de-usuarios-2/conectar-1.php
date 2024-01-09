@@ -60,4 +60,3 @@ if (isset($_SESSION["id"])) {
 }
 
 pie();
-?>

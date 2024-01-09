@@ -26,4 +26,3 @@ include "biblioteca.php";
 cabecera("Usuarios - Inicio", "menuUsuarios");
 
 pie();
-?>

@@ -88,6 +88,4 @@ if (!isset($_SESSION["multiagendaIdioma"]) && !isset($_REQUEST["idioma"])) {
     }
 }
 
-$db = NULL;
 pie();
-?>

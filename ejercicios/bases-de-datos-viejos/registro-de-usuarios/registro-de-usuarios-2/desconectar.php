@@ -33,4 +33,3 @@ print "    <p>Está usted <strong>desconectado</strong>.</p>\n";
 print "\n";
 
 pie();
-?>

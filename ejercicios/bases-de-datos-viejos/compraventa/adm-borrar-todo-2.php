@@ -40,7 +40,6 @@ if (!isset($_SESSION["compraventaUsuario"]) || ($_SESSION["compraventaUsuario"] 
         borraTodoSqlite($db);
     }
     $_SESSION = [];
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

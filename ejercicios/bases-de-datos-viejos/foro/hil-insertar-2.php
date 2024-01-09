@@ -86,6 +86,4 @@ if ($autor == "'" . ANONIMO_AUTOR . "'" && $intervencion == "'" . ANONIMO_INTERV
     }
 }
 
-$db = NULL;
 pie();
-?>

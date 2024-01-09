@@ -77,8 +77,7 @@ if (isset($_SESSION["id"])) {
                     print "\n";
                 }
             }
-            $db = null;
-            pie();
+                        pie();
         }
     }
 }

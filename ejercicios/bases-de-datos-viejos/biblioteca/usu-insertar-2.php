@@ -70,6 +70,4 @@ if ($nombre == "''" && $apellidos == "''" && $dni == "''") {
     }
 }
 
-$db = NULL;
 pie();
-?>

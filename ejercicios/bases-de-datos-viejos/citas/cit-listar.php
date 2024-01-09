@@ -76,6 +76,4 @@ if (!$result) {
         print "    </ul>\n";
     }
 }
-$db = NULL;
 pie();
-?>

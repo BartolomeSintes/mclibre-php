@@ -136,7 +136,6 @@ if (!isset($_REQUEST["si"])) {
     } elseif ($dbMotor == SQLITE) {
         borraTodoSqlite($db);
     }
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

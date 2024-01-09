@@ -72,8 +72,7 @@ if (!$usuario) {
                 print "\n";
             }
         }
-        $db = null;
-        pie();
+                pie();
     }
 }
 ?>

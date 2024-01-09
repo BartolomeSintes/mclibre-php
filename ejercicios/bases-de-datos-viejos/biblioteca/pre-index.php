@@ -26,4 +26,3 @@ include "biblioteca.php";
 cabecera("Préstamos - Inicio", "menuPrestamos");
 
 pie();
-?>

@@ -40,7 +40,6 @@ if (!isset($_SESSION["multiagendaUsuario"]) || ($_SESSION["multiagendaUsuario"] 
         borraTodoSqlite($db);
     }
     $_SESSION = [];
-    $db = null;
-    pie();
+        pie();
 }
 ?>

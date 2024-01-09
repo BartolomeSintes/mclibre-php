@@ -79,6 +79,4 @@ if (!$fechaOk) {
     }
 }
 
-$db = NULL;
 pie();
-?>

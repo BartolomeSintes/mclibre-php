@@ -65,6 +65,4 @@ if (!$result) {
     print "\n";
 }
 
-$db = NULL;
 pie();
-?>

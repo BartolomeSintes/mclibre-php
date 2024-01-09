@@ -115,7 +115,6 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
         }
     }
 
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

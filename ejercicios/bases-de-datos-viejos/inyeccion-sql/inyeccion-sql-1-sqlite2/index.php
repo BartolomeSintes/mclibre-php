@@ -31,4 +31,3 @@ print "\n";
 print "    <p>Codificación: ".sqlite_libencoding()."</p>";
 print "\n";
 pie();
-?>

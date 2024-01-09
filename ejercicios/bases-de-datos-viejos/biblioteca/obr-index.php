@@ -26,4 +26,3 @@ include "biblioteca.php";
 cabecera("Obras - Inicio", "menuObras");
 
 pie();
-?>

@@ -85,6 +85,4 @@ if (!$result) {
     }
 }
 
-$db = NULL;
 pie();
-?>

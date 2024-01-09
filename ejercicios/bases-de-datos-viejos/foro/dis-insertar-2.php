@@ -74,6 +74,4 @@ if ($autor == "'" . ANONIMO_AUTOR . "'" && $titulo == "'" . ANONIMO_TITULO . "'"
     }
 }
 
-$db = NULL;
 pie();
-?>

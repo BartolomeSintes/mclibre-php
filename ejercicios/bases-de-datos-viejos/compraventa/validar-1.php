@@ -97,7 +97,6 @@ if (!$usuario || ($usuario == "menu_principal")) {
             }
         }
     }
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

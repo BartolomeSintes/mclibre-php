@@ -74,7 +74,6 @@ if (!isset($_SESSION["multiagendaUsuario"])) {
         print "    </form>\n";
         print "\n";
     }
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

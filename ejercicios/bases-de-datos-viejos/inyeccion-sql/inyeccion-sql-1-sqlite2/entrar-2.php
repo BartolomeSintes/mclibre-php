@@ -73,7 +73,6 @@ print $consulta;
     }
 }
 
-$db = null;
 pie();
 ?>
 <?

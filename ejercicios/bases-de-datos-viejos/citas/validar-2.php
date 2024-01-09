@@ -94,8 +94,7 @@ if (isset($_SESSION["citasUsuario"])) {
                 }
             }
         }
-        $db = NULL;
-        pie();
+                pie();
     }
 }
 ?>

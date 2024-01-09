@@ -76,6 +76,4 @@ if ($fecha == "''" || $entrada == "''") {
     }
 }
 
-$db = NULL;
 pie();
-?>

@@ -60,7 +60,6 @@ if (!isset($_SESSION["citasUsuario"]) || ($_SESSION["citasUsuario"] != $administ
         }
     }
 
-    $db = NULL;
-    pie();
+        pie();
 }
 ?>

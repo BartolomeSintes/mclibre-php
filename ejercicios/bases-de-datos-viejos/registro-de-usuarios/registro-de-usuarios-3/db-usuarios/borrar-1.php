@@ -27,7 +27,7 @@ session_start();
 require_once "../comunes/biblioteca.php";
 
 if (!isset($_SESSION["id"]) || $_SESSION["nivel"] != NIVEL_3) {
-    header("location:../index.php");
+    header("Location:../index.php");
     exit;
 }
 
@@ -98,5 +98,4 @@ if (!$result) {
     }
 }
 
-$db = null;
 pie();

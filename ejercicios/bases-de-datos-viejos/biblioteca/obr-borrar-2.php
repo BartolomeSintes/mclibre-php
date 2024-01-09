@@ -45,5 +45,4 @@ if (count($id) == 0) {
     }
 }
 
-$db = null;
 pie();

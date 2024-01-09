@@ -27,7 +27,7 @@ session_start();
 require_once "../comunes/biblioteca.php";
 
 if (!isset($_SESSION["id"]) || $_SESSION["nivel"] != NIVEL_3) {
-    header("location:../index.php");
+    header("Location:../index.php");
     exit;
 }
 
@@ -40,7 +40,7 @@ if (!$result) {
     print "    <p class=\"aviso\">Error en la consulta.</p>\n";
 } elseif ($result->fetchColumn() >= MAX_REG_TABLA_USUARIOS_WEB) {
     print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-    print "    <p class=\"aviso\">Por favor, borre algún registro antes.</p>\n";
+    print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
 } else {
     print "    <form action=\"insertar-2.php\" method=\"" . FORM_METHOD . "\">\n";
     print "      <p>Escriba los datos del nuevo registro:</p>\n";
@@ -73,5 +73,4 @@ if (!$result) {
     print "    </form>\n";
 }
 
-$db = null;
 pie();

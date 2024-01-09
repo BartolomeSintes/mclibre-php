@@ -75,6 +75,4 @@ if ($usuario == "" || $contraseña == "") {
     }
 }
 
-$db = null;
 pie();
-?>

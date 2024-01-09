@@ -71,6 +71,4 @@ if ($nombre == "''" && $apellidos == "''" && $telefono == "''" && $correo == "''
     }
 }
 
-$db = NULL;
 pie();
-?>
