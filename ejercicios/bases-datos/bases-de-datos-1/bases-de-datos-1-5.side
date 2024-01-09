@@ -1,0 +1,1081 @@
+{
+    "id": "mclibre-bases-de-datos-1-5-tests",
+    "version": "2.0",
+    "name": "Bases de datos (1) 5",
+    "url": "http://localhost",
+    "tests": [
+        {
+            "id": "test-completo",
+            "name": "Test Bases de datos (1) 5",
+            "comment": "Comprueba todo",
+            "commands": [
+                {
+                    "id": "definiciones-generales-1",
+                    "command": "store",
+                    "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-1/bases-de-datos-1-5",
+                    "value": "urlBase"
+                },
+                {
+                    "id": "inicio-1",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": ""
+                },
+                {
+                    "id": "inicio-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "20000"
+                },
+                {
+                    "id": "borrar-todo-1",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar todo 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-3",
+                    "command": "click",
+                    "target": "xpath=//input[@value='No']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-5",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar todo 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Sí']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar todo 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-9",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
+                    "value": "detectadoSQLite"
+                },
+                {
+                    "id": "borrar-todo-10",
+                    "command": "if",
+                    "target": "${detectadoSQLite}",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Tabla borrada correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-todo-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-13",
+                    "command": "else",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-14",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: MySQL."
+                },
+                {
+                    "id": "borrar-todo-15",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Base de datos borrada correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-todo-16",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Base de datos creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-17",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Base de datos seleccionada correctamente."
+                },
+                {
+                    "id": "borrar-todo-18",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Tabla creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-19",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-20",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-21",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-1-1",
+                    "comment": "(TEST) Insertar > Inserta correctamente",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-1-3",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "Numa"
+                },
+                {
+                    "id": "insertar-1-4",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "Nigerio"
+                },
+                {
+                    "id": "insertar-1-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Añadir']",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-1-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-1-7",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "insertar-1-8",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-1-9",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-2-1",
+                    "comment": "(TEST) Insertar > Avisos individuales Nombre / Apellidos largos",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&apellidos=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "El nombre no puede tener más de 40 caracteres."
+                },
+                {
+                    "id": "insertar-2-4",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Los apellidos no pueden tener más de 60 caracteres."
+                },
+                {
+                    "id": "insertar-2-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "insertar-2-6",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "2"
+                },
+                {
+                    "id": "insertar-3-1",
+                    "comment": "(TEST) Insertar > Inserta un registro directamente",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=Pepito&apellidos=Conejo",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-3-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "insertar-3-4",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-3-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "listar-1-1",
+                    "comment": "(TEST) Listar > Prueba que muestra el listado correctamente",
+                    "command": "click",
+                    "target": "linkText=Listar",
+                    "value": ""
+                },
+                {
+                    "id": "listar-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Listar\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "listar-1-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[1]",
+                    "value": "Nombre"
+                },
+                {
+                    "id": "listar-1-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[2]",
+                    "value": "Apellidos"
+                },
+                {
+                    "id": "listar-1-5",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "listar-1-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "Nigerio"
+                },
+                {
+                    "id": "listar-1-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Pepito"
+                },
+                {
+                    "id": "listar-1-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[2]",
+                    "value": "Conejo"
+                },
+                {
+                    "id": "listar-1-9",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "listar-1-10",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "listar-1-11",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "listar-1-12",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-1-1",
+                    "comment": "(TEST) Borrar > Añade un tercer registro",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-1-3",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=Julio&apellidos=César",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-1-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-1-5",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "borrar-1-6",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-1-7",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-2-1",
+                    "comment": "(TEST) Borrar > Marca casilla",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-2-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "borrar-2-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4"
+                },
+                {
+                    "id": "borrar-2-5",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[1]",
+                    "value": "Borrar"
+                },
+                {
+                    "id": "borrar-2-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[2]",
+                    "value": "Nombre"
+                },
+                {
+                    "id": "borrar-2-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[3]",
+                    "value": "Apellidos"
+                },
+                {
+                    "id": "borrar-2-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "borrar-2-9",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[3]",
+                    "value": "Nigerio"
+                },
+                {
+                    "id": "borrar-2-10",
+                    "command": "click",
+                    "target": "name=id[1]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-2-11",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[1]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-3-1",
+                    "comment": "(TEST) Borrar > Intenta borrar registro sin marcar ninguno",
+                    "command": "click",
+                    "target": "name=id[1]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-3-2",
+                    "command": "verifyNotChecked",
+                    "target": "xpath=//input[@name=\"id[1]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-3-3",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Borrar registro']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-3-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-3-5",
+                    "command": "verifyNotText",
+                    "target": "xpath=//p",
+                    "value": "Registro borrado correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-3-6",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-3-7",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-4-1",
+                    "comment": "(TEST) Borrar > Intenta borrar dos registros inexistentes",
+                    "command": "open",
+                    "target": "${urlBase}/borrar-2.php?id[50]=on&id[60]=on",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-4-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Registro borrado correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-4-4",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Registro borrado correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-4-5",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-1",
+                    "comment": "(TEST) Borrar > Borra un registro",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-5-3",
+                    "command": "click",
+                    "target": "name=id[1]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-4",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[1]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Borrar registro']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-5-7",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro borrado correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-5-8",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-5-9",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-6-1",
+                    "comment": "(TEST) Borrar > Borra dos registros",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-6-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "borrar-6-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "borrar-6-5",
+                    "command": "click",
+                    "target": "name=id[2]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-6",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[2]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-7",
+                    "command": "click",
+                    "target": "name=id[3]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-8",
+                    "command": "verifyChecked",
+                    "target": "xpath=//input[@name=\"id[3]\"]",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-9",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Borrar registro']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-10",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-6-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Registro borrado correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-6-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Registro borrado correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-6-13",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-6-14",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-7-1",
+                    "comment": "(TEST) Borrar > Comprueba que no queda nada",
+                    "command": "click",
+                    "target": "linkText=Borrar",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Borrar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-7-3",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "borrar-7-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "1"
+                },
+                {
+                    "id": "borrar-7-5",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-7-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-1-1",
+                    "comment": "(TEST) Buscar > Inserta tres registros directamente",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=Numa&apellidos=Nigerio",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-1-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "buscar-1-4",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=Pepito&apellidos=Conejo",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-1-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-1-6",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "buscar-1-7",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=Julio&apellidos=César",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-1-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-1-9",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "buscar-1-10",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-1-11",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-2-1",
+                    "comment": "(TEST) Buscar > Encuentra registros correctamente (busca por nombre)",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-2-3",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "u"
+                },
+                {
+                    "id": "buscar-2-4",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-2-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-2-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[1]",
+                    "value": "Nombre"
+                },
+                {
+                    "id": "buscar-2-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[2]",
+                    "value": "Apellidos"
+                },
+                {
+                    "id": "buscar-2-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "buscar-2-9",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "Nigerio"
+                },
+                {
+                    "id": "buscar-2-10",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Julio"
+                },
+                {
+                    "id": "buscar-2-11",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[2]",
+                    "value": "César"
+                },
+                {
+                    "id": "buscar-2-12",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-2-13",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3"
+                },
+                {
+                    "id": "buscar-2-14",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-2-15",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-3-1",
+                    "comment": "(TEST) Buscar > Encuentra registros correctamente (busca por apellidos)",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-3-3",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "a"
+                },
+                {
+                    "id": "buscar-3-4",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-3-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-3-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Julio"
+                },
+                {
+                    "id": "buscar-3-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "César"
+                },
+                {
+                    "id": "buscar-3-8",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-3-9",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "2"
+                },
+                {
+                    "id": "buscar-3-10",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-3-11",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-4-1",
+                    "comment": "(TEST) Buscar > Encuentra registros correctamente (busca por nombre y apellidos",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-4-3",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "m"
+                },
+                {
+                    "id": "buscar-4-4",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "g"
+                },
+                {
+                    "id": "buscar-4-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-4-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-4-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Numa"
+                },
+                {
+                    "id": "buscar-4-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "Nigerio"
+                },
+                {
+                    "id": "buscar-4-9",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-4-10",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "2"
+                },
+                {
+                    "id": "buscar-4-11",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-4-12",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-5-1",
+                    "comment": "(TEST) Buscar > No encuentra registros correctamente (busca por apellidos)",
+                    "command": "click",
+                    "target": "linkText=Buscar",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-5-3",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "x"
+                },
+                {
+                    "id": "buscar-5-4",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Buscar']",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-5-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Buscar 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "buscar-5-6",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "buscar-5-7",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "1"
+                },
+                {
+                    "id": "buscar-5-8",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "buscar-5-9",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 5 - Inicio\"]",
+                    "value": "1000"
+                }
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "id": "suite",
+            "name": "Suite",
+            "persistSession": false,
+            "parallel": false,
+            "timeout": 300,
+            "tests": [
+                "test-completo"
+            ]
+        }
+    ]
+}

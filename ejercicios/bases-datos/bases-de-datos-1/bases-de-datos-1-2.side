@@ -1,0 +1,294 @@
+{
+    "id": "mclibre-bases-de-datos-1-2-tests",
+    "version": "2.0",
+    "name": "Bases de datos (1) 2",
+    "url": "http://localhost",
+    "tests": [
+        {
+            "id": "test-completo",
+            "name": "Test Bases de datos (1) 2",
+            "comment": "Comprueba todo",
+            "commands": [
+                {
+                    "id": "definiciones-generales-1",
+                    "command": "store",
+                    "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-1/bases-de-datos-1-2",
+                    "value": "urlBase"
+                },
+                {
+                    "id": "inicio-1",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": ""
+                },
+                {
+                    "id": "inicio-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Inicio\"]",
+                    "value": "20000"
+                },
+                {
+                    "id": "borrar-todo-1",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Borrar todo 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-3",
+                    "command": "click",
+                    "target": "xpath=//input[@value='No']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-5",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Borrar todo 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Sí']",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Borrar todo 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "borrar-todo-9",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
+                    "value": "detectadoSQLite"
+                },
+                {
+                    "id": "borrar-todo-10",
+                    "command": "if",
+                    "target": "${detectadoSQLite}",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Tabla borrada correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-todo-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-13",
+                    "command": "else",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-14",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: MySQL."
+                },
+                {
+                    "id": "borrar-todo-15",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Base de datos borrada correctamente (si existía)."
+                },
+                {
+                    "id": "borrar-todo-16",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Base de datos creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-17",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Base de datos seleccionada correctamente."
+                },
+                {
+                    "id": "borrar-todo-18",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Tabla creada correctamente."
+                },
+                {
+                    "id": "borrar-todo-19",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-20",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-21",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-1-1",
+                    "comment": "(TEST) Insertar > Inserta correctamente",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Añadir 1\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-1-3",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "Numa"
+                },
+                {
+                    "id": "insertar-1-4",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "Nigerio"
+                },
+                {
+                    "id": "insertar-1-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Añadir']",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-1-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-1-7",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "insertar-1-8",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-1-9",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Inicio\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-2-1",
+                    "comment": "(TEST) Insertar > Avisos individuales Nombre / Apellidos largos",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&apellidos=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "El nombre no puede tener más de 40 caracteres."
+                },
+                {
+                    "id": "insertar-2-4",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Los apellidos no pueden tener más de 60 caracteres."
+                },
+                {
+                    "id": "insertar-2-5",
+                    "command": "storeXpathCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "insertar-2-6",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "2"
+                },
+                {
+                    "id": "insertar-3-1",
+                    "comment": "(TEST) Insertar > Inserta un registro directamente",
+                    "command": "open",
+                    "target": "${urlBase}/insertar-2.php?nombre=Pepito&apellidos=Conejo",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Añadir 2\"]",
+                    "value": "1000"
+                },
+                {
+                    "id": "insertar-3-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente."
+                },
+                {
+                    "id": "insertar-3-4",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": ""
+                },
+                {
+                    "id": "insertar-3-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (1) 2 - Inicio\"]",
+                    "value": "1000"
+                }
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "id": "suite",
+            "name": "Suite",
+            "persistSession": false,
+            "parallel": false,
+            "timeout": 300,
+            "tests": [
+                "test-completo"
+            ]
+        }
+    ]
+}
