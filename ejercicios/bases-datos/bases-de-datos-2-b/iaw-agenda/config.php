@@ -5,7 +5,7 @@
  * @link      https://www.mclibre.org
  */
 
-// OPCIONES DISPONIBLES PARA EL ADMINISTRADOR DE LA APLICACIÓN
+// VARIABLES CONFIGURABLES POR EL ADMINISTRADOR DE LA APLICACIÓN
 
 // Base de datos utilizada por la aplicación
 
