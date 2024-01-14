@@ -81,7 +81,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
     }
 }
 
-$existeRegistroOk = false;
+$registroDistintoOk = false;
 
 if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
@@ -99,13 +99,13 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. No se ha guardado la modificación.</p>\n";
     } else {
-        $existeRegistroOk = true;
+        $registroDistintoOk = true;
     }
 }
 
-$registroRootOk = false;
+$registroNoRootOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $existeRegistroOk) {
+if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -119,12 +119,12 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $
         if ($registro["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $registro["usuario"] != $usuario || $registro["nivel"] != $nivel)) {
             print "    <p class=\"aviso\">Del usuario Administrador inicial sólo se puede cambiar la contraseña.</p>\n";
         } else {
-            $registroRootOk = true;
+            $registroNoRootOk = true;
         }
     }
 }
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $existeRegistroOk && $registroRootOk) {
+if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $registroDistintoOk && $registroNoRootOk) {
     if ($mantenerPassword == "Sí") {
         $consulta = "UPDATE $cfg[tablaUsuarios]
                      SET usuario = :usuario, nivel = :nivel

@@ -42,7 +42,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
     $passwordOk = true;
 }
 
-$existeRegistroOk = false;
+$registroDistintoOk = false;
 
 if ($usuarioOk && $passwordOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
@@ -56,13 +56,13 @@ if ($usuarioOk && $passwordOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
     } else {
-        $existeRegistroOk = true;
+        $registroDistintoOk = true;
     }
 }
 
 $limiteRegistrosOk = false;
 
-if ($usuarioOk && $passwordOk && $existeRegistroOk) {
+if ($usuarioOk && $passwordOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
 
     $resultado = $pdo->query($consulta);
@@ -77,7 +77,7 @@ if ($usuarioOk && $passwordOk && $existeRegistroOk) {
     }
 }
 
-if ($usuarioOk && $passwordOk && $nivelOk && $existeRegistroOk && $limiteRegistrosOk) {
+if ($usuarioOk && $passwordOk && $nivelOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password)
                  VALUES (:usuario, :password)";

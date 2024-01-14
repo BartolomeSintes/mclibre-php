@@ -55,7 +55,7 @@ if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
     $nombreOk = $apellidosOk = $telefonoOk = $correoOk = false;
 }
 
-$existeRegistroOk = false;
+$registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
@@ -72,13 +72,13 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">El registro ya existe.</p>\n";
     } else {
-        $existeRegistroOk = true;
+        $registroDistintoOk = true;
     }
 }
 
 $limiteRegistrosOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $existeRegistroOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo->query($consulta);
@@ -93,7 +93,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $existeRegistroOk) 
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $existeRegistroOk && $limiteRegistrosOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";

@@ -47,7 +47,7 @@ if ($idOk) {
             $registroEncontradoOk = true;
         }
 
-        $registroRootOk = false;
+        $registroNoRootOk = false;
 
         if ($registroEncontradoOk) {
             $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
@@ -62,11 +62,11 @@ if ($idOk) {
             } elseif ($resultado->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">Este usuario no se puede borrar.</p>\n";
             } else {
-                $registroRootOk = true;
+                $registroNoRootOk = true;
             }
         }
 
-        if ($registroEncontradoOk && $registroRootOk) {
+        if ($registroEncontradoOk && $registroNoRootOk) {
             $consulta = "DELETE FROM $cfg[tablaUsuarios]
                          WHERE id = :indice";
 

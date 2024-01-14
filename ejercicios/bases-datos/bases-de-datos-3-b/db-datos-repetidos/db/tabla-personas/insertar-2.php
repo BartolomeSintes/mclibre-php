@@ -78,7 +78,7 @@ if (!$resultado) {
     $limiteRegistrosOk = true;
 }
 
-$existeRegistroOk = false;
+$registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
@@ -95,13 +95,13 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">El registro ya existe.</p>\n";
     } else {
-        $existeRegistroOk = true;
+        $registroDistintoOk = true;
     }
 }
 
 $registrosSimilaresOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $existeRegistroOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE (nombre = :nombre
                  AND apellidos = :apellidos)
@@ -133,7 +133,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk 
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $existeRegistroOk && $registrosSimilaresOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $registroDistintoOk && $registrosSimilaresOk) {
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";

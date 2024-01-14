@@ -72,7 +72,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
     }
 }
 
-$existeRegistroOk = false;
+$registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
@@ -92,11 +92,11 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk) 
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. No se ha guardado la modificación.</p>\n";
     } else {
-        $existeRegistroOk = true;
+        $registroDistintoOk = true;
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk && $existeRegistroOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono
                  WHERE id = :id";

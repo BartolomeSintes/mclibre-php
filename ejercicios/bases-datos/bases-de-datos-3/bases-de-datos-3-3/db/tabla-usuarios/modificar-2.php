@@ -47,7 +47,7 @@ if ($idOk) {
     }
 }
 
-$registroRootOk = false;
+$registroNoRootOk = false;
 
 if ($idOk && $registroEncontradoOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
@@ -63,12 +63,12 @@ if ($idOk && $registroEncontradoOk) {
         if ($registro["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
             print "    <p class=\"aviso\">Este usuario no se puede modificar.</p>\n";
         } else {
-            $registroRootOk = true;
+            $registroNoRootOk = true;
         }
     }
 }
 
-if ($idOk && $registroEncontradoOk && $registroRootOk) {
+if ($idOk && $registroEncontradoOk && $registroNoRootOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
