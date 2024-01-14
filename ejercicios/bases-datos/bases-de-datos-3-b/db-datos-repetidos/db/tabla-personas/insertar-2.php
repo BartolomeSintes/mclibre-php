@@ -57,30 +57,18 @@ if (mb_strlen($correo, "UTF-8") > $cfg["tablaPersonasTamCorreo"]) {
     $correoOk = true;
 }
 
+$registroNoVacioOk = false;
+
 if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
     print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
-    $nombreOk = $apellidosOk = $telefonoOk = $correoOk = false;
-}
-
-$limiteRegistrosOk = false;
-
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
-
-$resultado = $pdo->query($consulta);
-if (!$resultado) {
-    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() >= $cfg["tablaPersonasMaxReg"] && $cfg["tablaPersonasMaxReg"] > 0) {
-    print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-    print "\n";
-    print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
 } else {
-    $limiteRegistrosOk = true;
+    $registroNoVacioOk = true;
 }
 
 $registroDistintoOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroNoVacioOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE nombre = :nombre
                  AND apellidos = :apellidos
@@ -99,9 +87,26 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
     }
 }
 
+$limiteRegistrosOk = false;
+
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroNoVacioOk && $registroDistintoOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo->query($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() >= $cfg["tablaPersonasMaxReg"] && $cfg["tablaPersonasMaxReg"] > 0) {
+        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
+    } else {
+        $limiteRegistrosOk = true;
+    }
+}
+
 $registrosSimilaresOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $registroDistintoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE (nombre = :nombre
                  AND apellidos = :apellidos)
@@ -133,7 +138,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk 
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $limiteRegistrosOk && $registroDistintoOk && $registrosSimilaresOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk && $registrosSimilaresOk) {
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";

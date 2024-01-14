@@ -40,15 +40,18 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["tablaPersonasTamTelefono"]) {
     $telefonoOk = true;
 }
 
+$registroNoVacioOk = false;
+
 if ($nombre == "" && $apellidos == "" && $telefono == "") {
     print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
-    $nombreOk = $apellidosOk = $telefonoOk = false;
+} else {
+    $registroNoVacioOk = true;
 }
 
 $registroDistintoOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE nombre = :nombre
                  AND apellidos = :apellidos
@@ -68,7 +71,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
 
 $limiteRegistrosOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $registroDistintoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo->query($consulta);
@@ -83,7 +86,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $registroDistintoOk) {
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $registroDistintoOk && $limiteRegistrosOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono)
                  VALUES (:nombre, :apellidos, :telefono)";

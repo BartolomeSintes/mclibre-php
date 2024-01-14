@@ -59,21 +59,24 @@ if (mb_strlen($correo, "UTF-8") > $cfg["tablaPersonasTamCorreo"]) {
     $correoOk = true;
 }
 
-if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
-    print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
-    print "\n";
-    $nombreOk = $apellidosOk = $telefonoOk = $correoOk = false;
-}
-
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $idOk = true;
 }
 
+$registroNoVacioOk = false;
+
+if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
+    print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
+    print "\n";
+} else {
+    $registroNoVacioOk = true;
+}
+
 $registroEncontradoOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroNoVacioOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
@@ -91,7 +94,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
 
 $registroDistintoOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroEncontradoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroNoVacioOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
@@ -114,7 +117,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroE
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroNoVacioOk && $registroEncontradoOk && $registroDistintoOk) {
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono, correo = :correo
                  WHERE id = :id";

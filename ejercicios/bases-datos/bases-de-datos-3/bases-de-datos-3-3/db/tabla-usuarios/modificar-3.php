@@ -68,7 +68,7 @@ if ($usuarioOk && $passwordOk && $idOk) {
     }
 }
 
-$registroDistintoOk = false;
+$existeRegistroOk = false;
 
 if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
@@ -86,13 +86,13 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">Ya existe un registro con esos mismos valores. No se ha guardado la modificación.</p>\n";
     } else {
-        $registroDistintoOk = true;
+        $existeRegistroOk = true;
     }
 }
 
 $registroNoRootOk = false;
 
-if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $existeRegistroOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -111,7 +111,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDist
     }
 }
 
-if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk && $registroNoRootOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $existeRegistroOk && $registroNoRootOk) {
     $consulta = "UPDATE $cfg[tablaUsuarios]
                  SET usuario = :usuario, password = :password
                  WHERE id = :id";

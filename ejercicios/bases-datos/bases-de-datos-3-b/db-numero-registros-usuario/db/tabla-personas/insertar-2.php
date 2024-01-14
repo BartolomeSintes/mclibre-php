@@ -57,15 +57,18 @@ if (mb_strlen($correo, "UTF-8") > $cfg["tablaPersonasTamCorreo"]) {
     $correoOk = true;
 }
 
+$registroNoVacioOk = false;
+
 if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
     print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
     print "\n";
-    $nombreOk = $apellidosOk = $telefonoOk = $correoOk = false;
+} else {
+    $registroNoVacioOk = true;
 }
 
 $registroDistintoOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroNoVacioOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE nombre = :nombre
                  AND apellidos = :apellidos
@@ -86,30 +89,32 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
 
 $limiteRegistrosOk = false;
 
-$consulta = "SELECT registros FROM $cfg[tablaUsuarios]
-             WHERE id = $_SESSION[usuario]";
-
-$resultado = $pdo->query($consulta);
-if (!$resultado) {
-    print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} else {
-    $maximo = $resultado->fetchColumn();
-
-    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroNoVacioOk && $registroDistintoOk) {
+    $consulta = "SELECT registros FROM $cfg[tablaUsuarios]
+                WHERE id = $_SESSION[usuario]";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif ($resultado->fetchColumn() >= $maximo && $maximo > 0) {
-        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-        print "\n";
-        print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
     } else {
-        $limiteRegistrosOk = true;
+        $maximo = $resultado->fetchColumn();
+
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+
+        $resultado = $pdo->query($consulta);
+        if (!$resultado) {
+            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } elseif ($resultado->fetchColumn() >= $maximo && $maximo > 0) {
+            print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+            print "\n";
+            print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
+        } else {
+            $limiteRegistrosOk = true;
+        }
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroDistintoOk && $limiteRegistrosOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono, correo)
                  VALUES (:nombre, :apellidos, :telefono, :correo)";

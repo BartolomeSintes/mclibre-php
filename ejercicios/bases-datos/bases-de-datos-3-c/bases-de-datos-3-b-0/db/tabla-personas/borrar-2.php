@@ -21,10 +21,18 @@ cabecera("Personas - Borrar 2", MENU_PERSONAS, PROFUNDIDAD_2);
 
 $id = recoge("id", []);
 
+$idOk = false;
+
 if (count($id) == 0) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
+    $idOk = true;
+}
+
+if ($idOk) {
     foreach ($id as $indice => $valor) {
+        $registroEncontradoOk = false;
+
         $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                      WHERE id = :indice";
 
@@ -36,6 +44,10 @@ if (count($id) == 0) {
         } elseif ($resultado->fetchColumn() == 0) {
             print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
         } else {
+            $registroEncontradoOk = true;
+        }
+
+        if ($registroEncontradoOk) {
             $consulta = "DELETE FROM $cfg[tablaPersonas]
                          WHERE id = :indice";
 

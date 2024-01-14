@@ -42,21 +42,24 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["tablaPersonasTamTelefono"]) {
     $telefonoOk = true;
 }
 
-if ($nombre == "" && $apellidos == "" && $telefono == "") {
-    print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
-    print "\n";
-    $nombreOk = $apellidosOk = $telefonoOk = false;
-}
-
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $idOk = true;
 }
 
+$registroNoVacioOk = false;
+
+if ($nombre == "" && $apellidos == "" && $telefono == "") {
+    print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
+    print "\n";
+} else {
+    $registroNoVacioOk = true;
+}
+
 $registroEncontradoOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroNoVacioOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
@@ -74,7 +77,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk) {
 
 $registroDistintoOk = false;
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroNoVacioOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
@@ -96,7 +99,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk) 
     }
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
+if ($nombreOk && $apellidosOk && $telefonoOk && $idOk && $registroNoVacioOk && $registroEncontradoOk && $registroDistintoOk) {
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono
                  WHERE id = :id";

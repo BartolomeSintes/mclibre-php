@@ -11,6 +11,8 @@ $pdo = conectaDb();
 
 cabecera("Añadir 1", MENU_VOLVER);
 
+$limiteRegistrosOk = false;
+
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo->query($consulta);
@@ -21,6 +23,10 @@ if (!$resultado) {
     print "\n";
     print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
 } else {
+    $limiteRegistrosOk = true;
+}
+
+if ($limiteRegistrosOk) {
     print "    <form action=\"insertar-2.php\" method=\"$cfg[formMethod]\">\n";
     print "      <p>Escriba los datos del nuevo registro:</p>\n";
     print "\n";

@@ -21,9 +21,35 @@ cabecera("Usuarios - Modificar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $id = recoge("id");
 
+$idOk = false;
+
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
+    $idOk = true;
+}
+
+$registroEncontradoOk = false;
+
+if ($idOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                 WHERE id = :id";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() == 0) {
+        print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
+    } else {
+        $registroEncontradoOk = true;
+    }
+}
+
+$registroNoRootOk = false;
+
+if ($idOk && $registroEncontradoOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -32,11 +58,27 @@ if ($id == "") {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } elseif (!$resultado->execute([":id" => $id])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif (!($registro = $resultado->fetch())) {
-        print "    <p class=\"aviso\">Registro no encontrado.</p>\n";
-    } elseif ($registro["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
-        print "    <p class=\"aviso\">Este usuario no se puede modificar.</p>\n";
     } else {
+        $registro = $resultado->fetch();
+        if ($registro["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
+            print "    <p class=\"aviso\">Este usuario no se puede modificar.</p>\n";
+        } else {
+            $registroNoRootOk = true;
+        }
+    }
+}
+
+if ($idOk && $registroEncontradoOk && $registroNoRootOk) {
+    $consulta = "SELECT * FROM $cfg[tablaUsuarios]
+                 WHERE id = :id";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":id" => $id])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        $registro = $resultado->fetch();
         print "    <form action=\"modificar-3.php\" method=\"$cfg[formMethod]\">\n";
         print "      <p>Modifique los campos que desee:</p>\n";
         print "\n";

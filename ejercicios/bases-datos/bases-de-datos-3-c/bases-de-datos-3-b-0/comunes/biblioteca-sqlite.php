@@ -16,17 +16,17 @@ function conectaDb()
     if (!is_dir(dirname($cfg["sqliteDatabase"]))) {
         print "    <p class=\"aviso\">Error: El directorio <strong>" . dirname($cfg["sqliteDatabase"]) . "</strong> no está disponible.</p>\n";
         exit;
-    } else {
-        try {
-            $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
-            $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-            $tmp->query("PRAGMA foreign_keys = ON");
-            $tmp->query("PRAGMA encoding = 'UTF-8'");
-            return $tmp;
-        } catch (PDOException $e) {
-            print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
-            exit;
-        }
+    }
+
+    try {
+        $tmp = new PDO("sqlite:$cfg[sqliteDatabase]");
+        $tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+        $tmp->query("PRAGMA foreign_keys = ON");
+        $tmp->query("PRAGMA encoding = 'UTF-8'");
+        return $tmp;
+    } catch (PDOException $e) {
+        print "    <p class=\"aviso\">Error: No puede conectarse con la base de datos. {$e->getMessage()}</p>\n";
+        exit;
     }
 }
 

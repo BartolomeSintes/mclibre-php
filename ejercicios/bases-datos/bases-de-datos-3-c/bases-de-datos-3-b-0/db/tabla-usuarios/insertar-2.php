@@ -54,6 +54,8 @@ if ($nivel == "") {
     $nivelOk = true;
 }
 
+$registroDistintoOk = false;
+
 if ($usuarioOk && $passwordOk && $nivelOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE usuario = :usuario";
@@ -66,29 +68,39 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
     } else {
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
+        $registroDistintoOk = true;
+    }
+}
 
-        $resultado = $pdo->query($consulta);
-        if (!$resultado) {
-            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif ($resultado->fetchColumn() >= $cfg["tablaUsuariosMaxReg"] && $cfg["tablaUsuariosMaxReg"] > 0) {
-            print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
-            print "\n";
-            print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
-        } else {
-            $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                         (usuario, password, nivel)
-                         VALUES (:usuario, :password, :nivel)";
+$limiteRegistrosOk = false;
 
-            $resultado = $pdo->prepare($consulta);
-            if (!$resultado) {
-                print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel])) {
-                print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } else {
-                print "    <p>Registro creado correctamente.</p>\n";
-            }
-        }
+if ($usuarioOk && $passwordOk && $nivelOk && $registroDistintoOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
+
+    $resultado = $pdo->query($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() >= $cfg["tablaUsuariosMaxReg"] && $cfg["tablaUsuariosMaxReg"] > 0) {
+        print "    <p class=\"aviso\">Se ha alcanzado el número máximo de registros que se pueden guardar.</p>\n";
+        print "\n";
+        print "    <p class=\"aviso\">Por favor, borre algún registro antes de insertar un nuevo registro.</p>\n";
+    } else {
+        $limiteRegistrosOk = true;
+    }
+}
+
+if ($usuarioOk && $passwordOk && $nivelOk && $registroDistintoOk && $limiteRegistrosOk) {
+    $consulta = "INSERT INTO $cfg[tablaUsuarios]
+                 (usuario, password, nivel)
+                 VALUES (:usuario, :password, :nivel)";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } else {
+        print "    <p>Registro creado correctamente.</p>\n";
     }
 }
 
