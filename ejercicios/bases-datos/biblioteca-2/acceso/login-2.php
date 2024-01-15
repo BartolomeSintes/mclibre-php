@@ -19,7 +19,7 @@ $password = recoge("password");
 
 $db = conectaDb();
 
-if (!$usuario) {
+if ($usuario == "") {
     header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
     exit;
 }

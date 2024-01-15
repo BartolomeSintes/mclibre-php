@@ -20,7 +20,7 @@ $pdo = conectaDb();
 $usuario  = recoge("usuario");
 $password = recoge("password");
 
-if (!$usuario) {
+if ($usuario == "") {
     header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
     exit;
 }
