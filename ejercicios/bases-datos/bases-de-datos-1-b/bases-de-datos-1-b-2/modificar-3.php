@@ -21,6 +21,7 @@ $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
 $correoOk    = false;
+$idOk        = false;
 
 if (mb_strlen($nombre, "UTF-8") > $cfg["tablaPersonasTamNombre"]) {
     print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.</p>\n";
@@ -50,7 +51,13 @@ if (mb_strlen($correo, "UTF-8") > $cfg["tablaPersonasTamCorreo"]) {
     $correoOk = true;
 }
 
-if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
+if ($id == "") {
+    print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
+} else {
+    $idOk = true;
+}
+
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos,
                      telefono = :telefono, correo = :correo
