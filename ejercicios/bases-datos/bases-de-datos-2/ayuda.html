@@ -54,6 +54,44 @@
 </pre>
         </div>
       </li>
+      <li>Cada comprobación que se añada en una página se acompañará de una variable lógica $...Ok que almacenará el resultado de la comprobación. Si la comprobación no tiene éxito se mostrará un aviso y la variable tomará el valor <span class="php-con">false</span>. Si se supera con éxito la comprobación la variable tomará el valor <span class="php-con">true</span> y el programa seguirá adelante.
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$comprobacionOk = false;                      // Inicialmente, la comprobación se considera no superada (valor <span class="php-con">false</span>)
+...
+if ( ... )  {                                 // Si no se cumple aquello que se quiere comprobar  ...
+    print "    &lt;p class=\"aviso\"&gt;Error ...   // ... se muestra un aviso
+} else {
+    $comprobacionOk = true;                   // Si se cumple, la variable $...Ok toma el valor <span class="php-con">true</span>
+}
+
+if ($comprobacionOk) {                        // Para que el programa continúe, la comprobación tiene que haber tenido éxito
+    ...</code>
+</pre>
+        </div>
+      </li>
+      <li>Si en una página se realizan varias comprobaciones, las comprobaciones posteriores se realizarán cuando las comprobaciones anteriores hayan dado un resultado positivo. En algunos casos, porque es necesario (por ejemplo, no tiene sentido comprobar si un registro tiene determinados valores si esos valores, que se han recibido de un formulario, no son válidos). En otros casos, lo haremos simplemente para evitar multiplicar los avisos, lo que podría causar confusión al usuario.
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$comprobacion1Ok = false;                    // Realizamos una primera comprobación
+...
+
+$comprobacion2Ok = false;                     // Realizamos una segunda comprobación ...
+if ($comprobacion1Ok) {                       // ... si se ha superado la primera.
+    ...
+}
+
+$comprobacion3Ok = false;                     // Realizamos una tercera comprobación ...
+if ($comprobacion1Ok && $comprobacion2Ok) {   // ... si se han superado las dos primeras.
+    ...
+}
+
+...</code>
+</pre>
+        </div>
+      </li>
       <li>config.php
         <ul>
           <li>Defina una opción de configuración que contenga el máximo número de registros que puede contener la tabla.
@@ -70,10 +108,13 @@ $cfg["tablaPersonasMaxReg"] = 20;                           // Número máximo d
         <ul>
           <li>Compruebe si se ha alcanzado el número máximo de registros admitidos en la tabla.
             <p>Para ello, podemos hacer una consulta COUNT(*), que devuelve un único registro con una única columna que contiene el número de registros en la tabla. Podemos obtener ese valor con el método <a href="https://www.php.net/manual/en/pdostatement.fetchcolumn.php">fetchColumn()</a>.</p>
+            <p>La variable lógica <span class="php-var">$limiteRegistrosOk</span> tendrá el valor <span class="php-con">true</span> si no se ha alcanzado el límte de número de registros y <span class="php-con">false</span> si se ha alcanzado.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+<code class="language-php">$limiteRegistrosOk = false;
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
@@ -81,8 +122,13 @@ if (!$resultado) {
 } elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["tablaPersonasMaxReg"]) {
     print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
     print "\n";
-    print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes.&lt;/p&gt;\n";
+    print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";
 } else {
+    $limiteRegistrosOk = true;
+}
+
+if ($limiteRegistrosOk) {
+    print "    &lt;form action=\"insertar-2.php\" method=\"$cfg[formMethod]\"&gt;\n";
     ...</code>
 </pre>
             </div>
@@ -92,46 +138,57 @@ if (!$resultado) {
       <li>insertar-2.php
         <ul>
           <li>Compruebe que el usuario no ha dejado todos los campos vacíos.
-            <p>En la comprobación de los valores de $nombre y $apellidos podemos añadir una condición suplementaria:</p>
+            <p>La variable lógica <span class="php-var">$registroNoVacioOk</span> tendrá el valor <span class="php-con">true</span> si algún campo no es vacío y <span class="php-con">false</span> si todos los campos son vacíos.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">if ($nombre == "" && $apellidos == "") {
+<code class="language-php">$registroNoVacioOk = false;
+
+if ($nombre == "" && $apellidos == "") {
     print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
     print "\n";
-    $nombreOk = $apellidosOk = false;
+} else {
+    $registroNoVacioOk = true;
 }</code>
 </pre>
             </div>
           </li>
           <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la tabla.
-
             <p>Esta consulta se debe realizar con sentencias preparadas ya que incluye datos proporcionados por el usuario.</p>
+            <p>La variable lógica <span class="php-var">$registroDistintoOk</span> tendrá el valor <span class="php-con">true</span> si el registro no se encuentra en la tabla y <span class="php-con">false</span> si se encuentra.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                     WHERE nombre = :nombre
-                     AND apellidos = :apellidos";
+<code class="language-php">$registroDistintoOk = false;
 
-        $resultado = $pdo-&gt;prepare($consulta);
-        if (!$resultado) {
-            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
-            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
-            print "    &lt;p class=\"aviso\"&gt;El registro ya existe.&lt;/p&gt;\n";
-        } else {
-            ...</code>
+if ($nombreOk && $apellidosOk && $registroNoVacioOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                 WHERE nombre = :nombre
+                 AND apellidos = :apellidos";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+        print "    &lt;p class=\"aviso\"&gt;El registro ya existe.&lt;/p&gt;\n";
+    } else {
+        $registroDistintoOk = true;
+    }
+}</code>
 </pre>
             </div>
           </li>
           <li>Compruebe si se ha alcanzado el número máximo de registros admitidos en la tabla.
-            <p>Es conveniente hacer esta comprobación aunque se haya hecho ya en insertar-1.php, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar-1.php.</p>
+            <p>Esta comprobación es idéntica a la realizada en insertar-1.php, pero es conveniente repetirla aquí, ya que otro usuario puede haber introducido registros mientras el primer usuario estaba rellenando el formulario de insertar-1.php.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
+<code class="language-php">$limiteRegistrosOk = false;
+
+if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo-&gt;query($consulta);
     if (!$resultado) {
@@ -141,7 +198,21 @@ if (!$resultado) {
         print "\n";
         print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";
     } else {
-        ...</code>
+        $limiteRegistrosOk = true;
+    }
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Finalmente, si todas las condiciones se cumplen, realizaremos la inserción.
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk) {
+    $consulta = "INSERT INTO $cfg[tablaPersonas]
+                 (nombre, apellidos)
+                 VALUES (:nombre, :apellidos)";
+    ...</code>
 </pre>
             </div>
           </li>
@@ -151,20 +222,38 @@ if (!$resultado) {
         <ul>
           <li>Compruebe si la tabla contiene registros que se puedan listar.
 
-            <p>Para no tener que hacer una consulta contando los registros y otra recuperando los registros, utilizaremos el método <span class="php-fun">-&gt;fetchAll()</span> y la función <span class="php-fun">count()</span>.</p>
+            <p>La variable lógica <span class="php-var">$hayRegistrosOk</span> tendrá el valor <span class="php-con">true</span> si la tabla contiene registros y <span class="php-con">false</span> si está vacía.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT * FROM $cfg[tablaPersonas]
-             ORDER BY $ordena";
+<code class="language-php">$hayRegistrosOk = false;
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
 
 $resultado = $pdo-&gt;query($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (count($registros = $resultado-&gt;fetchAll()) == 0) {
+} elseif ($resultado-&gt;fetchColumn() == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
 } else {
-    ...</code>
+    $hayRegistrosOk = true;
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Finalmente, si la condición se cumple, mostraremos el listado de registros.
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">if ($hayRegistrosOk) {
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]";
+
+    $resultado = $pdo-&gt;query($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Listado completo de registros:&lt;/p&gt;\n";
+        ...</code>
 </pre>
             </div>
           </li>
@@ -182,21 +271,33 @@ if (!$resultado) {
           <li>Compruebe que se ha marcado algún registro para borrar.
             <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la función <span class="php-fun">count()</span>.</p>
 
+            <p>La variable lógica <span class="php-var">$idOk</span> tendrá el valor <span class="php-con">true</span> si la matriz <span class="php-var">$id</span> contiene algún elemento y <span class="php-con">false</span> si es vacía.</p>
+
             <div class="codigo">
               <pre>
 <code class="language-php">$id = recoge("id", []);
 
+$idOk = false;
+
 if (count($id) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
-    ...</code>
+    $idOk = true;
+}</code>
 </pre>
             </div>
           </li>
           <li>Compruebe que el registro a borrar existe.
+            <p>En el bucle foreach que recorre la matriz $id recibida comprobaremos que los valores de id corresponden a registros existentes en la tabla.</p>
+            <p>La variable lógica <span class="php-var">$registroEncontradoOk</span> tendrá el valor <span class="php-con">true</span> si existe el registro con el id recibido y <span class="php-con">false</span> si el registro no existe.</p>
+            <p>En caso de superar la comprobación, borraremos el registro.</p>
             <div class="codigo">
               <pre>
-<code class="language-php">        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+<code class="language-php">if ($idOk) {
+    foreach ($id as $indice =&gt; $valor) {
+        $registroEncontradoOk = false;
+
+        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                      WHERE id = :indice";
 
         $resultado = $pdo-&gt;prepare($consulta);
@@ -207,6 +308,12 @@ if (count($id) == 0) {
         } elseif ($resultado-&gt;fetchColumn() == 0) {
             print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
         } else {
+            $registroEncontradoOk = true;
+        }
+
+        if ($registroEncontradoOk) {
+            $consulta = "DELETE FROM $cfg[tablaPersonas]
+                         WHERE id = :indice";
           ...</code>
 </pre>
             </div>
@@ -223,11 +330,16 @@ if (count($id) == 0) {
       <li>buscar-2.php
         <ul>
           <li>Compruebe que se han encontrado registros.
-            <p>Esta comprobación es similar a la de comprobar que hay registros en la tabla, pero utilizando sentencias preparadas:</p>
+            <p>Esta comprobación es similar a la de comprobar que hay registros en la tabla, pero utilizando sentencias preparadas puesto que se incluye las cadenas de búsqueda indicadas por el usuario en buscar-1:</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT * FROM $cfg[tablaPersonas]
+<code class="language-php">$nombre    = recoge("nombre");
+$apellidos = recoge("apellidos");
+
+$registrosEncontradosOk = false;
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
              WHERE nombre LIKE :nombre
              AND apellidos LIKE :apellidos";
 
@@ -236,10 +348,31 @@ if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } elseif (!$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (count($registros = $resultado-&gt;fetchAll()) == 0) {
+} elseif ($resultado-&gt;fetchColumn() == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se han encontrado registros.&lt;/p&gt;\n";
 } else {
-    ...</code>
+    $registrosEncontradosOk = true;
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Finalmente, si la condición se cumple, mostraremos el listado de registros.
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">if ($registrosEncontradosOk) {
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                 WHERE nombre LIKE :nombre
+                 AND apellidos LIKE :apellidos";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; "%$nombre%", ":apellidos" =&gt; "%$apellidos%"])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;p&gt;Registros encontrados:&lt;/p&gt;\n";
+        ...</code>
 </pre>
             </div>
           </li>
@@ -255,16 +388,20 @@ if (!$resultado) {
       <li>modificar-2.php
         <ul>
           <li>Compruebe que se ha marcado algún registro para modificar.
-            <p>Esta comprobación es similar a la de comprobar que se ha marcado algún registro para borrar, pero en este caso no se trata de una matriz</p>
+            <p>Esta comprobación es similar a la de comprobar que se ha marcado algún registro para borrar, pero en este caso no se trata de una matriz, sino de un valor escalar.</p>
+            <p>La variable lógica <span class="php-var">$idO</span>k tendrá el valor <span class="php-con">true</span> si la variable <span class="php-var">$id</span> no es vacía y <span class="php-con">false</span> si es vacía.</p>
 
             <div class="codigo">
               <pre>
 <code class="language-php">$id = recoge("id");
 
+$idOk = false;
+
 if ($id == "") {
     print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
-    ...</code>
+    $idOk = true;
+}</code>
 </pre>
             </div>
           </li>
@@ -275,7 +412,10 @@ if ($id == "") {
 
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT * FROM $cfg[tablaPersonas]
+<code class="language-php">$registroEncontradoOk = false;
+
+if ($idOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -283,10 +423,31 @@ if ($id == "") {
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    } elseif (!($registro = $resultado-&gt;fetch())) {
+    } elseif ($resultado-&gt;fetchColumn() == 0) {
         print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
     } else {
-          ...</code>
+        $registroEncontradoOk = true;
+    }
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Finalmente, si las dos condiciones se cumplen, mostraremos el formulario en el que el usuario introducirá los nuevos valores.
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">if ($idOk && $registroEncontradoOk) {
+    $consulta = "SELECT * FROM $cfg[tablaPersonas]
+                 WHERE id = :id";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        print "    &lt;form action=\"modificar-3.php\" method=\"$cfg[formMethod]\"&gt;\n";
+        print "      &lt;p&gt;Modifique los campos que desee:&lt;/p&gt;\n";</code>
 </pre>
             </div>
           </li>
@@ -303,16 +464,29 @@ if ($id == "") {
             <div class="codigo">
               <pre>
 <code class="language-php">$idOk        = false;
+
 ...
 
 if ($id == "") {
     print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
 } else {
     $idOk = true;
-}
+}</code>
+</pre>
+            </div>
+          </li>
+          <li>Compruebe que los nuevos valores del registro no son todos vacíos.
+            <p>Esta comprobación es la misma que la de insertar-2.php</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">$registroNoVacioOk = false;
 
-if ($nombreOk && $apellidosOk && $idOk) {
-    ...</code>
+if ($nombre == "" && $apellidos == "") {
+    print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
+    print "\n";
+} else {
+    $registroNoVacioOk = true;
+}</code>
 </pre>
             </div>
           </li>
@@ -320,7 +494,10 @@ if ($nombreOk && $apellidosOk && $idOk) {
             <p>Esta comprobación es la misma que la de borrar-2.php</p>
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+<code class="language-php">$registroEncontradoOk = false;
+
+if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -331,38 +508,58 @@ if ($nombreOk && $apellidosOk && $idOk) {
     } elseif ($resultado-&gt;fetchColumn() == 0) {
         print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
     } else {
-      ...</code>
+        $registroEncontradoOk = true;
+    }
+}</code>
 </pre>
             </div>
           </li>
           <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la tabla (es decir, como no queremos registros repetidos en la tabla, tenemos que comprobar que al modificar un registro no lo hagamos coincidir con otro registro).
             <p>Esta comprobación es similar a la de insertar-2.php, excepto que es necesario incluir el id en la consulta para el caso particular en que la modificación realizada haya sido cambiar alguna minúscula por minúscula o viceversa. El motivo es que sólo se incluyera el nombre y los apellidos MySQL diría que sí que hay un registro como el modificado (el registro a modificar).</p>
+            <p>La variable lógica <span class="php-var">$registroDistintoOk</span> tendrá el valor <span class="php-con">true</span> si no existe ningún registro con los nuevos valores y <span class="php-con">false</span> si ya existe un registro con los nuevpos valores.</p>
 
             <div class="codigo">
               <pre>
-<code class="language-php">        // La consulta cuenta los registros con un id diferente porque MySQL no distingue
-        // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
-        // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-                     WHERE nombre = :nombre
-                     AND apellidos = :apellidos
-                     AND id&lt;&gt;:id";
+<code class="language-php">$registroDistintoOk = false;
 
-        $resultado = $pdo-&gt;prepare($consulta);
-        if (!$resultado) {
-            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
-            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
-            print "    &lt;p class=\"aviso\"&gt;Ya existe un registro con esos mismos valores. "
-                . "No se ha guardado la modificación.&lt;/p&gt;\n";
-        } else {
-            ...</code>
+if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontradoOk) {
+    // La consulta cuenta los registros con un id diferente porque MySQL no distingue
+    // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
+    // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                 WHERE nombre = :nombre
+                 AND apellidos = :apellidos
+                 AND id &lt;&gt; :id";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":nombre" =&gt; $nombre, ":apellidos" =&gt; $apellidos, ":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+        print "    &lt;p class=\"aviso\"&gt;Ya existe un registro con esos mismos valores. No se ha guardado la modificación.&lt;/p&gt;\n";
+    } else {
+        $registroDistintoOk = true;
+    }
+}</code>
 </pre>
             </div>
           </li>
         </ul>
       </li>
+      <li>Finalmente, si todas las condiciones se cumplen, realizaremos la inserción.
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontradoOk && $registroDistintoOk) {
+    $consulta = "UPDATE $cfg[tablaPersonas]
+                 SET nombre = :nombre, apellidos = :apellidos
+                 WHERE id = :id";
+...</code>
+</pre>
+        </div>
+      </li>
+
     </ul>
   </section>
 
@@ -393,7 +590,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
     <ul>
       <li>biblioteca.php
 
-        <p>En biblioteca.php la matriz de valores posibles podría ser la siguiente:</p>
+        <p>En biblioteca.php la matriz de valores posibles de ordenación podría ser la siguiente:</p>
 
         <div class="codigo">
           <pre>
@@ -466,8 +663,10 @@ $cfg["tablaPersonasColumnasOrden"] = [
 
             <p>Las páginas borrar-1.php y modificar-1.php deberían recoger también las casillas de verificación y los botones radio, para que si se marcan algunas casillas o botones y se reordenan los registros, se puedan mantener marcadas las casillas ya marcadas.</p>
 
-            <div class="codigo">
-              <pre>
+            <ul>
+              <li>En borrar-1.php se recoge una matriz, puesto que se pueden marcar varias casillas simultáneamente, y se deben marcar todas las casillas cuyos ids se hayan recibido.
+                <div class="codigo">
+                  <pre>
 <code class="language-php">$id = recoge("id", []);
 
 ...
@@ -484,7 +683,30 @@ $cfg["tablaPersonasColumnasOrden"] = [
             print "          &lt;/tr&gt;\n";
         }</code>
 </pre>
-            </div>
+                </div>
+              </li>
+              <li>En modificar-1.php se recoge una variable escalar, puesto que sólo se puede marcar un botón radio, y se debe marcar el botón radio cuyo id se haya recibido.
+                <div class="codigo">
+                  <pre>
+<code class="language-php">$id     = recoge("id");
+
+...
+
+        foreach ($resultado as $registro) {
+            print "        &lt;tr&gt;\n";
+            if ($id == $registro["id"]) {
+                print "          &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$registro[id]\" checked&gt;&lt;/td&gt;\n";
+            } else {
+                print "          &lt;td class=\"centrado\"&gt;&lt;input type=\"radio\" name=\"id\" value=\"$registro[id]\"&gt;&lt;/td&gt;\n";
+            }
+            print "          &lt;td&gt;$registro[nombre]&lt;/td&gt;\n";
+            print "          &lt;td&gt;$registro[apellidos]&lt;/td&gt;\n";
+            print "        &lt;/tr&gt;\n";
+      }</code>
+</pre>
+                </div>
+              </li>
+            </ul>
           </li>
         </ul>
       </li>
@@ -492,7 +714,7 @@ $cfg["tablaPersonasColumnasOrden"] = [
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 17 de enero de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 16 de enero de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
