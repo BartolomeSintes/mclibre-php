@@ -28,7 +28,7 @@ if (!$resultado) {
 
 if ($hayRegistrosOk) {
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
-             ORDER BY $ordena";
+                 ORDER BY $ordena";
 
     $resultado = $pdo->query($consulta);
     if (!$resultado) {
