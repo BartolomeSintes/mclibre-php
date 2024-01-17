@@ -52,12 +52,12 @@ if ($idOk) {
         if ($registroEncontradoOk) {
             $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                          WHERE id = :indice
-                         AND usuario = :usuario";
+                         AND usuario = '$cfg[rootName]'";
 
             $resultado = $pdo->prepare($consulta);
             if (!$resultado) {
                 print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif (!$resultado->execute([":indice" => $indice, ":usuario" => $cfg["rootName"]])) {
+            } elseif (!$resultado->execute([":indice" => $indice])) {
                 print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             } elseif ($resultado->fetchColumn() > 0) {
                 print "    <p class=\"aviso\">Este usuario no se puede borrar.</p>\n";
