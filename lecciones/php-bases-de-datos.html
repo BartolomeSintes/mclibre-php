@@ -50,7 +50,7 @@
 
       <p>Con el paso del tiempo, este enfoque fue mostrando sus limitaciones. El principal inconveniente de este enfoque es que cada extensión está estrechamente vinculada a cada SGBD y si se quiere cambiar de SGBD es necesario reescribir completamente la aplicación (los nombres de cada función son diferentes, el orden de los argumentos distinto, las funcionalidades disponibles son diferentes, etc.). Además en algunos casos, las extensiones no están mantenidas adecuadamente (bugs de seguridad, etc.).</p>
 
-      <p>Actualmente (noviembre de 2022), PHP se sigue distribuyendo con muchas de estas extensiones, pero en su lugar se recomienda utilizar la biblioteca PDO que se comenta a continuación.</p>
+      <p>Actualmente (enero de 2024), PHP se sigue distribuyendo con muchas de estas extensiones, pero en su lugar se recomienda utilizar la biblioteca PDO que se comenta a continuación.</p>
     </section>
 
     <section id="pdo">
@@ -60,17 +60,17 @@
 
       <p>Una de estas capas de abstracción es <a href="https://en.wikipedia.org/wiki/Odbc">ODBC (Open DataBase Connectivity)</a>, una API independiente del sistema operativo, lenguaje de programación o SGBD utilizada que se empezó a desarrollar en 1992. En PHP existe una extensión llamada también <a href="https://www.php.net/manual/en/book.uodbc.php">ODBC</a> que permite conexiones ODBC (creo que esta extensión se incorporó en PHP 3.0, publicado en junio de 1998, en cualquier caso estaba activada en PHP 4.0, publicado en mayo de 2000). El inconveniente de ODBC es que introduce un elemento más en la cadena, el controlador ODBC del sistema operativo, lo que puede ralentizar el rendimiento.</p>
 
-      <p>La capa de abstracción propia de PHP se llama <a href="https://www.php.net/manual/en/intro.pdo.php">PDO</a>. PDO, biblioteca orientada a objetos, se podía utilizar como extensión PECL de PHP 5.0, publicado en agosto de 2004 y está incluida en PHP desde PHP 5.1, publicado en noviembre de 2005. PDO incluye controladores para acceder a las bases de datos más populares y la lista se va ampliando con el tiempo (aunque no incluye todos los SGBD que disponen de extensiones específicas). Utilizando PDO no podemos olvidarnos completamente del SGBD utilizado, pero la mayor parte del código es independiente del SGBD y sólo en algunas partes del programa (en la conexión con el SGBD o en la creación de tablas, por ejemplo) el código es específico del SGBD.</p>
+      <p>La capa de abstracción propia de PHP se llama <a href="https://www.php.net/manual/en/intro.pdo.php">PDO</a>. PDO, biblioteca orientada a objetos, se podía utilizar como extensión PECL de PHP 5.0, publicado en agosto de 2004 y está incluida en PHP desde PHP 5.1, publicado en noviembre de 2005. PDO incluye controladores para acceder a las bases de datos más populares (aunque no incluye todos los SGBD que disponen de extensiones específicas). Utilizando PDO no podemos olvidarnos completamente del SGBD utilizado, pero la mayor parte del código es independiente del SGBD y sólo en algunas partes del programa (en la conexión con el SGBD o en la creación de tablas, por ejemplo) el código es específico del SGBD.</p>
 
-      <p>Actualmente (noviembre de 2022), la extensión PDO es la biblioteca recomendada para acceder a SGBD desde PHP.</p>
+      <p>Actualmente (enero de 2024), la extensión PDO es la biblioteca recomendada para acceder a SGBD desde PHP.</p>
     </section>
 
     <section id="futuro">
       <h3>En el futuro ...</h3>
 
-      <p>Existen capas de abstracción de nivel superior a PDO y que se engloban bajo el acrónimo ORM (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping">Object-relational mapping</a>, <a href="https://es.wikipedia.org/wiki/Mapeo_objeto-relacional">mapeo objeto-relacional</a>). Estas capas resuelven el problema de conversión de los objetos definidos en la aplicación en entidades que se puedan almacenar en una base de datos relacional. Además, permiten en teoría olvidarse completamente del SGBD ya que son capaces de reescribir las sentencias SQL o simular características no presentes en el SGBD. Algunas de estas capas son las bibliotecas <a href="https://www.doctrine-project.org/projects/dbal.html">Doctrine DBAL</a>, <a href="https://redbeanphp.com/index.php">RedBeanPHP</a>, <a href="https://laravel.com/docs/9.x/eloquent">Eloquent</a> o <a href="https://github.com/propelorm/Propel2">Propel 2</a>. Actualmente (noviembre de 2022), otros proyectos similares como <a href="https://pear.php.net/package/MDB2/">MDB2</a>, <a href="http://propelorm.org/">Propel</a>  o <a href="https://github.com/propelorm/Propel3">Propel 3</a> parecen  abandonados.</p>
+      <p>Existen capas de abstracción de nivel superior a PDO y que se engloban bajo el acrónimo ORM (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping">Object-relational mapping</a>, <a href="https://es.wikipedia.org/wiki/Mapeo_objeto-relacional">mapeo objeto-relacional</a>). Estas capas resuelven el problema de conversión de los objetos definidos en la aplicación en entidades que se puedan almacenar en una base de datos relacional. Además, permiten en teoría olvidarse completamente del SGBD ya que son capaces de reescribir las sentencias SQL o simular características no presentes en el SGBD. Algunas de estas capas son las bibliotecas <a href="https://www.doctrine-project.org/projects/dbal.html">Doctrine DBAL</a>, <a href="https://redbeanphp.com/index.php">RedBeanPHP</a>, <a href="https://laravel.com/docs/9.x/eloquent">Eloquent</a> o <a href="https://github.com/propelorm/Propel2">Propel 2</a>. Actualmente (enero de 2024), otros proyectos similares como <a href="https://pear.php.net/package/MDB2/">MDB2</a>, <a href="http://propelorm.org/">Propel</a>  o <a href="https://github.com/propelorm/Propel3">Propel 3</a> parecen  abandonados.</p>
 
-      <p>Actualmente (noviembre de 2022) ninguna de estas bibliotecas está incluida en PHP.</p>
+      <p>Actualmente (enero de 2024), ninguna de estas bibliotecas está incluida en PHP.</p>
     </section>
   </section>
 
@@ -84,7 +84,7 @@
       <li>Extensión <a href="https://www.php.net/manual/en/book.pdo.php">PDO</a>: esta extensión, que permite trabajar con diferentes bases de datos, incluye un <a href="https://www.php.net/manual/en/ref.pdo-mysql.php">controlador para MySQL</a> desde que fue incluida en PHP 5.1 (publicado en noviembre de 2005).</li>
     </ul>
 
-    <p>Aunque la extensión mysqli se sigue incluyendo en PHP, en su lugar se recomienda utilizar acceder a MySQL mediante la extensión PDO.</p>
+    <p>Aunque actualmente (enero de 2024) PHP incluye la extensión mysqli, en su lugar se recomienda utilizar acceder a MySQL mediante la extensión PDO.</p>
 
     <p>Internamente, estas bibliotecas utilizan un controlador para acceder a MySQL. Antiguamente se utilizaba el controlador libmysql, desarrollado por la empresa MySQL AB, pero desde PHP 5.3 (publicado en junio de 2009) el controlador aconsejado ha sido <a href="https://www.php.net/manual/en/book.mysqlnd.php">mysqlnd</a> (MySQL Native Driver), desarrollado por el equipo de PHP. El controlador utilizado se selecciona al compilar el ejecutable de PHP, por lo que nuestros programas no pueden elegir el controlador a utilizar. En PHP 8.2 (publicado en diciembre de 2022) se eliminó el controlador libmysql, por lo que desde entonces se utiliza siempre el controlador mysqlnd.</p>
   </section>
