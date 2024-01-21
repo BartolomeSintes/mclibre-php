@@ -21,45 +21,172 @@
 
     <div class="toc">
       <h2>Selenimun</h2>
+      <ul>
+        <li><a href="#selenium-ide">Selenium IDE</a></li>
+        <li><a href="#ficheros-side">Ficheros .side</a></li>
+        <li><a href="#ubicacion-paginas">Ubicación páginas</a></li>
+        <li><a href="#selenium-ide-4">Selenium IDE 4</a></li>
+        <li><a href="#ejecucion-tests">Ejecución de los tests</a></li>
+        <li><a href="#bugs">Bugs</a></li>
+        <!--<li><a href="#selenium-ide-3">Selenium IDE 3</a></li>-->
+      </ul>
     </div>
   </nav>
 
-  <p><img src="../varios/iconos/icono-en-construccion.svg" alt="En construcción" title="En construcción" width="55" height="48">Esta lección está en elaboración.</p>
+  <section id="selenium-ide">
+    <h2>Selenium IDE</h2>
 
-  <p><a hrf="https://www.selenium.dev/">Selenium</a> es un proyecto que desarrolla varias herramientas de automatización de navegadores. Una de ellas es <a href="https://www.selenium.dev/selenium-ide/">Selenium IDE</a>, una aplicación que se distribuye como extensión de Firefox y Google Chrome y que permite grabar y reproducir las acciones realizadas por un usuario que visita una página web.</p>
+    <p><a href="https://www.selenium.dev/">Selenium</a> es un proyecto que desarrolla varias herramientas de automatización de navegadores. Una de ellas es <a href="https://www.selenium.dev/selenium-ide/">Selenium IDE</a>, una aplicación que permite grabar y reproducir las acciones realizadas por un usuario que visita una página web o interactúa con una aplicación web.</p>
 
-  <ul>
-    <li><a href="https://addons.mozilla.org/es/firefox/addon/selenium-ide/">Extensión Selenium IDE para Firefox</a></li>
-    <li><a href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd">Extensión Selenium IDE para Google Chrome.</a></li>
-  </ul>
+    <p>Selenium IDE ejecuta los tests realizando automáticamente acciones sobre la página web (haciendo clic en los enlaces o botones, rellenando campos de formularios, etc.) y comprobando si la página contiene o no los elementos esperados. En el momento que no se obtiene el resultado esperado, la ejecución del test se interrumpe y se indica el motivo del fallo. Una vez corregida la aplicación, se debe reiniciar la ejecución completa del test.</p>
 
-  <p>En este curso no se pretende aprender a usar Selenium IDE en profundidad, pero sí que se puede utilizar Selenium IDE para comprobar el funcionamiento de algunos ejercicios de Bases de Datos. Las plantillas de algunos ejercicios (<a href="../ejercicios/bases-datos/bases-de-datos-1-b/index.html">Bases de Datos 1 B</a> y <a href="../ejercicios/bases-datos/bases-de-datos-2-b/index.html">Bases de Datos 2 B</a>) contienen ficheros .side. Los ficheros .side contienen los tests que puede ejecutar Selenium IDE. Abra esos ficheros con Selenium IDE y seleccione el test "*** Test completo ***" para que Selenium IDE compruebe el correcto funcionamiento de la aplicación (tanto con SQLite como con MYSQL como base de datos).</p>
+    <p>Existen dos versiones de Selenium IDE:</p>
+    <ul>
+      <li>La versión "clásica" Selenium 3, que se instala como extensión de los navegadores <a href="https://addons.mozilla.org/es/firefox/addon/selenium-ide/">Firefox</a> o <a href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd">Google Chrome.</a>. Desde 2022 no se publican nuevas versiones de estas extensiones.</li>
+      <li>La versión "moderna" Selenium 4, que funciona como aplicación independiente basada en Electron. Esta versión todavía se encuentra en desarrollo, pero ya es utilizable.</li>
+    </ul>
 
-  <p>Selenium IDE realiza acciones sobre la página web (haciendo clic en los enlaces o botones, rellenando campos de formularios, etc.) y comprueba que la página contiene o no contiene los elementos esperados. En el momento que no encuentra lo que espera, la ejecución del test se interrumpe y se muestra en rojo el problema. Una vez corregida la aplicación, se debe reiniciar la ejecución completa del test. A veces, después de varias ejecuciones del test, Selenium IDE deja de responder y es necesario cerrar la ventana de Selenium y volver a abrirla.</p>
+    <p>A partir del curso 2023/24, en estos apuntes se recomienda instalar la versión 4. Aunque se trate de una versión de desarrollo que presenta fallos, ejecuta los tests a mayor velocidad que la versión 3.</p>
 
-  <p>El único dato que probablemente deberá ajustarse en los ficheros .side es el camino hasta la aplicación. Para ello, hay que modificar el valor "target" de la variable "urlBase" (ese valor se encuentra en la línea 15 en la mayoría de ficheros) para que coincida con el camino existente en el ordenador del alumno.</p>
+    <p>Por desgracia, Selenium IDE presenta algunos problemas de funcionamiento tanto en la versión 3 como en la 4. Por ejemplo, si se ejecuta varias veces un mismo test en una página con errores (errores que el programador va corrigiendo), es habitual que después de varias ejecuciones del test, Selenium IDE deje de responder. En ese caso es necesario cerrar Selenium, volver a abrirlo y reanudar la ejecución de los tests.</p>
 
-  <div class="codigo">
-    <pre>
+    <p>En este curso no se pretende aprender a usar Selenium IDE en profundidad, pero sí que se puede utilizar Selenium IDE para comprobar el funcionamiento de los ejercicios de Bases de Datos, ya que tanto las plantillas como las soluciones de los ejercicios de bases de datos incluyen ficheros .side.</p>
+  </section>
+
+  <section id="ficheros-side">
+    <h2>Ficheros de pruebas .side</h2>
+
+    <p>Selenium IDE trabaja con ficheros con la extensión .side. Los ficheros .side contienen los tests que ejecuta Selenium IDE. Los ficheros .side son ficheros de texto en formato json. Los comandos de Selenium que soportan la versión 4 y la versión 3 no son exactamente los mismos, por lo que un fichero preparado para una versión fallará al ejecutarse en la otra. Existe una utilidad llamada <a href="https://www.npmjs.com/package/@seleniumhq/side-migrate?activeTab=readme">side-migrate</a> que permite convertir el formato de Selenium IDE 3 en el de Selenium IDE 4.</p>
+
+    <p>Para comprobar que ha resuelto correctamente cada ejercicio, abra el fichero .side correspondiente con Selenium IDE y ejecute el test que contiene. Selenium IDE comprobará el correcto funcionamiento de la aplicación. El test puede comprobar el funcionamiento de las aplicaciones tanto si estas están configuradas para trabajar con SQLite como con MYSQL como base de datos, pero esta selección no la realiza Selenium IDE, se debe hacer modificando los ficheros config.php de cada aplicación.</p>
+  </section>
+
+  <section id="ubicacion-paginas">
+    <h2>Ubicación de la aplicación a testear</h2>
+
+    <p>En los ficheros de prueba proporcionados en estos apuntes, la ubicación predeterminada es la indicada en la <a href="../ejercicios/puesta-en-marcha/apache-1/index.html#ejercicio-5">configuración recomendada del servidor</a> en estos apuntes, es decir, que las páginas .php se encuentren accesibles a través de la dirección http://localhost/iaw/php/ejercicios/... En particular, se espera encontrar los ejercicios en la carpeta ejercicios/bases-datos.</p>
+
+    <p class="captura">
+      <img src="../img/selenium/selenium-carpetas-1.png" alt="Selenium IDE. Configuración recomendada de carpetas" width="1024" height="260">
+    </p>
+
+    <p>Si los ejercicios a probar se ejecutan en una ubicación distinta, el camino hasta la aplicación debe modificarse en los ficheros .side. Para ello, hay que modificar el valor "target" de la variable "urlBase" (ese valor se encuentra en la línea 15 en la mayoría de ficheros) para que coincida con el camino existente en el ordenador del alumno.</p>
+
+    <div class="codigo">
+      <pre class="line-numbers" data-start="12">
 <code class="language-json">{
     "id": "definiciones-generales-1",
     "command": "store",
-    "target": "<span class="codigo-resaltado">/iaw/php/ejercicios/bases-datos/bases-de-datos-1-b/bases-de-datos-1-b-2</span>",
+    "target": "<span class="codigo-resaltado">/iaw/php/ejercicios/bases-datos/bases-de-datos-1/bases-de-datos-1-1</span>",
     "value": "urlBase"
 },</code>
 </pre>
-  </div>
+    </div>
+  </section>
 
-  <p>El vídeo siguiente muestra cómo se utilizaría Selenium IDE aplicando los tests del archivo bases-de-datos-1-b-0.side a la aplicación aplicación del ejercicio Bases de datos 1 B 0.</p>
+  <section id="selenium-ide-4">
+    <h2>Selenium IDE 4</h2>
 
-  <p class="mcl-centrado">
-    <video controls width="1366">
-      <source src="https://www.mclibre.org/consultar/videos/php/php-selenium-1.webm" type="video/webm">
-    </video>
-  </p>
+    <p>Selenium IDE 4 es la versión más moderna de Selenium IDE, aunque todavía se encuentra en desarrollo. Se trata de una aplicación basada en Electron.</p>
+
+    <p>Actualmente (enero de 2024) se publican versiones de desarrollo a menudo, por lo que se recomienda actualizar periódicamente a la última versión del <a href="https://github.com/SeleniumHQ/selenium-ide/releases">repositorio de GitHub de Selenium IDE</a>. Es necesario desinstalar la versión antigua antes de instalar una nueva versión.</p>
+
+    <p>En <a href="https://www.cdlibre.org/">cdlibre.org</a> hay una sección dedicada a <a href="https://www.cdlibre.org/consultar/catalogo/Desarrollo-Web_Otros.html">otros programas relacionados con el desarrollo web</a>, desde la que se puede descargar la última versión disponible.</p>
+
+    <p>Al instalar Selenium IDE 4 en Windows se muestra un aviso indicando que se trata de una aplicación desconocida, lo que ocurre a menudo con versiones de prueba de programas minoritarios. Para instalarla se debe hacer clic en "Más información" y después en "Ejecutar de todas formas".</p>
+
+    <p class="captura">
+      <img src="../img/selenium/selenium-instalacion-1.png" alt="Selenium IDE. Instalación (1)" width="534" height="500">
+      <img src="../img/selenium/selenium-instalacion-2.png" alt="Selenium IDE. Instalación (2)" width="534" height="500">
+    </p>
+  </section>
+
+  <section id="ejecucion-tests">
+    <h2>Ejecución de tests</h2>
+
+    <p>Para testear los ejercicios de Bases de datos propuestos en estos apuntes, siga estos pasos:</p>
+
+    <ul>
+      <li>Abra Selenium IDE 4. Se mostrará la pantalla inicial. Haga clic en el botón "Load project":
+        <p class="captura">
+          <img src="../img/selenium/selenium-ide-4-1.png" alt="Selenium IDE. Ventana inicial" width="586" height="290">
+        </p>
+      </li>
+      <li>Se abrirá una ventana de selección de archivos. Elija el fichero de pruebas .side correspondiente al ejercicio que quiera testear.
+        <p class="captura">
+          <img src="../img/selenium/selenium-ide-4-2.png" alt="Selenium IDE. Seleccionar proyecto a abrir" width="895" height="510">
+        </p>
+      </li>
+      <li>Se abrirá entonces la ventana de Selenium IDE, vacía (si es la primera vez que cargamos un proyecto). Para elegir el test, haga clic en el triángulo del desplegable "Selected Test"":
+        <p class="captura">
+          <img src="../img/selenium/selenium-ide-4-11.png" alt="Selenium IDE." width="1172" height="200">
+        </p>
+      </li>
+      <li>Se mostrarán los tests disponibles en el proyecto cargado. En los ficheros .side incluidos en las plantillas de los ejercicios de estos apuntes se incluye un único test, que corresponde al nombre del ejercicio y testea la aplicación completa. Haga clic en él para seleccionarlo:
+        <p class="captura">
+          <img src="../img/selenium/selenium-ide-4-12.png" alt="Selenium IDE." width="1172" height="250">
+        </p>
+      </li>
+      <li>Una vez seleccionado, en la zona de Comandos de la ventana se mostrarán los primeros comandos del test:
+        <p class="captura">
+          <img src="../img/selenium/selenium-ide-4-13.png" alt="Selenium IDE." width="1172" height="355">
+        </p>
+      </li>
+      <li>Para ejecutar el test, haga clic en el triángulo negro "Play":
+        <p class="captura">
+          <img src="../img/selenium/selenium-ide-4-14.png" alt="Selenium IDE." width="1172" height="160">
+        </p>
+      </li>
+      <li>En la zona de navegador, se ejecutará el test. Los comandos ejecutados se irán mostrando en la zona de Comandos, de color verde si tienen éxito y de color rojo si fallan. Los comandos no ejecutados se mostrarán en blanco. En los proyectos suministrados estos apuntes, los comandos que no se ejecutan corresponden a comandos de prueba de la base de datos no utilizada (SQLite o MariaDB). En caso de que el test se complete correctamente, en la zona de Depuración inferior se mostrará el mensaje "Playing state changed finished for test":
+        <p class="captura">
+          <img src="../img/selenium/selenium-ide-4-15.png" alt="Selenium IDE." width="1172" height="799">
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section ide="bugs">
+    <h2>Bugs de Selenium 4</h2>
+
+    <p>Estos son algunos de los <i>bugs</i> de Selenium 4:</p>
+
+    <ul>
+      <li>Antes de instalar una nueva versión de Selenium IDE 4, debe desinstalarse manualmente la versión anterior, porque el instalador no es capaz de desinstalar la versión anterior. [ref <a href="https://github.com/SeleniumHQ/selenium-ide/issues/1754">GitHub issue #1754</a>]</li>
+      <li>Una vez iniciado un test, si se desplaza la ventana de Selenium IDE 4, la ventana de reproducción permanece fija en la pantalla, aunque operativa. Hasta que se corrija este problema, la solución es cerrar la ventana de reproducción (con el atajo <span class="soft-atajo-teclado">Ctrl + P</span>). [ref <a href="https://github.com/SeleniumHQ/selenium-ide/issues/1757">GitHub issue #1757</a>]</li>
+    </ul>
+  </section>
+
+  <!--
+  <section id="selenium-ide-3">
+    <h2>Selenium IDE 3</h2>
+
+    <p>Una de ellas es <a href="https://www.selenium.dev/selenium-ide/">Selenium IDE</a>, una aplicación que se distribuye como extensión de Firefox y Google Chrome y que permite grabar y reproducir las acciones realizadas por un usuario que visita una página web.</p>
+
+
+    <ul>
+      <li><a href="https://addons.mozilla.org/es/firefox/addon/selenium-ide/">Extensión Selenium IDE para Firefox</a></li>
+      <li><a href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd">Extensión Selenium IDE para Google Chrome.</a></li>
+    </ul>
+
+    <p>En este curso no se pretende aprender a usar Selenium IDE en profundidad, pero sí que se puede utilizar Selenium IDE para comprobar el funcionamiento de algunos ejercicios de Bases de Datos. Las plantillas de algunos ejercicios (<a href="../ejercicios/bases-datos/bases-de-datos-1-b/index.html">Bases de Datos 1 B</a> y <a href="../ejercicios/bases-datos/bases-de-datos-2-b/index.html">Bases de Datos 2 B</a>) contienen ficheros .side. Los ficheros .side contienen los tests que puede ejecutar Selenium IDE. Abra esos ficheros con Selenium IDE y seleccione el test "*** Test completo ***" para que Selenium IDE compruebe el correcto funcionamiento de la aplicación (tanto con SQLite como con MYSQL como base de datos).</p>
+
+    <p>Selenium IDE realiza acciones sobre la página web (haciendo clic en los enlaces o botones, rellenando campos de formularios, etc.) y comprueba que la página contiene o no contiene los elementos esperados. En el momento que no encuentra lo que espera, la ejecución del test se interrumpe y se muestra en rojo el problema. Una vez corregida la aplicación, se debe reiniciar la ejecución completa del test. A veces, después de varias ejecuciones del test, Selenium IDE deja de responder y es necesario cerrar la ventana de Selenium y volver a abrirla.</p>
+
+    <p>El único dato que probablemente deberá ajustarse en los ficheros .side es el camino hasta la aplicación. Para ello, hay que modificar el valor "target" de la variable "urlBase" (ese valor se encuentra en la línea 15 en la mayoría de ficheros) para que coincida con el camino existente en el ordenador del alumno.</p>
+
+
+    <p>El vídeo siguiente muestra cómo se utilizaría Selenium IDE aplicando los tests del archivo bases-de-datos-1-b-0.side a la aplicación aplicación del ejercicio Bases de datos (1 B) 0.</p>
+
+    <p class="mcl-centrado">
+      <video controls width="1366">
+        <source src="https://www.mclibre.org/consultar/videos/php/php-selenium-1.webm" type="video/webm">
+      </video>
+    </p>
+  </section>
+-->
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 11 de enero de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 21 de enero de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
