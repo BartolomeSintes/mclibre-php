@@ -446,6 +446,7 @@ if ($idOk) {
     } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
+        $registro = $resultado-&gt;fetch();
         print "    &lt;form action=\"modificar-3.php\" method=\"$cfg[formMethod]\"&gt;\n";
         print "      &lt;p&gt;Modifique los campos que desee:&lt;/p&gt;\n";</code>
 </pre>
