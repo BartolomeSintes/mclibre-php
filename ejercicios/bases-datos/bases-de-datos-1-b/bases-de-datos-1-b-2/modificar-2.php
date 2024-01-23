@@ -13,9 +13,15 @@ cabecera("Modificar 2", MENU_VOLVER);
 
 $id = recoge("id");
 
+$idOk = false;
+
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
+    $idOk = true;
+}
+
+if ($idOk) {
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 
