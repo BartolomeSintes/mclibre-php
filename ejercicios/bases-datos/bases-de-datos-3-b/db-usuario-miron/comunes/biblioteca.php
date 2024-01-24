@@ -215,7 +215,7 @@ function pie()
     print "  <footer>\n";
     print "    <p class=\"ultmod\">\n";
     print "      Última modificación de esta página:\n";
-    print "      <time datetime=\"2024-01-23\">23 de enero de 2024</time>\n";
+    print "      <time datetime=\"2024-01-24\">24 de enero de 2024</time>\n";
     print "    </p>\n";
     print "\n";
     print "    <p class=\"licencia\">\n";
