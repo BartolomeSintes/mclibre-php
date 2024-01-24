@@ -21,7 +21,7 @@ cabecera("Categorías - Borrar 2", MENU_CATEGORIAS, PROFUNDIDAD_2);
 
 $id = recoge("id", []);
 
-if (count($id) == 0) {
+if ($id == []) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {

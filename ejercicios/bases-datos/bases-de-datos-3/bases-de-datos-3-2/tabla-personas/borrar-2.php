@@ -23,7 +23,7 @@ $id = recoge("id", []);
 
 $idOk = false;
 
-if (count($id) == 0) {
+if ($id == []) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $idOk = true;

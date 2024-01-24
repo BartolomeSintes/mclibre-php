@@ -13,17 +13,27 @@ cabecera("Borrar 2", MENU_VOLVER);
 
 $id = recoge("id", []);
 
-foreach ($id as $indice => $valor) {
-    $consulta = "DELETE FROM $cfg[tablaPersonas]
-                 WHERE id = :indice";
+$idOk = false;
 
-    $resultado = $pdo->prepare($consulta);
-    if (!$resultado) {
-        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif (!$resultado->execute([":indice" => $indice])) {
-        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } else {
-        print "    <p>Registro borrado correctamente (si existía).</p>\n";
+if ($id == []) {
+    print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
+} else {
+    $idOk = true;
+}
+
+if ($idOk) {
+    foreach ($id as $indice => $valor) {
+        $consulta = "DELETE FROM $cfg[tablaPersonas]
+                     WHERE id = :indice";
+
+        $resultado = $pdo->prepare($consulta);
+        if (!$resultado) {
+            print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } elseif (!$resultado->execute([":indice" => $indice])) {
+            print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        } else {
+            print "    <p>Registro borrado correctamente (si existía).</p>\n";
+        }
     }
 }
 

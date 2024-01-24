@@ -20,7 +20,7 @@ cabecera("Personas - Borrar 2", MENU_PERSONAS, 1);
 
 $id = recoge("id", []);
 
-if (count($id) == 0) {
+if ($id == []) {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {

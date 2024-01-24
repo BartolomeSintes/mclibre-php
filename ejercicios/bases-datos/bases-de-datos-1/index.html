@@ -613,17 +613,27 @@ if (!$resultado) {
 <code class="language-php">// Recoge y borra los registros seleccionados
 $id = recoge("id", []);
 
-foreach ($id as $indice =&gt; $valor) {
-    $consulta = "DELETE FROM $cfg[tablaPersonas]
-                 WHERE id = :indice";
+$idOk = false;
 
-    $resultado = $pdo-&gt;prepare($consulta);
-    if (!$resultado) {
-        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
-        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    } else {
-        print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
+if ($id == []) {
+    print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
+} else {
+    $idOk = true;
+}
+
+if ($idOk) {
+    foreach ($id as $indice =&gt; $valor) {
+        $consulta = "DELETE FROM $cfg[tablaPersonas]
+                    WHERE id = :indice";
+
+        $resultado = $pdo-&gt;prepare($consulta);
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } else {
+            print "    &lt;p&gt;Registro borrado correctamente (si existía).&lt;/p&gt;\n";
+        }
     }
 }</code>
 </pre>

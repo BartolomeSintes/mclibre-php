@@ -36,7 +36,7 @@ cabecera("Tabla Usuarios - Borrar 2", MENU_TABLA_USUARIOS_WEB, 1);
 
 $id = recoge("id", []);
 
-if (count($id) == 0) {
+if ($id == []) {
     print "    <p>No se ha seleccionado ningún registro.</p>\n";
 } else {
     foreach ($id as $indice => $valor) {
