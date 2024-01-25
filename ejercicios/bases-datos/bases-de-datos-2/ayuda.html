@@ -268,25 +268,6 @@ if (!$resultado) {
       </li>
       <li>borrar-2.php
         <ul>
-          <li>Compruebe que se ha marcado algún registro para borrar.
-            <p>Como $id es una matriz, esta comprobación se puede hacer contando los elementos recibidos utilizando la función <span class="php-fun">count()</span>.</p>
-
-            <p>La variable lógica <span class="php-var">$idOk</span> tendrá el valor <span class="php-con">true</span> si la matriz <span class="php-var">$id</span> contiene algún elemento y <span class="php-con">false</span> si es vacía.</p>
-
-            <div class="codigo">
-              <pre>
-<code class="language-php">$id = recoge("id", []);
-
-$idOk = false;
-
-if ($id == []) {
-    print "    &lt;p class=\"aviso\"&gt;No se ha seleccionado ningún registro.&lt;/p&gt;\n";
-} else {
-    $idOk = true;
-}</code>
-</pre>
-            </div>
-          </li>
           <li>Compruebe que el registro a borrar existe.
             <p>En el bucle foreach que recorre la matriz $id recibida comprobaremos que los valores de id corresponden a registros existentes en la tabla.</p>
             <p>La variable lógica <span class="php-var">$registroEncontradoOk</span> tendrá el valor <span class="php-con">true</span> si existe el registro con el id recibido y <span class="php-con">false</span> si el registro no existe.</p>

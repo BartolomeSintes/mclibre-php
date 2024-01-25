@@ -14,24 +14,43 @@ cabecera("Buscar 2", MENU_VOLVER);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
-$registrosEncontradosOk = false;
+$nombreOk    = false;
+$apellidosOk = false;
 
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-             WHERE nombre LIKE :nombre
-             AND apellidos LIKE :apellidos";
-
-$resultado = $pdo->prepare($consulta);
-if (!$resultado) {
-    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"])) {
-    print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() == 0) {
-    print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $cfg["tablaPersonasTamNombre"]) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.</p>\n";
+    print "\n";
 } else {
-    $registrosEncontradosOk = true;
+    $nombreOk = true;
 }
 
-if ($registrosEncontradosOk) {
+if (mb_strlen($apellidos, "UTF-8") > $cfg["tablaPersonasTamApellidos"]) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[tablaPersonasTamApellidos] caracteres.</p>\n";
+    print "\n";
+} else {
+    $apellidosOk = true;
+}
+
+$registrosEncontradosOk = false;
+
+if ($nombreOk && $apellidosOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+                 WHERE nombre LIKE :nombre
+                 AND apellidos LIKE :apellidos";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":nombre" => "%$nombre%", ":apellidos" => "%$apellidos%"])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() == 0) {
+        print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
+    } else {
+        $registrosEncontradosOk = true;
+    }
+}
+
+if ($nombreOk && $apellidosOk && $registrosEncontradosOk) {
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE nombre LIKE :nombre
                  AND apellidos LIKE :apellidos";
