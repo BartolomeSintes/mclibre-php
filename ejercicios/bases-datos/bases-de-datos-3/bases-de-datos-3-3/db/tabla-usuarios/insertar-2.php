@@ -77,7 +77,7 @@ if ($usuarioOk && $passwordOk && $registroDistintoOk) {
     }
 }
 
-if ($usuarioOk && $passwordOk && $nivelOk && $registroDistintoOk && $limiteRegistrosOk) {
+if ($usuarioOk && $passwordOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password)
                  VALUES (:usuario, :password)";
