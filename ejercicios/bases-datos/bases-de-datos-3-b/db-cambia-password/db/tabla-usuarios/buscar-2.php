@@ -20,7 +20,7 @@ $pdo = conectaDb();
 cabecera("Usuarios - Buscar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario  = recoge("usuario");
-$nivel    = recoge("nivel");
+$nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 $ordena   = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 
 $registrosEncontradosOk = false;

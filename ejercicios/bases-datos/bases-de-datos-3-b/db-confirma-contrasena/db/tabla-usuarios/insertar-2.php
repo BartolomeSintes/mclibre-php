@@ -22,11 +22,10 @@ cabecera("Usuarios - Añadir 2", MENU_USUARIOS, PROFUNDIDAD_2);
 $usuario  = recoge("usuario");
 $password = recoge("password");
 $password2 = recoge("password2");
-$nivel    = recoge("nivel");
+$nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 
 $usuarioOk  = false;
 $passwordOk = false;
-$nivelOk    = false;
 
 if ($usuario == "") {
     print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
@@ -55,19 +54,9 @@ if ($passwordOk) {
     }
 }
 
-if ($nivel == "") {
-    print "    <p class=\"aviso\">Hay que seleccionar un nivel de usuario.</p>\n";
-    print "\n";
-} elseif (!array_key_exists($nivel, $cfg["usuariosNiveles"])) {
-    print "    <p class=\"aviso\">Nivel de usuario incorrecto.</p>\n";
-    print "\n";
-} else {
-    $nivelOk = true;
-}
-
 $registroDistintoOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk) {
+if ($usuarioOk && $passwordOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE usuario = :usuario";
 
@@ -85,7 +74,7 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
 
 $limiteRegistrosOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $registroDistintoOk) {
+if ($usuarioOk && $passwordOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
 
     $resultado = $pdo->query($consulta);
@@ -100,7 +89,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $registroDistintoOk) {
     }
 }
 
-if ($usuarioOk && $passwordOk && $nivelOk && $registroDistintoOk && $limiteRegistrosOk) {
+if ($usuarioOk && $passwordOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password, nivel)
                  VALUES (:usuario, :password, :nivel)";

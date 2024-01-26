@@ -21,12 +21,11 @@ cabecera("Usuarios - Añadir 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario   = recoge("usuario");
 $password  = recoge("password");
-$nivel     = recoge("nivel");
+$nivel     = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 $registros = recoge("registros");
 
 $usuarioOk   = false;
 $passwordOk  = false;
-$nivelOk     = false;
 $registrosOk = false;
 
 if ($usuario == "") {
@@ -44,16 +43,6 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
     print "\n";
 } else {
     $passwordOk = true;
-}
-
-if ($nivel == "") {
-    print "    <p class=\"aviso\">Hay que seleccionar un nivel de usuario.</p>\n";
-    print "\n";
-} elseif (!array_key_exists($nivel, $cfg["usuariosNiveles"])) {
-    print "    <p class=\"aviso\">Nivel de usuario incorrecto.</p>\n";
-    print "\n";
-} else {
-    $nivelOk = true;
 }
 
 if ($registros == "") {
@@ -74,7 +63,7 @@ if ($registros == "") {
 
 $registroDistintoOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk) {
+if ($usuarioOk && $passwordOk && $registrosOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE usuario = :usuario";
 
@@ -92,7 +81,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk) {
 
 $limiteRegistrosOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk && $registroDistintoOk) {
+if ($usuarioOk && $passwordOk && $registrosOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
 
     $resultado = $pdo->query($consulta);
@@ -107,7 +96,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk && $registroDistintoOk
     }
 }
 
-if ($usuarioOk && $passwordOk && $nivelOk && $registrosOk && $registroDistintoOk && $limiteRegistrosOk) {
+if ($usuarioOk && $passwordOk && $registrosOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password, nivel, registros)
                  VALUES (:usuario, :password, :nivel, :registros)";

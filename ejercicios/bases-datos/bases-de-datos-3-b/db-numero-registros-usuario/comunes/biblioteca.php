@@ -20,8 +20,8 @@ define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la págin
 define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la página: subdirectorio
 define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la página: sub-subdirectorio
 
-define("NIVEL_USUARIO_BASICO", 10);         // Usuario web de nivel Usuario Básico
-define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrador
+define("NIVEL_USUARIO_BASICO", "10");       // Usuario web de nivel Usuario Básico
+define("NIVEL_ADMINISTRADOR", "20");        // Usuario web de nivel Administrador
 
 // Variables configurables por el administrador de la aplicación
 
@@ -56,6 +56,11 @@ $cfg["tablaUsuariosColumnasOrden"] = [
 ];
 
 // Niveles de usuario
+
+$cfg["usuariosNivelesValores"] = [
+    NIVEL_USUARIO_BASICO,
+    NIVEL_ADMINISTRADOR,
+];
 
 $cfg["usuariosNiveles"] = [
     NIVEL_USUARIO_BASICO => "Usuario Básico",

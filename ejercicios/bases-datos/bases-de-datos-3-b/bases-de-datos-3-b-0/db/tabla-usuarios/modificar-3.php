@@ -21,13 +21,12 @@ cabecera("Usuarios - Modificar 3", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario          = recoge("usuario");
 $password         = recoge("password");
-$nivel            = recoge("nivel");
+$nivel            = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 $id               = recoge("id");
 $mantenerPassword = recoge("mantenerPassword");
 
 $usuarioOk  = false;
 $passwordOk = false;
-$nivelOk    = false;
 $idOk       = false;
 
 if ($usuario == "") {
@@ -47,16 +46,6 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
     $passwordOk = true;
 }
 
-if ($nivel == "") {
-    print "    <p class=\"aviso\">Hay que seleccionar un nivel de usuario.</p>\n";
-    print "\n";
-} elseif (!array_key_exists($nivel, $cfg["usuariosNiveles"])) {
-    print "    <p class=\"aviso\">Nivel de usuario incorrecto.</p>\n";
-    print "\n";
-} else {
-    $nivelOk = true;
-}
-
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
@@ -65,7 +54,7 @@ if ($id == "") {
 
 $registroEncontradoOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
+if ($usuarioOk && $passwordOk && $idOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -83,7 +72,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
 
 $registroDistintoOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
@@ -105,7 +94,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk) {
 
 $registroNoRootOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -124,7 +113,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $
     }
 }
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $registroDistintoOk && $registroNoRootOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk && $registroNoRootOk) {
     if ($mantenerPassword == "Sí") {
         $consulta = "UPDATE $cfg[tablaUsuarios]
                      SET usuario = :usuario, nivel = :nivel
