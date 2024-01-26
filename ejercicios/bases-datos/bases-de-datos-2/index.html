@@ -25,13 +25,13 @@
       <h3><a href="#">Enunciados</a></h3>
       <ul>
         <li><a href="#ejercicio-1">1 - Comprobaciones</a></li>
-        <li><a href="#ejercicio-2">2 - Mejoras</a></li>
+        <li><a href="#ejercicio-2">2 - Listados ordenables</a></li>
       </ul>
 
       <h3><a href="ayuda.html">Ayuda</a></h3>
       <ul>
         <li><a href="ayuda.html#ejercicio-1">1 - Comprobaciones</a></li>
-        <li><a href="ayuda.html#ejercicio-2">2 - Mejoras</a></li>
+        <li><a href="ayuda.html#ejercicio-2">2 - Listados ordenables</a></li>
       </ul>
     </div>
   </nav>
@@ -58,6 +58,8 @@
 
     <p>En este ejercicio se trata de añadir al programa realizado en el ejercicio Bases de datos (1) 6 toda una serie de comprobaciones que mejoren el funcionamiento del programa de cara al usuario.</p>
 
+    <p>La lista de comprobaciones se muestra a continuación del siguiente programa de ejemplo.</p>
+
     <div class="filaflex">
       <iframe src="bases-de-datos-2-1/index.php" style="height: 30em;"></iframe>
       <div class="icono-enlace">
@@ -65,76 +67,195 @@
       </div>
     </div>
 
-    <h3>Comentarios</h3>
+    <p>Estas son las comprobaciones a añadir en cada una de las páginas. Si lo necesita, puede consultar unos <a href="ayuda.html#ejercicio-1">comentarios ampliados con fragmentos de código</a>.</p>
 
-    <p>Estas serían las comprobaciones a añadir. Si lo necesita, puede consultar unos <a href="ayuda.html#ejercicio-1">comentarios ampliados con fragmentos de código</a>.</p>
+    <p><strong>config.php</strong></p>
     <ul>
-      <li>config.php
-        <ul>
-          <li>Defina una opción de configuración que contenga el máximo número de registros que puede contener la tabla.</li>
-        </ul>
+      <li>Defina una opción de configuración que contenga el máximo número de registros que puede contener la tabla.
+        <p>El nombre de la opción de configuración puede ser $cfg["tablaPersonasMaxReg"].</p>
       </li>
-      <li>insertar-1.php
-        <ul>
-          <li>Compruebe si se ha alcanzado el número máximo de registros admitidos en la tabla.</li>
-        </ul>
+    </ul>
+
+    <p><strong>insertar-1.php</strong></p>
+    <ul>
+      <li>Compruebe si se ha alcanzado el número máximo de registros admitidos en la tabla.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $limiteRegistrosOk.</p>
+        <p>El aviso a mostrar cuando se ha alcanzado el número máximo de registros admitidos en la tabla puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
+    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>insertar-2.php
-        <ul>
-          <li>Compruebe que el usuario no ha dejado todos los campos vacíos.</li>
-          <li>Compruebe que el registro que quiere introducir el usuario no ha sido ya incluido en la agenda.</li>
-          <li>Compruebe si se ha alcanzado el número máximo de registros admitidos en la tabla.</li>
-        </ul>
+    </ul>
+
+    <p><strong>insertar-2.php</strong></p>
+    <ul>
+      <li>Compruebe que el usuario no ha dejado todos los campos vacíos.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registroNoVacioOk.</p>
+        <p>El aviso a mostrar cuando el usuario ha dejado todos los campos vacíos puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
+    print "\n";</code>
+</pre>
+        </div>
       </li>
-      <li>listar.php
-        <ul>
-          <li>Compruebe si la tabla contiene registros que se puedan listar.</li>
-        </ul>
+      <li>Compruebe que el registro que quiere introducir el usuario no coincide con ningún registro ya incluido en la tabla.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registroDistintoOk.</p>
+        <p>El aviso a mostrar cuando el registro ya existe en la tabla puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">        print "    &lt;p class=\"aviso\"&gt;El registro ya existe.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>borrar-1.php
-        <ul>
-          <li>Compruebe si la tabla contiene registros que se puedan borrar.</li>
-        </ul>
+      <li>Compruebe si se ha alcanzado el número máximo de registros admitidos en la tabla.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $limiteRegistrosOk.</p>
+        <p>El aviso a mostrar cuando se ha alcanzado el número máximo de registros admitidos en la tabla puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;Se ha alcanzado el número máximo de registros que se pueden guardar.&lt;/p&gt;\n";
+    print "\n";
+    print "    &lt;p class=\"aviso\"&gt;Por favor, borre algún registro antes de insertar un nuevo registro.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>borrar-2.php
-        <ul>
-          <li>Compruebe que el registro a borrar existe.</li>
-        </ul>
+    </ul>
+
+    <p><strong>listar.php</strong></p>
+    <ul>
+      <li>Compruebe si la tabla contiene registros que se puedan listar.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $hayRegistrosOk.</p>
+        <p>El aviso a mostrar cuando la tabla no contiene registros puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>buscar-1.php
-        <ul>
-          <li>Compruebe si la tabla contiene registros que se puedan buscar.</li>
-        </ul>
+    </ul>
+
+    <p><strong>borrar-1.php</strong></p>
+    <ul>
+      <li>Compruebe si la tabla contiene registros que se puedan borrar.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $hayRegistrosOk.</p>
+        <p>El aviso a mostrar cuando la tabla no contiene registros puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>buscar-2.php
-        <ul>
-          <li>Compruebe que se han encontrado registros.</li>
-        </ul>
+    </ul>
+
+    <p><strong>borrar-2.php</strong></p>
+    <ul>
+      <li>Compruebe que el registro a borrar existe.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registroEncontradoOk.</p>
+        <p>El aviso a mostrar cuando el registro que se ha solicitado modificar no existe puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">            print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>modificar-1.php
-        <ul>
-          <li>Compruebe si la tabla contiene registros que se puedan modificar.</li>
-        </ul>
+    </ul>
+
+    <p><strong>buscar-1.php</strong></p>
+    <ul>
+      <li>Compruebe si la tabla contiene registros que se puedan buscar.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $hayRegistrosOk.</p>
+        <p>El aviso a mostrar cuando la tabla no contiene registros puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>modificar-2.php
-        <ul>
-          <li>Compruebe que el registro a modificar existe.</li>
-        </ul>
+    </ul>
+
+    <p><strong>buscar-2.php</strong></p>
+    <ul>
+      <li>Compruebe que se han encontrado registros.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registrosEncontradosOk.</p>
+        <p>El aviso a mostrar cuando no se han encontrado registros coincidentes con los valores recibidos puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">        print "    &lt;p class=\"aviso\"&gt;No se han encontrado registros.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
-      <li>modificar-3.php
-        <ul>
-          <li>Compruebe que el usuario no ha dejado todos los campos vacíos.</li>
-          <li>Compruebe que el registro a modificar existe.</li>
-          <li>Compruebe que al modificar el registro no se hace coincidir con otro ya incluido en la agenda.</li>
-        </ul>
+    </ul>
+
+    <p><strong>modificar-1.php</strong></p>
+    <ul>
+      <li>Compruebe si la tabla contiene registros que se puedan modificar.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $hayRegistrosOk.</p>
+        <p>El aviso a mostrar cuando la tabla no contiene registros puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">    print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
+      </li>
+    </ul>
+
+    <p><strong>modificar-2.php</strong></p>
+    <ul>
+      <li>Compruebe que el registro a modificar existe.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registroEncontradoOk.</p>
+        <p>El aviso a mostrar cuando el registro que se ha solicitado modificar no existe puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+    <code class="language-php">        print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";</code>
+    </pre>
+        </div>
+      </li>
+    </ul>
+
+    <p><strong>modificar-3.php</strong></p>
+    <ul>
+      <li>Compruebe que el usuario no ha dejado todos los campos vacíos.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registroNoVacioOk.</p>
+        <p>El aviso a mostrar cuando el usuario ha dejado todos los campos vacíos puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+    <code class="language-php">    print "    &lt;p class=\"aviso\"&gt;Hay que rellenar al menos uno de los campos. No se ha guardado el registro.&lt;/p&gt;\n";
+        print "\n";</code>
+    </pre>
+        </div>
+      </li>
+      <li>Compruebe que el registro a modificar existe.
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registroEncontradoOk.</p>
+        <p>El aviso a mostrar cuando el registro que se ha solicitado modificar no existe puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+    <code class="language-php">        print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";</code>
+    </pre>
+        </div>
+     </li>
+      <li>Compruebe que al modificar el registro no se hace coincidir con otro ya incluido en la agenda.
+        <p>Tenga en cuenta que el usuario puede no modificar los valores del registro, pero en ese caso no queremos que se muestre el mensaje de que el registro ya existe.</p>
+        <p>El nombre de la variable auxiliar empleada en la comprobación puede ser $registroDistintoOk.</p>
+        <p>El aviso a mostrar cuando el registro ya existe en la tabla puede ser el siguiente:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">        print "    &lt;p class=\"aviso\"&gt;Ya existe un registro con esos mismos valores. No se ha guardado la modificación.&lt;/p&gt;\n";</code>
+</pre>
+        </div>
       </li>
     </ul>
   </section>
 
   <section id="ejercicio-2">
-    <h2>Bases de datos (2) - 2 - Mejoras</h2>
+    <h2>Bases de datos (2) - 2 - Listados ordenables</h2>
 
-    <p>En este ejercicio se trata de añadir al programa realizado en el ejercicio anterior algunas funcionalidades que mejoren el programa de cara al usuario.</p>
+    <p>En este ejercicio se trata de añadir al programa la posibilidad de ordenar cualquier listado de registros por orden ascendente o descendente.</p>
+
+    <p>Tras el siguiente programa de ejemplo se indican detalles acerca de los nombres de las variables a utilizar.</p>
 
     <div class="filaflex">
       <iframe src="bases-de-datos-2-2/index.php" style="height: 30em;"></iframe>
@@ -143,9 +264,6 @@
       </div>
     </div>
 
-    <h3>Comentarios</h3>
-
-    <p>Estas serían las mejoras a añadir. Si lo necesita, puede consultar unos <a href="ayuda.html#ejercicio-2">comentarios ampliados con fragmentos de código</a>.</p>
     <ul>
       <li>Listados ordenables (listar.php, borrar-1.php, buscar-2.php, modificar-1.php)
         <p>En cualquier listado en forma de tabla, permita ordenar los registros en un orden determinado (por cualquier campo, en orden ascendente o descendente).</p>
@@ -154,7 +272,7 @@
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 23 de enero de 2024</p>
+    <p class="ultmod">Última modificación de esta página: 26 de enero de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
