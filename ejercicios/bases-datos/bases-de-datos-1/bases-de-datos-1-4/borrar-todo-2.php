@@ -7,7 +7,7 @@
 
 require_once "biblioteca.php";
 
-$borrar = recoge("borrar");
+$borrar = recoge("borrar", default: "No", allowed: ["No", "Sí"]);
 
 if ($borrar != "Sí") {
     header("Location:index.php");

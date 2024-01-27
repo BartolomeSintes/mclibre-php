@@ -14,7 +14,7 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["conectado"] != NIVEL_2) {
     exit;
 }
 
-$borrar = recoge("borrar");
+$borrar = recoge("borrar", default: "No", allowed: ["No", "Sí"]);
 
 if ($borrar != "Sí") {
     header("Location:index.php");

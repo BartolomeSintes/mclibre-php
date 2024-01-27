@@ -23,7 +23,7 @@ $usuario          = recoge("usuario");
 $password         = recoge("password");
 $nivel            = recoge("nivel");
 $id               = recoge("id");
-$mantenerPassword = recoge("mantenerPassword");
+$mantenerPassword = recoge("mantenerPassword", default: "No", allowed: ["No", "Sí"]);
 
 $usuarioOk  = false;
 $passwordOk = false;
