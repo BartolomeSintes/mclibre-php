@@ -23,27 +23,39 @@ $usuario  = recoge("usuario");
 $nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 $ordena   = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 
-$registrosEncontradosOk = false;
-
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
-             WHERE usuario LIKE :usuario";
-
-$resultado = $pdo->prepare($consulta);
-if (!$resultado) {
-    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!$resultado->execute([":usuario" => "%$usuario%"])) {
-    print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() == 0) {
-    print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
+if ($usuario == "") {
+    print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
+    print "\n";
+} elseif (mb_strlen($usuario, "UTF-8") > $cfg["tablaUsuariosTamUsuario"]) {
+    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.</p>\n";
+    print "\n";
 } else {
-    $registrosEncontradosOk = true;
+    $usuarioOk = true;
 }
 
-if ($registrosEncontradosOk) {
+$registrosEncontradosOk = false;
+
+if ($usuarioOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                 WHERE usuario LIKE :usuario";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":usuario" => "%$usuario%"])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() == 0) {
+        print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
+    } else {
+        $registrosEncontradosOk = true;
+    }
+}
+
+if ($usuarioOk && $registrosEncontradosOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
-             WHERE usuario LIKE :usuario
-             AND CAST(nivel AS VARCHAR) LIKE :nivel
-             ORDER BY $ordena";
+                 WHERE usuario LIKE :usuario
+                 AND CAST(nivel AS VARCHAR) LIKE :nivel
+                 ORDER BY $ordena";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
