@@ -18,7 +18,8 @@ if (isset($_SESSION["conectado"])) {
 cabecera("Login 1", MENU_VOLVER, PROFUNDIDAD_1);
 
 $aviso = recoge("aviso");
-if ($aviso) {
+
+if ($aviso != "") {
     print "    <p class=\"aviso\">$aviso</p>\n";
     print "\n";
 }

@@ -26,7 +26,8 @@ require_once "biblioteca.php";
 
 cabecera("Registrar nuevo usuario 1", MENU_VOLVER);
 $aviso = recoge("aviso");
-if ($aviso) {
+
+if ($aviso != "") {
     print "    <p style=\"color: red\">$aviso</p>\n";
     print "\n";
 }

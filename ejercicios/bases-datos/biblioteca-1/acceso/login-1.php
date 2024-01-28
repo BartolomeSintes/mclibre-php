@@ -26,7 +26,8 @@ if (!existenTablas($db, $tablas)) {
 }
 
 $aviso = recoge("aviso");
-if ($aviso) {
+
+if ($aviso != "") {
     print "    <p class=\"aviso\">$aviso</p>\n";
     print "\n";
 }

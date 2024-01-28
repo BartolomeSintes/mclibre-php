@@ -33,7 +33,8 @@ require_once "../comunes/biblioteca.php";
 cabecera("Identificar 1", MENU_IDENTIFICAR, 1);
 
 $aviso = recoge("aviso");
-if ($aviso) {
+
+if ($aviso != "") {
     print "    <p class=\"aviso\">$aviso</p>\n";
     print "\n";
 }

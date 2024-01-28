@@ -20,55 +20,81 @@ $pdo = conectaDb();
 $usuario  = recoge("usuario");
 $password = recoge("password");
 
-if ($usuario == "") {
-    header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
-    exit;
-}
+$usuarioOk  = false;
+$passwordOk = false;
 
-$consulta = "SELECT * FROM $cfg[tablaUsuarios]
-             WHERE usuario = :usuario
-             AND password = :password";
-
-$resultado = $pdo->prepare($consulta);
-if (!$resultado) {
-    header("Location:login-1.php?aviso=Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
-    exit;
-}
-
-$resultado->execute([":usuario" => $usuario, ":password" => encripta($password)]);
-if (!$resultado) {
-    header("Location:login-1.php?aviso=Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
-    exit;
-}
-
-$registro = $resultado->fetch();
-if (!is_array($registro)) {
-    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
-    exit;
-}
-
-$_SESSION["conectado"] = true;
-$_SESSION["nivel"]     = $registro["nivel"];
-
-$consulta = "UPDATE $cfg[tablaUsuarios]
-             SET conexiones = " . $registro["conexiones"] + 1 . "
-             WHERE id = :id";
-
-$resultado = $pdo->prepare($consulta);
-if (!$resultado) {
-    header("Location:login-1.php?aviso=Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
-    exit;
-}
-if (!$resultado->execute([":id" => $registro["id"]])) {
-    header("Location:login-1.php?aviso=Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
-    exit;
-}
-if ($registro["conexiones"] + 1 > $cfg["numeroConexionesAviso"]) {
-    cabecera("Login 2", MENU_VOLVER, PROFUNDIDAD_1);
-
-    print "  <p>Se ha conectado ya " . ($registro["conexiones"] + 1) . " veces. Se recomienda cambiar la contraseña.</p>\n";
-
-    pie();
+if (mb_strlen($usuario, "UTF-8") > $cfg["tablaUsuariosTamUsuario"]) {
+    header("Location:login-1.php?aviso=El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.");
 } else {
-    header("Location:../index.php");
+    $usuarioOk = true;
+}
+
+if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
+    header("Location:login-1.php?aviso=La contraseña no puede tener más de $cfg[formUsuariosTamPassword] caracteres.");
+} else {
+    $passwordOk = true;
+}
+
+$registroEncontradoOk = false;
+
+if ($usuarioOk && $passwordOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                 WHERE usuario = :usuario
+                 AND password = :password";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        header("Location:login-1.php?aviso=Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password)])) {
+        header("Location:login-1.php?aviso=Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    } elseif ($resultado->fetchColumn() == 0) {
+        header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos.");
+    } else {
+        $registroEncontradoOk = true;
+    }
+}
+
+$conectadoOk = false;
+
+if ($usuarioOk && $passwordOk && $registroEncontradoOk) {
+    $consulta = "SELECT * FROM $cfg[tablaUsuarios]
+                 WHERE usuario = :usuario
+                 AND password = :password";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        header("Location:login-1.php?aviso=Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password)])) {
+        header("Location:login-1.php?aviso=Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    } else {
+        $registro = $resultado->fetch();
+
+        $_SESSION["conectado"] = true;
+        $_SESSION["nivel"]     = $registro["nivel"];
+
+        $conectadoOk = true;
+    }
+}
+
+if ($usuarioOk && $passwordOk && $registroEncontradoOk && $conectadoOk) {
+    $consulta = "UPDATE $cfg[tablaUsuarios]
+                 SET conexiones = " . $registro["conexiones"] + 1 . "
+                 WHERE id = :id";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        header("Location:login-1.php?aviso=Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    }
+    if (!$resultado->execute([":id" => $registro["id"]])) {
+        header("Location:login-1.php?aviso=Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}");
+    }
+    if ($registro["conexiones"] + 1 > $cfg["numeroConexionesAviso"] && $usuario != $cfg["rootName"]) {
+        cabecera("Login 2", MENU_VOLVER, PROFUNDIDAD_1);
+
+        print "  <p>Se ha conectado ya " . ($registro["conexiones"] + 1) . " veces. Se recomienda cambiar la contraseña.</p>\n";
+
+        pie();
+    } else {
+        header("Location:../index.php");
+    }
 }
