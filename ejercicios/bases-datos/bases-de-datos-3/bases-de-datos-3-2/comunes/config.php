@@ -26,10 +26,15 @@ $cfg["mysqlUser"]     = "mclibre_base_datos_3_2";           // Nombre de usuario
 $cfg["mysqlPassword"] = "";                                 // Contraseña de usuario
 $cfg["mysqlDatabase"] = "mclibre_base_datos_3_2";           // Nombre de la base de datos
 
+// Tamaño de los campos en la tabla Usuarios
+
+$cfg["tablaUsuariosTamUsuario"]  = 20;                      // Tamaño de la columna Usuarios > Nombre de usuario
+$cfg["tablaUsuariosTamPassword"] = 64;                      // Tamaño de la columna Usuarios > Contraseña de usuario (cifrada)
+
 // Tamaño de los controles en los formularios
 
-$cfg["formUsuariosTamUsuario"]  = 20;                       // Tamaño de la caja de texto Usuario > Nombre de usuario
-$cfg["formUsuariosTamPassword"] = 20;                       // Tamaño de la caja de texto Usuario > Contraseña
+$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario > Nombre de usuario
+$cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario > Contraseña
 
 // Tamaño de los campos en la tabla Personas
 
