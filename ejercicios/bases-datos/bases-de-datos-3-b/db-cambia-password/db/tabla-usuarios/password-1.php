@@ -41,7 +41,7 @@ if ($registroEncontradoOk) {
     print "        <tr>\n";
     print "          <td>Contraseña:</td>\n";
     print "          <td>\n";
-    print "            <input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\">\n";
+    print "            <input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosMaxPassword]\">\n";
     print "          </td>\n";
     print "        </tr>\n";
     print "      </table>\n";

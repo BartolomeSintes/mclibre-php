@@ -41,11 +41,11 @@ if ($limiteRegistrosOk) {
     print "      <table>\n";
     print "        <tr>\n";
     print "          <td>Usuario:</td>\n";
-    print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" autofocus></td>\n";
+    print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosMaxUsuario]\" autofocus></td>\n";
     print "        </tr>\n";
     print "        <tr>\n";
     print "          <td>Contraseña:</td>\n";
-    print "          <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\"></td>\n";
+    print "          <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosMaxPassword]\"></td>\n";
     print "        </tr>\n";
     print "        <tr>\n";
     print "          <td>Nivel:</td>\n";
@@ -59,7 +59,7 @@ if ($limiteRegistrosOk) {
     print "        </tr>\n";
     print "        <tr>\n";
     print "          <td>Nº máximo de registros:</td>\n";
-    print "          <td><input type=\"text\" name=\"registros\" size=\"$cfg[formUsuariosTamRegistros]\" maxlength=\"$cfg[formUsuariosTamRegistros]\"></td>\n";
+    print "          <td><input type=\"text\" name=\"registros\" size=\"$cfg[formUsuariosTamRegistros]\" maxlength=\"$cfg[formUsuariosMaxRegistros]\"></td>\n";
     print "        </tr>\n";
     print "      </table>\n";
     print "\n";

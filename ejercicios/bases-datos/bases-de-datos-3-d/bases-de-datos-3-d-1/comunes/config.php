@@ -33,8 +33,13 @@ $cfg["tablaUsuariosTamPassword"] = 64;                      // Tamaño de la col
 
 // Tamaño de los controles en los formularios
 
-$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario > Nombre de usuario
-$cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario > Contraseña
+$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuarios > Nombre de usuario
+$cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuarios > Contraseña
+
+// Tamaño máximo admitido por los controles en los formularios
+
+$cfg["formUsuariosMaxUsuario"]  = $cfg["tablaUsuariosTamUsuario"];   // Tamaño máximo admitido por la caja de texto Usuarios > Nombre de usuario
+$cfg["formUsuariosMaxPassword"] = $cfg["formUsuariosTamPassword"];   // Tamaño máximo admitido por la caja de texto Usuarios > Contraseña
 
 // Tamaño de los campos en la tabla Noticias
 

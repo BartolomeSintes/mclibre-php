@@ -33,7 +33,7 @@ if (!$resultado) {
     print "      <table>\n";
     print "        <tr>\n";
     print "          <td>Usuario:</td>\n";
-    print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" autofocus></td>\n";
+    print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosMaxUsuario]\" autofocus></td>\n";
     print "        </tr>\n";
     print "        <tr>\n";
     print "          <td>Nivel:</td>\n";

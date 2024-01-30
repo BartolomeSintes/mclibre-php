@@ -56,11 +56,11 @@ if ($idOk && $registroEncontradoOk) {
         print "      <table>\n";
         print "        <tr>\n";
         print "          <td>Nombre:</td>\n";
-        print "          <td><input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasTamNombre]\" value=\"$registro[nombre]\" autofocus></td>\n";
+        print "          <td><input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasMaxNombre]\" value=\"$registro[nombre]\" autofocus></td>\n";
         print "        </tr>\n";
         print "        <tr>\n";
         print "          <td>Apellidos:</td>\n";
-        print "          <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasTamApellidos]\" value=\"$registro[apellidos]\"></td>\n";
+        print "          <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasMaxApellidos]\" value=\"$registro[apellidos]\"></td>\n";
         print "        </tr>\n";
         print "      </table>\n";
         print "\n";

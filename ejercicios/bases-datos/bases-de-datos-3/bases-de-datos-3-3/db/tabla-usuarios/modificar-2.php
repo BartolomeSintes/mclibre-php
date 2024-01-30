@@ -85,11 +85,11 @@ if ($idOk && $registroEncontradoOk && $registroNoRootOk) {
         print "      <table>\n";
         print "        <tr>\n";
         print "          <td>Usuario:</td>\n";
-        print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosTamUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
+        print "          <td><input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosMaxUsuario]\" value=\"$registro[usuario]\" autofocus></td>\n";
         print "        </tr>\n";
         print "        <tr>\n";
         print "          <td>Contraseña:</td>\n";
-        print "          <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\"></td>\n";
+        print "          <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosMaxPassword]\"></td>\n";
         print "        </tr>\n";
         print "      </table>\n";
         print "\n";

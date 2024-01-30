@@ -40,6 +40,13 @@ $cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamañ
 $cfg["formPersonasTamTelefono"]  = $cfg["tablaPersonasTamTelefono"];   // Tamaño de la caja de texto Personas > Teléfono
 $cfg["formPersonasTamCorreo"]    = $cfg["tablaPersonasTamCorreo"];     // Tamaño de la caja de texto Personas > Correo
 
+// Tamaño máximo admitido por los controles en los formularios
+
+$cfg["formPersonasMaxNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño máximo admitido por la caja de texto Personas > Nombre
+$cfg["formPersonasMaxApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño máximo admitido por la caja de texto Personas > Apellidos
+$cfg["formPersonasMaxTelefono"]  = $cfg["tablaPersonasTamTelefono"];   // Tamaño máximo admitido por la caja de texto Personas > Teléfono
+$cfg["formPersonasMaxCorreo"]    = $cfg["tablaPersonasTamCorreo"];     // Tamaño máximo admitido por la caja de texto Personas > Correo
+
 // Número máximo de registros en las tablas
 
 $cfg["tablaPersonasMaxReg"] = 20;                           // Número máximo de registros en la tabla Personas

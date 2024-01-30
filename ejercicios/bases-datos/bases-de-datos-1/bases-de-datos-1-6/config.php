@@ -32,6 +32,11 @@ $cfg["tablaPersonasTamApellidos"] = 60;                     // Tamaño de la col
 $cfg["formPersonasTamNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño de la caja de texto Personas > Nombre
 $cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño de la caja de texto Personas > Apellidos
 
+// Tamaño máximo admitido por los controles en los formularios
+
+$cfg["formPersonasMaxNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño máximo admitido por la caja de texto Personas > Nombre
+$cfg["formPersonasMaxApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño máximo admitido por la caja de texto Personas > Apellidos
+
 // Método de envío de formularios
 
 $cfg["formMethod"] = "get";                                 // Valores posibles: get o post

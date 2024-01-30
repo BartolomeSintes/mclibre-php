@@ -33,8 +33,13 @@ $cfg["tablaUsuariosTamPassword"] = 64;                      // Tamaño de la col
 
 // Tamaño de los controles en los formularios
 
-$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario > Nombre de usuario
-$cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario > Contraseña
+$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuarios > Nombre de usuario
+$cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuarios > Contraseña
+
+// Tamaño máximo admitido por los controles en los formularios
+
+$cfg["formUsuariosMaxUsuario"]  = $cfg["tablaUsuariosTamUsuario"];   // Tamaño máximo admitido por la caja de texto Usuarios > Nombre de usuario
+$cfg["formUsuariosMaxPassword"] = $cfg["formUsuariosTamPassword"];   // Tamaño máximo admitido por la caja de texto Usuarios > Contraseña
 
 // Tamaño de los campos en la tabla Personas
 
@@ -49,6 +54,13 @@ $cfg["formPersonasTamNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamañ
 $cfg["formPersonasTamApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño de la caja de texto Personas > Apellidos
 $cfg["formPersonasTamTelefono"]  = $cfg["tablaPersonasTamTelefono"];   // Tamaño de la caja de texto Personas > Teléfono
 $cfg["formPersonasTamCorreo"]    = $cfg["tablaPersonasTamCorreo"];     // Tamaño de la caja de texto Personas > Correo
+
+// Tamaño máximo admitido por los controles en los formularios
+
+$cfg["formPersonasMaxNombre"]    = $cfg["tablaPersonasTamNombre"];     // Tamaño máximo admitido por la caja de texto Personas > Nombre
+$cfg["formPersonasMaxApellidos"] = $cfg["tablaPersonasTamApellidos"];  // Tamaño máximo admitido por la caja de texto Personas > Apellidos
+$cfg["formPersonasMaxTelefono"]  = $cfg["tablaPersonasTamTelefono"];   // Tamaño máximo admitido por la caja de texto Personas > Teléfono
+$cfg["formPersonasMaxCorreo"]    = $cfg["tablaPersonasTamCorreo"];     // Tamaño máximo admitido por la caja de texto Personas > Correo
 
 // Número máximo de registros en las tablas (el valor 0 o negativo indica que no hay límite)
 
