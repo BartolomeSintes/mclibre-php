@@ -35,7 +35,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
     $passwordOk = true;
 }
 
-$registroEncontradoOk = false;
+$passwordCorrectoOk = false;
 
 if ($usuarioOk && $passwordOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
@@ -50,11 +50,11 @@ if ($usuarioOk && $passwordOk) {
     } elseif ($resultado->fetchColumn() == 0) {
         header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos.");
     } else {
-        $registroEncontradoOk = true;
+        $passwordCorrectoOk = true;
     }
 }
 
-if ($usuarioOk && $passwordOk && $registroEncontradoOk) {
+if ($usuarioOk && $passwordOk && $passwordCorrectoOk) {
     $_SESSION["conectado"] = true;
 
     header("Location:../index.php");
