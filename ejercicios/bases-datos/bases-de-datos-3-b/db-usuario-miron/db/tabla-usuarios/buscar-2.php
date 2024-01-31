@@ -23,6 +23,8 @@ $usuario  = recoge("usuario");
 $nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 $ordena   = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 
+$usuarioOk = false;
+
 if ($usuario == "") {
     print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
     print "\n";
