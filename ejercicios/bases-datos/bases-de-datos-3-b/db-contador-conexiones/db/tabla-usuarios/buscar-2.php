@@ -20,15 +20,12 @@ $pdo = conectaDb();
 cabecera("Usuarios - Buscar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario  = recoge("usuario");
-$nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
+$nivel    = recoge("nivel", default: "", allowed: array_merge($cfg["usuariosNivelesValores"], [""]));
 $ordena   = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 
 $usuarioOk = false;
 
-if ($usuario == "") {
-    print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
-    print "\n";
-} elseif (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
+if (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
     print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[formUsuariosMaxUsuario] caracteres.</p>\n";
     print "\n";
 } else {
