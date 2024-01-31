@@ -66,11 +66,13 @@ if (mb_strlen($correo, "UTF-8") > $cfg["formPersonasMaxCorreo"]) {
 
 $registroNoVacioOk = false;
 
-if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
-    print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
-    print "\n";
-} else {
-    $registroNoVacioOk = true;
+if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk) {
+    if ($nombre == "" && $apellidos == "" && $telefono == "" && $correo == "") {
+        print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
+        print "\n";
+    } else {
+        $registroNoVacioOk = true;
+    }
 }
 
 $registroDistintoOk = false;

@@ -41,11 +41,13 @@ if ($id == "") {
 
 $registroNoVacioOk = false;
 
-if ($nombre == "" && $apellidos == "") {
-    print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
-    print "\n";
-} else {
-    $registroNoVacioOk = true;
+if ($nombreOk && $apellidosOk && $idOk) {
+    if ($nombre == "" && $apellidos == "") {
+        print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";
+        print "\n";
+    } else {
+        $registroNoVacioOk = true;
+    }
 }
 
 $registroEncontradoOk = false;
