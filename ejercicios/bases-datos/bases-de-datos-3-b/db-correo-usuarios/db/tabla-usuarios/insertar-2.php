@@ -31,15 +31,15 @@ $correoOk   = false;
 if ($usuario == "") {
     print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
     print "\n";
-} elseif (mb_strlen($usuario, "UTF-8") > $cfg["tablaUsuariosTamUsuario"]) {
-    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.</p>\n";
+} elseif (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
+    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[formUsuariosMaxUsuario] caracteres.</p>\n";
     print "\n";
 } else {
     $usuarioOk = true;
 }
 
-if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
-    print "    <p class=\"aviso\">La contraseña no puede tener más de $cfg[formUsuariosTamPassword] caracteres.</p>\n";
+if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosMaxPassword"]) {
+    print "    <p class=\"aviso\">La contraseña no puede tener más de $cfg[formUsuariosMaxPassword] caracteres.</p>\n";
     print "\n";
 } else {
     $passwordOk = true;
@@ -48,7 +48,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
 if ($correo == "") {
     print "    <p class=\"aviso\">Hay que escribir una dirección de correo electrónico.</p>\n";
     print "\n";
-} elseif (mb_strlen($correo, "UTF-8") > $cfg["tablaUsuariosTamCorreo"]) {
+} elseif (mb_strlen($correo, "UTF-8") > $cfg["formUsuariosMaxCorreo"]) {
     print "    <p class=\"aviso\">El correo no puede tener más de $cfg[tablaUsuariosTamCorreo] caracteres.</p>\n";
     print "\n";
 } else {

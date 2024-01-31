@@ -21,14 +21,14 @@ $password = recoge("password");
 $usuarioOk  = false;
 $passwordOk = false;
 
-if (mb_strlen($usuario, "UTF-8") > $cfg["tablaUsuariosTamUsuario"]) {
-    header("Location:login-1.php?aviso=El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.");
+if (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
+    header("Location:login-1.php?aviso=El nombre de usuario no puede tener más de $cfg[formUsuariosMaxUsuario] caracteres.");
 } else {
     $usuarioOk = true;
 }
 
-if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
-    header("Location:login-1.php?aviso=La contraseña no puede tener más de $cfg[formUsuariosTamPassword] caracteres.");
+if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosMaxPassword"]) {
+    header("Location:login-1.php?aviso=La contraseña no puede tener más de $cfg[formUsuariosMaxPassword] caracteres.");
 } else {
     $passwordOk = true;
 }

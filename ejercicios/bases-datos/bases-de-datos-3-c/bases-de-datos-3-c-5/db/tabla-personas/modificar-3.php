@@ -33,29 +33,29 @@ $correoOk    = false;
 $nacidoOk    = false;
 $idOk        = false;
 
-if (mb_strlen($nombre, "UTF-8") > $cfg["tablaPersonasTamNombre"]) {
-    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[tablaPersonasTamNombre] caracteres.</p>\n";
+if (mb_strlen($nombre, "UTF-8") > $cfg["formPersonasMaxNombre"]) {
+    print "    <p class=\"aviso\">El nombre no puede tener más de $cfg[formPersonasMaxNombre] caracteres.</p>\n";
     print "\n";
 } else {
     $nombreOk = true;
 }
 
-if (mb_strlen($apellidos, "UTF-8") > $cfg["tablaPersonasTamApellidos"]) {
-    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[tablaPersonasTamApellidos] caracteres.</p>\n";
+if (mb_strlen($apellidos, "UTF-8") > $cfg["formPersonasMaxApellidos"]) {
+    print "    <p class=\"aviso\">Los apellidos no pueden tener más de $cfg[formPersonasMaxApellidos] caracteres.</p>\n";
     print "\n";
 } else {
     $apellidosOk = true;
 }
 
-if (mb_strlen($telefono, "UTF-8") > $cfg["tablaPersonasTamTelefono"]) {
-    print "    <p class=\"aviso\">El teléfono no puede tener más de $cfg[tablaPersonasTamTelefono] caracteres.</p>\n";
+if (mb_strlen($telefono, "UTF-8") > $cfg["formPersonasMaxTelefono"]) {
+    print "    <p class=\"aviso\">El teléfono no puede tener más de $cfg[formPersonasMaxTelefono] caracteres.</p>\n";
     print "\n";
 } else {
     $telefonoOk = true;
 }
 
-if (mb_strlen($correo, "UTF-8") > $cfg["tablaPersonasTamCorreo"]) {
-    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[tablaPersonasTamCorreo] caracteres.</p>\n";
+if (mb_strlen($correo, "UTF-8") > $cfg["formPersonasMaxCorreo"]) {
+    print "    <p class=\"aviso\">El correo no puede tener más de $cfg[formPersonasMaxCorreo] caracteres.</p>\n";
     print "\n";
 } else {
     $correoOk = true;

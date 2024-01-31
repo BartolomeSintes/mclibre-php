@@ -65,7 +65,7 @@ if ($idOk && $registroEncontradoOk) {
         print "        <tr>\n";
         print "          <td>Nombre:</td>\n";
         if ($registro["nombre"] == ""){
-            print "          <td><input type=\"text\" name=\"nombre\" size=\"$cfg[tablaPersonasTamNombre]\" maxlength=\"$cfg[tablaPersonasTamNombre]\" autofocus></td>\n";
+            print "          <td><input type=\"text\" name=\"nombre\" size=\"$cfg[formPersonasTamNombre]\" maxlength=\"$cfg[formPersonasMaxNombre]\" autofocus></td>\n";
         } else {
             print "          <td>$registro[nombre] <input type=\"hidden\" name=\"nombre\" value=\"$registro[nombre]\"></td>\n";
         }
@@ -73,7 +73,7 @@ if ($idOk && $registroEncontradoOk) {
         print "        <tr>\n";
         print "          <td>Apellidos:</td>\n";
         if ($registro["apellidos"] == ""){
-            print "          <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[tablaPersonasTamApellidos]\" maxlength=\"$cfg[tablaPersonasTamApellidos]\"></td>\n";
+            print "          <td><input type=\"text\" name=\"apellidos\" size=\"$cfg[formPersonasTamApellidos]\" maxlength=\"$cfg[formPersonasMaxApellidos]\"></td>\n";
         } else {
             print "          <td>$registro[apellidos] <input type=\"hidden\" name=\"apellidos\" value=\"$registro[apellidos]\"></td>\n";
         }
@@ -81,7 +81,7 @@ if ($idOk && $registroEncontradoOk) {
         print "        <tr>\n";
         print "          <td>Teléfono:</td>\n";
         if ($registro["telefono"] == ""){
-            print "          <td><input type=\"text\" name=\"telefono\" size=\"$cfg[tablaPersonasTamTelefono]\" maxlength=\"$cfg[tablaPersonasTamTelefono]\"></td>\n";
+            print "          <td><input type=\"text\" name=\"telefono\" size=\"$cfg[formPersonasTamTelefono]\" maxlength=\"$cfg[formPersonasMaxTelefono]\"></td>\n";
         } else {
             print "          <td>$registro[telefono] <input type=\"hidden\" name=\"telefono\" value=\"$registro[telefono]\"></td>\n";
         }
@@ -89,7 +89,7 @@ if ($idOk && $registroEncontradoOk) {
         print "        <tr>\n";
         print "          <td>Correo:</td>\n";
         if ($registro["correo"] == ""){
-            print "          <td><input type=\"text\" name=\"correo\" size=\"$cfg[tablaPersonasTamCorreo]\" maxlength=\"$cfg[tablaPersonasTamCorreo]\"></td>\n";
+            print "          <td><input type=\"text\" name=\"correo\" size=\"$cfg[formPersonasTamCorreo]\" maxlength=\"$cfg[formPersonasMaxCorreo]\"></td>\n";
         } else {
             print "          <td>$registro[correo] <input type=\"hidden\" name=\"correo\" value=\"$registro[correo]\"></td>\n";
         }

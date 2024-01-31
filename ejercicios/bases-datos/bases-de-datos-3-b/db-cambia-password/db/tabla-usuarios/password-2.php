@@ -23,8 +23,8 @@ $password = recoge("password");
 
 $passwordOk = false;
 
-if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosTamPassword"]) {
-    print "    <p class=\"aviso\">La contraseña no puede tener más de $cfg[formUsuariosTamPassword] caracteres.</p>\n";
+if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosMaxPassword"]) {
+    print "    <p class=\"aviso\">La contraseña no puede tener más de $cfg[formUsuariosMaxPassword] caracteres.</p>\n";
     print "\n";
 } else {
     $passwordOk = true;
