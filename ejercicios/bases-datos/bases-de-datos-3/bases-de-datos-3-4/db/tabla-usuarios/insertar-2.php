@@ -44,7 +44,8 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosMaxPassword"]) {
     $passwordOk = true;
 }
 
-$existeRegistroOk = false;
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
+$registroDistintoOk = false;
 
 if ($usuarioOk && $passwordOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
@@ -58,14 +59,14 @@ if ($usuarioOk && $passwordOk) {
     } elseif ($resultado->fetchColumn() > 0) {
         print "    <p class=\"aviso\">Ya existe un usuario con ese nombre.</p>\n";
     } else {
-        $existeRegistroOk = true;
+        $registroDistintoOk = true;
     }
 }
 
 // Comprobamos si se ha alcanzado el número máximo de registros en la tabla
 $limiteRegistrosOk = false;
 
-if ($usuarioOk && $passwordOk && $existeRegistroOk) {
+if ($usuarioOk && $passwordOk && $registroDistintoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
 
     $resultado = $pdo->query($consulta);
@@ -80,7 +81,7 @@ if ($usuarioOk && $passwordOk && $existeRegistroOk) {
     }
 }
 
-if ($usuarioOk && $passwordOk && $existeRegistroOk && $limiteRegistrosOk) {
+if ($usuarioOk && $passwordOk && $registroDistintoOk && $limiteRegistrosOk) {
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password, nivel)
                  VALUES (:usuario, :password, :nivel)";

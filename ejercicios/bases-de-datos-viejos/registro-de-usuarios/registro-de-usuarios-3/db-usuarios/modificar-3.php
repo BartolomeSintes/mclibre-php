@@ -39,6 +39,7 @@ $password = recoge("password");
 $nivel    = recoge("nivel");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 $nivelOk    = false;
