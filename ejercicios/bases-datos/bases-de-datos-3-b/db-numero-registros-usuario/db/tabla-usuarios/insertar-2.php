@@ -61,6 +61,7 @@ if ($registros == "") {
     $registrosOk = true;
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($usuarioOk && $passwordOk && $registrosOk) {
@@ -79,6 +80,7 @@ if ($usuarioOk && $passwordOk && $registrosOk) {
     }
 }
 
+// Comprobamos si se ha alcanzado el número máximo de registros en la tabla
 $limiteRegistrosOk = false;
 
 if ($usuarioOk && $passwordOk && $registrosOk && $registroDistintoOk) {

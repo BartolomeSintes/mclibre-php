@@ -13,6 +13,7 @@ cabecera("Modificar 2", MENU_VOLVER);
 
 $id = recoge("id");
 
+// Comprobamos el dato recibido
 $idOk = false;
 
 if ($id == "") {
@@ -21,6 +22,7 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Comprobamos que el registro con el id recibido existe en la base de datos
 $registroEncontradoOk = false;
 
 if ($idOk) {
@@ -39,7 +41,9 @@ if ($idOk) {
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($idOk && $registroEncontradoOk) {
+    // Recuperamos el registro con el id recibido para incluir sus valores en el formulario
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE id = :id";
 

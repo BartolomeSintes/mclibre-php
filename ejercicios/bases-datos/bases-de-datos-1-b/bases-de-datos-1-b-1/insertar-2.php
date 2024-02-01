@@ -15,6 +15,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -40,7 +41,9 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["formPersonasMaxTelefono"]) {
     $telefonoOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk) {
+    // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono)
                  VALUES (:nombre, :apellidos, :telefono)";

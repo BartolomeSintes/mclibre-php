@@ -21,13 +21,13 @@ cabecera("Usuarios - Modificar 3", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario          = recoge("usuario");
 $password         = recoge("password");
-$nivel            = recoge("nivel");
+$nivel            = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 $id               = recoge("id");
 $mantenerPassword = recoge("mantenerPassword", default: "No", allowed: ["No", "Sí"]);
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
-$nivelOk    = false;
 $idOk       = false;
 
 if ($usuario == "") {
@@ -47,25 +47,16 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosMaxPassword"]) {
     $passwordOk = true;
 }
 
-if ($nivel == "") {
-    print "    <p class=\"aviso\">Hay que seleccionar un nivel de usuario.</p>\n";
-    print "\n";
-} elseif (!array_key_exists($nivel, $cfg["usuariosNiveles"])) {
-    print "    <p class=\"aviso\">Nivel de usuario incorrecto.</p>\n";
-    print "\n";
-} else {
-    $nivelOk = true;
-}
-
 if ($id == "") {
     print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
 } else {
     $idOk = true;
 }
 
+// Comprobamos que el registro con el id recibido existe en la base de datos
 $registroEncontradoOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
+if ($usuarioOk && $passwordOk && $idOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -81,9 +72,10 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk) {
     }
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     // La consulta cuenta los registros con un id diferente porque MySQL no distingue
     // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
     // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
@@ -103,9 +95,10 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk) {
     }
 }
 
+// Comprobamos que el usuario con el id recibido no es el usuario Administrador inicial
 $registroNoRootOk = false;
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
@@ -124,8 +117,11 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $
     }
 }
 
-if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $registroDistintoOk && $registroNoRootOk) {
+// Si todas las comprobaciones han tenido éxito ...
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk && $registroNoRootOk) {
+    // Si nos han pedido mantener la contraseña del usuario
     if ($mantenerPassword == "Sí") {
+        // Actualizamos el registro con los datos recibidos (excepto la contraseña)
         $consulta = "UPDATE $cfg[tablaUsuarios]
                      SET usuario = :usuario, nivel = :nivel
                      WHERE id = :id";
@@ -139,6 +135,7 @@ if ($usuarioOk && $passwordOk && $nivelOk && $idOk && $registroEncontradoOk && $
             print "    <p>Registro modificado correctamente.</p>\n";
         }
     } else {
+        // Y si no actualizamos el registro con los datos recibidos (incluida la contraseña)
         $consulta = "UPDATE $cfg[tablaUsuarios]
                      SET usuario = :usuario, password = :password, nivel = :nivel
                      WHERE id = :id";

@@ -26,6 +26,7 @@ $correo    = recoge("correo");
 $nacido    = recoge("nacido");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -83,6 +84,7 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $nacidoOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
                  WHERE id = :id";

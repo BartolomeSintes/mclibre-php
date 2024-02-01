@@ -15,6 +15,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $idOk        = false;
@@ -39,7 +40,9 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $idOk) {
+    // Actualizamos el registro con los datos recibidos
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos
                  WHERE id = :id";

@@ -23,6 +23,7 @@ $apellidos = recoge("apellidos");
 $dni       = recoge("dni");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $dniOk       = false;
@@ -48,6 +49,7 @@ if (mb_strlen($dni, "UTF-8") > $tamPersonasDni) {
     $dniOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $dniOk) {
     if ($id == "") {
         print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";

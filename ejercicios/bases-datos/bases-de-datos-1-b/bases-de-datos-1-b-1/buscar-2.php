@@ -15,6 +15,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -40,6 +41,7 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["formPersonasMaxTelefono"]) {
     $telefonoOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk) {
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE nombre LIKE :nombre

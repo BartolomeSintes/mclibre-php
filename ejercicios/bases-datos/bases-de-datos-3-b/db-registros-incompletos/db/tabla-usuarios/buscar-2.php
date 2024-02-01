@@ -23,6 +23,7 @@ $usuario  = recoge("usuario");
 $nivel    = recoge("nivel", default: "", allowed: array_merge($cfg["usuariosNivelesValores"], [""]));
 $ordena   = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 
+// Comprobamos el dato recibido
 $usuarioOk = false;
 
 if (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
@@ -32,6 +33,7 @@ if (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
     $usuarioOk = true;
 }
 
+// Comprobamos si existen registros con las condiciones de búsqueda recibidas
 $registrosEncontradosOk = false;
 
 if ($usuarioOk) {
@@ -49,8 +51,9 @@ if ($usuarioOk) {
         $registrosEncontradosOk = true;
     }
 }
-
+// Si todas las comprobaciones han tenido éxito ...
 if ($usuarioOk && $registrosEncontradosOk) {
+    // Seleccionamos todos los registros con las condiciones de búsqueda recibidas
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE usuario LIKE :usuario
                  AND CAST(nivel AS VARCHAR) LIKE :nivel

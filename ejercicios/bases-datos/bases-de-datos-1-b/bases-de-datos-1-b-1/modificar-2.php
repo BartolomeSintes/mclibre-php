@@ -13,6 +13,7 @@ cabecera("Modificar 2", MENU_VOLVER);
 
 $id = recoge("id");
 
+// Comprobamos el dato recibido
 $idOk = false;
 
 if ($id == "") {

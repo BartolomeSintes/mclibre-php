@@ -19,6 +19,7 @@ $pdo = conectaDb();
 
 cabecera("Usuarios - Modificar password 1", MENU_USUARIOS, PROFUNDIDAD_2);
 
+// Comprobamos que el registro con el id recibido existe en la base de datos
 $registroEncontradoOk = false;
 
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]

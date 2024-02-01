@@ -17,6 +17,7 @@ $telefono  = recoge("telefono");
 $correo    = recoge("correo");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -57,6 +58,7 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Comprobamos que no se intenta crear un registro vacío
 $registroNoVacioOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
@@ -68,6 +70,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
     }
 }
 
+// Comprobamos que el registro con el id recibido existe en la base de datos
 $registroEncontradoOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroNoVacioOk) {
@@ -86,6 +89,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroN
     }
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroNoVacioOk && $registroEncontradoOk) {
@@ -111,7 +115,9 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroN
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk && $registroNoVacioOk && $registroEncontradoOk && $registroDistintoOk) {
+    // Actualizamos el registro con los datos recibidos
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono, correo = :correo
                  WHERE id = :id";

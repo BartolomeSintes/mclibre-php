@@ -21,6 +21,7 @@ cabecera("Usuarios - Listar", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $ordena = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 
+// Comprobamos si la base de datos contiene registros
 $hayRegistrosOk = false;
 
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]";
@@ -34,7 +35,9 @@ if (!$resultado) {
     $hayRegistrosOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($hayRegistrosOk) {
+    // Recuperamos todos los registros para mostrarlos en una <table>
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  ORDER BY $ordena";
 

@@ -21,6 +21,7 @@ cabecera("Personas - Borrar 2", MENU_PERSONAS, PROFUNDIDAD_1);
 
 $id = recoge("id", []);
 
+// Comprobamos el dato recibido
 $idOk = false;
 
 if ($id == []) {
@@ -29,8 +30,11 @@ if ($id == []) {
     $idOk = true;
 }
 
+// Si hemos recibido una matriz de ids de registros
 if ($idOk) {
+    // Recorremos la matriz para procesar cada uno de los ids recibidos
     foreach ($id as $indice => $valor) {
+        // Comprobamos que el registro con el id recibido existe en la base de datos
         $registroEncontradoOk = false;
 
         $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
@@ -47,7 +51,9 @@ if ($idOk) {
             $registroEncontradoOk = true;
         }
 
+        // Si todas las comprobaciones han tenido éxito ...
         if ($registroEncontradoOk) {
+            // Borramos el registro con el id recibido
             $consulta = "DELETE FROM $cfg[tablaPersonas]
                          WHERE id = :indice";
 

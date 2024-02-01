@@ -14,6 +14,7 @@ cabecera("Añadir 2", MENU_VOLVER);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 
@@ -32,6 +33,7 @@ if (mb_strlen($apellidos, "UTF-8") > $cfg["formPersonasMaxApellidos"]) {
 }
 
 if ($nombreOk && $apellidosOk) {
+    // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos)
                  VALUES (:nombre, :apellidos)";

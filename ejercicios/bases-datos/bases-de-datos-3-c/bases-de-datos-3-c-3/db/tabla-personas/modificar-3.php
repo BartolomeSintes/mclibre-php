@@ -25,6 +25,7 @@ $telefono  = recoge("telefono");
 $correo    = recoge("correo");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -71,6 +72,7 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
     if ($_SESSION["nivel"] == NIVEL_ADMINISTRADOR) {
         $consulta = "SELECT * FROM $cfg[tablaPersonas]

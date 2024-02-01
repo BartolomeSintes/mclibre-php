@@ -25,6 +25,7 @@ $nivel            = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg
 $id               = recoge("id");
 $mantenerPassword = recoge("mantenerPassword", default: "No", allowed: ["No", "Sí"]);
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 $idOk       = false;
@@ -52,6 +53,7 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Comprobamos que el registro con el id recibido existe en la base de datos
 $registroEncontradoOk = false;
 
 if ($usuarioOk && $passwordOk && $idOk) {
@@ -70,6 +72,7 @@ if ($usuarioOk && $passwordOk && $idOk) {
     }
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
@@ -92,6 +95,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     }
 }
 
+// Comprobamos que el usuario con el id recibido no es el usuario Administrador inicial
 $registroNoRootOk = false;
 
 if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {

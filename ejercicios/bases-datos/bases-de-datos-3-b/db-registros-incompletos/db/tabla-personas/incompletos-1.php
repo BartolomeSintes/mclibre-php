@@ -41,6 +41,7 @@ if (!$resultado) {
 }
 
 if ($registrosEncontradosOk) {
+    // Seleccionamos todos los registros con las condiciones de búsqueda recibidas
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
              WHERE nombre = ''
              OR apellidos = ''

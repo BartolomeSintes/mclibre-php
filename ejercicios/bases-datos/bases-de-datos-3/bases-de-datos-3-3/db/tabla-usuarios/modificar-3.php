@@ -23,6 +23,7 @@ $usuario  = recoge("usuario");
 $password = recoge("password");
 $id       = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 $idOk       = false;
@@ -50,6 +51,7 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Comprobamos que el registro con el id recibido existe en la base de datos
 $registroEncontradoOk = false;
 
 if ($usuarioOk && $passwordOk && $idOk) {
@@ -90,6 +92,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
     }
 }
 
+// Comprobamos que el usuario con el id recibido no es el usuario Administrador inicial
 $registroNoRootOk = false;
 
 if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $existeRegistroOk) {

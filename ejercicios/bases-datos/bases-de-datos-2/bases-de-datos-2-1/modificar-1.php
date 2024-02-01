@@ -11,6 +11,7 @@ $pdo = conectaDb();
 
 cabecera("Modificar 1", MENU_VOLVER);
 
+// Comprobamos si la base de datos contiene registros
 $hayRegistrosOk = false;
 
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
@@ -24,7 +25,9 @@ if (!$resultado) {
     $hayRegistrosOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($hayRegistrosOk) {
+    // Recuperamos todos los registros para mostrarlos en una <table>
     $consulta = "SELECT * FROM $cfg[tablaPersonas]";
 
     $resultado = $pdo->query($consulta);

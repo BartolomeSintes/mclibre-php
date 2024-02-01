@@ -24,6 +24,7 @@ $password = recoge("password");
 $correo   = recoge("correo");
 $nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 $correoOk   = false;
@@ -55,6 +56,7 @@ if ($correo == "") {
     $correoOk = true;
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($usuarioOk && $passwordOk && $correoOk) {
@@ -73,6 +75,7 @@ if ($usuarioOk && $passwordOk && $correoOk) {
     }
 }
 
+// Comprobamos si se ha alcanzado el número máximo de registros en la tabla
 $limiteRegistrosOk = false;
 
 if ($usuarioOk && $passwordOk && $correoOk && $registroDistintoOk) {

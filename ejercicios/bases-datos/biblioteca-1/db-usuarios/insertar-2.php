@@ -22,6 +22,7 @@ $usuario  = recoge("usuario");
 $password = recoge("password");
 $nivel    = recoge("nivel");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 $nivelOk    = false;

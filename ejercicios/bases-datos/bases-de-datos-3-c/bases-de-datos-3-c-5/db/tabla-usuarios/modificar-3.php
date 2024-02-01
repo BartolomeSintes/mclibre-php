@@ -25,6 +25,7 @@ $nivel            = recoge("nivel");
 $id               = recoge("id");
 $mantenerPassword = recoge("mantenerPassword", default: "No", allowed: ["No", "Sí"]);
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 $nivelOk    = false;

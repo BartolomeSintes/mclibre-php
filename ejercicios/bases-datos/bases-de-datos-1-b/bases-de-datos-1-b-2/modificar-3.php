@@ -17,6 +17,7 @@ $telefono  = recoge("telefono");
 $correo    = recoge("correo");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -57,7 +58,9 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk && $correoOk && $idOk) {
+    // Actualizamos el registro con los datos recibidos
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos,
                      telefono = :telefono, correo = :correo

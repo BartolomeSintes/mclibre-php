@@ -16,6 +16,7 @@ $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 $ordena    = recoge("ordena", default: "nombre ASC", allowed: $cfg["tablaPersonasColumnasOrden"]);
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -41,6 +42,7 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["formPersonasMaxTelefono"]) {
     $telefonoOk = true;
 }
 
+// Comprobamos si existen registros con las condiciones de búsqueda recibidas
 $registrosEncontradosOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk) {
@@ -61,7 +63,9 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk && $registrosEncontradosOk) {
+    // Seleccionamos todos los registros con las condiciones de búsqueda recibidas
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  WHERE nombre LIKE :nombre
                  AND apellidos LIKE :apellidos

@@ -21,6 +21,7 @@ cabecera("Personas - Listar", MENU_PERSONAS, PROFUNDIDAD_1);
 
 $ordena = recoge("ordena", default: "nombre ASC", allowed: $cfg["tablaPersonasColumnasOrden"]);
 
+// Comprobamos si la base de datos contiene registros
 $hayRegistrosOk = false;
 
 $consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]";
@@ -34,7 +35,9 @@ if (!$resultado) {
     $hayRegistrosOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($hayRegistrosOk) {
+    // Recuperamos todos los registros para mostrarlos en una <table>
     $consulta = "SELECT * FROM $cfg[tablaPersonas]
                  ORDER BY $ordena";
 

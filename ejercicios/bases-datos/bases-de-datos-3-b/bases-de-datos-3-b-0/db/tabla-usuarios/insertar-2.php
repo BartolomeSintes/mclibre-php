@@ -23,6 +23,7 @@ $usuario  = recoge("usuario");
 $password = recoge("password");
 $nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 
@@ -43,6 +44,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosMaxPassword"]) {
     $passwordOk = true;
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($usuarioOk && $passwordOk) {
@@ -61,6 +63,7 @@ if ($usuarioOk && $passwordOk) {
     }
 }
 
+// Comprobamos si se ha alcanzado el número máximo de registros en la tabla
 $limiteRegistrosOk = false;
 
 if ($usuarioOk && $passwordOk && $registroDistintoOk) {
@@ -78,7 +81,9 @@ if ($usuarioOk && $passwordOk && $registroDistintoOk) {
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($usuarioOk && $passwordOk && $registroDistintoOk && $limiteRegistrosOk) {
+    // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password, nivel)
                  VALUES (:usuario, :password, :nivel)";

@@ -14,6 +14,7 @@ cabecera("Añadir 2", MENU_VOLVER);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 
@@ -31,6 +32,7 @@ if (mb_strlen($apellidos, "UTF-8") > $cfg["formPersonasMaxApellidos"]) {
     $apellidosOk = true;
 }
 
+// Comprobamos que no se intenta crear un registro vacío
 $registroNoVacioOk = false;
 
 if ($nombreOk && $apellidosOk) {
@@ -42,6 +44,7 @@ if ($nombreOk && $apellidosOk) {
     }
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $registroNoVacioOk) {
@@ -61,6 +64,7 @@ if ($nombreOk && $apellidosOk && $registroNoVacioOk) {
     }
 }
 
+// Comprobamos si se ha alcanzado el número máximo de registros en la tabla
 $limiteRegistrosOk = false;
 
 if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk) {
@@ -78,7 +82,9 @@ if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk) {
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk) {
+    // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos)
                  VALUES (:nombre, :apellidos)";

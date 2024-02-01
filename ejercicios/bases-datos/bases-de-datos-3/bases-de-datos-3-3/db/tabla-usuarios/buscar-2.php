@@ -34,6 +34,7 @@ if ($usuario == "") {
     $usuarioOk = true;
 }
 
+// Comprobamos si existen registros con las condiciones de búsqueda recibidas
 $registrosEncontradosOk = false;
 
 if ($usuarioOk) {
@@ -51,8 +52,9 @@ if ($usuarioOk) {
         $registrosEncontradosOk = true;
     }
 }
-
+// Si todas las comprobaciones han tenido éxito ...
 if ($usuarioOk && $registrosEncontradosOk) {
+    // Seleccionamos todos los registros con las condiciones de búsqueda recibidas
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE usuario LIKE :usuario
                  ORDER BY $ordena";

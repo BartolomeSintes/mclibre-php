@@ -21,6 +21,7 @@ cabecera("Usuarios - Borrar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $id = recoge("id", []);
 
+// Comprobamos el dato recibido
 $idOk = false;
 
 if ($id == []) {
@@ -29,8 +30,11 @@ if ($id == []) {
     $idOk = true;
 }
 
+// Si hemos recibido una matriz de ids de registros
 if ($idOk) {
+    // Recorremos la matriz para procesar cada uno de los ids recibidos
     foreach ($id as $indice => $valor) {
+        // Comprobamos que el registro con el id recibido existe en la base de datos
         $registroEncontradoOk = false;
 
         $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
@@ -47,6 +51,7 @@ if ($idOk) {
             $registroEncontradoOk = true;
         }
 
+        // Comprobamos que el usuario con el id recibido no es el usuario Administrador inicial
         $registroNoRootOk = false;
 
         if ($registroEncontradoOk) {
@@ -66,7 +71,9 @@ if ($idOk) {
             }
         }
 
+        // Si todas las comprobaciones han tenido éxito ...
         if ($registroEncontradoOk && $registroNoRootOk) {
+            // Borramos el registro con el id recibido
             $consulta = "DELETE FROM $cfg[tablaUsuarios]
                          WHERE id = :indice";
 

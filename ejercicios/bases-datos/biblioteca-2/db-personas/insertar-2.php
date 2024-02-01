@@ -22,6 +22,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $dni       = recoge("dni");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $dniOk       = false;
@@ -47,6 +48,7 @@ if (mb_strlen($dni, "UTF-8") > $tamPersonasDni) {
     $dniOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $dniOk) {
     if ($nombre == "" && $apellidos == "" && $dni == "") {
         print "    <p class=\"aviso\">Hay que rellenar al menos uno de los campos. No se ha guardado el registro.</p>\n";

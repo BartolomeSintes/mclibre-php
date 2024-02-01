@@ -20,30 +20,45 @@ $pdo = conectaDb();
 cabecera("Usuarios - Buscar 2", MENU_USUARIOS, PROFUNDIDAD_2);
 
 $usuario  = recoge("usuario");
-$nivel    = recoge("nivel");
+$nivel    = recoge("nivel", default: "", allowed: array_merge($cfg["usuariosNivelesValores"], [""]));
 $ordena   = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuariosColumnasOrden"]);
 
-$registrosEncontradosOk = false;
+// Comprobamos el dato recibido
+$usuarioOk = false;
 
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
-             WHERE usuario LIKE :usuario";
-
-$resultado = $pdo->prepare($consulta);
-if (!$resultado) {
-    print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif (!$resultado->execute([":usuario" => "%$usuario%"])) {
-    print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} elseif ($resultado->fetchColumn() == 0) {
-    print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
+if (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
+    print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[formUsuariosMaxUsuario] caracteres.</p>\n";
+    print "\n";
 } else {
-    $registrosEncontradosOk = true;
+    $usuarioOk = true;
 }
 
-if ($registrosEncontradosOk) {
+// Comprobamos si existen registros con las condiciones de búsqueda recibidas
+$registrosEncontradosOk = false;
+
+if ($usuarioOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                 WHERE usuario LIKE :usuario
+                 AND CAST(nivel AS VARCHAR) LIKE :nivel";
+
+    $resultado = $pdo->prepare($consulta);
+    if (!$resultado) {
+        print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif (!$resultado->execute([":usuario" => "%$usuario%", ":nivel" => "%$nivel%"])) {
+        print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+    } elseif ($resultado->fetchColumn() == 0) {
+        print "    <p class=\"aviso\">No se han encontrado registros.</p>\n";
+    } else {
+        $registrosEncontradosOk = true;
+    }
+}
+// Si todas las comprobaciones han tenido éxito ...
+if ($usuarioOk && $registrosEncontradosOk) {
+    // Seleccionamos todos los registros con las condiciones de búsqueda recibidas
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
-             WHERE usuario LIKE :usuario
-             AND CAST(nivel AS VARCHAR) LIKE :nivel
-             ORDER BY $ordena";
+                 WHERE usuario LIKE :usuario
+                 AND CAST(nivel AS VARCHAR) LIKE :nivel
+                 ORDER BY $ordena";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {

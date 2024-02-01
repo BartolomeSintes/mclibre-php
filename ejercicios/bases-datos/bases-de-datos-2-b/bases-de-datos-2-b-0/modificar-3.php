@@ -15,6 +15,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $id        = recoge("id");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $idOk        = false;
@@ -39,6 +40,7 @@ if ($id == "") {
     $idOk = true;
 }
 
+// Comprobamos que no se intenta crear un registro vacío
 $registroNoVacioOk = false;
 
 if ($nombreOk && $apellidosOk && $idOk) {
@@ -50,6 +52,7 @@ if ($nombreOk && $apellidosOk && $idOk) {
     }
 }
 
+// Comprobamos que el registro con el id recibido existe en la base de datos
 $registroEncontradoOk = false;
 
 if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk) {
@@ -68,6 +71,7 @@ if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk) {
     }
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontradoOk) {
@@ -91,7 +95,9 @@ if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontr
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $idOk && $registroNoVacioOk && $registroEncontradoOk && $registroDistintoOk) {
+    // Actualizamos el registro con los datos recibidos
     $consulta = "UPDATE $cfg[tablaPersonas]
                  SET nombre = :nombre, apellidos = :apellidos
                  WHERE id = :id";

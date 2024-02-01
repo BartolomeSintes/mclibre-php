@@ -15,6 +15,7 @@ $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 $telefono  = recoge("telefono");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 $telefonoOk  = false;
@@ -40,6 +41,7 @@ if (mb_strlen($telefono, "UTF-8") > $cfg["formPersonasMaxTelefono"]) {
     $telefonoOk = true;
 }
 
+// Comprobamos que no se intenta crear un registro vacío
 $registroNoVacioOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk) {
@@ -51,6 +53,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk) {
     }
 }
 
+// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
 $registroDistintoOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk) {
@@ -71,6 +74,7 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk) {
     }
 }
 
+// Comprobamos si se ha alcanzado el número máximo de registros en la tabla
 $limiteRegistrosOk = false;
 
 if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk && $registroDistintoOk) {
@@ -88,7 +92,9 @@ if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk && $registroD
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $telefonoOk && $registroNoVacioOk && $registroDistintoOk && $limiteRegistrosOk) {
+    // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaPersonas]
                  (nombre, apellidos, telefono)
                  VALUES (:nombre, :apellidos, :telefono)";

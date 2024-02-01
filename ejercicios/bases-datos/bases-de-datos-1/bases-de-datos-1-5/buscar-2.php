@@ -14,6 +14,7 @@ cabecera("Buscar 2", MENU_VOLVER);
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 

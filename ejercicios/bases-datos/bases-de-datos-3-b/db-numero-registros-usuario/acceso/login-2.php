@@ -20,6 +20,7 @@ $pdo = conectaDb();
 $usuario  = recoge("usuario");
 $password = recoge("password");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $usuarioOk  = false;
 $passwordOk = false;
 
@@ -35,6 +36,7 @@ if (mb_strlen($password, "UTF-8") > $cfg["formUsuariosMaxPassword"]) {
     $passwordOk = true;
 }
 
+// Comprobamos que el usuario recibido con la contraseña recibida existe en la base de datos
 $passwordCorrectoOk = false;
 
 if ($usuarioOk && $passwordOk) {
@@ -54,7 +56,9 @@ if ($usuarioOk && $passwordOk) {
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($usuarioOk && $passwordOk && $passwordCorrectoOk) {
+    // Recuperamos el registro del usuario y contraseña recibidos
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE usuario = :usuario
                  AND password = :password";

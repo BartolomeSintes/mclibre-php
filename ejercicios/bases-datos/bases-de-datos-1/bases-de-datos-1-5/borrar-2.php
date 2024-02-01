@@ -13,6 +13,7 @@ cabecera("Borrar 2", MENU_VOLVER);
 
 $id = recoge("id", []);
 
+// Comprobamos el dato recibido
 $idOk = false;
 
 if ($id == []) {
@@ -21,7 +22,9 @@ if ($id == []) {
     $idOk = true;
 }
 
+// Si hemos recibido una matriz de ids de registros
 if ($idOk) {
+    // Recorremos la matriz para procesar cada uno de los ids recibidos
     foreach ($id as $indice => $valor) {
         $consulta = "DELETE FROM $cfg[tablaPersonas]
                      WHERE id = :indice";
