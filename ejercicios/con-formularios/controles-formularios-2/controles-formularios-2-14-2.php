@@ -189,6 +189,7 @@ if ($television != "" && $television != "on") {
     $televisionOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk
     && $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
     print "  <p>Su nombre es <strong>$nombre</strong>.</p>\n";

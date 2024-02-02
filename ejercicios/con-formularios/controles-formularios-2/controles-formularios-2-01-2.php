@@ -64,6 +64,7 @@ function recoge($key, $type = "")
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 

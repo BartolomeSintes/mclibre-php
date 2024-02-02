@@ -253,7 +253,7 @@ if (!$resultado) {
             <pre>
 <code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO (O NINGUNO)
 
-$id = <i>id</i>;          // Normalmente este valor vendrá de un formulario
+$id = 1;           // Normalmente este valor vendrá de un formulario
 
 $consulta  = "SELECT * FROM <i>tabla</i> WHERE <i>id</i>=<i>:id</i>";   // Normalmente solo habrá un registro (o ninguno) con un id determinado
 
@@ -310,7 +310,7 @@ if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error en la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } elseif (count($registros = <span class="codigo-resaltado">$resultado-&gt;fetchAll()</span>) == 0) {
     print "    &lt;p class=\"aviso\"&gt;No se ha creado todavía ningún registro.&lt;/p&gt;\n";
-} else
+} else {
     print "    &lt;p&gt;&lt;strong&gt;Registro(s) obtenido(s)&lt;/strong&gt;&lt;/p&gt;\n";
     print "    &lt;ul&gt;\n";
     <span class="codigo-resaltado">foreach ($registros as $registro)</span> {
@@ -470,13 +470,11 @@ if (!$resultado) {
 
       <p>Si no podemos usar parámetros, no queda más remedio que incluir los datos en la consulta. Como en ese caso PHP no hace ninguna desinfección de los datos, la desinfección la tenemos que hacer nosotros previamente.</p>
 
-      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos), podemos utilizar la función recoge con los parámetros opcionales <i>default</i> y <i>allowed</i> para impedir los ataques de inyección por parte del usuario, como muestra el siguiente ejemplo:</p>
+      <p>Como en estos casos los valores introducidos por el usuario suelen tener unos valores restringidos (por ejemplo, si el usuario puede elegir una columna de una tabla, los nombres de las columnas están determinadas y el usuario sólo puede elegir uno de ellos), podemos utilizar la función recoge() con los parámetros opcionales <i>default</i> y <i>allowed</i> que restringe los valores admitidos a los indicados. De esa manera impedimos los ataques de inyección por parte del usuario, como muestra el siguiente ejemplo:</p>
 
       <div class="codigo">
         <pre>
-<code class="language-php">
-
-// EJEMPLO DE USO
+<code class="language-php">// EJEMPLO DE RESTRICCIONES EN LOS PARÁMETROS DE CONSULTAS PREPARADAS
 
 // Matriz con los nombres válidos de las columnas de la tabla
 $columnas = [
@@ -843,7 +841,7 @@ if (!$resultado) {
             <pre>
 <code class="language-php">// CONSULTA DE MODIFICACIÓN DE REGISTRO
 
-$id        = "1";                 // Normalmente estos valores vendrán de un formulario
+$id        = 1;                   // Normalmente estos valores vendrán de un formulario
 $nombre    = "Pepita";
 $apellidos = "Conejo";
 
@@ -1086,29 +1084,6 @@ if (!$resultado) {
 
       <p>Ejemplos de consultas:</p>
       <ul>
-        <li>Registros en los que el apellido empieza por la cadena recibida:
-
-          <div class="codigo">
-            <pre>
-<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
-
-$apellidos = "con";           // Normalmente este valor vendrá de un formulario
-
-$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
-             WHERE apellidos LIKE :apellidos";
-
-$resultado = $pdo-&gt;prepare($consulta);
-if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (!$resultado-&gt;execute([":apellidos" =&gt; <span class="codigo-resaltado">"$apellidos%"</span>])) {
-    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} else {
-    print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
-    print "\n";
-}</code>
-</pre>
-          </div>
-        </li>
         <li>Registros en los que el apellido contiene la cadena recibida:
 
           <div class="codigo">
@@ -1124,6 +1099,29 @@ $resultado = $pdo-&gt;prepare($consulta);
 if (!$resultado) {
     print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } elseif (!$resultado-&gt;execute([":apellidos" =&gt; <span class="codigo-resaltado">"%$apellidos%"</span>])) {
+    print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} else {
+    print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";
+    print "\n";
+}</code>
+</pre>
+          </div>
+        </li>
+        <li>Registros en los que el apellido empieza por la cadena recibida:
+
+          <div class="codigo">
+            <pre>
+<code class="language-php">// CONSULTA DE SELECCIÓN DE REGISTROS QUE DEVUELVE UN ÚNICO REGISTRO DE UNA COLUMNA
+
+$apellidos = "con";           // Normalmente este valor vendrá de un formulario
+
+$consulta = "SELECT COUNT(*) FROM $cfg[tablaPersonas]
+             WHERE apellidos LIKE :apellidos";
+
+$resultado = $pdo-&gt;prepare($consulta);
+if (!$resultado) {
+    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+} elseif (!$resultado-&gt;execute([":apellidos" =&gt; <span class="codigo-resaltado">"$apellidos%"</span>])) {
     print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
 } else {
     print "    &lt;p&gt;Se han encontrado {$resultado-&gt;fetchColumn()} registro(s).&lt;/p&gt;\n";

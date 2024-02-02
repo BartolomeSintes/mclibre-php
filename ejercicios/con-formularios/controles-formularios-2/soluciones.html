@@ -83,6 +83,7 @@ function recoge($key, $type = "")
 $nombre    = recoge("nombre");
 $apellidos = recoge("apellidos");
 
+// Comprobamos los datos recibidos procedentes de un formulario
 $nombreOk    = false;
 $apellidosOk = false;
 
@@ -773,6 +774,7 @@ if ($television != "" && $television != "on") {
     $televisionOk = true;
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($nombreOk && $apellidosOk && $edadOk && $pesoOk && $sexoOk && $estadoCivilOk &&
     $cineOk && $deporteOk && $literaturaOk && $musicaOk && $tebeosOk && $televisionOk) {
     print "  &lt;p&gt;Su nombre es &lt;strong&gt;$nombre&lt;/strong&gt;.&lt;/p&gt;\n";
