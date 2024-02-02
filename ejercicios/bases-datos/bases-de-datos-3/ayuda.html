@@ -49,22 +49,34 @@
 
     <p>En todo estos ejercicios, las páginas de gestión de la tabla deben mostrarse únicamente a los usuarios identificados. En este primer ejercicio, la identificación es automática, no se necesita indicar ningún nombre de usuario ni contraseña.</p>
 
+
+    <h3>Organización de los directorios</h3>
+    <p>Distribuimos los archivos en varios directorios:</p>
     <ul>
-      <li>Organice los ficheros en directorios:
-        <ul>
-          <li>acceso: gestión de la identificación del usuario (login.php, logout.php)</li>
-          <li>comunes: configuración, bibliotecas, bases de datos y hoja de estilo (biblioteca.php, biblioteca-mysql.php, biblioteca-sqlite.php, config.php, mclibre-php-proyectos.css)</li>
-          <li>tabla-personas: páginas específicas para gestionar la tabla personas (borrar-1.php, borrar-2.php, borrar-todo-1.php, borrar-todo-2.php, buscar-1.php, buscar-2.php, index.php, insertar-1.php, insertar-2.php, listar.php, modificar-1.php, modificar-2.php, modificar-3.php)</li>
-          <li>img: flechas de ordenación (abajo.svg, arriba.svg)</li>
-          <li>directorio raíz: incluye únicamente la página inicial index.php</li>
-        </ul>
+      <li>directorio raíz: incluye únicamente la página inicial index.php</li>
+      <li>acceso: gestión de la identificación del usuario (login.php, logout.php)</li>
+      <li>comunes: configuración, bibliotecas, bases de datos y hoja de estilo (biblioteca.php, biblioteca-mysql.php, biblioteca-sqlite.php, config.php, mclibre-php-proyectos.css)</li>
+      <li>img: flechas de ordenación (abajo.svg, arriba.svg)</li>
+      <li>tabla-personas: páginas específicas para gestionar la tabla personas (borrar-1.php, borrar-2.php, borrar-todo-1.php, borrar-todo-2.php, buscar-1.php, buscar-2.php, index.php, insertar-1.php, insertar-2.php, listar.php, modificar-1.php, modificar-2.php, modificar-3.php)</li>
+    </ul>
+
+    <h3>Identificación</h3>
+    <ul>
+      <li>La identificación se realiza mediante sesiones.</li>
+      <li>[config.php]
+        <p>El nombre de la sesión se define para todas las páginas.</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Nombre de sesión
+
+$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión</code>
+</pre>
+        </div>
       </li>
-      <li>Identificación
-        <ul>
-          <li>La identificación se realiza mediante sesiones.</li>
-          <li>[login.php] Al identificarse correctamente el usuario, establecemos una variable de sesión y redirigimos a la página principal. En este primer ejercicio, la identificación es automática, es decir, al entrar en login.php, la variable de sesión se establece siempre
-            <div class="codigo">
-              <pre>
+      <li>[login.php]
+        <p>Al identificarse correctamente el usuario, establecemos una variable de sesión y redirigimos a la página principal. En este primer ejercicio, la identificación es automática, es decir, al entrar en login.php, la variable de sesión se establece siempre.</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
 
@@ -72,11 +84,25 @@ $_SESSION["conectado"] = true;
 
 header("Location:../index.php");</code>
 </pre>
-            </div>
-          </li>
-          <li>[varias] En las páginas que sólo queremos mostrar al usuario identificado, comprobamos que la variable de sesión existe y si no existe, redirigimos a la página principal.
-            <div class="codigo">
-              <pre>
+        </div>
+      </li>
+      <li>[logout.php]
+        <p>Para desconectar al usuario, simplemente destruimos la sesión.</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">session_name($cfg["sessionName"]);
+session_start();
+
+session_destroy();
+
+header("Location:../index.php");</code>
+</pre>
+        </div>
+      </li>
+      <li>[varias]
+        <p>En las páginas que sólo queremos mostrar al usuario identificado, comprobamos que la variable de sesión existe y si no existe, redirigimos a la página principal.</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
 
@@ -85,74 +111,105 @@ if (!isset($_SESSION["conectado"])) {
     exit;
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>[logout.php] Para desconectar al usuario, simplemente destruimos la sesión.
+        </div>
+      </li>
+    </ul>
+
+    <h3>Enlace a la hoja de estilo</h3>
+    <ul>
+      <p>Al haber organizado los ficheros en directorios, el enlace a la hoja de estilo cambiará, en función de si la página está en un directorio o de si está en el directorio raíz.</p>
+      <ul>
+        <li>Si la página está en el directorio raíz, el enlace debe ser:
+
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;link rel="stylesheet" <span class="codigo-resaltado">href="comunes/mclibre-php-proyectos.css"</span> title="Color"&gt;</code>
+</pre>
+          </div>
+        </li>
+
+        <li>pero si la página está en un subdirectorio, el enlace debe ser:
+
+          <div class="codigo">
+            <pre>
+<code class="language-html">&lt;link rel="stylesheet" <span class="codigo-resaltado">href="../comunes/mclibre-php-proyectos.css"</span> title="Color"&gt;</code>
+</pre>
+          </div>
+        </li>
+      </ul>
+      <li>[biblioteca.php]
+        <p>Para conseguir enlaces correctos a la hoja de estilo, tendremos que modificar la función cabecera(), incluyendo un nuevo argumento que le indique a la función qué enlace escribir. Ese tercer argumento será vacío o la cadena "../" y se insertará al principio del camino:</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">function cabecera($texto, $menu, <span class="codigo-resaltado">$profundidadDirectorio</span>)
+{
+    ...
+    print "  &lt;link rel=\"stylesheet\" href=\"<span class="codigo-resaltado">{$profundidadDirectorio}</span>comunes/mclibre-php-proyectos.css\" title=\"Color\"&gt;\n";
+    ...</code>
+</pre>
+        </div>
+        <p>Para ello, definiremos las constantes PROFUNDIDAD_N, que utilizaremos como argumento para la función cabecera().</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Constantes configurables por el programador de la aplicación
+
+define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la página: directorio raíz
+define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la página: subdirectorio</code>
+</pre>
+        </div>
+
+      </li>
+      <li>[varias]
+        <p>Todas las llamadas a la función cabecera() deberán incluir el tercer argumento:</p>
+        <ul>
+          <li>En el caso de la página principal.php, situada en el directorio raíz, el argumento tomará el valor PROFUNDIDAD_0
             <div class="codigo">
               <pre>
-<code class="language-php">session_name($cfg["sessionName"]);
-session_start();
-
-session_destroy();
-
-header("Location:../index.php");</code>
+<code class="language-php">cabecera("Inicio", MENU_PRINCIPAL, <span class="codigo-resaltado">PROFUNDIDAD_0</span>);</code>
 </pre>
             </div>
           </li>
-          <li>[config.php] El nombre de la sesión se define para todas las páginas.
+          <li>En el resto de páginas, que están incluidas en algún subdirectorio, el argumento tomará el valor PROFUNDIDAD_1. Por ejemplo:
             <div class="codigo">
               <pre>
-<code class="language-php">// Nombre de sesión
-
-$cfg["sessionName"] = "mclibre-bases-de-datos-3-1";         // Nombre de sesión</code>
+<code class="language-php">cabecera("Personas - Borrar 1", MENU_PERSONAS, <span class="codigo-resaltado">PROFUNDIDAD_1</span>);</code>
 </pre>
             </div>
           </li>
         </ul>
       </li>
-      <li>Menús
-        <ul>
-          <li>[config.php] Definimos las constantes PROFUNDIDAD_N y MENU_XXX.
-            <div class="codigo">
-              <pre>
+    </ul>
+
+    <h3>Menús</h3>
+    <ul>
+      <li>[config.php]
+        <p>Definimos la constante MENU_PERSONAS. La constante MENU_PERSONAS corresponderá al menú que se muestra en las páginas relacionadas con la gestión de la tabla personas (insertar, listar, etc.). En este ejercicio no se utiliza el menú MENÚ_VOLVER, pero lo mantenemos porque sí que lo utilizaremos en los ejercicios siguientes.</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// Constantes configurables por el programador de la aplicación
 
 define("MENU_PRINCIPAL", 1);                // Menú principal sin conectar
 define("MENU_VOLVER", 2);                   // Menú Volver a inicio
-define("MENU_PERSONAS", 3);                 // Menú Personas
+define("MENU_PERSONAS", 3);                 // Menú Personas</code>
+</pre>
+        </div>
+      </li>
+      <li>[index.php]
+        <p>La página principal index.php debe mostrar menús distintos, dependiendo de si el usuario está conectado o no. Pero al llamar a la función cabecera, pediremos el MENU_PRINCIPAL sin tener en cuenta si el usuario está o no conectado. Será la función cabecera() la que distinguirá esos casos. Por tanto, todas las páginas que incluyan la función cabecera deberán conectarse a la sesión.</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">session_name($cfg["sessionName"]);
+session_start();
 
-define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la página: directorio raíz
-define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la página: subdirectorio</code>
+cabecera("Inicio", <span class="codigo-resaltado">MENU_PRINCIPAL</span>, PROFUNDIDAD_0);</code>
 </pre>
-            </div>
-          </li>
-          <li>[biblioteca.php] Al organizar los ficheros en directorios, el enlace a la hoja de estilo no es el mismo dependiendo de si la página está en un directorio o en el directorio raíz. Podemos añadir un tercer argumento a la función cabecera para indicar la profundidad en la que se encuentra la página.
-            <div class="codigo">
-              <pre>
-<code class="language-php">function cabecera($texto, $menu, $profundidadDirectorio)
-{
-    ...
-    print "  &lt;link rel=\"stylesheet\" href=\"<span class="codigo-resaltado">{$profundidadDirectorio}</span>comunes/mclibre-php-proyectos.css\" title=\"Color\" /&gt;\n";
-    ...</code>
-</pre>
-            </div>
-          </li>
-          <li>[varias] Todas las llamadas a la función cabecera() deberán incluir el tercer argumento:
-            <div class="codigo">
-              <pre>
-<code class="language-php">cabecera("Borrar 1", MENU_PERSONAS, PROFUNDIDAD_1);</code>
-</pre>
-            </div>
-          </li>
-          <li>[index.php] La página inicial muestra menús distintos, dependiendo de si el usuario está conectado o no:
-            <div class="codigo">
-              <pre>
-<code class="language-php">cabecera("Inicio", MENU_PRINCIPAL, PROFUNDIDAD_0);</code>
-</pre>
-            </div>
-            <p>[biblioteca.php] En un caso el menú permite gestionar la tabla personas y en el otro no:</p>
-            <div class="codigo">
-              <pre>
+        </div>
+      </li>
+      <li>[biblioteca.php]
+        <p>El usuario que no está conectado sólo puede abrir la página principal index.php y el menú de esa página únicamente debe incluir un enlace (a la página acceso/login.php). Pero si el usuario está conectado, además de que puede abrir cualquier página, al abrir la página principal index.php el menú debe incluir dos enlaces (a la página acceso/logout.php y al índice la páginas de la tabla tabla-personas/index.php). Esto lo podemos conseguir escribiendo bloques <span class="php-res">if else</span> anidados, comprobando primero si el usuario está o no conectado y en cada caso comprobando el menú solicitado:</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">    if (!isset($_SESSION["conectado"])) {
         if ($menu == MENU_PRINCIPAL) {
             print "        &lt;li&gt;&lt;a href=\"acceso/login.php\"&gt;Conectarse&lt;/a&gt;&lt;/li&gt;\n";
@@ -178,20 +235,22 @@ define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la págin
         }
     }</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+        </div>
       </li>
-      <li>tabla-personas
-        <ul>
-          <li>[todas en /tabla-personas] Todas las páginas de la gestión de la tabla de personas tienen un menú específico:
-            <div class="codigo">
-              <pre>
-<code class="language-php">cabecera("Inicio", MENU_PERSONAS, PROFUNDIDAD_1);</code>
+      <li>[todas las páginas en /tabla-personas]
+
+        <p>Todas las páginas de gestión de la tabla de personas pedirán el mismo menú y profundidad de menú que les correspondan (además de conectarse a la sesión, como se ha comentado antes). Por ejemplo, la página listar.php</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">cabecera("Personas - Listar", <span class="codigo-resaltado">MENU_PERSONAS</span>, <span class="codigo-resaltado">PROFUNDIDAD_1</span>);</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+        </div>
+        <p>Las imágenes de las flechas (arriba.svg y abajo.svg) ya no se encuentran en el mismo directorio que las páginas, por lo que habrá que escribir el camino correcto hasta ellas. Por ejemplo:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">        print "                &lt;img src=\"<span class="codigo-resaltado">../img/</span>abajo.svg\" alt=\"A-Z\" title=\"A-Z\" width=\"15\" height=\"12\"&gt;\n";</code>
+</pre>
+        </div>
       </li>
     </ul>
   </section>
@@ -201,22 +260,50 @@ define("PROFUNDIDAD_1", "../");             // Profundidad de nivel de la págin
 
     <p>En este ejercicio, el usuario debe identificarse indicando su nombre y contraseña, pero sólo existe un usuario, con nombre y contraseña fijos. La contraseña de este usuario no se guarda directamente, lo que se guarda es un <i>hash</i> de la contraseña.</p>
 
+    <h3>Identificación</h3>
     <ul>
-      <li>Identificación
-        <ul>
-          <li>[config.php] El usuario único se define en el fichero de configuración:
-            <div class="codigo">
-              <pre>
+      <li>[config.php]
+        <p>Definiremos el usuario único en el fichero de configuración:</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// Usuario Administrador de la aplicación
 
 $cfg["rootName"]      = "root";                             // Nombre del Usuario Administrador de la aplicación
 $cfg["rootPassword"]  = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2";  // Contraseña encriptada del Usuario Administrador de la aplicación</code>
 </pre>
-            </div>
-          </li>
-          <li>[biblioteca.php] El <i>hash</i> se calcula en una función:
-            <div class="codigo">
-              <pre>
+        </div>
+
+        <p>Para el formulario en login-1.php y la comprobación en login-2.php definiremos los tamaños de forma similar a los de la tabla Personas. En este ejercicio no hay una tabla de usuarios, pero en los ejercicios posteriores sí, así que definiremos ya en este ejercicio las constantes siguiendo el esquema de las constantes definidas para la tabla Personas.</p>
+        <p>Es importante señalar que los tamaños relacionados con el campo Password no siguen el patrón del resto:</p>
+        <ul>
+          <li>En la mayoría de casos, hacemos coincidir los tres valores. Por ejemplo, $cfg["tablaUsuariosTamUsuario"], $cfg["formUsuariosTamUsuario"] y $cfg["formUsuariosMaxUsuario"], ya que queremos que el control visualmente tenga el tamaño de los caracteres que podemos insertar en la tabla y que no se pueda escribir un texto más largo (además, al recoger el formulario comprobamos que efectivamente es así).</li>
+          <li>Pero $cfg["tablaUsuariosTamPassword"] y $cfg["formUsuariosTamPassword"] no coinciden, ya que el tamaño en la tabla viene determinado por el tipo de <i>hash</i> utilizado (en nuestro caso, sha256 es de 64 caracteres) mientras que $cfg["tablaUsuariosTamPassword"] es el tamaño del control, que en este caso es menor (20 caracteres, aunque este valor podría ser diferente).</li>
+          <li>De forma similar, $cfg["formUsuariosMaxPassword"] no coincide con $cfg["tablaUsuariosTamPassword"], sino con $cfg["formUsuariosTamPassword"], ya que vamos a limitar la longitud de la contraseña al tamaño del control, no a la longitud del <i>hash</i>.</li>
+        </ul>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Tamaño de los campos en la tabla Usuarios
+
+$cfg["tablaUsuariosTamUsuario"]  = 20;                      // Tamaño de la columna Usuarios &gt; Nombre de usuario
+$cfg["tablaUsuariosTamPassword"] = <span class="codigo-resaltado">64</span>;                      // Tamaño de la columna Usuarios &gt; Contraseña de usuario (cifrada)
+
+// Tamaño de los controles en los formularios
+
+$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuarios &gt; Nombre de usuario
+$cfg["formUsuariosTamPassword"] = <span class="codigo-resaltado">20</span>;                               // Tamaño de la caja de texto Usuarios &gt; Contraseña
+
+// Tamaño máximo admitido por los controles en los formularios
+
+$cfg["formUsuariosMaxUsuario"]  = $cfg["tablaUsuariosTamUsuario"];   // Tamaño máximo admitido por la caja de texto Usuarios &gt; Nombre de usuario
+$cfg["formUsuariosMaxPassword"] = <span class="codigo-resaltado">$cfg["formUsuariosTamPassword"]</span>;   // Tamaño máximo admitido por la caja de texto Usuarios &gt; Contraseña</code>
+</pre>
+        </div>
+
+      </li>
+      <li>[biblioteca.php]
+        <p>El <i>hash</i> se calcula en una función:</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">function encripta($cadena)
 {
     global $cfg;
@@ -224,39 +311,119 @@ $cfg["rootPassword"]  = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51
     return hash($cfg["hashAlgorithm"], $cadena);
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>[config.php] El tipo de <i>hash</i> se define en el fichero de configuración:
-            <div class="codigo">
-              <pre>
+        </div>
+      </li>
+      <li>[config.php]
+        <p>El tipo de <i>hash</i> se define en el fichero de configuración:</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// Algoritmo hash para encriptar la contraseña de usuario
 
 $cfg["hashAlgorithm"] = "sha256";  // Algoritmo hash para encriptar la contraseña de usuario
-                                   // Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php</code>
+                                   // Los posibles algoritmos son https://www.php.net/manual/en/function.hash-algos.php
+                                   // Si se cambia el algoritmo puede ser necesario cambiar $cfg["tablaUsuariosTamPassword"]</code>
 </pre>
-            </div>
-          </li>
-          <li>login-1.php y login-2.php
-            <p>En este ejercicio el login se divide en dos páginas. La primera es un formulario que pide el nombre de usuario y la contraseña. La segunda página comprueba si los datos introducidos coinciden con los del fichero de configuración.</p>
-            <div class="codigo">
-              <pre>
+        </div>
+      </li>
+      <li>[login-1.php y login-2.php]
+        <p>En este ejercicio el login se divide en dos páginas. La primera página (login-1.php) es un formulario que pide el nombre de usuario y la contraseña. La segunda página (login-2.php) comprueba si los datos introducidos coinciden con los del fichero de configuración.</p>
+        <p>Para mejorar la usabilidad del formulario, cuando la segunda página detecte un error (usuario y/o contraseña incorrecta), este se mostrará en la página 1.</p>
+      </li>
+      <li>[login-1.php]
+        <p>La página login-1.php incluirá el formulario:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">print "    &lt;form action=\"login-2.php\" method=\"$cfg[formMethod]\"&gt;\n";
+print "      &lt;p&gt;Escriba su nombre de usuario y contraseña:&lt;/p&gt;\n";
+print "\n";
+print "      &lt;table&gt;\n";
+print "        &lt;tr&gt;\n";
+print "          &lt;td&gt;Usuario:&lt;/td&gt;\n";
+print "          &lt;td&gt;&lt;input type=\"text\" name=\"usuario\" size=\"$cfg[formUsuariosTamUsuario]\" maxlength=\"$cfg[formUsuariosMaxUsuario]\" autofocus/&gt;&lt;/td&gt;\n";
+print "        &lt;/tr&gt;\n";
+print "        &lt;tr&gt;\n";
+print "          &lt;td&gt;Contraseña:&lt;/td&gt;\n";
+print "          &lt;td&gt;&lt;input type=\"password\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosMaxPassword]\"/&gt;&lt;/td&gt;\n";
+print "        &lt;/tr&gt;\n";
+print "      &lt;/table&gt;\n";
+print "\n";
+print "      &lt;p&gt;\n";
+print "        &lt;input type=\"submit\" value=\"Identificar\"&gt;\n";
+print "        &lt;input type=\"reset\" value=\"Borrar\"&gt;\n";
+print "      &lt;/p&gt;\n";
+print "    &lt;/form&gt;\n";</code>
+</pre>
+        </div>
+      </li>
+      <li>[login-2.php]
+        <p>La página login-2.php recoge los controles, comprueba que no son demasiado largos, comprueba que el nombre de usuario y la contraseña son root y root y, si todo es correcto, crea la variable de sesión $_SESSION["conectado"].</p>
+        <p>En caso de detectar un problema en vez de escribir el aviso en la propia página, redirigiremos a la página 1 enviando el aviso en la URL.</p>
+
+        <div class="codigo">
+          <pre>
 <code class="language-php">$usuario  = recoge("usuario");
 $password = recoge("password");
 
-if ($usuario != $cfg["rootName"] || encripta($password) != $cfg["rootPassword"]) {
-    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
-    exit;
+// Comprobamos los datos recibidos procedentes de un formulario
+$usuarioOk  = false;
+$passwordOk = false;
+
+if (mb_strlen($usuario, "UTF-8") &gt; $cfg["<span class="codigo-resaltado">tablaUsuariosTamUsuario</span>"]) {
+    <span class="codigo-resaltado">header("Location:login-1.php?aviso=</span>El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.");
+} else {
+    $usuarioOk = true;
 }
 
-$_SESSION["conectado"] = true;
-
-header("Location:../index.php");
-
-exit;</code>
+if (mb_strlen($password, "UTF-8") &gt; $cfg["<span class="codigo-resaltado">formUsuariosTamPassword</span>"]) {
+    <span class="codigo-resaltado">header("Location:login-1.php?aviso=</span>La contraseña no puede tener más de $cfg[formUsuariosMaxPassword] caracteres.");
+} else {
+    $passwordOk = true;
+}</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+        </div>
+
+        <p>Para comprobar que se ha escrito el nombre de usuario y la contraseña correcta, comparamos los datos recibidos con las constantes correspondientes. En el caso de la contraseña debemos comparar el <i>hash</i> del dato recibido con la constante correspondiente. Si el usuario o la contraseña no son correctas, redirigimos a la página login-1.php enviando el mensaje del aviso.</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">// Comprobamos que el usuario recibido con la contraseña recibida existe en la base de datos
+
+$passwordCorrectoOk = false;
+
+if ($usuarioOk && $passwordOk) {
+    if ($usuario != $cfg["rootName"] || encripta($password) != $cfg["rootPassword"]) {
+        header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos.");
+    } else {
+        $passwordCorrectoOk = true;
+    }
+}</code>
+</pre>
+        </div>
+
+        <p>Por último, si todo es correcto, creamos la variable de sesión "conectado" y redirigimos a la página principal.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">if ($usuarioOk && $passwordOk && $passwordCorrectoOk) {
+    $_SESSION["conectado"] = true;
+
+    header("Location:../index.php");
+}</code>
+</pre>
+        </div>
+      </li>
+      <li>[login-1.php]
+        <p>Como la página login-1.php puede recibir mensajes de error desde la página login-2.php, la página login-1.php debe recoger y mostrar en su caso el mensaje recibido encima del formulario.</p>
+
+        <div class="codigo">
+          <pre>
+<code class="language-php">$aviso = recoge("aviso");
+
+if ($aviso != "") {
+    print "    &lt;p class=\"aviso\"&gt;$aviso&lt;/p&gt;\n";
+    print "\n";
+}</code>
+</pre>
+        </div>
       </li>
     </ul>
   </section>
@@ -270,25 +437,17 @@ exit;</code>
       <li>Tabla de usuarios
         <ul>
           <li>Necesitamos definir otra tabla en la base de datos, para guardar los nombres y contraseñas de los usuarios.</li>
-          <li>[config.php] Los tamaños de los campos se definen en el fichero de configuración:
-            <p>Definimos dos tamaños de contraseña: el tamaño del control que el usuario escribe en el formulario y el tamaño del <i>hash</i> que se guarda en la base de datos</p>
+          <li>[config.php]
+            <p>Definimos el número máximo de registros que se podrán guardar en la tabla de usuarios.</p>
             <div class="codigo">
               <pre>
-<code class="language-php">// Tamaño de los campos en la tabla Usuarios
-
-$cfg["tablaUsuariosTamUsuario"]  = 20;                      // Tamaño de la columna Usuarios &gt; Nombre de usuario
-$cfg["tablaUsuariosTamPassword"] = 64;                      // Tamaño de la columna Usuarios &gt; Contraseña de usuario (cifrada)
-
-// Tamaño de los controles en los formularios
-
-$cfg["formUsuariosTamUsuario"]  = $cfg["tablaUsuariosTamUsuario"];  // Tamaño de la caja de texto Usuario &gt; Nombre de usuario
-$cfg["formUsuariosTamPassword"] = 20;                               // Tamaño de la caja de texto Usuario &gt; Contraseña</code>
+<code class="language-php">$cfg["tablaUsuariosMaxReg"] = 20;                           // Número máximo de registros en la tabla Usuarios</code>
 </pre>
             </div>
           </li>
           <li>[biblioteca-sqlite.php]
             <p>Modificamos la función borraTodo() para que borre y cree todas las tablas.</p>
-            <p>Una vez creadas las tablas, insertaremos un registro en la tabla de usuarios para que haya algún usuario que pueda conectarse. Los datos de ese usuario se encuentran como antes en el archivo de configuración. Indicaremos el campo <i>id</i> para asegurar el valor del campo. En este caso, no es algo estrictamente necesario, pero sí que lo sería si insertáramos registros que estuvieran relacionados con registros de otras tablas (como haremos más adelante).</p>
+            <p>Una vez creadas las tablas, insertaremos un registro en la tabla de usuarios para que haya algún usuario que pueda conectarse. Los datos de ese usuario se encuentran como antes en el archivo de configuración. Indicaremos el campo <i>id</i> para asegurar el valor del campo. En este caso, no es algo estrictamente necesario, pero sí que lo sería si insertáramos registros que estuvieran relacionados con registros de otras tablas (como se hace en ejercicios posteriores).</p>
             <div class="codigo">
               <pre>
 <code class="language-php">function borraTodo()
@@ -316,15 +475,6 @@ $cfg["formUsuariosTamPassword"] = 20;                               // Tamaño d
                  correo VARCHAR($cfg[tablaPersonasTamCorreo]) COLLATE NOCASE
                  )";
 }</code>
-</pre>
-            </div>
-            <p>Añadimos la información sobre la tabla de usuarios</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">// SQLITE: Nombres de las tablas
-
-$cfg["tablaPersonas"] = "personas";                       // Nombre de la tabla Personas
-$cfg["tablaUsuarios"] = "usuarios";                       // Nombre de la tabla Usuarios</code>
 </pre>
             </div>
           </li>
@@ -364,17 +514,19 @@ $cfg["tablaUsuarios"] = "usuarios";                       // Nombre de la tabla 
 </pre>
             </div>
           </li>
-          <li>[biblioteca.php] Definimos los posibles valores de ordenación
+          <li>[biblioteca.php]
+            <p>Añadimos la información sobre la tabla de usuarios</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">// Nombres de las tablas
+
+$cfg["tablaUsuarios"] = "usuarios";                       // Nombre de la tabla Usuarios</code>
+</pre>
+            </div>
+            <p>Definimos los posibles valores de ordenación (aunque en realidad ordenar por contraseña no tiene apenas interés porque los valores son cadenas <i>hash</i>, pero lo implementaremos de todas formas):</p>
             <div class="codigo">
               <pre>
 <code class="language-php">// Valores de ordenación de las tablas
-
-$cfg["tablaPersonasColumnasOrden"] = [
-    "nombre ASC", "nombre DESC",
-    "apellidos ASC", "apellidos DESC",
-    "telefono ASC", "telefono DESC",
-    "correo ASC", "correo DESC",
-];
 
 $cfg["tablaUsuariosColumnasOrden"] = [
     "usuario ASC", "usuario DESC",
@@ -385,36 +537,56 @@ $cfg["tablaUsuariosColumnasOrden"] = [
           </li>
         </ul>
       </li>
-      <li>Administrador
-        <p>Crearemos una carpeta /administrador y moveremos las páginas borrar-todo-1.php y borrar-todo-2.php a esa carpeta (habrá que modificar los menús).</p>
-        <div class="codigo">
-          <pre>
-<code class="language-php">
-    } elseif ($menu == MENU_ADMINISTRADOR) {
-        print "        &lt;li&gt;&lt;a href=\"../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"borrar-todo-1.php\"&gt;Borrar todo&lt;/a&gt;&lt;/li&gt;\n";
-    } elseif ($menu == MENU_USUARIOS) {
-        print "        &lt;li&gt;&lt;a href=\"../../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"insertar-1.php\"&gt;Añadir registro&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"listar.php\"&gt;Listar&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"borrar-1.php\"&gt;Borrar&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"buscar-1.php\"&gt;Buscar&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"modificar-1.php\"&gt;Modificar&lt;/a&gt;&lt;/li&gt;\n";
-    } elseif ($menu == MENU_PERSONAS) {
-        print "        &lt;li&gt;&lt;a href=\"../../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"insertar-1.php\"&gt;Añadir registro&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"listar.php\"&gt;Listar&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"borrar-1.php\"&gt;Borrar&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"buscar-1.php\"&gt;Buscar&lt;/a&gt;&lt;/li&gt;\n";
-        print "        &lt;li&gt;&lt;a href=\"modificar-1.php\"&gt;Modificar&lt;/a&gt;&lt;/li&gt;\n";
-    } else {
-        ...</code>
+      <li>Menús
+        <ul>
+          <li>[biblioteca.php]
+            <p>Definimos dos nuevos menús:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">define("MENU_ADMINISTRADOR", 3);            // Menú Administrador
+define("MENU_USUARIOS", 4);                 // Menú Usuarios
+define("MENU_PERSONAS", 5);                 // Menú Personas</code>
 </pre>
-        </div>
+            </div>
+            <p>Modificamos los menús que se muestran al usuario conectado.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">        if ($menu == MENU_PRINCIPAL) {
+            print "        &lt;li&gt;&lt;a href=\"db/tabla-personas/index.php\"&gt;Personas&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"db/tabla-usuarios/index.php\"&gt;Usuarios&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"administrador/index.php\"&gt;Administrador&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"acceso/logout.php\"&gt;Desconectarse&lt;/a&gt;&lt;/li&gt;\n";
+        } elseif ($menu == MENU_VOLVER) {
+            print "        &lt;li&gt;&lt;a href=\"../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
+        } elseif ($menu == MENU_ADMINISTRADOR) {
+            print "        &lt;li&gt;&lt;a href=\"../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"borrar-todo-1.php\"&gt;Borrar todo&lt;/a&gt;&lt;/li&gt;\n";
+        } elseif ($menu == MENU_USUARIOS) {
+            print "        &lt;li&gt;&lt;a href=\"../../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"insertar-1.php\"&gt;Añadir registro&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"listar.php\"&gt;Listar&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"borrar-1.php\"&gt;Borrar&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"buscar-1.php\"&gt;Buscar&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"modificar-1.php\"&gt;Modificar&lt;/a&gt;&lt;/li&gt;\n";
+        } elseif ($menu == MENU_PERSONAS) {
+            print "        &lt;li&gt;&lt;a href=\"../../index.php\"&gt;Volver&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"insertar-1.php\"&gt;Añadir registro&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"listar.php\"&gt;Listar&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"borrar-1.php\"&gt;Borrar&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"buscar-1.php\"&gt;Buscar&lt;/a&gt;&lt;/li&gt;\n";
+            print "        &lt;li&gt;&lt;a href=\"modificar-1.php\"&gt;Modificar&lt;/a&gt;&lt;/li&gt;\n";
+        } else {
+            ...</code>
+</pre>
+            </div>
+          </li>
+        </ul>
       </li>
       <li>Tabla Usuarios y tabla Personas
         <ul>
-          <li>Crearemos dos carpetas /db/tabla-personas y db/tabla-usuarios con las mismas páginas de gestión de la tabla (insertar-1.php, insertar-2.php, etc.), pero adaptando los nombres de los campos a los de la tabla correspondiente.</li>
+          <li>Creamos dos carpetas /db/tabla-personas y db/tabla-usuarios con las mismas páginas de gestión de la tabla (insertar-1.php, insertar-2.php, etc.), pero adaptando los nombres de los campos a los de la tabla correspondiente.</li>
+          <li>En todas las páginas de esas carpetas debemos modificar las rutas relativas (a la biblioteca, a las imágenes, etc.)</li>
+          <li>Creamos una carpeta /administrador con tres páginas (index.php, borrar-todo-1.php y borrar-todo-2.php). En las carpetas de las tablas no habrá páginas borrar-todo.</li>
           <li>[config.php]
             <p>Añadimos una variable de configuración para permitir o no modificar la contraseña del usuario Administrador:</p>
             <div class="codigo">
@@ -424,7 +596,7 @@ $cfg["tablaUsuariosColumnasOrden"] = [
             </div>
           </li>
           <li>[biblioteca.php]
-            <p>Debemos definir un nivel más de profundidad:</p>
+            <p>Definimos un nivel más de profundidad:</p>
             <div class="codigo">
               <pre>
 <code class="language-php">define("PROFUNDIDAD_0", "");                // Profundidad de nivel de la página: directorio raíz
@@ -445,8 +617,8 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
 <code class="language-php">if ($usuario == "") {
     print "    &lt;p class=\"aviso\"&gt;Hay que escribir un nombre de usuario.&lt;/p&gt;\n";
     print "\n";
-} elseif (mb_strlen($usuario, "UTF-8") &gt; $cfg["tablaUsuariosTamUsuario"]) {
-    print "    &lt;p class=\"aviso\"&gt;El nombre de usuario no puede tener más de $cfg[tablaUsuariosTamUsuario] caracteres.&lt;/p&gt;\n";
+} elseif (mb_strlen($usuario, "UTF-8") &gt; $cfg["tablaUsuariosMaxUsuario"]) {
+    print "    &lt;p class=\"aviso\"&gt;El nombre de usuario no puede tener más de $cfg[formUsuariosMaxUsuario] caracteres.&lt;/p&gt;\n";
     print "\n";
 } else {
     $usuarioOk = true;
@@ -456,7 +628,11 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
             <p>No puede haber dos usuarios con el mismo nombre de usuario:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+<code class="language-php">// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
+$registroDistintoOk = false;
+
+if ($usuarioOk && $passwordOk) {
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
                  WHERE usuario = :usuario";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -467,7 +643,9 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
     } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
         print "    &lt;p class=\"aviso\"&gt;Ya existe un usuario con ese nombre.&lt;/p&gt;\n";
     } else {
-      ...</code>
+        $registroDistintoOk = true;
+    }
+}</code>
 </pre>
             </div>
 
@@ -490,36 +668,44 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
             </div>
           </li>
           <li>[borrar-2.php]
-            <p>El usuario inicial no se puede borrar (esto no es estrictamente necesario, pero yo lo hago para que la aplicación que tengo incluida en la página de ejercicios de los apuntes esté siempre accesible a los visitantes de la web):</p>
+            <p>El usuario inicial no se puede borrar (esto no es estrictamente necesario, pero puede ser útil para evitar que se borren por error todos los usuarios y eso haga imposible entrar en la aplicación):</p>
             <div class="codigo">
               <pre>
-<code class="language-php">    foreach ($id as $indice =&gt; $valor) {
-        $consulta = "SELECT * FROM $cfg[tablaUsuarios]
-                     WHERE id = :indice";
+<code class="language-php">        // Comprobamos que el usuario con el id recibido no es el usuario Administrador inicial
+        $registroNoRootOk = false;
 
-        $resultado = $pdo-&gt;prepare($consulta);
-        if (!$resultado) {
-            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
-            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif (!($registro = $resultado-&gt;fetch())) {
-            print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
-        } elseif ($registro["usuario"] == $cfg["rootName"]) {
-            print "    &lt;p class=\"aviso\"&gt;Este usuario no se puede borrar.&lt;/p&gt;\n";
-        } else {
-            ...</code>
+        if ($registroEncontradoOk) {
+            $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                         WHERE id = :indice
+                         AND usuario = '$cfg[rootName]'";
+
+            $resultado = $pdo-&gt;prepare($consulta);
+            if (!$resultado) {
+                print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            } elseif (!$resultado-&gt;execute([":indice" =&gt; $indice])) {
+                print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+            } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+                print "    &lt;p class=\"aviso\"&gt;Este usuario no se puede borrar.&lt;/p&gt;\n";
+            } else {
+                $registroNoRootOk = true;
+            }
+        }</code>
 </pre>
             </div>
           </li>
           <li>[buscar-1.php y buscar-2.php]
-            <p>No se incluye el campo contraseña en el formulario. Buscar por contraseña no tiene demasiado sentido porque en la base de datos se guarda el <i>hash</i> de la contraseña.</p>
-            <p>El único motivo para buscar por contraseñas podría ser para ver qué usuarios tienen la contraseña en blanco (o contraseñas triviales como 1234, por ejemplo). Pero como la búsqueda tiene en cuenta todos los campos, incluir la contraseña en la búsqueda reduce completamente los resultados de la búsqueda.</p>
+            <p>No es necesario incluir el campo contraseña en el formulario. Si se decide incluir el campo contraseña, habría que decidir si lo que se incluye en la consulta es el término de búsqueda o el <i>hash</i> del término de búsqueda.</p>
+            <p>El único motivo para buscar por contraseñas podría ser para ver qué usuarios tienen la contraseña en blanco (o contraseñas triviales como 1234, por ejemplo).</p>
           </li>
           <li>[modificar-2.php]
             <p>El nombre del Administrador inicial no se puede cambiar (su nombre se establece en la variable de configuración $cfg["rootName"]). Su contraseña se puede cambiar o no dependiendo del valor de la variable de configuración $cfg["rootPasswordModificable"] (<span class="php-con">true</span> o <span class="php-con">false</span>). El bloqueo del cambio de contraseña lo he incluido para que la aplicación que tengo incluida en la página de ejercicios de los apuntes esté siempre accesible a los visitantes de la web:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">    $consulta = "SELECT * FROM $cfg[tablaUsuarios]
+<code class="language-php">// Comprobamos que el registro con el id recibido no es el registro del usuario root
+$registroNoRootOk = false;
+
+if ($idOk && $registroEncontradoOk) {
+    $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE id = :id";
 
     $resultado = $pdo-&gt;prepare($consulta);
@@ -527,24 +713,15 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
         print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
         print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-    } elseif (!($registro = $resultado-&gt;fetch())) {
-        print "    &lt;p class=\"aviso\"&gt;Registro no encontrado.&lt;/p&gt;\n";
-    } elseif ($registro["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
-        print "    &lt;p class=\"aviso\"&gt;Este usuario no se puede modificar.&lt;/p&gt;\n";
     } else {
-              ...</code>
-</pre>
-            </div>
-            <p>Al mostrar los valores de los campos, el campo nivel es un menú <span class="html-eti">&lt;select&gt;</span>. Para que se muestre la opción correspondiente al nivel actual del usuario debemos añadir el atributo <span class="html-atri">selected</span> al <span class="html-eti">&lt;option&gt;</span> correspondiente:</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">        foreach ($cfg["usuariosNiveles"] as $indice =&gt; $valor) {
-            if ($registro["nivel"] == $indice) {
-                print "                &lt;option value=\"$indice\" selected&gt;$valor&lt;/option&gt;\n";
-            } else {
-                print "                &lt;option value=\"$indice\"&gt;$valor&lt;/option&gt;\n";
-            }
-        }</code>
+        $registro = $resultado-&gt;fetch();
+        if ($registro["usuario"] == $cfg["rootName"] && !$cfg["rootPasswordModificable"]) {
+            print "    &lt;p class=\"aviso\"&gt;Este usuario no se puede modificar.&lt;/p&gt;\n";
+        } else {
+            $registroNoRootOk = true;
+        }
+    }
+}</code>
 </pre>
             </div>
           </li>
@@ -552,42 +729,54 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
             <p>Al cambiar el nombre del usuario hay que comprobar antes que el nuevo nombre no esté ya registrado</p>
             <div class="codigo">
               <pre>
-<code class="language-php">        // La consulta cuenta los registros con un id diferente porque MySQL no distingue
-        // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
-        // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
-        $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
-                     WHERE usuario = :usuario
-                     AND id&lt;&gt;:id";
+<code class="language-php">// Comprobamos que no se intenta crear un registro idéntico a uno que ya existe
+$registroDistintoOk = false;
 
-        $resultado = $pdo-&gt;prepare($consulta);
-        if (!$resultado) {
-            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":id" =&gt; $id])) {
-            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-        } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
-            print "    &lt;p class=\"aviso\"&gt;Ya existe un registro con esos mismos valores. "
-                . "No se ha guardado la modificación.&lt;/p&gt;\n";
-        } else {
-          ...</code>
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk) {
+    // La consulta cuenta los registros con un id diferente porque MySQL no distingue
+    // mayúsculas de minúsculas y si en un registro sólo se cambian mayúsculas por
+    // minúsculas MySQL diría que ya hay un registro como el que se quiere guardar.
+    $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
+                 WHERE usuario = :usuario
+                 AND id &lt;&gt; :id";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif ($resultado-&gt;fetchColumn() &gt; 0) {
+        print "    &lt;p class=\"aviso\"&gt;Ya existe un registro con esos mismos valores. No se ha guardado la modificación.&lt;/p&gt;\n";
+    } else {
+        $registroDistintoOk = true;
+    }
+}</code>
 </pre>
             </div>
             <p>El nombre del Administrador inicial no se puede cambiar y la contraseña solo puede cambiarse si la variable de configuración $cfg["rootPasswordModificable"] es <span class="php-con">true</span>.:</p>
             <div class="codigo">
               <pre>
-<code class="language-php">            $consulta = "SELECT * FROM $cfg[tablaUsuarios]
-                         WHERE id = :id";
+<code class="language-php">// Comprobamos que el usuario con el id recibido no es el usuario Administrador inicial
+$registroNoRootOk = false;
 
-            $resultado = $pdo-&gt;prepare($consulta);
-            if (!$resultado) {
-                print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-            } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
-                print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-            } else {
-                $registro = $resultado-&gt;fetch();
-                if ($registro["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $registro["usuario"] != $usuario)) {
-                    print "    &lt;p class=\"aviso\"&gt;Del usuario Administrador inicial sólo se puede cambiar la contraseña.&lt;/p&gt;\n";
-                } else {
-              ...</code>
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk) {
+    $consulta = "SELECT * FROM $cfg[tablaUsuarios]
+                 WHERE id = :id";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":id" =&gt; $id])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } else {
+        $registro = $resultado-&gt;fetch();
+        if ($registro["usuario"] == $cfg["rootName"] && (!$cfg["rootPasswordModificable"] || $registro["usuario"] != $usuario)) {
+            print "    &lt;p class=\"aviso\"&gt;Del usuario Administrador inicial sólo se puede cambiar la contraseña.&lt;/p&gt;\n";
+        } else {
+            $registroNoRootOk = true;
+        }
+    }
+}</code>
 </pre>
             </div>
           </li>
@@ -595,8 +784,21 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
       </li>
       <li>Puesta en marcha
         <ul>
-          <li>Normalmente, las aplicaciones web tienen un directorio con los scripts de instalación. Estos scripts se ejecutan una vez y crean la base de datos. A continuación se suele pedir al administrador que borre ese directorio puesto que la aplicación ya no necesita volver a ejecutar esos scripts. En este ejercicio se resuelve la instalación de otra manera: cada vez que se entra en la página login-1.php se comprueba si la base de datos existe. Hago esto porque la aplicación guarda la base de datos en un directorio temporal que de vez en cuando el servidor vacía automáticamente.</li>
-          <li>[biblioteca-sqlite.php] Esta es la función que detecta si no existe la base de datos en SQLite:
+          <li>Normalmente, las aplicaciones web tienen un directorio con los scripts de instalación. Estos scripts se ejecutan una vez y crean la base de datos. A continuación se suele pedir al administrador que borre ese directorio puesto que la aplicación ya no necesita volver a ejecutar esos scripts. En este ejercicio se resuelve la instalación de otra manera: cada vez que se entra en la página login-1.php se comprueba si la base de datos existe. Lo hago de esta manera porque me viene bien para los ejemplos de ejercicios disponibles en los apuntes.</li>
+          <li>[biblioteca.php]
+            <p>Definimos una matriz que contiene los nombres de las tablas.</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">$cfg["dbTablas"] = [
+    $cfg["tablaPersonas"],
+    $cfg["tablaUsuarios"],
+];</code>
+</pre>
+            </div>
+
+          </li>
+          <li>[biblioteca-sqlite.php]
+            <p>Esta es la función que detecta si no existe la base de datos en SQLite:</p>
             <div class="codigo">
               <pre>
 <code class="language-php">function existenTablas()
@@ -624,7 +826,9 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
 </pre>
             </div>
           </li>
-          <li>[biblioteca-mysql.php] Esta es la función que detecta si no existe la base de datos en MySQL:
+          <li>[biblioteca-mysql.php]
+            <p>Esta es la función que detecta si no existe la base de datos en MySQL:</p>
+
             <div class="codigo">
               <pre>
 <code class="language-php">function existenTablas()
@@ -667,7 +871,9 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
 </pre>
             </div>
           </li>
-          <li>[login-1.php] Al entrar a identificarse, se comprueba si existen la base de datos y las tablas. Si no existen, se crean de nuevo.
+          <li>[login-1.php]
+
+            <p>Al entrar a identificarse, se comprueba si existen la base de datos y las tablas. Si no existen, se crean de nuevo.</p>
             <div class="codigo">
               <pre>
 <code class="language-php">if (!existenTablas()) {
@@ -688,8 +894,8 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
 
     <p>En este ejercicio se deben definir dos categorías de usuarios:</p>
     <ul>
-      <li>Los usuarios administradores tienen acceso a todas las opciones de la aplicación.</li>
-      <li>Los usuarios básicos sólo tiene acceso a la tabla de Personas.</li>
+      <li>Los usuarios administradores, que tienen acceso a todas las opciones de la aplicación.</li>
+      <li>Los usuarios básicos, que sólo tiene acceso a la tabla de Personas.</li>
     </ul>
 
     <hr class="corta">
@@ -697,17 +903,30 @@ define("PROFUNDIDAD_2", "../../");          // Profundidad de nivel de la págin
     <ul>
       <li>Tabla de usuarios
         <ul>
-          <li>[biblioteca.php] Definimos dos niveles de usuario y en una matriz hacemos corresponder el texto que aparece en pantalla con el valor del nivel en la base de datos. Es importante que los niveles vayan en orden numérico creciente porque en la comprobación de niveles se hacen comparaciones con desigualdades.
+          <li>[biblioteca.php]
+            <p>Definimos los niveles de usuario mediante constantes. Los valores son números aunque están definidos como cadenas debido a la manera de funcionar de la función recoge() que trabaja con cadenas en los argumentos default y allowed. Es importante que los niveles vayan en orden numérico creciente porque para comprobar si un usuario tiene nivel suficiente para abrir una página haremos comparaciones con desigualdades (mayor que, etc.).</p>
+
             <div class="codigo">
               <pre>
-<code class="language-php">define("NIVEL_USUARIO_BASICO", 10);         // Usuario web de nivel Usuario Básico
-define("NIVEL_ADMINISTRADOR", 20);          // Usuario web de nivel Administrador
+<code class="language-php">define("NIVEL_USUARIO_BASICO", "10");       // Usuario web de nivel Usuario Básico
+define("NIVEL_ADMINISTRADOR", "20");        // Usuario web de nivel Administrador</code>
+</pre>
+            </div>
 
-// Niveles de usuario
+            <p>Definimos dos matrices con estos niveles. Una es simplemente la lista de valores de niveles que podemos utilizar al recibir valores de un formulario para comprobar que hemos recibido un valor válido. La otra matriz hace corresponder un texto a cada valor de nivel. Esta matriz la utilizaremos para mostrar el texto cuando haya que mostrar los niveles en la pantalla (en un formulario o en un listado).</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">// Niveles de usuario
+
+$cfg["usuariosNivelesValores"] = [
+    NIVEL_USUARIO_BASICO,
+    NIVEL_ADMINISTRADOR,
+];
 
 $cfg["usuariosNiveles"] = [
     NIVEL_USUARIO_BASICO =&gt; "Usuario Básico",
-    NIVEL_ADMINISTRADOR =&gt; "Administrador",
+    NIVEL_ADMINISTRADOR  =&gt; "Administrador",
 ];</code>
 </pre>
             </div>
@@ -723,14 +942,16 @@ $cfg["usuariosNiveles"] = [
 </pre>
             </div>
           </li>
-          <li>[biblioteca-sqlite.php] Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:
+          <li>[biblioteca-sqlite.php]
+            <p>Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:</p>
+
             <div class="codigo">
               <pre>
 <code class="language-php">    $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                  id INTEGER PRIMARY KEY,
                  usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
-                 password VARCHAR($cfg[tablaUsuariosTamPassword]),
-                 nivel INTEGER
+                 password VARCHAR($cfg[tablaUsuariosTamPassword])<span class="codigo-resaltado">,</span>
+                 <span class="codigo-resaltado">nivel INTEGER</span>
                  )";
 
     if (!$pdo-&gt;query($consulta)) {
@@ -739,20 +960,21 @@ $cfg["usuariosNiveles"] = [
         print "    &lt;p&gt;Tabla Usuarios creada correctamente.&lt;/p&gt;\n";
 
         $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                     (id, usuario, password, nivel)
-                     VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
+                     (id, usuario, password<span class="codigo-resaltado">, nivel</span>)
+                     VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]'<span class="codigo-resaltado">, " . NIVEL_ADMINISTRADOR . "</span>)";
         ...</code>
 </pre>
             </div>
           </li>
-          <li>[biblioteca-mysql.php] Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:
+          <li>[biblioteca-mysql.php]
+            <p>Añadimos un campo más a la tabla que indique el nivel del usuario y al crear el registro de usuario inicial le damos nivel de administrador:</p>
             <div class="codigo">
               <pre>
 <code class="language-php">        $consulta = "CREATE TABLE $cfg[tablaUsuarios] (
                      id INTEGER UNSIGNED AUTO_INCREMENT,
                      usuario VARCHAR($cfg[tablaUsuariosTamUsuario]),
                      password VARCHAR($cfg[tablaUsuariosTamPassword]),
-                     nivel INTEGER NOT NULL,
+                     <span class="codigo-resaltado">nivel INTEGER NOT NULL,</span>
                      PRIMARY KEY(id)
                      )";
 
@@ -762,8 +984,8 @@ $cfg["usuariosNiveles"] = [
             print "    &lt;p&gt;Tabla creada correctamente.&lt;/p&gt;\n";
 
             $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                         (id, usuario, password, nivel)
-                         VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ")";
+                         (id, usuario, password<span class="codigo-resaltado">, nivel</span>)
+                         VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]'<span class="codigo-resaltado">, " . NIVEL_ADMINISTRADOR . "</span>)";
             ...</code>
 </pre>
             </div>
@@ -772,7 +994,8 @@ $cfg["usuariosNiveles"] = [
       </li>
       <li>Diferenciación entre los usuarios administradores y normales
         <ul>
-          <li>[login-2.php] Si el usuario se identifica correctamente, guardamos otra variable de sesión con el nivel del usuario:
+          <li>[login-2.php]
+            <p>Si el usuario se identifica correctamente, guardamos otra variable de sesión con el nivel del usuario:</p>
             <div class="codigo">
               <pre>
 <code class="language-php">$_SESSION["conectado"] = true;
@@ -786,26 +1009,27 @@ $_SESSION["nivel"]     = $registro["nivel"];</code>
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; NIVEL_ADMINISTRADOR) {
+if (!isset($_SESSION["conectado"])<span class="codigo-resaltado"> || $_SESSION["nivel"] &lt; NIVEL_ADMINISTRADOR</span>) {
     header("Location:../index.php");
     exit;
 }</code>
 </pre>
             </div>
-            <p>En las páginas accesibles a los usuarios básicos y administradores [/db/tabla-personas] comprobamos si la variable de sesión tiene el nivel requerido (aunque realmente sería suficiente con comprobar que existe $_SESSION["conectado"] pero de esta manera explicitamos el nivel requerido):</p>
+            <p>En las páginas accesibles a los usuarios básicos y administradores [/db/tabla-personas] comprobamos si la variable de sesión tiene el nivel requerido (aunque realmente sería suficiente con comprobar que existe $_SESSION["conectado"] pero de esta manera explicitamos el nivel requerido, por si en algún momento definimos un nivel inferior al de usuario básico):</p>
             <div class="codigo">
               <pre>
 <code class="language-php">session_name($cfg["sessionName"]);
 session_start();
 
-if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; NIVEL_USUARIO_BASICO) {
+if (!isset($_SESSION["conectado"])<span class="codigo-resaltado"> || $_SESSION["nivel"] &lt; NIVEL_USUARIO_BASICO</span>) {
     header("Location:../../index.php");
     exit;
 }</code>
 </pre>
             </div>
           </li>
-          <li>[biblioteca.php] En la función cabecera añadimos los menús permitidos al usuario básico:
+          <li>[biblioteca.php]
+            <p>En la función cabecera añadimos los menús permitidos al usuario básico:</p>
             <div class="codigo">
               <pre>
 <code class="language-php">       ...
@@ -836,7 +1060,9 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; NIVEL_USUARIO_BASI
       <li>db/tabla-usuarios
         <p>Debemos añadir en las diferentes páginas el campo nivel. Por ejemplo:</p>
         <ul>
-          <li>[insertar-1.php] El nivel se puede elegir con un cuadro de selección (que incluya automáticamente todos los niveles, por si en el futuro se incluyen más niveles):
+          <li>[insertar-1.php]
+            <p>El nivel se puede elegir con un cuadro de selección (que incluya automáticamente todos los niveles, por si en el futuro se incluyen más niveles):</p>
+
             <div class="codigo">
               <pre>
 <code class="language-php">    print "          &lt;tr&gt;\n";
@@ -852,45 +1078,34 @@ if (!isset($_SESSION["conectado"]) || $_SESSION["nivel"] &lt; NIVEL_USUARIO_BASI
 </pre>
             </div>
           </li>
-          <li>[insertar-2.php] Hay que comprobar que el nivel es uno de los existentes:
+          <li>[insertar-2.php]
+            <p>Recogemos el nivel indicando los valores permitidos y dando como valor predeterminado el usuario básico:</p>
+
             <div class="codigo">
               <pre>
-<code class="language-php">$nivel    = recoge("nivel");
+<code class="language-php">$nivel    = recoge("nivel", default: NIVEL_USUARIO_BASICO, allowed: $cfg["usuariosNivelesValores"] );
 ...
-$nivelOk    = false;
-...
-if ($nivel == "") {
-    print "    &lt;p class=\"aviso\"&gt;Hay que seleccionar un nivel de usuario.&lt;/p&gt;\n";
-    print "\n";
-} elseif (!array_key_exists($nivel, $cfg["usuariosNiveles"])) {
-    print "    &lt;p class=\"aviso\"&gt;Nivel de usuario incorrecto.&lt;/p&gt;\n";
-    print "\n";
-} else {
-    $nivelOk = true;
-}
+// Si todas las comprobaciones han tenido éxito ...
+if ($usuarioOk && $passwordOk && $registroDistintoOk && $limiteRegistrosOk) {
+    // Insertamos el registro en la tabla
+    $consulta = "INSERT INTO $cfg[tablaUsuarios]
+                 (usuario, password, nivel)
+                 VALUES (:usuario, :password, $nivel)";
 
-if ($usuarioOk && $passwordOk && $nivelOk) {
-    if ($usuario == "" || $password == "" || $nivel == "") {
-        print "    &lt;p&gt;Hay que rellenar todos los campos. No se ha guardado el registro.&lt;/p&gt;\n";
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":password" =&gt; encripta($password)])) {
+        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
     } else {
-        ...
-            $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                         (usuario, password, nivel)
-                         VALUES (:usuario, :password, :nivel)";
-
-            $resultado = $pdo-&gt;prepare($consulta);
-            if (!$resultado) {
-                print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-            } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":password" =&gt; encripta($password), ":nivel" =&gt; $nivel])) {
-                print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-            } else {
-                print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
-            }
-        ...</code>
+        print "    &lt;p&gt;Registro creado correctamente.&lt;/p&gt;\n";
+    }
+}</code>
 </pre>
             </div>
           </li>
-          <li>[listar.php] Al listar se muestra el texto, no el valor numérico del nivel:
+          <li>[listar.php]
+            <p>Al listar se muestra el texto, no el valor numérico del nivel:</p>
             <div class="codigo">
               <pre>
 <code class="language-php">...
@@ -905,7 +1120,9 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
 </pre>
             </div>
           </li>
-          <li>[buscar-1.php] En el menú de selección del nivel de usuario incluimos como primera opción una opción vacía para indicar que nos da igual el nivel de usuario:
+          <li>[buscar-1.php]
+            <p>En el menú de selección del nivel de usuario incluimos como primera opción una opción vacía para indicar que nos da igual el nivel de usuario:</p>
+
             <div class="codigo">
               <pre>
 <code class="language-php">    print "          &lt;tr&gt;\n";
@@ -922,19 +1139,43 @@ if ($usuarioOk && $passwordOk && $nivelOk) {
 </pre>
             </div>
           </li>
-          <li>[buscar-2.php] Para poder hacer una búsqueda con comodines, algunos sistemas gestores de bases de datos (como PostgreSQL) necesitan que el campo sea de tipo texto. Como nivel es de tipo numérico, debemos hacer la conversión (SQLite o MySQL no la necesitan, pero la admiten):
+          <li>[buscar-2.php]
+            <p>En esta página el nivel puede ser una cadena vacía (que signifca que buscamos usuarios con cualquier nivel). El valor cadena vacía debe incluirse en la matriz allowed. Normalmente, los valores permitidos para el nivel son los de la matriz $cfg["usuariosNivelesValores"], así que añadiremos ese valor a la matriz con la función <a href="../../../lecciones/php-matrices-funciones.html#array-merge"><span class="php-fun">array_merge()</span></a>:</p>
+
             <div class="codigo">
               <pre>
-<code class="language-php">$consulta = "SELECT * FROM $cfg[tablaUsuarios]
-             WHERE usuario LIKE :usuario
-             AND CAST(nivel AS VARCHAR) LIKE :nivel
-             ORDER BY $ordena";
+<code class="language-php">$nivel    = recoge("nivel", default: "", allowed: <span class="codigo-resaltado">array_merge($cfg["usuariosNivelesValores"], [""])</span>);</code>
+</pre>
+            </div>
 
-$resultado = $pdo-&gt;prepare($consulta);
-if (!$resultado) {
-    print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-} elseif (!$resultado-&gt;execute([":usuario" =&gt; "%$usuario%", ":nivel" =&gt; "%$nivel%"])) {
+            <p>Para poder hacer una búsqueda con comodines, algunos sistemas gestores de bases de datos (como PostgreSQL) necesitan que el campo sea de tipo texto. Como nivel es de tipo numérico, debemos hacer la conversión (SQLite o MySQL no la necesitan, pero la admiten):</p>
+
+            <div class="codigo">
+              <pre>
+<code class="language-php">    $consulta = "SELECT * FROM $cfg[tablaUsuarios]
+                 WHERE usuario LIKE :usuario
+                 AND CAST(nivel AS VARCHAR) LIKE '%$nivel%'
+                 ORDER BY $ordena";
+
+    $resultado = $pdo-&gt;prepare($consulta);
+    if (!$resultado) {
+        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+    } elseif (!$resultado-&gt;execute([":usuario" =&gt; "%$usuario%"])) {
     ...</code>
+</pre>
+            </div>
+          </li>
+          <li>[Modificar-2.php]
+            <p>Al mostrar los valores de los campos, el campo nivel es un menú <span class="html-eti">&lt;select&gt;</span>. Para que se muestre la opción correspondiente al nivel actual del usuario debemos añadir el atributo <span class="html-atri">selected</span> al <span class="html-eti">&lt;option&gt;</span> correspondiente:</p>
+            <div class="codigo">
+              <pre>
+<code class="language-php">        foreach ($cfg["usuariosNiveles"] as $indice =&gt; $valor) {
+            if ($registro["nivel"] == $indice) {
+                print "                &lt;option value=\"$indice\" selected&gt;$valor&lt;/option&gt;\n";
+            } else {
+                print "                &lt;option value=\"$indice\"&gt;$valor&lt;/option&gt;\n";
+            }
+        }</code>
 </pre>
             </div>
           </li>
@@ -945,34 +1186,41 @@ if (!$resultado) {
 
   <section id="ejercicio-5">
     <h2>Bases de datos (3) - 5 - Mejoras en la aplicación</h2>
-    <ol>
-      <li>Al borrar todo, ofrecer la opción de insertar automáticamente algunos registros de prueba.
-        <ul>
-          <li>[administrador/borrar-todo-1.php]
-            <p>Podemos incluir un control para que el usuario indique si quiere incluir registros de prueba en la base de datos ...</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">print "      &lt;p&gt;&lt;label&gt;&lt;input type=\"checkbox\" name=\"demo\" value=\"Sí\"&gt; Incluir datos de prueba&lt;/label&gt;&lt;/p&gt;\n";</code>
+
+    <h3>Al borrar todo, ofrecer la opción de insertar automáticamente algunos registros de prueba.</h3>
+
+    <ul>
+      <li>[administrador/borrar-todo-1.php]
+        <p>Podemos incluir un control para que el usuario indique si quiere incluir registros de prueba en la base de datos ...</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">print "      &lt;p&gt;Por favor, confirme que desea borrar todos los datos de la base de datos.&lt;/p&gt;\n";
+print "\n";
+print "      &lt;p&gt;También puede incluir en la base de datos unos datos de prueba.&lt;/p&gt;\n";
+print "\n";
+print "      &lt;p&gt;&lt;label&gt;&lt;input type=\"checkbox\" name=\"demo\" value=\"Sí\"&gt; Incluir datos de prueba&lt;/label&gt;&lt;/p&gt;\n";
+print "\n";
+print "      &lt;p&gt;Haga clic en Sí para borrar todos los datos.&lt;/p&gt;\n";</code>
 </pre>
-            </div>
-          </li>
-          <li>[administrador/borrar-todo-2.php]
-            <p>... recogerlo y en caso afirmativo, llamar a una función que incluya los registros de prueba:</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">$demo   = recoge("demo");
+        </div>
+      </li>
+      <li>[administrador/borrar-todo-2.php]
+        <p>... recogerlo y en caso afirmativo, llamar a una función que incluya los registros de prueba:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">$demo   = recoge("demo", default: "No", allowed: ["No", "Sí"]);
 ...
 
 if ($demo == "Sí") {
     insertaDemo();
 }</code>
 </pre>
-            </div>
-          </li>
-          <li>[comunes/demo.php]
-            <p>Podemos indicar los registros a crear en una matriz e insertarlos recorriendo la matriz. En el ejemplo, los registros incluyen incluso el valor del id. En este caso no es necesario, pero sí lo sería si los registros de una tabla hicieran referencia a los registros de otra tabla, como ocurre en el ejercicio 4, por lo que preparamos ya el código para esa situación.</p>
-            <div class="codigo">
-              <pre>
+        </div>
+      </li>
+      <li>[comunes/demo.php]
+        <p>Podemos indicar los registros a crear en una matriz e insertarlos recorriendo la matriz. En el ejemplo, los registros incluyen incluso el valor del id. En este caso no es necesario, pero sí lo sería si los registros de una tabla hicieran referencia a los registros de otra tabla, como ocurre en el ejercicio 4, por lo que preparamos ya el código para esa situación.</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">// Registros de prueba opcionales
 
 $cfg["registrosDemo"] = [
@@ -1010,16 +1258,17 @@ function insertaDemo()
     }
 }</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+        </div>
       </li>
-      <li>En SQLite, si no existe el directorio donde se quiere guardar la base de datos, mostrar un mensaje indicando el problema.
-        <ul>
-          <li>[comunes/biblioteca-sqlite.php]
-            <p>Podemos aplicar la función <a href="https://www.php.net/manual/en/function.dirname.php"><span class="php-fun">dirname()</span></a>, que devuelve el camino padre (en este caso, elimina el nombre del archivo), a la variable de configuración $cfg["sqliteDatabase"]. Y a su resultado la función <a href="https://www.php.net/manual/en/function.is-dir.php"><span class="php-fun">is_dir()</span></a>, que indica si el camino es un directorio (es decir, si existe).</p>
-            <div class="codigo">
-              <pre>
+    </ul>
+
+    <h3>En SQLite, si no existe el directorio donde se quiere guardar la base de datos, mostrar un mensaje indicando el problema.</h3>
+
+    <ul>
+      <li>[comunes/biblioteca-sqlite.php]
+        <p>Podemos aplicar la función <a href="https://www.php.net/manual/en/function.dirname.php"><span class="php-fun">dirname()</span></a>, que devuelve el camino padre (en este caso, elimina el nombre del archivo), a la variable de configuración $cfg["sqliteDatabase"]. Y a su resultado la función <a href="https://www.php.net/manual/en/function.is-dir.php"><span class="php-fun">is_dir()</span></a>, que indica si el camino es un directorio (es decir, si existe).</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">function conectaDb()
 {
     global $cfg;
@@ -1030,82 +1279,90 @@ function insertaDemo()
     } else {
         ...</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+        </div>
       </li>
-      <li>Al modificar el registro de un usuario, ofrecer la posibilidad de mantener la contraseña (por ejemplo, marcando una casilla).
-        <ul>
-          <li>[db/tabla-usuarios/modificar-2.php]
-            <p>En el formulario incluimos una casilla de verificación ...</p>
-            <div class="codigo">
-              <pre>
+    </ul>
+
+    <h3>Al modificar el registro de un usuario, ofrecer la posibilidad de mantener la contraseña (por ejemplo, marcando una casilla).</h3>
+
+    <ul>
+      <li>[db/tabla-usuarios/modificar-2.php]
+        <p>En el formulario incluimos una casilla de verificación ...</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">        print "          &lt;tr&gt;\n";
         print "            &lt;td&gt;Contraseña:&lt;/td&gt;\n";
         print "            &lt;td&gt;\n";
-        print "              &lt;input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosTamPassword]\"&gt;\n";
+        print "              &lt;input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosMaxPassword]\"&gt;\n";
         print "              &lt;input type=\"checkbox\" name=\"mantenerPassword\" value=\"Sí\"&gt; Mantener contraseña actual\n";
         print "            &lt;/td&gt;\n";
         print "          &lt;/tr&gt;\n";</code>
 </pre>
-            </div>
-          </li>
-          <li>[db/tabla-usuarios/modificar-3.php]
-            <p>... recogemos el control y en función de su valor mantenemos o cambiamos la contraseña:</p>
-            <div class="codigo">
-              <pre>
-<code class="language-php">$mantenerPassword = recoge("mantenerPassword");
+        </div>
+      </li>
+      <li>[db/tabla-usuarios/modificar-3.php]
+        <p>... recogemos el control y en función de su valor mantenemos o cambiamos la contraseña:</p>
+        <div class="codigo">
+          <pre>
+<code class="language-php">$mantenerPassword = recoge("mantenerPassword", default: "No", allowed: ["No", "Sí"]);
 ...
-                } elseif ($mantenerPassword == "Sí") {
-                    $consulta = "UPDATE $cfg[tablaUsuarios]
-                                 SET usuario = :usuario, nivel = :nivel
-                                 WHERE id = :id";
+// Si todas las comprobaciones han tenido éxito ...
+if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDistintoOk && $registroNoRootOk) {
+    // Si nos han pedido mantener la contraseña del usuario
+    if ($mantenerPassword == "Sí") {
+        // Actualizamos el registro con los datos recibidos (excepto la contraseña)
+        $consulta = "UPDATE $cfg[tablaUsuarios]
+                     SET usuario = :usuario, nivel = $nivel
+                     WHERE id = :id";
 
-                    $resultado = $pdo-&gt;prepare($consulta);
-                    if (!$resultado) {
-                        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-                    } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":nivel" =&gt; $nivel, ":id" =&gt; $id])) {
-                        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-                    } else {
-                        print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
-                    }
-                } else {
-                    $consulta = "UPDATE $cfg[tablaUsuarios]
-                                 SET usuario = :usuario, password = :password, nivel = :nivel
-                                 WHERE id = :id";
-                    $resultado = $pdo-&gt;prepare($consulta);
-                    if (!$resultado) {
-                        print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-                    } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":password" =&gt; encripta($password), ":nivel" =&gt; $nivel, ":id" =&gt; $id])) {
-                        print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
-                    } else {
-                        print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
-                    }
+        $resultado = $pdo-&gt;prepare($consulta);
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":id" =&gt; $id])) {
+            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } else {
+            print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+        }
+    } else {
+        // Y si no actualizamos el registro con los datos recibidos (incluida la contraseña)
+        $consulta = "UPDATE $cfg[tablaUsuarios]
+                     SET usuario = :usuario, password = :password, nivel = $nivel
+                     WHERE id = :id";
+
+        $resultado = $pdo-&gt;prepare($consulta);
+        if (!$resultado) {
+            print "    &lt;p class=\"aviso\"&gt;Error al preparar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } elseif (!$resultado-&gt;execute([":usuario" =&gt; $usuario, ":password" =&gt; encripta($password), ":id" =&gt; $id])) {
+            print "    &lt;p class=\"aviso\"&gt;Error al ejecutar la consulta. SQLSTATE[{$pdo-&gt;errorCode()}]: {$pdo-&gt;errorInfo()[2]}&lt;/p&gt;\n";
+        } else {
+            print "    &lt;p&gt;Registro modificado correctamente.&lt;/p&gt;\n";
+        }
+    }
+}
 </code>
 </pre>
-            </div>
-          </li>
-        </ul>
+        </div>
       </li>
-      <li>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["tablaPersonasMaxReg"] o $cfg["tablaUsuariosMaxReg"] es 0 o negativo.
-        <ul>
-          <li>[db/tabla-personas/insertar-1.php, db/tabla-personas/insertar-2.php, db/tabla-usuarios/insertar-1.php, db/tabla-usuarios/insertar-2.php]
-            <p>Modificamos la condición de superación del número máximo de registros para que no se cumpla si la variable de configuración no es mayor que 0:</p>
-            <div class="codigo">
-              <pre>
+    </ul>
+
+    <h3>Hacer que no se aplique el límite del número de registros en las tablas si el valor de $cfg["tablaPersonasMaxReg"] o $cfg["tablaUsuariosMaxReg"] es 0 o negativo.</h3>
+
+    <ul>
+      <li>[db/tabla-personas/insertar-1.php, db/tabla-personas/insertar-2.php, db/tabla-usuarios/insertar-1.php, db/tabla-usuarios/insertar-2.php]
+        <p>Modificamos la condición de superación del número máximo de registros para que no se cumpla si la variable de configuración no es mayor que 0:</p>
+        <div class="codigo">
+          <pre>
 <code class="language-php">    ...
-} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["tablaUsuariosMaxReg"] && $cfg["tablaUsuariosMaxReg"] &gt; 0) {
+} elseif ($resultado-&gt;fetchColumn() &gt;= $cfg["tablaUsuariosMaxReg"] <span class="codigo-resaltado">&& $cfg["tablaUsuariosMaxReg"] &gt; 0</span>) {
     ...</code>
 </pre>
-            </div>
-          </li>
-        </ul>
+        </div>
       </li>
-    </ol>
+    </ul>
   </section>
 
   <footer>
-    <p class="ultmod">Última modificación de esta página: 20 de abril de 2023</p>
+    <p class="ultmod">Última modificación de esta página: 2 de febrero de 2024</p>
 
     <p class="licencia">
       <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"><img src="../../../varios/iconos/icono-cc-by-sa.svg" alt="Licencia Creative Commons" title="Licencia Creative Commons BY-SA" width="120" height="42"></a><br>
