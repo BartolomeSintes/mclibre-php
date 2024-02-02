@@ -123,13 +123,13 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDist
     if ($mantenerPassword == "Sí") {
         // Actualizamos el registro con los datos recibidos (excepto la contraseña)
         $consulta = "UPDATE $cfg[tablaUsuarios]
-                     SET usuario = :usuario, nivel = :nivel
+                     SET usuario = :usuario, nivel = $nivel
                      WHERE id = :id";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
             print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif (!$resultado->execute([":usuario" => $usuario, ":nivel" => $nivel, ":id" => $id])) {
+        } elseif (!$resultado->execute([":usuario" => $usuario, ":id" => $id])) {
             print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Registro modificado correctamente.</p>\n";
@@ -137,13 +137,13 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDist
     } else {
         // Y si no actualizamos el registro con los datos recibidos (incluida la contraseña)
         $consulta = "UPDATE $cfg[tablaUsuarios]
-                     SET usuario = :usuario, password = :password, nivel = :nivel
+                     SET usuario = :usuario, password = :password, nivel = $nivel
                      WHERE id = :id";
 
         $resultado = $pdo->prepare($consulta);
         if (!$resultado) {
             print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel, ":id" => $id])) {
+        } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password), ":id" => $id])) {
             print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
             print "    <p>Registro modificado correctamente.</p>\n";

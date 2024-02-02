@@ -52,6 +52,7 @@ if ($usuarioOk) {
         $registrosEncontradosOk = true;
     }
 }
+
 // Si todas las comprobaciones han tenido éxito ...
 if ($usuarioOk && $registrosEncontradosOk) {
     // Seleccionamos todos los registros con las condiciones de búsqueda recibidas

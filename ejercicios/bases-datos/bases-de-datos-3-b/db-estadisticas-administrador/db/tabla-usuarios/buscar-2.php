@@ -38,7 +38,8 @@ $registrosEncontradosOk = false;
 
 if ($usuarioOk) {
     $consulta = "SELECT COUNT(*) FROM $cfg[tablaUsuarios]
-                 WHERE usuario LIKE :usuario";
+                 WHERE usuario LIKE :usuario
+                 AND CAST(nivel AS VARCHAR) LIKE '%$nivel%'";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
@@ -51,18 +52,19 @@ if ($usuarioOk) {
         $registrosEncontradosOk = true;
     }
 }
+
 // Si todas las comprobaciones han tenido éxito ...
 if ($usuarioOk && $registrosEncontradosOk) {
     // Seleccionamos todos los registros con las condiciones de búsqueda recibidas
     $consulta = "SELECT * FROM $cfg[tablaUsuarios]
                  WHERE usuario LIKE :usuario
-                 AND CAST(nivel AS VARCHAR) LIKE :nivel
+                 AND CAST(nivel AS VARCHAR) LIKE '%$nivel%'
                  ORDER BY $ordena";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif (!$resultado->execute([":usuario" => "%$usuario%", ":nivel" => "%$nivel%"])) {
+    } elseif (!$resultado->execute([":usuario" => "%$usuario%"])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <form action=\"$_SERVER[PHP_SELF]\" method=\"$cfg[formMethod]\">\n";

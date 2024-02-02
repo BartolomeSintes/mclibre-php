@@ -86,12 +86,12 @@ if ($usuarioOk && $passwordOk && $registroDistintoOk && $limiteRegistrosOk) {
     // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password, nivel)
-                 VALUES (:usuario, :password, :nivel)";
+                 VALUES (:usuario, :password, $nivel)";
 
     $resultado = $pdo->prepare($consulta);
     if (!$resultado) {
         print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-    } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password), ":nivel" => $nivel])) {
+    } elseif (!$resultado->execute([":usuario" => $usuario, ":password" => encripta($password)])) {
         print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
         print "    <p>Registro creado correctamente.</p>\n";
