@@ -31,10 +31,10 @@ $password  = recoge("password");
 $password2 = recoge("password2");
 
 if (!$usuario) {
-    header("Location:registrar-1.php?aviso=Error: Nombre de usuario no permitido");
+    header("Location:registrar-1.php?aviso=Error: Nombre de usuario no permitido.");
     exit;
 } elseif ($password != $password2) {
-    header("Location:registrar-1.php?aviso=Error: Las contraseñas no coinciden");
+    header("Location:registrar-1.php?aviso=Error: Las contraseñas no coinciden.");
     exit;
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
@@ -45,7 +45,7 @@ if (!$usuario) {
         print "    <p>Error en la consulta.</p>";
         print "\n";
     } elseif ($result->fetchColumn() != 0) {
-        header("Location:registrar-1.php?aviso=Error: El nombre de usuario ya está registrado");
+        header("Location:registrar-1.php?aviso=Error: El nombre de usuario ya está registrado.");
         exit;
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios";
@@ -55,7 +55,7 @@ if (!$usuario) {
             print "    <p>Error en la consulta.</p>";
             print "\n";
         } elseif ($result->fetchColumn() >= MAX_REG_USUARIOS) {
-            header("Location:registrar-1.php?aviso=Error: Se ha alcanzado el número máximo de usuarios");
+            header("Location:registrar-1.php?aviso=Error: Se ha alcanzado el número máximo de usuarios.");
             exit;
         } else {
             $consulta = "INSERT INTO $dbUsuarios

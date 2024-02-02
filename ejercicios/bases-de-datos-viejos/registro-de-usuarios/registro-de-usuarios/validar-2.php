@@ -38,10 +38,10 @@ if (isset($_SESSION["multiagendaUsuario"])) {
 } else {
     session_destroy();
     if (!$usuario|| ($usuario == MENU_PRINCIPAL)) {
-        header("Location:index.php?aviso=Nombre de usuario no permitido");
+        header("Location:index.php?aviso=Nombre de usuario no permitido.");
         exit;
     } elseif ($password != md5($password2)) {
-        header("Location:index.php?aviso=Error: Las contraseñas no coinciden");
+        header("Location:index.php?aviso=Error: Las contraseñas no coinciden.");
         exit;
     } else {
         $consulta = "SELECT COUNT(*) FROM $dbUsuarios

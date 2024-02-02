@@ -30,7 +30,7 @@ $usuario  = recoge("usuario");
 $password = recoge("password");
 
 if (!$usuario|| ($usuario == MENU_PRINCIPAL)) {
-    header("Location:index.php?aviso=Nombre de usuario no permitido");
+    header("Location:index.php?aviso=Nombre de usuario no permitido.");
     exit;
 } else {
     $consulta = "SELECT COUNT(*) FROM $dbUsuarios
@@ -90,7 +90,7 @@ if (!$usuario|| ($usuario == MENU_PRINCIPAL)) {
                 header("Location:index.php");
                 exit;
             } else {
-                header("Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta");
+                header("Location:index.php?aviso=El usuario ya existe, pero la contraseña no es correcta.");
                 exit;
             }
         }

@@ -20,7 +20,7 @@ $password = recoge("password");
 $db = conectaDb();
 
 if ($usuario == "") {
-    header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido");
+    header("Location:login-1.php?aviso=Error: Nombre de usuario no permitido.");
     exit;
 }
 
@@ -29,13 +29,13 @@ $consulta = "SELECT * FROM $tablaUsuarios
 $result = $db->prepare($consulta);
 $result->execute([":usuario" => $usuario]);
 if (!$result) {
-    header("Location:login-1.php?aviso=Error: Error en la consulta");
+    header("Location:login-1.php?aviso=Error: Error en la consulta.");
     exit;
 }
 
 $valor = $result->fetch();
 if ($valor["password"] != encripta($password)) {
-    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
+    header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos.");
     exit;
 }
 

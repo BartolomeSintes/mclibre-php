@@ -35,7 +35,7 @@ if (isset($_SESSION["id"])) {
     $password  = recoge("password");
 
     if (!$usuario) {
-        header("Location:conectar-1.php?aviso=Error: Nombre de usuario no permitido");
+        header("Location:conectar-1.php?aviso=Error: Nombre de usuario no permitido.");
         exit;
     } else {
         $consulta = "SELECT * FROM $dbTablaUsuariosWeb
@@ -54,7 +54,7 @@ if (isset($_SESSION["id"])) {
                 header("Location:../index.php");
                 exit;
             } else {
-                header("Location:conectar-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
+                header("Location:conectar-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos.");
                 exit;
             }
         }

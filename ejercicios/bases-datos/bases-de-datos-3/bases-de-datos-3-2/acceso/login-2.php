@@ -39,7 +39,7 @@ $passwordCorrectoOk = false;
 
 if ($usuarioOk && $passwordOk) {
     if ($usuario != $cfg["rootName"] || encripta($password) != $cfg["rootPassword"]) {
-        header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos");
+        header("Location:login-1.php?aviso=Error: Nombre de usuario y/o contraseña incorrectos.");
     } else {
         $passwordCorrectoOk = true;
     }
