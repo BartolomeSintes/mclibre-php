@@ -81,7 +81,9 @@ if ($usuarioOk && $passwordOk && $registroDistintoOk) {
     }
 }
 
+// Si todas las comprobaciones han tenido éxito ...
 if ($usuarioOk && $passwordOk && $registroDistintoOk && $limiteRegistrosOk) {
+    // Insertamos el registro en la tabla
     $consulta = "INSERT INTO $cfg[tablaUsuarios]
                  (usuario, password, nivel)
                  VALUES (:usuario, :password, $nivel)";
