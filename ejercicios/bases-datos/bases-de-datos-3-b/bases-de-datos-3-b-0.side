@@ -1,112 +1,34 @@
 {
     "id": "mclibre-bases-de-datos-3-b-0-tests",
-    "version": "2.0",
-    "name": "bases-de-datos-3-b-0",
+    "version": "2024-02-05",
+    "name": "Test ejercicio Bases de datos (3 B) 0",
     "url": "http://localhost",
     "tests": [
         {
-            "id": "configuracion",
-            "name": "Configuración",
-            "comment": "Define variables de configuración",
+            "id": "test-completo",
+            "name": "Test ejercicio Bases de datos (3 B) 0",
+            "comment": "Comprueba todo",
             "commands": [
                 {
-                    "id": "configuracion-1",
+                    "id": "definiciones-generales-1",
                     "command": "store",
                     "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-3-b/bases-de-datos-3-b-0",
                     "value": "urlBase"
                 },
                 {
-                    "id": "configuracion-2",
-                    "command": "store",
-                    "target": "Bases de datos (3 B) 0 -",
-                    "value": "h1Base"
+                    "id": "inicio-1",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": "",
+                    "comment": "Abre página Inicio."
                 },
                 {
-                    "id": "configuracion-3",
-                    "command": "store",
-                    "target": "1000",
-                    "value": "maxEspera"
-                }
-            ]
-        },
-        {
-            "id": "definiciones-generales",
-            "name": "Variables General",
-            "comment": "Define variables",
-            "commands": [
-                {
-                    "id": "definiciones-generales-1",
-                    "command": "store",
-                    "target": "${urlBase}/db/tabla-personas",
-                    "value": "urlPersonas"
+                    "id": "inicio-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "20000",
+                    "comment": "Abre página Inicio. Título h1 correcto."
                 },
-                {
-                    "id": "definiciones-generales-2",
-                    "command": "store",
-                    "target": "${h1Base} Administrador -",
-                    "value": "h1Administrador"
-                },
-                {
-                    "id": "definiciones-generales-3",
-                    "command": "store",
-                    "target": "${h1Base} Personas -",
-                    "value": "h1Personas"
-                },
-                {
-                    "id": "definiciones-generales-4",
-                    "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4",
-                    "value": "personasNombreCorto"
-                },
-                {
-                    "id": "definiciones-generales-5",
-                    "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4a",
-                    "value": "personasNombreLargo"
-                },
-                {
-                    "id": "definiciones-generales-6",
-                    "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6",
-                    "value": "personasApellidosCorto"
-                },
-                {
-                    "id": "definiciones-generales-7",
-                    "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
-                    "value": "personasApellidosLargo"
-                },
-                {
-                    "id": "definiciones-generales-8",
-                    "command": "store",
-                    "target": "0123456789",
-                    "value": "personasTelefonoCorto"
-                },
-                {
-                    "id": "definiciones-generales-9",
-                    "command": "store",
-                    "target": "01234567890",
-                    "value": "personasTelefonoLargo"
-                },
-                {
-                    "id": "definiciones-generales-10",
-                    "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5",
-                    "value": "personasCorreoCorto"
-                },
-                {
-                    "id": "definiciones-generales-11",
-                    "command": "store",
-                    "target": "abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5a",
-                    "value": "personasCorreoLargo"
-                }
-            ]
-        },
-        {
-            "id": "preparacion-desconexion-inicial",
-            "name": "Desconexión inicial",
-            "comment": "Se desconecta haciendo clic en Desconectar (si existe).",
-            "commands": [
                 {
                     "id": "preparacion-desconexion-inicial-1",
                     "command": "executeScript",
@@ -136,14 +58,7 @@
                     "command": "assertText",
                     "target": "xpath=//li[1]/a[1]",
                     "value": "Conectarse"
-                }
-            ]
-        },
-        {
-            "id": "preparacion-borrar-todo-con",
-            "name": "Conexión como root",
-            "comment": "Se conecta como root / root. Abre Administrador > Borrar todo.",
-            "commands": [
+                },
                 {
                     "id": "preparacion-borrar-todo-con-1",
                     "command": "click",
@@ -153,8 +68,9 @@
                 {
                     "id": "preparacion-borrar-todo-con-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Base} Login 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Login 1\"]",
+                    "value": "1000",
+                    "comment": "Abre página Login 1. Título h1 correcto."
                 },
                 {
                     "id": "preparacion-borrar-todo-con-3",
@@ -177,16 +93,10 @@
                 {
                     "id": "preparacion-borrar-todo-con-6",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
-                    "value": "${maxEspera}"
-                }
-            ]
-        },
-        {
-            "id": "borrar-todo",
-            "name": "Borrar Todo",
-            "comment": "Borra todo.",
-            "commands": [
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Abre página Inicio. Título h1 correcto."
+                },
                 {
                     "id": "borrar-todo-1",
                     "command": "click",
@@ -196,8 +106,9 @@
                 {
                     "id": "borrar-todo-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Administrador} Inicio\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Administrador - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Abre página Administrador > Inicio. Título h1 correcto."
                 },
                 {
                     "id": "borrar-todo-3",
@@ -208,20 +119,22 @@
                 {
                     "id": "borrar-todo-4",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Administrador} Borrar todo 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Administrador - Borrar todo 1\"]",
+                    "value": "1000",
+                    "comment": "Abre página Administrador > Borrar todo 1. Título h1 correcto."
                 },
                 {
                     "id": "borrar-todo-5",
                     "command": "click",
-                    "target": "xpath=/html/body/main/form/p[5]/input[1]",
+                    "target": "xpath=//input[@value='Sí' and @name='borrar']",
                     "value": ""
                 },
                 {
                     "id": "borrar-todo-6",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Administrador} Borrar todo 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Administrador - Borrar todo 2\"]",
+                    "value": "1000",
+                    "comment": "Abre página Administrador > Borrar todo 2. Título h1 correcto."
                 },
                 {
                     "id": "borrar-todo-7",
@@ -239,31 +152,36 @@
                     "id": "borrar-todo-9",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
-                    "value": "Tabla Usuarios borrada correctamente (si existía)."
+                    "value": "Tabla Usuarios borrada correctamente (si existía).",
+                    "comment": "Ha borrado la tabla Usuarios en SQLite."
                 },
                 {
                     "id": "borrar-todo-10",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
-                    "value": "Tabla Personas borrada correctamente (si existía)."
+                    "value": "Tabla Personas borrada correctamente (si existía).",
+                    "comment": "Ha borrado la tabla Personas en SQLite."
                 },
                 {
                     "id": "borrar-todo-11",
                     "command": "assertText",
                     "target": "xpath=//p[4]",
-                    "value": "Tabla Usuarios creada correctamente."
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Ha creado la tabla Usuarios en SQLite."
                 },
                 {
                     "id": "borrar-todo-12",
                     "command": "assertText",
                     "target": "xpath=//p[5]",
-                    "value": "Registro de usuario creado correctamente."
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Ha creado un registro de usuario en SQLite."
                 },
                 {
                     "id": "borrar-todo-13",
                     "command": "assertText",
                     "target": "xpath=//p[6]",
-                    "value": "Tabla Personas creada correctamente."
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Ha creado la tabla Personas en SQLite."
                 },
                 {
                     "id": "borrar-todo-14",
@@ -275,43 +193,50 @@
                     "id": "borrar-todo-15",
                     "command": "assertText",
                     "target": "xpath=//p[1]",
-                    "value": "Sistema Gestor de Bases de Datos: MySQL."
+                    "value": "Sistema Gestor de Bases de Datos: MySQL.",
+                    "comment": "Seleccionado Sistema Gestor de Bases de Datos MySQL/MariaDB."
                 },
                 {
                     "id": "borrar-todo-16",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
-                    "value": "Base de datos borrada correctamente (si existía)."
+                    "value": "Base de datos borrada correctamente (si existía).",
+                    "comment": "Ha borrado la base de datos en MySQL/MariaDB."
                 },
                 {
                     "id": "borrar-todo-17",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
-                    "value": "Base de datos creada correctamente."
+                    "value": "Base de datos creada correctamente.",
+                    "comment": "Ha creado la base de datos en MySQL/MariaDB."
                 },
                 {
                     "id": "borrar-todo-18",
                     "command": "assertText",
                     "target": "xpath=//p[4]",
-                    "value": "Tabla Usuarios seleccionada correctamente."
+                    "value": "Base de datos seleccionada correctamente.",
+                    "comment": "Ha seleccionado la base de datos en MySQL/MariaDB."
                 },
                 {
                     "id": "borrar-todo-19",
                     "command": "assertText",
                     "target": "xpath=//p[5]",
-                    "value": "Tabla Usuarios creada correctamente."
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Ha creado la tabla Usuarios en MySQL/MariaDB."
                 },
                 {
                     "id": "borrar-todo-20",
                     "command": "assertText",
                     "target": "xpath=//p[6]",
-                    "value": "Registro de usuario creado correctamente."
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Ha creado un registro de usuario en MySQL/MariaDB."
                 },
                 {
                     "id": "borrar-todo-21",
                     "command": "assertText",
                     "target": "xpath=//p[7]",
-                    "value": "Tabla Personas creada correctamente."
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Ha creado la tabla perdonas en MySQL/MariaDB."
                 },
                 {
                     "id": "borrar-todo-22",
@@ -328,16 +253,10 @@
                 {
                     "id": "borrar-todo-24",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
-                    "value": "${maxEspera}"
-                }
-            ]
-        },
-        {
-            "id": "sin-registros",
-            "name": "Personas > Sin registros",
-            "comment": "Prueba las opciones del menú Personas cuando no hay registros",
-            "commands": [
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Abre página Inicio. Título h1 correcto."
+                },
                 {
                     "id": "sin-registros-1",
                     "command": "click",
@@ -347,8 +266,8 @@
                 {
                     "id": "sin-registros-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Inicio\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Inicio\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "sin-registros-3",
@@ -359,14 +278,15 @@
                 {
                     "id": "sin-registros-4",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "sin-registros-5",
                     "command": "assertText",
                     "target": "xpath=//p",
-                    "value": "No se ha creado todavía ningún registro."
+                    "value": "No se ha creado todavía ningún registro.",
+                    "comment": "Muestra aviso: No se ha creado todavía ningún registro."
                 },
                 {
                     "id": "sin-registros-6",
@@ -377,14 +297,15 @@
                 {
                     "id": "sin-registros-7",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "sin-registros-8",
                     "command": "assertText",
                     "target": "xpath=//p",
-                    "value": "No se ha creado todavía ningún registro."
+                    "value": "No se ha creado todavía ningún registro.",
+                    "comment": "Muestra aviso: No se ha creado todavía ningún registro."
                 },
                 {
                     "id": "sin-registros-9",
@@ -395,14 +316,15 @@
                 {
                     "id": "sin-registros-10",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "sin-registros-11",
                     "command": "assertText",
                     "target": "xpath=//p",
-                    "value": "No se ha creado todavía ningún registro."
+                    "value": "No se ha creado todavía ningún registro.",
+                    "comment": "Muestra aviso: No se ha creado todavía ningún registro."
                 },
                 {
                     "id": "sin-registros-12",
@@ -413,22 +335,15 @@
                 {
                     "id": "sin-registros-13",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "sin-registros-14",
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "No se ha creado todavía ningún registro."
-                }
-            ]
-        },
-        {
-            "id": "insertar",
-            "name": "Personas > Añadir registro",
-            "comment": "Comprueba Personas > Añadir registro",
-            "commands": [
+                },
                 {
                     "id": "insertar-1-1",
                     "comment": "(TEST) Insertar > Inserta correctamente",
@@ -439,8 +354,8 @@
                 {
                     "id": "insertar-1-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "insertar-1-3",
@@ -475,8 +390,8 @@
                 {
                     "id": "insertar-1-8",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "insertar-1-9",
@@ -494,8 +409,8 @@
                 {
                     "id": "insertar-2-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "insertar-2-3",
@@ -506,8 +421,8 @@
                 {
                     "id": "insertar-2-4",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "insertar-2-5",
@@ -517,7 +432,7 @@
                 },
                 {
                     "id": "insertar-2-6",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
                     "value": "cuentaAvisos"
                 },
@@ -525,20 +440,21 @@
                     "id": "insertar-2-7",
                     "command": "assert",
                     "target": "cuentaAvisos",
-                    "value": "1"
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso."
                 },
                 {
                     "id": "insertar-3-1",
                     "comment": "(TEST) Insertar > Avisos individuales Nombre / Apellidos / Teléfono / Correo largos",
                     "command": "open",
-                    "target": "${urlPersonas}/insertar-2.php?nombre=${personasNombreLargo}&apellidos=${personasApellidosLargo}&telefono=${personasTelefonoLargo}&correo=${personasCorreoLargo}",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&apellidos=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a&telefono=1234567890123456&correo=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5a",
                     "value": ""
                 },
                 {
                     "id": "insertar-3-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "insertar-3-3",
@@ -556,7 +472,7 @@
                     "id": "insertar-3-5",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
-                    "value": "El teléfono no puede tener más de 10 caracteres."
+                    "value": "El teléfono no puede tener más de 15 caracteres."
                 },
                 {
                     "id": "insertar-3-6",
@@ -566,7 +482,7 @@
                 },
                 {
                     "id": "insertar-3-7",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
                     "value": "cuentaAvisos"
                 },
@@ -574,20 +490,21 @@
                     "id": "insertar-3-8",
                     "command": "assert",
                     "target": "cuentaAvisos",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "Muestra exactamente 4 avisos."
                 },
                 {
                     "id": "insertar-4-1",
                     "comment": "(TEST) Insertar > Inserta un registro directamente",
                     "command": "open",
-                    "target": "${urlPersonas}/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
                     "value": ""
                 },
                 {
                     "id": "insertar-4-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "insertar-4-3",
@@ -599,28 +516,21 @@
                     "id": "insertar-5-1",
                     "comment": "(TEST) Insertar > Inserta un registro repetido",
                     "command": "open",
-                    "target": "${urlPersonas}/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
                     "value": ""
                 },
                 {
                     "id": "insertar-5-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "insertar-5-3",
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "El registro ya existe."
-                }
-            ]
-        },
-        {
-            "id": "listar",
-            "name": "Personas > Listar",
-            "comment": "Comprueba Personas > Listar",
-            "commands": [
+                },
                 {
                     "id": "listar-1-1",
                     "comment": "(TEST) Personas > Listar > Prueba que muestra el listado correctamente",
@@ -631,8 +541,8 @@
                 {
                     "id": "listar-1-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-1-3",
@@ -648,7 +558,7 @@
                 },
                 {
                     "id": "listar-1-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -656,7 +566,8 @@
                     "id": "listar-1-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-2-1",
@@ -668,8 +579,8 @@
                 {
                     "id": "listar-2-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-2-3",
@@ -685,7 +596,7 @@
                 },
                 {
                     "id": "listar-2-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -693,7 +604,8 @@
                     "id": "listar-2-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-3-1",
@@ -705,8 +617,8 @@
                 {
                     "id": "listar-3-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-3-3",
@@ -722,7 +634,7 @@
                 },
                 {
                     "id": "listar-3-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -730,7 +642,8 @@
                     "id": "listar-3-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-4-1",
@@ -742,8 +655,8 @@
                 {
                     "id": "listar-4-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-4-3",
@@ -759,7 +672,7 @@
                 },
                 {
                     "id": "listar-4-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -767,7 +680,8 @@
                     "id": "listar-4-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-5-1",
@@ -779,8 +693,8 @@
                 {
                     "id": "listar-5-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-5-3",
@@ -796,7 +710,7 @@
                 },
                 {
                     "id": "listar-5-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -804,7 +718,8 @@
                     "id": "listar-5-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-6-1",
@@ -816,8 +731,8 @@
                 {
                     "id": "listar-6-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-6-3",
@@ -833,7 +748,7 @@
                 },
                 {
                     "id": "listar-6-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -841,7 +756,8 @@
                     "id": "listar-6-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-7-1",
@@ -853,8 +769,8 @@
                 {
                     "id": "listar-7-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-7-3",
@@ -870,7 +786,7 @@
                 },
                 {
                     "id": "listar-7-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -878,7 +794,8 @@
                     "id": "listar-7-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-8-1",
@@ -890,8 +807,8 @@
                 {
                     "id": "listar-8-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-8-3",
@@ -907,7 +824,7 @@
                 },
                 {
                     "id": "listar-8-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -915,7 +832,8 @@
                     "id": "listar-8-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "listar-9-1",
@@ -927,8 +845,8 @@
                 {
                     "id": "listar-9-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "listar-9-3",
@@ -944,7 +862,7 @@
                 },
                 {
                     "id": "listar-9-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -953,14 +871,7 @@
                     "command": "assert",
                     "target": "cuentaFilas",
                     "value": "3"
-                }
-            ]
-        },
-        {
-            "id": "borrar",
-            "name": "Personas > Borrar",
-            "comment": "Comprueba Borrar",
-            "commands": [
+                },
                 {
                     "id": "borrar-1-1",
                     "comment": "(TEST) Personas > Borrar > Añade un tercer registro",
@@ -971,20 +882,20 @@
                 {
                     "id": "borrar-1-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-1-3",
                     "command": "open",
-                    "target": "${urlPersonas}/insertar-2.php?nombre=Julio&apellidos=César&telefono=3141592&correo=julio.cesar@micorreo.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=Julio&apellidos=César&telefono=3141592&correo=julio.cesar@micorreo.com",
                     "value": ""
                 },
                 {
                     "id": "borrar-1-4",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-1-5",
@@ -1002,12 +913,12 @@
                 {
                     "id": "borrar-2-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-2-3",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1015,7 +926,8 @@
                     "id": "borrar-2-4",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas."
                 },
                 {
                     "id": "borrar-2-5",
@@ -1039,12 +951,12 @@
                 {
                     "id": "borrar-3-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-3-3",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1052,7 +964,8 @@
                     "id": "borrar-3-4",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas."
                 },
                 {
                     "id": "borrar-3-5",
@@ -1076,12 +989,12 @@
                 {
                     "id": "borrar-4-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-4-3",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1089,7 +1002,8 @@
                     "id": "borrar-4-4",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas."
                 },
                 {
                     "id": "borrar-4-5",
@@ -1125,8 +1039,8 @@
                 {
                     "id": "borrar-5-4",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-5-5",
@@ -1138,14 +1052,14 @@
                     "id": "borrar-6-1",
                     "comment": "(TEST) Personas > Borrar > Intenta borrar dos registros inexistentes",
                     "command": "open",
-                    "target": "${urlPersonas}/borrar-2.php?id[50]=on&id[60]=on",
+                    "target": "${urlBase}/db/tabla-personas/borrar-2.php?id[50]=on&id[60]=on",
                     "value": ""
                 },
                 {
                     "id": "borrar-6-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-6-3",
@@ -1168,8 +1082,8 @@
                 {
                     "id": "borrar-6-6",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-6-7",
@@ -1192,8 +1106,8 @@
                 {
                     "id": "borrar-6-10",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-6-11",
@@ -1211,8 +1125,8 @@
                 {
                     "id": "borrar-7-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-7-3",
@@ -1247,8 +1161,8 @@
                 {
                     "id": "borrar-7-8",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Borrar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Borrar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "borrar-7-9",
@@ -1261,26 +1175,19 @@
                     "command": "assertText",
                     "target": "xpath=//p[2]",
                     "value": "Registro borrado correctamente."
-                }
-            ]
-        },
-        {
-            "id": "buscar",
-            "name": "Personas > Buscar",
-            "comment": "Comprueba Buscar",
-            "commands": [
+                },
                 {
                     "id": "buscar-1-1",
                     "comment": "(TEST) Personas > Buscar > Inserta tres registros directamente",
                     "command": "open",
-                    "target": "${urlPersonas}/insertar-2.php?nombre=Numa&apellidos=Nigerio&telefono=123456&correo=numa.nigerio@micorreo.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=Numa&apellidos=Nigerio&telefono=123456&correo=numa.nigerio@micorreo.com",
                     "value": ""
                 },
                 {
                     "id": "buscar-1-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-1-3",
@@ -1291,14 +1198,14 @@
                 {
                     "id": "buscar-1-4",
                     "command": "open",
-                    "target": "${urlPersonas}/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=Pepito&apellidos=Conejo&telefono=98765&correo=pepito.conejo@micorreo.com",
                     "value": ""
                 },
                 {
                     "id": "buscar-1-5",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-1-6",
@@ -1309,14 +1216,14 @@
                 {
                     "id": "buscar-1-7",
                     "command": "open",
-                    "target": "${urlPersonas}/insertar-2.php?nombre=Julio&apellidos=César&telefono=3141592&correo=julio.cesar@micorreo.com",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=Julio&apellidos=César&telefono=3141592&correo=julio.cesar@micorreo.com",
                     "value": ""
                 },
                 {
                     "id": "buscar-1-8",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Añadir 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Añadir 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-1-9",
@@ -1334,8 +1241,8 @@
                 {
                     "id": "buscar-2-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-2-3",
@@ -1352,8 +1259,8 @@
                 {
                     "id": "buscar-2-5",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-2-6",
@@ -1369,7 +1276,7 @@
                 },
                 {
                     "id": "buscar-2-8",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1377,7 +1284,8 @@
                     "id": "buscar-2-9",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "buscar-3-1",
@@ -1389,8 +1297,8 @@
                 {
                     "id": "buscar-3-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-3-3",
@@ -1406,7 +1314,7 @@
                 },
                 {
                     "id": "buscar-3-5",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1414,7 +1322,8 @@
                     "id": "buscar-3-6",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "buscar-3-7",
@@ -1425,8 +1334,8 @@
                 {
                     "id": "buscar-3-8",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-3-9",
@@ -1442,7 +1351,7 @@
                 },
                 {
                     "id": "buscar-3-11",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1450,7 +1359,8 @@
                     "id": "buscar-3-12",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "3"
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas."
                 },
                 {
                     "id": "buscar-4-1",
@@ -1462,8 +1372,8 @@
                 {
                     "id": "buscar-4-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-4-3",
@@ -1480,8 +1390,8 @@
                 {
                     "id": "buscar-4-5",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-4-6",
@@ -1491,7 +1401,7 @@
                 },
                 {
                     "id": "buscar-4-7",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1499,7 +1409,8 @@
                     "id": "buscar-4-8",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "2"
+                    "value": "2",
+                    "comment": "La tabla contiene exactamente 2 filas."
                 },
                 {
                     "id": "buscar-5-1",
@@ -1511,8 +1422,8 @@
                 {
                     "id": "buscar-5-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-5-3",
@@ -1535,8 +1446,8 @@
                 {
                     "id": "buscar-5-6",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-5-7",
@@ -1546,7 +1457,7 @@
                 },
                 {
                     "id": "buscar-5-8",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1554,7 +1465,8 @@
                     "id": "buscar-5-9",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "2"
+                    "value": "2",
+                    "comment": "La tabla contiene exactamente 2 filas."
                 },
                 {
                     "id": "buscar-6-1",
@@ -1566,8 +1478,8 @@
                 {
                     "id": "buscar-6-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-6-3",
@@ -1584,34 +1496,27 @@
                 {
                     "id": "buscar-6-5",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Buscar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Buscar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "buscar-6-6",
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "No se han encontrado registros."
-                }
-            ]
-        },
-        {
-            "id": "modificar",
-            "name": "Personas > Modificar",
-            "comment": "Comprueba Modificar",
-            "commands": [
+                },
                 {
                     "id": "modificar-1-1",
                     "comment": "(TEST) Personas > Modificar > Sin seleccionar registros.",
                     "command": "open",
-                    "target": "${urlPersonas}/modificar-2.php",
+                    "target": "${urlBase}/db/tabla-personas/modificar-2.php",
                     "value": ""
                 },
                 {
                     "id": "modificar-1-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-1-3",
@@ -1621,7 +1526,7 @@
                 },
                 {
                     "id": "modificar-1-4",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
                     "value": "cuentaAvisos"
                 },
@@ -1629,20 +1534,21 @@
                     "id": "modificar-1-5",
                     "command": "assert",
                     "target": "cuentaAvisos",
-                    "value": "1"
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso."
                 },
                 {
                     "id": "modificar-2-1",
                     "comment": "(TEST) Personas > Modificar > Selecciona registro no existente.",
                     "command": "open",
-                    "target": "${urlPersonas}/modificar-2.php?id=50",
+                    "target": "${urlBase}/db/tabla-personas/modificar-2.php?id=50",
                     "value": ""
                 },
                 {
                     "id": "modificar-2-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-2-3",
@@ -1652,7 +1558,7 @@
                 },
                 {
                     "id": "modificar-2-4",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
                     "value": "cuentaAvisos"
                 },
@@ -1660,7 +1566,8 @@
                     "id": "modificar-2-5",
                     "command": "assert",
                     "target": "cuentaAvisos",
-                    "value": "1"
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso."
                 },
                 {
                     "id": "modificar-3-1",
@@ -1672,12 +1579,12 @@
                 {
                     "id": "modificar-3-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-3-3",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1685,7 +1592,8 @@
                     "id": "modificar-3-4",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas."
                 },
                 {
                     "id": "modificar-3-5",
@@ -1709,12 +1617,12 @@
                 {
                     "id": "modificar-4-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-4-3",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1722,7 +1630,8 @@
                     "id": "modificar-4-4",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas."
                 },
                 {
                     "id": "modificar-4-5",
@@ -1746,12 +1655,12 @@
                 {
                     "id": "modificar-5-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 1\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 1\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-5-3",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1759,7 +1668,8 @@
                     "id": "modificar-5-4",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas."
                 },
                 {
                     "id": "modificar-5-5",
@@ -1783,8 +1693,8 @@
                 {
                     "id": "modificar-6-2",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 2\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 2\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-6-3",
@@ -1843,8 +1753,8 @@
                 {
                     "id": "modificar-6-12",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Modificar 3\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Modificar 3\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-6-13",
@@ -1861,8 +1771,8 @@
                 {
                     "id": "modificar-6-15",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Personas} Listar\"]",
-                    "value": "${maxEspera}"
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Personas - Listar\"]",
+                    "value": "1000"
                 },
                 {
                     "id": "modificar-6-16",
@@ -1890,7 +1800,7 @@
                 },
                 {
                     "id": "modificar-6-20",
-                    "command": "storeXpathCount",
+                    "command": "storeElementCount",
                     "target": "xpath=//tr",
                     "value": "cuentaFilas"
                 },
@@ -1898,7 +1808,8 @@
                     "id": "modificar-6-21",
                     "command": "assert",
                     "target": "cuentaFilas",
-                    "value": "4"
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas."
                 },
                 {
                     "id": "modificar-6-22",
@@ -1909,93 +1820,9 @@
                 {
                     "id": "modificar-6-23",
                     "command": "waitForElementPresent",
-                    "target": "xpath=//h1[.=\"${h1Base} Inicio\"]",
-                    "value": "${maxEspera}"
-                }
-            ]
-        },
-        {
-            "id": "test-completo",
-            "name": "*** Test completo **",
-            "comment": "Ejecuta todo",
-            "commands": [
-                {
-                    "id": "test-completo-1",
-                    "command": "run",
-                    "target": "Configuración",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-2",
-                    "command": "run",
-                    "target": "Variables General",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-3",
-                    "command": "open",
-                    "target": "${urlBase}/index.php",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-4",
-                    "command": "waitForElementPresent",
-                    "target": "xpath=//main",
-                    "value": "20000"
-                },
-                {
-                    "id": "test-completo-5",
-                    "command": "run",
-                    "target": "Desconexión inicial",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-6",
-                    "command": "run",
-                    "target": "Conexión como root",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-7",
-                    "command": "run",
-                    "target": "Borrar Todo",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-8",
-                    "command": "run",
-                    "target": "Personas > Sin registros",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-9",
-                    "command": "run",
-                    "target": "Personas > Añadir registro",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-10",
-                    "command": "run",
-                    "target": "Personas > Listar",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-11",
-                    "command": "run",
-                    "target": "Personas > Borrar",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-12",
-                    "command": "run",
-                    "target": "Personas > Buscar",
-                    "value": ""
-                },
-                {
-                    "id": "test-completo-13",
-                    "command": "run",
-                    "target": "Personas > Modificar",
-                    "value": ""
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Abre página Inicio. Título h1 correcto."
                 }
             ]
         }
@@ -2011,5 +1838,6 @@
                 "test-completo"
             ]
         }
-    ]
+    ],
+    "plugins": []
 }
