@@ -192,6 +192,8 @@ function cabecera($texto, $menu, $profundidadDirectorio)
         } else {
             print "        <li>Error en la selección de menú</li>\n";
         }
+    } else {
+        print "        <li>Error en la selección de menú</li>\n";
     }
     print "      </ul>\n";
     print "    </nav>\n";
