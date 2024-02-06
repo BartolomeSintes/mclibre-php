@@ -48,7 +48,7 @@ if ($limiteRegistrosOk) {
     print "        </tr>\n";
     print "        <tr>\n";
     print "          <td>Contraseña:</td>\n";
-    print "          <td><input type=\"text\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosMaxPassword]\"></td>\n";
+    print "          <td><input type=\"password\" name=\"password\" size=\"$cfg[formUsuariosTamPassword]\" maxlength=\"$cfg[formUsuariosMaxPassword]\"></td>\n";
     print "        </tr>\n";
     print "        <tr>\n";
     print "          <td>Repita la contraseña:</td>\n";
