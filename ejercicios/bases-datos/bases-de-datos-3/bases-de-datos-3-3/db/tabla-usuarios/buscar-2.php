@@ -24,10 +24,7 @@ $ordena   = recoge("ordena", default: "usuario ASC", allowed: $cfg["tablaUsuario
 
 $usuarioOk  = false;
 
-if ($usuario == "") {
-    print "    <p class=\"aviso\">Hay que escribir un nombre de usuario.</p>\n";
-    print "\n";
-} elseif (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
+if (mb_strlen($usuario, "UTF-8") > $cfg["formUsuariosMaxUsuario"]) {
     print "    <p class=\"aviso\">El nombre de usuario no puede tener más de $cfg[formUsuariosMaxUsuario] caracteres.</p>\n";
     print "\n";
 } else {
