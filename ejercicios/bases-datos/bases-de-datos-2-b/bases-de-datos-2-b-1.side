@@ -102,21 +102,21 @@
                     "command": "assertText",
                     "target": "xpath=//p[1]",
                     "value": "Sistema Gestor de Bases de Datos: SQLite.",
-                    "comment": "Muestra mensaje: 'Sistema Gestor de Bases de Datos: SQLite.'"
+                    "comment": "Muestra mensaje (1/3): 'Sistema Gestor de Bases de Datos: SQLite.'"
                 },
                 {
                     "id": "borrar-todo-12",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
                     "value": "Tabla borrada correctamente (si existía).",
-                    "comment": "Muestra mensaje: 'Tabla borrada correctamente (si existía).'"
+                    "comment": "Muestra mensaje (2/3): 'Tabla borrada correctamente (si existía).'"
                 },
                 {
                     "id": "borrar-todo-13",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
                     "value": "Tabla creada correctamente.",
-                    "comment": "Muestra mensaje: 'Tabla creada correctamente.'"
+                    "comment": "Muestra mensaje (3/3): 'Tabla creada correctamente.'"
                 },
                 {
                     "id": "borrar-todo-14",
@@ -129,35 +129,35 @@
                     "command": "assertText",
                     "target": "xpath=//p[1]",
                     "value": "Sistema Gestor de Bases de Datos: MySQL.",
-                    "comment": "Muestra mensaje: 'Sistema Gestor de Bases de Datos: MySQL.'"
+                    "comment": "Muestra mensaje (1/5): 'Sistema Gestor de Bases de Datos: MySQL.'"
                 },
                 {
                     "id": "borrar-todo-16",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
                     "value": "Base de datos borrada correctamente (si existía).",
-                    "comment": "Muestra mensaje: 'Base de datos borrada correctamente (si existía).'"
+                    "comment": "Muestra mensaje (2/5): 'Base de datos borrada correctamente (si existía).'"
                 },
                 {
                     "id": "borrar-todo-17",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
                     "value": "Base de datos creada correctamente.",
-                    "comment": "Muestra mensaje: 'Base de datos creada correctamente.'"
+                    "comment": "Muestra mensaje (3/5): 'Base de datos creada correctamente.'"
                 },
                 {
                     "id": "borrar-todo-18",
                     "command": "assertText",
                     "target": "xpath=//p[4]",
                     "value": "Base de datos seleccionada correctamente.",
-                    "comment": "Muestra mensaje: 'Base de datos seleccionada correctamente.'"
+                    "comment": "Muestra mensaje (4/5): 'Base de datos seleccionada correctamente.'"
                 },
                 {
                     "id": "borrar-todo-19",
                     "command": "assertText",
                     "target": "xpath=//p[5]",
                     "value": "Tabla creada correctamente.",
-                    "comment": "Muestra mensaje: 'Tabla creada correctamente.'"
+                    "comment": "Muestra mensaje (5/5): 'Tabla creada correctamente.'"
                 },
                 {
                     "id": "borrar-todo-20",
@@ -493,7 +493,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&apellidos=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a&telefono=1234567890123456}",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Intenta insertar directamente un registro con valores demasiado largos"
                 },
                 {
                     "id": "insertar-3-2",
@@ -507,21 +507,21 @@
                     "command": "assertText",
                     "target": "xpath=//p[1]",
                     "value": "El nombre no puede tener más de 40 caracteres.",
-                    "comment": "Muestra aviso: 'El nombre no puede tener más de 40 caracteres.'"
+                    "comment": "Muestra aviso (1/3): 'El nombre no puede tener más de 40 caracteres.'"
                 },
                 {
                     "id": "insertar-3-4",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
                     "value": "Los apellidos no pueden tener más de 60 caracteres.",
-                    "comment": "Muestra aviso: 'Los apellidos no pueden tener más de 60 caracteres.'"
+                    "comment": "Muestra aviso (2/3): 'Los apellidos no pueden tener más de 60 caracteres.'"
                 },
                 {
                     "id": "insertar-3-5",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
                     "value": "El teléfono no puede tener más de 15 caracteres.",
-                    "comment": "Muestra aviso: 'El teléfono no puede tener más de 15 caracteres.'"
+                    "comment": "Muestra aviso (3/3): 'El teléfono no puede tener más de 15 caracteres.'"
                 },
                 {
                     "id": "insertar-3-6",
@@ -564,7 +564,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=Sancho&apellidos=Panza&telefono=161803398",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Intenta insertar directamente un registro que ya existe"
                 },
                 {
                     "id": "insertar-5-2",
@@ -696,55 +696,64 @@
                     "id": "listar-1-8",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "listar-1-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "listar-1-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "listar-1-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "listar-1-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "listar-1-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "listar-1-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "listar-1-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "listar-1-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "listar-2-1",
@@ -799,55 +808,64 @@
                     "id": "listar-2-8",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "listar-2-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "listar-2-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "listar-2-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "listar-2-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "listar-2-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "listar-2-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "listar-2-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "listar-2-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "listar-3-1",
@@ -902,55 +920,64 @@
                     "id": "listar-3-8",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "listar-3-9",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "listar-3-10",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "listar-3-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "listar-3-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "listar-3-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "listar-3-14",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "listar-3-15",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "listar-3-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "listar-4-1",
@@ -1005,55 +1032,64 @@
                     "id": "listar-4-8",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "listar-4-9",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "listar-4-10",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "listar-4-11",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "listar-4-12",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "listar-4-13",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "listar-4-14",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "listar-4-15",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "listar-4-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "listar-5-1",
@@ -1108,55 +1144,64 @@
                     "id": "listar-5-8",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "listar-5-9",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "listar-5-10",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "listar-5-11",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "listar-5-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "listar-5-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "listar-5-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "listar-5-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "listar-5-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "listar-6-1",
@@ -1211,55 +1256,64 @@
                     "id": "listar-6-8",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "listar-6-9",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "listar-6-10",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "listar-6-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "listar-6-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "listar-6-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "listar-6-14",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "listar-6-15",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "listar-6-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "listar-7-1",
@@ -1314,55 +1368,64 @@
                     "id": "listar-7-8",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "listar-7-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "listar-7-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "listar-7-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "listar-7-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "listar-7-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "listar-7-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "listar-7-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "listar-7-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "listar-7-17",
@@ -1438,55 +1501,64 @@
                     "id": "borrar-1-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "borrar-1-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "borrar-1-11",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "borrar-1-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "borrar-1-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "borrar-1-14",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "borrar-1-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "borrar-1-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "borrar-1-17",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "borrar-1-18",
@@ -1534,13 +1606,15 @@
                     "id": "borrar-2-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-2-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-2-8",
@@ -1574,55 +1648,64 @@
                     "id": "borrar-2-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "borrar-2-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "borrar-2-14",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "borrar-2-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "borrar-2-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "borrar-2-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "borrar-2-18",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "borrar-2-19",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "borrar-2-20",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "borrar-3-1",
@@ -1663,13 +1746,15 @@
                     "id": "borrar-3-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-3-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-3-8",
@@ -1703,55 +1788,64 @@
                     "id": "borrar-3-12",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "borrar-3-13",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "borrar-3-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "borrar-3-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "borrar-3-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "borrar-3-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "borrar-3-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "borrar-3-19",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "borrar-3-20",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "borrar-4-1",
@@ -1792,13 +1886,15 @@
                     "id": "borrar-4-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-4-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-4-8",
@@ -1832,55 +1928,64 @@
                     "id": "borrar-4-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "borrar-4-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "borrar-4-14",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "borrar-4-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "borrar-4-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "borrar-4-17",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "borrar-4-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "borrar-4-19",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "borrar-4-20",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "borrar-5-1",
@@ -1921,13 +2026,15 @@
                     "id": "borrar-5-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-5-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-5-8",
@@ -1961,55 +2068,64 @@
                     "id": "borrar-5-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "borrar-5-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "borrar-5-14",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "borrar-5-15",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "borrar-5-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "borrar-5-17",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "borrar-5-18",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "borrar-5-19",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "borrar-5-20",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "borrar-6-1",
@@ -2050,13 +2166,15 @@
                     "id": "borrar-6-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-6-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-6-8",
@@ -2090,55 +2208,64 @@
                     "id": "borrar-6-12",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "borrar-6-13",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "borrar-6-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "borrar-6-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "borrar-6-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "borrar-6-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "borrar-6-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "borrar-6-19",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "borrar-6-20",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "borrar-7-1",
@@ -2179,13 +2306,15 @@
                     "id": "borrar-7-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-7-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-7-8",
@@ -2219,55 +2348,64 @@
                     "id": "borrar-7-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "borrar-7-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "borrar-7-14",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "borrar-7-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "borrar-7-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "borrar-7-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "borrar-7-18",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "borrar-7-19",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "borrar-7-20",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "borrar-8-1",
@@ -2288,13 +2426,15 @@
                     "id": "borrar-8-3",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-8-4",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-8-5",
@@ -2315,7 +2455,7 @@
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "No se ha seleccionado ningún registro.",
-                    "comment": "Muestra mensaje: 'No se ha seleccionado ningún registro.'"
+                    "comment": "Muestra aviso: 'No se ha seleccionado ningún registro.'"
                 },
                 {
                     "id": "borrar-8-8",
@@ -2337,7 +2477,7 @@
                     "command": "open",
                     "target": "${urlBase}/borrar-2.php?id[50]=on&id[60]=on",
                     "value": "",
-                    "comment": "Borra directamente dos registros inexistentes"
+                    "comment": "Intenta borrar directamente dos registros inexistentes"
                 },
                 {
                     "id": "borrar-9-2",
@@ -2350,13 +2490,15 @@
                     "id": "borrar-9-3",
                     "command": "assertText",
                     "target": "xpath=//p[1]",
-                    "value": "Registro no encontrado."
+                    "value": "Registro no encontrado.",
+                    "comment": "Muestra aviso (1/2): 'Registro no encontrado.'"
                 },
                 {
                     "id": "borrar-9-4",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
-                    "value": "Registro no encontrado."
+                    "value": "Registro no encontrado.",
+                    "comment": "Muestra aviso (2/2): 'Registro no encontrado.'"
                 },
                 {
                     "id": "borrar-9-5",
@@ -2411,13 +2553,15 @@
                     "id": "borrar-10-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[2]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[2]' está desmarcada"
                 },
                 {
                     "id": "borrar-10-8",
                     "command": "verifyNotChecked",
                     "target": "xpath=//input[@name=\"id[3]\"]",
-                    "value": ""
+                    "value": "",
+                    "comment": "La casilla con atributo 'name' con valor 'id[3]' está desmarcada"
                 },
                 {
                     "id": "borrar-10-9",
@@ -2437,7 +2581,8 @@
                     "id": "borrar-10-11",
                     "command": "assertText",
                     "target": "xpath=//p",
-                    "value": "Registro borrado correctamente."
+                    "value": "Registro borrado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro borrado correctamente.'"
                 },
                 {
                     "id": "borrar-10-12",
@@ -2527,13 +2672,15 @@
                     "id": "borrar-11-11",
                     "command": "assertText",
                     "target": "xpath=//p[1]",
-                    "value": "Registro borrado correctamente."
+                    "value": "Registro borrado correctamente.",
+                    "comment": "Muestra mensaje (1/2): 'Registro borrado correctamente.'"
                 },
                 {
                     "id": "borrar-11-12",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
-                    "value": "Registro borrado correctamente."
+                    "value": "Registro borrado correctamente.",
+                    "comment": "Muestra mensaje (2/2): 'Registro borrado correctamente.'"
                 },
                 {
                     "id": "borrar-11-13",
@@ -2665,6 +2812,7 @@
                 {
                     "id": "buscar-11-1",
                     "title": "(TEST) Buscar > Avisos individuales Nombre / Apellidos / Teléfono largos",
+                    "command": "open",
                     "target": "${urlBase}/buscar-2.php?nombre=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&apellidos=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a&telefono=1234567890123456",
                     "value": "",
                     "comment": "Busca directamente con valores demasiado largos"
@@ -2681,21 +2829,21 @@
                     "command": "assertText",
                     "target": "xpath=//p[1]",
                     "value": "El nombre no puede tener más de 40 caracteres.",
-                    "comment": "Muestra aviso: 'El nombre no puede tener más de 40 caracteres.'"
+                    "comment": "Muestra aviso (1/3): 'El nombre no puede tener más de 40 caracteres.'"
                 },
                 {
                     "id": "buscar-11-4",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
                     "value": "Los apellidos no pueden tener más de 60 caracteres.",
-                    "comment": "Muestra aviso: 'Los apellidos no pueden tener más de 60 caracteres.'"
+                    "comment": "Muestra aviso (2/3): 'Los apellidos no pueden tener más de 60 caracteres.'"
                 },
                 {
                     "id": "buscar-11-5",
                     "command": "assertText",
                     "target": "xpath=//p[3]",
                     "value": "El teléfono no puede tener más de 15 caracteres.",
-                    "comment": "Muestra aviso: 'El teléfono no puede tener más de 15 caracteres.'"
+                    "comment": "Muestra aviso (3/3): 'El teléfono no puede tener más de 15 caracteres.'"
                 },
                 {
                     "id": "buscar-11-6",
@@ -2832,37 +2980,43 @@
                     "id": "buscar-2-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-2-17",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-2-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-2-19",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-2-20",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-2-21",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-3-1",
@@ -2917,37 +3071,43 @@
                     "id": "buscar-3-8",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-3-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-3-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-3-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-3-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-3-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-4-1",
@@ -3002,37 +3162,43 @@
                     "id": "buscar-4-8",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-4-9",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-4-10",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-4-11",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-4-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-4-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-5-1",
@@ -3087,37 +3253,43 @@
                     "id": "buscar-5-8",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-5-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-5-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-5-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-5-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-5-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-6-1",
@@ -3172,37 +3344,43 @@
                     "id": "buscar-6-8",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-6-9",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-6-10",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-6-11",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-6-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-6-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-7-1",
@@ -3257,37 +3435,43 @@
                     "id": "buscar-7-8",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-7-9",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-7-10",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-7-11",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-7-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-7-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-8-1",
@@ -3342,37 +3526,43 @@
                     "id": "buscar-8-8",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-8-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-8-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-8-11",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-8-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-8-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-8-14",
@@ -3496,19 +3686,22 @@
                     "id": "buscar-9-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-9-17",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-9-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-9-19",
@@ -3577,7 +3770,8 @@
                     "id": "buscar-10-8",
                     "command": "type",
                     "target": "name=telefono",
-                    "value": "18"
+                    "value": "18",
+                    "comment": "Escribe '18' en el campo 'telefono'"
                 },
                 {
                     "id": "buscar-10-9",
@@ -3631,37 +3825,43 @@
                     "id": "buscar-10-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-10-17",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-10-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-10-19",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "buscar-10-20",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "buscar-10-21",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "buscar-10-22",
@@ -3785,19 +3985,22 @@
                     "id": "buscar-11-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "buscar-11-17",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "buscar-11-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "buscar-11-19",
@@ -3873,7 +4076,8 @@
                     "id": "buscar-12-9",
                     "command": "type",
                     "target": "name=telefono",
-                    "value": "1"
+                    "value": "1",
+                    "comment": "Escribe '1' en el campo 'telefono'"
                 },
                 {
                     "id": "buscar-12-10",
@@ -3920,37 +4124,43 @@
                     "id": "buscar-12-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "buscar-12-17",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "buscar-12-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "buscar-12-19",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "buscar-12-20",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "buscar-12-21",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "buscar-12-22",
@@ -4040,7 +4250,8 @@
                     "id": "buscar-13-11",
                     "command": "assertText",
                     "target": "xpath=//p",
-                    "value": "No se han encontrado registros."
+                    "value": "No se han encontrado registros.",
+                    "comment": "Muestra aviso: 'No se han encontrado registros.'"
                 },
                 {
                     "id": "buscar-13-12",
@@ -4076,7 +4287,7 @@
                     "command": "assertText",
                     "target": "xpath=//p",
                     "value": "No se ha seleccionado ningún registro.",
-                    "comment": "Muestra mensaje: 'No se ha seleccionado ningún registro.'"
+                    "comment": "Muestra aviso: 'No se ha seleccionado ningún registro.'"
                 },
                 {
                     "id": "modificar-1-4",
@@ -4110,7 +4321,8 @@
                     "title": "(TEST) Modificar > Selecciona registro no existente.",
                     "command": "open",
                     "target": "${urlBase}/modificar-2.php?id=50",
-                    "value": ""
+                    "value": "",
+                    "comment": "Modifica directamente un registro inexistente"
                 },
                 {
                     "id": "modificar-2-2",
@@ -4123,7 +4335,8 @@
                     "id": "modificar-2-3",
                     "command": "assertText",
                     "target": "xpath=//p",
-                    "value": "Registro no encontrado."
+                    "value": "Registro no encontrado.",
+                    "comment": "Muestra aviso: 'Registro no encontrado.'"
                 },
                 {
                     "id": "modificar-2-4",
@@ -4212,55 +4425,64 @@
                     "id": "modificar-3-9",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-3-10",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-3-11",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-3-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-3-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-3-14",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-3-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "modificar-3-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "modificar-3-17",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "modificar-3-18",
@@ -4301,19 +4523,22 @@
                     "id": "modificar-4-5",
                     "command": "verifyChecked",
                     "target": "xpath=//tr[3]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la cuarta fila está marcado"
                 },
                 {
                     "id": "modificar-4-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[1]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la segunda fila no está marcado"
                 },
                 {
                     "id": "modificar-4-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[2]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la tercera fila no está marcado"
                 },
                 {
                     "id": "modificar-4-8",
@@ -4347,55 +4572,64 @@
                     "id": "modificar-4-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-4-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-4-14",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-4-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-4-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-4-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-4-18",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "modificar-4-19",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "modificar-4-20",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "modificar-5-1",
@@ -4429,19 +4663,22 @@
                     "id": "modificar-5-5",
                     "command": "verifyChecked",
                     "target": "xpath=//tr[1]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la segunda fila está marcado"
                 },
                 {
                     "id": "modificar-5-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[2]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la tercera fila no está marcado"
                 },
                 {
                     "id": "modificar-5-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[3]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la cuarta fila no está marcado"
                 },
                 {
                     "id": "modificar-5-8",
@@ -4475,55 +4712,64 @@
                     "id": "modificar-5-12",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-5-13",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-5-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-5-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-5-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-5-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-5-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "modificar-5-19",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "modificar-5-20",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "modificar-6-1",
@@ -4557,19 +4803,22 @@
                     "id": "modificar-6-5",
                     "command": "verifyChecked",
                     "target": "xpath=//tr[1]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la segunda fila está marcado"
                 },
                 {
                     "id": "modificar-6-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[2]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la tercera fila no está marcado"
                 },
                 {
                     "id": "modificar-6-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[3]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la cuarta fila no está marcado"
                 },
                 {
                     "id": "modificar-6-8",
@@ -4603,55 +4852,64 @@
                     "id": "modificar-6-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-6-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-6-14",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-6-15",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-6-16",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-6-17",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-6-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "modificar-6-19",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "modificar-6-20",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "modificar-7-1",
@@ -4685,19 +4943,22 @@
                     "id": "modificar-7-5",
                     "command": "verifyChecked",
                     "target": "xpath=//tr[3]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la cuarta fila está marcado"
                 },
                 {
                     "id": "modificar-7-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[1]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la segunda fila no está marcado"
                 },
                 {
                     "id": "modificar-7-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[2]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la tercera fila no está marcado"
                 },
                 {
                     "id": "modificar-7-8",
@@ -4731,55 +4992,64 @@
                     "id": "modificar-7-12",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-7-13",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-7-14",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-7-15",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-7-16",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-7-17",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-7-18",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "modificar-7-19",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "modificar-7-20",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "modificar-8-1",
@@ -4813,19 +5083,22 @@
                     "id": "modificar-8-5",
                     "command": "verifyChecked",
                     "target": "xpath=//tr[1]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la segunda fila está marcado"
                 },
                 {
                     "id": "modificar-8-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[2]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la tercera fila no está marcado"
                 },
                 {
                     "id": "modificar-8-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[3]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la cuarta fila no está marcado"
                 },
                 {
                     "id": "modificar-8-8",
@@ -4859,55 +5132,64 @@
                     "id": "modificar-8-12",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-8-13",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-8-14",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-8-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-8-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-8-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-8-18",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "modificar-8-19",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "modificar-8-20",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "modificar-9-1",
@@ -4941,19 +5223,22 @@
                     "id": "modificar-9-5",
                     "command": "verifyChecked",
                     "target": "xpath=//tr[3]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la cuarta fila está marcado"
                 },
                 {
                     "id": "modificar-9-6",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[1]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la segunda fila no está marcado"
                 },
                 {
                     "id": "modificar-9-7",
                     "command": "verifyNotChecked",
                     "target": "xpath=//tr[2]/td[1]/input",
-                    "value": ""
+                    "value": "",
+                    "comment": "El botón radio situado en la primera celda de la tercera fila no está marcado"
                 },
                 {
                     "id": "modificar-9-8",
@@ -4987,55 +5272,64 @@
                     "id": "modificar-9-12",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-9-13",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-9-14",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-9-15",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-9-16",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-9-17",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[4]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-9-18",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Sancho'"
                 },
                 {
                     "id": "modificar-9-19",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene 'Panza'"
                 },
                 {
                     "id": "modificar-9-20",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[4]",
-                    "value": "161803398"
+                    "value": "161803398",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '161803398'"
                 },
                 {
                     "id": "modificar-10-1",
@@ -5090,13 +5384,15 @@
                     "id": "modificar-10-8",
                     "command": "assertValue",
                     "target": "xpath=//input[@name='nombre']",
-                    "value": "Sancho"
+                    "value": "Sancho",
+                    "comment": "La caja de texto 'nombre' contiene el texto 'Sancho'"
                 },
                 {
                     "id": "modificar-10-9",
                     "command": "assertValue",
                     "target": "xpath=//input[@name='apellidos']",
-                    "value": "Panza"
+                    "value": "Panza",
+                    "comment": "La caja de texto 'apellidos' contiene el texto 'Panza'"
                 },
                 {
                     "id": "modificar-10-10",
@@ -5116,7 +5412,8 @@
                     "id": "modificar-10-12",
                     "command": "type",
                     "target": "name=telefono",
-                    "value": "161"
+                    "value": "161",
+                    "comment": "Escribe '161' en el campo 'telefono'"
                 },
                 {
                     "id": "modificar-10-13",
@@ -5205,55 +5502,64 @@
                     "id": "modificar-10-25",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "Alonso"
+                    "value": "Alonso",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Alonso'"
                 },
                 {
                     "id": "modificar-10-26",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[2]",
-                    "value": "Quijano"
+                    "value": "Quijano",
+                    "comment": "La segunda celda de la segunda fila de la tabla contiene 'Quijano'"
                 },
                 {
                     "id": "modificar-10-27",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[3]",
-                    "value": "314159265"
+                    "value": "314159265",
+                    "comment": "La tercera celda de la segunda fila de la tabla contiene '314159265'"
                 },
                 {
                     "id": "modificar-10-28",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "Dulcinea"
+                    "value": "Dulcinea",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Dulcinea'"
                 },
                 {
                     "id": "modificar-10-29",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[2]",
-                    "value": "Toboso"
+                    "value": "Toboso",
+                    "comment": "La segunda celda de la tercera fila de la tabla contiene 'Toboso'"
                 },
                 {
                     "id": "modificar-10-30",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[3]",
-                    "value": "271828182"
+                    "value": "271828182",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '271828182'"
                 },
                 {
                     "id": "modificar-10-31",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[1]",
-                    "value": "Sancha"
+                    "value": "Sancha",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Sancha'"
                 },
                 {
                     "id": "modificar-10-32",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[2]",
-                    "value": "Panzo"
+                    "value": "Panzo",
+                    "comment": "La segunda celda de la cuarta fila de la tabla contiene 'Panzo'"
                 },
                 {
                     "id": "modificar-10-33",
                     "command": "assertText",
                     "target": "xpath=//tr[3]/td[3]",
-                    "value": "161"
+                    "value": "161",
+                    "comment": "La tercera celda de la cuarta fila de la tabla contiene '161'"
                 },
                 {
                     "id": "modificar-10-34",
