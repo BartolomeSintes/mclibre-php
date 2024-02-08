@@ -41,7 +41,7 @@ $cfg["formUsuariosTamRegistros"] = 5;                                // Tamaño 
 
 $cfg["formUsuariosMaxUsuario"]   = $cfg["tablaUsuariosTamUsuario"];   // Tamaño máximo admitido por la caja de texto Usuarios > Nombre de usuario
 $cfg["formUsuariosMaxPassword"]  = $cfg["formUsuariosTamPassword"];   // Tamaño máximo admitido por la caja de texto Usuarios > Contraseña
-$cfg["formUsuariosMaxRegistros"] = $cfg["tablaUsuariosTamCorreo"];    // Tamaño máximo admitido por la caja de texto Usuarios > Registros
+$cfg["formUsuariosMaxRegistros"] = $cfg["formUsuariosTamRegistros"];  // Tamaño máximo admitido por la caja de texto Usuarios > Registros
 
 // Tamaño de los campos en la tabla Personas
 

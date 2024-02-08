@@ -123,7 +123,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDist
     if ($mantenerPassword == "Sí") {
         // Actualizamos el registro con los datos recibidos (excepto la contraseña)
         $consulta = "UPDATE $cfg[tablaUsuarios]
-                     SET usuario = :usuario, $nivel, conexiones = 0
+                     SET usuario = :usuario, nivel = $nivel, conexiones = 0
                      WHERE id = :id";
 
         $resultado = $pdo->prepare($consulta);
@@ -137,7 +137,7 @@ if ($usuarioOk && $passwordOk && $idOk && $registroEncontradoOk && $registroDist
     } else {
         // Y si no actualizamos el registro con los datos recibidos (incluida la contraseña)
         $consulta = "UPDATE $cfg[tablaUsuarios]
-                     SET usuario = :usuario, password = :password, $nivel, conexiones = 0
+                     SET usuario = :usuario, password = :password, nivel = $nivel, conexiones = 0
                      WHERE id = :id";
 
         $resultado = $pdo->prepare($consulta);
