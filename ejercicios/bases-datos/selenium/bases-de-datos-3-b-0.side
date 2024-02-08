@@ -1,6 +1,6 @@
 {
     "id": "mclibre-bases-de-datos-3-b-0-tests",
-    "version": "2024-02-07",
+    "version": "2024-02-08",
     "name": "Test ejercicio Bases de datos (3 B) 0",
     "url": "http://localhost",
     "tests": [
@@ -13,14 +13,15 @@
                     "id": "definiciones-generales-1",
                     "command": "store",
                     "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-3-b/bases-de-datos-3-b-0",
-                    "value": "urlBase"
+                    "value": "urlBase",
+                    "comment": "Define la ruta de la aplicación que se va a testear"
                 },
                 {
                     "id": "inicio-1",
                     "command": "open",
                     "target": "${urlBase}/index.php",
                     "value": "",
-                    "comment": "Abre página Inicio"
+                    "comment": "Abre la página de Inicio de la aplicación"
                 },
                 {
                     "id": "inicio-2",
@@ -30,74 +31,74 @@
                     "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Inicio'"
                 },
                 {
-                    "id": "preparacion-desconexion-inicial-1",
+                    "id": "desconexion-inicial-1",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Desconectarse'))",
                     "value": "contieneDesconectarse"
                 },
                 {
-                    "id": "preparacion-desconexion-inicial-2",
+                    "id": "desconexion-inicial-2",
                     "command": "if",
                     "target": "${contieneDesconectarse}",
                     "value": ""
                 },
                 {
-                    "id": "preparacion-desconexion-inicial-3",
+                    "id": "desconexion-inicial-3",
                     "command": "click",
                     "target": "linkText=Desconectarse",
                     "value": "",
                     "comment": "Hace clic en el enlace 'Desconectarse'"
                 },
                 {
-                    "id": "preparacion-desconexion-inicial-4",
+                    "id": "desconexion-inicial-4",
                     "command": "end",
                     "target": "",
                     "value": ""
                 },
                 {
-                    "id": "preparacion-desconexion-inicial-5",
+                    "id": "desconexion-inicial-5",
                     "command": "assertText",
                     "target": "xpath=//li[1]/a[1]",
                     "value": "Conectarse",
                     "comment": "Muestra enlace: 'Conectarse'"
                 },
                 {
-                    "id": "preparacion-borrar-todo-con-1",
+                    "id": "borrar-todo-con-1",
                     "command": "click",
                     "target": "linkText=Conectarse",
                     "value": "",
                     "comment": "Hace clic en el enlace 'Conectarse'"
                 },
                 {
-                    "id": "preparacion-borrar-todo-con-2",
+                    "id": "borrar-todo-con-2",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Login 1\"]",
                     "value": "1000",
                     "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Login 1'"
                 },
                 {
-                    "id": "preparacion-borrar-todo-con-3",
+                    "id": "borrar-todo-con-3",
                     "command": "type",
                     "target": "name=usuario",
                     "value": "root",
                     "comment": "Escribe 'root' en el campo 'usuario'"
                 },
                 {
-                    "id": "preparacion-borrar-todo-con-4",
+                    "id": "borrar-todo-con-4",
                     "command": "type",
                     "target": "name=password",
                     "value": "root",
                     "comment": "Escribe 'root' en el campo 'password'"
                 },
                 {
-                    "id": "preparacion-borrar-todo-con-5",
+                    "id": "borrar-todo-con-5",
                     "command": "click",
                     "target": "xpath=//input[@value='Identificar']",
                     "value": "",
                     "comment": "Hace clic en el botón 'Identificar'"
                 },
                 {
-                    "id": "preparacion-borrar-todo-con-6",
+                    "id": "borrar-todo-con-6",
                     "command": "waitForElementPresent",
                     "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
                     "value": "1000",
