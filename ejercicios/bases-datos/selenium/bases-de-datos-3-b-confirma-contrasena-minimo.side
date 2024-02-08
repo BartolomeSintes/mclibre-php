@@ -1,0 +1,639 @@
+{
+    "id": "mclibre-bases-de-datos-3-b-confirma-contrasena-tests-minimo",
+    "version": "2024-02-08",
+    "name": "Test ejercicio Bases de datos (3 B) Confirma contraseña (Mínimo)",
+    "url": "http://localhost",
+    "tests": [
+        {
+            "id": "test-completo",
+            "name": "Test ejercicio Bases de datos (3 B) Confirma contraseña (Mínimo)",
+            "comment": "Comprueba todo",
+            "commands": [
+                {
+                    "id": "definiciones-generales-1",
+                    "command": "store",
+                    "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-3-b/db-confirma-contrasena",
+                    "value": "urlBase",
+                    "comment": "Define la ruta de la aplicación que se va a testear"
+                },
+                {
+                    "id": "inicio-1",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": "",
+                    "comment": "Abre la página de Inicio de la aplicación"
+                },
+                {
+                    "id": "inicio-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Inicio\"]",
+                    "value": "20000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Inicio'"
+                },
+                {
+                    "id": "desconexion-inicial-1",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Desconectarse'))",
+                    "value": "contieneDesconectarse"
+                },
+                {
+                    "id": "desconexion-inicial-2",
+                    "command": "if",
+                    "target": "${contieneDesconectarse}",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-3",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                },
+                {
+                    "id": "desconexion-inicial-4",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-5",
+                    "command": "assertText",
+                    "target": "xpath=//li[1]/a[1]",
+                    "value": "Conectarse",
+                    "comment": "Muestra enlace: 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Conectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Login 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Login 1'"
+                },
+                {
+                    "id": "borrar-todo-con-3",
+                    "command": "type",
+                    "target": "name=usuario",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'usuario'"
+                },
+                {
+                    "id": "borrar-todo-con-4",
+                    "command": "type",
+                    "target": "name=password",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'password'"
+                },
+                {
+                    "id": "borrar-todo-con-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Identificar']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Identificar'"
+                },
+                {
+                    "id": "borrar-todo-con-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Administrador",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Administrador'"
+                },
+                {
+                    "id": "borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Administrador - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Administrador - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-con-3",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                },
+                {
+                    "id": "borrar-todo-con-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Administrador - Borrar todo 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Administrador - Borrar todo 1'"
+                },
+                {
+                    "id": "borrar-todo-con-5",
+                    "command": "click",
+                    "target": "name=demo",
+                    "value": "",
+                    "comment": "Hace clic en la casilla 'demo'"
+                },
+                {
+                    "id": "borrar-todo-con-6",
+                    "command": "assertChecked",
+                    "target": "xpath=//input[@name=\"demo\"]",
+                    "value": "",
+                    "comment": "La casilla 'demo' está marcada"
+                },
+                {
+                    "id": "borrar-todo-con-7",
+                    "command": "click",
+                    "target": "xpath=//input[@name='borrar' and @value='Sí']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
+                },
+                {
+                    "id": "borrar-todo-con-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Administrador - Borrar todo 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Administrador - Borrar todo 2'"
+                },
+                {
+                    "id": "borrar-todo-con-9",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
+                    "value": "detectadoSQLite"
+                },
+                {
+                    "id": "borrar-todo-con-10",
+                    "command": "if",
+                    "target": "${detectadoSQLite}",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: SQLite.",
+                    "comment": "Muestra mensaje (1/6): 'Sistema Gestor de Bases de Datos: SQLite.'"
+                },
+                {
+                    "id": "borrar-todo-con-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Tabla Usuarios borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/6): 'Tabla Usuarios borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-13",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla Personas borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (3/6): 'Tabla Personas borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-14",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (4/6): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-15",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (5/6): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-16",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (6/6): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-17",
+                    "command": "else",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-18",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: MySQL.",
+                    "comment": "Muestra mensaje (1/7): 'Sistema Gestor de Bases de Datos: MySQL.'"
+                },
+                {
+                    "id": "borrar-todo-con-19",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Base de datos borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/7): 'Base de datos borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-20",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Base de datos creada correctamente.",
+                    "comment": "Muestra mensaje (3/7): 'Base de datos creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-21",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Base de datos seleccionada correctamente.",
+                    "comment": "Muestra mensaje (4/7): 'Base de datos seleccionada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-22",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (5/7): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-23",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (6/7): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-24",
+                    "command": "assertText",
+                    "target": "xpath=//p[7]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (7/7): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-25",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-26",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Volver'"
+                },
+                {
+                    "id": "borrar-todo-con-27",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Inicio'"
+                },
+                {
+                    "id": "confirma-contrasena-1-1",
+                    "title": "(TEST) Insertar > Inserta correctamente",
+                    "command": "click",
+                    "target": "linkText=Usuarios",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Usuarios'"
+                },
+                {
+                    "id": "confirma-contrasena-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Inicio'"
+                },
+                {
+                    "id": "confirma-contrasena-1-3",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Añadir registro'"
+                },
+                {
+                    "id": "confirma-contrasena-1-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Añadir 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Añadir 1'"
+                },
+                {
+                    "id": "confirma-contrasena-1-5",
+                    "command": "storeElementCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "confirma-contrasena-1-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas"
+                },
+                {
+                    "id": "confirma-contrasena-1-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Usuario:"
+                },
+                {
+                    "id": "confirma-contrasena-1-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Contraseña:"
+                },
+                {
+                    "id": "confirma-contrasena-1-9",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[1]",
+                    "value": "Repita la contraseña:"
+                },
+                {
+                    "id": "confirma-contrasena-1-10",
+                    "command": "assertText",
+                    "target": "xpath=//tr[4]/td[1]",
+                    "value": "Nivel:"
+                },
+                {
+                    "id": "confirma-contrasena-1-11",
+                    "command": "type",
+                    "target": "name=usuario",
+                    "value": "prueba-1-1"
+                },
+                {
+                    "id": "confirma-contrasena-1-12",
+                    "command": "type",
+                    "target": "name=password",
+                    "value": "prueba-1-2"
+                },
+                {
+                    "id": "confirma-contrasena-1-13",
+                    "command": "type",
+                    "target": "name=password2",
+                    "value": "prueba-1-2"
+                },
+                {
+                    "id": "confirma-contrasena-1-14",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Añadir']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Añadir'"
+                },
+                {
+                    "id": "confirma-contrasena-1-15",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Añadir 2'"
+                },
+                {
+                    "id": "confirma-contrasena-1-16",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "confirma-contrasena-2-1",
+                    "title": "(TEST) Insertar > Aviso Contraseñas no coinciden",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-usuarios/insertar-2.php?usuario=prueba-2-1&password=prueba-2-2&password2=",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con contraseñas no coincidentes"
+                },
+                {
+                    "id": "confirma-contrasena-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Añadir 2'"
+                },
+                {
+                    "id": "confirma-contrasena-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Las contraseñas no coinciden."
+                },
+                {
+                    "id": "confirma-contrasena-2-5",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "confirma-contrasena-2-6",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "confirma-contrasena-3-1",
+                    "title": "(TEST) Insertar > Usuario y contraseñas demasiado largas",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-usuarios/insertar-2.php?usuario=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&password=abcdefghi1abcdefghi2a&password2=abcdefghi1abcdefghi2a&nivel=10",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con valores demasiado largos"
+                },
+                {
+                    "id": "confirma-contrasena-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Añadir 2'"
+                },
+                {
+                    "id": "confirma-contrasena-3-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "El nombre de usuario no puede tener más de 20 caracteres."
+                },
+                {
+                    "id": "confirma-contrasena-3-4",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "La contraseña no puede tener más de 20 caracteres."
+                },
+                {
+                    "id": "confirma-contrasena-3-5",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "confirma-contrasena-3-6",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "2",
+                    "comment": "Muestra exactamente 2 avisos"
+                },
+                {
+                    "id": "confirma-contrasena-4-1",
+                    "title": "(TEST) Insertar > Contraseñas demasiado largas",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-usuarios/insertar-2.php?usuario=prueba-4-1&password=abcdefghi1abcdefghi2a&password2=abcdefghi1abcdefghi2a&nivel=10",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con valores demasiado largos"
+                },
+                {
+                    "id": "confirma-contrasena-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Añadir 2'"
+                },
+                {
+                    "id": "confirma-contrasena-4-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "La contraseña no puede tener más de 20 caracteres.",
+                    "comment": "Muestra aviso: 'La contraseña no puede tener más de 20 caracteres.'"
+                },
+                {
+                    "id": "confirma-contrasena-4-4",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "confirma-contrasena-4-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "confirma-contrasena-5-1",
+                    "title": "(TEST) Insertar > Contraseñas demasiado largas y distintas (1)",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-usuarios/insertar-2.php?usuario=prueba-5&password=prueba-5&password2=abcdefghi1abcdefghi2a&nivel=10",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con contraseñas no coincidentes"
+                },
+                {
+                    "id": "confirma-contrasena-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Añadir 2'"
+                },
+                {
+                    "id": "confirma-contrasena-5-4",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Las contraseñas no coinciden.",
+                    "comment": "Muestra aviso: 'Las contraseñas no coinciden.'"
+                },
+                {
+                    "id": "confirma-contrasena-5-5",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "confirma-contrasena-5-6",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "confirma-contrasena-6-1",
+                    "title": "(TEST) Insertar > Contraseñas demasiado largas y distintas (2)",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-usuarios/insertar-2.php?usuario=prueba-4&password=abcdefghi1abcdefghi2a&password2=prueba-4&nivel=10",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con contraseñas no coincidentes"
+                },
+                {
+                    "id": "confirma-contrasena-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Usuarios - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Usuarios - Añadir 2'"
+                },
+                {
+                    "id": "confirma-contrasena-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Las contraseñas no coinciden."
+                },
+                {
+                    "id": "confirma-contrasena-6-7",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "confirma-contrasena-6-8",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "confirma-contrasena-6-9",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Volver'"
+                },
+                {
+                    "id": "confirma-contrasena-6-10",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Inicio'"
+                },
+                {
+                    "id": "confirma-contrasena-6-11",
+                    "command": "assertText",
+                    "target": "xpath=//li[4]/a",
+                    "value": "Desconectarse"
+                },
+                {
+                    "id": "confirma-contrasena-7-1",
+                    "title": "(TEST) Desconexión final",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                },
+                {
+                    "id": "confirma-contrasena-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Inicio'"
+                },
+                {
+                    "id": "confirma-contrasena-7-3",
+                    "command": "assertText",
+                    "target": "xpath=//li/a",
+                    "value": "Conectarse"
+                },
+                {
+                    "id": "final-1",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Confirma contraseña - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Confirma contraseña - Inicio'. Test terminado correctamente"
+                }
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "id": "suite",
+            "name": "Suite",
+            "persistSession": false,
+            "parallel": false,
+            "timeout": 300,
+            "tests": [
+                "test-completo"
+            ]
+        }
+    ],
+    "plugins": []
+}

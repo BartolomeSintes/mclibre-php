@@ -1,0 +1,642 @@
+{
+    "id": "mclibre-bases-de-datos-3-b-usuario-miron-tests-minimo",
+    "version": "2024-02-08",
+    "name": "Test ejercicio Bases de datos (3 B) Usuario mirón (Mínimo)",
+    "url": "http://localhost",
+    "tests": [
+        {
+            "id": "test-completo",
+            "name": "Test ejercicio Bases de datos (3 B) Usuario mirón (Mínimo)",
+            "comment": "Comprueba todo",
+            "commands": [
+                {
+                    "id": "definiciones-generales-1",
+                    "command": "store",
+                    "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-3-b/db-usuario-miron",
+                    "value": "urlBase",
+                    "comment": "Define la ruta de la aplicación que se va a testear"
+                },
+                {
+                    "id": "inicio-1",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": "",
+                    "comment": "Abre la página de Inicio de la aplicación"
+                },
+                {
+                    "id": "inicio-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "20000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "desconexion-inicial-1",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Desconectarse'))",
+                    "value": "contieneDesconectarse"
+                },
+                {
+                    "id": "desconexion-inicial-2",
+                    "command": "if",
+                    "target": "${contieneDesconectarse}",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-3",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                },
+                {
+                    "id": "desconexion-inicial-4",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-5",
+                    "command": "assertText",
+                    "target": "xpath=//li[1]/a[1]",
+                    "value": "Conectarse",
+                    "comment": "Muestra enlace: 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Conectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Login 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Login 1'"
+                },
+                {
+                    "id": "borrar-todo-con-3",
+                    "command": "type",
+                    "target": "name=usuario",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'usuario'"
+                },
+                {
+                    "id": "borrar-todo-con-4",
+                    "command": "type",
+                    "target": "name=password",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'password'"
+                },
+                {
+                    "id": "borrar-todo-con-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Identificar']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Identificar'"
+                },
+                {
+                    "id": "borrar-todo-con-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Administrador",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Administrador'"
+                },
+                {
+                    "id": "borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Administrador - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Administrador - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-con-3",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                },
+                {
+                    "id": "borrar-todo-con-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Administrador - Borrar todo 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Administrador - Borrar todo 1'"
+                },
+                {
+                    "id": "borrar-todo-con-5",
+                    "command": "click",
+                    "target": "name=demo",
+                    "value": "",
+                    "comment": "Hace clic en la casilla 'demo'"
+                },
+                {
+                    "id": "borrar-todo-con-6",
+                    "command": "assertChecked",
+                    "target": "xpath=//input[@name=\"demo\"]",
+                    "value": "",
+                    "comment": "La casilla 'demo' está marcada"
+                },
+                {
+                    "id": "borrar-todo-con-7",
+                    "command": "click",
+                    "target": "xpath=//input[@name='borrar' and @value='Sí']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
+                },
+                {
+                    "id": "borrar-todo-con-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Administrador - Borrar todo 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Administrador - Borrar todo 2'"
+                },
+                {
+                    "id": "borrar-todo-con-9",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
+                    "value": "detectadoSQLite"
+                },
+                {
+                    "id": "borrar-todo-con-10",
+                    "command": "if",
+                    "target": "${detectadoSQLite}",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: SQLite.",
+                    "comment": "Muestra mensaje (1/6): 'Sistema Gestor de Bases de Datos: SQLite.'"
+                },
+                {
+                    "id": "borrar-todo-con-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Tabla Usuarios borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/6): 'Tabla Usuarios borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-13",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla Personas borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (3/6): 'Tabla Personas borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-14",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (4/6): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-15",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (5/6): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-16",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (6/6): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-17",
+                    "command": "else",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-18",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: MySQL.",
+                    "comment": "Muestra mensaje (1/7): 'Sistema Gestor de Bases de Datos: MySQL.'"
+                },
+                {
+                    "id": "borrar-todo-con-19",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Base de datos borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/7): 'Base de datos borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-20",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Base de datos creada correctamente.",
+                    "comment": "Muestra mensaje (3/7): 'Base de datos creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-21",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Base de datos seleccionada correctamente.",
+                    "comment": "Muestra mensaje (4/7): 'Base de datos seleccionada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-22",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (5/7): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-23",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (6/7): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-24",
+                    "command": "assertText",
+                    "target": "xpath=//p[7]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (7/7): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-25",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-26",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Volver'"
+                },
+                {
+                    "id": "borrar-todo-con-27",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+
+                {
+                    "id": "usuario-miron-1-1",
+                    "title": "(TEST) Insertar > Inserta correctamente",
+                    "command": "click",
+                    "target": "linkText=Usuarios",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Usuarios'"
+                },
+                {
+                    "id": "usuario-miron-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Usuarios - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Usuarios - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-1-3",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Añadir registro'"
+                },
+                {
+                    "id": "usuario-miron-1-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Usuarios - Añadir 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Usuarios - Añadir 1'"
+                },
+                {
+                    "id": "usuario-miron-1-5",
+                    "command": "storeElementCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "usuario-miron-1-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "3",
+                    "comment": "La tabla contiene exactamente 3 filas"
+                },
+                {
+                    "id": "usuario-miron-1-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Usuario:"
+                },
+                {
+                    "id": "usuario-miron-1-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Contraseña:"
+                },
+                {
+                    "id": "usuario-miron-1-9",
+                    "command": "assertText",
+                    "target": "xpath=//option[1]",
+                    "value": "Usuario Mirón"
+                },
+                {
+                    "id": "usuario-miron-1-10",
+                    "command": "type",
+                    "target": "name=usuario",
+                    "value": "miron"
+                },
+                {
+                    "id": "usuario-miron-1-11",
+                    "command": "type",
+                    "target": "name=password",
+                    "value": "mirón"
+                },
+                {
+                    "id": "usuario-miron-1-12",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Añadir']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Añadir'"
+                },
+                {
+                    "id": "usuario-miron-1-13",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Usuarios - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Usuarios - Añadir 2'"
+                },
+                {
+                    "id": "usuario-miron-1-14",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "usuario-miron-2-1",
+                    "title": "(TEST) Listar > Muestra usuario mirón",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-usuarios/listar.php",
+                    "value": "",
+                    "comment": "Abre directamente la página Usuarios > Listar"
+                },
+                {
+                    "id": "usuario-miron-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Usuarios - Listar\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Usuarios - Listar'"
+                },
+                {
+                    "id": "usuario-miron-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "miron"
+                },
+                {
+                    "id": "usuario-miron-2-4",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[2]",
+                    "value": "6a1e2c281a3c98e7fe924a1fb5471bd566ea92f9d84bf3aef37e2b6a8afe081b"
+                },
+                {
+                    "id": "usuario-miron-2-5",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[3]",
+                    "value": "Usuario Mirón"
+                },
+                {
+                    "id": "usuario-miron-3-1",
+                    "title": "(TEST) Entrar como Usuario mirón",
+                    "command": "open",
+                    "target": "${urlBase}/acceso/logout.php",
+                    "value": "",
+                    "comment": "Desconecta al usuario"
+                },
+                {
+                    "id": "usuario-miron-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-3-3",
+                    "command": "assertText",
+                    "target": "xpath=//li/a",
+                    "value": "Conectarse"
+                },
+                {
+                    "id": "usuario-miron-3-4",
+                    "command": "open",
+                    "target": "${urlBase}/acceso/login-2.php?usuario=miron&password=mirón",
+                    "value": ".*",
+                    "comment": "Accede directamente como usuario 'miron' y contraseña 'mirón'"
+                },
+                {
+                    "id": "usuario-miron-3-5",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-3-6",
+                    "command": "assertText",
+                    "target": "xpath=//li[1]/a",
+                    "value": "Personas"
+                },
+                {
+                    "id": "usuario-miron-3-7",
+                    "command": "assertText",
+                    "target": "xpath=//li[2]/a",
+                    "value": "Desconectarse"
+                },
+                {
+                    "id": "usuario-miron-3-8",
+                    "command": "click",
+                    "target": "linkText=Personas",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Personas'"
+                },
+                {
+                    "id": "usuario-miron-3-9",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Personas - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Personas - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-3-10",
+                    "command": "assertText",
+                    "target": "xpath=//li[1]/a",
+                    "value": "Volver",
+                    "comment": "Muestra enlace: 'Volver'"
+                },
+                {
+                    "id": "usuario-miron-3-11",
+                    "command": "assertText",
+                    "target": "xpath=//li[2]/a",
+                    "value": "Listar",
+                    "comment": "Muestra enlace: 'Listar'"
+                },
+                {
+                    "id": "usuario-miron-3-12",
+                    "command": "click",
+                    "target": "linkText=Listar",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Listar'"
+                },
+                {
+                    "id": "usuario-miron-3-13",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Personas - Listar\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Personas - Listar'"
+                },
+                {
+                    "id": "usuario-miron-3-14",
+                    "command": "storeElementCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "usuario-miron-3-15",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas"
+                },
+                {
+                    "id": "usuario-miron-3-16",
+                    "command": "assertText",
+                    "target": "xpath=//tr/th[1]",
+                    "value": "Nombre",
+                    "comment": "La primera celda de la fila de cabecera de la tabla contiene 'Nombre'"
+                },
+                {
+                    "id": "usuario-miron-3-17",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "Mengánez"
+                },
+                {
+                    "id": "usuario-miron-3-18",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[3]",
+                    "value": "161803398",
+                    "comment": "La tercera celda de la tercera fila de la tabla contiene '161803398'"
+                },
+                {
+                    "id": "usuario-miron-3-19",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[4]",
+                    "value": "pepito.conejo@example.com"
+                },
+                {
+                    "id": "usuario-miron-4-1",
+                    "title": "(TEST) Comprueba que no puede entrar en Añadir",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-1.php",
+                    "value": "",
+                    "comment": "Intenta abrir directamente la página Personas > Añadir"
+                },
+                {
+                    "id": "usuario-miron-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-5-1",
+                    "title": "(TEST) Comprueba que no puede entrar en Borrar",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/borrar-1.php",
+                    "value": "",
+                    "comment": "Intenta abrir directamente la página Personas > Borrar 1"
+                },
+                {
+                    "id": "usuario-miron-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-6-1",
+                    "title": "(TEST) Comprueba que no puede entrar en Modificar",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/modificar-1.php",
+                    "value": "",
+                    "comment": "Intenta abrir directamente la página Personas > Modificar 1"
+                },
+                {
+                    "id": "usuario-miron-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-6-3",
+                    "command": "assertText",
+                    "target": "xpath=//li[2]/a",
+                    "value": "Desconectarse"
+                },
+                {
+                    "id": "usuario-miron-7-1",
+                    "title": "(TEST) Desconexión final",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                },
+                {
+                    "id": "usuario-miron-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'"
+                },
+                {
+                    "id": "usuario-miron-7-3",
+                    "command": "assertText",
+                    "target": "xpath=//li/a",
+                    "value": "Conectarse"
+                },
+                {
+                    "id": "final-1",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Usuario mirón - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Usuario mirón - Inicio'. Test terminado correctamente"
+                }
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "id": "suite",
+            "name": "Suite",
+            "persistSession": false,
+            "parallel": false,
+            "timeout": 300,
+            "tests": [
+                "test-completo"
+            ]
+        }
+    ],
+    "plugins": []
+}

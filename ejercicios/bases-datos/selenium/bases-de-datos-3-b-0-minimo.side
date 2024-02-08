@@ -1,0 +1,301 @@
+{
+    "id": "mclibre-bases-de-datos-3-b-0-tests-minimo",
+    "version": "2024-02-08",
+    "name": "Test ejercicio Bases de datos (3 B) 0 (Mínimo)",
+    "url": "http://localhost",
+    "tests": [
+        {
+            "id": "test-completo",
+            "name": "Test ejercicio Bases de datos (3 B) 0 (Mínimo)",
+            "comment": "Comprueba todo",
+            "commands": [
+                {
+                    "id": "definiciones-generales-1",
+                    "command": "store",
+                    "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-3-b/bases-de-datos-3-b-0",
+                    "value": "urlBase",
+                    "comment": "Define la ruta de la aplicación que se va a testear"
+                },
+                {
+                    "id": "inicio-1",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": "",
+                    "comment": "Abre la página de Inicio de la aplicación"
+                },
+                {
+                    "id": "inicio-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "20000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Inicio'"
+                },
+                {
+                    "id": "desconexion-inicial-1",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Desconectarse'))",
+                    "value": "contieneDesconectarse"
+                },
+                {
+                    "id": "desconexion-inicial-2",
+                    "command": "if",
+                    "target": "${contieneDesconectarse}",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-3",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                },
+                {
+                    "id": "desconexion-inicial-4",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-5",
+                    "command": "assertText",
+                    "target": "xpath=//li[1]/a[1]",
+                    "value": "Conectarse",
+                    "comment": "Muestra enlace: 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Conectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Login 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Login 1'"
+                },
+                {
+                    "id": "borrar-todo-con-3",
+                    "command": "type",
+                    "target": "name=usuario",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'usuario'"
+                },
+                {
+                    "id": "borrar-todo-con-4",
+                    "command": "type",
+                    "target": "name=password",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'password'"
+                },
+                {
+                    "id": "borrar-todo-con-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Identificar']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Identificar'"
+                },
+                {
+                    "id": "borrar-todo-con-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-1",
+                    "command": "click",
+                    "target": "linkText=Administrador",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Administrador'"
+                },
+                {
+                    "id": "borrar-todo-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Administrador - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Administrador - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-3",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                },
+                {
+                    "id": "borrar-todo-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Administrador - Borrar todo 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Administrador - Borrar todo 1'"
+                },
+                {
+                    "id": "borrar-todo-5",
+                    "command": "click",
+                    "target": "xpath=//input[@name='borrar' and @value='Sí']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
+                },
+                {
+                    "id": "borrar-todo-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Administrador - Borrar todo 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Administrador - Borrar todo 2'"
+                },
+                {
+                    "id": "borrar-todo-7",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
+                    "value": "detectadoSQLite"
+                },
+                {
+                    "id": "borrar-todo-8",
+                    "command": "if",
+                    "target": "${detectadoSQLite}",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-9",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: SQLite.",
+                    "comment": "Muestra mensaje (1/6): 'Sistema Gestor de Bases de Datos: SQLite.'"
+                },
+                {
+                    "id": "borrar-todo-10",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Tabla Usuarios borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/6): 'Tabla Usuarios borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla Personas borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (3/6): 'Tabla Personas borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (4/6): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-13",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (5/6): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-14",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (6/6): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-15",
+                    "command": "else",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-16",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: MySQL.",
+                    "comment": "Muestra mensaje (1/7): 'Sistema Gestor de Bases de Datos: MySQL.'"
+                },
+                {
+                    "id": "borrar-todo-17",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Base de datos borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/7): 'Base de datos borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-18",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Base de datos creada correctamente.",
+                    "comment": "Muestra mensaje (3/7): 'Base de datos creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-19",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Base de datos seleccionada correctamente.",
+                    "comment": "Muestra mensaje (4/7): 'Base de datos seleccionada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-20",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (5/7): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-21",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (6/7): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-22",
+                    "command": "assertText",
+                    "target": "xpath=//p[7]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (7/7): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-23",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-24",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Volver'"
+                },
+                {
+                    "id": "borrar-todo-25",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Inicio'"
+                },
+                {
+                    "id": "final-1",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Bases de datos (3 B) 0 - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Bases de datos (3 B) 0 - Inicio'. Test terminado correctamente"
+                }
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "id": "suite",
+            "name": "Suite",
+            "persistSession": false,
+            "parallel": false,
+            "timeout": 300,
+            "tests": [
+                "test-completo"
+            ]
+        }
+    ],
+    "plugins": []
+}

@@ -1,0 +1,878 @@
+{
+    "id": "mclibre-bases-de-datos-3-b-datos-repetidos-tests-minimo",
+    "version": "2024-02-08",
+    "name": "Test ejercicio Bases de datos (3 B) Datos repetidos (Mínimo)",
+    "url": "http://localhost",
+    "tests": [
+        {
+            "id": "test-completo",
+            "name": "Test ejercicio Bases de datos (3 B) Datos repetidos (Mínimo)",
+            "comment": "Comprueba todo",
+            "commands": [
+                {
+                    "id": "definiciones-generales-1",
+                    "command": "store",
+                    "target": "/iaw/php/ejercicios/bases-datos/bases-de-datos-3-b/db-datos-repetidos",
+                    "value": "urlBase",
+                    "comment": "Define la ruta de la aplicación que se va a testear"
+                },
+                {
+                    "id": "inicio-1",
+                    "command": "open",
+                    "target": "${urlBase}/index.php",
+                    "value": "",
+                    "comment": "Abre la página de Inicio de la aplicación"
+                },
+                {
+                    "id": "inicio-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
+                    "value": "20000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Inicio'"
+                },
+                {
+                    "id": "desconexion-inicial-1",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Desconectarse'))",
+                    "value": "contieneDesconectarse"
+                },
+                {
+                    "id": "desconexion-inicial-2",
+                    "command": "if",
+                    "target": "${contieneDesconectarse}",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-3",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                },
+                {
+                    "id": "desconexion-inicial-4",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "desconexion-inicial-5",
+                    "command": "assertText",
+                    "target": "xpath=//li[1]/a[1]",
+                    "value": "Conectarse",
+                    "comment": "Muestra enlace: 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Conectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Conectarse'"
+                },
+                {
+                    "id": "borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Login 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Login 1'"
+                },
+                {
+                    "id": "borrar-todo-con-3",
+                    "command": "type",
+                    "target": "name=usuario",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'usuario'"
+                },
+                {
+                    "id": "borrar-todo-con-4",
+                    "command": "type",
+                    "target": "name=password",
+                    "value": "root",
+                    "comment": "Escribe 'root' en el campo 'password'"
+                },
+                {
+                    "id": "borrar-todo-con-5",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Identificar']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Identificar'"
+                },
+                {
+                    "id": "borrar-todo-con-6",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-con-1",
+                    "command": "click",
+                    "target": "linkText=Administrador",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Administrador'"
+                },
+                {
+                    "id": "borrar-todo-con-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Administrador - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Administrador - Inicio'"
+                },
+                {
+                    "id": "borrar-todo-con-3",
+                    "command": "click",
+                    "target": "linkText=Borrar todo",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                },
+                {
+                    "id": "borrar-todo-con-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Administrador - Borrar todo 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Administrador - Borrar todo 1'"
+                },
+                {
+                    "id": "borrar-todo-con-5",
+                    "command": "click",
+                    "target": "name=demo",
+                    "value": "",
+                    "comment": "Hace clic en la casilla 'demo'"
+                },
+                {
+                    "id": "borrar-todo-con-6",
+                    "command": "assertChecked",
+                    "target": "xpath=//input[@name=\"demo\"]",
+                    "value": "",
+                    "comment": "La casilla 'demo' está marcada"
+                },
+                {
+                    "id": "borrar-todo-con-7",
+                    "command": "click",
+                    "target": "xpath=//input[@name='borrar' and @value='Sí']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
+                },
+                {
+                    "id": "borrar-todo-con-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Administrador - Borrar todo 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Administrador - Borrar todo 2'"
+                },
+                {
+                    "id": "borrar-todo-con-9",
+                    "command": "executeScript",
+                    "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
+                    "value": "detectadoSQLite"
+                },
+                {
+                    "id": "borrar-todo-con-10",
+                    "command": "if",
+                    "target": "${detectadoSQLite}",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-11",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: SQLite.",
+                    "comment": "Muestra mensaje (1/6): 'Sistema Gestor de Bases de Datos: SQLite.'"
+                },
+                {
+                    "id": "borrar-todo-con-12",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Tabla Usuarios borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/6): 'Tabla Usuarios borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-13",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Tabla Personas borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (3/6): 'Tabla Personas borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-14",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (4/6): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-15",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (5/6): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-16",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (6/6): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-17",
+                    "command": "else",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-18",
+                    "command": "assertText",
+                    "target": "xpath=//p[1]",
+                    "value": "Sistema Gestor de Bases de Datos: MySQL.",
+                    "comment": "Muestra mensaje (1/7): 'Sistema Gestor de Bases de Datos: MySQL.'"
+                },
+                {
+                    "id": "borrar-todo-con-19",
+                    "command": "assertText",
+                    "target": "xpath=//p[2]",
+                    "value": "Base de datos borrada correctamente (si existía).",
+                    "comment": "Muestra mensaje (2/7): 'Base de datos borrada correctamente (si existía).'"
+                },
+                {
+                    "id": "borrar-todo-con-20",
+                    "command": "assertText",
+                    "target": "xpath=//p[3]",
+                    "value": "Base de datos creada correctamente.",
+                    "comment": "Muestra mensaje (3/7): 'Base de datos creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-21",
+                    "command": "assertText",
+                    "target": "xpath=//p[4]",
+                    "value": "Base de datos seleccionada correctamente.",
+                    "comment": "Muestra mensaje (4/7): 'Base de datos seleccionada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-22",
+                    "command": "assertText",
+                    "target": "xpath=//p[5]",
+                    "value": "Tabla Usuarios creada correctamente.",
+                    "comment": "Muestra mensaje (5/7): 'Tabla Usuarios creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-23",
+                    "command": "assertText",
+                    "target": "xpath=//p[6]",
+                    "value": "Registro de usuario creado correctamente.",
+                    "comment": "Muestra mensaje (6/7): 'Registro de usuario creado correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-24",
+                    "command": "assertText",
+                    "target": "xpath=//p[7]",
+                    "value": "Tabla Personas creada correctamente.",
+                    "comment": "Muestra mensaje (7/7): 'Tabla Personas creada correctamente.'"
+                },
+                {
+                    "id": "borrar-todo-con-25",
+                    "command": "end",
+                    "target": "",
+                    "value": ""
+                },
+                {
+                    "id": "borrar-todo-con-26",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Volver'"
+                },
+                {
+                    "id": "borrar-todo-con-27",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Inicio'"
+                },
+                {
+                    "id": "datos-repetidos-1-1",
+                    "title": "(TEST) Insertar registro nuevo",
+                    "command": "click",
+                    "target": "linkText=Personas",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Personas'"
+                },
+                {
+                    "id": "datos-repetidos-1-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Inicio'"
+                },
+                {
+                    "id": "datos-repetidos-1-3",
+                    "command": "click",
+                    "target": "linkText=Añadir registro",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Añadir registro'"
+                },
+                {
+                    "id": "datos-repetidos-1-4",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 1\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 1'"
+                },
+                {
+                    "id": "datos-repetidos-1-5",
+                    "command": "storeElementCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "datos-repetidos-1-6",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "4",
+                    "comment": "La tabla contiene exactamente 4 filas"
+                },
+                {
+                    "id": "datos-repetidos-1-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[1]",
+                    "value": "Nombre:",
+                    "comment": "La primera celda de la primera fila de la tabla contiene 'Nombre:'"
+                },
+                {
+                    "id": "datos-repetidos-1-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[1]",
+                    "value": "Apellidos:",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'Apellidos:'"
+                },
+                {
+                    "id": "datos-repetidos-1-9",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[1]",
+                    "value": "Teléfono:",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'Teléfono:'"
+                },
+                {
+                    "id": "datos-repetidos-1-10",
+                    "command": "assertText",
+                    "target": "xpath=//tr[4]/td[1]",
+                    "value": "Correo:",
+                    "comment": "La primera celda de la cuarta fila de la tabla contiene 'Correo:'"
+                },
+                {
+                    "id": "datos-repetidos-1-11",
+                    "command": "type",
+                    "target": "name=nombre",
+                    "value": "AAA",
+                    "comment": "Escribe 'AAA' en la caja de texto 'nombre'"
+                },
+                {
+                    "id": "datos-repetidos-1-12",
+                    "command": "type",
+                    "target": "name=apellidos",
+                    "value": "BBB",
+                    "comment": "Escribe 'BBB' en la caja de texto 'apellidos'"
+                },
+                {
+                    "id": "datos-repetidos-1-13",
+                    "command": "type",
+                    "target": "name=telefono",
+                    "value": "123"
+                },
+                {
+                    "id": "datos-repetidos-1-14",
+                    "command": "type",
+                    "target": "name=correo",
+                    "value": "aaa.bbb@example.com"
+                },
+                {
+                    "id": "datos-repetidos-1-15",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Añadir']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Añadir'"
+                },
+                {
+                    "id": "datos-repetidos-1-16",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-1-17",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "datos-repetidos-2-1",
+                    "title": "(TEST) Mismos datos. Muestra aviso",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=BBB&telefono=123&correo=aaa.bbb@example.com",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro que ya existe"
+                },
+                {
+                    "id": "datos-repetidos-2-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-2-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "El registro ya existe.",
+                    "comment": "Muestra aviso: 'El registro ya existe.'"
+                },
+                {
+                    "id": "datos-repetidos-2-4",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-2-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "datos-repetidos-3-1",
+                    "title": "(TEST) Mismo Nombre. Inserta registro",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=CCC&telefono=567&correo=aaa@example.com",
+                    "value": "",
+                    "comment": "Inserta directamente un registro"
+                },
+                {
+                    "id": "datos-repetidos-3-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-3-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "datos-repetidos-4-1",
+                    "title": "(TEST) Mismos Apellidos. Inserta registro",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=CCC&apellidos=BBB&telefono=678&correo=bbb@example.com",
+                    "value": "",
+                    "comment": "Inserta directamente un registro"
+                },
+                {
+                    "id": "datos-repetidos-4-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-4-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "datos-repetidos-5-1",
+                    "title": "(TEST) Mismo Nombre y Apellidos. No confirma inserción",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=BBB&telefono=456&correo=a@example.com",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con valores similares a otro que ya existe"
+                },
+                {
+                    "id": "datos-repetidos-5-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-5-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Existe un registro con datos similares.",
+                    "comment": "Muestra aviso: 'Existe un registro con datos similares.'"
+                },
+                {
+                    "id": "datos-repetidos-5-4",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-5-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "datos-repetidos-5-6",
+                    "command": "assertText",
+                    "target": "xpath=//form/p[1]",
+                    "value": "Por favor, confirme que desea insertar el registro.",
+                    "comment": "Muestra mensaje: 'Por favor, confirme que desea insertar el registro.'"
+                },
+                {
+                    "id": "datos-repetidos-5-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='No']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'No'"
+                },
+                {
+                    "id": "datos-repetidos-5-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Inicio'"
+                },
+                {
+                    "id": "datos-repetidos-6-1",
+                    "title": "(TEST) Mismo Nombre y Apellidos. Confirma inserción",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=AAA&apellidos=BBB&telefono=456&correo=a@example.com",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con valores similares a otro que ya existe"
+                },
+                {
+                    "id": "datos-repetidos-6-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-6-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Existe un registro con datos similares.",
+                    "comment": "Muestra aviso: 'Existe un registro con datos similares.'"
+                },
+                {
+                    "id": "datos-repetidos-6-4",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-6-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "datos-repetidos-6-6",
+                    "command": "assertText",
+                    "target": "xpath=//form/p[1]",
+                    "value": "Por favor, confirme que desea insertar el registro.",
+                    "comment": "Muestra mensaje: 'Por favor, confirme que desea insertar el registro.'"
+                },
+                {
+                    "id": "datos-repetidos-6-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Sí']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Sí'"
+                },
+                {
+                    "id": "datos-repetidos-6-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 3\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 3'"
+                },
+                {
+                    "id": "datos-repetidos-6-9",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "datos-repetidos-7-1",
+                    "title": "(TEST) Mismo Correo. Confirma inserción",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=XXX&apellidos=YYY&telefono=123&correo=xxx.yyy@example.com",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con valores similares a otro que ya existe"
+                },
+                {
+                    "id": "datos-repetidos-7-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-7-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Existe un registro con datos similares.",
+                    "comment": "Muestra aviso: 'Existe un registro con datos similares.'"
+                },
+                {
+                    "id": "datos-repetidos-7-4",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-7-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "datos-repetidos-7-6",
+                    "command": "assertText",
+                    "target": "xpath=//form/p[1]",
+                    "value": "Por favor, confirme que desea insertar el registro.",
+                    "comment": "Muestra mensaje: 'Por favor, confirme que desea insertar el registro.'"
+                },
+                {
+                    "id": "datos-repetidos-7-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Sí']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Sí'"
+                },
+                {
+                    "id": "datos-repetidos-7-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 3\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 3'"
+                },
+                {
+                    "id": "datos-repetidos-7-9",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "datos-repetidos-8-1",
+                    "title": "(TEST) Mismo Teléfono. Confirma inserción",
+                    "command": "open",
+                    "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=XXX&apellidos=YYY&telefono=789&correo=aaa.bbb@example.com",
+                    "value": "",
+                    "comment": "Intenta insertar directamente un registro con valores similares a otro que ya existe"
+                },
+                {
+                    "id": "datos-repetidos-8-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 2\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 2'"
+                },
+                {
+                    "id": "datos-repetidos-8-3",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Existe un registro con datos similares.",
+                    "comment": "Muestra aviso: 'Existe un registro con datos similares.'"
+                },
+                {
+                    "id": "datos-repetidos-8-4",
+                    "command": "storeElementCount",
+                    "target": "xpath=//*[contains(@class, 'aviso')]",
+                    "value": "cuentaAvisos"
+                },
+                {
+                    "id": "datos-repetidos-8-5",
+                    "command": "assert",
+                    "target": "cuentaAvisos",
+                    "value": "1",
+                    "comment": "Muestra exactamente 1 aviso"
+                },
+                {
+                    "id": "datos-repetidos-8-6",
+                    "command": "assertText",
+                    "target": "xpath=//form/p[1]",
+                    "value": "Por favor, confirme que desea insertar el registro.",
+                    "comment": "Muestra mensaje: 'Por favor, confirme que desea insertar el registro.'"
+                },
+                {
+                    "id": "datos-repetidos-8-7",
+                    "command": "click",
+                    "target": "xpath=//input[@value='Sí']",
+                    "value": "",
+                    "comment": "Hace clic en el botón 'Sí'"
+                },
+                {
+                    "id": "datos-repetidos-8-8",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Añadir 3\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Añadir 3'"
+                },
+                {
+                    "id": "datos-repetidos-8-9",
+                    "command": "assertText",
+                    "target": "xpath=//p",
+                    "value": "Registro creado correctamente.",
+                    "comment": "Muestra mensaje: 'Registro creado correctamente.'"
+                },
+                {
+                    "id": "datos-repetidos-9-1",
+                    "title": "(TEST) Comprueba registros insertados",
+                    "command": "click",
+                    "target": "linkText=Listar",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Listar'"
+                },
+                {
+                    "id": "datos-repetidos-9-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Personas - Listar\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Personas - Listar'"
+                },
+                {
+                    "id": "datos-repetidos-9-3",
+                    "command": "storeElementCount",
+                    "target": "xpath=//tr",
+                    "value": "cuentaFilas"
+                },
+                {
+                    "id": "datos-repetidos-9-4",
+                    "command": "assert",
+                    "target": "cuentaFilas",
+                    "value": "10"
+                },
+                {
+                    "id": "datos-repetidos-9-5",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td",
+                    "value": "AAA"
+                },
+                {
+                    "id": "datos-repetidos-9-6",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[2]",
+                    "value": "BBB"
+                },
+                {
+                    "id": "datos-repetidos-9-7",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[3]",
+                    "value": "123"
+                },
+                {
+                    "id": "datos-repetidos-9-8",
+                    "command": "assertText",
+                    "target": "xpath=//tr[1]/td[4]",
+                    "value": "aaa.bbb@example.com"
+                },
+                {
+                    "id": "datos-repetidos-9-9",
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[2]",
+                    "value": "CCC"
+                },
+                {
+                    "id": "datos-repetidos-9-10",
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[3]",
+                    "value": "456"
+                },
+                {
+                    "id": "datos-repetidos-9-11",
+                    "command": "assertText",
+                    "target": "xpath=//tr[4]/td[4]",
+                    "value": "bbb@example.com"
+                },
+                {
+                    "id": "datos-repetidos-9-12",
+                    "command": "assertText",
+                    "target": "xpath=//tr[8]/td[4]",
+                    "value": "xxx.yyy@example.com"
+                },
+                {
+                    "id": "datos-repetidos-9-13",
+                    "command": "assertText",
+                    "target": "xpath=//tr[9]/td[3]",
+                    "value": "789"
+                },
+                {
+                    "id": "datos-repetidos-9-14",
+                    "command": "click",
+                    "target": "linkText=Volver",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Volver'"
+                },
+                {
+                    "id": "datos-repetidos-9-15",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Inicio'"
+                },
+                {
+                    "id": "datos-repetidos-9-16",
+                    "command": "assertText",
+                    "target": "xpath=//li[4]/a",
+                    "value": "Desconectarse"
+                },
+                {
+                    "id": "datos-repetidos-10-1",
+                    "title": "(TEST) Desconexión final",
+                    "command": "click",
+                    "target": "linkText=Desconectarse",
+                    "value": "",
+                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                },
+                {
+                    "id": "datos-repetidos-10-2",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Inicio'"
+                },
+                {
+                    "id": "datos-repetidos-10-3",
+                    "command": "assertText",
+                    "target": "xpath=//li/a",
+                    "value": "Conectarse"
+                },
+                {
+                    "id": "final-1",
+                    "command": "waitForElementPresent",
+                    "target": "xpath=//h1[.=\"Datos repetidos - Inicio\"]",
+                    "value": "1000",
+                    "comment": "Muestra título h1: 'Datos repetidos - Inicio'. Test terminado correctamente"
+                }
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "id": "suite",
+            "name": "Suite",
+            "persistSession": false,
+            "parallel": false,
+            "timeout": 300,
+            "tests": [
+                "test-completo"
+            ]
+        }
+    ],
+    "plugins": []
+}
