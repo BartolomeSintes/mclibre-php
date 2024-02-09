@@ -1,6 +1,6 @@
 {
     "id": "mclibre-bases-de-datos-3-b-estadisticas-administrador-tests-minimo",
-    "version": "2024-02-08",
+    "version": "2024-02-09",
     "name": "Test ejercicio Bases de datos (3 B) Estadísticas administrador (Mínimo)",
     "url": "http://localhost",
     "tests": [
@@ -21,7 +21,7 @@
                     "command": "open",
                     "target": "${urlBase}/index.php",
                     "value": "",
-                    "comment": "Abre la página de Inicio de la aplicación"
+                    "comment": "Selenium abre la página de Inicio de la aplicación"
                 },
                 {
                     "id": "inicio-2",
@@ -34,26 +34,29 @@
                     "id": "desconexion-inicial-1",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Desconectarse'))",
-                    "value": "contieneDesconectarse"
+                    "value": "detectadoDesconectarse",
+                    "comment": "Selenium busca si se muestra el enlace 'Desconectarse'"
                 },
                 {
                     "id": "desconexion-inicial-2",
                     "command": "if",
-                    "target": "${contieneDesconectarse}",
-                    "value": ""
+                    "target": "${detectadoDesconectarse}",
+                    "value": "",
+                    "comment": "Selenium: estructura 'if'"
                 },
                 {
                     "id": "desconexion-inicial-3",
                     "command": "click",
                     "target": "linkText=Desconectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Desconectarse'"
                 },
                 {
                     "id": "desconexion-inicial-4",
                     "command": "end",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'end'"
                 },
                 {
                     "id": "desconexion-inicial-5",
@@ -67,7 +70,7 @@
                     "command": "click",
                     "target": "linkText=Conectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Conectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Conectarse'"
                 },
                 {
                     "id": "borrar-todo-con-2",
@@ -81,21 +84,21 @@
                     "command": "type",
                     "target": "name=usuario",
                     "value": "root",
-                    "comment": "Escribe 'root' en el campo 'usuario'"
+                    "comment": "Escribe 'root' en la caja de texto 'usuario'"
                 },
                 {
                     "id": "borrar-todo-con-4",
                     "command": "type",
                     "target": "name=password",
                     "value": "root",
-                    "comment": "Escribe 'root' en el campo 'password'"
+                    "comment": "Escribe 'root' en la caja de texto 'password'"
                 },
                 {
                     "id": "borrar-todo-con-5",
                     "command": "click",
                     "target": "xpath=//input[@value='Identificar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Identificar'"
+                    "comment": "Selenium hace clic en el botón 'Identificar'"
                 },
                 {
                     "id": "borrar-todo-con-6",
@@ -109,7 +112,7 @@
                     "command": "click",
                     "target": "linkText=Administrador",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Administrador'"
+                    "comment": "Selenium hace clic en el enlace 'Administrador'"
                 },
                 {
                     "id": "borrar-todo-con-2",
@@ -123,7 +126,7 @@
                     "command": "click",
                     "target": "linkText=Borrar todo",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar todo'"
                 },
                 {
                     "id": "borrar-todo-con-4",
@@ -137,7 +140,7 @@
                     "command": "click",
                     "target": "name=demo",
                     "value": "",
-                    "comment": "Hace clic en la casilla 'demo'"
+                    "comment": "Selenium hace clic en la casilla 'demo'"
                 },
                 {
                     "id": "borrar-todo-con-6",
@@ -151,7 +154,7 @@
                     "command": "click",
                     "target": "xpath=//input[@name='borrar' and @value='Sí']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
+                    "comment": "Selenium hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
                 },
                 {
                     "id": "borrar-todo-con-8",
@@ -164,13 +167,15 @@
                     "id": "borrar-todo-con-9",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
-                    "value": "detectadoSQLite"
+                    "value": "detectadoSQLite",
+                    "comment": "Selenium busca si la base de datos utilizada es SQLite"
                 },
                 {
                     "id": "borrar-todo-con-10",
                     "command": "if",
                     "target": "${detectadoSQLite}",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'if'"
                 },
                 {
                     "id": "borrar-todo-con-11",
@@ -218,7 +223,8 @@
                     "id": "borrar-todo-con-17",
                     "command": "else",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'else'"
                 },
                 {
                     "id": "borrar-todo-con-18",
@@ -273,14 +279,15 @@
                     "id": "borrar-todo-con-25",
                     "command": "end",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'end'"
                 },
                 {
                     "id": "borrar-todo-con-26",
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-todo-con-27",
@@ -295,7 +302,7 @@
                     "command": "click",
                     "target": "linkText=Administrador",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Administrador'"
+                    "comment": "Selenium hace clic en el enlace 'Administrador'"
                 },
                 {
                     "id": "estadisticas-administrador-1-2",
@@ -316,7 +323,7 @@
                     "command": "click",
                     "target": "linkText=Estadísticas",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Estadísticas'"
+                    "comment": "Selenium hace clic en el enlace 'Estadísticas'"
                 },
                 {
                     "id": "estadisticas-administrador-1-5",
@@ -345,7 +352,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-personas/borrar-2.php?id[2]=on&id[3]=on",
                     "value": "",
-                    "comment": "Borra directamente dos registros"
+                    "comment": "Selenium borra directamente dos registros"
                 },
                 {
                     "id": "estadisticas-administrador-2-2",
@@ -373,7 +380,7 @@
                     "command": "open",
                     "target": "${urlBase}/administrador/estadisticas.php",
                     "value": "",
-                    "comment": "Abre página Administrador > Estadísticas"
+                    "comment": "Selenium abre página Administrador > Estadísticas"
                 },
                 {
                     "id": "estadisticas-administrador-2-6",
@@ -402,7 +409,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-personas/borrar-2.php?id[1]=on",
                     "value": "",
-                    "comment": "Borra directamente un registro"
+                    "comment": "Selenium borra directamente un registro"
                 },
                 {
                     "id": "estadisticas-administrador-3-2",
@@ -423,7 +430,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-usuarios/borrar-2.php?id[2]=on&id[3]=on&id[4]=on",
                     "value": "",
-                    "comment": "Borra directamente tres registros"
+                    "comment": "Selenium borra directamente tres registros"
                 },
                 {
                     "id": "estadisticas-administrador-3-5",
@@ -458,7 +465,7 @@
                     "command": "open",
                     "target": "${urlBase}/administrador/estadisticas.php",
                     "value": "",
-                    "comment": "Abre página Administrador > Estadísticas"
+                    "comment": "Selenium abre página Administrador > Estadísticas"
                 },
                 {
                     "id": "estadisticas-administrador-3-10",
@@ -486,7 +493,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "estadisticas-administrador-3-14",
@@ -508,7 +515,7 @@
                     "command": "click",
                     "target": "linkText=Desconectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Desconectarse'"
                 },
                 {
                     "id": "estadisticas-administrador-4-2",
@@ -521,7 +528,8 @@
                     "id": "estadisticas-administrador-4-3",
                     "command": "assertText",
                     "target": "xpath=//li/a",
-                    "value": "Conectarse"
+                    "value": "Conectarse",
+                    "comment": "Muestra enlace: Conectarse'"
                 },
                 {
                     "id": "final-1",

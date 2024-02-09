@@ -1,6 +1,6 @@
 {
     "id": "mclibre-bases-de-datos-3-b-numero-registros-usuario-tests-minimo",
-    "version": "2024-02-08",
+    "version": "2024-02-09",
     "name": "Test ejercicio Bases de datos (3 B) Número de registros (Mínimo)",
     "url": "http://localhost",
     "tests": [
@@ -21,7 +21,7 @@
                     "command": "open",
                     "target": "${urlBase}/index.php",
                     "value": "",
-                    "comment": "Abre la página de Inicio de la aplicación"
+                    "comment": "Selenium abre la página de Inicio de la aplicación"
                 },
                 {
                     "id": "inicio-2",
@@ -34,26 +34,29 @@
                     "id": "desconexion-inicial-1",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Desconectarse'))",
-                    "value": "contieneDesconectarse"
+                    "value": "detectadoDesconectarse",
+                    "comment": "Selenium busca si se muestra el enlace 'Desconectarse'"
                 },
                 {
                     "id": "desconexion-inicial-2",
                     "command": "if",
-                    "target": "${contieneDesconectarse}",
-                    "value": ""
+                    "target": "${detectadoDesconectarse}",
+                    "value": "",
+                    "comment": "Selenium: estructura 'if'"
                 },
                 {
                     "id": "desconexion-inicial-3",
                     "command": "click",
                     "target": "linkText=Desconectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Desconectarse'"
                 },
                 {
                     "id": "desconexion-inicial-4",
                     "command": "end",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'end'"
                 },
                 {
                     "id": "desconexion-inicial-5",
@@ -67,7 +70,7 @@
                     "command": "click",
                     "target": "linkText=Conectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Conectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Conectarse'"
                 },
                 {
                     "id": "borrar-todo-con-2",
@@ -81,21 +84,21 @@
                     "command": "type",
                     "target": "name=usuario",
                     "value": "root",
-                    "comment": "Escribe 'root' en el campo 'usuario'"
+                    "comment": "Escribe 'root' en la caja de texto 'usuario'"
                 },
                 {
                     "id": "borrar-todo-con-4",
                     "command": "type",
                     "target": "name=password",
                     "value": "root",
-                    "comment": "Escribe 'root' en el campo 'password'"
+                    "comment": "Escribe 'root' en la caja de texto 'password'"
                 },
                 {
                     "id": "borrar-todo-con-5",
                     "command": "click",
                     "target": "xpath=//input[@value='Identificar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Identificar'"
+                    "comment": "Selenium hace clic en el botón 'Identificar'"
                 },
                 {
                     "id": "borrar-todo-con-6",
@@ -109,7 +112,7 @@
                     "command": "click",
                     "target": "linkText=Administrador",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Administrador'"
+                    "comment": "Selenium hace clic en el enlace 'Administrador'"
                 },
                 {
                     "id": "borrar-todo-con-2",
@@ -123,7 +126,7 @@
                     "command": "click",
                     "target": "linkText=Borrar todo",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar todo'"
                 },
                 {
                     "id": "borrar-todo-con-4",
@@ -137,7 +140,7 @@
                     "command": "click",
                     "target": "name=demo",
                     "value": "",
-                    "comment": "Hace clic en la casilla 'demo'"
+                    "comment": "Selenium hace clic en la casilla 'demo'"
                 },
                 {
                     "id": "borrar-todo-con-6",
@@ -151,7 +154,7 @@
                     "command": "click",
                     "target": "xpath=//input[@name='borrar' and @value='Sí']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
+                    "comment": "Selenium hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
                 },
                 {
                     "id": "borrar-todo-con-8",
@@ -164,13 +167,15 @@
                     "id": "borrar-todo-con-9",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
-                    "value": "detectadoSQLite"
+                    "value": "detectadoSQLite",
+                    "comment": "Selenium busca si la base de datos utilizada es SQLite"
                 },
                 {
                     "id": "borrar-todo-con-10",
                     "command": "if",
                     "target": "${detectadoSQLite}",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'if'"
                 },
                 {
                     "id": "borrar-todo-con-11",
@@ -218,7 +223,8 @@
                     "id": "borrar-todo-con-17",
                     "command": "else",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'else'"
                 },
                 {
                     "id": "borrar-todo-con-18",
@@ -273,14 +279,15 @@
                     "id": "borrar-todo-con-25",
                     "command": "end",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'end'"
                 },
                 {
                     "id": "borrar-todo-con-26",
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-todo-con-27",
@@ -295,7 +302,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-usuarios/listar.php",
                     "value": "",
-                    "comment": "Abre directamente la página Usuarios > Listar"
+                    "comment": "Selenium abre directamente la página Usuarios > Listar"
                 },
                 {
                     "id": "numero-registros-usuario-1-2",
@@ -308,7 +315,8 @@
                     "id": "numero-registros-usuario-1-3",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "numero-registros-usuario-1-4",
@@ -321,79 +329,36 @@
                     "id": "numero-registros-usuario-1-5",
                     "command": "assertText",
                     "target": "xpath=//tr/th[4]",
-                    "value": "Número de registros"
+                    "value": "Número de registros",
+                    "comment": "La cuarta celda de la fila de cabecera de la tabla contiene 'Número de registros'"
                 },
                 {
                     "id": "numero-registros-usuario-1-6",
-                    "command": "storeText",
+                    "command": "assertText",
                     "target": "xpath=//tr[1]/td[4]",
-                    "value": "contenidoCelda"
+                    "value": "5",
+                    "comment": "La cuarta celda de la segunda fila de la tabla contiene '5'"
                 },
                 {
                     "id": "numero-registros-usuario-1-7",
-                    "command": "executeScript",
-                    "target": "return(${contenidoCelda} != '')",
-                    "value": "contenidoCeldaVacio"
+                    "command": "assertText",
+                    "target": "xpath=//tr[2]/td[4]",
+                    "value": "20",
+                    "comment": "La cuarta celda de la tercera fila de la tabla contiene '20'"
                 },
                 {
                     "id": "numero-registros-usuario-1-8",
-                    "command": "assert",
-                    "target": "contenidoCeldaVacio",
-                    "value": "true"
+                    "command": "assertText",
+                    "target": "xpath=//tr[3]/td[4]",
+                    "value": "3",
+                    "comment": "La cuarta celda de la cuarta fila de la tabla contiene '3'"
                 },
                 {
                     "id": "numero-registros-usuario-1-9",
-                    "command": "storeText",
-                    "target": "xpath=//tr[2]/td[4]",
-                    "value": "contenidoCelda"
-                },
-                {
-                    "id": "numero-registros-usuario-1-10",
-                    "command": "executeScript",
-                    "target": "return(${contenidoCelda} != '')",
-                    "value": "contenidoCeldaVacio"
-                },
-                {
-                    "id": "numero-registros-usuario-1-11",
-                    "command": "assert",
-                    "target": "contenidoCeldaVacio",
-                    "value": "true"
-                },
-                {
-                    "id": "numero-registros-usuario-1-12",
-                    "command": "storeText",
-                    "target": "xpath=//tr[3]/td[4]",
-                    "value": "contenidoCelda"
-                },
-                {
-                    "id": "numero-registros-usuario-1-13",
-                    "command": "executeScript",
-                    "target": "return(${contenidoCelda} != '')",
-                    "value": "contenidoCeldaVacio"
-                },
-                {
-                    "id": "numero-registros-usuario-1-14",
-                    "command": "assert",
-                    "target": "contenidoCeldaVacio",
-                    "value": "true"
-                },
-                {
-                    "id": "numero-registros-usuario-1-15",
-                    "command": "storeText",
+                    "command": "assertText",
                     "target": "xpath=//tr[4]/td[4]",
-                    "value": "contenidoCelda"
-                },
-                {
-                    "id": "numero-registros-usuario-1-16",
-                    "command": "executeScript",
-                    "target": "return(${contenidoCelda} != '')",
-                    "value": "contenidoCeldaVacio"
-                },
-                {
-                    "id": "numero-registros-usuario-1-17",
-                    "command": "assert",
-                    "target": "contenidoCeldaVacio",
-                    "value": "true"
+                    "value": "4",
+                    "comment": "La cuarta celda de la quinta fila de la tabla contiene '4'"
                 },
                 {
                     "id": "numero-registros-usuario-2-1",
@@ -401,7 +366,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-usuarios/borrar-2.php?id[2]=on&id[3]=on&id[4]=on",
                     "value": "",
-                    "comment": "Intenta borrar directamente un registro no existente"
+                    "comment": "Selenium intenta borrar directamente un registro no existente"
                 },
                 {
                     "id": "numero-registros-usuario-2-2",
@@ -437,7 +402,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-usuarios/insertar-2.php?usuario=prueba-1-1&password=prueba-1-2&nivel=10",
                     "value": "",
-                    "comment": "Intenta insertar directamente un registro con valores incompletos"
+                    "comment": "Selenium intenta insertar directamente un registro con valores incompletos"
                 },
                 {
                     "id": "numero-registros-usuario-3-2",
@@ -457,7 +422,8 @@
                     "id": "numero-registros-usuario-3-4",
                     "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
-                    "value": "cuentaAvisos"
+                    "value": "cuentaAvisos",
+                    "comment": "Selenium cuenta los avisos (class 'aviso')"
                 },
                 {
                     "id": "numero-registros-usuario-3-5",
@@ -472,7 +438,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-usuarios/insertar-2.php?usuario=prueba-1-1&password=prueba-1-2&nivel=10&registros=5",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "numero-registros-usuario-4-2",
@@ -494,7 +460,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-usuarios/listar.php?ordena=registros+ASC",
                     "value": "",
-                    "comment": "Reordena listado (registros ASC)"
+                    "comment": "Selenium reordena listado (registros ASC)"
                 },
                 {
                     "id": "numero-registros-usuario-5-2",
@@ -507,7 +473,8 @@
                     "id": "numero-registros-usuario-5-3",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "numero-registros-usuario-5-4",
@@ -520,19 +487,22 @@
                     "id": "numero-registros-usuario-5-5",
                     "command": "assertText",
                     "target": "xpath=//tr/th[4]",
-                    "value": "Número de registros"
+                    "value": "Número de registros",
+                    "comment": "La cuarta celda de la fila de cabecera de la tabla contiene 'Número de registros'"
                 },
                 {
                     "id": "numero-registros-usuario-5-6",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "prueba-1-1"
+                    "value": "prueba-1-1",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'root'"
                 },
                 {
                     "id": "numero-registros-usuario-5-7",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "root"
+                    "value": "root",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'root'"
                 },
                 {
                     "id": "numero-registros-usuario-6-1",
@@ -540,7 +510,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-usuarios/listar.php?ordena=registros+DESC",
                     "value": "",
-                    "comment": "Reordena listado (registros DESC)"
+                    "comment": "Selenium reordena listado (registros DESC)"
                 },
                 {
                     "id": "numero-registros-usuario-6-2",
@@ -553,7 +523,8 @@
                     "id": "numero-registros-usuario-6-3",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "numero-registros-usuario-6-4",
@@ -566,19 +537,22 @@
                     "id": "numero-registros-usuario-6-5",
                     "command": "assertText",
                     "target": "xpath=//tr/th[4]",
-                    "value": "Número de registros"
+                    "value": "Número de registros",
+                    "comment": "La cuarta celda de la fila de cabecera de la tabla contiene 'Número de registros'"
                 },
                 {
                     "id": "numero-registros-usuario-6-6",
                     "command": "assertText",
                     "target": "xpath=//tr[2]/td[1]",
-                    "value": "prueba-1-1"
+                    "value": "prueba-1-1",
+                    "comment": "La primera celda de la tercera fila de la tabla contiene 'prueba-1-1'"
                 },
                 {
                     "id": "numero-registros-usuario-6-7",
                     "command": "assertText",
                     "target": "xpath=//tr[1]/td[1]",
-                    "value": "root"
+                    "value": "root",
+                    "comment": "La primera celda de la segunda fila de la tabla contiene 'root'"
                 },
                 {
                     "id": "numero-registros-usuario-7-1",
@@ -586,7 +560,7 @@
                     "command": "open",
                     "target": "${urlBase}/acceso/logout.php",
                     "value": "",
-                    "comment": "Desconecta al usuario"
+                    "comment": "Selenium desconecta al usuario"
                 },
                 {
                     "id": "numero-registros-usuario-7-2",
@@ -599,14 +573,15 @@
                     "id": "numero-registros-usuario-7-3",
                     "command": "assertText",
                     "target": "xpath=//li/a",
-                    "value": "Conectarse"
+                    "value": "Conectarse",
+                    "comment": "Muestra enlace: Conectarse'"
                 },
                 {
                     "id": "numero-registros-usuario-7-4",
                     "command": "open",
                     "target": "${urlBase}/acceso/login-2.php?usuario=prueba-1-1&password=prueba-1-2",
                     "value": ".*",
-                    "comment": "Accede directamente como usuario 'prueba-1-1' y contraseña 'prueba-1-2'"
+                    "comment": "Selenium accede directamente como usuario 'prueba-1-1' y contraseña 'prueba-1-2'"
                 },
                 {
                     "id": "numero-registros-usuario-7-5",
@@ -619,7 +594,8 @@
                     "id": "numero-registros-usuario-7-6",
                     "command": "assertText",
                     "target": "xpath=//li[2]/a",
-                    "value": "Desconectarse"
+                    "value": "Desconectarse",
+                    "comment": "Muestra enlace: 'Desconectarse'"
                 },
                 {
                     "id": "numero-registros-usuario-8-1",
@@ -627,7 +603,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=prueba-2-1&apellidos=prueba-2-2&telefono=2-3&correo=prueba-2-4@example.com",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "numero-registros-usuario-8-2",
@@ -649,7 +625,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=prueba-3-1&apellidos=prueba-3-2&telefono=3-3&correo=prueba-3-4@example.com",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "numero-registros-usuario-9-2",
@@ -671,7 +647,7 @@
                     "command": "open",
                     "target": "${urlBase}/db/tabla-personas/insertar-2.php?nombre=prueba-4-1&apellidos=prueba-4-2&telefono=4-3&correo=prueba-4-4@example.com",
                     "value": "",
-                    "comment": "Intenta insertar directamente un registro"
+                    "comment": "Selenium intenta insertar directamente un registro"
                 },
                 {
                     "id": "numero-registros-usuario-10-2",
@@ -684,19 +660,22 @@
                     "id": "numero-registros-usuario-10-3",
                     "command": "assertText",
                     "target": "xpath=//p[1]",
-                    "value": "Se ha alcanzado el número máximo de registros que se pueden guardar."
+                    "value": "Se ha alcanzado el número máximo de registros que se pueden guardar.",
+                    "comment": "Muestra aviso (1/2): 'Se ha alcanzado el número máximo de registros que se pueden guardar.'"
                 },
                 {
                     "id": "numero-registros-usuario-10-4",
                     "command": "assertText",
                     "target": "xpath=//p[2]",
-                    "value": "Por favor, borre algún registro antes de insertar un nuevo registro."
+                    "value": "Por favor, borre algún registro antes de insertar un nuevo registro.",
+                    "comment": "Muestra aviso (2/2): 'Por favor, borre algún registro antes de insertar un nuevo registro.'"
                 },
                 {
                     "id": "numero-registros-usuario-10-5",
                     "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
-                    "value": "cuentaAvisos"
+                    "value": "cuentaAvisos",
+                    "comment": "Selenium cuenta los avisos (class 'aviso')"
                 },
                 {
                     "id": "numero-registros-usuario-10-6",
@@ -710,7 +689,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "numero-registros-usuario-10-8",
@@ -723,7 +702,8 @@
                     "id": "numero-registros-usuario-10-9",
                     "command": "assertText",
                     "target": "xpath=//li[2]/a",
-                    "value": "Desconectarse"
+                    "value": "Desconectarse",
+                    "comment": "Muestra enlace: 'Desconectarse'"
                 },
                 {
                     "id": "numero-registros-usuario-11-1",
@@ -731,7 +711,7 @@
                     "command": "click",
                     "target": "linkText=Desconectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Desconectarse'"
                 },
                 {
                     "id": "numero-registros-usuario-11-2",
@@ -744,7 +724,8 @@
                     "id": "numero-registros-usuario-11-3",
                     "command": "assertText",
                     "target": "xpath=//li/a",
-                    "value": "Conectarse"
+                    "value": "Conectarse",
+                    "comment": "Muestra enlace: Conectarse'"
                 },
                 {
                     "id": "final-1",

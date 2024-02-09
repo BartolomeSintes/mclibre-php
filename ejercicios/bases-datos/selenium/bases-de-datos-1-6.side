@@ -1,6 +1,6 @@
 {
     "id": "mclibre-bases-de-datos-1-6-tests",
-    "version": "2024-02-08",
+    "version": "2024-02-09",
     "name": "Test ejercicio Bases de datos (1) 6",
     "url": "http://localhost",
     "tests": [
@@ -21,7 +21,7 @@
                     "command": "open",
                     "target": "${urlBase}/index.php",
                     "value": "",
-                    "comment": "Abre la página de Inicio de la aplicación"
+                    "comment": "Selenium abre la página de Inicio de la aplicación"
                 },
                 {
                     "id": "inicio-2",
@@ -35,7 +35,7 @@
                     "command": "click",
                     "target": "linkText=Borrar todo",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar todo'"
                 },
                 {
                     "id": "borrar-todo-2",
@@ -50,7 +50,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='No']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'No'"
+                    "comment": "Selenium hace clic en el botón 'No'"
                 },
                 {
                     "id": "borrar-todo-4",
@@ -64,7 +64,7 @@
                     "command": "click",
                     "target": "linkText=Borrar todo",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar todo'"
                 },
                 {
                     "id": "borrar-todo-6",
@@ -78,7 +78,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Sí']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Sí'"
+                    "comment": "Selenium hace clic en el botón 'Sí'"
                 },
                 {
                     "id": "borrar-todo-8",
@@ -91,13 +91,15 @@
                     "id": "borrar-todo-9",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
-                    "value": "detectadoSQLite"
+                    "value": "detectadoSQLite",
+                    "comment": "Selenium busca si la base de datos utilizada es SQLite"
                 },
                 {
                     "id": "borrar-todo-10",
                     "command": "if",
                     "target": "${detectadoSQLite}",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'if'"
                 },
                 {
                     "id": "borrar-todo-11",
@@ -124,7 +126,8 @@
                     "id": "borrar-todo-14",
                     "command": "else",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'else'"
                 },
                 {
                     "id": "borrar-todo-15",
@@ -165,14 +168,15 @@
                     "id": "borrar-todo-20",
                     "command": "end",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'end'"
                 },
                 {
                     "id": "borrar-todo-21",
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-todo-22",
@@ -187,7 +191,7 @@
                     "command": "click",
                     "target": "linkText=Añadir registro",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Añadir registro'"
+                    "comment": "Selenium hace clic en el enlace 'Añadir registro'"
                 },
                 {
                     "id": "insertar-1-2",
@@ -215,7 +219,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Añadir']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Añadir'"
+                    "comment": "Selenium hace clic en el botón 'Añadir'"
                 },
                 {
                     "id": "insertar-1-6",
@@ -236,7 +240,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "insertar-1-9",
@@ -251,7 +255,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&apellidos=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
                     "value": "",
-                    "comment": "Intenta insertar directamente un registro con valores demasiado largos"
+                    "comment": "Selenium intenta insertar directamente un registro con valores demasiado largos"
                 },
                 {
                     "id": "insertar-2-2",
@@ -278,7 +282,8 @@
                     "id": "insertar-2-5",
                     "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
-                    "value": "cuentaAvisos"
+                    "value": "cuentaAvisos",
+                    "comment": "Selenium cuenta los avisos (class 'aviso')"
                 },
                 {
                     "id": "insertar-2-6",
@@ -293,7 +298,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=Pepito&apellidos=Conejo",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "insertar-3-2",
@@ -314,7 +319,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "insertar-3-5",
@@ -329,7 +334,7 @@
                     "command": "click",
                     "target": "linkText=Listar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Listar'"
+                    "comment": "Selenium hace clic en el enlace 'Listar'"
                 },
                 {
                     "id": "listar-1-2",
@@ -384,7 +389,8 @@
                     "id": "listar-1-9",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "listar-1-10",
@@ -398,7 +404,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "listar-1-12",
@@ -413,7 +419,7 @@
                     "command": "click",
                     "target": "linkText=Añadir registro",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Añadir registro'"
+                    "comment": "Selenium hace clic en el enlace 'Añadir registro'"
                 },
                 {
                     "id": "borrar-1-2",
@@ -427,7 +433,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=Julio&apellidos=César",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "borrar-1-4",
@@ -448,7 +454,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-1-7",
@@ -463,7 +469,7 @@
                     "command": "click",
                     "target": "linkText=Borrar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar'"
                 },
                 {
                     "id": "borrar-2-2",
@@ -476,7 +482,8 @@
                     "id": "borrar-2-3",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "borrar-2-4",
@@ -525,7 +532,7 @@
                     "command": "click",
                     "target": "name=id[1]",
                     "value": "",
-                    "comment": "Hace clic en la casilla con atributo 'name' con valor 'id[1]'"
+                    "comment": "Selenium hace clic en la casilla con atributo 'name' con valor 'id[1]'"
                 },
                 {
                     "id": "borrar-2-11",
@@ -540,7 +547,7 @@
                     "command": "click",
                     "target": "name=id[1]",
                     "value": "",
-                    "comment": "Hace clic en la casilla con atributo 'name' con valor 'id[1]'"
+                    "comment": "Selenium hace clic en la casilla con atributo 'name' con valor 'id[1]'"
                 },
                 {
                     "id": "borrar-3-2",
@@ -554,7 +561,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Borrar registro']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Borrar registro'"
+                    "comment": "Selenium hace clic en el botón 'Borrar registro'"
                 },
                 {
                     "id": "borrar-3-4",
@@ -575,7 +582,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-3-7",
@@ -590,7 +597,7 @@
                     "command": "open",
                     "target": "${urlBase}/borrar-2.php?id[50]=on&id[60]=on",
                     "value": "",
-                    "comment": "Intenta borrar directamente dos registros inexistentes"
+                    "comment": "Selenium intenta borrar directamente dos registros inexistentes"
                 },
                 {
                     "id": "borrar-4-2",
@@ -618,7 +625,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-5-1",
@@ -626,7 +633,7 @@
                     "command": "click",
                     "target": "linkText=Borrar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar'"
                 },
                 {
                     "id": "borrar-5-2",
@@ -640,7 +647,7 @@
                     "command": "click",
                     "target": "name=id[1]",
                     "value": "",
-                    "comment": "Hace clic en la casilla con atributo 'name' con valor 'id[1]'"
+                    "comment": "Selenium hace clic en la casilla con atributo 'name' con valor 'id[1]'"
                 },
                 {
                     "id": "borrar-5-4",
@@ -654,7 +661,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Borrar registro']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Borrar registro'"
+                    "comment": "Selenium hace clic en el botón 'Borrar registro'"
                 },
                 {
                     "id": "borrar-5-6",
@@ -675,7 +682,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-5-9",
@@ -690,7 +697,7 @@
                     "command": "click",
                     "target": "linkText=Borrar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar'"
                 },
                 {
                     "id": "borrar-6-2",
@@ -703,7 +710,8 @@
                     "id": "borrar-6-3",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "borrar-6-4",
@@ -717,7 +725,7 @@
                     "command": "click",
                     "target": "name=id[2]",
                     "value": "",
-                    "comment": "Hace clic en la casilla con atributo 'name' con valor 'id[2]'"
+                    "comment": "Selenium hace clic en la casilla con atributo 'name' con valor 'id[2]'"
                 },
                 {
                     "id": "borrar-6-6",
@@ -731,7 +739,7 @@
                     "command": "click",
                     "target": "name=id[3]",
                     "value": "",
-                    "comment": "Hace clic en la casilla con atributo 'name' con valor 'id[3]'"
+                    "comment": "Selenium hace clic en la casilla con atributo 'name' con valor 'id[3]'"
                 },
                 {
                     "id": "borrar-6-8",
@@ -745,7 +753,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Borrar registro']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Borrar registro'"
+                    "comment": "Selenium hace clic en el botón 'Borrar registro'"
                 },
                 {
                     "id": "borrar-6-10",
@@ -773,7 +781,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-6-14",
@@ -788,7 +796,7 @@
                     "command": "click",
                     "target": "linkText=Borrar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar'"
                 },
                 {
                     "id": "borrar-7-2",
@@ -801,7 +809,8 @@
                     "id": "borrar-7-3",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "borrar-7-4",
@@ -815,7 +824,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-7-6",
@@ -830,7 +839,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=Numa&apellidos=Nigerio",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "buscar-1-2",
@@ -851,7 +860,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=Pepito&apellidos=Conejo",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "buscar-1-5",
@@ -872,7 +881,7 @@
                     "command": "open",
                     "target": "${urlBase}/insertar-2.php?nombre=Julio&apellidos=César",
                     "value": "",
-                    "comment": "Inserta directamente un registro"
+                    "comment": "Selenium inserta directamente un registro"
                 },
                 {
                     "id": "buscar-1-8",
@@ -893,7 +902,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "buscar-1-11",
@@ -908,7 +917,7 @@
                     "command": "open",
                     "target": "${urlBase}/buscar-2.php?nombre=abcdefghi1abcdefghi2abcdefghi3abcdefghi4a&apellidos=abcdefghi1abcdefghi2abcdefghi3abcdefghi4abcdefghi5abcdefghi6a",
                     "value": "",
-                    "comment": "Busca directamente con valores demasiado largos"
+                    "comment": "Selenium busca directamente con valores demasiado largos"
                 },
                 {
                     "id": "buscar-11-2",
@@ -935,7 +944,8 @@
                     "id": "buscar-11-5",
                     "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
-                    "value": "cuentaAvisos"
+                    "value": "cuentaAvisos",
+                    "comment": "Selenium cuenta los avisos (class 'aviso')"
                 },
                 {
                     "id": "buscar-11-6",
@@ -949,7 +959,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "buscar-11-8",
@@ -964,7 +974,7 @@
                     "command": "click",
                     "target": "linkText=Buscar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Buscar'"
+                    "comment": "Selenium hace clic en el enlace 'Buscar'"
                 },
                 {
                     "id": "buscar-2-2",
@@ -985,7 +995,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Buscar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Buscar'"
+                    "comment": "Selenium hace clic en el botón 'Buscar'"
                 },
                 {
                     "id": "buscar-2-5",
@@ -1040,7 +1050,8 @@
                     "id": "buscar-2-12",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "buscar-2-13",
@@ -1054,7 +1065,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "buscar-2-15",
@@ -1069,7 +1080,7 @@
                     "command": "click",
                     "target": "linkText=Buscar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Buscar'"
+                    "comment": "Selenium hace clic en el enlace 'Buscar'"
                 },
                 {
                     "id": "buscar-3-2",
@@ -1090,7 +1101,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Buscar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Buscar'"
+                    "comment": "Selenium hace clic en el botón 'Buscar'"
                 },
                 {
                     "id": "buscar-3-5",
@@ -1117,7 +1128,8 @@
                     "id": "buscar-3-8",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "buscar-3-9",
@@ -1131,7 +1143,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "buscar-3-11",
@@ -1146,7 +1158,7 @@
                     "command": "click",
                     "target": "linkText=Buscar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Buscar'"
+                    "comment": "Selenium hace clic en el enlace 'Buscar'"
                 },
                 {
                     "id": "buscar-4-2",
@@ -1174,7 +1186,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Buscar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Buscar'"
+                    "comment": "Selenium hace clic en el botón 'Buscar'"
                 },
                 {
                     "id": "buscar-4-6",
@@ -1201,7 +1213,8 @@
                     "id": "buscar-4-9",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "buscar-4-10",
@@ -1215,7 +1228,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "buscar-4-12",
@@ -1230,7 +1243,7 @@
                     "command": "click",
                     "target": "linkText=Buscar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Buscar'"
+                    "comment": "Selenium hace clic en el enlace 'Buscar'"
                 },
                 {
                     "id": "buscar-5-2",
@@ -1251,7 +1264,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Buscar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Buscar'"
+                    "comment": "Selenium hace clic en el botón 'Buscar'"
                 },
                 {
                     "id": "buscar-5-5",
@@ -1264,7 +1277,8 @@
                     "id": "buscar-5-6",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "buscar-5-7",
@@ -1278,7 +1292,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "buscar-5-9",
@@ -1293,7 +1307,7 @@
                     "command": "open",
                     "target": "${urlBase}/modificar-2.php",
                     "value": "",
-                    "comment": "Intenta modificar directamente sin seleccionar registro"
+                    "comment": "Selenium intenta modificar directamente sin seleccionar registro"
                 },
                 {
                     "id": "modificar-1-2",
@@ -1313,7 +1327,8 @@
                     "id": "modificar-1-4",
                     "command": "storeElementCount",
                     "target": "xpath=//*[contains(@class, 'aviso')]",
-                    "value": "cuentaAvisos"
+                    "value": "cuentaAvisos",
+                    "comment": "Selenium cuenta los avisos (class 'aviso')"
                 },
                 {
                     "id": "modificar-1-5",
@@ -1327,7 +1342,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "modificar-1-7",
@@ -1342,7 +1357,7 @@
                     "command": "click",
                     "target": "linkText=Modificar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Modificar'"
+                    "comment": "Selenium hace clic en el enlace 'Modificar'"
                 },
                 {
                     "id": "modificar-2-2",
@@ -1355,7 +1370,8 @@
                     "id": "modificar-2-3",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "modificar-2-4",
@@ -1412,7 +1428,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Modificar registro']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Modificar registro'"
+                    "comment": "Selenium hace clic en el botón 'Modificar registro'"
                 },
                 {
                     "id": "modificar-3-2",
@@ -1454,7 +1470,7 @@
                     "command": "click",
                     "target": "xpath=//input[@value='Actualizar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Actualizar'"
+                    "comment": "Selenium hace clic en el botón 'Actualizar'"
                 },
                 {
                     "id": "modificar-3-8",
@@ -1475,7 +1491,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "modificar-3-11",
@@ -1489,7 +1505,7 @@
                     "command": "click",
                     "target": "linkText=Listar",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Listar'"
+                    "comment": "Selenium hace clic en el enlace 'Listar'"
                 },
                 {
                     "id": "modificar-3-13",
@@ -1516,7 +1532,8 @@
                     "id": "modificar-3-16",
                     "command": "storeElementCount",
                     "target": "xpath=//tr",
-                    "value": "cuentaFilas"
+                    "value": "cuentaFilas",
+                    "comment": "Selenium cuenta el número de filas (tr)"
                 },
                 {
                     "id": "modificar-3-17",
@@ -1530,7 +1547,7 @@
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "modificar-3-19",

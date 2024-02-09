@@ -1,6 +1,6 @@
 {
     "id": "mclibre-bases-de-datos-3-b-0-tests-minimo",
-    "version": "2024-02-08",
+    "version": "2024-02-09",
     "name": "Test ejercicio Bases de datos (3 B) 0 (Mínimo)",
     "url": "http://localhost",
     "tests": [
@@ -21,7 +21,7 @@
                     "command": "open",
                     "target": "${urlBase}/index.php",
                     "value": "",
-                    "comment": "Abre la página de Inicio de la aplicación"
+                    "comment": "Selenium abre la página de Inicio de la aplicación"
                 },
                 {
                     "id": "inicio-2",
@@ -34,26 +34,29 @@
                     "id": "desconexion-inicial-1",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Desconectarse'))",
-                    "value": "contieneDesconectarse"
+                    "value": "detectadoDesconectarse",
+                    "comment": "Selenium busca si se muestra el enlace 'Desconectarse'"
                 },
                 {
                     "id": "desconexion-inicial-2",
                     "command": "if",
-                    "target": "${contieneDesconectarse}",
-                    "value": ""
+                    "target": "${detectadoDesconectarse}",
+                    "value": "",
+                    "comment": "Selenium: estructura 'if'"
                 },
                 {
                     "id": "desconexion-inicial-3",
                     "command": "click",
                     "target": "linkText=Desconectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Desconectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Desconectarse'"
                 },
                 {
                     "id": "desconexion-inicial-4",
                     "command": "end",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'end'"
                 },
                 {
                     "id": "desconexion-inicial-5",
@@ -67,7 +70,7 @@
                     "command": "click",
                     "target": "linkText=Conectarse",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Conectarse'"
+                    "comment": "Selenium hace clic en el enlace 'Conectarse'"
                 },
                 {
                     "id": "borrar-todo-con-2",
@@ -81,21 +84,21 @@
                     "command": "type",
                     "target": "name=usuario",
                     "value": "root",
-                    "comment": "Escribe 'root' en el campo 'usuario'"
+                    "comment": "Escribe 'root' en la caja de texto 'usuario'"
                 },
                 {
                     "id": "borrar-todo-con-4",
                     "command": "type",
                     "target": "name=password",
                     "value": "root",
-                    "comment": "Escribe 'root' en el campo 'password'"
+                    "comment": "Escribe 'root' en la caja de texto 'password'"
                 },
                 {
                     "id": "borrar-todo-con-5",
                     "command": "click",
                     "target": "xpath=//input[@value='Identificar']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'Identificar'"
+                    "comment": "Selenium hace clic en el botón 'Identificar'"
                 },
                 {
                     "id": "borrar-todo-con-6",
@@ -109,7 +112,7 @@
                     "command": "click",
                     "target": "linkText=Administrador",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Administrador'"
+                    "comment": "Selenium hace clic en el enlace 'Administrador'"
                 },
                 {
                     "id": "borrar-todo-2",
@@ -123,7 +126,7 @@
                     "command": "click",
                     "target": "linkText=Borrar todo",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Borrar todo'"
+                    "comment": "Selenium hace clic en el enlace 'Borrar todo'"
                 },
                 {
                     "id": "borrar-todo-4",
@@ -137,7 +140,7 @@
                     "command": "click",
                     "target": "xpath=//input[@name='borrar' and @value='Sí']",
                     "value": "",
-                    "comment": "Hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
+                    "comment": "Selenium hace clic en el botón 'borrar' con atributo 'value' con valor 'Sí'"
                 },
                 {
                     "id": "borrar-todo-6",
@@ -150,13 +153,15 @@
                     "id": "borrar-todo-7",
                     "command": "executeScript",
                     "target": "return (document.body.innerHTML.includes('Sistema Gestor de Bases de Datos: SQLite.'))",
-                    "value": "detectadoSQLite"
+                    "value": "detectadoSQLite",
+                    "comment": "Selenium busca si la base de datos utilizada es SQLite"
                 },
                 {
                     "id": "borrar-todo-8",
                     "command": "if",
                     "target": "${detectadoSQLite}",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'if'"
                 },
                 {
                     "id": "borrar-todo-9",
@@ -204,7 +209,8 @@
                     "id": "borrar-todo-15",
                     "command": "else",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'else'"
                 },
                 {
                     "id": "borrar-todo-16",
@@ -259,14 +265,15 @@
                     "id": "borrar-todo-23",
                     "command": "end",
                     "target": "",
-                    "value": ""
+                    "value": "",
+                    "comment": "Selenium: estructura 'end'"
                 },
                 {
                     "id": "borrar-todo-24",
                     "command": "click",
                     "target": "linkText=Volver",
                     "value": "",
-                    "comment": "Hace clic en el enlace 'Volver'"
+                    "comment": "Selenium hace clic en el enlace 'Volver'"
                 },
                 {
                     "id": "borrar-todo-25",
