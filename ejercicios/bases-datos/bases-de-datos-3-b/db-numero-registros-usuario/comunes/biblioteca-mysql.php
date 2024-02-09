@@ -79,7 +79,7 @@ function borraTodo()
                 print "\n";
 
                 $consulta = "INSERT INTO $cfg[tablaUsuarios]
-                             (id, usuario, password, nivel)
+                             (id, usuario, password, nivel, registros)
                              VALUES (1, '$cfg[rootName]', '$cfg[rootPassword]', " . NIVEL_ADMINISTRADOR . ", $cfg[tablaPersonasMaxReg])";
 
                 if (!$pdo->query($consulta)) {
